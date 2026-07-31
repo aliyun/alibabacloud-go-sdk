@@ -16,7 +16,7 @@ type iStartImagePipelineExecutionResponseBody interface {
 }
 
 type StartImagePipelineExecutionResponseBody struct {
-	// The ID of the image creation task.
+	// The ID of the building task.
 	//
 	// example:
 	//

@@ -23,13 +23,13 @@ type iDetachInstanceRamRoleResponseBody interface {
 
 type DetachInstanceRamRoleResponseBody struct {
 	DetachInstanceRamRoleResults *DetachInstanceRamRoleResponseBodyDetachInstanceRamRoleResults `json:"DetachInstanceRamRoleResults,omitempty" xml:"DetachInstanceRamRoleResults,omitempty" type:"Struct"`
-	// The number of ECS instances from which instance RAM roles failed to be detached.
+	// The number of instances from which the RAM role failed to be detached.
 	//
 	// example:
 	//
 	// 0
 	FailCount *int32 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
-	// The name of the instance RAM role.
+	// The name of the detached instance RAM role.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DetachInstanceRamRoleResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of ECS instances from which you attempted to detach instance RAM roles.
+	// The total number of instances from which the RAM role was detached.
 	//
 	// example:
 	//

@@ -24,13 +24,13 @@ type DescribeSnapshotsUsageResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of snapshots stored in the current region.
+	// The total number of snapshots in the current region.
 	//
 	// example:
 	//
 	// 5
 	SnapshotCount *int32 `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
-	// The total size of snapshots stored in the current region. Unit: bytes.
+	// The total snapshot size in the current region. Unit: bytes.
 	//
 	// example:
 	//

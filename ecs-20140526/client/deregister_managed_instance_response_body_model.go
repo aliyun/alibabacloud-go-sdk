@@ -16,7 +16,7 @@ type iDeregisterManagedInstanceResponseBody interface {
 }
 
 type DeregisterManagedInstanceResponseBody struct {
-	// Details of the managed instances.
+	// The information about the managed instance.
 	Instance *DeregisterManagedInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -104,31 +104,31 @@ type DeregisterManagedInstanceResponseBodyInstance struct {
 	//
 	// ``10.0.**.**``
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The number of times that Cloud Assistant tasks were executed on the managed instance.
+	// The number of times that Cloud Assistant tasks were run on the managed instance.
 	//
 	// example:
 	//
 	// 2
 	InvocationCount *int64 `json:"InvocationCount,omitempty" xml:"InvocationCount,omitempty"`
-	// The time when the Cloud Assistant task was last executed.
+	// The time when the last Cloud Assistant task was run.
 	//
 	// example:
 	//
 	// 2021-01-20T09:00:40Z
 	LastInvokedTime *string `json:"LastInvokedTime,omitempty" xml:"LastInvokedTime,omitempty"`
-	// The machine code of the managed instance.
+	// The machine ID of the managed instance.
 	//
 	// example:
 	//
 	// e03231b37ab14e53b5795ad625fc****
 	MachineId *string `json:"MachineId,omitempty" xml:"MachineId,omitempty"`
-	// The operating system type of the managed instance.
+	// The operating system of the managed instance.
 	//
 	// example:
 	//
 	// linux
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The version information about the operating system.
+	// The version of the operating system.
 	//
 	// example:
 	//

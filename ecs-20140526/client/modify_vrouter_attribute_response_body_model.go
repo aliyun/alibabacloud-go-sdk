@@ -14,7 +14,6 @@ type iModifyVRouterAttributeResponseBody interface {
 }
 
 type ModifyVRouterAttributeResponseBody struct {
-	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -18,7 +18,7 @@ type iCreateActivationResponseBody interface {
 }
 
 type CreateActivationResponseBody struct {
-	// The value of the activation code. The code is returned only once when you call this operation and cannot be queried afterward. Store the return value properly.
+	// The value of the activation code. The value is returned only once when you call this operation and cannot be queried afterward. Make sure that you properly save the returned value.
 	//
 	// example:
 	//

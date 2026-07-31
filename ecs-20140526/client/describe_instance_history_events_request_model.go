@@ -70,7 +70,7 @@ type DescribeInstanceHistoryEventsRequest struct {
 	//
 	// - Canceled: The event has been canceled.
 	//
-	// - Failed: The event execution failed.
+	// - Failed: The event failed to be executed.
 	//
 	// - Inquiring: The event is being inquired.
 	//
@@ -106,19 +106,19 @@ type DescribeInstanceHistoryEventsRequest struct {
 	//
 	// - AccountUnbalanced.Delete: The pay-as-you-go instance is released due to an overdue payment.
 	//
-	// > For more information about event types, see [System event overview](https://help.aliyun.com/document_detail/66574.html). The value of this parameter must be an instance system event, not a disk system event.
+	// > For more information about event types, see [System event overview](https://help.aliyun.com/document_detail/66574.html). The value of this parameter can only be an instance system event, not a disk system event.
 	//
 	// example:
 	//
 	// SystemMaintenance.Reboot
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// > This parameter is not yet available.
+	// > This parameter is not yet available for use.
 	//
 	// example:
 	//
 	// null
 	ImpactLevel *string `json:"ImpactLevel,omitempty" xml:"ImpactLevel,omitempty"`
-	// One or more lifecycle statuses of the system event. Valid values of N: 1 to 7. Specify multiple values in a repeated list format. Valid values:
+	// One or more lifecycle statuses of system events. Valid values of N: 1 to 7. Specify multiple values in a repeated list format. Valid values:
 	//
 	// - Scheduled: The event is waiting to be executed.
 	//
@@ -130,7 +130,7 @@ type DescribeInstanceHistoryEventsRequest struct {
 	//
 	// - Canceled: The event has been canceled.
 	//
-	// - Failed: The event execution failed.
+	// - Failed: The event failed to be executed.
 	//
 	// - Inquiring: The event is being inquired.
 	//
@@ -138,7 +138,7 @@ type DescribeInstanceHistoryEventsRequest struct {
 	//
 	// Executed
 	InstanceEventCycleStatus []*string `json:"InstanceEventCycleStatus,omitempty" xml:"InstanceEventCycleStatus,omitempty" type:"Repeated"`
-	// One or more types of the system event. Valid values of N: 1 to 30. Specify multiple values in a repeated list format. Valid values:
+	// One or more types of system events. Valid values of N: 1 to 30. Specify multiple values in a repeated list format. Valid values:
 	//
 	// - SystemMaintenance.Reboot: The instance is restarted due to system maintenance.
 	//
@@ -160,7 +160,7 @@ type DescribeInstanceHistoryEventsRequest struct {
 	//
 	// - AccountUnbalanced.Delete: The pay-as-you-go instance is released due to an overdue payment.
 	//
-	// > For more information about event types, see [System event overview](https://help.aliyun.com/document_detail/66574.html). The value of this parameter must be an instance system event, not a disk system event.
+	// > For more information about event types, see [System event overview](https://help.aliyun.com/document_detail/66574.html). The value of this parameter can only be an instance system event, not a disk system event.
 	//
 	// example:
 	//
@@ -184,7 +184,7 @@ type DescribeInstanceHistoryEventsRequest struct {
 	//
 	// 100
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token. Set this parameter to the NextToken value returned in the previous API call.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
@@ -192,13 +192,13 @@ type DescribeInstanceHistoryEventsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// > This parameter will be deprecated. Use MaxResults or NextToken for paginated queries instead.
+	// > This parameter will be deprecated. Use MaxResults and NextToken for pagination queries.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter will be deprecated. Use MaxResults or NextToken for paginated queries instead.
+	// > This parameter will be deprecated. Use MaxResults and NextToken for pagination queries.
 	//
 	// example:
 	//
@@ -484,13 +484,13 @@ func (s *DescribeInstanceHistoryEventsRequest) Validate() error {
 }
 
 type DescribeInstanceHistoryEventsRequestEventPublishTime struct {
-	// The end of the time range during which the system event is published. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end of the time range to query the publish time of system events. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2017-12-01T06:32:31Z
 	End *string `json:"End,omitempty" xml:"End,omitempty"`
-	// The start of the time range during which the system event is published. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start of the time range to query the publish time of system events. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
@@ -529,13 +529,13 @@ func (s *DescribeInstanceHistoryEventsRequestEventPublishTime) Validate() error 
 }
 
 type DescribeInstanceHistoryEventsRequestNotBefore struct {
-	// The end of the time range during which the system event is scheduled to execute. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end of the time range to query the scheduled execution time of system events. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2017-12-01T06:32:31Z
 	End *string `json:"End,omitempty" xml:"End,omitempty"`
-	// The start of the time range during which the system event is scheduled to execute. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start of the time range to query the scheduled execution time of system events. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//

@@ -28,19 +28,21 @@ type iDescribeRegionsRequest interface {
 type DescribeRegionsRequest struct {
 	// The natural language that is used to filter responses. For more information, see [RFC 7231](https://tools.ietf.org/html/rfc7231). Valid values:
 	//
-	// - zh-CN: Simplified Chinese
 	//
-	// - zh_TW: Traditional Chinese
 	//
-	// - en-US: English
+	// - zh-CN: simplified Chinese.
 	//
-	// - ja: Japanese
+	// - zh-TW: traditional Chinese.
 	//
-	// - fr: French
+	// - en-US: English.
 	//
-	// - de: German
+	// - ja: Japanese.
 	//
-	// - ko: Korean
+	// - fr: French.
+	//
+	// - de: German.
+	//
+	// - ko: Korean.
 	//
 	// Default value: zh-CN.
 	//
@@ -48,17 +50,15 @@ type DescribeRegionsRequest struct {
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The billing method of the instance. For more information, see [Billing overview](https://help.aliyun.com/document_detail/25398.html).
+	// The billing method of the instance. For more information, see [Billing overview](https://help.aliyun.com/document_detail/25398.html). Valid values:
 	//
-	// Valid values:
-	//
-	// - PrePaid: subscription. If you set this parameter to PrePaid, make sure that you have sufficient balance or credits in your account. Otherwise, the InvalidPayMethod error code is returned.
+	// - PrePaid: subscription. If you set this parameter to PrePaid, confirm that your account supports balance payment or credit payment. Otherwise, the InvalidPayMethod error is returned.
 	//
 	// - PostPaid: pay-as-you-go.
 	//
-	//   SpotWithPriceLimit: spot instance for which a maximum hourly price is specified.
+	// - SpotWithPriceLimit: spot instance with a maximum price limit.
 	//
-	// - SpotAsPriceGo: spot instance for which the market price at the time of purchase is automatically used as the bid price. The market price can be up to the pay-as-you-go price.
+	// - SpotAsPriceGo: spot instance priced at the market price with the pay-as-you-go price as the upper limit.
 	//
 	// Default value: PostPaid.
 	//
@@ -70,15 +70,15 @@ type DescribeRegionsRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of resource. Valid values:
+	// The resource type. Valid values:
 	//
-	// - instance: Elastic Compute Service (ECS) instance
+	// - instance: ECS instance.
 	//
-	// - disk: disk
+	// - disk: cloud disk.
 	//
-	// - reservedinstance: reserved instance
+	// - reservedinstance: reserved instance.
 	//
-	// - scu: storage capacity unit (SCU)
+	// - scu: storage capacity unit (SCU).
 	//
 	// Default value: instance.
 	//

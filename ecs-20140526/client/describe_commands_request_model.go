@@ -48,17 +48,17 @@ type iDescribeCommandsRequest interface {
 }
 
 type DescribeCommandsRequest struct {
-	// The ID of the command.
+	// The command ID.
 	//
 	// example:
 	//
 	// c-hz01272yr52****
 	CommandId *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
-	// The encoding format for the `CommandContent` and `Output` values in the response. Valid values:
+	// The encoding mode of the CommandContent and Output fields in the response. Valid values:
 	//
-	// - PlainText: returns the raw script content and output.
+	// - PlainText: returns the original script content and output.
 	//
-	// - Base64: returns the Base64-encoded script content and output.
+	// - Base64: returns Base64-encoded script content and output.
 	//
 	// Default value: Base64.
 	//
@@ -68,19 +68,19 @@ type DescribeCommandsRequest struct {
 	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
 	// The description of the command.
 	//
-	// - If you specify the `Provider` parameter to query public commands, fuzzy search is supported by default.
+	// - If the Provider parameter is specified parameter query public commands, fuzzy match is supported by default.
 	//
-	// - If you do not specify the `Provider` parameter to query private commands, fuzzy search is supported. You can use an asterisk (\\*) as a wildcard. For example, `test*` returns all commands whose descriptions start with `test`, `*test` returns all commands whose descriptions end with `test`, and `*test*` returns all commands whose descriptions contain `test`.
+	// - If the Provider parameter is not specified parameter query private commands, fuzzy match is supported. For example, enter `test*` to search for all commands whose descriptions start with `test`, enter `*test` to search for all commands whose descriptions end with `test`, or enter `*test*` to search for all commands whose descriptions contain `test`.
 	//
 	// example:
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to return only the latest version of public commands. This parameter does not affect private commands.
+	// Specifies whether to query only the latest version of public commands when the query results include public commands. This parameter does not affect the query of private commands.
 	//
-	// - true: returns only the latest version of public commands.
+	// - true: queries only the latest version of public commands.
 	//
-	// - false: returns all versions of public commands.
+	// - false: queries all versions of public commands.
 	//
 	// Default value: false.
 	//
@@ -88,7 +88,7 @@ type DescribeCommandsRequest struct {
 	//
 	// true
 	Latest *bool `json:"Latest,omitempty" xml:"Latest,omitempty"`
-	// The maximum number of entries to return per page.
+	// The maximum number of entries per page for paging queries.
 	//
 	// Maximum value: 50.
 	//
@@ -100,15 +100,15 @@ type DescribeCommandsRequest struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The name of the command.
 	//
-	// - If you specify the `Provider` parameter to query public commands, fuzzy search is supported by default.
+	// - If the Provider parameter is specified parameter query public commands, fuzzy match is supported by default.
 	//
-	// - If you do not specify the `Provider` parameter to query private commands, fuzzy search is supported. You can use an asterisk (\\*) as a wildcard. For example, `command*` returns all commands whose names start with `command`, `*command` returns all commands whose names end with `command`, and `*command*` returns all commands whose names contain `command`.
+	// - If the Provider parameter is not specified parameter query private commands, fuzzy match is supported. For example, enter `command*` to search for all commands whose names start with `command`, enter `*command` to search for all commands whose names end with `command`, or enter `*command*` to search for all commands whose names contain `command`.
 	//
 	// example:
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The pagination token for the next page of results. To retrieve the next page, set this parameter to the `NextToken` value from a previous call.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
@@ -116,35 +116,35 @@ type DescribeCommandsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// > This parameter is being deprecated. We recommend using NextToken and MaxResults for pagination instead.
+	// > This parameter is about to be deprecated. Use NextToken and MaxResults to perform paging queries.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter is being deprecated. We recommend using NextToken and MaxResults for pagination instead.
+	// > This parameter is about to be deprecated. Use NextToken and MaxResults to perform paging queries.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The provider of the public command.
+	// The provider of the public command. Valid values:
 	//
-	// - If you omit this parameter, the operation queries your private commands by default.
+	// - If you do not specify this parameter, all Cloud Assistant commands that you manually created are queried by default.
 	//
-	// - Set this parameter to `AlibabaCloud` to query all public commands from Alibaba Cloud.
+	// - If you set this parameter to `AlibabaCloud`, all public commands provided by Alibaba Cloud are queried.
 	//
-	// - If you set the value to a specific provider, the public commands from that provider are queried. For example:
+	// - If you set this parameter to a specific public command provider, all public commands provided by the provider are queried. Examples:
 	//
-	//   - If you set `Provider` to `AlibabaCloud.ECS.GuestOS`, the public commands provided by AlibabaCloud.ECS.GuestOS are queried.
+	//     - If you set Provider to `AlibabaCloud.ECS.GuestOS`, all public commands provided by `AlibabaCloud.ECS.GuestOS` are queried.
 	//
-	//   - If you set `Provider` to `AlibabaCloud.ECS.GuestOSDiagnose`, the public commands provided by AlibabaCloud.ECS.GuestOSDiagnose are queried.
+	//     - If you set Provider to `AlibabaCloud.ECS.GuestOSDiagnose`, all public commands provided by `AlibabaCloud.ECS.GuestOSDiagnose` are queried.
 	//
 	// example:
 	//
 	// AlibabaCloud
 	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	// The ID of the region. To view the latest list of regions, call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -160,15 +160,15 @@ type DescribeCommandsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags used to filter commands.
+	// The tags.
 	Tag []*DescribeCommandsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The type of the command. Valid values:
 	//
-	// - RunBatScript: A Bat script for Windows instances.
+	// - RunBatScript: Bat script that runs on Windows instances.
 	//
-	// - RunPowerShellScript: A PowerShell script for Windows instances.
+	// - RunPowerShellScript: PowerShell script that runs on Windows instances.
 	//
-	// - RunShellScript: A Shell script for Linux instances.
+	// - RunShellScript: shell script that runs on Linux instances.
 	//
 	// example:
 	//
@@ -360,19 +360,19 @@ func (s *DescribeCommandsRequest) Validate() error {
 }
 
 type DescribeCommandsRequestTag struct {
-	// The key of the tag. You can specify up to 20 tags. The tag key cannot be an empty string.
+	// The tag key of the command. Valid values of N: 1 to 20. The tag key cannot be an empty string.
 	//
-	// A query can return a maximum of 1,000 resources that match the specified tags. If more than 1,000 resources match, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query all matching resources.
+	// If you use a single tag to filter resources, the resource count with the tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count with all the specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, use the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
 	//
-	// The key can be up to 64 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. You can specify up to 20 tags. The tag value can be an empty string.
+	// The tag value of the command. Valid values of N: 1 to 20. The tag value can be an empty string.
 	//
-	// The value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

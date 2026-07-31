@@ -25,19 +25,19 @@ type iCreateDiagnosticReportRequest interface {
 
 type CreateDiagnosticReportRequest struct {
 	AdditionalOptions map[string]*string `json:"AdditionalOptions,omitempty" xml:"AdditionalOptions,omitempty"`
-	// The end time. This parameter applies only to diagnostic metrics that do not require running Cloud Assistant commands in the guest OS.
+	// The end time. Takes effect only for diagnostic metrics that do not require Cloud Assistant commands to be run in the guest OS.
 	//
 	// example:
 	//
 	// 2022-07-11T14:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The diagnostic metric set ID. If this parameter is omitted, the default diagnostic metric set for ECS instances, `dms-instancedefault`, is used.
+	// The diagnostic metric set ID. If left empty, the default diagnostic metric set dms-instancedefault for ECS instances is used.
 	//
 	// example:
 	//
 	// dms-uf6i0tv2refv8wz*****
 	MetricSetId *string `json:"MetricSetId,omitempty" xml:"MetricSetId,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to get the latest list of Alibaba Cloud regions.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -53,7 +53,7 @@ type CreateDiagnosticReportRequest struct {
 	//
 	// i-uf6i0tv2refv8wz*****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The start time. This parameter applies only to diagnostic metrics that do not require running Cloud Assistant commands in the guest OS.
+	// The start time. Takes effect only for diagnostic metrics that do not require Cloud Assistant commands to be run in the guest OS.
 	//
 	// example:
 	//

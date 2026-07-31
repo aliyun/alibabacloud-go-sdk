@@ -36,7 +36,7 @@ type DescribeImageSupportInstanceTypesRequest struct {
 	//
 	// CreateEcs
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	// The list of filter conditions for querying resources.
+	// The list of filter conditions used to query resources.
 	Filter []*DescribeImageSupportInstanceTypesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	// The image ID.
 	//

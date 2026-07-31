@@ -147,7 +147,7 @@ type DescribePriceResponseBodyPriceInfoPrice struct {
 	//
 	// 4368
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	// The hourly price of a reserved instance with the no upfront or partial upfront payment option.
+	// The hourly price of a reserved instance with no upfront or partial upfront payment.
 	//
 	// example:
 	//

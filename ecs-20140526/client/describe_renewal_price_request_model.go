@@ -32,11 +32,11 @@ type iDescribeRenewalPriceRequest interface {
 }
 
 type DescribeRenewalPriceRequest struct {
-	// The unified expiration date. After you specify this parameter, the price for renewing the instance to the unified expiration date is returned. Valid values: 1 to 28.
+	// The unified expiration date. After you specify this parameter, the price for renewing the instance to the unified expiration date is queried. Valid values: 1 to 28.
 	//
-	// For more information about the unified expiration date feature, see [Settings for instance expires](https://help.aliyun.com/document_detail/108486.html).
+	// For more information about the unified expiration date feature, see [Synchronize the expiration dates of instances](https://help.aliyun.com/document_detail/108486.html).
 	//
-	// > The renewal duration parameters (`Period` and `PeriodUnit`) and the unified expiration date parameter (`ExpectedRenewDay`) cannot be set at the same time.
+	// > The renewal duration parameters (Period and PeriodUnit) and the unified expiration date parameter (ExpectedRenewDay) cannot be set at the same time.
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type DescribeRenewalPriceRequest struct {
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The renewal duration. Valid values:
 	//
-	// - When `PriceUnit` is set to `Month`: 1 to 9.
+	// - When PriceUnit is set to Month: 1 to 9.
 	//
-	// - When `PriceUnit` is set to `Year`: 1 to 3.
+	// - When PriceUnit is set to Year: 1 to 3.
 	//
 	// Default value: 1.
 	//
-	// > The renewal duration parameters (`Period` and `PeriodUnit`) and the unified expiration date parameter (`ExpectedRenewDay`) cannot be set at the same time.
+	// > The renewal duration parameters (Period and PeriodUnit) and the unified expiration date parameter (ExpectedRenewDay) cannot be set at the same time.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type DescribeRenewalPriceRequest struct {
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The unit of the renewal duration. Valid values:
 	//
-	// - Month: the renewal duration is measured in months.
+	// - Month: The renewal duration is measured in months.
 	//
-	// - Year: the renewal duration is measured in years.
+	// - Year: The renewal duration is measured in years.
 	//
 	// Default value: Month.
 	//
@@ -78,7 +78,7 @@ type DescribeRenewalPriceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource whose renewal price you want to query. When `ResourceType` is set to `instance`, `ResourceId` is equivalent to `InstanceId`.
+	// The ID of the resource whose renewal price you want to query. When ResourceType is set to instance, ResourceId is equivalent to InstanceId.
 	//
 	// This parameter is required.
 	//

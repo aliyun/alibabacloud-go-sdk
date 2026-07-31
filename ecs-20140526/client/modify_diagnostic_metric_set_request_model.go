@@ -30,9 +30,9 @@ type ModifyDiagnosticMetricSetRequest struct {
 	//
 	// 远程连接诊断
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The IDs of diagnostic metrics.
+	// The list of diagnostic metrics.
 	MetricIds []*string `json:"MetricIds,omitempty" xml:"MetricIds,omitempty" type:"Repeated"`
-	// The IDs of the diagnostic metric sets.
+	// The ID of the diagnostic metric set.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type ModifyDiagnosticMetricSetRequest struct {
 	//
 	// remoteConnectError
 	MetricSetName *string `json:"MetricSetName,omitempty" xml:"MetricSetName,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

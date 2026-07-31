@@ -14,7 +14,6 @@ type iModifyPhysicalConnectionAttributeResponseBody interface {
 }
 
 type ModifyPhysicalConnectionAttributeResponseBody struct {
-	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

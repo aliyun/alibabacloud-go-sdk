@@ -21,19 +21,19 @@ type iRunInstancesResponseBody interface {
 
 type RunInstancesResponseBody struct {
 	InstanceIdSets *RunInstancesResponseBodyInstanceIdSets `json:"InstanceIdSets,omitempty" xml:"InstanceIdSets,omitempty" type:"Struct"`
-	// The ID of the order. This parameter is returned only when `InstanceChargeType` is set to PrePaid.
+	// The order ID. This parameter is returned only when you create subscription ECS instances (request parameter `InstanceChargeType=PrePaid`).
 	//
 	// example:
 	//
 	// 123456****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The transaction price.
+	// The transaction price of the order.
 	//
 	// example:
 	//

@@ -28,9 +28,9 @@ type iUnassignPrivateIpAddressesRequest interface {
 }
 
 type UnassignPrivateIpAddressesRequest struct {
-	// The IPv4 prefixes to unassign.
+	// One or more IPv4 prefixes to remove.
 	Ipv4Prefix []*string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty" type:"Repeated"`
-	// The ID of the ENI.
+	// The ID of the Elastic Network Interface (ENI).
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,13 @@ type UnassignPrivateIpAddressesRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The secondary private IP addresses to unassign.
+	// One or more secondary private IP addresses to remove.
 	//
 	// example:
 	//
 	// ``192.168.**.**``
 	PrivateIpAddress []*string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty" type:"Repeated"`
-	// The region ID of the ENI. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the resource. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

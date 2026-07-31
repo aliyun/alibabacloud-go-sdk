@@ -68,17 +68,17 @@ type ImportImageRequest struct {
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
 	// The boot mode of the image. Valid values:
 	//
-	// - BIOS: BIOS boot mode.
+	// - BIOS: Basic Input/Output System (BIOS) boot mode.
 	//
-	// - UEFI: UEFI boot mode.
+	// - UEFI: Unified Extensible Firmware Interface (UEFI) boot mode.
 	//
-	// Default value: BIOS. If `Architecture=arm64`, the default value is UEFI, and only UEFI is supported.
+	// Default value: BIOS. If `Architecture=arm64`, the default value is UEFI, and only UEFI can be specified.
 	//
 	// <notice>
 	//
-	// To prevent instances from failing to start due to an unsupported boot mode, make sure that you understand the boot mode supported by the target image before you set this parameter. For more information about image boot modes, see [Image boot modes](~~2244655#b9caa9b8bb1wf~~).
+	// To prevent instances from failing to start due to an unsupported boot mode, make sure that you understand the boot mode supported by the target image before you specify this parameter. For more information about image boot modes, see [Image boot modes](~~2244655#b9caa9b8bb1wf~~).
 	//
-	// </notice>.
+	// </notice>
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type ImportImageRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The image detection strategy. If this parameter is not specified, detection is not triggered. Only the Standard detection mode is supported.
 	//
-	// > Most Linux and Windows versions are supported. For more information about image detection items and operating system limitations, see [Image detection overview](https://help.aliyun.com/document_detail/439819.html) and [Operating system limitations for image detection](https://help.aliyun.com/document_detail/475800.html).
+	// >Most Linux/Windows versions are supported. For more information about image detection items and operating system limitations, see [Overview of image detection](https://help.aliyun.com/document_detail/439819.html) and [Operating system limitations for image detection](https://help.aliyun.com/document_detail/475800.html).
 	//
 	// example:
 	//
@@ -108,9 +108,9 @@ type ImportImageRequest struct {
 	DiskDeviceMapping []*ImportImageRequestDiskDeviceMapping `json:"DiskDeviceMapping,omitempty" xml:"DiskDeviceMapping,omitempty" type:"Repeated"`
 	// Specifies whether to perform only a dry run. Valid values:
 	//
-	// - true: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized RAM users, and missing parameter values. If the request fails the dry run, the corresponding error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - true: performs only a dry run. The system checks the request for potential issues, including the AccessKey validity, the authorization of the Resource Access Management (RAM) user, and required parameters. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
 	//
-	// - false: performs a dry run and sends the request. If the request passes the dry run, a 2XX HTTP status code is returned and the resource status is queried.
+	// - false: performs a dry run and sends the Normal request. If the check succeeds, a 2XX HTTP status code is returned and the operation is performed.
 	//
 	// Default value: false.
 	//
@@ -120,15 +120,15 @@ type ImportImageRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The image feature-related properties.
 	Features *ImportImageRequestFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Struct"`
-	// The name of the image. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`. It can contain digits, periods (.), colons (:), underscores (_), or hyphens (-).
+	// The image name. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`. It can contain digits, periods (.), colons (:), underscores (_), or hyphens (-).
 	//
 	// example:
 	//
 	// ImageTestName
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The license type. This parameter specifies the authorization mode when instances are created by calling [RunInstances](https://help.aliyun.com/document_detail/2679677.html) with the image. This value takes effect only for Windows Server images. Valid values:
+	// The license type. This parameter specifies the authorization mode when instances are created by calling [RunInstances](https://help.aliyun.com/document_detail/2679677.html) with this image. This value takes effect only for Windows Server images. Valid values:
 	//
-	// - Aliyun: Use the Alibaba Cloud official license. After the instance starts, the system attempts to automatically connect to the Alibaba Cloud KMS server for activation. The billing for the instance includes the Windows Server license fee.
+	// - Aliyun: Uses the Alibaba Cloud official license. After the instance starts, the system attempts to automatically connect to the Alibaba Cloud KMS server for activation. The billing for the instance includes the Windows Server license fee.
 	//
 	// - BYOL: Bring Your Own License. After the instance starts, Alibaba Cloud does not automatically activate it. You must manually activate it by using your own valid license key. The billing for the instance does not include the Windows Server license fee.
 	//
@@ -151,7 +151,7 @@ type ImportImageRequest struct {
 	// linux
 	OSType  *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The operating system version. Valid values:
+	// The operating system distribution. Valid values:
 	//
 	// - Aliyun
 	//
@@ -235,17 +235,17 @@ type ImportImageRequest struct {
 	//
 	// AliyunECSImageImportDefaultRole
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the CloudBox, which is used to uniquely identify the cloud storage location.
+	// The Alibaba Cloud Resource Name (ARN) of the CloudBox, which uniquely identifies the cloud storage location.
 	//
-	// > You need to specify this parameter only when you import an image file from OSS on CloudBox. If you do not use OSS on CloudBox, do not set this parameter. For more information, see [What is OSS on CloudBox](https://help.aliyun.com/document_detail/430190.html).
+	// >You need to specify this parameter only when you import an image file from OSS on CloudBox. If you are not using OSS on CloudBox, do not set this parameter. For more information, see [What is OSS on CloudBox](https://help.aliyun.com/document_detail/430190.html).
 	//
-	// The ARN must follow this format: `arn:acs:cloudbox:{RegionId}:{AliUid}:cloudbox/{CloudBoxId}`, where `{RegionId}` is the region ID of the CloudBox, `{AliUid}` is the Alibaba Cloud account ID, and `{CloudBoxId}` is the CloudBox ID.
+	// The correct ARN format is: `arn:acs:cloudbox:{RegionId}:{AliUid}:cloudbox/{CloudBoxId}`, where `{RegionId}` is the region ID where the CloudBox resides, `{AliUid}` is the Alibaba Cloud account ID, and `{CloudBoxId}` is the CloudBox ID.
 	//
 	// example:
 	//
 	// arn:acs:cloudbox:cn-hangzhou:123456:cloudbox/cb-xx***123
 	StorageLocationArn *string `json:"StorageLocationArn,omitempty" xml:"StorageLocationArn,omitempty"`
-	// The tags of the image.
+	// The tag list of the image.
 	Tag []*ImportImageRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -467,7 +467,7 @@ func (s *ImportImageRequest) Validate() error {
 type ImportImageRequestDiskDeviceMapping struct {
 	// The device name of DiskDeviceMapping.N.Device in the custom image.
 	//
-	// > This parameter will be deprecated. For better compatibility, do not use this parameter.
+	// > This parameter will be deprecated. For better code compatibility, do not use this parameter.
 	//
 	// example:
 	//
@@ -475,27 +475,27 @@ type ImportImageRequestDiskDeviceMapping struct {
 	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
 	// The size of the custom image. Unit: GiB.
 	//
-	// The size includes the system disk and data disks. Make sure that the system disk space is greater than or equal to the size of the imported image file. Valid values:
+	// The space consists of the system disk and data disks. Make sure that the system disk space is greater than or equal to the size of the imported image file. Valid values:
 	//
-	// - When N is 1, the value specifies the system disk size. Valid values: 1 to 2048.
+	// - When N=1, the value indicates the system disk. Valid values: 1 GiB to 2048 GiB.
 	//
-	// - When N is 2 to 17, the value specifies the data disk size. Valid values: 1 to 2048.
+	// - When N=2 to 17, the value indicates a data disk. Valid values: 1 GiB to 2048 GiB.
 	//
 	// After you upload the source image file to OSS, you can view the image file size in the OSS bucket.
 	//
-	// > This parameter will be deprecated. For better compatibility, use `DiskDeviceMapping.N.DiskImageSize`.
+	// >This parameter will be deprecated. For better compatibility, use `DiskDeviceMapping.N.DiskImageSize` instead.
 	//
 	// example:
 	//
 	// 80
 	DiskImSize *int32 `json:"DiskImSize,omitempty" xml:"DiskImSize,omitempty"`
-	// The size of the custom image after the image is imported.
+	// The space size of the custom image after the image is imported.
 	//
-	// The size includes the system disk and data disks. Make sure that the system disk space is greater than or equal to the size of the imported image file. Valid values:
+	// The space consists of the system disk and data disks. Make sure that the system disk space is greater than or equal to the size of the imported image file. Valid values:
 	//
-	// - When N is 1, the value specifies the system disk size. Valid values: 1 to 2048. Unit: GiB.
+	// - When N=1, the value indicates the system disk. Valid values: 1 GiB to 2048 GiB.
 	//
-	// - When N is 2 to 17, the value specifies the data disk size. Valid values: 1 to 2048. Unit: GiB.
+	// - When N=2 to 17, the value indicates a data disk. Valid values: 1 GiB to 2048 GiB.
 	//
 	// After you upload the source image file to OSS, you can view the image file size in the OSS bucket.
 	//
@@ -513,7 +513,7 @@ type ImportImageRequestDiskDeviceMapping struct {
 	//
 	// - VMDK (in invitational preview).
 	//
-	// Default value: null, which indicates that Alibaba Cloud automatically detects the image format. The detected format prevails.
+	// Default value: empty, which indicates that Alibaba Cloud automatically detects the image format and uses the detected format.
 	//
 	// example:
 	//
@@ -521,13 +521,13 @@ type ImportImageRequestDiskDeviceMapping struct {
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
 	// The OSS bucket where the image file is stored.
 	//
-	// > Before you import an image to this OSS bucket for the first time, add the RAM authorization policy as described in the **Operation description*	- section of this topic. Otherwise, the `NoSetRoletoECSServiceAccount` error is returned.
+	// > Before importing an image to this OSS bucket for the first time, add the RAM authorization policy as described in the **Operation description*	- section of this topic. Otherwise, the `NoSetRoletoECSServiceAccount` error is reported.
 	//
 	// example:
 	//
 	// ecsimageos
 	OSSBucket *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
-	// The file name (key) of the image file stored in the OSS bucket after the image is uploaded to OSS.
+	// The name (key) of the image file stored in the OSS bucket after the image is uploaded to OSS.
 	//
 	// example:
 	//
@@ -604,9 +604,9 @@ func (s *ImportImageRequestDiskDeviceMapping) Validate() error {
 type ImportImageRequestFeatures struct {
 	// The metadata access mode of the image. Valid values:
 	//
-	// - v1: When you create an ECS instance from this image, you cannot set the metadata access mode to hardened mode only.
+	// - v1: When you create an ECS instance from this image, you cannot set the metadata access mode to "hardened mode only".
 	//
-	// - v2: When you create an ECS instance from this image, you can set the metadata access mode to hardened mode only.
+	// - v2: When you create an ECS instance from this image, you can set the metadata access mode to "hardened mode only".
 	//
 	// Default value: v1.
 	//
@@ -614,11 +614,15 @@ type ImportImageRequestFeatures struct {
 	//
 	// v2
 	ImdsSupport *string `json:"ImdsSupport,omitempty" xml:"ImdsSupport,omitempty"`
-	// Specifies whether the image supports NVMe. Valid values:
+	// Specifies whether the image supports NVMe.
 	//
-	//  - supported: Instances created from this image support NVMe.
+	// - supported: The image has the NVMe driver installed.
 	//
-	//  - unsupported: Instances created from this image do not support NVMe.
+	// - unsupported: The image does not have the NVMe driver installed.
+	//
+	// - If this parameter is not specified or the value is empty, the default value is unsupported.
+	//
+	// > By default, imported images are considered as not supporting the NVMe protocol. If you plan to run the image on instance types that support NVMe (such as c8i and r9i), make sure that the image has a built-in NVMe driver and explicitly set this parameter to supported.
 	//
 	// example:
 	//
@@ -657,13 +661,13 @@ func (s *ImportImageRequestFeatures) Validate() error {
 }
 
 type ImportImageRequestTag struct {
-	// The key of the image tag. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag key of the image. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the image tag. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value of the image. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

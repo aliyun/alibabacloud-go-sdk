@@ -29,11 +29,13 @@ type iDeleteImageRequest interface {
 
 type DeleteImageRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether to forcibly delete the custom image. Valid values:
+	// Specifies whether to force delete the custom image. Valid values:
 	//
-	// - true: Forcibly deletes the custom image, ignoring whether the image is currently used by other instances.
 	//
-	// - false: Normally deletes the custom image. Before deletion, the system checks whether the image is currently used by other instances.
+	//
+	// - true: Force deletes the custom image, regardless of whether the image is being used by other instances.
+	//
+	// - false: Deletes the custom image only after checking that the image is not being used by other instances.
 	//
 	// Default value: false.
 	//
@@ -41,7 +43,7 @@ type DeleteImageRequest struct {
 	//
 	// false
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
-	// The image ID. If the specified custom image does not exist, the request will be ignored.
+	// The image ID. If the specified custom image does not exist, the request is ignored.
 	//
 	// This parameter is required.
 	//

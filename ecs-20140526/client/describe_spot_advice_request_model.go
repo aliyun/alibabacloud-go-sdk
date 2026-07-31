@@ -42,13 +42,13 @@ type iDescribeSpotAdviceRequest interface {
 }
 
 type DescribeSpotAdviceRequest struct {
-	// The number of vCPUs of the instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+	// The number of vCPUs of the instance type. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html).
 	//
 	// example:
 	//
 	// 2
 	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	// The number of GPUs that a GPU-accelerated instance has. For information about the valid values, see [GPU-accelerated compute optimized instance types](https://help.aliyun.com/document_detail/108496.html).
+	// The number of GPUs of the GPU-accelerated instance. For more information, see [Overview of GPU-accelerated instances](https://help.aliyun.com/document_detail/108496.html).
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type DescribeSpotAdviceRequest struct {
 	//
 	// - NVIDIA V100
 	//
-	// This parameter is left empty by default, which indicates that all GPU types are queried. For more information, see [GPU-accelerated compute-optimized and vGPU-accelerated instance families](https://help.aliyun.com/document_detail/108496.html).
+	// Default value: null, which indicates that all types are queried. For more information, see [Overview of GPU-accelerated instances](https://help.aliyun.com/document_detail/108496.html).
 	//
 	// example:
 	//
@@ -72,43 +72,43 @@ type DescribeSpotAdviceRequest struct {
 	GpuSpec *string `json:"GpuSpec,omitempty" xml:"GpuSpec,omitempty"`
 	// The level of the instance family. Valid values:
 	//
-	// - EntryLevel.
+	// - EntryLevel: entry level.
 	//
-	// - EnterpriseLevel.
+	// - EnterpriseLevel: enterprise level.
 	//
-	// - CreditEntryLevel. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
+	// - CreditEntryLevel: credit-based entry level. For more information, see [Burstable instances](https://help.aliyun.com/document_detail/59977.html).
 	//
-	// This parameter is left empty by default, which indicates that instance families at all levels are queried.
+	// Default value: null, which indicates that all levels are queried.
 	//
 	// example:
 	//
 	// EntryLevel
 	InstanceFamilyLevel *string `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
-	// The instance family. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+	// The instance family. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html).
 	//
 	// example:
 	//
 	// ecs.c5
 	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
-	// The instance types. You can specify up to 10 instance types.
+	// The list of instance types. You can specify up to 10 instance types.
 	//
 	// example:
 	//
 	// ecs.c5.large
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
-	// The memory size of the instance type. Unit: GiB. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+	// The memory size of the instance type. Unit: GiB. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html).
 	//
 	// example:
 	//
 	// 8.0
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The minimum number of vCPUs of the instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+	// The minimum number of vCPUs of the instance type. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html).
 	//
 	// example:
 	//
 	// 2
 	MinCores *int32 `json:"MinCores,omitempty" xml:"MinCores,omitempty"`
-	// The minimum memory size of the instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+	// The minimum memory size of the instance type. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html).
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type DescribeSpotAdviceRequest struct {
 	MinMemory    *float32 `json:"MinMemory,omitempty" xml:"MinMemory,omitempty"`
 	OwnerAccount *string  `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -128,7 +128,7 @@ type DescribeSpotAdviceRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The zone ID.
 	//
-	// This parameter is left empty by default, which indicates that all zones in the specified region are queried.
+	// Default value: null, which indicates that all zones in the specified region are queried.
 	//
 	// example:
 	//

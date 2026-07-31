@@ -18,14 +18,14 @@ type iDescribePrefixListAssociationsResponseBody interface {
 }
 
 type DescribePrefixListAssociationsResponseBody struct {
-	// The query token that is returned in this call. If the return value is empty, no more data is returned.
+	// The pagination token returned in this call. If the return value is empty, no more data is available.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2****
 	NextToken              *string                                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	PrefixListAssociations *DescribePrefixListAssociationsResponseBodyPrefixListAssociations `json:"PrefixListAssociations,omitempty" xml:"PrefixListAssociations,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

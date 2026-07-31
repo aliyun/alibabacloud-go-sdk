@@ -19,15 +19,15 @@ type iAllocateDedicatedHostsResponseBody interface {
 
 type AllocateDedicatedHostsResponseBody struct {
 	DedicatedHostIdSets *AllocateDedicatedHostsResponseBodyDedicatedHostIdSets `json:"DedicatedHostIdSets,omitempty" xml:"DedicatedHostIdSets,omitempty" type:"Struct"`
-	// The ID of the order.
+	// The order ID.
 	//
-	// > This parameter has a return value only when the dedicated host is a subscription one (request parameter **ChargeType set to PrePaid**).
+	// > This parameter is returned only when you create subscription dedicated hosts (the request parameter **ChargeType=PrePaid**).
 	//
 	// example:
 	//
 	// 23841229****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -27,7 +27,7 @@ type iModifyInstanceAttachmentAttributesRequest interface {
 
 type ModifyInstanceAttachmentAttributesRequest struct {
 	PrivatePoolOptions *ModifyInstanceAttachmentAttributesRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
-	// The ID of the instance for which you want to modify the attributes of the private pool.
+	// The instance ID of the instance for which you want to modify the private pool matching property.
 	//
 	// This parameter is required.
 	//
@@ -37,7 +37,7 @@ type ModifyInstanceAttachmentAttributesRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the private pool. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the private pool. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -130,23 +130,23 @@ func (s *ModifyInstanceAttachmentAttributesRequest) Validate() error {
 }
 
 type ModifyInstanceAttachmentAttributesRequestPrivatePoolOptions struct {
-	// The ID of the private pool. Set the value to the ID of the elasticity assurance or capacity reservation that generates the private pool.
+	// The private pool ID, which is the elasticity assurance ID or capacity reservation ID.
 	//
-	// - This parameter is required when `PrivatePoolOptions.MatchCriteria` is set to `Target`.
+	// - This parameter is required when PrivatePoolOptions.MatchCriteria is set to `Target`.
 	//
-	// - This parameter must be empty when `PrivatePoolOptions.MatchCriteria` is set to `Open` or `None`.
+	// - Leave this parameter empty when PrivatePoolOptions.MatchCriteria is set to `Open` or `None`.
 	//
 	// example:
 	//
 	// eap-bp67acfmxazb4****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The new type of private pool. Valid values:
+	// The private pool matching mode of the instance. Valid values:
 	//
-	// - Open: open private pool. The system matches the instance with an open private pool. If no matching open private pools exist, the system uses resources in the public pool to start the instance.
+	// - Open: open mode. The system automatically matches the instance with an open private pool. If no matching private pool capacity is available, public pool resources are used to launch the instance.
 	//
-	// - Target: specified private pool. The system uses the capacity in a specified private pool to start the instance. If the specified private pool is unavailable, the instance cannot be started. You must use `PrivatePoolOptions.Id` to specify the ID of a private pool.
+	// - Target: targeted mode. The instance is launched by using the capacity of the specified private pool. If the specified private pool capacity is unavailable, the instance fails to be launched. If you set this parameter to Target, you must also specify the PrivatePoolOptions.Id parameter to specify the private pool ID.
 	//
-	// - None: no private pool. The capacity in private pools is not used to start the instance.
+	// - None: none. The instance is launched normally without using a private pool.
 	//
 	// This parameter is required.
 	//

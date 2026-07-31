@@ -22,7 +22,7 @@ type iCreateKeyPairResponseBody interface {
 }
 
 type CreateKeyPairResponseBody struct {
-	// The fingerprint of the key pair. The public key fingerprint format is defined by RFC 4716 and uses the MD5 message digest algorithm. For more information, see [RFC 4716](https://tools.ietf.org/html/rfc4716).
+	// The fingerprint of the key pair. The fingerprint uses the MD5 message-digest algorithm based on the public key fingerprint format defined in RFC 4716. For more information, see [RFC4716](https://tools.ietf.org/html/rfc4716).
 	//
 	// example:
 	//

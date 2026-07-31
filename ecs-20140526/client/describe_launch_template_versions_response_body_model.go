@@ -29,7 +29,7 @@ type DescribeLaunchTemplateVersionsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Settings this parameter for paging.
+	// The number of entries per page when paging is used.
 	//
 	// example:
 	//

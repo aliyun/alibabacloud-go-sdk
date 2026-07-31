@@ -16,7 +16,7 @@ type iModifyReservedInstancesResponseBody interface {
 }
 
 type ModifyReservedInstancesResponseBody struct {
-	// Details about the reserved instance.
+	// The request ID.
 	//
 	// example:
 	//

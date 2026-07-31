@@ -42,43 +42,43 @@ type iModifyAutoProvisioningGroupRequest interface {
 }
 
 type ModifyAutoProvisioningGroupRequest struct {
-	// The auto-provisioning group ID.
+	// The ID of the auto provisioning group.
 	//
 	// example:
 	//
 	// apg-bp67acfmxazb4ph****
 	AutoProvisioningGroupId *string `json:"AutoProvisioningGroupId,omitempty" xml:"AutoProvisioningGroupId,omitempty"`
-	// The name of the auto-provisioning group. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http\\:// or https\\://.[ It can contain letters, digits, colons (:), underscores (_), and hyphens (-).](http://https://%E3%80%82%E3%80%81%EF%BC%88:%EF%BC%89%E3%80%81%EF%BC%88_%EF%BC%89%EF%BC%88-%EF%BC%89%E3%80%82)
+	// The name of the auto provisioning group. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with http:// or https://. The name can contain digits, colons (:), underscores (_), or hyphens (-).
 	//
 	// example:
 	//
 	// apg-test
 	AutoProvisioningGroupName *string `json:"AutoProvisioningGroupName,omitempty" xml:"AutoProvisioningGroupName,omitempty"`
-	// The type of supplemental instances. When the sum of the PayAsYouGoTargetCapacity and SpotTargetCapacity values is smaller than the TotalTargetCapacity value, the auto-provisioning group creates instances of the specified type to meet the target capacity. Valid values:
+	// The billing method of the capacity difference when the sum of PayAsYouGoTargetCapacity and SpotTargetCapacity is less than TotalTargetCapacity. Valid values:
 	//
-	// - PayAsYouGo: pay-as-you-go instances
+	// - PayAsYouGo: pay-as-you-go instance.
 	//
-	// - Spot: spot instances
+	// - Spot: spot instance.
 	//
 	// example:
 	//
 	// Spot
 	DefaultTargetCapacityType *string `json:"DefaultTargetCapacityType,omitempty" xml:"DefaultTargetCapacityType,omitempty"`
-	// Specifies whether to release the removed instances when the real-time capacity of the auto-provisioning group exceeds the target capacity and a scale-in event is triggered. Valid values:
+	// Specifies whether to release instances when the real-time capacity of the auto provisioning group exceeds the target capacity and a scale-in event is triggered. Valid values:
 	//
-	// - termination: releases the removed instances.
+	// - termination: Releases the scaled-in instances.
 	//
-	// - no-termination: removes the instances from the auto-provisioning group but does not release them.
+	// - no-termination: Only removes the scaled-in instances from the auto provisioning group.
 	//
 	// example:
 	//
 	// no-termination
 	ExcessCapacityTerminationPolicy *string `json:"ExcessCapacityTerminationPolicy,omitempty" xml:"ExcessCapacityTerminationPolicy,omitempty"`
-	// The extended configurations of the launch template.
+	// The extended launch template list.
 	LaunchTemplateConfig []*ModifyAutoProvisioningGroupRequestLaunchTemplateConfig `json:"LaunchTemplateConfig,omitempty" xml:"LaunchTemplateConfig,omitempty" type:"Repeated"`
-	// The maximum price of spot instances in the auto-provisioning group.
+	// The maximum price of spot instances in the auto provisioning group.
 	//
-	// > When both the MaxSpotPrice and LaunchTemplateConfig.N.MaxPrice parameters are specified, the smaller one of the two parameter values is used. The LaunchTemplateConfig.N.MaxPrice parameter is specified when the auto-provisioning group is created, and cannot be modified.
+	// > If both MaxSpotPrice and LaunchTemplateConfig.N.MaxPrice are specified, the lower value is used. LaunchTemplateConfig.N.MaxPrice is specified in Settings when the auto provisioning group is created and cannot be modified.
 	//
 	// example:
 	//
@@ -86,13 +86,13 @@ type ModifyAutoProvisioningGroupRequest struct {
 	MaxSpotPrice *float32 `json:"MaxSpotPrice,omitempty" xml:"MaxSpotPrice,omitempty"`
 	OwnerAccount *string  `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The target capacity of pay-as-you-go instances in the auto-provisioning group. Valid values: Set this parameter to a value smaller than the TotalTargetCapacity value.
+	// The target capacity of pay-as-you-go instances in the auto provisioning group. Valid values: less than the parameter value of TotalTargetCapacity.
 	//
 	// example:
 	//
 	// 30
 	PayAsYouGoTargetCapacity *string `json:"PayAsYouGoTargetCapacity,omitempty" xml:"PayAsYouGoTargetCapacity,omitempty"`
-	// The region ID of the auto-provisioning group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the auto provisioning group. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -102,25 +102,25 @@ type ModifyAutoProvisioningGroupRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The target capacity of spot instances in the auto-provisioning group. Valid values: Set this parameter to a value smaller than the TotalTargetCapacity value.
+	// The target capacity of spot instances in the auto provisioning group. Valid values: less than the parameter value of TotalTargetCapacity.
 	//
 	// example:
 	//
 	// 30
 	SpotTargetCapacity *string `json:"SpotTargetCapacity,omitempty" xml:"SpotTargetCapacity,omitempty"`
-	// Specifies whether to release instances that are located in the auto-provisioning group after the group expires. Valid values:
+	// Specifies whether to release instances in the auto provisioning group when the group expires. Valid values:
 	//
-	// - true: releases instances that are located in the auto-provisioning group.
+	// - true: Releases the instances in the group.
 	//
-	// - false: removes instances from the auto-provisioning group but does not release them.
+	// - false: Only removes the instances from the auto provisioning group.
 	//
 	// example:
 	//
 	// false
 	TerminateInstancesWithExpiration *bool `json:"TerminateInstancesWithExpiration,omitempty" xml:"TerminateInstancesWithExpiration,omitempty"`
-	// The total target capacity of the auto-provisioning group. The value must be a positive integer.
+	// The total target capacity of the auto provisioning group. Valid values: positive integers.
 	//
-	// The total target capacity of the auto-provisioning group must be greater than or equal to the sum of the target capacity of pay-as-you-go instances specified by the PayAsYouGoTargetCapacity parameter as well as the target capacity of spot instances specified by the SpotTargetCapacity parameter.
+	// The total capacity must be greater than or equal to the sum of PayAsYouGoTargetCapacity (the target capacity of pay-as-you-go instances) and SpotTargetCapacity (the target capacity of spot instances).
 	//
 	// example:
 	//
@@ -285,37 +285,37 @@ func (s *ModifyAutoProvisioningGroupRequest) Validate() error {
 }
 
 type ModifyAutoProvisioningGroupRequestLaunchTemplateConfig struct {
-	// The instance type in extended configuration N. Valid values of N: 1 to 20. For more information about the valid values of this parameter, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+	// The instance type specified in the extension launch template. Valid values of N: 1 to 20. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html).
 	//
 	// example:
 	//
 	// ecs.g5.large
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The maximum price of spot instances in extended configuration N.
+	// The maximum price of the spot instance in the extended launch template.
 	//
 	// example:
 	//
 	// 3
 	MaxPrice *float64 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
-	// The priority of extended configuration N. A value of 0 indicates the highest priority. The value must be greater than 0.
+	// The priority of the extended launch template. A value of 0 indicates the highest priority. Valid values: greater than 0.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the vSwitch in extended configuration N. The zone of the instances created from the extended configuration is determined by the vSwitch.
+	// The ID of the vSwitch to which the ECS instance belongs in the extended launch template. The zone of the ECS instance launched from the extended template is determined by the vSwitch.
 	//
 	// example:
 	//
 	// vsw-sn5bsitu4lfzgc5o7****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The weight of the instance type specified in the extended configuration. A greater weight indicates that a single instance has more computing power and fewer instances are required. The value must be greater than 0.
+	// The weight of the instance type specified in the extended launch template. A higher value indicates that a single instance can meet more computing requirements, which means fewer instances are required. Valid values: greater than 0.
 	//
-	// The weight is calculated based on the computing power of the instance type and the minimum computing power of a single instance in the cluster that can created by the auto-provisioning group. For example, assume that the minimum computing power of a single instance is 8 vCPUs and 60 GiB of memory.
+	// You can calculate the weight based on the computing power of the specified instance type and the minimum computing power of a single node in the cluster. For example, if the minimum computing power of a single node is 8 vCPUs and 60 GiB:
 	//
-	// - For an instance type with 8 vCPUs and 60 GiB of memory, you can set the weight to 1.
+	// - The weight of an instance type with 8 vCPUs and 60 GiB can be set to 1.
 	//
-	// - For an instance type with 16 vCPUs and 120 GiB of memory, you can set the weight to 2.
+	// - The weight of an instance type with 16 vCPUs and 120 GiB can be set to 2.
 	//
 	// example:
 	//

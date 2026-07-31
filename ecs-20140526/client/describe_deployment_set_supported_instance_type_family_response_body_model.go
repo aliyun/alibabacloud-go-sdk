@@ -16,7 +16,7 @@ type iDescribeDeploymentSetSupportedInstanceTypeFamilyResponseBody interface {
 }
 
 type DescribeDeploymentSetSupportedInstanceTypeFamilyResponseBody struct {
-	// The instance families that support the deployment strategy.
+	// The instance families that support the specified deployment set strategy.
 	//
 	// example:
 	//

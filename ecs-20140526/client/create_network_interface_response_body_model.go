@@ -56,50 +56,46 @@ type iCreateNetworkInterfaceResponseBody interface {
 }
 
 type CreateNetworkInterfaceResponseBody struct {
-	// The description of the elastic network interface.
+	// The description of the network interface controller (NIC).
 	//
 	// example:
 	//
 	// testDescription
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The IPv4 prefixes that are assigned to the elastic network interface.
+	Description    *string                                           `json:"Description,omitempty" xml:"Description,omitempty"`
 	Ipv4PrefixSets *CreateNetworkInterfaceResponseBodyIpv4PrefixSets `json:"Ipv4PrefixSets,omitempty" xml:"Ipv4PrefixSets,omitempty" type:"Struct"`
-	// The IPv6 prefixes that are assigned to the elastic network interface.
 	Ipv6PrefixSets *CreateNetworkInterfaceResponseBodyIpv6PrefixSets `json:"Ipv6PrefixSets,omitempty" xml:"Ipv6PrefixSets,omitempty" type:"Struct"`
-	// The IPv6 addresses that are assigned to the elastic network interface.
-	Ipv6Sets *CreateNetworkInterfaceResponseBodyIpv6Sets `json:"Ipv6Sets,omitempty" xml:"Ipv6Sets,omitempty" type:"Struct"`
-	// The MAC address of the elastic network interface.
+	Ipv6Sets       *CreateNetworkInterfaceResponseBodyIpv6Sets       `json:"Ipv6Sets,omitempty" xml:"Ipv6Sets,omitempty" type:"Struct"`
+	// The MAC address of the network interface controller (NIC).
 	//
 	// example:
 	//
 	// 00:16:3e:12:**:**
 	MacAddress *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
-	// The ID of the elastic network interface.
+	// The ID of the network interface controller (NIC).
 	//
 	// example:
 	//
 	// eni-bp14v2sdd3v8htln****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The name of the elastic network interface.
+	// The name of the network interface controller (NIC).
 	//
 	// example:
 	//
 	// my-eni-name
 	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
-	// The ID of the account that owns the elastic network interface.
+	// The ID of the account that owns the network interface controller (NIC).
 	//
 	// example:
 	//
 	// 123456****
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The primary private IP address of the elastic network interface.
+	// The private IP address of the network interface controller (NIC).
 	//
 	// example:
 	//
 	// ``172.17.**.**``
-	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The private IP addresses that are assigned to the elastic network interface.
-	PrivateIpSets *CreateNetworkInterfaceResponseBodyPrivateIpSets `json:"PrivateIpSets,omitempty" xml:"PrivateIpSets,omitempty" type:"Struct"`
+	PrivateIpAddress *string                                          `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	PrivateIpSets    *CreateNetworkInterfaceResponseBodyPrivateIpSets `json:"PrivateIpSets,omitempty" xml:"PrivateIpSets,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
@@ -111,16 +107,15 @@ type CreateNetworkInterfaceResponseBody struct {
 	// example:
 	//
 	// rg-2ze88m67qx5z****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The IDs of the security groups to which the elastic network interface belongs.
+	ResourceGroupId  *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SecurityGroupIds *CreateNetworkInterfaceResponseBodySecurityGroupIds `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
-	// The ID of the distributor for the elastic network interface.
+	// The Virtual Network Operator (VNO) ID associated with the network interface controller (NIC).
 	//
 	// example:
 	//
 	// 12345678910
 	ServiceID *int64 `json:"ServiceID,omitempty" xml:"ServiceID,omitempty"`
-	// Specifies whether the elastic network interface is managed by a cloud service or a distributor.
+	// Indicates whether the user of the network interface controller (NIC) is an Alibaba Cloud service or a VNO.
 	//
 	// example:
 	//
@@ -132,33 +127,32 @@ type CreateNetworkInterfaceResponseBody struct {
 	//
 	// false
 	SourceDestCheck *bool `json:"SourceDestCheck,omitempty" xml:"SourceDestCheck,omitempty"`
-	// The status of the elastic network interface.
+	// The status of the network interface controller (NIC).
 	//
 	// example:
 	//
 	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the elastic network interface.
-	Tags *CreateNetworkInterfaceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The type of the elastic network interface.
+	Status *string                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   *CreateNetworkInterfaceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The type of the network interface controller (NIC).
 	//
 	// example:
 	//
 	// Secondary
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the vSwitch.
+	// The ID of the vSwitch in the VPC.
 	//
 	// example:
 	//
 	// vsw-bp16usj2p27htro3****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC to which the elastic network interface belongs.
+	// The ID of the VPC to which the ENI belongs.
 	//
 	// example:
 	//
 	// vpc-bp1j7w3gc1cexjqd****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the zone.
+	// The zone ID.
 	//
 	// example:
 	//
@@ -560,6 +554,7 @@ func (s *CreateNetworkInterfaceResponseBodyIpv6Sets) Validate() error {
 
 type CreateNetworkInterfaceResponseBodyIpv6SetsIpv6Set struct {
 	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
+	Primary     *bool   `json:"Primary,omitempty" xml:"Primary,omitempty"`
 }
 
 func (s CreateNetworkInterfaceResponseBodyIpv6SetsIpv6Set) String() string {
@@ -574,8 +569,17 @@ func (s *CreateNetworkInterfaceResponseBodyIpv6SetsIpv6Set) GetIpv6Address() *st
 	return s.Ipv6Address
 }
 
+func (s *CreateNetworkInterfaceResponseBodyIpv6SetsIpv6Set) GetPrimary() *bool {
+	return s.Primary
+}
+
 func (s *CreateNetworkInterfaceResponseBodyIpv6SetsIpv6Set) SetIpv6Address(v string) *CreateNetworkInterfaceResponseBodyIpv6SetsIpv6Set {
 	s.Ipv6Address = &v
+	return s
+}
+
+func (s *CreateNetworkInterfaceResponseBodyIpv6SetsIpv6Set) SetPrimary(v bool) *CreateNetworkInterfaceResponseBodyIpv6SetsIpv6Set {
+	s.Primary = &v
 	return s
 }
 

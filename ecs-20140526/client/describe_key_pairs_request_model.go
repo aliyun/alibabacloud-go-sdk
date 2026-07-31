@@ -42,19 +42,19 @@ type DescribeKeyPairsRequest struct {
 	//
 	// false
 	IncludePublicKey *bool `json:"IncludePublicKey,omitempty" xml:"IncludePublicKey,omitempty"`
-	// The fingerprint of the key pair. The fingerprint uses the message-digest algorithm 5 (MD5) based on the public key fingerprint format defined in RFC 4716. For more information, see [RFC 4716](https://tools.ietf.org/html/rfc4716).
+	// The fingerprint of the key pair. The public key fingerprint format is defined in RFC 4716 and uses the MD5 message digest algorithm. For more information, see [RFC 4716](https://tools.ietf.org/html/rfc4716).
 	//
 	// example:
 	//
 	// ABC1234567
 	KeyPairFingerPrint *string `json:"KeyPairFingerPrint,omitempty" xml:"KeyPairFingerPrint,omitempty"`
-	// The name of the key pair. You can use regular expressions for fuzzy search, with the asterisk (*) to match child table expressions. Examples:
+	// The name of the key pair. Fuzzy search with regular expressions is supported. You can use an asterisk (*) to match subexpressions. Examples:
 	//
-	// - `*SshKey`: searches for key pair names that end with SshKey, including SshKey.
+	// - `*SshKey`: queries key pair names that end with SshKey, including SshKey.
 	//
-	// - `SshKey*`: searches for key pair names that start with SshKey, including SshKey.
+	// - `SshKey*`: queries key pair names that start with SshKey, including SshKey.
 	//
-	// - `*SshKey*`: searches for key pair names that contain SshKey, including SshKey.
+	// - `*SshKey*`: queries key pair names that contain SshKey, including SshKey.
 	//
 	// - `SshKey`: exact match of SshKey.
 	//
@@ -71,7 +71,7 @@ type DescribeKeyPairsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in paging queries. Settings: Maximum value: 50.
+	// The number of entries per page for a paged query. Maximum value: 50.
 	//
 	// Default value: 10.
 	//

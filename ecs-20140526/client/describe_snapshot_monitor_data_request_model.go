@@ -30,13 +30,13 @@ type iDescribeSnapshotMonitorDataRequest interface {
 }
 
 type DescribeSnapshotMonitorDataRequest struct {
-	// The type of the snapshot. Valid values:
+	// The snapshot type. Valid values:
 	//
-	// - Standard: standard snapshot
+	// - Standard: standard snapshot.
 	//
-	// - Flash: local snapshot
+	// - Flash: local snapshot.
 	//
-	// - Archive: archive snapshot
+	// - Archive: archive snapshot.
 	//
 	// Default value: Standard.
 	//
@@ -44,7 +44,7 @@ type DescribeSnapshotMonitorDataRequest struct {
 	//
 	// Standard
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The end of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. If the value of seconds (ss) is not 00, the time is rounded up to the next minute.
+	// The end of the time range to query snapshot size change data. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. If the value of seconds (ss) is not 00, the time is automatically rounded up to the next minute.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type DescribeSnapshotMonitorDataRequest struct {
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The interval at which to query the monitoring data of snapshot sizes. Unit: seconds. Valid values:
+	// The interval at which to query snapshot size change data. Unit: seconds. Valid values:
 	//
 	// - 60
 	//
@@ -68,7 +68,7 @@ type DescribeSnapshotMonitorDataRequest struct {
 	//
 	// 60
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +78,7 @@ type DescribeSnapshotMonitorDataRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. If the value of seconds (ss) is not 00, the time is rounded up to the next minute.
+	// The beginning of the time range to query snapshot size change data. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. If the value of seconds (ss) is not 00, the time is automatically rounded up to the next minute.
 	//
 	// This parameter is required.
 	//

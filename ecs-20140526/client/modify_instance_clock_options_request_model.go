@@ -30,7 +30,7 @@ type iModifyInstanceClockOptionsRequest interface {
 }
 
 type ModifyInstanceClockOptionsRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The idempotency parameter.
 	//
 	// example:
 	//
@@ -38,9 +38,9 @@ type ModifyInstanceClockOptionsRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run. Valid values:
 	//
-	// - true: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized Resource Access Management (RAM) users, and missing parameter values. Otherwise, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - true: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, the authorization status of the RAM user, and missing parameter values. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// - false: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - false: performs a dry run and sends the request. If the request passes the dry run, a 2XX HTTP status code is returned and the operation is executed.
 	//
 	// Default value: false.
 	//
@@ -48,7 +48,7 @@ type ModifyInstanceClockOptionsRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -58,11 +58,11 @@ type ModifyInstanceClockOptionsRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// PTP status value. Valid values:
+	// The PTP status. Valid values:
 	//
-	// - enabled
+	// - enabled: enables PTP.
 	//
-	// - disabled
+	// - disabled: disables PTP.
 	//
 	// Default value: disabled.
 	//
@@ -70,7 +70,7 @@ type ModifyInstanceClockOptionsRequest struct {
 	//
 	// enabled
 	PtpStatus *string `json:"PtpStatus,omitempty" xml:"PtpStatus,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the ECS instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

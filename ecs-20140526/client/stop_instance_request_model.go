@@ -32,7 +32,7 @@ type iStopInstanceRequest interface {
 }
 
 type StopInstanceRequest struct {
-	// This parameter will be deprecated soon and is retained only for compatibility purposes. Ignore this parameter when you call this operation.
+	// This parameter is about to be deprecated and is retained only for compatibility purposes. Ignore this parameter when you call this operation.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type StopInstanceRequest struct {
 	ConfirmStop *bool `json:"ConfirmStop,omitempty" xml:"ConfirmStop,omitempty"`
 	// Specifies whether to perform only a dry run. Valid values:
 	//
-	// - true: performs only a dry run. The instance is not stopped. The system checks whether required parameters are specified, whether the request format is valid, whether business restrictions are met, and whether ECS inventory is sufficient. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+	// - true: performs only a dry run. The instance is not stopped. The system checks whether the required parameters are specified, whether the request format is valid, whether business restrictions are met, and whether the ECS inventory is sufficient. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
 	//
 	// - false: performs a dry run and sends the request. The instance is stopped after the check succeeds.
 	//
@@ -62,7 +62,7 @@ type StopInstanceRequest struct {
 	//
 	// false
 	ForceStop *bool `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
-	// > This parameter is in invitational preview and is not available for use.
+	// > This parameter is in invitational preview and is not available for general use.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type StopInstanceRequest struct {
 	//
 	//     	Notice:
 	//
-	// If the instance does not support the economical mode, no error is returned on the API side. Stopping the instance takes priority. Instance types that do not support the economical mode include instances with local disks and subscription instances.
+	// If the instance does not support the economical mode, the API does not return an error. Stopping the instance takes priority. Instance types that do not support the economical mode include instances with local disks and subscription instances.
 	//
 	//
 	//

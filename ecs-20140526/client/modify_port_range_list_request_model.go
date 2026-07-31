@@ -34,7 +34,7 @@ type iModifyPortRangeListRequest interface {
 }
 
 type ModifyPortRangeListRequest struct {
-	// The entries that you want to add or modify for the port list.
+	// The entries to add or modify in the port range list.
 	AddEntry []*ModifyPortRangeListRequestAddEntry `json:"AddEntry,omitempty" xml:"AddEntry,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -42,7 +42,7 @@ type ModifyPortRangeListRequest struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the port list. The description must be 2 to 256 characters in length and cannot start with http\\:// or https\\://.
+	// The description of the port range list. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ModifyPortRangeListRequest struct {
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the port list.
+	// The ID of the port range list to modify.
 	//
 	// This parameter is required.
 	//
@@ -58,13 +58,13 @@ type ModifyPortRangeListRequest struct {
 	//
 	// prl-2ze9743****
 	PortRangeListId *string `json:"PortRangeListId,omitempty" xml:"PortRangeListId,omitempty"`
-	// The name of the port list. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http\\://, https\\://, com.aliyun, or com.alibabacloud. The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	// The name of the port range list. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with http://, https://, com.aliyun, or com.alibabacloud. It can contain letters, Chinese characters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// example:
 	//
 	// PortRangeListNameSample
 	PortRangeListName *string `json:"PortRangeListName,omitempty" xml:"PortRangeListName,omitempty"`
-	// The region ID of the port list. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the port range list. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type ModifyPortRangeListRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The entries that you want to remove from the port list.
+	// The entries to delete from the port range list.
 	RemoveEntry          []*ModifyPortRangeListRequestRemoveEntry `json:"RemoveEntry,omitempty" xml:"RemoveEntry,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string                                  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64                                   `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -208,19 +208,19 @@ func (s *ModifyPortRangeListRequest) Validate() error {
 }
 
 type ModifyPortRangeListRequestAddEntry struct {
-	// The description of the port range in entry N. The description must be 2 to 32 characters in length and cannot start with http\\:// or https\\://. Valid values of N: 0 to 200.
+	// The description of the port range. The description must be 2 to 32 characters in length and cannot start with http:// or https://. Valid values of N: 0 to 200.
 	//
 	// example:
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The port range in entry N. Valid values of N: 0 to 200. Take note of the following limits:
+	// The port range. Valid values of N: 0 to 200. Settings:
 	//
-	// - The total number of entries in the port list cannot exceed the `MaxEntries` value.
+	// - The number of entries cannot exceed the maximum entry capacity (`MaxEntries`).
 	//
-	// - `PortRange` in different entries cannot be duplicated.
+	// - You cannot specify duplicate values for `PortRange`.
 	//
-	// - The value of this parameter cannot be the same as the value of `RemoveEntry.N.PortRange`.
+	// - The value cannot be the same as the value of the `RemoveEntry.N.PortRange` parameter.
 	//
 	// example:
 	//
@@ -259,11 +259,11 @@ func (s *ModifyPortRangeListRequestAddEntry) Validate() error {
 }
 
 type ModifyPortRangeListRequestRemoveEntry struct {
-	// The port range in entry N. Valid values of N: 0 to 200. Take note of the following limits:
+	// The port range. Valid values of N: 0 to 200. Settings:
 	//
-	// - `PortRange` in different entries cannot be duplicated.
+	// - You cannot specify duplicate values for `PortRange`.
 	//
-	// - The value of this parameter cannot be the same as the value of `AddEntry.N.PortRange`.
+	// - The value cannot be the same as the value of the `AddEntry.N.PortRange` parameter.
 	//
 	// example:
 	//

@@ -55,7 +55,7 @@ type iCreateElasticityAssuranceRequest interface {
 
 type CreateElasticityAssuranceRequest struct {
 	PrivatePoolOptions *CreateElasticityAssuranceRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
-	// The total number of times that the elasticity assurance can be used. Set the value to Unlimited. This value specifies that the elasticity assurance can be used for an unlimited number of times within its validity period.
+	// The total number of times that the elasticity assurance can be applied. Valid values: Unlimited. Currently, only the unlimited mode is supported within the service validity period.
 	//
 	// Default value: Unlimited.
 	//
@@ -63,11 +63,11 @@ type CreateElasticityAssuranceRequest struct {
 	//
 	// Unlimited
 	AssuranceTimes *string `json:"AssuranceTimes,omitempty" xml:"AssuranceTimes,omitempty"`
-	// Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// - true
+	// - true: Auto-renewal is enabled.
 	//
-	// - false
+	// - false: Auto-renewal is disabled.
 	//
 	// Default value: false.
 	//
@@ -75,49 +75,52 @@ type CreateElasticityAssuranceRequest struct {
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+	// The auto-renewal period. Unit: months. Valid values: 1, 2, 3, 6, 12, 24, and 36.
 	//
-	// - Default value when `PeriodUnit` is set to Month: 1.
 	//
-	// - Default value when `PeriodUnit` is set to Year: 12.
 	//
-	// > If you set `AutoRenew` to `true`, you must specify this parameter.
+	// - If `PeriodUnit=Month`, the default value is 1.
+	//
+	// - If `PeriodUnit=Year`, the default value is 12.
+	//
+	//
+	// > This parameter is required when `AutoRenew` is set to `True`.
 	//
 	// example:
 	//
 	// 1
 	AutoRenewPeriod *int32 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	// The client token that you want to use to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The `token` can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The `ClientToken` value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the elasticity assurance. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
+	// The description of the elasticity assurance service. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
-	// This parameter is empty by default.
+	// Default value: empty.
 	//
 	// example:
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The total number of instances of an instance type for which you want to reserve capacity.
+	// The total number of instances to be reserved for a single instance type.
 	//
 	// Valid values: 1 to 1000.
 	//
-	// > You must specify this parameter.
+	// 	Notice: This parameter is required.
 	//
 	// example:
 	//
 	// 2
 	InstanceAmount *int32 `json:"InstanceAmount,omitempty" xml:"InstanceAmount,omitempty"`
-	// > This parameter is no longer used.
+	// > This parameter is deprecated.
 	//
 	// example:
 	//
 	// null
 	InstanceCpuCoreCount *int32 `json:"InstanceCpuCoreCount,omitempty" xml:"InstanceCpuCoreCount,omitempty"`
-	// The instance type. An elasticity assurance can be created to reserve the capacity of a single instance type.
+	// The instance type. Currently, you can configure an elasticity assurance service for only one instance type.
 	//
 	// This parameter is required.
 	//
@@ -127,31 +130,29 @@ type CreateElasticityAssuranceRequest struct {
 	InstanceType []*string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty" type:"Repeated"`
 	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The validity period of the elasticity assurance. The unit of the validity period is determined by the value of `PeriodUnit`. Specifies whether to check the image used by the instance supports hot migration. Valid values:
+	// The purchase duration. The unit of the duration is determined by the `PeriodUnit` parameter. Valid values:
 	//
-	// - When the value of `PeriodUnit` is `Month`, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
+	// - If `PeriodUnit` is set to `Month`: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
 	//
-	// - When the value of `PeriodUnit` is `Year`, the valid values are 1, 2, 3, 4, and 5.
+	// - If `PeriodUnit` is set to `Year`: 1, 2, 3, 4, and 5.
 	//
-	// - When the value of `PeriodUnit` is `Day`, the valid values are 1 to 365.
+	// - If `PeriodUnit` is set to `Day`: 1 to 365.
 	//
-	// Default value: 1
+	// Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the validity period of the elasticity assurance. Valid values:
+	// The unit of the purchase duration. Valid values:
 	//
-	// - Month
+	// - Month: month.
 	//
-	// - Year
+	// - Year: year.
 	//
-	// - Day
+	// - Day: day.
 	//
-	//   \\*\\*
-	//
-	//   **Note*	- If you set `PeriodUnit` to `Day`, you must specify RecurrenceRules to create a time-segmented elasticity assurance.
+	//   > When `PeriodUnit` is set to `Day`, you must also specify RecurrenceRules to create a time-sharing elasticity assurance.
 	//
 	// Default value: Year.
 	//
@@ -159,11 +160,9 @@ type CreateElasticityAssuranceRequest struct {
 	//
 	// Year
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The assurance schedules based on which the capacity reservation takes effect.
-	//
-	// > Time-segmented elasticity assurances are available only in specific regions and to specific users. To use time-segmented elasticity assurances, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl).
+	// The recurrence rules for the time-sharing elasticity assurance.
 	RecurrenceRules []*CreateElasticityAssuranceRequestRecurrenceRules `json:"RecurrenceRules,omitempty" xml:"RecurrenceRules,omitempty" type:"Repeated"`
-	// The ID of the region in which to create the elasticity assurance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the elasticity assurance service. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -171,7 +170,7 @@ type CreateElasticityAssuranceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which to assign the elasticity assurance.
+	// The ID of the resource group to which the elasticity assurance service belongs.
 	//
 	// example:
 	//
@@ -179,15 +178,15 @@ type CreateElasticityAssuranceRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The time when the elasticity assurance takes effect. The default value is the time when the CreateElasticityAssurance operation is called to create the elasticity assurance. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
+	// The effective period start time of the elasticity assurance service. By default, the service takes effect when the operation is invoked. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
 	//
 	// example:
 	//
 	// 2020-10-30T06:32:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The tags to add to the elasticity assurance.
+	// The tags of the elasticity assurance service.
 	Tag []*CreateElasticityAssuranceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the zone in which to create the elasticity assurance. An elasticity assurance can be used to reserve resources within a single zone.
+	// The zone ID within the region of the elasticity assurance service. Currently, you can create an elasticity assurance service in only one zone.
 	//
 	// This parameter is required.
 	//
@@ -422,11 +421,11 @@ func (s *CreateElasticityAssuranceRequest) Validate() error {
 }
 
 type CreateElasticityAssuranceRequestPrivatePoolOptions struct {
-	// The type of the private pool with which you want to associate the elasticity assurance. Valid values:
+	// The match mode of the elasticity assurance service. Valid values:
 	//
-	// - Open: open private pool. If you use the elasticity assurance to create ECS instances, the open private pool that is associated with the elasticity assurance is automatically matched. If no capacity is available in the open private pool, resources in the public pool are automatically used to create the ECS instances.
+	// - Open: open mode. The system automatically matches the capacity of open private pools when instances are started. If no matching private pool capacity is available, public pool resources are used to start the instances.
 	//
-	// - Target: targeted private pool. If you use the elasticity assurance to create ECS instances, the specified private pool that is associated with the elasticity assurance is automatically matched. If no capacity is available in the private pool, the ECS instances fail to be created.
+	// - Target: targeted mode. Instances are started by using the capacity of the specified private pool. If the specified private pool capacity is unavailable, the instances fail to start.
 	//
 	// Default value: Open.
 	//
@@ -434,7 +433,7 @@ type CreateElasticityAssuranceRequestPrivatePoolOptions struct {
 	//
 	// Open
 	MatchCriteria *string `json:"MatchCriteria,omitempty" xml:"MatchCriteria,omitempty"`
-	// The name of the elasticity assurance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the elasticity assurance service. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain digits, colons (:), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
@@ -473,19 +472,19 @@ func (s *CreateElasticityAssuranceRequestPrivatePoolOptions) Validate() error {
 }
 
 type CreateElasticityAssuranceRequestRecurrenceRules struct {
-	// The end time of the assurance period for the capacity reservation. Specify an on-the-hour point in time.
+	// The end time of the time-sharing assurance. The value must be on the hour.
 	//
 	// example:
 	//
 	// 10
 	EndHour *int32 `json:"EndHour,omitempty" xml:"EndHour,omitempty"`
-	// The type of the assurance schedule. Valid values:
+	// The type of the recurrence rule. Valid values:
 	//
-	// - Daily
+	// - Daily: daily recurrence.
 	//
-	// - Weekly
+	// - Weekly: weekly recurrence.
 	//
-	// - Monthly
+	// - Monthly: monthly recurrence.
 	//
 	// > You must specify both `RecurrenceType` and `RecurrenceValue`.
 	//
@@ -493,13 +492,13 @@ type CreateElasticityAssuranceRequestRecurrenceRules struct {
 	//
 	// Daily
 	RecurrenceType *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
-	// The days of the week or month on which the capacity reservation takes effect or the interval, in number of days, at which the capacity reservation takes effect.
+	// The value of the recurrence rule.
 	//
-	// - If you set `RecurrenceType` to `Daily`, you can specify only one value for this parameter. Valid values: 1 to 31. The value specifies that the capacity reservation takes effect every few days.
+	// - If `RecurrenceType` is set to `Daily`, you can specify only one value. Valid values: 1 to 31. The value specifies the interval in days between recurrences.
 	//
-	// - If you set `RecurrenceType` to `Weekly`, you can specify multiple values for this parameter. Separate the values with commas (,). Valid values: 0, 1, 2, 3, 4, 5, and 6, which specify Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday, respectively. Example: `1,2`, which specifies that the capacity reservation takes effect on Monday and Tuesday.
+	// - If `RecurrenceType` is set to `Weekly`, you can specify multiple values separated by commas (,). The values for Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday are 0, 1, 2, 3, 4, 5, and 6. For example, `1,2` specifies Monday and Tuesday.
 	//
-	// - If you set `RecurrenceType` to `Monthly`, you can specify two values in the `A-B` format for this parameter. Valid values of A and B: 1 to 31. B must be greater than or equal to A. For example, `1-5` indicates that the execution is repeated from the 1st to 5th of each month.
+	// - If `RecurrenceType` is set to `Monthly`, the format is `A-B`. Valid values of A and B: 1 to 31. B must be greater than or equal to A. For example, `1-5` specifies the 1st to 5th day of each month.
 	//
 	// > You must specify both `RecurrenceType` and `RecurrenceValue`.
 	//
@@ -507,9 +506,9 @@ type CreateElasticityAssuranceRequestRecurrenceRules struct {
 	//
 	// 1
 	RecurrenceValue *string `json:"RecurrenceValue,omitempty" xml:"RecurrenceValue,omitempty"`
-	// The start time of the assurance period for the capacity reservation. Specify an on-the-hour point in time.
+	// The effective period start hour of the time-sharing assurance. The value must be on the hour.
 	//
-	// > You must specify both `StartHour` and `EndHour`. EndHour must be at least four hours later than StartHour.
+	// > You must specify both `StartHour` and `EndHour`, and the difference between them must be at least 4 hours.
 	//
 	// example:
 	//
@@ -566,13 +565,13 @@ func (s *CreateElasticityAssuranceRequestRecurrenceRules) Validate() error {
 }
 
 type CreateElasticityAssuranceRequestTag struct {
-	// The key of tag N to add to the elasticity assurance. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+	// The tag key of the elasticity assurance service. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:` or contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to add to the elasticity assurance. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
+	// The tag value of the elasticity assurance service. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:` or contain `http://` or `https://`.
 	//
 	// example:
 	//

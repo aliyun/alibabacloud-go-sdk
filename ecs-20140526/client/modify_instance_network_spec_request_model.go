@@ -40,11 +40,11 @@ type iModifyInstanceNetworkSpecRequest interface {
 }
 
 type ModifyInstanceNetworkSpecRequest struct {
-	// Specifies whether to allocate a public IP address.
+	// Specifies whether to assign a public IP address. Valid values:
 	//
-	// - true: allocates a public IP address.
+	// - true: A public IP address is assigned.
 	//
-	// - false: does not allocate a public IP address.
+	// - false: No public IP address is assigned.
 	//
 	// Default value: false.
 	//
@@ -52,19 +52,19 @@ type ModifyInstanceNetworkSpecRequest struct {
 	//
 	// false
 	AllocatePublicIp *bool `json:"AllocatePublicIp,omitempty" xml:"AllocatePublicIp,omitempty"`
-	// Specifies whether to enable automatic payment. Valid values:
+	// Specifies whether to automatically complete the payment. Valid values:
 	//
-	// - true: After the bandwidth configuration is modified, the payment is automatically deducted. When you set the AutoPay parameter to true, make sure that your account has sufficient balance. If your account balance is insufficient, an abnormal order is generated. You cannot pay for the order on the ECS console. You can only cancel the order.
+	// - true: The payment is automatically completed after the bandwidth configuration is changed. Make sure that your account balance is sufficient. If your account balance is insufficient, an abnormal order is generated. You cannot pay for this order through the ECS console. You can only void the order.
 	//
 	// <props="china">
 	//
-	// - false: After the bandwidth configuration is modified, only an order is generated and no payment is made. If your payment method has insufficient balance, you can set the AutoPay parameter to false to disable automatic payment. In this case, the API generates a normal unpaid order. You can log on to the [ECS console](https://ecs.console.aliyun.com) to pay for the order.
+	// - false: An order is generated but the payment is not completed after the bandwidth configuration is changed. If your payment method has an insufficient balance, you can set the Autopay parameter to false to cancel automatic payment. In this case, an unpaid order is generated. You can log on to the [ECS console](https://ecs.console.aliyun.com) to complete the payment.
 	//
 	//
 	//
 	// <props="intl">
 	//
-	// - false: After the bandwidth configuration is modified, only an order is generated and no payment is made. If your payment method has insufficient balance, you can set the AutoPay parameter to false to disable automatic payment. In this case, the API generates a normal unpaid order. You can log on to the [ECS console](https://ecs.console.aliyun.com) to pay for the order.
+	// - false: An order is generated but the payment is not completed after the bandwidth configuration is changed. If your payment method has an insufficient balance, you can set the Autopay parameter to false to cancel automatic payment. In this case, an unpaid order is generated. You can log on to the [ECS console](https://ecs.console.aliyun.com) to complete the payment.
 	//
 	//
 	//
@@ -74,13 +74,13 @@ type ModifyInstanceNetworkSpecRequest struct {
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The end time of the temporary bandwidth upgrade. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in UTC+0 time in the yyyy-MM-ddTHHZ format. The time must be accurate to the **hour*	- (HH).
+	// The end time of the temporary bandwidth upgrade. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHHZ format. The time must be in UTC+0. The value is accurate to the **hour*	- (HH).
 	//
 	// > The interval between the end time and the start time of the temporary bandwidth upgrade must be greater than or equal to 3 hours.
 	//
@@ -88,13 +88,13 @@ type ModifyInstanceNetworkSpecRequest struct {
 	//
 	// 2017-12-06T22Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// > This parameter is in invitational preview and is not yet available for use.
+	// > This parameter is in invitational preview and is not publicly available.
 	//
 	// example:
 	//
 	// null
 	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	// The ID of the instance for which you want to modify the network configuration.
+	// The instance ID of the instance for which you want to modify the network configuration.
 	//
 	// This parameter is required.
 	//
@@ -104,9 +104,9 @@ type ModifyInstanceNetworkSpecRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The maximum inbound public bandwidth. Unit: Mbit/s (Megabit per second). Valid values:
 	//
-	// - If the purchased maximum outbound public bandwidth is less than or equal to 10 Mbit/s: 1 to 10. Default value: 10.
+	// - If the purchased outbound public bandwidth is less than or equal to 10 Mbit/s: 1 to 10. Default value: 10.
 	//
-	// - If the purchased maximum outbound public bandwidth is greater than 10 Mbit/s: 1 to the value of `InternetMaxBandwidthOut`. Default value: the value of `InternetMaxBandwidthOut`.
+	// - If the purchased outbound public bandwidth is greater than 10 Mbit/s: 1 to the value of `InternetMaxBandwidthOut`. Default value: the value of `InternetMaxBandwidthOut`.
 	//
 	// example:
 	//
@@ -114,28 +114,28 @@ type ModifyInstanceNetworkSpecRequest struct {
 	InternetMaxBandwidthIn *int32 `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
 	// The maximum outbound public bandwidth. Unit: Mbit/s (Megabit per second). Valid values:
 	//
-	// - Pay-by-traffic: 0 to 100.
+	// - Pay-by-traffic billing: 0 to 100.
 	//
-	// - Pay-by-bandwidth:
+	// - Pay-by-bandwidth billing:
 	//
-	//   - Subscription instance: 0 to 200.
+	//   - Subscription instances: 0 to 200.
 	//
-	//   - Pay-as-you-go instance: 0 to 100.
+	//   - Pay-as-you-go instances: 0 to 100.
 	//
 	//
-	// > The maximum outbound bandwidth per instance is also limited by the **Network Bandwidth Baseline/Burstable (Gbit/s)*	- metric of the ECS instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+	// > The maximum outbound bandwidth per instance is also limited by the **Network bandwidth baseline/burst (Gbit/s)*	- metric of the ECS instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
 	// example:
 	//
 	// 10
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	// The conversion target for the network billing method. Valid values:
+	// Transforms the network billing method. Valid values:
 	//
 	// - PayByBandwidth: pay-by-bandwidth.
 	//
 	// - PayByTraffic: pay-by-traffic.
 	//
-	// > In **pay-by-traffic*	- mode, the inbound and outbound bandwidth peaks are both bandwidth upper limits and are not guaranteed as committed service metrics. When resource contention occurs, the bandwidth peaks may be throttled. If your business requires guaranteed bandwidth, use the **pay-by-bandwidth*	- mode.
+	// > In the **pay-by-traffic*	- mode, the peak inbound and outbound bandwidths are used as upper limits of bandwidths instead of guaranteed performance metrics. When resource contention occurs, the peak bandwidths may be limited. If you require guaranteed bandwidth, use the **pay-by-bandwidth*	- mode.
 	//
 	// example:
 	//
@@ -145,7 +145,7 @@ type ModifyInstanceNetworkSpecRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The start time of the temporary bandwidth upgrade. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in UTC+0 time in the yyyy-MM-ddTHH:mmZ format. The time must be accurate to the **minute*	- (mm).
+	// The start time of the temporary bandwidth upgrade. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC+0. The value is accurate to the **minute*	- (mm).
 	//
 	// example:
 	//

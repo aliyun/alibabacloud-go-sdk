@@ -16,7 +16,7 @@ type iCreateCapacityReservationResponseBody interface {
 }
 
 type CreateCapacityReservationResponseBody struct {
-	// The ID of the capacity reservation.
+	// The capacity reservation ID.
 	//
 	// example:
 	//

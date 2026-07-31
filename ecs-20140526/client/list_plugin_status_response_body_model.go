@@ -25,13 +25,13 @@ type iListPluginStatusResponseBody interface {
 
 type ListPluginStatusResponseBody struct {
 	InstancePluginStatusSet *ListPluginStatusResponseBodyInstancePluginStatusSet `json:"InstancePluginStatusSet,omitempty" xml:"InstancePluginStatusSet,omitempty" type:"Struct"`
-	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+	// The pagination token returned in this call.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number.
+	// The page number of the query result.
 	//
 	// example:
 	//
@@ -49,7 +49,7 @@ type ListPluginStatusResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of records that match the query conditions.
 	//
 	// example:
 	//

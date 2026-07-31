@@ -16,7 +16,7 @@ type iReplaceSystemDiskResponseBody interface {
 }
 
 type ReplaceSystemDiskResponseBody struct {
-	// The ID of the new system disk.
+	// The disk ID of the new system disk.
 	//
 	// example:
 	//

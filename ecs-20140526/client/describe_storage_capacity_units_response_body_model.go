@@ -22,19 +22,19 @@ type iDescribeStorageCapacityUnitsResponseBody interface {
 }
 
 type DescribeStorageCapacityUnitsResponseBody struct {
-	// The page number of the returned page.
+	// The page number of the SCU list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page in the paging query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

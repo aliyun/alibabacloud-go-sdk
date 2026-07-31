@@ -40,13 +40,13 @@ type AssignPrivateIpAddressesRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// One or more IPv4 prefixes to allocate to the network interface controller (NIC). Valid values of N: 1 to 10.
+	// One or more IPv4 prefixes to assign to the network interface controller (NIC). Valid values of N: 1 to 10.
 	//
-	// > To configure IPv4 prefixes for the ENI, you must specify either the Ipv4Prefix.N parameter or the Ipv4PrefixCount parameter, but not both.
+	// > To set IPv4 prefixes for the NIC, you must set either the Ipv4Prefix.N parameter or the Ipv4PrefixCount parameter, but not both.
 	Ipv4Prefix []*string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty" type:"Repeated"`
-	// The number of randomly generated IPv4 prefixes to allocate to the network interface controller (NIC). Valid values: 1 to 10.
+	// The number of randomly generated IPv4 prefixes to assign to the network interface controller (NIC). Valid values: 1 to 10.
 	//
-	// > To configure IPv4 prefixes for the ENI, you must specify either the Ipv4Prefix.N parameter or the Ipv4PrefixCount parameter, but not both.
+	// > To set IPv4 prefixes for the NIC, you must set either the Ipv4Prefix.N parameter or the Ipv4PrefixCount parameter, but not both.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ type AssignPrivateIpAddressesRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// One or more secondary private IP addresses selected from the available IP addresses of the vSwitch to which the network interface controller (NIC) belongs. Valid values of N:
+	// One or more secondary private IP addresses selected from the idle IP addresses within the vSwitch to which the network interface controller (NIC) belongs. Valid values of N:
 	//
-	// - When the ENI is in the Available (`Available`) state: 1 to 32.
+	// - When the NIC is in the active (`Available`) state: 1 to 32.
 	//
-	// - When the ENI is in the `InUse` state: limited by the instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+	// - When the NIC is in the `InUse` state: subject to the instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// When you allocate secondary private IP addresses, you cannot specify both PrivateIpAddress.N and SecondaryPrivateIpAddressCount.
+	// When you allocate secondary private IP addresses, you cannot specify both `PrivateIpAddress.N` and `SecondaryPrivateIpAddressCount`.
 	//
 	// example:
 	//
 	// ``10.1.**.**``
 	PrivateIpAddress []*string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty" type:"Repeated"`
-	// The region ID of the network interface controller (NIC). You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent list of Alibaba Cloud regions.
+	// The region ID of the network interface controller (NIC). You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -84,9 +84,9 @@ type AssignPrivateIpAddressesRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The number of private IP addresses to be automatically assigned from the available IP addresses of the vSwitch.
+	// The number of private IP addresses to be automatically assigned from the idle IP addresses within the vSwitch.
 	//
-	// When you assign secondary private IP addresses, you cannot specify both PrivateIpAddress.N and SecondaryPrivateIpAddressCount.
+	// When you assign secondary private IP addresses, you cannot specify both `PrivateIpAddress.N` and `SecondaryPrivateIpAddressCount`.
 	//
 	// example:
 	//

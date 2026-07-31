@@ -16,10 +16,8 @@ type iModifyRouterInterfaceSpecResponseBody interface {
 }
 
 type ModifyRouterInterfaceSpecResponseBody struct {
-	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The new specification of the router interface.
-	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	Spec      *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 }
 
 func (s ModifyRouterInterfaceSpecResponseBody) String() string {

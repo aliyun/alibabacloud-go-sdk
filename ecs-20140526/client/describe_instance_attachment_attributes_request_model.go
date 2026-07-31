@@ -28,7 +28,7 @@ type iDescribeInstanceAttachmentAttributesRequest interface {
 }
 
 type DescribeInstanceAttachmentAttributesRequest struct {
-	// The IDs of the instances. The value can be a JSON array that consists of up to 100 instance IDs. Separate the IDs with commas (,).
+	// The instance IDs. The value can be a JSON array that consists of up to 100 instance IDs. Separate the IDs with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type DescribeInstanceAttachmentAttributesRequest struct {
 	InstanceIds  *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number.
+	// The page number of the instance status list.
 	//
-	// Page starts from page 1.
+	// Minimum value: 1.
 	//
 	// Default value: 1.
 	//
@@ -48,9 +48,9 @@ type DescribeInstanceAttachmentAttributesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page for the paged query.
 	//
-	// Valid values: 1 to 100.
+	// Maximum value: 100.
 	//
 	// Default value: 10.
 	//
@@ -58,7 +58,7 @@ type DescribeInstanceAttachmentAttributesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the elasticity assurance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the elasticity assurance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

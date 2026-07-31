@@ -26,9 +26,9 @@ type iDeletePortRangeListRequest interface {
 type DeletePortRangeListRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the port list.
+	// The port list ID.
 	//
-	// > If the port list is associated with other resources, you cannot delete the port list. You must disassociate the port list from the resources and then delete the port list.
+	// >If the port list is associated with other resources, it cannot be deleted. Dissociate the port list from the resources before you delete it.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DeletePortRangeListRequest struct {
 	//
 	// prl-2ze9743****
 	PortRangeListId *string `json:"PortRangeListId,omitempty" xml:"PortRangeListId,omitempty"`
-	// The region ID of the port list. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the port list. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

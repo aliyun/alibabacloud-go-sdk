@@ -35,7 +35,7 @@ type DescribeImageSharePermissionResponseBody struct {
 	//
 	// m-bp1caf3yicx5jlfl****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The page number of the returned results.
+	// The page number of the query results.
 	//
 	// example:
 	//

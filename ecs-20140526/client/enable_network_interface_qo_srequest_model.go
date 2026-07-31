@@ -26,7 +26,7 @@ type iEnableNetworkInterfaceQoSRequest interface {
 }
 
 type EnableNetworkInterfaceQoSRequest struct {
-  // The ID of the Elastic Network Interface (ENI).
+  // The ID of the network interface controller (NIC).
   // 
   // This parameter is required.
   // 
@@ -36,9 +36,9 @@ type EnableNetworkInterfaceQoSRequest struct {
   NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
   OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-  // QoS Speed Limit Settings
+  // The QoS rate limiting settings.
   QoS *EnableNetworkInterfaceQoSRequestQoS `json:"QoS,omitempty" xml:"QoS,omitempty" type:"Struct"`
-  // The Region ID. You can invoke DescribeRegions to view the latest Alibaba Cloud Region list.
+  // The region ID. You can call DescribeRegions to query the most recent region list.
   // 
   // This parameter is required.
   // 
@@ -131,41 +131,41 @@ func (s *EnableNetworkInterfaceQoSRequest) Validate() error {
 }
 
 type EnableNetworkInterfaceQoSRequestQoS struct {
-  // The maximum inbound internal bandwidth.
+  // The maximum inbound internal bandwidth limit.
   // 
-  // Unit: kbit/s, step size: 1000 (1Mbps), value range: [50000, +♾️)
+  // Unit: kbit/s. Increment: 1000 (1 Mbit/s). Value range: [50000, +∞).
   // 
   // example:
   // 
   // 50000
   BandwidthRx *int64 `json:"BandwidthRx,omitempty" xml:"BandwidthRx,omitempty"`
-  // The maximum outbound internal bandwidth.
+  // The maximum outbound internal bandwidth limit.
   // 
-  // Unit: kbit/s, step size: 1000 (1Mbps), value range: [50000, +♾️)
+  // Unit: kbit/s. Increment: 1000 (1 Mbit/s). Value range: [50000, +∞).
   // 
   // example:
   // 
   // 50000
   BandwidthTx *int64 `json:"BandwidthTx,omitempty" xml:"BandwidthTx,omitempty"`
-  // Maximum Number of Sessions
+  // The maximum number of sessions.
   // 
-  // Step size: 10000, value range: [10000, +♾️)
+  // Increment: 10000. Value range: [10000, +∞).
   // 
   // example:
   // 
   // 50000
   ConcurrentConnections *int64 `json:"ConcurrentConnections,omitempty" xml:"ConcurrentConnections,omitempty"`
-  // The inbound packet forwarding rate over the internal network.
+  // The inbound internal packet forwarding rate.
   // 
-  // Unit: pps, step size: 10000, value range: [10000, +♾️)
+  // Unit: pps. Increment: 10000. Value range: [10000, +∞).
   // 
   // example:
   // 
   // 50000
   PpsRx *int64 `json:"PpsRx,omitempty" xml:"PpsRx,omitempty"`
-  // The outbound packet forwarding rate over the internal network.
+  // The outbound internal packet forwarding rate.
   // 
-  // Unit: pps, step size: 10000, value range: [10000, +♾️)
+  // Unit: pps. Increment: 10000. Value range: [10000, +∞).
   // 
   // example:
   // 

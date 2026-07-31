@@ -30,13 +30,13 @@ type iDescribeZonesRequest interface {
 }
 
 type DescribeZonesRequest struct {
-	// The natural language that is used to filter response results. For more information, see [RFC 7231](https://tools.ietf.org/html/rfc7231). Valid values:
+	// The natural language that is used to filter responses. For more information, see [RFC 7231](https://tools.ietf.org/html/rfc7231). Valid values:
 	//
 	//
 	//
-	// - zh-CN: simplified Chinese.
+	// - zh-CN: Simplified Chinese.
 	//
-	// - zh-TW: traditional Chinese.
+	// - zh-TW: Traditional Chinese.
 	//
 	// - en-US: English.
 	//
@@ -54,7 +54,7 @@ type DescribeZonesRequest struct {
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The billing method supported by resources in the active zone. For more information, see [Billing overview](https://help.aliyun.com/document_detail/25398.html). Valid values:
+	// The billing method supported by resources in the zone. For more information, see [Billing overview](https://help.aliyun.com/document_detail/25398.html). Valid values:
 	//
 	// - PrePaid: subscription.
 	//

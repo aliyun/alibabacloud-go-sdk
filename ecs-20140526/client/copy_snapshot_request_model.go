@@ -46,7 +46,7 @@ type iCopySnapshotRequest interface {
 type CopySnapshotRequest struct {
 	// > This parameter is in invitational preview and is not publicly available.
 	Arn []*CopySnapshotRequestArn `json:"Arn,omitempty" xml:"Arn,omitempty" type:"Repeated"`
-	// Ensures the idempotence of the request. The value is generated from your client and must be unique among different requests. The value of ClientToken can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// Ensures the idempotence of the request. The value is generated from your client and must be unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
@@ -121,9 +121,9 @@ type CopySnapshotRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The retention period of the new snapshot, in days. The snapshot undergoes automatic release when the retention period expires. Valid values: 1 to 65536.
+	// The retention period of the new snapshot, in days. The snapshot is subject to automatic release when the retention period expires. Valid values: 1 to 65536.
 	//
-	// Default value: null, which indicates that the snapshot does not undergo automatic release.
+	// Default value: null, which indicates that the snapshot is not subject to automatic release.
 	//
 	// example:
 	//

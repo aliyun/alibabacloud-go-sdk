@@ -20,7 +20,7 @@ type iModifyDiskSpecResponseBody interface {
 type ModifyDiskSpecResponseBody struct {
 	// The order ID.
 	//
-	// > This parameter is returned only when the category of a subscription disk or the performance level of a subscription ESSD is modified.
+	// > An order ID is returned only when you change or modify a subscription disk.
 	//
 	// example:
 	//
@@ -32,9 +32,9 @@ type ModifyDiskSpecResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the disk category change task.
+	// The task ID for the disk type change.
 	//
-	// > If you only modify the performance level of an ESSD, this parameter is not returned.
+	// > This parameter is not returned if you only modified the performance level (PL) of an ESSD.
 	//
 	// example:
 	//

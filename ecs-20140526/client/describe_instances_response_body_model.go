@@ -37,7 +37,7 @@ type DescribeInstancesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page as specified in the request.
 	//
 	// example:
 	//
@@ -50,8 +50,6 @@ type DescribeInstancesResponseBody struct {
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of queried instances.
-	//
-	// > When you use `MaxResults` and `NextToken` parameters for paging query, the returned `TotalCount` parameter value is meaningless.
 	//
 	// example:
 	//
@@ -223,6 +221,7 @@ type DescribeInstancesResponseBodyInstancesInstance struct {
 	ResourceGroupId            *string                                                                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SaleCycle                  *string                                                                   `json:"SaleCycle,omitempty" xml:"SaleCycle,omitempty"`
 	SecurityGroupIds           *DescribeInstancesResponseBodyInstancesInstanceSecurityGroupIds           `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
+	SecurityOptions            *DescribeInstancesResponseBodyInstancesInstanceSecurityOptions            `json:"SecurityOptions,omitempty" xml:"SecurityOptions,omitempty" type:"Struct"`
 	SerialNumber               *string                                                                   `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	SpotDuration               *int32                                                                    `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
 	SpotInterruptionBehavior   *string                                                                   `json:"SpotInterruptionBehavior,omitempty" xml:"SpotInterruptionBehavior,omitempty"`
@@ -467,6 +466,10 @@ func (s *DescribeInstancesResponseBodyInstancesInstance) GetSaleCycle() *string 
 
 func (s *DescribeInstancesResponseBodyInstancesInstance) GetSecurityGroupIds() *DescribeInstancesResponseBodyInstancesInstanceSecurityGroupIds {
 	return s.SecurityGroupIds
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstance) GetSecurityOptions() *DescribeInstancesResponseBodyInstancesInstanceSecurityOptions {
+	return s.SecurityOptions
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstance) GetSerialNumber() *string {
@@ -797,6 +800,11 @@ func (s *DescribeInstancesResponseBodyInstancesInstance) SetSecurityGroupIds(v *
 	return s
 }
 
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetSecurityOptions(v *DescribeInstancesResponseBodyInstancesInstanceSecurityOptions) *DescribeInstancesResponseBodyInstancesInstance {
+	s.SecurityOptions = v
+	return s
+}
+
 func (s *DescribeInstancesResponseBodyInstancesInstance) SetSerialNumber(v string) *DescribeInstancesResponseBodyInstancesInstance {
 	s.SerialNumber = &v
 	return s
@@ -940,6 +948,11 @@ func (s *DescribeInstancesResponseBodyInstancesInstance) Validate() error {
 	}
 	if s.SecurityGroupIds != nil {
 		if err := s.SecurityGroupIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityOptions != nil {
+		if err := s.SecurityOptions.Validate(); err != nil {
 			return err
 		}
 	}
@@ -1737,6 +1750,7 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkI
 
 type DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6SetsIpv6Set struct {
 	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
+	Primary     *bool   `json:"Primary,omitempty" xml:"Primary,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6SetsIpv6Set) String() string {
@@ -1751,8 +1765,17 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkI
 	return s.Ipv6Address
 }
 
+func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6SetsIpv6Set) GetPrimary() *bool {
+	return s.Primary
+}
+
 func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6SetsIpv6Set) SetIpv6Address(v string) *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6SetsIpv6Set {
 	s.Ipv6Address = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6SetsIpv6Set) SetPrimary(v bool) *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6SetsIpv6Set {
+	s.Primary = &v
 	return s
 }
 
@@ -2045,6 +2068,31 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceSecurityGroupIds) SetSecu
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceSecurityGroupIds) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeInstancesResponseBodyInstancesInstanceSecurityOptions struct {
+	EnableSecureBoot *bool `json:"EnableSecureBoot,omitempty" xml:"EnableSecureBoot,omitempty"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceSecurityOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceSecurityOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceSecurityOptions) GetEnableSecureBoot() *bool {
+	return s.EnableSecureBoot
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceSecurityOptions) SetEnableSecureBoot(v bool) *DescribeInstancesResponseBodyInstancesInstanceSecurityOptions {
+	s.EnableSecureBoot = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceSecurityOptions) Validate() error {
 	return dara.Validate(s)
 }
 

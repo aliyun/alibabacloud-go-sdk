@@ -25,13 +25,13 @@ type iDescribeCloudAssistantStatusResponseBody interface {
 
 type DescribeCloudAssistantStatusResponseBody struct {
 	InstanceCloudAssistantStatusSet *DescribeCloudAssistantStatusResponseBodyInstanceCloudAssistantStatusSet `json:"InstanceCloudAssistantStatusSet,omitempty" xml:"InstanceCloudAssistantStatusSet,omitempty" type:"Struct"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The pagination token returned in this call.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//

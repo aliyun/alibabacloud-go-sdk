@@ -30,13 +30,13 @@ type iRenewDedicatedHostsRequest interface {
 }
 
 type RenewDedicatedHostsRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate a client token. Make sure that a unique client token is used for each request. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence?](https://help.aliyun.com/document_detail/25693.html)
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The IDs of dedicated hosts. You can specify the IDs of up to 100 subscription dedicated hosts. Specify the dedicated host IDs in a JSON array. Example: `["dh-xxxxxxxxx", "dh-yyyyyyyyy", … "dh-zzzzzzzzz"]`. Separate the IDs with commas (,).
+	// The list of dedicated host IDs. You can specify up to 100 subscription dedicated host IDs. Specify multiple dedicated host IDs in a JSON array in the format of `["dh-xxxxxxxxx", "dh-yyyyyyyyy", … "dh-zzzzzzzzz"]`. Separate IDs with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -46,11 +46,23 @@ type RenewDedicatedHostsRequest struct {
 	DedicatedHostIds *string `json:"DedicatedHostIds,omitempty" xml:"DedicatedHostIds,omitempty"`
 	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The renewal duration. Valid values:
+	// The renewal period. Valid values:
 	//
-	// - Valid values when the PeriodUnit parameter is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+	// <props="china">
 	//
-	// - Valid values when the PeriodUnit parameter is set to Year: 1, 2, 3, 4, and 5.
+	// - If PeriodUnit is set to Week: 1, 2, 3, and 4.
+	//
+	// - If PeriodUnit is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+	//
+	// - If PeriodUnit is set to Year: 1, 2, 3, 4, and 5.
+	//
+	//
+	//
+	// <props="intl">
+	//
+	// - If PeriodUnit is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+	//
+	// - If PeriodUnit is set to Year: 1, 2, 3, 4, and 5.
 	//
 	// This parameter is required.
 	//
@@ -60,9 +72,23 @@ type RenewDedicatedHostsRequest struct {
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The unit of the renewal period. Valid values:
 	//
+	// <props="china">
+	//
+	// - Week
+	//
 	// - Month
 	//
 	// - Year
+	//
+	//
+	//
+	// <props="intl">
+	//
+	// - Month
+	//
+	// - Year
+	//
+	//
 	//
 	// Default value: Month.
 	//
@@ -70,7 +96,7 @@ type RenewDedicatedHostsRequest struct {
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The region ID of the dedicated host. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the dedicated host. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

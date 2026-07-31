@@ -25,23 +25,19 @@ type iDescribeNetworkInterfacesResponseBody interface {
 
 type DescribeNetworkInterfacesResponseBody struct {
 	NetworkInterfaceSets *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSets `json:"NetworkInterfaceSets,omitempty" xml:"NetworkInterfaceSets,omitempty" type:"Struct"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The pagination token returned in this call.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number of the returned page.
-	//
-	// > This parameter will be removed in the future. We recommend that you use the NextToken and MaxResults parameters for a paged query.
+	// The paging query parameter.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	//
-	// > This parameter will be removed in the future. We recommend that you use the NextToken and MaxResults parameters for a paged query.
+	// The paging query parameter.
 	//
 	// example:
 	//
@@ -53,9 +49,7 @@ type DescribeNetworkInterfacesResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of ENIs.
-	//
-	// > If you specify the `MaxResults` and `NextToken` parameters to perform a paged query, the value of the `TotalCount` response parameter is invalid.
+	// The total number of Elastic Network Interfaces (ENIs) returned.
 	//
 	// example:
 	//
@@ -757,6 +751,7 @@ func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfa
 
 type DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetIpv6SetsIpv6Set struct {
 	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
+	Primary     *bool   `json:"Primary,omitempty" xml:"Primary,omitempty"`
 }
 
 func (s DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetIpv6SetsIpv6Set) String() string {
@@ -771,8 +766,17 @@ func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfa
 	return s.Ipv6Address
 }
 
+func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetIpv6SetsIpv6Set) GetPrimary() *bool {
+	return s.Primary
+}
+
 func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetIpv6SetsIpv6Set) SetIpv6Address(v string) *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetIpv6SetsIpv6Set {
 	s.Ipv6Address = &v
+	return s
+}
+
+func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetIpv6SetsIpv6Set) SetPrimary(v bool) *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetIpv6SetsIpv6Set {
+	s.Primary = &v
 	return s
 }
 

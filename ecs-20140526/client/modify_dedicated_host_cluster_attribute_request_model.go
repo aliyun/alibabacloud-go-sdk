@@ -28,7 +28,7 @@ type iModifyDedicatedHostClusterAttributeRequest interface {
 }
 
 type ModifyDedicatedHostClusterAttributeRequest struct {
-	// The ID of the host group.
+	// The ID of the dedicated host cluster.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type ModifyDedicatedHostClusterAttributeRequest struct {
 	//
 	// dc-bp12wlf6am0vz9v2****
 	DedicatedHostClusterId *string `json:"DedicatedHostClusterId,omitempty" xml:"DedicatedHostClusterId,omitempty"`
-	// The name of the host group. It must be 2 to 128 characters in length and start with a letter. It can contain letters, digits, periods (.), underscores (_), and hyphens (-), and cannot contain `http://` or `https://`.
+	// The name of the dedicated host cluster. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter. The name cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// newClusterName
 	DedicatedHostClusterName *string `json:"DedicatedHostClusterName,omitempty" xml:"DedicatedHostClusterName,omitempty"`
-	// The description of the host group. It must be 2 to 256 characters in length, and cannot start with `http://` or `https://`.
+	// The description of the dedicated host cluster. The description must be 2 to 256 characters in length. The description cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ModifyDedicatedHostClusterAttributeRequest struct {
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the host group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the dedicated host cluster. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

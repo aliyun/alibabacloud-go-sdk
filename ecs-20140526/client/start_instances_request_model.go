@@ -28,11 +28,11 @@ type iStartInstancesRequest interface {
 }
 
 type StartInstancesRequest struct {
-	// The batch operation mode. Valid values:
+	// The batch operation pattern. Valid values:
 	//
-	// - AllTogether: starts all ECS instances at the same time. If all ECS instances are started, a success message is returned. If an ECS instance fails to be started, all the specified instances fail to be started and an error message is returned.
+	// - AllTogether: In this pattern, if all instances are started, a success message is returned. If any instance fails validation, all instances fail to start and a failed message is returned.
 	//
-	// - SuccessFirst: separately starts each ECS instance. The response contains the operation results of each ECS instance.
+	// - SuccessFirst: In this pattern, each instance is started separately. The response contains the operation result for each instance.
 	//
 	// Default value: AllTogether.
 	//
@@ -40,13 +40,13 @@ type StartInstancesRequest struct {
 	//
 	// AllTogether
 	BatchOptimization *string `json:"BatchOptimization,omitempty" xml:"BatchOptimization,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform only a dry run. Valid values:
 	//
-	// - true: performs only a dry run. The system checks the request for potential issues, including required parameters, request syntax, and instance status. If the request fails the dry run, an error message is returned. If the request passes the dry run, `DRYRUN.SUCCESS` is returned.
+	// - true: performs only a dry run. The system checks the required parameters, request format, and instance status. If the check fails, the corresponding fault is returned. If the check succeeds, `DRYRUN.SUCCESS` is returned.
 	//
-	// > If you set `BatchOptimization` to `SuccessFirst` and `DryRun` to true, only `DRYRUN.SUCCESS` is returned regardless of whether the request passes the dry run.
+	// > If the BatchOptimization parameter is set to `SuccessFirst`, the dry run with `DryRun=true` returns only `DRYRUN.SUCCESS`.
 	//
-	// - false: performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed.
+	// - false: sends a Normal request. After the check succeeds, the instances are started.
 	//
 	// Default value: false.
 	//
@@ -54,7 +54,7 @@ type StartInstancesRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The IDs of ECS instances. Valid values of N: 1 to 100.
+	// The list of instance IDs. Valid values of the array length: 1 to 100.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type StartInstancesRequest struct {
 	InstanceId   []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
 	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the ECS instance. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
+	// The region ID of the instances. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

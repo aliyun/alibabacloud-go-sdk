@@ -14,7 +14,6 @@ type iRecoverVirtualBorderRouterResponseBody interface {
 }
 
 type RecoverVirtualBorderRouterResponseBody struct {
-	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

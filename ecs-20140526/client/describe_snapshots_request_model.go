@@ -63,13 +63,13 @@ type iDescribeSnapshotsRequest interface {
 
 type DescribeSnapshotsRequest struct {
 	Filter []*DescribeSnapshotsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// The category of the snapshot. Valid values:
+	// The snapshot type. Valid values:
 	//
-	// - Standard: standard snapshot.
+	// - Standard: Normal snapshot.
 	//
 	// - Flash: local snapshot. This value is about to be deprecated. Local snapshots have been replaced by the snapshot instant access feature. The metric description is as follows:
 	//
-	//   - If you used local snapshots before December 14, 2020, you can use this parameter. The parameter is active.
+	//   - If you used local snapshots before December 14, 2020, you can use this parameter as it is active.
 	//
 	//   - If you did not use local snapshots before December 14, 2020, you cannot use this parameter.
 	//
@@ -77,7 +77,7 @@ type DescribeSnapshotsRequest struct {
 	//
 	//
 	//
-	// <props="china">For more information, see [Chinese site notice on snapshot service upgrade and new billing items on December 14](https://help.aliyun.com/noticelist/articleid/1060755542.html).
+	// <props="china">For more information, see [Chinese notice on Alibaba Cloud snapshot service upgrade and new billing items on December 14](https://help.aliyun.com/noticelist/articleid/1060755542.html).
 	//
 	// example:
 	//
@@ -89,11 +89,11 @@ type DescribeSnapshotsRequest struct {
 	//
 	// d-bp67acfmxazb4p****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request.
+	// Specifies whether to perform only a dry run. Valid values:
 	//
 	// - true: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized RAM users, and missing parameter values. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
 	//
-	// - false (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - false (default): performs a dry run and sends the request. If the request passes the dry run, a 2XX HTTP status code is returned and the resource status is queried.
 	//
 	// example:
 	//
@@ -111,13 +111,13 @@ type DescribeSnapshotsRequest struct {
 	//
 	// i-bp67acfmxazb4p****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the Key Management Service (KMS) key used by the data disk.
+	// The Key Management Service (KMS) key ID for the data disk.
 	//
 	// example:
 	//
 	// 0e478b7a-4262-4802-b8cb-00d3fb40****
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	// The maximum number of entries per page for paging. Maximum value: 100.
+	// The maximum number of entries per page for paging query. Maximum value: 100.
 	//
 	// Default value: 10.
 	//
@@ -133,13 +133,13 @@ type DescribeSnapshotsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// > This parameter is about to be deprecated. Use NextToken and MaxResults for paging instead.
+	// > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter is about to be deprecated. Use NextToken and MaxResults for paging instead.
+	// > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type DescribeSnapshotsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group. When you use this parameter to filter resources, the resource count cannot exceed 1000.
+	// The resource group ID. When you use this parameter to filter resources, the resource count cannot exceed 1000.
 	//
 	// > Filtering by default resource group is not supported.
 	//
@@ -163,25 +163,25 @@ type DescribeSnapshotsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The IDs of snapshots. The value is a JSON array that consists of up to 100 snapshot IDs. Separate the IDs with commas (,).
+	// The snapshot IDs. The value is a JSON array that consists of up to 100 snapshot IDs. Separate the IDs with commas (,).
 	//
 	// example:
 	//
 	// ["s-bp67acfmxazb4p****", "s-bp67acfmxazb5p****", … "s-bp67acfmxazb6p****"]
 	SnapshotIds *string `json:"SnapshotIds,omitempty" xml:"SnapshotIds,omitempty"`
-	// The ID of the snapshot chain.
+	// The snapshot chain ID.
 	//
 	// example:
 	//
 	// sl-bp1grgphbcc9brb5****
 	SnapshotLinkId *string `json:"SnapshotLinkId,omitempty" xml:"SnapshotLinkId,omitempty"`
-	// The name of the snapshot.
+	// The snapshot name.
 	//
 	// example:
 	//
 	// testSnapshotName
 	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
-	// The type of automatic creation. Valid values:
+	// The automatic creation type. Valid values:
 	//
 	//
 	//
@@ -189,7 +189,7 @@ type DescribeSnapshotsRequest struct {
 	//
 	// - user: manual snapshot.
 	//
-	// - all (default): All automatic creation types.
+	// - all (default): all automatic creation types.
 	//
 	// example:
 	//
@@ -203,13 +203,13 @@ type DescribeSnapshotsRequest struct {
 	//
 	// - data: data disk.
 	//
-	// > The value is case-insensitive.
+	// > The values are case-insensitive.
 	//
 	// example:
 	//
 	// system
 	SourceDiskType *string `json:"SourceDiskType,omitempty" xml:"SourceDiskType,omitempty"`
-	// The status of the snapshot. Valid values:
+	// The snapshot status. Valid values:
 	//
 	//
 	//
@@ -219,7 +219,7 @@ type DescribeSnapshotsRequest struct {
 	//
 	// - failed: The snapshot failed to be created.
 	//
-	// - all (default): All snapshot statuses.
+	// - all (default): all snapshot statuses.
 	//
 	// example:
 	//
@@ -546,7 +546,7 @@ func (s *DescribeSnapshotsRequestFilter) Validate() error {
 type DescribeSnapshotsRequestTag struct {
 	// The tag key of the snapshot. Valid values of N: 1 to 20.
 	//
-	// If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1000. If you use multiple tags to filter resources, the resource count with all specified tags attached cannot exceed 1000. If the resource count exceeds 1000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
+	// If you use a single tag to filter resources, the resource count with the tag cannot exceed 1000. If you use multiple tags to filter resources, the resource count with all the specified tags attached cannot exceed 1000. If the resource count exceeds 1000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
 	//
 	// example:
 	//

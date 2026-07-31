@@ -14,7 +14,7 @@ type iModifyCommandResponseBody interface {
 }
 
 type ModifyCommandResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

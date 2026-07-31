@@ -40,7 +40,7 @@ type iStartTerminalSessionShrinkRequest interface {
 }
 
 type StartTerminalSessionShrinkRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type StartTerminalSessionShrinkRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The command to run after the session is initiated. The command can be up to 512 characters in length.
 	//
-	// > After you specify `CommandLine`, you cannot specify `PortNumber` or `TargetServer`.
+	// > After you specify CommandLine, you cannot specify PortNumber or TargetServer.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type StartTerminalSessionShrinkRequest struct {
 	CommandLine *string `json:"CommandLine,omitempty" xml:"CommandLine,omitempty"`
 	// The network type of the WebSocket URL required for the remote connection to the instance. Valid values:
 	//
-	// - Internet: the Internet. This is the default value.
+	// - Internet: public network. This is the default value.
 	//
-	// - Intranet: the internal network.
+	// - Intranet: internal network.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ type StartTerminalSessionShrinkRequest struct {
 	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
 	// The session encryption configuration.
 	EncryptionOptionsShrink *string `json:"EncryptionOptions,omitempty" xml:"EncryptionOptions,omitempty"`
-	// The instance ID list.
+	// The list of instance IDs.
 	//
 	// This parameter is required.
 	InstanceId   []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
 	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the password for the user when you use Session Manager on a Windows instance. The name can be up to 255 characters in length.
+	// The name of the password for the user when using Session Manager on a Windows instance. The name can be up to 255 characters in length.
 	//
 	// When you want to use Session Manager on a Windows instance as a non-default user (System), specify both Username and this parameter. To reduce the risk of password leaks, store the plaintext password in the parameter repository of operations management and specify only the password name here. For more information, see [Encryption parameters](https://help.aliyun.com/document_detail/186828.html).
 	//
@@ -80,9 +80,9 @@ type StartTerminalSessionShrinkRequest struct {
 	//
 	// axtSecretPassword
 	PasswordName *string `json:"PasswordName,omitempty" xml:"PasswordName,omitempty"`
-	// The port number of the ECS instance for data forwarding. After this parameter is specified, Cloud Assistant Agent forwards data to the specified port for port forwarding. For example, SSH uses port 22.
+	// The port number of the ECS instance for data forwarding. After this parameter is set, the Cloud Assistant Agent forwards data to the specified port number for port forwarding. For example, SSH uses port 22.
 	//
-	// Default value: empty, which indicates that no port number is specified for data forwarding.
+	// Default value: empty, which indicates that no port number is set for data forwarding.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type StartTerminalSessionShrinkRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The address of the destination server in the VPC that you want to access through the instance.
 	//
-	// > If this parameter is not empty, `PortNumber` specifies the port number of the destination server in the VPC that you want to access through the managed instance.
+	// > When this parameter is not empty, PortNumber specifies the port number of the destination server in the VPC that you want to access through the managed instance.
 	//
 	// example:
 	//

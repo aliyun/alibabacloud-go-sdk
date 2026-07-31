@@ -28,7 +28,7 @@ type iDescribePrefixListAttributesResponseBody interface {
 }
 
 type DescribePrefixListAttributesResponseBody struct {
-	// The IP address family of the prefix list. Valid values:
+	// The address family of the prefix list. Valid values:
 	//
 	// - IPv4
 	//
@@ -51,13 +51,13 @@ type DescribePrefixListAttributesResponseBody struct {
 	// This is description.
 	Description *string                                          `json:"Description,omitempty" xml:"Description,omitempty"`
 	Entries     *DescribePrefixListAttributesResponseBodyEntries `json:"Entries,omitempty" xml:"Entries,omitempty" type:"Struct"`
-	// The maximum number of entries in the prefix list.
+	// The maximum number of entries that the prefix list supports.
 	//
 	// example:
 	//
 	// 10
 	MaxEntries *int32 `json:"MaxEntries,omitempty" xml:"MaxEntries,omitempty"`
-	// The ID of the prefix list.
+	// The prefix list ID.
 	//
 	// example:
 	//

@@ -137,9 +137,9 @@ type CreateLaunchTemplateRequest struct {
 	AutoReleaseTime *string `json:"AutoReleaseTime,omitempty" xml:"AutoReleaseTime,omitempty"`
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// - true: enables auto-renewal.
+	// - true: Auto-renewal is enabled.
 	//
-	// - false: does not enable auto-renewal.
+	// - false: Auto-renewal is disabled.
 	//
 	// Default value: false.
 	//
@@ -179,17 +179,17 @@ type CreateLaunchTemplateRequest struct {
 	//
 	// Standard
 	CreditSpecification *string `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
-	// The list of data disk information.
+	// The list of data disk configurations.
 	DataDisk []*CreateLaunchTemplateRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
-	// The release protection attribute of the instance. Specifies whether the instance can be released from the console or by calling [DeleteInstance](https://help.aliyun.com/document_detail/25507.html). Valid values:
+	// The release protection property of the instance. Specifies whether the instance can be released from the console or by calling [DeleteInstance](https://help.aliyun.com/document_detail/25507.html). Valid values:
 	//
-	// - true: enables release protection.
+	// - true: Release protection is enabled.
 	//
-	// - false: disables release protection.
+	// - false: Release protection is disabled.
 	//
 	// Default value: false.
 	//
-	// > This attribute applies only to pay-as-you-go instances. It can only restrict manual release operations and does not affect system-initiated releases.
+	// > This property applies only to pay-as-you-go instances and can only restrict manual release operations. System-initiated release operations are not affected.
 	//
 	// example:
 	//
@@ -209,7 +209,7 @@ type CreateLaunchTemplateRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to enable the operating system configuration of the instance.
 	//
-	// > This parameter will be deprecated. For better compatibility, use other parameters.
+	// > This parameter will be deprecated. Use other parameters for better compatibility.
 	//
 	// example:
 	//
@@ -217,11 +217,11 @@ type CreateLaunchTemplateRequest struct {
 	EnableVmOsConfig *bool `json:"EnableVmOsConfig,omitempty" xml:"EnableVmOsConfig,omitempty"`
 	// The hostname of the Elastic Compute Service server.
 	//
-	// -   The hostname cannot start or end with a period (.) or a hyphen (-). It cannot contain consecutive periods (.) or hyphens (-).
+	// -   The hostname cannot start or end with a period (.) or a hyphen (-), and cannot contain consecutive periods or hyphens.
 	//
-	// -   Windows instances: The hostname must be 2 to 15 characters in length and cannot contain periods (.) or consist entirely of digits. It can contain letters, digits, and hyphens (-).
+	// -   Windows instances: The hostname must be 2 to 15 characters in length and cannot contain periods (.) or consist entirely of digits. The hostname can contain letters, digits, and hyphens (-).
 	//
-	// -   Other instances (such as Linux): The hostname must be 2 to 64 characters in length. It can contain multiple periods (.), with each segment between periods allowing letters, digits, and hyphens (-).
+	// -   Other instances (such as Linux): The hostname must be 2 to 64 characters in length and can contain multiple periods (.). Each segment separated by a period can contain letters, digits, and hyphens (-).
 	//
 	// example:
 	//
@@ -229,9 +229,9 @@ type CreateLaunchTemplateRequest struct {
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	// Specifies whether to enable the access channel for instance metadata. Valid values:
 	//
-	// - enabled: enables the access channel.
+	// - enabled: The access channel is enabled.
 	//
-	// - disabled: disables the access channel.
+	// - disabled: The access channel is disabled.
 	//
 	// Default value: enabled.
 	//
@@ -241,7 +241,7 @@ type CreateLaunchTemplateRequest struct {
 	//
 	// enabled
 	HttpEndpoint *string `json:"HttpEndpoint,omitempty" xml:"HttpEndpoint,omitempty"`
-	// > This parameter is not available for use.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
@@ -249,15 +249,13 @@ type CreateLaunchTemplateRequest struct {
 	HttpPutResponseHopLimit *int32 `json:"HttpPutResponseHopLimit,omitempty" xml:"HttpPutResponseHopLimit,omitempty"`
 	// Specifies whether to forcefully use the security-hardened mode (IMDSv2) to access instance metadata. Valid values:
 	//
-	// - optional: does not forcefully use the security-hardened mode.
+	// - optional: The security-hardened mode is not forcefully used.
 	//
-	// - required: forcefully uses the security-hardened mode. After you set this value, instance metadata cannot be accessed in normal mode.
+	// - required: The security-hardened mode is forcefully used. After you set this value, instance metadata cannot be accessed in normal mode.
 	//
 	// Default value: optional.
 	//
-	// > For more information about the modes for
-	//
-	// [Instance metadata overview](https://help.aliyun.com/document_detail/108460.html)
+	// > For more information about the modes for accessing instance metadata, see [Overview of instance metadata](https://help.aliyun.com/document_detail/108460.html).
 	//
 	// example:
 	//
@@ -273,13 +271,13 @@ type CreateLaunchTemplateRequest struct {
 	ImageOptions *CreateLaunchTemplateRequestImageOptions `json:"ImageOptions,omitempty" xml:"ImageOptions,omitempty" type:"Struct"`
 	// The source of the image. Valid values:
 	//
-	// - system: a public image provided by Alibaba Cloud.
+	// - system: public images provided by Alibaba Cloud.
 	//
-	// - self: a custom image that you created.
+	// - self: custom images that you created.
 	//
-	// - others: a shared image from another Alibaba Cloud account.
+	// - others: shared images from other Alibaba Cloud accounts.
 	//
-	// - marketplace: an image from <props="china"><ph>[Alibaba Cloud Marketplace](https://market.aliyun.com/)</ph><props="intl"><ph>[Alibaba Cloud Marketplace](https://marketplace.alibabacloud.com/)</ph>. You can use Alibaba Cloud Marketplace images directly without subscribing to them first. Check the billing details of the Alibaba Cloud Marketplace image on your own.
+	// - marketplace: images available from <props="china"><ph>[Alibaba Cloud Marketplace](https://market.aliyun.com/)</ph><props="intl"><ph>[Alibaba Cloud Marketplace](https://marketplace.alibabacloud.com/)</ph>. You can use Alibaba Cloud Marketplace images directly without subscribing to them first. Check the billing details of the Alibaba Cloud Marketplace image on your own.
 	//
 	// example:
 	//
@@ -295,7 +293,7 @@ type CreateLaunchTemplateRequest struct {
 	//
 	// PrePaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The name of the instance. The name must be 2 to 128 characters in length and can contain letters, digits, and characters from the Unicode letter category (including Chinese characters). The name can contain colons (:), underscores (_), periods (.), and hyphens (-). The default value is the `InstanceId` of the instance.
+	// The name of the instance. The name must be 2 to 128 characters in length and can contain letters, digits, and other characters in the Unicode letter category. The name can contain colons (:), underscores (_), periods (.), and hyphens (-). The default value is the `InstanceId` of the instance.
 	//
 	// When you create multiple ECS instances, you can specify sequential instance names. The names can contain brackets ([]) and commas (,). For more information, see [Specify sequential instance names or hostnames](https://help.aliyun.com/document_detail/196048.html).
 	//
@@ -315,7 +313,7 @@ type CreateLaunchTemplateRequest struct {
 	//
 	// - PayByTraffic: pay-by-traffic.
 	//
-	// > In **pay-by-traffic*	- mode, the peak inbound and outbound bandwidths are used as bandwidth upper limits instead of guaranteed service metrics. When resource contention occurs, the peak bandwidth may be limited. If your workloads require guaranteed bandwidth, use the **pay-by-bandwidth*	- mode.
+	// > In **pay-by-traffic*	- mode, the peak inbound and outbound bandwidths are both upper limits and are not guaranteed. When resource contention occurs, the peak bandwidth may be throttled. If your workloads require guaranteed bandwidth, use the **pay-by-bandwidth*	- mode.
 	//
 	// example:
 	//
@@ -339,9 +337,9 @@ type CreateLaunchTemplateRequest struct {
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
 	// Specifies whether the instance is I/O optimized. Valid values:
 	//
-	// -   none: not I/O optimized.
+	// -   none: The instance is not I/O optimized.
 	//
-	// -   optimized: I/O optimized.
+	// -   optimized: The instance is I/O optimized.
 	//
 	// example:
 	//
@@ -353,7 +351,7 @@ type CreateLaunchTemplateRequest struct {
 	//
 	// 1
 	Ipv6AddressCount *int32 `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
-	// The name of the key pair.
+	// The name of the SSH key pair.
 	//
 	// -   For Windows instances, this parameter is ignored. Even if you specify this parameter, only the `Password` content is used.
 	//
@@ -363,7 +361,7 @@ type CreateLaunchTemplateRequest struct {
 	//
 	// testKeyPairName
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	// The name of the launch template. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. The name can contain digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the launch template. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -371,7 +369,7 @@ type CreateLaunchTemplateRequest struct {
 	//
 	// testLaunchTemplateName
 	LaunchTemplateName *string `json:"LaunchTemplateName,omitempty" xml:"LaunchTemplateName,omitempty"`
-	// The network interface controller (NIC) information.
+	// The network interface controller (NIC) configurations.
 	NetworkInterface []*CreateLaunchTemplateRequestNetworkInterface `json:"NetworkInterface,omitempty" xml:"NetworkInterface,omitempty" type:"Repeated"`
 	// The network type of the instance. Valid values:
 	//
@@ -385,9 +383,9 @@ type CreateLaunchTemplateRequest struct {
 	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Specifies whether to use the password preset in the image.
+	// Specifies whether to use the preset password of the image.
 	//
-	// > When you use this parameter, the Password parameter must be empty. Make sure that the image you use has a password configured.
+	// > When you use this parameter, the Password parameter must be empty. Make sure that the image you use has a password preset.
 	//
 	// example:
 	//
@@ -399,7 +397,7 @@ type CreateLaunchTemplateRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription billable methods duration. Valid values:
+	// The unit of the subscription duration. Valid values:
 	//
 	// <props="china">
 	//
@@ -417,7 +415,7 @@ type CreateLaunchTemplateRequest struct {
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// The private IP address of the instance.
 	//
-	// When you specify a private IP address for a VPC-connected ECS instance, the IP address must be from the idle CIDR block of the vSwitch (`VSwitchId`).
+	// When you set a private IP address for a VPC-connected ECS instance, the address must be from the idle CIDR block of the vSwitch specified by `VSwitchId`.
 	//
 	// example:
 	//
@@ -437,7 +435,7 @@ type CreateLaunchTemplateRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance, block storage, and elastic network interface controller (NIC) belong.
+	// The ID of the resource group to which the instance, block storage devices, and Elastic Network Interfaces (ENIs) belong.
 	//
 	// example:
 	//
@@ -447,15 +445,15 @@ type CreateLaunchTemplateRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether to enable security hardening for the operating system. Valid values:
 	//
-	// -   Active: enables security hardening. This value is applicable only to public images.
+	// -   Active: Security hardening is enabled. This value is applicable only to public images.
 	//
-	// -   Deactive: does not enable security hardening. This value is applicable to all image types.
+	// -   Deactive: Security hardening is disabled. This value is applicable to all image types.
 	//
 	// example:
 	//
 	// Deactive
 	SecurityEnhancementStrategy *string `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
-	// The ID of the security group to which the instance belongs. Instances in the same security group can communicate with each other. A security group can contain up to 1,000 instances.
+	// The ID of the security group to which the new instance belongs. Instances in the same security group can communicate with each other. A security group can contain up to 1,000 instances.
 	//
 	// > You cannot specify both `SecurityGroupId` and `SecurityGroupIds.N`.
 	//
@@ -475,13 +473,13 @@ type CreateLaunchTemplateRequest struct {
 	SecurityOptions *CreateLaunchTemplateRequestSecurityOptions `json:"SecurityOptions,omitempty" xml:"SecurityOptions,omitempty" type:"Struct"`
 	// The protection period of the spot instance. Unit: hours. Default value: 1. Valid values:
 	//
-	// - 1: After a spot instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After the 1-hour protection period ends, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain automatic release the instance.
+	// - 1: After a spot instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After the 1-hour protection period, the system compares the bid price with the market price and checks resource inventory to determine whether to retain automatic release the instance.
 	//
-	// - 0: After a spot instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system compares the bid price with the market price and checks the resource inventory to determine whether to retain automatic release the instance.
+	// - 0: After a spot instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system compares the bid price with the market price and checks resource inventory to determine whether to retain automatic release the instance.
 	//
-	// Alibaba Cloud sends an ECS system event notification 5 minutes before the instance is released. Spot instances are billed by second. Select an appropriate protection period based on the expected task execution duration.
+	// Alibaba Cloud sends an ECS system event notification 5 minutes before the instance is released. Spot instances are billed by second. Set the protection period based on the expected task execution duration.
 	//
-	// > This parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit or SpotAsPriceGo.
+	// > This parameter takes effect when SpotStrategy is set to SpotWithPriceLimit or SpotAsPriceGo.
 	//
 	// example:
 	//
@@ -511,7 +509,7 @@ type CreateLaunchTemplateRequest struct {
 	//
 	// <summary>Scenarios</summary>
 	//
-	// After you call CreateLaunchTemplate to create a template, the auto-generated default version uses these tags to tag instances, disks, and primary ENIs when you create instances.
+	// After you call CreateLaunchTemplate to create a template, the auto-generated default version uses these tags to tag instances, disks, and primary ENIs when instances are created.
 	//
 	// </details>
 	Tag []*CreateLaunchTemplateRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -1124,9 +1122,9 @@ type CreateLaunchTemplateRequestSystemDisk struct {
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
 	// Specifies whether to enable the performance burst feature. Valid values:
 	//
-	// - true: enables the performance burst feature.
+	// - true: Enabled.
 	//
-	// - false: does not enable the performance burst feature.
+	// - false: Disabled.
 	//
 	// example:
 	//
@@ -1140,7 +1138,7 @@ type CreateLaunchTemplateRequestSystemDisk struct {
 	//
 	// -   cloud_ssd: standard SSD.
 	//
-	// -   cloud_essd: enterprise SSD (ESSD). You can use the `SystemDisk.PerformanceLevel` parameter to set the performance level of the disk.
+	// -   cloud_essd: enterprise SSD. You can use the `SystemDisk.PerformanceLevel` parameter to set the performance level of the disk.
 	//
 	// - cloud_auto: ESSD AutoPL disk.
 	//
@@ -1154,9 +1152,9 @@ type CreateLaunchTemplateRequestSystemDisk struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// Specifies whether to release the system disk when the instance is released. Valid values:
 	//
-	// - true: releases the system disk when the instance is released.
+	// - true: The system disk is released together with the instance.
 	//
-	// - false: does not release the system disk when the instance is released.
+	// - false: The system disk is not released together with the instance.
 	//
 	// Default value: true.
 	//
@@ -1170,7 +1168,7 @@ type CreateLaunchTemplateRequestSystemDisk struct {
 	//
 	// testSystemDiskDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the system disk. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. The name can contain digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the system disk. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
@@ -1178,13 +1176,13 @@ type CreateLaunchTemplateRequestSystemDisk struct {
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
 	// Specifies whether to encrypt the system disk. Valid values:
 	//
-	// - true: encrypts the system disk.
+	// - true: The system disk is encrypted.
 	//
-	// - false: does not encrypt the system disk.
+	// - false: The system disk is not encrypted.
 	//
 	// Default value: false.
 	//
-	// > Zone D in Hong Kong (China) and Zone A in Singapore do not support system disk encryption when you create instances.
+	// > Zone D in Hong Kong (China) and Zone A in Singapore do not support system disk encryption during instance creation.
 	//
 	// example:
 	//
@@ -1202,7 +1200,7 @@ type CreateLaunchTemplateRequestSystemDisk struct {
 	//
 	// 0e478b7a-4262-4802-b8cb-00d3fb40****
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	// The performance level of the ESSD used as the system disk. Valid values:
+	// The performance level of the enterprise SSD used as the system disk. Valid values:
 	//
 	// - PL0 (default): a single disk can deliver up to 10,000 random read/write IOPS.
 	//
@@ -1212,7 +1210,7 @@ type CreateLaunchTemplateRequestSystemDisk struct {
 	//
 	// - PL3: a single disk can deliver up to 1,000,000 random read/write IOPS.
 	//
-	// For information about how to select an ESSD performance level, see [Enterprise SSDs](https://help.aliyun.com/document_detail/122389.html).
+	// For information about how to select an ESSD performance level, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
 	//
 	// example:
 	//
@@ -1371,9 +1369,9 @@ type CreateLaunchTemplateRequestDataDisk struct {
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
 	// Specifies whether to enable the performance burst feature. Valid values:
 	//
-	// - true: enables the performance burst feature.
+	// - true: Enabled.
 	//
-	// - false: does not enable the performance burst feature.
+	// - false: Disabled.
 	//
 	// example:
 	//
@@ -1395,17 +1393,17 @@ type CreateLaunchTemplateRequestDataDisk struct {
 	//
 	// - cloud_essd_entry: ESSD Entry disk.
 	//
-	//   > The cloud_essd_entry value is supported only when `InstanceType` is set to the `ecs.u1` or `ecs.e` instance family.
+	//   > The `cloud_essd_entry` value is supported only when `InstanceType` is set to an instance type in the `ecs.u1` or `ecs.e` family.
 	//
-	// - elastic_ephemeral_disk_standard: elastic ephemeral disk - standard.
+	// - elastic_ephemeral_disk_standard: elastic ephemeral disk - Standard.
 	//
 	// - elastic_ephemeral_disk_premium: elastic ephemeral disk - Premium Edition.
 	//
 	// For I/O optimized instances, the default value is cloud_efficiency. For non-I/O optimized instances, the default value is cloud.
 	//
-	// Default value description:
+	// Default value details:
 	//
-	// - If InstanceType is a retired instance type that is not I/O optimized, the default value of this parameter is `cloud`.
+	// - If InstanceType is set to a retired instance type that is not I/O optimized, the default parameter value is `cloud`.
 	//
 	// - In other cases, the default value is `cloud_efficiency`.<props="china">After January 30, 2026, if the I/O optimized instance type does not support cloud_auto, the default value is cloud_efficiency. Otherwise, the default value is cloud_auto, and the performance burst feature is enabled by default (which incurs additional fees. For details, see [Billing examples](~~368372#p_75k_2hp_7gp~~)). For more information, see [Change notice](https://www.aliyun.com/notice/117844).
 	//
@@ -1413,11 +1411,11 @@ type CreateLaunchTemplateRequestDataDisk struct {
 	//
 	// cloud_ssd
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// Specifies whether to release the data disk when the instance is released. Valid values:
+	// Specifies whether the data disk is released when the instance is released. Valid values:
 	//
-	// - true: releases the data disk when the instance is released.
+	// - true: The data disk is released together with the instance.
 	//
-	// - false: does not release the data disk when the instance is released.
+	// - false: The data disk is not released together with the instance.
 	//
 	// Default value: true.
 	//
@@ -1437,19 +1435,19 @@ type CreateLaunchTemplateRequestDataDisk struct {
 	//
 	// - More than 25 data disks: /dev/xvd`[aa-zz]`. For example, the 26th data disk is named /dev/xvdaa, the 27th data disk is named /dev/xvdab, and so on.
 	//
-	// > This parameter is intended only for full image (whole-machine image) scenarios. You can set this parameter to the mount point of a data disk in the full image and modify the corresponding `DataDisk.N.Size` and `DataDisk.N.Category` parameters to change the disk category and size of the data disk in the full image.
+	// > This parameter is intended only for full image (system image) scenarios. You can set this parameter to the mount point of a data disk in the full image and modify the corresponding `DataDisk.N.Size` and `DataDisk.N.Category` parameters to change the disk category and size of the data disk in the full image.
 	//
 	// example:
 	//
 	// /dev/xvdb
 	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
-	// The name of the data disk. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. The name can contain digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the data disk. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// testDataDiskName
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	// Specifies whether to encrypt the data disk.
+	// Specifies whether the data disk is encrypted.
 	//
 	// example:
 	//
@@ -1461,7 +1459,7 @@ type CreateLaunchTemplateRequestDataDisk struct {
 	//
 	// 0e478b7a-4262-4802-b8cb-00d****
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	// The performance level of the ESSD used as a data disk. The value of N must be the same as that in `DataDisk.N.Category=cloud_essd`. Valid values:
+	// The performance level of the enterprise SSD used as a data disk. The value of N must be the same as that in `DataDisk.N.Category=cloud_essd`. Valid values:
 	//
 	// - PL0: a single disk can deliver up to 10,000 random read/write IOPS.
 	//
@@ -1471,7 +1469,7 @@ type CreateLaunchTemplateRequestDataDisk struct {
 	//
 	// - PL3: a single disk can deliver up to 1,000,000 random read/write IOPS.
 	//
-	// For information about how to select an ESSD performance level, see [Enterprise SSDs](https://help.aliyun.com/document_detail/122389.html).
+	// For information about how to select an ESSD performance level, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
 	//
 	// example:
 	//
@@ -1515,9 +1513,9 @@ type CreateLaunchTemplateRequestDataDisk struct {
 	//
 	// 2000
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The ID of the snapshot used to create data disk N. Valid values of N: 1 to 16. After you specify `DataDisk.N.SnapshotId`, the `DataDisk.N.Size` parameter is ignored. The actual size of the created disk is the size of the specified snapshot.
+	// The snapshot ID used to create data disk N. Valid values of N: 1 to 16. After you specify `DataDisk.N.SnapshotId`, the `DataDisk.N.Size` parameter is ignored. The actual size of the created disk is the size of the specified snapshot.
 	//
-	// > You cannot use snapshots created on or before July 15, 2013. Such requests are rejected.
+	// > Snapshots created on or before July 15, 2013 cannot be used. Requests that use such snapshots are rejected.
 	//
 	// example:
 	//
@@ -1655,13 +1653,11 @@ func (s *CreateLaunchTemplateRequestDataDisk) Validate() error {
 }
 
 type CreateLaunchTemplateRequestImageOptions struct {
-	// Indicates whether the instance that uses this image supports logon with the ecs-user account.
+	// Specifies whether instances that use this image support logon with the ecs-user account. Valid values:
 	//
-	// Valid values:
+	// - true: Supported.
 	//
-	// - true: supported.
-	//
-	// - false: not supported.
+	// - false: Not supported.
 	//
 	// example:
 	//
@@ -1693,9 +1689,9 @@ func (s *CreateLaunchTemplateRequestImageOptions) Validate() error {
 type CreateLaunchTemplateRequestNetworkInterface struct {
 	// Specifies whether to retain the ENI when the instance is released. Valid values:
 	//
-	// - true: does not retain the ENI.
+	// - true: The ENI is not retained.
 	//
-	// - false: retains the ENI.
+	// - false: The ENI is retained.
 	//
 	// Default value: true.
 	//
@@ -1711,7 +1707,7 @@ type CreateLaunchTemplateRequestNetworkInterface struct {
 	//
 	// testEniDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The type of the network interface controller (NIC). Valid values of N: 1 to 2. If you set N to 1, you can configure a primary or secondary NIC. If you set N to 2, you must configure one primary NIC and one secondary NIC.
+	// The type of the network interface controller (NIC). Valid values of N: 1 to 2. If you set 1 NIC, you can set either a primary or secondary NIC. If you set 2 NICs, you must set one primary NIC and one secondary NIC.
 	//
 	// Valid values:
 	//
@@ -1727,9 +1723,9 @@ type CreateLaunchTemplateRequestNetworkInterface struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The name of the network interface controller (NIC).
 	//
-	// Take note of the following items:
+	// Note the following items:
 	//
-	// - Valid values of N: 1 to 2. If you set N to 1, you can configure a primary or secondary NIC. If you set N to 2, you must configure one primary NIC and one secondary NIC.
+	// - Valid values of N: 1 to 2. If you set 1 NIC, you can set either a primary or secondary NIC. If you set 2 NICs, you must set one primary NIC and one secondary NIC.
 	//
 	// - If `NetworkInterface.N.InstanceType` is set to `Primary`, you do not need to set this parameter.
 	//
@@ -1749,31 +1745,31 @@ type CreateLaunchTemplateRequestNetworkInterface struct {
 	NetworkInterfaceTrafficMode *string `json:"NetworkInterfaceTrafficMode,omitempty" xml:"NetworkInterfaceTrafficMode,omitempty"`
 	// Adds a network interface controller (NIC) and sets the primary IP address.
 	//
-	// Take note of the following items:
+	// Note the following items:
 	//
 	// - Valid values of N: 1 to 2.
 	//
-	//     - If you set N to 1, you can configure a primary or secondary NIC. If the `Amount` parameter is set to a value greater than 1 and you configure a primary NIC with this parameter specified, consecutive primary IP addresses starting from the specified IP address are allocated to multiple ECS instances in batch. In this case, you cannot attach a secondary NIC to the instances.
+	//     - If you set 1 NIC, you can set either a primary or secondary NIC. If `Amount` is greater than 1 and you set a primary NIC with this parameter specified, the specified primary IP address is used as the starting address to sequentially allocate consecutive primary IP addresses to multiple ECS instances in batch. In this case, you cannot attach a secondary NIC to the instance.
 	//
-	//     - If you set N to 2, you must configure one primary NIC and one secondary NIC. If the `Amount` parameter is set to a value greater than 1 and this parameter is specified for the primary NIC, you cannot configure a secondary NIC (that is, you cannot set `NetworkInterface.2.InstanceType=Secondary`).
+	//     - If you set 2 NICs, you must set one primary NIC and one secondary NIC. If `Amount` is greater than 1 and this parameter is set for the primary NIC, you cannot set a secondary NIC (that is, you cannot set `NetworkInterface.2.InstanceType=Secondary`).
 	//
 	// - If `NetworkInterface.N.InstanceType` is set to `Primary`, this parameter has the same effect as `PrivateIpAddress`, but you cannot specify both this parameter and `PrivateIpAddress`.
 	//
-	// - If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, this parameter specifies the primary IP address of the secondary NIC. By default, an IP address is randomly selected from the vSwitch CIDR block to which the NIC belongs.
+	// - If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, this parameter sets the primary IP address for the secondary NIC. By default, an IP address is randomly selected from the vSwitch CIDR block to which the NIC belongs.
 	//
-	// > When you create an ECS instance, you can attach up to one secondary NIC. After the instance is created, you can invoke [CreateNetworkInterface](https://help.aliyun.com/document_detail/58504.html) and [AttachNetworkInterface](https://help.aliyun.com/document_detail/58515.html) to attach more secondary NICs.
+	// > When you invoke the CreateLaunchTemplate operation, you can attach up to one secondary NIC. After the instance is created, you can call [CreateNetworkInterface](https://help.aliyun.com/document_detail/58504.html) and [AttachNetworkInterface](https://help.aliyun.com/document_detail/58515.html) to attach more secondary NICs.
 	//
 	// example:
 	//
 	// ``192.168.**.**``
 	PrimaryIpAddress *string `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty"`
-	// The ID of the security group to which the network interface controller (NIC) belongs.
+	// The security group ID of the network interface controller (NIC).
 	//
-	// Take note of the following items:
+	// Note the following items:
 	//
-	// - Valid values of N: 1 to 2. If you set N to 1, you can configure a primary or secondary NIC. If you set N to 2, you must configure one primary NIC and one secondary NIC.
+	// - Valid values of N: 1 to 2. If you set 1 NIC, you can set either a primary or secondary NIC. If you set 2 NICs, you must set one primary NIC and one secondary NIC.
 	//
-	// - If `NetworkInterface.N.InstanceType` is set to `Primary`, you must set this parameter. This parameter has the same effect as `SecurityGroupId`, but you cannot specify `SecurityGroupId`, `SecurityGroupIds.N`, or `NetworkInterface.N.SecurityGroupIds.N`.
+	// - If `NetworkInterface.N.InstanceType` is set to `Primary`, this parameter is required. This parameter has the same effect as `SecurityGroupId`, but you cannot specify `SecurityGroupId`, `SecurityGroupIds.N`, or `NetworkInterface.N.SecurityGroupIds.N` at the same time.
 	//
 	// - If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, this parameter is optional. Default value: the security group of the ECS instance.
 	//
@@ -1783,13 +1779,13 @@ type CreateLaunchTemplateRequestNetworkInterface struct {
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The IDs of one or more security groups to which the network interface controller (NIC) belongs.
 	//
-	// - The first N has a valid value range of 1 to 2. If you set N to 1, you can configure a primary or secondary NIC. If you set N to 2, you must configure one primary NIC and one secondary NIC.
+	// - The first N has a valid value range of 1 to 2. If you set 1 NIC, you can set either a primary or secondary NIC. If you set 2 NICs, you must set one primary NIC and one secondary NIC.
 	//
-	// - The second N specifies one or more security group IDs. The valid value range of N depends on the maximum number of security groups to which an instance can belong. For more information, see [Security group limits](~~25412#SecurityGroupQuota1~~).
+	// - The second N indicates that you can specify one or more security group IDs. The valid value range of N depends on the maximum number of security groups to which an instance can belong. For more information, see [Security group limits](~~25412#SecurityGroupQuota1~~).
 	//
-	// Take note of the following items:
+	// Note the following items:
 	//
-	// - If `NetworkInterface.N.InstanceType` is set to `Primary`, you must set this parameter or `NetworkInterface.N.SecurityGroupId`. This parameter has the same effect as `SecurityGroupIds.N`, but you cannot specify `SecurityGroupId`, `SecurityGroupIds.N`, or `NetworkInterface.N.SecurityGroupId`.
+	// - If `NetworkInterface.N.InstanceType` is set to `Primary`, you must set this parameter or `NetworkInterface.N.SecurityGroupId`. This parameter has the same effect as `SecurityGroupIds.N`, but you cannot specify `SecurityGroupId`, `SecurityGroupIds.N`, or `NetworkInterface.N.SecurityGroupId` at the same time.
 	//
 	// - If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, this parameter is optional. Default value: the security group of the ECS instance.
 	//
@@ -1799,9 +1795,9 @@ type CreateLaunchTemplateRequestNetworkInterface struct {
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
 	// The vSwitch ID of the network interface controller (NIC).
 	//
-	// Take note of the following items:
+	// Note the following items:
 	//
-	// - Valid values of N: 1 to 2. If you set N to 1, you can configure a primary or secondary NIC. If you set N to 2, you must configure one primary NIC and one secondary NIC.
+	// - Valid values of N: 1 to 2. If you set 1 NIC, you can set either a primary or secondary NIC. If you set 2 NICs, you must set one primary NIC and one secondary NIC.
 	//
 	// - If `NetworkInterface.N.InstanceType` is set to `Primary`, this parameter is required. This parameter has the same effect as `VSwitchId`, but you cannot specify both this parameter and `VSwitchId`.
 	//
@@ -1907,6 +1903,7 @@ func (s *CreateLaunchTemplateRequestNetworkInterface) Validate() error {
 }
 
 type CreateLaunchTemplateRequestSecurityOptions struct {
+	EnableSecureBoot *bool `json:"EnableSecureBoot,omitempty" xml:"EnableSecureBoot,omitempty"`
 	// The trusted system mode. Set the value to vTPM.
 	//
 	// The following instance families support trusted system mode:
@@ -1915,13 +1912,13 @@ type CreateLaunchTemplateRequestSecurityOptions struct {
 	//
 	// - Enhanced instance families (g7t, c7t, and r7t).
 	//
-	// When you create ECS instances of the preceding instance types, you must configure this parameter. Take note of the following items:
+	// When you create ECS instances of the preceding instance types, you must set this parameter. Take note of the following items:
 	//
-	// - To use Alibaba Cloud Trusted System, set this parameter to vTPM. Then, Alibaba Cloud Trusted System performs trusted verification when the instance starts.
+	// - If you use the Alibaba Cloud Trusted System, set this parameter to vTPM. The Alibaba Cloud Trusted System performs trusted verification when the instance starts.
 	//
-	// - If you do not use Alibaba Cloud Trusted System, you do not need to configure this parameter. However, if the ECS instance that you create uses the Enclave-based confidential computing pattern (`SecurityOptions.ConfidentialComputingMode=Enclave`), the trusted system is also enabled for the instance.
+	// - If you do not use the Alibaba Cloud Trusted System, you do not need to set this parameter. However, if the ECS instance that you create uses the Enclave-based confidential computing mode (`SecurityOptions.ConfidentialComputingMode=Enclave`), the trusted system is also enabled for the instance.
 	//
-	// - When you use OpenAPI to create a trusted ECS instance, you can only invoke `RunInstances`. `CreateInstance` does not support the `SecurityOptions.TrustedSystemMode` parameter.
+	// - When you use an OpenAPI operation to create a trusted ECS instance, you can invoke only `RunInstances`. `CreateInstance` does not support the `SecurityOptions.TrustedSystemMode` parameter.
 	//
 	// > If you specify the instance as a trusted instance during creation, you can replace the system disk only with an image that supports the trusted system.
 	//
@@ -1941,8 +1938,17 @@ func (s CreateLaunchTemplateRequestSecurityOptions) GoString() string {
 	return s.String()
 }
 
+func (s *CreateLaunchTemplateRequestSecurityOptions) GetEnableSecureBoot() *bool {
+	return s.EnableSecureBoot
+}
+
 func (s *CreateLaunchTemplateRequestSecurityOptions) GetTrustedSystemMode() *string {
 	return s.TrustedSystemMode
+}
+
+func (s *CreateLaunchTemplateRequestSecurityOptions) SetEnableSecureBoot(v bool) *CreateLaunchTemplateRequestSecurityOptions {
+	s.EnableSecureBoot = &v
+	return s
 }
 
 func (s *CreateLaunchTemplateRequestSecurityOptions) SetTrustedSystemMode(v string) *CreateLaunchTemplateRequestSecurityOptions {

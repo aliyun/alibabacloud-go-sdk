@@ -46,9 +46,9 @@ type GetInstanceConsoleOutputRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to remove formatting symbols from the returned text. Valid values:
 	//
-	// - true: removes formatting symbols.
+	// - true: Remove formatting symbols.
 	//
-	// - false: does not remove formatting symbols.
+	// - false: Do not remove formatting symbols.
 	//
 	// Default value: false.
 	//

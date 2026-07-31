@@ -16,9 +16,9 @@ type iModifyManagedInstanceResponseBody interface {
 }
 
 type ModifyManagedInstanceResponseBody struct {
-	// The name of the managed instance.
+	// The information about the managed instance.
 	Instance *ModifyManagedInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
-	// Details of the managed instance.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ func (s *ModifyManagedInstanceResponseBody) Validate() error {
 }
 
 type ModifyManagedInstanceResponseBodyInstance struct {
-	// The managed instance ID.
+	// The ID of the managed instance.
 	//
 	// example:
 	//
 	// mi-hz01nmcf****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the managed instance.
+	// The name of the managed instance.
 	//
 	// example:
 	//

@@ -67,6 +67,8 @@ type iDescribeInstanceAttributeResponseBody interface {
 	GetRequestId() *string
 	SetSecurityGroupIds(v *DescribeInstanceAttributeResponseBodySecurityGroupIds) *DescribeInstanceAttributeResponseBody
 	GetSecurityGroupIds() *DescribeInstanceAttributeResponseBodySecurityGroupIds
+	SetSecurityOptions(v *DescribeInstanceAttributeResponseBodySecurityOptions) *DescribeInstanceAttributeResponseBody
+	GetSecurityOptions() *DescribeInstanceAttributeResponseBodySecurityOptions
 	SetSerialNumber(v string) *DescribeInstanceAttributeResponseBody
 	GetSerialNumber() *string
 	SetStatus(v string) *DescribeInstanceAttributeResponseBody
@@ -122,7 +124,7 @@ type DescribeInstanceAttributeResponseBody struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The Elastic IP Address (EIP) binding information.
 	EipAddress *DescribeInstanceAttributeResponseBodyEipAddress `json:"EipAddress,omitempty" xml:"EipAddress,omitempty" type:"Struct"`
-	// Indicates whether the Jumbo Frame feature is enabled for the ECS instance. Valid values:
+	// Indicates whether the Jumbo frame feature is enabled for the ECS instance. Valid values:
 	//
 	// - true: enabled.
 	//
@@ -191,7 +193,7 @@ type DescribeInstanceAttributeResponseBody struct {
 	//
 	//
 	//
-	// - vpc: virtual private cloud (VPC).
+	// - vpc: Virtual Private Cloud (VPC).
 	//
 	// - classic: classic network. The classic network is deprecated. For more information, see [Deprecation notice](https://help.aliyun.com/document_detail/2833134.html).
 	//
@@ -211,7 +213,7 @@ type DescribeInstanceAttributeResponseBody struct {
 	//
 	// - PayByTraffic: pay-by-traffic.
 	//
-	// > In **pay-by-traffic*	- mode, the peak inbound and outbound bandwidths are used as upper limits for bandwidths and are not guaranteed. When resource contention occurs, the peak bandwidths may be limited. If your workloads require guaranteed bandwidth, use the **pay-by-bandwidth*	- mode.
+	// > In **pay-by-traffic*	- mode, the peak inbound and outbound bandwidths are used as the upper limits of bandwidths instead of guaranteed performance metrics. When resource contention occurs, the peak bandwidths may be limited. If you require guaranteed bandwidth, use the **pay-by-bandwidth*	- mode.
 	//
 	// example:
 	//
@@ -264,6 +266,7 @@ type DescribeInstanceAttributeResponseBody struct {
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId        *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecurityGroupIds *DescribeInstanceAttributeResponseBodySecurityGroupIds `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
+	SecurityOptions  *DescribeInstanceAttributeResponseBodySecurityOptions  `json:"SecurityOptions,omitempty" xml:"SecurityOptions,omitempty" type:"Struct"`
 	// The serial number of the instance.
 	//
 	// example:
@@ -288,11 +291,11 @@ type DescribeInstanceAttributeResponseBody struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates whether the instance continues to be billed after it is stopped. Valid values:
 	//
-	// - KeepCharging: The instance continues to be billed after it is stopped. Inventory resources are reserved for the instance.
+	// - KeepCharging: The instance continues to be billed after it is stopped. Resources such as vCPUs, memory, and public IP addresses are retained.
 	//
-	// - StopCharging: The instance is not billed after it is stopped. After the instance is stopped, its resources such as vCPUs, memory, and public IP addresses are released. Whether the instance can be restarted depends on resource availability in the current region.
+	// - StopCharging: The instance is not billed after it is stopped. Resources such as vCPUs, memory, and public IP addresses are released. Whether the instance can be restarted depends on resource availability in the current region.
 	//
-	// - Not-applicable: The instance does not support the No Fees for Stopped Instances feature.
+	// - Not-applicable: The instance does not support the economical mode.
 	//
 	// example:
 	//
@@ -438,6 +441,10 @@ func (s *DescribeInstanceAttributeResponseBody) GetRequestId() *string {
 
 func (s *DescribeInstanceAttributeResponseBody) GetSecurityGroupIds() *DescribeInstanceAttributeResponseBodySecurityGroupIds {
 	return s.SecurityGroupIds
+}
+
+func (s *DescribeInstanceAttributeResponseBody) GetSecurityOptions() *DescribeInstanceAttributeResponseBodySecurityOptions {
+	return s.SecurityOptions
 }
 
 func (s *DescribeInstanceAttributeResponseBody) GetSerialNumber() *string {
@@ -609,6 +616,11 @@ func (s *DescribeInstanceAttributeResponseBody) SetSecurityGroupIds(v *DescribeI
 	return s
 }
 
+func (s *DescribeInstanceAttributeResponseBody) SetSecurityOptions(v *DescribeInstanceAttributeResponseBodySecurityOptions) *DescribeInstanceAttributeResponseBody {
+	s.SecurityOptions = v
+	return s
+}
+
 func (s *DescribeInstanceAttributeResponseBody) SetSerialNumber(v string) *DescribeInstanceAttributeResponseBody {
 	s.SerialNumber = &v
 	return s
@@ -672,6 +684,11 @@ func (s *DescribeInstanceAttributeResponseBody) Validate() error {
 	}
 	if s.SecurityGroupIds != nil {
 		if err := s.SecurityGroupIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityOptions != nil {
+		if err := s.SecurityOptions.Validate(); err != nil {
 			return err
 		}
 	}
@@ -747,13 +764,13 @@ type DescribeInstanceAttributeResponseBodyEipAddress struct {
 	//
 	// - PayByTraffic: pay-by-traffic.
 	//
-	// > In **pay-by-traffic*	- mode, the peak inbound and outbound bandwidths are used as upper limits for bandwidths and are not guaranteed. When resource contention occurs, the peak bandwidths may be limited. If your workloads require guaranteed bandwidth, use the **pay-by-bandwidth*	- mode.
+	// > In **pay-by-traffic*	- mode, the peak inbound and outbound bandwidths are used as the upper limits of bandwidths instead of guaranteed performance metrics. When resource contention occurs, the peak bandwidths may be limited. If you require guaranteed bandwidth, use the **pay-by-bandwidth*	- mode.
 	//
 	// example:
 	//
 	// PayByTraffic
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The EIP.
+	// The EIP address.
 	//
 	// example:
 	//
@@ -837,13 +854,13 @@ func (s *DescribeInstanceAttributeResponseBodyInnerIpAddress) Validate() error {
 type DescribeInstanceAttributeResponseBodyNetworkOptions struct {
 	// The bandwidth weight.
 	//
-	// Different instance types support different values. Call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) to query the bandwidth weight values supported by the current instance type.
+	// Different instance types support different values. You can call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) to query the bandwidth weight values supported by the current instance type.
 	//
 	// example:
 	//
 	// Vpc-L1
 	BandwidthWeighting *string `json:"BandwidthWeighting,omitempty" xml:"BandwidthWeighting,omitempty"`
-	// Indicates whether the Jumbo Frame feature is enabled for the instance. Valid values:
+	// Indicates whether the Jumbo frame feature is enabled for the instance. Valid values:
 	//
 	// - true: enabled.
 	//
@@ -1016,6 +1033,31 @@ func (s *DescribeInstanceAttributeResponseBodySecurityGroupIds) SetSecurityGroup
 }
 
 func (s *DescribeInstanceAttributeResponseBodySecurityGroupIds) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeInstanceAttributeResponseBodySecurityOptions struct {
+	EnableSecureBoot *bool `json:"EnableSecureBoot,omitempty" xml:"EnableSecureBoot,omitempty"`
+}
+
+func (s DescribeInstanceAttributeResponseBodySecurityOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeInstanceAttributeResponseBodySecurityOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceAttributeResponseBodySecurityOptions) GetEnableSecureBoot() *bool {
+	return s.EnableSecureBoot
+}
+
+func (s *DescribeInstanceAttributeResponseBodySecurityOptions) SetEnableSecureBoot(v bool) *DescribeInstanceAttributeResponseBodySecurityOptions {
+	s.EnableSecureBoot = &v
+	return s
+}
+
+func (s *DescribeInstanceAttributeResponseBodySecurityOptions) Validate() error {
 	return dara.Validate(s)
 }
 

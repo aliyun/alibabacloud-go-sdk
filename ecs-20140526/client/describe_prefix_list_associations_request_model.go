@@ -28,9 +28,9 @@ type iDescribePrefixListAssociationsRequest interface {
 }
 
 type DescribePrefixListAssociationsRequest struct {
-	// The maximum number of entries per page.
+	// The number of entries per page for paging.
 	//
-	// Valid values: 1 to 100.
+	// Maximum value: 100.
 	//
 	// Default value: 10.
 	//
@@ -38,7 +38,7 @@ type DescribePrefixListAssociationsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token. Set the value to the `NextToken` value returned in the previous call to the DescribePrefixListAssociations operation. Leave this parameter empty the first time you call this operation.
+	// The pagination token. Set this parameter to the value of `NextToken` returned in the previous call. You do not need to set this parameter for the first request.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribePrefixListAssociationsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the prefix list.
+	// The prefix list ID.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type DescribePrefixListAssociationsRequest struct {
 	//
 	// pl-x1j1k5ykzqlixdcy****
 	PrefixListId *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
-	// The region ID of the prefix list. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

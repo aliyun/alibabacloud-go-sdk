@@ -16,13 +16,15 @@ type iResizeDiskResponseBody interface {
 }
 
 type ResizeDiskResponseBody struct {
-	// The ID of the request.
+	// The order ID.
+	//
+	// > An order ID is returned only when you expand a subscription disk.
 	//
 	// example:
 	//
 	// 20413515388****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

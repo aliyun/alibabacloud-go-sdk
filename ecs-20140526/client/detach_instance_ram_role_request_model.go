@@ -24,7 +24,7 @@ type iDetachInstanceRamRoleRequest interface {
 }
 
 type DetachInstanceRamRoleRequest struct {
-	// The IDs of ECS instances. You can specify 1 to 100 instance IDs.
+	// The instance IDs of the instances from which to detach the RAM role. Array length: 1 to 100.
 	//
 	// This parameter is required.
 	//
@@ -33,13 +33,13 @@ type DetachInstanceRamRoleRequest struct {
 	// ["i-bp67acfmxazb4p****", "i-bp67acfmxazb5p****", "i-bp67acfmxazb6p****"…]
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the instance RAM role. You can call the [ListRoles](https://help.aliyun.com/document_detail/28713.html) operation of RAM to query the names of available instance RAM roles.
+	// The name of the instance RAM role to detach. You can call the RAM API [ListRoles](https://help.aliyun.com/document_detail/28713.html) to query the names of instance RAM roles that you have created.
 	//
 	// example:
 	//
 	// RamRoleTest
 	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

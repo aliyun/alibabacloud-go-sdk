@@ -24,7 +24,7 @@ type iAttachClassicLinkVpcRequest interface {
 }
 
 type AttachClassicLinkVpcRequest struct {
-	// The ID of the instance that is deployed in the classic network. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation to query available instances.
+	// The instance ID of the classic network type instance. You can invoke [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) to query your active instances.
 	//
 	// This parameter is required.
 	//
@@ -33,7 +33,7 @@ type AttachClassicLinkVpcRequest struct {
 	// i-bp1gtjxuuvwj17zr****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -43,7 +43,7 @@ type AttachClassicLinkVpcRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the VPC for which the ClassicLink feature is enabled. You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to query available VPCs.
+	// The ID of the VPC for which you enable ClassicLink. You can invoke [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) to query your active VPCs.
 	//
 	// This parameter is required.
 	//

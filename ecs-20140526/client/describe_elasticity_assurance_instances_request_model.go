@@ -29,7 +29,7 @@ type iDescribeElasticityAssuranceInstancesRequest interface {
 
 type DescribeElasticityAssuranceInstancesRequest struct {
 	PrivatePoolOptions *DescribeElasticityAssuranceInstancesRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
-	// The number of entries to return on each page.
+	// The maximum number of entries per page for a paging query.
 	//
 	// Maximum value: 100.
 	//
@@ -39,7 +39,7 @@ type DescribeElasticityAssuranceInstancesRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to start the query. Set the value to the NextToken value obtained from the response to the preceding request.
+	// The pagination token for the elasticity assurance query. Obtain the value from the result of the previous request.
 	//
 	// example:
 	//
@@ -47,7 +47,7 @@ type DescribeElasticityAssuranceInstancesRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the elasticity assurance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the elasticity assurance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

@@ -32,25 +32,18 @@ type iExportImageRequest interface {
 }
 
 type ExportImageRequest struct {
-  // Specifies whether to perform a dry run to check the request\\"s validity without actually exporting the image. Valid values:
-  // 
-  // - `true`: Performs a dry run. If the check succeeds, the `DryRunOperation` error code is returned. If the check fails, an error is returned.
-  // 
-  // - `false`: Sends a normal request. If the check succeeds, the image is exported.
-  // 
-  // Default value: false.
   DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-  // The format of the exported image file. Valid values:
+  // The format in which to export the image. Valid values:
   // 
-  // - raw.
+  // - raw
   // 
-  // - vhd.
+  // - vhd
   // 
-  // - qcow2.
+  // - qcow2
   // 
-  // - vmdk.
+  // - vmdk
   // 
-  // - vdi.
+  // - vdi
   // 
   // Default value: raw.
   // 
@@ -66,7 +59,7 @@ type ExportImageRequest struct {
   // 
   // m-bp67acfmxazb4p****
   ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-  // The destination OSS bucket for the exported image.
+  // The OSS bucket in which to store the exported image.
   // 
   // This parameter is required.
   // 
@@ -74,14 +67,14 @@ type ExportImageRequest struct {
   // 
   // testexportImage
   OSSBucket *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
-  // The prefix for the OSS object. The prefix must be 1 to 30 characters in length and can consist of letters and digits.
+  // The prefix for the OSS object. The prefix can contain digits and letters and must be 1 to 30 characters in length.
   // 
   // example:
   // 
   // EcsExport
   OSSPrefix *string `json:"OSSPrefix,omitempty" xml:"OSSPrefix,omitempty"`
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-  // The region ID of the custom image. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
+  // The region ID of the custom image. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
   // 
   // This parameter is required.
   // 

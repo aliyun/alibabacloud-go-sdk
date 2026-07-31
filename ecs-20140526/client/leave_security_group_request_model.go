@@ -30,15 +30,15 @@ type iLeaveSecurityGroupRequest interface {
 type LeaveSecurityGroupRequest struct {
 	// The instance ID.
 	//
-	// > If you configure this parameter, you cannot configure `NetworkInterfaceId`.
+	// > If you specify this parameter, leave NetworkInterfaceId empty.
 	//
 	// example:
 	//
 	// i-bp67acfmxazb4p****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ENI ID.
+	// The Elastic Network Interface (ENI) ID.
 	//
-	// > If you configure this parameter, you cannot configure `InstanceId`.
+	// > If you specify this parameter, leave InstanceId empty.
 	//
 	// example:
 	//
@@ -46,11 +46,11 @@ type LeaveSecurityGroupRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
-	// - If you want to remove an instance from a security group, you do not need to specify a region ID.
+	// - You do not need to specify the region ID when removing an instance from a security group.
 	//
-	// - If you want to remove an ENI from a security group, you must specify the ID of the region in which the ENI resides.
+	// - You must specify the region ID of the Elastic Network Interface (ENI) when removing an ENI from a security group.
 	//
 	// example:
 	//

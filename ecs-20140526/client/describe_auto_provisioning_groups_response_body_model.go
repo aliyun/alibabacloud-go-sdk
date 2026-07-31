@@ -22,7 +22,6 @@ type iDescribeAutoProvisioningGroupsResponseBody interface {
 }
 
 type DescribeAutoProvisioningGroupsResponseBody struct {
-	// The auto provisioning groups.
 	AutoProvisioningGroups *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroups `json:"AutoProvisioningGroups,omitempty" xml:"AutoProvisioningGroups,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -42,7 +41,7 @@ type DescribeAutoProvisioningGroupsResponseBody struct {
 	//
 	// 745CEC9F-0DD7-4451-9FE7-8B752F39****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of auto provisioning groups found.
+	// The total number of queried auto-provisioning groups.
 	//
 	// example:
 	//

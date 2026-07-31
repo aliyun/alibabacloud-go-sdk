@@ -41,7 +41,7 @@ type AttachInstanceRamRoleResponseBody struct {
 	//
 	// D9553E4C-6C3A-4D66-AE79-9835AF705639
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of instances to which you attempted to attach the instance RAM role.
+	// The total number of instances to which the instance RAM role is attached.
 	//
 	// example:
 	//

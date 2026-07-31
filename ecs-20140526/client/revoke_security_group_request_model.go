@@ -108,7 +108,7 @@ type RevokeSecurityGroupRequest struct {
 	Ipv6SourceCidrIp *string `json:"Ipv6SourceCidrIp,omitempty" xml:"Ipv6SourceCidrIp,omitempty"`
 	// Deprecated
 	//
-	// Deprecated. Use `Permissions.N.NicType` to specify the network interface type.
+	// Deprecated. Use `Permissions.N.NicType` to specify the NIC type.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type RevokeSecurityGroupRequest struct {
 	Permissions []*RevokeSecurityGroupRequestPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// Deprecated. Use `Permissions.N.Policy` to set the access permissions.
+	// Deprecated. Use `Permissions.N.Policy` in Settings to specify the access permissions.
 	//
 	// example:
 	//
@@ -456,9 +456,9 @@ type RevokeSecurityGroupRequestPermissions struct {
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination IPv4 CIDR block. CIDR blocks and IPv4 address range are supported.
+	// The destination IPv4 CIDR block. CIDR blocks and IPv4 address ranges are supported.
 	//
-	// This parameter is used for quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
+	// This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
 	//
 	// example:
 	//
@@ -484,27 +484,27 @@ type RevokeSecurityGroupRequestPermissions struct {
 	//
 	// TCP
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The destination IPv6 CIDR block. CIDR blocks and IPv6 address range are supported.
+	// The destination IPv6 CIDR block. CIDR blocks and IPv6 address ranges are supported.
 	//
-	// This parameter is used for quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
+	// This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
 	//
-	// > This parameter is valid only for VPC-type ECS instances that support IPv6. You cannot specify both this parameter and `DestCidrIp`.
+	// > This parameter is valid only for VPC-type ECS instances that support IPv6. You cannot specify this parameter and `DestCidrIp` in Settings at the same time.
 	//
 	// example:
 	//
 	// 2001:db8:1233:1a00::***
 	Ipv6DestCidrIp *string `json:"Ipv6DestCidrIp,omitempty" xml:"Ipv6DestCidrIp,omitempty"`
-	// The source IPv6 Classless Inter-Domain Routing (CIDR) block from which you want to revoke access permissions. CIDR format and IPv6 address range are supported.
+	// The source IPv6 Classless Inter-Domain Routing (CIDR) block from which you want to revoke access permissions. CIDR format and IPv6 format address ranges are supported.
 	//
-	// > This parameter is valid only for VPC-type ECS instances that support IPv6. You cannot specify both this parameter and `SourceCidrIp`.
+	// > This parameter is valid only for VPC-type ECS instances that support IPv6. You cannot specify this parameter and `SourceCidrIp` in Settings at the same time.
 	//
 	// example:
 	//
 	// 2001:db8:1234:1a00::***
 	Ipv6SourceCidrIp *string `json:"Ipv6SourceCidrIp,omitempty" xml:"Ipv6SourceCidrIp,omitempty"`
-	// The network interface controller (NIC) type of the security group rule. For VPC-type security groups, you do not need to set the network type. The default value is intranet, and only intranet is supported.
+	// The network interface controller (NIC) type of the security group rule. For VPC-type security groups, you do not need to configure the network interface controller (NIC) type in Settings. The default value is intranet, and only intranet is supported.
 	//
-	// > The classic network feature has been taken offline. For details, see [Retirement notice](https://help.aliyun.com/document_detail/2833134.html). For classic network-type security group rules, valid values are:
+	// > The classic network feature has been offline. For details, see [Discontinuation notice](https://help.aliyun.com/document_detail/2833134.html). The network interface controller (NIC) type for classic network security group rules. Valid values:
 	//
 	// > - internet: public network interface controller (NIC).
 	//
@@ -520,7 +520,7 @@ type RevokeSecurityGroupRequestPermissions struct {
 	//
 	// - accept: Accepts access.
 	//
-	// - drop: Deny access without returning any denial information. The request appears to timeout or the connection cannot be established.
+	// - drop: Denies access and returns no deny information. The request appears to timeout or the connection cannot be established.
 	//
 	// Default value: accept.
 	//
@@ -528,11 +528,11 @@ type RevokeSecurityGroupRequestPermissions struct {
 	//
 	// accept
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The range of destination ports that correspond to the transport layer protocol. Valid values:
+	// The range of destination ports for the specified protocol. Valid values:
 	//
 	//
 	//
-	// - TCP/UDP: Valid values are 1 to 65535. Separate the start port and the end port with a forward slash (/). Example: 1/200.
+	// - TCP/UDP: valid values are 1 to 65535. Separate the start port and the end port with a forward slash (/). Example: 1/200.
 	//
 	// - ICMP: -1/-1.
 	//
@@ -564,7 +564,7 @@ type RevokeSecurityGroupRequestPermissions struct {
 	//
 	// 1
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The source IPv4 Classless Inter-Domain Routing (CIDR) block from which you want to revoke access permissions. CIDR format and IPv4 address range are supported.
+	// The source IPv4 Classless Inter-Domain Routing (CIDR) block from which you want to revoke access permissions. CIDR format and IPv4 format address ranges are supported.
 	//
 	// example:
 	//
@@ -572,11 +572,11 @@ type RevokeSecurityGroupRequestPermissions struct {
 	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
 	// The ID of the source security group from which you want to revoke access permissions.
 	//
-	// - Set at least one of `SourceGroupId`, `SourceCidrIp`, `Ipv6SourceCidrIp`, or `SourcePrefixListId`.
+	// - You must specify at least one of the following parameters in Settings: `SourceGroupId`, `SourceCidrIp`, `Ipv6SourceCidrIp`, or `SourcePrefixListId`.
 	//
-	// - If you specify `SourceGroupId` but do not specify the `SourceCidrIp` or `Ipv6SourceCidrIp` parameter, set NicType to intranet.
+	// - If `SourceGroupId` is specified but neither `SourceCidrIp` nor `Ipv6SourceCidrIp` is specified, the NicType parameter must be set to intranet.
 	//
-	// - If you specify both `SourceGroupId` and `SourceCidrIp`, `SourceCidrIp` takes precedence by default.
+	// - If both `SourceGroupId` and `SourceCidrIp` are specified, `SourceCidrIp` takes precedence by default.
 	//
 	// Note:
 	//
@@ -590,9 +590,9 @@ type RevokeSecurityGroupRequestPermissions struct {
 	SourceGroupId *string `json:"SourceGroupId,omitempty" xml:"SourceGroupId,omitempty"`
 	// The Alibaba Cloud account that owns the source security group when you revoke a cross-account authorization security group rule.
 	//
-	// - If neither `SourceGroupOwnerAccount` nor `SourceGroupOwnerId` is set, the access permissions for another security group within your account are revoked.
+	// - If neither `SourceGroupOwnerAccount` nor `SourceGroupOwnerId` is specified in Settings, the rule is revoked for access permissions of another security group within your account.
 	//
-	// - If the `SourceCidrIp` parameter is set, the `SourceGroupOwnerAccount` parameter is ignored.
+	// - If the `SourceCidrIp` parameter is specified, the `SourceGroupOwnerAccount` parameter is ignored.
 	//
 	// example:
 	//
@@ -600,19 +600,19 @@ type RevokeSecurityGroupRequestPermissions struct {
 	SourceGroupOwnerAccount *string `json:"SourceGroupOwnerAccount,omitempty" xml:"SourceGroupOwnerAccount,omitempty"`
 	// The ID of the Alibaba Cloud account that owns the source security group when you revoke a cross-account authorization security group rule.
 	//
-	// - If neither `SourceGroupOwnerId` nor `SourceGroupOwnerAccount` is set, the access permissions for another security group within your account are revoked.
+	// - If neither `SourceGroupOwnerId` nor `SourceGroupOwnerAccount` is specified in Settings, the rule is revoked for access permissions of another security group within your account.
 	//
-	// - If the `SourceCidrIp` parameter is set, the `SourceGroupOwnerId` parameter is ignored.
+	// - If the `SourceCidrIp` parameter is specified, the `SourceGroupOwnerId` parameter is ignored.
 	//
 	// example:
 	//
 	// 12345678910
 	SourceGroupOwnerId *int64 `json:"SourceGroupOwnerId,omitempty" xml:"SourceGroupOwnerId,omitempty"`
-	// The range of source ports that correspond to the transport layer protocol. Valid values:
+	// The range of source ports for the specified protocol. Valid values:
 	//
 	//
 	//
-	// - TCP/UDP: Valid values are 1 to 65535. Separate the start port and the end port with a forward slash (/). Example: 1/200.
+	// - TCP/UDP: valid values are 1 to 65535. Separate the start port and the end port with a forward slash (/). Example: 1/200.
 	//
 	// - ICMP: -1/-1.
 	//
@@ -620,7 +620,7 @@ type RevokeSecurityGroupRequestPermissions struct {
 	//
 	// - ALL: -1/-1.
 	//
-	// This parameter is used for quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
+	// This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
 	//
 	// example:
 	//
@@ -630,7 +630,7 @@ type RevokeSecurityGroupRequestPermissions struct {
 	//
 	// Note:
 	//
-	// If you specify `SourceCidrIp`, `Ipv6SourceCidrIp`, or `SourceGroupId`, this parameter is ignored.
+	// If you specify one of `SourceCidrIp`, `Ipv6SourceCidrIp`, or `SourceGroupId`, this parameter is ignored.
 	//
 	// For more information, see [Security group limits](~~25412#SecurityGroupQuota1~~).
 	//

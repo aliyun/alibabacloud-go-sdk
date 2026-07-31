@@ -22,7 +22,7 @@ type CreateDeploymentSetResponseBody struct {
 	//
 	// ds-bp1frxuzdg87zh4pzq****
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

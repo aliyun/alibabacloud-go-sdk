@@ -25,19 +25,19 @@ type iDescribeDedicatedHostsResponseBody interface {
 
 type DescribeDedicatedHostsResponseBody struct {
 	DedicatedHosts *DescribeDedicatedHostsResponseBodyDedicatedHosts `json:"DedicatedHosts,omitempty" xml:"DedicatedHosts,omitempty" type:"Struct"`
-	// The token used to retrieve the next page of results. An empty value indicates that no more results are available.
+	// The paging token returned in this call. When you use MaxResults and NextToken for paging query, an empty value indicates that no more data is available.
 	//
 	// example:
 	//
 	// e71d8a535bd9cc11
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The current page number.
+	// The page number of the dedicated host list.
 	//
 	// example:
 	//
 	// 5
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//

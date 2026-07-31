@@ -30,13 +30,13 @@ type DescribeSnapshotsResponseBody struct {
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// > This parameter is about to be deprecated. Use NextToken and MaxResults for paging instead.
+	// > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter is about to be deprecated. Use NextToken and MaxResults for paging instead.
+	// > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
 	//
 	// example:
 	//
@@ -51,7 +51,7 @@ type DescribeSnapshotsResponseBody struct {
 	Snapshots *DescribeSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
 	// The total number of snapshots.
 	//
-	// > When you use `MaxResults` and `NextToken` parameters for paging, the returned `TotalCount` parameter value is invalid.
+	// > When you use `MaxResults` and `NextToken` parameters for paging query, the returned `TotalCount` parameter value is invalid.
 	//
 	// example:
 	//

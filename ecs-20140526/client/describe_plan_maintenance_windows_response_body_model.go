@@ -42,7 +42,7 @@ type DescribePlanMaintenanceWindowsResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned under the current query conditions. This parameter is optional and may not be returned by default.
+	// The total number of entries that match the query conditions. This parameter is optional and may not be returned by default.
 	//
 	// example:
 	//
@@ -160,7 +160,7 @@ type DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowList struct 
 	SupportMaintenanceAction *string `json:"SupportMaintenanceAction,omitempty" xml:"SupportMaintenanceAction,omitempty"`
 	// The resources to which the O&M window applies.
 	TargetResource *DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTargetResource `json:"TargetResource,omitempty" xml:"TargetResource,omitempty" type:"Struct"`
-	// The recurrence cycle of the window.
+	// The recurring cycle of the window.
 	TimePeriod *DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTimePeriod `json:"TimePeriod,omitempty" xml:"TimePeriod,omitempty" type:"Struct"`
 }
 
@@ -274,7 +274,7 @@ type DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTargetRe
 	//
 	// rg-aek2qxeteo7fr6y
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The type of resources for which the O&M window is configured.
+	// The resource type for which the O&M window is configured.
 	//
 	// example:
 	//
@@ -378,7 +378,7 @@ func (s *DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTarg
 }
 
 type DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTimePeriod struct {
-	// The type of the recurrence cycle. Valid values:
+	// The cycle type. Valid values:
 	//
 	// - Daily: daily recurrence.
 	//
@@ -388,7 +388,7 @@ type DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTimePeri
 	//
 	// Year
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The time ranges within the recurrence cycle of the O&M window (in UTC).
+	// The time ranges within the recurring cycle of the O&M window (UTC time zone).
 	RangeList []*DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTimePeriodRangeList `json:"RangeList,omitempty" xml:"RangeList,omitempty" type:"Repeated"`
 }
 

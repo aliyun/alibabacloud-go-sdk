@@ -63,61 +63,67 @@ type iAllocateDedicatedHostsRequest interface {
 
 type AllocateDedicatedHostsRequest struct {
 	NetworkAttributes *AllocateDedicatedHostsRequestNetworkAttributes `json:"NetworkAttributes,omitempty" xml:"NetworkAttributes,omitempty" type:"Struct"`
-	// The policy for migrating the instances deployed on the dedicated host when the dedicated host fails or needs to be repaired online. Valid values:
+	// The policy used to migrate the instances deployed on the dedicated host when the dedicated host fails or needs to be repaired online. Valid values:
 	//
-	// - Migrate: The instances are migrated to another physical machine and then restarted.
+	// - Migrate: The instances are migrated to another physical server and restarted.
 	//
-	//   If cloud disks are attached to the dedicated host, the default value is Migrate.
+	//   Default value when cloud disks are attached to the dedicated host: Migrate.
 	//
-	// - Stop: The instances are stopped. If the dedicated host cannot be repaired, the instances are migrated to another physical machine and then restarted.
+	// - Stop: The instances are stopped on the current dedicated host. After the dedicated host is confirmed to be irreparable, the instances are migrated to another physical server and restarted.
 	//
-	//   If local disks are attached to the dedicated host, the default value is Stop.
+	//   Default value when local disks are attached to the dedicated host: Stop.
 	//
 	// example:
 	//
 	// Migrate
 	ActionOnMaintenance *string `json:"ActionOnMaintenance,omitempty" xml:"ActionOnMaintenance,omitempty"`
-	// Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you create an ECS instance on a dedicated host without specifying the **DedicatedHostId*	- parameter, Alibaba Cloud selects a dedicated host from the resource pool to host the instance. For more information, see [Automatic deployment](https://help.aliyun.com/document_detail/118938.html). Valid values:
+	// Specifies whether to add the dedicated host to the automatic deployment resource pool. If you create an instance on a dedicated host without specifying **DedicatedHostId**, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. For more information, see [Automatic deployment](https://help.aliyun.com/document_detail/118938.html). Valid values:
 	//
-	// - on: adds the dedicated host to the resource pool for automatic deployment.
+	// - on: adds the dedicated host to the automatic deployment resource pool.
 	//
-	// - off: does not add the dedicated host to the resource pool for automatic deployment.
+	// - off: does not add the dedicated host to the automatic deployment resource pool.
 	//
 	// Default value: on.
 	//
-	// > If you do not want to add the dedicated host to the resource pool for automatic deployment, set this parameter to off.
+	// > If you do not want the dedicated host to be added to the automatic deployment resource pool, set this parameter to off.
 	//
 	// example:
 	//
 	// off
 	AutoPlacement *string `json:"AutoPlacement,omitempty" xml:"AutoPlacement,omitempty"`
-	// The time when to automatically release the dedicated host. Specify the time in the `ISO 8601` standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The automatic release time of the dedicated host. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC+0.
 	//
-	// >
+	// > - The earliest release time must be at least half an hour from the current time.
 	//
-	// - It must be at least half an hour later than the current time.
+	// > - The latest release time must be at most three years from the current time.
 	//
-	// - It must be at most three years later than the current time.
-	//
-	// - If the value of seconds (ss) is not 00, it is automatically set to 00.
+	// > - If the value of seconds (ss) is not 00, it is automatically set to 00.
 	//
 	// example:
 	//
 	// 2019-08-21T12:30:24Z
 	AutoReleaseTime *string `json:"AutoReleaseTime,omitempty" xml:"AutoReleaseTime,omitempty"`
-	// Specifies whether to automatically renew the subscription dedicated host.
+	// Specifies whether to enable auto-renewal for the subscription dedicated host.
 	//
-	// > The **AutoRenew*	- parameter takes effect only when the **ChargeType*	- parameter is set to PrePaid.
+	// > The **AutoRenew*	- parameter takes effect only when **ChargeType*	- is set to PrePaid.
 	//
-	// Default value: false
+	// Default value: false.
 	//
 	// example:
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The auto-renewal duration of the dedicated host. The **AutoRenewPeriod*	- parameter takes effect and is required only when the **AutoRenew*	- parameter is set to true. Valid values:
+	// The auto-renewal duration. The **AutoRenewPeriod*	- parameter takes effect and is required only when **AutoRenew*	- is set to true. Valid values:
 	//
-	// Valid values when PeriodUnit is set to Month: 1, 2, 3, 6, and 12.
+	// <props="china">
+	//
+	// - If PeriodUnit is set to Week: 1, 2, and 3.
+	//
+	// - If PeriodUnit is set to Month: 1, 2, 3, 6, 12, 24, 36, 48, and 60.
+	//
+	//
+	//
+	// <props="intl">If PeriodUnit is set to Month: 1, 2, 3, 6, and 12.
 	//
 	// example:
 	//
@@ -125,9 +131,22 @@ type AllocateDedicatedHostsRequest struct {
 	AutoRenewPeriod *int32 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
 	// The billing method of the dedicated host. Valid values:
 	//
-	// - PrePaid: subscription. If you set this parameter to PrePaid, make sure that you have sufficient account balance or credits. Otherwise, `InvalidPayMethod` is returned.
+	// <props="china">
+	//
+	// - PrePaid: subscription. If you set this parameter to PrePaid, confirm that your payment method supports balance payment or credit payment. Otherwise, the `InvalidPayMethod` error is returned.
 	//
 	// - PostPaid: pay-as-you-go.
+	//
+	//
+	//
+	//
+	// <props="intl">
+	//
+	// - PrePaid: subscription. If you set this parameter to PrePaid, confirm that your payment method supports credit payment. Otherwise, the `InvalidPayMethod` error is returned.
+	//
+	// - PostPaid: pay-as-you-go.
+	//
+	//
 	//
 	// Default value: PostPaid.
 	//
@@ -135,33 +154,33 @@ type AllocateDedicatedHostsRequest struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token*	- can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The CPU overcommit ratio. You can configure CPU overcommit ratios only for the following dedicated host types: g6s, c6s, and r6s. Valid values: 1 to 5.
+	// The CPU overcommit ratio. Only the custom instance types g6s, c6s, and r6s support the CPU overcommit ratio. Valid values: 1 to 5.
 	//
-	// The CPU overcommit ratio affects the number of available vCPUs on a dedicated host. You can use the following formula to calculate the number of available vCPUs on a dedicated host: Number of available vCPUs = Number of physical CPU cores × 2 × CPU overcommit ratio. For example, the number of physical CPU cores on each g6s dedicated host is 52. If you set the CPU overcommit ratio of a g6s dedicated host to 4, the number of available vCPUs on the dedicated host is 416. For scenarios that have minimal requirements on CPU stability or where CPU load is not heavy, such as development and test environments, you can increase the number of available vCPUs on a dedicated host by increasing the CPU overcommit ratio. This way, you can deploy more ECS instances of the same specifications on the dedicated host and reduce the unit deployment cost.
+	// The CPU overcommit ratio affects the number of available vCPUs on a dedicated host. The number of available vCPUs on a dedicated host = Number of physical CPU cores × 2 × CPU overcommit ratio. For example, the number of physical CPU cores on each g6s host is 52. If you set the CPU overcommit ratio to 4, the total number of vCPUs on the dedicated host is 416. For scenarios that do not require strict CPU stability or have low CPU loads, such as development and testing environments, you can increase the CPU overcommit ratio to increase the number of available vCPUs and deploy more ECS instances of the same specifications, which reduces the unit deployment cost.
 	//
 	// example:
 	//
 	// 1
 	CpuOverCommitRatio *float32 `json:"CpuOverCommitRatio,omitempty" xml:"CpuOverCommitRatio,omitempty"`
-	// The ID of the dedicated host cluster in which to create the dedicated host.
+	// The ID of the dedicated host cluster to which the dedicated host belongs.
 	//
 	// example:
 	//
 	// dc-bp12wlf6am0vz9v2****
 	DedicatedHostClusterId *string `json:"DedicatedHostClusterId,omitempty" xml:"DedicatedHostClusterId,omitempty"`
-	// The name of the dedicated host. The name must be 2 to 128 characters in length and can contain letters and digits. The name can contain colons (:), underscores (_), periods (.), and hyphens (-).
+	// The name of the dedicated host. The name must be 2 to 128 characters in length and can contain Unicode characters under the Letter category, which includes characters from various scripts such as English, Chinese, and digits. The name can contain colons (:), underscores (_), periods (.), or hyphens (-).
 	//
 	// example:
 	//
 	// myDDH
 	DedicatedHostName *string `json:"DedicatedHostName,omitempty" xml:"DedicatedHostName,omitempty"`
-	// The dedicated host type. You can call the [DescribeDedicatedHostTypes](https://help.aliyun.com/document_detail/134240.html) operation to query the most recent list of dedicated host types.
+	// The type of the dedicated host. You can call [DescribeDedicatedHostTypes](https://help.aliyun.com/document_detail/134240.html) to query the most recent list of dedicated host types.
 	//
 	// This parameter is required.
 	//
@@ -177,7 +196,7 @@ type AllocateDedicatedHostsRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The minimum number of dedicated hosts to create. Valid values: 1 to 100.
 	//
-	// > If the number of available dedicated hosts is less than the minimum number of dedicated hosts to create, the dedicated hosts fail to be created.
+	// > If the active stock of dedicated hosts is less than the minimum number, the dedicated host creation fails.
 	//
 	// example:
 	//
@@ -185,21 +204,47 @@ type AllocateDedicatedHostsRequest struct {
 	MinQuantity  *int32  `json:"MinQuantity,omitempty" xml:"MinQuantity,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The subscription duration of the dedicated host. The `Period` parameter is required and takes effect only when the `ChargeType` parameter is set to `PrePaid`. Valid values:
+	// The subscription duration of the dedicated host. The `Period` parameter takes effect and is required only when `ChargeType` is set to `PrePaid`. Valid values:
 	//
-	// - Valid values when the PeriodUnit parameter is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+	// <props="china">
 	//
-	// - Valid values when the PeriodUnit parameter is set to Year: 1, 2, 3, 4, and 5.
+	// - If PeriodUnit is set to Week: 1, 2, 3, and 4.
+	//
+	// - If PeriodUnit is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+	//
+	// - If PeriodUnit is set to Year: 1, 2, 3, 4, and 5.
+	//
+	//
+	//
+	// <props="intl">
+	//
+	// - If PeriodUnit is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+	//
+	// - If PeriodUnit is set to Year: 1, 2, 3, 4, and 5.
 	//
 	// example:
 	//
 	// 6
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription duration of the dedicated host. Valid values:
+	// The unit of the subscription duration. Valid values:
+	//
+	// <props="china">
+	//
+	// - Week
 	//
 	// - Month
 	//
 	// - Year
+	//
+	//
+	//
+	// <props="intl">
+	//
+	// - Month
+	//
+	// - Year
+	//
+	//
 	//
 	// Default value: Month.
 	//
@@ -207,7 +252,7 @@ type AllocateDedicatedHostsRequest struct {
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The number of dedicated hosts that you want to create. Valid values: 1 to 100.
+	// The number of dedicated hosts to create. Valid values: 1 to 100.
 	//
 	// Default value: 1.
 	//
@@ -215,7 +260,7 @@ type AllocateDedicatedHostsRequest struct {
 	//
 	// 2
 	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	// The ID of the region in which to create the dedicated host. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the dedicated host. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -223,7 +268,7 @@ type AllocateDedicatedHostsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which to assign the dedicated host.
+	// The ID of the resource group to which the dedicated host belongs.
 	//
 	// example:
 	//
@@ -231,11 +276,11 @@ type AllocateDedicatedHostsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags to add to the dedicated host.
+	// The tags.
 	Tag []*AllocateDedicatedHostsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the zone in which to create the dedicated host.
+	// The zone ID of the dedicated host.
 	//
-	// This parameter is empty by default. If you do not specify a zone, the system selects a zone.
+	// Default value: empty, which indicates that the system selects a zone.
 	//
 	// example:
 	//
@@ -495,13 +540,13 @@ func (s *AllocateDedicatedHostsRequest) Validate() error {
 }
 
 type AllocateDedicatedHostsRequestNetworkAttributes struct {
-	// The timeout period for a UDP session between a Server Load Balancer (SLB) instance and the dedicated host. Unit: seconds. Valid values: 15 to 310.
+	// The timeout period of a UDP session for load balancing connections to the dedicated host. Unit: seconds. Valid values: 15 to 310.
 	//
 	// example:
 	//
 	// 60
 	SlbUdpTimeout *int32 `json:"SlbUdpTimeout,omitempty" xml:"SlbUdpTimeout,omitempty"`
-	// The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.
+	// The timeout period of a UDP session between a user and a cloud service running on the dedicated host. Unit: seconds. Valid values: 15 to 310.
 	//
 	// example:
 	//
@@ -540,15 +585,15 @@ func (s *AllocateDedicatedHostsRequestNetworkAttributes) Validate() error {
 }
 
 type AllocateDedicatedHostsRequestTag struct {
-	// The key of tag N to add to the dedicated host. Valid values of N: 1 to 20.
+	// The tag key of the dedicated host. Valid values of N: 1 to 20.
 	//
-	// The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with acs: or aliyun.
+	// The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// Environment
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to add to the dedicated host. Valid values of N: 1 to 20.
+	// The tag value of the dedicated host. Valid values of N: 1 to 20.
 	//
 	// The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
 	//

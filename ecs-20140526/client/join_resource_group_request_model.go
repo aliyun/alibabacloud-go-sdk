@@ -30,7 +30,7 @@ type iJoinResourceGroupRequest interface {
 type JoinResourceGroupRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the resource. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent list of regions.
+	// The region ID of the resource. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type JoinResourceGroupRequest struct {
 	//
 	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the resource. For example, when ResourceType is set to instance, ResourceId can be interpreted as the InstanceId.
+	// The ID of the resource. For example, when ResourceType is set to instance, ResourceId is the instance ID.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ type JoinResourceGroupRequest struct {
 	//
 	// - ddhcluster: dedicated host cluster.
 	//
-	// - eni: elastic network interface.
+	// - eni: network interface controller (NIC).
 	//
-	// - keypair: SSH key pair.
+	// - keypair: key pair.
 	//
 	// - launchtemplate: launch template.
 	//
@@ -78,7 +78,7 @@ type JoinResourceGroupRequest struct {
 	//
 	// - managedinstance: Cloud Assistant managed instance.
 	//
-	// The preceding values are case-sensitive.
+	// The preceding parameter values are case-sensitive.
 	//
 	// example:
 	//

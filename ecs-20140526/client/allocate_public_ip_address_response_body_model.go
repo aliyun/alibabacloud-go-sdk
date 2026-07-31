@@ -16,7 +16,7 @@ type iAllocatePublicIpAddressResponseBody interface {
 }
 
 type AllocatePublicIpAddressResponseBody struct {
-	// The public IP address.
+	// The public IP address of the instance.
 	//
 	// example:
 	//

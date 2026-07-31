@@ -40,13 +40,13 @@ type iDescribeDeploymentSetsRequest interface {
 }
 
 type DescribeDeploymentSetsRequest struct {
-	// The IDs of the deployment sets. The value can be a JSON array that consists of up to 100 deployment set IDs. Sample format: `["ds-xxxxxxxxx", "ds-yyyyyyyyy", … "ds-zzzzzzzzz"]`.
+	// The IDs of deployment sets. The value can be a JSON array that consists of multiple deployment set IDs in the format of `["ds-xxxxxxxxx", "ds-yyyyyyyyy", … "ds-zzzzzzzzz"]`. A maximum of 100 IDs are supported. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
 	// ["ds-bp67acfmxazb4ph****", "ds-bp67acfmxazb4pi****", … "ds-bp67acfmxazb4pj****"]
 	DeploymentSetIds *string `json:"DeploymentSetIds,omitempty" xml:"DeploymentSetIds,omitempty"`
-	// The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	// The name of the deployment set. The name must be 2 to 128 characters in length and can contain characters that are categorized as letter in Unicode, including English letters, Chinese characters, and digits. The name can also contain colons (:), underscores (_), periods (.), or hyphens (-).
 	//
 	// example:
 	//
@@ -72,9 +72,9 @@ type DescribeDeploymentSetsRequest struct {
 	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number.
+	// The page number of the deployment set list.
 	//
-	// Starts at 1.
+	// Minimum value: 1.
 	//
 	// Default value: 1.
 	//
@@ -82,7 +82,7 @@ type DescribeDeploymentSetsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page for a paged query.
 	//
 	// Maximum value: 50.
 	//
@@ -92,7 +92,7 @@ type DescribeDeploymentSetsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the deployment set is located. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
+	// The region ID of the deployment set. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -104,11 +104,11 @@ type DescribeDeploymentSetsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The deployment strategy. Valid values:
 	//
-	// - Availability: high availability strategy.
+	// - Availability: high availability.
 	//
-	// - AvailabilityGroup: high availability group strategy.
+	// - AvailabilityGroup: high availability for deployment set groups.
 	//
-	// - LowLatency: low-latency strategy.
+	// - LowLatency: low network latency.
 	//
 	// example:
 	//
@@ -116,11 +116,11 @@ type DescribeDeploymentSetsRequest struct {
 	Strategy *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
 	// The deployment type. Valid values:
 	//
-	// - host: Ensures that the instances in the deployment set are deployed on different hosts.
+	// - host: physical server
 	//
-	// - sw: Ensures that the instances in the deployment set are deployed on different switches.
+	// - sw: vSwitch
 	//
-	// - rack: Ensures that the instances in the deployment set are deployed on different racks.
+	// - rack: rack
 	//
 	// Default value: host.
 	//

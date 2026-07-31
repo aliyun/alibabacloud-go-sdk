@@ -18,15 +18,20 @@ type iDescribeVscsResponseBody interface {
 }
 
 type DescribeVscsResponseBody struct {
+	// The query token. The value is the NextToken parameter value returned by the previous API call.
+	//
 	// example:
 	//
 	// AAAAAdDWBF2
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 473469C7-AA6F-**-B3DB-A3DC0DE3C83E
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Vscs      []*DescribeVscsResponseBodyVscs `json:"Vscs,omitempty" xml:"Vscs,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// VSC
+	Vscs []*DescribeVscsResponseBodyVscs `json:"Vscs,omitempty" xml:"Vscs,omitempty" type:"Repeated"`
 }
 
 func (s DescribeVscsResponseBody) String() string {
@@ -78,31 +83,58 @@ func (s *DescribeVscsResponseBody) Validate() error {
 }
 
 type DescribeVscsResponseBodyVscs struct {
+	// The description of the port list.
+	//
 	// example:
 	//
 	// ali***-post-cn-j4g45iqze00f
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// i-uf69***21l8zuoizdq
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The resource group ID. When you use this parameter to filter resources, the resource count cannot exceed 1000.
+	//
+	// >Filtering by the default resource group is not supported.
+	//
 	// example:
 	//
 	// rg-aek2zex4ehdyjvq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The status of the VSC. Valid values:
+	//
+	// - In_use: in use.
+	//
+	// - Attaching: being attached.
+	//
+	// - Detaching: being detached.
+	//
+	// - AttachFailed: failed to attach.
+	//
+	// - DetachFailed: failed to detach.
+	//
 	// example:
 	//
 	// In_use
-	Status *string                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*DescribeVscsResponseBodyVscsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tag keys of snapshots in the snapshot-consistent group. The default values of Key and Value provide the snapshot source information.
+	Tags []*DescribeVscsResponseBodyVscsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// VSC ID。
+	//
 	// example:
 	//
 	// vsc-hp34ue**g0wmycb27bwal
 	VscId *string `json:"VscId,omitempty" xml:"VscId,omitempty"`
+	// The custom name of the VSC.
+	//
 	// example:
 	//
 	// test-vsc
 	VscName *string `json:"VscName,omitempty" xml:"VscName,omitempty"`
+	// The type of the VSC. Valid values: Primary or Secondary.
+	//
 	// example:
 	//
 	// Primary
@@ -203,10 +235,14 @@ func (s *DescribeVscsResponseBodyVscs) Validate() error {
 }
 
 type DescribeVscsResponseBodyVscsTags struct {
+	// The tag key of the key pair.
+	//
 	// example:
 	//
 	// name
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// 15

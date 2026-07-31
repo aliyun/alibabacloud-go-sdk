@@ -38,13 +38,13 @@ type iModifyDiskAttributeRequest interface {
 }
 
 type ModifyDiskAttributeRequest struct {
-	// Specifies whether to enable the performance burst feature for disks that support this feature. Valid values:
+	// Specifies whether to enable the performance burst feature for disks that support burst. Valid values:
 	//
 	// - true: Enabled.
 	//
 	// - false: Disabled.
 	//
-	// > An error is returned if you specify this parameter for a disk that does not support the performance burst feature.
+	// > If you specify this parameter for a disk that does not support the burst feature, an error is returned.
 	//
 	// example:
 	//
@@ -56,25 +56,25 @@ type ModifyDiskAttributeRequest struct {
 	//
 	// - false: Disabled.
 	//
-	// Default value: null, which indicates that the current value is not changed.
+	// Default value: null, which indicates that the current value remains unchanged.
 	//
 	// example:
 	//
 	// false
 	DeleteAutoSnapshot *bool `json:"DeleteAutoSnapshot,omitempty" xml:"DeleteAutoSnapshot,omitempty"`
-	// Specifies whether to release the disk along with the instance. Default value: null, which indicates that the current value is not changed.
+	// Specifies whether to release the disk along with the instance. Default value: null, which indicates that the current value remains unchanged.
 	//
-	// <props="china">This parameter is not supported for disks that have the multi-attach feature enabled.
+	// <props="china">Disks that have the multi-attach feature enabled do not support this parameter.
 	//
-	// An error is returned if you set DeleteWithInstance to `false` in either of the following cases:
+	// Setting `DeleteWithInstance` to `false` returns an error in the following cases:
 	//
 	//
 	//
-	// - The category of the disk is local disk (ephemeral).
+	// - The disk category is local disk (ephemeral).
 	//
-	// - The category of the disk is basic disk (cloud) and the disk is not detachable (Portable=false).
+	// - The disk category is basic disk (cloud) and the disk is not detachable (Portable=false).
 	//
-	// 	Warning: If you set DeleteWithInstance to false and the ECS instance to which the disk is attached is security-locked with "LockReason" : "security" in OperationLocks, the DeleteWithInstance attribute is ignored and the disk is released along with the instance..
+	// 	Warning: If you set DeleteWithInstance to false, when the ECS instance to which the disk is attached is security-locked and the OperationLocks parameter contains "LockReason" : "security", the DeleteWithInstance attribute is ignored and the disk is released along with the instance.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type ModifyDiskAttributeRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the disk whose attributes you want to modify.
 	//
-	// > The DiskId and DiskIds.N parameters cannot be specified at the same time. Specify one of them as needed.
+	// > The `DiskId` and `DiskIds.N` parameters cannot be specified at the same time. Specify one of them as needed.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type ModifyDiskAttributeRequest struct {
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
 	// The IDs of the disks whose attributes you want to modify. Valid values of N: 0 to 100.
 	//
-	// > The DiskId and DiskIds.N parameters cannot be specified at the same time. Specify one of them as needed.
+	// > The `DiskId` and `DiskIds.N` parameters cannot be specified at the same time. Specify one of them as needed.
 	//
 	// example:
 	//
@@ -114,9 +114,9 @@ type ModifyDiskAttributeRequest struct {
 	//
 	// - false: Disabled.
 	//
-	// Default value: null, which indicates that the current value is not changed.
+	// Default value: null, which indicates that the current value remains unchanged.
 	//
-	// > This parameter is deprecated. The automatic snapshot policy is enabled by default for disks after they are created. You only need to associate an automatic snapshot policy with the disk.
+	// > This parameter is deprecated. The automatic snapshot policy is enabled by default for disks after creation. You only need to associate an automatic snapshot policy with the disk.
 	//
 	// example:
 	//

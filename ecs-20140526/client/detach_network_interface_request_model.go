@@ -28,9 +28,7 @@ type iDetachNetworkInterfaceRequest interface {
 }
 
 type DetachNetworkInterfaceRequest struct {
-	// The ID of the trunk ENI.
-	//
-	// > This parameter is unavailable for use.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +36,7 @@ type DetachNetworkInterfaceRequest struct {
 	//
 	// i-bp67acfmxazb4p****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the instance
+	// The network interface controller (NIC) ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +46,7 @@ type DetachNetworkInterfaceRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the ENI.
+	// The region ID of the resource. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +56,9 @@ type DetachNetworkInterfaceRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the request.
+	// The ID of the trunk ENI.
+	//
+	// >This parameter is not yet available.
 	//
 	// example:
 	//

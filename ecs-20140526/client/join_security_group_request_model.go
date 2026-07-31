@@ -28,17 +28,17 @@ type iJoinSecurityGroupRequest interface {
 }
 
 type JoinSecurityGroupRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
-	// > If you specify this parameter, you must leave `NetworkInterfaceId` empty.
+	// > If this parameter is specified, NetworkInterfaceId must be left empty.
 	//
 	// example:
 	//
 	// i-bp67acfmxazb4p****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the elastic network interface.
+	// The Elastic Network Interface (ENI) ID.
 	//
-	// > If you specify this parameter, you must leave `InstanceId` empty.
+	// > If this parameter is specified, InstanceId must be left empty.
 	//
 	// example:
 	//
@@ -46,11 +46,11 @@ type JoinSecurityGroupRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region. Call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
+	// The region ID. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
-	// - This parameter is optional when you add an instance to a security group.
+	// - The region ID is optional when adding an instance to a security group.
 	//
-	// - This parameter is required when you add an elastic network interface to a security group. The value must be the ID of the region where the elastic network interface is located.
+	// - The region ID is required when adding an Elastic Network Interface (ENI) to a security group. Specify the region where the network interface controller (NIC) resides.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type JoinSecurityGroupRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the security group. Call [DescribeSecurityGroups](https://help.aliyun.com/document_detail/25556.html) to view your available security groups.
+	// The security group ID. You can call [DescribeSecurityGroups](https://help.aliyun.com/document_detail/25556.html) to query available security groups.
 	//
 	// This parameter is required.
 	//

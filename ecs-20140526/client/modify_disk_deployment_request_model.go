@@ -30,15 +30,15 @@ type iModifyDiskDeploymentRequest interface {
 }
 
 type ModifyDiskDeploymentRequest struct {
-	// The new category of the disk. This parameter is valid only when you migrate a disk between different dedicated block storage clusters. The only valid value is `cloud_essd` (ESSD disk).
+	// The new disk type. This parameter takes effect only when you perform an Upgrade/Downgrade during migration between different dedicated block storage clusters. Currently, only cloud_essd (enterprise SSD) is supported.
 	//
-	// Default value: An empty string. If you leave this parameter empty, the category of the disk remains unchanged.
+	// Default value: empty, which indicates that the disk type is not changed during the Upgrade/Downgrade.
 	//
 	// example:
 	//
 	// cloud_essd
 	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
-	// The ID of the disk.
+	// The disk ID.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +46,13 @@ type ModifyDiskDeploymentRequest struct {
 	//
 	// d-bp131n0q38u3a4zi****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform only a dry run. Valid values:
 	//
-	// - `true`: Performs a dry run. The system checks the request for required parameters, format, service limits, and inventory. The system returns an error if the check fails, or the `DryRunOperation` error code if the check succeeds.
+	// - true: performs only a dry run. The system checks the required parameters, request format, business restrictions, and ECS inventory. If the check fails, the corresponding error is returned. If the check succeeds, the error code DryRunOperation is returned.
 	//
-	// - `false`: Sends the request. If the request passes the check, the system returns a 2xx HTTP status code and migrates the disk.
+	// - false: performs a dry run and sends the request. If the check succeeds, a 2XX HTTP status code is returned and the disk is migrated.
 	//
-	// Default value: `false`.
+	// Default value: false.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type ModifyDiskDeploymentRequest struct {
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The new performance level of the ESSD disk. This parameter is valid only when you migrate a disk between different dedicated block storage clusters. Valid values:
+	// The performance level of the enterprise SSD. This parameter takes effect only when you migrate a disk between different dedicated block storage clusters. Valid values:
 	//
-	// - `PL0`: A maximum of 10,000 random read/write IOPS per disk.
+	// - PL0: a maximum of 10,000 random read/write IOPS per disk.
 	//
-	// - `PL1`: A maximum of 50,000 random read/write IOPS per disk.
+	// - PL1: a maximum of 50,000 random read/write IOPS per disk.
 	//
-	// Default value: An empty string. If you leave this parameter empty, the performance level of the disk remains unchanged.
+	// Default value: empty, which indicates that the performance level is not changed.
 	//
 	// example:
 	//
@@ -74,13 +74,13 @@ type ModifyDiskDeploymentRequest struct {
 	PerformanceLevel     *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the dedicated block storage cluster.
+	// The dedicated block storage cluster ID.
 	//
-	// - To migrate the disk to a dedicated block storage cluster, specify `StorageClusterId`.
+	// - To migrate a disk to a dedicated block storage cluster, you must specify `StorageClusterId`.
 	//
-	// - To migrate the disk to a public cloud block storage cluster, leave `StorageClusterId` empty.
+	// - To migrate a disk to a public cloud block storage cluster, `StorageClusterId` must be empty.
 	//
-	// Default value: An empty string. If you leave this parameter empty, the disk is migrated to a public cloud block storage cluster.
+	// Default value: empty, which indicates that the disk is migrated to a public cloud block storage cluster.
 	//
 	// example:
 	//

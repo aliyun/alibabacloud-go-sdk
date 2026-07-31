@@ -34,21 +34,21 @@ type iDescribeLaunchTemplatesRequest interface {
 }
 
 type DescribeLaunchTemplatesRequest struct {
-	// An array of one or more launch template IDs.
+	// The IDs of one or more launch templates.
 	//
 	// - You can query up to 100 launch templates at a time.
 	//
-	// - You must specify LaunchTemplateId or LaunchTemplateName to determine the templates.
+	// - You must specify LaunchTemplateId or LaunchTemplateName to determine the template.
 	//
 	// example:
 	//
 	// lt-m5e3ofjr1zn1aw7q****
 	LaunchTemplateId []*string `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty" type:"Repeated"`
-	// An array of one or more launch template names.
+	// The names of one or more launch templates.
 	//
 	// - You can query up to 100 launch templates at a time.
 	//
-	// - You must specify LaunchTemplateId or LaunchTemplateName to determine the templates.
+	// - You must specify LaunchTemplateId or LaunchTemplateName to determine the template.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type DescribeLaunchTemplatesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for a paginated query.
+	// The number of entries per page for a paged query.
 	//
 	// Default value: 10.
 	//
@@ -82,7 +82,7 @@ type DescribeLaunchTemplatesRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the resource group to which the launch template belongs. When you use this parameter to filter resources, the number of resources cannot exceed 1000.
+	// The ID of the resource group to which the launch template belongs. When you use this parameter to filter resources, the resource count cannot exceed 1000.
 	//
 	// > Filtering by the default resource group is not supported.
 	//
@@ -90,9 +90,9 @@ type DescribeLaunchTemplatesRequest struct {
 	//
 	// rg-acfmxazb4p****
 	TemplateResourceGroupId *string `json:"TemplateResourceGroupId,omitempty" xml:"TemplateResourceGroupId,omitempty"`
-	// The list of tag key-value pairs of the launch template.
+	// The list of tag key-value pairs of the launch template itself.
 	//
-	// > Currently, you can create and query launch template tags only by calling API operations. The console does not support creating or viewing launch template tags.
+	// > Currently, you can create and query tags of launch templates only by calling API operations. You cannot create or view tags in the console.
 	TemplateTag []*DescribeLaunchTemplatesRequestTemplateTag `json:"TemplateTag,omitempty" xml:"TemplateTag,omitempty" type:"Repeated"`
 }
 
@@ -219,7 +219,7 @@ func (s *DescribeLaunchTemplatesRequest) Validate() error {
 type DescribeLaunchTemplatesRequestTemplateTag struct {
 	// The tag key of the launch template. Valid values of N: 1 to 20.
 	//
-	// If you use a single tag to filter resources, the number of resources with the specified tag cannot exceed 1000. If you use multiple tags to filter resources, the number of resources that are bound with all the specified tags cannot exceed 1000. If the number of resources exceeds 1000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query them.
+	// If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1000. If you use multiple tags to filter resources, the resource count of resources that have all specified tags attached cannot exceed 1000. If the resource count exceeds 1000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
 	//
 	// example:
 	//

@@ -32,7 +32,7 @@ type iDescribeTagsRequest interface {
 }
 
 type DescribeTagsRequest struct {
-	// > This parameter is about to be deprecated. To ensure compatibility, use other parameters.
+	// > This parameter is about to be deprecated. To ensure compatibility, use other parameters instead.
 	//
 	// example:
 	//
@@ -67,7 +67,7 @@ type DescribeTagsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource to which the tag is attached. For example, if the resource type (ResourceType) is instance, the resource ID is the instance ID.
+	// The ID of the resource to which the tag is attached. For example, if ResourceType is set to instance, ResourceId indicates the instance ID.
 	//
 	// example:
 	//
@@ -89,7 +89,7 @@ type DescribeTagsRequest struct {
 	//
 	// - volume: storage volume.
 	//
-	// - eni: network interface controller (NIC).
+	// - eni: Elastic Network Interface (ENI).
 	//
 	// - ddh: dedicated host.
 	//
@@ -107,7 +107,7 @@ type DescribeTagsRequest struct {
 	//
 	// snapshot
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The list of tags.
+	// The tags.
 	Tag []*DescribeTagsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 

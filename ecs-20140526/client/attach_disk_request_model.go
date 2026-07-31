@@ -58,11 +58,11 @@ type AttachDiskRequest struct {
 	//
 	// Default value: false.
 	//
-	// When you set this parameter, take note of the following items:
+	// Take note of the following items when you set this parameter:
 	//
-	// - If you set `DeleteWithInstance` to `false` and the ECS instance is locked for security reasons, meaning that `OperationLocks` contains `"LockReason" : "security"`, this parameter is ignored when the instance is released, and the disk is released together with the instance.
+	// - If you set `DeleteWithInstance` to `false` and the ECS instance is locked for security reasons, meaning that `OperationLocks` contains `"LockReason" : "security"`, this attribute is ignored when the ECS instance is released, and the disk is released together with the instance.
 	//
-	// - If the disk to be attached is an `elastic ephemeral disk`, you must set `DeleteWithInstance` to `true`.
+	// - If the destination disk is an `elastic ephemeral disk`, you must set `DeleteWithInstance` to `true`.
 	//
 	// - Disks with the multi-attach feature enabled do not support this parameter.
 	//
@@ -80,7 +80,7 @@ type AttachDiskRequest struct {
 	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
 	// The ID of the disk to be attached. The disk (`DiskId`) and the instance (`InstanceId`) must be in the same zone.
 	//
-	// > Both data disks and system disks can be attached. For related constraints, see the operation description section above.
+	// > You can attach data disks and system disks. For related constraints, see the operation description section above.
 	//
 	// This parameter is required.
 	//
@@ -115,7 +115,7 @@ type AttachDiskRequest struct {
 	//
 	// - Windows Server instances: SSH key pairs are not supported. Even if this parameter is specified, only the `Password` configuration takes effect.
 	//
-	// - Linux instances: The password-based logon method is disabled by default.
+	// - Linux instances: The password logon method is disabled by default.
 	//
 	// example:
 	//

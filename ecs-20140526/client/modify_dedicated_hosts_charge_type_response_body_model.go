@@ -19,7 +19,7 @@ type iModifyDedicatedHostsChargeTypeResponseBody interface {
 
 type ModifyDedicatedHostsChargeTypeResponseBody struct {
 	FeeOfInstances *ModifyDedicatedHostsChargeTypeResponseBodyFeeOfInstances `json:"FeeOfInstances,omitempty" xml:"FeeOfInstances,omitempty" type:"Struct"`
-	// The ID of the order. This is returned only when the payment method is changed to subscription.
+	// The order ID. This parameter is returned only when the billing method is changed to subscription.
 	//
 	// example:
 	//

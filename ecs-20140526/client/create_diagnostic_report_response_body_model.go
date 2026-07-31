@@ -16,7 +16,7 @@ type iCreateDiagnosticReportResponseBody interface {
 }
 
 type CreateDiagnosticReportResponseBody struct {
-	// The diagnostic report ID.
+	// The diagnostic report ID, which is the unique identifier of the resource diagnostic report.
 	//
 	// example:
 	//

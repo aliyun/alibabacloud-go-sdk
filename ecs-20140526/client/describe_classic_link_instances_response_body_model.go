@@ -23,13 +23,13 @@ type iDescribeClassicLinkInstancesResponseBody interface {
 
 type DescribeClassicLinkInstancesResponseBody struct {
 	Links *DescribeClassicLinkInstancesResponseBodyLinks `json:"Links,omitempty" xml:"Links,omitempty" type:"Struct"`
-	// The page number.
+	// The page number in the paging query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in the paging query.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeClassicLinkInstancesResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of ClassicLink connections.
+	// The total number of connections.
 	//
 	// example:
 	//

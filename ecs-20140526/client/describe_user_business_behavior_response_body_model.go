@@ -16,9 +16,7 @@ type iDescribeUserBusinessBehaviorResponseBody interface {
 }
 
 type DescribeUserBusinessBehaviorResponseBody struct {
-	// The request ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The value of the business attribute.
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StatusValue *string `json:"StatusValue,omitempty" xml:"StatusValue,omitempty"`
 }
 

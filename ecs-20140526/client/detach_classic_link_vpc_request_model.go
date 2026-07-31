@@ -24,7 +24,7 @@ type iDetachClassicLinkVpcRequest interface {
 }
 
 type DetachClassicLinkVpcRequest struct {
-	// The ID of the instance that resides in the classic network.
+	// The instance ID of the classic network type instance.
 	//
 	// This parameter is required.
 	//
@@ -33,7 +33,7 @@ type DetachClassicLinkVpcRequest struct {
 	// i-bp67acfmxazb4p****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

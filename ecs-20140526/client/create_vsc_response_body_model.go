@@ -16,10 +16,14 @@ type iCreateVscResponseBody interface {
 }
 
 type CreateVscResponseBody struct {
+	// Request ID
+	//
 	// example:
 	//
 	// DD38F-12VBW2-**EKX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the Virtual Storage Channel.
+	//
 	// example:
 	//
 	// vsc-b*d31dq

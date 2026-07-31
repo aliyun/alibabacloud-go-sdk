@@ -14,7 +14,7 @@ type iAttachClassicLinkVpcResponseBody interface {
 }
 
 type AttachClassicLinkVpcResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

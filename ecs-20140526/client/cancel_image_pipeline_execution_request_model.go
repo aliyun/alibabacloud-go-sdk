@@ -26,7 +26,7 @@ type iCancelImagePipelineExecutionRequest interface {
 }
 
 type CancelImagePipelineExecutionRequest struct {
-	// The ID of the image building task.
+	// The ID of the building task.
 	//
 	// This parameter is required.
 	//

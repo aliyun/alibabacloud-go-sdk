@@ -26,7 +26,7 @@ type iDescribeActivationsResponseBody interface {
 type DescribeActivationsResponseBody struct {
 	// The activation codes and their usage information.
 	ActivationList []*DescribeActivationsResponseBodyActivationList `json:"ActivationList,omitempty" xml:"ActivationList,omitempty" type:"Repeated"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The pagination token returned in this response.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DescribeActivationsResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page for paging.
 	//
 	// example:
 	//
@@ -134,19 +134,19 @@ func (s *DescribeActivationsResponseBody) Validate() error {
 }
 
 type DescribeActivationsResponseBodyActivationList struct {
-	// The ID of the activation code.
+	// The activation code ID.
 	//
 	// example:
 	//
 	// 4ECEEE12-56F1-4FBC-9AB1-890F1234****
 	ActivationId *string `json:"ActivationId,omitempty" xml:"ActivationId,omitempty"`
-	// The time when the activation code was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2021-01-20T06:00:00Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The number of instances that were deregistered.
+	// The number of deregistered instances.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ type DescribeActivationsResponseBodyActivationList struct {
 	//
 	// 0.0.0.0/0
 	IpAddressRange *string `json:"IpAddressRange,omitempty" xml:"IpAddressRange,omitempty"`
-	// The number of instances that were registered.
+	// The number of registered instances.
 	//
 	// example:
 	//
@@ -194,7 +194,7 @@ type DescribeActivationsResponseBodyActivationList struct {
 	//
 	// rg-123******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags of the activation code.
+	// The tags of the managed instance activation code.
 	Tags []*DescribeActivationsResponseBodyActivationListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The validity period of the activation code. Unit: hours.
 	//
@@ -334,13 +334,13 @@ func (s *DescribeActivationsResponseBodyActivationList) Validate() error {
 }
 
 type DescribeActivationsResponseBodyActivationListTags struct {
-	// The tag key of the activation code.
+	// The tag key of the managed instance activation code.
 	//
 	// example:
 	//
 	// owner
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value of the activation code.
+	// The tag value of the managed instance activation code.
 	//
 	// example:
 	//

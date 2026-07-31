@@ -16,7 +16,7 @@ type iCreateDedicatedHostClusterResponseBody interface {
 }
 
 type CreateDedicatedHostClusterResponseBody struct {
-	// The ID of the host group.
+	// The ID of the dedicated host cluster.
 	//
 	// example:
 	//

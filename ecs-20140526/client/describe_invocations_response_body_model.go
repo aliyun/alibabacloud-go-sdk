@@ -31,7 +31,7 @@ type DescribeInvocationsResponseBody struct {
 	//
 	// AAAAAdDWBF2
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number of the query results.
+	// The page number of the query result.
 	//
 	// example:
 	//

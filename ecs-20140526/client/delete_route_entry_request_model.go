@@ -30,26 +30,15 @@ type iDeleteRouteEntryRequest interface {
 }
 
 type DeleteRouteEntryRequest struct {
-	// The destination CIDR block of the route entry.
-	//
 	// This parameter is required.
-	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The ID of the next hop.
-	//
-	// > `NextHopId` and `NextHopList` are mutually exclusive. You can specify one but not both.
-	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	// A list of next hops for an ECMP route.
-	//
-	// > `NextHopId` and `NextHopList` are mutually exclusive. You can specify one but not both.
-	NextHopList  []*DeleteRouteEntryRequestNextHopList `json:"NextHopList,omitempty" xml:"NextHopList,omitempty" type:"Repeated"`
-	OwnerAccount *string                               `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64                                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the route table that contains the route entry.
-	//
+	DestinationCidrBlock *string                               `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	NextHopId            *string                               `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	NextHopList          []*DeleteRouteEntryRequestNextHopList `json:"NextHopList,omitempty" xml:"NextHopList,omitempty" type:"Repeated"`
+	OwnerAccount         *string                               `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string                               `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                                `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// This parameter is required.
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
 }
@@ -157,9 +146,7 @@ func (s *DeleteRouteEntryRequest) Validate() error {
 }
 
 type DeleteRouteEntryRequestNextHopList struct {
-	// The ID of a next hop in the ECMP route.
-	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	// The type of a next hop in the ECMP route. Set the value to `Instance`.
+	NextHopId   *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
 	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
 }
 

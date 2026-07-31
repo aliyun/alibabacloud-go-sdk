@@ -36,7 +36,7 @@ type DescribeCloudAssistantSettingsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The service settings to query.
+	// The list of service configurations to query.
 	//
 	// This parameter is required.
 	SettingType []*string `json:"SettingType,omitempty" xml:"SettingType,omitempty" type:"Repeated"`

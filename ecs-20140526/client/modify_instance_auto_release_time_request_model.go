@@ -26,21 +26,21 @@ type iModifyInstanceAutoReleaseTimeRequest interface {
 }
 
 type ModifyInstanceAutoReleaseTimeRequest struct {
-	// The automatic release time of the instance. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
+	// The automatic release time. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
-	// - If the value of seconds (`ss`) is not `00`, the time is automatically rounded to the nearest minute based on the value of minutes (`mm`).
+	// - If the value of seconds (`ss`) is not `00`, the time is automatically set to the start of the current minute (`mm`).
 	//
-	// - The release time must be at least 30 minutes later than the current time.
+	// - The earliest release time must be at least 30 minutes after the current time.
 	//
-	// - The release time must be at most three years later than the current time.
+	// - The latest release time cannot be more than three years from the current time.
 	//
-	// If `AutoReleaseTime` is not configured, the automatic release feature is disabled, and the instance will not be automatically released.
+	// If you do not specify the AutoReleaseTime parameter, the automatic release feature is canceled and the ECS instance is no longer automatically released.
 	//
 	// example:
 	//
 	// 2018-01-01T01:02:03Z
 	AutoReleaseTime *string `json:"AutoReleaseTime,omitempty" xml:"AutoReleaseTime,omitempty"`
-	// The ID of the instance.
+	// The instance ID of the ECS instance for which to configure automatic release.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type ModifyInstanceAutoReleaseTimeRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// example:
 	//

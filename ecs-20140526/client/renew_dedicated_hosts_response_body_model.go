@@ -16,7 +16,7 @@ type iRenewDedicatedHostsResponseBody interface {
 }
 
 type RenewDedicatedHostsResponseBody struct {
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//

@@ -17,7 +17,7 @@ type iStartInstancesResponseBody interface {
 
 type StartInstancesResponseBody struct {
 	InstanceResponses *StartInstancesResponseBodyInstanceResponses `json:"InstanceResponses,omitempty" xml:"InstanceResponses,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

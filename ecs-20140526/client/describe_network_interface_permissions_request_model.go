@@ -36,7 +36,7 @@ type DescribeNetworkInterfacePermissionsRequest struct {
 	//
 	// eni-bp17pdijfczax****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The list of NIC permission IDs. Number of elements in the list: 1 to 100.
+	// The list of network interface controller (NIC) permission IDs. Number of elements in the list: 1 to 100.
 	//
 	// example:
 	//
@@ -44,27 +44,27 @@ type DescribeNetworkInterfacePermissionsRequest struct {
 	NetworkInterfacePermissionId []*string `json:"NetworkInterfacePermissionId,omitempty" xml:"NetworkInterfacePermissionId,omitempty" type:"Repeated"`
 	OwnerAccount                 *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the NIC permission list.
+	// The page number of the network interface controller (NIC) permission list.
 	//
 	// Minimum value: 1
 	//
-	// Default value: 1.
+	// Default value: 1
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for a paged query.
+	// The number of entries per page for the paged query.
 	//
 	// Maximum value: 100
 	//
-	// Default value: 10.
+	// Default value: 10
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region of the network interface controller (NIC) permissions. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region of the network interface controller (NIC) permissions. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

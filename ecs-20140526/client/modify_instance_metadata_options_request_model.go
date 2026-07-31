@@ -32,13 +32,13 @@ type iModifyInstanceMetadataOptionsRequest interface {
 type ModifyInstanceMetadataOptionsRequest struct {
 	// Specifies whether to enable the access channel for instance metadata. Valid values:
 	//
-	// - enabled
+	// - enabled: Enable the access channel.
 	//
-	// - disabled
+	// - disabled: Disable the access channel.
 	//
 	// Default value: enabled.
 	//
-	// > For information about instance metadata, see [Obtain instance metadata](https://help.aliyun.com/document_detail/49122.html).
+	// > For more information about instance metadata, see [Overview of instance metadata](https://help.aliyun.com/document_detail/49122.html).
 	//
 	// This parameter is required.
 	//
@@ -46,48 +46,52 @@ type ModifyInstanceMetadataOptionsRequest struct {
 	//
 	// enabled
 	HttpEndpoint *string `json:"HttpEndpoint,omitempty" xml:"HttpEndpoint,omitempty"`
-	// > This parameter is not publicly available.
+	// > This parameter is not available for use.
 	//
 	// example:
 	//
 	// 0
 	HttpPutResponseHopLimit *int32 `json:"HttpPutResponseHopLimit,omitempty" xml:"HttpPutResponseHopLimit,omitempty"`
-	// Specifies whether to forcefully use the security hardening mode (IMDSv2) to access instance metadata. Valid values:
+	// Specifies whether to forcefully use the security hardening mode when you access instance metadata. Valid values:
 	//
-	// - optional: does not forcefully use the security hardening mode (IMDSv2).
+	// - optional: The security hardening mode is not forcefully used.
 	//
-	// - required: forcefully uses the security hardening mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
+	// - required: The security hardening mode is forcefully used. After you set this parameter to required, you cannot access instance metadata in normal mode.
 	//
 	// Default value: optional.
 	//
-	// > For more information about modes of accessing instance metadata, see [Obtain instance metadata](https://help.aliyun.com/document_detail/150575.html).
+	// > For more information about instance metadata access modes, see [Instance metadata access modes](https://help.aliyun.com/document_detail/150575.html).
 	//
 	// example:
 	//
 	// optional
 	HttpTokens *string `json:"HttpTokens,omitempty" xml:"HttpTokens,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-bp67acfmxaz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether to enable the access channel for instance metadata. Valid values:
+	// Specifies whether to enable the access tag feature for instance metadata. Valid values:
 	//
-	// - enabled
+	// - enabled: Enable the feature.
 	//
-	// - disabled
+	// - disabled: Disable the feature.
 	//
 	// Default value: disabled.
 	//
-	// > The tag key must be a combination of letters, digits, @, colons (:), underscores (_), hyphens (-), periods (.), equal signs (=), and commas (,). The tag key cannot be "." or "..". Otherwise, the tag key cannot be accessed in the metadata.
+	// <notice>
+	//
+	// Tag keys must be combinations of letters, digits, at signs (@), colons (:), underscores (_), hyphens (-), periods (.), equal signs (=), and commas (,). Tag keys cannot be "." or "..", or the tags cannot be accessed in the metadata.
+	//
+	// </notice>
 	//
 	// example:
 	//
 	// disabled
 	InstanceMetadataTags *string `json:"InstanceMetadataTags,omitempty" xml:"InstanceMetadataTags,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The ID of the region in which the instance resides. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

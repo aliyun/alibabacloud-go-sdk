@@ -23,13 +23,13 @@ type iDescribeImagePipelinesResponseBody interface {
 
 type DescribeImagePipelinesResponseBody struct {
 	ImagePipeline *DescribeImagePipelinesResponseBodyImagePipeline `json:"ImagePipeline,omitempty" xml:"ImagePipeline,omitempty" type:"Struct"`
-	// The number of entries per page for a paginated query.
+	// The maximum number of entries per page for paging queries.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to retrieve the next page of results. This value is returned if the results are paginated.
+	// The pagination token returned in this call. For more information about how to use it, refer to the operation description.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeImagePipelinesResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of image pipelines that match the query criteria.
+	// The total number of image templates returned.
 	//
 	// example:
 	//
@@ -166,6 +166,7 @@ type DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet struct {
 	Name                    *string                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Deprecated
 	NvmeSupport     *string                                                                     `json:"NvmeSupport,omitempty" xml:"NvmeSupport,omitempty"`
+	RepairItems     *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetRepairItems `json:"RepairItems,omitempty" xml:"RepairItems,omitempty" type:"Struct"`
 	RepairMode      *string                                                                     `json:"RepairMode,omitempty" xml:"RepairMode,omitempty"`
 	ResourceGroupId *string                                                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SystemDiskSize  *int32                                                                      `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
@@ -249,6 +250,10 @@ func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet) GetNam
 
 func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet) GetNvmeSupport() *string {
 	return s.NvmeSupport
+}
+
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet) GetRepairItems() *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetRepairItems {
+	return s.RepairItems
 }
 
 func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet) GetRepairMode() *string {
@@ -364,6 +369,11 @@ func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet) SetNvm
 	return s
 }
 
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet) SetRepairItems(v *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetRepairItems) *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet {
+	s.RepairItems = v
+	return s
+}
+
 func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet) SetRepairMode(v string) *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet {
 	s.RepairMode = &v
 	return s
@@ -417,6 +427,11 @@ func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet) Valida
 	}
 	if s.ImportImageOptions != nil {
 		if err := s.ImportImageOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RepairItems != nil {
+		if err := s.RepairItems.Validate(); err != nil {
 			return err
 		}
 	}
@@ -1012,6 +1027,31 @@ func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportIm
 }
 
 func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTagsImportImageTag) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetRepairItems struct {
+	RepairItem []*string `json:"RepairItem,omitempty" xml:"RepairItem,omitempty" type:"Repeated"`
+}
+
+func (s DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetRepairItems) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetRepairItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetRepairItems) GetRepairItem() []*string {
+	return s.RepairItem
+}
+
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetRepairItems) SetRepairItem(v []*string) *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetRepairItems {
+	s.RepairItem = v
+	return s
+}
+
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetRepairItems) Validate() error {
 	return dara.Validate(s)
 }
 

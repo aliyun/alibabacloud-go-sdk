@@ -16,7 +16,7 @@ type iCopyImageResponseBody interface {
 }
 
 type CopyImageResponseBody struct {
-	// The ID of the image copy.
+	// The ID of the copied image.
 	//
 	// example:
 	//

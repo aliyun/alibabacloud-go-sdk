@@ -28,14 +28,14 @@ type iDescribeClassicLinkInstancesRequest interface {
 }
 
 type DescribeClassicLinkInstancesRequest struct {
-	// The instance ID. You can specify a maximum of 100 instance IDs in a single request. Separate the instance IDs with commas (,).
+	// The instance IDs. You can specify up to 100 instance IDs, separated by commas (,).
 	//
 	// example:
 	//
 	// i-bp1a5zr3u7nq9cxh****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Pages start from page 1.
+	// The page number. Minimum value: 1.
 	//
 	// Default value: 1.
 	//
@@ -43,7 +43,7 @@ type DescribeClassicLinkInstancesRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100.
+	// The number of entries per page for paging queries. Settings: 1 to 100.
 	//
 	// Default value: 10.
 	//
@@ -51,7 +51,7 @@ type DescribeClassicLinkInstancesRequest struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the instances. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -61,7 +61,7 @@ type DescribeClassicLinkInstancesRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The VPC ID. The ClassicLink feature must be enabled for the specified VPC. For more information, see [Establish a ClassicLink connection](https://help.aliyun.com/document_detail/65413.html).
+	// The VPC ID. The target VPC must have the enable ClassicLink feature turned on. For more information, see [Create a ClassicLink connection](https://help.aliyun.com/document_detail/65413.html).
 	//
 	// example:
 	//

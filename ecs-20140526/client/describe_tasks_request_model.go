@@ -40,7 +40,7 @@ type iDescribeTasksRequest interface {
 }
 
 type DescribeTasksRequest struct {
-	// The end of the time range to query. The time range refers to the period of time during which the task is created. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end of the creation time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeTasksRequest struct {
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number.
+	// The page number of the results.
 	//
-	// Pages start from page 1.
+	// Minimum value: 1.
 	//
 	// Default value: 1.
 	//
@@ -58,9 +58,9 @@ type DescribeTasksRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page for a paged query.
 	//
-	// Valid values: 1 to 100.
+	// Maximum value: 100.
 	//
 	// Default value: 10.
 	//
@@ -68,7 +68,7 @@ type DescribeTasksRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -76,35 +76,35 @@ type DescribeTasksRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the resources associated with the task. Valid values of N: 1 to 100.
+	// The resource IDs. Valid values of N: 1 to 100.
 	ResourceIds          []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query. The time range refers to the period of time during which the task is created. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The beginning of the creation time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2020-11-23T15:10:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the operation that generates the task. Valid values:
+	// The name of the API operation associated with the task. Valid values:
 	//
-	// - ImportImage
+	// - ImportImage: import an image.
 	//
-	// - ExportImage
+	// - ExportImage: export an image.
 	//
-	// - RedeployInstance
+	// - RedeployInstance: redeploy an ECS instance.
 	//
-	// - ModifyDiskSpec
+	// - ModifyDiskSpec: change the cloud disk type.
 	//
-	// - ArchiveSnapshot
+	// - ArchiveSnapshot: archive a snapshot.
 	//
 	// example:
 	//
 	// ImportImage
 	TaskAction *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
-	// Task group ID.
+	// The task group ID.
 	//
-	// > This parameter is in invitational preview. When this parameter is used, other query conditions become invalid.
+	// > This parameter is in invitational preview. When this parameter is specified, other query conditions do not take effect.
 	//
 	// if can be null:
 	// false
@@ -113,7 +113,7 @@ type DescribeTasksRequest struct {
 	//
 	// g-2ze2op2grqpclwu7****
 	TaskGroupId *string `json:"TaskGroupId,omitempty" xml:"TaskGroupId,omitempty"`
-	// The task IDs. You can specify up to 100 task IDs at a time. Separate the task IDs with commas (,).
+	// The task IDs. You can specify up to 100 task IDs at a time. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
@@ -121,15 +121,15 @@ type DescribeTasksRequest struct {
 	TaskIds *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
 	// The task status. Valid values:
 	//
-	// - Finished
+	// - Finished: The task is complete.
 	//
-	// - Processing
+	// - Processing: The task is running.
 	//
-	// - Failed
+	// - Failed: The task has failed.
 	//
-	// This parameter is left empty by default.
+	// Default value: null.
 	//
-	// > The system only queries tasks in the Finished, Processing, and Failed states and ignores other values.
+	// > Only tasks in the Finished, Processing, or Failed state can be queried. Other values do not take effect.
 	//
 	// example:
 	//

@@ -54,41 +54,45 @@ type iPurchaseReservedInstancesOfferingRequest interface {
 }
 
 type PurchaseReservedInstancesOfferingRequest struct {
-	// Specifies whether to enable auto-renewal for the reserved instance. Valid values:
+	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// - true
+	// - true: enables auto-renewal.
 	//
-	// - false (default)
+	// - false (default): disables auto-renewal.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The auto-renewal term of the reserved instance. Unit: months. This parameter takes effect only when AutoRenew is set to true.
+	// The auto-renewal period, in months. This parameter takes effect only when AutoRenew is set to True.
 	//
-	// Valid values: 12 and 36.
+	// <props="china">Valid values of AutoRenewPeriod: 1, 12, 36, and 60.
 	//
-	// Default value when PeriodUnit is set to Year: 12.
+	// <props="china">If PeriodUnit is set to Month, the default value is 1.
+	//
+	// <props="intl">Valid values of AutoRenewPeriod: 12 and 36.
+	//
+	// If PeriodUnit is set to Year, the default value is 12.
 	//
 	// example:
 	//
 	// 1
 	AutoRenewPeriod *int32 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the reserved instance. The description can be 2 to 256 characters in length and cannot start with [http:// or https://](http://https://%E3%80%82).
+	// The description of the reserved instance. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	//
-	// This parameter is left empty by default.
+	// Default value: empty.
 	//
 	// example:
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The number of pay-as-you-go instances of the same instance type that the reserved instance can match. Valid values: 1 to 50.
+	// The number of pay-as-you-go instances of the same instance type that the reserved instance can match at the same time. Valid values: 1 to 50.
 	//
 	// Default value: 1.
 	//
@@ -98,7 +102,7 @@ type PurchaseReservedInstancesOfferingRequest struct {
 	InstanceAmount *int32 `json:"InstanceAmount,omitempty" xml:"InstanceAmount,omitempty"`
 	// The instance type that the reserved instance can match.
 	//
-	// > The instance types that support reserved instances are subject to updates. For more information, see [Reserved instance overview](~~100370#3c1b682051vt4~~).
+	// > Applicable instance types are continuously updated. For more information, see [Overview of reserved instances](~~100370#3c1b682051vt4~~).
 	//
 	// This parameter is required.
 	//
@@ -106,13 +110,15 @@ type PurchaseReservedInstancesOfferingRequest struct {
 	//
 	// ecs.g5.large
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The payment option of the reserved instance. Valid values:
+	// The payment type of the reserved instance. Valid values:
 	//
-	// - No Upfront
 	//
-	// - Partial Upfront
 	//
-	// - All Upfront
+	// - No Upfront: no upfront.
+	//
+	// - Partial Upfront: partial upfront.
+	//
+	// - All Upfront: all upfront.
 	//
 	// Default value: All Upfront.
 	//
@@ -122,9 +128,19 @@ type PurchaseReservedInstancesOfferingRequest struct {
 	OfferingType *string `json:"OfferingType,omitempty" xml:"OfferingType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The validity period of the reserved instance.
+	// The term of the reserved instance.
 	//
-	// Valid values: 1 and 3.
+	// <props="intl">Valid values: 1 and 3.
+	//
+	//
+	// <props="china">
+	//
+	// - If `PeriodUnit` is set to `Year`, valid values are 1, 3, and 5.
+	//
+	// - If `PeriodUnit` is set to `Month`, the valid value is 1.
+	//
+	//
+	//
 	//
 	// Default value: 1.
 	//
@@ -132,21 +148,25 @@ type PurchaseReservedInstancesOfferingRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the validity period of the reserved instance.
+	// The unit of the term of the reserved instance.
 	//
-	// Valid value: Year.
+	// <props="intl">Valid values: Year.
 	//
-	// Default value: Year.
+	// <props="intl">Default value: Year.
+	//
+	// <props="china">Valid values: Year and Month.
+	//
+	// <props="china">Default value: Month.
 	//
 	// example:
 	//
 	// Year
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The operating system of the image used by the instance. Valid values:
+	// The operating system type of the image used by the instance. Valid values:
 	//
-	// - Windows: Windows Server operating system
+	// - Windows: Windows Server operating system.
 	//
-	// - Linux: Linux and UNIX-like operating system
+	// - Linux: Linux and Unix-like operating system.
 	//
 	// Default value: Linux.
 	//
@@ -154,7 +174,7 @@ type PurchaseReservedInstancesOfferingRequest struct {
 	//
 	// Linux
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The ID of the region in which to purchase a reserved instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -162,13 +182,13 @@ type PurchaseReservedInstancesOfferingRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the reserved instance. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http\\:// or https\\://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the reserved instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// testReservedInstanceName
 	ReservedInstanceName *string `json:"ReservedInstanceName,omitempty" xml:"ReservedInstanceName,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -176,11 +196,13 @@ type PurchaseReservedInstancesOfferingRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The scope of reserved instance N. Valid values:
+	// The scope of the reserved instance. Valid values:
 	//
-	// - Region: regional
 	//
-	// - Zone: zonal
+	//
+	// - Region: regional.
+	//
+	// - Zone: zonal.
 	//
 	// Default value: Region.
 	//
@@ -188,17 +210,17 @@ type PurchaseReservedInstancesOfferingRequest struct {
 	//
 	// Zone
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The time when you want the reserved instance to take effect. Specify the time in the [ISO 8601 standard](https://help.aliyun.com/document_detail/25696.html) in the `yyyy-MM-ddTHHZ` format. The time must be in UTC.
+	// The effective period of the reserved instance. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in UTC+0. Format: `yyyy-MM-ddTHHZ`.
 	//
-	// > If you do not specify this parameter, the reserved instance takes effect starting on the hour when the reserved instance is purchased. For example, if you purchase a reserved instance at 13:45:35 on November 1, 2024, the reserved instance takes effect starting 13:00:00 on November 1, 2024.
+	// > If you do not specify this parameter, the effective period starts from the nearest time frame by default. For example, if you successfully purchase a reserved instance at 2024-11-01 13:45:35, the effective period starts at 2024-11-01 13:00:00.
 	//
 	// example:
 	//
 	// 2024-07-04T15Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The tags to add to the reserved instance. You can add up to 20 tags.
+	// The tags. Array length: 0 to 20.
 	Tag []*PurchaseReservedInstancesOfferingRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the zone in which to purchase the reserved instance. This parameter takes effect and is required only if you set `Scope` to `Zone`. You can call the [DescribeZones](https://help.aliyun.com/document_detail/25610.html) operation to query the most recent zone list.
+	// The zone ID. This parameter is required and takes effect only when `Scope` is set to `Zone`. You can call [DescribeZones](https://help.aliyun.com/document_detail/25610.html) to query the zone list.
 	//
 	// example:
 	//
@@ -417,13 +439,13 @@ func (s *PurchaseReservedInstancesOfferingRequest) Validate() error {
 }
 
 type PurchaseReservedInstancesOfferingRequestTag struct {
-	// The tag key to add to the reserved instance. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+	// The tag key of the reserved instance. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value to add to the reserved instance. The tag value cannot be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:` or `aliyun`.
+	// The tag value of the reserved instance. The tag value cannot be an empty string. The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

@@ -48,7 +48,7 @@ type DescribeImageComponentsRequest struct {
 	//
 	// - Build
 	//
-	// - Test.
+	// - Test
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type DescribeImageComponentsRequest struct {
 	//
 	// testComponent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The pagination token. Set this parameter to the value of NextToken returned by the previous call. You do not need to set this parameter for the first request.
+	// The pagination token. Set this parameter to the value of `NextToken` returned in the previous call. You do not need to set this parameter for the first request.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type DescribeImageComponentsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. If you use this parameter to filter resources, the resource count cannot exceed 1,000.
+	// The resource group ID. If you use this parameter to filter resources, the resource count cannot exceed 1000.
 	//
 	// >Filtering by the default resource group is not supported.
 	//
@@ -124,7 +124,7 @@ type DescribeImageComponentsRequest struct {
 	//
 	// - Linux
 	//
-	// - Windows.
+	// - Windows
 	//
 	// example:
 	//

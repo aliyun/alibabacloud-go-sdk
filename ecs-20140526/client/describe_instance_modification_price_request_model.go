@@ -43,7 +43,7 @@ type iDescribeInstanceModificationPriceRequest interface {
 
 type DescribeInstanceModificationPriceRequest struct {
 	SystemDisk *DescribeInstanceModificationPriceRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	// The data disk configurations.
+	// The information about data disk types.
 	DataDisk []*DescribeInstanceModificationPriceRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -57,7 +57,7 @@ type DescribeInstanceModificationPriceRequest struct {
 	//
 	// aliyun_2_1903_x64_20G_alibase_20200324.vhd
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The ID of the instance for which to query the modification price.
+	// The instance ID of the instance for which you want to query the upgrade price.
 	//
 	// This parameter is required.
 	//
@@ -65,9 +65,9 @@ type DescribeInstanceModificationPriceRequest struct {
 	//
 	// i-bp1f2o4ldh8l****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The target instance type for the instance upgrade. Call the [DescribeResourcesModification](https://help.aliyun.com/document_detail/66187.html) operation to query the instance types available for upgrade in the specified availability zone.
+	// The target instance type for the upgrade. Call [DescribeResourcesModification](https://help.aliyun.com/document_detail/66187.html) to query the instance types available for upgrade in a specified zone.
 	//
-	// > You must specify at least one of the `InstanceType` and `DataDisk.N.*` parameters.
+	// > The instance type parameter (`InstanceType`) and data disk parameters (`DataDisk.N.*`) cannot both be empty. You must specify at least one.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ type DescribeInstanceModificationPriceRequest struct {
 	InternetMaxBandwidthOut *int32  `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
 	OwnerAccount            *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to get the latest list of Alibaba Cloud regions.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -312,45 +312,19 @@ func (s *DescribeInstanceModificationPriceRequestSystemDisk) Validate() error {
 }
 
 type DescribeInstanceModificationPriceRequestDataDisk struct {
-	// The category of data disk N, where N is an integer from 1 to 16. Use this parameter to query the price of adding a new data disk to the instance. Valid values:\\
+	// The category of the data disk. Specify this parameter when you want to query the price of new subscription data disks to be attached to the ECS instance. Valid values of N: 1 to 16. Valid values:
 	//
-	// \\
+	// - cloud_efficiency: ultra disk.
 	//
-	// \\- `cloud_efficiency`: Ultra Disk\\
+	// - cloud_ssd: standard SSD.
 	//
-	// \\
+	// - cloud_essd: enterprise SSD.
 	//
-	// \\- `cloud_ssd`: Standard SSD\\
+	// - cloud: basic disk.
 	//
-	// \\
+	// Default value: null.
 	//
-	// \\- `cloud_essd`: ESSD\\
-	//
-	// \\
-	//
-	// \\- `cloud`: Basic Disk\\
-	//
-	// \\
-	//
-	// Default value: None.\\
-	//
-	// \\
-	//
-	// \\
-	//
-	// \\
-	//
-	// \\
-	//
-	// \\
-	//
-	// \\
-	//
-	// \\
-	//
-	// \\
-	//
-	// \\
+	// > The instance type parameter (`InstanceType`) and data disk parameters (`DataDisk.N.*`) cannot both be empty. You must specify at least one.
 	//
 	// example:
 	//
@@ -360,43 +334,43 @@ type DescribeInstanceModificationPriceRequestDataDisk struct {
 	//
 	// d-bf4rupt9****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The performance level of the ESSD. This parameter is valid only when DataDisk.N.Category is set to cloud_essd. The value of N must match the N in DataDisk.N.Category. Valid values:
+	// The performance level of the data disk when the data disk is an enterprise SSD. The value of N must be the same as that in `DataDisk.N.Category=cloud_essd`. Valid values:
 	//
-	// \\- PL0: up to 10,000 random read/write IOPS per disk.
+	// - PL0: a single disk can deliver up to 10,000 random read/write IOPS.
 	//
-	// \\- PL1: up to 50,000 random read/write IOPS per disk.
+	// - PL1: a single disk can deliver up to 50,000 random read/write IOPS.
 	//
-	// \\- PL2: up to 100,000 random read/write IOPS per disk.
+	// - PL2: a single disk can deliver up to 100,000 random read/write IOPS.
 	//
-	// \\- PL3: up to 1,000,000 random read/write IOPS per disk.
+	// - PL3: a single disk can deliver up to 1,000,000 random read/write IOPS.
 	//
 	// Default value: PL1.
 	//
-	// For more information about ESSD performance levels, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+	// For information about how to select an ESSD performance level, see [ESSD](https://help.aliyun.com/document_detail/122389.html).
 	//
 	// example:
 	//
 	// PL1
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The size of data disk N in GiB, where N is an integer from 1 to 16. The value range varies based on the disk category:
+	// The capacity of the data disk. Valid values of N: 1 to 16. Unit: GiB. Valid values:
 	//
-	// \\- `cloud_efficiency` (Ultra Disk): 20 to 32768.
+	// - cloud_efficiency: 20 to 32768.
 	//
-	// \\- `cloud_ssd` (Standard SSD): 20 to 32768.
+	// - cloud_ssd: 20 to 32768.
 	//
-	// \\- `cloud_essd`: The value range varies based on the value of `DataDisk.N.PerformanceLevel`.
+	// - cloud_essd: The valid values depend on the value of `DataDisk.N.PerformanceLevel`.
 	//
-	// \\- PL0: 1 to 32768.
+	//     - PL0: 1 to 32768.
 	//
-	// \\- PL1: 20 to 32768.
+	//     - PL1: 20 to 32768.
 	//
-	// \\- PL2: 461 to 32768.
+	//     - PL2: 461 to 32768.
 	//
-	// \\- PL3: 1261 to 32768.
+	//     - PL3: 1261 to 32768.
 	//
-	// \\- `cloud` (Basic Disk): 5 to 2000.
+	// - cloud: 5 to 2000.
 	//
-	// Default value: The minimum size supported by the specified data disk category.
+	// Default value: the minimum capacity for the specified data disk category.
 	//
 	// example:
 	//

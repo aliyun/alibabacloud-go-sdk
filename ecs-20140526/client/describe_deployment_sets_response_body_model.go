@@ -24,7 +24,6 @@ type iDescribeDeploymentSetsResponseBody interface {
 }
 
 type DescribeDeploymentSetsResponseBody struct {
-	// Details of deployment sets.
 	DeploymentSets *DescribeDeploymentSetsResponseBodyDeploymentSets `json:"DeploymentSets,omitempty" xml:"DeploymentSets,omitempty" type:"Struct"`
 	// The page number of the deployment set list.
 	//
@@ -32,13 +31,13 @@ type DescribeDeploymentSetsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region.
+	// The region ID of the deployment set.
 	//
 	// example:
 	//
@@ -50,7 +49,7 @@ type DescribeDeploymentSetsResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of deployment sets.
+	// The total number of queried deployment sets.
 	//
 	// example:
 	//

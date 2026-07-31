@@ -60,7 +60,7 @@ type iRevokeSecurityGroupEgressRequest interface {
 }
 
 type RevokeSecurityGroupEgressRequest struct {
-	// A client token used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. **ClientToken*	- can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type RevokeSecurityGroupEgressRequest struct {
 	DestGroupOwnerId *int64 `json:"DestGroupOwnerId,omitempty" xml:"DestGroupOwnerId,omitempty"`
 	// Deprecated
 	//
-	// Deprecated. Use `Permissions.N.DestPrefixListId` to specify the source prefix list ID.
+	// Deprecated. Use `Permissions.N.DestPrefixListId` to specify the destination prefix list ID.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type RevokeSecurityGroupEgressRequest struct {
 	Permissions []*RevokeSecurityGroupEgressRequestPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// Deprecated. Use `Permissions.N.Policy` to configure the Settings for access permissions.
+	// Deprecated. Use `Permissions.N.Policy` to configure the access permissions in Settings.
 	//
 	// example:
 	//
@@ -456,7 +456,7 @@ type RevokeSecurityGroupEgressRequestPermissions struct {
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination IPv4 Classless Inter-Domain Routing (CIDR) block for which you want to revoke access permissions. The format supports both CIDR blocks and IPv4 address ranges.
+	// The destination IPv4 Classless Inter-Domain Routing (CIDR) block for which you want to revoke access permissions. CIDR format and IPv4 format address ranges are supported.
 	//
 	// example:
 	//
@@ -482,7 +482,7 @@ type RevokeSecurityGroupEgressRequestPermissions struct {
 	DestGroupId *string `json:"DestGroupId,omitempty" xml:"DestGroupId,omitempty"`
 	// The Alibaba Cloud account that manages the destination security group when you revoke a cross-account authorization security group rule.
 	//
-	// - If neither `DestGroupOwnerAccount` nor `DestGroupOwnerId` is specified, the access permissions for another security group within your account are revoked. Settings for cross-account scenarios require this parameter.
+	// - If neither `DestGroupOwnerAccount` nor `DestGroupOwnerId` is configured in Settings, the access permissions for another security group within your account are revoked.
 	//
 	// - If `DestCidrIp` is specified, this parameter is ignored.
 	//
@@ -492,7 +492,7 @@ type RevokeSecurityGroupEgressRequestPermissions struct {
 	DestGroupOwnerAccount *string `json:"DestGroupOwnerAccount,omitempty" xml:"DestGroupOwnerAccount,omitempty"`
 	// The ID of the Alibaba Cloud account that manages the destination security group when you revoke a cross-account authorization security group rule.
 	//
-	// - If neither `DestGroupOwnerId` nor `DestGroupOwnerAccount` is specified, the access permissions for another security group within your account are revoked. Settings for cross-account scenarios require this parameter.
+	// - If neither `DestGroupOwnerId` nor `DestGroupOwnerAccount` is configured in Settings, the access permissions for another security group within your account are revoked.
 	//
 	// - If `DestCidrIp` is specified, this parameter is ignored.
 	//
@@ -516,25 +516,25 @@ type RevokeSecurityGroupEgressRequestPermissions struct {
 	//
 	//
 	//
-	// - TCP.
+	// - TCP
 	//
-	// - UDP.
+	// - UDP
 	//
-	// - ICMP.
+	// - ICMP
 	//
-	// - ICMPv6.
+	// - ICMPv6
 	//
-	// - GRE.
+	// - GRE
 	//
-	// - ALL: all protocols.
+	// - ALL: all protocols
 	//
 	// example:
 	//
 	// TCP
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The destination IPv6 Classless Inter-Domain Routing (CIDR) block for which you want to revoke access permissions. The format supports both CIDR blocks and IPv6 address ranges.
+	// The destination IPv6 Classless Inter-Domain Routing (CIDR) block for which you want to revoke access permissions. CIDR format and IPv6 format address ranges are supported.
 	//
-	// > This parameter is valid only for VPC-connected ECS instances that support IPv6 and cannot be specified together with the `DestCidrIp` parameter. Settings for IPv6 destinations use this parameter exclusively.
+	// > This parameter is valid only for VPC-connected ECS instances that support IPv6 and cannot be configured together with the `DestCidrIp` parameter. Settings for both parameters at the same time are not supported.
 	//
 	// example:
 	//
@@ -542,15 +542,15 @@ type RevokeSecurityGroupEgressRequestPermissions struct {
 	Ipv6DestCidrIp *string `json:"Ipv6DestCidrIp,omitempty" xml:"Ipv6DestCidrIp,omitempty"`
 	// The source IPv6 CIDR block. CIDR blocks and IPv6 address ranges are supported.
 	//
-	// This parameter is used for quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
+	// This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
 	//
-	// > This parameter is valid only for VPC-connected ECS instances that support IPv6 and cannot be specified together with the `DestCidrIp` parameter. Settings for IPv6 sources use this parameter exclusively.
+	// > This parameter is valid only for VPC-connected ECS instances that support IPv6. Settings for this parameter and the `DestCidrIp` parameter cannot be configured at the same time.
 	//
 	// example:
 	//
 	// 2001:db8:1234:1a00::***
 	Ipv6SourceCidrIp *string `json:"Ipv6SourceCidrIp,omitempty" xml:"Ipv6SourceCidrIp,omitempty"`
-	// The network interface controller (NIC) type of the security group rule. For VPC-type security groups, you do not need to configure the network interface controller (NIC) type. The default value is intranet and only intranet is supported. Settings for VPC-type security groups ignore this parameter.
+	// The network interface controller (NIC) type of the security group rule. For VPC-type security groups, you do not need to configure the network interface controller (NIC) type. The default value is intranet and only intranet is supported. Settings default to intranet.
 	//
 	// > The classic network feature has been taken offline. For details, see [Discontinuation notice](https://help.aliyun.com/document_detail/2833134.html). The network interface controller (NIC) type for classic network-type security group rules. Valid values:
 	//
@@ -568,7 +568,7 @@ type RevokeSecurityGroupEgressRequestPermissions struct {
 	//
 	// - accept: Accepts access.
 	//
-	// - drop: Denies access and returns no deny information. The request timeout or the connection cannot be established.
+	// - drop: Denies access and does not return deny information. The request times out or the connection cannot be established.
 	//
 	// Default value: accept.
 	//
@@ -576,7 +576,7 @@ type RevokeSecurityGroupEgressRequestPermissions struct {
 	//
 	// accept
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The range of destination ports that correspond to the transport layer protocol. Valid values:
+	// The range of destination ports that correspond to the transport layer protocol for the security group. Valid values:
 	//
 	//
 	//
@@ -614,13 +614,13 @@ type RevokeSecurityGroupEgressRequestPermissions struct {
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The source IPv4 CIDR block. CIDR blocks and IPv4 address ranges are supported.
 	//
-	// This parameter is used for quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
+	// This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
 	//
 	// example:
 	//
 	// 10.0.0.0/8
 	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
-	// The range of source ports that correspond to the transport layer protocol. Valid values:
+	// The range of source ports that correspond to the transport layer protocol for the security group. Valid values:
 	//
 	//
 	//
@@ -632,7 +632,7 @@ type RevokeSecurityGroupEgressRequestPermissions struct {
 	//
 	// - ALL: -1/-1.
 	//
-	// This parameter is used for quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
+	// This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
 	//
 	// example:
 	//

@@ -112,10 +112,6 @@ type DescribeInstanceTypesRequest struct {
 	AdditionalAttributes []*string `json:"AdditionalAttributes,omitempty" xml:"AdditionalAttributes,omitempty" type:"Repeated"`
 	// The CPU architecture. Valid values:
 	//
-	// - X86.
-	//
-	// - ARM.
-	//
 	// example:
 	//
 	// X86
@@ -123,8 +119,6 @@ type DescribeInstanceTypesRequest struct {
 	// The CPU architectures to query. Array length: 1 to 2.
 	CpuArchitectures []*string `json:"CpuArchitectures,omitempty" xml:"CpuArchitectures,omitempty" type:"Repeated"`
 	// The GPU type.
-	//
-	// > Fuzzy matching is supported. For example, if the GPU type of an instance type is NVIDIA V100, you can enter NVIDIA to query the instance type.
 	//
 	// example:
 	//
@@ -134,39 +128,7 @@ type DescribeInstanceTypesRequest struct {
 	GpuSpecs []*string `json:"GpuSpecs,omitempty" xml:"GpuSpecs,omitempty" type:"Repeated"`
 	// The instance type categories to query. Array length: 1 to 10.
 	InstanceCategories []*string `json:"InstanceCategories,omitempty" xml:"InstanceCategories,omitempty" type:"Repeated"`
-	// The category of the instance type. Valid values:
-	//
-	// - General-purpose: general-purpose instance type.
-	//
-	// - Compute-optimized: compute-optimized instance type.
-	//
-	// - Memory-optimized: memory-optimized instance type.
-	//
-	// - Big data: big data instance type.
-	//
-	// - Local SSDs: local SSD instance type.
-	//
-	// - High Clock Speed: high clock speed instance type.
-	//
-	// - Enhanced: enhanced instance type.
-	//
-	// - Shared: shared instance type.
-	//
-	// - Compute-optimized with GPU: GPU-accelerated compute-optimized instance type.
-	//
-	// - Visual Compute-optimized: visual compute-optimized instance type.
-	//
-	// - Heterogeneous Service: heterogeneous service instance type.
-	//
-	// - Compute-optimized with FPGA: FPGA-accelerated compute-optimized instance type.
-	//
-	// - Compute-optimized with NPU: NPU-accelerated compute-optimized instance type.
-	//
-	// - ECS Bare Metal: ECS Bare Metal Instance.
-	//
-	// - Super Computing Cluster: Super Computing Cluster instance type.
-	//
-	// - High Performance Compute: high-performance computing instance type.
+	// The instance type category. Valid values:
 	//
 	// example:
 	//
@@ -174,21 +136,13 @@ type DescribeInstanceTypesRequest struct {
 	InstanceCategory *string `json:"InstanceCategory,omitempty" xml:"InstanceCategory,omitempty"`
 	// The level of the instance family. Valid values:
 	//
-	// - EntryLevel: entry level (shared).
-	//
-	// - EnterpriseLevel: enterprise level.
-	//
-	// - CreditEntryLevel: credit-based entry level.
-	//
 	// example:
 	//
 	// EntryLevel
 	InstanceFamilyLevel *string `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
 	// The instance families to query. Array length: 1 to 10.
 	InstanceTypeFamilies []*string `json:"InstanceTypeFamilies,omitempty" xml:"InstanceTypeFamilies,omitempty" type:"Repeated"`
-	// The instance family that the instance type belongs to. For valid values, see [DescribeInstanceTypeFamilies](https://help.aliyun.com/document_detail/25621.html).
-	//
-	// For more information about instance families, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+	// The instance family to which the instance type belongs. For more information, see [DescribeInstanceTypeFamilies](https://help.aliyun.com/document_detail/25621.html).
 	//
 	// example:
 	//
@@ -200,21 +154,15 @@ type DescribeInstanceTypesRequest struct {
 	//
 	// ecs.g6.large
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
-	// The local disk categories to query. Array length: 1 to 2.
+	// The local disk types to query. Array length: 1 to 2.
 	LocalStorageCategories []*string `json:"LocalStorageCategories,omitempty" xml:"LocalStorageCategories,omitempty" type:"Repeated"`
-	// The category of local disks. For more information, see [Local disks](~~63138#section_n2w_8yc_5u1~~). Valid values:
-	//
-	// - local_hdd_pro: SATA HDDs used by the d1ne and d1 instance families.
-	//
-	// - local_ssd_pro: NVMe SSDs used by the i2, i2g, i1, ga1, and gn5 instance families.
+	// The local disk type. For more information, see [Local disks](~~63138#section_n2w_8yc_5u1~~). Valid values:
 	//
 	// example:
 	//
 	// local_ssd_pro
 	LocalStorageCategory *string `json:"LocalStorageCategory,omitempty" xml:"LocalStorageCategory,omitempty"`
-	// The maximum number of entries per page for a paginated query. Maximum value: 1600.
-	//
-	// Default value: 1600.
+	// The maximum number of entries per page for paging query. Maximum value: 1600.
 	//
 	// if can be null:
 	// false
@@ -223,213 +171,163 @@ type DescribeInstanceTypesRequest struct {
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The maximum number of vCPU cores when you query instance types. Valid values: positive integers.
-	//
-	// > Instance types with more vCPU cores than the specified value are not returned.
+	// The expected maximum number of vCPU cores when querying instance types. Valid values: positive integers.
 	//
 	// example:
 	//
 	// 10
 	MaximumCpuCoreCount *int32 `json:"MaximumCpuCoreCount,omitempty" xml:"MaximumCpuCoreCount,omitempty"`
-	// The maximum CPU base clock speed when you query instance types.
-	//
-	// > Instance types with a base clock speed higher than the specified value are not returned.
+	// The expected maximum clock speed when querying instance types.
 	//
 	// example:
 	//
 	// 3.2
 	MaximumCpuSpeedFrequency *float32 `json:"MaximumCpuSpeedFrequency,omitempty" xml:"MaximumCpuSpeedFrequency,omitempty"`
-	// The maximum CPU turbo frequency when you query instance types.
-	//
-	// > Instance types with a turbo frequency higher than the specified value are not returned.
+	// The expected maximum turbo frequency when querying instance types.
 	//
 	// example:
 	//
 	// 4.1
 	MaximumCpuTurboFrequency *float32 `json:"MaximumCpuTurboFrequency,omitempty" xml:"MaximumCpuTurboFrequency,omitempty"`
-	// The maximum number of GPUs when you query instance types. Valid values: positive integers.
-	//
-	// > Instance types with more GPUs than the specified value are not returned.
+	// The expected maximum number of GPUs when querying instance types. Valid values: positive integers.
 	//
 	// example:
 	//
 	// 10
 	MaximumGPUAmount *int32 `json:"MaximumGPUAmount,omitempty" xml:"MaximumGPUAmount,omitempty"`
-	// The maximum memory size when you query instance types. Unit: GiB.
-	//
-	// > Instance types with a memory size larger than the specified value are not returned.
+	// The expected maximum memory size when querying instance types. Unit: GiB.
 	//
 	// example:
 	//
 	// 60
 	MaximumMemorySize *float32 `json:"MaximumMemorySize,omitempty" xml:"MaximumMemorySize,omitempty"`
-	// The minimum baseline vCPU computing performance (total of all vCPUs) for burstable instance types t5 and t6 when you query instance types.
-	//
-	// > Instance types with a baseline vCPU computing performance lower than the specified value are not returned.
+	// The expected minimum baseline vCPU computing performance (sum of all vCPUs) for burstable instances t5 and t6 when querying instance types.
 	//
 	// example:
 	//
 	// 12
 	MinimumBaselineCredit *int32 `json:"MinimumBaselineCredit,omitempty" xml:"MinimumBaselineCredit,omitempty"`
-	// The minimum number of vCPU cores when you query instance types. Valid values: positive integers.
-	//
-	// > Instance types with fewer vCPU cores than the specified value are not returned.
+	// The expected minimum number of vCPU cores when querying instance types. Valid values: positive integers.
 	//
 	// example:
 	//
 	// 2
 	MinimumCpuCoreCount *int32 `json:"MinimumCpuCoreCount,omitempty" xml:"MinimumCpuCoreCount,omitempty"`
-	// The minimum CPU base clock speed when you query instance types.
-	//
-	// > Instance types with a base clock speed lower than the specified value are not returned.
+	// The expected minimum clock speed when querying instance types.
 	//
 	// example:
 	//
 	// 2.5
 	MinimumCpuSpeedFrequency *float32 `json:"MinimumCpuSpeedFrequency,omitempty" xml:"MinimumCpuSpeedFrequency,omitempty"`
-	// The minimum CPU turbo frequency when you query instance types.
-	//
-	// > Instance types with a turbo frequency lower than the specified value are not returned.
+	// The expected minimum turbo frequency when querying instance types.
 	//
 	// example:
 	//
 	// 3.2
 	MinimumCpuTurboFrequency *float32 `json:"MinimumCpuTurboFrequency,omitempty" xml:"MinimumCpuTurboFrequency,omitempty"`
-	// The minimum number of cloud disks that can be attached when you query instance types.
-	//
-	// > Instance types that support fewer cloud disks than the specified value are not returned.
+	// The expected minimum number of cloud disks that can be attached when querying instance types.
 	//
 	// example:
 	//
 	// 4
 	MinimumDiskQuantity *int32 `json:"MinimumDiskQuantity,omitempty" xml:"MinimumDiskQuantity,omitempty"`
-	// The minimum number of IPv6 addresses per ENI when you query instance types.
-	//
-	// > Instance types that support fewer IPv6 addresses per ENI than the specified value are not returned.
+	// The expected minimum number of IPv6 addresses per Elastic Network Interface (ENI) network interface controller (NIC) when querying instance types.
 	//
 	// example:
 	//
 	// 2
 	MinimumEniIpv6AddressQuantity *int32 `json:"MinimumEniIpv6AddressQuantity,omitempty" xml:"MinimumEniIpv6AddressQuantity,omitempty"`
-	// The minimum number of IPv4 addresses per ENI when you query instance types.
-	//
-	// > Instance types that support fewer IPv4 addresses per ENI than the specified value are not returned.
+	// The expected minimum number of IPv4 addresses per Elastic Network Interface (ENI) network interface controller (NIC) when querying instance types.
 	//
 	// example:
 	//
 	// 2
 	MinimumEniPrivateIpAddressQuantity *int32 `json:"MinimumEniPrivateIpAddressQuantity,omitempty" xml:"MinimumEniPrivateIpAddressQuantity,omitempty"`
-	// The minimum number of ENIs that can be attached when you query instance types.
-	//
-	// > Instance types that support fewer ENIs than the specified value are not returned.
+	// The expected minimum number of Elastic Network Interfaces (ENIs) that can be attached per network interface controller (NIC) when querying instance types.
 	//
 	// example:
 	//
 	// 4
 	MinimumEniQuantity *int32 `json:"MinimumEniQuantity,omitempty" xml:"MinimumEniQuantity,omitempty"`
-	// The minimum number of ERIs when you query instance types.
-	//
-	// > Instance types with fewer ERIs than the specified value are not returned.
+	// The expected minimum number of Elastic RDMA Interfaces (ERIs) per network interface controller (NIC) when querying instance types.
 	//
 	// example:
 	//
 	// 0
 	MinimumEriQuantity *int32 `json:"MinimumEriQuantity,omitempty" xml:"MinimumEriQuantity,omitempty"`
-	// The minimum number of GPUs when you query instance types. Valid values: positive integers.
-	//
-	// > Instance types with fewer GPUs than the specified value are not returned.
+	// The expected minimum number of GPUs when querying instance types. Valid values: positive integers.
 	//
 	// example:
 	//
 	// 3
 	MinimumGPUAmount *int32 `json:"MinimumGPUAmount,omitempty" xml:"MinimumGPUAmount,omitempty"`
-	// The minimum initial vCPU credits for burstable instance types t5 and t6 when you query instance types.
-	//
-	// > Instance types with initial vCPU credits lower than the specified value are not returned.
+	// The expected minimum initial vCPU CPU credits for burstable instances t5 and t6 when querying instance types.
 	//
 	// example:
 	//
 	// 12
 	MinimumInitialCredit *int32 `json:"MinimumInitialCredit,omitempty" xml:"MinimumInitialCredit,omitempty"`
-	// The minimum inbound internal bandwidth when you query instance types. Unit: kbit/s.
-	//
-	// > Instance types with an inbound internal bandwidth lower than the specified value are not returned.
+	// The expected minimum inbound internal bandwidth when querying instance types. Unit: kbit/s.
 	//
 	// example:
 	//
 	// 12288
 	MinimumInstanceBandwidthRx *int32 `json:"MinimumInstanceBandwidthRx,omitempty" xml:"MinimumInstanceBandwidthRx,omitempty"`
-	// The minimum outbound internal bandwidth when you query instance types. Unit: kbit/s.
-	//
-	// > Instance types with an outbound internal bandwidth lower than the specified value are not returned.
+	// The expected minimum outbound internal bandwidth when querying instance types. Unit: kbit/s.
 	//
 	// example:
 	//
 	// 12288
 	MinimumInstanceBandwidthTx *int32 `json:"MinimumInstanceBandwidthTx,omitempty" xml:"MinimumInstanceBandwidthTx,omitempty"`
-	// The minimum inbound packet forwarding rate over the internal network when you query instance types. Unit: pps.
-	//
-	// > Instance types with an inbound packet forwarding rate lower than the specified value are not returned.
+	// The expected minimum inbound packet forwarding rate over the internal network when querying instance types. Unit: pps.
 	//
 	// example:
 	//
 	// 15
 	MinimumInstancePpsRx *int64 `json:"MinimumInstancePpsRx,omitempty" xml:"MinimumInstancePpsRx,omitempty"`
-	// The minimum outbound packet forwarding rate over the internal network when you query instance types. Unit: pps.
-	//
-	// > Instance types with an outbound packet forwarding rate lower than the specified value are not returned.
+	// The expected minimum outbound packet forwarding rate over the internal network when querying instance types. Unit: pps.
 	//
 	// example:
 	//
 	// 15
 	MinimumInstancePpsTx *int64 `json:"MinimumInstancePpsTx,omitempty" xml:"MinimumInstancePpsTx,omitempty"`
-	// The minimum number of local disks attached to the instance when you query instance types.
-	//
-	// > Instance types with fewer local disks than the specified value are not returned.
+	// The expected minimum number of local disks attached to the instance when querying instance types.
 	//
 	// example:
 	//
 	// 4
 	MinimumLocalStorageAmount *int32 `json:"MinimumLocalStorageAmount,omitempty" xml:"MinimumLocalStorageAmount,omitempty"`
-	// The capacity of a single local disk attached to the instance. Unit: GiB.
+	// The capacity of each local disk attached to the instance. Unit: GiB.
 	//
 	// example:
 	//
 	// 40
 	MinimumLocalStorageCapacity *int64 `json:"MinimumLocalStorageCapacity,omitempty" xml:"MinimumLocalStorageCapacity,omitempty"`
-	// The minimum memory size when you query instance types. Unit: GiB.
-	//
-	// > Instance types with a memory size smaller than the specified value are not returned.
+	// The expected minimum memory size when querying instance types. Unit: GiB.
 	//
 	// example:
 	//
 	// 20
 	MinimumMemorySize *float32 `json:"MinimumMemorySize,omitempty" xml:"MinimumMemorySize,omitempty"`
-	// The minimum default number of queues supported by the primary ENI when you query instance types.
-	//
-	// > Instance types with fewer default queues on the primary ENI than the specified value are not returned.
+	// The expected minimum number of default queues for the primary ENI when querying instance types.
 	//
 	// example:
 	//
 	// 8
 	MinimumPrimaryEniQueueNumber *int32 `json:"MinimumPrimaryEniQueueNumber,omitempty" xml:"MinimumPrimaryEniQueueNumber,omitempty"`
-	// The minimum number of QueuePair (QP) queues per Elastic RDMA Interface (ERI) when you query instance types.
-	//
-	// > Instance types with fewer QP queues per ERI than the specified value are not returned.
+	// The expected minimum number of QueuePair (QP) queues per Elastic RDMA Interface (ERI) when querying instance types.
 	//
 	// example:
 	//
 	// 8
 	MinimumQueuePairNumber *int32 `json:"MinimumQueuePairNumber,omitempty" xml:"MinimumQueuePairNumber,omitempty"`
-	// The minimum default number of queues supported by the secondary ENI when you query instance types.
-	//
-	// > Instance types with fewer default queues on the secondary ENI than the specified value are not returned.
+	// The expected minimum number of default queues for secondary Elastic Network Interfaces (ENIs) per network interface controller (NIC) when querying instance types.
 	//
 	// example:
 	//
 	// 4
 	MinimumSecondaryEniQueueNumber *int32 `json:"MinimumSecondaryEniQueueNumber,omitempty" xml:"MinimumSecondaryEniQueueNumber,omitempty"`
-	// The pagination token. Set this parameter to the NextToken value returned in the previous call to this API operation. You do not need to set this parameter for the first request.
+	// The query token. Set this parameter to the NextToken value returned in the previous call. You do not need to set this parameter for the first call.
 	//
 	// if can be null:
 	// true
@@ -438,11 +336,7 @@ type DescribeInstanceTypesRequest struct {
 	//
 	// e71d8a535bd9cc11
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Indicates whether cloud disks attached to the instance type support NVMe. Valid values:
-	//
-	// - required: supported. Cloud disks are attached in NVMe mode.
-	//
-	// - unsupported: not supported. Cloud disks are not attached in NVMe mode.
+	// Specifies whether the cloud disks attached to the instance type support NVMe. Valid values:
 	//
 	// example:
 	//
@@ -451,8 +345,6 @@ type DescribeInstanceTypesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The processor model.
-	//
-	// > Fuzzy matching is supported. For example, if the processor model of an instance type is Intel Xeon(Ice Lake) Platinum 8369B, you can enter Intel to query the instance type.
 	//
 	// example:
 	//

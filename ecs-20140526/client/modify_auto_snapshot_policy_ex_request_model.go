@@ -40,9 +40,9 @@ type iModifyAutoSnapshotPolicyExRequest interface {
 type ModifyAutoSnapshotPolicyExRequest struct {
 	// The retention period of cross-region snapshot replicas. Unit: days. Valid values:
 	//
-	// - -1: permanently retained.
+	// - -1: Snapshot replicas are permanently retained.
 	//
-	// - 1 to 65535: the specified number of days for which snapshot replicas are retained.
+	// - 1 to 65535: the number of days for which snapshot replicas are retained.
 	//
 	// Default value: -1.
 	//
@@ -52,11 +52,11 @@ type ModifyAutoSnapshotPolicyExRequest struct {
 	CopiedSnapshotsRetentionDays *int32 `json:"CopiedSnapshotsRetentionDays,omitempty" xml:"CopiedSnapshotsRetentionDays,omitempty"`
 	// The encryption parameter for cross-region snapshot replication.
 	CopyEncryptionConfiguration *ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfiguration `json:"CopyEncryptionConfiguration,omitempty" xml:"CopyEncryptionConfiguration,omitempty" type:"Struct"`
-	// Specifies whether to allow automatic cross-region replication.
+	// Specifies whether to allow automatic cross-region replication. Valid values:
 	//
-	// - true: allowed.
+	// - true: Allowed.
 	//
-	// - false: not allowed.
+	// - false: Not allowed.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ type ModifyAutoSnapshotPolicyExRequest struct {
 	//
 	// sp-bp12m37ccmxvbmi5****
 	AutoSnapshotPolicyId *string `json:"autoSnapshotPolicyId,omitempty" xml:"autoSnapshotPolicyId,omitempty"`
-	// The name of the automatic snapshot policy. If this parameter is left empty, the name is not modified.
+	// The name of the automatic snapshot policy. If this parameter is empty, the name is not modified.
 	//
 	// example:
 	//
@@ -107,9 +107,9 @@ type ModifyAutoSnapshotPolicyExRequest struct {
 	RepeatWeekdays *string `json:"repeatWeekdays,omitempty" xml:"repeatWeekdays,omitempty"`
 	// The retention period of automatic snapshots. Unit: days. Valid values:
 	//
-	// - -1: permanently retained.
+	// - -1: Automatic snapshots are permanently retained.
 	//
-	// - 1 to 65536: the specified number of days for which snapshots are retained.
+	// - 1 to 65536: the number of days for which automatic snapshots are retained.
 	//
 	// Default value: -1.
 	//
@@ -270,9 +270,9 @@ type ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfiguration struct {
 	Arn []*ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfigurationArn `json:"Arn,omitempty" xml:"Arn,omitempty" type:"Repeated"`
 	// Specifies whether to enable encryption for cross-region snapshot replication. Valid values:
 	//
-	// - true: enabled.
+	// - true: Enabled.
 	//
-	// - false: disabled.
+	// - false: Disabled.
 	//
 	// Default value: false.
 	//

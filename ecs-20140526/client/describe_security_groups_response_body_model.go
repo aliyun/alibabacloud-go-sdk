@@ -26,7 +26,7 @@ type iDescribeSecurityGroupsResponseBody interface {
 }
 
 type DescribeSecurityGroupsResponseBody struct {
-	// The pagination token returned in this call. If this value is empty when you use MaxResults and NextToken for paging, no more data is available.
+	// The pagination token returned in this invoke. If this value is empty when you use MaxResults and NextToken for paged query with paging, no more data is available.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribeSecurityGroupsResponseBody struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The current page number.
 	//
-	// > This parameter will be offline. Use NextToken and MaxResults for paging.
+	// > This parameter will be offline soon. Use NextToken and MaxResults for paged query and paging operations.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeSecurityGroupsResponseBody struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
 	//
-	// > This parameter will be offline. Use NextToken and MaxResults for paging.
+	// > This parameter will be offline soon. Use NextToken and MaxResults for paged query and paging operations.
 	//
 	// example:
 	//
@@ -61,7 +61,7 @@ type DescribeSecurityGroupsResponseBody struct {
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecurityGroups *DescribeSecurityGroupsResponseBodySecurityGroups `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Struct"`
-	// The total number of security groups. This parameter is not returned when you use `MaxResults` and `NextToken` for parameter query.
+	// The total number of security groups. This parameter is not returned when you use `MaxResults` and `NextToken` parameter query.
 	//
 	// example:
 	//

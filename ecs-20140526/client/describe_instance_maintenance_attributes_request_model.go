@@ -28,7 +28,7 @@ type iDescribeInstanceMaintenanceAttributesRequest interface {
 }
 
 type DescribeInstanceMaintenanceAttributesRequest struct {
-	// The instance IDs. You can specify up to 100 instance IDs.
+	// The list of instance IDs. You can specify up to 100 instance IDs.
 	//
 	// example:
 	//
@@ -36,11 +36,11 @@ type DescribeInstanceMaintenanceAttributesRequest struct {
 	InstanceId   []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
 	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number.
+	// The page number of the maintenance attribute list.
 	//
-	// Pages start from page 1.
+	// Minimum value: 1
 	//
-	// Default value: 1.
+	// Default value: 1
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type DescribeInstanceMaintenanceAttributesRequest struct {
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values: 1 to 100.
 	//
-	// Default value: 10.
+	// Default value: 10
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

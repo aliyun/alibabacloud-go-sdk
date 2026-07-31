@@ -24,15 +24,15 @@ type iDescribeManagedInstancesResponseBody interface {
 }
 
 type DescribeManagedInstancesResponseBody struct {
-	// The queried managed instances.
+	// The list of managed instances.
 	Instances []*DescribeManagedInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The pagination token returned in this call.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number.
+	// The page number of the managed instance list.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeManagedInstancesResponseBody struct {
 	//
 	// 77115469-F2C5-4ECA-94F7-FA04F2FD****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of queried managed instances.
+	// The total number of managed instances queried.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *DescribeManagedInstancesResponseBody) Validate() error {
 }
 
 type DescribeManagedInstancesResponseBodyInstances struct {
-	// The ID of the activation code.
+	// The activation code ID.
 	//
 	// example:
 	//
@@ -146,11 +146,11 @@ type DescribeManagedInstancesResponseBodyInstances struct {
 	//
 	// 2.2.0.102
 	AgentVersion *string `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty"`
-	// Indicates whether the managed instance is connected. Valid values:
+	// Indicates whether the managed instance is connected.
 	//
-	// - true: The managed instance is connected. You can manage the instance by using Cloud Assistant.
+	// - true: The managed instance is connected. You can manage the managed instance by using Cloud Assistant.
 	//
-	// - false: The managed instance is not connected. The managed instance may be down or Cloud Assistant Agent may be incorrectly installed.
+	// - false: The managed instance is not connected. The server may be shut down or Cloud Assistant Agent may not be properly installed.
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ type DescribeManagedInstancesResponseBodyInstances struct {
 	//
 	// demo
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// The ID of the managed instance.
+	// The managed instance ID.
 	//
 	// example:
 	//
@@ -186,37 +186,37 @@ type DescribeManagedInstancesResponseBodyInstances struct {
 	//
 	// ``10.0.**.**``
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The number of times that Cloud Assistant tasks were executed on the managed instance.
+	// The number of times that Cloud Assistant tasks were run on the managed instance.
 	//
 	// example:
 	//
 	// 1
 	InvocationCount *int64 `json:"InvocationCount,omitempty" xml:"InvocationCount,omitempty"`
-	// The time when the last Cloud Assistant task was executed.
+	// The time when the last Cloud Assistant task was run.
 	//
 	// example:
 	//
 	// 2021-01-20T09:00:40Z
 	LastInvokedTime *string `json:"LastInvokedTime,omitempty" xml:"LastInvokedTime,omitempty"`
-	// The machine code of the managed instance.
+	// The machine ID of the managed instance.
 	//
 	// example:
 	//
 	// e03231b37ab14e53b5795ad625fc****
 	MachineId *string `json:"MachineId,omitempty" xml:"MachineId,omitempty"`
-	// The operating system type of the managed instance.
+	// The operating system of the managed instance.
 	//
 	// example:
 	//
 	// Linux
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The version information of the operating system.
+	// The version of the operating system.
 	//
 	// example:
 	//
 	// Linux_#38~18.04.1-Ubuntu SMP Wed Jan 6 18:26:30 UTC 2021_x86_64
 	OsVersion *string `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
-	// The time when the managed instance was registered.
+	// The registration time of the managed instance.
 	//
 	// example:
 	//
@@ -228,7 +228,7 @@ type DescribeManagedInstancesResponseBodyInstances struct {
 	//
 	// rg-123******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags of the managed instance.
+	// The tags.
 	Tags []*DescribeManagedInstancesResponseBodyInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -398,17 +398,17 @@ func (s *DescribeManagedInstancesResponseBodyInstances) Validate() error {
 }
 
 type DescribeManagedInstancesResponseBodyInstancesTags struct {
-	// The key of tag N of the managed instance. Valid values of N: 1 to 20. The tag key cannot be an empty string.
+	// The tag key of the managed instance. Valid values of N: 1 to 20. The tag key cannot be an empty string.
 	//
-	// If a single tag is specified to query resources, up to 1,000 resources that have this tag added are returned. If multiple tags are specified to query resources, up to 1,000 resources that have all these tags added are returned. To query more than 1,000 resources that have the specified tags, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
+	// If you use a single tag to filter resources, the resource count with this tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that have all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
 	//
-	// The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of tag N of the managed instance. Valid values of N: 1 to 20. The tag value can be an empty string.
+	// The tag value of the managed instance. Valid values of N: 1 to 20. The tag value can be an empty string.
 	//
 	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
 	//

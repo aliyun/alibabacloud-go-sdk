@@ -39,41 +39,41 @@ type iModifyDedicatedHostAttributeRequest interface {
 
 type ModifyDedicatedHostAttributeRequest struct {
 	NetworkAttributes *ModifyDedicatedHostAttributeRequestNetworkAttributes `json:"NetworkAttributes,omitempty" xml:"NetworkAttributes,omitempty" type:"Struct"`
-	// The policy for migrating the instances deployed on the dedicated host when the dedicated host fails or needs to be repaired online. Valid values:
+	// The migration plan for the instances on the dedicated host when the dedicated host fails or needs to be repaired online. Valid values:
 	//
-	// - Migrate: The instances are migrated to another physical machine and then restarted.
+	// - Migrate: The instances are migrated to another physical server and restarted.
 	//
-	// - Stop: The instances are stopped. If the dedicated host cannot be repaired, the instances are migrated to another physical machine and then restarted.
+	// - Stop: The instances are stopped on the current dedicated host. After the dedicated host is confirmed to be irreparable, the instances are migrated to another physical server and restarted.
 	//
-	// If the dedicated host has cloud disks attached, the default value is Migrate.
+	// Default value when cloud disks are attached to the dedicated host: Migrate.
 	//
-	// If the dedicated host has local disks attached, the default value is Stop.
+	// Default value when local disks are attached to the dedicated host: Stop.
 	//
 	// example:
 	//
 	// Migrate
 	ActionOnMaintenance *string `json:"ActionOnMaintenance,omitempty" xml:"ActionOnMaintenance,omitempty"`
-	// Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you do not specify **DedicatedHostId*	- when you create an instance on a dedicated host, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. Valid values:
+	// Specifies whether the dedicated host is added to the automatic deployment resource pool. If you do not specify DedicatedHostId when you create an instance on a dedicated host, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. Valid values:
 	//
-	// - on: adds the dedicated host to the resource pool for automatic deployment.
+	// - on: The dedicated host is added to the automatic deployment resource pool.
 	//
-	// - off: does not add the dedicated host to the resource pool for automatic deployment.
+	// - off: The dedicated host is not added to the automatic deployment resource pool.
 	//
-	// For information about automatic deployment, see [Functions and features](https://help.aliyun.com/document_detail/118938.html).
+	// For more information about the automatic deployment feature, see [Features](https://help.aliyun.com/document_detail/118938.html).
 	//
 	// example:
 	//
 	// on
 	AutoPlacement *string `json:"AutoPlacement,omitempty" xml:"AutoPlacement,omitempty"`
-	// The CPU overcommit ratio. You can configure CPU overcommit ratios only for the following dedicated host types: g6s, c6s, and r6s. Valid values: 1 to 5.
+	// The CPU overcommit ratio. Only the custom instance families g6s, c6s, and r6s support CPU overcommit ratios. Valid values: 1 to 5.
 	//
-	// The CPU overcommit ratio affects the number of available vCPUs on a dedicated host. You can use the following formula to calculate the number of available vCPUs on a dedicated host: Number of available vCPUs = Number of physical CPU cores × 2 × CPU overcommit ratio. For example, the number of physical CPU cores on each g6s dedicated host is 52. If you change the CPU overcommit ratio of a g6s dedicated host to 4, the number of available vCPUs on the dedicated host is 416. For scenarios that have minimal requirements for CPU stability or where CPU load is not heavy, such as development and test environments, you can increase the number of available vCPUs on a dedicated host by increasing the CPU overcommit ratio. This allows you to deploy more ECS instances of the same specifications on the dedicated host and reduce the unit deployment cost.
+	// The CPU overcommit ratio affects the number of available vCPUs on a dedicated host. Available vCPUs on a dedicated host = Number of physical CPU cores × 2 × CPU overcommit ratio. For example, the number of physical CPU cores on a g6s dedicated host is 52. If you set the CPU overcommit ratio to 4, the total number of vCPUs becomes 416. For scenarios that do not require absolute CPU stability or have low CPU loads, such as development and testing environments, you can increase the overcommit ratio to increase the number of available vCPUs. This way, you can deploy more ECS instances of the same specifications and reduce the unit deployment cost.
 	//
 	// example:
 	//
 	// 1
 	CpuOverCommitRatio *float32 `json:"CpuOverCommitRatio,omitempty" xml:"CpuOverCommitRatio,omitempty"`
-	// The ID of the dedicated host cluster to which to assign the dedicated host.
+	// The ID of the dedicated host cluster.
 	//
 	// example:
 	//
@@ -87,7 +87,7 @@ type ModifyDedicatedHostAttributeRequest struct {
 	//
 	// dh-bp165p6xk2tlw61e****
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	// The name of the dedicated host. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http\\:// or https\\://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the dedicated host. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
 	//
 	// example:
 	//
@@ -101,7 +101,7 @@ type ModifyDedicatedHostAttributeRequest struct {
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the dedicated host resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the dedicated host. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -248,13 +248,13 @@ func (s *ModifyDedicatedHostAttributeRequest) Validate() error {
 }
 
 type ModifyDedicatedHostAttributeRequestNetworkAttributes struct {
-	// The timeout period for a UDP session between a Server Load Balancer (SLB) instance and the dedicated host. Unit: seconds. Valid values: 15 to 310.
+	// The timeout period of UDP sessions for load balancing connections. Unit: seconds. Valid values: 15 to 310.
 	//
 	// example:
 	//
 	// 60
 	SlbUdpTimeout *int32 `json:"SlbUdpTimeout,omitempty" xml:"SlbUdpTimeout,omitempty"`
-	// The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.
+	// The timeout period of UDP sessions for user access to cloud services running on the dedicated host. Unit: seconds. Valid values: 15 to 310.
 	//
 	// example:
 	//

@@ -19,7 +19,7 @@ type iDescribeInstanceTypesResponseBody interface {
 
 type DescribeInstanceTypesResponseBody struct {
 	InstanceTypes *DescribeInstanceTypesResponseBodyInstanceTypes `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Struct"`
-	// The pagination token returned by this call.
+	// The query token returned by this call.
 	//
 	// example:
 	//
@@ -155,6 +155,7 @@ type DescribeInstanceTypesResponseBodyInstanceTypesInstanceType struct {
 	PrimaryEniQueueNumber       *int32                                                                        `json:"PrimaryEniQueueNumber,omitempty" xml:"PrimaryEniQueueNumber,omitempty"`
 	QueuePairNumber             *int32                                                                        `json:"QueuePairNumber,omitempty" xml:"QueuePairNumber,omitempty"`
 	SecondaryEniQueueNumber     *int32                                                                        `json:"SecondaryEniQueueNumber,omitempty" xml:"SecondaryEniQueueNumber,omitempty"`
+	SecurityOptions             *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeSecurityOptions    `json:"SecurityOptions,omitempty" xml:"SecurityOptions,omitempty" type:"Struct"`
 	SupportedBootModes          *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeSupportedBootModes `json:"SupportedBootModes,omitempty" xml:"SupportedBootModes,omitempty" type:"Struct"`
 	TotalEniQueueQuantity       *int32                                                                        `json:"TotalEniQueueQuantity,omitempty" xml:"TotalEniQueueQuantity,omitempty"`
 }
@@ -337,6 +338,10 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) GetQueuePai
 
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) GetSecondaryEniQueueNumber() *int32 {
 	return s.SecondaryEniQueueNumber
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) GetSecurityOptions() *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeSecurityOptions {
+	return s.SecurityOptions
 }
 
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) GetSupportedBootModes() *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeSupportedBootModes {
@@ -562,6 +567,11 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetSecondar
 	return s
 }
 
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetSecurityOptions(v *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeSecurityOptions) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType {
+	s.SecurityOptions = v
+	return s
+}
+
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetSupportedBootModes(v *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeSupportedBootModes) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType {
 	s.SupportedBootModes = v
 	return s
@@ -600,6 +610,11 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) Validate() 
 	}
 	if s.NetworkInfo != nil {
 		if err := s.NetworkInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityOptions != nil {
+		if err := s.SecurityOptions.Validate(); err != nil {
 			return err
 		}
 	}
@@ -1070,6 +1085,31 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBa
 }
 
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfosWeightingInfo) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeSecurityOptions struct {
+	SecureBootSupport *string `json:"SecureBootSupport,omitempty" xml:"SecureBootSupport,omitempty"`
+}
+
+func (s DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeSecurityOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeSecurityOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeSecurityOptions) GetSecureBootSupport() *string {
+	return s.SecureBootSupport
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeSecurityOptions) SetSecureBootSupport(v string) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeSecurityOptions {
+	s.SecureBootSupport = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeSecurityOptions) Validate() error {
 	return dara.Validate(s)
 }
 

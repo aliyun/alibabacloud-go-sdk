@@ -18,7 +18,7 @@ type iDescribePrefixListsResponseBody interface {
 }
 
 type DescribePrefixListsResponseBody struct {
-	// The query token that is returned in this call. If the return value is empty, no more data is returned.
+	// The pagination token returned in this call. If the return value is empty, no more data is available.
 	//
 	// example:
 	//

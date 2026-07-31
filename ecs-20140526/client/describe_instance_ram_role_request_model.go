@@ -28,18 +28,18 @@ type iDescribeInstanceRamRoleRequest interface {
 }
 
 type DescribeInstanceRamRoleRequest struct {
-	// The IDs of ECS instances. You can specify up to 50 instance IDs in a single request.
+	// The instance IDs of the instances to query. You can specify up to 50 instances at a time.
 	//
-	// > You must specify at least one parameter from `InstanceIds` and `RamRoleName`.
+	// > You must specify at least one of the InstanceIds and RamRoleName parameters.
 	//
 	// example:
 	//
 	// ["i-bp67acfmxazb1p****", "i-bp67acfmxazb2p****", "bp67acfmxazb3p****"…]
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number.
+	// The page number of the page to return.
 	//
-	// Pages start from page 1.
+	// Minimum value: 1.
 	//
 	// Default value: 1.
 	//
@@ -47,9 +47,9 @@ type DescribeInstanceRamRoleRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page. Unit: entries.
 	//
-	// Valid values: 1 to 50.
+	// Maximum value: 50.
 	//
 	// Default value: 10.
 	//
@@ -57,15 +57,15 @@ type DescribeInstanceRamRoleRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the instance RAM role. If you specify this parameter, all ECS instances to which the instance RAM role is attached are returned in the response. You can call the [ListRoles](https://help.aliyun.com/document_detail/28713.html) operation of RAM to query the names of available instance RAM roles.
+	// The name of the instance RAM role. You can use this parameter to query all ECS instances that are assigned the specified instance RAM role. You can call the RAM API [ListRoles](https://help.aliyun.com/document_detail/28713.html) to query the instance RAM roles that you created.
 	//
-	// > You must specify at least one parameter from `InstanceIds` and `RamRoleName`.
+	// > You must specify at least one of InstanceIds and RamRoleName.
 	//
 	// example:
 	//
 	// EcsServiceRole-EcsDocGuideTest
 	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	// The region ID of the instance RAM role. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent list of regions.
+	// The region ID of the instance RAM role. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

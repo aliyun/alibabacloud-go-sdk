@@ -21,19 +21,19 @@ type iDescribeInstanceRamRoleResponseBody interface {
 
 type DescribeInstanceRamRoleResponseBody struct {
 	InstanceRamRoleSets *DescribeInstanceRamRoleResponseBodyInstanceRamRoleSets `json:"InstanceRamRoleSets,omitempty" xml:"InstanceRamRoleSets,omitempty" type:"Struct"`
-	// The region ID of the ECS instances.
+	// The region ID of the instance.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of ECS instances returned.
+	// The total number of returned instances.
 	//
 	// example:
 	//

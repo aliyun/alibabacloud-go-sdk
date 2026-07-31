@@ -16,9 +16,9 @@ type iDisableActivationResponseBody interface {
 }
 
 type DisableActivationResponseBody struct {
-	// The time when the activation code was created.
+	// The information about the activation code and its usage.
 	Activation *DisableActivationResponseBodyActivation `json:"Activation,omitempty" xml:"Activation,omitempty" type:"Struct"`
-	// Details about the activation code and its usage information.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,61 +62,61 @@ func (s *DisableActivationResponseBody) Validate() error {
 }
 
 type DisableActivationResponseBodyActivation struct {
-	// The ID of the activation code.
+	// The activation code ID.
 	//
 	// example:
 	//
 	// 4ECEEE12-56F1-4FBC-9AB1-890F1234****
 	ActivationId *string `json:"ActivationId,omitempty" xml:"ActivationId,omitempty"`
-	// The number of instances that were deregistered.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2021-01-20T06:00:00Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The maximum number of times that the activation code can be used to register managed instances.
+	// The number of deregistered instances.
 	//
 	// example:
 	//
 	// 1
 	DeregisteredCount *int32 `json:"DeregisteredCount,omitempty" xml:"DeregisteredCount,omitempty"`
-	// The number of registered instances.
+	// The description of the activation code.
 	//
 	// example:
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The IP addresses of the hosts that can use the activation code.
+	// Indicates whether the activation code is disabled.
 	//
 	// example:
 	//
 	// false
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// The description of the activation code.
+	// The maximum number of times that the activation code can be used to register managed instances.
 	//
 	// example:
 	//
 	// 1
 	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// Indicates whether the activation code is disabled.
+	// The default instance name prefix.
 	//
 	// example:
 	//
 	// test-InstanceName
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The validity period of the activation code. Unit: hours.
+	// The IP addresses of hosts that are allowed to use the activation code.
 	//
 	// example:
 	//
 	// 0.0.0.0/0
 	IpAddressRange *string `json:"IpAddressRange,omitempty" xml:"IpAddressRange,omitempty"`
-	// The default prefix of the instance name.
+	// The number of registered instances.
 	//
 	// example:
 	//
 	// 1
 	RegisteredCount *int32 `json:"RegisteredCount,omitempty" xml:"RegisteredCount,omitempty"`
-	// The activation code ID.
+	// The validity period of the activation code. Unit: hours.
 	//
 	// example:
 	//

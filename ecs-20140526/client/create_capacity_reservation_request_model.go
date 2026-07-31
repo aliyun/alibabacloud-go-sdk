@@ -49,7 +49,7 @@ type iCreateCapacityReservationRequest interface {
 
 type CreateCapacityReservationRequest struct {
 	PrivatePoolOptions *CreateCapacityReservationRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
-	// A client-generated token that ensures the request is idempotent. You can use the same token to retry a request. The `ClientToken` value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The `ClientToken` value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
@@ -57,13 +57,13 @@ type CreateCapacityReservationRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the capacity reservation. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
-	// Default value: empty string.
+	// Default value: empty.
 	//
 	// example:
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The end time of the capacity reservation. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
+	// The expiration time of the capacity reservation. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
 	//
 	// example:
 	//
@@ -71,15 +71,15 @@ type CreateCapacityReservationRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The release mode of the capacity reservation. Valid values:
 	//
-	// - Limited: The capacity reservation is automatically released at a specific time. You must also specify the `EndTime` parameter.
+	// - Limited: released at a specified time. You must also specify the `EndTime` parameter.
 	//
-	// - Unlimited: The capacity reservation must be released manually.
+	// - Unlimited: manual release. No time limit is imposed.
 	//
 	// example:
 	//
 	// Unlimited
 	EndTimeType *string `json:"EndTimeType,omitempty" xml:"EndTimeType,omitempty"`
-	// The number of instances of the specified instance type for which to reserve capacity.
+	// The total number of instances to reserve for a single instance type.
 	//
 	// This parameter is required.
 	//
@@ -88,7 +88,7 @@ type CreateCapacityReservationRequest struct {
 	// 2
 	InstanceAmount     *int32  `json:"InstanceAmount,omitempty" xml:"InstanceAmount,omitempty"`
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The instance type for which to reserve capacity. You can call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to view the instance types that ECS provides.
+	// The instance type. Currently, you can set a capacity reservation for only one instance type. You can invoke [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query the instance types provided by Elastic Compute Service (ECS).
 	//
 	// This parameter is required.
 	//
@@ -98,21 +98,21 @@ type CreateCapacityReservationRequest struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The operating system of the image used by the instance. This parameter corresponds to the `Platform` parameter of a regional reserved instance. If this platform matches the platform of a regional reserved instance, the regional reserved instance can be used to offset the costs of unused capacity in the reservation. Valid values:
+	// The operating system type of the image used by the instance. This parameter corresponds to the `Platform` parameter of regional reserved instances. If the operating system type of the capacity reservation matches that of a regional reserved instance, the regional reserved instance can be used to offset the bill for unused capacity in the capacity reservation. Valid values:
 	//
-	// - Windows: Windows Server operating systems.
+	// - Windows: Windows Server operating system.
 	//
-	// - Linux: Linux and Unix-like operating systems.
+	// - Linux: Linux and Unix-like operating system.
 	//
 	// Default value: Linux.
 	//
-	// > This parameter is not yet available for use.
+	// > This parameter is not available for use.
 	//
 	// example:
 	//
 	// Linux
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The ID of the region in which to create the capacity reservation. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the latest list of Alibaba Cloud regions.
+	// The region ID of the capacity reservation. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -120,7 +120,7 @@ type CreateCapacityReservationRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the capacity reservation belongs.
+	// The ID of the enterprise resource group to which the capacity reservation belongs.
 	//
 	// example:
 	//
@@ -128,17 +128,17 @@ type CreateCapacityReservationRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The time when the capacity reservation takes effect. The capacity reservation takes effect immediately after it is created.
+	// The effective mode of the capacity reservation. Currently, only the immediate mode is supported when you call this API operation.
 	//
-	// > If you do not specify this parameter, the capacity reservation takes effect immediately.
+	// > If you leave this parameter empty, the capacity reservation immediately takes effect.
 	//
 	// example:
 	//
 	// 2021-10-30T05:32:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The tags to add to the capacity reservation.
+	// The list of tag pairs bound to the capacity reservation.
 	Tag []*CreateCapacityReservationRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the zone in which you want to create the capacity reservation. A capacity reservation can reserve resources within only one zone.
+	// The zone ID of the capacity reservation. Currently, you can create a capacity reservation in only one zone.
 	//
 	// This parameter is required.
 	//
@@ -337,11 +337,11 @@ func (s *CreateCapacityReservationRequest) Validate() error {
 }
 
 type CreateCapacityReservationRequestPrivatePoolOptions struct {
-	// The type of the private pool that is generated after the capacity reservation takes effect. Valid values:
+	// The type of the private pool generated after the capacity reservation takes effect. Valid values:
 	//
-	// - Open: open mode. When you launch an instance, it is automatically matched with the capacity of an open private pool. If no suitable private pool capacity is available, the instance is launched by using public pool resources.
+	// - Open: open mode. The system automatically matches the open private pool capacity when an instance is started. If no matching private pool capacity is available, the system uses public pool resources to start the instance.
 	//
-	// - Target: targeted mode. The instance is launched by using the capacity of a specified private pool. If the capacity is unavailable, the instance fails to launch.
+	// - Target: targeted mode. The instance is started by using the specified private pool capacity. If the specified private pool capacity is unavailable, the instance fails to start.
 	//
 	// Default value: Open.
 	//
@@ -349,7 +349,7 @@ type CreateCapacityReservationRequestPrivatePoolOptions struct {
 	//
 	// Open
 	MatchCriteria *string `json:"MatchCriteria,omitempty" xml:"MatchCriteria,omitempty"`
-	// The name of the capacity reservation. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the capacity reservation. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain digits, colons (:), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
@@ -388,13 +388,13 @@ func (s *CreateCapacityReservationRequestPrivatePoolOptions) Validate() error {
 }
 
 type CreateCapacityReservationRequestTag struct {
-	// The tag key of the capacity reservation. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag key of the capacity reservation. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the capacity reservation. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value of the capacity reservation. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

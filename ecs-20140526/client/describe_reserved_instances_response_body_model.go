@@ -22,7 +22,7 @@ type iDescribeReservedInstancesResponseBody interface {
 }
 
 type DescribeReservedInstancesResponseBody struct {
-	// The page number.
+	// The page number of the reserved instance list.
 	//
 	// example:
 	//

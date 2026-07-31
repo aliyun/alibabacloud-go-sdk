@@ -48,11 +48,11 @@ type iDescribeReservedInstancesRequest interface {
 }
 
 type DescribeReservedInstancesRequest struct {
-	// The allocation type of the reserved instances. Valid values:
+	// The allocation type. Valid values:
 	//
-	// - Normal: queries all reserved instances that belong to the current account.
+	// - Normal: queries reserved instances under the current account.
 	//
-	// - Shared: queries the reserved instances that are shared between the current main account and linked accounts.
+	// - Shared: queries reserved instances that have been shared between the current account and linked accounts.
 	//
 	// Default value: Normal.
 	//
@@ -60,37 +60,37 @@ type DescribeReservedInstancesRequest struct {
 	//
 	// Normal
 	AllocationType *string `json:"AllocationType,omitempty" xml:"AllocationType,omitempty"`
-	// The instance type of the reserved instance. For information about the valid values, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+	// The instance type that the reserved instance can be applied to. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// > Specify the instance type that you selected when you purchased the reserved instance. If the reserved instance is a regional reserved instance, it can be used to offset the bills of instance types that belong to the same instance family as the specified instance type, regardless of instance specifications.
+	// > This is the instance type selected when you purchased the reserved instance. During actual deduction, region-level reserved instances support size-flexible deduction within the same instance family.
 	//
 	// example:
 	//
 	// ecs.g5.large
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The instance family of the reserved instance. For information about the valid values, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+	// The instance family that the reserved instance can be applied to. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
 	// example:
 	//
 	// ecs.g5
 	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
-	// The reason why the reserved instance is locked. Valid values:
+	// The lock type. Valid values:
 	//
-	// - financial: The reserved instance is locked because the account has overdue payments or the service expires.
+	// - financial: The account has an overdue payment or the service has expired.
 	//
-	// - security: The reserved instance is locked due to security reasons.
+	// - security: Locked for security reasons.
 	//
 	// example:
 	//
 	// security
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The payment option of the reserved instance. Valid values:
+	// The payment type of the reserved instance. Valid values:
 	//
-	// - No Upfront
+	// - No Upfront: no upfront.
 	//
-	// - Partial Upfront
+	// - Partial Upfront: partial upfront.
 	//
-	// - All Upfront
+	// - All Upfront: all upfront.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type DescribeReservedInstancesRequest struct {
 	OfferingType *string `json:"OfferingType,omitempty" xml:"OfferingType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Pages start from page 1.
+	// The page number of the reserved instance list. Minimum value: 1.
 	//
 	// Default value: 1.
 	//
@@ -106,7 +106,7 @@ type DescribeReservedInstancesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100.
+	// The number of entries per page for a paged query. Maximum value: 100.
 	//
 	// Default value: 10.
 	//
@@ -114,7 +114,7 @@ type DescribeReservedInstancesRequest struct {
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the reserved instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the reserved instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -122,7 +122,7 @@ type DescribeReservedInstancesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of reserved instances. You can specify up to 100 IDs of reserved instances.
+	// The IDs of reserved instances. Array length: 1 to 100.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ type DescribeReservedInstancesRequest struct {
 	ReservedInstanceId []*string `json:"ReservedInstanceId,omitempty" xml:"ReservedInstanceId,omitempty" type:"Repeated"`
 	// The name of the reserved instance.
 	//
-	// > Only exact search is supported.
+	// > Only exact match is supported. Fuzzy match is not supported.
 	//
 	// example:
 	//
@@ -138,25 +138,27 @@ type DescribeReservedInstancesRequest struct {
 	ReservedInstanceName *string `json:"ReservedInstanceName,omitempty" xml:"ReservedInstanceName,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The scope level of the reserved instance. Valid values:
+	// The scope of the reserved instance. Valid values:
 	//
-	// - Region: regional
 	//
-	// - Zone: zonal
+	//
+	// - Region: regional.
+	//
+	// - Zone: zonal.
 	//
 	// example:
 	//
 	// Region
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The status of the reserved instances.
+	// The statuses of reserved instances.
 	//
 	// example:
 	//
 	// Active
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
-	// The tags of the reserved instance. You can specify up to 20 tags.
+	// The tags. Array length: 1 to 20.
 	Tag []*DescribeReservedInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The zone ID of the reserved instance. This parameter is valid and required if you set Scope to Zone. You can call the [DescribeZones](https://help.aliyun.com/document_detail/25610.html) operation to query the most recent zone list.
+	// The zone ID of the instance. This parameter is required and takes effect only when Scope is set to Zone. You can call [DescribeZones](https://help.aliyun.com/document_detail/25610.html) to query the zone list.
 	//
 	// example:
 	//
@@ -348,15 +350,15 @@ func (s *DescribeReservedInstancesRequest) Validate() error {
 }
 
 type DescribeReservedInstancesRequestTag struct {
-	// The key of tag N of the reserved instance. The tag key cannot be empty and can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http\\:// or https\\://.
+	// The tag key of the reserved instance. The tag key cannot be an empty string and can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
 	//
-	// > If you specify a single tag to query resources, up to 1,000 resources to which the tag is added are returned. If you specify multiple tags to query resources, up to 1,000 resources to which all specified tags are added are returned. To query more than 1,000 resources that have specified tags added, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
+	// > If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count with all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N of the reserved instance. The tag value cannot be empty and can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
+	// The tag value of the reserved instance. The tag value cannot be an empty string and can be up to 128 characters in length. It cannot start with acs: and cannot contain http:// or https://.
 	//
 	// example:
 	//

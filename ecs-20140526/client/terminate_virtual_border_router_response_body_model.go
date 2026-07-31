@@ -14,7 +14,6 @@ type iTerminateVirtualBorderRouterResponseBody interface {
 }
 
 type TerminateVirtualBorderRouterResponseBody struct {
-	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

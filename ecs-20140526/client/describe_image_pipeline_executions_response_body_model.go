@@ -22,15 +22,14 @@ type iDescribeImagePipelineExecutionsResponseBody interface {
 }
 
 type DescribeImagePipelineExecutionsResponseBody struct {
-	// The details of the image pipeline executions.
 	ImagePipelineExecution *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecution `json:"ImagePipelineExecution,omitempty" xml:"ImagePipelineExecution,omitempty" type:"Struct"`
-	// The number of entries per page.
+	// The maximum number of entries per page for paging.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token returned in this call. Use this token to retrieve the next page of results. For more information, see the operation description.
+	// The pagination token returned in this call. For more information about how to use this token, see the operation description.
 	//
 	// example:
 	//
@@ -42,7 +41,7 @@ type DescribeImagePipelineExecutionsResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of image pipeline executions.
+	// The total number of image components returned.
 	//
 	// example:
 	//

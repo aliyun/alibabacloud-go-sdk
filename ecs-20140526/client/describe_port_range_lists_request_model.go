@@ -34,9 +34,9 @@ type iDescribePortRangeListsRequest interface {
 }
 
 type DescribePortRangeListsRequest struct {
-	// The maximum number of entries per page.
+	// The number of entries per page for a paged query.
 	//
-	// - Maximum value: 100
+	// - Maximum value: 100.
 	//
 	// - Default value: 10.
 	//
@@ -44,7 +44,7 @@ type DescribePortRangeListsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous call. You do not need to set this parameter for the first request.
 	//
 	// example:
 	//
@@ -52,15 +52,15 @@ type DescribePortRangeListsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the port list. Valid values of N: 0 to 100.
+	// The ID of the port range list. Valid values of N: 0 to 100.
 	PortRangeListId []*string `json:"PortRangeListId,omitempty" xml:"PortRangeListId,omitempty" type:"Repeated"`
-	// The name of the port list. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http\\://, https\\://, com.aliyun, or com.alibabacloud. The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	// The name of the port range list. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. The name cannot start with http://, https://, com.aliyun, or com.alibabacloud. The name can contain letters, Chinese characters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// example:
 	//
 	// PortRangeListNameSample
 	PortRangeListName *string `json:"PortRangeListName,omitempty" xml:"PortRangeListName,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2679950.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/2679950.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -68,9 +68,9 @@ type DescribePortRangeListsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group. If you specify this parameter to query resources, up to 1,000 resources that belong to the specified resource group can be returned in the response. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/2716558.html) operation to query the most recent resource group list.
+	// The resource group ID. When you use this parameter to filter resources, the resource count cannot exceed 1000. You can invoke [ListResourceGroups](https://help.aliyun.com/document_detail/2716558.html) to query the list of resource groups.
 	//
-	// > A default resource group is not supported.
+	// >Filtering by the default resource group is not supported.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type DescribePortRangeListsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags that are added to the port list.
+	// The tags bound to the port range list.
 	Tag []*DescribePortRangeListsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -203,15 +203,15 @@ func (s *DescribePortRangeListsRequest) Validate() error {
 }
 
 type DescribePortRangeListsRequestTag struct {
-	// The key of tag N. Valid values: 1 to 20.
+	// The tag key of the instance. Valid values of N: 1 to 20.
 	//
-	// If you specify a single tag to query resources, up to 1,000 resources to which the tag is added are returned. If you specify multiple tags to query resources, up to 1,000 resources to which all specified tags are added are returned. To query more than 1,000 resources that have specified tags added, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
+	// If you use a single tag to filter resources, the resource count with this tag cannot exceed 1000. If you use multiple tags to filter resources, the resource count of resources that have all specified tags attached cannot exceed 1000. If the resource count exceeds 1000, call [ListTagResources](https://help.aliyun.com/document_detail/110425.html) to query resources.
 	//
 	// example:
 	//
 	// key for PortRangeList
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N.
+	// The tag value.
 	//
 	// example:
 	//

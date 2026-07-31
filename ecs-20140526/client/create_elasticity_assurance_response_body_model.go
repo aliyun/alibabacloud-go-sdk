@@ -18,13 +18,13 @@ type iCreateElasticityAssuranceResponseBody interface {
 }
 
 type CreateElasticityAssuranceResponseBody struct {
-	// The order ID.
+	// The ID of the generated order.
 	//
 	// example:
 	//
 	// 1234567890
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The elasticity assurance ID.
+	// The ID of the elasticity assurance service.
 	//
 	// example:
 	//

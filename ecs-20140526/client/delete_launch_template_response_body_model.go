@@ -20,7 +20,7 @@ type iDeleteLaunchTemplateResponseBody interface {
 type DeleteLaunchTemplateResponseBody struct {
 	// The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://help.aliyun.com/document_detail/73759.html).
 	//
-	// When you use a launch template to create an instance, you must specify `LaunchTemplateId` or `LaunchTemplateName` to determine the launch template.
+	// When you use a launch template to create instances, you must specify `LaunchTemplateId` or `LaunchTemplateName` to determine the launch template.
 	//
 	// example:
 	//

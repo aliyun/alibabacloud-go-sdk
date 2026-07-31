@@ -22,7 +22,7 @@ type iConvertNatPublicIpToEipRequest interface {
 }
 
 type ConvertNatPublicIpToEipRequest struct {
-	// The ID of the instance whose public IP address you want to convert into an EIP.
+	// The instance ID of the instance whose public IP address you want to convert.
 	//
 	// This parameter is required.
 	//
@@ -31,7 +31,7 @@ type ConvertNatPublicIpToEipRequest struct {
 	// i-bp171jr36ge2ulvk****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

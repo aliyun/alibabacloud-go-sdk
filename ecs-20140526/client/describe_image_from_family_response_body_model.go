@@ -18,7 +18,7 @@ type iDescribeImageFromFamilyResponseBody interface {
 type DescribeImageFromFamilyResponseBody struct {
 	// The image information.
 	Image *DescribeImageFromFamilyResponseBodyImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *DescribeImageFromFamilyResponseBody) Validate() error {
 }
 
 type DescribeImageFromFamilyResponseBodyImage struct {
-	// The architecture of the image. Valid values:
+	// The system architecture type of the image. Valid values:
 	//
 	// - i386
 	//
@@ -78,14 +78,14 @@ type DescribeImageFromFamilyResponseBodyImage struct {
 	//
 	// 2018-01-10T01:01:10Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the volume.
+	// The description of the image.
 	//
 	// example:
 	//
 	// testDescription
 	Description        *string                                                     `json:"Description,omitempty" xml:"Description,omitempty"`
 	DiskDeviceMappings *DescribeImageFromFamilyResponseBodyImageDiskDeviceMappings `json:"DiskDeviceMappings,omitempty" xml:"DiskDeviceMappings,omitempty" type:"Struct"`
-	// The name of the image family.
+	// The image family.
 	//
 	// example:
 	//
@@ -105,13 +105,13 @@ type DescribeImageFromFamilyResponseBodyImage struct {
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	// The alias of the image owner. Valid values:
 	//
-	// - system: public images provided by Alibaba Cloud
+	// - system: public image.
 	//
-	// - self: your custom images
+	// - self: your custom image.
 	//
-	// - others: shared images from other Alibaba Cloud accounts
+	// - others: shared image from other users.
 	//
-	// - marketplace: Alibaba Cloud Marketplace images
+	// - marketplace: Alibaba Cloud Marketplace image.
 	//
 	// example:
 	//
@@ -129,13 +129,13 @@ type DescribeImageFromFamilyResponseBodyImage struct {
 	//
 	// false
 	IsCopied *bool `json:"IsCopied,omitempty" xml:"IsCopied,omitempty"`
-	// Indicates whether the custom image was shared to other Alibaba Cloud accounts.
+	// Indicates whether the custom image has been shared with other users.
 	//
 	// example:
 	//
 	// true
 	IsSelfShared *string `json:"IsSelfShared,omitempty" xml:"IsSelfShared,omitempty"`
-	// Indicates whether you have subscribed to the service terms of the image product corresponding to the image product code.
+	// Indicates whether you have subscribed to the Terms of Service for the image product that corresponds to the product code.
 	//
 	// example:
 	//
@@ -147,13 +147,13 @@ type DescribeImageFromFamilyResponseBodyImage struct {
 	//
 	// true
 	IsSupportCloudinit *bool `json:"IsSupportCloudinit,omitempty" xml:"IsSupportCloudinit,omitempty"`
-	// Indicates whether the image can be used on I/O optimized instances.
+	// Indicates whether the image can run on an I/O optimized instance.
 	//
 	// example:
 	//
 	// true
 	IsSupportIoOptimized *bool `json:"IsSupportIoOptimized,omitempty" xml:"IsSupportIoOptimized,omitempty"`
-	// The display name of the operating system in Chinese.
+	// The China-locale display name of the operating system.
 	//
 	// example:
 	//
@@ -169,7 +169,7 @@ type DescribeImageFromFamilyResponseBodyImage struct {
 	//
 	// linux
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	// The operating system.
+	// The operating system platform.
 	//
 	// example:
 	//
@@ -181,7 +181,7 @@ type DescribeImageFromFamilyResponseBodyImage struct {
 	//
 	// jxsc00****
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The image creation progress in percentage.
+	// The image creation progress, in percent.
 	//
 	// example:
 	//
@@ -193,26 +193,26 @@ type DescribeImageFromFamilyResponseBodyImage struct {
 	//
 	// 80
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The state of the image. Valid values:
+	// The status of the image. Valid values:
 	//
-	// - UnAvailable
+	// - UnAvailable: unavailable
 	//
-	// - Available
+	// - Available: available
 	//
-	// - Creating
+	// - Creating: being created
 	//
-	// - CreateFailed
+	// - CreateFailed: failed to be created
 	//
 	// example:
 	//
 	// Available
 	Status *string                                       `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags   *DescribeImageFromFamilyResponseBodyImageTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// Indicates whether the image has been used to create ECS instances. Valid values:
+	// The type of resource that references the image. Valid values:
 	//
-	// - instance: The image was used to create one or more ECS instances.
+	// - instance: One or more ECS instances have been created from the image.
 	//
-	// - none: The image was not used to create ECS instances.
+	// - none: No ECS instances have been created from the image.
 	//
 	// example:
 	//

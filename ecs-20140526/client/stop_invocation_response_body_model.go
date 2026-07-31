@@ -14,7 +14,7 @@ type iStopInvocationResponseBody interface {
 }
 
 type StopInvocationResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

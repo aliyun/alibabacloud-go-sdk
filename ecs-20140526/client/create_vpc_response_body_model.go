@@ -20,14 +20,10 @@ type iCreateVpcResponseBody interface {
 }
 
 type CreateVpcResponseBody struct {
-	// The request ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the route table automatically created for the VPC.
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// The ID of the virtual router automatically created for the VPC.
-	VRouterId *string `json:"VRouterId,omitempty" xml:"VRouterId,omitempty"`
-	// The ID of the VPC.
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VRouterId    *string `json:"VRouterId,omitempty" xml:"VRouterId,omitempty"`
+	VpcId        *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateVpcResponseBody) String() string {

@@ -14,7 +14,7 @@ type iDetachDiskResponseBody interface {
 }
 
 type DetachDiskResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -48,9 +48,9 @@ type DescribeLaunchTemplateVersionsRequest struct {
 	DefaultVersion *bool `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
 	// Specifies whether to query detailed template configuration information. Valid values:
 	//
-	// - true: Queries detailed template configuration information. In addition to basic template information, detailed configuration such as image ID and system disk size is returned.
+	// - true: Queries detailed template configuration information. In addition to basic template information, detailed configuration information is returned, such as the image ID and system disk size.
 	//
-	// - false: Queries only basic template information, such as template ID, template name, and default version.
+	// - false: Queries only basic template information, such as the template ID, template name, and default version.
 	//
 	// Default value: true.
 	//
@@ -60,7 +60,7 @@ type DescribeLaunchTemplateVersionsRequest struct {
 	DetailFlag *bool `json:"DetailFlag,omitempty" xml:"DetailFlag,omitempty"`
 	// The launch template ID.
 	//
-	// You must specify `LaunchTemplateId` or `LaunchTemplateName` to determine the template.
+	// You must specify LaunchTemplateId or LaunchTemplateName to determine the template.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type DescribeLaunchTemplateVersionsRequest struct {
 	LaunchTemplateId *string `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
 	// The launch template name.
 	//
-	// You must specify `LaunchTemplateId` or `LaunchTemplateName` to determine the template.
+	// You must specify LaunchTemplateId or LaunchTemplateName to determine the template.
 	//
 	// example:
 	//
@@ -80,13 +80,13 @@ type DescribeLaunchTemplateVersionsRequest struct {
 	//
 	// 1
 	LaunchTemplateVersion []*int64 `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty" type:"Repeated"`
-	// The maximum version number used to filter query results. Used together with `MinVersion` to query version information within the range between the minimum and maximum version numbers.
+	// The maximum version number used to filter query results. Use this parameter together with MinVersion to query version information within the range between the minimum and maximum version numbers.
 	//
 	// example:
 	//
 	// 10
 	MaxVersion *int64 `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
-	// The minimum version number used to filter query results. Used together with `MaxVersion` to query version information within the range between the minimum and maximum version numbers.
+	// The minimum version number used to filter query results. Use this parameter together with MaxVersion to query version information within the range between the minimum and maximum version numbers.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type DescribeLaunchTemplateVersionsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Settings this parameter for paging.
+	// The number of entries per page when paging is used.
 	//
 	// Default value: 10.
 	//

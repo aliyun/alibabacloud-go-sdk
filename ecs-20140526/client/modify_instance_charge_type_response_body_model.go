@@ -19,7 +19,7 @@ type iModifyInstanceChargeTypeResponseBody interface {
 
 type ModifyInstanceChargeTypeResponseBody struct {
 	FeeOfInstances *ModifyInstanceChargeTypeResponseBodyFeeOfInstances `json:"FeeOfInstances,omitempty" xml:"FeeOfInstances,omitempty" type:"Struct"`
-	// The order ID.
+	// The order ID. This parameter is returned only when the billing method is changed to subscription.
 	//
 	// example:
 	//

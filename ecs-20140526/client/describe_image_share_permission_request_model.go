@@ -38,7 +38,7 @@ type DescribeImageSharePermissionRequest struct {
 	ImageId      *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the returned results.
+	// The page number of the query results to return.
 	//
 	// Minimum value: 1.
 	//
@@ -48,7 +48,7 @@ type DescribeImageSharePermissionRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in the returned results.
+	// The number of entries per page in the query results.
 	//
 	// Maximum value: 100.
 	//

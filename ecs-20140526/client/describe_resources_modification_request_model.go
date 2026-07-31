@@ -42,7 +42,7 @@ type iDescribeResourcesModificationRequest interface {
 type DescribeResourcesModificationRequest struct {
 	// The list of conditions.
 	Conditions []*string `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	// The number of vCPU kernels of the target instance type. For valid values, see [Instance family](https://help.aliyun.com/document_detail/25378.html).
+	// The number of vCPU kernel of the target instance type. For valid values, see [Instance family](https://help.aliyun.com/document_detail/25378.html).
 	//
 	// This parameter takes effect only when DestinationResource is set to InstanceType.
 	//
@@ -50,7 +50,7 @@ type DescribeResourcesModificationRequest struct {
 	//
 	// 2
 	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	// The type of the resource to be changed. Valid values:
+	// The type of resource that you want to change. Valid values:
 	//
 	//
 	//
@@ -66,7 +66,7 @@ type DescribeResourcesModificationRequest struct {
 	//
 	// InstanceType
 	DestinationResource *string `json:"DestinationResource,omitempty" xml:"DestinationResource,omitempty"`
-	// The target instance type. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html). You can also call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query the most recent instance type list.
+	// The target instance type. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html). You can also invoke [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query the most recent instance type list.
 	//
 	// If DestinationResource is set to SystemDisk, you must also specify the InstanceType parameter to indicate the disk type required by the target instance type.
 	//
@@ -82,7 +82,7 @@ type DescribeResourcesModificationRequest struct {
 	//
 	// 8.0
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// Specifies whether cross-cluster instance type changes are supported. Valid values:
+	// Specifies whether cross-cluster upgrade or downgrade of instance types is supported. Valid values:
 	//
 	//
 	//
@@ -96,7 +96,7 @@ type DescribeResourcesModificationRequest struct {
 	//
 	//
 	//
-	// - VPC-type instances: For [retired instance types](https://help.aliyun.com/document_detail/55263.html), when a non-I/O optimized instance is changed to an I/O optimized instance, the disk device names and software authorization codes of the server are changed. For Linux instances, basic disks (cloud) are identified as xvda or xvdb. Ultra disks (cloud_efficiency) and standard SSDs (cloud_ssd) are identified as vda or vdb.
+	// - VPC-type instances: For [retired instance types](https://help.aliyun.com/document_detail/55263.html), when a non-I/O optimized instance is changed to an I/O optimized instance, the disk device names and software authorization codes of the server are changed. For Linux instances, basic disks (cloud) are identified as xvda or xvdb, and ultra disks (cloud_efficiency) and standard SSDs (cloud_ssd) are identified as vda or vdb.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type DescribeResourcesModificationRequest struct {
 	//
 	//     - RenewDowngrade: downgrades resources upon renewal.
 	//
-	//     - RenewModify: renewal with specification change for expired instances.
+	//     - RenewModify: renewal with specification change for an expired instance.
 	//
 	// - Valid value for pay-as-you-go resources: Upgrade.
 	//
@@ -124,7 +124,7 @@ type DescribeResourcesModificationRequest struct {
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance whose configuration you want to change. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the instance whose specification or system disk type you want to change. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -132,7 +132,7 @@ type DescribeResourcesModificationRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The instance ID (InstanceId) of the instance whose instance type or system disk type you want to change.
+	// The instance ID of the instance whose instance type or system disk type you want to change.
 	//
 	// This parameter is required.
 	//

@@ -17,7 +17,7 @@ type iDescribeAccountAttributesResponseBody interface {
 
 type DescribeAccountAttributesResponseBody struct {
 	AccountAttributeItems *DescribeAccountAttributesResponseBodyAccountAttributeItems `json:"AccountAttributeItems,omitempty" xml:"AccountAttributeItems,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

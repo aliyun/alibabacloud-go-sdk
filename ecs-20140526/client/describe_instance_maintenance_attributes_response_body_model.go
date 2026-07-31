@@ -23,7 +23,7 @@ type iDescribeInstanceMaintenanceAttributesResponseBody interface {
 
 type DescribeInstanceMaintenanceAttributesResponseBody struct {
 	MaintenanceAttributes *DescribeInstanceMaintenanceAttributesResponseBodyMaintenanceAttributes `json:"MaintenanceAttributes,omitempty" xml:"MaintenanceAttributes,omitempty" type:"Struct"`
-	// The page number.
+	// The page number of the maintenance attribute list.
 	//
 	// example:
 	//

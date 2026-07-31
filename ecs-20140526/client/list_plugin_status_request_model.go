@@ -34,11 +34,11 @@ type iListPluginStatusRequest interface {
 }
 
 type ListPluginStatusRequest struct {
-	// The ID of the instance.
+	// The instance ID. You can specify up to 50 instances in a single request. Valid values of N: 1 to 50.
 	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	// The maximum number of entries per page.
+	// The maximum number of entries per page for a paged query.
 	//
-	// Valid values: 1 to 50.
+	// Maximum value: 50.
 	//
 	// Default value: 10.
 	//
@@ -46,21 +46,19 @@ type ListPluginStatusRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The name of the Cloud Assistant plug-in. The name supports all character sets and must be 1 to 255 characters in length.
+	// The plugin name. The full character set is supported. The name can be up to 255 characters in length.
 	//
-	// - If this parameter is not specified, the status of all Cloud Assistant plug-ins that are installed on the specified instances are queried.
+	// - If you do not specify this parameter, the status of all installed plugins on the instance is queried.
 	//
-	//   \\*\\*
+	//     > If you do not specify this parameter, you can specify only one instance ID.
 	//
-	//   **Note*	- If this parameter is not specified, only a single instance ID can be specified.
-	//
-	// - If this parameter is specified, the status of the specified Cloud Assistant plug-in is queried.
+	// - If you specify this parameter, the status of the specified plugin on the instances is queried.
 	//
 	// example:
 	//
 	// testPluginName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
@@ -68,19 +66,19 @@ type ListPluginStatusRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+	// > This parameter is about to go offline. Use NextToken and MaxResults to perform a paging query instead.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+	// > This parameter is about to go offline. Use NextToken and MaxResults to perform a paging query instead.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

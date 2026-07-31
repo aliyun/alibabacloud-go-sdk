@@ -14,7 +14,7 @@ type iReportInstancesStatusResponseBody interface {
 }
 
 type ReportInstancesStatusResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

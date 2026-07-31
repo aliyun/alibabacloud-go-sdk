@@ -16,15 +16,15 @@ type iModifyInstanceClockOptionsResponseBody interface {
 }
 
 type ModifyInstanceClockOptionsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the modification task.
+	// The modification task ID.
 	//
-	// You can call the [DescribeTasks](https://help.aliyun.com/document_detail/25622.html) operation to query the modification results.
+	// You can call the [DescribeTasks](https://help.aliyun.com/document_detail/25622.html) operation to query the modification result.
 	//
 	// example:
 	//

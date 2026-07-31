@@ -30,7 +30,7 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to remove all tags from the resource. This parameter takes effect only if you do not specify TagKey.N. Valid values:
+	// Specifies whether to unbind all tags from the resources. This parameter takes effect only when TagKey.N is not specified in the request. Valid values:
 	//
 	// - true
 	//
@@ -44,7 +44,7 @@ type UntagResourcesRequest struct {
 	All          *bool   `json:"All,omitempty" xml:"All,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the resource. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the resources. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type UntagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource IDs. Valid values of N: 1 to 50.
+	// The list of resource IDs. You can specify up to 50 resource IDs.
 	//
 	// This parameter is required.
 	//
@@ -64,39 +64,39 @@ type UntagResourcesRequest struct {
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The type of the resource. Valid values:
 	//
-	// - instance: ECS instance
+	// - instance: ECS instance.
 	//
-	// - disk: disk
+	// - disk: cloud disk.
 	//
-	// - snapshot: snapshot
+	// - snapshot: snapshot.
 	//
-	// - image: image
+	// - image: image.
 	//
-	// - securitygroup: security group
+	// - securitygroup: security group.
 	//
-	// - volume: storage volume
+	// - volume: storage volume.
 	//
-	// - eni: elastic network interface (ENI)
+	// - eni: Elastic Network Interface (ENI).
 	//
-	// - ddh: dedicated host
+	// - ddh: dedicated host.
 	//
-	// - ddhcluster: dedicated host cluster
+	// - ddhcluster: dedicated host cluster.
 	//
-	// - keypair: SSH key pair
+	// - keypair: SSH key pair.
 	//
-	// - launchtemplate: launch template
+	// - launchtemplate: launch template.
 	//
-	// - reservedinstance: reserved instance
+	// - reservedinstance: reserved instance.
 	//
-	// - snapshotpolicy: automatic snapshot policy
+	// - snapshotpolicy: automatic snapshot policy.
 	//
-	// - elasticityassurance: elasticity assurance
+	// - elasticityassurance: elasticity assurance.
 	//
-	// - capacityreservation: capacity reservation
+	// - capacityreservation: capacity reservation.
 	//
-	// - command: Cloud Assistant command
+	// - command: Cloud Assistant command.
 	//
-	// - invocation: Cloud Assistant command execution result
+	// - invocation: Cloud Assistant command execution result.
 	//
 	// This parameter is required.
 	//
@@ -104,7 +104,7 @@ type UntagResourcesRequest struct {
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag keys. Valid values of N: 1 to 20.
+	// The list of tag keys of the resources. You can specify up to 20 tag keys.
 	//
 	// example:
 	//

@@ -16,10 +16,8 @@ type iDescribeClustersResponseBody interface {
 }
 
 type DescribeClustersResponseBody struct {
-	// An object that contains the list of clusters.
-	Clusters *DescribeClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Struct"`
-	// The request ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Clusters  *DescribeClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeClustersResponseBody) String() string {

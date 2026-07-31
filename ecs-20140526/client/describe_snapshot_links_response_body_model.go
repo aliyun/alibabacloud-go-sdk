@@ -51,7 +51,7 @@ type DescribeSnapshotLinksResponseBody struct {
 	SnapshotLinks *DescribeSnapshotLinksResponseBodySnapshotLinks `json:"SnapshotLinks,omitempty" xml:"SnapshotLinks,omitempty" type:"Struct"`
 	// The total number of snapshot chains.
 	//
-	// > When you use the `MaxResults` and `NextToken` parameters for a paged query, the returned `TotalCount` value is invalid. For paging, use `MaxResults` and `NextToken` instead.
+	// > When you use the `MaxResults` and `NextToken` parameters for a paged query, the returned `TotalCount` value is invalid. For paging, use `NextToken` and `MaxResults` instead.
 	//
 	// example:
 	//

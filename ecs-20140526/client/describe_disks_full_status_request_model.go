@@ -43,43 +43,43 @@ type iDescribeDisksFullStatusRequest interface {
 
 type DescribeDisksFullStatusRequest struct {
 	EventTime *DescribeDisksFullStatusRequestEventTime `json:"EventTime,omitempty" xml:"EventTime,omitempty" type:"Struct"`
-	// The ID of EBS device N. Valid values of N: 1 to 100.
+	// The block storage ID. Valid values of N: 1 to 100.
 	//
 	// example:
 	//
 	// d-bp67acfmxazb4p****
 	DiskId []*string `json:"DiskId,omitempty" xml:"DiskId,omitempty" type:"Repeated"`
-	// The ID of event N. Valid values of N: 1 to 100.
+	// The event ID. Valid values of N: 1 to 100.
 	//
 	// example:
 	//
 	// e-bp67acfmxazb4p****
 	EventId []*string `json:"EventId,omitempty" xml:"EventId,omitempty" type:"Repeated"`
-	// The event type of the EBS device. Valid values:
+	// The event type of the block storage device. Valid values:
 	//
-	// - Degraded: The performance of the EBS device is degraded.
+	// - Degraded: The block storage performance is degraded.
 	//
-	// - SeverelyDegraded: The performance of the EBS device is severely degraded.
+	// - SeverelyDegraded: The block storage performance is severely degraded.
 	//
-	// - Stalled: The performance of the EBS device is severely affected.
+	// - Stalled: The block storage performance is severely impacted.
 	//
-	// - ErrorDetected: The local disk is damaged.
+	// - ErrorDetected: A local disk is damaged.
 	//
 	// example:
 	//
 	// Stalled
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The health status of the EBS device. Valid values:
+	// The health status of the block storage device. Valid values:
 	//
-	// - Impaired: The EBS device is damaged.
+	// - Impaired: temporarily unreadable and unwritable.
 	//
-	// - Warning: The performance of the EBS device is degraded.
+	// - Warning: degraded service.
 	//
-	// - Initializing: The EBS device is being initialized.
+	// - Initializing: being initialized.
 	//
-	// - InsufficientData: The status cannot be determined due to insufficient data.
+	// - InsufficientData: insufficient data.
 	//
-	// - NotApplicable: The EBS device cannot be used.
+	// - NotApplicable: not applicable.
 	//
 	// example:
 	//
@@ -87,7 +87,7 @@ type DescribeDisksFullStatusRequest struct {
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Pages start from page 1. The value must be a positive integer.
+	// The page number of the query result. Valid values: positive integers.
 	//
 	// Default value: 1.
 	//
@@ -103,7 +103,7 @@ type DescribeDisksFullStatusRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the EBS device. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the block storage device. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -111,7 +111,7 @@ type DescribeDisksFullStatusRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the EBS device belongs. If you configure this parameter to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+	// The ID of the resource group to which the block storage resource belongs. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
 	//
 	// example:
 	//
@@ -119,25 +119,25 @@ type DescribeDisksFullStatusRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The lifecycle status of the EBS device. For more information, see [Disk status](https://help.aliyun.com/document_detail/25689.html). Valid values:
+	// The lifecycle status of the block storage device. For more information, see [Disk status table](https://help.aliyun.com/document_detail/25689.html). Valid values:
 	//
-	// - In_use: The EBS device is in use.
+	// - In_use: in use.
 	//
-	// - Available: The EBS device can be attached.
+	// - Available: to be attached.
 	//
-	// - Attaching: The EBS device is being attached.
+	// - Attaching: being attached.
 	//
-	// - Detaching: The EBS device is being detached.
+	// - Detaching: being detached.
 	//
-	// - Creating: The EBS device is being created.
+	// - Creating: being created.
 	//
-	// - ReIniting: The EBS device is being initialized.
+	// - ReIniting: being initialized.
 	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags to add to the EBS device.
+	// The tags.
 	Tag []*DescribeDisksFullStatusRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -303,7 +303,7 @@ func (s *DescribeDisksFullStatusRequest) Validate() error {
 }
 
 type DescribeDisksFullStatusRequestEventTime struct {
-	// The end of the time range to query occurred events.
+	// The end of the time range during which to query events.
 	//
 	// Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
 	//
@@ -311,7 +311,7 @@ type DescribeDisksFullStatusRequestEventTime struct {
 	//
 	// 2018-05-08T02:48:52Z
 	End *string `json:"End,omitempty" xml:"End,omitempty"`
-	// The beginning of the time range to query occurred events.
+	// The start of the time range during which to query events.
 	//
 	// Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
 	//
@@ -352,15 +352,15 @@ func (s *DescribeDisksFullStatusRequestEventTime) Validate() error {
 }
 
 type DescribeDisksFullStatusRequestTag struct {
-	// The key of tag N to add to the EBS device. A key-value pair consists of a key specified by the Tag.N.Key parameter and a value specified by the `Tag.N.Value` parameter. The two parameters are associated with each other. Valid values of N: 1 to 20.
+	// The tag key attached to the block storage resource. N specifies that you can set one or more tag keys. The value of N in this parameter corresponds to the value of N in the `Tag.N.Value` parameter to form a key-value pair. Valid values of N: 1 to 20.
 	//
-	// Up to 1,000 resources with the specified tags can be returned in the response.
+	// If you use a single tag to filter resources, the number of resources with the tag cannot exceed 1,000. If you use multiple tags to filter resources, the number of resources that are attached to all specified tags cannot exceed 1,000.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to add to the EBS device. A key-value pair consists of a key specified by the `Tag.N.Key` parameter and a value specified by the Tag.N.Value parameter. The two parameters are associated with each other. Valid values of N: 1 to 20.
+	// The tag value attached to the block storage resource. N specifies that you can set one or more tag values. The value of N in this parameter corresponds to the value of N in the `Tag.N.Key` parameter to form a key-value pair. Valid values of N: 1 to 20.
 	//
 	// example:
 	//

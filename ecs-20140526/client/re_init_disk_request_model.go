@@ -30,7 +30,7 @@ type iReInitDiskRequest interface {
 }
 
 type ReInitDiskRequest struct {
-	// Specifies whether to automatically start the instance after the disk is reinitialized. Valid values:
+	// Specifies whether to automatically start the instance after the disk is re-initialized. Valid values:
 	//
 	// - true: automatically starts the instance.
 	//
@@ -42,7 +42,7 @@ type ReInitDiskRequest struct {
 	//
 	// true
 	AutoStartInstance *bool `json:"AutoStartInstance,omitempty" xml:"AutoStartInstance,omitempty"`
-	// The ID of the disk to be reinitialized.
+	// The ID of the disk to be re-initialized.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type ReInitDiskRequest struct {
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
 	// The name of the key pair.
 	//
-	// > This parameter is applicable only to Linux instances. When the system disk is reinitialized, you can attach an SSH key pair to the ECS instance as the logon credential. After you use an SSH key pair, the username and password logon method is disabled.
+	// > This parameter is applicable only to Linux instances. When the system disk is re-initialized, you can attach an SSH key pair to the ECS instance as a logon credential. After you use an SSH key pair, the username and password logon method is disabled.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type ReInitDiskRequest struct {
 	KeyPairName  *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Specifies whether to reset the username and password of the ECS instance when the system disk is reinitialized. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
+	// Specifies whether to reset the username and password of the ECS instance when the system disk is re-initialized. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
 	//
 	// ```
 	//
@@ -78,7 +78,7 @@ type ReInitDiskRequest struct {
 	Password             *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to use the free Security Center service after the system disk is reinitialized. Valid values:
+	// Specifies whether to use the free Security Center service after the system disk is re-initialized. Valid values:
 	//
 	//
 	//

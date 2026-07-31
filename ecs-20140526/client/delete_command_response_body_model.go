@@ -14,7 +14,7 @@ type iDeleteCommandResponseBody interface {
 }
 
 type DeleteCommandResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

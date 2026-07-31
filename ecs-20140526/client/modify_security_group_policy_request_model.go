@@ -40,7 +40,7 @@ type ModifySecurityGroupPolicyRequest struct {
 	//
 	// - Drop: internal isolation
 	//
-	// >The value is case-insensitive.
+	// > The value is case-insensitive.
 	//
 	// This parameter is required.
 	//

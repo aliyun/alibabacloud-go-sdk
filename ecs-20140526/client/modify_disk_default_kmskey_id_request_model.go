@@ -20,7 +20,7 @@ type iModifyDiskDefaultKMSKeyIdRequest interface {
 }
 
 type ModifyDiskDefaultKMSKeyIdRequest struct {
-	// The ID of the new KMS key.
+	// The KMS key ID.
 	//
 	// This parameter is required.
 	//
@@ -29,7 +29,7 @@ type ModifyDiskDefaultKMSKeyIdRequest struct {
 	// 0e478b7a-4262-4802-b8cb-00d3fb40****
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2679950.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/2679950.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

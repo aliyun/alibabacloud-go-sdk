@@ -34,15 +34,15 @@ type iDescribeCloudAssistantStatusRequest interface {
 }
 
 type DescribeCloudAssistantStatusRequest struct {
-	// The instance ID.
+	// The list of instance IDs.
 	//
 	// example:
 	//
 	// i-bp1iudwa5b1tqa****
 	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	// The maximum number of entries per page. If you specify **InstanceId**, this parameter does not take effect.
+	// The maximum number of entries per page for a paged query. If **InstanceId*	- is specified, this parameter is ignored.
 	//
-	// Valid values: 1 to 50.
+	// Maximum value: 50.
 	//
 	// Default value: 10.
 	//
@@ -50,7 +50,7 @@ type DescribeCloudAssistantStatusRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
@@ -70,13 +70,13 @@ type DescribeCloudAssistantStatusRequest struct {
 	OSType       *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+	// > This parameter is about to be deprecated. Use NextToken and MaxResults to perform paging operations.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+	// > This parameter is about to be deprecated. Use NextToken and MaxResults to perform paging operations.
 	//
 	// example:
 	//

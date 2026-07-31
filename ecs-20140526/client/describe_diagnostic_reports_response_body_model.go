@@ -18,7 +18,7 @@ type iDescribeDiagnosticReportsResponseBody interface {
 }
 
 type DescribeDiagnosticReportsResponseBody struct {
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The pagination token returned in this call.
 	//
 	// example:
 	//

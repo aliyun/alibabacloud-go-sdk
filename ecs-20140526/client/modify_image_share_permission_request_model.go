@@ -34,19 +34,16 @@ type iModifyImageSharePermissionRequest interface {
 }
 
 type ModifyImageSharePermissionRequest struct {
-	// The IDs of the Alibaba Cloud accounts with which to share the image. You can specify up to 10 account IDs. If you specify more than 10 account IDs in a request, only the first 10 are processed.
+	// The Alibaba Cloud account ID to which you want to grant authorization to share the image. Valid values of N: 1 to 10. If you commit more than 10 Alibaba Cloud accounts at a time, the system processes only the first 10 accounts and ignores the rest.
 	//
 	// example:
 	//
 	// 1234567890
 	AddAccount []*string `json:"AddAccount,omitempty" xml:"AddAccount,omitempty" type:"Repeated"`
-	// Specifies whether to perform a dry run. A dry run checks for request parameter validity and permissions. If the request is valid, the `DryRunOperation` error code is returned. Otherwise, an error is returned. If the request is valid, no fee is incurred and no resource is created. Set the value to `true` to perform a dry run. Default value: `false`.
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the custom image.
+	DryRun     *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the custom image to be shared.
 	//
-	// 	Notice:
-	//
-	// You can no longer share images that are encrypted by using a service key. You can share only images that are encrypted by using a customer managed key (CMK). If you attempt to share an image that is encrypted by using a service key, the request fails.
+	// 	Notice: Sharing images encrypted with a service key is no longer supported. Only images encrypted with a customer master key (CMK) can be shared. An error is returned if you attempt to share an image encrypted with a service key.
 	//
 	// This parameter is required.
 	//
@@ -54,11 +51,11 @@ type ModifyImageSharePermissionRequest struct {
 	//
 	// m-bp18ygjuqnwhechc****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// Specifies whether to publish or unpublish the community image. Valid values:
+	// Specifies whether to publish or delist the community image. Valid values:
 	//
-	// - true: publishes the image as a community image.
+	// - true: Publishes the image as a community image.
 	//
-	// - false: unpublishes the community image. The image becomes a custom image. If the image is a custom image, this setting has no effect.
+	// - false: Delists the image to a regular image. If the image is already a regular image, no change is made.
 	//
 	// Default value: false.
 	//
@@ -66,7 +63,7 @@ type ModifyImageSharePermissionRequest struct {
 	//
 	// false
 	IsPublic *bool `json:"IsPublic,omitempty" xml:"IsPublic,omitempty"`
-	// > This parameter is in invitational preview and is not publicly available.
+	// >This parameter is in invitational preview and is not available for use.
 	//
 	// example:
 	//
@@ -74,7 +71,7 @@ type ModifyImageSharePermissionRequest struct {
 	LaunchPermission *string `json:"LaunchPermission,omitempty" xml:"LaunchPermission,omitempty"`
 	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the custom image. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
+	// The region ID of the custom image. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +79,7 @@ type ModifyImageSharePermissionRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the Alibaba Cloud accounts from which to unshare the image. You can specify up to 10 account IDs. If you specify more than 10 account IDs in a request, only the first 10 are processed.
+	// The Alibaba Cloud account ID from which you want to delete image sharing. Valid values of N: 1 to 10. If you commit more than 10 Alibaba Cloud accounts at a time, the system processes only the first 10 accounts and ignores the rest.
 	//
 	// example:
 	//

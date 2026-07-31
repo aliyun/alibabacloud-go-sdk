@@ -26,15 +26,15 @@ type iResetDisksRequest interface {
 }
 
 type ResetDisksRequest struct {
-	// The disks to roll back. You can specify up to 10 disks.
+	// The list of cloud disks.
 	//
 	// This parameter is required.
 	Disk []*ResetDisksRequestDisk `json:"Disk,omitempty" xml:"Disk,omitempty" type:"Repeated"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - true: performs a dry run to check the request. The disks are not rolled back. The check verifies required parameters, the request format, and resource states. If the request fails the check, the operation returns an error message. If the request passes the check, the operation returns the `DryRunOperation` error code.
+	// - true: performs a dry run without actually rolling back the cloud disks. The system checks whether required parameters are specified, whether the request format is valid, and whether resource status constraints are met. If the check fails, the corresponding error message is returned. If the check succeeds, the error code `DryRunOperation` is returned.
 	//
-	// - false: sends a normal request. After the request passes the check, the operation rolls back the disks.
+	// - false: performs a dry run and sends the request. If the check succeeds, the cloud disk rollback operation is initiated.
 	//
 	// Default value: false.
 	//
@@ -44,7 +44,7 @@ type ResetDisksRequest struct {
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the latest Alibaba Cloud regions.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -141,13 +141,13 @@ func (s *ResetDisksRequest) Validate() error {
 }
 
 type ResetDisksRequestDisk struct {
-	// The ID of the disk to roll back.
+	// The ID of the cloud disk to be rolled back. Valid values of N: 1 to 10.
 	//
 	// example:
 	//
 	// d-j6cf7l0ewidb78lq****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The ID of the snapshot from an instance snapshot that is used to roll back the disk.
+	// The snapshot ID that corresponds to the specified cloud disk in the instance snapshot. Valid values of N: 1 to 10.
 	//
 	// example:
 	//

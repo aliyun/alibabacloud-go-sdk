@@ -32,9 +32,9 @@ type iDeleteInstanceRequest interface {
 type DeleteInstanceRequest struct {
 	// Specifies whether to perform only a dry run. Valid values:
 	//
-	// - true: Sends a check request without releasing the instance. The system checks whether the required parameters are specified, the request format is valid, business requirements are met, and ECS resources are sufficient. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+	// - true: Sends a check request without releasing the instance. The system checks whether the required parameters are specified, the request format is valid, business limitations are met, and ECS resources are available. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
 	//
-	// - false (default): Sends a normal request. After the request passes the check, the instance is directly deleted.
+	// - false (default): Sends a normal request. After the check succeeds, the instance is directly deleted.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type DeleteInstanceRequest struct {
 	//
 	// - true: Forcefully releases a **running*	- (`Running`) instance.
 	//
-	// - false: Releases the instance in the normal way. The instance must be in the **Stopped*	- (`Stopped`) state.
+	// - false: Releases the instance normally. The instance must be in the **Stopped*	- (`Stopped`) state.
 	//
 	// Default value: false.
 	//
-	// 	Warning: A forceful release is equivalent to a power-off. Temporary data in the instance memory and storage is erased and cannot be recovered..
+	// 	Warning: A forceful release is equivalent to a power-off. All in-memory data and temporary data in storage are erased and cannot be recovered.
 	//
 	// example:
 	//
@@ -58,9 +58,9 @@ type DeleteInstanceRequest struct {
 	//
 	// - true: Forcefully shuts down and releases the instance. This is equivalent to a typical power-off operation. The instance directly enters the resource release process.
 	//
-	// 	Warning: A forceful release is equivalent to a power-off. Temporary data in the instance memory and storage is erased and cannot be recovered.
+	// 	Warning: A forceful release is equivalent to a power-off. All in-memory data and temporary data in storage are erased and cannot be recovered.
 	//
-	// - false: Before the instance is released, the system preferentially performs a standard shutdown process. This mode causes the instance release to take several minutes. You can configure service draining actions during the operating system shutdown to reduce noise in your business systems.
+	// - false: Before the instance is released, the system preferentially performs a standard shutdown process. This mode causes the instance release to take several minutes. You can configure business draining actions during the operating system shutdown to reduce noise in the business system.
 	//
 	// Default value: true.
 	//

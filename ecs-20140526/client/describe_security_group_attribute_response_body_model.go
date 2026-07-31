@@ -38,7 +38,7 @@ type DescribeSecurityGroupAttributeResponseBody struct {
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The internal network connectivity policy of the security group. Valid values:
+	// The network connectivity policy within the security group. Valid values:
 	//
 	//
 	//
@@ -50,7 +50,7 @@ type DescribeSecurityGroupAttributeResponseBody struct {
 	//
 	// Accept
 	InnerAccessPolicy *string `json:"InnerAccessPolicy,omitempty" xml:"InnerAccessPolicy,omitempty"`
-	// The paging token returned in this call. When you use `MaxResults` and `NextToken` for paging query, if this value is empty, no more data is available.
+	// The query token (Token) returned in this call. When you use `MaxResults` and `NextToken` for paged query, if this value is empty, no more data is available. This indicates that paging is complete.
 	//
 	// example:
 	//

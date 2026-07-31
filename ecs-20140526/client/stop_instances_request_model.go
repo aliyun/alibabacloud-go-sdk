@@ -34,7 +34,7 @@ type iStopInstancesRequest interface {
 type StopInstancesRequest struct {
 	// The batch operation mode. Valid values:
 	//
-	// - AllTogether: All operations must succeed for the entire batch operation to be considered successful. If any operation fails, the entire batch operation fails and all completed operations are rolled back to the previous state.
+	// - AllTogether: All operations must succeed for the entire batch operation to be considered successful. If any operation fails, the entire batch operation fails and all executed operations are rolled back to the pre-operation state.
 	//
 	// - SuccessFirst: Each operation in the batch is executed independently. If an operation fails, other operations can still be executed and confirmed as successful. Successful operations are committed, and failed operations are marked as failed without affecting the results of other operations.
 	//
@@ -48,7 +48,7 @@ type StopInstancesRequest struct {
 	//
 	// - true: sends a dry run request without stopping the instances. The system checks the required parameters, request format, and instance status. If the check fails, the corresponding error is returned. If the check succeeds, `DRYRUN.SUCCESS` is returned.
 	//
-	// > If the BatchOptimization parameter is set to `SuccessFirst`, the dry run result for `DryRun=true` returns only `DRYRUN.SUCCESS`.
+	// > If the `BatchOptimization` parameter is set to `SuccessFirst`, the dry run result for `DryRun=true` returns only `DRYRUN.SUCCESS`.
 	//
 	// - false: sends a normal request. After the request passes the check, the instances are stopped.
 	//
@@ -82,7 +82,7 @@ type StopInstancesRequest struct {
 	InstanceId   []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
 	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instances. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the instances. Call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -100,7 +100,7 @@ type StopInstancesRequest struct {
 	//
 	//     - Billing for system disks, data disks, and fixed bandwidth of Elastic IP Addresses (EIPs) continues.
 	//
-	//     - Because compute resources are released, the instance may fail to start due to insufficient resources. Try again later or change the instance type.
+	//     - Because compute resources are released, the instance may fail to restart due to insufficient resources. Try again later or change the instance type.
 	//
 	//     - If an EIP is associated with the instance before it is stopped, the IP address remains unchanged after the instance is restarted. Otherwise, the static public IP address may change, but the private IP address remains unchanged.
 	//
@@ -112,7 +112,7 @@ type StopInstancesRequest struct {
 	//
 	//
 	//
-	//   - KeepCharging: standard stop mode. After the instance is stopped, resources are retained and billing continues. The instance type inventory and public IP address are also retained. If you stop the instance to replace the operating system, reinitialize a disk, change the instance type, or modify the private IP address, select this mode to avoid startup failures.
+	//   - KeepCharging: standard stop mode. After the instance is stopped, its resources are retained and billing continues. The instance type inventory and public IP address are also retained. If you stop the instance to replace the operating system, reinitialize a disk, change the instance type, or modify the private IP address, select this mode to avoid restart failures.
 	//
 	// Default value: If you [enable economical mode for VPC-connected instances](~~63353#default~~) and the conditions are met, the default value is `StopCharging`. Otherwise, the default value is `KeepCharging`.
 	//

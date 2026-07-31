@@ -14,7 +14,7 @@ type iUnassignPrivateIpAddressesResponseBody interface {
 }
 
 type UnassignPrivateIpAddressesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

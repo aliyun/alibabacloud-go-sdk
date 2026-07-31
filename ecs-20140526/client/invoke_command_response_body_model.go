@@ -16,7 +16,7 @@ type iInvokeCommandResponseBody interface {
 }
 
 type InvokeCommandResponseBody struct {
-	// The ID of the command task.
+	// The command execution ID.
 	//
 	// example:
 	//

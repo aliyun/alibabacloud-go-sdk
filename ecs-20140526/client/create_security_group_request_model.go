@@ -44,7 +44,7 @@ type CreateSecurityGroupRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the security group. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description of the security group. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
 	//
 	// Default value: empty.
 	//
@@ -70,7 +70,7 @@ type CreateSecurityGroupRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The name of the security group. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`. The name can contain characters that are categorized as letter in Unicode, including Chinese characters and English letters, and digits. The name can also contain colons (:), underscores (_), periods (.), or hyphens (-).
+	// The name of the security group. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`. The name can contain characters that are categorized as letters in Unicode, including letters in English and Chinese, and digits. The name can also contain colons (:), underscores (_), periods (.), or hyphens (-).
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type CreateSecurityGroupRequest struct {
 	//
 	// false
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// The tags to bind to the security group. Array length: 0 to 20.
+	// The tags to add to the security group. Array length: 0 to 20.
 	Tag []*CreateSecurityGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the VPC to which the security group belongs.
 	//

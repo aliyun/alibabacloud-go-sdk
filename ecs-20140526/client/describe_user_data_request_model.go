@@ -22,7 +22,7 @@ type iDescribeUserDataRequest interface {
 }
 
 type DescribeUserDataRequest struct {
-	// The ID of the instance.
+	// The instance ID to query.
 	//
 	// This parameter is required.
 	//
@@ -31,7 +31,7 @@ type DescribeUserDataRequest struct {
 	// i-bp14bnftyqhxg9ij****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

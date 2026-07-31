@@ -50,27 +50,26 @@ type DescribeDiagnosticReportAttributesResponseBody struct {
 	//
 	// 2022-07-11T12:00:00Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The end of the diagnostic time range. This value corresponds to the `EndTime` parameter you provided when calling the [CreateDiagnosticReport](https://help.aliyun.com/document_detail/442490.html) operation.
+	// The end time. This parameter was specified when you called the [CreateDiagnosticReport](https://help.aliyun.com/document_detail/442490.html) operation to create the diagnostic report.
 	//
 	// example:
 	//
 	// 2022-07-11T14:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time when the diagnosis was complete.
+	// The time when the diagnostic report was completed.
 	//
 	// example:
 	//
 	// 2022-07-11T14:00:00Z
-	FinishedTime *string `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
-	// The diagnostic results for the metrics.
+	FinishedTime  *string                                                      `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
 	MetricResults *DescribeDiagnosticReportAttributesResponseBodyMetricResults `json:"MetricResults,omitempty" xml:"MetricResults,omitempty" type:"Struct"`
-	// The metric set ID.
+	// The ID of the diagnostic metric set.
 	//
 	// example:
 	//
 	// dms-bp17p0qwtr72zmu*****
 	MetricSetId *string `json:"MetricSetId,omitempty" xml:"MetricSetId,omitempty"`
-	// The unique ID of the diagnostic report.
+	// The diagnostic report ID. The unique identifier of the resource diagnostic report.
 	//
 	// example:
 	//
@@ -88,35 +87,35 @@ type DescribeDiagnosticReportAttributesResponseBody struct {
 	//
 	// i-uf6i0tv2refv8wz*****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type. Only `instance` is supported.
+	// The resource type. The supported type is instance.
 	//
 	// example:
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The overall severity level of the diagnostic report. This is the highest severity level among all metrics in the report. Valid values are listed below, from lowest to highest severity:
+	// The severity level of the report. This value represents the most severe level among all metrics. The severity levels in ascending order are:
 	//
-	// - Unknown: The initial state. The diagnosis has not started or exited unexpectedly, so the result is inconclusive.
+	// - Unknown: The initial state, which indicates that the diagnosis has not started or the diagnosis process exited abnormally. No diagnostic conclusion is available.
 	//
-	// - Normal: The resource is healthy, and no issues were found.
+	// - Normal: The diagnosis is normal. No issues were found.
 	//
-	// - Info: Informational messages were found that may be relevant to an issue.
+	// - Info: Related information is available and may be associated with an exception.
 	//
-	// - Warn: Warnings were found that may lead to an issue.
+	// - Warn: Related information is available and may cause an exception.
 	//
-	// - Critical: Critical issues were found.
+	// - Critical: A critical exception exists.
 	//
 	// example:
 	//
 	// Normal
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// The start of the diagnostic time range. This value corresponds to the `StartTime` parameter you provided when calling the [CreateDiagnosticReport](https://help.aliyun.com/document_detail/442490.html) operation.
+	// The start time. This parameter was specified when you called the [CreateDiagnosticReport](https://help.aliyun.com/document_detail/442490.html) operation to create the diagnostic report.
 	//
 	// example:
 	//
 	// 2022-07-11T12:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the diagnostic report. Possible values:
+	// The status of the diagnostic report. Valid values:
 	//
 	// - InProgress: The diagnosis is in progress.
 	//

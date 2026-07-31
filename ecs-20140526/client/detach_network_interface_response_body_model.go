@@ -14,7 +14,7 @@ type iDetachNetworkInterfaceResponseBody interface {
 }
 
 type DetachNetworkInterfaceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

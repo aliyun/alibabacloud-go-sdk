@@ -23,7 +23,7 @@ type iDescribeDedicatedHostClustersResponseBody interface {
 
 type DescribeDedicatedHostClustersResponseBody struct {
 	DedicatedHostClusters *DescribeDedicatedHostClustersResponseBodyDedicatedHostClusters `json:"DedicatedHostClusters,omitempty" xml:"DedicatedHostClusters,omitempty" type:"Struct"`
-	// The page number.
+	// The page number of the dedicated host cluster list.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeDedicatedHostClustersResponseBody struct {
 	//
 	// 214A2187-B06F-4E49-A081-4D053466A8C7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of dedicated host clusters.
+	// The total number of dedicated hosts.
 	//
 	// example:
 	//

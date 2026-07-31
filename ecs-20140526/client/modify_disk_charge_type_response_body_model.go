@@ -16,7 +16,7 @@ type iModifyDiskChargeTypeResponseBody interface {
 }
 
 type ModifyDiskChargeTypeResponseBody struct {
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//

@@ -32,23 +32,33 @@ type iModifyReservedInstanceAutoRenewAttributeRequest interface {
 type ModifyReservedInstanceAutoRenewAttributeRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The auto-renewal cycle.
+	// The auto-renewal epoch.
 	//
-	// Valid values: 1 and 3.
+	// <props="intl">Valid values: 1 and 3.
+	//
+	// <props="china">
+	//
+	// - If `PeriodUnit` is set to `Year`, valid values: 1, 3, and 5.
+	//
+	// - If `PeriodUnit` is set to `Month`, valid values: 1.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the auto-renewal duration.
+	// The unit of the auto-renewal period.
 	//
-	// Valid values: Year and Month.
+	// <props="intl">Valid values: Year.
+	//
+	// <props="china">Valid values: Month and Year.
+	//
+	// <props="china">Default value: Month.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The region ID of the reserved instances. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the reserved instances. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -56,17 +66,17 @@ type ModifyReservedInstanceAutoRenewAttributeRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to automatically renew the reserved instances. Valid values:
+	// Specifies whether to enable auto-renewal for the subscription reserved instances. Valid values:
 	//
-	// - AutoRenewal: automatically renews the reserved instances.
+	// - AutoRenewal: enables auto-renewal.
 	//
-	// - Normal: manually renews the reserved instances.
+	// - Normal: enables manual renewal.
 	//
 	// example:
 	//
 	// AutoRenewal
 	RenewalStatus *string `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
-	// The IDs of the reserved instances.
+	// The reserved instance ID.
 	ReservedInstanceId   []*string `json:"ReservedInstanceId,omitempty" xml:"ReservedInstanceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

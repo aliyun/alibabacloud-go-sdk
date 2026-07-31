@@ -14,7 +14,7 @@ type iModifyImageSharePermissionResponseBody interface {
 }
 
 type ModifyImageSharePermissionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

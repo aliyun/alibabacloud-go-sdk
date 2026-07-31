@@ -16,7 +16,7 @@ type iSendFileResponseBody interface {
 }
 
 type SendFileResponseBody struct {
-	// The ID of the command task.
+	// The execution ID.
 	//
 	// example:
 	//

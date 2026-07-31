@@ -14,6 +14,8 @@ type iDeleteVscResponseBody interface {
 }
 
 type DeleteVscResponseBody struct {
+	// Id of the request
+	//
 	// example:
 	//
 	// 745CEC9F-0DD7-4451-9FE7-8B752F39****

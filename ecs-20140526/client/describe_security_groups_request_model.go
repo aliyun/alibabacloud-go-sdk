@@ -60,7 +60,7 @@ type DescribeSecurityGroupsRequest struct {
 	//
 	// - true: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized Resource Access Management (RAM) users, and missing parameter values. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
 	//
-	// - false: performs a dry run and sends the Normal request. If the request passes the dry run, a 2xx HTTP status code is returned and the authorization is verified.
+	// - false: performs a dry run and sends the Normal request. If the request passes the dry run, a 2XX HTTP status code is returned and the authorization is verified.
 	//
 	// Default value: false.
 	//
@@ -82,7 +82,7 @@ type DescribeSecurityGroupsRequest struct {
 	//
 	// null
 	IsQueryEcsCount *bool `json:"IsQueryEcsCount,omitempty" xml:"IsQueryEcsCount,omitempty"`
-	// The maximum number of entries per page for paging query. If you set this parameter, the `MaxResults` and `NextToken` paging method is used.
+	// The maximum number of entries per page for a paged query. Settings this parameter indicates that the `MaxResults` and `NextToken` combination is used for paging.
 	//
 	// Maximum value: 100.
 	//
@@ -102,7 +102,7 @@ type DescribeSecurityGroupsRequest struct {
 	//
 	// vpc
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The pagination token. Set this parameter to the NextToken value returned in the previous request. You do not need to set this parameter for the first request.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous call. You do not need to set this parameter for the first request.
 	//
 	// example:
 	//
@@ -110,13 +110,13 @@ type DescribeSecurityGroupsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// > This parameter will be offline. Use NextToken and MaxResults for paging.
+	// > This parameter will be offline soon. Use NextToken and MaxResults for paged query and paging operations.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter will be offline. Use NextToken and MaxResults for paging.
+	// > This parameter will be offline soon. Use NextToken and MaxResults for paged query and paging operations.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type DescribeSecurityGroupsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the security group.
+	// The security group ID.
 	//
 	// example:
 	//

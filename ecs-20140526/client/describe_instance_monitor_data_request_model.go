@@ -28,7 +28,7 @@ type iDescribeInstanceMonitorDataRequest interface {
 }
 
 type DescribeInstanceMonitorDataRequest struct {
-	// The end of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. If the value of seconds (`ss`) is not `00`, the time is rounded up to the next minute.
+	// The end of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. If the value of seconds (`ss`) is not `00`, the time is automatically rounded up to the next minute.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DescribeInstanceMonitorDataRequest struct {
 	//
 	// 2014-10-30T08:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The instance ID.
+	// The instance ID of the instance to query.
 	//
 	// This parameter is required.
 	//
@@ -48,11 +48,11 @@ type DescribeInstanceMonitorDataRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The interval at which to retrieve monitoring data. Unit: seconds. Valid values:
 	//
-	// - 60
+	// - 60.
 	//
-	// - 600
+	// - 600.
 	//
-	// - 3600
+	// - 3600.
 	//
 	// Default value: 60.
 	//
@@ -62,7 +62,7 @@ type DescribeInstanceMonitorDataRequest struct {
 	Period               *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. If the value of seconds (`ss`) is not `00`, the time is rounded up to the next minute.
+	// The beginning of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. If the value of seconds (`ss`) is not `00`, the time is automatically rounded up to the next minute.
 	//
 	// This parameter is required.
 	//

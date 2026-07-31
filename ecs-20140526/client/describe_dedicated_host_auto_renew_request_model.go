@@ -24,7 +24,7 @@ type iDescribeDedicatedHostAutoRenewRequest interface {
 }
 
 type DescribeDedicatedHostAutoRenewRequest struct {
-	// The ID of the dedicated host. You can specify up to 100 subscription dedicated host IDs. Separate multiple IDs with commas (,).
+	// The IDs of dedicated hosts. You can specify up to 100 subscription dedicated host IDs. Separate multiple IDs with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DescribeDedicatedHostAutoRenewRequest struct {
 	DedicatedHostIds *string `json:"DedicatedHostIds,omitempty" xml:"DedicatedHostIds,omitempty"`
 	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the dedicated host resides.
+	// The region ID of the dedicated host.
 	//
 	// This parameter is required.
 	//

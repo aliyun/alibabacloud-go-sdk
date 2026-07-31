@@ -28,7 +28,7 @@ type iCreateNetworkInterfacePermissionRequest interface {
 }
 
 type CreateNetworkInterfacePermissionRequest struct {
-	// The ID of the Alibaba Cloud partner (certified ISV) account or individual user.
+	// The ID of the Alibaba Cloud partner (certified ISV) account or individual user account.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type CreateNetworkInterfacePermissionRequest struct {
 	//
 	// 1234567890
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ID of the ENI.
+	// The ID of the network interface controller (NIC).
 	//
 	// This parameter is required.
 	//
@@ -46,9 +46,9 @@ type CreateNetworkInterfacePermissionRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ENI permission. Only InstanceAttach is currently supported.
+	// The network interface controller (NIC) permission action. Only InstanceAttach is supported.
 	//
-	// InstanceAttach: allows the authorized user to attach your ENI to their ECS instance. The ECS instance must be in the same zone as the ENI.
+	// InstanceAttach: allows the authorized user to attach your NIC to their ECS instance. The ECS instance must be in the same zone as the NIC.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type CreateNetworkInterfacePermissionRequest struct {
 	//
 	// InstanceAttach
 	Permission *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
-	// The region of the ENI permission. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list of Alibaba Cloud.
+	// The region of the network interface controller (NIC) permission. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

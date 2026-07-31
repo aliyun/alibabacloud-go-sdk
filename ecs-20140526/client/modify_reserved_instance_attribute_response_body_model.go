@@ -20,25 +20,25 @@ type iModifyReservedInstanceAttributeResponseBody interface {
 }
 
 type ModifyReservedInstanceAttributeResponseBody struct {
-	// Modifies the attributes of a reserved instance, such as its name and description.
+	// The error code returned.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message for this instance operation. The return value Success indicates that this operation is successful. For more information, see the "Error codes" section in this topic.
+	// The error message returned for the instance operation. A return value of Success indicates success. For more information, see the error codes section.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

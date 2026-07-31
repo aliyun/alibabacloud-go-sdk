@@ -20,7 +20,7 @@ type iDescribeDiagnosticMetricsResponseBody interface {
 type DescribeDiagnosticMetricsResponseBody struct {
 	// The diagnostic metrics.
 	Metrics []*DescribeDiagnosticMetricsResponseBodyMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The pagination token returned in this call.
 	//
 	// example:
 	//
@@ -89,7 +89,7 @@ type DescribeDiagnosticMetricsResponseBodyMetrics struct {
 	//
 	// CPU诊断
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the diagnostic metric needs to be assessed by running a Cloud Assistant command in a guest operating system.
+	// Indicates whether a script needs to be executed in the guest OS.
 	//
 	// example:
 	//
@@ -119,13 +119,13 @@ type DescribeDiagnosticMetricsResponseBodyMetrics struct {
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The operating system type supported by the diagnostic metric. Valid values:
+	// The supported operating system. Valid values:
 	//
-	// - Windows
+	// - Windows: Windows operating systems are supported.
 	//
-	// - Linux
+	// - Linux: Linux operating systems are supported.
 	//
-	// - All: Windows and Linux
+	// - All: both Windows and Linux operating systems are supported.
 	//
 	// example:
 	//

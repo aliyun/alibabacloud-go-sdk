@@ -16,13 +16,13 @@ type iCreateImagePipelineResponseBody interface {
 }
 
 type CreateImagePipelineResponseBody struct {
-	// The ID of the image pipeline.
+	// The image template ID.
 	//
 	// example:
 	//
 	// ip-2ze5tsl5bp6nf2b3****
 	ImagePipelineId *string `json:"ImagePipelineId,omitempty" xml:"ImagePipelineId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iCreateNetworkInterfacePermissionResponseBody interface {
 }
 
 type CreateNetworkInterfacePermissionResponseBody struct {
-	// The information about the ENI permission.
+	// The information about the network interface controller (NIC) permissions.
 	NetworkInterfacePermission *CreateNetworkInterfacePermissionResponseBodyNetworkInterfacePermission `json:"NetworkInterfacePermission,omitempty" xml:"NetworkInterfacePermission,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -68,33 +68,33 @@ type CreateNetworkInterfacePermissionResponseBodyNetworkInterfacePermission stru
 	//
 	// 1234567890
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ENI ID.
+	// The ID of the network interface controller (NIC).
 	//
 	// example:
 	//
 	// eni-bp14v2sdd3v8htln****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The ENI permission ID.
+	// The ID of the network interface controller (NIC) permission.
 	//
 	// example:
 	//
 	// eni-perm-bp1cs4lwn56lfb****
 	NetworkInterfacePermissionId *string `json:"NetworkInterfacePermissionId,omitempty" xml:"NetworkInterfacePermissionId,omitempty"`
-	// The ENI permission.
+	// The network interface controller (NIC) permission.
 	//
 	// example:
 	//
 	// InstanceAttach
 	Permission *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
-	// The ENI permission state. Valid values:
+	// The status of the network interface controller (NIC) permission. Valid values:
 	//
-	// - Pending: The permission is being granted.
+	// - Pending: Authorization in progress.
 	//
-	// - Granted: The permission has been granted.
+	// - Granted: Authorization granted.
 	//
-	// - Revoking: The permission is being revoked.
+	// - Revoking: Authorization being revoked.
 	//
-	// - Revoked: The permission has been revoked.
+	// - Revoked: Authorization revoked.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribeDiagnosticReportAttributesRequest interface {
 }
 
 type DescribeDiagnosticReportAttributesRequest struct {
-	// The ID of the region. Call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to get the latest list of Alibaba Cloud regions.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribeDiagnosticReportAttributesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the diagnostic report.
+	// The diagnostic report ID.
 	//
 	// This parameter is required.
 	//

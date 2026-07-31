@@ -170,7 +170,7 @@ type ModifyPlanMaintenanceWindowRequestTargetResource struct {
 	//
 	// rg-acfmy4cc27vsvia
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The resource type for the O&M window configuration.
+	// The type of resource to which the O&M window applies.
 	//
 	// example:
 	//
@@ -274,13 +274,13 @@ func (s *ModifyPlanMaintenanceWindowRequestTargetResourceTags) Validate() error 
 }
 
 type ModifyPlanMaintenanceWindowRequestTimePeriod struct {
-	// The cycle type. Valid values: Daily and Weekly.
+	// The type of the cycle. Valid values: Daily and Weekly.
 	//
 	// example:
 	//
 	// Year
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The time ranges of the O&M window recurring cycle (UTC time zone).
+	// The time ranges of the recurring O&M window cycle (UTC time zone).
 	RangeList []*ModifyPlanMaintenanceWindowRequestTimePeriodRangeList `json:"RangeList,omitempty" xml:"RangeList,omitempty" type:"Repeated"`
 }
 
