@@ -26,9 +26,9 @@ type iModifyResourceLogStatusShrinkRequest interface {
 }
 
 type ModifyResourceLogStatusShrinkRequest struct {
-	// The ID of the WAF instance.
+	// Instance ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -36,17 +36,17 @@ type ModifyResourceLogStatusShrinkRequest struct {
 	//
 	// waf-cn-zz11zcl****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// - **cn-hangzhou**: The Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: Outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The protected object on which you want to manage the log collection feature.
+	// The protected object to modify.
 	//
 	// This parameter is required.
 	//
@@ -60,20 +60,36 @@ type ModifyResourceLogStatusShrinkRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// Specifies whether to enable the log collection feature for the protected object. Valid values:
+	// The log enabling status of the protected object. Valid values:
 	//
-	// - **true**: Enables the feature.
+	// - **true**: Enabled.
 	//
-	// - **false**: Disables the feature.
+	// - **false**: Not enabled.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
-	Status            *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The Tracing Analysis configuration.
+	//
+	// example:
+	//
+	// {"Workspace":"cms-test","RatePerMille":90}
 	TraceConfigShrink *string `json:"TraceConfig,omitempty" xml:"TraceConfig,omitempty"`
-	TraceStatus       *bool   `json:"TraceStatus,omitempty" xml:"TraceStatus,omitempty"`
+	// The Tracing Analysis status. Valid values:
+	//
+	// - **true**: Enabled.
+	//
+	// - **false**: Disabled.
+	//
+	// > To enable Tracing Analysis, you must first enable the log status **Status*	- for the protected object.
+	//
+	// example:
+	//
+	// true
+	TraceStatus *bool `json:"TraceStatus,omitempty" xml:"TraceStatus,omitempty"`
 }
 
 func (s ModifyResourceLogStatusShrinkRequest) String() string {

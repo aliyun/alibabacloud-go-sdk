@@ -28,9 +28,7 @@ type iDescribeRelatedDefenseRulesRequest interface {
 }
 
 type DescribeRelatedDefenseRulesRequest struct {
-	// The WAF protection scenario. Only the following value is supported:
-	//
-	// - **address_book**: address book.
+	// The WAF protection scenario.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +56,7 @@ type DescribeRelatedDefenseRulesRequest struct {
 	//
 	// waf-cn-zz11sr5****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries per page when using paging. Valid values: 1 to 100. Default value: 20.
+	// The number of entries per page in a paged query. Valid values: 1 to 100. Default value: 20.
 	//
 	// example:
 	//
@@ -66,13 +64,13 @@ type DescribeRelatedDefenseRulesRequest struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token (**Token**) for the next page. If a next page exists, this field has a return value.
 	//
-	// > If this parameter has a return value, a next page exists. Use the returned **NextToken*	- as a request parameter to obtain the next page of data. Repeat this process until no value is returned, which indicates that all data has been retrieved.
+	// > If this parameter has a return value, a next page exists. Use the returned **NextToken*	- as a request parameter to obtain the data on the next page. Repeat this process until no value is returned, which indicates that all data has been retrieved.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region in which the WAF instance resides. Valid values:
+	// The region in which the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -82,7 +80,7 @@ type DescribeRelatedDefenseRulesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The Alibaba Cloud resource group ID.
 	//
 	// example:
 	//

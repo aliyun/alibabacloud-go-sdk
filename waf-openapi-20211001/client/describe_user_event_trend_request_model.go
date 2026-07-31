@@ -30,11 +30,7 @@ type DescribeUserEventTrendRequest struct {
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The dimension of security events. Valid values:
-	//
-	// - **ip*	- (default): IP security events.
-	//
-	// - **account**: account security events.
+	// The dimension of security events.
 	//
 	// example:
 	//

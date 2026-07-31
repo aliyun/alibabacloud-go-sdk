@@ -22,27 +22,27 @@ type iDescribeApisecExamplesResponseBody interface {
 }
 
 type DescribeApisecExamplesResponseBody struct {
-	// The list of API security examples.
+	// The list of samples.
 	Examples []*DescribeApisecExamplesResponseBodyExamples `json:"Examples,omitempty" xml:"Examples,omitempty" type:"Repeated"`
-	// The number of entries returned on each page. Valid values: 1 to 5. Default value: 5.
+	// The number of entries per page in a paged query. Valid values: 1 to 5. Default value: 5. This parameter is used for paging.
 	//
 	// example:
 	//
 	// 5
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results.
+	// The pagination token.
 	//
 	// example:
 	//
 	// AAAAAGBgV9tolsLfijC4wam2htS*****D/46H3X2wIS
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of results.
 	//
 	// example:
 	//
@@ -117,53 +117,53 @@ func (s *DescribeApisecExamplesResponseBody) Validate() error {
 }
 
 type DescribeApisecExamplesResponseBodyExamples struct {
-	// The complete URL of the API request.
+	// The full request path.
 	//
 	// example:
 	//
 	// http://www.test.com/api/v1/hello.php?token=TkJGQw
 	ApiUrl *string `json:"ApiUrl,omitempty" xml:"ApiUrl,omitempty"`
-	// The proof-of-concept (PoC) request.
+	// The verification request.
 	PocPayload *string `json:"PocPayload,omitempty" xml:"PocPayload,omitempty"`
-	// The protocol type of the API request. Valid values:
+	// The protocol type. Valid values:
 	//
-	// - **http**: HTTP
+	// - **http**: HTTP protocol.
 	//
-	// - **https**: HTTPS
+	// - **https**: HTTPS protocol.
 	//
 	// example:
 	//
 	// http
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The content of the sample request. This is a string converted from a JSON object that consists of a series of parameters. The JSON object contains the following fields:
+	// The sample request content, which is a character string converted from a JSON format constructed with a series of parameters. The following fields are included:
 	//
 	// - **method**: the request method.
 	//
-	// - **host**: the requested domain name.
+	// - **host**: the request domain name.
 	//
 	// - **header**: the request header.
 	//
 	// - **server_port**: the service port.
 	//
-	// - **body**: the request body.
+	// - **body**: the request body content.
 	//
-	// - **url**: the URI of the request.
+	// - **url**: the request path.
 	//
-	// - **server_protocol**: the server-side protocol.
+	// - **server_protocol**: the server protocol.
 	//
-	// > If the **body*	- content exceeds 16 KB, only a portion of the content is returned.
+	// > If the **body*	- content exceeds 16 KB, only partial content is returned.
 	Request *string `json:"Request,omitempty" xml:"Request,omitempty"`
-	// The list of sensitive data in the request.
+	// The list of request sensitive data.
 	RequestSensitiveData []*DescribeApisecExamplesResponseBodyExamplesRequestSensitiveData `json:"RequestSensitiveData,omitempty" xml:"RequestSensitiveData,omitempty" type:"Repeated"`
-	// The content of the sample response. This is a string converted from a JSON object that consists of a series of parameters. The JSON object contains the following fields:
+	// The sample response content, which is a string converted from a JSON object constructed with a series of parameters. The following fields are included:
 	//
 	// - **status**: the status code.
 	//
 	// - **header**: the response header.
 	//
-	// - **body**: the response body.
+	// - **body**: the response body content.
 	//
-	// > If the **body*	- content exceeds 16 KB, only a portion of the content is returned.
+	// > If the **body*	- content exceeds 16 KB, only partial content is returned.
 	//
 	// example:
 	//
@@ -185,7 +185,7 @@ type DescribeApisecExamplesResponseBodyExamples struct {
 	//
 	// }
 	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
-	// The list of sensitive data in the response.
+	// The list of response sensitive data.
 	ResponseSensitiveData []*DescribeApisecExamplesResponseBodyExamplesResponseSensitiveData `json:"ResponseSensitiveData,omitempty" xml:"ResponseSensitiveData,omitempty" type:"Repeated"`
 }
 
@@ -283,7 +283,7 @@ func (s *DescribeApisecExamplesResponseBodyExamples) Validate() error {
 }
 
 type DescribeApisecExamplesResponseBodyExamplesRequestSensitiveData struct {
-	// The code that indicates the type of sensitive data in the request.
+	// The sensitive information type.
 	//
 	// example:
 	//
@@ -324,7 +324,7 @@ func (s *DescribeApisecExamplesResponseBodyExamplesRequestSensitiveData) Validat
 }
 
 type DescribeApisecExamplesResponseBodyExamplesResponseSensitiveData struct {
-	// The code that indicates the type of sensitive data in the response.
+	// The sensitive information type.
 	//
 	// example:
 	//

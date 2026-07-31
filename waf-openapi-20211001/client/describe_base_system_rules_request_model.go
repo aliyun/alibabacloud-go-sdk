@@ -40,7 +40,7 @@ type iDescribeBaseSystemRulesRequest interface {
 }
 
 type DescribeBaseSystemRulesRequest struct {
-	// The type of attack that the system protection rule detects. Valid values:
+	// The detection module. Valid values:
 	//
 	// - **sqli**: SQL injection.
 	//
@@ -74,17 +74,17 @@ type DescribeBaseSystemRulesRequest struct {
 	//
 	// - **scanner_behavior**: scanner behavior.
 	//
-	// - **logic_flaw**: logic flaw.
+	// - **logic_flaw**: business logic bug.
 	//
-	// - **arbitrary_file_reading**: arbitrary file read.
+	// - **arbitrary_file_reading**: arbitrary file reading.
 	//
 	// - **arbitrary_file_download**: arbitrary file download.
 	//
-	// - **xxe**: external entity injection.
+	// - **xxe**: XML external entity injection.
 	//
-	// - **csrf**: cross-site request forgery (CSRF).
+	// - **csrf**: cross-site request forgery.
 	//
-	// - **crlf**: CRLF injection.
+	// - **crlf**: CRLF.
 	//
 	// - **other**: other.
 	//
@@ -94,7 +94,7 @@ type DescribeBaseSystemRulesRequest struct {
 	DetectType *string `json:"DetectType,omitempty" xml:"DetectType,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of your WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -102,7 +102,7 @@ type DescribeBaseSystemRulesRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the response. Valid values:
+	// The language of the returned rule content. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -112,19 +112,19 @@ type DescribeBaseSystemRulesRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number to return in a paged query. Default value: **1**, which indicates the first page. For more information about paging, see the PageSize parameter.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 100.
+	// The number of entries per page in a paged query. Default value: 100, which indicates 100 entries per page. For more information about paging, see the PageNumber parameter.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -140,9 +140,9 @@ type DescribeBaseSystemRulesRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The risk level of the system protection rule. Valid values:
+	// The risk level. Valid values:
 	//
-	// - **super_strict**: Very Strict.
+	// - **super_strict**: Super strict.
 	//
 	// - **strict**: Strict.
 	//
@@ -154,7 +154,7 @@ type DescribeBaseSystemRulesRequest struct {
 	//
 	// loose
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The action of the system protection rule. Valid values:
+	// The rule action. Valid values:
 	//
 	// - **block**: Block.
 	//
@@ -169,7 +169,8 @@ type DescribeBaseSystemRulesRequest struct {
 	// example:
 	//
 	// 113089
-	RuleId  *int64   `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The list of system protection rule IDs to query.
 	RuleIds []*int64 `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
 	// The name of the system protection rule.
 	//
@@ -177,11 +178,11 @@ type DescribeBaseSystemRulesRequest struct {
 	//
 	// systemRuleTest
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The status of the system protection rule. Valid values:
+	// The rule status. Valid values:
 	//
-	// - **1**: disabled.
+	// - **1**: Disabled.
 	//
-	// - **0**: enabled.
+	// - **0**: Enabled.
 	//
 	// example:
 	//
@@ -189,11 +190,11 @@ type DescribeBaseSystemRulesRequest struct {
 	RuleStatus *int32 `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
 	// The ID of the protection template.
 	//
-	// > - Specify this parameter to query the system protection rules in a specific WAF protection template.
-	//
 	// >
 	//
-	// > - If you leave this parameter empty, the default configurations of the system protection rules are queried.
+	// > - You can specify this parameter to query the system protection rules in a specific Web core protection rule template.
+	//
+	// > - If this parameter is left empty, the default settings of system protection rules are queried.
 	//
 	// example:
 	//

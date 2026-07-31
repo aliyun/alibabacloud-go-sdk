@@ -26,9 +26,9 @@ type iDescribeBotRuleLabelsRequest interface {
 }
 
 type DescribeBotRuleLabelsRequest struct {
-	// The ID of the Web Application Firewall (WAF) instance.
+	// Instance ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of your WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of your current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -36,27 +36,27 @@ type DescribeBotRuleLabelsRequest struct {
 	//
 	// waf_v3prepaid_public_cn-53y4******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of bot rule label to query.
+	// The type of bot rule tag to query.
 	//
 	// example:
 	//
 	// human_machine_challenge
 	LabelType *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
-	// The number of entries to return on each page. Valid values: 1 to 200. Default value: 20.
+	// The number of entries per page for paging. Valid values: 1 to 200. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results. This parameter is returned if a next page exists.
+	// The pagination token for the next page. If a next page exists, this field has a return value.
 	//
-	// > If a value is returned for this parameter, it indicates that more results are available. Use the returned **NextToken*	- value in the next request to retrieve the next page of results. Repeat this process until no value is returned for this parameter. This indicates that all results have been retrieved.
+	// > If this parameter has a return value, a next page exists. You can use the returned **NextToken*	- as a request parameter to obtain the data on the next page. Repeat this process until no value is returned, which indicates that all data has been retrieved.
 	//
 	// example:
 	//
 	// AAAAAGBgV9tolsLfijC4wam2htS*****D/46H3X2wIS
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -72,11 +72,7 @@ type DescribeBotRuleLabelsRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The type of bot management scenario. Valid values:
-	//
-	// - **web**: web protection.
-	//
-	// - **app**: app protection.
+	// The bot management protection scenario type.
 	//
 	// example:
 	//

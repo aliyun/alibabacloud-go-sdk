@@ -16,17 +16,17 @@ type iModifyResourceLogStatusResponseBody interface {
 }
 
 type ModifyResourceLogStatusResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 7C55A3E5-638A-5D6E-9A2F-C3CE5A677EC5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the log collection feature is enabled for the protected object. Valid values:
+	// The log enabling status of the protected object. Valid values:
 	//
-	// - **true**: The feature is enabled.
+	// - **true**: Enabled.
 	//
-	// - **false**: The feature is disabled.
+	// - **false**: Not enabled.
 	//
 	// example:
 	//

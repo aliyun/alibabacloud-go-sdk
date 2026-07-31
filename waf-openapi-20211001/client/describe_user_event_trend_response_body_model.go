@@ -86,7 +86,7 @@ type DescribeUserEventTrendResponseBodyTrend struct {
 	EventMedium *int64 `json:"EventMedium,omitempty" xml:"EventMedium,omitempty"`
 	// Deprecated
 	//
-	// The statistics time, in UNIX timestamp format (UTC). Unit: seconds.
+	// The statistics time in UNIX timestamp format (UTC). Unit: seconds.
 	//
 	// 	Notice: This parameter is deprecated. Use the Timestamp parameter instead.
 	//
@@ -94,7 +94,7 @@ type DescribeUserEventTrendResponseBodyTrend struct {
 	//
 	// 1723435200
 	TimeStamp *int64 `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The statistics time, in UNIX timestamp format (UTC). Unit: seconds.
+	// The statistics time in UNIX timestamp format (UTC). Unit: seconds.
 	//
 	// example:
 	//

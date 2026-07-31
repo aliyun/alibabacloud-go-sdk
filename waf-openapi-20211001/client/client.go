@@ -630,7 +630,7 @@ func (client *Client) CreateCerts(request *CreateCertsRequest) (_result *CreateC
 
 // Summary:
 //
-// Connects a cloud service to WAF in cloud native mode. Currently, only ECS and CLB are supported.
+// Connects a cloud service to Web Application Firewall (WAF) in cloud native mode. Currently, only ECS and CLB are supported.
 //
 // @param tmpReq - CreateCloudResourceRequest
 //
@@ -708,7 +708,7 @@ func (client *Client) CreateCloudResourceWithOptions(tmpReq *CreateCloudResource
 
 // Summary:
 //
-// Connects a cloud service to WAF in cloud native mode. Currently, only ECS and CLB are supported.
+// Connects a cloud service to Web Application Firewall (WAF) in cloud native mode. Currently, only ECS and CLB are supported.
 //
 // @param request - CreateCloudResourceRequest
 //
@@ -1006,7 +1006,7 @@ func (client *Client) CreateDefenseResourceGroup(request *CreateDefenseResourceG
 
 // Summary:
 //
-// Create a web core protection rule.
+// Creates a web core protection rule.
 //
 // @param request - CreateDefenseRuleRequest
 //
@@ -1080,7 +1080,7 @@ func (client *Client) CreateDefenseRuleWithOptions(request *CreateDefenseRuleReq
 
 // Summary:
 //
-// Create a web core protection rule.
+// Creates a web core protection rule.
 //
 // @param request - CreateDefenseRuleRequest
 //
@@ -1204,7 +1204,7 @@ func (client *Client) CreateDefenseTemplate(request *CreateDefenseTemplateReques
 
 // Summary:
 //
-// Adds a domain name to a WAF instance by using Website Config for protection.
+// Adds a domain name to a WAF instance for Website Config protection.
 //
 // @param tmpReq - CreateDomainRequest
 //
@@ -1286,7 +1286,7 @@ func (client *Client) CreateDomainWithOptions(tmpReq *CreateDomainRequest, runti
 
 // Summary:
 //
-// Adds a domain name to a WAF instance by using Website Config for protection.
+// Adds a domain name to a WAF instance for Website Config protection.
 //
 // @param request - CreateDomainRequest
 //
@@ -1610,7 +1610,7 @@ func (client *Client) CreateHybridCloudGroup(request *CreateHybridCloudGroupRequ
 
 // Summary:
 //
-// Creates a log delivery configuration for a Web Application Firewall (WAF) instance in a hybrid cloud.
+// Creates a hybrid cloud log forwarding delivery configuration.
 //
 // @param request - CreateLogDeliveryConfigRequest
 //
@@ -1674,7 +1674,7 @@ func (client *Client) CreateLogDeliveryConfigWithOptions(request *CreateLogDeliv
 
 // Summary:
 //
-// Creates a log delivery configuration for a Web Application Firewall (WAF) instance in a hybrid cloud.
+// Creates a hybrid cloud log forwarding delivery configuration.
 //
 // @param request - CreateLogDeliveryConfigRequest
 //
@@ -2644,7 +2644,7 @@ func (client *Client) DeleteDefenseResourceGroup(request *DeleteDefenseResourceG
 
 // Summary:
 //
-// Deletes the specified protection rules.
+// Deletes a protection rule.
 //
 // @param request - DeleteDefenseRuleRequest
 //
@@ -2712,7 +2712,7 @@ func (client *Client) DeleteDefenseRuleWithOptions(request *DeleteDefenseRuleReq
 
 // Summary:
 //
-// Deletes the specified protection rules.
+// Deletes a protection rule.
 //
 // @param request - DeleteDefenseRuleRequest
 //
@@ -4254,7 +4254,7 @@ func (client *Client) DescribeApisecAssetTrend(request *DescribeApisecAssetTrend
 
 // Summary:
 //
-// Retrieves the details of an API security event.
+// Queries the details of an API security event.
 //
 // @param request - DescribeApisecEventDetailRequest
 //
@@ -4322,7 +4322,7 @@ func (client *Client) DescribeApisecEventDetailWithOptions(request *DescribeApis
 
 // Summary:
 //
-// Retrieves the details of an API security event.
+// Queries the details of an API security event.
 //
 // @param request - DescribeApisecEventDetailRequest
 //
@@ -4434,7 +4434,7 @@ func (client *Client) DescribeApisecEventDomainStatistic(request *DescribeApisec
 
 // Summary:
 //
-// Queries a list of API security events.
+// Queries the list of API security events.
 //
 // @param request - DescribeApisecEventsRequest
 //
@@ -4562,7 +4562,7 @@ func (client *Client) DescribeApisecEventsWithOptions(request *DescribeApisecEve
 
 // Summary:
 //
-// Queries a list of API security events.
+// Queries the list of API security events.
 //
 // @param request - DescribeApisecEventsRequest
 //
@@ -4580,7 +4580,7 @@ func (client *Client) DescribeApisecEvents(request *DescribeApisecEventsRequest)
 
 // Summary:
 //
-// Queries the API security examples that are detected by Web Application Firewall (WAF).
+// Queries API security sample information.
 //
 // @param request - DescribeApisecExamplesRequest
 //
@@ -4664,7 +4664,7 @@ func (client *Client) DescribeApisecExamplesWithOptions(request *DescribeApisecE
 
 // Summary:
 //
-// Queries the API security examples that are detected by Web Application Firewall (WAF).
+// Queries API security sample information.
 //
 // @param request - DescribeApisecExamplesRequest
 //
@@ -5698,7 +5698,7 @@ func (client *Client) DescribeBaseRuleChangeLog(request *DescribeBaseRuleChangeL
 
 // Summary:
 //
-// Queries the system rules for Web Application Firewall (WAF) protection.
+// Queries the system rules of Web core protection.
 //
 // @param request - DescribeBaseSystemRulesRequest
 //
@@ -5794,7 +5794,7 @@ func (client *Client) DescribeBaseSystemRulesWithOptions(request *DescribeBaseSy
 
 // Summary:
 //
-// Queries the system rules for Web Application Firewall (WAF) protection.
+// Queries the system rules of Web core protection.
 //
 // @param request - DescribeBaseSystemRulesRequest
 //
@@ -5886,7 +5886,7 @@ func (client *Client) DescribeBotAppKey(request *DescribeBotAppKeyRequest) (_res
 
 // Summary:
 //
-// Queries the labels of bot management rules.
+// Queries the tag information of bot management rules.
 //
 // @param request - DescribeBotRuleLabelsRequest
 //
@@ -5954,7 +5954,7 @@ func (client *Client) DescribeBotRuleLabelsWithOptions(request *DescribeBotRuleL
 
 // Summary:
 //
-// Queries the labels of bot management rules.
+// Queries the tag information of bot management rules.
 //
 // @param request - DescribeBotRuleLabelsRequest
 //
@@ -6202,7 +6202,7 @@ func (client *Client) DescribeChargeModule(request *DescribeChargeModuleRequest)
 
 // Summary:
 //
-// Queries the billing results for Web Application Firewall (WAF).
+// Queries the pricing results of WAF pricing modules.
 //
 // @param request - DescribeChargeResultRequest
 //
@@ -6223,6 +6223,10 @@ func (client *Client) DescribeChargeResultWithOptions(request *DescribeChargeRes
 
 	if !dara.IsNil(request.ChargeModules) {
 		query["ChargeModules"] = request.ChargeModules
+	}
+
+	if !dara.IsNil(request.ChargeUnit) {
+		query["ChargeUnit"] = request.ChargeUnit
 	}
 
 	if !dara.IsNil(request.PayType) {
@@ -6262,7 +6266,7 @@ func (client *Client) DescribeChargeResultWithOptions(request *DescribeChargeRes
 
 // Summary:
 //
-// Queries the billing results for Web Application Firewall (WAF).
+// Queries the pricing results of WAF pricing modules.
 //
 // @param request - DescribeChargeResultRequest
 //
@@ -6280,7 +6284,7 @@ func (client *Client) DescribeChargeResult(request *DescribeChargeResultRequest)
 
 // Summary:
 //
-// Retrieves port details of cloud service instances onboarded to Web Application Firewall (WAF).
+// Queries the port details of cloud service instances that are connected to WAF.
 //
 // @param request - DescribeCloudResourceAccessPortDetailsRequest
 //
@@ -6356,7 +6360,7 @@ func (client *Client) DescribeCloudResourceAccessPortDetailsWithOptions(request 
 
 // Summary:
 //
-// Retrieves port details of cloud service instances onboarded to Web Application Firewall (WAF).
+// Queries the port details of cloud service instances that are connected to WAF.
 //
 // @param request - DescribeCloudResourceAccessPortDetailsRequest
 //
@@ -6448,7 +6452,7 @@ func (client *Client) DescribeCloudResourceAccessedPorts(request *DescribeCloudR
 
 // Summary:
 //
-// Queries a list of resources added to Web Application Firewall (WAF) in cloud native mode.
+// Queries the list of resources connected to WAF in cloud native mode.
 //
 // @param request - DescribeCloudResourceListRequest
 //
@@ -6532,7 +6536,7 @@ func (client *Client) DescribeCloudResourceListWithOptions(request *DescribeClou
 
 // Summary:
 //
-// Queries a list of resources added to Web Application Firewall (WAF) in cloud native mode.
+// Queries the list of resources connected to WAF in cloud native mode.
 //
 // @param request - DescribeCloudResourceListRequest
 //
@@ -7590,7 +7594,7 @@ func (client *Client) DescribeDefenseResourceOwnerUid(request *DescribeDefenseRe
 
 // Summary:
 //
-// Queries the protection templates associated with a protected object or protected object group.
+// Queries the protection templates of a protected object or a protected object group.
 //
 // @param request - DescribeDefenseResourceTemplatesRequest
 //
@@ -7666,7 +7670,7 @@ func (client *Client) DescribeDefenseResourceTemplatesWithOptions(request *Descr
 
 // Summary:
 //
-// Queries the protection templates associated with a protected object or protected object group.
+// Queries the protection templates of a protected object or a protected object group.
 //
 // @param request - DescribeDefenseResourceTemplatesRequest
 //
@@ -7770,7 +7774,7 @@ func (client *Client) DescribeDefenseResources(request *DescribeDefenseResources
 
 // Summary:
 //
-// Retrieves the details of a specified protection rule.
+// Queries a single protection rule.
 //
 // @param request - DescribeDefenseRuleRequest
 //
@@ -7838,7 +7842,7 @@ func (client *Client) DescribeDefenseRuleWithOptions(request *DescribeDefenseRul
 
 // Summary:
 //
-// Retrieves the details of a specified protection rule.
+// Queries a single protection rule.
 //
 // @param request - DescribeDefenseRuleRequest
 //
@@ -8368,7 +8372,7 @@ func (client *Client) DescribeDefenseTemplateValidResources(request *DescribeDef
 
 // Summary:
 //
-// Retrieves a paginated list of protection templates.
+// Queries a list of protection templates by paging.
 //
 // @param request - DescribeDefenseTemplatesRequest
 //
@@ -8460,7 +8464,7 @@ func (client *Client) DescribeDefenseTemplatesWithOptions(request *DescribeDefen
 
 // Summary:
 //
-// Retrieves a paginated list of protection templates.
+// Queries a list of protection templates by paging.
 //
 // @param request - DescribeDefenseTemplatesRequest
 //
@@ -8786,7 +8790,7 @@ func (client *Client) DescribeDomains(request *DescribeDomainsRequest) (_result 
 
 // Summary:
 //
-// Queries the daily bills for WAF pay-as-you-go instances for the last 7 days.
+// Queries the daily bills of a pay-as-you-go WAF instance for the last 7 days.
 //
 // @param request - DescribeElasticBillsRequest
 //
@@ -8846,7 +8850,7 @@ func (client *Client) DescribeElasticBillsWithOptions(request *DescribeElasticBi
 
 // Summary:
 //
-// Queries the daily bills for WAF pay-as-you-go instances for the last 7 days.
+// Queries the daily bills of a pay-as-you-go WAF instance for the last 7 days.
 //
 // @param request - DescribeElasticBillsRequest
 //
@@ -10292,7 +10296,7 @@ func (client *Client) DescribeHybridCloudSdkServers(request *DescribeHybridCloud
 
 // Summary:
 //
-// Queries hybrid cloud server regions, including carriers, continents, and cities.
+// Queries the dictionary of region information supported by hybrid cloud WAF, including ISPs, continents, and cities.
 //
 // @param request - DescribeHybridCloudServerRegionsRequest
 //
@@ -10352,7 +10356,7 @@ func (client *Client) DescribeHybridCloudServerRegionsWithOptions(request *Descr
 
 // Summary:
 //
-// Queries hybrid cloud server regions, including carriers, continents, and cities.
+// Queries the dictionary of region information supported by hybrid cloud WAF, including ISPs, continents, and cities.
 //
 // @param request - DescribeHybridCloudServerRegionsRequest
 //
@@ -11646,7 +11650,7 @@ func (client *Client) DescribePostpayBills(request *DescribePostpayBillsRequest)
 
 // Summary:
 //
-// Queries the elastic pay-as-you-go billing details of a subscription WAF instance, such as burstable QPS.
+// Queries the burstable pay-as-you-go billing details of a subscription WAF instance, such as burstable QPS.
 //
 // @param request - DescribePrepayDailyBillsRequest
 //
@@ -11706,7 +11710,7 @@ func (client *Client) DescribePrepayDailyBillsWithOptions(request *DescribePrepa
 
 // Summary:
 //
-// Queries the elastic pay-as-you-go billing details of a subscription WAF instance, such as burstable QPS.
+// Queries the burstable pay-as-you-go billing details of a subscription WAF instance, such as burstable QPS.
 //
 // @param request - DescribePrepayDailyBillsRequest
 //
@@ -11724,7 +11728,7 @@ func (client *Client) DescribePrepayDailyBills(request *DescribePrepayDailyBills
 
 // Summary:
 //
-// Queries synchronized cloud service instances.
+// Queries the list of synchronized cloud service assets.
 //
 // @param request - DescribeProductInstancesRequest
 //
@@ -11824,7 +11828,7 @@ func (client *Client) DescribeProductInstancesWithOptions(request *DescribeProdu
 
 // Summary:
 //
-// Queries synchronized cloud service instances.
+// Queries the list of synchronized cloud service assets.
 //
 // @param request - DescribeProductInstancesRequest
 //
@@ -12244,7 +12248,7 @@ func (client *Client) DescribeResourceLogFieldConfig(request *DescribeResourceLo
 
 // Summary:
 //
-// Queries the log collection status of protected objects in a Web Application Firewall (WAF) instance.
+// Queries the log status of protected objects.
 //
 // @param request - DescribeResourceLogStatusRequest
 //
@@ -12300,7 +12304,7 @@ func (client *Client) DescribeResourceLogStatusWithOptions(request *DescribeReso
 
 // Summary:
 //
-// Queries the log collection status of protected objects in a Web Application Firewall (WAF) instance.
+// Queries the log status of protected objects.
 //
 // @param request - DescribeResourceLogStatusRequest
 //
@@ -14654,7 +14658,7 @@ func (client *Client) DescribeTemplateResourceCount(request *DescribeTemplateRes
 
 // Summary:
 //
-// Queries the resources attached to a protection template.
+// Queries the resources bound to a protection template.
 //
 // @param request - DescribeTemplateResourcesRequest
 //
@@ -14730,7 +14734,7 @@ func (client *Client) DescribeTemplateResourcesWithOptions(request *DescribeTemp
 
 // Summary:
 //
-// Queries the resources attached to a protection template.
+// Queries the resources bound to a protection template.
 //
 // @param request - DescribeTemplateResourcesRequest
 //
@@ -15322,7 +15326,7 @@ func (client *Client) DescribeUserAsset(request *DescribeUserAssetRequest) (_res
 
 // Summary:
 //
-// Queries the trend of API security attacks.
+// Queries the attack trend of API security.
 //
 // @param request - DescribeUserEventTrendRequest
 //
@@ -15382,7 +15386,7 @@ func (client *Client) DescribeUserEventTrendWithOptions(request *DescribeUserEve
 
 // Summary:
 //
-// Queries the trend of API security attacks.
+// Queries the attack trend of API security.
 //
 // @param request - DescribeUserEventTrendRequest
 //
@@ -15400,7 +15404,7 @@ func (client *Client) DescribeUserEventTrend(request *DescribeUserEventTrendRequ
 
 // Summary:
 //
-// Queries the types and statistics of user security events.
+// Queries the security event types and statistics for API security users.
 //
 // @param request - DescribeUserEventTypeRequest
 //
@@ -15472,7 +15476,7 @@ func (client *Client) DescribeUserEventTypeWithOptions(request *DescribeUserEven
 
 // Summary:
 //
-// Queries the types and statistics of user security events.
+// Queries the security event types and statistics for API security users.
 //
 // @param request - DescribeUserEventTypeRequest
 //
@@ -16570,7 +16574,7 @@ func (client *Client) ModifyApisecApiResource(request *ModifyApisecApiResourceRe
 
 // Summary:
 //
-// Modifies the status of a batch of API security events.
+// Modifies the statuses of multiple API security events in a batch.
 //
 // @param request - ModifyApisecEventsRequest
 //
@@ -16642,7 +16646,7 @@ func (client *Client) ModifyApisecEventsWithOptions(request *ModifyApisecEventsR
 
 // Summary:
 //
-// Modifies the status of a batch of API security events.
+// Modifies the statuses of multiple API security events in a batch.
 //
 // @param request - ModifyApisecEventsRequest
 //
@@ -16992,7 +16996,7 @@ func (client *Client) ModifyApisecStatus(request *ModifyApisecStatusRequest) (_r
 
 // Summary:
 //
-// Modifies the configuration of a cloud service that is connected to Web Application Firewall (WAF).
+// Modifies the configuration of a cloud service that is connected to WAF.
 //
 // @param tmpReq - ModifyCloudResourceRequest
 //
@@ -17066,7 +17070,7 @@ func (client *Client) ModifyCloudResourceWithOptions(tmpReq *ModifyCloudResource
 
 // Summary:
 //
-// Modifies the configuration of a cloud service that is connected to Web Application Firewall (WAF).
+// Modifies the configuration of a cloud service that is connected to WAF.
 //
 // @param request - ModifyCloudResourceRequest
 //
@@ -17084,7 +17088,7 @@ func (client *Client) ModifyCloudResource(request *ModifyCloudResourceRequest) (
 
 // Summary:
 //
-// Modifies the certificate for a resource managed by WAF in cloud native mode.
+// Modifies the certificate for a cloud native mode resource.
 //
 // @param request - ModifyCloudResourceCertRequest
 //
@@ -17152,7 +17156,7 @@ func (client *Client) ModifyCloudResourceCertWithOptions(request *ModifyCloudRes
 
 // Summary:
 //
-// Modifies the certificate for a resource managed by WAF in cloud native mode.
+// Modifies the certificate for a cloud native mode resource.
 //
 // @param request - ModifyCloudResourceCertRequest
 //
@@ -18020,7 +18024,7 @@ func (client *Client) ModifyDefenseTemplateStatus(request *ModifyDefenseTemplate
 
 // Summary:
 //
-// Updates a CNAME-based domain name onboarded to Web Application Firewall (WAF).
+// Modifies a CNAME-based domain name.
 //
 // @param tmpReq - ModifyDomainRequest
 //
@@ -18098,7 +18102,7 @@ func (client *Client) ModifyDomainWithOptions(tmpReq *ModifyDomainRequest, runti
 
 // Summary:
 //
-// Updates a CNAME-based domain name onboarded to Web Application Firewall (WAF).
+// Modifies a CNAME-based domain name.
 //
 // @param request - ModifyDomainRequest
 //
@@ -18116,7 +18120,7 @@ func (client *Client) ModifyDomain(request *ModifyDomainRequest) (_result *Modif
 
 // Summary:
 //
-// Modifies the certificate that is associated with a domain name added to a Web Application Firewall (WAF) instance in CNAME record mode.
+// Modifies the certificate of a domain name.
 //
 // @param request - ModifyDomainCertRequest
 //
@@ -18188,7 +18192,7 @@ func (client *Client) ModifyDomainCertWithOptions(request *ModifyDomainCertReque
 
 // Summary:
 //
-// Modifies the certificate that is associated with a domain name added to a Web Application Firewall (WAF) instance in CNAME record mode.
+// Modifies the certificate of a domain name.
 //
 // @param request - ModifyDomainCertRequest
 //
@@ -19484,7 +19488,7 @@ func (client *Client) ModifyResourceLogFieldConfig(request *ModifyResourceLogFie
 
 // Summary:
 //
-// Enables or disables the log collection feature for a protected object.
+// Modifies the log status of a protected object.
 //
 // @param tmpReq - ModifyResourceLogStatusRequest
 //
@@ -19558,7 +19562,7 @@ func (client *Client) ModifyResourceLogStatusWithOptions(tmpReq *ModifyResourceL
 
 // Summary:
 //
-// Enables or disables the log collection feature for a protected object.
+// Modifies the log status of a protected object.
 //
 // @param request - ModifyResourceLogStatusRequest
 //
@@ -19838,7 +19842,7 @@ func (client *Client) ModifyUserWafLogStatus(request *ModifyUserWafLogStatusRequ
 
 // Summary:
 //
-// Re-registers a cloud service with WAF. This operation is used only when the cloud native mode status is protection exception.
+// Re-connects a cloud service to WAF. This operation is used only when the cloud native mode connection status is protection exception.
 //
 // @param request - ReCreateCloudResourceRequest
 //
@@ -19906,7 +19910,7 @@ func (client *Client) ReCreateCloudResourceWithOptions(request *ReCreateCloudRes
 
 // Summary:
 //
-// Re-registers a cloud service with WAF. This operation is used only when the cloud native mode status is protection exception.
+// Re-connects a cloud service to WAF. This operation is used only when the cloud native mode connection status is protection exception.
 //
 // @param request - ReCreateCloudResourceRequest
 //

@@ -14,7 +14,7 @@ type iModifyCloudResourceCertResponseBody interface {
 }
 
 type ModifyCloudResourceCertResponseBody struct {
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//

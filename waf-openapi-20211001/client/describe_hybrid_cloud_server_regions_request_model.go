@@ -22,9 +22,9 @@ type iDescribeHybridCloudServerRegionsRequest interface {
 }
 
 type DescribeHybridCloudServerRegionsRequest struct {
-	// The ID of the Web Application Firewall (WAF) instance.
+	// Instance ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -32,13 +32,13 @@ type DescribeHybridCloudServerRegionsRequest struct {
 	//
 	// waf_v3prepaid_public_cn-5yd****7009
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region code. Use this parameter to filter results by a specific continent or area.	Notice: This parameter is required when `RegionType` is set to `region`. Set the value to the code of the continent that you want to query.
+	// The region code.	Notice: This parameter is required when RegionType is set to region. Set this parameter to the code of the selected continent.
 	//
 	// example:
 	//
 	// 410
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-	// The region in which the WAF instance resides. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -48,13 +48,7 @@ type DescribeHybridCloudServerRegionsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of the region. Valid values:
-	//
-	// - **operator**: queries carriers.
-	//
-	// - **continents**: queries continents.
-	//
-	// - **region**: queries cities.
+	// The region type.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +56,7 @@ type DescribeHybridCloudServerRegionsRequest struct {
 	//
 	// region
 	RegionType *string `json:"RegionType,omitempty" xml:"RegionType,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//

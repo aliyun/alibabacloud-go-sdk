@@ -22,27 +22,27 @@ type iDescribeBotRuleLabelsResponseBody interface {
 }
 
 type DescribeBotRuleLabelsResponseBody struct {
-	// The maximum number of entries returned per page. Valid values: 1 to 200. Default value: 20.
+	// The number of entries per page for paging. Valid values: 1 to 200. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results. This parameter is returned if a next page exists.
+	// The pagination token for the next page. If a next page exists, this field has a return value.
 	//
-	// > If a value is returned for this parameter, it indicates that more results are available. Use the returned **NextToken*	- value in the next request to retrieve the next page of results. Repeat this process until no value is returned for this parameter. This indicates that all results have been retrieved.
+	// > If this parameter has a return value, a next page exists. You can use the returned **NextToken*	- as a request parameter to obtain the data on the next page. Repeat this process until no value is returned, which indicates that all data has been retrieved.
 	//
 	// example:
 	//
 	// AAAAAGBgV9tolsLfijC4wam2htS*****D/46H3X2wIS
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// D7861F61-5B61-46CE-A47C-6B19****5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of bot management rule labels.
+	// The list of bot management rule tags.
 	RuleLabels []*DescribeBotRuleLabelsResponseBodyRuleLabels `json:"RuleLabels,omitempty" xml:"RuleLabels,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//
@@ -119,35 +119,79 @@ func (s *DescribeBotRuleLabelsResponseBody) Validate() error {
 }
 
 type DescribeBotRuleLabelsResponseBodyRuleLabels struct {
-	// The bot behavior that corresponds to the rule label. Valid values:
+	// The crawler behavior corresponding to the rule tag.
 	//
-	// - **malicious**: malicious bot.
+	// - **malicious**: malicious crawler.
 	//
-	// - **suspicious**: suspected bot.
+	// - **suspicious**: suspected crawler.
 	//
-	// - **normal**: normal bot.
+	// - **normal**: normal crawler.
 	//
 	// example:
 	//
 	// malicious
 	BotBehavior *string `json:"BotBehavior,omitempty" xml:"BotBehavior,omitempty"`
-	// The key of the bot management rule label.
+	// The default action. Valid values:
+	//
+	// - **block**: Block.
+	//
+	// - **monitor**: Monitor.
+	//
+	// - **js**: JavaScript verification.
+	//
+	// - **captcha**: Slider CAPTCHA.
+	//
+	// - **captcha_strict**: Strict slider CAPTCHA.
+	//
+	// - **bypass**: Allow.
+	//
+	// example:
+	//
+	// block
+	DefaultAction *string `json:"DefaultAction,omitempty" xml:"DefaultAction,omitempty"`
+	// The default configurations corresponding to the label.
+	//
+	// example:
+	//
+	// {"crawlerStatusMap":{"360":1,"bytedance":1}}
+	DefaultConfig *string `json:"DefaultConfig,omitempty" xml:"DefaultConfig,omitempty"`
+	// The default status of the tag rule.
+	//
+	// - **1**: The rule is enabled.
+	//
+	// - **0**: The rule is disabled.
+	//
+	// example:
+	//
+	// 1
+	DefaultStatus *int32 `json:"DefaultStatus,omitempty" xml:"DefaultStatus,omitempty"`
+	// The bot management rule tag.
 	//
 	// example:
 	//
 	// malicious_crawler_python
 	LabelKey *string `json:"LabelKey,omitempty" xml:"LabelKey,omitempty"`
-	// The type of the bot rule label.
+	// The tag status.
+	//
+	// - **online**: Online.
+	//
+	// - **wait_offline**: Pending offline.
+	//
+	// example:
+	//
+	// online
+	LabelStatus *string `json:"LabelStatus,omitempty" xml:"LabelStatus,omitempty"`
+	// The type of the bot rule tag.
 	//
 	// example:
 	//
 	// human_machine_challenge
 	LabelType *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
-	// The bot management scenarios to which the rule belongs. Multiple scenarios are separated by commas (,). Valid values:
+	// The set of bot management protection scenarios to which the rule belongs. Multiple scenarios are separated by commas (,). Valid values:
 	//
-	// - **web**: web protection.
+	// - **web**: Web protection scenario.
 	//
-	// - **app**: app protection.
+	// - **app**: App protection scenario.
 	//
 	// example:
 	//
@@ -167,8 +211,24 @@ func (s *DescribeBotRuleLabelsResponseBodyRuleLabels) GetBotBehavior() *string {
 	return s.BotBehavior
 }
 
+func (s *DescribeBotRuleLabelsResponseBodyRuleLabels) GetDefaultAction() *string {
+	return s.DefaultAction
+}
+
+func (s *DescribeBotRuleLabelsResponseBodyRuleLabels) GetDefaultConfig() *string {
+	return s.DefaultConfig
+}
+
+func (s *DescribeBotRuleLabelsResponseBodyRuleLabels) GetDefaultStatus() *int32 {
+	return s.DefaultStatus
+}
+
 func (s *DescribeBotRuleLabelsResponseBodyRuleLabels) GetLabelKey() *string {
 	return s.LabelKey
+}
+
+func (s *DescribeBotRuleLabelsResponseBodyRuleLabels) GetLabelStatus() *string {
+	return s.LabelStatus
 }
 
 func (s *DescribeBotRuleLabelsResponseBodyRuleLabels) GetLabelType() *string {
@@ -184,8 +244,28 @@ func (s *DescribeBotRuleLabelsResponseBodyRuleLabels) SetBotBehavior(v string) *
 	return s
 }
 
+func (s *DescribeBotRuleLabelsResponseBodyRuleLabels) SetDefaultAction(v string) *DescribeBotRuleLabelsResponseBodyRuleLabels {
+	s.DefaultAction = &v
+	return s
+}
+
+func (s *DescribeBotRuleLabelsResponseBodyRuleLabels) SetDefaultConfig(v string) *DescribeBotRuleLabelsResponseBodyRuleLabels {
+	s.DefaultConfig = &v
+	return s
+}
+
+func (s *DescribeBotRuleLabelsResponseBodyRuleLabels) SetDefaultStatus(v int32) *DescribeBotRuleLabelsResponseBodyRuleLabels {
+	s.DefaultStatus = &v
+	return s
+}
+
 func (s *DescribeBotRuleLabelsResponseBodyRuleLabels) SetLabelKey(v string) *DescribeBotRuleLabelsResponseBodyRuleLabels {
 	s.LabelKey = &v
+	return s
+}
+
+func (s *DescribeBotRuleLabelsResponseBodyRuleLabels) SetLabelStatus(v string) *DescribeBotRuleLabelsResponseBodyRuleLabels {
+	s.LabelStatus = &v
 	return s
 }
 

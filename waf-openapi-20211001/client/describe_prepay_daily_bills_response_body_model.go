@@ -18,7 +18,7 @@ type iDescribePrepayDailyBillsResponseBody interface {
 }
 
 type DescribePrepayDailyBillsResponseBody struct {
-	// The list of WAF elastic billing records.
+	// The list of WAF burstable billing records.
 	Bills []*DescribePrepayDailyBillsResponseBodyBills `json:"Bills,omitempty" xml:"Bills,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -89,7 +89,7 @@ type DescribePrepayDailyBillsResponseBodyBills struct {
 	//
 	// 100
 	ElasticQpsSetValue *int64 `json:"ElasticQpsSetValue,omitempty" xml:"ElasticQpsSetValue,omitempty"`
-	// The end time of the billing period. The value is a UNIX timestamp (UTC). Unit: seconds.
+	// The end time of the billing record. The value is a UNIX timestamp (UTC). Unit: seconds.
 	//
 	// example:
 	//
@@ -99,15 +99,29 @@ type DescribePrepayDailyBillsResponseBodyBills struct {
 	//
 	// - **0**: Normal.
 	//
-	// - **1**: Overused.
+	// - **1**: overused.
 	//
-	// - **2**: Sandboxed.
+	// - **2**: sandboxed.
 	//
 	// example:
 	//
 	// 0
-	ExceedStatus           *int32 `json:"ExceedStatus,omitempty" xml:"ExceedStatus,omitempty"`
-	ExtensionPlugin        *bool  `json:"ExtensionPlugin,omitempty" xml:"ExtensionPlugin,omitempty"`
+	ExceedStatus *int32 `json:"ExceedStatus,omitempty" xml:"ExceedStatus,omitempty"`
+	// Indicates whether the extension plug-in is enabled. Valid values:
+	//
+	// - **true**: The extension plug-in is enabled.
+	//
+	// - **false**: The extension plug-in is not enabled.
+	//
+	// example:
+	//
+	// true
+	ExtensionPlugin *bool `json:"ExtensionPlugin,omitempty" xml:"ExtensionPlugin,omitempty"`
+	// The number of requests processed by the plug-in.
+	//
+	// example:
+	//
+	// 100
 	ExtensionPluginRequest *int64 `json:"ExtensionPluginRequest,omitempty" xml:"ExtensionPluginRequest,omitempty"`
 	// The maximum QPS during the current period.
 	//
@@ -115,7 +129,7 @@ type DescribePrepayDailyBillsResponseBodyBills struct {
 	//
 	// 600
 	MaxQps *int64 `json:"MaxQps,omitempty" xml:"MaxQps,omitempty"`
-	// The unit price for elastic billing. Unit: CNY for the China site and USD for the international site.
+	// The unit price for burstable billing. Unit: CNY for the China site and USD for the international site.
 	//
 	// example:
 	//
@@ -149,7 +163,7 @@ type DescribePrepayDailyBillsResponseBodyBills struct {
 	//
 	// 100
 	RiskTraffic *int64 `json:"RiskTraffic,omitempty" xml:"RiskTraffic,omitempty"`
-	// The start time of the billing period. The value is a UNIX timestamp (UTC). Unit: seconds.
+	// The start time of the billing record. The value is a UNIX timestamp (UTC). Unit: seconds.
 	//
 	// example:
 	//
@@ -161,7 +175,7 @@ type DescribePrepayDailyBillsResponseBodyBills struct {
 	//
 	// 0
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
-	// The elastic billing type.
+	// The burstable billing type.
 	Type []*string `json:"Type,omitempty" xml:"Type,omitempty" type:"Repeated"`
 }
 

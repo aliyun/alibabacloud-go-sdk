@@ -13,6 +13,8 @@ type iDescribeChargeResultRequest interface {
 	GetChargeCycle() *string
 	SetChargeModules(v []*DescribeChargeResultRequestChargeModules) *DescribeChargeResultRequest
 	GetChargeModules() []*DescribeChargeResultRequestChargeModules
+	SetChargeUnit(v string) *DescribeChargeResultRequest
+	GetChargeUnit() *string
 	SetPayType(v string) *DescribeChargeResultRequest
 	GetPayType() *string
 	SetRegionId(v string) *DescribeChargeResultRequest
@@ -22,25 +24,31 @@ type iDescribeChargeResultRequest interface {
 }
 
 type DescribeChargeResultRequest struct {
-	// The billing cycle for the WAF instance. Valid values:
+	// The billing cycle for the calculation. Valid values:
 	//
-	// - **Year**: yearly billing cycle.
+	// - **Year**: Calculates the billing result for one year.
 	//
-	// - **Month**: monthly billing cycle.
+	// - **Month**: Calculates the billing result for one month.
 	//
-	// - **Day**: daily billing cycle.
+	// - **Day**: Calculates the billing result for one day.
 	//
 	// example:
 	//
 	// Day
 	ChargeCycle *string `json:"ChargeCycle,omitempty" xml:"ChargeCycle,omitempty"`
-	// The billing modules to calculate.
+	// The list of billing modules to calculate.
 	//
 	// This parameter is required.
 	ChargeModules []*DescribeChargeResultRequestChargeModules `json:"ChargeModules,omitempty" xml:"ChargeModules,omitempty" type:"Repeated"`
-	// The billing method of the WAF instance. Valid value:
+	// The metering unit.
 	//
-	// - **POSTPAY**: pay-as-you-go.
+	// example:
+	//
+	// SeCU
+	ChargeUnit *string `json:"ChargeUnit,omitempty" xml:"ChargeUnit,omitempty"`
+	// The billing type of the instance. Valid values:
+	//
+	// - **POSTPAY**: pay-as-you-go WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +66,7 @@ type DescribeChargeResultRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The Alibaba Cloud resource group ID.
 	//
 	// example:
 	//
@@ -82,6 +90,10 @@ func (s *DescribeChargeResultRequest) GetChargeModules() []*DescribeChargeResult
 	return s.ChargeModules
 }
 
+func (s *DescribeChargeResultRequest) GetChargeUnit() *string {
+	return s.ChargeUnit
+}
+
 func (s *DescribeChargeResultRequest) GetPayType() *string {
 	return s.PayType
 }
@@ -101,6 +113,11 @@ func (s *DescribeChargeResultRequest) SetChargeCycle(v string) *DescribeChargeRe
 
 func (s *DescribeChargeResultRequest) SetChargeModules(v []*DescribeChargeResultRequestChargeModules) *DescribeChargeResultRequest {
 	s.ChargeModules = v
+	return s
+}
+
+func (s *DescribeChargeResultRequest) SetChargeUnit(v string) *DescribeChargeResultRequest {
+	s.ChargeUnit = &v
 	return s
 }
 
@@ -133,13 +150,13 @@ func (s *DescribeChargeResultRequest) Validate() error {
 }
 
 type DescribeChargeResultRequestChargeModules struct {
-	// The ID of the billing module.
+	// The pricing module identifier.
 	//
 	// example:
 	//
 	// domainCount
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
-	// The usage amount of the billing module.
+	// The usage of the pricing module.
 	//
 	// example:
 	//

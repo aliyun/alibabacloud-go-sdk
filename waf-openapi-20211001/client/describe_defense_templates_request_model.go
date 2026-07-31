@@ -38,7 +38,7 @@ type iDescribeDefenseTemplatesRequest interface {
 }
 
 type DescribeDefenseTemplatesRequest struct {
-	// The protection scenario. For more information, see the description of the **DefenseScene*	- parameter in the [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html) topic.
+	// The protection scenario. For more information, see the **DefenseScene*	- parameter in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type DescribeDefenseTemplatesRequest struct {
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
 	// The sub-scenario of the protection template. Valid values:
 	//
-	// - **web**: the web protection template for bot management.
+	// - **web**: BOT management web protection scenario template.
 	//
-	// - **app**: the app protection template for bot management.
+	// - **app**: BOT management app protection scenario template.
 	//
-	// - **basic**: the basic protection template for bot management.
+	// - **basic**: BOT management basic protection template.
 	//
-	// - **bot_custom_acl**: the advanced custom protection rule template for bot management.
+	// - **bot_custom_acl**: BOT management advanced custom rule protection template.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type DescribeDefenseTemplatesRequest struct {
 	DefenseSubScene *string `json:"DefenseSubScene,omitempty" xml:"DefenseSubScene,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -68,19 +68,19 @@ type DescribeDefenseTemplatesRequest struct {
 	//
 	// waf_v3prepaid_public_cn-pe33b****03
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number to return in a paging query request. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **20**.
+	// The number of entries per page in a paging query. Default value: **20**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -90,29 +90,23 @@ type DescribeDefenseTemplatesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the protected object or protected object group, or the ID of the protected asset.
+	// The name of the protected object, protection group, or the ID of the protected asset.
 	//
-	// > You must specify the Resource and ResourceType parameters to filter query results.
+	// > This parameter is used together with the ResourceType parameter. Both parameters must have values for filtering to take effect.
 	//
 	// example:
 	//
 	// ruiqiu.cc-ecs
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
 	// rg-acfmvyknl****fa
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The type of the protected resource. Valid values:
+	// The type of the protected resource.
 	//
-	// - **single*	- (default): a protected object.
-	//
-	// - **group**: a protected object group.
-	//
-	// - **asset**: a protected asset.
-	//
-	// > You must specify the Resource and ResourceType parameters to filter query results.
+	// > This parameter is used together with the Resource parameter. Both parameters must have values for filtering to take effect.
 	//
 	// example:
 	//
@@ -124,7 +118,7 @@ type DescribeDefenseTemplatesRequest struct {
 	//
 	// 39395
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The IDs of the protection templates that you want to query. You can specify this parameter to query the protected objects for which multiple protection templates take effect. Separate multiple template IDs with commas (,).
+	// The IDs of the protection templates to query. You can specify this parameter to query the protected resources associated with multiple protection templates. Separate multiple template IDs with commas (,).
 	//
 	// example:
 	//
@@ -136,11 +130,11 @@ type DescribeDefenseTemplatesRequest struct {
 	//
 	// test
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The type of the protection template that you want to create. Valid values:
+	// The templatetype of the protection template. Valid values:
 	//
-	// - **user_default**: default protection template.
+	// - **user_default**: user default protection.
 	//
-	// - **user_custom**: custom protection template.
+	// - **user_custom**: user custom protection.
 	//
 	// example:
 	//

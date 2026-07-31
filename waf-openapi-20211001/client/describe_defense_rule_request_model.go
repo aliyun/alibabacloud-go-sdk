@@ -26,21 +26,15 @@ type iDescribeDefenseRuleRequest interface {
 }
 
 type DescribeDefenseRuleRequest struct {
-	// The type of the protection rule. Valid values:
-	//
-	// - **template*	- (default): a protection rule template.
-	//
-	// - **resource**: a rule for a protected object.
-	//
-	// - **global**: a global rule.
+	// The type of the protection rule.
 	//
 	// example:
 	//
 	// template
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// Instance ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of your current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +42,7 @@ type DescribeDefenseRuleRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -58,7 +52,7 @@ type DescribeDefenseRuleRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The protected object to which the protection rule applies.
+	// The protected object associated with the rule to query.
 	//
 	// > This parameter is required only when **DefenseType*	- is set to **resource**.
 	//
@@ -72,7 +66,7 @@ type DescribeDefenseRuleRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The ID of the protection rule.
+	// The ID of the protection rule to query.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +74,7 @@ type DescribeDefenseRuleRequest struct {
 	//
 	// 20026192
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The ID of the protection rule template.
+	// The ID of the protection template to query.
 	//
 	// > This parameter is required only when **DefenseType*	- is set to **template**.
 	//

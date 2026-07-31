@@ -30,10 +30,6 @@ type iCreateDomainShrinkRequest interface {
 type CreateDomainShrinkRequest struct {
 	// The access type of the WAF instance. Valid values:
 	//
-	// - **share*	- (default): CNAME access.
-	//
-	// - **hybrid_cloud_cname**: hybrid cloud CNAME access.
-	//
 	// example:
 	//
 	// share
@@ -47,8 +43,6 @@ type CreateDomainShrinkRequest struct {
 	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the WAF instance.
-	//
-	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -64,11 +58,7 @@ type CreateDomainShrinkRequest struct {
 	//
 	// This parameter is required.
 	RedirectShrink *string `json:"Redirect,omitempty" xml:"Redirect,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
-	//
-	// - **cn-hangzhou**: the Chinese mainland.
-	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// The region where the WAF instance resides. Valid values:
 	//
 	// This parameter is required.
 	//
@@ -82,7 +72,7 @@ type CreateDomainShrinkRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The tag list, which contains a maximum of 20 items.
+	// The tag list, which contains up to 20 items.
 	Tag []*CreateDomainShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 

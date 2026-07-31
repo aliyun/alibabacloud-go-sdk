@@ -34,21 +34,15 @@ type ModifyDefenseRuleRequest struct {
 	//
 	// waf_group
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
-	// The type of the protection rule. Valid values:
-	//
-	// - **template*	- (default): a template protection rule.
-	//
-	// - **resource**: a rule for a specific protected object.
-	//
-	// - **global**: a global rule.
+	// The type of the protection rule.
 	//
 	// example:
 	//
 	// template
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// Instance ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of your WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +50,7 @@ type ModifyDefenseRuleRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -66,7 +60,7 @@ type ModifyDefenseRuleRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The protected object for which you want to modify the rule.
+	// The protected object associated with the rule to modify.
 	//
 	// > This parameter is required only when **DefenseType*	- is set to **resource**.
 	//
@@ -74,17 +68,17 @@ type ModifyDefenseRuleRequest struct {
 	//
 	// rencs***-waf
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The details of the protection rule, in a JSON string format. Specify the rule ID and the configuration of the protection rule to modify. The details include the following:
+	// The details of the protection rule. The value is a string that is converted from a JSON object constructed by a series of parameters. When you configure this parameter, you must specify the rule ID and the protection rule configuration to modify. The following parameters are included:
 	//
-	// - **id**: The ID of the rule. This parameter is required. Data type: Long.
+	// - **id**: Long | Required | The rule ID.
 	//
-	// - Configuration of the protection rule: The parameters are the same as the **Rules*	- parameter of the [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html) operation. For more information, see the description of the protection rule parameters in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
+	// - Protection rule configuration: Same as the **Rules*	- parameter of the **CreateDefenseRule*	- operation. For more information, see the **protection rule parameter description*	- in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
 	//
 	// This parameter is required.
 	//
@@ -104,7 +98,7 @@ type ModifyDefenseRuleRequest struct {
 	//
 	// ]
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	// The ID of the protection template.
+	// The ID of the protection rule template.
 	//
 	// > This parameter is required only when **DefenseType*	- is set to **template**.
 	//

@@ -13,12 +13,14 @@ type iDescribeChargeResultResponseBody interface {
 	GetModuleDetails() []*DescribeChargeResultResponseBodyModuleDetails
 	SetRequestId(v string) *DescribeChargeResultResponseBody
 	GetRequestId() *string
+	SetTotalCredit(v float64) *DescribeChargeResultResponseBody
+	GetTotalCredit() *float64
 	SetTotalSeCu(v float64) *DescribeChargeResultResponseBody
 	GetTotalSeCu() *float64
 }
 
 type DescribeChargeResultResponseBody struct {
-	// The billing calculation results for each module.
+	// The calculation results.
 	ModuleDetails []*DescribeChargeResultResponseBodyModuleDetails `json:"ModuleDetails,omitempty" xml:"ModuleDetails,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +28,13 @@ type DescribeChargeResultResponseBody struct {
 	//
 	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of calculated Security Capacity Units (SeCUs).
+	// The total number of calculated Credits.
+	//
+	// example:
+	//
+	// 0
+	TotalCredit *float64 `json:"TotalCredit,omitempty" xml:"TotalCredit,omitempty"`
+	// The total number of calculated SeCUs.
 	//
 	// example:
 	//
@@ -50,6 +58,10 @@ func (s *DescribeChargeResultResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *DescribeChargeResultResponseBody) GetTotalCredit() *float64 {
+	return s.TotalCredit
+}
+
 func (s *DescribeChargeResultResponseBody) GetTotalSeCu() *float64 {
 	return s.TotalSeCu
 }
@@ -61,6 +73,11 @@ func (s *DescribeChargeResultResponseBody) SetModuleDetails(v []*DescribeChargeR
 
 func (s *DescribeChargeResultResponseBody) SetRequestId(v string) *DescribeChargeResultResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeChargeResultResponseBody) SetTotalCredit(v float64) *DescribeChargeResultResponseBody {
+	s.TotalCredit = &v
 	return s
 }
 
@@ -83,13 +100,19 @@ func (s *DescribeChargeResultResponseBody) Validate() error {
 }
 
 type DescribeChargeResultResponseBodyModuleDetails struct {
-	// The ID of the billing module.
+	// The number of Credits for the pricing module.
+	//
+	// example:
+	//
+	// 0
+	Credit *float64 `json:"Credit,omitempty" xml:"Credit,omitempty"`
+	// The pricing module identifier.
 	//
 	// example:
 	//
 	// domainCount
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
-	// The number of SeCUs for the billing module.
+	// The number of SeCUs for the pricing module.
 	//
 	// example:
 	//
@@ -105,12 +128,21 @@ func (s DescribeChargeResultResponseBodyModuleDetails) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeChargeResultResponseBodyModuleDetails) GetCredit() *float64 {
+	return s.Credit
+}
+
 func (s *DescribeChargeResultResponseBodyModuleDetails) GetModuleCode() *string {
 	return s.ModuleCode
 }
 
 func (s *DescribeChargeResultResponseBodyModuleDetails) GetSeCu() *float64 {
 	return s.SeCu
+}
+
+func (s *DescribeChargeResultResponseBodyModuleDetails) SetCredit(v float64) *DescribeChargeResultResponseBodyModuleDetails {
+	s.Credit = &v
+	return s
 }
 
 func (s *DescribeChargeResultResponseBodyModuleDetails) SetModuleCode(v string) *DescribeChargeResultResponseBodyModuleDetails {

@@ -16,13 +16,13 @@ type iDescribeResourceLogStatusResponseBody interface {
 }
 
 type DescribeResourceLogStatusResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0DABF8AB-2321-5F8D-A8D7-922D757FBFFE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The log status information of protected objects.
+	// The returned result.
 	Result []*DescribeResourceLogStatusResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -66,24 +66,38 @@ func (s *DescribeResourceLogStatusResponseBody) Validate() error {
 }
 
 type DescribeResourceLogStatusResponseBodyResult struct {
-	// The name of the protected object.
+	// The queried protected object.
 	//
 	// example:
 	//
 	// alb-wewbb23dfsetetcic****
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// Indicates whether log collection is enabled for the protected object. Valid values:
+	// The log enabling status of the protected object. Valid values:
 	//
-	// - **true**: Log collection is enabled.
 	//
-	// - **false**: Log collection is disabled.
+	//
+	// - **true**: Logging is enabled.
+	//
+	// - **false**: Logging is disabled.
 	//
 	// example:
 	//
 	// true
-	Status      *bool                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The Tracing Analysis configuration.
 	TraceConfig *DescribeResourceLogStatusResponseBodyResultTraceConfig `json:"TraceConfig,omitempty" xml:"TraceConfig,omitempty" type:"Struct"`
-	TraceStatus *bool                                                   `json:"TraceStatus,omitempty" xml:"TraceStatus,omitempty"`
+	// The Tracing Analysis status. Valid values:
+	//
+	//
+	//
+	// - **true**: Tracing Analysis is enabled.
+	//
+	// - **false**: Tracing Analysis is shutdown.
+	//
+	// example:
+	//
+	// true
+	TraceStatus *bool `json:"TraceStatus,omitempty" xml:"TraceStatus,omitempty"`
 }
 
 func (s DescribeResourceLogStatusResponseBodyResult) String() string {
@@ -140,8 +154,18 @@ func (s *DescribeResourceLogStatusResponseBodyResult) Validate() error {
 }
 
 type DescribeResourceLogStatusResponseBodyResultTraceConfig struct {
-	RatePerMille *int32  `json:"RatePerMille,omitempty" xml:"RatePerMille,omitempty"`
-	Workspace    *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	// The per-mille sampling ratio for Tracing Analysis.
+	//
+	// example:
+	//
+	// 90
+	RatePerMille *int32 `json:"RatePerMille,omitempty" xml:"RatePerMille,omitempty"`
+	// The Hybrid Cloud Monitoring 2.0 workspace.
+	//
+	// example:
+	//
+	// cms-test
+	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s DescribeResourceLogStatusResponseBodyResultTraceConfig) String() string {

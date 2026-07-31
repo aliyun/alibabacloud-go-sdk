@@ -30,23 +30,19 @@ type iDescribeUserEventTypeRequest interface {
 type DescribeUserEventTypeRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
-	// > This parameter applies only to hybrid cloud scenarios. Call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to obtain information about hybrid cloud clusters.
+	// > This parameter applies only to hybrid cloud scenarios. You can call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to obtain hybrid cloud cluster information.
 	//
 	// example:
 	//
 	// 976
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end time of the query. The value is a UNIX timestamp in UTC. Unit: seconds.
+	// The end time of the query. The value is a UNIX timestamp (UTC) in seconds.
 	//
 	// example:
 	//
 	// 1726113600
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The dimension of the security event. Valid values:
-	//
-	// - **ip*	- (default): IP security events.
-	//
-	// - **account**: account security events.
+	// The dimension of the security event.
 	//
 	// example:
 	//
@@ -54,7 +50,7 @@ type DescribeUserEventTypeRequest struct {
 	EventScope *string `json:"EventScope,omitempty" xml:"EventScope,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -62,31 +58,31 @@ type DescribeUserEventTypeRequest struct {
 	//
 	// waf_v2_public_cn-5y***h0t
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: regions outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The Alibaba Cloud resource group ID.
 	//
 	// example:
 	//
 	// rg-aek***ktt3y
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The start time of the query. The value is a UNIX timestamp in UTC. Unit: seconds.
+	// The start time of the query. The value is a UNIX timestamp (UTC) in seconds.
 	//
 	// example:
 	//
 	// 1723435200
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// A list of security event statuses.
+	// The list of statuses for security event statistics.
 	//
-	// > By default, statistics are collected for security events in the **toBeConfirmed**, **confirmed**, and **actioned*	- states.
+	// >By default, security event data in the **toBeConfirmed**, **confirmed**, and **actioned*	- statuses is included in the statistics.
 	UserStatusList []*string `json:"UserStatusList,omitempty" xml:"UserStatusList,omitempty" type:"Repeated"`
 }
 

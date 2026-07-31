@@ -34,7 +34,7 @@ type iDescribeApisecExamplesRequest interface {
 }
 
 type DescribeApisecExamplesRequest struct {
-	// The type of API security threat.
+	// The risk type.
 	//
 	// example:
 	//
@@ -48,27 +48,23 @@ type DescribeApisecExamplesRequest struct {
 	//
 	// 867ade***24ee6e205b8da82b8f84
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The ID of the Hybrid Cloud WAF cluster.
+	// The ID of the hybrid cloud cluster.
 	//
-	// > This parameter is available only in hybrid cloud scenarios. Call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query information about Hybrid Cloud WAF clusters.
+	// > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud cluster information.
 	//
 	// example:
 	//
 	// 176
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the example. Valid values:
-	//
-	// - **sensitive**: sensitive data.
-	//
-	// - **risk**: threat.
+	// The type of the sample.
 	//
 	// example:
 	//
 	// sensitive
 	ExampleType *string `json:"ExampleType,omitempty" xml:"ExampleType,omitempty"`
-	// The ID of the WAF instance.
+	// Instance ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -76,19 +72,19 @@ type DescribeApisecExamplesRequest struct {
 	//
 	// waf_elasticity-cn-0xldbqtm005
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries to return on each page. Valid values: 1 to 5. Default value: 5.
+	// The number of entries per page in a paged query. Valid values: 1 to 5. Default value: 5. This parameter is used for paging.
 	//
 	// example:
 	//
 	// 5
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results.
+	// The pagination token.
 	//
 	// example:
 	//
 	// AAAAAGBgV9tolsLfijC4wam2htS*****D/46H3X2wIS
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -98,7 +94,7 @@ type DescribeApisecExamplesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of sensitive data types in requests.
+	// The list of request sensitive information types.
 	RequestSensitiveTypeList []*string `json:"RequestSensitiveTypeList,omitempty" xml:"RequestSensitiveTypeList,omitempty" type:"Repeated"`
 	// The ID of the Alibaba Cloud resource group.
 	//
@@ -106,7 +102,7 @@ type DescribeApisecExamplesRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The list of sensitive data types in responses.
+	// The list of response sensitive information types.
 	ResponseSensitiveTypeList []*string `json:"ResponseSensitiveTypeList,omitempty" xml:"ResponseSensitiveTypeList,omitempty" type:"Repeated"`
 }
 

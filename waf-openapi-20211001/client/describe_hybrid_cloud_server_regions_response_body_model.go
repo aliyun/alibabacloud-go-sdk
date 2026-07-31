@@ -16,9 +16,9 @@ type iDescribeHybridCloudServerRegionsResponseBody interface {
 }
 
 type DescribeHybridCloudServerRegionsResponseBody struct {
-	// The regions.
+	// The list of region information.
 	Regions []*DescribeHybridCloudServerRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ func (s *DescribeHybridCloudServerRegionsResponseBody) Validate() error {
 }
 
 type DescribeHybridCloudServerRegionsResponseBodyRegions struct {
-	// The code of the region.
+	// The region code.
 	//
 	// example:
 	//
 	// 1
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The name of the region.
+	// The region name.
 	//
 	// example:
 	//

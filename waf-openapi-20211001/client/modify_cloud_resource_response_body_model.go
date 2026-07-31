@@ -16,7 +16,7 @@ type iModifyCloudResourceResponseBody interface {
 }
 
 type ModifyCloudResourceResponseBody struct {
-	// The ID of the connected resource.
+	// The connected resource ID.
 	//
 	// example:
 	//

@@ -24,15 +24,15 @@ type iDescribeTemplateResourcesResponseBody interface {
 }
 
 type DescribeTemplateResourcesResponseBody struct {
-	// The number of entries returned on each page. Valid values: 1 to 500. Default value: 500.
+	// The number of entries per page in a paged query. Valid values: 1 to 500. Default value: 500.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results. This parameter is returned if a next page exists.
+	// The pagination token (Token) for the next page. If a next page exists, this field contains a value.
 	//
-	// > If a value is returned for this parameter, a next page exists. You can use the returned **NextToken*	- value as a request parameter to retrieve the data on the next page. When no value is returned, all data has been retrieved.
+	// > If this parameter has a return value, a next page exists. Use the returned **NextToken*	- as a request parameter to retrieve the next page of data. Repeat until no value is returned, which indicates that all data has been retrieved.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DescribeTemplateResourcesResponseBody struct {
 	//
 	// C7BC9373-3960-53B0-8968-2B13454AE18F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of the names of the attached protected objects or protected object groups, or the IDs of the protected assets.
+	// The list of bound protected object names, protected object group names, or protected asset IDs.
 	Resources []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	// The ID of the protection template.
 	//
@@ -52,7 +52,7 @@ type DescribeTemplateResourcesResponseBody struct {
 	//
 	// 168465
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The total number of returned entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//

@@ -26,29 +26,15 @@ type iDescribeApisecEventDetailRequest interface {
 }
 
 type DescribeApisecEventDetailRequest struct {
-	// The ID of the Hybrid Cloud WAF cluster.
+	// The ID of the hybrid cloud cluster.
 	//
-	// > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query information about hybrid cloud WAF clusters.
+	// > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud cluster information.
 	//
 	// example:
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the detailed information about the security event. Valid values:
-	//
-	// - **event_info*	- (default): attack details.
-	//
-	// - **api_info**: API information.
-	//
-	// - **cnt_info**: attack trend.
-	//
-	// - **ip_info**: attacker IP information.
-	//
-	// - **sensitive_info**: information about access to sensitive data.
-	//
-	// - **request_data**: request information.
-	//
-	// - **response_data**: response information.
+	// The type of detailed information about the security event.
 	//
 	// example:
 	//
@@ -62,19 +48,15 @@ type DescribeApisecEventDetailRequest struct {
 	//
 	// 18ba94fea9***e66ba0557b7b91
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The dimension of the security event. Valid values:
-	//
-	// - **ip*	- (default): IP security event.
-	//
-	// - **account**: account security event.
+	// The dimension of the security event.
 	//
 	// example:
 	//
 	// ip
 	EventScope *string `json:"EventScope,omitempty" xml:"EventScope,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// Instance ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +64,7 @@ type DescribeApisecEventDetailRequest struct {
 	//
 	// waf_elasticity-cn-0xldbqtm005
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//

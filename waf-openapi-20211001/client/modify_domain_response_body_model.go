@@ -16,9 +16,9 @@ type iModifyDomainResponseBody interface {
 }
 
 type ModifyDomainResponseBody struct {
-	// The information about the modified domain name.
+	// The information about the added domain name.
 	DomainInfo *ModifyDomainResponseBodyDomainInfo `json:"DomainInfo,omitempty" xml:"DomainInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ func (s *ModifyDomainResponseBody) Validate() error {
 }
 
 type ModifyDomainResponseBodyDomainInfo struct {
-	// The CNAME that is assigned by WAF to the domain name.
+	// The CNAME assigned by WAF to the domain name.
 	//
 	// example:
 	//
 	// xxxxxcvdaf.****.com
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	// The domain name whose configurations are modified.
+	// The domain name to modify.
 	//
 	// example:
 	//
 	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The ID of the domain name.
+	// The domain name ID.
 	//
 	// example:
 	//

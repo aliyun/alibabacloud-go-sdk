@@ -83,19 +83,19 @@ func (s *DescribeBaseSystemRulesResponseBody) Validate() error {
 }
 
 type DescribeBaseSystemRulesResponseBodyRules struct {
-	// The CVE ID of the vulnerability that is associated with the system protection rule.
+	// The CVE ID of the vulnerability associated with the system rule.
 	//
 	// example:
 	//
 	// CVE-2021-34538
 	CveId *string `json:"CveId,omitempty" xml:"CveId,omitempty"`
-	// The description of the system protection rule.
+	// The description of the rule.
 	//
 	// example:
 	//
 	// rule description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The type of attack that the system protection rule detects. Valid values:
+	// The detection module. Valid values:
 	//
 	// - **sqli**: SQL injection.
 	//
@@ -129,17 +129,17 @@ type DescribeBaseSystemRulesResponseBodyRules struct {
 	//
 	// - **scanner_behavior**: scanner behavior.
 	//
-	// - **logic_flaw**: logic flaw.
+	// - **logic_flaw**: business logic bug.
 	//
-	// - **arbitrary_file_reading**: arbitrary file read.
+	// - **arbitrary_file_reading**: arbitrary file reading.
 	//
 	// - **arbitrary_file_download**: arbitrary file download.
 	//
-	// - **xxe**: external entity injection.
+	// - **xxe**: XML external entity injection.
 	//
-	// - **csrf**: cross-site request forgery (CSRF).
+	// - **csrf**: cross-site request forgery.
 	//
-	// - **crlf**: CRLF injection.
+	// - **crlf**: CRLF.
 	//
 	// - **other**: other.
 	//
@@ -147,9 +147,9 @@ type DescribeBaseSystemRulesResponseBodyRules struct {
 	//
 	// sqli
 	DetectType *string `json:"DetectType,omitempty" xml:"DetectType,omitempty"`
-	// The risk level of the system protection rule. Valid values:
+	// The risk level. Valid values:
 	//
-	// - **super_strict**: Very Strict.
+	// - **super_strict**: Super strict.
 	//
 	// - **strict**: Strict.
 	//
@@ -161,7 +161,7 @@ type DescribeBaseSystemRulesResponseBodyRules struct {
 	//
 	// super_strict
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The action of the system protection rule. Valid values:
+	// The rule action. Valid values:
 	//
 	// - **block**: Block.
 	//
@@ -171,29 +171,29 @@ type DescribeBaseSystemRulesResponseBodyRules struct {
 	//
 	// block
 	RuleAction *string `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
-	// The ID of the system protection rule.
+	// The rule ID.
 	//
 	// example:
 	//
 	// 113089
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the system protection rule.
+	// The name of the protection rule.
 	//
 	// example:
 	//
 	// systemRuleTest
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The status of the system protection rule. Valid values:
+	// The rule status. Valid values:
 	//
-	// - **1**: disabled.
+	// - **1**: Disabled.
 	//
-	// - **0**: enabled.
+	// - **0**: Enabled.
 	//
 	// example:
 	//
 	// 1
 	RuleStatus *int32 `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
-	// The time when the system protection rule was last updated. This value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the rule was last updated.
 	//
 	// example:
 	//

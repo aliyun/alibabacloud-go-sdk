@@ -36,11 +36,7 @@ type DeleteApisecEventsRequest struct {
 	//
 	// This parameter is required.
 	EventIds []*string `json:"EventIds,omitempty" xml:"EventIds,omitempty" type:"Repeated"`
-	// The dimension of the security event. Valid values:
-	//
-	// - **ip**: IP-dimension security events.
-	//
-	// - **account**: account-dimension security events.
+	// The dimension of the security event.
 	//
 	// example:
 	//

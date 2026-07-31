@@ -68,7 +68,7 @@ type CreateDomainResponseBodyDomainInfo struct {
 	//
 	// xxxxxwww.****.com
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	// The added domain name.
+	// The name of the added domain name.
 	//
 	// example:
 	//

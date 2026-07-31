@@ -44,23 +44,21 @@ type CreateDefenseTemplateRequest struct {
 	//
 	// waf_group
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
-	// The sub-scenario of the protection template. Valid values:
-	//
-	// - **bot_custom_acl**: a protection template for advanced custom rules for Bot management.
+	// The sub-scenario of the protection template. This parameter is supported only for advanced bot management scenarios.
 	//
 	// example:
 	//
-	// bot_custom_acl
+	// web
 	DefenseSubScene *string `json:"DefenseSubScene,omitempty" xml:"DefenseSubScene,omitempty"`
-	// The description of the protection template.
+	// The description of the protection template to create.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -68,9 +66,9 @@ type CreateDefenseTemplateRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// - **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
 	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
@@ -78,13 +76,13 @@ type CreateDefenseTemplateRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The name of the protection template. The name must be 1 to 255 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+	// The name of the protection template to create. The name must be 1 to 255 characters in length and can contain Chinese characters, letters, digits, underscores (_), periods (.), or hyphens (-).
 	//
 	// > Template names must be unique within the same protection scenario (**DefenseScene**).
 	//
@@ -94,7 +92,7 @@ type CreateDefenseTemplateRequest struct {
 	//
 	// test221
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The origin of the protection template. The value must be **custom**, which indicates a user-defined template.
+	// The source of the protection template to create. Set the value to **custom**, which indicates user-defined.
 	//
 	// This parameter is required.
 	//
@@ -102,7 +100,7 @@ type CreateDefenseTemplateRequest struct {
 	//
 	// custom
 	TemplateOrigin *string `json:"TemplateOrigin,omitempty" xml:"TemplateOrigin,omitempty"`
-	// The status of the protection template. Valid values:
+	// The status of the protection template to create. Valid values:
 	//
 	// - **0**: Disabled.
 	//
@@ -114,11 +112,11 @@ type CreateDefenseTemplateRequest struct {
 	//
 	// 1
 	TemplateStatus *int32 `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
-	// The type of the protection template. Valid values:
+	// The templatetype of the protection template to create. Valid values:
 	//
-	// - **user_default**: a default template created by the user.
+	// - **user_default**: default protection.
 	//
-	// - **user_custom**: a custom template created by the user.
+	// - **user_custom**: custom protection.
 	//
 	// This parameter is required.
 	//
@@ -126,13 +124,13 @@ type CreateDefenseTemplateRequest struct {
 	//
 	// user_default
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
-	// The protected object groups to unbind from the default protection template. Specify the value in the [**"group1","group2",...**] format.
+	// The protected object groups to unbind when creating a default protection template. Use the format [**"group1","group2",……**].
 	//
-	// > This parameter takes effect only when you create a **default template*	- (**TemplateType*	- is set to **user_default**).
+	// > This parameter takes effect only when you create a **default template*	- (the value of **TemplateType*	- is **user_default**).
 	UnbindResourceGroups []*string `json:"UnbindResourceGroups,omitempty" xml:"UnbindResourceGroups,omitempty" type:"Repeated"`
-	// The protected objects to unbind from the default protection template. Specify the value in the [**"XX1","XX2",...**] format.
+	// The protected objects to unbind when creating a default protection template. Use the format [**"XX1","XX2",……**].
 	//
-	// > This parameter takes effect only when you create a **default template*	- (**TemplateType*	- is set to **user_default**).
+	// > This parameter takes effect only when you create a **default template*	- (the value of **TemplateType*	- is **user_default**).
 	UnbindResources []*string `json:"UnbindResources,omitempty" xml:"UnbindResources,omitempty" type:"Repeated"`
 }
 

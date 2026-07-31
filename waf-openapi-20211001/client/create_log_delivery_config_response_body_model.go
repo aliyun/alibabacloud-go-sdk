@@ -16,13 +16,13 @@ type iCreateLogDeliveryConfigResponseBody interface {
 }
 
 type CreateLogDeliveryConfigResponseBody struct {
-	// The name of the log delivery configuration.
+	// The name of the forwarding delivery configuration.
 	//
 	// example:
 	//
 	// test1
 	DeliveryName *string `json:"DeliveryName,omitempty" xml:"DeliveryName,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

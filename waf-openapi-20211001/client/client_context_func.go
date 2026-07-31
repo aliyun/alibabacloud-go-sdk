@@ -429,7 +429,7 @@ func (client *Client) CreateCertsWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// Connects a cloud service to WAF in cloud native mode. Currently, only ECS and CLB are supported.
+// Connects a cloud service to Web Application Firewall (WAF) in cloud native mode. Currently, only ECS and CLB are supported.
 //
 // @param tmpReq - CreateCloudResourceRequest
 //
@@ -733,7 +733,7 @@ func (client *Client) CreateDefenseResourceGroupWithContext(ctx context.Context,
 
 // Summary:
 //
-// Create a web core protection rule.
+// Creates a web core protection rule.
 //
 // @param request - CreateDefenseRuleRequest
 //
@@ -895,7 +895,7 @@ func (client *Client) CreateDefenseTemplateWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Adds a domain name to a WAF instance by using Website Config for protection.
+// Adds a domain name to a WAF instance for Website Config protection.
 //
 // @param tmpReq - CreateDomainRequest
 //
@@ -1229,7 +1229,7 @@ func (client *Client) CreateHybridCloudGroupWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Creates a log delivery configuration for a Web Application Firewall (WAF) instance in a hybrid cloud.
+// Creates a hybrid cloud log forwarding delivery configuration.
 //
 // @param request - CreateLogDeliveryConfigRequest
 //
@@ -2025,7 +2025,7 @@ func (client *Client) DeleteDefenseResourceGroupWithContext(ctx context.Context,
 
 // Summary:
 //
-// Deletes the specified protection rules.
+// Deletes a protection rule.
 //
 // @param request - DeleteDefenseRuleRequest
 //
@@ -3293,7 +3293,7 @@ func (client *Client) DescribeApisecAssetTrendWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Retrieves the details of an API security event.
+// Queries the details of an API security event.
 //
 // @param request - DescribeApisecEventDetailRequest
 //
@@ -3437,7 +3437,7 @@ func (client *Client) DescribeApisecEventDomainStatisticWithContext(ctx context.
 
 // Summary:
 //
-// Queries a list of API security events.
+// Queries the list of API security events.
 //
 // @param request - DescribeApisecEventsRequest
 //
@@ -3565,7 +3565,7 @@ func (client *Client) DescribeApisecEventsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the API security examples that are detected by Web Application Firewall (WAF).
+// Queries API security sample information.
 //
 // @param request - DescribeApisecExamplesRequest
 //
@@ -4449,7 +4449,7 @@ func (client *Client) DescribeBaseRuleChangeLogWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the system rules for Web Application Firewall (WAF) protection.
+// Queries the system rules of Web core protection.
 //
 // @param request - DescribeBaseSystemRulesRequest
 //
@@ -4601,7 +4601,7 @@ func (client *Client) DescribeBotAppKeyWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the labels of bot management rules.
+// Queries the tag information of bot management rules.
 //
 // @param request - DescribeBotRuleLabelsRequest
 //
@@ -4845,7 +4845,7 @@ func (client *Client) DescribeChargeModuleWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the billing results for Web Application Firewall (WAF).
+// Queries the pricing results of WAF pricing modules.
 //
 // @param request - DescribeChargeResultRequest
 //
@@ -4866,6 +4866,10 @@ func (client *Client) DescribeChargeResultWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.ChargeModules) {
 		query["ChargeModules"] = request.ChargeModules
+	}
+
+	if !dara.IsNil(request.ChargeUnit) {
+		query["ChargeUnit"] = request.ChargeUnit
 	}
 
 	if !dara.IsNil(request.PayType) {
@@ -4905,7 +4909,7 @@ func (client *Client) DescribeChargeResultWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Retrieves port details of cloud service instances onboarded to Web Application Firewall (WAF).
+// Queries the port details of cloud service instances that are connected to WAF.
 //
 // @param request - DescribeCloudResourceAccessPortDetailsRequest
 //
@@ -5037,7 +5041,7 @@ func (client *Client) DescribeCloudResourceAccessedPortsWithContext(ctx context.
 
 // Summary:
 //
-// Queries a list of resources added to Web Application Firewall (WAF) in cloud native mode.
+// Queries the list of resources connected to WAF in cloud native mode.
 //
 // @param request - DescribeCloudResourceListRequest
 //
@@ -5927,7 +5931,7 @@ func (client *Client) DescribeDefenseResourceOwnerUidWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the protection templates associated with a protected object or protected object group.
+// Queries the protection templates of a protected object or a protected object group.
 //
 // @param request - DescribeDefenseResourceTemplatesRequest
 //
@@ -6071,7 +6075,7 @@ func (client *Client) DescribeDefenseResourcesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Retrieves the details of a specified protection rule.
+// Queries a single protection rule.
 //
 // @param request - DescribeDefenseRuleRequest
 //
@@ -6543,7 +6547,7 @@ func (client *Client) DescribeDefenseTemplateValidResourcesWithContext(ctx conte
 
 // Summary:
 //
-// Retrieves a paginated list of protection templates.
+// Queries a list of protection templates by paging.
 //
 // @param request - DescribeDefenseTemplatesRequest
 //
@@ -6871,7 +6875,7 @@ func (client *Client) DescribeDomainsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries the daily bills for WAF pay-as-you-go instances for the last 7 days.
+// Queries the daily bills of a pay-as-you-go WAF instance for the last 7 days.
 //
 // @param request - DescribeElasticBillsRequest
 //
@@ -8035,7 +8039,7 @@ func (client *Client) DescribeHybridCloudSdkServersWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries hybrid cloud server regions, including carriers, continents, and cities.
+// Queries the dictionary of region information supported by hybrid cloud WAF, including ISPs, continents, and cities.
 //
 // @param request - DescribeHybridCloudServerRegionsRequest
 //
@@ -9083,7 +9087,7 @@ func (client *Client) DescribePostpayBillsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the elastic pay-as-you-go billing details of a subscription WAF instance, such as burstable QPS.
+// Queries the burstable pay-as-you-go billing details of a subscription WAF instance, such as burstable QPS.
 //
 // @param request - DescribePrepayDailyBillsRequest
 //
@@ -9143,7 +9147,7 @@ func (client *Client) DescribePrepayDailyBillsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries synchronized cloud service instances.
+// Queries the list of synchronized cloud service assets.
 //
 // @param request - DescribeProductInstancesRequest
 //
@@ -9555,7 +9559,7 @@ func (client *Client) DescribeResourceLogFieldConfigWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the log collection status of protected objects in a Web Application Firewall (WAF) instance.
+// Queries the log status of protected objects.
 //
 // @param request - DescribeResourceLogStatusRequest
 //
@@ -11431,7 +11435,7 @@ func (client *Client) DescribeTemplateResourceCountWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the resources attached to a protection template.
+// Queries the resources bound to a protection template.
 //
 // @param request - DescribeTemplateResourcesRequest
 //
@@ -11955,7 +11959,7 @@ func (client *Client) DescribeUserAssetWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the trend of API security attacks.
+// Queries the attack trend of API security.
 //
 // @param request - DescribeUserEventTrendRequest
 //
@@ -12015,7 +12019,7 @@ func (client *Client) DescribeUserEventTrendWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the types and statistics of user security events.
+// Queries the security event types and statistics for API security users.
 //
 // @param request - DescribeUserEventTypeRequest
 //
@@ -12915,7 +12919,7 @@ func (client *Client) ModifyApisecApiResourceWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies the status of a batch of API security events.
+// Modifies the statuses of multiple API security events in a batch.
 //
 // @param request - ModifyApisecEventsRequest
 //
@@ -13247,7 +13251,7 @@ func (client *Client) ModifyApisecStatusWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modifies the configuration of a cloud service that is connected to Web Application Firewall (WAF).
+// Modifies the configuration of a cloud service that is connected to WAF.
 //
 // @param tmpReq - ModifyCloudResourceRequest
 //
@@ -13321,7 +13325,7 @@ func (client *Client) ModifyCloudResourceWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Modifies the certificate for a resource managed by WAF in cloud native mode.
+// Modifies the certificate for a cloud native mode resource.
 //
 // @param request - ModifyCloudResourceCertRequest
 //
@@ -14059,7 +14063,7 @@ func (client *Client) ModifyDefenseTemplateStatusWithContext(ctx context.Context
 
 // Summary:
 //
-// Updates a CNAME-based domain name onboarded to Web Application Firewall (WAF).
+// Modifies a CNAME-based domain name.
 //
 // @param tmpReq - ModifyDomainRequest
 //
@@ -14137,7 +14141,7 @@ func (client *Client) ModifyDomainWithContext(ctx context.Context, tmpReq *Modif
 
 // Summary:
 //
-// Modifies the certificate that is associated with a domain name added to a Web Application Firewall (WAF) instance in CNAME record mode.
+// Modifies the certificate of a domain name.
 //
 // @param request - ModifyDomainCertRequest
 //
@@ -15217,7 +15221,7 @@ func (client *Client) ModifyResourceLogFieldConfigWithContext(ctx context.Contex
 
 // Summary:
 //
-// Enables or disables the log collection feature for a protected object.
+// Modifies the log status of a protected object.
 //
 // @param tmpReq - ModifyResourceLogStatusRequest
 //
@@ -15499,7 +15503,7 @@ func (client *Client) ModifyUserWafLogStatusWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Re-registers a cloud service with WAF. This operation is used only when the cloud native mode status is protection exception.
+// Re-connects a cloud service to WAF. This operation is used only when the cloud native mode connection status is protection exception.
 //
 // @param request - ReCreateCloudResourceRequest
 //

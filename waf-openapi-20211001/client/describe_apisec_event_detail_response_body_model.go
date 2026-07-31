@@ -38,21 +38,21 @@ type iDescribeApisecEventDetailResponseBody interface {
 }
 
 type DescribeApisecEventDetailResponseBody struct {
-	// The total number of attacks in the security event.
+	// The number of attacks.
 	//
 	// example:
 	//
 	// 345
 	AttackCnt *string `json:"AttackCnt,omitempty" xml:"AttackCnt,omitempty"`
-	// The list of attackers associated with the security event.
+	// The attacker list.
 	AttackerList []*string `json:"AttackerList,omitempty" xml:"AttackerList,omitempty" type:"Repeated"`
-	// The details of the security event.
+	// The detailed information about the security event. The value is a string converted from a JSON object constructed by a series of parameters.
 	//
 	// example:
 	//
 	// {\\"location\\":[\\"FR\\",\\"CN\\"],\\"location_type\\":\\"country\\"}
 	DetailValue *string `json:"DetailValue,omitempty" xml:"DetailValue,omitempty"`
-	// The end of the time range during which the security event occurred. This value is a UNIX timestamp. Unit: seconds.
+	// The end time of the query. The value is a UNIX timestamp (UTC). Unit: seconds.
 	//
 	// example:
 	//
@@ -64,13 +64,13 @@ type DescribeApisecEventDetailResponseBody struct {
 	//
 	// 18ba94fea9***e66ba0557b7b91
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The severity level of the security event. Valid values:
+	// The event level. Valid values:
 	//
-	// - **high**: high severity.
+	// - **high**: high risk.
 	//
-	// - **medium**: medium severity.
+	// - **medium**: medium risk.
 	//
-	// - **low**: low severity.
+	// - **low**: low risk.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type DescribeApisecEventDetailResponseBody struct {
 	//
 	// ip
 	EventScope *string `json:"EventScope,omitempty" xml:"EventScope,omitempty"`
-	// The type of the security event.
+	// The event type.
 	//
 	// > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported event types.
 	//
@@ -94,29 +94,29 @@ type DescribeApisecEventDetailResponseBody struct {
 	//
 	// ObtainSensitiveUnauthorized
 	EventTag *string `json:"EventTag,omitempty" xml:"EventTag,omitempty"`
-	// The remarks added to the security event.
+	// The remarks.
 	//
 	// example:
 	//
 	// already confirmed.
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The source of the event type rule. Valid values:
+	// The origin of the event type. Valid values:
 	//
-	// - **custom**: a user-defined rule.
+	// - **custom**: custom.
 	//
-	// - **default**: a built-in rule.
+	// - **default**: built-in.
 	//
 	// example:
 	//
 	// custom
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range during which the security event occurred. This value is a UNIX timestamp. Unit: seconds.
+	// The start time of the query. The value is a UNIX timestamp (UTC). Unit: seconds.
 	//
 	// example:
 	//

@@ -32,7 +32,7 @@ type iDescribeCloudResourceAccessPortDetailsRequest interface {
 type DescribeCloudResourceAccessPortDetailsRequest struct {
 	// The ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -40,29 +40,25 @@ type DescribeCloudResourceAccessPortDetailsRequest struct {
 	//
 	// waf-cn-tl32ast****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the list. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **10**.
+	// The number of entries per page in a paged query. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The port of the cloud service that is added to WAF.
+	// The port of the cloud service that is connected to WAF.
 	//
 	// example:
 	//
 	// 443
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The protocol. Valid values:
-	//
-	// - **http**: HTTP.
-	//
-	// - **https**: HTTPS.
+	// The protocol type.
 	//
 	// example:
 	//
@@ -78,7 +74,7 @@ type DescribeCloudResourceAccessPortDetailsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource instance.
+	// The instance ID of the resource.
 	//
 	// This parameter is required.
 	//
@@ -86,21 +82,21 @@ type DescribeCloudResourceAccessPortDetailsRequest struct {
 	//
 	// lb-2zeugkfj81jvo****4tqm
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The type of the cloud service. Valid values:
+	// The cloud service type. Valid values:
 	//
-	// - **clb4**: Layer 4 Classic Load Balancer (CLB).
+	// - **clb4**: Layer 4 CLB.
 	//
 	// - **clb7**: Layer 7 CLB.
 	//
-	// - **ecs**: Elastic Compute Service (ECS).
+	// - **ecs**: ECS.
 	//
-	// - **nlb**: Network Load Balancer (NLB).
+	// - **nlb**: NLB.
 	//
 	// example:
 	//

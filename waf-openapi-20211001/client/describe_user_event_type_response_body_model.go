@@ -16,9 +16,9 @@ type iDescribeUserEventTypeResponseBody interface {
 }
 
 type DescribeUserEventTypeResponseBody struct {
-	// A list of security event types and their statistics.
+	// The list of security event types and statistics.
 	Event []*DescribeUserEventTypeResponseBodyEvent `json:"Event,omitempty" xml:"Event,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -78,15 +78,15 @@ type DescribeUserEventTypeResponseBodyEvent struct {
 	//
 	// 0
 	EventCount *int64 `json:"EventCount,omitempty" xml:"EventCount,omitempty"`
-	// The parent type of the event.
+	// The parent event type.
 	//
 	// example:
 	//
 	// EventType_Account
 	EventParentType *string `json:"EventParentType,omitempty" xml:"EventParentType,omitempty"`
-	// The type of the event.
+	// The event type.
 	//
-	// > Call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported event types.
+	// > You can call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported event types.
 	//
 	// example:
 	//
