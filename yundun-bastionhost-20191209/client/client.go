@@ -85,7 +85,9 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-zhengzhou-nebula-1":       dara.String("yundun-bastionhost.aliyuncs.com"),
 		"eu-west-1-oxs":               dara.String("yundun-bastionhost.aliyuncs.com"),
 		"rus-west-1-pop":              dara.String("yundun-bastionhost.aliyuncs.com"),
+		"na-south-1":                  dara.String("bastionhost.na-south-1.aliyuncs.com"),
 		"cn-zhengzhou-jva":            dara.String("yundun-bastionhost.aliyuncs.com"),
+		"ap-southeast-7":              dara.String("bastionhost.ap-southeast-7.aliyuncs.com"),
 		"ap-southeast-6":              dara.String("bastionhost.ap-southeast-6.aliyuncs.com"),
 		"ap-northeast-2":              dara.String("bastionhost.ap-northeast-2.aliyuncs.com"),
 	}
@@ -630,7 +632,7 @@ func (client *Client) AddUsersToGroup(request *AddUsersToGroupRequest) (_result 
 
 // Summary:
 //
-// Approves an O&M task request.
+// Approves an O&M task execution request.
 //
 // @param request - AllowOperationTaskApprovalRequest
 //
@@ -682,7 +684,7 @@ func (client *Client) AllowOperationTaskApprovalWithOptions(request *AllowOperat
 
 // Summary:
 //
-// Approves an O&M task request.
+// Approves an O&M task execution request.
 //
 // @param request - AllowOperationTaskApprovalRequest
 //
@@ -3582,7 +3584,7 @@ func (client *Client) DeleteUserPublicKey(request *DeleteUserPublicKeyRequest) (
 
 // Summary:
 //
-// Returns all instance attributes, such as its instance ID and description.
+// Queries all attribute information of an instance, such as the instance ID and instance description.
 //
 // @param request - DescribeInstanceAttributeRequest
 //
@@ -3630,7 +3632,7 @@ func (client *Client) DescribeInstanceAttributeWithOptions(request *DescribeInst
 
 // Summary:
 //
-// Returns all instance attributes, such as its instance ID and description.
+// Queries all attribute information of an instance, such as the instance ID and instance description.
 //
 // @param request - DescribeInstanceAttributeRequest
 //
@@ -4458,7 +4460,7 @@ func (client *Client) DisableRule(request *DisableRuleRequest) (_result *Disable
 
 // Summary:
 //
-// Enables public network access for a specified Bastionhost instance.
+// Enables the public access switch for a specified Bastionhost instance.
 //
 // @param request - EnableInstancePublicAccessRequest
 //
@@ -4506,7 +4508,7 @@ func (client *Client) EnableInstancePublicAccessWithOptions(request *EnableInsta
 
 // Summary:
 //
-// Enables public network access for a specified Bastionhost instance.
+// Enables the public access switch for a specified Bastionhost instance.
 //
 // @param request - EnableInstancePublicAccessRequest
 //
@@ -4704,7 +4706,7 @@ func (client *Client) GenerateAssetOperationToken(request *GenerateAssetOperatio
 
 // Summary:
 //
-// Retrieves the details of a specified O&M task for an administrator.
+// Queries the details of a specified O&M task.
 //
 // @param request - GetAutoOpsTaskRequest
 //
@@ -4758,7 +4760,7 @@ func (client *Client) GetAutoOpsTaskWithOptions(request *GetAutoOpsTaskRequest, 
 
 // Summary:
 //
-// Retrieves the details of a specified O&M task for an administrator.
+// Queries the details of a specified O&M task.
 //
 // @param request - GetAutoOpsTaskRequest
 //
@@ -5920,7 +5922,7 @@ func (client *Client) GetRule(request *GetRuleRequest) (_result *GetRuleResponse
 
 // Summary:
 //
-// Retrieves the details of a user of a bastion host.
+// Retrieves the details of a specified Bastionhost user.
 //
 // @param request - GetUserRequest
 //
@@ -5972,7 +5974,7 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *dara.
 
 // Summary:
 //
-// Retrieves the details of a user of a bastion host.
+// Retrieves the details of a specified Bastionhost user.
 //
 // @param request - GetUserRequest
 //
@@ -8458,13 +8460,13 @@ func (client *Client) ListOperationHosts(request *ListOperationHostsRequest) (_r
 
 // Summary:
 //
-// Lists the O&M requests that require approval.
+// Retrieves the list of O&M applications that require approval.
 //
 // Description:
 //
-// Queries the operations and maintenance (O\\&M) requests that require administrator approval.
+// Retrieves the list of O&M applications that require approval for an administrator.
 //
-// The queries per second (QPS) limit for this operation is 10 per user. Exceeding this limit triggers throttling, which can affect your business. Plan your calls accordingly.
+// The China site Chinese QPS limit for this API is 10 requests per second. If this limit is exceeded, throttling is triggered, which may affect your business. Call this API appropriately.
 //
 // @param request - ListOperationTicketsRequest
 //
@@ -8524,13 +8526,13 @@ func (client *Client) ListOperationTicketsWithOptions(request *ListOperationTick
 
 // Summary:
 //
-// Lists the O&M requests that require approval.
+// Retrieves the list of O&M applications that require approval.
 //
 // Description:
 //
-// Queries the operations and maintenance (O\\&M) requests that require administrator approval.
+// Retrieves the list of O&M applications that require approval for an administrator.
 //
-// The queries per second (QPS) limit for this operation is 10 per user. Exceeding this limit triggers throttling, which can affect your business. Plan your calls accordingly.
+// The China site Chinese QPS limit for this API is 10 requests per second. If this limit is exceeded, throttling is triggered, which may affect your business. Call this API appropriately.
 //
 // @param request - ListOperationTicketsRequest
 //
@@ -8868,7 +8870,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// Retrieves pending automated O&M approval requests.
+// Retrieves the list of pending automated O&M approval requests.
 //
 // @param request - ListTodoOpsTaskApprovalsRequest
 //
@@ -8932,7 +8934,7 @@ func (client *Client) ListTodoOpsTaskApprovalsWithOptions(request *ListTodoOpsTa
 
 // Summary:
 //
-// Retrieves pending automated O&M approval requests.
+// Retrieves the list of pending automated O&M approval requests.
 //
 // @param request - ListTodoOpsTaskApprovalsRequest
 //
@@ -9106,7 +9108,7 @@ func (client *Client) ListUserPublicKeys(request *ListUserPublicKeysRequest) (_r
 
 // Summary:
 //
-// Queries a list of users of a bastion host.
+// Retrieves the list of users for a specified bastion host.
 //
 // @param request - ListUsersRequest
 //
@@ -9190,7 +9192,7 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *d
 
 // Summary:
 //
-// Queries a list of users of a bastion host.
+// Retrieves the list of users for a specified bastion host.
 //
 // @param request - ListUsersRequest
 //
@@ -10140,7 +10142,7 @@ func (client *Client) ModifyInstanceADAuthServer(request *ModifyInstanceADAuthSe
 
 // Summary:
 //
-// Modifies the attributes of a specified Bastionhost instance.
+// Modifies the information of a specified bastion host instance.
 //
 // @param request - ModifyInstanceAttributeRequest
 //
@@ -10192,7 +10194,7 @@ func (client *Client) ModifyInstanceAttributeWithOptions(request *ModifyInstance
 
 // Summary:
 //
-// Modifies the attributes of a specified Bastionhost instance.
+// Modifies the information of a specified bastion host instance.
 //
 // @param request - ModifyInstanceAttributeRequest
 //
@@ -11262,7 +11264,7 @@ func (client *Client) RejectApproveCommand(request *RejectApproveCommandRequest)
 
 // Summary:
 //
-// Rejects an O&M task approval.
+// Rejects an O&M task execution request.
 //
 // @param request - RejectOperationTaskApprovalRequest
 //
@@ -11314,7 +11316,7 @@ func (client *Client) RejectOperationTaskApprovalWithOptions(request *RejectOper
 
 // Summary:
 //
-// Rejects an O&M task approval.
+// Rejects an O&M task execution request.
 //
 // @param request - RejectOperationTaskApprovalRequest
 //

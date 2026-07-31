@@ -40,9 +40,9 @@ type ListUsersRequest struct {
 	//
 	// testuser
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The ID of the bastion host whose users you want to query.
+	// The instance ID of the bastion host for which you want to query the user list.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -56,55 +56,55 @@ type ListUsersRequest struct {
 	//
 	// 1359999****
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the current page in a paging query. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.<br>
+	// The maximum number of entries per page in a paging query.
 	//
-	// Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum value of the PageSize parameter is 100. The default number of entries per page is 20. If PageSize is left empty, 20 entries are returned by default.
 	//
-	// > We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the bastion host whose users you want to query.
+	// The region ID of the bastion host for which you want to query the user list.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of the user that you want to query. Valid values:
+	// The source of the user that you want to query. Valid values:
 	//
-	// - **Local**: a local user.
+	// - **Local**: local user
 	//
-	// - **Ram**: a Resource Access Management (RAM) user.
+	// - **Ram**: Resource Access Management (RAM) user
 	//
-	// - **AD**: an Active Directory (AD)-authenticated user.
+	// - **AD**: AD user
 	//
-	// - **LDAP**: a Lightweight Directory Access Protocol (LDAP)-authenticated user.
+	// - **LDAP**: LDAP user
 	//
 	// example:
 	//
 	// Local
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The unique ID of the user that you want to query. Only exact match is supported.
+	// The unique identity of the user that you want to query. Only exact match is supported.
 	//
-	// > This parameter uniquely identifies a RAM user of the bastion host. This parameter is valid if **Source*	- is set to **Ram**. You can call the [ListUsers](https://help.aliyun.com/document_detail/28684.html) operation in RAM to obtain the unique ID of the user from the **UserId*	- response parameter.
+	// > This parameter is the unique identity of the Resource Access Management (RAM) user that corresponds to the bastion host user. This parameter takes effect when the source of the newly created user is a RAM user (that is, **Source*	- is set to **Ram**). You can invoke the [ListUsers](https://help.aliyun.com/document_detail/28684.html) operation of access control and obtain this parameter from the **UserId*	- field in the response.
 	//
 	// example:
 	//
 	// 122748924538****
 	SourceUserId *string `json:"SourceUserId,omitempty" xml:"SourceUserId,omitempty"`
-	// The ID of the user group to which the user you want to query belongs.
+	// The ID of the user group that you want to query.
 	//
-	// > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the user group ID.
+	// > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to obtain this parameter.
 	//
 	// example:
 	//
@@ -116,13 +116,23 @@ type ListUsersRequest struct {
 	//
 	// abc
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The state of the user that you want to query. Valid values:
+	// The status of the user that you want to query. Valid values:
 	//
-	// - **Normal**: The user is in normal state.
+	// - **Normal**: normal
 	//
-	// - **Frozen**: The user is locked.
+	// - **Frozen**: locked
 	//
-	// - **Expired**: The user has expired.
+	// - **Expired**: expired
+	//
+	// - **RemoteDeleted**: user source deleted
+	//
+	// - **Inactive**: inactive due to prolonged absence of logon
+	//
+	// - **PasswordExpired**: password expired
+	//
+	// - **RemoteDNChanged**: user DN updated
+	//
+	// - **RemoteFrozen**: frozen on the RAM side
 	//
 	// example:
 	//

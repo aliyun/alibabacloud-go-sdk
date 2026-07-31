@@ -16,9 +16,9 @@ type iDescribeInstanceAttributeResponseBody interface {
 }
 
 type DescribeInstanceAttributeResponseBody struct {
-	// The attributes of the instance.
+	// The instance attribute information.
 	InstanceAttribute *DescribeInstanceAttributeResponseBodyInstanceAttribute `json:"InstanceAttribute,omitempty" xml:"InstanceAttribute,omitempty" type:"Struct"`
-	// The unique ID of the request. You can use this ID to troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,31 +62,33 @@ func (s *DescribeInstanceAttributeResponseBody) Validate() error {
 }
 
 type DescribeInstanceAttributeResponseBodyInstanceAttribute struct {
-	// Indicates whether the application O\\&M module is enabled. Valid values are `Enable` and `Disable`.
+	AiCreditStatus *string `json:"AiCreditStatus,omitempty" xml:"AiCreditStatus,omitempty"`
+	AiOpsModule    *string `json:"AiOpsModule,omitempty" xml:"AiOpsModule,omitempty"`
+	// The application O&M module. Valid values: Enable (enabled) and Disable (disabled).
 	//
 	// example:
 	//
 	// Enable
 	AppOperationModule *string `json:"AppOperationModule,omitempty" xml:"AppOperationModule,omitempty"`
-	// A list of authorized security group IDs.
+	// The list of authorized security group IDs.
 	AuthorizedSecurityGroups []*string `json:"AuthorizedSecurityGroups,omitempty" xml:"AuthorizedSecurityGroups,omitempty" type:"Repeated"`
-	// The total bandwidth of the Bastionhost instance, in Mbit/s.
+	// The total bandwidth of the bastion host instance.
 	//
 	// example:
 	//
 	// 30
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The extra bandwidth package of the Bastionhost instance, in Mbit/s.
+	// The extended bandwidth package of the bastion host.
 	//
 	// example:
 	//
 	// 5
 	BandwidthPackage *string `json:"BandwidthPackage,omitempty" xml:"BandwidthPackage,omitempty"`
-	// The status of the database O\\&M feature.
+	// The status of the database O&M feature.
 	//
-	// - **Enable**: The database O\\&M feature is enabled.
+	// - **Enable**: Database O&M is supported.
 	//
-	// - **Disable**: The database O\\&M feature is disabled.
+	// - **Disable**: Database O&M is not supported.
 	//
 	// example:
 	//
@@ -98,65 +100,65 @@ type DescribeInstanceAttributeResponseBodyInstanceAttribute struct {
 	//
 	// Test API
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the elastic network interface (ENI).
+	// The ID of the elastic network interface (ENI). An ENI is a virtual network interface controller (NIC) that can be attached to the bastion host instance.
 	//
 	// example:
 	//
 	// eni-bp1455jrzwm7moaxxxxx
 	EniInstanceId *string `json:"EniInstanceId,omitempty" xml:"EniInstanceId,omitempty"`
-	// The expiration timestamp, in milliseconds, of the Bastionhost instance.
+	// The timestamp when the bastion host instance expires. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1578326400000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Indicates whether the Bastionhost instance is integrated with a Hardware Security Module (HSM).
+	// The status of the HSM hardware encryption module. Indicates whether the bastion host is integrated with HSM.
 	HSMModule *string `json:"HSMModule,omitempty" xml:"HSMModule,omitempty"`
-	// Indicates whether the IDaaS integration module is enabled. Valid values are `Enable` and `Disable`.
+	// The IDaaS integration module. Valid values: Enable (enabled) and Disable (disabled).
 	//
 	// example:
 	//
 	// Enable
 	IDaaSModule *string `json:"IDaaSModule,omitempty" xml:"IDaaSModule,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// bastionhost-cn-78v1ghxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The status of the instance. Valid values:
+	// The instance status. Valid values:
 	//
-	// - **PENDING**: The instance is being initialized.
+	// - **PENDING**: Not initialized.
 	//
-	// - **CREATING**: The instance is being created.
+	// - **CREATING**: Being created.
 	//
-	// - **RUNNING**: The instance is running.
+	// - **RUNNING**: Running.
 	//
-	// - **EXPIRED**: The instance has expired.
+	// - **EXPIRED**: Expired.
 	//
-	// - **CREATE_FAILED**: Instance creation failed.
+	// - **CREATE_FAILED**: Creation failed.
 	//
-	// - **UPGRADING**: The instance is being upgraded.
+	// - **UPGRADING**: Being upgraded.
 	//
-	// - **UPGRADE_FAILED**: Instance upgrade failed.
+	// - **UPGRADE_FAILED**: Upgrade failed.
 	//
 	// example:
 	//
 	// RUNNING
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The public domain name of the instance.
+	// The public domain name.
 	//
 	// example:
 	//
 	// ******lwb-public.bastionhost.aliyuncs.com
 	InternetEndpoint *string `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
-	// The internal endpoint of the instance.
+	// The internal domain name.
 	//
 	// example:
 	//
 	// ******xalwb.bastionhost.aliyuncs.com
 	IntranetEndpoint *string `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
-	// Indicates whether the instance is integrated with Key Management Service (KMS) and Secrets Manager. Valid values are `Enable` and `Disable`.
+	// The KMS Secrets Manager integration module. Valid values: Enable (enabled) and Disable (disabled).
 	//
 	// example:
 	//
@@ -168,11 +170,11 @@ type DescribeInstanceAttributeResponseBodyInstanceAttribute struct {
 	//
 	// bhah_ent_50_asset
 	LicenseCode *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
-	// The status of the password change feature.
+	// The status of the password change task feature.
 	//
-	// - **Enable**: The feature is enabled.
+	// - **Enable**: Enabled.
 	//
-	// - **Disable**: The feature is disabled.
+	// - **Disable**: Disabled.
 	//
 	// example:
 	//
@@ -180,105 +182,105 @@ type DescribeInstanceAttributeResponseBodyInstanceAttribute struct {
 	ModifyPasswordModule *string `json:"ModifyPasswordModule,omitempty" xml:"ModifyPasswordModule,omitempty"`
 	// The status of the network domain proxy feature.
 	//
-	// - **Enable**: The network domain proxy feature is enabled.
+	// - **Enable**: The network domain proxy mode is supported.
 	//
-	// - **Disable**: The network domain proxy feature is disabled.
+	// - **Disable**: The network domain proxy mode is not supported.
 	//
 	// example:
 	//
 	// Enable
 	NetworkProxyModule *string `json:"NetworkProxyModule,omitempty" xml:"NetworkProxyModule,omitempty"`
-	// The O\\&M ports of the Bastionhost instance.
+	// The O&M ports of the bastion host.
 	Ports []*DescribeInstanceAttributeResponseBodyInstanceAttributePorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
-	// A list of private egress IP addresses of the Bastionhost instance.
+	// The list of internal egress IP addresses of the bastion host.
 	PrivateExportIps []*string `json:"PrivateExportIps,omitempty" xml:"PrivateExportIps,omitempty" type:"Repeated"`
-	// The private whitelist of the instance.
+	// The list of IP addresses in the internal whitelist.
 	PrivateWhiteList []*string `json:"PrivateWhiteList,omitempty" xml:"PrivateWhiteList,omitempty" type:"Repeated"`
-	// A list of public egress IP addresses of the Bastionhost instance.
+	// The list of public egress IP addresses of the bastion host.
 	PublicExportIps []*string `json:"PublicExportIps,omitempty" xml:"PublicExportIps,omitempty" type:"Repeated"`
-	// A list of public IP addresses of the Bastionhost instance.
+	// The list of public IP addresses of the bastion host.
 	PublicIps []*string `json:"PublicIps,omitempty" xml:"PublicIps,omitempty" type:"Repeated"`
-	// Indicates whether the Bastionhost instance is accessible over the public network. Valid values:
+	// Indicates whether the bastion host instance is accessible over the Internet. Valid values:
 	//
-	// - **true**: The Bastionhost instance is accessible over the public network.
+	// - **true**: The bastion host is accessible over the Internet.
 	//
-	// - **false**: The Bastionhost instance is not accessible over the public network.
+	// - **false**: The bastion host is not accessible over the Internet.
 	//
 	// example:
 	//
 	// true
 	PublicNetworkAccess *bool `json:"PublicNetworkAccess,omitempty" xml:"PublicNetworkAccess,omitempty"`
-	// The public whitelist of the Bastionhost instance.
+	// The public whitelist of the bastion host.
 	PublicWhiteList []*string `json:"PublicWhiteList,omitempty" xml:"PublicWhiteList,omitempty" type:"Repeated"`
-	// Indicates whether the multi-account module is enabled. Valid values are `Enable` and `Disable`.
+	// The multi-account module. Valid values: Enable (enabled) and Disable (disabled).
 	//
 	// example:
 	//
 	// Enable
 	RDModule *string `json:"RDModule,omitempty" xml:"RDModule,omitempty"`
-	// The ID of the region where the Bastionhost instance is located.
+	// The region ID of the instance.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the instance\\"s resource group.
+	// The ID of the resource group to which the instance belongs.
 	//
 	// example:
 	//
 	// rg-aekzc427db******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// A list of routing rules for the Bastionhost instance.
+	// The list of rules for the bastion host instance.
 	RouterRules []*string `json:"RouterRules,omitempty" xml:"RouterRules,omitempty" type:"Repeated"`
-	// Indicates whether the script-based O\\&M module is enabled. Valid values are `Enable` and `Disable`.
+	// The script O&M module. Valid values: Enable (enabled) and Disable (disabled).
 	//
 	// example:
 	//
 	// Enable
 	ScriptDeliverModule *string `json:"ScriptDeliverModule,omitempty" xml:"ScriptDeliverModule,omitempty"`
-	// A list of the instance\\"s security group IDs.
+	// The list of security group IDs to which the instance belongs.
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
-	// The ID of the standby VSwitch for the Bastionhost instance.
+	// The ID of the secondary vSwitch associated with the bastion host instance.
 	//
 	// example:
 	//
 	// vsw-uf6cmnae7hu5****
 	SlaveVswitchId *string `json:"SlaveVswitchId,omitempty" xml:"SlaveVswitchId,omitempty"`
-	// The timestamp, in milliseconds, when the Bastionhost instance was purchased or renewed.
+	// The timestamp when the bastion host instance was purchased or renewed. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1577681345000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total storage capacity of the Bastionhost instance, in bytes.
+	// The total storage capacity of the purchased bastion host. Unit: bytes.
 	//
 	// example:
 	//
 	// 2199023255552
 	Storage *int64 `json:"Storage,omitempty" xml:"Storage,omitempty"`
-	// The ID of the instance\\"s Virtual Private Cloud (VPC).
+	// The VPC ID associated with the instance.
 	//
 	// example:
 	//
 	// vpc-bp1c85tzgqu1bf5bxxxxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the instance\\"s VSwitch.
+	// The vSwitch ID associated with the instance.
 	//
 	// example:
 	//
 	// vsw-bp1xfwzzfti0kjbfxxxxx
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	// The status of the web terminal.
+	// The status of the Web Terminal feature.
 	//
-	// - **Enable**: Supports web-based remote connections.
+	// - **Enable**: Web remote connection is supported.
 	//
-	// - **Disable**: Does not support web-based remote connections.
+	// - **Disable**: Web remote connection is not supported.
 	//
 	// example:
 	//
 	// Enable
 	WebTerminalModule *string `json:"WebTerminalModule,omitempty" xml:"WebTerminalModule,omitempty"`
-	// The configured IP address whitelist policies.
+	// The IP address whitelist to configure.
 	WhiteListPolicies []*DescribeInstanceAttributeResponseBodyInstanceAttributeWhiteListPolicies `json:"WhiteListPolicies,omitempty" xml:"WhiteListPolicies,omitempty" type:"Repeated"`
 }
 
@@ -288,6 +290,14 @@ func (s DescribeInstanceAttributeResponseBodyInstanceAttribute) String() string 
 
 func (s DescribeInstanceAttributeResponseBodyInstanceAttribute) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) GetAiCreditStatus() *string {
+	return s.AiCreditStatus
+}
+
+func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) GetAiOpsModule() *string {
+	return s.AiOpsModule
 }
 
 func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) GetAppOperationModule() *string {
@@ -440,6 +450,16 @@ func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) GetWebTerminalM
 
 func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) GetWhiteListPolicies() []*DescribeInstanceAttributeResponseBodyInstanceAttributeWhiteListPolicies {
 	return s.WhiteListPolicies
+}
+
+func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetAiCreditStatus(v string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
+	s.AiCreditStatus = &v
+	return s
+}
+
+func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetAiOpsModule(v string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
+	s.AiOpsModule = &v
+	return s
 }
 
 func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetAppOperationModule(v string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
@@ -655,15 +675,15 @@ func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) Validate() erro
 }
 
 type DescribeInstanceAttributeResponseBodyInstanceAttributePorts struct {
-	// The custom O\\&M port.
+	// The custom port defined by the user.
 	//
-	// > Only SSH and RDP ports can be customized. If no custom port is set, this parameter returns the value of the `StandardPort` parameter.
+	// > Only SSH and RDP ports can be modified. If no custom O&M port is configured for the bastion host, the value is the same as the standard port.
 	//
 	// example:
 	//
 	// 600xx
 	CustomPort *int32 `json:"CustomPort,omitempty" xml:"CustomPort,omitempty"`
-	// The standard O\\&M port number. The following are the default standard ports for specific protocols:
+	// The standard port of the bastion host. Valid values:
 	//
 	// - **SSH**: 60022
 	//
@@ -714,7 +734,7 @@ type DescribeInstanceAttributeResponseBodyInstanceAttributeWhiteListPolicies str
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// An IP address or CIDR block in the whitelist.
+	// The IP address whitelist to configure. A maximum of 50 IP addresses are supported. Separate multiple IP addresses with commas (,).
 	//
 	// example:
 	//

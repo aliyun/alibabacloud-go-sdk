@@ -14,7 +14,7 @@ type iModifyInstanceAttributeResponseBody interface {
 }
 
 type ModifyInstanceAttributeResponseBody struct {
-	// The ID of the request. Alibaba Cloud generates a unique ID for each request. You can use this ID to troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
 	//
 	// example:
 	//

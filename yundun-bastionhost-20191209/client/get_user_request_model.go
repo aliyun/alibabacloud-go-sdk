@@ -18,9 +18,9 @@ type iGetUserRequest interface {
 }
 
 type GetUserRequest struct {
-	// The ID of the bastion host on which you want to query the user.
+	// The instance ID of the Bastionhost instance to which the user belongs.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can invoke [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -28,17 +28,17 @@ type GetUserRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host on which you want to query the user.
+	// The region ID of the Bastionhost instance to which the user belongs.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the user.
+	// The ID of the user that you want to query.
 	//
-	// > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the ID of the user.
+	// > You can call [ListUsers](https://help.aliyun.com/document_detail/204522.html) to obtain this parameter.
 	//
 	// This parameter is required.
 	//

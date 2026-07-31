@@ -18,7 +18,7 @@ type iRejectOperationTaskApprovalRequest interface {
 }
 
 type RejectOperationTaskApprovalRequest struct {
-	// The ID of the O&M task approval.
+	// The O&M task approval ID.
 	//
 	// > You can call the ListTodoOpsTaskApprovals operation to query this parameter.
 	//
@@ -40,7 +40,7 @@ type RejectOperationTaskApprovalRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the bastion host.
 	//
-	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//

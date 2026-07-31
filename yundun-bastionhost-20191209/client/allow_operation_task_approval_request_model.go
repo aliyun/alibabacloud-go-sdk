@@ -18,7 +18,7 @@ type iAllowOperationTaskApprovalRequest interface {
 }
 
 type AllowOperationTaskApprovalRequest struct {
-	// The ID of the O&M task approval.
+	// The approval ID of the O&M task.
 	//
 	// > You can call the ListTodoOpsTaskApprovals operation to query this parameter.
 	//
@@ -28,9 +28,9 @@ type AllowOperationTaskApprovalRequest struct {
 	//
 	// 1
 	ApproveId *string `json:"ApproveId,omitempty" xml:"ApproveId,omitempty"`
-	// The instance ID of the bastion host.
+	// The ID of the bastion host instance.
 	//
-	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//

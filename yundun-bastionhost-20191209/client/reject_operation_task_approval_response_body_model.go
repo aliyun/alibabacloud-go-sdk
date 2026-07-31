@@ -66,6 +66,9 @@ func (s *RejectOperationTaskApprovalResponseBody) Validate() error {
 }
 
 type RejectOperationTaskApprovalResponseBodyResults struct {
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error message.
 	//

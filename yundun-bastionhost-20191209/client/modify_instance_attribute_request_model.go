@@ -18,17 +18,17 @@ type iModifyInstanceAttributeRequest interface {
 }
 
 type ModifyInstanceAttributeRequest struct {
-	// The description of the Bastionhost instance.
+	// The description of the bastion host instance.
 	//
-	// > The description can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). Maximum 30 characters.
+	// > The description can contain only letters, Chinese characters, digits, underscores (_), or hyphens (-), and cannot exceed 30 characters in length.
 	//
 	// example:
 	//
 	// Bastionhost demo
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the Bastionhost instance.
+	// The ID of the bastion host instance.
 	//
-	// > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the instance ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,9 +36,9 @@ type ModifyInstanceAttributeRequest struct {
 	//
 	// bastionhost-cn-78v1gh****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the Bastionhost instance.
+	// The region ID of the bastion host instance.
 	//
-	// > For more information about regions and zones, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//

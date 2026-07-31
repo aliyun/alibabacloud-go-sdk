@@ -125,7 +125,7 @@ type ListTodoOpsTaskApprovalsResponseBodyApproves struct {
 	//
 	// - **CycleInterval**: periodic execution.
 	//
-	// - **Manual**: manually triggered by a user.
+	// - **Manual**: manually triggered by the user.
 	//
 	// example:
 	//

@@ -40,7 +40,7 @@ type ListTodoOpsTaskApprovalsRequest struct {
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The page number of the page to return in a paging query. Default value: **1**.
+	// The page number of the current page in a paging query. Default value: **1**.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ListTodoOpsTaskApprovalsRequest struct {
 	//
 	// - **CycleInterval**: periodic execution.
 	//
-	// - **Manual**: manually triggered by a user.
+	// - **Manual**: manually triggered by the user.
 	//
 	// example:
 	//

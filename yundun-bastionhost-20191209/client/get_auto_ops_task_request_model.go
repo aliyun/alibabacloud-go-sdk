@@ -20,7 +20,7 @@ type iGetAutoOpsTaskRequest interface {
 type GetAutoOpsTaskRequest struct {
 	// The instance ID of the bastion host.
 	//
-	// > You can invoke [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) to obtain this parameter.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type GetAutoOpsTaskRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the O&M task to query.
+	// The ID of the O&M task that you want to query.
 	//
 	// This parameter is required.
 	//

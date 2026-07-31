@@ -22,15 +22,15 @@ type iListOperationTicketsRequest interface {
 }
 
 type ListOperationTicketsRequest struct {
-	// The address of the asset for which the O\\&M request is pending approval. This parameter supports exact match searches.
+	// The exact asset address to search for in the pending approval list.
 	//
 	// example:
 	//
 	// 10.167.XX.XX
 	AssetAddress *string `json:"AssetAddress,omitempty" xml:"AssetAddress,omitempty"`
-	// The ID of the Bastionhost instance.
+	// The instance ID of the bastion host.
 	//
-	// > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+	// > You can invoke [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -38,23 +38,25 @@ type ListOperationTicketsRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number for a paged query. The default value is **1**.
+	// The page number for a paged query. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries to return on each page of a paged query.<br> The maximum value for the PageSize parameter is 1000. The default value is 20. If you leave this parameter empty, 20 entries are returned.<br><br>
+	// The maximum number of entries per page for a paged query.
 	//
-	// > We recommend that you specify this parameter.
+	// The maximum value of PageSize is 1000. The default number of entries per page is 20. If PageSize is left empty, 20 entries are returned by default.
+	//
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the Bastionhost instance.
+	// The region ID of the bastion host.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//

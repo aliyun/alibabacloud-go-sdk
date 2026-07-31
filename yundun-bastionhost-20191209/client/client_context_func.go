@@ -379,7 +379,7 @@ func (client *Client) AddUsersToGroupWithContext(ctx context.Context, request *A
 
 // Summary:
 //
-// Approves an O&M task request.
+// Approves an O&M task execution request.
 //
 // @param request - AllowOperationTaskApprovalRequest
 //
@@ -2633,7 +2633,7 @@ func (client *Client) DeleteUserPublicKeyWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Returns all instance attributes, such as its instance ID and description.
+// Queries all attribute information of an instance, such as the instance ID and instance description.
 //
 // @param request - DescribeInstanceAttributeRequest
 //
@@ -3293,7 +3293,7 @@ func (client *Client) DisableRuleWithContext(ctx context.Context, request *Disab
 
 // Summary:
 //
-// Enables public network access for a specified Bastionhost instance.
+// Enables the public access switch for a specified Bastionhost instance.
 //
 // @param request - EnableInstancePublicAccessRequest
 //
@@ -3485,7 +3485,7 @@ func (client *Client) GenerateAssetOperationTokenWithContext(ctx context.Context
 
 // Summary:
 //
-// Retrieves the details of a specified O&M task for an administrator.
+// Queries the details of a specified O&M task.
 //
 // @param request - GetAutoOpsTaskRequest
 //
@@ -4377,7 +4377,7 @@ func (client *Client) GetRuleWithContext(ctx context.Context, request *GetRuleRe
 
 // Summary:
 //
-// Retrieves the details of a user of a bastion host.
+// Retrieves the details of a specified Bastionhost user.
 //
 // @param request - GetUserRequest
 //
@@ -6369,13 +6369,13 @@ func (client *Client) ListOperationHostsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Lists the O&M requests that require approval.
+// Retrieves the list of O&M applications that require approval.
 //
 // Description:
 //
-// Queries the operations and maintenance (O\\&M) requests that require administrator approval.
+// Retrieves the list of O&M applications that require approval for an administrator.
 //
-// The queries per second (QPS) limit for this operation is 10 per user. Exceeding this limit triggers throttling, which can affect your business. Plan your calls accordingly.
+// The China site Chinese QPS limit for this API is 10 requests per second. If this limit is exceeded, throttling is triggered, which may affect your business. Call this API appropriately.
 //
 // @param request - ListOperationTicketsRequest
 //
@@ -6683,7 +6683,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Retrieves pending automated O&M approval requests.
+// Retrieves the list of pending automated O&M approval requests.
 //
 // @param request - ListTodoOpsTaskApprovalsRequest
 //
@@ -6867,7 +6867,7 @@ func (client *Client) ListUserPublicKeysWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries a list of users of a bastion host.
+// Retrieves the list of users for a specified bastion host.
 //
 // @param request - ListUsersRequest
 //
@@ -7675,7 +7675,7 @@ func (client *Client) ModifyInstanceADAuthServerWithContext(ctx context.Context,
 
 // Summary:
 //
-// Modifies the attributes of a specified Bastionhost instance.
+// Modifies the information of a specified bastion host instance.
 //
 // @param request - ModifyInstanceAttributeRequest
 //
@@ -8557,7 +8557,7 @@ func (client *Client) RejectApproveCommandWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Rejects an O&M task approval.
+// Rejects an O&M task execution request.
 //
 // @param request - RejectOperationTaskApprovalRequest
 //
