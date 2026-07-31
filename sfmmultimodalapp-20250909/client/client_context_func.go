@@ -1059,6 +1059,54 @@ func (client *Client) ListPublishedMmAppWithContext(ctx context.Context, request
 
 // Summary:
 //
+// 查询音色列表
+//
+// @param request - ListVoiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVoiceResponse
+func (client *Client) ListVoiceWithContext(ctx context.Context, request *ListVoiceRequest, runtime *dara.RuntimeOptions) (_result *ListVoiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ModelId) {
+		query["ModelId"] = request.ModelId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListVoice"),
+		Version:     dara.String("2025-09-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListVoiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 多模态应用绑定MCP
 //
 // @param tmpReq - MmAppBindingMcpRequest
@@ -1515,6 +1563,50 @@ func (client *Client) QueryProfileWithContext(ctx context.Context, request *Quer
 
 // Summary:
 //
+// 查询选项
+//
+// @param request - QuerySelectOptionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySelectOptionsResponse
+func (client *Client) QuerySelectOptionsWithContext(ctx context.Context, request *QuerySelectOptionsRequest, runtime *dara.RuntimeOptions) (_result *QuerySelectOptionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QuerySelectOptions"),
+		Version:     dara.String("2025-09-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QuerySelectOptionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询用户画像
 //
 // @param request - QueryUserProfileRequest
@@ -1803,6 +1895,96 @@ func (client *Client) UpdateMmAppWithContext(ctx context.Context, tmpReq *Update
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateMmAppResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新应用和绑定信息
+//
+// @param tmpReq - UpdateMmAppAndBindingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMmAppAndBindingResponse
+func (client *Client) UpdateMmAppAndBindingWithContext(ctx context.Context, tmpReq *UpdateMmAppAndBindingRequest, runtime *dara.RuntimeOptions) (_result *UpdateMmAppAndBindingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateMmAppAndBindingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BindingConfig) {
+		request.BindingConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BindingConfig, dara.String("BindingConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ConversationConfig) {
+		request.ConversationConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ConversationConfig, dara.String("ConversationConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.MemoryConfig) {
+		request.MemoryConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MemoryConfig, dara.String("MemoryConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ModelConfig) {
+		request.ModelConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ModelConfig, dara.String("ModelConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.BindingConfigShrink) {
+		query["BindingConfig"] = request.BindingConfigShrink
+	}
+
+	if !dara.IsNil(request.ConversationConfigShrink) {
+		query["ConversationConfig"] = request.ConversationConfigShrink
+	}
+
+	if !dara.IsNil(request.MemoryConfigShrink) {
+		query["MemoryConfig"] = request.MemoryConfigShrink
+	}
+
+	if !dara.IsNil(request.ModelConfigShrink) {
+		query["ModelConfig"] = request.ModelConfigShrink
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		query["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMmAppAndBinding"),
+		Version:     dara.String("2025-09-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMmAppAndBindingResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
