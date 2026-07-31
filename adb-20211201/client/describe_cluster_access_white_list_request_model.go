@@ -18,14 +18,21 @@ type iDescribeClusterAccessWhiteListRequest interface {
 }
 
 type DescribeClusterAccessWhiteListRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	//
+	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-bp11q28kvl688****
-	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 }

@@ -24,19 +24,19 @@ type iCreateApsKafkaHudiJobResponseBody interface {
 }
 
 type CreateApsKafkaHudiJobResponseBody struct {
-	// Same as HTTP status code.
+	// The same as the HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returns the ID of the created task.
+	// The ID of the created task.
 	//
 	// example:
 	//
 	// xxx
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -48,13 +48,15 @@ type CreateApsKafkaHudiJobResponseBody struct {
 	//
 	// ok
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1A943417-5B0E-1DB9-A8**-A566****C3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. true: The request is successful. false: The message group failed to be unmuted.
+	// Indicates whether the request was successful.
+	//
+	// True: The request was successful. False: The request failed.
 	//
 	// example:
 	//

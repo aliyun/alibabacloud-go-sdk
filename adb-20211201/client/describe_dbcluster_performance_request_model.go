@@ -24,9 +24,11 @@ type iDescribeDBClusterPerformanceRequest interface {
 }
 
 type DescribeDBClusterPerformanceRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	// <props="china">The ID of an enterprise edition, basic edition, or Data Lakehouse Edition cluster.
 	//
-	// >  You can call the [DescribeDBClusters](~~~612397~~~) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+	// <props="intl">The ID of a Data Lakehouse Edition cluster.
+	//
+	// > You can call the [DescribeDBClusters](~~~612397~~~) operation to query the IDs of all clusters in a specific region.
 	//
 	// This parameter is required.
 	//
@@ -34,23 +36,23 @@ type DescribeDBClusterPerformanceRequest struct {
 	//
 	// amv-bp1hx5n1o8f61****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC.
+	// The end of the time range. The time is in UTC and must be in the *yyyy-MM-ddTHH:mmZ	- format.
 	//
-	// > The end time must be later than the start time. The maximum time range that can be specified is two days.
+	// > The end time must be later than the start time. The time range cannot exceed two days.
 	//
 	// example:
 	//
 	// 2022-03-11T15:01Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The key of the performance metric that you want to query. Separate multiple keys with commas (,). For more information about the performance metrics, see [Metric overview](https://help.aliyun.com/document_detail/2863211.html).
+	// The key of the performance metric. Separate multiple keys with commas (,). For a list of supported metrics, see [metric overview](https://help.aliyun.com/document_detail/2863211.html).
 	//
 	// example:
 	//
 	// AnalyticDB_CPU_Usage_Percentage
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the regions and availability zones supported by AnalyticDB for MySQL, including the region IDs.
 	//
 	// This parameter is required.
 	//
@@ -58,13 +60,13 @@ type DescribeDBClusterPerformanceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The name of the resource pool.
 	//
 	// example:
 	//
 	// user_default
 	ResourcePools *string `json:"ResourcePools,omitempty" xml:"ResourcePools,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC.
+	// The start of the time range. The time is in UTC and must be in the *yyyy-MM-ddTHH:mmZ	- format.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iCancelSparkWarehouseBatchSQLResponseBody interface {
 }
 
 type CancelSparkWarehouseBatchSQLResponseBody struct {
-	// The returned data.
+	// The returned result.
 	//
 	// example:
 	//

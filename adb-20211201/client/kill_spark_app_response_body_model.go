@@ -72,19 +72,19 @@ type KillSparkAppResponseBodyData struct {
 	//
 	// example:
 	//
-	// LAKEHOUSE-1-1
+	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The cluster ID.
 	//
 	// example:
 	//
-	// amv-bp1c3em7b2e****
+	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The error message returned.
 	//
 	// example:
 	//
-	// [Advisor] Advisor feature is not available for instance: am-2ze292w4fyglwxxxx
+	// [Advisor] Advisor feature is not available for instance: amv-bp11q28kvl688****
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The execution state of the Spark application. Valid values:
 	//
@@ -112,7 +112,7 @@ type KillSparkAppResponseBodyData struct {
 	//
 	// example:
 	//
-	// running
+	// KILLED
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 

@@ -24,7 +24,7 @@ type iApplyAdviceByIdRequest interface {
 }
 
 type ApplyAdviceByIdRequest struct {
-	// The date on which you want to apply the suggestion. Format: yyyyMMdd.
+	// The date when the suggestion was generated. Format: yyyyMMdd.
 	//
 	// example:
 	//
@@ -35,9 +35,19 @@ type ApplyAdviceByIdRequest struct {
 	// example:
 	//
 	// 0baf1f52-53df-487f-8292-99a03716****
-	AdviceId         *string `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
-	ApplyType        *string `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
-	BuildImmediately *bool   `json:"BuildImmediately,omitempty" xml:"BuildImmediately,omitempty"`
+	AdviceId *string `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
+	// The adoption type.
+	//
+	// example:
+	//
+	// DROP_INDEX
+	ApplyType *string `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
+	// Specifies whether to immediately start the build task.
+	//
+	// example:
+	//
+	// true
+	BuildImmediately *bool `json:"BuildImmediately,omitempty" xml:"BuildImmediately,omitempty"`
 	// The cluster ID.
 	//
 	// This parameter is required.

@@ -237,7 +237,7 @@ type DescribeApsJobsResponseBodyAPSJobs struct {
 	//
 	// example:
 	//
-	// 30: The progress is 30%.
+	// 30: progress 30%
 	Projress *string `json:"Projress,omitempty" xml:"Projress,omitempty"`
 	// The ID of the source instance or cluster.
 	//

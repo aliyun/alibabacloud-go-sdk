@@ -24,29 +24,29 @@ type iCreateApsHiveJobResponseBody interface {
 }
 
 type CreateApsHiveJobResponseBody struct {
-	// The response code.
+	// The API status code or POP error code.
 	//
 	// example:
 	//
 	// InvalidInput
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data returned for the workload.
 	//
 	// example:
 	//
 	// -
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The response code. The status code 200 indicates that the request was successful.
+	// The HTTP status code. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message. Valid values:
+	// The additional information about the result. Valid values:
 	//
-	// 	- If the request was successful, a success message is returned.
+	// - If the request was successful, **Success*	- is returned.
 	//
-	// 	- If the request failed, an error message is returned.
+	// - If the request failed, the specific error code is returned.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type CreateApsHiveJobResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **True**: The request was successful.
 	//
-	// 	- **false**
+	// - **False**: The request failed.
 	//
 	// example:
 	//

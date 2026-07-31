@@ -16,7 +16,6 @@ type iDescribeAccountsResponseBody interface {
 }
 
 type DescribeAccountsResponseBody struct {
-	// The queried database accounts.
 	AccountList *DescribeAccountsResponseBodyAccountList `json:"AccountList,omitempty" xml:"AccountList,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,56 +95,13 @@ func (s *DescribeAccountsResponseBodyAccountList) Validate() error {
 }
 
 type DescribeAccountsResponseBodyAccountListDBAccount struct {
-	// The description of the database account.
-	//
-	// example:
-	//
-	// test_accout_des
-	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The name of the database account.
-	//
-	// example:
-	//
-	// test_accout
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The status of the database account. Valid values:
-	//
-	// 	- **Creating**
-	//
-	// 	- **Available**
-	//
-	// 	- **Deleting**
-	//
-	// example:
-	//
-	// Available
-	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
-	// The type of the database account. Valid values:
-	//
-	// 	- **Normal**: standard account.
-	//
-	// 	- **Super**: privileged account.
-	//
-	// example:
-	//
-	// Normal
-	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The database engine of the cluster. Valid values:
-	//
-	// 	- **AnalyticDB**: the AnalyticDB for MySQL engine.
-	//
-	// 	- **Clickhouse**: the wide table engine.
-	//
-	// example:
-	//
-	// Clickhouse
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The ID of the Resource Access Management (RAM) user.
-	//
-	// example:
-	//
-	// 1958134230****
-	RamUsers *string `json:"RamUsers,omitempty" xml:"RamUsers,omitempty"`
+	AccountDescription *string                                                      `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
+	AccountName        *string                                                      `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountStatus      *string                                                      `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
+	AccountType        *string                                                      `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	Engine             *string                                                      `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	RamUserList        *DescribeAccountsResponseBodyAccountListDBAccountRamUserList `json:"RamUserList,omitempty" xml:"RamUserList,omitempty" type:"Struct"`
+	RamUsers           *string                                                      `json:"RamUsers,omitempty" xml:"RamUsers,omitempty"`
 }
 
 func (s DescribeAccountsResponseBodyAccountListDBAccount) String() string {
@@ -174,6 +130,10 @@ func (s *DescribeAccountsResponseBodyAccountListDBAccount) GetAccountType() *str
 
 func (s *DescribeAccountsResponseBodyAccountListDBAccount) GetEngine() *string {
 	return s.Engine
+}
+
+func (s *DescribeAccountsResponseBodyAccountListDBAccount) GetRamUserList() *DescribeAccountsResponseBodyAccountListDBAccountRamUserList {
+	return s.RamUserList
 }
 
 func (s *DescribeAccountsResponseBodyAccountListDBAccount) GetRamUsers() *string {
@@ -205,11 +165,46 @@ func (s *DescribeAccountsResponseBodyAccountListDBAccount) SetEngine(v string) *
 	return s
 }
 
+func (s *DescribeAccountsResponseBodyAccountListDBAccount) SetRamUserList(v *DescribeAccountsResponseBodyAccountListDBAccountRamUserList) *DescribeAccountsResponseBodyAccountListDBAccount {
+	s.RamUserList = v
+	return s
+}
+
 func (s *DescribeAccountsResponseBodyAccountListDBAccount) SetRamUsers(v string) *DescribeAccountsResponseBodyAccountListDBAccount {
 	s.RamUsers = &v
 	return s
 }
 
 func (s *DescribeAccountsResponseBodyAccountListDBAccount) Validate() error {
+	if s.RamUserList != nil {
+		if err := s.RamUserList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeAccountsResponseBodyAccountListDBAccountRamUserList struct {
+	RamUserList []*string `json:"RamUserList,omitempty" xml:"RamUserList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAccountsResponseBodyAccountListDBAccountRamUserList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAccountsResponseBodyAccountListDBAccountRamUserList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccountsResponseBodyAccountListDBAccountRamUserList) GetRamUserList() []*string {
+	return s.RamUserList
+}
+
+func (s *DescribeAccountsResponseBodyAccountListDBAccountRamUserList) SetRamUserList(v []*string) *DescribeAccountsResponseBodyAccountListDBAccountRamUserList {
+	s.RamUserList = v
+	return s
+}
+
+func (s *DescribeAccountsResponseBodyAccountListDBAccountRamUserList) Validate() error {
 	return dara.Validate(s)
 }

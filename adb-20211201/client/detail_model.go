@@ -44,50 +44,74 @@ type iDetail interface {
 }
 
 type Detail struct {
+	// The type of the Spark application.
+	//
 	// example:
 	//
 	// BATCH
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// The ID of the cluster that runs the Spark application.
+	//
 	// example:
 	//
-	// amv-bp11q28kv****
+	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The configuration content of the Spark application.
+	//
 	// example:
 	//
 	// {     "name": "SparkPi",     "file": "local:///tmp/spark-examples.jar",     "className": "org.apache.spark.examples.SparkPi",     "args": [         "1000000"     ],     "conf": {         "spark.driver.resourceSpec": "small",         "spark.executor.instances": 1,         "spark.executor.resourceSpec": "small"     } }
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The execution duration of the Spark application, in milliseconds (ms).
+	//
 	// example:
 	//
 	// 100
 	DurationInMillis *int64 `json:"DurationInMillis,omitempty" xml:"DurationInMillis,omitempty"`
+	// The CPU time consumed by the Spark application, in milliseconds (ms).
+	//
 	// example:
 	//
 	// 100
 	EstimateExecutionCpuTimeInSeconds *int64 `json:"EstimateExecutionCpuTimeInSeconds,omitempty" xml:"EstimateExecutionCpuTimeInSeconds,omitempty"`
+	// The execution duration.
+	//
 	// example:
 	//
 	// 36000
 	ExecutionDurationInMillis *int64 `json:"ExecutionDurationInMillis,omitempty" xml:"ExecutionDurationInMillis,omitempty"`
+	// The ID of the last retry of the Spark application.
+	//
 	// example:
 	//
-	// s202204291426hzpre60cfa*****-0003
+	// s202204291426hzpre60****-0003
 	LastAttemptId *string `json:"LastAttemptId,omitempty" xml:"LastAttemptId,omitempty"`
+	// The time when the Spark application was last updated. This value is a UNIX timestamp, in milliseconds (ms).
+	//
 	// example:
 	//
 	// 1651213645200
 	LastUpdatedTimeInMillis *int64 `json:"LastUpdatedTimeInMillis,omitempty" xml:"LastUpdatedTimeInMillis,omitempty"`
+	// The storage path of the log file.
+	//
 	// example:
 	//
 	// oss://<bucket-name>/logs/driver
 	LogRootPath *string `json:"LogRootPath,omitempty" xml:"LogRootPath,omitempty"`
+	// The name of the job resource group.
+	//
 	// example:
 	//
 	// spark-rg
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	// The duration of resource provisioning for the application.
+	//
 	// example:
 	//
 	// 36000
 	ResourceProvisioningDurationInMillis *int64 `json:"ResourceProvisioningDurationInMillis,omitempty" xml:"ResourceProvisioningDurationInMillis,omitempty"`
+	// The timestamp when the job started running.
+	//
 	// if can be null:
 	// false
 	//
@@ -95,21 +119,29 @@ type Detail struct {
 	//
 	// 36000
 	RunningStartTimeInMillis *int64 `json:"RunningStartTimeInMillis,omitempty" xml:"RunningStartTimeInMillis,omitempty"`
+	// The time when the Spark application was created. This value is a UNIX timestamp, in milliseconds (ms).
+	//
 	// example:
 	//
 	// 1651213645010
 	StartedTimeInMillis *int64 `json:"StartedTimeInMillis,omitempty" xml:"StartedTimeInMillis,omitempty"`
+	// The time when the Spark application was submitted. This value is a UNIX timestamp, in milliseconds (ms).
+	//
 	// example:
 	//
 	// 1651213645000
 	SubmittedTimeInMillis *int64 `json:"SubmittedTimeInMillis,omitempty" xml:"SubmittedTimeInMillis,omitempty"`
+	// The time when the Spark application was terminated. This value is a UNIX timestamp, in milliseconds (ms).
+	//
 	// example:
 	//
 	// 1651213645300
 	TerminatedTimeInMillis *int64 `json:"TerminatedTimeInMillis,omitempty" xml:"TerminatedTimeInMillis,omitempty"`
+	// The Web UI address.
+	//
 	// example:
 	//
-	// https://sparkui.aliyuncs.com/token=xxx
+	// https://adbsparkui-cn-hangzhou.aliyuncs.com/?token=****
 	WebUiAddress *string `json:"WebUiAddress,omitempty" xml:"WebUiAddress,omitempty"`
 }
 

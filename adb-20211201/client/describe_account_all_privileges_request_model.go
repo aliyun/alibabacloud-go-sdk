@@ -20,7 +20,7 @@ type iDescribeAccountAllPrivilegesRequest interface {
 }
 
 type DescribeAccountAllPrivilegesRequest struct {
-	// The name of the database account.
+	// The database account name for the cluster.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,9 @@ type DescribeAccountAllPrivilegesRequest struct {
 	//
 	// account1
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// <props="china">The cluster ID for the Enterprise Edition, Basic Edition, or Data Lakehouse Edition.
+	//
+	// <props="intl">The cluster ID for the Data Lakehouse Edition.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +38,13 @@ type DescribeAccountAllPrivilegesRequest struct {
 	//
 	// amv-bp14t95lun0w****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies the start position marker from which to return results. If you receive a response indicating that the results are truncated, set this parameter to the value of the `Marker` parameter in the response that you received.
+	// If the response is truncated, use the `Marker` value from the response in this field to retrieve the next set of results.
 	//
 	// example:
 	//
 	// EXAMPLE
 	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
 	// This parameter is required.
 	//

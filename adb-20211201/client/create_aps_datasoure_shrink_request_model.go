@@ -46,19 +46,19 @@ type CreateApsDatasoureShrinkRequest struct {
 	//
 	// amv-xxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The information about the Databricks data source.
+	// The Databricks data source information.
 	//
 	// example:
 	//
 	// -
 	DatabricksInfoShrink *string `json:"DatabricksInfo,omitempty" xml:"DatabricksInfo,omitempty"`
-	// The description of the data source.
+	// The data source description.
 	//
 	// example:
 	//
 	// description
 	DatasourceDescription *string `json:"DatasourceDescription,omitempty" xml:"DatasourceDescription,omitempty"`
-	// The name of the data source.
+	// The data source name.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type CreateApsDatasoureShrinkRequest struct {
 	//
 	// sls-******
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
-	// The type of the data source.
+	// The data source type.
 	//
 	// This parameter is required.
 	//
@@ -74,13 +74,13 @@ type CreateApsDatasoureShrinkRequest struct {
 	//
 	// KAFKA
 	DatasourceType *string `json:"DatasourceType,omitempty" xml:"DatasourceType,omitempty"`
-	// The information about the Hive data source.
+	// The Hive data source information.
 	//
 	// example:
 	//
 	// -
 	HiveInfoShrink *string `json:"HiveInfo,omitempty" xml:"HiveInfo,omitempty"`
-	// The information about the source Apache Kafka instance.
+	// The Kafka information.
 	//
 	// example:
 	//
@@ -92,19 +92,19 @@ type CreateApsDatasoureShrinkRequest struct {
 	//
 	// ALI_CLOUD_INSTANCE
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The information about the source PolarDB for MySQL cluster.
+	// The PolarDB for MySQL data source information.
 	//
 	// example:
 	//
 	// -
 	PolarDBMysqlInfoShrink *string `json:"PolarDBMysqlInfo,omitempty" xml:"PolarDBMysqlInfo,omitempty"`
-	// The information about the source PolarDB-X instance.
+	// The PolarDB-X data source information.
 	//
 	// example:
 	//
 	// -
 	PolarDBXInfoShrink *string `json:"PolarDBXInfo,omitempty" xml:"PolarDBXInfo,omitempty"`
-	// The information about the source ApsaraDB RDS for MySQL instance.
+	// The ApsaraDB RDS for MySQL data source information.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type CreateApsDatasoureShrinkRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The information about the source Simple Log Service (SLS) instance or cluster.
+	// The Simple Log Service (SLS) information for the data source to be created.
 	//
 	// example:
 	//

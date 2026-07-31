@@ -32,7 +32,7 @@ type iDescribeWorkerDetectionRequest interface {
 type DescribeWorkerDetectionRequest struct {
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the details of all AnalyticDB for MySQL clusters in a region, including the cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -40,17 +40,17 @@ type DescribeWorkerDetectionRequest struct {
 	//
 	// am-xxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC.
+	// The end of the query time range. Specify the time in the <i>yyyy-MM-ddTHH:mmZ</i> format (UTC).
 	//
 	// example:
 	//
 	// 2024-04-25T02:04Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language. Valid values:
+	// The display language of suggestions. Valid values:
 	//
-	// 	- **zh*	- (default): simplified Chinese.
+	// - **zh**: simplified Chinese (default).
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type DescribeWorkerDetectionRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612293.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612293.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type DescribeWorkerDetectionRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC.
+	// The beginning of the query time range. Specify the time in the <i>yyyy-MM-ddTHH:mmZ</i> format (UTC).
 	//
 	// example:
 	//

@@ -24,21 +24,21 @@ type iDescribeAvailableAdvicesResponseBody interface {
 }
 
 type DescribeAvailableAdvicesResponseBody struct {
-	// The queried suggestions.
+	// The optimization advice items.
 	Items []*DescribeAvailableAdvicesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. The value is greater than 0 and less than or equal to the maximum value of the integer data type. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values:
+	// The number of entries to return on each page. Valid values:
 	//
-	// 	- **30*	- (default)
+	// - **30*	- (default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type DescribeAvailableAdvicesResponseBody struct {
 	//
 	// 96A55627-28E9-5E47-B8F6-D786BE551349
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The name of the table in the DatabaseName.TableName format.
+	// The names of databases and tables.
 	SchemaTableNames []*string `json:"SchemaTableNames,omitempty" xml:"SchemaTableNames,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries returned. The value is greater than or equal to 0 and less than or equal to the maximum value of the integer data type. Default value: 0.
 	//
 	// example:
 	//
@@ -136,78 +136,83 @@ func (s *DescribeAvailableAdvicesResponseBody) Validate() error {
 }
 
 type DescribeAvailableAdvicesResponseBodyItems struct {
-	// The date when the suggestion is generated. The date is in the yyyyMMdd format.
+	// The date when the advice was generated. The date is displayed in the yyyyMMdd format.
 	//
 	// example:
 	//
 	// 20221124
 	AdviceDate *string `json:"AdviceDate,omitempty" xml:"AdviceDate,omitempty"`
-	// The suggestion ID.
+	// The advice ID.
 	//
 	// example:
 	//
 	// dcd04135-0925-4aed-a5a7-e7d92cb1****
 	AdviceId *string `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
-	// The type of the suggestion. Valid values:
+	// The type of the advice. Valid values:
 	//
-	// 	- **INDEX**: index optimization.
+	// - **INDEX**: index optimization.
 	//
-	// 	- **TIERING**: hot and cold data optimization.
+	// - **TIERING**: hot and cold data optimization.
 	//
 	// example:
 	//
 	// INDEX
 	AdviceType *string `json:"AdviceType,omitempty" xml:"AdviceType,omitempty"`
-	// The benefit of the suggestion.
+	// The benefits of the advice.
 	//
 	// example:
 	//
-	// 0.4 GB of storage saved
-	Benefit     *string `json:"Benefit,omitempty" xml:"Benefit,omitempty"`
+	// 节省0.4 GB的存储空间。
+	Benefit *string `json:"Benefit,omitempty" xml:"Benefit,omitempty"`
+	// The index fields.
+	//
+	// example:
+	//
+	// message
 	IndexFields *string `json:"IndexFields,omitempty" xml:"IndexFields,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. The value is greater than 0 and less than or equal to the maximum value of the integer data type. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values:
+	// The number of entries to return on each page. Valid values:
 	//
-	// 	- **30*	- (default)
+	// - **30*	- (default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// example:
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The reason why the suggestion was generated.
+	// The reason why the optimization advice is generated.
 	//
 	// example:
 	//
-	// Unused for 15 days, historical usage less than 1%
+	// 15天未使用，历史使用统计概率小于1%
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The SQL statement that is used to apply the suggestion.
+	// The SQL statement that is used to apply the advice.
 	//
 	// example:
 	//
 	// alter table `schema1`.`table1` drop key col1_1_idx
 	SQL *string `json:"SQL,omitempty" xml:"SQL,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// adb_demo
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//
 	// test_table
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries returned. The value is greater than or equal to 0 and less than or equal to the maximum value of the integer data type. Default value: 0.
 	//
 	// example:
 	//

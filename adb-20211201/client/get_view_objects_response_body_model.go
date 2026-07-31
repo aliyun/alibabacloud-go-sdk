@@ -22,9 +22,9 @@ type iGetViewObjectsResponseBody interface {
 }
 
 type GetViewObjectsResponseBody struct {
-	// The returned data.
+	// The response struct.
 	Data *GetViewObjectsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The page number. Pages start from page 1. Default value: **1**.
+	// The page number. The value is a positive integer that is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
@@ -32,11 +32,11 @@ type GetViewObjectsResponseBody struct {
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// 	- **30*	- (default)
+	// 	- **30*	- (default).
 	//
-	// 	- **50**
+	// 	- **50**.
 	//
-	// 	- **100**
+	// 	- **100**.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ func (s *GetViewObjectsResponseBody) Validate() error {
 }
 
 type GetViewObjectsResponseBodyData struct {
-	// The page number. Pages start from page 1. Default value: **1**.
+	// The page number. The value is a positive integer that is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
@@ -127,17 +127,17 @@ type GetViewObjectsResponseBodyData struct {
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// 	- **30*	- (default)
+	// 	- **30*	- (default).
 	//
-	// 	- **50**
+	// 	- **50**.
 	//
-	// 	- **100**
+	// 	- **100**.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The queried views.
+	// The result array.
 	TableSummaryModels []*TableSummaryModel `json:"TableSummaryModels,omitempty" xml:"TableSummaryModels,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//

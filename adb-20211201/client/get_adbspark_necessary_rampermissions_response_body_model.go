@@ -16,9 +16,9 @@ type iGetADBSparkNecessaryRAMPermissionsResponseBody interface {
 }
 
 type GetADBSparkNecessaryRAMPermissionsResponseBody struct {
-	// The returned result.
+	// The returned data.
 	Data *GetADBSparkNecessaryRAMPermissionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ func (s *GetADBSparkNecessaryRAMPermissionsResponseBody) Validate() error {
 }
 
 type GetADBSparkNecessaryRAMPermissionsResponseBodyData struct {
-	// When permission check fails, returns diagnostic information related to permission check failure.
+	// The diagnostic information returned when the permission check fails.
 	DeniedDetail *GetADBSparkNecessaryRAMPermissionsResponseBodyDataDeniedDetail `json:"DeniedDetail,omitempty" xml:"DeniedDetail,omitempty" type:"Struct"`
-	// Check whether the use has the basic permissions to use Analytic DB for Spark.
+	// Indicates whether the current user has the basic permissions to use ADB Spark. Valid values:
 	//
-	// 	- true: The check is passed and the basic permissions are granted.
+	// - true: The check is passed. The user has the basic permissions.
 	//
-	// 	- false: The check fails and some permissions are missing.
+	// - false: The check failed. The user is missing some permissions.
 	//
 	// example:
 	//
 	// true
 	Passed *bool `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	// Based on diagnostic information, recommends configurations for customers to perform in the RAM system.
+	// The recommended RAM configuration based on the diagnostic information.
 	//
 	// example:
 	//
@@ -127,33 +127,33 @@ func (s *GetADBSparkNecessaryRAMPermissionsResponseBodyData) Validate() error {
 }
 
 type GetADBSparkNecessaryRAMPermissionsResponseBodyDataDeniedDetail struct {
-	// The name of the RAM action that failed the authentication.
+	// The name of the RAM action for which authentication failed.
 	//
 	// example:
 	//
 	// ListSparkApps
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The type of the policy denial. Valid values:
+	// The type of access policy denial. Valid values:
 	//
-	// 	- ImplicitDeny: Resource owner has not configured relevant permission policies for the current user, default denial of unauthorized operations.
+	// - ImplicitDeny: The resource owner has not configured a relevant access policy for the current user. Unauthorized operations are denied by default.
 	//
-	// 	- ExplicitDeny: RAM policies configured by the resource owner explicitly deny the current user access to corresponding resources
+	// - ExplicitDeny: The RAM policy configured by the resource owner explicitly denies the current user authorization to access the corresponding resource.
 	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
-	// The type of the policy that causes the access denied error.
+	// The type of the policy that caused the permission denial. Valid values:
 	//
-	// 	- ControlPolicy: control policy
+	// - ControlPolicy: control policy.
 	//
-	// 	- SessionPolicy: Temporary Token additional permission policy
+	// - SessionPolicy: an additional permission policy attached to a temporary token.
 	//
-	// 	- AssumeRolePolicy: RAM role trust policy
+	// - AssumeRolePolicy: the trust policy of a RAM role.
 	//
-	// 	- AccountLevelIdentityBasedPolicy: Principal policy within account authorization scope, including custom policies and system policies
+	// - AccountLevelIdentityBasedPolicy: an identity-access policy at the account authorization scope, including custom policies and system policies.
 	//
-	// 	- ResourceGroupLevelIdentityBasedPolicy: Principal policy within resource group authorization scope, including custom policies and system policies.
+	// - ResourceGroupLevelIdentityBasedPolicy: an identity-access policy at the resource group authorization scope, including custom policies and system policies.
 	//
 	// example:
 	//
@@ -161,15 +161,15 @@ type GetADBSparkNecessaryRAMPermissionsResponseBodyDataDeniedDetail struct {
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	// The identity type of the current user. Valid values:
 	//
-	// 	- SubUser: a RAM user
+	// - SubUser: Resource Access Management (RAM) user.
 	//
-	// 	- AssumedRoleUser: a RAM role
+	// - AssumedRoleUser: RAM role.
 	//
 	// example:
 	//
 	// SubUser
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	// Authentication object information, can be the current user\\"s RAM account ID, or the role information corresponding to the current visitor.
+	// The information about the authentication target, which can be the Resource Access Management (RAM) users ID of the current user or the role information of the current accessor.
 	//
 	// example:
 	//

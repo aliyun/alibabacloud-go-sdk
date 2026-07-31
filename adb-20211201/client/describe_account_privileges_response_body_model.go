@@ -22,27 +22,27 @@ type iDescribeAccountPrivilegesResponseBody interface {
 }
 
 type DescribeAccountPrivilegesResponseBody struct {
-	// Details of the permissions.
+	// A list of privilege details.
 	Data []*DescribeAccountPrivilegesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number. This value matches the `PageNumber` input parameter.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page. This value matches the `PageSize` input parameter.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// DA32480A-E3E5-1BE7-BA98-724551DC04C8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total count of privileges at the specified privilege level.
 	//
 	// example:
 	//
@@ -117,15 +117,15 @@ func (s *DescribeAccountPrivilegesResponseBody) Validate() error {
 }
 
 type DescribeAccountPrivilegesResponseBodyData struct {
-	// The objects on which the permission takes effect, including databases, tables, columns, and additional descriptions.
+	// The privilege object, which specifies the database, table, column, and description.
 	PrivilegeObject *DescribeAccountPrivilegesResponseBodyDataPrivilegeObject `json:"PrivilegeObject,omitempty" xml:"PrivilegeObject,omitempty" type:"Struct"`
-	// The permission level of the permission. Valid values: `Global`, `Database`, `Table`, and `Column`. You can call the `DescribeEnabledPrivileges` parameter to query the permission level of a specific permission.
+	// The privilege level. Valid values: `Global`, `Database`, `Table`, and `Column`. The `DescribeEnabledPrivileges` API returns this value.
 	//
 	// example:
 	//
 	// Column
 	PrivilegeType *string `json:"PrivilegeType,omitempty" xml:"PrivilegeType,omitempty"`
-	// The name of the permission. You can call the `DescribeEnabledPrivileges` operation to query the name of the permission.
+	// A list of privileges.
 	Privileges []*string `json:"Privileges,omitempty" xml:"Privileges,omitempty" type:"Repeated"`
 }
 
@@ -174,25 +174,25 @@ func (s *DescribeAccountPrivilegesResponseBodyData) Validate() error {
 }
 
 type DescribeAccountPrivilegesResponseBodyDataPrivilegeObject struct {
-	// The name of the column.
+	// The column name.
 	//
 	// example:
 	//
 	// column1
 	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// db1
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The description of the permission object.
+	// The description.
 	//
 	// example:
 	//
 	// a test column
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//

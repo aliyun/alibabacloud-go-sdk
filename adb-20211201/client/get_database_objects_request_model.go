@@ -56,7 +56,13 @@ type GetDatabaseObjectsRequest struct {
 	//
 	// example:
 	//
-	// {"Type": "Desc","Field": "DbName"}
+	// {
+	//
+	//       "Type": "Desc",
+	//
+	//       "Field": "DatabaseName"
+	//
+	// }
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The page number. Pages start from page 1. Default value: **1**.
 	//

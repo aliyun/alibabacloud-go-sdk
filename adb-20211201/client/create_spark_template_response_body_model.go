@@ -16,7 +16,7 @@ type iCreateSparkTemplateResponseBody interface {
 }
 
 type CreateSparkTemplateResponseBody struct {
-	// The creation result.
+	// The result of creating the application template.
 	Data *CreateSparkTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,11 +62,11 @@ func (s *CreateSparkTemplateResponseBody) Validate() error {
 }
 
 type CreateSparkTemplateResponseBodyData struct {
-	// Indicates whether the application template is created. Valid values:
+	// Indicates whether the creation is successful. Valid values:
 	//
-	// 	- **True**
+	// - **True**: Successful.
 	//
-	// 	- **False**
+	// - **False**: Failed.
 	//
 	// example:
 	//

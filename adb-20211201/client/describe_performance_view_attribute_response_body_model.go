@@ -86,7 +86,7 @@ type DescribePerformanceViewAttributeResponseBody struct {
 	//
 	// example:
 	//
-	// Basic
+	// Custom-All metrics-2 columns-Linked
 	ViewName *string `json:"ViewName,omitempty" xml:"ViewName,omitempty"`
 }
 

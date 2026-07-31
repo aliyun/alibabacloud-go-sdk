@@ -32,7 +32,7 @@ type iGetTableObjectsRequest interface {
 }
 
 type GetTableObjectsRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -40,33 +40,33 @@ type GetTableObjectsRequest struct {
 	//
 	// am-bp1565u55p32****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The description of the table.
+	// The description.
 	//
 	// example:
 	//
 	// description
 	FilterDescription *string `json:"FilterDescription,omitempty" xml:"FilterDescription,omitempty"`
-	// The owner of the table.
+	// The owner.
 	//
 	// example:
 	//
 	// admin
 	FilterOwner *string `json:"FilterOwner,omitempty" xml:"FilterOwner,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//
 	// test_tbl
 	FilterTblName *string `json:"FilterTblName,omitempty" xml:"FilterTblName,omitempty"`
-	// The type of the table.
+	// The table type.
 	//
 	// Valid values:
 	//
-	// DIMENSION_TABLE
+	// - DIMENSION_TABLE
 	//
-	// FACT_TABLE
+	// - FACT_TABLE
 	//
-	// EXTERNAL_TABLE
+	// - EXTERNAL_TABLE
 	//
 	// Default value: null.
 	//
@@ -74,43 +74,43 @@ type GetTableObjectsRequest struct {
 	//
 	// FACT_TABLE
 	FilterTblType *string `json:"FilterTblType,omitempty" xml:"FilterTblType,omitempty"`
-	// The order in which the fields to be returned are sorted.
+	// The sorting field.
 	//
-	// Valid values:
+	// Valid values for Type:
 	//
-	// 	- Asc
+	// - Asc
 	//
-	// 	- Desc
+	// - Desc
 	//
-	// Values for fields:
+	// Valid values for Field:
 	//
-	// TableName
+	// - TableName
 	//
-	// TableSize
+	// - TableSize
 	//
-	// CreateTime
+	// - CreateTime
 	//
-	// UpdateTime
+	// - UpdateTime
 	//
-	// Default value: {"Type": "Desc","Field": "TableName"};
+	// Default value: {"Type": "Desc","Field": "TableName"}.
 	//
 	// example:
 	//
 	// {"Type": "Desc","Field": "TableName"}
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The number of the page to return. The value is an integer that is greater than 0. Default value: **1**.
+	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// 	- 30
+	// - 30
 	//
-	// 	- 50
+	// - 50
 	//
-	// 	- 100
+	// - 100
 	//
 	// Default value: 30.
 	//
@@ -118,7 +118,7 @@ type GetTableObjectsRequest struct {
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region in which the cluster resides.
+	// The region ID.
 	//
 	// This parameter is required.
 	//

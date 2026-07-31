@@ -34,7 +34,7 @@ type UpdateApsWebhookShrinkRequest struct {
 	//
 	// exampleRegionId
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The array of webhooks.
+	// The webhook array.
 	WebhookShrink *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 

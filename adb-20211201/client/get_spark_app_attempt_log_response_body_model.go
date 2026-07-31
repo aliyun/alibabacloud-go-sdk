@@ -72,7 +72,7 @@ type GetSparkAppAttemptLogResponseBodyData struct {
 	//
 	// example:
 	//
-	// amv-clusterxxx
+	// amv-bp1bg858bo8c****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The content of the log.
 	//

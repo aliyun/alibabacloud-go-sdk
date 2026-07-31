@@ -16,7 +16,6 @@ type iDescribeClusterAccessWhiteListResponseBody interface {
 }
 
 type DescribeClusterAccessWhiteListResponseBody struct {
-	// The queried IP address whitelists.
 	Items *DescribeClusterAccessWhiteListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,28 +95,9 @@ func (s *DescribeClusterAccessWhiteListResponseBodyItems) Validate() error {
 }
 
 type DescribeClusterAccessWhiteListResponseBodyItemsIPArray struct {
-	// The attribute of the IP address whitelist.
-	//
-	// >  The IP address whitelists that have the **hidden*	- attribute are not displayed in the console. These IP address whitelists are used to access services such as Data Transmission Service (DTS) and PolarDB.
-	//
-	// example:
-	//
-	// hidden
 	DBClusterIPArrayAttribute *string `json:"DBClusterIPArrayAttribute,omitempty" xml:"DBClusterIPArrayAttribute,omitempty"`
-	// The name of the IP address whitelist.
-	//
-	// Each cluster supports up to 50 IP address whitelists.
-	//
-	// example:
-	//
-	// test
-	DBClusterIPArrayName *string `json:"DBClusterIPArrayName,omitempty" xml:"DBClusterIPArrayName,omitempty"`
-	// The IP addresses in the IP address whitelist. Up to 500 IP addresses can be returned. Multiple IP addresses are separated by commas (,).
-	//
-	// example:
-	//
-	// 127.0.xx.xx
-	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	DBClusterIPArrayName      *string `json:"DBClusterIPArrayName,omitempty" xml:"DBClusterIPArrayName,omitempty"`
+	SecurityIPList            *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 }
 
 func (s DescribeClusterAccessWhiteListResponseBodyItemsIPArray) String() string {

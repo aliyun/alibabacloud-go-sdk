@@ -24,13 +24,13 @@ type iCreateApsCopyWorkloadResponseBody interface {
 }
 
 type CreateApsCopyWorkloadResponseBody struct {
-	// The HTTP status code or the error code.
+	// The API status or POP error code.
 	//
 	// example:
 	//
 	// InvalidInput
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The deleted application information.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type CreateApsCopyWorkloadResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message. Valid values:
+	// The additional information about the result. Valid values:
 	//
-	// 	- If the request was successful, a success message is returned.
+	// - If the request was successful, Success is returned.
 	//
-	// 	- If the request failed, an error message is returned.
+	// - If the request failed, a specific error code is returned.
 	//
 	// example:
 	//
@@ -58,11 +58,11 @@ type CreateApsCopyWorkloadResponseBody struct {
 	//
 	// ******-3EEC-******-9F06-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The call was successful.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//

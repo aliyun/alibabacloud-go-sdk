@@ -22,7 +22,7 @@ type DescribeUserQuotaRequest struct {
 	//
 	// example:
 	//
-	// amv-bp1qjt3o18d86987
+	// amv-bp1qjt3o18d8****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The region ID.
 	//

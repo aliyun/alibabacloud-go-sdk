@@ -32,39 +32,58 @@ type iSparkAnalyzeLogTask interface {
 }
 
 type SparkAnalyzeLogTask struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// amv-adbxxxxx
-	DBClusterId *string           `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Result      *LogAnalyzeResult `json:"Result,omitempty" xml:"Result,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The analysis result of the task.
+	Result *LogAnalyzeResult `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the task matched a rule.
+	//
 	// example:
 	//
 	// true
 	RuleMatched *bool `json:"RuleMatched,omitempty" xml:"RuleMatched,omitempty"`
+	// The time when the task was started. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1672123543000
 	StartedTimeInMillis *int64 `json:"StartedTimeInMillis,omitempty" xml:"StartedTimeInMillis,omitempty"`
+	// The time when the task was submitted. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1672123543000
 	SubmittedTimeInMillis *int64 `json:"SubmittedTimeInMillis,omitempty" xml:"SubmittedTimeInMillis,omitempty"`
+	// The error message returned if the task fails.
+	//
 	// example:
 	//
 	// Driver log not found
 	TaskErrMsg *string `json:"TaskErrMsg,omitempty" xml:"TaskErrMsg,omitempty"`
+	// The ID of the Spark log analysis task.
+	//
 	// example:
 	//
 	// 10
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The state of the task.
+	//
 	// example:
 	//
 	// WAITING
 	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
+	// The time when the task was terminated. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1672123543000
 	TerminatedTimeInMillis *int64 `json:"TerminatedTimeInMillis,omitempty" xml:"TerminatedTimeInMillis,omitempty"`
+	// The ID of the user who submitted the task.
+	//
 	// example:
 	//
 	// 13719918xxx

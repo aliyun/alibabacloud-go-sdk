@@ -22,7 +22,7 @@ type iDescribeSQLWebSocketDomainResponseBody interface {
 }
 
 type DescribeSQLWebSocketDomainResponseBody struct {
-	// The status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+	// The status code. A value of 200 indicates that the request succeeded.
 	//
 	// example:
 	//
@@ -34,27 +34,27 @@ type DescribeSQLWebSocketDomainResponseBody struct {
 	//
 	// adb-ws-beijing.console.aliyun.com/query
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The returned message. Valid values:
+	// The response message.
 	//
-	// 	- If the request was successful, a success message is returned.****
+	// - Returns **Success*	- if the request succeeds.
 	//
-	// 	- If the request failed, an error message is returned.
+	// - Returns a specific error code if the request fails.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The unique identifier for the request.
 	//
 	// example:
 	//
 	// E03F0806-A67B-5B24-8562-9589F20DEEB5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the API call succeeded. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The call succeeded.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//

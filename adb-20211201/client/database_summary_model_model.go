@@ -30,15 +30,40 @@ type iDatabaseSummaryModel interface {
 }
 
 type DatabaseSummaryModel struct {
+	// Creation time.
+	//
+	// example:
+	//
+	// 2023-01-05 13:17:55
 	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CreatedBySource *string `json:"CreatedBySource,omitempty" xml:"CreatedBySource,omitempty"`
 	CreatedByUser   *string `json:"CreatedByUser,omitempty" xml:"CreatedByUser,omitempty"`
 	DbType          *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Location        *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	Owner           *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	SchemaName      *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Description.
+	//
+	// example:
+	//
+	// description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Location    *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// Owner.
+	//
+	// example:
+	//
+	// abc
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// logical database name.
+	//
+	// example:
+	//
+	// testSchema
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// Update time.
+	//
+	// example:
+	//
+	// 2023-01-05 13:17:55
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DatabaseSummaryModel) String() string {

@@ -117,7 +117,7 @@ type DescribePerformanceViewsResponseBodyViews struct {
 	//
 	// example:
 	//
-	// Basic
+	// Custom-1
 	ViewName *string `json:"ViewName,omitempty" xml:"ViewName,omitempty"`
 }
 

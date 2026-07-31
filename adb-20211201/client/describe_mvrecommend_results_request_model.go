@@ -32,7 +32,11 @@ type iDescribeMVRecommendResultsRequest interface {
 }
 
 type DescribeMVRecommendResultsRequest struct {
-	// Fixed system value (non-modifiable).
+	// A static value. This parameter cannot be modified.
+	//
+	// example:
+	//
+	// Modification is not supported.
 	ActionInner *string `json:"ActionInner,omitempty" xml:"ActionInner,omitempty"`
 	// The cluster ID.
 	//
@@ -40,7 +44,11 @@ type DescribeMVRecommendResultsRequest struct {
 	//
 	// am-bp1ub9grke1****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Fixed system value (non-modifiable).
+	// A static value. This parameter cannot be modified.
+	//
+	// example:
+	//
+	// Modification is not supported.
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
 	// The sorting field.
 	//
@@ -54,7 +62,7 @@ type DescribeMVRecommendResultsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -66,6 +74,8 @@ type DescribeMVRecommendResultsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The subquery ID.
+	//
 	// example:
 	//
 	// 123

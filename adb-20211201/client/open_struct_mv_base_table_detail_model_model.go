@@ -20,10 +20,30 @@ type iOpenStructMvBaseTableDetailModel interface {
 }
 
 type OpenStructMvBaseTableDetailModel struct {
-	DataVolumn   *string `json:"DataVolumn,omitempty" xml:"DataVolumn,omitempty"`
-	EnableBinlog *bool   `json:"EnableBinlog,omitempty" xml:"EnableBinlog,omitempty"`
-	SchemaName   *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	TableName    *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The data volume.
+	//
+	// example:
+	//
+	// 321233
+	DataVolumn *string `json:"DataVolumn,omitempty" xml:"DataVolumn,omitempty"`
+	// Indicates whether binary logging is enabled for the table.
+	//
+	// example:
+	//
+	// true
+	EnableBinlog *bool `json:"EnableBinlog,omitempty" xml:"EnableBinlog,omitempty"`
+	// The database name.
+	//
+	// example:
+	//
+	// adb_demo
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The table name.
+	//
+	// example:
+	//
+	// test
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s OpenStructMvBaseTableDetailModel) String() string {

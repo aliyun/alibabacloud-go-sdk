@@ -227,13 +227,13 @@ type DescribeTablePartitionDiagnoseResponseBodyDetectionItems struct {
 	//
 	// example:
 	//
-	// Multiple oversized non-partitioned tables are detected.
+	// 检测到表存在分区不合理的情况
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The name of the detection item.
 	//
 	// example:
 	//
-	// Improper partition field diagnostics
+	// 表分区合理性检测
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The severity level of the detection result. Valid values:
 	//

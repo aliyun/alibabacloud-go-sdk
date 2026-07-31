@@ -15,16 +15,10 @@ type iDescribeHistoryTasksStatRequest interface {
 	GetFromStartTime() *string
 	SetInstanceId(v string) *DescribeHistoryTasksStatRequest
 	GetInstanceId() *string
-	SetOwnerId(v int64) *DescribeHistoryTasksStatRequest
-	GetOwnerId() *int64
 	SetRegionId(v string) *DescribeHistoryTasksStatRequest
 	GetRegionId() *string
 	SetResourceGroupId(v string) *DescribeHistoryTasksStatRequest
 	GetResourceGroupId() *string
-	SetResourceOwnerAccount(v int64) *DescribeHistoryTasksStatRequest
-	GetResourceOwnerAccount() *int64
-	SetResourceOwnerId(v int64) *DescribeHistoryTasksStatRequest
-	GetResourceOwnerId() *int64
 	SetSecurityToken(v string) *DescribeHistoryTasksStatRequest
 	GetSecurityToken() *string
 	SetStatus(v string) *DescribeHistoryTasksStatRequest
@@ -60,7 +54,6 @@ type DescribeHistoryTasksStatRequest struct {
 	//
 	// amv-********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region where the instance resides.
 	//
 	// This parameter is required.
@@ -74,10 +67,11 @@ type DescribeHistoryTasksStatRequest struct {
 	// example:
 	//
 	// rg-acfmy*****
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *int64  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// abc
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The state of the task. Valid values:
 	//
 	// 	- **Scheduled**
@@ -148,24 +142,12 @@ func (s *DescribeHistoryTasksStatRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
-func (s *DescribeHistoryTasksStatRequest) GetOwnerId() *int64 {
-	return s.OwnerId
-}
-
 func (s *DescribeHistoryTasksStatRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
 func (s *DescribeHistoryTasksStatRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
-}
-
-func (s *DescribeHistoryTasksStatRequest) GetResourceOwnerAccount() *int64 {
-	return s.ResourceOwnerAccount
-}
-
-func (s *DescribeHistoryTasksStatRequest) GetResourceOwnerId() *int64 {
-	return s.ResourceOwnerId
 }
 
 func (s *DescribeHistoryTasksStatRequest) GetSecurityToken() *string {
@@ -207,11 +189,6 @@ func (s *DescribeHistoryTasksStatRequest) SetInstanceId(v string) *DescribeHisto
 	return s
 }
 
-func (s *DescribeHistoryTasksStatRequest) SetOwnerId(v int64) *DescribeHistoryTasksStatRequest {
-	s.OwnerId = &v
-	return s
-}
-
 func (s *DescribeHistoryTasksStatRequest) SetRegionId(v string) *DescribeHistoryTasksStatRequest {
 	s.RegionId = &v
 	return s
@@ -219,16 +196,6 @@ func (s *DescribeHistoryTasksStatRequest) SetRegionId(v string) *DescribeHistory
 
 func (s *DescribeHistoryTasksStatRequest) SetResourceGroupId(v string) *DescribeHistoryTasksStatRequest {
 	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksStatRequest) SetResourceOwnerAccount(v int64) *DescribeHistoryTasksStatRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksStatRequest) SetResourceOwnerId(v int64) *DescribeHistoryTasksStatRequest {
-	s.ResourceOwnerId = &v
 	return s
 }
 

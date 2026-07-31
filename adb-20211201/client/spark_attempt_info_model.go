@@ -22,22 +22,53 @@ type iSparkAttemptInfo interface {
 }
 
 type SparkAttemptInfo struct {
+	// The attempt ID of the Spark application.
+	//
 	// example:
 	//
-	// s202207151211hz0cb4200*****-0001
+	// s202207151211hz****-0001
 	AttemptId *string `json:"AttemptId,omitempty" xml:"AttemptId,omitempty"`
-	Detail    *Detail `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The information about the Spark application.
+	Detail *Detail `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The alert message returned, such as task execution failure or insufficient resources. If no alert occurs, null is returned.
+	//
 	// example:
 	//
 	// WARN: Disk is full
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The attempt priority of the Spark application.
+	//
 	// example:
 	//
 	// NORMAL
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The state of the Spark application. Valid values:
+	//
+	// 	- **SUBMITTED**
+	//
+	// 	- **STARTING**
+	//
+	// 	- **RUNNING**
+	//
+	// 	- **FAILING**
+	//
+	// 	- **FAILED**
+	//
+	// 	- **KILLING**
+	//
+	// 	- **KILLED**
+	//
+	// 	- **SUCCEEDING**
+	//
+	// 	- **COMPLETED**
+	//
+	// 	- **FATAL**
+	//
+	// 	- **UNKNOWN**
+	//
 	// example:
 	//
-	// RUNNING
+	// SUBMITTED
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 

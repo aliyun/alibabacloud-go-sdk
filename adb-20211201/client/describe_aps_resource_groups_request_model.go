@@ -18,9 +18,9 @@ type iDescribeApsResourceGroupsRequest interface {
 }
 
 type DescribeApsResourceGroupsRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the Data Lakehouse Edition cluster.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to view the cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,13 @@ type DescribeApsResourceGroupsRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
+	// > Call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to view the region ID of a cluster.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the data synchronization job.
+	// The ID of the data synchronization task.
 	//
 	// example:
 	//

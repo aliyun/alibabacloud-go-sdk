@@ -58,7 +58,7 @@ type DescribeApsActionLogsRequest struct {
 	//
 	// example:
 	//
-	// 2023-02-11T09:30:00Z
+	// 2023-02-11T09:30Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The keyword that you want to use for fuzzy match in the query.
 	//
@@ -118,7 +118,7 @@ type DescribeApsActionLogsRequest struct {
 	//
 	// example:
 	//
-	// 2023-02-11T08:30:00Z
+	// 2023-02-11T08:30Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The types of the logs. Separate multiple log types with commas (,). Valid values:
 	//

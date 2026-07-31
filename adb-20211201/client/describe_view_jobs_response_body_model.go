@@ -30,7 +30,7 @@ type DescribeViewJobsResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of records per page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeViewJobsResponseBody struct {
 	//
 	// 2A318054-6815-528A-AA94-8AC921******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries that are returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *DescribeViewJobsResponseBody) Validate() error {
 }
 
 type DescribeViewJobsResponseBodyData struct {
-	// The refresh tasks.
+	// The list of refresh tasks.
 	MvRefreshJobModels []*OpenStructRefreshJobModel `json:"MvRefreshJobModels,omitempty" xml:"MvRefreshJobModels,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -121,13 +121,13 @@ type DescribeViewJobsResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The number of records per page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries that are returned.
+	// The total number of records.
 	//
 	// example:
 	//

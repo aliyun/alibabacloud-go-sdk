@@ -56,13 +56,13 @@ type CreateMaterializedViewRecommendRequest struct {
 	//
 	// task desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Pattern匹配的最少慢查询个数
+	// The minimum number of slow queries matched by a pattern.
 	//
 	// example:
 	//
 	// 3
 	MinRewriteQueryCount *int32 `json:"MinRewriteQueryCount,omitempty" xml:"MinRewriteQueryCount,omitempty"`
-	// 最小可加速的Pattern数量
+	// The minimum number of patterns that can be accelerated.
 	//
 	// example:
 	//
@@ -78,39 +78,39 @@ type CreateMaterializedViewRecommendRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The time range for scanning data. Unit: days. Default value: 3.
+	// The scan time range. Unit: days. Default value: 3.
 	//
 	// example:
 	//
 	// 3
 	ScanQueriesRange *int32 `json:"ScanQueriesRange,omitempty" xml:"ScanQueriesRange,omitempty"`
-	// This parameter is valid only when SchedulingPolicy is set to weekly. Valid values:
+	// Valid only when SchedulingPolicy is set to weekly. Valid values:
 	//
-	// 	- Monday
+	// - Monday
 	//
-	// 	- Tuesday
+	// - Tuesday
 	//
-	// 	- Wednesday
+	// - Wednesday
 	//
-	// 	- Thursday
+	// - Thursday
 	//
-	// 	- Friday
+	// - Friday
 	//
-	// 	- Saturday
+	// - Saturday
 	//
-	// 	- Sunday
+	// - Sunday
 	//
-	// Separate multiple days with commas (,).
+	// Separate multiple days with commas.
 	//
 	// example:
 	//
 	// Monday;Wednesday
 	SchedulingDay *string `json:"SchedulingDay,omitempty" xml:"SchedulingDay,omitempty"`
-	// The scheduling policy of the recommendation task. Valid values:
+	// The recommendation policy. Valid values:
 	//
-	// daily
+	// daily: scheduled on a daily basis.
 	//
-	// weekly
+	// weekly: scheduled on a weekly basis.
 	//
 	// This parameter is required.
 	//
@@ -118,13 +118,13 @@ type CreateMaterializedViewRecommendRequest struct {
 	//
 	// weekly
 	SchedulingPolicy *string `json:"SchedulingPolicy,omitempty" xml:"SchedulingPolicy,omitempty"`
-	// 慢查询阈值
+	// The slow query threshold.
 	//
 	// example:
 	//
 	// 2
 	SlowQueryThreshold *int32 `json:"SlowQueryThreshold,omitempty" xml:"SlowQueryThreshold,omitempty"`
-	// The execution time of the recommendation task. Specify the time in the HH:MM:SS format.
+	// The execution time of the task. Format: HH:MM:SS.
 	//
 	// This parameter is required.
 	//

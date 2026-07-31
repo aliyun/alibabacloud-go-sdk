@@ -20,7 +20,7 @@ type iGetTableRequest interface {
 }
 
 type GetTableRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -28,13 +28,13 @@ type GetTableRequest struct {
 	//
 	// amv-*******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// dbName
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// The ID of the region in which the cluster resides.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type GetTableRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the table.
+	// The table name to query.
 	//
 	// example:
 	//

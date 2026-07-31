@@ -24,13 +24,15 @@ type iDescribeAuditLogRecordsResponseBody interface {
 }
 
 type DescribeAuditLogRecordsResponseBody struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	//
+	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
 	// example:
 	//
 	// amv-t4nj8619bz2w3****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The queried SQL audit logs.
+	// A list of audit log records.
 	Items []*DescribeAuditLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -38,7 +40,7 @@ type DescribeAuditLogRecordsResponseBody struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of records per page.
 	//
 	// example:
 	//
@@ -50,7 +52,7 @@ type DescribeAuditLogRecordsResponseBody struct {
 	//
 	// 8A564B7F-8C00-43C0-8EC5-919FBB70573
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -140,29 +142,40 @@ type DescribeAuditLogRecordsResponseBodyItems struct {
 	//
 	// 14356****
 	ConnId *string `json:"ConnId,omitempty" xml:"ConnId,omitempty"`
-	// The name of the database on which the SQL statement was executed.
+	// The name of the database on which the SQL statement ran.
 	//
 	// example:
 	//
 	// adb_demo
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The start time of the execution of the SQL statement. The time is displayed in the ISO 8601 standard in the yyyy-MM-dd HH:mm:ss format. The time must be in UTC.
+	// The execution start time of the SQL statement. The time is in the `yyyy-MM-dd HH:mm:ss` format and in the local time zone.
 	//
 	// example:
 	//
 	// 2022-08-12 10:10:00
-	ExecuteTime      *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	ExecuteTimestamp *int64  `json:"ExecuteTimestamp,omitempty" xml:"ExecuteTimestamp,omitempty"`
+	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	// The execution start time of the SQL statement, as a millisecond timestamp.
+	//
+	// example:
+	//
+	// 1774600396584
+	ExecuteTimestamp *int64 `json:"ExecuteTimestamp,omitempty" xml:"ExecuteTimestamp,omitempty"`
+	// Specifies whether the response contains diagnostic information.
+	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// true
 	HasDiagnosticInfo *bool `json:"HasDiagnosticInfo,omitempty" xml:"HasDiagnosticInfo,omitempty"`
-	// The IP address and port number of the client that is used to execute the SQL statement.
+	// The IP address and port of the client that ran the SQL statement.
 	//
 	// example:
 	//
 	// 100.104.XX.XX:43908
 	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	// The task ID.
+	// The process ID.
 	//
 	// example:
 	//
@@ -174,29 +187,29 @@ type DescribeAuditLogRecordsResponseBodyItems struct {
 	//
 	// SELECT 	- FROM adb_hdfs_import_source
 	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	// The type of the SQL statement.
+	// The SQL type.
 	//
 	// example:
 	//
 	// SELECT
 	SQLType *string `json:"SQLType,omitempty" xml:"SQLType,omitempty"`
-	// Indicates whether the SQL statement was successfully executed. Valid values:
+	// Indicates whether the SQL statement succeeded. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The SQL statement succeeded.
 	//
-	// 	- **false**
+	// - **false**: The SQL statement failed.
 	//
 	// example:
 	//
 	// true
 	Succeed *string `json:"Succeed,omitempty" xml:"Succeed,omitempty"`
-	// The amount of time that is consumed to execute the SQL statement. Unit: milliseconds.
+	// The execution duration of the SQL statement in milliseconds (ms).
 	//
 	// example:
 	//
 	// 216
 	TotalTime *string `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
-	// The username that is used to execute the SQL statement.
+	// The username of the account that ran the SQL statement.
 	//
 	// example:
 	//

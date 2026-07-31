@@ -42,7 +42,7 @@ type ModifyUserEniVswitchOptionsResponseBody struct {
 	//
 	// example:
 	//
-	// SUCCESS
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//

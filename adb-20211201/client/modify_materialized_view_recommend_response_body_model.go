@@ -14,7 +14,7 @@ type iModifyMaterializedViewRecommendResponseBody interface {
 }
 
 type ModifyMaterializedViewRecommendResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

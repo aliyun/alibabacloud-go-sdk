@@ -28,11 +28,11 @@ type DownloadInstanceCACertificateRequest struct {
 	//
 	// amv-wz9842849v6****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The database engine of the cluster. Valid values:
+	// The database engine. Valid values:
 	//
-	// 	- **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
+	// - **AnalyticDB*	- (default): AnalyticDB for MySQL engine.
 	//
-	// 	- **Clickhouse**: the wide table engine.
+	// - **Clickhouse**: wide table engine.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DownloadInstanceCACertificateRequest struct {
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the supported regions and zones, including region IDs.
 	//
 	// example:
 	//

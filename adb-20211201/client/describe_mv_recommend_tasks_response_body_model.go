@@ -22,7 +22,7 @@ type iDescribeMvRecommendTasksResponseBody interface {
 }
 
 type DescribeMvRecommendTasksResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *DescribeMvRecommendTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -30,19 +30,19 @@ type DescribeMvRecommendTasksResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries that are returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *DescribeMvRecommendTasksResponseBody) Validate() error {
 }
 
 type DescribeMvRecommendTasksResponseBodyData struct {
-	// The list of recommended tasks for materialized views.
+	// The list of materialized view recommendation tasks.
 	MvRecommendTaskModels []*OpenStructMvRecommendTaskModel `json:"MvRecommendTaskModels,omitempty" xml:"MvRecommendTaskModels,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -121,13 +121,13 @@ type DescribeMvRecommendTasksResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries that are returned.
+	// The total number of entries.
 	//
 	// example:
 	//

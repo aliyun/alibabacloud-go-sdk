@@ -20,15 +20,17 @@ type iDescribeAccountsRequest interface {
 }
 
 type DescribeAccountsRequest struct {
-	// The name of the database account.
+	// The database account.
 	//
-	// > If you do not specify this parameter, the information about all database accounts in the cluster is returned.
+	// > If you do not specify this parameter, information about all database accounts is returned.
 	//
 	// example:
 	//
 	// test_accout
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	//
+	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -36,11 +38,11 @@ type DescribeAccountsRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The database engine of the cluster. Valid values:
+	// The database engine. Valid values:
 	//
-	// 	- **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
+	// - **AnalyticDB*	- (default): the AnalyticDB for MySQL engine
 	//
-	// 	- **Clickhouse**: the wide table engine.
+	// - **Clickhouse**: the LindormTable engine
 	//
 	// example:
 	//

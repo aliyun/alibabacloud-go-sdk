@@ -36,18 +36,63 @@ type iTableSummaryModel interface {
 }
 
 type TableSummaryModel struct {
-	CreateTime      *string                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreatedBySource *string                  `json:"CreatedBySource,omitempty" xml:"CreatedBySource,omitempty"`
-	CreatedByUser   *string                  `json:"CreatedByUser,omitempty" xml:"CreatedByUser,omitempty"`
-	Description     *string                  `json:"Description,omitempty" xml:"Description,omitempty"`
-	MvDetailModel   *OpenStructMvDetailModel `json:"MvDetailModel,omitempty" xml:"MvDetailModel,omitempty"`
-	Owner           *string                  `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	SQL             *string                  `json:"SQL,omitempty" xml:"SQL,omitempty"`
-	SchemaName      *string                  `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	TableName       *string                  `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	TableSize       *int64                   `json:"TableSize,omitempty" xml:"TableSize,omitempty"`
-	TableType       *string                  `json:"TableType,omitempty" xml:"TableType,omitempty"`
-	UpdateTime      *string                  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Creation time.
+	//
+	// example:
+	//
+	// 2023-01-05 13:17:55
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatedBySource *string `json:"CreatedBySource,omitempty" xml:"CreatedBySource,omitempty"`
+	CreatedByUser   *string `json:"CreatedByUser,omitempty" xml:"CreatedByUser,omitempty"`
+	// Description.
+	//
+	// example:
+	//
+	// descrtiption
+	Description   *string                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	MvDetailModel *OpenStructMvDetailModel `json:"MvDetailModel,omitempty" xml:"MvDetailModel,omitempty"`
+	// Owner.
+	//
+	// example:
+	//
+	// abc
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// SQL for creating the table or view.
+	//
+	// example:
+	//
+	// create table(a varchar)
+	SQL *string `json:"SQL,omitempty" xml:"SQL,omitempty"`
+	// Logical database name.
+	//
+	// example:
+	//
+	// schemaName
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// Logical table name or logical view name.
+	//
+	// example:
+	//
+	// tableName
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// Table size in bytes.
+	//
+	// example:
+	//
+	// 1234
+	TableSize *int64 `json:"TableSize,omitempty" xml:"TableSize,omitempty"`
+	// Table or view type.
+	//
+	// example:
+	//
+	// PHYSICAL_SCHEMA_NAME
+	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	// Update time.
+	//
+	// example:
+	//
+	// 2023-01-05 13:17:55
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s TableSummaryModel) String() string {

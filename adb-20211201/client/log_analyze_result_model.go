@@ -18,14 +18,23 @@ type iLogAnalyzeResult interface {
 }
 
 type LogAnalyzeResult struct {
+	// The solution for the error log.
+	//
+	// example:
+	//
+	// Please increase cpu quota for your resource group
 	AppErrorAdvice *string `json:"AppErrorAdvice,omitempty" xml:"AppErrorAdvice,omitempty"`
+	// The error type if an analysis error occurs.
+	//
 	// example:
 	//
 	// EXCEEDED_QUOTA
 	AppErrorCode *string `json:"AppErrorCode,omitempty" xml:"AppErrorCode,omitempty"`
+	// The error log of the Spark log analysis task.
+	//
 	// example:
 	//
-	// exception: xxxx
+	// exception: cpu is exceeded limits 12/10
 	AppErrorLog *string `json:"AppErrorLog,omitempty" xml:"AppErrorLog,omitempty"`
 }
 

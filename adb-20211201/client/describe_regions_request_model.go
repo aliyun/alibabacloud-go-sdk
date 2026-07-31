@@ -24,20 +24,25 @@ type iDescribeRegionsRequest interface {
 }
 
 type DescribeRegionsRequest struct {
-	// The language that is used for the region and zone names indicated by the LocalName parameter in the response parameters. Valid values:
+	// The language used for the names of regions and zones (the LocalName values in the response). Valid values:
 	//
-	// 	- **zh-CN*	- (default): simplified Chinese.
+	// - **zh-CN**: simplified Chinese (default).
 	//
-	// 	- **en-US**: English.
+	// - **en-US**: English.
 	//
-	// 	- **ja**: Japanese.
+	// - **ja**: Japanese.
 	//
 	// example:
 	//
 	// en-US
-	AcceptLanguage       *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

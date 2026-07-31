@@ -30,15 +30,52 @@ type iStorageDescriptorModel interface {
 }
 
 type StorageDescriptorModel struct {
-	Compressed             *bool              `json:"Compressed,omitempty" xml:"Compressed,omitempty"`
-	InputFormat            *string            `json:"InputFormat,omitempty" xml:"InputFormat,omitempty"`
-	Location               *string            `json:"Location,omitempty" xml:"Location,omitempty"`
-	NumBuckets             *int64             `json:"NumBuckets,omitempty" xml:"NumBuckets,omitempty"`
-	OutputFormat           *string            `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
-	Parameters             map[string]*string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	SdId                   *int64             `json:"SdId,omitempty" xml:"SdId,omitempty"`
-	SerDeInfo              *SerDeInfoModel    `json:"SerDeInfo,omitempty" xml:"SerDeInfo,omitempty"`
-	StoredAsSubDirectories *bool              `json:"StoredAsSubDirectories,omitempty" xml:"StoredAsSubDirectories,omitempty"`
+	// Indicates whether the storage description is compressed.
+	//
+	// example:
+	//
+	// false
+	Compressed *bool `json:"Compressed,omitempty" xml:"Compressed,omitempty"`
+	// The input format of the storage description.
+	//
+	// example:
+	//
+	// org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
+	InputFormat *string `json:"InputFormat,omitempty" xml:"InputFormat,omitempty"`
+	// The location of the storage description.
+	//
+	// example:
+	//
+	// oss://**************
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The number of buckets.
+	//
+	// example:
+	//
+	// 1
+	NumBuckets *int64 `json:"NumBuckets,omitempty" xml:"NumBuckets,omitempty"`
+	// The output format of the storage description.
+	//
+	// example:
+	//
+	// org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
+	OutputFormat *string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
+	// The storage configuration parameter.
+	Parameters map[string]*string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The ID of the storage description.
+	//
+	// example:
+	//
+	// 1
+	SdId *int64 `json:"SdId,omitempty" xml:"SdId,omitempty"`
+	// The information about serialization or deserialization.
+	SerDeInfo *SerDeInfoModel `json:"SerDeInfo,omitempty" xml:"SerDeInfo,omitempty"`
+	// Indicates whether the storage description is stored in subdirectories.
+	//
+	// example:
+	//
+	// false
+	StoredAsSubDirectories *bool `json:"StoredAsSubDirectories,omitempty" xml:"StoredAsSubDirectories,omitempty"`
 }
 
 func (s StorageDescriptorModel) String() string {

@@ -15,10 +15,12 @@ type iBindAccountRequest interface {
 	GetDBClusterId() *string
 	SetRamUser(v string) *BindAccountRequest
 	GetRamUser() *string
+	SetRamUserList(v []*string) *BindAccountRequest
+	GetRamUserList() []*string
 }
 
 type BindAccountRequest struct {
-	// The standard account of the cluster.
+	// A standard database account.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +28,7 @@ type BindAccountRequest struct {
 	//
 	// test_accout
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	// ID of the cluster. Applies to Enterprise Edition, Basic Edition, or Data Lakehouse Edition clusters.
 	//
 	// This parameter is required.
 	//
@@ -34,14 +36,14 @@ type BindAccountRequest struct {
 	//
 	// amv-wz99d9nh532****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the RAM user.
-	//
-	// This parameter is required.
+	// ID of the Alibaba Cloud RAM user to bind.
 	//
 	// example:
 	//
 	// 1444832459****
 	RamUser *string `json:"RamUser,omitempty" xml:"RamUser,omitempty"`
+	// List of Alibaba Cloud RAM user IDs to bind. You can bind only one RAM user at a time. If you specify this parameter, the RamUser parameter is ignored.
+	RamUserList []*string `json:"RamUserList,omitempty" xml:"RamUserList,omitempty" type:"Repeated"`
 }
 
 func (s BindAccountRequest) String() string {
@@ -64,6 +66,10 @@ func (s *BindAccountRequest) GetRamUser() *string {
 	return s.RamUser
 }
 
+func (s *BindAccountRequest) GetRamUserList() []*string {
+	return s.RamUserList
+}
+
 func (s *BindAccountRequest) SetAccountName(v string) *BindAccountRequest {
 	s.AccountName = &v
 	return s
@@ -76,6 +82,11 @@ func (s *BindAccountRequest) SetDBClusterId(v string) *BindAccountRequest {
 
 func (s *BindAccountRequest) SetRamUser(v string) *BindAccountRequest {
 	s.RamUser = &v
+	return s
+}
+
+func (s *BindAccountRequest) SetRamUserList(v []*string) *BindAccountRequest {
+	s.RamUserList = v
 	return s
 }
 

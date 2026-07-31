@@ -9,6 +9,8 @@ type iModifyDBResourceGroupShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAtmConfigShrink(v string) *ModifyDBResourceGroupShrinkRequest
+	GetAtmConfigShrink() *string
 	SetAutoStopInterval(v string) *ModifyDBResourceGroupShrinkRequest
 	GetAutoStopInterval() *string
 	SetClusterMode(v string) *ModifyDBResourceGroupShrinkRequest
@@ -54,23 +56,28 @@ type iModifyDBResourceGroupShrinkRequest interface {
 }
 
 type ModifyDBResourceGroupShrinkRequest struct {
+	AtmConfigShrink *string `json:"AtmConfig,omitempty" xml:"AtmConfig,omitempty"`
+	// The idle duration after which the resource group is automatically stopped.
+	//
 	// example:
 	//
 	// 5m
 	AutoStopInterval *string `json:"AutoStopInterval,omitempty" xml:"AutoStopInterval,omitempty"`
-	// A reserved parameter.
+	// This parameter is reserved.
 	//
 	// example:
 	//
-	// N/A
+	// 无
 	ClusterMode *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
-	// A reserved parameter.
+	// This parameter is reserved.
 	//
 	// example:
 	//
-	// N/A
+	// 无
 	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// <props="china">The ID of the Data Lakehouse Edition, Enterprise Edition, or Basic Edition cluster.
+	//
+	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -78,24 +85,27 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	//
 	// amv-bp1r053byu48p****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to enable the spot instance feature for the resource group. After you enable the spot instance feature, you are charged for resources at a lower unit price but the resources are probably released. You can enable the spot instance feature only for job resource groups. Valid values:
+	// Specifies whether to enable the spot instance feature for the resource group. This feature provides resources at a lower unit price, but they can be reclaimed at any time. Only `Job` resource groups support this feature. Valid values:
 	//
-	// 	- **True**
+	// - **True**: enables the spot instance feature.
 	//
-	// 	- **False**
+	// - **False**: disables the spot instance feature.
 	//
 	// example:
 	//
-	// true
+	// True
 	EnableSpot *bool `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
+	// The engine configuration.
+	//
 	// example:
 	//
 	// {\\"spark.adb.version\\":\\"3.5\\"}
-	EngineParamsShrink   *string `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
+	EngineParamsShrink *string `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
+	// The time-based scaling plan for GPUs.
 	GpuElasticPlanShrink *string `json:"GpuElasticPlan,omitempty" xml:"GpuElasticPlan,omitempty"`
 	// The name of the resource group.
 	//
-	// > You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/459446.html) operation to query the name of a resource group in a cluster.
+	// > You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/459446.html) operation to query the resource group name for a specific cluster.
 	//
 	// This parameter is required.
 	//
@@ -105,11 +115,11 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The type of the resource group. Valid values:
 	//
-	// 	- **Interactive**
+	// - **Interactive**
 	//
-	// 	- **Job**
+	// - **Job**
 	//
-	// > For information about resource groups of Data Lakehouse Edition, see [Resource groups](https://help.aliyun.com/document_detail/428610.html).
+	// > For more information about resource groups in Data Lakehouse Edition clusters, see [Resource groups](https://help.aliyun.com/document_detail/428610.html).
 	//
 	// This parameter is required.
 	//
@@ -117,56 +127,79 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	//
 	// Interactive
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// A reserved parameter.
+	// This parameter is reserved.
 	//
 	// example:
 	//
-	// N/A
+	// 无
 	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
-	// The maximum amount of reserved computing resources.
+	// The maximum amount of reserved computing resources. The value cannot exceed the unallocated computing resources of the cluster.
 	//
-	// 	- If GroupType is set to Interactive, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 16ACU.
+	// - If the resource group type is `Interactive`, the value is specified in increments of 16 ACU.
 	//
-	// 	- If GroupType is set to Job, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 8ACU.
+	// - If the resource group type is `Job`, the value is specified in increments of 8 ACU.
 	//
 	// example:
 	//
 	// 48ACU
 	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
-	MaxGpuQuantity     *int32  `json:"MaxGpuQuantity,omitempty" xml:"MaxGpuQuantity,omitempty"`
-	// A reserved parameter.
+	// This parameter is reserved.
 	//
 	// example:
 	//
-	// N/A
+	// Reserved parameter. Not applicable.
+	MaxGpuQuantity *int32 `json:"MaxGpuQuantity,omitempty" xml:"MaxGpuQuantity,omitempty"`
+	// This parameter is reserved.
+	//
+	// example:
+	//
+	// 无
 	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
 	// The minimum amount of reserved computing resources.
 	//
-	// 	- If the GroupType parameter is set to Interactive, set the value to 16ACU.
+	// - If the resource group type is `Interactive`, the minimum amount of reserved computing resources is 16 ACU.
 	//
-	// 	- If GroupType is set to Job, set the value to 0ACU.
+	// - If the resource group type is `Job`, the minimum amount of reserved computing resources is 0 ACU.
 	//
 	// example:
 	//
 	// 0ACU
 	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
-	MinGpuQuantity     *int32  `json:"MinGpuQuantity,omitempty" xml:"MinGpuQuantity,omitempty"`
-	RayConfigShrink    *string `json:"RayConfig,omitempty" xml:"RayConfig,omitempty"`
+	// This parameter is reserved.
+	//
+	// example:
+	//
+	// Reserved parameter. Not applicable.
+	MinGpuQuantity *int32 `json:"MinGpuQuantity,omitempty" xml:"MinGpuQuantity,omitempty"`
+	// The Ray configuration. This parameter is required if the resource group is an AI group and uses a Ray cluster as its engine.
+	RayConfigShrink *string `json:"RayConfig,omitempty" xml:"RayConfig,omitempty"`
 	// The region ID of the cluster.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query available regions.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The job resubmission rules.
+	// The job submission rules.
 	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	SpecName    *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	// This parameter is reserved.
+	//
+	// example:
+	//
+	// Reserved parameter. Not applicable.
+	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	// The desired state of the resource group. Specify **starting*	- to start the resource group or **stopping*	- to stop it.
+	//
 	// example:
 	//
 	// starting
-	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is reserved.
+	//
+	// example:
+	//
+	// Reserved parameter. Not applicable.
 	TargetResourceGroupName *string `json:"TargetResourceGroupName,omitempty" xml:"TargetResourceGroupName,omitempty"`
 }
 
@@ -176,6 +209,10 @@ func (s ModifyDBResourceGroupShrinkRequest) String() string {
 
 func (s ModifyDBResourceGroupShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) GetAtmConfigShrink() *string {
+	return s.AtmConfigShrink
 }
 
 func (s *ModifyDBResourceGroupShrinkRequest) GetAutoStopInterval() *string {
@@ -260,6 +297,11 @@ func (s *ModifyDBResourceGroupShrinkRequest) GetStatus() *string {
 
 func (s *ModifyDBResourceGroupShrinkRequest) GetTargetResourceGroupName() *string {
 	return s.TargetResourceGroupName
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetAtmConfigShrink(v string) *ModifyDBResourceGroupShrinkRequest {
+	s.AtmConfigShrink = &v
+	return s
 }
 
 func (s *ModifyDBResourceGroupShrinkRequest) SetAutoStopInterval(v string) *ModifyDBResourceGroupShrinkRequest {

@@ -34,17 +34,72 @@ type iColDetailModel interface {
 }
 
 type ColDetailModel struct {
-	ColumnName    *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DistributeKey *bool   `json:"DistributeKey,omitempty" xml:"DistributeKey,omitempty"`
-	Nullable      *bool   `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
-	PartitionKey  *bool   `json:"PartitionKey,omitempty" xml:"PartitionKey,omitempty"`
-	PrimaryKey    *bool   `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
-	SchemaName    *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	TableName     *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The logical name of the column.
+	//
+	// example:
+	//
+	// example
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The time when the column was created. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2023-01-05\\"T\\"13:17:55\\"Z\\"
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the column.
+	//
+	// example:
+	//
+	// description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the column is the distribution key.
+	//
+	// example:
+	//
+	// false
+	DistributeKey *bool `json:"DistributeKey,omitempty" xml:"DistributeKey,omitempty"`
+	// Indicates whether the column can be empty.
+	//
+	// example:
+	//
+	// false
+	Nullable *bool `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	// Indicates whether the column is the partition key.
+	//
+	// example:
+	//
+	// true
+	PartitionKey *bool `json:"PartitionKey,omitempty" xml:"PartitionKey,omitempty"`
+	// Indicates whether the column is the primary key.
+	//
+	// example:
+	//
+	// true
+	PrimaryKey *bool `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	// The logical name of the database.
+	//
+	// example:
+	//
+	// schemaName
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The logical name of the table.
+	//
+	// example:
+	//
+	// tableName
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The data type of the column.
+	//
+	// example:
+	//
+	// string
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the column was updated. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2023-01-05\\"T\\"13:17:55\\"Z\\"
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ColDetailModel) String() string {

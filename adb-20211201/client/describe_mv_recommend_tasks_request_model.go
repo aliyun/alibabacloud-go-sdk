@@ -26,7 +26,11 @@ type iDescribeMvRecommendTasksRequest interface {
 }
 
 type DescribeMvRecommendTasksRequest struct {
-	// Fixed system value (non-modifiable).
+	// A static field. This parameter cannot be modified.
+	//
+	// example:
+	//
+	// Modification is not supported.
 	ActionInner *string `json:"ActionInner,omitempty" xml:"ActionInner,omitempty"`
 	// The cluster ID.
 	//
@@ -34,7 +38,11 @@ type DescribeMvRecommendTasksRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Fixed system value (non-modifiable).
+	// A static field. This parameter cannot be modified.
+	//
+	// example:
+	//
+	// Modification is not supported.
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
 	// The page number.
 	//
@@ -42,7 +50,7 @@ type DescribeMvRecommendTasksRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -54,7 +62,7 @@ type DescribeMvRecommendTasksRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the recommendation task.
+	// The name of the materialized view recommendation task.
 	//
 	// example:
 	//

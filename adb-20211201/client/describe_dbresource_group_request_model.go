@@ -22,7 +22,9 @@ type iDescribeDBResourceGroupRequest interface {
 }
 
 type DescribeDBResourceGroupRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	// <props="china">The cluster ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	//
+	// <props="intl">The cluster ID of the Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -30,29 +32,29 @@ type DescribeDBResourceGroupRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The name of the resource group.
+	// The resource group name.
 	//
-	// > If you do not specify this parameter, the information about all resource groups in the cluster is returned.
+	// > If this parameter is not specified, information about all resource groups in the specified cluster is returned by default.
 	//
 	// example:
 	//
 	// test_group
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The type of the resource group. Valid values:
+	// The resource group type. Valid values:
 	//
-	// 	- **Interactive**
+	// - **Interactive**
 	//
-	// 	- **Job**
+	// - **Job**
 	//
-	// >  For more information about resource groups, see [Resource group overview](https://help.aliyun.com/document_detail/428610.html).
+	// > For more information about resource groups in Data Lakehouse Edition, see [Resource group overview](https://help.aliyun.com/document_detail/428610.html).
 	//
 	// example:
 	//
 	// Job
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the region ID of the cluster.
 	//
 	// example:
 	//

@@ -3,18 +3,81 @@ package client
 
 import (
 	"context"
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
 
 // Summary:
 //
-// Applies for a public endpoint for an AnalyticDB for MySQL cluster.
+// Adds a knowledge base document.
+//
+// @param request - AddKnowledgeFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddKnowledgeFileResponse
+func (client *Client) AddKnowledgeFileWithContext(ctx context.Context, request *AddKnowledgeFileRequest, runtime *dara.RuntimeOptions) (_result *AddKnowledgeFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.FileLocation) {
+		query["FileLocation"] = request.FileLocation
+	}
+
+	if !dara.IsNil(request.FileType) {
+		query["FileType"] = request.FileType
+	}
+
+	if !dara.IsNil(request.IsDir) {
+		query["IsDir"] = request.IsDir
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
+	if !dara.IsNil(request.UploadUser) {
+		query["UploadUser"] = request.UploadUser
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddKnowledgeFile"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddKnowledgeFileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Allocates a public connection address for a cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For a list of service endpoints, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - AllocateClusterPublicConnectionRequest
 //
@@ -39,6 +102,10 @@ func (client *Client) AllocateClusterPublicConnectionWithContext(ctx context.Con
 
 	if !dara.IsNil(request.Engine) {
 		query["Engine"] = request.Engine
+	}
+
+	if !dara.IsNil(request.ResourceGroupName) {
+		query["ResourceGroupName"] = request.ResourceGroupName
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -66,11 +133,11 @@ func (client *Client) AllocateClusterPublicConnectionWithContext(ctx context.Con
 
 // Summary:
 //
-// Applies an optimization suggestion.
+// Applies a single optimization suggestion.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoints of this service, refer to [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ApplyAdviceByIdRequest
 //
@@ -182,7 +249,11 @@ func (client *Client) AttachUserENIWithContext(ctx context.Context, request *Att
 
 // Summary:
 //
-// Applies optimization suggestions.
+// Applies optimization suggestions in batches.
+//
+// Description:
+//
+// For the endpoint of this service, refer to [Service registration](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - BatchApplyAdviceByIdListRequest
 //
@@ -246,24 +317,30 @@ func (client *Client) BatchApplyAdviceByIdListWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Associates a standard account of an AnalyticDB for MySQL cluster with a Resource Access Management (RAM) user.
+// Bind a Resource Access Management (RAM) user to a standard database account in a cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the current service endpoint, see [service endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
-// @param request - BindAccountRequest
+// @param tmpReq - BindAccountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindAccountResponse
-func (client *Client) BindAccountWithContext(ctx context.Context, request *BindAccountRequest, runtime *dara.RuntimeOptions) (_result *BindAccountResponse, _err error) {
+func (client *Client) BindAccountWithContext(ctx context.Context, tmpReq *BindAccountRequest, runtime *dara.RuntimeOptions) (_result *BindAccountResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &BindAccountShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RamUserList) {
+		request.RamUserListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RamUserList, dara.String("RamUserList"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
 		query["AccountName"] = request.AccountName
@@ -275,6 +352,10 @@ func (client *Client) BindAccountWithContext(ctx context.Context, request *BindA
 
 	if !dara.IsNil(request.RamUser) {
 		query["RamUser"] = request.RamUser
+	}
+
+	if !dara.IsNil(request.RamUserListShrink) {
+		query["RamUserList"] = request.RamUserListShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -410,7 +491,15 @@ func (client *Client) CancelSparkReplStatementWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Cancels the execution of a Spark SQL statement.
+// Cancels a Spark SQL execution.
+//
+// Description:
+//
+// - Public endpoint of a region: `adb.<region-id>.aliyuncs.com`. Example: `adb.ap-southeast-1.aliyuncs.com`.
+//
+// - VPC endpoint of a region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.ap-southeast-1.aliyuncs.com`.
+//
+// > If you encounter a 409 error when initiating requests from China North 1 (Qingdao), China South 1 (Shenzhen), China South 3 (Guangzhou), or Hong Kong (China), contact technical support.
 //
 // @param request - CancelSparkWarehouseBatchSQLRequest
 //
@@ -512,9 +601,65 @@ func (client *Client) CheckBindRamUserWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether a metadata discovery schema exists.
+//
+// @param request - CheckFormationSchemaExistsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckFormationSchemaExistsResponse
+func (client *Client) CheckFormationSchemaExistsWithContext(ctx context.Context, request *CheckFormationSchemaExistsRequest, runtime *dara.RuntimeOptions) (_result *CheckFormationSchemaExistsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PrefixMode) {
+		body["PrefixMode"] = request.PrefixMode
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Schema) {
+		body["Schema"] = request.Schema
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckFormationSchemaExists"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckFormationSchemaExistsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service endpoint, see [endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - CheckSampleDataSetRequest
 //
@@ -720,24 +865,30 @@ func (client *Client) CreateAPSJobWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// Creates a database account for an AnalyticDB for MySQL cluster.
+// Creates a database account for a cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For information about the endpoint of this service, see [Service registration](https://help.aliyun.com/document_detail/612373.html).
 //
-// @param request - CreateAccountRequest
+// @param tmpReq - CreateAccountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAccountResponse
-func (client *Client) CreateAccountWithContext(ctx context.Context, request *CreateAccountRequest, runtime *dara.RuntimeOptions) (_result *CreateAccountResponse, _err error) {
+func (client *Client) CreateAccountWithContext(ctx context.Context, tmpReq *CreateAccountRequest, runtime *dara.RuntimeOptions) (_result *CreateAccountResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &CreateAccountShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RamUserList) {
+		request.RamUserListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RamUserList, dara.String("RamUserList"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountDescription) {
 		query["AccountDescription"] = request.AccountDescription
@@ -761,6 +912,10 @@ func (client *Client) CreateAccountWithContext(ctx context.Context, request *Cre
 
 	if !dara.IsNil(request.Engine) {
 		query["Engine"] = request.Engine
+	}
+
+	if !dara.IsNil(request.RamUserListShrink) {
+		query["RamUserList"] = request.RamUserListShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -788,7 +943,7 @@ func (client *Client) CreateAccountWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// Creates an AnalyticDB Pipeline Service (APS) replication job.
+// Creates an APS replication task.
 //
 // @param request - CreateApsCopyWorkloadRequest
 //
@@ -856,11 +1011,11 @@ func (client *Client) CreateApsCopyWorkloadWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Creates an AnalyticDB Pipeline Service (APS) data source.
+// Creates an APS data source.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration of this service, refer to [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param tmpReq - CreateApsDatasoureRequest
 //
@@ -982,11 +1137,11 @@ func (client *Client) CreateApsDatasoureWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Creates an AnalyticDB Pipeline Service (APS) job from a Hive data source.
+// Creates an APS Hive task.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For information about the service registration of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - CreateApsHiveJobRequest
 //
@@ -1078,7 +1233,7 @@ func (client *Client) CreateApsHiveJobWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Creates a data ingestion task to load data from an Apache Kafka topic into an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Creates an APS Kafka to data lakehouse job.
 //
 // @param tmpReq - CreateApsKafkaHudiJobRequest
 //
@@ -1426,7 +1581,7 @@ func (client *Client) CreateApsSlsADBJobWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Creates a new webhook for the specified cluster or task type.
+// Creates a webhook for a specified database cluster and task type.
 //
 // @param tmpReq - CreateApsWebhookRequest
 //
@@ -1488,11 +1643,11 @@ func (client *Client) CreateApsWebhookWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// Creates a data backup for an AnalyticDB for MySQL instance.
+// Creates a backup set immediately.
 //
 // Description:
 //
-// *Before you call this operation, make sure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/ads/detail/ads_pre) of AnalyticDB for MySQL.*	- Temporary backups are the same as regular backups in terms of price and retention period of backup sets.
+// *Before you use this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ads/detail/ads_pre) of AnalyticDB for MySQL.*	- Temporary backups and regular backups have the same pricing and backup set retention period.
 //
 // @param request - CreateBackupRequest
 //
@@ -1556,11 +1711,11 @@ func (client *Client) CreateBackupWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// Creates an AnalyticDB for MySQL Data Lakehouse Edition cluster.
+// Creates a Data Lakehouse Edition cluster.
 //
 // Description:
 //
-// # CreateDBCluster
+// For the service registration of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - CreateDBClusterRequest
 //
@@ -1575,6 +1730,14 @@ func (client *Client) CreateDBClusterWithContext(ctx context.Context, request *C
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AINodeNumber) {
+		query["AINodeNumber"] = request.AINodeNumber
+	}
+
+	if !dara.IsNil(request.AINodeSpec) {
+		query["AINodeSpec"] = request.AINodeSpec
+	}
+
 	if !dara.IsNil(request.BackupSetId) {
 		query["BackupSetId"] = request.BackupSetId
 	}
@@ -1716,11 +1879,11 @@ func (client *Client) CreateDBClusterWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Creates a resource group for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Creates a resource group for a specified Dedicated Edition, Basic Edition, or Data Lakehouse Edition cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the service registration of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param tmpReq - CreateDBResourceGroupRequest
 //
@@ -1736,6 +1899,10 @@ func (client *Client) CreateDBResourceGroupWithContext(ctx context.Context, tmpR
 	}
 	request := &CreateDBResourceGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AtmConfig) {
+		request.AtmConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AtmConfig, dara.String("AtmConfig"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.EngineParams) {
 		request.EngineParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EngineParams, dara.String("EngineParams"), dara.String("json"))
 	}
@@ -1753,8 +1920,16 @@ func (client *Client) CreateDBResourceGroupWithContext(ctx context.Context, tmpR
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AtmConfigShrink) {
+		query["AtmConfig"] = request.AtmConfigShrink
+	}
+
 	if !dara.IsNil(request.AutoStopInterval) {
 		query["AutoStopInterval"] = request.AutoStopInterval
+	}
+
+	if !dara.IsNil(request.Classification) {
+		query["Classification"] = request.Classification
 	}
 
 	if !dara.IsNil(request.ClusterMode) {
@@ -1827,6 +2002,10 @@ func (client *Client) CreateDBResourceGroupWithContext(ctx context.Context, tmpR
 
 	if !dara.IsNil(request.RulesShrink) {
 		query["Rules"] = request.RulesShrink
+	}
+
+	if !dara.IsNil(request.ScalePolicy) {
+		query["ScalePolicy"] = request.ScalePolicy
 	}
 
 	if !dara.IsNil(request.SpecName) {
@@ -1946,6 +2125,80 @@ func (client *Client) CreateElasticPlanWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// Creates a Formation Crawler metadata discovery task in an AnalyticDB for MySQL (ADB) instance.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation creates a Formation Crawler metadata discovery task in an AnalyticDB for MySQL instance.
+//
+// - The created task configuration is not executed immediately. Call `StartFormationCrawler` to start the task.
+//
+// - The `CrawlerInfo` field is a JSON string that contains the core configuration of the task, such as the target database name and data source type.
+//
+// - Some parameters, such as `classifiers` and `frequency`, require double JSON encoding.
+//
+// - The database name specified in `dbName` is automatically converted to lowercase by the server.
+//
+// - `schemaChangePolicy` is required. You must specify both `updateRule` and `deleteRule`.
+//
+// - Use the `RUN_ON_DEMAND` scheduling mode to avoid unnecessary repeated scans.
+//
+// - Make sure the product name is `adb` and the endpoint format is `adb.{regionId}.aliyuncs.com`.
+//
+// - After the task is created, manually call `StartFormationCrawler` to trigger the first metadata discovery.
+//
+// @param request - CreateFormationCrawlerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFormationCrawlerResponse
+func (client *Client) CreateFormationCrawlerWithContext(ctx context.Context, request *CreateFormationCrawlerRequest, runtime *dara.RuntimeOptions) (_result *CreateFormationCrawlerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CrawlerInfo) {
+		body["CrawlerInfo"] = request.CrawlerInfo
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateFormationCrawler"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateFormationCrawlerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a lake storage.
 //
 // @param tmpReq - CreateLakeStorageRequest
@@ -2014,7 +2267,7 @@ func (client *Client) CreateLakeStorageWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Creates a materialized view recommendation task.
+// Creates an automatic materialized view recommendation task.
 //
 // @param request - CreateMaterializedViewRecommendRequest
 //
@@ -2114,15 +2367,15 @@ func (client *Client) CreateMaterializedViewRecommendWithContext(ctx context.Con
 
 // Summary:
 //
-// Creates an Object Storage Service (OSS) subdirectory.
+// Creates a subdirectory in Object Storage Service (OSS).
 //
 // Description:
 //
-//	  General endpoint: `adb.aliyuncs.com`.
+// - Central public endpoint: `adb.aliyuncs.com`.
 //
-//		- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+// - Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.ap-southeast-1.aliyuncs.com`.
 //
-//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// - Regional VPC endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.ap-southeast-1.aliyuncs.com`.
 //
 // @param request - CreateOssSubDirectoryRequest
 //
@@ -2170,7 +2423,7 @@ func (client *Client) CreateOssSubDirectoryWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Creates a custom monitoring view.
+// Creates a custom monitoring dashboard.
 //
 // @param tmpReq - CreatePerformanceViewRequest
 //
@@ -2256,15 +2509,71 @@ func (client *Client) CreatePerformanceViewWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
+// Creates a semantic view.
+//
+// @param request - CreateSemanticViewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSemanticViewResponse
+func (client *Client) CreateSemanticViewWithContext(ctx context.Context, request *CreateSemanticViewRequest, runtime *dara.RuntimeOptions) (_result *CreateSemanticViewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.Definition) {
+		query["Definition"] = request.Definition
+	}
+
+	if !dara.IsNil(request.SchemaName) {
+		query["SchemaName"] = request.SchemaName
+	}
+
+	if !dara.IsNil(request.ViewName) {
+		query["ViewName"] = request.ViewName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSemanticView"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSemanticViewResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a Spark application template.
 //
 // Description:
 //
-//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+// - Public endpoint of a region: `adb.<region-id>.aliyuncs.com`. Example: `adb.ap-southeast-1.aliyuncs.com`.
 //
-//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// - VPC endpoint of a region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.ap-southeast-1.aliyuncs.com`.
 //
-// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+// > If you encounter a 409 fault when sending requests from Hong Kong (China), contact technical support.
 //
 // @param request - CreateSparkTemplateRequest
 //
@@ -2780,6 +3089,62 @@ func (client *Client) DeleteElasticPlanWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// Deletes a metadata discovery task.
+//
+// @param request - DeleteFormationCrawlerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFormationCrawlerResponse
+func (client *Client) DeleteFormationCrawlerWithContext(ctx context.Context, request *DeleteFormationCrawlerRequest, runtime *dara.RuntimeOptions) (_result *DeleteFormationCrawlerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CrawlerTaskId) {
+		body["CrawlerTaskId"] = request.CrawlerTaskId
+	}
+
+	if !dara.IsNil(request.CrawlerTaskName) {
+		body["CrawlerTaskName"] = request.CrawlerTaskName
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteFormationCrawler"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteFormationCrawlerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a lake storage.
 //
 // Description:
@@ -2964,6 +3329,58 @@ func (client *Client) DeletePerformanceViewWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePerformanceViewResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes the specified semantic view.
+//
+// @param request - DeleteSemanticViewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSemanticViewResponse
+func (client *Client) DeleteSemanticViewWithContext(ctx context.Context, request *DeleteSemanticViewRequest, runtime *dara.RuntimeOptions) (_result *DeleteSemanticViewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.SchemaName) {
+		query["SchemaName"] = request.SchemaName
+	}
+
+	if !dara.IsNil(request.ViewName) {
+		query["ViewName"] = request.ViewName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSemanticView"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSemanticViewResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3206,11 +3623,11 @@ func (client *Client) DescribeAbnormalPatternDetectionWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the permissions of a database account on all permission levels.
+// Retrieves all permissions granted to a specified account, including permissions at the global, database, table, and column levels.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoint of this service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeAccountAllPrivilegesRequest
 //
@@ -3346,7 +3763,11 @@ func (client *Client) DescribeAccountPrivilegeObjectsWithContext(ctx context.Con
 
 // Summary:
 //
-// 获取某一ADB账户的权限
+// Retrieves the permissions of a specified database account at a specific level.
+//
+// Description:
+//
+// See [service endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeAccountPrivilegesRequest
 //
@@ -3422,11 +3843,11 @@ func (client *Client) DescribeAccountPrivilegesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the database accounts of an AnalyticDB for MySQL cluster.
+// Queries the database accounts of a cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoint of this service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeAccountsRequest
 //
@@ -3710,13 +4131,13 @@ func (client *Client) DescribeAdbMySqlTableMetaWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries a list of tables for an AnalyticDB for MySQL cluster.
+// Lists information about all tables in a specified database of a cluster.
 //
 // Description:
 //
-//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+// - Public endpoint for a region: `adb.<region-id>.aliyuncs.com`. For example, `adb.cn-hangzhou.aliyuncs.com`.
 //
-//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// - VPC endpoint for a region: `adb-vpc.<region-id>.aliyuncs.com`. For example, `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeAdbMySqlTablesRequest
 //
@@ -3882,7 +4303,7 @@ func (client *Client) DescribeAllDataSourceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the applied optimization suggestions for an AnalyticDB for MySQL cluster.
+// Shows applied recommendations.
 //
 // @param request - DescribeAppliedAdvicesRequest
 //
@@ -4478,13 +4899,13 @@ func (client *Client) DescribeApsProgressWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the information about resource groups of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Retrieves details about the resource groups used for data synchronization.
 //
 // Description:
 //
-//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+// - Public endpoint for a region: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// - VPC endpoint for a region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeApsResourceGroupsRequest
 //
@@ -4536,13 +4957,13 @@ func (client *Client) DescribeApsResourceGroupsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the SQL audit logs of an AnalyticDB for MySQL cluster.
+// Query SQL audit logs for the cluster.
 //
 // Description:
 //
-//	  SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: **INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
+// - You can query SQL audit logs only if SQL audit is enabled. Log data is retained for up to 30 days. If you disable and re-enable SQL audit, you can only query logs generated after it is re-enabled. SQL audit logs do not record **INSERT INTO VALUES**, **REPLACE INTO VALUES**, or **UPSERT INTO VALUES*	- operations.
 //
-//		- For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// - For a list of endpoints, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeAuditLogRecordsRequest
 //
@@ -4740,7 +5161,7 @@ func (client *Client) DescribeAutoRenewalAttributeWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the available optimization suggestions for an AnalyticDB for MySQL cluster.
+// Use DescribeAvailableAdvices to list available optimization recommendations.
 //
 // @param request - DescribeAvailableAdvicesRequest
 //
@@ -4820,11 +5241,11 @@ func (client *Client) DescribeAvailableAdvicesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查看集群备份设置
+// Queries the backup settings of a cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For more information about endpoints, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeBackupPolicyRequest
 //
@@ -4884,11 +5305,11 @@ func (client *Client) DescribeBackupPolicyWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询实例备份集
+// Queries the backup sets for an instance.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For information about the endpoints for this service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeBackupsRequest
 //
@@ -5048,11 +5469,11 @@ func (client *Client) DescribeBadSqlDetectionWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the IP address whitelists of an AnalyticDB for MySQL cluster.
+// Queries the IP whitelist for a specified cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For information about endpoints, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeClusterAccessWhiteListRequest
 //
@@ -5104,11 +5525,11 @@ func (client *Client) DescribeClusterAccessWhiteListWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the network information about an AnalyticDB for MySQL cluster.
+// Queries the network information of a specified cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For service endpoints, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeClusterNetInfoRequest
 //
@@ -5129,6 +5550,10 @@ func (client *Client) DescribeClusterNetInfoWithContext(ctx context.Context, req
 
 	if !dara.IsNil(request.Engine) {
 		query["Engine"] = request.Engine
+	}
+
+	if !dara.IsNil(request.ResourceGroupName) {
+		query["ResourceGroupName"] = request.ResourceGroupName
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -5490,11 +5915,11 @@ func (client *Client) DescribeControllerDetectionWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the information about an AnalyticDB for MySQL cluster.
+// Returns the details of a specific cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// To find the endpoints for this service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDBClusterAttributeRequest
 //
@@ -5538,11 +5963,11 @@ func (client *Client) DescribeDBClusterAttributeWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the health status of an AnalyticDB for MySQL cluster.
+// View a cluster\\"s health status.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service access address, see [service endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDBClusterHealthStatusRequest
 //
@@ -5590,11 +6015,11 @@ func (client *Client) DescribeDBClusterHealthStatusWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the performance data of an AnalyticDB for MySQL cluster.
+// View target cluster performance data.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service endpoint address, see [service endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDBClusterPerformanceRequest
 //
@@ -5659,6 +6084,10 @@ func (client *Client) DescribeDBClusterPerformanceWithContext(ctx context.Contex
 // Summary:
 //
 // Queries the SSL configurations of a cluster.
+//
+// Description:
+//
+//	Warning: 目前该功能处于内测阶段，控制台界面展示及API调用接口尚未稳定，可能持续变化。
 //
 // @param request - DescribeDBClusterSSLRequest
 //
@@ -5774,11 +6203,11 @@ func (client *Client) DescribeDBClusterSpaceSummaryWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the statuses of AnalyticDB for MySQL clusters within a region.
+// Queries the status list of a cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration information of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDBClusterStatusRequest
 //
@@ -5822,11 +6251,11 @@ func (client *Client) DescribeDBClusterStatusWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the information about AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
+// View the Data Lakehouse Edition clusters in the destination region.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For a current list of service endpoints, see [Service Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDBClustersRequest
 //
@@ -5906,11 +6335,11 @@ func (client *Client) DescribeDBClustersWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the information about resource groups of an AnalyticDB for MySQL cluster.
+// Queries the resource group information of a cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For information about the service registration of the current service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDBResourceGroupRequest
 //
@@ -6038,11 +6467,11 @@ func (client *Client) DescribeDiagnosisDimensionsWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the diagnostic information about SQL statements that meet a query condition for an AnalyticDB for MySQL cluster.
+// Queries the summary of SQL statements that meet specified conditions in an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about service endpoints, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDiagnosisRecordsRequest
 //
@@ -6158,11 +6587,11 @@ func (client *Client) DescribeDiagnosisRecordsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the execution information about an SQL statement, including the execution plan, execution information, resource usage, and self-diagnostics results.
+// Queries the execution details of a specific SQL statement, including the execution plan, runtime information, resource usage, and self-diagnostics results.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration addresses of this service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDiagnosisSQLInfoRequest
 //
@@ -6230,11 +6659,11 @@ func (client *Client) DescribeDiagnosisSQLInfoWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the last five SQL query download tasks of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Queries the five most recent download tasks for SQL query results in a specified AnalyticDB for MySQL Lakehouse Edition (3.0) cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For a list of service endpoints, see [Service Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDownloadRecordsRequest
 //
@@ -6538,7 +6967,15 @@ func (client *Client) DescribeElasticPlansWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the permission level and permissions supported for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Retrieves the supported permission levels and the list of permissions.
+//
+// Description:
+//
+// - Central public endpoint: `adb.aliyuncs.com`.
+//
+// - Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.ap-southeast-1.aliyuncs.com`.
+//
+// - Regional VPC endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.ap-southeast-1.aliyuncs.com`.
 //
 // @param request - DescribeEnabledPrivilegesRequest
 //
@@ -6821,10 +7258,6 @@ func (client *Client) DescribeHistoryTasksWithContext(ctx context.Context, reque
 		query["InstanceType"] = request.InstanceType
 	}
 
-	if !dara.IsNil(request.OwnerId) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -6839,10 +7272,6 @@ func (client *Client) DescribeHistoryTasksWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.ResourceGroupId) {
 		query["ResourceGroupId"] = request.ResourceGroupId
-	}
-
-	if !dara.IsNil(request.ResourceOwnerId) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
 	if !dara.IsNil(request.Status) {
@@ -6917,24 +7346,12 @@ func (client *Client) DescribeHistoryTasksStatWithContext(ctx context.Context, r
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !dara.IsNil(request.OwnerId) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
 	if !dara.IsNil(request.ResourceGroupId) {
 		query["ResourceGroupId"] = request.ResourceGroupId
-	}
-
-	if !dara.IsNil(request.ResourceOwnerAccount) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !dara.IsNil(request.ResourceOwnerId) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
 	if !dara.IsNil(request.SecurityToken) {
@@ -7126,11 +7543,11 @@ func (client *Client) DescribeInclinedTablesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 获取作业资源使用统计
+// Retrieves resource usage statistics for jobs.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration information of this service, see [Service registration](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeJobResourceUsageRequest
 //
@@ -7159,6 +7576,10 @@ func (client *Client) DescribeJobResourceUsageWithContext(ctx context.Context, r
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SparkAppName) {
+		query["SparkAppName"] = request.SparkAppName
 	}
 
 	if !dara.IsNil(request.StartTime) {
@@ -7254,157 +7675,6 @@ func (client *Client) DescribeKernelVersionWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the answer by a large language model (LLM) to a user question about the use of AnalyticDB for MySQL.
-//
-// @param request - DescribeLLMAnswerRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeLLMAnswerResponse
-func (client *Client) DescribeLLMAnswerWithSSECtx(ctx context.Context, request *DescribeLLMAnswerRequest, runtime *dara.RuntimeOptions, _yield chan *DescribeLLMAnswerResponse, _yieldErr chan error) {
-	defer close(_yield)
-	client.describeLLMAnswerWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, request, runtime)
-	return
-}
-
-// Summary:
-//
-// Queries the answer by a large language model (LLM) to a user question about the use of AnalyticDB for MySQL.
-//
-// @param request - DescribeLLMAnswerRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeLLMAnswerResponse
-func (client *Client) DescribeLLMAnswerWithContext(ctx context.Context, request *DescribeLLMAnswerRequest, runtime *dara.RuntimeOptions) (_result *DescribeLLMAnswerResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.DBClusterId) {
-		query["DBClusterId"] = request.DBClusterId
-	}
-
-	if !dara.IsNil(request.OwnerAccount) {
-		query["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !dara.IsNil(request.OwnerId) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !dara.IsNil(request.Query) {
-		query["Query"] = request.Query
-	}
-
-	if !dara.IsNil(request.RegionId) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !dara.IsNil(request.ResourceOwnerAccount) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !dara.IsNil(request.ResourceOwnerId) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("DescribeLLMAnswer"),
-		Version:     dara.String("2021-12-01"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &DescribeLLMAnswerResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of questions similar to a user question.
-//
-// @param request - DescribeLLMSimilarQuestionsRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeLLMSimilarQuestionsResponse
-func (client *Client) DescribeLLMSimilarQuestionsWithContext(ctx context.Context, request *DescribeLLMSimilarQuestionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLLMSimilarQuestionsResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.DBClusterId) {
-		query["DBClusterId"] = request.DBClusterId
-	}
-
-	if !dara.IsNil(request.OwnerAccount) {
-		query["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !dara.IsNil(request.OwnerId) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !dara.IsNil(request.Query) {
-		query["Query"] = request.Query
-	}
-
-	if !dara.IsNil(request.RegionId) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !dara.IsNil(request.ResourceOwnerAccount) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !dara.IsNil(request.ResourceOwnerId) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("DescribeLLMSimilarQuestions"),
-		Version:     dara.String("2021-12-01"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &DescribeLLMSimilarQuestionsResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
 // Queries the lake cache size of an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeLakeCacheSizeRequest
@@ -7449,11 +7719,11 @@ func (client *Client) DescribeLakeCacheSizeWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Retrieves the result of a recommendation task for a materialized view.
+// Queries the results of a materialized view recommendation task.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For information about the endpoints of this service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeMVRecommendResultsRequest
 //
@@ -7533,7 +7803,7 @@ func (client *Client) DescribeMVRecommendResultsWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查看物化视图子任务
+// # View subtasks of a materialized view
 //
 // @param request - DescribeMvRecommendSubTasksRequest
 //
@@ -7609,7 +7879,7 @@ func (client *Client) DescribeMvRecommendSubTasksWithContext(ctx context.Context
 
 // Summary:
 //
-// 查看物化视图推荐任务
+// Views recommendation tasks for materialized views.
 //
 // @param request - DescribeMvRecommendTasksRequest
 //
@@ -7825,15 +8095,11 @@ func (client *Client) DescribeOversizeNonPartitionTableInfosWithContext(ctx cont
 
 // Summary:
 //
-// Queries the information about performance metrics of an SQL pattern such as the query duration and average memory usage for an AnalyticDB for MySQL cluster within a time range.
+// View metric details (such as query time and average memory consumption) for SQL patterns over a specified time range in a cluster.
 //
 // Description:
 //
-//	  General endpoint: `adb.aliyuncs.com`.
-//
-//		- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-//
-//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// For the endpoint of this service, see [endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribePatternPerformanceRequest
 //
@@ -8025,11 +8291,99 @@ func (client *Client) DescribePerformanceViewsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries a list of regions and zones in which AnalyticDB for MySQL Data Lakehouse Edition (V3.0) is available.
+// Call the DescribeProcessList operation to view the running queries of an instance.
+//
+// @param request - DescribeProcessListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeProcessListResponse
+func (client *Client) DescribeProcessListWithContext(ctx context.Context, request *DescribeProcessListRequest, runtime *dara.RuntimeOptions) (_result *DescribeProcessListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.RunningTime) {
+		query["RunningTime"] = request.RunningTime
+	}
+
+	if !dara.IsNil(request.ShowFull) {
+		query["ShowFull"] = request.ShowFull
+	}
+
+	if !dara.IsNil(request.User) {
+		query["User"] = request.User
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeProcessList"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeProcessListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the regions and zones supported by AnalyticDB for MySQL Data Lakehouse Edition.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeRegionsRequest
 //
@@ -8203,15 +8557,15 @@ func (client *Client) DescribeResultExportConfigWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries a list of SQL patterns for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster within a time range.
+// View the list of SQL patterns for an AnalyticDB for MySQL Data Lakehouse Edition cluster for a specified date range.
 //
 // Description:
 //
-//	  General endpoint: `adb.aliyuncs.com`.
+// - Global public endpoint: `adb.aliyuncs.com`.
 //
-//		- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+// - Regional public endpoint: `adb.<region-id>.aliyuncs.com` (e.g., `adb.cn-hangzhou.aliyuncs.com`).
 //
-//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// - Regional VPC endpoint: `adb-vpc.<region-id>.aliyuncs.com` (e.g., `adb-vpc.cn-hangzhou.aliyuncs.com`).
 //
 // @param request - DescribeSQLPatternsRequest
 //
@@ -8258,6 +8612,10 @@ func (client *Client) DescribeSQLPatternsWithContext(ctx context.Context, reques
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.SqlPatternHash) {
+		query["SqlPatternHash"] = request.SqlPatternHash
+	}
+
 	if !dara.IsNil(request.StartTime) {
 		query["StartTime"] = request.StartTime
 	}
@@ -8291,7 +8649,7 @@ func (client *Client) DescribeSQLPatternsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the WebSocket domain name of an AnalyticDB for MySQL cluster.
+// Queries the registered WebSocket domain.
 //
 // @param request - DescribeSQLWebSocketDomainRequest
 //
@@ -9073,11 +9431,11 @@ func (client *Client) DescribeStorageResourceUsageWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the number of accesses to a table or all tables in an AnalyticDB for MySQL cluster on a date.
+// Queries the number of times a specified table or all tables in a cluster are accessed within a specified date range.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeTableAccessCountRequest
 //
@@ -9435,7 +9793,7 @@ func (client *Client) DescribeUserQuotaWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Retrieves materialized view refresh tasks.
+// Retrieves view tasks.
 //
 // @param request - DescribeViewJobsRequest
 //
@@ -9511,7 +9869,7 @@ func (client *Client) DescribeViewJobsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the diagnostic results of the storage layer.
+// Queries the diagnostics results of the storage layer.
 //
 // @param request - DescribeWorkerDetectionRequest
 //
@@ -9587,11 +9945,11 @@ func (client *Client) DescribeWorkerDetectionWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 解绑用户弹性网卡
+// Detaches an Elastic Network Interface (ENI).
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service endpoint, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DetachUserENIRequest
 //
@@ -9839,7 +10197,7 @@ func (client *Client) DownloadDiagnosisRecordsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the Object Storage Service (OSS) URL of the downloaded certificate authority (CA) certificate that is used to connect to the wide table engine.
+// Retrieves the OSS download path of a CA certificate for connecting to the wide table engine.
 //
 // @param request - DownloadInstanceCACertificateRequest
 //
@@ -10053,6 +10411,14 @@ func (client *Client) ExecuteSparkReplStatementWithContext(ctx context.Context, 
 //
 // Executes Spark SQL statements in batches.
 //
+// Description:
+//
+// - 地域的公网接入地址：`adb.<region-id>.aliyuncs.com`。示例：`adb.cn-hangzhou.aliyuncs.com`。
+//
+// - 地域的VPC接入地址：`adb-vpc.<region-id>.aliyuncs.com`。示例：`adb-vpc.cn-hangzhou.aliyuncs.com`。
+//
+// > 如果华北1（青岛）、华南1（深圳）、华南3（广州）、中国香港发起请求时，遇到409错误，请联系技术支持。
+//
 // @param request - ExecuteSparkWarehouseBatchSQLRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10181,11 +10547,63 @@ func (client *Client) ExistRunningSQLEngineWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// View the Spark basic permission diagnosis report of the current user.
+// Generates an executable SQL statement from a semantic SQL statement.
+//
+// @param request - GenerateSqlBySemanticSqlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateSqlBySemanticSqlResponse
+func (client *Client) GenerateSqlBySemanticSqlWithContext(ctx context.Context, request *GenerateSqlBySemanticSqlRequest, runtime *dara.RuntimeOptions) (_result *GenerateSqlBySemanticSqlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.SchemaName) {
+		query["SchemaName"] = request.SchemaName
+	}
+
+	if !dara.IsNil(request.Sql) {
+		query["Sql"] = request.Sql
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GenerateSqlBySemanticSql"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GenerateSqlBySemanticSqlResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the basic permission diagnostic report of the current user for Spark.
 //
 // Description:
 //
-// The API diagnosis report contains whether the current user has all permissions required by the AnalyticDB for Spark related features. The scope of the permissions may exceed the minimum requirements of the business. The diagnostic report of the current API is used to quickly initialize the environment of AnalyticDB for Spark. If fine-grained permission configuration is needed, see [Configure fine-grained permissions in AnalyDB for Spark.](https://www.alibabacloud.com/help/zh/analyticdb/analyticdb-for-mysql/user-guide/create-the-aliyunadbsparkprocessingdatarole-role-for-a-ram-user-and-grant-permissions-to-the-role?spm=a2c63.p38356.help-menu-92664.d_2_5_0.48362a487dMzm9#section-y2z-ucd-1ko)
+// The API diagnostic report contains all the permissions required by the current user for ADB Spark-related features. The scope of the permission check may exceed the minimum requirements of your business. This API is used for quick initialization of the ADB Spark environment. To configure fine-grained permissions, [refer to the ADB Spark fine-grained permission configuration documentation.](https://www.alibabacloud.com/help/zh/analyticdb/analyticdb-for-mysql/user-guide/create-the-aliyunadbsparkprocessingdatarole-role-for-a-ram-user-and-grant-permissions-to-the-role?spm=a2c63.p38356.help-menu-92664.d_2_5_0.48362a487dMzm9#section-y2z-ucd-1ko)
 //
 // @param request - GetADBSparkNecessaryRAMPermissionsRequest
 //
@@ -10219,54 +10637,6 @@ func (client *Client) GetADBSparkNecessaryRAMPermissionsWithContext(ctx context.
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetADBSparkNecessaryRAMPermissionsResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of databases.
-//
-// @param request - GetApsManagedDatabasesRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetApsManagedDatabasesResponse
-func (client *Client) GetApsManagedDatabasesWithContext(ctx context.Context, request *GetApsManagedDatabasesRequest, runtime *dara.RuntimeOptions) (_result *GetApsManagedDatabasesResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.DBClusterId) {
-		body["DBClusterId"] = request.DBClusterId
-	}
-
-	if !dara.IsNil(request.RegionId) {
-		body["RegionId"] = request.RegionId
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("GetApsManagedDatabases"),
-		Version:     dara.String("2021-12-01"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GetApsManagedDatabasesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -10423,6 +10793,114 @@ func (client *Client) GetDatabaseObjectsWithContext(ctx context.Context, request
 
 // Summary:
 //
+// Queries the details of a metadata discovery task.
+//
+// @param request - GetFormationCrawlerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFormationCrawlerResponse
+func (client *Client) GetFormationCrawlerWithContext(ctx context.Context, request *GetFormationCrawlerRequest, runtime *dara.RuntimeOptions) (_result *GetFormationCrawlerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CrawlerTaskId) {
+		body["CrawlerTaskId"] = request.CrawlerTaskId
+	}
+
+	if !dara.IsNil(request.CrawlerTaskName) {
+		body["CrawlerTaskName"] = request.CrawlerTaskName
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetFormationCrawler"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetFormationCrawlerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds a knowledge base document.
+//
+// @param request - GetKnowledgeRecallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKnowledgeRecallResponse
+func (client *Client) GetKnowledgeRecallWithContext(ctx context.Context, request *GetKnowledgeRecallRequest, runtime *dara.RuntimeOptions) (_result *GetKnowledgeRecallResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.Question) {
+		query["Question"] = request.Question
+	}
+
+	if !dara.IsNil(request.Topk) {
+		query["Topk"] = request.Topk
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetKnowledgeRecall"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetKnowledgeRecallResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a lake storage.
 //
 // @param request - GetLakeStorageRequest
@@ -10467,6 +10945,58 @@ func (client *Client) GetLakeStorageWithContext(ctx context.Context, request *Ge
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLakeStorageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a semantic view.
+//
+// @param request - GetSemanticViewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSemanticViewResponse
+func (client *Client) GetSemanticViewWithContext(ctx context.Context, request *GetSemanticViewRequest, runtime *dara.RuntimeOptions) (_result *GetSemanticViewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.SchemaName) {
+		query["SchemaName"] = request.SchemaName
+	}
+
+	if !dara.IsNil(request.ViewName) {
+		query["ViewName"] = request.ViewName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSemanticView"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSemanticViewResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -11269,7 +11799,15 @@ func (client *Client) GetSparkTemplateFullTreeWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the execution result of a Spark SQL statement.
+// Retrieves the execution results of a Spark SQL statement.
+//
+// Description:
+//
+// - Public endpoint of a region: `adb.<region-id>.aliyuncs.com`. Example: `adb.ap-southeast-1.aliyuncs.com`.
+//
+// - VPC endpoint of a region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.ap-southeast-1.aliyuncs.com`.
+//
+// > If you encounter a 409 error when sending requests from China North 1 (Qingdao), China South 1 (Shenzhen), China South 3 (Guangzhou), or Hong Kong (China), contact technical support.
 //
 // @param request - GetSparkWarehouseBatchSQLRequest
 //
@@ -11321,7 +11859,13 @@ func (client *Client) GetSparkWarehouseBatchSQLWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取表
+// Retrieves table information.
+//
+// Description:
+//
+// - Public endpoint of the region: `adb.<region-id>.aliyuncs.com`. Example: `adb.ap-southeast-1.aliyuncs.com`.
+//
+// - VPC endpoint of the region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.ap-southeast-1.aliyuncs.com`.
 //
 // @param request - GetTableRequest
 //
@@ -11377,13 +11921,13 @@ func (client *Client) GetTableWithContext(ctx context.Context, request *GetTable
 
 // Summary:
 //
-// Queries the information about columns.
+// Queries column information.
 //
 // Description:
 //
-//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+// - Public endpoint of the region: `adb.<region-id>.aliyuncs.com`. Example: `adb.ap-southeast-1.aliyuncs.com`.
 //
-//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// - VPC endpoint of the region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.ap-southeast-1.aliyuncs.com`.
 //
 // @param request - GetTableColumnsRequest
 //
@@ -11513,7 +12057,13 @@ func (client *Client) GetTableDDLWithContext(ctx context.Context, request *GetTa
 
 // Summary:
 //
-// 获取table概要信息
+// Queries table information.
+//
+// Description:
+//
+// - Public endpoint of a region: `adb.<region-id>.aliyuncs.com`. Example: `adb.ap-southeast-1.aliyuncs.com`.
+//
+// - VPC endpoint of a region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.ap-southeast-1.aliyuncs.com`.
 //
 // @param request - GetTableObjectsRequest
 //
@@ -11655,13 +12205,13 @@ func (client *Client) GetViewDDLWithContext(ctx context.Context, request *GetVie
 
 // Summary:
 //
-// Queries the information about views.
+// Queries view information.
 //
 // Description:
 //
-//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+// - Public endpoint of a region: `adb.<region-id>.aliyuncs.com`. Example: `adb.ap-southeast-1.aliyuncs.com`.
 //
-//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// - VPC endpoint of a region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.ap-southeast-1.aliyuncs.com`.
 //
 // @param request - GetViewObjectsRequest
 //
@@ -12017,197 +12567,13 @@ func (client *Client) KillSparkSQLEngineWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries a list of lifecycle management policies of an AnalyticDB for MySQL cluster.
-//
-// @param request - ListApsLifecycleStrategyRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListApsLifecycleStrategyResponse
-func (client *Client) ListApsLifecycleStrategyWithContext(ctx context.Context, request *ListApsLifecycleStrategyRequest, runtime *dara.RuntimeOptions) (_result *ListApsLifecycleStrategyResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.DBClusterId) {
-		body["DBClusterId"] = request.DBClusterId
-	}
-
-	if !dara.IsNil(request.EndTime) {
-		body["EndTime"] = request.EndTime
-	}
-
-	if !dara.IsNil(request.PageNumber) {
-		body["PageNumber"] = request.PageNumber
-	}
-
-	if !dara.IsNil(request.PageSize) {
-		body["PageSize"] = request.PageSize
-	}
-
-	if !dara.IsNil(request.RegionId) {
-		body["RegionId"] = request.RegionId
-	}
-
-	if !dara.IsNil(request.StartTime) {
-		body["StartTime"] = request.StartTime
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("ListApsLifecycleStrategy"),
-		Version:     dara.String("2021-12-01"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &ListApsLifecycleStrategyResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of lake storage optimization policies for an AnalyticDB for MySQL cluster.
+// Queries the webhook configurations for a specified database cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// Queries the list of configured webhooks for a specified database cluster based on RegionId, DBClusterId, and the optional JobType parameter. The JobType parameter specifies the task type, such as SLS or OSS export tasks. If JobType is specified, only webhooks associated with the specified task type are returned. If JobType is not specified, webhooks of all types are returned.
 //
-// @param request - ListApsOptimizationStrategyRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListApsOptimizationStrategyResponse
-func (client *Client) ListApsOptimizationStrategyWithContext(ctx context.Context, request *ListApsOptimizationStrategyRequest, runtime *dara.RuntimeOptions) (_result *ListApsOptimizationStrategyResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.DBClusterId) {
-		body["DBClusterId"] = request.DBClusterId
-	}
-
-	if !dara.IsNil(request.RegionId) {
-		body["RegionId"] = request.RegionId
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("ListApsOptimizationStrategy"),
-		Version:     dara.String("2021-12-01"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &ListApsOptimizationStrategyResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of optimization jobs executed based on a lifecycle management policy. The system runs optimization jobs on a regular basis based on lifecycle management policies.
-//
-// @param request - ListApsOptimizationTasksRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListApsOptimizationTasksResponse
-func (client *Client) ListApsOptimizationTasksWithContext(ctx context.Context, request *ListApsOptimizationTasksRequest, runtime *dara.RuntimeOptions) (_result *ListApsOptimizationTasksResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.DBClusterId) {
-		body["DBClusterId"] = request.DBClusterId
-	}
-
-	if !dara.IsNil(request.EndTime) {
-		body["EndTime"] = request.EndTime
-	}
-
-	if !dara.IsNil(request.PageNumber) {
-		body["PageNumber"] = request.PageNumber
-	}
-
-	if !dara.IsNil(request.PageSize) {
-		body["PageSize"] = request.PageSize
-	}
-
-	if !dara.IsNil(request.RegionId) {
-		body["RegionId"] = request.RegionId
-	}
-
-	if !dara.IsNil(request.StartTime) {
-		body["StartTime"] = request.StartTime
-	}
-
-	if !dara.IsNil(request.StrategyType) {
-		body["StrategyType"] = request.StrategyType
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("ListApsOptimizationTasks"),
-		Version:     dara.String("2021-12-01"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &ListApsOptimizationTasksResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the Webhook configurations of a specified database cluster.
-//
-// Description:
-//
-// This API allows you to obtain a list of configured webhooks based on `RegionId`, `DBClusterId`, and optional `JobType`. The `JobType` parameter specifies the task type, such as SLS/OSS export task. If the parameter is provided, webhooks related to the task type are returned. If the parameter is not provided, all types of webhooks are returned.
-//
-// Note: Make sure that the `RegionId` and `DBClusterId` you provided are correct. Otherwise, the webhook information may not be obtained correctly.
+// Note: Ensure that the RegionId and DBClusterId values you provide are correct. Otherwise, the webhook information may not be retrieved.
 //
 // @param request - ListApsWebhookRequest
 //
@@ -12389,15 +12755,67 @@ func (client *Client) ListResultExportJobHistoryWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the information about retry attempts of a Spark application.
+// # Query the list of semantic views
 //
 // Description:
 //
-//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+// For the endpoints of the service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
-//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// @param request - ListSemanticViewNamesRequest
 //
-// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSemanticViewNamesResponse
+func (client *Client) ListSemanticViewNamesWithContext(ctx context.Context, request *ListSemanticViewNamesRequest, runtime *dara.RuntimeOptions) (_result *ListSemanticViewNamesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.SchemaName) {
+		query["SchemaName"] = request.SchemaName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSemanticViewNames"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSemanticViewNamesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the retry information of a specified Spark application.
+//
+// Description:
+//
+// - Public endpoint of a region: `adb.<region-id>.aliyuncs.com`. Example: `adb.ap-southeast-1.aliyuncs.com`.
+//
+// - VPC endpoint of a region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.ap-southeast-1.aliyuncs.com`.
+//
+// > If you encounter a 409 fault when initiating a request from Hong Kong (China), submit a ticket or contact technical support.
 //
 // @param request - ListSparkAppAttemptsRequest
 //
@@ -12453,7 +12871,15 @@ func (client *Client) ListSparkAppAttemptsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the Spark applications that run on an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Queries the list of Spark applications.
+//
+// Description:
+//
+// - Public endpoint of a region: `adb.<region-id>.aliyuncs.com`. Example: `adb.ap-southeast-1.aliyuncs.com`.
+//
+// - VPC endpoint of a region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.ap-southeast-1.aliyuncs.com`.
+//
+// > If you encounter a 409 fault when initiating a request from Hong Kong (China), contact technical support.
 //
 // @param request - ListSparkAppsRequest
 //
@@ -12626,6 +13052,14 @@ func (client *Client) ListSparkTemplateFileIdsWithContext(ctx context.Context, r
 // Summary:
 //
 // Queries a list of Spark SQL statements.
+//
+// Description:
+//
+// - 地域的公网接入地址：`adb.<region-id>.aliyuncs.com`。示例：`adb.cn-hangzhou.aliyuncs.com`。
+//
+// - 地域的VPC接入地址：`adb-vpc.<region-id>.aliyuncs.com`。示例：`adb-vpc.cn-hangzhou.aliyuncs.com`。
+//
+// > 如果华北1（青岛）、华南1（深圳）、华南3（广州）、中国香港发起请求时，遇到409错误，请联系技术支持。
 //
 // @param request - ListSparkWarehouseBatchSQLRequest
 //
@@ -13615,66 +14049,6 @@ func (client *Client) ModifyClusterAccessWhiteListWithContext(ctx context.Contex
 
 // Summary:
 //
-// Modifies the public endpoint of an AnalyticDB for MySQL cluster.
-//
-// Description:
-//
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
-//
-// @param request - ModifyClusterConnectionStringRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ModifyClusterConnectionStringResponse
-func (client *Client) ModifyClusterConnectionStringWithContext(ctx context.Context, request *ModifyClusterConnectionStringRequest, runtime *dara.RuntimeOptions) (_result *ModifyClusterConnectionStringResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.ConnectionStringPrefix) {
-		query["ConnectionStringPrefix"] = request.ConnectionStringPrefix
-	}
-
-	if !dara.IsNil(request.CurrentConnectionString) {
-		query["CurrentConnectionString"] = request.CurrentConnectionString
-	}
-
-	if !dara.IsNil(request.DBClusterId) {
-		query["DBClusterId"] = request.DBClusterId
-	}
-
-	if !dara.IsNil(request.Port) {
-		query["Port"] = request.Port
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("ModifyClusterConnectionString"),
-		Version:     dara.String("2021-12-01"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &ModifyClusterConnectionStringResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
 // Modifies the status of the remote build feature in the query acceleration configuration of an AnalyticDB for MySQL cluster.
 //
 // @param request - ModifyCompactionServiceSwitchRequest
@@ -13723,23 +14097,23 @@ func (client *Client) ModifyCompactionServiceSwitchWithContext(ctx context.Conte
 
 // Summary:
 //
-// Changes the configurations of an AnalyticDB for MySQL Data Lakehouse Edition cluster.
+// Scales up or scales down a Data Lakehouse Edition cluster.
 //
 // Description:
 //
-// ### [](#)
+// ### Before you begin
 //
-//   - During a scaling event, you are not allowed to execute the `SUBMIT JOB` statement to submit asynchronous jobs. If your business requires asynchronous jobs, perform scaling during appropriate periods.
+// - During scaling, `submit job` for submitting asynchronous tasks is disabled. If your business depends on this feature, schedule the scaling operation during an appropriate time window.
 //
-//   - When you scale a cluster, data in the cluster is migrated for redistribution. The amount of time that is required to migrate data is proportional to the data volume. During a scaling event, the services provided by the cluster are not interrupted. When you downgrade cluster specifications, data migration may require up to dozens of hours to complete. Proceed with caution especially if your cluster contains a large amount of data.
+// - Scaling operations redistribute and migrate data. The migration duration is proportional to the data volume, and the service is not interrupted during scaling. When you scale down a cluster from a large specification to a small specification, data migration typically takes several hours or even tens of hours. Exercise caution when you scale down a cluster with a large data volume.
 //
-//   - If the cluster has a built-in dataset loaded, make sure that the cluster has reserved storage resources of at least 24 AnalyticDB compute units (ACUs). Otherwise, the built-in dataset cannot be used.
+// - If the cluster has loaded a built-in dataset, make sure that the cluster has at least 24 ACUs of storage reserved resources during scale-down. Otherwise, the built-in dataset cannot be used.
 //
-//   - When the scaling process is about to end, transient connections may occur. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
+// - Transient connections may occur near the end of scaling. Scale during off-peak hours, or make sure that your application has an automatic reconnection mechanism.
 //
-//   - You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition to Data Lakehouse Edition, but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition.
+// - You cannot perform an Upgrade/Downgrade from Data Lakehouse Edition to Data Warehouse Edition. You can perform an Upgrade/Downgrade from Data Warehouse Edition to Data Lakehouse Edition. For details, refer to the documentation about changing Data Warehouse Edition to Data Lakehouse Edition.
 //
-//   - For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// - For the endpoint of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyDBClusterRequest
 //
@@ -13754,6 +14128,14 @@ func (client *Client) ModifyDBClusterWithContext(ctx context.Context, request *M
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AINodeNumber) {
+		query["AINodeNumber"] = request.AINodeNumber
+	}
+
+	if !dara.IsNil(request.AINodeSpec) {
+		query["AINodeSpec"] = request.AINodeSpec
+	}
+
 	if !dara.IsNil(request.ComputeResource) {
 		query["ComputeResource"] = request.ComputeResource
 	}
@@ -14091,11 +14473,11 @@ func (client *Client) ModifyDBClusterVipWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modifies the amount of reserved computing resources for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Changes the resource group of a cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For service endpoints, see [endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param tmpReq - ModifyDBResourceGroupRequest
 //
@@ -14111,6 +14493,10 @@ func (client *Client) ModifyDBResourceGroupWithContext(ctx context.Context, tmpR
 	}
 	request := &ModifyDBResourceGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AtmConfig) {
+		request.AtmConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AtmConfig, dara.String("AtmConfig"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.EngineParams) {
 		request.EngineParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EngineParams, dara.String("EngineParams"), dara.String("json"))
 	}
@@ -14128,6 +14514,10 @@ func (client *Client) ModifyDBResourceGroupWithContext(ctx context.Context, tmpR
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AtmConfigShrink) {
+		query["AtmConfig"] = request.AtmConfigShrink
+	}
+
 	if !dara.IsNil(request.AutoStopInterval) {
 		query["AutoStopInterval"] = request.AutoStopInterval
 	}
@@ -14501,7 +14891,7 @@ func (client *Client) ModifyMaterializedViewWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Modifies a materialized view recommendation task.
+// Modifies an automatic materialized view recommendation task.
 //
 // @param request - ModifyMaterializedViewRecommendRequest
 //
@@ -14867,11 +15257,171 @@ func (client *Client) PreloadSparkAppMetricsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Releases the public endpoint of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Queries the list of metadata discovery task instances.
+//
+// @param request - QueryFormationInstsByTaskIDRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryFormationInstsByTaskIDResponse
+func (client *Client) QueryFormationInstsByTaskIDWithContext(ctx context.Context, request *QueryFormationInstsByTaskIDRequest, runtime *dara.RuntimeOptions) (_result *QueryFormationInstsByTaskIDResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryFormationInstsByTaskID"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryFormationInstsByTaskIDResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a metadata discovery task by ID.
+//
+// @param request - QueryFormationTaskByIDRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryFormationTaskByIDResponse
+func (client *Client) QueryFormationTaskByIDWithContext(ctx context.Context, request *QueryFormationTaskByIDRequest, runtime *dara.RuntimeOptions) (_result *QueryFormationTaskByIDResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TaskType) {
+		body["TaskType"] = request.TaskType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryFormationTaskByID"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryFormationTaskByIDResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries metadata discovery tasks by task type.
+//
+// @param request - QueryFormationTasksByTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryFormationTasksByTypeResponse
+func (client *Client) QueryFormationTasksByTypeWithContext(ctx context.Context, request *QueryFormationTasksByTypeRequest, runtime *dara.RuntimeOptions) (_result *QueryFormationTasksByTypeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TaskType) {
+		body["TaskType"] = request.TaskType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryFormationTasksByType"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryFormationTasksByTypeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Releases the public endpoint of a specified cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoints of this service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ReleaseClusterPublicConnectionRequest
 //
@@ -14894,6 +15444,10 @@ func (client *Client) ReleaseClusterPublicConnectionWithContext(ctx context.Cont
 		query["Engine"] = request.Engine
 	}
 
+	if !dara.IsNil(request.ResourceGroupName) {
+		query["ResourceGroupName"] = request.ResourceGroupName
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14909,6 +15463,122 @@ func (client *Client) ReleaseClusterPublicConnectionWithContext(ctx context.Cont
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReleaseClusterPublicConnectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the name of a semantic view.
+//
+// @param request - RenameSemanticViewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenameSemanticViewResponse
+func (client *Client) RenameSemanticViewWithContext(ctx context.Context, request *RenameSemanticViewRequest, runtime *dara.RuntimeOptions) (_result *RenameSemanticViewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.NewSchemaName) {
+		query["NewSchemaName"] = request.NewSchemaName
+	}
+
+	if !dara.IsNil(request.NewViewName) {
+		query["NewViewName"] = request.NewViewName
+	}
+
+	if !dara.IsNil(request.OldSchemaName) {
+		query["OldSchemaName"] = request.OldSchemaName
+	}
+
+	if !dara.IsNil(request.OldViewName) {
+		query["OldViewName"] = request.OldViewName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RenameSemanticView"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RenameSemanticViewResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the definition of a semantic view.
+//
+// @param request - ReplaceSemanticViewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReplaceSemanticViewResponse
+func (client *Client) ReplaceSemanticViewWithContext(ctx context.Context, request *ReplaceSemanticViewRequest, runtime *dara.RuntimeOptions) (_result *ReplaceSemanticViewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.Definition) {
+		query["Definition"] = request.Definition
+	}
+
+	if !dara.IsNil(request.SchemaName) {
+		query["SchemaName"] = request.SchemaName
+	}
+
+	if !dara.IsNil(request.ViewName) {
+		query["ViewName"] = request.ViewName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReplaceSemanticView"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ReplaceSemanticViewResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -15043,6 +15713,126 @@ func (client *Client) RevokeOperatorPermissionWithContext(ctx context.Context, r
 
 // Summary:
 //
+// Runs an automated recommendation task for Materialized Views.
+//
+// @param request - RunMaterializedViewRecommendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunMaterializedViewRecommendResponse
+func (client *Client) RunMaterializedViewRecommendWithContext(ctx context.Context, request *RunMaterializedViewRecommendRequest, runtime *dara.RuntimeOptions) (_result *RunMaterializedViewRecommendResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		query["TaskName"] = request.TaskName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunMaterializedViewRecommend"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RunMaterializedViewRecommendResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Searches for semantic views.
+//
+// @param request - SearchSemanticViewsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchSemanticViewsResponse
+func (client *Client) SearchSemanticViewsWithContext(ctx context.Context, request *SearchSemanticViewsRequest, runtime *dara.RuntimeOptions) (_result *SearchSemanticViewsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.QueryText) {
+		query["QueryText"] = request.QueryText
+	}
+
+	if !dara.IsNil(request.TopK) {
+		query["TopK"] = request.TopK
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SearchSemanticViews"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchSemanticViewsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the Spark log configuration.
 //
 // Description:
@@ -15141,6 +15931,68 @@ func (client *Client) StartApsJobWithContext(ctx context.Context, request *Start
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartApsJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Manually triggers a metadata discovery task.
+//
+// Description:
+//
+// ### Operation description
+//
+// When you use a cloud-native data repository AnalyticDB for MySQL cluster and require Alibaba Cloud technical support, if the helpdesk needs to perform operations on your cluster during the support procedure, authorize the service account of the AnalyticDB for MySQL cluster so that the helpdesk can provide technical support through the service account. After the authorization expires, the permissions of the service account are automatically revoked.
+//
+// @param request - StartFormationCrawlerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartFormationCrawlerResponse
+func (client *Client) StartFormationCrawlerWithContext(ctx context.Context, request *StartFormationCrawlerRequest, runtime *dara.RuntimeOptions) (_result *StartFormationCrawlerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CrawlerTaskId) {
+		body["CrawlerTaskId"] = request.CrawlerTaskId
+	}
+
+	if !dara.IsNil(request.CrawlerTaskName) {
+		body["CrawlerTaskName"] = request.CrawlerTaskName
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StartFormationCrawler"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StartFormationCrawlerResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -15271,6 +16123,66 @@ func (client *Client) StartSparkSQLEngineWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartSparkSQLEngineResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Stops a metadata discovery task that is currently running.
+//
+// Description:
+//
+// Stops only the currently running task without canceling subsequent cron-scheduled executions.
+//
+// @param request - StopFormationCrawlerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopFormationCrawlerResponse
+func (client *Client) StopFormationCrawlerWithContext(ctx context.Context, request *StopFormationCrawlerRequest, runtime *dara.RuntimeOptions) (_result *StopFormationCrawlerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CrawlerTaskId) {
+		body["CrawlerTaskId"] = request.CrawlerTaskId
+	}
+
+	if !dara.IsNil(request.CrawlerTaskName) {
+		body["CrawlerTaskName"] = request.CrawlerTaskName
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StopFormationCrawler"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StopFormationCrawlerResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -15581,7 +16493,7 @@ func (client *Client) UnbindAccountWithContext(ctx context.Context, request *Unb
 
 // Summary:
 //
-// Disassociates resource groups from database accounts for an AnalyticDB for MySQL cluster.
+// Disassociates a database account from a resource group of an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
@@ -15637,7 +16549,7 @@ func (client *Client) UnbindDBResourceGroupWithUserWithContext(ctx context.Conte
 
 // Summary:
 //
-// Updates the webhook configuration of a specified cluster.
+// Updates the webhook configuration of a specified database cluster.
 //
 // @param tmpReq - UpdateApsWebhookRequest
 //
@@ -15685,6 +16597,122 @@ func (client *Client) UpdateApsWebhookWithContext(ctx context.Context, tmpReq *U
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateApsWebhookResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the information of a metadata discovery task.
+//
+// @param request - UpdateFormationCrawlerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFormationCrawlerResponse
+func (client *Client) UpdateFormationCrawlerWithContext(ctx context.Context, request *UpdateFormationCrawlerRequest, runtime *dara.RuntimeOptions) (_result *UpdateFormationCrawlerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CrawlerInfo) {
+		body["CrawlerInfo"] = request.CrawlerInfo
+	}
+
+	if !dara.IsNil(request.CrawlerTaskId) {
+		body["CrawlerTaskId"] = request.CrawlerTaskId
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateFormationCrawler"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateFormationCrawlerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Pauses or resumes the periodic scheduling of metadata discovery.
+//
+// @param request - UpdateFormationCrawlerScheduleStateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFormationCrawlerScheduleStateResponse
+func (client *Client) UpdateFormationCrawlerScheduleStateWithContext(ctx context.Context, request *UpdateFormationCrawlerScheduleStateRequest, runtime *dara.RuntimeOptions) (_result *UpdateFormationCrawlerScheduleStateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CrawlerTaskId) {
+		body["CrawlerTaskId"] = request.CrawlerTaskId
+	}
+
+	if !dara.IsNil(request.CrawlerTaskName) {
+		body["CrawlerTaskName"] = request.CrawlerTaskName
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ScheduleState) {
+		body["ScheduleState"] = request.ScheduleState
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateFormationCrawlerScheduleState"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateFormationCrawlerScheduleStateResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -15889,74 +16917,4 @@ func (client *Client) UpgradeKernelVersionWithContext(ctx context.Context, reque
 	}
 	_err = dara.Convert(_body, &_result)
 	return _result, _err
-}
-
-func (client *Client) describeLLMAnswerWithSSECtx_opYieldFunc(_yield chan *DescribeLLMAnswerResponse, _yieldErr chan error, ctx context.Context, request *DescribeLLMAnswerRequest, runtime *dara.RuntimeOptions) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err := request.Validate()
-		if _err != nil {
-			_yieldErr <- _err
-			return
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.DBClusterId) {
-		query["DBClusterId"] = request.DBClusterId
-	}
-
-	if !dara.IsNil(request.OwnerAccount) {
-		query["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !dara.IsNil(request.OwnerId) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !dara.IsNil(request.Query) {
-		query["Query"] = request.Query
-	}
-
-	if !dara.IsNil(request.RegionId) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !dara.IsNil(request.ResourceOwnerAccount) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !dara.IsNil(request.ResourceOwnerId) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("DescribeLLMAnswer"),
-		Version:     dara.String("2021-12-01"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	sseResp := make(chan *openapi.SSEResponse, 1)
-	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
-	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
-		}
-	}
 }

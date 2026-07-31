@@ -16,21 +16,21 @@ type iCheckSampleDataSetResponseBody interface {
 }
 
 type CheckSampleDataSetResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 0CE655C3-C211-513D-A42F-D4AE2D1A867C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The state of the built-in dataset. Valid values:
+	// The status of the built-in dataset. Valid values:
 	//
-	// 	- **SUCCEED**: The dataset is loaded.
+	// - **SUCCEED**: The dataset loaded successfully.
 	//
-	// 	- **INIT**: The dataset is being loaded.
+	// - **INIT**: Loading in progress.
 	//
-	// 	- **FAILED**: The dataset failed to be loaded.
+	// - **FAILED**: Failed to load the dataset.
 	//
-	// 	- **UNINITIALIZED**: The dataset is not loaded.
+	// - **UNINITIALIZED**: Not loaded.
 	//
 	// example:
 	//

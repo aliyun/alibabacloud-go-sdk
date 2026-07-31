@@ -48,7 +48,7 @@ type ListTagResourcesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The cluster ID. You can specify N cluster IDs. Valid values of N: 1 to 50.
 	//
-	// >  You must specify at least one of the ResourceId.N and Tag.N.Key parameters.
+	// > You must specify at least one of the ResourceId.N and Tag.N.Key parameters.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -169,7 +169,7 @@ func (s *ListTagResourcesRequest) Validate() error {
 type ListTagResourcesRequestTag struct {
 	// The tag key. You can specify N tag keys. The tag key cannot be an empty string. Valid values of N: 1 to 20.
 	//
-	// >  You must specify at least one of the ResourceId.N and Tag.N.Key parameters.
+	// > You must specify at least one of the ResourceId.N and Tag.N.Key parameters.
 	//
 	// example:
 	//

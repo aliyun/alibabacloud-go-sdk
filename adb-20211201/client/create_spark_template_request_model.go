@@ -22,21 +22,23 @@ type iCreateSparkTemplateRequest interface {
 }
 
 type CreateSparkTemplateRequest struct {
-	// The application type. Valid values:
+	// The templatetype of the application. Valid values:
 	//
-	// 	- **SQL**
+	// - **SQL**: SQL application
 	//
-	// 	- **STREAMING**
+	// - **STREAMING**: streaming application
 	//
-	// 	- **BATCH**
+	// - **BATCH**: batch application
 	//
-	// >  You do not need to specify this parameter when Type is set to folder.
+	// > You do not need to configure this parameter when the application template type is folder.
 	//
 	// example:
 	//
 	// SQL
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	//
+	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -52,9 +54,9 @@ type CreateSparkTemplateRequest struct {
 	//
 	// batchfile
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the directory to which the application template belongs.
+	// The ID of the folder to which the application template belongs.
 	//
-	// >  You can call the [GetSparkTemplateFolderTree](https://help.aliyun.com/document_detail/456218.html) operation to query the directory ID.
+	// > Call the [GetSparkTemplateFolderTree](https://help.aliyun.com/document_detail/456218.html) operation to query the folder ID.
 	//
 	// This parameter is required.
 	//
@@ -62,11 +64,11 @@ type CreateSparkTemplateRequest struct {
 	//
 	// 10
 	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// The type of the application template. Valid values:
+	// The templatetype of the application template. Valid values:
 	//
-	// 	- **folder**: directory.
+	// - **folder**: folder
 	//
-	// 	- **file**: application.
+	// - **file**: application
 	//
 	// This parameter is required.
 	//

@@ -22,7 +22,6 @@ type iDescribeDBClustersResponseBody interface {
 }
 
 type DescribeDBClustersResponseBody struct {
-	// The queried clusters.
 	Items *DescribeDBClustersResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,342 +146,51 @@ func (s *DescribeDBClustersResponseBodyItems) Validate() error {
 }
 
 type DescribeDBClustersResponseBodyItemsDBCluster struct {
-	AINodeNumber *int32  `json:"AINodeNumber,omitempty" xml:"AINodeNumber,omitempty"`
-	AINodeSpec   *string `json:"AINodeSpec,omitempty" xml:"AINodeSpec,omitempty"`
-	// The mode of the cluster. This parameter is returned only for Data Warehouse Edition clusters. Valid values:
-	//
-	// 	- **BASIC**: reserved mode for Basic Edition.
-	//
-	// 	- **CLUSTER**: reserved mode for Cluster Edition.
-	//
-	// 	- **MIXED_STORAGE**: elastic mode for Cluster Edition.
-	//
-	// >  For more information about cluster editions, see [Editions](https://help.aliyun.com/document_detail/205001.html).
-	//
-	// example:
-	//
-	// MIXED_STORAGE
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The billing method of the cluster. Valid values:
-	//
-	// 	- **ads**: pay-as-you-go.
-	//
-	// 	- **ads_pre**: subscription.
-	//
-	// example:
-	//
-	// ads_pre
-	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The specifications of reserved computing resources. Each ACU is approximately equal to 1 core and 4 GB memory. Computing resources are used to compute data. The increase in the computing resources can accelerate queries. You can scale computing resources based on your business requirements.
-	//
-	// example:
-	//
-	// 16ACU
-	ComputeResource *string `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty"`
-	// The public endpoint that is used to connect to the cluster.
-	//
-	// example:
-	//
-	// amv-bp163885f8q21****.ads.aliyuncs.com
-	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The time when the cluster was created. The time follows the ISO 8601 standard in the *yyyy-mm-ddThh:mm:ssZ	- format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2022-04-01T09:50:18Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the cluster.
-	//
-	// example:
-	//
-	// adb_test
-	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
-	//
-	// example:
-	//
-	// amv-bp163885f8q21****
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The network type of the cluster. Only **VPC*	- is supported.
-	//
-	// example:
-	//
-	// VPC
-	DBClusterNetworkType *string `json:"DBClusterNetworkType,omitempty" xml:"DBClusterNetworkType,omitempty"`
-	// The status of the cluster. Valid values:
-	//
-	// 	- **Preparing**
-	//
-	// 	- **Creating**
-	//
-	// 	- **Running**
-	//
-	// 	- **Deleting**
-	//
-	// 	- **Restoring**
-	//
-	// 	- **ClassChanging**
-	//
-	// 	- **NetAddressCreating**
-	//
-	// 	- **NetAddressDeleting**
-	//
-	// 	- **NetAddressModifying**
-	//
-	// example:
-	//
-	// Running
-	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
-	// The type of the cluster. By default, **Common*	- is returned, which indicates a common cluster.
-	//
-	// example:
-	//
-	// Common
-	DBClusterType *string `json:"DBClusterType,omitempty" xml:"DBClusterType,omitempty"`
-	// The node specifications of the cluster. This parameter is returned only for Data Warehouse Edition clusters.
-	//
-	// example:
-	//
-	// E8
-	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	// The number of node groups.
-	//
-	// example:
-	//
-	// 2
-	DBNodeCount *int64 `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
-	// The storage capacity of the cluster. Unit: GB.
-	//
-	// example:
-	//
-	// 300
-	DBNodeStorage *int64 `json:"DBNodeStorage,omitempty" xml:"DBNodeStorage,omitempty"`
-	// The version number corresponding to the edition of the cluster. Only **5.0*	- is supported.
-	//
-	// example:
-	//
-	// 5.0
-	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// The disk type of the cluster. Valid values:
-	//
-	// 	- **local_ssd**: local disk.
-	//
-	// 	- **cloud**: basic disk.
-	//
-	// 	- **cloud_ssd**: standard SSD.
-	//
-	// 	- **cloud_efficiency**: ultra disk.
-	//
-	// 	- **cloud_essd**: PL1 Enterprise SSD (ESSD).
-	//
-	// 	- **cloud_essd2**: PL2 ESSD.
-	//
-	// 	- **cloud_essd3**: PL3 ESSD.
-	//
-	// >  For more information about ESSDs, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
-	//
-	// example:
-	//
-	// cloud_essd
-	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The ID of the Data Transmission Service (DTS) synchronization job This parameter is returned only for MySQL analytic instances.
-	//
-	// example:
-	//
-	// dtsb1578j90XXXX
-	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The number of elastic I/O units (EIUs). For more information, see the "[EIUs](https://help.aliyun.com/document_detail/189505.html)" section of the Scale out elastic I/O resources topic.
-	//
-	// >  This parameter is returned only for clusters in elastic mode.
-	//
-	// example:
-	//
-	// 2
-	ElasticIOResource *int32 `json:"ElasticIOResource,omitempty" xml:"ElasticIOResource,omitempty"`
-	// The engine of the cluster. **AnalyticDB*	- is returned.
-	//
-	// example:
-	//
-	// AnalyticDB
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The number of compute nodes that are used by the cluster in elastic mode.
-	//
-	// example:
-	//
-	// 1
-	ExecutorCount *string `json:"ExecutorCount,omitempty" xml:"ExecutorCount,omitempty"`
-	// The time when the cluster expires. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ	- format. The time is displayed in UTC.
-	//
-	// >
-	//
-	// 	- If the billing method of the cluster is subscription, the actual expiration time is returned.
-	//
-	// 	- If the billing method of the cluster is pay-as-you-go, null is returned.
-	//
-	// example:
-	//
-	// 2022-07-01T09:50:18Z
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Indicates whether the subscription cluster has expired. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// >
-	//
-	// 	- If the cluster has expired, the system locks or releases the cluster within a period of time. We recommend that you renew the expired cluster. For more information, see [Renewal policy](https://help.aliyun.com/document_detail/135246.html).
-	//
-	// 	- This parameter is not returned for pay-as-you-go clusters.
-	//
-	// example:
-	//
-	// false
-	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// The internal IP address of the cluster.
-	//
-	// example:
-	//
-	// 10.1.xx.xx
-	InnerIp *string `json:"InnerIp,omitempty" xml:"InnerIp,omitempty"`
-	// The internal port of the cluster.
-	//
-	// example:
-	//
-	// 3306
-	InnerPort *string `json:"InnerPort,omitempty" xml:"InnerPort,omitempty"`
-	// The lock status of the cluster. Valid values:
-	//
-	// 	- **Unlock**: The cluster is not locked.
-	//
-	// 	- **ManualLock**: The cluster is manually locked.
-	//
-	// 	- **LockByExpiration**: The cluster is automatically locked due to cluster expiration.
-	//
-	// example:
-	//
-	// Unlock
-	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The reason why the cluster is locked.
-	//
-	// >  This parameter is returned only when the cluster was locked. **instance_expire*	- is returned.
-	//
-	// example:
-	//
-	// instance_expire
-	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The mode of the cluster. By default, **flexible*	- is returned, which indicates that the cluster is in elastic mode.
-	//
-	// example:
-	//
-	// flexible
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The billing method of the cluster. Valid values:
-	//
-	// 	- **Postpaid**: pay-as-you-go.
-	//
-	// 	- **Prepaid**: subscription.
-	//
-	// example:
-	//
-	// Prepaid
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The port number that is used to connect to the cluster.
-	//
-	// example:
-	//
-	// 3306
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The service type of the cluster. Valid values:
-	//
-	// 	- **LegacyForm**
-	//
-	// 	- **IntegrationForm**
-	//
-	// example:
-	//
-	// IntegrationForm
-	ProductForm *string `json:"ProductForm,omitempty" xml:"ProductForm,omitempty"`
-	// The edition of the cluster. Valid values:
-	//
-	// 	- **BasicVersion**: Basic Edition.
-	//
-	// 	- **EnterpriseVersion**: Enterprise Edition.
-	//
-	// example:
-	//
-	// EnterpriseVersion
-	ProductVersion *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
-	// The ID of the ApsaraDB RDS instance from which data is synchronized to the cluster. This parameter is returned only for MySQL analytic instances.
-	//
-	// example:
-	//
-	// rm-bp11q28kvl688****
-	RdsInstanceId *string `json:"RdsInstanceId,omitempty" xml:"RdsInstanceId,omitempty"`
-	// The region ID of the cluster.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The remaining reserved computing resources that are available in the cluster. Each ACU is approximately equal to 1 core and 4 GB memory.
-	//
-	// example:
-	//
-	// 32ACU
-	ReservedACU *string `json:"ReservedACU,omitempty" xml:"ReservedACU,omitempty"`
-	// The number of reserved resource nodes.
-	//
-	// example:
-	//
-	// 1
-	ReservedNodeCount *int32 `json:"ReservedNodeCount,omitempty" xml:"ReservedNodeCount,omitempty"`
-	// The single-node specifications of reserved resources.
-	//
-	// example:
-	//
-	// 8ACU
-	ReservedNodeSize *string `json:"ReservedNodeSize,omitempty" xml:"ReservedNodeSize,omitempty"`
-	// The resource group ID.
-	//
-	// example:
-	//
-	// rg-acfmyiu4ekp****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The specifications of reserved storage resources. Each AnalyticDB compute unit (ACU) is approximately equal to 1 core and 4 GB memory. Storage resources are used to read and write data. The increase in the storage resources can improve the read and write performance of the cluster.
-	//
-	// example:
-	//
-	// 24ACU
-	StorageResource *string `json:"StorageResource,omitempty" xml:"StorageResource,omitempty"`
-	// The tags that are added to the cluster.
-	Tags *DescribeDBClustersResponseBodyItemsDBClusterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The information about the job.
-	TaskInfo *DescribeDBClustersResponseBodyItemsDBClusterTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Struct"`
-	// The VPC endpoint.
-	//
-	// example:
-	//
-	// am-bp163885f8q21****-controller
-	VPCCloudInstanceId *string `json:"VPCCloudInstanceId,omitempty" xml:"VPCCloudInstanceId,omitempty"`
-	// The virtual private cloud (VPC) ID of the cluster.
-	//
-	// example:
-	//
-	// vpc-bp13h7uzhulpuxvnp****
-	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The vSwitch ID of the cluster.
-	//
-	// example:
-	//
-	// vsw-bp1syh8vvw8yech7n****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The zone ID of the cluster.
-	//
-	// example:
-	//
-	// cn-hangzhou-h
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AINodeNumber         *int32                                                `json:"AINodeNumber,omitempty" xml:"AINodeNumber,omitempty"`
+	AINodeSpec           *string                                               `json:"AINodeSpec,omitempty" xml:"AINodeSpec,omitempty"`
+	Category             *string                                               `json:"Category,omitempty" xml:"Category,omitempty"`
+	CommodityCode        *string                                               `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	ComputeResource      *string                                               `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty"`
+	ConnectionString     *string                                               `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	CreateTime           *string                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DBClusterDescription *string                                               `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
+	DBClusterId          *string                                               `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterNetworkType *string                                               `json:"DBClusterNetworkType,omitempty" xml:"DBClusterNetworkType,omitempty"`
+	DBClusterStatus      *string                                               `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
+	DBClusterType        *string                                               `json:"DBClusterType,omitempty" xml:"DBClusterType,omitempty"`
+	DBNodeClass          *string                                               `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
+	DBNodeCount          *int64                                                `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
+	DBNodeStorage        *int64                                                `json:"DBNodeStorage,omitempty" xml:"DBNodeStorage,omitempty"`
+	DBVersion            *string                                               `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	DiskType             *string                                               `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	DtsJobId             *string                                               `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	ElasticIOResource    *int32                                                `json:"ElasticIOResource,omitempty" xml:"ElasticIOResource,omitempty"`
+	Engine               *string                                               `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	ExecutorCount        *string                                               `json:"ExecutorCount,omitempty" xml:"ExecutorCount,omitempty"`
+	ExpireTime           *string                                               `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	Expired              *string                                               `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	InnerIp              *string                                               `json:"InnerIp,omitempty" xml:"InnerIp,omitempty"`
+	InnerPort            *string                                               `json:"InnerPort,omitempty" xml:"InnerPort,omitempty"`
+	LockMode             *string                                               `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	LockReason           *string                                               `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	Mode                 *string                                               `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	PayType              *string                                               `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Port                 *string                                               `json:"Port,omitempty" xml:"Port,omitempty"`
+	ProductForm          *string                                               `json:"ProductForm,omitempty" xml:"ProductForm,omitempty"`
+	ProductVersion       *string                                               `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
+	RdsInstanceId        *string                                               `json:"RdsInstanceId,omitempty" xml:"RdsInstanceId,omitempty"`
+	RegionId             *string                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReservedACU          *string                                               `json:"ReservedACU,omitempty" xml:"ReservedACU,omitempty"`
+	ReservedNodeCount    *int32                                                `json:"ReservedNodeCount,omitempty" xml:"ReservedNodeCount,omitempty"`
+	ReservedNodeSize     *string                                               `json:"ReservedNodeSize,omitempty" xml:"ReservedNodeSize,omitempty"`
+	ResourceGroupId      *string                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	StorageResource      *string                                               `json:"StorageResource,omitempty" xml:"StorageResource,omitempty"`
+	Tags                 *DescribeDBClustersResponseBodyItemsDBClusterTags     `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	TaskInfo             *DescribeDBClustersResponseBodyItemsDBClusterTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Struct"`
+	VPCCloudInstanceId   *string                                               `json:"VPCCloudInstanceId,omitempty" xml:"VPCCloudInstanceId,omitempty"`
+	VPCId                *string                                               `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId            *string                                               `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId               *string                                               `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBClustersResponseBodyItemsDBCluster) String() string {
@@ -947,19 +655,7 @@ func (s *DescribeDBClustersResponseBodyItemsDBClusterTags) Validate() error {
 }
 
 type DescribeDBClustersResponseBodyItemsDBClusterTagsTag struct {
-	// The tag key.
-	//
-	// >  You can call the [TagResources](https://help.aliyun.com/document_detail/179253.html) operation to add tags to a cluster.
-	//
-	// example:
-	//
-	// tag1
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// test1
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -994,31 +690,9 @@ func (s *DescribeDBClustersResponseBodyItemsDBClusterTagsTag) Validate() error {
 }
 
 type DescribeDBClustersResponseBodyItemsDBClusterTaskInfo struct {
-	// The name of the job.
-	//
-	// example:
-	//
-	// analyticDBFlexibleScaleOut
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The progress of the job. Unit: %.
-	//
-	// example:
-	//
-	// 10
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The status of the job. Valid values:
-	//
-	// 	- **NOT_RUN**
-	//
-	// 	- **RUNNING**
-	//
-	// 	- **SUCCEED**
-	//
-	// example:
-	//
-	// RUNNING
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The job steps.
+	Name     *string                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	Progress *string                                                       `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status   *string                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
 	StepList *DescribeDBClustersResponseBodyItemsDBClusterTaskInfoStepList `json:"StepList,omitempty" xml:"StepList,omitempty" type:"Struct"`
 }
 
@@ -1110,48 +784,12 @@ func (s *DescribeDBClustersResponseBodyItemsDBClusterTaskInfoStepList) Validate(
 }
 
 type DescribeDBClustersResponseBodyItemsDBClusterTaskInfoStepListStepList struct {
-	// The end time of the job step. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2024-03-10T10:28:34Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time of the job step. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2024-03-10T09:28:34Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The description of the job step.
-	//
-	// example:
-	//
-	// Apply resource
-	StepDesc *string `json:"StepDesc,omitempty" xml:"StepDesc,omitempty"`
-	// The name of the job step.
-	//
-	// example:
-	//
-	// ApplyResource
-	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
-	// The progress of the job step. Unit: %.
-	//
-	// example:
-	//
-	// 50
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StepDesc     *string `json:"StepDesc,omitempty" xml:"StepDesc,omitempty"`
+	StepName     *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
 	StepProgress *string `json:"StepProgress,omitempty" xml:"StepProgress,omitempty"`
-	// The status of the job step. Valid values:
-	//
-	// 	- **NOT_RUN**
-	//
-	// 	- **RUNNING**
-	//
-	// 	- **SUCCEED**
-	//
-	// example:
-	//
-	// SUCCEED
-	StepStatus *string `json:"StepStatus,omitempty" xml:"StepStatus,omitempty"`
+	StepStatus   *string `json:"StepStatus,omitempty" xml:"StepStatus,omitempty"`
 }
 
 func (s DescribeDBClustersResponseBodyItemsDBClusterTaskInfoStepListStepList) String() string {

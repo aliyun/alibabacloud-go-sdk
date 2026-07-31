@@ -128,7 +128,7 @@ type DescribeSqlPatternRequest struct {
 	//
 	// example:
 	//
-	// 2022-08-30T12:10:00Z
+	// 2022-08-30
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The dimension by which to aggregate the SQL patterns. Valid values:
 	//

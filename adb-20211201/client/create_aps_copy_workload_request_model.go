@@ -26,7 +26,7 @@ type iCreateApsCopyWorkloadRequest interface {
 }
 
 type CreateApsCopyWorkloadRequest struct {
-	// The cluster ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type CreateApsCopyWorkloadRequest struct {
 	//
 	// 123
 	DatasourceId *int32 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type CreateApsCopyWorkloadRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//
 	// test
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The job ID.
+	// The data link task ID.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type CreateApsCopyWorkloadRequest struct {
 	//
 	// aps-******
 	WorkloadId *string `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
-	// The type of the job.
+	// The task type.
 	//
 	// This parameter is required.
 	//

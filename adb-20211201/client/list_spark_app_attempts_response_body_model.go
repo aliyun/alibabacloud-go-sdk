@@ -62,59 +62,59 @@ func (s *ListSparkAppAttemptsResponseBody) Validate() error {
 }
 
 type ListSparkAppAttemptsResponseBodyData struct {
-	// The queried attempts. Fields in the response parameter:
+	// The list of retry information. Metric description:
 	//
-	// 	- **AttemptId**: the attempt ID.
+	// - **AttemptId**: the retry ID.
 	//
-	// 	- **State**: the state of the Spark application. Valid values:
+	// - **State**: the execute status of the application. Valid values:
 	//
-	//     	- **SUBMITTED**
+	//     - **SUBMITTED**: commit.
 	//
-	//     	- **STARTING**
+	//     - **STARTING**: starting.
 	//
-	//     	- **RUNNING**
+	//     - **RUNNING**: executing.
 	//
-	//     	- **FAILING**
+	//     - **FAILING**: the node failed and the environment is being cleaned up.
 	//
-	//     	- **FAILED**
+	//     - **FAILED**: failed.
 	//
-	//     	- **KILLING**
+	//     - **KILLING**: aborting the task and cleaning up the environment.
 	//
-	//     	- **KILLED**
+	//     - **KILLED**: the task is aborted.
 	//
-	//     	- **SUCCEEDING**
+	//     - **SUCCEEDING**: the node execution is complete and the environment is being cleaned up.
 	//
-	//     	- **COMPLETED**
+	//     - **COMPLETED**: the node execution is complete.
 	//
-	//     	- **FATAL**
+	//     - **FATAL**: unexpected failure.
 	//
-	//     	- **UNKNOWN**
+	//     - **UNKNOWN**: unknown fault.
 	//
-	// 	- **Message**: the alert message that is returned. If no alert is generated, null is returned.
+	// - **Message**: the alerting message. This parameter is empty if no alerting is generated.
 	//
-	// 	- **Data*	- the data of the Spark application template.
+	// - **Data**: the Spark application template data.
 	//
-	// 	- **EstimateExecutionCpuTimeInSeconds**: the amount of time that is required to consume CPU resources for running the Spark application. Unit: milliseconds.
+	// - **EstimateExecutionCpuTimeInSeconds**: the CPU time consumed to execute the Spark application, in milliseconds (ms).
 	//
-	// 	- **LogRootPath**: the storage path of log files.
+	// - **LogRootPath**: the storage path of log files.
 	//
-	// 	- **LastAttemptId**: the ID of the last attempt.
+	// - **LastAttemptId**: the ID of the last retry.
 	//
-	// 	- **WebUiAddress**: the web UI URL.
+	// - **WebUiAddress**: the web UI address.
 	//
-	// 	- **SubmittedTimeInMillis**: the time when the Spark application was submitted. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// - **SubmittedTimeInMillis**: the time when the Spark application was committed. This value is a UNIX timestamp in milliseconds (ms).
 	//
-	// 	- **StartedTimeInMillis**: the time when the Spark application was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// - **StartedTimeInMillis**: the time when the Spark application was created. This value is a UNIX timestamp in milliseconds (ms).
 	//
-	// 	- **LastUpdatedTimeInMillis**: the time when the Spark application was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// - **LastUpdatedTimeInMillis**: the time when the Spark application was last updated. This value is a UNIX timestamp in milliseconds (ms).
 	//
-	// 	- **TerminatedTimeInMillis**: the time when the Spark application task was terminated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// - **TerminatedTimeInMillis**: the time when the Spark application stopped executing. This value is a UNIX timestamp in milliseconds (ms).
 	//
-	// 	- **DBClusterId**: the ID of the cluster on which the Spark application runs.
+	// - **DBClusterId**: the ID of the cluster that executes the Spark application.
 	//
-	// 	- **ResourceGroupName**: the name of the job resource group.
+	// - **ResourceGroupName**: the name of the Job-type resource group.
 	//
-	// 	- **DurationInMillis**: the amount of time that is required to run the Spark application. Unit: milliseconds.
+	// - **DurationInMillis**: the execution duration of the Spark application, in milliseconds (ms).
 	AttemptInfoList []*SparkAttemptInfo `json:"AttemptInfoList,omitempty" xml:"AttemptInfoList,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -128,7 +128,7 @@ type ListSparkAppAttemptsResponseBodyData struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

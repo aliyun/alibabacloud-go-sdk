@@ -66,7 +66,7 @@ type SetSparkAppLogRootPathResponseBodyData struct {
 	//
 	// example:
 	//
-	// oss://path/to/log
+	// oss://testBucketname/to/log
 	DefaultLogPath *string `json:"DefaultLogPath,omitempty" xml:"DefaultLogPath,omitempty"`
 	// Indicates whether a log path exists.
 	//
@@ -84,13 +84,13 @@ type SetSparkAppLogRootPathResponseBodyData struct {
 	//
 	// example:
 	//
-	// 1111111
+	// 11111111
 	ModifiedUid *string `json:"ModifiedUid,omitempty" xml:"ModifiedUid,omitempty"`
 	// The recorded log path.
 	//
 	// example:
 	//
-	// oss://path/to/log
+	// oss://testBucketname/to/log
 	RecordedLogPath *string `json:"RecordedLogPath,omitempty" xml:"RecordedLogPath,omitempty"`
 }
 

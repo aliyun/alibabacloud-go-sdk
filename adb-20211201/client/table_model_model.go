@@ -112,56 +112,264 @@ type iTableModel interface {
 }
 
 type TableModel struct {
-	ArchiveType          *string                 `json:"ArchiveType,omitempty" xml:"ArchiveType,omitempty"`
-	BlockSize            *int64                  `json:"BlockSize,omitempty" xml:"BlockSize,omitempty"`
-	Bucket               *int64                  `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	BucketCount          *int64                  `json:"BucketCount,omitempty" xml:"BucketCount,omitempty"`
-	Cols                 []*FieldSchemaModel     `json:"Cols,omitempty" xml:"Cols,omitempty" type:"Repeated"`
-	Comment              *string                 `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	Compression          *string                 `json:"Compression,omitempty" xml:"Compression,omitempty"`
-	CreateTime           *string                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreatedBySource      *string                 `json:"CreatedBySource,omitempty" xml:"CreatedBySource,omitempty"`
-	CreatedByUser        *string                 `json:"CreatedByUser,omitempty" xml:"CreatedByUser,omitempty"`
-	CurrentVersion       *int64                  `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
-	DbName               *string                 `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DictEncode           *bool                   `json:"DictEncode,omitempty" xml:"DictEncode,omitempty"`
-	DistributeColumns    []*FieldSchemaModel     `json:"DistributeColumns,omitempty" xml:"DistributeColumns,omitempty" type:"Repeated"`
-	DistributeType       *string                 `json:"DistributeType,omitempty" xml:"DistributeType,omitempty"`
-	EnableDfs            *bool                   `json:"EnableDfs,omitempty" xml:"EnableDfs,omitempty"`
-	HotPartitionCount    *int64                  `json:"HotPartitionCount,omitempty" xml:"HotPartitionCount,omitempty"`
-	Indexes              []*CstoreIndexModel     `json:"Indexes,omitempty" xml:"Indexes,omitempty" type:"Repeated"`
-	IsAllIndex           *bool                   `json:"IsAllIndex,omitempty" xml:"IsAllIndex,omitempty"`
-	IsFulltextDict       *bool                   `json:"IsFulltextDict,omitempty" xml:"IsFulltextDict,omitempty"`
-	MaxColumnId          *int64                  `json:"MaxColumnId,omitempty" xml:"MaxColumnId,omitempty"`
-	Parameters           map[string]*string      `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	PartitionColumn      *string                 `json:"PartitionColumn,omitempty" xml:"PartitionColumn,omitempty"`
-	PartitionCount       *int64                  `json:"PartitionCount,omitempty" xml:"PartitionCount,omitempty"`
-	PartitionKeys        []*FieldSchemaModel     `json:"PartitionKeys,omitempty" xml:"PartitionKeys,omitempty" type:"Repeated"`
-	PartitionType        *string                 `json:"PartitionType,omitempty" xml:"PartitionType,omitempty"`
-	PhysicalDatabaseName *string                 `json:"PhysicalDatabaseName,omitempty" xml:"PhysicalDatabaseName,omitempty"`
-	PhysicalTableName    *string                 `json:"PhysicalTableName,omitempty" xml:"PhysicalTableName,omitempty"`
-	PreviousVersion      *int64                  `json:"PreviousVersion,omitempty" xml:"PreviousVersion,omitempty"`
-	RawTableName         *string                 `json:"RawTableName,omitempty" xml:"RawTableName,omitempty"`
-	RouteColumns         []*FieldSchemaModel     `json:"RouteColumns,omitempty" xml:"RouteColumns,omitempty" type:"Repeated"`
-	RouteEffectiveColumn *FieldSchemaModel       `json:"RouteEffectiveColumn,omitempty" xml:"RouteEffectiveColumn,omitempty"`
-	RouteType            *string                 `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
-	RtEngineType         *string                 `json:"RtEngineType,omitempty" xml:"RtEngineType,omitempty"`
-	RtIndexAll           *bool                   `json:"RtIndexAll,omitempty" xml:"RtIndexAll,omitempty"`
-	RtModeType           *string                 `json:"RtModeType,omitempty" xml:"RtModeType,omitempty"`
-	Sd                   *StorageDescriptorModel `json:"Sd,omitempty" xml:"Sd,omitempty"`
-	StoragePolicy        *string                 `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty"`
-	SubpartitionColumn   *string                 `json:"SubpartitionColumn,omitempty" xml:"SubpartitionColumn,omitempty"`
-	SubpartitionCount    *int64                  `json:"SubpartitionCount,omitempty" xml:"SubpartitionCount,omitempty"`
-	SubpartitionType     *string                 `json:"SubpartitionType,omitempty" xml:"SubpartitionType,omitempty"`
-	TableEngineName      *string                 `json:"TableEngineName,omitempty" xml:"TableEngineName,omitempty"`
-	TableName            *string                 `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	TableType            *string                 `json:"TableType,omitempty" xml:"TableType,omitempty"`
-	TblId                *int64                  `json:"TblId,omitempty" xml:"TblId,omitempty"`
-	Temporary            *bool                   `json:"Temporary,omitempty" xml:"Temporary,omitempty"`
-	UpdateTime           *string                 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	ViewExpandedText     *string                 `json:"ViewExpandedText,omitempty" xml:"ViewExpandedText,omitempty"`
-	ViewOriginalText     *string                 `json:"ViewOriginalText,omitempty" xml:"ViewOriginalText,omitempty"`
-	ViewSecurityMode     *string                 `json:"ViewSecurityMode,omitempty" xml:"ViewSecurityMode,omitempty"`
+	// The archive type.
+	//
+	// example:
+	//
+	// ArchiveType
+	ArchiveType *string `json:"ArchiveType,omitempty" xml:"ArchiveType,omitempty"`
+	// The block size.
+	//
+	// example:
+	//
+	// 64
+	BlockSize *int64 `json:"BlockSize,omitempty" xml:"BlockSize,omitempty"`
+	// The bucket ID.
+	//
+	// example:
+	//
+	// 16
+	Bucket *int64 `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The number of buckets.
+	//
+	// example:
+	//
+	// 16
+	BucketCount *int64 `json:"BucketCount,omitempty" xml:"BucketCount,omitempty"`
+	// The column information.
+	Cols []*FieldSchemaModel `json:"Cols,omitempty" xml:"Cols,omitempty" type:"Repeated"`
+	// The description.
+	//
+	// example:
+	//
+	// description
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The compression method.
+	//
+	// example:
+	//
+	// Compression
+	Compression *string `json:"Compression,omitempty" xml:"Compression,omitempty"`
+	// The time when the table was created.
+	//
+	// example:
+	//
+	// 2023-01-05 13:17:55
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatedBySource *string `json:"CreatedBySource,omitempty" xml:"CreatedBySource,omitempty"`
+	CreatedByUser   *string `json:"CreatedByUser,omitempty" xml:"CreatedByUser,omitempty"`
+	// The current version.
+	//
+	// example:
+	//
+	// 2
+	CurrentVersion *int64 `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
+	// The name of the logical database.
+	//
+	// example:
+	//
+	// example
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// Indicates whether the dictionary is encrypted.
+	//
+	// example:
+	//
+	// false
+	DictEncode *bool `json:"DictEncode,omitempty" xml:"DictEncode,omitempty"`
+	// The distribution columns.
+	DistributeColumns []*FieldSchemaModel `json:"DistributeColumns,omitempty" xml:"DistributeColumns,omitempty" type:"Repeated"`
+	// The distribution type.
+	//
+	// example:
+	//
+	// DistributeType
+	DistributeType *string `json:"DistributeType,omitempty" xml:"DistributeType,omitempty"`
+	// Indicates whether DFS is allowed.
+	//
+	// example:
+	//
+	// false
+	EnableDfs *bool `json:"EnableDfs,omitempty" xml:"EnableDfs,omitempty"`
+	// The number of hot partitions.
+	//
+	// example:
+	//
+	// 32
+	HotPartitionCount *int64 `json:"HotPartitionCount,omitempty" xml:"HotPartitionCount,omitempty"`
+	// The indexes.
+	Indexes []*CstoreIndexModel `json:"Indexes,omitempty" xml:"Indexes,omitempty" type:"Repeated"`
+	// Indicates whether the index is a full index.
+	//
+	// example:
+	//
+	// true
+	IsAllIndex *bool `json:"IsAllIndex,omitempty" xml:"IsAllIndex,omitempty"`
+	// Indicates whether the table is a full-text index dictionary.
+	//
+	// example:
+	//
+	// false
+	IsFulltextDict *bool `json:"IsFulltextDict,omitempty" xml:"IsFulltextDict,omitempty"`
+	// The maximum column ID.
+	//
+	// example:
+	//
+	// MaxColumnId
+	MaxColumnId *int64 `json:"MaxColumnId,omitempty" xml:"MaxColumnId,omitempty"`
+	// The parameters.
+	Parameters map[string]*string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The information about the partition key column.
+	//
+	// example:
+	//
+	// colName
+	PartitionColumn *string `json:"PartitionColumn,omitempty" xml:"PartitionColumn,omitempty"`
+	// The number of partitions.
+	//
+	// example:
+	//
+	// 16
+	PartitionCount *int64 `json:"PartitionCount,omitempty" xml:"PartitionCount,omitempty"`
+	// The partition keys.
+	PartitionKeys []*FieldSchemaModel `json:"PartitionKeys,omitempty" xml:"PartitionKeys,omitempty" type:"Repeated"`
+	// The partition type.
+	//
+	// example:
+	//
+	// PartitionType
+	PartitionType *string `json:"PartitionType,omitempty" xml:"PartitionType,omitempty"`
+	// The name of the physical database.
+	//
+	// example:
+	//
+	// physicalDatabaseName
+	PhysicalDatabaseName *string `json:"PhysicalDatabaseName,omitempty" xml:"PhysicalDatabaseName,omitempty"`
+	// The name of the physical table.
+	//
+	// example:
+	//
+	// physicalTableName
+	PhysicalTableName *string `json:"PhysicalTableName,omitempty" xml:"PhysicalTableName,omitempty"`
+	// The previous version.
+	//
+	// example:
+	//
+	// 1
+	PreviousVersion *int64 `json:"PreviousVersion,omitempty" xml:"PreviousVersion,omitempty"`
+	// The raw table name.
+	//
+	// example:
+	//
+	// RawTableName
+	RawTableName *string `json:"RawTableName,omitempty" xml:"RawTableName,omitempty"`
+	// The routing columns.
+	RouteColumns []*FieldSchemaModel `json:"RouteColumns,omitempty" xml:"RouteColumns,omitempty" type:"Repeated"`
+	// The effective routing column.
+	RouteEffectiveColumn *FieldSchemaModel `json:"RouteEffectiveColumn,omitempty" xml:"RouteEffectiveColumn,omitempty"`
+	// The routing type.
+	//
+	// example:
+	//
+	// routeType
+	RouteType *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	// The routing engine type.
+	//
+	// example:
+	//
+	// RtEngineType
+	RtEngineType *string `json:"RtEngineType,omitempty" xml:"RtEngineType,omitempty"`
+	// Indicates whether to route all indexes.
+	//
+	// example:
+	//
+	// false
+	RtIndexAll *bool `json:"RtIndexAll,omitempty" xml:"RtIndexAll,omitempty"`
+	// The routing mode type.
+	//
+	// example:
+	//
+	// RtModeType
+	RtModeType *string `json:"RtModeType,omitempty" xml:"RtModeType,omitempty"`
+	// The description of the storage.
+	Sd *StorageDescriptorModel `json:"Sd,omitempty" xml:"Sd,omitempty"`
+	// The storage policy.
+	//
+	// example:
+	//
+	// StoragePolicy
+	StoragePolicy *string `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty"`
+	// The information about the subpartition column.
+	//
+	// example:
+	//
+	// SubpartitionColumn
+	SubpartitionColumn *string `json:"SubpartitionColumn,omitempty" xml:"SubpartitionColumn,omitempty"`
+	// The number of subpartitions.
+	//
+	// example:
+	//
+	// 64
+	SubpartitionCount *int64 `json:"SubpartitionCount,omitempty" xml:"SubpartitionCount,omitempty"`
+	// The subpartition type.
+	//
+	// example:
+	//
+	// SubpartitionColumn
+	SubpartitionType *string `json:"SubpartitionType,omitempty" xml:"SubpartitionType,omitempty"`
+	// The name of the table engine.
+	//
+	// example:
+	//
+	// hive
+	TableEngineName *string `json:"TableEngineName,omitempty" xml:"TableEngineName,omitempty"`
+	// The name of the logical table.
+	//
+	// example:
+	//
+	// tableName
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The table type.
+	//
+	// example:
+	//
+	// external_table
+	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	// The table ID.
+	//
+	// example:
+	//
+	// 123
+	TblId *int64 `json:"TblId,omitempty" xml:"TblId,omitempty"`
+	// Indicates whether the table is a temporary table.
+	//
+	// example:
+	//
+	// false
+	Temporary *bool `json:"Temporary,omitempty" xml:"Temporary,omitempty"`
+	// The time when the table was last updated.
+	//
+	// example:
+	//
+	// 2023-01-05 13:17:55
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The normalized SQL statement that is used to create the view.
+	//
+	// example:
+	//
+	// ViewExpandedText
+	ViewExpandedText *string `json:"ViewExpandedText,omitempty" xml:"ViewExpandedText,omitempty"`
+	// The SQL statement used to create the view.
+	//
+	// example:
+	//
+	// ViewOriginalText
+	ViewOriginalText *string `json:"ViewOriginalText,omitempty" xml:"ViewOriginalText,omitempty"`
+	// The security mode of the view.
+	//
+	// example:
+	//
+	// ViewSecurityMode
+	ViewSecurityMode *string `json:"ViewSecurityMode,omitempty" xml:"ViewSecurityMode,omitempty"`
 }
 
 func (s TableModel) String() string {

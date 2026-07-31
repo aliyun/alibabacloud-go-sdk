@@ -30,15 +30,60 @@ type iOpenStructMvRecommendTaskModel interface {
 }
 
 type OpenStructMvRecommendTaskModel struct {
-	CreatedTime            *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	LastRunAt              *string `json:"LastRunAt,omitempty" xml:"LastRunAt,omitempty"`
-	MinRewriteQueryCount   *int32  `json:"MinRewriteQueryCount,omitempty" xml:"MinRewriteQueryCount,omitempty"`
-	MinRewriteQueryPattern *int32  `json:"MinRewriteQueryPattern,omitempty" xml:"MinRewriteQueryPattern,omitempty"`
-	ScanQueriesRange       *int32  `json:"ScanQueriesRange,omitempty" xml:"ScanQueriesRange,omitempty"`
-	SchedulingSettings     *string `json:"SchedulingSettings,omitempty" xml:"SchedulingSettings,omitempty"`
-	SlowQueryThreshold     *int32  `json:"SlowQueryThreshold,omitempty" xml:"SlowQueryThreshold,omitempty"`
-	TaskName               *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2024-12-12 23:59
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// Description.
+	//
+	// example:
+	//
+	// task desc
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Last execution time.
+	//
+	// example:
+	//
+	// 2024-12-13 00:10
+	LastRunAt *string `json:"LastRunAt,omitempty" xml:"LastRunAt,omitempty"`
+	// The minimum number of slow queries that match the pattern.
+	//
+	// example:
+	//
+	// 3
+	MinRewriteQueryCount *int32 `json:"MinRewriteQueryCount,omitempty" xml:"MinRewriteQueryCount,omitempty"`
+	// The number of minimum acceleration patterns.
+	//
+	// example:
+	//
+	// 5
+	MinRewriteQueryPattern *int32 `json:"MinRewriteQueryPattern,omitempty" xml:"MinRewriteQueryPattern,omitempty"`
+	// The time range for scanning data. Unit: days. Default value: 3.
+	//
+	// example:
+	//
+	// 3
+	ScanQueriesRange *int32 `json:"ScanQueriesRange,omitempty" xml:"ScanQueriesRange,omitempty"`
+	// The execution schedule of the task.
+	//
+	// example:
+	//
+	// The 12:30 every day
+	SchedulingSettings *string `json:"SchedulingSettings,omitempty" xml:"SchedulingSettings,omitempty"`
+	// The wait threshold for slow queries.
+	//
+	// example:
+	//
+	// 2
+	SlowQueryThreshold *int32 `json:"SlowQueryThreshold,omitempty" xml:"SlowQueryThreshold,omitempty"`
+	// The name of the recommendation task.
+	//
+	// example:
+	//
+	// mv_task1
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s OpenStructMvRecommendTaskModel) String() string {

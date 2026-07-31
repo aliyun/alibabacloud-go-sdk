@@ -30,15 +30,60 @@ type iOpenStructMvRecommendSubTaskModel interface {
 }
 
 type OpenStructMvRecommendSubTaskModel struct {
-	EndTime                *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	MinRewriteQueryCount   *int32  `json:"MinRewriteQueryCount,omitempty" xml:"MinRewriteQueryCount,omitempty"`
-	MinRewriteQueryPattern *int32  `json:"MinRewriteQueryPattern,omitempty" xml:"MinRewriteQueryPattern,omitempty"`
-	ScanQueriesCount       *int64  `json:"ScanQueriesCount,omitempty" xml:"ScanQueriesCount,omitempty"`
-	SlowQueryThreshold     *int32  `json:"SlowQueryThreshold,omitempty" xml:"SlowQueryThreshold,omitempty"`
-	StartTime              *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubQueriesCount        *int64  `json:"SubQueriesCount,omitempty" xml:"SubQueriesCount,omitempty"`
-	SubtaskId              *int64  `json:"SubtaskId,omitempty" xml:"SubtaskId,omitempty"`
+	// The end time of the task.
+	//
+	// example:
+	//
+	// 2025-10-16 16:56
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The minimum number of slow queries that match the pattern.
+	//
+	// example:
+	//
+	// 3
+	MinRewriteQueryCount *int32 `json:"MinRewriteQueryCount,omitempty" xml:"MinRewriteQueryCount,omitempty"`
+	// The number of minimum acceleration patterns.
+	//
+	// example:
+	//
+	// 5
+	MinRewriteQueryPattern *int32 `json:"MinRewriteQueryPattern,omitempty" xml:"MinRewriteQueryPattern,omitempty"`
+	// The number of queries scanned.
+	//
+	// example:
+	//
+	// 55
+	ScanQueriesCount *int64 `json:"ScanQueriesCount,omitempty" xml:"ScanQueriesCount,omitempty"`
+	// The wait threshold for slow queries.
+	//
+	// example:
+	//
+	// 2
+	SlowQueryThreshold *int32 `json:"SlowQueryThreshold,omitempty" xml:"SlowQueryThreshold,omitempty"`
+	// The start time of the task.
+	//
+	// example:
+	//
+	// 2025-10-16 16:55
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Current execution status.
+	//
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of newly generated MV recommendations.
+	//
+	// example:
+	//
+	// 70
+	SubQueriesCount *int64 `json:"SubQueriesCount,omitempty" xml:"SubQueriesCount,omitempty"`
+	// The record ID of the task execution.
+	//
+	// example:
+	//
+	// 123
+	SubtaskId *int64 `json:"SubtaskId,omitempty" xml:"SubtaskId,omitempty"`
 }
 
 func (s OpenStructMvRecommendSubTaskModel) String() string {

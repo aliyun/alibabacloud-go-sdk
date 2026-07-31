@@ -26,7 +26,7 @@ type iUpdateApsWebhookResponseBody interface {
 }
 
 type UpdateApsWebhookResponseBody struct {
-	// The code of the returned result.
+	// The response code.
 	//
 	// example:
 	//
@@ -51,8 +51,12 @@ type UpdateApsWebhookResponseBody struct {
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Operation succeeded
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

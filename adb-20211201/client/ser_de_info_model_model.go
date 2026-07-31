@@ -20,10 +20,26 @@ type iSerDeInfoModel interface {
 }
 
 type SerDeInfoModel struct {
-	Name             *string            `json:"Name,omitempty" xml:"Name,omitempty"`
-	Parameters       map[string]*string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	SerDeId          *int64             `json:"SerDeId,omitempty" xml:"SerDeId,omitempty"`
-	SerializationLib *string            `json:"SerializationLib,omitempty" xml:"SerializationLib,omitempty"`
+	// The name of the serialization or deserialization information.
+	//
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The serialization or deserialization configuration parameter.
+	Parameters map[string]*string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The ID of the serialization or deserialization information.
+	//
+	// example:
+	//
+	// 123
+	SerDeId *int64 `json:"SerDeId,omitempty" xml:"SerDeId,omitempty"`
+	// The library that is used for serialization.
+	//
+	// example:
+	//
+	// org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe
+	SerializationLib *string `json:"SerializationLib,omitempty" xml:"SerializationLib,omitempty"`
 }
 
 func (s SerDeInfoModel) String() string {

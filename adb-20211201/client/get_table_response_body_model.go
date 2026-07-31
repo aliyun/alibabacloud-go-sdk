@@ -22,31 +22,31 @@ type iGetTableResponseBody interface {
 }
 
 type GetTableResponseBody struct {
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
 	// 0
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// ""
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the query succeeded.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The information about the table.
+	// The table details.
 	Table *TableModel `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 

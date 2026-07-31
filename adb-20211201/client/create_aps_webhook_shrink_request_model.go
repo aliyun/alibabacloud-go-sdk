@@ -28,7 +28,9 @@ type CreateApsWebhookShrinkRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The type of the task. Valid value: Task type. SLS or OSS Export Task: ResultExport.
+	// The task type. Valid values:
+	//
+	// ResultExport: SLS/OSS export task.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +38,7 @@ type CreateApsWebhookShrinkRequest struct {
 	//
 	// ResultExport
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The ID of the region in which to create the dedicated block storage cluster.
+	// The region ID of the cluster.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +46,7 @@ type CreateApsWebhookShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The array of webhooks.
+	// The webhook array.
 	WebhookShrink *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 

@@ -46,19 +46,19 @@ type CreateApsDatasoureRequest struct {
 	//
 	// amv-xxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The information about the Databricks data source.
+	// The Databricks data source information.
 	//
 	// example:
 	//
 	// -
 	DatabricksInfo *CreateApsDatasoureRequestDatabricksInfo `json:"DatabricksInfo,omitempty" xml:"DatabricksInfo,omitempty" type:"Struct"`
-	// The description of the data source.
+	// The data source description.
 	//
 	// example:
 	//
 	// description
 	DatasourceDescription *string `json:"DatasourceDescription,omitempty" xml:"DatasourceDescription,omitempty"`
-	// The name of the data source.
+	// The data source name.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type CreateApsDatasoureRequest struct {
 	//
 	// sls-******
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
-	// The type of the data source.
+	// The data source type.
 	//
 	// This parameter is required.
 	//
@@ -74,13 +74,13 @@ type CreateApsDatasoureRequest struct {
 	//
 	// KAFKA
 	DatasourceType *string `json:"DatasourceType,omitempty" xml:"DatasourceType,omitempty"`
-	// The information about the Hive data source.
+	// The Hive data source information.
 	//
 	// example:
 	//
 	// -
 	HiveInfo *CreateApsDatasoureRequestHiveInfo `json:"HiveInfo,omitempty" xml:"HiveInfo,omitempty" type:"Struct"`
-	// The information about the source Apache Kafka instance.
+	// The Kafka information.
 	//
 	// example:
 	//
@@ -92,19 +92,19 @@ type CreateApsDatasoureRequest struct {
 	//
 	// ALI_CLOUD_INSTANCE
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The information about the source PolarDB for MySQL cluster.
+	// The PolarDB for MySQL data source information.
 	//
 	// example:
 	//
 	// -
 	PolarDBMysqlInfo *CreateApsDatasoureRequestPolarDBMysqlInfo `json:"PolarDBMysqlInfo,omitempty" xml:"PolarDBMysqlInfo,omitempty" type:"Struct"`
-	// The information about the source PolarDB-X instance.
+	// The PolarDB-X data source information.
 	//
 	// example:
 	//
 	// -
 	PolarDBXInfo *CreateApsDatasoureRequestPolarDBXInfo `json:"PolarDBXInfo,omitempty" xml:"PolarDBXInfo,omitempty" type:"Struct"`
-	// The information about the source ApsaraDB RDS for MySQL instance.
+	// The ApsaraDB RDS for MySQL data source information.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type CreateApsDatasoureRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The information about the source Simple Log Service (SLS) instance or cluster.
+	// The Simple Log Service (SLS) information for the data source to be created.
 	//
 	// example:
 	//
@@ -291,13 +291,13 @@ func (s *CreateApsDatasoureRequest) Validate() error {
 }
 
 type CreateApsDatasoureRequestDatabricksInfo struct {
-	// The token that is used to access Databricks.
+	// The access token.
 	//
 	// example:
 	//
 	// ******
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// The URL of the workspace.
+	// The workspace URL.
 	//
 	// example:
 	//
@@ -336,25 +336,25 @@ func (s *CreateApsDatasoureRequestDatabricksInfo) Validate() error {
 }
 
 type CreateApsDatasoureRequestHiveInfo struct {
-	// The cluster ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// ******
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The configuration of the host.
+	// The host configuration.
 	//
 	// example:
 	//
 	// ******
 	HostConfig *string `json:"HostConfig,omitempty" xml:"HostConfig,omitempty"`
-	// The URL of the Hive Metastore.
+	// The MetaStore endpoint.
 	//
 	// example:
 	//
 	// ******
 	MetaStoreUri *string `json:"MetaStoreUri,omitempty" xml:"MetaStoreUri,omitempty"`
-	// The security group ID.
+	// The security group.
 	//
 	// example:
 	//
@@ -426,13 +426,13 @@ func (s *CreateApsDatasoureRequestHiveInfo) Validate() error {
 }
 
 type CreateApsDatasoureRequestKafkaInfo struct {
-	// The ID of the Apache Kafka instance.
+	// The Kafka instance ID.
 	//
 	// example:
 	//
 	// ******
 	KafkaClusterId *string `json:"KafkaClusterId,omitempty" xml:"KafkaClusterId,omitempty"`
-	// The topic of the Apache Kafka instance.
+	// The assigned Kafka topic name.
 	//
 	// example:
 	//
@@ -471,29 +471,29 @@ func (s *CreateApsDatasoureRequestKafkaInfo) Validate() error {
 }
 
 type CreateApsDatasoureRequestPolarDBMysqlInfo struct {
-	// Specifies whether the data source is a cross-account resource. Valid values:
+	// Specifies whether cross-account access is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The current network instance is a cross-account resource.
 	//
-	// 	- **false**
+	// - **false**: The current network instance is a resource within the current account.
 	//
 	// example:
 	//
 	// false
 	Across *bool `json:"Across,omitempty" xml:"Across,omitempty"`
-	// The name of the cross-account role.
+	// The cross-account role.
 	//
 	// example:
 	//
 	// test-role
 	AcrossRole *string `json:"AcrossRole,omitempty" xml:"AcrossRole,omitempty"`
-	// The cross-account UID.
+	// The UID of the cross-account.
 	//
 	// example:
 	//
 	// 123456789*
 	AcrossUid *string `json:"AcrossUid,omitempty" xml:"AcrossUid,omitempty"`
-	// The URL used to connect to the custom ApsaraDB RDS for MySQL instance.
+	// The custom RDS endpoint.
 	//
 	// example:
 	//
@@ -517,13 +517,13 @@ type CreateApsDatasoureRequestPolarDBMysqlInfo struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The security group ID.
+	// The security group.
 	//
 	// example:
 	//
 	// sg-******
 	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
-	// The username used to access the instance.
+	// The username.
 	//
 	// example:
 	//
@@ -625,7 +625,7 @@ func (s *CreateApsDatasoureRequestPolarDBMysqlInfo) Validate() error {
 }
 
 type CreateApsDatasoureRequestPolarDBXInfo struct {
-	// The instance ID.
+	// The OceanBase cluster ID.
 	//
 	// example:
 	//
@@ -655,7 +655,7 @@ func (s *CreateApsDatasoureRequestPolarDBXInfo) Validate() error {
 }
 
 type CreateApsDatasoureRequestRdsMysqlInfo struct {
-	// The URL used to connect to the read-only instance.
+	// The read-only instance endpoint.
 	//
 	// example:
 	//
@@ -667,7 +667,7 @@ type CreateApsDatasoureRequestRdsMysqlInfo struct {
 	//
 	// rm-xxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The password of the database account of the instance.
+	// The password.
 	//
 	// example:
 	//
@@ -679,17 +679,17 @@ type CreateApsDatasoureRequestRdsMysqlInfo struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The security group ID.
+	// The security group.
 	//
 	// example:
 	//
 	// sg-******
 	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
-	// The name of the database account of the instance.
+	// The username.
 	//
 	// example:
 	//
-	// user
+	// Username.
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -760,37 +760,37 @@ func (s *CreateApsDatasoureRequestRdsMysqlInfo) Validate() error {
 }
 
 type CreateApsDatasoureRequestSlsInfo struct {
-	// Specifies whether the data source is a cross-account resource.
+	// Specifies whether cross-account access is enabled.
 	//
 	// example:
 	//
 	// false
 	Across *bool `json:"Across,omitempty" xml:"Across,omitempty"`
-	// The name of the cross-account role.
+	// The role name for cross-account access.
 	//
 	// example:
 	//
 	// yyy
 	AcrossRole *string `json:"AcrossRole,omitempty" xml:"AcrossRole,omitempty"`
-	// The cross-account UID.
+	// The UID of the cross-account.
 	//
 	// example:
 	//
 	// xxxx
 	AcrossUid *string `json:"AcrossUid,omitempty" xml:"AcrossUid,omitempty"`
-	// The SLS project.
+	// The Simple Log Service (SLS) project.
 	//
 	// example:
 	//
 	// test-project
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// The region ID.
+	// The region ID of the source cluster.
 	//
 	// example:
 	//
 	// cn-beijing
 	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
-	// The name of the SLS Logstore.
+	// sls logstore。
 	//
 	// example:
 	//

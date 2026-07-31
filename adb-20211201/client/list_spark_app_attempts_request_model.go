@@ -20,7 +20,7 @@ type iListSparkAppAttemptsRequest interface {
 }
 
 type ListSparkAppAttemptsRequest struct {
-	// The ID of the Spark application.
+	// The application ID.
 	//
 	// > You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query all application IDs.
 	//
@@ -30,13 +30,15 @@ type ListSparkAppAttemptsRequest struct {
 	//
 	// s202204132018hzprec1ac****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	//
+	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
 	// example:
 	//
 	// amv-uf6o6m8p6x***
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The page number. The value must be an integer that is greater than 0. Default value: **1**.
+	// The page number. The value must be a positive integer. Default value: **1**.
 	//
 	// This parameter is required.
 	//
@@ -46,11 +48,11 @@ type ListSparkAppAttemptsRequest struct {
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// 	- **10*	- (default)
+	// - **10*	- (default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// example:
 	//

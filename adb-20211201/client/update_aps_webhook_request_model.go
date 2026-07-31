@@ -34,7 +34,7 @@ type UpdateApsWebhookRequest struct {
 	//
 	// exampleRegionId
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The array of webhooks.
+	// The webhook array.
 	Webhook []*UpdateApsWebhookRequestWebhook `json:"Webhook,omitempty" xml:"Webhook,omitempty" type:"Repeated"`
 }
 
@@ -87,25 +87,25 @@ func (s *UpdateApsWebhookRequest) Validate() error {
 }
 
 type UpdateApsWebhookRequestWebhook struct {
-	// Signed key.
+	// The signing key.
 	//
 	// example:
 	//
 	// ABC**
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The name of the webhook.
+	// The webhook name.
 	//
 	// example:
 	//
 	// exampleWebhookName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The URL of the request.
+	// The request URL.
 	//
 	// example:
 	//
 	// https://example.com/webhook
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// The ID of the webhook.
+	// Webhook ID。
 	//
 	// This parameter is required.
 	//
@@ -113,7 +113,11 @@ type UpdateApsWebhookRequestWebhook struct {
 	//
 	// **355****
 	WebhookId *int64 `json:"WebhookId,omitempty" xml:"WebhookId,omitempty"`
-	// The notification method. Valid values: dingtalk. lark.
+	// The notification method. Valid values:
+	//
+	// - dingtalk: DingTalk.
+	//
+	// - lark: Lark.
 	//
 	// example:
 	//

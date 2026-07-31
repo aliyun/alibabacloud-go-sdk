@@ -9,8 +9,12 @@ type iCreateDBResourceGroupShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAtmConfigShrink(v string) *CreateDBResourceGroupShrinkRequest
+	GetAtmConfigShrink() *string
 	SetAutoStopInterval(v string) *CreateDBResourceGroupShrinkRequest
 	GetAutoStopInterval() *string
+	SetClassification(v string) *CreateDBResourceGroupShrinkRequest
+	GetClassification() *string
 	SetClusterMode(v string) *CreateDBResourceGroupShrinkRequest
 	GetClusterMode() *string
 	SetClusterSizeResource(v string) *CreateDBResourceGroupShrinkRequest
@@ -47,6 +51,8 @@ type iCreateDBResourceGroupShrinkRequest interface {
 	GetRegionId() *string
 	SetRulesShrink(v string) *CreateDBResourceGroupShrinkRequest
 	GetRulesShrink() *string
+	SetScalePolicy(v string) *CreateDBResourceGroupShrinkRequest
+	GetScalePolicy() *string
 	SetSpecName(v string) *CreateDBResourceGroupShrinkRequest
 	GetSpecName() *string
 	SetTargetResourceGroupName(v string) *CreateDBResourceGroupShrinkRequest
@@ -54,23 +60,40 @@ type iCreateDBResourceGroupShrinkRequest interface {
 }
 
 type CreateDBResourceGroupShrinkRequest struct {
+	AtmConfigShrink *string `json:"AtmConfig,omitempty" xml:"AtmConfig,omitempty"`
+	// The automatic stop interval. Unit: minutes (m).
+	//
 	// example:
 	//
 	// 5m
 	AutoStopInterval *string `json:"AutoStopInterval,omitempty" xml:"AutoStopInterval,omitempty"`
-	// A reserved parameter.
+	// The classification of the resource group. Valid values:
+	//
+	// - SQL
+	//
+	// - SparkSQL
+	//
+	// - MultiCluster
+	//
+	// - AI
 	//
 	// example:
 	//
-	// N/A
+	// SQL
+	Classification *string `json:"Classification,omitempty" xml:"Classification,omitempty"`
+	// A reserved parameter (not applicable).
+	//
+	// example:
+	//
+	// -
 	ClusterMode *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
-	// A reserved parameter.
+	// A reserved parameter (not applicable).
 	//
 	// example:
 	//
-	// N/A
+	// -
 	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the Dedicated Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -78,32 +101,41 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to enable the spot instance feature for the resource group. After you enable the spot instance feature, you are charged for resources at a lower unit price but the resources are probably released. You can enable the spot instance feature only for job resource groups. Valid values:
+	// Specifies whether to enable the spot instance feature for the resource group. After the spot instance feature is enabled, the unit price of resources is reduced, but the resources may be released. Only Job resource groups support this feature. Valid values:
 	//
-	// 	- **True**
+	// - **True**: enables the spot instance feature.
 	//
-	// 	- **False**
+	// - **False**: disables the spot instance feature.
 	//
 	// example:
 	//
 	// True
 	EnableSpot *bool `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
+	// The database engine. Valid values:
+	//
+	// - **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
+	//
+	// - **SparkWarehouse**: the SparkWarehouse engine.
+	//
 	// example:
 	//
 	// SparkWarehouse
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The engine configuration.
+	//
 	// example:
 	//
 	// {\\"spark.adb.version\\":\\"3.5\\"}
-	EngineParamsShrink   *string `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
+	EngineParamsShrink *string `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
+	// The GPU time-sharing elastic plan.
 	GpuElasticPlanShrink *string `json:"GpuElasticPlan,omitempty" xml:"GpuElasticPlan,omitempty"`
 	// The name of the resource group.
 	//
-	// 	- The name can be up to 255 characters in length.
+	// - The name can be up to 255 characters in length.
 	//
-	// 	- The name must start with a letter or a digit.
+	// - The name must start with a digit, an uppercase letter, or a lowercase letter.
 	//
-	// 	- The name can contain letters, digits, hyphens (_), and underscores (_).
+	// - The name can contain digits, uppercase letters, lowercase letters, hyphens (-), and underscores (_).
 	//
 	// This parameter is required.
 	//
@@ -113,11 +145,11 @@ type CreateDBResourceGroupShrinkRequest struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The type of the resource group. Valid values:
 	//
-	// 	- **Interactive**
+	// - **Interactive**
 	//
-	// 	- **Job**
+	// - **Job**
 	//
-	// >  For more information about resource groups, see [Resource group overview](https://help.aliyun.com/document_detail/428610.html).
+	// > For more information about Data Lakehouse Edition resource groups, see [Resource group overview (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
 	//
 	// This parameter is required.
 	//
@@ -125,56 +157,87 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// Job
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// A reserved parameter.
+	// A reserved parameter (not applicable).
 	//
 	// example:
 	//
-	// N/A
+	// -
 	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
-	// The maximum reserved computing resources.
+	// The maximum amount of reserved computing resources. Unit: ACUs.
 	//
-	// 	- If GroupType is set to Interactive, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 16ACU.
+	// - If the resource group type is Interactive, the maximum reserved computing resources is the current unallocated resources of the cluster, in increments of 16 ACUs.
 	//
-	// 	- If GroupType is set to Job, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 8ACU.
+	// - If the resource group type is Job, the maximum reserved computing resources is the current unallocated resources of the cluster, in increments of 8 ACUs.
 	//
 	// example:
 	//
 	// 48ACU
 	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
-	// A reserved parameter.
-	MaxGpuQuantity *int32 `json:"MaxGpuQuantity,omitempty" xml:"MaxGpuQuantity,omitempty"`
-	// A reserved parameter.
+	// The maximum number of GPUs.
 	//
 	// example:
 	//
-	// N/A
+	// 2
+	MaxGpuQuantity *int32 `json:"MaxGpuQuantity,omitempty" xml:"MaxGpuQuantity,omitempty"`
+	// A reserved parameter (not applicable).
+	//
+	// example:
+	//
+	// -
 	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
-	// The minimum reserved computing resources.
+	// The minimum amount of reserved computing resources. Unit: ACUs.
 	//
-	// 	- When GroupType is set to Interactive, set this parameter to 16ACU.
+	// - If the resource group type is Interactive, the minimum reserved computing resources is 16 ACUs.
 	//
-	// 	- When GroupType is set to Job, set this parameter to 0ACU.
+	// - If the resource group type is Job, the minimum reserved computing resources is 0 ACUs.
 	//
 	// example:
 	//
 	// 0ACU
 	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
-	// A reserved parameter.
-	MinGpuQuantity  *int32  `json:"MinGpuQuantity,omitempty" xml:"MinGpuQuantity,omitempty"`
-	RayConfigShrink *string `json:"RayConfig,omitempty" xml:"RayConfig,omitempty"`
-	// The region ID of the cluster.
+	// The minimum number of GPUs.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the most recent region list.
+	// example:
+	//
+	// 1
+	MinGpuQuantity *int32 `json:"MinGpuQuantity,omitempty" xml:"MinGpuQuantity,omitempty"`
+	// The Ray configuration.
+	//
+	// > This parameter is required when the resource group is an AI resource group and the corresponding engine is RayCluster.
+	RayConfigShrink *string `json:"RayConfig,omitempty" xml:"RayConfig,omitempty"`
+	// The region ID.
+	//
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the region IDs of AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The job resubmission rules.
+	// The job routing rules.
 	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	// A reserved parameter.
+	// The scaling policy of the resource group. Valid values:
+	//
+	// - AutoScaling: enables the AutoScaling automatic scaling policy.
+	//
+	// - Disable: disables automatic scaling.
+	//
+	// - MultiCluster: enables the MultiCluster automatic scaling policy.
+	//
+	// example:
+	//
+	// AutoScaling
+	ScalePolicy *string `json:"ScalePolicy,omitempty" xml:"ScalePolicy,omitempty"`
+	// The specification name.
+	//
+	// example:
+	//
+	// ADB.MLLarge.2
 	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
-	// A reserved parameter.
+	// The name of the destination resource group.
+	//
+	// example:
+	//
+	// test
 	TargetResourceGroupName *string `json:"TargetResourceGroupName,omitempty" xml:"TargetResourceGroupName,omitempty"`
 }
 
@@ -186,8 +249,16 @@ func (s CreateDBResourceGroupShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateDBResourceGroupShrinkRequest) GetAtmConfigShrink() *string {
+	return s.AtmConfigShrink
+}
+
 func (s *CreateDBResourceGroupShrinkRequest) GetAutoStopInterval() *string {
 	return s.AutoStopInterval
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) GetClassification() *string {
+	return s.Classification
 }
 
 func (s *CreateDBResourceGroupShrinkRequest) GetClusterMode() *string {
@@ -262,6 +333,10 @@ func (s *CreateDBResourceGroupShrinkRequest) GetRulesShrink() *string {
 	return s.RulesShrink
 }
 
+func (s *CreateDBResourceGroupShrinkRequest) GetScalePolicy() *string {
+	return s.ScalePolicy
+}
+
 func (s *CreateDBResourceGroupShrinkRequest) GetSpecName() *string {
 	return s.SpecName
 }
@@ -270,8 +345,18 @@ func (s *CreateDBResourceGroupShrinkRequest) GetTargetResourceGroupName() *strin
 	return s.TargetResourceGroupName
 }
 
+func (s *CreateDBResourceGroupShrinkRequest) SetAtmConfigShrink(v string) *CreateDBResourceGroupShrinkRequest {
+	s.AtmConfigShrink = &v
+	return s
+}
+
 func (s *CreateDBResourceGroupShrinkRequest) SetAutoStopInterval(v string) *CreateDBResourceGroupShrinkRequest {
 	s.AutoStopInterval = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetClassification(v string) *CreateDBResourceGroupShrinkRequest {
+	s.Classification = &v
 	return s
 }
 
@@ -362,6 +447,11 @@ func (s *CreateDBResourceGroupShrinkRequest) SetRegionId(v string) *CreateDBReso
 
 func (s *CreateDBResourceGroupShrinkRequest) SetRulesShrink(v string) *CreateDBResourceGroupShrinkRequest {
 	s.RulesShrink = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetScalePolicy(v string) *CreateDBResourceGroupShrinkRequest {
+	s.ScalePolicy = &v
 	return s
 }
 

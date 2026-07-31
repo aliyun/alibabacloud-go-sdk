@@ -18,14 +18,13 @@ type iDescribeClusterNetInfoResponseBody interface {
 }
 
 type DescribeClusterNetInfoResponseBody struct {
-	// The network type of the cluster. Only the Virtual Private Cloud (VPC) network type is supported. **VPC*	- is returned.
+	// The network type of the cluster. The value is always **VPC**, as this is the only supported network type.
 	//
 	// example:
 	//
 	// VPC
-	ClusterNetworkType *string `json:"ClusterNetworkType,omitempty" xml:"ClusterNetworkType,omitempty"`
-	// The queried network information about the cluster.
-	Items *DescribeClusterNetInfoResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	ClusterNetworkType *string                                  `json:"ClusterNetworkType,omitempty" xml:"ClusterNetworkType,omitempty"`
+	Items              *DescribeClusterNetInfoResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
@@ -113,70 +112,14 @@ func (s *DescribeClusterNetInfoResponseBodyItems) Validate() error {
 }
 
 type DescribeClusterNetInfoResponseBodyItemsAddress struct {
-	// The endpoint of the cluster.
-	//
-	// 	- If NetType is set to VPC, the VPC endpoint of the cluster is returned.
-	//
-	// 	- If NetType is set to Public, the public endpoint of the cluster is returned.
-	//
-	// example:
-	//
-	// amv-wz9dqvn0o7****.ads.aliyuncs.com
-	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The prefix of the endpoint.
-	//
-	// 	- If NetType is set to VPC, the prefix of the VPC endpoint is returned.
-	//
-	// 	- If NetType is set to Public, the prefix of the public endpoint is returned.
-	//
-	// example:
-	//
-	// amv-wz9dqvn0o7****
-	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
-	// The IP address of the endpoint.
-	//
-	// 	- If NetType is set to VPC, the private IP address of the cluster is returned.
-	//
-	// 	- If NetType is set to Public, the public IP address of the cluster is returned.
-	//
-	// example:
-	//
-	// 192.168.xx.xx
-	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
-	// The network type of the cluster. Valid values:
-	//
-	// 	- **Public**: Internet.
-	//
-	// 	- **VPC**: VPC.
-	//
-	// example:
-	//
-	// VPC
-	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The port number that is used to connect to the cluster. **3306*	- is returned.
-	//
-	// example:
-	//
-	// 3306
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ports.
-	Ports *DescribeClusterNetInfoResponseBodyItemsAddressPorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Struct"`
-	// The VPC ID.
-	//
-	// >  If NetType is set to Public, an empty string is returned.
-	//
-	// example:
-	//
-	// vpc-8vbhucmd5b****
-	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The vSwitch ID of the cluster.
-	//
-	// >  If NetType is set to Public, an empty string is returned.
-	//
-	// example:
-	//
-	// vsw-bp1syh8vvw8yec****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ConnectionString       *string                                              `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	ConnectionStringPrefix *string                                              `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
+	IPAddress              *string                                              `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
+	NetType                *string                                              `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	Port                   *string                                              `json:"Port,omitempty" xml:"Port,omitempty"`
+	Ports                  *DescribeClusterNetInfoResponseBodyItemsAddressPorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Struct"`
+	VPCId                  *string                                              `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId              *string                                              `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s DescribeClusterNetInfoResponseBodyItemsAddress) String() string {
@@ -303,25 +246,7 @@ func (s *DescribeClusterNetInfoResponseBodyItemsAddressPorts) Validate() error {
 }
 
 type DescribeClusterNetInfoResponseBodyItemsAddressPortsPorts struct {
-	// The port.
-	//
-	// example:
-	//
-	// 3306
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The type of the protocol. Valid values:
-	//
-	// 	- **tcp**
-	//
-	// 	- **http**
-	//
-	// 	- **https**
-	//
-	// 	- **mysql**
-	//
-	// example:
-	//
-	// mysql
+	Port     *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 

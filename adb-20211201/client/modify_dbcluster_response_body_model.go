@@ -18,7 +18,7 @@ type iModifyDBClusterResponseBody interface {
 }
 
 type ModifyDBClusterResponseBody struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	// The ID of the Data Lakehouse Edition cluster.
 	//
 	// example:
 	//

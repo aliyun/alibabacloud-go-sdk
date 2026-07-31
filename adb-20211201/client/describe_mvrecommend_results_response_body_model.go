@@ -36,13 +36,13 @@ type DescribeMVRecommendResultsResponseBody struct {
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -113,20 +113,21 @@ func (s *DescribeMVRecommendResultsResponseBody) Validate() error {
 }
 
 type DescribeMVRecommendResultsResponseBodyData struct {
+	// A list of materialized view recommendation results.
 	MvRecommendResultModels []*OpenStructMVRecommendResultModel `json:"MvRecommendResultModels,omitempty" xml:"MvRecommendResultModels,omitempty" type:"Repeated"`
-	// The page number. Default value: **1**.
+	// The page number. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// 	- **30*	- (default).
+	// - **30*	- (Default)
 	//
-	// 	- **50**.
+	// - **50**
 	//
-	// 	- **100**.
+	// - **100**
 	//
 	// example:
 	//

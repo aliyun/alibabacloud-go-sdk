@@ -32,15 +32,21 @@ type iCreatePerformanceViewRequest interface {
 }
 
 type CreatePerformanceViewRequest struct {
-	// The type of the view.
+	// The type of the original monitoring dashboard from which the current monitoring dashboard is copied. Valid values:
+	//
+	// - **Basic**: basic dashboard.
+	//
+	// - **Advanced**: advanced dashboard.
 	//
 	// example:
 	//
 	// Basic
 	CreateFromViewType *string `json:"CreateFromViewType,omitempty" xml:"CreateFromViewType,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
+	// <props="intl">The ID of the Data Lakehouse Edition cluster.
+	//
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -48,11 +54,11 @@ type CreatePerformanceViewRequest struct {
 	//
 	// amv-bp1ub9grke1****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to populate the names of the metrics in the original monitoring view when you view the monitoring view. Valid values:
+	// Specifies whether to populate the keys from the original monitoring dashboard when viewing the monitoring dashboard. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -62,7 +68,7 @@ type CreatePerformanceViewRequest struct {
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the supported regions and zones, including region IDs.
 	//
 	// This parameter is required.
 	//
@@ -72,17 +78,17 @@ type CreatePerformanceViewRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The information about the monitoring view.
+	// The details of the monitoring dashboard.
 	//
 	// This parameter is required.
 	ViewDetail *CreatePerformanceViewRequestViewDetail `json:"ViewDetail,omitempty" xml:"ViewDetail,omitempty" type:"Struct"`
-	// The name of the view.
+	// The name of the monitoring dashboard.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// viewname
+	// Custom-All metrics-2 columns-Linked
 	ViewName *string `json:"ViewName,omitempty" xml:"ViewName,omitempty"`
 }
 
@@ -194,19 +200,19 @@ func (s *CreatePerformanceViewRequest) Validate() error {
 }
 
 type CreatePerformanceViewRequestViewDetail struct {
-	// The metric categories.
+	// The list of metric categories.
 	Categories []*CreatePerformanceViewRequestViewDetailCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// Specifies whether to enable the filter interaction feature. Valid values:
+	// Indicates whether the linkage chart is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
 	// true
 	ChartLinked *bool `json:"ChartLinked,omitempty" xml:"ChartLinked,omitempty"`
-	// The number of charts to display in each row.
+	// The number of charts displayed per row.
 	//
 	// example:
 	//
@@ -265,19 +271,19 @@ func (s *CreatePerformanceViewRequestViewDetail) Validate() error {
 type CreatePerformanceViewRequestViewDetailCategories struct {
 	// The name of the metric category. Valid values:
 	//
-	// 	- **Node**
+	// 	- **Node**: node resource metrics.
 	//
-	// 	- **DiskData**
+	// 	- **DiskData**: disk metrics.
 	//
-	// 	- **WorkLoad**
+	// 	- **WorkLoad**: workload metrics.
 	//
-	// 	- **ResourceGroup**
+	// 	- **ResourceGroup**: resource group metrics.
 	//
 	// example:
 	//
 	// Node
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The metrics.
+	// The list of metrics.
 	Keys []*CreatePerformanceViewRequestViewDetailCategoriesKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
 }
 
@@ -321,17 +327,17 @@ func (s *CreatePerformanceViewRequestViewDetailCategories) Validate() error {
 }
 
 type CreatePerformanceViewRequestViewDetailCategoriesKeys struct {
-	// The name of the metric.
+	// The key of the metric.
 	//
 	// example:
 	//
 	// AnalyticDB_CPU
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
-	// Specifies whether to select the metric. Valid values:
+	// Specifies whether the metric is selected. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

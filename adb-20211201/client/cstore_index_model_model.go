@@ -30,15 +30,48 @@ type iCstoreIndexModel interface {
 }
 
 type CstoreIndexModel struct {
-	ColumnOrds        []*string           `json:"ColumnOrds,omitempty" xml:"ColumnOrds,omitempty" type:"Repeated"`
-	CreateTime        *string             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DatabaseName      *string             `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	IndexColumns      []*FieldSchemaModel `json:"IndexColumns,omitempty" xml:"IndexColumns,omitempty" type:"Repeated"`
-	IndexName         *string             `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
-	IndexType         *string             `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
-	Options           map[string]*string  `json:"Options,omitempty" xml:"Options,omitempty"`
-	PhysicalTableName *string             `json:"PhysicalTableName,omitempty" xml:"PhysicalTableName,omitempty"`
-	UpdateTime        *string             `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The order of index columns.
+	ColumnOrds []*string `json:"ColumnOrds,omitempty" xml:"ColumnOrds,omitempty" type:"Repeated"`
+	// The time when the index was created.
+	//
+	// example:
+	//
+	// 2023-01-05 13:17:55
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The logical name of the database.
+	//
+	// example:
+	//
+	// exampleDatabase
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The index columns.
+	IndexColumns []*FieldSchemaModel `json:"IndexColumns,omitempty" xml:"IndexColumns,omitempty" type:"Repeated"`
+	// The name of the index.
+	//
+	// example:
+	//
+	// indexName
+	IndexName *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
+	// The type of the index.
+	//
+	// example:
+	//
+	// NORMAL
+	IndexType *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+	// The properties.
+	Options map[string]*string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The physical name of the table.
+	//
+	// example:
+	//
+	// physicalDatabase
+	PhysicalTableName *string `json:"PhysicalTableName,omitempty" xml:"PhysicalTableName,omitempty"`
+	// The time when the index was updated.
+	//
+	// example:
+	//
+	// 2023-01-05 13:17:55
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s CstoreIndexModel) String() string {

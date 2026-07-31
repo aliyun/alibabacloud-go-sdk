@@ -1,8 +1,8 @@
-module github.com/alibabacloud-go/adb-20211201/v4
+module github.com/alibabacloud-go/adb-20211201/v5
 
 go 1.14
 
 require (
-	github.com/alibabacloud-go/darabonba-openapi/v2 v2.1.13
-	github.com/alibabacloud-go/tea v1.3.13
+	github.com/alibabacloud-go/darabonba-openapi/v2 v2.2.4
+	github.com/alibabacloud-go/tea v1.5.2
 )

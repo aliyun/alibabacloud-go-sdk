@@ -24,21 +24,21 @@ type iDescribeAppliedAdvicesResponseBody interface {
 }
 
 type DescribeAppliedAdvicesResponseBody struct {
-	// The queried applied optimization suggestions.
+	// Details.
 	Items []*DescribeAppliedAdvicesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number of the returned page. The value must be an integer that is greater than 0. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values:
+	// The number of entries to return on each page. Valid values:
 	//
-	// 	- **30**(Default)
+	// - **30*	- (Default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type DescribeAppliedAdvicesResponseBody struct {
 	//
 	// 84489769-3065-5A28-A4CB-977CD426F1C3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The name of the table in the DatabaseName.TableName format.
+	// The concatenated strings of database and table names.
 	SchemaTableNames []*string `json:"SchemaTableNames,omitempty" xml:"SchemaTableNames,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries returned. The value must be an integer that is greater than or equal to 0. Default value: 0.
 	//
 	// example:
 	//
@@ -136,94 +136,99 @@ func (s *DescribeAppliedAdvicesResponseBody) Validate() error {
 }
 
 type DescribeAppliedAdvicesResponseBodyItems struct {
-	// The suggestion ID.
+	// The advice ID.
 	//
 	// example:
 	//
 	// 7417db9c-914d-43f3-a123-4d0e448f****
 	AdviceId *string `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
-	// The benefit of the suggestion.
+	// The benefit of the advice.
 	//
 	// example:
 	//
-	// 0.4 GB of storage saved
+	// 节省0.4 GB的存储空间
 	Benefit *string `json:"Benefit,omitempty" xml:"Benefit,omitempty"`
-	// The SQL statement that is used to execute the BUILD job.
+	// The SQL statement of the build task.
 	//
 	// example:
 	//
 	// build table `schema1`.`table1`
-	BuildSQL    *string `json:"BuildSQL,omitempty" xml:"BuildSQL,omitempty"`
+	BuildSQL *string `json:"BuildSQL,omitempty" xml:"BuildSQL,omitempty"`
+	// The index fields.
+	//
+	// example:
+	//
+	// message
 	IndexFields *string `json:"IndexFields,omitempty" xml:"IndexFields,omitempty"`
-	// The status of the suggestion execution job. Valid values:
+	// The status of the task that is used to apply the advice. Valid values:
 	//
-	// 	- **SUCCEED**
+	// - **SUCCEED**: The task is successful.
 	//
-	// 	- **FAILED**
+	// - **FAILED**: The task has failed.
 	//
 	// example:
 	//
 	// SUCCEED
 	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number of the returned page. The value must be an integer that is greater than 0. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values:
+	// The number of entries to return on each page. Valid values:
 	//
-	// 	- **30**(Default)
+	// - **30*	- (Default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// example:
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The SQL statement that is used to roll back the suggestion.
+	// The SQL statement that is used to roll back the advice.
 	//
 	// example:
 	//
 	// alter table `schema1`.`table1` add key col1_1_idx(col1)
 	RollbackSQL *string `json:"RollbackSQL,omitempty" xml:"RollbackSQL,omitempty"`
-	// The SQL statement that is used to apply the suggestion.
+	// The SQL statement that is used to apply the advice.
 	//
 	// example:
 	//
 	// alter table `schema1`.`table1` drop key col1_1_idx
 	SQL *string `json:"SQL,omitempty" xml:"SQL,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// adb_demo
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The submission status of the suggestion. Valid values:
+	// The submission status of the advice. Valid values:
 	//
-	// 	- **SUCCEED**
+	// - **SUCCEED**: The advice is submitted.
 	//
-	// 	- **FAILED**
+	// - **FAILED**: The advice fails to be submitted.
 	//
 	// example:
 	//
 	// SUCCEED
 	SubmitStatus *string `json:"SubmitStatus,omitempty" xml:"SubmitStatus,omitempty"`
-	// The time when the suggestion was submitted. The time follows the ISO 8601 standard in the yyMMddHHmm format. The time is displayed in UTC.
+	// The time when the advice was submitted. The time is in the `yyMMddHHmm` format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2208131600
 	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//
 	// test
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries returned. The value must be an integer that is greater than or equal to 0. Default value: 0.
 	//
 	// example:
 	//

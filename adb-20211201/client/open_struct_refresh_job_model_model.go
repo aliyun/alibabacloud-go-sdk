@@ -32,16 +32,70 @@ type iOpenStructRefreshJobModel interface {
 }
 
 type OpenStructRefreshJobModel struct {
-	EndTime            *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Processid          *string `json:"Processid,omitempty" xml:"Processid,omitempty"`
-	RefreshInterval    *string `json:"RefreshInterval,omitempty" xml:"RefreshInterval,omitempty"`
-	RefreshModel       *string `json:"RefreshModel,omitempty" xml:"RefreshModel,omitempty"`
-	ResourceGroup      *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// The end time of the refresh task.
+	//
+	// example:
+	//
+	// 2025-01-15 10:12:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The materialized view name.
+	//
+	// example:
+	//
+	// demo_mv
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// 2025103010xxxxxxx
+	Processid *string `json:"Processid,omitempty" xml:"Processid,omitempty"`
+	// The refresh interval.
+	//
+	// example:
+	//
+	// 30s
+	RefreshInterval *string `json:"RefreshInterval,omitempty" xml:"RefreshInterval,omitempty"`
+	// The refresh model.
+	//
+	// 	- FAST
+	//
+	// 	- COMPLETE
+	//
+	// example:
+	//
+	// FAST
+	RefreshModel *string `json:"RefreshModel,omitempty" xml:"RefreshModel,omitempty"`
+	// The resource group used for the refresh.
+	//
+	// example:
+	//
+	// user_default
+	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// The scheduled start time.
+	//
+	// example:
+	//
+	// 2025-01-15 10:11:00
 	ScheduledStartTime *string `json:"ScheduledStartTime,omitempty" xml:"ScheduledStartTime,omitempty"`
-	SchemaName         *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	StartTime          *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The database name.
+	//
+	// example:
+	//
+	// adb_demo
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The actual start time.
+	//
+	// example:
+	//
+	// 2025-01-15 10:11:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the queried refresh task.
+	//
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s OpenStructRefreshJobModel) String() string {

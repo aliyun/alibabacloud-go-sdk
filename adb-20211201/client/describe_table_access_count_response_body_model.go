@@ -22,7 +22,7 @@ type iDescribeTableAccessCountResponseBody interface {
 }
 
 type DescribeTableAccessCountResponseBody struct {
-	// The queried tables.
+	// The table usage details.
 	Items []*DescribeTableAccessCountResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -117,25 +117,25 @@ func (s *DescribeTableAccessCountResponseBody) Validate() error {
 }
 
 type DescribeTableAccessCountResponseBodyItems struct {
-	// The number of accesses to the table.
+	// The number of times the table was accessed.
 	//
 	// example:
 	//
 	// 6
 	AccessCount *string `json:"AccessCount,omitempty" xml:"AccessCount,omitempty"`
-	// The ID of the cluster to which the table belongs.
+	// The cluster ID of the cluster to which the table belongs.
 	//
 	// example:
 	//
 	// amv-2ze627uzpkh8a8****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The date when the table was accessed.
+	// The date on which the table was used.
 	//
 	// example:
 	//
 	// 2022-09-26
 	ReportDate *string `json:"ReportDate,omitempty" xml:"ReportDate,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//

@@ -9,6 +9,10 @@ type iCreateDBClusterRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAINodeNumber(v int32) *CreateDBClusterRequest
+	GetAINodeNumber() *int32
+	SetAINodeSpec(v string) *CreateDBClusterRequest
+	GetAINodeSpec() *string
 	SetBackupSetId(v string) *CreateDBClusterRequest
 	GetBackupSetId() *string
 	SetCloneSourceRegionId(v string) *CreateDBClusterRequest
@@ -70,25 +74,33 @@ type iCreateDBClusterRequest interface {
 }
 
 type CreateDBClusterRequest struct {
-	// The ID of the backup set that you want to use to restore data.
+	// example:
 	//
-	// >  You can call the [DescribeBackups](https://help.aliyun.com/document_detail/612318.html) operation to query the backup sets of the cluster.
+	// 1
+	AINodeNumber *int32 `json:"AINodeNumber,omitempty" xml:"AINodeNumber,omitempty"`
+	// example:
+	//
+	// ADB.MLPlus.4
+	AINodeSpec *string `json:"AINodeSpec,omitempty" xml:"AINodeSpec,omitempty"`
+	// The ID of the backup set used for restoration from a backup set.
+	//
+	// > You can call the [DescribeBackups](https://help.aliyun.com/document_detail/612318.html) operation to query the backup list of the cluster.
 	//
 	// example:
 	//
 	// 1880808684
 	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
-	// The region ID of the source cluster.
+	// The region of the source cluster.
 	//
-	// >  This parameter must be specified for cloning clusters across regions.
+	// > This parameter is required for cross-region cloning.
 	//
 	// example:
 	//
 	// cn-beijing
 	CloneSourceRegionId *string `json:"CloneSourceRegionId,omitempty" xml:"CloneSourceRegionId,omitempty"`
-	// The amount of reserved computing resources. Valid values: 0ACU to 4096ACU. The value must be in increments of 16ACU. Each ACU is approximately equal to 1 core and 4 GB memory.
+	// The compute reserved resources. Valid values: 0 ACU to 4096 ACU, in increments of 16. 1 ACU is approximately equivalent to 1 core and 4 GB of memory.
 	//
-	// >  This parameter must be specified with a unit.
+	// > Include the unit when specifying this parameter.
 	//
 	// example:
 	//
@@ -96,21 +108,21 @@ type CreateDBClusterRequest struct {
 	ComputeResource *string `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty"`
 	// The description of the cluster.
 	//
-	// 	- The description cannot start with `http://` or `https://`.
+	// - The description cannot start with `http://` or `https://`.
 	//
-	// 	- The description must be 2 to 256 characters in length
+	// - The description must be 2 to 256 characters in length.
 	//
 	// example:
 	//
 	// test
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	// The network type of the cluster. Set the value to **VPC**.
+	// The network type of the cluster. Only **VPC*	- (Virtual Private Cloud) is supported.
 	//
 	// example:
 	//
 	// VPC
 	DBClusterNetworkType *string `json:"DBClusterNetworkType,omitempty" xml:"DBClusterNetworkType,omitempty"`
-	// The version of the cluster. Set the value to **5.0**.
+	// The version of the Data Lakehouse Edition cluster. Valid values: **5.0**.
 	//
 	// This parameter is required.
 	//
@@ -118,36 +130,45 @@ type CreateDBClusterRequest struct {
 	//
 	// 5.0
 	DBClusterVersion *string `json:"DBClusterVersion,omitempty" xml:"DBClusterVersion,omitempty"`
-	// Specifies whether to enable disk encryption.
+	// Specifies whether to enable cloud disk encryption.
 	//
 	// example:
 	//
 	// false
 	DiskEncryption *bool `json:"DiskEncryption,omitempty" xml:"DiskEncryption,omitempty"`
-	// Specifies whether to allocate all reserved computing resources to the user_default resource group. Valid values:
+	// Specifies whether to allocate all compute reserved resources to the default resource group (user_default). Valid values:
 	//
-	// 	- **true*	- (default)
+	// - **true*	- (default): All compute reserved resources are allocated to the default resource group.
 	//
-	// 	- **false**
+	// - **false**: Not all compute reserved resources are allocated to the default resource group.
 	//
 	// example:
 	//
 	// true
 	EnableDefaultResourcePool *bool `json:"EnableDefaultResourcePool,omitempty" xml:"EnableDefaultResourcePool,omitempty"`
-	EnableSSL                 *bool `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
-	// The ID of the key that is used to encrypt disk data.
+	// Specifies whether to enable SSL encryption. Valid values:
 	//
-	// >  This parameter must be specified only when disk encryption is enabled.
+	// - **true**: SSL encryption is enabled.
+	//
+	// - **false**: SSL encryption is disabled.
+	//
+	// example:
+	//
+	// false
+	EnableSSL *bool `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
+	// The ID of the key used to encrypt cloud disk data.
+	//
+	// > This parameter is used only when cloud disk encryption is enabled for the AnalyticDB for MySQL cluster.
 	//
 	// example:
 	//
 	// e1935511-cf88-1123-a0f8-1be8d251****
 	KmsId *string `json:"KmsId,omitempty" xml:"KmsId,omitempty"`
-	// The billing method of the cluster. Valid values:
+	// The billing method. Valid values:
 	//
-	// 	- **Postpaid**: pay-as-you-go.
+	// - **Postpaid**: pay-as-you-go.
 	//
-	// 	- **Prepaid**: subscription.
+	// - **Prepaid**: subscription.
 	//
 	// This parameter is required.
 	//
@@ -157,41 +178,41 @@ type CreateDBClusterRequest struct {
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The subscription type of the subscription cluster. Valid values:
 	//
-	// 	- **Year**: subscription on a yearly basis.
+	// - **Year**: subscription on a yearly basis.
 	//
-	// 	- **Month**: subscription on a monthly basis.
+	// - **Month**: subscription on a monthly basis.
 	//
-	// >  This parameter must be specified when PayType is set to Prepaid.
+	// > This parameter is required when PayType is set to Prepaid.
 	//
 	// example:
 	//
 	// Month
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The product form of the cluster. Valid values:
+	// The product form. Valid values:
 	//
-	// 	- **IntegrationForm**: integrated.
+	// - **IntegrationForm**: integrated form.
 	//
-	// 	- **LegacyForm**: Data Lakehouse Edition.
+	// - **LegacyForm**: Data Lakehouse Edition.
 	//
 	// example:
 	//
 	// LegacyForm
 	ProductForm *string `json:"ProductForm,omitempty" xml:"ProductForm,omitempty"`
-	// The edition of the cluster. Valid values:
+	// The product version. Valid values:
 	//
-	// 	- **BasicVersion**: Basic Edition.
+	// - **BasicVersion**: Basic Edition.
 	//
-	// 	- **EnterpriseVersion**: Enterprise Edition.
+	// - **EnterpriseVersion**: Enterprise Edition.
 	//
-	// >  This parameter must be specified only when ProductForm is set to IntegrationForm.
+	// > This parameter is required only when ProductForm is set to IntegrationForm.
 	//
 	// example:
 	//
 	// BasicVersion
 	ProductVersion *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the region ID of a specific Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -199,19 +220,19 @@ type CreateDBClusterRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The number of reserved resource nodes.
+	// The number of reserved nodes.
 	//
-	// 	- For Enterprise Edition, the default value is 3 and the step size is 3.
+	// - Enterprise Edition uses 3 nodes by default, in increments of 3.
 	//
-	// 	- For Basic Edition, the default value is 1.
+	// - Basic Edition uses 1 node by default.
 	//
-	// >  This parameter must be specified only when ProductForm is set to IntegrationForm.
+	// > This parameter is required only when ProductForm is set to IntegrationForm.
 	//
 	// example:
 	//
 	// 3
 	ReservedNodeCount *int32 `json:"ReservedNodeCount,omitempty" xml:"ReservedNodeCount,omitempty"`
-	// The specifications of reserved resource nodes. Unit: ACUs.
+	// The node specifications of reserved nodes, in ACUs.
 	//
 	// example:
 	//
@@ -229,63 +250,61 @@ type CreateDBClusterRequest struct {
 	//
 	// 2023-09-20T03:13:56Z
 	RestoreToTime *string `json:"RestoreToTime,omitempty" xml:"RestoreToTime,omitempty"`
-	// The method that you want to use to restore data. Valid values:
+	// The restoration method. Valid values:
 	//
 	// 	- **backup**: restores data from a backup set. You must also specify the **BackupSetId*	- and **SourceDBClusterId*	- parameters.
 	//
-	// 	- **timepoint**: restores data to a point in time. You must also specify the **RestoreToTime*	- and **SourceDBClusterId*	- parameters.
+	// 	- **timepoint**: restores data to a specific point in time. You must also specify the **RestoreToTime*	- and **SourceDBClusterId*	- parameters.
 	//
 	// example:
 	//
 	// backup
 	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
-	// The ID of the secondary vSwitch.
+	// The secondary vSwitch ID.
 	//
-	// >  You cannot set this parameter to a value that is the same as that of the VSwitchId parameter.
+	// > The value of this parameter must be different from the value of the VSwitchId parameter.
 	//
 	// example:
 	//
 	// vsw-bp1aadw9k19x451gx****
 	SecondaryVSwitchId *string `json:"SecondaryVSwitchId,omitempty" xml:"SecondaryVSwitchId,omitempty"`
-	// The ID of the secondary zone.
+	// The secondary zone ID.
 	//
-	// >  You cannot set this parameter to a value that is the same as that of the ZoneId parameter.
+	// > The value of this parameter must be different from the value of the ZoneId parameter.
 	//
 	// example:
 	//
 	// cn-beijing-h
 	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
-	// The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+	// The instance ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster. If this parameter is specified, the Data Lakehouse Edition cluster is used to recover from the Data Warehouse Edition cluster.
 	//
 	// example:
 	//
 	// amv-bp1r053byu48p****
 	SourceDbClusterId *string `json:"SourceDbClusterId,omitempty" xml:"SourceDbClusterId,omitempty"`
-	// The amount of reserved storage resources. Valid values: 0ACU to 2064ACU. The value must be in increments of 24ACU. Each ACU is approximately equal to 1 core and 4 GB memory.
+	// The storage reserved resources. Valid values: 0 ACU to 2064 ACU, in increments of 24. 1 ACU is approximately equivalent to 1 core and 4 GB of memory.
 	//
-	// >  This parameter must be specified with a unit.
+	// > Include the unit when specifying this parameter.
 	//
 	// example:
 	//
 	// 24ACU
 	StorageResource *string `json:"StorageResource,omitempty" xml:"StorageResource,omitempty"`
-	// The tags to add to the cluster.
+	// The list of tags.
 	Tag []*CreateDBClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The subscription period of the subscription cluster.
+	// The subscription duration of the subscription cluster. Valid values:
 	//
-	// 	- Valid values when Period is set to Year: 1, 2, and 3 (integer)
+	// - When **Period*	- is set to Year, the value of UsedTime ranges from 1 to 3 (integer).
 	//
-	// 	- Valid values when Period is set to Month: 1 to 9 (integer)
+	// - When **Period*	- is set to Month, the value of UsedTime ranges from 1 to 9 (integer).
 	//
-	// > 	- This parameter is required if the PayType parameter is set to Prepaid.
-	//
-	// > 	- Longer subscription periods offer more savings. Purchasing a cluster for one year is more cost-effective than purchasing the cluster for 10 or 11 months.
+	// > This parameter is required when PayType is set to **Prepaid**.
 	//
 	// example:
 	//
-	// 1
+	// 3
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// The virtual private cloud (VPC) ID of the cluster.
+	// The virtual private cloud (VPC) ID.
 	//
 	// This parameter is required.
 	//
@@ -293,7 +312,7 @@ type CreateDBClusterRequest struct {
 	//
 	// vpc-bp1at5ze0t5u3xtqn****
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The vSwitch ID of the cluster.
+	// The vSwitch ID.
 	//
 	// This parameter is required.
 	//
@@ -301,9 +320,9 @@ type CreateDBClusterRequest struct {
 	//
 	// vsw-bp1aadw9k19x6cis9****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The zone ID of the cluster.
+	// The zone ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent zone list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the zone ID of a specific Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -319,6 +338,14 @@ func (s CreateDBClusterRequest) String() string {
 
 func (s CreateDBClusterRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDBClusterRequest) GetAINodeNumber() *int32 {
+	return s.AINodeNumber
+}
+
+func (s *CreateDBClusterRequest) GetAINodeSpec() *string {
+	return s.AINodeSpec
 }
 
 func (s *CreateDBClusterRequest) GetBackupSetId() *string {
@@ -435,6 +462,16 @@ func (s *CreateDBClusterRequest) GetVSwitchId() *string {
 
 func (s *CreateDBClusterRequest) GetZoneId() *string {
 	return s.ZoneId
+}
+
+func (s *CreateDBClusterRequest) SetAINodeNumber(v int32) *CreateDBClusterRequest {
+	s.AINodeNumber = &v
+	return s
+}
+
+func (s *CreateDBClusterRequest) SetAINodeSpec(v string) *CreateDBClusterRequest {
+	s.AINodeSpec = &v
+	return s
 }
 
 func (s *CreateDBClusterRequest) SetBackupSetId(v string) *CreateDBClusterRequest {
@@ -596,17 +633,17 @@ func (s *CreateDBClusterRequest) Validate() error {
 }
 
 type CreateDBClusterRequestTag struct {
-	// The key of tag N to add to the cluster. You can use tags to filter clusters. Valid values of N: 1 to 20. The values that you specify for N must be unique and consecutive integers that start from 1. Each value of `Tag.N.Key` is paired with a value of `Tag.N.Value`.
+	// The tag key. You can use tags to filter the cluster list. You can specify up to 20 tag pairs. The value of N for each tag pair must be unique and must be a consecutive integer that starts from 1. The value of `Tag.N.Key` corresponds to the value of `Tag.N.Value`.
 	//
-	// >  The tag key can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+	// > The tag key can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
 	//
 	// example:
 	//
 	// testkey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to add to the cluster. You can use tags to filter clusters. Valid values of N: 1 to 20. The values that you specify for N must be unique and consecutive integers that start from 1. Each value of `Tag.N.Key` is paired with a value of `Tag.N.Value`.
+	// The tag value. You can use tags to filter the cluster list. You can specify up to 20 tag pairs. The value of N for each tag pair must be unique and must be a consecutive integer that starts from 1. The value of `Tag.N.Key` corresponds to the value of `Tag.N.Value`.
 	//
-	// >  The tag value can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+	// > The tag value can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
 	//
 	// example:
 	//

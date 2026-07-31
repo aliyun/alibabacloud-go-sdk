@@ -26,16 +26,20 @@ type iDescribeBackupsResponseBody interface {
 }
 
 type DescribeBackupsResponseBody struct {
-	FreeBackupSize *int64 `json:"FreeBackupSize,omitempty" xml:"FreeBackupSize,omitempty"`
-	// The queried backup sets.
-	Items *DescribeBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The free backup space. Unit: bytes.
+	//
+	// example:
+	//
+	// 0
+	FreeBackupSize *int64                            `json:"FreeBackupSize,omitempty" xml:"FreeBackupSize,omitempty"`
+	Items          *DescribeBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of backup sets on the current page.
 	//
 	// example:
 	//
@@ -46,9 +50,14 @@ type DescribeBackupsResponseBody struct {
 	// example:
 	//
 	// CE17270B-F8F8-5A31-9DB4-DADDFDAD7940
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalBackupSize *int64  `json:"TotalBackupSize,omitempty" xml:"TotalBackupSize,omitempty"`
-	// The total number of entries returned.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total size of the backup sets. Unit: bytes.
+	//
+	// example:
+	//
+	// 64953700
+	TotalBackupSize *int64 `json:"TotalBackupSize,omitempty" xml:"TotalBackupSize,omitempty"`
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -171,56 +180,17 @@ func (s *DescribeBackupsResponseBodyItems) Validate() error {
 }
 
 type DescribeBackupsResponseBodyItemsBackup struct {
-	// The end time of the backup.
-	//
-	// example:
-	//
-	// 2022-06-02T16:00Z
 	BackupEndTime     *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
 	BackupExpiredTime *string `json:"BackupExpiredTime,omitempty" xml:"BackupExpiredTime,omitempty"`
-	// The backup set ID.
-	//
-	// example:
-	//
-	// 32732****
-	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The backup method. Snapshot is returned.
-	//
-	// example:
-	//
-	// Snapshot
-	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	BackupRegion *string `json:"BackupRegion,omitempty" xml:"BackupRegion,omitempty"`
-	// The size of the backup set. Unit: bytes.
-	//
-	// example:
-	//
-	// 2167808
-	BackupSize *int32 `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	// The start time of the backup.
-	//
-	// example:
-	//
-	// 2022-06-01T16:00Z
-	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	BackupStatus    *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	// The backup type. Valid values:
-	//
-	// 	- **FullBackup**
-	//
-	// 	- **IncrementalBackup**
-	//
-	// example:
-	//
-	// FullBackup
-	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
-	//
-	// example:
-	//
-	// am-bp11q28kvl688****
-	DBClusterId    *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	ParentBackupId *string `json:"ParentBackupId,omitempty" xml:"ParentBackupId,omitempty"`
+	BackupId          *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	BackupMethod      *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	BackupRegion      *string `json:"BackupRegion,omitempty" xml:"BackupRegion,omitempty"`
+	BackupSize        *int32  `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
+	BackupStartTime   *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	BackupStatus      *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	BackupType        *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	DBClusterId       *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	ParentBackupId    *string `json:"ParentBackupId,omitempty" xml:"ParentBackupId,omitempty"`
 }
 
 func (s DescribeBackupsResponseBodyItemsBackup) String() string {

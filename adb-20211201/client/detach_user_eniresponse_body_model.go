@@ -14,7 +14,7 @@ type iDetachUserENIResponseBody interface {
 }
 
 type DetachUserENIResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

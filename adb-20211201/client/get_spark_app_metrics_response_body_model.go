@@ -66,13 +66,13 @@ type GetSparkAppMetricsResponseBodyData struct {
 	//
 	// example:
 	//
-	// s202302051515shfa865f80003691
+	// s202302051515shfa865f8000****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The attempt ID of the Spark application.
 	//
 	// example:
 	//
-	// s202301061000hz57d797b0000201-0001
+	// s202301061000hz57d797b0000201-****
 	AttemptId *string `json:"AttemptId,omitempty" xml:"AttemptId,omitempty"`
 	// The path of the event log.
 	//

@@ -24,17 +24,17 @@ type iCreateOssSubDirectoryResponseBody interface {
 type CreateOssSubDirectoryResponseBody struct {
 	// The returned data.
 	Data *CreateOssSubDirectoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response code. The status code 200 indicates that the request was successful.
+	// The HTTP status code returned. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message.
+	// The additional information about the call result. Valid values:
 	//
-	// 	- If the request was successful, a **success*	- message is returned.
+	// - If the request was successful, **Success*	- is returned.
 	//
-	// 	- If the request failed, an error message is returned.
+	// - If the request failed, a specific error code is returned.
 	//
 	// example:
 	//
@@ -46,11 +46,11 @@ type CreateOssSubDirectoryResponseBody struct {
 	//
 	// 3A0DE2E0-A37B-5EE4-9136-C4C473714802
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The call was successful.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -121,13 +121,13 @@ func (s *CreateOssSubDirectoryResponseBody) Validate() error {
 }
 
 type CreateOssSubDirectoryResponseBodyData struct {
-	// The cyclic redundancy check (CRC) value on the client.
+	// The client CRC check value.
 	//
 	// example:
 	//
 	// 1
 	ClientCRC *int64 `json:"ClientCRC,omitempty" xml:"ClientCRC,omitempty"`
-	// The tag of the OSS path.
+	// The ETag of the OSS path.
 	//
 	// example:
 	//
@@ -139,7 +139,7 @@ type CreateOssSubDirectoryResponseBodyData struct {
 	//
 	// 3A0DE2E0-A37B-5EE4-9136-C4C473714802
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The CRC-64 value on the OSS bucket.
+	// The CRC-64 value of the Alibaba Cloud OSS bucket.
 	//
 	// example:
 	//

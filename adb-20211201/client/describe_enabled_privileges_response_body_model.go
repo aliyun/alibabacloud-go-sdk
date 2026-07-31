@@ -16,7 +16,7 @@ type iDescribeEnabledPrivilegesResponseBody interface {
 }
 
 type DescribeEnabledPrivilegesResponseBody struct {
-	// The queried permission level and permissions.
+	// The supported permission levels and the list of permissions.
 	Data []*DescribeEnabledPrivilegesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -69,8 +69,12 @@ type DescribeEnabledPrivilegesResponseBodyData struct {
 	// The description of the permission level.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 全局权限
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The queried permissions.
+	// The list of supported permissions.
 	//
 	// This parameter is required.
 	Privileges []*DescribeEnabledPrivilegesResponseBodyDataPrivileges `json:"Privileges,omitempty" xml:"Privileges,omitempty" type:"Repeated"`
@@ -133,9 +137,13 @@ func (s *DescribeEnabledPrivilegesResponseBodyData) Validate() error {
 }
 
 type DescribeEnabledPrivilegesResponseBodyDataPrivileges struct {
-	// The description of the permission.
+	// The permission description.
+	//
+	// example:
+	//
+	// 查询数据
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the permission.
+	// The permission name.
 	//
 	// example:
 	//

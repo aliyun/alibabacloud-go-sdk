@@ -110,7 +110,7 @@ type CancelSparkReplStatementResponseBodyData struct {
 	//
 	// example:
 	//
-	// StackOverflow Exception:
+	// StackOverflow Exception：
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
 	// The code execution result, which is a JSON string that conforms to Apache Livy.
 	//

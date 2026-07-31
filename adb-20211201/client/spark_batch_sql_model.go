@@ -36,50 +36,85 @@ type iSparkBatchSQL interface {
 }
 
 type SparkBatchSQL struct {
+	// The cluster ID.
+	//
 	// example:
 	//
-	// amv-xxx
+	// amv-bp17s73f016****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The error message for the query execution.
+	//
 	// example:
 	//
 	// schema is not found
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The text of the query.
+	//
 	// example:
 	//
-	// query
+	// SELECT 	- FROM db.tb
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The execution end timestamp of the query.
+	//
 	// example:
 	//
 	// 1723521767000
 	QueryEndTime *int64 `json:"QueryEndTime,omitempty" xml:"QueryEndTime,omitempty"`
+	// The query ID.
+	//
 	// example:
 	//
-	// amv-202401-xx
+	// sq172352176****
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	// The execution start timestamp of the query.
+	//
 	// example:
 	//
 	// 1723521767000
 	QueryStartTime *int64 `json:"QueryStartTime,omitempty" xml:"QueryStartTime,omitempty"`
+	// The execution status of the query. Valid values:
+	//
+	// 	- FAILED
+	//
+	// 	- RUNNING
+	//
+	// 	- CANCELED
+	//
+	// 	- PENDING
+	//
+	// 	- SUBMITTED
+	//
+	// 	- FINISHED
+	//
 	// example:
 	//
 	// RUNNING
 	QueryState *string `json:"QueryState,omitempty" xml:"QueryState,omitempty"`
+	// The submission timestamp of the query.
+	//
 	// example:
 	//
 	// 1723521767000
 	QuerySubmissionTime *int64 `json:"QuerySubmissionTime,omitempty" xml:"QuerySubmissionTime,omitempty"`
+	// The name of the resource group.
+	//
 	// example:
 	//
 	// spark_rg
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	// The name of the database for the query execution.
+	//
 	// example:
 	//
 	// default
-	Schema     *string                   `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// The execution results of the SQL statements.
 	Statements []*SparkBatchSQLStatement `json:"Statements,omitempty" xml:"Statements,omitempty" type:"Repeated"`
+	// The Alibaba Cloud account ID.
+	//
 	// example:
 	//
-	// 12222222
+	// 2198002412336****
 	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 

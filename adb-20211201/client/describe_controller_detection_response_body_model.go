@@ -110,7 +110,7 @@ type DescribeControllerDetectionResponseBodyDetectionItems struct {
 	//
 	// example:
 	//
-	// CPU increase detection
+	// CPU增高检测
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The severity level of the detection result. Valid values:
 	//

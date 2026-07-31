@@ -66,7 +66,7 @@ type GetSparkConfigLogPathResponseBodyData struct {
 	//
 	// example:
 	//
-	// oss://aliyun-oa-adb-spark-1111-oss-cn-hanghzou/spark-logs
+	// oss://aliyun-oa-adb-spark-****-oss-cn-hanghzou/spark-logs
 	DefaultLogPath *string `json:"DefaultLogPath,omitempty" xml:"DefaultLogPath,omitempty"`
 	// Indicates whether a log path exists.
 	//

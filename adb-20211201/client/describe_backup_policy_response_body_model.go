@@ -24,49 +24,49 @@ type iDescribeBackupPolicyResponseBody interface {
 }
 
 type DescribeBackupPolicyResponseBody struct {
-	// The number of days for which data backup files are retained.
+	// The number of days to retain data backups.
 	//
 	// example:
 	//
 	// 7
 	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	// Indicates whether log backup is enabled. Valid values:
+	// Indicates whether real-time log backup is enabled. Valid values:
 	//
-	// 	- **Enable**
+	// - **Enable**: enabled.
 	//
-	// 	- **Disable**
+	// - **Disable**: disabled.
 	//
 	// example:
 	//
 	// true
 	EnableBackupLog *string `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
-	// The number of days for which the log backup files are retained.
+	// The number of days to retain log backups.
 	//
 	// example:
 	//
 	// 7
 	LogBackupRetentionPeriod *int32 `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
-	// The cycle based on which backups are performed. If more than one day of the week is specified, the days of the week are separated by commas (,). Valid value:
+	// The data backup cycle. Separate multiple values with commas (,). Valid values:
 	//
-	// 	- Monday
+	// - Monday
 	//
-	// 	- Tuesday
+	// - Tuesday
 	//
-	// 	- Wednesday
+	// - Wednesday
 	//
-	// 	- Thursday
+	// - Thursday
 	//
-	// 	- Friday
+	// - Friday
 	//
-	// 	- Saturday
+	// - Saturday
 	//
-	// 	- Sunday
+	// - Sunday
 	//
 	// example:
 	//
 	// Wednesday,Saturday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	// The data backup time. The time is in the HH:mmZ-HH:mmZ format. The time is displayed in UTC.
+	// The data backup time. The time is in the HH:mmZ-HH:mmZ format.
 	//
 	// example:
 	//

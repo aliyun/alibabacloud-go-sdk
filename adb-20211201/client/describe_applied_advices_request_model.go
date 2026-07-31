@@ -34,11 +34,11 @@ type iDescribeAppliedAdvicesRequest interface {
 }
 
 type DescribeAppliedAdvicesRequest struct {
-	// The type of the suggestion. Valid values:
+	// The type of the advice. Valid values:
 	//
-	// 	- **INDEX**: index optimization.
+	// - **INDEX**: index optimization
 	//
-	// 	- **TIERING**: hot and cold data optimization.
+	// - **TIERING**: hot/cold data optimization
 	//
 	// example:
 	//
@@ -52,71 +52,71 @@ type DescribeAppliedAdvicesRequest struct {
 	//
 	// am-uf6g8w25jacm7****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end date of the time range to query. Specify the date in the yyyyMMdd format.
+	// The end date of the query. The date is in the `yyyyMMdd` format.
 	//
 	// example:
 	//
 	// 20220824
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The keyword that is used to query information by table name.
+	// The keyword for the query. Fuzzy match by table name is supported.
 	//
 	// example:
 	//
 	// you_table_name
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The display language of the suggestion. Valid values:
+	// The language of the query results. Valid values:
 	//
-	// 	- **zh*	- (default): simplified Chinese.
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English.
+	// - **en**: English
 	//
-	// 	- **ja**: Japanese.
+	// - **ja**: Japanese
 	//
-	// 	- **zh-tw**: traditional Chinese.
+	// - **zh-tw**: Traditional Chinese
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The order by which to sort query results. Specify the parameter value in the JSON format. Example: `[{"Field":"SchemaName","Type":"Asc"}]`.
+	// The order by which to sort the query results. The value is a JSON string. Example: `[{"Field":"SchemaName","Type":"Asc"}]`. Fields:
 	//
-	// 	- `Field` specifies the field by which to sort the query results. Valid values:
+	// - `Field`: The field by which to sort the results. Valid values:
 	//
-	//     	- `SchemaName`: the name of the database.
+	//   - `SchemaName`: the database name
 	//
-	//     	- `TableName`: the name of the table.
+	//   - `TableName`: the table name
 	//
-	//     	- `JobStatus`: the status of the BUILD job that is triggered on the table.
+	//   - `JobStatus`: the status of the build job for the table
 	//
-	//     	- `SubmitTime`: the time when the suggestion was submitted.
+	//   - `SubmitTime`: the time when the advice was submitted
 	//
-	//     	- `Benefit`: the expected benefits of the applied optimization suggestion.
+	//   - `Benefit`: the estimated benefit
 	//
-	// 	- `Type` specifies the sorting order. Valid values:
+	// - `Type`: The sort order. Valid values:
 	//
-	//     	- `Asc`: ascending order.
+	//   - `Asc`: ascending
 	//
-	//     	- `Desc`: descending order.
+	//   - `Desc`: descending
 	//
-	// >  If you do not specify this parameter, optimization suggestions are sorted in descending order based on the submission time.
+	// > If you do not set this parameter, the query results are sorted by advice submission time in descending order.
 	//
 	// example:
 	//
 	// [{\\"Field\\":\\"AdviceType\\",\\"Type\\":\\"Desc\\"}]
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. The value must be an integer that is greater than 0. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values:
+	// The number of entries to return on each page. Valid values:
 	//
-	// 	- **30**(Default)
+	// - **30*	- (default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ type DescribeAppliedAdvicesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the table in the **DatabaseName.TableName*	- format.
+	// The name of the database and table. Format: **database.table**.
 	//
 	// example:
 	//
 	// tpch.lineitem
 	SchemaTableName *string `json:"SchemaTableName,omitempty" xml:"SchemaTableName,omitempty"`
-	// The start date of the time range to query. Specify the date in the yyyyMMdd format.
+	// The start date of the query. The date is in the `yyyyMMdd` format.
 	//
 	// example:
 	//

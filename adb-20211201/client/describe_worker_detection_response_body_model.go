@@ -26,7 +26,7 @@ type DescribeWorkerDetectionResponseBody struct {
 	//
 	// am-xxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The queried detection items and detection results.
+	// The list of detection items and detection results.
 	DetectionItems []*DescribeWorkerDetectionResponseBodyDetectionItems `json:"DetectionItems,omitempty" xml:"DetectionItems,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -34,7 +34,7 @@ type DescribeWorkerDetectionResponseBody struct {
 	//
 	// E5B37B61-E6C9-5FE0-9374-45BAA548AEF6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *DescribeWorkerDetectionResponseBody) Validate() error {
 }
 
 type DescribeWorkerDetectionResponseBodyDetectionItems struct {
-	// The information about the detection result.
+	// The detection result message.
 	//
 	// example:
 	//
@@ -110,17 +110,17 @@ type DescribeWorkerDetectionResponseBodyDetectionItems struct {
 	//
 	// example:
 	//
-	// Metric detection
+	// 指标检测
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The detection result items.
+	// The detection result.
 	Results *DescribeWorkerDetectionResponseBodyDetectionItemsResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
-	// The severity level of the detection result. Valid values:
+	// The detection result status. Valid values:
 	//
-	// 	- NORMAL
+	// - NORMAL
 	//
-	// 	- WARNING
+	// - WARNING
 	//
-	// 	- CRITICAL
+	// - CRITICAL
 	//
 	// example:
 	//
@@ -182,15 +182,15 @@ func (s *DescribeWorkerDetectionResponseBodyDetectionItems) Validate() error {
 }
 
 type DescribeWorkerDetectionResponseBodyDetectionItemsResults struct {
-	// The detection result items of operator metric aggregation.
+	// The aggregated operator metric detection results.
 	OperatorAgg []*DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAgg `json:"OperatorAgg,omitempty" xml:"OperatorAgg,omitempty" type:"Repeated"`
-	// The detection result items of abnormal operators.
+	// The collection of operator detection results.
 	OperatorDetails []*DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetails `json:"OperatorDetails,omitempty" xml:"OperatorDetails,omitempty" type:"Repeated"`
-	// The detection result items of improper partitioned tables.
+	// The collection of tables with unreasonable partitions.
 	PartitionedTables []*DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables `json:"PartitionedTables,omitempty" xml:"PartitionedTables,omitempty" type:"Repeated"`
-	// The detection result items of skewed tables.
+	// The table skew detection results.
 	SkewedTables []*DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables `json:"SkewedTables,omitempty" xml:"SkewedTables,omitempty" type:"Repeated"`
-	// The detection result items of table access.
+	// The collection of table access detection results.
 	TopAccessTables []*DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTables `json:"TopAccessTables,omitempty" xml:"TopAccessTables,omitempty" type:"Repeated"`
 }
 
@@ -297,13 +297,13 @@ func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResults) Validate() er
 }
 
 type DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAgg struct {
-	// The detection result items of operator metric aggregation.
+	// The name of the aggregated operator metric detection item.
 	//
 	// example:
 	//
-	// Peak memory
+	// 峰值内存
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The detection result items of operator metric aggregation.
+	// The collection of aggregated operator metric search results.
 	SearchResults []*DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults `json:"SearchResults,omitempty" xml:"SearchResults,omitempty" type:"Repeated"`
 }
 
@@ -359,13 +359,13 @@ type DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchRe
 	//
 	// 444
 	MaxValue *int64 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
-	// The number of occurrences of the operator.
+	// The number of times the operator appears.
 	//
 	// example:
 	//
 	// 1234
 	OperatorCount *int64 `json:"OperatorCount,omitempty" xml:"OperatorCount,omitempty"`
-	// The name of the operator.
+	// The operator name.
 	//
 	// example:
 	//
@@ -437,13 +437,13 @@ func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSear
 }
 
 type DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetails struct {
-	// The name of the detection metric.
+	// The metric name.
 	//
 	// example:
 	//
 	// PeakMemory
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The detection result items of abnormal operators.
+	// The collection of search results.
 	SearchResults []*DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults `json:"SearchResults,omitempty" xml:"SearchResults,omitempty" type:"Repeated"`
 }
 
@@ -487,55 +487,55 @@ func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetails
 }
 
 type DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults struct {
-	// The number of rows input by the operator.
+	// The number of input rows of the operator.
 	//
 	// example:
 	//
 	// 123
 	InputRows *int64 `json:"InputRows,omitempty" xml:"InputRows,omitempty"`
-	// The amount of data input by the operator. Unit: bytes.
+	// The input data size of the operator. Unit: bytes.
 	//
 	// example:
 	//
 	// 123
 	InputSize *int64 `json:"InputSize,omitempty" xml:"InputSize,omitempty"`
-	// The total CPU time consumed by all operators in the stage, which is equivalent to the total CPU time of the stage. You can use this parameter to determine which parts of the stage consume a large amount of computing resources. Unit: milliseconds.
+	// The total operator duration within the stage, which is equivalent to the CPU time of the stage. You can use this value to determine which parts of the query consume more compute resources. Unit: ms.
 	//
 	// example:
 	//
 	// 23
 	OperatorCost *int64 `json:"OperatorCost,omitempty" xml:"OperatorCost,omitempty"`
-	// The property information about the operator.
+	// The operator property information.
 	//
 	// example:
 	//
-	// GROUP BY field: id
+	// Group By field: id
 	OperatorInfo *string `json:"OperatorInfo,omitempty" xml:"OperatorInfo,omitempty"`
-	// The name of the operator.
+	// The operator name.
 	//
 	// example:
 	//
 	// TableScan
 	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
-	// The number of rows output by the operator.
+	// The number of output rows of the operator.
 	//
 	// example:
 	//
 	// 123
 	OutputRows *int64 `json:"OutputRows,omitempty" xml:"OutputRows,omitempty"`
-	// The amount of data output by the operator. Unit: bytes.
+	// The output data size of the operator. Unit: bytes.
 	//
 	// example:
 	//
 	// 123
 	OutputSize *int64 `json:"OutputSize,omitempty" xml:"OutputSize,omitempty"`
-	// The peak memory. Unit: bytes.
+	// The peak memory consumed by the operator. Unit: bytes.
 	//
 	// example:
 	//
 	// 23
 	PeakMemory *int64 `json:"PeakMemory,omitempty" xml:"PeakMemory,omitempty"`
-	// The query ID that can be used for diagnostics.
+	// The SQL query ID, which can be used for diagnostics.
 	//
 	// example:
 	//
@@ -652,7 +652,7 @@ func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetails
 }
 
 type DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables struct {
-	// The SQL statement that is used to create the table.
+	// The CREATE TABLE statement.
 	//
 	// example:
 	//
@@ -664,19 +664,19 @@ type DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables s
 	//
 	// 234
 	PartitionCount *string `json:"PartitionCount,omitempty" xml:"PartitionCount,omitempty"`
-	// The ID of the improper partition.
+	// The IDs of unreasonable partitions.
 	//
 	// example:
 	//
 	// [2024,2025]
 	PartitionIds *string `json:"PartitionIds,omitempty" xml:"PartitionIds,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// nxg
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//
@@ -757,7 +757,7 @@ func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTabl
 }
 
 type DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables struct {
-	// The SQL statement that is used to create the table.
+	// The CREATE TABLE statement.
 	//
 	// example:
 	//
@@ -769,7 +769,7 @@ type DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables struct
 	//
 	// 2
 	PartitionCount *int32 `json:"PartitionCount,omitempty" xml:"PartitionCount,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
@@ -781,7 +781,7 @@ type DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables struct
 	//
 	// 1234
 	ShardSkewedRows *string `json:"ShardSkewedRows,omitempty" xml:"ShardSkewedRows,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//
@@ -793,25 +793,25 @@ type DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables struct
 	//
 	// 2345
 	TotalDataSize *int64 `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty"`
-	// The size of hot data. Unit: bytes.
+	// The local data size. Unit: bytes.
 	//
 	// example:
 	//
 	// 2345
 	TotalLocalDataSize *string `json:"TotalLocalDataSize,omitempty" xml:"TotalLocalDataSize,omitempty"`
-	// The data size of the primary key. Unit: bytes.
+	// The total primary key data size of the table. Unit: bytes.
 	//
 	// example:
 	//
 	// 234
 	TotalPkSize *int64 `json:"TotalPkSize,omitempty" xml:"TotalPkSize,omitempty"`
-	// The size of cold data. Unit: bytes.
+	// The cold data size. Unit: bytes.
 	//
 	// example:
 	//
 	// 234
 	TotalRemoteDataSize *int64 `json:"TotalRemoteDataSize,omitempty" xml:"TotalRemoteDataSize,omitempty"`
-	// The number of rows in the table.
+	// The total number of rows in the table.
 	//
 	// example:
 	//
@@ -928,7 +928,7 @@ type DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTables str
 	//
 	// Peak memory detection
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The detection result items of table access.
+	// The collection of table access search results.
 	SearchResults []*DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSearchResults `json:"SearchResults,omitempty" xml:"SearchResults,omitempty" type:"Repeated"`
 }
 
@@ -972,37 +972,37 @@ func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTables
 }
 
 type DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSearchResults struct {
-	// The number of accesses to the table.
+	// The number of times the table was accessed.
 	//
 	// example:
 	//
 	// 1111
 	AccessCount *int64 `json:"AccessCount,omitempty" xml:"AccessCount,omitempty"`
-	// The average amount of time for scanning. Unit: milliseconds.
+	// The average scan duration. Unit: ms.
 	//
 	// example:
 	//
 	// 234
 	AvgScanCost *float64 `json:"AvgScanCost,omitempty" xml:"AvgScanCost,omitempty"`
-	// The average data size for scanning. Unit: bytes.
+	// The average table read size. Unit: bytes.
 	//
 	// example:
 	//
 	// 234
 	AvgScanSize *float64 `json:"AvgScanSize,omitempty" xml:"AvgScanSize,omitempty"`
-	// The maximum amount of time for scanning. Unit: milliseconds.
+	// The maximum scan duration. Unit: ms.
 	//
 	// example:
 	//
 	// 345
 	MaxScanCost *int64 `json:"MaxScanCost,omitempty" xml:"MaxScanCost,omitempty"`
-	// The maximum data size for scanning. Unit: bytes.
+	// The maximum data read size. Unit: bytes.
 	//
 	// example:
 	//
 	// 2345
 	MaxScanSize *int64 `json:"MaxScanSize,omitempty" xml:"MaxScanSize,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//

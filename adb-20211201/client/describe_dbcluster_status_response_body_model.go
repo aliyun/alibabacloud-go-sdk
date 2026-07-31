@@ -22,7 +22,7 @@ type DescribeDBClusterStatusResponseBody struct {
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEAU
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried cluster states.
+	// The cluster status list.
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
 }
 

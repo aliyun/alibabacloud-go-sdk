@@ -18,9 +18,7 @@ type iCreatePerformanceViewResponseBody interface {
 }
 
 type CreatePerformanceViewResponseBody struct {
-	// The details about the access denial.
-	//
-	// >  This parameter is returned only if Resource Access Management (RAM) permission verification failed.
+	// The details of the access denial. This field is returned only when RAM authentication fails.
 	//
 	// example:
 	//
@@ -44,9 +42,9 @@ type CreatePerformanceViewResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The creation result. Valid values:
 	//
-	// 	- **SUCCESS**
+	// - **SUCCESS**: succeeded.
 	//
-	// 	- **FAILED**
+	// - **FAILED**: failed.
 	//
 	// example:
 	//

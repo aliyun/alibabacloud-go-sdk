@@ -66,33 +66,168 @@ type iFieldSchemaModel interface {
 }
 
 type FieldSchemaModel struct {
-	AutoIncrement         *bool   `json:"AutoIncrement,omitempty" xml:"AutoIncrement,omitempty"`
-	ColumnRawName         *string `json:"ColumnRawName,omitempty" xml:"ColumnRawName,omitempty"`
-	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	CompressFloatUseShort *bool   `json:"CompressFloatUseShort,omitempty" xml:"CompressFloatUseShort,omitempty"`
-	Compression           *string `json:"Compression,omitempty" xml:"Compression,omitempty"`
-	CreateTime            *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DataType              *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	DatabaseName          *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	DefaultValue          *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	Delimiter             *string `json:"Delimiter,omitempty" xml:"Delimiter,omitempty"`
-	Encode                *string `json:"Encode,omitempty" xml:"Encode,omitempty"`
-	IsPartitionKey        *bool   `json:"IsPartitionKey,omitempty" xml:"IsPartitionKey,omitempty"`
-	MappedName            *string `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
-	Name                  *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Nullable              *bool   `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
-	OnUpdate              *string `json:"OnUpdate,omitempty" xml:"OnUpdate,omitempty"`
-	OrdinalPosition       *int64  `json:"OrdinalPosition,omitempty" xml:"OrdinalPosition,omitempty"`
-	PhysicalColumnName    *string `json:"PhysicalColumnName,omitempty" xml:"PhysicalColumnName,omitempty"`
-	PkPosition            *int64  `json:"PkPosition,omitempty" xml:"PkPosition,omitempty"`
-	Precision             *int64  `json:"Precision,omitempty" xml:"Precision,omitempty"`
-	Primarykey            *bool   `json:"Primarykey,omitempty" xml:"Primarykey,omitempty"`
-	Scale                 *int64  `json:"Scale,omitempty" xml:"Scale,omitempty"`
-	TableName             *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	Tokenizer             *string `json:"Tokenizer,omitempty" xml:"Tokenizer,omitempty"`
-	Type                  *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime            *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	ValueType             *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+	// Indicates whether the column is auto-incremented.
+	//
+	// example:
+	//
+	// true
+	AutoIncrement *bool `json:"AutoIncrement,omitempty" xml:"AutoIncrement,omitempty"`
+	// The original name of the column.
+	//
+	// example:
+	//
+	// ColumnRawName
+	ColumnRawName *string `json:"ColumnRawName,omitempty" xml:"ColumnRawName,omitempty"`
+	// The description of the column.
+	//
+	// example:
+	//
+	// comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Indicates whether FLOAT data is compressed to SHORT data.
+	//
+	// example:
+	//
+	// false
+	CompressFloatUseShort *bool `json:"CompressFloatUseShort,omitempty" xml:"CompressFloatUseShort,omitempty"`
+	// The compression method of the column.
+	//
+	// example:
+	//
+	// compression
+	Compression *string `json:"Compression,omitempty" xml:"Compression,omitempty"`
+	// The time when the column was created.
+	//
+	// example:
+	//
+	// 2023-01-05 13:17:55
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The data type of the column.
+	//
+	// example:
+	//
+	// long
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The logical name of the database.
+	//
+	// example:
+	//
+	// databaseName
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The default value of the column.
+	//
+	// example:
+	//
+	// default
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// The delimiter of the column.
+	//
+	// example:
+	//
+	// delimiter
+	Delimiter *string `json:"Delimiter,omitempty" xml:"Delimiter,omitempty"`
+	// The encryption method of the column.
+	//
+	// example:
+	//
+	// encode
+	Encode *string `json:"Encode,omitempty" xml:"Encode,omitempty"`
+	// Indicates whether the column is the partition key.
+	//
+	// example:
+	//
+	// false
+	IsPartitionKey *bool `json:"IsPartitionKey,omitempty" xml:"IsPartitionKey,omitempty"`
+	// The mapping name.
+	//
+	// example:
+	//
+	// mappedName
+	MappedName *string `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	// The name of the column.
+	//
+	// example:
+	//
+	// name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the column can be empty.
+	//
+	// example:
+	//
+	// true
+	Nullable *bool `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	// The update condition of the column.
+	//
+	// example:
+	//
+	// onUpdate
+	OnUpdate *string `json:"OnUpdate,omitempty" xml:"OnUpdate,omitempty"`
+	// The location of the column.
+	//
+	// example:
+	//
+	// -1
+	OrdinalPosition *int64 `json:"OrdinalPosition,omitempty" xml:"OrdinalPosition,omitempty"`
+	// The physical name of the column.
+	//
+	// example:
+	//
+	// PhysicalColumnName
+	PhysicalColumnName *string `json:"PhysicalColumnName,omitempty" xml:"PhysicalColumnName,omitempty"`
+	// The location of the primary key.
+	//
+	// example:
+	//
+	// -1
+	PkPosition *int64 `json:"PkPosition,omitempty" xml:"PkPosition,omitempty"`
+	// The precision of the column.
+	//
+	// example:
+	//
+	// 1
+	Precision *int64 `json:"Precision,omitempty" xml:"Precision,omitempty"`
+	// Indicates whether the column is the primary key.
+	//
+	// example:
+	//
+	// true
+	Primarykey *bool `json:"Primarykey,omitempty" xml:"Primarykey,omitempty"`
+	// The scale of the column.
+	//
+	// example:
+	//
+	// 1
+	Scale *int64 `json:"Scale,omitempty" xml:"Scale,omitempty"`
+	// The logical name of the table.
+	//
+	// example:
+	//
+	// tableName
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The token of the column.
+	//
+	// example:
+	//
+	// tokenizer
+	Tokenizer *string `json:"Tokenizer,omitempty" xml:"Tokenizer,omitempty"`
+	// The type of the column.
+	//
+	// example:
+	//
+	// long
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the index was updated.
+	//
+	// example:
+	//
+	// 2023-01-05 13:17:55
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The value type of the column.
+	//
+	// example:
+	//
+	// valueType
+	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
 func (s FieldSchemaModel) String() string {

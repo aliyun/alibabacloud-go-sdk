@@ -40,7 +40,7 @@ type GetTableColumnsRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The page number. Pages start from page 1. Default value: **1**.
+	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type GetTableColumnsRequest struct {
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
 	// This parameter is required.
 	//

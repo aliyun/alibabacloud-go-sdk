@@ -172,7 +172,7 @@ type DescribeOversizeNonPartitionTableInfosResponseBodyDetectionItems struct {
 	//
 	// example:
 	//
-	// Oversized non-partitioned tables
+	// Oversized non-partitioned table
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The severity level of the detection result.
 	//

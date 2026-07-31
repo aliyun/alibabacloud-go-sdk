@@ -22,7 +22,7 @@ type iDescribeApsResourceGroupsResponseBody interface {
 }
 
 type DescribeApsResourceGroupsResponseBody struct {
-	// The queried resource groups.
+	// The information about the resource groups.
 	Data *DescribeApsResourceGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -30,11 +30,11 @@ type DescribeApsResourceGroupsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message.
+	// Additional information about the call. Valid values:
 	//
-	// 	- If the request was successful, a success message is returned.
+	// - Success is returned if the request is successful.
 	//
-	// 	- If the request failed, an error message is returned.
+	// - An error code is returned if the request fails.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeApsResourceGroupsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **True**
 	//
-	// 	- **false**
+	// - **False**
 	//
 	// example:
 	//
@@ -121,13 +121,13 @@ func (s *DescribeApsResourceGroupsResponseBody) Validate() error {
 }
 
 type DescribeApsResourceGroupsResponseBodyData struct {
-	// The queried resource groups.
+	// The resource groups.
 	ResourceGroups []*DescribeApsResourceGroupsResponseBodyDataResourceGroups `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty" type:"Repeated"`
-	// The step size of resources. Unit: AnalyticDB compute units (ACUs).
+	// The step size of the resource group, in ACU.
 	//
-	// 	- If the value of GroupType is **Interactive**, 16 is returned.
+	// - If GroupType is **Interactive**, the step size is 16 ACU.
 	//
-	// 	- If the value of GroupType is **Job**, 8 is returned.
+	// - If GroupType is **Job**, the step size is 8 ACU.
 	//
 	// example:
 	//
@@ -177,14 +177,15 @@ func (s *DescribeApsResourceGroupsResponseBodyData) Validate() error {
 type DescribeApsResourceGroupsResponseBodyDataResourceGroups struct {
 	// Indicates whether the resource group is available. Valid values:
 	//
-	// 	- **true**
+	// - **True**
 	//
-	// 	- **false**
+	// - **False**
 	//
 	// example:
 	//
 	// True
-	Available *bool    `json:"Available,omitempty" xml:"Available,omitempty"`
+	Available *bool `json:"Available,omitempty" xml:"Available,omitempty"`
+	// The resource gradient values.
 	CuOptions []*int64 `json:"CuOptions,omitempty" xml:"CuOptions,omitempty" type:"Repeated"`
 	// The name of the resource group.
 	//
@@ -194,37 +195,37 @@ type DescribeApsResourceGroupsResponseBodyDataResourceGroups struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The type of the resource group. Valid values:
 	//
-	// 	- **Interactive**
+	// - **Interactive**
 	//
-	// 	- **Job**
+	// - **Job**
 	//
-	// >  For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/428610.html).
+	// > For more information about resource groups in Data Lakehouse Edition, see [Resource groups](https://help.aliyun.com/document_detail/428610.html).
 	//
 	// example:
 	//
 	// Job
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// The amount of remaining computing resources. Unit: ACUs.
+	// The remaining computing resources, in ACU.
 	//
 	// example:
 	//
 	// 512
 	LeftComputeResource *int32 `json:"LeftComputeResource,omitempty" xml:"LeftComputeResource,omitempty"`
-	// The maximum amount of reserved computing resources. Unit: ACUs.
+	// The maximum reserved computing resources, in ACU.
 	//
-	// 	- If the value of GroupType is **Interactive**, the amount of reserved computing resources that are not allocated in the cluster is returned in increments of 16 ACUs.
+	// - If GroupType is **Interactive**, the maximum reserved computing resources are the current unallocated resources of the cluster, and the step size is 16 ACU.
 	//
-	// 	- If the value of GroupType is **Job**, the amount of reserved computing resources that are not allocated in the cluster is returned in increments of 8 ACUs.
+	// - If GroupType is **Job**, the maximum reserved computing resources are the current unallocated resources of the cluster, and the step size is 8 ACU.
 	//
 	// example:
 	//
 	// 512
 	MaxComputeResource *int32 `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
-	// The minimum amount of reserved computing resources. Unit: ACUs.
+	// The minimum reserved computing resources, in ACU.
 	//
-	// 	- If the value of GroupType is **Interactive**, 16 is returned.
+	// - If GroupType is **Interactive**, the minimum reserved computing resources are 16 ACU.
 	//
-	// 	- If the value of GroupType is **Job**, 0 is returned.
+	// - If GroupType is **Job**, the minimum reserved computing resources are 0 ACU.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iCreateDBClusterResponseBody interface {
 }
 
 type CreateDBClusterResponseBody struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type CreateDBClusterResponseBody struct {
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The default resource group ID.
+	// The ID of the default resource group.
 	//
 	// example:
 	//

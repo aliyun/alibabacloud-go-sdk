@@ -17,8 +17,6 @@ type iDescribeHistoryTasksRequest interface {
 	GetInstanceId() *string
 	SetInstanceType(v string) *DescribeHistoryTasksRequest
 	GetInstanceType() *string
-	SetOwnerId(v int64) *DescribeHistoryTasksRequest
-	GetOwnerId() *int64
 	SetPageNumber(v int32) *DescribeHistoryTasksRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *DescribeHistoryTasksRequest
@@ -27,8 +25,6 @@ type iDescribeHistoryTasksRequest interface {
 	GetRegionId() *string
 	SetResourceGroupId(v string) *DescribeHistoryTasksRequest
 	GetResourceGroupId() *string
-	SetResourceOwnerId(v int64) *DescribeHistoryTasksRequest
-	GetResourceOwnerId() *int64
 	SetStatus(v string) *DescribeHistoryTasksRequest
 	GetStatus() *string
 	SetTaskId(v string) *DescribeHistoryTasksRequest
@@ -68,7 +64,6 @@ type DescribeHistoryTasksRequest struct {
 	//
 	// Instance
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of the page to return. Valid range: positive integers. Default value: 1
 	//
 	// example:
@@ -93,7 +88,6 @@ type DescribeHistoryTasksRequest struct {
 	//
 	// rg-ae****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The state of the task. Valid values:
 	//
 	// 	- **Scheduled**
@@ -168,10 +162,6 @@ func (s *DescribeHistoryTasksRequest) GetInstanceType() *string {
 	return s.InstanceType
 }
 
-func (s *DescribeHistoryTasksRequest) GetOwnerId() *int64 {
-	return s.OwnerId
-}
-
 func (s *DescribeHistoryTasksRequest) GetPageNumber() *int32 {
 	return s.PageNumber
 }
@@ -186,10 +176,6 @@ func (s *DescribeHistoryTasksRequest) GetRegionId() *string {
 
 func (s *DescribeHistoryTasksRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
-}
-
-func (s *DescribeHistoryTasksRequest) GetResourceOwnerId() *int64 {
-	return s.ResourceOwnerId
 }
 
 func (s *DescribeHistoryTasksRequest) GetStatus() *string {
@@ -232,11 +218,6 @@ func (s *DescribeHistoryTasksRequest) SetInstanceType(v string) *DescribeHistory
 	return s
 }
 
-func (s *DescribeHistoryTasksRequest) SetOwnerId(v int64) *DescribeHistoryTasksRequest {
-	s.OwnerId = &v
-	return s
-}
-
 func (s *DescribeHistoryTasksRequest) SetPageNumber(v int32) *DescribeHistoryTasksRequest {
 	s.PageNumber = &v
 	return s
@@ -254,11 +235,6 @@ func (s *DescribeHistoryTasksRequest) SetRegionId(v string) *DescribeHistoryTask
 
 func (s *DescribeHistoryTasksRequest) SetResourceGroupId(v string) *DescribeHistoryTasksRequest {
 	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksRequest) SetResourceOwnerId(v int64) *DescribeHistoryTasksRequest {
-	s.ResourceOwnerId = &v
 	return s
 }
 

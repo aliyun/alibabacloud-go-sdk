@@ -199,13 +199,13 @@ type DescribeExcessivePrimaryKeysResponseBodyDetectionItems struct {
 	//
 	// example:
 	//
-	// OK
+	// Multiple tables are detected with excessive primary keys.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The name of the detection item.
 	//
 	// example:
 	//
-	// test
+	// Excessive primary keys detection
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The severity level of the detection result.
 	//
@@ -269,13 +269,13 @@ type DescribeExcessivePrimaryKeysResponseBodyTables struct {
 	//
 	// example:
 	//
-	// 2
+	// id,date
 	PrimaryKeyColumns *string `json:"PrimaryKeyColumns,omitempty" xml:"PrimaryKeyColumns,omitempty"`
 	// The number of primary key fields.
 	//
 	// example:
 	//
-	// 3
+	// 2
 	PrimaryKeyCount *int32 `json:"PrimaryKeyCount,omitempty" xml:"PrimaryKeyCount,omitempty"`
 	// The data size of primary key indexes. Unit: bytes.
 	//

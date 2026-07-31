@@ -24,23 +24,31 @@ type iBatchApplyAdviceByIdListRequest interface {
 }
 
 type BatchApplyAdviceByIdListRequest struct {
-	// The date on which you want to apply the suggestion. Format: yyyyMMdd.
+	// The date when the suggestions were generated. Format: yyyyMMdd.
 	//
 	// example:
 	//
 	// 20221115
 	AdviceDate *int64 `json:"AdviceDate,omitempty" xml:"AdviceDate,omitempty"`
-	// The IDs of the suggestions that you want to apply. Separate multiple IDs with commas (,).
+	// The list of suggestion IDs to apply in batches. Separate multiple suggestion IDs with commas (,).
 	//
 	// example:
 	//
 	// c2589ff3-e86c-4f19-80c8-2aeb7dd9****,53414470-ebf4-4a53-a312-8a1ad8fd****,6e8dce84-fec8-4b0b-9c04-b0cea12c****,b3b9703d-55ca-47e0-96dd-6a4a9dbf****
-	AdviceIdList     *string `json:"AdviceIdList,omitempty" xml:"AdviceIdList,omitempty"`
-	ApplyType        *string `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
-	BuildImmediately *bool   `json:"BuildImmediately,omitempty" xml:"BuildImmediately,omitempty"`
-	// The cluster ID.
+	AdviceIdList *string `json:"AdviceIdList,omitempty" xml:"AdviceIdList,omitempty"`
+	// The adoption type.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+	// example:
+	//
+	// DROP_INDEX
+	ApplyType *string `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
+	// Specifies whether to immediately start a build task.
+	//
+	// example:
+	//
+	// true
+	BuildImmediately *bool `json:"BuildImmediately,omitempty" xml:"BuildImmediately,omitempty"`
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//

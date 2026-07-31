@@ -16,7 +16,7 @@ type iDownloadInstanceCACertificateResponseBody interface {
 }
 
 type DownloadInstanceCACertificateResponseBody struct {
-	// The OSS URL of the downloaded certificate.
+	// The certificate download path.
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
 	// The request ID.
 	//

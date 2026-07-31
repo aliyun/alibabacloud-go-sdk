@@ -32,7 +32,7 @@ type ExecuteSparkWarehouseBatchSQLRequest struct {
   // 
   // example:
   // 
-  // DataWorks
+  // Dataworks。
   Agency *string `json:"Agency,omitempty" xml:"Agency,omitempty"`
   // The cluster ID.
   // 

@@ -22,17 +22,17 @@ type iDescribeAdbMySqlTablesResponseBody interface {
 }
 
 type DescribeAdbMySqlTablesResponseBody struct {
-	// The message returned for the operation. Valid values:
+	// Additional information about the call. Valid values:
 	//
-	// 	- **Success*	- is returned if the operation is successful.
+	// - **Success*	- is returned if the request is successful.
 	//
-	// 	- An error message is returned if the operation fails.
+	// - A specific error code is returned if the request fails.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -44,17 +44,17 @@ type DescribeAdbMySqlTablesResponseBody struct {
 	//
 	// adb_demo
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	// Indicates whether the operation is successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**: The operation is successful.
+	// - **true**: The call was successful.
 	//
-	// 	- **false**: The operation fails.
+	// - **false**: The call failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The names of tables.
+	// Information about the tables.
 	Tables []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
 }
 

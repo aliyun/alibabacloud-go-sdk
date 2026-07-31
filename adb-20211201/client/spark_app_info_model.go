@@ -26,30 +26,65 @@ type iSparkAppInfo interface {
 }
 
 type SparkAppInfo struct {
+	// The ID of the Spark application.
+	//
 	// example:
 	//
-	// s202207151211hz0cb4*****
+	// s202207151211hz0c****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the Spark application.
+	//
 	// example:
 	//
-	// Spark Test
+	// SparkTest
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The database ID.
+	//
 	// example:
 	//
 	// amv-23xxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Detail      *Detail `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The information about the Spark application.
+	Detail *Detail `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The alert message returned, such as task execution failure or insufficient resources. If no alert occurs, null is returned.
+	//
 	// example:
 	//
-	// WARN: Disk is full
+	// WARN: Disk is full.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The priority of the Spark application.
+	//
 	// example:
 	//
 	// NORMAL
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The state of the Spark application. Valid values:
+	//
+	// 	- **SUBMITTED**
+	//
+	// 	- **STARTING**
+	//
+	// 	- **RUNNING**
+	//
+	// 	- **FAILING**
+	//
+	// 	- **FAILED**
+	//
+	// 	- **KILLING**
+	//
+	// 	- **KILLED**
+	//
+	// 	- **SUCCEEDING**
+	//
+	// 	- **COMPLETED**
+	//
+	// 	- **FATAL**
+	//
+	// 	- **UNKNOWN**
+	//
 	// example:
 	//
-	// FAILED
+	// SUBMITTED
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 

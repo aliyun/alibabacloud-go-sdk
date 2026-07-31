@@ -24,7 +24,7 @@ type iListApsWebhookResponseBody interface {
 }
 
 type ListApsWebhookResponseBody struct {
-	// API status or POP error code.
+	// The API status code or POP error code.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type ListApsWebhookResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListApsWebhookResponseBody struct {
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The array of webhooks.
+	// The webhook array.
 	Webhook []*ListApsWebhookResponseBodyWebhook `json:"Webhook,omitempty" xml:"Webhook,omitempty" type:"Repeated"`
 }
 
@@ -134,13 +134,13 @@ func (s *ListApsWebhookResponseBody) Validate() error {
 }
 
 type ListApsWebhookResponseBodyWebhook struct {
-	// Signing key
+	// The signing key.
 	//
 	// example:
 	//
 	// your_secret_key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The name of the webhook.
+	// The webhook name.
 	//
 	// example:
 	//
@@ -152,13 +152,13 @@ type ListApsWebhookResponseBodyWebhook struct {
 	//
 	// https://example.com/webhook
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// The ID of the webhook that you want to delete.
+	// The webhook ID.
 	//
 	// example:
 	//
 	// **35***
 	WebhookId *string `json:"WebhookId,omitempty" xml:"WebhookId,omitempty"`
-	// Webhook type.
+	// The webhook type.
 	//
 	// example:
 	//

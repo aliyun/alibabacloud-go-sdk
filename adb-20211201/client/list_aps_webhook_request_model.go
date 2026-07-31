@@ -26,9 +26,9 @@ type ListApsWebhookRequest struct {
 	//
 	// amv-8vbuyjhrih**
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// **JobType**\\
+	// **JobType*	-
 	//
-	// Job type. SLS or OSS Export Task: ResultExport.
+	// The task type. Set this parameter to ResultExport for SLS or OSS export tasks.
 	//
 	// example:
 	//

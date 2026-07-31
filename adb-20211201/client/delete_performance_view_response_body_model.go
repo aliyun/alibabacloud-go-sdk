@@ -20,7 +20,7 @@ type iDeletePerformanceViewResponseBody interface {
 type DeletePerformanceViewResponseBody struct {
 	// The details about the access denial.
 	//
-	// >  This parameter is returned only if Resource Access Management (RAM) permission verification failed.
+	// > This field is returned only when RAM authentication fails.
 	//
 	// example:
 	//
@@ -42,7 +42,11 @@ type DeletePerformanceViewResponseBody struct {
 	//
 	// }
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The delete status.
+	// The deletion result. Valid values:
+	//
+	// - **SUCCESS**: Succeeded.
+	//
+	// - **FAILED**: Failed.
 	//
 	// example:
 	//

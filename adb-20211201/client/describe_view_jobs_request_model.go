@@ -30,51 +30,53 @@ type iDescribeViewJobsRequest interface {
 }
 
 type DescribeViewJobsRequest struct {
-	// The cluster ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// am-bp1ub9grke1****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The owner of the view.
+	// The owner.
 	//
 	// example:
 	//
 	// admin
 	FilterOwner *string `json:"FilterOwner,omitempty" xml:"FilterOwner,omitempty"`
-	// The name of the view.
+	// The view name.
 	//
 	// example:
 	//
 	// test_mv
 	FilterViewName *string `json:"FilterViewName,omitempty" xml:"FilterViewName,omitempty"`
-	// The type of the view.
+	// The view type.
 	//
 	// Valid values:
 	//
-	// \\-VIRTUAL_VIEW
+	// - VIRTUAL_VIEW
 	//
-	// \\-MATERIALIZED_VIEW
+	// - MATERIALIZED_VIEW
 	//
-	// This parameter is empty by default.
+	// Default value: empty.
 	//
 	// example:
 	//
 	// MATERIALIZED_VIEW
 	FilterViewType *string `json:"FilterViewType,omitempty" xml:"FilterViewType,omitempty"`
-	// The field used for sorting. Valid values for Type:
+	// The sort field.
 	//
-	// 	- Asc.
+	// Valid values for the sort order:
 	//
-	// 	- Desc.
+	// - Asc
 	//
-	// Valid values for Field:
+	// - Desc
 	//
-	// 	- StartTime.
+	// Valid values for the sort field:
 	//
-	// 	- EndTime;
+	// - StartTime
 	//
-	// 	- ScheduledStartTime;
+	// - EndTime
+	//
+	// - ScheduledStartTime
 	//
 	// example:
 	//
@@ -86,7 +88,7 @@ type DescribeViewJobsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of records per page.
 	//
 	// example:
 	//

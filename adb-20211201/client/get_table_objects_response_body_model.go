@@ -22,33 +22,33 @@ type iGetTableObjectsResponseBody interface {
 }
 
 type GetTableObjectsResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *GetTableObjectsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The number of the returned page. The value is an integer that is greater than 0. Default value: **1**.
+	// The page number. The value is a positive integer. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Default value: 30. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// 	- **30**
+	// - **30*	- (default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 863D51B7-5321-41D8-A0B6-A088B0******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -119,27 +119,27 @@ func (s *GetTableObjectsResponseBody) Validate() error {
 }
 
 type GetTableObjectsResponseBodyData struct {
-	// The number of the returned page. The value is an integer that is greater than 0. Default value: **1**.
+	// The page number. The value is a positive integer. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Default value: 30. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// 	- **30**
+	// - **30*	- (default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Details of the tables.
+	// The result array.
 	TableSummaryModels []*TableSummaryModel `json:"TableSummaryModels,omitempty" xml:"TableSummaryModels,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

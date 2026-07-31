@@ -18,13 +18,13 @@ type iDescribeJobResourceUsageResponseBody interface {
 }
 
 type DescribeJobResourceUsageResponseBody struct {
-	// The HTTP status code.
+	// The API status or POP error code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The queried resource usage.
+	// The returned data.
 	Data *DescribeJobResourceUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -79,29 +79,46 @@ func (s *DescribeJobResourceUsageResponseBody) Validate() error {
 }
 
 type DescribeJobResourceUsageResponseBodyData struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	//
+	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
 	// example:
 	//
 	// amv-clusterxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end time of the query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The end time. Format: yyyy-MM-ddTHH:mmZ (UTC).
 	//
 	// example:
 	//
 	// 2023-05-23T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The AnalyticDB compute unit (ACU) usage of the job resource group.
+	// The ACU usage of the job resource group.
 	JobAcuUsage []*DescribeJobResourceUsageResponseBodyDataJobAcuUsage `json:"JobAcuUsage,omitempty" xml:"JobAcuUsage,omitempty" type:"Repeated"`
-	PageNumber  *int32                                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The start time of the query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start time. Format: yyyy-MM-ddTHH:mmZ (UTC).
 	//
 	// example:
 	//
 	// 2023-05-22T16:00:00Z
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeJobResourceUsageResponseBodyData) String() string {
@@ -189,9 +206,9 @@ func (s *DescribeJobResourceUsageResponseBodyData) Validate() error {
 }
 
 type DescribeJobResourceUsageResponseBodyDataJobAcuUsage struct {
-	// The ACU usage.
+	// The ACU resource usage details.
 	AcuUsageDetail *DescribeJobResourceUsageResponseBodyDataJobAcuUsageAcuUsageDetail `json:"AcuUsageDetail,omitempty" xml:"AcuUsageDetail,omitempty" type:"Struct"`
-	// The end time of the job. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The end time of the job. Format: yyyy-MM-ddTHH:mmZ (UTC).
 	//
 	// example:
 	//
@@ -203,7 +220,7 @@ type DescribeJobResourceUsageResponseBodyDataJobAcuUsage struct {
 	//
 	// 1592
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The start time of the job. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The start time of the job. Format: yyyy-MM-ddTHH:mmZ (UTC).
 	//
 	// example:
 	//
@@ -215,7 +232,13 @@ type DescribeJobResourceUsageResponseBodyDataJobAcuUsage struct {
 	//
 	// job_default
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
-	UseCachePool      *bool   `json:"UseCachePool,omitempty" xml:"UseCachePool,omitempty"`
+	SparkAppName      *string `json:"SparkAppName,omitempty" xml:"SparkAppName,omitempty"`
+	// Indicates whether the hot pool is used.
+	//
+	// example:
+	//
+	// false
+	UseCachePool *bool `json:"UseCachePool,omitempty" xml:"UseCachePool,omitempty"`
 }
 
 func (s DescribeJobResourceUsageResponseBodyDataJobAcuUsage) String() string {
@@ -244,6 +267,10 @@ func (s *DescribeJobResourceUsageResponseBodyDataJobAcuUsage) GetJobStartTime() 
 
 func (s *DescribeJobResourceUsageResponseBodyDataJobAcuUsage) GetResourceGroupName() *string {
 	return s.ResourceGroupName
+}
+
+func (s *DescribeJobResourceUsageResponseBodyDataJobAcuUsage) GetSparkAppName() *string {
+	return s.SparkAppName
 }
 
 func (s *DescribeJobResourceUsageResponseBodyDataJobAcuUsage) GetUseCachePool() *bool {
@@ -275,6 +302,11 @@ func (s *DescribeJobResourceUsageResponseBodyDataJobAcuUsage) SetResourceGroupNa
 	return s
 }
 
+func (s *DescribeJobResourceUsageResponseBodyDataJobAcuUsage) SetSparkAppName(v string) *DescribeJobResourceUsageResponseBodyDataJobAcuUsage {
+	s.SparkAppName = &v
+	return s
+}
+
 func (s *DescribeJobResourceUsageResponseBodyDataJobAcuUsage) SetUseCachePool(v bool) *DescribeJobResourceUsageResponseBodyDataJobAcuUsage {
 	s.UseCachePool = &v
 	return s
@@ -290,31 +322,31 @@ func (s *DescribeJobResourceUsageResponseBodyDataJobAcuUsage) Validate() error {
 }
 
 type DescribeJobResourceUsageResponseBodyDataJobAcuUsageAcuUsageDetail struct {
-	// The number of ACUs for the elastic resources.
+	// The number of elastic ACU resources.
 	//
 	// example:
 	//
 	// 16ACU
 	ElasticAcuNumber *float32 `json:"ElasticAcuNumber,omitempty" xml:"ElasticAcuNumber,omitempty"`
-	// The number of ACUs for the reserved resources.
+	// The number of reserved ACU resources.
 	//
 	// example:
 	//
 	// 16ACU
 	ReservedAcuNumber *float32 `json:"ReservedAcuNumber,omitempty" xml:"ReservedAcuNumber,omitempty"`
-	// The number of spot ACUs.
+	// The number of spot instance ACU resources.
 	//
 	// example:
 	//
 	// 16ACU
 	SpotAcuNumber *float32 `json:"SpotAcuNumber,omitempty" xml:"SpotAcuNumber,omitempty"`
-	// The percent of spot ACUs.
+	// The percentage of spot instance resources in the total elastic resources.
 	//
 	// example:
 	//
 	// 0.9
 	SpotAcuPercentage *float32 `json:"SpotAcuPercentage,omitempty" xml:"SpotAcuPercentage,omitempty"`
-	// The total number of ACUs.
+	// The total number of ACU resources.
 	//
 	// example:
 	//

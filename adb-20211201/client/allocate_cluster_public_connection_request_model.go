@@ -15,20 +15,24 @@ type iAllocateClusterPublicConnectionRequest interface {
 	GetDBClusterId() *string
 	SetEngine(v string) *AllocateClusterPublicConnectionRequest
 	GetEngine() *string
+	SetResourceGroupName(v string) *AllocateClusterPublicConnectionRequest
+	GetResourceGroupName() *string
 }
 
 type AllocateClusterPublicConnectionRequest struct {
-	// The prefix of the public endpoint.
+	// The prefix of the public connection address.
 	//
-	// 	- The prefix can contain lowercase letters, digits, and hyphens (-). It must start with a lowercase letter.
+	// - It must begin with a lowercase letter and can contain only lowercase letters, digits, and hyphens (-).
 	//
-	// 	- The prefix can be up to 30 characters in length.
+	// - It must be no more than 30 characters long.
 	//
 	// example:
 	//
 	// test12
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	// <props="china">The cluster ID of an Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	//
+	// <props="intl">The cluster ID of a Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -36,16 +40,17 @@ type AllocateClusterPublicConnectionRequest struct {
 	//
 	// amv-bp1z5d2q71is2****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The database engine of the cluster. Valid values:
+	// The database engine. Valid values:
 	//
-	// 	- **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
+	// - **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
 	//
-	// 	- **Clickhouse**: the wide table engine.
+	// - **Clickhouse**: the wide table engine.
 	//
 	// example:
 	//
 	// Clickhouse
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	Engine            *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 }
 
 func (s AllocateClusterPublicConnectionRequest) String() string {
@@ -68,6 +73,10 @@ func (s *AllocateClusterPublicConnectionRequest) GetEngine() *string {
 	return s.Engine
 }
 
+func (s *AllocateClusterPublicConnectionRequest) GetResourceGroupName() *string {
+	return s.ResourceGroupName
+}
+
 func (s *AllocateClusterPublicConnectionRequest) SetConnectionStringPrefix(v string) *AllocateClusterPublicConnectionRequest {
 	s.ConnectionStringPrefix = &v
 	return s
@@ -80,6 +89,11 @@ func (s *AllocateClusterPublicConnectionRequest) SetDBClusterId(v string) *Alloc
 
 func (s *AllocateClusterPublicConnectionRequest) SetEngine(v string) *AllocateClusterPublicConnectionRequest {
 	s.Engine = &v
+	return s
+}
+
+func (s *AllocateClusterPublicConnectionRequest) SetResourceGroupName(v string) *AllocateClusterPublicConnectionRequest {
+	s.ResourceGroupName = &v
 	return s
 }
 

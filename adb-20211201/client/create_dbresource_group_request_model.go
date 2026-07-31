@@ -9,8 +9,12 @@ type iCreateDBResourceGroupRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAtmConfig(v *CreateDBResourceGroupRequestAtmConfig) *CreateDBResourceGroupRequest
+	GetAtmConfig() *CreateDBResourceGroupRequestAtmConfig
 	SetAutoStopInterval(v string) *CreateDBResourceGroupRequest
 	GetAutoStopInterval() *string
+	SetClassification(v string) *CreateDBResourceGroupRequest
+	GetClassification() *string
 	SetClusterMode(v string) *CreateDBResourceGroupRequest
 	GetClusterMode() *string
 	SetClusterSizeResource(v string) *CreateDBResourceGroupRequest
@@ -47,6 +51,8 @@ type iCreateDBResourceGroupRequest interface {
 	GetRegionId() *string
 	SetRules(v []*CreateDBResourceGroupRequestRules) *CreateDBResourceGroupRequest
 	GetRules() []*CreateDBResourceGroupRequestRules
+	SetScalePolicy(v string) *CreateDBResourceGroupRequest
+	GetScalePolicy() *string
 	SetSpecName(v string) *CreateDBResourceGroupRequest
 	GetSpecName() *string
 	SetTargetResourceGroupName(v string) *CreateDBResourceGroupRequest
@@ -54,23 +60,40 @@ type iCreateDBResourceGroupRequest interface {
 }
 
 type CreateDBResourceGroupRequest struct {
+	AtmConfig *CreateDBResourceGroupRequestAtmConfig `json:"AtmConfig,omitempty" xml:"AtmConfig,omitempty" type:"Struct"`
+	// The automatic stop interval. Unit: minutes (m).
+	//
 	// example:
 	//
 	// 5m
 	AutoStopInterval *string `json:"AutoStopInterval,omitempty" xml:"AutoStopInterval,omitempty"`
-	// A reserved parameter.
+	// The classification of the resource group. Valid values:
+	//
+	// - SQL
+	//
+	// - SparkSQL
+	//
+	// - MultiCluster
+	//
+	// - AI
 	//
 	// example:
 	//
-	// N/A
+	// SQL
+	Classification *string `json:"Classification,omitempty" xml:"Classification,omitempty"`
+	// A reserved parameter (not applicable).
+	//
+	// example:
+	//
+	// -
 	ClusterMode *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
-	// A reserved parameter.
+	// A reserved parameter (not applicable).
 	//
 	// example:
 	//
-	// N/A
+	// -
 	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the Dedicated Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -78,32 +101,41 @@ type CreateDBResourceGroupRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to enable the spot instance feature for the resource group. After you enable the spot instance feature, you are charged for resources at a lower unit price but the resources are probably released. You can enable the spot instance feature only for job resource groups. Valid values:
+	// Specifies whether to enable the spot instance feature for the resource group. After the spot instance feature is enabled, the unit price of resources is reduced, but the resources may be released. Only Job resource groups support this feature. Valid values:
 	//
-	// 	- **True**
+	// - **True**: enables the spot instance feature.
 	//
-	// 	- **False**
+	// - **False**: disables the spot instance feature.
 	//
 	// example:
 	//
 	// True
 	EnableSpot *bool `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
+	// The database engine. Valid values:
+	//
+	// - **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
+	//
+	// - **SparkWarehouse**: the SparkWarehouse engine.
+	//
 	// example:
 	//
 	// SparkWarehouse
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The engine configuration.
+	//
 	// example:
 	//
 	// {\\"spark.adb.version\\":\\"3.5\\"}
-	EngineParams   map[string]interface{}                      `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
+	EngineParams map[string]interface{} `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
+	// The GPU time-sharing elastic plan.
 	GpuElasticPlan *CreateDBResourceGroupRequestGpuElasticPlan `json:"GpuElasticPlan,omitempty" xml:"GpuElasticPlan,omitempty" type:"Struct"`
 	// The name of the resource group.
 	//
-	// 	- The name can be up to 255 characters in length.
+	// - The name can be up to 255 characters in length.
 	//
-	// 	- The name must start with a letter or a digit.
+	// - The name must start with a digit, an uppercase letter, or a lowercase letter.
 	//
-	// 	- The name can contain letters, digits, hyphens (_), and underscores (_).
+	// - The name can contain digits, uppercase letters, lowercase letters, hyphens (-), and underscores (_).
 	//
 	// This parameter is required.
 	//
@@ -113,11 +145,11 @@ type CreateDBResourceGroupRequest struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The type of the resource group. Valid values:
 	//
-	// 	- **Interactive**
+	// - **Interactive**
 	//
-	// 	- **Job**
+	// - **Job**
 	//
-	// >  For more information about resource groups, see [Resource group overview](https://help.aliyun.com/document_detail/428610.html).
+	// > For more information about Data Lakehouse Edition resource groups, see [Resource group overview (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
 	//
 	// This parameter is required.
 	//
@@ -125,56 +157,87 @@ type CreateDBResourceGroupRequest struct {
 	//
 	// Job
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// A reserved parameter.
+	// A reserved parameter (not applicable).
 	//
 	// example:
 	//
-	// N/A
+	// -
 	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
-	// The maximum reserved computing resources.
+	// The maximum amount of reserved computing resources. Unit: ACUs.
 	//
-	// 	- If GroupType is set to Interactive, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 16ACU.
+	// - If the resource group type is Interactive, the maximum reserved computing resources is the current unallocated resources of the cluster, in increments of 16 ACUs.
 	//
-	// 	- If GroupType is set to Job, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 8ACU.
+	// - If the resource group type is Job, the maximum reserved computing resources is the current unallocated resources of the cluster, in increments of 8 ACUs.
 	//
 	// example:
 	//
 	// 48ACU
 	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
-	// A reserved parameter.
-	MaxGpuQuantity *int32 `json:"MaxGpuQuantity,omitempty" xml:"MaxGpuQuantity,omitempty"`
-	// A reserved parameter.
+	// The maximum number of GPUs.
 	//
 	// example:
 	//
-	// N/A
+	// 2
+	MaxGpuQuantity *int32 `json:"MaxGpuQuantity,omitempty" xml:"MaxGpuQuantity,omitempty"`
+	// A reserved parameter (not applicable).
+	//
+	// example:
+	//
+	// -
 	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
-	// The minimum reserved computing resources.
+	// The minimum amount of reserved computing resources. Unit: ACUs.
 	//
-	// 	- When GroupType is set to Interactive, set this parameter to 16ACU.
+	// - If the resource group type is Interactive, the minimum reserved computing resources is 16 ACUs.
 	//
-	// 	- When GroupType is set to Job, set this parameter to 0ACU.
+	// - If the resource group type is Job, the minimum reserved computing resources is 0 ACUs.
 	//
 	// example:
 	//
 	// 0ACU
 	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
-	// A reserved parameter.
-	MinGpuQuantity *int32                                 `json:"MinGpuQuantity,omitempty" xml:"MinGpuQuantity,omitempty"`
-	RayConfig      *CreateDBResourceGroupRequestRayConfig `json:"RayConfig,omitempty" xml:"RayConfig,omitempty" type:"Struct"`
-	// The region ID of the cluster.
+	// The minimum number of GPUs.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the most recent region list.
+	// example:
+	//
+	// 1
+	MinGpuQuantity *int32 `json:"MinGpuQuantity,omitempty" xml:"MinGpuQuantity,omitempty"`
+	// The Ray configuration.
+	//
+	// > This parameter is required when the resource group is an AI resource group and the corresponding engine is RayCluster.
+	RayConfig *CreateDBResourceGroupRequestRayConfig `json:"RayConfig,omitempty" xml:"RayConfig,omitempty" type:"Struct"`
+	// The region ID.
+	//
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the region IDs of AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The job resubmission rules.
+	// The job routing rules.
 	Rules []*CreateDBResourceGroupRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// A reserved parameter.
+	// The scaling policy of the resource group. Valid values:
+	//
+	// - AutoScaling: enables the AutoScaling automatic scaling policy.
+	//
+	// - Disable: disables automatic scaling.
+	//
+	// - MultiCluster: enables the MultiCluster automatic scaling policy.
+	//
+	// example:
+	//
+	// AutoScaling
+	ScalePolicy *string `json:"ScalePolicy,omitempty" xml:"ScalePolicy,omitempty"`
+	// The specification name.
+	//
+	// example:
+	//
+	// ADB.MLLarge.2
 	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
-	// A reserved parameter.
+	// The name of the destination resource group.
+	//
+	// example:
+	//
+	// test
 	TargetResourceGroupName *string `json:"TargetResourceGroupName,omitempty" xml:"TargetResourceGroupName,omitempty"`
 }
 
@@ -186,8 +249,16 @@ func (s CreateDBResourceGroupRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateDBResourceGroupRequest) GetAtmConfig() *CreateDBResourceGroupRequestAtmConfig {
+	return s.AtmConfig
+}
+
 func (s *CreateDBResourceGroupRequest) GetAutoStopInterval() *string {
 	return s.AutoStopInterval
+}
+
+func (s *CreateDBResourceGroupRequest) GetClassification() *string {
+	return s.Classification
 }
 
 func (s *CreateDBResourceGroupRequest) GetClusterMode() *string {
@@ -262,6 +333,10 @@ func (s *CreateDBResourceGroupRequest) GetRules() []*CreateDBResourceGroupReques
 	return s.Rules
 }
 
+func (s *CreateDBResourceGroupRequest) GetScalePolicy() *string {
+	return s.ScalePolicy
+}
+
 func (s *CreateDBResourceGroupRequest) GetSpecName() *string {
 	return s.SpecName
 }
@@ -270,8 +345,18 @@ func (s *CreateDBResourceGroupRequest) GetTargetResourceGroupName() *string {
 	return s.TargetResourceGroupName
 }
 
+func (s *CreateDBResourceGroupRequest) SetAtmConfig(v *CreateDBResourceGroupRequestAtmConfig) *CreateDBResourceGroupRequest {
+	s.AtmConfig = v
+	return s
+}
+
 func (s *CreateDBResourceGroupRequest) SetAutoStopInterval(v string) *CreateDBResourceGroupRequest {
 	s.AutoStopInterval = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequest) SetClassification(v string) *CreateDBResourceGroupRequest {
+	s.Classification = &v
 	return s
 }
 
@@ -365,6 +450,11 @@ func (s *CreateDBResourceGroupRequest) SetRules(v []*CreateDBResourceGroupReques
 	return s
 }
 
+func (s *CreateDBResourceGroupRequest) SetScalePolicy(v string) *CreateDBResourceGroupRequest {
+	s.ScalePolicy = &v
+	return s
+}
+
 func (s *CreateDBResourceGroupRequest) SetSpecName(v string) *CreateDBResourceGroupRequest {
 	s.SpecName = &v
 	return s
@@ -376,6 +466,11 @@ func (s *CreateDBResourceGroupRequest) SetTargetResourceGroupName(v string) *Cre
 }
 
 func (s *CreateDBResourceGroupRequest) Validate() error {
+	if s.AtmConfig != nil {
+		if err := s.AtmConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.GpuElasticPlan != nil {
 		if err := s.GpuElasticPlan.Validate(); err != nil {
 			return err
@@ -398,9 +493,177 @@ func (s *CreateDBResourceGroupRequest) Validate() error {
 	return nil
 }
 
+type CreateDBResourceGroupRequestAtmConfig struct {
+	// example:
+	//
+	// 2
+	AuthNodeNum *int32 `json:"AuthNodeNum,omitempty" xml:"AuthNodeNum,omitempty"`
+	// example:
+	//
+	// 8ACU
+	AuthNodeSpec *string `json:"AuthNodeSpec,omitempty" xml:"AuthNodeSpec,omitempty"`
+	// example:
+	//
+	// 2
+	InsertNodeNum *int32 `json:"InsertNodeNum,omitempty" xml:"InsertNodeNum,omitempty"`
+	// example:
+	//
+	// 8ACU
+	InsertNodeSpec *string `json:"InsertNodeSpec,omitempty" xml:"InsertNodeSpec,omitempty"`
+	// example:
+	//
+	// 10
+	SelectNodeCacheSize *int32 `json:"SelectNodeCacheSize,omitempty" xml:"SelectNodeCacheSize,omitempty"`
+	// example:
+	//
+	// 1
+	SelectNodeNum *int32 `json:"SelectNodeNum,omitempty" xml:"SelectNodeNum,omitempty"`
+	// example:
+	//
+	// 8ACU
+	SelectNodeSpec *string `json:"SelectNodeSpec,omitempty" xml:"SelectNodeSpec,omitempty"`
+	// example:
+	//
+	// 1
+	StorageNodeDiskSize *int32 `json:"StorageNodeDiskSize,omitempty" xml:"StorageNodeDiskSize,omitempty"`
+	// example:
+	//
+	// essd_pl1
+	StorageNodeDiskType *string `json:"StorageNodeDiskType,omitempty" xml:"StorageNodeDiskType,omitempty"`
+	// example:
+	//
+	// 2
+	StorageNodeNum *int32 `json:"StorageNodeNum,omitempty" xml:"StorageNodeNum,omitempty"`
+	// example:
+	//
+	// 8ACU
+	StorageNodeSpec *string `json:"StorageNodeSpec,omitempty" xml:"StorageNodeSpec,omitempty"`
+}
+
+func (s CreateDBResourceGroupRequestAtmConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDBResourceGroupRequestAtmConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBResourceGroupRequestAtmConfig) GetAuthNodeNum() *int32 {
+	return s.AuthNodeNum
+}
+
+func (s *CreateDBResourceGroupRequestAtmConfig) GetAuthNodeSpec() *string {
+	return s.AuthNodeSpec
+}
+
+func (s *CreateDBResourceGroupRequestAtmConfig) GetInsertNodeNum() *int32 {
+	return s.InsertNodeNum
+}
+
+func (s *CreateDBResourceGroupRequestAtmConfig) GetInsertNodeSpec() *string {
+	return s.InsertNodeSpec
+}
+
+func (s *CreateDBResourceGroupRequestAtmConfig) GetSelectNodeCacheSize() *int32 {
+	return s.SelectNodeCacheSize
+}
+
+func (s *CreateDBResourceGroupRequestAtmConfig) GetSelectNodeNum() *int32 {
+	return s.SelectNodeNum
+}
+
+func (s *CreateDBResourceGroupRequestAtmConfig) GetSelectNodeSpec() *string {
+	return s.SelectNodeSpec
+}
+
+func (s *CreateDBResourceGroupRequestAtmConfig) GetStorageNodeDiskSize() *int32 {
+	return s.StorageNodeDiskSize
+}
+
+func (s *CreateDBResourceGroupRequestAtmConfig) GetStorageNodeDiskType() *string {
+	return s.StorageNodeDiskType
+}
+
+func (s *CreateDBResourceGroupRequestAtmConfig) GetStorageNodeNum() *int32 {
+	return s.StorageNodeNum
+}
+
+func (s *CreateDBResourceGroupRequestAtmConfig) GetStorageNodeSpec() *string {
+	return s.StorageNodeSpec
+}
+
+func (s *CreateDBResourceGroupRequestAtmConfig) SetAuthNodeNum(v int32) *CreateDBResourceGroupRequestAtmConfig {
+	s.AuthNodeNum = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequestAtmConfig) SetAuthNodeSpec(v string) *CreateDBResourceGroupRequestAtmConfig {
+	s.AuthNodeSpec = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequestAtmConfig) SetInsertNodeNum(v int32) *CreateDBResourceGroupRequestAtmConfig {
+	s.InsertNodeNum = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequestAtmConfig) SetInsertNodeSpec(v string) *CreateDBResourceGroupRequestAtmConfig {
+	s.InsertNodeSpec = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequestAtmConfig) SetSelectNodeCacheSize(v int32) *CreateDBResourceGroupRequestAtmConfig {
+	s.SelectNodeCacheSize = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequestAtmConfig) SetSelectNodeNum(v int32) *CreateDBResourceGroupRequestAtmConfig {
+	s.SelectNodeNum = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequestAtmConfig) SetSelectNodeSpec(v string) *CreateDBResourceGroupRequestAtmConfig {
+	s.SelectNodeSpec = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequestAtmConfig) SetStorageNodeDiskSize(v int32) *CreateDBResourceGroupRequestAtmConfig {
+	s.StorageNodeDiskSize = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequestAtmConfig) SetStorageNodeDiskType(v string) *CreateDBResourceGroupRequestAtmConfig {
+	s.StorageNodeDiskType = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequestAtmConfig) SetStorageNodeNum(v int32) *CreateDBResourceGroupRequestAtmConfig {
+	s.StorageNodeNum = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequestAtmConfig) SetStorageNodeSpec(v string) *CreateDBResourceGroupRequestAtmConfig {
+	s.StorageNodeSpec = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequestAtmConfig) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateDBResourceGroupRequestGpuElasticPlan struct {
-	Enabled *bool                                              `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	Rules   []*CreateDBResourceGroupRequestGpuElasticPlanRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// Specifies whether to enable the elastic plan immediately after creation. Valid values:
+	//
+	// - true: enables the elastic plan immediately.
+	//
+	// - false: does not enable the elastic plan.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The list of rules.
+	Rules []*CreateDBResourceGroupRequestGpuElasticPlanRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s CreateDBResourceGroupRequestGpuElasticPlan) String() string {
@@ -443,7 +706,17 @@ func (s *CreateDBResourceGroupRequestGpuElasticPlan) Validate() error {
 }
 
 type CreateDBResourceGroupRequestGpuElasticPlanRules struct {
-	EndCronExpression   *string `json:"EndCronExpression,omitempty" xml:"EndCronExpression,omitempty"`
+	// The end time as a cron expression. The interval must be at least 1 hour.
+	//
+	// example:
+	//
+	// 0 0 3 	- 	- ?
+	EndCronExpression *string `json:"EndCronExpression,omitempty" xml:"EndCronExpression,omitempty"`
+	// The start time as a cron expression. The interval must be at least 1 hour.
+	//
+	// example:
+	//
+	// 0 0 2 	- 	- ?
 	StartCronExpression *string `json:"StartCronExpression,omitempty" xml:"StartCronExpression,omitempty"`
 }
 
@@ -478,18 +751,44 @@ func (s *CreateDBResourceGroupRequestGpuElasticPlanRules) Validate() error {
 }
 
 type CreateDBResourceGroupRequestRayConfig struct {
+	// The Ray cluster type. Valid values:
+	//
+	// - BASIC: basic type, non-high-availability
+	//
+	// - HIGH_AVAILABILITY: high-availability type
+	//
 	// example:
 	//
 	// BASIC
-	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	EnableUserEni    *bool   `json:"EnableUserEni,omitempty" xml:"EnableUserEni,omitempty"`
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// Specifies whether to enable user ENI connectivity.
+	EnableUserEni *bool `json:"EnableUserEni,omitempty" xml:"EnableUserEni,omitempty"`
+	// The allocation unit of the head node.
+	//
+	// example:
+	//
+	// 1
 	HeadAllocateUnit *string `json:"HeadAllocateUnit,omitempty" xml:"HeadAllocateUnit,omitempty"`
+	// The disk size of the head node.
+	//
+	// example:
+	//
+	// 100G
 	HeadDiskCapacity *string `json:"HeadDiskCapacity,omitempty" xml:"HeadDiskCapacity,omitempty"`
+	// The node specifications of the head node.
+	//
 	// example:
 	//
 	// xlarge
-	HeadSpec     *string                                              `json:"HeadSpec,omitempty" xml:"HeadSpec,omitempty"`
-	HeadSpecType *string                                              `json:"HeadSpecType,omitempty" xml:"HeadSpecType,omitempty"`
+	HeadSpec *string `json:"HeadSpec,omitempty" xml:"HeadSpec,omitempty"`
+	// The resource type of the head node.
+	//
+	// example:
+	//
+	// CPU
+	HeadSpecType            *string `json:"HeadSpecType,omitempty" xml:"HeadSpecType,omitempty"`
+	UserDefinedRequirements *string `json:"UserDefinedRequirements,omitempty" xml:"UserDefinedRequirements,omitempty"`
+	// The list of Ray worker group configurations.
 	WorkerGroups []*CreateDBResourceGroupRequestRayConfigWorkerGroups `json:"WorkerGroups,omitempty" xml:"WorkerGroups,omitempty" type:"Repeated"`
 }
 
@@ -523,6 +822,10 @@ func (s *CreateDBResourceGroupRequestRayConfig) GetHeadSpec() *string {
 
 func (s *CreateDBResourceGroupRequestRayConfig) GetHeadSpecType() *string {
 	return s.HeadSpecType
+}
+
+func (s *CreateDBResourceGroupRequestRayConfig) GetUserDefinedRequirements() *string {
+	return s.UserDefinedRequirements
 }
 
 func (s *CreateDBResourceGroupRequestRayConfig) GetWorkerGroups() []*CreateDBResourceGroupRequestRayConfigWorkerGroups {
@@ -559,6 +862,11 @@ func (s *CreateDBResourceGroupRequestRayConfig) SetHeadSpecType(v string) *Creat
 	return s
 }
 
+func (s *CreateDBResourceGroupRequestRayConfig) SetUserDefinedRequirements(v string) *CreateDBResourceGroupRequestRayConfig {
+	s.UserDefinedRequirements = &v
+	return s
+}
+
 func (s *CreateDBResourceGroupRequestRayConfig) SetWorkerGroups(v []*CreateDBResourceGroupRequestRayConfigWorkerGroups) *CreateDBResourceGroupRequestRayConfig {
 	s.WorkerGroups = v
 	return s
@@ -578,30 +886,44 @@ func (s *CreateDBResourceGroupRequestRayConfig) Validate() error {
 }
 
 type CreateDBResourceGroupRequestRayConfigWorkerGroups struct {
+	// The allocation unit.
+	//
 	// example:
 	//
 	// 1
 	AllocateUnit *string `json:"AllocateUnit,omitempty" xml:"AllocateUnit,omitempty"`
+	// The name of the worker group.
+	//
 	// example:
 	//
 	// test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The maximum number of workers.
+	//
 	// example:
 	//
 	// 2
 	MaxWorkerQuantity *int32 `json:"MaxWorkerQuantity,omitempty" xml:"MaxWorkerQuantity,omitempty"`
+	// The minimum number of workers.
+	//
 	// example:
 	//
 	// 1
 	MinWorkerQuantity *int32 `json:"MinWorkerQuantity,omitempty" xml:"MinWorkerQuantity,omitempty"`
+	// The disk size of the worker node.
+	//
 	// example:
 	//
 	// 100G
 	WorkerDiskCapacity *string `json:"WorkerDiskCapacity,omitempty" xml:"WorkerDiskCapacity,omitempty"`
+	// The node specifications of the worker node.
+	//
 	// example:
 	//
 	// xlarge
 	WorkerSpecName *string `json:"WorkerSpecName,omitempty" xml:"WorkerSpecName,omitempty"`
+	// The resource type of the worker node.
+	//
 	// example:
 	//
 	// GPU
@@ -686,23 +1008,23 @@ func (s *CreateDBResourceGroupRequestRayConfigWorkerGroups) Validate() error {
 type CreateDBResourceGroupRequestRules struct {
 	// The name of the resource group.
 	//
-	// 	- The name can be up to 255 characters in length.
+	// - The name can be up to 255 characters in length.
 	//
-	// 	- The name must start with a letter or digit.
+	// - The name must start with a digit, an uppercase letter, or a lowercase letter.
 	//
-	// 	- The name can contain letters, digits, hyphens (-), and underscores (_).
+	// - The name can contain digits, uppercase letters, lowercase letters, hyphens (-), and underscores (_).
 	//
 	// example:
 	//
 	// test_group
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The execution duration of the query. Unit: milliseconds.
+	// The query execution time threshold. Unit: milliseconds (ms).
 	//
 	// example:
 	//
 	// 180000
 	QueryTime *string `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
-	// The name of the resource group to which you want to resubmit the query job.
+	// The name of the destination resource group.
 	//
 	// example:
 	//

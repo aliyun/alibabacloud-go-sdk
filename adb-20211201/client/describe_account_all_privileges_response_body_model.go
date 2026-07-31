@@ -16,9 +16,9 @@ type iDescribeAccountAllPrivilegesResponseBody interface {
 }
 
 type DescribeAccountAllPrivilegesResponseBody struct {
-	// Details of the permissions.
+	// Permission details.
 	Data *DescribeAccountAllPrivilegesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,15 +62,15 @@ func (s *DescribeAccountAllPrivilegesResponseBody) Validate() error {
 }
 
 type DescribeAccountAllPrivilegesResponseBodyData struct {
-	// Indicates the position where the results are truncated. When a value of `true` is returned for the `Truncated` parameter, this parameter is present and contains the value to use for the Marker parameter in a subsequent call.
+	// If the `Truncated` field in the response is `true`, pass this value in subsequent calls to retrieve the next set of results.
 	//
 	// example:
 	//
 	// 0573e74fd1ccb01739993a691e876074db6e1b6ad79f54115f0e98528432ba6a523cfec5780ade5189299cc3396f6ff7
 	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The permissions.
+	// List of permissions.
 	Result []*DescribeAccountAllPrivilegesResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// Indicates whether the results are truncated. If the results are truncated, a value of `true` is returned. In this case, you must call this operation again to obtain all the results until a value of `false` is returned for this parameter.
+	// If the response is truncated, this field is `true`. Continue calling this operation until this field becomes `false`.
 	//
 	// example:
 	//
@@ -127,15 +127,15 @@ func (s *DescribeAccountAllPrivilegesResponseBodyData) Validate() error {
 }
 
 type DescribeAccountAllPrivilegesResponseBodyDataResult struct {
-	// The objects on which the permission takes effect, including databases, tables, and columns. If Global is returned for the PrivilegeType parameter, an empty string is returned for this parameter.
+	// The permission object, represented as a trituple of database, table, and column. All fields are empty for Global-level permissions.
 	PrivilegeObject *DescribeAccountAllPrivilegesResponseBodyDataResultPrivilegeObject `json:"PrivilegeObject,omitempty" xml:"PrivilegeObject,omitempty" type:"Struct"`
-	// The permission level of the database account. You can call the `DescribeEnabledPrivileges` operation to query the permission level of the database account.
+	// The permission level, returned by the `DescribeEnabledPrivileges` operation.
 	//
 	// example:
 	//
 	// Global
 	PrivilegeType *string `json:"PrivilegeType,omitempty" xml:"PrivilegeType,omitempty"`
-	// The name of the permission, which is the same as the permission name returned by the `DescribeEnabledPrivileges` operation.
+	// List of permissions.
 	Privileges []*string `json:"Privileges,omitempty" xml:"Privileges,omitempty" type:"Repeated"`
 }
 
@@ -184,25 +184,25 @@ func (s *DescribeAccountAllPrivilegesResponseBodyDataResult) Validate() error {
 }
 
 type DescribeAccountAllPrivilegesResponseBodyDataResultPrivilegeObject struct {
-	// The name of the column.
+	// The column name.
 	//
 	// example:
 	//
 	// id
 	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// tdb1
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The description of the permission object.
+	// Description of the permission object.
 	//
 	// example:
 	//
 	// id of table
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//

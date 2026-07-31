@@ -46,23 +46,108 @@ type iOpenStructMvDetailModel interface {
 }
 
 type OpenStructMvDetailModel struct {
-	BaseTableInfos      []*OpenStructMvDetailModelBaseTableInfos `json:"BaseTableInfos,omitempty" xml:"BaseTableInfos,omitempty" type:"Repeated"`
-	BaseTableNames      [][]*string                              `json:"BaseTableNames,omitempty" xml:"BaseTableNames,omitempty" type:"Repeated"`
-	EnableDelayAlert    *int32                                   `json:"EnableDelayAlert,omitempty" xml:"EnableDelayAlert,omitempty"`
-	EnableFailureAlert  *int32                                   `json:"EnableFailureAlert,omitempty" xml:"EnableFailureAlert,omitempty"`
-	ExplicitHit         *int64                                   `json:"ExplicitHit,omitempty" xml:"ExplicitHit,omitempty"`
-	FirstRefreshTime    *string                                  `json:"FirstRefreshTime,omitempty" xml:"FirstRefreshTime,omitempty"`
-	ImplicitHit         *int64                                   `json:"ImplicitHit,omitempty" xml:"ImplicitHit,omitempty"`
-	IsInactive          *bool                                    `json:"IsInactive,omitempty" xml:"IsInactive,omitempty"`
-	LatencyTolerance    *int32                                   `json:"LatencyTolerance,omitempty" xml:"LatencyTolerance,omitempty"`
-	LocalSize           *int64                                   `json:"LocalSize,omitempty" xml:"LocalSize,omitempty"`
-	QueryRewriteEnabled *bool                                    `json:"QueryRewriteEnabled,omitempty" xml:"QueryRewriteEnabled,omitempty"`
-	RefreshInterval     *string                                  `json:"RefreshInterval,omitempty" xml:"RefreshInterval,omitempty"`
-	RefreshState        *string                                  `json:"RefreshState,omitempty" xml:"RefreshState,omitempty"`
-	RemoteSize          *int64                                   `json:"RemoteSize,omitempty" xml:"RemoteSize,omitempty"`
-	ResourceGroup       *string                                  `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	TableEngine         *string                                  `json:"TableEngine,omitempty" xml:"TableEngine,omitempty"`
-	UpdatedAt           *string                                  `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
+	// All direct parent base tables of the materialized view.
+	BaseTableInfos []*OpenStructMvDetailModelBaseTableInfos `json:"BaseTableInfos,omitempty" xml:"BaseTableInfos,omitempty" type:"Repeated"`
+	// All direct parent base tables of the materialized view.
+	BaseTableNames [][]*string `json:"BaseTableNames,omitempty" xml:"BaseTableNames,omitempty" type:"Repeated"`
+	// Indicates whether to enable alerting for refresh latency. Valid values:
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	//
+	// example:
+	//
+	// false
+	EnableDelayAlert *int32 `json:"EnableDelayAlert,omitempty" xml:"EnableDelayAlert,omitempty"`
+	// Indicates whether to enable alerting for refresh task failures. Valid values:
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	//
+	// example:
+	//
+	// false
+	EnableFailureAlert *int32 `json:"EnableFailureAlert,omitempty" xml:"EnableFailureAlert,omitempty"`
+	// The total number of explicit query hits in the last 7 days.
+	//
+	// example:
+	//
+	// 5
+	ExplicitHit *int64 `json:"ExplicitHit,omitempty" xml:"ExplicitHit,omitempty"`
+	// The time of the first refresh.
+	//
+	// example:
+	//
+	// 2025-01-01 09:00:00
+	FirstRefreshTime *string `json:"FirstRefreshTime,omitempty" xml:"FirstRefreshTime,omitempty"`
+	// The total number of implicit query hits in the last 7 days.
+	//
+	// example:
+	//
+	// 20
+	ImplicitHit *int64 `json:"ImplicitHit,omitempty" xml:"ImplicitHit,omitempty"`
+	// Indicates whether the materialized view has not been accessed by explicit or implicit queries for more than 30 days since its creation.
+	//
+	// example:
+	//
+	// false
+	IsInactive *bool `json:"IsInactive,omitempty" xml:"IsInactive,omitempty"`
+	// The refresh latency toleration, in minutes.
+	//
+	// example:
+	//
+	// 2
+	LatencyTolerance *int32 `json:"LatencyTolerance,omitempty" xml:"LatencyTolerance,omitempty"`
+	// The disk space that the materialized view occupies for hot data, in bytes.
+	//
+	// example:
+	//
+	// 1234
+	LocalSize *int64 `json:"LocalSize,omitempty" xml:"LocalSize,omitempty"`
+	// Whether query rewrite is enabled for the materialized view.
+	//
+	// example:
+	//
+	// false
+	QueryRewriteEnabled *bool `json:"QueryRewriteEnabled,omitempty" xml:"QueryRewriteEnabled,omitempty"`
+	// The refresh interval.
+	//
+	// example:
+	//
+	// (now() + INTERVAL \\"10\\" SECOND)
+	RefreshInterval *string `json:"RefreshInterval,omitempty" xml:"RefreshInterval,omitempty"`
+	// The refresh model of the materialized view.
+	//
+	// example:
+	//
+	// FAST
+	RefreshState *string `json:"RefreshState,omitempty" xml:"RefreshState,omitempty"`
+	// The disk space that the materialized view occupies for cold data, in bytes.
+	//
+	// example:
+	//
+	// 1234
+	RemoteSize *int64 `json:"RemoteSize,omitempty" xml:"RemoteSize,omitempty"`
+	// The resource group on which the refresh depends.
+	//
+	// example:
+	//
+	// user_default
+	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// The table engine.
+	//
+	// example:
+	//
+	// XUANWU
+	TableEngine *string `json:"TableEngine,omitempty" xml:"TableEngine,omitempty"`
+	// The time of the last refresh.
+	//
+	// example:
+	//
+	// 2025-01-01 10:00:00
+	UpdatedAt *string `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
 }
 
 func (s OpenStructMvDetailModel) String() string {
@@ -240,10 +325,30 @@ func (s *OpenStructMvDetailModel) Validate() error {
 }
 
 type OpenStructMvDetailModelBaseTableInfos struct {
-	BaseTableIsMv *bool   `json:"BaseTableIsMv,omitempty" xml:"BaseTableIsMv,omitempty"`
-	SchemaName    *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	TableEngine   *string `json:"TableEngine,omitempty" xml:"TableEngine,omitempty"`
-	TableName     *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// Whether the base table is a materialized view.
+	//
+	// example:
+	//
+	// false
+	BaseTableIsMv *bool `json:"BaseTableIsMv,omitempty" xml:"BaseTableIsMv,omitempty"`
+	// The database name.
+	//
+	// example:
+	//
+	// test_db
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The table engine.
+	//
+	// example:
+	//
+	// XUANWU
+	TableEngine *string `json:"TableEngine,omitempty" xml:"TableEngine,omitempty"`
+	// The table name.
+	//
+	// example:
+	//
+	// test_tbl
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s OpenStructMvDetailModelBaseTableInfos) String() string {

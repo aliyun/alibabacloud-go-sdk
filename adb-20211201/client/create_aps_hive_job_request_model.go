@@ -38,23 +38,23 @@ type iCreateApsHiveJobRequest interface {
 }
 
 type CreateApsHiveJobRequest struct {
-	// The advanced configurations.
+	// The advanced configuration.
 	//
 	// example:
 	//
 	// -
 	AdvancedConfig *string `json:"AdvancedConfig,omitempty" xml:"AdvancedConfig,omitempty"`
-	// The policy to handle tables with the same name in the destination cluster.
+	// The policy for handling databases and tables with the same name at the destination.
 	//
 	// example:
 	//
 	// Intercept: reports error and aborts.
 	//
-	// Ignore: ignores and continues migrating the relevant tables.
+	// Ignore: ignores and continues.
 	//
-	// Skip: skips related tables and only migrates other tables.
+	// Skip: skips relevant tables.
 	ConflictStrategy *string `json:"ConflictStrategy,omitempty" xml:"ConflictStrategy,omitempty"`
-	// The ID of the AnalyticDB for MySQL cluster.
+	// The AnalyticDB for MySQL cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type CreateApsHiveJobRequest struct {
 	//
 	// 40
 	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
-	// The number of AnalyticDB compute units (ACUs) required for data migration.
+	// The number of AnalyticDB compute units (ACUs) required for the migration.
 	//
 	// This parameter is required.
 	//
@@ -76,19 +76,19 @@ type CreateApsHiveJobRequest struct {
 	//
 	// 16
 	FullComputeUnit *string `json:"FullComputeUnit,omitempty" xml:"FullComputeUnit,omitempty"`
-	// The path of the destination data lakehouse in an Object Storage Service (OSS) bucket.
+	// The destination lakehouse address, which is a full OSS path.
 	//
 	// This parameter is required.
 	OssLocation *string `json:"OssLocation,omitempty" xml:"OssLocation,omitempty"`
-	// The number of tasks that are allowed in parallel.
+	// The number of parallel tasks.
 	//
 	// example:
 	//
 	// 8
 	Parallelism *int32 `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
-	// The region ID.
+	// The region ID of the O&M event.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the regions and zones supported by AnalyticDB for MySQL, including region IDs.
 	//
 	// This parameter is required.
 	//
@@ -104,13 +104,13 @@ type CreateApsHiveJobRequest struct {
 	//
 	// user_default
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	// The expression that allows objects to be synchronized.
+	// The expression that specifies the objects allowed for synchronization.
 	//
 	// example:
 	//
 	// *
 	SyncAllowExpression *string `json:"SyncAllowExpression,omitempty" xml:"SyncAllowExpression,omitempty"`
-	// The expression that denies objects to be synchronized.
+	// The expression that specifies the objects allowed for synchronization.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type CreateApsHiveJobRequest struct {
 	//
 	// OSS
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The name of the workload.
+	// The workload name.
 	//
 	// This parameter is required.
 	//

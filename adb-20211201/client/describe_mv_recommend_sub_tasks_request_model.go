@@ -30,7 +30,11 @@ type iDescribeMvRecommendSubTasksRequest interface {
 }
 
 type DescribeMvRecommendSubTasksRequest struct {
-	// Fixed system value (non-modifiable).
+	// A static value. This parameter cannot be modified.
+	//
+	// example:
+	//
+	// Modification is not supported.
 	ActionInner *string `json:"ActionInner,omitempty" xml:"ActionInner,omitempty"`
 	// The cluster ID.
 	//
@@ -38,19 +42,25 @@ type DescribeMvRecommendSubTasksRequest struct {
 	//
 	// am-bp1ub9grke1****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Fixed system value (non-modifiable).
+	// A static value. This parameter cannot be modified.
+	//
+	// example:
+	//
+	// Modification is not supported.
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The sorting field. Valid values for Type:
+	// The sorting criteria.
 	//
-	// 	- Asc.
+	// Valid values for \\`Type\\`:
 	//
-	// 	- Desc.
+	// - Asc
 	//
-	// Valid values for Field:
+	// - Desc
 	//
-	// 	- StartTime;
+	// Valid values for \\`Field\\`:
 	//
-	// 	- EndTime;
+	// - StartTime
+	//
+	// - EndTime
 	//
 	// example:
 	//
@@ -62,7 +72,7 @@ type DescribeMvRecommendSubTasksRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -80,7 +90,7 @@ type DescribeMvRecommendSubTasksRequest struct {
 	//
 	// 123
 	SubtaskId *int64 `json:"SubtaskId,omitempty" xml:"SubtaskId,omitempty"`
-	// The name of the recommendation task.
+	// The name of the materialized view recommendation task.
 	//
 	// example:
 	//

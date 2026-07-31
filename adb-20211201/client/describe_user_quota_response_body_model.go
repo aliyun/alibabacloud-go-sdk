@@ -26,7 +26,7 @@ type DescribeUserQuotaResponseBody struct {
 	//
 	// example:
 	//
-	// 512ACU
+	// 512 ACU
 	ElasticACU *string `json:"ElasticACU,omitempty" xml:"ElasticACU,omitempty"`
 	// The request ID.
 	//
@@ -38,13 +38,13 @@ type DescribeUserQuotaResponseBody struct {
 	//
 	// example:
 	//
-	// 48ACU
+	// 48 ACU
 	ReserverdCompteACU *string `json:"ReserverdCompteACU,omitempty" xml:"ReserverdCompteACU,omitempty"`
 	// The available reserved storage resources.
 	//
 	// example:
 	//
-	// 24ACU
+	// 24 ACU
 	ReserverdStorageACU *string `json:"ReserverdStorageACU,omitempty" xml:"ReserverdStorageACU,omitempty"`
 	// The number of available resource groups.
 	//

@@ -32,32 +32,62 @@ type iDescribePatternPerformanceResponseBody interface {
 }
 
 type DescribePatternPerformanceResponseBody struct {
+	// The client IP address that submitted the queries that match the sql pattern.
+	//
+	// example:
+	//
+	// 172.16.14.*
 	AccessIp *string `json:"AccessIp,omitempty" xml:"AccessIp,omitempty"`
-	// The end time of the query. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time is displayed in UTC.
+	// The end of the query time range. The time is in UTC and is formatted as *yyyy-MM-ddTHH:mmZ*.
 	//
 	// example:
 	//
 	// 2022-08-22T01:06:00Z
-	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FailedCount *int64  `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The queried performance metrics.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The number of failed executions for the sql pattern within the query time range.
+	//
+	// example:
+	//
+	// 1
+	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	// The performance metrics.
 	Performances []*DescribePatternPerformanceResponseBodyPerformances `json:"Performances,omitempty" xml:"Performances,omitempty" type:"Repeated"`
-	QueryCount   *int64                                                `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
+	// The number of executions for the sql pattern within the query time range.
+	//
+	// example:
+	//
+	// 1202
+	QueryCount *int64 `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
 	// F21AF487-B8C9-57E0-8E3A-A92BC3611FB6
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The SQL statement for the sql pattern.
+	//
+	// example:
+	//
+	// SELECT *nFROM HIVE.`ADB_EXTERNAL_TPCH_10GB`.`External_customer`nLIMIT ?
 	SQLPattern *string `json:"SQLPattern,omitempty" xml:"SQLPattern,omitempty"`
-	// The start time of the query. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time is displayed in UTC.
+	// The start of the query time range. The time is in UTC and is formatted as *yyyy-MM-ddTHH:mmZ*.
 	//
 	// example:
 	//
 	// 2022-08-21T02:15:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Tables    *string `json:"Tables,omitempty" xml:"Tables,omitempty"`
-	User      *string `json:"User,omitempty" xml:"User,omitempty"`
+	// The tables queried by the sql pattern.
+	//
+	// example:
+	//
+	// tpch_1g.part;tpch_1g.supplier;tpch_1g.lineitem;tpch_1g.partsupp;tpch_1g.orders;tpch_1g.nation
+	Tables *string `json:"Tables,omitempty" xml:"Tables,omitempty"`
+	// The database account that executes the SQL statements.
+	//
+	// example:
+	//
+	// test_user
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DescribePatternPerformanceResponseBody) String() string {
@@ -172,33 +202,33 @@ func (s *DescribePatternPerformanceResponseBody) Validate() error {
 }
 
 type DescribePatternPerformanceResponseBodyPerformances struct {
-	// The queried performance metric. Valid values:
+	// The performance metric. Valid values:
 	//
-	// 	- **AnalyticDB_PatternQueryCount**: the total number of queries executed in association with the SQL pattern.
+	// - **AnalyticDB_PatternQueryCount**: The total number of queries that match the sql pattern.
 	//
-	// 	- **AnalyticDB_PatternQueryTime**: the total amount of time consumed by the queries executed in association with the SQL pattern.
+	// - **AnalyticDB_PatternQueryTime**: The total time for queries that match the sql pattern.
 	//
-	// 	- **AnalyticDB_PatternExecutionTime**: the execution duration of the queries executed in association with the SQL pattern.
+	// - **AnalyticDB_PatternExecutionTime**: The total execution time of queries that match the sql pattern.
 	//
-	// 	- **AnalyticDB_PatternPeakMemory**: the peak memory usage of the queries executed in association with the SQL pattern.
+	// - **AnalyticDB_PatternPeakMemory**: The peak memory usage of queries that match the sql pattern.
 	//
-	// 	- **AnalyticDB_PatternScanSize**: the amount of data scanned in the queries executed in association with the SQL pattern.
+	// - **AnalyticDB_PatternScanSize**: The total data scan size of queries that match the sql pattern.
 	//
 	// example:
 	//
 	// AnalyticDB_PatternExecutionTime
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The values of the performance metrics.
+	// The time series data for the performance metric.
 	Series []*DescribePatternPerformanceResponseBodyPerformancesSeries `json:"Series,omitempty" xml:"Series,omitempty" type:"Repeated"`
-	// The unit of the performance metric. Valid values:
+	// The unit of the performance metric. The returned unit varies based on the value of `Key`:
 	//
-	// 	- If the performance metric is related to the query time (the value of `Key` is `AnalyticDB_PatternQueryTime` or `AnalyticDB_PatternExecutionTime`), **ms*	- is returned.
+	// - If `Key` is `AnalyticDB_PatternQueryTime` or `AnalyticDB_PatternExecutionTime`, the unit is **ms**.
 	//
-	// 	- If the performance metric is related to the peak memory usage (the value of `Key` is `AnalyticDB_PatternPeakMemory`), **MB*	- is returned.
+	// - If `Key` is `AnalyticDB_PatternPeakMemory`, the unit is **MB**.
 	//
-	// 	- If the performance metric is related to the amount of data scanned (the value of `Key` is `AnalyticDB_PatternScanSize`), **MB*	- is returned.
+	// - If `Key` is `AnalyticDB_PatternScanSize`, the unit is **MB**.
 	//
-	// 	- If the performance metric is related to the number of queries (the value of `Key` is `AnalyticDB_PatternQueryCount`), null is returned.
+	// - If `Key` is `AnalyticDB_PatternQueryCount`, this parameter is empty.
 	//
 	// example:
 	//
@@ -255,39 +285,39 @@ func (s *DescribePatternPerformanceResponseBodyPerformances) Validate() error {
 }
 
 type DescribePatternPerformanceResponseBodyPerformancesSeries struct {
-	// The name of the performance metric value. Valid values:
+	// The name of the performance value. The value of this parameter varies based on the value of `Key`:
 	//
-	// 	- If the value of `Key` is `AnalyticDB_PatternQueryCount`, `pattern_query_count` is returned, which indicates the number of executions of the SQL statements in association with the SQL pattern.
+	// - If `Key` is `AnalyticDB_PatternQueryCount`, this parameter returns `pattern_query_count`, which indicates the query count for the sql pattern.
 	//
-	// 	- If the value of `Key` is `AnalyticDB_PatternQueryTime`, the following values are returned:
+	// - If `Key` is `AnalyticDB_PatternQueryTime`, this parameter can be one of the following values:
 	//
-	//     	- `average_query_time`, which indicates the average total amount of time consumed by the SQL statements in association with the SQL pattern.
+	//   - `average_query_time`: the average total time of queries that match the sql pattern.
 	//
-	//     	- `max_query_time`, which indicates the maximum total amount of time consumed by the SQL statements in association with the SQL pattern.
+	//   - `max_query_time`: the maximum total time of queries that match the sql pattern.
 	//
-	// 	- If the value of `Key` is `AnalyticDB_PatternExecutionTime`, the following values are returned:
+	// - If `Key` is `AnalyticDB_PatternExecutionTime`, this parameter can be one of the following values:
 	//
-	//     	- `average_execution_time`, which indicates the average execution duration of the SQL statements in association with the SQL pattern.
+	//   - `average_execution_time`: the average execution time of queries that match the sql pattern.
 	//
-	//     	- `max_execution_time`, which indicates the maximum execution duration of the SQL statements in association with the SQL pattern.
+	//   - `max_execution_time`: the maximum execution time of queries that match the sql pattern.
 	//
-	// 	- If the value of `Key` is `AnalyticDB_PatternPeakMemory`, the following values are returned:
+	// - If `Key` is `AnalyticDB_PatternPeakMemory`, this parameter can be one of the following values:
 	//
-	//     	- `average_peak_memory`, which indicates the average peak memory usage of the SQL statements in association with the SQL pattern.
+	//   - `average_peak_memory`: the average peak memory usage of queries that match the sql pattern.
 	//
-	//     	- `max_peak_memory`, which indicates the maximum peak memory usage of the SQL statements in association with the SQL pattern.
+	//   - `max_peak_memory`: the maximum peak memory usage of queries that match the sql pattern.
 	//
-	// 	- If the value of `Key` is `AnalyticDB_PatternScanSize`, the following values are returned:
+	// - If `Key` is `AnalyticDB_PatternScanSize`, this parameter can be one of the following values:
 	//
-	//     	- `average_scan_size`, which indicates the average amount of data scanned by the SQL statements in association with the SQL pattern.
+	//   - `average_scan_size`: the average data scan size of queries that match the sql pattern.
 	//
-	//     	- `max_scan_size`, which indicates the maximum amount of data scanned by the SQL statements in association with the SQL pattern.
+	//   - `max_scan_size`: the maximum data scan size of queries that match the sql pattern.
 	//
 	// example:
 	//
 	// max_query_time
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The values of the performance metric.
+	// The list of performance values.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

@@ -28,23 +28,23 @@ type iDescribeDiagnosisSQLInfoRequest interface {
 type DescribeDiagnosisSQLInfoRequest struct {
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the cluster IDs of AnalyticDB for MySQL clusters in a specific region.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// amv-bp1r053byu48p
+	// amv-bp1r053by****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The language of file titles and error messages. Valid values:
+	// The language of the file title and error messages in the downloaded file. Valid values:
 	//
-	// 	- **zh**: simplified Chinese.
+	// - **zh**: simplified Chinese.
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
-	// 	- **ja**: Japanese.
+	// - **ja**: Japanese.
 	//
-	// 	- **zh-tw**: traditional Chinese.
+	// - **zh-tw**: traditional Chinese.
 	//
 	// example:
 	//
@@ -52,23 +52,23 @@ type DescribeDiagnosisSQLInfoRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The query ID.
 	//
-	// >  You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/308207.html) operation to query the diagnostic information about SQL statements for an AnalyticDB for MySQL cluster, including the query ID.
+	// > You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/308207.html) operation to query the SQL summary information of a specific AnalyticDB for MySQL cluster, including the query ID.
 	//
 	// example:
 	//
-	// 2021070216432217201616806503453
+	// 20210702164322172016168****
 	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	// The IP address and port number of the AnalyticDB for MySQL frontend node on which the SQL statement is executed.
+	// The IP address and port number of the AnalyticDB for MySQL frontend node that executes the SQL statement.
 	//
-	// >  You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/308207.html) operation to query the diagnostic information about SQL statements for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster, including the IP address and port number of the frontend node.
+	// > You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/308207.html) operation to query the SQL summary information of a specific AnalyticDB for MySQL cluster, including the IP address and port number of the frontend node.
 	//
 	// example:
 	//
 	// 192.45.***.***:3145
 	ProcessRcHost *string `json:"ProcessRcHost,omitempty" xml:"ProcessRcHost,omitempty"`
-	// The execution start time of the SQL statement. Set the time to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The start time of the SQL statement execution. Specify the value as a UNIX timestamp in milliseconds.
 	//
-	// >  You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/308207.html) operation to query the diagnostic information about SQL statements for an AnalyticDB for MySQL cluster, including the execution start time of the SQL statement.
+	// > You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/308207.html) operation to query the SQL summary information of a specific AnalyticDB for MySQL cluster, including the start time of the SQL statement execution.
 	//
 	// example:
 	//
@@ -76,21 +76,21 @@ type DescribeDiagnosisSQLInfoRequest struct {
 	ProcessStartTime *int64 `json:"ProcessStartTime,omitempty" xml:"ProcessStartTime,omitempty"`
 	// The status of the SQL statement. Valid values:
 	//
-	// 	- **running**
+	// - **running**: The SQL statement is being executed.
 	//
-	// 	- **finished**
+	// - **finished**: The SQL statement has been executed.
 	//
-	// 	- **failed**
+	// - **failed**: The SQL statement failed to be executed.
 	//
-	// >  You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/308207.html) operation to query the diagnostic information about SQL statements for an AnalyticDB for MySQL cluster, including the status of the SQL statement.
+	// > You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/308207.html) operation to query the SQL summary information of a specific AnalyticDB for MySQL cluster, including the status of the SQL statement.
 	//
 	// example:
 	//
 	// running
 	ProcessState *string `json:"ProcessState,omitempty" xml:"ProcessState,omitempty"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the region IDs supported by AnalyticDB for MySQL.
 	//
 	// This parameter is required.
 	//

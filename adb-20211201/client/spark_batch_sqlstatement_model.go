@@ -30,41 +30,79 @@ type iSparkBatchSQLStatement interface {
 }
 
 type SparkBatchSQLStatement struct {
+	// The ID of the Spark job that executes the SQL statement.
+	//
 	// example:
 	//
 	// s20240122jsdx****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The text of the SQL statement.
+	//
 	// example:
 	//
 	// SELECT 100
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The execution end timestamp of the SQL statement.
+	//
 	// example:
 	//
 	// 1723521767000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The error message for the SQL statement execution.
+	//
 	// example:
 	//
 	// table is not found
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The execution result of the SQL statement. The content is in the response format of the `DataFrame Show` statement in Spark.
+	//
 	// example:
 	//
-	// JSON格式执行结果集
+	// +---+-----+
+	//
+	// |age| name|
+	//
+	// +---+-----+
+	//
+	// | 14|  Tom|
+	//
+	// | 23|Alice|
+	//
+	// +---+-----+
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The Object Storage Service (OSS) location where the execution results of the SQL statement are stored. If you do not specify a storage location, null is returned.
+	//
 	// example:
 	//
 	// oss://yourbucket/result.json
 	ResultUri *string `json:"ResultUri,omitempty" xml:"ResultUri,omitempty"`
+	// The execution start timestamp of the SQL statement.
+	//
 	// example:
 	//
 	// 1723521767000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The execution status of the SQL statement. Valid values:
+	//
+	// 	- FAILED
+	//
+	// 	- RUNNING
+	//
+	// 	- CANCELED
+	//
+	// 	- PENDING
+	//
+	// 	- FINISHED
+	//
 	// example:
 	//
 	// RUNNING
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The ID of the SQL statement.
+	//
 	// example:
 	//
-	// amv-20240711-stmt
+	// sq1723521767****-0001
 	StatementId *string `json:"StatementId,omitempty" xml:"StatementId,omitempty"`
 }
 

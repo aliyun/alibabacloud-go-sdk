@@ -24,12 +24,38 @@ type iOpenStructMVRecommendResultModel interface {
 }
 
 type OpenStructMVRecommendResultModel struct {
-	AcceleratedQueriesCount   *int64                              `json:"AcceleratedQueriesCount,omitempty" xml:"AcceleratedQueriesCount,omitempty"`
-	BaseTables                []*OpenStructMvBaseTableDetailModel `json:"BaseTables,omitempty" xml:"BaseTables,omitempty" type:"Repeated"`
-	SavedScanbytes            *int64                              `json:"SavedScanbytes,omitempty" xml:"SavedScanbytes,omitempty"`
-	Subquery                  *string                             `json:"Subquery,omitempty" xml:"Subquery,omitempty"`
-	SubqueryId                *int64                              `json:"SubqueryId,omitempty" xml:"SubqueryId,omitempty"`
-	SupportIncrementalRefresh *bool                               `json:"SupportIncrementalRefresh,omitempty" xml:"SupportIncrementalRefresh,omitempty"`
+	// The number of accelerated queries.
+	//
+	// example:
+	//
+	// 32
+	AcceleratedQueriesCount *int64 `json:"AcceleratedQueriesCount,omitempty" xml:"AcceleratedQueriesCount,omitempty"`
+	// The base table associated with the subquery.
+	BaseTables []*OpenStructMvBaseTableDetailModel `json:"BaseTables,omitempty" xml:"BaseTables,omitempty" type:"Repeated"`
+	// Estimated bytes scanned reduction by current materialized view from correlated parent queries (posterior calculation).
+	//
+	// example:
+	//
+	// 321321223
+	SavedScanbytes *int64 `json:"SavedScanbytes,omitempty" xml:"SavedScanbytes,omitempty"`
+	// The extracted public subquery.
+	//
+	// example:
+	//
+	// SELECT 	- FROM demo.tbl
+	Subquery *string `json:"Subquery,omitempty" xml:"Subquery,omitempty"`
+	// The ID of the subquery.
+	//
+	// example:
+	//
+	// 1
+	SubqueryId *int64 `json:"SubqueryId,omitempty" xml:"SubqueryId,omitempty"`
+	// Whether the current subquery supports incremental refresh.
+	//
+	// example:
+	//
+	// true
+	SupportIncrementalRefresh *bool `json:"SupportIncrementalRefresh,omitempty" xml:"SupportIncrementalRefresh,omitempty"`
 }
 
 func (s OpenStructMVRecommendResultModel) String() string {

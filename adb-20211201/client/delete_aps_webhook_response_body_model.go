@@ -51,6 +51,10 @@ type DeleteApsWebhookResponseBody struct {
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Operation succeeded
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The unique ID of the request.
 	//

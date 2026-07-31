@@ -18,8 +18,13 @@ type iDescribeDownloadRecordsResponseBody interface {
 }
 
 type DescribeDownloadRecordsResponseBody struct {
+	// The authentication failure message.
+	//
+	// example:
+	//
+	// Authentication failed.
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The queried download tasks.
+	// A list of download tasks.
 	Records []*DescribeDownloadRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -78,13 +83,13 @@ func (s *DescribeDownloadRecordsResponseBody) Validate() error {
 }
 
 type DescribeDownloadRecordsResponseBodyRecords struct {
-	// The download job ID.
+	// The ID of the download task.
 	//
 	// example:
 	//
 	// 636890
 	DownloadId *int64 `json:"DownloadId,omitempty" xml:"DownloadId,omitempty"`
-	// The error message returned if the download job failed.
+	// The exception message returned if the download task fails.
 	//
 	// example:
 	//
@@ -96,19 +101,19 @@ type DescribeDownloadRecordsResponseBodyRecords struct {
 	//
 	// 20210806094635-20210806095135
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The status of the download job. Valid values:
+	// The task status. Valid values:
 	//
-	// 	- **running**
+	// - **running**: The task is in progress.
 	//
-	// 	- **finished**
+	// - **finished**: The task is complete.
 	//
-	// 	- **failed**
+	// - **failed**: The task failed.
 	//
 	// example:
 	//
 	// finished
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The download URL of the file.
+	// The download URL of the result file.
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 

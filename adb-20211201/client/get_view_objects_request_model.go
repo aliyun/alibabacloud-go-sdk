@@ -40,25 +40,25 @@ type GetViewObjectsRequest struct {
 	//
 	// am-bp1xxxxxxxx47
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The owner of the view.
+	// The owner.
 	//
 	// example:
 	//
 	// admin
 	FilterOwner *string `json:"FilterOwner,omitempty" xml:"FilterOwner,omitempty"`
-	// The name of the view.
+	// The view name.
 	//
 	// example:
 	//
 	// test_filter
 	FilterViewName *string `json:"FilterViewName,omitempty" xml:"FilterViewName,omitempty"`
-	// The type of the view.
+	// The view type.
 	//
 	// Valid values:
 	//
-	// \\-VIRTUAL_VIEW
+	// - VIRTUAL_VIEW
 	//
-	// \\-MATERIALIZED_VIEW
+	// - MATERIALIZED_VIEW
 	//
 	// Default value: null.
 	//
@@ -66,17 +66,21 @@ type GetViewObjectsRequest struct {
 	//
 	// VIRTUAL_VIEW
 	FilterViewType *string `json:"FilterViewType,omitempty" xml:"FilterViewType,omitempty"`
-	// The order in which you want to sort the query results. Valid values for Type:
+	// The sorting field.
 	//
-	// 	- Asc
+	// Valid values for Type:
 	//
-	// 	- Desc
+	// - Asc
 	//
-	// Valid values for Field: -ViewName
+	// - Desc
 	//
-	// \\-CreateTime
+	// Valid values for Field:
 	//
-	// \\-UpdateTime
+	// - ViewName
+	//
+	// - CreateTime
+	//
+	// - UpdateTime
 	//
 	// Default value: {"Type": "Desc","Field": "ViewName"}.
 	//
@@ -92,17 +96,17 @@ type GetViewObjectsRequest struct {
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// 	- **30*	- (default)
+	// 	- **30*	- (default).
 	//
-	// 	- **50**
+	// 	- **50**.
 	//
-	// 	- **100**
+	// 	- **100**.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -110,12 +114,14 @@ type GetViewObjectsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// adb_demo
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// Specifies whether to display the base table information of materialized views.
+	//
 	// example:
 	//
 	// true

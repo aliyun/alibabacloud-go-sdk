@@ -24,13 +24,13 @@ type iCreateApsWebhookResponseBody interface {
 }
 
 type CreateApsWebhookResponseBody struct {
-	// The code returned for the request.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned result.
+	// The returned data.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type CreateApsWebhookResponseBody struct {
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
