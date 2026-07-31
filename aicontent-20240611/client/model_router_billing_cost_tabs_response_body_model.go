@@ -34,7 +34,7 @@ type ModelRouterBillingCostTabsResponseBody struct {
 	//
 	// []
 	Data []*CostTabDTO `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The error code.
+	// The fault message code.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ModelRouterBillingCostTabsResponseBody struct {
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -52,13 +52,13 @@ type ModelRouterBillingCostTabsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The maximum number of results returned on a single page.
+	// The maximum number of results.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token to retrieve the next page of results.
+	// nextToken
 	//
 	// example:
 	//

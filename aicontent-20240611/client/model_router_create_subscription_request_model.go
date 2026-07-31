@@ -20,18 +20,30 @@ type iModelRouterCreateSubscriptionRequest interface {
 }
 
 type ModelRouterCreateSubscriptionRequest struct {
+	// The balance pool to which the recharge is applied. Valid values:
+	//
+	// - permanent: the permanent balance pool.
+	//
+	// - monthly: the monthly balance pool.
+	//
 	// example:
 	//
 	// permanent
 	BalanceType *string `json:"balanceType,omitempty" xml:"balanceType,omitempty"`
+	// The effective period, in UNIX timestamp (seconds). Range: from 00:00 of today to 00:00 of the first day of the next month (Asia/Shanghai).
+	//
 	// example:
 	//
 	// 1719792000
 	EffectiveTime *int64 `json:"effectiveTime,omitempty" xml:"effectiveTime,omitempty"`
+	// The idempotency key. UUID v4 format without hyphens is recommended. This prevents duplicate subscription creation.
+	//
 	// example:
 	//
 	// 550e8400e29b41d4a716446655440000
 	IdempotencyKey *string `json:"idempotencyKey,omitempty" xml:"idempotencyKey,omitempty"`
+	// The subscription recharge amount.
+	//
 	// example:
 	//
 	// 100.00

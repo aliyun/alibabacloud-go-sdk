@@ -24,13 +24,13 @@ type iModelRouterDeleteModelResponseBody interface {
 }
 
 type ModelRouterDeleteModelResponseBody struct {
-	// Indicates if the model was successfully deleted.
+	// Indicates whether the model was deleted.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
-	// The error code.
+	// The fault message code.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ModelRouterDeleteModelResponseBody struct {
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -54,7 +54,7 @@ type ModelRouterDeleteModelResponseBody struct {
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the API call was processed successfully.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

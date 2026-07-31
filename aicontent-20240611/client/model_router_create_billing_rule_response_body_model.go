@@ -24,9 +24,9 @@ type iModelRouterCreateBillingRuleResponseBody interface {
 }
 
 type ModelRouterCreateBillingRuleResponseBody struct {
-	// Contains the details of the billing rule.
+	// The response data.
 	Data *ModelRouterCreateBillingRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error code.
+	// The fault code.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type ModelRouterCreateBillingRuleResponseBody struct {
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -136,31 +136,31 @@ type ModelRouterCreateBillingRuleResponseBodyData struct {
 	//
 	// token_tiered
 	BillingType *string `json:"billingType,omitempty" xml:"billingType,omitempty"`
-	// The delete marker.
+	// The deletion tag.
 	//
 	// example:
 	//
 	// 0
 	DeleteTag *int32 `json:"deleteTag,omitempty" xml:"deleteTag,omitempty"`
-	// The effective time of the rule.
+	// The effective period.
 	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	EffectiveTime *string `json:"effectiveTime,omitempty" xml:"effectiveTime,omitempty"`
-	// The expiration time of the rule.
+	// The expiration time.
 	//
 	// example:
 	//
 	// 2025-01-01T00:00:00Z
 	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	// The creation time of the rule.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The modification time of the rule.
+	// The modification time.
 	//
 	// example:
 	//
@@ -202,13 +202,13 @@ type ModelRouterCreateBillingRuleResponseBodyData struct {
 	//
 	// {}
 	PricingConfig interface{} `json:"pricingConfig,omitempty" xml:"pricingConfig,omitempty"`
-	// The provider identifier.
+	// The vendor identifier.
 	//
 	// example:
 	//
 	// alibaba
 	Symbol *string `json:"symbol,omitempty" xml:"symbol,omitempty"`
-	// The version of the rule.
+	// The version number.
 	//
 	// example:
 	//

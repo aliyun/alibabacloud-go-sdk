@@ -16,13 +16,13 @@ type iModelRouterBillingCostTabsRequest interface {
 }
 
 type ModelRouterBillingCostTabsRequest struct {
-	// Specifies the maximum number of results to return.
+	// The maximum number of results.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token to retrieve the next page of results.
+	// nextToken
 	//
 	// example:
 	//

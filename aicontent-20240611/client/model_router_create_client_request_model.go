@@ -11,6 +11,8 @@ type iModelRouterCreateClientRequest interface {
 	GoString() string
 	SetAddress(v string) *ModelRouterCreateClientRequest
 	GetAddress() *string
+	SetAllowedModelGroupConfig(v string) *ModelRouterCreateClientRequest
+	GetAllowedModelGroupConfig() *string
 	SetAllowedModels(v string) *ModelRouterCreateClientRequest
 	GetAllowedModels() *string
 	SetContact(v string) *ModelRouterCreateClientRequest
@@ -30,9 +32,15 @@ type ModelRouterCreateClientRequest struct {
 	//
 	// example:
 	//
-	// 杭州市
+	// Hangzhou
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
-	// A comma-separated list of model IDs that the client can use. If this parameter is empty, the client can use all available models.
+	// The allowed model group configuration in JSON string format: {"model_ids":[101],"group_ids":["mg_xxx"]}. If both this field and allowedModels are specified, this field takes precedence.
+	//
+	// example:
+	//
+	// {"model_ids":[101],"group_ids":["mg_xxx"]}
+	AllowedModelGroupConfig *string `json:"allowedModelGroupConfig,omitempty" xml:"allowedModelGroupConfig,omitempty"`
+	// The list of allowed model IDs, separated by commas. An empty value indicates all models are allowed.
 	//
 	// example:
 	//
@@ -44,25 +52,29 @@ type ModelRouterCreateClientRequest struct {
 	//
 	// 13800138000
 	Contact *string `json:"contact,omitempty" xml:"contact,omitempty"`
+	// The discount coefficient. A value of 1.0 indicates no discount, and 0.8 indicates a 20% discount. Default value: 1.0.
+	//
 	// example:
 	//
 	// 1.0
 	Discount *float64 `json:"discount,omitempty" xml:"discount,omitempty"`
-	// The client name.
+	// The customer name.
 	//
 	// example:
 	//
-	// 我的客户
+	// MyCustomer
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the parent department. If not specified, a top-level department is created.
+	//
 	// example:
 	//
-	// 1
+	// 292090
 	ParentId *int64 `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	// Additional remarks.
+	// The remarks.
 	//
 	// example:
 	//
-	// 备注
+	// Remarks
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 
@@ -76,6 +88,10 @@ func (s ModelRouterCreateClientRequest) GoString() string {
 
 func (s *ModelRouterCreateClientRequest) GetAddress() *string {
 	return s.Address
+}
+
+func (s *ModelRouterCreateClientRequest) GetAllowedModelGroupConfig() *string {
+	return s.AllowedModelGroupConfig
 }
 
 func (s *ModelRouterCreateClientRequest) GetAllowedModels() *string {
@@ -104,6 +120,11 @@ func (s *ModelRouterCreateClientRequest) GetRemark() *string {
 
 func (s *ModelRouterCreateClientRequest) SetAddress(v string) *ModelRouterCreateClientRequest {
 	s.Address = &v
+	return s
+}
+
+func (s *ModelRouterCreateClientRequest) SetAllowedModelGroupConfig(v string) *ModelRouterCreateClientRequest {
+	s.AllowedModelGroupConfig = &v
 	return s
 }
 

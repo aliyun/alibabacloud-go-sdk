@@ -24,23 +24,34 @@ type iModelRouterListSubscriptionsResponseBody interface {
 }
 
 type ModelRouterListSubscriptionsResponseBody struct {
+	// The subscription information.
 	Data *ModelRouterListSubscriptionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The fault error message encoding.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error.
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,11 +130,16 @@ func (s *ModelRouterListSubscriptionsResponseBody) Validate() error {
 }
 
 type ModelRouterListSubscriptionsResponseBodyData struct {
+	// The list of subscription information.
 	List []*SubscriptionDTO `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// The maximum number of results per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token. Do not specify this parameter for the first query. For subsequent queries, specify the value returned from the previous query. Set to "" when no more data is available. Set to "5" when there is a next page.
+	//
 	// example:
 	//
 	// 5" or ""

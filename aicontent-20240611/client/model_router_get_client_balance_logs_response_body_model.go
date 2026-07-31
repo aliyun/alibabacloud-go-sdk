@@ -28,19 +28,19 @@ type iModelRouterGetClientBalanceLogsResponseBody interface {
 }
 
 type ModelRouterGetClientBalanceLogsResponseBody struct {
-	// The returned data.
+	// The response data.
 	Data *ModelRouterGetClientBalanceLogsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error code returned on failure.
+	// The fault code.
 	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	// The error message returned on failure.
+	// The error message.
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -48,13 +48,13 @@ type ModelRouterGetClientBalanceLogsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The maximum number of entries returned.
+	// The maximum number of entries to return.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token for the next page of results. An empty value indicates that no more results are available.
+	// nextToken
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ func (s *ModelRouterGetClientBalanceLogsResponseBody) Validate() error {
 }
 
 type ModelRouterGetClientBalanceLogsResponseBodyData struct {
-	// A list of balance change log entries.
+	// The list of balance change logs.
 	List []*ClientBalanceLogDTO `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
 	// The current page number.
 	//
@@ -172,13 +172,13 @@ type ModelRouterGetClientBalanceLogsResponseBodyData struct {
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of matching entries.
+	// The total number of entries.
 	//
 	// example:
 	//

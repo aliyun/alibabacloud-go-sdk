@@ -40,7 +40,7 @@ type ModelRouterCreateBalanceTransactionResponseBody struct {
 	//
 	// example:
 	//
-	// Unknown error.
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//

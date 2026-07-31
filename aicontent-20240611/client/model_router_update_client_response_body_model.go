@@ -24,13 +24,13 @@ type iModelRouterUpdateClientResponseBody interface {
 }
 
 type ModelRouterUpdateClientResponseBody struct {
-	// The returned data object.
+	// The data object.
 	//
 	// example:
 	//
 	// []
 	Data *ClientDTO `json:"data,omitempty" xml:"data,omitempty"`
-	// The error code.
+	// The fault code.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ModelRouterUpdateClientResponseBody struct {
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//

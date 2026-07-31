@@ -30,15 +30,15 @@ type ModelRouterCreateBalanceTransactionRequest struct {
 	Amount *float64 `json:"amount,omitempty" xml:"amount,omitempty"`
 	// The target balance pool type. Default value: permanent. Valid values:
 	//
-	// - permanent: permanent balance pool (the amount never expires).
+	// - permanent: permanent balance pool. The balance never expires.
 	//
-	// - monthly: monthly balance pool (automatically reset to zero at the beginning of each month).
+	// - monthly: monthly balance pool. The balance is automatically reset to zero at the beginning of each month.
 	//
 	// example:
 	//
 	// amount
 	BalanceType *string `json:"balanceType,omitempty" xml:"balanceType,omitempty"`
-	// The idempotency key. UUID v4 format is recommended. Maximum length: 32 characters. Repeated submissions with the same key are not executed again.
+	// The idempotency key. UUID v4 format is recommended. Maximum length: 32 characters. Duplicate submissions with the same key are not executed repeatedly.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ModelRouterCreateBalanceTransactionRequest struct {
 	//
 	// example:
 	//
-	// Top-up.
+	// Top-up
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 	// The transaction type.
 	//

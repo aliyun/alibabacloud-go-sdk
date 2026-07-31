@@ -40,25 +40,25 @@ type iModelRouterQueryObservationMetricsRequest interface {
 }
 
 type ModelRouterQueryObservationMetricsRequest struct {
-	// The API Key ID to use for filtering the results.
+	// The API key ID used to filter the results.
 	//
 	// example:
 	//
 	// 1
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
-	// The client ID to use for filtering the results.
+	// The client ID used to filter the results.
 	//
 	// example:
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
-	// The end time of a custom time range for the query.
+	// The custom end time.
 	//
 	// example:
 	//
 	// 2024-01-02T00:00:00Z
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The field to use for grouping the results.
+	// The field by which to group the results.
 	//
 	// example:
 	//
@@ -70,55 +70,55 @@ type ModelRouterQueryObservationMetricsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The model ID to use for filtering the results.
+	// The model ID used to filter the results.
 	//
 	// example:
 	//
 	// 1
 	ModelId *int64 `json:"modelId,omitempty" xml:"modelId,omitempty"`
-	// Specifies whether to return the total count of results.
+	// Specifies whether to return the total count.
 	//
 	// example:
 	//
 	// true
 	NeedTotalCount *bool `json:"needTotalCount,omitempty" xml:"needTotalCount,omitempty"`
-	// The token used to retrieve the next page of results, obtained from the previous response.
+	// The token for the next query. An empty value indicates the last page.
 	//
 	// example:
 	//
 	// 2
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The field to use for sorting the results.
+	// The field by which to sort the results.
 	//
 	// example:
 	//
 	// resourceId
 	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
-	// The sort order. Valid values: `ASC` (ascending) and `DESC` (descending).
+	// The sort direction.
 	//
 	// example:
 	//
 	// DESC
 	OrderDirection *string `json:"orderDirection,omitempty" xml:"orderDirection,omitempty"`
-	// The page number to retrieve.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	// The number of results to return per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The start time of a custom time range for the query.
+	// The custom start time.
 	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The time range for the query. Valid values: `1h`, `6h`, `24h`, `7d`, and `30d`.
+	// The time range for the query. Valid values: 1h, 6h, 24h, 7d, and 30d.
 	//
 	// example:
 	//

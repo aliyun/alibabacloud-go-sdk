@@ -2274,7 +2274,62 @@ func (client *Client) ListTextbookAssistantSceneDetailsWithContext(ctx context.C
 
 // Summary:
 //
-// Retrieves the tab configuration for usage monitoring.
+// Binds model groups to departments in batches.
+//
+// Description:
+//
+// Binds model groups to departments in batches.
+//
+// @param request - ModelRouterBatchBindModelGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterBatchBindModelGroupResponse
+func (client *Client) ModelRouterBatchBindModelGroupWithContext(ctx context.Context, request *ModelRouterBatchBindModelGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterBatchBindModelGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AllowedModelGroupConfig) {
+		body["allowedModelGroupConfig"] = request.AllowedModelGroupConfig
+	}
+
+	if !dara.IsNil(request.ClientIdList) {
+		body["clientIdList"] = request.ClientIdList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterBatchBindModelGroup"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/batch-bind-model-group"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterBatchBindModelGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the usage monitoring tab configuration.
 //
 // @param request - ModelRouterBillingCostTabsRequest
 //
@@ -2325,7 +2380,7 @@ func (client *Client) ModelRouterBillingCostTabsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Generates a chat completion.
+// Initiates a chat conversation.
 //
 // @param request - ModelRouterChatCompletionsRequest
 //
@@ -2342,7 +2397,7 @@ func (client *Client) ModelRouterChatCompletionsWithSSECtx(ctx context.Context, 
 
 // Summary:
 //
-// Generates a chat completion.
+// Initiates a chat conversation.
 //
 // @param request - ModelRouterChatCompletionsRequest
 //
@@ -2384,7 +2439,7 @@ func (client *Client) ModelRouterChatCompletionsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Configures balance throttling for a department.
+// Enables balance-based throttling for a department.
 //
 // @param request - ModelRouterConfigureClientBalanceRequest
 //
@@ -2472,7 +2527,7 @@ func (client *Client) ModelRouterCopyApiKeyWithContext(ctx context.Context, id *
 
 // Summary:
 //
-// API key management / Create an API key
+// Creates an API key.
 //
 // @param request - ModelRouterCreateApiKeyRequest
 //
@@ -2520,10 +2575,6 @@ func (client *Client) ModelRouterCreateApiKeyWithContext(ctx context.Context, re
 // Summary:
 //
 // Creates a balance transaction for customer management.
-//
-// Description:
-//
-// This operation is deprecated. Do not use it.
 //
 // @param request - ModelRouterCreateBalanceTransactionRequest
 //
@@ -2586,7 +2637,7 @@ func (client *Client) ModelRouterCreateBalanceTransactionWithContext(ctx context
 
 // Summary:
 //
-// Billing Management/Create Billing Rule
+// Creates a billing rule.
 //
 // @param request - ModelRouterCreateBillingRuleRequest
 //
@@ -2653,7 +2704,7 @@ func (client *Client) ModelRouterCreateBillingRuleWithContext(ctx context.Contex
 
 // Summary:
 //
-// Client management / Create client
+// Creates a customer.
 //
 // @param request - ModelRouterCreateClientRequest
 //
@@ -2672,6 +2723,10 @@ func (client *Client) ModelRouterCreateClientWithContext(ctx context.Context, re
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Address) {
 		body["address"] = request.Address
+	}
+
+	if !dara.IsNil(request.AllowedModelGroupConfig) {
+		body["allowedModelGroupConfig"] = request.AllowedModelGroupConfig
 	}
 
 	if !dara.IsNil(request.AllowedModels) {
@@ -2724,7 +2779,7 @@ func (client *Client) ModelRouterCreateClientWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Conversation management / Create conversation
+// Creates a conversation.
 //
 // @param request - ModelRouterCreateConversationRequest
 //
@@ -2779,7 +2834,7 @@ func (client *Client) ModelRouterCreateConversationWithContext(ctx context.Conte
 
 // Summary:
 //
-// Creates a model.
+// Performs model creation.
 //
 // @param request - ModelRouterCreateModelRequest
 //
@@ -2870,11 +2925,62 @@ func (client *Client) ModelRouterCreateModelWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 客户管理/创建周期充值订阅
+// Creates a manual model group.
 //
 // Description:
 //
-// 该接口已弃用，请勿使用
+// Creates a manual model group.
+//
+// @param request - ModelRouterCreateModelGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterCreateModelGroupResponse
+func (client *Client) ModelRouterCreateModelGroupWithContext(ctx context.Context, request *ModelRouterCreateModelGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterCreateModelGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ModelList) {
+		body["modelList"] = request.ModelList
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterCreateModelGroup"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/model-groups"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterCreateModelGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a periodic recharge subscription for customer management.
 //
 // @param request - ModelRouterCreateSubscriptionRequest
 //
@@ -2933,7 +3039,7 @@ func (client *Client) ModelRouterCreateSubscriptionWithContext(ctx context.Conte
 
 // Summary:
 //
-// API Key Management / Delete API Key
+// Deletes an API key.
 //
 // @param headers - map
 //
@@ -2966,7 +3072,7 @@ func (client *Client) ModelRouterDeleteApiKeyWithContext(ctx context.Context, id
 
 // Summary:
 //
-// Deletes a client.
+// Deletes a customer.
 //
 // @param headers - map
 //
@@ -2999,7 +3105,7 @@ func (client *Client) ModelRouterDeleteClientWithContext(ctx context.Context, id
 
 // Summary:
 //
-// Conversation management/Delete conversation
+// Deletes a conversation.
 //
 // @param headers - map
 //
@@ -3032,7 +3138,7 @@ func (client *Client) ModelRouterDeleteConversationWithContext(ctx context.Conte
 
 // Summary:
 //
-// Model Management / Delete Model
+// Deletes a model.
 //
 // @param headers - map
 //
@@ -3055,6 +3161,51 @@ func (client *Client) ModelRouterDeleteModelWithContext(ctx context.Context, id 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModelRouterDeleteModelResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a manual group.
+//
+// Description:
+//
+// Deletes a manual group.
+//
+// @param request - ModelRouterDeleteModelGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterDeleteModelGroupResponse
+func (client *Client) ModelRouterDeleteModelGroupWithContext(ctx context.Context, groupId *string, request *ModelRouterDeleteModelGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterDeleteModelGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterDeleteModelGroup"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/model-groups/" + dara.PercentEncode(dara.StringValue(groupId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterDeleteModelGroupResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3106,7 +3257,7 @@ func (client *Client) ModelRouterGetClientBalanceWithContext(ctx context.Context
 
 // Summary:
 //
-// Gets the balance change log for a specified department.
+// Retrieves the balance change logs of a department.
 //
 // @param request - ModelRouterGetClientBalanceLogsRequest
 //
@@ -3169,11 +3320,86 @@ func (client *Client) ModelRouterGetClientBalanceLogsWithContext(ctx context.Con
 
 // Summary:
 //
-// 客户管理/查询周期充值订阅列表
+// Queries balance change records.
 //
 // Description:
 //
-// 该接口已弃用，请勿使用
+// This API operation is deprecated. Do not use it.
+//
+// @param request - ModelRouterListBalanceOrdersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterListBalanceOrdersResponse
+func (client *Client) ModelRouterListBalanceOrdersWithContext(ctx context.Context, id *string, request *ModelRouterListBalanceOrdersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterListBalanceOrdersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BalanceType) {
+		query["balanceType"] = request.BalanceType
+	}
+
+	if !dara.IsNil(request.Direction) {
+		query["direction"] = request.Direction
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OrderType) {
+		query["orderType"] = request.OrderType
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterListBalanceOrders"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(id)) + "/balance/orders"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterListBalanceOrdersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of periodic recharge subscriptions.
+//
+// Description:
+//
+// This operation is deprecated. Do not use it.
 //
 // @param request - ModelRouterListSubscriptionsRequest
 //
@@ -3232,7 +3458,7 @@ func (client *Client) ModelRouterListSubscriptionsWithContext(ctx context.Contex
 
 // Summary:
 //
-// Retrieves the details of a specific API key.
+// Retrieves the details of an API key.
 //
 // @param headers - map
 //
@@ -3652,7 +3878,7 @@ func (client *Client) ModelRouterQueryClientListWithContext(ctx context.Context,
 
 // Summary:
 //
-// Returns a hierarchical tree of customers.
+// Retrieves the customer tree structure.
 //
 // @param request - ModelRouterQueryClientTreeRequest
 //
@@ -4164,6 +4390,297 @@ func (client *Client) ModelRouterQueryModelWithContext(ctx context.Context, id *
 
 // Summary:
 //
+// Queries the details of a model group.
+//
+// Description:
+//
+// Queries the details of a model group.
+//
+// @param request - ModelRouterQueryModelGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterQueryModelGroupResponse
+func (client *Client) ModelRouterQueryModelGroupWithContext(ctx context.Context, groupId *string, request *ModelRouterQueryModelGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterQueryModelGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterQueryModelGroup"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/model-groups/" + dara.PercentEncode(dara.StringValue(groupId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterQueryModelGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the departments bound to a model group by paging.
+//
+// Description:
+//
+// Queries the departments bound to a model group by paging.
+//
+// @param request - ModelRouterQueryModelGroupClientsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterQueryModelGroupClientsResponse
+func (client *Client) ModelRouterQueryModelGroupClientsWithContext(ctx context.Context, groupId *string, request *ModelRouterQueryModelGroupClientsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterQueryModelGroupClientsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageIndex) {
+		query["pageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterQueryModelGroupClients"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/model-groups/" + dara.PercentEncode(dara.StringValue(groupId)) + "/clients"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterQueryModelGroupClientsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of model groups by paging.
+//
+// Description:
+//
+// Queries the list of model groups by paging.
+//
+// @param request - ModelRouterQueryModelGroupListRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterQueryModelGroupListResponse
+func (client *Client) ModelRouterQueryModelGroupListWithContext(ctx context.Context, request *ModelRouterQueryModelGroupListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterQueryModelGroupListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Keyword) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageIndex) {
+		query["pageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterQueryModelGroupList"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/model-groups"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterQueryModelGroupListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paging query for models within a model group.
+//
+// Description:
+//
+// Queries models within a group with pagination.
+//
+// @param request - ModelRouterQueryModelGroupModelsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterQueryModelGroupModelsResponse
+func (client *Client) ModelRouterQueryModelGroupModelsWithContext(ctx context.Context, groupId *string, request *ModelRouterQueryModelGroupModelsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterQueryModelGroupModelsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Keyword) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageIndex) {
+		query["pageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterQueryModelGroupModels"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/model-groups/" + dara.PercentEncode(dara.StringValue(groupId)) + "/models"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterQueryModelGroupModelsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists the model groups and models bound to a specified API key.
+//
+// Description:
+//
+// Queries the groups and models bound to a specified API key.
+//
+// @param request - ModelRouterQueryModelGroupsByApiKeyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterQueryModelGroupsByApiKeyResponse
+func (client *Client) ModelRouterQueryModelGroupsByApiKeyWithContext(ctx context.Context, id *string, request *ModelRouterQueryModelGroupsByApiKeyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterQueryModelGroupsByApiKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterQueryModelGroupsByApiKey"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/apikeys/" + dara.PercentEncode(dara.StringValue(id)) + "/model-groups"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterQueryModelGroupsByApiKeyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Model management/Get model list
 //
 // @param request - ModelRouterQueryModelListRequest
@@ -4251,11 +4768,7 @@ func (client *Client) ModelRouterQueryModelListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Configures Nacos or retrieves the list of Nacos service providers.
-//
-// Description:
-//
-// This operation is deprecated. Do not use it.
+// Queries the list of Nacos service providers through Nacos configuration.
 //
 // @param request - ModelRouterQueryNacosProvidersRequest
 //
@@ -4476,7 +4989,7 @@ func (client *Client) ModelRouterQueryObservationChartsWithContext(ctx context.C
 
 // Summary:
 //
-// Model Observation / Observation Logs
+// Retrieves a list of model observation logs.
 //
 // @param request - ModelRouterQueryObservationLogsRequest
 //
@@ -4575,7 +5088,7 @@ func (client *Client) ModelRouterQueryObservationLogsWithContext(ctx context.Con
 
 // Summary:
 //
-// Model Observation > Get Observation Metric Data
+// Retrieves observability metric data for models.
 //
 // @param request - ModelRouterQueryObservationMetricsRequest
 //
@@ -4812,7 +5325,7 @@ func (client *Client) ModelRouterSaveFlowConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 客户管理/停止周期充值订阅
+// Stops a periodic recharge subscription for customer management.
 //
 // @param request - ModelRouterStopSubscriptionRequest
 //
@@ -4926,7 +5439,7 @@ func (client *Client) ModelRouterUpdateBillingRuleWithContext(ctx context.Contex
 
 // Summary:
 //
-// Updates a specified client\\"s information.
+// Updates customer information.
 //
 // @param request - ModelRouterUpdateClientRequest
 //
@@ -4945,6 +5458,10 @@ func (client *Client) ModelRouterUpdateClientWithContext(ctx context.Context, id
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Address) {
 		body["address"] = request.Address
+	}
+
+	if !dara.IsNil(request.AllowedModelGroupConfig) {
+		body["allowedModelGroupConfig"] = request.AllowedModelGroupConfig
 	}
 
 	if !dara.IsNil(request.AllowedModels) {
@@ -5133,6 +5650,61 @@ func (client *Client) ModelRouterUpdateModelWithContext(ctx context.Context, id 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModelRouterUpdateModelResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Edits a manual model group.
+//
+// Description:
+//
+// Edits a manual group.
+//
+// @param request - ModelRouterUpdateModelGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterUpdateModelGroupResponse
+func (client *Client) ModelRouterUpdateModelGroupWithContext(ctx context.Context, groupId *string, request *ModelRouterUpdateModelGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterUpdateModelGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ModelList) {
+		body["modelList"] = request.ModelList
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterUpdateModelGroup"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/model-groups/" + dara.PercentEncode(dara.StringValue(groupId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterUpdateModelGroupResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

@@ -40,25 +40,25 @@ type iModelRouterQueryObservationLogsRequest interface {
 }
 
 type ModelRouterQueryObservationLogsRequest struct {
-	// Filters the results by API key ID.
+	// The API key ID used to filter the results.
 	//
 	// example:
 	//
 	// 1
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
-	// Filters the results by client ID.
+	// The client ID used to filter the results.
 	//
 	// example:
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
-	// The end time for a custom time range.
+	// The custom end time.
 	//
 	// example:
 	//
 	// 2024-01-02T00:00:00Z
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The grouping field.
+	// The field by which to group the results.
 	//
 	// example:
 	//
@@ -70,25 +70,25 @@ type ModelRouterQueryObservationLogsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Filters the results by model ID.
+	// The model ID used to filter the results.
 	//
 	// example:
 	//
 	// 1
 	ModelId *int64 `json:"modelId,omitempty" xml:"modelId,omitempty"`
-	// Specifies whether to return the total count of results.
+	// Specifies whether to return the total count.
 	//
 	// example:
 	//
 	// true
 	NeedTotalCount *bool `json:"needTotalCount,omitempty" xml:"needTotalCount,omitempty"`
-	// The pagination token from a previous response to retrieve the next page of results.
+	// The pagination token. An empty value indicates that no more pages are available.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The sort field.
+	// The field by which to sort the results.
 	//
 	// example:
 	//
@@ -106,19 +106,19 @@ type ModelRouterQueryObservationLogsRequest struct {
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	// The number of results to return per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The start time for a custom time range.
+	// The custom start time.
 	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The time range for the query. Valid values are `1h`, `6h`, `24h`, `7d`, and `30d`.
+	// The time range for the query. Valid values: 1h, 6h, 24h, 7d, 30d.
 	//
 	// example:
 	//

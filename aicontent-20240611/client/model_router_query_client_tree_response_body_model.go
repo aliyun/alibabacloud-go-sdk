@@ -28,19 +28,19 @@ type iModelRouterQueryClientTreeResponseBody interface {
 }
 
 type ModelRouterQueryClientTreeResponseBody struct {
-	// An array of objects that form the customer tree.
+	// The response data. The customer tree structure list.
 	Data []*ClientTreeDTO `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The error code returned if the request fails.
+	// The fault information code.
 	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	// The error message returned if the request fails.
+	// The error message.
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -48,19 +48,19 @@ type ModelRouterQueryClientTreeResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The maximum number of entries returned on the current page.
+	// maxResults
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token to retrieve the next page of results. If this parameter is not returned, it indicates that there are no more results.
+	// nextToken
 	//
 	// example:
 	//
 	// xxxx-xxx-xxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The unique request ID.
+	// The request ID.
 	//
 	// example:
 	//

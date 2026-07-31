@@ -30,7 +30,7 @@ type ModelRouterQueryNacosProvidersResponseBody struct {
 	//
 	// []
 	Data []*ModelRouterQueryNacosProvidersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The error message code.
+	// The fault message code.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ModelRouterQueryNacosProvidersResponseBody struct {
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -218,6 +218,7 @@ func (s *ModelRouterQueryNacosProvidersResponseBodyData) Validate() error {
 }
 
 type ModelRouterQueryNacosProvidersResponseBodyDataModels struct {
+	// The extension configuration parameters of the model, stored as key-value pairs for additional model behavior configuration.
 	Extensions *ModelRouterQueryNacosProvidersResponseBodyDataModelsExtensions `json:"extensions,omitempty" xml:"extensions,omitempty" type:"Struct"`
 	// The model identifier.
 	//
@@ -225,6 +226,8 @@ type ModelRouterQueryNacosProvidersResponseBodyDataModels struct {
 	//
 	// ca90f359956e94367470c38676
 	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// The input type and output type.
+	//
 	// example:
 	//
 	// text
@@ -241,6 +244,8 @@ type ModelRouterQueryNacosProvidersResponseBodyDataModels struct {
 	//
 	// 8K
 	OutputToken *string `json:"outputToken,omitempty" xml:"outputToken,omitempty"`
+	// The feature type or capability category of the model.
+	//
 	// example:
 	//
 	// Chat
@@ -319,6 +324,7 @@ func (s *ModelRouterQueryNacosProvidersResponseBodyDataModels) Validate() error 
 }
 
 type ModelRouterQueryNacosProvidersResponseBodyDataModelsExtensions struct {
+	// The asynchronous call identifier.
 	Async *bool `json:"async,omitempty" xml:"async,omitempty"`
 }
 

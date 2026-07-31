@@ -24,26 +24,38 @@ type iModelRouterCreateSubscriptionResponseBody interface {
 }
 
 type ModelRouterCreateSubscriptionResponseBody struct {
+	// The subscription information.
+	//
 	// example:
 	//
 	// []
 	Data *SubscriptionDTO `json:"data,omitempty" xml:"data,omitempty"`
+	// The fault encoding for the error message.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// null
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

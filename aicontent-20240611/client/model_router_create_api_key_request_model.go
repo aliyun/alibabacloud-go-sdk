@@ -14,7 +14,7 @@ type iModelRouterCreateApiKeyRequest interface {
 }
 
 type ModelRouterCreateApiKeyRequest struct {
-	// The client ID. A value of `null` represents the default client.
+	// The client ID. A value of null indicates the default client.
 	//
 	// example:
 	//

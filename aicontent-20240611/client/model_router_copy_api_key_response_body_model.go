@@ -24,23 +24,23 @@ type iModelRouterCopyApiKeyResponseBody interface {
 }
 
 type ModelRouterCopyApiKeyResponseBody struct {
-	// Details of the copied API key.
+	// The data object.
 	//
 	// example:
 	//
 	// []
 	Data *ApiKeyDTO `json:"data,omitempty" xml:"data,omitempty"`
-	// The error code returned when the request fails.
+	// The fault message code.
 	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	// The error message returned when the request fails.
+	// The error message.
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -54,7 +54,7 @@ type ModelRouterCopyApiKeyResponseBody struct {
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//

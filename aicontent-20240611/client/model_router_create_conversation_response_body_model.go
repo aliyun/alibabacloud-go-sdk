@@ -24,31 +24,31 @@ type iModelRouterCreateConversationResponseBody interface {
 }
 
 type ModelRouterCreateConversationResponseBody struct {
-	// Data object.
+	// The data object.
 	//
 	// example:
 	//
 	// []
 	Data *ConversationDTO `json:"data,omitempty" xml:"data,omitempty"`
-	// Error code.
+	// The fault code.
 	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

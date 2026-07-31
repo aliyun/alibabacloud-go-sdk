@@ -28,23 +28,23 @@ type iModelRouterQueryObservationLogsResponseBody interface {
 }
 
 type ModelRouterQueryObservationLogsResponseBody struct {
-	// The response payload.
+	// The data object.
 	//
 	// example:
 	//
 	// []
 	Data *ModelRouterQueryObservationLogsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error code for a failed request.
+	// The fault information code.
 	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	// The error message for a failed request.
+	// The error message.
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -52,19 +52,19 @@ type ModelRouterQueryObservationLogsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The maximum number of results per page.
+	// maxResults
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token to retrieve the next page of results.
+	// nextToken
 	//
 	// example:
 	//
 	// xxxx-xxx-xxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The unique ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

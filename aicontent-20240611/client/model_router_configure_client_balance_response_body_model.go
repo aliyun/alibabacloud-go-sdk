@@ -24,13 +24,13 @@ type iModelRouterConfigureClientBalanceResponseBody interface {
 }
 
 type ModelRouterConfigureClientBalanceResponseBody struct {
-	// The returned data object.
+	// The data object.
 	//
 	// example:
 	//
 	// {}
 	Data *ClientBalanceDTO `json:"data,omitempty" xml:"data,omitempty"`
-	// The error code.
+	// The fault code.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ModelRouterConfigureClientBalanceResponseBody struct {
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -54,7 +54,7 @@ type ModelRouterConfigureClientBalanceResponseBody struct {
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request succeeded.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

@@ -36,13 +36,13 @@ type iModelRouterCreateModelRequest interface {
 }
 
 type ModelRouterCreateModelRequest struct {
-	// The API key.
+	// API Key
 	//
 	// example:
 	//
 	// sk-xxxx
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
-	// The base URL.
+	// Base URL
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type ModelRouterCreateModelRequest struct {
 	//
 	// 通义千问大模型
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The model\\"s extended configuration parameters, provided as a JSON string.
+	// The extension configuration parameters of the model, stored as a JSON string.
 	//
 	// example:
 	//
 	// {}
 	Extensions *string `json:"extensions,omitempty" xml:"extensions,omitempty"`
-	// The supported input and output data types for the model.
+	// The input and output data types supported by the model.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type ModelRouterCreateModelRequest struct {
 	//
 	// alibaba
 	Symbol *string `json:"symbol,omitempty" xml:"symbol,omitempty"`
-	// Tags for the model. Separate multiple tags with commas.
+	// The tags, separated by commas.
 	//
 	// example:
 	//

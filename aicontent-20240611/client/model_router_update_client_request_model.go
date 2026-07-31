@@ -11,6 +11,8 @@ type iModelRouterUpdateClientRequest interface {
 	GoString() string
 	SetAddress(v string) *ModelRouterUpdateClientRequest
 	GetAddress() *string
+	SetAllowedModelGroupConfig(v string) *ModelRouterUpdateClientRequest
+	GetAllowedModelGroupConfig() *string
 	SetAllowedModels(v string) *ModelRouterUpdateClientRequest
 	GetAllowedModels() *string
 	SetContact(v string) *ModelRouterUpdateClientRequest
@@ -30,9 +32,15 @@ type ModelRouterUpdateClientRequest struct {
 	//
 	// example:
 	//
-	// 杭州市
+	// Hangzhou
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
-	// A comma-separated list of model IDs that the client can use. If this parameter is left empty, the client can use all models.
+	// The allowed model group configuration.
+	//
+	// example:
+	//
+	// {"model_ids":[101],"group_ids":["mg_xxx"]}
+	AllowedModelGroupConfig *string `json:"allowedModelGroupConfig,omitempty" xml:"allowedModelGroupConfig,omitempty"`
+	// The list of allowed model IDs, separated by commas. An empty value indicates all models are allowed.
 	//
 	// example:
 	//
@@ -44,23 +52,25 @@ type ModelRouterUpdateClientRequest struct {
 	//
 	// 13800138000
 	Contact *string `json:"contact,omitempty" xml:"contact,omitempty"`
+	// The discount coefficient.
+	//
 	// example:
 	//
 	// 1.0
 	Discount *float64 `json:"discount,omitempty" xml:"discount,omitempty"`
-	// The client name.
+	// The customer name.
 	//
 	// example:
 	//
-	// 我的客户
+	// MyCustomer
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// A remark about the client.
+	// The remarks.
 	//
 	// example:
 	//
-	// 备注
+	// Remarks
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	// The client\\"s status.
+	// The status.
 	//
 	// example:
 	//
@@ -78,6 +88,10 @@ func (s ModelRouterUpdateClientRequest) GoString() string {
 
 func (s *ModelRouterUpdateClientRequest) GetAddress() *string {
 	return s.Address
+}
+
+func (s *ModelRouterUpdateClientRequest) GetAllowedModelGroupConfig() *string {
+	return s.AllowedModelGroupConfig
 }
 
 func (s *ModelRouterUpdateClientRequest) GetAllowedModels() *string {
@@ -106,6 +120,11 @@ func (s *ModelRouterUpdateClientRequest) GetStatus() *int32 {
 
 func (s *ModelRouterUpdateClientRequest) SetAddress(v string) *ModelRouterUpdateClientRequest {
 	s.Address = &v
+	return s
+}
+
+func (s *ModelRouterUpdateClientRequest) SetAllowedModelGroupConfig(v string) *ModelRouterUpdateClientRequest {
+	s.AllowedModelGroupConfig = &v
 	return s
 }
 

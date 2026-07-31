@@ -24,23 +24,23 @@ type iModelRouterQueryApiKeyResponseBody interface {
 }
 
 type ModelRouterQueryApiKeyResponseBody struct {
-	// The data object containing the API key details.
+	// The data object.
 	//
 	// example:
 	//
 	// []
 	Data *ApiKeyDecryptedDTO `json:"data,omitempty" xml:"data,omitempty"`
-	// The error code, returned only if the request fails.
+	// The fault message code.
 	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	// The error message, returned only if the request fails.
+	// The error message.
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -54,7 +54,7 @@ type ModelRouterQueryApiKeyResponseBody struct {
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Specifies if the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

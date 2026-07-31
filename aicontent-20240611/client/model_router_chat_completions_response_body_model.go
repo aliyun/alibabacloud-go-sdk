@@ -24,13 +24,13 @@ type iModelRouterChatCompletionsResponseBody interface {
 }
 
 type ModelRouterChatCompletionsResponseBody struct {
-	// Contains the core response data.
+	// The data object.
 	//
 	// example:
 	//
 	// []
 	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
-	// The error code returned when a request fails.
+	// The fault message code.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ModelRouterChatCompletionsResponseBody struct {
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -48,13 +48,13 @@ type ModelRouterChatCompletionsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// A unique request identifier for troubleshooting.
+	// The request ID.
 	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the API call was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

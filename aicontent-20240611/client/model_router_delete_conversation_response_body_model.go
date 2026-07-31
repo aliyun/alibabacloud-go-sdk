@@ -24,23 +24,23 @@ type iModelRouterDeleteConversationResponseBody interface {
 }
 
 type ModelRouterDeleteConversationResponseBody struct {
-	// A value of true indicates that the conversation was successfully deleted.
+	// Indicates whether the conversation was deleted.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
-	// The error code returned if the request fails.
+	// The fault message code.
 	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	// The error message returned if the request fails.
+	// The error message.
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -48,7 +48,7 @@ type ModelRouterDeleteConversationResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The unique request ID. Include this ID when contacting technical support.
+	// The request ID.
 	//
 	// example:
 	//

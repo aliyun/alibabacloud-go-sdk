@@ -40,13 +40,13 @@ type ModelRouterQueryNacosProvidersRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Specifies whether to return the total count.
+	// Specifies whether the total count is required.
 	//
 	// example:
 	//
 	// true
 	NeedTotalCount *bool `json:"needTotalCount,omitempty" xml:"needTotalCount,omitempty"`
-	// The pagination token for the next page.
+	// The pagination token used for paginated queries. Specify this parameter to retrieve the next page.
 	//
 	// example:
 	//

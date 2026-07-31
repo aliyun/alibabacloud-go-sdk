@@ -14,6 +14,8 @@ type iModelRouterStopSubscriptionRequest interface {
 }
 
 type ModelRouterStopSubscriptionRequest struct {
+	// The type of subscription balance to stop (permanent/monthly).
+	//
 	// example:
 	//
 	// permanent

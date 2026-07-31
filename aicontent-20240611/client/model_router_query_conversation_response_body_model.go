@@ -30,7 +30,7 @@ type ModelRouterQueryConversationResponseBody struct {
 	//
 	// []
 	Data *ConversationDTO `json:"data,omitempty" xml:"data,omitempty"`
-	// The error code.
+	// The fault message code.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ModelRouterQueryConversationResponseBody struct {
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
