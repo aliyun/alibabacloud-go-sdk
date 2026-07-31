@@ -22,15 +22,15 @@ type iImageTranslationPlusResponseBody interface {
 }
 
 type ImageTranslationPlusResponseBody struct {
-	// The error code. This parameter is not returned if the call is successful.
+	// The error code. This parameter is not returned for successful calls.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The submit status of the asynchronous task.
+	// The asynchronous task submit status.
 	Data *ImageTranslationPlusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned if the call is successful.
+	// The error message. This parameter is not returned for successful calls.
 	//
 	// example:
 	//
@@ -42,11 +42,7 @@ type ImageTranslationPlusResponseBody struct {
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
-	//
-	// - true: The call is successful.
-	//
-	// - false: The call failed.
+	// Indicates whether the call is successful. Valid values: true: successful. false: failed.
 	//
 	// example:
 	//

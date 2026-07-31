@@ -18,9 +18,14 @@ type iVideoGenerationShrinkRequest interface {
 }
 
 type VideoGenerationShrinkRequest struct {
+	// The product input.
+	//
 	// This parameter is required.
-	InputShrink  *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The intent parameters. Currently unavailable.
 	IntentShrink *string `json:"Intent,omitempty" xml:"Intent,omitempty"`
+	// The output parameters.
+	//
 	// This parameter is required.
 	OutputShrink *string `json:"Output,omitempty" xml:"Output,omitempty"`
 }

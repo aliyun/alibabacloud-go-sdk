@@ -22,19 +22,28 @@ type iVideoGenerationResponseBody interface {
 }
 
 type VideoGenerationResponseBody struct {
+	// The response code. A value of success indicates a successful call, and a value of failed indicates a failure.
+	//
 	// example:
 	//
 	// success
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The struct of the returned result.
 	Data *VideoGenerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message. An error message is returned if the call fails.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID, used to identify a unique request call.
+	//
 	// example:
 	//
 	// 70CBEFDF-BB17-1EB3-8A21-569F3124738F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -104,10 +113,13 @@ func (s *VideoGenerationResponseBody) Validate() error {
 }
 
 type VideoGenerationResponseBodyData struct {
+	// The downstream task ID.
+	//
 	// example:
 	//
 	// 778fa8bd21804828a5d147050e30edac
-	TaskId   *string           `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The metering usage information.
 	UsageMap map[string]*int64 `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`
 }
 

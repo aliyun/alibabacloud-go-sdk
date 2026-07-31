@@ -18,9 +18,14 @@ type iVideoGenerationRequest interface {
 }
 
 type VideoGenerationRequest struct {
+	// The product input.
+	//
 	// This parameter is required.
-	Input  *VideoGenerationRequestInput  `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	Input *VideoGenerationRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The intent parameters. Currently unavailable.
 	Intent *VideoGenerationRequestIntent `json:"Intent,omitempty" xml:"Intent,omitempty" type:"Struct"`
+	// The output parameters.
+	//
 	// This parameter is required.
 	Output *VideoGenerationRequestOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
 }
@@ -80,9 +85,14 @@ func (s *VideoGenerationRequest) Validate() error {
 }
 
 type VideoGenerationRequestInput struct {
+	// The extended information.
 	Extra map[string]interface{} `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// The list of product image URLs (1 to 6 images). The URLs must be publicly accessible.
+	//
 	// This parameter is required.
 	Images []*string `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// The product title. A maximum of the first 60 characters are used.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -131,10 +141,14 @@ func (s *VideoGenerationRequestInput) Validate() error {
 }
 
 type VideoGenerationRequestIntent struct {
+	// The distribution channel.
+	//
 	// example:
 	//
 	// -
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// The business goal.
+	//
 	// example:
 	//
 	// -
@@ -172,18 +186,24 @@ func (s *VideoGenerationRequestIntent) Validate() error {
 }
 
 type VideoGenerationRequestOutput struct {
+	// The video duration in seconds. Currently supports integers between 5 and 15. More options will be available in the future.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The output resolution.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1080p
 	Quality *string `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	// The video aspect ratio.
+	//
 	// example:
 	//
 	// 9:16
