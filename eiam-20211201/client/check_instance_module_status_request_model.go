@@ -15,6 +15,10 @@ type iCheckInstanceModuleStatusRequest interface {
 	GetInstanceId() *string
 	SetModuleKey(v string) *CheckInstanceModuleStatusRequest
 	GetModuleKey() *string
+	SetResourceLabelKey(v string) *CheckInstanceModuleStatusRequest
+	GetResourceLabelKey() *string
+	SetResourceLabelValue(v string) *CheckInstanceModuleStatusRequest
+	GetResourceLabelValue() *string
 	SetSubFeatureKey(v string) *CheckInstanceModuleStatusRequest
 	GetSubFeatureKey() *string
 }
@@ -41,7 +45,9 @@ type CheckInstanceModuleStatusRequest struct {
 	// example:
 	//
 	// urn:alibaba:idaas:license:module:ud
-	ModuleKey *string `json:"ModuleKey,omitempty" xml:"ModuleKey,omitempty"`
+	ModuleKey          *string `json:"ModuleKey,omitempty" xml:"ModuleKey,omitempty"`
+	ResourceLabelKey   *string `json:"ResourceLabelKey,omitempty" xml:"ResourceLabelKey,omitempty"`
+	ResourceLabelValue *string `json:"ResourceLabelValue,omitempty" xml:"ResourceLabelValue,omitempty"`
 	// The tertiary module identifier.
 	//
 	// example:
@@ -70,6 +76,14 @@ func (s *CheckInstanceModuleStatusRequest) GetModuleKey() *string {
 	return s.ModuleKey
 }
 
+func (s *CheckInstanceModuleStatusRequest) GetResourceLabelKey() *string {
+	return s.ResourceLabelKey
+}
+
+func (s *CheckInstanceModuleStatusRequest) GetResourceLabelValue() *string {
+	return s.ResourceLabelValue
+}
+
 func (s *CheckInstanceModuleStatusRequest) GetSubFeatureKey() *string {
 	return s.SubFeatureKey
 }
@@ -86,6 +100,16 @@ func (s *CheckInstanceModuleStatusRequest) SetInstanceId(v string) *CheckInstanc
 
 func (s *CheckInstanceModuleStatusRequest) SetModuleKey(v string) *CheckInstanceModuleStatusRequest {
 	s.ModuleKey = &v
+	return s
+}
+
+func (s *CheckInstanceModuleStatusRequest) SetResourceLabelKey(v string) *CheckInstanceModuleStatusRequest {
+	s.ResourceLabelKey = &v
+	return s
+}
+
+func (s *CheckInstanceModuleStatusRequest) SetResourceLabelValue(v string) *CheckInstanceModuleStatusRequest {
+	s.ResourceLabelValue = &v
 	return s
 }
 

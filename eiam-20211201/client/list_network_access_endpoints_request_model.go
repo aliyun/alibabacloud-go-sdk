@@ -34,21 +34,23 @@ type ListNetworkAccessEndpointsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries to return on each page. The maximum value is 100.
+	// The maximum number of entries per page for a paged query. Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The status of the network endpoint. Valid values:
+	// The status of the network access endpoint. Valid values:
 	//
-	// - pending: The endpoint is pending initialization.
 	//
-	// - creating: The endpoint is being created.
 	//
-	// - running: The endpoint is running.
+	// - pending: Pending initialization.
 	//
-	// - deleting: The endpoint is being deleted.
+	// - creating: Being created.
+	//
+	// - running: Running.
+	//
+	// - deleting: Being deleted.
 	//
 	// This parameter does not take effect when NetworkAccessEndpointType is set to shared.
 	//
@@ -56,31 +58,31 @@ type ListNetworkAccessEndpointsRequest struct {
 	//
 	// running
 	NetworkAccessEndpointStatus *string `json:"NetworkAccessEndpointStatus,omitempty" xml:"NetworkAccessEndpointStatus,omitempty"`
-	// The type of the network endpoint. Valid values:
+	// The type of the network access endpoint. Valid values:
 	//
-	// - shared: a shared network endpoint.
+	// - shared: shared network access endpoint.
 	//
-	// - private: a private network endpoint.
+	// - private: dedicated network access endpoint.
 	//
-	// The default value is private.
+	// Default value: private.
 	//
 	// example:
 	//
 	// private
 	NetworkAccessEndpointType *string `json:"NetworkAccessEndpointType,omitempty" xml:"NetworkAccessEndpointType,omitempty"`
-	// The token used for the next query. Set this parameter to the NextToken value returned from the previous API call. Leave this parameter empty for the first query.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous API call. Leave this parameter empty for the first query.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the VPC to which the private network endpoint is connected. This parameter does not take effect when NetworkAccessEndpointType is set to shared.
+	// The VPC ID of the dedicated network access endpoint. This parameter does not take effect when NetworkAccessEndpointType is set to shared.
 	//
 	// example:
 	//
 	// vpc-examplexxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The region ID of the VPC to which the private network endpoint is connected. The value of this parameter must be a region returned by the ListNetworkAccessEndpointAvailableRegions operation. This parameter does not take effect when NetworkAccessEndpointType is set to shared.
+	// The region of the VPC for the dedicated network access endpoint. The region must be one of the regions returned by the ListNetworkAccessEndpointAvailableRegions operation. This parameter does not take effect when NetworkAccessEndpointType is set to shared.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iUpdateCredentialProviderRequest interface {
 type UpdateCredentialProviderRequest struct {
 	// The idempotency token that ensures the idempotence of the request.
 	//
-	// Generate a unique parameter value from your client to ensure that the value is unique among different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+	// Generate a unique parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// This parameter is required.
 	//
@@ -174,9 +174,9 @@ type UpdateCredentialProviderRequestCredentialProviderConfigJwtProviderConfig st
 	//
 	// > The list cannot contain more than 200 entries.
 	//
-	// 	Notice: To clear the issuer list, pass an empty list or an empty string.
+	// 	Notice: To clear the issuer list, pass an empty list or an empty string when calling the API.
 	AllowedTokenIssuers []*string `json:"AllowedTokenIssuers,omitempty" xml:"AllowedTokenIssuers,omitempty" type:"Repeated"`
-	// Specifies whether to enable the JWT derived short token feature.
+	// Specifies whether to enable the JWT derived short token capability.
 	//
 	// example:
 	//
@@ -245,7 +245,15 @@ func (s *UpdateCredentialProviderRequestCredentialProviderConfigJwtProviderConfi
 }
 
 type UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig struct {
-	// The client_secret in the OAuth protocol, which is the client secret.
+	// The endpoint URL used to guide users through authorization. Conditionally required: this parameter is required when AuthorizationFlow is set to user_federation and ProviderVendor is set to custom. For preset vendors, this value can be automatically populated through DiscoveryUrl.
+	AuthorizationEndpoint *string `json:"AuthorizationEndpoint,omitempty" xml:"AuthorizationEndpoint,omitempty"`
+	// The OAuth authorization flow type. Valid values:
+	//
+	// - m2m: Machine-to-machine (2LO, Client Credentials).
+	//
+	// - user_federation: User federation (3LO, Authorization Code).
+	AuthorizationFlow *string `json:"AuthorizationFlow,omitempty" xml:"AuthorizationFlow,omitempty"`
+	// The client_secret in the OAuth protocol.
 	//
 	// > The value cannot exceed 1024 characters in length.
 	//
@@ -253,13 +261,22 @@ type UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig 
 	//
 	// client_secret_example_xxx
 	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
+	// The Discovery document URL used to automatically retrieve OAuth endpoint configurations. Conditionally optional: this parameter is used when AuthorizationFlow is set to user_federation. If DiscoveryUrl is not provided, you must manually configure fields such as TokenEndpoint and AuthorizationEndpoint.
+	DiscoveryUrl *string `json:"DiscoveryUrl,omitempty" xml:"DiscoveryUrl,omitempty"`
+	Issuer       *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The PKCE code_challenge generation method. Default value: s256.
+	PkceChallengeMethod *string `json:"PkceChallengeMethod,omitempty" xml:"PkceChallengeMethod,omitempty"`
+	// Specifies whether to use the PKCE extension for enhanced security. We recommend that you always enable this feature.
+	PkceEnabled *bool `json:"PkceEnabled,omitempty" xml:"PkceEnabled,omitempty"`
+	// The preset vendor or custom configuration. This parameter is optional. Default value: custom.
+	ProviderVendor *string `json:"ProviderVendor,omitempty" xml:"ProviderVendor,omitempty"`
 	// The scope in the OAuth protocol, which specifies the permission scope.
 	//
-	// > The Scope configuration at the credential provider serves as the default value. If the scope parameter is not specified when calling the DeveloperAPI to obtain an OAuth Access Token, the Scope configuration at the credential provider is used for issuance.
+	// > The Scope configuration on the OAuth credential provider serves as a fallback value. If the scope parameter is not specified when calling the DeveloperAPI to obtain an OAuth Access Token, the Scope configuration on the credential provider is used for token issuance.
 	//
 	// 	Notice: Separate multiple Scope values with spaces. To clear the Scope configuration, pass an empty string.
 	//
-	// Restrictions on a single Scope value:
+	// Restrictions for each individual Scope value:
 	//
 	// 1. Allowed characters: lowercase letters, digits, and special characters `|/:_-.`
 	//
@@ -291,8 +308,36 @@ func (s UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConf
 	return s.String()
 }
 
+func (s *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig) GetAuthorizationEndpoint() *string {
+	return s.AuthorizationEndpoint
+}
+
+func (s *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig) GetAuthorizationFlow() *string {
+	return s.AuthorizationFlow
+}
+
 func (s *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig) GetClientSecret() *string {
 	return s.ClientSecret
+}
+
+func (s *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig) GetDiscoveryUrl() *string {
+	return s.DiscoveryUrl
+}
+
+func (s *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig) GetIssuer() *string {
+	return s.Issuer
+}
+
+func (s *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig) GetPkceChallengeMethod() *string {
+	return s.PkceChallengeMethod
+}
+
+func (s *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig) GetPkceEnabled() *bool {
+	return s.PkceEnabled
+}
+
+func (s *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig) GetProviderVendor() *string {
+	return s.ProviderVendor
 }
 
 func (s *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig) GetScope() *string {
@@ -303,8 +348,43 @@ func (s *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderCon
 	return s.TokenEndpoint
 }
 
+func (s *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig) SetAuthorizationEndpoint(v string) *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig {
+	s.AuthorizationEndpoint = &v
+	return s
+}
+
+func (s *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig) SetAuthorizationFlow(v string) *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig {
+	s.AuthorizationFlow = &v
+	return s
+}
+
 func (s *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig) SetClientSecret(v string) *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig {
 	s.ClientSecret = &v
+	return s
+}
+
+func (s *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig) SetDiscoveryUrl(v string) *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig {
+	s.DiscoveryUrl = &v
+	return s
+}
+
+func (s *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig) SetIssuer(v string) *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig {
+	s.Issuer = &v
+	return s
+}
+
+func (s *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig) SetPkceChallengeMethod(v string) *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig {
+	s.PkceChallengeMethod = &v
+	return s
+}
+
+func (s *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig) SetPkceEnabled(v bool) *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig {
+	s.PkceEnabled = &v
+	return s
+}
+
+func (s *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig) SetProviderVendor(v string) *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig {
+	s.ProviderVendor = &v
 	return s
 }
 

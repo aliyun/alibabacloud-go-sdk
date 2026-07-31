@@ -67,7 +67,12 @@ type ListApplicationsRequest struct {
 	// example:
 	//
 	// Ram Account SSO
-	ApplicationName       *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// The application template ID.
+	//
+	// example:
+	//
+	// apt_ramuser_xxxx
 	ApplicationTemplateId *string `json:"ApplicationTemplateId,omitempty" xml:"ApplicationTemplateId,omitempty"`
 	// The application access authorization type. Valid values:
 	//
@@ -94,7 +99,12 @@ type ListApplicationsRequest struct {
 	// example:
 	//
 	// enabled
-	M2MClientStatus    *string `json:"M2MClientStatus,omitempty" xml:"M2MClientStatus,omitempty"`
+	M2MClientStatus *string `json:"M2MClientStatus,omitempty" xml:"M2MClientStatus,omitempty"`
+	// The ServiceCode of the cloud service that manages the application template.
+	//
+	// example:
+	//
+	// waf
 	ManagedServiceCode *string `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
 	// The page number.
 	//
@@ -114,8 +124,13 @@ type ListApplicationsRequest struct {
 	//
 	// enabled
 	ResourceServerStatus *string `json:"ResourceServerStatus,omitempty" xml:"ResourceServerStatus,omitempty"`
-	ServiceManaged       *bool   `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// The SSO type filter condition. Multiple types can be separated by commas, such as oauth2/m2m,oidc+oauth2/m2m.
+	// Specifies whether the application template is managed by a cloud service.
+	//
+	// example:
+	//
+	// true
+	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	// The SSO type filter condition. Multiple types can be separated by commas. Example: oauth2/m2m,oidc+oauth2/m2m.
 	//
 	// example:
 	//
@@ -301,7 +316,7 @@ func (s *ListApplicationsRequest) Validate() error {
 type ListApplicationsRequestCustomFields struct {
 	// The custom field identifier. Valid values:
 	//
-	// - agent_type: the agent type.
+	// - agent_type: The agent type.
 	//
 	// example:
 	//

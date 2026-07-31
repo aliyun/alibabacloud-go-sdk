@@ -62,19 +62,20 @@ func (s *GetNetworkAccessEndpointResponseBody) Validate() error {
 }
 
 type GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint struct {
+	BackupVpcEndpoint *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint `json:"BackupVpcEndpoint,omitempty" xml:"BackupVpcEndpoint,omitempty" type:"Struct"`
 	// The time when the network access endpoint was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The private egress IP addresses of the dedicated network access endpoint. This parameter is returned only when NetworkEndpointType is set to private.
+	// The private egress IP address range of the dedicated network access endpoint. This parameter is returned only when NetworkEndpointType is set to private.
 	//
 	// example:
 	//
 	// 172.168.x.x
 	EgressPrivateIpAddresses []*string `json:"EgressPrivateIpAddresses,omitempty" xml:"EgressPrivateIpAddresses,omitempty" type:"Repeated"`
-	// The public egress IP addresses of the shared network access endpoint. This parameter is returned only when NetworkEndpointType is set to shared.
+	// The public egress IP address range of the shared network access endpoint. This parameter is returned only when NetworkEndpointType is set to shared.
 	//
 	// example:
 	//
@@ -86,7 +87,7 @@ type GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The dedicated network access endpoint ID.
+	// The ID of the dedicated network access endpoint.
 	//
 	// example:
 	//
@@ -100,9 +101,9 @@ type GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint struct {
 	NetworkAccessEndpointName *string `json:"NetworkAccessEndpointName,omitempty" xml:"NetworkAccessEndpointName,omitempty"`
 	// The type of the network access endpoint. Valid values:
 	//
-	// - shared: shared network access endpoint.
+	// - shared: Shared network access endpoint.
 	//
-	// - private: dedicated network access endpoint.
+	// - private: Dedicated network access endpoint.
 	//
 	// example:
 	//
@@ -116,13 +117,13 @@ type GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint struct {
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The status of the network access endpoint. Valid values:
 	//
-	// - pending: pending initialization.
+	// - pending: Pending initialization.
 	//
-	// - creating: being created.
+	// - creating: Being created.
 	//
-	// - running: running.
+	// - running: Running.
 	//
-	// - deleting: being deleted.
+	// - deleting: Being deleted.
 	//
 	// example:
 	//
@@ -160,6 +161,10 @@ func (s GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint) String() stri
 
 func (s GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint) GoString() string {
 	return s.String()
+}
+
+func (s *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint) GetBackupVpcEndpoint() *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint {
+	return s.BackupVpcEndpoint
 }
 
 func (s *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint) GetCreateTime() *int64 {
@@ -212,6 +217,11 @@ func (s *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint) GetVpcId() *
 
 func (s *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint) GetVpcRegionId() *string {
 	return s.VpcRegionId
+}
+
+func (s *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint) SetBackupVpcEndpoint(v *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint) *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint {
+	s.BackupVpcEndpoint = v
+	return s
 }
 
 func (s *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint) SetCreateTime(v int64) *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint {
@@ -280,5 +290,85 @@ func (s *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint) SetVpcRegion
 }
 
 func (s *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint) Validate() error {
+	if s.BackupVpcEndpoint != nil {
+		if err := s.BackupVpcEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint struct {
+	BackupEgressPrivateIpAddresses []*string `json:"BackupEgressPrivateIpAddresses,omitempty" xml:"BackupEgressPrivateIpAddresses,omitempty" type:"Repeated"`
+	BackupEgressPublicIpAddresses  []*string `json:"BackupEgressPublicIpAddresses,omitempty" xml:"BackupEgressPublicIpAddresses,omitempty" type:"Repeated"`
+	BackupSecurityGroupId          *string   `json:"BackupSecurityGroupId,omitempty" xml:"BackupSecurityGroupId,omitempty"`
+	BackupVSwitchIds               []*string `json:"BackupVSwitchIds,omitempty" xml:"BackupVSwitchIds,omitempty" type:"Repeated"`
+	BackupVpcId                    *string   `json:"BackupVpcId,omitempty" xml:"BackupVpcId,omitempty"`
+	BackupVpcRegionId              *string   `json:"BackupVpcRegionId,omitempty" xml:"BackupVpcRegionId,omitempty"`
+}
+
+func (s GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint) GoString() string {
+	return s.String()
+}
+
+func (s *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint) GetBackupEgressPrivateIpAddresses() []*string {
+	return s.BackupEgressPrivateIpAddresses
+}
+
+func (s *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint) GetBackupEgressPublicIpAddresses() []*string {
+	return s.BackupEgressPublicIpAddresses
+}
+
+func (s *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint) GetBackupSecurityGroupId() *string {
+	return s.BackupSecurityGroupId
+}
+
+func (s *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint) GetBackupVSwitchIds() []*string {
+	return s.BackupVSwitchIds
+}
+
+func (s *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint) GetBackupVpcId() *string {
+	return s.BackupVpcId
+}
+
+func (s *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint) GetBackupVpcRegionId() *string {
+	return s.BackupVpcRegionId
+}
+
+func (s *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint) SetBackupEgressPrivateIpAddresses(v []*string) *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint {
+	s.BackupEgressPrivateIpAddresses = v
+	return s
+}
+
+func (s *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint) SetBackupEgressPublicIpAddresses(v []*string) *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint {
+	s.BackupEgressPublicIpAddresses = v
+	return s
+}
+
+func (s *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint) SetBackupSecurityGroupId(v string) *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint {
+	s.BackupSecurityGroupId = &v
+	return s
+}
+
+func (s *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint) SetBackupVSwitchIds(v []*string) *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint {
+	s.BackupVSwitchIds = v
+	return s
+}
+
+func (s *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint) SetBackupVpcId(v string) *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint {
+	s.BackupVpcId = &v
+	return s
+}
+
+func (s *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint) SetBackupVpcRegionId(v string) *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint {
+	s.BackupVpcRegionId = &v
+	return s
+}
+
+func (s *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint) Validate() error {
 	return dara.Validate(s)
 }

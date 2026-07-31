@@ -173,7 +173,7 @@ type ListApplicationsResponseBodyApplications struct {
 	//
 	// https://img.alicdn.com/imgextra/i4/O1CN01lvYwpv1aGowQXDML9_!!6000000003303-0-tps-580-580.jpg
 	LogoUrl *string `json:"LogoUrl,omitempty" xml:"LogoUrl,omitempty"`
-	// The ServiceCode of the Alibaba Cloud service that manages the application template.
+	// The ServiceCode of the cloud service that manages the application template.
 	//
 	// example:
 	//
@@ -197,7 +197,7 @@ type ListApplicationsResponseBodyApplications struct {
 	//
 	// enabled
 	ResourceServerStatus *string `json:"ResourceServerStatus,omitempty" xml:"ResourceServerStatus,omitempty"`
-	// Indicates whether the application template is managed by an Alibaba Cloud service.
+	// Specifies whether the application template is managed by a cloud service.
 	//
 	// example:
 	//

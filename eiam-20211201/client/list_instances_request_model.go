@@ -19,6 +19,8 @@ type iListInstancesRequest interface {
 	GetPageNumber() *int64
 	SetPageSize(v int64) *ListInstancesRequest
 	GetPageSize() *int64
+	SetServiceManaged(v bool) *ListInstancesRequest
+	GetServiceManaged() *bool
 	SetStatus(v string) *ListInstancesRequest
 	GetStatus() *string
 }
@@ -59,7 +61,8 @@ type ListInstancesRequest struct {
 	// example:
 	//
 	// 20
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize       *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ServiceManaged *bool  `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
 	// The instance status. Valid values:
 	//
 	// - creating: Being created.
@@ -100,6 +103,10 @@ func (s *ListInstancesRequest) GetPageSize() *int64 {
 	return s.PageSize
 }
 
+func (s *ListInstancesRequest) GetServiceManaged() *bool {
+	return s.ServiceManaged
+}
+
 func (s *ListInstancesRequest) GetStatus() *string {
 	return s.Status
 }
@@ -126,6 +133,11 @@ func (s *ListInstancesRequest) SetPageNumber(v int64) *ListInstancesRequest {
 
 func (s *ListInstancesRequest) SetPageSize(v int64) *ListInstancesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetServiceManaged(v bool) *ListInstancesRequest {
+	s.ServiceManaged = &v
 	return s
 }
 

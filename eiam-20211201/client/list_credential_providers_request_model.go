@@ -143,10 +143,6 @@ func (s *ListCredentialProvidersRequest) Validate() error {
 type ListCredentialProvidersRequestFilter struct {
 	// The filter condition name. Valid values:
 	//
-	// - CredentialProviderName: the credential provider name.
-	//
-	// - CredentialProviderIdentifier: the credential provider identifier.
-	//
 	// example:
 	//
 	// CredentialProviderName

@@ -16,7 +16,7 @@ type iCheckInstanceModuleStatusResponseBody interface {
 }
 
 type CheckInstanceModuleStatusResponseBody struct {
-	// The module status information.
+	// The status information.
 	Module *CheckInstanceModuleStatusResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// The request ID.
 	//

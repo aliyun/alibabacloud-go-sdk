@@ -1027,7 +1027,7 @@ func (client *Client) CheckInstanceForDeleteWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Determines whether an instance has the feature of a specific module.
+// Determines whether an instance has the capability of a specific module.
 //
 // @param request - CheckInstanceModuleStatusRequest
 //
@@ -1052,6 +1052,14 @@ func (client *Client) CheckInstanceModuleStatusWithContext(ctx context.Context, 
 
 	if !dara.IsNil(request.ModuleKey) {
 		query["ModuleKey"] = request.ModuleKey
+	}
+
+	if !dara.IsNil(request.ResourceLabelKey) {
+		query["ResourceLabelKey"] = request.ResourceLabelKey
+	}
+
+	if !dara.IsNil(request.ResourceLabelValue) {
+		query["ResourceLabelValue"] = request.ResourceLabelValue
 	}
 
 	if !dara.IsNil(request.SubFeatureKey) {
@@ -10547,7 +10555,7 @@ func (client *Client) ListApplicationTokensWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries information about one or more EIAM applications by using paged query. Paging is supported.
+// Queries information about one or more EIAM applications by using paging.
 //
 // @param request - ListApplicationsRequest
 //
@@ -12766,6 +12774,10 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.ServiceManaged) {
+		query["ServiceManaged"] = request.ServiceManaged
+	}
+
 	if !dara.IsNil(request.Status) {
 		query["Status"] = request.Status
 	}
@@ -12839,7 +12851,7 @@ func (client *Client) ListNetworkAccessEndpointAvailableZonesWithContext(ctx con
 
 // Summary:
 //
-// Lists the network endpoints for an IDaaS EIAM instance.
+// Queries the list of network access endpoints under an IDaaS EIAM instance.
 //
 // @param request - ListNetworkAccessEndpointsRequest
 //

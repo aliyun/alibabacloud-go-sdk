@@ -131,6 +131,9 @@ type ListInstancesResponseBodyInstances struct {
 	ReplicationConfiguration *ListInstancesResponseBodyInstancesReplicationConfiguration `json:"ReplicationConfiguration,omitempty" xml:"ReplicationConfiguration,omitempty" type:"Struct"`
 	// Indicates whether the instance is managed by an Alibaba Cloud service.
 	//
+	// if can be null:
+	// true
+	//
 	// example:
 	//
 	// true
@@ -342,7 +345,7 @@ type ListInstancesResponseBodyInstancesReplicationConfiguration struct {
 	//
 	// cn-hangzhou
 	PrimaryInstanceRegionId *string `json:"PrimaryInstanceRegionId,omitempty" xml:"PrimaryInstanceRegionId,omitempty"`
-	// The time when the disaster recovery data replication was created, in UNIX timestamp format. Unit: milliseconds.
+	// The creation time of the disaster recovery data replication, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//

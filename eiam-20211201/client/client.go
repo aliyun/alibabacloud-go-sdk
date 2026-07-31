@@ -29,6 +29,7 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"eu-central-1":   dara.String("eiam.eu-central-1.aliyuncs.com"),
 		"cn-hongkong":    dara.String("eiam.cn-hongkong.aliyuncs.com"),
 		"cn-hangzhou":    dara.String("eiam.cn-hangzhou.aliyuncs.com"),
+		"cn-beijing":     dara.String("eiam.cn-beijing.aliyuncs.com"),
 		"ap-southeast-5": dara.String("eiam.ap-southeast-5.aliyuncs.com"),
 		"ap-southeast-1": dara.String("eiam.ap-southeast-1.aliyuncs.com"),
 		"ap-northeast-2": dara.String("eiam.ap-northeast-2.aliyuncs.com"),
@@ -1408,7 +1409,7 @@ func (client *Client) CheckInstanceForDelete(request *CheckInstanceForDeleteRequ
 
 // Summary:
 //
-// Determines whether an instance has the feature of a specific module.
+// Determines whether an instance has the capability of a specific module.
 //
 // @param request - CheckInstanceModuleStatusRequest
 //
@@ -1433,6 +1434,14 @@ func (client *Client) CheckInstanceModuleStatusWithOptions(request *CheckInstanc
 
 	if !dara.IsNil(request.ModuleKey) {
 		query["ModuleKey"] = request.ModuleKey
+	}
+
+	if !dara.IsNil(request.ResourceLabelKey) {
+		query["ResourceLabelKey"] = request.ResourceLabelKey
+	}
+
+	if !dara.IsNil(request.ResourceLabelValue) {
+		query["ResourceLabelValue"] = request.ResourceLabelValue
 	}
 
 	if !dara.IsNil(request.SubFeatureKey) {
@@ -1464,7 +1473,7 @@ func (client *Client) CheckInstanceModuleStatusWithOptions(request *CheckInstanc
 
 // Summary:
 //
-// Determines whether an instance has the feature of a specific module.
+// Determines whether an instance has the capability of a specific module.
 //
 // @param request - CheckInstanceModuleStatusRequest
 //
@@ -14254,7 +14263,7 @@ func (client *Client) ListApplicationTokens(request *ListApplicationTokensReques
 
 // Summary:
 //
-// Queries information about one or more EIAM applications by using paged query. Paging is supported.
+// Queries information about one or more EIAM applications by using paging.
 //
 // @param request - ListApplicationsRequest
 //
@@ -14358,7 +14367,7 @@ func (client *Client) ListApplicationsWithOptions(request *ListApplicationsReque
 
 // Summary:
 //
-// Queries information about one or more EIAM applications by using paged query. Paging is supported.
+// Queries information about one or more EIAM applications by using paging.
 //
 // @param request - ListApplicationsRequest
 //
@@ -17196,6 +17205,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.ServiceManaged) {
+		query["ServiceManaged"] = request.ServiceManaged
+	}
+
 	if !dara.IsNil(request.Status) {
 		query["Status"] = request.Status
 	}
@@ -17350,7 +17363,7 @@ func (client *Client) ListNetworkAccessEndpointAvailableZones(request *ListNetwo
 
 // Summary:
 //
-// Lists the network endpoints for an IDaaS EIAM instance.
+// Queries the list of network access endpoints under an IDaaS EIAM instance.
 //
 // @param request - ListNetworkAccessEndpointsRequest
 //
@@ -17418,7 +17431,7 @@ func (client *Client) ListNetworkAccessEndpointsWithOptions(request *ListNetwork
 
 // Summary:
 //
-// Lists the network endpoints for an IDaaS EIAM instance.
+// Queries the list of network access endpoints under an IDaaS EIAM instance.
 //
 // @param request - ListNetworkAccessEndpointsRequest
 //

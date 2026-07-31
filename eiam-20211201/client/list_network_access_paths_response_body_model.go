@@ -16,7 +16,7 @@ type iListNetworkAccessPathsResponseBody interface {
 }
 
 type ListNetworkAccessPathsResponseBody struct {
-	// The list of network access endpoint access paths.
+	// The list of network access endpoint paths.
 	NetworkAccessPaths []*ListNetworkAccessPathsResponseBodyNetworkAccessPaths `json:"NetworkAccessPaths,omitempty" xml:"NetworkAccessPaths,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,70 +66,73 @@ func (s *ListNetworkAccessPathsResponseBody) Validate() error {
 }
 
 type ListNetworkAccessPathsResponseBodyNetworkAccessPaths struct {
-	// The time when the dedicated network access endpoint access path was created, in UNIX timestamp format. Unit: milliseconds.
+	// The creation time of the dedicated network access endpoint path. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime                 *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CrossRegionReplicationRole *string `json:"CrossRegionReplicationRole,omitempty" xml:"CrossRegionReplicationRole,omitempty"`
 	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The dedicated network access endpoint ID.
+	// The ID of the dedicated network access endpoint.
 	//
 	// example:
 	//
 	// nae_examplexxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// The ID of the dedicated network access endpoint access path.
+	// The ID of the dedicated network access endpoint path.
 	//
 	// example:
 	//
 	// nap_examplexxx
 	NetworkAccessPathId *string `json:"NetworkAccessPathId,omitempty" xml:"NetworkAccessPathId,omitempty"`
-	// The ENI ID used by the dedicated network access endpoint access path.
+	// The ID of the ENI used by the dedicated network access endpoint path.
 	//
 	// example:
 	//
 	// eni-examplexxx
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The private endpoint of the ENI used by the dedicated network access endpoint access path on the private network.
+	// The private endpoint of the ENI used by the dedicated network access endpoint path.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The status of the dedicated network access endpoint access path. Valid values:
+	// The status of the dedicated network access endpoint path. Valid values:
 	//
 	//
 	//
-	// - pending: pending initialization.
+	// - pending: Pending initialization.
 	//
-	// - creating: being created.
+	// - creating: Being created.
 	//
-	// - running: running.
+	// - running: Running.
 	//
-	// - deleting: being deleted.
+	// - deleting: Being deleted.
 	//
 	// example:
 	//
 	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the dedicated network access endpoint access path was last updated, in UNIX timestamp format. Unit: milliseconds.
+	// The last update time of the dedicated network access endpoint path. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The vSwitch ID to which the ENI of the dedicated network access endpoint access path belongs.
+	// The ID of the vSwitch to which the ENI of the dedicated network access endpoint path belongs.
 	//
 	// example:
 	//
 	// vsw-examplexxx
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcRegionId *string `json:"VpcRegionId,omitempty" xml:"VpcRegionId,omitempty"`
 }
 
 func (s ListNetworkAccessPathsResponseBodyNetworkAccessPaths) String() string {
@@ -142,6 +145,10 @@ func (s ListNetworkAccessPathsResponseBodyNetworkAccessPaths) GoString() string 
 
 func (s *ListNetworkAccessPathsResponseBodyNetworkAccessPaths) GetCreateTime() *int64 {
 	return s.CreateTime
+}
+
+func (s *ListNetworkAccessPathsResponseBodyNetworkAccessPaths) GetCrossRegionReplicationRole() *string {
+	return s.CrossRegionReplicationRole
 }
 
 func (s *ListNetworkAccessPathsResponseBodyNetworkAccessPaths) GetInstanceId() *string {
@@ -176,8 +183,21 @@ func (s *ListNetworkAccessPathsResponseBodyNetworkAccessPaths) GetVSwitchId() *s
 	return s.VSwitchId
 }
 
+func (s *ListNetworkAccessPathsResponseBodyNetworkAccessPaths) GetVpcId() *string {
+	return s.VpcId
+}
+
+func (s *ListNetworkAccessPathsResponseBodyNetworkAccessPaths) GetVpcRegionId() *string {
+	return s.VpcRegionId
+}
+
 func (s *ListNetworkAccessPathsResponseBodyNetworkAccessPaths) SetCreateTime(v int64) *ListNetworkAccessPathsResponseBodyNetworkAccessPaths {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *ListNetworkAccessPathsResponseBodyNetworkAccessPaths) SetCrossRegionReplicationRole(v string) *ListNetworkAccessPathsResponseBodyNetworkAccessPaths {
+	s.CrossRegionReplicationRole = &v
 	return s
 }
 
@@ -218,6 +238,16 @@ func (s *ListNetworkAccessPathsResponseBodyNetworkAccessPaths) SetUpdateTime(v i
 
 func (s *ListNetworkAccessPathsResponseBodyNetworkAccessPaths) SetVSwitchId(v string) *ListNetworkAccessPathsResponseBodyNetworkAccessPaths {
 	s.VSwitchId = &v
+	return s
+}
+
+func (s *ListNetworkAccessPathsResponseBodyNetworkAccessPaths) SetVpcId(v string) *ListNetworkAccessPathsResponseBodyNetworkAccessPaths {
+	s.VpcId = &v
+	return s
+}
+
+func (s *ListNetworkAccessPathsResponseBodyNetworkAccessPaths) SetVpcRegionId(v string) *ListNetworkAccessPathsResponseBodyNetworkAccessPaths {
+	s.VpcRegionId = &v
 	return s
 }
 

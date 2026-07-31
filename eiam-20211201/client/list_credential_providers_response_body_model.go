@@ -30,7 +30,7 @@ type ListCredentialProvidersResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned by this call.
+	// The pagination token returned in this call.
 	//
 	// example:
 	//
@@ -117,19 +117,15 @@ func (s *ListCredentialProvidersResponseBody) Validate() error {
 }
 
 type ListCredentialProvidersResponseBodyCredentialProviders struct {
-	// The creation time of the credential provider. This value is a UNIX timestamp in milliseconds.
+	// The time when the credential provider was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1649830225000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The credential provider configuration.
+	// The configuration of the credential provider.
 	CredentialProviderConfig *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfig `json:"CredentialProviderConfig,omitempty" xml:"CredentialProviderConfig,omitempty" type:"Struct"`
 	// The creation type of the credential provider. Valid values:
-	//
-	// - system_init: Created by the system.
-	//
-	// - user_custom: Created by the user.
 	//
 	// example:
 	//
@@ -141,13 +137,13 @@ type ListCredentialProvidersResponseBodyCredentialProviders struct {
 	//
 	// atp_01kr2cmj5gxxx4fvmls2e93dxxxxx
 	CredentialProviderId *string `json:"CredentialProviderId,omitempty" xml:"CredentialProviderId,omitempty"`
-	// The credential provider identifier.
+	// The business identifier of the credential provider.
 	//
 	// example:
 	//
 	// test_example_identifier
 	CredentialProviderIdentifier *string `json:"CredentialProviderIdentifier,omitempty" xml:"CredentialProviderIdentifier,omitempty"`
-	// The credential provider name.
+	// The name of the credential provider.
 	//
 	// example:
 	//
@@ -155,15 +151,11 @@ type ListCredentialProvidersResponseBodyCredentialProviders struct {
 	CredentialProviderName *string `json:"CredentialProviderName,omitempty" xml:"CredentialProviderName,omitempty"`
 	// The credential provider type. Valid values:
 	//
-	// - oauth: OAuth credential provider.
-	//
-	// - jwt: JWT credential provider.
-	//
 	// example:
 	//
 	// oauth
 	CredentialProviderType *string `json:"CredentialProviderType,omitempty" xml:"CredentialProviderType,omitempty"`
-	// The description.
+	// The description of the credential provider.
 	//
 	// example:
 	//
@@ -177,15 +169,11 @@ type ListCredentialProvidersResponseBodyCredentialProviders struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The credential provider status. Valid values:
 	//
-	// - enabled: Enabled.
-	//
-	// - disabled: Disabled.
-	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The update time of the credential provider. This value is a UNIX timestamp in milliseconds.
+	// The time when the credential provider was last updated. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -310,13 +298,11 @@ func (s *ListCredentialProvidersResponseBodyCredentialProviders) Validate() erro
 }
 
 type ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfig struct {
-	// The configuration of the JWT credential provider.
+	// The configuration of the JWT-type credential provider.
 	JwtProviderConfig *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigJwtProviderConfig `json:"JwtProviderConfig,omitempty" xml:"JwtProviderConfig,omitempty" type:"Struct"`
-	// The configuration of the OAuth credential provider.
+	// The configuration of the OAuth-type credential provider.
 	OAuthProviderConfig *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig `json:"OAuthProviderConfig,omitempty" xml:"OAuthProviderConfig,omitempty" type:"Struct"`
-	// The list of credential IDs that correspond to the sensitive configuration of the credential provider.
-	//
-	// > The system securely stores the sensitive configuration of the credential provider as credentials.
+	// The list of credential IDs that correspond to the sensitive configurations of the credential provider.
 	ProviderCredentialIds []*string `json:"ProviderCredentialIds,omitempty" xml:"ProviderCredentialIds,omitempty" type:"Repeated"`
 }
 
@@ -372,7 +358,7 @@ func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProvide
 type ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigJwtProviderConfig struct {
 	// The list of allowed JWT issuers.
 	AllowedTokenIssuers []*string `json:"AllowedTokenIssuers,omitempty" xml:"AllowedTokenIssuers,omitempty" type:"Repeated"`
-	// Indicates whether the JWT derived short token feature is enabled.
+	// Specifies whether to enable the JWT-derived short token capability.
 	//
 	// example:
 	//
@@ -384,7 +370,7 @@ type ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderCon
 	//
 	// 900
 	Expiration *int32 `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	// Indicates whether JWT expiration cleanup is enabled.
+	// Specifies whether to enable JWT expiration cleanup.
 	//
 	// example:
 	//
@@ -471,22 +457,37 @@ func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProvide
 }
 
 type ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig struct {
-	// The client_id in the OAuth protocol, which is the client ID.
+	// The endpoint URL used to guide users through authorization. Conditionally required: this parameter is required when AuthorizationFlow is set to user_federation and ProviderVendor is set to custom. For preset vendors, this value can be automatically populated through DiscoveryUrl.
+	AuthorizationEndpoint *string `json:"AuthorizationEndpoint,omitempty" xml:"AuthorizationEndpoint,omitempty"`
+	// The OAuth authorization flow type. Valid values:
+	//
+	// - m2m: machine-to-machine (2LO, Client Credentials).
+	//
+	// - user_federation: user federation (3LO, Authorization Code).
+	AuthorizationFlow *string `json:"AuthorizationFlow,omitempty" xml:"AuthorizationFlow,omitempty"`
+	// The client_id in the OAuth protocol.
 	//
 	// example:
 	//
 	// client_id_example_xxx
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The URL of the discovery document used to automatically obtain OAuth endpoint configurations. Conditionally optional: used when AuthorizationFlow is set to user_federation. If DiscoveryUrl is not provided, you must manually configure fields such as TokenEndpoint and AuthorizationEndpoint.
+	DiscoveryUrl *string `json:"DiscoveryUrl,omitempty" xml:"DiscoveryUrl,omitempty"`
+	Issuer       *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The method used to generate the PKCE code_challenge. Default value: s256.
+	PkceChallengeMethod *string `json:"PkceChallengeMethod,omitempty" xml:"PkceChallengeMethod,omitempty"`
+	// Specifies whether to use the PKCE extension to enhance security. We recommend that you always enable this feature.
+	PkceEnabled *bool `json:"PkceEnabled,omitempty" xml:"PkceEnabled,omitempty"`
+	// The preset vendor or custom configuration. Optional. Default value: custom.
+	ProviderVendor *string `json:"ProviderVendor,omitempty" xml:"ProviderVendor,omitempty"`
 	// The scope in the OAuth protocol, which specifies the permission scope.
-	//
-	// > The Scope configuration of the OAuth credential provider serves as the default value. If the scope parameter is not specified when calling the DeveloperAPI to obtain an OAuth access token, the Scope configuration of the credential provider is used for token issuance.
-	//
-	// 	Notice: Multiple Scope values are separated by spaces.
 	//
 	// example:
 	//
 	// example:test_01 example:test_02
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The redirect URI automatically generated by the system when the credential provider is created. Configure this value as the redirect_uri in the OAuth provider.
+	SystemRedirectUri *string `json:"SystemRedirectUri,omitempty" xml:"SystemRedirectUri,omitempty"`
 	// The token endpoint of the OAuth protocol.
 	//
 	// example:
@@ -503,16 +504,58 @@ func (s ListCredentialProvidersResponseBodyCredentialProvidersCredentialProvider
 	return s.String()
 }
 
+func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig) GetAuthorizationEndpoint() *string {
+	return s.AuthorizationEndpoint
+}
+
+func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig) GetAuthorizationFlow() *string {
+	return s.AuthorizationFlow
+}
+
 func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig) GetClientId() *string {
 	return s.ClientId
+}
+
+func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig) GetDiscoveryUrl() *string {
+	return s.DiscoveryUrl
+}
+
+func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig) GetIssuer() *string {
+	return s.Issuer
+}
+
+func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig) GetPkceChallengeMethod() *string {
+	return s.PkceChallengeMethod
+}
+
+func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig) GetPkceEnabled() *bool {
+	return s.PkceEnabled
+}
+
+func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig) GetProviderVendor() *string {
+	return s.ProviderVendor
 }
 
 func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig) GetScope() *string {
 	return s.Scope
 }
 
+func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig) GetSystemRedirectUri() *string {
+	return s.SystemRedirectUri
+}
+
 func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig) GetTokenEndpoint() *string {
 	return s.TokenEndpoint
+}
+
+func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig) SetAuthorizationEndpoint(v string) *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig {
+	s.AuthorizationEndpoint = &v
+	return s
+}
+
+func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig) SetAuthorizationFlow(v string) *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig {
+	s.AuthorizationFlow = &v
+	return s
 }
 
 func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig) SetClientId(v string) *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig {
@@ -520,8 +563,38 @@ func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProvide
 	return s
 }
 
+func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig) SetDiscoveryUrl(v string) *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig {
+	s.DiscoveryUrl = &v
+	return s
+}
+
+func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig) SetIssuer(v string) *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig {
+	s.Issuer = &v
+	return s
+}
+
+func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig) SetPkceChallengeMethod(v string) *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig {
+	s.PkceChallengeMethod = &v
+	return s
+}
+
+func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig) SetPkceEnabled(v bool) *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig {
+	s.PkceEnabled = &v
+	return s
+}
+
+func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig) SetProviderVendor(v string) *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig {
+	s.ProviderVendor = &v
+	return s
+}
+
 func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig) SetScope(v string) *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig {
 	s.Scope = &v
+	return s
+}
+
+func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig) SetSystemRedirectUri(v string) *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig {
+	s.SystemRedirectUri = &v
 	return s
 }
 
