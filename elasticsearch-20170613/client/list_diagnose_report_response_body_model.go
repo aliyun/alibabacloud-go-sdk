@@ -154,7 +154,7 @@ type ListDiagnoseReportResponseBodyResult struct {
 	//
 	// - INNER: internally triggered
 	//
-	// - USER: manually triggered by the user.
+	// - USER: manually triggered by the user
 	//
 	// example:
 	//
@@ -365,7 +365,7 @@ type ListDiagnoseReportResponseBodyResultDiagnoseItemsDetail struct {
 	//
 	// - CONSOLE_API: console-triggered
 	//
-	// - ES_API: API-triggered.
+	// - ES_API: API-triggered
 	//
 	// example:
 	//

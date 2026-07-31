@@ -80,7 +80,7 @@ type ListLogstashLogResponseBodyResult struct {
 	//
 	// ls-cn-v0h1kzca****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The log level. Valid values: trace, debug, info, warn, and error. GC logs do not have a level.
+	// The log level. Valid values include trace, debug, info, warn, and error. GC logs do not have a level.
 	//
 	// example:
 	//

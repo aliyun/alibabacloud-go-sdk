@@ -68,7 +68,7 @@ type DescribeSnapshotSettingResponseBodyResult struct {
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The automatic backup time configuration, specified as a Quartz Cron expression.
+	// The automatic backup time configuration, which uses a Quartz Cron expression.
 	//
 	// example:
 	//

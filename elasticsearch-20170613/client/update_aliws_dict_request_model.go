@@ -17,7 +17,7 @@ type iUpdateAliwsDictRequest interface {
 
 type UpdateAliwsDictRequest struct {
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
-	// A unique token used to ensure idempotence of the request. The client generates this value. The value must be unique across different requests and cannot exceed 64 ASCII characters in length.
+	// A unique token used to ensure the idempotence of the request. The client generates this value. It must be unique across different requests and cannot exceed 64 ASCII characters in length.
 	//
 	// example:
 	//

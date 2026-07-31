@@ -22,7 +22,7 @@ type GrayPublishResponseBody struct {
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return Result.
+	// The returned result.
 	//
 	// example:
 	//

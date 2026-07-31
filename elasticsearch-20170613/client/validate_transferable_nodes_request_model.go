@@ -86,7 +86,7 @@ type ValidateTransferableNodesRequestBody struct {
 	//
 	// 9200
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The zone ID of the instance node. For example, the ID of Zone C in the China (Shanghai) region is cn-shanghai-c.
+	// The zone ID of the instance node. For example, the zone ID for Shanghai Zone C is cn-shanghai-c.
 	//
 	// example:
 	//

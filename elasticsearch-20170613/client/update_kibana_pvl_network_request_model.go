@@ -28,7 +28,7 @@ type UpdateKibanaPvlNetworkRequest struct {
 	EndpointName *string `json:"endpointName,omitempty" xml:"endpointName,omitempty"`
 	// The list of security groups.
 	SecurityGroups []*string `json:"securityGroups,omitempty" xml:"securityGroups,omitempty" type:"Repeated"`
-	// Used to ensure the idempotency of the request.
+	// A client token that is used to ensure the idempotence of the request.
 	//
 	// example:
 	//

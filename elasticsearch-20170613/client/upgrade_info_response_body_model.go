@@ -16,13 +16,13 @@ type iUpgradeInfoResponseBody interface {
 }
 
 type UpgradeInfoResponseBody struct {
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Result body
+	// The result body.
 	Result *UpgradeInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *UpgradeInfoResponseBody) Validate() error {
 }
 
 type UpgradeInfoResponseBodyResult struct {
-	// Upgrade information.
+	// The upgrade information.
 	UpgradeInfo *UpgradeInfoResponseBodyResultUpgradeInfo `json:"UpgradeInfo,omitempty" xml:"UpgradeInfo,omitempty" type:"Struct"`
 }
 
@@ -93,43 +93,43 @@ func (s *UpgradeInfoResponseBodyResult) Validate() error {
 }
 
 type UpgradeInfoResponseBodyResultUpgradeInfo struct {
-	// Current repo version.
+	// The current repo version.
 	//
 	// example:
 	//
 	// 1.7.3
 	CurRepoVersion *string `json:"CurRepoVersion,omitempty" xml:"CurRepoVersion,omitempty"`
-	// Upgradable repo version.
+	// The repo version available for upgrade.
 	//
 	// example:
 	//
 	// 1.7.3
 	UpdateRepoVersion *string `json:"UpdateRepoVersion,omitempty" xml:"UpdateRepoVersion,omitempty"`
-	// Indicates whether an upgradable version exists.
+	// Indicates whether an upgradeable version is available.
 	//
 	// example:
 	//
 	// false
 	Upgrade *bool `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
-	// Current Milvus version
+	// The current kernel version.
 	//
 	// example:
 	//
 	// 2.2.4
 	CurApackVersion *string `json:"curApackVersion,omitempty" xml:"curApackVersion,omitempty"`
-	// Current ES version
+	// The current Elasticsearch version.
 	//
 	// example:
 	//
 	// 8.17.0
 	CurEsVersion *string `json:"curEsVersion,omitempty" xml:"curEsVersion,omitempty"`
-	// Upgradable Milvus version.
+	// The kernel version available for upgrade.
 	//
 	// example:
 	//
 	// 2.2.4
 	UpgradeApackVersion *string `json:"upgradeApackVersion,omitempty" xml:"upgradeApackVersion,omitempty"`
-	// Upgradable ES version
+	// The Elasticsearch version available for upgrade.
 	//
 	// example:
 	//

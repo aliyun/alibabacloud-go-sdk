@@ -28,11 +28,11 @@ type ValidateShrinkNodesRequest struct {
 	//
 	// 2
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// Specifies whether to ignore the cluster health status.
+	// Specifies whether to ignore the cluster health status. Valid values:
 	//
-	// - true: ignores the cluster health status.
+	// - true: Ignored.
 	//
-	// - false (default): does not ignore the cluster health status.
+	// - false (default): Not ignored.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type ValidateShrinkNodesRequestBody struct {
 	//
 	// 192.168.xx.xx
 	Host *string `json:"host,omitempty" xml:"host,omitempty"`
-	// The node name of the cloud-native ACK-based cluster. You can call the [ListAllNode](https://help.aliyun.com/document_detail/183958.html) operation to obtain the node name.
+	// The node name of the cloud-native ACK cluster. You can call the [ListAllNode](https://help.aliyun.com/document_detail/183958.html) operation to obtain the node name.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type ValidateShrinkNodesRequestBody struct {
 	//
 	// 9200
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The zone ID of the node in the instance. For example, the zone ID of China (Shanghai) Zone C is cn-shanghai-c.
+	// The zone ID of the instance node. For example, the zone ID of Shanghai Zone C is cn-shanghai-c.
 	//
 	// example:
 	//

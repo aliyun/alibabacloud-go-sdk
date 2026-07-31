@@ -65,11 +65,11 @@ type DescribeCollectorResponseBodyResult struct {
 	CollectorPaths []*string `json:"collectorPaths,omitempty" xml:"collectorPaths,omitempty" type:"Repeated"`
 	// The configuration file information of the collector.
 	Configs []*DescribeCollectorResponseBodyResultConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	// Specifies whether to perform only a dry run without creating the collector. Valid values:
+	// Indicates whether the collector is only validated without being created. Valid values:
 	//
-	// - true: Only validates the request without creating the collector.
+	// - true: Only validates without creating.
 	//
-	// - false: Validates the request and creates the collector.
+	// - false: Validates and creates.
 	//
 	// example:
 	//
@@ -121,7 +121,7 @@ type DescribeCollectorResponseBodyResult struct {
 	ResVersion *string `json:"resVersion,omitempty" xml:"resVersion,omitempty"`
 	// The collector status. Valid values:
 	//
-	// - activing: being activated
+	// - activing: being activated.
 	//
 	// - active: activated.
 	//
@@ -332,9 +332,9 @@ func (s *DescribeCollectorResponseBodyResultConfigs) Validate() error {
 type DescribeCollectorResponseBodyResultExtendConfigs struct {
 	// The configuration type. Valid values:
 	//
-	// - collectorTargetInstance: the collector Output
+	// - collectorTargetInstance: the collector Output.
 	//
-	// - collectorDeployMachine: the deployment machine of the collector
+	// - collectorDeployMachine: the deployment machine of the collector.
 	//
 	// - collectorElasticsearchForKibana: the Elasticsearch instance that supports Kibana Dashboard.
 	//
@@ -365,7 +365,7 @@ type DescribeCollectorResponseBodyResultExtendConfigs struct {
 	// es-cn-n6w1o1x0w001c****-kibana.internal.elasticsearch.aliyuncs.com:5601
 	Host  *string   `json:"host,omitempty" xml:"host,omitempty"`
 	Hosts []*string `json:"hosts,omitempty" xml:"hosts,omitempty" type:"Repeated"`
-	// The ID of the instance associated with the collector. When **configType*	- is set to **collectorTargetInstance**, this parameter indicates the instance ID of the collector Output. When **configType*	- is set to **collectorDeployMachines*	- and **type*	- is set to **ACKCluster**, this parameter indicates the ACK (Container Kubernetes) cluster ID.
+	// The ID of the instance associated with the collector. When **configType*	- is set to **collectorTargetInstance**, this is the instance ID of the collector Output. When **configType*	- is set to **collectorDeployMachines*	- and **type*	- is set to **ACKCluster**, this is the ACK (Container Kubernetes) cluster ID.
 	//
 	// example:
 	//
@@ -391,13 +391,13 @@ type DescribeCollectorResponseBodyResultExtendConfigs struct {
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The number of pods in the ACK cluster from which data is successfully collected.
+	// The number of pods that are successfully collected in the ACK cluster.
 	//
 	// example:
 	//
 	// 8
 	SuccessPodsCount *string `json:"successPodsCount,omitempty" xml:"successPodsCount,omitempty"`
-	// The total number of pods in the ACK cluster from which data is collected.
+	// The total number of pods collected in the ACK cluster.
 	//
 	// example:
 	//
@@ -407,7 +407,7 @@ type DescribeCollectorResponseBodyResultExtendConfigs struct {
 	//
 	// - ECSInstanceId: ECS
 	//
-	// - ACKCluster: Container Kubernetes.
+	// - ACKCluster: Container Kubernetes
 	//
 	// example:
 	//

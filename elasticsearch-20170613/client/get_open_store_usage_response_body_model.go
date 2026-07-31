@@ -68,7 +68,7 @@ type GetOpenStoreUsageResponseBodyResult struct {
 	//
 	// 204800
 	CurrentUsage *int64 `json:"currentUsage,omitempty" xml:"currentUsage,omitempty"`
-	// The OpenStore storage usage on the previous day. Unit: bytes.
+	// The OpenStore storage usage of the previous day. Unit: bytes.
 	//
 	// example:
 	//

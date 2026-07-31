@@ -26,7 +26,7 @@ type RecommendTemplatesRequest struct {
 	//
 	// - log: log scenario
 	//
-	// > Commercial model instances support the general-purpose, data analytics, database acceleration, and search scenarios. Advanced Edition instances support only the log scenario.
+	// > Standard instances support general-purpose, data analytics, database acceleration, and search scenarios. Advanced Edition supports only the log scenario.
 	//
 	// This parameter is required.
 	//

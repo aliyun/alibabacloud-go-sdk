@@ -24,7 +24,7 @@ type OpenDiagnosisResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the intelligent O&M feature is enabled. Valid values:
 	//
-	// - true: Enabled.
+	// - true: Succeeded.
 	//
 	// - false: Failed.
 	//

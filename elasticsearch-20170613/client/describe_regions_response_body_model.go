@@ -72,7 +72,7 @@ type DescribeRegionsResponseBodyResult struct {
 	//
 	// https://elasticsearch-cn-hangzhou.console.aliyun.com
 	ConsoleEndpoint *string `json:"consoleEndpoint,omitempty" xml:"consoleEndpoint,omitempty"`
-	// The name of the region.
+	// The region name.
 	//
 	// example:
 	//

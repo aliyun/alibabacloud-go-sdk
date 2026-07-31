@@ -24,9 +24,9 @@ type CloseDiagnosisResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the intelligent O&M feature is disabled. Valid values:
 	//
-	// - true: Succeeded.
+	// - true: The feature is disabled.
 	//
-	// - false: Failed.
+	// - false: The feature failed to be disabled.
 	//
 	// example:
 	//

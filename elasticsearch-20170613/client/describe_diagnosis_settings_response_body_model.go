@@ -66,14 +66,14 @@ type DescribeDiagnosisSettingsResponseBodyResult struct {
 	DailyLimit           *int32  `json:"dailyLimit,omitempty" xml:"dailyLimit,omitempty"`
 	DailyScheduleEnabled *bool   `json:"dailyScheduleEnabled,omitempty" xml:"dailyScheduleEnabled,omitempty"`
 	DiagnosisMode        *string `json:"diagnosisMode,omitempty" xml:"diagnosisMode,omitempty"`
-	// The scenario of intelligent O&M.
+	// The common scenarios of intelligent diagnosis and optimization.
 	//
 	// example:
 	//
 	// Business Search
 	Scene         *string   `json:"scene,omitempty" xml:"scene,omitempty"`
 	SelectedItems []*string `json:"selectedItems,omitempty" xml:"selectedItems,omitempty" type:"Repeated"`
-	// The timestamp when the intelligent O&M scenario was last updated.
+	// The UNIX timestamp when the intelligent diagnosis and optimization common scenarios were last updated.
 	//
 	// example:
 	//

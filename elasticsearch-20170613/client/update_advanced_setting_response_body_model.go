@@ -22,9 +22,9 @@ type UpdateAdvancedSettingResponseBody struct {
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result. Valid values:
+	// The returned result:
 	//
-	// - true: The garbage collector configuration is changed.
+	// - true: The garbage collector configuration was changed successfully.
 	//
 	// - false: The garbage collector configuration failed to be changed.
 	//

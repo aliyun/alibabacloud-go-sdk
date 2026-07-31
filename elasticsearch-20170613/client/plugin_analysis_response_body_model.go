@@ -16,13 +16,13 @@ type iPluginAnalysisResponseBody interface {
 }
 
 type PluginAnalysisResponseBody struct {
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return Result.
+	// The returned result.
 	Result []*PluginAnalysisResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -66,31 +66,31 @@ func (s *PluginAnalysisResponseBody) Validate() error {
 }
 
 type PluginAnalysisResponseBodyResult struct {
-	// Plugin Description.
+	// The plug-in description.
 	//
 	// example:
 	//
 	// plugin description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Plugin version.
+	// The plug-in version.
 	//
 	// example:
 	//
 	// 8.17.0
 	ElasticsearchVersion *string `json:"elasticsearchVersion,omitempty" xml:"elasticsearchVersion,omitempty"`
-	// Plugin Name.
+	// The plug-in name.
 	//
 	// example:
 	//
 	// plugin_name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Plugin security policy.
+	// The security policy of the plug-in.
 	//
 	// example:
 	//
 	// null
 	SecurityPolicy *string `json:"securityPolicy,omitempty" xml:"securityPolicy,omitempty"`
-	// Plugin Version.
+	// The plug-in version.
 	//
 	// example:
 	//

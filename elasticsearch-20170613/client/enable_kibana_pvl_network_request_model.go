@@ -11,6 +11,8 @@ type iEnableKibanaPvlNetworkRequest interface {
   GoString() string
   SetEndpointName(v string) *EnableKibanaPvlNetworkRequest
   GetEndpointName() *string 
+  SetManagedSecurityGroup(v bool) *EnableKibanaPvlNetworkRequest
+  GetManagedSecurityGroup() *bool 
   SetSecurityGroups(v []*string) *EnableKibanaPvlNetworkRequest
   GetSecurityGroups() []*string 
   SetVSwitchIdsZone(v []*EnableKibanaPvlNetworkRequestVSwitchIdsZone) *EnableKibanaPvlNetworkRequest
@@ -28,9 +30,8 @@ type EnableKibanaPvlNetworkRequest struct {
   // 
   // es-cn-27a3mul6l000xxx-kibana-endpoint
   EndpointName *string `json:"endpointName,omitempty" xml:"endpointName,omitempty"`
+  ManagedSecurityGroup *bool `json:"managedSecurityGroup,omitempty" xml:"managedSecurityGroup,omitempty"`
   // The security groups.
-  // 
-  // This parameter is required.
   SecurityGroups []*string `json:"securityGroups,omitempty" xml:"securityGroups,omitempty" type:"Repeated"`
   // The vSwitch and zone information.
   VSwitchIdsZone []*EnableKibanaPvlNetworkRequestVSwitchIdsZone `json:"vSwitchIdsZone,omitempty" xml:"vSwitchIdsZone,omitempty" type:"Repeated"`
@@ -60,6 +61,10 @@ func (s *EnableKibanaPvlNetworkRequest) GetEndpointName() *string  {
   return s.EndpointName
 }
 
+func (s *EnableKibanaPvlNetworkRequest) GetManagedSecurityGroup() *bool  {
+  return s.ManagedSecurityGroup
+}
+
 func (s *EnableKibanaPvlNetworkRequest) GetSecurityGroups() []*string  {
   return s.SecurityGroups
 }
@@ -78,6 +83,11 @@ func (s *EnableKibanaPvlNetworkRequest) GetClientToken() *string  {
 
 func (s *EnableKibanaPvlNetworkRequest) SetEndpointName(v string) *EnableKibanaPvlNetworkRequest {
   s.EndpointName = &v
+  return s
+}
+
+func (s *EnableKibanaPvlNetworkRequest) SetManagedSecurityGroup(v bool) *EnableKibanaPvlNetworkRequest {
+  s.ManagedSecurityGroup = &v
   return s
 }
 

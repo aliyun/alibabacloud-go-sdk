@@ -48,7 +48,7 @@ type iCreateInstanceRequest interface {
 }
 
 type CreateInstanceRequest struct {
-	// Coordinating node configuration.
+	// The client node configuration.
 	ClientNodeConfiguration *ClientNodeConfiguration `json:"clientNodeConfiguration,omitempty" xml:"clientNodeConfiguration,omitempty"`
 	// The instance name.
 	//
@@ -56,7 +56,7 @@ type CreateInstanceRequest struct {
 	//
 	// es
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Elastic node configuration.
+	// The elastic node configuration.
 	ElasticDataNodeConfiguration *ElasticDataNodeConfiguration `json:"elasticDataNodeConfiguration,omitempty" xml:"elasticDataNodeConfiguration,omitempty"`
 	// The access password of the instance. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=). The password must be 8 to 32 characters in length.
 	//
@@ -84,7 +84,7 @@ type CreateInstanceRequest struct {
 	//
 	// - 5.5.3_with_X-Pack
 	//
-	// > The versions listed above may not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actually supported versions.
+	// > The versions listed above may not include all versions supported by Elasticsearch instances. Call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
 	//
 	// This parameter is required.
 	//
@@ -92,7 +92,7 @@ type CreateInstanceRequest struct {
 	//
 	// 5.5.3_with_X-Pack
 	EsVersion *string `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
-	// The edition type:
+	// The edition type. Valid values:
 	//
 	// - x-pack: creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
 	//
@@ -102,17 +102,17 @@ type CreateInstanceRequest struct {
 	//
 	// advanced
 	InstanceCategory *string `json:"instanceCategory,omitempty" xml:"instanceCategory,omitempty"`
-	// Kibana node configuration.
+	// The Kibana node configuration.
 	//
-	// > We strongly recommend that you enable the Kibana node.
+	// > We strongly recommend that you enable Kibana nodes.
 	KibanaConfiguration *KibanaNodeConfiguration `json:"kibanaConfiguration,omitempty" xml:"kibanaConfiguration,omitempty"`
-	// Dedicated master node configuration.
+	// The dedicated master node configuration.
 	//
-	// > In the Beijing, Shanghai, Hangzhou, and Shenzhen regions, when you use createInstance to create an instance with next-generation cloud disk dedicated master nodes, you must specify the instance family with the `.new` suffix, for example, elasticsearch.sn1ne.large.new.
+	// > In the Beijing, Shanghai, Hangzhou, and Shenzhen regions, when you call createInstance to create an instance with next-generation cloud disk-based dedicated master nodes, specify the instance family with the `.new` suffix. Example: elasticsearch.sn1ne.large.new.
 	MasterConfiguration *MasterNodeConfiguration `json:"masterConfiguration,omitempty" xml:"masterConfiguration,omitempty"`
-	// Network configuration.
+	// The network configuration.
 	//
-	// > Specifying IP whitelists is not supported when creating an instance.
+	// > You cannot specify an IP whitelist when creating an instance.
 	//
 	// This parameter is required.
 	NetworkConfig *NetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty"`
@@ -124,15 +124,15 @@ type CreateInstanceRequest struct {
 	//
 	// 3
 	NodeAmount *int32 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
-	// Data node configuration.
+	// The data node configuration.
 	//
-	// > In the Beijing, Shanghai, Hangzhou, and Shenzhen regions, when you use createInstance to create an instance with next-generation cloud disk data nodes, you must specify the instance family with the `.new` suffix, for example, elasticsearch.sn1ne.large.new.
+	// > In the Beijing, Shanghai, Hangzhou, and Shenzhen regions, when you call createInstance to create an instance with next-generation cloud disk-based data nodes, specify the instance family with the `.new` suffix. Example: elasticsearch.sn1ne.large.new.
 	NodeSpec *NodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty"`
-	// The billing details of the subscription instance. This parameter is required when you create a subscription instance.
+	// The payment details of the subscription instance. This parameter is required when you create a subscription instance.
 	PaymentInfo *PaymentInfo `json:"paymentInfo,omitempty" xml:"paymentInfo,omitempty"`
 	// The billing method. Valid values:
 	//
-	// - postpaid: pay-as-you-go.
+	// - postpaid: pay-as-you-go billing method.
 	//
 	// - prepaid: subscription.
 	//
@@ -146,9 +146,9 @@ type CreateInstanceRequest struct {
 	//
 	// rg-aekzu7tsu4n****
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// Instance tags.
+	// The instance tags.
 	Tags []*CreateInstanceRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// Cold data node configuration.
+	// The warm node configuration. Warm nodes are used to store cold data that is migrated from data nodes.
 	WarmNodeConfiguration *WarmNodeConfiguration `json:"warmNodeConfiguration,omitempty" xml:"warmNodeConfiguration,omitempty"`
 	// The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
 	//
@@ -156,7 +156,7 @@ type CreateInstanceRequest struct {
 	//
 	// 2
 	ZoneCount *int32 `json:"zoneCount,omitempty" xml:"zoneCount,omitempty"`
-	// Used to ensure the idempotency of the request. The parameter value is generated by the client and must be unique across different requests. The value cannot exceed 64 ASCII characters.
+	// A client token that is used to ensure the idempotence of the request. The value is generated by the client and must be unique among different requests. The maximum length is 64 ASCII characters.
 	//
 	// example:
 	//

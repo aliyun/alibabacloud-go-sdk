@@ -115,7 +115,7 @@ type ModifyElastictaskResponseBodyResultElasticExpansionTask struct {
 	//
 	// 0 0 0 ? 	- MON
 	CronExpression *string `json:"cronExpression,omitempty" xml:"cronExpression,omitempty"`
-	// The target number of elastic data nodes during peak hours.
+	// The number of elastic data nodes during peak hours.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ type ModifyElastictaskResponseBodyResultElasticShrinkTask struct {
 	//
 	// 4 4 4 ? 	- WED
 	CronExpression *string `json:"cronExpression,omitempty" xml:"cronExpression,omitempty"`
-	// The target number of elastic data nodes during off-peak hours.
+	// The number of elastic data nodes during off-peak hours.
 	//
 	// example:
 	//

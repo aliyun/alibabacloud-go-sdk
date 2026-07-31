@@ -155,7 +155,7 @@ type ListLogstashResponseBodyResult struct {
 	// postpaid
 	PaymentType     *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The status of the instance. Valid values: active (Normal), activating (Taking Effect), inactive (Frozen), and invalid (Expired).
+	// The instance status. Valid values: active (Normal), activating (taking effect), inactive (frozen), and invalid (expired).
 	//
 	// example:
 	//

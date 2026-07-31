@@ -99,7 +99,7 @@ func (s *ListTagResourcesResponseBody) Validate() error {
 }
 
 type ListTagResourcesResponseBodyHeaders struct {
-	// The resource count of TagResource resources found.
+	// The resource count of TagResource entries found.
 	//
 	// example:
 	//

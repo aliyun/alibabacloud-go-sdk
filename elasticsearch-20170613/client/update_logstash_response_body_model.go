@@ -24,9 +24,9 @@ type UpdateLogstashResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the instance information is modified. Valid values:
 	//
-	// - true: The instance information is modified.
+	// - true: Succeeded.
 	//
-	// - false: The instance information failed to be modified.
+	// - false: Failed.
 	//
 	// example:
 	//

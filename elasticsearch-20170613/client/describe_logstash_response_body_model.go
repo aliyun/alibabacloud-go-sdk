@@ -69,11 +69,11 @@ type DescribeLogstashResponseBodyResult struct {
 	//
 	// rg-aekzvowej3i****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The instance labels.
+	// The instance tags.
 	Tags []*DescribeLogstashResponseBodyResultTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The zone information.
 	ZoneInfos []*DescribeLogstashResponseBodyResultZoneInfos `json:"ZoneInfos,omitempty" xml:"ZoneInfos,omitempty" type:"Repeated"`
-	// The instance configuration.
+	// The instance configuration information.
 	//
 	// example:
 	//
@@ -85,7 +85,7 @@ type DescribeLogstashResponseBodyResult struct {
 	//
 	// 2020-02-06T14:12:03.672Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The name of the instance.
+	// The instance name.
 	//
 	// example:
 	//
@@ -108,13 +108,13 @@ type DescribeLogstashResponseBodyResult struct {
 	//
 	// 2
 	NodeAmount *int32 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
-	// The configuration of the node.
+	// The configuration information of the node.
 	NodeSpec *DescribeLogstashResponseBodyResultNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
 	// The billing method of the instance. Valid values:
 	//
 	// - prepaid: subscription
 	//
-	// - postpaid: pay-as-you-go.
+	// - postpaid: pay-as-you-go
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type DescribeLogstashResponseBodyResult struct {
 	//
 	// 2020-02-06T14:22:36.850Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// The version of the instance.
+	// The instance version.
 	//
 	// example:
 	//
@@ -411,7 +411,7 @@ func (s *DescribeLogstashResponseBodyResultTags) Validate() error {
 }
 
 type DescribeLogstashResponseBodyResultZoneInfos struct {
-	// The status of the zone. Valid values:
+	// The zone status. Valid values:
 	//
 	// - ISOLATION: offline.
 	//
@@ -617,7 +617,7 @@ type DescribeLogstashResponseBodyResultNodeSpec struct {
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The specification of the node.
+	// The node specification.
 	//
 	// example:
 	//

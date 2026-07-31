@@ -24,37 +24,37 @@ type iListEventRecordsRequest interface {
 }
 
 type ListEventRecordsRequest struct {
-	// Start time for event query.
+	// The start time of the event query.
 	//
 	// example:
 	//
 	// 1746516590000
 	BeginTime *string `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
-	// End time for event query.
+	// The end time of the event query.
 	//
 	// example:
 	//
 	// 1746775790000
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// Page number for paged query.
+	// The page number for a paged query.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// Number of entries per page for paged query.
+	// The number of entries per page for a paged query.
 	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
-	// Object content used for filtering. This parameter is optional. If empty, event records for all instances are returned. Note: The value passed must correspond to the selected filter type.
+	// The filter object content. If this parameter is left empty, event records of all instances are returned. The value varies based on the filter type.
 	//
 	// example:
 	//
 	// **
 	TermContent *string `json:"termContent,omitempty" xml:"termContent,omitempty"`
-	// Object type used for filtering. This parameter is optional. If empty, event records of all types are returned.
+	// The filter object type. If this parameter is left empty, event records of all types are returned.
 	//
 	// example:
 	//

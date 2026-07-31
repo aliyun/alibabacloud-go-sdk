@@ -24,13 +24,13 @@ type ListDeprecatedTemplatesRequest struct {
 	//
 	// component-openstore-index-template
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The page number Settings for a paged query. Paging is used to retrieve results.
+	// The page number settings for a paged query. This parameter is used for paging.
 	//
 	// example:
 	//
 	// 5
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of entries per page Settings for a paged query. Paging is used to retrieve results.
+	// The number of entries per page settings for a paged query. This parameter is used for paging.
 	//
 	// if can be null:
 	// true

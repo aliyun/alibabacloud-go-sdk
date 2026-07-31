@@ -38,7 +38,7 @@ type ListTagResourcesRequest struct {
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The list of instance IDs to query. The value is in JSON array format and can contain up to 20 items.
+	// The list of instance IDs to query. The value is in JSON array format and supports up to 20 items.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type ListTagResourcesRequest struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// Deprecated
 	//
-	// The number of entries per page in Settings for paged query and paging. This field is deprecated.
+	// The number of entries per page for paged query. This is a deprecated field. Settings for paging are no longer supported.
 	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The list of tags to query. The value is in JSON string format and can contain up to 20 items.
+	// The list of tags to query. The value is in JSON string format and contains up to 20 items.
 	//
 	// example:
 	//

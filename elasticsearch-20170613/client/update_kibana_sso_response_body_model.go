@@ -22,7 +22,7 @@ type UpdateKibanaSsoResponseBody struct {
 	//
 	// C82758DD-282F-4D48-934F-92170A33****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return Result.
+	// The returned result.
 	//
 	// example:
 	//

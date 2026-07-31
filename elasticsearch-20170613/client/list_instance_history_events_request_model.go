@@ -54,7 +54,7 @@ type ListInstanceHistoryEventsRequest struct {
 	//
 	// 1645596516000
 	EventCreateStartTime *string `json:"eventCreateStartTime,omitempty" xml:"eventCreateStartTime,omitempty"`
-	// The lifecycle status of the event.
+	// The lifecycle status object of the event.
 	EventCycleStatus []*string `json:"eventCycleStatus,omitempty" xml:"eventCycleStatus,omitempty" type:"Repeated"`
 	// The end time for querying by event execution time. Specify a timestamp in milliseconds.
 	//
@@ -96,13 +96,13 @@ type ListInstanceHistoryEventsRequest struct {
 	//
 	// 10.1.xx.xx
 	NodeIP *string `json:"nodeIP,omitempty" xml:"nodeIP,omitempty"`
-	// The starting document offset. The value must be a non-negative integer. Default value: 0.
+	// The starting document offset. The value must be a non-negative number. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of events to return. The value must be a non-negative integer. Default value: 10.
+	// The number of events to return. The value must be a non-negative number. Default value: 10.
 	//
 	// example:
 	//
@@ -260,9 +260,9 @@ func (s *ListInstanceHistoryEventsRequest) Validate() error {
 type ListInstanceHistoryEventsRequestBody struct {
 	// Specifies whether to sort in descending order. Valid values:
 	//
-	// - true (default): Yes.
+	// - true (default): yes
 	//
-	// - false: No.
+	// - false: no
 	//
 	// example:
 	//
@@ -274,7 +274,7 @@ type ListInstanceHistoryEventsRequestBody struct {
 	//
 	// - event_execute_start_time: event execution time
 	//
-	// - event_execute_finish_time: event completion time.
+	// - event_execute_finish_time: event completion time
 	//
 	// example:
 	//

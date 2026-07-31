@@ -64,7 +64,7 @@ func (s *UpdateKibanaWhiteIpsResponseBody) Validate() error {
 type UpdateKibanaWhiteIpsResponseBodyResult struct {
 	// The Kibana access whitelist.
 	KibanaIPWhitelist []*string `json:"kibanaIPWhitelist,omitempty" xml:"kibanaIPWhitelist,omitempty" type:"Repeated"`
-	// The Kibana internal-facing whitelist.
+	// The Kibana private network access whitelist.
 	KibanaPrivateIPWhitelist []*string `json:"kibanaPrivateIPWhitelist,omitempty" xml:"kibanaPrivateIPWhitelist,omitempty" type:"Repeated"`
 	// The network configuration.
 	NetworkConfig *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`

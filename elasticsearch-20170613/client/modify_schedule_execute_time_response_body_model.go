@@ -22,7 +22,7 @@ type ModifyScheduleExecuteTimeResponseBody struct {
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC47D9
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Return Result
+	// The returned result.
 	//
 	// example:
 	//

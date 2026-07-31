@@ -22,7 +22,7 @@ type CloseManagedIndexResponseBody struct {
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the cloud managed feature for the index is disabled. Valid values:
+	// Indicates whether the cloud-managed feature for the index is disabled. Valid values:
 	//
 	// - true: The feature is disabled.
 	//

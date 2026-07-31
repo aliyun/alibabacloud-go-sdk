@@ -114,7 +114,7 @@ func (s *ListEcsInstancesResponseBodyHeaders) Validate() error {
 }
 
 type ListEcsInstancesResponseBodyResult struct {
-	// The installation status of Cloud Assistant. Valid values:
+	// The Cloud Assistant installation status. Valid values:
 	//
 	// - true: Installed.
 	//
@@ -132,7 +132,7 @@ type ListEcsInstancesResponseBodyResult struct {
 	//
 	// i-bp14ncqge8wy3l3d****
 	EcsInstanceId *string `json:"ecsInstanceId,omitempty" xml:"ecsInstanceId,omitempty"`
-	// The name of the ECS instance.
+	// The ECS instance name.
 	//
 	// example:
 	//
@@ -152,13 +152,13 @@ type ListEcsInstancesResponseBodyResult struct {
 	OsType *string `json:"osType,omitempty" xml:"osType,omitempty"`
 	// The status of the ECS instance. Valid values:
 	//
-	// - running: Running.
+	// - running: running.
 	//
-	// - starting: Starting.
+	// - starting: starting.
 	//
-	// - stopping: Stopping.
+	// - stopping: stopping.
 	//
-	// - stopped: Stopped.
+	// - stopped: stopped.
 	//
 	// example:
 	//
@@ -278,7 +278,7 @@ type ListEcsInstancesResponseBodyResultCollectors struct {
 	CollectorPaths []*string `json:"collectorPaths,omitempty" xml:"collectorPaths,omitempty" type:"Repeated"`
 	// The configuration file information of the collector.
 	Configs []*ListEcsInstancesResponseBodyResultCollectorsConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	// Indicates whether the collector is only validated without being created. Valid values:
+	// Indicates whether to only validate without creating the collector. Valid values:
 	//
 	// - true: Only validates without creating.
 	//
@@ -326,7 +326,7 @@ type ListEcsInstancesResponseBodyResultCollectors struct {
 	//
 	// fileBeat
 	ResType *string `json:"resType,omitempty" xml:"resType,omitempty"`
-	// The collector version. When the machine type for collector deployment is ECS, only **6.8.5_with_community*	- is supported.
+	// The collector version. When the deployment machine type is ECS, only **6.8.5_with_community*	- is supported.
 	//
 	// example:
 	//
@@ -334,15 +334,15 @@ type ListEcsInstancesResponseBodyResultCollectors struct {
 	ResVersion *string `json:"resVersion,omitempty" xml:"resVersion,omitempty"`
 	// The collector status. Valid values:
 	//
-	// - activing: Taking effect.
+	// - activing: taking effect.
 	//
-	// - active: Active.
+	// - active: active.
 	//
 	// example:
 	//
 	// activing
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The ID of the VPC where the collector resides.
+	// The VPC ID of the collector.
 	//
 	// example:
 	//
@@ -572,13 +572,13 @@ type ListEcsInstancesResponseBodyResultCollectorsExtendConfigs struct {
 	// default_ct-cn-5i2l75bz4776****
 	GroupId *string   `json:"groupId,omitempty" xml:"groupId,omitempty"`
 	Hosts   []*string `json:"hosts,omitempty" xml:"hosts,omitempty" type:"Repeated"`
-	// The ID of the instance associated with the collector. When configType is set to collectorTargetInstance, this is the instance ID of the collector Output. When configType is set to collectorDeployMachines and type is set to ACKCluster, this is the ACK (Container Service for Kubernetes) cluster ID.
+	// The ID of the instance associated with the collector. When configType is set to collectorTargetInstance, this is the instance ID of the collector Output. When configType is set to collectorDeployMachines and type is set to ACKCluster, this is the ACK (Container Kubernetes) cluster ID.
 	//
 	// example:
 	//
 	// es-cn-nif1z89fz003i****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The type of the instance specified by the collector Output. Valid values: elasticsearch and logstash. This parameter is displayed when configType is set to collectorTargetInstance.
+	// The instance type specified in the collector Output. Valid values: elasticsearch and logstash. This parameter is displayed when configType is set to collectorTargetInstance.
 	//
 	// example:
 	//
@@ -586,7 +586,7 @@ type ListEcsInstancesResponseBodyResultCollectorsExtendConfigs struct {
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	// The list of ECS machines on which the collector is deployed. This parameter is displayed when configType is set to collectorDeployMachines and type is set to ECSInstanceId.
 	Machines []*ListEcsInstancesResponseBodyResultCollectorsExtendConfigsMachines `json:"machines,omitempty" xml:"machines,omitempty" type:"Repeated"`
-	// The transmission protocol, which must be consistent with the access protocol of the instance specified by the collector Output. Valid values: HTTP and HTTPS. This parameter is displayed when configType is set to collectorTargetInstance.
+	// The transport protocol, which must be consistent with the access protocol of the instance specified in the collector Output. Valid values: HTTP and HTTPS. This parameter is displayed when configType is set to collectorTargetInstance.
 	//
 	// example:
 	//
@@ -594,15 +594,15 @@ type ListEcsInstancesResponseBodyResultCollectorsExtendConfigs struct {
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	// The type of machine on which the collector is deployed. This parameter is displayed when configType is set to collectorDeployMachine. Valid values:
 	//
-	// - ECSInstanceId: ECS
+	// - ECSInstanceId: ECS.
 	//
-	// - ACKCluster: Container Service for Kubernetes.
+	// - ACKCluster: Container Kubernetes.
 	//
 	// example:
 	//
 	// ECSInstanceId
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The username used to access the instance specified by the collector Output. Default value: elastic. This parameter is displayed when configType is set to collectorTargetInstance or collectorElasticsearchForKibana.
+	// The username used to access the instance specified in the collector Output. Default value: elastic. This parameter is displayed when configType is set to collectorTargetInstance or collectorElasticsearchForKibana.
 	//
 	// example:
 	//
@@ -724,13 +724,13 @@ func (s *ListEcsInstancesResponseBodyResultCollectorsExtendConfigs) Validate() e
 type ListEcsInstancesResponseBodyResultCollectorsExtendConfigsMachines struct {
 	// The status of each collector on the ECS instance. Valid values:
 	//
-	// - heartOk: The heartbeat is normal.
+	// - heartOk: normal heartbeat.
 	//
-	// - heartLost: The heartbeat is abnormal.
+	// - heartLost: abnormal heartbeat.
 	//
-	// - uninstalled: Not installed.
+	// - uninstalled: not installed.
 	//
-	// - failed: Installation failed.
+	// - failed: installation failed.
 	//
 	// example:
 	//

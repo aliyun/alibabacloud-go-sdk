@@ -24,7 +24,7 @@ type GetTransferableNodesRequest struct {
 	//
 	// 1
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// The type of node for data migration. **WORKER*	- indicates a hot node. **WORKER_WARM*	- indicates a warm node.
+	// The type of nodes for data migration. **WORKER*	- indicates hot nodes. **WORKER_WARM*	- indicates warm nodes.
 	//
 	// This parameter is required.
 	//

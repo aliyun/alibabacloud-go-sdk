@@ -22,7 +22,7 @@ type DescribeKibanaSettingsResponseBody struct {
 	//
 	// F99407AB-2FA9-489E-A259-40CF6D*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Some configurable Kibana settings. For more information, see [Kibana settings](https://www.elastic.co/guide/cn/kibana/current/settings.html).
+	// The configurable Kibana settings. For more information, see [Kibana settings](https://www.elastic.co/guide/cn/kibana/current/settings.html).
 	//
 	// example:
 	//

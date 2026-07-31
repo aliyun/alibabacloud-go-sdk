@@ -62,7 +62,7 @@ func (s *UpdateWhiteIpsResponseBody) Validate() error {
 }
 
 type UpdateWhiteIpsResponseBodyResult struct {
-	// The private network internal-facing access whitelist (deprecated).
+	// The private network access whitelist (deprecated).
 	EsIPWhitelist []*string `json:"esIPWhitelist,omitempty" xml:"esIPWhitelist,omitempty" type:"Repeated"`
 	// The network configuration.
 	NetworkConfig *UpdateWhiteIpsResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
@@ -147,7 +147,7 @@ type UpdateWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList struct {
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
 	// The IP address information in the whitelist group.
 	Ips []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
-	// The whitelist type. The value is fixed as PRIVATE_ES, which indicates the private network internal-facing access whitelist.
+	// The whitelist type. The value is fixed as PRIVATE_ES, which indicates the private network access whitelist.
 	//
 	// example:
 	//

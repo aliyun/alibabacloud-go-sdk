@@ -32,7 +32,7 @@ type CloseDiagnosisRequest struct {
 	//
 	// - es: Spanish
 	//
-	// - fr: French.
+	// - fr: French
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iInitModelRequest interface {
 }
 
 type InitModelRequest struct {
-	// API key for the AI Search Open Platform
+	// The API key for the AISearch open platform.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type InitModelRequest struct {
 	//
 	// os-xfdddf*
 	ApiKey *string `json:"api_key,omitempty" xml:"api_key,omitempty"`
-	// Service registration endpoint of the AI Search Open Platform
+	// The service registration address of the AISearch open platform.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type InitModelRequest struct {
 	//
 	// ****.platform-cn-hangzhou-vpc.opensearch.aliyuncs.com
 	Host *string `json:"host,omitempty" xml:"host,omitempty"`
-	// HTTP protocol type
+	// The HTTP protocol type.
 	//
 	// This parameter is required.
 	//
@@ -46,9 +46,9 @@ type InitModelRequest struct {
 	//
 	// https
 	HttpSchema *string `json:"http_schema,omitempty" xml:"http_schema,omitempty"`
-	// Specify the models to initialize. If empty, all built-in models will be initialized.
+	// The models to initialize. If this parameter is left empty, all built-in models are initialized.
 	Models []*InitModelRequestModels `json:"models,omitempty" xml:"models,omitempty" type:"Repeated"`
-	// Workspace.
+	// The workspace.
 	//
 	// This parameter is required.
 	//
@@ -125,27 +125,27 @@ func (s *InitModelRequest) Validate() error {
 }
 
 type InitModelRequestModels struct {
-	// Model category
+	// The model type. Valid values:
 	//
-	// - a. Text embedding: text_embedding
+	// - text_embedding: text embedding
 	//
-	// - b. Reranking: rerank
+	// - rerank: reranking
 	//
-	// - c. Document segmentation: doc_split
+	// - doc_split: document splitting
 	//
-	// - d. Large Language Model (LLM) service: completion
+	// - completion: large language model service
 	//
-	// - e. Query analysis: query_analyze
+	// - query_analyze: query analysis
 	//
-	// - f. Document content parsing: doc_analyze
+	// - doc_analyze: document content parsing
 	//
-	// - g. Image content parsing: img_analyze
+	// - img_analyze: image content parsing
 	//
 	// example:
 	//
 	// text_embedding
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
-	// Service ID of the Search Open Platform
+	// The service ID of the AISearch open platform.
 	//
 	// example:
 	//

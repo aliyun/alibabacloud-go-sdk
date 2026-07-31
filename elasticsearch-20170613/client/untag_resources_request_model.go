@@ -28,19 +28,19 @@ type UntagResourcesRequest struct {
 	//
 	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// The list of resources to delete.
+	// The list of resources from which you want to delete tags.
 	//
 	// example:
 	//
 	// ["es-cn-09k1rocex0006****","es-cn-oew1rgiev0009****"]
 	ResourceIds *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
-	// The resource type. Set this to **INSTANCE**.
+	// The resource type. Set the value to **INSTANCE**.
 	//
 	// example:
 	//
 	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The list of tags to delete. A maximum of 20 items can be specified.
+	// The list of tag keys to delete. A maximum of 20 items can be specified.
 	//
 	// example:
 	//

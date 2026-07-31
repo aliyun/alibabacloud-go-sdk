@@ -131,11 +131,11 @@ func (s *ListDataStreamsResponseBodyHeaders) Validate() error {
 type ListDataStreamsResponseBodyResult struct {
 	// The data stream status. Valid values:
 	//
-	// - Green: healthy.
+	// - Green: Healthy.
 	//
-	// - Yellow: warning.
+	// - Yellow: Warning.
 	//
-	// - Red: abnormal.
+	// - Red: Abnormal.
 	//
 	// example:
 	//
@@ -268,11 +268,11 @@ type ListDataStreamsResponseBodyResultIndices struct {
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The index status. Valid values:
 	//
-	// - Green: healthy.
+	// - Green: Healthy.
 	//
-	// - Yellow: warning.
+	// - Yellow: Warning.
 	//
-	// - Red: abnormal.
+	// - Red: Abnormal.
 	//
 	// example:
 	//
@@ -284,13 +284,13 @@ type ListDataStreamsResponseBodyResultIndices struct {
 	//
 	// false
 	IsManaged *bool `json:"isManaged,omitempty" xml:"isManaged,omitempty"`
-	// The managed status of the index. Valid values:
+	// The index managed status. Valid values:
 	//
-	// - following: managed.
+	// - following: Managed.
 	//
-	// - closing: being unmanaged.
+	// - closing: Being unmanaged.
 	//
-	// - closed: not managed.
+	// - closed: Not managed.
 	//
 	// example:
 	//

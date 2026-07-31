@@ -16,13 +16,13 @@ type iListEventRecordsResponseBody interface {
 }
 
 type ListEventRecordsResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 7F40EAA1-6F1D-4DD9-8DB8-C5F00C4E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return Result
+	// The returned result.
 	Result *ListEventRecordsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,9 +62,9 @@ func (s *ListEventRecordsResponseBody) Validate() error {
 }
 
 type ListEventRecordsResponseBodyResult struct {
-	// Content
+	// The returned content.
 	Result []*ListEventRecordsResponseBodyResultResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
-	// Total number of records
+	// The total number of records.
 	//
 	// example:
 	//
@@ -112,69 +112,69 @@ func (s *ListEventRecordsResponseBodyResult) Validate() error {
 }
 
 type ListEventRecordsResponseBodyResultResult struct {
-	// Is auto-alarm enabled
+	// Indicates whether automatic alerting is enabled.
 	//
 	// example:
 	//
 	// false
 	AutoAlarm *bool `json:"autoAlarm,omitempty" xml:"autoAlarm,omitempty"`
-	// Management event display name
+	// The display name of the event.
 	//
 	// example:
 	//
 	// Instance.SpecModify
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// is Preview
+	// Indicates whether this is a dry run.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
-	// event level
+	// The event level.
 	//
 	// example:
 	//
 	// Info
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// is O&M processing required
+	// Indicates whether O&M processing is required.
 	//
 	// example:
 	//
 	// false
 	MustOps *bool `json:"mustOps,omitempty" xml:"mustOps,omitempty"`
-	// product type of the management event
+	// The product type of the event.
 	//
 	// example:
 	//
 	// elasticsearch
 	Product *string `json:"product,omitempty" xml:"product,omitempty"`
-	// scheduled running time
+	// The scheduled execution time.
 	//
 	// example:
 	//
 	// 2025-05-08 18:41:01
 	ScheduleExecuteTime *string `json:"scheduleExecuteTime,omitempty" xml:"scheduleExecuteTime,omitempty"`
-	// scheduled end time
+	// The scheduled end time.
 	//
 	// example:
 	//
 	// 2025-05-08 18:41:01
 	ScheduleFinishTime *string `json:"scheduleFinishTime,omitempty" xml:"scheduleFinishTime,omitempty"`
-	// Management event content
+	// The event content.
 	ShowContent *ListEventRecordsResponseBodyResultResultShowContent `json:"showContent,omitempty" xml:"showContent,omitempty" type:"Struct"`
-	// Event occurrence source
+	// The source of the event.
 	//
 	// example:
 	//
 	// webConsole
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// Event status
+	// The event status.
 	//
 	// example:
 	//
 	// Executed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Event type
+	// The event type.
 	//
 	// example:
 	//
@@ -308,45 +308,45 @@ func (s *ListEventRecordsResponseBodyResultResult) Validate() error {
 }
 
 type ListEventRecordsResponseBodyResultResultShowContent struct {
-	// Operation suggestion
+	// The suggested action.
 	ActionSuggest *ListEventRecordsResponseBodyResultResultShowContentActionSuggest `json:"actionSuggest,omitempty" xml:"actionSuggest,omitempty" type:"Struct"`
-	// Description of the management event
+	// The event description.
 	//
 	// example:
 	//
 	// Instance.SpecModify
 	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
-	// Management event status
+	// The event status.
 	//
 	// example:
 	//
 	// Executed
 	EventStatus *string `json:"eventStatus,omitempty" xml:"eventStatus,omitempty"`
-	// Time of occurrence
+	// The time when the event occurred.
 	//
 	// example:
 	//
 	// 2025-05-08 18:31:01
 	EventTime *string `json:"eventTime,omitempty" xml:"eventTime,omitempty"`
-	// End Time of O&M execution for the management event
+	// The end time of the O&M execution for the event.
 	//
 	// example:
 	//
 	// 2025-05-08 18:41:01
 	ExecuteFinishTime *string `json:"executeFinishTime,omitempty" xml:"executeFinishTime,omitempty"`
-	// Start Time of O&M execution for the management event
+	// The start time of the O&M execution for the event.
 	//
 	// example:
 	//
 	// 2025-05-08 18:31:00
 	ExecuteStartTime *string `json:"executeStartTime,omitempty" xml:"executeStartTime,omitempty"`
-	// Instance ID of the occurrence
+	// The instance ID of the instance on which the event occurred.
 	//
 	// example:
 	//
 	// es-cn-a5cb2dece****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// Execution ID of the cluster Change
+	// The execution ID of the cluster change.
 	//
 	// example:
 	//
@@ -444,15 +444,15 @@ func (s *ListEventRecordsResponseBodyResultResultShowContent) Validate() error {
 }
 
 type ListEventRecordsResponseBodyResultResultShowContentActionSuggest struct {
-	// Operation suggestion
+	// The suggested action.
 	SuggestActions []*string `json:"suggestActions,omitempty" xml:"suggestActions,omitempty" type:"Repeated"`
-	// Operation suggestion text
+	// The text of the suggested action.
 	//
 	// example:
 	//
 	// “”
 	SuggestText *string `json:"suggestText,omitempty" xml:"suggestText,omitempty"`
-	// Operation suggestion type
+	// The type of the suggested action.
 	//
 	// example:
 	//

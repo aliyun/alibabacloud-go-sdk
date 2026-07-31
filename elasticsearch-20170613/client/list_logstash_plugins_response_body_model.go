@@ -90,21 +90,21 @@ type ListLogstashPluginsResponseBodyResult struct {
 	//
 	// https://xxx.html
 	SpecificationUrl *string `json:"specificationUrl,omitempty" xml:"specificationUrl,omitempty"`
-	// The plugin status. Valid values:
+	// Creation status of the plugin. Valid values:
 	//
-	// - INSTALLED: installed
+	// - INSTALLED: Installed.
 	//
-	// - UNINSTALLED: not installed
+	// - UNINSTALLED: Not installed.
 	//
-	// - INSTALLING: being installed
+	// - INSTALLING: Being installed.
 	//
-	// - UNINSTALLING: being uninstalled
+	// - UNINSTALLING: Being uninstalled.
 	//
-	// - UPGRADING: being upgraded
+	// - UPGRADING: Being upgraded.
 	//
-	// - FAILED: installation failed
+	// - FAILED: Installation failed.
 	//
-	// - UNKNOWN: the cluster is disconnected and the creation status cannot be retrieved.
+	// - UNKNOWN: The cluster is disconnected and creation status cannot be retrieved.
 	//
 	// example:
 	//

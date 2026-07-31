@@ -20,14 +20,11 @@ type iUpdateDynamicSettingsRequest interface {
 }
 
 type UpdateDynamicSettingsRequest struct {
-	// A client token used to ensure the idempotency of the request.
+	// The idempotence parameter.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the region where the instance is deployed.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The request body, which contains the dynamic settings to be updated.
-	Body *string `json:"body,omitempty" xml:"body,omitempty"`
-	// The update mode for the dynamic settings.
-	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
+	Mode        *string `json:"mode,omitempty" xml:"mode,omitempty"`
 }
 
 func (s UpdateDynamicSettingsRequest) String() string {

@@ -24,7 +24,7 @@ type RolloverDataStreamResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The returned result. Valid values:
 	//
-	// - true: The rollover succeeded.
+	// - true: The rollover was successful.
 	//
 	// - false: The rollover failed.
 	//

@@ -18,7 +18,7 @@ type iListPipelineRequest interface {
 }
 
 type ListPipelineRequest struct {
-	// The page number of the current page for a paged query. Valid values: 1 to 200. Default value: 1.
+	// The page number of the current page in a paged query. Valid values: 1 to 200. Default value: 1.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListPipelineRequest struct {
 	//
 	// pipeline_test
 	PipelineId *string `json:"pipelineId,omitempty" xml:"pipelineId,omitempty"`
-	// The number of pipelines per page for a paged query. Valid values: 1 to 200.
+	// The number of pipelines per page in a paged query. Valid values: 1 to 200.
 	//
 	// example:
 	//

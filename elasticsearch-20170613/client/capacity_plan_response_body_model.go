@@ -66,9 +66,9 @@ type CapacityPlanResponseBodyResult struct {
 	ExtendConfigs []*CapacityPlanResponseBodyResultExtendConfigs `json:"ExtendConfigs,omitempty" xml:"ExtendConfigs,omitempty" type:"Repeated"`
 	// The edition type. Valid values:
 	//
-	// - advanced: Advanced Edition
+	// - advanced: Advanced Edition.
 	//
-	// - x-pack: Commercial Edition
+	// - x-pack: Commercial Edition.
 	//
 	// - community: Community Edition.
 	//
@@ -241,13 +241,13 @@ type CapacityPlanResponseBodyResultNodeConfigurations struct {
 	Disk *int64 `json:"Disk,omitempty" xml:"Disk,omitempty"`
 	// The disk type. Valid values:
 	//
-	// - cloud_essd: ESSD
+	// - cloud_essd: ESSD.
 	//
-	// - cloud_ssd: standard SSD
+	// - cloud_ssd: standard SSD.
 	//
-	// - cloud_efficiency: ultra cloud disk
+	// - cloud_efficiency: ultra cloud disk.
 	//
-	// - local_ssd: local SSD
+	// - local_ssd: local SSD.
 	//
 	// - local_efficiency: local ultra disk.
 	//
@@ -255,7 +255,7 @@ type CapacityPlanResponseBodyResultNodeConfigurations struct {
 	//
 	// cloud_ssd
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The memory size of the specifications for the current node role.
+	// The memory size of the specification for the current node role.
 	//
 	// example:
 	//
@@ -263,15 +263,15 @@ type CapacityPlanResponseBodyResultNodeConfigurations struct {
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The node type. Valid values:
 	//
-	// - WORKER: data node
+	// - WORKER: data node.
 	//
-	// - WORKER_WARM: warm node
+	// - WORKER_WARM: warm node.
 	//
-	// - MASTER: dedicated master node
+	// - MASTER: dedicated master node.
 	//
-	// - KIBANA: Kibana node
+	// - KIBANA: Kibana node.
 	//
-	// - COORDINATING: client node
+	// - COORDINATING: client node.
 	//
 	// - ELASTIC_WORKER: elastic node.
 	//

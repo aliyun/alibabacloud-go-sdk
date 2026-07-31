@@ -50,7 +50,7 @@ type ListLogstashLogRequest struct {
 	//
 	// host:10.7.xx.xx AND level:info AND content:opening
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The number of entries per page for a paged query. Default value: 20. Minimum value: 1. Maximum value: 100.
+	// The number of entries per page for the paged query. Default value: 20. Minimum value: 1. Maximum value: 100.
 	//
 	// example:
 	//

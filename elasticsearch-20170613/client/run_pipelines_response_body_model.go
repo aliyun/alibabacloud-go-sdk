@@ -22,9 +22,9 @@ type RunPipelinesResponseBody struct {
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result. Valid values:
+	// The returned result:
 	//
-	// - true: The deployment succeeded.
+	// - true: The deployment was successful.
 	//
 	// - false: The deployment failed.
 	//

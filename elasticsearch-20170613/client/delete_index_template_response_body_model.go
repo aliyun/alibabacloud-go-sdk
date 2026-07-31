@@ -22,7 +22,7 @@ type DeleteIndexTemplateResponseBody struct {
 	//
 	// A0761F7E-0B50-46B9-8CAA-EBB3A420****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result. Valid values:
+	// The result of the operation. Valid values:
 	//
 	// - true: The index template was deleted.
 	//

@@ -32,7 +32,7 @@ type ListLogstashPluginsRequest struct {
 	//
 	// 10
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of entries per page in paging settings. Minimum value: 1. Maximum value: 200.
+	// The number of entries per page for paging. Minimum value: 1. Maximum value: 200.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListLogstashPluginsRequest struct {
 	//
 	// - USER: custom plugin
 	//
-	// - SYSTEM: system preset plugin.
+	// - SYSTEM: system preset plugin
 	//
 	// example:
 	//

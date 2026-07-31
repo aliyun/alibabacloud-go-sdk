@@ -20,13 +20,13 @@ type iInterruptElasticsearchTaskResponseBody interface {
 }
 
 type InterruptElasticsearchTaskResponseBody struct {
-	// The error code. This parameter is returned only when an exception occurs.
+	// The error code. This parameter is displayed only when an exception occurs.
 	//
 	// example:
 	//
 	// InstanceStatusNotSupportCurrentAction
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message. This parameter is returned only when an exception occurs.
+	// The error message. This parameter is displayed only when an exception occurs.
 	//
 	// example:
 	//

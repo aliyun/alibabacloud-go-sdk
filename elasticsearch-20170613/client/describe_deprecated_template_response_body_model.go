@@ -62,11 +62,11 @@ func (s *DescribeDeprecatedTemplateResponseBody) Validate() error {
 }
 
 type DescribeDeprecatedTemplateResponseBodyResult struct {
-	// Indicates whether automatic creation of a data stream is enabled. Valid values:
+	// Indicates whether automatic creation of a data stream is enabled at the same time. Valid values:
 	//
-	// - true: Automatic creation of a data stream is enabled.
+	// - true: Yes.
 	//
-	// - false: Automatic creation of a data stream is not enabled.
+	// - false: No.
 	//
 	// example:
 	//

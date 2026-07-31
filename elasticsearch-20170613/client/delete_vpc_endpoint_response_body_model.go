@@ -22,11 +22,11 @@ type DeleteVpcEndpointResponseBody struct {
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC47D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the deletion is successful. Valid values:
+	// Indicates whether the endpoint is deleted. Valid values:
 	//
-	// - true: The deletion is successful.
+	// - true: The endpoint is deleted.
 	//
-	// - false: The deletion failed.
+	// - false: The endpoint failed to be deleted.
 	//
 	// example:
 	//

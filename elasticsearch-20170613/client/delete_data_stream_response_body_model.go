@@ -24,7 +24,7 @@ type DeleteDataStreamResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of the operation. Valid values:
 	//
-	// - true: The data stream was deleted.
+	// - true: The data stream is deleted.
 	//
 	// - false: The data stream failed to be deleted.
 	//

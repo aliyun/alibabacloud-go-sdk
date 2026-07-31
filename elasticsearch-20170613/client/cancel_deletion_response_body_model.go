@@ -26,7 +26,7 @@ type CancelDeletionResponseBody struct {
 	//
 	// - true: The instance is recovered.
 	//
-	// - false: The instance failed to be recovered.
+	// - false: The instance is not recovered.
 	//
 	// example:
 	//

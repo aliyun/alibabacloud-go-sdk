@@ -22,7 +22,7 @@ type ListKibanaPluginsRequest struct {
 	//
 	// 1
 	Page *string `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of entries per page for a paged query.
+	// The number of entries per page Settings for paging in a paged query.
 	//
 	// example:
 	//

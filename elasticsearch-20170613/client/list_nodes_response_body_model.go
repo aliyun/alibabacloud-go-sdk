@@ -116,13 +116,13 @@ func (s *ListNodesResponseBodyHeaders) Validate() error {
 type ListNodesResponseBodyResult struct {
 	// The status of each collector on the ECS instance. Valid values:
 	//
-	// - heartOk: normal heartbeat.
+	// - heartOk: Normal heartbeat.
 	//
-	// - heartLost: abnormal heartbeat.
+	// - heartLost: Abnormal heartbeat.
 	//
-	// - uninstalled: not installed.
+	// - uninstalled: Not installed.
 	//
-	// - failed: installation failed.
+	// - failed: Installation failed.
 	//
 	// example:
 	//
@@ -130,9 +130,9 @@ type ListNodesResponseBodyResult struct {
 	AgentStatus *string `json:"agentStatus,omitempty" xml:"agentStatus,omitempty"`
 	// Indicates whether Cloud Assistant is enabled. Valid values:
 	//
-	// - true: enabled.
+	// - true: Enabled.
 	//
-	// - false: not enabled.
+	// - false: Not enabled.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type ListNodesResponseBodyResult struct {
 	//
 	// ECS_beat
 	EcsInstanceName *string `json:"ecsInstanceName,omitempty" xml:"ecsInstanceName,omitempty"`
-	// The list of IP address information of the ECS instance.
+	// The list of IP address information for the ECS instance.
 	IpAddress []*ListNodesResponseBodyResultIpAddress `json:"ipAddress,omitempty" xml:"ipAddress,omitempty" type:"Repeated"`
 	// The operating system type of the ECS instance. Valid values:
 	//
@@ -162,15 +162,15 @@ type ListNodesResponseBodyResult struct {
 	//
 	// linux
 	OsType *string `json:"osType,omitempty" xml:"osType,omitempty"`
-	// The status of the ECS instance. Valid values:
+	// The ECS instance status. Valid values:
 	//
-	// - running: running.
+	// - running: Running.
 	//
-	// - starting: starting.
+	// - starting: Starting.
 	//
-	// - stopping: stopping.
+	// - stopping: Stopping.
 	//
-	// - stopped: stopped.
+	// - stopped: Stopped.
 	//
 	// example:
 	//
@@ -289,7 +289,7 @@ type ListNodesResponseBodyResultIpAddress struct {
 	//
 	// 192.168.xx.xx
 	Host *string `json:"host,omitempty" xml:"host,omitempty"`
-	// The type of the IP address. Valid values:
+	// The IP address type. Valid values:
 	//
 	// - public: public IP address.
 	//

@@ -16,7 +16,7 @@ type iUpdateComponentIndexRequest interface {
 }
 
 type UpdateComponentIndexRequest struct {
-	// The metadata, which is used to store information such as remarks.
+	// The metadata, which is used to store remarks and other information.
 	//
 	// example:
 	//

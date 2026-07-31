@@ -22,7 +22,7 @@ type DescribeIndexTemplateResponseBody struct {
 	//
 	// 25DB38F8-82E4-4D16-82BB-FF077C7F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the index template.
+	// The index template details.
 	Result *DescribeIndexTemplateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -74,14 +74,14 @@ type DescribeIndexTemplateResponseBodyResult struct {
 	//
 	// true
 	DataStream *bool `json:"dataStream,omitempty" xml:"dataStream,omitempty"`
-	// The Policy Name of the lifecycle epoch.
+	// The lifecycle policy name.
 	//
 	// example:
 	//
 	// cube_default_ilm_policy
 	IlmPolicy     *string   `json:"ilmPolicy,omitempty" xml:"ilmPolicy,omitempty"`
 	IndexPatterns []*string `json:"indexPatterns,omitempty" xml:"indexPatterns,omitempty" type:"Repeated"`
-	// The name of the index template.
+	// The index template name.
 	//
 	// example:
 	//

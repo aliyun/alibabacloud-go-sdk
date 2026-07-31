@@ -96,7 +96,7 @@ type ListVpcEndpointsResponseBodyResult struct {
 	//
 	// - Normal: Normal.
 	//
-	// - FinancialLocked: Locked due to overdue payment.
+	// - FinancialLocked: Financial lock.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type ListVpcEndpointsResponseBodyResult struct {
 	//
 	// - Creating: Being created.
 	//
-	// - Active: Available.
+	// - Active: Active.
 	//
 	// - Pending: Being modified.
 	//

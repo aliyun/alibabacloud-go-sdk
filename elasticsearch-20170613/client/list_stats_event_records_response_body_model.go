@@ -16,13 +16,13 @@ type iListStatsEventRecordsResponseBody interface {
 }
 
 type ListStatsEventRecordsResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return Result
+	// The returned result.
 	Result *ListStatsEventRecordsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,9 +62,9 @@ func (s *ListStatsEventRecordsResponseBody) Validate() error {
 }
 
 type ListStatsEventRecordsResponseBodyResult struct {
-	// Return Result
+	// The returned result.
 	Result []*ListStatsEventRecordsResponseBodyResultResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
-	// Total number of entries.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -112,25 +112,25 @@ func (s *ListStatsEventRecordsResponseBodyResult) Validate() error {
 }
 
 type ListStatsEventRecordsResponseBodyResultResult struct {
-	// Number of events
+	// The number of events.
 	//
 	// example:
 	//
 	// 4
 	Cnt *string `json:"cnt,omitempty" xml:"cnt,omitempty"`
-	// Event level
+	// The event level.
 	//
 	// example:
 	//
 	// Info
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// Event status
+	// The event status.
 	//
 	// example:
 	//
 	// Executed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Event type
+	// The event type.
 	//
 	// example:
 	//

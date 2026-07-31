@@ -108,13 +108,13 @@ type ListShardRecoveriesResponseBodyResult struct {
 	//
 	// 2Kni3dJ
 	SourceNode *string `json:"sourceNode,omitempty" xml:"sourceNode,omitempty"`
-	// The stage of the data recovery process. Valid values:
+	// The stage of data recovery. Valid values:
 	//
 	// - done: Recovery is complete.
 	//
-	// - finalize: Cleanup operations are in progress.
+	// - finalize: Cleanup work is in progress.
 	//
-	// - index: Reading index metadata and copying bytes from the source to the target.
+	// - index: Reading index metadata and copying bytes from source to target.
 	//
 	// - init: Recovery has not started.
 	//

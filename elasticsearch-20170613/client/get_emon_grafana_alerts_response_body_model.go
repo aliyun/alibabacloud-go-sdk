@@ -40,9 +40,9 @@ type GetEmonGrafanaAlertsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the Grafana alert list is retrieved. Valid values:
 	//
-	// - true: The alert list is retrieved.
+	// - true: Succeeded.
 	//
-	// - false: The alert list failed to be retrieved.
+	// - false: Failed.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iListDictsResponseBody interface {
 }
 
 type ListDictsResponseBody struct {
-	// The response headers.
+	// The response header information.
 	Headers *ListDictsResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -114,7 +114,7 @@ func (s *ListDictsResponseBodyHeaders) Validate() error {
 }
 
 type ListDictsResponseBodyResult struct {
-	// The publicly accessible download URL. The URL is valid for 90 seconds.
+	// The public download URL. The URL is valid for 90 seconds.
 	//
 	// example:
 	//
@@ -140,9 +140,9 @@ type ListDictsResponseBodyResult struct {
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 	// The type of the IK dictionary. Valid values:
 	//
-	// - MAIN: main tokenization dictionary.
+	// - MAIN: Main tokenizer dictionary.
 	//
-	// - STOP: stopword dictionary.
+	// - STOP: Stopword dictionary.
 	//
 	// example:
 	//

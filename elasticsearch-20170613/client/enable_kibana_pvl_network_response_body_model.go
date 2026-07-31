@@ -22,11 +22,11 @@ type EnableKibanaPvlNetworkResponseBody struct {
   // 
   // 0DC92CFE-62AF-51AF-9D5B-F1078D7C451E
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Indicates whether private network access for Kibana is created. Valid values:
+  // Indicates whether private network access for Kibana is created.
   // 
-  // - true: The operation is successful.
+  // - true: Succeeded.
   // 
-  // - false: The operation failed.
+  // - false: Failed.
   // 
   // example:
   // 

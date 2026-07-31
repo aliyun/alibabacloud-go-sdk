@@ -64,9 +64,9 @@ func (s *DescribeXpackMonitorConfigResponseBody) Validate() error {
 type DescribeXpackMonitorConfigResponseBodyResult struct {
 	// Indicates whether X-Pack monitoring is enabled. Valid values:
 	//
-	// - true: enabled.
+	// - true: Enabled.
 	//
-	// - false: not enabled.
+	// - false: Not enabled.
 	//
 	// example:
 	//

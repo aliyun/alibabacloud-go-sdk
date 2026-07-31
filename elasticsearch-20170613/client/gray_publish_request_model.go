@@ -14,7 +14,7 @@ type iGrayPublishRequest interface {
 }
 
 type GrayPublishRequest struct {
-	// Change ID
+	// The change ID.
 	//
 	// example:
 	//

@@ -22,11 +22,11 @@ type DeletePipelinesResponseBody struct {
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result:
+	// The result of the operation. Valid values:
 	//
-	// - true: The pipelines are deleted.
+	// - true: The deletion was successful.
 	//
-	// - false: The pipelines failed to be deleted.
+	// - false: The deletion failed.
 	//
 	// example:
 	//

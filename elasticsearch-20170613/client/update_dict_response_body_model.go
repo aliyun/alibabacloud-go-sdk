@@ -22,7 +22,7 @@ type UpdateDictResponseBody struct {
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned results.
+	// The returned result.
 	Result []*UpdateDictResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -80,17 +80,17 @@ type UpdateDictResponseBodyResult struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The source type of the dictionary file. Valid values:
 	//
-	// - OSS: Object Storage Service (OSS).
+	// - OSS: OSS open storage.
 	//
-	// - ORIGIN: Retains the previously uploaded dictionary.
+	// - ORIGIN: retains the previously uploaded dictionary.
 	//
 	// example:
 	//
 	// ORIGIN
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The type of the dictionary. Valid values:
+	// The dictionary type. Valid values:
 	//
-	// - MAIN: IK main dictionary.
+	// - MAIN: IK main tokenizer dictionary.
 	//
 	// - STOP: IK stopword dictionary.
 	//

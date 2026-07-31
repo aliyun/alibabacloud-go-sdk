@@ -18,19 +18,19 @@ type iListUserPluginRequest interface {
 }
 
 type ListUserPluginRequest struct {
-	// Plugin Name.
+	// The plug-in name.
 	//
 	// example:
 	//
 	// my-plugin
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Page number for paging the plugin list.
+	// The page number of the plug-in list.
 	//
 	// example:
 	//
 	// 1
 	Page *string `json:"page,omitempty" xml:"page,omitempty"`
-	// Number of records per page.
+	// The number of records per page.
 	//
 	// example:
 	//

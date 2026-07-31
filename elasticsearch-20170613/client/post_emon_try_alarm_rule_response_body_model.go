@@ -38,7 +38,7 @@ type PostEmonTryAlarmRuleResponseBody struct {
 	//
 	// 3EC5731F-0944-4E4F-9DD5-1F976B3FCC3D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the alert message was sent. Valid values: true (sent) and false (failed to send).
+	// Indicates whether the alert message is sent. Valid values: true (sent) and false (failed to send).
 	//
 	// example:
 	//

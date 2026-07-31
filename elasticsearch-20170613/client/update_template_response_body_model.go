@@ -22,7 +22,7 @@ type UpdateTemplateResponseBody struct {
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the scenario-specific template configuration is modified. Valid values:
+	// Indicates whether the scenario-specific template configuration is modified.
 	//
 	// - true: The modification is successful.
 	//

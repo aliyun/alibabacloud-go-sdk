@@ -80,7 +80,7 @@ type DescribeTemplatesResponseBodyResult struct {
 	//
 	// - indexTemplate: index template configuration
 	//
-	// - dynamicSettings: cluster dynamic configuration.
+	// - dynamicSettings: cluster dynamic configuration
 	//
 	// example:
 	//

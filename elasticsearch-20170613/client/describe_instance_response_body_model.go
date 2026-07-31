@@ -62,11 +62,7 @@ func (s *DescribeInstanceResponseBody) Validate() error {
 }
 
 type DescribeInstanceResponseBodyResult struct {
-	// Indicates whether the instance contains a dedicated master node. Valid values:
-	//
-	// - true: The instance contains a dedicated master node.
-	//
-	// - false: The instance does not contain a dedicated master node.
+	// Indicates whether the instance contains dedicated master nodes. Valid values:
 	//
 	// example:
 	//
@@ -74,19 +70,15 @@ type DescribeInstanceResponseBodyResult struct {
 	AdvancedDedicateMaster *bool `json:"advancedDedicateMaster,omitempty" xml:"advancedDedicateMaster,omitempty"`
 	// The advanced settings.
 	AdvancedSetting *DescribeInstanceResponseBodyResultAdvancedSetting `json:"advancedSetting,omitempty" xml:"advancedSetting,omitempty" type:"Struct"`
-	// The Alibaba tokenizer dictionary configuration.
+	// The Alibaba Cloud tokenizer dictionary configuration.
 	AliwsDicts []*DescribeInstanceResponseBodyResultAliwsDicts `json:"aliwsDicts,omitempty" xml:"aliwsDicts,omitempty" type:"Repeated"`
-	// The deployment mode and architecture type. Valid values:
-	//
-	// - exclusive: basic management and control.
-	//
-	// - public: cloud-native management and control.
+	// The deployment mode. Architecture type:
 	//
 	// example:
 	//
 	// public
 	ArchType *string `json:"archType,omitempty" xml:"archType,omitempty"`
-	// The configuration of client nodes.
+	// The configuration information of the client node.
 	ClientNodeConfiguration *DescribeInstanceResponseBodyResultClientNodeConfiguration `json:"clientNodeConfiguration,omitempty" xml:"clientNodeConfiguration,omitempty" type:"Struct"`
 	// The time when the instance was created.
 	//
@@ -94,7 +86,7 @@ type DescribeInstanceResponseBodyResult struct {
 	//
 	// 2018-07-13T03:58:07.253Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The dedicated master node (deprecated).
+	// **[Deprecated]*	- The dedicated master node.
 	//
 	// example:
 	//
@@ -114,13 +106,9 @@ type DescribeInstanceResponseBodyResult struct {
 	//
 	// es-cn-3h4k3axh33th9****.elasticsearch.aliyuncs.com
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The configuration of elastic data nodes.
+	// The configuration of the elastic data node.
 	ElasticDataNodeConfiguration *DescribeInstanceResponseBodyResultElasticDataNodeConfiguration `json:"elasticDataNodeConfiguration,omitempty" xml:"elasticDataNodeConfiguration,omitempty" type:"Struct"`
-	// Indicates whether internal-facing access to Kibana is enabled. Valid values:
-	//
-	// - true: Enabled.
-	//
-	// - false: Not enabled.
+	// Indicates whether private network access to Kibana is enabled. Valid values:
 	//
 	// example:
 	//
@@ -128,26 +116,18 @@ type DescribeInstanceResponseBodyResult struct {
 	EnableKibanaPrivateNetwork *bool `json:"enableKibanaPrivateNetwork,omitempty" xml:"enableKibanaPrivateNetwork,omitempty"`
 	// Indicates whether public network access to Kibana is enabled. Valid values:
 	//
-	// - true: Enabled.
-	//
-	// - false: Not enabled.
-	//
 	// example:
 	//
 	// true
 	EnableKibanaPublicNetwork *bool `json:"enableKibanaPublicNetwork,omitempty" xml:"enableKibanaPublicNetwork,omitempty"`
 	// Indicates whether the public endpoint of the instance is enabled. Valid values:
 	//
-	// - true: Enabled.
-	//
-	// - false: Not enabled.
-	//
 	// example:
 	//
 	// true
 	EnablePublic *bool  `json:"enablePublic,omitempty" xml:"enablePublic,omitempty"`
 	EndTime      *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The private endpoints for each zone of an HP_ALILB multi-zone instance.
+	// The private domain names for each zone of an HP_ALILB multi-zone instance.
 	Endpoints []*DescribeInstanceResponseBodyResultEndpoints `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
 	// The YML file configuration of the instance.
 	//
@@ -155,9 +135,9 @@ type DescribeInstanceResponseBodyResult struct {
 	//
 	// {"http.cors.allow-credentials":"false"}
 	EsConfig map[string]interface{} `json:"esConfig,omitempty" xml:"esConfig,omitempty"`
-	// The internal-facing access blacklist (deprecated).
+	// **[Deprecated]*	- The private network access blacklist.
 	EsIPBlacklist []*string `json:"esIPBlacklist,omitempty" xml:"esIPBlacklist,omitempty" type:"Repeated"`
-	// The internal-facing access whitelist (deprecated).
+	// **[Deprecated]*	- The private network access whitelist.
 	EsIPWhitelist []*string `json:"esIPWhitelist,omitempty" xml:"esIPWhitelist,omitempty" type:"Repeated"`
 	// The instance version.
 	//
@@ -169,19 +149,11 @@ type DescribeInstanceResponseBodyResult struct {
 	ExtendConfigs []map[string]interface{} `json:"extendConfigs,omitempty" xml:"extendConfigs,omitempty" type:"Repeated"`
 	// Indicates whether the instance contains client nodes. Valid values:
 	//
-	// - true: The instance contains client nodes.
-	//
-	// - false: The instance does not contain client nodes.
-	//
 	// example:
 	//
 	// true
 	HaveClientNode *bool `json:"haveClientNode,omitempty" xml:"haveClientNode,omitempty"`
-	// Indicates whether the instance contains a Kibana node. Valid values:
-	//
-	// - true: The instance contains a Kibana node.
-	//
-	// - false: The instance does not contain a Kibana node.
+	// Indicates whether the instance contains Kibana nodes. Valid values:
 	//
 	// example:
 	//
@@ -190,13 +162,7 @@ type DescribeInstanceResponseBodyResult struct {
 	// The IK dictionary hot update configuration.
 	IkHotDicts []*DescribeInstanceResponseBodyResultIkHotDicts `json:"ikHotDicts,omitempty" xml:"ikHotDicts,omitempty" type:"Repeated"`
 	Inited     *bool                                           `json:"inited,omitempty" xml:"inited,omitempty"`
-	// The edition of the instance. Valid values:
-	//
-	// - x-pack: Commercial Edition.
-	//
-	// - advanced/IS: Advanced Edition.
-	//
-	// - community: Basic Edition.
+	// The edition type of the instance. Valid values:
 	//
 	// example:
 	//
@@ -214,7 +180,7 @@ type DescribeInstanceResponseBodyResult struct {
 	//
 	// true
 	IsNewDeployment *bool `json:"isNewDeployment,omitempty" xml:"isNewDeployment,omitempty"`
-	// The configuration of the Kibana node.
+	// The configuration information of the Kibana node.
 	KibanaConfiguration *DescribeInstanceResponseBodyResultKibanaConfiguration `json:"kibanaConfiguration,omitempty" xml:"kibanaConfiguration,omitempty" type:"Struct"`
 	// The Kibana endpoint.
 	//
@@ -230,7 +196,7 @@ type DescribeInstanceResponseBodyResult struct {
 	//
 	// 5601
 	KibanaPort *int32 `json:"kibanaPort,omitempty" xml:"kibanaPort,omitempty"`
-	// The Kibana private endpoint.
+	// The private endpoint of Kibana for private network access.
 	//
 	// example:
 	//
@@ -238,13 +204,13 @@ type DescribeInstanceResponseBodyResult struct {
 	KibanaPrivateDomain *string `json:"kibanaPrivateDomain,omitempty" xml:"kibanaPrivateDomain,omitempty"`
 	// The Kibana private endpoint access whitelist.
 	KibanaPrivateIPWhitelist []*string `json:"kibanaPrivateIPWhitelist,omitempty" xml:"kibanaPrivateIPWhitelist,omitempty" type:"Repeated"`
-	// The Kibana private port.
+	// The private port of Kibana.
 	//
 	// example:
 	//
 	// 5601
 	KibanaPrivatePort *string `json:"kibanaPrivatePort,omitempty" xml:"kibanaPrivatePort,omitempty"`
-	// The master node configuration.
+	// The configuration of the dedicated master node.
 	MasterConfiguration *DescribeInstanceResponseBodyResultMasterConfiguration `json:"masterConfiguration,omitempty" xml:"masterConfiguration,omitempty" type:"Struct"`
 	// The network configuration.
 	NetworkConfig *DescribeInstanceResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
@@ -258,10 +224,6 @@ type DescribeInstanceResponseBodyResult struct {
 	NodeSpec *DescribeInstanceResponseBodyResultNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
 	// The billing method of the instance. Valid values:
 	//
-	// - prepaid: subscription.
-	//
-	// - postpaid: pay-as-you-go.
-	//
 	// example:
 	//
 	// postpaid
@@ -273,12 +235,6 @@ type DescribeInstanceResponseBodyResult struct {
 	// 9200
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
 	// The status of the pay-as-you-go service that is overlaid on the subscription instance. Valid values:
-	//
-	// - active: Normal.
-	//
-	// - closed: Closed.
-	//
-	// - indebt: Frozen due to overdue payment.
 	//
 	// example:
 	//
@@ -320,16 +276,6 @@ type DescribeInstanceResponseBodyResult struct {
 	ServiceVpc *bool `json:"serviceVpc,omitempty" xml:"serviceVpc,omitempty"`
 	// The status of the instance. Valid values:
 	//
-	// - active: Normal.
-	//
-	// - activating: Taking effect.
-	//
-	// - inactive: Frozen.
-	//
-	// - invalid: Invalid. The cluster does not exist or is inaccessible. In this case, some fields in the response may be missing, such as domain and kibanaDomain.
-	//
-	// - unknown: Unknown. The cluster does not exist or is inaccessible. In this case, some fields in the response may be missing, such as domain and kibanaDomain.
-	//
 	// example:
 	//
 	// active
@@ -350,17 +296,13 @@ type DescribeInstanceResponseBodyResult struct {
 	//
 	// vpc-bp1uag5jj38c****
 	VpcInstanceId *string `json:"vpcInstanceId,omitempty" xml:"vpcInstanceId,omitempty"`
-	// Specifies whether warm data nodes are enabled. Valid values:
-	//
-	// - true: Enabled.
-	//
-	// - false: Not enabled.
+	// Indicates whether warm data nodes is enabled. Valid values:
 	//
 	// example:
 	//
 	// true
 	WarmNode *bool `json:"warmNode,omitempty" xml:"warmNode,omitempty"`
-	// The configuration of warm data nodes.
+	// The configuration information of the warm data node.
 	WarmNodeConfiguration *DescribeInstanceResponseBodyResultWarmNodeConfiguration `json:"warmNodeConfiguration,omitempty" xml:"warmNodeConfiguration,omitempty" type:"Struct"`
 	// The number of zones for the instance.
 	//
@@ -1054,25 +996,11 @@ type DescribeInstanceResponseBodyResultAliwsDicts struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The source type of the dictionary file. Valid values:
 	//
-	// - OSS: Object Storage Service (OSS). Make sure that the OSS bucket has public read permissions.
-	//
-	// - ORIGIN: Open-source Elasticsearch.
-	//
-	// - UPLOAD: Uploaded file.
-	//
 	// example:
 	//
 	// OSS
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 	// The type of the dictionary file. Valid values:
-	//
-	// - STOP: Stopword.
-	//
-	// - MAIN: Main dictionary.
-	//
-	// - SYNONYMS: Synonym dictionary.
-	//
-	// - ALI_WS: Alibaba dictionary.
 	//
 	// example:
 	//
@@ -1147,13 +1075,13 @@ type DescribeInstanceResponseBodyResultClientNodeConfiguration struct {
 	//
 	// cloud_efficiency
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The node specifications. For more information, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+	// The node specifications. For more information about specifications, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
 	//
 	// example:
 	//
 	// elasticsearch.n4.small
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
-	// The node specifications description.
+	// The description of the node specifications.
 	//
 	// example:
 	//
@@ -1233,25 +1161,11 @@ type DescribeInstanceResponseBodyResultDictList struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The source type of the dictionary file. Valid values:
 	//
-	// - OSS: Object Storage Service (OSS). Make sure that the OSS bucket has public read permissions.
-	//
-	// - ORIGIN: Open-source Elasticsearch.
-	//
-	// - UPLOAD: Uploaded file.
-	//
 	// example:
 	//
 	// ORIGIN
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 	// The type of the dictionary file. Valid values:
-	//
-	// - STOP: Stopword.
-	//
-	// - MAIN: Main dictionary.
-	//
-	// - SYNONYMS: Synonym dictionary.
-	//
-	// - ALI_WS: Alibaba dictionary.
 	//
 	// example:
 	//
@@ -1322,33 +1236,23 @@ type DescribeInstanceResponseBodyResultElasticDataNodeConfiguration struct {
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
 	// Indicates whether cloud disk encryption is enabled for the node. Valid values:
 	//
-	// - true: Enabled.
-	//
-	// - false: Not enabled.
-	//
 	// example:
 	//
 	// true
 	DiskEncryption *bool `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
 	// The storage type of the node. Valid values:
 	//
-	// - cloud_ssd: standard SSD.
-	//
-	// - cloud_essd: ESSD.
-	//
-	// - cloud_efficiency: ultra disk.
-	//
 	// example:
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The node specifications. For more information, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+	// The node specifications. For more information about specifications, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
 	//
 	// example:
 	//
 	// elasticsearch.sn2ne.large
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
-	// The node specifications description.
+	// The description of the node specifications.
 	//
 	// example:
 	//
@@ -1497,19 +1401,11 @@ type DescribeInstanceResponseBodyResultIkHotDicts struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The source type of the dictionary file. Valid values:
 	//
-	// - OSS: Uses OSS.
-	//
-	// - ORIGIN: Retains the previously uploaded dictionary.
-	//
 	// example:
 	//
 	// OSS
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 	// The type of the dictionary to update. Valid values:
-	//
-	// - MAIN: IK main dictionary
-	//
-	// - STOP: IK stopword dictionary.
 	//
 	// example:
 	//
@@ -1572,19 +1468,19 @@ type DescribeInstanceResponseBodyResultKibanaConfiguration struct {
 	//
 	// 1
 	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The storage space of a single node. Unit: GB.
+	// The storage size of a single node. Unit: GB.
 	//
 	// example:
 	//
 	// 20
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
-	// The node specifications. For more information, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+	// The node specifications. For more information about specifications, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
 	//
 	// example:
 	//
 	// elasticsearch.n4.small
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
-	// The node specifications description.
+	// The description of the node specifications.
 	//
 	// example:
 	//
@@ -1659,13 +1555,13 @@ type DescribeInstanceResponseBodyResultMasterConfiguration struct {
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The node specifications. For more information, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+	// The node specifications. For more information about specifications, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
 	//
 	// example:
 	//
 	// elasticsearch.n4.small
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
-	// The node specifications description.
+	// The description of the node specifications.
 	//
 	// example:
 	//
@@ -1743,7 +1639,7 @@ type DescribeInstanceResponseBodyResultNetworkConfig struct {
 	//
 	// vpc-abc
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The zone where the instance is deployed.
+	// The zone where the instance resides.
 	//
 	// example:
 	//
@@ -1832,17 +1728,9 @@ type DescribeInstanceResponseBodyResultNetworkConfigWhiteIpGroupList struct {
 	//
 	// default
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// The IP addresses in the whitelist group.
+	// The list of IP addresses in the whitelist group.
 	Ips []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
 	// The whitelist type. Valid values:
-	//
-	// - PRIVATE_ES: Elasticsearch private network.
-	//
-	// - PUBLIC_ES: Elasticsearch public network.
-	//
-	// - PRIVATE_KIBANA: Kibana private network.
-	//
-	// - PUBLIC_KIBANA: Kibana public network.
 	//
 	// example:
 	//
@@ -1898,19 +1786,15 @@ type DescribeInstanceResponseBodyResultNodeSpec struct {
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
 	// Indicates whether cloud disk encryption is enabled. Valid values:
 	//
-	// - true: Enabled.
-	//
-	// - false: Not enabled.
-	//
 	// example:
 	//
 	// true
 	DiskEncryption *bool `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
+	// example:
+	//
+	// high_availability
+	DiskPreference *string `json:"diskPreference,omitempty" xml:"diskPreference,omitempty"`
 	// The disk type of the node. Valid values:
-	//
-	// - cloud_ssd: standard SSD
-	//
-	// - cloud_efficiency: ultra disk.
 	//
 	// example:
 	//
@@ -1922,7 +1806,7 @@ type DescribeInstanceResponseBodyResultNodeSpec struct {
 	//
 	// PL1
 	PerformanceLevel *string `json:"performanceLevel,omitempty" xml:"performanceLevel,omitempty"`
-	// The node specifications. For more information, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+	// The node specifications. For more information about specifications, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
 	//
 	// example:
 	//
@@ -1952,6 +1836,10 @@ func (s *DescribeInstanceResponseBodyResultNodeSpec) GetDiskEncryption() *bool {
 	return s.DiskEncryption
 }
 
+func (s *DescribeInstanceResponseBodyResultNodeSpec) GetDiskPreference() *string {
+	return s.DiskPreference
+}
+
 func (s *DescribeInstanceResponseBodyResultNodeSpec) GetDiskType() *string {
 	return s.DiskType
 }
@@ -1975,6 +1863,11 @@ func (s *DescribeInstanceResponseBodyResultNodeSpec) SetDisk(v int32) *DescribeI
 
 func (s *DescribeInstanceResponseBodyResultNodeSpec) SetDiskEncryption(v bool) *DescribeInstanceResponseBodyResultNodeSpec {
 	s.DiskEncryption = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyResultNodeSpec) SetDiskPreference(v string) *DescribeInstanceResponseBodyResultNodeSpec {
+	s.DiskPreference = &v
 	return s
 }
 
@@ -2022,14 +1915,6 @@ type DescribeInstanceResponseBodyResultSynonymsDicts struct {
 	// ORIGIN
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 	// The dictionary type. Valid values:
-	//
-	// - STOP: Stopword.
-	//
-	// - MAIN: Main dictionary.
-	//
-	// - SYNONYMS: Synonym dictionary.
-	//
-	// - ALI_WS: Alibaba dictionary.
 	//
 	// example:
 	//
@@ -2145,10 +2030,6 @@ type DescribeInstanceResponseBodyResultWarmNodeConfiguration struct {
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
 	// Indicates whether cloud disk encryption is enabled. Valid values:
 	//
-	// - true: Enabled.
-	//
-	// - false: Not enabled.
-	//
 	// example:
 	//
 	// true
@@ -2159,13 +2040,13 @@ type DescribeInstanceResponseBodyResultWarmNodeConfiguration struct {
 	//
 	// cloud_efficiency
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The node specifications. For more information, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+	// The node specifications. For more information about specifications, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
 	//
 	// example:
 	//
 	// elasticsearch.n4.small
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
-	// The node specifications description.
+	// The description of the node specifications.
 	//
 	// example:
 	//
@@ -2241,10 +2122,6 @@ func (s *DescribeInstanceResponseBodyResultWarmNodeConfiguration) Validate() err
 
 type DescribeInstanceResponseBodyResultZoneInfos struct {
 	// The zone status. Valid values:
-	//
-	// - ISOLATION: offline
-	//
-	// - NORMAL: normal.
 	//
 	// example:
 	//

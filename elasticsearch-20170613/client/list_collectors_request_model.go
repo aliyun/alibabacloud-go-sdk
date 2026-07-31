@@ -58,7 +58,7 @@ type ListCollectorsRequest struct {
 	//
 	// - ECS: ECS instance
 	//
-	// - ACK: Container Kubernetes cluster.
+	// - ACK: Container Kubernetes cluster
 	//
 	// example:
 	//

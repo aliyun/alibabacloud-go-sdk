@@ -86,14 +86,15 @@ type ListKibanaPvlNetworkResponseBodyResult struct {
 	EndpointName *string `json:"endpointName,omitempty" xml:"endpointName,omitempty"`
 	// The endpoint status. Valid values:
 	//
-	// - Disconnected: not connected.
+	// - Disconnected: disconnected
 	//
-	// - Connected: connected.
+	// - Connected: connected
 	//
 	// example:
 	//
 	// Connected
-	EndpointStatus *string `json:"endpointStatus,omitempty" xml:"endpointStatus,omitempty"`
+	EndpointStatus       *string `json:"endpointStatus,omitempty" xml:"endpointStatus,omitempty"`
+	ManagedSecurityGroup *bool   `json:"managedSecurityGroup,omitempty" xml:"managedSecurityGroup,omitempty"`
 	// The Kibana private network connection ID.
 	//
 	// example:
@@ -136,6 +137,10 @@ func (s *ListKibanaPvlNetworkResponseBodyResult) GetEndpointStatus() *string {
 	return s.EndpointStatus
 }
 
+func (s *ListKibanaPvlNetworkResponseBodyResult) GetManagedSecurityGroup() *bool {
+	return s.ManagedSecurityGroup
+}
+
 func (s *ListKibanaPvlNetworkResponseBodyResult) GetPvlId() *string {
 	return s.PvlId
 }
@@ -169,6 +174,11 @@ func (s *ListKibanaPvlNetworkResponseBodyResult) SetEndpointName(v string) *List
 
 func (s *ListKibanaPvlNetworkResponseBodyResult) SetEndpointStatus(v string) *ListKibanaPvlNetworkResponseBodyResult {
 	s.EndpointStatus = &v
+	return s
+}
+
+func (s *ListKibanaPvlNetworkResponseBodyResult) SetManagedSecurityGroup(v bool) *ListKibanaPvlNetworkResponseBodyResult {
+	s.ManagedSecurityGroup = &v
 	return s
 }
 

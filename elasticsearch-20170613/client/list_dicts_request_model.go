@@ -32,7 +32,7 @@ type ListDictsRequest struct {
 	//
 	// IK
 	AnalyzerType *string `json:"analyzerType,omitempty" xml:"analyzerType,omitempty"`
-	// The name of the file to filter.
+	// The file name used to filter results.
 	//
 	// example:
 	//

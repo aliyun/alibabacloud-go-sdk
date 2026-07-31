@@ -14,7 +14,7 @@ type iDescribeDiagnosisSettingsRequest interface {
 }
 
 type DescribeDiagnosisSettingsRequest struct {
-	// The language of the returned results. Default value: en.
+	// The language of the response. Default value: en.
 	//
 	// example:
 	//

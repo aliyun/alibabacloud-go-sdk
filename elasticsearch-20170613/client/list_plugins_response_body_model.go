@@ -132,7 +132,7 @@ type ListPluginsResponseBodyResult struct {
 	//
 	// SYSTEM
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The URL of the plugin documentation.
+	// The URL of the plugin specification document.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type ListTagsRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The resource type. Fixed value: INSTANCE.
+	// The resource type. Set to INSTANCE.
 	//
 	// example:
 	//

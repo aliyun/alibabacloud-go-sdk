@@ -16,13 +16,13 @@ type iModifyScheduleExecuteTimeRequest interface {
 }
 
 type ModifyScheduleExecuteTimeRequest struct {
-	// Event ID.
+	// The event ID.
 	//
 	// example:
 	//
 	// eb7efbc90864a0***
 	EventId *string `json:"eventId,omitempty" xml:"eventId,omitempty"`
-	// Scheduled execution time (UTC)
+	// The scheduled execution time in UTC.
 	//
 	// example:
 	//

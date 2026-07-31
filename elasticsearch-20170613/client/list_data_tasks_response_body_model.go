@@ -194,7 +194,7 @@ type ListDataTasksResponseBodyResultSinkCluster struct {
 	//
 	// es-cn-09k1rnu3g0002****-worker
 	VpcInstanceId *string `json:"vpcInstanceId,omitempty" xml:"vpcInstanceId,omitempty"`
-	// The port number used to access the cluster.
+	// The access port of the cluster.
 	//
 	// example:
 	//

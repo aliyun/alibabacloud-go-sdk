@@ -24,7 +24,7 @@ type UpdateInstanceChargeTypeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The returned result. Valid values:
 	//
-	// - true: The conversion was successful.
+	// - true: The conversion is successful.
 	//
 	// - false: The conversion failed.
 	//

@@ -16,13 +16,13 @@ type iRemovePluginResponseBody interface {
 }
 
 type RemovePluginResponseBody struct {
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return Result
+	// The returned result.
 	//
 	// example:
 	//

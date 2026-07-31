@@ -68,7 +68,7 @@ func (s *ListAllNodeResponseBody) Validate() error {
 type ListAllNodeResponseBodyResult struct {
 	// The CPU usage.
 	//
-	// > When **extended*	- is set to **true*	- and the monitoring information of the node is being synchronized, the parameter value returns null. In this case, wait 10 seconds and send the request again to retrieve the value.
+	// > When **extended*	- is set to **true*	- and the monitoring information of the node is being synchronized, the parameter value returns null. In this case, wait 10 seconds and resend the request to obtain the value.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type ListAllNodeResponseBodyResult struct {
 	//
 	// - COORDINATING: client node
 	//
-	// - KIBANA: Kibana node.
+	// - KIBANA: Kibana node
 	//
 	// example:
 	//

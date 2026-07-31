@@ -14,7 +14,11 @@ type iUpdateFalconSeekRequest interface {
 }
 
 type UpdateFalconSeekRequest struct {
-	// true: Enabled, false: shutdown
+	// Specifies whether to enable the FalconSeek cloud-native kernel feature. Valid values:
+	//
+	// - true: Enable the feature.
+	//
+	// - false: Disable the feature.
 	//
 	// This parameter is required.
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`

@@ -14,7 +14,7 @@ type iListAllNodeRequest interface {
 }
 
 type ListAllNodeRequest struct {
-	// Specifies whether to return monitoring information for the nodes. Valid values:
+	// Specifies whether to return monitoring information for nodes. Valid values:
 	//
 	// - true (default): Returns monitoring information.
 	//

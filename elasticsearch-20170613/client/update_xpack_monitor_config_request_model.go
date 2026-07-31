@@ -30,9 +30,9 @@ type UpdateXpackMonitorConfigRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to enable X-Pack monitoring. Valid values:
 	//
-	// - true: Enable X-Pack monitoring.
+	// - true: Enabled.
 	//
-	// - false: Disable X-Pack monitoring.
+	// - false: Not enabled.
 	//
 	// example:
 	//

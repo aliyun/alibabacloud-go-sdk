@@ -24,7 +24,7 @@ type InstallAckOperatorResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The returned result. Valid values:
 	//
-	// - true: The installation was successful.
+	// - true: The installation succeeded.
 	//
 	// - false: The installation failed.
 	//

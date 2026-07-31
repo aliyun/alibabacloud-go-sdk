@@ -22,7 +22,7 @@ type TagResourcesRequest struct {
 	//
 	// This parameter is required.
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	// The resource type. Set this parameter to INSTANCE.
+	// The resource type. The value is fixed as INSTANCE.
 	//
 	// This parameter is required.
 	//

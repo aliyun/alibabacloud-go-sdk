@@ -16,13 +16,13 @@ type iInitModelResponseBody interface {
 }
 
 type InitModelResponseBody struct {
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return Result
+	// The returned result.
 	//
 	// example:
 	//

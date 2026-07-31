@@ -71,13 +71,13 @@ type DescribeDiagnoseReportResponseBodyResult struct {
 	// The list of diagnostic items in the report.
 	DiagnoseItems []*DescribeDiagnoseReportResponseBodyResultDiagnoseItems `json:"diagnoseItems,omitempty" xml:"diagnoseItems,omitempty" type:"Repeated"`
 	DiagnosisMode *string                                                  `json:"diagnosisMode,omitempty" xml:"diagnosisMode,omitempty"`
-	// The overall health status of the cluster in the report. Valid values: GREEN, YELLOW, RED, and UNKNOWN.
+	// The overall health of the cluster in the report. Valid values: GREEN, YELLOW, RED, and UNKNOWN.
 	//
 	// example:
 	//
 	// YELLOW
 	Health *string `json:"health,omitempty" xml:"health,omitempty"`
-	// The ID of the diagnosed instance.
+	// The instance ID of the diagnosed instance.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type DescribeDiagnoseReportResponseBodyResult struct {
 	//
 	// SUCCESS
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The method used to trigger the health diagnosis. Valid values: SYSTEM (automatically triggered by the system), INNER (internally triggered), and USER (manually triggered by the user).
+	// The method used to trigger the health diagnostics. Valid values: SYSTEM (automatically triggered by the system), INNER (internally triggered), and USER (manually triggered by the user).
 	//
 	// example:
 	//

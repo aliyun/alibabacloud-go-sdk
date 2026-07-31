@@ -117,11 +117,11 @@ type ListCollectorsResponseBodyResult struct {
 	CollectorPaths []*string `json:"collectorPaths,omitempty" xml:"collectorPaths,omitempty" type:"Repeated"`
 	// The configuration file information of the collector.
 	Configs []*ListCollectorsResponseBodyResultConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	// Indicates whether the collector is validated only without being created. Valid values:
+	// Indicates whether the collector is validated and created. Valid values:
 	//
-	// - true: Only validates without creating.
+	// - true: Only validated, not created.
 	//
-	// - false: Validates and creates.
+	// - false: Validated and created.
 	//
 	// example:
 	//
@@ -159,7 +159,7 @@ type ListCollectorsResponseBodyResult struct {
 	//
 	// ct-cn-0v3xj86085dvq****
 	ResId *string `json:"resId,omitempty" xml:"resId,omitempty"`
-	// The collector type. Valid values: fileBeat, metricBeat, heartBeat, and auditBeat.
+	// The collector type. Supported values: fileBeat, metricBeat, heartBeat, and auditBeat.
 	//
 	// example:
 	//
@@ -388,7 +388,7 @@ type ListCollectorsResponseBodyResultExtendConfigs struct {
 	//
 	// - collectorDeployMachine: the deployment machine of the collector
 	//
-	// - collectorElasticsearchForKibana: the Elasticsearch instance that supports Kibana dashboards.
+	// - collectorElasticsearchForKibana: the Elasticsearch instance that supports Kibana dashboards
 	//
 	// example:
 	//
@@ -423,7 +423,7 @@ type ListCollectorsResponseBodyResultExtendConfigs struct {
 	//
 	// es-cn-nif1z89fz003i****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The type of instance specified in the collector Output. Valid values: elasticsearch, logstash. This parameter is displayed when **configType*	- is **collectorTargetInstance**.
+	// The type of instance specified in the collector Output. Supported values: elasticsearch, logstash. This parameter is displayed when **configType*	- is **collectorTargetInstance**.
 	//
 	// example:
 	//
@@ -437,7 +437,7 @@ type ListCollectorsResponseBodyResultExtendConfigs struct {
 	KibanaHost *string `json:"kibanaHost,omitempty" xml:"kibanaHost,omitempty"`
 	// The list of ECS machines on which the collector is deployed. This parameter is displayed when **configType*	- is **collectorDeployMachines*	- and **type*	- is **ECSInstanceId**.
 	Machines []*ListCollectorsResponseBodyResultExtendConfigsMachines `json:"machines,omitempty" xml:"machines,omitempty" type:"Repeated"`
-	// The transmission protocol, which must be consistent with the access protocol of the instance specified in the collector Output. Valid values: HTTP, HTTPS. This parameter is displayed when **configType*	- is **collectorTargetInstance**.
+	// The transmission protocol, which must be consistent with the access protocol of the instance specified in the collector Output. Supported values: HTTP, HTTPS. This parameter is displayed when **configType*	- is **collectorTargetInstance**.
 	//
 	// example:
 	//
@@ -459,7 +459,7 @@ type ListCollectorsResponseBodyResultExtendConfigs struct {
 	//
 	// - ECSInstanceId: ECS
 	//
-	// - ACKCluster: Container Kubernetes.
+	// - ACKCluster: Container Kubernetes
 	//
 	// example:
 	//
@@ -621,11 +621,11 @@ func (s *ListCollectorsResponseBodyResultExtendConfigs) Validate() error {
 }
 
 type ListCollectorsResponseBodyResultExtendConfigsMachines struct {
-	// The status of each collector on the ECS instance. Valid values:
+	// The status of the collector on the ECS instance. Valid values:
 	//
-	// - heartOk: The heartbeat is normal.
+	// - heartOk: Normal heartbeat.
 	//
-	// - heartLost: The heartbeat is abnormal.
+	// - heartLost: Abnormal heartbeat.
 	//
 	// - uninstalled: Not installed.
 	//
@@ -635,7 +635,7 @@ type ListCollectorsResponseBodyResultExtendConfigsMachines struct {
 	//
 	// heartOk
 	AgentStatus *string `json:"agentStatus,omitempty" xml:"agentStatus,omitempty"`
-	// The list of ECS machine IDs.
+	// The ECS machine ID.
 	//
 	// example:
 	//

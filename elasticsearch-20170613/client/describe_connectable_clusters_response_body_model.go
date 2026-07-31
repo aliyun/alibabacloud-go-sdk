@@ -66,7 +66,7 @@ func (s *DescribeConnectableClustersResponseBody) Validate() error {
 }
 
 type DescribeConnectableClustersResponseBodyResult struct {
-	// The instance ID of instances that can establish private network peering.
+	// The instance IDs that can establish private network peering.
 	//
 	// example:
 	//

@@ -84,7 +84,7 @@ func (s *ListInstanceResponseBody) Validate() error {
 }
 
 type ListInstanceResponseBodyHeaders struct {
-	// The total number of instances.
+	// The total number of instance records.
 	//
 	// example:
 	//
@@ -116,19 +116,11 @@ func (s *ListInstanceResponseBodyHeaders) Validate() error {
 type ListInstanceResponseBodyResult struct {
 	// Indicates whether the instance contains dedicated master nodes. Valid values:
 	//
-	// - true: The instance contains dedicated master nodes.
-	//
-	// - false: The instance does not contain dedicated master nodes.
-	//
 	// example:
 	//
 	// false
 	AdvancedDedicateMaster *bool `json:"advancedDedicateMaster,omitempty" xml:"advancedDedicateMaster,omitempty"`
-	// The deployment mode and architecture type:
-	//
-	// exclusive: basic management and control
-	//
-	// public: cloud-native management and control
+	// The deployment mode. Architecture type:
 	//
 	// example:
 	//
@@ -142,17 +134,13 @@ type ListInstanceResponseBodyResult struct {
 	//
 	// 2018-07-13T03:58:07.253Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// Indicates whether the instance contains dedicated master nodes (deprecated). Valid values:
-	//
-	// - true: The instance contains dedicated master nodes.
-	//
-	// - false: The instance does not contain dedicated master nodes.
+	// **[Deprecated]*	- Indicates whether the instance contains dedicated master nodes. Valid values:
 	//
 	// example:
 	//
 	// false
 	DedicateMaster *bool `json:"dedicateMaster,omitempty" xml:"dedicateMaster,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
@@ -166,7 +154,7 @@ type ListInstanceResponseBodyResult struct {
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
 	// The configuration of elastic data nodes.
 	ElasticDataNodeConfiguration *ListInstanceResponseBodyResultElasticDataNodeConfiguration `json:"elasticDataNodeConfiguration,omitempty" xml:"elasticDataNodeConfiguration,omitempty" type:"Struct"`
-	// The expiration time of the instance.
+	// The time when the instance expires.
 	//
 	// example:
 	//
@@ -178,7 +166,7 @@ type ListInstanceResponseBodyResult struct {
 	//
 	// 6.7_with_X-Pack
 	EsVersion *string `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
-	// The extended configurations of the cluster.
+	// The extension parameter settings of the cluster.
 	ExtendConfigs []map[string]interface{} `json:"extendConfigs,omitempty" xml:"extendConfigs,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -194,9 +182,9 @@ type ListInstanceResponseBodyResult struct {
 	IsNewDeployment *string `json:"isNewDeployment,omitempty" xml:"isNewDeployment,omitempty"`
 	// The configuration of Kibana nodes.
 	KibanaConfiguration *ListInstanceResponseBodyResultKibanaConfiguration `json:"kibanaConfiguration,omitempty" xml:"kibanaConfiguration,omitempty" type:"Struct"`
-	// The public network access whitelist for Kibana nodes of the cluster.
+	// The public network access whitelist for the Kibana node of the cluster.
 	KibanaIPWhitelist []*string `json:"kibanaIPWhitelist,omitempty" xml:"kibanaIPWhitelist,omitempty" type:"Repeated"`
-	// The private network access whitelist for Kibana nodes of the cluster.
+	// The private network access whitelist for the Kibana node of the cluster.
 	KibanaPrivateIPWhitelist []*string `json:"kibanaPrivateIPWhitelist,omitempty" xml:"kibanaPrivateIPWhitelist,omitempty" type:"Repeated"`
 	// The configuration of master nodes.
 	MasterConfiguration *ListInstanceResponseBodyResultMasterConfiguration `json:"masterConfiguration,omitempty" xml:"masterConfiguration,omitempty" type:"Struct"`
@@ -212,35 +200,23 @@ type ListInstanceResponseBodyResult struct {
 	NodeSpec *ListInstanceResponseBodyResultNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
 	// The billing method of the instance. Valid values:
 	//
-	// - **prepaid**: subscription
-	//
-	// - **postpaid**: pay-as-you-go
-	//
 	// example:
 	//
 	// postpaid
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
 	// The access port of the instance.
 	//
-	// 	Notice: When the instance is being created or the instance status is abnormal, this value may be empty or 0.
-	//
 	// example:
 	//
 	// 9200
 	Port *string `json:"port,omitempty" xml:"port,omitempty"`
-	// The status of the pay-as-you-go service that is overlaid on a subscription instance. Valid values:
-	//
-	// - **active**: normal
-	//
-	// - **closed**: closed
-	//
-	// - **indebt**: frozen due to overdue payment
+	// The status of the pay-as-you-go service that is overlaid on the subscription instance. Valid values:
 	//
 	// example:
 	//
 	// active
 	PostpaidServiceStatus *string `json:"postpaidServiceStatus,omitempty" xml:"postpaidServiceStatus,omitempty"`
-	// The private network access whitelist for the Elasticsearch cluster.
+	// The private network access IP whitelist for the Elasticsearch cluster.
 	PrivateNetworkIpWhiteList []*string `json:"privateNetworkIpWhiteList,omitempty" xml:"privateNetworkIpWhiteList,omitempty" type:"Repeated"`
 	// The access protocol. Valid values: HTTP and HTTPS.
 	//
@@ -263,16 +239,6 @@ type ListInstanceResponseBodyResult struct {
 	// true
 	ServiceVpc *bool `json:"serviceVpc,omitempty" xml:"serviceVpc,omitempty"`
 	// The status of the instance. Valid values:
-	//
-	// - active: normal
-	//
-	// - activating: taking effect
-	//
-	// - inactive: frozen
-	//
-	// - invalid: invalid. The cluster does not exist or is inaccessible. In this case, some fields in the API response may be missing, such as domain and kibanaDomain.
-	//
-	// - unknown: unknown. The cluster does not exist or is inaccessible. In this case, some fields in the API response may be missing, such as domain and kibanaDomain.
 	//
 	// example:
 	//
@@ -684,13 +650,13 @@ type ListInstanceResponseBodyResultClientNodeConfiguration struct {
 	//
 	// cloud_efficiency
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The node specifications. For more information about the specifications, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+	// The node specifications. For more information, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
 	//
 	// example:
 	//
 	// elasticsearch.sn2ne.large
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
-	// The description of node specifications.
+	// The node specifications description.
 	//
 	// example:
 	//
@@ -768,11 +734,7 @@ type ListInstanceResponseBodyResultElasticDataNodeConfiguration struct {
 	//
 	// 20
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
-	// Indicates whether disk encryption is enabled for the node. Valid values:
-	//
-	// - true: Disk encryption is enabled.
-	//
-	// - false: Disk encryption is not enabled.
+	// Indicates whether cloud disk encryption is enabled for the node. Valid values:
 	//
 	// example:
 	//
@@ -780,23 +742,17 @@ type ListInstanceResponseBodyResultElasticDataNodeConfiguration struct {
 	DiskEncryption *bool `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
 	// The storage type of the node. Valid values:
 	//
-	// - cloud_ssd: standard SSD
-	//
-	// - cloud_essd: enhanced SSD (ESSD)
-	//
-	// - cloud_efficiency: ultra disk
-	//
 	// example:
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The node specifications. For more information about the specifications, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+	// The node specifications. For more information, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
 	//
 	// example:
 	//
 	// elasticsearch.sn2ne.large
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
-	// The description of node specifications.
+	// The node specifications description.
 	//
 	// example:
 	//
@@ -889,13 +845,13 @@ type ListInstanceResponseBodyResultKibanaConfiguration struct {
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The node specifications. For more information about the specifications, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+	// The node specifications. For more information, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
 	//
 	// example:
 	//
 	// elasticsearch.n4.small
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
-	// The description of node specifications.
+	// The node specifications description.
 	//
 	// example:
 	//
@@ -979,13 +935,13 @@ type ListInstanceResponseBodyResultMasterConfiguration struct {
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The node specifications. For more information about the specifications, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+	// The node specifications. For more information, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
 	//
 	// example:
 	//
 	// elasticsearch.sn2ne.large
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
-	// The description of node specifications.
+	// The node specifications description.
 	//
 	// example:
 	//
@@ -1152,7 +1108,7 @@ type ListInstanceResponseBodyResultNetworkConfigWhiteIpGroupList struct {
 	//
 	// default
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// The IP address whitelist.
+	// The network whitelist.
 	Ips []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
 	// The network type. PRIVATE_ES: Elasticsearch private network. PUBLIC_KIBANA: Kibana public network. PUBLIC_ES: Elasticsearch public network. PRIVATE_KIBANA: Kibana private network.
 	//
@@ -1208,39 +1164,35 @@ type ListInstanceResponseBodyResultNodeSpec struct {
 	//
 	// 50
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
-	// Indicates whether disk encryption is used. Valid values:
-	//
-	// - true: Disk encryption is used.
-	//
-	// - false: Disk encryption is not used.
+	// Indicates whether disk encryption is enabled. Valid values:
 	//
 	// example:
 	//
 	// false
 	DiskEncryption *bool `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
+	// example:
+	//
+	// high_availability
+	DiskPreference *string `json:"diskPreference,omitempty" xml:"diskPreference,omitempty"`
 	// The storage type of the node. Valid values:
-	//
-	// - cloud_ssd: standard SSD
-	//
-	// - cloud_efficiency: ultra disk
 	//
 	// example:
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The performance level of the ESSD. This parameter is required when diskType is cloud_essd. Valid values: PL1, PL2, and PL3.
+	// The performance level (PL) of the ESSD cloud disk. This parameter is required when diskType is set to cloud_essd. Valid values: PL1, PL2, and PL3. When diskType is set to cloud_ssd (standard SSD), this parameter is not required.
 	//
 	// example:
 	//
 	// PL1
 	PerformanceLevel *string `json:"performanceLevel,omitempty" xml:"performanceLevel,omitempty"`
-	// The node specifications. For more information about the specifications, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+	// The node specifications. For more information, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
 	//
 	// example:
 	//
 	// elasticsearch.n4.small
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
-	// The description of node specifications.
+	// The node specifications description.
 	//
 	// example:
 	//
@@ -1262,6 +1214,10 @@ func (s *ListInstanceResponseBodyResultNodeSpec) GetDisk() *int32 {
 
 func (s *ListInstanceResponseBodyResultNodeSpec) GetDiskEncryption() *bool {
 	return s.DiskEncryption
+}
+
+func (s *ListInstanceResponseBodyResultNodeSpec) GetDiskPreference() *string {
+	return s.DiskPreference
 }
 
 func (s *ListInstanceResponseBodyResultNodeSpec) GetDiskType() *string {
@@ -1287,6 +1243,11 @@ func (s *ListInstanceResponseBodyResultNodeSpec) SetDisk(v int32) *ListInstanceR
 
 func (s *ListInstanceResponseBodyResultNodeSpec) SetDiskEncryption(v bool) *ListInstanceResponseBodyResultNodeSpec {
 	s.DiskEncryption = &v
+	return s
+}
+
+func (s *ListInstanceResponseBodyResultNodeSpec) SetDiskPreference(v string) *ListInstanceResponseBodyResultNodeSpec {
+	s.DiskPreference = &v
 	return s
 }
 

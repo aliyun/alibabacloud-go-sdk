@@ -116,7 +116,7 @@ func (s *ListDeprecatedTemplatesResponseBodyHeaders) Validate() error {
 type ListDeprecatedTemplatesResponseBodyResult struct {
 	// Indicates whether the template matches a data stream. Valid values:
 	//
-	// - true: matched
+	// - true: matched.
 	//
 	// - false: not matched.
 	//
@@ -220,7 +220,7 @@ func (s *ListDeprecatedTemplatesResponseBodyResult) Validate() error {
 }
 
 type ListDeprecatedTemplatesResponseBodyResultTemplate struct {
-	// The alias configuration of the template.
+	// The aliases configuration of the template.
 	//
 	// example:
 	//

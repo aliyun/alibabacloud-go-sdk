@@ -64,13 +64,13 @@ func (s *DescribeAckOperatorResponseBody) Validate() error {
 type DescribeAckOperatorResponseBodyResult struct {
 	// The Operator installation status. Valid values:
 	//
-	// - deployed: installed
+	// - deployed: Installed.
 	//
-	// - not-deploy: not installed
+	// - not-deploy: Not installed.
 	//
-	// - failed: installation failed
+	// - failed: Installation failed.
 	//
-	// - unknown: unknown status.
+	// - unknown: Unknown status.
 	//
 	// example:
 	//

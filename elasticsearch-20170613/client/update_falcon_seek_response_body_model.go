@@ -14,7 +14,7 @@ type iUpdateFalconSeekResponseBody interface {
 }
 
 type UpdateFalconSeekResponseBody struct {
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//

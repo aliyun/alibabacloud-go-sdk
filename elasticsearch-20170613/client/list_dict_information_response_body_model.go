@@ -72,9 +72,9 @@ type ListDictInformationResponseBodyResult struct {
 	OssObject *ListDictInformationResponseBodyResultOssObject `json:"ossObject,omitempty" xml:"ossObject,omitempty" type:"Struct"`
 	// The dictionary type. Valid values:
 	//
-	// - MAIN: primary tokenization dictionary
+	// - MAIN: primary token dictionary
 	//
-	// - STOP: stopword dictionary.
+	// - STOP: stopword dictionary
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ type ListDictInformationResponseBodyResultOssObject struct {
 	//
 	// es-osstest*
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	// The MD5 checksum (ETag) of the OSS file, in uppercase.
+	// The MD5 checksum (ETag) of the OSS file in uppercase.
 	//
 	// example:
 	//

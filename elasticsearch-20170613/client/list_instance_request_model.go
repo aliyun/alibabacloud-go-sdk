@@ -36,7 +36,7 @@ type iListInstanceRequest interface {
 }
 
 type ListInstanceRequest struct {
-	// The instance name. Fuzzy search is supported. For example, if you search for all instances matching **abc**, all instances named **abc**, **abcde**, **xyabc**, and **xabcy*	- may be returned.
+	// The instance name. Fuzzy match is supported. For example, if you search for **abc**, all instances whose names contain **abc*	- may be returned, such as **abc**, **abcde**, **xyabc**, and **xabcy**.
 	//
 	// example:
 	//
@@ -48,13 +48,7 @@ type ListInstanceRequest struct {
 	//
 	// 6.7_with_X-Pack
 	EsVersion *string `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
-	// The edition type of the instance. Valid values:
-	//
-	// - x-pack: Commercial Edition
-	//
-	// - advanced/IS: Enhanced Edition
-	//
-	// - community: Basic Edition
+	// The edition of the instance. Valid values:
 	//
 	// example:
 	//
@@ -68,17 +62,11 @@ type ListInstanceRequest struct {
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The page number of the instance list.
 	//
-	// Start value: **1**, default value: **1**.
-	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
 	// The billing method of the instance. Valid values:
-	//
-	// - postpaid: pay-as-you-go
-	//
-	// - prepaid: subscription
 	//
 	// example:
 	//
@@ -90,7 +78,7 @@ type ListInstanceRequest struct {
 	//
 	// rg-aekzvowej3i****
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The number of entries per page for paginated queries. Maximum value: **100**, default value: **10**.
+	// The number of entries per page in a paged query. Settings the number of entries per page for paging. Maximum value: **100**. Default value: **10**.
 	//
 	// example:
 	//
@@ -103,7 +91,7 @@ type ListInstanceRequest struct {
 	//
 	// [{"tagKey":"key1","tagValue":"value1"}]
 	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// The ID of the virtual private cloud (VPC) where the instance is deployed.
+	// The ID of the virtual private cloud (VPC) in which the instance resides.
 	//
 	// example:
 	//

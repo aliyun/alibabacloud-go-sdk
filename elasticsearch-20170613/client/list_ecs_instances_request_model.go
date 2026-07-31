@@ -24,13 +24,13 @@ type iListEcsInstancesRequest interface {
 }
 
 type ListEcsInstancesRequest struct {
-	// The list of ECS instance IDs. The value can be a JSON array that consists of up to 100 instance IDs. Separate multiple IDs with commas (,).
+	// The list of ECS instance IDs. The value can be a JSON array that consists of up to 100 instance IDs separated by commas (,).
 	//
 	// example:
 	//
 	// ["i-bp13y63575oypr9d****","i-bp1gyhphjaj73jsr****"]
 	EcsInstanceIds *string `json:"ecsInstanceIds,omitempty" xml:"ecsInstanceIds,omitempty"`
-	// The name of the ECS instance.
+	// The ECS instance name.
 	//
 	// example:
 	//
@@ -48,17 +48,17 @@ type ListEcsInstancesRequest struct {
 	//
 	// 10
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
-	// Instance tags of the ECS instance. The following fields must be included:
+	// The ECS instance tags. The following fields must be included:
 	//
-	// - tagKey: instance tag key.
+	// - tagKey: the tag key.
 	//
-	// - tagValue: instance tag value.
+	// - tagValue: the tag value.
 	//
 	// example:
 	//
 	// [{ "tagKey":"a","tagValue":"b"}]
 	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// The ID of the VPC where the ECS instance resides.
+	// The VPC ID of the ECS instance.
 	//
 	// example:
 	//

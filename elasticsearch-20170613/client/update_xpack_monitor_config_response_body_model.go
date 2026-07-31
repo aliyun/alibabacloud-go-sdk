@@ -22,7 +22,7 @@ type UpdateXpackMonitorConfigResponseBody struct {
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the operation. Valid values:
+	// The returned result. Valid values:
 	//
 	// - true: The update was successful.
 	//

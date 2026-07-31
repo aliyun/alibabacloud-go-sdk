@@ -22,7 +22,7 @@ type DeleteILMPolicyResponseBody struct {
 	//
 	// 694FDC20-0FDD-47C4-B921-BFF902FA****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result. Valid values:
+	// The result. Valid values:
 	//
 	// - true: The specified lifecycle policy definition is deleted.
 	//

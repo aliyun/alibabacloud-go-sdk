@@ -98,7 +98,7 @@ type UpdateInstanceResponseBodyResult struct {
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 实例的私网访问域名。
+	// The internal-facing access endpoint of the instance for private network access.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ type UpdateInstanceResponseBodyResult struct {
 	NodeSpec *UpdateInstanceResponseBodyResultNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
 	// The billing method of the instance. Valid values:
 	//
-	// - prepaid: subscription
+	// - prepaid: subscription.
 	//
 	// - postpaid: pay-as-you-go.
 	//
@@ -140,11 +140,11 @@ type UpdateInstanceResponseBodyResult struct {
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
 	// The status of the instance. Valid values:
 	//
-	// - active: Normal
+	// - active: Normal.
 	//
-	// - activating: Taking effect
+	// - activating: Taking effect.
 	//
-	// - inactive: Frozen
+	// - inactive: Frozen.
 	//
 	// - invalid: Invalid.
 	//
@@ -299,7 +299,7 @@ type UpdateInstanceResponseBodyResultKibanaConfiguration struct {
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// 节点规格。
+	// The node specifications.
 	//
 	// example:
 	//
@@ -374,7 +374,7 @@ type UpdateInstanceResponseBodyResultMasterConfiguration struct {
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// 节点规格。
+	// The node specifications.
 	//
 	// example:
 	//
@@ -439,7 +439,7 @@ type UpdateInstanceResponseBodyResultNodeSpec struct {
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
 	// The storage type of the node. Valid values:
 	//
-	// - cloud_ssd: standard SSD
+	// - cloud_ssd: standard SSD.
 	//
 	// - cloud_efficiency: ultra disk.
 	//
@@ -447,7 +447,7 @@ type UpdateInstanceResponseBodyResultNodeSpec struct {
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// 节点规格。
+	// The node specifications.
 	//
 	// example:
 	//

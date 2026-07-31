@@ -82,7 +82,7 @@ type UpdateHotIkDictsResponseBodyResult struct {
 	//
 	// - OSS: uses OSS open storage.
 	//
-	// - ORIGIN: retains a previously uploaded dictionary.
+	// - ORIGIN: retains the previously uploaded dictionary.
 	//
 	// example:
 	//

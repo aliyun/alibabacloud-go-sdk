@@ -18,7 +18,7 @@ type iListDefaultCollectorConfigurationsRequest interface {
 }
 
 type ListDefaultCollectorConfigurationsRequest struct {
-	// The type of the collector. Valid values:
+	// The collector type. Valid values:
 	//
 	// - fileBeat
 	//
@@ -26,7 +26,7 @@ type ListDefaultCollectorConfigurationsRequest struct {
 	//
 	// - heartBeat
 	//
-	// - auditBeat.
+	// - auditBeat
 	//
 	// This parameter is required.
 	//
@@ -34,11 +34,11 @@ type ListDefaultCollectorConfigurationsRequest struct {
 	//
 	// fileBeat
 	ResType *string `json:"resType,omitempty" xml:"resType,omitempty"`
-	// The version of the collector. The available versions vary based on the type of machine on which the collector is deployed. Valid values:
+	// The collector version. The available versions vary depending on the machine type on which the collector is deployed. Valid values:
 	//
 	// - ECS: 6.8.5_with_community
 	//
-	// - ACK: 6.8.13_with_community.
+	// - ACK: 6.8.13_with_community
 	//
 	// This parameter is required.
 	//
@@ -48,9 +48,9 @@ type ListDefaultCollectorConfigurationsRequest struct {
 	ResVersion *string `json:"resVersion,omitempty" xml:"resVersion,omitempty"`
 	// The type of machine on which the collector is deployed. If you do not specify this parameter, all types are returned. Valid values:
 	//
-	// - ECS: Elastic Compute Service (ECS) instance
+	// - ECS: Elastic Compute Service instance
 	//
-	// - ACK: Container Service for Kubernetes (ACK) cluster.
+	// - ACK: Container Kubernetes cluster
 	//
 	// example:
 	//

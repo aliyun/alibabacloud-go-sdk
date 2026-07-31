@@ -24,9 +24,9 @@ type InitializeOperationRoleResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The returned result. Valid values:
 	//
-	// - true: The service-linked role is created.
+	// - true: Created.
 	//
-	// - false: The service-linked role failed to be created.
+	// - false: Failed to create.
 	//
 	// example:
 	//

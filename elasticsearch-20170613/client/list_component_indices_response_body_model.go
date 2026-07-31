@@ -114,7 +114,7 @@ func (s *ListComponentIndicesResponseBodyHeaders) Validate() error {
 }
 
 type ListComponentIndicesResponseBodyResult struct {
-	// The information about the index templates that reference this composable template.
+	// The information about index templates that reference this composable template.
 	Composed []*string `json:"composed,omitempty" xml:"composed,omitempty" type:"Repeated"`
 	// The content of the composable template.
 	Content *ListComponentIndicesResponseBodyResultContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
@@ -296,9 +296,9 @@ func (s *ListComponentIndicesResponseBodyResultContentTemplateSettings) Validate
 type ListComponentIndicesResponseBodyResultContentTemplateSettingsIndex struct {
 	// The index compression method. Valid values:
 	//
-	// - LZ4: the default compression algorithm of Elasticsearch. It provides fast compression and decompression but a relatively lower compression ratio.
+	// - LZ4: The default compression algorithm of Elasticsearch. It provides fast compression and decompression but a relatively lower compression ratio.
 	//
-	// - best_compression: uses the best_compression algorithm for compression, which provides a higher compression ratio.
+	// - best_compression: Uses the best_compression algorithm for compression, which provides a higher compression ratio.
 	//
 	// example:
 	//

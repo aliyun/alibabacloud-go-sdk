@@ -24,9 +24,9 @@ type CreatePipelinesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the pipeline is created. Valid values:
 	//
-	// - true: The pipeline is created.
+	// - true: Created.
 	//
-	// - false: The pipeline failed to be created.
+	// - false: Failed to create.
 	//
 	// example:
 	//

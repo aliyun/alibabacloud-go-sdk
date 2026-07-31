@@ -50,7 +50,7 @@ type ListLogstashRequest struct {
 	//
 	// rg-acfm2h5vbzd****
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The number of entries per page for paging. Default value: 20.
+	// The number of entries per page in Settings for paging. Default value: 20.
 	//
 	// example:
 	//

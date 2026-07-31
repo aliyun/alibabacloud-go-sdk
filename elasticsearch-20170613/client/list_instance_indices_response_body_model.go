@@ -189,7 +189,7 @@ type ListInstanceIndicesResponseBodyResult struct {
 	//
 	// false
 	IsManaged *string `json:"isManaged,omitempty" xml:"isManaged,omitempty"`
-	// The managed status of the index. Valid values:
+	// The index management status. Valid values:
 	//
 	// - following: Managed.
 	//
@@ -217,7 +217,7 @@ type ListInstanceIndicesResponseBodyResult struct {
 	//
 	// - delete: Delete phase.
 	//
-	// > If this parameter is empty, the index is not managed by a lifecycle policy.
+	// > If this value is empty, the index is not managed by a lifecycle policy.
 	//
 	// example:
 	//

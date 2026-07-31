@@ -26,19 +26,19 @@ type iModifyWhiteIpsRequest interface {
 type ModifyWhiteIpsRequest struct {
 	// The modification mode. Valid values:
 	//
-	// - Cover (default): overwrites the original IP whitelist with the value of the ips parameter.
+	// - Cover (default): Overwrites the original IP whitelist with the value of the ips parameter.
 	//
-	// - Append: adds the IP addresses specified in the ips parameter to the original IP whitelist.
+	// - Append: Adds the IP addresses specified in the ips parameter to the original IP whitelist.
 	//
-	// - Delete: removes the IP addresses specified in the ips parameter from the original IP whitelist. At least one IP address must be retained.
+	// - Delete: Removes the IP addresses specified in the ips parameter from the original IP whitelist. At least one IP address must be retained.
 	//
 	// example:
 	//
 	// Cover
 	ModifyMode *string `json:"modifyMode,omitempty" xml:"modifyMode,omitempty"`
-	// The network type. This parameter is required if you specify the whiteIpList parameter. Valid values:
+	// The network type. This parameter is required if whiteIpList is specified. Valid values:
 	//
-	// - PRIVATE: private network
+	// - PRIVATE: private network.
 	//
 	// - PUBLIC: public network.
 	//
@@ -46,9 +46,9 @@ type ModifyWhiteIpsRequest struct {
 	//
 	// PUBLIC
 	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	// The node type. This parameter is required if you specify the whiteIpList parameter. Valid values:
+	// The node type. This parameter is required if whiteIpList is specified. Valid values:
 	//
-	// - WORKER: Elasticsearch cluster
+	// - WORKER: Elasticsearch cluster.
 	//
 	// - KIBANA: Kibana cluster.
 	//
@@ -56,11 +56,9 @@ type ModifyWhiteIpsRequest struct {
 	//
 	// WORKER
 	NodeType *string `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
-	// Updates the instance whitelist configuration by whitelist group. Only one whitelist group can be updated at a time.
+	// Updates the instance whitelist configuration by using the whitelist group method. Only one whitelist group can be updated at a time.
 	//
-	// 	Notice: You cannot specify both whiteIpList and whiteIpGroup at the same time.
-	//
-	// .
+	// 	Notice: You cannot configure whiteIpList and whiteIpGroup at the same time.
 	WhiteIpGroup *ModifyWhiteIpsRequestWhiteIpGroup `json:"whiteIpGroup,omitempty" xml:"whiteIpGroup,omitempty" type:"Struct"`
 	// The IP address whitelist. This parameter is available when whiteIpGroup is empty and updates the default group whitelist.
 	WhiteIpList []*string `json:"whiteIpList,omitempty" xml:"whiteIpList,omitempty" type:"Repeated"`
@@ -144,23 +142,23 @@ func (s *ModifyWhiteIpsRequest) Validate() error {
 }
 
 type ModifyWhiteIpsRequestWhiteIpGroup struct {
-	// The name of the whitelist group. This parameter is required if you specify the whiteIpGroup parameter.
+	// The name of the whitelist group. This parameter is required if whiteIpGroup is specified.
 	//
 	// example:
 	//
 	// test_group
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// The list of IP addresses in the whitelist group. This parameter is required if you specify the whiteIpGroup parameter.
+	// The list of IP addresses in the whitelist group. This parameter is required if whiteIpGroup is specified.
 	Ips []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
 	// The type of the IP whitelist. Valid values:
 	//
-	// - PRIVATE_KIBANA: Kibana internal-facing whitelist
+	// - PRIVATE_KIBANA: Kibana private access whitelist.
 	//
-	// - PRIVATE_ES: Elasticsearch internal-facing whitelist
+	// - PRIVATE_ES: Elasticsearch private access whitelist.
 	//
-	// - PUBLIC_ES: Elasticsearch public network access whitelist
+	// - PUBLIC_ES: Elasticsearch public access whitelist.
 	//
-	// - PUBLIC_KIBANA: Kibana public network access whitelist.
+	// - PUBLIC_KIBANA: Kibana public access whitelist.
 	//
 	// example:
 	//

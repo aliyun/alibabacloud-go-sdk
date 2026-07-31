@@ -76,7 +76,7 @@ type RestartInstanceResponseBodyResult struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The IK dictionary configuration.
 	DictList []*RestartInstanceResponseBodyResultDictList `json:"dictList,omitempty" xml:"dictList,omitempty" type:"Repeated"`
-	// The internal endpoint of the instance.
+	// The internal network access address of the instance.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type RestartInstanceResponseBodyResult struct {
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The Kibana node configuration.
 	KibanaConfiguration *RestartInstanceResponseBodyResultKibanaConfiguration `json:"kibanaConfiguration,omitempty" xml:"kibanaConfiguration,omitempty" type:"Struct"`
-	// The Kibana public network access address.
+	// The public network access address of Kibana.
 	//
 	// example:
 	//
@@ -134,15 +134,21 @@ type RestartInstanceResponseBodyResult struct {
 	//
 	// es-cn-n6w1o1x0w001c****.public.elasticsearch.aliyuncs.com
 	PublicDomain *string `json:"publicDomain,omitempty" xml:"publicDomain,omitempty"`
-	// The public port.
+	// The public network port.
 	//
 	// example:
 	//
 	// 9200
 	PublicPort *int32 `json:"publicPort,omitempty" xml:"publicPort,omitempty"`
-	// The status of the instance.
+	// The status of the instance. Valid values:
 	//
-	// Valid values: active, activating, inactive, and invalid.
+	// - **active**: Normal.
+	//
+	// - **activating**: Taking effect.
+	//
+	// - **inactive**: Frozen.
+	//
+	// - **invalid**: Invalid.
 	//
 	// example:
 	//
@@ -380,7 +386,7 @@ func (s *RestartInstanceResponseBodyResult) Validate() error {
 }
 
 type RestartInstanceResponseBodyResultDictList struct {
-	// The size of the dictionary file. Unit: bytes.
+	// The size of the dictionary file, in bytes.
 	//
 	// example:
 	//
@@ -394,11 +400,11 @@ type RestartInstanceResponseBodyResultDictList struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The source type. Valid values:
 	//
-	// - OSS: Object Storage Service (OSS). The OSS bucket must have public-read permissions.
+	// - OSS: OSS open storage (the OSS bucket must be publicly readable)
 	//
 	// - ORIGIN: open-source Elasticsearch
 	//
-	// - UPLOAD: uploaded file.
+	// - UPLOAD: uploaded file
 	//
 	// example:
 	//
@@ -406,13 +412,13 @@ type RestartInstanceResponseBodyResultDictList struct {
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 	// The dictionary type. Valid values:
 	//
-	// - STOP: stopword dictionary
+	// - STOP: stopword
 	//
 	// - MAIN: main dictionary
 	//
 	// - SYNONYMS: synonym dictionary
 	//
-	// - ALI_WS: Alibaba dictionary.
+	// - ALI_WS: Alibaba dictionary
 	//
 	// example:
 	//
@@ -475,7 +481,7 @@ type RestartInstanceResponseBodyResultKibanaConfiguration struct {
 	//
 	// 1
 	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The storage size of the node. Unit: GB.
+	// The storage size of the node, in GB.
 	//
 	// example:
 	//
@@ -550,7 +556,7 @@ type RestartInstanceResponseBodyResultMasterConfiguration struct {
 	//
 	// 3
 	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The storage size of the node. Unit: GB.
+	// The storage size of the node, in GB.
 	//
 	// example:
 	//
@@ -694,7 +700,7 @@ func (s *RestartInstanceResponseBodyResultNetworkConfig) Validate() error {
 }
 
 type RestartInstanceResponseBodyResultNodeSpec struct {
-	// The storage size of the node. Unit: GB.
+	// The storage size of the node, in GB.
 	//
 	// example:
 	//
@@ -754,7 +760,7 @@ func (s *RestartInstanceResponseBodyResultNodeSpec) Validate() error {
 }
 
 type RestartInstanceResponseBodyResultSynonymsDicts struct {
-	// The size of the dictionary file. Unit: bytes.
+	// The size of the dictionary file, in bytes.
 	//
 	// example:
 	//
@@ -768,11 +774,11 @@ type RestartInstanceResponseBodyResultSynonymsDicts struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The source type. Valid values:
 	//
-	// - OSS: Object Storage Service (OSS). The OSS bucket must have public-read permissions.
+	// - OSS: OSS open storage (the OSS bucket must be publicly readable)
 	//
 	// - ORIGIN: open-source Elasticsearch
 	//
-	// - UPLOAD: uploaded file.
+	// - UPLOAD: uploaded file
 	//
 	// example:
 	//
@@ -780,13 +786,13 @@ type RestartInstanceResponseBodyResultSynonymsDicts struct {
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 	// The dictionary type. Valid values:
 	//
-	// - STOP: stopword dictionary
+	// - STOP: stopword
 	//
 	// - MAIN: main dictionary
 	//
 	// - SYNONYMS: synonym dictionary
 	//
-	// - ALI_WS: Alibaba dictionary.
+	// - ALI_WS: Alibaba dictionary
 	//
 	// example:
 	//

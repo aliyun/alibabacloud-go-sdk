@@ -20,7 +20,7 @@ type iCapacityPlanRequest interface {
 }
 
 type CapacityPlanRequest struct {
-	// Specifies whether complex aggregate query is required. Valid values:
+	// Specifies whether complex aggregation query is required. Valid values:
 	//
 	// - true: Required.
 	//
@@ -32,7 +32,7 @@ type CapacityPlanRequest struct {
 	ComplexQueryAvailable *bool `json:"complexQueryAvailable,omitempty" xml:"complexQueryAvailable,omitempty"`
 	// The disk usage information.
 	DataInfo []*CapacityPlanRequestDataInfo `json:"dataInfo,omitempty" xml:"dataInfo,omitempty" type:"Repeated"`
-	// The metric information, including disk usage, search and write operations, and aggregation requests.
+	// The metric information for disk usage, search and write operations, and aggregation requests.
 	Metric []*CapacityPlanRequestMetric `json:"metric,omitempty" xml:"metric,omitempty" type:"Repeated"`
 	// Scenarios. Valid values:
 	//
@@ -44,7 +44,7 @@ type CapacityPlanRequest struct {
 	//
 	// - search: search scenario
 	//
-	// - log: log scenario.
+	// - log: log scenario
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type CapacityPlanRequestDataInfo struct {
 	//
 	// - retentionTime: data retention period
 	//
-	// - replica: replica settings.
+	// - replica: replica settings
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type CapacityPlanRequestDataInfo struct {
 	//
 	// - hot: hot data
 	//
-	// - warm: warm data.
+	// - warm: warm data
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type CapacityPlanRequestDataInfo struct {
 	//
 	// - Data units: MiB, GiB, TB, PB
 	//
-	// - Time units: DAYS, WEEKS, MONTHS, YEARS.
+	// - Time units: DAYS, WEEKS, MONTHS, YEARS
 	//
 	// example:
 	//
@@ -239,7 +239,7 @@ type CapacityPlanRequestMetric struct {
 	//
 	// - write: write
 	//
-	// - search: search.
+	// - search: search
 	//
 	// example:
 	//
@@ -273,7 +273,7 @@ type CapacityPlanRequestMetric struct {
 	//
 	// - common: normal
 	//
-	// - peak: peak.
+	// - peak: peak
 	//
 	// example:
 	//

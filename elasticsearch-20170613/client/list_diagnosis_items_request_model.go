@@ -27,7 +27,7 @@ type ListDiagnosisItemsRequest struct {
 	//
 	// - es: Spanish
 	//
-	// - fr: French.
+	// - fr: French
 	//
 	// example:
 	//

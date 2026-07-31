@@ -76,7 +76,7 @@ type MoveResourceGroupResponseBodyResult struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The IK dictionary configuration.
 	DictList []*MoveResourceGroupResponseBodyResultDictList `json:"dictList,omitempty" xml:"dictList,omitempty" type:"Repeated"`
-	// The internal endpoint of the instance.
+	// The internal network access address of the instance.
 	//
 	// example:
 	//
@@ -94,31 +94,31 @@ type MoveResourceGroupResponseBodyResult struct {
 	//
 	// es-cn-n6w1o1x0w001c****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The configuration of Kibana nodes.
+	// The Kibana node configuration.
 	KibanaConfiguration *MoveResourceGroupResponseBodyResultKibanaConfiguration `json:"kibanaConfiguration,omitempty" xml:"kibanaConfiguration,omitempty" type:"Struct"`
-	// The public network access address for Kibana.
+	// The Kibana public network access address.
 	//
 	// example:
 	//
 	// es-cn-nif1q8auz0003****.kibana.elasticsearch.aliyuncs.com
 	KibanaDomain *string `json:"kibanaDomain,omitempty" xml:"kibanaDomain,omitempty"`
-	// The public port for Kibana.
+	// The Kibana public network port.
 	//
 	// example:
 	//
 	// 5601
 	KibanaPort *int32 `json:"kibanaPort,omitempty" xml:"kibanaPort,omitempty"`
-	// The configuration of master nodes.
+	// The master node configuration.
 	MasterConfiguration *MoveResourceGroupResponseBodyResultMasterConfiguration `json:"masterConfiguration,omitempty" xml:"masterConfiguration,omitempty" type:"Struct"`
 	// The network configuration.
 	NetworkConfig *MoveResourceGroupResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
-	// The number of data nodes of the instance.
+	// The number of data nodes in the instance.
 	//
 	// example:
 	//
 	// 2
 	NodeAmount *int32 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
-	// The configuration of data nodes.
+	// The data node configuration.
 	NodeSpec *MoveResourceGroupResponseBodyResultNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
 	// The billing method of the instance. Valid values:
 	//
@@ -136,7 +136,7 @@ type MoveResourceGroupResponseBodyResult struct {
 	//
 	// es-cn-n6w1o1x0w001c****.public.elasticsearch.aliyuncs.com
 	PublicDomain *string `json:"publicDomain,omitempty" xml:"publicDomain,omitempty"`
-	// The public port.
+	// The public network port.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type MoveResourceGroupResponseBodyResult struct {
 	//
 	// - inactive: Frozen.
 	//
-	// - invalid: Expired.
+	// - invalid: Invalid.
 	//
 	// example:
 	//
@@ -402,7 +402,7 @@ type MoveResourceGroupResponseBodyResultDictList struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The source type. Valid values:
 	//
-	// - OSS: OSS open storage. Make sure that the OSS bucket has public-read permission.
+	// - OSS: OSS open storage (the OSS bucket must be publicly readable).
 	//
 	// - ORIGIN: retains the previously uploaded dictionary.
 	//
@@ -481,7 +481,7 @@ type MoveResourceGroupResponseBodyResultKibanaConfiguration struct {
 	//
 	// 1
 	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The storage size of the node. Unit: GB.
+	// The storage space size of the node. Unit: GB.
 	//
 	// example:
 	//
@@ -556,7 +556,7 @@ type MoveResourceGroupResponseBodyResultMasterConfiguration struct {
 	//
 	// 3
 	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The storage size of the node. Unit: GB.
+	// The storage space size of the node. Unit: GB.
 	//
 	// example:
 	//
@@ -631,7 +631,7 @@ type MoveResourceGroupResponseBodyResultNetworkConfig struct {
 	//
 	// vpc
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -700,7 +700,7 @@ func (s *MoveResourceGroupResponseBodyResultNetworkConfig) Validate() error {
 }
 
 type MoveResourceGroupResponseBodyResultNodeSpec struct {
-	// The storage size of the node. Unit: GB.
+	// The storage space size of the node. Unit: GB.
 	//
 	// example:
 	//
@@ -774,7 +774,7 @@ type MoveResourceGroupResponseBodyResultSynonymsDicts struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The source type. Valid values:
 	//
-	// - OSS: OSS open storage. Make sure that the OSS bucket has public-read permission.
+	// - OSS: OSS open storage (the OSS bucket must be publicly readable).
 	//
 	// - ORIGIN: retains the previously uploaded dictionary.
 	//

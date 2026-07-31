@@ -68,7 +68,7 @@ type UpdateSnapshotSettingResponseBodyResult struct {
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The start time of automatic backup.
+	// The automatic backup start time.
 	//
 	// example:
 	//

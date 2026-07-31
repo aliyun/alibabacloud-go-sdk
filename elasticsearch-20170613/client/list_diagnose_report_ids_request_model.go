@@ -46,7 +46,7 @@ type ListDiagnoseReportIdsRequest struct {
 	//
 	// - es: Spanish
 	//
-	// - fr: French.
+	// - fr: French
 	//
 	// example:
 	//

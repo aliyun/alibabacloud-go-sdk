@@ -14,7 +14,7 @@ type iUpdateKeystoresResponseBody interface {
 }
 
 type UpdateKeystoresResponseBody struct {
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//

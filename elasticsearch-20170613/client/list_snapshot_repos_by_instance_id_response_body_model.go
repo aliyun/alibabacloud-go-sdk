@@ -78,7 +78,7 @@ type ListSnapshotReposByInstanceIdResponseBodyResult struct {
 	//
 	// es-cn-6ja1ro4jt000c****
 	RepoPath *string `json:"repoPath,omitempty" xml:"repoPath,omitempty"`
-	// The name of the referenced repository.
+	// The referenced repository name.
 	//
 	// example:
 	//

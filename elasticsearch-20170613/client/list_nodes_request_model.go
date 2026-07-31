@@ -46,7 +46,7 @@ type ListNodesRequest struct {
 	//
 	// 10
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
-	// The tag information of the ECS instance. The tag key (tagKey) and tag value (tagValue) must be included.
+	// The tag information of the ECS instance. Must include the tag key (tagKey) and tag value (tagValue).
 	//
 	// example:
 	//

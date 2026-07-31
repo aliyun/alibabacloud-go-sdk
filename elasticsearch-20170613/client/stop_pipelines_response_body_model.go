@@ -24,7 +24,7 @@ type StopPipelinesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The returned result. Valid values:
 	//
-	// - true: The pipelines are stopped.
+	// - true: The pipelines are stopped successfully.
 	//
 	// - false: The pipelines failed to be stopped.
 	//

@@ -24,7 +24,7 @@ type iListSearchLogRequest interface {
 }
 
 type ListSearchLogRequest struct {
-	// The start timestamp of the log, in milliseconds. The value must be within the last 7 days. If this parameter is not specified, all logs within the [current time - 7 days, endTime\\] range are queried.
+	// The start timestamp of the log, in milliseconds. The value must be within the last 7 days. If this parameter is not specified, all logs within the range of [current time - 7 days, endTime\\] are queried.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type ListSearchLogRequest struct {
 	//
 	// 1531910852074
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The page number of the plug-in list. Minimum value: 1. Default value: 1.
+	// The page number of the plugin list. Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//

@@ -40,9 +40,9 @@ type GetEmonGrafanaDashboardsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the Grafana dashboard list is retrieved. Valid values:
 	//
-	// - true: succeeded.
+	// - true: The list is retrieved.
 	//
-	// - false: failed.
+	// - false: The retrieval failed.
 	//
 	// example:
 	//

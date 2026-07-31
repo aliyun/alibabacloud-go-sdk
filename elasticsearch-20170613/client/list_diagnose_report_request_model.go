@@ -36,7 +36,7 @@ type ListDiagnoseReportRequest struct {
 	//
 	// - Minimum value: 1000000000000
 	//
-	// - Maximum value: 2000000000000.
+	// - Maximum value: 2000000000000
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type ListDiagnoseReportRequest struct {
 	//
 	// - es: Spanish
 	//
-	// - fr: French.
+	// - fr: French
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type ListDiagnoseReportRequest struct {
 	//
 	// - Minimum value: 1000000000000
 	//
-	// - Maximum value: 2000000000000.
+	// - Maximum value: 2000000000000
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type ListDiagnoseReportRequest struct {
 	//
 	// - INNER: internally triggered
 	//
-	// - USER: manually triggered by the user.
+	// - USER: manually triggered by the user
 	//
 	// example:
 	//

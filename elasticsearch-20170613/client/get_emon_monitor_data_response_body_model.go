@@ -121,7 +121,7 @@ func (s *GetEmonMonitorDataResponseBody) Validate() error {
 }
 
 type GetEmonMonitorDataResponseBodyResult struct {
-	// The real-time metric monitoring data, in the format of `{timestamp:data}`.
+	// The real-time metric monitoring data. Format: `{timestamp:data}`.
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ type GetEmonMonitorDataResponseBodyResult struct {
 	//
 	// 1.0
 	Integrity *float32 `json:"integrity,omitempty" xml:"integrity,omitempty"`
-	// The timestamp when the request reaches the server. This parameter is used for troubleshooting.
+	// The timestamp when the request reaches the server. This is used for troubleshooting.
 	//
 	// example:
 	//
@@ -145,7 +145,7 @@ type GetEmonMonitorDataResponseBodyResult struct {
 	//
 	// elasticbuild.elasticsearch.source.total_doc_count
 	Metric *string `json:"metric,omitempty" xml:"metric,omitempty"`
-	// If the queries contain wildcards, the result includes multiple matched time series datasets. The summary aggregates the values of these time series at each time point based on the aggregator type specified in the query. Currently, only avg is supported as the aggregation method.
+	// If the queries contain wildcards, the result includes multiple matching time series data sequences. The summary is the aggregation of the values across these time series at each time point, based on the aggregator type specified in the query. Currently, only avg is supported as the aggregation method.
 	//
 	// example:
 	//

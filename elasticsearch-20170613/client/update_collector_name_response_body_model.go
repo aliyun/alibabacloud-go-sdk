@@ -65,11 +65,11 @@ type UpdateCollectorNameResponseBodyResult struct {
 	CollectorPaths []*string `json:"collectorPaths,omitempty" xml:"collectorPaths,omitempty" type:"Repeated"`
 	// The configuration file information of the collector.
 	Configs []*UpdateCollectorNameResponseBodyResultConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	// Indicates whether the collector is validated only without being created. Valid values:
+	// Indicates whether the collector is validated and created. Valid values:
 	//
-	// - true: Only validates without updating.
+	// - true: Only validated, not updated.
 	//
-	// - false: Validates and updates.
+	// - false: Validated and updated.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ type UpdateCollectorNameResponseBodyResult struct {
 	//
 	// - ECS: 6.8.5_with_community
 	//
-	// - ACK: 6.8.13_with_community.
+	// - ACK: 6.8.13_with_community
 	//
 	// example:
 	//
@@ -365,7 +365,7 @@ type UpdateCollectorNameResponseBodyResultExtendConfigs struct {
 	// es-cn-4591jumei000u****-kibana.internal.elasticsearch.aliyuncs.com:5601
 	Host  *string   `json:"host,omitempty" xml:"host,omitempty"`
 	Hosts []*string `json:"hosts,omitempty" xml:"hosts,omitempty" type:"Repeated"`
-	// The ID of the instance associated with the collector. When **configType*	- is **collectorTargetInstance**, this is the instance ID of the collector Output. When **configType*	- is **collectorDeployMachines*	- and **type*	- is **ACKCluster**, this is the ACK cluster ID.
+	// The instance ID associated with the collector. When **configType*	- is **collectorTargetInstance**, this is the instance ID of the collector Output. When **configType*	- is **collectorDeployMachines*	- and **type*	- is **ACKCluster**, this is the ACK cluster ID.
 	//
 	// example:
 	//

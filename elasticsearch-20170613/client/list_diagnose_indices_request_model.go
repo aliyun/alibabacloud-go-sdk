@@ -14,7 +14,7 @@ type iListDiagnoseIndicesRequest interface {
 }
 
 type ListDiagnoseIndicesRequest struct {
-	// The language. Default value: the browser language. Valid values:
+	// The language configuration. Default value: browser language. Valid values:
 	//
 	// - en: English
 	//
@@ -24,7 +24,7 @@ type ListDiagnoseIndicesRequest struct {
 	//
 	// - es: Spanish
 	//
-	// - fr: French.
+	// - fr: French
 	//
 	// example:
 	//

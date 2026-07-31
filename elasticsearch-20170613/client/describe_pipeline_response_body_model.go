@@ -22,7 +22,7 @@ type DescribePipelineResponseBody struct {
 	//
 	// 829F38F6-E2D6-4109-90A6-888160BD1***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned pipeline information. For more information, see [logstash.yml](https://www.elastic.co/guide/en/logstash/6.7/logstash-settings-file.html).
+	// The pipeline information. For more information, see [logstash.yml](https://www.elastic.co/guide/en/logstash/6.7/logstash-settings-file.html).
 	Result *DescribePipelineResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -110,7 +110,7 @@ type DescribePipelineResponseBodyResult struct {
 	//
 	// - RUNNING: running.
 	//
-	// - DELETED: deleted. This status is not displayed in the console.
+	// - DELETED: deleted (this status is not displayed in the console).
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type DescribePipelineResponseBodyResult struct {
 	//
 	// 1024
 	QueueCheckPointWrites *int32 `json:"queueCheckPointWrites,omitempty" xml:"queueCheckPointWrites,omitempty"`
-	// The total capacity of the queue, in bytes. Unit: MB.
+	// The total capacity of the queue in bytes. Unit: MB.
 	//
 	// example:
 	//
