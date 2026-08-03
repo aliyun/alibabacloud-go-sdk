@@ -1326,6 +1326,7 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFrames) Validate() erro
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResults struct {
+	AigcData *VideoModerationResultResponseBodyDataFrameResultFramesResultsAigcData `json:"AigcData,omitempty" xml:"AigcData,omitempty" type:"Struct"`
 	// The custom image library information returned when a custom image library is hit.
 	CustomImage []*VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage `json:"CustomImage,omitempty" xml:"CustomImage,omitempty" type:"Repeated"`
 	// The logo information returned when a logo is detected in the video.
@@ -1354,6 +1355,10 @@ func (s VideoModerationResultResponseBodyDataFrameResultFramesResults) GoString(
 	return s.String()
 }
 
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) GetAigcData() *VideoModerationResultResponseBodyDataFrameResultFramesResultsAigcData {
+	return s.AigcData
+}
+
 func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) GetCustomImage() []*VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage {
 	return s.CustomImage
 }
@@ -1380,6 +1385,11 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) GetTextI
 
 func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) GetVlContent() *VideoModerationResultResponseBodyDataFrameResultFramesResultsVlContent {
 	return s.VlContent
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) SetAigcData(v *VideoModerationResultResponseBodyDataFrameResultFramesResultsAigcData) *VideoModerationResultResponseBodyDataFrameResultFramesResults {
+	s.AigcData = v
+	return s
 }
 
 func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) SetCustomImage(v []*VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage) *VideoModerationResultResponseBodyDataFrameResultFramesResults {
@@ -1418,6 +1428,11 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) SetVlCon
 }
 
 func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) Validate() error {
+	if s.AigcData != nil {
+		if err := s.AigcData.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.CustomImage != nil {
 		for _, item := range s.CustomImage {
 			if item != nil {
@@ -1460,6 +1475,31 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) Validate
 		}
 	}
 	return nil
+}
+
+type VideoModerationResultResponseBodyDataFrameResultFramesResultsAigcData struct {
+	Explain *string `json:"Explain,omitempty" xml:"Explain,omitempty"`
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsAigcData) String() string {
+	return dara.Prettify(s)
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsAigcData) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsAigcData) GetExplain() *string {
+	return s.Explain
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsAigcData) SetExplain(v string) *VideoModerationResultResponseBodyDataFrameResultFramesResultsAigcData {
+	s.Explain = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsAigcData) Validate() error {
+	return dara.Validate(s)
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage struct {

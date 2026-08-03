@@ -110,7 +110,7 @@ type ManualModerationResultResponseBodyData struct {
 	//
 	// 1
 	ReviewCount *string `json:"ReviewCount,omitempty" xml:"ReviewCount,omitempty"`
-	// The risk level, returned based on the configured high and low risk scores. Valid values:
+	// The risk level, returned based on the configured high and low risk thresholds. Valid values:
 	//
 	// - high: High risk.
 	//
@@ -118,7 +118,7 @@ type ManualModerationResultResponseBodyData struct {
 	//
 	// - low: Low risk.
 	//
-	// - none: No risk detected.
+	//  - none: No risk detected.
 	//
 	// example:
 	//
@@ -203,7 +203,7 @@ type ManualModerationResultResponseBodyDataResult struct {
 	//
 	// example:
 	//
-	// 未检测出风险
+	// No risk detected.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The risk label.
 	//

@@ -11,7 +11,7 @@ import (
 
 // Summary:
 //
-// Queries the document content moderation result.
+// The document moderation result.
 //
 // @param request - DescribeFileModerationResultRequest
 //
@@ -635,7 +635,7 @@ func (client *Client) ManualModerationWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Retrieves the manual review result.
+// Retrieves the manual review result for content moderation.
 //
 // @param request - ManualModerationResultRequest
 //

@@ -96,7 +96,7 @@ func (s *DescribeFileModerationResultResponseBody) Validate() error {
 }
 
 type DescribeFileModerationResultResponseBodyData struct {
-	// The AccountId passed in by the customer.
+	// The AccountId specified in the request.
 	//
 	// example:
 	//
@@ -108,13 +108,13 @@ type DescribeFileModerationResultResponseBodyData struct {
 	//
 	// 26769ada6e264e7ba9aa048241e12be9
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// Optional. The document type.
+	// The document type. This parameter is optional.
 	//
 	// example:
 	//
 	// doc
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
-	// The list of moderation results.
+	// The list of detection results.
 	PageResult []*DescribeFileModerationResultResponseBodyDataPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Repeated"`
 	// The summary information.
 	PageSummary *DescribeFileModerationResultResponseBodyDataPageSummary `json:"PageSummary,omitempty" xml:"PageSummary,omitempty" type:"Struct"`
@@ -222,7 +222,7 @@ func (s *DescribeFileModerationResultResponseBodyData) Validate() error {
 }
 
 type DescribeFileModerationResultResponseBodyDataPageResult struct {
-	// The image moderation result.
+	// The image detection results.
 	ImageResult []*DescribeFileModerationResultResponseBodyDataPageResultImageResult `json:"ImageResult,omitempty" xml:"ImageResult,omitempty" type:"Repeated"`
 	// The image URL.
 	//
@@ -236,7 +236,7 @@ type DescribeFileModerationResultResponseBodyDataPageResult struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The text moderation result.
+	// The text moderation results.
 	TextResult []*DescribeFileModerationResultResponseBodyDataPageResultTextResult `json:"TextResult,omitempty" xml:"TextResult,omitempty" type:"Repeated"`
 	// The URL where the text content is stored.
 	//
@@ -577,7 +577,7 @@ type DescribeFileModerationResultResponseBodyDataPageResultTextResult struct {
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The details of the hit risks.
+	// The details of the hit risk.
 	//
 	// example:
 	//
@@ -601,7 +601,7 @@ type DescribeFileModerationResultResponseBodyDataPageResultTextResult struct {
 	//
 	// blah blah.
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The text segment information.
+	// The text segmentation information.
 	//
 	// example:
 	//
@@ -710,7 +710,8 @@ type DescribeFileModerationResultResponseBodyDataPageSummary struct {
 	// example:
 	//
 	// 1
-	PageSum     *int32                                                              `json:"PageSum,omitempty" xml:"PageSum,omitempty"`
+	PageSum *int32 `json:"PageSum,omitempty" xml:"PageSum,omitempty"`
+	// The document authenticity verification risk summary.
 	RiskSummary *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary `json:"RiskSummary,omitempty" xml:"RiskSummary,omitempty" type:"Struct"`
 	// The text summary information.
 	TextSummary *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary `json:"TextSummary,omitempty" xml:"TextSummary,omitempty" type:"Struct"`
@@ -890,9 +891,16 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImag
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary struct {
-	Ext        *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExt          `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
+	// The extended information.
+	Ext *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExt `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
+	// The list of hit authenticity verification risk labels.
 	RiskLabels []*DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels `json:"RiskLabels,omitempty" xml:"RiskLabels,omitempty" type:"Repeated"`
-	RiskLevel  *string                                                                         `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The overall risk level of the document, which is the highest level among all hit labels.
+	//
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary) String() string {
@@ -949,6 +957,7 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary) Val
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExt struct {
+	// The detection details of AI-generated content.
 	AigcData *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData `json:"AigcData,omitempty" xml:"AigcData,omitempty" type:"Struct"`
 }
 
@@ -979,8 +988,14 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExt) 
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData struct {
-	AIGC    *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC `json:"AIGC,omitempty" xml:"AIGC,omitempty" type:"Struct"`
-	Explain *string                                                                            `json:"Explain,omitempty" xml:"Explain,omitempty"`
+	// The implicit identifier information of AI-generated content.
+	AIGC *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC `json:"AIGC,omitempty" xml:"AIGC,omitempty" type:"Struct"`
+	// The comprehensive analysis report of large model authenticity verification.
+	//
+	// example:
+	//
+	// ### Comprehensive report for users.
+	Explain *string `json:"Explain,omitempty" xml:"Explain,omitempty"`
 }
 
 func (s DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData) String() string {
@@ -1019,13 +1034,48 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAi
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC struct {
-	ContentProducer   *string `json:"ContentProducer,omitempty" xml:"ContentProducer,omitempty"`
+	// The content producer code.
+	//
+	// example:
+	//
+	// 00119144030008867405X210001
+	ContentProducer *string `json:"ContentProducer,omitempty" xml:"ContentProducer,omitempty"`
+	// The content propagator code.
+	//
+	// example:
+	//
+	// 00119144030008867405X220001
 	ContentPropagator *string `json:"ContentPropagator,omitempty" xml:"ContentPropagator,omitempty"`
-	Label             *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	ProduceID         *string `json:"ProduceID,omitempty" xml:"ProduceID,omitempty"`
-	PropagateID       *string `json:"PropagateID,omitempty" xml:"PropagateID,omitempty"`
-	ReservedCode1     *string `json:"ReservedCode1,omitempty" xml:"ReservedCode1,omitempty"`
-	ReservedCode2     *string `json:"ReservedCode2,omitempty" xml:"ReservedCode2,omitempty"`
+	// The content attribute declared by the implicit identifier.
+	//
+	// example:
+	//
+	// Belongs to AI-generated synthetic content.
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The content production ID.
+	//
+	// example:
+	//
+	// tos-cn-i-tb4s082cfz/ad88d9b125694f57b2c72235e5c42af1
+	ProduceID *string `json:"ProduceID,omitempty" xml:"ProduceID,omitempty"`
+	// The content propagation ID.
+	//
+	// example:
+	//
+	// tos-cn-i-tb4s082cfz/ad88d9b125694f57b2c72235e5c42af1
+	PropagateID *string `json:"PropagateID,omitempty" xml:"PropagateID,omitempty"`
+	// Reserved field 1.
+	//
+	// example:
+	//
+	// None.
+	ReservedCode1 *string `json:"ReservedCode1,omitempty" xml:"ReservedCode1,omitempty"`
+	// Reserved field 2.
+	//
+	// example:
+	//
+	// None.
+	ReservedCode2 *string `json:"ReservedCode2,omitempty" xml:"ReservedCode2,omitempty"`
 }
 
 func (s DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC) String() string {
@@ -1104,9 +1154,24 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAi
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels struct {
-	Confidence  *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Label       *string  `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The label confidence score.
+	//
+	// example:
+	//
+	// 95.96
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The Chinese description of the risk label.
+	//
+	// example:
+	//
+	// Suspected AI-generated synthetic content.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The risk label.
+	//
+	// example:
+	//
+	// tamper_aigc
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 }
 
 func (s DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels) String() string {

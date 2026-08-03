@@ -84,7 +84,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Queries the document content moderation result.
+// The document moderation result.
 //
 // @param request - DescribeFileModerationResultRequest
 //
@@ -132,7 +132,7 @@ func (client *Client) DescribeFileModerationResultWithOptions(request *DescribeF
 
 // Summary:
 //
-// Queries the document content moderation result.
+// The document moderation result.
 //
 // @param request - DescribeFileModerationResultRequest
 //
@@ -1013,7 +1013,7 @@ func (client *Client) ManualModeration(request *ManualModerationRequest) (_resul
 
 // Summary:
 //
-// Retrieves the manual review result.
+// Retrieves the manual review result for content moderation.
 //
 // @param request - ManualModerationResultRequest
 //
@@ -1057,7 +1057,7 @@ func (client *Client) ManualModerationResultWithOptions(request *ManualModeratio
 
 // Summary:
 //
-// Retrieves the manual review result.
+// Retrieves the manual review result for content moderation.
 //
 // @param request - ManualModerationResultRequest
 //
