@@ -84,7 +84,7 @@ type CreatePhysicalConnectionRequest struct {
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The list of device advanced capabilities.
+	// The list of advanced device capabilities.
 	DeviceAdvancedCapacity []*string `json:"DeviceAdvancedCapacity,omitempty" xml:"DeviceAdvancedCapacity,omitempty" type:"Repeated"`
 	// The carrier that provides the Express Connect circuit. Valid values:
 	//
@@ -158,7 +158,7 @@ type CreatePhysicalConnectionRequest struct {
 	//
 	// example:
 	//
-	// XX街道
+	// XX Street
 	PeerLocation *string `json:"PeerLocation,omitempty" xml:"PeerLocation,omitempty"`
 	// The port type of the Express Connect circuit. Valid values:
 	//
@@ -176,13 +176,13 @@ type CreatePhysicalConnectionRequest struct {
 	//
 	// - **100GBase-LR**: 100 GE single-mode optical port.
 	//
-	// > 40GBase-LR and 100GBase-LR are created based on the actual port availability. Contact your account manager for details.
+	// > 40GBase-LR and 100GBase-LR are subject to the availability of backend ports. Contact your account manager for more information.
 	//
 	// example:
 	//
 	// 1000Base-T
 	PortType *string `json:"PortType,omitempty" xml:"PortType,omitempty"`
-	// The instance ID of the redundant Express Connect circuit. The redundant circuit must be in the **Allocated**, **Confirmed**, or **Enabled*	- state.
+	// The instance ID of the redundant Express Connect circuit. The circuit must be in the **Allocated**, **Confirmed**, or **Enabled*	- state.
 	//
 	// example:
 	//
@@ -428,7 +428,7 @@ func (s *CreatePhysicalConnectionRequest) Validate() error {
 type CreatePhysicalConnectionRequestTag struct {
 	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -436,7 +436,7 @@ type CreatePhysicalConnectionRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

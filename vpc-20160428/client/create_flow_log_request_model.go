@@ -127,7 +127,7 @@ type CreateFlowLogRequest struct {
 	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource whose traffic you want to capture. Valid values:
+	// The type of the resource whose traffic you want to catch. Valid values:
 	//
 	// - **NetworkInterface**: network interface controller (NIC).
 	//
@@ -163,7 +163,7 @@ type CreateFlowLogRequest struct {
 	//
 	//
 	//
-	// - **Drop**: traffic denied by access control.
+	// - **Drop**: traffic deny by access control.
 	//
 	// This parameter is required.
 	//
@@ -359,7 +359,7 @@ func (s *CreateFlowLogRequest) Validate() error {
 type CreateFlowLogRequestTag struct {
 	// The tag key of the resource. You can specify up to 20 tag keys. Do not specify an empty string.
 	//
-	// A tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -367,7 +367,7 @@ type CreateFlowLogRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value of the resource. You can specify up to 20 tag values. You can specify an empty string.
 	//
-	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

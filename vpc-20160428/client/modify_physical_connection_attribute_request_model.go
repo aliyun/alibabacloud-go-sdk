@@ -15,6 +15,8 @@ type iModifyPhysicalConnectionAttributeRequest interface {
 	GetClientToken() *string
 	SetDescription(v string) *ModifyPhysicalConnectionAttributeRequest
 	GetDescription() *string
+	SetDownDelayTime(v int32) *ModifyPhysicalConnectionAttributeRequest
+	GetDownDelayTime() *int32
 	SetLineOperator(v string) *ModifyPhysicalConnectionAttributeRequest
 	GetLineOperator() *string
 	SetName(v string) *ModifyPhysicalConnectionAttributeRequest
@@ -50,9 +52,9 @@ type ModifyPhysicalConnectionAttributeRequest struct {
 	CircuitCode *string `json:"CircuitCode,omitempty" xml:"CircuitCode,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
@@ -64,21 +66,22 @@ type ModifyPhysicalConnectionAttributeRequest struct {
 	//
 	// example:
 	//
-	// 物理专线的描述信息
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The carrier that provides the access to the physical line. Valid values:
+	// Description of the Express Connect circuit
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DownDelayTime *int32  `json:"DownDelayTime,omitempty" xml:"DownDelayTime,omitempty"`
+	// The carrier that provides the access to the physical connection. Valid values:
 	//
-	// - **CT**: China Telecom.
+	// - **CT**: China Telecom
 	//
-	// - **CU**: China Unicom.
+	// - **CU**: China Unicom
 	//
-	// - **CM**: China Mobile.
+	// - **CM**: China Mobile
 	//
-	// - **CO**: other carriers in the Chinese mainland.
+	// - **CO**: Other carriers in the Chinese mainland
 	//
-	// - **Equinix**: Equinix.
+	// - **Equinix**: Equinix
 	//
-	// - **Other**: other carriers outside the Chinese mainland.
+	// - **Other**: Other carriers outside the Chinese mainland
 	//
 	// example:
 	//
@@ -90,7 +93,7 @@ type ModifyPhysicalConnectionAttributeRequest struct {
 	//
 	// example:
 	//
-	// 物理专线的名称
+	// Name of the Express Connect circuit
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -98,7 +101,7 @@ type ModifyPhysicalConnectionAttributeRequest struct {
 	//
 	// example:
 	//
-	// 浙江省杭州市XX区XX街道XX号
+	// No. XX, XX Road, XX District, Hangzhou City, Zhejiang Province
 	PeerLocation *string `json:"PeerLocation,omitempty" xml:"PeerLocation,omitempty"`
 	// The ID of the Express Connect circuit.
 	//
@@ -112,11 +115,11 @@ type ModifyPhysicalConnectionAttributeRequest struct {
 	//
 	// - **100Base-T**: 100M Ethernet port.
 	//
-	// - **1000Base-T (default)**: 1 GE port.
+	// - **1000Base-T (default)**: 1 GE electrical port.
 	//
 	// - **1000Base-LX**: GE single-mode optical port (10 km).
 	//
-	// - **10GBase-T**: 10 GE port.
+	// - **10GBase-T**: 10 GE electrical port.
 	//
 	// - **10GBase-LR**: 10 GE single-mode optical port (10 km).
 	//
@@ -124,7 +127,7 @@ type ModifyPhysicalConnectionAttributeRequest struct {
 	//
 	// - **100GBase-LR**: 100 GE single-mode optical port.
 	//
-	// > 40GBase-LR and 100GBase-LR are subject to the availability of backend ports. Contact your account manager for more information.
+	// > To create 40GBase-LR or 100GBase-LR ports, check the actual port availability on the backend. Contact your account manager for details.
 	//
 	// example:
 	//
@@ -174,6 +177,10 @@ func (s *ModifyPhysicalConnectionAttributeRequest) GetClientToken() *string {
 
 func (s *ModifyPhysicalConnectionAttributeRequest) GetDescription() *string {
 	return s.Description
+}
+
+func (s *ModifyPhysicalConnectionAttributeRequest) GetDownDelayTime() *int32 {
+	return s.DownDelayTime
 }
 
 func (s *ModifyPhysicalConnectionAttributeRequest) GetLineOperator() *string {
@@ -236,6 +243,11 @@ func (s *ModifyPhysicalConnectionAttributeRequest) SetClientToken(v string) *Mod
 
 func (s *ModifyPhysicalConnectionAttributeRequest) SetDescription(v string) *ModifyPhysicalConnectionAttributeRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *ModifyPhysicalConnectionAttributeRequest) SetDownDelayTime(v int32) *ModifyPhysicalConnectionAttributeRequest {
+	s.DownDelayTime = &v
 	return s
 }
 

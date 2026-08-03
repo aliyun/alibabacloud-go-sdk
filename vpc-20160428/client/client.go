@@ -72,8 +72,8 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"eu-west-1":                   dara.String("vpc.eu-west-1.aliyuncs.com"),
 		"eu-central-1":                dara.String("vpc.eu-central-1.aliyuncs.com"),
 		"cn-zhongwei":                 dara.String("vpc.cn-zhongwei.aliyuncs.com"),
-		"cn-zhengzhou-jva":            dara.String("vpc.cn-zhengzhou-jva.aliyuncs.com"),
 		"cn-zhangjiakou":              dara.String("vpc.cn-zhangjiakou.aliyuncs.com"),
+		"cn-wulanchabu-gic-1":         dara.String("vpc.cn-wulanchabu-gic-1.aliyuncs.com"),
 		"cn-wulanchabu":               dara.String("vpc.cn-wulanchabu.aliyuncs.com"),
 		"cn-wuhan-lr":                 dara.String("vpc.cn-wuhan-lr.aliyuncs.com"),
 		"cn-shenzhen":                 dara.String("vpc.cn-shenzhen.aliyuncs.com"),
@@ -6191,7 +6191,7 @@ func (client *Client) CreateFailoverTestJob(request *CreateFailoverTestJobReques
 //
 // Description:
 //
-// *CreateFlowLog*	- is an asynchronous operation. After you invoke this operation, the system returns an instance ID, but the flow log is not yet created. The creation node continues in the background. You can invoke [DescribeFlowLogs](https://help.aliyun.com/document_detail/448670.html) to query the creation status of the flow log:
+// *CreateFlowLog*	- is an asynchronous operation. After you invoke this operation, the system returns an instance ID, but the flow log is not yet created. The creation node is still running in the background. You can invoke [DescribeFlowLogs](https://help.aliyun.com/document_detail/448670.html) to query the creation status of the flow log:
 //
 // - If the flow log is in the **Activating*	- state, the flow log is being created.
 //
@@ -6311,7 +6311,7 @@ func (client *Client) CreateFlowLogWithOptions(request *CreateFlowLogRequest, ru
 //
 // Description:
 //
-// *CreateFlowLog*	- is an asynchronous operation. After you invoke this operation, the system returns an instance ID, but the flow log is not yet created. The creation node continues in the background. You can invoke [DescribeFlowLogs](https://help.aliyun.com/document_detail/448670.html) to query the creation status of the flow log:
+// *CreateFlowLog*	- is an asynchronous operation. After you invoke this operation, the system returns an instance ID, but the flow log is not yet created. The creation node is still running in the background. You can invoke [DescribeFlowLogs](https://help.aliyun.com/document_detail/448670.html) to query the creation status of the flow log:
 //
 // - If the flow log is in the **Activating*	- state, the flow log is being created.
 //
@@ -6878,11 +6878,11 @@ func (client *Client) CreateHaVip(request *CreateHaVipRequest) (_result *CreateH
 
 // Summary:
 //
-// Creates Express Connect circuits in zone redundancy mode to ensure service stability through multi-line access to Alibaba Cloud and to avoid service disruption caused by single-line failures through multi-line disaster recovery.
+// Creates Express Connect circuits in zone redundancy mode to ensure service stability through multi-line access to Alibaba Cloud and to prevent service disruptions caused by single-line failures through multi-line disaster recovery.
 //
 // Description:
 //
-// When you purchase ports, you can select one of the following combination types to provide disaster recovery capabilities for your business or workloads.
+// When you purchase ports, you can select one of the following three combination types to provide disaster recovery capabilities for your business or workloads.
 //
 // - Maximum disaster recovery: You apply for resources in two access points and establish four independent Express Connect circuit connections. The SLA availability for maximum disaster recovery is no less than 99.99%.
 //
@@ -6988,11 +6988,11 @@ func (client *Client) CreateHighReliablePhysicalConnectionWithOptions(request *C
 
 // Summary:
 //
-// Creates Express Connect circuits in zone redundancy mode to ensure service stability through multi-line access to Alibaba Cloud and to avoid service disruption caused by single-line failures through multi-line disaster recovery.
+// Creates Express Connect circuits in zone redundancy mode to ensure service stability through multi-line access to Alibaba Cloud and to prevent service disruptions caused by single-line failures through multi-line disaster recovery.
 //
 // Description:
 //
-// When you purchase ports, you can select one of the following combination types to provide disaster recovery capabilities for your business or workloads.
+// When you purchase ports, you can select one of the following three combination types to provide disaster recovery capabilities for your business or workloads.
 //
 // - Maximum disaster recovery: You apply for resources in two access points and establish four independent Express Connect circuit connections. The SLA availability for maximum disaster recovery is no less than 99.99%.
 //
@@ -15941,11 +15941,11 @@ func (client *Client) DeleteNetworkAcl(request *DeleteNetworkAclRequest) (_resul
 
 // Summary:
 //
-// Deletes an Express Connect circuit connection.
+// Deletes an Express Connect circuit.
 //
 // Description:
 //
-// You can delete only Express Connect circuit connections that are in the **Allocated**, **Confirmed**, **Rejected**, **Canceled**, **AllocationFailed**, or **Terminated*	- state.
+// You can delete only Express Connect circuits that are in the **Allocated**, **Confirmed**, **Rejected**, **Canceled**, **AllocationFailed**, or **Terminated*	- state.
 //
 // @param request - DeletePhysicalConnectionRequest
 //
@@ -16013,11 +16013,11 @@ func (client *Client) DeletePhysicalConnectionWithOptions(request *DeletePhysica
 
 // Summary:
 //
-// Deletes an Express Connect circuit connection.
+// Deletes an Express Connect circuit.
 //
 // Description:
 //
-// You can delete only Express Connect circuit connections that are in the **Allocated**, **Confirmed**, **Rejected**, **Canceled**, **AllocationFailed**, or **Terminated*	- state.
+// You can delete only Express Connect circuits that are in the **Allocated**, **Confirmed**, **Rejected**, **Canceled**, **AllocationFailed**, or **Terminated*	- state.
 //
 // @param request - DeletePhysicalConnectionRequest
 //
@@ -20793,7 +20793,7 @@ func (client *Client) DescribeFailoverTestJobs(request *DescribeFailoverTestJobs
 
 // Summary:
 //
-// Queries flow logs by calling the DescribeFlowLogs operation.
+// Queries flow logs.
 //
 // @param request - DescribeFlowLogsRequest
 //
@@ -20909,7 +20909,7 @@ func (client *Client) DescribeFlowLogsWithOptions(request *DescribeFlowLogsReque
 
 // Summary:
 //
-// Queries flow logs by calling the DescribeFlowLogs operation.
+// Queries flow logs.
 //
 // @param request - DescribeFlowLogsRequest
 //
@@ -22992,7 +22992,7 @@ func (client *Client) DescribePhysicalConnectionLOA(request *DescribePhysicalCon
 //
 // Description:
 //
-// By default, the system queries information about all Express Connect circuits in the specified region. You can use the filter options provided by the **DescribePhysicalConnections*	- operation to query information about specific Express Connect circuits. For supported filter options, see the description of **Key*	- in the **request parameters*	- section of this topic.
+// By default, the system queries information about all Express Connect circuits in the specified region. You can use the filter options provided by the **DescribePhysicalConnections*	- operation to query information about specific Express Connect circuits. For the filter options supported by the system, refer to the description of **Key*	- in the **request parameters*	- section of this topic.
 //
 // @param request - DescribePhysicalConnectionsRequest
 //
@@ -23084,7 +23084,7 @@ func (client *Client) DescribePhysicalConnectionsWithOptions(request *DescribePh
 //
 // Description:
 //
-// By default, the system queries information about all Express Connect circuits in the specified region. You can use the filter options provided by the **DescribePhysicalConnections*	- operation to query information about specific Express Connect circuits. For supported filter options, see the description of **Key*	- in the **request parameters*	- section of this topic.
+// By default, the system queries information about all Express Connect circuits in the specified region. You can use the filter options provided by the **DescribePhysicalConnections*	- operation to query information about specific Express Connect circuits. For the filter options supported by the system, refer to the description of **Key*	- in the **request parameters*	- section of this topic.
 //
 // @param request - DescribePhysicalConnectionsRequest
 //
@@ -33602,7 +33602,7 @@ func (client *Client) ModifyExpressConnectTrafficQosRule(request *ModifyExpressC
 //
 // Description:
 //
-// - **ModifyFlowLogAttribute*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the flow log has not been modified yet. The modification task is still running in the background. You can call [DescribeFlowLogs](https://help.aliyun.com/document_detail/87923.html) to query the modification status of the flow log:
+// - **ModifyFlowLogAttribute*	- is an asynchronous operation. After you send a request, the system returns a request ID. However, the flow log has not been modified yet because the modification task is still running in the background. You can call [DescribeFlowLogs](https://help.aliyun.com/document_detail/87923.html) to query the modification status of the flow log:
 //
 //   - If the flow log is in the **Modifying*	- state, the flow log is being modified.
 //
@@ -33696,7 +33696,7 @@ func (client *Client) ModifyFlowLogAttributeWithOptions(request *ModifyFlowLogAt
 //
 // Description:
 //
-// - **ModifyFlowLogAttribute*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the flow log has not been modified yet. The modification task is still running in the background. You can call [DescribeFlowLogs](https://help.aliyun.com/document_detail/87923.html) to query the modification status of the flow log:
+// - **ModifyFlowLogAttribute*	- is an asynchronous operation. After you send a request, the system returns a request ID. However, the flow log has not been modified yet because the modification task is still running in the background. You can call [DescribeFlowLogs](https://help.aliyun.com/document_detail/87923.html) to query the modification status of the flow log:
 //
 //   - If the flow log is in the **Modifying*	- state, the flow log is being modified.
 //
@@ -35704,11 +35704,11 @@ func (client *Client) ModifyNetworkAclAttributes(request *ModifyNetworkAclAttrib
 
 // Summary:
 //
-// Modifies the configurations of an Express Connect circuit.
+// Modifies the configuration of an Express Connect circuit.
 //
 // Description:
 //
-// When you call this operation, take note of the following items:
+// When you call this operation, note the following items:
 //
 // - You can modify the specifications and redundant circuit ID only for Express Connect circuits in the **Initial**, **Enabled**, or **Rejected*	- state.
 //
@@ -35743,6 +35743,10 @@ func (client *Client) ModifyPhysicalConnectionAttributeWithOptions(request *Modi
 
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DownDelayTime) {
+		query["DownDelayTime"] = request.DownDelayTime
 	}
 
 	if !dara.IsNil(request.LineOperator) {
@@ -35818,11 +35822,11 @@ func (client *Client) ModifyPhysicalConnectionAttributeWithOptions(request *Modi
 
 // Summary:
 //
-// Modifies the configurations of an Express Connect circuit.
+// Modifies the configuration of an Express Connect circuit.
 //
 // Description:
 //
-// When you call this operation, take note of the following items:
+// When you call this operation, note the following items:
 //
 // - You can modify the specifications and redundant circuit ID only for Express Connect circuits in the **Initial**, **Enabled**, or **Rejected*	- state.
 //

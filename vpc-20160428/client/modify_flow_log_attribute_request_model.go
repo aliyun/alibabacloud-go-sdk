@@ -64,7 +64,7 @@ type ModifyFlowLogAttributeRequest struct {
 	//
 	// myFlowlog
 	FlowLogName *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
-	// The IP address version of the traffic captured by the flow log.
+	// The IP version of the traffic captured by the flow log.
 	//
 	// example:
 	//

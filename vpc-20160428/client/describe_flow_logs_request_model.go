@@ -86,7 +86,7 @@ type DescribeFlowLogsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in paging queries. Maximum value: **50**. Default value: **20**.
+	// The number of entries per page in paging query. Maximum value: **50**. Default value: **20**.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type DescribeFlowLogsRequest struct {
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The region ID of the flow log.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -142,11 +142,11 @@ type DescribeFlowLogsRequest struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The status of the flow log. Valid values:
 	//
-	// - **Active**: The flow log is active.
+	// - **Active**: the flow log is active.
 	//
-	// - **Activating**: The flow log is being created.
+	// - **Activating**: the flow log is being created.
 	//
-	// - **Inactive**: The flow log is inactive.
+	// - **Inactive**: the flow log is inactive.
 	//
 	// example:
 	//
@@ -166,13 +166,13 @@ type DescribeFlowLogsRequest struct {
 	//
 	//
 	//
-	// - **Drop**: traffic denied by access control.
+	// - **Drop**: traffic deny by access control.
 	//
 	// example:
 	//
 	// All
 	TrafficType *string `json:"TrafficType,omitempty" xml:"TrafficType,omitempty"`
-	// The ID of the VPC for which you want to query flow logs.
+	// The ID of the VPC whose flow logs you want to query.
 	//
 	// example:
 	//
@@ -375,7 +375,7 @@ func (s *DescribeFlowLogsRequest) Validate() error {
 type DescribeFlowLogsRequestTags struct {
 	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -383,7 +383,7 @@ type DescribeFlowLogsRequestTags struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

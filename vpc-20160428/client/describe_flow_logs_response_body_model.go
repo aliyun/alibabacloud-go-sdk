@@ -31,7 +31,7 @@ type DescribeFlowLogsResponseBody struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in paging queries.
+	// The number of entries per page in paging query.
 	//
 	// example:
 	//

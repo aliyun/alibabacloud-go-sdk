@@ -156,6 +156,8 @@ type DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnect
 	CircuitCode                    *string                                                                                       `json:"CircuitCode,omitempty" xml:"CircuitCode,omitempty"`
 	CreationTime                   *string                                                                                       `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	Description                    *string                                                                                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceFeaturesSelected         *string                                                                                       `json:"DeviceFeaturesSelected,omitempty" xml:"DeviceFeaturesSelected,omitempty"`
+	DownDelayTime                  *int32                                                                                        `json:"DownDelayTime,omitempty" xml:"DownDelayTime,omitempty"`
 	EnabledTime                    *string                                                                                       `json:"EnabledTime,omitempty" xml:"EnabledTime,omitempty"`
 	EndTime                        *string                                                                                       `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	ExpectSpec                     *string                                                                                       `json:"ExpectSpec,omitempty" xml:"ExpectSpec,omitempty"`
@@ -234,6 +236,14 @@ func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalCon
 
 func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType) GetDescription() *string {
 	return s.Description
+}
+
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType) GetDeviceFeaturesSelected() *string {
+	return s.DeviceFeaturesSelected
+}
+
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType) GetDownDelayTime() *int32 {
+	return s.DownDelayTime
 }
 
 func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType) GetEnabledTime() *string {
@@ -403,6 +413,16 @@ func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalCon
 
 func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType) SetDescription(v string) *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType) SetDeviceFeaturesSelected(v string) *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType {
+	s.DeviceFeaturesSelected = &v
+	return s
+}
+
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType) SetDownDelayTime(v int32) *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType {
+	s.DownDelayTime = &v
 	return s
 }
 
