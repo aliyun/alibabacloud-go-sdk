@@ -18,14 +18,20 @@ type iCreateApiKeyResponseBody interface {
 }
 
 type CreateApiKeyResponseBody struct {
+	// The API key content.
+	//
 	// example:
 	//
 	// sk-xxxxxxx
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// API KEY ID。
+	//
 	// example:
 	//
 	// api-xxxxxxx
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B

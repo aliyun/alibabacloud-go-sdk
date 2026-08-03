@@ -117,6 +117,7 @@ func (s *ListSaasServiceResponseBody) Validate() error {
 }
 
 type ListSaasServiceResponseBodyItems struct {
+	Components []*ListSaasServiceResponseBodyItemsComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
 	// The creation time.
 	//
 	// example:
@@ -128,7 +129,8 @@ type ListSaasServiceResponseBodyItems struct {
 	// example:
 	//
 	// 1
-	Cu *int32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	Cu                 *int32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	DeletionProtection *bool  `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// The expiration time.
 	//
 	// example:
@@ -145,7 +147,7 @@ type ListSaasServiceResponseBodyItems struct {
 	//
 	// POSTPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// [Deprecated]
+	// **[Deprecated]**
 	//
 	// example:
 	//
@@ -193,12 +195,20 @@ func (s ListSaasServiceResponseBodyItems) GoString() string {
 	return s.String()
 }
 
+func (s *ListSaasServiceResponseBodyItems) GetComponents() []*ListSaasServiceResponseBodyItemsComponents {
+	return s.Components
+}
+
 func (s *ListSaasServiceResponseBodyItems) GetCreateTime() *string {
 	return s.CreateTime
 }
 
 func (s *ListSaasServiceResponseBodyItems) GetCu() *int32 {
 	return s.Cu
+}
+
+func (s *ListSaasServiceResponseBodyItems) GetDeletionProtection() *bool {
+	return s.DeletionProtection
 }
 
 func (s *ListSaasServiceResponseBodyItems) GetExpireTime() *string {
@@ -229,6 +239,11 @@ func (s *ListSaasServiceResponseBodyItems) GetStatus() *string {
 	return s.Status
 }
 
+func (s *ListSaasServiceResponseBodyItems) SetComponents(v []*ListSaasServiceResponseBodyItemsComponents) *ListSaasServiceResponseBodyItems {
+	s.Components = v
+	return s
+}
+
 func (s *ListSaasServiceResponseBodyItems) SetCreateTime(v string) *ListSaasServiceResponseBodyItems {
 	s.CreateTime = &v
 	return s
@@ -236,6 +251,11 @@ func (s *ListSaasServiceResponseBodyItems) SetCreateTime(v string) *ListSaasServ
 
 func (s *ListSaasServiceResponseBodyItems) SetCu(v int32) *ListSaasServiceResponseBodyItems {
 	s.Cu = &v
+	return s
+}
+
+func (s *ListSaasServiceResponseBodyItems) SetDeletionProtection(v bool) *ListSaasServiceResponseBodyItems {
+	s.DeletionProtection = &v
 	return s
 }
 
@@ -275,5 +295,89 @@ func (s *ListSaasServiceResponseBodyItems) SetStatus(v string) *ListSaasServiceR
 }
 
 func (s *ListSaasServiceResponseBodyItems) Validate() error {
+	if s.Components != nil {
+		for _, item := range s.Components {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListSaasServiceResponseBodyItemsComponents struct {
+	ComponentId        *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
+	ComponentType      *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
+	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Cu                 *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	DeletionProtection *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListSaasServiceResponseBodyItemsComponents) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListSaasServiceResponseBodyItemsComponents) GoString() string {
+	return s.String()
+}
+
+func (s *ListSaasServiceResponseBodyItemsComponents) GetComponentId() *string {
+	return s.ComponentId
+}
+
+func (s *ListSaasServiceResponseBodyItemsComponents) GetComponentType() *string {
+	return s.ComponentType
+}
+
+func (s *ListSaasServiceResponseBodyItemsComponents) GetCreateTime() *string {
+	return s.CreateTime
+}
+
+func (s *ListSaasServiceResponseBodyItemsComponents) GetCu() *string {
+	return s.Cu
+}
+
+func (s *ListSaasServiceResponseBodyItemsComponents) GetDeletionProtection() *bool {
+	return s.DeletionProtection
+}
+
+func (s *ListSaasServiceResponseBodyItemsComponents) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ListSaasServiceResponseBodyItemsComponents) SetComponentId(v string) *ListSaasServiceResponseBodyItemsComponents {
+	s.ComponentId = &v
+	return s
+}
+
+func (s *ListSaasServiceResponseBodyItemsComponents) SetComponentType(v string) *ListSaasServiceResponseBodyItemsComponents {
+	s.ComponentType = &v
+	return s
+}
+
+func (s *ListSaasServiceResponseBodyItemsComponents) SetCreateTime(v string) *ListSaasServiceResponseBodyItemsComponents {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListSaasServiceResponseBodyItemsComponents) SetCu(v string) *ListSaasServiceResponseBodyItemsComponents {
+	s.Cu = &v
+	return s
+}
+
+func (s *ListSaasServiceResponseBodyItemsComponents) SetDeletionProtection(v bool) *ListSaasServiceResponseBodyItemsComponents {
+	s.DeletionProtection = &v
+	return s
+}
+
+func (s *ListSaasServiceResponseBodyItemsComponents) SetStatus(v string) *ListSaasServiceResponseBodyItemsComponents {
+	s.Status = &v
+	return s
+}
+
+func (s *ListSaasServiceResponseBodyItemsComponents) Validate() error {
 	return dara.Validate(s)
 }

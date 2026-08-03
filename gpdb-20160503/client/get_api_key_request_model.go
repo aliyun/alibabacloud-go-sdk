@@ -16,12 +16,16 @@ type iGetApiKeyRequest interface {
 }
 
 type GetApiKeyRequest struct {
+	// API KEY ID。
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// api-xxxxxx
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing

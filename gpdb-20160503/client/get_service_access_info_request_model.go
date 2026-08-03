@@ -16,10 +16,14 @@ type iGetServiceAccessInfoRequest interface {
 }
 
 type GetServiceAccessInfoRequest struct {
+	// The region ID where the SaaS service resides.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:

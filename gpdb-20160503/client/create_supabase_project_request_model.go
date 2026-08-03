@@ -33,6 +33,8 @@ type iCreateSupabaseProjectRequest interface {
 	GetSecurityIPList() *string
 	SetStorageSize(v int64) *CreateSupabaseProjectRequest
 	GetStorageSize() *int64
+	SetTags(v []*CreateSupabaseProjectRequestTags) *CreateSupabaseProjectRequest
+	GetTags() []*CreateSupabaseProjectRequestTags
 	SetUsedTime(v string) *CreateSupabaseProjectRequest
 	GetUsedTime() *string
 	SetVSwitchId(v string) *CreateSupabaseProjectRequest
@@ -60,13 +62,13 @@ type CreateSupabaseProjectRequest struct {
 	//
 	// TestPassword123!
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	// Specifies whether to enable auto start/stop. If this parameter is not specified, the default value false is used.
+	// Specifies whether to enable auto start/stop. If this parameter is not specified, the default value is false.
 	//
 	// example:
 	//
 	// false
 	AutoScale *bool `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
-	// The idempotency token. Ensures that duplicate requests do not result in duplicate operations.
+	// The idempotency token. Ensures that repeated requests do not execute the same operation more than once.
 	//
 	// example:
 	//
@@ -104,11 +106,11 @@ type CreateSupabaseProjectRequest struct {
 	//
 	// Valid values:
 	//
-	// - Free: free tier.
+	// - Free: Free tier.
 	//
-	// - Postpaid: pay-as-you-go.
+	// - Postpaid: Pay-as-you-go.
 	//
-	// - Prepaid: subscription.
+	// - Prepaid: Subscription.
 	//
 	// example:
 	//
@@ -169,7 +171,8 @@ type CreateSupabaseProjectRequest struct {
 	// example:
 	//
 	// 50
-	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	StorageSize *int64                              `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	Tags        []*CreateSupabaseProjectRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The subscription duration. This parameter takes effect only when PayType is set to PrePay. If this parameter is not specified, the default value is 1.
 	//
 	// example:
@@ -258,6 +261,10 @@ func (s *CreateSupabaseProjectRequest) GetStorageSize() *int64 {
 	return s.StorageSize
 }
 
+func (s *CreateSupabaseProjectRequest) GetTags() []*CreateSupabaseProjectRequestTags {
+	return s.Tags
+}
+
 func (s *CreateSupabaseProjectRequest) GetUsedTime() *string {
 	return s.UsedTime
 }
@@ -334,6 +341,11 @@ func (s *CreateSupabaseProjectRequest) SetStorageSize(v int64) *CreateSupabasePr
 	return s
 }
 
+func (s *CreateSupabaseProjectRequest) SetTags(v []*CreateSupabaseProjectRequestTags) *CreateSupabaseProjectRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *CreateSupabaseProjectRequest) SetUsedTime(v string) *CreateSupabaseProjectRequest {
 	s.UsedTime = &v
 	return s
@@ -355,5 +367,49 @@ func (s *CreateSupabaseProjectRequest) SetZoneId(v string) *CreateSupabaseProjec
 }
 
 func (s *CreateSupabaseProjectRequest) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateSupabaseProjectRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateSupabaseProjectRequestTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateSupabaseProjectRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSupabaseProjectRequestTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateSupabaseProjectRequestTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateSupabaseProjectRequestTags) SetKey(v string) *CreateSupabaseProjectRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateSupabaseProjectRequestTags) SetValue(v string) *CreateSupabaseProjectRequestTags {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateSupabaseProjectRequestTags) Validate() error {
 	return dara.Validate(s)
 }

@@ -22,22 +22,32 @@ type iListApiKeysRequest interface {
 }
 
 type ListApiKeysRequest struct {
+	// The name of the API key.
+	//
 	// example:
 	//
 	// my api
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	// The maximum number of records to return in this query.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next query.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

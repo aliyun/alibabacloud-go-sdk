@@ -44,14 +44,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"eu-west-1":             dara.String("gpdb.eu-west-1.aliyuncs.com"),
 		"eu-central-1":          dara.String("gpdb.eu-central-1.aliyuncs.com"),
 		"cn-zhangjiakou":        dara.String("gpdb.cn-zhangjiakou.aliyuncs.com"),
+		"cn-wulanchabu":         dara.String("gpdb.cn-wulanchabu.aliyuncs.com"),
 		"cn-huhehaote":          dara.String("gpdb.cn-huhehaote.aliyuncs.com"),
 		"cn-chengdu":            dara.String("gpdb.cn-chengdu.aliyuncs.com"),
-		"cn-beijing-finance-1":  dara.String("gpdb.aliyuncs.com"),
+		"cn-beijing-finance-1":  dara.String("gpdb.cn-beijing-finance-1.aliyuncs.com"),
 		"ap-southeast-7":        dara.String("gpdb.ap-southeast-7.aliyuncs.com"),
 		"ap-southeast-5":        dara.String("gpdb.ap-southeast-5.aliyuncs.com"),
 		"ap-southeast-3":        dara.String("gpdb.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-2":        dara.String("gpdb.ap-southeast-2.aliyuncs.com"),
-		"ap-south-1":            dara.String("gpdb.ap-south-1.aliyuncs.com"),
 		"ap-northeast-2":        dara.String("gpdb.ap-northeast-2.aliyuncs.com"),
 		"ap-northeast-1":        dara.String("gpdb.ap-northeast-1.aliyuncs.com"),
 	}
@@ -1544,11 +1543,11 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 
 // Summary:
 //
-// 创建API密钥
+// Creates an API key.
 //
 // Description:
 //
-// 创建API密钥。
+// Creates an API key.
 //
 // @param tmpReq - CreateApiKeyRequest
 //
@@ -1614,11 +1613,11 @@ func (client *Client) CreateApiKeyWithOptions(tmpReq *CreateApiKeyRequest, runti
 
 // Summary:
 //
-// 创建API密钥
+// Creates an API key.
 //
 // Description:
 //
-// 创建API密钥。
+// Creates an API key.
 //
 // @param request - CreateApiKeyRequest
 //
@@ -1968,11 +1967,11 @@ func (client *Client) CreateCollection(request *CreateCollectionRequest) (_resul
 
 // Summary:
 //
-// Create an AnalyticDB for PostgreSQL instance.
+// Creates an AnalyticDB for PostgreSQL instance.
 //
 // Description:
 //
-// Before you call this operation, review the [billing methods](https://help.aliyun.com/document_detail/35406.html) and <props="china">[pricing](https://www.aliyun.com/price/product#/gpdb/detail/GreenplumPost)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing) for AnalyticDB for PostgreSQL.
+// Before you call this operation, make sure that you fully understand the [billing methods](https://help.aliyun.com/document_detail/35406.html) and <props="china">[pricing](https://www.aliyun.com/price/product#/gpdb/detail/GreenplumPost)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing) of AnalyticDB for PostgreSQL.
 //
 // @param request - CreateDBInstanceRequest
 //
@@ -2196,11 +2195,11 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 
 // Summary:
 //
-// Create an AnalyticDB for PostgreSQL instance.
+// Creates an AnalyticDB for PostgreSQL instance.
 //
 // Description:
 //
-// Before you call this operation, review the [billing methods](https://help.aliyun.com/document_detail/35406.html) and <props="china">[pricing](https://www.aliyun.com/price/product#/gpdb/detail/GreenplumPost)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing) for AnalyticDB for PostgreSQL.
+// Before you call this operation, make sure that you fully understand the [billing methods](https://help.aliyun.com/document_detail/35406.html) and <props="china">[pricing](https://www.aliyun.com/price/product#/gpdb/detail/GreenplumPost)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing) of AnalyticDB for PostgreSQL.
 //
 // @param request - CreateDBInstanceRequest
 //
@@ -4415,6 +4414,10 @@ func (client *Client) CreateSupabaseProjectWithOptions(request *CreateSupabasePr
 		query["StorageSize"] = request.StorageSize
 	}
 
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
 	if !dara.IsNil(request.UsedTime) {
 		query["UsedTime"] = request.UsedTime
 	}
@@ -4900,11 +4903,11 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 
 // Summary:
 //
-// 删除API密钥
+// Deletes an API key.
 //
 // Description:
 //
-// 删除API密钥。
+// Deletes an API key.
 //
 // @param request - DeleteApiKeyRequest
 //
@@ -4952,11 +4955,11 @@ func (client *Client) DeleteApiKeyWithOptions(request *DeleteApiKeyRequest, runt
 
 // Summary:
 //
-// 删除API密钥
+// Deletes an API key.
 //
 // Description:
 //
-// 删除API密钥。
+// Deletes an API key.
 //
 // @param request - DeleteApiKeyRequest
 //
@@ -7206,11 +7209,11 @@ func (client *Client) DeleteVectorIndex(request *DeleteVectorIndexRequest) (_res
 
 // Summary:
 //
-// 删除SaaS工作空间
+// Deletes a SaaS workspace.
 //
 // Description:
 //
-// 此接口为删除上下文服务工作空间
+// Deletes a context service workspace.
 //
 // @param request - DeleteWorkspaceRequest
 //
@@ -7258,11 +7261,11 @@ func (client *Client) DeleteWorkspaceWithOptions(request *DeleteWorkspaceRequest
 
 // Summary:
 //
-// 删除SaaS工作空间
+// Deletes a SaaS workspace.
 //
 // Description:
 //
-// 此接口为删除上下文服务工作空间
+// Deletes a context service workspace.
 //
 // @param request - DeleteWorkspaceRequest
 //
@@ -14422,11 +14425,11 @@ func (client *Client) GetAccount(request *GetAccountRequest) (_result *GetAccoun
 
 // Summary:
 //
-// 获取API密钥详情
+// Retrieves the details of an API key.
 //
 // Description:
 //
-// 获取API密钥详情。
+// Retrieves the details of an API key.
 //
 // @param request - GetApiKeyRequest
 //
@@ -14474,11 +14477,11 @@ func (client *Client) GetApiKeyWithOptions(request *GetApiKeyRequest, runtime *d
 
 // Summary:
 //
-// 获取API密钥详情
+// Retrieves the details of an API key.
 //
 // Description:
 //
-// 获取API密钥详情。
+// Retrieves the details of an API key.
 //
 // @param request - GetApiKeyRequest
 //
@@ -14664,11 +14667,11 @@ func (client *Client) GetGraphRAGJob(request *GetGraphRAGJobRequest) (_result *G
 
 // Summary:
 //
-// 获取SaaS服务信息
+// Retrieves SaaS service information.
 //
 // Description:
 //
-// 删除模型服务。
+// Deletes a model service.
 //
 // @param request - GetSaasServiceRequest
 //
@@ -14716,11 +14719,11 @@ func (client *Client) GetSaasServiceWithOptions(request *GetSaasServiceRequest, 
 
 // Summary:
 //
-// 获取SaaS服务信息
+// Retrieves SaaS service information.
 //
 // Description:
 //
-// 删除模型服务。
+// Deletes a model service.
 //
 // @param request - GetSaasServiceRequest
 //
@@ -14820,17 +14823,17 @@ func (client *Client) GetSecretValue(request *GetSecretValueRequest) (_result *G
 
 // Summary:
 //
-// 获取SaaS服务访问信息
+// Retrieves access information for a SaaS service.
 //
 // Description:
 //
-// ## 使用说明
+// ## Operation description
 //
-// 本接口用于查看所有模型服务信息。
+// This operation is used to query information about all model services.
 //
-// ## QPS限制
+// ## QPS limit
 //
-// 本接口的单用户QPS限制默认为1000次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
+// The default single-user QPS limit for this operation is 1,000 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - GetServiceAccessInfoRequest
 //
@@ -14878,17 +14881,17 @@ func (client *Client) GetServiceAccessInfoWithOptions(request *GetServiceAccessI
 
 // Summary:
 //
-// 获取SaaS服务访问信息
+// Retrieves access information for a SaaS service.
 //
 // Description:
 //
-// ## 使用说明
+// ## Operation description
 //
-// 本接口用于查看所有模型服务信息。
+// This operation is used to query information about all model services.
 //
-// ## QPS限制
+// ## QPS limit
 //
-// 本接口的单用户QPS限制默认为1000次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
+// The default single-user QPS limit for this operation is 1,000 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - GetServiceAccessInfoRequest
 //
@@ -15418,13 +15421,13 @@ func (client *Client) GetUpsertCollectionDataJob(request *GetUpsertCollectionDat
 
 // Summary:
 //
-// 查询SaaS工作空间
+// Queries a SaaS workspace.
 //
 // Description:
 //
-// ## 使用说明
+// ## Operation description
 //
-// 本接口用于查看指定工作空间信息。
+// This operation is used to query information about a specified workspace.
 //
 // @param request - GetWorkspaceRequest
 //
@@ -15472,13 +15475,13 @@ func (client *Client) GetWorkspaceWithOptions(request *GetWorkspaceRequest, runt
 
 // Summary:
 //
-// 查询SaaS工作空间
+// Queries a SaaS workspace.
 //
 // Description:
 //
-// ## 使用说明
+// ## Operation description
 //
-// 本接口用于查看指定工作空间信息。
+// This operation is used to query information about a specified workspace.
 //
 // @param request - GetWorkspaceRequest
 //
@@ -15890,11 +15893,11 @@ func (client *Client) ListAIServices(request *ListAIServicesRequest) (_result *L
 
 // Summary:
 //
-// 查询API密钥列表
+// Queries a list of API keys.
 //
 // Description:
 //
-// 查询API密钥列表。
+// Queries a list of API keys.
 //
 // @param request - ListApiKeysRequest
 //
@@ -15954,11 +15957,11 @@ func (client *Client) ListApiKeysWithOptions(request *ListApiKeysRequest, runtim
 
 // Summary:
 //
-// 查询API密钥列表
+// Queries a list of API keys.
 //
 // Description:
 //
-// 查询API密钥列表。
+// Queries a list of API keys.
 //
 // @param request - ListApiKeysRequest
 //
@@ -17412,7 +17415,7 @@ func (client *Client) ListRemoteADBDataSources(request *ListRemoteADBDataSources
 //
 // Description:
 //
-// ## Operation description
+// ## Usage notes
 //
 // This operation is used to query information about all SaaS services.
 //
@@ -17478,7 +17481,7 @@ func (client *Client) ListSaasServiceWithOptions(request *ListSaasServiceRequest
 //
 // Description:
 //
-// ## Operation description
+// ## Usage notes
 //
 // This operation is used to query information about all SaaS services.
 //
@@ -18442,7 +18445,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 //
 // ## Operation description
 //
-// This operation is used to query information about all workspaces.
+// This operation is used to view information about all workspaces.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -18508,7 +18511,7 @@ func (client *Client) ListWorkspacesWithOptions(request *ListWorkspacesRequest, 
 //
 // ## Operation description
 //
-// This operation is used to query information about all workspaces.
+// This operation is used to view information about all workspaces.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -21242,11 +21245,11 @@ func (client *Client) PauseInstance(request *PauseInstanceRequest) (_result *Pau
 
 // Summary:
 //
-// 暂停SaaS服务
+// Pauses a SaaS service.
 //
 // Description:
 //
-// 删除模型服务。
+// Deletes a model service.
 //
 // @param request - PauseSaasServiceRequest
 //
@@ -21294,11 +21297,11 @@ func (client *Client) PauseSaasServiceWithOptions(request *PauseSaasServiceReque
 
 // Summary:
 //
-// 暂停SaaS服务
+// Pauses a SaaS service.
 //
 // Description:
 //
-// 删除模型服务。
+// Deletes a model service.
 //
 // @param request - PauseSaasServiceRequest
 //
@@ -22991,11 +22994,11 @@ func (client *Client) ResumeInstance(request *ResumeInstanceRequest) (_result *R
 
 // Summary:
 //
-// 恢复SaaS服务
+// Resumes a SaaS service.
 //
 // Description:
 //
-// 删除模型服务。
+// Deletes a model service.
 //
 // @param request - ResumeSaasServiceRequest
 //
@@ -23043,11 +23046,11 @@ func (client *Client) ResumeSaasServiceWithOptions(request *ResumeSaasServiceReq
 
 // Summary:
 //
-// 恢复SaaS服务
+// Resumes a SaaS service.
 //
 // Description:
 //
-// 删除模型服务。
+// Deletes a model service.
 //
 // @param request - ResumeSaasServiceRequest
 //

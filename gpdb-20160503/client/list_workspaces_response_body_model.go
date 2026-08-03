@@ -416,6 +416,7 @@ func (s *ListWorkspacesResponseBodyItemsApikeysAuthServices) Validate() error {
 }
 
 type ListWorkspacesResponseBodyItemsServices struct {
+	Components []*ListWorkspacesResponseBodyItemsServicesComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
 	// The creation time.
 	//
 	// example:
@@ -427,7 +428,8 @@ type ListWorkspacesResponseBodyItemsServices struct {
 	// example:
 	//
 	// 1
-	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	Cu                 *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	DeletionProtection *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// The expiration time.
 	//
 	// example:
@@ -448,7 +450,7 @@ type ListWorkspacesResponseBodyItemsServices struct {
 	//
 	// POSTPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// [Deprecated]
+	// **[Deprecated]**
 	//
 	// example:
 	//
@@ -496,12 +498,20 @@ func (s ListWorkspacesResponseBodyItemsServices) GoString() string {
 	return s.String()
 }
 
+func (s *ListWorkspacesResponseBodyItemsServices) GetComponents() []*ListWorkspacesResponseBodyItemsServicesComponents {
+	return s.Components
+}
+
 func (s *ListWorkspacesResponseBodyItemsServices) GetCreateTime() *string {
 	return s.CreateTime
 }
 
 func (s *ListWorkspacesResponseBodyItemsServices) GetCu() *string {
 	return s.Cu
+}
+
+func (s *ListWorkspacesResponseBodyItemsServices) GetDeletionProtection() *bool {
+	return s.DeletionProtection
 }
 
 func (s *ListWorkspacesResponseBodyItemsServices) GetExpireTime() *string {
@@ -532,6 +542,11 @@ func (s *ListWorkspacesResponseBodyItemsServices) GetStatus() *string {
 	return s.Status
 }
 
+func (s *ListWorkspacesResponseBodyItemsServices) SetComponents(v []*ListWorkspacesResponseBodyItemsServicesComponents) *ListWorkspacesResponseBodyItemsServices {
+	s.Components = v
+	return s
+}
+
 func (s *ListWorkspacesResponseBodyItemsServices) SetCreateTime(v string) *ListWorkspacesResponseBodyItemsServices {
 	s.CreateTime = &v
 	return s
@@ -539,6 +554,11 @@ func (s *ListWorkspacesResponseBodyItemsServices) SetCreateTime(v string) *ListW
 
 func (s *ListWorkspacesResponseBodyItemsServices) SetCu(v string) *ListWorkspacesResponseBodyItemsServices {
 	s.Cu = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyItemsServices) SetDeletionProtection(v bool) *ListWorkspacesResponseBodyItemsServices {
+	s.DeletionProtection = &v
 	return s
 }
 
@@ -578,5 +598,89 @@ func (s *ListWorkspacesResponseBodyItemsServices) SetStatus(v string) *ListWorks
 }
 
 func (s *ListWorkspacesResponseBodyItemsServices) Validate() error {
+	if s.Components != nil {
+		for _, item := range s.Components {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListWorkspacesResponseBodyItemsServicesComponents struct {
+	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Cu                 *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	DeletionProtection *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ComponentId        *string `json:"componentId,omitempty" xml:"componentId,omitempty"`
+	ComponentType      *string `json:"componentType,omitempty" xml:"componentType,omitempty"`
+}
+
+func (s ListWorkspacesResponseBodyItemsServicesComponents) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListWorkspacesResponseBodyItemsServicesComponents) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspacesResponseBodyItemsServicesComponents) GetCreateTime() *string {
+	return s.CreateTime
+}
+
+func (s *ListWorkspacesResponseBodyItemsServicesComponents) GetCu() *string {
+	return s.Cu
+}
+
+func (s *ListWorkspacesResponseBodyItemsServicesComponents) GetDeletionProtection() *bool {
+	return s.DeletionProtection
+}
+
+func (s *ListWorkspacesResponseBodyItemsServicesComponents) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ListWorkspacesResponseBodyItemsServicesComponents) GetComponentId() *string {
+	return s.ComponentId
+}
+
+func (s *ListWorkspacesResponseBodyItemsServicesComponents) GetComponentType() *string {
+	return s.ComponentType
+}
+
+func (s *ListWorkspacesResponseBodyItemsServicesComponents) SetCreateTime(v string) *ListWorkspacesResponseBodyItemsServicesComponents {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyItemsServicesComponents) SetCu(v string) *ListWorkspacesResponseBodyItemsServicesComponents {
+	s.Cu = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyItemsServicesComponents) SetDeletionProtection(v bool) *ListWorkspacesResponseBodyItemsServicesComponents {
+	s.DeletionProtection = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyItemsServicesComponents) SetStatus(v string) *ListWorkspacesResponseBodyItemsServicesComponents {
+	s.Status = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyItemsServicesComponents) SetComponentId(v string) *ListWorkspacesResponseBodyItemsServicesComponents {
+	s.ComponentId = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyItemsServicesComponents) SetComponentType(v string) *ListWorkspacesResponseBodyItemsServicesComponents {
+	s.ComponentType = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyItemsServicesComponents) Validate() error {
 	return dara.Validate(s)
 }

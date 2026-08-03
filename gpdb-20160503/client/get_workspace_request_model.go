@@ -16,10 +16,14 @@ type iGetWorkspaceRequest interface {
 }
 
 type GetWorkspaceRequest struct {
+	// The region ID of the workspace.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the workspace where the service resides.
+	//
 	// This parameter is required.
 	//
 	// example:

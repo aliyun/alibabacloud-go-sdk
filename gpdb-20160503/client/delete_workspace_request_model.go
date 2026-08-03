@@ -16,10 +16,14 @@ type iDeleteWorkspaceRequest interface {
 }
 
 type DeleteWorkspaceRequest struct {
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

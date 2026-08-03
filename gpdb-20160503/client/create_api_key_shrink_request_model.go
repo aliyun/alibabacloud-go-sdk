@@ -22,21 +22,30 @@ type iCreateApiKeyShrinkRequest interface {
 }
 
 type CreateApiKeyShrinkRequest struct {
+	// The description.
+	//
 	// example:
 	//
 	// test secret
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the API key.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// my api key
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The list of service IDs to authorize.
 	ServiceIdsShrink *string `json:"ServiceIds,omitempty" xml:"ServiceIds,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -30,38 +30,72 @@ type iGetSaasServiceResponseBody interface {
 }
 
 type GetSaasServiceResponseBody struct {
+	// The compute resource of the service.
+	//
 	// example:
 	//
 	// 1
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// The billing type. Valid values:
+	//
+	// - **POSTPAY**: pay-as-you-go
+	//
+	// - **PREPAY**: subscription
+	//
+	// > - If this parameter is not specified, the default value is pay-as-you-go.
+	//
+	// > - In subscription billing mode, a discount is available when you purchase a duration of one year or longer. Select a billing type as needed.
+	//
 	// example:
 	//
 	// POSTPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The region ID where the service resides.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The service ID.
+	//
 	// example:
 	//
 	// 1
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service name.
+	//
 	// example:
 	//
 	// agdb-xxxxx
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The service type. Valid values:
+	//
+	// - **drama**
+	//
+	// - **memroy**
+	//
 	// example:
 	//
 	// drama
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The service status. Valid values:
+	//
+	// - **creating**: Being created.
+	//
+	// - **active**: Running.
+	//
 	// example:
 	//
 	// creating
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The workspace ID where the service resides.
+	//
 	// example:
 	//
 	// ws-*****

@@ -16,10 +16,14 @@ type iResumeSaasServiceRequest interface {
 }
 
 type ResumeSaasServiceRequest struct {
+	// The region ID of the SaaS service.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:

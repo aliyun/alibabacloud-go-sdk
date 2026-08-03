@@ -22,19 +22,28 @@ type iListApiKeysResponseBody interface {
 }
 
 type ListApiKeysResponseBody struct {
+	// The list of API keys.
 	Items []*ListApiKeysResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The maximum number of records to return in this query.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next page in a paged query.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -108,23 +117,34 @@ func (s *ListApiKeysResponseBody) Validate() error {
 }
 
 type ListApiKeysResponseBodyItems struct {
+	// The service IDs.
 	AuthServices []*ListApiKeysResponseBodyItemsAuthServices `json:"AuthServices,omitempty" xml:"AuthServices,omitempty" type:"Repeated"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2021-10-09T04:54:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the API key.
+	//
 	// example:
 	//
 	// my first api key
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the API key.
+	//
 	// example:
 	//
 	// api-xxxxxxxx
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// The name of the API key.
+	//
 	// example:
 	//
 	// my first api key
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	// The prefix of the API key.
+	//
 	// example:
 	//
 	// sk-12345****
@@ -207,10 +227,20 @@ func (s *ListApiKeysResponseBodyItems) Validate() error {
 }
 
 type ListApiKeysResponseBodyItemsAuthServices struct {
+	// The service IDs.
+	//
 	// example:
 	//
 	// agdb-xxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service type.
+	//
+	// Valid values:
+	//
+	// - memory
+	//
+	// - drama
+	//
 	// example:
 	//
 	// memory

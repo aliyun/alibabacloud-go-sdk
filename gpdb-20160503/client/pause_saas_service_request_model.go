@@ -16,10 +16,14 @@ type iPauseSaasServiceRequest interface {
 }
 
 type PauseSaasServiceRequest struct {
+	// The region ID of the service.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:

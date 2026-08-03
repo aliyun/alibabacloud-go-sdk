@@ -28,7 +28,7 @@ type ListSaasServiceRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query when paging. Use this token to start the next query.
+	// The token for the next page when performing a paging query. This specifies the starting token for the next page.
 	//
 	// example:
 	//

@@ -55,9 +55,9 @@ type QueryContentResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status. Valid values:
 	//
-	// - **success**: Succeeded.
+	// - **success**: The operation is successful.
 	//
-	// - **fail**: Failed.
+	// - **fail**: The operation failed.
 	//
 	// example:
 	//

@@ -1051,11 +1051,11 @@ func (client *Client) CreateAccountWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// 创建API密钥
+// Creates an API key.
 //
 // Description:
 //
-// 创建API密钥。
+// Creates an API key.
 //
 // @param tmpReq - CreateApiKeyRequest
 //
@@ -1395,11 +1395,11 @@ func (client *Client) CreateCollectionWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// Create an AnalyticDB for PostgreSQL instance.
+// Creates an AnalyticDB for PostgreSQL instance.
 //
 // Description:
 //
-// Before you call this operation, review the [billing methods](https://help.aliyun.com/document_detail/35406.html) and <props="china">[pricing](https://www.aliyun.com/price/product#/gpdb/detail/GreenplumPost)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing) for AnalyticDB for PostgreSQL.
+// Before you call this operation, make sure that you fully understand the [billing methods](https://help.aliyun.com/document_detail/35406.html) and <props="china">[pricing](https://www.aliyun.com/price/product#/gpdb/detail/GreenplumPost)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing) of AnalyticDB for PostgreSQL.
 //
 // @param request - CreateDBInstanceRequest
 //
@@ -3388,6 +3388,10 @@ func (client *Client) CreateSupabaseProjectWithContext(ctx context.Context, requ
 		query["StorageSize"] = request.StorageSize
 	}
 
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
 	if !dara.IsNil(request.UsedTime) {
 		query["UsedTime"] = request.UsedTime
 	}
@@ -3751,11 +3755,11 @@ func (client *Client) DeleteAccountWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// 删除API密钥
+// Deletes an API key.
 //
 // Description:
 //
-// 删除API密钥。
+// Deletes an API key.
 //
 // @param request - DeleteApiKeyRequest
 //
@@ -5475,11 +5479,11 @@ func (client *Client) DeleteVectorIndexWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 删除SaaS工作空间
+// Deletes a SaaS workspace.
 //
 // Description:
 //
-// 此接口为删除上下文服务工作空间
+// Deletes a context service workspace.
 //
 // @param request - DeleteWorkspaceRequest
 //
@@ -10881,11 +10885,11 @@ func (client *Client) GetAccountWithContext(ctx context.Context, request *GetAcc
 
 // Summary:
 //
-// 获取API密钥详情
+// Retrieves the details of an API key.
 //
 // Description:
 //
-// 获取API密钥详情。
+// Retrieves the details of an API key.
 //
 // @param request - GetApiKeyRequest
 //
@@ -11061,11 +11065,11 @@ func (client *Client) GetGraphRAGJobWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 获取SaaS服务信息
+// Retrieves SaaS service information.
 //
 // Description:
 //
-// 删除模型服务。
+// Deletes a model service.
 //
 // @param request - GetSaasServiceRequest
 //
@@ -11177,17 +11181,17 @@ func (client *Client) GetSecretValueWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 获取SaaS服务访问信息
+// Retrieves access information for a SaaS service.
 //
 // Description:
 //
-// ## 使用说明
+// ## Operation description
 //
-// 本接口用于查看所有模型服务信息。
+// This operation is used to query information about all model services.
 //
-// ## QPS限制
+// ## QPS limit
 //
-// 本接口的单用户QPS限制默认为1000次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
+// The default single-user QPS limit for this operation is 1,000 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - GetServiceAccessInfoRequest
 //
@@ -11613,13 +11617,13 @@ func (client *Client) GetUpsertCollectionDataJobWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询SaaS工作空间
+// Queries a SaaS workspace.
 //
 // Description:
 //
-// ## 使用说明
+// ## Operation description
 //
-// 本接口用于查看指定工作空间信息。
+// This operation is used to query information about a specified workspace.
 //
 // @param request - GetWorkspaceRequest
 //
@@ -11967,11 +11971,11 @@ func (client *Client) ListAIServicesWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 查询API密钥列表
+// Queries a list of API keys.
 //
 // Description:
 //
-// 查询API密钥列表。
+// Queries a list of API keys.
 //
 // @param request - ListApiKeysRequest
 //
@@ -13129,7 +13133,7 @@ func (client *Client) ListRemoteADBDataSourcesWithContext(ctx context.Context, r
 //
 // Description:
 //
-// ## Operation description
+// ## Usage notes
 //
 // This operation is used to query information about all SaaS services.
 //
@@ -13925,7 +13929,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 //
 // ## Operation description
 //
-// This operation is used to query information about all workspaces.
+// This operation is used to view information about all workspaces.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -16039,11 +16043,11 @@ func (client *Client) PauseInstanceWithContext(ctx context.Context, request *Pau
 
 // Summary:
 //
-// 暂停SaaS服务
+// Pauses a SaaS service.
 //
 // Description:
 //
-// 删除模型服务。
+// Deletes a model service.
 //
 // @param request - PauseSaasServiceRequest
 //
@@ -17309,11 +17313,11 @@ func (client *Client) ResumeInstanceWithContext(ctx context.Context, request *Re
 
 // Summary:
 //
-// 恢复SaaS服务
+// Resumes a SaaS service.
 //
 // Description:
 //
-// 删除模型服务。
+// Deletes a model service.
 //
 // @param request - ResumeSaasServiceRequest
 //

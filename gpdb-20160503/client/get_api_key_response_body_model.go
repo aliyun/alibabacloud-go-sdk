@@ -28,31 +28,46 @@ type iGetApiKeyResponseBody interface {
 }
 
 type GetApiKeyResponseBody struct {
+	// The content of the API key.
+	//
 	// example:
 	//
 	// sk-xxxxxxx
-	ApiKey       *string                              `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The service IDs.
 	AuthServices []*GetApiKeyResponseBodyAuthServices `json:"AuthServices,omitempty" xml:"AuthServices,omitempty" type:"Repeated"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2019-09-08T16:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// test api key
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the API key.
+	//
 	// example:
 	//
 	// api-xxxxxxx
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// The name of the API key.
+	//
 	// example:
 	//
 	// test api key
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	// The prefix of the API key.
+	//
 	// example:
 	//
 	// sk-1235*****
 	KeyPrefix *string `json:"KeyPrefix,omitempty" xml:"KeyPrefix,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7565770E-7C45-462D-BA4A-8A5396****
@@ -153,10 +168,18 @@ func (s *GetApiKeyResponseBody) Validate() error {
 }
 
 type GetApiKeyResponseBodyAuthServices struct {
+	// The service IDs.
+	//
 	// example:
 	//
 	// agdb-2ze8x9278c9iizl
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service type. Valid values:
+	//
+	// - **drama**
+	//
+	// - **memroy**
+	//
 	// example:
 	//
 	// memory

@@ -24,20 +24,30 @@ type iGetWorkspaceResponseBody interface {
 }
 
 type GetWorkspaceResponseBody struct {
+	// The list of workspace API keys.
 	Apikeys []*GetWorkspaceResponseBodyApikeys `json:"Apikeys,omitempty" xml:"Apikeys,omitempty" type:"Repeated"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2026-06-01T00:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Services  []*GetWorkspaceResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of service details.
+	Services []*GetWorkspaceResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws-*****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The workspace name.
+	//
 	// example:
 	//
 	// my-first-workspace
@@ -129,23 +139,34 @@ func (s *GetWorkspaceResponseBody) Validate() error {
 }
 
 type GetWorkspaceResponseBodyApikeys struct {
+	// The service ID.
 	AuthServices []*GetWorkspaceResponseBodyApikeysAuthServices `json:"AuthServices,omitempty" xml:"AuthServices,omitempty" type:"Repeated"`
+	// The creation time.
+	//
 	// example:
 	//
 	// Sat Mar 14 14:44:27 GMT+08:00 2026
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// my test key
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the API key.
+	//
 	// example:
 	//
 	// api-xxxxxx
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// The name of the API key.
+	//
 	// example:
 	//
 	// my test key
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	// The prefix of the API key.
+	//
 	// example:
 	//
 	// sk-1235*****
@@ -228,10 +249,18 @@ func (s *GetWorkspaceResponseBodyApikeys) Validate() error {
 }
 
 type GetWorkspaceResponseBodyApikeysAuthServices struct {
+	// The service ID.
+	//
 	// example:
 	//
 	// agdb-xxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service type. Valid values:
+	//
+	// - memory
+	//
+	// - drama
+	//
 	// example:
 	//
 	// memory
@@ -269,34 +298,66 @@ func (s *GetWorkspaceResponseBodyApikeysAuthServices) Validate() error {
 }
 
 type GetWorkspaceResponseBodyServices struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2026-03-01T00:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The compute resource.
+	//
 	// example:
 	//
 	// 2
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// The expiration time.
+	//
 	// example:
 	//
 	// 2026-06-21T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The billing type. Valid values:
+	//
+	// - **POSTPAY**: pay-as-you-go.
+	//
+	// - **PREPAY**: subscription.
+	//
+	// > - If this parameter is not specified, the default value is pay-as-you-go.
+	//
+	// > - In subscription billing mode, a discount is available when you purchase a duration of one year or longer. Select a billing type as needed.
+	//
 	// example:
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The service ID.
+	//
 	// example:
 	//
 	// agdb-xxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service name.
+	//
 	// example:
 	//
 	// agdb-xxx
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The service type. Valid values:
+	//
+	// - **memory**
+	//
+	// - **drama**
+	//
 	// example:
 	//
 	// memory
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The service status. Valid values:
+	//
+	// - creating: being created.
+	//
+	// - active: running.
+	//
 	// example:
 	//
 	// active
