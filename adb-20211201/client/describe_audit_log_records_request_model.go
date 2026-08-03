@@ -15,6 +15,8 @@ type iDescribeAuditLogRecordsRequest interface {
 	GetDBName() *string
 	SetEndTime(v string) *DescribeAuditLogRecordsRequest
 	GetEndTime() *string
+	SetEngineType(v string) *DescribeAuditLogRecordsRequest
+	GetEngineType() *string
 	SetHostAddress(v string) *DescribeAuditLogRecordsRequest
 	GetHostAddress() *string
 	SetOrder(v string) *DescribeAuditLogRecordsRequest
@@ -50,11 +52,11 @@ type iDescribeAuditLogRecordsRequest interface {
 }
 
 type DescribeAuditLogRecordsRequest struct {
-	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	// <props="china">The cluster ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
 	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all clusters in a region.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the cluster IDs of all clusters in a region.
 	//
 	// This parameter is required.
 	//
@@ -68,65 +70,64 @@ type DescribeAuditLogRecordsRequest struct {
 	//
 	// adb_demo
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The end of the time range to query. The time must be in UTC and in the `yyyy-MM-ddTHH:mmZ` format.
+	// The end of the time range to query. Specify the time in UTC in the yyyy-MM-ddTHH:mmZ format.
 	//
 	// > - The end time must be later than the start time.
 	//
-	// >
-	//
-	// > - The time range cannot exceed 24 hours.
+	// > - The interval between the start time and the end time cannot exceed 24 hours.
 	//
 	// example:
 	//
 	// 2022-08-12T17:08Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The client IP address and port number.
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The IP address and port number of the client that executed the SQL statement.
 	//
 	// example:
 	//
 	// 100.104.XX.XX:43908
 	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	// Specifies the fields for sorting the results. The value is a JSON string that is an array of objects. The order of objects in the array defines the sort priority. Each object contains the`Field` and`Type` parameters. Example: `[{"Field":"ExecutionStartTime","Type":"Desc"},{"Field":"ScanRows","Type":"Asc"}]`.
+	// The sorting order based on specified fields. The value is in JSON format and is an ordered JSON array. Compound sorting is performed in the order of the input array. The array contains the `Field` and `Type` fields. Example: `[{"Field":"ExecutionStartTime","Type":"Desc"},{"Field":"ScanRows","Type":"Asc"}]`.
 	//
-	// - `Field`: the field by which to sort the results. Valid values:
+	// 	- `Field` specifies the field name for sorting. Valid values:
 	//
-	//   - **HostAddress**: the client IP address.
+	//     	- **HostAddress**: the address of the client that connects to the database.
 	//
-	//   - **UserName**: the username.
+	//     	- **UserName**: the username.
 	//
-	//   - **ExecutionStartTime**: the execution start time of the SQL statement.
+	//     	- **ExecutionStartTime**: the execution start time of the SQL statement.
 	//
-	//   - **QueryTime**: the execution duration.
+	//     	- **QueryTime**: the execution duration of the SQL statement.
 	//
-	//   - **PeakMemoryUsage**: the peak memory usage of the SQL statement.
+	//     	- **PeakMemoryUsage**: the peak memory usage during the execution of the SQL statement.
 	//
-	//   - **ScanRows**: the number of rows scanned by a task that involves a data source.
+	//     	- **ScanRows**: the number of rows scanned by the task with a data source.
 	//
-	//   - **ScanSize**: the amount of data scanned.
+	//     	- **ScanSize**: the amount of scanned data.
 	//
-	//   - **ScanTime**: the time taken for the data scan.
+	//     	- **ScanTime**: the total time consumed for scanning data.
 	//
-	//   - **PlanningTime**: the time taken to generate the execution plan.
+	//     	- **PlanningTime**: the time consumed for generating the execution plan.
 	//
-	//   - **WallTime**: the total CPU time of all operators on all nodes.
+	//     	- **WallTime**: the cumulative CPU time of all operators across all nodes in the query.
 	//
-	//   - **ProcessID**: the process ID.
+	//     	- **ProcessID**: the process ID.
 	//
-	// - `Type`: the sort order. Valid values:
+	// 	- `Type` specifies the sorting type. Valid values:
 	//
-	//   - **Desc**: descending order.
+	//     	- **Desc**: descending order.
 	//
-	//   - **Asc**: ascending order.
+	//     	- **Asc**: ascending order.
 	//
 	// example:
 	//
 	// [{"Field":"ExecuteTime","Type":"Desc"},{"Field":"HostAddress","Type":"Asc"}]
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The sort order for the results based on execution time. Valid values:
+	// The order in which the results are sorted by SQL execution time. Valid values:
 	//
-	// - **asc**: ascending order.
+	// 	- **asc**: ascending order.
 	//
-	// - **desc**: descending order.
+	// 	- **desc**: descending order.
 	//
 	// example:
 	//
@@ -134,13 +135,13 @@ type DescribeAuditLogRecordsRequest struct {
 	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be an integer that is greater than 0. Default value: **1**.
+	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size. Valid values:
+	// The number of entries per page. Valid values:
 	//
 	// - **10*	- (default)
 	//
@@ -158,9 +159,9 @@ type DescribeAuditLogRecordsRequest struct {
 	//
 	// example:
 	//
-	// 无
+	// None
 	ProxyUser *string `json:"ProxyUser,omitempty" xml:"ProxyUser,omitempty"`
-	// A keyword used to perform a fuzzy search on the returned results.
+	// The keyword used to filter the returned results.
 	//
 	// example:
 	//
@@ -168,7 +169,7 @@ type DescribeAuditLogRecordsRequest struct {
 	QueryKeyword *string `json:"QueryKeyword,omitempty" xml:"QueryKeyword,omitempty"`
 	// The region ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query available regions.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the region ID of the cluster.
 	//
 	// This parameter is required.
 	//
@@ -194,25 +195,25 @@ type DescribeAuditLogRecordsRequest struct {
 	//
 	// - **CREATE**
 	//
-	// > You can specify only one type per request. If this parameter is not specified, all types are queried by default.
+	// > Only one type can be specified per request. If this parameter is left empty, all types are queried by default.
 	//
 	// example:
 	//
 	// SELECT
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	// The start of the time range to query. The time must be in UTC and in the `yyyy-MM-ddTHH:mmZ` format.
+	// The beginning of the time range to query. Specify the time in UTC in the yyyy-MM-ddTHH:mmZ format.
 	//
-	// > You can query SQL audit logs only when this feature is enabled. Logs are available for the last 30 days. If you disable and then re-enable SQL audit, only logs generated after the feature was re-enabled are returned.
+	// > SQL Audit Log entries can be queried only when SQL audit is enabled, and only entries from the last 30 days are supported. If SQL audit is disabled and then re-enabled, only entries recorded after re-enabling are available.
 	//
 	// example:
 	//
 	// 2022-08-12T04:17Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Indicates whether the SQL statement was successfully executed. Valid values:
+	// Specifies whether the SQL statement was executed successfully. Valid values:
 	//
-	// - **true**: The SQL statement succeeded.
+	// 	- **true**: The SQL statement was executed successfully.
 	//
-	// - **false**: The SQL statement failed.
+	// 	- **false**: The SQL statement failed to be executed.
 	//
 	// example:
 	//
@@ -244,6 +245,10 @@ func (s *DescribeAuditLogRecordsRequest) GetDBName() *string {
 
 func (s *DescribeAuditLogRecordsRequest) GetEndTime() *string {
 	return s.EndTime
+}
+
+func (s *DescribeAuditLogRecordsRequest) GetEngineType() *string {
+	return s.EngineType
 }
 
 func (s *DescribeAuditLogRecordsRequest) GetHostAddress() *string {
@@ -322,6 +327,11 @@ func (s *DescribeAuditLogRecordsRequest) SetDBName(v string) *DescribeAuditLogRe
 
 func (s *DescribeAuditLogRecordsRequest) SetEndTime(v string) *DescribeAuditLogRecordsRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeAuditLogRecordsRequest) SetEngineType(v string) *DescribeAuditLogRecordsRequest {
+	s.EngineType = &v
 	return s
 }
 
