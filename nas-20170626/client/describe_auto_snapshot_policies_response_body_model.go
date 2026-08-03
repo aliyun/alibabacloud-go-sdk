@@ -23,7 +23,7 @@ type iDescribeAutoSnapshotPoliciesResponseBody interface {
 
 type DescribeAutoSnapshotPoliciesResponseBody struct {
 	AutoSnapshotPolicies *DescribeAutoSnapshotPoliciesResponseBodyAutoSnapshotPolicies `json:"AutoSnapshotPolicies,omitempty" xml:"AutoSnapshotPolicies,omitempty" type:"Struct"`
-	// The page number.
+	// The page number of the automatic snapshot policy list.
 	//
 	// example:
 	//

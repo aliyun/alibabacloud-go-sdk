@@ -18,7 +18,7 @@ type iCreateLifecyclePolicyResponseBody interface {
 }
 
 type CreateLifecyclePolicyResponseBody struct {
-	// The ID of the lifecycle policy.
+	// The lifecycle policy ID.
 	//
 	// example:
 	//

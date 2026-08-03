@@ -28,7 +28,7 @@ type DescribeLifecyclePolicyLogsRequest struct {
 	//
 	// bmcpfs-030wldnqm8evtpy****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The lifecycle policy ID.
+	// The ID of the lifecycle policy.
 	//
 	// This parameter is required.
 	//
@@ -36,17 +36,17 @@ type DescribeLifecyclePolicyLogsRequest struct {
 	//
 	// lc-xxx
 	LifecyclePolicyId *string `json:"LifecyclePolicyId,omitempty" xml:"LifecyclePolicyId,omitempty"`
-	// The number of the page to return.
+	// The page number of the list.
 	//
-	// Starts from 1. Default: 1.
+	// Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of log entries to return on each page.
+	// The number of log entries per page.
 	//
-	// Value range: 1–100. Default: 10.
+	// Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//

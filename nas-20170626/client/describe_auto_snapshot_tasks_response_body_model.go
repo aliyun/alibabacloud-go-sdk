@@ -23,13 +23,13 @@ type iDescribeAutoSnapshotTasksResponseBody interface {
 
 type DescribeAutoSnapshotTasksResponseBody struct {
 	AutoSnapshotTasks *DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasks `json:"AutoSnapshotTasks,omitempty" xml:"AutoSnapshotTasks,omitempty" type:"Struct"`
-	// The page number.
+	// The page number of the automatic snapshot task list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page for the paging query.
 	//
 	// example:
 	//

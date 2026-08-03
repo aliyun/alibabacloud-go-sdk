@@ -18,9 +18,9 @@ type iListDirectoriesAndFilesResponseBody interface {
 }
 
 type ListDirectoriesAndFilesResponseBody struct {
-	// The list of directory and file entries.
+	// The collection of directory or file information.
 	Entries []*ListDirectoriesAndFilesResponseBodyEntries `json:"Entries,omitempty" xml:"Entries,omitempty" type:"Repeated"`
-	// The pagination token. If the response is truncated, include this token in the next request to retrieve the next page of results.
+	// The pagination token that is used in the next request to retrieve a new page of results. If the return results are truncated, you can use NextToken to initiate a new request to retrieve the content after the current truncation position.
 	//
 	// example:
 	//
@@ -83,55 +83,55 @@ func (s *ListDirectoriesAndFilesResponseBody) Validate() error {
 }
 
 type ListDirectoriesAndFilesResponseBodyEntries struct {
-	// The last access time (atime) of the file.
+	// The query time.
 	//
-	// The time is in the ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
+	// The time follows the ISO 8601 standard and is returned in the format: `yyyy-MM-ddTHH:mm:ssZ`.
 	//
-	// This parameter is returned only when `Type` is `File`.
+	// This parameter is returned and meaningful only when Type is set to File.
 	//
 	// example:
 	//
 	// 2021-02-01T10:08:08Z
 	Atime *string `json:"Atime,omitempty" xml:"Atime,omitempty"`
-	// The metadata change time (ctime) of the file.
+	// The time when the metadata was modified.
 	//
-	// The time is in the ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
+	// The time follows the ISO 8601 standard and is returned in the format: `yyyy-MM-ddTHH:mm:ssZ`.
 	//
-	// This parameter is returned only when `Type` is `File`.
+	// This parameter is returned and meaningful only when Type is set to File.
 	//
 	// example:
 	//
 	// 2021-02-11T10:08:10Z
 	Ctime *string `json:"Ctime,omitempty" xml:"Ctime,omitempty"`
-	// The ID of the file or directory.
+	// The FileId of the directory or file.
 	//
 	// example:
 	//
 	// 66
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// Specifies whether the directory contains any archive files.
+	// Indicates whether the directory contains archive storage class files.
 	//
-	// This parameter is returned only when `Type` is `Directory`.
+	// This parameter is returned and meaningful only when Type is set to Directory.
 	//
 	// Valid values:
 	//
-	// - `true`: Yes
+	// - true: The directory contains archive storage class files.
 	//
-	// - `false`: No
+	// - false: The directory does not contain archive storage class files.
 	//
 	// example:
 	//
 	// true
 	HasArchiveFile *string `json:"HasArchiveFile,omitempty" xml:"HasArchiveFile,omitempty"`
-	// Specifies whether the directory contains any infrequent access files.
+	// Indicates whether the directory contains IA storage class files.
 	//
-	// This parameter is returned only when `Type` is `Directory`.
+	// This parameter is returned and meaningful only when Type is set to Directory.
 	//
 	// Valid values:
 	//
-	// - `true`: Yes
+	// - true: The directory contains IA storage class files.
 	//
-	// - `false`: No
+	// - false: The directory does not contain IA storage class files.
 	//
 	// example:
 	//
@@ -143,71 +143,83 @@ type ListDirectoriesAndFilesResponseBodyEntries struct {
 	//
 	// 66
 	Inode *string `json:"Inode,omitempty" xml:"Inode,omitempty"`
-	// The last modification time (mtime) of the file.
+	// The time when the file was modified.
 	//
-	// The time is in the ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
+	// The time follows the ISO 8601 standard and is returned in the format: `yyyy-MM-ddTHH:mm:ssZ`.
 	//
-	// This parameter is returned only when `Type` is `File`.
+	// This parameter is returned and meaningful only when Type is set to File.
 	//
 	// example:
 	//
 	// 2021-02-11T10:08:08Z
 	Mtime *string `json:"Mtime,omitempty" xml:"Mtime,omitempty"`
-	// The name of the file or directory.
+	// The file name or directory name.
 	//
 	// example:
 	//
 	// file.txt
-	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OfflineDuration          *int64  `json:"OfflineDuration,omitempty" xml:"OfflineDuration,omitempty"`
-	OfflineUnchangedDuration *int64  `json:"OfflineUnchangedDuration,omitempty" xml:"OfflineUnchangedDuration,omitempty"`
-	// The owner of the file or directory. This parameter is returned only when `ProtocolType` is `SMB` and access control is enabled.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The total duration for which the file has been stored as an archive file. Unit: seconds.
+	//
+	// example:
+	//
+	// 3600
+	OfflineDuration *int64 `json:"OfflineDuration,omitempty" xml:"OfflineDuration,omitempty"`
+	// The total duration for which the file has remained unchanged since it was stored as an archive file. Unit: seconds.
+	//
+	// example:
+	//
+	// 3600
+	OfflineUnchangedDuration *int64 `json:"OfflineUnchangedDuration,omitempty" xml:"OfflineUnchangedDuration,omitempty"`
+	// The portable account ID.
+	//
+	// This parameter is meaningful only when ProtocolType is set to SMB and access control is enabled.
 	//
 	// example:
 	//
 	// 37862c****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The last data retrieval time.
+	// The time when the most recent data retrieval task was run.
 	//
-	// The time is in the ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
+	// The time follows the ISO 8601 standard and is returned in the format: `yyyy-MM-ddTHH:mm:ssZ`.
 	//
-	// This parameter is returned only when `Type` is `File`.
+	// This parameter is returned and meaningful only when Type is set to File.
 	//
 	// example:
 	//
 	// 2021-02-11T10:08:08Z
 	RetrieveTime *string `json:"RetrieveTime,omitempty" xml:"RetrieveTime,omitempty"`
-	// The size of the file, in bytes.
+	// The size of the file.
 	//
-	// This parameter is returned only when `Type` is `File`.
+	// Unit: bytes.
 	//
-	// This value is returned and is meaningful only when Type is File.
+	// This parameter is returned and meaningful only when Type is set to File.
 	//
 	// example:
 	//
 	// 1024
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The storage class of the file.
+	// The storage class type of the returned file.
 	//
-	// This parameter is returned only when `Type` is `File`.
+	// This parameter is returned and meaningful only when Type is set to File.
 	//
 	// Valid values:
 	//
-	// - `InfrequentAccess`
+	// - InfrequentAccess: IA storage class.
 	//
-	// - `Archive`
+	// - Archive: Archive storage class.
 	//
 	// example:
 	//
 	// InfrequentAccess
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The type of the entry.
+	// The type of the returned result.
 	//
 	// Valid values:
 	//
-	// - `File`: a file
+	// - File: file.
 	//
-	// - `Directory`: a directory
+	// - Directory: directory.
 	//
 	// example:
 	//

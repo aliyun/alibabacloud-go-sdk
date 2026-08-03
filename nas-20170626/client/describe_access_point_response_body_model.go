@@ -94,13 +94,13 @@ type DescribeAccessPointResponseBodyAccessPoint struct {
 	//
 	// agentic-229oypxjgpau2****
 	AgenticSpaceId *string `json:"AgenticSpaceId,omitempty" xml:"AgenticSpaceId,omitempty"`
-	// The time when the access point was created.
+	// The time when the access point was created. Format: Unix/POSIX timestamp.
 	//
 	// example:
 	//
 	// 1709619668276167
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the AgenticSpace was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The time when the access point was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -124,13 +124,13 @@ type DescribeAccessPointResponseBodyAccessPoint struct {
 	//
 	// 31a8e4****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The time when the access point was last modified.
+	// The time when the access point was last modified. Format: Unix/POSIX timestamp.
 	//
 	// example:
 	//
 	// 1709619668276167
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The time when the AgenticSpace was last modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The time when the access point was last modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type DescribeAccessPointResponseBodyAccessPoint struct {
 	//
 	// /
 	RootPath *string `json:"RootPath,omitempty" xml:"RootPath,omitempty"`
-	// The permissions for creating the root directory.
+	// The root directory creation permissions.
 	RootPathPermission *DescribeAccessPointResponseBodyAccessPointRootPathPermission `json:"RootPathPermission,omitempty" xml:"RootPathPermission,omitempty" type:"Struct"`
 	// The current root directory status.
 	//
@@ -170,13 +170,13 @@ type DescribeAccessPointResponseBodyAccessPoint struct {
 	//
 	// Valid values:
 	//
-	// - Active: active
+	// - Active: available.
 	//
-	// - Inactive: inactive
+	// - Inactive: unavailable.
 	//
-	// - Pending: being created
+	// - Pending: being created.
 	//
-	// - Deleting: being deleted
+	// - Deleting: being deleted.
 	//
 	// example:
 	//
@@ -192,7 +192,7 @@ type DescribeAccessPointResponseBodyAccessPoint struct {
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The VPC ID.
 	//
-	// The VPC must be the same as the VPC of the Elastic Computing Service (ECS) server to which you want to mount the file system.
+	// The VPC must be the same as the VPC of the Elastic Computing Service (ECS) server to be mounted.
 	//
 	// example:
 	//
@@ -421,13 +421,13 @@ func (s *DescribeAccessPointResponseBodyAccessPoint) Validate() error {
 }
 
 type DescribeAccessPointResponseBodyAccessPointPosixUser struct {
-	// The POSIX user group ID.
+	// The POSIX group ID.
 	//
 	// example:
 	//
 	// 12
 	PosixGroupId *int32 `json:"PosixGroupId,omitempty" xml:"PosixGroupId,omitempty"`
-	// The secondary user group ID.
+	// The secondary group IDs.
 	PosixSecondaryGroupIds []*int32 `json:"PosixSecondaryGroupIds,omitempty" xml:"PosixSecondaryGroupIds,omitempty" type:"Repeated"`
 	// The POSIX user ID.
 	//
@@ -477,19 +477,19 @@ func (s *DescribeAccessPointResponseBodyAccessPointPosixUser) Validate() error {
 }
 
 type DescribeAccessPointResponseBodyAccessPointRootPathPermission struct {
-	// The file group ID.
+	// The file group ID of the owner.
 	//
 	// example:
 	//
 	// 123
 	OwnerGroupId *int32 `json:"OwnerGroupId,omitempty" xml:"OwnerGroupId,omitempty"`
-	// The file owner ID.
+	// The user ID of the owner.
 	//
 	// example:
 	//
 	// 1
 	OwnerUserId *int32 `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	// The POSIX permissions.
+	// The POSIX permission.
 	//
 	// example:
 	//

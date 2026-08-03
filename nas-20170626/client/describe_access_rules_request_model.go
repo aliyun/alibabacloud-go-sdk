@@ -30,7 +30,7 @@ type DescribeAccessRulesRequest struct {
 	//
 	// classic-test
 	AccessGroupName *string `json:"AccessGroupName,omitempty" xml:"AccessGroupName,omitempty"`
-	// The rule ID.
+	// The ID of the permission rule.
 	//
 	// example:
 	//
@@ -40,23 +40,23 @@ type DescribeAccessRulesRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- standard: General-purpose Apsara File Storage NAS (NAS) file system
+	// - standard (default): General-purpose NAS.
 	//
-	// 	- extreme: Extreme NAS file system.
+	// - extreme: Extreme NAS.
 	//
 	// example:
 	//
 	// standard
 	FileSystemType *string `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
-	// The number of the page to return.
+	// The page number of the file system list.
 	//
-	// Pages start from page 1. Default value: 1.
+	// Start value (default value): 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of file systems on each page during a paged query.
 	//
 	// Valid values: 1 to 100.
 	//

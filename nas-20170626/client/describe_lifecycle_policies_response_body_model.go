@@ -125,11 +125,13 @@ type DescribeLifecyclePoliciesResponseBodyLifecyclePolicies struct {
 	//
 	// 2019-10-30T10:08:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The file data expiration and deletion rules. A maximum of one rule can be configured.
+	DeleteRules []*DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesDeleteRules `json:"DeleteRules,omitempty" xml:"DeleteRules,omitempty" type:"Repeated"`
 	// The description of the policy.
 	//
 	// example:
 	//
-	// 描述
+	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The file system ID.
 	//
@@ -143,7 +145,7 @@ type DescribeLifecyclePoliciesResponseBodyLifecyclePolicies struct {
 	//
 	// lc-xxx
 	LifecyclePolicyId *string `json:"LifecyclePolicyId,omitempty" xml:"LifecyclePolicyId,omitempty"`
-	// The lifecycle management policy name.
+	// The name of the lifecycle management policy.
 	//
 	// example:
 	//
@@ -159,13 +161,13 @@ type DescribeLifecyclePoliciesResponseBodyLifecyclePolicies struct {
 	//
 	// Valid values:
 	//
-	// - DEFAULT_ATIME_14: files not accessed in the last 14 days
+	// - DEFAULT_ATIME_14: Files not accessed in the last 14 days.
 	//
-	// - DEFAULT_ATIME_30: files not accessed in the last 30 days
+	// - DEFAULT_ATIME_30: Files not accessed in the last 30 days.
 	//
-	// - DEFAULT_ATIME_60: files not accessed in the last 60 days
+	// - DEFAULT_ATIME_60: Files not accessed in the last 60 days.
 	//
-	// - DEFAULT_ATIME_90: files not accessed in the last 90 days.
+	// - DEFAULT_ATIME_90: Files not accessed in the last 90 days.
 	//
 	// example:
 	//
@@ -179,9 +181,9 @@ type DescribeLifecyclePoliciesResponseBodyLifecyclePolicies struct {
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The list of absolute paths of multiple directories configured in the lifecycle management policy.
 	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
-	// The data retrieval rules for files.
+	// The file data retrieval rules.
 	RetrieveRules []*DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules `json:"RetrieveRules,omitempty" xml:"RetrieveRules,omitempty" type:"Repeated"`
-	// The storage class type. Valid values:
+	// The storage type. Valid values:
 	//
 	// - InfrequentAccess: IA storage class.
 	//
@@ -191,7 +193,7 @@ type DescribeLifecyclePoliciesResponseBodyLifecyclePolicies struct {
 	//
 	// InfrequentAccess
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The data transit rules for files.
+	// The file data transit rules.
 	TransitRules []*DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules `json:"TransitRules,omitempty" xml:"TransitRules,omitempty" type:"Repeated"`
 }
 
@@ -205,6 +207,10 @@ func (s DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) GoString() strin
 
 func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) GetCreateTime() *string {
 	return s.CreateTime
+}
+
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) GetDeleteRules() []*DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesDeleteRules {
+	return s.DeleteRules
 }
 
 func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) GetDescription() *string {
@@ -253,6 +259,11 @@ func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) GetTransitRules
 
 func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetCreateTime(v string) *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetDeleteRules(v []*DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesDeleteRules) *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies {
+	s.DeleteRules = v
 	return s
 }
 
@@ -312,6 +323,15 @@ func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetTransitRules
 }
 
 func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) Validate() error {
+	if s.DeleteRules != nil {
+		for _, item := range s.DeleteRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.RetrieveRules != nil {
 		for _, item := range s.RetrieveRules {
 			if item != nil {
@@ -331,6 +351,59 @@ func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) Validate() erro
 		}
 	}
 	return nil
+}
+
+type DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesDeleteRules struct {
+	// The attribute of the rule.
+	//
+	// Valid values:
+	//
+	// - Atime: The access time of the file.
+	//
+	// example:
+	//
+	// Atime
+	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
+	// The threshold of the rule.
+	//
+	// Valid values:
+	//
+	// - When Attribute is set to Atime, the value indicates the number of days since the file was last accessed. Valid values: 1 to 365.
+	//
+	// example:
+	//
+	// 5
+	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesDeleteRules) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesDeleteRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesDeleteRules) GetAttribute() *string {
+	return s.Attribute
+}
+
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesDeleteRules) GetThreshold() *string {
+	return s.Threshold
+}
+
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesDeleteRules) SetAttribute(v string) *DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesDeleteRules {
+	s.Attribute = &v
+	return s
+}
+
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesDeleteRules) SetThreshold(v string) *DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesDeleteRules {
+	s.Threshold = &v
+	return s
+}
+
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesDeleteRules) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules struct {

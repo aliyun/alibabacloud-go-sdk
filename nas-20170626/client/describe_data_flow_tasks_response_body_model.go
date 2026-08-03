@@ -18,7 +18,7 @@ type iDescribeDataFlowTasksResponseBody interface {
 }
 
 type DescribeDataFlowTasksResponseBody struct {
-	// If the response is truncated, use NextToken to retrieve the remaining results.
+	// The pagination token that is used in the next request to retrieve a new page of results. If the return results are truncated, you can use NextToken to initiate a new request to retrieve the content after the truncation point.
 	//
 	// example:
 	//
@@ -122,6 +122,7 @@ type DescribeDataFlowTasksResponseBodyTaskInfoTask struct {
 	Directory      *string                                                     `json:"Directory,omitempty" xml:"Directory,omitempty"`
 	DstDirectory   *string                                                     `json:"DstDirectory,omitempty" xml:"DstDirectory,omitempty"`
 	EndTime        *string                                                     `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EntryList      *string                                                     `json:"EntryList,omitempty" xml:"EntryList,omitempty"`
 	ErrorMsg       *string                                                     `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	FileSystemPath *string                                                     `json:"FileSystemPath,omitempty" xml:"FileSystemPath,omitempty"`
 	FilesystemId   *string                                                     `json:"FilesystemId,omitempty" xml:"FilesystemId,omitempty"`
@@ -175,6 +176,10 @@ func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) GetDstDirectory() *strin
 
 func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) GetEndTime() *string {
 	return s.EndTime
+}
+
+func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) GetEntryList() *string {
+	return s.EntryList
 }
 
 func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) GetErrorMsg() *string {
@@ -273,6 +278,11 @@ func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) SetDstDirectory(v string
 
 func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) SetEndTime(v string) *DescribeDataFlowTasksResponseBodyTaskInfoTask {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) SetEntryList(v string) *DescribeDataFlowTasksResponseBodyTaskInfoTask {
+	s.EntryList = &v
 	return s
 }
 

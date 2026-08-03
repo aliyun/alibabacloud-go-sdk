@@ -16,7 +16,7 @@ type iCreateAgenticSpaceResponseBody interface {
 }
 
 type CreateAgenticSpaceResponseBody struct {
-	// The AgenticSpace ID. This is a globally unique identifier assigned by the system after the AgenticSpace (an independent workspace allocated to a single Agent end user in AgenticFS) is created.
+	// The Agentic space ID. This is a globally unique identifier assigned by the system after the Agentic space (an independent workspace allocated to a single agent end user in AgenticFS) is created.
 	//
 	// example:
 	//

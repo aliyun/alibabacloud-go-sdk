@@ -18,17 +18,17 @@ type iStopLifecyclePolicyExecutionResponseBody interface {
 type StopLifecyclePolicyExecutionResponseBody struct {
 	// The request ID.
 	//
-	// A request ID is returned regardless of whether the call succeeds.
+	// A request ID is returned regardless of whether the call is successful.
 	//
 	// example:
 	//
 	// 98696EF0-1607-4E9D-B01D-F20930B6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded.
+	// The request status.
 	//
 	// Valid values:
 	//
-	// - true: The request succeeded.
+	// - true: The request was successful.
 	//
 	// - false: The request failed.
 	//

@@ -29,7 +29,7 @@ type DescribeFileSystemsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of file systems on each page.
+	// The number of file systems per page.
 	//
 	// example:
 	//
@@ -887,6 +887,7 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTa
 
 type DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions struct {
 	EnableABE                *bool `json:"EnableABE,omitempty" xml:"EnableABE,omitempty"`
+	EnableDataInsight        *bool `json:"EnableDataInsight,omitempty" xml:"EnableDataInsight,omitempty"`
 	EnableOplock             *bool `json:"EnableOplock,omitempty" xml:"EnableOplock,omitempty"`
 	VscAccessPointAccessOnly *bool `json:"VscAccessPointAccessOnly,omitempty" xml:"VscAccessPointAccessOnly,omitempty"`
 }
@@ -903,6 +904,10 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions) GetEnableA
 	return s.EnableABE
 }
 
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions) GetEnableDataInsight() *bool {
+	return s.EnableDataInsight
+}
+
 func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions) GetEnableOplock() *bool {
 	return s.EnableOplock
 }
@@ -913,6 +918,11 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions) GetVscAcce
 
 func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions) SetEnableABE(v bool) *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions {
 	s.EnableABE = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions) SetEnableDataInsight(v bool) *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions {
+	s.EnableDataInsight = &v
 	return s
 }
 

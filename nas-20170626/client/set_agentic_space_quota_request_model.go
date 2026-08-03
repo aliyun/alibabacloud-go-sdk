@@ -80,7 +80,7 @@ type SetAgenticSpaceQuotaRequest struct {
 	//
 	// - Maximum value: 1,099,511,627,776,000 (1,024,000 GiB).
 	//
-	// - Step: 1,073,741,824 (1 GiB).
+	// - Increment: 1,073,741,824 (1 GiB).
 	//
 	// example:
 	//

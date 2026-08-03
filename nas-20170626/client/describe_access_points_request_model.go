@@ -26,7 +26,7 @@ type DescribeAccessPointsRequest struct {
 	//
 	// This parameter is required if the file system is a General-purpose NAS file system.
 	//
-	// Default permission group: DEFAULT_VPC_GROUP_NAME (the default VPC permission group).
+	// Default permission group: DEFAULT_VPC_GROUP_NAME (the default permission group for VPCs).
 	//
 	// example:
 	//

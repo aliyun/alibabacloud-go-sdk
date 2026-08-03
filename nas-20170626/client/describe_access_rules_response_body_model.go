@@ -23,13 +23,13 @@ type iDescribeAccessRulesResponseBody interface {
 
 type DescribeAccessRulesResponseBody struct {
 	AccessRules *DescribeAccessRulesResponseBodyAccessRules `json:"AccessRules,omitempty" xml:"AccessRules,omitempty" type:"Struct"`
-	// The page number.
+	// The page number of the file system list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of permission rules on each page.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeAccessRulesResponseBody struct {
 	//
 	// 86D89E82-4297-4343-8E1E-A2495B35****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of rules.
+	// The total number of permission rules.
 	//
 	// example:
 	//

@@ -126,13 +126,13 @@ type DescribeAccessPointsResponseBodyAccessPoints struct {
 	//
 	// test
 	AccessPointName *string `json:"AccessPointName,omitempty" xml:"AccessPointName,omitempty"`
-	// The time when the access point was created.
+	// The time when the access point was created. Format: Unix/POSIX timestamp.
 	//
 	// example:
 	//
 	// 1709619668276167
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The domain name of the access point.
+	// The access point domain name.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type DescribeAccessPointsResponseBodyAccessPoints struct {
 	//
 	// 31a8e4****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The time when the access point was last modified.
+	// The time when the access point was last modified. Format: Unix/POSIX timestamp.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type DescribeAccessPointsResponseBodyAccessPoints struct {
 	//
 	// /
 	RootPath *string `json:"RootPath,omitempty" xml:"RootPath,omitempty"`
-	// The root directory permissions.
+	// The root directory permission.
 	RootPathPermission *DescribeAccessPointsResponseBodyAccessPointsRootPathPermission `json:"RootPathPermission,omitempty" xml:"RootPathPermission,omitempty" type:"Struct"`
 	// The current root directory status.
 	//
@@ -192,7 +192,7 @@ type DescribeAccessPointsResponseBodyAccessPoints struct {
 	//
 	// - Deleting: being deleted.
 	//
-	// > You can mount a file system only when the status is Active.
+	// > You can mount the file system only when the status is Active.
 	//
 	// example:
 	//
@@ -399,13 +399,13 @@ func (s *DescribeAccessPointsResponseBodyAccessPoints) Validate() error {
 }
 
 type DescribeAccessPointsResponseBodyAccessPointsPosixUser struct {
-	// The POSIX group ID.
+	// The POSIX user group ID.
 	//
 	// example:
 	//
 	// 12
 	PosixGroupId *int32 `json:"PosixGroupId,omitempty" xml:"PosixGroupId,omitempty"`
-	// The secondary group ID.
+	// The secondary user group ID.
 	PosixSecondaryGroupIds []*int32 `json:"PosixSecondaryGroupIds,omitempty" xml:"PosixSecondaryGroupIds,omitempty" type:"Repeated"`
 	// The POSIX user ID.
 	//

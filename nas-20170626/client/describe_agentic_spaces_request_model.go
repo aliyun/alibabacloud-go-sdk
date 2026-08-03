@@ -30,7 +30,7 @@ type DescribeAgenticSpacesRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// The collection of filter key information.
 	Filters []*DescribeAgenticSpacesRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// The number of results per query.
+	// The number of results for each query.
 	//
 	// Valid values: 10 to 100. Default value: 20.
 	//
@@ -112,9 +112,9 @@ type DescribeAgenticSpacesRequestFilters struct {
 	//
 	// AgenticSpaceIds
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the filter key. Wildcards are not supported.
+	// The value of the filter key. This parameter does not support wildcards.
 	//
-	// - AgenticSpaceIds: only a single ID is supported.
+	// - AgenticSpaceIds: Only a single ID can be specified.
 	//
 	// example:
 	//

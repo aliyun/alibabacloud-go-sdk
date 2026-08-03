@@ -32,7 +32,7 @@ type DescribeLifecyclePolicyLogsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of log entries per page.
 	//
 	// example:
 	//
@@ -44,19 +44,19 @@ type DescribeLifecyclePolicyLogsResponseBody struct {
 	//
 	// BC7C825C-5F65-4B56-BEF6-98C56C7C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Specifies whether the request succeeded.
+	// The request status.
 	//
 	// Valid values:
 	//
-	// - `true`: The request succeeded.
+	// - true: The request was successful.
 	//
-	// - `false`: The request failed.
+	// - false: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of logs.
+	// The total number of log entries.
 	//
 	// example:
 	//
@@ -140,49 +140,51 @@ func (s *DescribeLifecyclePolicyLogsResponseBody) Validate() error {
 }
 
 type DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs struct {
-	// The time when the task was created. The time is displayed in UTC and is in the `yyyy-MM-ddTHH:mm:ssZ` format.
+	// The time when the task was created. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2025-10-20T02:25:07Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The execution paths of the task.
+	// The file data expiration and deletion rules. A maximum of one rule can be configured.
+	DeleteRules []*DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules `json:"DeleteRules,omitempty" xml:"DeleteRules,omitempty" type:"Repeated"`
+	// The execution paths of the specified retrieval task.
 	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
-	// The retrieval rules for file data.
+	// The file data retrieval rules.
 	RetrieveRules []*DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsRetrieveRules `json:"RetrieveRules,omitempty" xml:"RetrieveRules,omitempty" type:"Repeated"`
-	// The status of the task. Valid values:
+	// The status of the data retrieval task. Valid values:
 	//
-	// - `PENDING`: The task is initializing.
+	// - PENDING: Being created.
 	//
-	// - `RUNNING`: The task is running.
+	// - RUNNING: Running.
 	//
-	// - `STOPPED`: The task is stopped.
+	// - STOPPED: Stopped.
 	//
-	// - `FINISHED`: The task is complete.
+	// - FINISHED: Finished.
 	//
-	// - `FAILED`: The task failed.
+	// - FAILED: Failed.
 	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage tier. Valid values:
+	// The tiered storage type. Valid values:
 	//
-	// - `InfrequentAccess`: Infrequent Access (default).
+	// - InfrequentAccess: IA storage class (default).
 	//
-	// - `Archive`: Archive Storage.
+	// - Archive: Archive storage.
 	//
 	// example:
 	//
 	// InfrequentAccess
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The task summary.
+	// The task overview.
 	//
 	// example:
 	//
 	// Total tasks: 100000, success tasks: 100000
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	// The transition rules for file data.
+	// The file data transit rules.
 	TransitRules []*DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsTransitRules `json:"TransitRules,omitempty" xml:"TransitRules,omitempty" type:"Repeated"`
 }
 
@@ -196,6 +198,10 @@ func (s DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs) GoString() s
 
 func (s *DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs) GetCreateTime() *string {
 	return s.CreateTime
+}
+
+func (s *DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs) GetDeleteRules() []*DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules {
+	return s.DeleteRules
 }
 
 func (s *DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs) GetPaths() []*string {
@@ -224,6 +230,11 @@ func (s *DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs) GetTransitR
 
 func (s *DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs) SetCreateTime(v string) *DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs) SetDeleteRules(v []*DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules) *DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs {
+	s.DeleteRules = v
 	return s
 }
 
@@ -258,6 +269,15 @@ func (s *DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs) SetTransitR
 }
 
 func (s *DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs) Validate() error {
+	if s.DeleteRules != nil {
+		for _, item := range s.DeleteRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.RetrieveRules != nil {
 		for _, item := range s.RetrieveRules {
 			if item != nil {
@@ -279,10 +299,55 @@ func (s *DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs) Validate() 
 	return nil
 }
 
-type DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsRetrieveRules struct {
-	// The attribute of the rule. Valid value:
+type DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules struct {
+	// The attribute of the rule.
 	//
-	// - `RetrieveType`: The retrieval method.
+	// Valid values:
+	//
+	// - Atime: the access time of the file.
+	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
+	// The threshold of the rule.
+	//
+	// Valid values:
+	//
+	// - If Attribute is set to Atime, this parameter specifies the number of days since the file was last accessed. Valid values: 1 to 365.
+	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules) GetAttribute() *string {
+	return s.Attribute
+}
+
+func (s *DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules) GetThreshold() *string {
+	return s.Threshold
+}
+
+func (s *DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules) SetAttribute(v string) *DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules {
+	s.Attribute = &v
+	return s
+}
+
+func (s *DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules) SetThreshold(v string) *DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules {
+	s.Threshold = &v
+	return s
+}
+
+func (s *DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsRetrieveRules struct {
+	// The attribute of the rule. Valid values:
+	//
+	// - RetrieveType: the retrieval method.
 	//
 	// example:
 	//
@@ -290,11 +355,11 @@ type DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsRetrieveRules str
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
 	// The threshold of the rule. Valid values:
 	//
-	// - If `Attribute` is set to `RetrieveType`:
+	// - RetrieveType
 	//
-	//   - `AfterVisit`: Data is retrieved on a best-effort basis when accessed. This value is available only if `LifecyclePolicyType` is set to `Auto`.
+	//     - AfterVisit: Supported when LifecyclePolicyType=Auto. Indicates best-effort recall on visit.
 	//
-	//   - `All`: All data is retrieved. This value is available only if `LifecyclePolicyType` is set to `OnDemand`.
+	//     - All: Supported when LifecyclePolicyType=OnDemand. Indicates retrieving all data.
 	//
 	// example:
 	//
@@ -335,19 +400,19 @@ func (s *DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsRetrieveRules
 type DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsTransitRules struct {
 	// The attribute of the rule.
 	//
-	// Valid value:
+	// Valid values:
 	//
-	// - `Atime`: The last access time of a file.
+	// - Atime: the access time of the file.
 	//
 	// example:
 	//
 	// Atime
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
-	// The rule threshold.
+	// The threshold of the rule.
 	//
 	// Valid values:
 	//
-	// - If `Attribute` is set to `Atime`, this parameter specifies the number of days since a file was last accessed. The value must be an integer from 1 to 365.
+	// - If Attribute is set to Atime, this parameter specifies the number of days since the file was last accessed. Valid values: 1 to 365.
 	//
 	// example:
 	//

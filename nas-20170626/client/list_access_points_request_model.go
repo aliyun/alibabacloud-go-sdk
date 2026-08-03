@@ -20,17 +20,30 @@ type iListAccessPointsRequest interface {
 }
 
 type ListAccessPointsRequest struct {
+	// The file system ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0913nx15amuix9a****
-	FileSystemId *string                           `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	Filters      []*ListAccessPointsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The filter information.
+	Filters []*ListAccessPointsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// The maximum number of results to return per query.
+	//
+	// - Maximum value: 100.
+	//
+	// - Minimum value: 10.
+	//
+	// - Default value: 20.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The query token. Set this parameter to the value of NextToken that was returned in the previous API call.
+	//
 	// example:
 	//
 	// MTY4NzcxOTcwMjAzMDk2Nzc0MyM4MDM4****
@@ -95,10 +108,20 @@ func (s *ListAccessPointsRequest) Validate() error {
 }
 
 type ListAccessPointsRequestFilters struct {
+	// The name of the filter key. Valid values:
+	//
+	// - AccessGroup (not supported for agentic)
+	//
+	// - AccessPointId
+	//
+	// - AgenticSpaceId
+	//
 	// example:
 	//
 	// AccessPointId
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the filter key.
+	//
 	// example:
 	//
 	// TestValue

@@ -9,6 +9,8 @@ type iUpdateLifecyclePolicyRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDeleteRules(v []*UpdateLifecyclePolicyRequestDeleteRules) *UpdateLifecyclePolicyRequest
+	GetDeleteRules() []*UpdateLifecyclePolicyRequestDeleteRules
 	SetDescription(v string) *UpdateLifecyclePolicyRequest
 	GetDescription() *string
 	SetFileSystemId(v string) *UpdateLifecyclePolicyRequest
@@ -26,17 +28,23 @@ type iUpdateLifecyclePolicyRequest interface {
 }
 
 type UpdateLifecyclePolicyRequest struct {
+	// The file data expiration and deletion rules.
+	DeleteRules []*UpdateLifecyclePolicyRequestDeleteRules `json:"DeleteRules,omitempty" xml:"DeleteRules,omitempty" type:"Repeated"`
 	// The description of the lifecycle policy.
 	//
-	// The description must be 3 to 64 characters long and must start with a letter. It can contain letters, digits, underscores (_), and hyphens (-).
+	// Format:
 	//
-	// > This parameter is supported only for CPFS for AI file systems.
+	// The description must be 3 to 64 characters in length, start with a letter, and can contain letters, digits, underscores (_), or hyphens (-).
+	//
+	// > Only CPFS for Lingjun is supported.
 	//
 	// example:
 	//
 	// Lifecycle policy description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the file system.
+	// The file system ID. The ID starts with bmcpfs-, such as bmcpfs-290w65p03ok64ya****.
+	//
+	// > This parameter is supported only when LifecyclePolicyType is set to OnDemand in the lifecycle management policy of a CPFS for Lingjun file system.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +54,7 @@ type UpdateLifecyclePolicyRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// The ID of the lifecycle policy.
 	//
-	// > This parameter is required for CPFS for AI file systems.
+	// > This parameter is required for CPFS for Lingjun file systems.
 	//
 	// This parameter is required.
 	//
@@ -54,25 +62,27 @@ type UpdateLifecyclePolicyRequest struct {
 	//
 	// lsp-bp1234567890ab****
 	LifecyclePolicyId *string `json:"LifecyclePolicyId,omitempty" xml:"LifecyclePolicyId,omitempty"`
-	// The absolute paths of the directories to which the lifecycle policy applies.
+	// The absolute paths of the directories associated with the lifecycle management policy.
 	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
-	// The retrieval rule for files. You can specify only one retrieval rule.
+	// The file data retrieval rules. You can configure up to one rule.
 	//
-	// > This parameter is supported only for CPFS for AI file systems.
+	// > Only CPFS for Lingjun file systems are supported.
 	RetrieveRules []*UpdateLifecyclePolicyRequestRetrieveRules `json:"RetrieveRules,omitempty" xml:"RetrieveRules,omitempty" type:"Repeated"`
-	// The storage tier.
+	// The tiered storage type.
 	//
-	// - `InfrequentAccess`: The Infrequent Access storage tier. This is the default value.
+	// Valid values:
 	//
-	// - `Archive`: The Archive storage tier.
+	// - InfrequentAccess: IA storage class. This is the default value.
+	//
+	// - Archive: Archive storage.
 	//
 	// example:
 	//
 	// InfrequentAccess
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The transition rule for files. You can specify only one transition rule.
+	// The file data transit rules. You can configure up to one rule.
 	//
-	// > This parameter is supported only for CPFS for AI file systems when `LifecyclePolicyType` is set to `Auto`.
+	// > This parameter is supported only when LifecyclePolicyType is set to Auto for a CPFS for Lingjun file system.
 	TransitRules []*UpdateLifecyclePolicyRequestTransitRules `json:"TransitRules,omitempty" xml:"TransitRules,omitempty" type:"Repeated"`
 }
 
@@ -82,6 +92,10 @@ func (s UpdateLifecyclePolicyRequest) String() string {
 
 func (s UpdateLifecyclePolicyRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateLifecyclePolicyRequest) GetDeleteRules() []*UpdateLifecyclePolicyRequestDeleteRules {
+	return s.DeleteRules
 }
 
 func (s *UpdateLifecyclePolicyRequest) GetDescription() *string {
@@ -110,6 +124,11 @@ func (s *UpdateLifecyclePolicyRequest) GetStorageType() *string {
 
 func (s *UpdateLifecyclePolicyRequest) GetTransitRules() []*UpdateLifecyclePolicyRequestTransitRules {
 	return s.TransitRules
+}
+
+func (s *UpdateLifecyclePolicyRequest) SetDeleteRules(v []*UpdateLifecyclePolicyRequestDeleteRules) *UpdateLifecyclePolicyRequest {
+	s.DeleteRules = v
+	return s
 }
 
 func (s *UpdateLifecyclePolicyRequest) SetDescription(v string) *UpdateLifecyclePolicyRequest {
@@ -148,6 +167,15 @@ func (s *UpdateLifecyclePolicyRequest) SetTransitRules(v []*UpdateLifecyclePolic
 }
 
 func (s *UpdateLifecyclePolicyRequest) Validate() error {
+	if s.DeleteRules != nil {
+		for _, item := range s.DeleteRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.RetrieveRules != nil {
 		for _, item := range s.RetrieveRules {
 			if item != nil {
@@ -169,22 +197,79 @@ func (s *UpdateLifecyclePolicyRequest) Validate() error {
 	return nil
 }
 
-type UpdateLifecyclePolicyRequestRetrieveRules struct {
-	// The rule attribute. Valid value:
+type UpdateLifecyclePolicyRequestDeleteRules struct {
+	// The attribute of the rule.
 	//
-	// - `RetrieveType`: The retrieval method.
+	// Valid values:
+	//
+	// - Atime: the access time of the file.
+	//
+	// example:
+	//
+	// Atime
+	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
+	// The threshold of the rule.
+	//
+	// Valid values:
+	//
+	// - If Attribute is set to Atime, the value specifies the number of days since the file was last accessed. Valid values: 1 to 365.
+	//
+	// example:
+	//
+	// 4
+	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s UpdateLifecyclePolicyRequestDeleteRules) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateLifecyclePolicyRequestDeleteRules) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLifecyclePolicyRequestDeleteRules) GetAttribute() *string {
+	return s.Attribute
+}
+
+func (s *UpdateLifecyclePolicyRequestDeleteRules) GetThreshold() *string {
+	return s.Threshold
+}
+
+func (s *UpdateLifecyclePolicyRequestDeleteRules) SetAttribute(v string) *UpdateLifecyclePolicyRequestDeleteRules {
+	s.Attribute = &v
+	return s
+}
+
+func (s *UpdateLifecyclePolicyRequestDeleteRules) SetThreshold(v string) *UpdateLifecyclePolicyRequestDeleteRules {
+	s.Threshold = &v
+	return s
+}
+
+func (s *UpdateLifecyclePolicyRequestDeleteRules) Validate() error {
+	return dara.Validate(s)
+}
+
+type UpdateLifecyclePolicyRequestRetrieveRules struct {
+	// The attribute of the rule.
+	//
+	// Valid values:
+	//
+	// - RetrieveType: the retrieval method.
 	//
 	// example:
 	//
 	// RetrieveType
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
-	// The retrieval method. Valid values:
+	// The threshold of the rule.
 	//
-	// - If `Attribute` is set to `RetrieveType`:
+	// Valid values:
 	//
-	//   - `AfterVisit`: Retrieves data on a best-effort basis after a file is accessed. This value is valid only when `LifecyclePolicyType` is `Auto`.
+	// - RetrieveType
 	//
-	//   - `All`: Retrieves all data. This value is valid only when `LifecyclePolicyType` is `OnDemand`.
+	//     - AfterVisit: supported when LifecyclePolicyType is set to Auto. Indicates best-effort recall on visit.
+	//
+	//     - All: supported when LifecyclePolicyType is set to OnDemand. Indicates retrieval of all data.
 	//
 	// example:
 	//
@@ -223,21 +308,21 @@ func (s *UpdateLifecyclePolicyRequestRetrieveRules) Validate() error {
 }
 
 type UpdateLifecyclePolicyRequestTransitRules struct {
-	// The rule attribute.
+	// The attribute of the rule.
 	//
-	// Valid value:
+	// Valid values:
 	//
-	// - `Atime`: The last access time of a file.
+	// - Atime: the access time of the file.
 	//
 	// example:
 	//
 	// Atime
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
-	// The rule threshold.
+	// The threshold of the rule.
 	//
-	// Valid value:
+	// Valid values:
 	//
-	// - If `Attribute` is set to `Atime`, this parameter specifies the number of days since a file was last accessed. The value must be between 1 and 365.
+	// - If Attribute is set to Atime, the value specifies the number of days since the file was last accessed. Valid values: 1 to 365.
 	//
 	// example:
 	//

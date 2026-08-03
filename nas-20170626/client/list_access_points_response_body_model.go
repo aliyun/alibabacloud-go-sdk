@@ -20,17 +20,24 @@ type iListAccessPointsResponseBody interface {
 }
 
 type ListAccessPointsResponseBody struct {
+	// The access point information.
 	AccessPoints []*ListAccessPointsResponseBodyAccessPoints `json:"AccessPoints,omitempty" xml:"AccessPoints,omitempty" type:"Repeated"`
+	// The query token. Set this parameter to the value of NextToken that was returned in the previous API call.
+	//
 	// example:
 	//
 	// 52frCAAAAABoZS90cm****==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 98696EF0-1607-4E9D-B01D-F20930B6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of access points.
+	//
 	// example:
 	//
 	// 20
@@ -95,73 +102,130 @@ func (s *ListAccessPointsResponseBody) Validate() error {
 }
 
 type ListAccessPointsResponseBodyAccessPoints struct {
+	// The access point ARN.
+	//
 	// example:
 	//
 	// acs:nas:cn-hangzhou:178321033379****:accesspoint/ap-ie15yd****
 	ARN *string `json:"ARN,omitempty" xml:"ARN,omitempty"`
+	// The permission group name.
+	//
 	// example:
 	//
 	// DEFAULT_VPC_GROUP_NAME
 	AccessGroup *string `json:"AccessGroup,omitempty" xml:"AccessGroup,omitempty"`
+	// The access point ID.
+	//
 	// example:
 	//
 	// ap-ie15y*****
 	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	// The access point name.
+	//
 	// example:
 	//
 	// test
 	AccessPointName *string `json:"AccessPointName,omitempty" xml:"AccessPointName,omitempty"`
+	// AgenticSpace Id。
+	//
 	// example:
 	//
 	// agentic-229oypxjgpau2****
 	AgenticSpaceId *string `json:"AgenticSpaceId,omitempty" xml:"AgenticSpaceId,omitempty"`
+	// The time when the access point was created. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2026-03-28T06:32:14Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the agentic space was created. The time follows the ISO 8601 standard. Format: yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2026-06-10T10:08:08Z
 	CreateTimeUtc *string `json:"CreateTimeUtc,omitempty" xml:"CreateTimeUtc,omitempty"`
+	// The access point domain name.
+	//
 	// example:
 	//
 	// ap-ie15ydanoz.001014****-w****.cn-hangzhou.nas.aliyuncs.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Indicates whether the RAM policy is enabled.
+	//
 	// example:
 	//
 	// false
 	EnabledRam *bool `json:"EnabledRam,omitempty" xml:"EnabledRam,omitempty"`
+	// The file system ID.
+	//
 	// example:
 	//
 	// 091yj49baxscll2****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The time when the access point was last modified. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2026-06-24T02:10:23Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The time when the agentic space was last modified. The time follows the ISO 8601 standard. Format: yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2026-06-10T10:08:08Z
-	ModifyTimeUtc *string                                            `json:"ModifyTimeUtc,omitempty" xml:"ModifyTimeUtc,omitempty"`
-	PosixUser     *ListAccessPointsResponseBodyAccessPointsPosixUser `json:"PosixUser,omitempty" xml:"PosixUser,omitempty" type:"Struct"`
+	ModifyTimeUtc *string `json:"ModifyTimeUtc,omitempty" xml:"ModifyTimeUtc,omitempty"`
+	// The POSIX user.
+	PosixUser *ListAccessPointsResponseBodyAccessPointsPosixUser `json:"PosixUser,omitempty" xml:"PosixUser,omitempty" type:"Struct"`
+	// The root directory.
+	//
 	// example:
 	//
 	// /
-	RootPath           *string                                                     `json:"RootPath,omitempty" xml:"RootPath,omitempty"`
+	RootPath *string `json:"RootPath,omitempty" xml:"RootPath,omitempty"`
+	// The root directory permission.
 	RootPathPermission *ListAccessPointsResponseBodyAccessPointsRootPathPermission `json:"RootPathPermission,omitempty" xml:"RootPathPermission,omitempty" type:"Struct"`
+	// The current root directory status.
+	//
+	// Valid values:
+	//
+	// - 0: The root path status is unknown.
+	//
+	// - 1: The root path does not exist. It may have been deleted by the user.
+	//
+	// - 2: The root path status is normal.
+	//
 	// example:
 	//
 	// 2
 	RootPathStatus *string `json:"RootPathStatus,omitempty" xml:"RootPathStatus,omitempty"`
+	// The current access point status.
+	//
+	// Valid values:
+	//
+	// - Active: Available.
+	//
+	// - Inactive: Unavailable.
+	//
+	// - Pending: Being created.
+	//
+	// - Deleting: Being deleted.
+	//
+	// > You can mount a file system only when the status is Active.
+	//
 	// example:
 	//
 	// Active
-	Status *string                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*ListAccessPointsResponseBodyAccessPointsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The access point tag list.
+	Tags []*ListAccessPointsResponseBodyAccessPointsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-2zevmwkwyztjuoffg****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-2zesj9afh3y518k9o****
@@ -380,11 +444,16 @@ func (s *ListAccessPointsResponseBodyAccessPoints) Validate() error {
 }
 
 type ListAccessPointsResponseBodyAccessPointsPosixUser struct {
+	// The POSIX group ID.
+	//
 	// example:
 	//
 	// 10
-	PosixGroupId           *int32   `json:"PosixGroupId,omitempty" xml:"PosixGroupId,omitempty"`
+	PosixGroupId *int32 `json:"PosixGroupId,omitempty" xml:"PosixGroupId,omitempty"`
+	// The secondary group ID.
 	PosixSecondaryGroupIds []*int32 `json:"PosixSecondaryGroupIds,omitempty" xml:"PosixSecondaryGroupIds,omitempty" type:"Repeated"`
+	// The POSIX user ID.
+	//
 	// example:
 	//
 	// 156
@@ -431,14 +500,20 @@ func (s *ListAccessPointsResponseBodyAccessPointsPosixUser) Validate() error {
 }
 
 type ListAccessPointsResponseBodyAccessPointsRootPathPermission struct {
+	// The owner group ID.
+	//
 	// example:
 	//
 	// 12
 	OwnerGroupId *int64 `json:"OwnerGroupId,omitempty" xml:"OwnerGroupId,omitempty"`
+	// The owner user ID.
+	//
 	// example:
 	//
 	// 1
 	OwnerUserId *int64 `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	// The POSIX permission.
+	//
 	// example:
 	//
 	// 0755
@@ -485,10 +560,14 @@ func (s *ListAccessPointsResponseBodyAccessPointsRootPathPermission) Validate() 
 }
 
 type ListAccessPointsResponseBodyAccessPointsTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// TestValue

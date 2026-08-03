@@ -36,7 +36,7 @@ type DescribeLifecyclePoliciesRequest struct {
 	//
 	// example:
 	//
-	// 描述
+	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The file system ID.
 	//
@@ -53,7 +53,7 @@ type DescribeLifecyclePoliciesRequest struct {
 	// The lifecycle policy name. Naming rules:
 	//
 	//
-	// The name must be 3 to 64 characters in length, start with a letter, and can contain letters, digits, underscores (_), or hyphens (-).
+	// The name must be 3 to 64 characters in length, must start with a letter, and can contain letters, digits, underscores (_), or hyphens (-).
 	//
 	// >Optional for General-purpose NAS file systems. If specified, this parameter takes precedence. If not specified, LifecyclePolicyId is used instead.
 	//
@@ -65,9 +65,9 @@ type DescribeLifecyclePoliciesRequest struct {
 	//
 	// Valid values:
 	//
-	// - Auto: automatic execution
+	// - Auto: Automatic execution.
 	//
-	// - OnDemand: on-demand execution
+	// - OnDemand: On-demand execution.
 	//
 	// >Only CPFS for Lingjun supports this parameter.
 	//
@@ -101,7 +101,7 @@ type DescribeLifecyclePoliciesRequest struct {
 	//
 	// /abc/
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The storage class type. Valid values:
+	// The storage type. Valid values:
 	//
 	// - InfrequentAccess: IA storage class.
 	//

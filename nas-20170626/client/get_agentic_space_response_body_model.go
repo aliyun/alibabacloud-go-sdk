@@ -74,7 +74,9 @@ type GetAgenticSpaceResponseBodyAgenticSpace struct {
 	//
 	// cn-hangzhou-i
 	Azone *string `json:"Azone,omitempty" xml:"Azone,omitempty"`
-	// The time when the AgenticSpace was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The time when the AgenticSpace was created.
+	//
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -86,7 +88,7 @@ type GetAgenticSpaceResponseBodyAgenticSpace struct {
 	//
 	// AgenticSpace Description。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The number of files used.
+	// The file count usage.
 	//
 	// example:
 	//
@@ -98,7 +100,7 @@ type GetAgenticSpaceResponseBodyAgenticSpace struct {
 	//
 	// 06229oypxjgox0u****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The absolute path of the file.
+	// The absolute file path.
 	//
 	// example:
 	//
@@ -120,7 +122,9 @@ type GetAgenticSpaceResponseBodyAgenticSpace struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the AgenticSpace was last updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The time when the AgenticSpace was last updated.
+	//
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -263,7 +267,7 @@ type GetAgenticSpaceResponseBodyAgenticSpaceQuota struct {
 	//
 	// - Maximum value: 1,099,511,627,776,000 (1024000 GiB).
 	//
-	// - Step: 1,073,741,824 (1 GiB).
+	// - Increment: 1,073,741,824 (1 GiB).
 	//
 	// example:
 	//
