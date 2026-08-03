@@ -16,7 +16,7 @@ type iDescribeDsReportsRequest interface {
 }
 
 type DescribeDsReportsRequest struct {
-	// Instance ID
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribeDsReportsRequest struct {
 	//
 	// a4274627-265f-4e14-b2d6-4ee7d4f8593e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Task group ID
+	// The job group ID.
 	//
 	// This parameter is required.
 	//

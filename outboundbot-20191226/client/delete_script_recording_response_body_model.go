@@ -22,7 +22,7 @@ type iDeleteScriptRecordingResponseBody interface {
 }
 
 type DeleteScriptRecordingResponseBody struct {
-	// The API status code.
+	// The operation status code.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DeleteScriptRecordingResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned by the API.
+	// The response message.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DeleteScriptRecordingResponseBody struct {
 	//
 	// 56666881-887A-530A-B679-C3B6B6B142C0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//

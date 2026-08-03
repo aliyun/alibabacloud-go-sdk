@@ -1147,7 +1147,7 @@ func (client *Client) CreateDialogueFlow(request *CreateDialogueFlowRequest) (_r
 
 // Summary:
 //
-// Creates a URL for a Download Hub task.
+// Creates a URL for a download center task.
 //
 // @param request - CreateDownloadUrlRequest
 //
@@ -1187,7 +1187,7 @@ func (client *Client) CreateDownloadUrlWithOptions(request *CreateDownloadUrlReq
 
 // Summary:
 //
-// Creates a URL for a Download Hub task.
+// Creates a URL for a download center task.
 //
 // @param request - CreateDownloadUrlRequest
 //
@@ -1583,7 +1583,7 @@ func (client *Client) CreateJobDataParsingTask(request *CreateJobDataParsingTask
 
 // Summary:
 //
-// Create a job group.
+// Creates a job group.
 //
 // @param request - CreateJobGroupRequest
 //
@@ -1675,7 +1675,7 @@ func (client *Client) CreateJobGroupWithOptions(request *CreateJobGroupRequest, 
 
 // Summary:
 //
-// Create a job group.
+// Creates a job group.
 //
 // @param request - CreateJobGroupRequest
 //
@@ -2061,7 +2061,7 @@ func (client *Client) CreateTag(request *CreateTagRequest) (_result *CreateTagRe
 
 // Summary:
 //
-// Create an asynchronous task to export outbound call history.
+// Creates an asynchronous task to export outbound call history.
 //
 // @param request - CreateTaskExportTaskRequest
 //
@@ -2101,7 +2101,7 @@ func (client *Client) CreateTaskExportTaskWithOptions(request *CreateTaskExportT
 
 // Summary:
 //
-// Create an asynchronous task to export outbound call history.
+// Creates an asynchronous task to export outbound call history.
 //
 // @param request - CreateTaskExportTaskRequest
 //
@@ -2987,7 +2987,7 @@ func (client *Client) DeleteJobGroup(request *DeleteJobGroupRequest) (_result *D
 
 // Summary:
 //
-// Deletes an outbound call number. This API is deprecated.
+// Deletes an outbound call number. This operation is deprecated.
 //
 // @param request - DeleteOutboundCallNumberRequest
 //
@@ -3035,7 +3035,7 @@ func (client *Client) DeleteOutboundCallNumberWithOptions(request *DeleteOutboun
 
 // Summary:
 //
-// Deletes an outbound call number. This API is deprecated.
+// Deletes an outbound call number. This operation is deprecated.
 //
 // @param request - DeleteOutboundCallNumberRequest
 //
@@ -3119,7 +3119,7 @@ func (client *Client) DeleteScript(request *DeleteScriptRequest) (_result *Delet
 
 // Summary:
 //
-// Deletes uploaded recordings for a small-model scenario.
+// Deletes uploaded recordings in a small model scenario.
 //
 // @param request - DeleteScriptRecordingRequest
 //
@@ -3171,7 +3171,7 @@ func (client *Client) DeleteScriptRecordingWithOptions(request *DeleteScriptReco
 
 // Summary:
 //
-// Deletes uploaded recordings for a small-model scenario.
+// Deletes uploaded recordings in a small model scenario.
 //
 // @param request - DeleteScriptRecordingRequest
 //
@@ -3407,7 +3407,7 @@ func (client *Client) DescribeDialogueNodeStatistics(request *DescribeDialogueNo
 
 // Summary:
 //
-// Describes DS reports.
+// Queries the tag statistics of hits for a job group.
 //
 // @param request - DescribeDsReportsRequest
 //
@@ -3455,7 +3455,7 @@ func (client *Client) DescribeDsReportsWithOptions(request *DescribeDsReportsReq
 
 // Summary:
 //
-// Describes DS reports.
+// Queries the tag statistics of hits for a job group.
 //
 // @param request - DescribeDsReportsRequest
 //
@@ -3617,7 +3617,7 @@ func (client *Client) DescribeGroupExecutingInfo(request *DescribeGroupExecuting
 
 // Summary:
 //
-// Queries the details of an Outbound Calling instance.
+// Queries the information of an outbound robot business instance.
 //
 // @param request - DescribeInstanceRequest
 //
@@ -3661,7 +3661,7 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 
 // Summary:
 //
-// Queries the details of an Outbound Calling instance.
+// Queries the information of an outbound robot business instance.
 //
 // @param request - DescribeInstanceRequest
 //
@@ -3819,7 +3819,7 @@ func (client *Client) DescribeIntentStatistics(request *DescribeIntentStatistics
 
 // Summary:
 //
-// Retrieves the conversation data for a specific job.
+// Returns the conversation data of a job.
 //
 // @param request - DescribeJobRequest
 //
@@ -3871,7 +3871,7 @@ func (client *Client) DescribeJobWithOptions(request *DescribeJobRequest, runtim
 
 // Summary:
 //
-// Retrieves the conversation data for a specific job.
+// Returns the conversation data of a job.
 //
 // @param request - DescribeJobRequest
 //
@@ -3889,7 +3889,7 @@ func (client *Client) DescribeJob(request *DescribeJobRequest) (_result *Describ
 
 // Summary:
 //
-// Retrieve the parsing progress of an uploaded job file.
+// Retrieves the parsing progress of an uploaded job file.
 //
 // @param request - DescribeJobDataParsingTaskProgressRequest
 //
@@ -3937,7 +3937,7 @@ func (client *Client) DescribeJobDataParsingTaskProgressWithOptions(request *Des
 
 // Summary:
 //
-// Retrieve the parsing progress of an uploaded job file.
+// Retrieves the parsing progress of an uploaded job file.
 //
 // @param request - DescribeJobDataParsingTaskProgressRequest
 //
@@ -4157,7 +4157,7 @@ func (client *Client) DescribeScript(request *DescribeScriptRequest) (_result *D
 
 // Summary:
 //
-// Describes the voice configuration of a script created in the legacy canvas.
+// Returns a scene voice configuration in the legacy canvas scenario.
 //
 // @param request - DescribeScriptVoiceConfigRequest
 //
@@ -4209,7 +4209,7 @@ func (client *Client) DescribeScriptVoiceConfigWithOptions(request *DescribeScri
 
 // Summary:
 //
-// Describes the voice configuration of a script created in the legacy canvas.
+// Returns a scene voice configuration in the legacy canvas scenario.
 //
 // @param request - DescribeScriptVoiceConfigRequest
 //
@@ -4473,7 +4473,7 @@ func (client *Client) DescribeTagHitsSummary(request *DescribeTagHitsSummaryRequ
 
 // Summary:
 //
-// Lists the instances to which a phone number is bound in a tenant.
+// Queries the list of number binding instances under a tenant.
 //
 // @param request - DescribeTenantBindNumberRequest
 //
@@ -4517,7 +4517,7 @@ func (client *Client) DescribeTenantBindNumberWithOptions(request *DescribeTenan
 
 // Summary:
 //
-// Lists the instances to which a phone number is bound in a tenant.
+// Queries the list of number binding instances under a tenant.
 //
 // @param request - DescribeTenantBindNumberRequest
 //
@@ -4781,7 +4781,7 @@ func (client *Client) DownloadScriptRecording(request *DownloadScriptRecordingRe
 
 // Summary:
 //
-// Duplicates an existing script. This operation applies only to the legacy canvas.
+// Copies a new script from an existing script (for the legacy canvas only).
 //
 // @param request - DuplicateScriptRequest
 //
@@ -4833,7 +4833,7 @@ func (client *Client) DuplicateScriptWithOptions(request *DuplicateScriptRequest
 
 // Summary:
 //
-// Duplicates an existing script. This operation applies only to the legacy canvas.
+// Copies a new script from an existing script (for the legacy canvas only).
 //
 // @param request - DuplicateScriptRequest
 //
@@ -7708,7 +7708,7 @@ func (client *Client) ListJobGroups(request *ListJobGroupsRequest) (_result *Lis
 
 // Summary:
 //
-// Retrieves the list of outbound call tasks asynchronously. Call this operation to retrieve the results of a `ListJobGroup` call that included the `Async` parameter.
+// Asynchronously retrieves the list of outbound call task groups. When the Async parameter is specified in the ListJobGroup operation, use this operation to retrieve the results of the asynchronous ListJobGroup call.
 //
 // @param request - ListJobGroupsAsyncRequest
 //
@@ -7748,7 +7748,7 @@ func (client *Client) ListJobGroupsAsyncWithOptions(request *ListJobGroupsAsyncR
 
 // Summary:
 //
-// Retrieves the list of outbound call tasks asynchronously. Call this operation to retrieve the results of a `ListJobGroup` call that included the `Async` parameter.
+// Asynchronously retrieves the list of outbound call task groups. When the Async parameter is specified in the ListJobGroup operation, use this operation to retrieve the results of the asynchronous ListJobGroup call.
 //
 // @param request - ListJobGroupsAsyncRequest
 //
@@ -7766,7 +7766,7 @@ func (client *Client) ListJobGroupsAsync(request *ListJobGroupsAsyncRequest) (_r
 
 // Summary:
 //
-// Query multiple jobs.
+// Queries multiple jobs.
 //
 // @param request - ListJobsRequest
 //
@@ -7814,7 +7814,7 @@ func (client *Client) ListJobsWithOptions(request *ListJobsRequest, runtime *dar
 
 // Summary:
 //
-// Query multiple jobs.
+// Queries multiple jobs.
 //
 // @param request - ListJobsRequest
 //
@@ -9636,7 +9636,7 @@ func (client *Client) ModifyJobGroup(request *ModifyJobGroupRequest) (_result *M
 
 // Summary:
 //
-// Modifies an outbound call number. This API is deprecated.
+// Modifies an outbound call number. This operation is deprecated.
 //
 // @param request - ModifyOutboundCallNumberRequest
 //
@@ -9696,7 +9696,7 @@ func (client *Client) ModifyOutboundCallNumberWithOptions(request *ModifyOutboun
 
 // Summary:
 //
-// Modifies an outbound call number. This API is deprecated.
+// Modifies an outbound call number. This operation is deprecated.
 //
 // @param request - ModifyOutboundCallNumberRequest
 //
@@ -10254,7 +10254,7 @@ func (client *Client) PublishScriptForDebug(request *PublishScriptForDebugReques
 
 // Summary:
 //
-// You can query the list of jobs.
+// Queries a list of jobs.
 //
 // @param request - QueryJobsRequest
 //
@@ -10334,7 +10334,7 @@ func (client *Client) QueryJobsWithOptions(request *QueryJobsRequest, runtime *d
 
 // Summary:
 //
-// You can query the list of jobs.
+// Queries a list of jobs.
 //
 // @param request - QueryJobsRequest
 //
@@ -10352,7 +10352,7 @@ func (client *Client) QueryJobs(request *QueryJobsRequest) (_result *QueryJobsRe
 
 // Summary:
 //
-// Find tasks by result.
+// Queries tasks based on task results.
 //
 // @param request - QueryJobsWithResultRequest
 //
@@ -10448,7 +10448,7 @@ func (client *Client) QueryJobsWithResultWithOptions(request *QueryJobsWithResul
 
 // Summary:
 //
-// Find tasks by result.
+// Queries tasks based on task results.
 //
 // @param request - QueryJobsWithResultRequest
 //
@@ -10852,7 +10852,7 @@ func (client *Client) RollbackScript(request *RollbackScriptRequest) (_result *R
 
 // Summary:
 //
-// Sets the delay before playback starts after the call is answered.
+// Saves the delayed playback time after a call is answered.
 //
 // @param request - SaveAfterAnswerDelayPlaybackRequest
 //
@@ -10904,7 +10904,7 @@ func (client *Client) SaveAfterAnswerDelayPlaybackWithOptions(request *SaveAfter
 
 // Summary:
 //
-// Sets the delay before playback starts after the call is answered.
+// Saves the delayed playback time after a call is answered.
 //
 // @param request - SaveAfterAnswerDelayPlaybackRequest
 //
@@ -11584,7 +11584,7 @@ func (client *Client) StartJob(request *StartJobRequest) (_result *StartJobRespo
 
 // Summary:
 //
-// Submits a draft job group. This operation is deprecated.
+// Submits a job group in draft status for execution. This operation is deprecated.
 //
 // @param request - SubmitBatchJobsRequest
 //
@@ -11632,7 +11632,7 @@ func (client *Client) SubmitBatchJobsWithOptions(request *SubmitBatchJobsRequest
 
 // Summary:
 //
-// Submits a draft job group. This operation is deprecated.
+// Submits a job group in draft status for execution. This operation is deprecated.
 //
 // @param request - SubmitBatchJobsRequest
 //
@@ -12394,11 +12394,11 @@ func (client *Client) UploadScriptRecording(request *UploadScriptRecordingReques
 
 // Summary:
 //
-// Revoke script review.
+// Withdraws a script review.
 //
 // Description:
 //
-// **
+// ***
 //
 // @param request - WithdrawScriptReviewRequest
 //
@@ -12446,11 +12446,11 @@ func (client *Client) WithdrawScriptReviewWithOptions(request *WithdrawScriptRev
 
 // Summary:
 //
-// Revoke script review.
+// Withdraws a script review.
 //
 // Description:
 //
-// **
+// ***
 //
 // @param request - WithdrawScriptReviewRequest
 //

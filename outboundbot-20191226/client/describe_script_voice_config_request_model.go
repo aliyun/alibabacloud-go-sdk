@@ -18,7 +18,7 @@ type iDescribeScriptVoiceConfigRequest interface {
 }
 
 type DescribeScriptVoiceConfigRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DescribeScriptVoiceConfigRequest struct {
 	//
 	// 8fa1953f-4a84-46d8-b80c-8ce9cf684fb3
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the script.
+	// The scene ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DescribeScriptVoiceConfigRequest struct {
 	//
 	// 0fe7f71c-8771-42ef-9bb1-19aa16ae7120
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// The ID of the script voice configuration.
+	// The scene voice configuration ID.
 	//
 	// This parameter is required.
 	//

@@ -18,7 +18,7 @@ type iDuplicateScriptRequest interface {
 }
 
 type DuplicateScriptRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DuplicateScriptRequest struct {
 	//
 	// 361c8a53-0e29-42f3-8aa7-c7752d010399
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name for the new script.
+	// The name of the new scenario.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DuplicateScriptRequest struct {
 	//
 	// 复制的催收话术
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the source script.
+	// The ID of the source scenario.
 	//
 	// This parameter is required.
 	//

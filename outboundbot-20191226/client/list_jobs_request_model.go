@@ -16,7 +16,7 @@ type iListJobsRequest interface {
 }
 
 type ListJobsRequest struct {
-	// Instance ID
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type ListJobsRequest struct {
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Job ID list. Note: the number of child items must be less than or equal to 99.
+	// The list of job IDs. A maximum of 99 child items are allowed.
 	//
 	// This parameter is required.
 	//

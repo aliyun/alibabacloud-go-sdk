@@ -32,19 +32,19 @@ type iQueryJobsRequest interface {
 }
 
 type QueryJobsRequest struct {
-	// Filter condition. Contact name.
+	// The filter condition for the contact name.
 	//
 	// example:
 	//
 	// 张三
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	// Filter condition. End time. Default value is 0, which means up to now.
+	// The filter condition for the end time. Default value: 0, which indicates the current time.
 	//
 	// example:
 	//
 	// 1579077794665
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -52,13 +52,13 @@ type QueryJobsRequest struct {
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Task group ID.
+	// The job group ID.
 	//
 	// example:
 	//
 	// 994b8baf-7ef8-480c-b141-b7b6db77c4df
 	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	// Page number.
+	// The page number.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type QueryJobsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size.
+	// The page size.
 	//
 	// This parameter is required.
 	//
@@ -74,25 +74,25 @@ type QueryJobsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Filter condition. Contact phone number.
+	// The filter condition for the contact phone number.
 	//
 	// example:
 	//
 	// 135****8888
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// Scenario ID. This parameter is deprecated.
+	// The scenario ID. This is a legacy parameter and has been deprecated.
 	//
 	// example:
 	//
 	// b0f35dd1-0337-402e-9c4f-3a6c2426950a
 	ScenarioId *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	// Filter condition. Start time. Default value is 0, which means from 00:00 today.
+	// The filter condition for the start time. Default value: 0, which indicates the start of the current day.
 	//
 	// example:
 	//
 	// 1579068424883
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Time filter basis. Valid values: start, end, and job_create.
+	// Specifies whether to query by start time, end time, or job creation time. Valid values: start, end, job_create.
 	//
 	// example:
 	//

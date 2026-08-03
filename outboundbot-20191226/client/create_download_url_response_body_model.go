@@ -24,13 +24,13 @@ type iCreateDownloadUrlResponseBody interface {
 }
 
 type CreateDownloadUrlResponseBody struct {
-	// The status code of the operation.
+	// The API status code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The URL of the file.
+	// The file URL.
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type CreateDownloadUrlResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned for the operation.
+	// The message returned by the API.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

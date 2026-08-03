@@ -46,7 +46,7 @@ type SubmitBatchJobsResponseBody struct {
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the request was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

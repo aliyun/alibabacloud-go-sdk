@@ -24,37 +24,37 @@ type iCreateTaskExportTaskResponseBody interface {
 }
 
 type CreateTaskExportTaskResponseBody struct {
-	// Status code
+	// The status code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Response message
+	// The response message.
 	//
 	// example:
 	//
 	// []
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// C377C5FF-4F94-1B23-89D0-50C560623EE4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Export task ID
+	// The export task ID.
 	//
 	// example:
 	//

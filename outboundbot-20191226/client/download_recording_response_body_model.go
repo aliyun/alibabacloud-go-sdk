@@ -24,13 +24,13 @@ type iDownloadRecordingResponseBody interface {
 }
 
 type DownloadRecordingResponseBody struct {
-	// The status code.
+	// The interface status code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Download parameters for the recording file.
+	// The download URL of the file.
 	DownloadParams *DownloadRecordingResponseBodyDownloadParams `json:"DownloadParams,omitempty" xml:"DownloadParams,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -38,7 +38,7 @@ type DownloadRecordingResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The response message.
+	// The interface prompt message.
 	//
 	// example:
 	//
@@ -130,19 +130,20 @@ func (s *DownloadRecordingResponseBody) Validate() error {
 }
 
 type DownloadRecordingResponseBodyDownloadParams struct {
-	// The name of the recording file, typically a universally unique identifier (UUID).
+	EarlyMediaSignatureUrl *string `json:"EarlyMediaSignatureUrl,omitempty" xml:"EarlyMediaSignatureUrl,omitempty"`
+	// The recording file name, which is typically a UUID.
 	//
 	// example:
 	//
 	// 281eb174-3865-41c1-9274-7b6813edadab.wav
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The signed URL for downloading the recording file.
+	// A URL that points to the recording file. Use HTTP to download the file.
 	//
 	// example:
 	//
 	// http://tiangong-staging.oss-cn-shanghai.aliyuncs.com/record/281eb174-3865-41c1-9274-7b6813edadab.wav?Expires=1578624046&OSSAccessKeyId=LTAI****cqw&Signature=dL2dxWS6VcdZrvG9xOMOBMSP3Fg%3D
 	SignatureUrl *string `json:"SignatureUrl,omitempty" xml:"SignatureUrl,omitempty"`
-	// A JSON-formatted string that contains a list of voice slice recordings. Each item in the list includes the file name and URL of a slice.
+	// The list of segmented recordings, including file names and file URLs.
 	//
 	// example:
 	//
@@ -158,6 +159,10 @@ func (s DownloadRecordingResponseBodyDownloadParams) GoString() string {
 	return s.String()
 }
 
+func (s *DownloadRecordingResponseBodyDownloadParams) GetEarlyMediaSignatureUrl() *string {
+	return s.EarlyMediaSignatureUrl
+}
+
 func (s *DownloadRecordingResponseBodyDownloadParams) GetFileName() *string {
 	return s.FileName
 }
@@ -168,6 +173,11 @@ func (s *DownloadRecordingResponseBodyDownloadParams) GetSignatureUrl() *string 
 
 func (s *DownloadRecordingResponseBodyDownloadParams) GetVoiceSliceRecordingListJson() *string {
 	return s.VoiceSliceRecordingListJson
+}
+
+func (s *DownloadRecordingResponseBodyDownloadParams) SetEarlyMediaSignatureUrl(v string) *DownloadRecordingResponseBodyDownloadParams {
+	s.EarlyMediaSignatureUrl = &v
+	return s
 }
 
 func (s *DownloadRecordingResponseBodyDownloadParams) SetFileName(v string) *DownloadRecordingResponseBodyDownloadParams {

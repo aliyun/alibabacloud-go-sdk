@@ -16,7 +16,7 @@ type iDeleteOutboundCallNumberRequest interface {
 }
 
 type DeleteOutboundCallNumberRequest struct {
-	// Instance ID
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteOutboundCallNumberRequest struct {
 	//
 	// 33014787-cc13-49d3-ab2f-a98aa8f15fbb
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Number ID
+	// The number ID.
 	//
 	// This parameter is required.
 	//

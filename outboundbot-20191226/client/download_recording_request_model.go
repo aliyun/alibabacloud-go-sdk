@@ -28,13 +28,13 @@ type DownloadRecordingRequest struct {
 	//
 	// da37319b-6c83-4268-9f19-814aed62e401
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether to retrieve voice slice recordings.
+	// Specifies whether to query segmented recordings.
 	//
 	// example:
 	//
 	// false
 	NeedVoiceSliceRecording *bool `json:"NeedVoiceSliceRecording,omitempty" xml:"NeedVoiceSliceRecording,omitempty"`
-	// Specifies whether to swap the left and right audio channels. The default value is `false`.
+	// Specifies whether to swap left and right audio channels. Default value: false (not swapped).
 	//
 	// example:
 	//

@@ -36,7 +36,7 @@ type DescribeInstanceResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the instance.
+	// The business instance information.
 	Instance *DescribeInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
 	// The response message.
 	//
@@ -44,7 +44,7 @@ type DescribeInstanceResponseBody struct {
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ func (s *DescribeInstanceResponseBody) Validate() error {
 }
 
 type DescribeInstanceResponseBodyInstance struct {
-	// The time when the instance was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1578469042851
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the creator.
+	// The creator ID.
 	//
 	// example:
 	//
@@ -148,37 +148,37 @@ type DescribeInstanceResponseBodyInstance struct {
 	//
 	// xxx
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// The description of the instance.
+	// The description of the business instance.
 	//
 	// example:
 	//
 	// 这个是第一个实例
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	// The ID of the instance.
+	// The business instance ID.
 	//
 	// example:
 	//
 	// 90515b5-6115-4ccf-83e2-52d5bfaf2ddf
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the instance.
+	// The name of the business instance.
 	//
 	// example:
 	//
 	// 第一个实例
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The maximum number of concurrent conversations for the instance.
+	// The maximum concurrency of the instance.
 	//
 	// example:
 	//
 	// 4
 	MaxConcurrentConversation *int32 `json:"MaxConcurrentConversation,omitempty" xml:"MaxConcurrentConversation,omitempty"`
-	// The name of the instance owner.
+	// The name of the business instance owner.
 	//
 	// example:
 	//
 	// xxxx
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//

@@ -24,33 +24,33 @@ type iModifyOutboundCallNumberResponseBody interface {
 }
 
 type ModifyOutboundCallNumberResponseBody struct {
-	// API status code
+	// The API status code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Response message
+	// The response message.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Number information
+	// The number information.
 	OutboundCallNumber *ModifyOutboundCallNumberResponseBodyOutboundCallNumber `json:"OutboundCallNumber,omitempty" xml:"OutboundCallNumber,omitempty" type:"Struct"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation succeeded
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -130,25 +130,25 @@ func (s *ModifyOutboundCallNumberResponseBody) Validate() error {
 }
 
 type ModifyOutboundCallNumberResponseBodyOutboundCallNumber struct {
-	// Outbound call number
+	// The outbound call number.
 	//
 	// example:
 	//
 	// 10088xxxx
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
-	// Number ID
+	// The number ID.
 	//
 	// example:
 	//
 	// fa0e21e9-caab-4629-9121-1e341243d599
 	OutboundCallNumberId *string `json:"OutboundCallNumberId,omitempty" xml:"OutboundCallNumberId,omitempty"`
-	// Rate limiting period
+	// The rate limit cycle.
 	//
 	// example:
 	//
 	// 10
 	RateLimitCount *string `json:"RateLimitCount,omitempty" xml:"RateLimitCount,omitempty"`
-	// Rate limiting count
+	// The rate limit count.
 	//
 	// example:
 	//

@@ -879,7 +879,7 @@ func (client *Client) CreateDialogueFlowWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates a URL for a Download Hub task.
+// Creates a URL for a download center task.
 //
 // @param request - CreateDownloadUrlRequest
 //
@@ -1207,7 +1207,7 @@ func (client *Client) CreateJobDataParsingTaskWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Create a job group.
+// Creates a job group.
 //
 // @param request - CreateJobGroupRequest
 //
@@ -1591,7 +1591,7 @@ func (client *Client) CreateTagWithContext(ctx context.Context, request *CreateT
 
 // Summary:
 //
-// Create an asynchronous task to export outbound call history.
+// Creates an asynchronous task to export outbound call history.
 //
 // @param request - CreateTaskExportTaskRequest
 //
@@ -2238,7 +2238,7 @@ func (client *Client) DeleteJobGroupWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Deletes an outbound call number. This API is deprecated.
+// Deletes an outbound call number. This operation is deprecated.
 //
 // @param request - DeleteOutboundCallNumberRequest
 //
@@ -2334,7 +2334,7 @@ func (client *Client) DeleteScriptWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// Deletes uploaded recordings for a small-model scenario.
+// Deletes uploaded recordings in a small model scenario.
 //
 // @param request - DeleteScriptRecordingRequest
 //
@@ -2546,7 +2546,7 @@ func (client *Client) DescribeDialogueNodeStatisticsWithContext(ctx context.Cont
 
 // Summary:
 //
-// Describes DS reports.
+// Queries the tag statistics of hits for a job group.
 //
 // @param request - DescribeDsReportsRequest
 //
@@ -2698,7 +2698,7 @@ func (client *Client) DescribeGroupExecutingInfoWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the details of an Outbound Calling instance.
+// Queries the information of an outbound robot business instance.
 //
 // @param request - DescribeInstanceRequest
 //
@@ -2846,7 +2846,7 @@ func (client *Client) DescribeIntentStatisticsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Retrieves the conversation data for a specific job.
+// Returns the conversation data of a job.
 //
 // @param request - DescribeJobRequest
 //
@@ -2898,7 +2898,7 @@ func (client *Client) DescribeJobWithContext(ctx context.Context, request *Descr
 
 // Summary:
 //
-// Retrieve the parsing progress of an uploaded job file.
+// Retrieves the parsing progress of an uploaded job file.
 //
 // @param request - DescribeJobDataParsingTaskProgressRequest
 //
@@ -3094,7 +3094,7 @@ func (client *Client) DescribeScriptWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Describes the voice configuration of a script created in the legacy canvas.
+// Returns a scene voice configuration in the legacy canvas scenario.
 //
 // @param request - DescribeScriptVoiceConfigRequest
 //
@@ -3338,7 +3338,7 @@ func (client *Client) DescribeTagHitsSummaryWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Lists the instances to which a phone number is bound in a tenant.
+// Queries the list of number binding instances under a tenant.
 //
 // @param request - DescribeTenantBindNumberRequest
 //
@@ -3574,7 +3574,7 @@ func (client *Client) DownloadScriptRecordingWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Duplicates an existing script. This operation applies only to the legacy canvas.
+// Copies a new script from an existing script (for the legacy canvas only).
 //
 // @param request - DuplicateScriptRequest
 //
@@ -5623,7 +5623,7 @@ func (client *Client) ListJobGroupsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Retrieves the list of outbound call tasks asynchronously. Call this operation to retrieve the results of a `ListJobGroup` call that included the `Async` parameter.
+// Asynchronously retrieves the list of outbound call task groups. When the Async parameter is specified in the ListJobGroup operation, use this operation to retrieve the results of the asynchronous ListJobGroup call.
 //
 // @param request - ListJobGroupsAsyncRequest
 //
@@ -5663,7 +5663,7 @@ func (client *Client) ListJobGroupsAsyncWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Query multiple jobs.
+// Queries multiple jobs.
 //
 // @param request - ListJobsRequest
 //
@@ -7115,7 +7115,7 @@ func (client *Client) ModifyJobGroupWithContext(ctx context.Context, request *Mo
 
 // Summary:
 //
-// Modifies an outbound call number. This API is deprecated.
+// Modifies an outbound call number. This operation is deprecated.
 //
 // @param request - ModifyOutboundCallNumberRequest
 //
@@ -7603,7 +7603,7 @@ func (client *Client) PublishScriptForDebugWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// You can query the list of jobs.
+// Queries a list of jobs.
 //
 // @param request - QueryJobsRequest
 //
@@ -7683,7 +7683,7 @@ func (client *Client) QueryJobsWithContext(ctx context.Context, request *QueryJo
 
 // Summary:
 //
-// Find tasks by result.
+// Queries tasks based on task results.
 //
 // @param request - QueryJobsWithResultRequest
 //
@@ -8075,7 +8075,7 @@ func (client *Client) RollbackScriptWithContext(ctx context.Context, request *Ro
 
 // Summary:
 //
-// Sets the delay before playback starts after the call is answered.
+// Saves the delayed playback time after a call is answered.
 //
 // @param request - SaveAfterAnswerDelayPlaybackRequest
 //
@@ -8627,7 +8627,7 @@ func (client *Client) StartJobWithContext(ctx context.Context, request *StartJob
 
 // Summary:
 //
-// Submits a draft job group. This operation is deprecated.
+// Submits a job group in draft status for execution. This operation is deprecated.
 //
 // @param request - SubmitBatchJobsRequest
 //
@@ -9235,11 +9235,11 @@ func (client *Client) UploadScriptRecordingWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Revoke script review.
+// Withdraws a script review.
 //
 // Description:
 //
-// **
+// ***
 //
 // @param request - WithdrawScriptReviewRequest
 //

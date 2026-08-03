@@ -14,7 +14,7 @@ type iDescribeInstanceRequest interface {
 }
 
 type DescribeInstanceRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

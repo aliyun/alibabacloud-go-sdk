@@ -142,19 +142,19 @@ type WithdrawScriptReviewResponseBodyScript struct {
 	//
 	// 金融
 	Industry *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
-	// Indicates whether the debug version is a draft.
+	// Indicates whether the debug version is in draft state.
 	//
 	// example:
 	//
 	// false
 	IsDebugDrafted *bool `json:"IsDebugDrafted,omitempty" xml:"IsDebugDrafted,omitempty"`
-	// Indicates whether the application version is a draft.
+	// Indicates whether the application version is in draft state.
 	//
 	// example:
 	//
 	// false
 	IsDrafted *bool `json:"IsDrafted,omitempty" xml:"IsDrafted,omitempty"`
-	// The scenario.
+	// The scene.
 	//
 	// example:
 	//
@@ -184,7 +184,7 @@ type WithdrawScriptReviewResponseBodyScript struct {
 	//
 	// PUBLISHED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the script was updated.
+	// The update time.
 	//
 	// example:
 	//

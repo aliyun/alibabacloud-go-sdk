@@ -18,7 +18,7 @@ type iDescribeJobRequest interface {
 }
 
 type DescribeJobRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DescribeJobRequest struct {
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the job.
+	// The job ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DescribeJobRequest struct {
 	//
 	// c8a2b7f2-ad1a-4865-b872-d0080d9802d9
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Specifies whether to return the script.
+	// Specifies whether to return task scenario information.
 	//
 	// example:
 	//

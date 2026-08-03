@@ -22,31 +22,31 @@ type iSaveAfterAnswerDelayPlaybackResponseBody interface {
 }
 
 type SaveAfterAnswerDelayPlaybackResponseBody struct {
-	// Response code
+	// The response code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// API message
+	// The response message.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

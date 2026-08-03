@@ -24,7 +24,7 @@ type iDuplicateScriptResponseBody interface {
 }
 
 type DuplicateScriptResponseBody struct {
-	// The response code.
+	// The status code.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type DuplicateScriptResponseBody struct {
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the new script.
+	// The scenario ID.
 	//
 	// example:
 	//
 	// 6114e7e8-4140-48d9-b46d-65ea29f13fe8
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// Indicates whether the request was successful. A value of true indicates success, while false indicates failure.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

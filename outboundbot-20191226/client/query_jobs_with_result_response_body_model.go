@@ -28,7 +28,7 @@ type iQueryJobsWithResultResponseBody interface {
 }
 
 type QueryJobsWithResultResponseBody struct {
-	// The response code. The value `OK` indicates that the request was successful.
+	// Code
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type QueryJobsWithResultResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The paginated list of jobs.
+	// The jobs.
 	Jobs *QueryJobsWithResultResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Struct"`
-	// The tag information that can be used as filter criteria.
+	// The label information that can be used as filter conditions.
 	//
-	// > Displays information for all tags in the job group that have enumerated values.
+	// > Displays all label information with enumerated values in the job group.
 	Labels []*QueryJobsWithResultResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The response message.
 	//
@@ -64,7 +64,7 @@ type QueryJobsWithResultResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The names of tags to be collected.
+	// The label names to be collected.
 	VariableNames []*string `json:"VariableNames,omitempty" xml:"VariableNames,omitempty" type:"Repeated"`
 }
 
@@ -167,7 +167,7 @@ func (s *QueryJobsWithResultResponseBody) Validate() error {
 }
 
 type QueryJobsWithResultResponseBodyJobs struct {
-	// A list of jobs.
+	// The job list.
 	List []*QueryJobsWithResultResponseBodyJobsList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The total number of pages.
 	//
@@ -181,13 +181,13 @@ type QueryJobsWithResultResponseBodyJobs struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -268,7 +268,7 @@ type QueryJobsWithResultResponseBodyJobsList struct {
 	//
 	// cc231a1d-3c05-4739-8926-193ecf4097ba
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The reason the job failed.
+	// The job failure reason.
 	//
 	// example:
 	//
@@ -302,29 +302,29 @@ type QueryJobsWithResultResponseBodyJobsList struct {
 	//
 	// - NoneRepeatableJobMaxAttemptCountLimit（ 任务最大尝试次数， 当RepeatBy（@see ）为None时生效）
 	JobFailureReason *string `json:"JobFailureReason,omitempty" xml:"JobFailureReason,omitempty"`
-	// The most recent call.
+	// The latest call.
 	LatestTask *QueryJobsWithResultResponseBodyJobsListLatestTask `json:"LatestTask,omitempty" xml:"LatestTask,omitempty" type:"Struct"`
 	// The job status. Valid values:
 	//
-	// - `Scheduling`: The job is being scheduled.
+	// - Scheduling(0, "Scheduling")
 	//
-	// - `Executing`: The job is in progress.
+	// - Executing(1, "Executing")
 	//
-	// - `Succeeded`: The job succeeded, and the contact was reached.
+	// - Succeeded(2, "Ended - Reached")
 	//
-	// - `Paused`: The job is paused.
+	// - Paused(3, "Paused")
 	//
-	// - `Failed`: The job failed because the contact was not reached.
+	// - Failed(4, "Ended - Not reached")
 	//
-	// - `Cancelled`: The job was cancelled by a user.
+	// - Cancelled(5, "Cancelled - Manual intervention")
 	//
-	// - `Drafted`: The job is a draft.
+	// - Drafted(6, "Draft")
 	//
 	// example:
 	//
 	// Succeeded
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the job status.
+	// The job status name.
 	//
 	// example:
 	//
@@ -395,19 +395,19 @@ func (s *QueryJobsWithResultResponseBodyJobsList) Validate() error {
 }
 
 type QueryJobsWithResultResponseBodyJobsListLatestTask struct {
-	// The call duration, in milliseconds.
+	// The call duration.
 	//
 	// example:
 	//
 	// 40000
 	CallDuration *int32 `json:"CallDuration,omitempty" xml:"CallDuration,omitempty"`
-	// The call duration, formatted for display.
+	// The call duration.
 	//
 	// example:
 	//
 	// 40
 	CallDurationDisplay *string `json:"CallDurationDisplay,omitempty" xml:"CallDurationDisplay,omitempty"`
-	// The time when the call was made. This value is a UNIX timestamp in milliseconds.
+	// The call time.
 	//
 	// example:
 	//
@@ -415,9 +415,9 @@ type QueryJobsWithResultResponseBodyJobsListLatestTask struct {
 	CallTime *int64 `json:"CallTime,omitempty" xml:"CallTime,omitempty"`
 	// The contact.
 	Contact *QueryJobsWithResultResponseBodyJobsListLatestTaskContact `json:"Contact,omitempty" xml:"Contact,omitempty" type:"Struct"`
-	// The error codes for the call.
+	// The call exception codes.
 	DialExceptionCodes []*QueryJobsWithResultResponseBodyJobsListLatestTaskDialExceptionCodes `json:"DialExceptionCodes,omitempty" xml:"DialExceptionCodes,omitempty" type:"Repeated"`
-	// The custom tags (key-value pairs) associated with the call.
+	// The label names to be collected.
 	Extras []*QueryJobsWithResultResponseBodyJobsListLatestTaskExtras `json:"Extras,omitempty" xml:"Extras,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -429,19 +429,19 @@ type QueryJobsWithResultResponseBodyJobsListLatestTask struct {
 	//
 	// true
 	HasAnswered *bool `json:"HasAnswered,omitempty" xml:"HasAnswered,omitempty"`
-	// Indicates whether the call was hung up due to rejection.
+	// Specifies whether the call was hung up due to rejection.
 	//
 	// example:
 	//
 	// false
 	HasHangUpByRejection *bool `json:"HasHangUpByRejection,omitempty" xml:"HasHangUpByRejection,omitempty"`
-	// Indicates whether the last voice playback was completed before the call was hung up.
+	// Indicates whether the playback was completed when the call was hung up.
 	//
 	// example:
 	//
 	// true
 	HasLastPlaybackCompleted *bool `json:"HasLastPlaybackCompleted,omitempty" xml:"HasLastPlaybackCompleted,omitempty"`
-	// Indicates whether the call flow was completed.
+	// Specifies whether the call reached the end of the flow.
 	//
 	// example:
 	//
@@ -453,15 +453,15 @@ type QueryJobsWithResultResponseBodyJobsListLatestTask struct {
 	//
 	// Succeeded
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the call status.
+	// The call status name.
 	//
 	// example:
 	//
 	// 未呼出-超出每日上限
 	StatusName *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
-	// Information about tags that were matched. This parameter is returned for flows created using the legacy canvas.
+	// The label hit information (returned by the legacy canvas).
 	TagHits []*QueryJobsWithResultResponseBodyJobsListLatestTaskTagHits `json:"TagHits,omitempty" xml:"TagHits,omitempty" type:"Repeated"`
-	// The call end reason.
+	// The call result.
 	//
 	// example:
 	//
@@ -649,15 +649,15 @@ func (s *QueryJobsWithResultResponseBodyJobsListLatestTask) Validate() error {
 }
 
 type QueryJobsWithResultResponseBodyJobsListLatestTaskContact struct {
-	// The honorific for the contact, such as Mr. or Ms. If not provided, it defaults to the value of the `Name` parameter.
+	// The honorific for the contact. If not specified, it defaults to the same value as the name.
 	//
-	// > This is a custom parameter. You can specify it in the JSON object when you start an outbound job.
+	// > Custom-defined by the customer. Passed in JSON format when calling the API to execute an outbound call task.
 	//
 	// example:
 	//
 	// 张先生
 	Honorific *string `json:"Honorific,omitempty" xml:"Honorific,omitempty"`
-	// The unique ID of the contact, generated by the system when the contact list is uploaded.
+	// The contact ID. A unique identifier generated by the system when the outbound call list is uploaded.
 	//
 	// example:
 	//
@@ -669,7 +669,7 @@ type QueryJobsWithResultResponseBodyJobsListLatestTaskContact struct {
 	//
 	// cc231a1d-3c05-4739-8926-193ecf4097ba
 	JobUuid *string `json:"JobUuid,omitempty" xml:"JobUuid,omitempty"`
-	// The name of the contact. For example, John Smith.
+	// The name of the contact.
 	//
 	// example:
 	//
@@ -681,37 +681,37 @@ type QueryJobsWithResultResponseBodyJobsListLatestTaskContact struct {
 	//
 	// 1882020****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The phone number specified by the callee during the conversation. If provided, Outbound Bot calls this number.
+	// The phone number specified by the callee during the conversation. If provided, this number is actually dialed.
 	//
-	// > This is a custom parameter. You can specify it in the JSON object when you start an outbound job.
+	// > Custom-defined by the customer. Passed in JSON format when calling the API to execute an outbound call task.
 	//
 	// example:
 	//
 	// 134123****
 	PreferredPhoneNumber *string `json:"PreferredPhoneNumber,omitempty" xml:"PreferredPhoneNumber,omitempty"`
-	// Your custom ID for the contact. This ID helps you uniquely identify the contact and prevent issues caused by duplicate names.
+	// The contact ID uploaded by the customer. This must be provided by the business side to avoid duplicate name issues.
 	//
 	// example:
 	//
 	// C01
 	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	// The role of the contact in the outbound calling scenario. This parameter is optional. For example, in a debt collection scenario, roles can include `borrower`, `co-borrower`, or `guarantor`.
+	// The role of the contact in this outbound call scenario. If not specified, no role distinction is made. For example, in a debt collection scenario, contact roles can include borrower, co-borrower, and guarantor.
 	//
-	// > This is a custom parameter. You can specify it in the JSON object when starting a job.
+	// > Custom-defined by the customer. Passed in JSON format when calling the API.
 	//
 	// example:
 	//
 	// 借款人
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The call attempt number.
+	// The round number.
 	//
 	// example:
 	//
 	// 151
 	Round *int32 `json:"Round,omitempty" xml:"Round,omitempty"`
-	// The status of the contact. For example, `Available` (the contact is available), `WrongNumber` (the phone number is incorrect), or `DoesNotExist` (the phone number does not exist).
+	// The status of the contact, such as Available, WrongNumber, or DoesNotExist.
 	//
-	// > This is a custom parameter. You can specify it in the JSON object when you start an outbound job.
+	// > Custom-defined by the customer. Passed in JSON format when calling the API to execute an outbound call task.
 	//
 	// example:
 	//
@@ -828,7 +828,7 @@ type QueryJobsWithResultResponseBodyJobsListLatestTaskDialExceptionCodes struct 
 	//
 	// 0
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
@@ -867,13 +867,13 @@ func (s *QueryJobsWithResultResponseBodyJobsListLatestTaskDialExceptionCodes) Va
 }
 
 type QueryJobsWithResultResponseBodyJobsListLatestTaskExtras struct {
-	// The tag key.
+	// The label key.
 	//
 	// example:
 	//
 	// 是否已经接通
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The label value.
 	//
 	// example:
 	//
@@ -912,13 +912,13 @@ func (s *QueryJobsWithResultResponseBodyJobsListLatestTaskExtras) Validate() err
 }
 
 type QueryJobsWithResultResponseBodyJobsListLatestTaskTagHits struct {
-	// The tag group to which the tag belongs.
+	// The label group to which the label belongs.
 	//
 	// example:
 	//
 	// 动物
 	TagGroup *string `json:"TagGroup,omitempty" xml:"TagGroup,omitempty"`
-	// The tag name.
+	// The label name.
 	//
 	// example:
 	//
@@ -957,13 +957,13 @@ func (s *QueryJobsWithResultResponseBodyJobsListLatestTaskTagHits) Validate() er
 }
 
 type QueryJobsWithResultResponseBodyLabels struct {
-	// Tag Name
+	// The label name.
 	//
 	// example:
 	//
 	// 是否满意
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Tag value list.
+	// The list of label values.
 	ValueList []*string `json:"ValueList,omitempty" xml:"ValueList,omitempty" type:"Repeated"`
 }
 
