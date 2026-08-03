@@ -1,3 +1,6 @@
+2026-08-03 Version: v3.5.4
+- Generated golang 2022-03-02 for Green.
+
 2026-08-03 Version: v3.5.3
 - Update API VideoModerationResult: add response parameters Body.Data.FrameResult.Frames.$.Results.$.AigcData.
 

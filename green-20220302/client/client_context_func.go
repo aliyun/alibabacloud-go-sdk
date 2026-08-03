@@ -1379,11 +1379,11 @@ func (client *Client) VideoModerationCancelWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Retrieves the task result of an enhanced video content moderation node.
+// Retrieves the task result of a video moderation node from the enhanced video moderation service.
 //
 // Description:
 //
-// This operation is not billed. Set the polling interval to 30 seconds (query results 30 seconds after submitting the asynchronous moderation task). The maximum query window is 24 hours. After that, results are automatically deleted.
+// This operation is not billed. Set the polling interval to 30 seconds (query results 30 seconds after submitting the asynchronous moderation task). The maximum query window is 24 hours. After 24 hours, results are automatically deleted.
 //
 // @param request - VideoModerationResultRequest
 //

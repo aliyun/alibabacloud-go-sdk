@@ -16,13 +16,13 @@ type iVideoModerationResultRequest interface {
 }
 
 type VideoModerationResultRequest struct {
-	// The ServiceCode for video moderation.
+	// The service code for video moderation.
 	//
 	// example:
 	//
 	// videoDetection
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// The parameter set required by the moderation service. taskId specifies the taskId of the moderation task to query. Only one taskId can be specified per request.
+	// The parameter set required by the moderation service. taskId specifies the task ID of the moderation task to query. Only one taskId can be specified per request.
 	//
 	// example:
 	//
