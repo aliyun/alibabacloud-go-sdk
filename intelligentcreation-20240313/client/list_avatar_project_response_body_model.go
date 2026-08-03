@@ -17,10 +17,7 @@ type iListAvatarProjectResponseBody interface {
 
 type ListAvatarProjectResponseBody struct {
 	QueryAvatarProjectResultList []*ListAvatarProjectResponseBodyQueryAvatarProjectResultList `json:"queryAvatarProjectResultList,omitempty" xml:"queryAvatarProjectResultList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// D7F2B74F-63F2-5DD6-95E4-F408EAD6617E
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId                    *string                                                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListAvatarProjectResponseBody) String() string {
@@ -63,20 +60,11 @@ func (s *ListAvatarProjectResponseBody) Validate() error {
 }
 
 type ListAvatarProjectResponseBodyQueryAvatarProjectResultList struct {
-	// example:
-	//
-	// 1000206
-	AgentId  *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// example:
-	//
-	// 12826084562688
+	AgentId     *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	ErrorMsg    *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	ProjectId   *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
 	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	// example:
-	//
-	// DEPLOYING
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListAvatarProjectResponseBodyQueryAvatarProjectResultList) String() string {

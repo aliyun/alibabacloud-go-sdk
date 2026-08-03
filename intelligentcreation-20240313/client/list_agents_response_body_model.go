@@ -20,19 +20,10 @@ type iListAgentsResponseBody interface {
 }
 
 type ListAgentsResponseBody struct {
-	List []*ListAgentsResponseBodyList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 86A90C40-D1AB-50DA-A4B1-0D545F80F2FE
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 10
-	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+	List      []*ListAgentsResponseBodyList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	RequestId *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                         `json:"success,omitempty" xml:"success,omitempty"`
+	Total     *int32                        `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListAgentsResponseBody) String() string {
@@ -93,53 +84,21 @@ func (s *ListAgentsResponseBody) Validate() error {
 }
 
 type ListAgentsResponseBodyList struct {
-	AgentIconUrl *string `json:"agentIconUrl,omitempty" xml:"agentIconUrl,omitempty"`
-	// example:
-	//
-	// 840016700254633984
-	AgentId   *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	AgentName *string `json:"agentName,omitempty" xml:"agentName,omitempty"`
-	// example:
-	//
-	// text
+	AgentIconUrl          *string `json:"agentIconUrl,omitempty" xml:"agentIconUrl,omitempty"`
+	AgentId               *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	AgentName             *string `json:"agentName,omitempty" xml:"agentName,omitempty"`
 	AgentScene            *string `json:"agentScene,omitempty" xml:"agentScene,omitempty"`
 	CharacterAgeStage     *string `json:"characterAgeStage,omitempty" xml:"characterAgeStage,omitempty"`
 	CharacterName         *string `json:"characterName,omitempty" xml:"characterName,omitempty"`
 	CharactersDescription *string `json:"charactersDescription,omitempty" xml:"charactersDescription,omitempty"`
-	// example:
-	//
-	// 1
-	EnableInteraction *int32 `json:"enableInteraction,omitempty" xml:"enableInteraction,omitempty"`
-	// example:
-	//
-	// Car
-	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
-	// example:
-	//
-	// true
-	OnlineSearch *bool `json:"onlineSearch,omitempty" xml:"onlineSearch,omitempty"`
-	// example:
-	//
-	// SYSTEM
-	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// example:
-	//
-	// http
-	//
-	// ;//www.abc.com/111.mp4
-	ReferenceUrl *string `json:"referenceUrl,omitempty" xml:"referenceUrl,omitempty"`
-	// example:
-	//
-	// 0
-	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// RED_BOOK
-	TextStyle *string `json:"textStyle,omitempty" xml:"textStyle,omitempty"`
-	// example:
-	//
-	// Seller
-	Viewer *string `json:"viewer,omitempty" xml:"viewer,omitempty"`
+	EnableInteraction     *int32  `json:"enableInteraction,omitempty" xml:"enableInteraction,omitempty"`
+	Industry              *string `json:"industry,omitempty" xml:"industry,omitempty"`
+	OnlineSearch          *bool   `json:"onlineSearch,omitempty" xml:"onlineSearch,omitempty"`
+	Owner                 *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	ReferenceUrl          *string `json:"referenceUrl,omitempty" xml:"referenceUrl,omitempty"`
+	Status                *int32  `json:"status,omitempty" xml:"status,omitempty"`
+	TextStyle             *string `json:"textStyle,omitempty" xml:"textStyle,omitempty"`
+	Viewer                *string `json:"viewer,omitempty" xml:"viewer,omitempty"`
 }
 
 func (s ListAgentsResponseBodyList) String() string {

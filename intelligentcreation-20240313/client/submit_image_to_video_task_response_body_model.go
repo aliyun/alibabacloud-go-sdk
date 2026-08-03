@@ -20,22 +20,10 @@ type iSubmitImageToVideoTaskResponseBody interface {
 }
 
 type SubmitImageToVideoTaskResponseBody struct {
-	// example:
-	//
-	// job added successfully
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// 53AED51A-74CE-57CE-B1BF-2703F314EEC8
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 868125994191405056
-	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TaskId    *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 
 func (s SubmitImageToVideoTaskResponseBody) String() string {

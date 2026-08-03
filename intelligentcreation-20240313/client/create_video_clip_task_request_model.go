@@ -20,9 +20,6 @@ type iCreateVideoClipTaskRequest interface {
 }
 
 type CreateVideoClipTaskRequest struct {
-	// example:
-	//
-	// 1314445556
 	AliyunMainId *string   `json:"aliyunMainId,omitempty" xml:"aliyunMainId,omitempty"`
 	Description  *string   `json:"description,omitempty" xml:"description,omitempty"`
 	OssKeys      []*string `json:"ossKeys,omitempty" xml:"ossKeys,omitempty" type:"Repeated"`

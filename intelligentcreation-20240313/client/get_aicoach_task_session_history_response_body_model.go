@@ -33,30 +33,15 @@ type iGetAICoachTaskSessionHistoryResponseBody interface {
 
 type GetAICoachTaskSessionHistoryResponseBody struct {
 	ConversationList []*GetAICoachTaskSessionHistoryResponseBodyConversationList `json:"conversationList,omitempty" xml:"conversationList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 0
-	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// example:
-	//
-	// 2024-11-08 09:33:21
-	EndTime       *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	PauseDuration *int64  `json:"pauseDuration,omitempty" xml:"pauseDuration,omitempty"`
-	// example:
-	//
-	// D5798660-1531-5D12-9C20-16FEE9D22351
-	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	ScriptName *string `json:"scriptName,omitempty" xml:"scriptName,omitempty"`
-	// example:
-	//
-	// 2024-08-21 05:00:01
-	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
-	Total     *int32  `json:"total,omitempty" xml:"total,omitempty"`
-	// example:
-	//
-	// 1579404690269235
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	Duration         *int64                                                      `json:"duration,omitempty" xml:"duration,omitempty"`
+	EndTime          *string                                                     `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	PauseDuration    *int64                                                      `json:"pauseDuration,omitempty" xml:"pauseDuration,omitempty"`
+	RequestId        *string                                                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ScriptName       *string                                                     `json:"scriptName,omitempty" xml:"scriptName,omitempty"`
+	StartTime        *string                                                     `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Status           *string                                                     `json:"status,omitempty" xml:"status,omitempty"`
+	Total            *int32                                                      `json:"total,omitempty" xml:"total,omitempty"`
+	Uid              *string                                                     `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
 func (s GetAICoachTaskSessionHistoryResponseBody) String() string {
@@ -174,13 +159,10 @@ type GetAICoachTaskSessionHistoryResponseBodyConversationList struct {
 	AudioUrl           *string `json:"audioUrl,omitempty" xml:"audioUrl,omitempty"`
 	DateLabel          *string `json:"dateLabel,omitempty" xml:"dateLabel,omitempty"`
 	EvaluationFeedback *string `json:"evaluationFeedback,omitempty" xml:"evaluationFeedback,omitempty"`
-	// example:
-	//
-	// {}
-	EvaluationResult *string `json:"evaluationResult,omitempty" xml:"evaluationResult,omitempty"`
-	Message          *string `json:"message,omitempty" xml:"message,omitempty"`
-	RecordId         *string `json:"recordId,omitempty" xml:"recordId,omitempty"`
-	Role             *string `json:"role,omitempty" xml:"role,omitempty"`
+	EvaluationResult   *string `json:"evaluationResult,omitempty" xml:"evaluationResult,omitempty"`
+	Message            *string `json:"message,omitempty" xml:"message,omitempty"`
+	RecordId           *string `json:"recordId,omitempty" xml:"recordId,omitempty"`
+	Role               *string `json:"role,omitempty" xml:"role,omitempty"`
 }
 
 func (s GetAICoachTaskSessionHistoryResponseBodyConversationList) String() string {

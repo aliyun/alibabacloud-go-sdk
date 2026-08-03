@@ -36,36 +36,18 @@ type iSaveAvatarProjectRequest interface {
 }
 
 type SaveAvatarProjectRequest struct {
-	// example:
-	//
-	// 1000196
-	AgentId   *string                           `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	BitRate   *string                           `json:"bitRate,omitempty" xml:"bitRate,omitempty"`
-	FrameRate *string                           `json:"frameRate,omitempty" xml:"frameRate,omitempty"`
-	Frames    []*SaveAvatarProjectRequestFrames `json:"frames,omitempty" xml:"frames,omitempty" type:"Repeated"`
-	// example:
-	//
-	// CREATE
-	OperateType *string `json:"operateType,omitempty" xml:"operateType,omitempty"`
-	// example:
-	//
-	// 787594567117586432
-	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	// example:
-	//
-	// df_cs_471437
-	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	// example:
-	//
-	// STANDARD
-	ResSpecType *string `json:"resSpecType,omitempty" xml:"resSpecType,omitempty"`
-	Resolution  *string `json:"resolution,omitempty" xml:"resolution,omitempty"`
-	// example:
-	//
-	// 9:16
-	ScaleType           *string `json:"scaleType,omitempty" xml:"scaleType,omitempty"`
-	ScriptModelTag      *string `json:"scriptModelTag,omitempty" xml:"scriptModelTag,omitempty"`
-	SynchronizedDisplay *string `json:"synchronizedDisplay,omitempty" xml:"synchronizedDisplay,omitempty"`
+	AgentId             *string                           `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	BitRate             *string                           `json:"bitRate,omitempty" xml:"bitRate,omitempty"`
+	FrameRate           *string                           `json:"frameRate,omitempty" xml:"frameRate,omitempty"`
+	Frames              []*SaveAvatarProjectRequestFrames `json:"frames,omitempty" xml:"frames,omitempty" type:"Repeated"`
+	OperateType         *string                           `json:"operateType,omitempty" xml:"operateType,omitempty"`
+	ProjectId           *string                           `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	ProjectName         *string                           `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	ResSpecType         *string                           `json:"resSpecType,omitempty" xml:"resSpecType,omitempty"`
+	Resolution          *string                           `json:"resolution,omitempty" xml:"resolution,omitempty"`
+	ScaleType           *string                           `json:"scaleType,omitempty" xml:"scaleType,omitempty"`
+	ScriptModelTag      *string                           `json:"scriptModelTag,omitempty" xml:"scriptModelTag,omitempty"`
+	SynchronizedDisplay *string                           `json:"synchronizedDisplay,omitempty" xml:"synchronizedDisplay,omitempty"`
 }
 
 func (s SaveAvatarProjectRequest) String() string {
@@ -257,28 +239,13 @@ func (s *SaveAvatarProjectRequestFrames) Validate() error {
 }
 
 type SaveAvatarProjectRequestFramesLayers struct {
-	// example:
-	//
-	// 100
-	Height   *int32                                        `json:"height,omitempty" xml:"height,omitempty"`
-	Index    *int32                                        `json:"index,omitempty" xml:"index,omitempty"`
-	Material *SaveAvatarProjectRequestFramesLayersMaterial `json:"material,omitempty" xml:"material,omitempty" type:"Struct"`
-	// example:
-	//
-	// 1
-	PositionX *int32 `json:"positionX,omitempty" xml:"positionX,omitempty"`
-	// example:
-	//
-	// 1
-	PositionY *int32 `json:"positionY,omitempty" xml:"positionY,omitempty"`
-	// example:
-	//
-	// ANCHOR
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// example:
-	//
-	// 100
-	Width *int32 `json:"width,omitempty" xml:"width,omitempty"`
+	Height    *int32                                        `json:"height,omitempty" xml:"height,omitempty"`
+	Index     *int32                                        `json:"index,omitempty" xml:"index,omitempty"`
+	Material  *SaveAvatarProjectRequestFramesLayersMaterial `json:"material,omitempty" xml:"material,omitempty" type:"Struct"`
+	PositionX *int32                                        `json:"positionX,omitempty" xml:"positionX,omitempty"`
+	PositionY *int32                                        `json:"positionY,omitempty" xml:"positionY,omitempty"`
+	Type      *string                                       `json:"type,omitempty" xml:"type,omitempty"`
+	Width     *int32                                        `json:"width,omitempty" xml:"width,omitempty"`
 }
 
 func (s SaveAvatarProjectRequestFramesLayers) String() string {
@@ -362,18 +329,9 @@ func (s *SaveAvatarProjectRequestFramesLayers) Validate() error {
 }
 
 type SaveAvatarProjectRequestFramesLayersMaterial struct {
-	// example:
-	//
-	// image/png
 	Format *string `json:"format,omitempty" xml:"format,omitempty"`
-	// example:
-	//
-	// 434508
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// example:
-	//
-	// https://xxx
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	Id     *string `json:"id,omitempty" xml:"id,omitempty"`
+	Url    *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s SaveAvatarProjectRequestFramesLayersMaterial) String() string {
@@ -416,22 +374,13 @@ func (s *SaveAvatarProjectRequestFramesLayersMaterial) Validate() error {
 }
 
 type SaveAvatarProjectRequestFramesVideoScript struct {
-	Emotion   *string `json:"emotion,omitempty" xml:"emotion,omitempty"`
-	PitchRate *string `json:"pitchRate,omitempty" xml:"pitchRate,omitempty"`
-	// example:
-	//
-	// 1.0
-	SpeedRate     *string `json:"speedRate,omitempty" xml:"speedRate,omitempty"`
-	TextContent   *string `json:"textContent,omitempty" xml:"textContent,omitempty"`
-	VoiceLanguage *string `json:"voiceLanguage,omitempty" xml:"voiceLanguage,omitempty"`
-	// example:
-	//
-	// 1
+	Emotion         *string `json:"emotion,omitempty" xml:"emotion,omitempty"`
+	PitchRate       *string `json:"pitchRate,omitempty" xml:"pitchRate,omitempty"`
+	SpeedRate       *string `json:"speedRate,omitempty" xml:"speedRate,omitempty"`
+	TextContent     *string `json:"textContent,omitempty" xml:"textContent,omitempty"`
+	VoiceLanguage   *string `json:"voiceLanguage,omitempty" xml:"voiceLanguage,omitempty"`
 	VoiceTemplateId *string `json:"voiceTemplateId,omitempty" xml:"voiceTemplateId,omitempty"`
-	// example:
-	//
-	// 50
-	Volume *string `json:"volume,omitempty" xml:"volume,omitempty"`
+	Volume          *string `json:"volume,omitempty" xml:"volume,omitempty"`
 }
 
 func (s SaveAvatarProjectRequestFramesVideoScript) String() string {

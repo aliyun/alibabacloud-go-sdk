@@ -16,11 +16,6 @@ type iBatchGetProjectTaskResponseBody interface {
 }
 
 type BatchGetProjectTaskResponseBody struct {
-	// Id of the request
-	//
-	// example:
-	//
-	// 11
 	RequestId  *string                                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	ResultList []*BatchGetProjectTaskResponseBodyResultList `json:"resultList,omitempty" xml:"resultList,omitempty" type:"Repeated"`
 }
@@ -65,27 +60,12 @@ func (s *BatchGetProjectTaskResponseBody) Validate() error {
 }
 
 type BatchGetProjectTaskResponseBodyResultList struct {
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// example:
-	//
-	// SUCCESS
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// 11
-	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// example:
-	//
-	// http
+	ErrorMsg         *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	Status           *string `json:"status,omitempty" xml:"status,omitempty"`
+	TaskId           *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 	VideoDownloadUrl *string `json:"videoDownloadUrl,omitempty" xml:"videoDownloadUrl,omitempty"`
-	// example:
-	//
-	// 1000
-	VideoDuration *int32 `json:"videoDuration,omitempty" xml:"videoDuration,omitempty"`
-	// example:
-	//
-	// http
-	VideoUrl *string `json:"videoUrl,omitempty" xml:"videoUrl,omitempty"`
+	VideoDuration    *int32  `json:"videoDuration,omitempty" xml:"videoDuration,omitempty"`
+	VideoUrl         *string `json:"videoUrl,omitempty" xml:"videoUrl,omitempty"`
 }
 
 func (s BatchGetProjectTaskResponseBodyResultList) String() string {

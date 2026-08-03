@@ -16,9 +16,6 @@ type iBatchGetVideoClipTaskResponseBody interface {
 }
 
 type BatchGetVideoClipTaskResponseBody struct {
-	// example:
-	//
-	// 86A90C40-D1AB-50DA-A4B1-0D545F80F2FE
 	RequestId *string                                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	TaskList  []*BatchGetVideoClipTaskResponseBodyTaskList `json:"taskList,omitempty" xml:"taskList,omitempty" type:"Repeated"`
 }
@@ -63,23 +60,11 @@ func (s *BatchGetVideoClipTaskResponseBody) Validate() error {
 }
 
 type BatchGetVideoClipTaskResponseBodyTaskList struct {
-	// example:
-	//
-	// FINISHED
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// 864413342857035776
-	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// example:
-	//
-	// 43335
-	TotalDuration *float64 `json:"totalDuration,omitempty" xml:"totalDuration,omitempty"`
-	// example:
-	//
-	// 11
-	TotalToken *int64                                                `json:"totalToken,omitempty" xml:"totalToken,omitempty"`
-	VideoList  []*BatchGetVideoClipTaskResponseBodyTaskListVideoList `json:"videoList,omitempty" xml:"videoList,omitempty" type:"Repeated"`
+	Status        *string                                               `json:"status,omitempty" xml:"status,omitempty"`
+	TaskId        *string                                               `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	TotalDuration *float64                                              `json:"totalDuration,omitempty" xml:"totalDuration,omitempty"`
+	TotalToken    *int64                                                `json:"totalToken,omitempty" xml:"totalToken,omitempty"`
+	VideoList     []*BatchGetVideoClipTaskResponseBodyTaskListVideoList `json:"videoList,omitempty" xml:"videoList,omitempty" type:"Repeated"`
 }
 
 func (s BatchGetVideoClipTaskResponseBodyTaskList) String() string {
@@ -149,26 +134,14 @@ func (s *BatchGetVideoClipTaskResponseBodyTaskList) Validate() error {
 }
 
 type BatchGetVideoClipTaskResponseBodyTaskListVideoList struct {
-	// example:
-	//
-	// 0
-	BeginTime   *int32  `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// example:
-	//
-	// 11110
-	EndTime  *int32  `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	Title    *string `json:"title,omitempty" xml:"title,omitempty"`
-	// example:
-	//
-	// https://e-ai.oss-cn-guangzhou.aliyuncs.com/video/jlkasdl.mp4
+	BeginTime        *int32  `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
+	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
+	EndTime          *int32  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	ErrorMsg         *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	Title            *string `json:"title,omitempty" xml:"title,omitempty"`
 	VideoDownloadUrl *string `json:"videoDownloadUrl,omitempty" xml:"videoDownloadUrl,omitempty"`
 	VideoName        *string `json:"videoName,omitempty" xml:"videoName,omitempty"`
-	// example:
-	//
-	// https://e-ai.oss-cn-guangzhou.aliyuncs.com/video/jlkasdl.mp4
-	VideoUrl *string `json:"videoUrl,omitempty" xml:"videoUrl,omitempty"`
+	VideoUrl         *string `json:"videoUrl,omitempty" xml:"videoUrl,omitempty"`
 }
 
 func (s BatchGetVideoClipTaskResponseBodyTaskListVideoList) String() string {

@@ -42,59 +42,21 @@ type iGetAICoachAssessmentPointResponseBody interface {
 }
 
 type GetAICoachAssessmentPointResponseBody struct {
-	AnswerList []*GetAICoachAssessmentPointResponseBodyAnswerList `json:"answerList,omitempty" xml:"answerList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 10
-	Citations *int32 `json:"citations,omitempty" xml:"citations,omitempty"`
-	// example:
-	//
-	// 1
-	DocumentId *string `json:"documentId,omitempty" xml:"documentId,omitempty"`
-	// example:
-	//
-	// demo
-	DocumentName *string `json:"documentName,omitempty" xml:"documentName,omitempty"`
-	// example:
-	//
-	// 2025-02-24 12:00:00
-	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// example:
-	//
-	// 2025-02-24 12:00:00
-	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// example:
-	//
-	// 1
-	KbId *string `json:"kbId,omitempty" xml:"kbId,omitempty"`
-	// example:
-	//
-	// Cloudcode
-	KbType        *string   `json:"kbType,omitempty" xml:"kbType,omitempty"`
-	KnowledgeList []*string `json:"knowledgeList,omitempty" xml:"knowledgeList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// demo
-	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
-	PointId *string `json:"pointId,omitempty" xml:"pointId,omitempty"`
-	// example:
-	//
-	// demo
-	QuestionDescription *string `json:"questionDescription,omitempty" xml:"questionDescription,omitempty"`
-	// example:
-	//
-	// demo
-	QuestionSample *string `json:"questionSample,omitempty" xml:"questionSample,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 4830493A-728F-5F19-BBCC-1443292E9C49
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// DRAFT
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	AnswerList          []*GetAICoachAssessmentPointResponseBodyAnswerList `json:"answerList,omitempty" xml:"answerList,omitempty" type:"Repeated"`
+	Citations           *int32                                             `json:"citations,omitempty" xml:"citations,omitempty"`
+	DocumentId          *string                                            `json:"documentId,omitempty" xml:"documentId,omitempty"`
+	DocumentName        *string                                            `json:"documentName,omitempty" xml:"documentName,omitempty"`
+	GmtCreate           *string                                            `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified         *string                                            `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	KbId                *string                                            `json:"kbId,omitempty" xml:"kbId,omitempty"`
+	KbType              *string                                            `json:"kbType,omitempty" xml:"kbType,omitempty"`
+	KnowledgeList       []*string                                          `json:"knowledgeList,omitempty" xml:"knowledgeList,omitempty" type:"Repeated"`
+	Name                *string                                            `json:"name,omitempty" xml:"name,omitempty"`
+	PointId             *string                                            `json:"pointId,omitempty" xml:"pointId,omitempty"`
+	QuestionDescription *string                                            `json:"questionDescription,omitempty" xml:"questionDescription,omitempty"`
+	QuestionSample      *string                                            `json:"questionSample,omitempty" xml:"questionSample,omitempty"`
+	RequestId           *string                                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Status              *string                                            `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s GetAICoachAssessmentPointResponseBody) String() string {
@@ -254,25 +216,13 @@ func (s *GetAICoachAssessmentPointResponseBody) Validate() error {
 }
 
 type GetAICoachAssessmentPointResponseBodyAnswerList struct {
-	AnswerValues []*GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues `json:"answerValues,omitempty" xml:"answerValues,omitempty" type:"Repeated"`
-	// example:
-	//
-	// true
-	EnabledKeyword *bool     `json:"enabledKeyword,omitempty" xml:"enabledKeyword,omitempty"`
-	NameList       []*string `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// and
-	Operators  *string                                                      `json:"operators,omitempty" xml:"operators,omitempty"`
-	Parameters []*GetAICoachAssessmentPointResponseBodyAnswerListParameters `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Repeated"`
-	// example:
-	//
-	// custom
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// example:
-	//
-	// 100
-	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
+	AnswerValues   []*GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues `json:"answerValues,omitempty" xml:"answerValues,omitempty" type:"Repeated"`
+	EnabledKeyword *bool                                                          `json:"enabledKeyword,omitempty" xml:"enabledKeyword,omitempty"`
+	NameList       []*string                                                      `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
+	Operators      *string                                                        `json:"operators,omitempty" xml:"operators,omitempty"`
+	Parameters     []*GetAICoachAssessmentPointResponseBodyAnswerListParameters   `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Repeated"`
+	Type           *string                                                        `json:"type,omitempty" xml:"type,omitempty"`
+	Weight         *int32                                                         `json:"weight,omitempty" xml:"weight,omitempty"`
 }
 
 func (s GetAICoachAssessmentPointResponseBodyAnswerList) String() string {
@@ -369,20 +319,11 @@ func (s *GetAICoachAssessmentPointResponseBodyAnswerList) Validate() error {
 }
 
 type GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues struct {
-	// example:
-	//
-	// demo
-	AnswerName *string `json:"answerName,omitempty" xml:"answerName,omitempty"`
-	// example:
-	//
-	// 50
+	AnswerName    *string                                                                     `json:"answerName,omitempty" xml:"answerName,omitempty"`
 	AnswerWeight  *int32                                                                      `json:"answerWeight,omitempty" xml:"answerWeight,omitempty"`
 	KeywordValues []*GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesKeywordValues `json:"keywordValues,omitempty" xml:"keywordValues,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 50
-	KeywordWeight *int32                                                                     `json:"keywordWeight,omitempty" xml:"keywordWeight,omitempty"`
-	ScoringRules  []*GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesScoringRules `json:"scoringRules,omitempty" xml:"scoringRules,omitempty" type:"Repeated"`
+	KeywordWeight *int32                                                                      `json:"keywordWeight,omitempty" xml:"keywordWeight,omitempty"`
+	ScoringRules  []*GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesScoringRules  `json:"scoringRules,omitempty" xml:"scoringRules,omitempty" type:"Repeated"`
 }
 
 func (s GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues) String() string {
@@ -461,14 +402,8 @@ func (s *GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues) Validate()
 }
 
 type GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesKeywordValues struct {
-	// example:
-	//
-	// demo
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// 50
-	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
+	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
+	Weight *int32  `json:"weight,omitempty" xml:"weight,omitempty"`
 }
 
 func (s GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesKeywordValues) String() string {
@@ -502,9 +437,6 @@ func (s *GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesKeywordValue
 }
 
 type GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesScoringRules struct {
-	// example:
-	//
-	// demo
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -530,13 +462,7 @@ func (s *GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesScoringRules
 }
 
 type GetAICoachAssessmentPointResponseBodyAnswerListParameters struct {
-	// example:
-	//
-	// demo
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// 441323200602114284
+	Name  *string `json:"name,omitempty" xml:"name,omitempty"`
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

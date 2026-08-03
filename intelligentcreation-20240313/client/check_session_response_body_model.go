@@ -16,14 +16,8 @@ type iCheckSessionResponseBody interface {
 }
 
 type CheckSessionResponseBody struct {
-	// example:
-	//
-	// 5389BE87-571B-573C-90ED-F07C5E68760B
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// FREE
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s CheckSessionResponseBody) String() string {

@@ -20,17 +20,10 @@ type iSubmitProjectTaskRequest interface {
 }
 
 type SubmitProjectTaskRequest struct {
-	// frame
-	Frames []*SubmitProjectTaskRequestFrames `json:"frames,omitempty" xml:"frames,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 9:16
-	ScaleType *string `json:"scaleType,omitempty" xml:"scaleType,omitempty"`
-	// example:
-	//
-	// 1
-	SubtitleTag           *int32 `json:"subtitleTag,omitempty" xml:"subtitleTag,omitempty"`
-	TransparentBackground *int32 `json:"transparentBackground,omitempty" xml:"transparentBackground,omitempty"`
+	Frames                []*SubmitProjectTaskRequestFrames `json:"frames,omitempty" xml:"frames,omitempty" type:"Repeated"`
+	ScaleType             *string                           `json:"scaleType,omitempty" xml:"scaleType,omitempty"`
+	SubtitleTag           *int32                            `json:"subtitleTag,omitempty" xml:"subtitleTag,omitempty"`
+	TransparentBackground *int32                            `json:"transparentBackground,omitempty" xml:"transparentBackground,omitempty"`
 }
 
 func (s SubmitProjectTaskRequest) String() string {
@@ -91,9 +84,6 @@ func (s *SubmitProjectTaskRequest) Validate() error {
 }
 
 type SubmitProjectTaskRequestFrames struct {
-	// example:
-	//
-	// 1
 	Index       *int32                                     `json:"index,omitempty" xml:"index,omitempty"`
 	Layers      []*SubmitProjectTaskRequestFramesLayers    `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
 	Subtitle    *SubmitProjectTaskRequestFramesSubtitle    `json:"subtitle,omitempty" xml:"subtitle,omitempty" type:"Struct"`
@@ -168,31 +158,13 @@ func (s *SubmitProjectTaskRequestFrames) Validate() error {
 }
 
 type SubmitProjectTaskRequestFramesLayers struct {
-	// example:
-	//
-	// 222
-	Height *int32 `json:"height,omitempty" xml:"height,omitempty"`
-	// example:
-	//
-	// 1
-	Index    *int32                                        `json:"index,omitempty" xml:"index,omitempty"`
-	Material *SubmitProjectTaskRequestFramesLayersMaterial `json:"material,omitempty" xml:"material,omitempty" type:"Struct"`
-	// example:
-	//
-	// 11
-	PositionX *int32 `json:"positionX,omitempty" xml:"positionX,omitempty"`
-	// example:
-	//
-	// 22
-	PositionY *int32 `json:"positionY,omitempty" xml:"positionY,omitempty"`
-	// example:
-	//
-	// ANCHOR
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// example:
-	//
-	// 111
-	Width *int32 `json:"width,omitempty" xml:"width,omitempty"`
+	Height    *int32                                        `json:"height,omitempty" xml:"height,omitempty"`
+	Index     *int32                                        `json:"index,omitempty" xml:"index,omitempty"`
+	Material  *SubmitProjectTaskRequestFramesLayersMaterial `json:"material,omitempty" xml:"material,omitempty" type:"Struct"`
+	PositionX *int32                                        `json:"positionX,omitempty" xml:"positionX,omitempty"`
+	PositionY *int32                                        `json:"positionY,omitempty" xml:"positionY,omitempty"`
+	Type      *string                                       `json:"type,omitempty" xml:"type,omitempty"`
+	Width     *int32                                        `json:"width,omitempty" xml:"width,omitempty"`
 }
 
 func (s SubmitProjectTaskRequestFramesLayers) String() string {
@@ -276,22 +248,13 @@ func (s *SubmitProjectTaskRequestFramesLayers) Validate() error {
 }
 
 type SubmitProjectTaskRequestFramesLayersMaterial struct {
-	AnchorStyleLevel *string `json:"anchorStyleLevel,omitempty" xml:"anchorStyleLevel,omitempty"`
-	// example:
-	//
-	// video/mp4
-	Format *string `json:"format,omitempty" xml:"format,omitempty"`
-	// example:
-	//
-	// 38863
-	Id    *string                                           `json:"id,omitempty" xml:"id,omitempty"`
-	Mask  *SubmitProjectTaskRequestFramesLayersMaterialMask `json:"mask,omitempty" xml:"mask,omitempty" type:"Struct"`
-	Speed *string                                           `json:"speed,omitempty" xml:"speed,omitempty"`
-	// example:
-	//
-	// https://xxx
-	Url    *string `json:"url,omitempty" xml:"url,omitempty"`
-	Volume *int32  `json:"volume,omitempty" xml:"volume,omitempty"`
+	AnchorStyleLevel *string                                           `json:"anchorStyleLevel,omitempty" xml:"anchorStyleLevel,omitempty"`
+	Format           *string                                           `json:"format,omitempty" xml:"format,omitempty"`
+	Id               *string                                           `json:"id,omitempty" xml:"id,omitempty"`
+	Mask             *SubmitProjectTaskRequestFramesLayersMaterialMask `json:"mask,omitempty" xml:"mask,omitempty" type:"Struct"`
+	Speed            *string                                           `json:"speed,omitempty" xml:"speed,omitempty"`
+	Url              *string                                           `json:"url,omitempty" xml:"url,omitempty"`
+	Volume           *int32                                            `json:"volume,omitempty" xml:"volume,omitempty"`
 }
 
 func (s SubmitProjectTaskRequestFramesLayersMaterial) String() string {
@@ -400,46 +363,16 @@ func (s *SubmitProjectTaskRequestFramesLayersMaterialMask) Validate() error {
 }
 
 type SubmitProjectTaskRequestFramesSubtitle struct {
-	// example:
-	//
-	// BottomLeft
-	Alignment *string `json:"alignment,omitempty" xml:"alignment,omitempty"`
-	// example:
-	//
-	// #ffffff
+	Alignment       *string `json:"alignment,omitempty" xml:"alignment,omitempty"`
 	BackgroundColor *string `json:"backgroundColor,omitempty" xml:"backgroundColor,omitempty"`
-	// example:
-	//
-	// SimSun
-	Font *string `json:"font,omitempty" xml:"font,omitempty"`
-	// example:
-	//
-	// #ffffff
-	FontColor *string `json:"fontColor,omitempty" xml:"fontColor,omitempty"`
-	// example:
-	//
-	// 32
-	FontSize *int32 `json:"fontSize,omitempty" xml:"fontSize,omitempty"`
-	// example:
-	//
-	// 11
-	MaxCharLength *int32 `json:"maxCharLength,omitempty" xml:"maxCharLength,omitempty"`
-	// example:
-	//
-	// 2
-	PositionX *int32 `json:"positionX,omitempty" xml:"positionX,omitempty"`
-	// example:
-	//
-	// 1
-	PositionY *int32 `json:"positionY,omitempty" xml:"positionY,omitempty"`
-	// example:
-	//
-	// 22
-	TextHeight *int32 `json:"textHeight,omitempty" xml:"textHeight,omitempty"`
-	// example:
-	//
-	// 11
-	TextWidth *int32 `json:"textWidth,omitempty" xml:"textWidth,omitempty"`
+	Font            *string `json:"font,omitempty" xml:"font,omitempty"`
+	FontColor       *string `json:"fontColor,omitempty" xml:"fontColor,omitempty"`
+	FontSize        *int32  `json:"fontSize,omitempty" xml:"fontSize,omitempty"`
+	MaxCharLength   *int32  `json:"maxCharLength,omitempty" xml:"maxCharLength,omitempty"`
+	PositionX       *int32  `json:"positionX,omitempty" xml:"positionX,omitempty"`
+	PositionY       *int32  `json:"positionY,omitempty" xml:"positionY,omitempty"`
+	TextHeight      *int32  `json:"textHeight,omitempty" xml:"textHeight,omitempty"`
+	TextWidth       *int32  `json:"textWidth,omitempty" xml:"textWidth,omitempty"`
 }
 
 func (s SubmitProjectTaskRequestFramesSubtitle) String() string {
@@ -545,31 +478,16 @@ func (s *SubmitProjectTaskRequestFramesSubtitle) Validate() error {
 }
 
 type SubmitProjectTaskRequestFramesVideoScript struct {
-	// example:
-	//
-	// https://xxx
-	AudioUrl   *string `json:"audioUrl,omitempty" xml:"audioUrl,omitempty"`
-	Emotion    *string `json:"emotion,omitempty" xml:"emotion,omitempty"`
-	PitchRate  *string `json:"pitchRate,omitempty" xml:"pitchRate,omitempty"`
-	SpeechOpen *bool   `json:"speechOpen,omitempty" xml:"speechOpen,omitempty"`
-	// example:
-	//
-	// 2.0
-	SpeedRate   *string `json:"speedRate,omitempty" xml:"speedRate,omitempty"`
-	TextContent *string `json:"textContent,omitempty" xml:"textContent,omitempty"`
-	// example:
-	//
-	// TEXT
-	Type          *string `json:"type,omitempty" xml:"type,omitempty"`
-	VoiceLanguage *string `json:"voiceLanguage,omitempty" xml:"voiceLanguage,omitempty"`
-	// example:
-	//
-	// 11
-	VoiceTemplateId *int64 `json:"voiceTemplateId,omitempty" xml:"voiceTemplateId,omitempty"`
-	// example:
-	//
-	// 20
-	Volume *int32 `json:"volume,omitempty" xml:"volume,omitempty"`
+	AudioUrl        *string `json:"audioUrl,omitempty" xml:"audioUrl,omitempty"`
+	Emotion         *string `json:"emotion,omitempty" xml:"emotion,omitempty"`
+	PitchRate       *string `json:"pitchRate,omitempty" xml:"pitchRate,omitempty"`
+	SpeechOpen      *bool   `json:"speechOpen,omitempty" xml:"speechOpen,omitempty"`
+	SpeedRate       *string `json:"speedRate,omitempty" xml:"speedRate,omitempty"`
+	TextContent     *string `json:"textContent,omitempty" xml:"textContent,omitempty"`
+	Type            *string `json:"type,omitempty" xml:"type,omitempty"`
+	VoiceLanguage   *string `json:"voiceLanguage,omitempty" xml:"voiceLanguage,omitempty"`
+	VoiceTemplateId *int64  `json:"voiceTemplateId,omitempty" xml:"voiceTemplateId,omitempty"`
+	Volume          *int32  `json:"volume,omitempty" xml:"volume,omitempty"`
 }
 
 func (s SubmitProjectTaskRequestFramesVideoScript) String() string {

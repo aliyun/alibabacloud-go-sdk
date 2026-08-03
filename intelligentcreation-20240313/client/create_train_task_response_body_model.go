@@ -16,14 +16,8 @@ type iCreateTrainTaskResponseBody interface {
 }
 
 type CreateTrainTaskResponseBody struct {
-	// example:
-	//
-	// 84657DE0-B68C-508B-AFE7-8ED921854E3C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 837091359375048704
-	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	TaskId    *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 
 func (s CreateTrainTaskResponseBody) String() string {

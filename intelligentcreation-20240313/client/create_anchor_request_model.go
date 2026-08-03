@@ -26,32 +26,13 @@ type iCreateAnchorRequest interface {
 }
 
 type CreateAnchorRequest struct {
-	// 类型
-	//
-	// example:
-	//
-	// VIDEO_ANCHOR
 	AnchorCategory     *string `json:"anchorCategory,omitempty" xml:"anchorCategory,omitempty"`
 	AnchorMaterialName *string `json:"anchorMaterialName,omitempty" xml:"anchorMaterialName,omitempty"`
-	// example:
-	//
-	// https://xxx
-	CoverUrl         *string `json:"coverUrl,omitempty" xml:"coverUrl,omitempty"`
-	DigitalHumanType *string `json:"digitalHumanType,omitempty" xml:"digitalHumanType,omitempty"`
-	// example:
-	//
-	// F
-	Gender *string `json:"gender,omitempty" xml:"gender,omitempty"`
-	// example:
-	//
-	// offlineSynthesis
-	UseScene *string `json:"useScene,omitempty" xml:"useScene,omitempty"`
-	// 视频文件osskey
-	//
-	// example:
-	//
-	// path/key.mp4
-	VideoOssKey *string `json:"videoOssKey,omitempty" xml:"videoOssKey,omitempty"`
+	CoverUrl           *string `json:"coverUrl,omitempty" xml:"coverUrl,omitempty"`
+	DigitalHumanType   *string `json:"digitalHumanType,omitempty" xml:"digitalHumanType,omitempty"`
+	Gender             *string `json:"gender,omitempty" xml:"gender,omitempty"`
+	UseScene           *string `json:"useScene,omitempty" xml:"useScene,omitempty"`
+	VideoOssKey        *string `json:"videoOssKey,omitempty" xml:"videoOssKey,omitempty"`
 }
 
 func (s CreateAnchorRequest) String() string {

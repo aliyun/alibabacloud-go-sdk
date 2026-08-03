@@ -16,13 +16,7 @@ type iStopAvatarSessionRequest interface {
 }
 
 type StopAvatarSessionRequest struct {
-	// example:
-	//
-	// 124900036
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	// example:
-	//
-	// 121dlsga4o7golrl1hojazg0u9lvysk0uyczgd79be2a4hkr9ijrblmb5qohi5iaja3p5j633doqj4t2uu3sek2i49hzkao0bli4bch4tnloyx22odd7sot9dxl5xfd0hbp7fl9dehnqofkb9csebf0nuezj8bwgec8ei6dby0encu5y88ky6oqensuqnj
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
 }
 

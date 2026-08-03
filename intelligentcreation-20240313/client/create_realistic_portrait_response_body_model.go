@@ -16,16 +16,8 @@ type iCreateRealisticPortraitResponseBody interface {
 }
 
 type CreateRealisticPortraitResponseBody struct {
-	// Id of the request
-	//
-	// example:
-	//
-	// D5798660-1531-5D12-9C20-16FEE9D22351
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 313123123
-	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	TaskId    *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 
 func (s CreateRealisticPortraitResponseBody) String() string {

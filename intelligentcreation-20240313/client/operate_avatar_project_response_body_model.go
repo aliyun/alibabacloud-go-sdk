@@ -16,16 +16,8 @@ type iOperateAvatarProjectResponseBody interface {
 }
 
 type OperateAvatarProjectResponseBody struct {
-	// Id of the request
-	//
-	// example:
-	//
-	// 86A90C40-D1AB-50DA-A4B1-0D545F80F2FE
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s OperateAvatarProjectResponseBody) String() string {

@@ -14,9 +14,6 @@ type iQueryIndividuationTextTaskRequest interface {
 }
 
 type QueryIndividuationTextTaskRequest struct {
-	// example:
-	//
-	// 829682927337963520
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 

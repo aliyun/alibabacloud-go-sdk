@@ -18,10 +18,7 @@ type iSelectResourceResponseBody interface {
 }
 
 type SelectResourceResponseBody struct {
-	AliyunUid *string `json:"aliyunUid,omitempty" xml:"aliyunUid,omitempty"`
-	// example:
-	//
-	// 0E8B1746-AE35-5C4B-A3A8-345B274AE32C
+	AliyunUid        *string                                       `json:"aliyunUid,omitempty" xml:"aliyunUid,omitempty"`
 	RequestId        *string                                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	ResourceInfoList []*SelectResourceResponseBodyResourceInfoList `json:"resourceInfoList,omitempty" xml:"resourceInfoList,omitempty" type:"Repeated"`
 }
@@ -75,26 +72,11 @@ func (s *SelectResourceResponseBody) Validate() error {
 }
 
 type SelectResourceResponseBodyResourceInfoList struct {
-	// example:
-	//
-	// 111
-	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	// example:
-	//
-	// 11
-	LastExpire *int32 `json:"lastExpire,omitempty" xml:"lastExpire,omitempty"`
-	// example:
-	//
-	// 1249
-	RemainCount *int32 `json:"remainCount,omitempty" xml:"remainCount,omitempty"`
-	// example:
-	//
-	// 2
-	ResourceType *int32 `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// example:
-	//
-	// second
-	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+	ExpireTime   *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	LastExpire   *int32  `json:"lastExpire,omitempty" xml:"lastExpire,omitempty"`
+	RemainCount  *int32  `json:"remainCount,omitempty" xml:"remainCount,omitempty"`
+	ResourceType *int32  `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	Unit         *string `json:"unit,omitempty" xml:"unit,omitempty"`
 }
 
 func (s SelectResourceResponseBodyResourceInfoList) String() string {

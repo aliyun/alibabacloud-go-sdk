@@ -22,25 +22,11 @@ type iQueryIndividuationTextTaskResponseBody interface {
 }
 
 type QueryIndividuationTextTaskResponseBody struct {
-	// example:
-	//
-	// yyyy-MM-dd HH:mm:ss
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 56AC346B-AF40-5E4F-AFFE-FD8BA5E6FB3A
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 0
-	Status   *int32                                            `json:"status,omitempty" xml:"status,omitempty"`
-	TextList []*QueryIndividuationTextTaskResponseBodyTextList `json:"textList,omitempty" xml:"textList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// yyyy-MM-dd HH:mm:ss
-	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	CreateTime *string                                           `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	RequestId  *string                                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Status     *int32                                            `json:"status,omitempty" xml:"status,omitempty"`
+	TextList   []*QueryIndividuationTextTaskResponseBodyTextList `json:"textList,omitempty" xml:"textList,omitempty" type:"Repeated"`
+	UpdateTime *string                                           `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s QueryIndividuationTextTaskResponseBody) String() string {
@@ -110,17 +96,8 @@ func (s *QueryIndividuationTextTaskResponseBody) Validate() error {
 }
 
 type QueryIndividuationTextTaskResponseBodyTextList struct {
-	// example:
-	//
-	// 0
-	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// 2761
+	Status *int32  `json:"status,omitempty" xml:"status,omitempty"`
 	TextId *string `json:"textId,omitempty" xml:"textId,omitempty"`
-	// example:
-	//
-	// 11
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 

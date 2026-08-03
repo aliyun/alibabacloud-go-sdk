@@ -16,14 +16,8 @@ type iCreateIndividuationTextTaskResponseBody interface {
 }
 
 type CreateIndividuationTextTaskResponseBody struct {
-	// example:
-	//
-	// 56AC346B-AF40-5E4F-AFFE-FD8BA5E6FB3A
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 837091359375048704
-	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	TaskId    *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 
 func (s CreateIndividuationTextTaskResponseBody) String() string {

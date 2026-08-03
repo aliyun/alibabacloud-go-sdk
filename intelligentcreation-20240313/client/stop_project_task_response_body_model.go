@@ -16,14 +16,8 @@ type iStopProjectTaskResponseBody interface {
 }
 
 type StopProjectTaskResponseBody struct {
-	// example:
-	//
-	// 86A90C40-D1AB-50DA-A4B1-0D545F80F2FE
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s StopProjectTaskResponseBody) String() string {

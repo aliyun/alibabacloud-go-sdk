@@ -22,25 +22,11 @@ type iBatchDeletePracticeTaskResponseBody interface {
 }
 
 type BatchDeletePracticeTaskResponseBody struct {
-	// example:
-	//
-	// 040002
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// example:
-	//
-	// true
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 10923AA3-F7A1-5EA0-ACCA-D704269EAA78
-	RequestId *string                                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Results   []*BatchDeletePracticeTaskResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	ErrorCode    *string                                       `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                       `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Results      []*BatchDeletePracticeTaskResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	Success      *bool                                         `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s BatchDeletePracticeTaskResponseBody) String() string {
@@ -110,14 +96,8 @@ func (s *BatchDeletePracticeTaskResponseBody) Validate() error {
 }
 
 type BatchDeletePracticeTaskResponseBodyResults struct {
-	// example:
-	//
-	// job delete error by auth
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// 901524394325590016
-	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	TaskId  *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 
 func (s BatchDeletePracticeTaskResponseBodyResults) String() string {

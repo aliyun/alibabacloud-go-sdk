@@ -14,9 +14,6 @@ type iGetAICoachAssessmentPointRequest interface {
 }
 
 type GetAICoachAssessmentPointRequest struct {
-	// example:
-	//
-	// 1
 	PointId *string `json:"pointId,omitempty" xml:"pointId,omitempty"`
 }
 

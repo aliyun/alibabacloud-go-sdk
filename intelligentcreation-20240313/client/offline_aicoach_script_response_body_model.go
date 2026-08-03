@@ -16,16 +16,8 @@ type iOfflineAICoachScriptResponseBody interface {
 }
 
 type OfflineAICoachScriptResponseBody struct {
-	// Id of the request
-	//
-	// example:
-	//
-	// EC169FD8-F8D8-5414-A4FF-B6B6751BE36D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// Success
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s OfflineAICoachScriptResponseBody) String() string {

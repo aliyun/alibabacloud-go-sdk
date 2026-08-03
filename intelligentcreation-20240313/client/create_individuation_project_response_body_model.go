@@ -16,15 +16,7 @@ type iCreateIndividuationProjectResponseBody interface {
 }
 
 type CreateIndividuationProjectResponseBody struct {
-	// example:
-	//
-	// 812907463682949120
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 4D902811-B75C-5D1B-8882-D515F8E2F977
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

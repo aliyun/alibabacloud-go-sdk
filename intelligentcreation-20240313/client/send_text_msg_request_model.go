@@ -22,23 +22,11 @@ type iSendTextMsgRequest interface {
 }
 
 type SendTextMsgRequest struct {
-	// example:
-	//
-	// 126000030
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	// example:
-	//
-	// 52775239-1575-5C07-A4AE-1835D120E4A6
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// tcm9xac9dsfbfgm8hf5k94l3cqybwh9o3mn0iuyytdgd9qoejxf1crxsdvuvr8fu0zudk5px4vsa3e3fgcclplkiuo7kyy3sqgscvhejmooblaiv64ww8cvlxvin2urzyhooqj33y7gvodef0sxn22n9q58o7xlupabiknxsv46qe7kof8nuc4be8kyhi01
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
 	Text      *string `json:"text,omitempty" xml:"text,omitempty"`
-	// example:
-	//
-	// 1
-	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	Type      *int32  `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s SendTextMsgRequest) String() string {

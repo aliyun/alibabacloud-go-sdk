@@ -14,9 +14,6 @@ type iSelectResourceRequest interface {
 }
 
 type SelectResourceRequest struct {
-	// example:
-	//
-	// 1111
 	IdempotentId *string `json:"idempotentId,omitempty" xml:"idempotentId,omitempty"`
 }
 

@@ -24,30 +24,12 @@ type iTransferPortraitStyleRequest interface {
 }
 
 type TransferPortraitStyleRequest struct {
-	// example:
-	//
-	// 500
-	Height *int32 `json:"height,omitempty" xml:"height,omitempty"`
-	// example:
-	//
-	// WWW
-	ImageUrl *string `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
-	// example:
-	//
-	// 4
-	Numbers *int32 `json:"numbers,omitempty" xml:"numbers,omitempty"`
-	// example:
-	//
-	// 1
-	RedrawAmplitude *int32 `json:"redrawAmplitude,omitempty" xml:"redrawAmplitude,omitempty"`
-	// example:
-	//
-	// 1
-	Style *int32 `json:"style,omitempty" xml:"style,omitempty"`
-	// example:
-	//
-	// 500
-	Width *int32 `json:"width,omitempty" xml:"width,omitempty"`
+	Height          *int32  `json:"height,omitempty" xml:"height,omitempty"`
+	ImageUrl        *string `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
+	Numbers         *int32  `json:"numbers,omitempty" xml:"numbers,omitempty"`
+	RedrawAmplitude *int32  `json:"redrawAmplitude,omitempty" xml:"redrawAmplitude,omitempty"`
+	Style           *int32  `json:"style,omitempty" xml:"style,omitempty"`
+	Width           *int32  `json:"width,omitempty" xml:"width,omitempty"`
 }
 
 func (s TransferPortraitStyleRequest) String() string {

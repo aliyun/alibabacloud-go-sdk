@@ -16,15 +16,7 @@ type iCreateAICoachTaskReportResponseBody interface {
 }
 
 type CreateAICoachTaskReportResponseBody struct {
-	// Id of the request
-	//
-	// example:
-	//
-	// 0E8B1746-AE35-5C4B-A3A8-345B274AE32C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 79e954faffe2415ebd18188ba787d78e
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
 }
 

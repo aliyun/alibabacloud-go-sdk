@@ -30,33 +30,15 @@ type iListAnchorRequest interface {
 }
 
 type ListAnchorRequest struct {
-	AnchorCategory *string `json:"anchorCategory,omitempty" xml:"anchorCategory,omitempty"`
-	AnchorId       *string `json:"anchorId,omitempty" xml:"anchorId,omitempty"`
-	// example:
-	//
-	// PUBLIC_MODEL
-	AnchorType *string `json:"anchorType,omitempty" xml:"anchorType,omitempty"`
-	// example:
-	//
-	// 9:16
-	CoverRate *string `json:"coverRate,omitempty" xml:"coverRate,omitempty"`
-	// example:
-	//
-	// staticTransparency
+	AnchorCategory   *string `json:"anchorCategory,omitempty" xml:"anchorCategory,omitempty"`
+	AnchorId         *string `json:"anchorId,omitempty" xml:"anchorId,omitempty"`
+	AnchorType       *string `json:"anchorType,omitempty" xml:"anchorType,omitempty"`
+	CoverRate        *string `json:"coverRate,omitempty" xml:"coverRate,omitempty"`
 	DigitalHumanType *string `json:"digitalHumanType,omitempty" xml:"digitalHumanType,omitempty"`
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize    *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	ResSpecType *string `json:"resSpecType,omitempty" xml:"resSpecType,omitempty"`
-	// example:
-	//
-	// offlineSynthesis
-	UseScene *string `json:"useScene,omitempty" xml:"useScene,omitempty"`
+	PageNumber       *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize         *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ResSpecType      *string `json:"resSpecType,omitempty" xml:"resSpecType,omitempty"`
+	UseScene         *string `json:"useScene,omitempty" xml:"useScene,omitempty"`
 }
 
 func (s ListAnchorRequest) String() string {

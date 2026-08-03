@@ -19,11 +19,8 @@ type iCreateIndividuationTextTaskRequest interface {
 
 type CreateIndividuationTextTaskRequest struct {
 	CrowdPack [][]*string `json:"crowdPack,omitempty" xml:"crowdPack,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 840015278620459008
-	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	TaskName  *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
+	ProjectId *string     `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	TaskName  *string     `json:"taskName,omitempty" xml:"taskName,omitempty"`
 }
 
 func (s CreateIndividuationTextTaskRequest) String() string {

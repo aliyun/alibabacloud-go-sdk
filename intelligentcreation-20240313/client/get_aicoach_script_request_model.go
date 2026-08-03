@@ -14,9 +14,6 @@ type iGetAICoachScriptRequest interface {
 }
 
 type GetAICoachScriptRequest struct {
-	// example:
-	//
-	// 1
 	ScriptRecordId *string `json:"scriptRecordId,omitempty" xml:"scriptRecordId,omitempty"`
 }
 

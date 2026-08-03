@@ -42,8 +42,6 @@ type GetAICoachTaskSessionResourceUsageResponseBody struct {
 	//
 	// 系统异常，请联系管理员
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// Id of the request
-	//
 	// example:
 	//
 	// 4D902811-B75C-5D1B-8882-D515F8E2F977

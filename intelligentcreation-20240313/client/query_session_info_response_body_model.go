@@ -19,14 +19,8 @@ type iQuerySessionInfoResponseBody interface {
 
 type QuerySessionInfoResponseBody struct {
 	QueryResourceInfoList []*QuerySessionInfoResponseBodyQueryResourceInfoList `json:"queryResourceInfoList,omitempty" xml:"queryResourceInfoList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 4D902811-B75C-5D1B-8882-D515F8E2F977
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 26
-	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
+	RequestId             *string                                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Total                 *int64                                               `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s QuerySessionInfoResponseBody) String() string {
@@ -78,14 +72,8 @@ func (s *QuerySessionInfoResponseBody) Validate() error {
 }
 
 type QuerySessionInfoResponseBodyQueryResourceInfoList struct {
-	// example:
-	//
-	// a169e9ec18404edc9972afd80866dc97
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// example:
-	//
-	// FREE
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s QuerySessionInfoResponseBodyQueryResourceInfoList) String() string {

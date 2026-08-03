@@ -20,13 +20,7 @@ type iBatchCreateAICoachTaskRequest interface {
 }
 
 type BatchCreateAICoachTaskRequest struct {
-	// example:
-	//
-	// 7915125A-0D96-5A25-A54B-D3B739A86AFC
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 1
+	RequestId      *string                                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	ScriptRecordId *string                                     `json:"scriptRecordId,omitempty" xml:"scriptRecordId,omitempty"`
 	StudentIds     []*string                                   `json:"studentIds,omitempty" xml:"studentIds,omitempty" type:"Repeated"`
 	StudentList    []*BatchCreateAICoachTaskRequestStudentList `json:"studentList,omitempty" xml:"studentList,omitempty" type:"Repeated"`

@@ -16,14 +16,8 @@ type iGetAICoachTaskSessionReportRequest interface {
 }
 
 type GetAICoachTaskSessionReportRequest struct {
-	// example:
-	//
-	// 1111
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// example:
-	//
-	// 1707732338016307
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	Uid       *string `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
 func (s GetAICoachTaskSessionReportRequest) String() string {

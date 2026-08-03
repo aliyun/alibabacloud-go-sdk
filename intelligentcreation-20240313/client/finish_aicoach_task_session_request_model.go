@@ -16,14 +16,8 @@ type iFinishAICoachTaskSessionRequest interface {
 }
 
 type FinishAICoachTaskSessionRequest struct {
-	// example:
-	//
-	// 111
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// example:
-	//
-	// 222
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	Uid       *string `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
 func (s FinishAICoachTaskSessionRequest) String() string {

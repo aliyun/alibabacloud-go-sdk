@@ -17,10 +17,7 @@ type iGetTextTemplateResponseBody interface {
 
 type GetTextTemplateResponseBody struct {
 	AvailableIndustry *GetTextTemplateResponseBodyAvailableIndustry `json:"availableIndustry,omitempty" xml:"availableIndustry,omitempty" type:"Struct"`
-	// example:
-	//
-	// 3239281273464326823
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId         *string                                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetTextTemplateResponseBody) String() string {
@@ -59,9 +56,6 @@ func (s *GetTextTemplateResponseBody) Validate() error {
 }
 
 type GetTextTemplateResponseBodyAvailableIndustry struct {
-	// example:
-	//
-	// Car
 	Name          *string                                                      `json:"name,omitempty" xml:"name,omitempty"`
 	TextModeTypes []*GetTextTemplateResponseBodyAvailableIndustryTextModeTypes `json:"textModeTypes,omitempty" xml:"textModeTypes,omitempty" type:"Repeated"`
 }
@@ -106,9 +100,6 @@ func (s *GetTextTemplateResponseBodyAvailableIndustry) Validate() error {
 }
 
 type GetTextTemplateResponseBodyAvailableIndustryTextModeTypes struct {
-	// example:
-	//
-	// Rewrite
 	Name       *string                                                                `json:"name,omitempty" xml:"name,omitempty"`
 	TextStyles []*GetTextTemplateResponseBodyAvailableIndustryTextModeTypesTextStyles `json:"textStyles,omitempty" xml:"textStyles,omitempty" type:"Repeated"`
 }
@@ -153,18 +144,9 @@ func (s *GetTextTemplateResponseBodyAvailableIndustryTextModeTypes) Validate() e
 }
 
 type GetTextTemplateResponseBodyAvailableIndustryTextModeTypesTextStyles struct {
-	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
-	// example:
-	//
-	// false
-	Disabled *bool `json:"disabled,omitempty" xml:"disabled,omitempty"`
-	// example:
-	//
-	// RED_BOOK
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// 111
+	Desc        *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	Disabled    *bool   `json:"disabled,omitempty" xml:"disabled,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
 	TemplateKey *string `json:"templateKey,omitempty" xml:"templateKey,omitempty"`
 }
 

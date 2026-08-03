@@ -20,24 +20,10 @@ type iCountTextRequest interface {
 }
 
 type CountTextRequest struct {
-	// API
-	//
-	// example:
-	//
-	// PLATFORM
 	GenerationSource *string `json:"generationSource,omitempty" xml:"generationSource,omitempty"`
-	// example:
-	//
-	// Garment
-	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
-	// example:
-	//
-	// 1
-	PublishStatus *string `json:"publishStatus,omitempty" xml:"publishStatus,omitempty"`
-	// example:
-	//
-	// RED_BOOK
-	Style *string `json:"style,omitempty" xml:"style,omitempty"`
+	Industry         *string `json:"industry,omitempty" xml:"industry,omitempty"`
+	PublishStatus    *string `json:"publishStatus,omitempty" xml:"publishStatus,omitempty"`
+	Style            *string `json:"style,omitempty" xml:"style,omitempty"`
 }
 
 func (s CountTextRequest) String() string {

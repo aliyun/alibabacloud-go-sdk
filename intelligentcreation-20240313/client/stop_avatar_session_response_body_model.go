@@ -16,14 +16,8 @@ type iStopAvatarSessionResponseBody interface {
 }
 
 type StopAvatarSessionResponseBody struct {
-	// example:
-	//
-	// 725E87CD-F2DE-5FC4-8A09-2EBDFBF26DAA
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// Stopped
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s StopAvatarSessionResponseBody) String() string {

@@ -26,28 +26,13 @@ type iListAICoachTaskPageRequest interface {
 }
 
 type ListAICoachTaskPageRequest struct {
-	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize  *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// example:
-	//
-	// FINISHED
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// 111
-	StudentId *string `json:"studentId,omitempty" xml:"studentId,omitempty"`
-	// example:
-	//
-	// 313123123
-	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	EndTime    *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	PageNumber *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	StartTime  *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Status     *string `json:"status,omitempty" xml:"status,omitempty"`
+	StudentId  *string `json:"studentId,omitempty" xml:"studentId,omitempty"`
+	TaskId     *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 
 func (s ListAICoachTaskPageRequest) String() string {

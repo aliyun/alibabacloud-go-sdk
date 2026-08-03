@@ -18,18 +18,9 @@ type iListKnowledgeBaseRequest interface {
 }
 
 type ListKnowledgeBaseRequest struct {
-	// example:
-	//
-	// "186432649"
 	KnowledgeBaseId *string `json:"knowledgeBaseId,omitempty" xml:"knowledgeBaseId,omitempty"`
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageNumber      *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListKnowledgeBaseRequest) String() string {

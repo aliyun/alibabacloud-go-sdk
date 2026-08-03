@@ -18,14 +18,8 @@ type iInteractTextRequest interface {
 }
 
 type InteractTextRequest struct {
-	// example:
-	//
-	// 1000222
-	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// example:
-	//
-	// 144285195534941
+	AgentId   *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	Content   *string `json:"content,omitempty" xml:"content,omitempty"`
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
 }
 

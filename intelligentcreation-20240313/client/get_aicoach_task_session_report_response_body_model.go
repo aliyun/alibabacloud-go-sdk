@@ -17,6 +17,8 @@ type iGetAICoachTaskSessionReportResponseBody interface {
 	GetEvaluationRating() *string
 	SetEvaluationResult(v string) *GetAICoachTaskSessionReportResponseBody
 	GetEvaluationResult() *string
+	SetExtendCustomNameMap(v map[string]*string) *GetAICoachTaskSessionReportResponseBody
+	GetExtendCustomNameMap() map[string]*string
 	SetFeedback(v bool) *GetAICoachTaskSessionReportResponseBody
 	GetFeedback() *bool
 	SetRequestId(v string) *GetAICoachTaskSessionReportResponseBody
@@ -32,34 +34,17 @@ type iGetAICoachTaskSessionReportResponseBody interface {
 }
 
 type GetAICoachTaskSessionReportResponseBody struct {
-	// example:
-	//
-	// 0
-	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// example:
-	//
-	// 2024-11-08 09:33:21
-	EndTime          *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	EvaluationRating *string `json:"evaluationRating,omitempty" xml:"evaluationRating,omitempty"`
-	// example:
-	//
-	// {}
-	EvaluationResult *string `json:"evaluationResult,omitempty" xml:"evaluationResult,omitempty"`
-	Feedback         *bool   `json:"feedback,omitempty" xml:"feedback,omitempty"`
-	// example:
-	//
-	// 0E8B1746-AE35-5C4B-A3A8-345B274AE32C
-	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	ScriptName *string `json:"scriptName,omitempty" xml:"scriptName,omitempty"`
-	// example:
-	//
-	// 2024-10-11 09:58:01
-	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// 1276673855116835
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	Duration            *int64             `json:"duration,omitempty" xml:"duration,omitempty"`
+	EndTime             *string            `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	EvaluationRating    *string            `json:"evaluationRating,omitempty" xml:"evaluationRating,omitempty"`
+	EvaluationResult    *string            `json:"evaluationResult,omitempty" xml:"evaluationResult,omitempty"`
+	ExtendCustomNameMap map[string]*string `json:"extendCustomNameMap,omitempty" xml:"extendCustomNameMap,omitempty"`
+	Feedback            *bool              `json:"feedback,omitempty" xml:"feedback,omitempty"`
+	RequestId           *string            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ScriptName          *string            `json:"scriptName,omitempty" xml:"scriptName,omitempty"`
+	StartTime           *string            `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Status              *string            `json:"status,omitempty" xml:"status,omitempty"`
+	Uid                 *string            `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
 func (s GetAICoachTaskSessionReportResponseBody) String() string {
@@ -84,6 +69,10 @@ func (s *GetAICoachTaskSessionReportResponseBody) GetEvaluationRating() *string 
 
 func (s *GetAICoachTaskSessionReportResponseBody) GetEvaluationResult() *string {
 	return s.EvaluationResult
+}
+
+func (s *GetAICoachTaskSessionReportResponseBody) GetExtendCustomNameMap() map[string]*string {
+	return s.ExtendCustomNameMap
 }
 
 func (s *GetAICoachTaskSessionReportResponseBody) GetFeedback() *bool {
@@ -127,6 +116,11 @@ func (s *GetAICoachTaskSessionReportResponseBody) SetEvaluationRating(v string) 
 
 func (s *GetAICoachTaskSessionReportResponseBody) SetEvaluationResult(v string) *GetAICoachTaskSessionReportResponseBody {
 	s.EvaluationResult = &v
+	return s
+}
+
+func (s *GetAICoachTaskSessionReportResponseBody) SetExtendCustomNameMap(v map[string]*string) *GetAICoachTaskSessionReportResponseBody {
+	s.ExtendCustomNameMap = v
 	return s
 }
 

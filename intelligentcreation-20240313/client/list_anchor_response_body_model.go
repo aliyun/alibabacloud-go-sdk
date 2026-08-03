@@ -26,35 +26,13 @@ type iListAnchorResponseBody interface {
 }
 
 type ListAnchorResponseBody struct {
-	// code
-	//
-	// example:
-	//
-	// 200
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// Deduct.DeductTaskAlreadySuccess
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// example:
-	//
-	// Failed to proxy flink ui request, message: An error occurred: Invalid UUID string: jobsn
+	Code         *string           `json:"code,omitempty" xml:"code,omitempty"`
+	ErrorCode    *string           `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string           `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
 	List         []*AnchorResponse `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	// requestId
-	//
-	// example:
-	//
-	// 5389BE87-571B-573C-90ED-F07C5E68760B
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 10
-	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+	RequestId    *string           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool             `json:"success,omitempty" xml:"success,omitempty"`
+	Total        *int32            `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListAnchorResponseBody) String() string {

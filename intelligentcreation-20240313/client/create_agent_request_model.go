@@ -28,32 +28,14 @@ type iCreateAgentRequest interface {
 }
 
 type CreateAgentRequest struct {
-	// example:
-	//
-	// http://img.com
-	AgentIconUrl *string `json:"agentIconUrl,omitempty" xml:"agentIconUrl,omitempty"`
-	// example:
-	//
-	// AgentAlpha
-	AgentName *string `json:"agentName,omitempty" xml:"agentName,omitempty"`
-	// example:
-	//
-	// aiCoachPractice
-	AgentScene *string `json:"agentScene,omitempty" xml:"agentScene,omitempty"`
-	// example:
-	//
-	// 18-22
+	AgentIconUrl      *string `json:"agentIconUrl,omitempty" xml:"agentIconUrl,omitempty"`
+	AgentName         *string `json:"agentName,omitempty" xml:"agentName,omitempty"`
+	AgentScene        *string `json:"agentScene,omitempty" xml:"agentScene,omitempty"`
 	CharacterAgeStage *string `json:"characterAgeStage,omitempty" xml:"characterAgeStage,omitempty"`
 	CharacterGender   *string `json:"characterGender,omitempty" xml:"characterGender,omitempty"`
-	// example:
-	//
-	// Tom
-	CharacterName    *string `json:"characterName,omitempty" xml:"characterName,omitempty"`
-	ExtraDescription *string `json:"extraDescription,omitempty" xml:"extraDescription,omitempty"`
-	// example:
-	//
-	// Common
-	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
+	CharacterName     *string `json:"characterName,omitempty" xml:"characterName,omitempty"`
+	ExtraDescription  *string `json:"extraDescription,omitempty" xml:"extraDescription,omitempty"`
+	Industry          *string `json:"industry,omitempty" xml:"industry,omitempty"`
 }
 
 func (s CreateAgentRequest) String() string {

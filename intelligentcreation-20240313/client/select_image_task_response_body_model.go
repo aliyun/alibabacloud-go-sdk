@@ -34,49 +34,17 @@ type iSelectImageTaskResponseBody interface {
 }
 
 type SelectImageTaskResponseBody struct {
-	// example:
-	//
-	// Failed to proxy flink ui request, message: An error occurred: Invalid UUID string: jobsn
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// example:
-	//
-	// 1
-	Failed *string `json:"failed,omitempty" xml:"failed,omitempty"`
-	// example:
-	//
-	// PLATFORM
-	GenerationSource *string `json:"generationSource,omitempty" xml:"generationSource,omitempty"`
-	// example:
-	//
-	// 1
-	GmtCreate  *string                                  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	ImageInfos []*SelectImageTaskResponseBodyImageInfos `json:"imageInfos,omitempty" xml:"imageInfos,omitempty" type:"Repeated"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 0E8B1746-AE35-5C4B-A3A8-345B274AE32C
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 1
-	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
-	// example:
-	//
-	// Successed
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// 1
-	SubtaskProcessing *string `json:"subtaskProcessing,omitempty" xml:"subtaskProcessing,omitempty"`
-	// example:
-	//
-	// 1
-	Success *string `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 10
-	Total *string `json:"total,omitempty" xml:"total,omitempty"`
+	ErrorMessage      *string                                  `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Failed            *string                                  `json:"failed,omitempty" xml:"failed,omitempty"`
+	GenerationSource  *string                                  `json:"generationSource,omitempty" xml:"generationSource,omitempty"`
+	GmtCreate         *string                                  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	ImageInfos        []*SelectImageTaskResponseBodyImageInfos `json:"imageInfos,omitempty" xml:"imageInfos,omitempty" type:"Repeated"`
+	RequestId         *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Scene             *string                                  `json:"scene,omitempty" xml:"scene,omitempty"`
+	Status            *string                                  `json:"status,omitempty" xml:"status,omitempty"`
+	SubtaskProcessing *string                                  `json:"subtaskProcessing,omitempty" xml:"subtaskProcessing,omitempty"`
+	Success           *string                                  `json:"success,omitempty" xml:"success,omitempty"`
+	Total             *string                                  `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s SelectImageTaskResponseBody) String() string {
@@ -200,22 +168,10 @@ func (s *SelectImageTaskResponseBody) Validate() error {
 }
 
 type SelectImageTaskResponseBodyImageInfos struct {
-	// example:
-	//
-	// www.ali.com
 	CustomImageUrl *string `json:"customImageUrl,omitempty" xml:"customImageUrl,omitempty"`
-	// example:
-	//
-	// 1
-	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// example:
-	//
-	// 500
-	ImageH *string `json:"imageH,omitempty" xml:"imageH,omitempty"`
-	// example:
-	//
-	// 500
-	ImageW *string `json:"imageW,omitempty" xml:"imageW,omitempty"`
+	GmtCreate      *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	ImageH         *string `json:"imageH,omitempty" xml:"imageH,omitempty"`
+	ImageW         *string `json:"imageW,omitempty" xml:"imageW,omitempty"`
 }
 
 func (s SelectImageTaskResponseBodyImageInfos) String() string {

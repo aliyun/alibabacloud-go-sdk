@@ -14,9 +14,6 @@ type iDeleteAgentRequest interface {
 }
 
 type DeleteAgentRequest struct {
-	// example:
-	//
-	// 840016700254633984
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
 }
 

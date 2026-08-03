@@ -17,10 +17,7 @@ type iQueryAvatarResourceResponseBody interface {
 
 type QueryAvatarResourceResponseBody struct {
 	QueryResourceInfoList []*QueryAvatarResourceResponseBodyQueryResourceInfoList `json:"queryResourceInfoList,omitempty" xml:"queryResourceInfoList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// D5798660-1531-5D12-9C20-16FEE9D22351
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId             *string                                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s QueryAvatarResourceResponseBody) String() string {
@@ -63,17 +60,8 @@ func (s *QueryAvatarResourceResponseBody) Validate() error {
 }
 
 type QueryAvatarResourceResponseBodyQueryResourceInfoList struct {
-	// example:
-	//
-	// 21275
-	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// example:
-	//
-	// STANDARD
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// example:
-	//
-	// 1719904342237
+	ResourceId      *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	Type            *string `json:"type,omitempty" xml:"type,omitempty"`
 	ValidPeriodTime *string `json:"validPeriodTime,omitempty" xml:"validPeriodTime,omitempty"`
 }
 

@@ -16,9 +16,6 @@ type iBatchGetTrainTaskShrinkRequest interface {
 }
 
 type BatchGetTrainTaskShrinkRequest struct {
-	// example:
-	//
-	// 1524004782431111
 	AliyunMainId     *string `json:"aliyunMainId,omitempty" xml:"aliyunMainId,omitempty"`
 	TaskIdListShrink *string `json:"taskIdList,omitempty" xml:"taskIdList,omitempty"`
 }

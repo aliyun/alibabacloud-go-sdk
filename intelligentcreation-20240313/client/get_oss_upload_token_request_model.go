@@ -19,16 +19,8 @@ type iGetOssUploadTokenRequest interface {
 
 type GetOssUploadTokenRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 8021678.png
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ProductImage
 	FileType   *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
 	UploadType *int32  `json:"uploadType,omitempty" xml:"uploadType,omitempty"`
 }

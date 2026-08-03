@@ -16,9 +16,6 @@ type iBatchGetTrainTaskResponseBody interface {
 }
 
 type BatchGetTrainTaskResponseBody struct {
-	// example:
-	//
-	// 2226A26A-26E5-5AB9-A14A-54D612FCF96A
 	RequestId *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	VoiceList []*BatchGetTrainTaskResponseBodyVoiceList `json:"voiceList,omitempty" xml:"voiceList,omitempty" type:"Repeated"`
 }
@@ -63,46 +60,19 @@ func (s *BatchGetTrainTaskResponseBody) Validate() error {
 }
 
 type BatchGetTrainTaskResponseBodyVoiceList struct {
-	// example:
-	//
-	// 1524004782438111
-	AliyunSubId      *string `json:"aliyunSubId,omitempty" xml:"aliyunSubId,omitempty"`
-	AuditFailMessage *string `json:"auditFailMessage,omitempty" xml:"auditFailMessage,omitempty"`
-	// example:
-	//
-	// auditFail
-	AuditStatus *string `json:"auditStatus,omitempty" xml:"auditStatus,omitempty"`
-	// example:
-	//
-	// yyyy-MM-dd HH:mm:ss
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// example:
-	//
-	// M
-	Gender *string `json:"gender,omitempty" xml:"gender,omitempty"`
-	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// BASIC_MODEL
-	ResSpecType *string `json:"resSpecType,omitempty" xml:"resSpecType,omitempty"`
-	// example:
-	//
-	// 837091359375048704
-	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// example:
-	//
-	// CopyVoice
-	TaskType         *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
-	TrainFailMessage *string `json:"trainFailMessage,omitempty" xml:"trainFailMessage,omitempty"`
-	// example:
-	//
-	// trainFail
-	TrainStatus *string `json:"trainStatus,omitempty" xml:"trainStatus,omitempty"`
-	// example:
-	//
-	// realTimeInteractivity
-	UseScene      *string                                              `json:"useScene,omitempty" xml:"useScene,omitempty"`
-	VoiceMaterial *BatchGetTrainTaskResponseBodyVoiceListVoiceMaterial `json:"voiceMaterial,omitempty" xml:"voiceMaterial,omitempty" type:"Struct"`
+	AliyunSubId      *string                                              `json:"aliyunSubId,omitempty" xml:"aliyunSubId,omitempty"`
+	AuditFailMessage *string                                              `json:"auditFailMessage,omitempty" xml:"auditFailMessage,omitempty"`
+	AuditStatus      *string                                              `json:"auditStatus,omitempty" xml:"auditStatus,omitempty"`
+	CreateTime       *string                                              `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Gender           *string                                              `json:"gender,omitempty" xml:"gender,omitempty"`
+	Name             *string                                              `json:"name,omitempty" xml:"name,omitempty"`
+	ResSpecType      *string                                              `json:"resSpecType,omitempty" xml:"resSpecType,omitempty"`
+	TaskId           *string                                              `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	TaskType         *string                                              `json:"taskType,omitempty" xml:"taskType,omitempty"`
+	TrainFailMessage *string                                              `json:"trainFailMessage,omitempty" xml:"trainFailMessage,omitempty"`
+	TrainStatus      *string                                              `json:"trainStatus,omitempty" xml:"trainStatus,omitempty"`
+	UseScene         *string                                              `json:"useScene,omitempty" xml:"useScene,omitempty"`
+	VoiceMaterial    *BatchGetTrainTaskResponseBodyVoiceListVoiceMaterial `json:"voiceMaterial,omitempty" xml:"voiceMaterial,omitempty" type:"Struct"`
 }
 
 func (s BatchGetTrainTaskResponseBodyVoiceList) String() string {
@@ -240,18 +210,9 @@ func (s *BatchGetTrainTaskResponseBodyVoiceList) Validate() error {
 }
 
 type BatchGetTrainTaskResponseBodyVoiceListVoiceMaterial struct {
-	// example:
-	//
-	// 1
-	VoiceId *int64 `json:"voiceId,omitempty" xml:"voiceId,omitempty"`
-	// example:
-	//
-	// zh
+	VoiceId       *int64  `json:"voiceId,omitempty" xml:"voiceId,omitempty"`
 	VoiceLanguage *string `json:"voiceLanguage,omitempty" xml:"voiceLanguage,omitempty"`
-	// example:
-	//
-	// http://www.voice.com
-	VoiceUrl *string `json:"voiceUrl,omitempty" xml:"voiceUrl,omitempty"`
+	VoiceUrl      *string `json:"voiceUrl,omitempty" xml:"voiceUrl,omitempty"`
 }
 
 func (s BatchGetTrainTaskResponseBodyVoiceListVoiceMaterial) String() string {

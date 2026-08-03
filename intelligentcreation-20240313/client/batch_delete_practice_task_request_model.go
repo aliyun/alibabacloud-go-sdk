@@ -16,9 +16,6 @@ type iBatchDeletePracticeTaskRequest interface {
 }
 
 type BatchDeletePracticeTaskRequest struct {
-	// example:
-	//
-	// 1234567890
 	IdempotentId *string   `json:"idempotentId,omitempty" xml:"idempotentId,omitempty"`
 	TaskIds      []*string `json:"taskIds,omitempty" xml:"taskIds,omitempty" type:"Repeated"`
 }

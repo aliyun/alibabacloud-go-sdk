@@ -16,16 +16,8 @@ type iDeleteAgentResponseBody interface {
 }
 
 type DeleteAgentResponseBody struct {
-	// Id of the request
-	//
-	// example:
-	//
-	// 2226A26A-26E5-5AB9-A14A-54D612FCF96A
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// Success
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s DeleteAgentResponseBody) String() string {

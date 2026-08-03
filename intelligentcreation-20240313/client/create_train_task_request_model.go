@@ -28,35 +28,14 @@ type iCreateTrainTaskRequest interface {
 }
 
 type CreateTrainTaskRequest struct {
-	// example:
-	//
-	// 13168123111
-	AliyunMainId *string `json:"aliyunMainId,omitempty" xml:"aliyunMainId,omitempty"`
-	// example:
-	//
-	// BASIC_MODEL
-	ResSpecType *string `json:"resSpecType,omitempty" xml:"resSpecType,omitempty"`
-	// example:
-	//
-	// CopyAnchorAndVoice
-	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
-	// example:
-	//
-	// realTimeInteractivity
-	UseScene *string `json:"useScene,omitempty" xml:"useScene,omitempty"`
-	// example:
-	//
-	// M
-	VoiceGender *string `json:"voiceGender,omitempty" xml:"voiceGender,omitempty"`
-	// example:
-	//
-	// zh
+	AliyunMainId  *string `json:"aliyunMainId,omitempty" xml:"aliyunMainId,omitempty"`
+	ResSpecType   *string `json:"resSpecType,omitempty" xml:"resSpecType,omitempty"`
+	TaskType      *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
+	UseScene      *string `json:"useScene,omitempty" xml:"useScene,omitempty"`
+	VoiceGender   *string `json:"voiceGender,omitempty" xml:"voiceGender,omitempty"`
 	VoiceLanguage *string `json:"voiceLanguage,omitempty" xml:"voiceLanguage,omitempty"`
 	VoiceName     *string `json:"voiceName,omitempty" xml:"voiceName,omitempty"`
-	// example:
-	//
-	// https://yic-pre/video/test-0513.mp3
-	VoicePath *string `json:"voicePath,omitempty" xml:"voicePath,omitempty"`
+	VoicePath     *string `json:"voicePath,omitempty" xml:"voicePath,omitempty"`
 }
 
 func (s CreateTrainTaskRequest) String() string {

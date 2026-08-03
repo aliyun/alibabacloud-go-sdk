@@ -16,9 +16,6 @@ type iBatchGetTrainTaskRequest interface {
 }
 
 type BatchGetTrainTaskRequest struct {
-	// example:
-	//
-	// 1524004782431111
 	AliyunMainId *string   `json:"aliyunMainId,omitempty" xml:"aliyunMainId,omitempty"`
 	TaskIdList   []*string `json:"taskIdList,omitempty" xml:"taskIdList,omitempty" type:"Repeated"`
 }

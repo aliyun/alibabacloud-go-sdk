@@ -13,6 +13,8 @@ type iListAICoachScriptPageResponseBody interface {
 	GetErrorCode() *string
 	SetErrorMessage(v string) *ListAICoachScriptPageResponseBody
 	GetErrorMessage() *string
+	SetExtendCustomNameMap(v map[string]*string) *ListAICoachScriptPageResponseBody
+	GetExtendCustomNameMap() map[string]*string
 	SetList(v []*ListAICoachScriptPageResponseBodyList) *ListAICoachScriptPageResponseBody
 	GetList() []*ListAICoachScriptPageResponseBodyList
 	SetRequestId(v string) *ListAICoachScriptPageResponseBody
@@ -24,29 +26,13 @@ type iListAICoachScriptPageResponseBody interface {
 }
 
 type ListAICoachScriptPageResponseBody struct {
-	// example:
-	//
-	// PARAM_ERROR
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// example:
-	//
-	// SYSTEM_ERROR
-	ErrorMessage *string                                  `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	List         []*ListAICoachScriptPageResponseBodyList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 86A90C40-D1AB-50DA-A4B1-0D545F80F2FE
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 10
-	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+	ErrorCode           *string                                  `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage        *string                                  `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	ExtendCustomNameMap map[string]*string                       `json:"extendCustomNameMap,omitempty" xml:"extendCustomNameMap,omitempty"`
+	List                []*ListAICoachScriptPageResponseBodyList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	RequestId           *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success             *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
+	Total               *int32                                   `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListAICoachScriptPageResponseBody) String() string {
@@ -63,6 +49,10 @@ func (s *ListAICoachScriptPageResponseBody) GetErrorCode() *string {
 
 func (s *ListAICoachScriptPageResponseBody) GetErrorMessage() *string {
 	return s.ErrorMessage
+}
+
+func (s *ListAICoachScriptPageResponseBody) GetExtendCustomNameMap() map[string]*string {
+	return s.ExtendCustomNameMap
 }
 
 func (s *ListAICoachScriptPageResponseBody) GetList() []*ListAICoachScriptPageResponseBodyList {
@@ -88,6 +78,11 @@ func (s *ListAICoachScriptPageResponseBody) SetErrorCode(v string) *ListAICoachS
 
 func (s *ListAICoachScriptPageResponseBody) SetErrorMessage(v string) *ListAICoachScriptPageResponseBody {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListAICoachScriptPageResponseBody) SetExtendCustomNameMap(v map[string]*string) *ListAICoachScriptPageResponseBody {
+	s.ExtendCustomNameMap = v
 	return s
 }
 
@@ -125,89 +120,35 @@ func (s *ListAICoachScriptPageResponseBody) Validate() error {
 }
 
 type ListAICoachScriptPageResponseBodyList struct {
-	// example:
-	//
-	// true
-	AppendQuestionFlag *string `json:"appendQuestionFlag,omitempty" xml:"appendQuestionFlag,omitempty"`
-	// example:
-	//
-	// point
-	AssessmentScope  *string                                                `json:"assessmentScope,omitempty" xml:"assessmentScope,omitempty"`
-	ClosingRemarks   *string                                                `json:"closingRemarks,omitempty" xml:"closingRemarks,omitempty"`
-	CompleteStrategy *ListAICoachScriptPageResponseBodyListCompleteStrategy `json:"completeStrategy,omitempty" xml:"completeStrategy,omitempty" type:"Struct"`
-	// example:
-	//
-	// https://xxx/cover.png
-	CoverUrl         *string                                                  `json:"coverUrl,omitempty" xml:"coverUrl,omitempty"`
-	CustomReplyRules []*ListAICoachScriptPageResponseBodyListCustomReplyRules `json:"customReplyRules,omitempty" xml:"customReplyRules,omitempty" type:"Repeated"`
-	// example:
-	//
-	// true
-	DialogueTextFlag *bool `json:"dialogueTextFlag,omitempty" xml:"dialogueTextFlag,omitempty"`
-	// example:
-	//
-	// true
-	DialogueTipFlag *bool `json:"dialogueTipFlag,omitempty" xml:"dialogueTipFlag,omitempty"`
-	// example:
-	//
-	// true
-	EvaluateReportFlag *bool              `json:"evaluateReportFlag,omitempty" xml:"evaluateReportFlag,omitempty"`
-	Expressiveness     map[string]*string `json:"expressiveness,omitempty" xml:"expressiveness,omitempty"`
-	// example:
-	//
-	// https://xxx.gif
-	GifDynamicUrl *string `json:"gifDynamicUrl,omitempty" xml:"gifDynamicUrl,omitempty"`
-	// example:
-	//
-	// https://xxx.gif
-	GifStaticUrl *string `json:"gifStaticUrl,omitempty" xml:"gifStaticUrl,omitempty"`
-	// example:
-	//
-	// 2024-12-25 14:00:00
-	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// example:
-	//
-	// 2024-12-25 14:00:00
-	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// example:
-	//
-	// student
-	Initiator *string `json:"initiator,omitempty" xml:"initiator,omitempty"`
-	// example:
-	//
-	// 4
-	InteractionType *string `json:"interactionType,omitempty" xml:"interactionType,omitempty"`
-	Introduce       *string `json:"introduce,omitempty" xml:"introduce,omitempty"`
-	// example:
-	//
-	// prod-ydsf
-	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
-	OpeningRemarks *string `json:"openingRemarks,omitempty" xml:"openingRemarks,omitempty"`
-	// example:
-	//
-	// true
-	OrderAckFlag       *bool                                                      `json:"orderAckFlag,omitempty" xml:"orderAckFlag,omitempty"`
-	SampleDialogueList []*ListAICoachScriptPageResponseBodyListSampleDialogueList `json:"sampleDialogueList,omitempty" xml:"sampleDialogueList,omitempty" type:"Repeated"`
-	ScoreConfig        *ListAICoachScriptPageResponseBodyListScoreConfig          `json:"scoreConfig,omitempty" xml:"scoreConfig,omitempty" type:"Struct"`
-	// example:
-	//
-	// 1
-	ScriptRecordId     *string `json:"scriptRecordId,omitempty" xml:"scriptRecordId,omitempty"`
-	SparringTipContent *string `json:"sparringTipContent,omitempty" xml:"sparringTipContent,omitempty"`
-	SparringTipTitle   *string `json:"sparringTipTitle,omitempty" xml:"sparringTipTitle,omitempty"`
-	// example:
-	//
-	// 1
-	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// true
-	StudentThinkTimeFlag *bool `json:"studentThinkTimeFlag,omitempty" xml:"studentThinkTimeFlag,omitempty"`
-	// example:
-	//
-	// 1
-	Type    *int32                                        `json:"type,omitempty" xml:"type,omitempty"`
-	Weights *ListAICoachScriptPageResponseBodyListWeights `json:"weights,omitempty" xml:"weights,omitempty" type:"Struct"`
+	AppendQuestionFlag   *string                                                    `json:"appendQuestionFlag,omitempty" xml:"appendQuestionFlag,omitempty"`
+	AssessmentScope      *string                                                    `json:"assessmentScope,omitempty" xml:"assessmentScope,omitempty"`
+	ClosingRemarks       *string                                                    `json:"closingRemarks,omitempty" xml:"closingRemarks,omitempty"`
+	CompleteStrategy     *ListAICoachScriptPageResponseBodyListCompleteStrategy     `json:"completeStrategy,omitempty" xml:"completeStrategy,omitempty" type:"Struct"`
+	CoverUrl             *string                                                    `json:"coverUrl,omitempty" xml:"coverUrl,omitempty"`
+	CustomReplyRules     []*ListAICoachScriptPageResponseBodyListCustomReplyRules   `json:"customReplyRules,omitempty" xml:"customReplyRules,omitempty" type:"Repeated"`
+	DialogueTextFlag     *bool                                                      `json:"dialogueTextFlag,omitempty" xml:"dialogueTextFlag,omitempty"`
+	DialogueTipFlag      *bool                                                      `json:"dialogueTipFlag,omitempty" xml:"dialogueTipFlag,omitempty"`
+	EvaluateReportFlag   *bool                                                      `json:"evaluateReportFlag,omitempty" xml:"evaluateReportFlag,omitempty"`
+	Expressiveness       map[string]*string                                         `json:"expressiveness,omitempty" xml:"expressiveness,omitempty"`
+	GifDynamicUrl        *string                                                    `json:"gifDynamicUrl,omitempty" xml:"gifDynamicUrl,omitempty"`
+	GifStaticUrl         *string                                                    `json:"gifStaticUrl,omitempty" xml:"gifStaticUrl,omitempty"`
+	GmtCreate            *string                                                    `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified          *string                                                    `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Initiator            *string                                                    `json:"initiator,omitempty" xml:"initiator,omitempty"`
+	InteractionType      *string                                                    `json:"interactionType,omitempty" xml:"interactionType,omitempty"`
+	Introduce            *string                                                    `json:"introduce,omitempty" xml:"introduce,omitempty"`
+	Name                 *string                                                    `json:"name,omitempty" xml:"name,omitempty"`
+	OpeningRemarks       *string                                                    `json:"openingRemarks,omitempty" xml:"openingRemarks,omitempty"`
+	OrderAckFlag         *bool                                                      `json:"orderAckFlag,omitempty" xml:"orderAckFlag,omitempty"`
+	SampleDialogueList   []*ListAICoachScriptPageResponseBodyListSampleDialogueList `json:"sampleDialogueList,omitempty" xml:"sampleDialogueList,omitempty" type:"Repeated"`
+	ScoreConfig          *ListAICoachScriptPageResponseBodyListScoreConfig          `json:"scoreConfig,omitempty" xml:"scoreConfig,omitempty" type:"Struct"`
+	ScriptRecordId       *string                                                    `json:"scriptRecordId,omitempty" xml:"scriptRecordId,omitempty"`
+	SparringTipContent   *string                                                    `json:"sparringTipContent,omitempty" xml:"sparringTipContent,omitempty"`
+	SparringTipTitle     *string                                                    `json:"sparringTipTitle,omitempty" xml:"sparringTipTitle,omitempty"`
+	Status               *int32                                                     `json:"status,omitempty" xml:"status,omitempty"`
+	StudentThinkTimeFlag *bool                                                      `json:"studentThinkTimeFlag,omitempty" xml:"studentThinkTimeFlag,omitempty"`
+	Type                 *int32                                                     `json:"type,omitempty" xml:"type,omitempty"`
+	Weights              *ListAICoachScriptPageResponseBodyListWeights              `json:"weights,omitempty" xml:"weights,omitempty" type:"Struct"`
 }
 
 func (s ListAICoachScriptPageResponseBodyList) String() string {
@@ -517,18 +458,9 @@ func (s *ListAICoachScriptPageResponseBodyList) Validate() error {
 }
 
 type ListAICoachScriptPageResponseBodyListCompleteStrategy struct {
-	// example:
-	//
-	// true
-	ClickCompleteAutoEnd *bool `json:"clickCompleteAutoEnd,omitempty" xml:"clickCompleteAutoEnd,omitempty"`
-	// example:
-	//
-	// 75
-	Duration *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// example:
-	//
-	// false
-	FullCoverageAutoEnd *bool `json:"fullCoverageAutoEnd,omitempty" xml:"fullCoverageAutoEnd,omitempty"`
+	ClickCompleteAutoEnd *bool  `json:"clickCompleteAutoEnd,omitempty" xml:"clickCompleteAutoEnd,omitempty"`
+	Duration             *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
+	FullCoverageAutoEnd  *bool  `json:"fullCoverageAutoEnd,omitempty" xml:"fullCoverageAutoEnd,omitempty"`
 }
 
 func (s ListAICoachScriptPageResponseBodyListCompleteStrategy) String() string {
@@ -571,23 +503,12 @@ func (s *ListAICoachScriptPageResponseBodyListCompleteStrategy) Validate() error
 }
 
 type ListAICoachScriptPageResponseBodyListCustomReplyRules struct {
-	Action *ListAICoachScriptPageResponseBodyListCustomReplyRulesAction `json:"action,omitempty" xml:"action,omitempty" type:"Struct"`
-	// example:
-	//
-	// and
-	//
-	// or
+	Action        *ListAICoachScriptPageResponseBodyListCustomReplyRulesAction        `json:"action,omitempty" xml:"action,omitempty" type:"Struct"`
 	Logic         *string                                                             `json:"logic,omitempty" xml:"logic,omitempty"`
 	MainCondition *ListAICoachScriptPageResponseBodyListCustomReplyRulesMainCondition `json:"mainCondition,omitempty" xml:"mainCondition,omitempty" type:"Struct"`
-	// example:
-	//
-	// 1
-	Priority *int32 `json:"priority,omitempty" xml:"priority,omitempty"`
-	// example:
-	//
-	// 1
-	SortNo       *int32                                                             `json:"sortNo,omitempty" xml:"sortNo,omitempty"`
-	SubCondition *ListAICoachScriptPageResponseBodyListCustomReplyRulesSubCondition `json:"subCondition,omitempty" xml:"subCondition,omitempty" type:"Struct"`
+	Priority      *int32                                                              `json:"priority,omitempty" xml:"priority,omitempty"`
+	SortNo        *int32                                                              `json:"sortNo,omitempty" xml:"sortNo,omitempty"`
+	SubCondition  *ListAICoachScriptPageResponseBodyListCustomReplyRulesSubCondition  `json:"subCondition,omitempty" xml:"subCondition,omitempty" type:"Struct"`
 }
 
 func (s ListAICoachScriptPageResponseBodyListCustomReplyRules) String() string {
@@ -712,9 +633,6 @@ func (s *ListAICoachScriptPageResponseBodyListCustomReplyRulesAction) Validate()
 }
 
 type ListAICoachScriptPageResponseBodyListCustomReplyRulesActionParameters struct {
-	// example:
-	//
-	// 1
 	AssessPoint   *string `json:"assessPoint,omitempty" xml:"assessPoint,omitempty"`
 	CustomContent *string `json:"customContent,omitempty" xml:"customContent,omitempty"`
 }
@@ -790,9 +708,6 @@ func (s *ListAICoachScriptPageResponseBodyListCustomReplyRulesMainCondition) Val
 }
 
 type ListAICoachScriptPageResponseBodyListCustomReplyRulesMainConditionParameters struct {
-	// example:
-	//
-	// 1
 	AssessPoint *string `json:"assessPoint,omitempty" xml:"assessPoint,omitempty"`
 }
 
@@ -844,10 +759,7 @@ func (s *ListAICoachScriptPageResponseBodyListCustomReplyRulesSubCondition) Vali
 
 type ListAICoachScriptPageResponseBodyListSampleDialogueList struct {
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// student
-	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	Role    *string `json:"role,omitempty" xml:"role,omitempty"`
 }
 
 func (s ListAICoachScriptPageResponseBodyListSampleDialogueList) String() string {
@@ -881,19 +793,10 @@ func (s *ListAICoachScriptPageResponseBodyListSampleDialogueList) Validate() err
 }
 
 type ListAICoachScriptPageResponseBodyListScoreConfig struct {
-	// example:
-	//
-	// true
-	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// example:
-	//
-	// true
+	Enabled      *bool                                                     `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	LevelEnabled *bool                                                     `json:"levelEnabled,omitempty" xml:"levelEnabled,omitempty"`
 	Levels       []*ListAICoachScriptPageResponseBodyListScoreConfigLevels `json:"levels,omitempty" xml:"levels,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 60
-	PassScore *int32 `json:"passScore,omitempty" xml:"passScore,omitempty"`
+	PassScore    *int32                                                    `json:"passScore,omitempty" xml:"passScore,omitempty"`
 }
 
 func (s ListAICoachScriptPageResponseBodyListScoreConfig) String() string {
@@ -954,13 +857,7 @@ func (s *ListAICoachScriptPageResponseBodyListScoreConfig) Validate() error {
 }
 
 type ListAICoachScriptPageResponseBodyListScoreConfigLevels struct {
-	// example:
-	//
-	// 80
-	Max *int32 `json:"max,omitempty" xml:"max,omitempty"`
-	// example:
-	//
-	// 60
+	Max  *int32  `json:"max,omitempty" xml:"max,omitempty"`
 	Min  *int32  `json:"min,omitempty" xml:"min,omitempty"`
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
@@ -1005,46 +902,16 @@ func (s *ListAICoachScriptPageResponseBodyListScoreConfigLevels) Validate() erro
 }
 
 type ListAICoachScriptPageResponseBodyListWeights struct {
-	// example:
-	//
-	// 50
-	AssessmentPoint *int32 `json:"assessmentPoint,omitempty" xml:"assessmentPoint,omitempty"`
-	// example:
-	//
-	// true
-	AssessmentPointEnabled *bool `json:"assessmentPointEnabled,omitempty" xml:"assessmentPointEnabled,omitempty"`
-	// example:
-	//
-	// true
-	CustomReplyRuleEnabled *bool `json:"customReplyRuleEnabled,omitempty" xml:"customReplyRuleEnabled,omitempty"`
-	// example:
-	//
-	// 30
-	Expressiveness *int32 `json:"expressiveness,omitempty" xml:"expressiveness,omitempty"`
-	// example:
-	//
-	// true
-	ExpressivenessEnabled *bool `json:"expressivenessEnabled,omitempty" xml:"expressivenessEnabled,omitempty"`
-	// example:
-	//
-	// 20
-	PointDeductionRule *int32 `json:"pointDeductionRule,omitempty" xml:"pointDeductionRule,omitempty"`
-	// example:
-	//
-	// true
-	PointDeductionRuleEnabled *bool `json:"pointDeductionRuleEnabled,omitempty" xml:"pointDeductionRuleEnabled,omitempty"`
-	// example:
-	//
-	// true
-	SimilarPronunciationScoringEnabled *bool `json:"similarPronunciationScoringEnabled,omitempty" xml:"similarPronunciationScoringEnabled,omitempty"`
-	// example:
-	//
-	// 20
-	Standard *int32 `json:"standard,omitempty" xml:"standard,omitempty"`
-	// example:
-	//
-	// true
-	StandardEnabled *bool `json:"standardEnabled,omitempty" xml:"standardEnabled,omitempty"`
+	AssessmentPoint                    *int32 `json:"assessmentPoint,omitempty" xml:"assessmentPoint,omitempty"`
+	AssessmentPointEnabled             *bool  `json:"assessmentPointEnabled,omitempty" xml:"assessmentPointEnabled,omitempty"`
+	CustomReplyRuleEnabled             *bool  `json:"customReplyRuleEnabled,omitempty" xml:"customReplyRuleEnabled,omitempty"`
+	Expressiveness                     *int32 `json:"expressiveness,omitempty" xml:"expressiveness,omitempty"`
+	ExpressivenessEnabled              *bool  `json:"expressivenessEnabled,omitempty" xml:"expressivenessEnabled,omitempty"`
+	PointDeductionRule                 *int32 `json:"pointDeductionRule,omitempty" xml:"pointDeductionRule,omitempty"`
+	PointDeductionRuleEnabled          *bool  `json:"pointDeductionRuleEnabled,omitempty" xml:"pointDeductionRuleEnabled,omitempty"`
+	SimilarPronunciationScoringEnabled *bool  `json:"similarPronunciationScoringEnabled,omitempty" xml:"similarPronunciationScoringEnabled,omitempty"`
+	Standard                           *int32 `json:"standard,omitempty" xml:"standard,omitempty"`
+	StandardEnabled                    *bool  `json:"standardEnabled,omitempty" xml:"standardEnabled,omitempty"`
 }
 
 func (s ListAICoachScriptPageResponseBodyListWeights) String() string {

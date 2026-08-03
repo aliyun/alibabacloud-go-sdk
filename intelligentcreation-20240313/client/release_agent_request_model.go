@@ -14,9 +14,6 @@ type iReleaseAgentRequest interface {
 }
 
 type ReleaseAgentRequest struct {
-	// example:
-	//
-	// 1
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
 }
 

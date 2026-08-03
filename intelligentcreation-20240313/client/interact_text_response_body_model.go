@@ -26,25 +26,13 @@ type iInteractTextResponseBody interface {
 }
 
 type InteractTextResponseBody struct {
-	// example:
-	//
-	// false
-	End *bool `json:"end,omitempty" xml:"end,omitempty"`
-	// example:
-	//
-	// 1
+	End           *bool     `json:"end,omitempty" xml:"end,omitempty"`
 	Index         *int32    `json:"index,omitempty" xml:"index,omitempty"`
 	Message       *string   `json:"message,omitempty" xml:"message,omitempty"`
 	RelatedImages []*string `json:"relatedImages,omitempty" xml:"relatedImages,omitempty" type:"Repeated"`
 	RelatedVideos []*string `json:"relatedVideos,omitempty" xml:"relatedVideos,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 79e954faffe2415ebd18188ba787d78e
-	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// example:
-	//
-	// 2
-	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	SessionId     *string   `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	Type          *int32    `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s InteractTextResponseBody) String() string {

@@ -14,9 +14,6 @@ type iQueryAvatarProjectRequest interface {
 }
 
 type QueryAvatarProjectRequest struct {
-	// example:
-	//
-	// 11111
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
 }
 

@@ -14,9 +14,6 @@ type iSendSdkStreamMessageResponseBody interface {
 }
 
 type SendSdkStreamMessageResponseBody struct {
-	// example:
-	//
-	// {"id":"123"}
 	CommonStreamMessage *string `json:"commonStreamMessage,omitempty" xml:"commonStreamMessage,omitempty"`
 }
 

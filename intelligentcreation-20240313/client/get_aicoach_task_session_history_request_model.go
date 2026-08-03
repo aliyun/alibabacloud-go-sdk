@@ -20,16 +20,10 @@ type iGetAICoachTaskSessionHistoryRequest interface {
 }
 
 type GetAICoachTaskSessionHistoryRequest struct {
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// example:
-	//
-	// 111
-	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// example:
-	//
-	// 1251317954812712
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	PageNumber *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	SessionId  *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	Uid        *string `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
 func (s GetAICoachTaskSessionHistoryRequest) String() string {

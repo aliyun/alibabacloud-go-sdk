@@ -30,37 +30,15 @@ type iGetAICoachCheatDetectionResponseBody interface {
 }
 
 type GetAICoachCheatDetectionResponseBody struct {
-	// example:
-	//
-	// 1
-	CheatId *string `json:"cheatId,omitempty" xml:"cheatId,omitempty"`
-	// example:
-	//
-	// success
-	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// example:
-	//
-	// 2025-02-24 12:00:00
-	GmtCreate  *string                                         `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	ImageCheat *GetAICoachCheatDetectionResponseBodyImageCheat `json:"imageCheat,omitempty" xml:"imageCheat,omitempty" type:"Struct"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 0E8B1746-AE35-5C4B-A3A8-345B274AE32C
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 1
-	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// true
-	//
-	// example:
-	//
-	// True
-	Success    *bool                                           `json:"success,omitempty" xml:"success,omitempty"`
-	VoiceCheat *GetAICoachCheatDetectionResponseBodyVoiceCheat `json:"voiceCheat,omitempty" xml:"voiceCheat,omitempty" type:"Struct"`
+	CheatId      *string                                         `json:"cheatId,omitempty" xml:"cheatId,omitempty"`
+	ErrorCode    *string                                         `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                         `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	GmtCreate    *string                                         `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	ImageCheat   *GetAICoachCheatDetectionResponseBodyImageCheat `json:"imageCheat,omitempty" xml:"imageCheat,omitempty" type:"Struct"`
+	RequestId    *string                                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Status       *int32                                          `json:"status,omitempty" xml:"status,omitempty"`
+	Success      *bool                                           `json:"success,omitempty" xml:"success,omitempty"`
+	VoiceCheat   *GetAICoachCheatDetectionResponseBodyVoiceCheat `json:"voiceCheat,omitempty" xml:"voiceCheat,omitempty" type:"Struct"`
 }
 
 func (s GetAICoachCheatDetectionResponseBody) String() string {
@@ -167,15 +145,9 @@ func (s *GetAICoachCheatDetectionResponseBody) Validate() error {
 }
 
 type GetAICoachCheatDetectionResponseBodyImageCheat struct {
-	// example:
-	//
-	// demo
-	Desc *string                                               `json:"desc,omitempty" xml:"desc,omitempty"`
-	List []*GetAICoachCheatDetectionResponseBodyImageCheatList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	Desc   *string                                               `json:"desc,omitempty" xml:"desc,omitempty"`
+	List   []*GetAICoachCheatDetectionResponseBodyImageCheatList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	Status *int32                                                `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s GetAICoachCheatDetectionResponseBodyImageCheat) String() string {
@@ -227,14 +199,8 @@ func (s *GetAICoachCheatDetectionResponseBodyImageCheat) Validate() error {
 }
 
 type GetAICoachCheatDetectionResponseBodyImageCheatList struct {
-	// example:
-	//
-	// 2025-03-22 10:05:07
 	Time *string `json:"time,omitempty" xml:"time,omitempty"`
-	// example:
-	//
-	// https://demo.com
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	Url  *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s GetAICoachCheatDetectionResponseBodyImageCheatList) String() string {
@@ -269,15 +235,9 @@ func (s *GetAICoachCheatDetectionResponseBodyImageCheatList) Validate() error {
 
 type GetAICoachCheatDetectionResponseBodyVoiceCheat struct {
 	ComparisonList []*GetAICoachCheatDetectionResponseBodyVoiceCheatComparisonList `json:"comparisonList,omitempty" xml:"comparisonList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// demo
-	Desc         *string                                                       `json:"desc,omitempty" xml:"desc,omitempty"`
-	OriginalList []*GetAICoachCheatDetectionResponseBodyVoiceCheatOriginalList `json:"originalList,omitempty" xml:"originalList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	Desc           *string                                                         `json:"desc,omitempty" xml:"desc,omitempty"`
+	OriginalList   []*GetAICoachCheatDetectionResponseBodyVoiceCheatOriginalList   `json:"originalList,omitempty" xml:"originalList,omitempty" type:"Repeated"`
+	Status         *int32                                                          `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s GetAICoachCheatDetectionResponseBodyVoiceCheat) String() string {
@@ -347,14 +307,8 @@ func (s *GetAICoachCheatDetectionResponseBodyVoiceCheat) Validate() error {
 }
 
 type GetAICoachCheatDetectionResponseBodyVoiceCheatComparisonList struct {
-	// example:
-	//
-	// 2024-12-11 10:07:23
 	Time *string `json:"time,omitempty" xml:"time,omitempty"`
-	// example:
-	//
-	// https://demo.com
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	Url  *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s GetAICoachCheatDetectionResponseBodyVoiceCheatComparisonList) String() string {
@@ -388,9 +342,6 @@ func (s *GetAICoachCheatDetectionResponseBodyVoiceCheatComparisonList) Validate(
 }
 
 type GetAICoachCheatDetectionResponseBodyVoiceCheatOriginalList struct {
-	// example:
-	//
-	// https://demo.com
 	Url *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 

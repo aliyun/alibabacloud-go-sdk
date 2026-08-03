@@ -14,9 +14,6 @@ type iGetAICoachCheatDetectionRequest interface {
 }
 
 type GetAICoachCheatDetectionRequest struct {
-	// example:
-	//
-	// 79e954faffe2415ebd18188ba787d78e
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
 }
 

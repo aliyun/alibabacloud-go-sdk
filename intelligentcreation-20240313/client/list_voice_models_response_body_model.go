@@ -26,33 +26,13 @@ type iListVoiceModelsResponseBody interface {
 }
 
 type ListVoiceModelsResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// 040002
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// example:
-	//
-	// Failed to proxy flink ui request, message: An error occurred: Invalid UUID string: jobsn
+	Code         *string               `json:"code,omitempty" xml:"code,omitempty"`
+	ErrorCode    *string               `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string               `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
 	List         []*VoiceModelResponse `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 14878724-A835-578D-9DD5-4779ADCE9221
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 10
-	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+	RequestId    *string               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool                 `json:"success,omitempty" xml:"success,omitempty"`
+	Total        *int32                `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListVoiceModelsResponseBody) String() string {

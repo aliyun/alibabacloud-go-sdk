@@ -14,9 +14,6 @@ type iGetTextTemplateRequest interface {
 }
 
 type GetTextTemplateRequest struct {
-	// example:
-	//
-	// Car
 	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
 }
 

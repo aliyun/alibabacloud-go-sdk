@@ -22,28 +22,11 @@ type iSendSdkStreamMessageRequest interface {
 }
 
 type SendSdkStreamMessageRequest struct {
-	// example:
-	//
-	// {"test":""}
-	Data *string `json:"data,omitempty" xml:"data,omitempty"`
-	// header
-	//
-	// example:
-	//
-	// {}
-	Header *string `json:"header,omitempty" xml:"header,omitempty"`
-	// example:
-	//
-	// avatar
-	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
-	// example:
-	//
-	// GetProject
+	Data          *string `json:"data,omitempty" xml:"data,omitempty"`
+	Header        *string `json:"header,omitempty" xml:"header,omitempty"`
+	ModuleName    *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
 	OperationName *string `json:"operationName,omitempty" xml:"operationName,omitempty"`
-	// example:
-	//
-	// 123456
-	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserId        *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s SendSdkStreamMessageRequest) String() string {

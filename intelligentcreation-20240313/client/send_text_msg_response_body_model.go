@@ -16,14 +16,8 @@ type iSendTextMsgResponseBody interface {
 }
 
 type SendTextMsgResponseBody struct {
-	// example:
-	//
-	// 827BF714-19E7-51B5-A434-C21BFEE05983
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// SUCCESS
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s SendTextMsgResponseBody) String() string {

@@ -20,22 +20,10 @@ type iOperateAvatarProjectRequest interface {
 }
 
 type OperateAvatarProjectRequest struct {
-	// example:
-	//
-	// DELETE
-	OperateType *string `json:"operateType,omitempty" xml:"operateType,omitempty"`
-	// example:
-	//
-	// 812907463682949120
-	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	// example:
-	//
-	// 1
-	ResChannelNumber *int32 `json:"resChannelNumber,omitempty" xml:"resChannelNumber,omitempty"`
-	// example:
-	//
-	// FREE
-	ResType *string `json:"resType,omitempty" xml:"resType,omitempty"`
+	OperateType      *string `json:"operateType,omitempty" xml:"operateType,omitempty"`
+	ProjectId        *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	ResChannelNumber *int32  `json:"resChannelNumber,omitempty" xml:"resChannelNumber,omitempty"`
+	ResType          *string `json:"resType,omitempty" xml:"resType,omitempty"`
 }
 
 func (s OperateAvatarProjectRequest) String() string {

@@ -14,9 +14,6 @@ type iBuildAICoachScriptRecordRequest interface {
 }
 
 type BuildAICoachScriptRecordRequest struct {
-	// example:
-	//
-	// https://xxx/data.json
 	ScriptJsonUrl *string `json:"scriptJsonUrl,omitempty" xml:"scriptJsonUrl,omitempty"`
 }
 

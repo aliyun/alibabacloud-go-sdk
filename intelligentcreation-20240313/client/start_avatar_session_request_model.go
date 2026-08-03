@@ -25,14 +25,8 @@ type StartAvatarSessionRequest struct {
 	ChannelToken  *string `json:"channelToken,omitempty" xml:"channelToken,omitempty"`
 	CustomPushUrl *string `json:"customPushUrl,omitempty" xml:"customPushUrl,omitempty"`
 	CustomUserId  *string `json:"customUserId,omitempty" xml:"customUserId,omitempty"`
-	// example:
-	//
-	// 13534711288320
-	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	// example:
-	//
-	// 15ED6083-B0B8-5B2A-BEDB-94A5C687C812
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ProjectId     *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	RequestId     *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s StartAvatarSessionRequest) String() string {

@@ -1334,6 +1334,96 @@ func (client *Client) CreateAnchor(request *CreateAnchorRequest) (_result *Creat
 
 // Summary:
 //
+// 创建文档生成剧本任务
+//
+// @param request - CreateGenerateAICoachScriptTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGenerateAICoachScriptTaskResponse
+func (client *Client) CreateGenerateAICoachScriptTaskWithOptions(request *CreateGenerateAICoachScriptTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGenerateAICoachScriptTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AssessmentPoint) {
+		body["assessmentPoint"] = request.AssessmentPoint
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DialogueKey) {
+		body["dialogueKey"] = request.DialogueKey
+	}
+
+	if !dara.IsNil(request.DialogueUrl) {
+		body["dialogueUrl"] = request.DialogueUrl
+	}
+
+	if !dara.IsNil(request.DocList) {
+		body["docList"] = request.DocList
+	}
+
+	if !dara.IsNil(request.DocUrlList) {
+		body["docUrlList"] = request.DocUrlList
+	}
+
+	if !dara.IsNil(request.ScriptName) {
+		body["scriptName"] = request.ScriptName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateGenerateAICoachScriptTask"),
+		Version:     dara.String("2024-03-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/yic/yic-console/openService/v1/aicoach/scriptGenerateTask"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateGenerateAICoachScriptTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建文档生成剧本任务
+//
+// @param request - CreateGenerateAICoachScriptTaskRequest
+//
+// @return CreateGenerateAICoachScriptTaskResponse
+func (client *Client) CreateGenerateAICoachScriptTask(request *CreateGenerateAICoachScriptTaskRequest) (_result *CreateGenerateAICoachScriptTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateGenerateAICoachScriptTaskResponse{}
+	_body, _err := client.CreateGenerateAICoachScriptTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建配图生成任务
 //
 // @param request - CreateIllustrationTaskRequest
@@ -2508,6 +2598,92 @@ func (client *Client) GetAICoachCheatDetection(request *GetAICoachCheatDetection
 
 // Summary:
 //
+// 查看剧本调试详情
+//
+// @param request - GetAICoachDebugResultRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAICoachDebugResultResponse
+func (client *Client) GetAICoachDebugResultWithOptions(request *GetAICoachDebugResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAICoachDebugResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DataId) {
+		query["dataId"] = request.DataId
+	}
+
+	if !dara.IsNil(request.DataType) {
+		query["dataType"] = request.DataType
+	}
+
+	if !dara.IsNil(request.ScriptDebugId) {
+		query["scriptDebugId"] = request.ScriptDebugId
+	}
+
+	if !dara.IsNil(request.ScriptRecordId) {
+		query["scriptRecordId"] = request.ScriptRecordId
+	}
+
+	if !dara.IsNil(request.ScriptSnapshotId) {
+		query["scriptSnapshotId"] = request.ScriptSnapshotId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["taskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAICoachDebugResult"),
+		Version:     dara.String("2024-03-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/yic/yic-console/openService/v1/aicoach/getDebugResult"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAICoachDebugResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看剧本调试详情
+//
+// @param request - GetAICoachDebugResultRequest
+//
+// @return GetAICoachDebugResultResponse
+func (client *Client) GetAICoachDebugResult(request *GetAICoachDebugResultRequest) (_result *GetAICoachDebugResultResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAICoachDebugResultResponse{}
+	_body, _err := client.GetAICoachDebugResultWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询剧本详情
 //
 // @param request - GetAICoachScriptRequest
@@ -2565,6 +2741,72 @@ func (client *Client) GetAICoachScript(request *GetAICoachScriptRequest) (_resul
 	headers := make(map[string]*string)
 	_result = &GetAICoachScriptResponse{}
 	_body, _err := client.GetAICoachScriptWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询文档生成剧本任务结果
+//
+// @param request - GetAICoachScriptGenerateTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAICoachScriptGenerateTaskResponse
+func (client *Client) GetAICoachScriptGenerateTaskWithOptions(request *GetAICoachScriptGenerateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAICoachScriptGenerateTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		query["taskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAICoachScriptGenerateTask"),
+		Version:     dara.String("2024-03-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/yic/yic-console/openService/v1/aicoach/scriptGenerateTask"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAICoachScriptGenerateTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询文档生成剧本任务结果
+//
+// @param request - GetAICoachScriptGenerateTaskRequest
+//
+// @return GetAICoachScriptGenerateTaskResponse
+func (client *Client) GetAICoachScriptGenerateTask(request *GetAICoachScriptGenerateTaskRequest) (_result *GetAICoachScriptGenerateTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAICoachScriptGenerateTaskResponse{}
+	_body, _err := client.GetAICoachScriptGenerateTaskWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3452,6 +3694,84 @@ func (client *Client) ListAICoachTaskPage(request *ListAICoachTaskPageRequest) (
 	headers := make(map[string]*string)
 	_result = &ListAICoachTaskPageResponse{}
 	_body, _err := client.ListAICoachTaskPageWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据剧本对练任务查询会话历史
+//
+// @param request - ListAICoachTaskSessionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAICoachTaskSessionResponse
+func (client *Client) ListAICoachTaskSessionWithOptions(request *ListAICoachTaskSessionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAICoachTaskSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["sessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["taskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAICoachTaskSession"),
+		Version:     dara.String("2024-03-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/yic/yic-console/openService/v1/aicoach/listTaskSession"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAICoachTaskSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据剧本对练任务查询会话历史
+//
+// @param request - ListAICoachTaskSessionRequest
+//
+// @return ListAICoachTaskSessionResponse
+func (client *Client) ListAICoachTaskSession(request *ListAICoachTaskSessionRequest) (_result *ListAICoachTaskSessionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAICoachTaskSessionResponse{}
+	_body, _err := client.ListAICoachTaskSessionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5358,6 +5678,92 @@ func (client *Client) StopProjectTask(request *StopProjectTaskRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &StopProjectTaskResponse{}
 	_body, _err := client.StopProjectTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交剧本考核点调试
+//
+// @param request - SubmitAICoachDebugRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitAICoachDebugResponse
+func (client *Client) SubmitAICoachDebugWithOptions(request *SubmitAICoachDebugRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitAICoachDebugResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DataId) {
+		body["dataId"] = request.DataId
+	}
+
+	if !dara.IsNil(request.DataType) {
+		body["dataType"] = request.DataType
+	}
+
+	if !dara.IsNil(request.DeductionRule) {
+		body["deductionRule"] = request.DeductionRule
+	}
+
+	if !dara.IsNil(request.DialogueList) {
+		body["dialogueList"] = request.DialogueList
+	}
+
+	if !dara.IsNil(request.Expressiveness) {
+		body["expressiveness"] = request.Expressiveness
+	}
+
+	if !dara.IsNil(request.Point) {
+		body["point"] = request.Point
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitAICoachDebug"),
+		Version:     dara.String("2024-03-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/yic/yic-console/openService/v1/aicoach/saveDebug"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitAICoachDebugResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交剧本考核点调试
+//
+// @param request - SubmitAICoachDebugRequest
+//
+// @return SubmitAICoachDebugResponse
+func (client *Client) SubmitAICoachDebug(request *SubmitAICoachDebugRequest) (_result *SubmitAICoachDebugResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SubmitAICoachDebugResponse{}
+	_body, _err := client.SubmitAICoachDebugWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

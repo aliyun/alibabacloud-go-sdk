@@ -22,30 +22,11 @@ type iSendSdkMessageResponseBody interface {
 }
 
 type SendSdkMessageResponseBody struct {
-	// example:
-	//
-	// {}
-	Data *string `json:"data,omitempty" xml:"data,omitempty"`
-	// example:
-	//
-	// system-01
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// example:
-	//
-	// SYSTEM_ERROR
+	Data         *string `json:"data,omitempty" xml:"data,omitempty"`
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 86A90C40-D1AB-50DA-A4B1-0D545F80F2FE
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s SendSdkMessageResponseBody) String() string {

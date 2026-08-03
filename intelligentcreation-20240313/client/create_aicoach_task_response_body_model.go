@@ -22,25 +22,11 @@ type iCreateAICoachTaskResponseBody interface {
 }
 
 type CreateAICoachTaskResponseBody struct {
-	// example:
-	//
-	// Deduct.DeductTaskAlreadySuccess
 	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 0E8B1746-AE35-5C4B-A3A8-345B274AE32C
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 821882330423951360
-	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TaskId       *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 
 func (s CreateAICoachTaskResponseBody) String() string {

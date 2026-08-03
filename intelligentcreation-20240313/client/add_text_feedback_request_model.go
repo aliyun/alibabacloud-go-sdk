@@ -19,14 +19,8 @@ type iAddTextFeedbackRequest interface {
 
 type AddTextFeedbackRequest struct {
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// example:
-	//
-	// 1
-	Quality *int32 `json:"quality,omitempty" xml:"quality,omitempty"`
-	// example:
-	//
-	// 8478
-	TextId *int64 `json:"textId,omitempty" xml:"textId,omitempty"`
+	Quality *int32  `json:"quality,omitempty" xml:"quality,omitempty"`
+	TextId  *int64  `json:"textId,omitempty" xml:"textId,omitempty"`
 }
 
 func (s AddTextFeedbackRequest) String() string {

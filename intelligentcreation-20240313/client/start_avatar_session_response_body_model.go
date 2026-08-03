@@ -23,13 +23,7 @@ type iStartAvatarSessionResponseBody interface {
 
 type StartAvatarSessionResponseBody struct {
 	ChannelToken *string `json:"channelToken,omitempty" xml:"channelToken,omitempty"`
-	// example:
-	//
-	// 0E8B1746-AE35-5C4B-A3A8-345B274AE32C
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 121dlsga4o7golrl1hoja
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	SessionId    *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
 	Token        *string `json:"token,omitempty" xml:"token,omitempty"`
 	WebSocketUrl *string `json:"webSocketUrl,omitempty" xml:"webSocketUrl,omitempty"`

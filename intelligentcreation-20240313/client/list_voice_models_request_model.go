@@ -24,24 +24,12 @@ type iListVoiceModelsRequest interface {
 }
 
 type ListVoiceModelsRequest struct {
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize    *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	ResSpecType *string `json:"resSpecType,omitempty" xml:"resSpecType,omitempty"`
-	// example:
-	//
-	// offlineSynthesis
+	PageNumber    *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize      *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ResSpecType   *string `json:"resSpecType,omitempty" xml:"resSpecType,omitempty"`
 	UseScene      *string `json:"useScene,omitempty" xml:"useScene,omitempty"`
 	VoiceLanguage *string `json:"voiceLanguage,omitempty" xml:"voiceLanguage,omitempty"`
-	// example:
-	//
-	// PRIVATE_VOICE
-	VoiceType *string `json:"voiceType,omitempty" xml:"voiceType,omitempty"`
+	VoiceType     *string `json:"voiceType,omitempty" xml:"voiceType,omitempty"`
 }
 
 func (s ListVoiceModelsRequest) String() string {

@@ -16,14 +16,8 @@ type iCreateAICoachTaskSessionRequest interface {
 }
 
 type CreateAICoachTaskSessionRequest struct {
-	// example:
-	//
-	// 821882330423951360
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// example:
-	//
-	// 1730530943640489
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	Uid    *string `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
 func (s CreateAICoachTaskSessionRequest) String() string {

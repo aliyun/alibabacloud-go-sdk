@@ -20,9 +20,6 @@ type iCreateAICoachTaskRequest interface {
 }
 
 type CreateAICoachTaskRequest struct {
-	// example:
-	//
-	// 541E7123-2E8A-5BA2-AC38-665650C84129
 	RequestId       *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	ScriptRecordId  *string `json:"scriptRecordId,omitempty" xml:"scriptRecordId,omitempty"`
 	StudentAudioUrl *string `json:"studentAudioUrl,omitempty" xml:"studentAudioUrl,omitempty"`

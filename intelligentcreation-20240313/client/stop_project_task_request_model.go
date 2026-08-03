@@ -14,9 +14,6 @@ type iStopProjectTaskRequest interface {
 }
 
 type StopProjectTaskRequest struct {
-	// example:
-	//
-	// 1111111
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 

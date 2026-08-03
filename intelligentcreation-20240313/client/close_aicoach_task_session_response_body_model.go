@@ -16,9 +16,6 @@ type iCloseAICoachTaskSessionResponseBody interface {
 }
 
 type CloseAICoachTaskSessionResponseBody struct {
-	// example:
-	//
-	// 0E06E0AA-D5B6-538C-8CE9-BAB79C68B690
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
 }

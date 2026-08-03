@@ -24,29 +24,12 @@ type iBuildAICoachScriptRecordResponseBody interface {
 }
 
 type BuildAICoachScriptRecordResponseBody struct {
-	Data *BuildAICoachScriptRecordResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// example:
-	//
-	// PARAM_ERROR
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// example:
-	//
-	// Deduct task already success,Please do not resubmit.token \\"369e8f2c-d283-424a-96c4-c83efe08c89e\\"
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 4830493A-728F-5F19-BBCC-1443292E9C49
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 1
-	ScriptRecordId *string `json:"scriptRecordId,omitempty" xml:"scriptRecordId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Data           *BuildAICoachScriptRecordResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrorCode      *string                                   `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage   *string                                   `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId      *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ScriptRecordId *string                                   `json:"scriptRecordId,omitempty" xml:"scriptRecordId,omitempty"`
+	Success        *bool                                     `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s BuildAICoachScriptRecordResponseBody) String() string {
@@ -121,9 +104,6 @@ func (s *BuildAICoachScriptRecordResponseBody) Validate() error {
 }
 
 type BuildAICoachScriptRecordResponseBodyData struct {
-	// example:
-	//
-	// 1234567
 	ScriptId *string `json:"scriptId,omitempty" xml:"scriptId,omitempty"`
 }
 

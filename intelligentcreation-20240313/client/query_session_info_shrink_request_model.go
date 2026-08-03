@@ -20,17 +20,8 @@ type iQuerySessionInfoShrinkRequest interface {
 }
 
 type QuerySessionInfoShrinkRequest struct {
-	// example:
-	//
-	// 1
-	PageNo *int32 `json:"pageNo,omitempty" xml:"pageNo,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// example:
-	//
-	// 805800890535673856
+	PageNo           *int32  `json:"pageNo,omitempty" xml:"pageNo,omitempty"`
+	PageSize         *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	ProjectId        *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
 	StatusListShrink *string `json:"statusList,omitempty" xml:"statusList,omitempty"`
 }

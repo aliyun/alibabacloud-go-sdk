@@ -30,30 +30,15 @@ type iQueryAvatarProjectResponseBody interface {
 }
 
 type QueryAvatarProjectResponseBody struct {
-	// example:
-	//
-	// 1000222
-	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// example:
-	//
-	// error
-	ErrorMsg *string                                 `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	Frames   []*QueryAvatarProjectResponseBodyFrames `json:"frames,omitempty" xml:"frames,omitempty" type:"Repeated"`
-	// example:
-	//
-	// doc_test_3
-	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	// example:
-	//
-	// 2C331582-7390-5949-8D9A-AC8239185B37
-	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	ResSpecType    *string `json:"resSpecType,omitempty" xml:"resSpecType,omitempty"`
-	ScaleType      *string `json:"scaleType,omitempty" xml:"scaleType,omitempty"`
-	ScriptModelTag *string `json:"scriptModelTag,omitempty" xml:"scriptModelTag,omitempty"`
-	// example:
-	//
-	// DEPLOYING
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	AgentId        *string                                 `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	ErrorMsg       *string                                 `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	Frames         []*QueryAvatarProjectResponseBodyFrames `json:"frames,omitempty" xml:"frames,omitempty" type:"Repeated"`
+	ProjectName    *string                                 `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	RequestId      *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ResSpecType    *string                                 `json:"resSpecType,omitempty" xml:"resSpecType,omitempty"`
+	ScaleType      *string                                 `json:"scaleType,omitempty" xml:"scaleType,omitempty"`
+	ScriptModelTag *string                                 `json:"scriptModelTag,omitempty" xml:"scriptModelTag,omitempty"`
+	Status         *string                                 `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s QueryAvatarProjectResponseBody) String() string {

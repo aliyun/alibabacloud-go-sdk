@@ -14,9 +14,6 @@ type iQueryAvatarResourceRequest interface {
 }
 
 type QueryAvatarResourceRequest struct {
-	// example:
-	//
-	// 11111
 	IdempotentId *string `json:"idempotentId,omitempty" xml:"idempotentId,omitempty"`
 }
 

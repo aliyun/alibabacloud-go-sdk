@@ -24,30 +24,12 @@ type iGetProjectTaskResponseBody interface {
 }
 
 type GetProjectTaskResponseBody struct {
-	// example:
-	//
-	// error
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// example:
-	//
-	// 5389BE87-571B-573C-90ED-F07C5E68760B
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// SUCCESS
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// www.ali.com
+	ErrorMsg         *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	RequestId        *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Status           *string `json:"status,omitempty" xml:"status,omitempty"`
 	VideoDownloadUrl *string `json:"videoDownloadUrl,omitempty" xml:"videoDownloadUrl,omitempty"`
-	// example:
-	//
-	// 111
-	VideoDuration *int32 `json:"videoDuration,omitempty" xml:"videoDuration,omitempty"`
-	// example:
-	//
-	// www.ali.com
-	VideoUrl *string `json:"videoUrl,omitempty" xml:"videoUrl,omitempty"`
+	VideoDuration    *int32  `json:"videoDuration,omitempty" xml:"videoDuration,omitempty"`
+	VideoUrl         *string `json:"videoUrl,omitempty" xml:"videoUrl,omitempty"`
 }
 
 func (s GetProjectTaskResponseBody) String() string {

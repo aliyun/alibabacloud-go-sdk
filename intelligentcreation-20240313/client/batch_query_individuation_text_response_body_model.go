@@ -16,11 +16,6 @@ type iBatchQueryIndividuationTextResponseBody interface {
 }
 
 type BatchQueryIndividuationTextResponseBody struct {
-	// Id of the request
-	//
-	// example:
-	//
-	// 14878724-A835-578D-9DD5-4779ADCE9221
 	RequestId *string                                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	TextList  []*BatchQueryIndividuationTextResponseBodyTextList `json:"textList,omitempty" xml:"textList,omitempty" type:"Repeated"`
 }
@@ -65,43 +60,16 @@ func (s *BatchQueryIndividuationTextResponseBody) Validate() error {
 }
 
 type BatchQueryIndividuationTextResponseBodyTextList struct {
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// example:
-	//
-	// yyyy-MM-dd HH:mm:ss
+	Content    *string `json:"content,omitempty" xml:"content,omitempty"`
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// example:
-	//
-	// 1
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// example:
-	//
-	// 2849286
-	ItemId *string `json:"itemId,omitempty" xml:"itemId,omitempty"`
-	// example:
-	//
-	// 812884915104530432
-	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	// example:
-	//
-	// 1
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// 837074737851613184
-	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// example:
-	//
-	// 110825
-	TextId *string `json:"textId,omitempty" xml:"textId,omitempty"`
-	// example:
-	//
-	// yyyy-MM-dd HH:mm:ss
+	ErrorMsg   *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	ItemId     *string `json:"itemId,omitempty" xml:"itemId,omitempty"`
+	ProjectId  *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	Status     *string `json:"status,omitempty" xml:"status,omitempty"`
+	TaskId     *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	TextId     *string `json:"textId,omitempty" xml:"textId,omitempty"`
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// example:
-	//
-	// 11
-	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserId     *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s BatchQueryIndividuationTextResponseBodyTextList) String() string {

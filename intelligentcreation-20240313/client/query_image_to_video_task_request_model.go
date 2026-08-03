@@ -14,9 +14,6 @@ type iQueryImageToVideoTaskRequest interface {
 }
 
 type QueryImageToVideoTaskRequest struct {
-	// example:
-	//
-	// 868125994191405056
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 

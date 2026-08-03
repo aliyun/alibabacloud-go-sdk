@@ -16,9 +16,6 @@ type iBatchDeletePracticeTaskShrinkRequest interface {
 }
 
 type BatchDeletePracticeTaskShrinkRequest struct {
-	// example:
-	//
-	// 1234567890
 	IdempotentId  *string `json:"idempotentId,omitempty" xml:"idempotentId,omitempty"`
 	TaskIdsShrink *string `json:"taskIds,omitempty" xml:"taskIds,omitempty"`
 }

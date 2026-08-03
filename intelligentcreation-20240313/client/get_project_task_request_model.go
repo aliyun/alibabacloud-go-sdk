@@ -16,14 +16,8 @@ type iGetProjectTaskRequest interface {
 }
 
 type GetProjectTaskRequest struct {
-	// example:
-	//
-	// 20230823218109326025-1200
 	IdempotentId *string `json:"IdempotentId,omitempty" xml:"IdempotentId,omitempty"`
-	// example:
-	//
-	// 313123123
-	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	TaskId       *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 
 func (s GetProjectTaskRequest) String() string {

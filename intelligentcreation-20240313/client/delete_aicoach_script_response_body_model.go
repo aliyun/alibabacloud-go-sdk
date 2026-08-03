@@ -16,16 +16,8 @@ type iDeleteAICoachScriptResponseBody interface {
 }
 
 type DeleteAICoachScriptResponseBody struct {
-	// Id of the request
-	//
-	// example:
-	//
-	// 0E8B1746-AE35-5C4B-A3A8-345B274AE32C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// Success
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s DeleteAICoachScriptResponseBody) String() string {

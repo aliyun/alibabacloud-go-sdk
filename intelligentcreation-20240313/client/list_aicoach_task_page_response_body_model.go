@@ -18,11 +18,6 @@ type iListAICoachTaskPageResponseBody interface {
 }
 
 type ListAICoachTaskPageResponseBody struct {
-	// Id of the request
-	//
-	// example:
-	//
-	// D7F2B74F-63F2-5DD6-95E4-F408EAD6617E
 	RequestId *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	TaskList  []*ListAICoachTaskPageResponseBodyTaskList `json:"taskList,omitempty" xml:"taskList,omitempty" type:"Repeated"`
 	Total     *int64                                     `json:"total,omitempty" xml:"total,omitempty"`
@@ -77,23 +72,11 @@ func (s *ListAICoachTaskPageResponseBody) Validate() error {
 }
 
 type ListAICoachTaskPageResponseBodyTaskList struct {
-	// example:
-	//
-	// yyyy-MM-dd HH:mm:ss
 	FinishTime *string `json:"finishTime,omitempty" xml:"finishTime,omitempty"`
 	GmtCreate  *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// example:
-	//
-	// FINISHED
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// 222
-	StudentId *string `json:"studentId,omitempty" xml:"studentId,omitempty"`
-	// example:
-	//
-	// 11111111111
-	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	Status     *string `json:"status,omitempty" xml:"status,omitempty"`
+	StudentId  *string `json:"studentId,omitempty" xml:"studentId,omitempty"`
+	TaskId     *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 
 func (s ListAICoachTaskPageResponseBodyTaskList) String() string {

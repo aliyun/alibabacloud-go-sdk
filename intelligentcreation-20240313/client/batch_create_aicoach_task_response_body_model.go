@@ -16,11 +16,6 @@ type iBatchCreateAICoachTaskResponseBody interface {
 }
 
 type BatchCreateAICoachTaskResponseBody struct {
-	// Id of the request
-	//
-	// example:
-	//
-	// 10923AA3-F7A1-5EA0-ACCA-D704269EAA78
 	RequestId *string   `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	TaskIds   []*string `json:"taskIds,omitempty" xml:"taskIds,omitempty" type:"Repeated"`
 }

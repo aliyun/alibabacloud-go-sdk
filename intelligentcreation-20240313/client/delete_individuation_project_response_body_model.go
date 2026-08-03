@@ -18,17 +18,9 @@ type iDeleteIndividuationProjectResponseBody interface {
 }
 
 type DeleteIndividuationProjectResponseBody struct {
-	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 86A90C40-D1AB-50DA-A4B1-0D545F80F2FE
+	Desc      *string `json:"desc,omitempty" xml:"desc,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// SUCCESS
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s DeleteIndividuationProjectResponseBody) String() string {

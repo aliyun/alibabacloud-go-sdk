@@ -24,30 +24,12 @@ type iListAgentsRequest interface {
 }
 
 type ListAgentsRequest struct {
-	// example:
-	//
-	// 840016700254633984
-	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// example:
-	//
-	// text
+	AgentId    *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
 	AgentScene *string `json:"agentScene,omitempty" xml:"agentScene,omitempty"`
-	// example:
-	//
-	// SYSTEM
-	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// example:
-	//
-	// 0
-	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	Owner      *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	PageNumber *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Status     *int32  `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListAgentsRequest) String() string {

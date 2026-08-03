@@ -22,26 +22,11 @@ type iCreateAnchorResponseBody interface {
 }
 
 type CreateAnchorResponseBody struct {
-	// 123456789
-	Data *string `json:"data,omitempty" xml:"data,omitempty"`
-	// example:
-	//
-	// PARAM_ERROR
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// example:
-	//
-	// Failed to proxy flink ui request, message: An error occurred: Invalid UUID string: jobsn
+	Data         *string `json:"data,omitempty" xml:"data,omitempty"`
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 10923AA3-F7A1-5EA0-ACCA-D704269EAA78
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CreateAnchorResponseBody) String() string {

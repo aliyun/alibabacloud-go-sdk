@@ -21,15 +21,9 @@ type iCreateIndividuationProjectRequest interface {
 
 type CreateIndividuationProjectRequest struct {
 	ProjectInfo *string `json:"projectInfo,omitempty" xml:"projectInfo,omitempty"`
-	// example:
-	//
-	// avatar-1
 	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
 	Purpose     *string `json:"purpose,omitempty" xml:"purpose,omitempty"`
-	// example:
-	//
-	// ail003
-	SceneId *string `json:"sceneId,omitempty" xml:"sceneId,omitempty"`
+	SceneId     *string `json:"sceneId,omitempty" xml:"sceneId,omitempty"`
 }
 
 func (s CreateIndividuationProjectRequest) String() string {

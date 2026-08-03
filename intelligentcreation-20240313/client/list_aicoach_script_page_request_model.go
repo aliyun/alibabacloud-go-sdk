@@ -22,23 +22,11 @@ type iListAICoachScriptPageRequest interface {
 }
 
 type ListAICoachScriptPageRequest struct {
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// example:
-	//
-	// 1
-	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// 1
-	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	PageNumber *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Status     *int32  `json:"status,omitempty" xml:"status,omitempty"`
+	Type       *int32  `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListAICoachScriptPageRequest) String() string {

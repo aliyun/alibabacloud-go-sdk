@@ -14,9 +14,6 @@ type iDeleteAICoachScriptRequest interface {
 }
 
 type DeleteAICoachScriptRequest struct {
-	// example:
-	//
-	// 1
 	ScriptId *string `json:"scriptId,omitempty" xml:"scriptId,omitempty"`
 }
 

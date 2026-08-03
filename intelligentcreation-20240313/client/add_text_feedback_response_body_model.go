@@ -16,14 +16,8 @@ type iAddTextFeedbackResponseBody interface {
 }
 
 type AddTextFeedbackResponseBody struct {
-	// example:
-	//
-	// 3239281273464326823
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s AddTextFeedbackResponseBody) String() string {

@@ -16,9 +16,6 @@ type iCountTextResponseBody interface {
 }
 
 type CountTextResponseBody struct {
-	// example:
-	//
-	// 6C9CB64D-E2D3-5BF2-A9E6-2445F952F178
 	RequestId        *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CountTextCmdList []*CountTextResponseBodyCountTextCmdList `json:"countTextCmdList,omitempty" xml:"countTextCmdList,omitempty" type:"Repeated"`
 }
@@ -63,13 +60,7 @@ func (s *CountTextResponseBody) Validate() error {
 }
 
 type CountTextResponseBodyCountTextCmdList struct {
-	// example:
-	//
-	// 4
-	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
-	// example:
-	//
-	// RED_BOOK
+	Count *int64  `json:"count,omitempty" xml:"count,omitempty"`
 	Theme *string `json:"theme,omitempty" xml:"theme,omitempty"`
 }
 

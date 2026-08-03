@@ -16,15 +16,7 @@ type iCreateAgentResponseBody interface {
 }
 
 type CreateAgentResponseBody struct {
-	// example:
-	//
-	// 1000222
-	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 3239281273464326823
+	AgentId   *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

@@ -24,30 +24,12 @@ type iQueryImageToVideoTaskResponseBody interface {
 }
 
 type QueryImageToVideoTaskResponseBody struct {
-	// example:
-	//
-	// None
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// https://xxx/xxx.mp4
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
 	OriginUrl *string `json:"originUrl,omitempty" xml:"originUrl,omitempty"`
-	// example:
-	//
-	// CC2967CA-0114-57E0-A0CF-7DEEEDAB953D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 1
-	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 868125994191405056
-	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	Status    *int32  `json:"status,omitempty" xml:"status,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TaskId    *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 
 func (s QueryImageToVideoTaskResponseBody) String() string {

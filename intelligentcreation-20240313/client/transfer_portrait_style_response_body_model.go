@@ -16,16 +16,8 @@ type iTransferPortraitStyleResponseBody interface {
 }
 
 type TransferPortraitStyleResponseBody struct {
-	// Id of the request
-	//
-	// example:
-	//
-	// 725E87CD-F2DE-5FC4-8A09-2EBDFBF26DAA
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 313123123
-	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	TaskId    *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 
 func (s TransferPortraitStyleResponseBody) String() string {

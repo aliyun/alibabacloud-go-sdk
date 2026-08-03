@@ -19,14 +19,8 @@ type iCreateAICoachTaskReportRequest interface {
 
 type CreateAICoachTaskReportRequest struct {
 	DialogueList []*CreateAICoachTaskReportRequestDialogueList `json:"dialogueList,omitempty" xml:"dialogueList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 123456789
-	IdempotentId *string `json:"idempotentId,omitempty" xml:"idempotentId,omitempty"`
-	// example:
-	//
-	// 874890065171169280
-	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	IdempotentId *string                                       `json:"idempotentId,omitempty" xml:"idempotentId,omitempty"`
+	TaskId       *string                                       `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 
 func (s CreateAICoachTaskReportRequest) String() string {
@@ -78,14 +72,8 @@ func (s *CreateAICoachTaskReportRequest) Validate() error {
 }
 
 type CreateAICoachTaskReportRequestDialogueList struct {
-	// example:
-	//
-	// hello
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// coach
-	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	Role    *string `json:"role,omitempty" xml:"role,omitempty"`
 }
 
 func (s CreateAICoachTaskReportRequestDialogueList) String() string {

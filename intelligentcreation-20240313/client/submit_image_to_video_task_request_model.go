@@ -16,9 +16,6 @@ type iSubmitImageToVideoTaskRequest interface {
 }
 
 type SubmitImageToVideoTaskRequest struct {
-	// example:
-	//
-	// http://xxx/image.png
 	ImageUrl  *string `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
 	PosPrompt *string `json:"posPrompt,omitempty" xml:"posPrompt,omitempty"`
 }

@@ -28,35 +28,14 @@ type iListTextsRequest interface {
 }
 
 type ListTextsRequest struct {
-	// example:
-	//
-	// API
 	GenerationSource *string `json:"generationSource,omitempty" xml:"generationSource,omitempty"`
-	// example:
-	//
-	// Common
-	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
-	Keyword  *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// example:
-	//
-	// PUBLISH
-	PublishStatus *string `json:"publishStatus,omitempty" xml:"publishStatus,omitempty"`
-	// example:
-	//
-	// WECHAT_MOMENT
-	TextStyleType *string `json:"textStyleType,omitempty" xml:"textStyleType,omitempty"`
-	// example:
-	//
-	// xxx
-	TextTheme *string `json:"textTheme,omitempty" xml:"textTheme,omitempty"`
+	Industry         *string `json:"industry,omitempty" xml:"industry,omitempty"`
+	Keyword          *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	PageNumber       *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize         *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PublishStatus    *string `json:"publishStatus,omitempty" xml:"publishStatus,omitempty"`
+	TextStyleType    *string `json:"textStyleType,omitempty" xml:"textStyleType,omitempty"`
+	TextTheme        *string `json:"textTheme,omitempty" xml:"textTheme,omitempty"`
 }
 
 func (s ListTextsRequest) String() string {

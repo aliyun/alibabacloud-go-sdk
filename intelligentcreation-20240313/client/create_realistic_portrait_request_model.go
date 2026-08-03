@@ -40,53 +40,20 @@ type iCreateRealisticPortraitRequest interface {
 }
 
 type CreateRealisticPortraitRequest struct {
-	Ages []*int32 `json:"ages,omitempty" xml:"ages,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	Cloth *int32 `json:"cloth,omitempty" xml:"cloth,omitempty"`
-	// example:
-	//
-	// 1
-	Color *int32 `json:"color,omitempty" xml:"color,omitempty"`
-	// example:
-	//
-	// 11
-	Custom *string  `json:"custom,omitempty" xml:"custom,omitempty"`
-	Face   []*int32 `json:"face,omitempty" xml:"face,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	Figure *int32 `json:"figure,omitempty" xml:"figure,omitempty"`
-	// example:
-	//
-	// 1
-	Gender *int32 `json:"gender,omitempty" xml:"gender,omitempty"`
-	// example:
-	//
-	// 1
-	HairColor *int32 `json:"hairColor,omitempty" xml:"hairColor,omitempty"`
-	// example:
-	//
-	// 1
-	Hairstyle *int32 `json:"hairstyle,omitempty" xml:"hairstyle,omitempty"`
-	// example:
-	//
-	// 500
-	Height   *int32  `json:"height,omitempty" xml:"height,omitempty"`
-	ImageUrl *string `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
-	// example:
-	//
-	// 4
-	Numbers *int32 `json:"numbers,omitempty" xml:"numbers,omitempty"`
-	// example:
-	//
-	// 1:1
-	Ratio *string `json:"ratio,omitempty" xml:"ratio,omitempty"`
-	// example:
-	//
-	// 500
-	Width *int32 `json:"width,omitempty" xml:"width,omitempty"`
+	Ages      []*int32 `json:"ages,omitempty" xml:"ages,omitempty" type:"Repeated"`
+	Cloth     *int32   `json:"cloth,omitempty" xml:"cloth,omitempty"`
+	Color     *int32   `json:"color,omitempty" xml:"color,omitempty"`
+	Custom    *string  `json:"custom,omitempty" xml:"custom,omitempty"`
+	Face      []*int32 `json:"face,omitempty" xml:"face,omitempty" type:"Repeated"`
+	Figure    *int32   `json:"figure,omitempty" xml:"figure,omitempty"`
+	Gender    *int32   `json:"gender,omitempty" xml:"gender,omitempty"`
+	HairColor *int32   `json:"hairColor,omitempty" xml:"hairColor,omitempty"`
+	Hairstyle *int32   `json:"hairstyle,omitempty" xml:"hairstyle,omitempty"`
+	Height    *int32   `json:"height,omitempty" xml:"height,omitempty"`
+	ImageUrl  *string  `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
+	Numbers   *int32   `json:"numbers,omitempty" xml:"numbers,omitempty"`
+	Ratio     *string  `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	Width     *int32   `json:"width,omitempty" xml:"width,omitempty"`
 }
 
 func (s CreateRealisticPortraitRequest) String() string {

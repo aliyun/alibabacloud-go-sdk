@@ -16,13 +16,7 @@ type iCheckSessionRequest interface {
 }
 
 type CheckSessionRequest struct {
-	// example:
-	//
-	// 11111
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	// example:
-	//
-	// 121dlsga4o7golrl1hoja
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
 }
 

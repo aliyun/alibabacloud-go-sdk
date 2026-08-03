@@ -26,32 +26,13 @@ type iCreateAICoachTaskSessionResponseBody interface {
 }
 
 type CreateAICoachTaskSessionResponseBody struct {
-	// rtctoken
-	//
-	// example:
-	//
-	// 11
-	ChannelToken *string `json:"channelToken,omitempty" xml:"channelToken,omitempty"`
-	// example:
-	//
-	// 4830493A-728F-5F19-BBCC-1443292E9C49
-	RequestId  *string                                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	ScriptInfo *CreateAICoachTaskSessionResponseBodyScriptInfo `json:"scriptInfo,omitempty" xml:"scriptInfo,omitempty" type:"Struct"`
-	// example:
-	//
-	// 111
-	SessionId     *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	SessionStatus *int64  `json:"sessionStatus,omitempty" xml:"sessionStatus,omitempty"`
-	// Token
-	//
-	// example:
-	//
-	// 11
-	Token *string `json:"token,omitempty" xml:"token,omitempty"`
-	// example:
-	//
-	// 11
-	WebSocketUrl *string `json:"webSocketUrl,omitempty" xml:"webSocketUrl,omitempty"`
+	ChannelToken  *string                                         `json:"channelToken,omitempty" xml:"channelToken,omitempty"`
+	RequestId     *string                                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ScriptInfo    *CreateAICoachTaskSessionResponseBodyScriptInfo `json:"scriptInfo,omitempty" xml:"scriptInfo,omitempty" type:"Struct"`
+	SessionId     *string                                         `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	SessionStatus *int64                                          `json:"sessionStatus,omitempty" xml:"sessionStatus,omitempty"`
+	Token         *string                                         `json:"token,omitempty" xml:"token,omitempty"`
+	WebSocketUrl  *string                                         `json:"webSocketUrl,omitempty" xml:"webSocketUrl,omitempty"`
 }
 
 func (s CreateAICoachTaskSessionResponseBody) String() string {
@@ -135,27 +116,21 @@ func (s *CreateAICoachTaskSessionResponseBody) Validate() error {
 }
 
 type CreateAICoachTaskSessionResponseBodyScriptInfo struct {
-	AgentIconUrl     *string   `json:"agentIconUrl,omitempty" xml:"agentIconUrl,omitempty"`
-	CharacterName    *string   `json:"characterName,omitempty" xml:"characterName,omitempty"`
-	DialogueTextFlag *bool     `json:"dialogueTextFlag,omitempty" xml:"dialogueTextFlag,omitempty"`
-	DialogueTipFlag  *bool     `json:"dialogueTipFlag,omitempty" xml:"dialogueTipFlag,omitempty"`
-	Initiator        *string   `json:"initiator,omitempty" xml:"initiator,omitempty"`
-	InputTypeList    []*string `json:"inputTypeList,omitempty" xml:"inputTypeList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 11
-	MaxDuration *int64 `json:"maxDuration,omitempty" xml:"maxDuration,omitempty"`
-	// example:
-	//
-	// test
-	ScriptDesc            *string `json:"scriptDesc,omitempty" xml:"scriptDesc,omitempty"`
-	ScriptName            *string `json:"scriptName,omitempty" xml:"scriptName,omitempty"`
-	ScriptRecordId        *string `json:"scriptRecordId,omitempty" xml:"scriptRecordId,omitempty"`
-	ScriptType            *int64  `json:"scriptType,omitempty" xml:"scriptType,omitempty"`
-	SparringTipContent    *string `json:"sparringTipContent,omitempty" xml:"sparringTipContent,omitempty"`
-	SparringTipTitle      *string `json:"sparringTipTitle,omitempty" xml:"sparringTipTitle,omitempty"`
-	StudentThinkTimeFlag  *bool   `json:"studentThinkTimeFlag,omitempty" xml:"studentThinkTimeFlag,omitempty"`
-	StudentThinkTimeLimit *int64  `json:"studentThinkTimeLimit,omitempty" xml:"studentThinkTimeLimit,omitempty"`
+	AgentIconUrl          *string   `json:"agentIconUrl,omitempty" xml:"agentIconUrl,omitempty"`
+	CharacterName         *string   `json:"characterName,omitempty" xml:"characterName,omitempty"`
+	DialogueTextFlag      *bool     `json:"dialogueTextFlag,omitempty" xml:"dialogueTextFlag,omitempty"`
+	DialogueTipFlag       *bool     `json:"dialogueTipFlag,omitempty" xml:"dialogueTipFlag,omitempty"`
+	Initiator             *string   `json:"initiator,omitempty" xml:"initiator,omitempty"`
+	InputTypeList         []*string `json:"inputTypeList,omitempty" xml:"inputTypeList,omitempty" type:"Repeated"`
+	MaxDuration           *int64    `json:"maxDuration,omitempty" xml:"maxDuration,omitempty"`
+	ScriptDesc            *string   `json:"scriptDesc,omitempty" xml:"scriptDesc,omitempty"`
+	ScriptName            *string   `json:"scriptName,omitempty" xml:"scriptName,omitempty"`
+	ScriptRecordId        *string   `json:"scriptRecordId,omitempty" xml:"scriptRecordId,omitempty"`
+	ScriptType            *int64    `json:"scriptType,omitempty" xml:"scriptType,omitempty"`
+	SparringTipContent    *string   `json:"sparringTipContent,omitempty" xml:"sparringTipContent,omitempty"`
+	SparringTipTitle      *string   `json:"sparringTipTitle,omitempty" xml:"sparringTipTitle,omitempty"`
+	StudentThinkTimeFlag  *bool     `json:"studentThinkTimeFlag,omitempty" xml:"studentThinkTimeFlag,omitempty"`
+	StudentThinkTimeLimit *int64    `json:"studentThinkTimeLimit,omitempty" xml:"studentThinkTimeLimit,omitempty"`
 }
 
 func (s CreateAICoachTaskSessionResponseBodyScriptInfo) String() string {

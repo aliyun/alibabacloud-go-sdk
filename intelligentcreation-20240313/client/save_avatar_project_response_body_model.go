@@ -28,38 +28,14 @@ type iSaveAvatarProjectResponseBody interface {
 }
 
 type SaveAvatarProjectResponseBody struct {
-	// example:
-	//
-	// 1000222
-	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// example:
-	//
-	// 040002
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// example:
-	//
-	// Failed to proxy flink ui request, message: An error occurred: Invalid UUID string: jobsn
+	AgentId      *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// example:
-	//
-	// error
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// example:
-	//
-	// 812907463682949120
-	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	// example:
-	//
-	// doc_test_3
-	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	// example:
-	//
-	// 0E8B1746-AE35-5C4B-A3A8-345B274AE32C
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// DRAFT
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	ErrorMsg     *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	ProjectId    *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	ProjectName  *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Status       *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s SaveAvatarProjectResponseBody) String() string {

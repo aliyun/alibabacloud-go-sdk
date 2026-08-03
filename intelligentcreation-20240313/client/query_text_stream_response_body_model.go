@@ -20,24 +20,10 @@ type iQueryTextStreamResponseBody interface {
 }
 
 type QueryTextStreamResponseBody struct {
-	// example:
-	//
-	// false
-	End *bool `json:"end,omitempty" xml:"end,omitempty"`
-	// example:
-	//
-	// 1
-	Index *int32 `json:"index,omitempty" xml:"index,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// None
+	End     *bool   `json:"end,omitempty" xml:"end,omitempty"`
+	Index   *int32  `json:"index,omitempty" xml:"index,omitempty"`
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// 1
-	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	Type    *int32  `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s QueryTextStreamResponseBody) String() string {

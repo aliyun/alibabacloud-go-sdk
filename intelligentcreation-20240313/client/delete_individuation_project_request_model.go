@@ -14,9 +14,6 @@ type iDeleteIndividuationProjectRequest interface {
 }
 
 type DeleteIndividuationProjectRequest struct {
-	// example:
-	//
-	// 840015278620459008
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
 }
 
