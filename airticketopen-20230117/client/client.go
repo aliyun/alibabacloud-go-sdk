@@ -2485,3 +2485,2279 @@ func (client *Client) TransitVisa(request *TransitVisaRequest) (_result *Transit
 	_result = _body
 	return _result, _err
 }
+
+// Summary:
+//
+// 申请退款
+//
+// @param request - ApplyRefundRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyRefundResponse
+func (client *Client) ApplyRefundWithOptions(request *ApplyRefundRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ApplyRefundResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.OrderNo) {
+		body["OrderNo"] = request.OrderNo
+	}
+
+	if !dara.IsNil(request.RefundReason) {
+		body["RefundReason"] = request.RefundReason
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("applyRefund"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/applyRefund"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ApplyRefundResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 申请退款
+//
+// @param request - ApplyRefundRequest
+//
+// @return ApplyRefundResponse
+func (client *Client) ApplyRefund(request *ApplyRefundRequest) (_result *ApplyRefundResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ApplyRefundResponse{}
+	_body, _err := client.ApplyRefundWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询酒店详情
+//
+// @param tmpReq - BatchGetHotelDetailRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchGetHotelDetailResponse
+func (client *Client) BatchGetHotelDetailWithOptions(tmpReq *BatchGetHotelDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchGetHotelDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &BatchGetHotelDetailShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.StandardHotelIds) {
+		request.StandardHotelIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StandardHotelIds, dara.String("StandardHotelIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.Language) {
+		body["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.StandardHotelIdsShrink) {
+		body["StandardHotelIds"] = request.StandardHotelIdsShrink
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("batchGetHotelDetail"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/batchGetHotelDetail"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchGetHotelDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询酒店详情
+//
+// @param request - BatchGetHotelDetailRequest
+//
+// @return BatchGetHotelDetailResponse
+func (client *Client) BatchGetHotelDetail(request *BatchGetHotelDetailRequest) (_result *BatchGetHotelDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BatchGetHotelDetailResponse{}
+	_body, _err := client.BatchGetHotelDetailWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消或退款
+//
+// @param request - CancelOrRefundRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelOrRefundResponse
+func (client *Client) CancelOrRefundWithOptions(request *CancelOrRefundRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CancelOrRefundResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.OrderNo) {
+		body["OrderNo"] = request.OrderNo
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("cancelOrRefund"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/cancelOrRefund"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelOrRefundResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消或退款
+//
+// @param request - CancelOrRefundRequest
+//
+// @return CancelOrRefundResponse
+func (client *Client) CancelOrRefund(request *CancelOrRefundRequest) (_result *CancelOrRefundResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CancelOrRefundResponse{}
+	_body, _err := client.CancelOrRefundWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消订单
+//
+// @param request - CancelOrderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelOrderResponse
+func (client *Client) CancelOrderWithOptions(request *CancelOrderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CancelOrderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.OrderNo) {
+		body["OrderNo"] = request.OrderNo
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("cancelOrder"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/cancelOrder"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消订单
+//
+// @param request - CancelOrderRequest
+//
+// @return CancelOrderResponse
+func (client *Client) CancelOrder(request *CancelOrderRequest) (_result *CancelOrderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CancelOrderResponse{}
+	_body, _err := client.CancelOrderWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创单并支付
+//
+// @param tmpReq - CreateAndPayRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAndPayResponse
+func (client *Client) CreateAndPayWithOptions(tmpReq *CreateAndPayRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAndPayResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateAndPayShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Contact) {
+		request.ContactShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Contact, dara.String("Contact"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Guests) {
+		request.GuestsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Guests, dara.String("Guests"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.ContactShrink) {
+		body["Contact"] = request.ContactShrink
+	}
+
+	if !dara.IsNil(request.ExternalOrderNo) {
+		body["ExternalOrderNo"] = request.ExternalOrderNo
+	}
+
+	if !dara.IsNil(request.GuestsShrink) {
+		body["Guests"] = request.GuestsShrink
+	}
+
+	if !dara.IsNil(request.ItemOfferId) {
+		body["ItemOfferId"] = request.ItemOfferId
+	}
+
+	if !dara.IsNil(request.RoomCount) {
+		body["RoomCount"] = request.RoomCount
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("createAndPay"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/createAndPay"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAndPayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创单并支付
+//
+// @param request - CreateAndPayRequest
+//
+// @return CreateAndPayResponse
+func (client *Client) CreateAndPay(request *CreateAndPayRequest) (_result *CreateAndPayResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAndPayResponse{}
+	_body, _err := client.CreateAndPayWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建订单
+//
+// @param tmpReq - CreateOrderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOrderResponse
+func (client *Client) CreateOrderWithOptions(tmpReq *CreateOrderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateOrderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateOrderShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Contact) {
+		request.ContactShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Contact, dara.String("Contact"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Guests) {
+		request.GuestsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Guests, dara.String("Guests"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.ContactShrink) {
+		body["Contact"] = request.ContactShrink
+	}
+
+	if !dara.IsNil(request.ExternalOrderNo) {
+		body["ExternalOrderNo"] = request.ExternalOrderNo
+	}
+
+	if !dara.IsNil(request.GuestsShrink) {
+		body["Guests"] = request.GuestsShrink
+	}
+
+	if !dara.IsNil(request.ItemOfferId) {
+		body["ItemOfferId"] = request.ItemOfferId
+	}
+
+	if !dara.IsNil(request.RoomCount) {
+		body["RoomCount"] = request.RoomCount
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("createOrder"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/createOrder"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建订单
+//
+// @param request - CreateOrderRequest
+//
+// @return CreateOrderResponse
+func (client *Client) CreateOrder(request *CreateOrderRequest) (_result *CreateOrderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateOrderResponse{}
+	_body, _err := client.CreateOrderWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 申请退款
+//
+// @param request - GlobalHotelApplyRefundRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GlobalHotelApplyRefundResponse
+func (client *Client) GlobalHotelApplyRefundWithOptions(request *GlobalHotelApplyRefundRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GlobalHotelApplyRefundResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.OrderNo) {
+		body["OrderNo"] = request.OrderNo
+	}
+
+	if !dara.IsNil(request.RefundReason) {
+		body["RefundReason"] = request.RefundReason
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("globalHotelApplyRefund"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/globalHotelApplyRefund"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GlobalHotelApplyRefundResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 申请退款
+//
+// @param request - GlobalHotelApplyRefundRequest
+//
+// @return GlobalHotelApplyRefundResponse
+func (client *Client) GlobalHotelApplyRefund(request *GlobalHotelApplyRefundRequest) (_result *GlobalHotelApplyRefundResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GlobalHotelApplyRefundResponse{}
+	_body, _err := client.GlobalHotelApplyRefundWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询酒店详情
+//
+// @param tmpReq - GlobalHotelBatchGetHotelDetailRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GlobalHotelBatchGetHotelDetailResponse
+func (client *Client) GlobalHotelBatchGetHotelDetailWithOptions(tmpReq *GlobalHotelBatchGetHotelDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GlobalHotelBatchGetHotelDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GlobalHotelBatchGetHotelDetailShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.StandardHotelIds) {
+		request.StandardHotelIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StandardHotelIds, dara.String("StandardHotelIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.Language) {
+		body["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.StandardHotelIdsShrink) {
+		body["StandardHotelIds"] = request.StandardHotelIdsShrink
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("globalHotelBatchGetHotelDetail"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/globalHotelBatchGetHotelDetail"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GlobalHotelBatchGetHotelDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询酒店详情
+//
+// @param request - GlobalHotelBatchGetHotelDetailRequest
+//
+// @return GlobalHotelBatchGetHotelDetailResponse
+func (client *Client) GlobalHotelBatchGetHotelDetail(request *GlobalHotelBatchGetHotelDetailRequest) (_result *GlobalHotelBatchGetHotelDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GlobalHotelBatchGetHotelDetailResponse{}
+	_body, _err := client.GlobalHotelBatchGetHotelDetailWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消或退款
+//
+// @param request - GlobalHotelCancelOrRefundRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GlobalHotelCancelOrRefundResponse
+func (client *Client) GlobalHotelCancelOrRefundWithOptions(request *GlobalHotelCancelOrRefundRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GlobalHotelCancelOrRefundResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.OrderNo) {
+		body["OrderNo"] = request.OrderNo
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("globalHotelCancelOrRefund"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/globalHotelCancelOrRefund"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GlobalHotelCancelOrRefundResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消或退款
+//
+// @param request - GlobalHotelCancelOrRefundRequest
+//
+// @return GlobalHotelCancelOrRefundResponse
+func (client *Client) GlobalHotelCancelOrRefund(request *GlobalHotelCancelOrRefundRequest) (_result *GlobalHotelCancelOrRefundResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GlobalHotelCancelOrRefundResponse{}
+	_body, _err := client.GlobalHotelCancelOrRefundWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消订单
+//
+// @param request - GlobalHotelCancelOrderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GlobalHotelCancelOrderResponse
+func (client *Client) GlobalHotelCancelOrderWithOptions(request *GlobalHotelCancelOrderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GlobalHotelCancelOrderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.OrderNo) {
+		body["OrderNo"] = request.OrderNo
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("globalHotelCancelOrder"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/globalHotelCancelOrder"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GlobalHotelCancelOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消订单
+//
+// @param request - GlobalHotelCancelOrderRequest
+//
+// @return GlobalHotelCancelOrderResponse
+func (client *Client) GlobalHotelCancelOrder(request *GlobalHotelCancelOrderRequest) (_result *GlobalHotelCancelOrderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GlobalHotelCancelOrderResponse{}
+	_body, _err := client.GlobalHotelCancelOrderWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创单并支付
+//
+// @param tmpReq - GlobalHotelCreateAndPayRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GlobalHotelCreateAndPayResponse
+func (client *Client) GlobalHotelCreateAndPayWithOptions(tmpReq *GlobalHotelCreateAndPayRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GlobalHotelCreateAndPayResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GlobalHotelCreateAndPayShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Contact) {
+		request.ContactShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Contact, dara.String("Contact"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Guests) {
+		request.GuestsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Guests, dara.String("Guests"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.ContactShrink) {
+		body["Contact"] = request.ContactShrink
+	}
+
+	if !dara.IsNil(request.ExternalOrderNo) {
+		body["ExternalOrderNo"] = request.ExternalOrderNo
+	}
+
+	if !dara.IsNil(request.GuestsShrink) {
+		body["Guests"] = request.GuestsShrink
+	}
+
+	if !dara.IsNil(request.ItemOfferId) {
+		body["ItemOfferId"] = request.ItemOfferId
+	}
+
+	if !dara.IsNil(request.RoomCount) {
+		body["RoomCount"] = request.RoomCount
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("globalHotelCreateAndPay"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/globalHotelCreateAndPay"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GlobalHotelCreateAndPayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创单并支付
+//
+// @param request - GlobalHotelCreateAndPayRequest
+//
+// @return GlobalHotelCreateAndPayResponse
+func (client *Client) GlobalHotelCreateAndPay(request *GlobalHotelCreateAndPayRequest) (_result *GlobalHotelCreateAndPayResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GlobalHotelCreateAndPayResponse{}
+	_body, _err := client.GlobalHotelCreateAndPayWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建订单
+//
+// @param tmpReq - GlobalHotelCreateOrderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GlobalHotelCreateOrderResponse
+func (client *Client) GlobalHotelCreateOrderWithOptions(tmpReq *GlobalHotelCreateOrderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GlobalHotelCreateOrderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GlobalHotelCreateOrderShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Contact) {
+		request.ContactShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Contact, dara.String("Contact"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Guests) {
+		request.GuestsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Guests, dara.String("Guests"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.ContactShrink) {
+		body["Contact"] = request.ContactShrink
+	}
+
+	if !dara.IsNil(request.ExternalOrderNo) {
+		body["ExternalOrderNo"] = request.ExternalOrderNo
+	}
+
+	if !dara.IsNil(request.GuestsShrink) {
+		body["Guests"] = request.GuestsShrink
+	}
+
+	if !dara.IsNil(request.ItemOfferId) {
+		body["ItemOfferId"] = request.ItemOfferId
+	}
+
+	if !dara.IsNil(request.RoomCount) {
+		body["RoomCount"] = request.RoomCount
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("globalHotelCreateOrder"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/globalHotelCreateOrder"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GlobalHotelCreateOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建订单
+//
+// @param request - GlobalHotelCreateOrderRequest
+//
+// @return GlobalHotelCreateOrderResponse
+func (client *Client) GlobalHotelCreateOrder(request *GlobalHotelCreateOrderRequest) (_result *GlobalHotelCreateOrderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GlobalHotelCreateOrderResponse{}
+	_body, _err := client.GlobalHotelCreateOrderWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分销支付
+//
+// @param request - GlobalHotelPayRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GlobalHotelPayResponse
+func (client *Client) GlobalHotelPayWithOptions(request *GlobalHotelPayRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GlobalHotelPayResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.OrderNo) {
+		body["OrderNo"] = request.OrderNo
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("globalHotelPay"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/globalHotelPay"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GlobalHotelPayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分销支付
+//
+// @param request - GlobalHotelPayRequest
+//
+// @return GlobalHotelPayResponse
+func (client *Client) GlobalHotelPay(request *GlobalHotelPayRequest) (_result *GlobalHotelPayResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GlobalHotelPayResponse{}
+	_body, _err := client.GlobalHotelPayWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询酒店报价可用性
+//
+// @param tmpReq - GlobalHotelQueryAvailabilityRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GlobalHotelQueryAvailabilityResponse
+func (client *Client) GlobalHotelQueryAvailabilityWithOptions(tmpReq *GlobalHotelQueryAvailabilityRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GlobalHotelQueryAvailabilityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GlobalHotelQueryAvailabilityShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ChildrenAges) {
+		request.ChildrenAgesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChildrenAges, dara.String("ChildrenAges"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.StandardHotelIds) {
+		request.StandardHotelIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StandardHotelIds, dara.String("StandardHotelIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.AdultCount) {
+		body["AdultCount"] = request.AdultCount
+	}
+
+	if !dara.IsNil(request.CheckInDate) {
+		body["CheckInDate"] = request.CheckInDate
+	}
+
+	if !dara.IsNil(request.CheckOutDate) {
+		body["CheckOutDate"] = request.CheckOutDate
+	}
+
+	if !dara.IsNil(request.ChildCount) {
+		body["ChildCount"] = request.ChildCount
+	}
+
+	if !dara.IsNil(request.ChildrenAgesShrink) {
+		body["ChildrenAges"] = request.ChildrenAgesShrink
+	}
+
+	if !dara.IsNil(request.RoomCount) {
+		body["RoomCount"] = request.RoomCount
+	}
+
+	if !dara.IsNil(request.StandardHotelIdsShrink) {
+		body["StandardHotelIds"] = request.StandardHotelIdsShrink
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("globalHotelQueryAvailability"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/globalHotelQueryAvailability"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GlobalHotelQueryAvailabilityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询酒店报价可用性
+//
+// @param request - GlobalHotelQueryAvailabilityRequest
+//
+// @return GlobalHotelQueryAvailabilityResponse
+func (client *Client) GlobalHotelQueryAvailability(request *GlobalHotelQueryAvailabilityRequest) (_result *GlobalHotelQueryAvailabilityResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GlobalHotelQueryAvailabilityResponse{}
+	_body, _err := client.GlobalHotelQueryAvailabilityWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量日历报价查询
+//
+// @param tmpReq - GlobalHotelQueryCalendarAvailabilityRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GlobalHotelQueryCalendarAvailabilityResponse
+func (client *Client) GlobalHotelQueryCalendarAvailabilityWithOptions(tmpReq *GlobalHotelQueryCalendarAvailabilityRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GlobalHotelQueryCalendarAvailabilityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GlobalHotelQueryCalendarAvailabilityShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ChildrenAges) {
+		request.ChildrenAgesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChildrenAges, dara.String("ChildrenAges"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.StandardHotelIds) {
+		request.StandardHotelIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StandardHotelIds, dara.String("StandardHotelIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.AdultCount) {
+		body["AdultCount"] = request.AdultCount
+	}
+
+	if !dara.IsNil(request.CheckInDateEnd) {
+		body["CheckInDateEnd"] = request.CheckInDateEnd
+	}
+
+	if !dara.IsNil(request.CheckInDateStart) {
+		body["CheckInDateStart"] = request.CheckInDateStart
+	}
+
+	if !dara.IsNil(request.ChildCount) {
+		body["ChildCount"] = request.ChildCount
+	}
+
+	if !dara.IsNil(request.ChildrenAgesShrink) {
+		body["ChildrenAges"] = request.ChildrenAgesShrink
+	}
+
+	if !dara.IsNil(request.RoomCount) {
+		body["RoomCount"] = request.RoomCount
+	}
+
+	if !dara.IsNil(request.StandardHotelIdsShrink) {
+		body["StandardHotelIds"] = request.StandardHotelIdsShrink
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("globalHotelQueryCalendarAvailability"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/globalHotelQueryCalendarAvailability"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GlobalHotelQueryCalendarAvailabilityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量日历报价查询
+//
+// @param request - GlobalHotelQueryCalendarAvailabilityRequest
+//
+// @return GlobalHotelQueryCalendarAvailabilityResponse
+func (client *Client) GlobalHotelQueryCalendarAvailability(request *GlobalHotelQueryCalendarAvailabilityRequest) (_result *GlobalHotelQueryCalendarAvailabilityResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GlobalHotelQueryCalendarAvailabilityResponse{}
+	_body, _err := client.GlobalHotelQueryCalendarAvailabilityWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询订单
+//
+// @param request - GlobalHotelQueryOrderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GlobalHotelQueryOrderResponse
+func (client *Client) GlobalHotelQueryOrderWithOptions(request *GlobalHotelQueryOrderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GlobalHotelQueryOrderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.ExternalOrderNo) {
+		body["ExternalOrderNo"] = request.ExternalOrderNo
+	}
+
+	if !dara.IsNil(request.OrderNo) {
+		body["OrderNo"] = request.OrderNo
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("globalHotelQueryOrder"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/globalHotelQueryOrder"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GlobalHotelQueryOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询订单
+//
+// @param request - GlobalHotelQueryOrderRequest
+//
+// @return GlobalHotelQueryOrderResponse
+func (client *Client) GlobalHotelQueryOrder(request *GlobalHotelQueryOrderRequest) (_result *GlobalHotelQueryOrderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GlobalHotelQueryOrderResponse{}
+	_body, _err := client.GlobalHotelQueryOrderWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询城市行政区划（中英文）
+//
+// @param request - GlobalHotelSearchCityPageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GlobalHotelSearchCityPageResponse
+func (client *Client) GlobalHotelSearchCityPageWithOptions(request *GlobalHotelSearchCityPageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GlobalHotelSearchCityPageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.Count) {
+		body["Count"] = request.Count
+	}
+
+	if !dara.IsNil(request.CountryCode) {
+		body["CountryCode"] = request.CountryCode
+	}
+
+	if !dara.IsNil(request.Start) {
+		body["Start"] = request.Start
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("globalHotelSearchCityPage"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/globalHotelSearchCityPage"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GlobalHotelSearchCityPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询城市行政区划（中英文）
+//
+// @param request - GlobalHotelSearchCityPageRequest
+//
+// @return GlobalHotelSearchCityPageResponse
+func (client *Client) GlobalHotelSearchCityPage(request *GlobalHotelSearchCityPageRequest) (_result *GlobalHotelSearchCityPageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GlobalHotelSearchCityPageResponse{}
+	_body, _err := client.GlobalHotelSearchCityPageWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 按城市分页查询酒店列表
+//
+// @param request - GlobalHotelSearchHotelListRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GlobalHotelSearchHotelListResponse
+func (client *Client) GlobalHotelSearchHotelListWithOptions(request *GlobalHotelSearchHotelListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GlobalHotelSearchHotelListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.CityCode) {
+		body["CityCode"] = request.CityCode
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		body["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("globalHotelSearchHotelList"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/globalHotelSearchHotelList"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GlobalHotelSearchHotelListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 按城市分页查询酒店列表
+//
+// @param request - GlobalHotelSearchHotelListRequest
+//
+// @return GlobalHotelSearchHotelListResponse
+func (client *Client) GlobalHotelSearchHotelList(request *GlobalHotelSearchHotelListRequest) (_result *GlobalHotelSearchHotelListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GlobalHotelSearchHotelListResponse{}
+	_body, _err := client.GlobalHotelSearchHotelListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 验价
+//
+// @param tmpReq - GlobalHotelValidatePriceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GlobalHotelValidatePriceResponse
+func (client *Client) GlobalHotelValidatePriceWithOptions(tmpReq *GlobalHotelValidatePriceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GlobalHotelValidatePriceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GlobalHotelValidatePriceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ChildrenAges) {
+		request.ChildrenAgesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChildrenAges, dara.String("ChildrenAges"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.Adults) {
+		body["Adults"] = request.Adults
+	}
+
+	if !dara.IsNil(request.Children) {
+		body["Children"] = request.Children
+	}
+
+	if !dara.IsNil(request.ChildrenAgesShrink) {
+		body["ChildrenAges"] = request.ChildrenAgesShrink
+	}
+
+	if !dara.IsNil(request.ItemOfferKey) {
+		body["ItemOfferKey"] = request.ItemOfferKey
+	}
+
+	if !dara.IsNil(request.RoomCount) {
+		body["RoomCount"] = request.RoomCount
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("globalHotelValidatePrice"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/globalHotelValidatePrice"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GlobalHotelValidatePriceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 验价
+//
+// @param request - GlobalHotelValidatePriceRequest
+//
+// @return GlobalHotelValidatePriceResponse
+func (client *Client) GlobalHotelValidatePrice(request *GlobalHotelValidatePriceRequest) (_result *GlobalHotelValidatePriceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GlobalHotelValidatePriceResponse{}
+	_body, _err := client.GlobalHotelValidatePriceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分销支付
+//
+// @param request - PayRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PayResponse
+func (client *Client) PayWithOptions(request *PayRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PayResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.OrderNo) {
+		body["OrderNo"] = request.OrderNo
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("pay"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pay"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分销支付
+//
+// @param request - PayRequest
+//
+// @return PayResponse
+func (client *Client) Pay(request *PayRequest) (_result *PayResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PayResponse{}
+	_body, _err := client.PayWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询酒店报价可用性
+//
+// @param tmpReq - QueryAvailabilityRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAvailabilityResponse
+func (client *Client) QueryAvailabilityWithOptions(tmpReq *QueryAvailabilityRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryAvailabilityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &QueryAvailabilityShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ChildrenAges) {
+		request.ChildrenAgesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChildrenAges, dara.String("ChildrenAges"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.StandardHotelIds) {
+		request.StandardHotelIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StandardHotelIds, dara.String("StandardHotelIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.AdultCount) {
+		body["AdultCount"] = request.AdultCount
+	}
+
+	if !dara.IsNil(request.CheckInDate) {
+		body["CheckInDate"] = request.CheckInDate
+	}
+
+	if !dara.IsNil(request.CheckOutDate) {
+		body["CheckOutDate"] = request.CheckOutDate
+	}
+
+	if !dara.IsNil(request.ChildCount) {
+		body["ChildCount"] = request.ChildCount
+	}
+
+	if !dara.IsNil(request.ChildrenAgesShrink) {
+		body["ChildrenAges"] = request.ChildrenAgesShrink
+	}
+
+	if !dara.IsNil(request.RoomCount) {
+		body["RoomCount"] = request.RoomCount
+	}
+
+	if !dara.IsNil(request.StandardHotelIdsShrink) {
+		body["StandardHotelIds"] = request.StandardHotelIdsShrink
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("queryAvailability"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/queryAvailability"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryAvailabilityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询酒店报价可用性
+//
+// @param request - QueryAvailabilityRequest
+//
+// @return QueryAvailabilityResponse
+func (client *Client) QueryAvailability(request *QueryAvailabilityRequest) (_result *QueryAvailabilityResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryAvailabilityResponse{}
+	_body, _err := client.QueryAvailabilityWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量日历报价查询
+//
+// @param tmpReq - QueryCalendarAvailabilityRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCalendarAvailabilityResponse
+func (client *Client) QueryCalendarAvailabilityWithOptions(tmpReq *QueryCalendarAvailabilityRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryCalendarAvailabilityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &QueryCalendarAvailabilityShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ChildrenAges) {
+		request.ChildrenAgesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChildrenAges, dara.String("ChildrenAges"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.StandardHotelIds) {
+		request.StandardHotelIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StandardHotelIds, dara.String("StandardHotelIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.AdultCount) {
+		body["AdultCount"] = request.AdultCount
+	}
+
+	if !dara.IsNil(request.CheckInDateEnd) {
+		body["CheckInDateEnd"] = request.CheckInDateEnd
+	}
+
+	if !dara.IsNil(request.CheckInDateStart) {
+		body["CheckInDateStart"] = request.CheckInDateStart
+	}
+
+	if !dara.IsNil(request.ChildCount) {
+		body["ChildCount"] = request.ChildCount
+	}
+
+	if !dara.IsNil(request.ChildrenAgesShrink) {
+		body["ChildrenAges"] = request.ChildrenAgesShrink
+	}
+
+	if !dara.IsNil(request.RoomCount) {
+		body["RoomCount"] = request.RoomCount
+	}
+
+	if !dara.IsNil(request.StandardHotelIdsShrink) {
+		body["StandardHotelIds"] = request.StandardHotelIdsShrink
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("queryCalendarAvailability"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/queryCalendarAvailability"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryCalendarAvailabilityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量日历报价查询
+//
+// @param request - QueryCalendarAvailabilityRequest
+//
+// @return QueryCalendarAvailabilityResponse
+func (client *Client) QueryCalendarAvailability(request *QueryCalendarAvailabilityRequest) (_result *QueryCalendarAvailabilityResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryCalendarAvailabilityResponse{}
+	_body, _err := client.QueryCalendarAvailabilityWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询订单
+//
+// @param request - QueryOrderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryOrderResponse
+func (client *Client) QueryOrderWithOptions(request *QueryOrderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryOrderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.ExternalOrderNo) {
+		body["ExternalOrderNo"] = request.ExternalOrderNo
+	}
+
+	if !dara.IsNil(request.OrderNo) {
+		body["OrderNo"] = request.OrderNo
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("queryOrder"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/queryOrder"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询订单
+//
+// @param request - QueryOrderRequest
+//
+// @return QueryOrderResponse
+func (client *Client) QueryOrder(request *QueryOrderRequest) (_result *QueryOrderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryOrderResponse{}
+	_body, _err := client.QueryOrderWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询城市行政区划（中英文）
+//
+// @param request - SearchCityPageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchCityPageResponse
+func (client *Client) SearchCityPageWithOptions(request *SearchCityPageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SearchCityPageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.Count) {
+		body["Count"] = request.Count
+	}
+
+	if !dara.IsNil(request.CountryCode) {
+		body["CountryCode"] = request.CountryCode
+	}
+
+	if !dara.IsNil(request.Start) {
+		body["Start"] = request.Start
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("searchCityPage"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/searchCityPage"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchCityPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询城市行政区划（中英文）
+//
+// @param request - SearchCityPageRequest
+//
+// @return SearchCityPageResponse
+func (client *Client) SearchCityPage(request *SearchCityPageRequest) (_result *SearchCityPageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SearchCityPageResponse{}
+	_body, _err := client.SearchCityPageWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 按城市分页查询酒店列表
+//
+// @param request - SearchHotelListRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchHotelListResponse
+func (client *Client) SearchHotelListWithOptions(request *SearchHotelListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SearchHotelListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.CityCode) {
+		body["CityCode"] = request.CityCode
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		body["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("searchHotelList"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/globalHotel/searchHotelList"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchHotelListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 按城市分页查询酒店列表
+//
+// @param request - SearchHotelListRequest
+//
+// @return SearchHotelListResponse
+func (client *Client) SearchHotelList(request *SearchHotelListRequest) (_result *SearchHotelListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SearchHotelListResponse{}
+	_body, _err := client.SearchHotelListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 验价
+//
+// @param tmpReq - ValidatePriceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ValidatePriceResponse
+func (client *Client) ValidatePriceWithOptions(tmpReq *ValidatePriceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ValidatePriceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ValidatePriceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ChildrenAges) {
+		request.ChildrenAgesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChildrenAges, dara.String("ChildrenAges"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.Adults) {
+		body["Adults"] = request.Adults
+	}
+
+	if !dara.IsNil(request.Children) {
+		body["Children"] = request.Children
+	}
+
+	if !dara.IsNil(request.ChildrenAgesShrink) {
+		body["ChildrenAges"] = request.ChildrenAgesShrink
+	}
+
+	if !dara.IsNil(request.ItemOfferKey) {
+		body["ItemOfferKey"] = request.ItemOfferKey
+	}
+
+	if !dara.IsNil(request.RoomCount) {
+		body["RoomCount"] = request.RoomCount
+	}
+
+	if !dara.IsNil(request.TracerId) {
+		body["TracerId"] = request.TracerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("validatePrice"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/validatePrice"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ValidatePriceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 验价
+//
+// @param request - ValidatePriceRequest
+//
+// @return ValidatePriceResponse
+func (client *Client) ValidatePrice(request *ValidatePriceRequest) (_result *ValidatePriceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ValidatePriceResponse{}
+	_body, _err := client.ValidatePriceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
