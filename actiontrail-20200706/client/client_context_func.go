@@ -9,7 +9,11 @@ import (
 
 // Summary:
 //
-// 创建高级查询历史记录
+// Creates an advanced event query history record that saves a custom query conditional statement for reuse and management.
+//
+// Description:
+//
+// This topic provides a demo of how to save a conditional statement as an advanced event query history record. The conditional statement is used to query all `AccessKey` access management events in logs.
 //
 // @param request - CreateAdvancedQueryHistoryRequest
 //
@@ -24,6 +28,10 @@ func (client *Client) CreateAdvancedQueryHistoryWithContext(ctx context.Context,
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.QuerySql) {
 		query["QuerySql"] = request.QuerySql
 	}
@@ -57,7 +65,7 @@ func (client *Client) CreateAdvancedQueryHistoryWithContext(ctx context.Context,
 
 // Summary:
 //
-// 创建高级查询模板
+// Creates an advanced query template.
 //
 // @param request - CreateAdvancedQueryTemplateRequest
 //
@@ -113,13 +121,13 @@ func (client *Client) CreateAdvancedQueryTemplateWithContext(ctx context.Context
 //
 // Description:
 //
-// Limits
+// # Limitations
 //
-//   - Make sure that you have created a single-account trail to deliver events to Simple Log Service by calling the [CreateTrail](https://help.aliyun.com/document_detail/212313.html) operation.
+// - You must first call the [CreateTrail](https://help.aliyun.com/document_detail/212313.html) operation to create a single-account trail that delivers events to Simple Log Service (SLS).
 //
-//   - Only one data backfill task can run at a time within an Alibaba Cloud account.
+// - An Alibaba Cloud account can have only one data backfill task running at a time.
 //
-// This topic provides an example on how to create a data backfill task for a trail named `trail-name`.
+// This topic provides an example of how to create data backfill task for the trail `trail-name`.
 //
 // @param request - CreateDeliveryHistoryJobRequest
 //
@@ -167,37 +175,35 @@ func (client *Client) CreateDeliveryHistoryJobWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Creates a trail. By default, ActionTrail allows you to query events generated within your Alibaba Cloud account in the last 90 days. To query and analyze events generated more than 90 days ago, create a trail to deliver events to Object Storage Service (OSS), Simple Log Service, or MaxCompute.
+// Creates a trail to deliver events to a destination for long-term storage and analysis, such as an Object Storage Service (OSS) bucket, a Simple Log Service (SLS) Logstore, or a MaxCompute project.
 //
 // Description:
 //
-// *Operation description**
+// > By default, a trail that you create by using this API is in a **disabled*	- state. You must call the [StartLogging](https://help.aliyun.com/document_detail/432246.html) operation operation to enable the trail. After a trail is enabled, ActionTrail begins delivering events to your specified destination.
 //
-// >By default, a trail that is created by calling an operation is in the Disabled state. You must call the StartLogging operation to enable the trail. This way, ActionTrail can deliver events to the destination cloud service.
+// ### Prerequisites
 //
-// **Prerequisites**
+// Before you create a trail, you must have at least one of the following resources configured as a destination:
 //
-// Before you create a trail, make sure that at least one of the following storage configurations is complete:
+// - OSS
 //
-// - Deliver events to OSS
+//	You must activate OSS and create a bucket.
 //
-//   - OSS is activated and a bucket is created.
+// - SLS
 //
-// - Deliver events to Simple Log Service
+//	You must activate SLS and create a Logstore.
 //
-//   - Simple Log Service is activated and a project is created.
+//	> When you create a trail with an SLS destination, ActionTrail automatically creates a Logstore named `actiontrail_<trail_name>` in your specified project. To ensure the integrity of your audit data, this Logstore only accepts events delivered by ActionTrail.
 //
-//     >When a trail is created, ActionTrail automatically creates a Logstore named `actiontrail_<Trail name>` in the project. You cannot write data other than the audit data to the Logstore. This ensures the accuracy of the audit data.
+// - MaxCompute
 //
-// - Deliver events to MaxCompute
+//	You must activate MaxCompute.
 //
-//   - MaxCompute is activated.
+//	> When you create a trail with a MaxCompute destination, ActionTrail automatically creates a project named `actiontrail_<account_ID>`. To ensure the integrity of your audit data, this project only accepts events delivered by ActionTrail.
 //
-// >When a trail is created, ActionTrail automatically creates a project named `actiontrail_<Account ID>` on the Projects page. You cannot write data other than the audit data to the project. This ensures the accuracy of the audit data.
+// ### Usage notes
 //
-// **Usage Notes**
-//
-// This topic provides an example on how to create a single-account trail named `trail-test` to deliver events to an OSS bucket named `audit-log`.
+// This example shows how to create a single-account trail named `trail-test` that delivers events to an OSS bucket named `audit-log`.
 //
 // @param request - CreateTrailRequest
 //
@@ -281,7 +287,7 @@ func (client *Client) CreateTrailWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// 删除高级查询历史记录
+// Deletes an advanced query record.
 //
 // @param request - DeleteAdvancedQueryHistoryRequest
 //
@@ -325,7 +331,7 @@ func (client *Client) DeleteAdvancedQueryHistoryWithContext(ctx context.Context,
 
 // Summary:
 //
-// 删除高级查询模板
+// Deletes an advanced query template.
 //
 // @param request - DeleteAdvancedQueryTemplateRequest
 //
@@ -369,7 +375,7 @@ func (client *Client) DeleteAdvancedQueryTemplateWithContext(ctx context.Context
 
 // Summary:
 //
-// 删除数据事件选择器
+// Deletes the data event selector for a specified trail.
 //
 // @param request - DeleteDataEventSelectorRequest
 //
@@ -509,7 +515,7 @@ func (client *Client) DeleteTrailWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
-// 查询高级查询模板
+// Queries advanced query templates.
 //
 // @param request - DescribeAdvancedQueryTemplateRequest
 //
@@ -609,7 +615,7 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 列举资源生命周期事件
+// Queries the lifecycle events of a specified resource.
 //
 // @param request - DescribeResourceLifeCycleEventsRequest
 //
@@ -657,7 +663,7 @@ func (client *Client) DescribeResourceLifeCycleEventsWithContext(ctx context.Con
 
 // Summary:
 //
-// 查询所有场景
+// Queries all advanced query scenarios.
 //
 // @param request - DescribeScenesRequest
 //
@@ -701,7 +707,7 @@ func (client *Client) DescribeScenesWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// 列举所有模版
+// Queries advanced query templates for a specified scenario.
 //
 // @param request - DescribeSearchTemplatesRequest
 //
@@ -743,6 +749,46 @@ func (client *Client) DescribeSearchTemplatesWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSearchTemplatesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves data for delivery monitoring metrics.
+//
+// @param request - DescribeTrailDeliveryMetricDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTrailDeliveryMetricDataResponse
+func (client *Client) DescribeTrailDeliveryMetricDataWithContext(ctx context.Context, request *DescribeTrailDeliveryMetricDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeTrailDeliveryMetricDataResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeTrailDeliveryMetricData"),
+		Version:     dara.String("2020-07-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeTrailDeliveryMetricDataResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -809,7 +855,7 @@ func (client *Client) DescribeTrailsWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// 查询用户告警量
+// Queries the number of daily alerts within a specific time range.
 //
 // @param request - DescribeUserAlertCountRequest
 //
@@ -857,7 +903,7 @@ func (client *Client) DescribeUserAlertCountWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 查询用户日志量
+// Queries the number of daily logs within a specific time range.
 //
 // @param request - DescribeUserLogCountRequest
 //
@@ -905,7 +951,88 @@ func (client *Client) DescribeUserLogCountWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Enables the Insights feature
+// Queries the number of enabled trails, including organization trails.
+//
+// @param request - DescribeUserTrailCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserTrailCountResponse
+func (client *Client) DescribeUserTrailCountWithContext(ctx context.Context, request *DescribeUserTrailCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserTrailCountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeUserTrailCount"),
+		Version:     dara.String("2020-07-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeUserTrailCountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Disables a specific type of Insights event.
+//
+// @param request - DisableInsightRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableInsightResponse
+func (client *Client) DisableInsightWithContext(ctx context.Context, request *DisableInsightRequest, runtime *dara.RuntimeOptions) (_result *DisableInsightResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InsightType) {
+		query["InsightType"] = request.InsightType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableInsight"),
+		Version:     dara.String("2020-07-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableInsightResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables the Insights feature.
 //
 // @param request - EnableInsightRequest
 //
@@ -949,7 +1076,7 @@ func (client *Client) EnableInsightWithContext(ctx context.Context, request *Ena
 
 // Summary:
 //
-// Queries the information about the most recent events that are generated when a specified AccessKey pair is called to access Alibaba Cloud services.
+// Queries the most recent events associated with a specified AccessKey pair, including the event name, source, timestamp, and details.
 //
 // Description:
 //
@@ -1009,7 +1136,7 @@ func (client *Client) GetAccessKeyLastUsedEventsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the information about the most recent call of a specified AccessKey pair.
+// Queries the most recent usage record of a specified AccessKey pair.
 //
 // Description:
 //
@@ -1057,7 +1184,7 @@ func (client *Client) GetAccessKeyLastUsedInfoWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the information about the IP addresses that are most recently used when an AccessKey pair is called to access Alibaba Cloud services.
+// Queries the IP addresses most recently used by a specified AccessKey pair.
 //
 // Description:
 //
@@ -1117,7 +1244,7 @@ func (client *Client) GetAccessKeyLastUsedIpsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the information about the Alibaba Cloud services that are most recently accessed by using a specified AccessKey pair.
+// Queries the Alibaba Cloud services most recently accessed by a specified AccessKey pair.
 //
 // Description:
 //
@@ -1165,7 +1292,7 @@ func (client *Client) GetAccessKeyLastUsedProductsWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the information about the resources that are most recently accessed by using a specified AccessKey pair.
+// Queries the resources most recently used by a specified AccessKey pair.
 //
 // Description:
 //
@@ -1225,7 +1352,7 @@ func (client *Client) GetAccessKeyLastUsedResourcesWithContext(ctx context.Conte
 
 // Summary:
 //
-// 查询单个高级查询模板
+// Retrieves information about a single advanced template.
 //
 // @param request - GetAdvancedQueryTemplateRequest
 //
@@ -1269,7 +1396,7 @@ func (client *Client) GetAdvancedQueryTemplateWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询事件选择器
+// Queries the details about the data event selector for a specified trail.
 //
 // @param request - GetDataEventSelectorRequest
 //
@@ -1361,6 +1488,102 @@ func (client *Client) GetDeliveryHistoryJobWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// Queries the Insights event types to deliver for a trail.
+//
+// @param request - GetInsightSelectorsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInsightSelectorsResponse
+func (client *Client) GetInsightSelectorsWithContext(ctx context.Context, request *GetInsightSelectorsRequest, runtime *dara.RuntimeOptions) (_result *GetInsightSelectorsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TrailName) {
+		query["TrailName"] = request.TrailName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInsightSelectors"),
+		Version:     dara.String("2020-07-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInsightSelectorsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the number of Insights events for the current account.
+//
+// @param request - GetInsightsEventsCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInsightsEventsCountResponse
+func (client *Client) GetInsightsEventsCountWithContext(ctx context.Context, request *GetInsightsEventsCountRequest, runtime *dara.RuntimeOptions) (_result *GetInsightsEventsCountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Date) {
+		query["Date"] = request.Date
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInsightsEventsCount"),
+		Version:     dara.String("2020-07-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInsightsEventsCountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the status of a trail.
 //
 // Description:
@@ -1413,7 +1636,7 @@ func (client *Client) GetTrailStatusWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 批量查询事件选择器
+// Queries all data event selectors.
 //
 // @param request - ListDataEventSelectorsRequest
 //
@@ -1461,7 +1684,7 @@ func (client *Client) ListDataEventSelectorsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 查询数据事件支持的服务与事件名称
+// Queries the services that support data events and the names of these events.
 //
 // @param request - ListDataEventServicesRequest
 //
@@ -1513,7 +1736,7 @@ func (client *Client) ListDataEventServicesWithContext(ctx context.Context, requ
 //
 // Description:
 //
-// This topic provides an example on how to query a list of data backfill tasks. The returned result shows that a data backfill task with the ID `16602` is used to deliver historical events for a trail named `trail-name` to Simple Log Service.
+// This topic provides an example of how to query a list of data backfill tasks. The response shows a task with the ID `16602` that delivers historical events from the trail `trail-name` to Simple Log Service (SLS).
 //
 // @param request - ListDeliveryHistoryJobsRequest
 //
@@ -1561,13 +1784,11 @@ func (client *Client) ListDeliveryHistoryJobsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries event details.
+// Queries detailed historical events.
 //
 // Description:
 //
-// When you call this operation to query event details, you can query the event details at most twice per second.
-//
-// > Do not frequently call this operation. You can create a trail to deliver events to Log Service. Then, you can query event details in near real time by using the real-time log consumption feature of Log Service. For more information, see [Create a single-account trail](https://help.aliyun.com/document_detail/28810.html), [Create a multi-account trail](https://help.aliyun.com/document_detail/160661.html), and [Overview](https://help.aliyun.com/document_detail/28997.html).
+// > Do not call this operation frequently. To query events in near-real time, you can create a trail to deliver events to Simple Log Service (SLS) and use its real-time consumption feature. For more information, see [Create a single-account trail](https://help.aliyun.com/document_detail/28810.html), [Create a multi-account trail](https://help.aliyun.com/document_detail/160661.html), and [Real-time consumption](https://help.aliyun.com/document_detail/28997.html).
 //
 // @param request - LookupEventsRequest
 //
@@ -1631,7 +1852,67 @@ func (client *Client) LookupEventsWithContext(ctx context.Context, request *Look
 
 // Summary:
 //
-// 创建事件选择器
+// Queries Insights events.
+//
+// @param request - LookupInsightEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LookupInsightEventsResponse
+func (client *Client) LookupInsightEventsWithContext(ctx context.Context, request *LookupInsightEventsRequest, runtime *dara.RuntimeOptions) (_result *LookupInsightEventsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.LookupAttribute) {
+		query["LookupAttribute"] = request.LookupAttribute
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("LookupInsightEvents"),
+		Version:     dara.String("2020-07-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &LookupInsightEventsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates or configures a data event selector. A trail must exist before you create a data event selector. If a trail does not exist, you can call the CreateTrail operation to create one.
 //
 // @param request - PutDataEventSelectorRequest
 //
@@ -1687,11 +1968,59 @@ func (client *Client) PutDataEventSelectorWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Enables a trail to deliver events to an Object Storage Service (OSS) bucket or a Simple Log Service Logstore.
+// Specifies the types of Insights events to deliver for a trail.
+//
+// @param request - PutInsightSelectorsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PutInsightSelectorsResponse
+func (client *Client) PutInsightSelectorsWithContext(ctx context.Context, request *PutInsightSelectorsRequest, runtime *dara.RuntimeOptions) (_result *PutInsightSelectorsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InsightSelectors) {
+		query["InsightSelectors"] = request.InsightSelectors
+	}
+
+	if !dara.IsNil(request.TrailName) {
+		query["TrailName"] = request.TrailName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PutInsightSelectors"),
+		Version:     dara.String("2020-07-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PutInsightSelectorsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables a trail to start delivering ActionTrail events to Object Storage Service (OSS), Simple Log Service (SLS), or MaxCompute.
 //
 // Description:
 //
-// This topic describes how to enable logging for a sample trail named `trail-test`.
+// This topic provides an example on how to enable a trail named `trail-test`.
 //
 // @param request - StartLoggingRequest
 //
@@ -1735,11 +2064,11 @@ func (client *Client) StartLoggingWithContext(ctx context.Context, request *Star
 
 // Summary:
 //
-// Disables a trail to stop the delivery of events to an Object Storage Service (OSS) bucket or a  Simple Log Service Logstore.
+// Disables a trail to stop delivering ActionTrail events to Object Storage Service (OSS), Simple Log Service (SLS), or MaxCompute.
 //
 // Description:
 //
-// This topic describes how to disable logging for a sample trail named `trail-test`.
+// This topic provides an example on how to disable a trail named `trail-test`.
 //
 // @param request - StopLoggingRequest
 //
@@ -1779,7 +2108,7 @@ func (client *Client) StopLoggingWithContext(ctx context.Context, request *StopL
 
 // Summary:
 //
-// 更新高级查询模板
+// Updates an advanced query template.
 //
 // @param request - UpdateAdvancedQueryTemplateRequest
 //

@@ -16,7 +16,10 @@ type iDescribeAdvancedQueryHistoryResponseBody interface {
 }
 
 type DescribeAdvancedQueryHistoryResponseBody struct {
+	// The list of advanced query records.
 	QueryHistoryList []*DescribeAdvancedQueryHistoryResponseBodyQueryHistoryList `json:"QueryHistoryList,omitempty" xml:"QueryHistoryList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 19F032B7-5FD8-5AC9-97FD-ACF54371****
@@ -63,18 +66,26 @@ func (s *DescribeAdvancedQueryHistoryResponseBody) Validate() error {
 }
 
 type DescribeAdvancedQueryHistoryResponseBodyQueryHistoryList struct {
+	// The ID of the advanced query record.
+	//
 	// example:
 	//
 	// query-uIkIvLiVSuCKqg0yoa****
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	// The conditional statement for the query.
+	//
 	// example:
 	//
 	// event.userIdentity.accessKeyId: *
 	QuerySql *string `json:"QuerySql,omitempty" xml:"QuerySql,omitempty"`
+	// Indicates whether simple query mode is enabled.
+	//
 	// example:
 	//
 	// false
 	SimpleQuery *bool `json:"SimpleQuery,omitempty" xml:"SimpleQuery,omitempty"`
+	// The time when the advanced query record was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1753695874000

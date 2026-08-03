@@ -22,13 +22,17 @@ type GetAccessKeyLastUsedEventsResponseBody struct {
 	//
 	// This parameter is required.
 	Events []*GetAccessKeyLastUsedEventsResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	// The token that determines the start point of the query.
+	// The token that is used to retrieve the next page of results. If the value of this parameter is not empty, the next page exists. You must set the value to the NextToken value returned from the last call.
+	//
+	// colspan="1" rowspan="1">
+	//
+	// eyJhY2NvdW50IjoiMTQyNDM3OTU4NjM4NzE2MSIsImV2ZW50SWQiOiI3MkJDRTExRi02OTU3LTQ0NUItQjY0MC1CNEUyMkM4NUEwQzgiLCJsb2dJZCI6IjgyLTE0MjQzNzk1ODYzODcxNjEiLCJ0aW1lIjoxNjAyMzExNTQwMD\\*\\*\\*\\*
 	//
 	// example:
 	//
 	// eyJhY2NvdW50IjoiMTQyNDM3OTU4NjM4NzE2MSIsImV2ZW50SWQiOiI3MkJDRTExRi02OTU3LTQ0NUItQjY0MC1CNEUyMkM4NUEwQzgiLCJsb2dJZCI6IjgyLTE0MjQzNzk1ODYzODcxNjEiLCJ0aW1lIjoxNjAyMzExNTQwMD****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// This parameter is required.
 	//
@@ -87,7 +91,7 @@ func (s *GetAccessKeyLastUsedEventsResponseBody) Validate() error {
 }
 
 type GetAccessKeyLastUsedEventsResponseBodyEvents struct {
-	// An array that consists of the details about the event.
+	// The event details.
 	//
 	// example:
 	//
@@ -131,19 +135,19 @@ type GetAccessKeyLastUsedEventsResponseBodyEvents struct {
 	//
 	// }
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The name of the event.
+	// The event name.
 	//
 	// example:
 	//
 	// DescribeInstances
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The event source.
+	// The source of the last usage record.
 	//
 	// example:
 	//
 	// ManagementEvent
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The timestamp when the event was generated.
+	// The timestamp when the event was generated. Unit: milliseconds.
 	//
 	// example:
 	//

@@ -14,11 +14,13 @@ type iGetAdvancedQueryTemplateRequest interface {
 }
 
 type GetAdvancedQueryTemplateRequest struct {
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// utpl-N9fpjnFBSWauSXhVNP3erw
+	// utpl-N9fpjnFBSWauSXhVNP****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 

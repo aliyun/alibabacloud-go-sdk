@@ -26,7 +26,7 @@ type GetAccessKeyLastUsedResourcesRequest struct {
 	//
 	// example:
 	//
-	// LTAI****************
+	// LTAI4Fz1ykT4qxgNMvN6****
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
@@ -38,9 +38,9 @@ type GetAccessKeyLastUsedResourcesRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The number of entries per page.
 	//
-	// 	- Valid values: 0 to 100.
+	// - Valid values: 0 to 100.
 	//
-	// 	- Default value: 20.
+	// - Default value: 20.
 	//
 	// example:
 	//

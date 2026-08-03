@@ -22,19 +22,36 @@ type iGetAdvancedQueryTemplateResponseBody interface {
 }
 
 type GetAdvancedQueryTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 32110C73-0004-5141-9DA7-4B8045C8173A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether simple search mode is enabled. Valid values:
+	//
+	// - true: enabled.
+	//
+	// - false: disabled.
+	//
 	// example:
 	//
 	// false
 	SimpleQuery *bool `json:"SimpleQuery,omitempty" xml:"SimpleQuery,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
-	// utpl-N9fpjnFBSWauSXhVNP3erw
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// utpl-N9fpjnFBSWauSXhVNP****
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template name.
+	//
+	// example:
+	//
+	// example-template
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The query statement.
+	//
 	// example:
 	//
 	// event.userIdentity.type: root-account AND event.userIdentity.accessKeyId: *

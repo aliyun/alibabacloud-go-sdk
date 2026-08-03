@@ -9,6 +9,8 @@ type iCreateAdvancedQueryHistoryRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDryRun(v bool) *CreateAdvancedQueryHistoryRequest
+	GetDryRun() *bool
 	SetQuerySql(v string) *CreateAdvancedQueryHistoryRequest
 	GetQuerySql() *string
 	SetSimpleQuery(v bool) *CreateAdvancedQueryHistoryRequest
@@ -16,10 +18,17 @@ type iCreateAdvancedQueryHistoryRequest interface {
 }
 
 type CreateAdvancedQueryHistoryRequest struct {
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The conditional statement.
+	//
+	// You can edit the conditional statement based on the [SQL syntax for advanced event queries](https://help.aliyun.com/document_detail/2557373.html).
+	//
 	// example:
 	//
 	// event.userIdentity.accessKeyId: *
 	QuerySql *string `json:"QuerySql,omitempty" xml:"QuerySql,omitempty"`
+	// Specifies whether to enable the simple query mode.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -36,12 +45,21 @@ func (s CreateAdvancedQueryHistoryRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateAdvancedQueryHistoryRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *CreateAdvancedQueryHistoryRequest) GetQuerySql() *string {
 	return s.QuerySql
 }
 
 func (s *CreateAdvancedQueryHistoryRequest) GetSimpleQuery() *bool {
 	return s.SimpleQuery
+}
+
+func (s *CreateAdvancedQueryHistoryRequest) SetDryRun(v bool) *CreateAdvancedQueryHistoryRequest {
+	s.DryRun = &v
+	return s
 }
 
 func (s *CreateAdvancedQueryHistoryRequest) SetQuerySql(v string) *CreateAdvancedQueryHistoryRequest {

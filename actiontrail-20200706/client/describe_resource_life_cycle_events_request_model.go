@@ -16,10 +16,14 @@ type iDescribeResourceLifeCycleEventsRequest interface {
 }
 
 type DescribeResourceLifeCycleEventsRequest struct {
+	// The resource type.
+	//
 	// example:
 	//
 	// ACS::ECS::Instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The name of the Alibaba Cloud service.
+	//
 	// example:
 	//
 	// ECS

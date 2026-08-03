@@ -34,9 +34,9 @@ type iGetTrailStatusResponseBody interface {
 type GetTrailStatusResponseBody struct {
 	// Indicates whether logging is enabled for the trail. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type GetTrailStatusResponseBody struct {
 	LatestDeliveryTime *string `json:"LatestDeliveryTime,omitempty" xml:"LatestDeliveryTime,omitempty"`
 	// Indicates whether the destination Object Storage Service (OSS) bucket is available. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -84,9 +84,9 @@ type GetTrailStatusResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the destination Log Service Logstore is available. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

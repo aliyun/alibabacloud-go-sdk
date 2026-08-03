@@ -18,14 +18,29 @@ type iDescribeAdvancedQueryTemplateRequest interface {
 }
 
 type DescribeAdvancedQueryTemplateRequest struct {
+	// The page number. The value starts from 1.
+	//
+	// Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The maximum number of results to return.
+	//
+	// Default value: 20.
+	//
 	// example:
 	//
 	// 20
-	PageSize     *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the template. This operation performs a case-insensitive, fuzzy match. If you do not specify a name, all templates are returned.
+	//
+	// For example, if you specify `a`, templates named `a1` and `a2` are returned. If you leave this parameter empty, templates named `a1`, `a2`, `b1`, and `c1` are returned.
+	//
+	// example:
+	//
+	// example-template
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 

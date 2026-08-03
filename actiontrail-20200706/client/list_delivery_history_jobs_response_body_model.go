@@ -22,7 +22,7 @@ type iListDeliveryHistoryJobsResponseBody interface {
 }
 
 type ListDeliveryHistoryJobsResponseBody struct {
-	// The list of historical event delivery tasks.
+	// The list of data backfill tasks.
 	DeliveryHistoryJobs []*ListDeliveryHistoryJobsResponseBodyDeliveryHistoryJobs `json:"DeliveryHistoryJobs,omitempty" xml:"DeliveryHistoryJobs,omitempty" type:"Repeated"`
 	// The page number of the returned page.
 	//
@@ -30,19 +30,19 @@ type ListDeliveryHistoryJobsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// B190816C-6DCA-4DC5-9B8E-EE0367B57CFF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of historical event delivery tasks returned.
+	// The total number of tasks.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type ListDeliveryHistoryJobsResponseBodyDeliveryHistoryJobs struct {
 	//
 	// 2021-04-26T03:22:04Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The home region of the trail.
+	// The home region.
 	//
 	// example:
 	//
@@ -141,15 +141,15 @@ type ListDeliveryHistoryJobsResponseBodyDeliveryHistoryJobs struct {
 	//
 	// 16602
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The task status. Valid values:
+	// The status of the task. Valid values:
 	//
-	// 	- 0: The task is initializing.
+	// - 0: The task is being initialized.
 	//
-	// 	- 1: The task is delivering historical events.
+	// - 1: The task is delivering events.
 	//
-	// 	- 2: The task is complete.
+	// - 2: The task is complete.
 	//
-	// 	- 3: The task fails.
+	// - 3: The task failed.
 	//
 	// example:
 	//
@@ -167,7 +167,7 @@ type ListDeliveryHistoryJobsResponseBodyDeliveryHistoryJobs struct {
 	//
 	// trail-name
 	TrailName *string `json:"TrailName,omitempty" xml:"TrailName,omitempty"`
-	// The time when the task was updated.
+	// The time when the task was last updated.
 	//
 	// example:
 	//

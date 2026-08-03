@@ -14,6 +14,8 @@ type iDeleteAdvancedQueryTemplateResponseBody interface {
 }
 
 type DeleteAdvancedQueryTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 95F2CD1D-9BD3-564A-A74A-743FFC5E46E5

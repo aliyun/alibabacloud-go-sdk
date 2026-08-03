@@ -18,18 +18,27 @@ type iCreateAdvancedQueryTemplateRequest interface {
 }
 
 type CreateAdvancedQueryTemplateRequest struct {
+	// Specifies whether to enable the simple query mode.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
-	SimpleQuery  *bool   `json:"SimpleQuery,omitempty" xml:"SimpleQuery,omitempty"`
+	SimpleQuery *bool `json:"SimpleQuery,omitempty" xml:"SimpleQuery,omitempty"`
+	// The name of the template, which can contain a maximum of 64 characters. Uniqueness is not required.
+	//
+	// example:
+	//
+	// test1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The query statement of the template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// event.eventName: ConsoleSignin AND event.userIdentity.type: root-account
+	// event.errorCode: 	- AND event.userIdentity.accessKeyId: *
 	TemplateSql *string `json:"TemplateSql,omitempty" xml:"TemplateSql,omitempty"`
 }
 

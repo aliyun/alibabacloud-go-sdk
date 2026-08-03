@@ -16,7 +16,10 @@ type iListDataEventServicesResponseBody interface {
 }
 
 type ListDataEventServicesResponseBody struct {
+	// The response parameters.
 	Data *ListDataEventServicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 851038F3-33AB-4C49-97D7-6AB37D35****
@@ -59,14 +62,19 @@ func (s *ListDataEventServicesResponseBody) Validate() error {
 }
 
 type ListDataEventServicesResponseBodyData struct {
+	// The maximum number of entries returned for the current request.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// VjE6bHJlTGoxdm1M****
-	NextToken    *string                                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The supported Alibaba Cloud services and the data events for each service.
 	ServiceInfos []*ListDataEventServicesResponseBodyDataServiceInfos `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
 }
 
@@ -119,7 +127,10 @@ func (s *ListDataEventServicesResponseBodyData) Validate() error {
 }
 
 type ListDataEventServicesResponseBodyDataServiceInfos struct {
+	// The data events supported by the service.
 	EventNames []*string `json:"EventNames,omitempty" xml:"EventNames,omitempty" type:"Repeated"`
+	// The cloud service name.
+	//
 	// example:
 	//
 	// Cms

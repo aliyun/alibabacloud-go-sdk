@@ -137,15 +137,15 @@ type GetAccessKeyLastUsedIpsResponseBodyIps struct {
 	//
 	// ``10.10.**.**``
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The event source.
+	// The source of the last usage record.
 	//
 	// Valid values:
 	//
-	// 	- Internal: other events.
+	// - Internal: Other event
 	//
-	// 	- ManagementEvent: management events.
+	// - ManagementEvent: Management event
 	//
-	// 	- DataEvent: data events.
+	// - DataEvent: Data event
 	//
 	// example:
 	//

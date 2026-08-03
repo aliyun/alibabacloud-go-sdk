@@ -22,19 +22,32 @@ type iUpdateAdvancedQueryTemplateResponseBody interface {
 }
 
 type UpdateAdvancedQueryTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 145318BE-DEE1-4C57-AA7C-5BE7D34A6AE0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the simple query mode is enabled.
+	//
 	// example:
 	//
 	// true
 	SimpleQuery *string `json:"SimpleQuery,omitempty" xml:"SimpleQuery,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
-	// utpl-QNL3dpYkQcyjZxrIQCciqQ
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// utpl-QNL3dpYkQcyjZxrIQC****
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The name of the template. The maximum length is 64 characters.
+	//
+	// example:
+	//
+	// example-template
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The query statement of the template.
+	//
 	// example:
 	//
 	// event.userIdentity.type: root-account AND event.userIdentity.accessKeyId: *

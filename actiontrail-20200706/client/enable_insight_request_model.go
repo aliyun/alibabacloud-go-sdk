@@ -16,11 +16,19 @@ type iEnableInsightRequest interface {
 type EnableInsightRequest struct {
   // The type of the Insights event. Valid values:
   // 
-  // 	- IpInsight: Insights event on IP address
+  // - IpInsight: IP address request events.
   // 
-  // 	- ApiCallRateInsight: Insights event on API call rate
+  // - ApiCallRateInsight: Unusual API call events.
   // 
-  // 	- ApiErrorRateInsight: Insights event on API error rate
+  // - ApiErrorRateInsight: API error events.
+  // 
+  // - AkInsight: Unusual AccessKey pair call events.
+  // 
+  // - PolicyChangeInsight: Permission change events.
+  // 
+  // - PasswordChangeInsight: Password change events.
+  // 
+  // - TrailConcealmentInsight: Trail concealment events.
   // 
   // example:
   // 

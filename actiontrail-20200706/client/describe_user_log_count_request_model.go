@@ -16,10 +16,14 @@ type iDescribeUserLogCountRequest interface {
 }
 
 type DescribeUserLogCountRequest struct {
+	// The end time. Format: yyyy-MM-dd.
+	//
 	// example:
 	//
 	// 2025-06-10
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The start time. Format: yyyy-MM-dd.
+	//
 	// example:
 	//
 	// 2025-05-12

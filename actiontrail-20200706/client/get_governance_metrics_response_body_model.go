@@ -16,7 +16,10 @@ type iGetGovernanceMetricsResponseBody interface {
 }
 
 type GetGovernanceMetricsResponseBody struct {
+	// The response parameters.
 	Data *GetGovernanceMetricsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 145318BE-DEE1-4C57-AA7C-5BE7D34A****
@@ -59,10 +62,13 @@ func (s *GetGovernanceMetricsResponseBody) Validate() error {
 }
 
 type GetGovernanceMetricsResponseBodyData struct {
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 195622768501****
-	AccountId         *string                                                  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// A collection of governance items that contain multiple compliance assessment dimensions.
 	GovernanceMetrics []*GetGovernanceMetricsResponseBodyDataGovernanceMetrics `json:"GovernanceMetrics,omitempty" xml:"GovernanceMetrics,omitempty" type:"Repeated"`
 }
 
@@ -106,6 +112,10 @@ func (s *GetGovernanceMetricsResponseBodyData) Validate() error {
 }
 
 type GetGovernanceMetricsResponseBodyDataGovernanceMetrics struct {
+	// The details of the resource.
+	//
+	// This parameter contains the detailed configurations of all compliant resources for the governance item. This parameter is returned only if a resource instance exists.
+	//
 	// example:
 	//
 	// {
@@ -132,10 +142,16 @@ type GetGovernanceMetricsResponseBodyDataGovernanceMetrics struct {
 	//
 	// }
 	ColumnsSchema *string `json:"ColumnsSchema,omitempty" xml:"ColumnsSchema,omitempty"`
+	// The governance item. This indicates a specific category of compliance check.
+	//
 	// example:
 	//
 	// actiontrail_storage_audit_log
 	GovernanceItem *string `json:"GovernanceItem,omitempty" xml:"GovernanceItem,omitempty"`
+	// The compliance score for the governance item.
+	//
+	// Valid values: 0 to 100.
+	//
 	// example:
 	//
 	// 100

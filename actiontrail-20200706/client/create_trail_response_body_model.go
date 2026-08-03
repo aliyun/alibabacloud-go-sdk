@@ -36,7 +36,7 @@ type iCreateTrailResponseBody interface {
 }
 
 type CreateTrailResponseBody struct {
-	// The read/write type of the events to be delivered.
+	// The read/write type of events that the trail delivers.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type CreateTrailResponseBody struct {
 	//
 	// cn-hangzhou
 	HomeRegion *string `json:"HomeRegion,omitempty" xml:"HomeRegion,omitempty"`
-	// ARN of the Big Data Compute Service project for tracking delivery.
+	// The ARN of the MaxCompute project to which the trail delivers events.
 	//
 	// example:
 	//
 	// acs:odps:cn-hangzhou:151266687691****:project/actiontrail_****
 	MaxComputeProjectArn *string `json:"MaxComputeProjectArn,omitempty" xml:"MaxComputeProjectArn,omitempty"`
-	// The ARN of the role that Operation Audit assumes when delivering operation events to the Big Data Compute Service project.
+	// The ARN of the RAM role that ActionTrail assumes to deliver events to the MaxCompute project.
 	//
 	// example:
 	//
@@ -66,43 +66,43 @@ type CreateTrailResponseBody struct {
 	//
 	// trail-test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The name of the OSS bucket to which events are to be delivered.
+	// The name of the destination OSS bucket.
 	//
 	// example:
 	//
 	// audit-log
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	// The prefix of the log files to be stored in the destination OSS bucket.
+	// The prefix for the names of log files in the OSS bucket.
 	//
 	// example:
 	//
 	// at-product-account-audit-B
 	OssKeyPrefix *string `json:"OssKeyPrefix,omitempty" xml:"OssKeyPrefix,omitempty"`
-	// The ARN of the service-linked role that is assumed by ActionTrail to deliver events to the destination OSS bucket.
+	// The ARN of the RAM role that ActionTrail assumes to deliver events to the OSS bucket.
 	//
 	// example:
 	//
-	// acs:ram::***:role/aliyunserviceroleforactiontrail
+	// acs:ram::151266687691****:role/aliyunserviceroleforactiontrail
 	OssWriteRoleArn *string `json:"OssWriteRoleArn,omitempty" xml:"OssWriteRoleArn,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 442DDADF-DA58-4029-8E8B-82C73E9A7A70
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ARN of the Log Service project to which events are to be delivered.
+	// The ARN of the SLS project to which the trail delivers events.
 	//
 	// example:
 	//
 	// acs:log:cn-hangzhou:151266687691****:project/test-project
 	SlsProjectArn *string `json:"SlsProjectArn,omitempty" xml:"SlsProjectArn,omitempty"`
-	// The ARN of the service-linked role that is assumed by ActionTrail to deliver events to the destination Log Service project.
+	// The ARN of the RAM role that ActionTrail assumes to deliver events to the SLS project.
 	//
 	// example:
 	//
-	// acs:ram::***:role/aliyunserviceroleforactiontrail
+	// acs:ram::151266687691****:role/aliyunserviceroleforactiontrail
 	SlsWriteRoleArn *string `json:"SlsWriteRoleArn,omitempty" xml:"SlsWriteRoleArn,omitempty"`
-	// The one or more regions from which the trail delivers events.
+	// The region in which the trail is created. A value of `All` indicates that the trail processes events from all regions.
 	//
 	// example:
 	//

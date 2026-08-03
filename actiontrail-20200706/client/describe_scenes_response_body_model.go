@@ -16,10 +16,13 @@ type iDescribeScenesResponseBody interface {
 }
 
 type DescribeScenesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 7EC26DF0-35AC-5F37-82B3-F5545D0A****
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of scenarios.
 	SceneList []*DescribeScenesResponseBodySceneList `json:"SceneList,omitempty" xml:"SceneList,omitempty" type:"Repeated"`
 }
 
@@ -63,16 +66,32 @@ func (s *DescribeScenesResponseBody) Validate() error {
 }
 
 type DescribeScenesResponseBodySceneList struct {
+	// The description of the scenario.
+	//
+	// example:
+	//
+	// Query access events for the primary and sub-accounts and access keys under various scenarios, such as access events occurrence, access without MFA authentication, and failed access attempts.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the scenario.
+	//
+	// example:
+	//
+	// Account-related or AccessKey Pair-related Events
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the scenario.
+	//
 	// example:
 	//
 	// sc-lpYrjKouRfy3MK-wteJW_Q
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// The identifier for the scenario category.
+	//
 	// example:
 	//
 	// identity
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The type of the scenario.
+	//
 	// example:
 	//
 	// normal

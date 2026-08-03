@@ -124,7 +124,7 @@ type GetAccessKeyLastUsedProductsResponseBodyProducts struct {
 	//
 	// example:
 	//
-	// Elastic Compute Service (ECS)
+	// 云服务器ECS
 	ServiceNameCn *string `json:"ServiceNameCn,omitempty" xml:"ServiceNameCn,omitempty"`
 	// The English name of the Alibaba Cloud service.
 	//
@@ -132,51 +132,51 @@ type GetAccessKeyLastUsedProductsResponseBodyProducts struct {
 	//
 	// Elastic Compute Service
 	ServiceNameEn *string `json:"ServiceNameEn,omitempty" xml:"ServiceNameEn,omitempty"`
-	// The event source.
+	// The source of the last usage record.
 	//
 	// Valid values:
 	//
-	// 	- Internal
+	// - Internal
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     :
+	//   :
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     other events
+	//   Other event
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- ManagementEvent
+	// - ManagementEvent
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     :
+	//   :
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     management events
+	//   Management event
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- DataEvent
+	// - DataEvent
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     :
+	//   :
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     data events
+	//   Data event
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// example:
 	//
 	// ManagementEvent
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. Unit: millisecond.
+	// The timestamp when the Alibaba Cloud service was used. Unit: milliseconds.
 	//
 	// example:
 	//

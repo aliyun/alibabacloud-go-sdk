@@ -34,53 +34,65 @@ type iCreateTrailRequest interface {
 }
 
 type CreateTrailRequest struct {
-	// The read/write type of the events to be delivered. Valid values:
+	// Specifies the read/write type of events that the trail delivers. Valid values:
 	//
-	// 	- Write: write events. It is the default value.
+	// - Write: Write events.
 	//
-	// 	- Read: read events.
+	// - Read: Read events.
 	//
-	// 	- All: read and write events.
+	// - All (default): All read and write events.
 	//
 	// example:
 	//
 	// Write
 	EventRW *string `json:"EventRW,omitempty" xml:"EventRW,omitempty"`
-	// Specifies whether to create a multi-account trail. Valid values:
+	// Specifies whether the trail is a multi-account trail. Valid values:
 	//
-	// 	- true: creates a multi-account trail.
+	// - true
 	//
-	// 	- false (default): creates a single-account trail.
+	// - false (default)
+	//
+	// To create a trail for an organization, set this parameter to `true`. The trail will collect events from all member accounts in the organization.
 	//
 	// example:
 	//
 	// false
 	IsOrganizationTrail *bool `json:"IsOrganizationTrail,omitempty" xml:"IsOrganizationTrail,omitempty"`
-	// The ARN of the MaxCompute project to which you want to deliver events.
+	// The ARN of the MaxCompute project to which ActionTrail delivers events.
 	//
-	// >  You must specify at least one of the following parameters: OssBucketName, SlsProjectArn, and MaxComputeProjectArn.
+	// > You must specify a destination for the trail by providing at least one of the following parameters: `OssBucketName`, `SlsProjectArn`, or `MaxComputeProjectArn`.
 	//
-	// >  The name of the MaxCompute project must be prefixed with actiontrail_.
+	// > The project name in the ARN must start with `actiontrail_`.
 	//
 	// example:
 	//
 	// acs:odps:cn-hangzhou:15127787691****:project/actiontrail_****
 	MaxComputeProjectArn *string `json:"MaxComputeProjectArn,omitempty" xml:"MaxComputeProjectArn,omitempty"`
-	// The ARN of the role that is assumed by ActionTrail to deliver events to the MaxCompute project.
+	// The ARN of the RAM role that ActionTrail assumes to deliver events to the MaxCompute project.
 	//
-	// 	- If you do not specify this parameter, ActionTrail creates a service-linked role to create the corresponding resource. For more information, see [Manage the service-linked role](https://help.aliyun.com/document_detail/169244.html).
+	// - If this parameter is not specified, ActionTrail creates a service-linked role to deliver events. For more information, see [ActionTrail service-linked role](https://help.aliyun.com/document_detail/169244.html).
 	//
-	// 	- If you specify this parameter and deliver events to the current account, you must grant the RAM role the permissions on the service-linked role for ActionTrail. If you want to deliver events to other accounts, you must attach a system policy to the RAM role. For more information about how to deliver events across Alibaba Cloud accounts, see [Deliver events across Alibaba Cloud accounts](https://help.aliyun.com/document_detail/207462.html).
+	// - If you specify a role, it must be a RAM role that you created. This role must have a trust policy that allows the ActionTrail service (\\`actiontrail.aliyuncs.com\\`) to assume it. The role\\"s permission policy must grant permissions to write to the specified MaxCompute project. For more information about cross-account delivery, see [Deliver events from multiple Alibaba Cloud accounts to the same account](https://help.aliyun.com/document_detail/207462.html).
 	//
 	// example:
 	//
 	// acs:ram::15127787691****:role/aliyunserviceroleforactiontrail
 	MaxComputeWriteRoleArn *string `json:"MaxComputeWriteRoleArn,omitempty" xml:"MaxComputeWriteRoleArn,omitempty"`
-	// The name of the trail to be created.
+	// The name of the trail.
 	//
-	// The name must be 6 to 36 characters in length. The name must start with a lowercase letter and can contain lowercase letters, digits, hyphens (-), and underscores (_).
+	// > - Length: 6 to 36 characters.
 	//
-	// > The name must be unique within your Alibaba Cloud account.
+	// >
+	//
+	// > - Characters: Lowercase letters, digits, hyphens (-), and underscores (_).
+	//
+	// >
+	//
+	// > - Must start with a lowercase letter.
+	//
+	// >
+	//
+	// > - Must be uniquewithin an Alibaba Cloud account.
 	//
 	// This parameter is required.
 	//
@@ -88,57 +100,61 @@ type CreateTrailRequest struct {
 	//
 	// trail-test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The name of the OSS bucket to which events are to be delivered.
+	// The name of the OSS bucket to which ActionTrail delivers events.
 	//
-	// The name must be 3 to 63 characters in length. The name must start with a lowercase letter or a digit and can contain lowercase letters, digits, and hyphens (-).
+	// - Length: 3 to 63 characters.
 	//
-	// > You must specify at least one of the OssBucketName and SlsProjectArn parameters.
+	// - Characters: Lowercase letters, digits, and hyphens (-).
+	//
+	// - Must start with a lowercase letter or a digit.
+	//
+	// > You must specify a destination for the trail by providing at least one of the following parameters: `OssBucketName`, `SlsProjectArn`, or `MaxComputeProjectArn`.
 	//
 	// example:
 	//
 	// audit-log
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	// The prefix of the log files to be stored in the destination OSS bucket. This parameter can be left empty.
+	// The prefix for the names of log files that ActionTrail delivers to your OSS bucket.
 	//
-	// The prefix must be 6 to 32 characters in length. The prefix must start with a letter and can contain letters, digits, hyphens (-), forward slashes (/), and underscores (_).
+	// - Length: 6 to 32 characters.
+	//
+	// - Characters: Letters, digits, hyphens (-), forward slashes (/), and underscores (_).
+	//
+	// - Must start with a letter.
 	//
 	// example:
 	//
 	// at-product-account-audit-B
 	OssKeyPrefix *string `json:"OssKeyPrefix,omitempty" xml:"OssKeyPrefix,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the service-linked role that is assumed by ActionTrail to deliver events to the destination Object Storage Service (OSS) bucket.
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role that ActionTrail assumes to deliver events to the OSS bucket.
 	//
-	// 	- If you do not specify this parameter, ActionTrail creates a service-linked role to create the corresponding resource. For more information, see [Manage the service-linked role](https://help.aliyun.com/document_detail/169244.html).
+	// - If you do not specify this parameter, ActionTrail creates a service-linked role to deliver events. For more information, see [ActionTrail service-linked role](https://help.aliyun.com/document_detail/169244.html).
 	//
-	// 	- If you specify this parameter and deliver events to the current account, you must grant the RAM role the permissions on the service-linked role for ActionTrail. If you want to deliver events to other accounts, you must attach a system policy to the RAM role. For more information about how to deliver events across Alibaba Cloud accounts, see [Deliver events across Alibaba Cloud accounts](https://help.aliyun.com/document_detail/207462.html).
+	// - If you specify a role, it must be a RAM role that you created. This role must have a trust policy that allows the ActionTrail service (actiontrail.aliyuncs.com) to assume it. The role\\"s RAM policy must grant permissions to write to the specified OSS bucket. For more information about cross-account delivery, see [Deliver events from multiple Alibaba Cloud accounts to the same account](https://help.aliyun.com/document_detail/207462.html).
 	//
 	// example:
 	//
-	// acs:ram::***:role/aliyunserviceroleforactiontrail
+	// acs:ram::15127787691****:role/aliyunserviceroleforactiontrail
 	OssWriteRoleArn *string `json:"OssWriteRoleArn,omitempty" xml:"OssWriteRoleArn,omitempty"`
-	// The ARN of the Log Service project to which events are to be delivered.
+	// The ARN of the SLS project to which ActionTrail delivers events.
 	//
-	// > You must specify at least one of the OssBucketName and SlsProjectArn parameters.
+	// > You must specify a destination for the trail by providing at least one of the following parameters: `OssBucketName`, `SlsProjectArn`, or `MaxComputeProjectArn`.
 	//
 	// example:
 	//
-	// acs:log:cn-shanghai::project/***
+	// acs:log:cn-shanghai:151266687691****:project/test-project
 	SlsProjectArn *string `json:"SlsProjectArn,omitempty" xml:"SlsProjectArn,omitempty"`
-	// The ARN of the RAM role that is assumed by ActionTrail to deliver events to the Log Service project.
+	// The ARN of the RAM role that ActionTrail assumes to deliver events to the SLS project.
 	//
-	// 	- If you do not specify this parameter, ActionTrail creates a service-linked role to create the corresponding resource. For more information, see [Manage the service-linked role](https://help.aliyun.com/document_detail/169244.html).
+	// - If this parameter is not specified, ActionTrail creates a service-linked role to deliver events. For more information, see [ActionTrail service-linked role](https://help.aliyun.com/document_detail/169244.html).
 	//
-	// 	- If you specify this parameter, you must grant the permissions of the service-linked role that is assumed by ActionTrail to the RAM role before you can deliver events to your Alibaba Cloud account. If you need to deliver events to other Alibaba Cloud accounts, you must attach the permission policy that is used to grant permissions related to event delivery to the RAM role. For more information about how to deliver events across Alibaba Cloud accounts, see [Deliver events across Alibaba Cloud accounts](https://help.aliyun.com/document_detail/207462.html).
+	// - If you specify a role, it must be a RAM role that you created. This role must have a trust policy that allows the ActionTrail service (actiontrail.aliyuncs.com) to assume it. The role\\"s permission policy must grant permissions to write to the specified SLS project. For more information about cross-account delivery, see [Deliver events from multiple Alibaba Cloud accounts to the same account](https://help.aliyun.com/document_detail/207462.html).
 	//
 	// example:
 	//
-	// acs:ram::***:role/aliyunserviceroleforactiontrail
+	// acs:ram::151266687691****:role/aliyunserviceroleforactiontrail
 	SlsWriteRoleArn *string `json:"SlsWriteRoleArn,omitempty" xml:"SlsWriteRoleArn,omitempty"`
-	// The one or more regions from which the trail delivers events.
-	//
-	// The default value is All, which indicates that the trail delivers events from all regions.
-	//
-	// You can also specify specific regions. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/213597.html) operation to query all the supported regions.
+	// The region in which the trail is created. By default, a trail is created in all regions and this parameter is set to `All`. To create a trail in a specific region, provide the region ID. For more information about regions, call the [DescribeRegions](https://help.aliyun.com/document_detail/213597.html) operation.
 	//
 	// example:
 	//

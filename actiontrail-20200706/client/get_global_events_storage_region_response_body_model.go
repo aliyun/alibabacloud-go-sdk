@@ -20,39 +20,39 @@ type GetGlobalEventsStorageRegionResponseBody struct {
 	//
 	// example:
 	//
-	// 0474CD9D-DF37-55D4-8383-D978CFBE13A4
+	// 0474CD9D-DF37-55D4-8383-D265CFBE13A5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The region where global events are stored.
 	//
 	// Valid values:
 	//
-	// 	- ap-southeast-1
+	// - ap-southeast-1
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     :
+	//   :
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     the Singapore region
+	//   the Singapore region
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- cn-hangzhou
+	// - cn-hangzhou
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     :
+	//   :
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     the China (Hangzhou) region
+	//   the China (Hangzhou) region
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// ap-southeast-1
 	StorageRegion *string `json:"StorageRegion,omitempty" xml:"StorageRegion,omitempty"`
 }
 

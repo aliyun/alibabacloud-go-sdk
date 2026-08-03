@@ -143,51 +143,51 @@ type GetAccessKeyLastUsedResourcesResponseBodyResources struct {
 	//
 	// ACS::ECS::Instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The event source.
+	// The source of the last usage record.
 	//
 	// Valid values:
 	//
-	// 	- Internal
+	// - Internal
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     :
+	//   :
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     other events
+	//   Other event
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- ManagementEvent
+	// - ManagementEvent
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     :
+	//   :
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     management events
+	//   Management event
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- DataEvent
+	// - DataEvent
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     :
+	//   :
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     data events
+	//   Data event
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// example:
 	//
 	// ManagementEvent
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The timestamp when the resource was used. Unit: millisecond.
+	// The timestamp when the resource was used. Unit: milliseconds.
 	//
 	// example:
 	//

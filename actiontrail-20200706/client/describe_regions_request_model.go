@@ -14,11 +14,11 @@ type iDescribeRegionsRequest interface {
 }
 
 type DescribeRegionsRequest struct {
-	// The language of the content within the request and response. Valid values:
+	// The language of the region names. Valid values:
 	//
-	// 	- zh-CN: Chinese
+	// - zh-CN: Chinese.
 	//
-	// 	- en-US (default): English
+	// - en-US (default): English.
 	//
 	// example:
 	//

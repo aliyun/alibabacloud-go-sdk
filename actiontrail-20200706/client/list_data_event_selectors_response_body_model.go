@@ -16,7 +16,10 @@ type iListDataEventSelectorsResponseBody interface {
 }
 
 type ListDataEventSelectorsResponseBody struct {
+	// The response parameters.
 	Data *ListDataEventSelectorsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8A74FD2E-A9B9-461C-BCE9-D9668DF1****
@@ -59,11 +62,16 @@ func (s *ListDataEventSelectorsResponseBody) Validate() error {
 }
 
 type ListDataEventSelectorsResponseBodyData struct {
+	// A list of data event selectors.
 	DataEventSelectorInfos []*ListDataEventSelectorsResponseBodyDataDataEventSelectorInfos `json:"DataEventSelectorInfos,omitempty" xml:"DataEventSelectorInfos,omitempty" type:"Repeated"`
+	// The maximum number of entries returned for the current request.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
+	//
 	// example:
 	//
 	// VjE6bHJlTGoxdm1M****
@@ -119,19 +127,52 @@ func (s *ListDataEventSelectorsResponseBodyData) Validate() error {
 }
 
 type ListDataEventSelectorsResponseBodyDataDataEventSelectorInfos struct {
+	// The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+	//
+	// Each element in the JSON array includes the following fields:
+	//
+	// - `ServiceName`: The name of the Alibaba Cloud service that supports data events.
+	//
+	// - `ReadWriteType`: The type of data event. Valid values: Read, Write, and All.
+	//
+	// - `EventName`: This field contains the `Equals` and `NotEquals` subfields.
+	//
+	//   For example, the following configuration specifies that only `GetObject`, `CopyObject`, and `AppendObject`events are delivered:
+	//
+	//   `{"EventName":{"Equals":["GetObject","CopyObject","AppendObject"]}}`
+	//
+	//   If you specify `NotEquals`, events other than `GetObject`, `CopyObject`, and `AppendObject` are delivered.
+	//
+	// - `ResourceArn`: This field also contains the `Equals` and `NotEquals` subfields, similar to `EventName`. For example:
+	//
+	//   `{"ResourceArn":{"Equals":[arn1,...,arnx]}}`
+	//
 	// example:
 	//
 	// [{"EventName":{"Equals":["GetObject","CopyObject","AppendObject"]},"ReadWriteType":"All","ServiceName":"Oss"}]
 	EventSelectors *string `json:"EventSelectors,omitempty" xml:"EventSelectors,omitempty"`
+	// Specifies whether the trail tracks data events in all regions.
+	//
+	// Valid values:
+	//
+	// - true
+	//
+	// - false
+	//
 	// example:
 	//
 	// true
-	IsTrailAllRegion   *bool                                                                             `json:"IsTrailAllRegion,omitempty" xml:"IsTrailAllRegion,omitempty"`
+	IsTrailAllRegion *bool `json:"IsTrailAllRegion,omitempty" xml:"IsTrailAllRegion,omitempty"`
+	// The list of configurations for delivering events to Simple Log Service (SLS).
 	SlsDeliveryConfigs []*ListDataEventSelectorsResponseBodyDataDataEventSelectorInfosSlsDeliveryConfigs `json:"SlsDeliveryConfigs,omitempty" xml:"SlsDeliveryConfigs,omitempty" type:"Repeated"`
+	// The ARN of the trail.
+	//
 	// example:
 	//
 	// acs:actiontrail:cn-shanghai:159498693826****:trail/trail-name
 	TrailArn *string `json:"TrailArn,omitempty" xml:"TrailArn,omitempty"`
+	// The name of the trail.
+	//
 	// example:
 	//
 	// trail-name
@@ -205,23 +246,38 @@ func (s *ListDataEventSelectorsResponseBodyDataDataEventSelectorInfos) Validate(
 }
 
 type ListDataEventSelectorsResponseBodyDataDataEventSelectorInfosSlsDeliveryConfigs struct {
+	// The time when the trail was created.
+	//
 	// example:
 	//
 	// 2023-09-30T16:11Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The error code returned if the resource initialization fails.
+	//
 	// example:
 	//
 	// LogServiceException
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the resource initialization fails.
+	//
+	// example:
+	//
+	// RequestError Web request failed.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the SLS project in the region where events are delivered.
+	//
 	// example:
 	//
 	// acs:log:cn-shanghai:159498693826****:project/actiontrail-log-159498693826****-cn-shanghai
 	RegionSlsProjectArn *string `json:"RegionSlsProjectArn,omitempty" xml:"RegionSlsProjectArn,omitempty"`
+	// The initialization status of the tracked resource.
+	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The region of the trail.
+	//
 	// example:
 	//
 	// cn-shanghai

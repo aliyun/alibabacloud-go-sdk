@@ -1,3 +1,16 @@
+2026-08-03 Version: v3.5.0
+- Support API DescribeTrailDeliveryMetricData.
+- Support API DescribeUserTrailCount.
+- Support API DisableInsight.
+- Support API GetInsightSelectors.
+- Support API GetInsightTypes.
+- Support API GetInsightsEventsCount.
+- Support API LookupInsightEvents.
+- Support API PutInsightSelectors.
+- Update API CreateAdvancedQueryHistory: add request parameters DryRun.
+- Update API CreateAdvancedQueryHistory: add response parameters Body.DryRunResult.
+
+
 2025-12-04 Version: v3.4.0
 - Support API DeleteDataEventSelector.
 - Support API GetDataEventSelector.

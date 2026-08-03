@@ -58,13 +58,13 @@ type GetDeliveryHistoryJobResponseBody struct {
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The task status. Valid values:
 	//
-	// 	- 0: The task is initializing.
+	// - 0: The task is initializing.
 	//
-	// 	- 1: The task is delivering historical events.
+	// - 1: The task is delivering historical events.
 	//
-	// 	- 2: The task is complete.
+	// - 2: The task is complete.
 	//
-	// 	- 3: The task fails.
+	// - 3: The task fails.
 	//
 	// example:
 	//
@@ -218,13 +218,13 @@ type GetDeliveryHistoryJobResponseBodyStatus struct {
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The task status in each region. Valid values:
 	//
-	// 	- 0: The task is initializing.
+	// - 0: The task is initializing.
 	//
-	// 	- 1: The task is delivering historical events.
+	// - 1: The task is delivering historical events.
 	//
-	// 	- 2: The task is complete.
+	// - 2: The task is complete.
 	//
-	// 	- 3: The task fails.
+	// - 3: The task fails.
 	//
 	// example:
 	//

@@ -20,9 +20,9 @@ type iDescribeTrailsRequest interface {
 type DescribeTrailsRequest struct {
 	// Specifies whether to query the information about multi-account trails. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false (default)
+	// - false (default)
 	//
 	// example:
 	//
@@ -30,9 +30,9 @@ type DescribeTrailsRequest struct {
 	IncludeOrganizationTrail *bool `json:"IncludeOrganizationTrail,omitempty" xml:"IncludeOrganizationTrail,omitempty"`
 	// Specifies whether to return the information about shadow trails. Valid values:
 	//
-	// 	- false: Do not return the information about shadow trails. It is the default value.
+	// - false: Do not return the information about shadow trails. It is the default value.
 	//
-	// 	- true: Return the information about shadow trails.
+	// - true: Return the information about shadow trails.
 	//
 	// example:
 	//

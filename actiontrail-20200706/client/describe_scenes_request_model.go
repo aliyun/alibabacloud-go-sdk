@@ -14,6 +14,8 @@ type iDescribeScenesRequest interface {
 }
 
 type DescribeScenesRequest struct {
+	// The search keyword. This operation performs a case-insensitive, fuzzy match.
+	//
 	// example:
 	//
 	// ak

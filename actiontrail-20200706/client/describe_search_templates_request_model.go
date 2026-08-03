@@ -18,14 +18,20 @@ type iDescribeSearchTemplatesRequest interface {
 }
 
 type DescribeSearchTemplatesRequest struct {
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The maximum number of entries to return. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The scenario ID.
+	//
 	// This parameter is required.
 	//
 	// example:

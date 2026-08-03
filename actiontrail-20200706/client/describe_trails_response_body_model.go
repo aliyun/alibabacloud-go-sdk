@@ -74,11 +74,11 @@ type DescribeTrailsResponseBodyTrailList struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The read/write type of the events that are delivered. Valid values:
 	//
-	// 	- Write: write events. This is the default value.
+	// - Write: write events. This is the default value.
 	//
-	// 	- Read: read events.
+	// - Read: read events.
 	//
-	// 	- All: read and write events.
+	// - All: read and write events.
 	//
 	// example:
 	//
@@ -92,9 +92,9 @@ type DescribeTrailsResponseBodyTrailList struct {
 	HomeRegion *string `json:"HomeRegion,omitempty" xml:"HomeRegion,omitempty"`
 	// Indicates whether the trail is a multi-account trail. Valid values:
 	//
-	// 	- false (default)
+	// - false (default)
 	//
-	// 	- true
+	// - true
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type DescribeTrailsResponseBodyTrailList struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the resource directory.
 	//
-	// >  This parameter is returned only when the trail is a multi-account trail.
+	// > This parameter is returned only when the trail is a multi-account trail.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type DescribeTrailsResponseBodyTrailList struct {
 	//
 	// example:
 	//
-	// acs:ram::***:role/aliyunserviceroleforactiontrail
+	// acs:ram::151266687691****:role/aliyunserviceroleforactiontrail
 	OssWriteRoleArn *string `json:"OssWriteRoleArn,omitempty" xml:"OssWriteRoleArn,omitempty"`
 	// The region where the trail resides.
 	//
@@ -176,11 +176,11 @@ type DescribeTrailsResponseBodyTrailList struct {
 	StartLoggingTime *string `json:"StartLoggingTime,omitempty" xml:"StartLoggingTime,omitempty"`
 	// The status of the trail. Valid values:
 	//
-	// 	- Disable: disabled.
+	// - Disable: disabled.
 	//
-	// 	- Enable: enabled.
+	// - Enable: enabled.
 	//
-	// 	- Fresh: The trail is created but is not enabled.
+	// - Fresh: The trail is created but is not enabled.
 	//
 	// example:
 	//

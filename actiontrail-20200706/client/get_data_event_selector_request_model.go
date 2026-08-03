@@ -14,6 +14,8 @@ type iGetDataEventSelectorRequest interface {
 }
 
 type GetDataEventSelectorRequest struct {
+	// The name of the trail.
+	//
 	// This parameter is required.
 	//
 	// example:

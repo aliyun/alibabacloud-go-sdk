@@ -14,6 +14,8 @@ type iDeleteAdvancedQueryHistoryRequest interface {
 }
 
 type DeleteAdvancedQueryHistoryRequest struct {
+	// The ID of the advanced query record.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -14,6 +14,8 @@ type iDeleteAdvancedQueryTemplateRequest interface {
 }
 
 type DeleteAdvancedQueryTemplateRequest struct {
+	// The ID of the template.
+	//
 	// example:
 	//
 	// utpl-QNL3dpYkQcyjZxrIQCciqQ

@@ -42,7 +42,7 @@ type GetAccessKeyLastUsedInfoResponseBody struct {
 	//
 	// LTAI****************
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	// The ID of the Alibaba Cloud account.
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type GetAccessKeyLastUsedInfoResponseBody struct {
 	//
 	// ram-user
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The details about the event.
+	// The event details.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type GetAccessKeyLastUsedInfoResponseBody struct {
 	//
 	// 24549429003625****
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// This parameter is required.
 	//
@@ -124,7 +124,7 @@ type GetAccessKeyLastUsedInfoResponseBody struct {
 	//
 	// example:
 	//
-	// Elastic Compute Service (ECS)
+	// 云服务器ECS
 	ServiceNameCn *string `json:"ServiceNameCn,omitempty" xml:"ServiceNameCn,omitempty"`
 	// The English name of the Alibaba Cloud service that was last accessed.
 	//
@@ -132,13 +132,13 @@ type GetAccessKeyLastUsedInfoResponseBody struct {
 	//
 	// Elastic Compute Service
 	ServiceNameEn *string `json:"ServiceNameEn,omitempty" xml:"ServiceNameEn,omitempty"`
-	// The event source.
+	// The source of the last usage record.
 	//
 	// example:
 	//
 	// ManagementEvent
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The timestamp when the AccessKey pair was last called.
+	// The timestamp when the AccessKey pair was last used. Unit: milliseconds.
 	//
 	// This parameter is required.
 	//

@@ -20,19 +20,30 @@ type iUpdateAdvancedQueryTemplateRequest interface {
 }
 
 type UpdateAdvancedQueryTemplateRequest struct {
+	// Specifies whether to enable the simple query mode.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	SimpleQuery *bool `json:"SimpleQuery,omitempty" xml:"SimpleQuery,omitempty"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// x4a0Tw5dQy2J6IRJxf4kng
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// utpl-QNL3dpYkQcyjZxrIQC****
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The name of the template. The maximum length is 64 characters.
+	//
+	// example:
+	//
+	// example-template
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The query statement of the template.
+	//
 	// example:
 	//
 	// event.eventName: ConsoleSignin AND event.userIdentity.type: root-account

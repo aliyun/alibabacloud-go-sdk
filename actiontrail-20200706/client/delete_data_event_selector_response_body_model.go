@@ -14,6 +14,8 @@ type iDeleteDataEventSelectorResponseBody interface {
 }
 
 type DeleteDataEventSelectorResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 1D9DD159-DFFF-4882-ACEC-B4A727E9****

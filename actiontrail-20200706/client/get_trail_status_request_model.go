@@ -18,9 +18,9 @@ type iGetTrailStatusRequest interface {
 type GetTrailStatusRequest struct {
 	// Specifies whether to query the status of a multi-account trail. Valid values:
 	//
-	// 	- true: Query the status of a multi-account trail.
+	// - true: Query the status of a multi-account trail.
 	//
-	// 	- false: Query the status of a single-account trail. It is the default value.
+	// - false: Query the status of a single-account trail. It is the default value.
 	//
 	// example:
 	//

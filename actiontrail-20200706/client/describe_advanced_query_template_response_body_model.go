@@ -16,10 +16,13 @@ type iDescribeAdvancedQueryTemplateResponseBody interface {
 }
 
 type DescribeAdvancedQueryTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 1EC1FDC7-6D01-559F-852C-30D86E9EEB3F
-	RequestId    *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The paginated list of templates.
 	TemplatePage *DescribeAdvancedQueryTemplateResponseBodyTemplatePage `json:"TemplatePage,omitempty" xml:"TemplatePage,omitempty" type:"Struct"`
 }
 
@@ -59,15 +62,24 @@ func (s *DescribeAdvancedQueryTemplateResponseBody) Validate() error {
 }
 
 type DescribeAdvancedQueryTemplateResponseBodyTemplatePage struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The maximum number of results returned.
+	//
+	// Default value: 20.
+	//
 	// example:
 	//
 	// 20
-	PageSize     *string                                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of template details.
 	TemplateList []*DescribeAdvancedQueryTemplateResponseBodyTemplatePageTemplateList `json:"TemplateList,omitempty" xml:"TemplateList,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 5
@@ -132,15 +144,26 @@ func (s *DescribeAdvancedQueryTemplateResponseBodyTemplatePage) Validate() error
 }
 
 type DescribeAdvancedQueryTemplateResponseBodyTemplatePageTemplateList struct {
+	// Indicates whether the simple query mode is enabled.
+	//
 	// example:
 	//
 	// false
 	SimpleQuery *bool `json:"SimpleQuery,omitempty" xml:"SimpleQuery,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
-	// utpl-7OaxbyJATDaoLOgZRcV5RQ
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// utpl-7OaxbyJATDaoLOgZRc****
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template name.
+	//
+	// example:
+	//
+	// example-template
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The query statement.
+	//
 	// example:
 	//
 	// event.userIdentity.type: root-account AND event.userIdentity.accessKeyId: *

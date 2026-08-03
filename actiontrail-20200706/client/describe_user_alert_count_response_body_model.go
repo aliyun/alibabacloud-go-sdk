@@ -16,7 +16,10 @@ type iDescribeUserAlertCountResponseBody interface {
 }
 
 type DescribeUserAlertCountResponseBody struct {
+	// The data returned.
 	Data *DescribeUserAlertCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 90D6CC31-947F-5D8A-BEDC-F312EE9B31EA
@@ -59,8 +62,10 @@ func (s *DescribeUserAlertCountResponseBody) Validate() error {
 }
 
 type DescribeUserAlertCountResponseBodyData struct {
-	Counts []*int64  `json:"Counts,omitempty" xml:"Counts,omitempty" type:"Repeated"`
-	Dates  []*string `json:"Dates,omitempty" xml:"Dates,omitempty" type:"Repeated"`
+	// The statistics returned.
+	Counts []*int64 `json:"Counts,omitempty" xml:"Counts,omitempty" type:"Repeated"`
+	// The dates of alerts.
+	Dates []*string `json:"Dates,omitempty" xml:"Dates,omitempty" type:"Repeated"`
 }
 
 func (s DescribeUserAlertCountResponseBodyData) String() string {

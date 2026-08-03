@@ -82,7 +82,7 @@ type UpdateTrailResponseBody struct {
 	//
 	// example:
 	//
-	// acs:ram::***:role/aliyunserviceroleforactiontrail
+	// acs:ram::151266687691****:role/aliyunserviceroleforactiontrail
 	OssWriteRoleArn *string `json:"OssWriteRoleArn,omitempty" xml:"OssWriteRoleArn,omitempty"`
 	// The ID of the request.
 	//
@@ -100,7 +100,7 @@ type UpdateTrailResponseBody struct {
 	//
 	// example:
 	//
-	// acs:ram::***:role/aliyunserviceroleforactiontrail
+	// acs:ram::151266687691****:role/aliyunserviceroleforactiontrail
 	SlsWriteRoleArn *string `json:"SlsWriteRoleArn,omitempty" xml:"SlsWriteRoleArn,omitempty"`
 	// The one or more regions from which the trail delivers events.
 	//

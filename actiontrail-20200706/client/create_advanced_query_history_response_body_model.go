@@ -9,6 +9,8 @@ type iCreateAdvancedQueryHistoryResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDryRunResult(v string) *CreateAdvancedQueryHistoryResponseBody
+	GetDryRunResult() *string
 	SetQueryId(v string) *CreateAdvancedQueryHistoryResponseBody
 	GetQueryId() *string
 	SetQuerySql(v string) *CreateAdvancedQueryHistoryResponseBody
@@ -20,18 +22,27 @@ type iCreateAdvancedQueryHistoryResponseBody interface {
 }
 
 type CreateAdvancedQueryHistoryResponseBody struct {
+	DryRunResult *string `json:"DryRunResult,omitempty" xml:"DryRunResult,omitempty"`
+	// The ID of the advanced event query record.
+	//
 	// example:
 	//
 	// query-uIkIvLiVSuCKqg0yoa****
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	// The advanced event query statement.
+	//
 	// example:
 	//
 	// event.userIdentity.accessKeyId: *
 	QuerySql *string `json:"QuerySql,omitempty" xml:"QuerySql,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D0227506-AA8C-5998-8A62-74769106****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Specifies whether to enable the simple query mode.
+	//
 	// example:
 	//
 	// false
@@ -44,6 +55,10 @@ func (s CreateAdvancedQueryHistoryResponseBody) String() string {
 
 func (s CreateAdvancedQueryHistoryResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateAdvancedQueryHistoryResponseBody) GetDryRunResult() *string {
+	return s.DryRunResult
 }
 
 func (s *CreateAdvancedQueryHistoryResponseBody) GetQueryId() *string {
@@ -60,6 +75,11 @@ func (s *CreateAdvancedQueryHistoryResponseBody) GetRequestId() *string {
 
 func (s *CreateAdvancedQueryHistoryResponseBody) GetSimpleQuery() *bool {
 	return s.SimpleQuery
+}
+
+func (s *CreateAdvancedQueryHistoryResponseBody) SetDryRunResult(v string) *CreateAdvancedQueryHistoryResponseBody {
+	s.DryRunResult = &v
+	return s
 }
 
 func (s *CreateAdvancedQueryHistoryResponseBody) SetQueryId(v string) *CreateAdvancedQueryHistoryResponseBody {

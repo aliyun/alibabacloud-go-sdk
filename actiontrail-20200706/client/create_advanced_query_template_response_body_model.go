@@ -22,22 +22,35 @@ type iCreateAdvancedQueryTemplateResponseBody interface {
 }
 
 type CreateAdvancedQueryTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4ABAEA6E-C740-5CE2-A003-643E551964F5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the simple query mode is enabled.
+	//
 	// example:
 	//
 	// false
 	SimpleQuery *string `json:"SimpleQuery,omitempty" xml:"SimpleQuery,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// x4a0Tw5dQy2J6IRJxf4kng
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
-	// event.eventName: ConsoleSignin AND event.userIdentity.type: root-account
+	// test1
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The query statement.
+	//
+	// example:
+	//
+	// event.errorCode: 	- AND event.userIdentity.accessKeyId: *
 	TemplateSql *string `json:"TemplateSql,omitempty" xml:"TemplateSql,omitempty"`
 }
 

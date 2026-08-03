@@ -16,13 +16,13 @@ type iCreateDeliveryHistoryJobResponseBody interface {
 }
 
 type CreateDeliveryHistoryJobResponseBody struct {
-	// The ID of the historical event delivery task.
+	// The task ID.
 	//
 	// example:
 	//
 	// 16602
 	JobId *int32 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
