@@ -46,7 +46,7 @@ type GetModifyBEClusterInquiryRequest struct {
 	//
 	// 200
 	CacheSize *int64 `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
-	// The billing method.
+	// The billing type.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type GetModifyBEClusterInquiryRequest struct {
 	//
 	// selectdb_go_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The elastic computing resources.
+	// The elastic compute resources.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type GetModifyBEClusterInquiryRequest struct {
 	//
 	// selectdb-cn-xxx
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// Specifies whether this is an inquiry for changing the billing method of the cluster.
+	// Specifies whether to query the price for converting the cluster billing type.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type GetModifyBEClusterInquiryRequest struct {
 	//
 	// 200
 	PreCacheSize *int64 `json:"PreCacheSize,omitempty" xml:"PreCacheSize,omitempty"`
-	// The reserved computing resources.
+	// The reserved compute resources.
 	//
 	// example:
 	//
@@ -108,6 +108,8 @@ type GetModifyBEClusterInquiryRequest struct {
 	//
 	// Hour
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The coupon code.
+	//
 	// example:
 	//
 	// 123412345

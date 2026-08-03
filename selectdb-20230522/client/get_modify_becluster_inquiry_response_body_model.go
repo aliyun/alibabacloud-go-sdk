@@ -16,7 +16,7 @@ type iGetModifyBEClusterInquiryResponseBody interface {
 }
 
 type GetModifyBEClusterInquiryResponseBody struct {
-	// The returned data.
+	// The response data.
 	Data *GetModifyBEClusterInquiryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -67,16 +67,18 @@ type GetModifyBEClusterInquiryResponseBodyData struct {
 	// example:
 	//
 	// CNY
-	Currency           *string                                                        `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The coupon codes.
 	OptionalPromotions []*GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
-	PricingRules       map[string]*string                                             `json:"PricingRules,omitempty" xml:"PricingRules,omitempty"`
-	// The estimated refund amount when you change the billing method of a subscription cluster to pay-as-you-go.
+	// The unit price results of billing items.
+	PricingRules map[string]*string `json:"PricingRules,omitempty" xml:"PricingRules,omitempty"`
+	// The estimated refund amount when converting a subscription cluster to a pay-as-you-go cluster under a subscription instance.
 	//
 	// example:
 	//
 	// -100
 	RefundAmount *string `json:"RefundAmount,omitempty" xml:"RefundAmount,omitempty"`
-	// The amount.
+	// The trade amount.
 	//
 	// example:
 	//
@@ -151,22 +153,34 @@ func (s *GetModifyBEClusterInquiryResponseBodyData) Validate() error {
 }
 
 type GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions struct {
+	// The discount amount.
+	//
+	// > This parameter is not applicable to the China site.
+	//
 	// example:
 	//
 	// 100
 	CanPromFee *string `json:"CanPromFee,omitempty" xml:"CanPromFee,omitempty"`
+	// The promotion rule description.
+	//
 	// example:
 	//
 	// 789asdf
 	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	// The coupon description.
+	//
 	// example:
 	//
-	// General coupon deducts 100
+	// General coupon can deduct 100
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// The coupon name.
+	//
 	// example:
 	//
 	// General coupon
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// The coupon code.
+	//
 	// example:
 	//
 	// 732211480132

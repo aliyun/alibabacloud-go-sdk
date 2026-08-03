@@ -16,7 +16,10 @@ type iCheckIpExistsInSecurityIpListResponseBody interface {
 }
 
 type CheckIpExistsInSecurityIpListResponseBody struct {
+	// The returned data.
 	Data *CheckIpExistsInSecurityIpListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 4773E4EC-025D-509F-AEA9-D53123FDFB0F
@@ -59,6 +62,8 @@ func (s *CheckIpExistsInSecurityIpListResponseBody) Validate() error {
 }
 
 type CheckIpExistsInSecurityIpListResponseBodyData struct {
+	// Indicates whether the IP address exists.
+	//
 	// example:
 	//
 	// true

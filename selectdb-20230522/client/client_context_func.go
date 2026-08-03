@@ -231,6 +231,10 @@ func (client *Client) CheckCreateDBInstanceWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether a specified IP address already exists in a network whitelist group.
+//
 // @param request - CheckIpExistsInSecurityIpListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -580,6 +584,14 @@ func (client *Client) CreateDBInstanceWithContext(ctx context.Context, tmpReq *C
 
 	if !dara.IsNil(request.EngineVersion) {
 		query["EngineVersion"] = request.EngineVersion
+	}
+
+	if !dara.IsNil(request.FEClassCode) {
+		query["FEClassCode"] = request.FEClassCode
+	}
+
+	if !dara.IsNil(request.FENodeCount) {
+		query["FENodeCount"] = request.FENodeCount
 	}
 
 	if !dara.IsNil(request.MultiZoneShrink) {
@@ -1361,7 +1373,7 @@ func (client *Client) DescribeDBClusterStorageLimitationWithContext(ctx context.
 
 // Summary:
 //
-// Gets the details of a specified instance.
+// Queries the details of an instance.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -1863,7 +1875,7 @@ func (client *Client) DescribeSlowQueryStatsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 获取表结构
+// Retrieves the CREATE TABLE statement.
 //
 // @param request - DescribeTableSchemaRequest
 //
@@ -2143,7 +2155,7 @@ func (client *Client) GetCreateBEClusterInquiryWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Retrieves the pricing information for creating a new cluster in a specified ApsaraDB for SelectDB instance.
+// Retrieves pricing information when creating a cluster under a specified ApsaraDB for SelectDB instance.
 //
 // @param request - GetModifyBEClusterInquiryRequest
 //

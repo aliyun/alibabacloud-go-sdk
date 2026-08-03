@@ -361,6 +361,10 @@ func (client *Client) CheckCreateDBInstance(request *CheckCreateDBInstanceReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether a specified IP address already exists in a network whitelist group.
+//
 // @param request - CheckIpExistsInSecurityIpListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -397,6 +401,10 @@ func (client *Client) CheckIpExistsInSecurityIpListWithOptions(request *CheckIpE
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether a specified IP address already exists in a network whitelist group.
+//
 // @param request - CheckIpExistsInSecurityIpListRequest
 //
 // @return CheckIpExistsInSecurityIpListResponse
@@ -792,6 +800,14 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 
 	if !dara.IsNil(request.EngineVersion) {
 		query["EngineVersion"] = request.EngineVersion
+	}
+
+	if !dara.IsNil(request.FEClassCode) {
+		query["FEClassCode"] = request.FEClassCode
+	}
+
+	if !dara.IsNil(request.FENodeCount) {
+		query["FENodeCount"] = request.FENodeCount
 	}
 
 	if !dara.IsNil(request.MultiZoneShrink) {
@@ -1827,7 +1843,7 @@ func (client *Client) DescribeDBClusterStorageLimitation(request *DescribeDBClus
 
 // Summary:
 //
-// Gets the details of a specified instance.
+// Queries the details of an instance.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -1879,7 +1895,7 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 
 // Summary:
 //
-// Gets the details of a specified instance.
+// Queries the details of an instance.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -2503,7 +2519,7 @@ func (client *Client) DescribeSlowQueryStats(request *DescribeSlowQueryStatsRequ
 
 // Summary:
 //
-// 获取表结构
+// Retrieves the CREATE TABLE statement.
 //
 // @param request - DescribeTableSchemaRequest
 //
@@ -2559,7 +2575,7 @@ func (client *Client) DescribeTableSchemaWithOptions(request *DescribeTableSchem
 
 // Summary:
 //
-// 获取表结构
+// Retrieves the CREATE TABLE statement.
 //
 // @param request - DescribeTableSchemaRequest
 //
@@ -2873,7 +2889,7 @@ func (client *Client) GetCreateBEClusterInquiry(request *GetCreateBEClusterInqui
 
 // Summary:
 //
-// Retrieves the pricing information for creating a new cluster in a specified ApsaraDB for SelectDB instance.
+// Retrieves pricing information when creating a cluster under a specified ApsaraDB for SelectDB instance.
 //
 // @param request - GetModifyBEClusterInquiryRequest
 //
@@ -2913,7 +2929,7 @@ func (client *Client) GetModifyBEClusterInquiryWithOptions(request *GetModifyBEC
 
 // Summary:
 //
-// Retrieves the pricing information for creating a new cluster in a specified ApsaraDB for SelectDB instance.
+// Retrieves pricing information when creating a cluster under a specified ApsaraDB for SelectDB instance.
 //
 // @param request - GetModifyBEClusterInquiryRequest
 //

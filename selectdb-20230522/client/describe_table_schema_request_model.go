@@ -20,24 +20,32 @@ type iDescribeTableSchemaRequest interface {
 }
 
 type DescribeTableSchemaRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The database name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_db
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The table name.
+	//
 	// This parameter is required.
 	//
 	// example:

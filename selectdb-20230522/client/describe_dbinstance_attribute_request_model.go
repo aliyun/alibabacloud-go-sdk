@@ -18,7 +18,7 @@ type iDescribeDBInstanceAttributeRequest interface {
 }
 
 type DescribeDBInstanceAttributeRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DescribeDBInstanceAttributeRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// This parameter is required.
 	//

@@ -20,6 +20,8 @@ type iDescribeTableSchemaResponseBody interface {
 }
 
 type DescribeTableSchemaResponseBody struct {
+	// The CREATE TABLE statement.
+	//
 	// example:
 	//
 	// CREATE TABLE test_tb
@@ -40,14 +42,20 @@ type DescribeTableSchemaResponseBody struct {
 	//
 	// DISTRIBUTED BY HASH(k1) BUCKETS 16
 	CreateStatement *string `json:"CreateStatement,omitempty" xml:"CreateStatement,omitempty"`
+	// The database name.
+	//
 	// example:
 	//
 	// test_db
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4773E4EC-025D-509F-AEA9-D53123FDFB0F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// test_tb

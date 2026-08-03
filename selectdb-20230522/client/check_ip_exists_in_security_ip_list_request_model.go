@@ -20,18 +20,24 @@ type iCheckIpExistsInSecurityIpListRequest interface {
 }
 
 type CheckIpExistsInSecurityIpListRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-2bl4dj****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The IP address.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 192.168.0.239
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
