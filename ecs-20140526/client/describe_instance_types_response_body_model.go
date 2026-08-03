@@ -826,6 +826,7 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeCpuOptionsSup
 }
 
 type DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeEnhancedNetwork struct {
+	ExpressSupport      *bool  `json:"ExpressSupport,omitempty" xml:"ExpressSupport,omitempty"`
 	RssSupport          *bool  `json:"RssSupport,omitempty" xml:"RssSupport,omitempty"`
 	SriovSupport        *bool  `json:"SriovSupport,omitempty" xml:"SriovSupport,omitempty"`
 	VfQueueNumberPerEni *int32 `json:"VfQueueNumberPerEni,omitempty" xml:"VfQueueNumberPerEni,omitempty"`
@@ -839,6 +840,10 @@ func (s DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeEnhancedNetwor
 	return s.String()
 }
 
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeEnhancedNetwork) GetExpressSupport() *bool {
+	return s.ExpressSupport
+}
+
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeEnhancedNetwork) GetRssSupport() *bool {
 	return s.RssSupport
 }
@@ -849,6 +854,11 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeEnhancedNetwo
 
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeEnhancedNetwork) GetVfQueueNumberPerEni() *int32 {
 	return s.VfQueueNumberPerEni
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeEnhancedNetwork) SetExpressSupport(v bool) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeEnhancedNetwork {
+	s.ExpressSupport = &v
+	return s
 }
 
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeEnhancedNetwork) SetRssSupport(v bool) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeEnhancedNetwork {

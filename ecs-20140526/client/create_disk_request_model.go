@@ -86,7 +86,7 @@ type CreateDiskRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The disk description. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type CreateDiskRequest struct {
 	//
 	// cloud_ssd
 	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
-	// The name of the disk. The name must be 2 to 128 characters in length and can contain characters that are categorized as letter in Unicode, including Chinese and English characters, and ASCII digits (0-9). The name can contain colons (:), underscores (_), periods (.), or hyphens (-). The name must start with a character that is categorized as letter in Unicode.
+	// The disk name. The name must be 2 to 128 characters in length and can contain characters that are classified as letter in Unicode (including English and Chinese characters) and ASCII digits (0-9). The name can contain colons (:), underscores (_), periods (.), or hyphens (-). The name must start with a character that is classified as letter in Unicode.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type CreateDiskRequest struct {
 	//
 	// false
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The ID of the subscription instance to which the subscription disk is automatically attached after the disk is created.
+	// Creates a subscription disk and automatically attaches it to the specified subscription instance.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type CreateDiskRequest struct {
 	MultiAttach  *string `json:"MultiAttach,omitempty" xml:"MultiAttach,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The performance level of the enterprise SSD (ESSD) to create. Valid values:
+	// The performance level of the enterprise SSD (ESSD) disk. Valid values:
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type CreateDiskRequest struct {
 	//
 	// 2000
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The ID of the snapshot to use to create the disk. Snapshots created on or before July 15, 2013 cannot be used to create disks.
+	// The snapshot ID that is used to create the disk. Snapshots created on or before July 15, 2013 cannot be used to create disks.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ type CreateDiskRequest struct {
 	//
 	// dbsc-j5e1sf2vaf5he8m2****
 	StorageClusterId *string `json:"StorageClusterId,omitempty" xml:"StorageClusterId,omitempty"`
-	// The ID of the storage set.
+	// The storage set ID.
 	//
 	// example:
 	//
@@ -194,7 +194,7 @@ type CreateDiskRequest struct {
 	//
 	// 3
 	StorageSetPartitionNumber *int32 `json:"StorageSetPartitionNumber,omitempty" xml:"StorageSetPartitionNumber,omitempty"`
-	// The list of tags for the disk.
+	// The tags of the disk.
 	Tag []*CreateDiskRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the zone in which to create a pay-as-you-go disk.
 	//

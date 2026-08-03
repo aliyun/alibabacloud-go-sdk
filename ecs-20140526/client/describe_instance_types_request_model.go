@@ -116,7 +116,7 @@ type DescribeInstanceTypesRequest struct {
 	//
 	// X86
 	CpuArchitecture *string `json:"CpuArchitecture,omitempty" xml:"CpuArchitecture,omitempty"`
-	// The CPU architectures to query. Array length: 1 to 2.
+	// The specified CPU architectures to query. Array length: 1 to 2.
 	CpuArchitectures []*string `json:"CpuArchitectures,omitempty" xml:"CpuArchitectures,omitempty" type:"Repeated"`
 	// The GPU type.
 	//
@@ -124,9 +124,9 @@ type DescribeInstanceTypesRequest struct {
 	//
 	// NVIDIA V100
 	GPUSpec *string `json:"GPUSpec,omitempty" xml:"GPUSpec,omitempty"`
-	// The GPU types to query. Array length: 1 to 10.
+	// The specified GPU types to query. Array length: 1 to 10.
 	GpuSpecs []*string `json:"GpuSpecs,omitempty" xml:"GpuSpecs,omitempty" type:"Repeated"`
-	// The instance type categories to query. Array length: 1 to 10.
+	// The specified instance type categories to query. Array length: 1 to 10.
 	InstanceCategories []*string `json:"InstanceCategories,omitempty" xml:"InstanceCategories,omitempty" type:"Repeated"`
 	// The instance type category. Valid values:
 	//
@@ -140,7 +140,7 @@ type DescribeInstanceTypesRequest struct {
 	//
 	// EntryLevel
 	InstanceFamilyLevel *string `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
-	// The instance families to query. Array length: 1 to 10.
+	// The specified instance families to query. Array length: 1 to 10.
 	InstanceTypeFamilies []*string `json:"InstanceTypeFamilies,omitempty" xml:"InstanceTypeFamilies,omitempty" type:"Repeated"`
 	// The instance family to which the instance type belongs. For more information, see [DescribeInstanceTypeFamilies](https://help.aliyun.com/document_detail/25621.html).
 	//
@@ -154,7 +154,7 @@ type DescribeInstanceTypesRequest struct {
 	//
 	// ecs.g6.large
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
-	// The local disk types to query. Array length: 1 to 2.
+	// The specified local disk types. Array length: 1 to 2.
 	LocalStorageCategories []*string `json:"LocalStorageCategories,omitempty" xml:"LocalStorageCategories,omitempty" type:"Repeated"`
 	// The local disk type. For more information, see [Local disks](~~63138#section_n2w_8yc_5u1~~). Valid values:
 	//
@@ -162,7 +162,7 @@ type DescribeInstanceTypesRequest struct {
 	//
 	// local_ssd_pro
 	LocalStorageCategory *string `json:"LocalStorageCategory,omitempty" xml:"LocalStorageCategory,omitempty"`
-	// The maximum number of entries per page for paging query. Maximum value: 1600.
+	// The maximum number of entries per page for a paged query. Maximum value: 1600. This parameter is used for paging.
 	//
 	// if can be null:
 	// false
@@ -231,25 +231,25 @@ type DescribeInstanceTypesRequest struct {
 	//
 	// 4
 	MinimumDiskQuantity *int32 `json:"MinimumDiskQuantity,omitempty" xml:"MinimumDiskQuantity,omitempty"`
-	// The expected minimum number of IPv6 addresses per Elastic Network Interface (ENI) network interface controller (NIC) when querying instance types.
+	// The expected minimum number of IPv6 addresses per Elastic Network Interface (ENI) when querying instance types.
 	//
 	// example:
 	//
 	// 2
 	MinimumEniIpv6AddressQuantity *int32 `json:"MinimumEniIpv6AddressQuantity,omitempty" xml:"MinimumEniIpv6AddressQuantity,omitempty"`
-	// The expected minimum number of IPv4 addresses per Elastic Network Interface (ENI) network interface controller (NIC) when querying instance types.
+	// The expected minimum number of IPv4 addresses per Elastic Network Interface (ENI) when querying instance types.
 	//
 	// example:
 	//
 	// 2
 	MinimumEniPrivateIpAddressQuantity *int32 `json:"MinimumEniPrivateIpAddressQuantity,omitempty" xml:"MinimumEniPrivateIpAddressQuantity,omitempty"`
-	// The expected minimum number of Elastic Network Interfaces (ENIs) that can be attached per network interface controller (NIC) when querying instance types.
+	// The expected minimum number of Elastic Network Interfaces (ENIs) that can be attached when querying instance types.
 	//
 	// example:
 	//
 	// 4
 	MinimumEniQuantity *int32 `json:"MinimumEniQuantity,omitempty" xml:"MinimumEniQuantity,omitempty"`
-	// The expected minimum number of Elastic RDMA Interfaces (ERIs) per network interface controller (NIC) when querying instance types.
+	// The expected minimum number of Elastic RDMA Interfaces (ERIs) when querying instance types.
 	//
 	// example:
 	//
@@ -261,7 +261,7 @@ type DescribeInstanceTypesRequest struct {
 	//
 	// 3
 	MinimumGPUAmount *int32 `json:"MinimumGPUAmount,omitempty" xml:"MinimumGPUAmount,omitempty"`
-	// The expected minimum initial vCPU CPU credits for burstable instances t5 and t6 when querying instance types.
+	// The expected minimum initial vCPU credits for burstable instances t5 and t6 when querying instance types.
 	//
 	// example:
 	//
@@ -321,7 +321,7 @@ type DescribeInstanceTypesRequest struct {
 	//
 	// 8
 	MinimumQueuePairNumber *int32 `json:"MinimumQueuePairNumber,omitempty" xml:"MinimumQueuePairNumber,omitempty"`
-	// The expected minimum number of default queues for secondary Elastic Network Interfaces (ENIs) per network interface controller (NIC) when querying instance types.
+	// The expected minimum number of default queues for the secondary Elastic Network Interface (ENI) when querying instance types.
 	//
 	// example:
 	//
@@ -350,7 +350,7 @@ type DescribeInstanceTypesRequest struct {
 	//
 	// Intel Xeon(Ice Lake) Platinum 8369B
 	PhysicalProcessorModel *string `json:"PhysicalProcessorModel,omitempty" xml:"PhysicalProcessorModel,omitempty"`
-	// The processor models to query. Array length: 1 to 10.
+	// The specified processor models to query. Array length: 1 to 10.
 	PhysicalProcessorModels []*string `json:"PhysicalProcessorModels,omitempty" xml:"PhysicalProcessorModels,omitempty" type:"Repeated"`
 	ResourceOwnerAccount    *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId         *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

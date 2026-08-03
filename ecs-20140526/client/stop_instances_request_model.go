@@ -34,9 +34,9 @@ type iStopInstancesRequest interface {
 type StopInstancesRequest struct {
 	// The batch operation mode. Valid values:
 	//
-	// - AllTogether: All operations must succeed for the entire batch operation to be considered successful. If any operation fails, the entire batch operation fails and all executed operations are rolled back to the pre-operation state.
+	// - AllTogether: all operations must succeed for the entire batch operation to be considered successful. If any operation fails, the entire batch operation fails and all executed operations are rolled back to the pre-operation state.
 	//
-	// - SuccessFirst: Each operation in the batch is executed independently. If an operation fails, other operations can still be executed and confirmed as successful. Successful operations are committed, and failed operations are marked as failed without affecting the results of other operations.
+	// - SuccessFirst: each operation in the batch is executed independently. If an operation fails, other operations can still be executed and confirmed as successful. Successful operations are committed, and failed operations are marked as failed without affecting the results of other operations.
 	//
 	// Default value: AllTogether.
 	//
@@ -82,7 +82,7 @@ type StopInstancesRequest struct {
 	InstanceId   []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
 	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instances. Call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the instances. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

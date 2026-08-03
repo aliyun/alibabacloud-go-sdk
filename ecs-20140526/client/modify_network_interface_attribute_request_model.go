@@ -73,13 +73,13 @@ type ModifyNetworkInterfaceAttributeRequest struct {
 	//
 	// eni-bp67acfmxazb4p****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The name of the network interface controller (NIC). The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`. The name can contain characters under the letter categorization in Unicode, including English letters, Chinese characters, and digits. It can also contain colons (:), underscores (_), periods (.), or hyphens (-).
+	// The name of the network interface controller (NIC). The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`. The name can contain characters under the letter categorization in Unicode, including English letters, Chinese characters, and digits. It can also contain colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// example:
 	//
 	// eniTestName
 	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
-	// The communication parameters of the network interface controller (NIC).
+	// The communication parameter of the network interface controller (NIC).
 	NetworkInterfaceTrafficConfig *ModifyNetworkInterfaceAttributeRequestNetworkInterfaceTrafficConfig `json:"NetworkInterfaceTrafficConfig,omitempty" xml:"NetworkInterfaceTrafficConfig,omitempty" type:"Struct"`
 	OwnerAccount                  *string                                                              `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                       *int64                                                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -311,7 +311,7 @@ func (s *ModifyNetworkInterfaceAttributeRequest) Validate() error {
 }
 
 type ModifyNetworkInterfaceAttributeRequestConnectionTrackingConfiguration struct {
-	// The timeout period for TCP connections in the TIME_WAIT or CLOSED state. Unit: seconds. Valid values: integers from 3 to 15.
+	// The timeout period for TCP connections in the TIME_WAIT and CLOSED states. Unit: seconds. Valid values: integers from 3 to 15.
 	//
 	// example:
 	//
@@ -371,6 +371,7 @@ func (s *ModifyNetworkInterfaceAttributeRequestConnectionTrackingConfiguration) 
 }
 
 type ModifyNetworkInterfaceAttributeRequestEnhancedNetwork struct {
+	EnableExpress *bool `json:"EnableExpress,omitempty" xml:"EnableExpress,omitempty"`
 	// > This parameter is not publicly available.
 	//
 	// example:
@@ -395,6 +396,10 @@ func (s ModifyNetworkInterfaceAttributeRequestEnhancedNetwork) GoString() string
 	return s.String()
 }
 
+func (s *ModifyNetworkInterfaceAttributeRequestEnhancedNetwork) GetEnableExpress() *bool {
+	return s.EnableExpress
+}
+
 func (s *ModifyNetworkInterfaceAttributeRequestEnhancedNetwork) GetEnableRss() *bool {
 	return s.EnableRss
 }
@@ -409,6 +414,11 @@ func (s *ModifyNetworkInterfaceAttributeRequestEnhancedNetwork) GetVirtualFuncti
 
 func (s *ModifyNetworkInterfaceAttributeRequestEnhancedNetwork) GetVirtualFunctionTotalQueueNumber() *int32 {
 	return s.VirtualFunctionTotalQueueNumber
+}
+
+func (s *ModifyNetworkInterfaceAttributeRequestEnhancedNetwork) SetEnableExpress(v bool) *ModifyNetworkInterfaceAttributeRequestEnhancedNetwork {
+	s.EnableExpress = &v
+	return s
 }
 
 func (s *ModifyNetworkInterfaceAttributeRequestEnhancedNetwork) SetEnableRss(v bool) *ModifyNetworkInterfaceAttributeRequestEnhancedNetwork {

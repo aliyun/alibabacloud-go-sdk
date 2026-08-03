@@ -26,7 +26,7 @@ type CreateInstanceResponseBody struct {
 	//
 	// i-bp67acfmxazb4p****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The order ID. This parameter is returned only when you create a subscription ECS instance (request parameter `InstanceChargeType=PrePaid`).
+	// The order ID. This parameter is returned only when you create a subscription ECS instance (the request parameter `InstanceChargeType=PrePaid`).
 	//
 	// example:
 	//

@@ -182,7 +182,7 @@ type DescribeNetworkInterfaceAttributeResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group to which the instance belongs. When you use this parameter to filter resources, the resource count cannot exceed 1000.
+	// The ID of the resource group to which the instance belongs. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
 	//
 	// example:
 	//
@@ -948,19 +948,19 @@ func (s *DescribeNetworkInterfaceAttributeResponseBodyBondInterfaceSpecification
 }
 
 type DescribeNetworkInterfaceAttributeResponseBodyConnectionTrackingConfiguration struct {
-	// The timeout period for a TCP connection in the TIME_WAIT or CLOSED state. Unit: seconds. Valid values: an integer from 3 to 15.
+	// The timeout period for TCP connections in the TIME_WAIT or CLOSED state. Unit: seconds. Valid values: an integer from 3 to 15.
 	//
 	// example:
 	//
 	// 3
 	TcpClosedAndTimeWaitTimeout *int32 `json:"TcpClosedAndTimeWaitTimeout,omitempty" xml:"TcpClosedAndTimeWaitTimeout,omitempty"`
-	// The timeout period for an established TCP connection. Unit: seconds. Valid values: [30, 60, 80, 100, 200, 300, 500, 700, 910].
+	// The timeout period for established TCP connections. Unit: seconds. Valid values: [30, 60, 80, 100, 200, 300, 500, 700, 910].
 	//
 	// example:
 	//
 	// 910
 	TcpEstablishedTimeout *int32 `json:"TcpEstablishedTimeout,omitempty" xml:"TcpEstablishedTimeout,omitempty"`
-	// The timeout period for a UDP flow. Unit: seconds. Valid values: [10, 20, 30, 60, 80, 100].
+	// The timeout period for UDP flows. Unit: seconds. Valid values: [10, 20, 30, 60, 80, 100].
 	//
 	// example:
 	//
@@ -1008,6 +1008,7 @@ func (s *DescribeNetworkInterfaceAttributeResponseBodyConnectionTrackingConfigur
 }
 
 type DescribeNetworkInterfaceAttributeResponseBodyEnhancedNetwork struct {
+	EnableExpress *bool `json:"EnableExpress,omitempty" xml:"EnableExpress,omitempty"`
 	// > This parameter is not yet available for use.
 	//
 	// example:
@@ -1032,6 +1033,10 @@ func (s DescribeNetworkInterfaceAttributeResponseBodyEnhancedNetwork) GoString()
 	return s.String()
 }
 
+func (s *DescribeNetworkInterfaceAttributeResponseBodyEnhancedNetwork) GetEnableExpress() *bool {
+	return s.EnableExpress
+}
+
 func (s *DescribeNetworkInterfaceAttributeResponseBodyEnhancedNetwork) GetEnableRss() *bool {
 	return s.EnableRss
 }
@@ -1046,6 +1051,11 @@ func (s *DescribeNetworkInterfaceAttributeResponseBodyEnhancedNetwork) GetVirtua
 
 func (s *DescribeNetworkInterfaceAttributeResponseBodyEnhancedNetwork) GetVirtualFunctionTotalQueueNumber() *int32 {
 	return s.VirtualFunctionTotalQueueNumber
+}
+
+func (s *DescribeNetworkInterfaceAttributeResponseBodyEnhancedNetwork) SetEnableExpress(v bool) *DescribeNetworkInterfaceAttributeResponseBodyEnhancedNetwork {
+	s.EnableExpress = &v
+	return s
 }
 
 func (s *DescribeNetworkInterfaceAttributeResponseBodyEnhancedNetwork) SetEnableRss(v bool) *DescribeNetworkInterfaceAttributeResponseBodyEnhancedNetwork {
@@ -1272,7 +1282,7 @@ type DescribeNetworkInterfaceAttributeResponseBodyNetworkInterfaceTrafficConfig 
 	//
 	// 8
 	QueueNumber *int32 `json:"QueueNumber,omitempty" xml:"QueueNumber,omitempty"`
-	// The number of queues supported by the RDMA ENI.
+	// The number of queues supported by the RDMA network interface.
 	//
 	// example:
 	//

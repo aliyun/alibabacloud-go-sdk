@@ -102,14 +102,14 @@ type CreateNetworkInterfaceResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-2ze88m67qx5z****
 	ResourceGroupId  *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SecurityGroupIds *CreateNetworkInterfaceResponseBodySecurityGroupIds `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
-	// The Virtual Network Operator (VNO) ID associated with the network interface controller (NIC).
+	// The ID of the Virtual Network Operator (VNO) to which the network interface controller (NIC) corresponds.
 	//
 	// example:
 	//

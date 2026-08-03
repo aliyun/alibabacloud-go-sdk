@@ -90,7 +90,7 @@ type CreateNetworkInterfaceRequest struct {
 	//
 	// null
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
@@ -678,6 +678,7 @@ func (s *CreateNetworkInterfaceRequestConnectionTrackingConfiguration) Validate(
 }
 
 type CreateNetworkInterfaceRequestEnhancedNetwork struct {
+	EnableExpress *bool `json:"EnableExpress,omitempty" xml:"EnableExpress,omitempty"`
 	// > This parameter is not publicly available.
 	//
 	// example:
@@ -702,6 +703,10 @@ func (s CreateNetworkInterfaceRequestEnhancedNetwork) GoString() string {
 	return s.String()
 }
 
+func (s *CreateNetworkInterfaceRequestEnhancedNetwork) GetEnableExpress() *bool {
+	return s.EnableExpress
+}
+
 func (s *CreateNetworkInterfaceRequestEnhancedNetwork) GetEnableRss() *bool {
 	return s.EnableRss
 }
@@ -716,6 +721,11 @@ func (s *CreateNetworkInterfaceRequestEnhancedNetwork) GetVirtualFunctionQuantit
 
 func (s *CreateNetworkInterfaceRequestEnhancedNetwork) GetVirtualFunctionTotalQueueNumber() *int32 {
 	return s.VirtualFunctionTotalQueueNumber
+}
+
+func (s *CreateNetworkInterfaceRequestEnhancedNetwork) SetEnableExpress(v bool) *CreateNetworkInterfaceRequestEnhancedNetwork {
+	s.EnableExpress = &v
+	return s
 }
 
 func (s *CreateNetworkInterfaceRequestEnhancedNetwork) SetEnableRss(v bool) *CreateNetworkInterfaceRequestEnhancedNetwork {

@@ -240,7 +240,7 @@ type RunInstancesRequest struct {
 	//
 	// false
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// If the deployment set uses the high availability group strategy (AvailabilityGroup), you can use this parameter to specify the group number of the instance in the deployment set. Valid values: 1 to 7.
+	// If the deployment set policy is set to the high availability group policy (AvailabilityGroup), you can use this parameter to specify the group number of the instance in the deployment set. Valid values: 1 to 7.
 	//
 	// example:
 	//
@@ -270,7 +270,7 @@ type RunInstancesRequest struct {
 	//
 	// k8s-node-[1,4]-ecshost
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The hostnames of the instances. You can specify a different hostname for each instance when you create multiple instances.
+	// Specifies a different hostname for each instance when you create multiple instances.
 	//
 	// example:
 	//
@@ -350,13 +350,13 @@ type RunInstancesRequest struct {
 	//
 	// 10
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	// Specifies whether the instance is an I/O optimized instance. The default value for [retired instance types](https://help.aliyun.com/document_detail/55263.html) is none, which indicates that I/O optimization is disabled. The default value for other instance types is optimized. Valid values:
+	// Specifies whether the instance is an I/O optimized instance. The default value for [retired instance types](https://help.aliyun.com/document_detail/55263.html) is none, which indicates that the instance is not I/O optimization enabled. The default value for other instance types is optimized. Valid values:
 	//
 	// example:
 	//
 	// optimized
 	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
-	// The IPv6 addresses to assign to the primary ENI. You can specify up to 10 IPv6 addresses. Valid values of N: 1 to 10.
+	// Specifies one or more IPv6 addresses for the primary ENI. You can specify up to 10 IPv6 addresses. Valid values of N: 1 to 10.
 	//
 	// example:
 	//
@@ -482,7 +482,7 @@ type RunInstancesRequest struct {
 	//
 	// sg-bp15ed6xe1yxeycg7****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The IDs of the security groups to which to add the instance. The valid values of N depend on the maximum number of security groups to which an instance can belong. For more information, see [Security group limits](https://help.aliyun.com/document_detail/101348.html).
+	// Adds the instance to multiple security groups. Valid values of N depend on the maximum number of security groups to which an instance can belong. For more information, see [Security group limits](https://help.aliyun.com/document_detail/101348.html).
 	//
 	// example:
 	//
@@ -512,7 +512,7 @@ type RunInstancesRequest struct {
 	//
 	// NoSpot
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// The storage set ID.
+	// The ID of the storage set.
 	//
 	// example:
 	//
@@ -1485,7 +1485,7 @@ type RunInstancesRequestPrivatePoolOptions struct {
 	//
 	// eap-bp67acfmxazb4****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The private pool options for instance startup. After an elasticity assurance or capacity reservation takes effect, a private pool is generated for instance startup. Valid values:
+	// The private pool capacity option for instance startup. A private pool is generated after an elasticity assurance or capacity reservation takes effect. You can select a private pool when you start an instance. Valid values:
 	//
 	// example:
 	//
@@ -1524,7 +1524,7 @@ func (s *RunInstancesRequestPrivatePoolOptions) Validate() error {
 }
 
 type RunInstancesRequestSchedulerOptions struct {
-	// The ID of the dedicated host cluster to which the ECS instance belongs. The system automatically selects a dedicated host in the cluster to deploy the ECS instance.
+	// The ID of the dedicated host cluster to which the ECS instance belongs. The system automatically selects a dedicated host in the specified cluster to deploy the ECS instance.
 	//
 	// example:
 	//
@@ -1669,13 +1669,13 @@ type RunInstancesRequestSystemDisk struct {
 	//
 	// 0e478b7a-4262-4802-b8cb-00d3fb40****
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - baseline performance}.
+	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1000 × Capacity - baseline performance}.
 	//
 	// example:
 	//
 	// 40000
 	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-	// The ID of the dedicated block storage cluster. To use a disk in a dedicated block storage cluster as the system disk when you create an ECS instance, specify this parameter.
+	// The ID of the dedicated block storage cluster. If you want to use a disk in a dedicated block storage cluster as the system disk when you create an ECS instance, specify this parameter.
 	//
 	// example:
 	//
@@ -1864,7 +1864,7 @@ func (s *RunInstancesRequestArn) Validate() error {
 }
 
 type RunInstancesRequestClockOptions struct {
-	// The Precision Time Protocol (PTP) status. Valid values:
+	// The PTP status. Valid values:
 	//
 	// example:
 	//
@@ -1930,7 +1930,7 @@ type RunInstancesRequestDataDisk struct {
 	//
 	// /dev/xvdb
 	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
-	// The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, and characters that are supported by the Unicode letter category. The name can also contain colons (:), underscores (_), periods (.), or hyphens (-).
+	// The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, and characters categorized as letter in Unicode. The name can contain colons (:), underscores (_), periods (.), or hyphens (-).
 	//
 	// example:
 	//
@@ -1948,19 +1948,19 @@ type RunInstancesRequestDataDisk struct {
 	//
 	// false
 	Encrypted *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The ID of the Key Management Service (KMS) key for the data disk.
+	// The KMS key ID for the data disk.
 	//
 	// example:
 	//
 	// 0e478b7a-4262-4802-b8cb-00d3fb40****
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	// The performance level of the data disk that is an enterprise SSD (ESSD). The value of N must be the same as that in `DataDisk.N.Category=cloud_essd`. Valid values:
+	// Settings for the performance level of the data disk when you create an enterprise SSD as a data disk. The value of N must be the same as that in `DataDisk.N.Category=cloud_essd`. Valid values:
 	//
 	// example:
 	//
 	// PL1
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - baseline performance}.
+	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1000 × Capacity - baseline performance}.
 	//
 	// example:
 	//
@@ -1978,7 +1978,7 @@ type RunInstancesRequestDataDisk struct {
 	//
 	// s-bp17441ohwka0yuh****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The ID of the dedicated block storage cluster. To use a disk in a dedicated block storage cluster as the data disk when you create an ECS instance, specify this parameter.
+	// The ID of the dedicated block storage cluster. If you want to use a disk in a dedicated block storage cluster as the data disk when you create an ECS instance, specify this parameter.
 	//
 	// example:
 	//
@@ -2176,13 +2176,13 @@ type RunInstancesRequestNetworkInterface struct {
 	//
 	// Network_Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The type of the network interface controller (NIC). The valid values of N cannot exceed the maximum number of NICs supported by the instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html) or call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) to query the maximum number of NICs supported by the target instance type.
+	// The type of the network interface controller (NIC). Valid values of N cannot exceed the number of NICs supported by the instance family. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html) or invoke [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) to query the number of NICs supported by the target instance type.
 	//
 	// example:
 	//
 	// Secondary
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The IPv6 addresses to assign to the primary ENI. You can specify up to 10 IPv6 addresses. Valid values of the second N: 1 to 10.
+	// Specifies one or more IPv6 addresses for the primary ENI. You can specify up to 10 IPv6 addresses. Valid values of the second N: 1 to 10.
 	Ipv6Address []*string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty" type:"Repeated"`
 	// The number of randomly generated IPv6 addresses for the primary ENI. Valid values: 1 to 10.
 	//
@@ -2202,7 +2202,7 @@ type RunInstancesRequestNetworkInterface struct {
 	//
 	// eni-bp1gn106np8jhxhj****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The name of the network interface controller (NIC). The name must be 2 to 128 characters in length and can contain letters, digits, and characters that are supported by the Unicode letter categorization. The name can also contain colons (:), underscores (_), periods (.), or hyphens (-).
+	// The name of the network interface controller (NIC). The name must be 2 to 128 characters in length and can contain letters, digits, and characters categorized under the Unicode letter categorization (which includes characters from various languages such as English, Chinese, and digits). The name can contain colons (:), underscores (_), periods (.), or hyphens (-).
 	//
 	// example:
 	//
@@ -2214,19 +2214,19 @@ type RunInstancesRequestNetworkInterface struct {
 	//
 	// Standard
 	NetworkInterfaceTrafficMode *string `json:"NetworkInterfaceTrafficMode,omitempty" xml:"NetworkInterfaceTrafficMode,omitempty"`
-	// Adds a network interface controller (NIC) and sets the primary IP address.
+	// Adds a network interface controller (NIC) and settings for the primary IP address.
 	//
 	// example:
 	//
 	// ``172.16.**.**``
 	PrimaryIpAddress *string `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty"`
-	// The number of queues supported by the network interface controller (NIC).
+	// The number of queues for the network interface controller (NIC).
 	//
 	// example:
 	//
 	// 8
 	QueueNumber *int32 `json:"QueueNumber,omitempty" xml:"QueueNumber,omitempty"`
-	// The number of queues supported by the RDMA ENI.
+	// The number of queues for the RDMA network interface.
 	//
 	// example:
 	//
@@ -2238,7 +2238,7 @@ type RunInstancesRequestNetworkInterface struct {
 	//
 	// 8192
 	RxQueueSize *int32 `json:"RxQueueSize,omitempty" xml:"RxQueueSize,omitempty"`
-	// The number of secondary private IPv4 addresses to assign to the ENI. Valid values: 1 to 49.
+	// The number of secondary private IPv4 addresses for the ENI. Valid values: 1 to 49.
 	//
 	// example:
 	//
@@ -2460,13 +2460,13 @@ func (s *RunInstancesRequestNetworkInterface) Validate() error {
 }
 
 type RunInstancesRequestNetworkOptions struct {
-	// The bandwidth weight value of the instance. The valid values vary by instance type. To query the supported bandwidth weight tiers for a specific instance type, call DescribeInstanceTypes. The BandwidthWeighting field in the response indicates the supported bandwidth weight tiers. You can use the name field in the returned dictionary values, such as Vpc-L1 and Ebs-L1.
+	// The bandwidth weight value of the instance. The valid values vary by instance type. To query the supported bandwidth weight levels for a specific instance type, call DescribeInstanceTypes. The BandwidthWeighting field in the response indicates the supported bandwidth weight levels. You can use the name field in the returned values as the dictionary value, such as Vpc-L1 or Ebs-L1.
 	//
 	// example:
 	//
 	// Default
 	BandwidthWeighting *string `json:"BandwidthWeighting,omitempty" xml:"BandwidthWeighting,omitempty"`
-	// Specifies whether to enable the Jumbo Frame feature for the instance. Valid values:
+	// Specifies whether to enable the Jumbo frame feature for the instance. Valid values:
 	//
 	// example:
 	//
