@@ -123,7 +123,7 @@ type DescribeMultiPriceResponseBodyPriceInfoPrice struct {
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The discount amount.
+	// The discount price.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ type DescribeMultiPriceResponseBodyPriceInfoPrice struct {
 	//
 	// 60.00
 	RefundPrice *float32 `json:"RefundPrice,omitempty" xml:"RefundPrice,omitempty"`
-	// The actual payment price. The value is the original price minus the discount amount.
+	// The actual payment price. The value is the original price minus the discount.
 	//
 	// example:
 	//
@@ -324,7 +324,7 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails) Validate() er
 }
 
 type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails struct {
-	// The discount amount.
+	// The discount price.
 	//
 	// example:
 	//
@@ -340,7 +340,7 @@ type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails struc
 	//
 	// example:
 	//
-	// Enterprise Office - 8C32G
+	// Enterprise Office-8C32G
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 	// The module value.
 	//
@@ -355,7 +355,7 @@ type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails struc
 	// 10900
 	OriginalPrice           *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
 	SavingPlanDiscountPrice *float32 `json:"SavingPlanDiscountPrice,omitempty" xml:"SavingPlanDiscountPrice,omitempty"`
-	// The actual payment price. The value is the original price minus the discount amount.
+	// The actual payment price. The value is the original price minus the discount.
 	//
 	// example:
 	//
@@ -439,7 +439,7 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails) 
 }
 
 type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail struct {
-	// The discount amount.
+	// The discount price.
 	//
 	// example:
 	//
@@ -458,7 +458,7 @@ type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail struct 
 	// DurationPackage
 	ResourceType             *string  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SavingPlanRecommendPrice *float32 `json:"SavingPlanRecommendPrice,omitempty" xml:"SavingPlanRecommendPrice,omitempty"`
-	// The actual payment price. The value is the original price minus the discount amount.
+	// The actual payment price. The value is the original price minus the discount.
 	//
 	// example:
 	//
@@ -524,37 +524,42 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail) Va
 }
 
 type DescribeMultiPriceResponseBodyPriceInfoPricePromotions struct {
-	ActivityId *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
+	ActivityId   *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
+	Effective    *bool   `json:"Effective,omitempty" xml:"Effective,omitempty"`
+	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	// The description of the promotion rule.
 	//
 	// example:
 	//
 	// new
-	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	OptionCode            *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	PriceBreakReduceValue *string `json:"PriceBreakReduceValue,omitempty" xml:"PriceBreakReduceValue,omitempty"`
+	PriceBreakThreshold   *string `json:"PriceBreakThreshold,omitempty" xml:"PriceBreakThreshold,omitempty"`
 	// The description of the promotion.
 	//
 	// example:
 	//
 	// Promotion
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
-	// The ID of the promotion.
+	// The promotion ID.
 	//
 	// example:
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// The name of the promotion.
+	// The promotion name.
 	//
 	// example:
 	//
-	// Promotion name
+	// PromotionName
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
 	// Indicates whether the promotion is selected.
 	//
 	// example:
 	//
 	// true
-	Selected *bool `json:"Selected,omitempty" xml:"Selected,omitempty"`
+	Selected       *bool   `json:"Selected,omitempty" xml:"Selected,omitempty"`
+	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
 func (s DescribeMultiPriceResponseBodyPriceInfoPricePromotions) String() string {
@@ -569,8 +574,24 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) GetActivityId()
 	return s.ActivityId
 }
 
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) GetEffective() *bool {
+	return s.Effective
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) GetEndTimestamp() *string {
+	return s.EndTimestamp
+}
+
 func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) GetOptionCode() *string {
 	return s.OptionCode
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) GetPriceBreakReduceValue() *string {
+	return s.PriceBreakReduceValue
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) GetPriceBreakThreshold() *string {
+	return s.PriceBreakThreshold
 }
 
 func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) GetPromotionDesc() *string {
@@ -589,13 +610,37 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) GetSelected() *
 	return s.Selected
 }
 
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) GetStartTimestamp() *string {
+	return s.StartTimestamp
+}
+
 func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) SetActivityId(v string) *DescribeMultiPriceResponseBodyPriceInfoPricePromotions {
 	s.ActivityId = &v
 	return s
 }
 
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) SetEffective(v bool) *DescribeMultiPriceResponseBodyPriceInfoPricePromotions {
+	s.Effective = &v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) SetEndTimestamp(v string) *DescribeMultiPriceResponseBodyPriceInfoPricePromotions {
+	s.EndTimestamp = &v
+	return s
+}
+
 func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) SetOptionCode(v string) *DescribeMultiPriceResponseBodyPriceInfoPricePromotions {
 	s.OptionCode = &v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) SetPriceBreakReduceValue(v string) *DescribeMultiPriceResponseBodyPriceInfoPricePromotions {
+	s.PriceBreakReduceValue = &v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) SetPriceBreakThreshold(v string) *DescribeMultiPriceResponseBodyPriceInfoPricePromotions {
+	s.PriceBreakThreshold = &v
 	return s
 }
 
@@ -619,6 +664,11 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) SetSelected(v b
 	return s
 }
 
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) SetStartTimestamp(v string) *DescribeMultiPriceResponseBodyPriceInfoPricePromotions {
+	s.StartTimestamp = &v
+	return s
+}
+
 func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) Validate() error {
 	return dara.Validate(s)
 }
@@ -630,7 +680,7 @@ type DescribeMultiPriceResponseBodyPriceInfoRules struct {
 	//
 	// accounts_suspect_users
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the promotion rule.
+	// The promotion rule ID.
 	//
 	// example:
 	//

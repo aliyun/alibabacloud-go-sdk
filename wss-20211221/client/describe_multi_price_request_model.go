@@ -34,7 +34,7 @@ type DescribeMultiPriceRequest struct {
 	//
 	// pacakge
 	PackageCode *string `json:"PackageCode,omitempty" xml:"PackageCode,omitempty"`
-	// The user ID for resource ownership in the reseller pattern. You do not need to specify this parameter in the non-reseller pattern.
+	// The user ID of the resource ownership in reseller pattern. You do not need to specify this parameter in non-reseller pattern.
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type DescribeMultiPriceRequestOrderItems struct {
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 	// The resource type.
 	//
-	// > This parameter is case-sensitive. Make sure that the spelling is correct.
+	// > This parameter is case-sensitive. Make sure that the value is spelled correctly.
 	//
 	// example:
 	//
