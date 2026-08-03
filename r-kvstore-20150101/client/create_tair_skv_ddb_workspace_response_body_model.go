@@ -106,7 +106,7 @@ type CreateTairSkvDdbWorkspaceResponseBody struct {
 	//
 	// 443
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The queries per second (QPS). This value is the theoretical value for the current instance specification.
+	// The queries per second (QPS). This value is the theoretical value for the current instance specifications.
 	//
 	// example:
 	//

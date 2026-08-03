@@ -27,6 +27,8 @@ type iDescribeInstancesOverviewRequest interface {
 	GetInstanceType() *string
 	SetNetworkType(v string) *DescribeInstancesOverviewRequest
 	GetNetworkType() *string
+	SetNodeType(v string) *DescribeInstancesOverviewRequest
+	GetNodeType() *string
 	SetOwnerAccount(v string) *DescribeInstancesOverviewRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *DescribeInstancesOverviewRequest
@@ -54,111 +56,93 @@ type iDescribeInstancesOverviewRequest interface {
 }
 
 type DescribeInstancesOverviewRequest struct {
-	// The architecture of the instance. Valid values:
+	// The architecture type. Valid values:
 	//
-	// 	- **cluster**: cluster architecture
+	// 	- **cluster**: Cluster Edition.
 	//
-	// 	- **standard**: standard architecture
+	// 	- **standard**: Standard Edition.
 	//
-	// 	- **rwsplit**: read/write splitting architecture
+	// 	- **rwsplit**: read/write splitting edition.
 	//
 	// example:
 	//
 	// standard
 	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
-	// The billing method of the instance. Valid values:
+	// The billing method. Valid values:
 	//
-	// 	- **PrePaid**: subscription
+	// 	- **PrePaid**: subscription.
 	//
-	// 	- **PostPaid**: pay-as-you-go
+	// 	- **PostPaid**: pay-as-you-go.
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The edition of the instance. Valid values:
+	// The edition type. Valid values:
 	//
-	// 	- **Community**: Redis Open-Source Edition
+	// 	- **Community**: Community Edition.
 	//
-	// 	- **Enterprise**: Tair (Enterprise Edition)
+	// 	- **Enterprise**: Enterprise Edition.
 	//
 	// example:
 	//
 	// Enterprise
 	EditionType *string `json:"EditionType,omitempty" xml:"EditionType,omitempty"`
-	// The engine version of the instance. Valid values: **2.8**, **4.0**, **5.0**, **6.0**, and **7.0**.
-	//
-	// Valid values:
-	//
-	// 	- 1.0
-	//
-	// 	- 2.8
-	//
-	// 	- 4.0
-	//
-	// 	- 5.0
-	//
-	// 	- 6.0
-	//
-	// 	- 7.0
+	// The Redis-compatible engine version of the instance. Valid values: **2.8**, **4.0**, **5.0**, **6.0**, and **7.0**.
 	//
 	// example:
 	//
 	// 6.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The instance type of the instance. For more information, see [Instance types](https://help.aliyun.com/document_detail/107984.html).
+	// The instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/107984.html).
 	//
 	// example:
 	//
 	// redis.master.small.default
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The IDs of instances.
+	// The IDs of the instances that you want to query.
 	//
-	// > By default, all instances that belong to this account are queried. If you specify multiple instance IDs, separate the instance IDs with commas (,).
+	// > By default, all instances under the current account are queried. To specify multiple instance IDs, separate them with commas (,).
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The state of the instance. Valid values:
+	// The instance status. Valid values:
 	//
-	// 	- **Normal**: The instance is normal.
+	// 	- **Normal**: The instance is running.
 	//
 	// 	- **Creating**: The instance is being created.
 	//
-	// 	- **Changing**: The configurations of the instance are being changed.
+	// 	- **Changing**: The instance is being modified.
 	//
 	// 	- **Inactive**: The instance is disabled.
 	//
-	// 	- **Flushing**: The instance is being released.
+	// 	- **Flushing**: The instance is being purged.
 	//
 	// 	- **Released**: The instance is released.
 	//
-	// 	- **Transforming**: The billing method of the instance is being changed.
-	//
-	// 	- **Unavailable**: The instance is unavailable.
-	//
-	// 	- **Error**: The instance failed to be created.
+	// 	- **Transforming**: The instance is being transformed.
 	//
 	// 	- **Migrating**: The instance is being migrated.
 	//
 	// 	- **BackupRecovering**: The instance is being restored from a backup.
 	//
-	// 	- **MinorVersionUpgrading**: The minor version of the instance is being updated.
+	// 	- **MinorVersionUpgrading**: A minor version upgrade is in progress.
 	//
-	// 	- **NetworkModifying**: The network type of the instance is being changed.
+	// 	- **NetworkModifying**: The network configuration is being modified.
 	//
-	// 	- **SSLModifying**: The SSL certificate of the instance is being changed.
+	// 	- **SSLModifying**: The SSL configuration is being modified.
 	//
-	// 	- **MajorVersionUpgrading**: The major version of the instance is being upgraded. The instance remains accessible during the upgrade.
+	// 	- **MajorVersionUpgrading**: A major engine version upgrade is in progress. The instance can be accessed normally.
 	//
-	// > For more information about instance states, see [Instance states and impacts](https://help.aliyun.com/document_detail/200740.html).
+	// > For more information about instance statuses, see [Instance states and impacts](https://help.aliyun.com/document_detail/200740.html).
 	//
 	// example:
 	//
 	// Normal
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The category of the instance. Valid values:
+	// The instance type. Valid values:
 	//
 	// 	- **Tair**
 	//
@@ -170,33 +154,34 @@ type DescribeInstancesOverviewRequest struct {
 	//
 	// Redis
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The network type of the instance. Valid values:
+	// The network type. Valid values:
 	//
-	// 	- **CLASSIC**: classic network
+	// 	- **CLASSIC**: classic network.
 	//
-	// 	- **VPC**: Virtual Private Cloud (VPC)
+	// 	- **VPC**: virtual private cloud (VPC).
 	//
 	// example:
 	//
 	// CLASSIC
 	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	NodeType     *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The private IP address of the instance.
+	// The private IP address.
 	//
 	// example:
 	//
 	// 172.16.49.***
 	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
-	// The ID of the region in which the instances you want to query reside. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the most recent region list.
+	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instances you want to query belong.
+	// The resource group ID.
 	//
-	// > You can query resource group IDs by using the Tair (Redis OSS-compatible) console or by calling the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+	// > You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation or use the console to obtain the resource group ID. Related operations, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
@@ -204,26 +189,26 @@ type DescribeInstancesOverviewRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The keyword used for fuzzy search. The keyword can be based on an instance ID or an instance description.
+	// The keyword used for fuzzy search by instance ID or instance description.
 	//
 	// example:
 	//
 	// apitest
 	SearchKey     *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-bp1e7clcw529l773d****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC.
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-bp1nme44gek34slfc****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The zone ID of the instance.
+	// The zone ID.
 	//
 	// example:
 	//
@@ -273,6 +258,10 @@ func (s *DescribeInstancesOverviewRequest) GetInstanceType() *string {
 
 func (s *DescribeInstancesOverviewRequest) GetNetworkType() *string {
 	return s.NetworkType
+}
+
+func (s *DescribeInstancesOverviewRequest) GetNodeType() *string {
+	return s.NodeType
 }
 
 func (s *DescribeInstancesOverviewRequest) GetOwnerAccount() *string {
@@ -365,6 +354,11 @@ func (s *DescribeInstancesOverviewRequest) SetInstanceType(v string) *DescribeIn
 
 func (s *DescribeInstancesOverviewRequest) SetNetworkType(v string) *DescribeInstancesOverviewRequest {
 	s.NetworkType = &v
+	return s
+}
+
+func (s *DescribeInstancesOverviewRequest) SetNodeType(v string) *DescribeInstancesOverviewRequest {
+	s.NodeType = &v
 	return s
 }
 

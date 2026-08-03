@@ -66,17 +66,17 @@ func (s *DescribeParameterGroupsResponseBody) Validate() error {
 }
 
 type DescribeParameterGroupsResponseBodyParameterGroups struct {
-	// The service category. Valid values:
+	// The product category. Valid values:
 	//
-	// 	- **0**: Redis Open-Source Edition
+	// - **0**: Redis Community Edition
 	//
-	// 	- **1**: Tair (Enterprise Edition)
+	// - **1**: Tair (Enhanced Edition)
 	//
 	// example:
 	//
 	// 0
 	Category *int64 `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The time when the parameter template was created.
+	// The creation time of the parameter template.
 	//
 	// example:
 	//
@@ -84,23 +84,23 @@ type DescribeParameterGroupsResponseBodyParameterGroups struct {
 	Created *string `json:"Created,omitempty" xml:"Created,omitempty"`
 	// The engine type. Valid values:
 	//
-	// 	- **redis**: Redis Open-Source Edition or Tair (In-Memory)
+	// - **redis**: Redis Community Edition or Tair (Enhanced Edition) in-memory type.
 	//
-	// 	- **tair_pena**: Tair (On NVM)
+	// - **tair_pena**: Tair (Enhanced Edition) persistent memory type.
 	//
-	// 	- **tair_pdb**: Tair (On Disk)
+	// - **tair_pdb**: Tair (Enhanced Edition) cloud disk type.
 	//
 	// example:
 	//
 	// tair_pena
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The compatible engine version.
+	// The engine-compatible version.
 	//
 	// example:
 	//
 	// 5
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The time when the parameter template was last modified.
+	// The most recent modification time of the parameter template.
 	//
 	// example:
 	//

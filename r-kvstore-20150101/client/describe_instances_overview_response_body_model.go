@@ -18,9 +18,9 @@ type iDescribeInstancesOverviewResponseBody interface {
 }
 
 type DescribeInstancesOverviewResponseBody struct {
-	// The queried instances.
+	// The list of instances.
 	Instances []*DescribeInstancesOverviewResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *DescribeInstancesOverviewResponseBody) Validate() error {
 }
 
 type DescribeInstancesOverviewResponseBodyInstances struct {
-	// The architecture of the instance. Valid values:
+	// The architecture type. Valid values:
 	//
-	// 	- **cluster**: cluster architecture
+	// 	- **cluster**: Cluster Edition.
 	//
-	// 	- **standard**: standard architecture
+	// 	- **standard**: Standard Edition.
 	//
-	// 	- **rwsplit**: read/write splitting architecture
+	// 	- **rwsplit**: read/write splitting edition.
 	//
 	// example:
 	//
@@ -101,11 +101,11 @@ type DescribeInstancesOverviewResponseBodyInstances struct {
 	//
 	// 4096
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The billing method of the instance. Valid values:
+	// The billing method. Valid values:
 	//
-	// 	- **PrePaid**: subscription
+	// 	- **PrePaid**: subscription.
 	//
-	// 	- **PostPaid**: pay-as-you-go
+	// 	- **PostPaid**: pay-as-you-go.
 	//
 	// example:
 	//
@@ -129,13 +129,13 @@ type DescribeInstancesOverviewResponseBodyInstances struct {
 	//
 	// 2022-06-13T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The engine version of the instance. Valid values: **2.8**, **4.0**, **5.0**, **6.0**, and **7.0**.
+	// The Redis-compatible engine version of the instance. Valid values: **2.8**, **4.0**, **5.0**, **6.0**, and **7.0**.
 	//
 	// example:
 	//
 	// 6.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The ID of the distributed instance.
+	// The distributed instance ID.
 	//
 	// > This parameter is returned only when the instance is a child instance of a distributed instance.
 	//
@@ -143,13 +143,13 @@ type DescribeInstancesOverviewResponseBodyInstances struct {
 	//
 	// gr-bp14rkqrhac****
 	GlobalInstanceId *string `json:"GlobalInstanceId,omitempty" xml:"GlobalInstanceId,omitempty"`
-	// The instance type of the instance.
+	// The instance type.
 	//
 	// example:
 	//
 	// redis.logic.sharding.2g.2db.0rodb.4proxy.default
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -161,21 +161,21 @@ type DescribeInstancesOverviewResponseBodyInstances struct {
 	//
 	// apitest
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The state of the instance. Valid values:
+	// The instance status. Valid values:
 	//
-	// 	- **Normal**: The instance is normal.
+	// 	- **Normal**: The instance is running.
 	//
 	// 	- **Creating**: The instance is being created.
 	//
-	// 	- **Changing**: The configurations of the instance are being changed.
+	// 	- **Changing**: The instance is being modified.
 	//
 	// 	- **Inactive**: The instance is disabled.
 	//
-	// 	- **Flushing**: The instance is being released.
+	// 	- **Flushing**: The instance is being purged.
 	//
 	// 	- **Released**: The instance is released.
 	//
-	// 	- **Transforming**: The billing method of the instance is being changed.
+	// 	- **Transforming**: The instance is being transformed.
 	//
 	// 	- **Unavailable**: The instance is unavailable.
 	//
@@ -185,23 +185,23 @@ type DescribeInstancesOverviewResponseBodyInstances struct {
 	//
 	// 	- **BackupRecovering**: The instance is being restored from a backup.
 	//
-	// 	- **MinorVersionUpgrading**: The minor version of the instance is being updated.
+	// 	- **MinorVersionUpgrading**: A minor version upgrade is in progress.
 	//
-	// 	- **NetworkModifying**: The network type of the instance is being changed.
+	// 	- **NetworkModifying**: The network configuration is being modified.
 	//
-	// 	- **SSLModifying**: The SSL certificate of the instance is being changed.
+	// 	- **SSLModifying**: The SSL configuration is being modified.
 	//
-	// 	- **MajorVersionUpgrading**: The major version of the instance is being upgraded. The instance remains accessible during the upgrade.
+	// 	- **MajorVersionUpgrading**: A major engine version upgrade is in progress. The instance can be accessed normally.
 	//
 	// example:
 	//
 	// Normal
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The edition of the instance. Valid values:
+	// The instance type. Valid values:
 	//
-	// 	- **Tair**: Tair (Enterprise Edition)
+	// 	- **Tair**: Tair (Enterprise Edition).
 	//
-	// 	- **Redis**: Redis Open-Source Edition
+	// 	- **Redis**: Redis Community Edition.
 	//
 	// 	- **Memcache**
 	//
@@ -209,57 +209,60 @@ type DescribeInstancesOverviewResponseBodyInstances struct {
 	//
 	// Redis
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The network type of the instance. Valid values:
+	// The network type. Valid values:
 	//
-	// 	- **CLASSIC**: classic network
+	// 	- **CLASSIC**: classic network.
 	//
-	// 	- **VPC**: VPC
+	// 	- **VPC**: virtual private cloud (VPC).
 	//
 	// example:
 	//
 	// CLASSIC
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The private IP address of the instance.
+	NodeType    *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// The private IP address of the instance in a VPC. The IP address may change. Use ConnectionDomain (internal endpoint) to connect to the instance.
 	//
-	// > This parameter is not returned when the instance is deployed in the classic network.
+	// > - This parameter is not returned if the network type of the instance is classic network.
+	//
+	// > - This parameter is not returned for cloud-native instances.
 	//
 	// example:
 	//
 	// 172.16.49.***
 	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
-	// The region ID of the instance.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs.
+	// The resource group ID to which the instance belongs.
 	//
 	// example:
 	//
 	// rg-acfmyiu4ekp****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Instance\\"s secondary zone id.
+	// The secondary zone ID.
 	//
-	// > This parameter is only returned when the instance has a secondary zone ID.
+	// > This parameter is returned only when the instance has a secondary zone.
 	//
 	// example:
 	//
 	// cn-hangzhou-g
 	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
-	// The ID of the vSwitch to which the instance is connected.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-bp1e7clcw529l773d****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC.
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-bp1nme44gek34slfc****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The zone ID of the instance.
+	// The zone ID.
 	//
 	// example:
 	//
@@ -329,6 +332,10 @@ func (s *DescribeInstancesOverviewResponseBodyInstances) GetInstanceType() *stri
 
 func (s *DescribeInstancesOverviewResponseBodyInstances) GetNetworkType() *string {
 	return s.NetworkType
+}
+
+func (s *DescribeInstancesOverviewResponseBodyInstances) GetNodeType() *string {
+	return s.NodeType
 }
 
 func (s *DescribeInstancesOverviewResponseBodyInstances) GetPrivateIp() *string {
@@ -426,6 +433,11 @@ func (s *DescribeInstancesOverviewResponseBodyInstances) SetInstanceType(v strin
 
 func (s *DescribeInstancesOverviewResponseBodyInstances) SetNetworkType(v string) *DescribeInstancesOverviewResponseBodyInstances {
 	s.NetworkType = &v
+	return s
+}
+
+func (s *DescribeInstancesOverviewResponseBodyInstances) SetNodeType(v string) *DescribeInstancesOverviewResponseBodyInstances {
+	s.NodeType = &v
 	return s
 }
 

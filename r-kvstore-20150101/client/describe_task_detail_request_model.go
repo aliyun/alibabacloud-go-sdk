@@ -16,12 +16,16 @@ type iDescribeTaskDetailRequest interface {
 }
 
 type DescribeTaskDetailRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:

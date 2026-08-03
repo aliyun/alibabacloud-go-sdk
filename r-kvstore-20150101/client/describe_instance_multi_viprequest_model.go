@@ -22,6 +22,8 @@ type iDescribeInstanceMultiVIPRequest interface {
 }
 
 type DescribeInstanceMultiVIPRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

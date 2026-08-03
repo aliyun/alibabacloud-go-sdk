@@ -24,7 +24,7 @@ type iDescribeBackupPolicyRequest interface {
 }
 
 type DescribeBackupPolicyRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

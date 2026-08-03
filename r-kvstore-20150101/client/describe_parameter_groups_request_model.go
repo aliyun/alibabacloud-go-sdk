@@ -11,6 +11,8 @@ type iDescribeParameterGroupsRequest interface {
 	GoString() string
 	SetDbType(v string) *DescribeParameterGroupsRequest
 	GetDbType() *string
+	SetEngineVersion(v string) *DescribeParameterGroupsRequest
+	GetEngineVersion() *string
 	SetOwnerAccount(v string) *DescribeParameterGroupsRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *DescribeParameterGroupsRequest
@@ -28,19 +30,20 @@ type iDescribeParameterGroupsRequest interface {
 type DescribeParameterGroupsRequest struct {
 	// The engine type. Valid values:
 	//
-	// 	- **redis**: Redis Open-Source Edition or Tair (In-Memory)
+	// - **redis**: Redis Community Edition or Tair (Enhanced Edition) in-memory type.
 	//
-	// 	- **tair_pena**: Tair (On NVM)
+	// - **tair_pena**: Tair (Enhanced Edition) persistent memory type.
 	//
-	// 	- **tair_pdb**: Tair (On Disk)
+	// - **tair_pdb**: Tair (Enhanced Edition) cloud disk type (ESSD/SSD).
 	//
 	// example:
 	//
 	// redis
-	DbType       *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance.
+	DbType        *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -63,6 +66,10 @@ func (s DescribeParameterGroupsRequest) GoString() string {
 
 func (s *DescribeParameterGroupsRequest) GetDbType() *string {
 	return s.DbType
+}
+
+func (s *DescribeParameterGroupsRequest) GetEngineVersion() *string {
+	return s.EngineVersion
 }
 
 func (s *DescribeParameterGroupsRequest) GetOwnerAccount() *string {
@@ -91,6 +98,11 @@ func (s *DescribeParameterGroupsRequest) GetSecurityToken() *string {
 
 func (s *DescribeParameterGroupsRequest) SetDbType(v string) *DescribeParameterGroupsRequest {
 	s.DbType = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsRequest) SetEngineVersion(v string) *DescribeParameterGroupsRequest {
+	s.EngineVersion = &v
 	return s
 }
 

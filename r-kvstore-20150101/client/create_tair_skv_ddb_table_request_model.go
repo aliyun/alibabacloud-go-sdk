@@ -25,6 +25,8 @@ type iCreateTairSkvDdbTableRequest interface {
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *CreateTairSkvDdbTableRequest
 	GetResourceOwnerId() *int64
+	SetRestoreTime(v string) *CreateTairSkvDdbTableRequest
+	GetRestoreTime() *string
 	SetSchema(v string) *CreateTairSkvDdbTableRequest
 	GetSchema() *string
 	SetSecurityToken(v string) *CreateTairSkvDdbTableRequest
@@ -40,13 +42,13 @@ type iCreateTairSkvDdbTableRequest interface {
 }
 
 type CreateTairSkvDdbTableRequest struct {
-	// The cluster backup set ID. Some new cluster architectures support cluster backup set IDs. You can call [DescribeClusterBackupList](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-describeclusterbackuplist-redis) to obtain the ID.
+	// The cluster backup set ID. Some new cluster architectures support this parameter. You can call [DescribeClusterBackupList](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-describeclusterbackuplist-redis) to obtain the ID.
 	//
 	// example:
 	//
 	// cb-hyxdof5x9kqb**
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token is case-sensitive and can contain up to 64 ASCII characters.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token is case-sensitive and cannot exceed 64 ASCII characters in length.
 	//
 	// example:
 	//
@@ -72,6 +74,7 @@ type CreateTairSkvDdbTableRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RestoreTime          *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
 	// The table schema configuration in JSON format.
 	//
 	// example:
@@ -79,7 +82,7 @@ type CreateTairSkvDdbTableRequest struct {
 	// {"AttributeDefinitions":[{"AttributeType":"S","AttributeName":"pk"},{"AttributeType":"S","AttributeName":"sk"}],"KeySchema":[{"KeyType":"HASH","AttributeName":"pk"},{"KeyType":"RANGE","AttributeName":"sk"}]}
 	Schema        *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// To create an instance from a backup set of an existing instance, specify the ID of the source instance in this parameter.
+	// To create an instance from a backup set of an existing instance, specify the source instance ID in this parameter.
 	//
 	// > This parameter must be used together with BackupId.
 	//
@@ -151,6 +154,10 @@ func (s *CreateTairSkvDdbTableRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
 }
 
+func (s *CreateTairSkvDdbTableRequest) GetRestoreTime() *string {
+	return s.RestoreTime
+}
+
 func (s *CreateTairSkvDdbTableRequest) GetSchema() *string {
 	return s.Schema
 }
@@ -212,6 +219,11 @@ func (s *CreateTairSkvDdbTableRequest) SetResourceOwnerAccount(v string) *Create
 
 func (s *CreateTairSkvDdbTableRequest) SetResourceOwnerId(v int64) *CreateTairSkvDdbTableRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateTairSkvDdbTableRequest) SetRestoreTime(v string) *CreateTairSkvDdbTableRequest {
+	s.RestoreTime = &v
 	return s
 }
 

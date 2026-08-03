@@ -18,14 +18,20 @@ type iDescribeTaskDetailResponseBody interface {
 }
 
 type DescribeTaskDetailResponseBody struct {
+	// The time when the task started. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	//
 	// example:
 	//
 	// 2026-05-12T07:18:57Z
 	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 561AFBF1-BE20-44DB-9BD1-6988B53E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task status.
+	//
 	// example:
 	//
 	// RUNNING

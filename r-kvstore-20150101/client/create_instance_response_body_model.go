@@ -56,13 +56,13 @@ type iCreateInstanceResponseBody interface {
 }
 
 type CreateInstanceResponseBody struct {
-	// The bandwidth of the instance. Unit: MB/s.
+	// The bandwidth limit of the instance. Unit: MB/s.
 	//
 	// example:
 	//
 	// 32
 	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The storage capacity of the instance, in MB.
+	// The storage capacity of the instance. Unit: MB.
 	//
 	// example:
 	//
@@ -70,39 +70,39 @@ type CreateInstanceResponseBody struct {
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
 	// The billing method. Valid values:
 	//
-	// - **PrePaid**: subscription
+	// 	- **PrePaid**: subscription.
 	//
-	// - **PostPaid**: pay-as-you-go
+	// 	- **PostPaid**: pay-as-you-go.
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The configurations of the instance.
+	// The detailed configuration of the instance.
 	//
 	// example:
 	//
 	// {\\"EvictionPolicy\\":\\"volatile-lru\\",\\"hash-max-ziplist-entries\\":512,\\"zset-max-ziplist-entries\\":128,\\"zset-max-ziplist-value\\":64,\\"set-max-intset-entries\\":512,\\"hash-max-ziplist-value\\":64}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The private connection endpoint of the instance.
+	// The internal network endpoint of the Redis instance.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****.redis.rds.aliyuncs.com
 	ConnectionDomain *string `json:"ConnectionDomain,omitempty" xml:"ConnectionDomain,omitempty"`
-	// The maximum number of connections.
+	// The maximum number of connections supported by the instance.
 	//
 	// example:
 	//
 	// 10000
 	Connections *int64 `json:"Connections,omitempty" xml:"Connections,omitempty"`
-	// The expiration time of the subscription instance. The time is displayed in UTC. Format: *yyyy-MM-dd*T*HH:mm:ss*Z.
+	// The time when the subscription instance expires. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
 	//
 	// example:
 	//
 	// 2019-01-18T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the instance.
+	// The instance ID, which is globally unique.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type CreateInstanceResponseBody struct {
 	//
 	// apitest
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The state of the instance. For this operation, the returned value is always `Creating`.
+	// The current status of the instance. The return value is fixed as Creating.
 	//
 	// example:
 	//
@@ -122,9 +122,9 @@ type CreateInstanceResponseBody struct {
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	// The network type. Valid values:
 	//
-	// - **CLASSIC**: classic network
+	// 	- **CLASSIC**: classic network.
 	//
-	// - **VPC**: VPC
+	// 	- **VPC**: VPC.
 	//
 	// example:
 	//
@@ -132,15 +132,15 @@ type CreateInstanceResponseBody struct {
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The node type. Valid values:
 	//
-	// - **STAND_ALONE**: standalone
+	// 	- **STAND_ALONE**: single replica.
 	//
-	// - **MASTER_SLAVE**: primary-replica
+	// 	- **MASTER_SLAVE**: dual-replica.
 	//
 	// example:
 	//
 	// MASTER_SLAVE
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// This parameter is required.
 	//
@@ -148,43 +148,43 @@ type CreateInstanceResponseBody struct {
 	//
 	// 2084452111111
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The connection port of the instance.
+	// The Redis service port.
 	//
 	// example:
 	//
 	// 6379
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The private IP address of the instance.
+	// The internal IP address of the instance.
 	//
 	// example:
 	//
 	// 172.16.0.10
 	PrivateIpAddr *string `json:"PrivateIpAddr,omitempty" xml:"PrivateIpAddr,omitempty"`
-	// The theoretical queries per second (QPS) of the instance.
+	// The queries per second (QPS). This value is the theoretical maximum for the current instance type.
 	//
 	// example:
 	//
 	// 100000
 	QPS *int64 `json:"QPS,omitempty" xml:"QPS,omitempty"`
-	// The ID of the region.
+	// The region ID of the instance.
 	//
 	// example:
 	//
 	// cn-hongkong
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5DEA3CC9-F81D-4387-8E97-CEA40F09****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The username of the account. By default, the username is the same as the instance ID.
+	// The account used to connect to the Redis instance. By default, an account named after the instance ID is included.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type CreateInstanceResponseBody struct {
 	//
 	// vpc-bp1nme44gek34slfc****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the zone.
+	// The zone ID of the instance.
 	//
 	// example:
 	//

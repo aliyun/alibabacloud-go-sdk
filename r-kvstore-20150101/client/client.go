@@ -69,28 +69,32 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"na-south-1":                  dara.String("r-kvstore.na-south-1.aliyuncs.com"),
 		"me-east-1":                   dara.String("r-kvstore.me-east-1.aliyuncs.com"),
 		"me-central-1":                dara.String("r-kvstore.me-central-1.aliyuncs.com"),
+		"eu-west-2":                   dara.String("r-kvstore.eu-west-2.aliyuncs.com"),
 		"eu-west-1":                   dara.String("r-kvstore.eu-west-1.aliyuncs.com"),
 		"eu-central-1":                dara.String("r-kvstore.eu-central-1.aliyuncs.com"),
+		"cn-zhongwei":                 dara.String("r-kvstore.cn-zhongwei.aliyuncs.com"),
 		"cn-zhengzhou-jva":            dara.String("r-kvstore.cn-zhengzhou-jva.aliyuncs.com"),
 		"cn-zhangjiakou":              dara.String("r-kvstore.cn-zhangjiakou.aliyuncs.com"),
+		"cn-wulanchabu-gic-1":         dara.String("r-kvstore.cn-wulanchabu-gic-1.aliyuncs.com"),
 		"cn-wuhan-lr":                 dara.String("r-kvstore.cn-wuhan-lr.aliyuncs.com"),
 		"cn-shenzhen-finance-1":       dara.String("r-kvstore.cn-shenzhen-finance-1.aliyuncs.com"),
 		"cn-shenzhen":                 dara.String("r-kvstore.cn-shenzhen.aliyuncs.com"),
 		"cn-shanghai-finance-1":       dara.String("r-kvstore.cn-shanghai-finance-1.aliyuncs.com"),
+		"cn-north-2-gov-1":            dara.String("r-kvstore.cn-north-2-gov-1.aliyuncs.com"),
 		"cn-nanjing":                  dara.String("r-kvstore.cn-nanjing.aliyuncs.com"),
 		"cn-huhehaote":                dara.String("r-kvstore.cn-huhehaote.aliyuncs.com"),
 		"cn-hongkong":                 dara.String("r-kvstore.cn-hongkong.aliyuncs.com"),
+		"cn-heyuan-acdr-1":            dara.String("r-kvstore.cn-heyuan-acdr-1.aliyuncs.com"),
 		"cn-guangzhou":                dara.String("r-kvstore.cn-guangzhou.aliyuncs.com"),
 		"cn-fuzhou":                   dara.String("r-kvstore.cn-fuzhou.aliyuncs.com"),
 		"cn-chengdu":                  dara.String("r-kvstore.cn-chengdu.aliyuncs.com"),
 		"cn-beijing-finance-1":        dara.String("r-kvstore.cn-beijing-finance-1.aliyuncs.com"),
+		"ap-southeast-8":              dara.String("r-kvstore.ap-southeast-8.aliyuncs.com"),
 		"ap-southeast-7":              dara.String("r-kvstore.ap-southeast-7.aliyuncs.com"),
 		"ap-southeast-6":              dara.String("r-kvstore.ap-southeast-6.aliyuncs.com"),
 		"ap-southeast-5":              dara.String("r-kvstore.ap-southeast-5.aliyuncs.com"),
 		"ap-southeast-3":              dara.String("r-kvstore.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-2":              dara.String("r-kvstore.ap-southeast-2.aliyuncs.com"),
 		"ap-southeast-1":              dara.String("r-kvstore.ap-southeast-1.aliyuncs.com"),
-		"ap-south-1":                  dara.String("r-kvstore.ap-south-1.aliyuncs.com"),
 		"ap-northeast-2":              dara.String("r-kvstore.ap-northeast-2.aliyuncs.com"),
 		"ap-northeast-1":              dara.String("r-kvstore.ap-northeast-1.aliyuncs.com"),
 	}
@@ -554,6 +558,76 @@ func (client *Client) CancelActiveOperationTasks(request *CancelActiveOperationT
 	runtime := &dara.RuntimeOptions{}
 	_result = &CancelActiveOperationTasksResponse{}
 	_body, _err := client.CancelActiveOperationTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 关闭巡检任务
+//
+// @param request - CancelInspectionTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelInspectionTaskResponse
+func (client *Client) CancelInspectionTaskWithOptions(request *CancelInspectionTaskRequest, runtime *dara.RuntimeOptions) (_result *CancelInspectionTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelInspectionTask"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelInspectionTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 关闭巡检任务
+//
+// @param request - CancelInspectionTaskRequest
+//
+// @return CancelInspectionTaskResponse
+func (client *Client) CancelInspectionTask(request *CancelInspectionTaskRequest) (_result *CancelInspectionTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CancelInspectionTaskResponse{}
+	_body, _err := client.CancelInspectionTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1175,15 +1249,191 @@ func (client *Client) CreateGlobalSecurityIPGroup(request *CreateGlobalSecurityI
 
 // Summary:
 //
-// Create a Redis (open-source) instance with a classic or cloud-native architecture, or a Tair memory-optimized instance with a classic architecture. To create a Tair instance with a cloud-native architecture, use the `CreateTairInstance` API.
+// 创建定时巡检任务配置
+//
+// @param request - CreateInspectionScheduleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInspectionScheduleResponse
+func (client *Client) CreateInspectionScheduleWithOptions(request *CreateInspectionScheduleRequest, runtime *dara.RuntimeOptions) (_result *CreateInspectionScheduleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CronExpression) {
+		query["CronExpression"] = request.CronExpression
+	}
+
+	if !dara.IsNil(request.InspectionItems) {
+		query["InspectionItems"] = request.InspectionItems
+	}
+
+	if !dara.IsNil(request.InspectionWindow) {
+		query["InspectionWindow"] = request.InspectionWindow
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.ReportLanguage) {
+		query["ReportLanguage"] = request.ReportLanguage
+	}
+
+	if !dara.IsNil(request.ScheduleName) {
+		query["ScheduleName"] = request.ScheduleName
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.Timezone) {
+		query["Timezone"] = request.Timezone
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateInspectionSchedule"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateInspectionScheduleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建定时巡检任务配置
+//
+// @param request - CreateInspectionScheduleRequest
+//
+// @return CreateInspectionScheduleResponse
+func (client *Client) CreateInspectionSchedule(request *CreateInspectionScheduleRequest) (_result *CreateInspectionScheduleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateInspectionScheduleResponse{}
+	_body, _err := client.CreateInspectionScheduleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 手动创建巡检任务
+//
+// @param request - CreateInspectionTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInspectionTaskResponse
+func (client *Client) CreateInspectionTaskWithOptions(request *CreateInspectionTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateInspectionTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InspectionItems) {
+		query["InspectionItems"] = request.InspectionItems
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.ReportLanguage) {
+		query["ReportLanguage"] = request.ReportLanguage
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateInspectionTask"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateInspectionTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 手动创建巡检任务
+//
+// @param request - CreateInspectionTaskRequest
+//
+// @return CreateInspectionTaskResponse
+func (client *Client) CreateInspectionTask(request *CreateInspectionTaskRequest) (_result *CreateInspectionTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateInspectionTaskResponse{}
+	_body, _err := client.CreateInspectionTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a Redis Community Edition classic instance, a Redis Community Edition cloud-native architecture instance, or a Tair memory-optimized classic instance. To create a cloud-native architecture Tair instance, call the CreateTairInstance operation.
 //
 // Description:
 //
-// Before you call this API, make sure you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Tair.
+// Before you invoke this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Tair (Redis® OSS-Compatible).
 //
-// This API is used to create a Redis Community Edition instance or a Tair Memory Type (Classic) instance. To create a Tair Cloud-native Edition instance, call the [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) API.
+// This operation creates Redis Community Edition instances and Tair memory-optimized classic instances. To create a Tair cloud-native instance, invoke the [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) operation.
 //
-// > For instructions on how to perform this operation in the console and for guidance on instance selection, see [Create a Redis instance](https://help.aliyun.com/document_detail/26351.html).
+// > For the corresponding console operations and instance selection recommendations, see [Create a Redis instance](https://help.aliyun.com/document_detail/26351.html).
 //
 // @param request - CreateInstanceRequest
 //
@@ -1427,15 +1677,15 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 // Summary:
 //
-// Create a Redis (open-source) instance with a classic or cloud-native architecture, or a Tair memory-optimized instance with a classic architecture. To create a Tair instance with a cloud-native architecture, use the `CreateTairInstance` API.
+// Creates a Redis Community Edition classic instance, a Redis Community Edition cloud-native architecture instance, or a Tair memory-optimized classic instance. To create a cloud-native architecture Tair instance, call the CreateTairInstance operation.
 //
 // Description:
 //
-// Before you call this API, make sure you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Tair.
+// Before you invoke this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Tair (Redis® OSS-Compatible).
 //
-// This API is used to create a Redis Community Edition instance or a Tair Memory Type (Classic) instance. To create a Tair Cloud-native Edition instance, call the [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) API.
+// This operation creates Redis Community Edition instances and Tair memory-optimized classic instances. To create a Tair cloud-native instance, invoke the [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) operation.
 //
-// > For instructions on how to perform this operation in the console and for guidance on instance selection, see [Create a Redis instance](https://help.aliyun.com/document_detail/26351.html).
+// > For the corresponding console operations and instance selection recommendations, see [Create a Redis instance](https://help.aliyun.com/document_detail/26351.html).
 //
 // @param request - CreateInstanceRequest
 //
@@ -2399,7 +2649,7 @@ func (client *Client) CreateTairKVCacheVNode(request *CreateTairKVCacheVNodeRequ
 //
 // ## Operation description
 //
-// - Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.htm) of ApsaraDB for Redis.
+// - Before calling this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.htm) of ApsaraDB for Redis.
 //
 // @param request - CreateTairSkvDdbTableRequest
 //
@@ -2444,6 +2694,10 @@ func (client *Client) CreateTairSkvDdbTableWithOptions(request *CreateTairSkvDdb
 
 	if !dara.IsNil(request.ResourceOwnerId) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.RestoreTime) {
+		query["RestoreTime"] = request.RestoreTime
 	}
 
 	if !dara.IsNil(request.Schema) {
@@ -2501,7 +2755,7 @@ func (client *Client) CreateTairSkvDdbTableWithOptions(request *CreateTairSkvDdb
 //
 // ## Operation description
 //
-// - Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.htm) of ApsaraDB for Redis.
+// - Before calling this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.htm) of ApsaraDB for Redis.
 //
 // @param request - CreateTairSkvDdbTableRequest
 //
@@ -2519,13 +2773,13 @@ func (client *Client) CreateTairSkvDdbTable(request *CreateTairSkvDdbTableReques
 
 // Summary:
 //
-// Creates a Tair Serverless KV workspace instance.
+// Activates a Tair Serverless KV workspace instance.
 //
 // Description:
 //
 // ## Operation description
 //
-// - Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.htm) of ApsaraDB for Redis.
+// - Before you call this operation, make sure that you understand the billing rules and [pricing](https://help.aliyun.com/document_detail/54532.htm) of ApsaraDB for Redis.
 //
 // - To create a Tair Serverless KV table instance, call the `CreateTairSkvDdbTable` operation.
 //
@@ -2627,13 +2881,13 @@ func (client *Client) CreateTairSkvDdbWorkspaceWithOptions(request *CreateTairSk
 
 // Summary:
 //
-// Creates a Tair Serverless KV workspace instance.
+// Activates a Tair Serverless KV workspace instance.
 //
 // Description:
 //
 // ## Operation description
 //
-// - Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.htm) of ApsaraDB for Redis.
+// - Before you call this operation, make sure that you understand the billing rules and [pricing](https://help.aliyun.com/document_detail/54532.htm) of ApsaraDB for Redis.
 //
 // - To create a Tair Serverless KV table instance, call the `CreateTairSkvDdbTable` operation.
 //
@@ -2938,6 +3192,100 @@ func (client *Client) DeleteGlobalSecurityIPGroup(request *DeleteGlobalSecurityI
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteGlobalSecurityIPGroupResponse{}
 	_body, _err := client.DeleteGlobalSecurityIPGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除定时巡检任务
+//
+// Description:
+//
+// 该API对应的控制台操作请参见[释放实例](https://help.aliyun.com/document_detail/43882.html)。
+//
+// 调用本接口时，实例必须满足以下条件：
+//
+//   - 实例状态为运行中。
+//
+//   - 实例的付费方式为后付费（按量付费）。
+//
+// > 预付费（包年包月）实例无法调用此接口主动删除，到期后将自动释放。 如需提前释放，请在控制台进行操作。
+//
+// @param request - DeleteInspectionScheduleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInspectionScheduleResponse
+func (client *Client) DeleteInspectionScheduleWithOptions(request *DeleteInspectionScheduleRequest, runtime *dara.RuntimeOptions) (_result *DeleteInspectionScheduleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ScheduleId) {
+		query["ScheduleId"] = request.ScheduleId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteInspectionSchedule"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteInspectionScheduleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除定时巡检任务
+//
+// Description:
+//
+// 该API对应的控制台操作请参见[释放实例](https://help.aliyun.com/document_detail/43882.html)。
+//
+// 调用本接口时，实例必须满足以下条件：
+//
+//   - 实例状态为运行中。
+//
+//   - 实例的付费方式为后付费（按量付费）。
+//
+// > 预付费（包年包月）实例无法调用此接口主动删除，到期后将自动释放。 如需提前释放，请在控制台进行操作。
+//
+// @param request - DeleteInspectionScheduleRequest
+//
+// @return DeleteInspectionScheduleResponse
+func (client *Client) DeleteInspectionSchedule(request *DeleteInspectionScheduleRequest) (_result *DeleteInspectionScheduleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteInspectionScheduleResponse{}
+	_body, _err := client.DeleteInspectionScheduleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4053,7 +4401,7 @@ func (client *Client) DescribeAvailableResource(request *DescribeAvailableResour
 
 // Summary:
 //
-// Queries the backup policy of a Tair (Redis OSS-compatible) instance, including the backup cycle and backup time.
+// Queries the backup policy of a Tair (Redis® OSS-Compatible) database instance, including the backup cycle and backup time.
 //
 // @param request - DescribeBackupPolicyRequest
 //
@@ -4117,7 +4465,7 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 
 // Summary:
 //
-// Queries the backup policy of a Tair (Redis OSS-compatible) instance, including the backup cycle and backup time.
+// Queries the backup policy of a Tair (Redis® OSS-Compatible) database instance, including the backup cycle and backup time.
 //
 // @param request - DescribeBackupPolicyRequest
 //
@@ -6363,6 +6711,318 @@ func (client *Client) DescribeHistoryTasksStat(request *DescribeHistoryTasksStat
 
 // Summary:
 //
+// 查看定时调度历次巡检报告
+//
+// @param request - DescribeInspectionScheduleReportsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInspectionScheduleReportsResponse
+func (client *Client) DescribeInspectionScheduleReportsWithOptions(request *DescribeInspectionScheduleReportsRequest, runtime *dara.RuntimeOptions) (_result *DescribeInspectionScheduleReportsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ScheduleId) {
+		query["ScheduleId"] = request.ScheduleId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInspectionScheduleReports"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInspectionScheduleReportsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看定时调度历次巡检报告
+//
+// @param request - DescribeInspectionScheduleReportsRequest
+//
+// @return DescribeInspectionScheduleReportsResponse
+func (client *Client) DescribeInspectionScheduleReports(request *DescribeInspectionScheduleReportsRequest) (_result *DescribeInspectionScheduleReportsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInspectionScheduleReportsResponse{}
+	_body, _err := client.DescribeInspectionScheduleReportsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看定时巡检任务配置
+//
+// @param request - DescribeInspectionSchedulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInspectionSchedulesResponse
+func (client *Client) DescribeInspectionSchedulesWithOptions(request *DescribeInspectionSchedulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeInspectionSchedulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Enabled) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ScheduleId) {
+		query["ScheduleId"] = request.ScheduleId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInspectionSchedules"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInspectionSchedulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看定时巡检任务配置
+//
+// @param request - DescribeInspectionSchedulesRequest
+//
+// @return DescribeInspectionSchedulesResponse
+func (client *Client) DescribeInspectionSchedules(request *DescribeInspectionSchedulesRequest) (_result *DescribeInspectionSchedulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInspectionSchedulesResponse{}
+	_body, _err := client.DescribeInspectionSchedulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询某个巡检任务的报告
+//
+// @param request - DescribeInspectionTaskReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInspectionTaskReportResponse
+func (client *Client) DescribeInspectionTaskReportWithOptions(request *DescribeInspectionTaskReportRequest, runtime *dara.RuntimeOptions) (_result *DescribeInspectionTaskReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InspectionInsId) {
+		query["InspectionInsId"] = request.InspectionInsId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInspectionTaskReport"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInspectionTaskReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询某个巡检任务的报告
+//
+// @param request - DescribeInspectionTaskReportRequest
+//
+// @return DescribeInspectionTaskReportResponse
+func (client *Client) DescribeInspectionTaskReport(request *DescribeInspectionTaskReportRequest) (_result *DescribeInspectionTaskReportResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInspectionTaskReportResponse{}
+	_body, _err := client.DescribeInspectionTaskReportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询智能巡检任务列表
+//
+// @param request - DescribeInspectionTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInspectionTasksResponse
+func (client *Client) DescribeInspectionTasksWithOptions(request *DescribeInspectionTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeInspectionTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInspectionTasks"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInspectionTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询智能巡检任务列表
+//
+// @param request - DescribeInspectionTasksRequest
+//
+// @return DescribeInspectionTasksResponse
+func (client *Client) DescribeInspectionTasks(request *DescribeInspectionTasksRequest) (_result *DescribeInspectionTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInspectionTasksResponse{}
+	_body, _err := client.DescribeInspectionTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the details of a Tair (Redis-compatible) instance.
 //
 // @param request - DescribeInstanceAttributeRequest
@@ -6621,11 +7281,11 @@ func (client *Client) DescribeInstanceConfig(request *DescribeInstanceConfigRequ
 
 // Summary:
 //
-// 查询实例的多 VIP 信息
+// Queries the load balancer (LB) information of an instance.
 //
 // Description:
 //
-// 关于多LB，详情参见
+// For more information about multiple LBs, see.
 //
 // @param request - DescribeInstanceMultiVIPRequest
 //
@@ -6685,11 +7345,11 @@ func (client *Client) DescribeInstanceMultiVIPWithOptions(request *DescribeInsta
 
 // Summary:
 //
-// 查询实例的多 VIP 信息
+// Queries the load balancer (LB) information of an instance.
 //
 // Description:
 //
-// 关于多LB，详情参见
+// For more information about multiple LBs, see.
 //
 // @param request - DescribeInstanceMultiVIPRequest
 //
@@ -7073,13 +7733,13 @@ func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_res
 
 // Summary:
 //
-// Queries the overview information of one or more Tair (Redis OSS-compatible) instances.
+// Queries the overview information of one or more ApsaraDB for Tair (Redis® OSS-Compatible) database instances.
 //
 // Description:
 //
-// If you do not specify the InstanceIds parameter when you call this operation, the overview information of all instances is returned.
+// If you do not specify any request parameters, the overview information of all instances is returned.
 //
-// > This operation returns non-paged results.
+// > This operation does not support pagination for the returned results.
 //
 // @param request - DescribeInstancesOverviewRequest
 //
@@ -7128,6 +7788,10 @@ func (client *Client) DescribeInstancesOverviewWithOptions(request *DescribeInst
 
 	if !dara.IsNil(request.NetworkType) {
 		query["NetworkType"] = request.NetworkType
+	}
+
+	if !dara.IsNil(request.NodeType) {
+		query["NodeType"] = request.NodeType
 	}
 
 	if !dara.IsNil(request.OwnerAccount) {
@@ -7203,13 +7867,13 @@ func (client *Client) DescribeInstancesOverviewWithOptions(request *DescribeInst
 
 // Summary:
 //
-// Queries the overview information of one or more Tair (Redis OSS-compatible) instances.
+// Queries the overview information of one or more ApsaraDB for Tair (Redis® OSS-Compatible) database instances.
 //
 // Description:
 //
-// If you do not specify the InstanceIds parameter when you call this operation, the overview information of all instances is returned.
+// If you do not specify any request parameters, the overview information of all instances is returned.
 //
-// > This operation returns non-paged results.
+// > This operation does not support pagination for the returned results.
 //
 // @param request - DescribeInstancesOverviewRequest
 //
@@ -7771,7 +8435,7 @@ func (client *Client) DescribeParameterGroupTemplateList(request *DescribeParame
 
 // Summary:
 //
-// Queries a list of available parameter templates.
+// Queries the list of available parameter templates.
 //
 // @param request - DescribeParameterGroupsRequest
 //
@@ -7788,6 +8452,10 @@ func (client *Client) DescribeParameterGroupsWithOptions(request *DescribeParame
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbType) {
 		query["DbType"] = request.DbType
+	}
+
+	if !dara.IsNil(request.EngineVersion) {
+		query["EngineVersion"] = request.EngineVersion
 	}
 
 	if !dara.IsNil(request.OwnerAccount) {
@@ -7839,7 +8507,7 @@ func (client *Client) DescribeParameterGroupsWithOptions(request *DescribeParame
 
 // Summary:
 //
-// Queries a list of available parameter templates.
+// Queries the list of available parameter templates.
 //
 // @param request - DescribeParameterGroupsRequest
 //
@@ -9599,7 +10267,7 @@ func (client *Client) DescribeTairSkvDdbTableSchema(request *DescribeTairSkvDdbT
 
 // Summary:
 //
-// 查询任务详情
+// Queries the details of a task.
 //
 // @param request - DescribeTaskDetailRequest
 //
@@ -9647,7 +10315,7 @@ func (client *Client) DescribeTaskDetailWithOptions(request *DescribeTaskDetailR
 
 // Summary:
 //
-// 查询任务详情
+// Queries the details of a task.
 //
 // @param request - DescribeTaskDetailRequest
 //
@@ -12306,6 +12974,104 @@ func (client *Client) ModifyGlobalSecurityIPGroupRelation(request *ModifyGlobalS
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyGlobalSecurityIPGroupRelationResponse{}
 	_body, _err := client.ModifyGlobalSecurityIPGroupRelationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改定时巡检配置
+//
+// @param request - ModifyInspectionScheduleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInspectionScheduleResponse
+func (client *Client) ModifyInspectionScheduleWithOptions(request *ModifyInspectionScheduleRequest, runtime *dara.RuntimeOptions) (_result *ModifyInspectionScheduleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CronExpression) {
+		query["CronExpression"] = request.CronExpression
+	}
+
+	if !dara.IsNil(request.Enabled) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !dara.IsNil(request.InspectionItems) {
+		query["InspectionItems"] = request.InspectionItems
+	}
+
+	if !dara.IsNil(request.InspectionWindow) {
+		query["InspectionWindow"] = request.InspectionWindow
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.ReportLanguage) {
+		query["ReportLanguage"] = request.ReportLanguage
+	}
+
+	if !dara.IsNil(request.ScheduleId) {
+		query["ScheduleId"] = request.ScheduleId
+	}
+
+	if !dara.IsNil(request.ScheduleName) {
+		query["ScheduleName"] = request.ScheduleName
+	}
+
+	if !dara.IsNil(request.Timezone) {
+		query["Timezone"] = request.Timezone
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyInspectionSchedule"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyInspectionScheduleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改定时巡检配置
+//
+// @param request - ModifyInspectionScheduleRequest
+//
+// @return ModifyInspectionScheduleResponse
+func (client *Client) ModifyInspectionSchedule(request *ModifyInspectionScheduleRequest) (_result *ModifyInspectionScheduleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyInspectionScheduleResponse{}
+	_body, _err := client.ModifyInspectionScheduleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15567,6 +16333,76 @@ func (client *Client) RestoreInstance(request *RestoreInstanceRequest) (_result 
 
 // Summary:
 //
+// 手动重试巡检任务
+//
+// @param request - RetryInspectionTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RetryInspectionTaskResponse
+func (client *Client) RetryInspectionTaskWithOptions(request *RetryInspectionTaskRequest, runtime *dara.RuntimeOptions) (_result *RetryInspectionTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RetryInspectionTask"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RetryInspectionTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 手动重试巡检任务
+//
+// @param request - RetryInspectionTaskRequest
+//
+// @return RetryInspectionTaskResponse
+func (client *Client) RetryInspectionTask(request *RetryInspectionTaskRequest) (_result *RetryInspectionTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RetryInspectionTaskResponse{}
+	_body, _err := client.RetryInspectionTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 启动TairCustom的主机
 //
 // @param request - StartTairKVCacheCustomInstanceRequest
@@ -15954,6 +16790,88 @@ func (client *Client) SwitchInstanceProxy(request *SwitchInstanceProxyRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &SwitchInstanceProxyResponse{}
 	_body, _err := client.SwitchInstanceProxyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 实例指定目标可用区切换
+//
+// Description:
+//
+// 当前接口仅支持云原生架构实例
+//
+// @param request - SwitchInstanceToTargetZoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SwitchInstanceToTargetZoneResponse
+func (client *Client) SwitchInstanceToTargetZoneWithOptions(request *SwitchInstanceToTargetZoneRequest, runtime *dara.RuntimeOptions) (_result *SwitchInstanceToTargetZoneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NodeId) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !dara.IsNil(request.SwitchType) {
+		query["SwitchType"] = request.SwitchType
+	}
+
+	if !dara.IsNil(request.TargetZoneId) {
+		query["TargetZoneId"] = request.TargetZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SwitchInstanceToTargetZone"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SwitchInstanceToTargetZoneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 实例指定目标可用区切换
+//
+// Description:
+//
+// 当前接口仅支持云原生架构实例
+//
+// @param request - SwitchInstanceToTargetZoneRequest
+//
+// @return SwitchInstanceToTargetZoneResponse
+func (client *Client) SwitchInstanceToTargetZone(request *SwitchInstanceToTargetZoneRequest) (_result *SwitchInstanceToTargetZoneResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SwitchInstanceToTargetZoneResponse{}
+	_body, _err := client.SwitchInstanceToTargetZoneWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

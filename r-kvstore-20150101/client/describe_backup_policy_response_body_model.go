@@ -11,6 +11,8 @@ type iDescribeBackupPolicyResponseBody interface {
 	GoString() string
 	SetAccessDeniedDetail(v *DescribeBackupPolicyResponseBodyAccessDeniedDetail) *DescribeBackupPolicyResponseBody
 	GetAccessDeniedDetail() *DescribeBackupPolicyResponseBodyAccessDeniedDetail
+	SetBackupLogStartTime(v string) *DescribeBackupPolicyResponseBody
+	GetBackupLogStartTime() *string
 	SetBackupRetentionPeriod(v string) *DescribeBackupPolicyResponseBody
 	GetBackupRetentionPeriod() *string
 	SetDbsInstance(v string) *DescribeBackupPolicyResponseBody
@@ -28,29 +30,30 @@ type iDescribeBackupPolicyResponseBody interface {
 }
 
 type DescribeBackupPolicyResponseBody struct {
-	// The following parameters are no longer used. Ignore the parameters.
+	// This parameter is deprecated. Ignore this parameter.
 	AccessDeniedDetail *DescribeBackupPolicyResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The retention period of the backup data. Unit: days.
+	BackupLogStartTime *string                                             `json:"BackupLogStartTime,omitempty" xml:"BackupLogStartTime,omitempty"`
+	// The number of days for which backup data is retained.
 	//
 	// example:
 	//
 	// 7
 	BackupRetentionPeriod *string `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	// Indicates whether the backup-as-a-service feature is enabled for the instance. Valid values:
+	// Indicates whether the backup service is enabled for the instance. Valid values:
 	//
-	// 	- **1**: The backup-as-a-service feature is enabled for the instance.
+	// 	- **1**: enabled.
 	//
-	// 	- **0**: The backup-as-a-service feature is disabled for the instance.
+	// 	- **0**: disabled.
 	//
 	// example:
 	//
 	// 0
 	DbsInstance *string `json:"DbsInstance,omitempty" xml:"DbsInstance,omitempty"`
-	// Indicates whether incremental data backup is enabled. Valid values:
+	// Indicates whether incremental backup is enabled. Valid values:
 	//
-	// 	- **1**: Incremental data backup is enabled.
+	// 	- **1**: enabled.
 	//
-	// 	- **0**: Incremental data backup is disabled.
+	// 	- **0**: disabled.
 	//
 	// example:
 	//
@@ -76,19 +79,19 @@ type DescribeBackupPolicyResponseBody struct {
 	//
 	// Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	// The time range during which the backup was created. The time follows the ISO 8601 standard in the *HH:mm*Z-*HH:mm*Z format. The time is displayed in UTC.
+	// The backup time. The time is in the <i>HH:mm</i>Z-<i>HH:mm</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 05:00Z-06:00Z
 	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
-	// The next backup time. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
+	// The next backup time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2019-03-14T05:28Z
 	PreferredNextBackupTime *string `json:"PreferredNextBackupTime,omitempty" xml:"PreferredNextBackupTime,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -106,6 +109,10 @@ func (s DescribeBackupPolicyResponseBody) GoString() string {
 
 func (s *DescribeBackupPolicyResponseBody) GetAccessDeniedDetail() *DescribeBackupPolicyResponseBodyAccessDeniedDetail {
 	return s.AccessDeniedDetail
+}
+
+func (s *DescribeBackupPolicyResponseBody) GetBackupLogStartTime() *string {
+	return s.BackupLogStartTime
 }
 
 func (s *DescribeBackupPolicyResponseBody) GetBackupRetentionPeriod() *string {
@@ -138,6 +145,11 @@ func (s *DescribeBackupPolicyResponseBody) GetRequestId() *string {
 
 func (s *DescribeBackupPolicyResponseBody) SetAccessDeniedDetail(v *DescribeBackupPolicyResponseBodyAccessDeniedDetail) *DescribeBackupPolicyResponseBody {
 	s.AccessDeniedDetail = v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetBackupLogStartTime(v string) *DescribeBackupPolicyResponseBody {
+	s.BackupLogStartTime = &v
 	return s
 }
 
@@ -186,43 +198,43 @@ func (s *DescribeBackupPolicyResponseBody) Validate() error {
 }
 
 type DescribeBackupPolicyResponseBodyAccessDeniedDetail struct {
-	// This parameter is no longer used. Ignore this parameter.
+	// Same as above.
 	//
 	// example:
 	//
 	// -
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// This parameter is no longer used. Ignore this parameter.
+	// Same as above.
 	//
 	// example:
 	//
 	// -
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// This parameter is no longer used. Ignore this parameter.
+	// Same as above.
 	//
 	// example:
 	//
 	// -
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// This parameter is no longer used. Ignore this parameter.
+	// Same as above.
 	//
 	// example:
 	//
 	// -
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// This parameter is no longer used. Ignore this parameter.
+	// Same as above.
 	//
 	// example:
 	//
 	// -
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// This parameter is no longer used. Ignore this parameter.
+	// Same as above.
 	//
 	// example:
 	//
 	// -
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
-	// This parameter is no longer used. Ignore this parameter.
+	// Same as above.
 	//
 	// example:
 	//

@@ -22,16 +22,24 @@ type iDescribeInstanceMultiVIPResponseBody interface {
 }
 
 type DescribeInstanceMultiVIPResponseBody struct {
+	// The IP address of the primary DNS server.
+	//
 	// example:
 	//
 	// r-8vb30e8n0m4nvu7tff.redis.zhangbei.rds.aliyuncs.com
-	MasterDns       *string   `json:"MasterDns,omitempty" xml:"MasterDns,omitempty"`
+	MasterDns *string `json:"MasterDns,omitempty" xml:"MasterDns,omitempty"`
+	// The list of IP addresses corresponding to all LBs of the current instance.
 	MasterDnsRecord []*string `json:"MasterDnsRecord,omitempty" xml:"MasterDnsRecord,omitempty" type:"Repeated"`
+	// The maximum number of VIPs that can be created.
+	//
 	// example:
 	//
 	// 2
-	MaxQuota     *int64                                              `json:"MaxQuota,omitempty" xml:"MaxQuota,omitempty"`
+	MaxQuota *int64 `json:"MaxQuota,omitempty" xml:"MaxQuota,omitempty"`
+	// The list of multiple LB VIPs.
 	MultiVIPList []*DescribeInstanceMultiVIPResponseBodyMultiVIPList `json:"MultiVIPList,omitempty" xml:"MultiVIPList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABAF95F6-35C1-4177-AF3A-70969EBD****
@@ -105,6 +113,8 @@ func (s *DescribeInstanceMultiVIPResponseBody) Validate() error {
 }
 
 type DescribeInstanceMultiVIPResponseBodyMultiVIPList struct {
+	// The endpoint of the instance.
+	//
 	// example:
 	//
 	// r-bp1p4pzsr2rtubcvns-conn1.redis.rds.aliyuncs.com
