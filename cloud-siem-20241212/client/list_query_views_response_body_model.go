@@ -9,6 +9,12 @@ type iListQueryViewsResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetLogProjectName(v string) *ListQueryViewsResponseBody
+	GetLogProjectName() *string
+	SetLogRegionId(v string) *ListQueryViewsResponseBody
+	GetLogRegionId() *string
+	SetLogStoreName(v string) *ListQueryViewsResponseBody
+	GetLogStoreName() *string
 	SetMaxResults(v int32) *ListQueryViewsResponseBody
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListQueryViewsResponseBody
@@ -20,13 +26,16 @@ type iListQueryViewsResponseBody interface {
 }
 
 type ListQueryViewsResponseBody struct {
-	// The maximum number of results to return per request when using the NextToken-based pagination. Valid values: 1 to 100. Default value: 50.
+	LogProjectName *string `json:"LogProjectName,omitempty" xml:"LogProjectName,omitempty"`
+	LogRegionId    *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
+	LogStoreName   *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// The maximum number of results to return when you use the NextToken-based pagination method. Valid values: 1 to 100. Default value: 50.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
@@ -50,6 +59,18 @@ func (s ListQueryViewsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ListQueryViewsResponseBody) GetLogProjectName() *string {
+	return s.LogProjectName
+}
+
+func (s *ListQueryViewsResponseBody) GetLogRegionId() *string {
+	return s.LogRegionId
+}
+
+func (s *ListQueryViewsResponseBody) GetLogStoreName() *string {
+	return s.LogStoreName
+}
+
 func (s *ListQueryViewsResponseBody) GetMaxResults() *int32 {
 	return s.MaxResults
 }
@@ -64,6 +85,21 @@ func (s *ListQueryViewsResponseBody) GetQueryViews() []*ListQueryViewsResponseBo
 
 func (s *ListQueryViewsResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *ListQueryViewsResponseBody) SetLogProjectName(v string) *ListQueryViewsResponseBody {
+	s.LogProjectName = &v
+	return s
+}
+
+func (s *ListQueryViewsResponseBody) SetLogRegionId(v string) *ListQueryViewsResponseBody {
+	s.LogRegionId = &v
+	return s
+}
+
+func (s *ListQueryViewsResponseBody) SetLogStoreName(v string) *ListQueryViewsResponseBody {
+	s.LogStoreName = &v
+	return s
 }
 
 func (s *ListQueryViewsResponseBody) SetMaxResults(v int32) *ListQueryViewsResponseBody {

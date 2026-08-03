@@ -68,23 +68,23 @@ type GetDataStorageResponseBodyData struct {
 	//
 	// 100.0
 	ColdStorageUsedCapacity *float64 `json:"ColdStorageUsedCapacity,omitempty" xml:"ColdStorageUsedCapacity,omitempty"`
-	// The storage region of user logs.
+	// The storage region of user-side logs.
 	//
 	// example:
 	//
 	// cn-shanghai
 	DataStorageRegionId *string `json:"DataStorageRegionId,omitempty" xml:"DataStorageRegionId,omitempty"`
-	// Indicates whether the storage region can be modified. By default, the storage region cannot be modified. Contact your account manager to reset the region. The region can be reset only once. Valid values:
+	// Indicates whether the storage region can be modified. By default, modification is not allowed. Contact the product manager to reset the region. The region can be reset only once. Valid values:
 	//
-	// - allow: The storage region can be modified.
+	// - allow: Modification is allowed.
 	//
-	// - deny: The storage region cannot be modified.
+	// - deny: Modification is not allowed.
 	//
 	// example:
 	//
 	// deny
 	DataStorageRegionPermission *string `json:"DataStorageRegionPermission,omitempty" xml:"DataStorageRegionPermission,omitempty"`
-	// The storage capacity purchased in the subscription scenario.
+	// The storage capacity purchased in the prepaid scenario.
 	//
 	// example:
 	//
@@ -102,13 +102,16 @@ type GetDataStorageResponseBodyData struct {
 	//
 	// {\\"purchasedHotStorageCapacity\\":1000,\\"usedHotStorageCapacity\\":4.2,\\"usedHotStorageCapacityDetail\\":{\\"ap-southeast-1\\":4.2,\\"cn-shenzhen\\":0.0,\\"cn-shanghai\\":0.0}}
 	DataStorageUsedCapacityDetail *string `json:"DataStorageUsedCapacityDetail,omitempty" xml:"DataStorageUsedCapacityDetail,omitempty"`
-	// The name of the Simple Log Service project that stores user logs.
+	// The name of the Simple Log Service (SLS) project that stores user logs.
 	//
 	// example:
 	//
 	// aliyun-cloudsiem-data-171835723111****-cn-shanghai
-	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
-	// The details of the Logstores for normalized data.
+	LogProject                   *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
+	LogProjectState              *string `json:"LogProjectState,omitempty" xml:"LogProjectState,omitempty"`
+	LogProjectStateChangeAllowed *bool   `json:"LogProjectStateChangeAllowed,omitempty" xml:"LogProjectStateChangeAllowed,omitempty"`
+	LogServiceDisabled           *bool   `json:"LogServiceDisabled,omitempty" xml:"LogServiceDisabled,omitempty"`
+	// The details of Logstores for normalized data.
 	NormalizationLogStores []*GetDataStorageResponseBodyDataNormalizationLogStores `json:"NormalizationLogStores,omitempty" xml:"NormalizationLogStores,omitempty" type:"Repeated"`
 	// The details of normalized datasets.
 	NormalizationLogViews []*GetDataStorageResponseBodyDataNormalizationLogViews `json:"NormalizationLogViews,omitempty" xml:"NormalizationLogViews,omitempty" type:"Repeated"`
@@ -116,7 +119,7 @@ type GetDataStorageResponseBodyData struct {
 	RecordLogStores []*GetDataStorageResponseBodyDataRecordLogStores `json:"RecordLogStores,omitempty" xml:"RecordLogStores,omitempty" type:"Repeated"`
 	// The details of raw log storage in Security Center.
 	SasLogStores []*GetDataStorageResponseBodyDataSasLogStores `json:"SasLogStores,omitempty" xml:"SasLogStores,omitempty" type:"Repeated"`
-	// The list of legacy SIEM V1 Logstores.
+	// The list of SIEM V1 legacy Logstores.
 	UnusedLogStores []*GetDataStorageResponseBodyDataUnusedLogStores `json:"UnusedLogStores,omitempty" xml:"UnusedLogStores,omitempty" type:"Repeated"`
 }
 
@@ -154,6 +157,18 @@ func (s *GetDataStorageResponseBodyData) GetDataStorageUsedCapacityDetail() *str
 
 func (s *GetDataStorageResponseBodyData) GetLogProject() *string {
 	return s.LogProject
+}
+
+func (s *GetDataStorageResponseBodyData) GetLogProjectState() *string {
+	return s.LogProjectState
+}
+
+func (s *GetDataStorageResponseBodyData) GetLogProjectStateChangeAllowed() *bool {
+	return s.LogProjectStateChangeAllowed
+}
+
+func (s *GetDataStorageResponseBodyData) GetLogServiceDisabled() *bool {
+	return s.LogServiceDisabled
 }
 
 func (s *GetDataStorageResponseBodyData) GetNormalizationLogStores() []*GetDataStorageResponseBodyDataNormalizationLogStores {
@@ -208,6 +223,21 @@ func (s *GetDataStorageResponseBodyData) SetDataStorageUsedCapacityDetail(v stri
 
 func (s *GetDataStorageResponseBodyData) SetLogProject(v string) *GetDataStorageResponseBodyData {
 	s.LogProject = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyData) SetLogProjectState(v string) *GetDataStorageResponseBodyData {
+	s.LogProjectState = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyData) SetLogProjectStateChangeAllowed(v bool) *GetDataStorageResponseBodyData {
+	s.LogProjectStateChangeAllowed = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyData) SetLogServiceDisabled(v bool) *GetDataStorageResponseBodyData {
+	s.LogServiceDisabled = &v
 	return s
 }
 
@@ -298,7 +328,7 @@ type GetDataStorageResponseBodyDataNormalizationLogStores struct {
 	//
 	// 180
 	LogStoreTtl *int32 `json:"LogStoreTtl,omitempty" xml:"LogStoreTtl,omitempty"`
-	// The hot storage capacity used.
+	// The hot storage used capacity.
 	//
 	// example:
 	//
@@ -487,13 +517,13 @@ type GetDataStorageResponseBodyDataRecordLogStores struct {
 	//
 	// alert-record
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The time-to-live (TTL) of the Logstore.
+	// The Logstore TTL.
 	//
 	// example:
 	//
 	// 90
 	LogStoreTtl *int32 `json:"LogStoreTtl,omitempty" xml:"LogStoreTtl,omitempty"`
-	// The used capacity of the Logstore.
+	// The Logstore used capacity.
 	//
 	// example:
 	//
@@ -549,15 +579,15 @@ type GetDataStorageResponseBodyDataSasLogStores struct {
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
 	// The group to which the log belongs. Valid values:
 	//
-	// - host: host logs.
+	// - host: Host logs.
 	//
-	// - security: security logs.
+	// - security: Security logs.
 	//
 	// example:
 	//
 	// host
 	LogDeliveryGroup *string `json:"LogDeliveryGroup,omitempty" xml:"LogDeliveryGroup,omitempty"`
-	// Indicates whether log delivery can be toggled. Log delivery cannot be enabled if the service is not purchased. Valid values:
+	// Indicates whether you are allowed to toggle the log delivery switch. Log delivery cannot be performed if the service is not purchased. Valid values:
 	//
 	// - allow: Allowed.
 	//
@@ -569,9 +599,9 @@ type GetDataStorageResponseBodyDataSasLogStores struct {
 	LogDeliveryPermission *string `json:"LogDeliveryPermission,omitempty" xml:"LogDeliveryPermission,omitempty"`
 	// The log delivery status. Valid values:
 	//
-	// - enable: log delivery is enabled.
+	// - enable: Log delivery is enabled.
 	//
-	// - disable: log delivery is disabled.
+	// - disable: Log delivery is disabled.
 	//
 	// example:
 	//
@@ -589,7 +619,7 @@ type GetDataStorageResponseBodyDataSasLogStores struct {
 	//
 	// Process Snapshot
 	LogName *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
-	// The default log query conditions for the log. When multiple logs are stored in the same Logstore, log query conditions are required to query individual logs.
+	// The default log query conditions for the log. When multiple logs are stored in the same Logstore, query conditions are required to perform a log query for a specific log.
 	//
 	// example:
 	//
@@ -617,7 +647,7 @@ type GetDataStorageResponseBodyDataSasLogStores struct {
 	//
 	// 180
 	LogStoreTtl *int32 `json:"LogStoreTtl,omitempty" xml:"LogStoreTtl,omitempty"`
-	// The hot storage capacity used.
+	// The hot storage used capacity.
 	//
 	// example:
 	//
@@ -749,7 +779,7 @@ type GetDataStorageResponseBodyDataUnusedLogStores struct {
 	//
 	// 180
 	LogStoreTtl *int32 `json:"LogStoreTtl,omitempty" xml:"LogStoreTtl,omitempty"`
-	// The hot storage capacity used.
+	// The hot storage used capacity.
 	//
 	// example:
 	//

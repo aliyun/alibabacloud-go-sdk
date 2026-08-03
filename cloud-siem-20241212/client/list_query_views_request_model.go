@@ -38,13 +38,13 @@ type ListQueryViewsRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of results to return per request when using the NextToken-based pagination. Valid values: 1 to 100. Default value: 50.
+	// The maximum number of results to return when you use the NextToken-based pagination method. Valid values: 1 to 100. Default value: 50.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
@@ -80,9 +80,9 @@ type ListQueryViewsRequest struct {
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 	// The view type.
 	//
-	// - 0: the view of the current Alibaba Cloud account.
+	// - 0: The view of the current Alibaba Cloud account.
 	//
-	// - 1: the view of all accounts in the enterprise.
+	// - 1: The view of all accounts in the enterprise.
 	//
 	// example:
 	//

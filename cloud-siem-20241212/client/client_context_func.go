@@ -536,6 +536,10 @@ func (client *Client) CreateDetectionRuleWithContext(ctx context.Context, reques
 		body["DetectionRuleType"] = request.DetectionRuleType
 	}
 
+	if !dara.IsNil(request.DetectionRules) {
+		body["DetectionRules"] = request.DetectionRules
+	}
+
 	if !dara.IsNil(request.EntityMappings) {
 		body["EntityMappings"] = request.EntityMappings
 	}
@@ -4078,6 +4082,10 @@ func (client *Client) ListIncidentsWithContext(ctx context.Context, tmpReq *List
 		body["AlertUuid"] = request.AlertUuid
 	}
 
+	if !dara.IsNil(request.DetectionRuleIds) {
+		body["DetectionRuleIds"] = request.DetectionRuleIds
+	}
+
 	if !dara.IsNil(request.EndTime) {
 		body["EndTime"] = request.EndTime
 	}
@@ -5024,7 +5032,7 @@ func (client *Client) ListProductsWithContext(ctx context.Context, tmpReq *ListP
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListQueryViewsRequest
 //

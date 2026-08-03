@@ -30,15 +30,15 @@ type GetDataStorageRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The region where the threat analysis data management center is located. Specify the management center region based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: the asset is in the Chinese mainland.
+	// - cn-hangzhou: Your assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: the asset is outside China.
+	// - ap-southeast-1: Your assets are located outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the member to which the administrator switches the view.
+	// The user ID that the administrator uses to switch to another member\\"s perspective.
 	//
 	// example:
 	//

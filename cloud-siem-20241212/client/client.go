@@ -695,6 +695,10 @@ func (client *Client) CreateDetectionRuleWithOptions(request *CreateDetectionRul
 		body["DetectionRuleType"] = request.DetectionRuleType
 	}
 
+	if !dara.IsNil(request.DetectionRules) {
+		body["DetectionRules"] = request.DetectionRules
+	}
+
 	if !dara.IsNil(request.EntityMappings) {
 		body["EntityMappings"] = request.EntityMappings
 	}
@@ -5251,6 +5255,10 @@ func (client *Client) ListIncidentsWithOptions(tmpReq *ListIncidentsRequest, run
 		body["AlertUuid"] = request.AlertUuid
 	}
 
+	if !dara.IsNil(request.DetectionRuleIds) {
+		body["DetectionRuleIds"] = request.DetectionRuleIds
+	}
+
 	if !dara.IsNil(request.EndTime) {
 		body["EndTime"] = request.EndTime
 	}
@@ -6465,7 +6473,7 @@ func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListP
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListQueryViewsRequest
 //
@@ -6543,7 +6551,7 @@ func (client *Client) ListQueryViewsWithOptions(request *ListQueryViewsRequest, 
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListQueryViewsRequest
 //

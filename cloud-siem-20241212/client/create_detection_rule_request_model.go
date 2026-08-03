@@ -51,6 +51,8 @@ type iCreateDetectionRuleRequest interface {
 	GetDetectionRuleTemplateVersion() *string
 	SetDetectionRuleType(v string) *CreateDetectionRuleRequest
 	GetDetectionRuleType() *string
+	SetDetectionRules(v string) *CreateDetectionRuleRequest
+	GetDetectionRules() *string
 	SetEntityMappings(v string) *CreateDetectionRuleRequest
 	GetEntityMappings() *string
 	SetIncidentAggregationExpression(v string) *CreateDetectionRuleRequest
@@ -86,14 +88,14 @@ type iCreateDetectionRuleRequest interface {
 }
 
 type CreateDetectionRuleRequest struct {
-	// The ATT\\&CK stage of the alert.
+	// The alert ATT&CK technique.
 	//
 	// example:
 	//
 	// Discovery
 	AlertAttCk        *string `json:"AlertAttCk,omitempty" xml:"AlertAttCk,omitempty"`
 	AlertAttCkMapping *string `json:"AlertAttCkMapping,omitempty" xml:"AlertAttCkMapping,omitempty"`
-	// The alert description. You can use $$ to reference fields from the query output.
+	// The alert description. You can use $$ to reference query output fields.
 	//
 	// example:
 	//
@@ -101,58 +103,54 @@ type CreateDetectionRuleRequest struct {
 	AlertDescription *string `json:"AlertDescription,omitempty" xml:"AlertDescription,omitempty"`
 	// The threat level of the alert. Valid values:
 	//
-	// - 5: critical.
+	// - 5: Critical.
 	//
-	// - 4: important.
+	// - 4: High.
 	//
-	// - 3: medium.
+	// - 3: Medium.
 	//
-	// - 2: low.
+	// - 2: Low.
 	//
-	// - 1: informational.
-	//
-	// This parameter is required.
+	// - 1: Informational.
 	//
 	// example:
 	//
 	// 1
 	AlertLevel        *string `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
 	AlertLevelMapping *string `json:"AlertLevelMapping,omitempty" xml:"AlertLevelMapping,omitempty"`
-	// The alert name. You can use $$ to reference fields from the query output.
+	// The alert name. You can use $$ to reference query output fields.
 	//
 	// example:
 	//
 	// Detected high-frequency multi-type network attacks from $src_ip$
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	// The ID of the alert template for the detection rule. Valid values:
+	// The ID of the detection rule alert template. Valid values:
 	//
 	// - ALERT_ACTIVITY: other alerts.
 	//
-	// - EDR_ALERT_ACTIVITY: Endpoint Detection and Response (EDR) alerts.
+	// - EDR_ALERT_ACTIVITY: endpoint detection and response alerts.
 	//
 	// - FIREWALL_ALERT_ACTIVITY: firewall alerts.
 	//
-	// - WAF_ALERT_ACTIVITY: Web Application Firewall (WAF) alerts.
-	//
-	// This parameter is required.
+	// - WAF_ALERT_ACTIVITY: web application firewall alerts.
 	//
 	// example:
 	//
 	// ALERT_ACTIVITY
 	AlertSchemaId *string `json:"AlertSchemaId,omitempty" xml:"AlertSchemaId,omitempty"`
-	// The tactic phase of the alert.
+	// The alert tactic stage.
 	//
 	// example:
 	//
 	// TA0042
 	AlertTacticId *string `json:"AlertTacticId,omitempty" xml:"AlertTacticId,omitempty"`
-	// The count for the alert threshold.
+	// The alert threshold count.
 	//
 	// example:
 	//
 	// 10
 	AlertThresholdCount *int32 `json:"AlertThresholdCount,omitempty" xml:"AlertThresholdCount,omitempty"`
-	// The list of fields for the alert threshold. Separate multiple fields with commas.
+	// The list of alert threshold fields, separated by commas (,).
 	//
 	// example:
 	//
@@ -164,9 +162,7 @@ type CreateDetectionRuleRequest struct {
 	//
 	// 5m
 	AlertThresholdPeriod *string `json:"AlertThresholdPeriod,omitempty" xml:"AlertThresholdPeriod,omitempty"`
-	// The alert type.
-	//
-	// This parameter is required.
+	// The Alarm Metric of the alerting rule.
 	//
 	// example:
 	//
@@ -223,8 +219,6 @@ type CreateDetectionRuleRequest struct {
 	DetectionRuleDescription *string `json:"DetectionRuleDescription,omitempty" xml:"DetectionRuleDescription,omitempty"`
 	// The name of the detection rule.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// dr-ha1i09ob3zmqrs85****
@@ -249,25 +243,24 @@ type CreateDetectionRuleRequest struct {
 	DetectionRuleTemplateVersion *string `json:"DetectionRuleTemplateVersion,omitempty" xml:"DetectionRuleTemplateVersion,omitempty"`
 	// The type of the detection rule. Valid values:
 	//
-	// - preset: predefined detection rule.
+	// - preset: preset detection rule.
 	//
 	// - custom: custom detection rule.
 	//
 	// - custom_template: rule template.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// custom
 	DetectionRuleType *string `json:"DetectionRuleType,omitempty" xml:"DetectionRuleType,omitempty"`
+	DetectionRules    *string `json:"DetectionRules,omitempty" xml:"DetectionRules,omitempty"`
 	// The entity mapping configuration.
 	//
 	// example:
 	//
 	// [{\\"NormalizationSchemaId\\":\\"host\\",\\"NormalizationFieldMappings\\":[{\\"NormalizationFieldName\\":\\"uuid\\",\\"MappingFieldName\\":\\"host\\",\\"NormalizationFieldType\\":\\"varchar\\"}]}]
 	EntityMappings *string `json:"EntityMappings,omitempty" xml:"EntityMappings,omitempty"`
-	// The configuration of the event aggregation period.
+	// The event aggregation period configuration.
 	//
 	// example:
 	//
@@ -275,15 +268,15 @@ type CreateDetectionRuleRequest struct {
 	IncidentAggregationExpression *string `json:"IncidentAggregationExpression,omitempty" xml:"IncidentAggregationExpression,omitempty"`
 	// The event aggregation type. Valid values:
 	//
-	// - none: Events are not generated.
+	// - none: No event is generated.
 	//
-	// - graph_compute: graph computing (supported by predefined rules).
+	// - graph_compute: Graph computing. This value is supported by predefined rules.
 	//
-	// - expert: expert rules.
+	// - expert: Expert rule.
 	//
-	// - passthrough: Alerts are passed through (one-to-one).
+	// - passthrough: Alerting pass-through (one-to-one).
 	//
-	// - window: Similar alerts are aggregated (window).
+	// - window: Same-type aggregation (window).
 	//
 	// example:
 	//
@@ -307,13 +300,11 @@ type CreateDetectionRuleRequest struct {
 	LogCategoryId *string `json:"LogCategoryId,omitempty" xml:"LogCategoryId,omitempty"`
 	// The ID of the log normalization schema.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// API_RISK_ACTIVITY
 	LogSchemaId *string `json:"LogSchemaId,omitempty" xml:"LogSchemaId,omitempty"`
-	// The custom parameters for the playbook.
+	// The custom parameters of the playbook.
 	//
 	// example:
 	//
@@ -333,41 +324,41 @@ type CreateDetectionRuleRequest struct {
 	//
 	// system_aliyun_clb_process_book
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	// The region where the Data Management center of Threat Analysis is located. Select a region based on the region where your assets are located. Valid values:
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// - cn-hangzhou: Your assets are in the Chinese mainland.
+	// - cn-hangzhou: Your assets reside in the Chinese mainland.
 	//
-	// - ap-southeast-1: Your assets are in a region outside China.
+	// - ap-southeast-1: Your assets reside outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID that an administrator uses to switch to the perspective of another member.
+	// The ID of the member to which the administrator switches the view.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The start time for scheduling. This is a 13-digit UNIX timestamp.
+	// The scheduling start time. The value is a 13-digit UNIX timestamp.
 	//
 	// example:
 	//
 	// 1733269771123
 	ScheduleBeginTime *int64 `json:"ScheduleBeginTime,omitempty" xml:"ScheduleBeginTime,omitempty"`
-	// The cron expression for scheduling. This parameter is required if you set ScheduleType to cron.
+	// The scheduling cron expression. This parameter is required when ScheduleType is set to cron.
 	//
 	// example:
 	//
 	// 0/5 	- 	- 	- *
 	ScheduleExpression *string `json:"ScheduleExpression,omitempty" xml:"ScheduleExpression,omitempty"`
-	// The maximum number of retries after a timeout. Valid values: 1 to 100.
+	// The maximum number of retries upon timeout. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 1
 	ScheduleMaxRetries *int32 `json:"ScheduleMaxRetries,omitempty" xml:"ScheduleMaxRetries,omitempty"`
-	// The maximum timeout period in seconds. Valid values: 60 to 1800.
+	// The maximum timeout period, in seconds. Valid values: 60 to 1800.
 	//
 	// example:
 	//
@@ -481,6 +472,10 @@ func (s *CreateDetectionRuleRequest) GetDetectionRuleTemplateVersion() *string {
 
 func (s *CreateDetectionRuleRequest) GetDetectionRuleType() *string {
 	return s.DetectionRuleType
+}
+
+func (s *CreateDetectionRuleRequest) GetDetectionRules() *string {
+	return s.DetectionRules
 }
 
 func (s *CreateDetectionRuleRequest) GetEntityMappings() *string {
@@ -649,6 +644,11 @@ func (s *CreateDetectionRuleRequest) SetDetectionRuleTemplateVersion(v string) *
 
 func (s *CreateDetectionRuleRequest) SetDetectionRuleType(v string) *CreateDetectionRuleRequest {
 	s.DetectionRuleType = &v
+	return s
+}
+
+func (s *CreateDetectionRuleRequest) SetDetectionRules(v string) *CreateDetectionRuleRequest {
+	s.DetectionRules = &v
 	return s
 }
 

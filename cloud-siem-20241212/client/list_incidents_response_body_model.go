@@ -165,6 +165,7 @@ type ListIncidentsResponseBodyIncidents struct {
 	//
 	// dr-qo5ww6ux0uc28*****
 	DetectionRuleId     *string `json:"DetectionRuleId,omitempty" xml:"DetectionRuleId,omitempty"`
+	DetectionRuleName   *string `json:"DetectionRuleName,omitempty" xml:"DetectionRuleName,omitempty"`
 	EntityInfos         *string `json:"EntityInfos,omitempty" xml:"EntityInfos,omitempty"`
 	IncidentDescription *string `json:"IncidentDescription,omitempty" xml:"IncidentDescription,omitempty"`
 	// The event name.
@@ -277,6 +278,10 @@ func (s *ListIncidentsResponseBodyIncidents) GetDetectionRuleId() *string {
 	return s.DetectionRuleId
 }
 
+func (s *ListIncidentsResponseBodyIncidents) GetDetectionRuleName() *string {
+	return s.DetectionRuleName
+}
+
 func (s *ListIncidentsResponseBodyIncidents) GetEntityInfos() *string {
 	return s.EntityInfos
 }
@@ -346,6 +351,11 @@ func (s *ListIncidentsResponseBodyIncidents) SetCreateTime(v int64) *ListInciden
 
 func (s *ListIncidentsResponseBodyIncidents) SetDetectionRuleId(v string) *ListIncidentsResponseBodyIncidents {
 	s.DetectionRuleId = &v
+	return s
+}
+
+func (s *ListIncidentsResponseBodyIncidents) SetDetectionRuleName(v string) *ListIncidentsResponseBodyIncidents {
+	s.DetectionRuleName = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iListIncidentsShrinkRequest interface {
 	GoString() string
 	SetAlertUuid(v string) *ListIncidentsShrinkRequest
 	GetAlertUuid() *string
+	SetDetectionRuleIds(v []*string) *ListIncidentsShrinkRequest
+	GetDetectionRuleIds() []*string
 	SetEndTime(v int64) *ListIncidentsShrinkRequest
 	GetEndTime() *int64
 	SetIncidentName(v string) *ListIncidentsShrinkRequest
@@ -61,7 +63,8 @@ type ListIncidentsShrinkRequest struct {
 	// example:
 	//
 	// sas_71e24437d2797ce8fc59692905a4****
-	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
+	AlertUuid        *string   `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
+	DetectionRuleIds []*string `json:"DetectionRuleIds,omitempty" xml:"DetectionRuleIds,omitempty" type:"Repeated"`
 	// The end time as a UNIX timestamp in milliseconds (ms).
 	//
 	// example:
@@ -234,6 +237,10 @@ func (s *ListIncidentsShrinkRequest) GetAlertUuid() *string {
 	return s.AlertUuid
 }
 
+func (s *ListIncidentsShrinkRequest) GetDetectionRuleIds() []*string {
+	return s.DetectionRuleIds
+}
+
 func (s *ListIncidentsShrinkRequest) GetEndTime() *int64 {
 	return s.EndTime
 }
@@ -320,6 +327,11 @@ func (s *ListIncidentsShrinkRequest) GetThreatLevel() []*string {
 
 func (s *ListIncidentsShrinkRequest) SetAlertUuid(v string) *ListIncidentsShrinkRequest {
 	s.AlertUuid = &v
+	return s
+}
+
+func (s *ListIncidentsShrinkRequest) SetDetectionRuleIds(v []*string) *ListIncidentsShrinkRequest {
+	s.DetectionRuleIds = v
 	return s
 }
 
