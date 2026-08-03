@@ -416,6 +416,68 @@ func (client *Client) BatchUpdateDataLakePartitions(request *BatchUpdateDataLake
 
 // Summary:
 //
+// CheckDataAgentMemoryConfig - Queries the memory generation and usage configuration of a DataAgent.
+//
+// @param request - CheckDataAgentMemoryConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckDataAgentMemoryConfigResponse
+func (client *Client) CheckDataAgentMemoryConfigWithOptions(request *CheckDataAgentMemoryConfigRequest, runtime *dara.RuntimeOptions) (_result *CheckDataAgentMemoryConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckDataAgentMemoryConfig"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckDataAgentMemoryConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// CheckDataAgentMemoryConfig - Queries the memory generation and usage configuration of a DataAgent.
+//
+// @param request - CheckDataAgentMemoryConfigRequest
+//
+// @return CheckDataAgentMemoryConfigResponse
+func (client *Client) CheckDataAgentMemoryConfig(request *CheckDataAgentMemoryConfigRequest) (_result *CheckDataAgentMemoryConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CheckDataAgentMemoryConfigResponse{}
+	_body, _err := client.CheckDataAgentMemoryConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Update an Airflow instance\\"s custom configuration
 //
 // Description:
@@ -491,6 +553,76 @@ func (client *Client) ConfigAirflow(request *ConfigAirflowRequest) (_result *Con
 	runtime := &dara.RuntimeOptions{}
 	_result = &ConfigAirflowResponse{}
 	_body, _err := client.ConfigAirflowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # ConfigDataAgentMemory
+//
+// @param request - ConfigDataAgentMemoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigDataAgentMemoryResponse
+func (client *Client) ConfigDataAgentMemoryWithOptions(request *ConfigDataAgentMemoryRequest, runtime *dara.RuntimeOptions) (_result *ConfigDataAgentMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.Enabled) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !dara.IsNil(request.RecallEnabled) {
+		query["RecallEnabled"] = request.RecallEnabled
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfigDataAgentMemory"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfigDataAgentMemoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ConfigDataAgentMemory
+//
+// @param request - ConfigDataAgentMemoryRequest
+//
+// @return ConfigDataAgentMemoryResponse
+func (client *Client) ConfigDataAgentMemory(request *ConfigDataAgentMemoryRequest) (_result *ConfigDataAgentMemoryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ConfigDataAgentMemoryResponse{}
+	_body, _err := client.ConfigDataAgentMemoryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1903,6 +2035,72 @@ func (client *Client) DeleteDataAgentKnowledgeBase(request *DeleteDataAgentKnowl
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteDataAgentKnowledgeBaseResponse{}
 	_body, _err := client.DeleteDataAgentKnowledgeBaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes the memory of a DataAgent.
+//
+// @param request - DeleteDataAgentMemoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataAgentMemoryResponse
+func (client *Client) DeleteDataAgentMemoryWithOptions(request *DeleteDataAgentMemoryRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataAgentMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.Uuid) {
+		query["Uuid"] = request.Uuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDataAgentMemory"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDataAgentMemoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes the memory of a DataAgent.
+//
+// @param request - DeleteDataAgentMemoryRequest
+//
+// @return DeleteDataAgentMemoryResponse
+func (client *Client) DeleteDataAgentMemory(request *DeleteDataAgentMemoryRequest) (_result *DeleteDataAgentMemoryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteDataAgentMemoryResponse{}
+	_body, _err := client.DeleteDataAgentMemoryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4889,6 +5087,100 @@ func (client *Client) ListDataAgentAccuracyTestTasks(request *ListDataAgentAccur
 
 // Summary:
 //
+// Retrieves the DataAgent memory list (up to 50 memories per RAM user).
+//
+// @param request - ListDataAgentMemoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataAgentMemoryResponse
+func (client *Client) ListDataAgentMemoryWithOptions(request *ListDataAgentMemoryRequest, runtime *dara.RuntimeOptions) (_result *ListDataAgentMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ContentPattern) {
+		query["ContentPattern"] = request.ContentPattern
+	}
+
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.FromId) {
+		query["FromId"] = request.FromId
+	}
+
+	if !dara.IsNil(request.MemFrom) {
+		query["MemFrom"] = request.MemFrom
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.QueryAll) {
+		query["QueryAll"] = request.QueryAll
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataAgentMemory"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataAgentMemoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the DataAgent memory list (up to 50 memories per RAM user).
+//
+// @param request - ListDataAgentMemoryRequest
+//
+// @return ListDataAgentMemoryResponse
+func (client *Client) ListDataAgentMemory(request *ListDataAgentMemoryRequest) (_result *ListDataAgentMemoryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDataAgentMemoryResponse{}
+	_body, _err := client.ListDataAgentMemoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the list of historical session descriptions for a Data Agent.
 //
 // @param request - ListDataAgentSessionRequest
@@ -4991,7 +5283,7 @@ func (client *Client) ListDataAgentSession(request *ListDataAgentSessionRequest)
 
 // Summary:
 //
-// Retrieves the collaborative workspaces under the primary account with pagination.
+// Retrieves the workspaces under the primary account with pagination.
 //
 // @param request - ListDataAgentWorkspaceRequest
 //
@@ -5067,7 +5359,7 @@ func (client *Client) ListDataAgentWorkspaceWithOptions(request *ListDataAgentWo
 
 // Summary:
 //
-// Retrieves the collaborative workspaces under the primary account with pagination.
+// Retrieves the workspaces under the primary account with pagination.
 //
 // @param request - ListDataAgentWorkspaceRequest
 //
@@ -7914,6 +8206,84 @@ func (client *Client) UpdateDataAgentAccuracyTest(request *UpdateDataAgentAccura
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateDataAgentAccuracyTestResponse{}
 	_body, _err := client.UpdateDataAgentAccuracyTestWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the memory of a DataAgent.
+//
+// @param request - UpdateDataAgentMemoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataAgentMemoryResponse
+func (client *Client) UpdateDataAgentMemoryWithOptions(request *UpdateDataAgentMemoryRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataAgentMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Content) {
+		query["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.FromId) {
+		query["FromId"] = request.FromId
+	}
+
+	if !dara.IsNil(request.MemFrom) {
+		query["MemFrom"] = request.MemFrom
+	}
+
+	if !dara.IsNil(request.Uuid) {
+		query["Uuid"] = request.Uuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDataAgentMemory"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDataAgentMemoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the memory of a DataAgent.
+//
+// @param request - UpdateDataAgentMemoryRequest
+//
+// @return UpdateDataAgentMemoryResponse
+func (client *Client) UpdateDataAgentMemory(request *UpdateDataAgentMemoryRequest) (_result *UpdateDataAgentMemoryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateDataAgentMemoryResponse{}
+	_body, _err := client.UpdateDataAgentMemoryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

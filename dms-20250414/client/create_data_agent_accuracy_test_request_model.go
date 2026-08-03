@@ -46,12 +46,14 @@ type CreateDataAgentAccuracyTestRequest struct {
 	//
 	// ca-xxxxxxxxxxxxxxxxxxxx
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
-	// The data source. We recommend that you configure this in the custom agent.
+	// Deprecated.
 	//
 	// example:
 	//
 	// null
 	Dataset *string `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
+	// The data source. We recommend that you configure this in the custom agent.
+	//
 	// example:
 	//
 	// [{"isInternal":"N","TableIds":["51***70","51***71"],"DataSourceType":"database","Database":"internal_data_employees","DmsInstanceId":"27***5","DmsDatabaseId":"71***04","Tables":["employees","salaries"],"FileId":"rm-

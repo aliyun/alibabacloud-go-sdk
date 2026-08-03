@@ -46,7 +46,7 @@ type ListDataAgentWorkspaceResponseBody struct {
 	//
 	// nu use
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token information.
+	// The pagination token.
 	//
 	// example:
 	//
@@ -242,11 +242,11 @@ func (s *ListDataAgentWorkspaceResponseBodyData) Validate() error {
 }
 
 type ListDataAgentWorkspaceResponseBodyDataContent struct {
-	// The creation time of the workspace. This value is a UNIX timestamp in seconds.
+	// The creation time of the workspace, in UNIX timestamp format (milliseconds).
 	//
 	// example:
 	//
-	// 1765960516
+	// 1765960516000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The UID of the workspace creator.
 	//
@@ -259,13 +259,18 @@ type ListDataAgentWorkspaceResponseBodyDataContent struct {
 	// example:
 	//
 	// space for test
-	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	IsSessionShareEnabled *bool   `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
-	// The most recent modification time of the workspace. This value is a UNIX timestamp in seconds.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether session sharing is enabled for the workspace.
 	//
 	// example:
 	//
-	// 1765961516
+	// true
+	IsSessionShareEnabled *bool `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
+	// The most recent modification time of the workspace, in UNIX timestamp format (milliseconds).
+	//
+	// example:
+	//
+	// 1765961516000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The role name of the user in the workspace.
 	//
@@ -278,8 +283,13 @@ type ListDataAgentWorkspaceResponseBodyDataContent struct {
 	// example:
 	//
 	// 11
-	TotalMember *int64  `json:"TotalMember,omitempty" xml:"TotalMember,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	TotalMember *int64 `json:"TotalMember,omitempty" xml:"TotalMember,omitempty"`
+	// The workspace type.
+	//
+	// example:
+	//
+	// personal
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The workspace ID.
 	//
 	// example:

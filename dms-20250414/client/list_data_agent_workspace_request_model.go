@@ -42,7 +42,7 @@ type ListDataAgentWorkspaceRequest struct {
 	//
 	// no use
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token information.
+	// The pagination token.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type ListDataAgentWorkspaceRequest struct {
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The name of the field by which to sort.
+	// The field name used for sorting.
 	//
 	// example:
 	//
 	// CreateTime
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number to start from.
+	// The page number.
 	//
 	// This parameter is required.
 	//
