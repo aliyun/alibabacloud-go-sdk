@@ -18,7 +18,7 @@ type iDeleteTopicRequest interface {
 }
 
 type DeleteTopicRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DeleteTopicRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the topic.
+	// The topic name.
 	//
 	// This parameter is required.
 	//

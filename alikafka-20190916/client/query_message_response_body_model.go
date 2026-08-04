@@ -22,19 +22,19 @@ type iQueryMessageResponseBody interface {
 }
 
 type QueryMessageResponseBody struct {
-	// The return code. A value of 200 indicates success.
+	// The returned code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return message.
+	// The returned message.
 	//
 	// example:
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The query message results.
+	// The query results of messages.
 	MessageList []*QueryMessageResponseBodyMessageList `json:"MessageList,omitempty" xml:"MessageList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -42,7 +42,7 @@ type QueryMessageResponseBody struct {
 	//
 	// ABA4A7FD-E10F-45C7-9774-A5236015****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the call was successful. Valid values:
 	//
 	// - **true**: The call was successful.
 	//
@@ -121,13 +121,13 @@ func (s *QueryMessageResponseBody) Validate() error {
 }
 
 type QueryMessageResponseBodyMessageList struct {
-	// The chaincode checksum.
+	// The checksum value.
 	//
 	// example:
 	//
 	// 0
 	Checksum *int64 `json:"Checksum,omitempty" xml:"Checksum,omitempty"`
-	// The message key.
+	// The key of the message.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type QueryMessageResponseBodyMessageList struct {
 	//
 	// 20
 	SerializedValueSize *int32 `json:"SerializedValueSize,omitempty" xml:"SerializedValueSize,omitempty"`
-	// The message creation time. Represented as a UNIX timestamp. Unit: milliseconds.
+	// The message creation time. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -181,9 +181,12 @@ type QueryMessageResponseBodyMessageList struct {
 	//
 	// dqc_test2
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// The size of the truncated key message. Value: bytes.
+	// The size of the truncated key message. Unit: bytes.
 	//
-	// > Each queried message displays up to 1 KB of content; content exceeding this limit will be automatically truncated. [Learn more](https://help.aliyun.com/document_detail/113172.html).
+	//
+	// > Each queried message displays a maximum of 1 KB of content. Content that exceeds 1 KB is automatically truncated.
+	//
+	// [For more information, refer to the documentation](https://help.aliyun.com/document_detail/113172.html).
 	//
 	// example:
 	//
@@ -191,13 +194,15 @@ type QueryMessageResponseBodyMessageList struct {
 	TruncatedKeySize *int32 `json:"TruncatedKeySize,omitempty" xml:"TruncatedKeySize,omitempty"`
 	// The size of the truncated value message. Unit: bytes.
 	//
-	// > Each queried message displays up to 1 KB of content; content exceeding this limit will be automatically truncated. [Learn more](https://help.aliyun.com/document_detail/113172.html).
+	// > Each queried message displays a maximum of 1 KB of content. Content that exceeds 1 KB is automatically truncated.
+	//
+	// [For more information, refer to the documentation](https://help.aliyun.com/document_detail/113172.html).
 	//
 	// example:
 	//
 	// 0
 	TruncatedValueSize *int32 `json:"TruncatedValueSize,omitempty" xml:"TruncatedValueSize,omitempty"`
-	// The message value.
+	// The value of the message.
 	//
 	// example:
 	//

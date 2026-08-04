@@ -22,7 +22,7 @@ type iGetTopicListRequest interface {
 }
 
 type GetTopicListRequest struct {
-	// The number of the page to return. Default value: 1.
+	// The current page number. Default value: 1.
 	//
 	// example:
 	//
@@ -36,19 +36,19 @@ type GetTopicListRequest struct {
 	//
 	// alikafka_pre-cn-0pp1954n****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries to return on each page. Default value: 10.
+	// The page size. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the instance resides.
+	// The region ID of the instance to which the topic belongs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the topic whose information you want to query.
+	// The name of the topic whose information you want to retrieve.
 	//
 	// example:
 	//

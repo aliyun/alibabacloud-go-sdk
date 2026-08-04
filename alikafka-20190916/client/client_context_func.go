@@ -67,7 +67,65 @@ func (client *Client) AddUserDefinedSgWithContext(ctx context.Context, tmpReq *A
 
 // Summary:
 //
-// Moves a resource to a different resource group.
+// 删除
+//
+// @param tmpReq - BatchDeleteTopicsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchDeleteTopicsResponse
+func (client *Client) BatchDeleteTopicsWithContext(ctx context.Context, tmpReq *BatchDeleteTopicsRequest, runtime *dara.RuntimeOptions) (_result *BatchDeleteTopicsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &BatchDeleteTopicsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Topics) {
+		request.TopicsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Topics, dara.String("Topics"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TopicsShrink) {
+		query["Topics"] = request.TopicsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchDeleteTopics"),
+		Version:     dara.String("2019-09-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchDeleteTopicsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Transfers a resource to a different resource group.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -175,7 +233,7 @@ func (client *Client) ConvertPostPayOrderWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// This operation is used to create an access control list (ACL).
+// Creates an access control list (ACL).
 //
 // @param request - CreateAclRequest
 //
@@ -255,7 +313,7 @@ func (client *Client) CreateAclWithContext(ctx context.Context, request *CreateA
 
 // Summary:
 //
-// You can call CreateConsumerGroup to create a consumer group.
+// Calls CreateConsumerGroup to create a consumer group.
 //
 // @param request - CreateConsumerGroupRequest
 //
@@ -315,7 +373,7 @@ func (client *Client) CreateConsumerGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// This operation creates a pay-as-you-go instance and returns the instance ID and order ID.
+// Creates a pay-as-you-go instance and returns the instance ID and order ID.
 //
 // @param tmpReq - CreatePostPayInstanceRequest
 //
@@ -409,11 +467,11 @@ func (client *Client) CreatePostPayInstanceWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Pay-as-you-go instances are billed based on actual usage. This billing method is ideal for testing or short-term scenarios with unpredictable traffic peaks. This topic describes how to call the CreatePostPayOrder operation to create a pay-as-you-go instance.
+// Pay-as-you-go instances are billed based on the actual usage of purchased resource specifications. You use resources first and then pay for them. This billing method is suitable for testing or short-term scenarios with unpredictable traffic peaks. This topic describes how to call CreatePostPayOrder to create a pay-as-you-go instance.
 //
 // Description:
 //
-// Before you call this operation, make sure you understand the billing methods and pricing of pay-as-you-go instances. For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+// Before you use this operation, make sure that you fully understand the billing methods and pricing of pay-as-you-go instances. For more information, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
 //
 // @param tmpReq - CreatePostPayOrderRequest
 //
@@ -519,9 +577,9 @@ func (client *Client) CreatePostPayOrderWithContext(ctx context.Context, tmpReq 
 //
 // Description:
 //
-// - Before calling this operation, ensure you understand the billing methods and pricing of subscription instances. For more information, see [billing overview](https://help.aliyun.com/document_detail/84737.html).
+// - Make sure that you fully understand the billing methods and pricing of subscription instances before you call this operation. For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 //
-// - By default, a subscription instance created using this operation has a one-month subscription period and is set to auto-renew monthly. To change the renewal period or disable auto-renewal, go to the [renewal management](https://renew.console.aliyun.com/#/ecs) page in the Alibaba Cloud Management Console.<props="china"> For more information, see [Set up auto-renewal](https://help.aliyun.com/document_detail/37128.html).
+// - After you call this operation, the upfront instance is purchased for one epoch of one month by default. Auto-renewal is enabled by default, and the Unified Auto Renewal Cycle is one month. If you want to modify the Unified Auto Renewal Cycle or disable auto-renewal, go to the [Renewal](https://renew.console.aliyun.com/#/ecs) page in the Alibaba Cloud Management Console.<props="china"> For more information, see [Settings for auto-renewal](https://help.aliyun.com/document_detail/37128.html).
 //
 // @param tmpReq - CreatePrePayInstanceRequest
 //
@@ -619,13 +677,13 @@ func (client *Client) CreatePrePayInstanceWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Subscription instances require prepayment for resources and are ideal for long-term, stable business scenarios. This topic describes how to call the CreatePrePayOrder operation to create a subscription instance.
+// Creates a subscription instance. Subscription instances require upfront payment before you can use resources. This billing method is suitable for long-term stable business scenarios.
 //
 // Description:
 //
-// - Before you call this operation, ensure that you understand the billing method and pricing of subscription instances. For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+// - Before calling this operation, make sure that you fully understand the billing method and pricing of upfront instances. For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 //
-// - By default, when you call this operation, the subscription duration is one month and auto-renewal is enabled with a Unified Auto Renewal Cycle of one month. To modify the Unified Auto Renewal Cycle or disable auto-renewal, go to the [Renewal Management](https://renew.console.aliyun.com/#/ecs) page in the Alibaba Cloud Management Console. For more information, see [Configure auto-renewal](https://help.aliyun.com/document_detail/37128.html).
+// - After you call this operation, the subscription instance is purchased for one epoch by default, and auto-renewal is enabled by default with a Unified Auto Renewal Cycle of one month. To modify the auto-renewal epoch or disable auto-renewal, go to the [Renewal Management](https://renew.console.aliyun.com/#/ecs) page in the Alibaba Cloud Management Console Settings.<props="china"> For more information, see [Configure auto-renewal](https://help.aliyun.com/document_detail/37128.html).
 //
 // @param tmpReq - CreatePrePayOrderRequest
 //
@@ -731,7 +789,7 @@ func (client *Client) CreatePrePayOrderWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// This operation creates a SASL user.
+// Creates a Simple Authentication and Security Layer (SASL) user by calling CreateSaslUser.
 //
 // @param request - CreateSaslUserRequest
 //
@@ -795,11 +853,11 @@ func (client *Client) CreateSaslUserWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// After you deploy a serverless instance, you can use this API to create a scheduled scaling rule for the instance.
+// Creates a scheduled elastic scaling policy for a serverless instance after deployment.
 //
 // Description:
 //
-// ###### This operation supports only serverless instances.
+// ###### Only serverless instances are supported.
 //
 // @param tmpReq - CreateScheduledScalingRuleRequest
 //
@@ -897,9 +955,9 @@ func (client *Client) CreateScheduledScalingRuleWithContext(ctx context.Context,
 //
 // Description:
 //
-// - Each user can send up to 20 queries per second (QPS).
+// - The maximum request frequency per user is 20 QPS.
 //
-// - The maximum number of topics for an instance depends on its instance type.
+// - The maximum number of topics that can be created for each instance depends on the instance edition you purchased.
 //
 // @param request - CreateTopicRequest
 //
@@ -1063,7 +1121,7 @@ func (client *Client) DeleteAclWithContext(ctx context.Context, request *DeleteA
 
 // Summary:
 //
-// Deletes a Group.
+// Deletes a consumer group.
 //
 // @param request - DeleteConsumerGroupRequest
 //
@@ -1115,7 +1173,7 @@ func (client *Client) DeleteConsumerGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// The DeleteInstance operation deletes an instance after a subscription instance or a pay-as-you-go instance is released.
+// Deletes an instance after a subscription or pay-as-you-go instance is released. This topic describes how to call the DeleteInstance operation to delete an instance.
 //
 // @param request - DeleteInstanceRequest
 //
@@ -1389,7 +1447,7 @@ func (client *Client) DeleteUserDefinedSgWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Queries access control list (ACL) resource names.
+// Queries ACL resource names.
 //
 // @param request - DescribeAclResourceNameRequest
 //
@@ -1753,13 +1811,13 @@ func (client *Client) DowngradePrePayOrderWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// This topic describes how to call EnableAutoGroupCreation to enable or disable the free use of Groups.
+// Enables or disables the free use of groups by calling EnableAutoGroupCreation.
 //
 // Description:
 //
-// Currently, only reserved instances support this API.
+// Only reserved instances support this API operation.
 //
-// Serverless instances are not supported at this time.
+// Serverless instances are not supported.
 //
 // @param request - EnableAutoGroupCreationRequest
 //
@@ -2447,7 +2505,7 @@ func (client *Client) GetRiskListWithContext(ctx context.Context, request *GetRi
 
 // Summary:
 //
-// Retrieves information about topics.
+// Retrieves topic information.
 //
 // @param request - GetTopicListRequest
 //
@@ -3005,7 +3063,7 @@ func (client *Client) ModifyUserDefinedSgWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// This operation queries messages stored in a topic by message creation time or offset.
+// Queries messages stored in a topic by message creation time or offset.
 //
 // @param request - QueryMessageRequest
 //
@@ -3801,7 +3859,7 @@ func (client *Client) UpgradeInstanceVersionWithContext(ctx context.Context, req
 //
 // Description:
 //
-// Before you call this operation, make sure that you fully understand the billing method and pricing of pay-as-you-go instances. For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+// Before you call this operation, make sure that you fully understand the billing methods and pricing of pay-as-you-go instances. For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 //
 // @param tmpReq - UpgradePostPayOrderRequest
 //

@@ -20,13 +20,13 @@ type iCreateScheduledScalingRuleResponseBody interface {
 }
 
 type CreateScheduledScalingRuleResponseBody struct {
-	// The return code. A value of 200 indicates success.
+	// The response code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//

@@ -22,21 +22,21 @@ type iCreatePostPayInstanceResponseBody interface {
 }
 
 type CreatePostPayInstanceResponseBody struct {
-	// The status code. A value of 200 indicates that the request was successful.
+	// The status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned results.
+	// The returned result.
 	Data *CreatePostPayInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ type CreatePostPayInstanceResponseBodyData struct {
 	//
 	// alikafka_pre-cn-pe333xxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//

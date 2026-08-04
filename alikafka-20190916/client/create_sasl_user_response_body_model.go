@@ -20,25 +20,25 @@ type iCreateSaslUserResponseBody interface {
 }
 
 type CreateSaslUserResponseBody struct {
-	// The status code. A value of 200 indicates that the request was successful.
+	// The status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// C5CA600C-7D5A-45B5-B6DB-44FAC2C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

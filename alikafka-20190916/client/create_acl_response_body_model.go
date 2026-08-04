@@ -20,19 +20,19 @@ type iCreateAclResponseBody interface {
 }
 
 type CreateAclResponseBody struct {
-	// Status code. A value of 200 indicates success.
+	// The HTTP status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message.
+	// The returned message.
 	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

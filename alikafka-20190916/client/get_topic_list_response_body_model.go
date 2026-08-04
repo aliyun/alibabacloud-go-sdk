@@ -28,31 +28,31 @@ type iGetTopicListResponseBody interface {
 }
 
 type GetTopicListResponseBody struct {
-	// The return code. A value of 200 indicates that the call was successful.
+	// The response code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of the page returned.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The number of entries returned per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

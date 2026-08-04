@@ -18,7 +18,7 @@ type iEnableAutoGroupCreationRequest interface {
 }
 
 type EnableAutoGroupCreationRequest struct {
-  // Enable or disable the free use of Groups. Valid values:
+  // Specifies whether to enable the free use of groups. Valid values:
   // 
   // - **true**: Enable.
   // 
@@ -32,7 +32,7 @@ type EnableAutoGroupCreationRequest struct {
   Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
   // The instance ID.
   // 
-  // You can call [GetInstanceList](https://help.aliyun.com/document_detail/437663.html) to obtain it.
+  // You can call [GetInstanceList](https://help.aliyun.com/document_detail/437663.html) to obtain the instance ID.
   // 
   // This parameter is required.
   // 

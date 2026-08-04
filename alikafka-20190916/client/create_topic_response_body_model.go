@@ -20,7 +20,7 @@ type iCreateTopicResponseBody interface {
 }
 
 type CreateTopicResponseBody struct {
-	// The response code. A value of 200 indicates that the request is successful.
+	// The response code. A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type CreateTopicResponseBody struct {
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 9C0F207C-77A6-43E5-991C-9D98510A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

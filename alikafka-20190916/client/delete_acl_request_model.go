@@ -32,19 +32,19 @@ type iDeleteAclRequest interface {
 }
 
 type DeleteAclRequest struct {
-	// Operation type. Valid values:
+	// The operation type. Valid values:
 	//
-	// - **Write**: Write
+	// - **Write**: write.
 	//
-	// - **Read**: Read
+	// - **Read**: read.
 	//
-	// - **Describe**: Read TransactionalId
+	// - **Describe**: read TransactionalId.
 	//
-	// - **IdempotentWrite**: Idempotent write to Cluster
+	// - **IdempotentWrite**: idempotent write to Cluster.
 	//
-	// - **IDEMPOTENT_WRITE**: Idempotent write to Cluster, only available for Serverless instances.
+	// - **IDEMPOTENT_WRITE**: idempotent write to Cluster. This value is available only for serverless instances.
 	//
-	// - **DESCRIBE_CONFIGS**: Query configuration, only available for Serverless instances.
+	// - **DESCRIBE_CONFIGS**: query configurations. This value is available only for serverless instances.
 	//
 	// This parameter is required.
 	//
@@ -52,45 +52,45 @@ type DeleteAclRequest struct {
 	//
 	// Write
 	AclOperationType *string `json:"AclOperationType,omitempty" xml:"AclOperationType,omitempty"`
-	// Batch authorization operation types. Multiple operations are separated by commas (,).
+	// The batch authorization operation types. Separate multiple operations with commas (,).
 	//
 	// Valid values:
 	//
-	// - **Write**: Read
+	// - **Write**: write.
 	//
-	// - **Read**: Write
+	// - **Read**: read.
 	//
-	// - **Describe**: Read TransactionalId
+	// - **Describe**: read TransactionalId.
 	//
-	// - **IdempotentWrite**: Idempotent write to Cluster
+	// - **IdempotentWrite**: idempotent write to Cluster.
 	//
-	// - **IDEMPOTENT_WRITE**: Idempotent write to Cluster, only available for Serverless instances.
+	// - **IDEMPOTENT_WRITE**: idempotent write to Cluster. This value is available only for serverless instances.
 	//
-	// - **DESCRIBE_CONFIGS**: Query configuration, only available for Serverless instances.
+	// - **DESCRIBE_CONFIGS**: query configurations. This value is available only for serverless instances.
 	//
-	// > This parameter is only supported for Serverless instances.
+	// > This parameter is available only for serverless instances.
 	//
 	// example:
 	//
 	// Write,Read
 	AclOperationTypes *string `json:"AclOperationTypes,omitempty" xml:"AclOperationTypes,omitempty"`
-	// Authorization method. Valid values:
+	// The authorization method. Valid values:
 	//
-	// - DENY: Deny
+	// - DENY: deny.
 	//
-	// - ALLOW: Allow
+	// - ALLOW: allow.
 	//
-	// > This parameter is only supported for Serverless instances.
+	// > This parameter is available only for serverless instances.
 	//
 	// example:
 	//
 	// DENY
 	AclPermissionType *string `json:"AclPermissionType,omitempty" xml:"AclPermissionType,omitempty"`
-	// Resource name.
+	// The resource name.
 	//
-	// - Topic name or Group name.
+	// - The name of a topic or consumer group.
 	//
-	// - Asterisk (\\*) represents all Topic or Group names.
+	// - An asterisk (\\*) indicates the names of all topics or consumer groups.
 	//
 	// This parameter is required.
 	//
@@ -98,11 +98,11 @@ type DeleteAclRequest struct {
 	//
 	// demo
 	AclResourceName *string `json:"AclResourceName,omitempty" xml:"AclResourceName,omitempty"`
-	// Matching pattern. Valid values:
+	// The matching mode. Valid values:
 	//
-	// - **LITERAL**: Exact matching pattern
+	// - **LITERAL**: full-name match.
 	//
-	// - **PREFIXED**: Prefix matching pattern
+	// - **PREFIXED**: prefix match.
 	//
 	// This parameter is required.
 	//
@@ -110,15 +110,15 @@ type DeleteAclRequest struct {
 	//
 	// LITERAL
 	AclResourcePatternType *string `json:"AclResourcePatternType,omitempty" xml:"AclResourcePatternType,omitempty"`
-	// Resource type.
+	// The resource type. Valid values:
 	//
-	// - **Topic**: Message topic.
+	// - **Topic**: topic.
 	//
-	// - **Group**: Consumer group.
+	// - **Group**: consumer group.
 	//
-	// - **Cluster**: Instance.
+	// - **Cluster**: instance.
 	//
-	// - **TransactionalId**: Transaction ID.
+	// - **TransactionalId**: transaction ID.
 	//
 	// This parameter is required.
 	//
@@ -126,19 +126,17 @@ type DeleteAclRequest struct {
 	//
 	// Topic
 	AclResourceType *string `json:"AclResourceType,omitempty" xml:"AclResourceType,omitempty"`
-	// Source IP.
+	// The source IP address.
 	//
-	// > - Only supports specific IP addresses or setting \\	- (all IPs), does not support IP segments.
+	// >- Only specific IP addresses or an asterisk (\\*) to allow all IP addresses are supported. CIDR blocks are not supported.
 	//
-	// >
-	//
-	// > - This parameter is only supported for Serverless instances.
+	// >- This parameter is available only for serverless instances.
 	//
 	// example:
 	//
 	// *
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -146,7 +144,7 @@ type DeleteAclRequest struct {
 	//
 	// alikafka_pre-cn-v0h1cng0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -154,7 +152,7 @@ type DeleteAclRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Username.
+	// The username.
 	//
 	// This parameter is required.
 	//

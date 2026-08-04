@@ -22,30 +22,26 @@ type iDescribeAclResourceNameResponseBody interface {
 }
 
 type DescribeAclResourceNameResponseBody struct {
-	// Return code. A value of 200 indicates success.
+	// The response code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *DescribeAclResourceNameResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Return message.
+	// The response message.
 	//
 	// example:
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// ABA4A7FD-E10F-45C7-9774-A5236015A***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful.
-	//
-	// - **true**: The call was successful.
-	//
-	// - **false**: The call failed.
 	//
 	// example:
 	//

@@ -38,27 +38,29 @@ type iCreatePrePayInstanceRequest interface {
 }
 
 type CreatePrePayInstanceRequest struct {
-	// The configurations of the Confluent components.
+	// The Confluent component configurations.
 	//
-	// > This parameter is required if you create a Confluent instance.
+	//
+	// > This parameter is required when you create a Confluent instance.
 	ConfluentConfig *CreatePrePayInstanceRequestConfluentConfig `json:"ConfluentConfig,omitempty" xml:"ConfluentConfig,omitempty" type:"Struct"`
 	// The deployment type. Valid values:
 	//
-	// - **4**: an instance accessible from the internet and a VPC
+	// - **4**: Internet- and VPC-connected instance
 	//
-	// - **5**: an instance accessible from a VPC only
+	// - **5**: VPC-connected instance
 	//
-	// > If you create a Confluent instance, you cannot specify the deployment type and must set this parameter to 5. After the instance is created, you can configure internet access for each component.
+	//
+	// > When you create a Confluent instance, you cannot select the deployment type. Only the value 5 is allowed. After the purchase, you can configure whether to enable public access for each component.
 	//
 	// example:
 	//
 	// 5
 	DeployType *int32 `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	// The disk capacity, in GB.
+	// The disk capacity. Unit: GB.
 	//
 	// For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// > This parameter is not required if you create a Confluent instance.
+	// > This parameter is not required when you create a Confluent instance.
 	//
 	// example:
 	//
@@ -66,63 +68,66 @@ type CreatePrePayInstanceRequest struct {
 	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
 	// The disk type. Valid values:
 	//
-	// - **0**: ultra disk
+	// - **0**: ultra cloud disk
 	//
 	// - **1**: SSD
 	//
-	// > This parameter is not required if you create a Confluent instance.
+	// > This parameter is not required when you create a Confluent instance.
 	//
 	// example:
 	//
 	// 1
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The subscription duration, in months. Default value: 1. Valid values:
+	// The subscription duration. Unit: months. Default value: 1. Valid values:
 	//
-	// - Confluent instances: **1*	- and **12**
+	// - **Confluent instances: 1 or 12**
 	//
-	// - Kafka instances: **1**
+	// - **ApsaraMQ for Kafka instances: 1**
 	//
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The peak internet bandwidth.
+	// The Internet traffic.
 	//
-	// - This parameter is required if you set **DeployType*	- to **4**.
+	// - This parameter is required if **DeployType*	- is set to **4**.
 	//
-	// - For the value range, see [pay-as-you-go](https://help.aliyun.com/document_detail/72142.html).
+	// - For the value range, see [Pay-as-you-go billing method](https://help.aliyun.com/document_detail/72142.html).
 	//
-	// > This parameter is not required if you create a Confluent instance.
+	//
+	// > This parameter is not required when you create a Confluent instance.
 	//
 	// example:
 	//
 	// 3
 	EipMax *int32 `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
-	// The I/O specification.
+	// The traffic specification.
+	//
+	//
 	//
 	// - For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// > This parameter is not required if you create a Confluent instance.
+	// > This parameter is not required when you create a Confluent instance.
 	//
 	// example:
 	//
 	// alikafka.hw.2xlarge
 	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
-	// The billing method. Valid values:
+	// The billing type. Valid values:
 	//
 	// - **0**: subscription
 	//
-	// - **4**: subscription for Confluent instances
+	// - **4**: Confluent subscription
 	//
 	// example:
 	//
 	// 1
 	PaidType *int32 `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
-	// The number of partitions.
+	// The number of partitions to purchase.
 	//
-	// - For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+	// 	- For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// > This parameter is not required if you create a Confluent instance.
+	// > This parameter is not required when you create a Confluent instance.
 	//
 	// example:
 	//
@@ -136,23 +141,23 @@ type CreatePrePayInstanceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
-	// If you do not specify this parameter, the instance is placed in the default resource group. You can find the resource group ID in the Resource Group console.
+	// If you do not specify this parameter, the instance is placed in the default resource group. You can view the resource group ID in the Resource Management console.
 	//
 	// example:
 	//
 	// rg-ac***********7q
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The specification type.
+	// The edition type.
 	//
-	// Valid values for Kafka instances:
+	// Valid values for ApsaraMQ for Kafka instances:
 	//
-	// - **normal**: Standard Edition (High-write)
+	// - **normal**: Standard Edition (shared throughput for writes)
 	//
-	// - **professional**: Professional Edition (High-write)
+	// - **professional**: Professional Edition (shared throughput for writes)
 	//
-	// - **professionalForHighRead**: Professional Edition (High-read)
+	// - **professionalForHighRead**: Professional Edition (shared throughput for reads)
 	//
 	// Valid values for Confluent instances:
 	//
@@ -166,7 +171,7 @@ type CreatePrePayInstanceRequest struct {
 	//
 	// professional
 	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	// The tags to attach to the instance. You can specify up to 20 tags.
+	// The tags.
 	Tag []*CreatePrePayInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -314,110 +319,114 @@ func (s *CreatePrePayInstanceRequest) Validate() error {
 }
 
 type CreatePrePayInstanceRequestConfluentConfig struct {
-	// The number of CPU cores for Connect.
+	ConfluentVersion *string `json:"ConfluentVersion,omitempty" xml:"ConfluentVersion,omitempty"`
+	// The number of CPU cores for the Connect component.
 	//
 	// example:
 	//
 	// 4
 	ConnectCU *int32 `json:"ConnectCU,omitempty" xml:"ConnectCU,omitempty"`
-	// The number of replicas for Connect.
+	// The number of Connect component replicas.
 	//
 	// example:
 	//
 	// 2
 	ConnectReplica *int32 `json:"ConnectReplica,omitempty" xml:"ConnectReplica,omitempty"`
-	// The number of CPU cores for Control Center.
+	// The number of CPU cores for the ControlCenter component.
 	//
 	// example:
 	//
 	// 4
 	ControlCenterCU *int32 `json:"ControlCenterCU,omitempty" xml:"ControlCenterCU,omitempty"`
-	// The number of replicas for Control Center.
+	// The number of ControlCenter component replicas.
 	//
 	// example:
 	//
 	// 1
 	ControlCenterReplica *int32 `json:"ControlCenterReplica,omitempty" xml:"ControlCenterReplica,omitempty"`
-	// The disk capacity for Control Center, in GB.
+	// The disk capacity of the ControlCenter component. Unit: GB.
 	//
 	// example:
 	//
 	// 300
 	ControlCenterStorage *int32 `json:"ControlCenterStorage,omitempty" xml:"ControlCenterStorage,omitempty"`
-	// The number of CPU cores for the Kafka broker.
+	// The number of CPU cores for Kafka Broker.
 	//
 	// example:
 	//
 	// 4
 	KafkaCU *int32 `json:"KafkaCU,omitempty" xml:"KafkaCU,omitempty"`
-	// The number of replicas for the Kafka broker.
+	// The number of Kafka Broker replicas.
 	//
 	// example:
 	//
 	// 3
 	KafkaReplica *int32 `json:"KafkaReplica,omitempty" xml:"KafkaReplica,omitempty"`
-	// The number of CPU cores for Kafka REST Proxy.
+	// The number of CPU cores for the KafkaRestProxy component.
 	//
 	// example:
 	//
 	// 4
 	KafkaRestProxyCU *int32 `json:"KafkaRestProxyCU,omitempty" xml:"KafkaRestProxyCU,omitempty"`
-	// The number of replicas for Kafka REST Proxy.
+	// The number of KafkaRestProxy component replicas.
 	//
 	// example:
 	//
 	// 2
 	KafkaRestProxyReplica *int32 `json:"KafkaRestProxyReplica,omitempty" xml:"KafkaRestProxyReplica,omitempty"`
-	// The disk capacity for the Kafka broker, in GB.
+	// The disk capacity of Kafka Broker. Unit: GB.
 	//
 	// example:
 	//
 	// 800
-	KafkaStorage *int32 `json:"KafkaStorage,omitempty" xml:"KafkaStorage,omitempty"`
-	// The number of CPU cores for ksqlDB.
+	KafkaStorage           *int32 `json:"KafkaStorage,omitempty" xml:"KafkaStorage,omitempty"`
+	KraftControllerCU      *int32 `json:"KraftControllerCU,omitempty" xml:"KraftControllerCU,omitempty"`
+	KraftControllerReplica *int32 `json:"KraftControllerReplica,omitempty" xml:"KraftControllerReplica,omitempty"`
+	KraftControllerStorage *int32 `json:"KraftControllerStorage,omitempty" xml:"KraftControllerStorage,omitempty"`
+	// The number of CPU cores for the KsqlDB component.
 	//
 	// example:
 	//
 	// 4
 	KsqlCU   *int32                                                `json:"KsqlCU,omitempty" xml:"KsqlCU,omitempty"`
 	KsqlList []*CreatePrePayInstanceRequestConfluentConfigKsqlList `json:"KsqlList,omitempty" xml:"KsqlList,omitempty" type:"Repeated"`
-	// The number of replicas for ksqlDB.
+	// The number of KsqlDB component replicas.
 	//
 	// example:
 	//
 	// 2
 	KsqlReplica *int32 `json:"KsqlReplica,omitempty" xml:"KsqlReplica,omitempty"`
-	// The disk capacity for ksqlDB, in GB.
+	// The disk capacity of the KsqlDB component. Unit: GB.
 	//
 	// example:
 	//
 	// 100
 	KsqlStorage *int32 `json:"KsqlStorage,omitempty" xml:"KsqlStorage,omitempty"`
-	// The number of CPU cores for Schema Registry.
+	// The number of CPU cores for the SchemaRegistry component.
 	//
 	// example:
 	//
 	// 1
 	SchemaRegistryCU *int32 `json:"SchemaRegistryCU,omitempty" xml:"SchemaRegistryCU,omitempty"`
-	// The number of replicas for Schema Registry.
+	// The number of SchemaRegistry component replicas.
 	//
 	// example:
 	//
 	// 2
 	SchemaRegistryReplica *int32 `json:"SchemaRegistryReplica,omitempty" xml:"SchemaRegistryReplica,omitempty"`
-	// The number of CPU cores for ZooKeeper.
+	// The number of CPU cores for the ZooKeeper component.
 	//
 	// example:
 	//
 	// 2
 	ZooKeeperCU *int32 `json:"ZooKeeperCU,omitempty" xml:"ZooKeeperCU,omitempty"`
-	// The number of replicas for ZooKeeper.
+	// The number of ZooKeeper component replicas.
 	//
 	// example:
 	//
 	// 3
 	ZooKeeperReplica *int32 `json:"ZooKeeperReplica,omitempty" xml:"ZooKeeperReplica,omitempty"`
-	// The disk capacity for ZooKeeper, in GB.
+	// The disk capacity of the ZooKeeper component. Unit: GB.
 	//
 	// example:
 	//
@@ -431,6 +440,10 @@ func (s CreatePrePayInstanceRequestConfluentConfig) String() string {
 
 func (s CreatePrePayInstanceRequestConfluentConfig) GoString() string {
 	return s.String()
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) GetConfluentVersion() *string {
+	return s.ConfluentVersion
 }
 
 func (s *CreatePrePayInstanceRequestConfluentConfig) GetConnectCU() *int32 {
@@ -473,6 +486,18 @@ func (s *CreatePrePayInstanceRequestConfluentConfig) GetKafkaStorage() *int32 {
 	return s.KafkaStorage
 }
 
+func (s *CreatePrePayInstanceRequestConfluentConfig) GetKraftControllerCU() *int32 {
+	return s.KraftControllerCU
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) GetKraftControllerReplica() *int32 {
+	return s.KraftControllerReplica
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) GetKraftControllerStorage() *int32 {
+	return s.KraftControllerStorage
+}
+
 func (s *CreatePrePayInstanceRequestConfluentConfig) GetKsqlCU() *int32 {
 	return s.KsqlCU
 }
@@ -507,6 +532,11 @@ func (s *CreatePrePayInstanceRequestConfluentConfig) GetZooKeeperReplica() *int3
 
 func (s *CreatePrePayInstanceRequestConfluentConfig) GetZooKeeperStorage() *int32 {
 	return s.ZooKeeperStorage
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) SetConfluentVersion(v string) *CreatePrePayInstanceRequestConfluentConfig {
+	s.ConfluentVersion = &v
+	return s
 }
 
 func (s *CreatePrePayInstanceRequestConfluentConfig) SetConnectCU(v int32) *CreatePrePayInstanceRequestConfluentConfig {
@@ -556,6 +586,21 @@ func (s *CreatePrePayInstanceRequestConfluentConfig) SetKafkaRestProxyReplica(v 
 
 func (s *CreatePrePayInstanceRequestConfluentConfig) SetKafkaStorage(v int32) *CreatePrePayInstanceRequestConfluentConfig {
 	s.KafkaStorage = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) SetKraftControllerCU(v int32) *CreatePrePayInstanceRequestConfluentConfig {
+	s.KraftControllerCU = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) SetKraftControllerReplica(v int32) *CreatePrePayInstanceRequestConfluentConfig {
+	s.KraftControllerReplica = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) SetKraftControllerStorage(v int32) *CreatePrePayInstanceRequestConfluentConfig {
+	s.KraftControllerStorage = &v
 	return s
 }
 
@@ -683,13 +728,13 @@ func (s *CreatePrePayInstanceRequestConfluentConfigKsqlList) Validate() error {
 }
 
 type CreatePrePayInstanceRequestTag struct {
-	// The tag key.
+	// The tag key of the resource.
 	//
-	// -
+	// - N ranges from 1 to 20.
 	//
-	// -
+	// - If this parameter is left empty, all tag keys are matched.
 	//
-	// - The key must be 1 to 128 characters long. It cannot start with aliyun or acs:, nor can it contain http\\:// or https\\://.
+	// - The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
 	//
 	// This parameter is required.
 	//
@@ -697,13 +742,13 @@ type CreatePrePayInstanceRequestTag struct {
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value of the resource.
 	//
-	// -
+	// - N ranges from 1 to 20.
 	//
-	// -
+	// - This parameter can be left empty.
 	//
-	// - The value can be 0 to 128 characters long. It cannot start with aliyun or acs:, nor can it contain http\\:// or https\\://.
+	// - The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iEnableAutoGroupCreationResponseBody interface {
 }
 
 type EnableAutoGroupCreationResponseBody struct {
-  // The return code.
+  // The response code.
   // 
   // A value of **200*	- indicates success.
   // 
@@ -40,7 +40,7 @@ type EnableAutoGroupCreationResponseBody struct {
   // 
   // A421CCD7-5BC5-4B32-8DD8-64668A8FCB56
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Indicates whether the request was successful.
+  // Indicates whether the request is successful.
   // 
   // example:
   // 

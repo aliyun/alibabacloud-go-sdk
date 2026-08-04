@@ -20,19 +20,19 @@ type iCreateConsumerGroupResponseBody interface {
 }
 
 type CreateConsumerGroupResponseBody struct {
-	// Status code. A return value of 200 indicates success.
+	// The status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message.
+	// The response message.
 	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

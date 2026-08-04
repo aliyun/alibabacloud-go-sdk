@@ -22,19 +22,19 @@ type iChangeResourceGroupResponseBody interface {
 }
 
 type ChangeResourceGroupResponseBody struct {
-	// The status code. A value of 200 indicates that the call was successful.
+	// The status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The new resource group ID. You can view available resource groups in the resource group console.
+	// The new resource group ID. You can view available resource groups in the Resource Group console.
 	//
 	// example:
 	//

@@ -20,13 +20,13 @@ type iDeleteInstanceResponseBody interface {
 }
 
 type DeleteInstanceResponseBody struct {
-	// The return code. A value of 200 indicates success.
+	// The response code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return message.
+	// The response message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DeleteInstanceResponseBody struct {
 	//
 	// ABA4A7FD-E10F-45C7-9774-A5236015****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

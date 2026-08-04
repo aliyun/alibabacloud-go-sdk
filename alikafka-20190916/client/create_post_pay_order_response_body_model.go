@@ -22,25 +22,25 @@ type iCreatePostPayOrderResponseBody interface {
 }
 
 type CreatePostPayOrderResponseBody struct {
-	// The return code. A value of 200 indicates success.
+	// The response code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
 	// 20497346575****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

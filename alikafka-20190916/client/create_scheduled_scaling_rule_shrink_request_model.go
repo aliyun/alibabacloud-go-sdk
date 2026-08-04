@@ -36,9 +36,9 @@ type iCreateScheduledScalingRuleShrinkRequest interface {
 }
 
 type CreateScheduledScalingRuleShrinkRequest struct {
-	// The duration (unit: minutes) of a scheduled elastic task.
+	// The duration (unit: minutes) of a single scheduled elastic scaling task.
 	//
-	// > The parameter value must be at least 15 minutes.
+	// > The value must be at least 15 minutes.
 	//
 	// This parameter is required.
 	//
@@ -46,25 +46,23 @@ type CreateScheduledScalingRuleShrinkRequest struct {
 	//
 	// 60
 	DurationMinutes *int32 `json:"DurationMinutes,omitempty" xml:"DurationMinutes,omitempty"`
-	// Enables or disables the scheduled task policy. Valid values:
+	// Specifies whether to enable or disable the scheduled policy. Valid values:
 	//
-	// - **true**: Enables the policy.
+	// - **true**: Enabled.
 	//
-	// - **false**: Disables the policy.
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The time when the scheduled policy starts to execute.
+	// The time when the scheduled policy starts to take effect.
 	//
-	// For a one-time scheduling policy type, the start execution time must be more than 30 minutes later than the current time.
+	// If the schedule type is single execution, the start time must be at least 30 minutes later than the current time.
 	//
-	// 	Notice:
 	//
-	// To avoid the service from continuously executing upgrade and downgrade tasks, the time interval between different scheduled tasks must be at least 60 minutes.
 	//
-	// </notice>
+	// 	Notice: To prevent the server from continuously performing scale-up and scale-down tasks, the interval between different scheduled tasks must be at least 60 minutes.
 	//
 	// This parameter is required.
 	//
@@ -88,19 +86,19 @@ type CreateScheduledScalingRuleShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// When ScheduleType is set to repeat, you need to fill in this parameter. Enumeration values are:
+	// The repeat type. This parameter is required when ScheduleType is set to repeat. Valid values:
 	//
-	// - Daily: Daily scheduled task.
+	//       <li> Daily: timed scheduling every day.
 	//
-	// - Weekly: Weekly scheduled task.
+	//       <li> Weekly: timed scheduling every week.
 	//
 	// example:
 	//
 	// Weekly
 	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
-	// The scheduled elastic reserved production specification (unit: MB/s).
+	// The reserved production specification for scheduled elastic scaling (unit: MB/s).
 	//
-	// > At least one of the ReservedPubFlow and ReservedSubFlow parameters must be higher than the current specification.
+	// > At least one of ReservedPubFlow and ReservedSubFlow must be higher than the current specification.
 	//
 	// This parameter is required.
 	//
@@ -108,9 +106,9 @@ type CreateScheduledScalingRuleShrinkRequest struct {
 	//
 	// 120
 	ReservedPubFlow *int32 `json:"ReservedPubFlow,omitempty" xml:"ReservedPubFlow,omitempty"`
-	// The scheduled elastic reserved consumption specification (unit: MB/s).
+	// The reserved consumption specification for scheduled elastic scaling (unit: MB/s).
 	//
-	// > At least one of the ReservedSubFlow and ReservedPubFlow parameters must be higher than the current specification.
+	// > At least one of ReservedSubFlow and ReservedPubFlow must be higher than the current specification.
 	//
 	// This parameter is required.
 	//
@@ -120,7 +118,7 @@ type CreateScheduledScalingRuleShrinkRequest struct {
 	ReservedSubFlow *int32 `json:"ReservedSubFlow,omitempty" xml:"ReservedSubFlow,omitempty"`
 	// The name of the scheduled policy rule.
 	//
-	// > The name cannot be the same as other rule names for the same instance.
+	// > The name must be unique among all rules of the same instance.
 	//
 	// This parameter is required.
 	//
@@ -130,9 +128,9 @@ type CreateScheduledScalingRuleShrinkRequest struct {
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The schedule type. Valid values:
 	//
-	// - at: Scheduled only once.
+	// - at: scheduled once only.
 	//
-	// - repeat: Scheduled repeatedly.
+	// - repeat: scheduled repeatedly.
 	//
 	// This parameter is required.
 	//
@@ -148,7 +146,7 @@ type CreateScheduledScalingRuleShrinkRequest struct {
 	//
 	// GMT+8
 	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
-	// The weekly types. Supports execution on multiple days.
+	// The days of the week. Multiple days are supported for repeated execution.
 	WeeklyTypesShrink *string `json:"WeeklyTypes,omitempty" xml:"WeeklyTypes,omitempty"`
 }
 

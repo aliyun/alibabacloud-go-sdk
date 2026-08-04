@@ -22,27 +22,27 @@ type iCreatePrePayInstanceResponseBody interface {
 }
 
 type CreatePrePayInstanceResponseBody struct {
-	// The status code. A value of 200 indicates a successful request.
+	// The HTTP status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response data.
+	// The returned data.
 	Data *CreatePrePayInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// E57A8862-DF68-4055-8E55-B80CB4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ type CreatePrePayInstanceResponseBodyData struct {
 	//
 	// alikafka_post-cn-xxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The unique ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
