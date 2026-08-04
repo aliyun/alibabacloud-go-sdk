@@ -26,7 +26,7 @@ type iDescribePolarFsQuotaListResponseBody interface {
 }
 
 type DescribePolarFsQuotaListResponseBody struct {
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -38,7 +38,9 @@ type DescribePolarFsQuotaListResponseBody struct {
 	//
 	// 30
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The number of records per page. Valid values: **30**, **50**, and **100**.
+	// The number of entries per page. Valid values: **30**, **50**, and **100**.
+	//
+	//
 	//
 	// Default value: **30**.
 	//
@@ -46,15 +48,15 @@ type DescribePolarFsQuotaListResponseBody struct {
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The PolarFS instance ID.
+	// The PolarFs instance ID.
 	//
 	// example:
 	//
 	// pfs-test****
 	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
-	// A list of directory quotas.
+	// The directory quotas.
 	QuotaItems []*DescribePolarFsQuotaListResponseBodyQuotaItems `json:"QuotaItems,omitempty" xml:"QuotaItems,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -153,13 +155,13 @@ func (s *DescribePolarFsQuotaListResponseBody) Validate() error {
 }
 
 type DescribePolarFsQuotaListResponseBodyQuotaItems struct {
-	// The capacity in bytes.
+	// The capacity.
 	//
 	// example:
 	//
 	// 1073741824
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The inode quota.
+	// Inodes
 	//
 	// example:
 	//
@@ -171,13 +173,13 @@ type DescribePolarFsQuotaListResponseBodyQuotaItems struct {
 	//
 	// /test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The used capacity in bytes.
+	// The used capacity.
 	//
 	// example:
 	//
 	// 104857600
 	UsedCapacity *int64 `json:"UsedCapacity,omitempty" xml:"UsedCapacity,omitempty"`
-	// The number of inodes in use.
+	// The number of used inodes.
 	//
 	// example:
 	//

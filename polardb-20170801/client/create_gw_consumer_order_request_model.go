@@ -24,15 +24,13 @@ type iCreateGwConsumerOrderRequest interface {
 }
 
 type CreateGwConsumerOrderRequest struct {
-	// The idempotence token.
+	// The idempotency token.
 	//
 	// example:
 	//
 	// 6000170000591aed949d0f54a343f1a42***********
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The expiration time of the API key in ISO 8601 format. The value must be later than the current time.
-	//
-	// This parameter is required.
+	// The expiration time of the API key in ISO-8601 format. The value must be later than the current time.
 	//
 	// example:
 	//
@@ -46,7 +44,7 @@ type CreateGwConsumerOrderRequest struct {
 	//
 	// pg-2ze24rr575j5b18cg
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// The number of API keys to generate, which corresponds to the number of resource plans to purchase. Valid values: 1 to 30.
+	// The number of API keys to generate (the number of capacity plans to order). Valid values: 1 to 30.
 	//
 	// This parameter is required.
 	//
@@ -54,19 +52,13 @@ type CreateGwConsumerOrderRequest struct {
 	//
 	// 6
 	KeyCount *int32 `json:"KeyCount,omitempty" xml:"KeyCount,omitempty"`
-	// The specification tier of the resource plan. Valid values:
-	//
-	// - basic: 3000 points per plan.
-	//
-	// - advanced: 6000 points per plan.
-	//
-	// - pro: 9000 points per plan.
+	// The number of credits per API key. The value is a positive integer string.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// basic
+	// 3000
 	PackageSpec *string `json:"PackageSpec,omitempty" xml:"PackageSpec,omitempty"`
 	// The region ID.
 	//

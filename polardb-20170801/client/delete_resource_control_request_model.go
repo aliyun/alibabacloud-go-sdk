@@ -18,27 +18,29 @@ type iDeleteResourceControlRequest interface {
 }
 
 type DeleteResourceControlRequest struct {
-	// The database cluster ID.
+	// The cluster ID of the PolarDB cluster.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// pc-****************
+	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The region ID.
+	// The region ID of the PolarDB cluster.
+	//
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource control name.
+	// The name of the resource control rule. The name must be 1 to 63 ASCII bytes in length, start with a letter, and can contain letters, digits, and underscores.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// test-rc
+	// test_rc
 	ResourceControlName *string `json:"ResourceControlName,omitempty" xml:"ResourceControlName,omitempty"`
 }
 

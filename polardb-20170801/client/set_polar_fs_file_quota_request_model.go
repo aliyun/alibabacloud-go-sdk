@@ -24,11 +24,11 @@ type SetPolarFsFileQuotaRequest struct {
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// An array of objects defining the file quota rules for specific directories.
+	// The details of the quota rules to apply to directories.
 	//
 	// This parameter is required.
 	FilePathQuotas []*SetPolarFsFileQuotaRequestFilePathQuotas `json:"FilePathQuotas,omitempty" xml:"FilePathQuotas,omitempty" type:"Repeated"`
-	// The ID of the PolarFS instance.
+	// The Polarlakebase instance ID.
 	//
 	// This parameter is required.
 	//
@@ -87,41 +87,41 @@ func (s *SetPolarFsFileQuotaRequest) Validate() error {
 }
 
 type SetPolarFsFileQuotaRequestFilePathQuotas struct {
-	// The capacity quota in GB.
+	// The quota capacity. Unit: GB.
 	//
 	// example:
 	//
 	// 100
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The absolute path of the directory.
+	// The directory path.
 	//
 	// example:
 	//
 	// /a/project
 	FilePathId *string `json:"FilePathId,omitempty" xml:"FilePathId,omitempty"`
-	// The inode quota.
+	// The quota inodes.
 	//
 	// example:
 	//
 	// 100
 	Inodes *int64 `json:"Inodes,omitempty" xml:"Inodes,omitempty"`
-	// The maximum depth of subdirectories to traverse under the path specified by `FilePathId`. A value of 1 traverses only the first level of subdirectories. A value of 0 traverses to the deepest level.
+	// The number of subdirectory levels to traverse under `FilePathId`. A value of 1 indicates that only the first-level subdirectories are traversed. A value of 0 indicates that all levels are traversed to the deepest level.
 	//
 	// example:
 	//
 	// 1
 	MaxDepth *int32 `json:"MaxDepth,omitempty" xml:"MaxDepth,omitempty"`
-	// A list of file quota rule IDs, separated by a comma (`,`).
+	// The IDs of the rules to apply, separated by commas (,).
 	//
 	// example:
 	//
 	// 1,2
 	QuotaIds *string `json:"QuotaIds,omitempty" xml:"QuotaIds,omitempty"`
-	// Specifies how to apply the rule to existing files. Valid values:
+	// The mode in which rules take effect on existing files. Valid values:
 	//
-	// - **missing**: Applies the rule only if one does not already exist. (Default)
+	// - **missing**: Rules take effect only when they are missing. This is the default value.
 	//
-	// - **all**: Applies the rule to all files.
+	// - **all**: Rules take effect on all files.
 	//
 	// example:
 	//

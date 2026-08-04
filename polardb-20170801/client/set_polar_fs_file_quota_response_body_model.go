@@ -16,13 +16,13 @@ type iSetPolarFsFileQuotaResponseBody interface {
 }
 
 type SetPolarFsFileQuotaResponseBody struct {
-	// The ID of the PolarFS instance.
+	// The Polarlakebase instance ID.
 	//
 	// example:
 	//
 	// pfs-2ze0i74ka607*****
 	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
