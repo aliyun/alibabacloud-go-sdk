@@ -26,32 +26,46 @@ type iCloudPlayerShrinkRequest interface {
 }
 
 type CloudPlayerShrinkRequest struct {
+	// Index of the currently playing song. Starts from 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CurPlayIndex *int32 `json:"CurPlayIndex,omitempty" xml:"CurPlayIndex,omitempty"`
+	// Device identity information
+	//
 	// This parameter is required.
 	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	// Playback pattern
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Normal
 	PlayMode *string `json:"PlayMode,omitempty" xml:"PlayMode,omitempty"`
+	// Song ID (used to recompute the index when the index is invalid)
+	//
 	// example:
 	//
 	// 123
 	SongId *string `json:"SongId,omitempty" xml:"SongId,omitempty"`
+	// List of song IDs (1–200 songs)
+	//
 	// This parameter is required.
 	SongIdListShrink *string `json:"SongIdList,omitempty" xml:"SongIdList,omitempty"`
+	// Source of cloud-recommended songs
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// KG
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Open user information
+	//
 	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }

@@ -22,19 +22,28 @@ type iGetCurrentPlayingListResponseBody interface {
 }
 
 type GetCurrentPlayingListResponseBody struct {
+	// Return code of the invocation
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Additional information. A typical scenario is providing a brief description for failed invocations to help the caller identify the issue.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 10002398812
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*GetCurrentPlayingListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Actual return result of the service
+	Result []*GetCurrentPlayingListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the invocation succeeded. true indicates success, and false indicates failure. When the invocation fails, check the Message field.
+	//
 	// example:
 	//
 	// true
@@ -95,66 +104,119 @@ func (s *GetCurrentPlayingListResponseBody) SetSuccess(v string) *GetCurrentPlay
 }
 
 func (s *GetCurrentPlayingListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCurrentPlayingListResponseBodyResult struct {
+	// Third-party album name
+	//
+	// example:
+	//
+	// 晚安妈妈睡前故事
 	AlbumName *string `json:"AlbumName,omitempty" xml:"AlbumName,omitempty"`
+	// Third-party album ID
+	//
 	// example:
 	//
 	// 260744
 	AlbumRawId *string `json:"AlbumRawId,omitempty" xml:"AlbumRawId,omitempty"`
+	// Length
+	//
 	// example:
 	//
 	// 190
 	AudioLength *int32 `json:"AudioLength,omitempty" xml:"AudioLength,omitempty"`
+	// The copyright field has been upgraded to indicate whether playback is allowed: 0 means playable, 1 or 2 means not playable.
+	//
 	// example:
 	//
 	// 0
-	Copyright *int32                                        `json:"Copyright,omitempty" xml:"Copyright,omitempty"`
-	Cover     *GetCurrentPlayingListResponseBodyResultCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
+	Copyright *int32 `json:"Copyright,omitempty" xml:"Copyright,omitempty"`
+	// Thumbnail image object
+	Cover *GetCurrentPlayingListResponseBodyResultCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
+	// Default playback order for the package: 0 for sequential, 1 for reverse order
+	//
 	// example:
 	//
 	// 1
 	DefaultPlayOrder *int32 `json:"DefaultPlayOrder,omitempty" xml:"DefaultPlayOrder,omitempty"`
+	// Playback URL
+	//
 	// example:
 	//
 	// https://openaudio.cos.tx.xmcdn.com/storages/587f-audiofreehighqps/15/CE/GKwRIJIGnb11ABc6SwF59DNb.mp3
 	ItemUrl *string `json:"ItemUrl,omitempty" xml:"ItemUrl,omitempty"`
+	// is collected
+	//
 	// example:
 	//
 	// false
 	Liked *bool `json:"Liked,omitempty" xml:"Liked,omitempty"`
+	// Lyrics URL
+	//
 	// example:
 	//
 	// https://aicontent.alibabausercontent.com/lyric/thirdsource/6f4c8408073db134b0d097c122b5a1a1.lrc
 	LyricUrl *string `json:"LyricUrl,omitempty" xml:"LyricUrl,omitempty"`
+	// Playback mode (Repeat, Shuffle, RepeatOne, Normal)
+	//
 	// example:
 	//
 	// Normal
 	PlayMode *string `json:"PlayMode,omitempty" xml:"PlayMode,omitempty"`
+	// Position of this item in the playlist
+	//
 	// example:
 	//
 	// 0
 	Pos *int32 `json:"Pos,omitempty" xml:"Pos,omitempty"`
+	// Playback progress of the song
+	//
 	// example:
 	//
 	// 0
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// Third-party ID
+	//
 	// example:
 	//
 	// 550144364
-	RawId  *string `json:"RawId,omitempty" xml:"RawId,omitempty"`
+	RawId *string `json:"RawId,omitempty" xml:"RawId,omitempty"`
+	// author
+	//
+	// example:
+	//
+	// 晚安妈妈
 	Singer *string `json:"Singer,omitempty" xml:"Singer,omitempty"`
+	// Source
+	//
 	// example:
 	//
 	// ximalayav2
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// title
+	//
+	// example:
+	//
+	// 足球鞋赛车 晚安妈妈
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Type (such as music, program, joke, news, children_song, radio, etc.)
+	//
 	// example:
 	//
 	// story
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Whether playable: VALID(10), UNKNOWN(20), NOT_VALID(30)
+	//
 	// example:
 	//
 	// VALID
@@ -332,30 +394,47 @@ func (s *GetCurrentPlayingListResponseBodyResult) SetValid(v string) *GetCurrent
 }
 
 func (s *GetCurrentPlayingListResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Cover != nil {
+		if err := s.Cover.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCurrentPlayingListResponseBodyResultCover struct {
+	// Indicates whether OSS rules can be used for cropping.
+	//
 	// example:
 	//
 	// false
 	CanResize *bool `json:"CanResize,omitempty" xml:"CanResize,omitempty"`
+	// Default image
+	//
 	// example:
 	//
 	// http://imgopen.xmcdn.com/group58/M06/08/9B/wKgLglzTyTjiOy0oAAcOTv16ohg815.jpg!op_type=3&columns=640&rows=640
 	Img *string `json:"Img,omitempty" xml:"Img,omitempty"`
+	// Large image
+	//
 	// example:
 	//
 	// http://imgopen.xmcdn.com/group58/M06/08/9B/wKgLglzTyTjiOy0oAAcOTv16ohg815.jpg!op_type=3&columns=640&rows=640
 	Large *string `json:"Large,omitempty" xml:"Large,omitempty"`
+	// Medium image
+	//
 	// example:
 	//
 	// http://imgopen.xmcdn.com/group58/M06/08/9B/wKgLglzTyTjiOy0oAAcOTv16ohg815.jpg!op_type=3&columns=640&rows=640
 	Mediam *string `json:"Mediam,omitempty" xml:"Mediam,omitempty"`
+	// Medium image
+	//
 	// example:
 	//
 	// http://imgopen.xmcdn.com/group58/M06/08/9B/wKgLglzTyTjiOy0oAAcOTv16ohg815.jpg!op_type=3&columns=640&rows=640
 	Medium *string `json:"Medium,omitempty" xml:"Medium,omitempty"`
+	// Small image
+	//
 	// example:
 	//
 	// http://imgopen.xmcdn.com/group58/M06/08/9B/wKgLglzTyTjiOy0oAAcOTv16ohg815.jpg!op_type=3&columns=640&rows=640

@@ -85,7 +85,17 @@ func (s *CheckAndDoVoipCallForHotelRequest) SetUserInfo(v *CheckAndDoVoipCallFor
 }
 
 func (s *CheckAndDoVoipCallForHotelRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceInfo != nil {
+		if err := s.DeviceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CheckAndDoVoipCallForHotelRequestDeviceInfo struct {

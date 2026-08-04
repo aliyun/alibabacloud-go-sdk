@@ -16,8 +16,12 @@ type iUnbindDeviceShrinkRequest interface {
 }
 
 type UnbindDeviceShrinkRequest struct {
+	// List of device identity information.
+	//
 	// This parameter is required.
 	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	// List of user identifier information.
+	//
 	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }

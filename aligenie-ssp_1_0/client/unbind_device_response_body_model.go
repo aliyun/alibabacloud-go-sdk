@@ -20,18 +20,26 @@ type iUnbindDeviceResponseBody interface {
 }
 
 type UnbindDeviceResponseBody struct {
+	// The error code returned. A value of 200 indicates that the call succeeded.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The return result of invoking this API.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0EC7*726E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the device was detached successfully.
+	//
 	// example:
 	//
 	// true

@@ -59,5 +59,10 @@ func (s *GetAligenieUserInfoResponse) SetBody(v *GetAligenieUserInfoResponseBody
 }
 
 func (s *GetAligenieUserInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -18,10 +18,12 @@ type iListSubAlbumRequest interface {
 }
 
 type ListSubAlbumRequest struct {
+	// Device Information
 	DeviceInfo *ListSubAlbumRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
 	// request
 	QuerySubscriptionAlbumRequest *ListSubAlbumRequestQuerySubscriptionAlbumRequest `json:"QuerySubscriptionAlbumRequest,omitempty" xml:"QuerySubscriptionAlbumRequest,omitempty" type:"Struct"`
-	UserInfo                      *ListSubAlbumRequestUserInfo                      `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
+	// User information
+	UserInfo *ListSubAlbumRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
 
 func (s ListSubAlbumRequest) String() string {
@@ -60,7 +62,22 @@ func (s *ListSubAlbumRequest) SetUserInfo(v *ListSubAlbumRequestUserInfo) *ListS
 }
 
 func (s *ListSubAlbumRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceInfo != nil {
+		if err := s.DeviceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QuerySubscriptionAlbumRequest != nil {
+		if err := s.QuerySubscriptionAlbumRequest.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSubAlbumRequestDeviceInfo struct {
@@ -129,18 +146,26 @@ func (s *ListSubAlbumRequestDeviceInfo) Validate() error {
 }
 
 type ListSubAlbumRequestQuerySubscriptionAlbumRequest struct {
+	// Album ID
+	//
 	// example:
 	//
 	// 4476001
 	AlbumId *string `json:"AlbumId,omitempty" xml:"AlbumId,omitempty"`
+	// Category ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 80011
 	CategoryId *int32 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// Pagination Parameters
+	//
 	// This parameter is required.
 	Page *ListSubAlbumRequestQuerySubscriptionAlbumRequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// Album title
+	//
 	// example:
 	//
 	// 睡前故事
@@ -192,14 +217,23 @@ func (s *ListSubAlbumRequestQuerySubscriptionAlbumRequest) SetTitle(v string) *L
 }
 
 func (s *ListSubAlbumRequestQuerySubscriptionAlbumRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Page != nil {
+		if err := s.Page.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSubAlbumRequestQuerySubscriptionAlbumRequestPage struct {
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Number of entries per page
+	//
 	// example:
 	//
 	// 10

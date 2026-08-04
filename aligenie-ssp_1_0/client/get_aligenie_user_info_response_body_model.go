@@ -22,20 +22,27 @@ type iGetAligenieUserInfoResponseBody interface {
 }
 
 type GetAligenieUserInfoResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response message
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 73C67BD9-175A-1324-8202-9FAABBB3E6FA
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *GetAligenieUserInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Flag indicating whether the invocation succeeded
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAligenieUserInfoResponseBody) String() string {
@@ -92,19 +99,29 @@ func (s *GetAligenieUserInfoResponseBody) SetSuccess(v bool) *GetAligenieUserInf
 }
 
 func (s *GetAligenieUserInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAligenieUserInfoResponseBodyResult struct {
+	// Aligenie user nickname
+	//
 	// example:
 	//
 	// XXX
 	AligenieNickname *string `json:"AligenieNickname,omitempty" xml:"AligenieNickname,omitempty"`
+	// URL of the Aligenie user profile picture
+	//
 	// example:
 	//
 	// http://img.alicdn.com/xxx.jpg
-	Avatar    *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
-	Deletable *bool   `json:"Deletable,omitempty" xml:"Deletable,omitempty"`
+	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	// Indicates whether the account can be logged off
+	Deletable *bool `json:"Deletable,omitempty" xml:"Deletable,omitempty"`
 }
 
 func (s GetAligenieUserInfoResponseBodyResult) String() string {

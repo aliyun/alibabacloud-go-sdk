@@ -20,19 +20,26 @@ type iListSubscriptionAlbumCategoryResponseBody interface {
 }
 
 type ListSubscriptionAlbumCategoryResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Additional information
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 60E7A523-9766-1D07-87A2-6E587420C59B
-	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListSubscriptionAlbumCategoryResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of categories
+	Result []*ListSubscriptionAlbumCategoryResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListSubscriptionAlbumCategoryResponseBody) String() string {
@@ -80,14 +87,27 @@ func (s *ListSubscriptionAlbumCategoryResponseBody) SetResult(v []*ListSubscript
 }
 
 func (s *ListSubscriptionAlbumCategoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSubscriptionAlbumCategoryResponseBodyResult struct {
+	// Category ID
+	//
 	// example:
 	//
 	// 80011
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// Category name
+	//
 	// example:
 	//
 	// 儿童

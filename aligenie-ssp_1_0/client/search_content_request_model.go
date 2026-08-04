@@ -18,10 +18,16 @@ type iSearchContentRequest interface {
 }
 
 type SearchContentRequest struct {
+	// Device identification information
+	//
 	// This parameter is required.
 	DeviceInfo *SearchContentRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
+	// Request Parameters
+	//
 	// This parameter is required.
 	Request *SearchContentRequestRequest `json:"Request,omitempty" xml:"Request,omitempty" type:"Struct"`
+	// User identification information
+	//
 	// This parameter is required.
 	UserInfo *SearchContentRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
@@ -62,34 +68,71 @@ func (s *SearchContentRequest) SetUserInfo(v *SearchContentRequestUserInfo) *Sea
 }
 
 func (s *SearchContentRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceInfo != nil {
+		if err := s.DeviceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Request != nil {
+		if err := s.Request.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchContentRequestDeviceInfo struct {
+	// Value corresponding to the encoding type.
+	//
+	// When the encoding type is `SKILL_ID`, the value is the application\\"s Skill ID.
+	//
+	// When the encoding type is `PACKAGE_NAME`, the value is the `packageName` of the corresponding client app.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12**45
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. There are multiple ways to obtain the device ID for Tmall Genie, and each method corresponds to a different encoding type.
+	//
+	// `PACKAGE_NAME`: APK package name, used for the Android application customer link.
+	//
+	// `SKILL_ID`: Skill ID, used for the cloud-based link.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PACKAGE_NAME
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// Device ID, set to either `deviceOpenId` or `deviceUnionId`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DAFE****ce3ej=
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Type of device ID.
+	//
+	// `OPEN_ID`: Default device ID identity.
+	//
+	// `UNION_ID`: Organization-dimension device ID identity. This value is available only after an organization has been registered on the Tmall Genie Skill Application Open Platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. Required when `IdType` is `UNION_ID`.
+	//
 	// example:
 	//
 	// 1**2
@@ -154,23 +197,50 @@ func (s *SearchContentRequestDeviceInfo) Validate() error {
 }
 
 type SearchContentRequestRequest struct {
+	// The search scope: music or audio.
+	//
+	// Input parameter enumeration: music | program
+	//
 	// example:
 	//
 	// music
 	Cate *string `json:"Cate,omitempty" xml:"Cate,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Number of records per page
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Query    *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Query keyword
+	//
+	// example:
+	//
+	// 周杰伦
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Whether to query albums
+	//
 	// example:
 	//
 	// false
 	QueryAlbum *bool `json:"QueryAlbum,omitempty" xml:"QueryAlbum,omitempty"`
+	// When `cate` is `music`, `subCate` can be omitted.
+	//
+	// If `subCate` is provided, it can be one of the following:
+	//
+	// `song` (Song), `singer` (Artist), `album` (Album).
+	//
+	// When `cate` is `program`, `subCate` can be omitted.
+	//
+	// If `subCate` is provided, it can be one of the following:
+	//
+	// `album` (Album), `audio` (Program Audio), `radio` (Radio Station).
+	//
 	// example:
 	//
 	// singer
@@ -244,30 +314,52 @@ func (s *SearchContentRequestRequest) Validate() error {
 }
 
 type SearchContentRequestUserInfo struct {
+	// The value corresponding to the encoding type.
+	//
+	// When the encoding type is SKILL_ID, the value is the Skill ID of the application.
+	//
+	// When the encoding type is PACKAGE_NAME, the value is the packageName of the corresponding client app.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12**45
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. There are multiple ways to obtain the user identifier for Tmall Genie, and each method corresponds to a different encoding type.
+	//
+	// `PACKAGE_NAME`: APK package name, used for the Android application customer link.
+	//
+	// `SKILL_ID`: Skill ID, used for the cloud-based link.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PACKAGE_NAME
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// User identifier, set to either `userOpenId` or `userUnionId`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// HOFF****my7Iw=
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The Type of the User ID.
+	//
+	// OPEN_ID: The default User ID identity.
+	//
+	// UNION_ID: The organization-dimension User ID identity. This value is available only after an organization has been requested on the Tmall Genie Skills Open Platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. Required when `IdType` is `UNION_ID`.
+	//
 	// example:
 	//
 	// 1**2

@@ -20,19 +20,26 @@ type iListSubAlbumResponseBody interface {
 }
 
 type ListSubAlbumResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Additional information
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// CB13B8D7-37FB-1B3E-8EB9-65BB413267E1
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *ListSubAlbumResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Result
+	Result *ListSubAlbumResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s ListSubAlbumResponseBody) String() string {
@@ -80,16 +87,27 @@ func (s *ListSubAlbumResponseBody) SetResult(v *ListSubAlbumResponseBodyResult) 
 }
 
 func (s *ListSubAlbumResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSubAlbumResponseBodyResult struct {
+	// Album List
 	DataList []*ListSubAlbumResponseBodyResultDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	HasNext  *bool                                     `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	// Indicates whether there is a next page.
+	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	// total number of entries
+	//
 	// example:
 	//
 	// 3
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Total number of pages
+	//
 	// example:
 	//
 	// 1
@@ -141,36 +159,61 @@ func (s *ListSubAlbumResponseBodyResult) SetTotalPageCount(v int32) *ListSubAlbu
 }
 
 func (s *ListSubAlbumResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.DataList != nil {
+		for _, item := range s.DataList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSubAlbumResponseBodyResultDataList struct {
+	// Album ID
+	//
 	// example:
 	//
 	// 4476001
 	AlbumId *string `json:"AlbumId,omitempty" xml:"AlbumId,omitempty"`
+	// Album category ID
+	//
 	// example:
 	//
 	// 80011
 	CategoryId *int32 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// Album thumbnail
+	//
 	// example:
 	//
 	// https://ailabs.alibabausercontent.com/images/17825/jknoamc2.jpg
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// Record ID
+	//
 	// example:
 	//
 	// 1
-	Id           *int64                                              `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsAdded      *bool                                               `json:"IsAdded,omitempty" xml:"IsAdded,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Is subscribed
+	IsAdded *bool `json:"IsAdded,omitempty" xml:"IsAdded,omitempty"`
+	// Schedule information
 	ScheduleInfo *ListSubAlbumResponseBodyResultDataListScheduleInfo `json:"ScheduleInfo,omitempty" xml:"ScheduleInfo,omitempty" type:"Struct"`
+	// Sorting
+	//
 	// example:
 	//
 	// 1
 	Sequence *int64 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Album title
+	//
 	// example:
 	//
 	// 睡前故事
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Total number of episodes
+	//
 	// example:
 	//
 	// 23
@@ -267,19 +310,30 @@ func (s *ListSubAlbumResponseBodyResultDataList) SetTotalEpisode(v int32) *ListS
 }
 
 func (s *ListSubAlbumResponseBodyResultDataList) Validate() error {
-	return dara.Validate(s)
+	if s.ScheduleInfo != nil {
+		if err := s.ScheduleInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSubAlbumResponseBodyResultDataListScheduleInfo struct {
+	// trigger epoch
 	DaysOfWeek []*int32 `json:"DaysOfWeek,omitempty" xml:"DaysOfWeek,omitempty" type:"Repeated"`
+	// trigger hour
+	//
 	// example:
 	//
 	// 12
 	Hour *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// trigger minute
+	//
 	// example:
 	//
 	// 23
-	Minute     *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
+	Minute *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
+	// scheduled task ID
 	ScheduleId *int64 `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
 }
 

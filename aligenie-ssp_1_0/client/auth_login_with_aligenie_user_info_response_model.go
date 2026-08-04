@@ -59,5 +59,10 @@ func (s *AuthLoginWithAligenieUserInfoResponse) SetBody(v *AuthLoginWithAligenie
 }
 
 func (s *AuthLoginWithAligenieUserInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

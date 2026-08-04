@@ -18,18 +18,24 @@ type iEcologyOpennessSendVerificationCodeRequest interface {
 }
 
 type EcologyOpennessSendVerificationCodeRequest struct {
+  // Phone number
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 18612345678
   PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+  // Region encoding
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // +86
   Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+  // Session ID
+  // 
   // This parameter is required.
   // 
   // example:

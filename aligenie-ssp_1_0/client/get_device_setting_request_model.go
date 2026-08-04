@@ -16,7 +16,12 @@ type iGetDeviceSettingRequest interface {
 }
 
 type GetDeviceSettingRequest struct {
+	// List of device identity information.
 	DeviceInfo *GetDeviceSettingRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
+	// Set of specified keys for device Settings,
+	//
+	// Do Not Disturb mode: nightMode
+	//
 	// This parameter is required.
 	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
 }
@@ -48,34 +53,53 @@ func (s *GetDeviceSettingRequest) SetKeys(v []*string) *GetDeviceSettingRequest 
 }
 
 func (s *GetDeviceSettingRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceInfo != nil {
+		if err := s.DeviceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDeviceSettingRequestDeviceInfo struct {
+	// The value corresponding to the encoding type. Enter the Project ID of the project that contains the ProductKey of this product in the Tmall Genie AI Platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12345
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. Set this parameter to PROJECT_ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PROJECT_ID
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// Device ID. Configure this parameter as deviceOpenId or deviceUnionId.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DAFE****ce3ej=
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The type of Device ID.
+	//
+	// OPEN_ID: The default device identity.
+	//
+	// UNION_ID: The device identity at the organization dimension. You must request an organization in advance on the Open Platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. Required if IdType is UNION_ID.
+	//
 	// example:
 	//
 	// 122

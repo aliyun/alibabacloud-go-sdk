@@ -20,19 +20,26 @@ type iListDeviceIdByIdentitiesResponseBody interface {
 }
 
 type ListDeviceIdByIdentitiesResponseBody struct {
+	// The returned error code. A value of 200 indicates that the call succeeded.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The return result of invoking this API.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0EC7*726E
-	RequestId *string                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    map[string]*ResultValue `json:"Result,omitempty" xml:"Result,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of detailed returned information.
+	Result map[string]*ResultValue `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s ListDeviceIdByIdentitiesResponseBody) String() string {

@@ -59,5 +59,10 @@ func (s *GetJiangSuTelecomDataResponse) SetBody(v *GetJiangSuTelecomDataResponse
 }
 
 func (s *GetJiangSuTelecomDataResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -16,8 +16,12 @@ type iListDeviceByUserIdAndChanelShrinkRequest interface {
 }
 
 type ListDeviceByUserIdAndChanelShrinkRequest struct {
+	// Activation channel, such as WeChat mini program or third-party app.
+	//
 	// This parameter is required.
 	ChannelInfoShrink *string `json:"ChannelInfo,omitempty" xml:"ChannelInfo,omitempty"`
+	// List of User Identifier information.
+	//
 	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }

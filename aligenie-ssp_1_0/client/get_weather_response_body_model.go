@@ -25,13 +25,21 @@ type GetWeatherResponseBody struct {
 	// example:
 	//
 	// 200
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// error message
+	//
+	// example:
+	//
+	// 调用成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// F7E2****B7C94
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *GetWeatherResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// model data
+	Result *GetWeatherResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s GetWeatherResponseBody) String() string {
@@ -79,10 +87,16 @@ func (s *GetWeatherResponseBody) SetResult(v *GetWeatherResponseBodyResult) *Get
 }
 
 func (s *GetWeatherResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWeatherResponseBodyResult struct {
+	// Current weather
 	CurrentMeteorology *GetWeatherResponseBodyResultCurrentMeteorology `json:"CurrentMeteorology,omitempty" xml:"CurrentMeteorology,omitempty" type:"Struct"`
 }
 
@@ -104,12 +118,19 @@ func (s *GetWeatherResponseBodyResult) SetCurrentMeteorology(v *GetWeatherRespon
 }
 
 func (s *GetWeatherResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.CurrentMeteorology != nil {
+		if err := s.CurrentMeteorology.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWeatherResponseBodyResultCurrentMeteorology struct {
+	// Temperature
 	Temperature *GetWeatherResponseBodyResultCurrentMeteorologyTemperature `json:"Temperature,omitempty" xml:"Temperature,omitempty" type:"Struct"`
-	Weather     *GetWeatherResponseBodyResultCurrentMeteorologyWeather     `json:"Weather,omitempty" xml:"Weather,omitempty" type:"Struct"`
+	// Daytime weather
+	Weather *GetWeatherResponseBodyResultCurrentMeteorologyWeather `json:"Weather,omitempty" xml:"Weather,omitempty" type:"Struct"`
 }
 
 func (s GetWeatherResponseBodyResultCurrentMeteorology) String() string {
@@ -139,28 +160,61 @@ func (s *GetWeatherResponseBodyResultCurrentMeteorology) SetWeather(v *GetWeathe
 }
 
 func (s *GetWeatherResponseBodyResultCurrentMeteorology) Validate() error {
-	return dara.Validate(s)
+	if s.Temperature != nil {
+		if err := s.Temperature.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Weather != nil {
+		if err := s.Weather.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWeatherResponseBodyResultCurrentMeteorologyTemperature struct {
+	// Current temperature value
+	//
 	// example:
 	//
 	// 36
-	Current     *string `json:"Current,omitempty" xml:"Current,omitempty"`
+	Current *string `json:"Current,omitempty" xml:"Current,omitempty"`
+	// Description of the current temperature value
+	//
+	// example:
+	//
+	// 36度
 	CurrentDesc *string `json:"CurrentDesc,omitempty" xml:"CurrentDesc,omitempty"`
+	// Maximum temperature value
+	//
 	// example:
 	//
 	// 37
-	High     *string `json:"High,omitempty" xml:"High,omitempty"`
+	High *string `json:"High,omitempty" xml:"High,omitempty"`
+	// Description of the maximum temperature value
+	//
+	// example:
+	//
+	// 37度
 	HighDesc *string `json:"HighDesc,omitempty" xml:"HighDesc,omitempty"`
+	// Temperature with logic, as follows:
+	//
 	// example:
 	//
 	// 41
 	Logical *string `json:"Logical,omitempty" xml:"Logical,omitempty"`
+	// Lowest temperature
+	//
 	// example:
 	//
 	// 28
-	Low     *string `json:"Low,omitempty" xml:"Low,omitempty"`
+	Low *string `json:"Low,omitempty" xml:"Low,omitempty"`
+	// Description of the lowest temperature
+	//
+	// example:
+	//
+	// 28度
 	LowDesc *string `json:"LowDesc,omitempty" xml:"LowDesc,omitempty"`
 }
 
@@ -240,10 +294,17 @@ func (s *GetWeatherResponseBodyResultCurrentMeteorologyTemperature) Validate() e
 }
 
 type GetWeatherResponseBodyResultCurrentMeteorologyWeather struct {
+	// Weather code: for example, "000,100"
+	//
 	// example:
 	//
 	// 000
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Weather name description: "Sunny (000), Multicloud (100), Overcast (101), Rain (200), Light rain (201), Light to moderate rain (202), Moderate rain (203), Moderate to heavy rain (204), Heavy rain (205), Heavy to storm rain (206), Storm rain (207), Heavy storm rain (209), Severe storm rain (211), Showers (212), Thunderstorms (213), Freezing rain (214), Snow (300), Sleet (301), Snow showers (302), Light snow (303), Light to moderate snow (304), Moderate snow (305), Heavy snow (307), Blizzard (309), Fog (400), Dust (501), Sand blowing (502), Sandstorm (503), Severe sandstorm (504), Mostly sunny (000), Partly cloudy (100), Light showers (212), Lightning (213), Ice pellets (214), Thunderstorms with hail (215), Light snow showers (302), Freezing fog (400), Haze (500), Dust whirls (502), Localized showers (212), Thunderstorm (213), Ice needles (214), Hail (215), Intense showers (212)"
+	//
+	// example:
+	//
+	// 晴
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

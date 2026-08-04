@@ -20,19 +20,26 @@ type iListRecommendContentResponseBody interface {
 }
 
 type ListRecommendContentResponseBody struct {
+	// Code encoding
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Message information
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request RequestId
+	//
 	// example:
 	//
 	// F12B6147-5925-19E5-A3AD-E1EE1360F34E
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListRecommendContentResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return Result
+	Result []*ListRecommendContentResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListRecommendContentResponseBody) String() string {
@@ -80,55 +87,99 @@ func (s *ListRecommendContentResponseBody) SetResult(v []*ListRecommendContentRe
 }
 
 func (s *ListRecommendContentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRecommendContentResponseBodyResult struct {
+	// Alias
 	Alias []*string `json:"Alias,omitempty" xml:"Alias,omitempty" type:"Repeated"`
+	// Is audition available
+	//
 	// example:
 	//
 	// false
-	Audition *bool                                            `json:"Audition,omitempty" xml:"Audition,omitempty"`
-	Authors  []*ListRecommendContentResponseBodyResultAuthors `json:"Authors,omitempty" xml:"Authors,omitempty" type:"Repeated"`
+	Audition *bool `json:"Audition,omitempty" xml:"Audition,omitempty"`
+	// Content author
+	Authors []*ListRecommendContentResponseBodyResultAuthors `json:"Authors,omitempty" xml:"Authors,omitempty" type:"Repeated"`
+	// Transform controlType based on the assigned public category
+	//
 	// example:
 	//
 	// audio
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// Whether the content is charged
+	//
 	// example:
 	//
 	// false
 	Charge *bool `json:"Charge,omitempty" xml:"Charge,omitempty"`
+	// Corresponding category ID
+	//
 	// example:
 	//
 	// 80012017
-	CommCateId  *int64                                       `json:"CommCateId,omitempty" xml:"CommCateId,omitempty"`
-	Cover       *ListRecommendContentResponseBodyResultCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
-	Description *string                                      `json:"Description,omitempty" xml:"Description,omitempty"`
+	CommCateId *int64 `json:"CommCateId,omitempty" xml:"CommCateId,omitempty"`
+	// Album cover image
+	Cover *ListRecommendContentResponseBodyResultCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
+	// Content description
+	//
+	// example:
+	//
+	// 内容描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Hot Score
+	//
 	// example:
 	//
 	// 10
 	HotScore *float64 `json:"HotScore,omitempty" xml:"HotScore,omitempty"`
+	// Content ID
+	//
 	// example:
 	//
 	// 13597709
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Type of content, such as music, audio, radio, jokes, etc.
+	//
 	// example:
 	//
 	// ALBUM
 	ItemType *string `json:"ItemType,omitempty" xml:"ItemType,omitempty"`
+	// Third-party ID
+	//
 	// example:
 	//
 	// 123123
 	RawId *string `json:"RawId,omitempty" xml:"RawId,omitempty"`
+	// Source
+	//
 	// example:
 	//
 	// qingting
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Title
+	//
+	// example:
+	//
+	// 超能狂少在都市
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Transformed favoriteType based on the associated public category
+	//
 	// example:
 	//
 	// program
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Whether playable
+	//
 	// example:
 	//
 	// VALID
@@ -288,34 +339,70 @@ func (s *ListRecommendContentResponseBodyResult) SetValid(v string) *ListRecomme
 }
 
 func (s *ListRecommendContentResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Authors != nil {
+		for _, item := range s.Authors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Cover != nil {
+		if err := s.Cover.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRecommendContentResponseBodyResultAuthors struct {
-	AuthorTypes []*string                                           `json:"AuthorTypes,omitempty" xml:"AuthorTypes,omitempty" type:"Repeated"`
-	Cover       *ListRecommendContentResponseBodyResultAuthorsCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
-	Description *string                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Author types
+	AuthorTypes []*string `json:"AuthorTypes,omitempty" xml:"AuthorTypes,omitempty" type:"Repeated"`
+	// Profile picture
+	Cover *ListRecommendContentResponseBodyResultAuthorsCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
+	// Author description
+	//
+	// example:
+	//
+	// 播音呆瓜小贼
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Gender
+	//
 	// example:
 	//
 	// MALE
 	Gender *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	// Author primary key ID
+	//
 	// example:
 	//
 	// 13597709
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Whether the author is online
+	//
 	// example:
 	//
 	// false
 	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
+	// Third-party author ID
+	//
 	// example:
 	//
 	// 12311
 	RawId *string `json:"RawId,omitempty" xml:"RawId,omitempty"`
+	// Source
+	//
 	// example:
 	//
 	// qingting
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Author title
+	//
+	// example:
+	//
+	// 播音呆瓜小贼
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListRecommendContentResponseBodyResultAuthors) String() string {
@@ -408,26 +495,41 @@ func (s *ListRecommendContentResponseBodyResultAuthors) SetTitle(v string) *List
 }
 
 func (s *ListRecommendContentResponseBodyResultAuthors) Validate() error {
-	return dara.Validate(s)
+	if s.Cover != nil {
+		if err := s.Cover.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRecommendContentResponseBodyResultAuthorsCover struct {
+	// Indicates whether OSS rules can be used to crop the image
+	//
 	// example:
 	//
 	// false
 	CanResize *bool `json:"CanResize,omitempty" xml:"CanResize,omitempty"`
+	// Default image
+	//
 	// example:
 	//
 	// https://a.jpg
 	Img *string `json:"Img,omitempty" xml:"Img,omitempty"`
+	// Large image
+	//
 	// example:
 	//
 	// https://a.jpg
 	Large *string `json:"Large,omitempty" xml:"Large,omitempty"`
+	// Medium image
+	//
 	// example:
 	//
 	// https://a.jpg
 	Medium *string `json:"Medium,omitempty" xml:"Medium,omitempty"`
+	// Small image
+	//
 	// example:
 	//
 	// https://a.jpg
@@ -492,26 +594,38 @@ func (s *ListRecommendContentResponseBodyResultAuthorsCover) Validate() error {
 }
 
 type ListRecommendContentResponseBodyResultCover struct {
+	// Whether OSS rules can be used for cropping
+	//
 	// example:
 	//
 	// false
 	CanResize *bool `json:"CanResize,omitempty" xml:"CanResize,omitempty"`
+	// Default image
+	//
 	// example:
 	//
 	// http://pic.qtfm.cn/2017/0207/2017020718285.jpg
 	Img *string `json:"Img,omitempty" xml:"Img,omitempty"`
+	// Large image
+	//
 	// example:
 	//
 	// http://pic.qtfm.cn/2017/0207/2017020718285.jpg
 	Large *string `json:"Large,omitempty" xml:"Large,omitempty"`
+	// Medium image (Deprecated)
+	//
 	// example:
 	//
 	// http://pic.qtfm.cn/2017/0207/2017020718285.jpg
 	Mediam *string `json:"Mediam,omitempty" xml:"Mediam,omitempty"`
+	// Medium image
+	//
 	// example:
 	//
 	// http://pic.qtfm.cn/2017/0207/2017020718285.jpg
 	Medium *string `json:"Medium,omitempty" xml:"Medium,omitempty"`
+	// Small image
+	//
 	// example:
 	//
 	// http://pic.qtfm.cn/2017/0207/2017020718285.jpg

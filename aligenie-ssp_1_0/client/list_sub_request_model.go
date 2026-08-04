@@ -18,10 +18,16 @@ type iListSubRequest interface {
 }
 
 type ListSubRequest struct {
+	// Device Information
+	//
 	// This parameter is required.
 	DeviceInfo *ListSubRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
+	// Pagination Parameters
+	//
 	// This parameter is required.
 	Page *ListSubRequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// User information
+	//
 	// This parameter is required.
 	UserInfo *ListSubRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
@@ -62,7 +68,22 @@ func (s *ListSubRequest) SetUserInfo(v *ListSubRequestUserInfo) *ListSubRequest 
 }
 
 func (s *ListSubRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceInfo != nil {
+		if err := s.DeviceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Page != nil {
+		if err := s.Page.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSubRequestDeviceInfo struct {
@@ -151,10 +172,14 @@ func (s *ListSubRequestDeviceInfo) Validate() error {
 }
 
 type ListSubRequestPage struct {
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Number of entries per page
+	//
 	// example:
 	//
 	// 10

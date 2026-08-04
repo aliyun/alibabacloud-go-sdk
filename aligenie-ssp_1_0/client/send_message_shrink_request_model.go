@@ -16,6 +16,8 @@ type iSendMessageShrinkRequest interface {
 }
 
 type SendMessageShrinkRequest struct {
+	// Message URL
+	//
 	// example:
 	//
 	// http://xx

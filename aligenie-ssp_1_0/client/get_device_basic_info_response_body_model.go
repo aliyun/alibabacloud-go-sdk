@@ -20,19 +20,26 @@ type iGetDeviceBasicInfoResponseBody interface {
 }
 
 type GetDeviceBasicInfoResponseBody struct {
+	// Error code returned. A value of 200 indicates that the call succeeded.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return result of invoking this API.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 0EC7*726E
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *GetDeviceBasicInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Detailed information returned.
+	Result *GetDeviceBasicInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s GetDeviceBasicInfoResponseBody) String() string {
@@ -80,22 +87,35 @@ func (s *GetDeviceBasicInfoResponseBody) SetResult(v *GetDeviceBasicInfoResponse
 }
 
 func (s *GetDeviceBasicInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDeviceBasicInfoResponseBodyResult struct {
+	// Firmware version of the device.
+	//
 	// example:
 	//
 	// 2.0.3
 	FirmwareVersion *string `json:"FirmwareVersion,omitempty" xml:"FirmwareVersion,omitempty"`
+	// MAC address of the device.
+	//
 	// example:
 	//
 	// b4:xx:xx:xx:65:2b
 	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// Name of the device.
+	//
 	// example:
 	//
 	// 我的设备
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// SN information of the device.
+	//
 	// example:
 	//
 	// 1200xxx048

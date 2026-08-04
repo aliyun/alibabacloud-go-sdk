@@ -20,16 +20,26 @@ type iListAlarmsResponseBody interface {
 }
 
 type ListAlarmsResponseBody struct {
+	// status code returned by the alarm service
+	//
 	// example:
 	//
 	// 200
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// error message
+	//
+	// example:
+	//
+	// 设备账号未关联
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// request ID
+	//
 	// example:
 	//
 	// 43***28C-A810-5***-8747-EC226A086881
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *ListAlarmsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// collection of alarm list results
+	Result *ListAlarmsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s ListAlarmsResponseBody) String() string {
@@ -77,23 +87,37 @@ func (s *ListAlarmsResponseBody) SetResult(v *ListAlarmsResponseBodyResult) *Lis
 }
 
 func (s *ListAlarmsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAlarmsResponseBodyResult struct {
+	// current page
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                               `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Model       []*ListAlarmsResponseBodyResultModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// alarm list
+	Model []*ListAlarmsResponseBodyResultModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
+	// total number of pages
+	//
 	// example:
 	//
 	// 10
 	PageCount *int32 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	// number of entries per page: maximum is 100; values exceeding 100 are treated as 100
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// total number of entries
+	//
 	// example:
 	//
 	// 100
@@ -154,29 +178,55 @@ func (s *ListAlarmsResponseBodyResult) SetTotalCount(v int32) *ListAlarmsRespons
 }
 
 func (s *ListAlarmsResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Model != nil {
+		for _, item := range s.Model {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAlarmsResponseBodyResultModel struct {
+	// Alarm ID
+	//
 	// example:
 	//
 	// 1234567
-	AlarmId          *int64                                         `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
-	MusicInfo        *ListAlarmsResponseBodyResultModelMusicInfo    `json:"MusicInfo,omitempty" xml:"MusicInfo,omitempty" type:"Struct"`
-	ScheduleInfo     *ListAlarmsResponseBodyResultModelScheduleInfo `json:"ScheduleInfo,omitempty" xml:"ScheduleInfo,omitempty" type:"Struct"`
-	ScheduleTypeDesc *string                                        `json:"ScheduleTypeDesc,omitempty" xml:"ScheduleTypeDesc,omitempty"`
+	AlarmId *int64 `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	// Music information
+	MusicInfo *ListAlarmsResponseBodyResultModelMusicInfo `json:"MusicInfo,omitempty" xml:"MusicInfo,omitempty" type:"Struct"`
+	// Schedule information
+	ScheduleInfo *ListAlarmsResponseBodyResultModelScheduleInfo `json:"ScheduleInfo,omitempty" xml:"ScheduleInfo,omitempty" type:"Struct"`
+	// Chinese description of loop type
+	//
+	// example:
+	//
+	// 单次
+	ScheduleTypeDesc *string `json:"ScheduleTypeDesc,omitempty" xml:"ScheduleTypeDesc,omitempty"`
+	// Status: 0 Normal, 1 Deleted, 2 Shutdown
+	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Trigger date description (one-time)
+	//
 	// example:
 	//
 	// 2022-07-29
 	TriggerDateDesc *string `json:"TriggerDateDesc,omitempty" xml:"TriggerDateDesc,omitempty"`
+	// Trigger time description
+	//
 	// example:
 	//
 	// 10:00
 	TriggerTimeDesc *string `json:"TriggerTimeDesc,omitempty" xml:"TriggerTimeDesc,omitempty"`
+	// Ringtone volume, default 40
+	//
 	// example:
 	//
 	// 40
@@ -264,20 +314,46 @@ func (s *ListAlarmsResponseBodyResultModel) SetVolume(v int32) *ListAlarmsRespon
 }
 
 func (s *ListAlarmsResponseBodyResultModel) Validate() error {
-	return dara.Validate(s)
+	if s.MusicInfo != nil {
+		if err := s.MusicInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScheduleInfo != nil {
+		if err := s.ScheduleInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAlarmsResponseBodyResultModelMusicInfo struct {
+	// Ringtone ID
+	//
 	// example:
 	//
 	// 1
-	MusicId   *int64  `json:"MusicId,omitempty" xml:"MusicId,omitempty"`
+	MusicId *int64 `json:"MusicId,omitempty" xml:"MusicId,omitempty"`
+	// Ringtone Name
+	//
+	// example:
+	//
+	// xx铃声
 	MusicName *string `json:"MusicName,omitempty" xml:"MusicName,omitempty"`
+	// Ringtone Category ID
+	//
 	// example:
 	//
 	// 1
-	MusicType     *int64  `json:"MusicType,omitempty" xml:"MusicType,omitempty"`
+	MusicType *int64 `json:"MusicType,omitempty" xml:"MusicType,omitempty"`
+	// Ringtone Category Name
+	//
+	// example:
+	//
+	// xx音乐
 	MusicTypeName *string `json:"MusicTypeName,omitempty" xml:"MusicTypeName,omitempty"`
+	// Music URL
+	//
 	// example:
 	//
 	// http://xx
@@ -342,12 +418,17 @@ func (s *ListAlarmsResponseBodyResultModelMusicInfo) Validate() error {
 }
 
 type ListAlarmsResponseBodyResultModelScheduleInfo struct {
-	Once                *ListAlarmsResponseBodyResultModelScheduleInfoOnce                `json:"Once,omitempty" xml:"Once,omitempty" type:"Struct"`
+	// One-time: This property is active when the loop type is ONCE.
+	Once *ListAlarmsResponseBodyResultModelScheduleInfoOnce `json:"Once,omitempty" xml:"Once,omitempty" type:"Struct"`
+	// Statutory working day: This property is active when the loop Type is STATUTORYWORKINGDAY.
 	StatutoryWorkingDay *ListAlarmsResponseBodyResultModelScheduleInfoStatutoryWorkingDay `json:"StatutoryWorkingDay,omitempty" xml:"StatutoryWorkingDay,omitempty" type:"Struct"`
+	// Schedule Type / Loop Type: ONCE -> One-time, WEEKLY -> Weekly loop, STATUTORYWORKINGDAY -> Statutory working day
+	//
 	// example:
 	//
 	// ONCE
-	Type   *string                                              `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Weekly loop: This property is active when the loop Type is WEEKLY.
 	Weekly *ListAlarmsResponseBodyResultModelScheduleInfoWeekly `json:"Weekly,omitempty" xml:"Weekly,omitempty" type:"Struct"`
 }
 
@@ -396,26 +477,51 @@ func (s *ListAlarmsResponseBodyResultModelScheduleInfo) SetWeekly(v *ListAlarmsR
 }
 
 func (s *ListAlarmsResponseBodyResultModelScheduleInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Once != nil {
+		if err := s.Once.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StatutoryWorkingDay != nil {
+		if err := s.StatutoryWorkingDay.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Weekly != nil {
+		if err := s.Weekly.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAlarmsResponseBodyResultModelScheduleInfoOnce struct {
+	// Trigger time: day
+	//
 	// example:
 	//
 	// 29
 	Day *int32 `json:"Day,omitempty" xml:"Day,omitempty"`
+	// Trigger time: hour
+	//
 	// example:
 	//
 	// 10
 	Hour *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// Trigger time: minute
+	//
 	// example:
 	//
 	// 0
 	Minute *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
+	// Trigger Time: Month
+	//
 	// example:
 	//
 	// 7
 	Month *int32 `json:"Month,omitempty" xml:"Month,omitempty"`
+	// Trigger Time: Year
+	//
 	// example:
 	//
 	// 2022
@@ -480,10 +586,14 @@ func (s *ListAlarmsResponseBodyResultModelScheduleInfoOnce) Validate() error {
 }
 
 type ListAlarmsResponseBodyResultModelScheduleInfoStatutoryWorkingDay struct {
+	// Trigger time: hour
+	//
 	// example:
 	//
 	// 10
 	Hour *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// Trigger time: minute
+	//
 	// example:
 	//
 	// 0
@@ -521,11 +631,16 @@ func (s *ListAlarmsResponseBodyResultModelScheduleInfoStatutoryWorkingDay) Valid
 }
 
 type ListAlarmsResponseBodyResultModelScheduleInfoWeekly struct {
+	// Collection of days of the week to trigger
 	DaysOfWeek []*int32 `json:"DaysOfWeek,omitempty" xml:"DaysOfWeek,omitempty" type:"Repeated"`
+	// Trigger time: hour
+	//
 	// example:
 	//
 	// 10
 	Hour *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// Trigger time: minute
+	//
 	// example:
 	//
 	// 0

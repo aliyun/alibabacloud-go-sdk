@@ -22,19 +22,28 @@ type iCreatePlayingListOAuth2ResponseBody interface {
 }
 
 type CreatePlayingListOAuth2ResponseBody struct {
+	// Return code of the invocation
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Additional information, typically used to briefly describe a failed invocation to help the caller identify the issue.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 10002398812
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *CreatePlayingListOAuth2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Actual return result from the service
+	Result *CreatePlayingListOAuth2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the invocation succeeded. true indicates success, and false indicates failure. When the value is false, check the Message field.
+	//
 	// example:
 	//
 	// true
@@ -95,66 +104,115 @@ func (s *CreatePlayingListOAuth2ResponseBody) SetSuccess(v string) *CreatePlayin
 }
 
 func (s *CreatePlayingListOAuth2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreatePlayingListOAuth2ResponseBodyResult struct {
+	// Third-party album name
+	//
+	// example:
+	//
+	// 晚安妈妈睡前故事
 	AlbumName *string `json:"AlbumName,omitempty" xml:"AlbumName,omitempty"`
+	// Third-party album ID
+	//
 	// example:
 	//
 	// 260744
 	AlbumRawId *string `json:"AlbumRawId,omitempty" xml:"AlbumRawId,omitempty"`
+	// Length
+	//
 	// example:
 	//
 	// 190
 	AudioLength *int32 `json:"AudioLength,omitempty" xml:"AudioLength,omitempty"`
+	// The copyright field has been upgraded to indicate whether the content is playable: 0 means playable, 1 or 2 means not playable.
+	//
 	// example:
 	//
 	// 0
-	Copyright *int32                                          `json:"Copyright,omitempty" xml:"Copyright,omitempty"`
-	Cover     *CreatePlayingListOAuth2ResponseBodyResultCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
+	Copyright *int32 `json:"Copyright,omitempty" xml:"Copyright,omitempty"`
+	// thumbnail image object
+	Cover *CreatePlayingListOAuth2ResponseBodyResultCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
+	// Default playback order for the package: 0 for sequential, 1 for reverse order.
+	//
 	// example:
 	//
 	// 1
 	DefaultPlayOrder *int32 `json:"DefaultPlayOrder,omitempty" xml:"DefaultPlayOrder,omitempty"`
+	// Playback URL
+	//
 	// example:
 	//
 	// https://openaudio.cos.tx.xmcdn.com/storages/587f-audiofreehighqps/15/CE/GKwRIJIGnb11ABc6SwF59DNb.mp3
 	ItemUrl *string `json:"ItemUrl,omitempty" xml:"ItemUrl,omitempty"`
+	// is collected
+	//
 	// example:
 	//
 	// false
 	Liked *bool `json:"Liked,omitempty" xml:"Liked,omitempty"`
+	// Lyrics URL
+	//
 	// example:
 	//
 	// https://aicontent.alibabausercontent.com/lyric/thirdsource/6f4c8408073db134b0d097c122b5a1a1.lrc
 	LyricUrl *string `json:"LyricUrl,omitempty" xml:"LyricUrl,omitempty"`
+	// Playback mode (Repeat, Shuffle, RepeatOne, Normal)
+	//
 	// example:
 	//
 	// Repeat
 	PlayMode *string `json:"PlayMode,omitempty" xml:"PlayMode,omitempty"`
+	// Position of this item in the playlist.
+	//
 	// example:
 	//
 	// 1
 	Pos *int32 `json:"Pos,omitempty" xml:"Pos,omitempty"`
+	// Song playback progress
+	//
 	// example:
 	//
 	// 96.0
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// third-party ID
+	//
 	// example:
 	//
 	// 123123
-	RawId  *string `json:"RawId,omitempty" xml:"RawId,omitempty"`
+	RawId *string `json:"RawId,omitempty" xml:"RawId,omitempty"`
+	// Author
+	//
+	// example:
+	//
+	// 晚安妈妈
 	Singer *string `json:"Singer,omitempty" xml:"Singer,omitempty"`
+	// Source
+	//
 	// example:
 	//
 	// qignting
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// title
+	//
+	// example:
+	//
+	// 超能狂少在都市
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// type (such as music, program, joke, news, children_song, radio, etc.)
+	//
 	// example:
 	//
 	// program
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Playback availability status: VALID(10), UNKNOWN(20), NOT_VALID(30).
+	//
 	// example:
 	//
 	// VALID
@@ -332,30 +390,47 @@ func (s *CreatePlayingListOAuth2ResponseBodyResult) SetValid(v string) *CreatePl
 }
 
 func (s *CreatePlayingListOAuth2ResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Cover != nil {
+		if err := s.Cover.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreatePlayingListOAuth2ResponseBodyResultCover struct {
+	// Indicates whether cropping using OSS rules is allowed.
+	//
 	// example:
 	//
 	// false
 	CanResize *bool `json:"CanResize,omitempty" xml:"CanResize,omitempty"`
+	// default image
+	//
 	// example:
 	//
 	// http://pic.qtfm.cn/2017/0207/2017020718285.jpg
 	Img *string `json:"Img,omitempty" xml:"Img,omitempty"`
+	// Large image
+	//
 	// example:
 	//
 	// http://pic.qtfm.cn/2017/0207/2017020718285.jpg
 	Large *string `json:"Large,omitempty" xml:"Large,omitempty"`
+	// Medium image
+	//
 	// example:
 	//
 	// http://pic.qtfm.cn/2017/0207/2017020718285.jpg
 	Mediam *string `json:"Mediam,omitempty" xml:"Mediam,omitempty"`
+	// medium image
+	//
 	// example:
 	//
 	// http://pic.qtfm.cn/2017/0207/2017020718285.jpg
 	Medium *string `json:"Medium,omitempty" xml:"Medium,omitempty"`
+	// small image
+	//
 	// example:
 	//
 	// http://pic.qtfm.cn/2017/0207/2017020718285.jpg

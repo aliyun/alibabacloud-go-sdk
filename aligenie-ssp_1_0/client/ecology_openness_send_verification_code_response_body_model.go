@@ -22,19 +22,27 @@ type iEcologyOpennessSendVerificationCodeResponseBody interface {
 }
 
 type EcologyOpennessSendVerificationCodeResponseBody struct {
+  // Response code
+  // 
   // example:
   // 
   // 200
   Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+  // Response message
+  // 
   // example:
   // 
   // OK
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+  // Request ID
+  // 
   // example:
   // 
   // 73C67BD9-175A-1324-8202-9FAABBB3E6FA
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // Response Result
   Result *EcologyOpennessSendVerificationCodeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+  // Flag indicating whether the invocation succeeded
   Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -92,14 +100,23 @@ func (s *EcologyOpennessSendVerificationCodeResponseBody) SetSuccess(v bool) *Ec
 }
 
 func (s *EcologyOpennessSendVerificationCodeResponseBody) Validate() error {
-  return dara.Validate(s)
+  if s.Result != nil {
+    if err := s.Result.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type EcologyOpennessSendVerificationCodeResponseBodyResult struct {
+  // Validity Period (unit: seconds)
+  // 
   // example:
   // 
   // 900
   ExpireIn *int32 `json:"ExpireIn,omitempty" xml:"ExpireIn,omitempty"`
+  // Recency before the next resend is allowed (unit: seconds)
+  // 
   // example:
   // 
   // 60

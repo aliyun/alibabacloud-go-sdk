@@ -16,8 +16,12 @@ type iScgSearchRequest interface {
 }
 
 type ScgSearchRequest struct {
+	// Query filter
+	//
 	// This parameter is required.
 	ScgFilter *ScgSearchRequestScgFilter `json:"ScgFilter,omitempty" xml:"ScgFilter,omitempty" type:"Struct"`
+	// Selection pool ID. Optional values: MC201132 (Ethnic Chinese Style), MC201136 (Pop Music), MC201139 (Sweet Love), MC201133 (Folk), MC201137 (Relaxing Reading), MC201138 (Happiness), PA202029 (Stories), PA202030 (Children\\"s Songs), PA202028 (Chinese Classics and History), PA202032 (Encyclopedia), PA202031 (English Children\\"s Songs)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -53,14 +57,25 @@ func (s *ScgSearchRequest) SetTopicId(v string) *ScgSearchRequest {
 }
 
 func (s *ScgSearchRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ScgFilter != nil {
+		if err := s.ScgFilter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ScgSearchRequestScgFilter struct {
+	// Paging type
 	OffSetParam *ScgSearchRequestScgFilterOffSetParam `json:"OffSetParam,omitempty" xml:"OffSetParam,omitempty" type:"Struct"`
-	PageParam   *ScgSearchRequestScgFilterPageParam   `json:"PageParam,omitempty" xml:"PageParam,omitempty" type:"Struct"`
+	// Paging type
+	PageParam *ScgSearchRequestScgFilterPageParam `json:"PageParam,omitempty" xml:"PageParam,omitempty" type:"Struct"`
+	// Sorting parameters
+	//
 	// This parameter is required.
 	SortParam *ScgSearchRequestScgFilterSortParam `json:"SortParam,omitempty" xml:"SortParam,omitempty" type:"Struct"`
+	// Whether to use the pageParam object for paging. Choose either offSetParam or pageParam. The default paging mode is pageParam.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -114,14 +129,33 @@ func (s *ScgSearchRequestScgFilter) SetUseOffSet(v bool) *ScgSearchRequestScgFil
 }
 
 func (s *ScgSearchRequestScgFilter) Validate() error {
-	return dara.Validate(s)
+	if s.OffSetParam != nil {
+		if err := s.OffSetParam.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PageParam != nil {
+		if err := s.PageParam.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SortParam != nil {
+		if err := s.SortParam.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ScgSearchRequestScgFilterOffSetParam struct {
+	// Number of returned items
+	//
 	// example:
 	//
 	// 20
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// Number of skipped items
+	//
 	// example:
 	//
 	// 10
@@ -159,10 +193,14 @@ func (s *ScgSearchRequestScgFilterOffSetParam) Validate() error {
 }
 
 type ScgSearchRequestScgFilterPageParam struct {
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Number of records per page
+	//
 	// example:
 	//
 	// 10
@@ -200,14 +238,20 @@ func (s *ScgSearchRequestScgFilterPageParam) Validate() error {
 }
 
 type ScgSearchRequestScgFilterSortParam struct {
+	// Sorting field
+	//
 	// example:
 	//
 	// internal_id
 	SortKey *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
+	// Sorting order
+	//
 	// example:
 	//
 	// ASC
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// Sorting field (default: empty string)
+	//
 	// example:
 	//
 	// “”

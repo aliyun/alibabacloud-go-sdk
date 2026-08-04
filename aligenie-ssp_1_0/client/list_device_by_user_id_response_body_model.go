@@ -20,19 +20,26 @@ type iListDeviceByUserIdResponseBody interface {
 }
 
 type ListDeviceByUserIdResponseBody struct {
+	// The returned error code, where 200 indicates that the invocation succeeded.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The return result of invoking this API.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0EC7*726E
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListDeviceByUserIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Detailed information returned.
+	Result []*ListDeviceByUserIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListDeviceByUserIdResponseBody) String() string {
@@ -80,14 +87,26 @@ func (s *ListDeviceByUserIdResponseBody) SetResult(v []*ListDeviceByUserIdRespon
 }
 
 func (s *ListDeviceByUserIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDeviceByUserIdResponseBodyResult struct {
+	// The openId corresponding to the Device Information.
+	//
 	// example:
 	//
 	// A963*0158
-	DeviceOpenId   *string                                               `json:"DeviceOpenId,omitempty" xml:"DeviceOpenId,omitempty"`
+	DeviceOpenId *string `json:"DeviceOpenId,omitempty" xml:"DeviceOpenId,omitempty"`
+	// Organization ID and UnionId information corresponding to the device.
 	DeviceUnionIds []*ListDeviceByUserIdResponseBodyResultDeviceUnionIds `json:"DeviceUnionIds,omitempty" xml:"DeviceUnionIds,omitempty" type:"Repeated"`
 }
 
@@ -118,14 +137,27 @@ func (s *ListDeviceByUserIdResponseBodyResult) SetDeviceUnionIds(v []*ListDevice
 }
 
 func (s *ListDeviceByUserIdResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceUnionIds != nil {
+		for _, item := range s.DeviceUnionIds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDeviceByUserIdResponseBodyResultDeviceUnionIds struct {
+	// The UnionId of the device.
+	//
 	// example:
 	//
 	// 1553*B0C3
 	DeviceUnionId *string `json:"DeviceUnionId,omitempty" xml:"DeviceUnionId,omitempty"`
+	// The organization ID.
+	//
 	// example:
 	//
 	// 1**2

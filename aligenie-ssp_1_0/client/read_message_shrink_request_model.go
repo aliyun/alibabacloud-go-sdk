@@ -16,10 +16,14 @@ type iReadMessageShrinkRequest interface {
 }
 
 type ReadMessageShrinkRequest struct {
+	// Message ID
+	//
 	// example:
 	//
 	// 12345
 	MessageId *int64 `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// User information
+	//
 	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }

@@ -20,19 +20,26 @@ type iListCateInfoResponseBody interface {
 }
 
 type ListCateInfoResponseBody struct {
+	// Code encoding
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Message information
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// F12B6147-5925-19E5-A3AD-E1EE1360F34E
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListCateInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned parameters
+	Result []*ListCateInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListCateInfoResponseBody) String() string {
@@ -80,15 +87,33 @@ func (s *ListCateInfoResponseBody) SetResult(v []*ListCateInfoResponseBodyResult
 }
 
 func (s *ListCateInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCateInfoResponseBodyResult struct {
+	// Category ID
+	//
 	// example:
 	//
 	// 80064
-	CateId   *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	// Category name
+	//
+	// example:
+	//
+	// 时尚生活
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
+	// Parent category ID
+	//
 	// example:
 	//
 	// 0

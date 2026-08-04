@@ -20,19 +20,26 @@ type iGetAlbumDetailByIdResponseBody interface {
 }
 
 type GetAlbumDetailByIdResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Additional information
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// A0B7CACD-485B-14E2-854F-39EACB09E45B
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *GetAlbumDetailByIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Album content
+	Result *GetAlbumDetailByIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s GetAlbumDetailByIdResponseBody) String() string {
@@ -80,23 +87,37 @@ func (s *GetAlbumDetailByIdResponseBody) SetResult(v *GetAlbumDetailByIdResponse
 }
 
 func (s *GetAlbumDetailByIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAlbumDetailByIdResponseBodyResult struct {
+	// Album content list
 	AlbumContentList []*GetAlbumDetailByIdResponseBodyResultAlbumContentList `json:"AlbumContentList,omitempty" xml:"AlbumContentList,omitempty" type:"Repeated"`
+	// Album thumbnail
+	//
 	// example:
 	//
 	// https://ailabs.alibabausercontent.com/images/8838/1600839452498.jpg
 	AlbumCoverUrl *string `json:"AlbumCoverUrl,omitempty" xml:"AlbumCoverUrl,omitempty"`
+	// Album Description
+	//
 	// example:
 	//
-	// 每次一个百科知识或者故事\n丰富孩子的视野，拓展眼界和知识面，培养和孩子的探究能力和好奇心\n\n
+	// 每次一个百科知识或者故事\\n丰富孩子的视野，拓展眼界和知识面，培养和孩子的探究能力和好奇心\\n\\n
 	AlbumDescription *string `json:"AlbumDescription,omitempty" xml:"AlbumDescription,omitempty"`
+	// Album ID
+	//
 	// example:
 	//
 	// 51999575
 	AlbumId *string `json:"AlbumId,omitempty" xml:"AlbumId,omitempty"`
+	// Album Title
+	//
 	// example:
 	//
 	// 小科学家探索
@@ -157,22 +178,39 @@ func (s *GetAlbumDetailByIdResponseBodyResult) SetAlbumTitle(v string) *GetAlbum
 }
 
 func (s *GetAlbumDetailByIdResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.AlbumContentList != nil {
+		for _, item := range s.AlbumContentList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAlbumDetailByIdResponseBodyResultAlbumContentList struct {
+	// Album content duration
+	//
 	// example:
 	//
 	// 3分24秒
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Album content ID
+	//
 	// example:
 	//
 	// 468009044
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Album content sorting
+	//
 	// example:
 	//
 	// 1000
 	OrderIndex *string `json:"OrderIndex,omitempty" xml:"OrderIndex,omitempty"`
+	// Album content title
+	//
 	// example:
 	//
 	// 001为什么肚子饿时会咕咕叫

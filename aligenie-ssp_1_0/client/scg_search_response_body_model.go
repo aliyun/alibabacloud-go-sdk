@@ -24,27 +24,42 @@ type iScgSearchResponseBody interface {
 }
 
 type ScgSearchResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response message
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Number of records per page
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 73C67BD9-175A-1324-8202-9FAABBB3E6FA
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ScgSearchResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Detailed returned information.
+	//
+	// example:
+	//
+	// {"sourceId":0,"copyright":0,"releaseTime":1196438400000,"hotScore":0.9546929544543479,"tppExtendInfo":"{\\"userEvent\\":\\"前台投放\\",\\"scgTopicName\\":\\"inside民族中国风曲风音乐库\\",\\"scgTopicId\\":\\"MC201132\\"}","source":"xiami","title":"题帕三绝","type":"music","x1Pv30d":10307,"valid":10,"cover":{"img":"http://img.xiami.net/qianxun/07d8ec1a38a5462c3afbfac41413b8af/47244c25fcf3a8f67442d02e3127d023-500x432.jpg","canResize":false},"duration":0,"rawId":"1771626071","albumType":0,"alias":["题帕三绝"],"id":268033175,"supportAudition":false,"contentType":"MUSIC_CONTENT","authorIds":[],"singers":"陈力","albumRawId":"1771626071","album":false,"x1PvTotal":14676,"commCateId":80021001,"finished":0,"isAudition":false,"appIds":[],"authorNames":["陈力","王立平","曹雪芹"],"needCharge":false,"isCharge":false,"category":"audio"}
+	Result []*ScgSearchResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ScgSearchResponseBody) String() string {
@@ -110,60 +125,107 @@ func (s *ScgSearchResponseBody) SetResult(v []*ScgSearchResponseBodyResult) *Scg
 }
 
 func (s *ScgSearchResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ScgSearchResponseBodyResult struct {
+	// Whether it is an album
+	//
 	// example:
 	//
 	// false
 	Album *bool `json:"Album,omitempty" xml:"Album,omitempty"`
+	// Album ID
+	//
 	// example:
 	//
 	// 1795716629
 	AlbumRawId *string `json:"AlbumRawId,omitempty" xml:"AlbumRawId,omitempty"`
+	// Album type
+	//
 	// example:
 	//
 	// 0
-	AlbumType   *int32    `json:"AlbumType,omitempty" xml:"AlbumType,omitempty"`
-	Alias       []*string `json:"Alias,omitempty" xml:"Alias,omitempty" type:"Repeated"`
-	AuthorIds   []*int64  `json:"AuthorIds,omitempty" xml:"AuthorIds,omitempty" type:"Repeated"`
+	AlbumType *int32 `json:"AlbumType,omitempty" xml:"AlbumType,omitempty"`
+	// Alias
+	Alias []*string `json:"Alias,omitempty" xml:"Alias,omitempty" type:"Repeated"`
+	// Author ID
+	AuthorIds []*int64 `json:"AuthorIds,omitempty" xml:"AuthorIds,omitempty" type:"Repeated"`
+	// Author names
 	AuthorNames []*string `json:"AuthorNames,omitempty" xml:"AuthorNames,omitempty" type:"Repeated"`
+	// Category
+	//
 	// example:
 	//
 	// audio
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// Content type
+	//
 	// example:
 	//
 	// MUSIC_CONTENT
-	ContentType *string                           `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	Cover       *ScgSearchResponseBodyResultCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// Thumbnail
+	Cover *ScgSearchResponseBodyResultCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
+	// Whether audition is available
+	//
 	// example:
 	//
 	// false
 	IsAudition *bool `json:"IsAudition,omitempty" xml:"IsAudition,omitempty"`
+	// Is charged
+	//
 	// example:
 	//
 	// false
 	IsCharge *string `json:"IsCharge,omitempty" xml:"IsCharge,omitempty"`
+	// Whether charging is required
+	//
 	// example:
 	//
 	// false
 	NeedCharge *bool `json:"NeedCharge,omitempty" xml:"NeedCharge,omitempty"`
+	// Third-party content ID
+	//
 	// example:
 	//
 	// 1795716629
-	RawId   *string `json:"RawId,omitempty" xml:"RawId,omitempty"`
+	RawId *string `json:"RawId,omitempty" xml:"RawId,omitempty"`
+	// Singer name
+	//
+	// example:
+	//
+	// 黎偌天
 	Singers *string `json:"Singers,omitempty" xml:"Singers,omitempty"`
+	// Content source
+	//
 	// example:
 	//
 	// xiami
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Whether audition is supported
+	//
 	// example:
 	//
 	// false
-	SupportAudition *bool   `json:"SupportAudition,omitempty" xml:"SupportAudition,omitempty"`
-	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	SupportAudition *bool `json:"SupportAudition,omitempty" xml:"SupportAudition,omitempty"`
+	// Content title
+	//
+	// example:
+	//
+	// 那个人
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Content type
+	//
 	// example:
 	//
 	// music
@@ -341,26 +403,41 @@ func (s *ScgSearchResponseBodyResult) SetType(v string) *ScgSearchResponseBodyRe
 }
 
 func (s *ScgSearchResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Cover != nil {
+		if err := s.Cover.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ScgSearchResponseBodyResultCover struct {
+	// Thumbnail image (Img, Large, Medium, and Small may not appear simultaneously; only one of them may be present)
+	//
 	// example:
 	//
 	// http://img.xiami.net/images/album/img59/56/58da2153e3133_2826959_1490690387.jpg
 	Img *string `json:"Img,omitempty" xml:"Img,omitempty"`
+	// Large graph
+	//
 	// example:
 	//
 	// http://img.xiami.net/images/album/img59/56/58da2153e3133_2826959_1490690387.jpg
 	Large *string `json:"Large,omitempty" xml:"Large,omitempty"`
+	// Medium image
+	//
 	// example:
 	//
 	// http://img.xiami.net/images/album/img59/56/58da2153e3133_2826959_1490690387.jpg
 	Medium *string `json:"Medium,omitempty" xml:"Medium,omitempty"`
+	// Small image
+	//
 	// example:
 	//
 	// http://img.xiami.net/images/album/img59/56/58da2153e3133_2826959_1490690387.jpg
 	Small *string `json:"Small,omitempty" xml:"Small,omitempty"`
+	// Whether scaling is supported
+	//
 	// example:
 	//
 	// false

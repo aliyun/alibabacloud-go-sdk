@@ -22,22 +22,32 @@ type iPlayAndPauseControlResponseBody interface {
 }
 
 type PlayAndPauseControlResponseBody struct {
+	// Return code of the invocation
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Additional information. In typical scenarios, this provides a brief description of a failed invocation to help the caller troubleshoot the issue.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 10002398812
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Actual return result from the service
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the invocation succeeded. The value true means success, and false means failure. If the invocation fails, check the Message field for details.
+	//
 	// example:
 	//
 	// true

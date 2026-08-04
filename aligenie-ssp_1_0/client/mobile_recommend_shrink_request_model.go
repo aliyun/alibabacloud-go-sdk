@@ -24,21 +24,36 @@ type iMobileRecommendShrinkRequest interface {
 }
 
 type MobileRecommendShrinkRequest struct {
+	// Bot ID.
+	//
 	// example:
 	//
 	// 10
 	BotId *string `json:"BotId,omitempty" xml:"BotId,omitempty"`
+	// Quantity of recommended Result
+	//
 	// example:
 	//
 	// 6
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	// Device identification information.
+	//
 	// This parameter is required.
 	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
-	Style            *string `json:"Style,omitempty" xml:"Style,omitempty"`
+	// Required when the request type is STYLE.
+	//
+	// example:
+	//
+	// 轻音乐
+	Style *string `json:"Style,omitempty" xml:"Style,omitempty"`
+	// Request Type: Obtain daily recommendations, hot songs, or genre-based playlists.
+	//
 	// example:
 	//
 	// DAILY_REC
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// User information – userId
+	//
 	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }

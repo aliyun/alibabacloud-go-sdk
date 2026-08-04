@@ -20,15 +20,26 @@ type iCreateAlarmResponseBody interface {
 }
 
 type CreateAlarmResponseBody struct {
+	// Request result status code
+	//
 	// example:
 	//
 	// 200
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// error message
+	//
+	// example:
+	//
+	// xx为空
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// request ID
+	//
 	// example:
 	//
 	// 43***28C-A810-5***-8747-EC226A086881
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Alarm ID
+	//
 	// example:
 	//
 	// 1234567

@@ -18,10 +18,16 @@ type iPlayAndPauseControlRequest interface {
 }
 
 type PlayAndPauseControlRequest struct {
+	// Device identity information
+	//
 	// This parameter is required.
 	DeviceInfo *PlayAndPauseControlRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
+	// Business parameters
+	//
 	// This parameter is required.
 	OpenPlayAndPauseControlParam *PlayAndPauseControlRequestOpenPlayAndPauseControlParam `json:"OpenPlayAndPauseControlParam,omitempty" xml:"OpenPlayAndPauseControlParam,omitempty" type:"Struct"`
+	// User identity information
+	//
 	// This parameter is required.
 	UserInfo *PlayAndPauseControlRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
@@ -62,34 +68,65 @@ func (s *PlayAndPauseControlRequest) SetUserInfo(v *PlayAndPauseControlRequestUs
 }
 
 func (s *PlayAndPauseControlRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceInfo != nil {
+		if err := s.DeviceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OpenPlayAndPauseControlParam != nil {
+		if err := s.OpenPlayAndPauseControlParam.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PlayAndPauseControlRequestDeviceInfo struct {
+	// Value corresponding to the encoding type.
+	//
+	// If the encoding type is `SKILL_ID`, the value is the application\\"s Skill ID. If the encoding type is `PACKAGE_NAME`, the value is the packageName of the corresponding client app.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. There are multiple ways to obtain the device identity for Tmall Genie, and each method corresponds to a different encoding type.
+	//
+	// `PACKAGE_NAME`: APK package name, used for the Android application customer link. `SKILL_ID`: Skill ID, used for the cloud-based link.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PROJECT_ID
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// Device ID, which can be set to deviceOpenId or deviceUnionId.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rV/XSgPuxZjx/hN3iw8U+e8ouRjKOX95tn1a0kwb2+Ao6Q1CAxASJUZDWtlk1r43LWcVW6fvY1Rr4sEPFodpnA==
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The type of Device ID.
+	//
+	// `OPEN_ID`: The default device ID identity. `UNION_ID`: The organization-dimension device ID identity. This value is available only after an organization has been requested on the Tmall Genie Skill Application Open Platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. This parameter is required if IdType is UNION_ID.
+	//
 	// example:
 	//
 	// 123
@@ -154,6 +191,8 @@ func (s *PlayAndPauseControlRequestDeviceInfo) Validate() error {
 }
 
 type PlayAndPauseControlRequestOpenPlayAndPauseControlParam struct {
+	// Playback: Play; Pause: Pause.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -184,30 +223,46 @@ func (s *PlayAndPauseControlRequestOpenPlayAndPauseControlParam) Validate() erro
 }
 
 type PlayAndPauseControlRequestUserInfo struct {
+	// The value corresponding to the encoding type.
+	//
+	// When the encoding type is `SKILL_ID`, the value is the application\\"s Skill ID. When the encoding type is `PACKAGE_NAME`, the value is the packageName of the corresponding client app.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. There are multiple ways to obtain the user identifier from Tmall Genie, and each method corresponds to a different encoding type.
+	//
+	// `PACKAGE_NAME`: APK package name, used for the Android application customer flow. `SKILL_ID`: Skill ID, used for the cloud-based flow.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PROJECT_ID
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// User identifier, set to either userOpenId or userUnionId.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rV/XSgPuxZjx/hN3iw8U+e8ouRjKOX95tn1a0kwb2+Ao6Q1CAxASJUZDWtlk1r43LWcVW6fvY1Rr4sEPFodpnA==
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The type of User ID.
+	//
+	// `OPEN_ID`: The default user ID identity. `UNION_ID`: The organization-dimension user ID identity. This value is available only after an organization has been requested on the Tmall Genie Skill Application Open Platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. Required when IdType is `UNION_ID`.
+	//
 	// example:
 	//
 	// 123

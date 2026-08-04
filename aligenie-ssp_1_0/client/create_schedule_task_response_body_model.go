@@ -20,15 +20,26 @@ type iCreateScheduleTaskResponseBody interface {
 }
 
 type CreateScheduleTaskResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// 200
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error message
+	//
+	// example:
+	//
+	// 调用成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// F7E2****B7C94
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// ID of the successfully created job
+	//
 	// example:
 	//
 	// 1234567

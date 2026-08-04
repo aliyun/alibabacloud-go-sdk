@@ -18,10 +18,16 @@ type iCreatePlayingListRequest interface {
 }
 
 type CreatePlayingListRequest struct {
+	// Device ID information
+	//
 	// This parameter is required.
 	DeviceInfo *CreatePlayingListRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
+	// Business parameters
+	//
 	// This parameter is required.
 	OpenCreatePlayingListRequest *CreatePlayingListRequestOpenCreatePlayingListRequest `json:"OpenCreatePlayingListRequest,omitempty" xml:"OpenCreatePlayingListRequest,omitempty" type:"Struct"`
+	// User identity information
+	//
 	// This parameter is required.
 	UserInfo *CreatePlayingListRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
@@ -62,34 +68,71 @@ func (s *CreatePlayingListRequest) SetUserInfo(v *CreatePlayingListRequestUserIn
 }
 
 func (s *CreatePlayingListRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceInfo != nil {
+		if err := s.DeviceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OpenCreatePlayingListRequest != nil {
+		if err := s.OpenCreatePlayingListRequest.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreatePlayingListRequestDeviceInfo struct {
+	// Value corresponding to the encoding type.
+	//
+	// When the encoding type is `SKILL_ID`, the value is the application\\"s Skill ID.
+	//
+	// When the encoding type is `PACKAGE_NAME`, the value is the packageName of the corresponding client app.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. There are multiple ways to obtain the device ID for Tmall Genie, and each method corresponds to a different encoding type.
+	//
+	// `PACKAGE_NAME`: APK package name, used as the encoding type for the Android application customer link.
+	//
+	// `SKILL_ID`: Skill ID, used as the encoding type for the cloud-based link.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PROJECT_ID
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// Device ID, set to either deviceOpenId or deviceUnionId.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rV/XSgPuxZjx/hN3iw8U+e8ouRjKOX95tn1a0kwb2+Ao6Q1CAxASJUZDWtlk1r43LWcVW6fvY1Rr4sEPFodpnA==
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Type of device ID.
+	//
+	// `OPEN_ID`: Default device ID identity.
+	//
+	// `UNION_ID`: Organization-dimension device ID identity. This value is available only after an organization has been requested on the Tmall Genie skill application Open Platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. Required if IdType is UNION_ID.
+	//
 	// example:
 	//
 	// 123
@@ -154,27 +197,50 @@ func (s *CreatePlayingListRequestDeviceInfo) Validate() error {
 }
 
 type CreatePlayingListRequestOpenCreatePlayingListRequest struct {
+	// Playback content list.
+	//
+	// If the content type is "content", multiple entries are supported. If it is "album", only the first entry takes effect.
+	//
 	// This parameter is required.
 	ContentList []*CreatePlayingListRequestOpenCreatePlayingListRequestContentList `json:"ContentList,omitempty" xml:"ContentList,omitempty" type:"Repeated"`
+	// Content type for playback.
+	//
+	// Values: "content" for content, "album" for album, and "collect" for playlist.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// content
-	ContentType *string                `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	ExtendInfo  map[string]interface{} `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// extension information
+	ExtendInfo map[string]interface{} `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// Playback index.
+	//
+	// Can be empty. Default is 0, indicating playback starts from the beginning.
+	//
 	// example:
 	//
 	// 0
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// Whether to resume album playback. For example, if the user previously listened up to episode 5 of an album, whether to continue from episode 5. Default is true.
+	//
 	// example:
 	//
 	// true
 	NeedAlbumContinued *bool `json:"NeedAlbumContinued,omitempty" xml:"NeedAlbumContinued,omitempty"`
+	// Playback source, the UUID for configuring playback control capabilities.
+	//
+	// Can be empty. Default is "default".
+	//
 	// example:
 	//
 	// default
 	PlayFrom *string `json:"PlayFrom,omitempty" xml:"PlayFrom,omitempty"`
+	// Playback pattern.
+	//
+	// Repeat: list loop; Shuffle: random; RepeatOne: single track loop; Normal: sequential playback.
+	//
 	// example:
 	//
 	// Repeat
@@ -253,16 +319,31 @@ func (s *CreatePlayingListRequestOpenCreatePlayingListRequest) SetPlayMode(v str
 }
 
 func (s *CreatePlayingListRequestOpenCreatePlayingListRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ContentList != nil {
+		for _, item := range s.ContentList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreatePlayingListRequestOpenCreatePlayingListRequestContentList struct {
+	// Third-party ID.
+	//
+	// If the content type is "content", this is the content ID. If it is "album", this is the album ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12345
 	RawId *string `json:"RawId,omitempty" xml:"RawId,omitempty"`
+	// Source
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -302,30 +383,52 @@ func (s *CreatePlayingListRequestOpenCreatePlayingListRequestContentList) Valida
 }
 
 type CreatePlayingListRequestUserInfo struct {
+	// Value corresponding to the encoding type.
+	//
+	// When the encoding type is `SKILL_ID`, the value is the application\\"s Skill ID.
+	//
+	// When the encoding type is `PACKAGE_NAME`, the value is the packageName of the corresponding client app.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. There are multiple ways to obtain the user identifier for Tmall Genie, and each method corresponds to a different encoding type.
+	//
+	// `PACKAGE_NAME`: APK package name, used as the encoding type for the Android application customer link.
+	//
+	// `SKILL_ID`: Skill ID, used as the encoding type for the cloud-based link.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PROJECT_ID
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// User identifier, set to either userOpenId or userUnionId.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rV/XSgPuxZjx/hN3iw8U+e8ouRjKOX95tn1a0kwb2+Ao6Q1CAxASJUZDWtlk1r43LWcVW6fvY1Rr4sEPFodpnA==
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Type of User ID.
+	//
+	// `OPEN_ID`: Default User ID identity.
+	//
+	// `UNION_ID`: Organization-dimension User ID identity. This value is available only after an organization has been requested on the Tmall Genie skill application Open Platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. Required if IdType is UNION_ID.
+	//
 	// example:
 	//
 	// 123

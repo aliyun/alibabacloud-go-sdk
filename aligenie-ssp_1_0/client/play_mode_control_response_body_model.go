@@ -22,19 +22,28 @@ type iPlayModeControlResponseBody interface {
 }
 
 type PlayModeControlResponseBody struct {
+	// Return code of the invocation
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Additional information, typically used to briefly describe a failed invocation to help the caller troubleshoot the issue.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 10002398812
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *PlayModeControlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Actual return result of the service
+	Result *PlayModeControlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the invocation succeeded. true indicates success, and false indicates failure. When the value is false, check the Message field for details.
+	//
 	// example:
 	//
 	// true
@@ -95,10 +104,19 @@ func (s *PlayModeControlResponseBody) SetSuccess(v string) *PlayModeControlRespo
 }
 
 func (s *PlayModeControlResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PlayModeControlResponseBodyResult struct {
+	// Playback mode
+	//
+	// List loop: Repeat; Shuffle: Shuffle; Single-track loop: RepeatOne; NAT mode: Normal;
+	//
 	// example:
 	//
 	// Normal

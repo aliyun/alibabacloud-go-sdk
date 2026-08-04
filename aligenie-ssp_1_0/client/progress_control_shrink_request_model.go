@@ -18,10 +18,16 @@ type iProgressControlShrinkRequest interface {
 }
 
 type ProgressControlShrinkRequest struct {
+	// Device identity information
+	//
 	// This parameter is required.
 	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	// Business parameters
+	//
 	// This parameter is required.
 	OpenProgressControlRequestShrink *string `json:"OpenProgressControlRequest,omitempty" xml:"OpenProgressControlRequest,omitempty"`
+	// User identity information
+	//
 	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }

@@ -18,10 +18,16 @@ type iAddAndRemoveFavoriteContentShrinkRequest interface {
 }
 
 type AddAndRemoveFavoriteContentShrinkRequest struct {
+	// Device identification information
+	//
 	// This parameter is required.
 	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	// Business parameters
+	//
 	// This parameter is required.
 	OpenAddAndRemoveFavoriteContentRequestShrink *string `json:"OpenAddAndRemoveFavoriteContentRequest,omitempty" xml:"OpenAddAndRemoveFavoriteContentRequest,omitempty"`
+	// User identification information
+	//
 	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }

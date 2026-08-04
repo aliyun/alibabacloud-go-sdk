@@ -20,6 +20,8 @@ type iAuthLoginWithThirdUserInfoShrinkRequest interface {
 }
 
 type AuthLoginWithThirdUserInfoShrinkRequest struct {
+	// Extension information
+	//
 	// if can be null:
 	// true
 	//
@@ -27,18 +29,24 @@ type AuthLoginWithThirdUserInfoShrinkRequest struct {
 	//
 	// {}
 	ExtInfoShrink *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	// Scene code, which must be requested from Tmall Genie in advance
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// wechat_ecology_openness
 	SceneCode *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
+	// Third-party User Identifier
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// o5qxy6EItZBasv2VZAf-MGwllHL4
 	ThirdUserIdentifier *string `json:"ThirdUserIdentifier,omitempty" xml:"ThirdUserIdentifier,omitempty"`
+	// Third-party User Type
+	//
 	// This parameter is required.
 	//
 	// example:

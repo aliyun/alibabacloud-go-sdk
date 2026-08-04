@@ -59,5 +59,10 @@ func (s *UnbindDeviceResponse) SetBody(v *UnbindDeviceResponseBody) *UnbindDevic
 }
 
 func (s *UnbindDeviceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

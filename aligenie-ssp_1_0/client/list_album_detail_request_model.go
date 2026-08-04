@@ -18,18 +18,24 @@ type iListAlbumDetailRequest interface {
 }
 
 type ListAlbumDetailRequest struct {
+	// album ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 121321
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// page number
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// number of records per page
+	//
 	// This parameter is required.
 	//
 	// example:

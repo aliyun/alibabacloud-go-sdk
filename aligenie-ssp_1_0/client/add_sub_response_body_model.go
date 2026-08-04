@@ -20,16 +20,22 @@ type iAddSubResponseBody interface {
 }
 
 type AddSubResponseBody struct {
+	// Status code. A value of 200 indicates success.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Additional information
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// B99D27ED-4E12-1414-9FDE-599C57C4B204
-	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *AddSubResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return Result
+	Result *AddSubResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s AddSubResponseBody) String() string {
@@ -77,31 +83,49 @@ func (s *AddSubResponseBody) SetResult(v *AddSubResponseBodyResult) *AddSubRespo
 }
 
 func (s *AddSubResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddSubResponseBodyResult struct {
+	// Album ID
+	//
 	// example:
 	//
 	// 51999575
 	AlbumId *string `json:"AlbumId,omitempty" xml:"AlbumId,omitempty"`
+	// Daily study quantity
+	//
 	// example:
 	//
 	// 2
 	DailyStudyCnt *int32 `json:"DailyStudyCnt,omitempty" xml:"DailyStudyCnt,omitempty"`
+	// Device ID
+	//
 	// example:
 	//
 	// 5874DBCCA3038FAA1A70A8060F07F26D
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Subscription record ID
+	//
 	// example:
 	//
 	// 81
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Playback mode
+	//
 	// example:
 	//
 	// sequence
-	PlayMode     *string                               `json:"PlayMode,omitempty" xml:"PlayMode,omitempty"`
+	PlayMode *string `json:"PlayMode,omitempty" xml:"PlayMode,omitempty"`
+	// Schedule information
 	ScheduleInfo *AddSubResponseBodyResultScheduleInfo `json:"ScheduleInfo,omitempty" xml:"ScheduleInfo,omitempty" type:"Struct"`
+	// User ID
+	//
 	// example:
 	//
 	// 1152893538998276761
@@ -180,15 +204,25 @@ func (s *AddSubResponseBodyResult) SetUserId(v string) *AddSubResponseBodyResult
 }
 
 func (s *AddSubResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.ScheduleInfo != nil {
+		if err := s.ScheduleInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddSubResponseBodyResultScheduleInfo struct {
+	// The epoch for trigger
 	DaysOfWeek []*int32 `json:"DaysOfWeek,omitempty" xml:"DaysOfWeek,omitempty" type:"Repeated"`
+	// The hour of the clock when the trigger occurs.
+	//
 	// example:
 	//
 	// 12
 	Hour *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// The minute of the Time when the trigger occurs.
+	//
 	// example:
 	//
 	// 23

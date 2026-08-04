@@ -16,8 +16,12 @@ type iCreatePlayingListOAuth2ShrinkRequest interface {
 }
 
 type CreatePlayingListOAuth2ShrinkRequest struct {
+	// Device identification information
+	//
 	// This parameter is required.
 	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	// Business parameters
+	//
 	// This parameter is required.
 	OpenCreatePlayingListRequestShrink *string `json:"OpenCreatePlayingListRequest,omitempty" xml:"OpenCreatePlayingListRequest,omitempty"`
 }

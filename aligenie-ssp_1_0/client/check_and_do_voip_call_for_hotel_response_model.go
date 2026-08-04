@@ -59,5 +59,10 @@ func (s *CheckAndDoVoipCallForHotelResponse) SetBody(v *CheckAndDoVoipCallForHot
 }
 
 func (s *CheckAndDoVoipCallForHotelResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

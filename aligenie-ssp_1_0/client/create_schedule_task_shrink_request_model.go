@@ -18,10 +18,16 @@ type iCreateScheduleTaskShrinkRequest interface {
 }
 
 type CreateScheduleTaskShrinkRequest struct {
+	// Device identity information
+	//
 	// This parameter is required.
 	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	// Input parameters for the service request
+	//
 	// This parameter is required.
 	PayloadShrink *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// User Identifier Information
+	//
 	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }

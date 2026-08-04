@@ -18,15 +18,20 @@ type iGetAlbumResponseBody interface {
 }
 
 type GetAlbumResponseBody struct {
+	// Code encoding
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// F12B6147-5925-19E5-A3AD-E1EE1360F34E
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *GetAlbumResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return Result
+	Result *GetAlbumResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s GetAlbumResponseBody) String() string {
@@ -65,63 +70,107 @@ func (s *GetAlbumResponseBody) SetResult(v *GetAlbumResponseBodyResult) *GetAlbu
 }
 
 func (s *GetAlbumResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAlbumResponseBodyResult struct {
+	// Alias
 	Alias []*string `json:"Alias,omitempty" xml:"Alias,omitempty" type:"Repeated"`
+	// Is auditionable
+	//
 	// example:
 	//
 	// false
-	Audition *bool                                `json:"Audition,omitempty" xml:"Audition,omitempty"`
-	Authors  []*GetAlbumResponseBodyResultAuthors `json:"Authors,omitempty" xml:"Authors,omitempty" type:"Repeated"`
+	Audition *bool `json:"Audition,omitempty" xml:"Audition,omitempty"`
+	// Author information
+	Authors []*GetAlbumResponseBodyResultAuthors `json:"Authors,omitempty" xml:"Authors,omitempty" type:"Repeated"`
+	// Transform controlType based on the public category it belongs to
+	//
 	// example:
 	//
 	// audio
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// Is charged
+	//
 	// example:
 	//
 	// false
 	Charge *bool `json:"Charge,omitempty" xml:"Charge,omitempty"`
+	// Category ID
+	//
 	// example:
 	//
 	// 80012017
-	CommCateId  *int64                           `json:"CommCateId,omitempty" xml:"CommCateId,omitempty"`
-	Cover       *GetAlbumResponseBodyResultCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
-	Description *string                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	CommCateId *int64 `json:"CommCateId,omitempty" xml:"CommCateId,omitempty"`
+	// Album cover image
+	Cover *GetAlbumResponseBodyResultCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
+	// Content description
+	//
+	// example:
+	//
+	// 内容描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Is finished
+	//
 	// example:
 	//
 	// FINISHED
 	Finished *string `json:"Finished,omitempty" xml:"Finished,omitempty"`
+	// Popularity Score
+	//
 	// example:
 	//
 	// 10
 	HotScore *float64 `json:"HotScore,omitempty" xml:"HotScore,omitempty"`
+	// Album ID
+	//
 	// example:
 	//
 	// 1231231
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Type of content, such as music, audio, radio, jokes, etc.
+	//
 	// example:
 	//
 	// ALBUM
 	ItemType *string `json:"ItemType,omitempty" xml:"ItemType,omitempty"`
+	// Third-party ID
+	//
 	// example:
 	//
 	// 23242
 	RawId *string `json:"RawId,omitempty" xml:"RawId,omitempty"`
+	// Source
+	//
 	// example:
 	//
 	// qignting
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Title
+	//
+	// example:
+	//
+	// 超能狂少在都市
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Total number of episodes
+	//
 	// example:
 	//
 	// 12
 	TotalEpisode *int32 `json:"TotalEpisode,omitempty" xml:"TotalEpisode,omitempty"`
+	// Transform to favoriteType based on the associated public category
+	//
 	// example:
 	//
 	// program
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Indicates whether the album is playable.
+	//
 	// example:
 	//
 	// VALID
@@ -299,28 +348,56 @@ func (s *GetAlbumResponseBodyResult) SetValid(v string) *GetAlbumResponseBodyRes
 }
 
 func (s *GetAlbumResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Authors != nil {
+		for _, item := range s.Authors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Cover != nil {
+		if err := s.Cover.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAlbumResponseBodyResultAuthors struct {
+	// Author types
 	AuthorTypes []*string `json:"AuthorTypes,omitempty" xml:"AuthorTypes,omitempty" type:"Repeated"`
+	// Gender
+	//
 	// example:
 	//
 	// MALE
 	Gender *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	// Author primary key ID
+	//
 	// example:
 	//
 	// 13123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Is online
+	//
 	// example:
 	//
 	// false
 	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
+	// Source
+	//
 	// example:
 	//
 	// qignting
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Author title
+	//
+	// example:
+	//
+	// 超能狂少在都市
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s GetAlbumResponseBodyResultAuthors) String() string {
@@ -390,22 +467,32 @@ func (s *GetAlbumResponseBodyResultAuthors) Validate() error {
 }
 
 type GetAlbumResponseBodyResultCover struct {
+	// Indicates whether OSS rules can be used for cropping.
+	//
 	// example:
 	//
 	// false
 	CanResize *bool `json:"CanResize,omitempty" xml:"CanResize,omitempty"`
+	// Default Image
+	//
 	// example:
 	//
 	// http://pic.qtfm.cn/2017/0207/2017020718285.jpg
 	Img *string `json:"Img,omitempty" xml:"Img,omitempty"`
+	// Large Image
+	//
 	// example:
 	//
 	// http://pic.qtfm.cn/2017/0207/2017020718285.jpg
 	Large *string `json:"Large,omitempty" xml:"Large,omitempty"`
+	// Medium Image
+	//
 	// example:
 	//
 	// http://pic.qtfm.cn/2017/0207/2017020718285.jpg
 	Medium *string `json:"Medium,omitempty" xml:"Medium,omitempty"`
+	// Small Image
+	//
 	// example:
 	//
 	// http://pic.qtfm.cn/2017/0207/2017020718285.jpg

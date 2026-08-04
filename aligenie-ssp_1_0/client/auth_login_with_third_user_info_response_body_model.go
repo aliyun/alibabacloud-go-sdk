@@ -24,20 +24,30 @@ type iAuthLoginWithThirdUserInfoResponseBody interface {
 }
 
 type AuthLoginWithThirdUserInfoResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// 200
-	Code    *int32                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// When Code is 5140001, it indicates that logon failed because the third-party user is not attached to a Tmall Genie user. The frontend must initiate the phone number authorization logon flow based on this error code. In subsequent steps, the frontend must return the SessionId in DataObj to the server.
 	DataObj *AuthLoginWithThirdUserInfoResponseBodyDataObj `json:"DataObj,omitempty" xml:"DataObj,omitempty" type:"Struct"`
+	// Response message
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 73C67BD9-175A-1324-8202-9FAABBB3E6FA
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *AuthLoginWithThirdUserInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Response Result
+	Result *AuthLoginWithThirdUserInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Flag indicating whether the invocation succeeded
+	//
 	// example:
 	//
 	// true
@@ -107,10 +117,22 @@ func (s *AuthLoginWithThirdUserInfoResponseBody) SetSuccess(v bool) *AuthLoginWi
 }
 
 func (s *AuthLoginWithThirdUserInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataObj != nil {
+		if err := s.DataObj.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AuthLoginWithThirdUserInfoResponseBodyDataObj struct {
+	// Session ID
+	//
 	// example:
 	//
 	// dbe2eb4458302b9246c6da17fbc95f4b
@@ -139,10 +161,14 @@ func (s *AuthLoginWithThirdUserInfoResponseBodyDataObj) Validate() error {
 }
 
 type AuthLoginWithThirdUserInfoResponseBodyResult struct {
+	// Expiration time of the logon state access token
+	//
 	// example:
 	//
 	// 1659428051452
 	ExpiredTimeLong *int64 `json:"ExpiredTimeLong,omitempty" xml:"ExpiredTimeLong,omitempty"`
+	// Logon state access token
+	//
 	// example:
 	//
 	// bd9ccdb121ee950ddead51e943e081fe

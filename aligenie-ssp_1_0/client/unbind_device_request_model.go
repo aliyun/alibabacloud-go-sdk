@@ -16,8 +16,12 @@ type iUnbindDeviceRequest interface {
 }
 
 type UnbindDeviceRequest struct {
+	// List of device identity information.
+	//
 	// This parameter is required.
 	DeviceInfo *UnbindDeviceRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
+	// List of user identifier information.
+	//
 	// This parameter is required.
 	UserInfo *UnbindDeviceRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
@@ -49,34 +53,58 @@ func (s *UnbindDeviceRequest) SetUserInfo(v *UnbindDeviceRequestUserInfo) *Unbin
 }
 
 func (s *UnbindDeviceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceInfo != nil {
+		if err := s.DeviceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UnbindDeviceRequestDeviceInfo struct {
+	// The value corresponding to the encoding type, which is the Project ID of the project where the product resides. You can view it in the Tmall Genie AI platform console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12**45
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. Set this parameter to **PROJECT_ID**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PROJECT_ID
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// Device identifier. Enter the value of deviceOpenId or deviceUnionId.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DAFE****ce3ej=
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The type of Device ID.
+	//
+	// - OPEN_ID: The default device ID identity.
+	//
+	// - UNION_ID: The organization-dimension device ID identity. You must request an organization in advance on the Open Platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. This parameter is required if IdType is set to UNION_ID.
+	//
 	// example:
 	//
 	// 1**2
@@ -141,30 +169,44 @@ func (s *UnbindDeviceRequestDeviceInfo) Validate() error {
 }
 
 type UnbindDeviceRequestUserInfo struct {
+	// The value corresponding to the encoding type, which is the Project ID of the project where this product resides. You can view it in the Tmall Genie AI Platform console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12**45
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. Enter **PROJECT_ID*	- here.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PROJECT_ID
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// User identifier. Enter the value of userOpenId or userUnionId.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// HOFF****my7Iw=
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The type of User ID:
+	//
+	// - OPEN_ID: The default user ID identity.
+	//
+	// - UNION_ID: The organization-dimension user ID identity. You must request an organization in advance on the Open Platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. Required if IdType is UNION_ID.
+	//
 	// example:
 	//
 	// 1**2

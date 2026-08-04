@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 收藏/取消收藏
+// Collect or remove from favorites.
 //
 // @param tmpReq - AddAndRemoveFavoriteContentRequest
 //
@@ -19,9 +19,11 @@ import (
 //
 // @return AddAndRemoveFavoriteContentResponse
 func (client *Client) AddAndRemoveFavoriteContentWithContext(ctx context.Context, tmpReq *AddAndRemoveFavoriteContentRequest, headers *AddAndRemoveFavoriteContentHeaders, runtime *dara.RuntimeOptions) (_result *AddAndRemoveFavoriteContentResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddAndRemoveFavoriteContentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -91,7 +93,7 @@ func (client *Client) AddAndRemoveFavoriteContentWithContext(ctx context.Context
 
 // Summary:
 //
-// 新增订阅
+// Subscribe to an album.
 //
 // @param tmpReq - AddSubRequest
 //
@@ -101,9 +103,11 @@ func (client *Client) AddAndRemoveFavoriteContentWithContext(ctx context.Context
 //
 // @return AddSubResponse
 func (client *Client) AddSubWithContext(ctx context.Context, tmpReq *AddSubRequest, headers *AddSubHeaders, runtime *dara.RuntimeOptions) (_result *AddSubResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddSubShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -171,7 +175,7 @@ func (client *Client) AddSubWithContext(ctx context.Context, tmpReq *AddSubReque
 
 // Summary:
 //
-// 通过指定精灵账号进行授权登录
+// Authorize logon by specifying an Aligenie account.
 //
 // @param request - AuthLoginWithAligenieUserInfoRequest
 //
@@ -181,9 +185,11 @@ func (client *Client) AddSubWithContext(ctx context.Context, tmpReq *AddSubReque
 //
 // @return AuthLoginWithAligenieUserInfoResponse
 func (client *Client) AuthLoginWithAligenieUserInfoWithContext(ctx context.Context, request *AuthLoginWithAligenieUserInfoRequest, headers *AuthLoginWithAligenieUserInfoHeaders, runtime *dara.RuntimeOptions) (_result *AuthLoginWithAligenieUserInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EncryptedAligenieUserIdentifier) {
@@ -233,7 +239,7 @@ func (client *Client) AuthLoginWithAligenieUserInfoWithContext(ctx context.Conte
 
 // Summary:
 //
-// 通过手机号生成精灵账号进行授权登录
+// Generate a Genie account by phone number for authorization logon.
 //
 // @param request - AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberRequest
 //
@@ -243,9 +249,11 @@ func (client *Client) AuthLoginWithAligenieUserInfoWithContext(ctx context.Conte
 //
 // @return AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse
 func (client *Client) AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberWithContext(ctx context.Context, request *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberRequest, headers *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberHeaders, runtime *dara.RuntimeOptions) (_result *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.SessionId) {
@@ -291,7 +299,7 @@ func (client *Client) AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberWithCon
 
 // Summary:
 //
-// 通过指定淘宝账号进行授权登录
+// # Authorize logon by specifying a Taobao account
 //
 // @param request - AuthLoginWithTaobaoUserInfoRequest
 //
@@ -301,9 +309,11 @@ func (client *Client) AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberWithCon
 //
 // @return AuthLoginWithTaobaoUserInfoResponse
 func (client *Client) AuthLoginWithTaobaoUserInfoWithContext(ctx context.Context, request *AuthLoginWithTaobaoUserInfoRequest, headers *AuthLoginWithTaobaoUserInfoHeaders, runtime *dara.RuntimeOptions) (_result *AuthLoginWithTaobaoUserInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EncryptedTaobaoUserIdentifier) {
@@ -353,7 +363,7 @@ func (client *Client) AuthLoginWithTaobaoUserInfoWithContext(ctx context.Context
 
 // Summary:
 //
-// 通过三方用户信息进行授权登录
+// Authorize logon by using third-party user information.
 //
 // @param tmpReq - AuthLoginWithThirdUserInfoRequest
 //
@@ -363,9 +373,11 @@ func (client *Client) AuthLoginWithTaobaoUserInfoWithContext(ctx context.Context
 //
 // @return AuthLoginWithThirdUserInfoResponse
 func (client *Client) AuthLoginWithThirdUserInfoWithContext(ctx context.Context, tmpReq *AuthLoginWithThirdUserInfoRequest, headers *AuthLoginWithThirdUserInfoHeaders, runtime *dara.RuntimeOptions) (_result *AuthLoginWithThirdUserInfoResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AuthLoginWithThirdUserInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -439,9 +451,11 @@ func (client *Client) AuthLoginWithThirdUserInfoWithContext(ctx context.Context,
 //
 // @return CheckAndDoVoipCallForHotelResponse
 func (client *Client) CheckAndDoVoipCallForHotelWithContext(ctx context.Context, tmpReq *CheckAndDoVoipCallForHotelRequest, headers *CheckAndDoVoipCallForHotelHeaders, runtime *dara.RuntimeOptions) (_result *CheckAndDoVoipCallForHotelResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CheckAndDoVoipCallForHotelShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -513,7 +527,7 @@ func (client *Client) CheckAndDoVoipCallForHotelWithContext(ctx context.Context,
 
 // Summary:
 //
-// 轮询激活绑定结果
+// Poll the result of the activation attachment.
 //
 // @param tmpReq - CheckAuthCodeBindForExtRequest
 //
@@ -523,9 +537,11 @@ func (client *Client) CheckAndDoVoipCallForHotelWithContext(ctx context.Context,
 //
 // @return CheckAuthCodeBindForExtResponse
 func (client *Client) CheckAuthCodeBindForExtWithContext(ctx context.Context, tmpReq *CheckAuthCodeBindForExtRequest, headers *CheckAuthCodeBindForExtHeaders, runtime *dara.RuntimeOptions) (_result *CheckAuthCodeBindForExtResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CheckAuthCodeBindForExtShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -589,7 +605,11 @@ func (client *Client) CheckAuthCodeBindForExtWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 云播放器：对外
+// Cloud Push Song: Create a playlist by providing the device openUuid and the Tmall Genie openUserId.
+//
+// Description:
+//
+// After synchronously validating the input parameters, the system asynchronously creates the playlist.
 //
 // @param tmpReq - CloudPlayerRequest
 //
@@ -599,9 +619,11 @@ func (client *Client) CheckAuthCodeBindForExtWithContext(ctx context.Context, tm
 //
 // @return CloudPlayerResponse
 func (client *Client) CloudPlayerWithContext(ctx context.Context, tmpReq *CloudPlayerRequest, headers *CloudPlayerHeaders, runtime *dara.RuntimeOptions) (_result *CloudPlayerResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CloudPlayerShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -685,7 +707,7 @@ func (client *Client) CloudPlayerWithContext(ctx context.Context, tmpReq *CloudP
 
 // Summary:
 //
-// 创建闹钟
+// Create an alarm that supports three types: one-time, weekly, and legal working days.
 //
 // @param tmpReq - CreateAlarmRequest
 //
@@ -695,9 +717,11 @@ func (client *Client) CloudPlayerWithContext(ctx context.Context, tmpReq *CloudP
 //
 // @return CreateAlarmResponse
 func (client *Client) CreateAlarmWithContext(ctx context.Context, tmpReq *CreateAlarmRequest, headers *CreateAlarmHeaders, runtime *dara.RuntimeOptions) (_result *CreateAlarmResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateAlarmShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -765,7 +789,7 @@ func (client *Client) CreateAlarmWithContext(ctx context.Context, tmpReq *Create
 
 // Summary:
 //
-// 播放列表创建
+// Create a playlist and play the specified content.
 //
 // @param tmpReq - CreatePlayingListRequest
 //
@@ -775,9 +799,11 @@ func (client *Client) CreateAlarmWithContext(ctx context.Context, tmpReq *Create
 //
 // @return CreatePlayingListResponse
 func (client *Client) CreatePlayingListWithContext(ctx context.Context, tmpReq *CreatePlayingListRequest, headers *CreatePlayingListHeaders, runtime *dara.RuntimeOptions) (_result *CreatePlayingListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreatePlayingListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -847,7 +873,7 @@ func (client *Client) CreatePlayingListWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 播放列表创建走OAuth2授权
+// Playlist creation uses OAuth2 authorization.
 //
 // @param tmpReq - CreatePlayingListOAuth2Request
 //
@@ -857,9 +883,11 @@ func (client *Client) CreatePlayingListWithContext(ctx context.Context, tmpReq *
 //
 // @return CreatePlayingListOAuth2Response
 func (client *Client) CreatePlayingListOAuth2WithContext(ctx context.Context, tmpReq *CreatePlayingListOAuth2Request, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePlayingListOAuth2Response, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreatePlayingListOAuth2ShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -908,7 +936,11 @@ func (client *Client) CreatePlayingListOAuth2WithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 创建定时任务
+// Create a scheduled task.
+//
+// Description:
+//
+// Configure a triggering task for Custom instruction data in the ecosystem based on scheduling rules such as one-time, daily, or business days.
 //
 // @param tmpReq - CreateScheduleTaskRequest
 //
@@ -918,9 +950,11 @@ func (client *Client) CreatePlayingListOAuth2WithContext(ctx context.Context, tm
 //
 // @return CreateScheduleTaskResponse
 func (client *Client) CreateScheduleTaskWithContext(ctx context.Context, tmpReq *CreateScheduleTaskRequest, headers *CreateScheduleTaskHeaders, runtime *dara.RuntimeOptions) (_result *CreateScheduleTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateScheduleTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -988,7 +1022,7 @@ func (client *Client) CreateScheduleTaskWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 闹钟批量删除
+// Delete alarms. You can delete multiple alarms at the same time.
 //
 // @param tmpReq - DeleteAlarmsRequest
 //
@@ -998,9 +1032,11 @@ func (client *Client) CreateScheduleTaskWithContext(ctx context.Context, tmpReq 
 //
 // @return DeleteAlarmsResponse
 func (client *Client) DeleteAlarmsWithContext(ctx context.Context, tmpReq *DeleteAlarmsRequest, headers *DeleteAlarmsHeaders, runtime *dara.RuntimeOptions) (_result *DeleteAlarmsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteAlarmsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1068,7 +1104,11 @@ func (client *Client) DeleteAlarmsWithContext(ctx context.Context, tmpReq *Delet
 
 // Summary:
 //
-// 删除定时任务
+// Delete a scheduled task.
+//
+// Description:
+//
+// Deletes a specified scheduled task by its ID.
 //
 // @param tmpReq - DeleteScheduleTaskRequest
 //
@@ -1078,9 +1118,11 @@ func (client *Client) DeleteAlarmsWithContext(ctx context.Context, tmpReq *Delet
 //
 // @return DeleteScheduleTaskResponse
 func (client *Client) DeleteScheduleTaskWithContext(ctx context.Context, tmpReq *DeleteScheduleTaskRequest, headers *DeleteScheduleTaskHeaders, runtime *dara.RuntimeOptions) (_result *DeleteScheduleTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteScheduleTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1148,7 +1190,7 @@ func (client *Client) DeleteScheduleTaskWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 删除订阅
+// Delete a subscribed album.
 //
 // @param request - DeleteSubRequest
 //
@@ -1158,9 +1200,11 @@ func (client *Client) DeleteScheduleTaskWithContext(ctx context.Context, tmpReq 
 //
 // @return DeleteSubResponse
 func (client *Client) DeleteSubWithContext(ctx context.Context, request *DeleteSubRequest, headers *DeleteSubHeaders, runtime *dara.RuntimeOptions) (_result *DeleteSubResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SubId) {
@@ -1206,7 +1250,11 @@ func (client *Client) DeleteSubWithContext(ctx context.Context, request *DeleteS
 
 // Summary:
 //
-// 设备控制
+// Control property values such as device volume.
+//
+// Description:
+//
+// Specify a device to modify property values such as volume.
 //
 // @param tmpReq - DeviceControlRequest
 //
@@ -1216,9 +1264,11 @@ func (client *Client) DeleteSubWithContext(ctx context.Context, request *DeleteS
 //
 // @return DeviceControlResponse
 func (client *Client) DeviceControlWithContext(ctx context.Context, tmpReq *DeviceControlRequest, headers *DeviceControlHeaders, runtime *dara.RuntimeOptions) (_result *DeviceControlResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeviceControlShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1280,7 +1330,19 @@ func (client *Client) DeviceControlWithContext(ctx context.Context, tmpReq *Devi
 
 // Summary:
 //
-// 生态开放鉴权
+// Use the login-state access token for authentication to obtain the third-party user identifier and the Tmall Genie user\\"s openId.
+//
+// Description:
+//
+// Note: When the login state expires, the integrator must reinitiate the authorization login flow to obtain a new login state (entry service API: AuthLoginWithThirdUserInfo).
+//
+// - Invoke the service API with the login-state access credential (LoginStateAccessToken) parameter by using the Java SDK (for SDKs in other languages, consult Tmall Genie developers during integration).
+//
+// If the API call throws a TeaException and TeaException.code is InvalidAuthentication, the login state has expired.
+//
+// - Invoke the service API by sending an HTTP request with the login-state access credential (LoginStateAccessToken) parameter.
+//
+// If the HTTP response status code returned by the API call is 400, the login state has expired.
 //
 // @param request - EcologyOpennessAuthenticateRequest
 //
@@ -1290,9 +1352,11 @@ func (client *Client) DeviceControlWithContext(ctx context.Context, tmpReq *Devi
 //
 // @return EcologyOpennessAuthenticateResponse
 func (client *Client) EcologyOpennessAuthenticateWithContext(ctx context.Context, request *EcologyOpennessAuthenticateRequest, headers *EcologyOpennessAuthenticateHeaders, runtime *dara.RuntimeOptions) (_result *EcologyOpennessAuthenticateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EncodeKey) {
@@ -1346,7 +1410,7 @@ func (client *Client) EcologyOpennessAuthenticateWithContext(ctx context.Context
 
 // Summary:
 //
-// 生态开放发送短信验证码
+// # Ecosystem Open API for sending SMS verification codes
 //
 // @param request - EcologyOpennessSendVerificationCodeRequest
 //
@@ -1356,9 +1420,11 @@ func (client *Client) EcologyOpennessAuthenticateWithContext(ctx context.Context
 //
 // @return EcologyOpennessSendVerificationCodeResponse
 func (client *Client) EcologyOpennessSendVerificationCodeWithContext(ctx context.Context, request *EcologyOpennessSendVerificationCodeRequest, headers *EcologyOpennessSendVerificationCodeHeaders, runtime *dara.RuntimeOptions) (_result *EcologyOpennessSendVerificationCodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.PhoneNumber) {
@@ -1412,7 +1478,7 @@ func (client *Client) EcologyOpennessSendVerificationCodeWithContext(ctx context
 
 // Summary:
 //
-// 通过手机号寻找可授权登录的账号列表
+// # Find a list of accounts that can be authorized to log on by phone number
 //
 // @param request - FindUserlistToAuthLoginWithPhoneNumberRequest
 //
@@ -1422,9 +1488,11 @@ func (client *Client) EcologyOpennessSendVerificationCodeWithContext(ctx context
 //
 // @return FindUserlistToAuthLoginWithPhoneNumberResponse
 func (client *Client) FindUserlistToAuthLoginWithPhoneNumberWithContext(ctx context.Context, request *FindUserlistToAuthLoginWithPhoneNumberRequest, headers *FindUserlistToAuthLoginWithPhoneNumberHeaders, runtime *dara.RuntimeOptions) (_result *FindUserlistToAuthLoginWithPhoneNumberResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Code) {
@@ -1482,7 +1550,7 @@ func (client *Client) FindUserlistToAuthLoginWithPhoneNumberWithContext(ctx cont
 
 // Summary:
 //
-// 获取单个闹钟
+// Retrieve the detailed information of a specific alarm clock.
 //
 // @param tmpReq - GetAlarmRequest
 //
@@ -1492,9 +1560,11 @@ func (client *Client) FindUserlistToAuthLoginWithPhoneNumberWithContext(ctx cont
 //
 // @return GetAlarmResponse
 func (client *Client) GetAlarmWithContext(ctx context.Context, tmpReq *GetAlarmRequest, headers *GetAlarmHeaders, runtime *dara.RuntimeOptions) (_result *GetAlarmResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetAlarmShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1562,7 +1632,7 @@ func (client *Client) GetAlarmWithContext(ctx context.Context, tmpReq *GetAlarmR
 
 // Summary:
 //
-// 根据id获取专辑信息
+// Retrieve album information by a specific ID.
 //
 // @param request - GetAlbumRequest
 //
@@ -1572,9 +1642,11 @@ func (client *Client) GetAlarmWithContext(ctx context.Context, tmpReq *GetAlarmR
 //
 // @return GetAlbumResponse
 func (client *Client) GetAlbumWithContext(ctx context.Context, request *GetAlbumRequest, headers *GetAlbumHeaders, runtime *dara.RuntimeOptions) (_result *GetAlbumResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -1624,7 +1696,7 @@ func (client *Client) GetAlbumWithContext(ctx context.Context, request *GetAlbum
 
 // Summary:
 //
-// 获取专辑数据
+// Retrieve album information.
 //
 // @param request - GetAlbumDetailByIdRequest
 //
@@ -1634,9 +1706,11 @@ func (client *Client) GetAlbumWithContext(ctx context.Context, request *GetAlbum
 //
 // @return GetAlbumDetailByIdResponse
 func (client *Client) GetAlbumDetailByIdWithContext(ctx context.Context, request *GetAlbumDetailByIdRequest, headers *GetAlbumDetailByIdHeaders, runtime *dara.RuntimeOptions) (_result *GetAlbumDetailByIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlbumId) {
@@ -1682,7 +1756,19 @@ func (client *Client) GetAlbumDetailByIdWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 获取三方绑定的精灵账号信息
+// # Obtain the Aligenie account information bound to a third party by using the logon state credential
+//
+// Description:
+//
+// Note: When the logon state expires, the integrator must initiate the authorization logon flow again to obtain a new logon state (entry service API: AuthLoginWithThirdUserInfo).
+//
+// - Invoke the service API with the logon state access credential (LoginStateAccessToken) parameter by using the Java software development kit (SDK). For SDKs in other languages, consult the Tmall Genie developer team during integration.
+//
+// If the API call throws a TeaException and TeaException.code is InvalidAuthentication, the logon state has expired.
+//
+// - Invoke the service API by sending an HTTP request with the logon state access credential (LoginStateAccessToken) parameter.
+//
+// If the HTTP response status code returned by the API call is 400, the logon state has expired.
 //
 // @param request - GetAligenieUserInfoRequest
 //
@@ -1692,9 +1778,11 @@ func (client *Client) GetAlbumDetailByIdWithContext(ctx context.Context, request
 //
 // @return GetAligenieUserInfoResponse
 func (client *Client) GetAligenieUserInfoWithContext(ctx context.Context, request *GetAligenieUserInfoRequest, headers *GetAligenieUserInfoHeaders, runtime *dara.RuntimeOptions) (_result *GetAligenieUserInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LoginStateAccessToken) {
@@ -1740,7 +1828,11 @@ func (client *Client) GetAligenieUserInfoWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取authCode
+// Obtain the authCode.
+//
+// Description:
+//
+// Obtain the corresponding authCode by specifying the user ID.
 //
 // @param tmpReq - GetCodeEnhanceRequest
 //
@@ -1750,9 +1842,11 @@ func (client *Client) GetAligenieUserInfoWithContext(ctx context.Context, reques
 //
 // @return GetCodeEnhanceResponse
 func (client *Client) GetCodeEnhanceWithContext(ctx context.Context, tmpReq *GetCodeEnhanceRequest, headers *GetCodeEnhanceHeaders, runtime *dara.RuntimeOptions) (_result *GetCodeEnhanceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetCodeEnhanceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1812,7 +1906,7 @@ func (client *Client) GetCodeEnhanceWithContext(ctx context.Context, tmpReq *Get
 
 // Summary:
 //
-// 按照特定的id获取内容信息
+// # Retrieve content information by a specific ID
 //
 // @param request - GetContentRequest
 //
@@ -1822,9 +1916,11 @@ func (client *Client) GetCodeEnhanceWithContext(ctx context.Context, tmpReq *Get
 //
 // @return GetContentResponse
 func (client *Client) GetContentWithContext(ctx context.Context, request *GetContentRequest, headers *GetContentHeaders, runtime *dara.RuntimeOptions) (_result *GetContentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -1874,7 +1970,7 @@ func (client *Client) GetContentWithContext(ctx context.Context, request *GetCon
 
 // Summary:
 //
-// 获取当前播放项
+// Obtain the current playback item.
 //
 // @param tmpReq - GetCurrentPlayingItemRequest
 //
@@ -1884,9 +1980,11 @@ func (client *Client) GetContentWithContext(ctx context.Context, request *GetCon
 //
 // @return GetCurrentPlayingItemResponse
 func (client *Client) GetCurrentPlayingItemWithContext(ctx context.Context, tmpReq *GetCurrentPlayingItemRequest, headers *GetCurrentPlayingItemHeaders, runtime *dara.RuntimeOptions) (_result *GetCurrentPlayingItemResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetCurrentPlayingItemShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1946,7 +2044,7 @@ func (client *Client) GetCurrentPlayingItemWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 获取当前播放列表
+// Obtain the current playlist.
 //
 // @param tmpReq - GetCurrentPlayingListRequest
 //
@@ -1956,9 +2054,11 @@ func (client *Client) GetCurrentPlayingItemWithContext(ctx context.Context, tmpR
 //
 // @return GetCurrentPlayingListResponse
 func (client *Client) GetCurrentPlayingListWithContext(ctx context.Context, tmpReq *GetCurrentPlayingListRequest, headers *GetCurrentPlayingListHeaders, runtime *dara.RuntimeOptions) (_result *GetCurrentPlayingListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetCurrentPlayingListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2028,7 +2128,7 @@ func (client *Client) GetCurrentPlayingListWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 获取设备认证信息
+// Obtain basic device information by Device ID.
 //
 // @param tmpReq - GetDeviceBasicInfoRequest
 //
@@ -2038,9 +2138,11 @@ func (client *Client) GetCurrentPlayingListWithContext(ctx context.Context, tmpR
 //
 // @return GetDeviceBasicInfoResponse
 func (client *Client) GetDeviceBasicInfoWithContext(ctx context.Context, tmpReq *GetDeviceBasicInfoRequest, headers *GetDeviceBasicInfoHeaders, runtime *dara.RuntimeOptions) (_result *GetDeviceBasicInfoResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetDeviceBasicInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2092,7 +2194,7 @@ func (client *Client) GetDeviceBasicInfoWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 获取设备信息
+// Obtain the Device ID based on the device MAC or SN.
 //
 // @param request - GetDeviceIdByIdentityRequest
 //
@@ -2102,9 +2204,11 @@ func (client *Client) GetDeviceBasicInfoWithContext(ctx context.Context, tmpReq 
 //
 // @return GetDeviceIdByIdentityResponse
 func (client *Client) GetDeviceIdByIdentityWithContext(ctx context.Context, request *GetDeviceIdByIdentityRequest, headers *GetDeviceIdByIdentityHeaders, runtime *dara.RuntimeOptions) (_result *GetDeviceIdByIdentityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EncodeKey) {
@@ -2166,7 +2270,7 @@ func (client *Client) GetDeviceIdByIdentityWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取设备的用户设置
+// Obtain the user settings of a device.
 //
 // @param tmpReq - GetDeviceSettingRequest
 //
@@ -2176,9 +2280,11 @@ func (client *Client) GetDeviceIdByIdentityWithContext(ctx context.Context, requ
 //
 // @return GetDeviceSettingResponse
 func (client *Client) GetDeviceSettingWithContext(ctx context.Context, tmpReq *GetDeviceSettingRequest, headers *GetDeviceSettingHeaders, runtime *dara.RuntimeOptions) (_result *GetDeviceSettingResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetDeviceSettingShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2238,7 +2344,7 @@ func (client *Client) GetDeviceSettingWithContext(ctx context.Context, tmpReq *G
 
 // Summary:
 //
-// 获取设备状态详情
+// Obtain device status details.
 //
 // @param tmpReq - GetDeviceStatusDetailRequest
 //
@@ -2248,9 +2354,11 @@ func (client *Client) GetDeviceSettingWithContext(ctx context.Context, tmpReq *G
 //
 // @return GetDeviceStatusDetailResponse
 func (client *Client) GetDeviceStatusDetailWithContext(ctx context.Context, tmpReq *GetDeviceStatusDetailRequest, headers *GetDeviceStatusDetailHeaders, runtime *dara.RuntimeOptions) (_result *GetDeviceStatusDetailResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetDeviceStatusDetailShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2310,7 +2418,7 @@ func (client *Client) GetDeviceStatusDetailWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 获取设备状态信息
+// Obtain the online status of a device based on its openID.
 //
 // @param tmpReq - GetDeviceStatusInfoRequest
 //
@@ -2320,9 +2428,11 @@ func (client *Client) GetDeviceStatusDetailWithContext(ctx context.Context, tmpR
 //
 // @return GetDeviceStatusInfoResponse
 func (client *Client) GetDeviceStatusInfoWithContext(ctx context.Context, tmpReq *GetDeviceStatusInfoRequest, headers *GetDeviceStatusInfoHeaders, runtime *dara.RuntimeOptions) (_result *GetDeviceStatusInfoResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetDeviceStatusInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2374,7 +2484,7 @@ func (client *Client) GetDeviceStatusInfoWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 获取设备标签
+// Obtain the tag information of a device.
 //
 // @param tmpReq - GetDeviceTagRequest
 //
@@ -2384,9 +2494,11 @@ func (client *Client) GetDeviceStatusInfoWithContext(ctx context.Context, tmpReq
 //
 // @return GetDeviceTagResponse
 func (client *Client) GetDeviceTagWithContext(ctx context.Context, tmpReq *GetDeviceTagRequest, headers *GetDeviceTagHeaders, runtime *dara.RuntimeOptions) (_result *GetDeviceTagResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetDeviceTagShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2438,7 +2550,7 @@ func (client *Client) GetDeviceTagWithContext(ctx context.Context, tmpReq *GetDe
 
 // Summary:
 //
-// 江苏电信号百
+// Derived requirements from Jiangsu Telecom\\"s self-developed desktop launcher project. HaoBai expects to collect statistics on the activation rate, active user rate, and top user usage patterns after the project is published, and to generate daily and weekly reports. Daily reports are synchronized automatically via API, while weekly reports are synchronized offline.
 //
 // @param request - GetJiangSuTelecomDataRequest
 //
@@ -2448,9 +2560,11 @@ func (client *Client) GetDeviceTagWithContext(ctx context.Context, tmpReq *GetDe
 //
 // @return GetJiangSuTelecomDataResponse
 func (client *Client) GetJiangSuTelecomDataWithContext(ctx context.Context, request *GetJiangSuTelecomDataRequest, headers *GetJiangSuTelecomDataHeaders, runtime *dara.RuntimeOptions) (_result *GetJiangSuTelecomDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Date) {
@@ -2496,7 +2610,11 @@ func (client *Client) GetJiangSuTelecomDataWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询定时任务
+// Obtain scheduled task information.
+//
+// Description:
+//
+// Query the details of a specified scheduled task by its ID.
 //
 // @param tmpReq - GetScheduleTaskRequest
 //
@@ -2506,9 +2624,11 @@ func (client *Client) GetJiangSuTelecomDataWithContext(ctx context.Context, requ
 //
 // @return GetScheduleTaskResponse
 func (client *Client) GetScheduleTaskWithContext(ctx context.Context, tmpReq *GetScheduleTaskRequest, headers *GetScheduleTaskHeaders, runtime *dara.RuntimeOptions) (_result *GetScheduleTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetScheduleTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2576,7 +2696,7 @@ func (client *Client) GetScheduleTaskWithContext(ctx context.Context, tmpReq *Ge
 
 // Summary:
 //
-// 查询未读留言数量
+// Query the number of unread messages for a user.
 //
 // @param tmpReq - GetUnreadMessageCountRequest
 //
@@ -2586,9 +2706,11 @@ func (client *Client) GetScheduleTaskWithContext(ctx context.Context, tmpReq *Ge
 //
 // @return GetUnreadMessageCountResponse
 func (client *Client) GetUnreadMessageCountWithContext(ctx context.Context, tmpReq *GetUnreadMessageCountRequest, headers *GetUnreadMessageCountHeaders, runtime *dara.RuntimeOptions) (_result *GetUnreadMessageCountResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetUnreadMessageCountShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2640,7 +2762,7 @@ func (client *Client) GetUnreadMessageCountWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 查询设备绑定的用户
+// Obtain the User ID attached to a device by the device\\"s openID.
 //
 // @param tmpReq - GetUserByDeviceIdRequest
 //
@@ -2650,9 +2772,11 @@ func (client *Client) GetUnreadMessageCountWithContext(ctx context.Context, tmpR
 //
 // @return GetUserByDeviceIdResponse
 func (client *Client) GetUserByDeviceIdWithContext(ctx context.Context, tmpReq *GetUserByDeviceIdRequest, headers *GetUserByDeviceIdHeaders, runtime *dara.RuntimeOptions) (_result *GetUserByDeviceIdResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetUserByDeviceIdShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2704,7 +2828,11 @@ func (client *Client) GetUserByDeviceIdWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 查询天气
+// Query the weather.
+//
+// Description:
+//
+// Query the weather data for the location of the device based on the Device Information obtained from system parameters.
 //
 // @param tmpReq - GetWeatherRequest
 //
@@ -2714,9 +2842,11 @@ func (client *Client) GetUserByDeviceIdWithContext(ctx context.Context, tmpReq *
 //
 // @return GetWeatherResponse
 func (client *Client) GetWeatherWithContext(ctx context.Context, tmpReq *GetWeatherRequest, headers *GetWeatherHeaders, runtime *dara.RuntimeOptions) (_result *GetWeatherResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetWeatherShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2784,7 +2914,7 @@ func (client *Client) GetWeatherWithContext(ctx context.Context, tmpReq *GetWeat
 
 // Summary:
 //
-// 播放列表点击播放
+// Click a playlist to start playback.
 //
 // @param tmpReq - IndexControlPlayingListRequest
 //
@@ -2794,9 +2924,11 @@ func (client *Client) GetWeatherWithContext(ctx context.Context, tmpReq *GetWeat
 //
 // @return IndexControlPlayingListResponse
 func (client *Client) IndexControlPlayingListWithContext(ctx context.Context, tmpReq *IndexControlPlayingListRequest, headers *IndexControlPlayingListHeaders, runtime *dara.RuntimeOptions) (_result *IndexControlPlayingListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &IndexControlPlayingListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2866,7 +2998,13 @@ func (client *Client) IndexControlPlayingListWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 失效三方应用登录态
+// When a user operation (not initiated from the device side) causes the login session of a third-party application on the device to become invalid (for example, the user logs on to the same account from a new device, invalidating the session on the old device, or the user changes their password, which invalidates the session on the old device), the third party must invoke this API to notify Tmall Genie.
+//
+// Description:
+//
+// > Modify message notification template
+//
+// > - You need to query the templateId first, then modify other parameters based on the templateId.
 //
 // @param tmpReq - InvalidateThirdPartyAppLoginStateRequest
 //
@@ -2876,9 +3014,11 @@ func (client *Client) IndexControlPlayingListWithContext(ctx context.Context, tm
 //
 // @return InvalidateThirdPartyAppLoginStateResponse
 func (client *Client) InvalidateThirdPartyAppLoginStateWithContext(ctx context.Context, tmpReq *InvalidateThirdPartyAppLoginStateRequest, headers *InvalidateThirdPartyAppLoginStateHeaders, runtime *dara.RuntimeOptions) (_result *InvalidateThirdPartyAppLoginStateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &InvalidateThirdPartyAppLoginStateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2934,7 +3074,7 @@ func (client *Client) InvalidateThirdPartyAppLoginStateWithContext(ctx context.C
 
 // Summary:
 //
-// 查询闹钟列表
+// Perform a paged query to retrieve the alarm clock list of a specific User on a device.
 //
 // @param tmpReq - ListAlarmsRequest
 //
@@ -2944,9 +3084,11 @@ func (client *Client) InvalidateThirdPartyAppLoginStateWithContext(ctx context.C
 //
 // @return ListAlarmsResponse
 func (client *Client) ListAlarmsWithContext(ctx context.Context, tmpReq *ListAlarmsRequest, headers *ListAlarmsHeaders, runtime *dara.RuntimeOptions) (_result *ListAlarmsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListAlarmsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3014,7 +3156,7 @@ func (client *Client) ListAlarmsWithContext(ctx context.Context, tmpReq *ListAla
 
 // Summary:
 //
-// 获取音乐音频专辑里面的内容列表
+// Obtain the content list within a music audio album.
 //
 // @param request - ListAlbumDetailRequest
 //
@@ -3024,9 +3166,11 @@ func (client *Client) ListAlarmsWithContext(ctx context.Context, tmpReq *ListAla
 //
 // @return ListAlbumDetailResponse
 func (client *Client) ListAlbumDetailWithContext(ctx context.Context, request *ListAlbumDetailRequest, headers *ListAlbumDetailHeaders, runtime *dara.RuntimeOptions) (_result *ListAlbumDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -3080,7 +3224,7 @@ func (client *Client) ListAlbumDetailWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// 专辑是否被订阅
+// Whether the album is subscribed.
 //
 // @param tmpReq - ListAlbumIsAddedRequest
 //
@@ -3090,9 +3234,11 @@ func (client *Client) ListAlbumDetailWithContext(ctx context.Context, request *L
 //
 // @return ListAlbumIsAddedResponse
 func (client *Client) ListAlbumIsAddedWithContext(ctx context.Context, tmpReq *ListAlbumIsAddedRequest, headers *ListAlbumIsAddedHeaders, runtime *dara.RuntimeOptions) (_result *ListAlbumIsAddedResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListAlbumIsAddedShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3160,7 +3306,7 @@ func (client *Client) ListAlbumIsAddedWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
-// 根据特定的类目,按照指定的排序顺序获取该类目下的内容.
+// Obtain the content under a specific category according to the specified sorting order.
 //
 // @param tmpReq - ListCateContentRequest
 //
@@ -3170,9 +3316,11 @@ func (client *Client) ListAlbumIsAddedWithContext(ctx context.Context, tmpReq *L
 //
 // @return ListCateContentResponse
 func (client *Client) ListCateContentWithContext(ctx context.Context, tmpReq *ListCateContentRequest, headers *ListCateContentHeaders, runtime *dara.RuntimeOptions) (_result *ListCateContentResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListCateContentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3242,7 +3390,7 @@ func (client *Client) ListCateContentWithContext(ctx context.Context, tmpReq *Li
 
 // Summary:
 //
-// 获取音乐音频类目列表
+// Obtain category information.
 //
 // @param request - ListCateInfoRequest
 //
@@ -3252,9 +3400,11 @@ func (client *Client) ListCateContentWithContext(ctx context.Context, tmpReq *Li
 //
 // @return ListCateInfoResponse
 func (client *Client) ListCateInfoWithContext(ctx context.Context, request *ListCateInfoRequest, headers *ListCateInfoHeaders, runtime *dara.RuntimeOptions) (_result *ListCateInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Type) {
@@ -3300,7 +3450,7 @@ func (client *Client) ListCateInfoWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 获取音乐/音频的一级类目列表
+// Obtain the top-level category list for music or audio.
 //
 // @param request - ListCommonCateFirstFloorRequest
 //
@@ -3310,9 +3460,11 @@ func (client *Client) ListCateInfoWithContext(ctx context.Context, request *List
 //
 // @return ListCommonCateFirstFloorResponse
 func (client *Client) ListCommonCateFirstFloorWithContext(ctx context.Context, request *ListCommonCateFirstFloorRequest, headers *ListCommonCateFirstFloorHeaders, runtime *dara.RuntimeOptions) (_result *ListCommonCateFirstFloorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Type) {
@@ -3358,7 +3510,7 @@ func (client *Client) ListCommonCateFirstFloorWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取指定一级类目下面的二级类目列表
+// Retrieve the list of level-2 categories under a specified level-1 category.
 //
 // @param request - ListCommonCateSecondFloorRequest
 //
@@ -3368,9 +3520,11 @@ func (client *Client) ListCommonCateFirstFloorWithContext(ctx context.Context, r
 //
 // @return ListCommonCateSecondFloorResponse
 func (client *Client) ListCommonCateSecondFloorWithContext(ctx context.Context, request *ListCommonCateSecondFloorRequest, headers *ListCommonCateSecondFloorHeaders, runtime *dara.RuntimeOptions) (_result *ListCommonCateSecondFloorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ParentCateId) {
@@ -3416,7 +3570,7 @@ func (client *Client) ListCommonCateSecondFloorWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 批量获取设备基本信息
+// Batch retrieve basic device information based on a list of device openIDs.
 //
 // @param tmpReq - ListDeviceBasicInfoRequest
 //
@@ -3426,9 +3580,11 @@ func (client *Client) ListCommonCateSecondFloorWithContext(ctx context.Context, 
 //
 // @return ListDeviceBasicInfoResponse
 func (client *Client) ListDeviceBasicInfoWithContext(ctx context.Context, tmpReq *ListDeviceBasicInfoRequest, headers *ListDeviceBasicInfoHeaders, runtime *dara.RuntimeOptions) (_result *ListDeviceBasicInfoResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListDeviceBasicInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3480,7 +3636,7 @@ func (client *Client) ListDeviceBasicInfoWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 查询用户名下的设备
+// Obtain the list of attached Device IDs based on the user\\"s openID.
 //
 // @param tmpReq - ListDeviceByUserIdRequest
 //
@@ -3490,9 +3646,11 @@ func (client *Client) ListDeviceBasicInfoWithContext(ctx context.Context, tmpReq
 //
 // @return ListDeviceByUserIdResponse
 func (client *Client) ListDeviceByUserIdWithContext(ctx context.Context, tmpReq *ListDeviceByUserIdRequest, headers *ListDeviceByUserIdHeaders, runtime *dara.RuntimeOptions) (_result *ListDeviceByUserIdResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListDeviceByUserIdShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3544,7 +3702,7 @@ func (client *Client) ListDeviceByUserIdWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 获取指定渠道的设备列表
+// Obtain the device list for a specified channel.
 //
 // @param tmpReq - ListDeviceByUserIdAndChanelRequest
 //
@@ -3554,9 +3712,11 @@ func (client *Client) ListDeviceByUserIdWithContext(ctx context.Context, tmpReq 
 //
 // @return ListDeviceByUserIdAndChanelResponse
 func (client *Client) ListDeviceByUserIdAndChanelWithContext(ctx context.Context, tmpReq *ListDeviceByUserIdAndChanelRequest, headers *ListDeviceByUserIdAndChanelHeaders, runtime *dara.RuntimeOptions) (_result *ListDeviceByUserIdAndChanelResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListDeviceByUserIdAndChanelShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3616,7 +3776,7 @@ func (client *Client) ListDeviceByUserIdAndChanelWithContext(ctx context.Context
 
 // Summary:
 //
-// 批量获取设备openId
+// Batch retrieve Device IDs by device MAC/SN.
 //
 // @param tmpReq - ListDeviceIdByIdentitiesRequest
 //
@@ -3626,9 +3786,11 @@ func (client *Client) ListDeviceByUserIdAndChanelWithContext(ctx context.Context
 //
 // @return ListDeviceIdByIdentitiesResponse
 func (client *Client) ListDeviceIdByIdentitiesWithContext(ctx context.Context, tmpReq *ListDeviceIdByIdentitiesRequest, headers *ListDeviceIdByIdentitiesHeaders, runtime *dara.RuntimeOptions) (_result *ListDeviceIdByIdentitiesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListDeviceIdByIdentitiesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3696,7 +3858,7 @@ func (client *Client) ListDeviceIdByIdentitiesWithContext(ctx context.Context, t
 
 // Summary:
 //
-// 基于音乐类型查询铃声列表（分页）
+// Query the list of ringtones under a specified music category.
 //
 // @param tmpReq - ListMusicRequest
 //
@@ -3706,9 +3868,11 @@ func (client *Client) ListDeviceIdByIdentitiesWithContext(ctx context.Context, t
 //
 // @return ListMusicResponse
 func (client *Client) ListMusicWithContext(ctx context.Context, tmpReq *ListMusicRequest, headers *ListMusicHeaders, runtime *dara.RuntimeOptions) (_result *ListMusicResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListMusicShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3776,7 +3940,7 @@ func (client *Client) ListMusicWithContext(ctx context.Context, tmpReq *ListMusi
 
 // Summary:
 //
-// 获取用户的播放历史
+// Obtain the history playback API.
 //
 // @param tmpReq - ListPlayHistoryRequest
 //
@@ -3786,9 +3950,11 @@ func (client *Client) ListMusicWithContext(ctx context.Context, tmpReq *ListMusi
 //
 // @return ListPlayHistoryResponse
 func (client *Client) ListPlayHistoryWithContext(ctx context.Context, tmpReq *ListPlayHistoryRequest, headers *ListPlayHistoryHeaders, runtime *dara.RuntimeOptions) (_result *ListPlayHistoryResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListPlayHistoryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3858,7 +4024,7 @@ func (client *Client) ListPlayHistoryWithContext(ctx context.Context, tmpReq *Li
 
 // Summary:
 //
-// 获取每日推荐的音乐或者音频
+// Obtain daily recommended music or audio.
 //
 // @param tmpReq - ListRecommendContentRequest
 //
@@ -3868,9 +4034,11 @@ func (client *Client) ListPlayHistoryWithContext(ctx context.Context, tmpReq *Li
 //
 // @return ListRecommendContentResponse
 func (client *Client) ListRecommendContentWithContext(ctx context.Context, tmpReq *ListRecommendContentRequest, headers *ListRecommendContentHeaders, runtime *dara.RuntimeOptions) (_result *ListRecommendContentResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListRecommendContentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3940,7 +4108,7 @@ func (client *Client) ListRecommendContentWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 订阅列表
+// The user has subscribed to the list.
 //
 // @param tmpReq - ListSubRequest
 //
@@ -3950,9 +4118,11 @@ func (client *Client) ListRecommendContentWithContext(ctx context.Context, tmpRe
 //
 // @return ListSubResponse
 func (client *Client) ListSubWithContext(ctx context.Context, tmpReq *ListSubRequest, headers *ListSubHeaders, runtime *dara.RuntimeOptions) (_result *ListSubResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListSubShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4020,7 +4190,7 @@ func (client *Client) ListSubWithContext(ctx context.Context, tmpReq *ListSubReq
 
 // Summary:
 //
-// 订阅专辑元数据列表
+// Album List.
 //
 // @param tmpReq - ListSubAlbumRequest
 //
@@ -4030,9 +4200,11 @@ func (client *Client) ListSubWithContext(ctx context.Context, tmpReq *ListSubReq
 //
 // @return ListSubAlbumResponse
 func (client *Client) ListSubAlbumWithContext(ctx context.Context, tmpReq *ListSubAlbumRequest, headers *ListSubAlbumHeaders, runtime *dara.RuntimeOptions) (_result *ListSubAlbumResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListSubAlbumShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4100,7 +4272,7 @@ func (client *Client) ListSubAlbumWithContext(ctx context.Context, tmpReq *ListS
 
 // Summary:
 //
-// 内容订阅元数据分类
+// Album categorization.
 //
 // @param request - ListSubscriptionAlbumCategoryRequest
 //
@@ -4110,9 +4282,11 @@ func (client *Client) ListSubAlbumWithContext(ctx context.Context, tmpReq *ListS
 //
 // @return ListSubscriptionAlbumCategoryResponse
 func (client *Client) ListSubscriptionAlbumCategoryWithContext(ctx context.Context, request *ListSubscriptionAlbumCategoryRequest, headers *ListSubscriptionAlbumCategoryHeaders, runtime *dara.RuntimeOptions) (_result *ListSubscriptionAlbumCategoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryName) {
@@ -4158,7 +4332,7 @@ func (client *Client) ListSubscriptionAlbumCategoryWithContext(ctx context.Conte
 
 // Summary:
 //
-// 获取留言列表
+// Query the list of user message records based on the query conditions, including the start time and the number of entries to return.
 //
 // @param tmpReq - ListUserMessageRequest
 //
@@ -4168,9 +4342,11 @@ func (client *Client) ListSubscriptionAlbumCategoryWithContext(ctx context.Conte
 //
 // @return ListUserMessageResponse
 func (client *Client) ListUserMessageWithContext(ctx context.Context, tmpReq *ListUserMessageRequest, headers *ListUserMessageHeaders, runtime *dara.RuntimeOptions) (_result *ListUserMessageResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListUserMessageShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4230,7 +4406,11 @@ func (client *Client) ListUserMessageWithContext(ctx context.Context, tmpReq *Li
 
 // Summary:
 //
-// 移动轻纳管
+// Shift the project to obtain recommended songs, including daily recommendations, popular songs, and genre-based playlists.
+//
+// Description:
+//
+// Different scenarios (such as daily recommendations and popular songs) can be distinguished by the Type parameter.
 //
 // @param tmpReq - MobileRecommendRequest
 //
@@ -4240,9 +4420,11 @@ func (client *Client) ListUserMessageWithContext(ctx context.Context, tmpReq *Li
 //
 // @return MobileRecommendResponse
 func (client *Client) MobileRecommendWithContext(ctx context.Context, tmpReq *MobileRecommendRequest, headers *MobileRecommendHeaders, runtime *dara.RuntimeOptions) (_result *MobileRecommendResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &MobileRecommendShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4318,7 +4500,7 @@ func (client *Client) MobileRecommendWithContext(ctx context.Context, tmpReq *Mo
 
 // Summary:
 //
-// 播放暂停控制
+// Playback and pause control.
 //
 // @param tmpReq - PlayAndPauseControlRequest
 //
@@ -4328,9 +4510,11 @@ func (client *Client) MobileRecommendWithContext(ctx context.Context, tmpReq *Mo
 //
 // @return PlayAndPauseControlResponse
 func (client *Client) PlayAndPauseControlWithContext(ctx context.Context, tmpReq *PlayAndPauseControlRequest, headers *PlayAndPauseControlHeaders, runtime *dara.RuntimeOptions) (_result *PlayAndPauseControlResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &PlayAndPauseControlShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4400,7 +4584,7 @@ func (client *Client) PlayAndPauseControlWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 播放模式切换
+// Switch playback mode.
 //
 // @param tmpReq - PlayModeControlRequest
 //
@@ -4410,9 +4594,11 @@ func (client *Client) PlayAndPauseControlWithContext(ctx context.Context, tmpReq
 //
 // @return PlayModeControlResponse
 func (client *Client) PlayModeControlWithContext(ctx context.Context, tmpReq *PlayModeControlRequest, headers *PlayModeControlHeaders, runtime *dara.RuntimeOptions) (_result *PlayModeControlResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &PlayModeControlShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4482,7 +4668,7 @@ func (client *Client) PlayModeControlWithContext(ctx context.Context, tmpReq *Pl
 
 // Summary:
 //
-// 上下首控制
+// Control the next or previous track in the created playlist.
 //
 // @param tmpReq - PreviousAndNextControlRequest
 //
@@ -4492,9 +4678,11 @@ func (client *Client) PlayModeControlWithContext(ctx context.Context, tmpReq *Pl
 //
 // @return PreviousAndNextControlResponse
 func (client *Client) PreviousAndNextControlWithContext(ctx context.Context, tmpReq *PreviousAndNextControlRequest, headers *PreviousAndNextControlHeaders, runtime *dara.RuntimeOptions) (_result *PreviousAndNextControlResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &PreviousAndNextControlShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4564,7 +4752,7 @@ func (client *Client) PreviousAndNextControlWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 进度控制
+// Progress control.
 //
 // @param tmpReq - ProgressControlRequest
 //
@@ -4574,9 +4762,11 @@ func (client *Client) PreviousAndNextControlWithContext(ctx context.Context, tmp
 //
 // @return ProgressControlResponse
 func (client *Client) ProgressControlWithContext(ctx context.Context, tmpReq *ProgressControlRequest, headers *ProgressControlHeaders, runtime *dara.RuntimeOptions) (_result *ProgressControlResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ProgressControlShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4646,7 +4836,7 @@ func (client *Client) ProgressControlWithContext(ctx context.Context, tmpReq *Pr
 
 // Summary:
 //
-// 获取闹钟音乐类型列表
+// Obtain the collection of alarm music types supported by the device.
 //
 // @param tmpReq - QueryMusicTypeRequest
 //
@@ -4656,9 +4846,11 @@ func (client *Client) ProgressControlWithContext(ctx context.Context, tmpReq *Pr
 //
 // @return QueryMusicTypeResponse
 func (client *Client) QueryMusicTypeWithContext(ctx context.Context, tmpReq *QueryMusicTypeRequest, headers *QueryMusicTypeHeaders, runtime *dara.RuntimeOptions) (_result *QueryMusicTypeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryMusicTypeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4726,7 +4918,7 @@ func (client *Client) QueryMusicTypeWithContext(ctx context.Context, tmpReq *Que
 
 // Summary:
 //
-// 通过tme用户id获取授权的天猫精灵用户+设备列表
+// # Obtain the list of authorized Tmall Genie users and their devices by using the TME user ID, for use by KuGou Cloud Push Song service
 //
 // @param request - QueryUserDeviceListByTmeUserIdRequest
 //
@@ -4736,9 +4928,11 @@ func (client *Client) QueryMusicTypeWithContext(ctx context.Context, tmpReq *Que
 //
 // @return QueryUserDeviceListByTmeUserIdResponse
 func (client *Client) QueryUserDeviceListByTmeUserIdWithContext(ctx context.Context, request *QueryUserDeviceListByTmeUserIdRequest, headers *QueryUserDeviceListByTmeUserIdHeaders, runtime *dara.RuntimeOptions) (_result *QueryUserDeviceListByTmeUserIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Sp) {
@@ -4788,7 +4982,7 @@ func (client *Client) QueryUserDeviceListByTmeUserIdWithContext(ctx context.Cont
 
 // Summary:
 //
-// 读取留言
+// Set a message to read status.
 //
 // @param tmpReq - ReadMessageRequest
 //
@@ -4798,9 +4992,11 @@ func (client *Client) QueryUserDeviceListByTmeUserIdWithContext(ctx context.Cont
 //
 // @return ReadMessageResponse
 func (client *Client) ReadMessageWithContext(ctx context.Context, tmpReq *ReadMessageRequest, headers *ReadMessageHeaders, runtime *dara.RuntimeOptions) (_result *ReadMessageResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ReadMessageShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4856,7 +5052,11 @@ func (client *Client) ReadMessageWithContext(ctx context.Context, tmpReq *ReadMe
 
 // Summary:
 //
-// 扫描二维码激活绑定设备
+// A screen-equipped device completes activation and attachment between the user and the device by scanning a QR code.
+//
+// Description:
+//
+// Perform activation and attachment by scanning the QR code related to activation and attachment displayed on the device.
 //
 // @param tmpReq - ScanCodeBindRequest
 //
@@ -4866,9 +5066,11 @@ func (client *Client) ReadMessageWithContext(ctx context.Context, tmpReq *ReadMe
 //
 // @return ScanCodeBindResponse
 func (client *Client) ScanCodeBindWithContext(ctx context.Context, tmpReq *ScanCodeBindRequest, headers *ScanCodeBindHeaders, runtime *dara.RuntimeOptions) (_result *ScanCodeBindResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ScanCodeBindShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4928,7 +5130,7 @@ func (client *Client) ScanCodeBindWithContext(ctx context.Context, tmpReq *ScanC
 
 // Summary:
 //
-// 选品池投放能力
+// Query the content of a selection pool by its ID.
 //
 // @param tmpReq - ScgSearchRequest
 //
@@ -4938,9 +5140,11 @@ func (client *Client) ScanCodeBindWithContext(ctx context.Context, tmpReq *ScanC
 //
 // @return ScgSearchResponse
 func (client *Client) ScgSearchWithContext(ctx context.Context, tmpReq *ScgSearchRequest, headers *ScgSearchHeaders, runtime *dara.RuntimeOptions) (_result *ScgSearchResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ScgSearchShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4996,7 +5200,7 @@ func (client *Client) ScgSearchWithContext(ctx context.Context, tmpReq *ScgSearc
 
 // Summary:
 //
-// 按照特定的搜索条件搜索
+// Search according to specific search criteria.
 //
 // @param tmpReq - SearchContentRequest
 //
@@ -5006,9 +5210,11 @@ func (client *Client) ScgSearchWithContext(ctx context.Context, tmpReq *ScgSearc
 //
 // @return SearchContentResponse
 func (client *Client) SearchContentWithContext(ctx context.Context, tmpReq *SearchContentRequest, headers *SearchContentHeaders, runtime *dara.RuntimeOptions) (_result *SearchContentResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SearchContentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5078,7 +5284,7 @@ func (client *Client) SearchContentWithContext(ctx context.Context, tmpReq *Sear
 
 // Summary:
 //
-// 发送留言
+// Send a message.
 //
 // @param tmpReq - SendMessageRequest
 //
@@ -5088,9 +5294,11 @@ func (client *Client) SearchContentWithContext(ctx context.Context, tmpReq *Sear
 //
 // @return SendMessageResponse
 func (client *Client) SendMessageWithContext(ctx context.Context, tmpReq *SendMessageRequest, headers *SendMessageHeaders, runtime *dara.RuntimeOptions) (_result *SendMessageResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SendMessageShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5146,7 +5354,7 @@ func (client *Client) SendMessageWithContext(ctx context.Context, tmpReq *SendMe
 
 // Summary:
 //
-// 修改设备设置
+// Modify the user settings of a device.
 //
 // @param tmpReq - SetDeviceSettingRequest
 //
@@ -5156,9 +5364,11 @@ func (client *Client) SendMessageWithContext(ctx context.Context, tmpReq *SendMe
 //
 // @return SetDeviceSettingResponse
 func (client *Client) SetDeviceSettingWithContext(ctx context.Context, tmpReq *SetDeviceSettingRequest, headers *SetDeviceSettingHeaders, runtime *dara.RuntimeOptions) (_result *SetDeviceSettingResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SetDeviceSettingShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5220,7 +5430,7 @@ func (client *Client) SetDeviceSettingWithContext(ctx context.Context, tmpReq *S
 
 // Summary:
 //
-// 三方即时信息数据变更事件推送
+// # Third-party real-time information data change event push
 //
 // @param request - ThirdImmediateMsgPushRequest
 //
@@ -5230,9 +5440,11 @@ func (client *Client) SetDeviceSettingWithContext(ctx context.Context, tmpReq *S
 //
 // @return ThirdImmediateMsgPushResponse
 func (client *Client) ThirdImmediateMsgPushWithContext(ctx context.Context, request *ThirdImmediateMsgPushRequest, headers *ThirdImmediateMsgPushHeaders, runtime *dara.RuntimeOptions) (_result *ThirdImmediateMsgPushResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -5314,7 +5526,19 @@ func (client *Client) ThirdImmediateMsgPushWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 解除三方和精灵账号的关系
+// Detach the relationship between a third-party account and a Tmall Genie account by using a logon credential.
+//
+// Description:
+//
+// Note: When the logon credential expires, the integrator must initiate the authorization logon flow again to obtain a new logon credential (entry service API: AuthLoginWithThirdUserInfo).
+//
+// - Invoke the service API with the logon credential (LoginStateAccessToken) parameter via the Java software development kit (SDK). For SDKs in other languages, consult Tmall Genie developers during integration.
+//
+// If the API call throws a TeaException and TeaException.code is "InvalidAuthentication", the logon credential has expired.
+//
+// - Invoke the service API by sending an HTTP request with the logon credential (LoginStateAccessToken) parameter.
+//
+// If the HTTP response status code returned by the API call is 400, the logon credential has expired.
 //
 // @param request - UnbindAligenieUserRequest
 //
@@ -5324,9 +5548,11 @@ func (client *Client) ThirdImmediateMsgPushWithContext(ctx context.Context, requ
 //
 // @return UnbindAligenieUserResponse
 func (client *Client) UnbindAligenieUserWithContext(ctx context.Context, request *UnbindAligenieUserRequest, headers *UnbindAligenieUserHeaders, runtime *dara.RuntimeOptions) (_result *UnbindAligenieUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.LoginStateAccessToken) {
@@ -5372,7 +5598,7 @@ func (client *Client) UnbindAligenieUserWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 解绑设备
+// Detach the binding relationship based on the user\\"s open information and the device\\"s open information.
 //
 // @param tmpReq - UnbindDeviceRequest
 //
@@ -5382,9 +5608,11 @@ func (client *Client) UnbindAligenieUserWithContext(ctx context.Context, request
 //
 // @return UnbindDeviceResponse
 func (client *Client) UnbindDeviceWithContext(ctx context.Context, tmpReq *UnbindDeviceRequest, headers *UnbindDeviceHeaders, runtime *dara.RuntimeOptions) (_result *UnbindDeviceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UnbindDeviceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5444,7 +5672,7 @@ func (client *Client) UnbindDeviceWithContext(ctx context.Context, tmpReq *Unbin
 
 // Summary:
 //
-// 更新闹钟
+// Update an alarm, including its trigger time, loop type, and music.
 //
 // @param tmpReq - UpdateAlarmRequest
 //
@@ -5454,9 +5682,11 @@ func (client *Client) UnbindDeviceWithContext(ctx context.Context, tmpReq *Unbin
 //
 // @return UpdateAlarmResponse
 func (client *Client) UpdateAlarmWithContext(ctx context.Context, tmpReq *UpdateAlarmRequest, headers *UpdateAlarmHeaders, runtime *dara.RuntimeOptions) (_result *UpdateAlarmResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateAlarmShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)

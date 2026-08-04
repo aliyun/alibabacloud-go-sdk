@@ -16,12 +16,16 @@ type iGetAlbumRequest interface {
 }
 
 type GetAlbumRequest struct {
+	// Album ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12343
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Default Value: song
+	//
 	// This parameter is required.
 	//
 	// example:

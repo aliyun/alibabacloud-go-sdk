@@ -20,10 +20,14 @@ type iInvalidateThirdPartyAppLoginStateResponseBody interface {
 }
 
 type InvalidateThirdPartyAppLoginStateResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response message
+	//
 	// example:
 	//
 	// success
@@ -34,6 +38,8 @@ type InvalidateThirdPartyAppLoginStateResponseBody struct {
 	//
 	// FAFCD152-4791-5F2F-B0BE-2DC06FD4F05B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Flag indicating whether the invocation succeeded
+	//
 	// example:
 	//
 	// true

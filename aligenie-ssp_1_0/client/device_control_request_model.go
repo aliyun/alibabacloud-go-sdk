@@ -16,7 +16,10 @@ type iDeviceControlRequest interface {
 }
 
 type DeviceControlRequest struct {
+	// Input parameters for volume control
 	ControlRequest *DeviceControlRequestControlRequest `json:"ControlRequest,omitempty" xml:"ControlRequest,omitempty" type:"Struct"`
+	// List of device ID information.
+	//
 	// This parameter is required.
 	DeviceInfo *DeviceControlRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
 }
@@ -48,14 +51,28 @@ func (s *DeviceControlRequest) SetDeviceInfo(v *DeviceControlRequestDeviceInfo) 
 }
 
 func (s *DeviceControlRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ControlRequest != nil {
+		if err := s.ControlRequest.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeviceInfo != nil {
+		if err := s.DeviceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeviceControlRequestControlRequest struct {
+	// Indicates whether mute is enabled. If this field is set to true, you must also specify the volume value as 0.
+	//
 	// example:
 	//
 	// false
 	Muted *bool `json:"Muted,omitempty" xml:"Muted,omitempty"`
+	// Target volume value
+	//
 	// example:
 	//
 	// 10
@@ -93,30 +110,44 @@ func (s *DeviceControlRequestControlRequest) Validate() error {
 }
 
 type DeviceControlRequestDeviceInfo struct {
+	// Value corresponding to the encoding type. Enter the Project ID of the project where the product resides. You can View this in the Tmall Genie AI platform console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding Type. Enter PROJECT_ID here.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PROJECT_ID
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// Device ID. Enter the value of deviceOpenId or deviceUnionId.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The type of Device ID:
+	//
+	// OPEN_ID: The default Device ID identity.
+	//
+	// UNION_ID: The organization-dimension Device ID identity. You must request an organization in advance on the Open Platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID of the device. Required if IdType is UNION_ID.
+	//
 	// example:
 	//
 	// 1*****2

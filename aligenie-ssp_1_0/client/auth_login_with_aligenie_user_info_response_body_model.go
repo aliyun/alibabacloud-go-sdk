@@ -22,19 +22,28 @@ type iAuthLoginWithAligenieUserInfoResponseBody interface {
 }
 
 type AuthLoginWithAligenieUserInfoResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response message
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 73C67BD9-175A-1324-8202-9FAABBB3E6FA
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *AuthLoginWithAligenieUserInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Response Result
+	Result *AuthLoginWithAligenieUserInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Flag indicating whether the invocation succeeded
+	//
 	// example:
 	//
 	// true
@@ -95,14 +104,23 @@ func (s *AuthLoginWithAligenieUserInfoResponseBody) SetSuccess(v bool) *AuthLogi
 }
 
 func (s *AuthLoginWithAligenieUserInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AuthLoginWithAligenieUserInfoResponseBodyResult struct {
+	// Expiration time of the login state access token (long integer)
+	//
 	// example:
 	//
 	// 1659506854230
 	ExpiredTimeLong *int64 `json:"ExpiredTimeLong,omitempty" xml:"ExpiredTimeLong,omitempty"`
+	// Login state access token
+	//
 	// example:
 	//
 	// d15aa92de679d0d225aa845268be19ee

@@ -16,12 +16,16 @@ type iAuthLoginWithTaobaoUserInfoRequest interface {
 }
 
 type AuthLoginWithTaobaoUserInfoRequest struct {
+	// Encrypted Taobao User Identifier
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// KsVgypxAipf+xNECMZV2ONMcheqiIoEGFvgx+T8s1oV6/euTK9+ImYvLVPsSqFDh
 	EncryptedTaobaoUserIdentifier *string `json:"EncryptedTaobaoUserIdentifier,omitempty" xml:"EncryptedTaobaoUserIdentifier,omitempty"`
+	// Session ID
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -18,10 +18,16 @@ type iPlayAndPauseControlShrinkRequest interface {
 }
 
 type PlayAndPauseControlShrinkRequest struct {
+	// Device identity information
+	//
 	// This parameter is required.
 	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	// Business parameters
+	//
 	// This parameter is required.
 	OpenPlayAndPauseControlParamShrink *string `json:"OpenPlayAndPauseControlParam,omitempty" xml:"OpenPlayAndPauseControlParam,omitempty"`
+	// User identity information
+	//
 	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }

@@ -22,22 +22,32 @@ type iProgressControlResponseBody interface {
 }
 
 type ProgressControlResponseBody struct {
+	// Return code of the invocation
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Additional information. In typical scenarios, this provides a brief description of a failed invocation to help the caller identify the issue.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 10002398812
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Actual return result of the service
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the invocation succeeded. true indicates success, and false indicates failure. When the invocation fails, pay attention to the Message field.
+	//
 	// example:
 	//
 	// true

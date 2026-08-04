@@ -14,6 +14,8 @@ type iListDeviceByUserIdRequest interface {
 }
 
 type ListDeviceByUserIdRequest struct {
+	// List of User Identifier information.
+	//
 	// This parameter is required.
 	UserInfo *ListDeviceByUserIdRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
@@ -36,34 +38,53 @@ func (s *ListDeviceByUserIdRequest) SetUserInfo(v *ListDeviceByUserIdRequestUser
 }
 
 func (s *ListDeviceByUserIdRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDeviceByUserIdRequestUserInfo struct {
+	// The value corresponding to the encoding type. Enter the Project ID of the project where the product resides. You can view this in the Tmall Genie AI platform console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12**45
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. Enter **PROJECT_ID*	- here.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PROJECT_ID
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// User Identifier. Enter the value of userOpenId or userUnionId.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// HOFF****my7Iw=
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Type of the User ID:
+	//
+	//  - OPEN_ID: The default User ID identifier.
+	//
+	//  - UNION_ID: A User ID identifier in the organization dimension. You must request an organization in the Open Platform beforehand.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. Required if IdType is UNION_ID.
+	//
 	// example:
 	//
 	// 1**2

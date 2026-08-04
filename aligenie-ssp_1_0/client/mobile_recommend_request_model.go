@@ -24,21 +24,36 @@ type iMobileRecommendRequest interface {
 }
 
 type MobileRecommendRequest struct {
+	// Bot ID.
+	//
 	// example:
 	//
 	// 10
 	BotId *string `json:"BotId,omitempty" xml:"BotId,omitempty"`
+	// Quantity of recommended Result
+	//
 	// example:
 	//
 	// 6
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	// Device identification information.
+	//
 	// This parameter is required.
 	DeviceInfo *MobileRecommendRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
-	Style      *string                           `json:"Style,omitempty" xml:"Style,omitempty"`
+	// Required when the request type is STYLE.
+	//
+	// example:
+	//
+	// 轻音乐
+	Style *string `json:"Style,omitempty" xml:"Style,omitempty"`
+	// Request Type: Obtain daily recommendations, hot songs, or genre-based playlists.
+	//
 	// example:
 	//
 	// DAILY_REC
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// User information – userId
+	//
 	// This parameter is required.
 	UserInfo *MobileRecommendRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
@@ -106,34 +121,61 @@ func (s *MobileRecommendRequest) SetUserInfo(v *MobileRecommendRequestUserInfo) 
 }
 
 func (s *MobileRecommendRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceInfo != nil {
+		if err := s.DeviceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MobileRecommendRequestDeviceInfo struct {
+	// Value corresponding to the encoding type. Enter the Project ID of the project to which the product belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1414895629783187053
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. Enter PROJECT_ID here.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PROJECT_ID
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// Device ID. Enter the value of deviceOpenId or deviceUnionId.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// fjwZiYQdtkaI95fHaLNjYcaOA/mxUPzxxw2J5iBiTBnjUCWKwER4TSHCqkBnNOYvGJ4bRZA9KzBB2naS4r/Am0lSe8ECDAAOcJ9QKLFF6DM=
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Type of the device ID.
+	//
+	// OPEN_ID: Default device ID.
+	//
+	// UNION_ID: Organization-level device ID. This value is available only after an organization has been requested on the Tmall Genie Skill Application Open Platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
-	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. This parameter is required when **IdType*	- is set to **UNION_ID**.
+	//
+	// example:
+	//
+	// 暂无
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -195,30 +237,43 @@ func (s *MobileRecommendRequestDeviceInfo) Validate() error {
 }
 
 type MobileRecommendRequestUserInfo struct {
+	// The value corresponding to the encoding Type. Enter the Project ID of the project to which this product belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1414895629783187053
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PROJECT_ID
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// ID value
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// R457Av3qg/OXTwVnFt12z6MwNe0HAS699V6n63OaLdu+VmwvhcNfMzBd+la553wWJhj3kBMjgHq2Y2dyCFoDBg==
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// ID Type
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
-	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. This parameter is Required when IdType is set to UNION_ID.
+	//
+	// example:
+	//
+	// 暂无
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 

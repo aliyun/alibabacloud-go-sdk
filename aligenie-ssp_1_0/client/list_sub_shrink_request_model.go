@@ -18,10 +18,16 @@ type iListSubShrinkRequest interface {
 }
 
 type ListSubShrinkRequest struct {
+	// Device Information
+	//
 	// This parameter is required.
 	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	// Pagination Parameters
+	//
 	// This parameter is required.
 	PageShrink *string `json:"Page,omitempty" xml:"Page,omitempty"`
+	// User information
+	//
 	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }

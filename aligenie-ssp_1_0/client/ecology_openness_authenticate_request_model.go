@@ -18,18 +18,24 @@ type iEcologyOpennessAuthenticateRequest interface {
 }
 
 type EcologyOpennessAuthenticateRequest struct {
+  // entity key
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 12*****
   EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+  // entity Type
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // PROJECT_ID
   EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+  // logon state access token
+  // 
   // This parameter is required.
   // 
   // example:

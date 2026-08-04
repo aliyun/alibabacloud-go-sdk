@@ -24,21 +24,30 @@ type iFindUserlistToAuthLoginWithPhoneNumberResponseBody interface {
 }
 
 type FindUserlistToAuthLoginWithPhoneNumberResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// 200
-	Code    *int32                                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// When the code is 5140003, it indicates that the invocation failed because no account list eligible for authorization login was found for the given phone number. The frontend can prompt the user to confirm generating a Jingle account via the phone number or suggest registering a Taobao account using the phone number first. In subsequent flows, the frontend must return the sessionId from DataObj to the server.
 	DataObj *FindUserlistToAuthLoginWithPhoneNumberResponseBodyDataObj `json:"DataObj,omitempty" xml:"DataObj,omitempty" type:"Struct"`
+	// Response message
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 73C67BD9-175A-1324-8202-9FAABBB3E6FA
-	RequestId *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *FindUserlistToAuthLoginWithPhoneNumberResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Response Result
+	Result *FindUserlistToAuthLoginWithPhoneNumberResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Flag indicating whether the invocation succeeded
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s FindUserlistToAuthLoginWithPhoneNumberResponseBody) String() string {
@@ -104,10 +113,22 @@ func (s *FindUserlistToAuthLoginWithPhoneNumberResponseBody) SetSuccess(v bool) 
 }
 
 func (s *FindUserlistToAuthLoginWithPhoneNumberResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataObj != nil {
+		if err := s.DataObj.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FindUserlistToAuthLoginWithPhoneNumberResponseBodyDataObj struct {
+	// Session ID
+	//
 	// example:
 	//
 	// dbe2eb4458302b9246c6da17fbc95f4b
@@ -136,6 +157,7 @@ func (s *FindUserlistToAuthLoginWithPhoneNumberResponseBodyDataObj) Validate() e
 }
 
 type FindUserlistToAuthLoginWithPhoneNumberResponseBodyResult struct {
+	// List of accounts eligible for authorization login
 	UserListToAuthLogin []*FindUserlistToAuthLoginWithPhoneNumberResponseBodyResultUserListToAuthLogin `json:"UserListToAuthLogin,omitempty" xml:"UserListToAuthLogin,omitempty" type:"Repeated"`
 }
 
@@ -157,26 +179,59 @@ func (s *FindUserlistToAuthLoginWithPhoneNumberResponseBodyResult) SetUserListTo
 }
 
 func (s *FindUserlistToAuthLoginWithPhoneNumberResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.UserListToAuthLogin != nil {
+		for _, item := range s.UserListToAuthLogin {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FindUserlistToAuthLoginWithPhoneNumberResponseBodyResultUserListToAuthLogin struct {
+	// Profile picture
+	//
 	// example:
 	//
 	// https://xxx
 	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	// Encrypted User Identifier
+	//
 	// example:
 	//
 	// KsVgypxAipf+xNECMZV2ONMcheqiIoEGFvgx+T8s1oV6/euTK9+ImYvLVPsSqFDh
 	EncryptedUserIdentifier *string `json:"EncryptedUserIdentifier,omitempty" xml:"EncryptedUserIdentifier,omitempty"`
+	// User Search Type
+	//
+	// For Taobao users, the value is fixed as:
+	//
+	// PHONE_NUMBER_BINDING_WITH_TAOBAO: The phoneNumber is queried as the phone number bound to a Taobao account.
+	//
+	// For Tmall Genie users, the value can be:
+	//
+	// PHONE_NUMBER_BINDING_WITH_ALIGENIE: The phoneNumber is queried as the phone number bound to a Tmall Genie device;
+	//
+	// PHONE_NUMBER_BINDING_WITH_TAOBAO: The phoneNumber is queried as the phone number bound to a Taobao account.
+	//
 	// example:
 	//
 	// PHONE_NUMBER_BINDING_WITH_ALIGENIE：phoneNumber
 	FindingType *string `json:"FindingType,omitempty" xml:"FindingType,omitempty"`
+	// Nickname
+	//
 	// example:
 	//
 	// XXX
 	Nickname *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	// User Type
+	//
+	// TAOBAO: Taobao user
+	//
+	// ALIGENIE: Tmall Genie user
+	//
 	// example:
 	//
 	// ALIGENIE

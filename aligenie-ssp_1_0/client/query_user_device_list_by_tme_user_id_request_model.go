@@ -16,9 +16,25 @@ type iQueryUserDeviceListByTmeUserIdRequest interface {
 }
 
 type QueryUserDeviceListByTmeUserIdRequest struct {
+	// "KG": KuGou
+	//
+	// "KW": Kuwo
+	//
+	// "QM": QQ Music
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// KG
 	Sp *string `json:"Sp,omitempty" xml:"Sp,omitempty"`
+	// TME User ID
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// FDEEDE337BAA780793D72F7F20BEF2F5
 	TmeUserId *string `json:"TmeUserId,omitempty" xml:"TmeUserId,omitempty"`
 }
 

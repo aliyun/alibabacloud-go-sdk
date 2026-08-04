@@ -20,19 +20,26 @@ type iScanCodeBindResponseBody interface {
 }
 
 type ScanCodeBindResponseBody struct {
+	// The returned error code. A value of 200 indicates that the invocation succeeded.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Result message
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 686DF82F-45C4-7DF7-8B67-27B91CFD63A9
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *ScanCodeBindResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Detailed information returned.
+	Result *ScanCodeBindResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s ScanCodeBindResponseBody) String() string {
@@ -80,14 +87,23 @@ func (s *ScanCodeBindResponseBody) SetResult(v *ScanCodeBindResponseBodyResult) 
 }
 
 func (s *ScanCodeBindResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ScanCodeBindResponseBodyResult struct {
+	// Product group
+	//
 	// example:
 	//
 	// X1
 	BizGroup *string `json:"BizGroup,omitempty" xml:"BizGroup,omitempty"`
+	// Product categorization
+	//
 	// example:
 	//
 	// AILABS
@@ -102,7 +118,7 @@ type ScanCodeBindResponseBodyResult struct {
 	//
 	// example:
 	//
-	// 用户opneId
+	// 用户OpenId
 	UserOpenId *string `json:"UserOpenId,omitempty" xml:"UserOpenId,omitempty"`
 }
 

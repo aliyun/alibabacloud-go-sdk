@@ -18,9 +18,12 @@ type iListAlbumIsAddedShrinkRequest interface {
 }
 
 type ListAlbumIsAddedShrinkRequest struct {
+	// Album ID list
 	AlbumIdListShrink *string `json:"AlbumIdList,omitempty" xml:"AlbumIdList,omitempty"`
-	DeviceInfoShrink  *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
-	UserInfoShrink    *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
+	// Device Information
+	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	// User information
+	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }
 
 func (s ListAlbumIsAddedShrinkRequest) String() string {

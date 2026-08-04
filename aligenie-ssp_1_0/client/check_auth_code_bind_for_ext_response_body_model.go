@@ -20,19 +20,26 @@ type iCheckAuthCodeBindForExtResponseBody interface {
 }
 
 type CheckAuthCodeBindForExtResponseBody struct {
+	// The returned error code. The value 200 indicates that the invocation succeeded.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return Result of invoking this API.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 0EC7*726E
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *CheckAuthCodeBindForExtResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Detailed information
+	Result *CheckAuthCodeBindForExtResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s CheckAuthCodeBindForExtResponseBody) String() string {
@@ -80,12 +87,19 @@ func (s *CheckAuthCodeBindForExtResponseBody) SetResult(v *CheckAuthCodeBindForE
 }
 
 func (s *CheckAuthCodeBindForExtResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CheckAuthCodeBindForExtResponseBodyResult struct {
+	// Device open information
 	DeviceOpenInfo *CheckAuthCodeBindForExtResponseBodyResultDeviceOpenInfo `json:"DeviceOpenInfo,omitempty" xml:"DeviceOpenInfo,omitempty" type:"Struct"`
-	UserOpenInfo   *CheckAuthCodeBindForExtResponseBodyResultUserOpenInfo   `json:"UserOpenInfo,omitempty" xml:"UserOpenInfo,omitempty" type:"Struct"`
+	// User open information
+	UserOpenInfo *CheckAuthCodeBindForExtResponseBodyResultUserOpenInfo `json:"UserOpenInfo,omitempty" xml:"UserOpenInfo,omitempty" type:"Struct"`
 }
 
 func (s CheckAuthCodeBindForExtResponseBodyResult) String() string {
@@ -115,10 +129,22 @@ func (s *CheckAuthCodeBindForExtResponseBodyResult) SetUserOpenInfo(v *CheckAuth
 }
 
 func (s *CheckAuthCodeBindForExtResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceOpenInfo != nil {
+		if err := s.DeviceOpenInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserOpenInfo != nil {
+		if err := s.UserOpenInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CheckAuthCodeBindForExtResponseBodyResultDeviceOpenInfo struct {
+	// External device ID
+	//
 	// example:
 	//
 	// A963*0158
@@ -162,6 +188,8 @@ func (s *CheckAuthCodeBindForExtResponseBodyResultDeviceOpenInfo) Validate() err
 }
 
 type CheckAuthCodeBindForExtResponseBodyResultUserOpenInfo struct {
+	// External user ID
+	//
 	// example:
 	//
 	// 0963*0158

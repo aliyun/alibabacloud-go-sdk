@@ -16,7 +16,12 @@ type iGetDeviceSettingShrinkRequest interface {
 }
 
 type GetDeviceSettingShrinkRequest struct {
+	// List of device identity information.
 	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	// Set of specified keys for device Settings,
+	//
+	// Do Not Disturb mode: nightMode
+	//
 	// This parameter is required.
 	KeysShrink *string `json:"Keys,omitempty" xml:"Keys,omitempty"`
 }

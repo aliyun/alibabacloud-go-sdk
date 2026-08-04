@@ -18,11 +18,20 @@ type iGetUnreadMessageCountResponseBody interface {
 }
 
 type GetUnreadMessageCountResponseBody struct {
+	// Status code returned by the service
+	//
 	// example:
 	//
 	// SUCCESS
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error message
+	//
+	// example:
+	//
+	// 用户信息不存在
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Number of unread messages
+	//
 	// example:
 	//
 	// 10

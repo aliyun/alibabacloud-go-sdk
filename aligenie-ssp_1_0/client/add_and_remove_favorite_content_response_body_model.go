@@ -22,22 +22,32 @@ type iAddAndRemoveFavoriteContentResponseBody interface {
 }
 
 type AddAndRemoveFavoriteContentResponseBody struct {
+	// Return code of the invocation
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Additional information. In common scenarios, this provides a brief description of a failed invocation to help the caller identify the issue.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 121212121
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Actual return result of the service
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the invocation succeeded. The value true indicates success, and false indicates failure. When the value is false, check the Message field for details.
+	//
 	// example:
 	//
 	// true

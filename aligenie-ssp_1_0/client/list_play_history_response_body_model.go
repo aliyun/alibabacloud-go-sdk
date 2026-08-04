@@ -20,15 +20,20 @@ type iListPlayHistoryResponseBody interface {
 }
 
 type ListPlayHistoryResponseBody struct {
+	// Code encoding
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Message information
+	//
 	// example:
 	//
 	// success
-	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	Result  []*ListPlayHistoryResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Return Result
+	Result []*ListPlayHistoryResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// Id of the request
 	//
 	// example:
@@ -82,51 +87,93 @@ func (s *ListPlayHistoryResponseBody) SetRequestId(v string) *ListPlayHistoryRes
 }
 
 func (s *ListPlayHistoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPlayHistoryResponseBodyResult struct {
+	// Alias
 	Alias []*string `json:"Alias,omitempty" xml:"Alias,omitempty" type:"Repeated"`
+	// Is audition available
+	//
 	// example:
 	//
 	// false
-	Audition *bool                                       `json:"Audition,omitempty" xml:"Audition,omitempty"`
-	Authors  []*ListPlayHistoryResponseBodyResultAuthors `json:"Authors,omitempty" xml:"Authors,omitempty" type:"Repeated"`
+	Audition *bool `json:"Audition,omitempty" xml:"Audition,omitempty"`
+	// Authors of the content
+	Authors []*ListPlayHistoryResponseBodyResultAuthors `json:"Authors,omitempty" xml:"Authors,omitempty" type:"Repeated"`
+	// Transform controlType based on the category
+	//
 	// example:
 	//
 	// audio
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// Is charged
+	//
 	// example:
 	//
 	// false
 	Charge *bool `json:"Charge,omitempty" xml:"Charge,omitempty"`
+	// Category ID
+	//
 	// example:
 	//
 	// 80012017
-	CommCateId  *int64                                  `json:"CommCateId,omitempty" xml:"CommCateId,omitempty"`
-	Cover       *ListPlayHistoryResponseBodyResultCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
-	Description *string                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	CommCateId *int64 `json:"CommCateId,omitempty" xml:"CommCateId,omitempty"`
+	// Album cover image
+	Cover *ListPlayHistoryResponseBodyResultCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
+	// Content description
+	//
+	// example:
+	//
+	// 内容描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Hot Score
+	//
 	// example:
 	//
 	// 10
 	HotScore *float64 `json:"HotScore,omitempty" xml:"HotScore,omitempty"`
+	// Content ID
+	//
 	// example:
 	//
 	// 13597709
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Type of content, such as music, audio, radio, jokes, etc.
+	//
 	// example:
 	//
 	// ALBUM
 	ItemType *string `json:"ItemType,omitempty" xml:"ItemType,omitempty"`
+	// Source
+	//
 	// example:
 	//
 	// qingting
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Title
+	//
+	// example:
+	//
+	// 超能狂少在都市
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Convert to favoriteType based on the associated public category
+	//
 	// example:
 	//
 	// program
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Indicates whether the content is playable
+	//
 	// example:
 	//
 	// VALID
@@ -277,34 +324,70 @@ func (s *ListPlayHistoryResponseBodyResult) SetValid(v string) *ListPlayHistoryR
 }
 
 func (s *ListPlayHistoryResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Authors != nil {
+		for _, item := range s.Authors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Cover != nil {
+		if err := s.Cover.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPlayHistoryResponseBodyResultAuthors struct {
-	AuthorTypes []*string                                      `json:"AuthorTypes,omitempty" xml:"AuthorTypes,omitempty" type:"Repeated"`
-	Cover       *ListPlayHistoryResponseBodyResultAuthorsCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
-	Description *string                                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Author types
+	AuthorTypes []*string `json:"AuthorTypes,omitempty" xml:"AuthorTypes,omitempty" type:"Repeated"`
+	// Profile picture
+	Cover *ListPlayHistoryResponseBodyResultAuthorsCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
+	// Author description
+	//
+	// example:
+	//
+	// 播音呆瓜小贼
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Gender
+	//
 	// example:
 	//
 	// MALE
 	Gender *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	// Author primary key ID
+	//
 	// example:
 	//
 	// 13597709
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Is online
+	//
 	// example:
 	//
 	// false
 	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
+	// Third-party author ID
+	//
 	// example:
 	//
 	// 123123
 	RawId *string `json:"RawId,omitempty" xml:"RawId,omitempty"`
+	// Source
+	//
 	// example:
 	//
 	// qingting
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Author title
+	//
+	// example:
+	//
+	// 播音呆瓜小贼
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListPlayHistoryResponseBodyResultAuthors) String() string {
@@ -397,26 +480,41 @@ func (s *ListPlayHistoryResponseBodyResultAuthors) SetTitle(v string) *ListPlayH
 }
 
 func (s *ListPlayHistoryResponseBodyResultAuthors) Validate() error {
-	return dara.Validate(s)
+	if s.Cover != nil {
+		if err := s.Cover.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPlayHistoryResponseBodyResultAuthorsCover struct {
+	// Indicates whether OSS rules can be used for cropping
+	//
 	// example:
 	//
 	// false
 	CanResize *bool `json:"CanResize,omitempty" xml:"CanResize,omitempty"`
+	// Default image
+	//
 	// example:
 	//
 	// https://a.jpg
 	Img *string `json:"Img,omitempty" xml:"Img,omitempty"`
+	// Large image
+	//
 	// example:
 	//
 	// https://a.jpg
 	Large *string `json:"Large,omitempty" xml:"Large,omitempty"`
+	// Medium image
+	//
 	// example:
 	//
 	// https://a.jpg
 	Medium *string `json:"Medium,omitempty" xml:"Medium,omitempty"`
+	// Small image
+	//
 	// example:
 	//
 	// https://a.jpg
@@ -481,26 +579,38 @@ func (s *ListPlayHistoryResponseBodyResultAuthorsCover) Validate() error {
 }
 
 type ListPlayHistoryResponseBodyResultCover struct {
+	// Indicates whether OSS rules can be used for cropping
+	//
 	// example:
 	//
 	// false
 	CanResize *bool `json:"CanResize,omitempty" xml:"CanResize,omitempty"`
+	// Default image
+	//
 	// example:
 	//
 	// http://pic.qtfm.cn/2017/0207/2017020718285.jpg
 	Img *string `json:"Img,omitempty" xml:"Img,omitempty"`
+	// Large image
+	//
 	// example:
 	//
 	// http://pic.qtfm.cn/2017/0207/2017020718285.jpg
 	Large *string `json:"Large,omitempty" xml:"Large,omitempty"`
+	// Medium image (Deprecated)
+	//
 	// example:
 	//
 	// http://pic.qtfm.cn/2017/0207/2017020718285.jpg
 	Mediam *string `json:"Mediam,omitempty" xml:"Mediam,omitempty"`
+	// Medium image
+	//
 	// example:
 	//
 	// http://pic.qtfm.cn/2017/0207/2017020718285.jpg
 	Medium *string `json:"Medium,omitempty" xml:"Medium,omitempty"`
+	// Small image
+	//
 	// example:
 	//
 	// http://pic.qtfm.cn/2017/0207/2017020718285.jpg

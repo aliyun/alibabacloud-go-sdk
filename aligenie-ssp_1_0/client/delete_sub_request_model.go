@@ -14,6 +14,8 @@ type iDeleteSubRequest interface {
 }
 
 type DeleteSubRequest struct {
+	// Subscription album record ID
+	//
 	// This parameter is required.
 	//
 	// example:

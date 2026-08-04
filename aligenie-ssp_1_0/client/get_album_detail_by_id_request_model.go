@@ -14,6 +14,8 @@ type iGetAlbumDetailByIdRequest interface {
 }
 
 type GetAlbumDetailByIdRequest struct {
+	// Album ID
+	//
 	// example:
 	//
 	// 51999575

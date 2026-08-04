@@ -24,23 +24,34 @@ type iResultValue interface {
 }
 
 type ResultValue struct {
+	// The openId corresponding to the device.
+	//
 	// example:
 	//
 	// A963*0158
-	DeviceOpenId   *string                      `json:"DeviceOpenId,omitempty" xml:"DeviceOpenId,omitempty"`
+	DeviceOpenId *string `json:"DeviceOpenId,omitempty" xml:"DeviceOpenId,omitempty"`
+	// The organization ID and UnionId information corresponding to the device.
 	DeviceUnionIds []*ResultValueDeviceUnionIds `json:"DeviceUnionIds,omitempty" xml:"DeviceUnionIds,omitempty" type:"Repeated"`
+	// The name of the device.
+	//
 	// example:
 	//
 	// 我的设备
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The firmware version of the device.
+	//
 	// example:
 	//
 	// 2.0.3
 	FirmwareVersion *string `json:"FirmwareVersion,omitempty" xml:"FirmwareVersion,omitempty"`
+	// The MAC address of the device.
+	//
 	// example:
 	//
 	// b4:xx:xx:xx:65:2b
 	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// The SN information of the device.
+	//
 	// example:
 	//
 	// 1200xx048
@@ -110,14 +121,27 @@ func (s *ResultValue) SetSn(v string) *ResultValue {
 }
 
 func (s *ResultValue) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceUnionIds != nil {
+		for _, item := range s.DeviceUnionIds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ResultValueDeviceUnionIds struct {
+	// The organization ID.
+	//
 	// example:
 	//
 	// 1**2
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// The UnionId of the device.
+	//
 	// example:
 	//
 	// 1553*B0C3

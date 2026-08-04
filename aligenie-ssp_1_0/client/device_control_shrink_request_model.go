@@ -16,7 +16,10 @@ type iDeviceControlShrinkRequest interface {
 }
 
 type DeviceControlShrinkRequest struct {
+	// Input parameters for volume control
 	ControlRequestShrink *string `json:"ControlRequest,omitempty" xml:"ControlRequest,omitempty"`
+	// List of device ID information.
+	//
 	// This parameter is required.
 	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
 }

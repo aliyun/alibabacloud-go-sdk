@@ -18,11 +18,20 @@ type iReadMessageResponseBody interface {
 }
 
 type ReadMessageResponseBody struct {
+	// Status code returned by the service. Only "SUCCESS" indicates success; all other values indicate failure.
+	//
 	// example:
 	//
 	// SUCCESS
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// error message
+	//
+	// example:
+	//
+	// 外部userId映射关系不存在
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Succeeded in marking as read
+	//
 	// example:
 	//
 	// true

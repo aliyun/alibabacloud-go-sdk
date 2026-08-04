@@ -14,6 +14,7 @@ type iGetUnreadMessageCountRequest interface {
 }
 
 type GetUnreadMessageCountRequest struct {
+	// User Identifier information
 	UserInfo *GetUnreadMessageCountRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
 
@@ -35,34 +36,49 @@ func (s *GetUnreadMessageCountRequest) SetUserInfo(v *GetUnreadMessageCountReque
 }
 
 func (s *GetUnreadMessageCountRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUnreadMessageCountRequestUserInfo struct {
+	// Value corresponding to the encoding type. When the encoding type is SKILLID, this value is the application\\"s Skill ID. When the encoding type is PACKAGENAME, this value is the packageName of the corresponding client app.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12**45
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. There are multiple ways to obtain the user identifier from Maojing, and each method corresponds to a different encoding type: PACKAGENAME for the APK package name used in the Android application client link, and SKILLID for the cloud-based link.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PACKAGE_NAME
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// User Identifier (userOpenId or userUnionId)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// HOFF****my7Iw=
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Type of User ID: OPENID is the default user ID identity; UNIONID is the organization-dimension user ID identity, which is available only after an organization has been requested on the Maojing Skill Application Open Platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. Required when IdType is UNION_ID.
+	//
 	// example:
 	//
 	// 1**2

@@ -16,12 +16,16 @@ type iAuthLoginWithAligenieUserInfoRequest interface {
 }
 
 type AuthLoginWithAligenieUserInfoRequest struct {
+	// Encrypted Aligenie User Identifier
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// UYugfm/3Nb9q24AyES2rYmC5tIglSoDX3Mbna/vrldcjGPtC8VzFwo+CU5c4CHLjrK7ekskG2WVaevM5Zi9f0w==
 	EncryptedAligenieUserIdentifier *string `json:"EncryptedAligenieUserIdentifier,omitempty" xml:"EncryptedAligenieUserIdentifier,omitempty"`
+	// Session ID
+	//
 	// This parameter is required.
 	//
 	// example:

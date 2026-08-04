@@ -14,6 +14,8 @@ type iListDeviceByUserIdShrinkRequest interface {
 }
 
 type ListDeviceByUserIdShrinkRequest struct {
+	// List of User Identifier information.
+	//
 	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }

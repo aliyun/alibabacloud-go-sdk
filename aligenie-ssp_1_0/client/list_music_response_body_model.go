@@ -20,16 +20,26 @@ type iListMusicResponseBody interface {
 }
 
 type ListMusicResponseBody struct {
+	// Status code returned by the alarm service
+	//
 	// example:
 	//
 	// 200
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// error message
+	//
+	// example:
+	//
+	// 音乐类型名称为空
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 43***28C-A810-5***-8747-EC226A086881
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *ListMusicResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// collection of ringtone query results
+	Result *ListMusicResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s ListMusicResponseBody) String() string {
@@ -77,23 +87,37 @@ func (s *ListMusicResponseBody) SetResult(v *ListMusicResponseBodyResult) *ListM
 }
 
 func (s *ListMusicResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMusicResponseBodyResult struct {
+	// Current page
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                              `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Model       []*ListMusicResponseBodyResultModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// List of ringtones
+	Model []*ListMusicResponseBodyResultModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
+	// Total number of pages
+	//
 	// example:
 	//
 	// 10
 	PageCount *int32 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	// Number of entries per page: maximum value is 100; values exceeding 100 are treated as 100
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total number of entries
+	//
 	// example:
 	//
 	// 100
@@ -154,26 +178,45 @@ func (s *ListMusicResponseBodyResult) SetTotalCount(v int32) *ListMusicResponseB
 }
 
 func (s *ListMusicResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Model != nil {
+		for _, item := range s.Model {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMusicResponseBodyResultModel struct {
+	// Ringtone ID
+	//
 	// example:
 	//
 	// 1
 	MusicId *int64 `json:"MusicId,omitempty" xml:"MusicId,omitempty"`
+	// Ringtone name
+	//
 	// example:
 	//
 	// xx
 	MusicName *string `json:"MusicName,omitempty" xml:"MusicName,omitempty"`
+	// Ringtone category ID
+	//
 	// example:
 	//
 	// 1
 	MusicType *int64 `json:"MusicType,omitempty" xml:"MusicType,omitempty"`
+	// Ringtone category name
+	//
 	// example:
 	//
 	// xx
 	MusicTypeName *string `json:"MusicTypeName,omitempty" xml:"MusicTypeName,omitempty"`
+	// Ringtone URL
+	//
 	// example:
 	//
 	// http://xx

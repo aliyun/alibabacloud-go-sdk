@@ -20,19 +20,26 @@ type iGetDeviceTagResponseBody interface {
 }
 
 type GetDeviceTagResponseBody struct {
+	// The error code returned. A value of 200 indicates that the call succeeded.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The return result of invoking this API.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0EC7*726E
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *GetDeviceTagResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Detailed information returned.
+	Result *GetDeviceTagResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s GetDeviceTagResponseBody) String() string {
@@ -80,10 +87,17 @@ func (s *GetDeviceTagResponseBody) SetResult(v *GetDeviceTagResponseBodyResult) 
 }
 
 func (s *GetDeviceTagResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDeviceTagResponseBodyResult struct {
+	// Tag information of the device.
+	//
 	// example:
 	//
 	// {       "antest1": "antest1",       "antest": "a"     }

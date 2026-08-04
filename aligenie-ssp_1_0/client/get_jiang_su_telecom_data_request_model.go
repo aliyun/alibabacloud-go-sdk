@@ -14,6 +14,8 @@ type iGetJiangSuTelecomDataRequest interface {
 }
 
 type GetJiangSuTelecomDataRequest struct {
+	// Date in the format yyyy-MM-dd. This refers to the data timestamp when the data becomes available, not the date when the data was generated. Data is always produced on a T+1 basis.
+	//
 	// example:
 	//
 	// 2024-11-09

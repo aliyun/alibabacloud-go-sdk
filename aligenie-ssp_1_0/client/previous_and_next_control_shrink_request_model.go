@@ -18,10 +18,16 @@ type iPreviousAndNextControlShrinkRequest interface {
 }
 
 type PreviousAndNextControlShrinkRequest struct {
+	// Device ID information
+	//
 	// This parameter is required.
 	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	// Business parameters
+	//
 	// This parameter is required.
 	OpenControlPlayingListRequestShrink *string `json:"OpenControlPlayingListRequest,omitempty" xml:"OpenControlPlayingListRequest,omitempty"`
+	// User identity information
+	//
 	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }

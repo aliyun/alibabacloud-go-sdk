@@ -14,6 +14,8 @@ type iListCateInfoRequest interface {
 }
 
 type ListCateInfoRequest struct {
+	// Default value is song (the extension field currently only supports song)
+	//
 	// This parameter is required.
 	//
 	// example:

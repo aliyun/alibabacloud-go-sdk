@@ -18,11 +18,17 @@ type iGetWeatherShrinkRequest interface {
 }
 
 type GetWeatherShrinkRequest struct {
+	// Device ID information
+	//
 	// This parameter is required.
 	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	// Input parameters for the service request
+	//
 	// if can be null:
 	// false
 	PayloadShrink *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// User identifier information
+	//
 	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }

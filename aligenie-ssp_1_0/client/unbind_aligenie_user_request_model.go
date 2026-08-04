@@ -14,6 +14,8 @@ type iUnbindAligenieUserRequest interface {
 }
 
 type UnbindAligenieUserRequest struct {
+	// Logon credential
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -18,9 +18,12 @@ type iListAlbumIsAddedRequest interface {
 }
 
 type ListAlbumIsAddedRequest struct {
-	AlbumIdList []*string                          `json:"AlbumIdList,omitempty" xml:"AlbumIdList,omitempty" type:"Repeated"`
-	DeviceInfo  *ListAlbumIsAddedRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
-	UserInfo    *ListAlbumIsAddedRequestUserInfo   `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
+	// Album ID list
+	AlbumIdList []*string `json:"AlbumIdList,omitempty" xml:"AlbumIdList,omitempty" type:"Repeated"`
+	// Device Information
+	DeviceInfo *ListAlbumIsAddedRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
+	// User information
+	UserInfo *ListAlbumIsAddedRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
 
 func (s ListAlbumIsAddedRequest) String() string {
@@ -59,7 +62,17 @@ func (s *ListAlbumIsAddedRequest) SetUserInfo(v *ListAlbumIsAddedRequestUserInfo
 }
 
 func (s *ListAlbumIsAddedRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceInfo != nil {
+		if err := s.DeviceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAlbumIsAddedRequestDeviceInfo struct {

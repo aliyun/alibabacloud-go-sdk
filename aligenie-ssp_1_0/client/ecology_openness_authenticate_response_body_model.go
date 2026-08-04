@@ -22,19 +22,28 @@ type iEcologyOpennessAuthenticateResponseBody interface {
 }
 
 type EcologyOpennessAuthenticateResponseBody struct {
+  // Response code
+  // 
   // example:
   // 
   // 200
   Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+  // Response message
+  // 
   // example:
   // 
   // OK
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+  // Request ID
+  // 
   // example:
   // 
   // 73****9-175A-1324-8202-9FAAB*****A
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // Response Result
   Result *EcologyOpennessAuthenticateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+  // Flag indicating whether the invocation succeeded
+  // 
   // example:
   // 
   // true
@@ -95,30 +104,47 @@ func (s *EcologyOpennessAuthenticateResponseBody) SetSuccess(v bool) *EcologyOpe
 }
 
 func (s *EcologyOpennessAuthenticateResponseBody) Validate() error {
-  return dara.Validate(s)
+  if s.Result != nil {
+    if err := s.Result.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type EcologyOpennessAuthenticateResponseBodyResult struct {
+  // entity key
+  // 
   // example:
   // 
   // 12****7
   EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+  // entity Type
+  // 
   // example:
   // 
   // PROJECT_ID
   EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+  // scenario code
+  // 
   // example:
   // 
   // ******
   SceneCode *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
+  // Third-party user identifier
+  // 
   // example:
   // 
   // ******
   ThirdUserIdentifier *string `json:"ThirdUserIdentifier,omitempty" xml:"ThirdUserIdentifier,omitempty"`
+  // Third-party user type
+  // 
   // example:
   // 
   // ******
   ThirdUserType *string `json:"ThirdUserType,omitempty" xml:"ThirdUserType,omitempty"`
+  // Tmall Genie user openId
+  // 
   // example:
   // 
   // o****RnNAW/smBNX9By7Zlc3J7iQUXPiUj/6OizU+ifLSzn1vpQL9ZgSp22u7hsxj0UZ2i6urbv9HQ==

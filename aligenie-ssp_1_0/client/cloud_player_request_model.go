@@ -26,32 +26,46 @@ type iCloudPlayerRequest interface {
 }
 
 type CloudPlayerRequest struct {
+	// Index of the currently playing song. Starts from 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CurPlayIndex *int32 `json:"CurPlayIndex,omitempty" xml:"CurPlayIndex,omitempty"`
+	// Device identity information
+	//
 	// This parameter is required.
 	DeviceInfo *CloudPlayerRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
+	// Playback pattern
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Normal
 	PlayMode *string `json:"PlayMode,omitempty" xml:"PlayMode,omitempty"`
+	// Song ID (used to recompute the index when the index is invalid)
+	//
 	// example:
 	//
 	// 123
 	SongId *string `json:"SongId,omitempty" xml:"SongId,omitempty"`
+	// List of song IDs (1–200 songs)
+	//
 	// This parameter is required.
 	SongIdList []*string `json:"SongIdList,omitempty" xml:"SongIdList,omitempty" type:"Repeated"`
+	// Source of cloud-recommended songs
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// KG
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Open user information
+	//
 	// This parameter is required.
 	UserInfo *CloudPlayerRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
@@ -128,34 +142,57 @@ func (s *CloudPlayerRequest) SetUserInfo(v *CloudPlayerRequestUserInfo) *CloudPl
 }
 
 func (s *CloudPlayerRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceInfo != nil {
+		if err := s.DeviceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CloudPlayerRequestDeviceInfo struct {
+	// Encoding key
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PROJECT_ID
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// Open ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// ID Type
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
-	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID (can be empty)
+	//
+	// example:
+	//
+	// 为空
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -217,30 +254,43 @@ func (s *CloudPlayerRequestDeviceInfo) Validate() error {
 }
 
 type CloudPlayerRequestUserInfo struct {
+	// Encoding key
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PROJECT_ID
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// Open ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// ID Type
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
-	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID (can be empty)
+	//
+	// example:
+	//
+	// 为空
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 

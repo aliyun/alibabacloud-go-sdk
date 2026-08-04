@@ -14,6 +14,7 @@ type iListDeviceBasicInfoShrinkRequest interface {
 }
 
 type ListDeviceBasicInfoShrinkRequest struct {
+	// List of device identity information.
 	DeviceInfosShrink *string `json:"DeviceInfos,omitempty" xml:"DeviceInfos,omitempty"`
 }
 

@@ -20,19 +20,26 @@ type iGetDeviceSettingResponseBody interface {
 }
 
 type GetDeviceSettingResponseBody struct {
+	// Returned error code. The value 200 indicates that the call Succeeded.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return Result of invoking this API.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 0EC7*726E
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    map[string]interface{} `json:"Result,omitempty" xml:"Result,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returns specific device Settings information.
+	Result map[string]interface{} `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s GetDeviceSettingResponseBody) String() string {

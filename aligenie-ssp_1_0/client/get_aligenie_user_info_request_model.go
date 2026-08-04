@@ -14,6 +14,8 @@ type iGetAligenieUserInfoRequest interface {
 }
 
 type GetAligenieUserInfoRequest struct {
+	// Logon state access credential
+	//
 	// This parameter is required.
 	//
 	// example:

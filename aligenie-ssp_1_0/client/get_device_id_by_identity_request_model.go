@@ -22,30 +22,40 @@ type iGetDeviceIdByIdentityRequest interface {
 }
 
 type GetDeviceIdByIdentityRequest struct {
+	// The value corresponding to the encoding type. Enter the Project ID of the project to which this product belongs. You can view it in the Tmall Genie AI platform console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 129****0946
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. Enter **PROJECT_ID*	- here.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PROJECT_ID
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// Authentication identifier. Enter the MAC address or the SN value.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// b4:xx:xx:xx:65:2b
 	IdentityId *string `json:"IdentityId,omitempty" xml:"IdentityId,omitempty"`
+	// Device authentication type. Enter **MAC**, **SN**, or **CTEI**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MAC
 	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
+	// The unique product identifier ProductKey, which is a globally unique identity issued by the platform when the product is created in the Tmall Genie AI platform. This parameter is optional when IdentityType is **CTEI**.
+	//
 	// example:
 	//
 	// Mm*****XnZ8

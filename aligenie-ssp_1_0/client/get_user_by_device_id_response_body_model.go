@@ -20,18 +20,26 @@ type iGetUserByDeviceIdResponseBody interface {
 }
 
 type GetUserByDeviceIdResponseBody struct {
+	// The error code returned. A value of 200 indicates that the call succeeded.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The return result of invoking this API.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0EC7*726E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of user information returned.
+	//
 	// example:
 	//
 	// true
@@ -83,14 +91,22 @@ func (s *GetUserByDeviceIdResponseBody) SetResult(v *GetUserByDeviceIdResponseBo
 }
 
 func (s *GetUserByDeviceIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserByDeviceIdResponseBodyResult struct {
+	// The openID corresponding to the user information.
+	//
 	// example:
 	//
 	// 0963*0158
-	UserOpenId   *string                                            `json:"UserOpenId,omitempty" xml:"UserOpenId,omitempty"`
+	UserOpenId *string `json:"UserOpenId,omitempty" xml:"UserOpenId,omitempty"`
+	// The list of organization IDs and UnionIDs for the user.
 	UserUnionIds []*GetUserByDeviceIdResponseBodyResultUserUnionIds `json:"UserUnionIds,omitempty" xml:"UserUnionIds,omitempty" type:"Repeated"`
 }
 
@@ -121,14 +137,27 @@ func (s *GetUserByDeviceIdResponseBodyResult) SetUserUnionIds(v []*GetUserByDevi
 }
 
 func (s *GetUserByDeviceIdResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.UserUnionIds != nil {
+		for _, item := range s.UserUnionIds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetUserByDeviceIdResponseBodyResultUserUnionIds struct {
+	// The organization ID.
+	//
 	// example:
 	//
 	// 1**2
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// The user\\"s UnionID.
+	//
 	// example:
 	//
 	// 1553*B0C3

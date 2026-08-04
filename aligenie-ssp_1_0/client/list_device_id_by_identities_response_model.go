@@ -59,5 +59,10 @@ func (s *ListDeviceIdByIdentitiesResponse) SetBody(v *ListDeviceIdByIdentitiesRe
 }
 
 func (s *ListDeviceIdByIdentitiesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

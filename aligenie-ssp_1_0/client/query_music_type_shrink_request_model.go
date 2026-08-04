@@ -18,9 +18,14 @@ type iQueryMusicTypeShrinkRequest interface {
 }
 
 type QueryMusicTypeShrinkRequest struct {
+	// Device identity information
+	//
 	// This parameter is required.
 	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
-	PayloadShrink    *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// Input parameters for the service request
+	PayloadShrink *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// User identifier information
+	//
 	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }

@@ -59,5 +59,10 @@ func (s *ListPlayHistoryResponse) SetBody(v *ListPlayHistoryResponseBody) *ListP
 }
 
 func (s *ListPlayHistoryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

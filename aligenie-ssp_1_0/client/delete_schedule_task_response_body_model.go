@@ -20,15 +20,26 @@ type iDeleteScheduleTaskResponseBody interface {
 }
 
 type DeleteScheduleTaskResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// 200
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response message
+	//
+	// example:
+	//
+	// 调用成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// F7E2****B7C94
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Response result
+	//
 	// example:
 	//
 	// true

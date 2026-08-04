@@ -22,11 +22,32 @@ type iQueryUserDeviceListByTmeUserIdResponseBody interface {
 }
 
 type QueryUserDeviceListByTmeUserIdResponseBody struct {
-	Code      *int32                                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *QueryUserDeviceListByTmeUserIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Response code
+	//
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response message
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// 860194F7-9593-50EA-8E53-BCEC0D325A00
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Response Result
+	Result *QueryUserDeviceListByTmeUserIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Flag indicating whether the invocation succeeded
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryUserDeviceListByTmeUserIdResponseBody) String() string {
@@ -83,14 +104,39 @@ func (s *QueryUserDeviceListByTmeUserIdResponseBody) SetSuccess(v bool) *QueryUs
 }
 
 func (s *QueryUserDeviceListByTmeUserIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryUserDeviceListByTmeUserIdResponseBodyResult struct {
+	// Tmall Genie User List
 	AligenieUserInfoList []*QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoList `json:"AligenieUserInfoList,omitempty" xml:"AligenieUserInfoList,omitempty" type:"Repeated"`
-	EncodeKey            *string                                                                 `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
-	EncodeType           *string                                                                 `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
-	Sp                   *string                                                                 `json:"Sp,omitempty" xml:"Sp,omitempty"`
+	// entity key (pass-through by third party)
+	//
+	// example:
+	//
+	// 12****7
+	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// entity Type (pass-through by third party)
+	//
+	// example:
+	//
+	// PROJECT_ID
+	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// "KG": KuGou
+	//
+	// "KW": Kuwo
+	//
+	// "QM": QQ Music
+	//
+	// example:
+	//
+	// KG
+	Sp *string `json:"Sp,omitempty" xml:"Sp,omitempty"`
 }
 
 func (s QueryUserDeviceListByTmeUserIdResponseBodyResult) String() string {
@@ -138,13 +184,33 @@ func (s *QueryUserDeviceListByTmeUserIdResponseBodyResult) SetSp(v string) *Quer
 }
 
 func (s *QueryUserDeviceListByTmeUserIdResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.AligenieUserInfoList != nil {
+		for _, item := range s.AligenieUserInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoList struct {
+	// User Authorization device List
 	AuthorizedDeviceList []*QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoListAuthorizedDeviceList `json:"AuthorizedDeviceList,omitempty" xml:"AuthorizedDeviceList,omitempty" type:"Repeated"`
-	OpenUserId           *string                                                                                     `json:"OpenUserId,omitempty" xml:"OpenUserId,omitempty"`
-	UserNickname         *string                                                                                     `json:"UserNickname,omitempty" xml:"UserNickname,omitempty"`
+	// User ID
+	//
+	// example:
+	//
+	// R457Av3qg/OXTwVnFt12z6MwNe0HAS699V6n63OaLdu+VmwvhcNfMzBd+la553wWJhj3kBMjgHq2Y2dyCFoDBg==
+	OpenUserId *string `json:"OpenUserId,omitempty" xml:"OpenUserId,omitempty"`
+	// User nickname
+	//
+	// example:
+	//
+	// a***e
+	UserNickname *string `json:"UserNickname,omitempty" xml:"UserNickname,omitempty"`
 }
 
 func (s QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoList) String() string {
@@ -183,17 +249,40 @@ func (s *QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoList) S
 }
 
 func (s *QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.AuthorizedDeviceList != nil {
+		for _, item := range s.AuthorizedDeviceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoListAuthorizedDeviceList struct {
+	// device name
+	//
+	// example:
+	//
+	// CC
 	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// Indicates whether the device is online
+	//
 	// example:
 	//
 	// true
-	Online       *bool   `json:"Online,omitempty" xml:"Online,omitempty"`
+	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
+	// Device ID
+	//
+	// example:
+	//
+	// fjwZiYQdtkaI95fHaLNjYcaOA/mxUPzxxw2J5iBiTBnjUCWKwER4TSHCqkBnNOYvGJ4bRZA9KzBB2naS4r/Am0lSe8ECDAAOcJ9QKLFF6DM=
 	OpenDeviceId *string `json:"OpenDeviceId,omitempty" xml:"OpenDeviceId,omitempty"`
-	TmeDeviceId  *string `json:"TmeDeviceId,omitempty" xml:"TmeDeviceId,omitempty"`
+	// Device ID exposed to TME
+	TmeDeviceId *string `json:"TmeDeviceId,omitempty" xml:"TmeDeviceId,omitempty"`
+	// TME product ID
 	TmeProductId *string `json:"TmeProductId,omitempty" xml:"TmeProductId,omitempty"`
 }
 

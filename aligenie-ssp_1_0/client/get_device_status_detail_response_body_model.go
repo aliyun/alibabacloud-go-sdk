@@ -20,19 +20,26 @@ type iGetDeviceStatusDetailResponseBody interface {
 }
 
 type GetDeviceStatusDetailResponseBody struct {
+	// Returned error code. 200 indicates that the invocation succeeded.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return Result of invoking this API.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 0EC7*726E
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *GetDeviceStatusDetailResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned detailed information.
+	Result *GetDeviceStatusDetailResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s GetDeviceStatusDetailResponseBody) String() string {
@@ -80,12 +87,20 @@ func (s *GetDeviceStatusDetailResponseBody) SetResult(v *GetDeviceStatusDetailRe
 }
 
 func (s *GetDeviceStatusDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDeviceStatusDetailResponseBodyResult struct {
-	Player  *GetDeviceStatusDetailResponseBodyResultPlayer  `json:"Player,omitempty" xml:"Player,omitempty" type:"Struct"`
-	Power   *GetDeviceStatusDetailResponseBodyResultPower   `json:"Power,omitempty" xml:"Power,omitempty" type:"Struct"`
+	// Player information
+	Player *GetDeviceStatusDetailResponseBodyResultPlayer `json:"Player,omitempty" xml:"Player,omitempty" type:"Struct"`
+	// Battery information
+	Power *GetDeviceStatusDetailResponseBodyResultPower `json:"Power,omitempty" xml:"Power,omitempty" type:"Struct"`
+	// Volume information
 	Speaker *GetDeviceStatusDetailResponseBodyResultSpeaker `json:"Speaker,omitempty" xml:"Speaker,omitempty" type:"Struct"`
 }
 
@@ -125,52 +140,90 @@ func (s *GetDeviceStatusDetailResponseBodyResult) SetSpeaker(v *GetDeviceStatusD
 }
 
 func (s *GetDeviceStatusDetailResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Player != nil {
+		if err := s.Player.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Power != nil {
+		if err := s.Power.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Speaker != nil {
+		if err := s.Speaker.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDeviceStatusDetailResponseBodyResultPlayer struct {
+	// Song Album
 	AudioAlbum *string `json:"AudioAlbum,omitempty" xml:"AudioAlbum,omitempty"`
+	// Artist
+	//
 	// example:
 	//
 	// 刘德华
 	AudioAnchor *string `json:"AudioAnchor,omitempty" xml:"AudioAnchor,omitempty"`
+	// Extension Information
+	//
 	// example:
 	//
 	// ""
 	AudioExt *string `json:"AudioExt,omitempty" xml:"AudioExt,omitempty"`
+	// Audio ID
+	//
 	// example:
 	//
 	// 123
 	AudioId *string `json:"AudioId,omitempty" xml:"AudioId,omitempty"`
+	// Song length, in seconds
+	//
 	// example:
 	//
 	// 253
 	AudioLength *string `json:"AudioLength,omitempty" xml:"AudioLength,omitempty"`
-	AudioName   *string `json:"AudioName,omitempty" xml:"AudioName,omitempty"`
+	// Song Name
+	AudioName *string `json:"AudioName,omitempty" xml:"AudioName,omitempty"`
+	// Song Source (xiami)
+	//
 	// example:
 	//
 	// xiami
 	AudioSource *string `json:"AudioSource,omitempty" xml:"AudioSource,omitempty"`
+	// Song URL
+	//
 	// example:
 	//
 	// https://xxx
 	AudioUrl *string `json:"AudioUrl,omitempty" xml:"AudioUrl,omitempty"`
+	// Song Type (mp3)
+	//
 	// example:
 	//
 	// mp3
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// Playback progress
+	//
 	// example:
 	//
 	// 30
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// Playback Source (cloud)
+	//
 	// example:
 	//
 	// cloud
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Playback status, pause
+	//
 	// example:
 	//
 	// pause
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Reporting Time
 	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
@@ -304,11 +357,14 @@ func (s *GetDeviceStatusDetailResponseBodyResultPlayer) Validate() error {
 }
 
 type GetDeviceStatusDetailResponseBodyResultPower struct {
+	// Battery value
+	//
 	// example:
 	//
 	// 30
-	Quantity *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// Power status
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetDeviceStatusDetailResponseBodyResultPower) String() string {
@@ -342,7 +398,10 @@ func (s *GetDeviceStatusDetailResponseBodyResultPower) Validate() error {
 }
 
 type GetDeviceStatusDetailResponseBodyResultSpeaker struct {
+	// Is muted
 	Muted *bool `json:"Muted,omitempty" xml:"Muted,omitempty"`
+	// Current volume value
+	//
 	// example:
 	//
 	// 10

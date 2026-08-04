@@ -18,10 +18,16 @@ type iUpdateAlarmRequest interface {
 }
 
 type UpdateAlarmRequest struct {
+	// device identity information
+	//
 	// This parameter is required.
 	DeviceInfo *UpdateAlarmRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
+	// Input parameters for the service request
+	//
 	// This parameter is required.
 	Payload *UpdateAlarmRequestPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// User Identifier Information
+	//
 	// This parameter is required.
 	UserInfo *UpdateAlarmRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
@@ -62,34 +68,59 @@ func (s *UpdateAlarmRequest) SetUserInfo(v *UpdateAlarmRequestUserInfo) *UpdateA
 }
 
 func (s *UpdateAlarmRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceInfo != nil {
+		if err := s.DeviceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateAlarmRequestDeviceInfo struct {
+	// The value corresponding to the encoding type. When the encoding type is SKILL_ID, the value is the Skill ID of the application. When the encoding type is PACKAGE_NAME, the value is the packageName of the corresponding client app.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12**45
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. There are multiple ways to obtain the device ID for Maojing, and each method corresponds to a different encoding type: PACKAGE_NAME: APK package name, used in the Android application customer link; SKILL_ID: skill ID, used in the cloud link.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PACKAGE_NAME
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// device ID (deviceOpenId or deviceUnionId)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DAFE****ce3ej=
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Type of device ID: OPEN_ID: default device ID; UNION_ID: organization-dimension device ID, available only after an organization has been requested on the Maojing Skill Application Open Platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// organization ID; required if IdType is UNION_ID
+	//
 	// example:
 	//
 	// 1**2
@@ -154,16 +185,24 @@ func (s *UpdateAlarmRequestDeviceInfo) Validate() error {
 }
 
 type UpdateAlarmRequestPayload struct {
+	// Alarm ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234567
 	AlarmId *int64 `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	// Ringtone information
+	//
 	// This parameter is required.
 	MusicInfo *UpdateAlarmRequestPayloadMusicInfo `json:"MusicInfo,omitempty" xml:"MusicInfo,omitempty" type:"Struct"`
+	// Schedule information
+	//
 	// This parameter is required.
 	ScheduleInfo *UpdateAlarmRequestPayloadScheduleInfo `json:"ScheduleInfo,omitempty" xml:"ScheduleInfo,omitempty" type:"Struct"`
+	// Ringtone volume
+	//
 	// example:
 	//
 	// 40
@@ -215,26 +254,54 @@ func (s *UpdateAlarmRequestPayload) SetVolume(v int32) *UpdateAlarmRequestPayloa
 }
 
 func (s *UpdateAlarmRequestPayload) Validate() error {
-	return dara.Validate(s)
+	if s.MusicInfo != nil {
+		if err := s.MusicInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScheduleInfo != nil {
+		if err := s.ScheduleInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateAlarmRequestPayloadMusicInfo struct {
+	// Ringtone ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
 	MusicId *int64 `json:"MusicId,omitempty" xml:"MusicId,omitempty"`
+	// Ringtone name
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// xx铃声
 	MusicName *string `json:"MusicName,omitempty" xml:"MusicName,omitempty"`
+	// Ringtone category ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12
 	MusicType *int64 `json:"MusicType,omitempty" xml:"MusicType,omitempty"`
+	// Ringtone category name
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// xx音乐
 	MusicTypeName *string `json:"MusicTypeName,omitempty" xml:"MusicTypeName,omitempty"`
+	// Ringtone URL
+	//
 	// example:
 	//
 	// http://music-url.mp3
@@ -299,14 +366,21 @@ func (s *UpdateAlarmRequestPayloadMusicInfo) Validate() error {
 }
 
 type UpdateAlarmRequestPayloadScheduleInfo struct {
-	Once                *UpdateAlarmRequestPayloadScheduleInfoOnce                `json:"Once,omitempty" xml:"Once,omitempty" type:"Struct"`
+	// One-time: This property is active when the loop type is ONCE.
+	Once *UpdateAlarmRequestPayloadScheduleInfoOnce `json:"Once,omitempty" xml:"Once,omitempty" type:"Struct"`
+	// Statutory Working Day: This property is active when the loop Type is STATUTORY_WORKING_DAY.
 	StatutoryWorkingDay *UpdateAlarmRequestPayloadScheduleInfoStatutoryWorkingDay `json:"StatutoryWorkingDay,omitempty" xml:"StatutoryWorkingDay,omitempty" type:"Struct"`
+	// Schedule Type / Loop Type:
+	//
+	// ONCE -> One-time, WEEKLY -> Weekly loop, STATUTORY_WORKING_DAY -> Statutory working day
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// WEEKLY
-	Type   *string                                      `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Weekly loop: This property is active when the loop Type is WEEKLY.
 	Weekly *UpdateAlarmRequestPayloadScheduleInfoWeekly `json:"Weekly,omitempty" xml:"Weekly,omitempty" type:"Struct"`
 }
 
@@ -355,26 +429,51 @@ func (s *UpdateAlarmRequestPayloadScheduleInfo) SetWeekly(v *UpdateAlarmRequestP
 }
 
 func (s *UpdateAlarmRequestPayloadScheduleInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Once != nil {
+		if err := s.Once.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StatutoryWorkingDay != nil {
+		if err := s.StatutoryWorkingDay.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Weekly != nil {
+		if err := s.Weekly.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateAlarmRequestPayloadScheduleInfoOnce struct {
+	// Trigger time: day
+	//
 	// example:
 	//
 	// 1
 	Day *int32 `json:"Day,omitempty" xml:"Day,omitempty"`
+	// Trigger time: hour
+	//
 	// example:
 	//
 	// 10
 	Hour *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// Trigger time: minute
+	//
 	// example:
 	//
 	// 0
 	Minute *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
+	// Trigger time: Month
+	//
 	// example:
 	//
 	// 8
 	Month *int32 `json:"Month,omitempty" xml:"Month,omitempty"`
+	// Trigger time: Year
+	//
 	// example:
 	//
 	// 2022
@@ -439,10 +538,14 @@ func (s *UpdateAlarmRequestPayloadScheduleInfoOnce) Validate() error {
 }
 
 type UpdateAlarmRequestPayloadScheduleInfoStatutoryWorkingDay struct {
+	// Trigger Time: Hour
+	//
 	// example:
 	//
 	// 10
 	Hour *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// Trigger Time: Minute
+	//
 	// example:
 	//
 	// 0
@@ -480,11 +583,16 @@ func (s *UpdateAlarmRequestPayloadScheduleInfoStatutoryWorkingDay) Validate() er
 }
 
 type UpdateAlarmRequestPayloadScheduleInfoWeekly struct {
+	// Collection of days of the week to trigger: Numeric values between 1 and 7, where each number corresponds to a specific day of the week (1 for Monday, 2 for Tuesday, etc.). To trigger every day, include all values from 1 to 7.
 	DaysOfWeek []*int32 `json:"DaysOfWeek,omitempty" xml:"DaysOfWeek,omitempty" type:"Repeated"`
+	// Trigger Time: Hour
+	//
 	// example:
 	//
 	// 10
 	Hour *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// Trigger time: minute
+	//
 	// example:
 	//
 	// 0
@@ -531,30 +639,44 @@ func (s *UpdateAlarmRequestPayloadScheduleInfoWeekly) Validate() error {
 }
 
 type UpdateAlarmRequestUserInfo struct {
+	// Value corresponding to the encoding type. If the encoding type is SKILL_ID, the value is the application\\"s Skill ID. If the encoding type is PACKAGE_NAME, the value is the packageName of the corresponding client app.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12**45
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding Type: There are multiple ways to obtain the User Identifier for Maojing, and each method corresponds to a different encoding Type:
+	//
+	// - PACKAGE_NAME: APK package name, used for the Android application Customer link
+	//
+	// - SKILL_ID: Skill ID, used for the cloud link
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PACKAGE_NAME
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// User Identifier (userOpenId or userUnionId)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// HOFF****my7Iw=
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Type of the User ID: - OPEN_ID: default User ID identifier - UNION_ID: organization-dimension User ID identifier, available only after an organization has been requested on the Maojing Skill Application Open Platform
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. Required if IdType is UNION_ID.
+	//
 	// example:
 	//
 	// 1**2

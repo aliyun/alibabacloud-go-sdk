@@ -14,6 +14,8 @@ type iListCommonCateFirstFloorRequest interface {
 }
 
 type ListCommonCateFirstFloorRequest struct {
+	// Default value: song (extension field currently only supports song)
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -18,9 +18,12 @@ type iAddSubRequest interface {
 }
 
 type AddSubRequest struct {
+	// Subscribe to album request
 	AddSubscriptionInfoRequest *AddSubRequestAddSubscriptionInfoRequest `json:"AddSubscriptionInfoRequest,omitempty" xml:"AddSubscriptionInfoRequest,omitempty" type:"Struct"`
-	DeviceInfo                 *AddSubRequestDeviceInfo                 `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
-	UserInfo                   *AddSubRequestUserInfo                   `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
+	// Device Information
+	DeviceInfo *AddSubRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
+	// User Information
+	UserInfo *AddSubRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
 
 func (s AddSubRequest) String() string {
@@ -59,22 +62,44 @@ func (s *AddSubRequest) SetUserInfo(v *AddSubRequestUserInfo) *AddSubRequest {
 }
 
 func (s *AddSubRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AddSubscriptionInfoRequest != nil {
+		if err := s.AddSubscriptionInfoRequest.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeviceInfo != nil {
+		if err := s.DeviceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddSubRequestAddSubscriptionInfoRequest struct {
+	// Album ID
+	//
 	// example:
 	//
 	// 51999575
 	AlbumId *string `json:"AlbumId,omitempty" xml:"AlbumId,omitempty"`
+	// Daily study quantity
+	//
 	// example:
 	//
 	// 2
 	DailyStudyCnt *int32 `json:"DailyStudyCnt,omitempty" xml:"DailyStudyCnt,omitempty"`
+	// Playback pattern (currently only supports sequence)
+	//
 	// example:
 	//
 	// sequence
-	PlayMode     *string                                              `json:"PlayMode,omitempty" xml:"PlayMode,omitempty"`
+	PlayMode *string `json:"PlayMode,omitempty" xml:"PlayMode,omitempty"`
+	// Schedule information
 	ScheduleInfo *AddSubRequestAddSubscriptionInfoRequestScheduleInfo `json:"ScheduleInfo,omitempty" xml:"ScheduleInfo,omitempty" type:"Struct"`
 }
 
@@ -123,15 +148,25 @@ func (s *AddSubRequestAddSubscriptionInfoRequest) SetScheduleInfo(v *AddSubReque
 }
 
 func (s *AddSubRequestAddSubscriptionInfoRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ScheduleInfo != nil {
+		if err := s.ScheduleInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddSubRequestAddSubscriptionInfoRequestScheduleInfo struct {
+	// The specific days of the week for weekly reminders. Valid values are 1 to 7.
 	DaysOfWeek []*int32 `json:"DaysOfWeek,omitempty" xml:"DaysOfWeek,omitempty" type:"Repeated"`
+	// The hour of the clock when the reminder is triggered.
+	//
 	// example:
 	//
 	// 1
 	Hour *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// The minute of the hour when the reminder is triggered.
+	//
 	// example:
 	//
 	// 23

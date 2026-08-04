@@ -18,9 +18,12 @@ type iAddSubShrinkRequest interface {
 }
 
 type AddSubShrinkRequest struct {
+	// Subscribe to album request
 	AddSubscriptionInfoRequestShrink *string `json:"AddSubscriptionInfoRequest,omitempty" xml:"AddSubscriptionInfoRequest,omitempty"`
-	DeviceInfoShrink                 *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
-	UserInfoShrink                   *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
+	// Device Information
+	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	// User Information
+	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }
 
 func (s AddSubShrinkRequest) String() string {

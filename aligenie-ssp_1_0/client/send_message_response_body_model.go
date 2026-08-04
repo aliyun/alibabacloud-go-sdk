@@ -18,11 +18,20 @@ type iSendMessageResponseBody interface {
 }
 
 type SendMessageResponseBody struct {
+	// Status code returned by the service; "SUCCESS" indicates success, otherwise it indicates failure
+	//
 	// example:
 	//
 	// SUCCESS
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error message; if present, the send operation failed
+	//
+	// example:
+	//
+	// 外部userId映射关系不存在
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Message sending result
+	//
 	// example:
 	//
 	// true

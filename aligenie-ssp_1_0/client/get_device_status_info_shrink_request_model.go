@@ -14,6 +14,8 @@ type iGetDeviceStatusInfoShrinkRequest interface {
 }
 
 type GetDeviceStatusInfoShrinkRequest struct {
+	// List of device identity information.
+	//
 	// This parameter is required.
 	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
 }

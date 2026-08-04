@@ -20,16 +20,26 @@ type iQueryMusicTypeResponseBody interface {
 }
 
 type QueryMusicTypeResponseBody struct {
+	// Status code returned by the alarm service
+	//
 	// example:
 	//
 	// 200
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// error message
+	//
+	// example:
+	//
+	// 设备账号未关联
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// request ID
+	//
 	// example:
 	//
 	// 43***28C-A810-5***-8747-EC226A086881
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*QueryMusicTypeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of ringtone types
+	Result []*QueryMusicTypeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s QueryMusicTypeResponseBody) String() string {
@@ -77,14 +87,27 @@ func (s *QueryMusicTypeResponseBody) SetResult(v []*QueryMusicTypeResponseBodyRe
 }
 
 func (s *QueryMusicTypeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryMusicTypeResponseBodyResult struct {
+	// Ringtone type ID
+	//
 	// example:
 	//
 	// 1
 	MusicType *int64 `json:"MusicType,omitempty" xml:"MusicType,omitempty"`
+	// Name of the ringtone category
+	//
 	// example:
 	//
 	// xx

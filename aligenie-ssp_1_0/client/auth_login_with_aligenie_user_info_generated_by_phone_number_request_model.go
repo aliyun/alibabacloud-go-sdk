@@ -14,6 +14,8 @@ type iAuthLoginWithAligenieUserInfoGeneratedByPhoneNumberRequest interface {
 }
 
 type AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberRequest struct {
+	// Session ID
+	//
 	// This parameter is required.
 	//
 	// example:

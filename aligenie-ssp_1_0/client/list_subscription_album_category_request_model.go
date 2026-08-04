@@ -14,6 +14,8 @@ type iListSubscriptionAlbumCategoryRequest interface {
 }
 
 type ListSubscriptionAlbumCategoryRequest struct {
+	// Category name
+	//
 	// example:
 	//
 	// 儿歌

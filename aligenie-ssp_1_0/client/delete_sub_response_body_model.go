@@ -20,18 +20,26 @@ type iDeleteSubResponseBody interface {
 }
 
 type DeleteSubResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Additional information
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 0AA6C15C-FD61-1E32-9881-480CC6F35A70
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return Result
+	//
 	// example:
 	//
 	// true

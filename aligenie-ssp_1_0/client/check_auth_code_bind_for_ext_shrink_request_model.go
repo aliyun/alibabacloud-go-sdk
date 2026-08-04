@@ -20,24 +20,32 @@ type iCheckAuthCodeBindForExtShrinkRequest interface {
 }
 
 type CheckAuthCodeBindForExtShrinkRequest struct {
+	// The authCode obtained by specifying a user ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Aexfgc
 	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The value corresponding to the encoding type. Enter the Project ID of the project containing the ProductKey of this product in the Tmall Genie AI platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. Enter PROJECT_ID here.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PROJECT_ID
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// List of user identifier information.
+	//
 	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }

@@ -18,12 +18,18 @@ type iListUserMessageShrinkRequest interface {
 }
 
 type ListUserMessageShrinkRequest struct {
+	// After a specific point in time
+	//
 	// example:
 	//
 	// 2022-07-27 14:06:55.984
 	BeforeTime *string `json:"BeforeTime,omitempty" xml:"BeforeTime,omitempty"`
+	// User identifier information
+	//
 	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
+	// Number of records to query
+	//
 	// example:
 	//
 	// 10

@@ -16,8 +16,12 @@ type iInvalidateThirdPartyAppLoginStateShrinkRequest interface {
 }
 
 type InvalidateThirdPartyAppLoginStateShrinkRequest struct {
+	// Device identification information
+	//
 	// This parameter is required.
 	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	// Third-party application identity
+	//
 	// This parameter is required.
 	//
 	// example:

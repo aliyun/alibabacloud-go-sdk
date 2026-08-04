@@ -20,19 +20,26 @@ type iListSubResponseBody interface {
 }
 
 type ListSubResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Additional information
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 0D0C09C2-ADC1-198B-964D-24F4FAD967DB
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *ListSubResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Result
+	Result *ListSubResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s ListSubResponseBody) String() string {
@@ -80,16 +87,27 @@ func (s *ListSubResponseBody) SetResult(v *ListSubResponseBodyResult) *ListSubRe
 }
 
 func (s *ListSubResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSubResponseBodyResult struct {
+	// Subscription list
 	DataList []*ListSubResponseBodyResultDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	HasNext  *bool                                `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	// Is there a next page
+	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	// Total number of data entries
+	//
 	// example:
 	//
 	// 3
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Total number of pages
+	//
 	// example:
 	//
 	// 1
@@ -141,39 +159,65 @@ func (s *ListSubResponseBodyResult) SetTotalPageCount(v int32) *ListSubResponseB
 }
 
 func (s *ListSubResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.DataList != nil {
+		for _, item := range s.DataList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSubResponseBodyResultDataList struct {
+	// Album ID
+	//
 	// example:
 	//
 	// 51999575
 	AlbumId *string `json:"AlbumId,omitempty" xml:"AlbumId,omitempty"`
+	// Album thumbnail
+	//
 	// example:
 	//
 	// https://ailabs.alibabausercontent.com/images/8838/1600839452498.jpg
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// Daily study quantity
+	//
 	// example:
 	//
 	// 2
 	DailyStudyCnt *int32 `json:"DailyStudyCnt,omitempty" xml:"DailyStudyCnt,omitempty"`
+	// Device ID
+	//
 	// example:
 	//
 	// 5874DBCCA3038FAA1A70A8060F07F26D
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Subscription record ID
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Playback mode
+	//
 	// example:
 	//
 	// sequence
-	PlayMode     *string                                        `json:"PlayMode,omitempty" xml:"PlayMode,omitempty"`
+	PlayMode *string `json:"PlayMode,omitempty" xml:"PlayMode,omitempty"`
+	// Schedule information
 	ScheduleInfo *ListSubResponseBodyResultDataListScheduleInfo `json:"ScheduleInfo,omitempty" xml:"ScheduleInfo,omitempty" type:"Struct"`
+	// Album title
+	//
 	// example:
 	//
 	// 小科学家探索
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// User ID
+	//
 	// example:
 	//
 	// 1152893538998276761
@@ -270,15 +314,25 @@ func (s *ListSubResponseBodyResultDataList) SetUserId(v int64) *ListSubResponseB
 }
 
 func (s *ListSubResponseBodyResultDataList) Validate() error {
-	return dara.Validate(s)
+	if s.ScheduleInfo != nil {
+		if err := s.ScheduleInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSubResponseBodyResultDataListScheduleInfo struct {
+	// Trigger epoch
 	DaysOfWeek []*int32 `json:"DaysOfWeek,omitempty" xml:"DaysOfWeek,omitempty" type:"Repeated"`
+	// Trigger hour
+	//
 	// example:
 	//
 	// 12
 	Hour *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// Trigger minute
+	//
 	// example:
 	//
 	// 23

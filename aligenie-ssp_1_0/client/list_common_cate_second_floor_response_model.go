@@ -59,5 +59,10 @@ func (s *ListCommonCateSecondFloorResponse) SetBody(v *ListCommonCateSecondFloor
 }
 
 func (s *ListCommonCateSecondFloorResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

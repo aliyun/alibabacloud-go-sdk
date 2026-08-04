@@ -20,16 +20,22 @@ type iThirdImmediateMsgPushResponseBody interface {
 }
 
 type ThirdImmediateMsgPushResponseBody struct {
+	// error code
+	//
 	// example:
 	//
 	// 500000000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// error message
+	//
 	// example:
 	//
 	// 服务器内部异常
-	ErrorMsg *string                                 `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Model    *ThirdImmediateMsgPushResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	Success  *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// push result
+	Model *ThirdImmediateMsgPushResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// whether the invocation succeeded
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ThirdImmediateMsgPushResponseBody) String() string {
@@ -77,15 +83,23 @@ func (s *ThirdImmediateMsgPushResponseBody) SetSuccess(v bool) *ThirdImmediateMs
 }
 
 func (s *ThirdImmediateMsgPushResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Model != nil {
+		if err := s.Model.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ThirdImmediateMsgPushResponseBodyModel struct {
+	// request ID
+	//
 	// example:
 	//
 	// 2DF6FEFE-3301-16DD-ABCC-968A9524920B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// whether the push succeeded
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ThirdImmediateMsgPushResponseBodyModel) String() string {

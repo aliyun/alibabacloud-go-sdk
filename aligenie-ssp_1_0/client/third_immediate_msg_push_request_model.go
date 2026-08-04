@@ -32,42 +32,62 @@ type iThirdImmediateMsgPushRequest interface {
 }
 
 type ThirdImmediateMsgPushRequest struct {
+	// Business type (FLIGHT: flight, TRAIN: train)
+	//
 	// example:
 	//
 	// FLIGHT
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// Change details (JSON-formatted change data)
+	//
 	// example:
 	//
-	// changeDetail
+	// {}
 	ChangeDetail *string `json:"ChangeDetail,omitempty" xml:"ChangeDetail,omitempty"`
+	// Order ID
+	//
 	// example:
 	//
 	// orderId
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// Passenger IDs to change
+	//
 	// example:
 	//
 	// psgIds
 	PsgIds *string `json:"PsgIds,omitempty" xml:"PsgIds,omitempty"`
+	// Request source
+	//
 	// example:
 	//
 	// source
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// change type (TRAIN_ISSUED, FLIGHT_CHANGED)
+	//
 	// example:
 	//
-	// trafficChangeType
+	// TRAIN_ISSUED
 	TrafficChangeType *string `json:"TrafficChangeType,omitempty" xml:"TrafficChangeType,omitempty"`
+	// change type description (ticket issued, rebooked)
+	//
 	// example:
 	//
-	// trafficChangeTypeDesc
+	// 已出票
 	TrafficChangeTypeDesc *string `json:"TrafficChangeTypeDesc,omitempty" xml:"TrafficChangeTypeDesc,omitempty"`
+	// Journey IDs to change
+	//
 	// example:
 	//
 	// trafficJourneyIds
 	TrafficJourneyIds *string `json:"TrafficJourneyIds,omitempty" xml:"TrafficJourneyIds,omitempty"`
+	// sub-order ID of the changed train request
+	//
 	// example:
 	//
 	// trafficSubOrderIds
 	TrafficSubOrderIds *string `json:"TrafficSubOrderIds,omitempty" xml:"TrafficSubOrderIds,omitempty"`
+	// user ID
+	//
 	// example:
 	//
 	// userId

@@ -16,8 +16,12 @@ type iScanCodeBindShrinkRequest interface {
 }
 
 type ScanCodeBindShrinkRequest struct {
+	// Input parameters for QR code scanning binding
+	//
 	// This parameter is required.
 	BindReqShrink *string `json:"BindReq,omitempty" xml:"BindReq,omitempty"`
+	// User identity information
+	//
 	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }

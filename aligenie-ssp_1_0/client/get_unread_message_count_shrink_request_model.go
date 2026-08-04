@@ -14,6 +14,7 @@ type iGetUnreadMessageCountShrinkRequest interface {
 }
 
 type GetUnreadMessageCountShrinkRequest struct {
+	// User Identifier information
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }
 

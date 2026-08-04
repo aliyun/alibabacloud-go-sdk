@@ -59,5 +59,10 @@ func (s *ListAlbumDetailResponse) SetBody(v *ListAlbumDetailResponseBody) *ListA
 }
 
 func (s *ListAlbumDetailResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

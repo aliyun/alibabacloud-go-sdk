@@ -20,19 +20,26 @@ type iListCommonCateFirstFloorResponseBody interface {
 }
 
 type ListCommonCateFirstFloorResponseBody struct {
+	// Code encoding
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Message information
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// F12B6147-5925-19E5-A3AD-E1EE1360F34E
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListCommonCateFirstFloorResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return Result
+	Result []*ListCommonCateFirstFloorResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListCommonCateFirstFloorResponseBody) String() string {
@@ -80,15 +87,33 @@ func (s *ListCommonCateFirstFloorResponseBody) SetResult(v []*ListCommonCateFirs
 }
 
 func (s *ListCommonCateFirstFloorResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCommonCateFirstFloorResponseBodyResult struct {
+	// Category ID
+	//
 	// example:
 	//
 	// 80012
-	CateId   *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	// Category name
+	//
+	// example:
+	//
+	// 有声内容
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
+	// Parent category ID
+	//
 	// example:
 	//
 	// 0

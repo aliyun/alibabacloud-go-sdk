@@ -59,5 +59,10 @@ func (s *CreatePlayingListResponse) SetBody(v *CreatePlayingListResponseBody) *C
 }
 
 func (s *CreatePlayingListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -16,12 +16,16 @@ type iGetContentRequest interface {
 }
 
 type GetContentRequest struct {
+	// Content ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Default value: song
+	//
 	// This parameter is required.
 	//
 	// example:

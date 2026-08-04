@@ -16,8 +16,18 @@ type iGetDeviceStatusDetailRequest interface {
 }
 
 type GetDeviceStatusDetailRequest struct {
+	// List of device identification information.
+	//
 	// This parameter is required.
 	DeviceInfo *GetDeviceStatusDetailRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
+	// A collection of specified keys for device settings:
+	//
+	// Player: player
+	//
+	// Device volume: speaker
+	//
+	// Battery level: power
+	//
 	// This parameter is required.
 	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
 }
@@ -49,34 +59,53 @@ func (s *GetDeviceStatusDetailRequest) SetKeys(v []*string) *GetDeviceStatusDeta
 }
 
 func (s *GetDeviceStatusDetailRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceInfo != nil {
+		if err := s.DeviceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDeviceStatusDetailRequestDeviceInfo struct {
+	// The value corresponding to the encoding type. Enter the Project ID of the product’s project here. You can view it in the Tmall Genie AI Platform console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. Enter PROJECT_ID here.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PROJECT_ID
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// Device ID. Enter the value of deviceOpenId or deviceUnionId.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Type of device ID:
+	//
+	// OPEN_ID: The default device ID.
+	//
+	// UNION_ID: An organization-level device ID. You must request an organization in advance on the Open Platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. Required if IdType is UNION_ID.
+	//
 	// example:
 	//
 	// 1

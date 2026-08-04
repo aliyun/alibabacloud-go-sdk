@@ -18,14 +18,22 @@ type iSetDeviceSettingRequest interface {
 }
 
 type SetDeviceSettingRequest struct {
+	// List of user identifier information.
+	//
 	// This parameter is required.
 	DeviceInfo *SetDeviceSettingRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
+	// The collection of keys specified for device settings:
+	//
+	// Do Not Disturb mode: nightMode
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// nightMode
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Attribute Value
+	//
 	// example:
 	//
 	// {"enable":true}
@@ -68,34 +76,52 @@ func (s *SetDeviceSettingRequest) SetValue(v interface{}) *SetDeviceSettingReque
 }
 
 func (s *SetDeviceSettingRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceInfo != nil {
+		if err := s.DeviceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SetDeviceSettingRequestDeviceInfo struct {
+	// Value corresponding to the encoding type. Enter the Project ID of the project where the product resides. You can view it in the Tmall Genie AI platform console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. Enter PROJECT_ID here.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PROJECT_ID
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// Device ID. Enter the value of deviceOpenId or deviceUnionId.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The type of Device ID:
+	//
+	// OPEN_ID: The default device identity.
+	//
+	// UNION_ID: The organization-dimension device identity. You must request an organization in advance on the Open Platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
-	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. Required if IdType is UNION_ID.
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 

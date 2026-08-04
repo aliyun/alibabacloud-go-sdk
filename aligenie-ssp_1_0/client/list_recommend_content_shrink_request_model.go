@@ -18,10 +18,16 @@ type iListRecommendContentShrinkRequest interface {
 }
 
 type ListRecommendContentShrinkRequest struct {
+	// Device identification information
+	//
 	// This parameter is required.
 	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	// Request Parameters
+	//
 	// This parameter is required.
 	RequestShrink *string `json:"Request,omitempty" xml:"Request,omitempty"`
+	// User identification information
+	//
 	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }

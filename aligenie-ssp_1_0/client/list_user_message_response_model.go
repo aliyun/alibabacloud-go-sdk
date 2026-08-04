@@ -59,5 +59,10 @@ func (s *ListUserMessageResponse) SetBody(v *ListUserMessageResponseBody) *ListU
 }
 
 func (s *ListUserMessageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -16,8 +16,12 @@ type iGetCodeEnhanceShrinkRequest interface {
 }
 
 type GetCodeEnhanceShrinkRequest struct {
+	// Activation Channel, such as WeChat mini program or third-party app.
+	//
 	// This parameter is required.
 	ChannelInfoShrink *string `json:"ChannelInfo,omitempty" xml:"ChannelInfo,omitempty"`
+	// List of User Identifier information.
+	//
 	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }

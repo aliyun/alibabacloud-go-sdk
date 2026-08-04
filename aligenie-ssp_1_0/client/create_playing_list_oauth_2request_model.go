@@ -16,8 +16,12 @@ type iCreatePlayingListOAuth2Request interface {
 }
 
 type CreatePlayingListOAuth2Request struct {
+	// Device identification information
+	//
 	// This parameter is required.
 	DeviceInfo *CreatePlayingListOAuth2RequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
+	// Business parameters
+	//
 	// This parameter is required.
 	OpenCreatePlayingListRequest *CreatePlayingListOAuth2RequestOpenCreatePlayingListRequest `json:"OpenCreatePlayingListRequest,omitempty" xml:"OpenCreatePlayingListRequest,omitempty" type:"Struct"`
 }
@@ -49,34 +53,58 @@ func (s *CreatePlayingListOAuth2Request) SetOpenCreatePlayingListRequest(v *Crea
 }
 
 func (s *CreatePlayingListOAuth2Request) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceInfo != nil {
+		if err := s.DeviceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OpenCreatePlayingListRequest != nil {
+		if err := s.OpenCreatePlayingListRequest.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreatePlayingListOAuth2RequestDeviceInfo struct {
+	// The value corresponding to the encoding type. Enter the Project ID of the project to which the product belongs. You can view it in the Tmall Genie AI Platform console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. Enter PROJECT_ID here.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PROJECT_ID
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// Device ID. Enter the value of deviceOpenId or deviceUnionId.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The type of device ID:
+	//
+	// OPEN_ID: The default device ID.
+	//
+	// UNION_ID: The organization-level device ID. You must request an organization in advance on the Open Platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. Required when IdType is UNION_ID.
+	//
 	// example:
 	//
 	// 1
@@ -141,27 +169,48 @@ func (s *CreatePlayingListOAuth2RequestDeviceInfo) Validate() error {
 }
 
 type CreatePlayingListOAuth2RequestOpenCreatePlayingListRequest struct {
+	// Playback objects
+	//
 	// This parameter is required.
 	ContentList []*CreatePlayingListOAuth2RequestOpenCreatePlayingListRequestContentList `json:"ContentList,omitempty" xml:"ContentList,omitempty" type:"Repeated"`
+	// Content type for playback
+	//
+	// Content: content; Album: album; Playlist: collect
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// content
-	ContentType *string                `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	ExtendInfo  map[string]interface{} `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// Extension information
+	ExtendInfo map[string]interface{} `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// Index of the item to play
+	//
+	// Can be empty. Default is 0, which means playback starts from the beginning.
+	//
 	// example:
 	//
 	// 0
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// Indicates whether album playback should continue from the last played episode. For example, if the last playback stopped at episode 5, whether to resume from episode 5. Default is true.
+	//
 	// example:
 	//
 	// true
 	NeedAlbumContinued *bool `json:"NeedAlbumContinued,omitempty" xml:"NeedAlbumContinued,omitempty"`
+	// Playback source, the unique identifier for configuring playback control capabilities.
+	//
+	// Optional. Default value is "default".
+	//
 	// example:
 	//
 	// default
 	PlayFrom *string `json:"PlayFrom,omitempty" xml:"PlayFrom,omitempty"`
+	// Playback pattern
+	//
+	// Repeat all: Repeat; Shuffle: Shuffle; Repeat one: RepeatOne; Play in order: Normal.
+	//
 	// example:
 	//
 	// Repeat
@@ -240,16 +289,31 @@ func (s *CreatePlayingListOAuth2RequestOpenCreatePlayingListRequest) SetPlayMode
 }
 
 func (s *CreatePlayingListOAuth2RequestOpenCreatePlayingListRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ContentList != nil {
+		for _, item := range s.ContentList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreatePlayingListOAuth2RequestOpenCreatePlayingListRequestContentList struct {
+	// Third-party ID.
+	//
+	// If the item is content, this is the content ID; if it is an album, this is the album ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12345
 	RawId *string `json:"RawId,omitempty" xml:"RawId,omitempty"`
+	// Source
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -20,19 +20,26 @@ type iUnbindAligenieUserResponseBody interface {
 }
 
 type UnbindAligenieUserResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response message
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 73C67BD9-175A-1324-8202-9FAABBB3E6FA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Flag indicating whether the invocation succeeded
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UnbindAligenieUserResponseBody) String() string {

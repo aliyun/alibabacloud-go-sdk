@@ -20,16 +20,26 @@ type iGetScheduleTaskResponseBody interface {
 }
 
 type GetScheduleTaskResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// 200
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response message
+	//
+	// example:
+	//
+	// 调用成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// F7E21065-6C21-1158-A2F9-AEFE5CAB7C94
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *GetScheduleTaskResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Service response parameters
+	Result *GetScheduleTaskResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s GetScheduleTaskResponseBody) String() string {
@@ -77,27 +87,43 @@ func (s *GetScheduleTaskResponseBody) SetResult(v *GetScheduleTaskResponseBodyRe
 }
 
 func (s *GetScheduleTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetScheduleTaskResponseBodyResult struct {
+	// Trigger behavior
 	ActionTopicList []*GetScheduleTaskResponseBodyResultActionTopicList `json:"ActionTopicList,omitempty" xml:"ActionTopicList,omitempty" type:"Repeated"`
+	// Trigger Cron Expression
+	//
 	// example:
 	//
 	// 0 10 20 30 6 ? 2022
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
+	// Validity Period - End Time
+	//
 	// example:
 	//
 	// 1659169473000
 	ScheduleEndTime *string `json:"ScheduleEndTime,omitempty" xml:"ScheduleEndTime,omitempty"`
+	// Job ID
+	//
 	// example:
 	//
 	// 1234567
 	ScheduleId *int64 `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
+	// Validity Period - Start Time
+	//
 	// example:
 	//
 	// 1656577473000
 	ScheduleStartTime *string `json:"ScheduleStartTime,omitempty" xml:"ScheduleStartTime,omitempty"`
+	// Schedule Type
+	//
 	// example:
 	//
 	// ONCE
@@ -167,10 +193,21 @@ func (s *GetScheduleTaskResponseBodyResult) SetScheduleType(v string) *GetSchedu
 }
 
 func (s *GetScheduleTaskResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.ActionTopicList != nil {
+		for _, item := range s.ActionTopicList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetScheduleTaskResponseBodyResultActionTopicList struct {
+	// Vendor-defined command
+	//
 	// example:
 	//
 	// {"k1":"v1","k2":{"key":1}}

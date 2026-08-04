@@ -59,5 +59,10 @@ func (s *CheckAuthCodeBindForExtResponse) SetBody(v *CheckAuthCodeBindForExtResp
 }
 
 func (s *CheckAuthCodeBindForExtResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

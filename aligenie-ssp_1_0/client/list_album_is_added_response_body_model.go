@@ -20,19 +20,26 @@ type iListAlbumIsAddedResponseBody interface {
 }
 
 type ListAlbumIsAddedResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Additional information
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// BCC85E69-5DA6-197E-A8C1-8A1B19CF781B
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListAlbumIsAddedResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Result
+	Result []*ListAlbumIsAddedResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListAlbumIsAddedResponseBody) String() string {
@@ -80,14 +87,27 @@ func (s *ListAlbumIsAddedResponseBody) SetResult(v []*ListAlbumIsAddedResponseBo
 }
 
 func (s *ListAlbumIsAddedResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAlbumIsAddedResponseBodyResult struct {
+	// Album ID
+	//
 	// example:
 	//
 	// 51999575
 	AlbumId *string `json:"AlbumId,omitempty" xml:"AlbumId,omitempty"`
+	// Whether it is subscribed
+	//
 	// example:
 	//
 	// false

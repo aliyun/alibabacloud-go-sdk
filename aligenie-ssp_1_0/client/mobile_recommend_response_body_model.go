@@ -20,10 +20,14 @@ type iMobileRecommendResponseBody interface {
 }
 
 type MobileRecommendResponseBody struct {
+	// Return code of the invocation
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// If an error occurs, the error message will be output.
+	//
 	// example:
 	//
 	// success
@@ -33,8 +37,9 @@ type MobileRecommendResponseBody struct {
 	// example:
 	//
 	// 5C5809B4-F465-52E0-9A8B-61396F9E593B
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*MobileRecommendResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Request result.
+	Result []*MobileRecommendResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s MobileRecommendResponseBody) String() string {
@@ -82,24 +87,45 @@ func (s *MobileRecommendResponseBody) SetResult(v []*MobileRecommendResponseBody
 }
 
 func (s *MobileRecommendResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type MobileRecommendResponseBodyResult struct {
+	// Author information
 	Authors []*string `json:"Authors,omitempty" xml:"Authors,omitempty" type:"Repeated"`
+	// Album thumbnail image
+	//
 	// example:
 	//
 	// http://img4.kuwo.cn/star/albumcover/120/78/77/1688821132.jpg
 	Cover *string `json:"Cover,omitempty" xml:"Cover,omitempty"`
+	// Third-party ID of the content
+	//
 	// example:
 	//
 	// 550144364
 	RawId *string `json:"RawId,omitempty" xml:"RawId,omitempty"`
+	// Source of the content
+	//
 	// example:
 	//
 	// KG
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Content title
+	//
+	// example:
+	//
+	// 稻香
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s MobileRecommendResponseBodyResult) String() string {

@@ -20,10 +20,14 @@ type iListCateContentResponseBody interface {
 }
 
 type ListCateContentResponseBody struct {
+	// code encoding
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// message information
+	//
 	// example:
 	//
 	// sucess
@@ -33,8 +37,9 @@ type ListCateContentResponseBody struct {
 	// example:
 	//
 	// F12B6147-5925-19E5-A3AD-E1EE1360F34E
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *ListCateContentResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return Result
+	Result *ListCateContentResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s ListCateContentResponseBody) String() string {
@@ -82,19 +87,31 @@ func (s *ListCateContentResponseBody) SetResult(v *ListCateContentResponseBodyRe
 }
 
 func (s *ListCateContentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCateContentResponseBodyResult struct {
+	// Current page number
+	//
 	// example:
 	//
 	// 1
-	CurrentPageNum   *int32                                               `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
+	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
+	// Data information
 	OpenDataItemList []*ListCateContentResponseBodyResultOpenDataItemList `json:"OpenDataItemList,omitempty" xml:"OpenDataItemList,omitempty" type:"Repeated"`
+	// Number of records per page
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total number of records
+	//
 	// example:
 	//
 	// 12002
@@ -146,55 +163,99 @@ func (s *ListCateContentResponseBodyResult) SetTotalSize(v int64) *ListCateConte
 }
 
 func (s *ListCateContentResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.OpenDataItemList != nil {
+		for _, item := range s.OpenDataItemList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCateContentResponseBodyResultOpenDataItemList struct {
+	// Alias
 	Alias []*string `json:"Alias,omitempty" xml:"Alias,omitempty" type:"Repeated"`
+	// Is audition available
+	//
 	// example:
 	//
 	// true
-	Audition *bool                                                       `json:"Audition,omitempty" xml:"Audition,omitempty"`
-	Authors  []*ListCateContentResponseBodyResultOpenDataItemListAuthors `json:"Authors,omitempty" xml:"Authors,omitempty" type:"Repeated"`
+	Audition *bool `json:"Audition,omitempty" xml:"Audition,omitempty"`
+	// author information
+	Authors []*ListCateContentResponseBodyResultOpenDataItemListAuthors `json:"Authors,omitempty" xml:"Authors,omitempty" type:"Repeated"`
+	// Transform controlType based on the assigned public category
+	//
 	// example:
 	//
 	// audio
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// Whether it is charged
+	//
 	// example:
 	//
 	// false
 	Charge *bool `json:"Charge,omitempty" xml:"Charge,omitempty"`
+	// Category ID
+	//
 	// example:
 	//
 	// 80012017
-	CommCateId  *string                                                 `json:"CommCateId,omitempty" xml:"CommCateId,omitempty"`
-	Cover       *ListCateContentResponseBodyResultOpenDataItemListCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
-	Description *string                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	CommCateId *string `json:"CommCateId,omitempty" xml:"CommCateId,omitempty"`
+	// Album thumbnail image
+	Cover *ListCateContentResponseBodyResultOpenDataItemListCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
+	// Content description
+	//
+	// example:
+	//
+	// 作者：月不醉 简介：啥，假冒你男友？退役兵王回归都市后做了一名小保安，机缘巧合下却被冷艳女总拉去客串男友，从此之后，他与冷艳老总开始纠缠不清···拳打恶一代，脚踩高富帅，哥哥我专治各种不服。面对各类的阴谋阳谋，面对各种黑恶势力，且看哥如何称霸都市，踏上巅峰！
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Popularity score
+	//
 	// example:
 	//
 	// 0
 	HotScore *float64 `json:"HotScore,omitempty" xml:"HotScore,omitempty"`
+	// Type of content, such as music, audio, radio, jokes, etc.
+	//
 	// example:
 	//
 	// ALBUM
 	ItemType *string `json:"ItemType,omitempty" xml:"ItemType,omitempty"`
+	// Third-party ID of the album
+	//
 	// example:
 	//
 	// 206775
 	RawId *string `json:"RawId,omitempty" xml:"RawId,omitempty"`
+	// Source
+	//
 	// example:
 	//
 	// qingting
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Title
+	//
+	// example:
+	//
+	// 超能狂少在都市
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Transform favoriteType based on the associated public category.
+	//
 	// example:
 	//
 	// program
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Indicates whether the content is playable.
+	//
 	// example:
 	//
 	// VALID
 	Valid *string `json:"Valid,omitempty" xml:"Valid,omitempty"`
+	// Primary key ID
+	//
 	// example:
 	//
 	// 26152778
@@ -354,34 +415,70 @@ func (s *ListCateContentResponseBodyResultOpenDataItemList) SetId(v int64) *List
 }
 
 func (s *ListCateContentResponseBodyResultOpenDataItemList) Validate() error {
-	return dara.Validate(s)
+	if s.Authors != nil {
+		for _, item := range s.Authors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Cover != nil {
+		if err := s.Cover.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCateContentResponseBodyResultOpenDataItemListAuthors struct {
-	AuthorTypes []*string                                                      `json:"AuthorTypes,omitempty" xml:"AuthorTypes,omitempty" type:"Repeated"`
-	Cover       *ListCateContentResponseBodyResultOpenDataItemListAuthorsCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
-	Description *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Author type
+	AuthorTypes []*string `json:"AuthorTypes,omitempty" xml:"AuthorTypes,omitempty" type:"Repeated"`
+	// profile picture
+	Cover *ListCateContentResponseBodyResultOpenDataItemListAuthorsCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
+	// Author description
+	//
+	// example:
+	//
+	// 播音呆瓜小贼
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Gender
+	//
 	// example:
 	//
 	// MALE
 	Gender *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	// Primary key ID of the author information
+	//
 	// example:
 	//
 	// 13597709
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Whether it is online
+	//
 	// example:
 	//
 	// true
 	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
+	// third-party author ID
+	//
 	// example:
 	//
 	// 123123
 	RawId *string `json:"RawId,omitempty" xml:"RawId,omitempty"`
+	// Source
+	//
 	// example:
 	//
 	// qingting
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Author title
+	//
+	// example:
+	//
+	// 播音呆瓜小贼
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListCateContentResponseBodyResultOpenDataItemListAuthors) String() string {
@@ -474,30 +571,47 @@ func (s *ListCateContentResponseBodyResultOpenDataItemListAuthors) SetTitle(v st
 }
 
 func (s *ListCateContentResponseBodyResultOpenDataItemListAuthors) Validate() error {
-	return dara.Validate(s)
+	if s.Cover != nil {
+		if err := s.Cover.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCateContentResponseBodyResultOpenDataItemListAuthorsCover struct {
+	// Indicates whether the image can be cropped using OSS rules.
+	//
 	// example:
 	//
 	// false
 	CanResize *bool `json:"CanResize,omitempty" xml:"CanResize,omitempty"`
+	// default image
+	//
 	// example:
 	//
 	// https://a.jpg
 	Img *string `json:"Img,omitempty" xml:"Img,omitempty"`
+	// Large image
+	//
 	// example:
 	//
 	// https://a.jpg
 	Large *string `json:"Large,omitempty" xml:"Large,omitempty"`
+	// Medium image (Deprecated)
+	//
 	// example:
 	//
 	// https://a.jpg
 	Mediam *string `json:"Mediam,omitempty" xml:"Mediam,omitempty"`
+	// medium image
+	//
 	// example:
 	//
 	// https://a.jpg
 	Medium *string `json:"Medium,omitempty" xml:"Medium,omitempty"`
+	// small image
+	//
 	// example:
 	//
 	// https://a.jpg
@@ -571,26 +685,38 @@ func (s *ListCateContentResponseBodyResultOpenDataItemListAuthorsCover) Validate
 }
 
 type ListCateContentResponseBodyResultOpenDataItemListCover struct {
+	// Default image
+	//
 	// example:
 	//
 	// http://pic.qtfm.cn/2017/0207/2017020718285.jpg
 	Img *string `json:"Img,omitempty" xml:"Img,omitempty"`
+	// Large image
+	//
 	// example:
 	//
 	// http://pic.qtfm.cn/2017/0207/2017020718275.jpg
 	Large *string `json:"Large,omitempty" xml:"Large,omitempty"`
+	// Medium image (Deprecated)
+	//
 	// example:
 	//
 	// http://pic.qtfm.cn/2017/0207/2017020718275.jpg
 	Mediam *string `json:"Mediam,omitempty" xml:"Mediam,omitempty"`
+	// Medium image
+	//
 	// example:
 	//
 	// http://pic.qtfm.cn/2017/0207/20170207175.jpg
 	Medium *string `json:"Medium,omitempty" xml:"Medium,omitempty"`
+	// Small image
+	//
 	// example:
 	//
 	// http://pic.qtfm.cn/2017/0207/2017020675.jpg
 	Small *string `json:"Small,omitempty" xml:"Small,omitempty"`
+	// Indicates whether cropping can be performed using OSS rules.
+	//
 	// example:
 	//
 	// false

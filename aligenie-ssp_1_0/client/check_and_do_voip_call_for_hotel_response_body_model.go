@@ -71,7 +71,12 @@ func (s *CheckAndDoVoipCallForHotelResponseBody) SetResult(v *CheckAndDoVoipCall
 }
 
 func (s *CheckAndDoVoipCallForHotelResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CheckAndDoVoipCallForHotelResponseBodyResult struct {
@@ -126,7 +131,17 @@ func (s *CheckAndDoVoipCallForHotelResponseBodyResult) SetStartCallResult(v *Che
 }
 
 func (s *CheckAndDoVoipCallForHotelResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceTargets != nil {
+		if err := s.DeviceTargets.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StartCallResult != nil {
+		if err := s.StartCallResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargets struct {
@@ -171,7 +186,16 @@ func (s *CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargets) SetMsg(v str
 }
 
 func (s *CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargets) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargetsData struct {

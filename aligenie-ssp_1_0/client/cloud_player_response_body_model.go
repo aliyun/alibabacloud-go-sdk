@@ -20,10 +20,14 @@ type iCloudPlayerResponseBody interface {
 }
 
 type CloudPlayerResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
@@ -34,6 +38,8 @@ type CloudPlayerResponseBody struct {
 	//
 	// B7D82DB0-DD59-5756-AC62-871C9D7DBC36
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return Result: true indicates validation succeeded; false indicates validation failed.
+	//
 	// example:
 	//
 	// true

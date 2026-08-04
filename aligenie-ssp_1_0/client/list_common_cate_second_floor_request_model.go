@@ -14,6 +14,8 @@ type iListCommonCateSecondFloorRequest interface {
 }
 
 type ListCommonCateSecondFloorRequest struct {
+	// Parent category ID
+	//
 	// example:
 	//
 	// 80010

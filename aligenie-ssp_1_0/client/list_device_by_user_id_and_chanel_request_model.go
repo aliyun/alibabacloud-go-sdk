@@ -16,8 +16,12 @@ type iListDeviceByUserIdAndChanelRequest interface {
 }
 
 type ListDeviceByUserIdAndChanelRequest struct {
+	// Activation channel, such as WeChat mini program or third-party app.
+	//
 	// This parameter is required.
 	ChannelInfo *ListDeviceByUserIdAndChanelRequestChannelInfo `json:"ChannelInfo,omitempty" xml:"ChannelInfo,omitempty" type:"Struct"`
+	// List of User Identifier information.
+	//
 	// This parameter is required.
 	UserInfo *ListDeviceByUserIdAndChanelRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
@@ -49,16 +53,30 @@ func (s *ListDeviceByUserIdAndChanelRequest) SetUserInfo(v *ListDeviceByUserIdAn
 }
 
 func (s *ListDeviceByUserIdAndChanelRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ChannelInfo != nil {
+		if err := s.ChannelInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDeviceByUserIdAndChanelRequestChannelInfo struct {
+	// Activation provisioning channel, such as WeChat or ThirdApp.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// WeChat、ThirdApp
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// Extension information.
+	//
 	// example:
 	//
 	// {}
@@ -96,30 +114,44 @@ func (s *ListDeviceByUserIdAndChanelRequestChannelInfo) Validate() error {
 }
 
 type ListDeviceByUserIdAndChanelRequestUserInfo struct {
+	// The value corresponding to the encoding type; enter the Project ID of the project to which the product belongs. You can view this in the Tmall Genie AI platform console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding Type; enter PROJECT_ID here.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PROJECT_ID
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// User Identifier; enter the value of userOpenId or userUnionId.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The Type of the User ID:
+	//
+	// OPEN_ID: The default User ID identity.
+	//
+	// UNION_ID: The User ID identity at the organization dimension, which requires you to request an organization in advance on the Open Platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID; required if IdType is UNION_ID.
+	//
 	// example:
 	//
 	// 1***2

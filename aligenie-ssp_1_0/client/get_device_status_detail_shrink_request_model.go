@@ -16,8 +16,18 @@ type iGetDeviceStatusDetailShrinkRequest interface {
 }
 
 type GetDeviceStatusDetailShrinkRequest struct {
+	// List of device identification information.
+	//
 	// This parameter is required.
 	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	// A collection of specified keys for device settings:
+	//
+	// Player: player
+	//
+	// Device volume: speaker
+	//
+	// Battery level: power
+	//
 	// This parameter is required.
 	KeysShrink *string `json:"Keys,omitempty" xml:"Keys,omitempty"`
 }
