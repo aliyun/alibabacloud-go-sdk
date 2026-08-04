@@ -134,7 +134,7 @@ func (s *ListIndexFileDetailsResponseBody) Validate() error {
 }
 
 type ListIndexFileDetailsResponseBodyData struct {
-	// The list of files in the knowledge base, sorted by file import time in descending order (consistent with the console).
+	// The list of files in the knowledge base, sorted in descending order by file import time (consistent with the console).
 	Documents []*ListIndexFileDetailsResponseBodyDataDocuments `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
 	// The knowledge base ID.
 	//
@@ -142,13 +142,13 @@ type ListIndexFileDetailsResponseBodyData struct {
 	//
 	// 79c0alxxxx
 	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
-	// The specified page number.
+	// The returned page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The specified number of entries per page.
+	// The returned number of items per page.
 	//
 	// example:
 	//
@@ -259,7 +259,7 @@ type ListIndexFileDetailsResponseBodyDataDocuments struct {
 	//
 	// true
 	EnableHeaders *string `json:"EnableHeaders,omitempty" xml:"EnableHeaders,omitempty"`
-	// The time when the file was imported to the knowledge base, in Unix timestamp format.
+	// The time when the file was imported to the knowledge base, in UNIX timestamp format.
 	//
 	// example:
 	//
@@ -276,7 +276,18 @@ type ListIndexFileDetailsResponseBodyDataDocuments struct {
 	// example:
 	//
 	// check fileUrlKey[file_path] / fileNameKey[null] / fileExtensionKey[file_extension] is invalid
-	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The metadata extracted from the document.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "doc_summary": ["Example 1."],
+	//
+	//   "health_rule": ["Example 2"]
+	//
+	// }
 	MetaExtractInfo *string `json:"MetaExtractInfo,omitempty" xml:"MetaExtractInfo,omitempty"`
 	// The file name.
 	//

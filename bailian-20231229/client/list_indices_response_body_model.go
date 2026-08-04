@@ -24,7 +24,7 @@ type iListIndicesResponseBody interface {
 }
 
 type ListIndicesResponseBody struct {
-	// The error code.
+	// The error status code.
 	//
 	// example:
 	//
@@ -136,13 +136,13 @@ func (s *ListIndicesResponseBody) Validate() error {
 type ListIndicesResponseBodyData struct {
 	// The list of knowledge bases.
 	Indices []*ListIndicesResponseBodyDataIndices `json:"Indices,omitempty" xml:"Indices,omitempty" type:"Repeated"`
-	// The page number returned.
+	// The specified page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page returned.
+	// The specified number of entries per page.
 	//
 	// example:
 	//
@@ -214,7 +214,7 @@ func (s *ListIndicesResponseBodyData) Validate() error {
 }
 
 type ListIndicesResponseBodyDataIndices struct {
-	// The estimated chunk length. Valid values: 1 to 2048.
+	// The estimated chunk size. Valid values: 1 to 2048.
 	//
 	// example:
 	//
@@ -230,31 +230,29 @@ type ListIndicesResponseBodyDataIndices struct {
 	//
 	// recommend
 	ConfgModel *string `json:"ConfgModel,omitempty" xml:"ConfgModel,omitempty"`
-	// The description of the knowledge base.
+	// The knowledge base description.
 	//
 	// example:
 	//
-	// 清单中产品主要面向海外客户。
+	// Products in this list are mainly for overseas customers
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The list of file IDs.
 	DocumentIds []*string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty" type:"Repeated"`
-	// The name of the embedding model. Valid values:
+	// The embedding model name. Valid values:
 	//
 	// <props="china">
 	//
-	// - text-embedding-v4: the text-embedding-v4 model.
+	// - text-embedding-v4: text-embedding-v4 model.
 	//
-	// - text-embedding-v3: the text-embedding-v3 model.
+	// - text-embedding-v3: text-embedding-v3 model.
 	//
-	// - text-embedding-v2: the text-embedding-v2 model.
+	// - text-embedding-v2: text-embedding-v2 model.
 	//
 	//
 	//
 	// <props="intl">
 	//
-	// - text-embedding-v2: the text-embedding-v2 model.
-	//
-	// .
+	// - text-embedding-v2: text-embedding-v2 model.
 	//
 	// example:
 	//
@@ -276,13 +274,13 @@ type ListIndicesResponseBodyDataIndices struct {
 	//
 	// lecxr5xxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the knowledge base.
+	// The knowledge base name.
 	//
 	// example:
 	//
-	// XXXX产品清单
+	// XXXX Product List
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The chunk overlap length. Valid values: 0 to 1024.
+	// The chunk overlap size. Valid values: 0 to 1024.
 	//
 	// example:
 	//
@@ -294,7 +292,7 @@ type ListIndicesResponseBodyDataIndices struct {
 	//
 	// 0.01
 	RerankMinScore *string `json:"RerankMinScore,omitempty" xml:"RerankMinScore,omitempty"`
-	// The name of the rerank model. Valid values:
+	// The rerank model name. Valid values:
 	//
 	// <props="china">
 	//
@@ -313,8 +311,6 @@ type ListIndicesResponseBodyDataIndices struct {
 	// - gte-rerank-hybrid: official reranking.
 	//
 	// - gte-rerank: gte-rerank reranking.
-	//
-	// .
 	//
 	// example:
 	//
@@ -344,7 +340,7 @@ type ListIndicesResponseBodyDataIndices struct {
 	//
 	// - ？: Chinese question mark
 	//
-	// - ?: English question mark.
+	// - ?: English question mark
 	//
 	// example:
 	//
@@ -374,7 +370,7 @@ type ListIndicesResponseBodyDataIndices struct {
 	//
 	// BUILT_IN
 	SinkType *string `json:"SinkType,omitempty" xml:"SinkType,omitempty"`
-	// The data type of Alibaba Cloud Model Studio <props="china">[application data](https://bailian.console.aliyun.com/?tab=app#/data-center)<props="intl">[application data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center).
+	// The data type in Alibaba Cloud Model Studio <props="china">[Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center)<props="intl">[Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center).
 	//
 	//
 	// For document search<props="china">/audio and video search knowledge bases, valid values:
@@ -391,14 +387,15 @@ type ListIndicesResponseBodyDataIndices struct {
 	//
 	// DATA_CENTER_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The type of the knowledge base. Valid values:
+	// The knowledge base type. Valid values:
 	//
 	// - UNSTRUCTURED: document search.
 	//
 	// example:
 	//
 	// UNSTRUCTURED
-	StructureType *string `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
+	StructureType         *string                                                    `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
+	StructuredIndexConfig []*ListIndicesResponseBodyDataIndicesStructuredIndexConfig `json:"StructuredIndexConfig,omitempty" xml:"StructuredIndexConfig,omitempty" type:"Repeated"`
 }
 
 func (s ListIndicesResponseBodyDataIndices) String() string {
@@ -475,6 +472,10 @@ func (s *ListIndicesResponseBodyDataIndices) GetSourceType() *string {
 
 func (s *ListIndicesResponseBodyDataIndices) GetStructureType() *string {
 	return s.StructureType
+}
+
+func (s *ListIndicesResponseBodyDataIndices) GetStructuredIndexConfig() []*ListIndicesResponseBodyDataIndicesStructuredIndexConfig {
+	return s.StructuredIndexConfig
 }
 
 func (s *ListIndicesResponseBodyDataIndices) SetChunkSize(v int32) *ListIndicesResponseBodyDataIndices {
@@ -562,6 +563,75 @@ func (s *ListIndicesResponseBodyDataIndices) SetStructureType(v string) *ListInd
 	return s
 }
 
+func (s *ListIndicesResponseBodyDataIndices) SetStructuredIndexConfig(v []*ListIndicesResponseBodyDataIndicesStructuredIndexConfig) *ListIndicesResponseBodyDataIndices {
+	s.StructuredIndexConfig = v
+	return s
+}
+
 func (s *ListIndicesResponseBodyDataIndices) Validate() error {
+	if s.StructuredIndexConfig != nil {
+		for _, item := range s.StructuredIndexConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListIndicesResponseBodyDataIndicesStructuredIndexConfig struct {
+	IsRecall *bool   `json:"IsRecall,omitempty" xml:"IsRecall,omitempty"`
+	IsSearch *bool   `json:"IsSearch,omitempty" xml:"IsSearch,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListIndicesResponseBodyDataIndicesStructuredIndexConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListIndicesResponseBodyDataIndicesStructuredIndexConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListIndicesResponseBodyDataIndicesStructuredIndexConfig) GetIsRecall() *bool {
+	return s.IsRecall
+}
+
+func (s *ListIndicesResponseBodyDataIndicesStructuredIndexConfig) GetIsSearch() *bool {
+	return s.IsSearch
+}
+
+func (s *ListIndicesResponseBodyDataIndicesStructuredIndexConfig) GetName() *string {
+	return s.Name
+}
+
+func (s *ListIndicesResponseBodyDataIndicesStructuredIndexConfig) GetType() *string {
+	return s.Type
+}
+
+func (s *ListIndicesResponseBodyDataIndicesStructuredIndexConfig) SetIsRecall(v bool) *ListIndicesResponseBodyDataIndicesStructuredIndexConfig {
+	s.IsRecall = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyDataIndicesStructuredIndexConfig) SetIsSearch(v bool) *ListIndicesResponseBodyDataIndicesStructuredIndexConfig {
+	s.IsSearch = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyDataIndicesStructuredIndexConfig) SetName(v string) *ListIndicesResponseBodyDataIndicesStructuredIndexConfig {
+	s.Name = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyDataIndicesStructuredIndexConfig) SetType(v string) *ListIndicesResponseBodyDataIndicesStructuredIndexConfig {
+	s.Type = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyDataIndicesStructuredIndexConfig) Validate() error {
 	return dara.Validate(s)
 }
