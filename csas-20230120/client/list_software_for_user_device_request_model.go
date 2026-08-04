@@ -18,18 +18,28 @@ type iListSoftwareForUserDeviceRequest interface {
 }
 
 type ListSoftwareForUserDeviceRequest struct {
+	// The page number. Valid values: 1 to 10,000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The ID of the user device. Call one of the following operations to obtain the device ID:
+	//
+	// - [GetUserDevice](~~GetUserDevice~~): Get the details of a user device.
+	//
+	// - [ListUserDevices](~~ListUserDevices~~): Get a list of user devices.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
 	DeviceTag *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
+	// The number of entries per page. Valid values: 1 to 500.
+	//
 	// This parameter is required.
 	//
 	// example:

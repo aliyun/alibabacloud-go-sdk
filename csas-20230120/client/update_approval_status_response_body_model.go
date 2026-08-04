@@ -16,7 +16,10 @@ type iUpdateApprovalStatusResponseBody interface {
 }
 
 type UpdateApprovalStatusResponseBody struct {
+	// The approval instance.
 	Approval []*UpdateApprovalStatusResponseBodyApproval `json:"Approval,omitempty" xml:"Approval,omitempty" type:"Repeated"`
+	// The ID of this request.
+	//
 	// example:
 	//
 	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
@@ -63,47 +66,110 @@ func (s *UpdateApprovalStatusResponseBody) Validate() error {
 }
 
 type UpdateApprovalStatusResponseBodyApproval struct {
+	// The details of the approval instance.
+	//
+	// example:
+	//
+	// {"initiatorName":"王先生","initiatorDept":"测试部","devType":"windows","deviceType":"usbStorage","deviceId":"FC216E9E3****","approvalEndTimestamp":1736524799,"approvalReason":"这是一个测试"}
 	ApprovalDetail *string `json:"ApprovalDetail,omitempty" xml:"ApprovalDetail,omitempty"`
+	// The ID of the approval instance.
+	//
 	// example:
 	//
 	// approval-165e6738ad9d****
-	ApprovalId         *string                                                       `json:"ApprovalId,omitempty" xml:"ApprovalId,omitempty"`
+	ApprovalId *string `json:"ApprovalId,omitempty" xml:"ApprovalId,omitempty"`
+	// The list of approval progress nodes for the approval instance.
 	ApprovalProgresses []*UpdateApprovalStatusResponseBodyApprovalApprovalProgresses `json:"ApprovalProgresses,omitempty" xml:"ApprovalProgresses,omitempty" type:"Repeated"`
+	// The creation time of the approval instance.
+	//
 	// example:
 	//
 	// 2022-11-15 22:11:55
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the terminal device that created the approval instance.
+	//
 	// example:
 	//
 	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
 	CreatorDevTag *string `json:"CreatorDevTag,omitempty" xml:"CreatorDevTag,omitempty"`
+	// The ID of the user who created the approval instance.
+	//
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	CreatorUserId *string `json:"CreatorUserId,omitempty" xml:"CreatorUserId,omitempty"`
+	// The expiration time of the approval instance, in seconds as a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1757952000
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// The policy type associated with the approval instance. Valid values:
+	//
+	// - **DomainBlacklist**: Domain blacklist.
+	//
+	// - **DomainWhitelist**: Domain whitelist.
+	//
+	// - **SoftwareBlock**: Software disablement.
+	//
+	// - **AppUninstall**: Terminal uninstall.
+	//
+	// - **DlpSend**: File outbound.
+	//
+	// - **PeripheralBlock**: Peripheral control.
+	//
 	// example:
 	//
 	// DlpSend
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The ID of the process associated with the approval instance.
+	//
 	// example:
 	//
 	// approval-process-fcc351b8a95b****
-	ProcessId   *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	// The name of the process associated with the approval instance.
+	//
+	// example:
+	//
+	// 测试
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
-	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The reason for creating the approval instance.
+	//
+	// example:
+	//
+	// 这是一个测试
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The content of the template associated with the approval instance.
+	//
 	// example:
 	//
 	// {"form": {"labelCol": 6,"wrapperCol": 12}}
 	SchemaContent *string `json:"SchemaContent,omitempty" xml:"SchemaContent,omitempty"`
+	// The ID of the template associated with the approval instance.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
-	SchemaId   *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The name of the template associated with the approval instance.
+	//
+	// example:
+	//
+	// 测试
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The status of the approval instance. Valid values:
+	//
+	// - **Pending**: Pending approval.
+	//
+	// - **Approved**: Approved.
+	//
+	// - **Rejected**: Rejected.
+	//
+	// - **Revoked**: Revoked.
+	//
+	// - **Expired**: Expired.
+	//
 	// example:
 	//
 	// Pending
@@ -267,20 +333,50 @@ func (s *UpdateApprovalStatusResponseBodyApproval) Validate() error {
 }
 
 type UpdateApprovalStatusResponseBodyApprovalApprovalProgresses struct {
+	// The operation performed on the approval progress node. Valid values:
+	//
+	// - **Approve**: Approve.
+	//
+	// - **Reject**: Reject.
+	//
+	// - **Revoke**: Revoke.
+	//
+	// - **Comment**: Comment.
+	//
 	// example:
 	//
 	// Approve
-	Action  *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The comment for the approval progress node operation.
+	//
+	// example:
+	//
+	// 审核通过
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The ID of the executor for the approval progress node.
+	//
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
-	Executor  *string                                                                `json:"Executor,omitempty" xml:"Executor,omitempty"`
+	Executor *string `json:"Executor,omitempty" xml:"Executor,omitempty"`
+	// The list of operators for the approval progress node.
 	Operators []*UpdateApprovalStatusResponseBodyApprovalApprovalProgressesOperators `json:"Operators,omitempty" xml:"Operators,omitempty" type:"Repeated"`
+	// The status of the approval progress node. Valid values:
+	//
+	// - **Pending**: Pending approval.
+	//
+	// - **Approved**: Approved.
+	//
+	// - **Rejected**: Rejected.
+	//
+	// - **Revoked**: Revoked.
+	//
 	// example:
 	//
 	// Approved
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The execution time of the approval progress node, in seconds as a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1736752000
@@ -363,11 +459,18 @@ func (s *UpdateApprovalStatusResponseBodyApprovalApprovalProgresses) Validate() 
 }
 
 type UpdateApprovalStatusResponseBodyApprovalApprovalProgressesOperators struct {
+	// The ID of the operator for the approval progress node.
+	//
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
-	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The username of the operator for the approval progress node.
+	//
+	// example:
+	//
+	// 王先生
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s UpdateApprovalStatusResponseBodyApprovalApprovalProgressesOperators) String() string {

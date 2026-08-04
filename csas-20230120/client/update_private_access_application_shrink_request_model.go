@@ -39,17 +39,19 @@ type iUpdatePrivateAccessApplicationShrinkRequest interface {
 	GetStatus() *string
 	SetTagIds(v []*string) *UpdatePrivateAccessApplicationShrinkRequest
 	GetTagIds() []*string
+	SetUnauthorizedAccessConfigShrink(v string) *UpdatePrivateAccessApplicationShrinkRequest
+	GetUnauthorizedAccessConfigShrink() *string
 }
 
 type UpdatePrivateAccessApplicationShrinkRequest struct {
 	AddressGroups []*AddressGroup `json:"AddressGroups,omitempty" xml:"AddressGroups,omitempty" type:"Repeated"`
-	// The addresses of the office applications. You can enter up to 1,000 addresses of office applications.
+	// The addresses of the internal-facing access application. You can specify up to 1000 addresses.
 	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	// The ID of the office application. You can obtain the value by calling the following operations:
+	// The ID of the internal-facing access application. You can obtain the value from the following operations:
 	//
-	// 	- [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): queries office applications.
+	// - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): lists internal-facing access applications.
 	//
-	// 	- [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): creates an office application.
+	// - [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): creates an internal-facing access application.
 	//
 	// This parameter is required.
 	//
@@ -58,20 +60,24 @@ type UpdatePrivateAccessApplicationShrinkRequest struct {
 	// pa-application-e12860ef6c48****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	ConfigMode    *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
-	// The description of the office application. The value must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
+	// The description of the internal-facing access application. The description must be 1 to 128 characters in length and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
 	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// 这是一条内网访问应用
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The browser access mode parameter. The parameter specifies the configurations of Layer 7 applications.
+	// The browser access mode parameter: the Layer 7 application configuration.
 	L7ConfigShrink *string `json:"L7Config,omitempty" xml:"L7Config,omitempty"`
-	// The browser access mode parameter. The parameter specifies the prefix of the domain name that the proxy gateway uses. The prefix must be 3 to 20 characters in length, and can contain lowercase letters, digits, and hyphens (-).
+	// The browser access mode parameter: the prefix of the mapped proxy domain name. The prefix must be 3 to 20 characters in length and can contain lowercase letters, digits, and hyphens (-).
 	//
 	// example:
 	//
 	// app1-xxx
 	L7ProxyDomainAutomaticPrefix *string `json:"L7ProxyDomainAutomaticPrefix,omitempty" xml:"L7ProxyDomainAutomaticPrefix,omitempty"`
-	// The browser access mode parameter. The parameter specifies the custom domain name of the proxy gateway.
+	// The browser access mode parameter: the custom proxy domain name.
 	//
 	// example:
 	//
@@ -79,52 +85,53 @@ type UpdatePrivateAccessApplicationShrinkRequest struct {
 	L7ProxyDomainCustom *string `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
 	// Deprecated
 	//
-	// 浏览器访问模式参数：私有代理域名。
+	// The browser access mode parameter: the private proxy domain name.
 	//
 	// example:
 	//
 	// app1.example.com
 	L7ProxyDomainPrivate *string `json:"L7ProxyDomainPrivate,omitempty" xml:"L7ProxyDomainPrivate,omitempty"`
-	// The modification type of the office application. Valid values:
+	// The modification type of the internal-facing access application. Valid values:
 	//
-	// 	- **Cover**: uses the values of the **Addresses**, **PortRanges**, and **TagIds*	- parameters to overwrite the original addresses, port ranges, and tag IDs. This is the default value.
+	// - **Cover*	- (default): overwrites the original addresses, port ranges, and tag IDs with the values of the **Addresses**, **PortRanges**, and **TagIds*	- parameters.
 	//
-	// 	- **Append**: adds the values of the **Addresses**, **PortRanges**, and **TagIds*	- parameters respectively to the original addresses, port ranges, and tag IDs.
+	// - **Append**: adds the values of the **Addresses**, **PortRanges**, and **TagIds*	- parameters to the original addresses, port ranges, and tag IDs.
 	//
 	// example:
 	//
 	// Cover
 	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
 	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The port ranges of the office applications. You can enter up to 65,535 port ranges. Multiple port ranges cannot be duplicated or overlapped.
+	// The port ranges of the internal-facing access application. You can specify up to 65535 port ranges. Multiple port ranges cannot be duplicate or overlap.
 	PortRanges []*UpdatePrivateAccessApplicationShrinkRequestPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
-	// The protocol that is used by the office application. Valid values:
+	// The protocol of the internal-facing access application. Valid values:
 	//
-	// 	- **All**
+	// - **All**: all protocols.
 	//
-	// 	- **TCP**
+	// - **TCP**
 	//
-	// 	- **UDP**
+	// - **UDP**
 	//
 	// example:
 	//
 	// All
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The status of the office application. Valid values:
+	// The status of the internal-facing access application. Valid values:
 	//
-	// 	- **Enabled**
+	// - **Enabled**: enabled.
 	//
-	// 	- **Disabled**
+	// - **Disabled**: disabled.
 	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The IDs of the tags for the office applications. You can add up to six custom tags to an office application.
+	// The IDs of internal-facing access tags. You can associate up to 6 custom internal-facing access tags with each internal-facing access application.
 	//
 	// if can be null:
 	// true
-	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	TagIds                         []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	UnauthorizedAccessConfigShrink *string   `json:"UnauthorizedAccessConfig,omitempty" xml:"UnauthorizedAccessConfig,omitempty"`
 }
 
 func (s UpdatePrivateAccessApplicationShrinkRequest) String() string {
@@ -193,6 +200,10 @@ func (s *UpdatePrivateAccessApplicationShrinkRequest) GetStatus() *string {
 
 func (s *UpdatePrivateAccessApplicationShrinkRequest) GetTagIds() []*string {
 	return s.TagIds
+}
+
+func (s *UpdatePrivateAccessApplicationShrinkRequest) GetUnauthorizedAccessConfigShrink() *string {
+	return s.UnauthorizedAccessConfigShrink
 }
 
 func (s *UpdatePrivateAccessApplicationShrinkRequest) SetAddressGroups(v []*AddressGroup) *UpdatePrivateAccessApplicationShrinkRequest {
@@ -270,6 +281,11 @@ func (s *UpdatePrivateAccessApplicationShrinkRequest) SetTagIds(v []*string) *Up
 	return s
 }
 
+func (s *UpdatePrivateAccessApplicationShrinkRequest) SetUnauthorizedAccessConfigShrink(v string) *UpdatePrivateAccessApplicationShrinkRequest {
+	s.UnauthorizedAccessConfigShrink = &v
+	return s
+}
+
 func (s *UpdatePrivateAccessApplicationShrinkRequest) Validate() error {
 	if s.AddressGroups != nil {
 		for _, item := range s.AddressGroups {
@@ -293,13 +309,13 @@ func (s *UpdatePrivateAccessApplicationShrinkRequest) Validate() error {
 }
 
 type UpdatePrivateAccessApplicationShrinkRequestPortRanges struct {
-	// The start port. The start port must be less than or equal to the end port.
+	// The start port. The value must be less than or equal to the end port.
 	//
 	// example:
 	//
 	// 80
 	Begin *int32 `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	// The end port. The end port must be greater than or equal to the start port.
+	// The end port. The value must be greater than or equal to the start port.
 	//
 	// example:
 	//

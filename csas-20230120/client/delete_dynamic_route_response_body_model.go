@@ -14,6 +14,8 @@ type iDeleteDynamicRouteResponseBody interface {
 }
 
 type DeleteDynamicRouteResponseBody struct {
+	// The ID of this request.
+	//
 	// example:
 	//
 	// 748CFDC7-1EB6-5B8B-9405-DA76ED5BB60D

@@ -14,6 +14,8 @@ type iUpdateClientUserResponseBody interface {
 }
 
 type UpdateClientUserResponseBody struct {
+	// ID of this request.
+	//
 	// example:
 	//
 	// BE4FB974-11BC-5453-9BE1-1606A73EACA6

@@ -16,10 +16,14 @@ type iPAL7ConfigReplaceRule interface {
 }
 
 type PAL7ConfigReplaceRule struct {
+	// The original content to be replaced.
+	//
 	// example:
 	//
 	// before
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// The target content for replacement.
+	//
 	// example:
 	//
 	// after

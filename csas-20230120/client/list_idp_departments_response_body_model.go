@@ -16,7 +16,10 @@ type iListIdpDepartmentsResponseBody interface {
 }
 
 type ListIdpDepartmentsResponseBody struct {
+	// The department information.
 	Data *ListIdpDepartmentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 102350E7-1A20-58F5-9D63-ABEA820AE6E1
@@ -59,7 +62,10 @@ func (s *ListIdpDepartmentsResponseBody) Validate() error {
 }
 
 type ListIdpDepartmentsResponseBodyData struct {
+	// A list of department information.
 	DataList []*ListIdpDepartmentsResponseBodyDataDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 2
@@ -106,15 +112,24 @@ func (s *ListIdpDepartmentsResponseBodyData) Validate() error {
 }
 
 type ListIdpDepartmentsResponseBodyDataDataList struct {
+	// The department ID.
+	//
 	// example:
 	//
 	// 30520
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the custom IdP configuration.
+	//
 	// example:
 	//
 	// 1440
 	IdpConfigId *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The department name.
+	//
+	// example:
+	//
+	// 示例部门
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ListIdpDepartmentsResponseBodyDataDataList) String() string {

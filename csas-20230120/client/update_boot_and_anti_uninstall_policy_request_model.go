@@ -24,20 +24,29 @@ type iUpdateBootAndAntiUninstallPolicyRequest interface {
 }
 
 type UpdateBootAndAntiUninstallPolicyRequest struct {
+	// Let end users submit approval requests.
+	//
 	// example:
 	//
 	// true
-	AllowReport  *bool                                                `json:"AllowReport,omitempty" xml:"AllowReport,omitempty"`
+	AllowReport *bool `json:"AllowReport,omitempty" xml:"AllowReport,omitempty"`
+	// Content shown in the client-side block dialog.
 	BlockContent *UpdateBootAndAntiUninstallPolicyRequestBlockContent `json:"BlockContent,omitempty" xml:"BlockContent,omitempty" type:"Struct"`
+	// Enable anti-uninstall.
+	//
 	// example:
 	//
 	// true
 	IsAntiUninstall *bool `json:"IsAntiUninstall,omitempty" xml:"IsAntiUninstall,omitempty"`
+	// Enable auto-start.
+	//
 	// example:
 	//
 	// true
-	IsBoot         *bool     `json:"IsBoot,omitempty" xml:"IsBoot,omitempty"`
-	UserGroupIds   []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	IsBoot *bool `json:"IsBoot,omitempty" xml:"IsBoot,omitempty"`
+	// List of user group IDs to which this policy applies.
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	// List of whitelisted users.
 	WhitelistUsers []*string `json:"WhitelistUsers,omitempty" xml:"WhitelistUsers,omitempty" type:"Repeated"`
 }
 
@@ -113,7 +122,9 @@ func (s *UpdateBootAndAntiUninstallPolicyRequest) Validate() error {
 }
 
 type UpdateBootAndAntiUninstallPolicyRequestBlockContent struct {
+	// English text.
 	BlockTextEn *UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextEn `json:"BlockTextEn,omitempty" xml:"BlockTextEn,omitempty" type:"Struct"`
+	// Chinese text.
 	BlockTextZh *UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextZh `json:"BlockTextZh,omitempty" xml:"BlockTextZh,omitempty" type:"Struct"`
 }
 
@@ -158,18 +169,26 @@ func (s *UpdateBootAndAntiUninstallPolicyRequestBlockContent) Validate() error {
 }
 
 type UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextEn struct {
+	// Dialog content.
+	//
 	// example:
 	//
 	// After uninstalling, the device can no longer be used for company work, and it will lose access to the company\\"s intranet!
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Main button text.
+	//
 	// example:
 	//
 	// Report
 	MainButtonText *string `json:"MainButtonText,omitempty" xml:"MainButtonText,omitempty"`
+	// Secondary button text.
+	//
 	// example:
 	//
 	// Ignore
 	MinorButtonText *string `json:"MinorButtonText,omitempty" xml:"MinorButtonText,omitempty"`
+	// Dialog title.
+	//
 	// example:
 	//
 	// Anti-Uninstall Warning
@@ -225,10 +244,30 @@ func (s *UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextEn) Validat
 }
 
 type UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextZh struct {
-	Content         *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	MainButtonText  *string `json:"MainButtonText,omitempty" xml:"MainButtonText,omitempty"`
+	// Dialog content.
+	//
+	// example:
+	//
+	// 卸载后该设备无法再用于公司办公，同时该设备将失去进入公司内网权限！
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Main button text.
+	//
+	// example:
+	//
+	// 去报备
+	MainButtonText *string `json:"MainButtonText,omitempty" xml:"MainButtonText,omitempty"`
+	// Secondary button text.
+	//
+	// example:
+	//
+	// 我知道了
 	MinorButtonText *string `json:"MinorButtonText,omitempty" xml:"MinorButtonText,omitempty"`
-	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Dialog title.
+	//
+	// example:
+	//
+	// 防卸载警告
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextZh) String() string {

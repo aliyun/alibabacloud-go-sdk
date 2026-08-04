@@ -36,41 +36,92 @@ type iUpdateRegistrationPolicyRequest interface {
 }
 
 type UpdateRegistrationPolicyRequest struct {
+	// The registration limit for corporate devices.
 	CompanyLimitCount *UpdateRegistrationPolicyRequestCompanyLimitCount `json:"CompanyLimitCount,omitempty" xml:"CompanyLimitCount,omitempty" type:"Struct"`
+	// The registration limit type for corporate devices. Valid values:
+	//
+	// - **Unlimited**: No limit.
+	//
+	// - **LimitAll**: Limits the total number of devices.
+	//
+	// - **LimitDiff**: Limits devices by terminal type.
+	//
 	// example:
 	//
 	// LimitAll
 	CompanyLimitType *string `json:"CompanyLimitType,omitempty" xml:"CompanyLimitType,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the device registration policy. The description can be 1 to 128 characters long and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
+	//
+	// example:
+	//
+	// 这是一条设备注册策略
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The matching target type of the policy. Valid values:
+	//
+	// - **UserGroupAll**: Associates with all users.
+	//
+	// - **UserGroupNormal**: Associates with specific user groups.
+	//
 	// example:
 	//
 	// UserGroupNormal
 	MatchMode *string `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
+	// The name of the device registration policy. The name must be 1 to 128 characters in length and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
+	//
 	// example:
 	//
 	// registration_policy_name
-	Name               *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The registration limit for personal devices.
 	PersonalLimitCount *UpdateRegistrationPolicyRequestPersonalLimitCount `json:"PersonalLimitCount,omitempty" xml:"PersonalLimitCount,omitempty" type:"Struct"`
+	// The registration limit type for personal devices. Valid values:
+	//
+	// - **Unlimited**: No limit.
+	//
+	// - **LimitAll**: Limits the total number of devices.
+	//
+	// - **LimitDiff**: Limits devices by terminal type.
+	//
 	// example:
 	//
 	// LimitDiff
 	PersonalLimitType *string `json:"PersonalLimitType,omitempty" xml:"PersonalLimitType,omitempty"`
+	// The ID of the device registration policy. You can obtain the ID by calling one of the following operations:
+	//
+	// - [ListRegistrationPolicies](~~ListRegistrationPolicies~~)
+	//
+	// - [GetRegistrationPolicy](~~GetRegistrationPolicy~~)
+	//
+	// - [CreateRegistrationPolicy](~~CreateRegistrationPolicy~~)
+	//
+	// - [UpdateRegistrationPolicy](~~UpdateRegistrationPolicy~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// reg-policy-63b2f1844b86****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The priority of the device registration policy. A smaller value indicates a higher priority. The value 0 indicates the highest priority, and 99 indicates the lowest priority.
+	//
 	// example:
 	//
 	// 0
 	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The status of the device registration policy. Valid values:
+	//
+	// - **Enabled**
+	//
+	// - **Disabled**
+	//
 	// example:
 	//
 	// Enabled
-	Status       *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The IDs of user groups. This parameter is required when MatchMode is set to **UserGroupNormal**. A policy can be associated with up to 100 user groups.
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	Whitelist    []*string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
+	// The list of whitelisted users for the device registration policy. You can add up to 1,000 usernames.
+	Whitelist []*string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
 }
 
 func (s UpdateRegistrationPolicyRequest) String() string {
@@ -204,14 +255,20 @@ func (s *UpdateRegistrationPolicyRequest) Validate() error {
 }
 
 type UpdateRegistrationPolicyRequestCompanyLimitCount struct {
+	// The total number of corporate devices that can be registered. The value can be from 0 to 100. The default value is 0. This parameter is valid only when CompanyLimitType is set to **LimitAll**.
+	//
 	// example:
 	//
 	// 1
 	All *int32 `json:"All,omitempty" xml:"All,omitempty"`
+	// The number of corporate mobile devices that can be registered. The value can be from 0 to 100. The default value is 0. This parameter is valid only when CompanyLimitType is set to **LimitDiff**.
+	//
 	// example:
 	//
 	// 0
 	Mobile *int32 `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// The number of corporate PCs that can be registered. The value can be from 0 to 100. The default value is 0. This parameter is valid only when CompanyLimitType is set to **LimitDiff**.
+	//
 	// example:
 	//
 	// 0
@@ -258,14 +315,20 @@ func (s *UpdateRegistrationPolicyRequestCompanyLimitCount) Validate() error {
 }
 
 type UpdateRegistrationPolicyRequestPersonalLimitCount struct {
+	// The total number of personal devices that can be registered. The value can be from 0 to 100. The default value is 0. This parameter is valid only when PersonalLimitType is set to **LimitAll**.
+	//
 	// example:
 	//
 	// 0
 	All *int32 `json:"All,omitempty" xml:"All,omitempty"`
+	// The number of personal mobile devices that can be registered. The value can be from 0 to 100. The default value is 0. This parameter is valid only when PersonalLimitType is set to **LimitDiff**.
+	//
 	// example:
 	//
 	// 1
 	Mobile *int32 `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// The number of personal PCs that can be registered. The value can be from 0 to 100. The default value is 0. This parameter is valid only when PersonalLimitType is set to **LimitDiff**.
+	//
 	// example:
 	//
 	// 2

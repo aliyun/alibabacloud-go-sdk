@@ -16,7 +16,10 @@ type iGetWmExtractTaskResponseBody interface {
 }
 
 type GetWmExtractTaskResponseBody struct {
+	// The task result.
 	Data *GetWmExtractTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 102350E7-1A20-58F5-9D63-ABEA820AE6E1
@@ -59,34 +62,56 @@ func (s *GetWmExtractTaskResponseBody) Validate() error {
 }
 
 type GetWmExtractTaskResponseBodyData struct {
+	// The time when the task was created.
+	//
 	// example:
 	//
 	// 2024-01-01 11:22:33
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The name of the file that was provided when the extraction task was created.
+	//
 	// example:
 	//
 	// test-****.pdf
 	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// - **Running**: The task is running.
+	//
+	// - **Success**: The task is successful.
+	//
+	// - **Failed**: The task failed.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// wmt-9648c22d2eb2cb57bb855dcae7898464********
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The extracted watermark information as a Base64-encoded string.
+	//
 	// example:
 	//
 	// aGVsbG8gc2Fz****
 	WmInfoBytesB64 *string `json:"WmInfoBytesB64,omitempty" xml:"WmInfoBytesB64,omitempty"`
+	// The size of the watermark information, which was provided when the extraction task was created.
+	//
 	// example:
 	//
 	// 32
 	WmInfoSize *int64 `json:"WmInfoSize,omitempty" xml:"WmInfoSize,omitempty"`
+	// The extracted watermark information in decimal format.
+	//
 	// example:
 	//
 	// 123**
 	WmInfoUint *int64 `json:"WmInfoUint,omitempty" xml:"WmInfoUint,omitempty"`
+	// The watermark type that was provided when the extraction task was created.
+	//
 	// example:
 	//
 	// PureDocument

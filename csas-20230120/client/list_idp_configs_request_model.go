@@ -18,14 +18,20 @@ type iListIdpConfigsRequest interface {
 }
 
 type ListIdpConfigsRequest struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Specified IdP configuration types. Separate multiple types with a comma (,).
+	//
 	// example:
 	//
 	// CSAS,DingTalk,LDAP
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10

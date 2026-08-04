@@ -14,6 +14,8 @@ type iListApprovalSchemasForApprovalProcessesRequest interface {
 }
 
 type ListApprovalSchemasForApprovalProcessesRequest struct {
+	// A collection of approval process IDs.
+	//
 	// This parameter is required.
 	ProcessIds []*string `json:"ProcessIds,omitempty" xml:"ProcessIds,omitempty" type:"Repeated"`
 }

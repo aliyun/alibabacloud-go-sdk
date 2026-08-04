@@ -1,3 +1,34 @@
+2026-08-04 Version: v1.16.1
+- Update API CreateApprovalProcess: add request parameters MatchSchemas.PrivateAccessBlockSchemaId.
+- Update API CreateApprovalProcess: add response parameters Body.Process.PrivateAccessBlockPolicies.
+- Update API CreatePrivateAccessApplication: add request parameters UnauthorizedAccessConfig.
+- Update API GetApprovalProcess: add response parameters Body.Process.PrivateAccessBlockPolicies.
+- Update API GetPrivateAccessApplication: add response parameters Body.Application.UnauthorizedAccessConfig.
+- Update API GetUserDevice: add response parameters Body.Device.CityEn.
+- Update API GetUserDevice: add response parameters Body.Device.CityZh.
+- Update API GetUserDevice: add response parameters Body.Device.ContinentEn.
+- Update API GetUserDevice: add response parameters Body.Device.ContinentZh.
+- Update API GetUserDevice: add response parameters Body.Device.CountryEn.
+- Update API GetUserDevice: add response parameters Body.Device.CountryZh.
+- Update API GetUserDevice: add response parameters Body.Device.ProvinceEn.
+- Update API GetUserDevice: add response parameters Body.Device.ProvinceZh.
+- Update API ListApprovalProcesses: add response parameters Body.Processes.$.PrivateAccessBlockPolicies.
+- Update API ListConnectors: add response parameters Body.Connectors.$.VipCidr.
+- Update API ListUserDevices: add request parameters SnBios.
+- Update API ListUserDevices: add response parameters Body.Devices.$.CityEn.
+- Update API ListUserDevices: add response parameters Body.Devices.$.CityZh.
+- Update API ListUserDevices: add response parameters Body.Devices.$.ContinentEn.
+- Update API ListUserDevices: add response parameters Body.Devices.$.ContinentZh.
+- Update API ListUserDevices: add response parameters Body.Devices.$.CountryEn.
+- Update API ListUserDevices: add response parameters Body.Devices.$.CountryZh.
+- Update API ListUserDevices: add response parameters Body.Devices.$.ProvinceEn.
+- Update API ListUserDevices: add response parameters Body.Devices.$.ProvinceZh.
+- Update API UpdateApprovalProcess: add request parameters MatchSchemaConfigs.PrivateAccessBlockSchemaConfig.
+- Update API UpdateApprovalProcess: add request parameters MatchSchemas.PrivateAccessBlockSchemaId.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.PrivateAccessBlockPolicies.
+- Update API UpdatePrivateAccessApplication: add request parameters UnauthorizedAccessConfig.
+
+
 2026-04-28 Version: v1.16.0
 - Support API ListForwardStrategies.
 - Support API ListForwardStrategyBindingItems.

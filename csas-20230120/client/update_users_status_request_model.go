@@ -16,8 +16,16 @@ type iUpdateUsersStatusRequest interface {
 }
 
 type UpdateUsersStatusRequest struct {
+	// Collection of user IDs.
+	//
 	// This parameter is required.
 	SaseUserIds []*string `json:"SaseUserIds,omitempty" xml:"SaseUserIds,omitempty" type:"Repeated"`
+	// User status. Valid values:
+	//
+	// - **Enabled**: Enable the user.
+	//
+	// - **Disabled**: Disable the user.
+	//
 	// This parameter is required.
 	//
 	// example:

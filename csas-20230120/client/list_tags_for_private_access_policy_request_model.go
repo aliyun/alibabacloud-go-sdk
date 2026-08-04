@@ -14,6 +14,8 @@ type iListTagsForPrivateAccessPolicyRequest interface {
 }
 
 type ListTagsForPrivateAccessPolicyRequest struct {
+	// IDs of internal network access policies. You can specify up to 100 policy IDs.
+	//
 	// This parameter is required.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 }

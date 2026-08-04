@@ -16,8 +16,16 @@ type iListForwardStrategyBindingItemsRequest interface {
 }
 
 type ListForwardStrategyBindingItemsRequest struct {
+	// The forwarding rule ID.
+	//
 	// This parameter is required.
 	ForwardIds []*string `json:"ForwardIds,omitempty" xml:"ForwardIds,omitempty" type:"Repeated"`
+	// The binding item type. Valid values:
+	//
+	// - **Application**: internal-facing application
+	//
+	// - **UserGroup**: user group.
+	//
 	// example:
 	//
 	// Application

@@ -30,39 +30,77 @@ type iCreateEnterpriseAcceleratePolicyRequest interface {
 }
 
 type CreateEnterpriseAcceleratePolicyRequest struct {
+	// Acceleration pattern:
+	//
+	// - **whitelist**: Whitelist acceleration
+	//
+	// - **global**: Global acceleration
+	//
+	// - **build-in-list**: Built-in application acceleration
+	//
 	// example:
 	//
 	// whitelist
 	AccelerationType *string `json:"AccelerationType,omitempty" xml:"AccelerationType,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Policy description. Length: 1 to 512 characters.
+	//
+	// example:
+	//
+	// 用于全局网络访问的加速策略
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Policy Name.
+	//
+	// example:
+	//
+	// 全局加速策略
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Priority.
+	//
 	// example:
 	//
 	// 99
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Whether to display this policy in the client:
+	//
+	// - **0**: Do not display
+	//
+	// - **1**: Display
+	//
 	// example:
 	//
 	// 1
 	ShowInClient *int32 `json:"ShowInClient,omitempty" xml:"ShowInClient,omitempty"`
+	// The IP address or domain name of the acceleration instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12.34.56.XX
 	UpstreamHost *string `json:"UpstreamHost,omitempty" xml:"UpstreamHost,omitempty"`
+	// Port for the accelerated instance. The port must be between 1000 and 60000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1000
 	UpstreamPort *int32 `json:"UpstreamPort,omitempty" xml:"UpstreamPort,omitempty"`
+	// Accelerated instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ga
 	UpstreamType *string `json:"UpstreamType,omitempty" xml:"UpstreamType,omitempty"`
+	// User group for acceleration.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 测试用户组
 	UserAttributeGroup *string `json:"UserAttributeGroup,omitempty" xml:"UserAttributeGroup,omitempty"`
 }
 

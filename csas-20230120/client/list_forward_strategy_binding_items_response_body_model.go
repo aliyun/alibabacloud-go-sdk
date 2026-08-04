@@ -18,7 +18,14 @@ type iListForwardStrategyBindingItemsResponseBody interface {
 }
 
 type ListForwardStrategyBindingItemsResponseBody struct {
+	// The list of forwarding rule bindings.
 	ForwardStrategyBindingItemsList []*ListForwardStrategyBindingItemsResponseBodyForwardStrategyBindingItemsList `json:"ForwardStrategyBindingItemsList,omitempty" xml:"ForwardStrategyBindingItemsList,omitempty" type:"Repeated"`
+	// The binding item type. Valid values:
+	//
+	// - **Application**: internal-facing application
+	//
+	// - **UserGroup**: user group.
+	//
 	// example:
 	//
 	// Application
@@ -80,11 +87,26 @@ func (s *ListForwardStrategyBindingItemsResponseBody) Validate() error {
 }
 
 type ListForwardStrategyBindingItemsResponseBodyForwardStrategyBindingItemsList struct {
+	// The forwarding rule ID.
+	//
 	// example:
 	//
 	// fs-41a7891ff6568421
-	ForwardId *string                                                                            `json:"ForwardId,omitempty" xml:"ForwardId,omitempty"`
-	Items     []*ListForwardStrategyBindingItemsResponseBodyForwardStrategyBindingItemsListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	ForwardId *string `json:"ForwardId,omitempty" xml:"ForwardId,omitempty"`
+	// The binding items.
+	Items []*ListForwardStrategyBindingItemsResponseBodyForwardStrategyBindingItemsListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The policy matching target type. Valid values:
+	//
+	// - **UserGroupAll**: all users.
+	//
+	// - **UserGroupNormal**: specific user groups.
+	//
+	// - **ApplicationAll**: all internal-facing applications.
+	//
+	// - **Application**: specific internal-facing applications.
+	//
+	// - **Tag**: internal-facing application tags.
+	//
 	// example:
 	//
 	// UserGroupAll
@@ -140,26 +162,38 @@ func (s *ListForwardStrategyBindingItemsResponseBodyForwardStrategyBindingItemsL
 }
 
 type ListForwardStrategyBindingItemsResponseBodyForwardStrategyBindingItemsListItems struct {
+	// The ID of the internal-facing application.
+	//
 	// example:
 	//
 	// pa-application-104b6b97b7f0c5d9
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The name of the internal-facing application.
+	//
 	// example:
 	//
 	// 437008
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// The internal-facing tag ID.
+	//
 	// example:
 	//
 	// tag-4c8b988bb0ffdfb3
 	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// The tag name.
+	//
 	// example:
 	//
 	// nieshirui.nsr
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// The user group ID.
+	//
 	// example:
 	//
 	// ug-xxxxxx
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	// The user group name.
+	//
 	// example:
 	//
 	// aaaaa

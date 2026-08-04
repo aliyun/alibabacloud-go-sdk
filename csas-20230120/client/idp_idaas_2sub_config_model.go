@@ -30,15 +30,24 @@ type iIdpIdaas2SubConfig interface {
 }
 
 type IdpIdaas2SubConfig struct {
-	ApplicationId     *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	ClientId          *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClientSecret      *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
-	EventAesKey       *string `json:"EventAesKey,omitempty" xml:"EventAesKey,omitempty"`
-	EventLabel        *string `json:"EventLabel,omitempty" xml:"EventLabel,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The unique identifier of the application within the IDaaS instance.
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The client ID of the application registered with the identity provider.
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The client secret used to authenticate the application with the identity provider.
+	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
+	// The AES encryption key for securing event data.
+	EventAesKey *string `json:"EventAesKey,omitempty" xml:"EventAesKey,omitempty"`
+	// A label that identifies the event subscription.
+	EventLabel *string `json:"EventLabel,omitempty" xml:"EventLabel,omitempty"`
+	// The unique identifier of the IDaaS instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The URL of the endpoint providing the public key for token signature verification.
 	PublicKeyEndpoint *string `json:"PublicKeyEndpoint,omitempty" xml:"PublicKeyEndpoint,omitempty"`
-	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	SamlMetadata      *string `json:"SamlMetadata,omitempty" xml:"SamlMetadata,omitempty"`
+	// The deployment region of the IDaaS instance.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The SAML metadata in XML format. It specifies the identity provider\\"s configuration, including endpoints and certificates.
+	SamlMetadata *string `json:"SamlMetadata,omitempty" xml:"SamlMetadata,omitempty"`
 }
 
 func (s IdpIdaas2SubConfig) String() string {

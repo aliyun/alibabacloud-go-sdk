@@ -21,7 +21,8 @@ type ListPopTrafficStatisticsResponseBody struct {
 	// example:
 	//
 	// EFE7EBB2-449D-5BBB-B381-CA7839BC1649
-	RequestId   *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of bandwidth data for the POPs.
 	TrafficData []*ListPopTrafficStatisticsResponseBodyTrafficData `json:"TrafficData,omitempty" xml:"TrafficData,omitempty" type:"Repeated"`
 }
 
@@ -65,7 +66,10 @@ func (s *ListPopTrafficStatisticsResponseBody) Validate() error {
 }
 
 type ListPopTrafficStatisticsResponseBodyTrafficData struct {
+	// A list of bandwidth data points for the POPs.
 	Datapoints []*ListPopTrafficStatisticsResponseBodyTrafficDataDatapoints `json:"Datapoints,omitempty" xml:"Datapoints,omitempty" type:"Repeated"`
+	// The name of the metric. Metrics are categorized as inbound or outbound.
+	//
 	// example:
 	//
 	// InternetTx
@@ -112,10 +116,14 @@ func (s *ListPopTrafficStatisticsResponseBodyTrafficData) Validate() error {
 }
 
 type ListPopTrafficStatisticsResponseBodyTrafficDataDatapoints struct {
+	// The average bandwidth value per minute. The unit is Byte/s.
+	//
 	// example:
 	//
 	// 15325
 	Average *float64 `json:"Average,omitempty" xml:"Average,omitempty"`
+	// The time that corresponds to the data point.
+	//
 	// example:
 	//
 	// 2023-12-06 15:29:00

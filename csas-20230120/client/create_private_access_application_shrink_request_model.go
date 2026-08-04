@@ -35,40 +35,46 @@ type iCreatePrivateAccessApplicationShrinkRequest interface {
 	GetStatus() *string
 	SetTagIds(v []*string) *CreatePrivateAccessApplicationShrinkRequest
 	GetTagIds() []*string
+	SetUnauthorizedAccessConfigShrink(v string) *CreatePrivateAccessApplicationShrinkRequest
+	GetUnauthorizedAccessConfigShrink() *string
 }
 
 type CreatePrivateAccessApplicationShrinkRequest struct {
 	AddressGroups []*AddressGroup `json:"AddressGroups,omitempty" xml:"AddressGroups,omitempty" type:"Repeated"`
-	// The addresses of the office applications. You can enter up to 1,000 addresses of office applications.
+	// The addresses of the internal-facing access application. You can specify up to 1,000 addresses.
 	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	// Specifies whether to allow access from a browser. Default value: **Disabled**. Valid values:
+	// The browser access status of the internal-facing access application. After this feature is enabled, you can access internal applications without a client. Default value: **Disabled**. Valid values:
 	//
-	// 	- **Enabled**
+	// - **Enabled**: enabled.
 	//
-	// 	- **Disabled**
+	// - **Disabled**: disabled.
 	//
 	// example:
 	//
 	// Disabled
 	BrowserAccessStatus *string `json:"BrowserAccessStatus,omitempty" xml:"BrowserAccessStatus,omitempty"`
 	ConfigMode          *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
-	// The description of the office application. The value must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
+	// The description of the internal-facing access application. The description must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces. Chinese characters are supported.
+	//
+	// example:
+	//
+	// 这是一条内网访问应用
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The browser access mode parameter. The parameter specifies the configurations of Layer 7 applications.
+	// The browser access mode parameter: the application configuration.
 	L7ConfigShrink *string `json:"L7Config,omitempty" xml:"L7Config,omitempty"`
-	// The browser access mode parameter. The parameter specifies the prefix of the domain name that the proxy gateway uses. The prefix must be 3 to 20 characters in length, and can contain lowercase letters, digits, and hyphens (-).
+	// The browser access mode parameter: the prefix of the mapped proxy domain name. The prefix must be 3 to 20 characters in length and can contain lowercase letters, digits, and hyphens (-).
 	//
 	// example:
 	//
 	// app-sample
 	L7ProxyDomainAutomaticPrefix *string `json:"L7ProxyDomainAutomaticPrefix,omitempty" xml:"L7ProxyDomainAutomaticPrefix,omitempty"`
-	// The browser access mode parameter. The parameter specifies the custom domain name of the proxy gateway. Enter a valid domain name.
+	// The browser access mode parameter: the custom proxy domain name. The value must be a valid domain name.
 	//
 	// example:
 	//
 	// app1.example.com
 	L7ProxyDomainCustom *string `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
-	// The name of the office application. The value must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+	// The name of the internal-facing access application. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). Chinese characters are supported.
 	//
 	// This parameter is required.
 	//
@@ -76,15 +82,15 @@ type CreatePrivateAccessApplicationShrinkRequest struct {
 	//
 	// private_access_application_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The port ranges of the office applications. You can enter up to 65,535 port ranges. Multiple port ranges cannot be duplicated or overlapped.
+	// The port ranges of the internal-facing access application. You can specify up to 65,535 port ranges. Port ranges cannot be duplicate or overlapping.
 	PortRanges []*CreatePrivateAccessApplicationShrinkRequestPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
-	// The protocol that is used by the office application. Valid values:
+	// The protocol of the internal-facing access application. Valid values:
 	//
-	// 	- **All**
+	// - **All**: all protocols.
 	//
-	// 	- **TCP**
+	// - **TCP**
 	//
-	// 	- **UDP**
+	// - **UDP**.
 	//
 	// This parameter is required.
 	//
@@ -92,11 +98,11 @@ type CreatePrivateAccessApplicationShrinkRequest struct {
 	//
 	// All
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The status of the office application. Valid values:
+	// The status of the internal-facing access application. Valid values:
 	//
-	// 	- **Enabled**
+	// - **Enabled**: enabled.
 	//
-	// 	- **Disabled**
+	// - **Disabled**: disabled.
 	//
 	// This parameter is required.
 	//
@@ -104,8 +110,9 @@ type CreatePrivateAccessApplicationShrinkRequest struct {
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The IDs of the tags for the office applications. You can add up to six custom tags to an office application.
-	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	// The IDs of internal-facing access tags. You can associate up to 6 custom internal-facing access tags with each internal-facing access application.
+	TagIds                         []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	UnauthorizedAccessConfigShrink *string   `json:"UnauthorizedAccessConfig,omitempty" xml:"UnauthorizedAccessConfig,omitempty"`
 }
 
 func (s CreatePrivateAccessApplicationShrinkRequest) String() string {
@@ -166,6 +173,10 @@ func (s *CreatePrivateAccessApplicationShrinkRequest) GetStatus() *string {
 
 func (s *CreatePrivateAccessApplicationShrinkRequest) GetTagIds() []*string {
 	return s.TagIds
+}
+
+func (s *CreatePrivateAccessApplicationShrinkRequest) GetUnauthorizedAccessConfigShrink() *string {
+	return s.UnauthorizedAccessConfigShrink
 }
 
 func (s *CreatePrivateAccessApplicationShrinkRequest) SetAddressGroups(v []*AddressGroup) *CreatePrivateAccessApplicationShrinkRequest {
@@ -233,6 +244,11 @@ func (s *CreatePrivateAccessApplicationShrinkRequest) SetTagIds(v []*string) *Cr
 	return s
 }
 
+func (s *CreatePrivateAccessApplicationShrinkRequest) SetUnauthorizedAccessConfigShrink(v string) *CreatePrivateAccessApplicationShrinkRequest {
+	s.UnauthorizedAccessConfigShrink = &v
+	return s
+}
+
 func (s *CreatePrivateAccessApplicationShrinkRequest) Validate() error {
 	if s.AddressGroups != nil {
 		for _, item := range s.AddressGroups {
@@ -256,7 +272,7 @@ func (s *CreatePrivateAccessApplicationShrinkRequest) Validate() error {
 }
 
 type CreatePrivateAccessApplicationShrinkRequestPortRanges struct {
-	// The start port. The start port must be less than or equal to the end port.
+	// The start port. The value must be less than or equal to the end port.
 	//
 	// This parameter is required.
 	//
@@ -264,7 +280,7 @@ type CreatePrivateAccessApplicationShrinkRequestPortRanges struct {
 	//
 	// 80
 	Begin *int32 `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	// The end port. The end port must be greater than or equal to the start port.
+	// The end port. The value must be greater than or equal to the start port.
 	//
 	// This parameter is required.
 	//

@@ -24,32 +24,45 @@ type iListUserGroupsRequest interface {
 }
 
 type ListUserGroupsRequest struct {
+	// The value of a user group property. The value must be 1 to 128 characters in length.
+	//
 	// example:
 	//
 	// username
 	AttributeValue *string `json:"AttributeValue,omitempty" xml:"AttributeValue,omitempty"`
+	// The page number of the current page in a paged query. Valid values: 1 to 10000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// 用户组名称。长度为1~128个字符，支持中文和大小写英文字母，可包含数字、半角句号（.）、下划线（_）和短划线（-）。
+	// The name of the user group. The name must be 1 to 128 characters in length. It can contain letters, digits, periods (.), underscores (_), and hyphens (-). It supports both uppercase and lowercase letters and Chinese characters.
 	//
 	// example:
 	//
 	// user_group_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of an internal network access policy. You can get this value from:
+	//
+	// - [ListPrivateAccessPolices](~~ListPrivateAccessPolices~~): List internal network access policies.
+	//
+	// - [CreatePrivateAccessPolicy](~~CreatePrivateAccessPolicy~~): Create an internal network access policy.
+	//
 	// example:
 	//
 	// pa-policy-54a7838a48bf****
 	PAPolicyId *string `json:"PAPolicyId,omitempty" xml:"PAPolicyId,omitempty"`
+	// The number of entries per page in a paged query. Valid values: 1 to 1000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
-	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// A collection of user group IDs. You can specify up to 100 IDs.
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
 }
 

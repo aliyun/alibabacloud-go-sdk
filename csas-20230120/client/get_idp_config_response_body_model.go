@@ -16,10 +16,13 @@ type iGetIdpConfigResponseBody interface {
 }
 
 type GetIdpConfigResponseBody struct {
+	// Identity provider configuration.
 	Data *GetIdpConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// ID of this request.
+	//
 	// example:
 	//
-	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
+	// 58D6B23E-E5DA-5418-8F61-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -59,75 +62,117 @@ func (s *GetIdpConfigResponseBody) Validate() error {
 }
 
 type GetIdpConfigResponseBodyData struct {
-	// AccessKey ID
+	// AccessKey ID for the IDaaS identity provider.
 	//
 	// example:
 	//
-	// LTAI5tJVztnh6Nn***
+	// *******
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	// AccessKey Secret
+	// AccessKey for the IDaaS identity provider.
 	//
 	// example:
 	//
-	// E75ktr5jENiR3ssjC***
+	// *******
 	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Description of the identity provider configuration.
+	//
 	// example:
 	//
-	// https://172.10.10.2:4321/getGroup?name=%s&pass=%s
+	// 示例身份源
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// URL to query the organizational structure from a custom identity provider.
+	//
+	// example:
+	//
+	// https://172.10.XX.XX:4321/getGroup?name=%s&pass=%s
 	GetGroupUrl *string `json:"GetGroupUrl,omitempty" xml:"GetGroupUrl,omitempty"`
+	// ID of the identity provider configuration.
+	//
 	// example:
 	//
-	// 1465
+	// idp-cfg68956d86e********
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Metadata of the identity provider (IdP).
+	//
 	// example:
 	//
 	// <?xml version="1.0" encoding="utf-8"?>***
 	IdpMetadata *string `json:"IdpMetadata,omitempty" xml:"IdpMetadata,omitempty"`
+	// Type of multi-factor authentication (MFA) configuration.
+	//
 	// example:
 	//
 	// totp
 	MfaConfigType *string `json:"MfaConfigType,omitempty" xml:"MfaConfigType,omitempty"`
+	// Login type for mobile clients.
+	//
 	// example:
 	//
 	// password
 	MobileLoginType *string `json:"MobileLoginType,omitempty" xml:"MobileLoginType,omitempty"`
+	// Type of MFA configuration for mobile clients.
+	//
 	// example:
 	//
 	// totp
 	MobileMfaConfigType *string `json:"MobileMfaConfigType,omitempty" xml:"MobileMfaConfigType,omitempty"`
+	// List of IDs for multiple identity providers.
+	//
 	// example:
 	//
 	// 1482,1355
 	MultiIdpInfo *string `json:"MultiIdpInfo,omitempty" xml:"MultiIdpInfo,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Name of the identity provider configuration.
+	//
+	// example:
+	//
+	// 示例身份源
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Login type for PC clients.
+	//
 	// example:
 	//
 	// password
 	PcLoginType *string `json:"PcLoginType,omitempty" xml:"PcLoginType,omitempty"`
+	// Status of the identity provider configuration. Valid values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Type of the identity provider configuration.
+	//
 	// example:
 	//
 	// CSAS
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Time when the configuration was last updated.
+	//
 	// example:
 	//
 	// 2024-02-26T02:02:42Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// AES key used to encrypt requests to a custom MFA service.
+	//
 	// example:
 	//
-	// QVhaU0RDR0JIWVV***
+	// QVhaU0RDR0JIWV****
 	VerifyAesKey *string `json:"VerifyAesKey,omitempty" xml:"VerifyAesKey,omitempty"`
+	// Token used to verify signatures in requests to a custom MFA service.
+	//
 	// example:
 	//
-	// 7JAr3fYtnl***
+	// 7JAr3fYtn****
 	VerifyToken *string `json:"VerifyToken,omitempty" xml:"VerifyToken,omitempty"`
+	// URL used to verify one-time passwords with a custom MFA service.
+	//
 	// example:
 	//
-	// http://172.10.10.1:1234/otp_verify
+	// http://172.10.XX.XX:1234/otp_verify
 	VerifyUrl *string `json:"VerifyUrl,omitempty" xml:"VerifyUrl,omitempty"`
 }
 

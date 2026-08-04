@@ -17,6 +17,8 @@ type iCreateEnterpriseAcceleratePolicyResponseBody interface {
 
 type CreateEnterpriseAcceleratePolicyResponseBody struct {
 	EapId *string `json:"EapId,omitempty" xml:"EapId,omitempty"`
+	// ID of the request.
+	//
 	// example:
 	//
 	// 2CABFEBB-0CE7-575E-833A-266F75D46713

@@ -28,30 +28,50 @@ type iListUninstallApplicationsRequest interface {
 }
 
 type ListUninstallApplicationsRequest struct {
+	// An array of uninstall application IDs.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	// The number of the page to return. Valid values: 1 to 10000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Department  *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The department. The value must be 1 to 128 characters long and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces.
+	//
+	// example:
+	//
+	// 测试部
+	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// The hostname of the endpoint. The value must be 1 to 128 characters long and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces. If you enter only an underscore (`_`), the query also returns endpoints with names that contain 4-byte UTF-8 characters.
+	//
 	// example:
 	//
 	// win10-64bit
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// The MAC address of the endpoint.
+	//
 	// example:
 	//
 	// 00:16:XX:XX:7c:46
 	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// The number of entries per page. Valid values: 1 to 500.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
-	PageSize *int64    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// An array of uninstall application statuses.
 	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
-	Username *string   `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The username. The value must be 1 to 128 characters long and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), asterisks (\\*), at signs (@), and spaces.
+	//
+	// example:
+	//
+	// 王先生
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s ListUninstallApplicationsRequest) String() string {

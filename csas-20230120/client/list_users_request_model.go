@@ -26,22 +26,48 @@ type iListUsersRequest interface {
 }
 
 type ListUsersRequest struct {
+	// The page number. Valid values: 1 to 10,000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	CurrentPage   *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Department    *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The user\\"s department. The value must be 1 to 128 characters long and can contain Chinese characters, letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), slashes (/), at signs (@), and spaces.
+	//
+	// example:
+	//
+	// 测试部
+	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// The username for a fuzzy match. The value must be 1 to 128 characters long and can contain Chinese characters, letters, digits, periods (.), underscores (_), hyphens (-), asterisks (\\*), at signs (@), and spaces.
+	//
+	// example:
+	//
+	// 王先生
 	FuzzyUsername *string `json:"FuzzyUsername,omitempty" xml:"FuzzyUsername,omitempty"`
+	// The number of entries per page. Valid values: 1 to 500.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
-	PageSize        *int64    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PreciseUsername *string   `json:"PreciseUsername,omitempty" xml:"PreciseUsername,omitempty"`
-	SaseUserIds     []*string `json:"SaseUserIds,omitempty" xml:"SaseUserIds,omitempty" type:"Repeated"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The username for an exact match. The value must be 1 to 128 characters long and can contain Chinese characters, letters, digits, periods (.), underscores (_), hyphens (-), asterisks (\\*), at signs (@), and spaces.
+	//
+	// example:
+	//
+	// 王先生@alibaba.com
+	PreciseUsername *string `json:"PreciseUsername,omitempty" xml:"PreciseUsername,omitempty"`
+	// An array of user IDs.
+	SaseUserIds []*string `json:"SaseUserIds,omitempty" xml:"SaseUserIds,omitempty" type:"Repeated"`
+	// The status of the user. Valid values:
+	//
+	// - **Enabled**: The user is enabled.
+	//
+	// - **Disabled**: The user is disabled.
+	//
 	// example:
 	//
 	// Enabled

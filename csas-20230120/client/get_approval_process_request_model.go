@@ -14,6 +14,10 @@ type iGetApprovalProcessRequest interface {
 }
 
 type GetApprovalProcessRequest struct {
+	// The approval flow ID. Value source:
+	//
+	// - [ListApprovalProcesses](~~ListApprovalProcesses~~): queries the list of approval flows.
+	//
 	// This parameter is required.
 	//
 	// example:

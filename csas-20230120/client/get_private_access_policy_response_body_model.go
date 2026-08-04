@@ -86,7 +86,7 @@ type GetPrivateAccessPolicyResponseBodyPolicy struct {
 	//
 	// example:
 	//
-	// test
+	// 这是一条内网访问策略
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The action to take if the security baseline is not met. Possible values:
 	//

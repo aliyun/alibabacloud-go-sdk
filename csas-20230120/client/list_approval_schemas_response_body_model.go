@@ -18,11 +18,16 @@ type iListApprovalSchemasResponseBody interface {
 }
 
 type ListApprovalSchemasResponseBody struct {
+	// The ID of this request.
+	//
 	// example:
 	//
 	// 102350E7-1A20-58F5-9D63-ABEA820AE6E1
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Schemas   []*ListApprovalSchemasResponseBodySchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of approval templates.
+	Schemas []*ListApprovalSchemasResponseBodySchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Repeated"`
+	// The total number of approval templates.
+	//
 	// example:
 	//
 	// 1
@@ -78,28 +83,62 @@ func (s *ListApprovalSchemasResponseBody) Validate() error {
 }
 
 type ListApprovalSchemasResponseBodySchemas struct {
+	// The creation time of the approval template.
+	//
 	// example:
 	//
 	// 2024-03-15 14:44:07
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the approval template.
+	//
+	// example:
+	//
+	// 这是一个模板
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates if it is an officially maintained template.
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The policy type. Valid values:
+	//
+	// - **DomainBlacklist**: Domain blacklist.
+	//
+	// - **DomainWhitelist**: Domain whitelist.
+	//
+	// - **SoftwareBlock**: Software disable.
+	//
+	// - **AppUninstall**: Terminal uninstall.
+	//
+	// - **DlpSend**: File outbound.
+	//
+	// - **PeripheralBlock**: Peripheral control.
+	//
 	// example:
 	//
 	// DlpSend
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The content of the approval template.
+	//
 	// example:
 	//
 	// {"form": {"labelCol": 6,"wrapperCol": 12}}
 	SchemaContent *string `json:"SchemaContent,omitempty" xml:"SchemaContent,omitempty"`
+	// The approval template ID.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
-	SchemaId   *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The approval template name.
+	//
+	// example:
+	//
+	// 测试
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The approval template version.
+	//
 	// example:
 	//
 	// 1715680940

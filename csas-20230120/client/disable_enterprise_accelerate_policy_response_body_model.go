@@ -14,6 +14,8 @@ type iDisableEnterpriseAcceleratePolicyResponseBody interface {
 }
 
 type DisableEnterpriseAcceleratePolicyResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// E4C3E4CA-87CC-5EF6-91DD-D400A812EB43

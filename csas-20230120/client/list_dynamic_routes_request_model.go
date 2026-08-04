@@ -30,36 +30,66 @@ type iListDynamicRoutesRequest interface {
 }
 
 type ListDynamicRoutesRequest struct {
+	// The ID of the private access application for the dynamic route. You cannot filter by both the private access application ID and the private access tag ID. You can obtain the ID from the following sources:
+	//
+	// - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): Queries multiple private access applications.
+	//
+	// - [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): Creates a private access application.
+	//
 	// example:
 	//
 	// pa-application-e12860ef6c48****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The number of the page to return for a paged query. Valid values: 1 to 10000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	CurrentPage     *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The IDs of the dynamic routes. You can specify up to 100 dynamic route IDs.
 	DynamicRouteIds []*string `json:"DynamicRouteIds,omitempty" xml:"DynamicRouteIds,omitempty" type:"Repeated"`
+	// The name of the dynamic route. The name must be 1 to 128 characters in length and can contain Chinese characters, letters, digits, periods (.), underscores (_), and hyphens (-).
+	//
 	// example:
 	//
 	// dynamic_route_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the next hop instance for the dynamic route. You can obtain the ID from the following source:
+	//
+	// - [ListConnectors](~~ListConnectors~~): Queries multiple connectors.
+	//
 	// example:
 	//
 	// connector-8ccb13b6f52c****
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	// The number of entries to return on each page for a paged query. Valid values: 1 to 1000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
-	PageSize  *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of regions where the SASE POP cluster endpoint is supported.
 	RegionIds []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	// The status of the dynamic route. Valid values:
+	//
+	// - **Enabled**: The dynamic route is enabled.
+	//
+	// - **Disabled**: The dynamic route is disabled.
+	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the private access tag for the dynamic route. You cannot filter by both the private access tag ID and the private access application ID. You can obtain the ID from the following sources:
+	//
+	// - [ListPrivateAccessTags](~~ListPrivateAccessTags~~): Queries multiple private access tags.
+	//
+	// - [CreatePrivateAccessTag](~~CreatePrivateAccessTag~~): Creates a private access tag.
+	//
 	// example:
 	//
 	// tag-d3f64e8bdd4a****

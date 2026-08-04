@@ -32,38 +32,70 @@ type iListExcessiveDeviceRegistrationApplicationsRequest interface {
 }
 
 type ListExcessiveDeviceRegistrationApplicationsRequest struct {
+	// The IDs of the excessive device registration applications.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	// The page number. Valid values: 1 to 10,000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Department  *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The user\\"s department. The value must be 1 to 128 characters long and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces.
+	//
+	// example:
+	//
+	// 测试部
+	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// The device ID. You can get the device ID from the `DeviceTag` parameter returned by the following operations:
+	//
+	// - [GetUserDevice](~~GetUserDevice~~): Queries the details of a user\\"s device.
+	//
+	// - [ListUserDevices](~~ListUserDevices~~): Queries a list of devices for a user.
+	//
 	// example:
 	//
 	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
 	DeviceTag *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
+	// The hostname of the device. The value must be 1 to 128 characters long and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces. If you specify only an underscore (_), the query is extended to include devices whose hostnames contain 4-byte UTF-8 characters.
+	//
 	// example:
 	//
 	// win10-64bit
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// The MAC address of the device.
+	//
 	// example:
 	//
 	// 00:16:XX:XX:7c:46
 	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// The number of entries on each page. Valid values: 1 to 500.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The user ID. You can get the user ID from the `SaseUserId` parameter returned by the following operations:
+	//
+	// - [GetUserDevice](~~GetUserDevice~~): Queries the details of a user\\"s device.
+	//
+	// - [ListUserDevices](~~ListUserDevices~~): Queries a list of devices for a user.
+	//
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
-	SaseUserId *string   `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
-	Statuses   []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
-	Username   *string   `json:"Username,omitempty" xml:"Username,omitempty"`
+	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	// The statuses of excessive device registration applications.
+	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
+	// The username. The value must be 1 to 128 characters long and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), asterisks (\\*), at signs (@), and spaces.
+	//
+	// example:
+	//
+	// 王先生
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s ListExcessiveDeviceRegistrationApplicationsRequest) String() string {

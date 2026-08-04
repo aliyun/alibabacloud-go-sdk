@@ -16,7 +16,10 @@ type iListClientUsersResponseBody interface {
 }
 
 type ListClientUsersResponseBody struct {
+	// User information.
 	Data *ListClientUsersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// FEF1144C-95D1-5F7C-81EF-9DB70EA49FCE
@@ -59,7 +62,10 @@ func (s *ListClientUsersResponseBody) Validate() error {
 }
 
 type ListClientUsersResponseBodyData struct {
+	// List of user information.
 	DataList []*ListClientUsersResponseBodyDataDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 2
@@ -106,36 +112,65 @@ func (s *ListClientUsersResponseBodyData) Validate() error {
 }
 
 type ListClientUsersResponseBodyDataDataList struct {
+	// Department to which the user belongs.
 	Department *ListClientUsersResponseBodyDataDataListDepartment `json:"Department,omitempty" xml:"Department,omitempty" type:"Struct"`
+	// Department ID.
+	//
 	// example:
 	//
 	// 10800
 	DepartmentId *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// User description.
+	//
+	// example:
+	//
+	// 示例用户
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Email address.
+	//
 	// example:
 	//
 	// johndoe@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// User ID.
+	//
 	// example:
 	//
 	// 1970
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Custom identity source configuration ID.
+	//
 	// example:
 	//
 	// 1026
 	IdpConfigId *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	// Mobile phone number without country code.
+	//
 	// example:
 	//
 	// 15800820468
 	MobileNumber *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
+	// User enable status. Valid values:
+	//
+	// - **Enabled**: enabled.
+	//
+	// - **Disabled**: disabled.
+	//
 	// example:
 	//
 	// Disabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Unique user identifier.
+	//
 	// example:
 	//
 	// su_dead7216****
-	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Username.
+	//
+	// example:
+	//
+	// 张三
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
@@ -247,10 +282,17 @@ func (s *ListClientUsersResponseBodyDataDataList) Validate() error {
 }
 
 type ListClientUsersResponseBodyDataDataListDepartment struct {
+	// Department ID.
+	//
 	// example:
 	//
 	// 105
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Department name.
+	//
+	// example:
+	//
+	// 示例部门
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

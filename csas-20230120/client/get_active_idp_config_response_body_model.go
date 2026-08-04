@@ -16,7 +16,10 @@ type iGetActiveIdpConfigResponseBody interface {
 }
 
 type GetActiveIdpConfigResponseBody struct {
+	// The identity provider configuration.
 	Data *GetActiveIdpConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of this request.
+	//
 	// example:
 	//
 	// 4D169859-A4F2-5EC8-853B-8447787C0D8A
@@ -59,12 +62,26 @@ func (s *GetActiveIdpConfigResponseBody) Validate() error {
 }
 
 type GetActiveIdpConfigResponseBodyData struct {
+	// A description of the identity provider configuration.
+	//
+	// example:
+	//
+	// 示例身份源
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the identity provider configuration.
+	//
 	// example:
 	//
 	// idp-cfg001
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the identity provider configuration.
+	//
+	// example:
+	//
+	// 测试身份源
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the identity provider configuration.
+	//
 	// example:
 	//
 	// DingTalk

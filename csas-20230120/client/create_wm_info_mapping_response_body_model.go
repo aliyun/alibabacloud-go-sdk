@@ -16,7 +16,10 @@ type iCreateWmInfoMappingResponseBody interface {
 }
 
 type CreateWmInfoMappingResponseBody struct {
+	// The mapping result.
 	Data *CreateWmInfoMappingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 7E9D7ACD-53D5-56EF-A913-79D148D06299
@@ -59,6 +62,8 @@ func (s *CreateWmInfoMappingResponseBody) Validate() error {
 }
 
 type CreateWmInfoMappingResponseBodyData struct {
+	// The mapped digital-format watermark information. This value can be used to look up the corresponding string-format watermark information.
+	//
 	// example:
 	//
 	// 123***

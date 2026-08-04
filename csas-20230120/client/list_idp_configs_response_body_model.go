@@ -16,7 +16,10 @@ type iListIdpConfigsResponseBody interface {
 }
 
 type ListIdpConfigsResponseBody struct {
+	// IdP configurations.
 	Data *ListIdpConfigsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of this request.
+	//
 	// example:
 	//
 	// FD724DBC-CD76-5235-BF76-59C51B73296D
@@ -59,7 +62,10 @@ func (s *ListIdpConfigsResponseBody) Validate() error {
 }
 
 type ListIdpConfigsResponseBodyData struct {
+	// List of IdP configurations.
 	DataList []*ListIdpConfigsResponseBodyDataDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -106,40 +112,72 @@ func (s *ListIdpConfigsResponseBodyData) Validate() error {
 }
 
 type ListIdpConfigsResponseBodyDataDataList struct {
+	// IdP configuration description.
+	//
+	// example:
+	//
+	// 示例描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// IdP configuration ID.
+	//
 	// example:
 	//
 	// 277
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Multi-factor authentication (MFA) type.
+	//
 	// example:
 	//
 	// totp
 	Mfa *string `json:"Mfa,omitempty" xml:"Mfa,omitempty"`
+	// Mobile login type.
+	//
 	// example:
 	//
 	// password
 	MobileLoginType *string `json:"MobileLoginType,omitempty" xml:"MobileLoginType,omitempty"`
+	// Mobile MFA configuration type.
+	//
 	// example:
 	//
 	// password
 	MobileMfaConfigType *string `json:"MobileMfaConfigType,omitempty" xml:"MobileMfaConfigType,omitempty"`
+	// List of multiple IdP configuration IDs.
+	//
 	// example:
 	//
 	// 1482,1355
 	MultiIdpInfo *string `json:"MultiIdpInfo,omitempty" xml:"MultiIdpInfo,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// IdP configuration name.
+	//
+	// example:
+	//
+	// 示例身份源
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// PC login type.
+	//
 	// example:
 	//
 	// password
 	PcLoginType *string `json:"PcLoginType,omitempty" xml:"PcLoginType,omitempty"`
+	// IdP configuration enable status. Values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
 	// example:
 	//
 	// Disabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// IdP configuration type.
+	//
 	// example:
 	//
 	// DingTalk
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Update time.
+	//
 	// example:
 	//
 	// 2023-05-09T02:22:41.430Z

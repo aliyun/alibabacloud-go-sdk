@@ -24,7 +24,11 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"public":      dara.String("csas.aliyuncs.com"),
+		"cn-hangzhou": dara.String("csas.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +62,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 挂载connector的应用
+// Attaches the private access applications of a Connector under the current Alibaba Cloud account.
 //
 // @param tmpReq - AttachApplication2ConnectorRequest
 //
@@ -112,7 +116,7 @@ func (client *Client) AttachApplication2ConnectorWithOptions(tmpReq *AttachAppli
 
 // Summary:
 //
-// 挂载connector的应用
+// Attaches the private access applications of a Connector under the current Alibaba Cloud account.
 //
 // @param request - AttachApplication2ConnectorRequest
 //
@@ -130,7 +134,7 @@ func (client *Client) AttachApplication2Connector(request *AttachApplication2Con
 
 // Summary:
 //
-// # Mount a business policy to a specified approval flow
+// Attaches a business policy to a specified approval process.
 //
 // @param request - AttachPolicy2ApprovalProcessRequest
 //
@@ -182,7 +186,7 @@ func (client *Client) AttachPolicy2ApprovalProcessWithOptions(request *AttachPol
 
 // Summary:
 //
-// # Mount a business policy to a specified approval flow
+// Attaches a business policy to a specified approval process.
 //
 // @param request - AttachPolicy2ApprovalProcessRequest
 //
@@ -200,7 +204,7 @@ func (client *Client) AttachPolicy2ApprovalProcess(request *AttachPolicy2Approva
 
 // Summary:
 //
-// Create an approval flow under the current Alibaba Cloud account.
+// Creates an approval process under the current Alibaba Cloud account.
 //
 // @param tmpReq - CreateApprovalProcessRequest
 //
@@ -265,7 +269,7 @@ func (client *Client) CreateApprovalProcessWithOptions(tmpReq *CreateApprovalPro
 
 // Summary:
 //
-// Create an approval flow under the current Alibaba Cloud account.
+// Creates an approval process under the current Alibaba Cloud account.
 //
 // @param request - CreateApprovalProcessRequest
 //
@@ -283,7 +287,7 @@ func (client *Client) CreateApprovalProcess(request *CreateApprovalProcessReques
 
 // Summary:
 //
-// 创建自定义身份源用户
+// Create a custom identity source user for your Alibaba Cloud account.
 //
 // @param request - CreateClientUserRequest
 //
@@ -351,7 +355,7 @@ func (client *Client) CreateClientUserWithOptions(request *CreateClientUserReque
 
 // Summary:
 //
-// 创建自定义身份源用户
+// Create a custom identity source user for your Alibaba Cloud account.
 //
 // @param request - CreateClientUserRequest
 //
@@ -369,7 +373,11 @@ func (client *Client) CreateClientUser(request *CreateClientUserRequest) (_resul
 
 // Summary:
 //
-// 创建动态路由
+// Create dynamic routes for the current Alibaba Cloud account.
+//
+// Description:
+//
+// By default, you can create a maximum of 100 dynamic routes.
 //
 // @param request - CreateDynamicRouteRequest
 //
@@ -452,7 +460,11 @@ func (client *Client) CreateDynamicRouteWithOptions(request *CreateDynamicRouteR
 
 // Summary:
 //
-// 创建动态路由
+// Create dynamic routes for the current Alibaba Cloud account.
+//
+// Description:
+//
+// By default, you can create a maximum of 100 dynamic routes.
 //
 // @param request - CreateDynamicRouteRequest
 //
@@ -470,7 +482,7 @@ func (client *Client) CreateDynamicRoute(request *CreateDynamicRouteRequest) (_r
 
 // Summary:
 //
-// Create an enterprise acceleration policy.
+// Creates an enterprise accelerate policy.
 //
 // @param request - CreateEnterpriseAcceleratePolicyRequest
 //
@@ -546,7 +558,7 @@ func (client *Client) CreateEnterpriseAcceleratePolicyWithOptions(request *Creat
 
 // Summary:
 //
-// Create an enterprise acceleration policy.
+// Creates an enterprise accelerate policy.
 //
 // @param request - CreateEnterpriseAcceleratePolicyRequest
 //
@@ -564,7 +576,7 @@ func (client *Client) CreateEnterpriseAcceleratePolicy(request *CreateEnterprise
 
 // Summary:
 //
-// Create an enterprise acceleration address.
+// Creates enterprise acceleration addresses.
 //
 // @param request - CreateEnterpriseAccelerateTargetRequest
 //
@@ -615,7 +627,7 @@ func (client *Client) CreateEnterpriseAccelerateTargetWithOptions(request *Creat
 
 // Summary:
 //
-// Create an enterprise acceleration address.
+// Creates enterprise acceleration addresses.
 //
 // @param request - CreateEnterpriseAccelerateTargetRequest
 //
@@ -633,7 +645,7 @@ func (client *Client) CreateEnterpriseAccelerateTarget(request *CreateEnterprise
 
 // Summary:
 //
-// 创建自定义身份源部门
+// Creates a department for a custom identity source in the current Alibaba Cloud account.
 //
 // @param request - CreateIdpDepartmentRequest
 //
@@ -681,7 +693,7 @@ func (client *Client) CreateIdpDepartmentWithOptions(request *CreateIdpDepartmen
 
 // Summary:
 //
-// 创建自定义身份源部门
+// Creates a department for a custom identity source in the current Alibaba Cloud account.
 //
 // @param request - CreateIdpDepartmentRequest
 //
@@ -699,7 +711,7 @@ func (client *Client) CreateIdpDepartment(request *CreateIdpDepartmentRequest) (
 
 // Summary:
 //
-// # Create an internal network access diagnostic task
+// Creates a diagnostic task for internal network access.
 //
 // @param tmpReq - CreatePADiagnosisTaskRequest
 //
@@ -785,7 +797,7 @@ func (client *Client) CreatePADiagnosisTaskWithOptions(tmpReq *CreatePADiagnosis
 
 // Summary:
 //
-// # Create an internal network access diagnostic task
+// Creates a diagnostic task for internal network access.
 //
 // @param request - CreatePADiagnosisTaskRequest
 //
@@ -803,11 +815,11 @@ func (client *Client) CreatePADiagnosisTask(request *CreatePADiagnosisTaskReques
 
 // Summary:
 //
-// Creates an office application within the current Alibaba Cloud account.
+// Creates an internal-facing access application under the current Alibaba Cloud account.
 //
 // Description:
 //
-// By default, you can create a maximum of 500 office applications.
+// You can create up to 500 internal-facing access applications by default.
 //
 // @param tmpReq - CreatePrivateAccessApplicationRequest
 //
@@ -825,6 +837,10 @@ func (client *Client) CreatePrivateAccessApplicationWithOptions(tmpReq *CreatePr
 	openapiutil.Convert(tmpReq, request)
 	if !dara.IsNil(tmpReq.L7Config) {
 		request.L7ConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.L7Config, dara.String("L7Config"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.UnauthorizedAccessConfig) {
+		request.UnauthorizedAccessConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UnauthorizedAccessConfig, dara.String("UnauthorizedAccessConfig"), dara.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -881,6 +897,10 @@ func (client *Client) CreatePrivateAccessApplicationWithOptions(tmpReq *CreatePr
 		bodyFlat["TagIds"] = request.TagIds
 	}
 
+	if !dara.IsNil(request.UnauthorizedAccessConfigShrink) {
+		body["UnauthorizedAccessConfig"] = request.UnauthorizedAccessConfigShrink
+	}
+
 	body = dara.ToMap(body,
 		openapiutil.Query(bodyFlat))
 	req := &openapiutil.OpenApiRequest{
@@ -908,11 +928,11 @@ func (client *Client) CreatePrivateAccessApplicationWithOptions(tmpReq *CreatePr
 
 // Summary:
 //
-// Creates an office application within the current Alibaba Cloud account.
+// Creates an internal-facing access application under the current Alibaba Cloud account.
 //
 // Description:
 //
-// By default, you can create a maximum of 500 office applications.
+// You can create up to 500 internal-facing access applications by default.
 //
 // @param request - CreatePrivateAccessApplicationRequest
 //
@@ -1079,7 +1099,11 @@ func (client *Client) CreatePrivateAccessPolicy(request *CreatePrivateAccessPoli
 
 // Summary:
 //
-// 创建内网访问标签
+// Creates a private access tag for the current Alibaba Cloud account.
+//
+// Description:
+//
+// By default, you can create up to 500 private access tags.
 //
 // @param request - CreatePrivateAccessTagRequest
 //
@@ -1127,7 +1151,11 @@ func (client *Client) CreatePrivateAccessTagWithOptions(request *CreatePrivateAc
 
 // Summary:
 //
-// 创建内网访问标签
+// Creates a private access tag for the current Alibaba Cloud account.
+//
+// Description:
+//
+// By default, you can create up to 500 private access tags.
 //
 // @param request - CreatePrivateAccessTagRequest
 //
@@ -1145,7 +1173,7 @@ func (client *Client) CreatePrivateAccessTag(request *CreatePrivateAccessTagRequ
 
 // Summary:
 //
-// 创建设备注册策略
+// Create a device registration policy for your Alibaba Cloud account.
 //
 // @param tmpReq - CreateRegistrationPolicyRequest
 //
@@ -1242,7 +1270,7 @@ func (client *Client) CreateRegistrationPolicyWithOptions(tmpReq *CreateRegistra
 
 // Summary:
 //
-// 创建设备注册策略
+// Create a device registration policy for your Alibaba Cloud account.
 //
 // @param request - CreateRegistrationPolicyRequest
 //
@@ -1260,7 +1288,11 @@ func (client *Client) CreateRegistrationPolicy(request *CreateRegistrationPolicy
 
 // Summary:
 //
-// 创建用户组
+// Creates a user group for your Alibaba Cloud account.
+//
+// Description:
+//
+// You can create up to 500 user groups.
 //
 // @param request - CreateUserGroupRequest
 //
@@ -1315,7 +1347,11 @@ func (client *Client) CreateUserGroupWithOptions(request *CreateUserGroupRequest
 
 // Summary:
 //
-// 创建用户组
+// Creates a user group for your Alibaba Cloud account.
+//
+// Description:
+//
+// You can create up to 500 user groups.
 //
 // @param request - CreateUserGroupRequest
 //
@@ -1333,7 +1369,7 @@ func (client *Client) CreateUserGroup(request *CreateUserGroupRequest) (_result 
 
 // Summary:
 //
-// 创建数字水印暗水印透明底图
+// Generates a transparent base image for web, screen, or app watermarks.
 //
 // @param tmpReq - CreateWmBaseImageRequest
 //
@@ -1421,7 +1457,7 @@ func (client *Client) CreateWmBaseImageWithOptions(tmpReq *CreateWmBaseImageRequ
 
 // Summary:
 //
-// 创建数字水印暗水印透明底图
+// Generates a transparent base image for web, screen, or app watermarks.
 //
 // @param request - CreateWmBaseImageRequest
 //
@@ -1439,7 +1475,11 @@ func (client *Client) CreateWmBaseImage(request *CreateWmBaseImageRequest) (_res
 
 // Summary:
 //
-// 创建嵌入水印任务
+// Create a digital watermarking embedding Job.
+//
+// Description:
+//
+// By default, you can create up to 500 groups.
 //
 // @param tmpReq - CreateWmEmbedTaskRequest
 //
@@ -1565,7 +1605,11 @@ func (client *Client) CreateWmEmbedTaskWithOptions(tmpReq *CreateWmEmbedTaskRequ
 
 // Summary:
 //
-// 创建嵌入水印任务
+// Create a digital watermarking embedding Job.
+//
+// Description:
+//
+// By default, you can create up to 500 groups.
 //
 // @param request - CreateWmEmbedTaskRequest
 //
@@ -1583,7 +1627,7 @@ func (client *Client) CreateWmEmbedTask(request *CreateWmEmbedTaskRequest) (_res
 
 // Summary:
 //
-// Creates a digital watermark extraction task.
+// Create a digital watermarking fetch job.
 //
 // @param tmpReq - CreateWmExtractTaskRequest
 //
@@ -1675,7 +1719,7 @@ func (client *Client) CreateWmExtractTaskWithOptions(tmpReq *CreateWmExtractTask
 
 // Summary:
 //
-// Creates a digital watermark extraction task.
+// Create a digital watermarking fetch job.
 //
 // @param request - CreateWmExtractTaskRequest
 //
@@ -1693,7 +1737,7 @@ func (client *Client) CreateWmExtractTask(request *CreateWmExtractTaskRequest) (
 
 // Summary:
 //
-// 创建一条字符串水印信息到数字水印信息的映射记录
+// Creates a mapping from string-format watermark information to digital-format watermark information.
 //
 // @param request - CreateWmInfoMappingRequest
 //
@@ -1745,7 +1789,7 @@ func (client *Client) CreateWmInfoMappingWithOptions(request *CreateWmInfoMappin
 
 // Summary:
 //
-// 创建一条字符串水印信息到数字水印信息的映射记录
+// Creates a mapping from string-format watermark information to digital-format watermark information.
 //
 // @param request - CreateWmInfoMappingRequest
 //
@@ -1763,7 +1807,7 @@ func (client *Client) CreateWmInfoMapping(request *CreateWmInfoMappingRequest) (
 
 // Summary:
 //
-// Batch delete approval flows under the current Alibaba Cloud account.
+// Deletes approval processes in batches from your Alibaba Cloud account.
 //
 // @param request - DeleteApprovalProcessesRequest
 //
@@ -1810,7 +1854,7 @@ func (client *Client) DeleteApprovalProcessesWithOptions(request *DeleteApproval
 
 // Summary:
 //
-// Batch delete approval flows under the current Alibaba Cloud account.
+// Deletes approval processes in batches from your Alibaba Cloud account.
 //
 // @param request - DeleteApprovalProcessesRequest
 //
@@ -1828,7 +1872,7 @@ func (client *Client) DeleteApprovalProcesses(request *DeleteApprovalProcessesRe
 
 // Summary:
 //
-// 删除自定义身份源指定用户
+// Delete a specified user from your Alibaba Cloud account\\"s custom identity source.
 //
 // @param request - DeleteClientUserRequest
 //
@@ -1872,7 +1916,7 @@ func (client *Client) DeleteClientUserWithOptions(request *DeleteClientUserReque
 
 // Summary:
 //
-// 删除自定义身份源指定用户
+// Delete a specified user from your Alibaba Cloud account\\"s custom identity source.
 //
 // @param request - DeleteClientUserRequest
 //
@@ -1890,7 +1934,7 @@ func (client *Client) DeleteClientUser(request *DeleteClientUserRequest) (_resul
 
 // Summary:
 //
-// 删除动态路由
+// Delete a dynamic route from your current Alibaba Cloud account.
 //
 // @param request - DeleteDynamicRouteRequest
 //
@@ -1934,7 +1978,7 @@ func (client *Client) DeleteDynamicRouteWithOptions(request *DeleteDynamicRouteR
 
 // Summary:
 //
-// 删除动态路由
+// Delete a dynamic route from your current Alibaba Cloud account.
 //
 // @param request - DeleteDynamicRouteRequest
 //
@@ -1952,7 +1996,7 @@ func (client *Client) DeleteDynamicRoute(request *DeleteDynamicRouteRequest) (_r
 
 // Summary:
 //
-// Delete an enterprise acceleration policy.
+// Deletes an enterprise acceleration policy.
 //
 // @param request - DeleteEnterpriseAcceleratePolicyRequest
 //
@@ -1996,7 +2040,7 @@ func (client *Client) DeleteEnterpriseAcceleratePolicyWithOptions(request *Delet
 
 // Summary:
 //
-// Delete an enterprise acceleration policy.
+// Deletes an enterprise acceleration policy.
 //
 // @param request - DeleteEnterpriseAcceleratePolicyRequest
 //
@@ -2014,7 +2058,7 @@ func (client *Client) DeleteEnterpriseAcceleratePolicy(request *DeleteEnterprise
 
 // Summary:
 //
-// Delete an enterprise acceleration address.
+// Deletes an enterprise acceleration address.
 //
 // @param request - DeleteEnterpriseAccelerateTargetRequest
 //
@@ -2065,7 +2109,7 @@ func (client *Client) DeleteEnterpriseAccelerateTargetWithOptions(request *Delet
 
 // Summary:
 //
-// Delete an enterprise acceleration address.
+// Deletes an enterprise acceleration address.
 //
 // @param request - DeleteEnterpriseAccelerateTargetRequest
 //
@@ -2083,7 +2127,7 @@ func (client *Client) DeleteEnterpriseAccelerateTarget(request *DeleteEnterprise
 
 // Summary:
 //
-// 删除指定自定义身份源部门
+// Delete a department from a custom identity provider in your Alibaba Cloud account.
 //
 // @param request - DeleteIdpDepartmentRequest
 //
@@ -2131,7 +2175,7 @@ func (client *Client) DeleteIdpDepartmentWithOptions(request *DeleteIdpDepartmen
 
 // Summary:
 //
-// 删除指定自定义身份源部门
+// Delete a department from a custom identity provider in your Alibaba Cloud account.
 //
 // @param request - DeleteIdpDepartmentRequest
 //
@@ -2149,7 +2193,7 @@ func (client *Client) DeleteIdpDepartment(request *DeleteIdpDepartmentRequest) (
 
 // Summary:
 //
-// Delete the employee OTP configuration.
+// Deletes a user\\"s One-Time Password (OTP) configuration.
 //
 // @param request - DeleteOtpConfigRequest
 //
@@ -2193,7 +2237,7 @@ func (client *Client) DeleteOtpConfigWithOptions(request *DeleteOtpConfigRequest
 
 // Summary:
 //
-// Delete the employee OTP configuration.
+// Deletes a user\\"s One-Time Password (OTP) configuration.
 //
 // @param request - DeleteOtpConfigRequest
 //
@@ -2211,7 +2255,15 @@ func (client *Client) DeleteOtpConfig(request *DeleteOtpConfigRequest) (_result 
 
 // Summary:
 //
-// 删除内网访问应用
+// Deletes an internal network access application from your Alibaba Cloud account.
+//
+// Description:
+//
+// You cannot delete an application if it is referenced by an office zone or a policy. For more information, see:
+//
+// - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): Lists internal network access applications.
+//
+// - [ListPrivateAccessPolicies](~~ListPrivateAccessPolices~~): Lists internal network access policies.
 //
 // @param request - DeletePrivateAccessApplicationRequest
 //
@@ -2255,7 +2307,15 @@ func (client *Client) DeletePrivateAccessApplicationWithOptions(request *DeleteP
 
 // Summary:
 //
-// 删除内网访问应用
+// Deletes an internal network access application from your Alibaba Cloud account.
+//
+// Description:
+//
+// You cannot delete an application if it is referenced by an office zone or a policy. For more information, see:
+//
+// - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): Lists internal network access applications.
+//
+// - [ListPrivateAccessPolicies](~~ListPrivateAccessPolices~~): Lists internal network access policies.
 //
 // @param request - DeletePrivateAccessApplicationRequest
 //
@@ -2273,7 +2333,7 @@ func (client *Client) DeletePrivateAccessApplication(request *DeletePrivateAcces
 
 // Summary:
 //
-// 删除内网访问策略
+// Deletes a private network access policy for the current Alibaba Cloud account.
 //
 // @param request - DeletePrivateAccessPolicyRequest
 //
@@ -2317,7 +2377,7 @@ func (client *Client) DeletePrivateAccessPolicyWithOptions(request *DeletePrivat
 
 // Summary:
 //
-// 删除内网访问策略
+// Deletes a private network access policy for the current Alibaba Cloud account.
 //
 // @param request - DeletePrivateAccessPolicyRequest
 //
@@ -2335,7 +2395,17 @@ func (client *Client) DeletePrivateAccessPolicy(request *DeletePrivateAccessPoli
 
 // Summary:
 //
-// 删除内网访问标签
+// Deletes an internal access tag from the current Alibaba Cloud account.
+//
+// Description:
+//
+// Deletion is not allowed when the tag is referenced by applications, office networks, or policies. References:
+//
+// - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): Lists internal access applications.
+//
+// - [ListPrivateAccessTags](~~ListPrivateAccessTags~~): Lists internal access tags.
+//
+// - [ListPrivateAccessPolices](~~ListPrivateAccessPolices~~): Lists internal access policies.
 //
 // @param request - DeletePrivateAccessTagRequest
 //
@@ -2379,7 +2449,17 @@ func (client *Client) DeletePrivateAccessTagWithOptions(request *DeletePrivateAc
 
 // Summary:
 //
-// 删除内网访问标签
+// Deletes an internal access tag from the current Alibaba Cloud account.
+//
+// Description:
+//
+// Deletion is not allowed when the tag is referenced by applications, office networks, or policies. References:
+//
+// - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): Lists internal access applications.
+//
+// - [ListPrivateAccessTags](~~ListPrivateAccessTags~~): Lists internal access tags.
+//
+// - [ListPrivateAccessPolices](~~ListPrivateAccessPolices~~): Lists internal access policies.
 //
 // @param request - DeletePrivateAccessTagRequest
 //
@@ -2397,7 +2477,7 @@ func (client *Client) DeletePrivateAccessTag(request *DeletePrivateAccessTagRequ
 
 // Summary:
 //
-// 删除设备注册策略
+// Batch delete device registration policies under your Alibaba Cloud account.
 //
 // @param request - DeleteRegistrationPoliciesRequest
 //
@@ -2444,7 +2524,7 @@ func (client *Client) DeleteRegistrationPoliciesWithOptions(request *DeleteRegis
 
 // Summary:
 //
-// 删除设备注册策略
+// Batch delete device registration policies under your Alibaba Cloud account.
 //
 // @param request - DeleteRegistrationPoliciesRequest
 //
@@ -2462,7 +2542,11 @@ func (client *Client) DeleteRegistrationPolicies(request *DeleteRegistrationPoli
 
 // Summary:
 //
-// Deletes multiple user terminals at a time.
+// Deletes user endpoint devices in batches.
+//
+// Description:
+//
+// You can delete up to 100 devices at a time. Each device must be in a non-online status. If some device IDs in the specified collection do not meet the status requirement, only the devices that meet the requirement are deleted, and the operation still returns a success response.
 //
 // @param request - DeleteUserDevicesRequest
 //
@@ -2509,7 +2593,11 @@ func (client *Client) DeleteUserDevicesWithOptions(request *DeleteUserDevicesReq
 
 // Summary:
 //
-// Deletes multiple user terminals at a time.
+// Deletes user endpoint devices in batches.
+//
+// Description:
+//
+// You can delete up to 100 devices at a time. Each device must be in a non-online status. If some device IDs in the specified collection do not meet the status requirement, only the devices that meet the requirement are deleted, and the operation still returns a success response.
 //
 // @param request - DeleteUserDevicesRequest
 //
@@ -2527,7 +2615,13 @@ func (client *Client) DeleteUserDevices(request *DeleteUserDevicesRequest) (_res
 
 // Summary:
 //
-// 删除用户组
+// Delete a user group in your Alibaba Cloud account.
+//
+// Description:
+//
+// For more information, see:
+//
+// - [ListPolicesForUserGroup](~~ListPolicesForUserGroup~~): Query policies attached to a user group.
 //
 // @param request - DeleteUserGroupRequest
 //
@@ -2571,7 +2665,13 @@ func (client *Client) DeleteUserGroupWithOptions(request *DeleteUserGroupRequest
 
 // Summary:
 //
-// 删除用户组
+// Delete a user group in your Alibaba Cloud account.
+//
+// Description:
+//
+// For more information, see:
+//
+// - [ListPolicesForUserGroup](~~ListPolicesForUserGroup~~): Query policies attached to a user group.
 //
 // @param request - DeleteUserGroupRequest
 //
@@ -2591,7 +2691,7 @@ func (client *Client) DeleteUserGroup(request *DeleteUserGroupRequest) (_result 
 //
 // Summary:
 //
-// 卸载connector的应用
+// Detaches private network access applications from a Connector in your Alibaba Cloud account.
 //
 // @param tmpReq - DetachApplication2ConnectorRequest
 //
@@ -2647,7 +2747,7 @@ func (client *Client) DetachApplication2ConnectorWithOptions(tmpReq *DetachAppli
 //
 // Summary:
 //
-// 卸载connector的应用
+// Detaches private network access applications from a Connector in your Alibaba Cloud account.
 //
 // @param request - DetachApplication2ConnectorRequest
 //
@@ -2666,7 +2766,7 @@ func (client *Client) DetachApplication2Connector(request *DetachApplication2Con
 
 // Summary:
 //
-// # Detach business policies from approval flows
+// Detach a business policy from an approval process.
 //
 // @param request - DetachPolicy2ApprovalProcessRequest
 //
@@ -2718,7 +2818,7 @@ func (client *Client) DetachPolicy2ApprovalProcessWithOptions(request *DetachPol
 
 // Summary:
 //
-// # Detach business policies from approval flows
+// Detach a business policy from an approval process.
 //
 // @param request - DetachPolicy2ApprovalProcessRequest
 //
@@ -2736,7 +2836,7 @@ func (client *Client) DetachPolicy2ApprovalProcess(request *DetachPolicy2Approva
 
 // Summary:
 //
-// Disable enterprise acceleration policy.
+// Disables an enterprise acceleration policy.
 //
 // @param request - DisableEnterpriseAcceleratePolicyRequest
 //
@@ -2780,7 +2880,7 @@ func (client *Client) DisableEnterpriseAcceleratePolicyWithOptions(request *Disa
 
 // Summary:
 //
-// Disable enterprise acceleration policy.
+// Disables an enterprise acceleration policy.
 //
 // @param request - DisableEnterpriseAcceleratePolicyRequest
 //
@@ -2798,7 +2898,7 @@ func (client *Client) DisableEnterpriseAcceleratePolicy(request *DisableEnterpri
 
 // Summary:
 //
-// Enable enterprise acceleration policy.
+// Enables an enterprise acceleration policy.
 //
 // @param request - EnableEnterpriseAcceleratePolicyRequest
 //
@@ -2842,7 +2942,7 @@ func (client *Client) EnableEnterpriseAcceleratePolicyWithOptions(request *Enabl
 
 // Summary:
 //
-// Enable enterprise acceleration policy.
+// Enables an enterprise acceleration policy.
 //
 // @param request - EnableEnterpriseAcceleratePolicyRequest
 //
@@ -2860,7 +2960,7 @@ func (client *Client) EnableEnterpriseAcceleratePolicy(request *EnableEnterprise
 
 // Summary:
 //
-// Exports the information about user terminals in an Excel file.
+// Export a list of user terminal devices to an Excel file.
 //
 // @param request - ExportUserDevicesRequest
 //
@@ -2963,7 +3063,7 @@ func (client *Client) ExportUserDevicesWithOptions(request *ExportUserDevicesReq
 
 // Summary:
 //
-// Exports the information about user terminals in an Excel file.
+// Export a list of user terminal devices to an Excel file.
 //
 // @param request - ExportUserDevicesRequest
 //
@@ -2981,7 +3081,7 @@ func (client *Client) ExportUserDevices(request *ExportUserDevicesRequest) (_res
 
 // Summary:
 //
-// 查询已启用的身份源配置
+// Queries the identity provider configuration enabled for your Alibaba Cloud account.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -3010,7 +3110,7 @@ func (client *Client) GetActiveIdpConfigWithOptions(runtime *dara.RuntimeOptions
 
 // Summary:
 //
-// 查询已启用的身份源配置
+// Queries the identity provider configuration enabled for your Alibaba Cloud account.
 //
 // @return GetActiveIdpConfigResponse
 func (client *Client) GetActiveIdpConfig() (_result *GetActiveIdpConfigResponse, _err error) {
@@ -3026,7 +3126,7 @@ func (client *Client) GetActiveIdpConfig() (_result *GetActiveIdpConfigResponse,
 
 // Summary:
 //
-// Queries the details of an approval instance within your Alibaba Cloud account.
+// Retrieves the details of an approval instance for your Alibaba Cloud account.
 //
 // @param request - GetApprovalRequest
 //
@@ -3066,7 +3166,7 @@ func (client *Client) GetApprovalWithOptions(request *GetApprovalRequest, runtim
 
 // Summary:
 //
-// Queries the details of an approval instance within your Alibaba Cloud account.
+// Retrieves the details of an approval instance for your Alibaba Cloud account.
 //
 // @param request - GetApprovalRequest
 //
@@ -3142,7 +3242,7 @@ func (client *Client) GetApprovalProcess(request *GetApprovalProcessRequest) (_r
 
 // Summary:
 //
-// Queries the details of an approval template within your Alibaba Cloud account.
+// Retrieves the details of an approval template for your Alibaba Cloud account.
 //
 // @param request - GetApprovalSchemaRequest
 //
@@ -3182,7 +3282,7 @@ func (client *Client) GetApprovalSchemaWithOptions(request *GetApprovalSchemaReq
 
 // Summary:
 //
-// Queries the details of an approval template within your Alibaba Cloud account.
+// Retrieves the details of an approval template for your Alibaba Cloud account.
 //
 // @param request - GetApprovalSchemaRequest
 //
@@ -3200,7 +3300,7 @@ func (client *Client) GetApprovalSchema(request *GetApprovalSchemaRequest) (_res
 
 // Summary:
 //
-// Queries the details of the Startup and anti-uninstall policy under the current Alibaba Cloud account.
+// Queries the details of the auto-start and anti-uninstall policy for your Alibaba Cloud account.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -3229,7 +3329,7 @@ func (client *Client) GetBootAndAntiUninstallPolicyWithOptions(runtime *dara.Run
 
 // Summary:
 //
-// Queries the details of the Startup and anti-uninstall policy under the current Alibaba Cloud account.
+// Queries the details of the auto-start and anti-uninstall policy for your Alibaba Cloud account.
 //
 // @return GetBootAndAntiUninstallPolicyResponse
 func (client *Client) GetBootAndAntiUninstallPolicy() (_result *GetBootAndAntiUninstallPolicyResponse, _err error) {
@@ -3245,7 +3345,7 @@ func (client *Client) GetBootAndAntiUninstallPolicy() (_result *GetBootAndAntiUn
 
 // Summary:
 //
-// # Query a specified user from a custom identity source
+// Retrieves the details of a user from a custom identity source in your Alibaba Cloud account.
 //
 // @param request - GetClientUserRequest
 //
@@ -3285,7 +3385,7 @@ func (client *Client) GetClientUserWithOptions(request *GetClientUserRequest, ru
 
 // Summary:
 //
-// # Query a specified user from a custom identity source
+// Retrieves the details of a user from a custom identity source in your Alibaba Cloud account.
 //
 // @param request - GetClientUserRequest
 //
@@ -3303,7 +3403,7 @@ func (client *Client) GetClientUser(request *GetClientUserRequest) (_result *Get
 
 // Summary:
 //
-// 查询动态路由详情
+// Retrieves details about a dynamic route in your Alibaba Cloud account.
 //
 // @param request - GetDynamicRouteRequest
 //
@@ -3343,7 +3443,7 @@ func (client *Client) GetDynamicRouteWithOptions(request *GetDynamicRouteRequest
 
 // Summary:
 //
-// 查询动态路由详情
+// Retrieves details about a dynamic route in your Alibaba Cloud account.
 //
 // @param request - GetDynamicRouteRequest
 //
@@ -3361,7 +3461,7 @@ func (client *Client) GetDynamicRoute(request *GetDynamicRouteRequest) (_result 
 
 // Summary:
 //
-// 查询身份源配置详情
+// Retrieve the configuration details of a specified identity provider for your Alibaba Cloud account.
 //
 // @param request - GetIdpConfigRequest
 //
@@ -3401,7 +3501,7 @@ func (client *Client) GetIdpConfigWithOptions(request *GetIdpConfigRequest, runt
 
 // Summary:
 //
-// 查询身份源配置详情
+// Retrieve the configuration details of a specified identity provider for your Alibaba Cloud account.
 //
 // @param request - GetIdpConfigRequest
 //
@@ -3419,7 +3519,7 @@ func (client *Client) GetIdpConfig(request *GetIdpConfigRequest) (_result *GetId
 
 // Summary:
 //
-// # Query the details of an internal network access diagnostic task
+// Retrieves the details of a private access diagnostic task.
 //
 // @param request - GetPADiagnosisTaskRequest
 //
@@ -3459,7 +3559,7 @@ func (client *Client) GetPADiagnosisTaskWithOptions(request *GetPADiagnosisTaskR
 
 // Summary:
 //
-// # Query the details of an internal network access diagnostic task
+// Retrieves the details of a private access diagnostic task.
 //
 // @param request - GetPADiagnosisTaskRequest
 //
@@ -3477,7 +3577,7 @@ func (client *Client) GetPADiagnosisTask(request *GetPADiagnosisTaskRequest) (_r
 
 // Summary:
 //
-// Queries the details of the office applications that belong to the current Alibaba Cloud account.
+// Queries the details of an internal-facing access application under the current Alibaba Cloud account.
 //
 // @param request - GetPrivateAccessApplicationRequest
 //
@@ -3517,7 +3617,7 @@ func (client *Client) GetPrivateAccessApplicationWithOptions(request *GetPrivate
 
 // Summary:
 //
-// Queries the details of the office applications that belong to the current Alibaba Cloud account.
+// Queries the details of an internal-facing access application under the current Alibaba Cloud account.
 //
 // @param request - GetPrivateAccessApplicationRequest
 //
@@ -3593,7 +3693,7 @@ func (client *Client) GetPrivateAccessPolicy(request *GetPrivateAccessPolicyRequ
 
 // Summary:
 //
-// 查询设备注册策略详情
+// Queries the details of a device registration policy within the current Alibaba Cloud account.
 //
 // @param request - GetRegistrationPolicyRequest
 //
@@ -3633,7 +3733,7 @@ func (client *Client) GetRegistrationPolicyWithOptions(request *GetRegistrationP
 
 // Summary:
 //
-// 查询设备注册策略详情
+// Queries the details of a device registration policy within the current Alibaba Cloud account.
 //
 // @param request - GetRegistrationPolicyRequest
 //
@@ -3651,7 +3751,7 @@ func (client *Client) GetRegistrationPolicy(request *GetRegistrationPolicyReques
 
 // Summary:
 //
-// 查询用户设备详情
+// Queries the details of a user endpoint device under the current Alibaba Cloud account.
 //
 // @param request - GetUserDeviceRequest
 //
@@ -3691,7 +3791,7 @@ func (client *Client) GetUserDeviceWithOptions(request *GetUserDeviceRequest, ru
 
 // Summary:
 //
-// 查询用户设备详情
+// Queries the details of a user endpoint device under the current Alibaba Cloud account.
 //
 // @param request - GetUserDeviceRequest
 //
@@ -3709,7 +3809,7 @@ func (client *Client) GetUserDevice(request *GetUserDeviceRequest) (_result *Get
 
 // Summary:
 //
-// 查询用户组详情
+// Queries the details of a user group in the current Alibaba Cloud account.
 //
 // @param request - GetUserGroupRequest
 //
@@ -3749,7 +3849,7 @@ func (client *Client) GetUserGroupWithOptions(request *GetUserGroupRequest, runt
 
 // Summary:
 //
-// 查询用户组详情
+// Queries the details of a user group in the current Alibaba Cloud account.
 //
 // @param request - GetUserGroupRequest
 //
@@ -3767,7 +3867,7 @@ func (client *Client) GetUserGroup(request *GetUserGroupRequest) (_result *GetUs
 
 // Summary:
 //
-// 查询嵌入水印任务
+// Use the job ID obtained from creating a watermark embedding job to query the embedding job result.
 //
 // @param request - GetWmEmbedTaskRequest
 //
@@ -3807,7 +3907,7 @@ func (client *Client) GetWmEmbedTaskWithOptions(request *GetWmEmbedTaskRequest, 
 
 // Summary:
 //
-// 查询嵌入水印任务
+// Use the job ID obtained from creating a watermark embedding job to query the embedding job result.
 //
 // @param request - GetWmEmbedTaskRequest
 //
@@ -3825,7 +3925,7 @@ func (client *Client) GetWmEmbedTask(request *GetWmEmbedTaskRequest) (_result *G
 
 // Summary:
 //
-// 查询文件水印提取任务详情
+// Queries the result of a watermark extraction task using the task ID that is returned when you create the task.
 //
 // @param request - GetWmExtractTaskRequest
 //
@@ -3865,7 +3965,7 @@ func (client *Client) GetWmExtractTaskWithOptions(request *GetWmExtractTaskReque
 
 // Summary:
 //
-// 查询文件水印提取任务详情
+// Queries the result of a watermark extraction task using the task ID that is returned when you create the task.
 //
 // @param request - GetWmExtractTaskRequest
 //
@@ -3883,7 +3983,7 @@ func (client *Client) GetWmExtractTask(request *GetWmExtractTaskRequest) (_resul
 
 // Summary:
 //
-// Batch import accelerated address List.
+// Batch import acceleration addresses.
 //
 // @param request - ImportEnterpriseAccelerateTargetsRequest
 //
@@ -3931,7 +4031,7 @@ func (client *Client) ImportEnterpriseAccelerateTargetsWithOptions(request *Impo
 
 // Summary:
 //
-// Batch import accelerated address List.
+// Batch import acceleration addresses.
 //
 // @param request - ImportEnterpriseAccelerateTargetsRequest
 //
@@ -3949,7 +4049,7 @@ func (client *Client) ImportEnterpriseAccelerateTargets(request *ImportEnterpris
 
 // Summary:
 //
-// Batch queries the applications of internal network access policies under the current Alibaba Cloud account.
+// Queries the applications associated with one or more private access policies.
 //
 // @param request - ListApplicationsForPrivateAccessPolicyRequest
 //
@@ -3989,7 +4089,7 @@ func (client *Client) ListApplicationsForPrivateAccessPolicyWithOptions(request 
 
 // Summary:
 //
-// Batch queries the applications of internal network access policies under the current Alibaba Cloud account.
+// Queries the applications associated with one or more private access policies.
 //
 // @param request - ListApplicationsForPrivateAccessPolicyRequest
 //
@@ -4007,7 +4107,7 @@ func (client *Client) ListApplicationsForPrivateAccessPolicy(request *ListApplic
 
 // Summary:
 //
-// 批量查询内网访问标签的应用
+// Batch-query applications associated with private network access tags within your Alibaba Cloud account.
 //
 // @param request - ListApplicationsForPrivateAccessTagRequest
 //
@@ -4047,7 +4147,7 @@ func (client *Client) ListApplicationsForPrivateAccessTagWithOptions(request *Li
 
 // Summary:
 //
-// 批量查询内网访问标签的应用
+// Batch-query applications associated with private network access tags within your Alibaba Cloud account.
 //
 // @param request - ListApplicationsForPrivateAccessTagRequest
 //
@@ -4065,7 +4165,7 @@ func (client *Client) ListApplicationsForPrivateAccessTag(request *ListApplicati
 
 // Summary:
 //
-// Queries the approval flow list under the current Alibaba Cloud account.
+// Queries the list of approval processes under the current Alibaba Cloud account.
 //
 // @param request - ListApprovalProcessesRequest
 //
@@ -4105,7 +4205,7 @@ func (client *Client) ListApprovalProcessesWithOptions(request *ListApprovalProc
 
 // Summary:
 //
-// Queries the approval flow list under the current Alibaba Cloud account.
+// Queries the list of approval processes under the current Alibaba Cloud account.
 //
 // @param request - ListApprovalProcessesRequest
 //
@@ -4123,7 +4223,7 @@ func (client *Client) ListApprovalProcesses(request *ListApprovalProcessesReques
 
 // Summary:
 //
-// # Query flows associated with an approval rendering template
+// Queries the approval flows associated with approval rendering templates.
 //
 // @param request - ListApprovalProcessesForApprovalSchemasRequest
 //
@@ -4163,7 +4263,7 @@ func (client *Client) ListApprovalProcessesForApprovalSchemasWithOptions(request
 
 // Summary:
 //
-// # Query flows associated with an approval rendering template
+// Queries the approval flows associated with approval rendering templates.
 //
 // @param request - ListApprovalProcessesForApprovalSchemasRequest
 //
@@ -4181,7 +4281,7 @@ func (client *Client) ListApprovalProcessesForApprovalSchemas(request *ListAppro
 
 // Summary:
 //
-// Queries the list of approval templates under the current Alibaba Cloud account.
+// Lists the approval templates for your Alibaba Cloud account.
 //
 // @param request - ListApprovalSchemasRequest
 //
@@ -4221,7 +4321,7 @@ func (client *Client) ListApprovalSchemasWithOptions(request *ListApprovalSchema
 
 // Summary:
 //
-// Queries the list of approval templates under the current Alibaba Cloud account.
+// Lists the approval templates for your Alibaba Cloud account.
 //
 // @param request - ListApprovalSchemasRequest
 //
@@ -4239,7 +4339,7 @@ func (client *Client) ListApprovalSchemas(request *ListApprovalSchemasRequest) (
 
 // Summary:
 //
-// # Query rendering templates associated with an approval flow
+// Queries the rendering templates associated with approval processes.
 //
 // @param request - ListApprovalSchemasForApprovalProcessesRequest
 //
@@ -4279,7 +4379,7 @@ func (client *Client) ListApprovalSchemasForApprovalProcessesWithOptions(request
 
 // Summary:
 //
-// # Query rendering templates associated with an approval flow
+// Queries the rendering templates associated with approval processes.
 //
 // @param request - ListApprovalSchemasForApprovalProcessesRequest
 //
@@ -4297,7 +4397,7 @@ func (client *Client) ListApprovalSchemasForApprovalProcesses(request *ListAppro
 
 // Summary:
 //
-// Queries the approval instance list under the current Alibaba Cloud account.
+// Lists approval instances for your Alibaba Cloud account.
 //
 // @param request - ListApprovalsRequest
 //
@@ -4337,7 +4437,7 @@ func (client *Client) ListApprovalsWithOptions(request *ListApprovalsRequest, ru
 
 // Summary:
 //
-// Queries the approval instance list under the current Alibaba Cloud account.
+// Lists approval instances for your Alibaba Cloud account.
 //
 // @param request - ListApprovalsRequest
 //
@@ -4355,7 +4455,7 @@ func (client *Client) ListApprovals(request *ListApprovalsRequest) (_result *Lis
 
 // Summary:
 //
-// 查询自定义身份源用户
+// Query user information from custom identity sources in your Alibaba Cloud account.
 //
 // @param request - ListClientUsersRequest
 //
@@ -4395,7 +4495,7 @@ func (client *Client) ListClientUsersWithOptions(request *ListClientUsersRequest
 
 // Summary:
 //
-// 查询自定义身份源用户
+// Query user information from custom identity sources in your Alibaba Cloud account.
 //
 // @param request - ListClientUsersRequest
 //
@@ -4413,7 +4513,7 @@ func (client *Client) ListClientUsers(request *ListClientUsersRequest) (_result 
 
 // Summary:
 //
-// # Batch query connectors
+// Query connectors in batches.
 //
 // @param request - ListConnectorsRequest
 //
@@ -4453,7 +4553,7 @@ func (client *Client) ListConnectorsWithOptions(request *ListConnectorsRequest, 
 
 // Summary:
 //
-// # Batch query connectors
+// Query connectors in batches.
 //
 // @param request - ListConnectorsRequest
 //
@@ -4471,7 +4571,7 @@ func (client *Client) ListConnectors(request *ListConnectorsRequest) (_result *L
 
 // Summary:
 //
-// Batch query Dynamic policy handling flows.
+// # Batch Query Dynamic Policy Disposal Processes
 //
 // @param request - ListDynamicDisposalProcessesRequest
 //
@@ -4511,7 +4611,7 @@ func (client *Client) ListDynamicDisposalProcessesWithOptions(request *ListDynam
 
 // Summary:
 //
-// Batch query Dynamic policy handling flows.
+// # Batch Query Dynamic Policy Disposal Processes
 //
 // @param request - ListDynamicDisposalProcessesRequest
 //
@@ -4529,7 +4629,7 @@ func (client *Client) ListDynamicDisposalProcesses(request *ListDynamicDisposalP
 
 // Summary:
 //
-// 批量查询动态路由的地域
+// Queries the regions that are supported by the access points of SASE POP clusters for your Alibaba Cloud account.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -4558,7 +4658,7 @@ func (client *Client) ListDynamicRouteRegionsWithOptions(runtime *dara.RuntimeOp
 
 // Summary:
 //
-// 批量查询动态路由的地域
+// Queries the regions that are supported by the access points of SASE POP clusters for your Alibaba Cloud account.
 //
 // @return ListDynamicRouteRegionsResponse
 func (client *Client) ListDynamicRouteRegions() (_result *ListDynamicRouteRegionsResponse, _err error) {
@@ -4574,7 +4674,7 @@ func (client *Client) ListDynamicRouteRegions() (_result *ListDynamicRouteRegion
 
 // Summary:
 //
-// 批量查询动态路由
+// Retrieves information about all dynamic routes for the current Alibaba Cloud account.
 //
 // @param request - ListDynamicRoutesRequest
 //
@@ -4614,7 +4714,7 @@ func (client *Client) ListDynamicRoutesWithOptions(request *ListDynamicRoutesReq
 
 // Summary:
 //
-// 批量查询动态路由
+// Retrieves information about all dynamic routes for the current Alibaba Cloud account.
 //
 // @param request - ListDynamicRoutesRequest
 //
@@ -4632,7 +4732,7 @@ func (client *Client) ListDynamicRoutes(request *ListDynamicRoutesRequest) (_res
 
 // Summary:
 //
-// Queries enterprise acceleration Audit logs.
+// Queries audit logs for enterprise acceleration.
 //
 // @param request - ListEnterpriseAccelerateLogsRequest
 //
@@ -4672,7 +4772,7 @@ func (client *Client) ListEnterpriseAccelerateLogsWithOptions(request *ListEnter
 
 // Summary:
 //
-// Queries enterprise acceleration Audit logs.
+// Queries audit logs for enterprise acceleration.
 //
 // @param request - ListEnterpriseAccelerateLogsRequest
 //
@@ -4690,7 +4790,7 @@ func (client *Client) ListEnterpriseAccelerateLogs(request *ListEnterpriseAccele
 
 // Summary:
 //
-// # Query acceleration policy list
+// # Query acceleration policies
 //
 // @param request - ListEnterpriseAcceleratePoliciesRequest
 //
@@ -4730,7 +4830,7 @@ func (client *Client) ListEnterpriseAcceleratePoliciesWithOptions(request *ListE
 
 // Summary:
 //
-// # Query acceleration policy list
+// # Query acceleration policies
 //
 // @param request - ListEnterpriseAcceleratePoliciesRequest
 //
@@ -4748,7 +4848,7 @@ func (client *Client) ListEnterpriseAcceleratePolicies(request *ListEnterpriseAc
 
 // Summary:
 //
-// Query the enterprise acceleration address list.
+// Query the list of enterprise acceleration targets.
 //
 // @param request - ListEnterpriseAccelerateTargetsRequest
 //
@@ -4788,7 +4888,7 @@ func (client *Client) ListEnterpriseAccelerateTargetsWithOptions(request *ListEn
 
 // Summary:
 //
-// Query the enterprise acceleration address list.
+// Query the list of enterprise acceleration targets.
 //
 // @param request - ListEnterpriseAccelerateTargetsRequest
 //
@@ -4806,7 +4906,7 @@ func (client *Client) ListEnterpriseAccelerateTargets(request *ListEnterpriseAcc
 
 // Summary:
 //
-// 批量查询超额注册申请列表
+// Lists excess end-user device registration applications in the current Alibaba Cloud account.
 //
 // @param request - ListExcessiveDeviceRegistrationApplicationsRequest
 //
@@ -4846,7 +4946,7 @@ func (client *Client) ListExcessiveDeviceRegistrationApplicationsWithOptions(req
 
 // Summary:
 //
-// 批量查询超额注册申请列表
+// Lists excess end-user device registration applications in the current Alibaba Cloud account.
 //
 // @param request - ListExcessiveDeviceRegistrationApplicationsRequest
 //
@@ -4864,7 +4964,7 @@ func (client *Client) ListExcessiveDeviceRegistrationApplications(request *ListE
 
 // Summary:
 //
-// 批量查询转发策略
+// Queries forwarding rules in batches.
 //
 // @param request - ListForwardStrategiesRequest
 //
@@ -4904,7 +5004,7 @@ func (client *Client) ListForwardStrategiesWithOptions(request *ListForwardStrat
 
 // Summary:
 //
-// 批量查询转发策略
+// Queries forwarding rules in batches.
 //
 // @param request - ListForwardStrategiesRequest
 //
@@ -4922,7 +5022,7 @@ func (client *Client) ListForwardStrategies(request *ListForwardStrategiesReques
 
 // Summary:
 //
-// 批量查询转发策略绑定项目
+// Queries the bindings of forwarding rules in batches.
 //
 // @param request - ListForwardStrategyBindingItemsRequest
 //
@@ -4962,7 +5062,7 @@ func (client *Client) ListForwardStrategyBindingItemsWithOptions(request *ListFo
 
 // Summary:
 //
-// 批量查询转发策略绑定项目
+// Queries the bindings of forwarding rules in batches.
 //
 // @param request - ListForwardStrategyBindingItemsRequest
 //
@@ -4980,7 +5080,7 @@ func (client *Client) ListForwardStrategyBindingItems(request *ListForwardStrate
 
 // Summary:
 //
-// 查询IDP配置
+// Lists identity provider configurations for the current Alibaba Cloud account.
 //
 // @param request - ListIdpConfigsRequest
 //
@@ -5020,7 +5120,7 @@ func (client *Client) ListIdpConfigsWithOptions(request *ListIdpConfigsRequest, 
 
 // Summary:
 //
-// 查询IDP配置
+// Lists identity provider configurations for the current Alibaba Cloud account.
 //
 // @param request - ListIdpConfigsRequest
 //
@@ -5038,7 +5138,7 @@ func (client *Client) ListIdpConfigs(request *ListIdpConfigsRequest) (_result *L
 
 // Summary:
 //
-// 查询自定义身份源部门
+// Retrieves department information for a custom identity provider (IdP) associated with your Alibaba Cloud account.
 //
 // @param request - ListIdpDepartmentsRequest
 //
@@ -5078,7 +5178,7 @@ func (client *Client) ListIdpDepartmentsWithOptions(request *ListIdpDepartmentsR
 
 // Summary:
 //
-// 查询自定义身份源部门
+// Retrieves department information for a custom identity provider (IdP) associated with your Alibaba Cloud account.
 //
 // @param request - ListIdpDepartmentsRequest
 //
@@ -5096,7 +5196,7 @@ func (client *Client) ListIdpDepartments(request *ListIdpDepartmentsRequest) (_r
 
 // Summary:
 //
-// Network User List.
+// Lists onboarded users.
 //
 // @param request - ListNacUserCertRequest
 //
@@ -5168,7 +5268,7 @@ func (client *Client) ListNacUserCertWithOptions(request *ListNacUserCertRequest
 
 // Summary:
 //
-// Network User List.
+// Lists onboarded users.
 //
 // @param request - ListNacUserCertRequest
 //
@@ -5186,7 +5286,7 @@ func (client *Client) ListNacUserCert(request *ListNacUserCertRequest) (_result 
 
 // Summary:
 //
-// 批量查询内网访问应用的策略
+// Queries policies for private access applications in your Alibaba Cloud account in batches.
 //
 // @param request - ListPolicesForPrivateAccessApplicationRequest
 //
@@ -5226,7 +5326,7 @@ func (client *Client) ListPolicesForPrivateAccessApplicationWithOptions(request 
 
 // Summary:
 //
-// 批量查询内网访问应用的策略
+// Queries policies for private access applications in your Alibaba Cloud account in batches.
 //
 // @param request - ListPolicesForPrivateAccessApplicationRequest
 //
@@ -5244,7 +5344,7 @@ func (client *Client) ListPolicesForPrivateAccessApplication(request *ListPolice
 
 // Summary:
 //
-// 批量查询内网访问标签的策略
+// Batch query policies for private network access tags in your Alibaba Cloud account.
 //
 // @param request - ListPolicesForPrivateAccessTagRequest
 //
@@ -5284,7 +5384,7 @@ func (client *Client) ListPolicesForPrivateAccessTagWithOptions(request *ListPol
 
 // Summary:
 //
-// 批量查询内网访问标签的策略
+// Batch query policies for private network access tags in your Alibaba Cloud account.
 //
 // @param request - ListPolicesForPrivateAccessTagRequest
 //
@@ -5302,7 +5402,7 @@ func (client *Client) ListPolicesForPrivateAccessTag(request *ListPolicesForPriv
 
 // Summary:
 //
-// 批量查询用户组的策略
+// Queries policies for multiple user groups within your Alibaba Cloud account.
 //
 // @param request - ListPolicesForUserGroupRequest
 //
@@ -5342,7 +5442,7 @@ func (client *Client) ListPolicesForUserGroupWithOptions(request *ListPolicesFor
 
 // Summary:
 //
-// 批量查询用户组的策略
+// Queries policies for multiple user groups within your Alibaba Cloud account.
 //
 // @param request - ListPolicesForUserGroupRequest
 //
@@ -5360,7 +5460,7 @@ func (client *Client) ListPolicesForUserGroup(request *ListPolicesForUserGroupRe
 
 // Summary:
 //
-// pop节点流量统计
+// Retrieves bandwidth usage statistics for Secure Access Service Edge (SASE) points of presence (POPs).
 //
 // @param request - ListPopTrafficStatisticsRequest
 //
@@ -5400,7 +5500,7 @@ func (client *Client) ListPopTrafficStatisticsWithOptions(request *ListPopTraffi
 
 // Summary:
 //
-// pop节点流量统计
+// Retrieves bandwidth usage statistics for Secure Access Service Edge (SASE) points of presence (POPs).
 //
 // @param request - ListPopTrafficStatisticsRequest
 //
@@ -5418,7 +5518,7 @@ func (client *Client) ListPopTrafficStatistics(request *ListPopTrafficStatistics
 
 // Summary:
 //
-// 批量查询内网访问应用
+// Queries information about all internal-facing access applications under the current Alibaba Cloud account.
 //
 // @param request - ListPrivateAccessApplicationsRequest
 //
@@ -5498,7 +5598,7 @@ func (client *Client) ListPrivateAccessApplicationsWithOptions(request *ListPriv
 
 // Summary:
 //
-// 批量查询内网访问应用
+// Queries information about all internal-facing access applications under the current Alibaba Cloud account.
 //
 // @param request - ListPrivateAccessApplicationsRequest
 //
@@ -5516,7 +5616,7 @@ func (client *Client) ListPrivateAccessApplications(request *ListPrivateAccessAp
 
 // Summary:
 //
-// 批量查询动态路由的内网访问应用
+// List private access applications for dynamic routes in your Alibaba Cloud account.
 //
 // @param request - ListPrivateAccessApplicationsForDynamicRouteRequest
 //
@@ -5556,7 +5656,7 @@ func (client *Client) ListPrivateAccessApplicationsForDynamicRouteWithOptions(re
 
 // Summary:
 //
-// 批量查询动态路由的内网访问应用
+// List private access applications for dynamic routes in your Alibaba Cloud account.
 //
 // @param request - ListPrivateAccessApplicationsForDynamicRouteRequest
 //
@@ -5574,7 +5674,7 @@ func (client *Client) ListPrivateAccessApplicationsForDynamicRoute(request *List
 
 // Summary:
 //
-// Queries the private access policies within the current Alibaba Cloud account.
+// Queries the information about all private access policies under the current Alibaba Cloud account.
 //
 // @param request - ListPrivateAccessPolicesRequest
 //
@@ -5614,7 +5714,7 @@ func (client *Client) ListPrivateAccessPolicesWithOptions(request *ListPrivateAc
 
 // Summary:
 //
-// Queries the private access policies within the current Alibaba Cloud account.
+// Queries the information about all private access policies under the current Alibaba Cloud account.
 //
 // @param request - ListPrivateAccessPolicesRequest
 //
@@ -5690,7 +5790,7 @@ func (client *Client) ListPrivateAccessTags(request *ListPrivateAccessTagsReques
 
 // Summary:
 //
-// 批量查询动态路由的内网访问标签
+// Lists the tags for dynamic routes in your Alibaba Cloud account.
 //
 // @param request - ListPrivateAccessTagsForDynamicRouteRequest
 //
@@ -5730,7 +5830,7 @@ func (client *Client) ListPrivateAccessTagsForDynamicRouteWithOptions(request *L
 
 // Summary:
 //
-// 批量查询动态路由的内网访问标签
+// Lists the tags for dynamic routes in your Alibaba Cloud account.
 //
 // @param request - ListPrivateAccessTagsForDynamicRouteRequest
 //
@@ -5748,7 +5848,7 @@ func (client *Client) ListPrivateAccessTagsForDynamicRoute(request *ListPrivateA
 
 // Summary:
 //
-// 查询用户设备注册策略列表
+// Query the list of device registration policies for your Alibaba Cloud account.
 //
 // @param request - ListRegistrationPoliciesRequest
 //
@@ -5788,7 +5888,7 @@ func (client *Client) ListRegistrationPoliciesWithOptions(request *ListRegistrat
 
 // Summary:
 //
-// 查询用户设备注册策略列表
+// Query the list of device registration policies for your Alibaba Cloud account.
 //
 // @param request - ListRegistrationPoliciesRequest
 //
@@ -5806,7 +5906,7 @@ func (client *Client) ListRegistrationPolicies(request *ListRegistrationPolicies
 
 // Summary:
 //
-// 查询用户组相关的设备注册策略
+// Queries the device registration policies that are associated with user groups in your Alibaba Cloud account.
 //
 // @param request - ListRegistrationPoliciesForUserGroupRequest
 //
@@ -5846,7 +5946,7 @@ func (client *Client) ListRegistrationPoliciesForUserGroupWithOptions(request *L
 
 // Summary:
 //
-// 查询用户组相关的设备注册策略
+// Queries the device registration policies that are associated with user groups in your Alibaba Cloud account.
 //
 // @param request - ListRegistrationPoliciesForUserGroupRequest
 //
@@ -5864,7 +5964,7 @@ func (client *Client) ListRegistrationPoliciesForUserGroup(request *ListRegistra
 
 // Summary:
 //
-// 批量查询终端安装软件列表
+// Lists the software installed on a user device.
 //
 // @param request - ListSoftwareForUserDeviceRequest
 //
@@ -5904,7 +6004,7 @@ func (client *Client) ListSoftwareForUserDeviceWithOptions(request *ListSoftware
 
 // Summary:
 //
-// 批量查询终端安装软件列表
+// Lists the software installed on a user device.
 //
 // @param request - ListSoftwareForUserDeviceRequest
 //
@@ -5922,7 +6022,7 @@ func (client *Client) ListSoftwareForUserDevice(request *ListSoftwareForUserDevi
 
 // Summary:
 //
-// 批量查询内网访问应用的标签
+// Batch query tags for private network access applications under the current Alibaba Cloud account.
 //
 // @param request - ListTagsForPrivateAccessApplicationRequest
 //
@@ -5962,7 +6062,7 @@ func (client *Client) ListTagsForPrivateAccessApplicationWithOptions(request *Li
 
 // Summary:
 //
-// 批量查询内网访问应用的标签
+// Batch query tags for private network access applications under the current Alibaba Cloud account.
 //
 // @param request - ListTagsForPrivateAccessApplicationRequest
 //
@@ -5980,7 +6080,7 @@ func (client *Client) ListTagsForPrivateAccessApplication(request *ListTagsForPr
 
 // Summary:
 //
-// 批量查询内网访问策略的标签
+// Queries the tags of internal network access policies in your Alibaba Cloud account.
 //
 // @param request - ListTagsForPrivateAccessPolicyRequest
 //
@@ -6020,7 +6120,7 @@ func (client *Client) ListTagsForPrivateAccessPolicyWithOptions(request *ListTag
 
 // Summary:
 //
-// 批量查询内网访问策略的标签
+// Queries the tags of internal network access policies in your Alibaba Cloud account.
 //
 // @param request - ListTagsForPrivateAccessPolicyRequest
 //
@@ -6038,7 +6138,7 @@ func (client *Client) ListTagsForPrivateAccessPolicy(request *ListTagsForPrivate
 
 // Summary:
 //
-// Batch queries the uninstall request list under the current Alibaba Cloud account.
+// Retrieves a list of uninstallation requests for your Alibaba Cloud account.
 //
 // @param request - ListUninstallApplicationsRequest
 //
@@ -6078,7 +6178,7 @@ func (client *Client) ListUninstallApplicationsWithOptions(request *ListUninstal
 
 // Summary:
 //
-// Batch queries the uninstall request list under the current Alibaba Cloud account.
+// Retrieves a list of uninstallation requests for your Alibaba Cloud account.
 //
 // @param request - ListUninstallApplicationsRequest
 //
@@ -6096,7 +6196,7 @@ func (client *Client) ListUninstallApplications(request *ListUninstallApplicatio
 
 // Summary:
 //
-// Queries the application permissions of a logon user under the current Alibaba Cloud account.
+// Queries the application permissions of the logged-in user in the current Alibaba Cloud account.
 //
 // @param request - ListUserApplicationsRequest
 //
@@ -6136,7 +6236,7 @@ func (client *Client) ListUserApplicationsWithOptions(request *ListUserApplicati
 
 // Summary:
 //
-// Queries the application permissions of a logon user under the current Alibaba Cloud account.
+// Queries the application permissions of the logged-in user in the current Alibaba Cloud account.
 //
 // @param request - ListUserApplicationsRequest
 //
@@ -6154,7 +6254,7 @@ func (client *Client) ListUserApplications(request *ListUserApplicationsRequest)
 
 // Summary:
 //
-// 批量查询用户设备列表
+// Queries the list of user endpoint devices under the current Alibaba Cloud account.
 //
 // @param request - ListUserDevicesRequest
 //
@@ -6168,7 +6268,107 @@ func (client *Client) ListUserDevicesWithOptions(request *ListUserDevicesRequest
 			return _result, _err
 		}
 	}
-	query := openapiutil.Query(dara.ToMap(request))
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppStatuses) {
+		query["AppStatuses"] = request.AppStatuses
+	}
+
+	if !dara.IsNil(request.AppVersions) {
+		query["AppVersions"] = request.AppVersions
+	}
+
+	if !dara.IsNil(request.AutoLoginStatuses) {
+		query["AutoLoginStatuses"] = request.AutoLoginStatuses
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Department) {
+		query["Department"] = request.Department
+	}
+
+	if !dara.IsNil(request.DeviceBelong) {
+		query["DeviceBelong"] = request.DeviceBelong
+	}
+
+	if !dara.IsNil(request.DeviceGroupId) {
+		query["DeviceGroupId"] = request.DeviceGroupId
+	}
+
+	if !dara.IsNil(request.DeviceStatuses) {
+		query["DeviceStatuses"] = request.DeviceStatuses
+	}
+
+	if !dara.IsNil(request.DeviceTags) {
+		query["DeviceTags"] = request.DeviceTags
+	}
+
+	if !dara.IsNil(request.DeviceTypes) {
+		query["DeviceTypes"] = request.DeviceTypes
+	}
+
+	if !dara.IsNil(request.DlpStatuses) {
+		query["DlpStatuses"] = request.DlpStatuses
+	}
+
+	if !dara.IsNil(request.Hostname) {
+		query["Hostname"] = request.Hostname
+	}
+
+	if !dara.IsNil(request.IaStatuses) {
+		query["IaStatuses"] = request.IaStatuses
+	}
+
+	if !dara.IsNil(request.InnerIp) {
+		query["InnerIp"] = request.InnerIp
+	}
+
+	if !dara.IsNil(request.Mac) {
+		query["Mac"] = request.Mac
+	}
+
+	if !dara.IsNil(request.NacStatuses) {
+		query["NacStatuses"] = request.NacStatuses
+	}
+
+	if !dara.IsNil(request.PaStatuses) {
+		query["PaStatuses"] = request.PaStatuses
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SaseUserId) {
+		query["SaseUserId"] = request.SaseUserId
+	}
+
+	if !dara.IsNil(request.SharingStatus) {
+		query["SharingStatus"] = request.SharingStatus
+	}
+
+	if !dara.IsNil(request.SnBios) {
+		query["SnBios"] = request.SnBios
+	}
+
+	if !dara.IsNil(request.SnSystem) {
+		query["SnSystem"] = request.SnSystem
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.Username) {
+		query["Username"] = request.Username
+	}
+
+	if !dara.IsNil(request.Workshop) {
+		query["Workshop"] = request.Workshop
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6177,7 +6377,7 @@ func (client *Client) ListUserDevicesWithOptions(request *ListUserDevicesRequest
 		Version:     dara.String("2023-01-20"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
+		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("RPC"),
 		ReqBodyType: dara.String("formData"),
@@ -6194,7 +6394,7 @@ func (client *Client) ListUserDevicesWithOptions(request *ListUserDevicesRequest
 
 // Summary:
 //
-// 批量查询用户设备列表
+// Queries the list of user endpoint devices under the current Alibaba Cloud account.
 //
 // @param request - ListUserDevicesRequest
 //
@@ -6212,7 +6412,7 @@ func (client *Client) ListUserDevices(request *ListUserDevicesRequest) (_result 
 
 // Summary:
 //
-// 批量查询用户组
+// Retrieves information about all user groups in your Alibaba Cloud account.
 //
 // @param request - ListUserGroupsRequest
 //
@@ -6252,7 +6452,7 @@ func (client *Client) ListUserGroupsWithOptions(request *ListUserGroupsRequest, 
 
 // Summary:
 //
-// 批量查询用户组
+// Retrieves information about all user groups in your Alibaba Cloud account.
 //
 // @param request - ListUserGroupsRequest
 //
@@ -6270,7 +6470,7 @@ func (client *Client) ListUserGroups(request *ListUserGroupsRequest) (_result *L
 
 // Summary:
 //
-// 批量查询内网访问策略的用户组
+// Retrieve user groups for private network access policies in batches under your Alibaba Cloud account.
 //
 // @param request - ListUserGroupsForPrivateAccessPolicyRequest
 //
@@ -6310,7 +6510,7 @@ func (client *Client) ListUserGroupsForPrivateAccessPolicyWithOptions(request *L
 
 // Summary:
 //
-// 批量查询内网访问策略的用户组
+// Retrieve user groups for private network access policies in batches under your Alibaba Cloud account.
 //
 // @param request - ListUserGroupsForPrivateAccessPolicyRequest
 //
@@ -6328,7 +6528,7 @@ func (client *Client) ListUserGroupsForPrivateAccessPolicy(request *ListUserGrou
 
 // Summary:
 //
-// 查询设备注册策略相关用户组
+// Lists the user groups associated with device registration policies in your Alibaba Cloud account.
 //
 // @param request - ListUserGroupsForRegistrationPolicyRequest
 //
@@ -6368,7 +6568,7 @@ func (client *Client) ListUserGroupsForRegistrationPolicyWithOptions(request *Li
 
 // Summary:
 //
-// 查询设备注册策略相关用户组
+// Lists the user groups associated with device registration policies in your Alibaba Cloud account.
 //
 // @param request - ListUserGroupsForRegistrationPolicyRequest
 //
@@ -6386,7 +6586,7 @@ func (client *Client) ListUserGroupsForRegistrationPolicy(request *ListUserGroup
 
 // Summary:
 //
-// Query the zero trust policies of a User in a List.
+// Queries the list of user zero trust policies.
 //
 // @param request - ListUserPrivateAccessPoliciesRequest
 //
@@ -6426,7 +6626,7 @@ func (client *Client) ListUserPrivateAccessPoliciesWithOptions(request *ListUser
 
 // Summary:
 //
-// Query the zero trust policies of a User in a List.
+// Queries the list of user zero trust policies.
 //
 // @param request - ListUserPrivateAccessPoliciesRequest
 //
@@ -6444,7 +6644,7 @@ func (client *Client) ListUserPrivateAccessPolicies(request *ListUserPrivateAcce
 
 // Summary:
 //
-// 列表查询登陆用户
+// Queries the users for the current Alibaba Cloud account.
 //
 // @param request - ListUsersRequest
 //
@@ -6484,7 +6684,7 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *d
 
 // Summary:
 //
-// 列表查询登陆用户
+// Queries the users for the current Alibaba Cloud account.
 //
 // @param request - ListUsersRequest
 //
@@ -6502,7 +6702,7 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 
 // Summary:
 //
-// 根据数字水印信息查询字符串水印信息
+// Look up an existing watermark information mapping to retrieve the corresponding string-formatted watermark information from numeric-formatted watermark data.
 //
 // @param request - LookupWmInfoMappingRequest
 //
@@ -6542,7 +6742,7 @@ func (client *Client) LookupWmInfoMappingWithOptions(request *LookupWmInfoMappin
 
 // Summary:
 //
-// 根据数字水印信息查询字符串水印信息
+// Look up an existing watermark information mapping to retrieve the corresponding string-formatted watermark information from numeric-formatted watermark data.
 //
 // @param request - LookupWmInfoMappingRequest
 //
@@ -6560,7 +6760,7 @@ func (client *Client) LookupWmInfoMapping(request *LookupWmInfoMappingRequest) (
 
 // Summary:
 //
-// Modify enterprise acceleration policy.
+// Modifies an enterprise acceleration policy.
 //
 // @param request - ModifyEnterpriseAcceleratePolicyRequest
 //
@@ -6644,7 +6844,7 @@ func (client *Client) ModifyEnterpriseAcceleratePolicyWithOptions(request *Modif
 
 // Summary:
 //
-// Modify enterprise acceleration policy.
+// Modifies an enterprise acceleration policy.
 //
 // @param request - ModifyEnterpriseAcceleratePolicyRequest
 //
@@ -6662,7 +6862,7 @@ func (client *Client) ModifyEnterpriseAcceleratePolicy(request *ModifyEnterprise
 
 // Summary:
 //
-// 吊销用户设备会话
+// Revokes a user device session.
 //
 // @param request - RevokeUserDeviceSessionRequest
 //
@@ -6710,7 +6910,7 @@ func (client *Client) RevokeUserDeviceSessionWithOptions(request *RevokeUserDevi
 
 // Summary:
 //
-// 吊销用户设备会话
+// Revokes a user device session.
 //
 // @param request - RevokeUserDeviceSessionRequest
 //
@@ -6730,7 +6930,7 @@ func (client *Client) RevokeUserDeviceSession(request *RevokeUserDeviceSessionRe
 //
 // Summary:
 //
-// Revoke a User logon session.
+// Revokes a user logon session.
 //
 // @param request - RevokeUserSessionRequest
 //
@@ -6780,7 +6980,7 @@ func (client *Client) RevokeUserSessionWithOptions(request *RevokeUserSessionReq
 //
 // Summary:
 //
-// Revoke a User logon session.
+// Revokes a user logon session.
 //
 // @param request - RevokeUserSessionRequest
 //
@@ -6799,7 +6999,7 @@ func (client *Client) RevokeUserSession(request *RevokeUserSessionRequest) (_res
 
 // Summary:
 //
-// Update an approval flow under the current Alibaba Cloud account.
+// Updates an approval flow under the current Alibaba Cloud account.
 //
 // @param tmpReq - UpdateApprovalProcessRequest
 //
@@ -6890,7 +7090,7 @@ func (client *Client) UpdateApprovalProcessWithOptions(tmpReq *UpdateApprovalPro
 
 // Summary:
 //
-// Update an approval flow under the current Alibaba Cloud account.
+// Updates an approval flow under the current Alibaba Cloud account.
 //
 // @param request - UpdateApprovalProcessRequest
 //
@@ -6908,7 +7108,7 @@ func (client *Client) UpdateApprovalProcess(request *UpdateApprovalProcessReques
 
 // Summary:
 //
-// Update the approval instance status under the current Alibaba Cloud account.
+// Updates the status of an approval instance under your Alibaba Cloud account.
 //
 // @param request - UpdateApprovalStatusRequest
 //
@@ -6956,7 +7156,7 @@ func (client *Client) UpdateApprovalStatusWithOptions(request *UpdateApprovalSta
 
 // Summary:
 //
-// Update the approval instance status under the current Alibaba Cloud account.
+// Updates the status of an approval instance under your Alibaba Cloud account.
 //
 // @param request - UpdateApprovalStatusRequest
 //
@@ -6974,7 +7174,7 @@ func (client *Client) UpdateApprovalStatus(request *UpdateApprovalStatusRequest)
 
 // Summary:
 //
-// Update the Startup and anti-uninstall policy under the current Alibaba Cloud account.
+// Update the auto-start and anti-uninstall policy for your Alibaba Cloud account.
 //
 // @param tmpReq - UpdateBootAndAntiUninstallPolicyRequest
 //
@@ -7047,7 +7247,7 @@ func (client *Client) UpdateBootAndAntiUninstallPolicyWithOptions(tmpReq *Update
 
 // Summary:
 //
-// Update the Startup and anti-uninstall policy under the current Alibaba Cloud account.
+// Update the auto-start and anti-uninstall policy for your Alibaba Cloud account.
 //
 // @param request - UpdateBootAndAntiUninstallPolicyRequest
 //
@@ -7065,7 +7265,7 @@ func (client *Client) UpdateBootAndAntiUninstallPolicy(request *UpdateBootAndAnt
 
 // Summary:
 //
-// 修改自定义身份源指定用户
+// Update user information for a custom identity provider in your Alibaba Cloud account.
 //
 // @param request - UpdateClientUserRequest
 //
@@ -7125,7 +7325,7 @@ func (client *Client) UpdateClientUserWithOptions(request *UpdateClientUserReque
 
 // Summary:
 //
-// 修改自定义身份源指定用户
+// Update user information for a custom identity provider in your Alibaba Cloud account.
 //
 // @param request - UpdateClientUserRequest
 //
@@ -7143,7 +7343,7 @@ func (client *Client) UpdateClientUser(request *UpdateClientUserRequest) (_resul
 
 // Summary:
 //
-// 修改自定义身份源指定用户密码
+// Sets the password for a specified user that belongs to a custom identity source.
 //
 // @param request - UpdateClientUserPasswordRequest
 //
@@ -7195,7 +7395,7 @@ func (client *Client) UpdateClientUserPasswordWithOptions(request *UpdateClientU
 
 // Summary:
 //
-// 修改自定义身份源指定用户密码
+// Sets the password for a specified user that belongs to a custom identity source.
 //
 // @param request - UpdateClientUserPasswordRequest
 //
@@ -7213,7 +7413,7 @@ func (client *Client) UpdateClientUserPassword(request *UpdateClientUserPassword
 
 // Summary:
 //
-// 修改自定义身份源指定用户启用状态
+// Sets the status of a specified user from a custom identity source for your Alibaba Cloud account.
 //
 // @param request - UpdateClientUserStatusRequest
 //
@@ -7261,7 +7461,7 @@ func (client *Client) UpdateClientUserStatusWithOptions(request *UpdateClientUse
 
 // Summary:
 //
-// 修改自定义身份源指定用户启用状态
+// Sets the status of a specified user from a custom identity source for your Alibaba Cloud account.
 //
 // @param request - UpdateClientUserStatusRequest
 //
@@ -7279,7 +7479,7 @@ func (client *Client) UpdateClientUserStatus(request *UpdateClientUserStatusRequ
 
 // Summary:
 //
-// 修改动态路由
+// Modifies a dynamic route in your Alibaba Cloud account.
 //
 // @param request - UpdateDynamicRouteRequest
 //
@@ -7370,7 +7570,7 @@ func (client *Client) UpdateDynamicRouteWithOptions(request *UpdateDynamicRouteR
 
 // Summary:
 //
-// 修改动态路由
+// Modifies a dynamic route in your Alibaba Cloud account.
 //
 // @param request - UpdateDynamicRouteRequest
 //
@@ -7388,7 +7588,7 @@ func (client *Client) UpdateDynamicRoute(request *UpdateDynamicRouteRequest) (_r
 
 // Summary:
 //
-// 批量更新超额注册申请状态
+// Update the status of device registration applications that exceed your Alibaba Cloud account\\"s quota.
 //
 // @param request - UpdateExcessiveDeviceRegistrationApplicationsStatusRequest
 //
@@ -7439,7 +7639,7 @@ func (client *Client) UpdateExcessiveDeviceRegistrationApplicationsStatusWithOpt
 
 // Summary:
 //
-// 批量更新超额注册申请状态
+// Update the status of device registration applications that exceed your Alibaba Cloud account\\"s quota.
 //
 // @param request - UpdateExcessiveDeviceRegistrationApplicationsStatusRequest
 //
@@ -7457,7 +7657,7 @@ func (client *Client) UpdateExcessiveDeviceRegistrationApplicationsStatus(reques
 
 // Summary:
 //
-// 修改指定自定义身份源部门
+// Deletes a department from a custom identity provider for the current Alibaba Cloud account.
 //
 // @param request - UpdateIdpDepartmentRequest
 //
@@ -7509,7 +7709,7 @@ func (client *Client) UpdateIdpDepartmentWithOptions(request *UpdateIdpDepartmen
 
 // Summary:
 //
-// 修改指定自定义身份源部门
+// Deletes a department from a custom identity provider for the current Alibaba Cloud account.
 //
 // @param request - UpdateIdpDepartmentRequest
 //
@@ -7527,7 +7727,7 @@ func (client *Client) UpdateIdpDepartment(request *UpdateIdpDepartmentRequest) (
 
 // Summary:
 //
-// Batch modifies the Status of network access certificates for Users under the current Alibaba Cloud account.
+// Updates the network access certificate status for users in your Alibaba Cloud account.
 //
 // @param request - UpdateNacUserCertStatusRequest
 //
@@ -7578,7 +7778,7 @@ func (client *Client) UpdateNacUserCertStatusWithOptions(request *UpdateNacUserC
 
 // Summary:
 //
-// Batch modifies the Status of network access certificates for Users under the current Alibaba Cloud account.
+// Updates the network access certificate status for users in your Alibaba Cloud account.
 //
 // @param request - UpdateNacUserCertStatusRequest
 //
@@ -7596,7 +7796,7 @@ func (client *Client) UpdateNacUserCertStatus(request *UpdateNacUserCertStatusRe
 
 // Summary:
 //
-// Modifies the office applications of the current Alibaba Cloud account.
+// Modifies an internal-facing access application under the current Alibaba Cloud account.
 //
 // @param tmpReq - UpdatePrivateAccessApplicationRequest
 //
@@ -7614,6 +7814,10 @@ func (client *Client) UpdatePrivateAccessApplicationWithOptions(tmpReq *UpdatePr
 	openapiutil.Convert(tmpReq, request)
 	if !dara.IsNil(tmpReq.L7Config) {
 		request.L7ConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.L7Config, dara.String("L7Config"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.UnauthorizedAccessConfig) {
+		request.UnauthorizedAccessConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UnauthorizedAccessConfig, dara.String("UnauthorizedAccessConfig"), dara.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -7678,6 +7882,10 @@ func (client *Client) UpdatePrivateAccessApplicationWithOptions(tmpReq *UpdatePr
 		bodyFlat["TagIds"] = request.TagIds
 	}
 
+	if !dara.IsNil(request.UnauthorizedAccessConfigShrink) {
+		body["UnauthorizedAccessConfig"] = request.UnauthorizedAccessConfigShrink
+	}
+
 	body = dara.ToMap(body,
 		openapiutil.Query(bodyFlat))
 	req := &openapiutil.OpenApiRequest{
@@ -7705,7 +7913,7 @@ func (client *Client) UpdatePrivateAccessApplicationWithOptions(tmpReq *UpdatePr
 
 // Summary:
 //
-// Modifies the office applications of the current Alibaba Cloud account.
+// Modifies an internal-facing access application under the current Alibaba Cloud account.
 //
 // @param request - UpdatePrivateAccessApplicationRequest
 //
@@ -7723,7 +7931,7 @@ func (client *Client) UpdatePrivateAccessApplication(request *UpdatePrivateAcces
 
 // Summary:
 //
-// # Modify Private Access Policy
+// Update an internal network access policy for your Alibaba Cloud account.
 //
 // @param request - UpdatePrivateAccessPolicyRequest
 //
@@ -7854,7 +8062,7 @@ func (client *Client) UpdatePrivateAccessPolicyWithOptions(request *UpdatePrivat
 
 // Summary:
 //
-// # Modify Private Access Policy
+// Update an internal network access policy for your Alibaba Cloud account.
 //
 // @param request - UpdatePrivateAccessPolicyRequest
 //
@@ -7872,7 +8080,7 @@ func (client *Client) UpdatePrivateAccessPolicy(request *UpdatePrivateAccessPoli
 
 // Summary:
 //
-// 修改设备注册策略
+// Modifies a device registration policy for your Alibaba Cloud account.
 //
 // @param tmpReq - UpdateRegistrationPolicyRequest
 //
@@ -7973,7 +8181,7 @@ func (client *Client) UpdateRegistrationPolicyWithOptions(tmpReq *UpdateRegistra
 
 // Summary:
 //
-// 修改设备注册策略
+// Modifies a device registration policy for your Alibaba Cloud account.
 //
 // @param request - UpdateRegistrationPolicyRequest
 //
@@ -7991,7 +8199,7 @@ func (client *Client) UpdateRegistrationPolicy(request *UpdateRegistrationPolicy
 
 // Summary:
 //
-// Batch updates the uninstall request status under the current Alibaba Cloud account.
+// Batch updates the status of uninstall requests for your Alibaba Cloud account.
 //
 // @param request - UpdateUninstallApplicationsStatusRequest
 //
@@ -8042,7 +8250,7 @@ func (client *Client) UpdateUninstallApplicationsStatusWithOptions(request *Upda
 
 // Summary:
 //
-// Batch updates the uninstall request status under the current Alibaba Cloud account.
+// Batch updates the status of uninstall requests for your Alibaba Cloud account.
 //
 // @param request - UpdateUninstallApplicationsStatusRequest
 //
@@ -8060,7 +8268,7 @@ func (client *Client) UpdateUninstallApplicationsStatus(request *UpdateUninstall
 
 // Summary:
 //
-// 批量更新用户设备共享状态
+// Updates the sharing status of devices for multiple enterprise users.
 //
 // @param request - UpdateUserDevicesSharingStatusRequest
 //
@@ -8111,7 +8319,7 @@ func (client *Client) UpdateUserDevicesSharingStatusWithOptions(request *UpdateU
 
 // Summary:
 //
-// 批量更新用户设备共享状态
+// Updates the sharing status of devices for multiple enterprise users.
 //
 // @param request - UpdateUserDevicesSharingStatusRequest
 //
@@ -8129,7 +8337,7 @@ func (client *Client) UpdateUserDevicesSharingStatus(request *UpdateUserDevicesS
 
 // Summary:
 //
-// 批量更新用户设备状态
+// Update the status of endpoint devices for your Alibaba Cloud account.
 //
 // @param request - UpdateUserDevicesStatusRequest
 //
@@ -8180,7 +8388,7 @@ func (client *Client) UpdateUserDevicesStatusWithOptions(request *UpdateUserDevi
 
 // Summary:
 //
-// 批量更新用户设备状态
+// Update the status of endpoint devices for your Alibaba Cloud account.
 //
 // @param request - UpdateUserDevicesStatusRequest
 //
@@ -8198,7 +8406,7 @@ func (client *Client) UpdateUserDevicesStatus(request *UpdateUserDevicesStatusRe
 
 // Summary:
 //
-// 修改用户组
+// Modifies a user group under the current Alibaba Cloud account.
 //
 // @param request - UpdateUserGroupRequest
 //
@@ -8257,7 +8465,7 @@ func (client *Client) UpdateUserGroupWithOptions(request *UpdateUserGroupRequest
 
 // Summary:
 //
-// 修改用户组
+// Modifies a user group under the current Alibaba Cloud account.
 //
 // @param request - UpdateUserGroupRequest
 //
@@ -8275,7 +8483,7 @@ func (client *Client) UpdateUserGroup(request *UpdateUserGroupRequest) (_result 
 
 // Summary:
 //
-// 批量修改登陆用户状态
+// Updates the status of users in your Alibaba Cloud account.
 //
 // @param request - UpdateUsersStatusRequest
 //
@@ -8323,7 +8531,7 @@ func (client *Client) UpdateUsersStatusWithOptions(request *UpdateUsersStatusReq
 
 // Summary:
 //
-// 批量修改登陆用户状态
+// Updates the status of users in your Alibaba Cloud account.
 //
 // @param request - UpdateUsersStatusRequest
 //

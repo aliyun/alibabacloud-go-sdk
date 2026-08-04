@@ -16,12 +16,20 @@ type iUpdateClientUserStatusRequest interface {
 }
 
 type UpdateClientUserStatusRequest struct {
+	// The user ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1495
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The status of the user. Valid values:
+	//
+	// - **Enabled**: The user is enabled.
+	//
+	// - **Disabled**: The user is disabled.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,7 +16,10 @@ type iGetApprovalProcessResponseBody interface {
 }
 
 type GetApprovalProcessResponseBody struct {
+	// The approval flow.
 	Process *GetApprovalProcessResponseBodyProcess `json:"Process,omitempty" xml:"Process,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C81E0B4B-AAEB-5FDD-B27E-3F5AF7EBD7EF
@@ -59,28 +62,56 @@ func (s *GetApprovalProcessResponseBody) Validate() error {
 }
 
 type GetApprovalProcessResponseBodyProcess struct {
+	// The list of policies associated with endpoint uninstallation.
 	AppUninstallPolicies *GetApprovalProcessResponseBodyProcessAppUninstallPolicies `json:"AppUninstallPolicies,omitempty" xml:"AppUninstallPolicies,omitempty" type:"Struct"`
-	ApprovalType         *int32                                                     `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	// The approval type.
+	ApprovalType *int32 `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	// The time when the approval flow was created.
+	//
 	// example:
 	//
 	// 2022-10-25 10:44:09
-	CreateTime                 *string                                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description                *string                                                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The approval flow description.
+	//
+	// example:
+	//
+	// 这是一个审批流程
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The list of policies associated with device registration.
 	DeviceRegistrationPolicies *GetApprovalProcessResponseBodyProcessDeviceRegistrationPolicies `json:"DeviceRegistrationPolicies,omitempty" xml:"DeviceRegistrationPolicies,omitempty" type:"Struct"`
-	DlpSendPolicies            *GetApprovalProcessResponseBodyProcessDlpSendPolicies            `json:"DlpSendPolicies,omitempty" xml:"DlpSendPolicies,omitempty" type:"Struct"`
-	DomainBlacklistPolicies    *GetApprovalProcessResponseBodyProcessDomainBlacklistPolicies    `json:"DomainBlacklistPolicies,omitempty" xml:"DomainBlacklistPolicies,omitempty" type:"Struct"`
-	DomainWhitelistPolicies    *GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies    `json:"DomainWhitelistPolicies,omitempty" xml:"DomainWhitelistPolicies,omitempty" type:"Struct"`
-	EndpointHardeningPolicies  *GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies  `json:"EndpointHardeningPolicies,omitempty" xml:"EndpointHardeningPolicies,omitempty" type:"Struct"`
-	EventLabel                 *string                                                          `json:"EventLabel,omitempty" xml:"EventLabel,omitempty"`
-	ExternalConfig             *string                                                          `json:"ExternalConfig,omitempty" xml:"ExternalConfig,omitempty"`
+	// The list of policies associated with file outgoing.
+	DlpSendPolicies *GetApprovalProcessResponseBodyProcessDlpSendPolicies `json:"DlpSendPolicies,omitempty" xml:"DlpSendPolicies,omitempty" type:"Struct"`
+	// The list of policies associated with the domain name blacklist.
+	DomainBlacklistPolicies *GetApprovalProcessResponseBodyProcessDomainBlacklistPolicies `json:"DomainBlacklistPolicies,omitempty" xml:"DomainBlacklistPolicies,omitempty" type:"Struct"`
+	// The list of policies associated with the domain name whitelist.
+	DomainWhitelistPolicies *GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies `json:"DomainWhitelistPolicies,omitempty" xml:"DomainWhitelistPolicies,omitempty" type:"Struct"`
+	// The endpoint protection policies.
+	EndpointHardeningPolicies *GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies `json:"EndpointHardeningPolicies,omitempty" xml:"EndpointHardeningPolicies,omitempty" type:"Struct"`
+	// The label.
+	EventLabel *string `json:"EventLabel,omitempty" xml:"EventLabel,omitempty"`
+	// The external configuration.
+	ExternalConfig *string `json:"ExternalConfig,omitempty" xml:"ExternalConfig,omitempty"`
+	// The list of policies associated with peripheral control.
 	PeripheralBlockPolicies    *GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies    `json:"PeripheralBlockPolicies,omitempty" xml:"PeripheralBlockPolicies,omitempty" type:"Struct"`
+	PrivateAccessBlockPolicies *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies `json:"PrivateAccessBlockPolicies,omitempty" xml:"PrivateAccessBlockPolicies,omitempty" type:"Struct"`
+	// The approval flow ID.
+	//
 	// example:
 	//
 	// approval-process-35ee09077ee9****
-	ProcessId                 *string                                                         `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	ProcessName               *string                                                         `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
-	ProcessNodes              [][]*GetApprovalProcessResponseBodyProcessProcessNodes          `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
-	SoftwareBlockPolicies     *GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies     `json:"SoftwareBlockPolicies,omitempty" xml:"SoftwareBlockPolicies,omitempty" type:"Struct"`
+	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	// The approval flow name.
+	//
+	// example:
+	//
+	// 测试
+	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	// The list of approval nodes.
+	ProcessNodes [][]*GetApprovalProcessResponseBodyProcessProcessNodes `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
+	// The list of policies associated with software blocking.
+	SoftwareBlockPolicies *GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies `json:"SoftwareBlockPolicies,omitempty" xml:"SoftwareBlockPolicies,omitempty" type:"Struct"`
+	// The software hardening policies.
 	SoftwareHardeningPolicies *GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies `json:"SoftwareHardeningPolicies,omitempty" xml:"SoftwareHardeningPolicies,omitempty" type:"Struct"`
 }
 
@@ -138,6 +169,10 @@ func (s *GetApprovalProcessResponseBodyProcess) GetExternalConfig() *string {
 
 func (s *GetApprovalProcessResponseBodyProcess) GetPeripheralBlockPolicies() *GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies {
 	return s.PeripheralBlockPolicies
+}
+
+func (s *GetApprovalProcessResponseBodyProcess) GetPrivateAccessBlockPolicies() *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies {
+	return s.PrivateAccessBlockPolicies
 }
 
 func (s *GetApprovalProcessResponseBodyProcess) GetProcessId() *string {
@@ -220,6 +255,11 @@ func (s *GetApprovalProcessResponseBodyProcess) SetPeripheralBlockPolicies(v *Ge
 	return s
 }
 
+func (s *GetApprovalProcessResponseBodyProcess) SetPrivateAccessBlockPolicies(v *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) *GetApprovalProcessResponseBodyProcess {
+	s.PrivateAccessBlockPolicies = v
+	return s
+}
+
 func (s *GetApprovalProcessResponseBodyProcess) SetProcessId(v string) *GetApprovalProcessResponseBodyProcess {
 	s.ProcessId = &v
 	return s
@@ -281,6 +321,11 @@ func (s *GetApprovalProcessResponseBodyProcess) Validate() error {
 			return err
 		}
 	}
+	if s.PrivateAccessBlockPolicies != nil {
+		if err := s.PrivateAccessBlockPolicies.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.SoftwareBlockPolicies != nil {
 		if err := s.SoftwareBlockPolicies.Validate(); err != nil {
 			return err
@@ -295,9 +340,14 @@ func (s *GetApprovalProcessResponseBodyProcess) Validate() error {
 }
 
 type GetApprovalProcessResponseBodyProcessAppUninstallPolicies struct {
-	ExternalProcessId *string                                                              `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*GetApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	PolicyIds         []*string                                                            `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The external flow ID.
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The field mapping.
+	FieldMap []*GetApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The list of endpoint uninstall policy IDs.
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The approval template ID.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
@@ -362,11 +412,15 @@ func (s *GetApprovalProcessResponseBodyProcessAppUninstallPolicies) Validate() e
 }
 
 type GetApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap struct {
+	// The display field.
+	//
 	// example:
 	//
 	// 名称
 	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	// The system field.
+	//
 	// example:
 	//
 	// 名称
@@ -413,9 +467,14 @@ func (s *GetApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap) Vali
 }
 
 type GetApprovalProcessResponseBodyProcessDeviceRegistrationPolicies struct {
-	ExternalProcessId *string                                                                    `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*GetApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	PolicyIds         []*string                                                                  `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The external flow ID.
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The field mapping.
+	FieldMap []*GetApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The list of device registration policy IDs.
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The approval template ID.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
@@ -480,9 +539,11 @@ func (s *GetApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) Valida
 }
 
 type GetApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap struct {
+	// The display field.
 	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The system field.
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s GetApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap) String() string {
@@ -525,9 +586,14 @@ func (s *GetApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap
 }
 
 type GetApprovalProcessResponseBodyProcessDlpSendPolicies struct {
-	ExternalProcessId *string                                                         `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*GetApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	PolicyIds         []*string                                                       `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The external flow ID.
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The field mapping.
+	FieldMap []*GetApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The list of file outgoing policy IDs.
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The approval template ID.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
@@ -592,9 +658,11 @@ func (s *GetApprovalProcessResponseBodyProcessDlpSendPolicies) Validate() error 
 }
 
 type GetApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap struct {
+	// The display field.
 	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The system field.
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s GetApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap) String() string {
@@ -637,9 +705,14 @@ func (s *GetApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap) Validate(
 }
 
 type GetApprovalProcessResponseBodyProcessDomainBlacklistPolicies struct {
-	ExternalProcessId *string                                                                 `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*GetApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	PolicyIds         []*string                                                               `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The external flow ID.
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The field mapping.
+	FieldMap []*GetApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The list of domain name blacklist policy IDs.
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The approval template ID.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
@@ -704,9 +777,11 @@ func (s *GetApprovalProcessResponseBodyProcessDomainBlacklistPolicies) Validate(
 }
 
 type GetApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap struct {
+	// The display field.
 	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The system field.
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s GetApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap) String() string {
@@ -749,9 +824,14 @@ func (s *GetApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap) V
 }
 
 type GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies struct {
-	ExternalProcessId *string                                                                 `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*GetApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	PolicyIds         []*string                                                               `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The external flow ID.
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The field mapping table.
+	FieldMap []*GetApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The list of domain name whitelist policy IDs.
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The approval template ID.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
@@ -816,9 +896,11 @@ func (s *GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies) Validate(
 }
 
 type GetApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap struct {
+	// The display field.
 	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The system field.
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s GetApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap) String() string {
@@ -861,10 +943,14 @@ func (s *GetApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap) V
 }
 
 type GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies struct {
-	ExternalProcessId *string                                                                   `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*GetApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	PolicyIds         []*string                                                                 `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	SchemaId          *string                                                                   `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The external flow ID.
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The field mapping.
+	FieldMap []*GetApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The policy IDs.
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The template ID.
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies) String() string {
@@ -925,9 +1011,11 @@ func (s *GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies) Validat
 }
 
 type GetApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap struct {
+	// The display field.
 	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The system field.
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s GetApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap) String() string {
@@ -970,9 +1058,14 @@ func (s *GetApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap)
 }
 
 type GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies struct {
-	ExternalProcessId *string                                                                 `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	PolicyIds         []*string                                                               `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The external flow ID.
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The field mapping.
+	FieldMap []*GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The list of peripheral control policy IDs.
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The approval template ID.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
@@ -1037,9 +1130,11 @@ func (s *GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies) Validate(
 }
 
 type GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap struct {
+	// The display field.
 	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The system field.
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap) String() string {
@@ -1081,12 +1176,128 @@ func (s *GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap) V
 	return dara.Validate(s)
 }
 
+type GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies struct {
+	ExternalProcessId *string                                                                    `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	FieldMap          []*GetApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	PolicyIds         []*string                                                                  `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	SchemaId          *string                                                                    `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) GetExternalProcessId() *string {
+	return s.ExternalProcessId
+}
+
+func (s *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) GetFieldMap() []*GetApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap {
+	return s.FieldMap
+}
+
+func (s *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) GetPolicyIds() []*string {
+	return s.PolicyIds
+}
+
+func (s *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) GetSchemaId() *string {
+	return s.SchemaId
+}
+
+func (s *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) SetExternalProcessId(v string) *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies {
+	s.ExternalProcessId = &v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) SetFieldMap(v []*GetApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap) *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies {
+	s.FieldMap = v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) SetPolicyIds(v []*string) *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) SetSchemaId(v string) *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) Validate() error {
+	if s.FieldMap != nil {
+		for _, item := range s.FieldMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap struct {
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+}
+
+func (s GetApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap) GetDisplayField() *string {
+	return s.DisplayField
+}
+
+func (s *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
+func (s *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap) GetSystemField() *string {
+	return s.SystemField
+}
+
+func (s *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap) SetDisplayField(v string) *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap {
+	s.DisplayField = &v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap) SetDisplayFieldValue(v string) *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap {
+	s.DisplayFieldValue = &v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap) SetSystemField(v string) *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap {
+	s.SystemField = &v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetApprovalProcessResponseBodyProcessProcessNodes struct {
+	// The approver ID.
+	//
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
-	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The username of the approver.
+	//
+	// example:
+	//
+	// 王先生
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s GetApprovalProcessResponseBodyProcessProcessNodes) String() string {
@@ -1120,9 +1331,14 @@ func (s *GetApprovalProcessResponseBodyProcessProcessNodes) Validate() error {
 }
 
 type GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies struct {
-	ExternalProcessId *string                                                               `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	PolicyIds         []*string                                                             `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The external flow ID.
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The field mapping.
+	FieldMap []*GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The list of software blocking policy IDs.
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The approval template ID.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
@@ -1187,9 +1403,11 @@ func (s *GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies) Validate() 
 }
 
 type GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap struct {
+	// The display field.
 	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The system field.
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap) String() string {
@@ -1232,10 +1450,14 @@ func (s *GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap) Val
 }
 
 type GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies struct {
-	ExternalProcessId *string                                                                   `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*GetApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	PolicyIds         []*string                                                                 `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	SchemaId          *string                                                                   `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The external flow ID.
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The field mapping.
+	FieldMap []*GetApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The policy IDs.
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The template ID.
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) String() string {
@@ -1296,9 +1518,11 @@ func (s *GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) Validat
 }
 
 type GetApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap struct {
+	// The display field.
 	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The system field.
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s GetApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap) String() string {

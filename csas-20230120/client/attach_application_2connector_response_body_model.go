@@ -14,6 +14,8 @@ type iAttachApplication2ConnectorResponseBody interface {
 }
 
 type AttachApplication2ConnectorResponseBody struct {
+	// The ID of the current request.
+	//
 	// example:
 	//
 	// 7E9D7ACD-53D5-56EF-A913-79D148D06299

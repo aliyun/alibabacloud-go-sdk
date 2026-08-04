@@ -16,7 +16,10 @@ type iListApprovalSchemasForApprovalProcessesResponseBody interface {
 }
 
 type ListApprovalSchemasForApprovalProcessesResponseBody struct {
+	// A list of approval processes.
 	Processes []*ListApprovalSchemasForApprovalProcessesResponseBodyProcesses `json:"Processes,omitempty" xml:"Processes,omitempty" type:"Repeated"`
+	// The ID of this request.
+	//
 	// example:
 	//
 	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
@@ -63,11 +66,14 @@ func (s *ListApprovalSchemasForApprovalProcessesResponseBody) Validate() error {
 }
 
 type ListApprovalSchemasForApprovalProcessesResponseBodyProcesses struct {
+	// The ID of the approval process.
+	//
 	// example:
 	//
 	// approval-process-35ee09077ee9****
-	ProcessId *string                                                                `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	Schemas   []*ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Repeated"`
+	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	// A list of approval templates.
+	Schemas []*ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Repeated"`
 }
 
 func (s ListApprovalSchemasForApprovalProcessesResponseBodyProcesses) String() string {
@@ -110,28 +116,62 @@ func (s *ListApprovalSchemasForApprovalProcessesResponseBodyProcesses) Validate(
 }
 
 type ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas struct {
+	// The time when the approval template was created.
+	//
 	// example:
 	//
 	// 2024-03-15 14:44:07
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the approval template.
+	//
+	// example:
+	//
+	// 这是一个模板
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the template is maintained by Alibaba Cloud.
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The policy type that the template applies to. Valid values:
+	//
+	// - **DomainBlacklist**: Domain blacklist.
+	//
+	// - **DomainWhitelist**: Domain whitelist.
+	//
+	// - **SoftwareBlock**: Software disable.
+	//
+	// - **AppUninstall**: Application uninstall.
+	//
+	// - **DlpSend**: File transfer.
+	//
+	// - **PeripheralBlock**: Peripheral control.
+	//
 	// example:
 	//
 	// DlpSend
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The content of the approval template.
+	//
 	// example:
 	//
 	// {"form": {"labelCol": 6,"wrapperCol": 12}}
 	SchemaContent *string `json:"SchemaContent,omitempty" xml:"SchemaContent,omitempty"`
+	// The ID of the approval template.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
-	SchemaId   *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The name of the approval template.
+	//
+	// example:
+	//
+	// 测试
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The version of the approval template.
+	//
 	// example:
 	//
 	// 1715680940

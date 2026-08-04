@@ -14,6 +14,8 @@ type iDeleteDynamicRouteRequest interface {
 }
 
 type DeleteDynamicRouteRequest struct {
+	// The ID of the dynamic route.
+	//
 	// This parameter is required.
 	//
 	// example:

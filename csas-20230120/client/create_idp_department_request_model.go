@@ -16,13 +16,21 @@ type iCreateIdpDepartmentRequest interface {
 }
 
 type CreateIdpDepartmentRequest struct {
-	// This parameter is required.
-	DepartmentName *string `json:"DepartmentName,omitempty" xml:"DepartmentName,omitempty"`
+	// The department name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1222
+	// 示例部门
+	DepartmentName *string `json:"DepartmentName,omitempty" xml:"DepartmentName,omitempty"`
+	// The ID of the custom identity source configuration.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idp-cfg68956d86e********
 	IdpConfigId *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
 }
 

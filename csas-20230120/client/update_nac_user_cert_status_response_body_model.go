@@ -18,14 +18,28 @@ type iUpdateNacUserCertStatusResponseBody interface {
 }
 
 type UpdateNacUserCertStatusResponseBody struct {
+	// The HTTP status code or POP error code. Valid values:
+	//
+	// - **2xx**: Success.
+	//
+	// - **3xx**: Redirection.
+	//
+	// - **4xx**: Client error.
+	//
+	// - **5xx**: Server error.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Additional information about the result.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 102350E7-1A20-58F5-9D63-ABEA820AE6E1

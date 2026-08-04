@@ -18,14 +18,24 @@ type iUpdateIdpDepartmentRequest interface {
 }
 
 type UpdateIdpDepartmentRequest struct {
+	// The department ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10653
 	DepartmentId *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	// The department name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例部门
 	DepartmentName *string `json:"DepartmentName,omitempty" xml:"DepartmentName,omitempty"`
+	// The ID of the custom identity source configuration.
+	//
 	// This parameter is required.
 	//
 	// example:

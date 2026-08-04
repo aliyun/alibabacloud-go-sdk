@@ -34,47 +34,93 @@ type iModifyEnterpriseAcceleratePolicyRequest interface {
 }
 
 type ModifyEnterpriseAcceleratePolicyRequest struct {
+	// The acceleration mode:
+	//
+	// - **whiltelist**: whitelist acceleration
+	//
+	// - **global**: global acceleration
+	//
+	// - **build-in-list**: built-in system application acceleration
+	//
 	// example:
 	//
-	// whiltelist
+	// whitelist
 	AccelerationType *string `json:"AccelerationType,omitempty" xml:"AccelerationType,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the enterprise acceleration policy.
+	//
+	// example:
+	//
+	// 这是一条内网访问策略
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the enterprise acceleration policy.
+	//
 	// example:
 	//
 	// eap-ce153a7165c8feea
 	EapId *string `json:"EapId,omitempty" xml:"EapId,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the enterprise acceleration policy.
+	//
+	// example:
+	//
+	// 白名单策略001
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether to enable TLS mode:
+	//
+	// - **0**: disable
+	//
+	// - **1**: enable
+	//
 	// example:
 	//
 	// 0
 	OnTls *int32 `json:"OnTls,omitempty" xml:"OnTls,omitempty"`
+	// The priority.
+	//
 	// example:
 	//
-	// 999
+	// 49
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Specifies whether to display on the client:
+	//
+	// - **0**: do not display
+	//
+	// - **1**: display
+	//
 	// example:
 	//
 	// 0
 	ShowInClient *int32 `json:"ShowInClient,omitempty" xml:"ShowInClient,omitempty"`
+	// The address (IP or domain name) of the acceleration instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12.34.56.XX
 	UpstreamHost *string `json:"UpstreamHost,omitempty" xml:"UpstreamHost,omitempty"`
+	// The port of the acceleration instance (between 1000 and 60000).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1000
 	UpstreamPort *int32 `json:"UpstreamPort,omitempty" xml:"UpstreamPort,omitempty"`
+	// The acceleration instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ga
 	UpstreamType *string `json:"UpstreamType,omitempty" xml:"UpstreamType,omitempty"`
+	// The acceleration user group.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 测试用户组
 	UserAttributeGroup *string `json:"UserAttributeGroup,omitempty" xml:"UserAttributeGroup,omitempty"`
 }
 

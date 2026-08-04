@@ -28,31 +28,64 @@ type iListNacUserCertRequest interface {
 }
 
 type ListNacUserCertRequest struct {
+	// Page number of the current page in a paged query. Valid values: 1 to 10000.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Department  *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// Department that the user belongs to. The value must be 1 to 128 characters in length. It can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces.
+	//
+	// example:
+	//
+	// 测试部
+	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// Operating system type of the endpoint device. Valid values:
+	//
+	// - **windows**: Windows.
+	//
+	// - **macos**: macOS.
+	//
+	// - **linux**: Linux.
+	//
+	// - **android**: Android.
+	//
+	// - **ios**: iOS.
+	//
 	// example:
 	//
 	// windows
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// End time.
+	//
 	// example:
 	//
 	// 1702770400
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Number of entries per page for a paged query. Valid values: 1 to 1000.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Start time.
+	//
 	// example:
 	//
 	// 1702260834
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Certificate status. Valid values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Username.
+	//
 	// example:
 	//
 	// zhang**

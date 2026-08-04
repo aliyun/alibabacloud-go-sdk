@@ -16,7 +16,10 @@ type iLookupWmInfoMappingResponseBody interface {
 }
 
 type LookupWmInfoMappingResponseBody struct {
+	// Query result of the mapping.
 	Data *LookupWmInfoMappingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of this request.
+	//
 	// example:
 	//
 	// 7E9D7ACD-53D5-56EF-A913-79D148D06299
@@ -59,6 +62,10 @@ func (s *LookupWmInfoMappingResponseBody) Validate() error {
 }
 
 type LookupWmInfoMappingResponseBodyData struct {
+	// String-formatted watermark information obtained from the mapping lookup. Value source:
+	//
+	// - [CreateWmInfoMapping](~~CreateWmInfoMapping~~): The **WmInfoBytesB64*	- parameter from the CreateWmInfoMapping API.
+	//
 	// example:
 	//
 	// aGVsbG8gc2F*****

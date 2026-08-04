@@ -16,11 +16,14 @@ type iGetBootAndAntiUninstallPolicyResponseBody interface {
 }
 
 type GetBootAndAntiUninstallPolicyResponseBody struct {
+	// The ID of this request.
+	//
 	// example:
 	//
 	// CB67D866-1E54-5106-89DF-6D70C73E5989
-	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Strategy  *GetBootAndAntiUninstallPolicyResponseBodyStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The auto-start and anti-uninstall policy.
+	Strategy *GetBootAndAntiUninstallPolicyResponseBodyStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
 }
 
 func (s GetBootAndAntiUninstallPolicyResponseBody) String() string {
@@ -59,36 +62,53 @@ func (s *GetBootAndAntiUninstallPolicyResponseBody) Validate() error {
 }
 
 type GetBootAndAntiUninstallPolicyResponseBodyStrategy struct {
+	// Indicates whether end users can submit approval requests.
+	//
 	// example:
 	//
 	// true
-	AllowReport  *bool                                                          `json:"AllowReport,omitempty" xml:"AllowReport,omitempty"`
+	AllowReport *bool `json:"AllowReport,omitempty" xml:"AllowReport,omitempty"`
+	// The content shown in the client block pop-up window.
 	BlockContent *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent `json:"BlockContent,omitempty" xml:"BlockContent,omitempty" type:"Struct"`
+	// The time when the policy was created.
+	//
 	// example:
 	//
 	// 2023-04-16 10:50:05
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether anti-uninstall is enabled.
+	//
 	// example:
 	//
 	// true
 	IsAntiUninstall *bool `json:"IsAntiUninstall,omitempty" xml:"IsAntiUninstall,omitempty"`
+	// Indicates whether auto-start is enabled.
+	//
 	// example:
 	//
 	// true
 	IsBoot *bool `json:"IsBoot,omitempty" xml:"IsBoot,omitempty"`
+	// The ID of the policy.
+	//
 	// example:
 	//
 	// auto-boot-anti-uninstall-6f6cbf5f6605****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The ID of the approval process associated with the policy.
+	//
 	// example:
 	//
 	// approval-process-300abfb970cc****
 	ReportProcessId *string `json:"ReportProcessId,omitempty" xml:"ReportProcessId,omitempty"`
+	// The time when the policy was last updated.
+	//
 	// example:
 	//
 	// 2024-06-14 10:17:14
-	UpdateTime     *string   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserGroupIds   []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The list of user group IDs to which the policy applies.
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	// The list of users in the whitelist.
 	WhitelistUsers []*string `json:"WhitelistUsers,omitempty" xml:"WhitelistUsers,omitempty" type:"Repeated"`
 }
 
@@ -200,7 +220,9 @@ func (s *GetBootAndAntiUninstallPolicyResponseBodyStrategy) Validate() error {
 }
 
 type GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent struct {
+	// English content.
 	BlockTextEn *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn `json:"BlockTextEn,omitempty" xml:"BlockTextEn,omitempty" type:"Struct"`
+	// Chinese content.
 	BlockTextZh *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh `json:"BlockTextZh,omitempty" xml:"BlockTextZh,omitempty" type:"Struct"`
 }
 
@@ -245,18 +267,26 @@ func (s *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent) Validate
 }
 
 type GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn struct {
+	// The body text of the pop-up window.
+	//
 	// example:
 	//
 	// After uninstalling, the device can no longer be used for company work, and it will lose access to the company\\"s intranet!
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The label on the primary button of the pop-up window.
+	//
 	// example:
 	//
 	// Report
 	MainButtonText *string `json:"MainButtonText,omitempty" xml:"MainButtonText,omitempty"`
+	// The label on the secondary button of the pop-up window.
+	//
 	// example:
 	//
 	// Ignore
 	MinorButtonText *string `json:"MinorButtonText,omitempty" xml:"MinorButtonText,omitempty"`
+	// The title of the pop-up window.
+	//
 	// example:
 	//
 	// Anti-Uninstall Warning
@@ -312,10 +342,30 @@ func (s *GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextE
 }
 
 type GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh struct {
-	Content         *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	MainButtonText  *string `json:"MainButtonText,omitempty" xml:"MainButtonText,omitempty"`
+	// The body text of the pop-up window.
+	//
+	// example:
+	//
+	// 卸载后该设备无法再用于公司办公，同时该设备将失去进入公司内网权限！
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The label on the primary button of the pop-up window.
+	//
+	// example:
+	//
+	// 去报备
+	MainButtonText *string `json:"MainButtonText,omitempty" xml:"MainButtonText,omitempty"`
+	// The label on the secondary button of the pop-up window.
+	//
+	// example:
+	//
+	// 我知道了
 	MinorButtonText *string `json:"MinorButtonText,omitempty" xml:"MinorButtonText,omitempty"`
-	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The title of the pop-up window.
+	//
+	// example:
+	//
+	// 防卸载警告
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh) String() string {

@@ -18,11 +18,16 @@ type iListDynamicRouteRegionsResponseBody interface {
 }
 
 type ListDynamicRouteRegionsResponseBody struct {
+	// The list of regions for POP cluster access points authorized for the SASE Global Office service.
 	Regions []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The ID of this request.
+	//
 	// example:
 	//
 	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of regions for POP cluster access points authorized for the SASE Global Office service.
+	//
 	// example:
 	//
 	// 1

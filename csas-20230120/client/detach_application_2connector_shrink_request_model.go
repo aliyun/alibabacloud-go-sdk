@@ -16,9 +16,11 @@ type iDetachApplication2ConnectorShrinkRequest interface {
 }
 
 type DetachApplication2ConnectorShrinkRequest struct {
+	// Collection of private network access application IDs. Enter a maximum of 100 private network access application IDs.
+	//
 	// This parameter is required.
 	ApplicationIdsShrink *string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty"`
-	// ConnectorID。
+	// Connector ID.
 	//
 	// This parameter is required.
 	//

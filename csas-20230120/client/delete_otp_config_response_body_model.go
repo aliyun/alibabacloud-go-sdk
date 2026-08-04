@@ -14,6 +14,8 @@ type iDeleteOtpConfigResponseBody interface {
 }
 
 type DeleteOtpConfigResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 54A4055A-343D-583E-9EAC-D12231148A68

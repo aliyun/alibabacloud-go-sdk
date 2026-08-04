@@ -14,6 +14,8 @@ type iListApprovalProcessesForApprovalSchemasRequest interface {
 }
 
 type ListApprovalProcessesForApprovalSchemasRequest struct {
+	// A collection of approval template IDs.
+	//
 	// This parameter is required.
 	SchemaIds []*string `json:"SchemaIds,omitempty" xml:"SchemaIds,omitempty" type:"Repeated"`
 }

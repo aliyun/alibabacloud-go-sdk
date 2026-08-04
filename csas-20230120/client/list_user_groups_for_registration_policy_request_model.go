@@ -14,6 +14,8 @@ type iListUserGroupsForRegistrationPolicyRequest interface {
 }
 
 type ListUserGroupsForRegistrationPolicyRequest struct {
+	// A collection of device registration policy IDs. You can specify up to 100 IDs.
+	//
 	// This parameter is required.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 }

@@ -20,24 +20,32 @@ type iListEnterpriseAccelerateTargetsRequest interface {
 }
 
 type ListEnterpriseAccelerateTargetsRequest struct {
+	// Page number to display in a paged query. Valid values: 1 to 10000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Enterprise Acceleration Policy ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eap-424ba3f47660425c
 	EapId *string `json:"EapId,omitempty" xml:"EapId,omitempty"`
+	// Number of entries per page in a paged query. Valid values: 1 to 1000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Enterprise acceleration target. Supports fuzzy query.
+	//
 	// example:
 	//
 	// googleapis.com

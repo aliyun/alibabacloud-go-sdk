@@ -16,7 +16,10 @@ type iListTagsForPrivateAccessPolicyResponseBody interface {
 }
 
 type ListTagsForPrivateAccessPolicyResponseBody struct {
+	// List of internal network access policies.
 	Polices []*ListTagsForPrivateAccessPolicyResponseBodyPolices `json:"Polices,omitempty" xml:"Polices,omitempty" type:"Repeated"`
+	// ID of the request.
+	//
 	// example:
 	//
 	// 9EE61139-A6A8-5E13-80AF-83435C21B26B
@@ -63,11 +66,14 @@ func (s *ListTagsForPrivateAccessPolicyResponseBody) Validate() error {
 }
 
 type ListTagsForPrivateAccessPolicyResponseBodyPolices struct {
+	// ID of the internal network access policy.
+	//
 	// example:
 	//
 	// pa-policy-1b0d0e8b4bcf****
-	PolicyId *string                                                  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	Tags     []*ListTagsForPrivateAccessPolicyResponseBodyPolicesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// Tags for the internal network access policy.
+	Tags []*ListTagsForPrivateAccessPolicyResponseBodyPolicesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListTagsForPrivateAccessPolicyResponseBodyPolices) String() string {
@@ -110,21 +116,36 @@ func (s *ListTagsForPrivateAccessPolicyResponseBodyPolices) Validate() error {
 }
 
 type ListTagsForPrivateAccessPolicyResponseBodyPolicesTags struct {
-	// 内网访问标签创建时间。
+	// Time when the tag was created.
 	//
 	// example:
 	//
 	// 2023-02-21 14:10:16
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Description of the tag.
+	//
+	// example:
+	//
+	// 这是一条被内网访问策略引用的标签
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Name of the tag.
+	//
 	// example:
 	//
 	// tag_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// ID of the tag.
+	//
 	// example:
 	//
 	// tag-d3f64e8bdd4a****
 	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// Type of the tag. Valid values:
+	//
+	// - **Default**: Default tag.
+	//
+	// - **Custom**: Custom tag.
+	//
 	// example:
 	//
 	// Default

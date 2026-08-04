@@ -18,13 +18,16 @@ type iListUserApplicationsResponseBody interface {
 }
 
 type ListUserApplicationsResponseBody struct {
+	// The list of applications that the user is authorized to access.
 	Applications []*ListUserApplicationsResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of applications that the user is authorized to access.
+	//
 	// example:
 	//
 	// 20
@@ -80,22 +83,56 @@ func (s *ListUserApplicationsResponseBody) Validate() error {
 }
 
 type ListUserApplicationsResponseBodyApplications struct {
+	// The action for private application access:
+	//
+	// - **Block**: blocks access.
+	//
+	// - **Allow**: allows access.
+	//
 	// example:
 	//
 	// Block
-	Action        *string         `json:"Action,omitempty" xml:"Action,omitempty"`
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The application address group. This parameter is returned when ConfigMode is set to Precise. This parameter is empty when ConfigMode is an empty string.
 	AddressGroups []*AddressGroup `json:"AddressGroups,omitempty" xml:"AddressGroups,omitempty" type:"Repeated"`
-	Addresses     []*string       `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// The list of private access application addresses.
+	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-application-b927baf3e592****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	ConfigMode    *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
+	// The configuration mode. Valid values:
+	//
+	// - Empty string: default mode.
+	//
+	// - Precise: precise mode.
+	//
+	// example:
+	//
+	// Precise
+	ConfigMode *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// private_access_application_name
-	Name       *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The port ranges of the private access application. Multiple port ranges cannot be repeated or overlap.
 	PortRanges []*ListUserApplicationsResponseBodyApplicationsPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	// The protocol of the private access application. Valid values:
+	//
+	// - **All**: all protocols.
+	//
+	// - **TCP**: TCP.
+	//
+	// - **UDP**: UDP.
+	//
+	// - **HTTP**: HTTP.
+	//
+	// - **HTTPS**: HTTPS.
+	//
 	// example:
 	//
 	// TCP
@@ -205,10 +242,14 @@ func (s *ListUserApplicationsResponseBodyApplications) Validate() error {
 }
 
 type ListUserApplicationsResponseBodyApplicationsPortRanges struct {
+	// The start port.
+	//
 	// example:
 	//
 	// 80
 	Begin *string `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	// The end port.
+	//
 	// example:
 	//
 	// 81

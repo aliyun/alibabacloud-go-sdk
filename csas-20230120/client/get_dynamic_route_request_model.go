@@ -14,6 +14,8 @@ type iGetDynamicRouteRequest interface {
 }
 
 type GetDynamicRouteRequest struct {
+	// The ID of the dynamic route.
+	//
 	// This parameter is required.
 	//
 	// example:

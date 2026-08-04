@@ -16,17 +16,21 @@ type iDeleteIdpDepartmentRequest interface {
 }
 
 type DeleteIdpDepartmentRequest struct {
+	// ID of the department.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10829
 	DepartmentId *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	// ID of the custom identity provider configuration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 507
+	// idp-cfg68956d86e********
 	IdpConfigId *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
 }
 

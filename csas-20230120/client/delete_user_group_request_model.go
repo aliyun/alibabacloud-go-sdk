@@ -14,6 +14,12 @@ type iDeleteUserGroupRequest interface {
 }
 
 type DeleteUserGroupRequest struct {
+	// The ID of the user group. You can get this value from:
+	//
+	// - [ListUserGroups](~~ListUserGroups~~): Query user groups.
+	//
+	// - [CreateUserGroup](~~CreateUserGroup~~): Create a user group.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -14,7 +14,7 @@ type iUpdatePrivateAccessApplicationResponseBody interface {
 }
 
 type UpdatePrivateAccessApplicationResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

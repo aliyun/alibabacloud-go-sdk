@@ -18,13 +18,22 @@ type iListEnterpriseAcceleratePoliciesRequest interface {
 }
 
 type ListEnterpriseAcceleratePoliciesRequest struct {
+	// The number of the page to return for a paged query. Valid values: 1 to 10000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The name of the enterprise acceleration policy.
+	//
+	// example:
+	//
+	// 测试策略
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of entries to return on each page for a paged query. Valid values: 1 to 1000.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,13 +16,21 @@ type iGetClientUserRequest interface {
 }
 
 type GetClientUserRequest struct {
+	// ID of the custom identity source configuration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 598
+	// idp-cfg68956d86e********
 	IdpConfigId *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	// Username.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 张三
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 

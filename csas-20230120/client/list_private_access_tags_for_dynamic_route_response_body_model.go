@@ -16,7 +16,10 @@ type iListPrivateAccessTagsForDynamicRouteResponseBody interface {
 }
 
 type ListPrivateAccessTagsForDynamicRouteResponseBody struct {
+	// The dynamic route list.
 	DynamicRoutes []*ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutes `json:"DynamicRoutes,omitempty" xml:"DynamicRoutes,omitempty" type:"Repeated"`
+	// The ID of this request.
+	//
 	// example:
 	//
 	// B608C6AE-623D-55C4-9454-601B88AE937E
@@ -63,11 +66,14 @@ func (s *ListPrivateAccessTagsForDynamicRouteResponseBody) Validate() error {
 }
 
 type ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutes struct {
+	// The dynamic route ID.
+	//
 	// example:
 	//
 	// dr-ca9fddfac7c6****
-	DynamicRouteId *string                                                              `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
-	Tags           []*ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	DynamicRouteId *string `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
+	// A collection of private network access tags.
+	Tags []*ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutes) String() string {
@@ -110,19 +116,36 @@ func (s *ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutes) Validate
 }
 
 type ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags struct {
+	// The private network access tag creation time.
+	//
 	// example:
 	//
 	// 2022-10-23 14:02:56
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The private network access tag description.
+	//
+	// example:
+	//
+	// 这是一条被动态路由引用的内网访问标签
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The private network access tag name.
+	//
 	// example:
 	//
 	// tag_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The private network access tag ID.
+	//
 	// example:
 	//
 	// tag-d3f64e8bdd4a****
 	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// The private network access tag type. Valid values:
+	//
+	// - **Default**: Default.
+	//
+	// - **Custom**: Custom.
+	//
 	// example:
 	//
 	// Custom

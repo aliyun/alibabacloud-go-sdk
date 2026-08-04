@@ -32,46 +32,79 @@ type iCreateDynamicRouteRequest interface {
 }
 
 type CreateDynamicRouteRequest struct {
+	// A collection of internal network access application IDs for the dynamic route. You can enter a maximum of 200 internal network access application IDs. Required when ApplicationType is **Application**. Choose one of **ApplicationIds*	- or **TagIds**. Do not enter when **ApplicationType*	- is **All**.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	// The application type of the dynamic route. Valid values:
+	//
+	// - **All**: All applications.
+	//
+	// - **Application**: Application.
+	//
+	// - **Tag**: Tag.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Application
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The dynamic route description. It is 1 to 128 characters long. It supports Chinese characters, uppercase and lowercase letters, numbers, periods (.), underscores (_), hyphens (-), and spaces.
+	//
+	// example:
+	//
+	// 这是一条动态路由
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The dynamic route type. Valid values: **connector**: Leased line.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// connector
 	DynamicRouteType *string `json:"DynamicRouteType,omitempty" xml:"DynamicRouteType,omitempty"`
+	// The dynamic route name. It is 1 to 128 characters long. It supports Chinese characters, uppercase and lowercase letters, numbers, periods (.), underscores (_), and hyphens (-).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dynamic_route_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The next hop instance ID of the dynamic route. Source:
+	//
+	// - For more information, see [ListConnectors](): Query Connectors in batches.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// connector-8ccb13b6f52c****
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	// The dynamic route priority. 1 indicates the highest priority. Valid values: 1-99.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 99
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// A list of regions supported by SASE POP cluster access points.
+	//
 	// This parameter is required.
 	RegionIds []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	// The dynamic route status. Valid values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Disabled
-	Status *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// A collection of internal network access tag IDs for the dynamic route. You can enter a maximum of 40 internal network access tag IDs. Required when ApplicationType is **Tag**. Choose one of **ApplicationIds*	- or **TagIds**. Do not enter when **ApplicationType*	- is **All**.
 	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 }
 

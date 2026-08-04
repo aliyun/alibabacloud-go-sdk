@@ -14,6 +14,8 @@ type iAttachPolicy2ApprovalProcessResponseBody interface {
 }
 
 type AttachPolicy2ApprovalProcessResponseBody struct {
+	// ID of this request.
+	//
 	// example:
 	//
 	// C51D9340-4604-5331-AE62-407F3B408F86

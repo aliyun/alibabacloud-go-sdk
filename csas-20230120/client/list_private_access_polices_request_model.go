@@ -34,23 +34,23 @@ type iListPrivateAccessPolicesRequest interface {
 }
 
 type ListPrivateAccessPolicesRequest struct {
-	// The ID of the office application. Either the ID or tag of the office application is used for queries. You can obtain the value by calling the following operations:
+	// The ID of the private access application. The application ID cannot be used together with the private access tag ID for filtering. Sources of the value:
 	//
-	// 	- [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): queries office applications.
+	//  - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): Queries private access applications by batch.
 	//
-	// 	- [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): creates an office application.
+	//  - [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): Creates a private access application.
 	//
 	// example:
 	//
 	// pa-application-e12860ef6c48****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The name of the office application.
+	// The name of the private access application.
 	//
 	// example:
 	//
-	// Office
+	// 办公
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// The page number. Valid values: 1 to 10000.
+	// The page number of the current page that is returned during paginated queries. Valid values: 1 to 10000.
 	//
 	// This parameter is required.
 	//
@@ -58,13 +58,13 @@ type ListPrivateAccessPolicesRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The name of the private access policy. The value must be 1 to 128 characters in length and can contain letters, digits, hyphens (-), underscores (_), and periods (.).
+	// The name of the private access policy. The name must be 1 to 128 characters in length and supports Chinese characters and uppercase and lowercase English letters. It can contain digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// private_access_policy_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of entries per page. Valid values: 1 to 1000.
+	// The number of entries per page that is set during paginated queries. Valid values: 1 to 1000.
 	//
 	// This parameter is required.
 	//
@@ -72,33 +72,33 @@ type ListPrivateAccessPolicesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The action in the private access policy. Valid values:
+	// The action of the private access policy. Valid values:
 	//
-	// 	- **Block**
+	// - **Block**: Block.
 	//
-	// 	- **Allow**
+	// - **Allow**: Allow.
 	//
 	// example:
 	//
 	// Allow
 	PolicyAction *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
-	// The IDs of the private access policies. You can enter up to 100 IDs.
+	// The collection of private access policy IDs. You can specify up to 100 private access policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// The status of the private access policy. Valid values:
 	//
-	// 	- **Enabled**
+	// - **Enabled**: Enabled.
 	//
-	// 	- **Disabled**
+	// - **Disabled**: Disabled.
 	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the tag for the office application. Either the ID or tag of the office application is used for queries. You can obtain the value by calling the following operations:
+	// The ID of the private access tag. The tag ID cannot be used together with the application ID for filtering. Sources of the value:
 	//
-	// 	- [ListPrivateAccessTags](~~ListPrivateAccessTags~~): queries tags for office applications.
+	//  - [ListPrivateAccessTags](~~ListPrivateAccessTags~~): Queries private access tags by batch.
 	//
-	// 	- [CreatePrivateAccessTag](~~CreatePrivateAccessTag~~): creates a tag for office applications.
+	//  - [CreatePrivateAccessTag](~~CreatePrivateAccessTag~~): Creates a private access tag.
 	//
 	// example:
 	//
@@ -108,13 +108,13 @@ type ListPrivateAccessPolicesRequest struct {
 	//
 	// example:
 	//
-	// Cloud service
+	// 云产品
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
-	// The ID of the user group. You can obtain the value by calling the following operations:
+	// The ID of the user group. Sources of the value:
 	//
-	// 	- [ListUserGroups](~~ListUserGroups~~): queries user groups.
+	// - [ListUserGroups](~~ListUserGroups~~): Queries user groups by batch.
 	//
-	// 	- [CreateUserGroup](~~CreateUserGroup~~): creates a user group.
+	// - [CreateUserGroup](~~CreateUserGroup~~): Creates a user group.
 	//
 	// example:
 	//

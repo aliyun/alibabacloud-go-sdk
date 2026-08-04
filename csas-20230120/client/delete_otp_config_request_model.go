@@ -14,6 +14,11 @@ type iDeleteOtpConfigRequest interface {
 }
 
 type DeleteOtpConfigRequest struct {
+	// The username.
+	//
+	// example:
+	//
+	// 张三
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 

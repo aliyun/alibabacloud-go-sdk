@@ -16,10 +16,14 @@ type iCreateUserGroupResponseBody interface {
 }
 
 type CreateUserGroupResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 102350E7-1A20-58F5-9D63-ABEA820AE6E1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the user group.
+	//
 	// example:
 	//
 	// usergroup-6f1ef2fc56b6****

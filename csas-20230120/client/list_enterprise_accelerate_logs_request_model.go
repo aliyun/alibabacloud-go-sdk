@@ -28,30 +28,62 @@ type iListEnterpriseAccelerateLogsRequest interface {
 }
 
 type ListEnterpriseAccelerateLogsRequest struct {
+	// The current page number displayed during paged queries. Value range: 1 to 10000.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Department  *string `json:"Department,omitempty" xml:"Department,omitempty"`
-	DstAddr     *string `json:"DstAddr,omitempty" xml:"DstAddr,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Department.
+	//
+	// example:
+	//
+	// 测试部
+	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// Endpoint.
+	//
+	// example:
+	//
+	// jfrog.cea.vwah.vwgroup.com
+	DstAddr *string `json:"DstAddr,omitempty" xml:"DstAddr,omitempty"`
+	// End time, UNIX timestamp, in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1748422694
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The number of items per page for paged queries. Value range: 1 to 1000.
+	//
 	// example:
 	//
 	// 10
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Query mode. Only the DstAddr field supports the following modes:
+	//
+	// - **Exact**: Term query
+	//
+	// - **Fuzzy**: Fuzzy query
+	//
+	// example:
+	//
+	// Exact
 	SearchMode *string `json:"SearchMode,omitempty" xml:"SearchMode,omitempty"`
+	// Start time, UNIX timestamp, in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1748419094
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Username  *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Username.
+	//
+	// example:
+	//
+	// 张三
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s ListEnterpriseAccelerateLogsRequest) String() string {

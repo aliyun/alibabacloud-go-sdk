@@ -14,6 +14,8 @@ type iDeleteIdpDepartmentResponseBody interface {
 }
 
 type DeleteIdpDepartmentResponseBody struct {
+	// ID of this request.
+	//
 	// example:
 	//
 	// FEF1144C-95D1-5F7C-81EF-9DB70EA49FCE

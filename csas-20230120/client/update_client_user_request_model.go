@@ -22,21 +22,34 @@ type iUpdateClientUserRequest interface {
 }
 
 type UpdateClientUserRequest struct {
+	// Department ID.
+	//
 	// example:
 	//
 	// 10701
 	DepartmentId *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// User description.
+	//
+	// example:
+	//
+	// 示例用户
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Email address.
+	//
 	// example:
 	//
 	// johndoe@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// User ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20644
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Mobile phone number without country code.
+	//
 	// example:
 	//
 	// 13641966835

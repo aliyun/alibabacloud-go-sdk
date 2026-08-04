@@ -14,6 +14,8 @@ type iEnableEnterpriseAcceleratePolicyRequest interface {
 }
 
 type EnableEnterpriseAcceleratePolicyRequest struct {
+  // The ID of the enterprise acceleration policy.
+  // 
   // This parameter is required.
   // 
   // example:

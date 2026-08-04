@@ -30,19 +30,33 @@ type iUpdateApprovalProcessShrinkRequest interface {
 }
 
 type UpdateApprovalProcessShrinkRequest struct {
-	ApprovalType             *int32  `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	ApprovalType *int32 `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	// The description of the approval flow. The description must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces. Chinese characters are supported.
+	//
+	// example:
+	//
+	// This is a test
 	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	EventLabel               *string `json:"EventLabel,omitempty" xml:"EventLabel,omitempty"`
 	ExternalConfig           *string `json:"ExternalConfig,omitempty" xml:"ExternalConfig,omitempty"`
 	MatchSchemaConfigsShrink *string `json:"MatchSchemaConfigs,omitempty" xml:"MatchSchemaConfigs,omitempty"`
-	MatchSchemasShrink       *string `json:"MatchSchemas,omitempty" xml:"MatchSchemas,omitempty"`
+	// The matched approval templates.
+	MatchSchemasShrink *string `json:"MatchSchemas,omitempty" xml:"MatchSchemas,omitempty"`
+	// The ID of the approval flow.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// approval-process-f16bf74b2b29****
-	ProcessId    *string     `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	ProcessName  *string     `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	// The name of the approval flow. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). Chinese characters are supported.
+	//
+	// example:
+	//
+	// Test
+	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	// The list of approval nodes. You can define up to 5 approval nodes.
 	ProcessNodes [][]*string `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
 }
 

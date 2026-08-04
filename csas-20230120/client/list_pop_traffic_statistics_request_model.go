@@ -18,14 +18,20 @@ type iListPopTrafficStatisticsRequest interface {
 }
 
 type ListPopTrafficStatisticsRequest struct {
+	// The end time for the data. This is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1681293719
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The start time for the data. This is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1681035708

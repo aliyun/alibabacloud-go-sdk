@@ -16,12 +16,16 @@ type iRevokeUserSessionRequest interface {
 }
 
 type RevokeUserSessionRequest struct {
+	// The unique ID of the user in the external identity source.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12345678
 	ExternalIds *string `json:"ExternalIds,omitempty" xml:"ExternalIds,omitempty"`
+	// The ID of the identity source configuration to which the user belongs.
+	//
 	// This parameter is required.
 	//
 	// example:

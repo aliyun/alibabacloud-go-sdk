@@ -14,6 +14,8 @@ type iListPrivateAccessTagsForDynamicRouteRequest interface {
 }
 
 type ListPrivateAccessTagsForDynamicRouteRequest struct {
+	// A collection of dynamic route IDs. You can enter a maximum of 100 dynamic route IDs.
+	//
 	// This parameter is required.
 	DynamicRouteIds []*string `json:"DynamicRouteIds,omitempty" xml:"DynamicRouteIds,omitempty" type:"Repeated"`
 }

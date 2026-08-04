@@ -14,6 +14,7 @@ type iDeleteUserDevicesRequest interface {
 }
 
 type DeleteUserDevicesRequest struct {
+	// The collection of endpoint device IDs. A maximum of 100 entries are supported.
 	DeviceTags []*string `json:"DeviceTags,omitempty" xml:"DeviceTags,omitempty" type:"Repeated"`
 }
 

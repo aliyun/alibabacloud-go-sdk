@@ -24,9 +24,9 @@ type iListConnectorsRequest interface {
 }
 
 type ListConnectorsRequest struct {
-	// Collection of ConnectorIDs. Up to 100 ConnectorIDs can be entered.
+	// An array of up to 100 ConnectorIDs.
 	ConnectorIds []*string `json:"ConnectorIds,omitempty" xml:"ConnectorIds,omitempty" type:"Repeated"`
-	// The page number of the current page in a paginated query. Value: 1~10000.
+	// The number of the page to return. Valid values: 1 to 10,000.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type ListConnectorsRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Connector name. Length: 1~128 characters, supporting Chinese and uppercase/lowercase English letters, and can include numbers, periods (.), underscores (_), and hyphens (-).
+	// The name of the connector. The name must be 1 to 128 characters long and can contain letters, Chinese characters, digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// connector_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of items per page in a paginated query. Value: 1~1000.
+	// The number of entries per page. Valid values: 1 to 1,000.
 	//
 	// This parameter is required.
 	//
@@ -48,21 +48,21 @@ type ListConnectorsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Connector connection status. Values:
+	// The connection status of the connector. Valid values:
 	//
-	// - **Online**: Online.
+	// - **Online**
 	//
-	// - **Offline**: Offline.
+	// - **Offline**
 	//
 	// example:
 	//
 	// Online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Connector instance status. Values:
+	// The state of the connector instance. Valid values:
 	//
-	// - **Enabled**: Enabled.
+	// - **Enabled**
 	//
-	// - **Disabled**: Disabled.
+	// - **Disabled**
 	//
 	// example:
 	//

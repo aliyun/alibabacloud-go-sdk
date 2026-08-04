@@ -16,10 +16,14 @@ type iCreateClientUserResponseBody interface {
 }
 
 type CreateClientUserResponseBody struct {
+	// ID of the created user.
+	//
 	// example:
 	//
 	// 726
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// ID of this request.
+	//
 	// example:
 	//
 	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049

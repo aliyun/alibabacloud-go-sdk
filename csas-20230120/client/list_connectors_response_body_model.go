@@ -18,15 +18,15 @@ type iListConnectorsResponseBody interface {
 }
 
 type ListConnectorsResponseBody struct {
-	// List of Connectors.
+	// A list of connectors.
 	Connectors []*ListConnectorsResponseBodyConnectors `json:"Connectors,omitempty" xml:"Connectors,omitempty" type:"Repeated"`
-	// The ID of the current request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of Connectors.
+	// The total number of connectors.
 	//
 	// example:
 	//
@@ -83,78 +83,79 @@ func (s *ListConnectorsResponseBody) Validate() error {
 }
 
 type ListConnectorsResponseBodyConnectors struct {
-	// Whether to enable global acceleration. Values:
+	// Indicates whether global acceleration is enabled. Valid values:
 	//
-	// - **Enabled**: Turn on.
+	// - **Enabled**: Global acceleration is enabled.
 	//
-	// - **Disabled**: Turn off.
+	// - **Disabled**: Global acceleration is disabled.
 	//
 	// example:
 	//
 	// Enabled
 	AccelerateStatus *string `json:"AccelerateStatus,omitempty" xml:"AccelerateStatus,omitempty"`
-	// Collection of associated internal network access applications.
+	// A list of associated private access applications.
 	Applications []*ListConnectorsResponseBodyConnectorsApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	// Cluster IP.
+	// The cluster IP address.
 	//
 	// example:
 	//
 	// 1.1.1.1
 	ClusterIP *string `json:"ClusterIP,omitempty" xml:"ClusterIP,omitempty"`
-	// Cluster port.
+	// The cluster port.
 	//
 	// example:
 	//
 	// 8000
 	ClusterPort *string `json:"ClusterPort,omitempty" xml:"ClusterPort,omitempty"`
-	// Collection of deployed ConnectorClients.
+	// A list of deployed connector clients.
 	ConnectorClients []*ListConnectorsResponseBodyConnectorsConnectorClients `json:"ConnectorClients,omitempty" xml:"ConnectorClients,omitempty" type:"Repeated"`
-	// ConnectorID.
+	// The connector ID.
 	//
 	// example:
 	//
 	// connector-94db94e06b98****
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
-	// Connector creation time.
+	// The time the connector was created.
 	//
 	// example:
 	//
 	// 2022-09-27 18:10:25
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Connector name.
+	// The connector name.
 	//
 	// example:
 	//
 	// connector_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Connector connection status. Values:
+	// The connection status of the connector. Valid values:
 	//
-	// - **Online**: Online.
+	// - **Online**: The connector is online.
 	//
-	// - **Offline**: Offline.
+	// - **Offline**: The connector is offline.
 	//
 	// example:
 	//
 	// Online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Connector instance status. Values:
+	// The status of the connector instance. Valid values:
 	//
-	// - **Enabled**: Enabled.
+	// - **Enabled**: The connector is enabled.
 	//
-	// - **Disabled**: Disabled.
+	// - **Disabled**: The connector is disabled.
 	//
 	// example:
 	//
 	// Enabled
 	SwitchStatus *string `json:"SwitchStatus,omitempty" xml:"SwitchStatus,omitempty"`
-	// Connector升级时间。
+	// The upgrade window for the connector.
 	UpgradeTime *ListConnectorsResponseBodyConnectorsUpgradeTime `json:"UpgradeTime,omitempty" xml:"UpgradeTime,omitempty" type:"Struct"`
+	VipCidr     *string                                          `json:"VipCidr,omitempty" xml:"VipCidr,omitempty"`
 }
 
 func (s ListConnectorsResponseBodyConnectors) String() string {
@@ -211,6 +212,10 @@ func (s *ListConnectorsResponseBodyConnectors) GetSwitchStatus() *string {
 
 func (s *ListConnectorsResponseBodyConnectors) GetUpgradeTime() *ListConnectorsResponseBodyConnectorsUpgradeTime {
 	return s.UpgradeTime
+}
+
+func (s *ListConnectorsResponseBodyConnectors) GetVipCidr() *string {
+	return s.VipCidr
 }
 
 func (s *ListConnectorsResponseBodyConnectors) SetAccelerateStatus(v string) *ListConnectorsResponseBodyConnectors {
@@ -273,6 +278,11 @@ func (s *ListConnectorsResponseBodyConnectors) SetUpgradeTime(v *ListConnectorsR
 	return s
 }
 
+func (s *ListConnectorsResponseBodyConnectors) SetVipCidr(v string) *ListConnectorsResponseBodyConnectors {
+	s.VipCidr = &v
+	return s
+}
+
 func (s *ListConnectorsResponseBodyConnectors) Validate() error {
 	if s.Applications != nil {
 		for _, item := range s.Applications {
@@ -301,13 +311,13 @@ func (s *ListConnectorsResponseBodyConnectors) Validate() error {
 }
 
 type ListConnectorsResponseBodyConnectorsApplications struct {
-	// Internal network access application ID.
+	// The private access application ID.
 	//
 	// example:
 	//
 	// pa-application-e12860ef6c48****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// Internal network access application name.
+	// The private access application name.
 	//
 	// example:
 	//
@@ -346,25 +356,25 @@ func (s *ListConnectorsResponseBodyConnectorsApplications) Validate() error {
 }
 
 type ListConnectorsResponseBodyConnectorsConnectorClients struct {
-	// Connection status between the ConnectorClient and ConnectorServer.
+	// The connection status between the connector client and connector server.
 	//
 	// example:
 	//
 	// Disconnected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	// Unique device identifier for the ConnectorClient.
+	// The unique device ID of the connector client.
 	//
 	// example:
 	//
 	// C50A2386-F851-4F11-920B-DF7148DA0C22
 	DevTag *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
-	// Hostname of the ConnectorClient.
+	// The hostname of the connector client.
 	//
 	// example:
 	//
 	// connector_client
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// Public IP of the ConnectorClient.
+	// The public IP address of the connector client.
 	//
 	// example:
 	//
@@ -421,13 +431,13 @@ func (s *ListConnectorsResponseBodyConnectorsConnectorClients) Validate() error 
 }
 
 type ListConnectorsResponseBodyConnectorsUpgradeTime struct {
-	// End time.
+	// The end time of the upgrade window.
 	//
 	// example:
 	//
 	// 23:00
 	End *string `json:"End,omitempty" xml:"End,omitempty"`
-	// Start time.
+	// The start time of the upgrade window.
 	//
 	// example:
 	//

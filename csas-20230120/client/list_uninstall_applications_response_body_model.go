@@ -18,11 +18,16 @@ type iListUninstallApplicationsResponseBody interface {
 }
 
 type ListUninstallApplicationsResponseBody struct {
+	// The list of uninstall applications.
 	Applications []*ListUninstallApplicationsResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of uninstall applications.
+	//
 	// example:
 	//
 	// 1
@@ -78,46 +83,103 @@ func (s *ListUninstallApplicationsResponseBody) Validate() error {
 }
 
 type ListUninstallApplicationsResponseBodyApplications struct {
+	// The uninstall application ID.
+	//
 	// example:
 	//
 	// uninstall-app-6646831ac314****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The time when the uninstall application was created.
+	//
 	// example:
 	//
 	// 2023-07-17 18:46:55
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The user\\"s department.
+	//
+	// example:
+	//
+	// 测试部
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// The device ID.
+	//
 	// example:
 	//
 	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
 	DevTag *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
+	// The operating system of the device. Valid values:
+	//
+	// - **Windows**
+	//
+	// - **macOS**
+	//
+	// - **Linux**
+	//
+	// - **Android**
+	//
+	// - **iOS**
+	//
+	// - **Windows_Wuying**: Elastic Desktop Service.
+	//
 	// example:
 	//
 	// Windows
-	DevType        *string   `json:"DevType,omitempty" xml:"DevType,omitempty"`
+	DevType *string `json:"DevType,omitempty" xml:"DevType,omitempty"`
+	// The list of full department paths.
 	FullDepartment []*string `json:"FullDepartment,omitempty" xml:"FullDepartment,omitempty" type:"Repeated"`
+	// The hostname of the device.
+	//
 	// example:
 	//
 	// win10-64bit
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	IdpName  *string `json:"IdpName,omitempty" xml:"IdpName,omitempty"`
+	// The name of the Identity Provider (IdP).
+	//
+	// example:
+	//
+	// 测试身份源
+	IdpName *string `json:"IdpName,omitempty" xml:"IdpName,omitempty"`
+	// Indicates whether the application has been uninstalled.
+	//
 	// example:
 	//
 	// false
 	IsUninstall *bool `json:"IsUninstall,omitempty" xml:"IsUninstall,omitempty"`
+	// The MAC address of the device.
+	//
 	// example:
 	//
 	// 00:16:XX:XX:7c:46
-	Mac    *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// The reason for the application.
+	//
+	// example:
+	//
+	// 这是一个测试
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	// The status of the uninstall application. Valid values:
+	//
+	// - **Pending**
+	//
+	// - **Approved**
+	//
+	// - **Rejected**
+	//
 	// example:
 	//
 	// Approved
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// 王先生
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 

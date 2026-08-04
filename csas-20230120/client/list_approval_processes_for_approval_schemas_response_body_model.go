@@ -16,11 +16,14 @@ type iListApprovalProcessesForApprovalSchemasResponseBody interface {
 }
 
 type ListApprovalProcessesForApprovalSchemasResponseBody struct {
+	// The ID of this request.
+	//
 	// example:
 	//
 	// BE4FB974-11BC-5453-9BE1-1606A73EACA6
-	RequestId *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Schemas   []*ListApprovalProcessesForApprovalSchemasResponseBodySchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of approval templates.
+	Schemas []*ListApprovalProcessesForApprovalSchemasResponseBodySchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Repeated"`
 }
 
 func (s ListApprovalProcessesForApprovalSchemasResponseBody) String() string {
@@ -63,7 +66,10 @@ func (s *ListApprovalProcessesForApprovalSchemasResponseBody) Validate() error {
 }
 
 type ListApprovalProcessesForApprovalSchemasResponseBodySchemas struct {
+	// A collection of approval flows.
 	Processes []*ListApprovalProcessesForApprovalSchemasResponseBodySchemasProcesses `json:"Processes,omitempty" xml:"Processes,omitempty" type:"Repeated"`
+	// The ID of the approval template.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
@@ -110,15 +116,29 @@ func (s *ListApprovalProcessesForApprovalSchemasResponseBodySchemas) Validate() 
 }
 
 type ListApprovalProcessesForApprovalSchemasResponseBodySchemasProcesses struct {
+	// The time when the approval flow was created.
+	//
 	// example:
 	//
 	// 2022-10-25 10:44:09
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the approval flow.
+	//
+	// example:
+	//
+	// 这是一个审批流程
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the approval flow.
+	//
 	// example:
 	//
 	// approval-process-dc61e92ba5c5****
-	ProcessId   *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	// The name of the approval flow.
+	//
+	// example:
+	//
+	// 测试
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
 }
 

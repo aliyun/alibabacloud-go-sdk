@@ -26,32 +26,53 @@ type iCreateClientUserRequest interface {
 }
 
 type CreateClientUserRequest struct {
+	// Department ID.
+	//
 	// example:
 	//
 	// 10797
 	DepartmentId *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// User description.
+	//
+	// example:
+	//
+	// 示例用户
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Email address.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// johndoe@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// ID of the custom identity source configuration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 727
 	IdpConfigId *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	// Mobile phone number without country code.
+	//
 	// example:
 	//
 	// 13641966835
 	MobileNumber *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
+	// Password. If empty, a random password is generated automatically.
+	//
 	// example:
 	//
 	// kehudiyi
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// Username.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 张三
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 

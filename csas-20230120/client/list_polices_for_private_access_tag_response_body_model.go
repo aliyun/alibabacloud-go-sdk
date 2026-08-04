@@ -16,11 +16,14 @@ type iListPolicesForPrivateAccessTagResponseBody interface {
 }
 
 type ListPolicesForPrivateAccessTagResponseBody struct {
+	// The ID of this request.
+	//
 	// example:
 	//
 	// 4D169859-A4F2-5EC8-853B-8447787C0D8A
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tags      []*ListPolicesForPrivateAccessTagResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of private network access tags.
+	Tags []*ListPolicesForPrivateAccessTagResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListPolicesForPrivateAccessTagResponseBody) String() string {
@@ -63,7 +66,10 @@ func (s *ListPolicesForPrivateAccessTagResponseBody) Validate() error {
 }
 
 type ListPolicesForPrivateAccessTagResponseBodyTags struct {
+	// Collection of private network access policies.
 	Polices []*ListPolicesForPrivateAccessTagResponseBodyTagsPolices `json:"Polices,omitempty" xml:"Polices,omitempty" type:"Repeated"`
+	// Private network access tag ID.
+	//
 	// example:
 	//
 	// tag-b927baf3e592****
@@ -110,39 +116,74 @@ func (s *ListPolicesForPrivateAccessTagResponseBodyTags) Validate() error {
 }
 
 type ListPolicesForPrivateAccessTagResponseBodyTagsPolices struct {
+	// The application type of the private network access policy. Values:
+	//
+	// - **Application**: Application.
+	//
+	// - **Tag**: Tag.
+	//
 	// example:
 	//
 	// Application
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	// 内网访问策略创建时间。
+	// Creation time of the private network access policy.
 	//
 	// example:
 	//
 	// 2023-02-21 14:10:16
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 自定义用户组属性集合。多个自定义用户组属性之间是或的关系，按照合集生效。
+	// A collection of custom user group attributes. Multiple custom user group attributes have an OR relationship and take effect as a union.
 	CustomUserAttributes []*ListPolicesForPrivateAccessTagResponseBodyTagsPolicesCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
-	Description          *string                                                                      `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Description of the private network access policy.
+	//
+	// example:
+	//
+	// 这是一条内网访问策略
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Private network access policy name.
+	//
 	// example:
 	//
 	// private_access_policy_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The action that the private access policy performs. Valid values:
+	//
+	// - **Block**: Blocks access.
+	//
+	// - **Allow**: Allows access.
+	//
 	// example:
 	//
 	// Allow
 	PolicyAction *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
+	// Private network access policy ID.
+	//
 	// example:
 	//
 	// pa-policy-867ef4007c8a****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The private network access policy priority. The number 1 indicates the highest priority.
+	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The status of the private network access policy. Values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The user group type of the private network access policy. Values:
+	//
+	// - **Normal**: Normal user group.
+	//
+	// - **Custom**: Custom user group.
+	//
 	// example:
 	//
 	// Normal
@@ -261,45 +302,45 @@ func (s *ListPolicesForPrivateAccessTagResponseBodyTagsPolices) Validate() error
 }
 
 type ListPolicesForPrivateAccessTagResponseBodyTagsPolicesCustomUserAttributes struct {
-	// 用户组的身份源ID。当自定义用户组类型为**department**时，存在该值。
+	// The identity provider ID of the user group. This value exists if the custom user group type is **department**.
 	//
 	// example:
 	//
 	// 12
 	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
-	// 用户组的关系。取值：
+	// The relationship of the user group. Values:
 	//
-	// - **Equal**：等于。
+	// - **Equal**: Equal.
 	//
-	// - **Unequal**：不等于。
+	// - **Unequal**: Unequal.
 	//
 	// example:
 	//
 	// Equal
 	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
-	// 用户组的类型。取值：
+	// The type of user group. Values:
 	//
-	// - **username**：用户名。
+	// - **username**: Username.
 	//
-	// - **department**：部门。
+	// - **department**: Department.
 	//
-	// - **email**：邮箱。
+	// - **email**: Mailbox.
 	//
-	// - **telephone**：手机。
+	// - **telephone**: Mobile phone.
 	//
 	// example:
 	//
 	// department
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
-	// 用户组属性的值。
+	// The value of the user group attribute.
 	//
-	// - 当用户组类型为**username**时，表示用户名的值。长度为1~128个字符，支持中文和大小写英文字母，可包含数字、半角句号（.）、下划线（_）和短划线（-）。
+	// - If the user group type is **username**, this indicates the username\\"s value. The length is 1 to 128 characters. It supports Chinese characters, uppercase and lowercase English letters, and can include numbers, periods (.), underscores (_), and hyphens (-).
 	//
-	// - 当用户组类型为**department**时，表示部门的值。如：OU=部门1,OU=SASE钉钉。
+	// - If the user group type is **department**, this indicates the department\\"s value. For example: OU=Department 1,OU=SASE DingTalk.
 	//
-	// - 当用户组类型为**email**时，表示邮箱的值。如：username@example.com。
+	// - If the user group type is **email**, this indicates the mailbox\\"s value. For example: username\\@example.com.
 	//
-	// - 当用户组类型为**telephone**时，表示手机的值。如：13900001234。
+	// - If the user group type is **telephone**, this indicates the mobile phone\\"s value. For example: 13900001234.
 	//
 	// example:
 	//

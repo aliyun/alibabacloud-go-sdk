@@ -16,7 +16,10 @@ type iGetClientUserResponseBody interface {
 }
 
 type GetClientUserResponseBody struct {
+	// User details.
 	Data *GetClientUserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// ID of this request.
+	//
 	// example:
 	//
 	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
@@ -59,36 +62,65 @@ func (s *GetClientUserResponseBody) Validate() error {
 }
 
 type GetClientUserResponseBodyData struct {
+	// Department to which the user belongs.
 	Department *GetClientUserResponseBodyDataDepartment `json:"Department,omitempty" xml:"Department,omitempty" type:"Struct"`
+	// Department ID.
+	//
 	// example:
 	//
 	// 10713
 	DepartmentId *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// User description.
+	//
+	// example:
+	//
+	// 示例用户
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Email address.
+	//
 	// example:
 	//
 	// johndoe@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// User ID.
+	//
 	// example:
 	//
 	// 83
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// ID of the custom identity source configuration.
+	//
 	// example:
 	//
-	// 598
+	// idp-cfg68956d86e********
 	IdpConfigId *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	// Mobile phone number without country code.
+	//
 	// example:
 	//
-	// 13641966835
+	// 1364196****
 	MobileNumber *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
+	// User status. Valid values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
 	// example:
 	//
 	// Disabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Unique identifier of the user.
+	//
 	// example:
 	//
 	// su_abcd7215****
-	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Username.
+	//
+	// example:
+	//
+	// 张三
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
@@ -200,10 +232,17 @@ func (s *GetClientUserResponseBodyData) Validate() error {
 }
 
 type GetClientUserResponseBodyDataDepartment struct {
+	// Department ID.
+	//
 	// example:
 	//
 	// 107
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Department name.
+	//
+	// example:
+	//
+	// 示例部门
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

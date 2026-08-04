@@ -16,7 +16,10 @@ type iListPrivateAccessApplicationsForDynamicRouteResponseBody interface {
 }
 
 type ListPrivateAccessApplicationsForDynamicRouteResponseBody struct {
+	// List of dynamic routes.
 	DynamicRoutes []*ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutes `json:"DynamicRoutes,omitempty" xml:"DynamicRoutes,omitempty" type:"Repeated"`
+	// ID of the request.
+	//
 	// example:
 	//
 	// BE4FB974-11BC-5453-9BE1-1606A73EACA6
@@ -63,7 +66,10 @@ func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBody) Validate() er
 }
 
 type ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutes struct {
+	// Collection of private access applications.
 	Applications []*ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
+	// Dynamic route ID.
+	//
 	// example:
 	//
 	// dr-ca9fddfac7c6****
@@ -110,25 +116,52 @@ func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutes) 
 }
 
 type ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications struct {
+	// Collection of private access application addresses.
 	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// Private access application ID.
+	//
 	// example:
 	//
 	// pa-application-7a9243dd02f4****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// Time when the private access application was created.
+	//
 	// example:
 	//
 	// 2022-04-13 13:33:24
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Private access application description.
+	//
+	// example:
+	//
+	// 这是一条被动态路由引用的内网访问应用
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Private access application name.
+	//
 	// example:
 	//
 	// application_name
-	Name       *string                                                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Collection of private access application port ranges.
 	PortRanges []*ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplicationsPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	// Protocol used by the private access application. Valid values:
+	//
+	// - **All**: All protocols.
+	//
+	// - **TCP**
+	//
+	// - **UDP**
+	//
 	// example:
 	//
 	// All
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// Status of the private access application. Valid values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
 	// example:
 	//
 	// Enabled
@@ -229,10 +262,14 @@ func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesAp
 }
 
 type ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplicationsPortRanges struct {
+	// Start port.
+	//
 	// example:
 	//
 	// 80
 	Begin *int32 `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	// End port.
+	//
 	// example:
 	//
 	// 81

@@ -16,10 +16,14 @@ type iCreateIdpDepartmentResponseBody interface {
 }
 
 type CreateIdpDepartmentResponseBody struct {
+	// The ID of the created department.
+	//
 	// example:
 	//
 	// 726
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D6707286-A50E-57B1-B2CF-EFAC59E850D8

@@ -14,6 +14,8 @@ type iListPolicesForPrivateAccessTagRequest interface {
 }
 
 type ListPolicesForPrivateAccessTagRequest struct {
+	// A collection of private network access tag IDs. Enter a maximum of 100 private network access tag IDs.
+	//
 	// This parameter is required.
 	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 }

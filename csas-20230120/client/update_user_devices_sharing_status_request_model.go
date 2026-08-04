@@ -16,8 +16,16 @@ type iUpdateUserDevicesSharingStatusRequest interface {
 }
 
 type UpdateUserDevicesSharingStatusRequest struct {
+	// Collection of device IDs.
+	//
 	// This parameter is required.
 	DeviceTags []*string `json:"DeviceTags,omitempty" xml:"DeviceTags,omitempty" type:"Repeated"`
+	// Indicates whether device sharing is enabled. Values:
+	//
+	// - **true**: Enable sharing.
+	//
+	// - **false**: Disable sharing.
+	//
 	// This parameter is required.
 	//
 	// example:

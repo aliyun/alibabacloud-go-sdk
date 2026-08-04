@@ -14,6 +14,8 @@ type iDeleteApprovalProcessesResponseBody interface {
 }
 
 type DeleteApprovalProcessesResponseBody struct {
+	// The ID of this request.
+	//
 	// example:
 	//
 	// B608C6AE-623D-55C4-9454-601B88AE937E

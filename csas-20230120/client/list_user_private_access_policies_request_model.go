@@ -20,7 +20,7 @@ type iListUserPrivateAccessPoliciesRequest interface {
 }
 
 type ListUserPrivateAccessPoliciesRequest struct {
-	// Current page number.
+	// The current page number.
 	//
 	// This parameter is required.
 	//
@@ -28,13 +28,13 @@ type ListUserPrivateAccessPoliciesRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Intranet access policy name. Length should be between 1 to 128 characters, supporting Chinese and case-sensitive English letters, and can include numbers, periods (.), underscores (_), and hyphens (-).
+	// The name of the private access policy. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase letters, lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// private_access_policy_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Number of items per page for pagination. Range: 1~100.
+	// The number of entries per page set for the paginated query. Valid values: 1 to 100.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ListUserPrivateAccessPoliciesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// User ID.
+	// The user ID.
 	//
 	// This parameter is required.
 	//

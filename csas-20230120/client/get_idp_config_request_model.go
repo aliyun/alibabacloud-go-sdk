@@ -14,11 +14,13 @@ type iGetIdpConfigRequest interface {
 }
 
 type GetIdpConfigRequest struct {
+	// ID of the identity provider configuration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1465
+	// idp-cfg68956d86e********
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 

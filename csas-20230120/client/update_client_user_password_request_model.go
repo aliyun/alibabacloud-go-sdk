@@ -18,14 +18,23 @@ type iUpdateClientUserPasswordRequest interface {
 }
 
 type UpdateClientUserPasswordRequest struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 1128
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The password. If this parameter is left empty, a random password is automatically generated.
+	//
 	// example:
 	//
 	// kehudiyidj
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// 张三
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 

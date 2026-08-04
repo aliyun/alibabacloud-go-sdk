@@ -18,16 +18,22 @@ type iListIdpDepartmentsRequest interface {
 }
 
 type ListIdpDepartmentsRequest struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The ID of the custom IdP configuration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1440
+	// idp-cfg68956d86e********
 	IdpConfigId *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10

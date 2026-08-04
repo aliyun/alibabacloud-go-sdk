@@ -18,11 +18,16 @@ type iListEnterpriseAcceleratePoliciesResponseBody interface {
 }
 
 type ListEnterpriseAcceleratePoliciesResponseBody struct {
+	// The list of policies.
 	Policies []*ListEnterpriseAcceleratePoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// DB0471D0-C05C-556D-9F40-0325D890036F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of policies.
+	//
 	// example:
 	//
 	// 5
@@ -78,47 +83,95 @@ func (s *ListEnterpriseAcceleratePoliciesResponseBody) Validate() error {
 }
 
 type ListEnterpriseAcceleratePoliciesResponseBodyPolicies struct {
+	// The acceleration pattern.
+	//
+	// - **whitelist**: accelerates access to applications in the whitelist.
+	//
+	// - **global**: accelerates access to all applications.
+	//
+	// - **build-in-list:*	- accelerates access to built-in applications.
+	//
 	// example:
 	//
 	// whitelist
 	AccelerationType *string `json:"AccelerationType,omitempty" xml:"AccelerationType,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the policy.
+	//
+	// example:
+	//
+	// 这是一条测试策略。
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The policy ID.
+	//
 	// example:
 	//
 	// eap-eec34d4b12fcca61
 	EapId *string `json:"EapId,omitempty" xml:"EapId,omitempty"`
+	// Indicates whether the policy is enabled.
+	//
+	// - **1**: enabled
+	//
+	// - **0**: disabled
+	//
 	// example:
 	//
 	// 0
 	Enabled *int32 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The policy name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether to enable Transport Layer Security (TLS).
+	//
+	// - **0**: disable
+	//
+	// - **1**: enable
+	//
 	// example:
 	//
 	// 0
 	OnTls *int32 `json:"OnTls,omitempty" xml:"OnTls,omitempty"`
+	// The policy priority.
+	//
 	// example:
 	//
 	// 99
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Indicates whether the policy is visible on the client.
+	//
+	// - **0**: not visible
+	//
+	// - **1**: visible
+	//
 	// example:
 	//
 	// 1
 	ShowInClient *int32 `json:"ShowInClient,omitempty" xml:"ShowInClient,omitempty"`
+	// The address of the acceleration instance. The address can be an IP address or a domain name.
+	//
 	// example:
 	//
 	// 12.34.56.XX
 	UpstreamHost *string `json:"UpstreamHost,omitempty" xml:"UpstreamHost,omitempty"`
+	// The port of the acceleration instance. The port must be between 1000 and 60000.
+	//
 	// example:
 	//
 	// 1000
 	UpstreamPort *int32 `json:"UpstreamPort,omitempty" xml:"UpstreamPort,omitempty"`
+	// The acceleration instance.
+	//
 	// example:
 	//
 	// connector
-	UpstreamType       *string `json:"UpstreamType,omitempty" xml:"UpstreamType,omitempty"`
+	UpstreamType *string `json:"UpstreamType,omitempty" xml:"UpstreamType,omitempty"`
+	// The user group for acceleration.
+	//
+	// example:
+	//
+	// 测试用户组
 	UserAttributeGroup *string `json:"UserAttributeGroup,omitempty" xml:"UserAttributeGroup,omitempty"`
 }
 

@@ -16,7 +16,10 @@ type iCreateApprovalProcessResponseBody interface {
 }
 
 type CreateApprovalProcessResponseBody struct {
+	// The approval process.
 	Process *CreateApprovalProcessResponseBodyProcess `json:"Process,omitempty" xml:"Process,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 2CABFEBB-0CE7-575E-833A-266F75D46713
@@ -59,24 +62,47 @@ func (s *CreateApprovalProcessResponseBody) Validate() error {
 }
 
 type CreateApprovalProcessResponseBodyProcess struct {
+	// The list of policies associated with terminal uninstallation.
 	AppUninstallPolicies *CreateApprovalProcessResponseBodyProcessAppUninstallPolicies `json:"AppUninstallPolicies,omitempty" xml:"AppUninstallPolicies,omitempty" type:"Struct"`
+	// The time when the approval process was created.
+	//
 	// example:
 	//
 	// 2022-10-25 10:44:09
-	CreateTime                 *string                                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description                *string                                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the approval process.
+	//
+	// example:
+	//
+	// 这是一个审批流程
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The list of policies associated with device registration.
 	DeviceRegistrationPolicies *CreateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies `json:"DeviceRegistrationPolicies,omitempty" xml:"DeviceRegistrationPolicies,omitempty" type:"Struct"`
-	DlpSendPolicies            *CreateApprovalProcessResponseBodyProcessDlpSendPolicies            `json:"DlpSendPolicies,omitempty" xml:"DlpSendPolicies,omitempty" type:"Struct"`
-	DomainBlacklistPolicies    *CreateApprovalProcessResponseBodyProcessDomainBlacklistPolicies    `json:"DomainBlacklistPolicies,omitempty" xml:"DomainBlacklistPolicies,omitempty" type:"Struct"`
-	DomainWhitelistPolicies    *CreateApprovalProcessResponseBodyProcessDomainWhitelistPolicies    `json:"DomainWhitelistPolicies,omitempty" xml:"DomainWhitelistPolicies,omitempty" type:"Struct"`
-	EndpointHardeningPolicies  *CreateApprovalProcessResponseBodyProcessEndpointHardeningPolicies  `json:"EndpointHardeningPolicies,omitempty" xml:"EndpointHardeningPolicies,omitempty" type:"Struct"`
+	// The list of policies associated with file outbound transfer.
+	DlpSendPolicies *CreateApprovalProcessResponseBodyProcessDlpSendPolicies `json:"DlpSendPolicies,omitempty" xml:"DlpSendPolicies,omitempty" type:"Struct"`
+	// The list of policies associated with the domain name blacklist.
+	DomainBlacklistPolicies *CreateApprovalProcessResponseBodyProcessDomainBlacklistPolicies `json:"DomainBlacklistPolicies,omitempty" xml:"DomainBlacklistPolicies,omitempty" type:"Struct"`
+	// The list of policies associated with the domain name whitelist.
+	DomainWhitelistPolicies   *CreateApprovalProcessResponseBodyProcessDomainWhitelistPolicies   `json:"DomainWhitelistPolicies,omitempty" xml:"DomainWhitelistPolicies,omitempty" type:"Struct"`
+	EndpointHardeningPolicies *CreateApprovalProcessResponseBodyProcessEndpointHardeningPolicies `json:"EndpointHardeningPolicies,omitempty" xml:"EndpointHardeningPolicies,omitempty" type:"Struct"`
+	// The list of policies associated with peripheral control.
 	PeripheralBlockPolicies    *CreateApprovalProcessResponseBodyProcessPeripheralBlockPolicies    `json:"PeripheralBlockPolicies,omitempty" xml:"PeripheralBlockPolicies,omitempty" type:"Struct"`
+	PrivateAccessBlockPolicies *CreateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies `json:"PrivateAccessBlockPolicies,omitempty" xml:"PrivateAccessBlockPolicies,omitempty" type:"Struct"`
+	// The ID of the approval process.
+	//
 	// example:
 	//
 	// approval-process-dc61e92ba5c5****
-	ProcessId                 *string                                                            `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	ProcessName               *string                                                            `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
-	ProcessNodes              [][]*CreateApprovalProcessResponseBodyProcessProcessNodes          `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
+	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	// The name of the approval process.
+	//
+	// example:
+	//
+	// 测试
+	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	// The list of approval nodes.
+	ProcessNodes [][]*CreateApprovalProcessResponseBodyProcessProcessNodes `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
+	// The list of policies associated with software blocking.
 	SoftwareBlockPolicies     *CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies     `json:"SoftwareBlockPolicies,omitempty" xml:"SoftwareBlockPolicies,omitempty" type:"Struct"`
 	SoftwareHardeningPolicies *CreateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies `json:"SoftwareHardeningPolicies,omitempty" xml:"SoftwareHardeningPolicies,omitempty" type:"Struct"`
 }
@@ -123,6 +149,10 @@ func (s *CreateApprovalProcessResponseBodyProcess) GetEndpointHardeningPolicies(
 
 func (s *CreateApprovalProcessResponseBodyProcess) GetPeripheralBlockPolicies() *CreateApprovalProcessResponseBodyProcessPeripheralBlockPolicies {
 	return s.PeripheralBlockPolicies
+}
+
+func (s *CreateApprovalProcessResponseBodyProcess) GetPrivateAccessBlockPolicies() *CreateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies {
+	return s.PrivateAccessBlockPolicies
 }
 
 func (s *CreateApprovalProcessResponseBodyProcess) GetProcessId() *string {
@@ -190,6 +220,11 @@ func (s *CreateApprovalProcessResponseBodyProcess) SetPeripheralBlockPolicies(v 
 	return s
 }
 
+func (s *CreateApprovalProcessResponseBodyProcess) SetPrivateAccessBlockPolicies(v *CreateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) *CreateApprovalProcessResponseBodyProcess {
+	s.PrivateAccessBlockPolicies = v
+	return s
+}
+
 func (s *CreateApprovalProcessResponseBodyProcess) SetProcessId(v string) *CreateApprovalProcessResponseBodyProcess {
 	s.ProcessId = &v
 	return s
@@ -251,6 +286,11 @@ func (s *CreateApprovalProcessResponseBodyProcess) Validate() error {
 			return err
 		}
 	}
+	if s.PrivateAccessBlockPolicies != nil {
+		if err := s.PrivateAccessBlockPolicies.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.SoftwareBlockPolicies != nil {
 		if err := s.SoftwareBlockPolicies.Validate(); err != nil {
 			return err
@@ -265,7 +305,10 @@ func (s *CreateApprovalProcessResponseBodyProcess) Validate() error {
 }
 
 type CreateApprovalProcessResponseBodyProcessAppUninstallPolicies struct {
+	// The list of terminal uninstallation policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The ID of the approval template.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
@@ -303,7 +346,10 @@ func (s *CreateApprovalProcessResponseBodyProcessAppUninstallPolicies) Validate(
 }
 
 type CreateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies struct {
+	// The list of device registration policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The ID of the approval template.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
@@ -341,7 +387,10 @@ func (s *CreateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) Val
 }
 
 type CreateApprovalProcessResponseBodyProcessDlpSendPolicies struct {
+	// The list of file outbound transfer policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The ID of the approval template.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
@@ -379,7 +428,10 @@ func (s *CreateApprovalProcessResponseBodyProcessDlpSendPolicies) Validate() err
 }
 
 type CreateApprovalProcessResponseBodyProcessDomainBlacklistPolicies struct {
+	// The list of domain name blacklist policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The ID of the approval template.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
@@ -417,7 +469,10 @@ func (s *CreateApprovalProcessResponseBodyProcessDomainBlacklistPolicies) Valida
 }
 
 type CreateApprovalProcessResponseBodyProcessDomainWhitelistPolicies struct {
+	// The list of domain name whitelist policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The ID of the approval template.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
@@ -490,7 +545,10 @@ func (s *CreateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) Vali
 }
 
 type CreateApprovalProcessResponseBodyProcessPeripheralBlockPolicies struct {
+	// The list of peripheral control policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The ID of the approval template.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
@@ -527,12 +585,54 @@ func (s *CreateApprovalProcessResponseBodyProcessPeripheralBlockPolicies) Valida
 	return dara.Validate(s)
 }
 
+type CreateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	SchemaId  *string   `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s CreateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) GetPolicyIds() []*string {
+	return s.PolicyIds
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) GetSchemaId() *string {
+	return s.SchemaId
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) SetPolicyIds(v []*string) *CreateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) SetSchemaId(v string) *CreateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateApprovalProcessResponseBodyProcessProcessNodes struct {
+	// The approver ID.
+	//
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
-	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The username of the approver.
+	//
+	// example:
+	//
+	// 王先生
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s CreateApprovalProcessResponseBodyProcessProcessNodes) String() string {
@@ -566,7 +666,10 @@ func (s *CreateApprovalProcessResponseBodyProcessProcessNodes) Validate() error 
 }
 
 type CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies struct {
+	// The list of software blocking policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The ID of the approval template.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****

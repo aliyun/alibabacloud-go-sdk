@@ -16,7 +16,10 @@ type iListUserGroupsForPrivateAccessPolicyResponseBody interface {
 }
 
 type ListUserGroupsForPrivateAccessPolicyResponseBody struct {
+	// List of private network access policies.
 	Polices []*ListUserGroupsForPrivateAccessPolicyResponseBodyPolices `json:"Polices,omitempty" xml:"Polices,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
@@ -63,10 +66,13 @@ func (s *ListUserGroupsForPrivateAccessPolicyResponseBody) Validate() error {
 }
 
 type ListUserGroupsForPrivateAccessPolicyResponseBodyPolices struct {
+	// Private network access policy ID.
+	//
 	// example:
 	//
 	// pa-policy-1b0d0e8b4bcf****
-	PolicyId   *string                                                              `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// Collection of user groups for the private network access policy.
 	UserGroups []*ListUserGroupsForPrivateAccessPolicyResponseBodyPolicesUserGroups `json:"UserGroups,omitempty" xml:"UserGroups,omitempty" type:"Repeated"`
 }
 
@@ -110,18 +116,28 @@ func (s *ListUserGroupsForPrivateAccessPolicyResponseBodyPolices) Validate() err
 }
 
 type ListUserGroupsForPrivateAccessPolicyResponseBodyPolicesUserGroups struct {
+	// Collection of user group properties.
 	Attributes []*ListUserGroupsForPrivateAccessPolicyResponseBodyPolicesUserGroupsAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	// 用户组创建时间。
+	// User group creation time.
 	//
 	// example:
 	//
 	// 2022-09-27 18:10:25
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// User group description.
+	//
+	// example:
+	//
+	// 这是一条被内网访问策略引用的用户组
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// User group name.
+	//
 	// example:
 	//
 	// user_group_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// User group ID.
+	//
 	// example:
 	//
 	// usergroup-6f1ef2fc56b6****
@@ -195,19 +211,50 @@ func (s *ListUserGroupsForPrivateAccessPolicyResponseBodyPolicesUserGroups) Vali
 }
 
 type ListUserGroupsForPrivateAccessPolicyResponseBodyPolicesUserGroupsAttributes struct {
+	// The identity source ID of the user group. This value exists if the custom user group type is **department**.
+	//
 	// example:
 	//
 	// 12
 	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// The relationship of the user group. Values:
+	//
+	// - **Equal**: Equal.
+	//
+	// - **Unequal**: Unequal.
+	//
 	// example:
 	//
 	// Equal
 	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// The type of the user group. Values:
+	//
+	// - **username**: username.
+	//
+	// - **department**: department.
+	//
+	// - **email**: mailbox.
+	//
+	// - **telephone**: telephone.
+	//
 	// example:
 	//
 	// department
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
-	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// Value of the user group property.
+	//
+	// - If the user group type is **username**, this indicates the username\\"s value. The length is 1 to 128 characters. It supports Chinese characters and uppercase and lowercase English letters. It can contain numbers, periods (.), underscores (_), and hyphens (-).
+	//
+	// - If the user group type is **department**, this indicates the department\\"s value, such as OU=Department 1,OU=SASE DingTalk.
+	//
+	// - If the user group type is **email**, this indicates the mailbox\\"s value, such as username\\@example.com.
+	//
+	// - If the user group type is **telephone**, this indicates the telephone\\"s value, such as 13900001234.
+	//
+	// example:
+	//
+	// OU=部门1,OU=SASE钉钉
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListUserGroupsForPrivateAccessPolicyResponseBodyPolicesUserGroupsAttributes) String() string {

@@ -14,6 +14,8 @@ type iGetUserDeviceRequest interface {
 }
 
 type GetUserDeviceRequest struct {
+	// The ID of the endpoint device. Valid values:
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,8 +16,10 @@ type iAddressGroup interface {
 }
 
 type AddressGroup struct {
-	Addresses []*string            `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	Ports     []*AddressGroupPorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	// Address list.
+	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// Port list.
+	Ports []*AddressGroupPorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
 }
 
 func (s AddressGroup) String() string {
@@ -60,10 +62,14 @@ func (s *AddressGroup) Validate() error {
 }
 
 type AddressGroupPorts struct {
+	// Start port. Must be less than or equal to the end port.
+	//
 	// example:
 	//
 	// 123
 	Begin *int32 `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	// End port. Must be greater than or equal to the start port.
+	//
 	// example:
 	//
 	// 1234

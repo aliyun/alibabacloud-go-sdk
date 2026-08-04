@@ -16,9 +16,11 @@ type iAttachApplication2ConnectorRequest interface {
 }
 
 type AttachApplication2ConnectorRequest struct {
+	// The set of private access application IDs. The number of private access applications that can be attached to a single Connector cannot exceed the total number of private access applications.
+	//
 	// This parameter is required.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
-	// ConnectorID。
+	// The Connector ID.
 	//
 	// This parameter is required.
 	//

@@ -16,7 +16,10 @@ type iUpdateExcessiveDeviceRegistrationApplicationsStatusResponseBody interface 
 }
 
 type UpdateExcessiveDeviceRegistrationApplicationsStatusResponseBody struct {
+	// List of device registration applications that exceed your quota.
 	Applications []*UpdateExcessiveDeviceRegistrationApplicationsStatusResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
+	// ID of the request.
+	//
 	// example:
 	//
 	// 102350E7-1A20-58F5-9D63-ABEA820AE6E1
@@ -63,44 +66,99 @@ func (s *UpdateExcessiveDeviceRegistrationApplicationsStatusResponseBody) Valida
 }
 
 type UpdateExcessiveDeviceRegistrationApplicationsStatusResponseBodyApplications struct {
+	// ID of the device registration application.
+	//
 	// example:
 	//
 	// reg-application-0f4a127b7e78****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// Time when the device registration application was created.
+	//
 	// example:
 	//
 	// 2023-07-17 18:46:55
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Department  *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Department to which the user belongs.
+	//
+	// example:
+	//
+	// 测试部
+	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// This field indicates the reason for the excessive device registration request.
+	//
+	// example:
+	//
+	// 这是一条超额注册申请
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// ID of the endpoint device.
+	//
 	// example:
 	//
 	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
 	DeviceTag *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
+	// Operating system of the endpoint device. Valid values:
+	//
+	// - **Windows**: Windows operating system.
+	//
+	// - **macOS**: macOS operating system.
+	//
+	// - **Linux**: Linux operating system.
+	//
+	// - **Android**: Android operating system.
+	//
+	// - **iOS**: iOS operating system.
+	//
+	// - **Windows_Wuying**: Alibaba Cloud Cloud Desktop operating system.
+	//
 	// example:
 	//
 	// Windows
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// Name of the endpoint device.
+	//
 	// example:
 	//
 	// win10-64bit
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// Indicates whether the device registration application has been used. Valid values:
+	//
+	// - **true**: Used.
+	//
+	// - **false**: Not used.
+	//
 	// example:
 	//
 	// false
 	IsUsed *bool `json:"IsUsed,omitempty" xml:"IsUsed,omitempty"`
+	// MAC address of the endpoint device.
+	//
 	// example:
 	//
 	// 00:16:XX:XX:7c:46
 	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// User ID.
+	//
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	// Status of the device registration application. Valid values:
+	//
+	// - **Pending**: Pending review.
+	//
+	// - **Approved**: Approved.
+	//
+	// - **Rejected**: Rejected.
+	//
 	// example:
 	//
 	// Approved
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Username.
+	//
+	// example:
+	//
+	// 王先生
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 

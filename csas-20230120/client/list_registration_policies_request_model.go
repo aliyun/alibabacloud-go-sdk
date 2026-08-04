@@ -30,39 +30,80 @@ type iListRegistrationPoliciesRequest interface {
 }
 
 type ListRegistrationPoliciesRequest struct {
+	// The type of company device registration limit. Valid values:
+	//
+	// - **Unlimited**: No limit.
+	//
+	// - **LimitAll**: Limit by total number.
+	//
+	// - **LimitDiff**: Limit by device categorization.
+	//
 	// example:
 	//
 	// LimitAll
 	CompanyLimitType *string `json:"CompanyLimitType,omitempty" xml:"CompanyLimitType,omitempty"`
+	// The current page number for paged queries. Values range from 1 to 10000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The policy matching target type. Valid values:
+	//
+	// - **UserGroupAll**: Associate all users.
+	//
+	// - **UserGroupNormal**: Associate some user groups.
+	//
 	// example:
 	//
 	// UserGroupAll
 	MatchMode *string `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
+	// The name of the device registration policy. It can be 1 to 128 characters long. It supports Chinese characters, uppercase and lowercase English letters, numbers, periods (.), underscores (_), and hyphens (-).
+	//
 	// example:
 	//
 	// registration_policy_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of items per page for paged queries. Values range from 1 to 500.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of personal device registration limit. Valid values:
+	//
+	// - **Unlimited**: No limit.
+	//
+	// - **LimitAll**: Limit by total number.
+	//
+	// - **LimitDiff**: Limit by device categorization.
+	//
 	// example:
 	//
 	// LimitDiff
-	PersonalLimitType *string   `json:"PersonalLimitType,omitempty" xml:"PersonalLimitType,omitempty"`
-	PolicyIds         []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	PersonalLimitType *string `json:"PersonalLimitType,omitempty" xml:"PersonalLimitType,omitempty"`
+	// A collection of device registration policy IDs. You can enter up to 100 device registration policy IDs.
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The status of the device registration policy. Valid values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The user group ID. Get this value from:
+	//
+	// - [ListUserGroups](~~ListUserGroups~~): Batch query user groups.
+	//
+	// - [CreateUserGroup](~~CreateUserGroup~~): Create user groups.
+	//
 	// example:
 	//
 	// usergroup-6f1ef2fc56b6****

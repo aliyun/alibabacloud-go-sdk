@@ -23,19 +23,31 @@ type iIdpDingtalkSubConfig interface {
 	GetEventVerifyToken() *string
 	SetExclusive(v bool) *IdpDingtalkSubConfig
 	GetExclusive() *bool
+	SetOauth(v bool) *IdpDingtalkSubConfig
+	GetOauth() *bool
 	SetRedirectUri(v string) *IdpDingtalkSubConfig
 	GetRedirectUri() *string
 }
 
 type IdpDingtalkSubConfig struct {
-	AppKey           *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	AppSecret        *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
-	CorpId           *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
-	EventAesKey      *string `json:"EventAesKey,omitempty" xml:"EventAesKey,omitempty"`
-	EventLabel       *string `json:"EventLabel,omitempty" xml:"EventLabel,omitempty"`
+	// Your application\\"s unique identifier. You can get this identifier from the DingTalk Open Platform.
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// Your application\\"s secret key. You can get this key from the DingTalk Open Platform.
+	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+	// Your enterprise\\"s unique ID in DingTalk.
+	CorpId *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
+	// The AES key used to decrypt the content of event callbacks. This ensures the confidentiality of the event data.
+	EventAesKey *string `json:"EventAesKey,omitempty" xml:"EventAesKey,omitempty"`
+	// A custom label for event subscriptions. This field is reserved for future use.
+	EventLabel *string `json:"EventLabel,omitempty" xml:"EventLabel,omitempty"`
+	// The token used to verify the authenticity of event callback requests from DingTalk.
 	EventVerifyToken *string `json:"EventVerifyToken,omitempty" xml:"EventVerifyToken,omitempty"`
-	Exclusive        *bool   `json:"Exclusive,omitempty" xml:"Exclusive,omitempty"`
-	RedirectUri      *string `json:"RedirectUri,omitempty" xml:"RedirectUri,omitempty"`
+	// Specifies whether this identity provider is the exclusive login method. If set to `true`, other login methods are disabled.
+	Exclusive *bool `json:"Exclusive,omitempty" xml:"Exclusive,omitempty"`
+	// Specifies whether to enable the OAuth authentication flow.
+	Oauth *bool `json:"Oauth,omitempty" xml:"Oauth,omitempty"`
+	// The URL where the user is redirected after successful authorization. You must register this URL on the DingTalk Open Platform.
+	RedirectUri *string `json:"RedirectUri,omitempty" xml:"RedirectUri,omitempty"`
 }
 
 func (s IdpDingtalkSubConfig) String() string {
@@ -74,6 +86,10 @@ func (s *IdpDingtalkSubConfig) GetExclusive() *bool {
 	return s.Exclusive
 }
 
+func (s *IdpDingtalkSubConfig) GetOauth() *bool {
+	return s.Oauth
+}
+
 func (s *IdpDingtalkSubConfig) GetRedirectUri() *string {
 	return s.RedirectUri
 }
@@ -110,6 +126,11 @@ func (s *IdpDingtalkSubConfig) SetEventVerifyToken(v string) *IdpDingtalkSubConf
 
 func (s *IdpDingtalkSubConfig) SetExclusive(v bool) *IdpDingtalkSubConfig {
 	s.Exclusive = &v
+	return s
+}
+
+func (s *IdpDingtalkSubConfig) SetOauth(v bool) *IdpDingtalkSubConfig {
+	s.Oauth = &v
 	return s
 }
 

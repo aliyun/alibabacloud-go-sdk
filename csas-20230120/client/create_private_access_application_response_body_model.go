@@ -16,13 +16,13 @@ type iCreatePrivateAccessApplicationResponseBody interface {
 }
 
 type CreatePrivateAccessApplicationResponseBody struct {
-	// The ID of the office application.
+	// The ID of the internal-facing access application.
 	//
 	// example:
 	//
 	// pa-application-e12860ef6c48****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

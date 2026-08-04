@@ -18,6 +18,7 @@ type iListForwardStrategiesResponseBody interface {
 }
 
 type ListForwardStrategiesResponseBody struct {
+	// The list of forwarding rules.
 	ForwardStrategies []*ListForwardStrategiesResponseBodyForwardStrategies `json:"ForwardStrategies,omitempty" xml:"ForwardStrategies,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -25,6 +26,8 @@ type ListForwardStrategiesResponseBody struct {
 	//
 	// D6707286-A50E-57B1-B2CF-EFAC59E850D8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of policies.
+	//
 	// example:
 	//
 	// 1
@@ -80,27 +83,50 @@ func (s *ListForwardStrategiesResponseBody) Validate() error {
 }
 
 type ListForwardStrategiesResponseBodyForwardStrategies struct {
+	// The description of the forwarding rule.
+	//
 	// example:
 	//
 	// asdasdasd
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the destination instance.
+	//
 	// example:
 	//
 	// connector-4178bc59bec56df1
 	DestinationId *string `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
+	// The type of the access destination. Valid values:
+	//
+	// - **Connector**: connector.
+	//
 	// example:
 	//
 	// Connector
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	// The ID of the forwarding rule.
+	//
 	// example:
 	//
 	// fs-8b299ac5a93a0a3a
 	ForwardId *string `json:"ForwardId,omitempty" xml:"ForwardId,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the forwarding rule.
+	//
+	// example:
+	//
+	// 白名单加速
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The policy priority.
+	//
 	// example:
 	//
 	// 100
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The status of the policy. Valid values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
 	// example:
 	//
 	// Enabled

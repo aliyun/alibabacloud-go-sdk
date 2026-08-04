@@ -14,6 +14,8 @@ type iListApplicationsForPrivateAccessTagRequest interface {
 }
 
 type ListApplicationsForPrivateAccessTagRequest struct {
+	// A collection of private network access tag IDs. You can specify up to 100 tag IDs.
+	//
 	// This parameter is required.
 	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 }

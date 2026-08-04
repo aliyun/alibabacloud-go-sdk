@@ -14,6 +14,8 @@ type iDeleteRegistrationPoliciesRequest interface {
 }
 
 type DeleteRegistrationPoliciesRequest struct {
+	// A collection of device registration policy IDs.
+	//
 	// This parameter is required.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 }

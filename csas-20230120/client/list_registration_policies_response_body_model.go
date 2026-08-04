@@ -18,11 +18,16 @@ type iListRegistrationPoliciesResponseBody interface {
 }
 
 type ListRegistrationPoliciesResponseBody struct {
+	// The list of device registration policies.
 	Policies []*ListRegistrationPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	// The ID of this request.
+	//
 	// example:
 	//
 	// 7A8FE38A-E29C-5678-B84A-FEDBCB83552F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of device registration policies.
+	//
 	// example:
 	//
 	// 1
@@ -78,34 +83,62 @@ func (s *ListRegistrationPoliciesResponseBody) Validate() error {
 }
 
 type ListRegistrationPoliciesResponseBodyPolicies struct {
+	// The creation time of the device registration policy.
+	//
 	// example:
 	//
 	// 2023-05-16 17:18:46
-	CreateTime  *string                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description *string                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the device registration policy.
+	//
+	// example:
+	//
+	// 这是一条设备注册策略。
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The list of device registration policy limit details.
 	LimitDetail []*ListRegistrationPoliciesResponseBodyPoliciesLimitDetail `json:"LimitDetail,omitempty" xml:"LimitDetail,omitempty" type:"Repeated"`
+	// The policy matching target type. Valid values:
+	//
+	// - **UserGroupAll**: Associate all users.
+	//
+	// - **UserGroupNormal**: Associate some user groups.
+	//
 	// example:
 	//
 	// UserGroupNormal
 	MatchMode *string `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
+	// The name of the device registration policy.
+	//
 	// example:
 	//
 	// registration_policy_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the device registration policy.
+	//
 	// example:
 	//
 	// reg-policy-dcbfd33cb004****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The policy priority for device registration. A value of 0 indicates the highest priority, and 99 indicates the lowest priority.
+	//
 	// example:
 	//
 	// 1
 	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The status of the device registration policy. Valid values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
 	// example:
 	//
 	// Enabled
-	Status       *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// A collection of user group IDs for the device registration policy. This field has a value when the policy matching target type is **UserGroupNormal**.
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	Whitelist    []*string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
+	// The whitelist of users for the device registration policy.
+	Whitelist []*string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
 }
 
 func (s ListRegistrationPoliciesResponseBodyPolicies) String() string {
@@ -220,11 +253,26 @@ func (s *ListRegistrationPoliciesResponseBodyPolicies) Validate() error {
 }
 
 type ListRegistrationPoliciesResponseBodyPoliciesLimitDetail struct {
+	// The device ownership. Valid values:
+	//
+	// - **Company**: Company device.
+	//
+	// - **Personal**: Personal device.
+	//
 	// example:
 	//
 	// Company
-	DeviceBelong *string                                                            `json:"DeviceBelong,omitempty" xml:"DeviceBelong,omitempty"`
-	LimitCount   *ListRegistrationPoliciesResponseBodyPoliciesLimitDetailLimitCount `json:"LimitCount,omitempty" xml:"LimitCount,omitempty" type:"Struct"`
+	DeviceBelong *string `json:"DeviceBelong,omitempty" xml:"DeviceBelong,omitempty"`
+	// The number of device registration limits.
+	LimitCount *ListRegistrationPoliciesResponseBodyPoliciesLimitDetailLimitCount `json:"LimitCount,omitempty" xml:"LimitCount,omitempty" type:"Struct"`
+	// The type of device registration limit. Valid values:
+	//
+	// - **Unlimited**: No limit.
+	//
+	// - **LimitAll**: Limit by total number.
+	//
+	// - **LimitDiff**: Limit by device categorization.
+	//
 	// example:
 	//
 	// LimitAll
@@ -276,14 +324,20 @@ func (s *ListRegistrationPoliciesResponseBodyPoliciesLimitDetail) Validate() err
 }
 
 type ListRegistrationPoliciesResponseBodyPoliciesLimitDetailLimitCount struct {
+	// The total number of device registration limits. This field is valid when the device registration limit type is **LimitAll**.
+	//
 	// example:
 	//
 	// 3
 	All *int32 `json:"All,omitempty" xml:"All,omitempty"`
+	// The number of mobile client log ons allowed for device registration. This field is valid when the device registration limit type is **LimitDiff**.
+	//
 	// example:
 	//
 	// 0
 	Mobile *int32 `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// The number of PC client log ons allowed for device registration. This field is valid when the device registration limit type is **LimitDiff**.
+	//
 	// example:
 	//
 	// 0

@@ -14,7 +14,17 @@ type iGetUserGroupRequest interface {
 }
 
 type GetUserGroupRequest struct {
+	// The ID of the user group. You can obtain the ID from the following sources:
+	//
+	// - [ListUserGroups](~~ListUserGroups~~): Queries a list of user groups.
+	//
+	// - [CreateUserGroup](~~CreateUserGroup~~): Creates a user group.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// usergroup-6f1ef2fc56b6****
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 

@@ -14,6 +14,8 @@ type iRevokeUserSessionResponseBody interface {
 }
 
 type RevokeUserSessionResponseBody struct {
+	// The ID of this request.
+	//
 	// example:
 	//
 	// D6707286-A50E-57B1-B2CF-EFAC59E850D8

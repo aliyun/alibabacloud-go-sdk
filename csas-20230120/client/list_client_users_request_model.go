@@ -28,36 +28,59 @@ type iListClientUsersRequest interface {
 }
 
 type ListClientUsersRequest struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Department ID.
+	//
 	// example:
 	//
 	// 10785
 	DepartmentId *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	// Email address.
+	//
 	// example:
 	//
 	// johndoe@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Custom identity source configuration ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1071
 	IdpConfigId *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	// Mobile phone number without country code.
+	//
 	// example:
 	//
 	// 18980976559
 	MobileNumber *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// User enable status. Valid values:
+	//
+	// - **Enabled**: enabled.
+	//
+	// - **Disabled**: disabled.
+	//
 	// example:
 	//
 	// Enabled
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Username.
+	//
+	// example:
+	//
+	// 张三
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 

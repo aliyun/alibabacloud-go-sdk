@@ -16,7 +16,14 @@ type iCreatePrivateAccessTagRequest interface {
 }
 
 type CreatePrivateAccessTagRequest struct {
+	// Private access tag description. It can be 1 to 128 characters long. It supports Chinese characters, uppercase and lowercase English letters, numbers, periods (.), underscores (_), hyphens (-), and spaces.
+	//
+	// example:
+	//
+	// 这是一条内网访问标签
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Private access tag name. It can be 1 to 128 characters long. It supports Chinese characters, uppercase and lowercase English letters, numbers, periods (.), underscores (_), and hyphens (-).
+	//
 	// This parameter is required.
 	//
 	// example:

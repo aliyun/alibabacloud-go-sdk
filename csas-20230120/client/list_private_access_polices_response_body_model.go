@@ -18,7 +18,7 @@ type iListPrivateAccessPolicesResponseBody interface {
 }
 
 type ListPrivateAccessPolicesResponseBody struct {
-	// The private access policies.
+	// The list of private access policies.
 	Polices []*ListPrivateAccessPolicesResponseBodyPolices `json:"Polices,omitempty" xml:"Polices,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,13 +83,13 @@ func (s *ListPrivateAccessPolicesResponseBody) Validate() error {
 }
 
 type ListPrivateAccessPolicesResponseBodyPolices struct {
-	// The IDs of the applications that are specified in the private access policy. If the value of ApplicationType is **Application**, this parameter is returned.
+	// The collection of application IDs of the private access policy. This field has a value when the application type is **Application**.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
 	// The application type of the private access policy. Valid values:
 	//
-	// 	- **Application**
+	// - **Application**: Application.
 	//
-	// 	- **Tag**
+	// - **Tag**: Tag.
 	//
 	// example:
 	//
@@ -101,25 +101,25 @@ type ListPrivateAccessPolicesResponseBodyPolices struct {
 	//
 	// 2022-07-10 15:50:23
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The attributes of the custom user group. The attributes of the custom user group are evaluated by using a logical OR. If an attribute is matched, the policy takes effect.
+	// The collection of custom user group attributes. Multiple custom user group attributes have an OR relationship and take effect by union.
 	CustomUserAttributes []*ListPrivateAccessPolicesResponseBodyPolicesCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
 	// The description of the private access policy.
 	//
 	// example:
 	//
-	// a private access policy
+	// 这是一条内网访问策略
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The action that is performed when the security baseline is not met. Valid values:
+	// The action to take when the security baseline is not met. Valid values:
 	//
-	// 	- **Block**
+	// - **Block**: Block.
 	//
-	// 	- **Observe**
+	// - **Observe**: Observe.
 	//
 	// example:
 	//
 	// Block
 	DeviceAttributeAction *string `json:"DeviceAttributeAction,omitempty" xml:"DeviceAttributeAction,omitempty"`
-	// The ID of the security baseline.
+	// The ID of the security baseline policy.
 	//
 	// example:
 	//
@@ -131,11 +131,11 @@ type ListPrivateAccessPolicesResponseBodyPolices struct {
 	//
 	// private_access_policy_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The action in the private access policy. Valid values:
+	// The action of the private access policy. Valid values:
 	//
-	// 	- **Block**
+	// - **Block**: Block.
 	//
-	// 	- **Allow**
+	// - **Allow**: Allow.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ type ListPrivateAccessPolicesResponseBodyPolices struct {
 	//
 	// pa-policy-63b2f1844b86****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The priority of the private access policy. The value 1 indicates the highest priority.
+	// The priority of the private access policy. A value of 1 indicates the highest priority.
 	//
 	// example:
 	//
@@ -155,15 +155,15 @@ type ListPrivateAccessPolicesResponseBodyPolices struct {
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The status of the private access policy. Valid values:
 	//
-	// 	- **Enabled**
+	// - **Enabled**: Enabled.
 	//
-	// 	- **Disabled**
+	// - **Disabled**: Disabled.
 	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The IDs of the tags that are specified in the private access policy. If the value of ApplicationType is **Tag**, this parameter is returned.
+	// The collection of tag IDs of the private access policy. This field has a value when the application type is **Tag**.
 	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 	// The ID of the trigger template.
 	//
@@ -171,45 +171,49 @@ type ListPrivateAccessPolicesResponseBodyPolices struct {
 	//
 	// dag-d3f64e8bdd4a****
 	TriggerTemplateId *string `json:"TriggerTemplateId,omitempty" xml:"TriggerTemplateId,omitempty"`
-	// List of trusted process group IDs.
+	// The list of trusted process group IDs.
 	TrustedProcessGroupIds []*string `json:"TrustedProcessGroupIds,omitempty" xml:"TrustedProcessGroupIds,omitempty" type:"Repeated"`
-	// Trusted process switch status. Values:
+	// The status of the trusted process switch. Valid values:
 	//
-	// - **Enabled**: On.
+	// - **Enabled**: Enabled.
 	//
-	// - **Disabled**: Off.
+	// - **Disabled**: Disabled.
 	//
 	// example:
 	//
 	// Enabled
 	TrustedProcessStatus *string `json:"TrustedProcessStatus,omitempty" xml:"TrustedProcessStatus,omitempty"`
-	// List of trusted software IDs.
+	// The list of trusted software IDs.
 	TrustedSoftwareIds []*string `json:"TrustedSoftwareIds,omitempty" xml:"TrustedSoftwareIds,omitempty" type:"Repeated"`
-	// The IDs of user groups in the private access policy. If the value of UserGroupMode is **Normal**, this parameter is returned.
+	// The collection of user group IDs for the private access policy. This field has a value when the user group type is **Normal**.
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	// The type of the user group in the private access policy. Valid values:
+	// The user group type of the private access policy. Valid values:
 	//
-	// 	- **Normal**: regular user group.
+	// - **Normal**: Normal user group.
 	//
-	// 	- **Custom**: custom user group.
+	// - **Custom**: Custom user group.
 	//
 	// example:
 	//
 	// Normal
 	UserGroupMode *string `json:"UserGroupMode,omitempty" xml:"UserGroupMode,omitempty"`
-	// The start time when the zero trust policy takes effect, represented as a timestamp in seconds.
+	// The effective start time of the zero trust policy, in second-level Unix timestamp.
 	//
 	// example:
 	//
 	// 0
 	ValidFrom *int64 `json:"ValidFrom,omitempty" xml:"ValidFrom,omitempty"`
-	// Switch status for effective time. Values: - **Enabled**: On. - **Disabled**: Off.
+	// The status of the effective time switch. Valid values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
 	//
 	// example:
 	//
 	// Enabled
 	ValidTimeStatus *string `json:"ValidTimeStatus,omitempty" xml:"ValidTimeStatus,omitempty"`
-	// The expiration time of the zero trust policy, in seconds timestamp.
+	// The effective end time of the zero trust policy, in second-level Unix timestamp.
 	//
 	// example:
 	//
@@ -437,49 +441,49 @@ func (s *ListPrivateAccessPolicesResponseBodyPolices) Validate() error {
 }
 
 type ListPrivateAccessPolicesResponseBodyPolicesCustomUserAttributes struct {
-	// The ID of the identity provider (IdP) for the user group. If the value of UserGroupType is **department**, this parameter is returned.
+	// The identity provider ID of the user group. This value exists when the custom user group type is **department**.
 	//
 	// example:
 	//
 	// 12
 	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
-	// The logical operator for the user group. Valid values:
+	// The relation of the user group. Valid values:
 	//
-	// 	- **Equal**
+	// - **Equal**: Equal.
 	//
-	// 	- **Unequal**
+	// - **Unequal**: Not equal.
 	//
 	// example:
 	//
 	// Equal
 	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
-	// The type of the user group, which is the key of the attribute. Valid values:
+	// The type of the user group. Valid values:
 	//
-	// 	- **username**
+	// - **username**: Username.
 	//
-	// 	- **department**
+	// - **department**: Department.
 	//
-	// 	- **email**
+	// - **email**: Email.
 	//
-	// 	- **telephone**
+	// - **telephone**: Mobile phone.
 	//
 	// example:
 	//
 	// department
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
-	// The value of the attribute.
+	// The value of the user group attribute.
 	//
-	// 	- If the value of UserGroupType is **username**, the value of this parameter is a username. The value must be 1 to 128 characters in length and can contain letters, digits, hyphens (-), underscores (_), and periods (.).
+	// - When the user group type is **username**, this indicates the value of the username. The value must be 1 to 128 characters in length and supports Chinese characters and uppercase and lowercase English letters. It can contain digits, periods (.), underscores (_), and hyphens (-).
 	//
-	// 	- If the value of UserGroupType is **department**, the value of this parameter is a department. Examples: OU=Department 1, OU=SASE DingTalk.
+	// - When the user group type is **department**, this indicates the value of the department. For example: OU=Department1,OU=SASE DingTalk.
 	//
-	// 	- If the value of UserGroupType is **email**, the value of this parameter is an email address. Example: username@example.com.
+	// - When the user group type is **email**, this indicates the value of the email. For example: username@example.com.
 	//
-	// 	- If the value of UserGroupType is **telephone**, the value of this parameter is a mobile phone number. Example: 13900001234.
+	// - When the user group type is **telephone**, this indicates the value of the mobile phone. For example: 13900001234.
 	//
 	// example:
 	//
-	// OU=Department 1, OU=SASE DingTalk
+	// OU=部门1,OU=SASE钉钉
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

@@ -14,6 +14,8 @@ type iListRegistrationPoliciesForUserGroupRequest interface {
 }
 
 type ListRegistrationPoliciesForUserGroupRequest struct {
+	// A collection of user group IDs. You can specify up to 100 user group IDs.
+	//
 	// This parameter is required.
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
 }

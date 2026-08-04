@@ -16,7 +16,10 @@ type iListUserGroupsForRegistrationPolicyResponseBody interface {
 }
 
 type ListUserGroupsForRegistrationPolicyResponseBody struct {
+	// A list of device registration policies.
 	Policies []*ListUserGroupsForRegistrationPolicyResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	// The ID of this request.
+	//
 	// example:
 	//
 	// D89009C7-54C6-51B6-BAE7-3F373920C6BF
@@ -63,10 +66,13 @@ func (s *ListUserGroupsForRegistrationPolicyResponseBody) Validate() error {
 }
 
 type ListUserGroupsForRegistrationPolicyResponseBodyPolicies struct {
+	// The ID of the device registration policy.
+	//
 	// example:
 	//
 	// reg-policy-f25c9e5872e5****
-	PolicyId   *string                                                              `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// A collection of user groups associated with the device registration policy.
 	UserGroups []*ListUserGroupsForRegistrationPolicyResponseBodyPoliciesUserGroups `json:"UserGroups,omitempty" xml:"UserGroups,omitempty" type:"Repeated"`
 }
 
@@ -110,16 +116,28 @@ func (s *ListUserGroupsForRegistrationPolicyResponseBodyPolicies) Validate() err
 }
 
 type ListUserGroupsForRegistrationPolicyResponseBodyPoliciesUserGroups struct {
+	// A collection of user group attributes.
 	Attributes []*ListUserGroupsForRegistrationPolicyResponseBodyPoliciesUserGroupsAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	// The time when the user group was created.
+	//
 	// example:
 	//
 	// 2022-09-27 18:10:25
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// A description of the user group.
+	//
+	// example:
+	//
+	// 这是一条被设备注册策略引用的用户组。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the user group.
+	//
 	// example:
 	//
 	// user_group_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the user group.
+	//
 	// example:
 	//
 	// usergroup-6f1ef2fc56b6****
@@ -193,19 +211,50 @@ func (s *ListUserGroupsForRegistrationPolicyResponseBodyPoliciesUserGroups) Vali
 }
 
 type ListUserGroupsForRegistrationPolicyResponseBodyPoliciesUserGroupsAttributes struct {
+	// The identity provider ID for the user group. This field appears only when UserGroupType is **department**.
+	//
 	// example:
 	//
 	// 12
 	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// The relation for the user group. Valid values:
+	//
+	// - **Equal**: Equal to.
+	//
+	// - **Unequal**: Not equal to.
+	//
 	// example:
 	//
 	// Equal
 	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// The type of the user group. Valid values:
+	//
+	// - **username**: A username.
+	//
+	// - **department**: A department.
+	//
+	// - **email**: An email address.
+	//
+	// - **telephone**: A phone number.
+	//
 	// example:
 	//
 	// department
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
-	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The value of the user group attribute.
+	//
+	// - If UserGroupType is **username**, this is the username. It must be 1–128 characters long and can contain uppercase and lowercase letters, Chinese characters, digits, periods (.), underscores (_), and hyphens (-).
+	//
+	// - If UserGroupType is **department**, this is the department name. Example: OU=Department 1,OU=SASE DingTalk.
+	//
+	// - If UserGroupType is **email**, this is the email address. Example: username\\@example.com.
+	//
+	// - If UserGroupType is **telephone**, this is the phone number. Example: 13900001234.
+	//
+	// example:
+	//
+	// OU=部门1,OU=SASE钉钉
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListUserGroupsForRegistrationPolicyResponseBodyPoliciesUserGroupsAttributes) String() string {

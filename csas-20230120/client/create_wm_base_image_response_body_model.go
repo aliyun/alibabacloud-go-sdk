@@ -16,7 +16,10 @@ type iCreateWmBaseImageResponseBody interface {
 }
 
 type CreateWmBaseImageResponseBody struct {
+	// Transparent image information.
 	Data *CreateWmBaseImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// ID of the current request.
+	//
 	// example:
 	//
 	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
@@ -59,14 +62,20 @@ func (s *CreateWmBaseImageResponseBody) Validate() error {
 }
 
 type CreateWmBaseImageResponseBodyData struct {
+	// ID of the transparent image. Images with the same ID have identical content.
+	//
 	// example:
 	//
 	// fafb432cdede9b20640e12105845386e-496883833-8242409229217337*****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// Temporary URL for downloading the image.
+	//
 	// example:
 	//
 	// https://example.com/test-*****.png
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// Expiration time of the temporary image URL, in seconds as a UNIX timestamp.
+	//
 	// example:
 	//
 	// 17185*****

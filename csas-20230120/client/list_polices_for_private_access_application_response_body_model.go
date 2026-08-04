@@ -16,7 +16,10 @@ type iListPolicesForPrivateAccessApplicationResponseBody interface {
 }
 
 type ListPolicesForPrivateAccessApplicationResponseBody struct {
+	// The list of private access applications.
 	Applications []*ListPolicesForPrivateAccessApplicationResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 4AB972E2-D702-5464-B132-B1911498B8BF
@@ -63,11 +66,14 @@ func (s *ListPolicesForPrivateAccessApplicationResponseBody) Validate() error {
 }
 
 type ListPolicesForPrivateAccessApplicationResponseBodyApplications struct {
+	// The ID of the private access application.
+	//
 	// example:
 	//
 	// pa-application-b927baf3e592****
-	ApplicationId *string                                                                   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	Policies      []*ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The collection of private access policies.
+	Policies []*ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
 }
 
 func (s ListPolicesForPrivateAccessApplicationResponseBodyApplications) String() string {
@@ -110,36 +116,74 @@ func (s *ListPolicesForPrivateAccessApplicationResponseBodyApplications) Validat
 }
 
 type ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPolicies struct {
+	// The application type of the private access policy. Valid values:
+	//
+	// - **Application**: Application.
+	//
+	// - **Tag**: Tag.
+	//
 	// example:
 	//
 	// Application
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// The time when the private access policy was created.
+	//
 	// example:
 	//
 	// 2022-09-27 18:10:25
-	CreateTime           *string                                                                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The collection of custom user group attributes. If you specify multiple attributes, the relationship between them is OR.
 	CustomUserAttributes []*ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPoliciesCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
-	Description          *string                                                                                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the private access policy.
+	//
+	// example:
+	//
+	// 这是一条内网访问策略
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the private access policy.
+	//
 	// example:
 	//
 	// private_access_policy_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The action of the private access policy. Valid values:
+	//
+	// - **Block**: Blocks access.
+	//
+	// - **Allow**: Allows access.
+	//
 	// example:
 	//
 	// Allow
 	PolicyAction *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
+	// The ID of the private access policy.
+	//
 	// example:
 	//
 	// pa-policy-867ef4007c8a****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The priority of the private access policy. The value 1 indicates the highest priority.
+	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The status of the private access policy. Valid values:
+	//
+	// - **Enabled**: The policy is enabled.
+	//
+	// - **Disabled**: The policy is disabled.
+	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The user group type of the private access policy. Valid values:
+	//
+	// - **Normal**: Regular user group.
+	//
+	// - **Custom**: Custom user group.
+	//
 	// example:
 	//
 	// Normal
@@ -258,19 +302,50 @@ func (s *ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPolicies)
 }
 
 type ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPoliciesCustomUserAttributes struct {
+	// The ID of the identity provider (IdP) for the user group. This parameter is returned when the custom user group type is **department**.
+	//
 	// example:
 	//
 	// 12
 	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// The relationship of the user group. Valid values:
+	//
+	// - **Equal**: Equal to.
+	//
+	// - **Unequal**: Not equal to.
+	//
 	// example:
 	//
 	// Equal
 	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// The type of the user group. Valid values:
+	//
+	// - **username**: Username.
+	//
+	// - **department**: Department.
+	//
+	// - **email**: Email.
+	//
+	// - **telephone**: Mobile number.
+	//
 	// example:
 	//
 	// department
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
-	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The value of the user group attribute.
+	//
+	// - If the user group type is **username**, this parameter specifies the value of the username. The value can be 1 to 128 characters in length and can contain Chinese characters, letters, digits, periods (.), underscores (_), and hyphens (-).
+	//
+	// - If the user group type is **department**, this parameter specifies the value of the department. Example: OU=Department 1,OU=SASE DingTalk.
+	//
+	// - If the user group type is **email**, this parameter specifies the value of the email address. Example: username\\@example.com.
+	//
+	// - If the user group type is **telephone**, this parameter specifies the value of the mobile number. Example: 13900001234.
+	//
+	// example:
+	//
+	// OU=部门1,OU=SASE钉钉
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPoliciesCustomUserAttributes) String() string {

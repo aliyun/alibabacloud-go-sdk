@@ -18,11 +18,16 @@ type iListSoftwareForUserDeviceResponseBody interface {
 }
 
 type ListSoftwareForUserDeviceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 102350E7-1A20-58F5-9D63-ABEA820AE6E1
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Software  []*ListSoftwareForUserDeviceResponseBodySoftware `json:"Software,omitempty" xml:"Software,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of software applications.
+	Software []*ListSoftwareForUserDeviceResponseBodySoftware `json:"Software,omitempty" xml:"Software,omitempty" type:"Repeated"`
+	// The total number of software applications.
+	//
 	// example:
 	//
 	// 1
@@ -78,16 +83,26 @@ func (s *ListSoftwareForUserDeviceResponseBody) Validate() error {
 }
 
 type ListSoftwareForUserDeviceResponseBodySoftware struct {
+	// The publisher of the software.
+	//
 	// example:
 	//
 	// Alibaba (China) Network Technology Co.,Ltd.
 	Inc *string `json:"Inc,omitempty" xml:"Inc,omitempty"`
+	// The time when the software was installed.
+	//
 	// example:
 	//
 	// 2023-08-18 02:43:02
-	InstallTime *string   `json:"InstallTime,omitempty" xml:"InstallTime,omitempty"`
-	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Versions    []*string `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
+	InstallTime *string `json:"InstallTime,omitempty" xml:"InstallTime,omitempty"`
+	// The name of the software.
+	//
+	// example:
+	//
+	// 钉钉
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The versions of the software.
+	Versions []*string `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
 }
 
 func (s ListSoftwareForUserDeviceResponseBodySoftware) String() string {

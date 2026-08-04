@@ -18,11 +18,16 @@ type iListEnterpriseAccelerateLogsResponseBody interface {
 }
 
 type ListEnterpriseAccelerateLogsResponseBody struct {
+	// List of logs.
 	Logs []*ListEnterpriseAccelerateLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// The ID of this request.
+	//
 	// example:
 	//
 	// 43F07A6A-294D-56FB-85EB-6AD00C5B60FF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of logs.
+	//
 	// example:
 	//
 	// 120
@@ -78,32 +83,59 @@ func (s *ListEnterpriseAccelerateLogsResponseBody) Validate() error {
 }
 
 type ListEnterpriseAccelerateLogsResponseBodyLogs struct {
+	// Department.
+	//
+	// example:
+	//
+	// 测试部
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// Device type.
+	//
 	// example:
 	//
 	// windows
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// Destination endpoint.
+	//
 	// example:
 	//
 	// www.bing.com:443
 	DstAddr *string `json:"DstAddr,omitempty" xml:"DstAddr,omitempty"`
+	// Inbound traffic, in bytes.
+	//
 	// example:
 	//
 	// 12299
 	InBytes *string `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
+	// Outbound traffic, in bytes.
+	//
 	// example:
 	//
 	// 2603
-	OutBytes   *string `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	OutBytes *string `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	// Enterprise acceleration policy name.
+	//
+	// example:
+	//
+	// 白名单加速
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// Enterprise acceleration instance address.
+	//
 	// example:
 	//
 	// 8.222.179.xxx:10015
 	ProxyAddr *string `json:"ProxyAddr,omitempty" xml:"ProxyAddr,omitempty"`
+	// Time.
+	//
 	// example:
 	//
 	// 1748422797
 	UnixTime *string `json:"UnixTime,omitempty" xml:"UnixTime,omitempty"`
+	// Username.
+	//
+	// example:
+	//
+	// 张三
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 

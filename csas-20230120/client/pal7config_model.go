@@ -30,21 +30,36 @@ type iPAL7Config interface {
 }
 
 type PAL7Config struct {
+	// The configuration for anonymous access.
 	BypassConfig *PAL7ConfigBypassConfig `json:"BypassConfig,omitempty" xml:"BypassConfig,omitempty" type:"Struct"`
+	// The certificate ID. This parameter is required when you use a custom proxy domain name.
+	//
 	// example:
 	//
 	// cert-xxxx
-	CertId       *string                 `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	DnsConfig    *PAL7ConfigDnsConfig    `json:"DnsConfig,omitempty" xml:"DnsConfig,omitempty" type:"Struct"`
+	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The DNS configuration.
+	DnsConfig *PAL7ConfigDnsConfig `json:"DnsConfig,omitempty" xml:"DnsConfig,omitempty" type:"Struct"`
+	// The configuration for rewriting internal network requests in JavaScript.
 	JsHookConfig *PAL7ConfigJsHookConfig `json:"JsHookConfig,omitempty" xml:"JsHookConfig,omitempty" type:"Struct"`
+	// The type of the proxy domain name. Valid values:
+	//
+	// - **automatic**: Uses a mapped proxy domain name.
+	//
+	// - **custom**: Uses a custom proxy domain name.
+	//
 	// example:
 	//
 	// automatic
-	ProxyDomainTypes            []byte                                 `json:"ProxyDomainTypes,omitempty" xml:"ProxyDomainTypes,omitempty"`
-	RequestHeaderRewriteConfig  *PAL7ConfigRequestHeaderRewriteConfig  `json:"RequestHeaderRewriteConfig,omitempty" xml:"RequestHeaderRewriteConfig,omitempty" type:"Struct"`
-	RequestQueryRewriteConfig   *PAL7ConfigRequestQueryRewriteConfig   `json:"RequestQueryRewriteConfig,omitempty" xml:"RequestQueryRewriteConfig,omitempty" type:"Struct"`
+	ProxyDomainTypes []byte `json:"ProxyDomainTypes,omitempty" xml:"ProxyDomainTypes,omitempty"`
+	// The rules for rewriting HTTP request headers.
+	RequestHeaderRewriteConfig *PAL7ConfigRequestHeaderRewriteConfig `json:"RequestHeaderRewriteConfig,omitempty" xml:"RequestHeaderRewriteConfig,omitempty" type:"Struct"`
+	// The configuration for rewriting HTTP request query parameters.
+	RequestQueryRewriteConfig *PAL7ConfigRequestQueryRewriteConfig `json:"RequestQueryRewriteConfig,omitempty" xml:"RequestQueryRewriteConfig,omitempty" type:"Struct"`
+	// The configuration for rewriting HTTP response headers.
 	ResponseHeaderRewriteConfig *PAL7ConfigResponseHeaderRewriteConfig `json:"ResponseHeaderRewriteConfig,omitempty" xml:"ResponseHeaderRewriteConfig,omitempty" type:"Struct"`
-	ResponseRewriteConfig       *PAL7ConfigResponseRewriteConfig       `json:"ResponseRewriteConfig,omitempty" xml:"ResponseRewriteConfig,omitempty" type:"Struct"`
+	// The configuration for rewriting internal domain names in HTML.
+	ResponseRewriteConfig *PAL7ConfigResponseRewriteConfig `json:"ResponseRewriteConfig,omitempty" xml:"ResponseRewriteConfig,omitempty" type:"Struct"`
 }
 
 func (s PAL7Config) String() string {
@@ -176,11 +191,21 @@ func (s *PAL7Config) Validate() error {
 }
 
 type PAL7ConfigBypassConfig struct {
+	// An array of source IP address ranges that are allowed to anonymously access the application.
 	AppBypassFroms []*string `json:"AppBypassFroms,omitempty" xml:"AppBypassFroms,omitempty" type:"Repeated"`
+	// The anonymous access mode. The default value is **disabled**. Valid values:
+	//
+	// - **disabled**: Disables anonymous access.
+	//
+	// - **url**: Sets anonymous access at the URL level.
+	//
+	// - **app**: Sets anonymous access at the application level.
+	//
 	// example:
 	//
 	// disabled
-	Mode           *string                                 `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// An array of rules for anonymous access to URLs.
 	UrlBypassRules []*PAL7ConfigBypassConfigUrlBypassRules `json:"UrlBypassRules,omitempty" xml:"UrlBypassRules,omitempty" type:"Repeated"`
 }
 
@@ -233,7 +258,9 @@ func (s *PAL7ConfigBypassConfig) Validate() error {
 }
 
 type PAL7ConfigBypassConfigUrlBypassRules struct {
+	// An array of source IP address ranges that are allowed to anonymously access the application paths.
 	Froms []*string `json:"Froms,omitempty" xml:"Froms,omitempty" type:"Repeated"`
+	// The URL paths that allow anonymous access.
 	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
 }
 
@@ -268,6 +295,7 @@ func (s *PAL7ConfigBypassConfigUrlBypassRules) Validate() error {
 }
 
 type PAL7ConfigDnsConfig struct {
+	// An array of DNS server addresses. The gateway preferentially uses the DNS servers configured here to resolve internal domain names.
 	DnsServers []*string `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Repeated"`
 }
 
@@ -293,10 +321,17 @@ func (s *PAL7ConfigDnsConfig) Validate() error {
 }
 
 type PAL7ConfigJsHookConfig struct {
+	// The mode for rewriting internal network requests in JavaScript. The default value is **disabled**. Valid values:
+	//
+	// - **disabled**: Disables traffic redirection for JavaScript.
+	//
+	// - **whitelist**: Enables the whitelist mode to redirect traffic as needed.
+	//
 	// example:
 	//
 	// disabled
-	Mode         *string                  `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// An array of rules for rewriting internal network requests in JavaScript.
 	ReplaceRules []*PAL7ConfigReplaceRule `json:"ReplaceRules,omitempty" xml:"ReplaceRules,omitempty" type:"Repeated"`
 }
 
@@ -340,6 +375,7 @@ func (s *PAL7ConfigJsHookConfig) Validate() error {
 }
 
 type PAL7ConfigRequestHeaderRewriteConfig struct {
+	// An array of rewrite operations.
 	Ops []*PAL7ConfigRewriteOp `json:"Ops,omitempty" xml:"Ops,omitempty" type:"Repeated"`
 }
 
@@ -374,6 +410,7 @@ func (s *PAL7ConfigRequestHeaderRewriteConfig) Validate() error {
 }
 
 type PAL7ConfigRequestQueryRewriteConfig struct {
+	// An array of rewrite operations.
 	Ops []*PAL7ConfigRewriteOp `json:"Ops,omitempty" xml:"Ops,omitempty" type:"Repeated"`
 }
 
@@ -408,6 +445,7 @@ func (s *PAL7ConfigRequestQueryRewriteConfig) Validate() error {
 }
 
 type PAL7ConfigResponseHeaderRewriteConfig struct {
+	// An array of rewrite operations.
 	Ops []*PAL7ConfigRewriteOp `json:"Ops,omitempty" xml:"Ops,omitempty" type:"Repeated"`
 }
 
@@ -442,10 +480,17 @@ func (s *PAL7ConfigResponseHeaderRewriteConfig) Validate() error {
 }
 
 type PAL7ConfigResponseRewriteConfig struct {
+	// The rewrite mode. The default value is **auto**. Valid values:
+	//
+	// - **disabled**: Disables rewriting of internal domain names in HTML.
+	//
+	// - **auto**: Enables the automatic mode. The system automatically detects and rewrites internal domain names in HTML.
+	//
 	// example:
 	//
 	// auto
-	Mode         *string                  `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// An array of rewrite rules.
 	ReplaceRules []*PAL7ConfigReplaceRule `json:"ReplaceRules,omitempty" xml:"ReplaceRules,omitempty" type:"Repeated"`
 }
 

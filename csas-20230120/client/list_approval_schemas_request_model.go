@@ -22,23 +22,44 @@ type iListApprovalSchemasRequest interface {
 }
 
 type ListApprovalSchemasRequest struct {
+	// The current page number for paged queries. Valid values: 1 to 10000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries per page for paged queries. Valid values: 1 to 500.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The policy type. Valid values:
+	//
+	// - **DomainBlacklist**: Domain blacklist.
+	//
+	// - **DomainWhitelist**: Domain whitelist.
+	//
+	// - **SoftwareBlock**: Software disable.
+	//
+	// - **AppUninstall**: Terminal uninstall.
+	//
+	// - **DlpSend**: File outbound.
+	//
+	// - **PeripheralBlock**: Peripheral control.
+	//
 	// example:
 	//
 	// DlpSend
-	PolicyType *string   `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	SchemaIds  []*string `json:"SchemaIds,omitempty" xml:"SchemaIds,omitempty" type:"Repeated"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// Collection of approval template IDs.
+	SchemaIds []*string `json:"SchemaIds,omitempty" xml:"SchemaIds,omitempty" type:"Repeated"`
+	// The template name. It can be 1 to 128 characters long. It supports Chinese characters, uppercase and lowercase English letters, numbers, periods (.), underscores (_), and hyphens (-).
+	//
 	// example:
 	//
 	// test

@@ -16,9 +16,11 @@ type iAttachApplication2ConnectorShrinkRequest interface {
 }
 
 type AttachApplication2ConnectorShrinkRequest struct {
+	// The set of private access application IDs. The number of private access applications that can be attached to a single Connector cannot exceed the total number of private access applications.
+	//
 	// This parameter is required.
 	ApplicationIdsShrink *string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty"`
-	// ConnectorID。
+	// The Connector ID.
 	//
 	// This parameter is required.
 	//

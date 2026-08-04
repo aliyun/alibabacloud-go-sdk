@@ -16,10 +16,13 @@ type iListPolicesForUserGroupResponseBody interface {
 }
 
 type ListPolicesForUserGroupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5F04DFBD-3F48-5F70-AE72-474026670128
-	RequestId  *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of user groups.
 	UserGroups []*ListPolicesForUserGroupResponseBodyUserGroups `json:"UserGroups,omitempty" xml:"UserGroups,omitempty" type:"Repeated"`
 }
 
@@ -63,7 +66,10 @@ func (s *ListPolicesForUserGroupResponseBody) Validate() error {
 }
 
 type ListPolicesForUserGroupResponseBodyUserGroups struct {
+	// The policies.
 	Polices []*ListPolicesForUserGroupResponseBodyUserGroupsPolices `json:"Polices,omitempty" xml:"Polices,omitempty" type:"Repeated"`
+	// The ID of the user group.
+	//
 	// example:
 	//
 	// usergroup-6f1ef2fc56b6****
@@ -110,14 +116,30 @@ func (s *ListPolicesForUserGroupResponseBodyUserGroups) Validate() error {
 }
 
 type ListPolicesForUserGroupResponseBodyUserGroupsPolices struct {
+	// The name of the policy.
+	//
 	// example:
 	//
 	// private_access_policy_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the policy.
+	//
 	// example:
 	//
 	// pa-policy-ce2bf7236fab****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The policy type. Valid values:
+	//
+	// - **PrivateAccess**: private network access.
+	//
+	// - **URLFilter**: URL filtering.
+	//
+	// - **AppAccessControl**: application control.
+	//
+	// - **DLP**: Data Leakage Prevention.
+	//
+	// - **NAC**: Network Access Control.
+	//
 	// example:
 	//
 	// PrivateAccess

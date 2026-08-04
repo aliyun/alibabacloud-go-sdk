@@ -14,11 +14,11 @@ type iGetPrivateAccessApplicationRequest interface {
 }
 
 type GetPrivateAccessApplicationRequest struct {
-	// The ID of the office application. You can obtain the value by calling the following operations:
+	// The ID of the internal-facing access application. You can obtain the value from:
 	//
-	// 	- [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): queries office applications.
+	// - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): Lists internal-facing access applications.
 	//
-	// 	- [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): creates an office application.
+	// - [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): Creates an internal-facing access application.
 	//
 	// This parameter is required.
 	//

@@ -16,9 +16,11 @@ type iDetachApplication2ConnectorRequest interface {
 }
 
 type DetachApplication2ConnectorRequest struct {
+	// Collection of private network access application IDs. Enter a maximum of 100 private network access application IDs.
+	//
 	// This parameter is required.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
-	// ConnectorID。
+	// Connector ID.
 	//
 	// This parameter is required.
 	//

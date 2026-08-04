@@ -14,6 +14,8 @@ type iDeleteEnterpriseAcceleratePolicyRequest interface {
 }
 
 type DeleteEnterpriseAcceleratePolicyRequest struct {
+	// The ID of the enterprise acceleration policy.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,7 +16,10 @@ type iListApplicationsForPrivateAccessPolicyResponseBody interface {
 }
 
 type ListApplicationsForPrivateAccessPolicyResponseBody struct {
+	// A list of private access policies.
 	Polices []*ListApplicationsForPrivateAccessPolicyResponseBodyPolices `json:"Polices,omitempty" xml:"Polices,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 4D169859-A4F2-5EC8-853B-8447787C0D8A
@@ -63,7 +66,10 @@ func (s *ListApplicationsForPrivateAccessPolicyResponseBody) Validate() error {
 }
 
 type ListApplicationsForPrivateAccessPolicyResponseBodyPolices struct {
+	// A collection of private access applications.
 	Applications []*ListApplicationsForPrivateAccessPolicyResponseBodyPolicesApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
+	// The policy ID.
+	//
 	// example:
 	//
 	// pa-policy-1b0d0e8b4bcf****
@@ -110,25 +116,52 @@ func (s *ListApplicationsForPrivateAccessPolicyResponseBodyPolices) Validate() e
 }
 
 type ListApplicationsForPrivateAccessPolicyResponseBodyPolicesApplications struct {
+	// A collection of private access application addresses.
 	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// The ID of the private access application.
+	//
 	// example:
 	//
 	// pa-application-7a9243dd02f4****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The time when the private access application was created.
+	//
 	// example:
 	//
 	// 2022-09-27 18:10:25
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the private access application.
+	//
+	// example:
+	//
+	// 这是一条被内网访问策略引用的内网访问应用
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the private access application.
+	//
 	// example:
 	//
 	// application_name
-	Name       *string                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// A collection of port ranges for the private access application.
 	PortRanges []*ListApplicationsForPrivateAccessPolicyResponseBodyPolicesApplicationsPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	// The protocol of the private access application. Valid values:
+	//
+	// - **All**: All protocols.
+	//
+	// - **TCP**
+	//
+	// - **UDP**
+	//
 	// example:
 	//
 	// TCP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The status of the private access application. Valid values:
+	//
+	// - **Enabled**: The application is enabled.
+	//
+	// - **Disabled**: The application is disabled.
+	//
 	// example:
 	//
 	// Enabled
@@ -229,10 +262,14 @@ func (s *ListApplicationsForPrivateAccessPolicyResponseBodyPolicesApplications) 
 }
 
 type ListApplicationsForPrivateAccessPolicyResponseBodyPolicesApplicationsPortRanges struct {
+	// The start port.
+	//
 	// example:
 	//
 	// 80
 	Begin *int32 `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	// The end port.
+	//
 	// example:
 	//
 	// 81

@@ -16,7 +16,14 @@ type iUpdateUninstallApplicationsStatusRequest interface {
 }
 
 type UpdateUninstallApplicationsStatusRequest struct {
+	// List of uninstall request IDs.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	// Status of the uninstall request. Valid values:
+	//
+	// - **Approved**: Approved.
+	//
+	// - **Rejected**: Rejected.
+	//
 	// example:
 	//
 	// Approved

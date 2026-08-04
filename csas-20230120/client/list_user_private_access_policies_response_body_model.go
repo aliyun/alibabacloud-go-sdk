@@ -18,15 +18,15 @@ type iListUserPrivateAccessPoliciesResponseBody interface {
 }
 
 type ListUserPrivateAccessPoliciesResponseBody struct {
-	// List of authorized policies.
+	// The list of authorized access policies.
 	Polices []*ListUserPrivateAccessPoliciesResponseBodyPolices `json:"Polices,omitempty" xml:"Polices,omitempty" type:"Repeated"`
-	// ID of the request.
+	// Id of the request.
 	//
 	// example:
 	//
 	// 9D852F87-AFB5-51B8-AACD-F7D0EFB8277D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of authorized policies.
+	// The total number of authorized access policies.
 	//
 	// example:
 	//
@@ -83,57 +83,57 @@ func (s *ListUserPrivateAccessPoliciesResponseBody) Validate() error {
 }
 
 type ListUserPrivateAccessPoliciesResponseBodyPolices struct {
-	// Set of custom user group attributes. Multiple custom user group attributes are in an OR relationship, effective as a union.
+	// The collection of custom user group attributes. Multiple custom user group attributes have an OR relationship and take effect as a union.
 	CustomUserAttributes []*ListUserPrivateAccessPoliciesResponseBodyPolicesCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
-	// Associated security baseline.
+	// The associated security baseline.
 	//
 	// example:
 	//
 	// device_attribute_name
 	DeviceAttributeName *string `json:"DeviceAttributeName,omitempty" xml:"DeviceAttributeName,omitempty"`
-	// Associated user group.
+	// The user group to which the policy belongs.
 	//
 	// example:
 	//
 	// user_group_name
 	MatchedUserGroup *string `json:"MatchedUserGroup,omitempty" xml:"MatchedUserGroup,omitempty"`
-	// Intranet access policy name.
+	// The name of the private access policy.
 	//
 	// example:
 	//
 	// private_access_policy_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Action of the intranet access policy. Values:
+	// The action of the private access policy. Valid values:
 	//
-	// - **Block**: Block.
+	// - **Block**: blocks the access.
 	//
-	// - **Allow**: Allow.
+	// - **Allow**: allows the access.
 	//
 	// example:
 	//
 	// Allow
 	PolicyAction *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
-	// Intranet access policy ID.
+	// The ID of the private access policy.
 	//
 	// example:
 	//
 	// pa-policy-1b0d0e8b4bcf****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// Priority of the intranet access policy. The number 1 indicates the highest priority.
+	// The priority of the private access policy. The number 1 indicates the highest priority.
 	//
 	// example:
 	//
 	// 1
 	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// List of trusted process group IDs.
+	// The list of trusted process group IDs.
 	TrustedProcessGroupIds []*string `json:"TrustedProcessGroupIds,omitempty" xml:"TrustedProcessGroupIds,omitempty" type:"Repeated"`
-	// List of trusted software IDs.
+	// The list of trusted software IDs.
 	TrustedSoftwareIds []*string `json:"TrustedSoftwareIds,omitempty" xml:"TrustedSoftwareIds,omitempty" type:"Repeated"`
-	// Type of the user group for the intranet access policy. Values:
+	// The user group type of the private access policy. Valid values:
 	//
-	// - **Normal**: Normal user group.
+	// - **Normal**: a normal user group.
 	//
-	// - **Custom**: Custom user group.
+	// - **Custom**: a custom user group.
 	//
 	// example:
 	//
@@ -259,25 +259,25 @@ type ListUserPrivateAccessPoliciesResponseBodyPolicesCustomUserAttributes struct
 	//
 	// 12
 	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
-	// Relation of the user group. Values:
+	// The relationship of the user group. Valid values:
 	//
-	// - **Equal**: Equal.
+	// - **Equal**: equal to.
 	//
-	// - **Unequal**: Not equal.
+	// - **Unequal**: not equal to.
 	//
 	// example:
 	//
 	// Equal
 	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
-	// Type of the user group. Values:
+	// The type of the user group. Valid values:
 	//
-	// - **username**: Username.
+	// - **username**: the username.
 	//
-	// - **department**: Department.
+	// - **department**: the department.
 	//
-	// - **email**: Email.
+	// - **email**: the email address.
 	//
-	// - **telephone**: Telephone.
+	// - **telephone**: the mobile phone number.
 	//
 	// example:
 	//
@@ -285,13 +285,13 @@ type ListUserPrivateAccessPoliciesResponseBodyPolicesCustomUserAttributes struct
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
 	// The value of the user group attribute.
 	//
-	// - When the user group type is **username**, it represents the value of the username. The length is 1 to 128 characters, supporting Chinese and case-sensitive English letters, and can include numbers, periods (.), underscores (_), and hyphens (-).
+	// - When the user group type is **username**, this parameter indicates the value of the username. The value must be 1 to 128 characters in length, and can contain Chinese characters, uppercase letters, lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
 	//
-	// - When the user group type is **department**, it represents the value of the department. For example: OU=Department1,OU=SASE DingTalk.
+	// - When the user group type is **department**, this parameter indicates the value of the department. For example: OU=Department1,OU=SASE DingTalk.
 	//
-	// - When the user group type is **email**, it represents the value of the email. For example: username@example.com.
+	// - When the user group type is **email**, this parameter indicates the value of the email address. For example: username@example.com.
 	//
-	// - When the user group type is **telephone**, it represents the value of the phone number. For example: 13900001234.
+	// - When the user group type is **telephone**, this parameter indicates the value of the mobile phone number. For example: 13900001234.
 	//
 	// example:
 	//

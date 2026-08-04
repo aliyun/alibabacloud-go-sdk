@@ -18,18 +18,36 @@ type iDetachPolicy2ApprovalProcessRequest interface {
 }
 
 type DetachPolicy2ApprovalProcessRequest struct {
+	// Business policy ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ladp-27a4fedf5e73****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// Policy type. Valid values:
+	//
+	// - **DomainBlacklist**: Domain blacklist.
+	//
+	// - **DomainWhitelist**: Domain whitelist.
+	//
+	// - **SoftwareBlock**: Software disable.
+	//
+	// - **AppUninstall**: Terminal uninstall.
+	//
+	// - **DlpSend**: File outbound transfer.
+	//
+	// - **PeripheralBlock**: Peripheral control.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PeripheralBlock
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// Approval process ID.
+	//
 	// This parameter is required.
 	//
 	// example:

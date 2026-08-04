@@ -16,7 +16,10 @@ type iGetWmEmbedTaskResponseBody interface {
 }
 
 type GetWmEmbedTaskResponseBody struct {
+	// The result of the watermark embedding job.
 	Data *GetWmEmbedTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of this request.
+	//
 	// example:
 	//
 	// D6707286-A50E-57B1-B2CF-EFAC59E850D8
@@ -59,30 +62,50 @@ func (s *GetWmEmbedTaskResponseBody) Validate() error {
 }
 
 type GetWmEmbedTaskResponseBodyData struct {
+	// The temporary URL of the file embedded with watermark information.
+	//
 	// example:
 	//
 	// https://example.com/embed-****.pdf
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// Expiration time of FileUrl, formatted as a Unix timestamp with second-level precision.
+	//
 	// example:
 	//
 	// 171859****
 	FileUrlExp *string `json:"FileUrlExp,omitempty" xml:"FileUrlExp,omitempty"`
+	// The filename of the file embedded with watermark information.
+	//
 	// example:
 	//
 	// embed-****.pdf
 	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	// The MD5 hash of the file with embedded watermark information, used for troubleshooting.
+	//
 	// example:
 	//
 	// d41d8cd98f00b204e9800998ecf8****
 	OutFileHashMd5 *string `json:"OutFileHashMd5,omitempty" xml:"OutFileHashMd5,omitempty"`
+	// The size in bytes of the file embedded with watermark information. This is used for troubleshooting.
+	//
 	// example:
 	//
 	// 123**
 	OutFileSize *int64 `json:"OutFileSize,omitempty" xml:"OutFileSize,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// job:5GfrJYsoaffmCE7Z5bZtjUxxxxxxxxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Task Status. Valid values:
+	//
+	// - **Running**: The job is running.
+	//
+	// - **Success**: The job succeeded.
+	//
+	// - **Failed**: The job failed.
+	//
 	// example:
 	//
 	// Success

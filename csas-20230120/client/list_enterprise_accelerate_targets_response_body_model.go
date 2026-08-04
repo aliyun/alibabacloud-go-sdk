@@ -20,15 +20,22 @@ type iListEnterpriseAccelerateTargetsResponseBody interface {
 }
 
 type ListEnterpriseAccelerateTargetsResponseBody struct {
+	// Enterprise Acceleration Policy ID.
+	//
 	// example:
 	//
 	// eap-7fed37a757a0de24
 	EapId *string `json:"EapId,omitempty" xml:"EapId,omitempty"`
+	// ID of the current request.
+	//
 	// example:
 	//
 	// 529F755E-2E75-52EC-9C2E-6293FB8BF986
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Targets   []*string `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of enterprise acceleration targets.
+	Targets []*string `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+	// The total number of addresses.
+	//
 	// example:
 	//
 	// 103

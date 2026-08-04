@@ -14,6 +14,8 @@ type iDeleteEnterpriseAccelerateTargetResponseBody interface {
 }
 
 type DeleteEnterpriseAccelerateTargetResponseBody struct {
+	// ID of the current request.
+	//
 	// example:
 	//
 	// 655CE28F-2C0C-5801-A31E-C16BF54BD225

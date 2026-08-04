@@ -18,11 +18,16 @@ type iListDynamicRoutesResponseBody interface {
 }
 
 type ListDynamicRoutesResponseBody struct {
+	// The list of dynamic routes.
 	DynamicRoutes []*ListDynamicRoutesResponseBodyDynamicRoutes `json:"DynamicRoutes,omitempty" xml:"DynamicRoutes,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of dynamic routes.
+	//
 	// example:
 	//
 	// 1
@@ -78,41 +83,75 @@ func (s *ListDynamicRoutesResponseBody) Validate() error {
 }
 
 type ListDynamicRoutesResponseBodyDynamicRoutes struct {
+	// The IDs of the private access applications for the dynamic route. This field has a value when the application type is **Application**.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	// The application type of the dynamic route. Valid values:
+	//
+	// - **All**: All applications.
+	//
+	// - **Application**: A specific application.
+	//
+	// - **Tag**: A specific tag.
+	//
 	// example:
 	//
 	// Application
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// The time when the dynamic route was created.
+	//
 	// example:
 	//
 	// 2023-03-21 11:50:03
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the dynamic route.
+	//
+	// example:
+	//
+	// 这是一条动态路由
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the dynamic route.
+	//
 	// example:
 	//
 	// dr-a0ca843f53cf****
 	DynamicRouteId *string `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
+	// The type of the dynamic route. Valid value: **connector**, which indicates a private leased line.
+	//
 	// example:
 	//
 	// connector
 	DynamicRouteType *string `json:"DynamicRouteType,omitempty" xml:"DynamicRouteType,omitempty"`
+	// The name of the dynamic route.
+	//
 	// example:
 	//
 	// dynamic_route_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the next hop instance for the dynamic route.
+	//
 	// example:
 	//
 	// connector-8ccb13b6f52c****
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	// The priority of the dynamic route. A value of 1 indicates the highest priority. The priority is consistent with the order in the list query results.
+	//
 	// example:
 	//
 	// 1
-	Priority  *int32    `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The list of regions where the SASE POP cluster endpoint is supported.
 	RegionIds []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	// The status of the dynamic route. Valid values:
+	//
+	// - **Enabled**: The dynamic route is enabled.
+	//
+	// - **Disabled**: The dynamic route is disabled.
+	//
 	// example:
 	//
 	// Enabled
-	Status *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The IDs of the private access tags for the dynamic route. This field has a value when the application type is **Tag**.
 	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 }
 

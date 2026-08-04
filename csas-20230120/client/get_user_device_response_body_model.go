@@ -16,7 +16,10 @@ type iGetUserDeviceResponseBody interface {
 }
 
 type GetUserDeviceResponseBody struct {
+	// The terminal device.
 	Device *GetUserDeviceResponseBodyDevice `json:"Device,omitempty" xml:"Device,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// EFE7EBB2-449D-5BBB-B381-CA7839BC1649
@@ -59,122 +62,320 @@ func (s *GetUserDeviceResponseBody) Validate() error {
 }
 
 type GetUserDeviceResponseBodyDevice struct {
+	// The client status. Valid values:
+	//
 	// example:
 	//
 	// Online
 	AppStatus *string `json:"AppStatus,omitempty" xml:"AppStatus,omitempty"`
+	// The client version.
+	//
 	// example:
 	//
 	// 2.2.0
-	AppVersion                 *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	AutoLoginStatus            *string `json:"AutoLoginStatus,omitempty" xml:"AutoLoginStatus,omitempty"`
-	BatteryHealthPercentage    *int32  `json:"BatteryHealthPercentage,omitempty" xml:"BatteryHealthPercentage,omitempty"`
-	BatteryRemainingPercentage *int32  `json:"BatteryRemainingPercentage,omitempty" xml:"BatteryRemainingPercentage,omitempty"`
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// The auto-logon status of the device. Valid values:
+	//
+	// example:
+	//
+	// Enabled
+	AutoLoginStatus *string `json:"AutoLoginStatus,omitempty" xml:"AutoLoginStatus,omitempty"`
+	// The battery health percentage.
+	//
+	// example:
+	//
+	// 100
+	BatteryHealthPercentage *int32 `json:"BatteryHealthPercentage,omitempty" xml:"BatteryHealthPercentage,omitempty"`
+	// The battery remaining charge percentage.
+	//
+	// example:
+	//
+	// 90
+	BatteryRemainingPercentage *int32 `json:"BatteryRemainingPercentage,omitempty" xml:"BatteryRemainingPercentage,omitempty"`
+	// The CPU model of the terminal device.
+	//
 	// example:
 	//
 	// Apple M1
-	CPU       *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	City      *string `json:"City,omitempty" xml:"City,omitempty"`
+	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// The city to which the public IP address belongs.
+	//
+	// example:
+	//
+	// Hangzhou City
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// The city name in English.
+	//
+	// example:
+	//
+	// Beijing City
+	CityEn *string `json:"CityEn,omitempty" xml:"CityEn,omitempty"`
+	// The city name in Chinese.
+	//
+	// example:
+	//
+	// 北京市
+	CityZh *string `json:"CityZh,omitempty" xml:"CityZh,omitempty"`
+	// The continent to which the public IP address belongs.
+	//
+	// example:
+	//
+	// Asia
 	Continent *string `json:"Continent,omitempty" xml:"Continent,omitempty"`
-	Country   *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// The continent name in English.
+	//
+	// example:
+	//
+	// Asia
+	ContinentEn *string `json:"ContinentEn,omitempty" xml:"ContinentEn,omitempty"`
+	// The continent name in Chinese.
+	//
+	// example:
+	//
+	// 亚洲
+	ContinentZh *string `json:"ContinentZh,omitempty" xml:"ContinentZh,omitempty"`
+	// The country to which the public IP address belongs.
+	//
+	// example:
+	//
+	// China
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// The country name in English.
+	//
+	// example:
+	//
+	// China
+	CountryEn *string `json:"CountryEn,omitempty" xml:"CountryEn,omitempty"`
+	// The country name in Chinese.
+	//
+	// example:
+	//
+	// 中国
+	CountryZh *string `json:"CountryZh,omitempty" xml:"CountryZh,omitempty"`
+	// The registration time of the terminal device.
+	//
 	// example:
 	//
 	// 2023-05-16 17:18:46
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The department to which the user belongs.
+	//
+	// example:
+	//
+	// QA Department
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// The ownership of the terminal device. Valid values:
+	//
 	// example:
 	//
 	// Company
 	DeviceBelong *string `json:"DeviceBelong,omitempty" xml:"DeviceBelong,omitempty"`
+	// The model of the terminal device.
+	//
 	// example:
 	//
 	// MacBookPro17,1
 	DeviceModel *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
+	// The status of the terminal device. Valid values:
+	//
 	// example:
 	//
 	// Online
 	DeviceStatus *string `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
+	// The ID of the terminal device.
+	//
 	// example:
 	//
 	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
 	DeviceTag *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
+	// The operating system type of the terminal device. Valid values:
+	//
 	// example:
 	//
 	// Windows
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// The operating system version of the terminal device.
+	//
 	// example:
 	//
 	// 3.5.1
 	DeviceVersion *string `json:"DeviceVersion,omitempty" xml:"DeviceVersion,omitempty"`
+	// The disk model of the terminal device.
+	//
 	// example:
 	//
 	// APPLE SSD AP0512Q Media
-	Disk          *string `json:"Disk,omitempty" xml:"Disk,omitempty"`
-	DiskAvailable *int32  `json:"DiskAvailable,omitempty" xml:"DiskAvailable,omitempty"`
-	DiskUsed      *int32  `json:"DiskUsed,omitempty" xml:"DiskUsed,omitempty"`
+	Disk *string `json:"Disk,omitempty" xml:"Disk,omitempty"`
+	// The available disk space, in GB.
+	//
+	// example:
+	//
+	// 200
+	DiskAvailable *int32 `json:"DiskAvailable,omitempty" xml:"DiskAvailable,omitempty"`
+	// The used disk space, in GB.
+	//
+	// example:
+	//
+	// 103
+	DiskUsed *int32 `json:"DiskUsed,omitempty" xml:"DiskUsed,omitempty"`
+	// The office data protection status. Valid values:
+	//
 	// example:
 	//
 	// Unauthorized
-	DlpStatus    *string                                        `json:"DlpStatus,omitempty" xml:"DlpStatus,omitempty"`
-	EdrStatus    *string                                        `json:"EdrStatus,omitempty" xml:"EdrStatus,omitempty"`
+	DlpStatus *string `json:"DlpStatus,omitempty" xml:"DlpStatus,omitempty"`
+	// The anti-intrusion status. Valid values:
+	//
+	// example:
+	//
+	// Disabled
+	EdrStatus *string `json:"EdrStatus,omitempty" xml:"EdrStatus,omitempty"`
+	// The historical users of the terminal device.
 	HistoryUsers []*GetUserDeviceResponseBodyDeviceHistoryUsers `json:"HistoryUsers,omitempty" xml:"HistoryUsers,omitempty" type:"Repeated"`
+	// The name of the terminal device.
+	//
 	// example:
 	//
 	// win10-64bit
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// The Internet access status. Valid values:
+	//
 	// example:
 	//
 	// Disabled
 	IaStatus *string `json:"IaStatus,omitempty" xml:"IaStatus,omitempty"`
+	// The internal IP address of the terminal device.
+	//
 	// example:
 	//
 	// 172.16.XX.XX
-	InnerIP      *string `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
-	JoinAdDomain *bool   `json:"JoinAdDomain,omitempty" xml:"JoinAdDomain,omitempty"`
+	InnerIP *string `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
+	// Indicates whether the terminal has joined an AD domain.
+	//
+	// example:
+	//
+	// true
+	JoinAdDomain *bool `json:"JoinAdDomain,omitempty" xml:"JoinAdDomain,omitempty"`
+	// The MAC address of the terminal device.
+	//
 	// example:
 	//
 	// 48:9e:XX:XX:02:80
-	Mac                 *string   `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// The IDs of matched device groups.
 	MatchDeviceGroupIds []*string `json:"MatchDeviceGroupIds,omitempty" xml:"MatchDeviceGroupIds,omitempty" type:"Repeated"`
+	// The memory capacity of the terminal device. Unit: GB.
+	//
 	// example:
 	//
 	// 16
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The network access control status. Valid values:
+	//
 	// example:
 	//
 	// Unprovisioned
-	NacStatus        *string                                            `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
+	NacStatus *string `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
+	// The list of network interface controllers (NICs) of the terminal device.
 	NetInterfaceInfo []*GetUserDeviceResponseBodyDeviceNetInterfaceInfo `json:"NetInterfaceInfo,omitempty" xml:"NetInterfaceInfo,omitempty" type:"Repeated"`
+	// The private access status. Valid values:
+	//
 	// example:
 	//
 	// Enabled
-	PaStatus  *string                                     `json:"PaStatus,omitempty" xml:"PaStatus,omitempty"`
+	PaStatus *string `json:"PaStatus,omitempty" xml:"PaStatus,omitempty"`
+	// The list of processes running on the terminal.
 	Processes []*GetUserDeviceResponseBodyDeviceProcesses `json:"Processes,omitempty" xml:"Processes,omitempty" type:"Repeated"`
-	Province  *string                                     `json:"Province,omitempty" xml:"Province,omitempty"`
+	// The province to which the public IP address belongs.
+	//
+	// example:
+	//
+	// Zhejiang
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// The province name in English.
+	//
+	// example:
+	//
+	// Beijing
+	ProvinceEn *string `json:"ProvinceEn,omitempty" xml:"ProvinceEn,omitempty"`
+	// The province name in Chinese.
+	//
+	// example:
+	//
+	// 北京市
+	ProvinceZh *string `json:"ProvinceZh,omitempty" xml:"ProvinceZh,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	// Indicates whether sharing is enabled for the device. Valid values:
+	//
 	// example:
 	//
 	// true
-	SharingStatus *bool   `json:"SharingStatus,omitempty" xml:"SharingStatus,omitempty"`
-	SnBaseBoard   *string `json:"SnBaseBoard,omitempty" xml:"SnBaseBoard,omitempty"`
-	SnBios        *string `json:"SnBios,omitempty" xml:"SnBios,omitempty"`
-	SnDiskDrive   *string `json:"SnDiskDrive,omitempty" xml:"SnDiskDrive,omitempty"`
-	SnProcessor   *string `json:"SnProcessor,omitempty" xml:"SnProcessor,omitempty"`
-	SnSystem      *string `json:"SnSystem,omitempty" xml:"SnSystem,omitempty"`
+	SharingStatus *bool `json:"SharingStatus,omitempty" xml:"SharingStatus,omitempty"`
+	// The motherboard serial number.
+	//
+	// example:
+	//
+	// PJGGU00WBD****
+	SnBaseBoard *string `json:"SnBaseBoard,omitempty" xml:"SnBaseBoard,omitempty"`
+	// The serial number (SN) of the BIOS system.
+	//
+	// example:
+	//
+	// 5CG003****
+	SnBios *string `json:"SnBios,omitempty" xml:"SnBios,omitempty"`
+	// The hard disk serial number.
+	//
+	// example:
+	//
+	// WD-WXR1A99A****
+	SnDiskDrive *string `json:"SnDiskDrive,omitempty" xml:"SnDiskDrive,omitempty"`
+	// The serial number (SN) of the processor.
+	//
+	// example:
+	//
+	// BFEBFBFF0008****
+	SnProcessor *string `json:"SnProcessor,omitempty" xml:"SnProcessor,omitempty"`
+	// The system serial number.
+	//
+	// example:
+	//
+	// KVN9C9****
+	SnSystem *string `json:"SnSystem,omitempty" xml:"SnSystem,omitempty"`
+	// The logon IP address of the terminal device.
+	//
 	// example:
 	//
 	// 106.14.XX.XX
-	SrcIP                   *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
-	TerminalInfoCollectTime *int64  `json:"TerminalInfoCollectTime,omitempty" xml:"TerminalInfoCollectTime,omitempty"`
+	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
+	// The timestamp when the terminal process information was collected.
+	//
+	// example:
+	//
+	// 1775096714
+	TerminalInfoCollectTime *int64 `json:"TerminalInfoCollectTime,omitempty" xml:"TerminalInfoCollectTime,omitempty"`
+	// The last online time of the terminal device.
+	//
 	// example:
 	//
 	// 2023-08-24 19:04:42
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	Workshop   *string `json:"Workshop,omitempty" xml:"Workshop,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// Mr. Wang
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The name of the office area.
+	//
+	// example:
+	//
+	// Test Office Area
+	Workshop *string `json:"Workshop,omitempty" xml:"Workshop,omitempty"`
 }
 
 func (s GetUserDeviceResponseBodyDevice) String() string {
@@ -213,12 +414,36 @@ func (s *GetUserDeviceResponseBodyDevice) GetCity() *string {
 	return s.City
 }
 
+func (s *GetUserDeviceResponseBodyDevice) GetCityEn() *string {
+	return s.CityEn
+}
+
+func (s *GetUserDeviceResponseBodyDevice) GetCityZh() *string {
+	return s.CityZh
+}
+
 func (s *GetUserDeviceResponseBodyDevice) GetContinent() *string {
 	return s.Continent
 }
 
+func (s *GetUserDeviceResponseBodyDevice) GetContinentEn() *string {
+	return s.ContinentEn
+}
+
+func (s *GetUserDeviceResponseBodyDevice) GetContinentZh() *string {
+	return s.ContinentZh
+}
+
 func (s *GetUserDeviceResponseBodyDevice) GetCountry() *string {
 	return s.Country
+}
+
+func (s *GetUserDeviceResponseBodyDevice) GetCountryEn() *string {
+	return s.CountryEn
+}
+
+func (s *GetUserDeviceResponseBodyDevice) GetCountryZh() *string {
+	return s.CountryZh
 }
 
 func (s *GetUserDeviceResponseBodyDevice) GetCreateTime() *string {
@@ -325,6 +550,14 @@ func (s *GetUserDeviceResponseBodyDevice) GetProvince() *string {
 	return s.Province
 }
 
+func (s *GetUserDeviceResponseBodyDevice) GetProvinceEn() *string {
+	return s.ProvinceEn
+}
+
+func (s *GetUserDeviceResponseBodyDevice) GetProvinceZh() *string {
+	return s.ProvinceZh
+}
+
 func (s *GetUserDeviceResponseBodyDevice) GetSaseUserId() *string {
 	return s.SaseUserId
 }
@@ -408,13 +641,43 @@ func (s *GetUserDeviceResponseBodyDevice) SetCity(v string) *GetUserDeviceRespon
 	return s
 }
 
+func (s *GetUserDeviceResponseBodyDevice) SetCityEn(v string) *GetUserDeviceResponseBodyDevice {
+	s.CityEn = &v
+	return s
+}
+
+func (s *GetUserDeviceResponseBodyDevice) SetCityZh(v string) *GetUserDeviceResponseBodyDevice {
+	s.CityZh = &v
+	return s
+}
+
 func (s *GetUserDeviceResponseBodyDevice) SetContinent(v string) *GetUserDeviceResponseBodyDevice {
 	s.Continent = &v
 	return s
 }
 
+func (s *GetUserDeviceResponseBodyDevice) SetContinentEn(v string) *GetUserDeviceResponseBodyDevice {
+	s.ContinentEn = &v
+	return s
+}
+
+func (s *GetUserDeviceResponseBodyDevice) SetContinentZh(v string) *GetUserDeviceResponseBodyDevice {
+	s.ContinentZh = &v
+	return s
+}
+
 func (s *GetUserDeviceResponseBodyDevice) SetCountry(v string) *GetUserDeviceResponseBodyDevice {
 	s.Country = &v
+	return s
+}
+
+func (s *GetUserDeviceResponseBodyDevice) SetCountryEn(v string) *GetUserDeviceResponseBodyDevice {
+	s.CountryEn = &v
+	return s
+}
+
+func (s *GetUserDeviceResponseBodyDevice) SetCountryZh(v string) *GetUserDeviceResponseBodyDevice {
+	s.CountryZh = &v
 	return s
 }
 
@@ -548,6 +811,16 @@ func (s *GetUserDeviceResponseBodyDevice) SetProvince(v string) *GetUserDeviceRe
 	return s
 }
 
+func (s *GetUserDeviceResponseBodyDevice) SetProvinceEn(v string) *GetUserDeviceResponseBodyDevice {
+	s.ProvinceEn = &v
+	return s
+}
+
+func (s *GetUserDeviceResponseBodyDevice) SetProvinceZh(v string) *GetUserDeviceResponseBodyDevice {
+	s.ProvinceZh = &v
+	return s
+}
+
 func (s *GetUserDeviceResponseBodyDevice) SetSaseUserId(v string) *GetUserDeviceResponseBodyDevice {
 	s.SaseUserId = &v
 	return s
@@ -640,11 +913,18 @@ func (s *GetUserDeviceResponseBodyDevice) Validate() error {
 }
 
 type GetUserDeviceResponseBodyDeviceHistoryUsers struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
-	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// Ms. Zhang
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s GetUserDeviceResponseBodyDeviceHistoryUsers) String() string {
@@ -678,7 +958,17 @@ func (s *GetUserDeviceResponseBodyDeviceHistoryUsers) Validate() error {
 }
 
 type GetUserDeviceResponseBodyDeviceNetInterfaceInfo struct {
-	Mac  *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// The MAC address of the NIC.
+	//
+	// example:
+	//
+	// 00:16:XX:XX:7c:46
+	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// The name of the NIC.
+	//
+	// example:
+	//
+	// eth0
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -713,10 +1003,30 @@ func (s *GetUserDeviceResponseBodyDeviceNetInterfaceInfo) Validate() error {
 }
 
 type GetUserDeviceResponseBodyDeviceProcesses struct {
-	Cpu         *float64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Memory      *int32   `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The CPU usage percentage of the process.
+	//
+	// example:
+	//
+	// 0.05
+	Cpu *float64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The process running description.
+	//
+	// example:
+	//
+	// C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The memory usage of the process, in MB.
+	//
+	// example:
+	//
+	// 233
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The process name.
+	//
+	// example:
+	//
+	// chrome.exe
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s GetUserDeviceResponseBodyDeviceProcesses) String() string {

@@ -14,6 +14,12 @@ type iDeletePrivateAccessPolicyRequest interface {
 }
 
 type DeletePrivateAccessPolicyRequest struct {
+	// The ID of the private network access policy. Obtain this ID from:
+	//
+	// - [ListPrivateAccessPolices](~~ListPrivateAccessPolices~~): Batch query private network access policies.
+	//
+	// - [CreatePrivateAccessPolicy](~~CreatePrivateAccessPolicy~~): Create a private network access policy.
+	//
 	// This parameter is required.
 	//
 	// example:

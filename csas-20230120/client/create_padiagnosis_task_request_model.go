@@ -32,46 +32,80 @@ type iCreatePADiagnosisTaskRequest interface {
 }
 
 type CreatePADiagnosisTaskRequest struct {
+	// The ID of the terminal device.
+	//
 	// example:
 	//
 	// 2987b3e0-8108-2f99-4d18-3b4f1c1c36d7
 	DevTag *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
+	// The diagnosis type. Valid values:
+	//
+	// - **FullLink**: full-link diagnosis.
+	//
+	// - **Application**: application diagnosis.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// FullLink
 	DiagnoseType *string `json:"DiagnoseType,omitempty" xml:"DiagnoseType,omitempty"`
+	// The address to diagnose.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// socialapp-gateway.client9.me
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The POP point ID.
+	//
 	// example:
 	//
 	// pop-3e244b62357dcafc
 	PopId *string `json:"PopId,omitempty" xml:"PopId,omitempty"`
+	// The POP point selection mode. Valid values:
+	//
+	// - **AutoSelect**: automatic selection.
+	//
+	// - **ManualSelect**: manual selection.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ManualSelect
 	PopMode *string `json:"PopMode,omitempty" xml:"PopMode,omitempty"`
+	// The port.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 80
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The protocol used by the internal network access application. Valid values:
+	//
+	// - **TCP**
+	//
+	// - **UDP**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// TCP
-	Protocol        *string                                      `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The extra configurations for UDP diagnosis. If this parameter is not specified, any response received is considered a success.
 	UdpExtraConfigs *CreatePADiagnosisTaskRequestUdpExtraConfigs `json:"UdpExtraConfigs,omitempty" xml:"UdpExtraConfigs,omitempty" type:"Struct"`
-	UserGroupId     *string                                      `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	// The user group ID.
+	//
+	// example:
+	//
+	// 用户组ID。
+	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// Zhaosi
@@ -186,10 +220,14 @@ func (s *CreatePADiagnosisTaskRequest) Validate() error {
 }
 
 type CreatePADiagnosisTaskRequestUdpExtraConfigs struct {
+	// The expected response from the backend server.
+	//
 	// example:
 	//
 	// hello
 	ExpectedResponse *string `json:"ExpectedResponse,omitempty" xml:"ExpectedResponse,omitempty"`
+	// The UDP request content.
+	//
 	// example:
 	//
 	// hello

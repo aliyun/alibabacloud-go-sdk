@@ -16,7 +16,14 @@ type iUpdateNacUserCertStatusRequest interface {
 }
 
 type UpdateNacUserCertStatusRequest struct {
+	// A collection of end user IDs and device IDs.
 	IdList []*UpdateNacUserCertStatusRequestIdList `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	// The certificate status for the end user device. Valid values:
+	//
+	// - **Enabled**
+	//
+	// - **Disabled**
+	//
 	// example:
 	//
 	// Enabled
@@ -63,10 +70,14 @@ func (s *UpdateNacUserCertStatusRequest) Validate() error {
 }
 
 type UpdateNacUserCertStatusRequestIdList struct {
+	// The device ID.
+	//
 	// example:
 	//
 	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
 	DevTag *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
+	// The end user ID.
+	//
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****

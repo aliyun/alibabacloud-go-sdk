@@ -22,19 +22,36 @@ type iListNacUserCertResponseBody interface {
 }
 
 type ListNacUserCertResponseBody struct {
+	// API status or POP error code. Valid values:
+	//
+	// - **2xx**: Success.
+	//
+	// - **3xx**: Redirection.
+	//
+	// - **4xx**: Request error.
+	//
+	// - **5xx**: Server error.
+	//
 	// example:
 	//
 	// 200
-	Code     *int64                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// List of onboarding user certificate statuses.
 	DataList []*ListNacUserCertResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// Additional information.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// ID of the request.
+	//
 	// example:
 	//
 	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of entries that match the conditions.
+	//
 	// example:
 	//
 	// 1
@@ -108,39 +125,76 @@ func (s *ListNacUserCertResponseBody) Validate() error {
 }
 
 type ListNacUserCertResponseBodyDataList struct {
+	// Alibaba Cloud account ID.
+	//
 	// example:
 	//
 	// 1
-	Aliuid     *string `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	Aliuid *string `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	// Department that the user belongs to.
+	//
+	// example:
+	//
+	// 外包
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// Endpoint device ID.
+	//
 	// example:
 	//
 	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
 	DevTag *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
+	// Operating system type of the endpoint device. Valid values:
+	//
+	// - **windows**: Windows.
+	//
+	// - **macos**: macOS.
+	//
+	// - **linux**: Linux.
+	//
+	// - **android**: Android.
+	//
+	// - **ios**: iOS.
+	//
 	// example:
 	//
 	// windows
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// Expired At.
+	//
 	// example:
 	//
 	// 2029-06-30 09:31:54
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// Endpoint device name. The value must be 1 to 128 characters in length. It can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces. If you enter only an underscore (_), the system returns all endpoint devices whose names contain 4-byte UTF-8 characters.
+	//
 	// example:
 	//
 	// MS-XU****
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// Endpoint device MAC address.
+	//
 	// example:
 	//
 	// 08:f8:**:**:**:5e
 	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// Onboarding user certificate status. Valid values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
 	// example:
 	//
 	// Disabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// User ID.
+	//
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Username.
+	//
 	// example:
 	//
 	// zhang**

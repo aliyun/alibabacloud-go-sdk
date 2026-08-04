@@ -59,9 +59,19 @@ type CreateWmExtractTaskShrinkRequest struct {
 	// example:
 	//
 	// test-****.pdf
-	Filename                        *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	// Image extraction parameters
 	ImageExtractParamsOpenApiShrink *string `json:"ImageExtractParamsOpenApi,omitempty" xml:"ImageExtractParamsOpenApi,omitempty"`
-	IsClientEmbed                   *bool   `json:"IsClientEmbed,omitempty" xml:"IsClientEmbed,omitempty"`
+	// Audio watermark parameter: specifies whether the watermark was embedded by the client SDK. Default value: false. Valid values:
+	//
+	// - **true**: Yes
+	//
+	// - **false**: No
+	//
+	// example:
+	//
+	// false
+	IsClientEmbed *bool `json:"IsClientEmbed,omitempty" xml:"IsClientEmbed,omitempty"`
 	// The watermark parameter for videos that specifies whether to use the long video watermark SDK. Default value: false. Valid values:
 	//
 	// 	- **true**

@@ -18,15 +18,20 @@ type iListUsersResponseBody interface {
 }
 
 type ListUsersResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5FEF5CFA-14CC-5DE5-BD1F-AFFE0996E71D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of users.
+	//
 	// example:
 	//
 	// 1
-	TotalNum *string                       `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	Users    []*ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	TotalNum *string `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// An array of user objects.
+	Users []*ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s ListUsersResponseBody) String() string {
@@ -78,25 +83,49 @@ func (s *ListUsersResponseBody) Validate() error {
 }
 
 type ListUsersResponseBodyUsers struct {
+	// The user\\"s department.
+	//
+	// example:
+	//
+	// 测试部
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// The user\\"s email address.
+	//
 	// example:
 	//
 	// a***@example.net
-	Email          *string   `json:"Email,omitempty" xml:"Email,omitempty"`
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// A list of full department paths.
 	FullDepartment []*string `json:"FullDepartment,omitempty" xml:"FullDepartment,omitempty" type:"Repeated"`
-	IdpName        *string   `json:"IdpName,omitempty" xml:"IdpName,omitempty"`
+	// The name of the Identity Provider (IdP).
+	//
+	// example:
+	//
+	// 飞书
+	IdpName *string `json:"IdpName,omitempty" xml:"IdpName,omitempty"`
+	// The user\\"s phone number.
+	//
 	// example:
 	//
 	// 1381111****
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	// The user status.
+	//
 	// example:
 	//
 	// Enabled
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// 王先生
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 

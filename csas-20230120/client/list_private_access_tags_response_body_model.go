@@ -92,6 +92,10 @@ type ListPrivateAccessTagsResponseBodyTags struct {
 	// 2022-10-10 11:39:34
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the internal access tag.
+	//
+	// example:
+	//
+	// 这是一条内网访问标签
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the internal access tag.
 	//

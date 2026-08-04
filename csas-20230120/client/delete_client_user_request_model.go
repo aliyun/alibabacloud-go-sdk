@@ -14,6 +14,8 @@ type iDeleteClientUserRequest interface {
 }
 
 type DeleteClientUserRequest struct {
+	// The ID of the user to delete.
+	//
 	// This parameter is required.
 	//
 	// example:

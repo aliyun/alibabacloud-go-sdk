@@ -16,7 +16,10 @@ type iUpdateUserDevicesStatusResponseBody interface {
 }
 
 type UpdateUserDevicesStatusResponseBody struct {
+	// A list of endpoint devices.
 	Devices []*UpdateUserDevicesStatusResponseBodyDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
+	// The ID of this request.
+	//
 	// example:
 	//
 	// 5FEF5CFA-14CC-5DE5-BD1F-AFFE0996E71D
@@ -63,101 +66,220 @@ func (s *UpdateUserDevicesStatusResponseBody) Validate() error {
 }
 
 type UpdateUserDevicesStatusResponseBodyDevices struct {
+	// The client status. Valid values:
+	//
+	// - **Online**: Online.
+	//
+	// - **Offline**: Offline.
+	//
 	// example:
 	//
 	// Online
 	AppStatus *string `json:"AppStatus,omitempty" xml:"AppStatus,omitempty"`
+	// The client version.
+	//
 	// example:
 	//
 	// 2.2.0
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// The CPU model of the endpoint device.
+	//
 	// example:
 	//
 	// Apple M1
 	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// The time when the endpoint device was registered.
+	//
 	// example:
 	//
 	// 2023-07-17 18:46:55
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The department to which the user belongs.
+	//
+	// example:
+	//
+	// 测试部
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// The ownership of the endpoint device. Valid values:
+	//
+	// - **Personal**: Personal device.
+	//
+	// - **Company**: Company device.
+	//
 	// example:
 	//
 	// Company
 	DeviceBelong *string `json:"DeviceBelong,omitempty" xml:"DeviceBelong,omitempty"`
+	// The model of the endpoint device.
+	//
 	// example:
 	//
 	// MacBookPro17,1
 	DeviceModel *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
+	// The status of the endpoint device. Valid values:
+	//
+	// - **Online**: Online.
+	//
+	// - **Offline**: Offline.
+	//
+	// - **LongTermOffline**: Long-term offline.
+	//
+	// - **Locked**: Locked.
+	//
+	// - **Lost**: Reported as lost.
+	//
+	// - **Unbound**: Detached.
+	//
 	// example:
 	//
 	// Online
 	DeviceStatus *string `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
+	// The endpoint device ID.
+	//
 	// example:
 	//
 	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
 	DeviceTag *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
+	// The operating system type of the endpoint device. Valid values:
+	//
+	// - **Windows**: Windows.
+	//
+	// - **macOS**: macOS.
+	//
+	// - **Linux**: Linux.
+	//
+	// - **Android**: Android.
+	//
+	// - **iOS**: iOS.
+	//
+	// - **Windows_Wuying**: Alibaba Cloud Cloud Desktop.
+	//
 	// example:
 	//
 	// Windows
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// The operating system version of the endpoint device.
+	//
 	// example:
 	//
 	// 3.5.1
 	DeviceVersion *string `json:"DeviceVersion,omitempty" xml:"DeviceVersion,omitempty"`
+	// The disk model of the endpoint device.
+	//
 	// example:
 	//
 	// APPLE SSD AP0512Q Media
 	Disk *string `json:"Disk,omitempty" xml:"Disk,omitempty"`
+	// The data protection status. Valid values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
+	// - **Unprovisioned**: Not configured.
+	//
+	// - **Unauthorized**: Unauthorized.
+	//
 	// example:
 	//
 	// Enabled
 	DlpStatus *string `json:"DlpStatus,omitempty" xml:"DlpStatus,omitempty"`
+	// The device name.
+	//
 	// example:
 	//
 	// win10-64bit
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// Internet access status. Valid values:
+	//
+	// - **Enabled**: Internet access is enabled.
+	//
+	// - **Disabled**: Internet access is disabled.
+	//
+	// - **Unprovisioned**: The device is unconfigured.
+	//
 	// example:
 	//
 	// Enabled
 	IaStatus *string `json:"IaStatus,omitempty" xml:"IaStatus,omitempty"`
+	// The private network IP address of the endpoint device.
+	//
 	// example:
 	//
 	// 192.168.XX.XX
 	InnerIP *string `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
+	// The MAC address of the endpoint device.
+	//
 	// example:
 	//
 	// 00:16:XX:XX:7c:46
 	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// The memory capacity of the endpoint device, in GB.
+	//
 	// example:
 	//
 	// 16
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The network admission control status. Valid values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
+	// - **Unprovisioned**: Not configured.
+	//
 	// example:
 	//
 	// Enabled
-	NacStatus        *string                                                       `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
+	NacStatus *string `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
+	// A list of network interface controllers (NICs) on the endpoint device.
 	NetInterfaceInfo []*UpdateUserDevicesStatusResponseBodyDevicesNetInterfaceInfo `json:"NetInterfaceInfo,omitempty" xml:"NetInterfaceInfo,omitempty" type:"Repeated"`
+	// The private network access status. Valid values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
+	// - **Unprovisioned**: Not configured.
+	//
 	// example:
 	//
 	// Enabled
 	PaStatus *string `json:"PaStatus,omitempty" xml:"PaStatus,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	// Whether sharing is enabled for the device. Valid values:
+	//
+	// - **true**: Sharing is enabled.
+	//
+	// - **false**: Sharing is disabled.
+	//
 	// example:
 	//
 	// true
 	SharingStatus *bool `json:"SharingStatus,omitempty" xml:"SharingStatus,omitempty"`
+	// The IP address used to log on to the endpoint device.
+	//
 	// example:
 	//
 	// 11.49.XX.XX
 	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
+	// The last time the endpoint device was online.
+	//
 	// example:
 	//
 	// 2023-08-24 19:04:42
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// 王先生
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s UpdateUserDevicesStatusResponseBodyDevices) String() string {
@@ -416,7 +538,17 @@ func (s *UpdateUserDevicesStatusResponseBodyDevices) Validate() error {
 }
 
 type UpdateUserDevicesStatusResponseBodyDevicesNetInterfaceInfo struct {
-	Mac  *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// The MAC address of the NIC.
+	//
+	// example:
+	//
+	// 00:16:XX:XX:7c:46
+	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// The NIC name.
+	//
+	// example:
+	//
+	// eth0
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

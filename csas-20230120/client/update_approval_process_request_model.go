@@ -30,19 +30,33 @@ type iUpdateApprovalProcessRequest interface {
 }
 
 type UpdateApprovalProcessRequest struct {
-	ApprovalType       *int32                                          `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	ApprovalType *int32 `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	// The description of the approval flow. The description must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces. Chinese characters are supported.
+	//
+	// example:
+	//
+	// This is a test
 	Description        *string                                         `json:"Description,omitempty" xml:"Description,omitempty"`
 	EventLabel         *string                                         `json:"EventLabel,omitempty" xml:"EventLabel,omitempty"`
 	ExternalConfig     *string                                         `json:"ExternalConfig,omitempty" xml:"ExternalConfig,omitempty"`
 	MatchSchemaConfigs *UpdateApprovalProcessRequestMatchSchemaConfigs `json:"MatchSchemaConfigs,omitempty" xml:"MatchSchemaConfigs,omitempty" type:"Struct"`
-	MatchSchemas       *UpdateApprovalProcessRequestMatchSchemas       `json:"MatchSchemas,omitempty" xml:"MatchSchemas,omitempty" type:"Struct"`
+	// The matched approval templates.
+	MatchSchemas *UpdateApprovalProcessRequestMatchSchemas `json:"MatchSchemas,omitempty" xml:"MatchSchemas,omitempty" type:"Struct"`
+	// The ID of the approval flow.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// approval-process-f16bf74b2b29****
-	ProcessId    *string     `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	ProcessName  *string     `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	// The name of the approval flow. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). Chinese characters are supported.
+	//
+	// example:
+	//
+	// Test
+	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	// The list of approval nodes. You can define up to 5 approval nodes.
 	ProcessNodes [][]*string `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
 }
 
@@ -157,6 +171,7 @@ type UpdateApprovalProcessRequestMatchSchemaConfigs struct {
 	DomainWhitelistSchemaConfig    *UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfig    `json:"DomainWhitelistSchemaConfig,omitempty" xml:"DomainWhitelistSchemaConfig,omitempty" type:"Struct"`
 	EndpointHardeningSchemaConfig  *UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfig  `json:"EndpointHardeningSchemaConfig,omitempty" xml:"EndpointHardeningSchemaConfig,omitempty" type:"Struct"`
 	PeripheralBlockSchemaConfig    *UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfig    `json:"PeripheralBlockSchemaConfig,omitempty" xml:"PeripheralBlockSchemaConfig,omitempty" type:"Struct"`
+	PrivateAccessBlockSchemaConfig *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfig `json:"PrivateAccessBlockSchemaConfig,omitempty" xml:"PrivateAccessBlockSchemaConfig,omitempty" type:"Struct"`
 	SoftwareBlockSchemaConfig      *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfig      `json:"SoftwareBlockSchemaConfig,omitempty" xml:"SoftwareBlockSchemaConfig,omitempty" type:"Struct"`
 	SoftwareHardeningSchemaConfig  *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfig  `json:"SoftwareHardeningSchemaConfig,omitempty" xml:"SoftwareHardeningSchemaConfig,omitempty" type:"Struct"`
 }
@@ -195,6 +210,10 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigs) GetEndpointHardeningSch
 
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigs) GetPeripheralBlockSchemaConfig() *UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfig {
 	return s.PeripheralBlockSchemaConfig
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigs) GetPrivateAccessBlockSchemaConfig() *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfig {
+	return s.PrivateAccessBlockSchemaConfig
 }
 
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigs) GetSoftwareBlockSchemaConfig() *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfig {
@@ -237,6 +256,11 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigs) SetEndpointHardeningSch
 
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigs) SetPeripheralBlockSchemaConfig(v *UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfig) *UpdateApprovalProcessRequestMatchSchemaConfigs {
 	s.PeripheralBlockSchemaConfig = v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigs) SetPrivateAccessBlockSchemaConfig(v *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfig) *UpdateApprovalProcessRequestMatchSchemaConfigs {
+	s.PrivateAccessBlockSchemaConfig = v
 	return s
 }
 
@@ -283,6 +307,11 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigs) Validate() error {
 	}
 	if s.PeripheralBlockSchemaConfig != nil {
 		if err := s.PeripheralBlockSchemaConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrivateAccessBlockSchemaConfig != nil {
+		if err := s.PrivateAccessBlockSchemaConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -992,6 +1021,105 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConf
 	return dara.Validate(s)
 }
 
+type UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfig struct {
+	ExternalProcessId *string                                                                                 `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	FieldMap          []*UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	SchemaId          *string                                                                                 `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfig) GetExternalProcessId() *string {
+	return s.ExternalProcessId
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfig) GetFieldMap() []*UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap {
+	return s.FieldMap
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfig) GetSchemaId() *string {
+	return s.SchemaId
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfig) SetExternalProcessId(v string) *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfig {
+	s.ExternalProcessId = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfig) SetFieldMap(v []*UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap) *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfig {
+	s.FieldMap = v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfig) SetSchemaId(v string) *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfig {
+	s.SchemaId = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfig) Validate() error {
+	if s.FieldMap != nil {
+		for _, item := range s.FieldMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap struct {
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+}
+
+func (s UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap) GetDisplayField() *string {
+	return s.DisplayField
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap) GetSystemField() *string {
+	return s.SystemField
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap) SetDisplayField(v string) *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap {
+	s.DisplayField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap) SetDisplayFieldValue(v string) *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap {
+	s.DisplayFieldValue = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap) SetSystemField(v string) *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap {
+	s.SystemField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap) Validate() error {
+	return dara.Validate(s)
+}
+
 type UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfig struct {
 	ExternalProcessId *string                                                                            `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
 	FieldMap          []*UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
@@ -1191,31 +1319,46 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaCo
 }
 
 type UpdateApprovalProcessRequestMatchSchemas struct {
+	// The ID of the device uninstall approval template.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
 	AppUninstallSchemaId *string `json:"AppUninstallSchemaId,omitempty" xml:"AppUninstallSchemaId,omitempty"`
+	// The ID of the device registration approval template.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
 	DeviceRegistrationSchemaId *string `json:"DeviceRegistrationSchemaId,omitempty" xml:"DeviceRegistrationSchemaId,omitempty"`
+	// The ID of the file outgoing approval template.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
 	DlpSendSchemaId *string `json:"DlpSendSchemaId,omitempty" xml:"DlpSendSchemaId,omitempty"`
+	// The ID of the domain name blacklist approval template.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
 	DomainBlacklistSchemaId *string `json:"DomainBlacklistSchemaId,omitempty" xml:"DomainBlacklistSchemaId,omitempty"`
+	// The ID of the domain name whitelist approval template.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
 	DomainWhitelistSchemaId   *string `json:"DomainWhitelistSchemaId,omitempty" xml:"DomainWhitelistSchemaId,omitempty"`
 	EndpointHardeningSchemaId *string `json:"EndpointHardeningSchemaId,omitempty" xml:"EndpointHardeningSchemaId,omitempty"`
+	// The ID of the peripheral control approval template.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
-	PeripheralBlockSchemaId *string `json:"PeripheralBlockSchemaId,omitempty" xml:"PeripheralBlockSchemaId,omitempty"`
+	PeripheralBlockSchemaId    *string `json:"PeripheralBlockSchemaId,omitempty" xml:"PeripheralBlockSchemaId,omitempty"`
+	PrivateAccessBlockSchemaId *string `json:"PrivateAccessBlockSchemaId,omitempty" xml:"PrivateAccessBlockSchemaId,omitempty"`
+	// The ID of the software blocking approval template.
+	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
@@ -1259,6 +1402,10 @@ func (s *UpdateApprovalProcessRequestMatchSchemas) GetPeripheralBlockSchemaId() 
 	return s.PeripheralBlockSchemaId
 }
 
+func (s *UpdateApprovalProcessRequestMatchSchemas) GetPrivateAccessBlockSchemaId() *string {
+	return s.PrivateAccessBlockSchemaId
+}
+
 func (s *UpdateApprovalProcessRequestMatchSchemas) GetSoftwareBlockSchemaId() *string {
 	return s.SoftwareBlockSchemaId
 }
@@ -1299,6 +1446,11 @@ func (s *UpdateApprovalProcessRequestMatchSchemas) SetEndpointHardeningSchemaId(
 
 func (s *UpdateApprovalProcessRequestMatchSchemas) SetPeripheralBlockSchemaId(v string) *UpdateApprovalProcessRequestMatchSchemas {
 	s.PeripheralBlockSchemaId = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemas) SetPrivateAccessBlockSchemaId(v string) *UpdateApprovalProcessRequestMatchSchemas {
+	s.PrivateAccessBlockSchemaId = &v
 	return s
 }
 

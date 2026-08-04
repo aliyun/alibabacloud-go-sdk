@@ -18,9 +18,18 @@ type iCreateUserGroupRequest interface {
 }
 
 type CreateUserGroupRequest struct {
+	// The collection of user group attributes. You can specify a maximum of 3,000 attributes. The attributes are combined using a logical OR.
+	//
 	// This parameter is required.
-	Attributes  []*CreateUserGroupRequestAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	Description *string                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	Attributes []*CreateUserGroupRequestAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	// The user group description. The description must be 1 to 128 characters long and can contain Chinese characters, letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
+	//
+	// example:
+	//
+	// 这是一条用户组
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The user group name. The name must be 1 to 128 characters long and can contain Chinese characters, letters, digits, periods (.), underscores (_), and hyphens (-).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -78,23 +87,55 @@ func (s *CreateUserGroupRequest) Validate() error {
 }
 
 type CreateUserGroupRequestAttributes struct {
+	// The ID of the identity provider (IdP) for the user group. This parameter is used when UserGroupType is set to **department**.
+	//
 	// example:
 	//
 	// 12
 	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// The relationship for the user group. Valid values:
+	//
+	// - **Equal**: Equal to.
+	//
+	// - **Unequal**: Not equal to.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Equal
 	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// The type of the user group. Valid values:
+	//
+	// - **username**: Username.
+	//
+	// - **department**: Department.
+	//
+	// - **email**: Email.
+	//
+	// - **telephone**: Mobile phone.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// department
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
+	// The value of the user group attribute.
+	//
+	// - If UserGroupType is set to **username**, this parameter specifies the username value. The value must be 1 to 128 characters long. It can contain Chinese characters, letters, digits, periods (.), underscores (_), hyphens (-), asterisks (\\*), at signs (@), and spaces.
+	//
+	// - If UserGroupType is set to **department**, this parameter specifies the department value. For example: OU=Department 1,OU=SASE DingTalk.
+	//
+	// - If UserGroupType is set to **email**, this parameter specifies the email address. For example: username\\@example.com.
+	//
+	// - If UserGroupType is set to **telephone**, this parameter specifies the mobile phone number. For example: 13900001234.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// OU=部门1,OU=SASE钉钉
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

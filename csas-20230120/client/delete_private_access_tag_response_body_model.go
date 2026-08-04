@@ -14,6 +14,8 @@ type iDeletePrivateAccessTagResponseBody interface {
 }
 
 type DeletePrivateAccessTagResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// FD724DBC-CD76-5235-BF76-59C51B73296D

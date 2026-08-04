@@ -14,6 +14,8 @@ type iListPolicesForPrivateAccessApplicationRequest interface {
 }
 
 type ListPolicesForPrivateAccessApplicationRequest struct {
+	// The IDs of the private access applications. You can specify up to 100 IDs.
+	//
 	// This parameter is required.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
 }

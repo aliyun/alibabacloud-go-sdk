@@ -24,20 +24,29 @@ type iUpdateBootAndAntiUninstallPolicyShrinkRequest interface {
 }
 
 type UpdateBootAndAntiUninstallPolicyShrinkRequest struct {
+	// Let end users submit approval requests.
+	//
 	// example:
 	//
 	// true
-	AllowReport        *bool   `json:"AllowReport,omitempty" xml:"AllowReport,omitempty"`
+	AllowReport *bool `json:"AllowReport,omitempty" xml:"AllowReport,omitempty"`
+	// Content shown in the client-side block dialog.
 	BlockContentShrink *string `json:"BlockContent,omitempty" xml:"BlockContent,omitempty"`
+	// Enable anti-uninstall.
+	//
 	// example:
 	//
 	// true
 	IsAntiUninstall *bool `json:"IsAntiUninstall,omitempty" xml:"IsAntiUninstall,omitempty"`
+	// Enable auto-start.
+	//
 	// example:
 	//
 	// true
-	IsBoot         *bool     `json:"IsBoot,omitempty" xml:"IsBoot,omitempty"`
-	UserGroupIds   []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	IsBoot *bool `json:"IsBoot,omitempty" xml:"IsBoot,omitempty"`
+	// List of user group IDs to which this policy applies.
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	// List of whitelisted users.
 	WhitelistUsers []*string `json:"WhitelistUsers,omitempty" xml:"WhitelistUsers,omitempty" type:"Repeated"`
 }
 

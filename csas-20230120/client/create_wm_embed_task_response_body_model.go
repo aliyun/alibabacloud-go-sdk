@@ -16,7 +16,10 @@ type iCreateWmEmbedTaskResponseBody interface {
 }
 
 type CreateWmEmbedTaskResponseBody struct {
+	// Job information.
 	Data *CreateWmEmbedTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of this request.
+	//
 	// example:
 	//
 	// BE4FB974-11BC-5453-9BE1-1606A73EACA6
@@ -59,6 +62,8 @@ func (s *CreateWmEmbedTaskResponseBody) Validate() error {
 }
 
 type CreateWmEmbedTaskResponseBodyData struct {
+	// The Job ID, used for subsequent queries of task execution results.
+	//
 	// example:
 	//
 	// job:5GfrJYsoaffmCE7Z5bZtjUefzxfd****

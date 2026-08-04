@@ -16,11 +16,14 @@ type iListApplicationsForPrivateAccessTagResponseBody interface {
 }
 
 type ListApplicationsForPrivateAccessTagResponseBody struct {
+	// The ID of this request.
+	//
 	// example:
 	//
 	// B608C6AE-623D-55C4-9454-601B88AE937E
-	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tags      []*ListApplicationsForPrivateAccessTagResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of private network access tags.
+	Tags []*ListApplicationsForPrivateAccessTagResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListApplicationsForPrivateAccessTagResponseBody) String() string {
@@ -63,7 +66,10 @@ func (s *ListApplicationsForPrivateAccessTagResponseBody) Validate() error {
 }
 
 type ListApplicationsForPrivateAccessTagResponseBodyTags struct {
+	// The collection of private network access applications.
 	Applications []*ListApplicationsForPrivateAccessTagResponseBodyTagsApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
+	// The ID of the private network access tag.
+	//
 	// example:
 	//
 	// tag-7ffc82853476****
@@ -110,27 +116,52 @@ func (s *ListApplicationsForPrivateAccessTagResponseBodyTags) Validate() error {
 }
 
 type ListApplicationsForPrivateAccessTagResponseBodyTagsApplications struct {
+	// The collection of addresses for the private network access application.
 	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// The ID of the private network access application.
+	//
 	// example:
 	//
 	// pa-application-7a9243dd02f4****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 内网访问应用创建时间。
+	// The time when the private network access application was created.
 	//
 	// example:
 	//
 	// 2022-09-27 18:10:25
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the private network access application.
+	//
+	// example:
+	//
+	// 这是一条内网访问应用
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the private network access application.
+	//
 	// example:
 	//
 	// private_access_application_name
-	Name       *string                                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The collection of port ranges for the private network access application. Port ranges must not overlap or duplicate each other.
 	PortRanges []*ListApplicationsForPrivateAccessTagResponseBodyTagsApplicationsPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	// The protocol used by the private network access application. Valid values:
+	//
+	// - **All**: All protocols.
+	//
+	// - **TCP**
+	//
+	// - **UDP**
+	//
 	// example:
 	//
 	// All
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The status of the private network access application. Valid values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
 	// example:
 	//
 	// Enabled
@@ -231,10 +262,14 @@ func (s *ListApplicationsForPrivateAccessTagResponseBodyTagsApplications) Valida
 }
 
 type ListApplicationsForPrivateAccessTagResponseBodyTagsApplicationsPortRanges struct {
+	// The start port.
+	//
 	// example:
 	//
 	// 80
 	Begin *int32 `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	// The end port.
+	//
 	// example:
 	//
 	// 81
