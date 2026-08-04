@@ -20,13 +20,13 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The maximum number of results to return. The maximum value is 200.
+	// The maximum number of results to return. Maximum value: 200.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token that is used to start the next query.
+	// The token for the next query.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListTagResourcesResponseBody struct {
 	//
 	// 0CEC5375-C554-562B-A65F-***
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// A list of tags.
+	// The label list.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"tagResources,omitempty" xml:"tagResources,omitempty" type:"Repeated"`
 }
 
@@ -112,13 +112,13 @@ type ListTagResourcesResponseBodyTagResources struct {
 	//
 	// Service
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The tag key.
+	// The label key.
 	//
 	// example:
 	//
 	// env
 	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-	// The tag value.
+	// The label value.
 	//
 	// example:
 	//

@@ -15,6 +15,10 @@ type iListWorkspacesRequest interface {
 	GetNextToken() *string
 	SetRegion(v string) *ListWorkspacesRequest
 	GetRegion() *string
+	SetResourceGroupId(v string) *ListWorkspacesRequest
+	GetResourceGroupId() *string
+	SetTags(v []*ListWorkspacesRequestTags) *ListWorkspacesRequest
+	GetTags() []*ListWorkspacesRequestTags
 	SetWorkspaceName(v string) *ListWorkspacesRequest
 	GetWorkspaceName() *string
 	SetWorkspaceNameList(v []*string) *ListWorkspacesRequest
@@ -22,13 +26,21 @@ type iListWorkspacesRequest interface {
 }
 
 type ListWorkspacesRequest struct {
-	// The number of entries to return on each page. Default value: 50. Maximum value: 50.
+	// The number of entries per page.
+	//
+	// Default value:
+	//
+	// 	50
+	//
+	// Maximum value:
+	//
+	// 	50
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token for the next page of results.
+	// The pagination token.
 	//
 	// example:
 	//
@@ -43,13 +55,21 @@ type ListWorkspacesRequest struct {
 	//
 	// cn-heyuan
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The name of the workspace. This parameter supports fuzzy search.
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-ae******ey
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The tags.
+	Tags []*ListWorkspacesRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The workspace name. Fuzzy match is used.
 	//
 	// example:
 	//
 	// workspace-test-001
 	WorkspaceName *string `json:"workspaceName,omitempty" xml:"workspaceName,omitempty"`
-	// The names of the workspaces. This parameter supports exact search.
+	// The workspace name. Exact match is used.
 	//
 	// if can be null:
 	// true
@@ -80,6 +100,14 @@ func (s *ListWorkspacesRequest) GetRegion() *string {
 	return s.Region
 }
 
+func (s *ListWorkspacesRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
+func (s *ListWorkspacesRequest) GetTags() []*ListWorkspacesRequestTags {
+	return s.Tags
+}
+
 func (s *ListWorkspacesRequest) GetWorkspaceName() *string {
 	return s.WorkspaceName
 }
@@ -103,6 +131,16 @@ func (s *ListWorkspacesRequest) SetRegion(v string) *ListWorkspacesRequest {
 	return s
 }
 
+func (s *ListWorkspacesRequest) SetResourceGroupId(v string) *ListWorkspacesRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListWorkspacesRequest) SetTags(v []*ListWorkspacesRequestTags) *ListWorkspacesRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *ListWorkspacesRequest) SetWorkspaceName(v string) *ListWorkspacesRequest {
 	s.WorkspaceName = &v
 	return s
@@ -114,5 +152,51 @@ func (s *ListWorkspacesRequest) SetWorkspaceNameList(v []*string) *ListWorkspace
 }
 
 func (s *ListWorkspacesRequest) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListWorkspacesRequestTags struct {
+	// The tag key.
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value.
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListWorkspacesRequestTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListWorkspacesRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspacesRequestTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *ListWorkspacesRequestTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *ListWorkspacesRequestTags) SetKey(v string) *ListWorkspacesRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListWorkspacesRequestTags) SetValue(v string) *ListWorkspacesRequestTags {
+	s.Value = &v
+	return s
+}
+
+func (s *ListWorkspacesRequestTags) Validate() error {
 	return dara.Validate(s)
 }

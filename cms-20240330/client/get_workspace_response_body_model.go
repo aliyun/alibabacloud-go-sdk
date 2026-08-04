@@ -21,14 +21,18 @@ type iGetWorkspaceResponseBody interface {
 	GetRegionId() *string
 	SetRequestId(v string) *GetWorkspaceResponseBody
 	GetRequestId() *string
+	SetResourceGroupId(v string) *GetWorkspaceResponseBody
+	GetResourceGroupId() *string
 	SetSlsProject(v string) *GetWorkspaceResponseBody
 	GetSlsProject() *string
+	SetTags(v []*GetWorkspaceResponseBodyTags) *GetWorkspaceResponseBody
+	GetTags() []*GetWorkspaceResponseBodyTags
 	SetWorkspaceName(v string) *GetWorkspaceResponseBody
 	GetWorkspaceName() *string
 }
 
 type GetWorkspaceResponseBody struct {
-	// The time when the workspace was created.
+	// The creation time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -36,7 +40,7 @@ type GetWorkspaceResponseBody struct {
 	//
 	// 2025-03-11T08:21:58Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The description of the workspace.
+	// The workspace description.
 	//
 	// example:
 	//
@@ -48,7 +52,7 @@ type GetWorkspaceResponseBody struct {
 	//
 	// workspace-test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The time when the workspace was last modified.
+	// The last modification time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -68,13 +72,21 @@ type GetWorkspaceResponseBody struct {
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The name of the Simple Log Service project.
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-ae******ey
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The Simple Log Service project name.
 	//
 	// example:
 	//
 	// sls-project-test-001
 	SlsProject *string `json:"slsProject,omitempty" xml:"slsProject,omitempty"`
-	// The name of the workspace.
+	// The tags.
+	Tags []*GetWorkspaceResponseBodyTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The workspace name.
 	//
 	// This parameter is required.
 	//
@@ -116,8 +128,16 @@ func (s *GetWorkspaceResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *GetWorkspaceResponseBody) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *GetWorkspaceResponseBody) GetSlsProject() *string {
 	return s.SlsProject
+}
+
+func (s *GetWorkspaceResponseBody) GetTags() []*GetWorkspaceResponseBodyTags {
+	return s.Tags
 }
 
 func (s *GetWorkspaceResponseBody) GetWorkspaceName() *string {
@@ -154,8 +174,18 @@ func (s *GetWorkspaceResponseBody) SetRequestId(v string) *GetWorkspaceResponseB
 	return s
 }
 
+func (s *GetWorkspaceResponseBody) SetResourceGroupId(v string) *GetWorkspaceResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetWorkspaceResponseBody) SetSlsProject(v string) *GetWorkspaceResponseBody {
 	s.SlsProject = &v
+	return s
+}
+
+func (s *GetWorkspaceResponseBody) SetTags(v []*GetWorkspaceResponseBodyTags) *GetWorkspaceResponseBody {
+	s.Tags = v
 	return s
 }
 
@@ -165,5 +195,59 @@ func (s *GetWorkspaceResponseBody) SetWorkspaceName(v string) *GetWorkspaceRespo
 }
 
 func (s *GetWorkspaceResponseBody) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetWorkspaceResponseBodyTags struct {
+	// The tag key.
+	//
+	// example:
+	//
+	// key
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s GetWorkspaceResponseBodyTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetWorkspaceResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkspaceResponseBodyTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *GetWorkspaceResponseBodyTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *GetWorkspaceResponseBodyTags) SetKey(v string) *GetWorkspaceResponseBodyTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetWorkspaceResponseBodyTags) SetValue(v string) *GetWorkspaceResponseBodyTags {
+	s.Value = &v
+	return s
+}
+
+func (s *GetWorkspaceResponseBodyTags) Validate() error {
 	return dara.Validate(s)
 }

@@ -147,7 +147,7 @@ func (client *Client) AddMemoriesWithContext(ctx context.Context, workspace *str
 
 // Summary:
 //
-// Changes the resource group of a resource.
+// Modifies the resource group to which a resource belongs.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -3991,7 +3991,7 @@ func (client *Client) GetEntityStoreDataWithContext(ctx context.Context, workspa
 
 // Summary:
 //
-// Query integration center policy information.
+// Queries the policy information of the DDoS Access Center.
 //
 // @param request - GetIntegrationPolicyRequest
 //
@@ -4675,13 +4675,13 @@ func (client *Client) GetServiceRecordWithContext(ctx context.Context, workspace
 
 // Summary:
 //
-// 查询ServiceTask
+// Queries the details of a single ServiceTask under a specified application.
 //
 // Description:
 //
-// 根据 taskId 查询单个服务任务详情。
+// Queries the details of a single service task based on the taskId.
 //
-// 返回内容随 type 变化：heapdump 返回堆转储任务信息；LiveDebug 返回任务记录及 taskConfig（extraInfo）等字段。
+// The response content varies depending on the type: heapdump returns heap dump task information; LiveDebug returns task records and fields such as taskConfig (extraInfo).
 //
 // @param request - GetServiceTaskRequest
 //
@@ -6819,19 +6819,19 @@ func (client *Client) ListServiceRecordsWithContext(ctx context.Context, workspa
 
 // Summary:
 //
-// 列举ServiceTask
+// Lists service tasks.
 //
 // Description:
 //
-// 按任务类型列举应用下的服务任务。
+// Lists service tasks under an application by task type.
 //
-// - type=heapdump：返回堆转储任务列表
+// - type=heapdump: Returns the list of heap dump tasks.
 //
-// - type=pprof：返回 pprof dump 列表（需配合 searchCondition）
+// - type=pprof: Returns the list of pprof dumps (requires searchCondition).
 //
-// - type=live_debug_*：返回对应 LiveDebug 任务列表
+// - type=live_debug_*: Returns the list of corresponding LiveDebug tasks.
 //
-// 支持 nextToken / maxResults 分页，以及 searchCondition 过滤。
+// Supports nextToken/maxResults pagination and searchCondition filtering.
 //
 // @param request - ListServiceTaskRequest
 //
@@ -6963,7 +6963,7 @@ func (client *Client) ListServicesWithContext(ctx context.Context, workspace *st
 
 // Summary:
 //
-// Queries the tags attached to resources.
+// Queries labels associated with resources.
 //
 // @param tmpReq - ListTagResourcesRequest
 //
@@ -7054,6 +7054,10 @@ func (client *Client) ListWorkspacesWithContext(ctx context.Context, tmpReq *Lis
 	}
 	request := &ListWorkspacesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Tags) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("tags"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.WorkspaceNameList) {
 		request.WorkspaceNameListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WorkspaceNameList, dara.String("workspaceNameList"), dara.String("simple"))
 	}
@@ -7069,6 +7073,14 @@ func (client *Client) ListWorkspacesWithContext(ctx context.Context, tmpReq *Lis
 
 	if !dara.IsNil(request.Region) {
 		query["region"] = request.Region
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.TagsShrink) {
+		query["tags"] = request.TagsShrink
 	}
 
 	if !dara.IsNil(request.WorkspaceName) {
@@ -7230,8 +7242,16 @@ func (client *Client) PutWorkspaceWithContext(ctx context.Context, workspaceName
 		body["displayName"] = request.DisplayName
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !dara.IsNil(request.SlsProject) {
 		body["slsProject"] = request.SlsProject
+	}
+
+	if !dara.IsNil(request.Tags) {
+		body["tags"] = request.Tags
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -7495,7 +7515,7 @@ func (client *Client) SearchMemoriesWithContext(ctx context.Context, workspace *
 
 // Summary:
 //
-// Adds tags to one or more resources.
+// Attaches labels to resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -7550,7 +7570,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// # Deletes a tag
+// Unbinds labels from a resource.
 //
 // @param tmpReq - UntagResourcesRequest
 //

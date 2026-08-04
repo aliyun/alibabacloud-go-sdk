@@ -22,19 +22,19 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The maximum number of results to return. The maximum value is 200.
+	// The maximum number of results to return. Maximum value: 200.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token that is used to start the next query.
+	// The token for the next query.
 	//
 	// example:
 	//
 	// xxxxxxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// A list of resource IDs.
+	// The list of resource IDs.
 	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
 	// The resource type.
 	//
@@ -44,9 +44,9 @@ type ListTagResourcesRequest struct {
 	//
 	// Service
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The tags. These are used as filter conditions for the query.
+	// The labels. Used as filter conditions for the query.
 	//
-	// You can specify up to 20 tags.
+	// You can specify up to 20 labels.
 	Tag []*Tag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
 }
 

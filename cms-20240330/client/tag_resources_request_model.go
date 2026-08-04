@@ -18,7 +18,7 @@ type iTagResourcesRequest interface {
 }
 
 type TagResourcesRequest struct {
-	// A list of resource IDs.
+	// The list of resource IDs.
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
@@ -30,9 +30,9 @@ type TagResourcesRequest struct {
 	//
 	// Service
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The tags.
+	// The labels.
 	//
-	// You can attach a maximum of 20 tags.
+	// You can attach up to 20 labels.
 	Tag []*Tag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
 }
 

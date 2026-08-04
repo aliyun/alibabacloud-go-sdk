@@ -22,19 +22,27 @@ type iListWorkspacesResponseBody interface {
 }
 
 type ListWorkspacesResponseBody struct {
-	// The number of entries returned per page. Default value: 50. Maximum value: 50.
+	// The number of entries per page.
+	//
+	// Default value:
+	//
+	// 	50
+	//
+	// Maximum value:
+	//
+	// 	50
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token for the next page of results.
+	// The pagination token.
 	//
 	// example:
 	//
 	// xxxxxxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -145,19 +153,27 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	//
 	// 2025-03-11T08:21:58Z
 	LastModifyTime *string `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-heyuan
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The name of the Simple Log Service project.
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-ae******ey
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The Simple Log Service project name.
 	//
 	// example:
 	//
 	// sls-project-test-001
 	SlsProject *string `json:"slsProject,omitempty" xml:"slsProject,omitempty"`
-	// The name of the workspace.
+	// The tags.
+	Tags []*ListWorkspacesResponseBodyWorkspacesTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The workspace name.
 	//
 	// This parameter is required.
 	//
@@ -195,8 +211,16 @@ func (s *ListWorkspacesResponseBodyWorkspaces) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *ListWorkspacesResponseBodyWorkspaces) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *ListWorkspacesResponseBodyWorkspaces) GetSlsProject() *string {
 	return s.SlsProject
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) GetTags() []*ListWorkspacesResponseBodyWorkspacesTags {
+	return s.Tags
 }
 
 func (s *ListWorkspacesResponseBodyWorkspaces) GetWorkspaceName() *string {
@@ -228,8 +252,18 @@ func (s *ListWorkspacesResponseBodyWorkspaces) SetRegionId(v string) *ListWorksp
 	return s
 }
 
+func (s *ListWorkspacesResponseBodyWorkspaces) SetResourceGroupId(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListWorkspacesResponseBodyWorkspaces) SetSlsProject(v string) *ListWorkspacesResponseBodyWorkspaces {
 	s.SlsProject = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetTags(v []*ListWorkspacesResponseBodyWorkspacesTags) *ListWorkspacesResponseBodyWorkspaces {
+	s.Tags = v
 	return s
 }
 
@@ -239,5 +273,51 @@ func (s *ListWorkspacesResponseBodyWorkspaces) SetWorkspaceName(v string) *ListW
 }
 
 func (s *ListWorkspacesResponseBodyWorkspaces) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListWorkspacesResponseBodyWorkspacesTags struct {
+	// The tag key.
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value.
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListWorkspacesResponseBodyWorkspacesTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListWorkspacesResponseBodyWorkspacesTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspacesResponseBodyWorkspacesTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *ListWorkspacesResponseBodyWorkspacesTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *ListWorkspacesResponseBodyWorkspacesTags) SetKey(v string) *ListWorkspacesResponseBodyWorkspacesTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspacesTags) SetValue(v string) *ListWorkspacesResponseBodyWorkspacesTags {
+	s.Value = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspacesTags) Validate() error {
 	return dara.Validate(s)
 }

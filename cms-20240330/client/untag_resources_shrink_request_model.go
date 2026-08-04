@@ -20,17 +20,17 @@ type iUntagResourcesShrinkRequest interface {
 }
 
 type UntagResourcesShrinkRequest struct {
-	// Specifies whether to remove all tags from the specified resources. Valid values:
+	// Specifies whether to unbind all labels from the specified resource. Valid values:
 	//
-	// false (default): No
+	// - false (default): No.
 	//
-	// true: Yes
+	// - true: Yes.
 	//
 	// example:
 	//
 	// false
 	All *bool `json:"all,omitempty" xml:"all,omitempty"`
-	// A list of resource IDs.
+	// The list of resource IDs.
 	//
 	// This parameter is required.
 	ResourceIdShrink *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
@@ -42,9 +42,9 @@ type UntagResourcesShrinkRequest struct {
 	//
 	// Service
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The tag key.
+	// The label key.
 	//
-	// You can detach tags with up to 20 tag keys.
+	// You can unbind up to 20 label keys at a time.
 	TagKeyShrink *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
 }
 

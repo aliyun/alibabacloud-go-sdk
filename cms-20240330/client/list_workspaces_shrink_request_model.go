@@ -15,6 +15,10 @@ type iListWorkspacesShrinkRequest interface {
 	GetNextToken() *string
 	SetRegion(v string) *ListWorkspacesShrinkRequest
 	GetRegion() *string
+	SetResourceGroupId(v string) *ListWorkspacesShrinkRequest
+	GetResourceGroupId() *string
+	SetTagsShrink(v string) *ListWorkspacesShrinkRequest
+	GetTagsShrink() *string
 	SetWorkspaceName(v string) *ListWorkspacesShrinkRequest
 	GetWorkspaceName() *string
 	SetWorkspaceNameListShrink(v string) *ListWorkspacesShrinkRequest
@@ -22,13 +26,21 @@ type iListWorkspacesShrinkRequest interface {
 }
 
 type ListWorkspacesShrinkRequest struct {
-	// The number of entries to return on each page. Default value: 50. Maximum value: 50.
+	// The number of entries per page.
+	//
+	// Default value:
+	//
+	// 	50
+	//
+	// Maximum value:
+	//
+	// 	50
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token for the next page of results.
+	// The pagination token.
 	//
 	// example:
 	//
@@ -43,13 +55,21 @@ type ListWorkspacesShrinkRequest struct {
 	//
 	// cn-heyuan
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The name of the workspace. This parameter supports fuzzy search.
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-ae******ey
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The tags.
+	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// The workspace name. Fuzzy match is used.
 	//
 	// example:
 	//
 	// workspace-test-001
 	WorkspaceName *string `json:"workspaceName,omitempty" xml:"workspaceName,omitempty"`
-	// The names of the workspaces. This parameter supports exact search.
+	// The workspace name. Exact match is used.
 	//
 	// if can be null:
 	// true
@@ -80,6 +100,14 @@ func (s *ListWorkspacesShrinkRequest) GetRegion() *string {
 	return s.Region
 }
 
+func (s *ListWorkspacesShrinkRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
+func (s *ListWorkspacesShrinkRequest) GetTagsShrink() *string {
+	return s.TagsShrink
+}
+
 func (s *ListWorkspacesShrinkRequest) GetWorkspaceName() *string {
 	return s.WorkspaceName
 }
@@ -100,6 +128,16 @@ func (s *ListWorkspacesShrinkRequest) SetNextToken(v string) *ListWorkspacesShri
 
 func (s *ListWorkspacesShrinkRequest) SetRegion(v string) *ListWorkspacesShrinkRequest {
 	s.Region = &v
+	return s
+}
+
+func (s *ListWorkspacesShrinkRequest) SetResourceGroupId(v string) *ListWorkspacesShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListWorkspacesShrinkRequest) SetTagsShrink(v string) *ListWorkspacesShrinkRequest {
+	s.TagsShrink = &v
 	return s
 }
 
