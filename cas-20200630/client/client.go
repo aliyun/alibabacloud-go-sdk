@@ -77,6 +77,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"rus-west-1-pop":              dara.String("cas.aliyuncs.com"),
 		"us-east-1":                   dara.String("cas.aliyuncs.com"),
 		"us-west-1":                   dara.String("cas.aliyuncs.com"),
+		"me-east-1":                   dara.String("cas.me-east-1.aliyuncs.com"),
+		"me-central-1":                dara.String("cas.me-central-1.aliyuncs.com"),
+		"eu-central-1":                dara.String("cas.eu-central-1.aliyuncs.com"),
+		"ap-southeast-2":              dara.String("cas.ap-southeast-2.aliyuncs.com"),
+		"ap-southeast-1":              dara.String("cas.ap-southeast-1.aliyuncs.com"),
+		"ap-south-1":                  dara.String("cas.ap-south-1.aliyuncs.com"),
+		"ap-northeast-1":              dara.String("cas.ap-northeast-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -1527,17 +1534,17 @@ func (client *Client) DeleteClientCertificate(request *DeleteClientCertificateRe
 
 // Summary:
 //
-// Retrieves information about a certificate authority (CA) certificate.
+// Queries the details of a CA certificate.
 //
 // Description:
 //
-// You can call this operation to query the details of a root or subordinate CA certificate by its unique identifier. The details include the serial number, subject information, and certificate content.
+// This operation queries the details of a root CA certificate or sub-CA certificate by using the unique identifier of the certificate. The details include the serial number, subject information, and certificate content of the CA certificate.
 //
-// Before you call this operation, you must create a root CA certificate by calling [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) and a subordinate CA certificate by calling [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html).
+// Before you call this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html) to create a sub-CA certificate.
 //
 // ## QPS limit
 //
-// The queries per second (QPS) limit for this operation is 10 calls per second for each user. If you exceed the limit, API calls are throttled, which can affect your business. Plan your calls accordingly.
+// The China site (aliyun.com) allows up to 10 queries per second (QPS) for a single user. If the number of calls per second exceeds the limit, throttling is triggered. Throttling may affect your business. Call this operation as appropriate.
 //
 // @param request - DescribeCACertificateRequest
 //
@@ -1581,17 +1588,17 @@ func (client *Client) DescribeCACertificateWithOptions(request *DescribeCACertif
 
 // Summary:
 //
-// Retrieves information about a certificate authority (CA) certificate.
+// Queries the details of a CA certificate.
 //
 // Description:
 //
-// You can call this operation to query the details of a root or subordinate CA certificate by its unique identifier. The details include the serial number, subject information, and certificate content.
+// This operation queries the details of a root CA certificate or sub-CA certificate by using the unique identifier of the certificate. The details include the serial number, subject information, and certificate content of the CA certificate.
 //
-// Before you call this operation, you must create a root CA certificate by calling [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) and a subordinate CA certificate by calling [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html).
+// Before you call this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html) to create a sub-CA certificate.
 //
 // ## QPS limit
 //
-// The queries per second (QPS) limit for this operation is 10 calls per second for each user. If you exceed the limit, API calls are throttled, which can affect your business. Plan your calls accordingly.
+// The China site (aliyun.com) allows up to 10 queries per second (QPS) for a single user. If the number of calls per second exceeds the limit, throttling is triggered. Throttling may affect your business. Call this operation as appropriate.
 //
 // @param request - DescribeCACertificateRequest
 //

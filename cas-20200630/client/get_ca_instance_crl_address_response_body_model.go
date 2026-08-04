@@ -11,6 +11,8 @@ type iGetCaInstanceCrlAddressResponseBody interface {
 	GoString() string
 	SetCaInstanceStatus(v string) *GetCaInstanceCrlAddressResponseBody
 	GetCaInstanceStatus() *string
+	SetCaType(v string) *GetCaInstanceCrlAddressResponseBody
+	GetCaType() *string
 	SetCrlUrl(v string) *GetCaInstanceCrlAddressResponseBody
 	GetCrlUrl() *string
 	SetHashCode(v string) *GetCaInstanceCrlAddressResponseBody
@@ -28,6 +30,7 @@ type GetCaInstanceCrlAddressResponseBody struct {
 	//
 	// normal
 	CaInstanceStatus *string `json:"CaInstanceStatus,omitempty" xml:"CaInstanceStatus,omitempty"`
+	CaType           *string `json:"CaType,omitempty" xml:"CaType,omitempty"`
 	// The cron expression.
 	//
 	// example:
@@ -66,6 +69,10 @@ func (s *GetCaInstanceCrlAddressResponseBody) GetCaInstanceStatus() *string {
 	return s.CaInstanceStatus
 }
 
+func (s *GetCaInstanceCrlAddressResponseBody) GetCaType() *string {
+	return s.CaType
+}
+
 func (s *GetCaInstanceCrlAddressResponseBody) GetCrlUrl() *string {
 	return s.CrlUrl
 }
@@ -84,6 +91,11 @@ func (s *GetCaInstanceCrlAddressResponseBody) GetRequestId() *string {
 
 func (s *GetCaInstanceCrlAddressResponseBody) SetCaInstanceStatus(v string) *GetCaInstanceCrlAddressResponseBody {
 	s.CaInstanceStatus = &v
+	return s
+}
+
+func (s *GetCaInstanceCrlAddressResponseBody) SetCaType(v string) *GetCaInstanceCrlAddressResponseBody {
+	s.CaType = &v
 	return s
 }
 

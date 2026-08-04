@@ -20,7 +20,7 @@ type iDescribeCACertificateResponseBody interface {
 type DescribeCACertificateResponseBody struct {
 	// The details of the CA certificate.
 	Certificate *DescribeCACertificateResponseBodyCertificate `json:"Certificate,omitempty" xml:"Certificate,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -79,25 +79,25 @@ func (s *DescribeCACertificateResponseBody) Validate() error {
 }
 
 type DescribeCACertificateResponseBodyCertificate struct {
-	// The date when the CA certificate expires. This is a UNIX timestamp. Unit: milliseconds.
+	// The expiration date of the CA certificate. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1665819958000
 	AfterDate *int64 `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
-	// The type of the encryption algorithm of the CA certificate. Valid values:
+	// The encryption algorithm type of the CA certificate. Valid values:
 	//
-	// - **RSA**: The RSA algorithm.
+	// - **RSA**: RSA algorithm.
 	//
-	// - **ECC**: The ECC algorithm.
+	// - **ECC**: ECC algorithm.
 	//
-	// - **SM2**: The SM2 algorithm.
+	// - **SM2**: SM2 (Chinese national cryptographic) algorithm.
 	//
 	// example:
 	//
 	// RSA
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The date when the CA certificate was issued. This is a UNIX timestamp. Unit: milliseconds.
+	// The issuance date of the CA certificate. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -119,20 +119,25 @@ type DescribeCACertificateResponseBodyCertificate struct {
 	//
 	// -----END CERTIFICATE-----
 	CaCertChain *string `json:"CaCertChain,omitempty" xml:"CaCertChain,omitempty"`
-	// The number of certificates that the private CA instance has issued.
+	// The number of certificates issued by the private CA instance.
 	//
 	// example:
 	//
 	// 10
 	CertIssuedCount *int64 `json:"CertIssuedCount,omitempty" xml:"CertIssuedCount,omitempty"`
-	CertMaxTime     *int32 `json:"CertMaxTime,omitempty" xml:"CertMaxTime,omitempty"`
-	// The number of remaining certificates that can be issued.
+	// The maximum validity period for certificates issued by the CA, as specified by the certMaxTime of the CA.
+	//
+	// example:
+	//
+	// 30
+	CertMaxTime *int32 `json:"CertMaxTime,omitempty" xml:"CertMaxTime,omitempty"`
+	// The number of remaining certificate quotas that can be allocated.
 	//
 	// example:
 	//
 	// 30
 	CertRemainingCount *int64 `json:"CertRemainingCount,omitempty" xml:"CertRemainingCount,omitempty"`
-	// The total certificate quota you purchased.
+	// The total number of purchased certificate quotas.
 	//
 	// example:
 	//
@@ -140,27 +145,27 @@ type DescribeCACertificateResponseBodyCertificate struct {
 	CertTotalCount *int64 `json:"CertTotalCount,omitempty" xml:"CertTotalCount,omitempty"`
 	// The type of the CA certificate. Valid values:
 	//
-	// - **ROOT**: A root CA certificate.
+	// - **ROOT**: root CA certificate.
 	//
-	// - **SUB_ROOT**: A subordinate CA certificate.
+	// - **SUB_ROOT**: sub-CA certificate.
 	//
 	// example:
 	//
 	// SUB_ROOT
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
-	// The ID of the hardware security module (HSM) cluster. This parameter is available when the CA is enabled using an HSM.
+	// The identifier of the hardware security module (HSM) cluster. (The CA is enabled through an HSM.)
 	//
 	// example:
 	//
 	// XXX-id
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The common name or abbreviation of the organization that is associated with the CA certificate.
+	// The common name or abbreviation of the organization associated with the CA certificate.
 	//
 	// example:
 	//
 	// Aliyun
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The country code of the organization that is associated with the CA certificate.
+	// The country code of the organization associated with the CA certificate.
 	//
 	// For more information about country codes, see the **International codes*	- section in [Manage company information](https://help.aliyun.com/document_detail/198289.html).
 	//
@@ -168,13 +173,13 @@ type DescribeCACertificateResponseBodyCertificate struct {
 	//
 	// CN
 	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
-	// The validity period of the CRL. Valid values: 1 to 365. Unit: days.
+	// The validity period of the CRL, ranging from 1 to 365 days.
 	//
 	// example:
 	//
 	// 90
 	CrlDay *int32 `json:"CrlDay,omitempty" xml:"CrlDay,omitempty"`
-	// The status of the Certificate Revocation List (CRL).
+	// The certificate revocation list (CRL) status (enabled or disabled).
 	//
 	// example:
 	//
@@ -186,7 +191,7 @@ type DescribeCACertificateResponseBodyCertificate struct {
 	//
 	// https://crl-cn-publish.oss-cn-hangzhou.aliyuncs.com/pca/crl/1925647866611395/1ed40789-483f-6023-b6b8-29ddd3bb0a9a.crl
 	CrlUrl *string `json:"CrlUrl,omitempty" xml:"CrlUrl,omitempty"`
-	// The algorithm and its key length.
+	// The algorithm with key length.
 	//
 	// example:
 	//
@@ -198,19 +203,19 @@ type DescribeCACertificateResponseBodyCertificate struct {
 	//
 	// 160ae6bb538d538c70c01f81dcf2****
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	// The issuer of the CA. Valid values:
+	// The issuing authority of the CA. Valid values:
 	//
-	// - local: A private certificate.
+	// - local: private certificate.
 	//
-	// - iTrusChina: A compliance CA.
+	// - iTrusChina: compliant CA.
 	//
-	// - external: An imported certificate.
+	// - external: externally imported.
 	//
 	// example:
 	//
 	// local
 	IssuerType *string `json:"IssuerType,omitempty" xml:"IssuerType,omitempty"`
-	// The index of the key in the HSM. This parameter is available when the CA is enabled using an HSM.
+	// The key index position in the HSM. (The CA is enabled through an HSM.)
 	//
 	// example:
 	//
@@ -234,21 +239,21 @@ type DescribeCACertificateResponseBodyCertificate struct {
 	//
 	// 160ae6bb538d538c70c01f81dcf2****
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// The name of the organization that is associated with the CA certificate.
+	// The name of the organization associated with the CA certificate.
 	//
 	// example:
 	//
 	// aliyun
 	Organization *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
-	// The name of the department in the organization that is associated with the CA certificate.
+	// The name of the department in the organization associated with the CA certificate.
 	//
 	// example:
 	//
 	// Security
 	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
-	// The unique identifier of the root CA certificate that issued the CA certificate.
+	// The unique identifier of the root CA certificate that issued this CA certificate.
 	//
-	// > This parameter is returned only when **CertificateType*	- is **SUB_ROOT**, which indicates a subordinate CA certificate.
+	// > This parameter is returned only when **CertificateType*	- is **SUB_ROOT*	- (sub-CA certificate).
 	//
 	// example:
 	//
@@ -294,39 +299,29 @@ type DescribeCACertificateResponseBodyCertificate struct {
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The status of the CA certificate. Valid values:
 	//
-	// - **ISSUE**: The certificate is issued.
+	// - **ISSUE**: issued.
 	//
-	// - **REVOKE**: The certificate is revoked.
+	// - **REVOKE**: revoked.
 	//
 	// example:
 	//
 	// ISSUE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The subject of the CA certificate. It contains the following information:
+	// The subject attributes of the CA certificate, which include the following information:
 	//
-	// - **C**: The country code of the organization.
+	// - **C**: the country code of the organization.
 	//
-	// - **O**: The name of the organization.
+	// - **O**: the name of the organization.
 	//
-	// - **OU**: The department of the organization.
+	// - **OU**: the department of the organization.
 	//
-	// - **L**: The city where the organization is located.
+	// - **L**: the city where the organization is located.
 	//
-	// <props="china">
+	// <props="china">- **ST**: the province, municipality, or autonomous region where the organization is located.
 	//
-	// - **ST**: The province, municipality, or autonomous region where the organization is located.
+	// <props="intl">- **ST**: the province or state where the organization is located.
 	//
-	//
-	//
-	//
-	// <props="intl">
-	//
-	// - **ST**: The province or state where the organization is located.
-	//
-	//
-	//
-	//
-	// - **CN**: The common name or abbreviation of the organization.
+	// - **CN**: the common name or abbreviation of the organization.
 	//
 	// example:
 	//
@@ -694,13 +689,13 @@ func (s *DescribeCACertificateResponseBodyCertificate) Validate() error {
 }
 
 type DescribeCACertificateResponseBodyCertificateTags struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
-	// 使用状态
+	// Usage status
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

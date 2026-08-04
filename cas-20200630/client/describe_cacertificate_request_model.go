@@ -14,9 +14,9 @@ type iDescribeCACertificateRequest interface {
 }
 
 type DescribeCACertificateRequest struct {
-	// The unique identifier of the CA certificate to query.
+	// The unique identifier of the CA certificate that you want to query.
 	//
-	// > Call [DescribeCACertificateList](https://help.aliyun.com/document_detail/465957.html) to query the unique identifiers of all CA certificates.
+	// > You can call [DescribeCACertificateList](https://help.aliyun.com/document_detail/465957.html) to query the unique identifiers of all CA certificates.
 	//
 	// example:
 	//
