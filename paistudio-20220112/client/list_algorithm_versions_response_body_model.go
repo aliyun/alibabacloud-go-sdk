@@ -18,11 +18,16 @@ type iListAlgorithmVersionsResponseBody interface {
 }
 
 type ListAlgorithmVersionsResponseBody struct {
+	// A list of algorithm version details.
 	AlgorithmVersions []*ListAlgorithmVersionsResponseBodyAlgorithmVersions `json:"AlgorithmVersions,omitempty" xml:"AlgorithmVersions,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of algorithm versions.
+	//
 	// example:
 	//
 	// 23
@@ -78,34 +83,50 @@ func (s *ListAlgorithmVersionsResponseBody) Validate() error {
 }
 
 type ListAlgorithmVersionsResponseBodyAlgorithmVersions struct {
+	// The algorithm ID.
+	//
 	// example:
 	//
 	// algo-sidjc8134hv
 	AlgorithmId *string `json:"AlgorithmId,omitempty" xml:"AlgorithmId,omitempty"`
+	// The algorithm name.
+	//
 	// example:
 	//
 	// llm_train
 	AlgorithmName *string `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
+	// The algorithm provider.
+	//
 	// example:
 	//
 	// pai
 	AlgorithmProvider *string `json:"AlgorithmProvider,omitempty" xml:"AlgorithmProvider,omitempty"`
+	// The algorithm version.
+	//
 	// example:
 	//
 	// v0.1.0
 	AlgorithmVersion *string `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
+	// The time when the algorithm was created.
+	//
 	// example:
 	//
 	// 2024-01-19T02:00:26Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the algorithm was last updated.
+	//
 	// example:
 	//
 	// 2024-01-22T02:00:59Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The tenant ID that owns the algorithm.
+	//
 	// example:
 	//
 	// 123456789
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The user ID that owns the algorithm.
+	//
 	// example:
 	//
 	// 123456789

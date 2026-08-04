@@ -45,6 +45,11 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-shanghai-finance-1": dara.String("pai.cn-shanghai-finance-1.aliyuncs.com"),
 		"cn-wulanchabu":         dara.String("pai.cn-wulanchabu.aliyuncs.com"),
 		"cn-zhangjiakou":        dara.String("pai.cn-zhangjiakou.aliyuncs.com"),
+		"us-southeast-1":        dara.String("pai.us-southeast-1.aliyuncs.com"),
+		"cn-zhongwei":           dara.String("pai.cn-zhongwei.aliyuncs.com"),
+		"cn-guangzhou":          dara.String("pai.cn-guangzhou.aliyuncs.com"),
+		"ap-southeast-8":        dara.String("pai.ap-southeast-8.aliyuncs.com"),
+		"ap-northeast-2":        dara.String("pai.ap-northeast-2.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -79,7 +84,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 检查WebTerminal
+// Checks the connection to the instance container.
 //
 // @param request - CheckInstanceWebTerminalRequest
 //
@@ -126,7 +131,7 @@ func (client *Client) CheckInstanceWebTerminalWithOptions(TrainingJobId *string,
 
 // Summary:
 //
-// 检查WebTerminal
+// Checks the connection to the instance container.
 //
 // @param request - CheckInstanceWebTerminalRequest
 //
@@ -145,7 +150,7 @@ func (client *Client) CheckInstanceWebTerminal(TrainingJobId *string, InstanceId
 
 // Summary:
 //
-// 创建新的算法
+// Creates an algorithm.
 //
 // @param request - CreateAlgorithmRequest
 //
@@ -204,7 +209,7 @@ func (client *Client) CreateAlgorithmWithOptions(request *CreateAlgorithmRequest
 
 // Summary:
 //
-// 创建新的算法
+// Creates an algorithm.
 //
 // @param request - CreateAlgorithmRequest
 //
@@ -223,7 +228,7 @@ func (client *Client) CreateAlgorithm(request *CreateAlgorithmRequest) (_result 
 
 // Summary:
 //
-// 创建一个新的算法版本
+// Creates a version of an algorithm.
 //
 // @param tmpReq - CreateAlgorithmVersionRequest
 //
@@ -276,7 +281,7 @@ func (client *Client) CreateAlgorithmVersionWithOptions(AlgorithmId *string, Alg
 
 // Summary:
 //
-// 创建一个新的算法版本
+// Creates a version of an algorithm.
 //
 // @param request - CreateAlgorithmVersionRequest
 //
@@ -295,7 +300,7 @@ func (client *Client) CreateAlgorithmVersion(AlgorithmId *string, AlgorithmVersi
 
 // Summary:
 //
-// 创建WebTerminal
+// You can create a link to access the container of the instance.
 //
 // @param headers - map
 //
@@ -328,7 +333,7 @@ func (client *Client) CreateInstanceWebTerminalWithOptions(TrainingJobId *string
 
 // Summary:
 //
-// 创建WebTerminal
+// You can create a link to access the container of the instance.
 //
 // @return CreateInstanceWebTerminalResponse
 func (client *Client) CreateInstanceWebTerminal(TrainingJobId *string, InstanceId *string) (_result *CreateInstanceWebTerminalResponse, _err error) {
@@ -345,7 +350,7 @@ func (client *Client) CreateInstanceWebTerminal(TrainingJobId *string, InstanceI
 
 // Summary:
 //
-// 创建Quota
+// Call the `CreateQuota` operation to create a quota.
 //
 // @param request - CreateQuotaRequest
 //
@@ -432,7 +437,7 @@ func (client *Client) CreateQuotaWithOptions(request *CreateQuotaRequest, header
 
 // Summary:
 //
-// 创建Quota
+// Call the `CreateQuota` operation to create a quota.
 //
 // @param request - CreateQuotaRequest
 //
@@ -451,7 +456,7 @@ func (client *Client) CreateQuota(request *CreateQuotaRequest) (_result *CreateQ
 
 // Summary:
 //
-// 创建资源组
+// Use the CreateResourceGroup operation to create a resource group.
 //
 // @param request - CreateResourceGroupRequest
 //
@@ -522,7 +527,7 @@ func (client *Client) CreateResourceGroupWithOptions(request *CreateResourceGrou
 
 // Summary:
 //
-// 创建资源组
+// Use the CreateResourceGroup operation to create a resource group.
 //
 // @param request - CreateResourceGroupRequest
 //
@@ -541,7 +546,7 @@ func (client *Client) CreateResourceGroup(request *CreateResourceGroupRequest) (
 
 // Summary:
 //
-// 创建TrainingJob
+// Creates a training job.
 //
 // @param request - CreateTrainingJobRequest
 //
@@ -584,6 +589,10 @@ func (client *Client) CreateTrainingJobWithOptions(request *CreateTrainingJobReq
 
 	if !dara.IsNil(request.ComputeResource) {
 		body["ComputeResource"] = request.ComputeResource
+	}
+
+	if !dara.IsNil(request.CredentialConfig) {
+		body["CredentialConfig"] = request.CredentialConfig
 	}
 
 	if !dara.IsNil(request.Environments) {
@@ -672,7 +681,7 @@ func (client *Client) CreateTrainingJobWithOptions(request *CreateTrainingJobReq
 
 // Summary:
 //
-// 创建TrainingJob
+// Creates a training job.
 //
 // @param request - CreateTrainingJobRequest
 //
@@ -691,7 +700,7 @@ func (client *Client) CreateTrainingJob(request *CreateTrainingJobRequest) (_res
 
 // Summary:
 //
-// 删除算法
+// Deletes an algorithm.
 //
 // @param headers - map
 //
@@ -724,7 +733,7 @@ func (client *Client) DeleteAlgorithmWithOptions(AlgorithmId *string, headers ma
 
 // Summary:
 //
-// 删除算法
+// Deletes an algorithm.
 //
 // @return DeleteAlgorithmResponse
 func (client *Client) DeleteAlgorithm(AlgorithmId *string) (_result *DeleteAlgorithmResponse, _err error) {
@@ -741,7 +750,7 @@ func (client *Client) DeleteAlgorithm(AlgorithmId *string) (_result *DeleteAlgor
 
 // Summary:
 //
-// 删除算法版本
+// Deletes an algorithm version.
 //
 // @param headers - map
 //
@@ -774,7 +783,7 @@ func (client *Client) DeleteAlgorithmVersionWithOptions(AlgorithmId *string, Alg
 
 // Summary:
 //
-// 删除算法版本
+// Deletes an algorithm version.
 //
 // @return DeleteAlgorithmVersionResponse
 func (client *Client) DeleteAlgorithmVersion(AlgorithmId *string, AlgorithmVersion *string) (_result *DeleteAlgorithmVersionResponse, _err error) {
@@ -793,7 +802,7 @@ func (client *Client) DeleteAlgorithmVersion(AlgorithmId *string, AlgorithmVersi
 //
 // Summary:
 //
-// delete machine group
+// Deletes a machine group.
 //
 // @param headers - map
 //
@@ -828,7 +837,7 @@ func (client *Client) DeleteMachineGroupWithOptions(MachineGroupID *string, head
 //
 // Summary:
 //
-// delete machine group
+// Deletes a machine group.
 //
 // @return DeleteMachineGroupResponse
 // Deprecated
@@ -846,7 +855,7 @@ func (client *Client) DeleteMachineGroup(MachineGroupID *string) (_result *Delet
 
 // Summary:
 //
-// 删除Quota
+// You can delete a resource quota by using DeleteQuota.
 //
 // @param headers - map
 //
@@ -879,7 +888,7 @@ func (client *Client) DeleteQuotaWithOptions(QuotaId *string, headers map[string
 
 // Summary:
 //
-// 删除Quota
+// You can delete a resource quota by using DeleteQuota.
 //
 // @return DeleteQuotaResponse
 func (client *Client) DeleteQuota(QuotaId *string) (_result *DeleteQuotaResponse, _err error) {
@@ -896,7 +905,7 @@ func (client *Client) DeleteQuota(QuotaId *string) (_result *DeleteQuotaResponse
 
 // Summary:
 //
-// 删除资源组
+// Deletes a resource group.
 //
 // @param headers - map
 //
@@ -929,7 +938,7 @@ func (client *Client) DeleteResourceGroupWithOptions(ResourceGroupID *string, he
 
 // Summary:
 //
-// 删除资源组
+// Deletes a resource group.
 //
 // @return DeleteResourceGroupResponse
 func (client *Client) DeleteResourceGroup(ResourceGroupID *string) (_result *DeleteResourceGroupResponse, _err error) {
@@ -948,7 +957,7 @@ func (client *Client) DeleteResourceGroup(ResourceGroupID *string) (_result *Del
 //
 // Summary:
 //
-// delete machine group
+// Deletes the specified machine group from a resource group.
 //
 // @param headers - map
 //
@@ -983,7 +992,7 @@ func (client *Client) DeleteResourceGroupMachineGroupWithOptions(MachineGroupID 
 //
 // Summary:
 //
-// delete machine group
+// Deletes the specified machine group from a resource group.
 //
 // @return DeleteResourceGroupMachineGroupResponse
 // Deprecated
@@ -1001,7 +1010,7 @@ func (client *Client) DeleteResourceGroupMachineGroup(MachineGroupID *string, Re
 
 // Summary:
 //
-// 删除一个TrainingJob
+// Deletes a training task.
 //
 // @param headers - map
 //
@@ -1034,7 +1043,7 @@ func (client *Client) DeleteTrainingJobWithOptions(TrainingJobId *string, header
 
 // Summary:
 //
-// 删除一个TrainingJob
+// Deletes a training task.
 //
 // @return DeleteTrainingJobResponse
 func (client *Client) DeleteTrainingJob(TrainingJobId *string) (_result *DeleteTrainingJobResponse, _err error) {
@@ -1051,7 +1060,7 @@ func (client *Client) DeleteTrainingJob(TrainingJobId *string) (_result *DeleteT
 
 // Summary:
 //
-// 删除TrainingJob的Labels
+// Deletes the labels of a training task.
 //
 // @param request - DeleteTrainingJobLabelsRequest
 //
@@ -1098,7 +1107,7 @@ func (client *Client) DeleteTrainingJobLabelsWithOptions(TrainingJobId *string, 
 
 // Summary:
 //
-// 删除TrainingJob的Labels
+// Deletes the labels of a training task.
 //
 // @param request - DeleteTrainingJobLabelsRequest
 //
@@ -1117,7 +1126,7 @@ func (client *Client) DeleteTrainingJobLabels(TrainingJobId *string, request *De
 
 // Summary:
 //
-// 获取一个算法信息
+// Retrieves algorithm details.
 //
 // @param headers - map
 //
@@ -1150,7 +1159,7 @@ func (client *Client) GetAlgorithmWithOptions(AlgorithmId *string, headers map[s
 
 // Summary:
 //
-// 获取一个算法信息
+// Retrieves algorithm details.
 //
 // @return GetAlgorithmResponse
 func (client *Client) GetAlgorithm(AlgorithmId *string) (_result *GetAlgorithmResponse, _err error) {
@@ -1167,7 +1176,7 @@ func (client *Client) GetAlgorithm(AlgorithmId *string) (_result *GetAlgorithmRe
 
 // Summary:
 //
-// 创建一个新的算法版本
+// Retrieve details about an algorithm version.
 //
 // @param headers - map
 //
@@ -1200,7 +1209,7 @@ func (client *Client) GetAlgorithmVersionWithOptions(AlgorithmId *string, Algori
 
 // Summary:
 //
-// 创建一个新的算法版本
+// Retrieve details about an algorithm version.
 //
 // @return GetAlgorithmVersionResponse
 func (client *Client) GetAlgorithmVersion(AlgorithmId *string, AlgorithmVersion *string) (_result *GetAlgorithmVersionResponse, _err error) {
@@ -1219,7 +1228,7 @@ func (client *Client) GetAlgorithmVersion(AlgorithmId *string, AlgorithmVersion 
 //
 // Summary:
 //
-// get machine group
+// Retrieves the details of a specific machine group.
 //
 // @param headers - map
 //
@@ -1254,7 +1263,7 @@ func (client *Client) GetMachineGroupWithOptions(MachineGroupID *string, headers
 //
 // Summary:
 //
-// get machine group
+// Retrieves the details of a specific machine group.
 //
 // @return GetMachineGroupResponse
 // Deprecated
@@ -1274,7 +1283,7 @@ func (client *Client) GetMachineGroup(MachineGroupID *string) (_result *GetMachi
 //
 // Summary:
 //
-// get resource group node metrics
+// You can call the GetNodeMetrics operation to obtain the metric information of resource group nodes.
 //
 // @param request - GetNodeMetricsRequest
 //
@@ -1339,7 +1348,7 @@ func (client *Client) GetNodeMetricsWithOptions(ResourceGroupID *string, MetricT
 //
 // Summary:
 //
-// get resource group node metrics
+// You can call the GetNodeMetrics operation to obtain the metric information of resource group nodes.
 //
 // @param request - GetNodeMetricsRequest
 //
@@ -1359,7 +1368,7 @@ func (client *Client) GetNodeMetrics(ResourceGroupID *string, MetricType *string
 
 // Summary:
 //
-// 获取Quota
+// Call GetQuota to retrieve the details of a resource quota. This helps you monitor current resource usage for effective resource management and planning.
 //
 // @param request - GetQuotaRequest
 //
@@ -1410,7 +1419,7 @@ func (client *Client) GetQuotaWithOptions(QuotaId *string, request *GetQuotaRequ
 
 // Summary:
 //
-// 获取Quota
+// Call GetQuota to retrieve the details of a resource quota. This helps you monitor current resource usage for effective resource management and planning.
 //
 // @param request - GetQuotaRequest
 //
@@ -1429,7 +1438,7 @@ func (client *Client) GetQuota(QuotaId *string, request *GetQuotaRequest) (_resu
 
 // Summary:
 //
-// get resource group by group id
+// `GetResourceGroup` retrieves details for a resource group.
 //
 // @param tmpReq - GetResourceGroupRequest
 //
@@ -1486,7 +1495,7 @@ func (client *Client) GetResourceGroupWithOptions(ResourceGroupID *string, tmpRe
 
 // Summary:
 //
-// get resource group by group id
+// `GetResourceGroup` retrieves details for a resource group.
 //
 // @param request - GetResourceGroupRequest
 //
@@ -1505,7 +1514,7 @@ func (client *Client) GetResourceGroup(ResourceGroupID *string, request *GetReso
 
 // Summary:
 //
-// get machine group
+// Call GetResourceGroupMachineGroup to retrieve the details of a machine group.
 //
 // @param tmpReq - GetResourceGroupMachineGroupRequest
 //
@@ -1558,7 +1567,7 @@ func (client *Client) GetResourceGroupMachineGroupWithOptions(MachineGroupID *st
 
 // Summary:
 //
-// get machine group
+// Call GetResourceGroupMachineGroup to retrieve the details of a machine group.
 //
 // @param request - GetResourceGroupMachineGroupRequest
 //
@@ -1579,7 +1588,7 @@ func (client *Client) GetResourceGroupMachineGroup(MachineGroupID *string, Resou
 //
 // Summary:
 //
-// get resource group requested resource by resource group id
+// You can call the GetResourceGroupRequest operation to obtain the number of resources that have been allocated to a resource group.
 //
 // @param request - GetResourceGroupRequestRequest
 //
@@ -1632,7 +1641,7 @@ func (client *Client) GetResourceGroupRequestWithOptions(request *GetResourceGro
 //
 // Summary:
 //
-// get resource group requested resource by resource group id
+// You can call the GetResourceGroupRequest operation to obtain the number of resources that have been allocated to a resource group.
 //
 // @param request - GetResourceGroupRequestRequest
 //
@@ -1652,7 +1661,7 @@ func (client *Client) GetResourceGroupRequest(request *GetResourceGroupRequestRe
 
 // Summary:
 //
-// get resource group total resource by group id
+// You can call GetResourceGroupTotal to get the total resources of a Resource Group.
 //
 // @param request - GetResourceGroupTotalRequest
 //
@@ -1699,7 +1708,7 @@ func (client *Client) GetResourceGroupTotalWithOptions(request *GetResourceGroup
 
 // Summary:
 //
-// get resource group total resource by group id
+// You can call GetResourceGroupTotal to get the total resources of a Resource Group.
 //
 // @param request - GetResourceGroupTotalRequest
 //
@@ -1718,7 +1727,7 @@ func (client *Client) GetResourceGroupTotal(request *GetResourceGroupTotalReques
 
 // Summary:
 //
-// 获取抢占式实例历史价格
+// Retrieves the historical prices of spot instances.
 //
 // @param request - GetSpotPriceHistoryRequest
 //
@@ -1789,7 +1798,7 @@ func (client *Client) GetSpotPriceHistoryWithOptions(InstanceType *string, reque
 
 // Summary:
 //
-// 获取抢占式实例历史价格
+// Retrieves the historical prices of spot instances.
 //
 // @param request - GetSpotPriceHistoryRequest
 //
@@ -1808,7 +1817,7 @@ func (client *Client) GetSpotPriceHistory(InstanceType *string, request *GetSpot
 
 // Summary:
 //
-// 调用GetToken获取临时鉴权信息
+// Obtains a share token for a training task.
 //
 // @param request - GetTokenRequest
 //
@@ -1859,7 +1868,7 @@ func (client *Client) GetTokenWithOptions(request *GetTokenRequest, headers map[
 
 // Summary:
 //
-// 调用GetToken获取临时鉴权信息
+// Obtains a share token for a training task.
 //
 // @param request - GetTokenRequest
 //
@@ -1878,7 +1887,7 @@ func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenRespo
 
 // Summary:
 //
-// 获取TrainingJob的详情
+// Retrieves the details of a training job.
 //
 // @param headers - map
 //
@@ -1911,7 +1920,7 @@ func (client *Client) GetTrainingJobWithOptions(TrainingJobId *string, headers m
 
 // Summary:
 //
-// 获取TrainingJob的详情
+// Retrieves the details of a training job.
 //
 // @return GetTrainingJobResponse
 func (client *Client) GetTrainingJob(TrainingJobId *string) (_result *GetTrainingJobResponse, _err error) {
@@ -1928,7 +1937,7 @@ func (client *Client) GetTrainingJob(TrainingJobId *string) (_result *GetTrainin
 
 // Summary:
 //
-// 获取Training Job的算法错误信息
+// Retrieves the runtime fault error message of a training node.
 //
 // @param headers - map
 //
@@ -1961,7 +1970,7 @@ func (client *Client) GetTrainingJobErrorInfoWithOptions(TrainingJobId *string, 
 
 // Summary:
 //
-// 获取Training Job的算法错误信息
+// Retrieves the runtime fault error message of a training node.
 //
 // @return GetTrainingJobErrorInfoResponse
 func (client *Client) GetTrainingJobErrorInfo(TrainingJobId *string) (_result *GetTrainingJobErrorInfoResponse, _err error) {
@@ -1978,7 +1987,7 @@ func (client *Client) GetTrainingJobErrorInfo(TrainingJobId *string) (_result *G
 
 // Summary:
 //
-// 获取TrainingJob最近的Metrics
+// Retrieves the latest metrics for a training task.
 //
 // @param request - GetTrainingJobLatestMetricsRequest
 //
@@ -2025,7 +2034,7 @@ func (client *Client) GetTrainingJobLatestMetricsWithOptions(TrainingJobId *stri
 
 // Summary:
 //
-// 获取TrainingJob最近的Metrics
+// Retrieves the latest metrics for a training task.
 //
 // @param request - GetTrainingJobLatestMetricsRequest
 //
@@ -2046,7 +2055,7 @@ func (client *Client) GetTrainingJobLatestMetrics(TrainingJobId *string, request
 //
 // Summary:
 //
-// get user view  metrics
+// Retrieves metric data at the user dimension.
 //
 // @param request - GetUserViewMetricsRequest
 //
@@ -2119,7 +2128,7 @@ func (client *Client) GetUserViewMetricsWithOptions(ResourceGroupID *string, req
 //
 // Summary:
 //
-// get user view  metrics
+// Retrieves metric data at the user dimension.
 //
 // @param request - GetUserViewMetricsRequest
 //
@@ -2139,7 +2148,7 @@ func (client *Client) GetUserViewMetrics(ResourceGroupID *string, request *GetUs
 
 // Summary:
 //
-// 获取算法的所有版本信息
+// Retrieve a list of algorithm version details.
 //
 // @param request - ListAlgorithmVersionsRequest
 //
@@ -2190,7 +2199,7 @@ func (client *Client) ListAlgorithmVersionsWithOptions(AlgorithmId *string, requ
 
 // Summary:
 //
-// 获取算法的所有版本信息
+// Retrieve a list of algorithm version details.
 //
 // @param request - ListAlgorithmVersionsRequest
 //
@@ -2209,7 +2218,7 @@ func (client *Client) ListAlgorithmVersions(AlgorithmId *string, request *ListAl
 
 // Summary:
 //
-// 获取算法列表
+// Lists algorithm details.
 //
 // @param request - ListAlgorithmsRequest
 //
@@ -2276,7 +2285,7 @@ func (client *Client) ListAlgorithmsWithOptions(request *ListAlgorithmsRequest, 
 
 // Summary:
 //
-// 获取算法列表
+// Lists algorithm details.
 //
 // @param request - ListAlgorithmsRequest
 //
@@ -2295,7 +2304,113 @@ func (client *Client) ListAlgorithms(request *ListAlgorithmsRequest) (_result *L
 
 // Summary:
 //
-// 获取节点规格列表
+// Retrieves detailed information about all pods on a specified node.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This feature is currently available only on the Lingjun AI Computing Service platform and is accessible to customers through a whitelist.
+//
+// - `NodeName` and `ResourceGroupId` are required parameters that represent the node name and the ID of the resource group to which the node belongs.
+//
+// - Optional parameters include `OversoldTypes` and `GPUIndexes`, which are used to further filter or specify conditions.
+//
+// @param request - ListNodePodsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNodePodsResponse
+func (client *Client) ListNodePodsWithOptions(NodeId *string, request *ListNodePodsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListNodePodsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GPUIndexes) {
+		query["GPUIndexes"] = request.GPUIndexes
+	}
+
+	if !dara.IsNil(request.OversoldTypes) {
+		query["OversoldTypes"] = request.OversoldTypes
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListNodePods"),
+		Version:     dara.String("2022-01-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/nodes/" + dara.PercentEncode(dara.StringValue(NodeId)) + "/Pods"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListNodePodsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves detailed information about all pods on a specified node.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This feature is currently available only on the Lingjun AI Computing Service platform and is accessible to customers through a whitelist.
+//
+// - `NodeName` and `ResourceGroupId` are required parameters that represent the node name and the ID of the resource group to which the node belongs.
+//
+// - Optional parameters include `OversoldTypes` and `GPUIndexes`, which are used to further filter or specify conditions.
+//
+// @param request - ListNodePodsRequest
+//
+// @return ListNodePodsResponse
+func (client *Client) ListNodePods(NodeId *string, request *ListNodePodsRequest) (_result *ListNodePodsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListNodePodsResponse{}
+	_body, _err := client.ListNodePodsWithOptions(NodeId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists the available node types.
+//
+// Description:
+//
+// ## Description
+//
+// - Lists the node types that match the specified filter criteria.
+//
+// - You must specify either the `ResourceGroupIds` or `QuotaId` parameter. The specified resource group IDs or quota ID must belong to the requesting user.
+//
+// - You can filter the results by using parameters such as accelerator type and GPU type.
+//
+// - The response includes details and statistics for each node type, indicating the availability of your resources.
 //
 // @param request - ListNodeTypesRequest
 //
@@ -2358,7 +2473,19 @@ func (client *Client) ListNodeTypesWithOptions(request *ListNodeTypesRequest, he
 
 // Summary:
 //
-// 获取节点规格列表
+// Lists the available node types.
+//
+// Description:
+//
+// ## Description
+//
+// - Lists the node types that match the specified filter criteria.
+//
+// - You must specify either the `ResourceGroupIds` or `QuotaId` parameter. The specified resource group IDs or quota ID must belong to the requesting user.
+//
+// - You can filter the results by using parameters such as accelerator type and GPU type.
+//
+// - The response includes details and statistics for each node type, indicating the availability of your resources.
 //
 // @param request - ListNodeTypesRequest
 //
@@ -2377,7 +2504,11 @@ func (client *Client) ListNodeTypes(request *ListNodeTypesRequest) (_result *Lis
 
 // Summary:
 //
-// 获取资源节点列表
+// Returns a list of resource nodes.
+//
+// Description:
+//
+// ListNodes retrieves resource nodes that match specified filter conditions.
 //
 // @param tmpReq - ListNodesRequest
 //
@@ -2554,7 +2685,11 @@ func (client *Client) ListNodesWithOptions(tmpReq *ListNodesRequest, headers map
 
 // Summary:
 //
-// 获取资源节点列表
+// Returns a list of resource nodes.
+//
+// Description:
+//
+// ListNodes retrieves resource nodes that match specified filter conditions.
 //
 // @param request - ListNodesRequest
 //
@@ -2573,7 +2708,11 @@ func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesRe
 
 // Summary:
 //
-// 获取当前资源配额用户列表和其所使用的资源
+// Lists users within a quota and their resource usage.
+//
+// Description:
+//
+// Retrieves the resource usage of users in a specified quota.
 //
 // @param request - ListQuotaActiveUserUsagesRequest
 //
@@ -2652,7 +2791,11 @@ func (client *Client) ListQuotaActiveUserUsagesWithOptions(QuotaId *string, requ
 
 // Summary:
 //
-// 获取当前资源配额用户列表和其所使用的资源
+// Lists users within a quota and their resource usage.
+//
+// Description:
+//
+// Retrieves the resource usage of users in a specified quota.
 //
 // @param request - ListQuotaActiveUserUsagesRequest
 //
@@ -2671,7 +2814,7 @@ func (client *Client) ListQuotaActiveUserUsages(QuotaId *string, request *ListQu
 
 // Summary:
 //
-// 您可以通过此API获取Quota上的任务信息列表
+// Retrieves a list of workloads associated with a specific quota.
 //
 // @param request - ListQuotaWorkloadsRequest
 //
@@ -2810,7 +2953,7 @@ func (client *Client) ListQuotaWorkloadsWithOptions(QuotaId *string, request *Li
 
 // Summary:
 //
-// 您可以通过此API获取Quota上的任务信息列表
+// Retrieves a list of workloads associated with a specific quota.
 //
 // @param request - ListQuotaWorkloadsRequest
 //
@@ -2829,7 +2972,7 @@ func (client *Client) ListQuotaWorkloads(QuotaId *string, request *ListQuotaWork
 
 // Summary:
 //
-// 获取Quota列表
+// Lists quotas.
 //
 // @param request - ListQuotasRequest
 //
@@ -2944,7 +3087,7 @@ func (client *Client) ListQuotasWithOptions(request *ListQuotasRequest, headers 
 
 // Summary:
 //
-// 获取Quota列表
+// Lists quotas.
 //
 // @param request - ListQuotasRequest
 //
@@ -2963,7 +3106,7 @@ func (client *Client) ListQuotas(request *ListQuotasRequest) (_result *ListQuota
 
 // Summary:
 //
-// list machine groups
+// Retrieves a list of machine groups in a specified resource group.
 //
 // @param request - ListResourceGroupMachineGroupsRequest
 //
@@ -3062,7 +3205,7 @@ func (client *Client) ListResourceGroupMachineGroupsWithOptions(ResourceGroupID 
 
 // Summary:
 //
-// list machine groups
+// Retrieves a list of machine groups in a specified resource group.
 //
 // @param request - ListResourceGroupMachineGroupsRequest
 //
@@ -3081,7 +3224,11 @@ func (client *Client) ListResourceGroupMachineGroups(ResourceGroupID *string, re
 
 // Summary:
 //
-// list resource group
+// Call this operation to list resource groups for ECS or Lingjun intelligent computing resources.
+//
+// Description:
+//
+// Currently, AI computing resource groups (including ECS and Lingjun intelligent computing resources) are available only in specific regions. For a list of supported regions, see [AI computing resource management](https://help.aliyun.com/document_detail/143986.html).
 //
 // @param request - ListResourceGroupsRequest
 //
@@ -3172,7 +3319,11 @@ func (client *Client) ListResourceGroupsWithOptions(request *ListResourceGroupsR
 
 // Summary:
 //
-// list resource group
+// Call this operation to list resource groups for ECS or Lingjun intelligent computing resources.
+//
+// Description:
+//
+// Currently, AI computing resource groups (including ECS and Lingjun intelligent computing resources) are available only in specific regions. For a list of supported regions, see [AI computing resource management](https://help.aliyun.com/document_detail/143986.html).
 //
 // @param request - ListResourceGroupsRequest
 //
@@ -3191,7 +3342,19 @@ func (client *Client) ListResourceGroups(request *ListResourceGroupsRequest) (_r
 
 // Summary:
 //
-// 查标签接口
+// Tag query API.
+//
+// Description:
+//
+// Specify at least one of the following parameters to query for resources.
+//
+// - ResourceId.N
+//
+// - Tag.N (Tag.N.Key and Tag.N.Value)
+//
+// If you specify both parameters, the operation returns only resources that match both criteria.
+//
+// - Tag.N and ResourceId.N
 //
 // @param tmpReq - ListTagResourcesRequest
 //
@@ -3264,7 +3427,19 @@ func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesReques
 
 // Summary:
 //
-// 查标签接口
+// Tag query API.
+//
+// Description:
+//
+// Specify at least one of the following parameters to query for resources.
+//
+// - ResourceId.N
+//
+// - Tag.N (Tag.N.Key and Tag.N.Value)
+//
+// If you specify both parameters, the operation returns only resources that match both criteria.
+//
+// - Tag.N and ResourceId.N
 //
 // @param request - ListTagResourcesRequest
 //
@@ -3283,7 +3458,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// 获取指定TrainingJob的事件。
+// Retrieve events for a specific training task to gain detailed insight into the training process.
 //
 // @param request - ListTrainingJobEventsRequest
 //
@@ -3342,7 +3517,7 @@ func (client *Client) ListTrainingJobEventsWithOptions(TrainingJobId *string, re
 
 // Summary:
 //
-// 获取指定TrainingJob的事件。
+// Retrieve events for a specific training task to gain detailed insight into the training process.
 //
 // @param request - ListTrainingJobEventsRequest
 //
@@ -3361,7 +3536,7 @@ func (client *Client) ListTrainingJobEvents(TrainingJobId *string, request *List
 
 // Summary:
 //
-// 获取指定Instance（TrainingJob的运行单元）的日志。
+// Retrieve events for a training job instance.
 //
 // @param request - ListTrainingJobInstanceEventsRequest
 //
@@ -3420,7 +3595,7 @@ func (client *Client) ListTrainingJobInstanceEventsWithOptions(TrainingJobId *st
 
 // Summary:
 //
-// 获取指定Instance（TrainingJob的运行单元）的日志。
+// Retrieve events for a training job instance.
 //
 // @param request - ListTrainingJobInstanceEventsRequest
 //
@@ -3439,7 +3614,7 @@ func (client *Client) ListTrainingJobInstanceEvents(TrainingJobId *string, Insta
 
 // Summary:
 //
-// 获取Training Job实例的Metrics
+// Retrieve monitoring metrics for training job instances.
 //
 // @param request - ListTrainingJobInstanceMetricsRequest
 //
@@ -3502,7 +3677,7 @@ func (client *Client) ListTrainingJobInstanceMetricsWithOptions(TrainingJobId *s
 
 // Summary:
 //
-// 获取Training Job实例的Metrics
+// Retrieve monitoring metrics for training job instances.
 //
 // @param request - ListTrainingJobInstanceMetricsRequest
 //
@@ -3521,7 +3696,7 @@ func (client *Client) ListTrainingJobInstanceMetrics(TrainingJobId *string, requ
 
 // Summary:
 //
-// 获取Training Job的日志
+// Retrieves the logs for a training task.
 //
 // @param request - ListTrainingJobLogsRequest
 //
@@ -3588,7 +3763,7 @@ func (client *Client) ListTrainingJobLogsWithOptions(TrainingJobId *string, requ
 
 // Summary:
 //
-// 获取Training Job的日志
+// Retrieves the logs for a training task.
 //
 // @param request - ListTrainingJobLogsRequest
 //
@@ -3607,7 +3782,7 @@ func (client *Client) ListTrainingJobLogs(TrainingJobId *string, request *ListTr
 
 // Summary:
 //
-// 获取Training Job的Metrics
+// Retrieve monitoring data for a training task.
 //
 // @param request - ListTrainingJobMetricsRequest
 //
@@ -3674,7 +3849,7 @@ func (client *Client) ListTrainingJobMetricsWithOptions(TrainingJobId *string, r
 
 // Summary:
 //
-// 获取Training Job的Metrics
+// Retrieve monitoring data for a training task.
 //
 // @param request - ListTrainingJobMetricsRequest
 //
@@ -3693,7 +3868,7 @@ func (client *Client) ListTrainingJobMetrics(TrainingJobId *string, request *Lis
 
 // Summary:
 //
-// 获取Training Job 产出的所有模型信息
+// Retrieves information about the output models of a training job.
 //
 // @param headers - map
 //
@@ -3726,7 +3901,7 @@ func (client *Client) ListTrainingJobOutputModelsWithOptions(TrainingJobId *stri
 
 // Summary:
 //
-// 获取Training Job 产出的所有模型信息
+// Retrieves information about the output models of a training job.
 //
 // @return ListTrainingJobOutputModelsResponse
 func (client *Client) ListTrainingJobOutputModels(TrainingJobId *string) (_result *ListTrainingJobOutputModelsResponse, _err error) {
@@ -3743,7 +3918,7 @@ func (client *Client) ListTrainingJobOutputModels(TrainingJobId *string) (_resul
 
 // Summary:
 //
-// 获取TrainingJob的列表
+// Retrieves a list of training jobs.
 //
 // @param tmpReq - ListTrainingJobsRequest
 //
@@ -3848,7 +4023,7 @@ func (client *Client) ListTrainingJobsWithOptions(tmpReq *ListTrainingJobsReques
 
 // Summary:
 //
-// 获取TrainingJob的列表
+// Retrieves a list of training jobs.
 //
 // @param request - ListTrainingJobsRequest
 //
@@ -3867,7 +4042,11 @@ func (client *Client) ListTrainingJobs(request *ListTrainingJobsRequest) (_resul
 
 // Summary:
 //
-// 您可以通过OperateNode对节点进行操作
+// Use OperateNode to manage nodes.
+//
+// Description:
+//
+// Use OperateNode to manage a specified resource node. Supported operations include disabling or enabling scheduling.
 //
 // @param request - OperateNodeRequest
 //
@@ -3922,7 +4101,11 @@ func (client *Client) OperateNodeWithOptions(NodeId *string, request *OperateNod
 
 // Summary:
 //
-// 您可以通过OperateNode对节点进行操作
+// Use OperateNode to manage nodes.
+//
+// Description:
+//
+// Use OperateNode to manage a specified resource node. Supported operations include disabling or enabling scheduling.
 //
 // @param request - OperateNodeRequest
 //
@@ -3941,7 +4124,7 @@ func (client *Client) OperateNode(NodeId *string, request *OperateNodeRequest) (
 
 // Summary:
 //
-// 扩缩容Quota
+// Use ScaleQuota to scale resource quotas.
 //
 // @param request - ScaleQuotaRequest
 //
@@ -3992,7 +4175,7 @@ func (client *Client) ScaleQuotaWithOptions(QuotaId *string, request *ScaleQuota
 
 // Summary:
 //
-// 扩缩容Quota
+// Use ScaleQuota to scale resource quotas.
 //
 // @param request - ScaleQuotaRequest
 //
@@ -4011,7 +4194,7 @@ func (client *Client) ScaleQuota(QuotaId *string, request *ScaleQuotaRequest) (_
 
 // Summary:
 //
-// 停止一个TrainingJob
+// Stops a training task.
 //
 // @param headers - map
 //
@@ -4044,7 +4227,7 @@ func (client *Client) StopTrainingJobWithOptions(TrainingJobId *string, headers 
 
 // Summary:
 //
-// 停止一个TrainingJob
+// Stops a training task.
 //
 // @return StopTrainingJobResponse
 func (client *Client) StopTrainingJob(TrainingJobId *string) (_result *StopTrainingJobResponse, _err error) {
@@ -4061,7 +4244,11 @@ func (client *Client) StopTrainingJob(TrainingJobId *string) (_result *StopTrain
 
 // Summary:
 //
-// 打标签接口
+// Attaches tags to resources.
+//
+// Description:
+//
+// Alibaba Cloud checks the number of existing tags on the resource before attaching a new tag. If the limit is exceeded, an error message is returned.
 //
 // @param request - TagResourcesRequest
 //
@@ -4120,7 +4307,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 
 // Summary:
 //
-// 打标签接口
+// Attaches tags to resources.
+//
+// Description:
+//
+// Alibaba Cloud checks the number of existing tags on the resource before attaching a new tag. If the limit is exceeded, an error message is returned.
 //
 // @param request - TagResourcesRequest
 //
@@ -4139,7 +4330,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// 删标签接口
+// Detach tags from a list of specified resources. If a tag is no longer attached to any resource after detachment, Alibaba Cloud deletes it automatically.
 //
 // @param tmpReq - UntagResourcesRequest
 //
@@ -4212,7 +4403,7 @@ func (client *Client) UntagResourcesWithOptions(tmpReq *UntagResourcesRequest, h
 
 // Summary:
 //
-// 删标签接口
+// Detach tags from a list of specified resources. If a tag is no longer attached to any resource after detachment, Alibaba Cloud deletes it automatically.
 //
 // @param request - UntagResourcesRequest
 //
@@ -4231,7 +4422,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// 更新算法
+// Updates an algorithm.
 //
 // @param request - UpdateAlgorithmRequest
 //
@@ -4282,7 +4473,7 @@ func (client *Client) UpdateAlgorithmWithOptions(AlgorithmId *string, request *U
 
 // Summary:
 //
-// 更新算法
+// Updates an algorithm.
 //
 // @param request - UpdateAlgorithmRequest
 //
@@ -4301,7 +4492,7 @@ func (client *Client) UpdateAlgorithm(AlgorithmId *string, request *UpdateAlgori
 
 // Summary:
 //
-// 更新算法
+// Updates an algorithm version.
 //
 // @param tmpReq - UpdateAlgorithmVersionRequest
 //
@@ -4354,7 +4545,7 @@ func (client *Client) UpdateAlgorithmVersionWithOptions(AlgorithmId *string, Alg
 
 // Summary:
 //
-// 更新算法
+// Updates an algorithm version.
 //
 // @param request - UpdateAlgorithmVersionRequest
 //
@@ -4373,7 +4564,7 @@ func (client *Client) UpdateAlgorithmVersion(AlgorithmId *string, AlgorithmVersi
 
 // Summary:
 //
-// 更新Quota
+// Updates the information of a resource quota.
 //
 // @param request - UpdateQuotaRequest
 //
@@ -4396,6 +4587,10 @@ func (client *Client) UpdateQuotaWithOptions(QuotaId *string, request *UpdateQuo
 
 	if !dara.IsNil(request.Labels) {
 		body["Labels"] = request.Labels
+	}
+
+	if !dara.IsNil(request.PropagateDefaultGPUDriver) {
+		body["PropagateDefaultGPUDriver"] = request.PropagateDefaultGPUDriver
 	}
 
 	if !dara.IsNil(request.QueueStrategy) {
@@ -4436,7 +4631,7 @@ func (client *Client) UpdateQuotaWithOptions(QuotaId *string, request *UpdateQuo
 
 // Summary:
 //
-// 更新Quota
+// Updates the information of a resource quota.
 //
 // @param request - UpdateQuotaRequest
 //
@@ -4455,7 +4650,7 @@ func (client *Client) UpdateQuota(QuotaId *string, request *UpdateQuotaRequest) 
 
 // Summary:
 //
-// 更新Resource Group
+// Use UpdateResourceGroup to update resource group information.
 //
 // @param request - UpdateResourceGroupRequest
 //
@@ -4514,7 +4709,7 @@ func (client *Client) UpdateResourceGroupWithOptions(ResourceGroupID *string, re
 
 // Summary:
 //
-// 更新Resource Group
+// Use UpdateResourceGroup to update resource group information.
 //
 // @param request - UpdateResourceGroupRequest
 //
@@ -4533,7 +4728,7 @@ func (client *Client) UpdateResourceGroup(ResourceGroupID *string, request *Upda
 
 // Summary:
 //
-// 更新一个TrainingJob的Labels
+// Updates the labels of a training task.
 //
 // @param request - UpdateTrainingJobLabelsRequest
 //
@@ -4580,7 +4775,7 @@ func (client *Client) UpdateTrainingJobLabelsWithOptions(TrainingJobId *string, 
 
 // Summary:
 //
-// 更新一个TrainingJob的Labels
+// Updates the labels of a training task.
 //
 // @param request - UpdateTrainingJobLabelsRequest
 //

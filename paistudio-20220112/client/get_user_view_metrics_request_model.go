@@ -26,34 +26,60 @@ type iGetUserViewMetricsRequest interface {
 }
 
 type GetUserViewMetricsRequest struct {
+	// The sort order. Valid values:
+	//
+	// - asc: ascending order.
+	//
+	// - desc: descending order.
+	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The current page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sorting criterion.
+	//
 	// example:
 	//
 	// GmtModified
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The time step. Default value: 5m. Valid values for the time unit:
+	//
+	// - h: hours.
+	//
+	// - m: minutes.
+	//
+	// - s: seconds.
+	//
+	// If no unit is specified, the default unit s (seconds) is used.
+	//
 	// example:
 	//
 	// 1h
 	TimeStep *string `json:"TimeStep,omitempty" xml:"TimeStep,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 123456
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 86995

@@ -14,6 +14,8 @@ type iGetTrainingJobLatestMetricsRequest interface {
 }
 
 type GetTrainingJobLatestMetricsRequest struct {
+	// The name of the metric.
+	//
 	// example:
 	//
 	// loss

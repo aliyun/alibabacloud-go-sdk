@@ -20,18 +20,25 @@ type iUpdateResourceGroupRequest interface {
 }
 
 type UpdateResourceGroupRequest struct {
+	// The description of the resource group.
+	//
 	// example:
 	//
 	// test_new_havpn_tf
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the resource group.
+	//
 	// example:
 	//
 	// prophet
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Whether to detach the resource group from the currently connected VPC.
+	//
 	// example:
 	//
 	// true
-	Unbind  *bool    `json:"Unbind,omitempty" xml:"Unbind,omitempty"`
+	Unbind *bool `json:"Unbind,omitempty" xml:"Unbind,omitempty"`
+	// Information about the VPC connected to the resource group.
 	UserVpc *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
 }
 

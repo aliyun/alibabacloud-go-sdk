@@ -48,62 +48,127 @@ type iListQuotasRequest interface {
 }
 
 type ListQuotasRequest struct {
+	// Filters the results by cluster type.
+	//
 	// example:
 	//
 	// RayCluster
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	GPUType     *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
 	HasResource *string `json:"HasResource,omitempty" xml:"HasResource,omitempty"`
+	// Filters the results by labels. Specify labels as key=value pairs, separated by commas (,).
+	//
 	// example:
 	//
 	// official=true,gpu=false
-	Labels     *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The layout mode. Valid values: Tree and List.
+	//
+	// example:
+	//
+	// Tree
 	LayoutMode *string `json:"LayoutMode,omitempty" xml:"LayoutMode,omitempty"`
+	// The sort order. Valid values are desc and asc.
+	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number of the results to return. The minimum value is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. The minimum value is 1.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Filters the results by parent quota ID:
+	//
+	// - If this parameter is not specified, all quotas within the tenant are returned, including both root and child quotas.
+	//
+	// - If this parameter is set to an empty string, all root quotas are returned.
+	//
+	// - If a specific parent quota ID is provided, all child quotas of that parent are returned.
+	//
 	// example:
 	//
 	// quotajradxh43rgb
 	ParentQuotaId *string `json:"ParentQuotaId,omitempty" xml:"ParentQuotaId,omitempty"`
+	// A comma-separated list of up to 100 quota IDs to filter the results. Only exact matching is supported.
+	//
 	// example:
 	//
 	// quota1ci8g793pgm,quotajradxh43rgb
 	QuotaIds *string `json:"QuotaIds,omitempty" xml:"QuotaIds,omitempty"`
+	// Filters the results by quota name. Fuzzy matching is supported.
+	//
 	// example:
 	//
 	// quotajradxh43rgb
 	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
+	// The resource type. Valid values are Lingjun, ECS, and ACS. The default value is ECS.
+	//
 	// example:
 	//
 	// ECS
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The field to sort the results by. Valid values:
+	//
+	// - QuotaName
+	//
+	// - Status
+	//
+	// - CPU
+	//
+	// - Memory
+	//
+	// - GPU
+	//
+	// - GmtCreatedTime
+	//
+	// - GmtModifiedTime
+	//
 	// example:
 	//
 	// status
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// A comma-separated list of quota statuses to filter the results. Only exact matching is supported.
+	//
 	// example:
 	//
 	// Creating
 	Statuses *string `json:"Statuses,omitempty" xml:"Statuses,omitempty"`
-	Verbose  *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	// Specifies whether to return detailed information. Valid values:
+	//
+	// - true: Returns detailed information.
+	//
+	// - false: Does not return detailed information.
+	//
+	// example:
+	//
+	// true
+	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	// Filters the results by version.
+	//
 	// example:
 	//
 	// 1.0
 	Versions *string `json:"Versions,omitempty" xml:"Versions,omitempty"`
+	// A comma-separated list of up to 10 workspace IDs to filter the results. Only exact matching is supported.
+	//
 	// example:
 	//
 	// 21345,38727
-	WorkspaceIds  *string `json:"WorkspaceIds,omitempty" xml:"WorkspaceIds,omitempty"`
+	WorkspaceIds *string `json:"WorkspaceIds,omitempty" xml:"WorkspaceIds,omitempty"`
+	// The name of the associated workspace.
+	//
+	// example:
+	//
+	// myshellprod
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 

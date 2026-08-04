@@ -18,11 +18,16 @@ type iWorkspaceSpecs interface {
 }
 
 type WorkspaceSpecs struct {
+	// Applicable product (DLC, DSW, EAS, ...)
+	//
 	// example:
 	//
 	// DLC
-	Product *string          `json:"Product,omitempty" xml:"Product,omitempty"`
-	Specs   []*WorkspaceSpec `json:"Specs,omitempty" xml:"Specs,omitempty" type:"Repeated"`
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// List of resource specifications
+	Specs []*WorkspaceSpec `json:"Specs,omitempty" xml:"Specs,omitempty" type:"Repeated"`
+	// Workspace ID
+	//
 	// example:
 	//
 	// 122421

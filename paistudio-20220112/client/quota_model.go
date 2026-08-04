@@ -62,37 +62,123 @@ type iQuota interface {
 }
 
 type Quota struct {
-	AllocateStrategy  *string       `json:"AllocateStrategy,omitempty" xml:"AllocateStrategy,omitempty"`
-	CreatorId         *string       `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	Description       *string       `json:"Description,omitempty" xml:"Description,omitempty"`
-	GPUType           *string       `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
-	GmtCreatedTime    *string       `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
-	GmtModifiedTime   *string       `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	HyperZones        []*string     `json:"HyperZones,omitempty" xml:"HyperZones,omitempty" type:"Repeated"`
-	Labels            []*Label      `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	LatestOperationId *string       `json:"LatestOperationId,omitempty" xml:"LatestOperationId,omitempty"`
-	Min               *ResourceSpec `json:"Min,omitempty" xml:"Min,omitempty"`
-	ParentQuotaId     *string       `json:"ParentQuotaId,omitempty" xml:"ParentQuotaId,omitempty"`
-	QueueStrategy     *string       `json:"QueueStrategy,omitempty" xml:"QueueStrategy,omitempty"`
-	QuotaCluster      *QuotaCluster `json:"QuotaCluster,omitempty" xml:"QuotaCluster,omitempty"`
-	QuotaConfig       *QuotaConfig  `json:"QuotaConfig,omitempty" xml:"QuotaConfig,omitempty"`
-	QuotaDetails      *QuotaDetails `json:"QuotaDetails,omitempty" xml:"QuotaDetails,omitempty"`
+	// The resource allocation strategy. Currently, only `ByNodeSpec` is supported.
+	//
+	// example:
+	//
+	// ByNodeSpec
+	AllocateStrategy *string `json:"AllocateStrategy,omitempty" xml:"AllocateStrategy,omitempty"`
+	// The ID of the user who created the quota.
+	//
+	// example:
+	//
+	// 1884692****
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The quota description.
+	//
+	// example:
+	//
+	// this is a test quota
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GPUType     *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// The time when the quota was created.
+	//
+	// example:
+	//
+	// 2023-06-22T00:00:00Z
+	GmtCreatedTime *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
+	// The time when the quota was last modified.
+	//
+	// example:
+	//
+	// 2023-06-22T00:00:00Z
+	GmtModifiedTime *string   `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	HyperZones      []*string `json:"HyperZones,omitempty" xml:"HyperZones,omitempty" type:"Repeated"`
+	// The quota labels.
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The ID of the most recent operation on the quota.
+	//
+	// example:
+	//
+	// operation****
+	LatestOperationId *string `json:"LatestOperationId,omitempty" xml:"LatestOperationId,omitempty"`
+	// The guaranteed resources.
+	Min *ResourceSpec `json:"Min,omitempty" xml:"Min,omitempty"`
+	// The parent quota ID.
+	//
+	// example:
+	//
+	// ""
+	ParentQuotaId *string `json:"ParentQuotaId,omitempty" xml:"ParentQuotaId,omitempty"`
+	// The queuing strategy. Valid values:
+	//
+	// - `PaiStrategyIntelligent`: intelligent strategy.
+	//
+	// - `PaiStrategyBalance`: balanced strategy.
+	//
+	// - `PaiStrategyRoundRobin`: round-robin strategy.
+	//
+	// - `PaiStrategyStrictFIFO`: FIFO strategy.
+	//
+	// example:
+	//
+	// PaiStrategyIntelligent
+	QueueStrategy *string       `json:"QueueStrategy,omitempty" xml:"QueueStrategy,omitempty"`
+	QuotaCluster  *QuotaCluster `json:"QuotaCluster,omitempty" xml:"QuotaCluster,omitempty"`
+	// The quota configuration.
+	QuotaConfig *QuotaConfig `json:"QuotaConfig,omitempty" xml:"QuotaConfig,omitempty"`
+	// The quota details.
+	QuotaDetails *QuotaDetails `json:"QuotaDetails,omitempty" xml:"QuotaDetails,omitempty"`
+	// The quota ID.
+	//
 	// example:
 	//
 	// quota12345
 	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// The quota name.
+	//
 	// example:
 	//
 	// dlc-quota
-	QuotaName        *string            `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
-	ReasonCode       *string            `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	ReasonMessage    *string            `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	ResourceGroupIds []*string          `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
-	ResourceType     *string            `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Status           *string            `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubQuotas        []*QuotaIdName     `json:"SubQuotas,omitempty" xml:"SubQuotas,omitempty" type:"Repeated"`
-	Version          *string            `json:"Version,omitempty" xml:"Version,omitempty"`
-	Workspaces       []*WorkspaceIdName `json:"Workspaces,omitempty" xml:"Workspaces,omitempty" type:"Repeated"`
+	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// “”
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// “”
+	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// A list of resource group IDs.
+	ResourceGroupIds []*string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
+	// The resource type. Valid values:
+	//
+	// - `Lingjun`
+	//
+	// - `ECS` (default)
+	//
+	// - `ACS`
+	//
+	// example:
+	//
+	// ECS
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The quota status.
+	//
+	// example:
+	//
+	// Ready
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// A list of sub-quotas.
+	SubQuotas []*QuotaIdName `json:"SubQuotas,omitempty" xml:"SubQuotas,omitempty" type:"Repeated"`
+	// The version.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The workspaces that are associated with the quota.
+	Workspaces []*WorkspaceIdName `json:"Workspaces,omitempty" xml:"Workspaces,omitempty" type:"Repeated"`
 }
 
 func (s Quota) String() string {

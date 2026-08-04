@@ -14,6 +14,7 @@ type iCreateAlgorithmVersionRequest interface {
 }
 
 type CreateAlgorithmVersionRequest struct {
+	// Algorithm configuration.
 	AlgorithmSpec *AlgorithmSpec `json:"AlgorithmSpec,omitempty" xml:"AlgorithmSpec,omitempty"`
 }
 

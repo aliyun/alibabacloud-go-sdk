@@ -19,6 +19,8 @@ type iCacheService interface {
 	GetCreatedBy() *string
 	SetGmtCreated(v string) *CacheService
 	GetGmtCreated() *string
+	SetIsSharded(v bool) *CacheService
+	GetIsSharded() *bool
 	SetNetworkType(v string) *CacheService
 	GetNetworkType() *string
 	SetQuotaId(v string) *CacheService
@@ -38,19 +40,34 @@ type iCacheService interface {
 }
 
 type CacheService struct {
-	CacheInfos              []*CacheInfo `json:"CacheInfos,omitempty" xml:"CacheInfos,omitempty" type:"Repeated"`
-	CacheServiceId          *string      `json:"CacheServiceId,omitempty" xml:"CacheServiceId,omitempty"`
-	ClusterId               *string      `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CreatedBy               *string      `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	GmtCreated              *string      `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	NetworkType             *string      `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	QuotaId                 *string      `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	Status                  *string      `json:"Status,omitempty" xml:"Status,omitempty"`
-	SupportRDMA             *string      `json:"SupportRDMA,omitempty" xml:"SupportRDMA,omitempty"`
-	SupportedClientQuotaIds []*string    `json:"SupportedClientQuotaIds,omitempty" xml:"SupportedClientQuotaIds,omitempty" type:"Repeated"`
-	TenantId                *string      `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	UserId                  *string      `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserVpc                 *UserVpc     `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
+	// Information about each cache node in the service.
+	CacheInfos []*CacheInfo `json:"CacheInfos,omitempty" xml:"CacheInfos,omitempty" type:"Repeated"`
+	// The unique identifier of the CacheService.
+	CacheServiceId *string `json:"CacheServiceId,omitempty" xml:"CacheServiceId,omitempty"`
+	// The ID of the PAI cluster where the CacheService is deployed.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The user or entity that created the resource.
+	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
+	// The time (in UTC, ISO 8601 format) when the CacheService was created.
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// Indicates whether the CacheService is sharded across multiple nodes.
+	IsSharded *bool `json:"IsSharded,omitempty" xml:"IsSharded,omitempty"`
+	// The network type of the CacheService. For example, `VPC`.
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The ID of the resource quota associated with the CacheService.
+	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// The current status of the CacheService. For example: `Creating`, `Available`, or `Deleting`.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the CacheService supports RDMA.
+	SupportRDMA *string `json:"SupportRDMA,omitempty" xml:"SupportRDMA,omitempty"`
+	// A list of quota IDs for clients that can connect to this CacheService.
+	SupportedClientQuotaIds []*string `json:"SupportedClientQuotaIds,omitempty" xml:"SupportedClientQuotaIds,omitempty" type:"Repeated"`
+	// The ID of the tenant that owns the CacheService.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the user associated with the CacheService.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The configuration of the user\\"s VPC where the CacheService is deployed.
+	UserVpc *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
 }
 
 func (s CacheService) String() string {
@@ -79,6 +96,10 @@ func (s *CacheService) GetCreatedBy() *string {
 
 func (s *CacheService) GetGmtCreated() *string {
 	return s.GmtCreated
+}
+
+func (s *CacheService) GetIsSharded() *bool {
+	return s.IsSharded
 }
 
 func (s *CacheService) GetNetworkType() *string {
@@ -135,6 +156,11 @@ func (s *CacheService) SetCreatedBy(v string) *CacheService {
 
 func (s *CacheService) SetGmtCreated(v string) *CacheService {
 	s.GmtCreated = &v
+	return s
+}
+
+func (s *CacheService) SetIsSharded(v bool) *CacheService {
+	s.IsSharded = &v
 	return s
 }
 

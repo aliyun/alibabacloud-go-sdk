@@ -14,6 +14,7 @@ type iResourceSpec interface {
 }
 
 type ResourceSpec struct {
+	// The resource node specifications.
 	NodeSpecs []*NodeSpec `json:"NodeSpecs,omitempty" xml:"NodeSpecs,omitempty" type:"Repeated"`
 }
 

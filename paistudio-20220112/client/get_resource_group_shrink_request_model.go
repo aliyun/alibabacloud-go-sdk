@@ -16,11 +16,14 @@ type iGetResourceGroupShrinkRequest interface {
 }
 
 type GetResourceGroupShrinkRequest struct {
+	// Optional. Defaults to `true`.
+	//
 	// example:
 	//
 	// true
-	IsAIWorkspaceDataEnabled *bool   `json:"IsAIWorkspaceDataEnabled,omitempty" xml:"IsAIWorkspaceDataEnabled,omitempty"`
-	TagShrink                *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	IsAIWorkspaceDataEnabled *bool `json:"IsAIWorkspaceDataEnabled,omitempty" xml:"IsAIWorkspaceDataEnabled,omitempty"`
+	// A list of up to 20 tags to add to the instance.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s GetResourceGroupShrinkRequest) String() string {

@@ -48,23 +48,41 @@ type iGetMachineGroupResponseBody interface {
 }
 
 type GetMachineGroupResponseBody struct {
-	Count            *int64    `json:"Count,omitempty" xml:"Count,omitempty"`
-	DefaultDriver    *string   `json:"DefaultDriver,omitempty" xml:"DefaultDriver,omitempty"`
-	Duration         *string   `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	EcsType          *string   `json:"EcsType,omitempty" xml:"EcsType,omitempty"`
-	GmtCreated       *string   `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	GmtExpired       *string   `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
-	GmtModified      *string   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	GmtStarted       *string   `json:"GmtStarted,omitempty" xml:"GmtStarted,omitempty"`
-	MachineGroupID   *string   `json:"MachineGroupID,omitempty" xml:"MachineGroupID,omitempty"`
-	OrderID          *string   `json:"OrderID,omitempty" xml:"OrderID,omitempty"`
-	OrderInstanceId  *string   `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
-	PAIResourceID    *string   `json:"PAIResourceID,omitempty" xml:"PAIResourceID,omitempty"`
-	PayType          *string   `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	PricingCycle     *string   `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	RegionID         *string   `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
-	RequestId        *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status           *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of instances in the machine group.
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The default driver.
+	DefaultDriver *string `json:"DefaultDriver,omitempty" xml:"DefaultDriver,omitempty"`
+	// The subscription duration. This parameter is returned only when `PayType` is `PrePay`.
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The ECS instance type of the machine group.
+	EcsType *string `json:"EcsType,omitempty" xml:"EcsType,omitempty"`
+	// The time when the machine group was created.
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The expiration time. This parameter is returned only when `PayType` is `PrePay`.
+	GmtExpired *string `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
+	// The time when the machine group was last modified.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The time when the machine group started.
+	GmtStarted *string `json:"GmtStarted,omitempty" xml:"GmtStarted,omitempty"`
+	// The ID of the machine group.
+	MachineGroupID *string `json:"MachineGroupID,omitempty" xml:"MachineGroupID,omitempty"`
+	// The order ID.
+	OrderID *string `json:"OrderID,omitempty" xml:"OrderID,omitempty"`
+	// The instance ID of the order.
+	OrderInstanceId *string `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
+	// The PAI resource ID.
+	PAIResourceID *string `json:"PAIResourceID,omitempty" xml:"PAIResourceID,omitempty"`
+	// The payment type. Valid values: `PostPay` (pay-as-you-go) and `PrePay` (subscription).
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The billing cycle. This parameter is returned only when `PayType` is `PrePay`.
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The region ID.
+	RegionID *string `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the machine group.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The drivers that the machine group supports.
 	SupportedDrivers []*string `json:"SupportedDrivers,omitempty" xml:"SupportedDrivers,omitempty" type:"Repeated"`
 }
 

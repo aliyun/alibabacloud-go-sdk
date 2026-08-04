@@ -28,31 +28,46 @@ type iHyperParameterRange interface {
 }
 
 type HyperParameterRange struct {
+	// Hyperparameter enumeration list.
 	Enum []*string `json:"Enum,omitempty" xml:"Enum,omitempty" type:"Repeated"`
+	// Whether the maximum value is exclusive.
+	//
 	// example:
 	//
 	// true
 	ExclusiveMaximum *bool `json:"ExclusiveMaximum,omitempty" xml:"ExclusiveMaximum,omitempty"`
+	// Whether the minimum value is exclusive.
+	//
 	// example:
 	//
 	// true
 	ExclusiveMinimum *bool `json:"ExclusiveMinimum,omitempty" xml:"ExclusiveMinimum,omitempty"`
+	// Maximum length.
+	//
 	// example:
 	//
 	// 30
 	MaxLength *int64 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	// Maximum value.
+	//
 	// example:
 	//
 	// 10
 	Maximum *string `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	// Minimum length.
+	//
 	// example:
 	//
 	// 1
 	MinLength *int64 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
+	// Minimum value.
+	//
 	// example:
 	//
 	// 0
 	Minimum *string `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
+	// Regular expression.
+	//
 	// example:
 	//
 	// ^\\+?[1-9][0-9]*$

@@ -16,10 +16,14 @@ type iDeleteResourceGroupResponseBody interface {
 }
 
 type DeleteResourceGroupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F082BD0D-21E1-5F9B-81A0-AB07485B03CD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The globally unique ID of the resource group.
+	//
 	// example:
 	//
 	// rgvl9d6utwcscukh

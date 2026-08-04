@@ -20,15 +20,22 @@ type iGetResourceGroupTotalResponseBody interface {
 }
 
 type GetResourceGroupTotalResponseBody struct {
+	// The total number of CPU cores.
+	//
 	// example:
 	//
 	// 100
 	TotalCPU *int32 `json:"totalCPU,omitempty" xml:"totalCPU,omitempty"`
+	// The total number of GPU cores.
+	//
 	// example:
 	//
 	// 24
-	TotalGPU      *int32     `json:"totalGPU,omitempty" xml:"totalGPU,omitempty"`
+	TotalGPU *int32 `json:"totalGPU,omitempty" xml:"totalGPU,omitempty"`
+	// The resources counted by GPU card type.
 	TotalGPUInfos []*GPUInfo `json:"totalGPUInfos,omitempty" xml:"totalGPUInfos,omitempty" type:"Repeated"`
+	// The total memory.
+	//
 	// example:
 	//
 	// 300

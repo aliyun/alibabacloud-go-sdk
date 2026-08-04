@@ -58,44 +58,124 @@ type iUserViewMetric interface {
 }
 
 type UserViewMetric struct {
-	CPUNodeNumber     *int32    `json:"CPUNodeNumber,omitempty" xml:"CPUNodeNumber,omitempty"`
-	CPUUsageRate      *string   `json:"CPUUsageRate,omitempty" xml:"CPUUsageRate,omitempty"`
-	CpuJobNames       []*string `json:"CpuJobNames,omitempty" xml:"CpuJobNames,omitempty" type:"Repeated"`
-	CpuNodeNames      []*string `json:"CpuNodeNames,omitempty" xml:"CpuNodeNames,omitempty" type:"Repeated"`
-	DiskReadRate      *string   `json:"DiskReadRate,omitempty" xml:"DiskReadRate,omitempty"`
-	DiskWriteRate     *string   `json:"DiskWriteRate,omitempty" xml:"DiskWriteRate,omitempty"`
-	GPUNodeNumber     *int32    `json:"GPUNodeNumber,omitempty" xml:"GPUNodeNumber,omitempty"`
-	GPUUsageRate      *string   `json:"GPUUsageRate,omitempty" xml:"GPUUsageRate,omitempty"`
-	GpuJobNames       []*string `json:"GpuJobNames,omitempty" xml:"GpuJobNames,omitempty" type:"Repeated"`
-	GpuNodeNames      []*string `json:"GpuNodeNames,omitempty" xml:"GpuNodeNames,omitempty" type:"Repeated"`
-	JobType           *string   `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	MemoryUsageRate   *string   `json:"MemoryUsageRate,omitempty" xml:"MemoryUsageRate,omitempty"`
-	NetworkInputRate  *string   `json:"NetworkInputRate,omitempty" xml:"NetworkInputRate,omitempty"`
-	NetworkOutputRate *string   `json:"NetworkOutputRate,omitempty" xml:"NetworkOutputRate,omitempty"`
-	NodeNames         []*string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty" type:"Repeated"`
+	// Number of CPU nodes.
+	//
+	// example:
+	//
+	// 2
+	CPUNodeNumber *int32 `json:"CPUNodeNumber,omitempty" xml:"CPUNodeNumber,omitempty"`
+	// CPU usage rate.
+	//
+	// example:
+	//
+	// 59
+	CPUUsageRate *string `json:"CPUUsageRate,omitempty" xml:"CPUUsageRate,omitempty"`
+	// CPU jobs.
+	CpuJobNames []*string `json:"CpuJobNames,omitempty" xml:"CpuJobNames,omitempty" type:"Repeated"`
+	// List of CPU nodes.
+	CpuNodeNames []*string `json:"CpuNodeNames,omitempty" xml:"CpuNodeNames,omitempty" type:"Repeated"`
+	// Disk read rate.
+	//
+	// example:
+	//
+	// 22
+	DiskReadRate *string `json:"DiskReadRate,omitempty" xml:"DiskReadRate,omitempty"`
+	// Disk write rate.
+	//
+	// example:
+	//
+	// 22
+	DiskWriteRate *string `json:"DiskWriteRate,omitempty" xml:"DiskWriteRate,omitempty"`
+	// Number of GPU nodes.
+	//
+	// example:
+	//
+	// 1
+	GPUNodeNumber *int32 `json:"GPUNodeNumber,omitempty" xml:"GPUNodeNumber,omitempty"`
+	// GPU usage rate.
+	//
+	// example:
+	//
+	// 10
+	GPUUsageRate *string `json:"GPUUsageRate,omitempty" xml:"GPUUsageRate,omitempty"`
+	// GPU jobs.
+	GpuJobNames []*string `json:"GpuJobNames,omitempty" xml:"GpuJobNames,omitempty" type:"Repeated"`
+	// List of GPU nodes.
+	GpuNodeNames []*string `json:"GpuNodeNames,omitempty" xml:"GpuNodeNames,omitempty" type:"Repeated"`
+	// Job type.
+	//
+	// example:
+	//
+	// PyTorch
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// Memory usage rate.
+	//
+	// example:
+	//
+	// 20
+	MemoryUsageRate *string `json:"MemoryUsageRate,omitempty" xml:"MemoryUsageRate,omitempty"`
+	// The network input rate.
+	//
+	// example:
+	//
+	// 1
+	NetworkInputRate *string `json:"NetworkInputRate,omitempty" xml:"NetworkInputRate,omitempty"`
+	// Network output rate.
+	//
+	// example:
+	//
+	// 1
+	NetworkOutputRate *string `json:"NetworkOutputRate,omitempty" xml:"NetworkOutputRate,omitempty"`
+	// List of nodes.
+	NodeNames []*string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty" type:"Repeated"`
+	// Number of CPU cores allocated.
+	//
 	// example:
 	//
 	// 100
 	RequestCPU *int32 `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
+	// Number of GPU cores allocated.
+	//
 	// example:
 	//
 	// 10
 	RequestGPU *int32 `json:"RequestGPU,omitempty" xml:"RequestGPU,omitempty"`
+	// Allocated memory, in KB.
+	//
 	// example:
 	//
 	// 102400000
 	RequestMemory *int64 `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
+	// Resource group ID.
+	//
 	// example:
 	//
-	// rg17tmvwiokhzaxg
+	// rg17tmvwiokh****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Total number of CPU cores.
+	//
 	// example:
 	//
 	// 1000
-	TotalCPU    *int32  `json:"TotalCPU,omitempty" xml:"TotalCPU,omitempty"`
-	TotalGPU    *int32  `json:"TotalGPU,omitempty" xml:"TotalGPU,omitempty"`
-	TotalMemory *int64  `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	TotalCPU *int32 `json:"TotalCPU,omitempty" xml:"TotalCPU,omitempty"`
+	// Total number of GPU cards.
+	//
+	// example:
+	//
+	// 1
+	TotalGPU *int32 `json:"TotalGPU,omitempty" xml:"TotalGPU,omitempty"`
+	// Total memory, in KB.
+	//
+	// example:
+	//
+	// 10240
+	TotalMemory *int64 `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
+	// User ID.
+	//
+	// example:
+	//
+	// 16111111****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s UserViewMetric) String() string {

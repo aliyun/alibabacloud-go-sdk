@@ -18,11 +18,16 @@ type iListNodesResponseBody interface {
 }
 
 type ListNodesResponseBody struct {
+	// The list of nodes.
 	Nodes []*Node `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of nodes that meet the filter conditions.
+	//
 	// example:
 	//
 	// 23

@@ -20,18 +20,26 @@ type iResourceAmount interface {
 }
 
 type ResourceAmount struct {
+	// Total CPU
+	//
 	// example:
 	//
 	// 100
 	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// Total GPU cards
+	//
 	// example:
 	//
 	// 16
 	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// GPU card type
+	//
 	// example:
 	//
 	// GPU
 	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// Total memory
+	//
 	// example:
 	//
 	// 100Gi

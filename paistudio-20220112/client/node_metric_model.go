@@ -18,17 +18,23 @@ type iNodeMetric interface {
 }
 
 type NodeMetric struct {
+	// The type of GPU.
+	//
 	// example:
 	//
 	// GU108
 	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// Performance Metrics.
+	//
 	// example:
 	//
 	// 23000
 	Metrics []*Metric `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	// Edge zone ID.
+	//
 	// example:
 	//
-	// -i121212node
+	// -i12****node
 	NodeID *string `json:"NodeID,omitempty" xml:"NodeID,omitempty"`
 }
 

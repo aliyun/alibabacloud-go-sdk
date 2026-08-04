@@ -22,22 +22,32 @@ type iListNodeTypesRequest interface {
 }
 
 type ListNodeTypesRequest struct {
+	// The accelerator type used to filter the results. Valid values: `CPU` and `GPU`.
+	//
 	// example:
 	//
 	// GPU
 	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	// The GPU type used to filter the results. Fuzzy matching is supported.
+	//
 	// example:
 	//
 	// A10
 	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// A comma-separated list of node types. If omitted, all node types are returned.
+	//
 	// example:
 	//
 	// ecs.c6.large,ecs.gn7i-c32g1.8xlarge
 	NodeTypes *string `json:"NodeTypes,omitempty" xml:"NodeTypes,omitempty"`
+	// The quota ID. You must specify either this parameter or `ResourceGroupIds`.
+	//
 	// example:
 	//
 	// quota123
 	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// A comma-separated list of resource group IDs. You must specify either this parameter or `QuotaId`. The `UserId` for the specified `ResourceGroupId` must match the `UserId` of the requesting user. All specified `resource group` instances must be of the same type and associated with the same Virtual Private Cloud (VPC).
+	//
 	// example:
 	//
 	// rg123,rg456

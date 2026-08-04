@@ -16,11 +16,13 @@ type iCreateResourceGroupResponseBody interface {
 }
 
 type CreateResourceGroupResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 18D5A1C6-14B8-545E-8408-0A7DDB4C6B5E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// ResourceGroup ID。
+	// Resource group ID.
 	//
 	// example:
 	//

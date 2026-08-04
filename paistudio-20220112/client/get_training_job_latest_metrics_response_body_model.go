@@ -16,7 +16,10 @@ type iGetTrainingJobLatestMetricsResponseBody interface {
 }
 
 type GetTrainingJobLatestMetricsResponseBody struct {
+	// The metric information.
 	Metrics []*GetTrainingJobLatestMetricsResponseBodyMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 18D5A1C6-14B8-545E-8408-0A7DDB4C6B5E
@@ -63,16 +66,22 @@ func (s *GetTrainingJobLatestMetricsResponseBody) Validate() error {
 }
 
 type GetTrainingJobLatestMetricsResponseBodyMetrics struct {
+	// The name of the metric.
+	//
 	// example:
 	//
 	// loss
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The timestamp when the metric was collected.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 2022-04-18T22:20:55Z
 	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The value of the metric.
+	//
 	// example:
 	//
 	// 0.97

@@ -18,14 +18,19 @@ type iListTrainingJobsResponseBody interface {
 }
 
 type ListTrainingJobsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of training jobs.
+	//
 	// example:
 	//
 	// 10
-	TotalCount   *int64                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of training job details.
 	TrainingJobs []*ListTrainingJobsResponseBodyTrainingJobs `json:"TrainingJobs,omitempty" xml:"TrainingJobs,omitempty" type:"Repeated"`
 }
 
@@ -78,72 +83,117 @@ func (s *ListTrainingJobsResponseBody) Validate() error {
 }
 
 type ListTrainingJobsResponseBodyTrainingJobs struct {
+	// The algorithm name.
+	//
 	// example:
 	//
 	// llm_train
 	AlgorithmName *string `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
+	// The algorithm provider.
+	//
 	// example:
 	//
 	// pai
 	AlgorithmProvider *string `json:"AlgorithmProvider,omitempty" xml:"AlgorithmProvider,omitempty"`
+	// The algorithm version.
+	//
 	// example:
 	//
 	// v0.0.1
-	AlgorithmVersion *string                                                   `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
-	AssignNodeSpec   *AssignNodeSpec                                           `json:"AssignNodeSpec,omitempty" xml:"AssignNodeSpec,omitempty"`
-	ComputeResource  *ListTrainingJobsResponseBodyTrainingJobsComputeResource  `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
-	DlcJobId         *string                                                   `json:"DlcJobId,omitempty" xml:"DlcJobId,omitempty"`
-	Environments     map[string]*string                                        `json:"Environments,omitempty" xml:"Environments,omitempty"`
+	AlgorithmVersion *string         `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
+	AssignNodeSpec   *AssignNodeSpec `json:"AssignNodeSpec,omitempty" xml:"AssignNodeSpec,omitempty"`
+	// The compute resource configuration.
+	ComputeResource  *ListTrainingJobsResponseBodyTrainingJobsComputeResource `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
+	CredentialConfig *CredentialConfig                                        `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	DlcJobId         *string                                                  `json:"DlcJobId,omitempty" xml:"DlcJobId,omitempty"`
+	// The list of environment variables.
+	Environments map[string]*string `json:"Environments,omitempty" xml:"Environments,omitempty"`
+	// The experiment configuration associated with the training job.
 	ExperimentConfig *ListTrainingJobsResponseBodyTrainingJobsExperimentConfig `json:"ExperimentConfig,omitempty" xml:"ExperimentConfig,omitempty" type:"Struct"`
+	// The time when the training job was created.
+	//
 	// example:
 	//
 	// 2024-07-10T11:49:47Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the training job status was last updated.
+	//
 	// example:
 	//
 	// 2024-07-10T11:49:47Z
-	GmtModifiedTime *string                                                    `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The hyperparameter settings for training.
 	HyperParameters []*ListTrainingJobsResponseBodyTrainingJobsHyperParameters `json:"HyperParameters,omitempty" xml:"HyperParameters,omitempty" type:"Repeated"`
-	InputChannels   []*ListTrainingJobsResponseBodyTrainingJobsInputChannels   `json:"InputChannels,omitempty" xml:"InputChannels,omitempty" type:"Repeated"`
+	// The input data configuration for training.
+	InputChannels []*ListTrainingJobsResponseBodyTrainingJobsInputChannels `json:"InputChannels,omitempty" xml:"InputChannels,omitempty" type:"Repeated"`
+	// Indicates whether a temporary algorithm is used.
+	//
 	// example:
 	//
 	// true
-	IsTempAlgo         *bool                                                     `json:"IsTempAlgo,omitempty" xml:"IsTempAlgo,omitempty"`
-	Labels             []*ListTrainingJobsResponseBodyTrainingJobsLabels         `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	OutputChannels     []*ListTrainingJobsResponseBodyTrainingJobsOutputChannels `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
-	PythonRequirements []*string                                                 `json:"PythonRequirements,omitempty" xml:"PythonRequirements,omitempty" type:"Repeated"`
+	IsTempAlgo *bool `json:"IsTempAlgo,omitempty" xml:"IsTempAlgo,omitempty"`
+	// The labels of the training job.
+	Labels []*ListTrainingJobsResponseBodyTrainingJobsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The output data configuration for training.
+	OutputChannels []*ListTrainingJobsResponseBodyTrainingJobsOutputChannels `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
+	// The Python package configuration for the training job.
+	PythonRequirements []*string `json:"PythonRequirements,omitempty" xml:"PythonRequirements,omitempty" type:"Repeated"`
+	// The status code of the training job.
+	//
 	// example:
 	//
 	// TrainingJobSucceed
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// The error message of the training job.
+	//
 	// example:
 	//
 	// None
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// The role ARN used for delegated authorization.
+	//
 	// example:
 	//
 	// acs:ram::{accountID}:role/{roleName}
-	RoleArn   *string                                            `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The scheduling configuration of the training job.
 	Scheduler *ListTrainingJobsResponseBodyTrainingJobsScheduler `json:"Scheduler,omitempty" xml:"Scheduler,omitempty" type:"Struct"`
+	// The job status.
+	//
 	// example:
 	//
 	// Running
-	Status                 *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusTransitions      []*ListTrainingJobsResponseBodyTrainingJobsStatusTransitions `json:"StatusTransitions,omitempty" xml:"StatusTransitions,omitempty" type:"Repeated"`
-	TrainingJobDescription *string                                                      `json:"TrainingJobDescription,omitempty" xml:"TrainingJobDescription,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of training job status transitions.
+	StatusTransitions []*ListTrainingJobsResponseBodyTrainingJobsStatusTransitions `json:"StatusTransitions,omitempty" xml:"StatusTransitions,omitempty" type:"Repeated"`
+	// The description of the training job.
+	//
+	// example:
+	//
+	// Qwen2 large language model training.
+	TrainingJobDescription *string `json:"TrainingJobDescription,omitempty" xml:"TrainingJobDescription,omitempty"`
+	// The training job ID.
+	//
 	// example:
 	//
 	// train1layo6js8ra
 	TrainingJobId *string `json:"TrainingJobId,omitempty" xml:"TrainingJobId,omitempty"`
+	// The name of the training job.
+	//
 	// example:
 	//
 	// qwen2-7b
 	TrainingJobName *string `json:"TrainingJobName,omitempty" xml:"TrainingJobName,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 123456789
-	UserId  *string                                          `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The user VPC configuration.
 	UserVpc *ListTrainingJobsResponseBodyTrainingJobsUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 1234
@@ -176,6 +226,10 @@ func (s *ListTrainingJobsResponseBodyTrainingJobs) GetAssignNodeSpec() *AssignNo
 
 func (s *ListTrainingJobsResponseBodyTrainingJobs) GetComputeResource() *ListTrainingJobsResponseBodyTrainingJobsComputeResource {
 	return s.ComputeResource
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) GetCredentialConfig() *CredentialConfig {
+	return s.CredentialConfig
 }
 
 func (s *ListTrainingJobsResponseBodyTrainingJobs) GetDlcJobId() *string {
@@ -292,6 +346,11 @@ func (s *ListTrainingJobsResponseBodyTrainingJobs) SetAssignNodeSpec(v *AssignNo
 
 func (s *ListTrainingJobsResponseBodyTrainingJobs) SetComputeResource(v *ListTrainingJobsResponseBodyTrainingJobsComputeResource) *ListTrainingJobsResponseBodyTrainingJobs {
 	s.ComputeResource = v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetCredentialConfig(v *CredentialConfig) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.CredentialConfig = v
 	return s
 }
 
@@ -421,6 +480,11 @@ func (s *ListTrainingJobsResponseBodyTrainingJobs) Validate() error {
 			return err
 		}
 	}
+	if s.CredentialConfig != nil {
+		if err := s.CredentialConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.ExperimentConfig != nil {
 		if err := s.ExperimentConfig.Validate(); err != nil {
 			return err
@@ -485,23 +549,37 @@ func (s *ListTrainingJobsResponseBodyTrainingJobs) Validate() error {
 }
 
 type ListTrainingJobsResponseBodyTrainingJobsComputeResource struct {
+	// The number of ECS instances.
+	//
 	// example:
 	//
 	// 1
 	EcsCount *int64 `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
+	// The ECS instance type.
+	//
 	// example:
 	//
 	// ecs.gn5-c8g1.2xlarge
 	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	// The number of resource quota instances.
+	//
 	// example:
 	//
 	// 1
-	InstanceCount *int64                                                               `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	InstanceSpec  *ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty" type:"Struct"`
+	InstanceCount *int64 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	// The resource quota instance specification.
+	InstanceSpec *ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty" type:"Struct"`
+	// The resource quota ID.
+	//
 	// example:
 	//
 	// quotam670lixikcl
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource quota name.
+	//
+	// example:
+	//
+	// quota
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 }
 
@@ -577,22 +655,32 @@ func (s *ListTrainingJobsResponseBodyTrainingJobsComputeResource) Validate() err
 }
 
 type ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec struct {
+	// The number of CPU cores of the instance.
+	//
 	// example:
 	//
 	// 8
 	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// The number of GPUs of the instance.
+	//
 	// example:
 	//
 	// 1
 	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// The GPU type of the instance.
+	//
 	// example:
 	//
 	// V100
 	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// The memory size of the instance. Unit: GiB.
+	//
 	// example:
 	//
 	// 32
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The shared memory size of the instance. Unit: GiB.
+	//
 	// example:
 	//
 	// 32
@@ -657,10 +745,14 @@ func (s *ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec) Va
 }
 
 type ListTrainingJobsResponseBodyTrainingJobsExperimentConfig struct {
+	// The ID of the experiment associated with the training job.
+	//
 	// example:
 	//
 	// exp-ds9aefia90v
 	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// The name of the experiment associated with the training job.
+	//
 	// example:
 	//
 	// large_language_model
@@ -698,10 +790,14 @@ func (s *ListTrainingJobsResponseBodyTrainingJobsExperimentConfig) Validate() er
 }
 
 type ListTrainingJobsResponseBodyTrainingJobsHyperParameters struct {
+	// The parameter name.
+	//
 	// example:
 	//
 	// learning_rate
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter value.
+	//
 	// example:
 	//
 	// 0.001
@@ -739,18 +835,25 @@ func (s *ListTrainingJobsResponseBodyTrainingJobsHyperParameters) Validate() err
 }
 
 type ListTrainingJobsResponseBodyTrainingJobsInputChannels struct {
+	// The dataset ID.
+	//
 	// example:
 	//
 	// d-475megosidivjfgfq6
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The input data URI.
+	//
 	// example:
 	//
 	// oss://test-bucket.oss-cn-hangzhou-internal.aliyuncs.com/path/to/input/channel/
 	InputUri *string `json:"InputUri,omitempty" xml:"InputUri,omitempty"`
+	// The input data name.
+	//
 	// example:
 	//
 	// model
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RoleArn     *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -774,6 +877,10 @@ func (s *ListTrainingJobsResponseBodyTrainingJobsInputChannels) GetName() *strin
 	return s.Name
 }
 
+func (s *ListTrainingJobsResponseBodyTrainingJobsInputChannels) GetRoleArn() *string {
+	return s.RoleArn
+}
+
 func (s *ListTrainingJobsResponseBodyTrainingJobsInputChannels) GetVersionName() *string {
 	return s.VersionName
 }
@@ -793,6 +900,11 @@ func (s *ListTrainingJobsResponseBodyTrainingJobsInputChannels) SetName(v string
 	return s
 }
 
+func (s *ListTrainingJobsResponseBodyTrainingJobsInputChannels) SetRoleArn(v string) *ListTrainingJobsResponseBodyTrainingJobsInputChannels {
+	s.RoleArn = &v
+	return s
+}
+
 func (s *ListTrainingJobsResponseBodyTrainingJobsInputChannels) SetVersionName(v string) *ListTrainingJobsResponseBodyTrainingJobsInputChannels {
 	s.VersionName = &v
 	return s
@@ -803,10 +915,14 @@ func (s *ListTrainingJobsResponseBodyTrainingJobsInputChannels) Validate() error
 }
 
 type ListTrainingJobsResponseBodyTrainingJobsLabels struct {
+	// The label key.
+	//
 	// example:
 	//
 	// CreatedBy
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The label value.
+	//
 	// example:
 	//
 	// QuickStart
@@ -844,18 +960,25 @@ func (s *ListTrainingJobsResponseBodyTrainingJobsLabels) Validate() error {
 }
 
 type ListTrainingJobsResponseBodyTrainingJobsOutputChannels struct {
+	// The dataset ID.
+	//
 	// example:
 	//
 	// d-8o0hh35po15ejcdq2p
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The output data name.
+	//
 	// example:
 	//
 	// model
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output data URI.
+	//
 	// example:
 	//
 	// oss://test-bucket.oss-cn-hangzhou-internal.aliyuncs.com/path/to/output/channel/
 	OutputUri   *string `json:"OutputUri,omitempty" xml:"OutputUri,omitempty"`
+	RoleArn     *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -879,6 +1002,10 @@ func (s *ListTrainingJobsResponseBodyTrainingJobsOutputChannels) GetOutputUri() 
 	return s.OutputUri
 }
 
+func (s *ListTrainingJobsResponseBodyTrainingJobsOutputChannels) GetRoleArn() *string {
+	return s.RoleArn
+}
+
 func (s *ListTrainingJobsResponseBodyTrainingJobsOutputChannels) GetVersionName() *string {
 	return s.VersionName
 }
@@ -898,6 +1025,11 @@ func (s *ListTrainingJobsResponseBodyTrainingJobsOutputChannels) SetOutputUri(v 
 	return s
 }
 
+func (s *ListTrainingJobsResponseBodyTrainingJobsOutputChannels) SetRoleArn(v string) *ListTrainingJobsResponseBodyTrainingJobsOutputChannels {
+	s.RoleArn = &v
+	return s
+}
+
 func (s *ListTrainingJobsResponseBodyTrainingJobsOutputChannels) SetVersionName(v string) *ListTrainingJobsResponseBodyTrainingJobsOutputChannels {
 	s.VersionName = &v
 	return s
@@ -908,6 +1040,8 @@ func (s *ListTrainingJobsResponseBodyTrainingJobsOutputChannels) Validate() erro
 }
 
 type ListTrainingJobsResponseBodyTrainingJobsScheduler struct {
+	// The maximum training runtime in seconds. A value of 0 indicates no limit on the maximum runtime.
+	//
 	// example:
 	//
 	// 0
@@ -936,22 +1070,32 @@ func (s *ListTrainingJobsResponseBodyTrainingJobsScheduler) Validate() error {
 }
 
 type ListTrainingJobsResponseBodyTrainingJobsStatusTransitions struct {
+	// The end time of the status.
+	//
 	// example:
 	//
 	// 2024-07-10T11:49:47Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// TrainingJobSucceed
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// The status update message.
+	//
 	// example:
 	//
 	// KubeDL job runs successfully
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// The start time of the status.
+	//
 	// example:
 	//
 	// 2024-07-10T11:49:47Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the training job.
+	//
 	// example:
 	//
 	// Creating
@@ -1016,15 +1160,22 @@ func (s *ListTrainingJobsResponseBodyTrainingJobsStatusTransitions) Validate() e
 }
 
 type ListTrainingJobsResponseBodyTrainingJobsUserVpc struct {
+	// The default route.
+	//
 	// example:
 	//
 	// eth1
-	DefaultRoute  *string   `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	DefaultRoute *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	// The extended CIDR block configuration.
 	ExtendedCIDRs []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	// The security group ID.
+	//
 	// example:
 	//
 	// sg-abcdef****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vs-abcdef****

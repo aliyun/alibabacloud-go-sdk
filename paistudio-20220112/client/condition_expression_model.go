@@ -18,18 +18,24 @@ type iConditionExpression interface {
 }
 
 type ConditionExpression struct {
+	// The type of required resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// SupportedMachineTypes
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The criterion for evaluation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// in
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// List of resource values.
+	//
 	// This parameter is required.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }

@@ -16,10 +16,14 @@ type iGetTokenRequest interface {
 }
 
 type GetTokenRequest struct {
+	// Time-to-live (TTL) of the share link in seconds. Default is 604800. Minimum is 0.
+	//
 	// example:
 	//
 	// 60
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// ID of the training task.
+	//
 	// This parameter is required.
 	//
 	// example:

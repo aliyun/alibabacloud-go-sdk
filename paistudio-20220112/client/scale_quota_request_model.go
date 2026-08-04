@@ -16,8 +16,12 @@ type iScaleQuotaRequest interface {
 }
 
 type ScaleQuotaRequest struct {
-	Min              *ResourceSpec `json:"Min,omitempty" xml:"Min,omitempty"`
-	ResourceGroupIds []*string     `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
+	// Scaling Min Quota.
+	//
+	// 	Notice: NodeSpecs specifies the post-scaling specifications and quantity. If the Count in NodeSpecs is less than the current Quota\\"s Count, it indicates scale-in. Otherwise, it indicates scale-out.
+	Min *ResourceSpec `json:"Min,omitempty" xml:"Min,omitempty"`
+	// Resource group IDs.
+	ResourceGroupIds []*string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
 }
 
 func (s ScaleQuotaRequest) String() string {

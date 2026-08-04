@@ -16,10 +16,14 @@ type iQuotaIdName interface {
 }
 
 type QuotaIdName struct {
+	// Resource quota ID
+	//
 	// example:
 	//
 	// quota12345
 	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// Resource quota name
+	//
 	// example:
 	//
 	// dlc-quota

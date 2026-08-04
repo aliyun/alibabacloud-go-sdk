@@ -26,27 +26,40 @@ type iWorkspaceSpec interface {
 }
 
 type WorkspaceSpec struct {
+	// Invalidity reason code when using guaranteed resources is invalid
+	//
 	// example:
 	//
 	// ""
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Type of invalidity reason when using guaranteed resources is invalid
+	//
 	// example:
 	//
 	// ""
 	CodeType *string `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
+	// Indicates whether the use of guaranteed resources is valid.
+	//
 	// example:
 	//
 	// true
 	IsGuaranteedValid *bool `json:"IsGuaranteedValid,omitempty" xml:"IsGuaranteedValid,omitempty"`
+	// Indicates whether the use of oversold resources is valid.
+	//
 	// example:
 	//
 	// true
 	IsOverSoldValid *bool `json:"IsOverSoldValid,omitempty" xml:"IsOverSoldValid,omitempty"`
+	// Invalidity reason content when using guaranteed resources is invalid
+	//
 	// example:
 	//
 	// ""
-	Reason *string         `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Spec   *ResourceAmount `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// Specification resource information
+	Spec *ResourceAmount `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// Template Name
+	//
 	// example:
 	//
 	// spec_test

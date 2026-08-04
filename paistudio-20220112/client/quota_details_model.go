@@ -36,18 +36,28 @@ type iQuotaDetails interface {
 }
 
 type QuotaDetails struct {
-	ActualMinQuota            *ResourceAmount      `json:"ActualMinQuota,omitempty" xml:"ActualMinQuota,omitempty"`
-	AllocatableQuota          *ResourceAmount      `json:"AllocatableQuota,omitempty" xml:"AllocatableQuota,omitempty"`
-	AllocatedQuota            *ResourceAmount      `json:"AllocatedQuota,omitempty" xml:"AllocatedQuota,omitempty"`
-	AncestorsAllocatedQuota   *ResourceAmount      `json:"AncestorsAllocatedQuota,omitempty" xml:"AncestorsAllocatedQuota,omitempty"`
-	DescendantsAllocatedQuota *ResourceAmount      `json:"DescendantsAllocatedQuota,omitempty" xml:"DescendantsAllocatedQuota,omitempty"`
-	DesiredMinQuota           *ResourceAmount      `json:"DesiredMinQuota,omitempty" xml:"DesiredMinQuota,omitempty"`
-	NodeStatistics            *QuotaNodeStatistics `json:"NodeStatistics,omitempty" xml:"NodeStatistics,omitempty"`
-	RequestedQuota            *ResourceAmount      `json:"RequestedQuota,omitempty" xml:"RequestedQuota,omitempty"`
-	SelfAllocatedQuota        *ResourceAmount      `json:"SelfAllocatedQuota,omitempty" xml:"SelfAllocatedQuota,omitempty"`
-	SelfSubmittedQuota        *ResourceAmount      `json:"SelfSubmittedQuota,omitempty" xml:"SelfSubmittedQuota,omitempty"`
-	SystemReservedQuota       *ResourceAmount      `json:"SystemReservedQuota,omitempty" xml:"SystemReservedQuota,omitempty"`
-	UsedQuota                 *ResourceAmount      `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty"`
+	// Total MinQuota amount actually assigned
+	ActualMinQuota *ResourceAmount `json:"ActualMinQuota,omitempty" xml:"ActualMinQuota,omitempty"`
+	// Quota amount assignable by the User
+	AllocatableQuota *ResourceAmount `json:"AllocatableQuota,omitempty" xml:"AllocatableQuota,omitempty"`
+	// Total Quota usage information
+	AllocatedQuota *ResourceAmount `json:"AllocatedQuota,omitempty" xml:"AllocatedQuota,omitempty"`
+	// Quota usage information of ancestors
+	AncestorsAllocatedQuota *ResourceAmount `json:"AncestorsAllocatedQuota,omitempty" xml:"AncestorsAllocatedQuota,omitempty"`
+	// Quota usage information of descendants
+	DescendantsAllocatedQuota *ResourceAmount `json:"DescendantsAllocatedQuota,omitempty" xml:"DescendantsAllocatedQuota,omitempty"`
+	// Total MinQuota amount requested by the User
+	DesiredMinQuota *ResourceAmount      `json:"DesiredMinQuota,omitempty" xml:"DesiredMinQuota,omitempty"`
+	NodeStatistics  *QuotaNodeStatistics `json:"NodeStatistics,omitempty" xml:"NodeStatistics,omitempty"`
+	// Quota request amount
+	RequestedQuota *ResourceAmount `json:"RequestedQuota,omitempty" xml:"RequestedQuota,omitempty"`
+	// Quota usage information at the current level
+	SelfAllocatedQuota *ResourceAmount `json:"SelfAllocatedQuota,omitempty" xml:"SelfAllocatedQuota,omitempty"`
+	SelfSubmittedQuota *ResourceAmount `json:"SelfSubmittedQuota,omitempty" xml:"SelfSubmittedQuota,omitempty"`
+	// System-reserved Quota amount
+	SystemReservedQuota *ResourceAmount `json:"SystemReservedQuota,omitempty" xml:"SystemReservedQuota,omitempty"`
+	// Quota usage amount
+	UsedQuota *ResourceAmount `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty"`
 }
 
 func (s QuotaDetails) String() string {

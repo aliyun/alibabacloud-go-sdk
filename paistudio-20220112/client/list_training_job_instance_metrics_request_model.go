@@ -22,28 +22,54 @@ type iListTrainingJobInstanceMetricsRequest interface {
 }
 
 type ListTrainingJobInstanceMetricsRequest struct {
+	// End time in UTC, in ISO 8601 format. If empty, use the current time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 2020-11-08T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// trains930928remn-master-0
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Metric type:
+	//
+	// - GpuCoreUsage: POD GPU usage
+	//
+	// - GpuMemoryUsage: POD GPU memory usage
+	//
+	// - CpuCoreUsage: POD CPU usage
+	//
+	// - MemoryUsage: POD memory usage
+	//
+	// - NetworkInputRate: POD network input rate (TCP/IP) (MB/s)
+	//
+	// - NetworkOutputRate: POD network output rate (TCP/IP) (MB/s)
+	//
+	// - DiskReadRate: POD disk read rate (MB/s)
+	//
+	// - DiskWriteRate: POD disk write rate (MB/s)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// GpuCoreUsage
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// Start time in UTC, in ISO 8601 format. If empty, use the job start time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 2020-11-08T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Time interval. Valid values: 1h, 30m, 5m, 10s.
+	//
 	// example:
 	//
 	// 10s

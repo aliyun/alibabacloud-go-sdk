@@ -34,17 +34,28 @@ type iQueueMeta interface {
 }
 
 type QueueMeta struct {
-	GmtDequeuedTime         *string         `json:"GmtDequeuedTime,omitempty" xml:"GmtDequeuedTime,omitempty"`
-	GmtEnqueuedTime         *string         `json:"GmtEnqueuedTime,omitempty" xml:"GmtEnqueuedTime,omitempty"`
-	GmtPositionModifiedTime *string         `json:"GmtPositionModifiedTime,omitempty" xml:"GmtPositionModifiedTime,omitempty"`
-	Name                    *string         `json:"Name,omitempty" xml:"Name,omitempty"`
-	Position                *string         `json:"Position,omitempty" xml:"Position,omitempty"`
-	QueueStrategy           *string         `json:"QueueStrategy,omitempty" xml:"QueueStrategy,omitempty"`
-	QuotaId                 *string         `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	Resource                *ResourceAmount `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	ScheduledResource       *string         `json:"ScheduledResource,omitempty" xml:"ScheduledResource,omitempty"`
-	Status                  *string         `json:"Status,omitempty" xml:"Status,omitempty"`
-	UseOversoldResource     *bool           `json:"UseOversoldResource,omitempty" xml:"UseOversoldResource,omitempty"`
+	// The time the entry was removed from the queue.
+	GmtDequeuedTime *string `json:"GmtDequeuedTime,omitempty" xml:"GmtDequeuedTime,omitempty"`
+	// The time the entry was added to the queue.
+	GmtEnqueuedTime *string `json:"GmtEnqueuedTime,omitempty" xml:"GmtEnqueuedTime,omitempty"`
+	// The last time the position of the entry was modified.
+	GmtPositionModifiedTime *string `json:"GmtPositionModifiedTime,omitempty" xml:"GmtPositionModifiedTime,omitempty"`
+	// The name of the queue entry.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The position of the entry in the queue.
+	Position *string `json:"Position,omitempty" xml:"Position,omitempty"`
+	// The queuing strategy for the entry.
+	QueueStrategy *string `json:"QueueStrategy,omitempty" xml:"QueueStrategy,omitempty"`
+	// The ID of the associated quota.
+	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// The resources that the queue entry requires.
+	Resource *ResourceAmount `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The resources scheduled for the entry.
+	ScheduledResource *string `json:"ScheduledResource,omitempty" xml:"ScheduledResource,omitempty"`
+	// The current status of the entry.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the entry can use oversold resources.
+	UseOversoldResource *bool `json:"UseOversoldResource,omitempty" xml:"UseOversoldResource,omitempty"`
 }
 
 func (s QueueMeta) String() string {

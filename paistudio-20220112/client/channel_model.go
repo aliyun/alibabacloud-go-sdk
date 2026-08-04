@@ -22,21 +22,33 @@ type iChannel interface {
 }
 
 type Channel struct {
+	// Channel description.
+	//
+	// example:
+	//
+	// 模型输出。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Channel name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Model
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Storage configuration of the channel.
+	//
 	// example:
 	//
 	// {}
 	Properties map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	// Indicates whether the channel must be configured.
+	//
 	// example:
 	//
 	// true
-	Required              *bool     `json:"Required,omitempty" xml:"Required,omitempty"`
+	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
+	// List of storage classes supported by the channel.
 	SupportedChannelTypes []*string `json:"SupportedChannelTypes,omitempty" xml:"SupportedChannelTypes,omitempty" type:"Repeated"`
 }
 

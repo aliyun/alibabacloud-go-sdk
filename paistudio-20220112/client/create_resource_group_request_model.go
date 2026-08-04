@@ -26,24 +26,40 @@ type iCreateResourceGroupRequest interface {
 }
 
 type CreateResourceGroupRequest struct {
+	// Compute resource type for the resource group.
+	//
 	// example:
 	//
 	// Ecs
 	ComputingResourceProvider *string `json:"ComputingResourceProvider,omitempty" xml:"ComputingResourceProvider,omitempty"`
+	// Resource group description.
+	//
 	// example:
 	//
 	// test_api_report
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Resource group name.
+	//
 	// example:
 	//
 	// testResourceGroup
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Resource type. Valid values:
+	//
+	// - Ecs: general computing resources
+	//
+	// - Lingjun: Lingjun resources
+	//
 	// example:
 	//
 	// Ecs
-	ResourceType *string                          `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*CreateResourceGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	UserVpc      *UserVpc                         `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// List of tags to add. Maximum 20 items.
+	Tag []*CreateResourceGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// VPC connectivity information for the resource group.
+	UserVpc *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
+	// Resource group version. This parameter takes effect only when the resource type is ECS.
+	//
 	// example:
 	//
 	// 1.0
@@ -140,10 +156,14 @@ func (s *CreateResourceGroupRequest) Validate() error {
 }
 
 type CreateResourceGroupRequestTag struct {
+	// The tag key of the instance. N ranges from 1 to 20.
+	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Tag value for the resource group. N ranges from 1 to 20.
+	//
 	// example:
 	//
 	// TestValue

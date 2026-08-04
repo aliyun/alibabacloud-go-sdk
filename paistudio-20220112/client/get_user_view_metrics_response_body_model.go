@@ -20,15 +20,21 @@ type iGetUserViewMetricsResponseBody interface {
 }
 
 type GetUserViewMetricsResponseBody struct {
+	// 资源组ID
+	//
 	// example:
 	//
 	// rgf0zhfqn1d4ity2
-	ResourceGroupId *string         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Summary         *UserViewMetric `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// 用户监控数据。
+	Summary *UserViewMetric `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// 总条数
+	//
 	// example:
 	//
 	// 2
-	Total       *int32            `json:"Total,omitempty" xml:"Total,omitempty"`
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// 按照用户维度统计的指标
 	UserMetrics []*UserViewMetric `json:"UserMetrics,omitempty" xml:"UserMetrics,omitempty" type:"Repeated"`
 }
 

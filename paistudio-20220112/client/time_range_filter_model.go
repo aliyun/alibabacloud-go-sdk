@@ -16,10 +16,14 @@ type iTimeRangeFilter interface {
 }
 
 type TimeRangeFilter struct {
+	// The end time.
+	//
 	// example:
 	//
 	// 2023-06-22T00:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 2023-06-22T00:00:00Z

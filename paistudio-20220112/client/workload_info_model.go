@@ -38,19 +38,32 @@ type iWorkloadInfo interface {
 }
 
 type WorkloadInfo struct {
-	IsScheduled         *string      `json:"IsScheduled,omitempty" xml:"IsScheduled,omitempty"`
-	Priority            *int32       `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	QueueMetas          []*QueueMeta `json:"QueueMetas,omitempty" xml:"QueueMetas,omitempty" type:"Repeated"`
-	TenantId            *string      `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	UserId              *string      `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName            *string      `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	WorkloadCreatedTime *string      `json:"WorkloadCreatedTime,omitempty" xml:"WorkloadCreatedTime,omitempty"`
-	WorkloadId          *string      `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
-	WorkloadName        *string      `json:"WorkloadName,omitempty" xml:"WorkloadName,omitempty"`
-	WorkloadStatus      *string      `json:"WorkloadStatus,omitempty" xml:"WorkloadStatus,omitempty"`
-	WorkloadType        *string      `json:"WorkloadType,omitempty" xml:"WorkloadType,omitempty"`
-	WorkspaceId         *string      `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName       *string      `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// Specifies whether the workload is scheduled. Valid values are `true` and `false`.
+	IsScheduled *string `json:"IsScheduled,omitempty" xml:"IsScheduled,omitempty"`
+	// The scheduling priority of the workload. A higher value indicates a higher priority.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// A list of metadata for the queues associated with the workload.
+	QueueMetas []*QueueMeta `json:"QueueMetas,omitempty" xml:"QueueMetas,omitempty" type:"Repeated"`
+	// The ID of the tenant that contains the workload.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the user who created the workload.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The name of the user who created the workload.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The creation time of the workload, in UTC format.
+	WorkloadCreatedTime *string `json:"WorkloadCreatedTime,omitempty" xml:"WorkloadCreatedTime,omitempty"`
+	// The unique, system-generated ID for the workload.
+	WorkloadId *string `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+	// The user-defined name of the workload.
+	WorkloadName *string `json:"WorkloadName,omitempty" xml:"WorkloadName,omitempty"`
+	// The current status of the workload. Possible values include `Pending`, `Running`, `Succeeded`, and `Failed`.
+	WorkloadStatus *string `json:"WorkloadStatus,omitempty" xml:"WorkloadStatus,omitempty"`
+	// The type of the workload.
+	WorkloadType *string `json:"WorkloadType,omitempty" xml:"WorkloadType,omitempty"`
+	// The ID of the workspace that contains the workload.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The name of the workspace that contains the workload.
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s WorkloadInfo) String() string {

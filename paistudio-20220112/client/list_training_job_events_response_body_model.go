@@ -18,11 +18,16 @@ type iListTrainingJobEventsResponseBody interface {
 }
 
 type ListTrainingJobEventsResponseBody struct {
+	// List of events.
 	Events []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of events.
+	//
 	// example:
 	//
 	// 23

@@ -14,6 +14,8 @@ type iGetResourceGroupTotalRequest interface {
 }
 
 type GetResourceGroupTotalRequest struct {
+	// The ID of the Resource Group.
+	//
 	// example:
 	//
 	// rgf0zhfqn1d4ity2

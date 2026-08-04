@@ -14,6 +14,7 @@ type iListTrainingJobOutputModelsResponseBody interface {
 }
 
 type ListTrainingJobOutputModelsResponseBody struct {
+	// List of models produced by training.
 	OutputModels []*ListTrainingJobOutputModelsResponseBodyOutputModels `json:"OutputModels,omitempty" xml:"OutputModels,omitempty" type:"Repeated"`
 }
 
@@ -48,42 +49,86 @@ func (s *ListTrainingJobOutputModelsResponseBody) Validate() error {
 }
 
 type ListTrainingJobOutputModelsResponseBodyOutputModels struct {
+	// Model compression configuration.
+	//
+	// example:
+	//
+	// {}
 	CompressionSpec map[string]interface{} `json:"CompressionSpec,omitempty" xml:"CompressionSpec,omitempty"`
+	// Model evaluation configuration.
+	//
 	// example:
 	//
 	// {}
 	EvaluationSpec map[string]interface{} `json:"EvaluationSpec,omitempty" xml:"EvaluationSpec,omitempty"`
+	// Model inference configuration.
+	//
 	// example:
 	//
 	// {}
-	InferenceSpec map[string]interface{}                                       `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
-	Labels        []*ListTrainingJobOutputModelsResponseBodyOutputModelsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	InferenceSpec map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
+	// List of tags.
+	Labels []*ListTrainingJobOutputModelsResponseBodyOutputModelsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// Training job metrics.
+	//
 	// example:
 	//
 	// {
 	//
-	//       "lr": 0.000001,
+	//         "Results": [
 	//
-	//       "train_loss": 2.6345
+	//           {
+	//
+	//             "Dataset": {
+	//
+	//               "Train": "oss://somebucket.oss-cn-hangzhou.aliyuncs.com/datasets/Chinese-medical-dialogue-data/chinese_medical_train_sampled.json"
+	//
+	//             },
+	//
+	//             "Metrics": {
+	//
+	//               "loss": 2.1276
+	//
+	//             }
+	//
+	//           }
+	//
+	//         ]
 	//
 	// }
 	Metrics map[string]interface{} `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	// Name of the training output data.
+	//
 	// example:
 	//
 	// model
 	OutputChannelName *string `json:"OutputChannelName,omitempty" xml:"OutputChannelName,omitempty"`
+	// Source ID (optional):
+	//
+	// - If the source is Custom, there are no format requirements.
+	//
+	// - If the source is PAIFlow, use the format: region=cn-shanghai,workspaceId=1345,kind=PipelineRun,id=run-sakdbaskjdf.
+	//
+	// - If the source is TrainingService, use the format: region=cn-shanghai,workspaceId=1345,kind=TrainingJob,id=job-sakdbaskjdf.
+	//
 	// example:
 	//
 	// region=cn-shanghai,workspaceId=1345,kind=PipelineRun,id=run-sakdbaskjdf
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// Source (the type of job that produced the model). Default: Custom.
+	//
 	// example:
 	//
 	// PAIFlow
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// Model training configuration.
+	//
 	// example:
 	//
 	// {}
 	TrainingSpec map[string]interface{} `json:"TrainingSpec,omitempty" xml:"TrainingSpec,omitempty"`
+	// Link to the training output data.
+	//
 	// example:
 	//
 	// oss://test-bucket.oss-cn-hangzhou.aliyuncs.com/path/to/output/channel/
@@ -202,10 +247,17 @@ func (s *ListTrainingJobOutputModelsResponseBodyOutputModels) Validate() error {
 }
 
 type ListTrainingJobOutputModelsResponseBodyOutputModelsLabels struct {
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Tag name.
+	//
 	// example:
 	//
-	// StableDiffusion
+	// RootModelName
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Tag value.
+	//
+	// example:
+	//
+	// qwen2-0.5
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

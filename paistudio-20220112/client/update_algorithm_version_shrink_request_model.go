@@ -14,6 +14,7 @@ type iUpdateAlgorithmVersionShrinkRequest interface {
 }
 
 type UpdateAlgorithmVersionShrinkRequest struct {
+	// The details of the algorithm.
 	AlgorithmSpecShrink *string `json:"AlgorithmSpec,omitempty" xml:"AlgorithmSpec,omitempty"`
 }
 

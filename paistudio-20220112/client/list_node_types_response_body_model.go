@@ -18,11 +18,15 @@ type iListNodeTypesResponseBody interface {
 }
 
 type ListNodeTypesResponseBody struct {
+	// A collection of node types.
 	NodeTypes []*NodeType `json:"NodeTypes,omitempty" xml:"NodeTypes,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
-	RequestId  *string              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Statistics for the node types that match the filter criteria.
 	Statistics []*NodeTypeStatistic `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Repeated"`
 }
 

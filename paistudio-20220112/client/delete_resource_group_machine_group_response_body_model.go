@@ -16,8 +16,10 @@ type iDeleteResourceGroupMachineGroupResponseBody interface {
 }
 
 type DeleteResourceGroupMachineGroupResponseBody struct {
+	// The ID of the deleted machine group.
 	MachineGroupID *string `json:"MachineGroupID,omitempty" xml:"MachineGroupID,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID. Provide this ID to our technical support for troubleshooting.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteResourceGroupMachineGroupResponseBody) String() string {

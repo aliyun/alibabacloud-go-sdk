@@ -20,20 +20,28 @@ type iListTrainingJobEventsRequest interface {
 }
 
 type ListTrainingJobEventsRequest struct {
+	// End UTC time (ISO8601 format). If empty, it is the current time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 2020-11-08T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Page number (default is 1).
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size (default is 100).
+	//
 	// example:
 	//
 	// 100
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Start UTC time (ISO8601 format). If empty, it is the task start time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:

@@ -27,6 +27,8 @@ type iQuotaConfig interface {
 	GetEnableSubQuotaPreemption() *bool
 	SetEniCacheConfig(v *EniCacheConfig) *QuotaConfig
 	GetEniCacheConfig() *EniCacheConfig
+	SetIsEncryptedResource(v bool) *QuotaConfig
+	GetIsEncryptedResource() *bool
 	SetOversoldUsageConfig(v *OversoldUsageConfig) *QuotaConfig
 	GetOversoldUsageConfig() *OversoldUsageConfig
 	SetResourceSpecs(v []*WorkspaceSpecs) *QuotaConfig
@@ -45,36 +47,58 @@ type iQuotaConfig interface {
 	GetUseCase() *string
 	SetUserVpc(v *UserVpc) *QuotaConfig
 	GetUserVpc() *UserVpc
+	SetWorkloadTypes(v []*string) *QuotaConfig
+	GetWorkloadTypes() []*string
 }
 
 type QuotaConfig struct {
+	// The ACS-related configurations.
 	ACS *ACS `json:"ACS,omitempty" xml:"ACS,omitempty"`
+	// The ID of the cluster where the quota resides.
+	//
 	// example:
 	//
-	// ceeb3724255364664
+	// ceeb3724255364***
 	ClusterId             *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ControlPlaneClusterId *string `json:"ControlPlaneClusterId,omitempty" xml:"ControlPlaneClusterId,omitempty"`
+	// The default GPU driver version for the resource quota.
+	//
 	// example:
 	//
 	// 470.199.02
-	DefaultGPUDriver               *string                    `json:"DefaultGPUDriver,omitempty" xml:"DefaultGPUDriver,omitempty"`
-	EnableGPUShare                 *bool                      `json:"EnableGPUShare,omitempty" xml:"EnableGPUShare,omitempty"`
-	EnablePreemptSubquotaWorkloads *bool                      `json:"EnablePreemptSubquotaWorkloads,omitempty" xml:"EnablePreemptSubquotaWorkloads,omitempty"`
-	EnableSelfQuotaPreemption      *bool                      `json:"EnableSelfQuotaPreemption,omitempty" xml:"EnableSelfQuotaPreemption,omitempty"`
-	EnableSubQuotaPreemption       *bool                      `json:"EnableSubQuotaPreemption,omitempty" xml:"EnableSubQuotaPreemption,omitempty"`
-	EniCacheConfig                 *EniCacheConfig            `json:"EniCacheConfig,omitempty" xml:"EniCacheConfig,omitempty"`
-	OversoldUsageConfig            *OversoldUsageConfig       `json:"OversoldUsageConfig,omitempty" xml:"OversoldUsageConfig,omitempty"`
-	ResourceSpecs                  []*WorkspaceSpecs          `json:"ResourceSpecs,omitempty" xml:"ResourceSpecs,omitempty" type:"Repeated"`
-	SandboxCacheConfig             *SandboxCacheConfig        `json:"SandboxCacheConfig,omitempty" xml:"SandboxCacheConfig,omitempty"`
-	SelfQuotaPreemptionConfig      *SelfQuotaPreemptionConfig `json:"SelfQuotaPreemptionConfig,omitempty" xml:"SelfQuotaPreemptionConfig,omitempty"`
-	SubQuotaPreemptionConfig       *SubQuotaPreemptionConfig  `json:"SubQuotaPreemptionConfig,omitempty" xml:"SubQuotaPreemptionConfig,omitempty"`
-	SupportGPUDrivers              []*string                  `json:"SupportGPUDrivers,omitempty" xml:"SupportGPUDrivers,omitempty" type:"Repeated"`
+	DefaultGPUDriver *string `json:"DefaultGPUDriver,omitempty" xml:"DefaultGPUDriver,omitempty"`
+	EnableGPUShare   *bool   `json:"EnableGPUShare,omitempty" xml:"EnableGPUShare,omitempty"`
+	// Specifies whether workloads in sub-quotas can be preempted.
+	//
 	// example:
 	//
 	// false
-	SupportRDMA *bool    `json:"SupportRDMA,omitempty" xml:"SupportRDMA,omitempty"`
-	UseCase     *string  `json:"UseCase,omitempty" xml:"UseCase,omitempty"`
-	UserVpc     *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
+	EnablePreemptSubquotaWorkloads *bool `json:"EnablePreemptSubquotaWorkloads,omitempty" xml:"EnablePreemptSubquotaWorkloads,omitempty"`
+	// Specifies whether guaranteed resources within this quota can be preempted.
+	EnableSelfQuotaPreemption *bool `json:"EnableSelfQuotaPreemption,omitempty" xml:"EnableSelfQuotaPreemption,omitempty"`
+	// Specifies whether resources in sub-quotas can be preempted.
+	EnableSubQuotaPreemption *bool                `json:"EnableSubQuotaPreemption,omitempty" xml:"EnableSubQuotaPreemption,omitempty"`
+	EniCacheConfig           *EniCacheConfig      `json:"EniCacheConfig,omitempty" xml:"EniCacheConfig,omitempty"`
+	IsEncryptedResource      *bool                `json:"IsEncryptedResource,omitempty" xml:"IsEncryptedResource,omitempty"`
+	OversoldUsageConfig      *OversoldUsageConfig `json:"OversoldUsageConfig,omitempty" xml:"OversoldUsageConfig,omitempty"`
+	// The resource specification templates.
+	ResourceSpecs             []*WorkspaceSpecs          `json:"ResourceSpecs,omitempty" xml:"ResourceSpecs,omitempty" type:"Repeated"`
+	SandboxCacheConfig        *SandboxCacheConfig        `json:"SandboxCacheConfig,omitempty" xml:"SandboxCacheConfig,omitempty"`
+	SelfQuotaPreemptionConfig *SelfQuotaPreemptionConfig `json:"SelfQuotaPreemptionConfig,omitempty" xml:"SelfQuotaPreemptionConfig,omitempty"`
+	// The configuration for the sub-quota preemption task.
+	SubQuotaPreemptionConfig *SubQuotaPreemptionConfig `json:"SubQuotaPreemptionConfig,omitempty" xml:"SubQuotaPreemptionConfig,omitempty"`
+	// The GPU driver versions supported by the resource quota.
+	SupportGPUDrivers []*string `json:"SupportGPUDrivers,omitempty" xml:"SupportGPUDrivers,omitempty" type:"Repeated"`
+	// Specifies whether RDMA is supported.
+	//
+	// example:
+	//
+	// false
+	SupportRDMA *bool   `json:"SupportRDMA,omitempty" xml:"SupportRDMA,omitempty"`
+	UseCase     *string `json:"UseCase,omitempty" xml:"UseCase,omitempty"`
+	// The user VPC information.
+	UserVpc       *UserVpc  `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
+	WorkloadTypes []*string `json:"WorkloadTypes,omitempty" xml:"WorkloadTypes,omitempty" type:"Repeated"`
 }
 
 func (s QuotaConfig) String() string {
@@ -121,6 +145,10 @@ func (s *QuotaConfig) GetEniCacheConfig() *EniCacheConfig {
 	return s.EniCacheConfig
 }
 
+func (s *QuotaConfig) GetIsEncryptedResource() *bool {
+	return s.IsEncryptedResource
+}
+
 func (s *QuotaConfig) GetOversoldUsageConfig() *OversoldUsageConfig {
 	return s.OversoldUsageConfig
 }
@@ -155,6 +183,10 @@ func (s *QuotaConfig) GetUseCase() *string {
 
 func (s *QuotaConfig) GetUserVpc() *UserVpc {
 	return s.UserVpc
+}
+
+func (s *QuotaConfig) GetWorkloadTypes() []*string {
+	return s.WorkloadTypes
 }
 
 func (s *QuotaConfig) SetACS(v *ACS) *QuotaConfig {
@@ -202,6 +234,11 @@ func (s *QuotaConfig) SetEniCacheConfig(v *EniCacheConfig) *QuotaConfig {
 	return s
 }
 
+func (s *QuotaConfig) SetIsEncryptedResource(v bool) *QuotaConfig {
+	s.IsEncryptedResource = &v
+	return s
+}
+
 func (s *QuotaConfig) SetOversoldUsageConfig(v *OversoldUsageConfig) *QuotaConfig {
 	s.OversoldUsageConfig = v
 	return s
@@ -244,6 +281,11 @@ func (s *QuotaConfig) SetUseCase(v string) *QuotaConfig {
 
 func (s *QuotaConfig) SetUserVpc(v *UserVpc) *QuotaConfig {
 	s.UserVpc = v
+	return s
+}
+
+func (s *QuotaConfig) SetWorkloadTypes(v []*string) *QuotaConfig {
+	s.WorkloadTypes = v
 	return s
 }
 

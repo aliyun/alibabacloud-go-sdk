@@ -26,26 +26,42 @@ type iHyperParameterDefinition interface {
 }
 
 type HyperParameterDefinition struct {
+	// The default value of the hyperparameter.
+	//
 	// example:
 	//
 	// 0
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the hyperparameter.
+	//
+	// example:
+	//
+	// 参数定义了训练的batch_size。
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the parameter.
+	//
 	// example:
 	//
 	// Batch Size
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The name of the parameter.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// batch_size
-	Name  *string              `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value range of the parameter.
 	Range *HyperParameterRange `json:"Range,omitempty" xml:"Range,omitempty"`
+	// Specifies whether the parameter is required.
+	//
 	// example:
 	//
 	// true
 	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
+	// The type of the hyperparameter.
+	//
 	// This parameter is required.
 	//
 	// example:

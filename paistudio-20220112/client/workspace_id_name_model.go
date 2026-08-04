@@ -16,10 +16,13 @@ type iWorkspaceIdName interface {
 }
 
 type WorkspaceIdName struct {
+	// The workspace ID.
+	//
 	// example:
 	//
-	// ws123456
-	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// ws123***
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The workspace name.
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 

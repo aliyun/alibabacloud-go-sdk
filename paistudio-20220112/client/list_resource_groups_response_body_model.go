@@ -18,14 +18,20 @@ type iListResourceGroupsResponseBody interface {
 }
 
 type ListResourceGroupsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 9CFA2665-1FFE-5929-8468-C14C25890486
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of resource groups.
+	//
 	// example:
 	//
 	// RG1
 	ResourceGroups []*ResourceGroup `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty" type:"Repeated"`
+	// The total number of matching resource groups.
+	//
 	// This parameter is required.
 	//
 	// example:

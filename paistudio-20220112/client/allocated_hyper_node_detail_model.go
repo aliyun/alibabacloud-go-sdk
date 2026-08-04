@@ -20,10 +20,14 @@ type iAllocatedHyperNodeDetail interface {
 }
 
 type AllocatedHyperNodeDetail struct {
-	AllocatedNodeNum *int64  `json:"AllocatedNodeNum,omitempty" xml:"AllocatedNodeNum,omitempty"`
-	EmptyNodeNum     *int64  `json:"EmptyNodeNum,omitempty" xml:"EmptyNodeNum,omitempty"`
-	HyperNodeName    *string `json:"HyperNodeName,omitempty" xml:"HyperNodeName,omitempty"`
-	TotalNodeNum     *int64  `json:"TotalNodeNum,omitempty" xml:"TotalNodeNum,omitempty"`
+	// The number of allocated nodes in the hyper node.
+	AllocatedNodeNum *int64 `json:"AllocatedNodeNum,omitempty" xml:"AllocatedNodeNum,omitempty"`
+	// The number of idle nodes in the hyper node.
+	EmptyNodeNum *int64 `json:"EmptyNodeNum,omitempty" xml:"EmptyNodeNum,omitempty"`
+	// The name of the hyper node.
+	HyperNodeName *string `json:"HyperNodeName,omitempty" xml:"HyperNodeName,omitempty"`
+	// The total number of nodes in the hyper node.
+	TotalNodeNum *int64 `json:"TotalNodeNum,omitempty" xml:"TotalNodeNum,omitempty"`
 }
 
 func (s AllocatedHyperNodeDetail) String() string {

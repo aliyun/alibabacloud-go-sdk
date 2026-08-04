@@ -18,11 +18,16 @@ type iGetSpotPriceHistoryResponseBody interface {
 }
 
 type GetSpotPriceHistoryResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 8BDA4440-DD3C-5F4B-BBDD-94A9CE1E75C7
-	RequestId        *string          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of historical spot instance price details
 	SpotPriceHistory []*SpotPriceItem `json:"SpotPriceHistory,omitempty" xml:"SpotPriceHistory,omitempty" type:"Repeated"`
+	// The total number of historical spot instance prices
+	//
 	// example:
 	//
 	// 194

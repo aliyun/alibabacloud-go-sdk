@@ -30,35 +30,71 @@ type iListQuotaActiveUserUsagesRequest interface {
 }
 
 type ListQuotaActiveUserUsagesRequest struct {
+	// The sort order. Valid values:
+	//
+	// - `desc`: descending order.
+	//
+	// - `asc`: ascending order.
+	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 999
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// If true, retrieves resource usage from the current quota only.
+	//
 	// example:
 	//
 	// false
 	SelfOnly *bool `json:"SelfOnly,omitempty" xml:"SelfOnly,omitempty"`
+	// The field to sort the results by. Valid values:
+	//
+	// - QuotaId
+	//
+	// - SubmittedCPU
+	//
+	// - SubmittedMemory
+	//
+	// - SubmittedGPU
+	//
+	// - UsedCPU
+	//
+	// - UsedMemory
+	//
+	// - UsedGPU
+	//
+	// - WorkloadCount
+	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// Filters the results by user ID.
+	//
 	// example:
 	//
 	// 200xxxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Filters the results by username.
+	//
 	// example:
 	//
 	// test
 	Username      *string `json:"Username,omitempty" xml:"Username,omitempty"`
 	WorkloadCount *int32  `json:"WorkloadCount,omitempty" xml:"WorkloadCount,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 12345

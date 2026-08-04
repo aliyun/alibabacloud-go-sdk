@@ -14,6 +14,8 @@ type iDeleteTrainingJobResponseBody interface {
 }
 
 type DeleteTrainingJobResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 4cc83062-9bcb-4ab3-979e-2e571a35834f

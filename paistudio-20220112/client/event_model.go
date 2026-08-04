@@ -34,16 +34,71 @@ type iEvent interface {
 }
 
 type Event struct {
+  // The event content.
+  // 
+  // example:
+  // 
+  // {}
   Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+  // The event ID.
+  // 
+  // example:
+  // 
+  // eventxxx
   EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+  // The event type.
+  // 
+  // example:
+  // 
+  // CreateQuota
   EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+  // The reserved field.
+  // 
+  // example:
+  // 
+  // Empty
   Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
+  // Indicates whether the content is truncated.
+  // 
+  // example:
+  // 
+  // false
   IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+  // Object ID
+  // 
+  // example:
+  // 
+  // quotaxxx
   ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+  // The object type.
+  // 
+  // example:
+  // 
+  // Quota
   ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+  // The Alibaba Cloud account.
+  // 
+  // example:
+  // 
+  // 1234
   TriggerTenantId *string `json:"TriggerTenantId,omitempty" xml:"TriggerTenantId,omitempty"`
+  // The trigger time.
+  // 
+  // example:
+  // 
+  // 2026-01-01T00:00:00Z
   TriggerTime *string `json:"TriggerTime,omitempty" xml:"TriggerTime,omitempty"`
+  // The RAM user.
+  // 
+  // example:
+  // 
+  // 1234567
   TriggerUserId *string `json:"TriggerUserId,omitempty" xml:"TriggerUserId,omitempty"`
+  // The trigger source.
+  // 
+  // example:
+  // 
+  // System
   TriggeredBy *string `json:"TriggeredBy,omitempty" xml:"TriggeredBy,omitempty"`
 }
 

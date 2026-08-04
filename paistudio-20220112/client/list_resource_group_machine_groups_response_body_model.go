@@ -18,11 +18,16 @@ type iListResourceGroupMachineGroupsResponseBody interface {
 }
 
 type ListResourceGroupMachineGroupsResponseBody struct {
+	// A list of machine groups.
 	MachineGroups []*MachineGroup `json:"MachineGroups,omitempty" xml:"MachineGroups,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E7C42CC7-2E85-508A-84F4-923B605FD10F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of machine groups.
+	//
 	// example:
 	//
 	// 4

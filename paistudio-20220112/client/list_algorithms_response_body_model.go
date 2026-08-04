@@ -18,11 +18,16 @@ type iListAlgorithmsResponseBody interface {
 }
 
 type ListAlgorithmsResponseBody struct {
+	// Algorithm list.
 	Algorithms []*ListAlgorithmsResponseBodyAlgorithms `json:"Algorithms,omitempty" xml:"Algorithms,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total algorithms.
+	//
 	// example:
 	//
 	// 4
@@ -78,35 +83,56 @@ func (s *ListAlgorithmsResponseBody) Validate() error {
 }
 
 type ListAlgorithmsResponseBodyAlgorithms struct {
+	// Algorithm description.
+	//
+	// example:
+	//
+	// Large language model training.
 	AlgorithmDescription *string `json:"AlgorithmDescription,omitempty" xml:"AlgorithmDescription,omitempty"`
+	// Algorithm ID.
+	//
 	// example:
 	//
 	// algo-sidjc8134hv
 	AlgorithmId *string `json:"AlgorithmId,omitempty" xml:"AlgorithmId,omitempty"`
+	// Algorithm name.
+	//
 	// example:
 	//
 	// llm_train
 	AlgorithmName *string `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
+	// Algorithm provider.
+	//
 	// example:
 	//
 	// pai
 	AlgorithmProvider *string `json:"AlgorithmProvider,omitempty" xml:"AlgorithmProvider,omitempty"`
+	// Algorithm display name.
+	//
 	// example:
 	//
 	// LLM Train
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Algorithm creation time.
+	//
 	// example:
 	//
 	// 2023-07-21T03:35:24Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// Algorithm update time.
+	//
 	// example:
 	//
 	// 2023-07-25T02:15:40Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// Algorithm owner ID.
+	//
 	// example:
 	//
 	// 123456789
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Workspace ID.
+	//
 	// example:
 	//
 	// 12345

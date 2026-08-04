@@ -18,7 +18,10 @@ type iListTrainingJobMetricsResponseBody interface {
 }
 
 type ListTrainingJobMetricsResponseBody struct {
+	// The list of metrics.
 	Metrics []*ListTrainingJobMetricsResponseBodyMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
@@ -75,16 +78,22 @@ func (s *ListTrainingJobMetricsResponseBody) Validate() error {
 }
 
 type ListTrainingJobMetricsResponseBodyMetrics struct {
+	// The name of the metric.
+	//
 	// example:
 	//
 	// accuracy
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The timestamp when the metric was collected.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 2022-04-18T22:20:55Z
 	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The value of the metric.
+	//
 	// example:
 	//
 	// 0.97

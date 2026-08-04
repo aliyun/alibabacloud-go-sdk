@@ -14,6 +14,8 @@ type iDeleteTrainingJobLabelsRequest interface {
 }
 
 type DeleteTrainingJobLabelsRequest struct {
+	// The keys of the labels.
+	//
 	// This parameter is required.
 	//
 	// example:

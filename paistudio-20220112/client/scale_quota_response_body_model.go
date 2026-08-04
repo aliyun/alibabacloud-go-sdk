@@ -16,12 +16,14 @@ type iScaleQuotaResponseBody interface {
 }
 
 type ScaleQuotaResponseBody struct {
-	// Quota Id
+	// Quota ID.
 	//
 	// example:
 	//
 	// quotamtl37ge7gkvdz
 	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// F2D0392B-D749-5C48-A98A-3FAE5C9444A6

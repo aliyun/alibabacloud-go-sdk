@@ -18,8 +18,12 @@ type iBindingPolicy interface {
 }
 
 type BindingPolicy struct {
+	// A list of node IDs to exclude from scheduling.
 	ExcludeNodes []*string `json:"ExcludeNodes,omitempty" xml:"ExcludeNodes,omitempty" type:"Repeated"`
+	// A list of node IDs to include in the scheduling.
 	IncludeNodes []*string `json:"IncludeNodes,omitempty" xml:"IncludeNodes,omitempty" type:"Repeated"`
+	// The number of nodes to be selected by the scheduler.
+	//
 	// example:
 	//
 	// 5

@@ -74,6 +74,14 @@ type iListNodesRequest interface {
 }
 
 type ListNodesRequest struct {
+	// The accelerator type. Valid values:
+	//
+	// - CPU
+	//
+	// - GPU
+	//
+	// If omitted, this operation returns nodes of all accelerator types.
+	//
 	// example:
 	//
 	// CPU
@@ -81,14 +89,20 @@ type ListNodesRequest struct {
 	AvailabilityZone *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
 	CliqueID         *string `json:"CliqueID,omitempty" xml:"CliqueID,omitempty"`
 	DiskPL           *string `json:"DiskPL,omitempty" xml:"DiskPL,omitempty"`
+	// When used with `ResourceGroupIds`, this parameter further filters the results to include only nodes from the specified resource quota.
+	//
 	// example:
 	//
 	// quotamtl37ge7gkvdz
 	FilterByQuotaId *string `json:"FilterByQuotaId,omitempty" xml:"FilterByQuotaId,omitempty"`
+	// When used with `QuotaId`, this parameter further filters the results to include only nodes from the specified resource groups.
+	//
 	// example:
 	//
 	// rg69rj0leslwdnbe
 	FilterByResourceGroupIds *string `json:"FilterByResourceGroupIds,omitempty" xml:"FilterByResourceGroupIds,omitempty"`
+	// The GPU type. Fuzzy matching is supported.
+	//
 	// example:
 	//
 	// T4
@@ -99,54 +113,90 @@ type ListNodesRequest struct {
 	HyperZone       *string                      `json:"HyperZone,omitempty" xml:"HyperZone,omitempty"`
 	LayoutMode      *string                      `json:"LayoutMode,omitempty" xml:"LayoutMode,omitempty"`
 	MachineGroupIds *string                      `json:"MachineGroupIds,omitempty" xml:"MachineGroupIds,omitempty"`
+	// A comma-separated list of node names. Only nodes with names that match this list are returned.
+	//
 	// example:
 	//
 	// lingjxxxx
 	NodeNames *string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty"`
+	// A comma-separated list of node statuses. If this parameter is omitted, this operation returns nodes of all statuses.
+	//
 	// example:
 	//
 	// Ready
 	NodeStatuses *string `json:"NodeStatuses,omitempty" xml:"NodeStatuses,omitempty"`
+	// A comma-separated list of node specifications. If this parameter is omitted, this operation returns nodes of all specifications.
+	//
 	// example:
 	//
 	// ecs.c6.xlarge
 	NodeTypes *string `json:"NodeTypes,omitempty" xml:"NodeTypes,omitempty"`
+	// The sort order. Valid values:
+	//
+	// - `desc`: Descending
+	//
+	// - `asc`: Ascending
+	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// A comma-separated list of order IDs.
+	//
 	// example:
 	//
 	// 260590501560397
 	OrderInstanceIds *string `json:"OrderInstanceIds,omitempty" xml:"OrderInstanceIds,omitempty"`
+	// A comma-separated list of order statuses.
+	//
 	// example:
 	//
 	// Ready
 	OrderStatuses *string `json:"OrderStatuses,omitempty" xml:"OrderStatuses,omitempty"`
+	// The page number. The first page is 1.
+	//
 	// example:
 	//
 	// 2
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
 	PodNum      *int32  `json:"PodNum,omitempty" xml:"PodNum,omitempty"`
+	// The ID of the resource quota that contains the nodes.
+	//
 	// example:
 	//
 	// quotamtl37ge7gkvdz
 	QuotaId     *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
 	ReasonCodes *string `json:"ReasonCodes,omitempty" xml:"ReasonCodes,omitempty"`
+	// A comma-separated list of resource group IDs. You must specify either this parameter or `QuotaId`.
+	//
+	// Constraints:
+	//
+	// 1. The user ID of the request must match the user ID associated with the specified resource groups.
+	//
+	// 2. All specified resource groups must be of the same type.
+	//
+	// 3. All specified resource groups must be in the same VPC.
+	//
 	// example:
 	//
 	// rg69rj0leslwdnbe
 	ResourceGroupIds  *string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty"`
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	// The field by which to sort the results.
+	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// Specifies whether to return resource usage information. This parameter applies only when `QuotaId` is specified.
+	//
 	// example:
 	//
 	// false

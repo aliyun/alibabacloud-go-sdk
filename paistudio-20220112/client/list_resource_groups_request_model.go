@@ -36,44 +36,72 @@ type iListResourceGroupsRequest interface {
 }
 
 type ListResourceGroupsRequest struct {
+	// The provider of the compute resources.
+	//
 	// example:
 	//
 	// Ecs
 	ComputingResourceProvider *string `json:"ComputingResourceProvider,omitempty" xml:"ComputingResourceProvider,omitempty"`
 	HasResource               *bool   `json:"HasResource,omitempty" xml:"HasResource,omitempty"`
+	// The name of the resource group.
+	//
 	// example:
 	//
 	// rgf0zhfqn1d4ity2
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The sort order. Valid values:
+	//
+	// - `desc`: descending.
+	//
+	// - `asc`: ascending.
+	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 2
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize         *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceGroupIDs *string `json:"ResourceGroupIDs,omitempty" xml:"ResourceGroupIDs,omitempty"`
+	// The resource type. Valid values:
+	//
+	// - `ECS`: ECS.
+	//
+	// - `Lingjun`: Lingjun intelligent computing resources.
+	//
 	// example:
 	//
 	// Lingjun
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Specifies whether to return all results.
+	//
 	// example:
 	//
 	// false
 	ShowAll *bool `json:"ShowAll,omitempty" xml:"ShowAll,omitempty"`
+	// The field to sort by. Valid values include: `DisplayName`, `GmtCreated`, `GmtModified`, `RegionID`, `Duration`, `PricingCycle`, and `PayType`.
+	//
 	// example:
 	//
 	// DisplayName
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The status of the resource group.
+	//
 	// example:
 	//
 	// Creating
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The version to filter by.
+	//
 	// example:
 	//
 	// 1.0

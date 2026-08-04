@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 检查WebTerminal
+// Checks the connection to the instance container.
 //
 // @param request - CheckInstanceWebTerminalRequest
 //
@@ -56,7 +56,7 @@ func (client *Client) CheckInstanceWebTerminalWithContext(ctx context.Context, T
 
 // Summary:
 //
-// 创建新的算法
+// Creates an algorithm.
 //
 // @param request - CreateAlgorithmRequest
 //
@@ -115,7 +115,7 @@ func (client *Client) CreateAlgorithmWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 创建一个新的算法版本
+// Creates a version of an algorithm.
 //
 // @param tmpReq - CreateAlgorithmVersionRequest
 //
@@ -168,7 +168,7 @@ func (client *Client) CreateAlgorithmVersionWithContext(ctx context.Context, Alg
 
 // Summary:
 //
-// 创建WebTerminal
+// You can create a link to access the container of the instance.
 //
 // @param headers - map
 //
@@ -201,7 +201,7 @@ func (client *Client) CreateInstanceWebTerminalWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 创建Quota
+// Call the `CreateQuota` operation to create a quota.
 //
 // @param request - CreateQuotaRequest
 //
@@ -288,7 +288,7 @@ func (client *Client) CreateQuotaWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// 创建资源组
+// Use the CreateResourceGroup operation to create a resource group.
 //
 // @param request - CreateResourceGroupRequest
 //
@@ -359,7 +359,7 @@ func (client *Client) CreateResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 创建TrainingJob
+// Creates a training job.
 //
 // @param request - CreateTrainingJobRequest
 //
@@ -402,6 +402,10 @@ func (client *Client) CreateTrainingJobWithContext(ctx context.Context, request 
 
 	if !dara.IsNil(request.ComputeResource) {
 		body["ComputeResource"] = request.ComputeResource
+	}
+
+	if !dara.IsNil(request.CredentialConfig) {
+		body["CredentialConfig"] = request.CredentialConfig
 	}
 
 	if !dara.IsNil(request.Environments) {
@@ -490,7 +494,7 @@ func (client *Client) CreateTrainingJobWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 删除算法
+// Deletes an algorithm.
 //
 // @param headers - map
 //
@@ -523,7 +527,7 @@ func (client *Client) DeleteAlgorithmWithContext(ctx context.Context, AlgorithmI
 
 // Summary:
 //
-// 删除算法版本
+// Deletes an algorithm version.
 //
 // @param headers - map
 //
@@ -558,7 +562,7 @@ func (client *Client) DeleteAlgorithmVersionWithContext(ctx context.Context, Alg
 //
 // Summary:
 //
-// delete machine group
+// Deletes a machine group.
 //
 // @param headers - map
 //
@@ -591,7 +595,7 @@ func (client *Client) DeleteMachineGroupWithContext(ctx context.Context, Machine
 
 // Summary:
 //
-// 删除Quota
+// You can delete a resource quota by using DeleteQuota.
 //
 // @param headers - map
 //
@@ -624,7 +628,7 @@ func (client *Client) DeleteQuotaWithContext(ctx context.Context, QuotaId *strin
 
 // Summary:
 //
-// 删除资源组
+// Deletes a resource group.
 //
 // @param headers - map
 //
@@ -659,7 +663,7 @@ func (client *Client) DeleteResourceGroupWithContext(ctx context.Context, Resour
 //
 // Summary:
 //
-// delete machine group
+// Deletes the specified machine group from a resource group.
 //
 // @param headers - map
 //
@@ -692,7 +696,7 @@ func (client *Client) DeleteResourceGroupMachineGroupWithContext(ctx context.Con
 
 // Summary:
 //
-// 删除一个TrainingJob
+// Deletes a training task.
 //
 // @param headers - map
 //
@@ -725,7 +729,7 @@ func (client *Client) DeleteTrainingJobWithContext(ctx context.Context, Training
 
 // Summary:
 //
-// 删除TrainingJob的Labels
+// Deletes the labels of a training task.
 //
 // @param request - DeleteTrainingJobLabelsRequest
 //
@@ -772,7 +776,7 @@ func (client *Client) DeleteTrainingJobLabelsWithContext(ctx context.Context, Tr
 
 // Summary:
 //
-// 获取一个算法信息
+// Retrieves algorithm details.
 //
 // @param headers - map
 //
@@ -805,7 +809,7 @@ func (client *Client) GetAlgorithmWithContext(ctx context.Context, AlgorithmId *
 
 // Summary:
 //
-// 创建一个新的算法版本
+// Retrieve details about an algorithm version.
 //
 // @param headers - map
 //
@@ -840,7 +844,7 @@ func (client *Client) GetAlgorithmVersionWithContext(ctx context.Context, Algori
 //
 // Summary:
 //
-// get machine group
+// Retrieves the details of a specific machine group.
 //
 // @param headers - map
 //
@@ -875,7 +879,7 @@ func (client *Client) GetMachineGroupWithContext(ctx context.Context, MachineGro
 //
 // Summary:
 //
-// get resource group node metrics
+// You can call the GetNodeMetrics operation to obtain the metric information of resource group nodes.
 //
 // @param request - GetNodeMetricsRequest
 //
@@ -938,7 +942,7 @@ func (client *Client) GetNodeMetricsWithContext(ctx context.Context, ResourceGro
 
 // Summary:
 //
-// 获取Quota
+// Call GetQuota to retrieve the details of a resource quota. This helps you monitor current resource usage for effective resource management and planning.
 //
 // @param request - GetQuotaRequest
 //
@@ -989,7 +993,7 @@ func (client *Client) GetQuotaWithContext(ctx context.Context, QuotaId *string, 
 
 // Summary:
 //
-// get resource group by group id
+// `GetResourceGroup` retrieves details for a resource group.
 //
 // @param tmpReq - GetResourceGroupRequest
 //
@@ -1046,7 +1050,7 @@ func (client *Client) GetResourceGroupWithContext(ctx context.Context, ResourceG
 
 // Summary:
 //
-// get machine group
+// Call GetResourceGroupMachineGroup to retrieve the details of a machine group.
 //
 // @param tmpReq - GetResourceGroupMachineGroupRequest
 //
@@ -1101,7 +1105,7 @@ func (client *Client) GetResourceGroupMachineGroupWithContext(ctx context.Contex
 //
 // Summary:
 //
-// get resource group requested resource by resource group id
+// You can call the GetResourceGroupRequest operation to obtain the number of resources that have been allocated to a resource group.
 //
 // @param request - GetResourceGroupRequestRequest
 //
@@ -1152,7 +1156,7 @@ func (client *Client) GetResourceGroupRequestWithContext(ctx context.Context, re
 
 // Summary:
 //
-// get resource group total resource by group id
+// You can call GetResourceGroupTotal to get the total resources of a Resource Group.
 //
 // @param request - GetResourceGroupTotalRequest
 //
@@ -1199,7 +1203,7 @@ func (client *Client) GetResourceGroupTotalWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取抢占式实例历史价格
+// Retrieves the historical prices of spot instances.
 //
 // @param request - GetSpotPriceHistoryRequest
 //
@@ -1270,7 +1274,7 @@ func (client *Client) GetSpotPriceHistoryWithContext(ctx context.Context, Instan
 
 // Summary:
 //
-// 调用GetToken获取临时鉴权信息
+// Obtains a share token for a training task.
 //
 // @param request - GetTokenRequest
 //
@@ -1321,7 +1325,7 @@ func (client *Client) GetTokenWithContext(ctx context.Context, request *GetToken
 
 // Summary:
 //
-// 获取TrainingJob的详情
+// Retrieves the details of a training job.
 //
 // @param headers - map
 //
@@ -1354,7 +1358,7 @@ func (client *Client) GetTrainingJobWithContext(ctx context.Context, TrainingJob
 
 // Summary:
 //
-// 获取Training Job的算法错误信息
+// Retrieves the runtime fault error message of a training node.
 //
 // @param headers - map
 //
@@ -1387,7 +1391,7 @@ func (client *Client) GetTrainingJobErrorInfoWithContext(ctx context.Context, Tr
 
 // Summary:
 //
-// 获取TrainingJob最近的Metrics
+// Retrieves the latest metrics for a training task.
 //
 // @param request - GetTrainingJobLatestMetricsRequest
 //
@@ -1436,7 +1440,7 @@ func (client *Client) GetTrainingJobLatestMetricsWithContext(ctx context.Context
 //
 // Summary:
 //
-// get user view  metrics
+// Retrieves metric data at the user dimension.
 //
 // @param request - GetUserViewMetricsRequest
 //
@@ -1507,7 +1511,7 @@ func (client *Client) GetUserViewMetricsWithContext(ctx context.Context, Resourc
 
 // Summary:
 //
-// 获取算法的所有版本信息
+// Retrieve a list of algorithm version details.
 //
 // @param request - ListAlgorithmVersionsRequest
 //
@@ -1558,7 +1562,7 @@ func (client *Client) ListAlgorithmVersionsWithContext(ctx context.Context, Algo
 
 // Summary:
 //
-// 获取算法列表
+// Lists algorithm details.
 //
 // @param request - ListAlgorithmsRequest
 //
@@ -1625,7 +1629,84 @@ func (client *Client) ListAlgorithmsWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 获取节点规格列表
+// Retrieves detailed information about all pods on a specified node.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This feature is currently available only on the Lingjun AI Computing Service platform and is accessible to customers through a whitelist.
+//
+// - `NodeName` and `ResourceGroupId` are required parameters that represent the node name and the ID of the resource group to which the node belongs.
+//
+// - Optional parameters include `OversoldTypes` and `GPUIndexes`, which are used to further filter or specify conditions.
+//
+// @param request - ListNodePodsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNodePodsResponse
+func (client *Client) ListNodePodsWithContext(ctx context.Context, NodeId *string, request *ListNodePodsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListNodePodsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GPUIndexes) {
+		query["GPUIndexes"] = request.GPUIndexes
+	}
+
+	if !dara.IsNil(request.OversoldTypes) {
+		query["OversoldTypes"] = request.OversoldTypes
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListNodePods"),
+		Version:     dara.String("2022-01-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/nodes/" + dara.PercentEncode(dara.StringValue(NodeId)) + "/Pods"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListNodePodsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists the available node types.
+//
+// Description:
+//
+// ## Description
+//
+// - Lists the node types that match the specified filter criteria.
+//
+// - You must specify either the `ResourceGroupIds` or `QuotaId` parameter. The specified resource group IDs or quota ID must belong to the requesting user.
+//
+// - You can filter the results by using parameters such as accelerator type and GPU type.
+//
+// - The response includes details and statistics for each node type, indicating the availability of your resources.
 //
 // @param request - ListNodeTypesRequest
 //
@@ -1688,7 +1769,11 @@ func (client *Client) ListNodeTypesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 获取资源节点列表
+// Returns a list of resource nodes.
+//
+// Description:
+//
+// ListNodes retrieves resource nodes that match specified filter conditions.
 //
 // @param tmpReq - ListNodesRequest
 //
@@ -1865,7 +1950,11 @@ func (client *Client) ListNodesWithContext(ctx context.Context, tmpReq *ListNode
 
 // Summary:
 //
-// 获取当前资源配额用户列表和其所使用的资源
+// Lists users within a quota and their resource usage.
+//
+// Description:
+//
+// Retrieves the resource usage of users in a specified quota.
 //
 // @param request - ListQuotaActiveUserUsagesRequest
 //
@@ -1944,7 +2033,7 @@ func (client *Client) ListQuotaActiveUserUsagesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 您可以通过此API获取Quota上的任务信息列表
+// Retrieves a list of workloads associated with a specific quota.
 //
 // @param request - ListQuotaWorkloadsRequest
 //
@@ -2083,7 +2172,7 @@ func (client *Client) ListQuotaWorkloadsWithContext(ctx context.Context, QuotaId
 
 // Summary:
 //
-// 获取Quota列表
+// Lists quotas.
 //
 // @param request - ListQuotasRequest
 //
@@ -2198,7 +2287,7 @@ func (client *Client) ListQuotasWithContext(ctx context.Context, request *ListQu
 
 // Summary:
 //
-// list machine groups
+// Retrieves a list of machine groups in a specified resource group.
 //
 // @param request - ListResourceGroupMachineGroupsRequest
 //
@@ -2297,7 +2386,11 @@ func (client *Client) ListResourceGroupMachineGroupsWithContext(ctx context.Cont
 
 // Summary:
 //
-// list resource group
+// Call this operation to list resource groups for ECS or Lingjun intelligent computing resources.
+//
+// Description:
+//
+// Currently, AI computing resource groups (including ECS and Lingjun intelligent computing resources) are available only in specific regions. For a list of supported regions, see [AI computing resource management](https://help.aliyun.com/document_detail/143986.html).
 //
 // @param request - ListResourceGroupsRequest
 //
@@ -2388,7 +2481,19 @@ func (client *Client) ListResourceGroupsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查标签接口
+// Tag query API.
+//
+// Description:
+//
+// Specify at least one of the following parameters to query for resources.
+//
+// - ResourceId.N
+//
+// - Tag.N (Tag.N.Key and Tag.N.Value)
+//
+// If you specify both parameters, the operation returns only resources that match both criteria.
+//
+// - Tag.N and ResourceId.N
 //
 // @param tmpReq - ListTagResourcesRequest
 //
@@ -2461,7 +2566,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
-// 获取指定TrainingJob的事件。
+// Retrieve events for a specific training task to gain detailed insight into the training process.
 //
 // @param request - ListTrainingJobEventsRequest
 //
@@ -2520,7 +2625,7 @@ func (client *Client) ListTrainingJobEventsWithContext(ctx context.Context, Trai
 
 // Summary:
 //
-// 获取指定Instance（TrainingJob的运行单元）的日志。
+// Retrieve events for a training job instance.
 //
 // @param request - ListTrainingJobInstanceEventsRequest
 //
@@ -2579,7 +2684,7 @@ func (client *Client) ListTrainingJobInstanceEventsWithContext(ctx context.Conte
 
 // Summary:
 //
-// 获取Training Job实例的Metrics
+// Retrieve monitoring metrics for training job instances.
 //
 // @param request - ListTrainingJobInstanceMetricsRequest
 //
@@ -2642,7 +2747,7 @@ func (client *Client) ListTrainingJobInstanceMetricsWithContext(ctx context.Cont
 
 // Summary:
 //
-// 获取Training Job的日志
+// Retrieves the logs for a training task.
 //
 // @param request - ListTrainingJobLogsRequest
 //
@@ -2709,7 +2814,7 @@ func (client *Client) ListTrainingJobLogsWithContext(ctx context.Context, Traini
 
 // Summary:
 //
-// 获取Training Job的Metrics
+// Retrieve monitoring data for a training task.
 //
 // @param request - ListTrainingJobMetricsRequest
 //
@@ -2776,7 +2881,7 @@ func (client *Client) ListTrainingJobMetricsWithContext(ctx context.Context, Tra
 
 // Summary:
 //
-// 获取Training Job 产出的所有模型信息
+// Retrieves information about the output models of a training job.
 //
 // @param headers - map
 //
@@ -2809,7 +2914,7 @@ func (client *Client) ListTrainingJobOutputModelsWithContext(ctx context.Context
 
 // Summary:
 //
-// 获取TrainingJob的列表
+// Retrieves a list of training jobs.
 //
 // @param tmpReq - ListTrainingJobsRequest
 //
@@ -2914,7 +3019,11 @@ func (client *Client) ListTrainingJobsWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
-// 您可以通过OperateNode对节点进行操作
+// Use OperateNode to manage nodes.
+//
+// Description:
+//
+// Use OperateNode to manage a specified resource node. Supported operations include disabling or enabling scheduling.
 //
 // @param request - OperateNodeRequest
 //
@@ -2969,7 +3078,7 @@ func (client *Client) OperateNodeWithContext(ctx context.Context, NodeId *string
 
 // Summary:
 //
-// 扩缩容Quota
+// Use ScaleQuota to scale resource quotas.
 //
 // @param request - ScaleQuotaRequest
 //
@@ -3020,7 +3129,7 @@ func (client *Client) ScaleQuotaWithContext(ctx context.Context, QuotaId *string
 
 // Summary:
 //
-// 停止一个TrainingJob
+// Stops a training task.
 //
 // @param headers - map
 //
@@ -3053,7 +3162,11 @@ func (client *Client) StopTrainingJobWithContext(ctx context.Context, TrainingJo
 
 // Summary:
 //
-// 打标签接口
+// Attaches tags to resources.
+//
+// Description:
+//
+// Alibaba Cloud checks the number of existing tags on the resource before attaching a new tag. If the limit is exceeded, an error message is returned.
 //
 // @param request - TagResourcesRequest
 //
@@ -3112,7 +3225,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// 删标签接口
+// Detach tags from a list of specified resources. If a tag is no longer attached to any resource after detachment, Alibaba Cloud deletes it automatically.
 //
 // @param tmpReq - UntagResourcesRequest
 //
@@ -3185,7 +3298,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, tmpReq *Unt
 
 // Summary:
 //
-// 更新算法
+// Updates an algorithm.
 //
 // @param request - UpdateAlgorithmRequest
 //
@@ -3236,7 +3349,7 @@ func (client *Client) UpdateAlgorithmWithContext(ctx context.Context, AlgorithmI
 
 // Summary:
 //
-// 更新算法
+// Updates an algorithm version.
 //
 // @param tmpReq - UpdateAlgorithmVersionRequest
 //
@@ -3289,7 +3402,7 @@ func (client *Client) UpdateAlgorithmVersionWithContext(ctx context.Context, Alg
 
 // Summary:
 //
-// 更新Quota
+// Updates the information of a resource quota.
 //
 // @param request - UpdateQuotaRequest
 //
@@ -3312,6 +3425,10 @@ func (client *Client) UpdateQuotaWithContext(ctx context.Context, QuotaId *strin
 
 	if !dara.IsNil(request.Labels) {
 		body["Labels"] = request.Labels
+	}
+
+	if !dara.IsNil(request.PropagateDefaultGPUDriver) {
+		body["PropagateDefaultGPUDriver"] = request.PropagateDefaultGPUDriver
 	}
 
 	if !dara.IsNil(request.QueueStrategy) {
@@ -3352,7 +3469,7 @@ func (client *Client) UpdateQuotaWithContext(ctx context.Context, QuotaId *strin
 
 // Summary:
 //
-// 更新Resource Group
+// Use UpdateResourceGroup to update resource group information.
 //
 // @param request - UpdateResourceGroupRequest
 //
@@ -3411,7 +3528,7 @@ func (client *Client) UpdateResourceGroupWithContext(ctx context.Context, Resour
 
 // Summary:
 //
-// 更新一个TrainingJob的Labels
+// Updates the labels of a training task.
 //
 // @param request - UpdateTrainingJobLabelsRequest
 //

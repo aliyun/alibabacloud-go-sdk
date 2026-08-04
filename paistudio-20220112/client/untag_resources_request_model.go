@@ -22,25 +22,42 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
+	// Whether to detach all tags from the resource. Valid values:
+	//
+	// - **true**: Detach all tags from the resource.
+	//
+	// - **false**: Do not detach all tags from the resource.
+	//
+	// > 	- Default value: false.
+	//
+	// - If you specify both TagKey and this parameter, this parameter is ignored.
+	//
 	// example:
 	//
 	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// Region
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource IDs. Maximum: 50 items.
+	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// Resource type
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ResourceGroup
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// List of tag keys. Maximum: 20 items.
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {

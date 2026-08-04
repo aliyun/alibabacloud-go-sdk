@@ -44,64 +44,94 @@ type iJobSettings interface {
 }
 
 type JobSettings struct {
+	// Additional advanced parameter settings.
 	AdvancedSettings map[string]interface{} `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
+	// User ID associated with the job.
+	//
 	// example:
 	//
 	// 166924
 	BusinessUserId *string `json:"BusinessUserId,omitempty" xml:"BusinessUserId,omitempty"`
+	// Caller.
+	//
 	// example:
 	//
 	// SilkFlow
 	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// NVIDIA driver configuration.
+	//
 	// example:
 	//
 	// 535.54.03
 	Driver *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
+	// Enable job fault tolerance monitoring.
+	//
 	// example:
 	//
 	// false
 	EnableErrorMonitoringInAIMaster *bool `json:"EnableErrorMonitoringInAIMaster,omitempty" xml:"EnableErrorMonitoringInAIMaster,omitempty"`
+	// Enable OSS append writes.
+	//
 	// example:
 	//
 	// true
 	EnableOssAppend *bool `json:"EnableOssAppend,omitempty" xml:"EnableOssAppend,omitempty"`
+	// Enable the job to use RDMA.
+	//
 	// example:
 	//
 	// true
 	EnableRDMA *bool `json:"EnableRDMA,omitempty" xml:"EnableRDMA,omitempty"`
+	// Enable computing power health check for the job.
+	//
 	// example:
 	//
 	// true
 	EnableSanityCheck *bool `json:"EnableSanityCheck,omitempty" xml:"EnableSanityCheck,omitempty"`
+	// Enable the job to use tide resources.
+	//
 	// example:
 	//
 	// true
 	EnableTideResource *bool `json:"EnableTideResource,omitempty" xml:"EnableTideResource,omitempty"`
+	// Specify configuration parameters for fault tolerance monitoring, such as whether to enable log hang-based detection.
+	//
 	// example:
 	//
 	// --enable-log-hang-detection true
 	ErrorMonitoringArgs *string `json:"ErrorMonitoringArgs,omitempty" xml:"ErrorMonitoringArgs,omitempty"`
+	// Duration in minutes to retain the job after completion.
+	//
 	// example:
 	//
 	// 30
 	JobReservedMinutes *int32 `json:"JobReservedMinutes,omitempty" xml:"JobReservedMinutes,omitempty"`
+	// Policy for retaining the job after completion.
+	//
 	// example:
 	//
 	// Always
 	JobReservedPolicy *string `json:"JobReservedPolicy,omitempty" xml:"JobReservedPolicy,omitempty"`
+	// Job\\"s oversold resource usage method (not accepted, accepted, or only accepted).
+	//
 	// example:
 	//
 	// AcceptQuotaOverSold
 	OversoldType *string `json:"OversoldType,omitempty" xml:"OversoldType,omitempty"`
+	// Workflow ID.
+	//
 	// example:
 	//
 	// pid-123456
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// Configuration parameters for computing power health check.
+	//
 	// example:
 	//
 	// --sanity-check-timing=AfterJobFaultTolerant --sanity-check-timeout-ops=MarkJobFai
-	SanityCheckArgs *string            `json:"SanityCheckArgs,omitempty" xml:"SanityCheckArgs,omitempty"`
-	Tags            map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	SanityCheckArgs *string `json:"SanityCheckArgs,omitempty" xml:"SanityCheckArgs,omitempty"`
+	// Custom tags.
+	Tags map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s JobSettings) String() string {

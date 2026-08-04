@@ -14,6 +14,8 @@ type iCheckInstanceWebTerminalResponseBody interface {
 }
 
 type CheckInstanceWebTerminalResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F2D0392B-D749-5C48-A98A-3FAE5C9444A6

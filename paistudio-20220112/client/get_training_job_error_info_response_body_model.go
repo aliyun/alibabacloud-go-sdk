@@ -16,7 +16,10 @@ type iGetTrainingJobErrorInfoResponseBody interface {
 }
 
 type GetTrainingJobErrorInfoResponseBody struct {
+	// The fault error message.
 	ErrorInfo *GetTrainingJobErrorInfoResponseBodyErrorInfo `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
@@ -59,14 +62,20 @@ func (s *GetTrainingJobErrorInfoResponseBody) Validate() error {
 }
 
 type GetTrainingJobErrorInfoResponseBodyErrorInfo struct {
+	// The additional information.
+	//
 	// example:
 	//
 	// additional info
 	AdditionalInfo *string `json:"AdditionalInfo,omitempty" xml:"AdditionalInfo,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The fault error message.
+	//
 	// example:
 	//
 	// success

@@ -13,6 +13,8 @@ type iUpdateQuotaRequest interface {
 	GetDescription() *string
 	SetLabels(v []*Label) *UpdateQuotaRequest
 	GetLabels() []*Label
+	SetPropagateDefaultGPUDriver(v bool) *UpdateQuotaRequest
+	GetPropagateDefaultGPUDriver() *bool
 	SetQueueStrategy(v string) *UpdateQuotaRequest
 	GetQueueStrategy() *string
 	SetQuotaConfig(v *QuotaConfig) *UpdateQuotaRequest
@@ -22,16 +24,32 @@ type iUpdateQuotaRequest interface {
 }
 
 type UpdateQuotaRequest struct {
+	// The description of the resource quota.
+	//
 	// example:
 	//
 	// this is a test quota
-	Description   *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Labels        []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	QueueStrategy *string  `json:"QueueStrategy,omitempty" xml:"QueueStrategy,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The list of user-defined labels. This is a full update.
+	Labels                    []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	PropagateDefaultGPUDriver *bool    `json:"PropagateDefaultGPUDriver,omitempty" xml:"PropagateDefaultGPUDriver,omitempty"`
+	// The queuing strategy for jobs in the quota.
+	//
+	// example:
+	//
+	// PaiStrategyIntelligent
+	QueueStrategy *string `json:"QueueStrategy,omitempty" xml:"QueueStrategy,omitempty"`
+	// The resource quota configuration.
+	//
 	// if can be null:
 	// true
 	QuotaConfig *QuotaConfig `json:"QuotaConfig,omitempty" xml:"QuotaConfig,omitempty"`
-	QuotaName   *string      `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
+	// The resource quota name.
+	//
+	// example:
+	//
+	// test
+	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
 }
 
 func (s UpdateQuotaRequest) String() string {
@@ -48,6 +66,10 @@ func (s *UpdateQuotaRequest) GetDescription() *string {
 
 func (s *UpdateQuotaRequest) GetLabels() []*Label {
 	return s.Labels
+}
+
+func (s *UpdateQuotaRequest) GetPropagateDefaultGPUDriver() *bool {
+	return s.PropagateDefaultGPUDriver
 }
 
 func (s *UpdateQuotaRequest) GetQueueStrategy() *string {
@@ -69,6 +91,11 @@ func (s *UpdateQuotaRequest) SetDescription(v string) *UpdateQuotaRequest {
 
 func (s *UpdateQuotaRequest) SetLabels(v []*Label) *UpdateQuotaRequest {
 	s.Labels = v
+	return s
+}
+
+func (s *UpdateQuotaRequest) SetPropagateDefaultGPUDriver(v bool) *UpdateQuotaRequest {
+	s.PropagateDefaultGPUDriver = &v
 	return s
 }
 

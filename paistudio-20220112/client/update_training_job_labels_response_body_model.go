@@ -14,6 +14,8 @@ type iUpdateTrainingJobLabelsResponseBody interface {
 }
 
 type UpdateTrainingJobLabelsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F082BD0D-21E1-5F9B-81A0-AB07485B03CD

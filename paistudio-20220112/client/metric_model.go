@@ -16,10 +16,14 @@ type iMetric interface {
 }
 
 type Metric struct {
+	// The UNIX timestamp.
+	//
 	// example:
 	//
-	// rg17tmvwiokhzaxg
+	// rg17tmvwiokh****
 	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The metric value.
+	//
 	// example:
 	//
 	// 23000

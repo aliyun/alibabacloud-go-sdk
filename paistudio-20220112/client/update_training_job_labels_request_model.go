@@ -14,6 +14,7 @@ type iUpdateTrainingJobLabelsRequest interface {
 }
 
 type UpdateTrainingJobLabelsRequest struct {
+	// The list of labels.
 	Labels []*UpdateTrainingJobLabelsRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 }
 
@@ -48,10 +49,14 @@ func (s *UpdateTrainingJobLabelsRequest) Validate() error {
 }
 
 type UpdateTrainingJobLabelsRequestLabels struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// RootModelID
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// model-ad8cv770kl

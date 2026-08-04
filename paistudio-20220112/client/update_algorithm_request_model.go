@@ -16,7 +16,14 @@ type iUpdateAlgorithmRequest interface {
 }
 
 type UpdateAlgorithmRequest struct {
+	// The algorithm description.
+	//
+	// example:
+	//
+	// Large language model training.
 	AlgorithmDescription *string `json:"AlgorithmDescription,omitempty" xml:"AlgorithmDescription,omitempty"`
+	// The display name of the algorithm.
+	//
 	// example:
 	//
 	// LLM Train

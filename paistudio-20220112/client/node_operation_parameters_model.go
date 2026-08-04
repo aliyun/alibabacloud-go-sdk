@@ -18,8 +18,11 @@ type iNodeOperationParameters interface {
 }
 
 type NodeOperationParameters struct {
-	CordonParameters   *NodeCordonParameters   `json:"CordonParameters,omitempty" xml:"CordonParameters,omitempty"`
-	DrainParameters    *NodeDrainParameters    `json:"DrainParameters,omitempty" xml:"DrainParameters,omitempty"`
+	// Node cordon parameter settings
+	CordonParameters *NodeCordonParameters `json:"CordonParameters,omitempty" xml:"CordonParameters,omitempty"`
+	// Node drain task instance parameter settings
+	DrainParameters *NodeDrainParameters `json:"DrainParameters,omitempty" xml:"DrainParameters,omitempty"`
+	// Node uncordon parameter settings
 	UncordonParameters *NodeUncordonParameters `json:"UncordonParameters,omitempty" xml:"UncordonParameters,omitempty"`
 }
 

@@ -34,43 +34,68 @@ type iGetAlgorithmResponseBody interface {
 }
 
 type GetAlgorithmResponseBody struct {
+	// Algorithm description.
+	//
+	// example:
+	//
+	// Large language model training.
 	AlgorithmDescription *string `json:"AlgorithmDescription,omitempty" xml:"AlgorithmDescription,omitempty"`
+	// Algorithm ID.
+	//
 	// example:
 	//
 	// algo-xsldfvu1334
 	AlgorithmId *string `json:"AlgorithmId,omitempty" xml:"AlgorithmId,omitempty"`
+	// Algorithm name.
+	//
 	// example:
 	//
 	// llm_training
 	AlgorithmName *string `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
+	// Algorithm provider.
+	//
 	// example:
 	//
 	// pai
 	AlgorithmProvider *string `json:"AlgorithmProvider,omitempty" xml:"AlgorithmProvider,omitempty"`
+	// Display name of the algorithm.
+	//
 	// example:
 	//
 	// llm_training
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Time when the algorithm was created.
+	//
 	// example:
 	//
 	// 2024-07-10T11:49:47Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// Time when the algorithm was last updated.
+	//
 	// example:
 	//
 	// 2024-07-10T11:49:47Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Tenant ID of the algorithm owner.
+	//
 	// example:
 	//
 	// 123456789
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// User ID of the algorithm owner.
+	//
 	// example:
 	//
 	// 123456789
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Workspace ID.
+	//
 	// example:
 	//
 	// 12345

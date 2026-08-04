@@ -18,8 +18,23 @@ type iNodeCordonParameters interface {
 }
 
 type NodeCordonParameters struct {
-	Comment     *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	QuotaId     *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// User-configurable reason for disabling scheduling
+	//
+	// example:
+	//
+	// this is a comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Quota ID, used when disabling edge zone scheduling in a workspace
+	//
+	// example:
+	//
+	// quota1dkoutl3tj1
+	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// Workspace ID, used when disabling edge zone scheduling in a workspace
+	//
+	// example:
+	//
+	// 12345
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

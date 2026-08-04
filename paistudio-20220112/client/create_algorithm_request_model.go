@@ -20,12 +20,26 @@ type iCreateAlgorithmRequest interface {
 }
 
 type CreateAlgorithmRequest struct {
+	// The description of the algorithm.
+	//
+	// example:
+	//
+	// Tongyi Qwen large language model training algorithm.
 	AlgorithmDescription *string `json:"AlgorithmDescription,omitempty" xml:"AlgorithmDescription,omitempty"`
+	// The name of the algorithm.
+	//
 	// example:
 	//
 	// llm_training
 	AlgorithmName *string `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
-	DisplayName   *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The display name of the algorithm.
+	//
+	// example:
+	//
+	// Large language model training
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The ID of the workspace.
+	//
 	// example:
 	//
 	// 12345

@@ -18,14 +18,19 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
+	// Pagination token for the next page of results
+	//
 	// example:
 	//
 	// 3iEiu84Yk3TwHLzJV.usagf1Ain49xYKGoB6zffsDqPYZQQ5
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// CE22EE94-8AFE-53B5-9C2C-B36207B1CBF9
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of resources.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -78,18 +83,26 @@ func (s *ListTagResourcesResponseBody) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
+	// Resource ID
+	//
 	// example:
 	//
 	// rgqssemfn6vjqqev
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Resource type
+	//
 	// example:
 	//
 	// ResourceGroup
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Tag key
+	//
 	// example:
 	//
 	// tagKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// Tag value
+	//
 	// example:
 	//
 	// tagValue

@@ -24,12 +24,18 @@ type iQuotaNodeStatistics interface {
 }
 
 type QuotaNodeStatistics struct {
-	ActualMinHyperNodeNum     *int64                      `json:"ActualMinHyperNodeNum,omitempty" xml:"ActualMinHyperNodeNum,omitempty"`
-	ActualMinNodeNum          *int64                      `json:"ActualMinNodeNum,omitempty" xml:"ActualMinNodeNum,omitempty"`
+	// The guaranteed minimum number of hyper nodes available in the quota.
+	ActualMinHyperNodeNum *int64 `json:"ActualMinHyperNodeNum,omitempty" xml:"ActualMinHyperNodeNum,omitempty"`
+	// The guaranteed minimum number of nodes available in the quota.
+	ActualMinNodeNum *int64 `json:"ActualMinNodeNum,omitempty" xml:"ActualMinNodeNum,omitempty"`
+	// The details of an allocated hyper node.
 	AllocatedHyperNodeDetails []*AllocatedHyperNodeDetail `json:"AllocatedHyperNodeDetails,omitempty" xml:"AllocatedHyperNodeDetails,omitempty" type:"Repeated"`
-	AllocatedHyperNodeNum     *int64                      `json:"AllocatedHyperNodeNum,omitempty" xml:"AllocatedHyperNodeNum,omitempty"`
-	AllocatedNodeNum          *int64                      `json:"AllocatedNodeNum,omitempty" xml:"AllocatedNodeNum,omitempty"`
-	EmptyNodeNum              *int64                      `json:"EmptyNodeNum,omitempty" xml:"EmptyNodeNum,omitempty"`
+	// The number of hyper nodes currently allocated from the quota.
+	AllocatedHyperNodeNum *int64 `json:"AllocatedHyperNodeNum,omitempty" xml:"AllocatedHyperNodeNum,omitempty"`
+	// The number of nodes currently allocated from the quota.
+	AllocatedNodeNum *int64 `json:"AllocatedNodeNum,omitempty" xml:"AllocatedNodeNum,omitempty"`
+	// The number of allocated nodes currently idle.
+	EmptyNodeNum *int64 `json:"EmptyNodeNum,omitempty" xml:"EmptyNodeNum,omitempty"`
 }
 
 func (s QuotaNodeStatistics) String() string {

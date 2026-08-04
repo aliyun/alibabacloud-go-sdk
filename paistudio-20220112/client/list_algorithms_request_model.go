@@ -24,26 +24,38 @@ type iListAlgorithmsRequest interface {
 }
 
 type ListAlgorithmsRequest struct {
+	// Algorithm ID.
+	//
 	// example:
 	//
 	// algo-xsldfvu1334
 	AlgorithmId *string `json:"AlgorithmId,omitempty" xml:"AlgorithmId,omitempty"`
+	// Algorithm name.
+	//
 	// example:
 	//
 	// llm_training
 	AlgorithmName *string `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
+	// Algorithm provider.
+	//
 	// example:
 	//
 	// pai
 	AlgorithmProvider *string `json:"AlgorithmProvider,omitempty" xml:"AlgorithmProvider,omitempty"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Workspace ID.
+	//
 	// example:
 	//
 	// 12345

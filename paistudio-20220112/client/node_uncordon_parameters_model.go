@@ -16,7 +16,17 @@ type iNodeUncordonParameters interface {
 }
 
 type NodeUncordonParameters struct {
-	QuotaId     *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// Quota ID. You can use this ID when you start a workspace or disable scheduling nodes.
+	//
+	// example:
+	//
+	// quota1ci8g793pgm
+	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// The ID of the workspace that contains the node to uncordon.
+	//
+	// example:
+	//
+	// 12345
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

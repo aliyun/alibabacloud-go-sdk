@@ -16,10 +16,14 @@ type iCreateAlgorithmVersionResponseBody interface {
 }
 
 type CreateAlgorithmVersionResponseBody struct {
+	// ID of the training algorithm.
+	//
 	// example:
 	//
 	// algo-xsldfvu1334
 	AlgorithmId *string `json:"AlgorithmId,omitempty" xml:"AlgorithmId,omitempty"`
+	// Algorithm version.
+	//
 	// example:
 	//
 	// v0.0.1

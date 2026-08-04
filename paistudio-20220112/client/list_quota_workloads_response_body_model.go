@@ -18,17 +18,20 @@ type iListQuotaWorkloadsResponseBody interface {
 }
 
 type ListQuotaWorkloadsResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 42F23B58-3684-5443-848A-8DA81FF99712
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of workloads that match the filter criteria.
+	//
 	// example:
 	//
 	// 23
-	TotalCount *int64       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Workloads  []*QueueInfo `json:"Workloads,omitempty" xml:"Workloads,omitempty" type:"Repeated"`
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// A list of workloads.
+	Workloads []*QueueInfo `json:"Workloads,omitempty" xml:"Workloads,omitempty" type:"Repeated"`
 }
 
 func (s ListQuotaWorkloadsResponseBody) String() string {

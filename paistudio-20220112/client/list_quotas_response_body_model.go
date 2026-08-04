@@ -18,12 +18,20 @@ type iListQuotasResponseBody interface {
 }
 
 type ListQuotasResponseBody struct {
+	// The list of quotas.
 	Quotas []*Quota `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F082BD0D-21E1-5F9B-81A0-AB07485B03CD
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries that match the request.
+	//
+	// example:
+	//
+	// 23
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListQuotasResponseBody) String() string {

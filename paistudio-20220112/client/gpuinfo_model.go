@@ -16,10 +16,14 @@ type iGPUInfo interface {
 }
 
 type GPUInfo struct {
+	// Quantity
+	//
 	// example:
 	//
 	// 1
 	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	// Type
+	//
 	// example:
 	//
 	// T4

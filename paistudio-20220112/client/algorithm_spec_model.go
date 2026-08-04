@@ -40,30 +40,48 @@ type iAlgorithmSpec interface {
 }
 
 type AlgorithmSpec struct {
+	// The custom code configuration.
 	CodeDir *Location `json:"CodeDir,omitempty" xml:"CodeDir,omitempty"`
+	// The list of commands to run the training task.
+	//
 	// This parameter is required.
-	Command         []*string                     `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
+	Command []*string `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
+	// The compute resource definition.
 	ComputeResource *AlgorithmSpecComputeResource `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
-	Customization   *AlgorithmSpecCustomization   `json:"Customization,omitempty" xml:"Customization,omitempty" type:"Struct"`
-	HyperParameters []*HyperParameterDefinition   `json:"HyperParameters,omitempty" xml:"HyperParameters,omitempty" type:"Repeated"`
+	// The custom configuration.
+	Customization *AlgorithmSpecCustomization `json:"Customization,omitempty" xml:"Customization,omitempty" type:"Struct"`
+	// The list of hyperparameter definitions.
+	HyperParameters []*HyperParameterDefinition `json:"HyperParameters,omitempty" xml:"HyperParameters,omitempty" type:"Repeated"`
+	// The training runtime image.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// registry.cn-shanghai.aliyuncs.com/pai-training/kmeans:v1.0.0
-	Image         *string    `json:"Image,omitempty" xml:"Image,omitempty"`
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The list of input channels for the algorithm.
 	InputChannels []*Channel `json:"InputChannels,omitempty" xml:"InputChannels,omitempty" type:"Repeated"`
+	// The job type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// TFJob
-	JobType                *string                           `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	MetricDefinitions      []*MetricDefinition               `json:"MetricDefinitions,omitempty" xml:"MetricDefinitions,omitempty" type:"Repeated"`
-	OutputChannels         []*Channel                        `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
-	ProgressDefinitions    *AlgorithmSpecProgressDefinitions `json:"ProgressDefinitions,omitempty" xml:"ProgressDefinitions,omitempty" type:"Struct"`
-	ResourceRequirements   []*ConditionExpression            `json:"ResourceRequirements,omitempty" xml:"ResourceRequirements,omitempty" type:"Repeated"`
-	SupportedInstanceTypes []*string                         `json:"SupportedInstanceTypes,omitempty" xml:"SupportedInstanceTypes,omitempty" type:"Repeated"`
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The list of metric definitions for the training task.
+	MetricDefinitions []*MetricDefinition `json:"MetricDefinitions,omitempty" xml:"MetricDefinitions,omitempty" type:"Repeated"`
+	// The list of output channels for the algorithm.
+	OutputChannels []*Channel `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
+	// You can use this feature to monitor the training progress.
+	ProgressDefinitions *AlgorithmSpecProgressDefinitions `json:"ProgressDefinitions,omitempty" xml:"ProgressDefinitions,omitempty" type:"Struct"`
+	// The resource requirements.
+	ResourceRequirements []*ConditionExpression `json:"ResourceRequirements,omitempty" xml:"ResourceRequirements,omitempty" type:"Repeated"`
+	// The list of supported elastic computing instance types for training.
+	SupportedInstanceTypes []*string `json:"SupportedInstanceTypes,omitempty" xml:"SupportedInstanceTypes,omitempty" type:"Repeated"`
+	// Indicates whether distributed training is supported.
+	//
 	// example:
 	//
 	// true
@@ -274,6 +292,8 @@ func (s *AlgorithmSpec) Validate() error {
 }
 
 type AlgorithmSpecComputeResource struct {
+	// Computing resource configuration policy for the algorithm.
+	//
 	// This parameter is required.
 	Policy *AlgorithmSpecComputeResourcePolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
 }
@@ -305,14 +325,16 @@ func (s *AlgorithmSpecComputeResource) Validate() error {
 }
 
 type AlgorithmSpecComputeResourcePolicy struct {
-	// Policy Value
+	// Policy content, serialized from a JSON array.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 0
+	// [{\\"MinTotalCount\\":1,\\"MaxTotalCount\\":4,\\"RolePolicies\\":{\\"chief\\":{\\"Count\\":1},\\"ps\\":{\\"Count\\":1},\\"worker\\":{\\"Percentage\\":100}}},{\\"MinTotalCount\\":5,\\"MaxTotalCount\\":10,\\"RolePolicies\\":{\\"chief\\":{\\"Count\\":1},\\"ps\\":{\\"Percentage\\":20},\\"worker\\":{\\"Percentage\\":80}}},{\\"MinTotalCount\\":11,\\"RolePolicies\\":{\\"chief\\":{\\"Count\\":1},\\"ps\\":{\\"Percentage\\":40},\\"worker\\":{\\"Percentage\\":60}}}]
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// Policy version.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -352,6 +374,8 @@ func (s *AlgorithmSpecComputeResourcePolicy) Validate() error {
 }
 
 type AlgorithmSpecCustomization struct {
+	// Indicates whether custom-mounted code is used.
+	//
 	// example:
 	//
 	// true
@@ -380,8 +404,10 @@ func (s *AlgorithmSpecCustomization) Validate() error {
 }
 
 type AlgorithmSpecProgressDefinitions struct {
+	// Monitors training progress.
 	OverallProgress *AlgorithmSpecProgressDefinitionsOverallProgress `json:"OverallProgress,omitempty" xml:"OverallProgress,omitempty" type:"Struct"`
-	RemainingTime   *AlgorithmSpecProgressDefinitionsRemainingTime   `json:"RemainingTime,omitempty" xml:"RemainingTime,omitempty" type:"Struct"`
+	// The definition for monitoring the remaining training time.
+	RemainingTime *AlgorithmSpecProgressDefinitionsRemainingTime `json:"RemainingTime,omitempty" xml:"RemainingTime,omitempty" type:"Struct"`
 }
 
 func (s AlgorithmSpecProgressDefinitions) String() string {
@@ -425,10 +451,14 @@ func (s *AlgorithmSpecProgressDefinitions) Validate() error {
 }
 
 type AlgorithmSpecProgressDefinitionsOverallProgress struct {
+	// The description of the monitoring definition.
+	//
 	// example:
 	//
 	// training progress
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The regular expression for monitoring.
+	//
 	// example:
 	//
 	// ^[0-9]+([.][0-9]+){0,1}$
@@ -466,10 +496,14 @@ func (s *AlgorithmSpecProgressDefinitionsOverallProgress) Validate() error {
 }
 
 type AlgorithmSpecProgressDefinitionsRemainingTime struct {
+	// The description of the monitoring definition.
+	//
 	// example:
 	//
 	// training remaining time
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The regular expression for monitoring.
+	//
 	// example:
 	//
 	// ^[0-9]+([.][0-9]+){0,1}$

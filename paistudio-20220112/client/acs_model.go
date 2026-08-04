@@ -16,12 +16,21 @@ type iACS interface {
 }
 
 type ACS struct {
-	// ACS Identifier
+	// ACS resource ID.
 	//
 	// example:
 	//
 	// rq-3kbt2gtimmyw7fgfgothocvh
-	ACSQuotaId         *string   `json:"ACSQuotaId,omitempty" xml:"ACSQuotaId,omitempty"`
+	ACSQuotaId *string `json:"ACSQuotaId,omitempty" xml:"ACSQuotaId,omitempty"`
+	// Product codes that can use the ACS Quota.
+	//
+	// Constraints:
+	//
+	// You can select multiple sub-products, but some sub-products are mutually exclusive. The following combinations can be selected simultaneously:
+	//
+	// - PAI-DLC, PAI-DSW
+	//
+	// - PAI-EAS
 	AssociatedProducts []*string `json:"AssociatedProducts,omitempty" xml:"AssociatedProducts,omitempty" type:"Repeated"`
 }
 

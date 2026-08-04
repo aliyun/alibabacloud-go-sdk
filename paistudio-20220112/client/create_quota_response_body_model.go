@@ -16,12 +16,14 @@ type iCreateQuotaResponseBody interface {
 }
 
 type CreateQuotaResponseBody struct {
-	// Quota Id
+	// The quota ID.
 	//
 	// example:
 	//
 	// quotad2kd8ljpsno
 	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBF05F13-B24C-5129-9048-4FA684DCD579

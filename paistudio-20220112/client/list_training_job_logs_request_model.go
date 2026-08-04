@@ -24,30 +24,42 @@ type iListTrainingJobLogsRequest interface {
 }
 
 type ListTrainingJobLogsRequest struct {
+	// The end UTC time in ISO 8601 format. If empty, the current time is used.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 2020-11-08T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// train129f212o89d-master-0
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start UTC time in ISO 8601 format. If empty, the task start time is used.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 2020-11-08T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The instance ID of the training task. This parameter is deprecated. Use InstanceId instead.
+	//
 	// example:
 	//
 	// train129f212o89d-master-0

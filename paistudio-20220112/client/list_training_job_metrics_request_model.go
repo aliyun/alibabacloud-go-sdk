@@ -24,28 +24,40 @@ type iListTrainingJobMetricsRequest interface {
 }
 
 type ListTrainingJobMetricsRequest struct {
+	// The end time in UTC, in ISO 8601 format. If you omit this parameter, the current time is used.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 2020-11-08T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// accuracy
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The sort order of returned metrics. Valid values: ASC or DESC.
+	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of items per page.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start time in UTC, in ISO 8601 format. If you omit this parameter, the task start time is used.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:

@@ -26,34 +26,39 @@ type iUserVpc interface {
 }
 
 type UserVpc struct {
+	// The default public gateway information.
 	DefaultForwardInfo *ForwardInfo `json:"DefaultForwardInfo,omitempty" xml:"DefaultForwardInfo,omitempty"`
-	// DefaultRoute
+	// The default routing. Valid values:
+	//
+	// - eth0: uses the default network interface controller (NIC) to access external networks through the public gateway.
+	//
+	// - eth1: uses the user\\"s elastic network interfaces (ENIs) to access external networks through the private gateway.
 	//
 	// example:
 	//
 	// eth0
 	DefaultRoute *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
-	// ExtendedCIDRs
+	// The secondary CIDR blocks.
 	ExtendedCIDRs []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
-	// RoleArn
+	// The OSS access authorization information.
 	//
 	// example:
 	//
 	// acs:ram::25xxxx:role/AliyunPAIDLCDefaultRole
 	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	// SecurityGroupID
+	// The security group ID.
 	//
 	// example:
 	//
 	// sg-abcdef****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// VSW ID
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vs-abcdef****
 	SwitchId *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
-	// VPC ID
+	// VPC ID。
 	//
 	// example:
 	//

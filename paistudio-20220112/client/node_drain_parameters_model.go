@@ -9,6 +9,8 @@ type iNodeDrainParameters interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetForce(v bool) *NodeDrainParameters
+	GetForce() *bool
 	SetPodFromSubProducts(v []*string) *NodeDrainParameters
 	GetPodFromSubProducts() []*string
 	SetPodNames(v []*string) *NodeDrainParameters
@@ -16,8 +18,11 @@ type iNodeDrainParameters interface {
 }
 
 type NodeDrainParameters struct {
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// Delete pods of the specified job types
 	PodFromSubProducts []*string `json:"PodFromSubProducts,omitempty" xml:"PodFromSubProducts,omitempty" type:"Repeated"`
-	PodNames           []*string `json:"PodNames,omitempty" xml:"PodNames,omitempty" type:"Repeated"`
+	// Delete specified pods
+	PodNames []*string `json:"PodNames,omitempty" xml:"PodNames,omitempty" type:"Repeated"`
 }
 
 func (s NodeDrainParameters) String() string {
@@ -28,12 +33,21 @@ func (s NodeDrainParameters) GoString() string {
 	return s.String()
 }
 
+func (s *NodeDrainParameters) GetForce() *bool {
+	return s.Force
+}
+
 func (s *NodeDrainParameters) GetPodFromSubProducts() []*string {
 	return s.PodFromSubProducts
 }
 
 func (s *NodeDrainParameters) GetPodNames() []*string {
 	return s.PodNames
+}
+
+func (s *NodeDrainParameters) SetForce(v bool) *NodeDrainParameters {
+	s.Force = &v
+	return s
 }
 
 func (s *NodeDrainParameters) SetPodFromSubProducts(v []*string) *NodeDrainParameters {

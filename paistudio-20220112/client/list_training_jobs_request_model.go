@@ -40,18 +40,26 @@ type iListTrainingJobsRequest interface {
 }
 
 type ListTrainingJobsRequest struct {
+	// The algorithm name.
+	//
 	// example:
 	//
 	// llm_train
 	AlgorithmName *string `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
+	// The algorithm provider.
+	//
 	// example:
 	//
 	// pai
 	AlgorithmProvider *string `json:"AlgorithmProvider,omitempty" xml:"AlgorithmProvider,omitempty"`
+	// The end time of the job creation time range for the query. Default value: current time.
+	//
 	// example:
 	//
 	// 2023-12-27T02:10:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Specifies whether the algorithm is a temporary algorithm.
+	//
 	// if can be null:
 	// true
 	//
@@ -59,42 +67,62 @@ type ListTrainingJobsRequest struct {
 	//
 	// false
 	IsTempAlgo *bool `json:"IsTempAlgo,omitempty" xml:"IsTempAlgo,omitempty"`
+	// The labels of the training job.
+	//
 	// example:
 	//
 	// {"project": "sd-s3"}
 	Labels map[string]interface{} `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The sort order. Valid values:
+	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number for paging.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The field by which to sort the results.
+	//
 	// example:
 	//
 	// GmtModifiedTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The start time of the job creation time range for the query. Default value: 7 days ago.
+	//
 	// example:
 	//
 	// 2024-06-22T01:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the training job.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The training job ID.
+	//
 	// example:
 	//
 	// trains930928remn
 	TrainingJobId *string `json:"TrainingJobId,omitempty" xml:"TrainingJobId,omitempty"`
+	// The name of the training job.
+	//
 	// example:
 	//
 	// large_language_model_training
 	TrainingJobName *string `json:"TrainingJobName,omitempty" xml:"TrainingJobName,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 12345

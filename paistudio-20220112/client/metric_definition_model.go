@@ -18,13 +18,22 @@ type iMetricDefinition interface {
 }
 
 type MetricDefinition struct {
+	// The description of the metric.
+	//
+	// example:
+	//
+	// 训练损失函数。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// loss
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The regular expression to collect metrics from logs.
+	//
 	// This parameter is required.
 	//
 	// example:

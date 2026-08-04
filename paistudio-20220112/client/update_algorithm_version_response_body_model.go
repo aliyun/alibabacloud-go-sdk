@@ -16,10 +16,14 @@ type iUpdateAlgorithmVersionResponseBody interface {
 }
 
 type UpdateAlgorithmVersionResponseBody struct {
+	// The algorithm ID.
+	//
 	// example:
 	//
 	// algo-sidjc8134hv
 	AlgorithmId *string `json:"AlgorithmId,omitempty" xml:"AlgorithmId,omitempty"`
+	// The algorithm version.
+	//
 	// example:
 	//
 	// v0.1.0

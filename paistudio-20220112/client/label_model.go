@@ -16,10 +16,14 @@ type iLabel interface {
 }
 
 type Label struct {
+	// The key of the label.
+	//
 	// example:
 	//
 	// testAccTag
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the label.
+	//
 	// example:
 	//
 	// nihao

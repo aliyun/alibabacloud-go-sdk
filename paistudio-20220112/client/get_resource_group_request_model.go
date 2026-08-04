@@ -16,11 +16,14 @@ type iGetResourceGroupRequest interface {
 }
 
 type GetResourceGroupRequest struct {
+	// Optional. Defaults to `true`.
+	//
 	// example:
 	//
 	// true
-	IsAIWorkspaceDataEnabled *bool                         `json:"IsAIWorkspaceDataEnabled,omitempty" xml:"IsAIWorkspaceDataEnabled,omitempty"`
-	Tag                      []*GetResourceGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	IsAIWorkspaceDataEnabled *bool `json:"IsAIWorkspaceDataEnabled,omitempty" xml:"IsAIWorkspaceDataEnabled,omitempty"`
+	// A list of up to 20 tags to add to the instance.
+	Tag []*GetResourceGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s GetResourceGroupRequest) String() string {
@@ -63,10 +66,14 @@ func (s *GetResourceGroupRequest) Validate() error {
 }
 
 type GetResourceGroupRequestTag struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// TestValue

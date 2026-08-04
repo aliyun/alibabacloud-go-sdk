@@ -20,12 +20,18 @@ type iNodeSpec interface {
 }
 
 type NodeSpec struct {
+	// Rule for attaching resource nodes.
 	BindingPolicy *BindingPolicy `json:"BindingPolicy,omitempty" xml:"BindingPolicy,omitempty"`
+	// Number of resource nodes with this specification.
+	//
 	// example:
 	//
 	// 10
-	Count     *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// Type of supernode to use. You cannot specify both a node specification and a supernode type.
 	HyperType *string `json:"HyperType,omitempty" xml:"HyperType,omitempty"`
+	// Type of the resource node specification.
+	//
 	// example:
 	//
 	// ecs.g6.4xlarge

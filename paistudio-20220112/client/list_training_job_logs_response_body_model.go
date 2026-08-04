@@ -18,11 +18,16 @@ type iListTrainingJobLogsResponseBody interface {
 }
 
 type ListTrainingJobLogsResponseBody struct {
+	// The list of logs.
 	Logs []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBF05F13-B24C-5129-9048-4FA684DCD579
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of logs that match the filter condition.
+	//
 	// example:
 	//
 	// 23

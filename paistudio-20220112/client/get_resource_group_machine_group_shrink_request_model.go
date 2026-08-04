@@ -14,6 +14,7 @@ type iGetResourceGroupMachineGroupShrinkRequest interface {
 }
 
 type GetResourceGroupMachineGroupShrinkRequest struct {
+	// A list of up to 20 tags.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 

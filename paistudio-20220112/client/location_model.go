@@ -16,10 +16,14 @@ type iLocation interface {
 }
 
 type Location struct {
+	// The code location type. Valid values: OSS and NAS.
+	//
 	// example:
 	//
 	// OSS
 	LocationType *string `json:"LocationType,omitempty" xml:"LocationType,omitempty"`
+	// The code path.
+	//
 	// example:
 	//
 	// oss://${bucket_name}.oss-${region}.aliyuncs.com/oss/location/path/

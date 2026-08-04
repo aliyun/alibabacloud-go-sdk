@@ -16,7 +16,10 @@ type iListTrainingJobInstanceMetricsResponseBody interface {
 }
 
 type ListTrainingJobInstanceMetricsResponseBody struct {
+	// List of all monitoring metrics that match the filter condition.
 	InstanceMetrics []*ListTrainingJobInstanceMetricsResponseBodyInstanceMetrics `json:"InstanceMetrics,omitempty" xml:"InstanceMetrics,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// F082BD0D-21E1-5F9B-81A0-AB07485B03CD
@@ -63,9 +66,20 @@ func (s *ListTrainingJobInstanceMetricsResponseBody) Validate() error {
 }
 
 type ListTrainingJobInstanceMetricsResponseBodyInstanceMetrics struct {
-	InstanceId *string                                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Metrics    []*ListTrainingJobInstanceMetricsResponseBodyInstanceMetricsMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
-	NodeName   *string                                                             `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// Instance ID.
+	//
+	// example:
+	//
+	// trainkxen7qjyg6y-master-0
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// List of instance monitoring metrics.
+	Metrics []*ListTrainingJobInstanceMetricsResponseBodyInstanceMetricsMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	// Node name.
+	//
+	// example:
+	//
+	// trains930928remn-master-0
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 }
 
 func (s ListTrainingJobInstanceMetricsResponseBodyInstanceMetrics) String() string {
@@ -117,7 +131,17 @@ func (s *ListTrainingJobInstanceMetricsResponseBodyInstanceMetrics) Validate() e
 }
 
 type ListTrainingJobInstanceMetricsResponseBodyInstanceMetricsMetrics struct {
-	Time  *string  `json:"Time,omitempty" xml:"Time,omitempty"`
+	// UTC time in ISO 8601 format.
+	//
+	// example:
+	//
+	// 2020-11-08T16:00:00Z
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// Metric value.
+	//
+	// example:
+	//
+	// 1
 	Value *float64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

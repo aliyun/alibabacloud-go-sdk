@@ -16,11 +16,13 @@ type iOperateNodeResponseBody interface {
 }
 
 type OperateNodeResponseBody struct {
+	// The node ID.
+	//
 	// example:
 	//
 	// lingjunxxxx-mgxxx-xxxx
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

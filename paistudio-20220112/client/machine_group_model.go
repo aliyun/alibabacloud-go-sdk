@@ -75,36 +75,52 @@ type MachineGroup struct {
 	AllocatableCpu    *int64 `json:"AllocatableCpu,omitempty" xml:"AllocatableCpu,omitempty"`
 	AllocatableMemory *int64 `json:"AllocatableMemory,omitempty" xml:"AllocatableMemory,omitempty"`
 	Cpu               *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// Machine group creator ID
+	//
 	// example:
 	//
 	// 1612285282502324
 	CreatorID *string `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
+	// Default driver supported by the machine group
+	//
 	// example:
 	//
 	// 470.199.02
 	DefaultDriver *string `json:"DefaultDriver,omitempty" xml:"DefaultDriver,omitempty"`
 	DiskCapacity  *int64  `json:"DiskCapacity,omitempty" xml:"DiskCapacity,omitempty"`
 	DiskPL        *string `json:"DiskPL,omitempty" xml:"DiskPL,omitempty"`
+	// Resource count
+	//
 	// example:
 	//
 	// 1
 	EcsCount *int64 `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
+	// ECS specification
+	//
 	// example:
 	//
 	// ecs.c6.large
 	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	// Creation Time
+	//
 	// example:
 	//
 	// 2023-06-22T00:00:00Z
 	GmtCreatedTime *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
+	// Expiration Time
+	//
 	// example:
 	//
 	// 2023-08-22T00:00:00Z
 	GmtExpiredTime *string `json:"GmtExpiredTime,omitempty" xml:"GmtExpiredTime,omitempty"`
+	// Update Time
+	//
 	// example:
 	//
 	// 2023-06-22T00:00:00Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// Start At
+	//
 	// example:
 	//
 	// 2023-06-22T00:00:00Z
@@ -112,46 +128,63 @@ type MachineGroup struct {
 	Gpu            *int64  `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
 	GpuMemory      *int64  `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
 	GpuType        *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
+	// Machine Group ID
+	//
 	// example:
 	//
 	// mg1
 	MachineGroupID *string `json:"MachineGroupID,omitempty" xml:"MachineGroupID,omitempty"`
 	Memory         *int64  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// Order ID
+	//
 	// example:
 	//
 	// “”
 	OrderInstanceId *string `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
+	// Duration
+	//
 	// example:
 	//
 	// 2
 	PaymentDuration *string `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
-	// region ID
+	// Region ID
 	//
 	// example:
 	//
 	// Monthly
 	PaymentDurationUnit *string `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
+	// Payment type
+	//
 	// example:
 	//
 	// PREPAY
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// Machine group error code
+	//
 	// example:
 	//
 	// “”
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// Machine group fault message
+	//
 	// example:
 	//
 	// “”
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// Resource group ID
+	//
 	// example:
 	//
 	// rgf0zhfqn1d4ity2
 	ResourceGroupID *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
 	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Machine group status
+	//
 	// example:
 	//
 	// Success
-	Status               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// List of NVIDIA GPU driver versions supported by the machine group
 	SupportedDrivers     []*string `json:"SupportedDrivers,omitempty" xml:"SupportedDrivers,omitempty" type:"Repeated"`
 	SystemReservedCpu    *int64    `json:"SystemReservedCpu,omitempty" xml:"SystemReservedCpu,omitempty"`
 	SystemReservedMemory *int64    `json:"SystemReservedMemory,omitempty" xml:"SystemReservedMemory,omitempty"`
