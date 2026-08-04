@@ -1223,6 +1223,80 @@ func (client *Client) CheckJDBCSourceNetConnection(request *CheckJDBCSourceNetCo
 
 // Summary:
 //
+// Checks the available update versions for a SaaS service.
+//
+// Description:
+//
+// Checks the available update versions for a SaaS service.
+//
+// @param request - CheckSaasServiceVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckSaasServiceVersionResponse
+func (client *Client) CheckSaasServiceVersionWithOptions(request *CheckSaasServiceVersionRequest, runtime *dara.RuntimeOptions) (_result *CheckSaasServiceVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ServiceId) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckSaasServiceVersion"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckSaasServiceVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Checks the available update versions for a SaaS service.
+//
+// Description:
+//
+// Checks the available update versions for a SaaS service.
+//
+// @param request - CheckSaasServiceVersionRequest
+//
+// @return CheckSaasServiceVersionResponse
+func (client *Client) CheckSaasServiceVersion(request *CheckSaasServiceVersionRequest) (_result *CheckSaasServiceVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CheckSaasServiceVersionResponse{}
+	_body, _err := client.CheckSaasServiceVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Checks whether a service-linked role is created.
 //
 // @param request - CheckServiceLinkedRoleRequest
@@ -14425,6 +14499,84 @@ func (client *Client) GetAccount(request *GetAccountRequest) (_result *GetAccoun
 
 // Summary:
 //
+// Queries API endpoints.
+//
+// Description:
+//
+// Queries API access endpoints.
+//
+// @param request - GetApiEndpointsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApiEndpointsResponse
+func (client *Client) GetApiEndpointsWithOptions(request *GetApiEndpointsRequest, runtime *dara.RuntimeOptions) (_result *GetApiEndpointsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetApiEndpoints"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetApiEndpointsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries API endpoints.
+//
+// Description:
+//
+// Queries API access endpoints.
+//
+// @param request - GetApiEndpointsRequest
+//
+// @return GetApiEndpointsResponse
+func (client *Client) GetApiEndpoints(request *GetApiEndpointsRequest) (_result *GetApiEndpointsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetApiEndpointsResponse{}
+	_body, _err := client.GetApiEndpointsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the details of an API key.
 //
 // Description:
@@ -15490,6 +15642,94 @@ func (client *Client) GetWorkspace(request *GetWorkspaceRequest) (_result *GetWo
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetWorkspaceResponse{}
 	_body, _err := client.GetWorkspaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Authorizes an API key to access SaaS services.
+//
+// Description:
+//
+// Retrieves the details of an API key.
+//
+// @param tmpReq - GrantApiKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GrantApiKeyResponse
+func (client *Client) GrantApiKeyWithOptions(tmpReq *GrantApiKeyRequest, runtime *dara.RuntimeOptions) (_result *GrantApiKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GrantApiKeyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ServiceIds) {
+		request.ServiceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ServiceIds, dara.String("ServiceIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KeyId) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ServiceIdsShrink) {
+		query["ServiceIds"] = request.ServiceIdsShrink
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GrantApiKey"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GrantApiKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Authorizes an API key to access SaaS services.
+//
+// Description:
+//
+// Retrieves the details of an API key.
+//
+// @param request - GrantApiKeyRequest
+//
+// @return GrantApiKeyResponse
+func (client *Client) GrantApiKey(request *GrantApiKeyRequest) (_result *GrantApiKeyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GrantApiKeyResponse{}
+	_body, _err := client.GrantApiKeyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20281,6 +20521,84 @@ func (client *Client) ModifySQLCollectorPolicy(request *ModifySQLCollectorPolicy
 
 // Summary:
 //
+// Modifies the deletion protection setting for a SaaS service.
+//
+// Description:
+//
+// Modifies the deletion protection setting for a SaaS service.
+//
+// @param request - ModifySaasServiceDeletionProtectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySaasServiceDeletionProtectionResponse
+func (client *Client) ModifySaasServiceDeletionProtectionWithOptions(request *ModifySaasServiceDeletionProtectionRequest, runtime *dara.RuntimeOptions) (_result *ModifySaasServiceDeletionProtectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DeletionProtection) {
+		query["DeletionProtection"] = request.DeletionProtection
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ServiceId) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifySaasServiceDeletionProtection"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifySaasServiceDeletionProtectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the deletion protection setting for a SaaS service.
+//
+// Description:
+//
+// Modifies the deletion protection setting for a SaaS service.
+//
+// @param request - ModifySaasServiceDeletionProtectionRequest
+//
+// @return ModifySaasServiceDeletionProtectionResponse
+func (client *Client) ModifySaasServiceDeletionProtection(request *ModifySaasServiceDeletionProtectionRequest) (_result *ModifySaasServiceDeletionProtectionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifySaasServiceDeletionProtectionResponse{}
+	_body, _err := client.ModifySaasServiceDeletionProtectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the IP address whitelist of an AnalyticDB for PostgreSQL instance.
 //
 // Description:
@@ -23142,6 +23460,94 @@ func (client *Client) ResumeSupabaseProject(request *ResumeSupabaseProjectReques
 
 // Summary:
 //
+// Revokes the access permissions of an API key to SaaS services.
+//
+// Description:
+//
+// Revokes the access permissions of an API key to SaaS services.
+//
+// @param tmpReq - RevokeApiKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeApiKeyResponse
+func (client *Client) RevokeApiKeyWithOptions(tmpReq *RevokeApiKeyRequest, runtime *dara.RuntimeOptions) (_result *RevokeApiKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &RevokeApiKeyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ServiceIds) {
+		request.ServiceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ServiceIds, dara.String("ServiceIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KeyId) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ServiceIdsShrink) {
+		query["ServiceIds"] = request.ServiceIdsShrink
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokeApiKey"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevokeApiKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes the access permissions of an API key to SaaS services.
+//
+// Description:
+//
+// Revokes the access permissions of an API key to SaaS services.
+//
+// @param request - RevokeApiKeyRequest
+//
+// @return RevokeApiKeyResponse
+func (client *Client) RevokeApiKey(request *RevokeApiKeyRequest) (_result *RevokeApiKeyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RevokeApiKeyResponse{}
+	_body, _err := client.RevokeApiKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Sets the default branch for a Supabase project.
 //
 // Description:
@@ -24387,6 +24793,80 @@ func (client *Client) UpdateDBInstancePlan(request *UpdateDBInstancePlanRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateDBInstancePlanResponse{}
 	_body, _err := client.UpdateDBInstancePlanWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the SaaS service version.
+//
+// Description:
+//
+// Updates the SaaS service version.
+//
+// @param request - UpdateSaasServiceVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSaasServiceVersionResponse
+func (client *Client) UpdateSaasServiceVersionWithOptions(request *UpdateSaasServiceVersionRequest, runtime *dara.RuntimeOptions) (_result *UpdateSaasServiceVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ServiceId) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateSaasServiceVersion"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateSaasServiceVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the SaaS service version.
+//
+// Description:
+//
+// Updates the SaaS service version.
+//
+// @param request - UpdateSaasServiceVersionRequest
+//
+// @return UpdateSaasServiceVersionResponse
+func (client *Client) UpdateSaasServiceVersion(request *UpdateSaasServiceVersionRequest) (_result *UpdateSaasServiceVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateSaasServiceVersionResponse{}
+	_body, _err := client.UpdateSaasServiceVersionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

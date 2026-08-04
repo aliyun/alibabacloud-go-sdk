@@ -117,6 +117,7 @@ func (s *ListSaasServiceResponseBody) Validate() error {
 }
 
 type ListSaasServiceResponseBodyItems struct {
+	// The list of service subcomponents.
 	Components []*ListSaasServiceResponseBodyItemsComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
 	// The creation time.
 	//
@@ -129,8 +130,17 @@ type ListSaasServiceResponseBodyItems struct {
 	// example:
 	//
 	// 1
-	Cu                 *int32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	DeletionProtection *bool  `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	Cu *int32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// Indicates whether the release protection feature is enabled. Valid values:
+	//
+	// 	- **true**: Enabled.
+	//
+	// 	- **false**: Disabled.
+	//
+	// example:
+	//
+	// True
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// The expiration time.
 	//
 	// example:
@@ -308,12 +318,46 @@ func (s *ListSaasServiceResponseBodyItems) Validate() error {
 }
 
 type ListSaasServiceResponseBodyItemsComponents struct {
-	ComponentId        *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
-	ComponentType      *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
-	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Cu                 *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	DeletionProtection *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The component ID.
+	//
+	// example:
+	//
+	// 0644c5aa-5306-478b-ac39-bb4660cdc9f7
+	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
+	// The type of the subcomponent.
+	//
+	// example:
+	//
+	// gamestudio
+	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2021-10-09T04:54:08Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The compute resource of the component.
+	//
+	// example:
+	//
+	// 2
+	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// The release protection status.
+	//
+	// example:
+	//
+	// true
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	// The service status. Valid values:
+	//
+	// - active: Running.
+	//
+	// - creating: Being created.
+	//
+	// example:
+	//
+	// active
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListSaasServiceResponseBodyItemsComponents) String() string {
