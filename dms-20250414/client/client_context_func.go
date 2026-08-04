@@ -1560,6 +1560,60 @@ func (client *Client) DeleteDataAgentKnowledgeBaseWithContext(ctx context.Contex
 
 // Summary:
 //
+// Deletes MCP Servers from a specified workspace.
+//
+// @param tmpReq - DeleteDataAgentMcpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataAgentMcpResponse
+func (client *Client) DeleteDataAgentMcpWithContext(ctx context.Context, tmpReq *DeleteDataAgentMcpRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataAgentMcpResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteDataAgentMcpShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.McpServerIds) {
+		request.McpServerIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.McpServerIds, dara.String("McpServerIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.McpServerIdsShrink) {
+		query["McpServerIds"] = request.McpServerIdsShrink
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDataAgentMcp"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDataAgentMcpResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes the memory of a DataAgent.
 //
 // @param request - DeleteDataAgentMemoryRequest
@@ -2715,6 +2769,54 @@ func (client *Client) GetChatContentWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
+// Queries the details of an MCP Server by its ID, including the workspace, network, connection method, and running status.
+//
+// @param request - GetDataAgentMcpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataAgentMcpResponse
+func (client *Client) GetDataAgentMcpWithContext(ctx context.Context, request *GetDataAgentMcpRequest, runtime *dara.RuntimeOptions) (_result *GetDataAgentMcpResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.McpServerId) {
+		query["McpServerId"] = request.McpServerId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataAgentMcp"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDataAgentMcpResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves information about a RAM user that belongs to an Alibaba Cloud account.
 //
 // @param request - GetDataAgentSubAccountInfoRequest
@@ -3109,6 +3211,58 @@ func (client *Client) GetDataLakeTableWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// Queries the MCP Server connectivity and tool list results by the Session ID returned when the detection was started.
+//
+// @param request - GetListMcpServerToolsResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetListMcpServerToolsResultResponse
+func (client *Client) GetListMcpServerToolsResultWithContext(ctx context.Context, request *GetListMcpServerToolsResultRequest, runtime *dara.RuntimeOptions) (_result *GetListMcpServerToolsResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.McpServerUuid) {
+		query["McpServerUuid"] = request.McpServerUuid
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetListMcpServerToolsResult"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetListMcpServerToolsResultResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Submits a task to schedule and run a Notebook file.
 //
 // @param request - GetNotebookAndSubmitTaskRequest
@@ -3437,6 +3591,138 @@ func (client *Client) GetWorkspaceQuotaWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetWorkspaceQuotaResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Installs all currently available system MCP services for a specified Data Agent workspace.
+//
+// @param request - InitWorkspaceSystemMcpServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InitWorkspaceSystemMcpServerResponse
+func (client *Client) InitWorkspaceSystemMcpServerWithContext(ctx context.Context, request *InitWorkspaceSystemMcpServerRequest, runtime *dara.RuntimeOptions) (_result *InitWorkspaceSystemMcpServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InitWorkspaceSystemMcpServer"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InitWorkspaceSystemMcpServerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Imports an MCP into DataAgent.
+//
+// Description:
+//
+// Imports an MCP into DataAgent.
+//
+// @param request - InstallDataAgentMcpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InstallDataAgentMcpResponse
+func (client *Client) InstallDataAgentMcpWithContext(ctx context.Context, request *InstallDataAgentMcpRequest, runtime *dara.RuntimeOptions) (_result *InstallDataAgentMcpResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Endpoint) {
+		query["Endpoint"] = request.Endpoint
+	}
+
+	if !dara.IsNil(request.FromJson) {
+		query["FromJson"] = request.FromJson
+	}
+
+	if !dara.IsNil(request.Headers) {
+		query["Headers"] = request.Headers
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NeedUidInHeader) {
+		query["NeedUidInHeader"] = request.NeedUidInHeader
+	}
+
+	if !dara.IsNil(request.NetType) {
+		query["NetType"] = request.NetType
+	}
+
+	if !dara.IsNil(request.TransportType) {
+		query["TransportType"] = request.TransportType
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !dara.IsNil(request.VswId) {
+		query["VswId"] = request.VswId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InstallDataAgentMcp"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InstallDataAgentMcpResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3843,6 +4129,78 @@ func (client *Client) ListDataAgentAccuracyTestTasksWithContext(ctx context.Cont
 
 // Summary:
 //
+// Queries MCP Servers in a specified workspace by paging. You can filter results by name, ready status, and service type.
+//
+// @param request - ListDataAgentMcpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataAgentMcpResponse
+func (client *Client) ListDataAgentMcpWithContext(ctx context.Context, request *ListDataAgentMcpRequest, runtime *dara.RuntimeOptions) (_result *ListDataAgentMcpResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ReadyOnly) {
+		query["ReadyOnly"] = request.ReadyOnly
+	}
+
+	if !dara.IsNil(request.SearchKey) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataAgentMcp"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataAgentMcpResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the DataAgent memory list (up to 50 memories per RAM user).
 //
 // @param request - ListDataAgentMemoryRequest
@@ -3919,7 +4277,7 @@ func (client *Client) ListDataAgentMemoryWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves the list of historical session descriptions for a Data Agent.
+// Retrieves the list of historical session descriptions for Data Agent.
 //
 // @param request - ListDataAgentSessionRequest
 //
@@ -3940,6 +4298,10 @@ func (client *Client) ListDataAgentSessionWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.CreateStartTime) {
 		query["CreateStartTime"] = request.CreateStartTime
+	}
+
+	if !dara.IsNil(request.CreatorId) {
+		query["CreatorId"] = request.CreatorId
 	}
 
 	if !dara.IsNil(request.CustomAgentId) {
@@ -4018,6 +4380,10 @@ func (client *Client) ListDataAgentWorkspaceWithContext(ctx context.Context, req
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Creator) {
+		query["Creator"] = request.Creator
+	}
+
 	if !dara.IsNil(request.DMSUnit) {
 		query["DMSUnit"] = request.DMSUnit
 	}
@@ -5439,6 +5805,86 @@ func (client *Client) ModifyCustomAgentWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
+// Modifies the configuration of an MCP server.
+//
+// Description:
+//
+// Modifies the configuration of an MCP server.
+//
+// @param request - ModifyDataAgentMcpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDataAgentMcpResponse
+func (client *Client) ModifyDataAgentMcpWithContext(ctx context.Context, request *ModifyDataAgentMcpRequest, runtime *dara.RuntimeOptions) (_result *ModifyDataAgentMcpResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Enable) {
+		query["Enable"] = request.Enable
+	}
+
+	if !dara.IsNil(request.Endpoint) {
+		query["Endpoint"] = request.Endpoint
+	}
+
+	if !dara.IsNil(request.Headers) {
+		query["Headers"] = request.Headers
+	}
+
+	if !dara.IsNil(request.McpServerId) {
+		query["McpServerId"] = request.McpServerId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NeedUidInHeader) {
+		query["NeedUidInHeader"] = request.NeedUidInHeader
+	}
+
+	if !dara.IsNil(request.TransportType) {
+		query["TransportType"] = request.TransportType
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyDataAgentMcp"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyDataAgentMcpResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Operate custom agents in personal spaces and workspaces.
 //
 // @param request - OperateCustomAgentRequest
@@ -6055,6 +6501,58 @@ func (client *Client) StartDataAgentAccuracyTestTaskWithContext(ctx context.Cont
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartDataAgentAccuracyTestTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Asynchronously starts MCP Server connectivity and tool list detection. The first call prompts you to wait one minute for resource provisioning. Subsequent calls return a temporary Session ID for polling the result.
+//
+// @param request - StartListMcpServerToolsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartListMcpServerToolsResponse
+func (client *Client) StartListMcpServerToolsWithContext(ctx context.Context, request *StartListMcpServerToolsRequest, runtime *dara.RuntimeOptions) (_result *StartListMcpServerToolsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.McpServerUuid) {
+		query["McpServerUuid"] = request.McpServerUuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StartListMcpServerTools"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StartListMcpServerToolsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

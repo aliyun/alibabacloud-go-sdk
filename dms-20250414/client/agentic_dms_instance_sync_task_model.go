@@ -25,6 +25,10 @@ type iAgenticDmsInstanceSyncTask interface {
 	GetGmtCreate() *string
 	SetGmtModified(v string) *AgenticDmsInstanceSyncTask
 	GetGmtModified() *string
+	SetOperatorMode(v string) *AgenticDmsInstanceSyncTask
+	GetOperatorMode() *string
+	SetRequestedOperatorMode(v string) *AgenticDmsInstanceSyncTask
+	GetRequestedOperatorMode() *string
 	SetSkippedCount(v int32) *AgenticDmsInstanceSyncTask
 	GetSkippedCount() *int32
 	SetStatus(v string) *AgenticDmsInstanceSyncTask
@@ -48,6 +52,8 @@ type AgenticDmsInstanceSyncTask struct {
 	FailedCount            *int32  `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
 	GmtCreate              *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified            *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	OperatorMode           *string `json:"OperatorMode,omitempty" xml:"OperatorMode,omitempty"`
+	RequestedOperatorMode  *string `json:"RequestedOperatorMode,omitempty" xml:"RequestedOperatorMode,omitempty"`
 	SkippedCount           *int32  `json:"SkippedCount,omitempty" xml:"SkippedCount,omitempty"`
 	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	SuccessCount           *int32  `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
@@ -94,6 +100,14 @@ func (s *AgenticDmsInstanceSyncTask) GetGmtCreate() *string {
 
 func (s *AgenticDmsInstanceSyncTask) GetGmtModified() *string {
 	return s.GmtModified
+}
+
+func (s *AgenticDmsInstanceSyncTask) GetOperatorMode() *string {
+	return s.OperatorMode
+}
+
+func (s *AgenticDmsInstanceSyncTask) GetRequestedOperatorMode() *string {
+	return s.RequestedOperatorMode
 }
 
 func (s *AgenticDmsInstanceSyncTask) GetSkippedCount() *int32 {
@@ -157,6 +171,16 @@ func (s *AgenticDmsInstanceSyncTask) SetGmtCreate(v string) *AgenticDmsInstanceS
 
 func (s *AgenticDmsInstanceSyncTask) SetGmtModified(v string) *AgenticDmsInstanceSyncTask {
 	s.GmtModified = &v
+	return s
+}
+
+func (s *AgenticDmsInstanceSyncTask) SetOperatorMode(v string) *AgenticDmsInstanceSyncTask {
+	s.OperatorMode = &v
+	return s
+}
+
+func (s *AgenticDmsInstanceSyncTask) SetRequestedOperatorMode(v string) *AgenticDmsInstanceSyncTask {
+	s.RequestedOperatorMode = &v
 	return s
 }
 

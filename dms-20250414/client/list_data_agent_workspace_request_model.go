@@ -9,6 +9,8 @@ type iListDataAgentWorkspaceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCreator(v string) *ListDataAgentWorkspaceRequest
+	GetCreator() *string
 	SetDMSUnit(v string) *ListDataAgentWorkspaceRequest
 	GetDMSUnit() *string
 	SetMaxResults(v int32) *ListDataAgentWorkspaceRequest
@@ -30,6 +32,7 @@ type iListDataAgentWorkspaceRequest interface {
 }
 
 type ListDataAgentWorkspaceRequest struct {
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
 	// The current DMS unit.
 	//
 	// example:
@@ -54,7 +57,7 @@ type ListDataAgentWorkspaceRequest struct {
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The field name used for sorting.
+	// The name of the field by which to sort.
 	//
 	// example:
 	//
@@ -100,6 +103,10 @@ func (s ListDataAgentWorkspaceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListDataAgentWorkspaceRequest) GetCreator() *string {
+	return s.Creator
+}
+
 func (s *ListDataAgentWorkspaceRequest) GetDMSUnit() *string {
 	return s.DMSUnit
 }
@@ -134,6 +141,11 @@ func (s *ListDataAgentWorkspaceRequest) GetWorkspaceName() *string {
 
 func (s *ListDataAgentWorkspaceRequest) GetWorkspaceType() *string {
 	return s.WorkspaceType
+}
+
+func (s *ListDataAgentWorkspaceRequest) SetCreator(v string) *ListDataAgentWorkspaceRequest {
+	s.Creator = &v
+	return s
 }
 
 func (s *ListDataAgentWorkspaceRequest) SetDMSUnit(v string) *ListDataAgentWorkspaceRequest {

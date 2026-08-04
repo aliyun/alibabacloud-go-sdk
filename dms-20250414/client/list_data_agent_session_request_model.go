@@ -13,6 +13,8 @@ type iListDataAgentSessionRequest interface {
 	GetCreateEndTime() *int64
 	SetCreateStartTime(v int64) *ListDataAgentSessionRequest
 	GetCreateStartTime() *int64
+	SetCreatorId(v string) *ListDataAgentSessionRequest
+	GetCreatorId() *string
 	SetCustomAgentId(v string) *ListDataAgentSessionRequest
 	GetCustomAgentId() *string
 	SetDMSUnit(v string) *ListDataAgentSessionRequest
@@ -34,25 +36,26 @@ type iListDataAgentSessionRequest interface {
 }
 
 type ListDataAgentSessionRequest struct {
-	// The end time of the session creation period.
+	// The end time for session creation.
 	//
 	// example:
 	//
 	// 1770912000000
 	CreateEndTime *int64 `json:"CreateEndTime,omitempty" xml:"CreateEndTime,omitempty"`
-	// The start time of the session creation period.
+	// The start time for session creation.
 	//
 	// example:
 	//
 	// 1770825600000
-	CreateStartTime *int64 `json:"CreateStartTime,omitempty" xml:"CreateStartTime,omitempty"`
+	CreateStartTime *int64  `json:"CreateStartTime,omitempty" xml:"CreateStartTime,omitempty"`
+	CreatorId       *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	// The custom agent ID.
 	//
 	// example:
 	//
 	// ca-4y3ca4khkcu**********ysf
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
-	// The current DMS unit.
+	// The current Data Management unit.
 	//
 	// example:
 	//
@@ -63,8 +66,13 @@ type ListDataAgentSessionRequest struct {
 	// example:
 	//
 	// true
-	IsSaved *bool   `json:"IsSaved,omitempty" xml:"IsSaved,omitempty"`
-	Mode    *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	IsSaved *bool `json:"IsSaved,omitempty" xml:"IsSaved,omitempty"`
+	// The mode. Valid values:
+	//
+	// - Analysis
+	//
+	// - Coding
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The page number.
 	//
 	// example:
@@ -77,7 +85,7 @@ type ListDataAgentSessionRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The session type. This parameter is required if a workspace is specified.
+	// The session type. This parameter is required when a workspace is specified.
 	//
 	// example:
 	//
@@ -87,7 +95,7 @@ type ListDataAgentSessionRequest struct {
 	//
 	// example:
 	//
-	// 帮我分析一下这份数据
+	// Analyze this data for me
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The workspace ID.
 	//
@@ -111,6 +119,10 @@ func (s *ListDataAgentSessionRequest) GetCreateEndTime() *int64 {
 
 func (s *ListDataAgentSessionRequest) GetCreateStartTime() *int64 {
 	return s.CreateStartTime
+}
+
+func (s *ListDataAgentSessionRequest) GetCreatorId() *string {
+	return s.CreatorId
 }
 
 func (s *ListDataAgentSessionRequest) GetCustomAgentId() *string {
@@ -156,6 +168,11 @@ func (s *ListDataAgentSessionRequest) SetCreateEndTime(v int64) *ListDataAgentSe
 
 func (s *ListDataAgentSessionRequest) SetCreateStartTime(v int64) *ListDataAgentSessionRequest {
 	s.CreateStartTime = &v
+	return s
+}
+
+func (s *ListDataAgentSessionRequest) SetCreatorId(v string) *ListDataAgentSessionRequest {
+	s.CreatorId = &v
 	return s
 }
 

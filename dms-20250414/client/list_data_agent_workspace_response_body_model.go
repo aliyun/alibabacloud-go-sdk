@@ -242,7 +242,7 @@ func (s *ListDataAgentWorkspaceResponseBodyData) Validate() error {
 }
 
 type ListDataAgentWorkspaceResponseBodyDataContent struct {
-	// The creation time of the workspace, in UNIX timestamp format (milliseconds).
+	// The creation time of the workspace, in milliseconds (UNIX timestamp).
 	//
 	// example:
 	//
@@ -253,7 +253,8 @@ type ListDataAgentWorkspaceResponseBodyDataContent struct {
 	// example:
 	//
 	// 20282*****7591
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Creator     *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
 	// The description of the workspace.
 	//
 	// example:
@@ -266,7 +267,7 @@ type ListDataAgentWorkspaceResponseBodyDataContent struct {
 	//
 	// true
 	IsSessionShareEnabled *bool `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
-	// The most recent modification time of the workspace, in UNIX timestamp format (milliseconds).
+	// The most recent modification time of the workspace, in milliseconds (UNIX timestamp).
 	//
 	// example:
 	//
@@ -277,13 +278,15 @@ type ListDataAgentWorkspaceResponseBodyDataContent struct {
 	// example:
 	//
 	// admin
-	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	RoleName            *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	RunningSessionCount *int32  `json:"RunningSessionCount,omitempty" xml:"RunningSessionCount,omitempty"`
 	// The number of members in the workspace.
 	//
 	// example:
 	//
 	// 11
-	TotalMember *int64 `json:"TotalMember,omitempty" xml:"TotalMember,omitempty"`
+	TotalMember       *int64 `json:"TotalMember,omitempty" xml:"TotalMember,omitempty"`
+	TotalSessionCount *int32 `json:"TotalSessionCount,omitempty" xml:"TotalSessionCount,omitempty"`
 	// The workspace type.
 	//
 	// example:
@@ -326,6 +329,10 @@ func (s *ListDataAgentWorkspaceResponseBodyDataContent) GetCreator() *string {
 	return s.Creator
 }
 
+func (s *ListDataAgentWorkspaceResponseBodyDataContent) GetCreatorName() *string {
+	return s.CreatorName
+}
+
 func (s *ListDataAgentWorkspaceResponseBodyDataContent) GetDescription() *string {
 	return s.Description
 }
@@ -342,8 +349,16 @@ func (s *ListDataAgentWorkspaceResponseBodyDataContent) GetRoleName() *string {
 	return s.RoleName
 }
 
+func (s *ListDataAgentWorkspaceResponseBodyDataContent) GetRunningSessionCount() *int32 {
+	return s.RunningSessionCount
+}
+
 func (s *ListDataAgentWorkspaceResponseBodyDataContent) GetTotalMember() *int64 {
 	return s.TotalMember
+}
+
+func (s *ListDataAgentWorkspaceResponseBodyDataContent) GetTotalSessionCount() *int32 {
+	return s.TotalSessionCount
 }
 
 func (s *ListDataAgentWorkspaceResponseBodyDataContent) GetType() *string {
@@ -372,6 +387,11 @@ func (s *ListDataAgentWorkspaceResponseBodyDataContent) SetCreator(v string) *Li
 	return s
 }
 
+func (s *ListDataAgentWorkspaceResponseBodyDataContent) SetCreatorName(v string) *ListDataAgentWorkspaceResponseBodyDataContent {
+	s.CreatorName = &v
+	return s
+}
+
 func (s *ListDataAgentWorkspaceResponseBodyDataContent) SetDescription(v string) *ListDataAgentWorkspaceResponseBodyDataContent {
 	s.Description = &v
 	return s
@@ -392,8 +412,18 @@ func (s *ListDataAgentWorkspaceResponseBodyDataContent) SetRoleName(v string) *L
 	return s
 }
 
+func (s *ListDataAgentWorkspaceResponseBodyDataContent) SetRunningSessionCount(v int32) *ListDataAgentWorkspaceResponseBodyDataContent {
+	s.RunningSessionCount = &v
+	return s
+}
+
 func (s *ListDataAgentWorkspaceResponseBodyDataContent) SetTotalMember(v int64) *ListDataAgentWorkspaceResponseBodyDataContent {
 	s.TotalMember = &v
+	return s
+}
+
+func (s *ListDataAgentWorkspaceResponseBodyDataContent) SetTotalSessionCount(v int32) *ListDataAgentWorkspaceResponseBodyDataContent {
+	s.TotalSessionCount = &v
 	return s
 }
 

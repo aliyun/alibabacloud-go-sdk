@@ -32,13 +32,13 @@ type iListDataAgentSessionResponseBody interface {
 type ListDataAgentSessionResponseBody struct {
 	// The response struct.
 	Data []*ListDataAgentSessionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code returned if the request fails.
+	// The error code returned when the request is abnormal.
 	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request fails.
+	// The error message returned when the call fails.
 	//
 	// example:
 	//
@@ -62,11 +62,11 @@ type ListDataAgentSessionResponseBody struct {
 	//
 	// E0D21075-CD3E-4D98-8264-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**: The request is successful.
+	// - **true**: The request was successful.
 	//
-	// - **false**: The request fails.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -243,7 +243,7 @@ type ListDataAgentSessionResponseBodyData struct {
 	//
 	// example:
 	//
-	// 分析一下这份文件，给出报告。
+	// Analyze this file and generate a report
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The ID of the session owner.
 	//
@@ -380,7 +380,7 @@ type ListDataAgentSessionResponseBodyDataSessionConfig struct {
 	//
 	// - **debug**: Debug stage.
 	//
-	// - **prod**: Production stage.
+	// - **prod**: Production environment stage.
 	//
 	// example:
 	//
@@ -404,11 +404,11 @@ type ListDataAgentSessionResponseBodyDataSessionConfig struct {
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The mode. Valid values:
 	//
-	//  - **ASK_DATA**: Ask data mode.
+	// - **ASK_DATA**: Ask data mode.
 	//
-	//  - **ANALYSIS**: Analysis mode.
+	// - **ANALYSIS**: Analysis mode.
 	//
-	//  - **INSIGHT**: Insight mode.
+	// - **INSIGHT**: Insight mode.
 	//
 	// example:
 	//
@@ -416,7 +416,7 @@ type ListDataAgentSessionResponseBodyDataSessionConfig struct {
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The name of the user OSS bucket.
 	//
-	// - Analysis process files and report artifacts can be uploaded to the user-specified OSS bucket.
+	// - Analysis process files and report outputs can be uploaded to the user-specified OSS bucket.
 	//
 	// example:
 	//
