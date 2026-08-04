@@ -28,23 +28,23 @@ type iModelRouterQueryCostOverviewMetricsResponseBody interface {
 }
 
 type ModelRouterQueryCostOverviewMetricsResponseBody struct {
-	// The data object that contains the returned metrics.
+	// The data object.
 	//
 	// example:
 	//
 	// []
 	Data []*MetricValueDTO `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The error code that is returned if the request fails.
+	// The fault code.
 	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	// The error message that is returned if the request fails.
+	// The error message.
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -52,13 +52,13 @@ type ModelRouterQueryCostOverviewMetricsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The maximum number of entries returned on each page.
+	// The maximum number of results to return.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token to retrieve the next page of results.
+	// nextToken
 	//
 	// example:
 	//

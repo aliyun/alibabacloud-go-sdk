@@ -19,6 +19,8 @@ type iModelRouterQueryUsageBreakdownRequest interface {
 	GetGranularity() *string
 	SetMaxResults(v int32) *ModelRouterQueryUsageBreakdownRequest
 	GetMaxResults() *int32
+	SetMemberUserIds(v string) *ModelRouterQueryUsageBreakdownRequest
+	GetMemberUserIds() *string
 	SetNextToken(v string) *ModelRouterQueryUsageBreakdownRequest
 	GetNextToken() *string
 	SetPage(v int32) *ModelRouterQueryUsageBreakdownRequest
@@ -42,7 +44,7 @@ type ModelRouterQueryUsageBreakdownRequest struct {
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
-	// The query end time, in UNIX timestamp (seconds).
+	// The query end time, in UNIX timestamp format (seconds).
 	//
 	// This parameter is required.
 	//
@@ -64,6 +66,12 @@ type ModelRouterQueryUsageBreakdownRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Optional. Filters results by members (member IDs, separated by commas). If not specified, the department and all its members are included. If an empty value is specified, only the department is included without members.
+	//
+	// example:
+	//
+	// 30001,30002
+	MemberUserIds *string `json:"memberUserIds,omitempty" xml:"memberUserIds,omitempty"`
 	// The pagination token.
 	//
 	// example:
@@ -82,7 +90,7 @@ type ModelRouterQueryUsageBreakdownRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The query start time, in UNIX timestamp (seconds).
+	// The query start time, in UNIX timestamp format (seconds).
 	//
 	// This parameter is required.
 	//
@@ -118,6 +126,10 @@ func (s *ModelRouterQueryUsageBreakdownRequest) GetGranularity() *string {
 
 func (s *ModelRouterQueryUsageBreakdownRequest) GetMaxResults() *int32 {
 	return s.MaxResults
+}
+
+func (s *ModelRouterQueryUsageBreakdownRequest) GetMemberUserIds() *string {
+	return s.MemberUserIds
 }
 
 func (s *ModelRouterQueryUsageBreakdownRequest) GetNextToken() *string {
@@ -158,6 +170,11 @@ func (s *ModelRouterQueryUsageBreakdownRequest) SetGranularity(v string) *ModelR
 
 func (s *ModelRouterQueryUsageBreakdownRequest) SetMaxResults(v int32) *ModelRouterQueryUsageBreakdownRequest {
 	s.MaxResults = &v
+	return s
+}
+
+func (s *ModelRouterQueryUsageBreakdownRequest) SetMemberUserIds(v string) *ModelRouterQueryUsageBreakdownRequest {
+	s.MemberUserIds = &v
 	return s
 }
 

@@ -30,7 +30,7 @@ type ModelRouterCreateApiKeyResponseBody struct {
 	//
 	// []
 	Data *ApiKeyDTO `json:"data,omitempty" xml:"data,omitempty"`
-	// The fault code.
+	// The fault message code.
 	//
 	// example:
 	//

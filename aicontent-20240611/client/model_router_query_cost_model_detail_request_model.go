@@ -17,6 +17,8 @@ type iModelRouterQueryCostModelDetailRequest interface {
 	GetEndTime() *int64
 	SetMaxResults(v int32) *ModelRouterQueryCostModelDetailRequest
 	GetMaxResults() *int32
+	SetMemberUserIds(v string) *ModelRouterQueryCostModelDetailRequest
+	GetMemberUserIds() *string
 	SetModelId(v int64) *ModelRouterQueryCostModelDetailRequest
 	GetModelId() *int64
 	SetNextToken(v string) *ModelRouterQueryCostModelDetailRequest
@@ -32,17 +34,19 @@ type iModelRouterQueryCostModelDetailRequest interface {
 }
 
 type ModelRouterQueryCostModelDetailRequest struct {
+	// Optional. Filters by API Key ID. This parameter is linked to the department and requires clientId to be specified first.
+	//
 	// example:
 	//
 	// 100
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
-	// The department ID by which to filter results.
+	// The department ID used to filter results.
 	//
 	// example:
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
-	// The end of the time range to query, specified as a Unix timestamp in seconds.
+	// The end time, in UNIX timestamp (seconds).
 	//
 	// This parameter is required.
 	//
@@ -50,12 +54,18 @@ type ModelRouterQueryCostModelDetailRequest struct {
 	//
 	// 1700086400
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The maximum number of results to return per page. This parameter is recommended for pagination.
+	// maxResults
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Optional. Filters by member IDs. Separate multiple IDs with commas. If not specified, the department and all its members are included. If an empty value is specified, only the department is included without members.
+	//
+	// example:
+	//
+	// 30001,30002
+	MemberUserIds *string `json:"memberUserIds,omitempty" xml:"memberUserIds,omitempty"`
 	// The model ID.
 	//
 	// This parameter is required.
@@ -64,31 +74,31 @@ type ModelRouterQueryCostModelDetailRequest struct {
 	//
 	// 1
 	ModelId *int64 `json:"modelId,omitempty" xml:"modelId,omitempty"`
-	// The token to retrieve the next page of results. Obtain this token from the `nextToken` field in a previous response.
+	// nextToken
 	//
 	// example:
 	//
 	// xxxx-xxx-xxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The page number. This parameter is part of an older pagination method. For better performance and consistency, use `maxResults` and `nextToken` instead.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// The page number. This parameter is part of an older pagination method. For better performance and consistency, use `maxResults` and `nextToken` instead.
+	// The page number. This parameter takes priority over the page parameter.
 	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	// The page size. Default: 20.
+	// The number of entries per page. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The start of the time range to query, specified as a Unix timestamp in seconds.
+	// The start time, in UNIX timestamp (seconds).
 	//
 	// This parameter is required.
 	//
@@ -120,6 +130,10 @@ func (s *ModelRouterQueryCostModelDetailRequest) GetEndTime() *int64 {
 
 func (s *ModelRouterQueryCostModelDetailRequest) GetMaxResults() *int32 {
 	return s.MaxResults
+}
+
+func (s *ModelRouterQueryCostModelDetailRequest) GetMemberUserIds() *string {
+	return s.MemberUserIds
 }
 
 func (s *ModelRouterQueryCostModelDetailRequest) GetModelId() *int64 {
@@ -163,6 +177,11 @@ func (s *ModelRouterQueryCostModelDetailRequest) SetEndTime(v int64) *ModelRoute
 
 func (s *ModelRouterQueryCostModelDetailRequest) SetMaxResults(v int32) *ModelRouterQueryCostModelDetailRequest {
 	s.MaxResults = &v
+	return s
+}
+
+func (s *ModelRouterQueryCostModelDetailRequest) SetMemberUserIds(v string) *ModelRouterQueryCostModelDetailRequest {
+	s.MemberUserIds = &v
 	return s
 }
 

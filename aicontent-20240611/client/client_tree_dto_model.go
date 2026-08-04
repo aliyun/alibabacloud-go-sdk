@@ -37,16 +37,20 @@ type iClientTreeDTO interface {
 	GetMain() *int32
 	SetName(v string) *ClientTreeDTO
 	GetName() *string
+	SetNodeType(v string) *ClientTreeDTO
+	GetNodeType() *string
 	SetParentId(v int64) *ClientTreeDTO
 	GetParentId() *int64
 	SetRemark(v string) *ClientTreeDTO
 	GetRemark() *string
+	SetUserId(v int64) *ClientTreeDTO
+	GetUserId() *int64
 }
 
 type ClientTreeDTO struct {
 	// example:
 	//
-	// 杭州市
+	// Hangzhou
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
 	// example:
 	//
@@ -98,16 +102,24 @@ type ClientTreeDTO struct {
 	Main *int32 `json:"main,omitempty" xml:"main,omitempty"`
 	// example:
 	//
-	// 我的客户
+	// My customer
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// department
+	NodeType *string `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
 	// example:
 	//
 	// null
 	ParentId *int64 `json:"parentId,omitempty" xml:"parentId,omitempty"`
 	// example:
 	//
-	// 备注
+	// Remarks
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// example:
+	//
+	// 30001
+	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s ClientTreeDTO) String() string {
@@ -174,12 +186,20 @@ func (s *ClientTreeDTO) GetName() *string {
 	return s.Name
 }
 
+func (s *ClientTreeDTO) GetNodeType() *string {
+	return s.NodeType
+}
+
 func (s *ClientTreeDTO) GetParentId() *int64 {
 	return s.ParentId
 }
 
 func (s *ClientTreeDTO) GetRemark() *string {
 	return s.Remark
+}
+
+func (s *ClientTreeDTO) GetUserId() *int64 {
+	return s.UserId
 }
 
 func (s *ClientTreeDTO) SetAddress(v string) *ClientTreeDTO {
@@ -252,6 +272,11 @@ func (s *ClientTreeDTO) SetName(v string) *ClientTreeDTO {
 	return s
 }
 
+func (s *ClientTreeDTO) SetNodeType(v string) *ClientTreeDTO {
+	s.NodeType = &v
+	return s
+}
+
 func (s *ClientTreeDTO) SetParentId(v int64) *ClientTreeDTO {
 	s.ParentId = &v
 	return s
@@ -259,6 +284,11 @@ func (s *ClientTreeDTO) SetParentId(v int64) *ClientTreeDTO {
 
 func (s *ClientTreeDTO) SetRemark(v string) *ClientTreeDTO {
 	s.Remark = &v
+	return s
+}
+
+func (s *ClientTreeDTO) SetUserId(v int64) *ClientTreeDTO {
+	s.UserId = &v
 	return s
 }
 

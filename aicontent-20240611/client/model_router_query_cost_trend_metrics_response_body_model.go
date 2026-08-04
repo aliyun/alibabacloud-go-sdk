@@ -28,23 +28,23 @@ type iModelRouterQueryCostTrendMetricsResponseBody interface {
 }
 
 type ModelRouterQueryCostTrendMetricsResponseBody struct {
-	// The data object containing the cost trend metrics.
+	// The data object.
 	//
 	// example:
 	//
 	// []
 	Data *CostQueryTrendDTO `json:"data,omitempty" xml:"data,omitempty"`
-	// The error code returned when the request fails.
+	// The fault code.
 	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	// The error message returned when the request fails.
+	// The error message.
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -52,25 +52,25 @@ type ModelRouterQueryCostTrendMetricsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The maximum number of results returned per page.
+	// The maximum number of results to return.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// A token to retrieve the next page of results. If no token is returned, all results have been retrieved.
+	// nextToken
 	//
 	// example:
 	//
 	// xxxx-xxx-xxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The unique request ID. If you encounter a problem, provide this ID to technical support for troubleshooting.
+	// The request ID.
 	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful. A value of `true` indicates success, and `false` indicates failure.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

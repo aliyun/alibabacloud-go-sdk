@@ -17,6 +17,10 @@ type iUsageBreakdownRowDTO interface {
 	GetClientId() *int64
 	SetClientName(v string) *UsageBreakdownRowDTO
 	GetClientName() *string
+	SetMemberUserId(v int64) *UsageBreakdownRowDTO
+	GetMemberUserId() *int64
+	SetMemberUserName(v string) *UsageBreakdownRowDTO
+	GetMemberUserName() *string
 	SetMetrics(v []*MetricKVPairDTO) *UsageBreakdownRowDTO
 	GetMetrics() []*MetricKVPairDTO
 	SetModelCode(v string) *UsageBreakdownRowDTO
@@ -52,6 +56,14 @@ type UsageBreakdownRowDTO struct {
 	//
 	// 研发部
 	ClientName *string `json:"clientName,omitempty" xml:"clientName,omitempty"`
+	// example:
+	//
+	// 30001
+	MemberUserId *int64 `json:"memberUserId,omitempty" xml:"memberUserId,omitempty"`
+	// example:
+	//
+	// 张三
+	MemberUserName *string `json:"memberUserName,omitempty" xml:"memberUserName,omitempty"`
 	// Array of usage metrics, containing only entries with non-zero values
 	//
 	// example:
@@ -114,6 +126,14 @@ func (s *UsageBreakdownRowDTO) GetClientName() *string {
 	return s.ClientName
 }
 
+func (s *UsageBreakdownRowDTO) GetMemberUserId() *int64 {
+	return s.MemberUserId
+}
+
+func (s *UsageBreakdownRowDTO) GetMemberUserName() *string {
+	return s.MemberUserName
+}
+
 func (s *UsageBreakdownRowDTO) GetMetrics() []*MetricKVPairDTO {
 	return s.Metrics
 }
@@ -155,6 +175,16 @@ func (s *UsageBreakdownRowDTO) SetClientId(v int64) *UsageBreakdownRowDTO {
 
 func (s *UsageBreakdownRowDTO) SetClientName(v string) *UsageBreakdownRowDTO {
 	s.ClientName = &v
+	return s
+}
+
+func (s *UsageBreakdownRowDTO) SetMemberUserId(v int64) *UsageBreakdownRowDTO {
+	s.MemberUserId = &v
+	return s
+}
+
+func (s *UsageBreakdownRowDTO) SetMemberUserName(v string) *UsageBreakdownRowDTO {
+	s.MemberUserName = &v
 	return s
 }
 

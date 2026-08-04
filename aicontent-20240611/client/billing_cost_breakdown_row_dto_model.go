@@ -21,14 +21,22 @@ type iBillingCostBreakdownRowDTO interface {
 	GetClientName() *string
 	SetDimValues(v string) *BillingCostBreakdownRowDTO
 	GetDimValues() *string
+	SetMemberUserId(v int64) *BillingCostBreakdownRowDTO
+	GetMemberUserId() *int64
+	SetMemberUserName(v string) *BillingCostBreakdownRowDTO
+	GetMemberUserName() *string
 	SetModelCode(v string) *BillingCostBreakdownRowDTO
 	GetModelCode() *string
 	SetModelId(v int64) *BillingCostBreakdownRowDTO
 	GetModelId() *int64
 	SetModelName(v string) *BillingCostBreakdownRowDTO
 	GetModelName() *string
+	SetModelSymbol(v string) *BillingCostBreakdownRowDTO
+	GetModelSymbol() *string
 	SetModelType(v string) *BillingCostBreakdownRowDTO
 	GetModelType() *string
+	SetModelVersion(v int32) *BillingCostBreakdownRowDTO
+	GetModelVersion() *int32
 	SetPayableAmount(v float32) *BillingCostBreakdownRowDTO
 	GetPayableAmount() *float32
 	SetSummaryTime(v int64) *BillingCostBreakdownRowDTO
@@ -70,6 +78,14 @@ type BillingCostBreakdownRowDTO struct {
 	//
 	// {"billing_version": "v1"}
 	DimValues *string `json:"dimValues,omitempty" xml:"dimValues,omitempty"`
+	// example:
+	//
+	// 30001
+	MemberUserId *int64 `json:"memberUserId,omitempty" xml:"memberUserId,omitempty"`
+	// example:
+	//
+	// 张三
+	MemberUserName *string `json:"memberUserName,omitempty" xml:"memberUserName,omitempty"`
 	// Model identifier
 	//
 	// example:
@@ -88,12 +104,20 @@ type BillingCostBreakdownRowDTO struct {
 	//
 	// 通义千问-Plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// example:
+	//
+	// qwen
+	ModelSymbol *string `json:"modelSymbol,omitempty" xml:"modelSymbol,omitempty"`
 	// Statistics category
 	//
 	// example:
 	//
 	// llm
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// example:
+	//
+	// 1
+	ModelVersion *int32 `json:"modelVersion,omitempty" xml:"modelVersion,omitempty"`
 	// Payable amount, rounded to 8 decimal places
 	//
 	// example:
@@ -148,6 +172,14 @@ func (s *BillingCostBreakdownRowDTO) GetDimValues() *string {
 	return s.DimValues
 }
 
+func (s *BillingCostBreakdownRowDTO) GetMemberUserId() *int64 {
+	return s.MemberUserId
+}
+
+func (s *BillingCostBreakdownRowDTO) GetMemberUserName() *string {
+	return s.MemberUserName
+}
+
 func (s *BillingCostBreakdownRowDTO) GetModelCode() *string {
 	return s.ModelCode
 }
@@ -160,8 +192,16 @@ func (s *BillingCostBreakdownRowDTO) GetModelName() *string {
 	return s.ModelName
 }
 
+func (s *BillingCostBreakdownRowDTO) GetModelSymbol() *string {
+	return s.ModelSymbol
+}
+
 func (s *BillingCostBreakdownRowDTO) GetModelType() *string {
 	return s.ModelType
+}
+
+func (s *BillingCostBreakdownRowDTO) GetModelVersion() *int32 {
+	return s.ModelVersion
 }
 
 func (s *BillingCostBreakdownRowDTO) GetPayableAmount() *float32 {
@@ -210,6 +250,16 @@ func (s *BillingCostBreakdownRowDTO) SetDimValues(v string) *BillingCostBreakdow
 	return s
 }
 
+func (s *BillingCostBreakdownRowDTO) SetMemberUserId(v int64) *BillingCostBreakdownRowDTO {
+	s.MemberUserId = &v
+	return s
+}
+
+func (s *BillingCostBreakdownRowDTO) SetMemberUserName(v string) *BillingCostBreakdownRowDTO {
+	s.MemberUserName = &v
+	return s
+}
+
 func (s *BillingCostBreakdownRowDTO) SetModelCode(v string) *BillingCostBreakdownRowDTO {
 	s.ModelCode = &v
 	return s
@@ -225,8 +275,18 @@ func (s *BillingCostBreakdownRowDTO) SetModelName(v string) *BillingCostBreakdow
 	return s
 }
 
+func (s *BillingCostBreakdownRowDTO) SetModelSymbol(v string) *BillingCostBreakdownRowDTO {
+	s.ModelSymbol = &v
+	return s
+}
+
 func (s *BillingCostBreakdownRowDTO) SetModelType(v string) *BillingCostBreakdownRowDTO {
 	s.ModelType = &v
+	return s
+}
+
+func (s *BillingCostBreakdownRowDTO) SetModelVersion(v int32) *BillingCostBreakdownRowDTO {
+	s.ModelVersion = &v
 	return s
 }
 

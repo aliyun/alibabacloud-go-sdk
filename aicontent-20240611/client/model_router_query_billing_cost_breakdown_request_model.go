@@ -19,6 +19,8 @@ type iModelRouterQueryBillingCostBreakdownRequest interface {
 	GetGranularity() *string
 	SetMaxResults(v int32) *ModelRouterQueryBillingCostBreakdownRequest
 	GetMaxResults() *int32
+	SetMemberUserIds(v string) *ModelRouterQueryBillingCostBreakdownRequest
+	GetMemberUserIds() *string
 	SetModelId(v int64) *ModelRouterQueryBillingCostBreakdownRequest
 	GetModelId() *int64
 	SetModelTypes(v string) *ModelRouterQueryBillingCostBreakdownRequest
@@ -34,17 +36,19 @@ type iModelRouterQueryBillingCostBreakdownRequest interface {
 }
 
 type ModelRouterQueryBillingCostBreakdownRequest struct {
+	// Optional. Filters results by API key ID. This parameter is linked with the department. Specify clientId first.
+	//
 	// example:
 	//
 	// 100
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
-	// The ID of the client to query. If not specified, data for all clients is returned.
+	// Optional. Filters results by department ID.
 	//
 	// example:
 	//
 	// 5
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
-	// The end time for the query, specified as a Unix timestamp in seconds.
+	// The query end time, in UNIX timestamp (seconds).
 	//
 	// This parameter is required.
 	//
@@ -52,7 +56,11 @@ type ModelRouterQueryBillingCostBreakdownRequest struct {
 	//
 	// 1700086400
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The granularity for data aggregation. Valid values: `hourly` and `daily`.
+	// The aggregation granularity. Valid values:
+	//
+	// - hourly
+	//
+	// - daily
 	//
 	// This parameter is required.
 	//
@@ -60,43 +68,49 @@ type ModelRouterQueryBillingCostBreakdownRequest struct {
 	//
 	// hourly
 	Granularity *string `json:"granularity,omitempty" xml:"granularity,omitempty"`
-	// The maximum number of results to return. This parameter is used for pagination along with `nextToken` and is mutually exclusive with `page` and `pageSize`.
+	// The maximum number of results to return.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The ID of the model to query. If not specified, data for all models is returned.
+	// Optional. Filters results by member ID. Separate multiple values with commas. If not specified, the department and all its members are included. If an empty value is specified, only the department is included without members.
+	//
+	// example:
+	//
+	// 30001,30002
+	MemberUserIds *string `json:"memberUserIds,omitempty" xml:"memberUserIds,omitempty"`
+	// Optional. Filters results by model ID.
 	//
 	// example:
 	//
 	// 12
 	ModelId *int64 `json:"modelId,omitempty" xml:"modelId,omitempty"`
-	// The types of the models to query, separated by commas. For example: `Chat,Embedding`. If not specified, data for all model types is returned.
+	// Optional. Filters results by model type. Separate multiple values with commas.
 	//
 	// example:
 	//
 	// Chat
 	ModelTypes *string `json:"modelTypes,omitempty" xml:"modelTypes,omitempty"`
-	// The pagination token that is used to retrieve the next page of results.
+	// The pagination token.
 	//
 	// example:
 	//
 	// xxxx-xxx-xxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The page number. Default: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of entries per page. Default: 20. Maximum: 500.
+	// The number of entries per page. Default value: 20. Maximum value: 500.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The start time for the query, specified as a Unix timestamp in seconds.
+	// The query start time, in UNIX timestamp (seconds).
 	//
 	// This parameter is required.
 	//
@@ -132,6 +146,10 @@ func (s *ModelRouterQueryBillingCostBreakdownRequest) GetGranularity() *string {
 
 func (s *ModelRouterQueryBillingCostBreakdownRequest) GetMaxResults() *int32 {
 	return s.MaxResults
+}
+
+func (s *ModelRouterQueryBillingCostBreakdownRequest) GetMemberUserIds() *string {
+	return s.MemberUserIds
 }
 
 func (s *ModelRouterQueryBillingCostBreakdownRequest) GetModelId() *int64 {
@@ -180,6 +198,11 @@ func (s *ModelRouterQueryBillingCostBreakdownRequest) SetGranularity(v string) *
 
 func (s *ModelRouterQueryBillingCostBreakdownRequest) SetMaxResults(v int32) *ModelRouterQueryBillingCostBreakdownRequest {
 	s.MaxResults = &v
+	return s
+}
+
+func (s *ModelRouterQueryBillingCostBreakdownRequest) SetMemberUserIds(v string) *ModelRouterQueryBillingCostBreakdownRequest {
+	s.MemberUserIds = &v
 	return s
 }
 

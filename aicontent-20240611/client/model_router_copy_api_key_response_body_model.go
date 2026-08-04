@@ -54,7 +54,7 @@ type ModelRouterCopyApiKeyResponseBody struct {
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the operation is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

@@ -19,6 +19,8 @@ type iModelRouterQueryCostModelListRequest interface {
 	GetGranularity() *string
 	SetMaxResults(v int32) *ModelRouterQueryCostModelListRequest
 	GetMaxResults() *int32
+	SetMemberUserIds(v string) *ModelRouterQueryCostModelListRequest
+	GetMemberUserIds() *string
 	SetModelTypes(v string) *ModelRouterQueryCostModelListRequest
 	GetModelTypes() *string
 	SetNextToken(v string) *ModelRouterQueryCostModelListRequest
@@ -30,17 +32,19 @@ type iModelRouterQueryCostModelListRequest interface {
 }
 
 type ModelRouterQueryCostModelListRequest struct {
+	// Optional. Filters results by API key ID. This parameter works in conjunction with the department and requires clientId to be specified first.
+	//
 	// example:
 	//
 	// 100
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
-	// The department ID to filter the results.
+	// Filters results by department ID.
 	//
 	// example:
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
-	// The query\\"s end time, specified as a UNIX timestamp in seconds.
+	// The end time, as a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -48,37 +52,43 @@ type ModelRouterQueryCostModelListRequest struct {
 	//
 	// 1700086400
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The time granularity for data aggregation. Valid values: `hourly` and `daily`. Default value: `hourly`.
+	// Automatic aggregation. You do not need to pass this parameter. Granularity: hourly/daily. Default value: hourly.
 	//
 	// example:
 	//
 	// hourly
 	Granularity *string `json:"granularity,omitempty" xml:"granularity,omitempty"`
-	// The maximum number of results per page.
+	// The maximum number of results to return.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The model types to query. Separate multiple types with a comma.
+	// Optional. Filters results by member IDs, separated by commas. If not specified, the department and all its members are included. If an empty value is passed, only the department is included without members.
+	//
+	// example:
+	//
+	// 30001,30002
+	MemberUserIds *string `json:"memberUserIds,omitempty" xml:"memberUserIds,omitempty"`
+	// The model types, separated by commas.
 	//
 	// example:
 	//
 	// LLM,VL
 	ModelTypes *string `json:"modelTypes,omitempty" xml:"modelTypes,omitempty"`
-	// A token from a previous response used to retrieve the next page of results.
+	// nextToken
 	//
 	// example:
 	//
 	// xxxx-xxx-xxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// A keyword for a fuzzy search on the model name or model code.
+	// Performs a fuzzy match on the model name or code.
 	//
 	// example:
 	//
 	// qwen
 	Search *string `json:"search,omitempty" xml:"search,omitempty"`
-	// The query\\"s start time, specified as a UNIX timestamp in seconds.
+	// The start time, as a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -114,6 +124,10 @@ func (s *ModelRouterQueryCostModelListRequest) GetGranularity() *string {
 
 func (s *ModelRouterQueryCostModelListRequest) GetMaxResults() *int32 {
 	return s.MaxResults
+}
+
+func (s *ModelRouterQueryCostModelListRequest) GetMemberUserIds() *string {
+	return s.MemberUserIds
 }
 
 func (s *ModelRouterQueryCostModelListRequest) GetModelTypes() *string {
@@ -154,6 +168,11 @@ func (s *ModelRouterQueryCostModelListRequest) SetGranularity(v string) *ModelRo
 
 func (s *ModelRouterQueryCostModelListRequest) SetMaxResults(v int32) *ModelRouterQueryCostModelListRequest {
 	s.MaxResults = &v
+	return s
+}
+
+func (s *ModelRouterQueryCostModelListRequest) SetMemberUserIds(v string) *ModelRouterQueryCostModelListRequest {
+	s.MemberUserIds = &v
 	return s
 }
 

@@ -34,7 +34,7 @@ type ModelRouterQueryUsageBreakdownResponseBody struct {
 	//
 	// {}
 	Data *UsageBreakdownRespDTO `json:"data,omitempty" xml:"data,omitempty"`
-	// The fault code.
+	// The error message code.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ModelRouterQueryUsageBreakdownResponseBody struct {
 	//
 	// example:
 	//
-	// Unknown error.
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//

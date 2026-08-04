@@ -34,7 +34,7 @@ type ModelRouterQueryCostModelListResponseBody struct {
 	//
 	// []
 	Data *CostQueryModelsDTO `json:"data,omitempty" xml:"data,omitempty"`
-	// The error code.
+	// The fault code.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ModelRouterQueryCostModelListResponseBody struct {
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -52,13 +52,13 @@ type ModelRouterQueryCostModelListResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The number of results returned on the current page.
+	// The maximum number of results to return.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token for retrieving the next page of results. If this parameter is not returned, all results have been returned.
+	// nextToken
 	//
 	// example:
 	//

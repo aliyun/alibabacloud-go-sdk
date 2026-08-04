@@ -27,6 +27,8 @@ type iModelRouterQueryClientListRequest interface {
 	GetPageIndex() *int32
 	SetPageSize(v int32) *ModelRouterQueryClientListRequest
 	GetPageSize() *int32
+	SetParentId(v int64) *ModelRouterQueryClientListRequest
+	GetParentId() *int64
 	SetStatus(v int32) *ModelRouterQueryClientListRequest
 	GetStatus() *int32
 }
@@ -86,6 +88,10 @@ type ModelRouterQueryClientListRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 1
+	ParentId *int64 `json:"parentId,omitempty" xml:"parentId,omitempty"`
 	// Filters the results by status.
 	//
 	// example:
@@ -138,6 +144,10 @@ func (s *ModelRouterQueryClientListRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ModelRouterQueryClientListRequest) GetParentId() *int64 {
+	return s.ParentId
+}
+
 func (s *ModelRouterQueryClientListRequest) GetStatus() *int32 {
 	return s.Status
 }
@@ -184,6 +194,11 @@ func (s *ModelRouterQueryClientListRequest) SetPageIndex(v int32) *ModelRouterQu
 
 func (s *ModelRouterQueryClientListRequest) SetPageSize(v int32) *ModelRouterQueryClientListRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ModelRouterQueryClientListRequest) SetParentId(v int64) *ModelRouterQueryClientListRequest {
+	s.ParentId = &v
 	return s
 }
 

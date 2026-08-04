@@ -30,7 +30,7 @@ type ModelRouterQueryObservationMetricsResponseBody struct {
 	//
 	// []
 	Data *ModelMetricsDTO `json:"data,omitempty" xml:"data,omitempty"`
-	// The fault code.
+	// The error message code.
 	//
 	// example:
 	//

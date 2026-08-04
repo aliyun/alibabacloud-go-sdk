@@ -130,7 +130,11 @@ func (s *ModelRouterQueryModelGroupsByApiKeyResponseBody) Validate() error {
 }
 
 type ModelRouterQueryModelGroupsByApiKeyResponseBodyData struct {
-	// The ID of the department to which the key belongs.
+	// example:
+	//
+	// department
+	BindType *string `json:"bindType,omitempty" xml:"bindType,omitempty"`
+	// The department ID to which the key belongs.
 	//
 	// example:
 	//
@@ -158,6 +162,10 @@ func (s ModelRouterQueryModelGroupsByApiKeyResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *ModelRouterQueryModelGroupsByApiKeyResponseBodyData) GetBindType() *string {
+	return s.BindType
+}
+
 func (s *ModelRouterQueryModelGroupsByApiKeyResponseBodyData) GetClientId() *int64 {
 	return s.ClientId
 }
@@ -168,6 +176,11 @@ func (s *ModelRouterQueryModelGroupsByApiKeyResponseBodyData) GetGroups() []*Mod
 
 func (s *ModelRouterQueryModelGroupsByApiKeyResponseBodyData) GetStandaloneModelList() []*int64 {
 	return s.StandaloneModelList
+}
+
+func (s *ModelRouterQueryModelGroupsByApiKeyResponseBodyData) SetBindType(v string) *ModelRouterQueryModelGroupsByApiKeyResponseBodyData {
+	s.BindType = &v
+	return s
 }
 
 func (s *ModelRouterQueryModelGroupsByApiKeyResponseBodyData) SetClientId(v int64) *ModelRouterQueryModelGroupsByApiKeyResponseBodyData {

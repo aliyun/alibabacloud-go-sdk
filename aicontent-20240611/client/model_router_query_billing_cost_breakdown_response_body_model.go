@@ -28,13 +28,13 @@ type iModelRouterQueryBillingCostBreakdownResponseBody interface {
 }
 
 type ModelRouterQueryBillingCostBreakdownResponseBody struct {
-	// The data object containing the billing breakdown. For details, see the response example.
+	// The data object.
 	//
 	// example:
 	//
 	// {}
 	Data *BillingCostBreakdownRespDTO `json:"data,omitempty" xml:"data,omitempty"`
-	// The error code.
+	// The error message code.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ModelRouterQueryBillingCostBreakdownResponseBody struct {
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -52,13 +52,13 @@ type ModelRouterQueryBillingCostBreakdownResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The maximum number of results returned.
+	// The maximum number of results to return.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. If this parameter is not empty, pass its value in a subsequent request to retrieve the next page of results.
+	// The pagination token.
 	//
 	// example:
 	//

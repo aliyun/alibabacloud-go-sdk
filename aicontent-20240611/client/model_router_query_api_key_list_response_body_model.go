@@ -26,13 +26,13 @@ type iModelRouterQueryApiKeyListResponseBody interface {
 }
 
 type ModelRouterQueryApiKeyListResponseBody struct {
-	// An array of API key objects.
+	// The data object.
 	//
 	// example:
 	//
 	// []
 	Data *ModelRouterQueryApiKeyListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error code.
+	// The error message code.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ModelRouterQueryApiKeyListResponseBody struct {
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -50,7 +50,7 @@ type ModelRouterQueryApiKeyListResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The maximum number of results per page.
+	// maxResults
 	//
 	// example:
 	//

@@ -19,6 +19,8 @@ type iModelRouterQueryObservationMetricsRequest interface {
 	GetGroupBy() *string
 	SetMaxResults(v int32) *ModelRouterQueryObservationMetricsRequest
 	GetMaxResults() *int32
+	SetMemberUserIds(v string) *ModelRouterQueryObservationMetricsRequest
+	GetMemberUserIds() *string
 	SetModelId(v int64) *ModelRouterQueryObservationMetricsRequest
 	GetModelId() *int64
 	SetNeedTotalCount(v bool) *ModelRouterQueryObservationMetricsRequest
@@ -70,6 +72,12 @@ type ModelRouterQueryObservationMetricsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Optional. Filters by member IDs. Separate multiple IDs with commas. If not specified, the department and all its members are included. If an empty value is specified, only the department is included without members.
+	//
+	// example:
+	//
+	// 30001,30002
+	MemberUserIds *string `json:"memberUserIds,omitempty" xml:"memberUserIds,omitempty"`
 	// The model ID used to filter the results.
 	//
 	// example:
@@ -118,7 +126,7 @@ type ModelRouterQueryObservationMetricsRequest struct {
 	//
 	// 2024-01-01T00:00:00Z
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The time range for the query. Valid values: 1h, 6h, 24h, 7d, and 30d.
+	// The time range for the query. Valid values: 1h, 6h, 24h, 7d, 30d.
 	//
 	// example:
 	//
@@ -152,6 +160,10 @@ func (s *ModelRouterQueryObservationMetricsRequest) GetGroupBy() *string {
 
 func (s *ModelRouterQueryObservationMetricsRequest) GetMaxResults() *int32 {
 	return s.MaxResults
+}
+
+func (s *ModelRouterQueryObservationMetricsRequest) GetMemberUserIds() *string {
+	return s.MemberUserIds
 }
 
 func (s *ModelRouterQueryObservationMetricsRequest) GetModelId() *int64 {
@@ -212,6 +224,11 @@ func (s *ModelRouterQueryObservationMetricsRequest) SetGroupBy(v string) *ModelR
 
 func (s *ModelRouterQueryObservationMetricsRequest) SetMaxResults(v int32) *ModelRouterQueryObservationMetricsRequest {
 	s.MaxResults = &v
+	return s
+}
+
+func (s *ModelRouterQueryObservationMetricsRequest) SetMemberUserIds(v string) *ModelRouterQueryObservationMetricsRequest {
+	s.MemberUserIds = &v
 	return s
 }
 

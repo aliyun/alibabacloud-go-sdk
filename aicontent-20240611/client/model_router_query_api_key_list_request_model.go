@@ -13,10 +13,14 @@ type iModelRouterQueryApiKeyListRequest interface {
 	GetClientId() *int64
 	SetGroupBy(v string) *ModelRouterQueryApiKeyListRequest
 	GetGroupBy() *string
+	SetIncludeMemberKeys(v bool) *ModelRouterQueryApiKeyListRequest
+	GetIncludeMemberKeys() *bool
 	SetKeyword(v string) *ModelRouterQueryApiKeyListRequest
 	GetKeyword() *string
 	SetMaxResults(v int32) *ModelRouterQueryApiKeyListRequest
 	GetMaxResults() *int32
+	SetMemberUserIds(v string) *ModelRouterQueryApiKeyListRequest
+	GetMemberUserIds() *string
 	SetNeedTotalCount(v bool) *ModelRouterQueryApiKeyListRequest
 	GetNeedTotalCount() *bool
 	SetNextToken(v string) *ModelRouterQueryApiKeyListRequest
@@ -34,18 +38,24 @@ type iModelRouterQueryApiKeyListRequest interface {
 }
 
 type ModelRouterQueryApiKeyListRequest struct {
-	// Filters the results by the specified client ID.
+	// The client ID used to filter the results.
 	//
 	// example:
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
-	// The grouping field.
+	// The field by which to group the results.
 	//
 	// example:
 	//
 	// resourceId
 	GroupBy *string `json:"groupBy,omitempty" xml:"groupBy,omitempty"`
+	// Optional. If set to true, the keys of members under the department are also included when filtering by department.
+	//
+	// example:
+	//
+	// true
+	IncludeMemberKeys *bool `json:"includeMemberKeys,omitempty" xml:"includeMemberKeys,omitempty"`
 	// The search keyword.
 	//
 	// example:
@@ -58,43 +68,49 @@ type ModelRouterQueryApiKeyListRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Specifies whether to return the total count of results.
+	// Optional. Filters by member IDs. Separate multiple member IDs with commas. If this parameter is not specified, the department and all its members are included. If an empty value is specified, only the department is included without members.
+	//
+	// example:
+	//
+	// 30001,30002
+	MemberUserIds *string `json:"memberUserIds,omitempty" xml:"memberUserIds,omitempty"`
+	// Specifies whether to return the total count.
 	//
 	// example:
 	//
 	// true
 	NeedTotalCount *bool `json:"needTotalCount,omitempty" xml:"needTotalCount,omitempty"`
-	// The token for retrieving the next page of results. An empty value indicates that all results have been returned.
+	// The pagination token. An empty value indicates that no more pages are available.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The sort field.
+	// The field by which to sort the results.
 	//
 	// example:
 	//
 	// resourceId
 	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
-	// The sort order.
+	// The sort direction.
 	//
 	// example:
 	//
 	// DESC
 	OrderDirection *string `json:"orderDirection,omitempty" xml:"orderDirection,omitempty"`
-	// The page number to retrieve.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	// The number of results per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Filters the results by the specified status.
+	// The status used to filter the results.
 	//
 	// example:
 	//
@@ -118,12 +134,20 @@ func (s *ModelRouterQueryApiKeyListRequest) GetGroupBy() *string {
 	return s.GroupBy
 }
 
+func (s *ModelRouterQueryApiKeyListRequest) GetIncludeMemberKeys() *bool {
+	return s.IncludeMemberKeys
+}
+
 func (s *ModelRouterQueryApiKeyListRequest) GetKeyword() *string {
 	return s.Keyword
 }
 
 func (s *ModelRouterQueryApiKeyListRequest) GetMaxResults() *int32 {
 	return s.MaxResults
+}
+
+func (s *ModelRouterQueryApiKeyListRequest) GetMemberUserIds() *string {
+	return s.MemberUserIds
 }
 
 func (s *ModelRouterQueryApiKeyListRequest) GetNeedTotalCount() *bool {
@@ -164,6 +188,11 @@ func (s *ModelRouterQueryApiKeyListRequest) SetGroupBy(v string) *ModelRouterQue
 	return s
 }
 
+func (s *ModelRouterQueryApiKeyListRequest) SetIncludeMemberKeys(v bool) *ModelRouterQueryApiKeyListRequest {
+	s.IncludeMemberKeys = &v
+	return s
+}
+
 func (s *ModelRouterQueryApiKeyListRequest) SetKeyword(v string) *ModelRouterQueryApiKeyListRequest {
 	s.Keyword = &v
 	return s
@@ -171,6 +200,11 @@ func (s *ModelRouterQueryApiKeyListRequest) SetKeyword(v string) *ModelRouterQue
 
 func (s *ModelRouterQueryApiKeyListRequest) SetMaxResults(v int32) *ModelRouterQueryApiKeyListRequest {
 	s.MaxResults = &v
+	return s
+}
+
+func (s *ModelRouterQueryApiKeyListRequest) SetMemberUserIds(v string) *ModelRouterQueryApiKeyListRequest {
+	s.MemberUserIds = &v
 	return s
 }
 

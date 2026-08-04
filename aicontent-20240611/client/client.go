@@ -3105,6 +3105,360 @@ func (client *Client) ModelRouterBatchBindModelGroup(request *ModelRouterBatchBi
 
 // Summary:
 //
+// Batch creates API keys for members under a department in organization management.
+//
+// @param request - ModelRouterBatchCreateMemberApiKeysRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterBatchCreateMemberApiKeysResponse
+func (client *Client) ModelRouterBatchCreateMemberApiKeysWithOptions(id *string, request *ModelRouterBatchCreateMemberApiKeysRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterBatchCreateMemberApiKeysResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExpireAt) {
+		body["expireAt"] = request.ExpireAt
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.UserIds) {
+		body["userIds"] = request.UserIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterBatchCreateMemberApiKeys"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(id)) + "/member-apikeys"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterBatchCreateMemberApiKeysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Batch creates API keys for members under a department in organization management.
+//
+// @param request - ModelRouterBatchCreateMemberApiKeysRequest
+//
+// @return ModelRouterBatchCreateMemberApiKeysResponse
+func (client *Client) ModelRouterBatchCreateMemberApiKeys(id *string, request *ModelRouterBatchCreateMemberApiKeysRequest) (_result *ModelRouterBatchCreateMemberApiKeysResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterBatchCreateMemberApiKeysResponse{}
+	_body, _err := client.ModelRouterBatchCreateMemberApiKeysWithOptions(id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Manages models by performing batch model creation.
+//
+// @param request - ModelRouterBatchCreateModelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterBatchCreateModelResponse
+func (client *Client) ModelRouterBatchCreateModelWithOptions(request *ModelRouterBatchCreateModelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterBatchCreateModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKey) {
+		body["apiKey"] = request.ApiKey
+	}
+
+	if !dara.IsNil(request.BaseUrl) {
+		body["baseUrl"] = request.BaseUrl
+	}
+
+	if !dara.IsNil(request.Models) {
+		body["models"] = request.Models
+	}
+
+	if !dara.IsNil(request.Symbol) {
+		body["symbol"] = request.Symbol
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterBatchCreateModel"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/models/batch"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterBatchCreateModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Manages models by performing batch model creation.
+//
+// @param request - ModelRouterBatchCreateModelRequest
+//
+// @return ModelRouterBatchCreateModelResponse
+func (client *Client) ModelRouterBatchCreateModel(request *ModelRouterBatchCreateModelRequest) (_result *ModelRouterBatchCreateModelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterBatchCreateModelResponse{}
+	_body, _err := client.ModelRouterBatchCreateModelWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Disables API keys in batches for members under a department in organization management.
+//
+// @param request - ModelRouterBatchDisableMemberApiKeysRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterBatchDisableMemberApiKeysResponse
+func (client *Client) ModelRouterBatchDisableMemberApiKeysWithOptions(id *string, request *ModelRouterBatchDisableMemberApiKeysRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterBatchDisableMemberApiKeysResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UserIds) {
+		body["userIds"] = request.UserIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterBatchDisableMemberApiKeys"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(id)) + "/member-apikeys/disable"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterBatchDisableMemberApiKeysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Disables API keys in batches for members under a department in organization management.
+//
+// @param request - ModelRouterBatchDisableMemberApiKeysRequest
+//
+// @return ModelRouterBatchDisableMemberApiKeysResponse
+func (client *Client) ModelRouterBatchDisableMemberApiKeys(id *string, request *ModelRouterBatchDisableMemberApiKeysRequest) (_result *ModelRouterBatchDisableMemberApiKeysResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterBatchDisableMemberApiKeysResponse{}
+	_body, _err := client.ModelRouterBatchDisableMemberApiKeysWithOptions(id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Batch resets member authorizations to inherit under a department in organization management.
+//
+// @param request - ModelRouterBatchResetMemberAuthorizationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterBatchResetMemberAuthorizationResponse
+func (client *Client) ModelRouterBatchResetMemberAuthorizationWithOptions(id *string, request *ModelRouterBatchResetMemberAuthorizationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterBatchResetMemberAuthorizationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UserIds) {
+		body["userIds"] = request.UserIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterBatchResetMemberAuthorization"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(id)) + "/member-authorizations/reset"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterBatchResetMemberAuthorizationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Batch resets member authorizations to inherit under a department in organization management.
+//
+// @param request - ModelRouterBatchResetMemberAuthorizationRequest
+//
+// @return ModelRouterBatchResetMemberAuthorizationResponse
+func (client *Client) ModelRouterBatchResetMemberAuthorization(id *string, request *ModelRouterBatchResetMemberAuthorizationRequest) (_result *ModelRouterBatchResetMemberAuthorizationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterBatchResetMemberAuthorizationResponse{}
+	_body, _err := client.ModelRouterBatchResetMemberAuthorizationWithOptions(id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Sets authorization for multiple members under a department in batch.
+//
+// @param request - ModelRouterBatchSetMemberAuthorizationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterBatchSetMemberAuthorizationResponse
+func (client *Client) ModelRouterBatchSetMemberAuthorizationWithOptions(id *string, request *ModelRouterBatchSetMemberAuthorizationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterBatchSetMemberAuthorizationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AllowedModelGroupConfig) {
+		body["allowedModelGroupConfig"] = request.AllowedModelGroupConfig
+	}
+
+	if !dara.IsNil(request.UserIdList) {
+		body["userIdList"] = request.UserIdList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterBatchSetMemberAuthorization"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(id)) + "/member-authorizations"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterBatchSetMemberAuthorizationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Sets authorization for multiple members under a department in batch.
+//
+// @param request - ModelRouterBatchSetMemberAuthorizationRequest
+//
+// @return ModelRouterBatchSetMemberAuthorizationResponse
+func (client *Client) ModelRouterBatchSetMemberAuthorization(id *string, request *ModelRouterBatchSetMemberAuthorizationRequest) (_result *ModelRouterBatchSetMemberAuthorizationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterBatchSetMemberAuthorizationResponse{}
+	_body, _err := client.ModelRouterBatchSetMemberAuthorizationWithOptions(id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the usage monitoring tab configuration.
 //
 // @param request - ModelRouterBillingCostTabsRequest
@@ -3318,6 +3672,80 @@ func (client *Client) ModelRouterConfigureClientBalance(id *string, request *Mod
 	headers := make(map[string]*string)
 	_result = &ModelRouterConfigureClientBalanceResponse{}
 	_body, _err := client.ModelRouterConfigureClientBalanceWithOptions(id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 组织管理/配置成员子钱包余额
+//
+// @param request - ModelRouterConfigureMemberBalanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterConfigureMemberBalanceResponse
+func (client *Client) ModelRouterConfigureMemberBalanceWithOptions(clientId *string, id *string, request *ModelRouterConfigureMemberBalanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterConfigureMemberBalanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BalanceType) {
+		body["balanceType"] = request.BalanceType
+	}
+
+	if !dara.IsNil(request.EnableBalance) {
+		body["enableBalance"] = request.EnableBalance
+	}
+
+	if !dara.IsNil(request.InitialBalance) {
+		body["initialBalance"] = request.InitialBalance
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterConfigureMemberBalance"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(clientId)) + "/members/" + dara.PercentEncode(dara.StringValue(id)) + "/balance"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterConfigureMemberBalanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 组织管理/配置成员子钱包余额
+//
+// @param request - ModelRouterConfigureMemberBalanceRequest
+//
+// @return ModelRouterConfigureMemberBalanceResponse
+func (client *Client) ModelRouterConfigureMemberBalance(clientId *string, id *string, request *ModelRouterConfigureMemberBalanceRequest) (_result *ModelRouterConfigureMemberBalanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterConfigureMemberBalanceResponse{}
+	_body, _err := client.ModelRouterConfigureMemberBalanceWithOptions(clientId, id, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3779,6 +4207,236 @@ func (client *Client) ModelRouterCreateConversation(request *ModelRouterCreateCo
 
 // Summary:
 //
+// Creates an API key for a member in the organization.
+//
+// @param request - ModelRouterCreateMemberApiKeyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterCreateMemberApiKeyResponse
+func (client *Client) ModelRouterCreateMemberApiKeyWithOptions(clientId *string, id *string, request *ModelRouterCreateMemberApiKeyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterCreateMemberApiKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExpireAt) {
+		body["expireAt"] = request.ExpireAt
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterCreateMemberApiKey"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(clientId)) + "/members/" + dara.PercentEncode(dara.StringValue(id)) + "/apikeys"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterCreateMemberApiKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an API key for a member in the organization.
+//
+// @param request - ModelRouterCreateMemberApiKeyRequest
+//
+// @return ModelRouterCreateMemberApiKeyResponse
+func (client *Client) ModelRouterCreateMemberApiKey(clientId *string, id *string, request *ModelRouterCreateMemberApiKeyRequest) (_result *ModelRouterCreateMemberApiKeyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterCreateMemberApiKeyResponse{}
+	_body, _err := client.ModelRouterCreateMemberApiKeyWithOptions(clientId, id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a balance transaction on a member sub-wallet in organization management.
+//
+// @param request - ModelRouterCreateMemberBalanceTransactionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterCreateMemberBalanceTransactionResponse
+func (client *Client) ModelRouterCreateMemberBalanceTransactionWithOptions(clientId *string, id *string, request *ModelRouterCreateMemberBalanceTransactionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterCreateMemberBalanceTransactionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Amount) {
+		body["amount"] = request.Amount
+	}
+
+	if !dara.IsNil(request.BalanceType) {
+		body["balanceType"] = request.BalanceType
+	}
+
+	if !dara.IsNil(request.IdempotencyKey) {
+		body["idempotencyKey"] = request.IdempotencyKey
+	}
+
+	if !dara.IsNil(request.Remark) {
+		body["remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterCreateMemberBalanceTransaction"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(clientId)) + "/members/" + dara.PercentEncode(dara.StringValue(id)) + "/balance/transactions"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterCreateMemberBalanceTransactionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a balance transaction on a member sub-wallet in organization management.
+//
+// @param request - ModelRouterCreateMemberBalanceTransactionRequest
+//
+// @return ModelRouterCreateMemberBalanceTransactionResponse
+func (client *Client) ModelRouterCreateMemberBalanceTransaction(clientId *string, id *string, request *ModelRouterCreateMemberBalanceTransactionRequest) (_result *ModelRouterCreateMemberBalanceTransactionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterCreateMemberBalanceTransactionResponse{}
+	_body, _err := client.ModelRouterCreateMemberBalanceTransactionWithOptions(clientId, id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a balance subscription for a member in an organization.
+//
+// @param request - ModelRouterCreateMemberSubscriptionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterCreateMemberSubscriptionResponse
+func (client *Client) ModelRouterCreateMemberSubscriptionWithOptions(clientId *string, id *string, request *ModelRouterCreateMemberSubscriptionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterCreateMemberSubscriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Amount) {
+		body["amount"] = request.Amount
+	}
+
+	if !dara.IsNil(request.BalanceType) {
+		body["balanceType"] = request.BalanceType
+	}
+
+	if !dara.IsNil(request.EffectiveTime) {
+		body["effectiveTime"] = request.EffectiveTime
+	}
+
+	if !dara.IsNil(request.IdempotencyKey) {
+		body["idempotencyKey"] = request.IdempotencyKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterCreateMemberSubscription"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(clientId)) + "/members/" + dara.PercentEncode(dara.StringValue(id)) + "/balance/subscription"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterCreateMemberSubscriptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a balance subscription for a member in an organization.
+//
+// @param request - ModelRouterCreateMemberSubscriptionRequest
+//
+// @return ModelRouterCreateMemberSubscriptionResponse
+func (client *Client) ModelRouterCreateMemberSubscription(clientId *string, id *string, request *ModelRouterCreateMemberSubscriptionRequest) (_result *ModelRouterCreateMemberSubscriptionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterCreateMemberSubscriptionResponse{}
+	_body, _err := client.ModelRouterCreateMemberSubscriptionWithOptions(clientId, id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Performs model creation.
 //
 // @param request - ModelRouterCreateModelRequest
@@ -4036,6 +4694,92 @@ func (client *Client) ModelRouterCreateSubscription(id *string, request *ModelRo
 	headers := make(map[string]*string)
 	_result = &ModelRouterCreateSubscriptionResponse{}
 	_body, _err := client.ModelRouterCreateSubscriptionWithOptions(id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a user.
+//
+// Description:
+//
+// Creates a user.
+//
+// @param request - ModelRouterCreateUserRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterCreateUserResponse
+func (client *Client) ModelRouterCreateUserWithOptions(request *ModelRouterCreateUserRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterCreateUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DepartmentRoles) {
+		body["departmentRoles"] = request.DepartmentRoles
+	}
+
+	if !dara.IsNil(request.LoginName) {
+		body["loginName"] = request.LoginName
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Phone) {
+		body["phone"] = request.Phone
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterCreateUser"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/users"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterCreateUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a user.
+//
+// Description:
+//
+// Creates a user.
+//
+// @param request - ModelRouterCreateUserRequest
+//
+// @return ModelRouterCreateUserResponse
+func (client *Client) ModelRouterCreateUser(request *ModelRouterCreateUserRequest) (_result *ModelRouterCreateUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterCreateUserResponse{}
+	_body, _err := client.ModelRouterCreateUserWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4313,6 +5057,136 @@ func (client *Client) ModelRouterDeleteModelGroup(groupId *string, request *Mode
 
 // Summary:
 //
+// Deletes a user.
+//
+// @param request - ModelRouterDeleteUserRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterDeleteUserResponse
+func (client *Client) ModelRouterDeleteUserWithOptions(id *string, request *ModelRouterDeleteUserRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterDeleteUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterDeleteUser"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/users/" + dara.PercentEncode(dara.StringValue(id))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterDeleteUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a user.
+//
+// @param request - ModelRouterDeleteUserRequest
+//
+// @return ModelRouterDeleteUserResponse
+func (client *Client) ModelRouterDeleteUser(id *string, request *ModelRouterDeleteUserRequest) (_result *ModelRouterDeleteUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterDeleteUserResponse{}
+	_body, _err := client.ModelRouterDeleteUserWithOptions(id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Exports the balance change records of a member in the organization.
+//
+// @param request - ModelRouterExportMemberBalanceOrdersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterExportMemberBalanceOrdersResponse
+func (client *Client) ModelRouterExportMemberBalanceOrdersWithOptions(clientId *string, id *string, request *ModelRouterExportMemberBalanceOrdersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterExportMemberBalanceOrdersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BalanceType) {
+		query["balanceType"] = request.BalanceType
+	}
+
+	if !dara.IsNil(request.Direction) {
+		query["direction"] = request.Direction
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterExportMemberBalanceOrders"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(clientId)) + "/members/" + dara.PercentEncode(dara.StringValue(id)) + "/balance/orders/export"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterExportMemberBalanceOrdersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Exports the balance change records of a member in the organization.
+//
+// @param request - ModelRouterExportMemberBalanceOrdersRequest
+//
+// @return ModelRouterExportMemberBalanceOrdersResponse
+func (client *Client) ModelRouterExportMemberBalanceOrders(clientId *string, id *string, request *ModelRouterExportMemberBalanceOrdersRequest) (_result *ModelRouterExportMemberBalanceOrdersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterExportMemberBalanceOrdersResponse{}
+	_body, _err := client.ModelRouterExportMemberBalanceOrdersWithOptions(clientId, id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Client Management/Get department balance
 //
 // @param request - ModelRouterGetClientBalanceRequest
@@ -4455,6 +5329,346 @@ func (client *Client) ModelRouterGetClientBalanceLogs(id *string, request *Model
 
 // Summary:
 //
+// 组织管理/获取部门余额概览
+//
+// @param request - ModelRouterGetDeptBalanceSummaryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterGetDeptBalanceSummaryResponse
+func (client *Client) ModelRouterGetDeptBalanceSummaryWithOptions(id *string, request *ModelRouterGetDeptBalanceSummaryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterGetDeptBalanceSummaryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterGetDeptBalanceSummary"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(id)) + "/balance-summary"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterGetDeptBalanceSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 组织管理/获取部门余额概览
+//
+// @param request - ModelRouterGetDeptBalanceSummaryRequest
+//
+// @return ModelRouterGetDeptBalanceSummaryResponse
+func (client *Client) ModelRouterGetDeptBalanceSummary(id *string, request *ModelRouterGetDeptBalanceSummaryRequest) (_result *ModelRouterGetDeptBalanceSummaryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterGetDeptBalanceSummaryResponse{}
+	_body, _err := client.ModelRouterGetDeptBalanceSummaryWithOptions(id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the list of API keys for a member in the organization.
+//
+// @param request - ModelRouterGetMemberApiKeysRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterGetMemberApiKeysResponse
+func (client *Client) ModelRouterGetMemberApiKeysWithOptions(clientId *string, id *string, request *ModelRouterGetMemberApiKeysRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterGetMemberApiKeysResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Keyword) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageIndex) {
+		query["pageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterGetMemberApiKeys"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(clientId)) + "/members/" + dara.PercentEncode(dara.StringValue(id)) + "/apikeys"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterGetMemberApiKeysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the list of API keys for a member in the organization.
+//
+// @param request - ModelRouterGetMemberApiKeysRequest
+//
+// @return ModelRouterGetMemberApiKeysResponse
+func (client *Client) ModelRouterGetMemberApiKeys(clientId *string, id *string, request *ModelRouterGetMemberApiKeysRequest) (_result *ModelRouterGetMemberApiKeysResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterGetMemberApiKeysResponse{}
+	_body, _err := client.ModelRouterGetMemberApiKeysWithOptions(clientId, id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 组织管理/获取成员子钱包余额
+//
+// @param request - ModelRouterGetMemberBalanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterGetMemberBalanceResponse
+func (client *Client) ModelRouterGetMemberBalanceWithOptions(clientId *string, id *string, request *ModelRouterGetMemberBalanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterGetMemberBalanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterGetMemberBalance"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(clientId)) + "/members/" + dara.PercentEncode(dara.StringValue(id)) + "/balance"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterGetMemberBalanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 组织管理/获取成员子钱包余额
+//
+// @param request - ModelRouterGetMemberBalanceRequest
+//
+// @return ModelRouterGetMemberBalanceResponse
+func (client *Client) ModelRouterGetMemberBalance(clientId *string, id *string, request *ModelRouterGetMemberBalanceRequest) (_result *ModelRouterGetMemberBalanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterGetMemberBalanceResponse{}
+	_body, _err := client.ModelRouterGetMemberBalanceWithOptions(clientId, id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 组织管理/获取成员余额变更日志
+//
+// @param request - ModelRouterGetMemberBalanceLogsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterGetMemberBalanceLogsResponse
+func (client *Client) ModelRouterGetMemberBalanceLogsWithOptions(clientId *string, id *string, request *ModelRouterGetMemberBalanceLogsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterGetMemberBalanceLogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ChangeType) {
+		query["changeType"] = request.ChangeType
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.Size) {
+		query["size"] = request.Size
+	}
+
+	if !dara.IsNil(request.SkipTotal) {
+		query["skipTotal"] = request.SkipTotal
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterGetMemberBalanceLogs"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(clientId)) + "/members/" + dara.PercentEncode(dara.StringValue(id)) + "/balance/logs"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterGetMemberBalanceLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 组织管理/获取成员余额变更日志
+//
+// @param request - ModelRouterGetMemberBalanceLogsRequest
+//
+// @return ModelRouterGetMemberBalanceLogsResponse
+func (client *Client) ModelRouterGetMemberBalanceLogs(clientId *string, id *string, request *ModelRouterGetMemberBalanceLogsRequest) (_result *ModelRouterGetMemberBalanceLogsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterGetMemberBalanceLogsResponse{}
+	_body, _err := client.ModelRouterGetMemberBalanceLogsWithOptions(clientId, id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the cross-department role assignments of a user.
+//
+// Description:
+//
+// Queries the role assignments of a user.
+//
+// @param request - ModelRouterGetUserRolesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterGetUserRolesResponse
+func (client *Client) ModelRouterGetUserRolesWithOptions(id *string, request *ModelRouterGetUserRolesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterGetUserRolesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterGetUserRoles"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/users/" + dara.PercentEncode(dara.StringValue(id)) + "/roles"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterGetUserRolesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the cross-department role assignments of a user.
+//
+// Description:
+//
+// Queries the role assignments of a user.
+//
+// @param request - ModelRouterGetUserRolesRequest
+//
+// @return ModelRouterGetUserRolesResponse
+func (client *Client) ModelRouterGetUserRoles(id *string, request *ModelRouterGetUserRolesRequest) (_result *ModelRouterGetUserRolesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterGetUserRolesResponse{}
+	_body, _err := client.ModelRouterGetUserRolesWithOptions(id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries balance change records.
 //
 // Description:
@@ -4544,6 +5758,238 @@ func (client *Client) ModelRouterListBalanceOrders(id *string, request *ModelRou
 	headers := make(map[string]*string)
 	_result = &ModelRouterListBalanceOrdersResponse{}
 	_body, _err := client.ModelRouterListBalanceOrdersWithOptions(id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 组织管理/获取部门成员列表
+//
+// @param request - ModelRouterListDeptMembersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterListDeptMembersResponse
+func (client *Client) ModelRouterListDeptMembersWithOptions(id *string, request *ModelRouterListDeptMembersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterListDeptMembersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthConfig) {
+		query["authConfig"] = request.AuthConfig
+	}
+
+	if !dara.IsNil(request.IncludeAuthorization) {
+		query["includeAuthorization"] = request.IncludeAuthorization
+	}
+
+	if !dara.IsNil(request.IncludeBalance) {
+		query["includeBalance"] = request.IncludeBalance
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.Model) {
+		query["model"] = request.Model
+	}
+
+	if !dara.IsNil(request.PageIndex) {
+		query["pageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterListDeptMembers"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(id)) + "/members"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterListDeptMembersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 组织管理/获取部门成员列表
+//
+// @param request - ModelRouterListDeptMembersRequest
+//
+// @return ModelRouterListDeptMembersResponse
+func (client *Client) ModelRouterListDeptMembers(id *string, request *ModelRouterListDeptMembersRequest) (_result *ModelRouterListDeptMembersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterListDeptMembersResponse{}
+	_body, _err := client.ModelRouterListDeptMembersWithOptions(id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 组织管理/获取成员余额变更记录
+//
+// @param request - ModelRouterListMemberBalanceOrdersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterListMemberBalanceOrdersResponse
+func (client *Client) ModelRouterListMemberBalanceOrdersWithOptions(clientId *string, id *string, request *ModelRouterListMemberBalanceOrdersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterListMemberBalanceOrdersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BalanceType) {
+		query["balanceType"] = request.BalanceType
+	}
+
+	if !dara.IsNil(request.Direction) {
+		query["direction"] = request.Direction
+	}
+
+	if !dara.IsNil(request.OrderType) {
+		query["orderType"] = request.OrderType
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterListMemberBalanceOrders"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(clientId)) + "/members/" + dara.PercentEncode(dara.StringValue(id)) + "/balance/orders"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterListMemberBalanceOrdersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 组织管理/获取成员余额变更记录
+//
+// @param request - ModelRouterListMemberBalanceOrdersRequest
+//
+// @return ModelRouterListMemberBalanceOrdersResponse
+func (client *Client) ModelRouterListMemberBalanceOrders(clientId *string, id *string, request *ModelRouterListMemberBalanceOrdersRequest) (_result *ModelRouterListMemberBalanceOrdersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterListMemberBalanceOrdersResponse{}
+	_body, _err := client.ModelRouterListMemberBalanceOrdersWithOptions(clientId, id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 组织管理/获取成员订阅列表
+//
+// @param request - ModelRouterListMemberSubscriptionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterListMemberSubscriptionsResponse
+func (client *Client) ModelRouterListMemberSubscriptionsWithOptions(clientId *string, id *string, request *ModelRouterListMemberSubscriptionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterListMemberSubscriptionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterListMemberSubscriptions"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(clientId)) + "/members/" + dara.PercentEncode(dara.StringValue(id)) + "/balance/subscription"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterListMemberSubscriptionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 组织管理/获取成员订阅列表
+//
+// @param request - ModelRouterListMemberSubscriptionsRequest
+//
+// @return ModelRouterListMemberSubscriptionsResponse
+func (client *Client) ModelRouterListMemberSubscriptions(clientId *string, id *string, request *ModelRouterListMemberSubscriptionsRequest) (_result *ModelRouterListMemberSubscriptionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterListMemberSubscriptionsResponse{}
+	_body, _err := client.ModelRouterListMemberSubscriptionsWithOptions(clientId, id, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4714,12 +6160,20 @@ func (client *Client) ModelRouterQueryApiKeyListWithOptions(request *ModelRouter
 		query["groupBy"] = request.GroupBy
 	}
 
+	if !dara.IsNil(request.IncludeMemberKeys) {
+		query["includeMemberKeys"] = request.IncludeMemberKeys
+	}
+
 	if !dara.IsNil(request.Keyword) {
 		query["keyword"] = request.Keyword
 	}
 
 	if !dara.IsNil(request.MaxResults) {
 		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.MemberUserIds) {
+		query["memberUserIds"] = request.MemberUserIds
 	}
 
 	if !dara.IsNil(request.NeedTotalCount) {
@@ -4795,7 +6249,7 @@ func (client *Client) ModelRouterQueryApiKeyList(request *ModelRouterQueryApiKey
 
 // Summary:
 //
-// Billing > Query billing cost breakdown
+// Queries billing details in batches.
 //
 // @param request - ModelRouterQueryBillingCostBreakdownRequest
 //
@@ -4830,6 +6284,10 @@ func (client *Client) ModelRouterQueryBillingCostBreakdownWithOptions(request *M
 
 	if !dara.IsNil(request.MaxResults) {
 		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.MemberUserIds) {
+		query["memberUserIds"] = request.MemberUserIds
 	}
 
 	if !dara.IsNil(request.ModelId) {
@@ -4882,7 +6340,7 @@ func (client *Client) ModelRouterQueryBillingCostBreakdownWithOptions(request *M
 
 // Summary:
 //
-// Billing > Query billing cost breakdown
+// Queries billing details in batches.
 //
 // @param request - ModelRouterQueryBillingCostBreakdownRequest
 //
@@ -5120,6 +6578,10 @@ func (client *Client) ModelRouterQueryClientListWithOptions(request *ModelRouter
 
 	if !dara.IsNil(request.PageSize) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ParentId) {
+		query["parentId"] = request.ParentId
 	}
 
 	if !dara.IsNil(request.Status) {
@@ -5393,7 +6855,7 @@ func (client *Client) ModelRouterQueryConversationList(request *ModelRouterQuery
 
 // Summary:
 //
-// billing management / Model details
+// Retrieves the usage details of a model for billing management.
 //
 // @param request - ModelRouterQueryCostModelDetailRequest
 //
@@ -5424,6 +6886,10 @@ func (client *Client) ModelRouterQueryCostModelDetailWithOptions(request *ModelR
 
 	if !dara.IsNil(request.MaxResults) {
 		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.MemberUserIds) {
+		query["memberUserIds"] = request.MemberUserIds
 	}
 
 	if !dara.IsNil(request.ModelId) {
@@ -5476,7 +6942,7 @@ func (client *Client) ModelRouterQueryCostModelDetailWithOptions(request *ModelR
 
 // Summary:
 //
-// billing management / Model details
+// Retrieves the usage details of a model for billing management.
 //
 // @param request - ModelRouterQueryCostModelDetailRequest
 //
@@ -5495,7 +6961,7 @@ func (client *Client) ModelRouterQueryCostModelDetail(request *ModelRouterQueryC
 
 // Summary:
 //
-// billing management / Retrieves a list of invoked models
+// Retrieves the list of models called for billing management.
 //
 // @param request - ModelRouterQueryCostModelListRequest
 //
@@ -5530,6 +6996,10 @@ func (client *Client) ModelRouterQueryCostModelListWithOptions(request *ModelRou
 
 	if !dara.IsNil(request.MaxResults) {
 		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.MemberUserIds) {
+		query["memberUserIds"] = request.MemberUserIds
 	}
 
 	if !dara.IsNil(request.ModelTypes) {
@@ -5574,7 +7044,7 @@ func (client *Client) ModelRouterQueryCostModelListWithOptions(request *ModelRou
 
 // Summary:
 //
-// billing management / Retrieves a list of invoked models
+// Retrieves the list of models called for billing management.
 //
 // @param request - ModelRouterQueryCostModelListRequest
 //
@@ -5593,7 +7063,7 @@ func (client *Client) ModelRouterQueryCostModelList(request *ModelRouterQueryCos
 
 // Summary:
 //
-// billing management / Get cost overview metrics
+// Retrieves cost overview metrics for billing management.
 //
 // @param request - ModelRouterQueryCostOverviewMetricsRequest
 //
@@ -5628,6 +7098,10 @@ func (client *Client) ModelRouterQueryCostOverviewMetricsWithOptions(request *Mo
 
 	if !dara.IsNil(request.MaxResults) {
 		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.MemberUserIds) {
+		query["memberUserIds"] = request.MemberUserIds
 	}
 
 	if !dara.IsNil(request.ModelTypes) {
@@ -5668,7 +7142,7 @@ func (client *Client) ModelRouterQueryCostOverviewMetricsWithOptions(request *Mo
 
 // Summary:
 //
-// billing management / Get cost overview metrics
+// Retrieves cost overview metrics for billing management.
 //
 // @param request - ModelRouterQueryCostOverviewMetricsRequest
 //
@@ -5687,7 +7161,7 @@ func (client *Client) ModelRouterQueryCostOverviewMetrics(request *ModelRouterQu
 
 // Summary:
 //
-// billing management / Cost trends
+// Retrieves usage cost trends.
 //
 // @param request - ModelRouterQueryCostTrendMetricsRequest
 //
@@ -5722,6 +7196,10 @@ func (client *Client) ModelRouterQueryCostTrendMetricsWithOptions(request *Model
 
 	if !dara.IsNil(request.MaxResults) {
 		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.MemberUserIds) {
+		query["memberUserIds"] = request.MemberUserIds
 	}
 
 	if !dara.IsNil(request.ModelTypes) {
@@ -5762,7 +7240,7 @@ func (client *Client) ModelRouterQueryCostTrendMetricsWithOptions(request *Model
 
 // Summary:
 //
-// billing management / Cost trends
+// Retrieves usage cost trends.
 //
 // @param request - ModelRouterQueryCostTrendMetricsRequest
 //
@@ -6169,11 +7647,97 @@ func (client *Client) ModelRouterQueryModelGroupModels(groupId *string, request 
 
 // Summary:
 //
-// Lists the model groups and models bound to a specified API key.
+// Queries the users attached to a model group by paging.
 //
 // Description:
 //
-// Queries the groups and models bound to a specified API key.
+// Queries the users attached to a model group by paging.
+//
+// @param request - ModelRouterQueryModelGroupUsersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterQueryModelGroupUsersResponse
+func (client *Client) ModelRouterQueryModelGroupUsersWithOptions(groupId *string, request *ModelRouterQueryModelGroupUsersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterQueryModelGroupUsersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageIndex) {
+		query["pageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterQueryModelGroupUsers"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/model-groups/" + dara.PercentEncode(dara.StringValue(groupId)) + "/users"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterQueryModelGroupUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the users attached to a model group by paging.
+//
+// Description:
+//
+// Queries the users attached to a model group by paging.
+//
+// @param request - ModelRouterQueryModelGroupUsersRequest
+//
+// @return ModelRouterQueryModelGroupUsersResponse
+func (client *Client) ModelRouterQueryModelGroupUsers(groupId *string, request *ModelRouterQueryModelGroupUsersRequest) (_result *ModelRouterQueryModelGroupUsersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterQueryModelGroupUsersResponse{}
+	_body, _err := client.ModelRouterQueryModelGroupUsersWithOptions(groupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the bound groups and models by API key.
+//
+// Description:
+//
+// Queries the bound groups and models by API key.
 //
 // @param request - ModelRouterQueryModelGroupsByApiKeyRequest
 //
@@ -6214,11 +7778,11 @@ func (client *Client) ModelRouterQueryModelGroupsByApiKeyWithOptions(id *string,
 
 // Summary:
 //
-// Lists the model groups and models bound to a specified API key.
+// Queries the bound groups and models by API key.
 //
 // Description:
 //
-// Queries the groups and models bound to a specified API key.
+// Queries the bound groups and models by API key.
 //
 // @param request - ModelRouterQueryModelGroupsByApiKeyRequest
 //
@@ -6535,7 +8099,7 @@ func (client *Client) ModelRouterQueryNacosTags(request *ModelRouterQueryNacosTa
 
 // Summary:
 //
-// Retrieves chart data for model observation.
+// Retrieves observation chart data for model monitoring.
 //
 // @param request - ModelRouterQueryObservationChartsRequest
 //
@@ -6562,6 +8126,10 @@ func (client *Client) ModelRouterQueryObservationChartsWithOptions(request *Mode
 
 	if !dara.IsNil(request.EndTime) {
 		query["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.MemberUserIds) {
+		query["memberUserIds"] = request.MemberUserIds
 	}
 
 	if !dara.IsNil(request.ModelId) {
@@ -6602,7 +8170,7 @@ func (client *Client) ModelRouterQueryObservationChartsWithOptions(request *Mode
 
 // Summary:
 //
-// Retrieves chart data for model observation.
+// Retrieves observation chart data for model monitoring.
 //
 // @param request - ModelRouterQueryObservationChartsRequest
 //
@@ -6656,6 +8224,10 @@ func (client *Client) ModelRouterQueryObservationLogsWithOptions(request *ModelR
 
 	if !dara.IsNil(request.MaxResults) {
 		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.MemberUserIds) {
+		query["memberUserIds"] = request.MemberUserIds
 	}
 
 	if !dara.IsNil(request.ModelId) {
@@ -6776,6 +8348,10 @@ func (client *Client) ModelRouterQueryObservationMetricsWithOptions(request *Mod
 		query["maxResults"] = request.MaxResults
 	}
 
+	if !dara.IsNil(request.MemberUserIds) {
+		query["memberUserIds"] = request.MemberUserIds
+	}
+
 	if !dara.IsNil(request.ModelId) {
 		query["modelId"] = request.ModelId
 	}
@@ -6894,6 +8470,10 @@ func (client *Client) ModelRouterQueryUsageBreakdownWithOptions(request *ModelRo
 		query["maxResults"] = request.MaxResults
 	}
 
+	if !dara.IsNil(request.MemberUserIds) {
+		query["memberUserIds"] = request.MemberUserIds
+	}
+
 	if !dara.IsNil(request.NextToken) {
 		query["nextToken"] = request.NextToken
 	}
@@ -6946,6 +8526,148 @@ func (client *Client) ModelRouterQueryUsageBreakdown(request *ModelRouterQueryUs
 	headers := make(map[string]*string)
 	_result = &ModelRouterQueryUsageBreakdownResponse{}
 	_body, _err := client.ModelRouterQueryUsageBreakdownWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of users.
+//
+// Description:
+//
+// Queries the list of users.
+//
+// @param request - ModelRouterQueryUserListRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterQueryUserListResponse
+func (client *Client) ModelRouterQueryUserListWithOptions(request *ModelRouterQueryUserListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterQueryUserListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Keyword) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageIndex) {
+		query["pageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterQueryUserList"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/users"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterQueryUserListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of users.
+//
+// Description:
+//
+// Queries the list of users.
+//
+// @param request - ModelRouterQueryUserListRequest
+//
+// @return ModelRouterQueryUserListResponse
+func (client *Client) ModelRouterQueryUserList(request *ModelRouterQueryUserListRequest) (_result *ModelRouterQueryUserListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterQueryUserListResponse{}
+	_body, _err := client.ModelRouterQueryUserListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Resets the authorization of a member to inherit from the organization.
+//
+// @param request - ModelRouterResetMemberAuthorizationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterResetMemberAuthorizationResponse
+func (client *Client) ModelRouterResetMemberAuthorizationWithOptions(clientId *string, id *string, request *ModelRouterResetMemberAuthorizationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterResetMemberAuthorizationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterResetMemberAuthorization"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(clientId)) + "/members/" + dara.PercentEncode(dara.StringValue(id)) + "/authorization"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterResetMemberAuthorizationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Resets the authorization of a member to inherit from the organization.
+//
+// @param request - ModelRouterResetMemberAuthorizationRequest
+//
+// @return ModelRouterResetMemberAuthorizationResponse
+func (client *Client) ModelRouterResetMemberAuthorization(clientId *string, id *string, request *ModelRouterResetMemberAuthorizationRequest) (_result *ModelRouterResetMemberAuthorizationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterResetMemberAuthorizationResponse{}
+	_body, _err := client.ModelRouterResetMemberAuthorizationWithOptions(clientId, id, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7033,6 +8755,282 @@ func (client *Client) ModelRouterSaveFlowConfig(request *ModelRouterSaveFlowConf
 
 // Summary:
 //
+// 组织管理/部门树搜索定位
+//
+// @param request - ModelRouterSearchClientTreeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterSearchClientTreeResponse
+func (client *Client) ModelRouterSearchClientTreeWithOptions(request *ModelRouterSearchClientTreeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterSearchClientTreeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Keyword) {
+		query["keyword"] = request.Keyword
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterSearchClientTree"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/tree/search"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterSearchClientTreeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 组织管理/部门树搜索定位
+//
+// @param request - ModelRouterSearchClientTreeRequest
+//
+// @return ModelRouterSearchClientTreeResponse
+func (client *Client) ModelRouterSearchClientTree(request *ModelRouterSearchClientTreeRequest) (_result *ModelRouterSearchClientTreeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterSearchClientTreeResponse{}
+	_body, _err := client.ModelRouterSearchClientTreeWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Sets the member authorization model for an organization.
+//
+// @param request - ModelRouterSetMemberAuthorizationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterSetMemberAuthorizationResponse
+func (client *Client) ModelRouterSetMemberAuthorizationWithOptions(clientId *string, id *string, request *ModelRouterSetMemberAuthorizationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterSetMemberAuthorizationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AllowedModelGroupConfig) {
+		body["allowedModelGroupConfig"] = request.AllowedModelGroupConfig
+	}
+
+	if !dara.IsNil(request.AllowedModels) {
+		body["allowedModels"] = request.AllowedModels
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterSetMemberAuthorization"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(clientId)) + "/members/" + dara.PercentEncode(dara.StringValue(id)) + "/authorization"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterSetMemberAuthorizationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Sets the member authorization model for an organization.
+//
+// @param request - ModelRouterSetMemberAuthorizationRequest
+//
+// @return ModelRouterSetMemberAuthorizationResponse
+func (client *Client) ModelRouterSetMemberAuthorization(clientId *string, id *string, request *ModelRouterSetMemberAuthorizationRequest) (_result *ModelRouterSetMemberAuthorizationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterSetMemberAuthorizationResponse{}
+	_body, _err := client.ModelRouterSetMemberAuthorizationWithOptions(clientId, id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Sets user roles or changes the department to which a user belongs.
+//
+// Description:
+//
+// Sets user roles or changes the department to which a user belongs.
+//
+// @param request - ModelRouterSetUserRolesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterSetUserRolesResponse
+func (client *Client) ModelRouterSetUserRolesWithOptions(id *string, request *ModelRouterSetUserRolesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterSetUserRolesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DepartmentRoles) {
+		body["departmentRoles"] = request.DepartmentRoles
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterSetUserRoles"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/users/" + dara.PercentEncode(dara.StringValue(id)) + "/roles"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterSetUserRolesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Sets user roles or changes the department to which a user belongs.
+//
+// Description:
+//
+// Sets user roles or changes the department to which a user belongs.
+//
+// @param request - ModelRouterSetUserRolesRequest
+//
+// @return ModelRouterSetUserRolesResponse
+func (client *Client) ModelRouterSetUserRoles(id *string, request *ModelRouterSetUserRolesRequest) (_result *ModelRouterSetUserRolesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterSetUserRolesResponse{}
+	_body, _err := client.ModelRouterSetUserRolesWithOptions(id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 组织管理/停止成员订阅
+//
+// @param request - ModelRouterStopMemberSubscriptionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterStopMemberSubscriptionResponse
+func (client *Client) ModelRouterStopMemberSubscriptionWithOptions(clientId *string, id *string, request *ModelRouterStopMemberSubscriptionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterStopMemberSubscriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BalanceType) {
+		body["balanceType"] = request.BalanceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterStopMemberSubscription"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(clientId)) + "/members/" + dara.PercentEncode(dara.StringValue(id)) + "/balance/subscription/stop"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterStopMemberSubscriptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 组织管理/停止成员订阅
+//
+// @param request - ModelRouterStopMemberSubscriptionRequest
+//
+// @return ModelRouterStopMemberSubscriptionResponse
+func (client *Client) ModelRouterStopMemberSubscription(clientId *string, id *string, request *ModelRouterStopMemberSubscriptionRequest) (_result *ModelRouterStopMemberSubscriptionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterStopMemberSubscriptionResponse{}
+	_body, _err := client.ModelRouterStopMemberSubscriptionWithOptions(clientId, id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Stops a periodic recharge subscription for customer management.
 //
 // @param request - ModelRouterStopSubscriptionRequest
@@ -7090,6 +9088,88 @@ func (client *Client) ModelRouterStopSubscription(id *string, request *ModelRout
 	headers := make(map[string]*string)
 	_result = &ModelRouterStopSubscriptionResponse{}
 	_body, _err := client.ModelRouterStopSubscriptionWithOptions(id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 组织管理/部门向成员转账
+//
+// @param request - ModelRouterTransferToMemberRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterTransferToMemberResponse
+func (client *Client) ModelRouterTransferToMemberWithOptions(clientId *string, id *string, request *ModelRouterTransferToMemberRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterTransferToMemberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Amount) {
+		body["amount"] = request.Amount
+	}
+
+	if !dara.IsNil(request.BalanceType) {
+		body["balanceType"] = request.BalanceType
+	}
+
+	if !dara.IsNil(request.IdempotencyKey) {
+		body["idempotencyKey"] = request.IdempotencyKey
+	}
+
+	if !dara.IsNil(request.MonthlyQuota) {
+		body["monthlyQuota"] = request.MonthlyQuota
+	}
+
+	if !dara.IsNil(request.Remark) {
+		body["remark"] = request.Remark
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterTransferToMember"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(clientId)) + "/members/" + dara.PercentEncode(dara.StringValue(id)) + "/transfer"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterTransferToMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 组织管理/部门向成员转账
+//
+// @param request - ModelRouterTransferToMemberRequest
+//
+// @return ModelRouterTransferToMemberResponse
+func (client *Client) ModelRouterTransferToMember(clientId *string, id *string, request *ModelRouterTransferToMemberRequest) (_result *ModelRouterTransferToMemberResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterTransferToMemberResponse{}
+	_body, _err := client.ModelRouterTransferToMemberWithOptions(clientId, id, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7532,6 +9612,84 @@ func (client *Client) ModelRouterUpdateModelGroup(groupId *string, request *Mode
 	headers := make(map[string]*string)
 	_result = &ModelRouterUpdateModelGroupResponse{}
 	_body, _err := client.ModelRouterUpdateModelGroupWithOptions(groupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates user information.
+//
+// Description:
+//
+// Updates user information.
+//
+// @param request - ModelRouterUpdateUserRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterUpdateUserResponse
+func (client *Client) ModelRouterUpdateUserWithOptions(id *string, request *ModelRouterUpdateUserRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterUpdateUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Phone) {
+		body["phone"] = request.Phone
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterUpdateUser"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/users/" + dara.PercentEncode(dara.StringValue(id))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterUpdateUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates user information.
+//
+// Description:
+//
+// Updates user information.
+//
+// @param request - ModelRouterUpdateUserRequest
+//
+// @return ModelRouterUpdateUserResponse
+func (client *Client) ModelRouterUpdateUser(id *string, request *ModelRouterUpdateUserRequest) (_result *ModelRouterUpdateUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterUpdateUserResponse{}
+	_body, _err := client.ModelRouterUpdateUserWithOptions(id, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -19,6 +19,8 @@ type iModelRouterQueryObservationLogsRequest interface {
 	GetGroupBy() *string
 	SetMaxResults(v int32) *ModelRouterQueryObservationLogsRequest
 	GetMaxResults() *int32
+	SetMemberUserIds(v string) *ModelRouterQueryObservationLogsRequest
+	GetMemberUserIds() *string
 	SetModelId(v int64) *ModelRouterQueryObservationLogsRequest
 	GetModelId() *int64
 	SetNeedTotalCount(v bool) *ModelRouterQueryObservationLogsRequest
@@ -70,6 +72,10 @@ type ModelRouterQueryObservationLogsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// 30001,30002
+	MemberUserIds *string `json:"memberUserIds,omitempty" xml:"memberUserIds,omitempty"`
 	// The model ID used to filter the results.
 	//
 	// example:
@@ -154,6 +160,10 @@ func (s *ModelRouterQueryObservationLogsRequest) GetMaxResults() *int32 {
 	return s.MaxResults
 }
 
+func (s *ModelRouterQueryObservationLogsRequest) GetMemberUserIds() *string {
+	return s.MemberUserIds
+}
+
 func (s *ModelRouterQueryObservationLogsRequest) GetModelId() *int64 {
 	return s.ModelId
 }
@@ -212,6 +222,11 @@ func (s *ModelRouterQueryObservationLogsRequest) SetGroupBy(v string) *ModelRout
 
 func (s *ModelRouterQueryObservationLogsRequest) SetMaxResults(v int32) *ModelRouterQueryObservationLogsRequest {
 	s.MaxResults = &v
+	return s
+}
+
+func (s *ModelRouterQueryObservationLogsRequest) SetMemberUserIds(v string) *ModelRouterQueryObservationLogsRequest {
+	s.MemberUserIds = &v
 	return s
 }
 

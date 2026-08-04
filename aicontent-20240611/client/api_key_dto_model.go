@@ -25,6 +25,10 @@ type iApiKeyDTO interface {
 	GetKey() *string
 	SetKeyPreview(v string) *ApiKeyDTO
 	GetKeyPreview() *string
+	SetMemberUserId(v int64) *ApiKeyDTO
+	GetMemberUserId() *int64
+	SetMemberUserName(v string) *ApiKeyDTO
+	GetMemberUserName() *string
 	SetName(v string) *ApiKeyDTO
 	GetName() *string
 }
@@ -59,6 +63,14 @@ type ApiKeyDTO struct {
 	//
 	// sk-xxx****xxx
 	KeyPreview *string `json:"keyPreview,omitempty" xml:"keyPreview,omitempty"`
+	// example:
+	//
+	// 30001
+	MemberUserId *int64 `json:"memberUserId,omitempty" xml:"memberUserId,omitempty"`
+	// example:
+	//
+	// 张三
+	MemberUserName *string `json:"memberUserName,omitempty" xml:"memberUserName,omitempty"`
 	// example:
 	//
 	// MyApiKey
@@ -105,6 +117,14 @@ func (s *ApiKeyDTO) GetKeyPreview() *string {
 	return s.KeyPreview
 }
 
+func (s *ApiKeyDTO) GetMemberUserId() *int64 {
+	return s.MemberUserId
+}
+
+func (s *ApiKeyDTO) GetMemberUserName() *string {
+	return s.MemberUserName
+}
+
 func (s *ApiKeyDTO) GetName() *string {
 	return s.Name
 }
@@ -146,6 +166,16 @@ func (s *ApiKeyDTO) SetKey(v string) *ApiKeyDTO {
 
 func (s *ApiKeyDTO) SetKeyPreview(v string) *ApiKeyDTO {
 	s.KeyPreview = &v
+	return s
+}
+
+func (s *ApiKeyDTO) SetMemberUserId(v int64) *ApiKeyDTO {
+	s.MemberUserId = &v
+	return s
+}
+
+func (s *ApiKeyDTO) SetMemberUserName(v string) *ApiKeyDTO {
+	s.MemberUserName = &v
 	return s
 }
 
