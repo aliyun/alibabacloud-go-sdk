@@ -28,7 +28,8 @@ type ChatMessagesShrinkRequest struct {
 	//
 	// fea7bdca-e848-44dd-b1ae-852472b8****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	EventMode      *string `json:"EventMode,omitempty" xml:"EventMode,omitempty"`
+	// The event output type. Valid values: inline and separate. Default value: inline. When set to inline, tool invocation events, sub-node events, and document events are included in the answer field of event = message. When set to separate, tool invocation events, sub-node events, and document events each have their own event.
+	EventMode *string `json:"EventMode,omitempty" xml:"EventMode,omitempty"`
 	// The task input.
 	InputsShrink *string `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
 	// The parent message ID.
@@ -43,7 +44,7 @@ type ChatMessagesShrinkRequest struct {
 	//
 	// example:
 	//
-	// Disk usage of instance rm-bp14as9914vd3****, whether expansion is needed
+	// Instance rm-bp14as9914vd3***	- disk usage, whether expansion is needed
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 

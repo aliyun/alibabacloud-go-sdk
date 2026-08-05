@@ -1,3 +1,7 @@
+2026-08-05 Version: v3.6.3
+- Update API ChatMessages: add request parameters Inputs.ModelId.
+
+
 2026-07-31 Version: v3.6.2
 - Generated golang 2025-05-07 for RdsAi.
 

@@ -18,6 +18,11 @@ type iDescribeInstanceEndpointsRequest interface {
 }
 
 type DescribeInstanceEndpointsRequest struct {
+	// Reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// The instance ID of the AI application.
 	//

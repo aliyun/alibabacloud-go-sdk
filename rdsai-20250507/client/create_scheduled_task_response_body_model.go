@@ -20,7 +20,7 @@ type iCreateScheduledTaskResponseBody interface {
 }
 
 type CreateScheduledTaskResponseBody struct {
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//

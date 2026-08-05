@@ -60,7 +60,7 @@ type CreateScheduledTaskRequest struct {
 	//
 	// 	- Sunday: Sunday.
 	//
-	// ### Note: DAILY overrides weekly values. For example, if you specify DAILY,Monday, the system uses DAILY as the inspection frequency.
+	// ### Note: DAILY overrides weekly values. For example, if you specify DAILY,Monday, the backend uses DAILY as the inspection frequency.
 	//
 	// example:
 	//

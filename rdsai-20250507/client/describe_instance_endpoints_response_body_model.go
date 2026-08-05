@@ -22,10 +22,15 @@ type iDescribeInstanceEndpointsResponseBody interface {
 }
 
 type DescribeInstanceEndpointsResponseBody struct {
+	// Reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	// The endpoints of the database instance.
+	// The list of endpoint information of the database instance.
 	DBInstanceEndpoints []*DescribeInstanceEndpointsResponseBodyDBInstanceEndpoints `json:"DBInstanceEndpoints,omitempty" xml:"DBInstanceEndpoints,omitempty" type:"Repeated"`
-	// The endpoints of the AI application instance.
+	// The list of endpoint information of the AI application instance.
 	InstanceEndpoints []*DescribeInstanceEndpointsResponseBodyInstanceEndpoints `json:"InstanceEndpoints,omitempty" xml:"InstanceEndpoints,omitempty" type:"Repeated"`
 	// The instance ID of the AI application.
 	//
@@ -187,7 +192,12 @@ type DescribeInstanceEndpointsResponseBodyInstanceEndpoints struct {
 	//
 	// 8.152.XXX.XXX:8000
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	Domain           *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The domain name.
+	//
+	// example:
+	//
+	// xxx.apsaradb.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The IP address.
 	//
 	// example:

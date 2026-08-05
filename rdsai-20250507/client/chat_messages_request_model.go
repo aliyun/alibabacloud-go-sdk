@@ -28,7 +28,8 @@ type ChatMessagesRequest struct {
 	//
 	// fea7bdca-e848-44dd-b1ae-852472b8****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	EventMode      *string `json:"EventMode,omitempty" xml:"EventMode,omitempty"`
+	// The event output type. Valid values: inline and separate. Default value: inline. When set to inline, tool invocation events, sub-node events, and document events are included in the answer field of event = message. When set to separate, tool invocation events, sub-node events, and document events each have their own event.
+	EventMode *string `json:"EventMode,omitempty" xml:"EventMode,omitempty"`
 	// The task input.
 	Inputs *ChatMessagesRequestInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
 	// The parent message ID.
@@ -43,7 +44,7 @@ type ChatMessagesRequest struct {
 	//
 	// example:
 	//
-	// Disk usage of instance rm-bp14as9914vd3****, whether expansion is needed
+	// Instance rm-bp14as9914vd3***	- disk usage, whether expansion is needed
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
@@ -123,6 +124,7 @@ type ChatMessagesRequestInputs struct {
 	//
 	// zh-cn
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	ModelId  *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -158,6 +160,10 @@ func (s *ChatMessagesRequestInputs) GetLanguage() *string {
 	return s.Language
 }
 
+func (s *ChatMessagesRequestInputs) GetModelId() *string {
+	return s.ModelId
+}
+
 func (s *ChatMessagesRequestInputs) GetRegionId() *string {
 	return s.RegionId
 }
@@ -182,6 +188,11 @@ func (s *ChatMessagesRequestInputs) SetEnableThinking(v string) *ChatMessagesReq
 
 func (s *ChatMessagesRequestInputs) SetLanguage(v string) *ChatMessagesRequestInputs {
 	s.Language = &v
+	return s
+}
+
+func (s *ChatMessagesRequestInputs) SetModelId(v string) *ChatMessagesRequestInputs {
+	s.ModelId = &v
 	return s
 }
 

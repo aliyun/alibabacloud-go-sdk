@@ -70,7 +70,7 @@ type ChatMessagesResponseBody struct {
 	//
 	// example:
 	//
-	// Will be deprecated in the future. Ignore this field
+	// Will be deprecated in the future. No need to pay attention
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The request ID.
 	//
