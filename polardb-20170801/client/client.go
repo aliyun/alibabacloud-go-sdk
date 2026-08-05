@@ -6789,6 +6789,84 @@ func (client *Client) CreateGwConsumerOrder(request *CreateGwConsumerOrderReques
 
 // Summary:
 //
+// Creates a PolarFS S3 account.
+//
+// @param request - CreateLakebaseS3AccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLakebaseS3AccountResponse
+func (client *Client) CreateLakebaseS3AccountWithOptions(request *CreateLakebaseS3AccountRequest, runtime *dara.RuntimeOptions) (_result *CreateLakebaseS3AccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PfsInstanceId) {
+		query["PfsInstanceId"] = request.PfsInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.UserAccAk) {
+		query["UserAccAk"] = request.UserAccAk
+	}
+
+	if !dara.IsNil(request.UserAccPolicy) {
+		query["UserAccPolicy"] = request.UserAccPolicy
+	}
+
+	if !dara.IsNil(request.UserAccSk) {
+		query["UserAccSk"] = request.UserAccSk
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateLakebaseS3Account"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateLakebaseS3AccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a PolarFS S3 account.
+//
+// @param request - CreateLakebaseS3AccountRequest
+//
+// @return CreateLakebaseS3AccountResponse
+func (client *Client) CreateLakebaseS3Account(request *CreateLakebaseS3AccountRequest) (_result *CreateLakebaseS3AccountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateLakebaseS3AccountResponse{}
+	_body, _err := client.CreateLakebaseS3AccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a model API.
 //
 // @param request - CreateModelApiRequest
@@ -7624,6 +7702,160 @@ func (client *Client) CreatePolarClawCronJob(request *CreatePolarClawCronJobRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreatePolarClawCronJobResponse{}
 	_body, _err := client.CreatePolarClawCronJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables PolarFS support.
+//
+// @param request - CreatePolarFsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePolarFsResponse
+func (client *Client) CreatePolarFsWithOptions(request *CreatePolarFsRequest, runtime *dara.RuntimeOptions) (_result *CreatePolarFsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccelerateStorageSize) {
+		query["AccelerateStorageSize"] = request.AccelerateStorageSize
+	}
+
+	if !dara.IsNil(request.AccelerateSwitch) {
+		query["AccelerateSwitch"] = request.AccelerateSwitch
+	}
+
+	if !dara.IsNil(request.AccelerateType) {
+		query["AccelerateType"] = request.AccelerateType
+	}
+
+	if !dara.IsNil(request.AuthorizedUserIds) {
+		query["AuthorizedUserIds"] = request.AuthorizedUserIds
+	}
+
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.AutoUseCoupon) {
+		query["AutoUseCoupon"] = request.AutoUseCoupon
+	}
+
+	if !dara.IsNil(request.CreationCategory) {
+		query["CreationCategory"] = request.CreationCategory
+	}
+
+	if !dara.IsNil(request.CustomBucketCount) {
+		query["CustomBucketCount"] = request.CustomBucketCount
+	}
+
+	if !dara.IsNil(request.CustomBucketPath) {
+		query["CustomBucketPath"] = request.CustomBucketPath
+	}
+
+	if !dara.IsNil(request.CustomBucketPathList) {
+		query["CustomBucketPathList"] = request.CustomBucketPathList
+	}
+
+	if !dara.IsNil(request.CustomOssAk) {
+		query["CustomOssAk"] = request.CustomOssAk
+	}
+
+	if !dara.IsNil(request.CustomOssSk) {
+		query["CustomOssSk"] = request.CustomOssSk
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DBType) {
+		query["DBType"] = request.DBType
+	}
+
+	if !dara.IsNil(request.PayType) {
+		query["PayType"] = request.PayType
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.PromotionCode) {
+		query["PromotionCode"] = request.PromotionCode
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StorageSpace) {
+		query["StorageSpace"] = request.StorageSpace
+	}
+
+	if !dara.IsNil(request.StorageType) {
+		query["StorageType"] = request.StorageType
+	}
+
+	if !dara.IsNil(request.UsedTime) {
+		query["UsedTime"] = request.UsedTime
+	}
+
+	if !dara.IsNil(request.VPCId) {
+		query["VPCId"] = request.VPCId
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePolarFs"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePolarFsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables PolarFS support.
+//
+// @param request - CreatePolarFsRequest
+//
+// @return CreatePolarFsResponse
+func (client *Client) CreatePolarFs(request *CreatePolarFsRequest) (_result *CreatePolarFsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreatePolarFsResponse{}
+	_body, _err := client.CreatePolarFsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10831,6 +11063,76 @@ func (client *Client) DeleteGlobalSecurityIPGroup(request *DeleteGlobalSecurityI
 
 // Summary:
 //
+// Deletes a PolarFS S3 account.
+//
+// @param request - DeleteLakebaseS3AccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLakebaseS3AccountResponse
+func (client *Client) DeleteLakebaseS3AccountWithOptions(request *DeleteLakebaseS3AccountRequest, runtime *dara.RuntimeOptions) (_result *DeleteLakebaseS3AccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PfsInstanceId) {
+		query["PfsInstanceId"] = request.PfsInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.UserAccAk) {
+		query["UserAccAk"] = request.UserAccAk
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteLakebaseS3Account"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteLakebaseS3AccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a PolarFS S3 account.
+//
+// @param request - DeleteLakebaseS3AccountRequest
+//
+// @return DeleteLakebaseS3AccountResponse
+func (client *Client) DeleteLakebaseS3Account(request *DeleteLakebaseS3AccountRequest) (_result *DeleteLakebaseS3AccountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteLakebaseS3AccountResponse{}
+	_body, _err := client.DeleteLakebaseS3AccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes the specified data masking rules.
 //
 // @param request - DeleteMaskingRulesRequest
@@ -11490,6 +11792,72 @@ func (client *Client) DeletePolarClawCronJob(request *DeletePolarClawCronJobRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeletePolarClawCronJobResponse{}
 	_body, _err := client.DeletePolarClawCronJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Releases a pay-as-you-go PolarFs instance.
+//
+// @param request - DeletePolarFsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePolarFsResponse
+func (client *Client) DeletePolarFsWithOptions(request *DeletePolarFsRequest, runtime *dara.RuntimeOptions) (_result *DeletePolarFsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePolarFs"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePolarFsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Releases a pay-as-you-go PolarFs instance.
+//
+// @param request - DeletePolarFsRequest
+//
+// @return DeletePolarFsResponse
+func (client *Client) DeletePolarFs(request *DeletePolarFsRequest) (_result *DeletePolarFsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeletePolarFsResponse{}
+	_body, _err := client.DeletePolarFsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21695,6 +22063,76 @@ func (client *Client) DescribeHistoryTasksStat(request *DescribeHistoryTasksStat
 
 // Summary:
 //
+// Queries the details of a PolarFS S3 account.
+//
+// @param request - DescribeLakebaseS3AccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLakebaseS3AccountResponse
+func (client *Client) DescribeLakebaseS3AccountWithOptions(request *DescribeLakebaseS3AccountRequest, runtime *dara.RuntimeOptions) (_result *DescribeLakebaseS3AccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PfsInstanceId) {
+		query["PfsInstanceId"] = request.PfsInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.UserAccAk) {
+		query["UserAccAk"] = request.UserAccAk
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLakebaseS3Account"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLakebaseS3AccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a PolarFS S3 account.
+//
+// @param request - DescribeLakebaseS3AccountRequest
+//
+// @return DescribeLakebaseS3AccountResponse
+func (client *Client) DescribeLakebaseS3Account(request *DescribeLakebaseS3AccountRequest) (_result *DescribeLakebaseS3AccountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeLakebaseS3AccountResponse{}
+	_body, _err := client.DescribeLakebaseS3AccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a license order.
 //
 // @param request - DescribeLicenseOrderDetailsRequest
@@ -24082,6 +24520,80 @@ func (client *Client) DescribePolarFsAttribute(request *DescribePolarFsAttribute
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribePolarFsAttributeResponse{}
 	_body, _err := client.DescribePolarFsAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of PolarFS path mappings.
+//
+// @param request - DescribePolarFsMappingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolarFsMappingResponse
+func (client *Client) DescribePolarFsMappingWithOptions(request *DescribePolarFsMappingRequest, runtime *dara.RuntimeOptions) (_result *DescribePolarFsMappingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePolarFsMapping"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePolarFsMappingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of PolarFS path mappings.
+//
+// @param request - DescribePolarFsMappingRequest
+//
+// @return DescribePolarFsMappingResponse
+func (client *Client) DescribePolarFsMapping(request *DescribePolarFsMappingRequest) (_result *DescribePolarFsMappingResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribePolarFsMappingResponse{}
+	_body, _err := client.DescribePolarFsMappingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28270,6 +28782,80 @@ func (client *Client) InstallPolarClawSkill(request *InstallPolarClawSkillReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &InstallPolarClawSkillResponse{}
 	_body, _err := client.InstallPolarClawSkillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists PolarFS S3 accounts.
+//
+// @param request - ListLakebaseS3AccountsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLakebaseS3AccountsResponse
+func (client *Client) ListLakebaseS3AccountsWithOptions(request *ListLakebaseS3AccountsRequest, runtime *dara.RuntimeOptions) (_result *ListLakebaseS3AccountsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PfsInstanceId) {
+		query["PfsInstanceId"] = request.PfsInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListLakebaseS3Accounts"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListLakebaseS3AccountsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists PolarFS S3 accounts.
+//
+// @param request - ListLakebaseS3AccountsRequest
+//
+// @return ListLakebaseS3AccountsResponse
+func (client *Client) ListLakebaseS3Accounts(request *ListLakebaseS3AccountsRequest) (_result *ListLakebaseS3AccountsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListLakebaseS3AccountsResponse{}
+	_body, _err := client.ListLakebaseS3AccountsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35230,6 +35816,88 @@ func (client *Client) ModifyPendingMaintenanceAction(request *ModifyPendingMaint
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyPendingMaintenanceActionResponse{}
 	_body, _err := client.ModifyPendingMaintenanceActionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the bucket credentials for a PolarFS path mapping.
+//
+// @param request - ModifyPolarFsMappingAuthRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyPolarFsMappingAuthResponse
+func (client *Client) ModifyPolarFsMappingAuthWithOptions(request *ModifyPolarFsMappingAuthRequest, runtime *dara.RuntimeOptions) (_result *ModifyPolarFsMappingAuthResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Bucket) {
+		query["Bucket"] = request.Bucket
+	}
+
+	if !dara.IsNil(request.BucketAccessKeyId) {
+		query["BucketAccessKeyId"] = request.BucketAccessKeyId
+	}
+
+	if !dara.IsNil(request.BucketAccessKeySecret) {
+		query["BucketAccessKeySecret"] = request.BucketAccessKeySecret
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.Path) {
+		query["Path"] = request.Path
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyPolarFsMappingAuth"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyPolarFsMappingAuthResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the bucket credentials for a PolarFS path mapping.
+//
+// @param request - ModifyPolarFsMappingAuthRequest
+//
+// @return ModifyPolarFsMappingAuthResponse
+func (client *Client) ModifyPolarFsMappingAuth(request *ModifyPolarFsMappingAuthRequest) (_result *ModifyPolarFsMappingAuthResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyPolarFsMappingAuthResponse{}
+	_body, _err := client.ModifyPolarFsMappingAuthWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
