@@ -40,7 +40,7 @@ type SubmitVideoGenerationJobRequest struct {
 	//
 	// 9:16
 	AspectRatio *string `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
-	// The idempotence parameter.
+	// The idempotency token.
 	//
 	// example:
 	//
@@ -54,23 +54,23 @@ type SubmitVideoGenerationJobRequest struct {
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The task input in JSON string format. The following fields are included:
 	//
-	// - Prompt: String. Required. The prompt.
+	// - Prompt: String. Required. The prompt text.
 	//
-	// - Medias: The list of media items.
+	// - Medias: The media list.
 	//
-	//   - When JobType is set to image_to_video, this field is required. Only 1 Media item is needed.
+	//   - When JobType is image_to_video, this field is required. Only 1 Media item is needed.
 	//
-	//   - When JobType is set to first_last_frame, this field is required. Only 2 Media items are needed.
+	//   - When JobType is first_last_frame, this field is required. Only 2 Media items are needed.
 	//
-	//   - When JobType is set to reference_to_video, this field is required. A maximum of 9 Media items are supported.
+	//   - When JobType is reference_to_video, this field is required. A maximum of 9 Media items are supported.
 	//
-	// > The Media struct contains: Type, the media type, String, valid values are `image`/`video`/`audio`. URL, the media download URL, String.
+	// > The Media structure contains: Type, the media type, String, valid values are `image`/`video`/`audio`. URL, the media download URL, String.
 	//
 	// >
 	//
 	// example:
 	//
-	// {"Prompt":"图1在篮球场上，用图2来了个灌篮","Medias":[{"Type":"image","Url":"https://xxx/xxx.jpg"},{"Type":"image","Url":"https://xxx/xxx.jpg"}]}
+	// {"Prompt":"Person in image 1 dunks a basketball on the court using image 2","Medias":[{"Type":"image","Url":"https://xxx/xxx.jpg"},{"Type":"image","Url":"https://xxx/xxx.jpg"}]}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
 	// The task feature parameters. No configuration is required at this time.
 	//

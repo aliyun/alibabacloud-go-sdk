@@ -193,6 +193,68 @@ func (client *Client) BatchGetYikeAssetMediaInfosWithContext(ctx context.Context
 
 // Summary:
 //
+// 创建无限画布
+//
+// Description:
+//
+// ## 请求说明
+//
+// 该API用于查询媒资内容理解作业。
+//
+// @param request - CreateInfiniteCanvasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInfiniteCanvasResponse
+func (client *Client) CreateInfiniteCanvasWithContext(ctx context.Context, request *CreateInfiniteCanvasRequest, runtime *dara.RuntimeOptions) (_result *CreateInfiniteCanvasResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CoverUrl) {
+		query["CoverUrl"] = request.CoverUrl
+	}
+
+	if !dara.IsNil(request.ProductionId) {
+		query["ProductionId"] = request.ProductionId
+	}
+
+	if !dara.IsNil(request.Title) {
+		query["Title"] = request.Title
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateInfiniteCanvas"),
+		Version:     dara.String("2026-03-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateInfiniteCanvasResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the upload credential for a media asset.
 //
 // @param request - CreateYikeAssetUploadRequest
@@ -455,6 +517,50 @@ func (client *Client) CreateYikeWorkspaceWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 删除无限画布
+//
+// @param request - DeleteInfiniteCanvasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInfiniteCanvasResponse
+func (client *Client) DeleteInfiniteCanvasWithContext(ctx context.Context, request *DeleteInfiniteCanvasRequest, runtime *dara.RuntimeOptions) (_result *DeleteInfiniteCanvasResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CanvasId) {
+		query["CanvasId"] = request.CanvasId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteInfiniteCanvas"),
+		Version:     dara.String("2026-03-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteInfiniteCanvasResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes media asset information.
 //
 // @param request - DeleteYikeAssetMediaInfosRequest
@@ -503,11 +609,83 @@ func (client *Client) DeleteYikeAssetMediaInfosWithContext(ctx context.Context, 
 
 // Summary:
 //
+// 获取企业账号登录Token
+//
+// @param request - GenerateYikeLoginTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateYikeLoginTokenResponse
+func (client *Client) GenerateYikeLoginTokenWithContext(ctx context.Context, request *GenerateYikeLoginTokenRequest, runtime *dara.RuntimeOptions) (_result *GenerateYikeLoginTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoCreateProduction) {
+		query["AutoCreateProduction"] = request.AutoCreateProduction
+	}
+
+	if !dara.IsNil(request.Expires) {
+		query["Expires"] = request.Expires
+	}
+
+	if !dara.IsNil(request.NickName) {
+		query["NickName"] = request.NickName
+	}
+
+	if !dara.IsNil(request.ProductionAuth) {
+		query["ProductionAuth"] = request.ProductionAuth
+	}
+
+	if !dara.IsNil(request.SubUserCredit) {
+		query["SubUserCredit"] = request.SubUserCredit
+	}
+
+	if !dara.IsNil(request.Tenant) {
+		query["Tenant"] = request.Tenant
+	}
+
+	if !dara.IsNil(request.UserName) {
+		query["UserName"] = request.UserName
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GenerateYikeLoginToken"),
+		Version:     dara.String("2026-03-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GenerateYikeLoginTokenResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries an image generation task.
 //
 // Description:
 //
-// The AI generation-related operations in the 2026-03-19 version of the API will be discontinued soon. Upgrade to the 2026-07-07 version.
+//	Notice:  The AI generation-related operations in the 2026-03-19 API version will be deprecated soon. Upgrade to the 2026-07-07 API version.</notice>
 //
 // @param request - GetImageGenerationJobRequest
 //
@@ -551,11 +729,55 @@ func (client *Client) GetImageGenerationJobWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// 查询无限画布
+//
+// @param request - GetInfiniteCanvasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInfiniteCanvasResponse
+func (client *Client) GetInfiniteCanvasWithContext(ctx context.Context, request *GetInfiniteCanvasRequest, runtime *dara.RuntimeOptions) (_result *GetInfiniteCanvasResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CanvasId) {
+		query["CanvasId"] = request.CanvasId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInfiniteCanvas"),
+		Version:     dara.String("2026-03-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInfiniteCanvasResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries an AI video generation task.
 //
 // Description:
 //
-// The AI generation-related operations in the 2026-03-19 API version will be deprecated soon. Upgrade to the 2026-07-07 version.
+//	Notice:  The AI generation-related operations in the 2026-03-19 API version will be deprecated soon. Upgrade to the 2026-07-07 API version.
 //
 // @param request - GetVideoGenerationJobRequest
 //
@@ -724,7 +946,7 @@ func (client *Client) GetYikeAgentJobWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 查询一刻口播任务预估积分
+// Queries the estimated credits for a digital human oral broadcasting task.
 //
 // @param request - GetYikeAgentJobEstimatedCreditRequest
 //
@@ -816,7 +1038,7 @@ func (client *Client) GetYikeAssetMediaInfoWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询一刻任务实际消耗积分
+// Queries the actual credit consumption of a task.
 //
 // @param request - GetYikeJobCreditRequest
 //
@@ -1114,6 +1336,66 @@ func (client *Client) GetYikeVoiceNarratorJobWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetYikeVoiceNarratorJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询无限画布列表
+//
+// @param request - ListInfiniteCanvasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInfiniteCanvasesResponse
+func (client *Client) ListInfiniteCanvasesWithContext(ctx context.Context, request *ListInfiniteCanvasesRequest, runtime *dara.RuntimeOptions) (_result *ListInfiniteCanvasesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.SortOrder) {
+		query["SortOrder"] = request.SortOrder
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInfiniteCanvases"),
+		Version:     dara.String("2026-03-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInfiniteCanvasesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1580,7 +1862,7 @@ func (client *Client) SubYikeUserCreditWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// The AI generation API operations in the 2026-03-19 version will be deprecated soon. Upgrade to the 2026-07-07 version.
+//	Notice:  The AI generation-related operations in the 2026-03-19 API version will be deprecated soon. Upgrade to the 2026-07-07 API version.</notice>
 //
 // @param request - SubmitImageGenerationJobRequest
 //
@@ -1660,11 +1942,11 @@ func (client *Client) SubmitImageGenerationJobWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Submits an AI video generation task.
+// Submits a video generation task.
 //
 // Description:
 //
-// The current version will be deprecated soon. Use the latest version by visiting this [link](https://api.aliyun.com/document/Yike/2026-07-07/SubmitVideoGenerationJob).
+//	Notice:  The AI generation-related operations in the 2026-03-19 API version will be deprecated soon. Upgrade to the 2026-07-07 API version.</notice>
 //
 // @param request - SubmitVideoGenerationJobRequest
 //
@@ -2160,6 +2442,58 @@ func (client *Client) SubmitYikeVoiceNarratorJobWithContext(ctx context.Context,
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitYikeVoiceNarratorJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新无限画布信息
+//
+// @param request - UpdateInfiniteCanvasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInfiniteCanvasResponse
+func (client *Client) UpdateInfiniteCanvasWithContext(ctx context.Context, request *UpdateInfiniteCanvasRequest, runtime *dara.RuntimeOptions) (_result *UpdateInfiniteCanvasResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CanvasId) {
+		query["CanvasId"] = request.CanvasId
+	}
+
+	if !dara.IsNil(request.CoverUrl) {
+		query["CoverUrl"] = request.CoverUrl
+	}
+
+	if !dara.IsNil(request.Title) {
+		query["Title"] = request.Title
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateInfiniteCanvas"),
+		Version:     dara.String("2026-03-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateInfiniteCanvasResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

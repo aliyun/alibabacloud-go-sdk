@@ -74,7 +74,7 @@ type GetVideoGenerationJobResponseBodyVideoGenerationJob struct {
 	//
 	// 5
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The error message. This parameter is returned when the task is in the Failed state.
+	// The error message. This parameter is returned only when the task is in the Failed state.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type GetVideoGenerationJobResponseBodyVideoGenerationJob struct {
 	//
 	// example:
 	//
-	// {"Prompt":"图1在篮球场上，用图2来了个灌篮","Medias":[{"Type":"image","Url":"https://xxx/xxx.jpg"},{"Type":"image","Url":"https://xxx/xxx.jpg"}]}
+	// {"Prompt":"Person in image 1 is on a basketball court, dunking with image 2","Medias":[{"Type":"image","Url":"https://xxx/xxx.jpg"},{"Type":"image","Url":"https://xxx/xxx.jpg"}]}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
 	// The task ID.
 	//
@@ -92,7 +92,7 @@ type GetVideoGenerationJobResponseBodyVideoGenerationJob struct {
 	//
 	// fdc7f121056249c2b64e04bba27bcc8c
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The task feature configuration. You do not need to set this parameter.
+	// The task feature configuration. No configuration is required at this time.
 	//
 	// example:
 	//
@@ -156,7 +156,7 @@ type GetVideoGenerationJobResponseBodyVideoGenerationJob struct {
 	//
 	// Executing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The custom business information.
+	// The user business information.
 	//
 	// example:
 	//

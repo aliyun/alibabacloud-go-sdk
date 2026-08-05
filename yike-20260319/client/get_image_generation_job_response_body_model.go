@@ -68,7 +68,7 @@ type GetImageGenerationJobResponseBodyImageGenerationJob struct {
 	//
 	// 16:9
 	AspectRatio *string `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
-	// The error message. The value is of the String type. This parameter is returned when the task is in the Failed state.
+	// The error message. This parameter is returned when the task is in the Failed state.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type GetImageGenerationJobResponseBodyImageGenerationJob struct {
 	//
 	// example:
 	//
-	// {"Prompt":"图1在篮球场上，用图2来了个灌篮"}
+	// {"Prompt":"Image 1 is on a basketball court, using Image 2 to perform a slam dunk"}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
 	// The task ID.
 	//
@@ -86,7 +86,7 @@ type GetImageGenerationJobResponseBodyImageGenerationJob struct {
 	//
 	// fdc7f121056249c2b64e04bba27bcc8c
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The task feature configuration. You do not need to set this parameter.
+	// The task feature configuration. No configuration is required at this time.
 	//
 	// example:
 	//
@@ -110,13 +110,13 @@ type GetImageGenerationJobResponseBodyImageGenerationJob struct {
 	//
 	// 1
 	N *string `json:"N,omitempty" xml:"N,omitempty"`
-	// The generation result. The value is a JSON string that contains the following fields:
+	// The generation result in JSON string format. Fields:
 	//
-	// - Medias: a list of media information (Media objects). A Media object contains the following fields:
+	// - Medias: a list of media information (Media objects). Fields of a Media object:
 	//
-	//   - MediaId: the media asset ID. The value is of the String type.
+	//   - MediaId: String. The media asset ID.
 	//
-	//   - OutputUrl: the media URL (with an authentication string). The value is of the String type.
+	//   - OutputUrl: String. The media URL (with authentication string).
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type GetImageGenerationJobResponseBodyImageGenerationJob struct {
 	//
 	// 1K
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	// The scene type. Currently, only `general` is supported.
+	// The scene type. Currently only `general` is supported.
 	//
 	// example:
 	//

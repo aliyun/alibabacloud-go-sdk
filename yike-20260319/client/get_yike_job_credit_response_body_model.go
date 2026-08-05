@@ -20,18 +20,26 @@ type iGetYikeJobCreditResponseBody interface {
 }
 
 type GetYikeJobCreditResponseBody struct {
+	// The credit deduction status.
+	//
 	// example:
 	//
 	// success
 	CreditStatus *string `json:"CreditStatus,omitempty" xml:"CreditStatus,omitempty"`
+	// The actual credits consumed.
+	//
 	// example:
 	//
 	// 20
 	JobCreditCost *float64 `json:"JobCreditCost,omitempty" xml:"JobCreditCost,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// ag_12412424****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******

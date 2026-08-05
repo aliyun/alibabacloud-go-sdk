@@ -16,10 +16,14 @@ type iGetYikeAgentJobEstimatedCreditResponseBody interface {
 }
 
 type GetYikeAgentJobEstimatedCreditResponseBody struct {
+	// The estimated credits to be deducted.
+	//
 	// example:
 	//
 	// 20.1
 	EstimatedCreditCost *float64 `json:"EstimatedCreditCost,omitempty" xml:"EstimatedCreditCost,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****

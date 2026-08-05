@@ -16,12 +16,16 @@ type iGetYikeAgentJobEstimatedCreditRequest interface {
 }
 
 type GetYikeAgentJobEstimatedCreditRequest struct {
+	// The name of the task submission operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// SubmitYikeAvatarNarratorJob
 	JobAction *string `json:"JobAction,omitempty" xml:"JobAction,omitempty"`
+	// The task request content. This is a JSON string and uses the same JobParams parameter as the task submission operation.
+	//
 	// This parameter is required.
 	//
 	// example:
