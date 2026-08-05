@@ -8996,7 +8996,7 @@ func (client *Client) DeletePolarFsObjectsWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Deletes a path mapping for transparent acceleration.
+// Deletes a transparent acceleration path mapping.
 //
 // @param request - DeletePolarFsPathMappingRequest
 //

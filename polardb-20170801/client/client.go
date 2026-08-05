@@ -11595,7 +11595,7 @@ func (client *Client) DeletePolarFsObjects(request *DeletePolarFsObjectsRequest)
 
 // Summary:
 //
-// Deletes a path mapping for transparent acceleration.
+// Deletes a transparent acceleration path mapping.
 //
 // @param request - DeletePolarFsPathMappingRequest
 //
@@ -11647,7 +11647,7 @@ func (client *Client) DeletePolarFsPathMappingWithOptions(request *DeletePolarFs
 
 // Summary:
 //
-// Deletes a path mapping for transparent acceleration.
+// Deletes a transparent acceleration path mapping.
 //
 // @param request - DeletePolarFsPathMappingRequest
 //
