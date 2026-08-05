@@ -142,8 +142,11 @@ type CreateTaskRequest struct {
 	// The list of tags for the node.
 	Tags []*CreateTaskRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The node backend configuration. After this parameter is configured, runtime log information is saved to the specified OSS bucket.
-	TaskBackend              *CreateTaskRequestTaskBackend `json:"taskBackend,omitempty" xml:"taskBackend,omitempty" type:"Struct"`
-	TerraformProviderVersion *string                       `json:"terraformProviderVersion,omitempty" xml:"terraformProviderVersion,omitempty"`
+	TaskBackend *CreateTaskRequestTaskBackend `json:"taskBackend,omitempty" xml:"taskBackend,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1.248.0
+	TerraformProviderVersion *string `json:"terraformProviderVersion,omitempty" xml:"terraformProviderVersion,omitempty"`
 	// The Terraform version. Call the **ListAvailableTerraformVersions*	- operation to obtain the list of supported versions. Default value: 1.5.7.
 	//
 	// example:
