@@ -9,6 +9,8 @@ type iNodePodInfo interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetGPUIndexes(v []*int32) *NodePodInfo
+	GetGPUIndexes() []*int32
 	SetPhase(v string) *NodePodInfo
 	GetPhase() *string
 	SetPodIP(v string) *NodePodInfo
@@ -26,27 +28,42 @@ type iNodePodInfo interface {
 }
 
 type NodePodInfo struct {
+	// The occupied GPU indexes.
+	GPUIndexes []*int32 `json:"GPUIndexes,omitempty" xml:"GPUIndexes,omitempty" type:"Repeated"`
+	// The Pod status.
+	//
 	// example:
 	//
 	// Running
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The IP address of the Pod.
+	//
 	// example:
 	//
 	// 192.168.2.2
 	PodIP *string `json:"PodIP,omitempty" xml:"PodIP,omitempty"`
+	// The Pod name.
+	//
 	// example:
 	//
 	// test
 	PodName *string `json:"PodName,omitempty" xml:"PodName,omitempty"`
+	// The namespace of the Pod.
+	//
 	// example:
 	//
 	// test
-	PodNamespace *string         `json:"PodNamespace,omitempty" xml:"PodNamespace,omitempty"`
+	PodNamespace *string `json:"PodNamespace,omitempty" xml:"PodNamespace,omitempty"`
+	// The resource usage information.
 	ResourceSpec *ResourceAmount `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
+	// The task ID or service ID.
+	//
 	// example:
 	//
 	// dlc19de9s6vn3acr
 	WorkloadId *string `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+	// The sub-product that the Pod belongs to.
+	//
 	// example:
 	//
 	// dlc
@@ -59,6 +76,10 @@ func (s NodePodInfo) String() string {
 
 func (s NodePodInfo) GoString() string {
 	return s.String()
+}
+
+func (s *NodePodInfo) GetGPUIndexes() []*int32 {
+	return s.GPUIndexes
 }
 
 func (s *NodePodInfo) GetPhase() *string {
@@ -87,6 +108,11 @@ func (s *NodePodInfo) GetWorkloadId() *string {
 
 func (s *NodePodInfo) GetWorkloadType() *string {
 	return s.WorkloadType
+}
+
+func (s *NodePodInfo) SetGPUIndexes(v []*int32) *NodePodInfo {
+	s.GPUIndexes = v
+	return s
 }
 
 func (s *NodePodInfo) SetPhase(v string) *NodePodInfo {
