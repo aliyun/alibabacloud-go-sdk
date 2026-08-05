@@ -417,6 +417,68 @@ func (client *Client) AsymmetricVerifyWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// Retrieves secret values in batches.
+//
+// Description:
+//
+// - For details about the access policy required for a Resource Access Management (RAM) user or RAM role to invoke this operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
+//
+// - If you do not specify a version number or version stage, KMS returns the secret value of the version marked as ACSCurrent by default.
+//
+// - The caller must have the `kms:GetSecretValue` permission on all secrets in the batch.
+//
+// - If a secret uses a customer master key to protect the secret value, the caller must also have the `kms:Decrypt` permission on the corresponding master key.
+//
+// This topic provides an example of how to retrieve the secret value of a secret named `secret001`. The response shows that the secret value `SecretData` is `testdata1`.
+//
+// @param tmpReq - BatchGetSecretValueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchGetSecretValueResponse
+func (client *Client) BatchGetSecretValueWithContext(ctx context.Context, tmpReq *BatchGetSecretValueRequest, runtime *dara.RuntimeOptions) (_result *BatchGetSecretValueResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &BatchGetSecretValueShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SecretsList) {
+		request.SecretsListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SecretsList, dara.String("SecretsList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SecretsListShrink) {
+		query["SecretsList"] = request.SecretsListShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchGetSecretValue"),
+		Version:     dara.String("2016-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchGetSecretValueResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Cancels the deletion task of a CMK.
 //
 // Description:
@@ -3765,13 +3827,13 @@ func (client *Client) ListResourceTagsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries all version IDs and stage labels of a specified secret.
+// Queries all version information of a secret.
 //
 // Description:
 //
-// - For more information about the access policy required for a RAM user or RAM role to call this OpenAPI, see [Resource Access Management](https://help.aliyun.com/document_detail/2767210.html).
+// - For details about the access policy required for a Resource Access Management (RAM) user or RAM role to invoke this operation, refer to [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - The version information does not include the secret value. By default, this operation returns only the secret versions that are marked with a version stage.
+// - Version information does not include secret values. By default, only secret versions that have version stages are returned.
 //
 // @param request - ListSecretVersionIdsRequest
 //
