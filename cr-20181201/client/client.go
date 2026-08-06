@@ -64,9 +64,7 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"ap-southeast-6":        dara.String("cr.ap-southeast-6.aliyuncs.com"),
 		"ap-southeast-5":        dara.String("cr.ap-southeast-5.aliyuncs.com"),
 		"ap-southeast-3":        dara.String("cr.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-2":        dara.String("cr.ap-southeast-2.aliyuncs.com"),
 		"ap-southeast-1":        dara.String("cr.ap-southeast-1.aliyuncs.com"),
-		"ap-south-1":            dara.String("cr.ap-south-1.aliyuncs.com"),
 		"ap-northeast-2":        dara.String("cr.ap-northeast-2.aliyuncs.com"),
 		"ap-northeast-1":        dara.String("cr.ap-northeast-1.aliyuncs.com"),
 	}
@@ -2919,7 +2917,7 @@ func (client *Client) DeleteEventCenterRule(request *DeleteEventCenterRuleReques
 
 // Summary:
 //
-// 删除实例自定义域名
+// Deletes a custom domain name from an instance.
 //
 // @param request - DeleteInstanceCustomizedDomainRequest
 //
@@ -2971,7 +2969,7 @@ func (client *Client) DeleteInstanceCustomizedDomainWithOptions(request *DeleteI
 
 // Summary:
 //
-// 删除实例自定义域名
+// Deletes a custom domain name from an instance.
 //
 // @param request - DeleteInstanceCustomizedDomainRequest
 //
@@ -4075,17 +4073,17 @@ func (client *Client) GetArtifactSubscriptionTaskResult(request *GetArtifactSubs
 
 // Summary:
 //
-// Retrieves a temporary account and temporary password for logging on to an instance.
+// Retrieves a temporary username and password for logging on to an instance.
 //
 // Description:
 //
 // The temporary password is valid for 1 hour. If you use STS to make the request, the validity period of the temporary password is the same as that of the STS token used in the request.
 //
-// - The permissions granted by a temporary token obtained through an Alibaba Cloud account are the same as the permissions granted when you log on to the instance with the username and password of the Alibaba Cloud account.
+// - The permissions granted by a temporary token obtained through an Alibaba Cloud account are the same as those granted when you log on to the instance with the username and password of the Alibaba Cloud account.
 //
-// - The permissions granted by a temporary token obtained through a RAM user are the same as the permissions granted when you log on to the instance with the username and password of the RAM user.
+// - The permissions granted by a temporary token obtained through a RAM user are the same as those granted when you log on to the instance with the username and password of the RAM user.
 //
-// - The permissions granted by a temporary token obtained through STS are the same as the permissions of the STS token.
+// - The permissions granted by a temporary token obtained through STS are the same as those of the STS token.
 //
 // @param request - GetAuthorizationTokenRequest
 //
@@ -4100,6 +4098,10 @@ func (client *Client) GetAuthorizationTokenWithOptions(request *GetAuthorization
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExpiresInHours) {
+		query["ExpiresInHours"] = request.ExpiresInHours
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -4129,17 +4131,17 @@ func (client *Client) GetAuthorizationTokenWithOptions(request *GetAuthorization
 
 // Summary:
 //
-// Retrieves a temporary account and temporary password for logging on to an instance.
+// Retrieves a temporary username and password for logging on to an instance.
 //
 // Description:
 //
 // The temporary password is valid for 1 hour. If you use STS to make the request, the validity period of the temporary password is the same as that of the STS token used in the request.
 //
-// - The permissions granted by a temporary token obtained through an Alibaba Cloud account are the same as the permissions granted when you log on to the instance with the username and password of the Alibaba Cloud account.
+// - The permissions granted by a temporary token obtained through an Alibaba Cloud account are the same as those granted when you log on to the instance with the username and password of the Alibaba Cloud account.
 //
-// - The permissions granted by a temporary token obtained through a RAM user are the same as the permissions granted when you log on to the instance with the username and password of the RAM user.
+// - The permissions granted by a temporary token obtained through a RAM user are the same as those granted when you log on to the instance with the username and password of the RAM user.
 //
-// - The permissions granted by a temporary token obtained through STS are the same as the permissions of the STS token.
+// - The permissions granted by a temporary token obtained through STS are the same as those of the STS token.
 //
 // @param request - GetAuthorizationTokenRequest
 //
@@ -4464,6 +4466,10 @@ func (client *Client) GetInstanceCount() (_result *GetInstanceCountResponse, _er
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the custom domain name of an instance.
+//
 // @param request - GetInstanceCustomizedDomainRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4512,6 +4518,10 @@ func (client *Client) GetInstanceCustomizedDomainWithOptions(request *GetInstanc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the custom domain name of an instance.
+//
 // @param request - GetInstanceCustomizedDomainRequest
 //
 // @return GetInstanceCustomizedDomainResponse
@@ -6940,7 +6950,7 @@ func (client *Client) ListRepoSyncTask(request *ListRepoSyncTaskRequest) (_resul
 
 // Summary:
 //
-// Queries image tags in a repository.
+// Queries the list of image versions (tags).
 //
 // @param request - ListRepoTagRequest
 //
@@ -6957,6 +6967,14 @@ func (client *Client) ListRepoTagWithOptions(request *ListRepoTagRequest, runtim
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
 	}
 
 	if !dara.IsNil(request.PageNo) {
@@ -6996,7 +7014,7 @@ func (client *Client) ListRepoTagWithOptions(request *ListRepoTagRequest, runtim
 
 // Summary:
 //
-// Queries image tags in a repository.
+// Queries the list of image versions (tags).
 //
 // @param request - ListRepoTagRequest
 //
@@ -7182,7 +7200,7 @@ func (client *Client) ListRepoTrigger(request *ListRepoTriggerRequest) (_result 
 
 // Summary:
 //
-// Query the image repository list.
+// Queries a list of image repositories.
 //
 // @param request - ListRepositoryRequest
 //
@@ -7199,6 +7217,14 @@ func (client *Client) ListRepositoryWithOptions(request *ListRepositoryRequest, 
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
 	}
 
 	if !dara.IsNil(request.PageNo) {
@@ -7246,7 +7272,7 @@ func (client *Client) ListRepositoryWithOptions(request *ListRepositoryRequest, 
 
 // Summary:
 //
-// Query the image repository list.
+// Queries a list of image repositories.
 //
 // @param request - ListRepositoryRequest
 //
@@ -8328,7 +8354,7 @@ func (client *Client) UpdateEventCenterRule(request *UpdateEventCenterRuleReques
 
 // Summary:
 //
-// 更新实例自定义域名
+// Updates the custom domain name of an instance.
 //
 // @param request - UpdateInstanceCustomizedDomainRequest
 //
@@ -8388,7 +8414,7 @@ func (client *Client) UpdateInstanceCustomizedDomainWithOptions(request *UpdateI
 
 // Summary:
 //
-// 更新实例自定义域名
+// Updates the custom domain name of an instance.
 //
 // @param request - UpdateInstanceCustomizedDomainRequest
 //

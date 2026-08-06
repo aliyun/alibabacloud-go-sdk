@@ -18,18 +18,24 @@ type iGetInstanceCustomizedDomainRequest interface {
 }
 
 type GetInstanceCustomizedDomainRequest struct {
+	// The custom domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// registry.ugnas.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The custom module name.
+	//
 	// This parameter is required.
 	//
 	// example:

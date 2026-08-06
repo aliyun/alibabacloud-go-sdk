@@ -36,50 +36,74 @@ type iGetInstanceCustomizedDomainResponseBody interface {
 }
 
 type GetInstanceCustomizedDomainResponseBody struct {
+	// The certificate ID.
+	//
 	// example:
 	//
 	// 24858802
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The return code.
+	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1571926439000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The custom domain name.
+	//
 	// example:
 	//
 	// docker-images.qu-in.club
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The domain type.
+	//
 	// example:
 	//
 	// USER
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	// The custom endpoint type.
+	//
 	// example:
 	//
 	// internet
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// cri-4ec5xvj4j0l****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether the operation is successful.
+	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 1638259914000
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The custom module name.
+	//
 	// example:
 	//
 	// Chart
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4CE1F661-75DD-4EBD-A4AD-057B26834ABB

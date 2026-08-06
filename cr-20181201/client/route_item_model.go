@@ -18,20 +18,32 @@ type iRouteItem interface {
 }
 
 type RouteItem struct {
-	// Instance Endpoint Type
+	// The endpoint type.
 	//
 	// This parameter is required.
 	//
 	// if can be null:
 	// false
+	//
+	// example:
+	//
+	// Internet
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// Instance Domain
+	// The instance domain name.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-instance-registry-vpc.cn-hangzhou.cr.aliyuncs.com
 	InstanceDomain *string `json:"InstanceDomain,omitempty" xml:"InstanceDomain,omitempty"`
-	// OSS Domain
+	// The OSS domain name.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// https://cri-cfafawer***-registry.oss-cn-hangzhou.aliyuncs.com
 	StorageDomain *string `json:"StorageDomain,omitempty" xml:"StorageDomain,omitempty"`
 }
 

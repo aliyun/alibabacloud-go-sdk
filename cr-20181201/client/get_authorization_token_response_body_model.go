@@ -24,7 +24,7 @@ type iGetAuthorizationTokenResponseBody interface {
 }
 
 type GetAuthorizationTokenResponseBody struct {
-	// The password used to log on to the Registry.
+	// The password used to log on to the registry.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type GetAuthorizationTokenResponseBody struct {
 	//
 	// E069EB86-E6AD-4A98-ADDE-0E993390239A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The username used to log on to the Registry.
+	// The username used to log on to the registry.
 	//
 	// example:
 	//

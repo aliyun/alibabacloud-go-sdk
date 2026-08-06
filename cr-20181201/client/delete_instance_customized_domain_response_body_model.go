@@ -18,14 +18,20 @@ type iDeleteInstanceCustomizedDomainResponseBody interface {
 }
 
 type DeleteInstanceCustomizedDomainResponseBody struct {
+	// The return code.
+	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the operation is successful.
+	//
 	// example:
 	//
 	// True
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EEE92FA9-3181-5174-8A06-BE2252FA462E

@@ -22,28 +22,38 @@ type iUpdateInstanceCustomizedDomainRequest interface {
 }
 
 type UpdateInstanceCustomizedDomainRequest struct {
+	// The certificate ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 21118442
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The region where the certificate resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	CertRegionId *string `json:"CertRegionId,omitempty" xml:"CertRegionId,omitempty"`
+	// The custom domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// registry-cn-guangzhou.ack.aliyuncs.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cri-h0tvspmnglam5jw5
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The modified domain name.
+	//
 	// This parameter is required.
 	//
 	// example:

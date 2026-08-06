@@ -18,18 +18,24 @@ type iDeleteInstanceCustomizedDomainRequest interface {
 }
 
 type DeleteInstanceCustomizedDomainRequest struct {
+	// The custom domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// crtest.wgine-inc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cri-av3kxfkkiwofikl5
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The custom module name.
+	//
 	// This parameter is required.
 	//
 	// example:

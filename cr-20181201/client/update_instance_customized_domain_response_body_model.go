@@ -18,14 +18,20 @@ type iUpdateInstanceCustomizedDomainResponseBody interface {
 }
 
 type UpdateInstanceCustomizedDomainResponseBody struct {
+	// The return code.
+	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the operation is successful.
+	//
 	// example:
 	//
 	// True
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2EFAF75C-1FA7-5254-B044-E97291C170CC

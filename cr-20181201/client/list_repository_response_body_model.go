@@ -13,6 +13,10 @@ type iListRepositoryResponseBody interface {
 	GetCode() *string
 	SetIsSuccess(v bool) *ListRepositoryResponseBody
 	GetIsSuccess() *bool
+	SetMaxResults(v int32) *ListRepositoryResponseBody
+	GetMaxResults() *int32
+	SetNextToken(v string) *ListRepositoryResponseBody
+	GetNextToken() *string
 	SetPageNo(v int32) *ListRepositoryResponseBody
 	GetPageNo() *int32
 	SetPageSize(v int32) *ListRepositoryResponseBody
@@ -37,20 +41,22 @@ type ListRepositoryResponseBody struct {
 	// example:
 	//
 	// true
-	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	IsSuccess  *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The information about the repositories.
+	// The list of repositories.
 	Repositories []*ListRepositoryResponseBodyRepositories `json:"Repositories,omitempty" xml:"Repositories,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -58,7 +64,7 @@ type ListRepositoryResponseBody struct {
 	//
 	// 5241C090-DA69-4B0F-8E3F-2F24FDE1110E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of the queried image repositories.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -80,6 +86,14 @@ func (s *ListRepositoryResponseBody) GetCode() *string {
 
 func (s *ListRepositoryResponseBody) GetIsSuccess() *bool {
 	return s.IsSuccess
+}
+
+func (s *ListRepositoryResponseBody) GetMaxResults() *int32 {
+	return s.MaxResults
+}
+
+func (s *ListRepositoryResponseBody) GetNextToken() *string {
+	return s.NextToken
 }
 
 func (s *ListRepositoryResponseBody) GetPageNo() *int32 {
@@ -109,6 +123,16 @@ func (s *ListRepositoryResponseBody) SetCode(v string) *ListRepositoryResponseBo
 
 func (s *ListRepositoryResponseBody) SetIsSuccess(v bool) *ListRepositoryResponseBody {
 	s.IsSuccess = &v
+	return s
+}
+
+func (s *ListRepositoryResponseBody) SetMaxResults(v int32) *ListRepositoryResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListRepositoryResponseBody) SetNextToken(v string) *ListRepositoryResponseBody {
+	s.NextToken = &v
 	return s
 }
 
@@ -151,81 +175,81 @@ func (s *ListRepositoryResponseBody) Validate() error {
 }
 
 type ListRepositoryResponseBodyRepositories struct {
-	// The time when the repository was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1564153576000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the Container Registry instance to which the repository belongs.
+	// The instance ID.
 	//
 	// example:
 	//
 	// cri-kmsiwlxxdcv****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the repository was last modified.
+	// The last modification time.
 	//
 	// example:
 	//
 	// 1564153576000
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The type of the repository building. Valid values:
+	// The repository build type. Valid values:
 	//
-	// 	- `AUTO`: The repository is automatically built.
+	// - `AUTO`: Automatically triggered build.
 	//
-	// 	- `MANUAL`: The repository is manually built.
+	// - `MANUAL`: Manually triggered build.
 	//
 	// example:
 	//
 	// MANUAL
 	RepoBuildType *string `json:"RepoBuildType,omitempty" xml:"RepoBuildType,omitempty"`
-	// The ID of the repository.
+	// The repository ID.
 	//
 	// example:
 	//
 	// crr-03cuozrsqhkw****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The name of the repository.
+	// The repository name.
 	//
 	// example:
 	//
 	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The name of the namespace to which the repository belongs.
+	// The repository namespace.
 	//
 	// example:
 	//
 	// test
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	// The status of the repository.
+	// The repository status.
 	//
 	// example:
 	//
 	// NORMAL
 	RepoStatus *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
-	// The type of the repository. Valid values:
+	// The repository type. Valid values:
 	//
-	// 	- `PUBLIC`
+	// - `PUBLIC`: Public.
 	//
-	// 	- `PRIVATE`
+	// - `PRIVATE`: Private.
 	//
 	// example:
 	//
 	// PRIVATE
 	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
-	// The ID of the resource group to which the repository belongs.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfm4n5kzyfxxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The summary of the repository.
+	// The summary information.
 	//
 	// example:
 	//
 	// test OK
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	// Indicates whether the feature of image tag immutability is enabled for the repository.
+	// The image tag immutability.
 	//
 	// example:
 	//

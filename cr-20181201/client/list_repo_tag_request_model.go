@@ -11,6 +11,10 @@ type iListRepoTagRequest interface {
 	GoString() string
 	SetInstanceId(v string) *ListRepoTagRequest
 	GetInstanceId() *string
+	SetMaxResults(v int32) *ListRepoTagRequest
+	GetMaxResults() *int32
+	SetNextToken(v string) *ListRepoTagRequest
+	GetNextToken() *string
 	SetPageNo(v int32) *ListRepoTagRequest
 	GetPageNo() *int32
 	SetPageSize(v int32) *ListRepoTagRequest
@@ -20,7 +24,7 @@ type iListRepoTagRequest interface {
 }
 
 type ListRepoTagRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -28,19 +32,21 @@ type ListRepoTagRequest struct {
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page to return.
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page. Maximum value: 100.
+	// The number of entries per page. The maximum value is 100.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the repository.
+	// The repository ID.
 	//
 	// This parameter is required.
 	//
@@ -62,6 +68,14 @@ func (s *ListRepoTagRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *ListRepoTagRequest) GetMaxResults() *int32 {
+	return s.MaxResults
+}
+
+func (s *ListRepoTagRequest) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *ListRepoTagRequest) GetPageNo() *int32 {
 	return s.PageNo
 }
@@ -76,6 +90,16 @@ func (s *ListRepoTagRequest) GetRepoId() *string {
 
 func (s *ListRepoTagRequest) SetInstanceId(v string) *ListRepoTagRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListRepoTagRequest) SetMaxResults(v int32) *ListRepoTagRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListRepoTagRequest) SetNextToken(v string) *ListRepoTagRequest {
+	s.NextToken = &v
 	return s
 }
 

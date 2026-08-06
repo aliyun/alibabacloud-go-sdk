@@ -11,6 +11,10 @@ type iListRepositoryRequest interface {
 	GoString() string
 	SetInstanceId(v string) *ListRepositoryRequest
 	GetInstanceId() *string
+	SetMaxResults(v int32) *ListRepositoryRequest
+	GetMaxResults() *int32
+	SetNextToken(v string) *ListRepositoryRequest
+	GetNextToken() *string
 	SetPageNo(v int32) *ListRepositoryRequest
 	GetPageNo() *int32
 	SetPageSize(v int32) *ListRepositoryRequest
@@ -24,7 +28,7 @@ type iListRepositoryRequest interface {
 }
 
 type ListRepositoryRequest struct {
-	// The ID of the Container Registry instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -32,35 +36,37 @@ type ListRepositoryRequest struct {
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page. Maximum value: 100. If you specify a value larger than 100 for this parameter, the system reports a parameter error or uses 100 as the maximum value.
+	// The number of entries per page. The maximum value is 100. If the specified value exceeds 100, the system returns a parameter error or uses 100 as the actual maximum number of entries returned.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the repository.
+	// The repository name.
 	//
 	// example:
 	//
 	// repo-test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The name of the namespace to which the repository belongs.
+	// The repository namespace name.
 	//
 	// example:
 	//
 	// repo-namespace-test
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	// Repository status. Valid values:
+	// The repository status. Valid values:
 	//
 	// - `NORMAL`: Normal.
 	//
-	// - `DELETING`: Deleting.
+	// - `DELETING`: Being deleted.
 	//
 	// - `DELETED`: Deleted.
 	//
@@ -82,6 +88,14 @@ func (s ListRepositoryRequest) GoString() string {
 
 func (s *ListRepositoryRequest) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *ListRepositoryRequest) GetMaxResults() *int32 {
+	return s.MaxResults
+}
+
+func (s *ListRepositoryRequest) GetNextToken() *string {
+	return s.NextToken
 }
 
 func (s *ListRepositoryRequest) GetPageNo() *int32 {
@@ -106,6 +120,16 @@ func (s *ListRepositoryRequest) GetRepoStatus() *string {
 
 func (s *ListRepositoryRequest) SetInstanceId(v string) *ListRepositoryRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListRepositoryRequest) SetMaxResults(v int32) *ListRepositoryRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListRepositoryRequest) SetNextToken(v string) *ListRepositoryRequest {
+	s.NextToken = &v
 	return s
 }
 
