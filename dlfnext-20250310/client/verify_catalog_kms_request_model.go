@@ -14,7 +14,13 @@ type iVerifyCatalogKmsRequest interface {
 }
 
 type VerifyCatalogKmsRequest struct {
+	// The ID of the KMS customer master key (CMK) to be validated. The server uses this key to perform an SSE-KMS write probe.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// key-1234567890abcdef
 	KmsKeyId *string `json:"kmsKeyId,omitempty" xml:"kmsKeyId,omitempty"`
 }
 

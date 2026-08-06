@@ -1148,7 +1148,11 @@ func (client *Client) GetCatalogByIdWithContext(ctx context.Context, id *string,
 
 // Summary:
 //
-// Retrieves the DLF authorization information required to configure BYOK SSE-KMS for a catalog, including the data-access role ARN and the KMS Key Policy snippet.
+// Retrieves the DLF data access role ARN and KMS key policy authorization statement required to configure BYOK SSE KMS for a catalog. This operation returns the DLF data access role and KMS key policy authorization statement required to configure BYOK SSE KMS. The customer master key is configured at the catalog level through oss.sse.kms.key-id. When creating a table, you can enable SSE KMS for the table by setting the table property oss.sse.kms.enabled=true. Tables with KMS encryption enabled and tables without encryption can coexist under the same catalog.
+//
+// Description:
+//
+// This operation returns the DLF data access role and KMS key policy authorization statement required to configure BYOK SSE KMS. The customer master key is configured at the catalog level through oss.sse.kms.key-id. When creating a table, you can enable SSE KMS for the table by setting the table property oss.sse.kms.enabled=true. Tables with KMS encryption enabled and tables without encryption can coexist under the same catalog.
 //
 // @param request - GetCatalogKmsGrantsRequest
 //
@@ -1400,7 +1404,7 @@ func (client *Client) GetDatabaseSummaryWithContext(ctx context.Context, catalog
 
 // Summary:
 //
-// Retrieves information about an Iceberg namespace.
+// Queries an Iceberg database.
 //
 // @param headers - map
 //
@@ -3689,7 +3693,62 @@ func (client *Client) UpdateRoleUsersWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// Validates the BYOK SSE-KMS configuration of a catalog by performing an SSE-KMS write probe on the bucket using the issued temporary credentials and verifying the result.
+// Updates the trusted VPC configuration.
+//
+// @param request - UpdateVpcConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVpcConfigResponse
+func (client *Client) UpdateVpcConfigWithContext(ctx context.Context, request *UpdateVpcConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateVpcConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Removals) {
+		body["removals"] = request.Removals
+	}
+
+	if !dara.IsNil(request.Updates) {
+		body["updates"] = request.Updates
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateVpcConfig"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/auth/vpc"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &UpdateVpcConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Validates the BYOK SSE-KMS configuration of a Catalog: performs an SSE-KMS write probe on the storage bucket using the issued temporary credentials. This operation only validates whether the specified customer master key (CMK) can be used for BYOK SSE-KMS of the Catalog. It does not automatically enable encryption for all tables in the Catalog. The CMK is configured at the Catalog level through oss.sse.kms.key-id. When creating a table, set the table property oss.sse.kms.enabled=true to enable SSE-KMS for the specified table.
+//
+// Description:
+//
+// This operation only validates whether the specified customer master key (CMK) can be used for BYOK SSE-KMS of the Catalog. It does not automatically enable encryption for all tables in the Catalog. The CMK is configured at the Catalog level through oss.sse.kms.key-id. When creating a table, set the table property oss.sse.kms.enabled=true to enable SSE-KMS for the specified table.
 //
 // @param request - VerifyCatalogKmsRequest
 //

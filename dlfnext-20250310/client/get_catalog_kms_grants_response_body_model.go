@@ -20,10 +20,32 @@ type iGetCatalogKmsGrantsResponseBody interface {
 }
 
 type GetCatalogKmsGrantsResponseBody struct {
-	DataAccessRoleArn  *string `json:"dataAccessRoleArn,omitempty" xml:"dataAccessRoleArn,omitempty"`
+	// The ARN of the RAM role used by DLF to access catalog data. When configuring the KMS key policy, you must grant this role permissions to use the customer master key.
+	//
+	// example:
+	//
+	// acs:ram::123456789012****:role/AliyunDlfNextDataAccessRole
+	DataAccessRoleArn *string `json:"dataAccessRoleArn,omitempty" xml:"dataAccessRoleArn,omitempty"`
+	// The authorization statement that must be added to the customer master key policy. This statement grants the DLF data access role corresponding to dataAccessRoleArn the KMS permissions required for data encryption and decryption.
+	//
+	// example:
+	//
+	// {"Sid":"AllowDLFDataAccess","Effect":"Allow","Principal":{"RAM":["acs:ram::123456789012****:role/
+	//
+	//   AliyunDlfNextDataAccessRole"]},"Action":["kms:Decrypt","kms:GenerateDataKey"],"Resource":["*"]}
 	KeyPolicyStatement *string `json:"keyPolicyStatement,omitempty" xml:"keyPolicyStatement,omitempty"`
-	Region             *string `json:"region,omitempty" xml:"region,omitempty"`
-	WorkflowRoleArn    *string `json:"workflowRoleArn,omitempty" xml:"workflowRoleArn,omitempty"`
+	// The region ID to which the catalog belongs.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The DLF workflow role ARN. In the current version, the workflow role is not granted customer master key access permissions based on the least privilege principle. Therefore, this field returns an empty value.
+	//
+	// example:
+	//
+	// null
+	WorkflowRoleArn *string `json:"workflowRoleArn,omitempty" xml:"workflowRoleArn,omitempty"`
 }
 
 func (s GetCatalogKmsGrantsResponseBody) String() string {
