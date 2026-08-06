@@ -20,24 +20,32 @@ type iGetKgEntityRequest interface {
 }
 
 type GetKgEntityRequest struct {
+	// The entity record ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// abc-xxx
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The entity type code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Company
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -18,16 +18,22 @@ type iGetKgSchemaPublishResultRequest interface {
 }
 
 type GetKgSchemaPublishResultRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The version number. If this parameter is left empty, the most recent publish record is returned.
+	//
 	// example:
 	//
 	// 1
 	VersionId *int32 `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	// The model ID.
+	//
 	// This parameter is required.
 	//
 	// example:

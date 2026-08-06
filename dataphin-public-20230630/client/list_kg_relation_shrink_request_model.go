@@ -20,19 +20,26 @@ type iListKgRelationShrinkRequest interface {
 }
 
 type ListKgRelationShrinkRequest struct {
+	// The paged search filter conditions.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The relationship type code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// BELONG_TO
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

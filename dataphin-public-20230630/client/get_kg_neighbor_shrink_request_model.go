@@ -22,25 +22,34 @@ type iGetKgNeighborShrinkRequest interface {
 }
 
 type GetKgNeighborShrinkRequest struct {
+	// The entity record data ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	EntityDataId *string `json:"EntityDataId,omitempty" xml:"EntityDataId,omitempty"`
+	// The entity type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Student
-	EntityType           *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The entity record neighbor node query instruction.
 	NeighborsQueryShrink *string `json:"NeighborsQuery,omitempty" xml:"NeighborsQuery,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The model ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,24 +24,34 @@ type iGetKgEntityResponseBody interface {
 }
 
 type GetKgEntityResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
-	Code       *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The entity record details.
 	EntityInfo *GetKgEntityResponseBodyEntityInfo `json:"EntityInfo,omitempty" xml:"EntityInfo,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The backend exception details.
+	//
 	// example:
 	//
 	// internal error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetKgEntityResponseBody) String() string {
@@ -116,14 +126,19 @@ func (s *GetKgEntityResponseBody) Validate() error {
 }
 
 type GetKgEntityResponseBodyEntityInfo struct {
+	// The entity record ID.
+	//
 	// example:
 	//
 	// abc-xxx
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The entity type code.
+	//
 	// example:
 	//
 	// Company
-	EntityType   *string                                          `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The list of entity record properties.
 	PropertyList []*GetKgEntityResponseBodyEntityInfoPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Repeated"`
 }
 
@@ -176,14 +191,32 @@ func (s *GetKgEntityResponseBodyEntityInfo) Validate() error {
 }
 
 type GetKgEntityResponseBodyEntityInfoPropertyList struct {
+	// The property code.
+	//
 	// example:
 	//
 	// company_name
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The property data type. Valid values:
+	//
+	// - STRING: string
+	//
+	// - INTEGER: integer
+	//
+	// - FLOAT: floating-point number
+	//
+	// - BOOLEAN: Boolean
+	//
+	// - DATE: date
+	//
+	// - LIST: list
+	//
 	// example:
 	//
 	// STRING
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The property value.
+	//
 	// example:
 	//
 	// Alibaba

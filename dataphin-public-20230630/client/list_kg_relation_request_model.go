@@ -20,19 +20,26 @@ type iListKgRelationRequest interface {
 }
 
 type ListKgRelationRequest struct {
+	// The paged search filter conditions.
 	ListQuery *ListKgRelationRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The relationship type code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// BELONG_TO
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -95,18 +102,26 @@ func (s *ListKgRelationRequest) Validate() error {
 }
 
 type ListKgRelationRequestListQuery struct {
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of records per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The source entity record ID.
+	//
 	// example:
 	//
 	// e1d4559a4db044158305e2d89bccf81f
 	SourceEntityId *string `json:"SourceEntityId,omitempty" xml:"SourceEntityId,omitempty"`
+	// The target entity record ID.
+	//
 	// example:
 	//
 	// e1d4559a4db044158305e2d89bccf82f

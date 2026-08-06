@@ -5365,7 +5365,7 @@ func (client *Client) ExecuteTriggerNodeWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 导出知识图谱定义。
+// Exports knowledge graph metadata definitions. Online version: v6.1.1.
 //
 // @param request - ExportKgSchemaRequest
 //
@@ -7741,7 +7741,7 @@ func (client *Client) GetInstanceUpDownStreamWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 获取知识图谱实体记录。
+// Retrieves the details of a knowledge graph entity record. Online version: v6.1.1.
 //
 // @param request - GetKgEntityRequest
 //
@@ -7797,7 +7797,7 @@ func (client *Client) GetKgEntityWithContext(ctx context.Context, request *GetKg
 
 // Summary:
 //
-// 获取图谱模型邻居节点。
+// Retrieves neighbor nodes of a graph model entity. Online version: v6.2.0.
 //
 // @param tmpReq - GetKgNeighborRequest
 //
@@ -7865,7 +7865,7 @@ func (client *Client) GetKgNeighborWithContext(ctx context.Context, tmpReq *GetK
 
 // Summary:
 //
-// 获取知识图谱关系记录。
+// Retrieves the details of a knowledge graph relationship record. Online version: v6.1.1.
 //
 // @param request - GetKgRelationRequest
 //
@@ -7921,7 +7921,7 @@ func (client *Client) GetKgRelationWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// 获取图谱模型发布结果。
+// Retrieves the publish result of a knowledge graph model. Online version: v6.2.0.
 //
 // @param request - GetKgSchemaPublishResultRequest
 //
@@ -8801,7 +8801,7 @@ func (client *Client) GetPipelineAsyncResultWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Queries a pipeline task by pipeline task ID.
+// Queries a pipeline node by pipeline node ID.
 //
 // @param tmpReq - GetPipelineByIdRequest
 //
@@ -11299,7 +11299,7 @@ func (client *Client) GrantResourcePermissionWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 导入知识图谱定义。
+// Imports a knowledge graph model definition. Online version: v6.1.1.
 //
 // @param tmpReq - ImportKgSchemaRequest
 //
@@ -11635,9 +11635,7 @@ func (client *Client) ListApiByAppWithContext(ctx context.Context, tmpReq *ListA
 //
 // Description:
 //
-// ## 请求说明
-//
-// 该 API 允许用户通过提供租户 ID、数据服务应用的AppKey 或应用名称的关键词来已授权给应用的API。支持分页查询，返回的数据包括API的ID、名称、所属项目、已授权的有效期（开发及生产环境）、权限类型、生产及开发环境字段列表（字段/参数名称、参数类型、描述、示例值、是否已授权等）。请注意，分页参数是必填值。
+// ## Request description.
 //
 // @param tmpReq - ListAuthorizedDataServiceApiDetailsRequest
 //
@@ -12801,7 +12799,7 @@ func (client *Client) ListKgEntityWithContext(ctx context.Context, tmpReq *ListK
 
 // Summary:
 //
-// 分页查询知识图谱关系记录。
+// Queries knowledge graph relationship records by paging. Online version: v6.1.1.
 //
 // @param tmpReq - ListKgRelationRequest
 //
@@ -16769,23 +16767,11 @@ func (client *Client) UpdateDataSourceConfigWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Dataphin OpenAPI 模板。
+// Updates the information of a dataset in a specified project. Available since v6.2.0.
 //
 // Description:
 //
-// ## 请求说明
-//
-// - 该 API 用于更新特定项目下已存在的数据集的详细信息。
-//
-// - 必须提供 `ProjectId` 和 `UpdateCommand` 参数，其中 `UpdateCommand` 包含了需要更新的数据集的具体字段。
-//
-// - `UpdateCommand` 中的 `Id` 字段是必需的，用来标识要更新的数据集。
-//
-// - 其他字段如 `Name`, `Type`, `DataCellId` 等为可选项，根据实际需求选择性填写。
-//
-// - 版本配置（`VersionConfig`）和实时元表配置（`RealtimeMetaTableConfig`）提供了更详细的设置选项，包括存储路径、表结构等，这些也是可选的。
-//
-// - 注意确保所有提供的 ID 值（如 `ProjectId`, `Id`, `DataSourceId` 等）在系统中有效且正确关联。
+// ## Request description.
 //
 // @param tmpReq - UpdateDatasetRequest
 //

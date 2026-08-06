@@ -20,24 +20,32 @@ type iGetKgRelationRequest interface {
 }
 
 type GetKgRelationRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The relationship record ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// abc-xxx
 	RelationId *string `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
+	// The relationship type code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// BELONG_TO
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -30,7 +30,7 @@ type GetPipelineByIdRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID used to query the pipeline task.
+	// The query ID used to query the pipeline node.
 	//
 	// This parameter is required.
 	QueryId *GetPipelineByIdRequestQueryId `json:"QueryId,omitempty" xml:"QueryId,omitempty" type:"Struct"`
@@ -98,7 +98,7 @@ type GetPipelineByIdRequestContext struct {
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The ID of the project to which the integration pipeline task belongs.
+	// The project ID to which the integration pipeline node belongs.
 	//
 	// This parameter is required.
 	//
@@ -139,19 +139,19 @@ func (s *GetPipelineByIdRequestContext) Validate() error {
 }
 
 type GetPipelineByIdRequestQueryId struct {
-	// Supports querying by the integration task file ID (fileId).
+	// The file ID of the integration node. You can use this parameter to query the pipeline node.
 	//
 	// example:
 	//
 	// 123
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// Supports querying by the integration task scheduling node ID (nodeId).
+	// The scheduling node ID of the integration node. You can use this parameter to query the pipeline node.
 	//
 	// example:
 	//
 	// n_123
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// Supports querying by the integration pipeline primary key (pipelineId).
+	// The primary key ID of the integration pipeline. You can use this parameter to query the pipeline node.
 	//
 	// example:
 	//

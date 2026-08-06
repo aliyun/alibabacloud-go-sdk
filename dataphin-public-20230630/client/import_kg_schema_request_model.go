@@ -18,18 +18,24 @@ type iImportKgSchemaRequest interface {
 }
 
 type ImportKgSchemaRequest struct {
+	// The instruction for importing the knowledge graph definition.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f1d4559a4db044158305e2d89bccf81f
 	ImportCommand *ImportKgSchemaRequestImportCommand `json:"ImportCommand,omitempty" xml:"ImportCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -83,14 +89,20 @@ func (s *ImportKgSchemaRequest) Validate() error {
 }
 
 type ImportKgSchemaRequestImportCommand struct {
+	// The knowledge graph definition content converted based on the specified format.
+	//
 	// example:
 	//
 	// name:xxx
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The format of the knowledge graph definition content. Valid values: json and yaml. Default value: yaml.
+	//
 	// example:
 	//
 	// yaml
 	InputFormat *string `json:"InputFormat,omitempty" xml:"InputFormat,omitempty"`
+	// The merge strategy for the knowledge graph definition content. Valid values: replace and merge. Default value: replace.
+	//
 	// example:
 	//
 	// replace

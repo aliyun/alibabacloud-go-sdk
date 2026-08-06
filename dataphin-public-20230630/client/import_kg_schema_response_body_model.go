@@ -24,24 +24,34 @@ type iImportKgSchemaResponseBody interface {
 }
 
 type ImportKgSchemaResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                                  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	ImportResult   *ImportKgSchemaResponseBodyImportResult `json:"ImportResult,omitempty" xml:"ImportResult,omitempty" type:"Struct"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The import result.
+	ImportResult *ImportKgSchemaResponseBodyImportResult `json:"ImportResult,omitempty" xml:"ImportResult,omitempty" type:"Struct"`
+	// The backend exception details.
+	//
 	// example:
 	//
 	// internal error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ImportKgSchemaResponseBody) String() string {
@@ -116,10 +126,14 @@ func (s *ImportKgSchemaResponseBody) Validate() error {
 }
 
 type ImportKgSchemaResponseBodyImportResult struct {
+	// The number of entity types that were changed.
+	//
 	// example:
 	//
 	// 1032591
 	EntityTypeCount *int32 `json:"EntityTypeCount,omitempty" xml:"EntityTypeCount,omitempty"`
+	// The number of relation types that were changed.
+	//
 	// example:
 	//
 	// 3380766

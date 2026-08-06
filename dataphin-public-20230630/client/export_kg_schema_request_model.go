@@ -20,20 +20,28 @@ type iExportKgSchemaRequest interface {
 }
 
 type ExportKgSchemaRequest struct {
+  // The tenant ID.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 30001011
   OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+  // The format of the exported content. Valid values: json and yaml. Default value: yaml.
+  // 
   // example:
   // 
   // json
   OutputFormat *string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
+  // The version number. If this parameter is empty or set to -1, the model metadata in draft state is returned. If this parameter is set to 0, the model metadata of the latest version is returned.
+  // 
   // example:
   // 
   // 0
   VersionId *int32 `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+  // The workspace ID.
+  // 
   // This parameter is required.
   // 
   // example:

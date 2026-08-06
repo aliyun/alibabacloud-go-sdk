@@ -22,25 +22,34 @@ type iGetKgNeighborRequest interface {
 }
 
 type GetKgNeighborRequest struct {
+	// The entity record data ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	EntityDataId *string `json:"EntityDataId,omitempty" xml:"EntityDataId,omitempty"`
+	// The entity type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Student
-	EntityType     *string                             `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The entity record neighbor node query instruction.
 	NeighborsQuery *GetKgNeighborRequestNeighborsQuery `json:"NeighborsQuery,omitempty" xml:"NeighborsQuery,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The model ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -112,14 +121,27 @@ func (s *GetKgNeighborRequest) Validate() error {
 }
 
 type GetKgNeighborRequestNeighborsQuery struct {
+	// The maximum depth of neighbor nodes. Default value: 1.
+	//
 	// example:
 	//
 	// 2
 	Depth *int32 `json:"Depth,omitempty" xml:"Depth,omitempty"`
+	// The direction type. Valid values:
+	//
+	// - in: the current entity is the target node.
+	//
+	// - out: the current entity is the source node.
+	//
+	// - both: the current entity is both the source node and the target node.
+	//
+	// Default value: both.
+	//
 	// example:
 	//
 	// both
-	DirectionType *string   `json:"DirectionType,omitempty" xml:"DirectionType,omitempty"`
+	DirectionType *string `json:"DirectionType,omitempty" xml:"DirectionType,omitempty"`
+	// The list of relation types.
 	RelationTypes []*string `json:"RelationTypes,omitempty" xml:"RelationTypes,omitempty" type:"Repeated"`
 }
 

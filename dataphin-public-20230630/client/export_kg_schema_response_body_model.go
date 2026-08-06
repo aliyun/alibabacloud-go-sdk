@@ -24,23 +24,33 @@ type iExportKgSchemaResponseBody interface {
 }
 
 type ExportKgSchemaResponseBody struct {
+  // The backend response code.
+  // 
   // example:
   // 
   // OK
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // The HTTP status code.
+  // 
   // example:
   // 
   // 200
   HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+  // The backend exception details.
+  // 
   // example:
   // 
   // internal error
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+  // Id of the request
+  // 
   // example:
   // 
   // 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // The knowledge graph definition details.
   SchemaInfo *ExportKgSchemaResponseBodySchemaInfo `json:"SchemaInfo,omitempty" xml:"SchemaInfo,omitempty" type:"Struct"`
+  // Indicates whether the request was successful.
   Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -116,12 +126,16 @@ func (s *ExportKgSchemaResponseBody) Validate() error {
 }
 
 type ExportKgSchemaResponseBodySchemaInfo struct {
+  // The knowledge graph definition content converted based on the specified format.
+  // 
   // example:
   // 
   // workspaceId: f1d4559a4db044158305e2d89bccf81f
   // 
   // name: jytest
   Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+  // The format of the returned knowledge graph definition content. Valid values: json and yaml.
+  // 
   // example:
   // 
   // yaml

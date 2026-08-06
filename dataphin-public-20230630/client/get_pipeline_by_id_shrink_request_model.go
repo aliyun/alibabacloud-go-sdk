@@ -30,7 +30,7 @@ type GetPipelineByIdShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID used to query the pipeline task.
+	// The query ID used to query the pipeline node.
 	//
 	// This parameter is required.
 	QueryIdShrink *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`

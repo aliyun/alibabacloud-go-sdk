@@ -24,24 +24,34 @@ type iGetKgNeighborResponseBody interface {
 }
 
 type GetKgNeighborResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The query result.
 	Data *GetKgNeighborResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The backend exception details.
+	//
 	// example:
 	//
 	// internal error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetKgNeighborResponseBody) String() string {
@@ -116,7 +126,9 @@ func (s *GetKgNeighborResponseBody) Validate() error {
 }
 
 type GetKgNeighborResponseBodyData struct {
+	// The edge list.
 	EdgeList []*GetKgNeighborResponseBodyDataEdgeList `json:"EdgeList,omitempty" xml:"EdgeList,omitempty" type:"Repeated"`
+	// The node list.
 	NodeList []*GetKgNeighborResponseBodyDataNodeList `json:"NodeList,omitempty" xml:"NodeList,omitempty" type:"Repeated"`
 }
 
@@ -169,19 +181,28 @@ func (s *GetKgNeighborResponseBodyData) Validate() error {
 }
 
 type GetKgNeighborResponseBodyDataEdgeList struct {
+	// The relation record property list.
 	PropertyList []*GetKgNeighborResponseBodyDataEdgeListPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Repeated"`
+	// The relation record ID.
+	//
 	// example:
 	//
 	// abc-xxx
 	RelationId *string `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
+	// The relation type code.
+	//
 	// example:
 	//
 	// BELONG_TO
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	// The source entity ID.
+	//
 	// example:
 	//
 	// abc-xxx
 	SourceEntityId *string `json:"SourceEntityId,omitempty" xml:"SourceEntityId,omitempty"`
+	// The target entity ID.
+	//
 	// example:
 	//
 	// abd-xxx
@@ -255,14 +276,20 @@ func (s *GetKgNeighborResponseBodyDataEdgeList) Validate() error {
 }
 
 type GetKgNeighborResponseBodyDataEdgeListPropertyList struct {
+	// The property code.
+	//
 	// example:
 	//
 	// company_name
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The property data type. Valid values: STRING (string), INTEGER (integer), FLOAT (float), BOOLEAN (Boolean), DATE (date), LIST (list), and others.
+	//
 	// example:
 	//
 	// STRING
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The property value.
+	//
 	// example:
 	//
 	// Alibaba
@@ -309,14 +336,19 @@ func (s *GetKgNeighborResponseBodyDataEdgeListPropertyList) Validate() error {
 }
 
 type GetKgNeighborResponseBodyDataNodeList struct {
+	// The entity record ID.
+	//
 	// example:
 	//
 	// abc-xxx
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The entity type code.
+	//
 	// example:
 	//
 	// Company
-	EntityType   *string                                              `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The entity record property list.
 	PropertyList []*GetKgNeighborResponseBodyDataNodeListPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Repeated"`
 }
 
@@ -369,14 +401,20 @@ func (s *GetKgNeighborResponseBodyDataNodeList) Validate() error {
 }
 
 type GetKgNeighborResponseBodyDataNodeListPropertyList struct {
+	// The property code.
+	//
 	// example:
 	//
 	// company_name
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The property data type. Valid values: STRING (string), INTEGER (integer), FLOAT (float), BOOLEAN (Boolean), DATE (date), LIST (list), and others.
+	//
 	// example:
 	//
 	// STRING
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The property value.
+	//
 	// example:
 	//
 	// Alibaba

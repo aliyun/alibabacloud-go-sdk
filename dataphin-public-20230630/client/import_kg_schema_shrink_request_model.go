@@ -18,18 +18,24 @@ type iImportKgSchemaShrinkRequest interface {
 }
 
 type ImportKgSchemaShrinkRequest struct {
+	// The instruction for importing the knowledge graph definition.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f1d4559a4db044158305e2d89bccf81f
 	ImportCommandShrink *string `json:"ImportCommand,omitempty" xml:"ImportCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
