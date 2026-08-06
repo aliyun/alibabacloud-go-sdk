@@ -16,9 +16,21 @@ type iDescribeDocParserJobStatusRequest interface {
 }
 
 type DescribeDocParserJobStatusRequest struct {
+	// The ID of the document parsing task. You can obtain the ID by calling CreateDocParserJob.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// job_abc123
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

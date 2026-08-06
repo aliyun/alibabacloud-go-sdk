@@ -18,10 +18,33 @@ type iWebFetchRequest interface {
 }
 
 type WebFetchRequest struct {
+	// The output format. Valid values:
+	//
+	// - **markdown**: Markdown format.
+	//
+	// - **html**: HTML format.
+	//
+	// - **text**: Plain text format.
+	//
+	// example:
+	//
+	// markdown
 	OutputFormat *string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The URL of the target web page to crawl.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// https://xxx/projects/spring-boot
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 

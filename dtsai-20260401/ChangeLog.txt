@@ -1,3 +1,14 @@
+2026-08-06 Version: v1.0.1
+- Update API CreateDocParserJob: add request parameters ImageMode.
+- Update API CreateDocParserJob: add request parameters OssFileUrl.
+- Update API CreateDocParserJob: add request parameters ResultType.
+- Update API CreateDocParserJob: add request parameters TableFormat.
+- Update API DescribeDocParserJobResult: add response parameters Body.ResultType.
+- Update API DescribeDocParserJobResult: add response parameters Body.ResultUrl.
+- Update API WebSearch: add request parameters UrlScopeDomains.
+- Update API WebSearch: add request parameters UrlScopeMode.
+
+
 2026-06-16 Version: v1.0.0
 - Generated golang 2026-04-01 for DtsAI.
 

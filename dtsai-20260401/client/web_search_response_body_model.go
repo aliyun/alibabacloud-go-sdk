@@ -28,14 +28,50 @@ type iWebSearchResponseBody interface {
 }
 
 type WebSearchResponseBody struct {
-	ErrorCode      *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string                              `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32                               `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Query          *string                              `json:"Query,omitempty" xml:"Query,omitempty"`
-	RequestId      *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SearchResult   []*WebSearchResponseBodySearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
-	Success        *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalResults   *int32                               `json:"TotalResults,omitempty" xml:"TotalResults,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// ErrorMessage Code
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// ErrorMessage Example
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The search query statement.
+	//
+	// example:
+	//
+	// Spring Boot
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A30D0930-xxxx-xxxx-xxxx-C2C661CC8B58
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The search result list.
+	SearchResult []*WebSearchResponseBodySearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of results returned.
+	//
+	// example:
+	//
+	// 10
+	TotalResults *int32 `json:"TotalResults,omitempty" xml:"TotalResults,omitempty"`
 }
 
 func (s WebSearchResponseBody) String() string {
@@ -132,9 +168,24 @@ func (s *WebSearchResponseBody) Validate() error {
 }
 
 type WebSearchResponseBodySearchResult struct {
+	// The summary of the web page content.
+	//
+	// example:
+	//
+	// Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications.
 	Snippet *string `json:"Snippet,omitempty" xml:"Snippet,omitempty"`
-	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Url     *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The title of the web page.
+	//
+	// example:
+	//
+	// Spring Boot
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL of the web page.
+	//
+	// example:
+	//
+	// https://xxx/projects/spring-boot
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s WebSearchResponseBodySearchResult) String() string {

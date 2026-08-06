@@ -26,13 +26,60 @@ type iDescribeDocParserJobStatusResponseBody interface {
 }
 
 type DescribeDocParserJobStatusResponseBody struct {
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// JobNotFound
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// The specified job does not exist.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The failure cause. This parameter has a value only when Status is failed.
+	//
+	// example:
+	//
+	// Failed Message
 	FailureMessage *string `json:"FailureMessage,omitempty" xml:"FailureMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A30D0930-xxxx-xxxx-xxxx-C2C661CC8B58
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task status. Valid values:
+	//
+	// - **init**: Created and being prepared.
+	//
+	// - **pending**: Queued and waiting to be scheduled.
+	//
+	// - **running**: Being processed and parsed.
+	//
+	// - **success**: Completed. You can call DescribeDocParserJobResult to obtain the result.
+	//
+	// - **failed**: Failed. The cause is provided in FailureMessage.
+	//
+	// - **cancelled**: Canceled.
+	//
+	// example:
+	//
+	// running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDocParserJobStatusResponseBody) String() string {

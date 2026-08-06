@@ -19,17 +19,53 @@ type iDescribeDocParserJobResultResponseBody interface {
 	GetRequestId() *string
 	SetResult(v string) *DescribeDocParserJobResultResponseBody
 	GetResult() *string
+	SetResultType(v string) *DescribeDocParserJobResultResponseBody
+	GetResultType() *string
+	SetResultUrl(v string) *DescribeDocParserJobResultResponseBody
+	GetResultUrl() *string
 	SetSuccess(v bool) *DescribeDocParserJobResultResponseBody
 	GetSuccess() *bool
 }
 
 type DescribeDocParserJobResultResponseBody struct {
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// JobNotFound
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// The specified job does not exist.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A30D0930-xxxx-xxxx-xxxx-C2C661CC8B58
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The document parsing result. The format is determined by the OutputFormat parameter specified in the CreateDocParserJob request.
+	//
+	// example:
+	//
+	// # Document Title
+	Result     *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	ResultType *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
+	ResultUrl  *string `json:"ResultUrl,omitempty" xml:"ResultUrl,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDocParserJobResultResponseBody) String() string {
@@ -60,6 +96,14 @@ func (s *DescribeDocParserJobResultResponseBody) GetResult() *string {
 	return s.Result
 }
 
+func (s *DescribeDocParserJobResultResponseBody) GetResultType() *string {
+	return s.ResultType
+}
+
+func (s *DescribeDocParserJobResultResponseBody) GetResultUrl() *string {
+	return s.ResultUrl
+}
+
 func (s *DescribeDocParserJobResultResponseBody) GetSuccess() *bool {
 	return s.Success
 }
@@ -86,6 +130,16 @@ func (s *DescribeDocParserJobResultResponseBody) SetRequestId(v string) *Describ
 
 func (s *DescribeDocParserJobResultResponseBody) SetResult(v string) *DescribeDocParserJobResultResponseBody {
 	s.Result = &v
+	return s
+}
+
+func (s *DescribeDocParserJobResultResponseBody) SetResultType(v string) *DescribeDocParserJobResultResponseBody {
+	s.ResultType = &v
+	return s
+}
+
+func (s *DescribeDocParserJobResultResponseBody) SetResultUrl(v string) *DescribeDocParserJobResultResponseBody {
+	s.ResultUrl = &v
 	return s
 }
 

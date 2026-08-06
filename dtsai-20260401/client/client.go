@@ -24,7 +24,10 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-beijing": dara.String("dtsai.cn-beijing.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -139,7 +142,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 网页搜索
+// Creates a document parsing task.
+//
+// Description:
+//
+// - Region: Only China (Beijing) is supported.
+//
+// - Fees: Free during the public preview period. No fees are charged.
 //
 // @param request - CreateDocParserJobRequest
 //
@@ -166,12 +175,28 @@ func (client *Client) CreateDocParserJobWithOptions(request *CreateDocParserJobR
 		query["FileUrl"] = request.FileUrl
 	}
 
+	if !dara.IsNil(request.ImageMode) {
+		query["ImageMode"] = request.ImageMode
+	}
+
+	if !dara.IsNil(request.OssFileUrl) {
+		query["OssFileUrl"] = request.OssFileUrl
+	}
+
 	if !dara.IsNil(request.OutputFormat) {
 		query["OutputFormat"] = request.OutputFormat
 	}
 
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResultType) {
+		query["ResultType"] = request.ResultType
+	}
+
+	if !dara.IsNil(request.TableFormat) {
+		query["TableFormat"] = request.TableFormat
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -199,7 +224,13 @@ func (client *Client) CreateDocParserJobWithOptions(request *CreateDocParserJobR
 
 // Summary:
 //
-// 网页搜索
+// Creates a document parsing task.
+//
+// Description:
+//
+// - Region: Only China (Beijing) is supported.
+//
+// - Fees: Free during the public preview period. No fees are charged.
 //
 // @param request - CreateDocParserJobRequest
 //
@@ -324,7 +355,15 @@ func (client *Client) CreateDocParserJobAdvance(request *CreateDocParserJobAdvan
 
 // Summary:
 //
-// 网页搜索
+// Retrieves the result of a document parsing task.
+//
+// Description:
+//
+// - Region: Only China (Beijing) is supported.
+//
+// - Fees: Free of charge during the public preview period.
+//
+// - Call DescribeDocParserJobResult to retrieve the parsing result of a document parsing task. Call this operation only after DescribeDocParserJobStatus returns a Status of success. Task results are retained for 72 hours and cannot be retrieved after expiration.
 //
 // @param request - DescribeDocParserJobResultRequest
 //
@@ -372,7 +411,15 @@ func (client *Client) DescribeDocParserJobResultWithOptions(request *DescribeDoc
 
 // Summary:
 //
-// 网页搜索
+// Retrieves the result of a document parsing task.
+//
+// Description:
+//
+// - Region: Only China (Beijing) is supported.
+//
+// - Fees: Free of charge during the public preview period.
+//
+// - Call DescribeDocParserJobResult to retrieve the parsing result of a document parsing task. Call this operation only after DescribeDocParserJobStatus returns a Status of success. Task results are retained for 72 hours and cannot be retrieved after expiration.
 //
 // @param request - DescribeDocParserJobResultRequest
 //
@@ -390,7 +437,13 @@ func (client *Client) DescribeDocParserJobResult(request *DescribeDocParserJobRe
 
 // Summary:
 //
-// 网页搜索
+// Queries the status of a document parsing task.
+//
+// Description:
+//
+// - Region: Only China (Beijing) is supported.
+//
+// - Fees: The service is free of charge during the public preview period.
 //
 // @param request - DescribeDocParserJobStatusRequest
 //
@@ -438,7 +491,13 @@ func (client *Client) DescribeDocParserJobStatusWithOptions(request *DescribeDoc
 
 // Summary:
 //
-// 网页搜索
+// Queries the status of a document parsing task.
+//
+// Description:
+//
+// - Region: Only China (Beijing) is supported.
+//
+// - Fees: The service is free of charge during the public preview period.
 //
 // @param request - DescribeDocParserJobStatusRequest
 //
@@ -456,7 +515,13 @@ func (client *Client) DescribeDocParserJobStatus(request *DescribeDocParserJobSt
 
 // Summary:
 //
-// 网页搜索
+// Retrieves the content of a web page.
+//
+// Description:
+//
+// - Region: Only China (Beijing) and Singapore regions are supported.
+//
+// - Pricing: Free of charge during the public preview period.
 //
 // @param request - WebFetchRequest
 //
@@ -508,7 +573,13 @@ func (client *Client) WebFetchWithOptions(request *WebFetchRequest, runtime *dar
 
 // Summary:
 //
-// 网页搜索
+// Retrieves the content of a web page.
+//
+// Description:
+//
+// - Region: Only China (Beijing) and Singapore regions are supported.
+//
+// - Pricing: Free of charge during the public preview period.
 //
 // @param request - WebFetchRequest
 //
@@ -526,7 +597,13 @@ func (client *Client) WebFetch(request *WebFetchRequest) (_result *WebFetchRespo
 
 // Summary:
 //
-// 网页搜索
+// Performs a web search.
+//
+// Description:
+//
+// - Region: Only China (Beijing) and Singapore regions are supported.
+//
+// - Fees: Free of charge during the public preview. No fees are charged.
 //
 // @param request - WebSearchRequest
 //
@@ -551,6 +628,14 @@ func (client *Client) WebSearchWithOptions(request *WebSearchRequest, runtime *d
 
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.UrlScopeDomains) {
+		query["UrlScopeDomains"] = request.UrlScopeDomains
+	}
+
+	if !dara.IsNil(request.UrlScopeMode) {
+		query["UrlScopeMode"] = request.UrlScopeMode
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -578,7 +663,13 @@ func (client *Client) WebSearchWithOptions(request *WebSearchRequest, runtime *d
 
 // Summary:
 //
-// 网页搜索
+// Performs a web search.
+//
+// Description:
+//
+// - Region: Only China (Beijing) and Singapore regions are supported.
+//
+// - Fees: Free of charge during the public preview. No fees are charged.
 //
 // @param request - WebSearchRequest
 //

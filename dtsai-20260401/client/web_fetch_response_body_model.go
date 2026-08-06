@@ -32,16 +32,84 @@ type iWebFetchResponseBody interface {
 }
 
 type WebFetchResponseBody struct {
-	Content        *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	ContentFormat  *string `json:"ContentFormat,omitempty" xml:"ContentFormat,omitempty"`
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Url            *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	UrlType        *string `json:"UrlType,omitempty" xml:"UrlType,omitempty"`
+	// The content of the web page.
+	//
+	// example:
+	//
+	// Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The actual output format. Valid values:
+	//
+	// - **markdown**: Markdown format.
+	//
+	// - **html**: HTML format.
+	//
+	// - **text**: Plain text format.
+	//
+	// example:
+	//
+	// markdown
+	ContentFormat *string `json:"ContentFormat,omitempty" xml:"ContentFormat,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// ErrorMessage Code
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// ErrorMessage Example
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A30D0930-xxxx-xxxx-xxxx-C2C661CC8B58
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The title of the web page.
+	//
+	// example:
+	//
+	// Spring Boot
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL of the web page.
+	//
+	// example:
+	//
+	// https://xxxx/projects/spring-boot
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The URL classification result. Valid values:
+	//
+	// - **static_html**: Static HTML page.
+	//
+	// - **dynamic_js**: Single-page application (SPA) page that requires JavaScript rendering.
+	//
+	// - **audio**: Audio file.
+	//
+	// - **video**: Video file.
+	//
+	// - **document**: Document file (PDF, Word, PPT, or Excel).
+	//
+	// - **unknown**: Unrecognizable.
+	//
+	// example:
+	//
+	// static_html
+	UrlType *string `json:"UrlType,omitempty" xml:"UrlType,omitempty"`
 }
 
 func (s WebFetchResponseBody) String() string {
