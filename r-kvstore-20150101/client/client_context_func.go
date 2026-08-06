@@ -11146,6 +11146,10 @@ func (client *Client) ModifyInstanceSpecWithContext(ctx context.Context, request
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !dara.IsNil(request.SecondaryZoneId) {
+		query["SecondaryZoneId"] = request.SecondaryZoneId
+	}
+
 	if !dara.IsNil(request.SecurityToken) {
 		query["SecurityToken"] = request.SecurityToken
 	}

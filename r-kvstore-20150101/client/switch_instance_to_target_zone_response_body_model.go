@@ -11,6 +11,8 @@ type iSwitchInstanceToTargetZoneResponseBody interface {
 	GoString() string
 	SetRequestId(v string) *SwitchInstanceToTargetZoneResponseBody
 	GetRequestId() *string
+	SetTaskId(v string) *SwitchInstanceToTargetZoneResponseBody
+	GetTaskId() *string
 }
 
 type SwitchInstanceToTargetZoneResponseBody struct {
@@ -18,6 +20,7 @@ type SwitchInstanceToTargetZoneResponseBody struct {
 	//
 	// 5D622714-AEDD-4609-9167-F5DDD3D1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s SwitchInstanceToTargetZoneResponseBody) String() string {
@@ -32,8 +35,17 @@ func (s *SwitchInstanceToTargetZoneResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *SwitchInstanceToTargetZoneResponseBody) GetTaskId() *string {
+	return s.TaskId
+}
+
 func (s *SwitchInstanceToTargetZoneResponseBody) SetRequestId(v string) *SwitchInstanceToTargetZoneResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *SwitchInstanceToTargetZoneResponseBody) SetTaskId(v string) *SwitchInstanceToTargetZoneResponseBody {
+	s.TaskId = &v
 	return s
 }
 

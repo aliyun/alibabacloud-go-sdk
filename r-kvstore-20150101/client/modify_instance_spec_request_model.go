@@ -47,6 +47,8 @@ type iModifyInstanceSpecRequest interface {
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *ModifyInstanceSpecRequest
 	GetResourceOwnerId() *int64
+	SetSecondaryZoneId(v string) *ModifyInstanceSpecRequest
+	GetSecondaryZoneId() *string
 	SetSecurityToken(v string) *ModifyInstanceSpecRequest
 	GetSecurityToken() *string
 	SetShardCount(v int32) *ModifyInstanceSpecRequest
@@ -212,6 +214,7 @@ type ModifyInstanceSpecRequest struct {
 	ReplicaCount         *int32  `json:"ReplicaCount,omitempty" xml:"ReplicaCount,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecondaryZoneId      *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The number of shards. This parameter is applicable only to cloud-native cluster instances.
 	//
@@ -347,6 +350,10 @@ func (s *ModifyInstanceSpecRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
 }
 
+func (s *ModifyInstanceSpecRequest) GetSecondaryZoneId() *string {
+	return s.SecondaryZoneId
+}
+
 func (s *ModifyInstanceSpecRequest) GetSecurityToken() *string {
 	return s.SecurityToken
 }
@@ -467,6 +474,11 @@ func (s *ModifyInstanceSpecRequest) SetResourceOwnerAccount(v string) *ModifyIns
 
 func (s *ModifyInstanceSpecRequest) SetResourceOwnerId(v int64) *ModifyInstanceSpecRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyInstanceSpecRequest) SetSecondaryZoneId(v string) *ModifyInstanceSpecRequest {
+	s.SecondaryZoneId = &v
 	return s
 }
 
