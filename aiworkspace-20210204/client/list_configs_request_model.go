@@ -22,49 +22,49 @@ type iListConfigsRequest interface {
 type ListConfigsRequest struct {
 	// The category of the configuration item. The following categories are supported:
 	//
-	// - CommonResourceConfig: The common resource configuration.
+	// - CommonResourceConfig: common resource configuration.
 	//
-	// - DLCAutoRecycle: The automatic recycling configuration for DLC.
+	// - DLCAutoRecycle: DLC automatic recycling.
 	//
-	// - DLCPriorityConfig: The priority configuration for DLC.
+	// - DLCPriorityConfig: DLC priority settings.
 	//
-	// - DSWPriorityConfig: The priority configuration for DSW.
+	// - DSWPriorityConfig: DSW priority settings.
 	//
-	// - QuotaMaximumDuration: The configuration for the maximum runtime of a DLC task in a quota.
+	// - QuotaMaximumDuration: maximum runtime duration configuration for DLC jobs in a quota.
 	//
-	// - CommonTagConfig: The label configuration.
+	// - CommonTagConfig: tag settings.
 	//
 	// example:
 	//
 	// CommonResourceConfig
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The key of the configuration item. The following keys are supported:
+	// The keys of the configuration items. The following keys are supported:
 	//
-	// - tempStoragePath: The path for temporary storage. This key is valid only when CategoryName is set to CommonResourceConfig.
+	// - tempStoragePath: the temporary storage path. This ConfigKey can be used only when CategoryName is set to CommonResourceConfig.
 	//
-	// - isAutoRecycle: The automatic recycling configuration. This key is valid only when CategoryName is set to DLCAutoRecycle.
+	// - isAutoRecycle: the automatic recycling configuration. This ConfigKey can be used only when CategoryName is set to DLCAutoRecycle.
 	//
-	// - priorityConfig: The priority configuration. This key is valid only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
+	// - priorityConfig: the priority configuration. This ConfigKey can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
 	//
-	// - quotaMaximumDuration: The configuration for the maximum runtime of a DLC task in a quota. This key is valid only when CategoryName is set to QuotaMaximumDuration.
+	// - quotaMaximumDuration: the maximum runtime duration configuration for DLC jobs in a quota. This ConfigKey can be used only when CategoryName is set to QuotaMaximumDuration.
 	//
-	// - predefinedTags: The predefined labels for the workspace. Resources that you create must have these labels.
+	// - predefinedTags: the preset tags for the workspace. Resources that are created must include these tags.
 	//
 	// example:
 	//
 	// tempStoragePath
 	ConfigKeys *string `json:"ConfigKeys,omitempty" xml:"ConfigKeys,omitempty"`
-	// The labels to use as filter conditions. Separate multiple labels with commas. A logical AND operation is performed on these labels.
+	// The labels used as filter conditions. Separate multiple conditions with commas. These conditions are evaluated using a logical AND.
 	//
 	// example:
 	//
 	// key1=value1,key2=value2
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// Specifies whether to return label information.
+	// Specifies whether to display label information. Valid values:
 	//
-	// - true: Returns label information.
+	// - true: Display label information.
 	//
-	// - false: Does not return label information.
+	// - false: Do not display label information.
 	//
 	// example:
 	//

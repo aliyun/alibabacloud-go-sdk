@@ -14,7 +14,7 @@ type iUpdateConfigsRequest interface {
 }
 
 type UpdateConfigsRequest struct {
-	// A list of workspace configurations to update or add.
+	// The list of workspace configurations to update or create.
 	Configs []*UpdateConfigsRequestConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
 }
 
@@ -49,49 +49,49 @@ func (s *UpdateConfigsRequest) Validate() error {
 }
 
 type UpdateConfigsRequestConfigs struct {
-	// The category of the configuration item. The following categories are supported:
+	// The category of the configuration item. Valid values:
 	//
-	// - CommonResourceConfig: General resource configuration.
+	// - CommonResourceConfig: general resource configuration.
 	//
-	// - DLCAutoRecycle: DLC automatic recycling.
+	// - DLCAutoRecycle: DLC automatic reclamation.
 	//
 	// - DLCPriorityConfig: DLC priority settings.
 	//
 	// - DSWPriorityConfig: DSW priority settings.
 	//
-	// - QuotaMaximumDuration: Configuration for the maximum runtime of a DLC job within a quota.
+	// - QuotaMaximumDuration: the maximum running duration of DLC jobs in the quota.
 	//
-	// - CommonTagConfig: Tag settings.
+	// - CommonTagConfig: tag settings.
 	//
 	// example:
 	//
 	// CommonResourceConfig
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The key of the configuration item. The following keys are supported:
+	// The key of the configuration item. Valid values:
 	//
-	// - tempStoragePath: The path for temporary storage. This key is valid only when CategoryName is set to CommonResourceConfig.
+	// - tempStoragePath: the temporary storage path. This ConfigKey is valid only when CategoryName is set to CommonResourceConfig.
 	//
-	// - isAutoRecycle: The configuration for automatic resource recycling. This key is valid only when CategoryName is set to DLCAutoRecycle.
+	// - isAutoRecycle: the automatic reclamation configuration. This ConfigKey is valid only when CategoryName is set to DLCAutoRecycle.
 	//
-	// - priorityConfig: The priority configuration. This key is valid only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
+	// - priorityConfig: the priority configuration. This ConfigKey is valid only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
 	//
-	// - quotaMaximumDuration: The maximum runtime configuration for a DLC job within a quota. This key is valid only when CategoryName is set to QuotaMaximumDuration.
+	// - quotaMaximumDuration: the maximum running duration of DLC jobs in the quota. This ConfigKey is valid only when CategoryName is set to QuotaMaximumDuration.
 	//
-	// - predefinedTags: The predefined tags for the workspace. Created resources must have these tags.
+	// - predefinedTags: the preset tags for the workspace. Resources that are created must include these tags.
 	//
 	// example:
 	//
 	// tempStoragePath
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
-	// The value of the configuration item.
+	// The configuration value.
 	//
-	// - If ConfigKey is set to predefinedTags, the format of ConfigValue is [{"Type":"Tag","Key":"Key1","Value":"{\\\\"Products\\\\":\\\\"DLC,DSW,EAS\\\\",\\\\"Values\\\\":\\\\"value1,value2,value3\\\\"}"}]. The Products field specifies which products use the predefined tags.
+	// - If ConfigKey is set to predefinedTags, the ConfigValue format is [{"Type":"Tag","Key":"Key1","Value":"{\\"Products\\":\\"DLC,DSW,EAS\\",\\"Values\\":\\"value1,value2,value3\\"}"}]. Products specifies which products use the preset tags.
 	//
 	// example:
 	//
 	// oss://test/s/
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	// A list of tags for the configuration item.
+	// The list of labels for the configuration item.
 	Labels []*UpdateConfigsRequestConfigsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 }
 
@@ -153,13 +153,13 @@ func (s *UpdateConfigsRequestConfigs) Validate() error {
 }
 
 type UpdateConfigsRequestConfigsLabels struct {
-	// The key of the tag.
+	// The key of the label.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The value of the label.
 	//
 	// example:
 	//

@@ -11,6 +11,10 @@ type iGetPermissionRequest interface {
 	GoString() string
 	SetAccessibility(v string) *GetPermissionRequest
 	GetAccessibility() *string
+	SetCallerAccessKeyId(v string) *GetPermissionRequest
+	GetCallerAccessKeyId() *string
+	SetCallerSecurityToken(v string) *GetPermissionRequest
+	GetCallerSecurityToken() *string
 	SetCallerType(v string) *GetPermissionRequest
 	GetCallerType() *string
 	SetCallerUid(v string) *GetPermissionRequest
@@ -30,28 +34,30 @@ type iGetPermissionRequest interface {
 type GetPermissionRequest struct {
 	// The access type. Valid values:
 	//
-	// - PUBLIC: All members in the workspace can perform the operation.
+	// - PUBLIC: All members in the current workspace can access the instance.
 	//
-	// - PRIVATE: Only the creator can perform the operation.
+	// - PRIVATE: Only the creator can access the instance.
 	//
 	// example:
 	//
 	// PUBLIC
-	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	CallerType    *string `json:"CallerType,omitempty" xml:"CallerType,omitempty"`
-	CallerUid     *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
-	// The UID of the Alibaba Cloud account that created the workspace permission.
+	Accessibility       *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	CallerAccessKeyId   *string `json:"CallerAccessKeyId,omitempty" xml:"CallerAccessKeyId,omitempty"`
+	CallerSecurityToken *string `json:"CallerSecurityToken,omitempty" xml:"CallerSecurityToken,omitempty"`
+	CallerType          *string `json:"CallerType,omitempty" xml:"CallerType,omitempty"`
+	CallerUid           *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
+	// The Alibaba Cloud account UID of the workspace permission creator.
 	//
 	// example:
 	//
 	// 17915******4216
 	Creator *string                `json:"Creator,omitempty" xml:"Creator,omitempty"`
 	Labels  map[string]interface{} `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// Optional configurations. Separate multiple configurations with commas (,). Valid values:
+	// The optional configurations. Separate multiple configurations with commas (,). Valid values:
 	//
-	// - ResourceEmpty: The resource is empty. This value is used if you do not set the Resource parameter.
+	// - ResourceEmpty: The resource is empty. The resource is empty if Resource is not specified.
 	//
-	// - DisableRam: RAM verification is disabled.
+	// - DisableRam: RAM authentication is not performed.
 	//
 	// example:
 	//
@@ -76,6 +82,14 @@ func (s GetPermissionRequest) GoString() string {
 
 func (s *GetPermissionRequest) GetAccessibility() *string {
 	return s.Accessibility
+}
+
+func (s *GetPermissionRequest) GetCallerAccessKeyId() *string {
+	return s.CallerAccessKeyId
+}
+
+func (s *GetPermissionRequest) GetCallerSecurityToken() *string {
+	return s.CallerSecurityToken
 }
 
 func (s *GetPermissionRequest) GetCallerType() *string {
@@ -108,6 +122,16 @@ func (s *GetPermissionRequest) GetSecurityToken() *string {
 
 func (s *GetPermissionRequest) SetAccessibility(v string) *GetPermissionRequest {
 	s.Accessibility = &v
+	return s
+}
+
+func (s *GetPermissionRequest) SetCallerAccessKeyId(v string) *GetPermissionRequest {
+	s.CallerAccessKeyId = &v
+	return s
+}
+
+func (s *GetPermissionRequest) SetCallerSecurityToken(v string) *GetPermissionRequest {
+	s.CallerSecurityToken = &v
 	return s
 }
 

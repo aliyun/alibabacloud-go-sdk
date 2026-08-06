@@ -56,7 +56,7 @@ type DatasetFileMetaContentGet struct {
 	//
 	// example:
 	//
-	// image/png
+	// text/png
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
 	// The file size in bytes.
 	//
@@ -116,9 +116,17 @@ type DatasetFileMetaContentGet struct {
 	//
 	// {
 	//
-	//     "ImageHeight": 1080,
+	//     "Image":
 	//
-	//     "ImageWidth": 1920
+	//     {
+	//
+	//         "Width": 1920,
+	//
+	//         "Height": 1080,
+	//
+	//         "Channel": 3
+	//
+	//     }
 	//
 	// }
 	MetaAttributes *string `json:"MetaAttributes,omitempty" xml:"MetaAttributes,omitempty"`
@@ -165,11 +173,9 @@ type DatasetFileMetaContentGet struct {
 	//
 	//     [
 	//
-	//         "Lane line",
+	//         "Felis catus",
 	//
-	//         "Water horse",
-	//
-	//         "Sunny day"
+	//         "Shorthair"
 	//
 	//     ],
 	//
@@ -177,19 +183,9 @@ type DatasetFileMetaContentGet struct {
 	//
 	//     [
 	//
-	//         "Everett",
+	//         "cat",
 	//
-	//         "Intelligent driving Dataset 1",
-	//
-	//         "Cloudy day"
-	//
-	//     ],
-	//
-	//     "user-delete-ai-tags":
-	//
-	//     [
-	//
-	//         "Sunny day"
+	//         "White"
 	//
 	//     ]
 	//

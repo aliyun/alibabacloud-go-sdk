@@ -138,22 +138,23 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	//
 	// workspace description example
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the workspace.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The list of environments in the workspace.
+	// The list of environments contained in the workspace.
 	EnvTypes []*string `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
-	// The extended information. Currently, this includes TenantId, which represents the tenant ID.
+	// The extended information. Currently includes TenantId, which indicates the tenant ID.
 	//
 	// example:
 	//
 	// {"TenantId": "4286******98"}
 	ExtraInfos map[string]interface{} `json:"ExtraInfos,omitempty" xml:"ExtraInfos,omitempty"`
-	// The time when the workspace was created. The time follows the ISO 8601 standard in UTC+0. Format: yyyy-MM-ddTHH:mm:ss.SSSZ.
+	// The time when the workspace was created. The time is in the ISO 8601 standard in UTC+0. Format: yyyy-MM-ddTHH:mm:ss.SSSZ.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the workspace was last modified. The time follows the ISO 8601 standard in UTC+0. Format: yyyy-MM-ddTHH:mmZ.
+	// The time when the workspace was last modified. The time is in the ISO 8601 standard in UTC+0. Format: yyyy-MM-ddTHH:mmZ.
 	//
 	// example:
 	//

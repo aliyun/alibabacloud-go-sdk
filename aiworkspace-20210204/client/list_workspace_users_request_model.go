@@ -16,8 +16,13 @@ type iListWorkspaceUsersRequest interface {
 }
 
 type ListWorkspaceUsersRequest struct {
+	// The user ID.
+	//
+	// example:
+	//
+	// 1611******3000
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The display name of the user that can be added as a workspace member.
+	// The display name of the user who can be added as a workspace member.
 	//
 	// example:
 	//

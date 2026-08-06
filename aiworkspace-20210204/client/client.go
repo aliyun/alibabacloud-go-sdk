@@ -501,7 +501,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// Creates a code configuration in PAI using a code branch and commit ID from a Git repository. This configuration can then be referenced in DLC jobs.
+// Creates a code configuration in PAI. You can configure a Git code branch and CommitId. After the configuration is created, it can be referenced in DLC jobs.
 //
 // @param request - CreateCodeSourceRequest
 //
@@ -588,7 +588,7 @@ func (client *Client) CreateCodeSourceWithOptions(request *CreateCodeSourceReque
 
 // Summary:
 //
-// Creates a code configuration in PAI using a code branch and commit ID from a Git repository. This configuration can then be referenced in DLC jobs.
+// Creates a code configuration in PAI. You can configure a Git code branch and CommitId. After the configuration is created, it can be referenced in DLC jobs.
 //
 // @param request - CreateCodeSourceRequest
 //
@@ -2073,6 +2073,100 @@ func (client *Client) CreateProductOrders(request *CreateProductOrdersRequest) (
 
 // Summary:
 //
+// Creates a prompt.
+//
+// Description:
+//
+// ## Request description.
+//
+// @param request - CreatePromptRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePromptResponse
+func (client *Client) CreatePromptWithOptions(request *CreatePromptRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePromptResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Accessibility) {
+		body["Accessibility"] = request.Accessibility
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.FrameworkContent) {
+		body["FrameworkContent"] = request.FrameworkContent
+	}
+
+	if !dara.IsNil(request.FrameworkType) {
+		body["FrameworkType"] = request.FrameworkType
+	}
+
+	if !dara.IsNil(request.PromptName) {
+		body["PromptName"] = request.PromptName
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePrompt"),
+		Version:     dara.String("2021-02-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/prompts"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePromptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a prompt.
+//
+// Description:
+//
+// ## Request description.
+//
+// @param request - CreatePromptRequest
+//
+// @return CreatePromptResponse
+func (client *Client) CreatePrompt(request *CreatePromptRequest) (_result *CreatePromptResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreatePromptResponse{}
+	_body, _err := client.CreatePromptWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a run for an experiment. The run can be associated with a specific workload or be a standalone code execution.
 //
 // @param request - CreateRunRequest
@@ -3465,6 +3559,88 @@ func (client *Client) DeleteModelVersionLabels(ModelId *string, VersionName *str
 
 // Summary:
 //
+// Deletes a prompt.
+//
+// Description:
+//
+// When calling this operation, note the following:
+//
+// - Tag keys and values are non-empty strings and cannot exceed 128 characters in length.
+//
+// - Tag keys cannot start with aliyun, acs, http://, or https://.
+//
+// @param request - DeletePromptRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePromptResponse
+func (client *Client) DeletePromptWithOptions(PromptId *string, request *DeletePromptRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePromptResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePrompt"),
+		Version:     dara.String("2021-02-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/prompts/" + dara.PercentEncode(dara.StringValue(PromptId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePromptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a prompt.
+//
+// Description:
+//
+// When calling this operation, note the following:
+//
+// - Tag keys and values are non-empty strings and cannot exceed 128 characters in length.
+//
+// - Tag keys cannot start with aliyun, acs, http://, or https://.
+//
+// @param request - DeletePromptRequest
+//
+// @return DeletePromptResponse
+func (client *Client) DeletePrompt(PromptId *string, request *DeletePromptRequest) (_result *DeletePromptResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeletePromptResponse{}
+	_body, _err := client.DeletePromptWithOptions(PromptId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a run.
 //
 // @param request - DeleteRunRequest
@@ -3867,7 +4043,7 @@ func (client *Client) DeleteWorkspaceRoles(WorkspaceId *string, request *DeleteW
 
 // Summary:
 //
-// Gets the details of a specified code source configuration.
+// Retrieves the details of a code source configuration.
 //
 // @param request - GetCodeSourceRequest
 //
@@ -3908,7 +4084,7 @@ func (client *Client) GetCodeSourceWithOptions(CodeSourceId *string, request *Ge
 
 // Summary:
 //
-// Gets the details of a specified code source configuration.
+// Retrieves the details of a code source configuration.
 //
 // @param request - GetCodeSourceRequest
 //
@@ -3927,7 +4103,7 @@ func (client *Client) GetCodeSource(CodeSourceId *string, request *GetCodeSource
 
 // Summary:
 //
-// Retrieves the configurations of a workspace.
+// Retrieves the workspace configuration.
 //
 // @param request - GetConfigRequest
 //
@@ -3982,7 +4158,7 @@ func (client *Client) GetConfigWithOptions(WorkspaceId *string, request *GetConf
 
 // Summary:
 //
-// Retrieves the configurations of a workspace.
+// Retrieves the workspace configuration.
 //
 // @param request - GetConfigRequest
 //
@@ -4946,6 +5122,14 @@ func (client *Client) GetPermissionWithOptions(WorkspaceId *string, PermissionCo
 		query["Accessibility"] = request.Accessibility
 	}
 
+	if !dara.IsNil(request.CallerAccessKeyId) {
+		query["CallerAccessKeyId"] = request.CallerAccessKeyId
+	}
+
+	if !dara.IsNil(request.CallerSecurityToken) {
+		query["CallerSecurityToken"] = request.CallerSecurityToken
+	}
+
 	if !dara.IsNil(request.CallerType) {
 		query["CallerType"] = request.CallerType
 	}
@@ -5010,6 +5194,72 @@ func (client *Client) GetPermission(WorkspaceId *string, PermissionCode *string,
 	headers := make(map[string]*string)
 	_result = &GetPermissionResponse{}
 	_body, _err := client.GetPermissionWithOptions(WorkspaceId, PermissionCode, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a prompt.
+//
+// @param request - GetPromptRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPromptResponse
+func (client *Client) GetPromptWithOptions(PromptId *string, request *GetPromptRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPromptResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPrompt"),
+		Version:     dara.String("2021-02-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/prompts/" + dara.PercentEncode(dara.StringValue(PromptId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPromptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a prompt.
+//
+// @param request - GetPromptRequest
+//
+// @return GetPromptResponse
+func (client *Client) GetPrompt(PromptId *string, request *GetPromptRequest) (_result *GetPromptResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetPromptResponse{}
+	_body, _err := client.GetPromptWithOptions(PromptId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5211,7 +5461,7 @@ func (client *Client) GetWorkspaceRole(WorkspaceId *string, RoleId *string, requ
 
 // Summary:
 //
-// Queries a list of code source configurations with support for paging, sorting, and filtering.
+// Queries a list of code configurations. This operation supports pagination, sorting, and conditional filtering.
 //
 // @param request - ListCodeSourcesRequest
 //
@@ -5278,7 +5528,7 @@ func (client *Client) ListCodeSourcesWithOptions(request *ListCodeSourcesRequest
 
 // Summary:
 //
-// Queries a list of code source configurations with support for paging, sorting, and filtering.
+// Queries a list of code configurations. This operation supports pagination, sorting, and conditional filtering.
 //
 // @param request - ListCodeSourcesRequest
 //
@@ -5297,7 +5547,7 @@ func (client *Client) ListCodeSources(request *ListCodeSourcesRequest) (_result 
 
 // Summary:
 //
-// Lists the configurations for a workspace.
+// Retrieves the list of workspace configurations.
 //
 // @param request - ListConfigsRequest
 //
@@ -5356,7 +5606,7 @@ func (client *Client) ListConfigsWithOptions(WorkspaceId *string, request *ListC
 
 // Summary:
 //
-// Lists the configurations for a workspace.
+// Retrieves the list of workspace configurations.
 //
 // @param request - ListConfigsRequest
 //
@@ -5507,7 +5757,7 @@ func (client *Client) ListConnections(request *ListConnectionsRequest) (_result 
 
 // Summary:
 //
-// Queries the files in a dataset.
+// Queries the list of dataset files.
 //
 // @param tmpReq - ListDatasetFileMetasRequest
 //
@@ -5688,7 +5938,7 @@ func (client *Client) ListDatasetFileMetasWithOptions(DatasetId *string, tmpReq 
 
 // Summary:
 //
-// Queries the files in a dataset.
+// Queries the list of dataset files.
 //
 // @param request - ListDatasetFileMetasRequest
 //
@@ -5789,7 +6039,7 @@ func (client *Client) ListDatasetJobConfigs(DatasetId *string, request *ListData
 
 // Summary:
 //
-// Lists dataset jobs.
+// Retrieves a list of dataset tasks.
 //
 // @param request - ListDatasetJobsRequest
 //
@@ -5868,7 +6118,7 @@ func (client *Client) ListDatasetJobsWithOptions(DatasetId *string, request *Lis
 
 // Summary:
 //
-// Lists dataset jobs.
+// Retrieves a list of dataset tasks.
 //
 // @param request - ListDatasetJobsRequest
 //
@@ -6947,6 +7197,92 @@ func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListP
 
 // Summary:
 //
+// Retrieves a list of prompts.
+//
+// @param request - ListPromptsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPromptsResponse
+func (client *Client) ListPromptsWithOptions(request *ListPromptsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPromptsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FrameworkType) {
+		query["FrameworkType"] = request.FrameworkType
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPrompts"),
+		Version:     dara.String("2021-02-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/prompts"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPromptsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a list of prompts.
+//
+// @param request - ListPromptsRequest
+//
+// @return ListPromptsResponse
+func (client *Client) ListPrompts(request *ListPromptsRequest) (_result *ListPromptsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPromptsResponse{}
+	_body, _err := client.ListPromptsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves a list of resource quotas.
 //
 // @param request - ListQuotasRequest
@@ -7487,7 +7823,7 @@ func (client *Client) ListWorkspaceRoles(WorkspaceId *string, request *ListWorks
 
 // Summary:
 //
-// Lists users that can be added as members to a workspace.
+// Lists users who have not joined a workspace and can be added as workspace members.
 //
 // @param request - ListWorkspaceUsersRequest
 //
@@ -7538,7 +7874,7 @@ func (client *Client) ListWorkspaceUsersWithOptions(WorkspaceId *string, request
 
 // Summary:
 //
-// Lists users that can be added as members to a workspace.
+// Lists users who have not joined a workspace and can be added as workspace members.
 //
 // @param request - ListWorkspaceUsersRequest
 //
@@ -8307,7 +8643,7 @@ func (client *Client) StopDatasetJob(DatasetId *string, DatasetJobId *string, re
 
 // Summary:
 //
-// Updates a code source.
+// Updates a code source configuration.
 //
 // @param request - UpdateCodeSourceRequest
 //
@@ -8386,7 +8722,7 @@ func (client *Client) UpdateCodeSourceWithOptions(CodeSourceId *string, request 
 
 // Summary:
 //
-// Updates a code source.
+// Updates a code source configuration.
 //
 // @param request - UpdateCodeSourceRequest
 //
@@ -9368,6 +9704,92 @@ func (client *Client) UpdateModelVersion(ModelId *string, VersionName *string, r
 	headers := make(map[string]*string)
 	_result = &UpdateModelVersionResponse{}
 	_body, _err := client.UpdateModelVersionWithOptions(ModelId, VersionName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the prompt of a dataset.
+//
+// Description:
+//
+// ## Request description.
+//
+// @param request - UpdatePromptRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePromptResponse
+func (client *Client) UpdatePromptWithOptions(PromptId *string, request *UpdatePromptRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdatePromptResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.FrameworkContent) {
+		body["FrameworkContent"] = request.FrameworkContent
+	}
+
+	if !dara.IsNil(request.FrameworkType) {
+		body["FrameworkType"] = request.FrameworkType
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdatePrompt"),
+		Version:     dara.String("2021-02-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/prompts/" + dara.PercentEncode(dara.StringValue(PromptId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdatePromptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the prompt of a dataset.
+//
+// Description:
+//
+// ## Request description.
+//
+// @param request - UpdatePromptRequest
+//
+// @return UpdatePromptResponse
+func (client *Client) UpdatePrompt(PromptId *string, request *UpdatePromptRequest) (_result *UpdatePromptResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdatePromptResponse{}
+	_body, _err := client.UpdatePromptWithOptions(PromptId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

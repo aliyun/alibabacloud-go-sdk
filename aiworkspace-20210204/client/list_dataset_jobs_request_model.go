@@ -30,19 +30,19 @@ type iListDatasetJobsRequest interface {
 }
 
 type ListDatasetJobsRequest struct {
-	// The name of the dataset version.
+	// The dataset version name.
 	//
 	// example:
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
-	// The job action.
+	// The task action.
 	//
 	// example:
 	//
 	// SemanticIndex
 	JobAction *string `json:"JobAction,omitempty" xml:"JobAction,omitempty"`
-	// The order in which to sort the results. This parameter is used with `SortBy`. Default: DESC.
+	// The sorting order for the specified sorting field in a paged query. Used together with SortBy. Default value: DESC. Valid values:
 	//
 	// - ASC: ascending order.
 	//
@@ -52,32 +52,33 @@ type ListDatasetJobsRequest struct {
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Pages are 1-indexed. Default: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The field by which to sort the results. By default, the results are sorted by `CreateTime` in descending order.
+	// The sort field. By default, results are sorted by creation time in descending order.
 	//
 	// example:
 	//
 	// CreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The job status.
+	// The task status.
 	//
 	// example:
 	//
 	// Running
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	WithLogs *bool   `json:"WithLogs,omitempty" xml:"WithLogs,omitempty"`
-	// The ID of the workspace. To obtain this ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Specifies whether to return task logs.
+	WithLogs *bool `json:"WithLogs,omitempty" xml:"WithLogs,omitempty"`
+	// The workspace ID. For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// example:
 	//

@@ -18,17 +18,17 @@ type iGetConfigRequest interface {
 }
 
 type GetConfigRequest struct {
-	// The classification of the configuration item. The following classifications are supported:
+	// The category of the configuration item. The following categories are supported:
 	//
-	// - CommonResourceConfig: common resource configurations
+	// - CommonResourceConfig: common resource configuration
 	//
-	// - DLCAutoRecycle: automatic DLC resource recycling
+	// - DLCAutoRecycle: DLC automatic reclamation
 	//
 	// - DLCPriorityConfig: DLC priority settings
 	//
 	// - DSWPriorityConfig: DSW priority settings
 	//
-	// - QuotaMaximumDuration: the maximum runtime of a DLC task for a quota
+	// - QuotaMaximumDuration: maximum runtime duration configuration for DLC jobs in a quota
 	//
 	// - CommonTagConfig: tag settings
 	//
@@ -38,15 +38,15 @@ type GetConfigRequest struct {
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
 	// The key of the configuration item. The following keys are supported:
 	//
-	// - tempStoragePath: the temporary storage path. This key applies only when CategoryName is set to CommonResourceConfig.
+	// - tempStoragePath: the temporary storage path. This key is valid only when CategoryName is set to CommonResourceConfig.
 	//
-	// - isAutoRecycle: the automatic recycling configuration. This key applies only when CategoryName is set to DLCAutoRecycle.
+	// - isAutoRecycle: the automatic reclamation configuration. This key is valid only when CategoryName is set to DLCAutoRecycle.
 	//
-	// - priorityConfig: the priority configuration. This key applies only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
+	// - priorityConfig: the priority configuration. This key is valid only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
 	//
-	// - quotaMaximumDuration: the maximum runtime of a DLC task for a quota. This key applies only when CategoryName is set to QuotaMaximumDuration.
+	// - quotaMaximumDuration: the maximum runtime duration configuration for DLC jobs in a quota. This key is valid only when CategoryName is set to QuotaMaximumDuration.
 	//
-	// - predefinedTags: the predefined tags for the workspace. Resources that you create must have tags.
+	// - predefinedTags: the preset tags for the workspace. Resources created in the workspace must include these tags.
 	//
 	// example:
 	//

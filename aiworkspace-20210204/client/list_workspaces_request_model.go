@@ -40,7 +40,7 @@ type iListWorkspacesRequest interface {
 type ListWorkspacesRequest struct {
 	// The list of return fields for workspace details. This parameter limits the workspace properties returned in the result.
 	//
-	// Separate multiple properties with commas (,). Currently, only Id is supported, which represents the workspace ID.
+	// Separate multiple properties with commas (,). Currently, only Id is supported, which indicates the workspace ID.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ListWorkspacesRequest struct {
 	//
 	// GetWorkspaces
 	Option *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	// The sort order for the specified sort field in a paged query. Valid values:
+	// The sorting order for the specified sorting field during paging. Valid values:
 	//
 	// 	- ASC (default): ascending order.
 	//
@@ -78,7 +78,7 @@ type ListWorkspacesRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Default value: 20.
+	// The number of entries per page for paging. Default value: 20.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type ListWorkspacesRequest struct {
 	//
 	// rg-acfmwp7rky****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The field used for sorting in a paged query. Default value: GmtCreateTime. Valid values:
+	// The sorting field for paging. Default value: GmtCreateTime. Valid values:
 	//
 	// 	- GmtCreateTime (default): sorts by creation time.
 	//
@@ -118,6 +118,11 @@ type ListWorkspacesRequest struct {
 	//
 	// ENABLED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The user ID.
+	//
+	// example:
+	//
+	// 17*****1743
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// Specifies whether to display detailed workspace information. Valid values:
 	//

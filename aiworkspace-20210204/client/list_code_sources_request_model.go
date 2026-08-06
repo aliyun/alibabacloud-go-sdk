@@ -24,49 +24,49 @@ type iListCodeSourcesRequest interface {
 }
 
 type ListCodeSourcesRequest struct {
-	// The display name of the code source configuration. Fuzzy match is supported.
+	// The display name of the code configuration. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// MyDataSource
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The sort order. Valid values:
+	// The sort order for the specified field in a paged query. Valid values:
 	//
-	// - ASC (default): Ascending order.
+	// - ASC (default): ascending order.
 	//
-	// - DESC: Descending order.
+	// - DESC: descending order.
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. The value starts from 1. The default value is 1.
+	// The page number of the code configuration list. Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. The default value is 20.
+	// The number of entries per page in a paged query. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The field to use for sorting. Valid values:
+	// The field used for sorting. Valid values:
 	//
-	// - GmtModifyTime: The time when the code source was last modified.
+	// - GmtModifyTime: the time when the code source was last modified.
 	//
-	// - DisplayName: The display name.
+	// - DisplayName: the display name.
 	//
-	// - CodeSourceId: The code source ID.
+	// - CodeSourceId: the code source ID.
 	//
-	// - GmtCreateTime (default): The time when the code source was created.
+	// - GmtCreateTime (default): the time when the code source was created.
 	//
 	// example:
 	//
 	// GmtModifyTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The workspace ID. For more information, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+	// The workspace ID. This parameter is required. For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// example:
 	//

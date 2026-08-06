@@ -56,17 +56,17 @@ type iModel interface {
 }
 
 type Model struct {
-	// The workspace accessibility. Valid values:
+	// The workspace visibility. Valid values:
 	//
-	// 	- PRIVATE (default): The model is accessible only to you and the administrator of the workspace.
+	// - PRIVATE (default): visible only to yourself and administrators within the workspace.
 	//
-	// 	- PUBLIC: The model is accessible to all members of the workspace.
+	// - PUBLIC: visible to all users in the workspace.
 	//
 	// example:
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The domain where the model is applied, such as nlp (Natural Language Processing) and cv (Computer Vision).
+	// The domain. Describes the domain of the problem that the model solves, such as nlp (natural language processing) or cv (computer vision).
 	//
 	// example:
 	//
@@ -94,25 +94,25 @@ type Model struct {
 	//
 	// }
 	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	// The time when the model was created, in UTC. The time follows the ISO 8601 standard.
+	// The UTC time of model creation, in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// 最后版本更新时间。
+	// The time when the latest version was updated.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35Z
 	GmtLatestVersionModifiedTime *string `json:"GmtLatestVersionModifiedTime,omitempty" xml:"GmtLatestVersionModifiedTime,omitempty"`
-	// The time when the model was last modified, in UTC. The time follows the ISO 8601 standard.
+	// The time when the model was last updated in UTC, in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The labels.
+	// The label list. This parameter will be deprecated and replaced by Tag.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The latest version of the model.
 	LatestVersion *ModelVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
@@ -120,9 +120,9 @@ type Model struct {
 	//
 	// example:
 	//
-	// 情感分析。
+	// Sentiment analysis
 	ModelDescription *string `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
-	// The model document.
+	// The model documentation.
 	//
 	// example:
 	//
@@ -138,33 +138,33 @@ type Model struct {
 	//
 	// example:
 	//
-	// 情感分析
+	// Sentiment Analysis
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// The model type, such as checkpoint and LoRA.
+	// The model type, such as Checkpoint or LoRA.
 	//
 	// example:
 	//
 	// Checkpoint
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
-	// The sequence number of the model.
+	// The model sequence number.
 	//
 	// example:
 	//
 	// 101
 	OrderNumber *int64 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
-	// The community or organization to which the source model belongs, such as ModelScope or Hugging Face.
+	// The model origin. Describes the community or organization to which the source model belongs, such as ModelScope or HuggingFace.
 	//
 	// example:
 	//
 	// ModelScope
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The ID of the Alibaba Cloud account.
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
 	// 1557702098******
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// 参数量，单位M。
+	// The number of parameters, in millions (M).
 	//
 	// example:
 	//
@@ -176,9 +176,9 @@ type Model struct {
 	//
 	// pai
 	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	// 标签列表
+	// The tag list.
 	Tags []*Label `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The task. The specific issue that the model resolves, such as text-classification.
+	// The task. Describes the specific problem that the model solves, such as text-classification (text categorization).
 	//
 	// example:
 	//

@@ -40,13 +40,13 @@ type iDatasetJob interface {
 }
 
 type DatasetJob struct {
-	// The total number of completed files.
+	// The number of completed files.
 	//
 	// example:
 	//
 	// 990
 	CompletedFileCount *int64 `json:"CompletedFileCount,omitempty" xml:"CompletedFileCount,omitempty"`
-	// The time when the job was created (UTC).
+	// The job creation time (UTC).
 	//
 	// example:
 	//
@@ -68,21 +68,21 @@ type DatasetJob struct {
 	//
 	// example:
 	//
-	// 这是一个数据集任务描述。
+	// This is a job description of a dataset.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The total number of failed files.
+	// The number of failed files.
 	//
 	// example:
 	//
 	// 10
 	FailedFileCount *int64 `json:"FailedFileCount,omitempty" xml:"FailedFileCount,omitempty"`
-	// The time when the job was finished (UTC).
+	// The job finish time (UTC).
 	//
 	// example:
 	//
 	// 2023-06-20T06:03:48Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The job operation.
+	// The job action.
 	//
 	// example:
 	//
@@ -90,17 +90,21 @@ type DatasetJob struct {
 	JobAction *string `json:"JobAction,omitempty" xml:"JobAction,omitempty"`
 	// The job mode.
 	//
+	// Valid value:
+	//
+	// 	- Full
+	//
 	// example:
 	//
 	// Full
 	JobMode *string `json:"JobMode,omitempty" xml:"JobMode,omitempty"`
-	// The job specifications.
+	// The job details.
 	//
 	// example:
 	//
 	// {\\"modelId\\":\\"xxx\\"}
 	JobSpec *string `json:"JobSpec,omitempty" xml:"JobSpec,omitempty"`
-	// A list of task logs.
+	// The job logs.
 	Logs []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
 	// The job status.
 	//
@@ -108,7 +112,7 @@ type DatasetJob struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total number of files for the job.
+	// The number of job files.
 	//
 	// example:
 	//

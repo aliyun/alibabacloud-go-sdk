@@ -44,78 +44,83 @@ type iGetCodeSourceResponseBody interface {
 }
 
 type GetCodeSourceResponseBody struct {
-	// The visibility of the code configuration. Valid values:
-	//
-	// - PRIVATE: The configuration is visible only to you and the administrator in the workspace.
-	//
-	// - PUBLIC: The configuration is visible to everyone in the workspace.
+	// The visibility of the code source configuration.
 	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	CloneType     *int32  `json:"CloneType,omitempty" xml:"CloneType,omitempty"`
-	// The branch of the code repository.
+	// The clone mode. Valid values:
+	//
+	// - 0: Create a new subdirectory.
+	//
+	// - 1: Tile to the current directory.
+	//
+	// example:
+	//
+	// 0
+	CloneType *int32 `json:"CloneType,omitempty" xml:"CloneType,omitempty"`
+	// The code repository branch.
 	//
 	// example:
 	//
 	// master
 	CodeBranch *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
-	// The commit ID of the code.
+	// The code commit ID.
 	//
 	// example:
 	//
 	// 44da10***********
 	CodeCommit *string `json:"CodeCommit,omitempty" xml:"CodeCommit,omitempty"`
-	// The URL of the code repository.
+	// The code repository URL.
 	//
 	// example:
 	//
 	// https://code.aliyun.com/pai-dlc/examples.git
 	CodeRepo *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
-	// The token used to access the code repository.
+	// The access code repository token.
 	//
 	// example:
 	//
 	// xxxx
 	CodeRepoAccessToken *string `json:"CodeRepoAccessToken,omitempty" xml:"CodeRepoAccessToken,omitempty"`
-	// The username for the code repository.
+	// The username of the code repository.
 	//
 	// example:
 	//
 	// user1
 	CodeRepoUserName *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
-	// The ID of the code source configuration.
+	// The code source configuration ID.
 	//
 	// example:
 	//
 	// code-202**********
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
-	// The detailed description of the code configuration.
+	// The detailed description of the code source configuration.
 	//
 	// example:
 	//
 	// This is my data source 1.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the code source configuration.
+	// The code source configuration name.
 	//
 	// example:
 	//
 	// MyCodeSource1
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The time when the code configuration was created. The time is in the ISO 8601 format.
+	// The creation time of the code source configuration. The time is in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2021-01-12T23:36:01.123Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the code configuration was last modified. The time is in the ISO 8601 format.
+	// The modification time of the code source configuration. The time is in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2021-01-12T23:36:01.123Z
 	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	// The local mount path for the code.
+	// The local mount directory of the code.
 	//
 	// example:
 	//
@@ -127,13 +132,13 @@ type GetCodeSourceResponseBody struct {
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the user who created the code source configuration.
+	// The creator ID of the code source configuration.
 	//
 	// example:
 	//
 	// 1722********
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The ID of the workspace.
+	// The workspace ID.
 	//
 	// example:
 	//

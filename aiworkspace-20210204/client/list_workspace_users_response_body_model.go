@@ -24,7 +24,7 @@ type ListWorkspaceUsersResponseBody struct {
 	//
 	// 1e195c5116124202371861018d5bde
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of users that meet the filter condition.
+	// The number of users that match the filter conditions.
 	//
 	// example:
 	//

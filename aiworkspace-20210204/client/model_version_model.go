@@ -56,11 +56,11 @@ type iModelVersion interface {
 type ModelVersion struct {
 	// The approval status. Valid values:
 	//
-	// 	- Pending
+	// - Pending: pending.
 	//
-	// 	- Approved
+	// - Approved: approved for going live.
 	//
-	// 	- Rejected
+	// - Rejected: not approved for going live.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type ModelVersion struct {
 	//
 	// {}
 	CompressionSpec map[string]interface{} `json:"CompressionSpec,omitempty" xml:"CompressionSpec,omitempty"`
-	// 蒸馏配置。
+	// The distillation configuration.
 	//
 	// example:
 	//
@@ -98,25 +98,25 @@ type ModelVersion struct {
 	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
 	// The model format.
 	//
-	// 	- OfflineModel
+	// - OfflineModel
 	//
-	// 	- SavedModel
+	// - SavedModel
 	//
-	// 	- Keras H5
+	// - Keras H5
 	//
-	// 	- Frozen Pb
+	// - Frozen Pb
 	//
-	// 	- Caffe Prototxt
+	// - Caffe Prototxt
 	//
-	// 	- TorchScript
+	// - TorchScript
 	//
-	// 	- XGBoost
+	// - XGBoost
 	//
-	// 	- PMML
+	// - PMML
 	//
-	// 	- AlinkModel
+	// - AlinkModel
 	//
-	// 	- ONNX
+	// - ONNX
 	//
 	// example:
 	//
@@ -124,37 +124,43 @@ type ModelVersion struct {
 	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
 	// The model framework.
 	//
-	// 	- Pytorch
+	// - Pytorch
 	//
-	// 	- XGBoost
+	// - XGBoost
 	//
-	// 	- Keras
+	// - Keras
 	//
-	// 	- Caffe
+	// - Caffe
 	//
-	// 	- Alink
+	// - Alink
 	//
-	// 	- Xflow
+	// - Xflow
 	//
-	// 	- TensorFlow
+	// - TensorFlow
 	//
 	// example:
 	//
 	// TensorFlow
 	FrameworkType *string `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
-	// The time when the model was created, in UTC. The time follows the ISO 8601 standard.
+	// The UTC time of model creation, in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the model was last modified, in UTC. The time follows the ISO 8601 standard.
+	// The UTC time when the model was last updated, in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The inference configurations applied to the downstream, such as the configuration of the processor or container of Elastic Algorithm Service (EAS). Example: `{ "processor": "tensorflow_gpu_1.12" }`
+	// Describes how to apply the model to downstream inference applications, such as specifying the EAS processor or container. Example:
+	//
+	// `{
+	//
+	//     "processor": "tensorflow_gpu_1.12"
+	//
+	// }`
 	//
 	// example:
 	//
@@ -164,7 +170,7 @@ type ModelVersion struct {
 	//
 	// }
 	InferenceSpec map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
-	// The labels.
+	// The label list.
 	Labels []*ModelVersionLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The model metrics.
 	//
@@ -204,13 +210,13 @@ type ModelVersion struct {
 	//
 	// }
 	Metrics map[string]interface{} `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	// The extended field. The value is a JSON string.
+	// The extended fields. JsonString type.
 	//
 	// example:
 	//
 	// {}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// The ID of the Alibaba Cloud account.
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
@@ -218,39 +224,41 @@ type ModelVersion struct {
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The source ID.
 	//
-	// 	- If the source type is Custom, this field is not limited.
+	// 	- If the source type is Custom, this field has no restrictions.
 	//
 	// 	- If the source type is PAIFlow or TrainingService, the format is:
 	//
-	// <!---->
+	// ```
 	//
-	//     region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
+	// region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
 	//
-	// region is the ID of the Alibaba Cloud region. workspacceId is the ID of the workspace. kind is the type. Valid values: PipelineRun (PAIFlow pipeline) and ServiceJob (training service). id is the unique identifier.
+	// ```
+	//
+	// region is the Alibaba Cloud region ID. workspaceId is the workspace ID. kind specifies the type. Valid values: PipelineRun (PAI workflow) and ServiceJob (training service). id is the unique identifier.
 	//
 	// example:
 	//
 	// region=cn-shanghai,workspaceId=13**,kind=PipelineRun,id=run-sakdb****jdf
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The source type of the model. Default value: Custom.
+	// The model source type. Default value: Custom.
 	//
-	// 	- Custom
+	// - Custom: custom.
 	//
-	// 	- PAIFlow
+	// - PAIFlow: PAI workflow.
 	//
-	// 	- TrainingService
+	// - TrainingService: PAI training service.
 	//
 	// example:
 	//
 	// PAIFlow
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The training configuration, used for fine-tuning and incremental training.
+	// The training configuration. Used for fine-tuning and incremental training.
 	//
 	// example:
 	//
 	// {}
 	TrainingSpec map[string]interface{} `json:"TrainingSpec,omitempty" xml:"TrainingSpec,omitempty"`
-	// The URI of the model version, which is the location where the model is stored. The value can be the HTTP(S) address of the model, such as `https://myweb.com/mymodel.tar.gz`. If the model is stored in an Object Storage Service (OSS) bucket, the value is in the `oss://<bucket>.<endpoint>/object` format. The endpoint can be queried in the OSS console, such as `oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/`.
+	// The model version URI, which specifies the model storage location. This can be an HTTP(S) address of the model, such as `https://myweb.com/mymodel.tar.gz`. If the model is stored in OSS, the format is `oss://<bucket>.<endpoint>/object`. You can query the endpoint in the OSS console. Example: `oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/`.
 	//
 	// example:
 	//
@@ -266,13 +274,13 @@ type ModelVersion struct {
 	//
 	// example:
 	//
-	// 情感分析。
+	// Sentiment analysis
 	VersionDescription *string `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
-	// The model version, which is unique for the model. If you leave this parameter empty, `0.1.0` is the first version by default. Then, the minor version number incremented by 1 is used as the second version `0.2.0`.
+	// The model version, unique within the model. If not specified, the first version defaults to `0.1.0`, and subsequent versions increment the minor version number by 1. For example, the second version defaults to `0.2.0`.
 	//
-	// The version consists of a major version number, a minor version number, and a patch version number. The version numbers are separated with periods (`.`). The major and minor version numbers are digits, and the patch version number starts with a digit followed by an underscore (`_`) and a letter. such as 1.1.0 or 2.3.4_beta.
+	// The version number consists of a major version number, a minor version number, and a stage version number, separated by `.`. The major and minor version numbers are numeric. The stage version number starts with a digit, followed by `_` and letters. Examples: 1.1.0 or 2.3.4_beta.
 	//
-	// Regular expression: `"^\\\\d+\\\\.\\\\d+\\\\.\\\\d+(_\\\\w+)?$"`
+	// Regular expression reference: `"^\\d+\\.\\d+\\.\\d+(_\\w+)?$"`
 	//
 	// example:
 	//
@@ -491,13 +499,13 @@ func (s *ModelVersion) Validate() error {
 }
 
 type ModelVersionLabels struct {
-	// 标签的key
+	// The key of the label.
 	//
 	// example:
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 标签的value
+	// The value of the label.
 	//
 	// example:
 	//

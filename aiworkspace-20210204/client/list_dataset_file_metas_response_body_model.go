@@ -28,7 +28,7 @@ type iListDatasetFileMetasResponseBody interface {
 }
 
 type ListDatasetFileMetasResponseBody struct {
-	// The detailed metadata of the dataset files.
+	// The list of dataset file metadata details.
 	DatasetFileMetas []*DatasetFileMeta `json:"DatasetFileMetas,omitempty" xml:"DatasetFileMetas,omitempty" type:"Repeated"`
 	// The dataset ID.
 	//
@@ -36,19 +36,19 @@ type ListDatasetFileMetasResponseBody struct {
 	//
 	// d-rbvg5*****jhc9ks92
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The version name of the dataset.
+	// The dataset version name.
 	//
 	// example:
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
-	// The maximum number of results returned per page when you use the \\`NextToken\\` parameter.
+	// The maximum number of results returned per request when using NextToken-based pagination.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. If the number of results that match the query exceeds the page size, this token is returned. To retrieve the next page of data, use the returned token in your next request. Repeat this process until no token is returned, which indicates that all data has been retrieved.
+	// The pagination token. If the results that match the query conditions exceed the page size, this pagination token is returned. Pass the returned token value as a request parameter to retrieve the next page, until no token is returned, which indicates that all data has been retrieved.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ListDatasetFileMetasResponseBody struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// Deprecated
 	//
-	// The number of entries on the current page.
+	// The current page size.
 	//
 	// example:
 	//

@@ -28,17 +28,17 @@ type iGetConfigResponseBody interface {
 }
 
 type GetConfigResponseBody struct {
-	// The classification of the configuration item. The following classifications are supported:
+	// The category of the configuration item. The following categories are supported:
 	//
-	// - CommonResourceConfig: common resource configurations
+	// - CommonResourceConfig: common resource configuration
 	//
-	// - DLCAutoRecycle: automatic DLC resource recycling
+	// - DLCAutoRecycle: DLC automatic reclamation
 	//
 	// - DLCPriorityConfig: DLC priority settings
 	//
 	// - DSWPriorityConfig: DSW priority settings
 	//
-	// - QuotaMaximumDuration: the maximum runtime of a DLC task for a quota
+	// - QuotaMaximumDuration: maximum runtime duration configuration for DLC jobs in a quota
 	//
 	// - CommonTagConfig: tag settings
 	//
@@ -48,15 +48,15 @@ type GetConfigResponseBody struct {
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
 	// The key of the configuration item. The following keys are supported:
 	//
-	// - tempStoragePath: the temporary storage path. This key applies only when CategoryName is CommonResourceConfig.
+	// - tempStoragePath: the temporary storage path. This key is valid only when CategoryName is set to CommonResourceConfig.
 	//
-	// - isAutoRecycle: the automatic recycling configuration. This key applies only when CategoryName is DLCAutoRecycle.
+	// - isAutoRecycle: the automatic reclamation configuration. This key is valid only when CategoryName is set to DLCAutoRecycle.
 	//
-	// - priorityConfig: the priority configuration. This key applies only when CategoryName is DLCPriorityConfig or DSWPriorityConfig.
+	// - priorityConfig: the priority configuration. This key is valid only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
 	//
-	// - quotaMaximumDuration: the maximum runtime of a DLC task for a quota. This key applies only when CategoryName is QuotaMaximumDuration.
+	// - quotaMaximumDuration: the maximum runtime duration configuration for DLC jobs in a quota. This key is valid only when CategoryName is set to QuotaMaximumDuration.
 	//
-	// - predefinedTags: the predefined tags for the workspace. Resources that you create must have tags.
+	// - predefinedTags: the preset tags for the workspace. Resources created in the workspace must include these tags.
 	//
 	// example:
 	//
@@ -67,10 +67,20 @@ type GetConfigResponseBody struct {
 	// example:
 	//
 	// oss://***
-	ConfigValue     *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// The time when the configuration item was created, in UTC.
+	//
+	// example:
+	//
+	// 2026-07-17T06:53:04.000Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the configuration item was last modified, in UTC.
+	//
+	// example:
+	//
+	// 2026-07-17T06:55:04.000Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The list of tags for the configuration item.
+	// The list of labels for the configuration item.
 	Labels []*GetConfigResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -180,13 +190,13 @@ func (s *GetConfigResponseBody) Validate() error {
 }
 
 type GetConfigResponseBodyLabels struct {
-	// The key of the tag.
+	// The key of the label.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The value of the label.
 	//
 	// example:
 	//

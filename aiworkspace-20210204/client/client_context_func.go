@@ -290,7 +290,7 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates a code configuration in PAI using a code branch and commit ID from a Git repository. This configuration can then be referenced in DLC jobs.
+// Creates a code configuration in PAI. You can configure a Git code branch and CommitId. After the configuration is created, it can be referenced in DLC jobs.
 //
 // @param request - CreateCodeSourceRequest
 //
@@ -1527,6 +1527,77 @@ func (client *Client) CreateProductOrdersWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// Creates a prompt.
+//
+// Description:
+//
+// ## Request description.
+//
+// @param request - CreatePromptRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePromptResponse
+func (client *Client) CreatePromptWithContext(ctx context.Context, request *CreatePromptRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePromptResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Accessibility) {
+		body["Accessibility"] = request.Accessibility
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.FrameworkContent) {
+		body["FrameworkContent"] = request.FrameworkContent
+	}
+
+	if !dara.IsNil(request.FrameworkType) {
+		body["FrameworkType"] = request.FrameworkType
+	}
+
+	if !dara.IsNil(request.PromptName) {
+		body["PromptName"] = request.PromptName
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePrompt"),
+		Version:     dara.String("2021-02-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/prompts"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePromptResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a run for an experiment. The run can be associated with a specific workload or be a standalone code execution.
 //
 // @param request - CreateRunRequest
@@ -2520,6 +2591,61 @@ func (client *Client) DeleteModelVersionLabelsWithContext(ctx context.Context, M
 
 // Summary:
 //
+// Deletes a prompt.
+//
+// Description:
+//
+// When calling this operation, note the following:
+//
+// - Tag keys and values are non-empty strings and cannot exceed 128 characters in length.
+//
+// - Tag keys cannot start with aliyun, acs, http://, or https://.
+//
+// @param request - DeletePromptRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePromptResponse
+func (client *Client) DeletePromptWithContext(ctx context.Context, PromptId *string, request *DeletePromptRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePromptResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePrompt"),
+		Version:     dara.String("2021-02-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/prompts/" + dara.PercentEncode(dara.StringValue(PromptId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePromptResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a run.
 //
 // @param request - DeleteRunRequest
@@ -2808,7 +2934,7 @@ func (client *Client) DeleteWorkspaceRolesWithContext(ctx context.Context, Works
 
 // Summary:
 //
-// Gets the details of a specified code source configuration.
+// Retrieves the details of a code source configuration.
 //
 // @param request - GetCodeSourceRequest
 //
@@ -2849,7 +2975,7 @@ func (client *Client) GetCodeSourceWithContext(ctx context.Context, CodeSourceId
 
 // Summary:
 //
-// Retrieves the configurations of a workspace.
+// Retrieves the workspace configuration.
 //
 // @param request - GetConfigRequest
 //
@@ -3583,6 +3709,14 @@ func (client *Client) GetPermissionWithContext(ctx context.Context, WorkspaceId 
 		query["Accessibility"] = request.Accessibility
 	}
 
+	if !dara.IsNil(request.CallerAccessKeyId) {
+		query["CallerAccessKeyId"] = request.CallerAccessKeyId
+	}
+
+	if !dara.IsNil(request.CallerSecurityToken) {
+		query["CallerSecurityToken"] = request.CallerSecurityToken
+	}
+
 	if !dara.IsNil(request.CallerType) {
 		query["CallerType"] = request.CallerType
 	}
@@ -3627,6 +3761,53 @@ func (client *Client) GetPermissionWithContext(ctx context.Context, WorkspaceId 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPermissionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a prompt.
+//
+// @param request - GetPromptRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPromptResponse
+func (client *Client) GetPromptWithContext(ctx context.Context, PromptId *string, request *GetPromptRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPromptResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPrompt"),
+		Version:     dara.String("2021-02-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/prompts/" + dara.PercentEncode(dara.StringValue(PromptId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPromptResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3772,7 +3953,7 @@ func (client *Client) GetWorkspaceRoleWithContext(ctx context.Context, Workspace
 
 // Summary:
 //
-// Queries a list of code source configurations with support for paging, sorting, and filtering.
+// Queries a list of code configurations. This operation supports pagination, sorting, and conditional filtering.
 //
 // @param request - ListCodeSourcesRequest
 //
@@ -3839,7 +4020,7 @@ func (client *Client) ListCodeSourcesWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Lists the configurations for a workspace.
+// Retrieves the list of workspace configurations.
 //
 // @param request - ListConfigsRequest
 //
@@ -4011,7 +4192,7 @@ func (client *Client) ListConnectionsWithContext(ctx context.Context, tmpReq *Li
 
 // Summary:
 //
-// Queries the files in a dataset.
+// Queries the list of dataset files.
 //
 // @param tmpReq - ListDatasetFileMetasRequest
 //
@@ -4255,7 +4436,7 @@ func (client *Client) ListDatasetJobConfigsWithContext(ctx context.Context, Data
 
 // Summary:
 //
-// Lists dataset jobs.
+// Retrieves a list of dataset tasks.
 //
 // @param request - ListDatasetJobsRequest
 //
@@ -5185,6 +5366,73 @@ func (client *Client) ListProductsWithContext(ctx context.Context, request *List
 
 // Summary:
 //
+// Retrieves a list of prompts.
+//
+// @param request - ListPromptsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPromptsResponse
+func (client *Client) ListPromptsWithContext(ctx context.Context, request *ListPromptsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPromptsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FrameworkType) {
+		query["FrameworkType"] = request.FrameworkType
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPrompts"),
+		Version:     dara.String("2021-02-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/prompts"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPromptsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves a list of resource quotas.
 //
 // @param request - ListQuotasRequest
@@ -5611,7 +5859,7 @@ func (client *Client) ListWorkspaceRolesWithContext(ctx context.Context, Workspa
 
 // Summary:
 //
-// Lists users that can be added as members to a workspace.
+// Lists users who have not joined a workspace and can be added as workspace members.
 //
 // @param request - ListWorkspaceUsersRequest
 //
@@ -6199,7 +6447,7 @@ func (client *Client) StopDatasetJobWithContext(ctx context.Context, DatasetId *
 
 // Summary:
 //
-// Updates a code source.
+// Updates a code source configuration.
 //
 // @param request - UpdateCodeSourceRequest
 //
@@ -7012,6 +7260,69 @@ func (client *Client) UpdateModelVersionWithContext(ctx context.Context, ModelId
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateModelVersionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the prompt of a dataset.
+//
+// Description:
+//
+// ## Request description.
+//
+// @param request - UpdatePromptRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePromptResponse
+func (client *Client) UpdatePromptWithContext(ctx context.Context, PromptId *string, request *UpdatePromptRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdatePromptResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.FrameworkContent) {
+		body["FrameworkContent"] = request.FrameworkContent
+	}
+
+	if !dara.IsNil(request.FrameworkType) {
+		body["FrameworkType"] = request.FrameworkType
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdatePrompt"),
+		Version:     dara.String("2021-02-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/prompts/" + dara.PercentEncode(dara.StringValue(PromptId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdatePromptResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
