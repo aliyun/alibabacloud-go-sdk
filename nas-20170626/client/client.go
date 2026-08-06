@@ -8292,6 +8292,76 @@ func (client *Client) DisableAndCleanRecycleBin(request *DisableAndCleanRecycleB
 
 // Summary:
 //
+// 关闭数据洞察
+//
+// Description:
+//
+// - 当前邀测使用，如需使用请提交工单申请。
+//
+// @param request - DisableDataInsightRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableDataInsightResponse
+func (client *Client) DisableDataInsightWithOptions(request *DisableDataInsightRequest, runtime *dara.RuntimeOptions) (_result *DisableDataInsightResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileSystemId) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableDataInsight"),
+		Version:     dara.String("2017-06-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableDataInsightResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 关闭数据洞察
+//
+// Description:
+//
+// - 当前邀测使用，如需使用请提交工单申请。
+//
+// @param request - DisableDataInsightRequest
+//
+// @return DisableDataInsightResponse
+func (client *Client) DisableDataInsight(request *DisableDataInsightRequest) (_result *DisableDataInsightResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DisableDataInsightResponse{}
+	_body, _err := client.DisableDataInsightWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Disables the NFS ACL feature for a file system.
 //
 // Description:
@@ -8423,6 +8493,76 @@ func (client *Client) DisableSmbAcl(request *DisableSmbAclRequest) (_result *Dis
 	runtime := &dara.RuntimeOptions{}
 	_result = &DisableSmbAclResponse{}
 	_body, _err := client.DisableSmbAclWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启数据洞察
+//
+// Description:
+//
+// - 当前邀测使用，如需使用请提交工单申请。
+//
+// @param request - EnableDataInsightRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableDataInsightResponse
+func (client *Client) EnableDataInsightWithOptions(request *EnableDataInsightRequest, runtime *dara.RuntimeOptions) (_result *EnableDataInsightResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileSystemId) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableDataInsight"),
+		Version:     dara.String("2017-06-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableDataInsightResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启数据洞察
+//
+// Description:
+//
+// - 当前邀测使用，如需使用请提交工单申请。
+//
+// @param request - EnableDataInsightRequest
+//
+// @return EnableDataInsightResponse
+func (client *Client) EnableDataInsight(request *EnableDataInsightRequest) (_result *EnableDataInsightResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EnableDataInsightResponse{}
+	_body, _err := client.EnableDataInsightWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9101,6 +9241,88 @@ func (client *Client) ListAccessPoints(request *ListAccessPointsRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListAccessPointsResponse{}
 	_body, _err := client.ListAccessPointsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据洞察目录结构
+//
+// Description:
+//
+// - 当前邀测使用，如需使用请提交工单申请。
+//
+// @param request - ListDataInsightDirectoriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataInsightDirectoriesResponse
+func (client *Client) ListDataInsightDirectoriesWithOptions(request *ListDataInsightDirectoriesRequest, runtime *dara.RuntimeOptions) (_result *ListDataInsightDirectoriesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileSystemId) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ParentDir) {
+		query["ParentDir"] = request.ParentDir
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataInsightDirectories"),
+		Version:     dara.String("2017-06-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataInsightDirectoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据洞察目录结构
+//
+// Description:
+//
+// - 当前邀测使用，如需使用请提交工单申请。
+//
+// @param request - ListDataInsightDirectoriesRequest
+//
+// @return ListDataInsightDirectoriesResponse
+func (client *Client) ListDataInsightDirectories(request *ListDataInsightDirectoriesRequest) (_result *ListDataInsightDirectoriesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDataInsightDirectoriesResponse{}
+	_body, _err := client.ListDataInsightDirectoriesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

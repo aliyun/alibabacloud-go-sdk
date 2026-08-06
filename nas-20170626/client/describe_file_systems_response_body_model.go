@@ -29,7 +29,7 @@ type DescribeFileSystemsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of file systems per page.
+	// The number of file systems on each page.
 	//
 	// example:
 	//

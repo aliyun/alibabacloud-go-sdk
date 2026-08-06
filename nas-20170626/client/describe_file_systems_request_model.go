@@ -30,11 +30,33 @@ type iDescribeFileSystemsRequest interface {
 type DescribeFileSystemsRequest struct {
 	// The file system ID.
 	//
+	// - General-purpose NAS: 31a8e4****.
+	//
+	// - Extreme NAS: must start with extreme-, such as extreme-0015****.
+	//
+	// - CPFS (locally redundant): must start with cpfs-, such as cpfs-125487****.
+	//
+	// - CPFS SE (zone-redundant): must start with cpfsse-, such as cpfsse-022c71b134****.
+	//
 	// example:
 	//
 	// 31a8e4****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The file system type.
+	// The type of the file system.
+	//
+	// Valid values:
+	//
+	// - all (default): queries all types.
+	//
+	// - standard: General-purpose NAS.
+	//
+	// - extreme: Extreme NAS.
+	//
+	// - cpfs: Cloud Parallel File Storage (locally redundant).
+	//
+	// - cpfsse: Cloud Parallel File Storage SE (zone-redundant).
+	//
+	// > To query multiple types, separate them with commas (,).
 	//
 	// example:
 	//
@@ -54,11 +76,25 @@ type DescribeFileSystemsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The resource group ID.
 	//
+	// You can view the resource group ID in the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?).
+	//
 	// example:
 	//
 	// rg-acfmwavnfef****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The storage type.
+	//
+	// Valid values:
+	//
+	// - General-purpose NAS: Capacity, Performance, and Premium.
+	//
+	// - Extreme NAS: standard and advance.
+	//
+	// - CPFS: advance_100 (100 MB/s/TiB baseline), advance_200 (200 MB/s/TiB baseline), and economic.
+	//
+	// - CPFS SE: advance_100 (100 MB/s/TiB baseline).
+	//
+	// - AgenticFS: Agentic (available only when FileSystemType is set to standard).
 	//
 	// example:
 	//
@@ -66,7 +102,7 @@ type DescribeFileSystemsRequest struct {
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The collection of tag information.
 	Tag []*DescribeFileSystemsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -175,6 +211,16 @@ type DescribeFileSystemsRequestTag struct {
 	// testKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
+	//
+	// Limits:
+	//
+	// - Valid values of N: 1 to 20.
+	//
+	// - The tag value can be up to 128 characters in length.
+	//
+	// - The tag value cannot start with `aliyun` or `acs:`.
+	//
+	// - The tag value cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
