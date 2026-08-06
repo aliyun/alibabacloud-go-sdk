@@ -32,10 +32,14 @@ type iListDataAssetsRequest interface {
 }
 
 type ListDataAssetsRequest struct {
+	// The ID of the asset domain.
+	//
 	// example:
 	//
 	// 1001
 	AssetDomainId *int64 `json:"AssetDomainId,omitempty" xml:"AssetDomainId,omitempty"`
+	// The ID of the asset category.
+	//
 	// example:
 	//
 	// cate-xxxxxxxx
@@ -44,7 +48,7 @@ type ListDataAssetsRequest struct {
 	DataAssetIds []*string `json:"DataAssetIds,omitempty" xml:"DataAssetIds,omitempty" type:"Repeated"`
 	// The Asset Type of the data asset. Valid values:
 	//
-	// - ACS::DataWorks::Table: table.
+	// - ACS::DataWorks::Table: data table.
 	//
 	// - ACS::DataWorks::Task: scheduling node.
 	//
@@ -62,11 +66,13 @@ type ListDataAssetsRequest struct {
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The name of the asset. Fuzzy search by name is supported.
+	//
 	// example:
 	//
-	// 资产域名称
+	// AssetDomainName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
@@ -78,7 +84,7 @@ type ListDataAssetsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The workspace ID.
+	// The ID of the workspace.
 	//
 	// example:
 	//
@@ -86,7 +92,7 @@ type ListDataAssetsRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The list of tags associated with data assets. Tags are used as query filters:
 	//
-	// - Multiple values have an OR relationship. For example, `["key1:v1", "key2:v1", "key3:v1"]` queries data assets that contain any of the specified tags.
+	// - Multiple values have an OR relationship. For example, `["key1:v1", "key2:v1", "key3:v1"]` queries data assets that contain any one of the specified tags.
 	//
 	// - If this parameter is not specified or is left empty, no tag-based filtering is applied.
 	Tags []*ListDataAssetsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -204,7 +210,7 @@ func (s *ListDataAssetsRequest) Validate() error {
 }
 
 type ListDataAssetsRequestTags struct {
-	// The custom tag key.
+	// The custom tag key specified by the user.
 	//
 	// The tag key can be up to 64 characters in length, cannot start with `dw:`, and supports only letters, digits, and the following special characters: `-@#*<>|[]()+=&%$!~`.
 	//

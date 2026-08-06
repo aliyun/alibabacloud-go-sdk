@@ -18,7 +18,7 @@ type iListPartitionsResponseBody interface {
 }
 
 type ListPartitionsResponseBody struct {
-	// Pagination information.
+	// The pagination result.
 	PagingInfo *ListPartitionsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListPartitionsResponseBody struct {
 	//
 	// D1E2E5BC-xxxx-xxxx-xxxx-xxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -91,9 +91,9 @@ type ListPartitionsResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of table partitions.
+	// The partition list of the table.
 	PartitionList []*Partition `json:"PartitionList,omitempty" xml:"PartitionList,omitempty" type:"Repeated"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type UpdateMetaEntityDefShrinkRequest struct {
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The new display name. The maximum length is 32 characters.
+	// The new display name, up to 32 characters.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type UpdateMetaEntityDefShrinkRequest struct {
 	//
 	// []
 	NewAttributeDefsShrink *string `json:"NewAttributeDefs,omitempty" xml:"NewAttributeDefs,omitempty"`
-	// The updates to existing attribute definitions. You can modify only the display name and description. You can also add enumerated values for attributes of the ENUM type.
+	// Updates to existing attribute definitions. Only modifying the display name, description, and appending enum values to ENUM types are supported.
 	//
 	// example:
 	//

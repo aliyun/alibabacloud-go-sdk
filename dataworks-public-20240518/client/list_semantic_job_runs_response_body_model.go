@@ -18,9 +18,9 @@ type iListSemanticJobRunsResponseBody interface {
 }
 
 type ListSemanticJobRunsResponseBody struct {
-	// The paginated run record results. Use the JobRunId to download the results of a specific run, and use the ExecutorJobId to query details, logs, or stop a run.
+	// The paginated run record results. Use the JobRunId to download the results of a specific run, and use the ExecutorJobId to query details, retrieve logs, or stop a run.
 	Data *ListSemanticJobRunsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID. Used for locating logs and troubleshooting issues.
+	// The request ID. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -77,13 +77,13 @@ func (s *ListSemanticJobRunsResponseBody) Validate() error {
 type ListSemanticJobRunsResponseBodyData struct {
 	// The list of run records.
 	JobRuns []*ListSemanticJobRunsResponseBodyDataJobRuns `json:"JobRuns,omitempty" xml:"JobRuns,omitempty" type:"Repeated"`
-	// The page number returned, starting from 1.
+	// The page number of the returned page, starting from 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page returned.
+	// The number of records per page in the current response.
 	//
 	// example:
 	//
@@ -155,7 +155,7 @@ func (s *ListSemanticJobRunsResponseBodyData) Validate() error {
 }
 
 type ListSemanticJobRunsResponseBodyDataJobRuns struct {
-	// The executor job ID. Pass this value to the ExecutorJobId parameter of GetSemanticJobDetail, GetSemanticJobLog, or KillSemanticJob.
+	// The executor job ID. Pass this value as the ExecutorJobId parameter to GetSemanticJobDetail, GetSemanticJobLog, or KillSemanticJob.
 	//
 	// example:
 	//
@@ -167,13 +167,13 @@ type ListSemanticJobRunsResponseBodyDataJobRuns struct {
 	//
 	// 1700000000000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The name of the job to which this run belongs. This value can be used to re-run the job, query run records, or download results.
+	// The name of the job to which this run belongs. You can use this value to rerun the job, query run records, or download results.
 	//
 	// example:
 	//
 	// semantic-job-demo
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The semantic job run ID. Pass this value to the JobRunId parameter of DownloadSemanticResults to download the results of this run.
+	// The semantic job run ID. Pass this value as the JobRunId parameter to DownloadSemanticResults to download the results of this run.
 	//
 	// example:
 	//

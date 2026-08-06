@@ -14,7 +14,7 @@ type iDeleteSemanticJobRequest interface {
 }
 
 type DeleteSemanticJobRequest struct {
-	// The name of the task to delete. Use the Data.Name value from the CreateSemanticJob response or the Name value from a ListSemanticJobs list item.
+	// The name of the job to delete. Use the Data.Name value from the CreateSemanticJob response or the Name value from a ListSemanticJobs list item.
 	//
 	// This parameter is required.
 	//

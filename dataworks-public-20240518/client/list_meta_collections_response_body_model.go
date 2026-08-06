@@ -16,7 +16,7 @@ type iListMetaCollectionsResponseBody interface {
 }
 
 type ListMetaCollectionsResponseBody struct {
-	// Pagination information.
+	// The paged result object.
 	Data *ListMetaCollectionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -70,7 +70,7 @@ type ListMetaCollectionsResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -142,45 +142,45 @@ func (s *ListMetaCollectionsResponseBodyData) Validate() error {
 }
 
 type ListMetaCollectionsResponseBodyDataMetaCollections struct {
-	// The list of administrator IDs. Supported only for album types. Administrators must be users within the same tenant. Multiple administrators can be specified.
+	// The list of administrator user IDs. This parameter is supported only for the album type. The administrators must be users within the same tenant. You can specify multiple administrators.
 	Administrators []*string `json:"Administrators,omitempty" xml:"Administrators,omitempty" type:"Repeated"`
-	// The creation time in milliseconds (timestamp).
+	// The creation time as a millisecond-level timestamp.
 	//
 	// example:
 	//
 	// 1668568601000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The creator user ID.
+	// The user ID of the creator.
 	//
 	// example:
 	//
 	// 456789
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The collection description.
+	// The description of the collection object.
 	//
 	// example:
 	//
 	// Test category
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The collection name.
+	// The name of the collection object.
 	//
 	// example:
 	//
 	// 7a65sd7aasd
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The modification time in milliseconds (timestamp).
+	// The modification time as a millisecond-level timestamp.
 	//
 	// example:
 	//
 	// 1668568601000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The collection name.
+	// The name of the collection object.
 	//
 	// example:
 	//
 	// test_category
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the parent collection. Can be empty.
+	// The ID of the parent node collection object. This value can be empty.
 	//
 	// example:
 	//
@@ -188,11 +188,11 @@ type ListMetaCollectionsResponseBodyDataMetaCollections struct {
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	// The collection type. Valid values:
 	//
-	// - Category
+	//  - Category: category.
 	//
-	// - Album
+	//  - Album: data album.
 	//
-	// - AlbumCategory: Album subcategory
+	//  - AlbumCategory: album subcategory.
 	//
 	// example:
 	//

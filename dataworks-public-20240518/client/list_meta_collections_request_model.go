@@ -32,53 +32,53 @@ type iListMetaCollectionsRequest interface {
 }
 
 type ListMetaCollectionsRequest struct {
-	// The administrator ID. Valid only for album types. Default: The current user ID.
+	// The ID of the collection administrator. This parameter is valid only for the album type. Default value: the current user ID.
 	//
 	// example:
 	//
 	// 12345
 	Administrator *string `json:"Administrator,omitempty" xml:"Administrator,omitempty"`
-	// The creator user ID. Valid only for album types. Default: The current user ID.
+	// The user ID of the creator. This parameter is valid only for the album type. Default value: the current user ID.
 	//
 	// example:
 	//
 	// 123456
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The collection description. Supports fuzzy matching.
+	// The collection description. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// Test collection
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The collection name. Supports fuzzy matching.
+	// The collection name. Fuzzy match is supported.
 	//
 	// example:
 	//
-	// test
+	// Data Asset Subject Domain
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The sort order. Valid values:
+	// The sort direction. Valid values:
 	//
-	// - Asc (default): Ascending order
+	//  - Asc (default)
 	//
-	// - Desc
+	//  - Desc
 	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Default: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default: 10. Maximum: 100.
+	// The page size. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the parent collection.
+	// The ID of the parent node collection object.
 	//
 	// example:
 	//
@@ -86,15 +86,15 @@ type ListMetaCollectionsRequest struct {
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	// The sort field. Valid values:
 	//
-	// - Id (default)
+	//  - Id (default)
 	//
-	// - Name
+	//  - Name: name.
 	//
-	// - CreateUser: Creator ID
+	//  - CreateUser: creator ID.
 	//
-	// - CreateTime: Creation time
+	//  - CreateTime: creation time.
 	//
-	// - ModifyTime: Modification time
+	//  - ModifyTime: modification time.
 	//
 	// example:
 	//
@@ -102,11 +102,11 @@ type ListMetaCollectionsRequest struct {
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The collection type. Valid values:
 	//
-	// - Category
+	//  - Category: category.
 	//
-	// - Album
+	//  - Album: data album.
 	//
-	// - AlbumCategory: Album subcategory
+	//  - AlbumCategory: album subcategory.
 	//
 	// This parameter is required.
 	//

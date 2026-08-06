@@ -18,9 +18,9 @@ type iUploadSemanticFileResponseBody interface {
 }
 
 type UploadSemanticFileResponseBody struct {
-	// The attachment upload slot information. PUT the file to Data.UploadUrl before Data.ExpiresAt, and then use Data.FileId to create a single-file semantic job.
+	// The attachment upload slot information. PUT the file to Data.UploadUrl before Data.ExpiresAt, then use Data.FileId to create a single-file semantic task.
 	Data *UploadSemanticFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID. You can use this ID to locate logs and troubleshoot issues.
+	// The request ID. Used for locating logs and troubleshooting issues.
 	//
 	// example:
 	//
@@ -75,19 +75,19 @@ func (s *UploadSemanticFileResponseBody) Validate() error {
 }
 
 type UploadSemanticFileResponseBodyData struct {
-	// The expiration time of UploadUrl, expressed as a UNIX timestamp in milliseconds. After this time, call UploadSemanticFile again to request a new URL.
+	// The expiration time of UploadUrl, expressed as a Unix timestamp in milliseconds. After this time, call UploadSemanticFile again to request a new URL.
 	//
 	// example:
 	//
 	// 1700001800000
 	ExpiresAt *int64 `json:"ExpiresAt,omitempty" xml:"ExpiresAt,omitempty"`
-	// The unique identifier of the attachment. After the PUT upload to UploadUrl is complete, pass this value to the ReferenceFileIds parameter of CreateSemanticJob.
+	// The unique identifier of the attachment. After completing the PUT upload to UploadUrl, pass this value to the ReferenceFileIds parameter of CreateSemanticJob.
 	//
 	// example:
 	//
 	// FID1
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The temporary OSS PUT upload URL. The URL is valid for 30 minutes and can only be used to upload the specified object. Use the ContentType specified in the request when you perform the PUT request. Do not log or distribute the full URL.
+	// The temporary OSS PUT upload URL. Valid for 30 minutes. Only the specified object can be uploaded. Use the ContentType from the request when performing the PUT request. Do not log or distribute the full URL.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type GetSemanticJobLogRequest struct {
 	//
 	// exec-job-demo
 	ExecutorJobId *string `json:"ExecutorJobId,omitempty" xml:"ExecutorJobId,omitempty"`
-	// The ID of the DataWorks workspace to which the job belongs. Use the ProjectId from the CreateSemanticJob response or a ListSemanticJobs list item.
+	// The ID of the DataWorks workspace to which the task belongs. Use the ProjectId from the CreateSemanticJob response or a ListSemanticJobs list item.
 	//
 	// This parameter is required.
 	//

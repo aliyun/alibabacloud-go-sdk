@@ -18,9 +18,9 @@ type iListLineageRelationshipsResponseBody interface {
 }
 
 type ListLineageRelationshipsResponseBody struct {
-	// The pagination information.
+	// The pagination result.
 	PagingInfo *ListLineageRelationshipsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The ID of the request. You can use this ID to troubleshoot issues.
+	// The request ID. You can use this ID to locate and troubleshoot issues.
 	//
 	// example:
 	//
@@ -79,15 +79,15 @@ func (s *ListLineageRelationshipsResponseBody) Validate() error {
 }
 
 type ListLineageRelationshipsResponseBodyPagingInfo struct {
-	// An array of data lineage relationships.
+	// The list of data tables.
 	LineageRelationships []*LineageRelationship `json:"LineageRelationships,omitempty" xml:"LineageRelationships,omitempty" type:"Repeated"`
-	// The current page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//

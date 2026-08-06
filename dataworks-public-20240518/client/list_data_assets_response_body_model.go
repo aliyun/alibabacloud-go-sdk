@@ -142,6 +142,7 @@ func (s *ListDataAssetsResponseBodyPagingInfo) Validate() error {
 }
 
 type ListDataAssetsResponseBodyPagingInfoDataAssets struct {
+	// The asset category information.
 	AssetCategories []*ListDataAssetsResponseBodyPagingInfoDataAssetsAssetCategories `json:"AssetCategories,omitempty" xml:"AssetCategories,omitempty" type:"Repeated"`
 	// The list of tags associated with the data asset.
 	DataAssetTagMappings []*ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings `json:"DataAssetTagMappings,omitempty" xml:"DataAssetTagMappings,omitempty" type:"Repeated"`
@@ -155,7 +156,7 @@ type ListDataAssetsResponseBodyPagingInfoDataAssets struct {
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The data asset ID.
+	// The ID of the data asset.
 	//
 	// example:
 	//
@@ -167,7 +168,7 @@ type ListDataAssetsResponseBodyPagingInfoDataAssets struct {
 	//
 	// ali_cn_es_gfn
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The DataWorks workspace ID.
+	// The ID of the DataWorks workspace.
 	//
 	// example:
 	//
@@ -175,7 +176,7 @@ type ListDataAssetsResponseBodyPagingInfoDataAssets struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The Asset Type of the data asset. Valid values:
 	//
-	// - ACS::DataWorks::Table: table.
+	// - ACS::DataWorks::Table: data table.
 	//
 	// - ACS::DataWorks::Task: scheduling node.
 	//
@@ -279,17 +280,23 @@ func (s *ListDataAssetsResponseBodyPagingInfoDataAssets) Validate() error {
 }
 
 type ListDataAssetsResponseBodyPagingInfoDataAssetsAssetCategories struct {
+	// The ID of the asset domain.
+	//
 	// example:
 	//
 	// 1001
 	AssetDomainId *string `json:"AssetDomainId,omitempty" xml:"AssetDomainId,omitempty"`
+	// The ID of the asset category.
+	//
 	// example:
 	//
 	// cate-xxxxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the asset category.
+	//
 	// example:
 	//
-	// 资产域名称
+	// AssetDomainName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -345,7 +352,7 @@ type ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings struct {
 	//
 	// 12345
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The data asset ID.
+	// The ID of the data asset.
 	//
 	// example:
 	//
@@ -359,9 +366,9 @@ type ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The source of the mapping between the data asset and the tag. Valid values:
 	//
-	// - System: The mapping is created by the data asset governance system.
+	// - System: The mapping originates from data asset governance system operations.
 	//
-	// - UserDefined: The mapping is manually created by a user.
+	// - UserDefined: The mapping originates from manual user-defined operations.
 	//
 	// example:
 	//

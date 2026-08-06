@@ -33,19 +33,24 @@ type ListColumnsRequest struct {
 	// example:
 	//
 	// test comment
-	Comment                   *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	IncludeExtendedProperties *bool   `json:"IncludeExtendedProperties,omitempty" xml:"IncludeExtendedProperties,omitempty"`
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Specifies whether to return extended properties. Set this parameter to `true` to return extended properties or `false` to not return them.
+	//
+	// example:
+	//
+	// true
+	IncludeExtendedProperties *bool `json:"IncludeExtendedProperties,omitempty" xml:"IncludeExtendedProperties,omitempty"`
 	// The name. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// test_table
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The sort order. Default value: Asc. Valid values:
+	// The sort direction. Default value: Asc. Valid values:
 	//
-	// - Asc: ascending order
+	// - Asc: ascending order.
 	//
-	// - Desc: descending order
+	// - Desc: descending order.
 	//
 	// example:
 	//
@@ -57,7 +62,7 @@ type ListColumnsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. Maximum value: 100.
+	// The page size. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//
@@ -65,15 +70,15 @@ type ListColumnsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The sort field. Default value: Position. Valid values:
 	//
-	// - Name: name
+	// - Name: name.
 	//
-	// - Position: position
+	// - Position: position.
 	//
 	// example:
 	//
 	// Position
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The ID of the data table. You can obtain the ID from the response of the ListTables operation. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
+	// The table ID. You can obtain the ID from the response of the ListTables operation. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
 	//
 	// This parameter is required.
 	//

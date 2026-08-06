@@ -26,25 +26,33 @@ type iListMetaEntityDefsRequest interface {
 }
 
 type ListMetaEntityDefsRequest struct {
-	// A keyword to search for in the description. The system performs a fuzzy match.
+	// The description. Matched by fuzzy match.
 	//
 	// example:
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The display name of the type definition. This parameter supports partial matching.
+	// The display name of the type definition. Matched by plain text containment.
 	//
 	// example:
 	//
 	// CustomReport
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// Filters the results by extension mode. Valid values: `NONE` and `TABLE`.
+	// The extension mode filter. Valid values:
+	//
+	// - NONE: custom entity only.
+	//
+	// - TABLE: extension table entity.
 	//
 	// example:
 	//
-	// NONE
+	// TABLE
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// The sort order. Valid values: `Asc` and `Desc`.
+	// The sort direction. Valid values:
+	//
+	// - Asc: ascending order.
+	//
+	// - Desc: descending order.
 	//
 	// example:
 	//
@@ -56,13 +64,19 @@ type ListMetaEntityDefsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	// The number of entries per page. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sort field. Valid values: `Name`, `CreateTime`, and `ModifyTime`.
+	// The field by which to sort the results. Valid values:
+	//
+	// - Name: sorted by name.
+	//
+	// - CreateTime: sorted by creation time.
+	//
+	// - ModifyTime: sorted by modification time.
 	//
 	// example:
 	//

@@ -135,7 +135,7 @@ type LoadAgentSessionRequestParamsMeta struct {
 	//
 	// example:
 	//
-	// true or false
+	// true
 	IsReload *bool `json:"IsReload,omitempty" xml:"IsReload,omitempty"`
 }
 

@@ -18,7 +18,7 @@ type iCreateMetaEntityDefResponseBody interface {
 }
 
 type CreateMetaEntityDefResponseBody struct {
-	// The unique identifier of the created entity type.
+	// The entity type after creation.
 	//
 	// example:
 	//

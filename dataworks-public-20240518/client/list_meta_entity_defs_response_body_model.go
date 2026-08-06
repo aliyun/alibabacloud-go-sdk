@@ -18,15 +18,15 @@ type iListMetaEntityDefsResponseBody interface {
 }
 
 type ListMetaEntityDefsResponseBody struct {
-	// The pagination information.
+	// The paging information.
 	PagingInfo *ListMetaEntityDefsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// ADFASDFASDFA-ADFASDF-ASDFADSDF-AFFADS
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ func (s *ListMetaEntityDefsResponseBody) Validate() error {
 }
 
 type ListMetaEntityDefsResponseBodyPagingInfo struct {
-	// A list of custom entity definitions.
+	// The list of custom entity definitions.
 	MetaEntityDefs []*MetaEntityDef `json:"MetaEntityDefs,omitempty" xml:"MetaEntityDefs,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -87,13 +87,13 @@ type ListMetaEntityDefsResponseBodyPagingInfo struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total count.
+	// The total number of entries.
 	//
 	// example:
 	//

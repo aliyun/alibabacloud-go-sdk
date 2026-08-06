@@ -28,39 +28,39 @@ type iCreateCustomAttributeShrinkRequest interface {
 }
 
 type CreateCustomAttributeShrinkRequest struct {
-	// The description of the custom attribute. The description must be less than 256 characters in length.
+	// The description of the custom attribute. The value must be less than 256 characters in length.
 	//
 	// example:
 	//
 	// test comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Specifies whether to display the attribute on the product page. The default value is true.
+	// Specifies whether to display the attribute on the details page. Default value: true.
 	//
 	// example:
 	//
 	// true
 	DisplayEnabled *bool `json:"DisplayEnabled,omitempty" xml:"DisplayEnabled,omitempty"`
-	// The display name of the custom attribute. The name must be less than 128 characters in length.
+	// The display name of the custom attribute. The value must be less than 128 characters in length.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 业务负责人
+	// BusinessOwner
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The list of applicable entity types. You can specify precise entity types or use wildcards such as `*-table` and `*-column`. Examples:
+	// The list of applicable entity types. Exact entity types and wildcard patterns such as `*-table` and `*-column` are supported. Examples:
 	//
-	// - dataworks-project: a DataWorks workspace.
+	// - dataworks-project: workspace
 	//
-	// - dataworks-dataset: a DataWorks dataset.
+	// - dataworks-dataset: DataWorks dataset
 	//
-	// - maxcompute-table: a MaxCompute table.
+	// - maxcompute-table: MaxCompute table
 	//
-	// - \\*-column: all field types.
+	// - *-column: all column types
 	//
 	// This parameter is required.
 	EntityTypesShrink *string `json:"EntityTypes,omitempty" xml:"EntityTypes,omitempty"`
-	// The ID of the custom attribute. The ID must match the regular expression `^custom-attribute:[A-Za-z][A-Za-z0-9_]{0,98}$`. The part after \\`custom-attribute:\\` must be less than 100 characters in length.
+	// The custom attribute ID. The value must match `^custom-attribute:[A-Za-z][A-Za-z0-9_]{0,98}$`. The part after custom-attribute: must be less than 100 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -68,13 +68,13 @@ type CreateCustomAttributeShrinkRequest struct {
 	//
 	// custom-attribute:biz_owner
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Specifies whether the attribute can be used as a filter on the Data Map search page. The default value is false. Currently, you can set this parameter to true only for attributes of the ENUM type.
+	// Specifies whether the attribute can be used as a filter condition on the DataWorks Data Map search page. Default value: false. Currently, only the ENUM type supports setting this value to true.
 	//
 	// example:
 	//
 	// false
 	SearchFilterEnabled *bool `json:"SearchFilterEnabled,omitempty" xml:"SearchFilterEnabled,omitempty"`
-	// The type of the custom attribute. Valid values are ENUM, TEXT, and HYPERLINK.
+	// The type of the custom attribute. Valid values: ENUM, TEXT, and HYPERLINK.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +82,7 @@ type CreateCustomAttributeShrinkRequest struct {
 	//
 	// TEXT
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The enumeration values. This parameter is required when \\`Type\\` is set to \\`ENUM\\`. It is not supported for the TEXT and HYPERLINK types.
+	// The enumeration values. This parameter is required when type is set to ENUM. This parameter is not supported for TEXT or HYPERLINK types.
 	ValueEnumsShrink *string `json:"ValueEnums,omitempty" xml:"ValueEnums,omitempty"`
 }
 

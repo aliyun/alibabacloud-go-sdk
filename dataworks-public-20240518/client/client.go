@@ -1847,6 +1847,154 @@ func (client *Client) CreateComputeResource(request *CreateComputeResourceReques
 
 // Summary:
 //
+// 创建元数据采集器
+//
+// Description:
+//
+// ## 使用场景
+//
+// 为指定数据源创建元数据采集器，并配置采集范围、资源组、调度方式和扩展配置。
+//
+// ## 推荐流程
+//
+// 1. 调用 `GetCrawlerTypeCapabilities` 查询当前地域支持的采集器类型及其配置能力。
+//
+// 2. 使用与 `Type` 匹配的数据源创建采集器。
+//
+// 3. 创建成功后，调用 `RunCrawler` 手动运行，或通过周期调度自动运行。
+//
+// ## 版本要求
+//
+// 需要购买DataWorks基础版及以上版本才能使用。
+//
+// ## 注意事项
+//
+// 创建成功仅表示采集器配置已生成，不会立即执行元数据采集。
+//
+// @param tmpReq - CreateCrawlerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCrawlerResponse
+func (client *Client) CreateCrawlerWithOptions(tmpReq *CreateCrawlerRequest, runtime *dara.RuntimeOptions) (_result *CreateCrawlerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateCrawlerShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Options) {
+		request.OptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Options, dara.String("Options"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ScheduleConfig) {
+		request.ScheduleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScheduleConfig, dara.String("ScheduleConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Scope) {
+		request.ScopeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Scope, dara.String("Scope"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DataSourceId) {
+		body["DataSourceId"] = request.DataSourceId
+	}
+
+	if !dara.IsNil(request.EnableAiComment) {
+		body["EnableAiComment"] = request.EnableAiComment
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OptionsShrink) {
+		body["Options"] = request.OptionsShrink
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ScheduleConfigShrink) {
+		body["ScheduleConfig"] = request.ScheduleConfigShrink
+	}
+
+	if !dara.IsNil(request.ScopeShrink) {
+		body["Scope"] = request.ScopeShrink
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCrawler"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCrawlerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建元数据采集器
+//
+// Description:
+//
+// ## 使用场景
+//
+// 为指定数据源创建元数据采集器，并配置采集范围、资源组、调度方式和扩展配置。
+//
+// ## 推荐流程
+//
+// 1. 调用 `GetCrawlerTypeCapabilities` 查询当前地域支持的采集器类型及其配置能力。
+//
+// 2. 使用与 `Type` 匹配的数据源创建采集器。
+//
+// 3. 创建成功后，调用 `RunCrawler` 手动运行，或通过周期调度自动运行。
+//
+// ## 版本要求
+//
+// 需要购买DataWorks基础版及以上版本才能使用。
+//
+// ## 注意事项
+//
+// 创建成功仅表示采集器配置已生成，不会立即执行元数据采集。
+//
+// @param request - CreateCrawlerRequest
+//
+// @return CreateCrawlerResponse
+func (client *Client) CreateCrawler(request *CreateCrawlerRequest) (_result *CreateCrawlerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateCrawlerResponse{}
+	_body, _err := client.CreateCrawlerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a custom attribute definition.
 //
 // @param tmpReq - CreateCustomAttributeRequest
@@ -4183,11 +4331,11 @@ func (client *Client) CreateMetaCollection(request *CreateMetaCollectionRequest)
 
 // Summary:
 //
-// Creates a metadata entity definition. The definition can be for a pure custom type or an extended table type.
+// Creates a metadata entity definition, including custom types and extended table types.
 //
 // Description:
 //
-// This operation requires DataWorks Professional Edition or a higher edition.
+// DataWorks Professional Edition or a more advanced edition is required.
 //
 // @param tmpReq - CreateMetaEntityDefRequest
 //
@@ -4253,11 +4401,11 @@ func (client *Client) CreateMetaEntityDefWithOptions(tmpReq *CreateMetaEntityDef
 
 // Summary:
 //
-// Creates a metadata entity definition. The definition can be for a pure custom type or an extended table type.
+// Creates a metadata entity definition, including custom types and extended table types.
 //
 // Description:
 //
-// This operation requires DataWorks Professional Edition or a higher edition.
+// DataWorks Professional Edition or a more advanced edition is required.
 //
 // @param request - CreateMetaEntityDefRequest
 //
@@ -5789,11 +5937,25 @@ func (client *Client) CreateSecurityStrategy(request *CreateSecurityStrategyRequ
 
 // Summary:
 //
-// Saves a reusable semantic task definition. If you use a single-file source, apply for and complete the file upload first. After creation, call RunSemanticJob with the returned Name.
+// Saves a reusable semantic job definition. If you use a single-file source, apply for and complete the attachment upload first. After creation, call RunSemanticJob with the returned Name.
 //
 // Description:
 //
-// Creates a semantic task definition.
+// ## Scenarios
+//
+// Creates and saves a reusable semantic job definition. This operation only saves the data source, resource group, and reference file configurations without immediately executing the job.
+//
+// ## Recommended workflow
+//
+// 1. When `Source.type=singleTableFile`, call `UploadSemanticFile` first, use the returned `Data.UploadUrl` to complete the PUT upload, and then specify `Data.FileId` in `ReferenceFileIds`. Alternatively, you can provide a single accessible URI.
+//
+// 2. Configure `Source`, `ProjectId`, and `ResourceGroupId`, and then call this operation to save the job.
+//
+// 3. Use `Data.Name` from the response to call `RunSemanticJob`. After the job is complete, use `DownloadSemanticResults` to retrieve the output.
+//
+// ## Before you begin
+//
+// `Name` must be unique within the current tenant. The reference file quantity rules differ between single-file sources and other sources. For details, refer to the descriptions of the `ReferenceFileIds` and `ReferenceFileUris` fields.
 //
 // @param tmpReq - CreateSemanticJobRequest
 //
@@ -5871,11 +6033,25 @@ func (client *Client) CreateSemanticJobWithOptions(tmpReq *CreateSemanticJobRequ
 
 // Summary:
 //
-// Saves a reusable semantic task definition. If you use a single-file source, apply for and complete the file upload first. After creation, call RunSemanticJob with the returned Name.
+// Saves a reusable semantic job definition. If you use a single-file source, apply for and complete the attachment upload first. After creation, call RunSemanticJob with the returned Name.
 //
 // Description:
 //
-// Creates a semantic task definition.
+// ## Scenarios
+//
+// Creates and saves a reusable semantic job definition. This operation only saves the data source, resource group, and reference file configurations without immediately executing the job.
+//
+// ## Recommended workflow
+//
+// 1. When `Source.type=singleTableFile`, call `UploadSemanticFile` first, use the returned `Data.UploadUrl` to complete the PUT upload, and then specify `Data.FileId` in `ReferenceFileIds`. Alternatively, you can provide a single accessible URI.
+//
+// 2. Configure `Source`, `ProjectId`, and `ResourceGroupId`, and then call this operation to save the job.
+//
+// 3. Use `Data.Name` from the response to call `RunSemanticJob`. After the job is complete, use `DownloadSemanticResults` to retrieve the output.
+//
+// ## Before you begin
+//
+// `Name` must be unique within the current tenant. The reference file quantity rules differ between single-file sources and other sources. For details, refer to the descriptions of the `ReferenceFileIds` and `ReferenceFileUris` fields.
 //
 // @param request - CreateSemanticJobRequest
 //
@@ -6768,6 +6944,108 @@ func (client *Client) DeleteComputeResource(request *DeleteComputeResourceReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteComputeResourceResponse{}
 	_body, _err := client.DeleteComputeResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除元数据采集器
+//
+// Description:
+//
+// ## 使用场景
+//
+// 删除不再使用的元数据采集器。
+//
+// ## 推荐流程
+//
+// 1. 调用 `ListCrawlers` 查询采集器 ID。
+//
+// 2. 确认采集器不再需要后调用本接口。
+//
+// ## 版本要求
+//
+// 需要购买DataWorks基础版及以上版本才能使用。
+//
+// ## 注意事项
+//
+// 删除成功后，该采集器不能继续查询、更新或运行。已采集元数据由系统清理，清理结果可能存在延迟。
+//
+// @param request - DeleteCrawlerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCrawlerResponse
+func (client *Client) DeleteCrawlerWithOptions(request *DeleteCrawlerRequest, runtime *dara.RuntimeOptions) (_result *DeleteCrawlerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCrawler"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCrawlerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除元数据采集器
+//
+// Description:
+//
+// ## 使用场景
+//
+// 删除不再使用的元数据采集器。
+//
+// ## 推荐流程
+//
+// 1. 调用 `ListCrawlers` 查询采集器 ID。
+//
+// 2. 确认采集器不再需要后调用本接口。
+//
+// ## 版本要求
+//
+// 需要购买DataWorks基础版及以上版本才能使用。
+//
+// ## 注意事项
+//
+// 删除成功后，该采集器不能继续查询、更新或运行。已采集元数据由系统清理，清理结果可能存在延迟。
+//
+// @param request - DeleteCrawlerRequest
+//
+// @return DeleteCrawlerResponse
+func (client *Client) DeleteCrawler(request *DeleteCrawlerRequest) (_result *DeleteCrawlerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteCrawlerResponse{}
+	_body, _err := client.DeleteCrawlerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7987,11 +8265,11 @@ func (client *Client) DeleteFunction(request *DeleteFunctionRequest) (_result *D
 
 // Summary:
 //
-// Deletes a lineage in Data Map.
+// Deletes a specified data lineage relationship from DataWorks Data Map.
 //
 // Description:
 //
-// 1. DataWorks Professional Edition or a higher edition is required.
+// 1. You must purchase DataWorks Professional Edition or a higher edition to use this feature.
 //
 // @param request - DeleteLineageRelationshipRequest
 //
@@ -8035,11 +8313,11 @@ func (client *Client) DeleteLineageRelationshipWithOptions(request *DeleteLineag
 
 // Summary:
 //
-// Deletes a lineage in Data Map.
+// Deletes a specified data lineage relationship from DataWorks Data Map.
 //
 // Description:
 //
-// 1. DataWorks Professional Edition or a higher edition is required.
+// 1. You must purchase DataWorks Professional Edition or a higher edition to use this feature.
 //
 // @param request - DeleteLineageRelationshipRequest
 //
@@ -9109,11 +9387,25 @@ func (client *Client) DeleteSecurityStrategy(request *DeleteSecurityStrategyRequ
 
 // Summary:
 //
-// Deletes a task definition by the Name of a created task. If the task is running, call KillSemanticJob with the ExecutorJobId of that run and confirm the stop before deletion.
+// Deletes a semantic job definition by the Name of a created job. If the job is currently running, call KillSemanticJob with the ExecutorJobId of that run and confirm the stop before deletion.
 //
 // Description:
 //
-// Operation description for deleting a semantic task.
+// ## Scenarios
+//
+// Archives and deletes a saved semantic job definition so that it no longer appears in the list of available jobs.
+//
+// ## Call flow
+//
+// 1. Obtain the job name from `CreateSemanticJob.Data.Name` or `ListSemanticJobs.Data.SemanticJobs[].Name`.
+//
+// 2. To check whether any active runs exist, call `ListSemanticJobRuns` first. If necessary, stop the execution by calling `KillSemanticJob`.
+//
+// 3. Call this operation to delete the job definition.
+//
+// ## Result description
+//
+// A successful response indicates that the deletion request is complete. After deletion, you can no longer use the name to call `RunSemanticJob`.
 //
 // @param request - DeleteSemanticJobRequest
 //
@@ -9157,11 +9449,25 @@ func (client *Client) DeleteSemanticJobWithOptions(request *DeleteSemanticJobReq
 
 // Summary:
 //
-// Deletes a task definition by the Name of a created task. If the task is running, call KillSemanticJob with the ExecutorJobId of that run and confirm the stop before deletion.
+// Deletes a semantic job definition by the Name of a created job. If the job is currently running, call KillSemanticJob with the ExecutorJobId of that run and confirm the stop before deletion.
 //
 // Description:
 //
-// Operation description for deleting a semantic task.
+// ## Scenarios
+//
+// Archives and deletes a saved semantic job definition so that it no longer appears in the list of available jobs.
+//
+// ## Call flow
+//
+// 1. Obtain the job name from `CreateSemanticJob.Data.Name` or `ListSemanticJobs.Data.SemanticJobs[].Name`.
+//
+// 2. To check whether any active runs exist, call `ListSemanticJobRuns` first. If necessary, stop the execution by calling `KillSemanticJob`.
+//
+// 3. Call this operation to delete the job definition.
+//
+// ## Result description
+//
+// A successful response indicates that the deletion request is complete. After deletion, you can no longer use the name to call `RunSemanticJob`.
 //
 // @param request - DeleteSemanticJobRequest
 //
@@ -9910,11 +10216,25 @@ func (client *Client) DissociateProjectFromResourceGroup(request *DissociateProj
 
 // Summary:
 //
-// Returns the download URL of artifacts by node name and an optional run ID after execution completes. If JobRunId is not specified, the result of the latest run of the node is returned.
+// Returns the download URL of artifacts by job name and an optional run ID after a run completes. If JobRunId is not specified, the results of the most recent run of the job are returned.
 //
 // Description:
 //
-// Operation description for retrieving the download URL of semantic task results.
+// ## Scenarios
+//
+// Retrieves temporary download URLs for result files of a submitted semantic job run, such as semantic model YAML artifacts. This operation returns download URLs and does not directly return file content.
+//
+// ## Procedure
+//
+// 1. Use the job name `JobName` to locate the job.
+//
+// 2. To retrieve artifacts of a specific run, specify the `JobRunId` from the `RunSemanticJob.Data.JobRunId` or `ListSemanticJobRuns` response. If you do not specify this parameter, the artifacts of the most recent run are returned.
+//
+// 3. Download the corresponding files from `Data.Results[].DownloadUrl`.
+//
+// ## Before you begin
+//
+// The download URL is a temporary credential. Use it only briefly on the client side. Do not write it to logs or store it for long-term use.
 //
 // @param request - DownloadSemanticResultsRequest
 //
@@ -9962,11 +10282,25 @@ func (client *Client) DownloadSemanticResultsWithOptions(request *DownloadSemant
 
 // Summary:
 //
-// Returns the download URL of artifacts by node name and an optional run ID after execution completes. If JobRunId is not specified, the result of the latest run of the node is returned.
+// Returns the download URL of artifacts by job name and an optional run ID after a run completes. If JobRunId is not specified, the results of the most recent run of the job are returned.
 //
 // Description:
 //
-// Operation description for retrieving the download URL of semantic task results.
+// ## Scenarios
+//
+// Retrieves temporary download URLs for result files of a submitted semantic job run, such as semantic model YAML artifacts. This operation returns download URLs and does not directly return file content.
+//
+// ## Procedure
+//
+// 1. Use the job name `JobName` to locate the job.
+//
+// 2. To retrieve artifacts of a specific run, specify the `JobRunId` from the `RunSemanticJob.Data.JobRunId` or `ListSemanticJobRuns` response. If you do not specify this parameter, the artifacts of the most recent run are returned.
+//
+// 3. Download the corresponding files from `Data.Results[].DownloadUrl`.
+//
+// ## Before you begin
+//
+// The download URL is a temporary credential. Use it only briefly on the client side. Do not write it to logs or store it for long-term use.
 //
 // @param request - DownloadSemanticResultsRequest
 //
@@ -11219,6 +11553,207 @@ func (client *Client) GetComputeResource(request *GetComputeResourceRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetComputeResourceResponse{}
 	_body, _err := client.GetComputeResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取元数据采集器详情
+//
+// Description:
+//
+// ## 使用场景
+//
+// 查询指定元数据采集器的配置、可用状态和最近一次运行信息。
+//
+// ## 推荐流程
+//
+// 1. 调用 `ListCrawlers` 查询采集器 ID。
+//
+// 2. 调用本接口获取采集器详情。
+//
+// 3. 如需查询完整运行历史，调用 `ListCrawlerRuns`。
+//
+// ## 版本要求
+//
+// 需要购买DataWorks基础版及以上版本才能使用。
+//
+// ## 注意事项
+//
+// 采集器尚未运行时，最近运行状态和任务实例 ID 可能为空。
+//
+// @param request - GetCrawlerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCrawlerResponse
+func (client *Client) GetCrawlerWithOptions(request *GetCrawlerRequest, runtime *dara.RuntimeOptions) (_result *GetCrawlerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCrawler"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCrawlerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取元数据采集器详情
+//
+// Description:
+//
+// ## 使用场景
+//
+// 查询指定元数据采集器的配置、可用状态和最近一次运行信息。
+//
+// ## 推荐流程
+//
+// 1. 调用 `ListCrawlers` 查询采集器 ID。
+//
+// 2. 调用本接口获取采集器详情。
+//
+// 3. 如需查询完整运行历史，调用 `ListCrawlerRuns`。
+//
+// ## 版本要求
+//
+// 需要购买DataWorks基础版及以上版本才能使用。
+//
+// ## 注意事项
+//
+// 采集器尚未运行时，最近运行状态和任务实例 ID 可能为空。
+//
+// @param request - GetCrawlerRequest
+//
+// @return GetCrawlerResponse
+func (client *Client) GetCrawler(request *GetCrawlerRequest) (_result *GetCrawlerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetCrawlerResponse{}
+	_body, _err := client.GetCrawlerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询当前地域支持创建的元数据采集器类型及能力
+//
+// Description:
+//
+// ## 使用场景
+//
+// 查询当前地域支持创建的采集器类型，以及各类型支持的数据源、采集范围、资源组、调度、AI 元数据描述和扩展配置能力。
+//
+// ## 推荐流程
+//
+// 1. 在创建或更新采集器前调用本接口。
+//
+// 2. 根据返回的能力信息构造 `CreateCrawler` 或 `UpdateCrawler` 请求。
+//
+// ## 版本要求
+//
+// 需要购买DataWorks基础版及以上版本才能使用。
+//
+// ## 注意事项
+//
+// 不同地域和采集器类型的能力可能不同，请以本接口的实际返回结果为准。
+//
+// @param request - GetCrawlerTypeCapabilitiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCrawlerTypeCapabilitiesResponse
+func (client *Client) GetCrawlerTypeCapabilitiesWithOptions(request *GetCrawlerTypeCapabilitiesRequest, runtime *dara.RuntimeOptions) (_result *GetCrawlerTypeCapabilitiesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCrawlerTypeCapabilities"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCrawlerTypeCapabilitiesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询当前地域支持创建的元数据采集器类型及能力
+//
+// Description:
+//
+// ## 使用场景
+//
+// 查询当前地域支持创建的采集器类型，以及各类型支持的数据源、采集范围、资源组、调度、AI 元数据描述和扩展配置能力。
+//
+// ## 推荐流程
+//
+// 1. 在创建或更新采集器前调用本接口。
+//
+// 2. 根据返回的能力信息构造 `CreateCrawler` 或 `UpdateCrawler` 请求。
+//
+// ## 版本要求
+//
+// 需要购买DataWorks基础版及以上版本才能使用。
+//
+// ## 注意事项
+//
+// 不同地域和采集器类型的能力可能不同，请以本接口的实际返回结果为准。
+//
+// @param request - GetCrawlerTypeCapabilitiesRequest
+//
+// @return GetCrawlerTypeCapabilitiesResponse
+func (client *Client) GetCrawlerTypeCapabilities(request *GetCrawlerTypeCapabilitiesRequest) (_result *GetCrawlerTypeCapabilitiesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetCrawlerTypeCapabilitiesResponse{}
+	_body, _err := client.GetCrawlerTypeCapabilitiesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14404,7 +14939,21 @@ func (client *Client) GetSecurityStrategy(request *GetSecurityStrategyRequest) (
 //
 // Description:
 //
-// Operation description for querying semantic job run details.
+// ## Scenarios
+//
+// Queries the detailed status and runtime information of a semantic job run on the executor side. This is used to poll execution progress or troubleshoot run failures.
+//
+// ## Procedure
+//
+// 1. Call `RunSemanticJob` or `ListSemanticJobRuns` to obtain the `ExecutorJobId`.
+//
+// 2. Use the `ProjectId` returned by the job definition as the `ProjectId` for this operation.
+//
+// 3. Determine the current status based on the executor details in `Data`. If the job is still running, continue polling this operation.
+//
+// ## Related operations
+//
+// To retrieve logs, call `GetSemanticJobLog`. To stop a run, call `KillSemanticJob`.
 //
 // @param request - GetSemanticJobDetailRequest
 //
@@ -14456,7 +15005,21 @@ func (client *Client) GetSemanticJobDetailWithOptions(request *GetSemanticJobDet
 //
 // Description:
 //
-// Operation description for querying semantic job run details.
+// ## Scenarios
+//
+// Queries the detailed status and runtime information of a semantic job run on the executor side. This is used to poll execution progress or troubleshoot run failures.
+//
+// ## Procedure
+//
+// 1. Call `RunSemanticJob` or `ListSemanticJobRuns` to obtain the `ExecutorJobId`.
+//
+// 2. Use the `ProjectId` returned by the job definition as the `ProjectId` for this operation.
+//
+// 3. Determine the current status based on the executor details in `Data`. If the job is still running, continue polling this operation.
+//
+// ## Related operations
+//
+// To retrieve logs, call `GetSemanticJobLog`. To stop a run, call `KillSemanticJob`.
 //
 // @param request - GetSemanticJobDetailRequest
 //
@@ -14478,7 +15041,21 @@ func (client *Client) GetSemanticJobDetail(request *GetSemanticJobDetailRequest)
 //
 // Description:
 //
-// Operation description for querying semantic job run logs.
+// ## Scenarios
+//
+// Reads the execution logs of a semantic job run to observe the execution process and identify failure causes.
+//
+// ## Procedure
+//
+// 1. Specify the run by using `RunSemanticJob.Data.ExecutorJobId` or `ListSemanticJobRuns[].ExecutorJobId`.
+//
+// 2. Call this operation with the `ProjectId` of the corresponding task.
+//
+// 3. Analyze the log segments in `Data` together with the run status returned by `GetSemanticJobDetail`.
+//
+// ## Before you begin
+//
+// Logs are used for diagnostics and do not represent the final result files. Obtain result artifacts by calling `DownloadSemanticResults`.
 //
 // @param request - GetSemanticJobLogRequest
 //
@@ -14530,7 +15107,21 @@ func (client *Client) GetSemanticJobLogWithOptions(request *GetSemanticJobLogReq
 //
 // Description:
 //
-// Operation description for querying semantic job run logs.
+// ## Scenarios
+//
+// Reads the execution logs of a semantic job run to observe the execution process and identify failure causes.
+//
+// ## Procedure
+//
+// 1. Specify the run by using `RunSemanticJob.Data.ExecutorJobId` or `ListSemanticJobRuns[].ExecutorJobId`.
+//
+// 2. Call this operation with the `ProjectId` of the corresponding task.
+//
+// 3. Analyze the log segments in `Data` together with the run status returned by `GetSemanticJobDetail`.
+//
+// ## Before you begin
+//
+// Logs are used for diagnostics and do not represent the final result files. Obtain result artifacts by calling `DownloadSemanticResults`.
 //
 // @param request - GetSemanticJobLogRequest
 //
@@ -14630,7 +15221,7 @@ func (client *Client) GetSkill(request *GetSkillRequest) (_result *GetSkillRespo
 
 // Summary:
 //
-// Retrieves the details of a specified data table in DataWorks Data Map. You can specify whether to return business metadata.
+// Retrieves the details of a specified table in Data Map. You can choose whether to return business metadata.
 //
 // Description:
 //
@@ -14674,7 +15265,7 @@ func (client *Client) GetTableWithOptions(request *GetTableRequest, runtime *dar
 
 // Summary:
 //
-// Retrieves the details of a specified data table in DataWorks Data Map. You can specify whether to return business metadata.
+// Retrieves the details of a specified table in Data Map. You can choose whether to return business metadata.
 //
 // Description:
 //
@@ -15439,11 +16030,25 @@ func (client *Client) ImportWorkflowDefinition(request *ImportWorkflowDefinition
 
 // Summary:
 //
-// Stops a specified run by using the ExecutorJobId returned by RunSemanticJob or ListSemanticJobRuns. A successful call only indicates that the stop request has been accepted. Query the final status by calling GetSemanticJobDetail.
+// Stops a specified run by using the ExecutorJobId returned by RunSemanticJob or ListSemanticJobRuns. A successful call indicates only that the stop request has been accepted. Query the final status by calling GetSemanticJobDetail.
 //
 // Description:
 //
-// Operation description for stopping a semantic job run.
+// ## Scenarios
+//
+// Sends a stop request to the executor for a specified semantic job run. This is applicable to scenarios where a job runs for an extended period, requires manual termination, or needs resource reclamation.
+//
+// ## Procedure
+//
+// 1. Obtain the `ExecutorJobId` from `RunSemanticJob` or `ListSemanticJobRuns`, and use the `ProjectId` of the job.
+//
+// 2. Optionally specify `RetryTimes` as needed.
+//
+// 3. After the call, poll the final status by using `GetSemanticJobDetail`. If necessary, call `GetSemanticJobLog` for diagnostics.
+//
+// ## Before you begin
+//
+// A successful response indicates only that the stop request has been processed. It does not mean the job has reached a desired state.
 //
 // @param request - KillSemanticJobRequest
 //
@@ -15495,11 +16100,25 @@ func (client *Client) KillSemanticJobWithOptions(request *KillSemanticJobRequest
 
 // Summary:
 //
-// Stops a specified run by using the ExecutorJobId returned by RunSemanticJob or ListSemanticJobRuns. A successful call only indicates that the stop request has been accepted. Query the final status by calling GetSemanticJobDetail.
+// Stops a specified run by using the ExecutorJobId returned by RunSemanticJob or ListSemanticJobRuns. A successful call indicates only that the stop request has been accepted. Query the final status by calling GetSemanticJobDetail.
 //
 // Description:
 //
-// Operation description for stopping a semantic job run.
+// ## Scenarios
+//
+// Sends a stop request to the executor for a specified semantic job run. This is applicable to scenarios where a job runs for an extended period, requires manual termination, or needs resource reclamation.
+//
+// ## Procedure
+//
+// 1. Obtain the `ExecutorJobId` from `RunSemanticJob` or `ListSemanticJobRuns`, and use the `ProjectId` of the job.
+//
+// 2. Optionally specify `RetryTimes` as needed.
+//
+// 3. After the call, poll the final status by using `GetSemanticJobDetail`. If necessary, call `GetSemanticJobLog` for diagnostics.
+//
+// ## Before you begin
+//
+// A successful response indicates only that the stop request has been processed. It does not mean the job has reached a desired state.
 //
 // @param request - KillSemanticJobRequest
 //
@@ -16125,7 +16744,7 @@ func (client *Client) ListCertificates(request *ListCertificatesRequest) (_resul
 
 // Summary:
 //
-// Queries the column list of a specified data table in DataWorks Data Map.
+// Queries the column list of a specified table in DataWorks Data Map.
 //
 // Description:
 //
@@ -16169,7 +16788,7 @@ func (client *Client) ListColumnsWithOptions(request *ListColumnsRequest, runtim
 
 // Summary:
 //
-// Queries the column list of a specified data table in DataWorks Data Map.
+// Queries the column list of a specified table in DataWorks Data Map.
 //
 // Description:
 //
@@ -16385,6 +17004,132 @@ func (client *Client) ListComputeResources(request *ListComputeResourcesRequest)
 
 // Summary:
 //
+// 查询元数据采集器运行记录
+//
+// Description:
+//
+// ## 使用场景
+//
+// 分页查询指定元数据采集器最近 30 天内的运行记录，并可按运行开始时间和状态筛选。
+//
+// ## 推荐流程
+//
+// 1. 使用 `ListCrawlers` 查询采集器 ID。
+//
+// 2. 调用本接口查询运行记录和任务实例 ID。
+//
+// 3. 对运行、停止等异步操作，以本接口返回的最终状态为准。
+//
+// ## 版本要求
+//
+// 需要购买DataWorks基础版及以上版本才能使用。
+//
+// ## 注意事项
+//
+// 未指定时间范围时，默认查询当前时间向前 30 天。
+//
+// @param request - ListCrawlerRunsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCrawlerRunsResponse
+func (client *Client) ListCrawlerRunsWithOptions(request *ListCrawlerRunsRequest, runtime *dara.RuntimeOptions) (_result *ListCrawlerRunsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTimeFrom) {
+		body["StartTimeFrom"] = request.StartTimeFrom
+	}
+
+	if !dara.IsNil(request.StartTimeTo) {
+		body["StartTimeTo"] = request.StartTimeTo
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCrawlerRuns"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCrawlerRunsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询元数据采集器运行记录
+//
+// Description:
+//
+// ## 使用场景
+//
+// 分页查询指定元数据采集器最近 30 天内的运行记录，并可按运行开始时间和状态筛选。
+//
+// ## 推荐流程
+//
+// 1. 使用 `ListCrawlers` 查询采集器 ID。
+//
+// 2. 调用本接口查询运行记录和任务实例 ID。
+//
+// 3. 对运行、停止等异步操作，以本接口返回的最终状态为准。
+//
+// ## 版本要求
+//
+// 需要购买DataWorks基础版及以上版本才能使用。
+//
+// ## 注意事项
+//
+// 未指定时间范围时，默认查询当前时间向前 30 天。
+//
+// @param request - ListCrawlerRunsRequest
+//
+// @return ListCrawlerRunsResponse
+func (client *Client) ListCrawlerRuns(request *ListCrawlerRunsRequest) (_result *ListCrawlerRunsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCrawlerRunsResponse{}
+	_body, _err := client.ListCrawlerRunsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of metadata crawler types supported in Data Map. The subtypes of the types and the hierarchical relationship between the subtypes are also returned.
 //
 // Description:
@@ -16429,6 +17174,142 @@ func (client *Client) ListCrawlerTypes() (_result *ListCrawlerTypesResponse, _er
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListCrawlerTypesResponse{}
 	_body, _err := client.ListCrawlerTypesWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询元数据采集器列表
+//
+// Description:
+//
+// ## 使用场景
+//
+// 分页查询有权访问的元数据采集器，并可按工作空间、数据源、采集器类型、环境、负责人和名称筛选。
+//
+// ## 推荐流程
+//
+// 1. 按需组合筛选条件查询采集器列表。
+//
+// 2. 使用返回的采集器 ID 调用详情、更新、运行、停止、运行记录或删除接口。
+//
+// ## 版本要求
+//
+// 需要购买DataWorks基础版及以上版本才能使用。
+//
+// ## 注意事项
+//
+// 多个筛选条件同时提供时组合生效，名称支持模糊匹配。
+//
+// @param tmpReq - ListCrawlersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCrawlersResponse
+func (client *Client) ListCrawlersWithOptions(tmpReq *ListCrawlersRequest, runtime *dara.RuntimeOptions) (_result *ListCrawlersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListCrawlersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DataSourceIds) {
+		request.DataSourceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataSourceIds, dara.String("DataSourceIds"), dara.String("simple"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DataSourceIdsShrink) {
+		body["DataSourceIds"] = request.DataSourceIdsShrink
+	}
+
+	if !dara.IsNil(request.EnvType) {
+		body["EnvType"] = request.EnvType
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Owner) {
+		body["Owner"] = request.Owner
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCrawlers"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCrawlersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询元数据采集器列表
+//
+// Description:
+//
+// ## 使用场景
+//
+// 分页查询有权访问的元数据采集器，并可按工作空间、数据源、采集器类型、环境、负责人和名称筛选。
+//
+// ## 推荐流程
+//
+// 1. 按需组合筛选条件查询采集器列表。
+//
+// 2. 使用返回的采集器 ID 调用详情、更新、运行、停止、运行记录或删除接口。
+//
+// ## 版本要求
+//
+// 需要购买DataWorks基础版及以上版本才能使用。
+//
+// ## 注意事项
+//
+// 多个筛选条件同时提供时组合生效，名称支持模糊匹配。
+//
+// @param request - ListCrawlersRequest
+//
+// @return ListCrawlersResponse
+func (client *Client) ListCrawlers(request *ListCrawlersRequest) (_result *ListCrawlersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCrawlersResponse{}
+	_body, _err := client.ListCrawlersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16540,7 +17421,7 @@ func (client *Client) ListCustomAgents(request *ListCustomAgentsRequest) (_resul
 
 // Summary:
 //
-// Retrieves a list of custom attribute definitions.
+// Queries the list of custom attribute definitions.
 //
 // @param request - ListCustomAttributesRequest
 //
@@ -16608,7 +17489,7 @@ func (client *Client) ListCustomAttributesWithOptions(request *ListCustomAttribu
 
 // Summary:
 //
-// Retrieves a list of custom attribute definitions.
+// Queries the list of custom attribute definitions.
 //
 // @param request - ListCustomAttributesRequest
 //
@@ -19275,11 +20156,11 @@ func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImage
 
 // Summary:
 //
-// Queries the data map for data lineage relationships between specified entities, such as tables, columns, and OSS objects.
+// Queries the list of data lineage relationships between two specified entities (tables, fields, OSS files, etc.) in DataWorks Data Map.
 //
 // Description:
 //
-// 1. This operation is available in DataWorks Standard Edition and later versions.
+// 1. You must purchase DataWorks Standard Edition or a higher edition to use this feature.
 //
 // @param request - ListLineageRelationshipsRequest
 //
@@ -19319,11 +20200,11 @@ func (client *Client) ListLineageRelationshipsWithOptions(request *ListLineageRe
 
 // Summary:
 //
-// Queries the data map for data lineage relationships between specified entities, such as tables, columns, and OSS objects.
+// Queries the list of data lineage relationships between two specified entities (tables, fields, OSS files, etc.) in DataWorks Data Map.
 //
 // Description:
 //
-// 1. This operation is available in DataWorks Standard Edition and later versions.
+// 1. You must purchase DataWorks Standard Edition or a higher edition to use this feature.
 //
 // @param request - ListLineageRelationshipsRequest
 //
@@ -19521,11 +20402,11 @@ func (client *Client) ListMcpServers(request *ListMcpServersRequest) (_result *L
 
 // Summary:
 //
-// Queries a list of collections in Data Map. Collections include categories and data albums.
+// Queries the list of Data Map collections. Supports querying both Data Map categories and data albums.
 //
 // Description:
 //
-// 1. DataWorks Professional Edition or a higher edition is required.
+// 1. You must purchase DataWorks Professional Edition or a higher edition to use this feature.
 //
 // @param request - ListMetaCollectionsRequest
 //
@@ -19565,11 +20446,11 @@ func (client *Client) ListMetaCollectionsWithOptions(request *ListMetaCollection
 
 // Summary:
 //
-// Queries a list of collections in Data Map. Collections include categories and data albums.
+// Queries the list of Data Map collections. Supports querying both Data Map categories and data albums.
 //
 // Description:
 //
-// 1. DataWorks Professional Edition or a higher edition is required.
+// 1. You must purchase DataWorks Professional Edition or a higher edition to use this feature.
 //
 // @param request - ListMetaCollectionsRequest
 //
@@ -19587,7 +20468,7 @@ func (client *Client) ListMetaCollections(request *ListMetaCollectionsRequest) (
 
 // Summary:
 //
-// Lists metadata entities. Support is currently limited to custom types.
+// Queries a list of metadata entities. Currently, only custom entity types are supported.
 //
 // @param tmpReq - ListMetaEntitiesRequest
 //
@@ -19673,7 +20554,7 @@ func (client *Client) ListMetaEntitiesWithOptions(tmpReq *ListMetaEntitiesReques
 
 // Summary:
 //
-// Lists metadata entities. Support is currently limited to custom types.
+// Queries a list of metadata entities. Currently, only custom entity types are supported.
 //
 // @param request - ListMetaEntitiesRequest
 //
@@ -19691,7 +20572,7 @@ func (client *Client) ListMetaEntities(request *ListMetaEntitiesRequest) (_resul
 
 // Summary:
 //
-// Retrieves a list of custom entity definitions, including custom entity types and extended table types.
+// Queries the list of custom entity definitions, including custom entity types and extension table types.
 //
 // @param request - ListMetaEntityDefsRequest
 //
@@ -19759,7 +20640,7 @@ func (client *Client) ListMetaEntityDefsWithOptions(request *ListMetaEntityDefsR
 
 // Summary:
 //
-// Retrieves a list of custom entity definitions, including custom entity types and extended table types.
+// Queries the list of custom entity definitions, including custom entity types and extension table types.
 //
 // @param request - ListMetaEntityDefsRequest
 //
@@ -20437,13 +21318,15 @@ func (client *Client) ListParameters(request *ListParametersRequest) (_result *L
 
 // Summary:
 //
-// Queries a list of partitions in a table in Data Map. Only tables of the MaxCompute and E-MapReduce (EMR)-type Hive Metastore Service (HMS) metadata crawlers are supported.
+// Queries the partition list of a specified table in DataWorks Data Map. Currently supports MaxCompute and HMS (EMR cluster) types.
 //
 // Description:
 //
-// 1. DataWorks Basic Edition or a higher edition is required.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
-// 2. Only maxcompute and hms (EMR cluster) table types are supported.
+// 2. Only MaxCompute and HMS (EMR cluster) table types are supported.
+//
+// 3. Before calling this API, call ListCrawlers to obtain the MetaEntityId of the metadata crawler, then call ListDatabases to obtain the database ID. For MaxCompute projects with Schema enabled, call ListSchemas to obtain the schema ID. Then call ListTables to obtain the TableId, and pass the returned table ID to this API.
 //
 // @param request - ListPartitionsRequest
 //
@@ -20483,13 +21366,15 @@ func (client *Client) ListPartitionsWithOptions(request *ListPartitionsRequest, 
 
 // Summary:
 //
-// Queries a list of partitions in a table in Data Map. Only tables of the MaxCompute and E-MapReduce (EMR)-type Hive Metastore Service (HMS) metadata crawlers are supported.
+// Queries the partition list of a specified table in DataWorks Data Map. Currently supports MaxCompute and HMS (EMR cluster) types.
 //
 // Description:
 //
-// 1. DataWorks Basic Edition or a higher edition is required.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
-// 2. Only maxcompute and hms (EMR cluster) table types are supported.
+// 2. Only MaxCompute and HMS (EMR cluster) table types are supported.
+//
+// 3. Before calling this API, call ListCrawlers to obtain the MetaEntityId of the metadata crawler, then call ListDatabases to obtain the database ID. For MaxCompute projects with Schema enabled, call ListSchemas to obtain the schema ID. Then call ListTables to obtain the TableId, and pass the returned table ID to this API.
 //
 // @param request - ListPartitionsRequest
 //
@@ -21779,11 +22664,25 @@ func (client *Client) ListSecurityStrategies(request *ListSecurityStrategiesRequ
 
 // Summary:
 //
-// Queries the run records of a created node by its Name with paging. The JobRunId in each record is active for retrieving the results of a specific run, and the ExecutorJobId is active for getting details, logs, or stopping the run.
+// Queries the run records of a created node by Name with paging. The JobRunId in each record is active for retrieving the results of a specific run, and the ExecutorJobId is active for querying details, retrieving logs, or stopping the run.
 //
 // Description:
 //
-// Queries the run records of a semantic job.
+// ## Scenarios
+//
+// View the historical run records of a semantic job with pagination to obtain the run ID, executor job ID, status, and time information for each submission.
+//
+// ## Procedure
+//
+// 1. Use the job name from `CreateSemanticJob.Data.Name` or `ListSemanticJobs` as the `JobName`.
+//
+// 2. Use `PageNumber` and `PageSize` to read records page by page.
+//
+// 3. Use the `JobRunId` from a record to call `DownloadSemanticResults`, and use the `ExecutorJobId` to call the detail, log, or stop operations.
+//
+// ## Before you begin
+//
+// Pagination starts from page 1 by default. Each page contains a maximum of 200 records.
 //
 // @param request - ListSemanticJobRunsRequest
 //
@@ -21835,11 +22734,25 @@ func (client *Client) ListSemanticJobRunsWithOptions(request *ListSemanticJobRun
 
 // Summary:
 //
-// Queries the run records of a created node by its Name with paging. The JobRunId in each record is active for retrieving the results of a specific run, and the ExecutorJobId is active for getting details, logs, or stopping the run.
+// Queries the run records of a created node by Name with paging. The JobRunId in each record is active for retrieving the results of a specific run, and the ExecutorJobId is active for querying details, retrieving logs, or stopping the run.
 //
 // Description:
 //
-// Queries the run records of a semantic job.
+// ## Scenarios
+//
+// View the historical run records of a semantic job with pagination to obtain the run ID, executor job ID, status, and time information for each submission.
+//
+// ## Procedure
+//
+// 1. Use the job name from `CreateSemanticJob.Data.Name` or `ListSemanticJobs` as the `JobName`.
+//
+// 2. Use `PageNumber` and `PageSize` to read records page by page.
+//
+// 3. Use the `JobRunId` from a record to call `DownloadSemanticResults`, and use the `ExecutorJobId` to call the detail, log, or stop operations.
+//
+// ## Before you begin
+//
+// Pagination starts from page 1 by default. Each page contains a maximum of 200 records.
 //
 // @param request - ListSemanticJobRunsRequest
 //
@@ -21857,11 +22770,25 @@ func (client *Client) ListSemanticJobRuns(request *ListSemanticJobRunsRequest) (
 
 // Summary:
 //
-// Queries semantics node definitions of the current tenant by paging. The Name, ProjectId, and Source fields in the list items can be used for running/deleting nodes, querying run details, and verifying input scope, respectively.
+// Queries the semantic node definitions of the current tenant with paging. The Name, ProjectId, and Source fields in the list items can be used for running/deleting nodes, querying run details, and verifying input scope, respectively.
 //
 // Description:
 //
-// Queries the list of semantic task definitions.
+// ## Scenarios
+//
+// Queries the saved semantic node definitions of the current tenant with paging. Use this operation to display the node list, select a node to run, or obtain the workspace to which a node belongs.
+//
+// ## Invoke flow
+//
+// 1. Use `PageNumber` and `PageSize` to read `Data.SemanticJobs` with paging.
+//
+// 2. Use the `Name` field of a list item to invoke `RunSemanticJob`, `DeleteSemanticJob`, or `ListSemanticJobRuns`.
+//
+// 3. Use the `ProjectId` field of a list item together with `ExecutorJobId` to invoke the details, log, and stop operations.
+//
+// ## Notes
+//
+// This operation returns node definitions, not real-time run statuses. To query run statuses, invoke `ListSemanticJobRuns`.
 //
 // @param request - ListSemanticJobsRequest
 //
@@ -21909,11 +22836,25 @@ func (client *Client) ListSemanticJobsWithOptions(request *ListSemanticJobsReque
 
 // Summary:
 //
-// Queries semantics node definitions of the current tenant by paging. The Name, ProjectId, and Source fields in the list items can be used for running/deleting nodes, querying run details, and verifying input scope, respectively.
+// Queries the semantic node definitions of the current tenant with paging. The Name, ProjectId, and Source fields in the list items can be used for running/deleting nodes, querying run details, and verifying input scope, respectively.
 //
 // Description:
 //
-// Queries the list of semantic task definitions.
+// ## Scenarios
+//
+// Queries the saved semantic node definitions of the current tenant with paging. Use this operation to display the node list, select a node to run, or obtain the workspace to which a node belongs.
+//
+// ## Invoke flow
+//
+// 1. Use `PageNumber` and `PageSize` to read `Data.SemanticJobs` with paging.
+//
+// 2. Use the `Name` field of a list item to invoke `RunSemanticJob`, `DeleteSemanticJob`, or `ListSemanticJobRuns`.
+//
+// 3. Use the `ProjectId` field of a list item together with `ExecutorJobId` to invoke the details, log, and stop operations.
+//
+// ## Notes
+//
+// This operation returns node definitions, not real-time run statuses. To query run statuses, invoke `ListSemanticJobRuns`.
 //
 // @param request - ListSemanticJobsRequest
 //
@@ -22045,7 +22986,7 @@ func (client *Client) ListSkills(request *ListSkillsRequest) (_result *ListSkill
 //
 // Description:
 //
-// 1. DataWorks Basic Edition or a higher edition is required.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param tmpReq - ListTablesRequest
 //
@@ -22095,7 +23036,7 @@ func (client *Client) ListTablesWithOptions(tmpReq *ListTablesRequest, runtime *
 //
 // Description:
 //
-// 1. DataWorks Basic Edition or a higher edition is required.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - ListTablesRequest
 //
@@ -24475,11 +25416,143 @@ func (client *Client) RollbackParameter(request *RollbackParameterRequest) (_res
 
 // Summary:
 //
-// Submits a semantic job for execution by its Name and returns the run identifier and executor identifier. A successful call indicates that the job has been submitted, not that the semantic model results have been generated.
+// 运行元数据采集器
 //
 // Description:
 //
-// *Before using this operation, make sure that you fully understand the [billing method and pricing](https://www.alibabacloud.com/help/en/dataworks/dataworks-data-agent-agent-billing) of model calls used by semantic building.**
+// ## 使用场景
+//
+// 提交指定元数据采集器的运行请求。
+//
+// ## 推荐流程
+//
+// 1. 调用 `ListCrawlers` 查询可运行的采集器 ID。
+//
+// 2. 调用本接口提交运行请求。
+//
+// 3. 调用 `ListCrawlerRuns` 查询最终运行状态。
+//
+// ## 版本要求
+//
+// 需要购买DataWorks基础版及以上版本才能使用。
+//
+// ## 费用说明
+//
+// 运行采集任务会使用计算资源，可能产生费用，具体以实际使用的资源组和 DataWorks 计费规则为准。
+//
+// 当采集器已开启 AI 元数据描述能力（`EnableAiComment=true`）时，采集元数据并生成 AI 说明会消耗 Token。Token 赠送额度及超出额度后的计费规则，请参见 [Data Agent 费用](https://help.aliyun.com/zh/dataworks/dataworks-data-agent-agent-billing)。
+//
+// ## 注意事项
+//
+// 接口成功仅表示运行请求已受理，不表示采集任务已经完成。
+//
+// @param request - RunCrawlerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunCrawlerResponse
+func (client *Client) RunCrawlerWithOptions(request *RunCrawlerRequest, runtime *dara.RuntimeOptions) (_result *RunCrawlerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunCrawler"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RunCrawlerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 运行元数据采集器
+//
+// Description:
+//
+// ## 使用场景
+//
+// 提交指定元数据采集器的运行请求。
+//
+// ## 推荐流程
+//
+// 1. 调用 `ListCrawlers` 查询可运行的采集器 ID。
+//
+// 2. 调用本接口提交运行请求。
+//
+// 3. 调用 `ListCrawlerRuns` 查询最终运行状态。
+//
+// ## 版本要求
+//
+// 需要购买DataWorks基础版及以上版本才能使用。
+//
+// ## 费用说明
+//
+// 运行采集任务会使用计算资源，可能产生费用，具体以实际使用的资源组和 DataWorks 计费规则为准。
+//
+// 当采集器已开启 AI 元数据描述能力（`EnableAiComment=true`）时，采集元数据并生成 AI 说明会消耗 Token。Token 赠送额度及超出额度后的计费规则，请参见 [Data Agent 费用](https://help.aliyun.com/zh/dataworks/dataworks-data-agent-agent-billing)。
+//
+// ## 注意事项
+//
+// 接口成功仅表示运行请求已受理，不表示采集任务已经完成。
+//
+// @param request - RunCrawlerRequest
+//
+// @return RunCrawlerResponse
+func (client *Client) RunCrawler(request *RunCrawlerRequest) (_result *RunCrawlerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RunCrawlerResponse{}
+	_body, _err := client.RunCrawlerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a saved semantic job for execution by name and returns the run identifier and executor job identifier. A successful call indicates that the job has been submitted, not that the semantic model results have been generated.
+//
+// Description:
+//
+// ## Description
+//
+// Loads a saved semantic job definition by `Name` and submits a new analysis run to the executor. This operation does not accept runtime `Source`, resource group, or reference file overrides. The execution always uses the configuration saved by `CreateSemanticJob`.
+//
+// ## Pre-execution validation
+//
+// The service validates the existence and access permissions of the job, and re-validates whether the associated files still exist. For files associated through `ReferenceFileIds`, the service resolves them to temporary addresses readable by the current run before submission. Deleting a file after upload or specifying an invalid file ID causes the submission to fail.
+//
+// ## Response and What to do next
+//
+// `Data.JobRunId` is the identity of the current semantics node run and is used by `DownloadSemanticResults` to download the exact output of this run. `Data.ExecutorJobId` is the identity of the executor node and is used by `GetSemanticJobDetail`, `GetSemanticJobLog`, and `KillSemanticJob`. A successful response indicates that the executor has accepted the submission, not that the model analysis or result files are complete.
+//
+// ## Billing
+//
+// **Before using this operation, make sure that you fully understand the billing method and pricing of the [model calls](https://www.alibabacloud.com/help/en/dataworks/dataworks-data-agent-agent-billing) used by semantic construction.**
 //
 // @param request - RunSemanticJobRequest
 //
@@ -24523,11 +25596,25 @@ func (client *Client) RunSemanticJobWithOptions(request *RunSemanticJobRequest, 
 
 // Summary:
 //
-// Submits a semantic job for execution by its Name and returns the run identifier and executor identifier. A successful call indicates that the job has been submitted, not that the semantic model results have been generated.
+// Submits a saved semantic job for execution by name and returns the run identifier and executor job identifier. A successful call indicates that the job has been submitted, not that the semantic model results have been generated.
 //
 // Description:
 //
-// *Before using this operation, make sure that you fully understand the [billing method and pricing](https://www.alibabacloud.com/help/en/dataworks/dataworks-data-agent-agent-billing) of model calls used by semantic building.**
+// ## Description
+//
+// Loads a saved semantic job definition by `Name` and submits a new analysis run to the executor. This operation does not accept runtime `Source`, resource group, or reference file overrides. The execution always uses the configuration saved by `CreateSemanticJob`.
+//
+// ## Pre-execution validation
+//
+// The service validates the existence and access permissions of the job, and re-validates whether the associated files still exist. For files associated through `ReferenceFileIds`, the service resolves them to temporary addresses readable by the current run before submission. Deleting a file after upload or specifying an invalid file ID causes the submission to fail.
+//
+// ## Response and What to do next
+//
+// `Data.JobRunId` is the identity of the current semantics node run and is used by `DownloadSemanticResults` to download the exact output of this run. `Data.ExecutorJobId` is the identity of the executor node and is used by `GetSemanticJobDetail`, `GetSemanticJobLog`, and `KillSemanticJob`. A successful response indicates that the executor has accepted the submission, not that the model analysis or result files are complete.
+//
+// ## Billing
+//
+// **Before using this operation, make sure that you fully understand the billing method and pricing of the [model calls](https://www.alibabacloud.com/help/en/dataworks/dataworks-data-agent-agent-billing) used by semantic construction.**
 //
 // @param request - RunSemanticJobRequest
 //
@@ -24768,6 +25855,112 @@ func (client *Client) StartWorkflowInstances(request *StartWorkflowInstancesRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &StartWorkflowInstancesResponse{}
 	_body, _err := client.StartWorkflowInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止元数据采集器运行
+//
+// Description:
+//
+// ## 使用场景
+//
+// 停止指定元数据采集器当前正在执行的运行任务。
+//
+// ## 推荐流程
+//
+// 1. 调用 `ListCrawlerRuns` 确认采集器存在正在执行的运行任务。
+//
+// 2. 调用本接口提交停止请求。
+//
+// 3. 再次调用 `ListCrawlerRuns` 确认最终运行状态。
+//
+// ## 版本要求
+//
+// 需要购买DataWorks基础版及以上版本才能使用。
+//
+// ## 注意事项
+//
+// 没有正在执行的运行任务时调用会失败。接口成功仅表示停止请求已受理。
+//
+// @param request - StopCrawlerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopCrawlerResponse
+func (client *Client) StopCrawlerWithOptions(request *StopCrawlerRequest, runtime *dara.RuntimeOptions) (_result *StopCrawlerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StopCrawler"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StopCrawlerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止元数据采集器运行
+//
+// Description:
+//
+// ## 使用场景
+//
+// 停止指定元数据采集器当前正在执行的运行任务。
+//
+// ## 推荐流程
+//
+// 1. 调用 `ListCrawlerRuns` 确认采集器存在正在执行的运行任务。
+//
+// 2. 调用本接口提交停止请求。
+//
+// 3. 再次调用 `ListCrawlerRuns` 确认最终运行状态。
+//
+// ## 版本要求
+//
+// 需要购买DataWorks基础版及以上版本才能使用。
+//
+// ## 注意事项
+//
+// 没有正在执行的运行任务时调用会失败。接口成功仅表示停止请求已受理。
+//
+// @param request - StopCrawlerRequest
+//
+// @return StopCrawlerResponse
+func (client *Client) StopCrawler(request *StopCrawlerRequest) (_result *StopCrawlerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &StopCrawlerResponse{}
+	_body, _err := client.StopCrawlerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26036,6 +27229,146 @@ func (client *Client) UpdateComputeResource(request *UpdateComputeResourceReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateComputeResourceResponse{}
 	_body, _err := client.UpdateComputeResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新元数据采集器
+//
+// Description:
+//
+// ## 使用场景
+//
+// 部分更新指定元数据采集器的资源组、采集范围、调度、AI 元数据描述或扩展配置。
+//
+// ## 推荐流程
+//
+// 1. 调用 `GetCrawler` 查询当前配置。
+//
+// 2. 调用 `GetCrawlerTypeCapabilities` 确认该采集器类型支持的配置能力。
+//
+// 3. 仅传入需要更新的字段调用本接口。
+//
+// ## 版本要求
+//
+// 需要购买DataWorks基础版及以上版本才能使用。
+//
+// ## 注意事项
+//
+// 至少需要提供一个可更新字段；未提供的字段保持不变。
+//
+// @param tmpReq - UpdateCrawlerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCrawlerResponse
+func (client *Client) UpdateCrawlerWithOptions(tmpReq *UpdateCrawlerRequest, runtime *dara.RuntimeOptions) (_result *UpdateCrawlerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateCrawlerShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Options) {
+		request.OptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Options, dara.String("Options"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ScheduleConfig) {
+		request.ScheduleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScheduleConfig, dara.String("ScheduleConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Scope) {
+		request.ScopeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Scope, dara.String("Scope"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EnableAiComment) {
+		body["EnableAiComment"] = request.EnableAiComment
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.OptionsShrink) {
+		body["Options"] = request.OptionsShrink
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ScheduleConfigShrink) {
+		body["ScheduleConfig"] = request.ScheduleConfigShrink
+	}
+
+	if !dara.IsNil(request.ScopeShrink) {
+		body["Scope"] = request.ScopeShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCrawler"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCrawlerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新元数据采集器
+//
+// Description:
+//
+// ## 使用场景
+//
+// 部分更新指定元数据采集器的资源组、采集范围、调度、AI 元数据描述或扩展配置。
+//
+// ## 推荐流程
+//
+// 1. 调用 `GetCrawler` 查询当前配置。
+//
+// 2. 调用 `GetCrawlerTypeCapabilities` 确认该采集器类型支持的配置能力。
+//
+// 3. 仅传入需要更新的字段调用本接口。
+//
+// ## 版本要求
+//
+// 需要购买DataWorks基础版及以上版本才能使用。
+//
+// ## 注意事项
+//
+// 至少需要提供一个可更新字段；未提供的字段保持不变。
+//
+// @param request - UpdateCrawlerRequest
+//
+// @return UpdateCrawlerResponse
+func (client *Client) UpdateCrawler(request *UpdateCrawlerRequest) (_result *UpdateCrawlerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateCrawlerResponse{}
+	_body, _err := client.UpdateCrawlerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28028,11 +29361,11 @@ func (client *Client) UpdateMetaEntity(request *UpdateMetaEntityRequest) (_resul
 
 // Summary:
 //
-// Updates a meta entity definition. This operation supports both custom and extended table entity types.
+// Updates a metadata entity definition, including custom entity types and extension table types.
 //
 // Description:
 //
-// This operation requires DataWorks Professional Edition or a later version.
+// DataWorks Professional Edition or a more advanced edition is required.
 //
 // @param tmpReq - UpdateMetaEntityDefRequest
 //
@@ -28102,11 +29435,11 @@ func (client *Client) UpdateMetaEntityDefWithOptions(tmpReq *UpdateMetaEntityDef
 
 // Summary:
 //
-// Updates a meta entity definition. This operation supports both custom and extended table entity types.
+// Updates a metadata entity definition, including custom entity types and extension table types.
 //
 // Description:
 //
-// This operation requires DataWorks Professional Edition or a later version.
+// DataWorks Professional Edition or a more advanced edition is required.
 //
 // @param request - UpdateMetaEntityDefRequest
 //
@@ -29151,11 +30484,11 @@ func (client *Client) UpdateSkill(request *UpdateSkillRequest) (_result *UpdateS
 
 // Summary:
 //
-// Updates the business metadata for a data table in the data map. You can update only the table\\"s Readme and custom attributes.
+// Updates the business metadata of a table in Data Map. Currently, only the table usage description and custom attributes can be updated.
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or a later version to use this operation.
+// 1. You must have DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param tmpReq - UpdateTableBusinessMetadataRequest
 //
@@ -29213,11 +30546,11 @@ func (client *Client) UpdateTableBusinessMetadataWithOptions(tmpReq *UpdateTable
 
 // Summary:
 //
-// Updates the business metadata for a data table in the data map. You can update only the table\\"s Readme and custom attributes.
+// Updates the business metadata of a table in Data Map. Currently, only the table usage description and custom attributes can be updated.
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or a later version to use this operation.
+// 1. You must have DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - UpdateTableBusinessMetadataRequest
 //
@@ -29811,11 +31144,25 @@ func (client *Client) UpdateWorkflowDefinition(request *UpdateWorkflowDefinition
 
 // Summary:
 //
-// Requests a temporary OSS PUT upload URL. Complete the PUT upload before the URL expires, and then pass the returned FileId to the ReferenceFileIds parameter of CreateSemanticJob.
+// Requests a temporary OSS PUT upload URL. Complete the PUT upload before the URL expires, then pass the returned FileId to the ReferenceFileIds parameter of CreateSemanticJob.
 //
 // Description:
 //
-// Requests an upload URL for semantic job attachments.
+// ## Scenarios
+//
+// Requests an upload slot for a reference file to prepare a file for the `singleTableFile` source of `CreateSemanticJob`.
+//
+// ## Procedure
+//
+// 1. Pass the file name, MIME type, and actual size to this operation to obtain `Data.UploadUrl` and `Data.FileId`.
+//
+// 2. Perform an HTTP PUT upload with the same `Content-Type` before the `UploadUrl` expires.
+//
+// 3. After the upload is complete, use `FileId` as the only element of `CreateSemanticJob.ReferenceFileIds`.
+//
+// ## Security considerations
+//
+// `UploadUrl` is a short-lived pre-signed PUT URL. The holder can write to the corresponding object. Do not log, share, or persist this URL.
 //
 // @param request - UploadSemanticFileRequest
 //
@@ -29867,11 +31214,25 @@ func (client *Client) UploadSemanticFileWithOptions(request *UploadSemanticFileR
 
 // Summary:
 //
-// Requests a temporary OSS PUT upload URL. Complete the PUT upload before the URL expires, and then pass the returned FileId to the ReferenceFileIds parameter of CreateSemanticJob.
+// Requests a temporary OSS PUT upload URL. Complete the PUT upload before the URL expires, then pass the returned FileId to the ReferenceFileIds parameter of CreateSemanticJob.
 //
 // Description:
 //
-// Requests an upload URL for semantic job attachments.
+// ## Scenarios
+//
+// Requests an upload slot for a reference file to prepare a file for the `singleTableFile` source of `CreateSemanticJob`.
+//
+// ## Procedure
+//
+// 1. Pass the file name, MIME type, and actual size to this operation to obtain `Data.UploadUrl` and `Data.FileId`.
+//
+// 2. Perform an HTTP PUT upload with the same `Content-Type` before the `UploadUrl` expires.
+//
+// 3. After the upload is complete, use `FileId` as the only element of `CreateSemanticJob.ReferenceFileIds`.
+//
+// ## Security considerations
+//
+// `UploadUrl` is a short-lived pre-signed PUT URL. The holder can write to the corresponding object. Do not log, share, or persist this URL.
 //
 // @param request - UploadSemanticFileRequest
 //

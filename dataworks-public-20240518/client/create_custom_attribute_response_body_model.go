@@ -18,7 +18,7 @@ type iCreateCustomAttributeResponseBody interface {
 }
 
 type CreateCustomAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

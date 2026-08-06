@@ -26,7 +26,7 @@ type KillSemanticJobResponseBody struct {
 	//
 	// 676271D6-53B4-57BE-89FA-72F7AE1418DF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

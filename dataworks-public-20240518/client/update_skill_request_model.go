@@ -44,7 +44,7 @@ type UpdateSkillRequest struct {
 	//
 	// example:
 	//
-	// -
+	// 1
 	ExpectedVersion *int32 `json:"ExpectedVersion,omitempty" xml:"ExpectedVersion,omitempty"`
 	// The extended metadata (key-value pairs).
 	//

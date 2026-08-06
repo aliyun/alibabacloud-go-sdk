@@ -101,7 +101,7 @@ type RunSemanticJobResponseBodyData struct {
 	//
 	// 01H00000000000000000000000
 	JobRunId *string `json:"JobRunId,omitempty" xml:"JobRunId,omitempty"`
-	// The list of status codes returned by the executor in the submission response. The status at the submission stage does not indicate that the results are complete.
+	// The list of status codes returned by the executor in the submission response. The status at the submission stage does not indicate that results are complete.
 	Statuses []*int32 `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
 }
 

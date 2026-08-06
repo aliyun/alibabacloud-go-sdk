@@ -30,7 +30,7 @@ type GetTableResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The details of the data table.
+	// The details of the table.
 	Table *Table `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 

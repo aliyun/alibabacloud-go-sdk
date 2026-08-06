@@ -77,7 +77,7 @@ func (s *GetSemanticJobDetailResponseBody) Validate() error {
 type GetSemanticJobDetailResponseBodyData struct {
 	// The advanced runtime settings returned by the executor.
 	AdvanceSettings map[string]interface{} `json:"AdvanceSettings,omitempty" xml:"AdvanceSettings,omitempty"`
-	// The code parameter information returned by the executor. Used for troubleshooting the runtime configuration of this run.
+	// The code parameter information returned by the executor. Used to troubleshoot the runtime configuration of this run.
 	//
 	// example:
 	//

@@ -18,9 +18,9 @@ type iDownloadSemanticResultsResponseBody interface {
 }
 
 type DownloadSemanticResultsResponseBody struct {
-	// The collection of result files for the specified node run. Multiple items are returned if a single run generates multiple files.
+	// The collection of result files for the specified job run. Multiple items are returned if a single run generates multiple files.
 	Data *DownloadSemanticResultsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID. Used for locating logs and troubleshooting issues.
+	// The request ID. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -75,7 +75,7 @@ func (s *DownloadSemanticResultsResponseBody) Validate() error {
 }
 
 type DownloadSemanticResultsResponseBodyData struct {
-	// The list of result files. Each item contains the associated node name, the associated run ID, and a short-lived download URL.
+	// The list of result files. Each item contains the associated job name, run ID, and a short-lived download URL.
 	Results []*DownloadSemanticResultsResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
@@ -110,19 +110,19 @@ func (s *DownloadSemanticResultsResponseBodyData) Validate() error {
 }
 
 type DownloadSemanticResultsResponseBodyDataResults struct {
-	// The temporary pre-signed download URL of the result file. Download the file by using an HTTP GET request as soon as possible. Do not log, share, or treat the full URL as a long-term address.
+	// The temporary pre-signed download URL of the result file. Download the file promptly by using an HTTP GET request. Do not log, share, or treat the full URL as a long-term address.
 	//
 	// example:
 	//
 	// https://example.com/temporary-download-url
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The node name to which the artifact belongs. This value is the same as the JobName value in the request.
+	// The job name to which the artifact belongs. This value is the same as the JobName in the request.
 	//
 	// example:
 	//
 	// semantic-job-demo
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The run ID to which the artifact belongs. You can compare this value with the Data.JobRunId value from the RunSemanticJob response or the JobRunId value from ListSemanticJobRuns.
+	// The run ID to which the artifact belongs. You can compare this value with Data.JobRunId in the RunSemanticJob response or JobRunId in the ListSemanticJobRuns response.
 	//
 	// example:
 	//
