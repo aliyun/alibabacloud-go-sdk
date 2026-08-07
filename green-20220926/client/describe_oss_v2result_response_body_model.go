@@ -22,11 +22,32 @@ type iDescribeOssV2ResultResponseBody interface {
 }
 
 type DescribeOssV2ResultResponseBody struct {
-	CurrentPage *int32                                  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*DescribeOssV2ResultResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageSize    *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The current page number.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The data on the current page.
+	Items []*DescribeOssV2ResultResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page size.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
+	//
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeOssV2ResultResponseBody) String() string {
@@ -96,30 +117,134 @@ func (s *DescribeOssV2ResultResponseBody) Validate() error {
 }
 
 type DescribeOssV2ResultResponseBodyItems struct {
-	Bucket             *string                                              `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Code               *string                                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	ContentType        *string                                              `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	Freeze             *bool                                                `json:"Freeze,omitempty" xml:"Freeze,omitempty"`
-	FreezeStatus       *string                                              `json:"FreezeStatus,omitempty" xml:"FreezeStatus,omitempty"`
-	FreezeType         *string                                              `json:"FreezeType,omitempty" xml:"FreezeType,omitempty"`
-	LabelDetails       []*DescribeOssV2ResultResponseBodyItemsLabelDetails  `json:"LabelDetails,omitempty" xml:"LabelDetails,omitempty" type:"Repeated"`
-	LabelDetails2      []*DescribeOssV2ResultResponseBodyItemsLabelDetails2 `json:"LabelDetails2,omitempty" xml:"LabelDetails2,omitempty" type:"Repeated"`
-	Labels             []*string                                            `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Labels2            []*string                                            `json:"Labels2,omitempty" xml:"Labels2,omitempty" type:"Repeated"`
-	ManualFreezeAction *string                                              `json:"ManualFreezeAction,omitempty" xml:"ManualFreezeAction,omitempty"`
-	ManualOperateTime  *string                                              `json:"ManualOperateTime,omitempty" xml:"ManualOperateTime,omitempty"`
-	ManualOperator     *string                                              `json:"ManualOperator,omitempty" xml:"ManualOperator,omitempty"`
-	Md5                *string                                              `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	Object             *string                                              `json:"Object,omitempty" xml:"Object,omitempty"`
-	RequestId          *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RiskLevel          *string                                              `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	RiskLevel0         *string                                              `json:"RiskLevel0,omitempty" xml:"RiskLevel0,omitempty"`
-	RiskLevel2         *string                                              `json:"RiskLevel2,omitempty" xml:"RiskLevel2,omitempty"`
-	ScanResult         *string                                              `json:"ScanResult,omitempty" xml:"ScanResult,omitempty"`
-	ServiceCode        *string                                              `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	SysDisposalStatus  *string                                              `json:"SysDisposalStatus,omitempty" xml:"SysDisposalStatus,omitempty"`
-	TaskId             *string                                              `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Url                *string                                              `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The storage bucket.
+	//
+	// example:
+	//
+	// buckect_test
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The moderation modality type.
+	//
+	// example:
+	//
+	// image
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// Indicates whether automatic freezing is configured.
+	//
+	// example:
+	//
+	// true
+	Freeze *bool `json:"Freeze,omitempty" xml:"Freeze,omitempty"`
+	// The freeze status.
+	//
+	// example:
+	//
+	// FREEZED
+	FreezeStatus *string `json:"FreezeStatus,omitempty" xml:"FreezeStatus,omitempty"`
+	// The freeze type.
+	//
+	// example:
+	//
+	// ACL
+	FreezeType *string `json:"FreezeType,omitempty" xml:"FreezeType,omitempty"`
+	// The label details, corresponding to labels.
+	LabelDetails []*DescribeOssV2ResultResponseBodyItemsLabelDetails `json:"LabelDetails,omitempty" xml:"LabelDetails,omitempty" type:"Repeated"`
+	// The details of labels2, corresponding to labels2.
+	LabelDetails2 []*DescribeOssV2ResultResponseBodyItemsLabelDetails2 `json:"LabelDetails2,omitempty" xml:"LabelDetails2,omitempty" type:"Repeated"`
+	// The image labels.
+	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The text labels.
+	Labels2 []*string `json:"Labels2,omitempty" xml:"Labels2,omitempty" type:"Repeated"`
+	// The manual disposition status.
+	//
+	// example:
+	//
+	// FREEZE
+	ManualFreezeAction *string `json:"ManualFreezeAction,omitempty" xml:"ManualFreezeAction,omitempty"`
+	// The disposition time.
+	//
+	// example:
+	//
+	// 2025-08-09 12:00:00
+	ManualOperateTime *string `json:"ManualOperateTime,omitempty" xml:"ManualOperateTime,omitempty"`
+	// The operator who performed the disposition.
+	//
+	// example:
+	//
+	// xx
+	ManualOperator *string `json:"ManualOperator,omitempty" xml:"ManualOperator,omitempty"`
+	// The MD5 hash of the file.
+	//
+	// example:
+	//
+	// 54416c9b159df4a60ae03c04ccb94cb5
+	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// The object name.
+	//
+	// example:
+	//
+	// 1713014531569_958.png
+	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The image risk level.
+	//
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The overall risk level.
+	//
+	// example:
+	//
+	// low
+	RiskLevel0 *string `json:"RiskLevel0,omitempty" xml:"RiskLevel0,omitempty"`
+	// The audio or text risk level.
+	//
+	// example:
+	//
+	// none
+	RiskLevel2 *string `json:"RiskLevel2,omitempty" xml:"RiskLevel2,omitempty"`
+	// The result details.
+	//
+	// example:
+	//
+	// {}
+	ScanResult *string `json:"ScanResult,omitempty" xml:"ScanResult,omitempty"`
+	// Service code。
+	//
+	// example:
+	//
+	// baselineCheck
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// The automatic system freeze operation.
+	//
+	// example:
+	//
+	// COPY
+	SysDisposalStatus *string `json:"SysDisposalStatus,omitempty" xml:"SysDisposalStatus,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// P_BT3FHS
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task URL.
+	//
+	// example:
+	//
+	// xx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s DescribeOssV2ResultResponseBodyItems) String() string {
@@ -369,9 +494,24 @@ func (s *DescribeOssV2ResultResponseBodyItems) Validate() error {
 }
 
 type DescribeOssV2ResultResponseBodyItemsLabelDetails struct {
-	Confidence  *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Label       *string  `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The confidence score.
+	//
+	// example:
+	//
+	// 50.00
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The label description.
+	//
+	// example:
+	//
+	// 涉政
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The label.
+	//
+	// example:
+	//
+	// politics
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 }
 
 func (s DescribeOssV2ResultResponseBodyItemsLabelDetails) String() string {
@@ -414,9 +554,24 @@ func (s *DescribeOssV2ResultResponseBodyItemsLabelDetails) Validate() error {
 }
 
 type DescribeOssV2ResultResponseBodyItemsLabelDetails2 struct {
-	Confidence  *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Label       *string  `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The confidence score.
+	//
+	// example:
+	//
+	// 90.00
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The label description.
+	//
+	// example:
+	//
+	// 涉政
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The label.
+	//
+	// example:
+	//
+	// politics
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 }
 
 func (s DescribeOssV2ResultResponseBodyItemsLabelDetails2) String() string {

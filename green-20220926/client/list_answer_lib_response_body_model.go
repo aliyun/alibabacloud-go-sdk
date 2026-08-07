@@ -88,7 +88,7 @@ type ListAnswerLibResponseBodyData struct {
 	//
 	// example:
 	//
-	// 代答库名称
+	// ProxyAnswerLibraryName
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 	// UID。
 	//

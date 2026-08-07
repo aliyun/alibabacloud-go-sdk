@@ -40,7 +40,7 @@ type UpdateKeywordLibResponseBody struct {
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+	// The request ID assigned by the backend, which uniquely identifies the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//

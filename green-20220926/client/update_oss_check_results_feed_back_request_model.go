@@ -22,31 +22,31 @@ type iUpdateOssCheckResultsFeedBackRequest interface {
 }
 
 type UpdateOssCheckResultsFeedBackRequest struct {
-	// Feedback.
+	// The feedback.
 	//
 	// example:
 	//
 	// misreport
 	Feedback *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
-	// The request ID to query.
+	// The request ID of the query.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	QueryRequestId *string `json:"QueryRequestId,omitempty" xml:"QueryRequestId,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Service code.
+	// The service code.
 	//
 	// example:
 	//
 	// baselineCheck
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Job ID.
+	// The task ID.
 	//
 	// example:
 	//

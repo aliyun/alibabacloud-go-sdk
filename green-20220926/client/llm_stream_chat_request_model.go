@@ -28,25 +28,25 @@ type LlmStreamChatRequest struct {
 	//
 	// guardCustomTest
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// Conversation information
+	// The conversation messages.
 	//
 	// example:
 	//
-	// [{\\"content\\":\\"你好\\",\\"role\\":\\"user\\"}]
+	// [{"content":"Hello","role":"user"}]
 	Messages interface{} `json:"Messages,omitempty" xml:"Messages,omitempty"`
-	// Temperature value for the large model
+	// The temperature value of the large language model.
 	//
 	// example:
 	//
 	// 0.5
 	Temperature *float32 `json:"Temperature,omitempty" xml:"Temperature,omitempty"`
-	// Top p parameter controlling the randomness of the large model\\"s output.
+	// The top_p parameter that controls the randomness of the large language model output.
 	//
 	// example:
 	//
 	// 0.5
 	TopP *float32 `json:"TopP,omitempty" xml:"TopP,omitempty"`
-	// Type of conversation
+	// The conversation type.
 	//
 	// example:
 	//

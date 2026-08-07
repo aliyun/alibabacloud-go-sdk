@@ -32,7 +32,7 @@ type GetOssCheckStatusResponseBody struct {
 	//
 	// 26842
 	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	// Indicates whether the service is activated on Alibaba Cloud.
+	// Indicates whether the commodity is activated on Alibaba Cloud.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type GetOssCheckStatusResponseBody struct {
 	//
 	// xxx
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// Indicates whether the account has an overdue payment.
+	// Indicates whether there is an overdue payment.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type GetOssCheckStatusResponseBody struct {
 	//
 	// True
 	RamStatus *string `json:"RamStatus,omitempty" xml:"RamStatus,omitempty"`
-	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. This ID can be used for troubleshooting.
 	//
 	// example:
 	//

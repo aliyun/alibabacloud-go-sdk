@@ -44,7 +44,7 @@ type iGetOssCheckTaskInfoResponseBody interface {
 }
 
 type GetOssCheckTaskInfoResponseBody struct {
-	// The OSS buckets.
+	// The storage buckets.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type GetOssCheckTaskInfoResponseBody struct {
 	//
 	// 1
 	MediaType *int32 `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// The previous execution time of the scheduled task. The format is YYYY-MM-DD HH:mm:ss.
+	// The last execution time of the scheduled task. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type GetOssCheckTaskInfoResponseBody struct {
 	//
 	// example:
 	//
-	// 文档存量任务 20240914100517757
+	// Document stock task 20240914100517757
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The task type.
 	//
@@ -300,7 +300,7 @@ func (s *GetOssCheckTaskInfoResponseBody) Validate() error {
 }
 
 type GetOssCheckTaskInfoResponseBodyConfig struct {
-	// The filter configuration for each bucket. The key is the bucket name, and the value is the filter configuration, which includes prefix and suffix filters and filter character lists.
+	// The filter configuration for each bucket. The key is the bucket name, and the value is the filter configuration, which includes prefix/suffix filters and filter character lists.
 	BucketPrefixFilterConfig map[string]*ConfigBucketPrefixFilterConfigValue `json:"BucketPrefixFilterConfig,omitempty" xml:"BucketPrefixFilterConfig,omitempty"`
 	// The callback notification ID.
 	//
@@ -308,7 +308,7 @@ type GetOssCheckTaskInfoResponseBodyConfig struct {
 	//
 	// 188
 	CallbackId *int64 `json:"CallbackId,omitempty" xml:"CallbackId,omitempty"`
-	// Indicates whether to deduplicate historically scanned tasks.
+	// Indicates whether to deduplicate previously scanned tasks.
 	//
 	// example:
 	//
@@ -320,43 +320,43 @@ type GetOssCheckTaskInfoResponseBodyConfig struct {
 	//
 	// 2025-07-09 10:30:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The execution date of the scheduled task. The value is an integer.
+	// The execution date of the scheduled task. The value is an integer in the format of a single digit, such as 1.
 	//
 	// example:
 	//
 	// 1
 	ExecuteDate *int32 `json:"ExecuteDate,omitempty" xml:"ExecuteDate,omitempty"`
-	// The estimated execution time of the scheduled task. The format is YYYY-MM-DD HH:mm:ss.
+	// The expected execution time of the scheduled task. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-07-09 10:30:00
 	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	// Indicates whether freezing is enabled.
+	// Indicates whether to freeze.
 	//
 	// example:
 	//
 	// true
 	Freeze *bool `json:"Freeze,omitempty" xml:"Freeze,omitempty"`
-	// Indicates whether to freeze high-risk images.
+	// Specifies whether to freeze high-risk images.
 	//
 	// example:
 	//
 	// true
 	FreezeHighRisk1 *bool `json:"FreezeHighRisk1,omitempty" xml:"FreezeHighRisk1,omitempty"`
-	// Indicates whether to freeze high-risk audio and text.
+	// Specifies whether to freeze high-risk audio and text.
 	//
 	// example:
 	//
 	// true
 	FreezeHighRisk2 *bool `json:"FreezeHighRisk2,omitempty" xml:"FreezeHighRisk2,omitempty"`
-	// Indicates whether to freeze medium-risk images.
+	// Specifies whether to freeze medium-risk images.
 	//
 	// example:
 	//
 	// true
 	FreezeMediumRisk1 *bool `json:"FreezeMediumRisk1,omitempty" xml:"FreezeMediumRisk1,omitempty"`
-	// Indicates whether to freeze medium-risk audio and text.
+	// Specifies whether to freeze medium-risk audio and text.
 	//
 	// example:
 	//
@@ -394,7 +394,7 @@ type GetOssCheckTaskInfoResponseBodyConfig struct {
 	//
 	// https://www.aliyun.com/
 	Referer *string `json:"Referer,omitempty" xml:"Referer,omitempty"`
-	// The scan limit.
+	// The scan limit quantity.
 	//
 	// example:
 	//
@@ -406,7 +406,7 @@ type GetOssCheckTaskInfoResponseBodyConfig struct {
 	//
 	// true
 	ScanNoFileType *bool `json:"ScanNoFileType,omitempty" xml:"ScanNoFileType,omitempty"`
-	// The type of files to scan.
+	// The file type to scan.
 	//
 	// example:
 	//
@@ -690,7 +690,7 @@ type GetOssCheckTaskInfoResponseBodyConfigScanServiceInfos struct {
 	//
 	// oss_baselineCheck
 	CopyFrom *string `json:"CopyFrom,omitempty" xml:"CopyFrom,omitempty"`
-	// Indicates whether the service is a copy.
+	// Indicates whether the service is copied.
 	//
 	// example:
 	//
@@ -706,7 +706,7 @@ type GetOssCheckTaskInfoResponseBodyConfigScanServiceInfos struct {
 	//
 	// example:
 	//
-	// 内容检测
+	// Content moderation.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 

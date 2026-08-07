@@ -52,7 +52,7 @@ type GetStockOssCheckTasksListShrinkRequest struct {
 	//
 	// example:
 	//
-	// image
+	// 1
 	MediaType *int32 `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	// The number of entries per page.
 	//

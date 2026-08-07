@@ -26,13 +26,48 @@ type iDescribeOssV2ResultRequest interface {
 }
 
 type DescribeOssV2ResultRequest struct {
-	Bucket      *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EndDate     *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RiskLevel   *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	StartDate   *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	TaskName    *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The OSS bucket.
+	//
+	// example:
+	//
+	// buckect_test
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The current page number.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The end time.
+	//
+	// example:
+	//
+	// 2024-09-14 16:08:38
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The page size.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The risk level.
+	//
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The start time.
+	//
+	// example:
+	//
+	// 2024-09-14 16:08:38
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The task name.
+	//
+	// example:
+	//
+	// Image stock task 20240914100517757
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s DescribeOssV2ResultRequest) String() string {

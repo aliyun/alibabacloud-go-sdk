@@ -46,13 +46,13 @@ type GetUploadInfoResponseBody struct {
 	//
 	// LTAI5t9HM*****EXQmw3DVH
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
-	// The error code, consistent with the HTTP status code.
+	// The error code, which is consistent with the HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Unit: seconds.
+	// The expiration time. Unit: seconds.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type GetUploadInfoResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The key used for file upload.
+	// The key used for uploading the file.
 	//
 	// example:
 	//
@@ -88,26 +88,31 @@ type GetUploadInfoResponseBody struct {
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Used for frontend image upload.
+	// Used by the frontend for image upload.
 	//
 	// example:
 	//
-	// 测试
+	// Test.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The OSS file upload policy.
+	// The policy for uploading files to OSS.
 	//
 	// example:
 	//
 	// xxxx
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The backend-assigned ID that uniquely identifies a request. This ID can be used for troubleshooting.
+	// The ID assigned by the backend to uniquely identify a request. This ID can be used for troubleshooting.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// STS token
+	//
+	// example:
+	//
+	// ***
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The upload signature information.
+	// The signature information for the upload.
 	//
 	// example:
 	//

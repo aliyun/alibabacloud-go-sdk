@@ -16,13 +16,13 @@ type iGetUploadLinkResponseBody interface {
 }
 
 type GetUploadLinkResponseBody struct {
-	// Returned Data.
+	// The returned data.
 	//
 	// example:
 	//
 	// http://www.aliyuncs.com/test.mp3
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// An ID assigned by the backend to uniquely identify a request. It can be used for troubleshooting.
+	// The ID assigned by the backend to uniquely identify a request. This ID can be used for troubleshooting.
 	//
 	// example:
 	//

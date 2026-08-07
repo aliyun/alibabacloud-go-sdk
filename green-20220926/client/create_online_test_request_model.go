@@ -20,25 +20,25 @@ type iCreateOnlineTestRequest interface {
 }
 
 type CreateOnlineTestRequest struct {
-	// Data ID
+	// The data ID.
 	//
 	// example:
 	//
 	// xxxxxxx
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// Resource Type
+	// The resource type.
 	//
 	// example:
 	//
 	// video
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Service Code
+	// The service code.
 	//
 	// example:
 	//
 	// VideoModeration
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Detection URL
+	// The URL to be detected.
 	//
 	// example:
 	//

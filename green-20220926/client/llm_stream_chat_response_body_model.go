@@ -30,47 +30,47 @@ type iLlmStreamChatResponseBody interface {
 }
 
 type LlmStreamChatResponseBody struct {
-	// List of model generation results
+	// The list of model generation results.
 	Choices []*LlmStreamChatResponseBodyChoices `json:"Choices,omitempty" xml:"Choices,omitempty" type:"Repeated"`
-	// Timestamp of session creation
+	// The timestamp when the session was created.
 	//
 	// example:
 	//
 	// 1750990728
 	Created *int64 `json:"Created,omitempty" xml:"Created,omitempty"`
-	// Streaming response error information content
+	// The fault information content in the streaming response.
 	Error *LlmStreamChatResponseBodyError `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
-	// Unique ID for this session
+	// The unique ID of this session.
 	//
 	// example:
 	//
 	// chatcmpl-777bce52-93d3-9f8c-89c3-e99884f4f57f
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Model identifier
+	// The model identifier.
 	//
 	// example:
 	//
 	// deepseek-v3
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// Response type
+	// The response type.
 	//
 	// example:
 	//
 	// chat.completion.chunk
 	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	// Unique request ID
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 21d296d6-594e-97de-812f-925ec6e05673
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// System fingerprint
+	// The system fingerprint.
 	//
 	// example:
 	//
 	// null
 	SystemFingerprint *string `json:"SystemFingerprint,omitempty" xml:"SystemFingerprint,omitempty"`
-	// Token usage
+	// The token usage information.
 	//
 	// example:
 	//
@@ -186,21 +186,21 @@ func (s *LlmStreamChatResponseBody) Validate() error {
 }
 
 type LlmStreamChatResponseBodyChoices struct {
-	// Incremental content object
+	// The incremental content object.
 	Delta *LlmStreamChatResponseBodyChoicesDelta `json:"Delta,omitempty" xml:"Delta,omitempty" type:"Struct"`
-	// For streaming output, it is null while generating and becomes \\"stop\\" if the generation ends due to a stop token.
+	// During streaming output, this value is null while content is being generated. When generation is complete, the value is stop if the generation ended due to a stop token.
 	//
 	// example:
 	//
 	// stop
 	FinishReason *string `json:"FinishReason,omitempty" xml:"FinishReason,omitempty"`
-	// Stream sequence number
+	// The stream sequence number.
 	//
 	// example:
 	//
 	// 0
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// Token probability information
+	// The token probability information.
 	//
 	// example:
 	//
@@ -262,13 +262,13 @@ func (s *LlmStreamChatResponseBodyChoices) Validate() error {
 }
 
 type LlmStreamChatResponseBodyChoicesDelta struct {
-	// Real-time generated text content
+	// The text content generated in real time.
 	//
 	// example:
 	//
-	// 我是Deepseek-V3，有什么可以帮你
+	// I am Deepseek-V3. How can I help you?
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Role identifier
+	// The role identifier.
 	//
 	// example:
 	//
@@ -307,25 +307,25 @@ func (s *LlmStreamChatResponseBodyChoicesDelta) Validate() error {
 }
 
 type LlmStreamChatResponseBodyError struct {
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// data_inspection_failed
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
 	// Input data may contain inappropriate content.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Parameter that caused the error
+	// The parameter that caused the error.
 	//
 	// example:
 	//
 	// null
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	// Error type
+	// The error type.
 	//
 	// example:
 	//

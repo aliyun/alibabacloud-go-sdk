@@ -20,13 +20,13 @@ type iUpdateKeywordLibRequest interface {
 }
 
 type UpdateKeywordLibRequest struct {
-	// The ID of the keyword library.
+	// The keyword library ID.
 	//
 	// example:
 	//
-	// custom_xxxx
+	// custom_6.2193748597
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// The name of the keyword library.
+	// The keyword library name.
 	//
 	// example:
 	//
