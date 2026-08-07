@@ -1,0 +1,142 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iUpdateScriptResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCode(v string) *UpdateScriptResponseBody
+	GetCode() *string
+	SetData(v string) *UpdateScriptResponseBody
+	GetData() *string
+	SetHttpStatusCode(v int32) *UpdateScriptResponseBody
+	GetHttpStatusCode() *int32
+	SetMessage(v string) *UpdateScriptResponseBody
+	GetMessage() *string
+	SetParams(v []*string) *UpdateScriptResponseBody
+	GetParams() []*string
+	SetRequestId(v string) *UpdateScriptResponseBody
+	GetRequestId() *string
+	SetSuccess(v bool) *UpdateScriptResponseBody
+	GetSuccess() *bool
+}
+
+type UpdateScriptResponseBody struct {
+	// 返回码
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 返回数据
+	//
+	// example:
+	//
+	// 示例值
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// HTTP状态码
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// 错误信息
+	//
+	// example:
+	//
+	// Instance does not exist. Instance=out-123
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 错误信息中的变量值列表
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// 请求ID
+	//
+	// example:
+	//
+	// 019FDAC7-13C5-1B64-A853-999DF105B9EF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 是否调用成功
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateScriptResponseBody) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateScriptResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateScriptResponseBody) GetCode() *string {
+	return s.Code
+}
+
+func (s *UpdateScriptResponseBody) GetData() *string {
+	return s.Data
+}
+
+func (s *UpdateScriptResponseBody) GetHttpStatusCode() *int32 {
+	return s.HttpStatusCode
+}
+
+func (s *UpdateScriptResponseBody) GetMessage() *string {
+	return s.Message
+}
+
+func (s *UpdateScriptResponseBody) GetParams() []*string {
+	return s.Params
+}
+
+func (s *UpdateScriptResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *UpdateScriptResponseBody) GetSuccess() *bool {
+	return s.Success
+}
+
+func (s *UpdateScriptResponseBody) SetCode(v string) *UpdateScriptResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateScriptResponseBody) SetData(v string) *UpdateScriptResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateScriptResponseBody) SetHttpStatusCode(v int32) *UpdateScriptResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateScriptResponseBody) SetMessage(v string) *UpdateScriptResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateScriptResponseBody) SetParams(v []*string) *UpdateScriptResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *UpdateScriptResponseBody) SetRequestId(v string) *UpdateScriptResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateScriptResponseBody) SetSuccess(v bool) *UpdateScriptResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateScriptResponseBody) Validate() error {
+	return dara.Validate(s)
+}
