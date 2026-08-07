@@ -9398,6 +9398,97 @@ func (client *Client) FinishTicket(request *FinishTicketRequest) (_result *Finis
 	return _result, _err
 }
 
+// @param tmpReq - GenerateAuthCodeRequest
+//
+// @param tmpHeader - GenerateAuthCodeHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateAuthCodeResponse
+func (client *Client) GenerateAuthCodeWithOptions(tmpReq *GenerateAuthCodeRequest, tmpHeader *GenerateAuthCodeHeaders, runtime *dara.RuntimeOptions) (_result *GenerateAuthCodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GenerateAuthCodeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GenerateAuthCodeShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TenantContext) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, dara.String("TenantContext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BucAppName) {
+		body["BucAppName"] = request.BucAppName
+	}
+
+	if !dara.IsNil(request.SsoTicket) {
+		body["SsoTicket"] = request.SsoTicket
+	}
+
+	if !dara.IsNil(request.TenantContextShrink) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !dara.IsNil(request.ValidRedirectUri) {
+		body["ValidRedirectUri"] = request.ValidRedirectUri
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GenerateAuthCode"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dingtalk/v1/auth/generateAuthCode"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GenerateAuthCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GenerateAuthCodeRequest
+//
+// @return GenerateAuthCodeResponse
+func (client *Client) GenerateAuthCode(request *GenerateAuthCodeRequest) (_result *GenerateAuthCodeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &GenerateAuthCodeHeaders{}
+	_result = &GenerateAuthCodeResponse{}
+	_body, _err := client.GenerateAuthCodeWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // 获取流程设计的节点信息
@@ -16264,6 +16355,109 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 	headers := &GetUserHeaders{}
 	_result = &GetUserResponse{}
 	_body, _err := client.GetUserWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户对钉钉文档的权限情况
+//
+// @param tmpReq - GetUserDocumentPermissionRequest
+//
+// @param tmpHeader - GetUserDocumentPermissionHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserDocumentPermissionResponse
+func (client *Client) GetUserDocumentPermissionWithOptions(tmpReq *GetUserDocumentPermissionRequest, tmpHeader *GetUserDocumentPermissionHeaders, runtime *dara.RuntimeOptions) (_result *GetUserDocumentPermissionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetUserDocumentPermissionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetUserDocumentPermissionShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TenantContext) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, dara.String("TenantContext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DentryId) {
+		body["DentryId"] = request.DentryId
+	}
+
+	if !dara.IsNil(request.DentryUuid) {
+		body["DentryUuid"] = request.DentryUuid
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		body["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.SpaceId) {
+		body["SpaceId"] = request.SpaceId
+	}
+
+	if !dara.IsNil(request.TenantContextShrink) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetUserDocumentPermission"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dingtalk/v1/documents/getUserDocumentPermission"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetUserDocumentPermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户对钉钉文档的权限情况
+//
+// @param request - GetUserDocumentPermissionRequest
+//
+// @return GetUserDocumentPermissionResponse
+func (client *Client) GetUserDocumentPermission(request *GetUserDocumentPermissionRequest) (_result *GetUserDocumentPermissionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &GetUserDocumentPermissionHeaders{}
+	_result = &GetUserDocumentPermissionResponse{}
+	_body, _err := client.GetUserDocumentPermissionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
