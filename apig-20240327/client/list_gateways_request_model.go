@@ -42,7 +42,7 @@ type ListGatewaysRequest struct {
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The keyword for full match search. The search is case-insensitive.
+	// The keyword for full match search. Case-insensitive.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListGatewaysRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The list of tags.
 	Tag []*ListGatewaysRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//

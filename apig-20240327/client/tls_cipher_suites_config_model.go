@@ -66,7 +66,7 @@ func (s *TlsCipherSuitesConfig) Validate() error {
 }
 
 type TlsCipherSuitesConfigTlsCipherSuite struct {
-	// The suite name.
+	// The TLS cipher suite name, such as ECDHE-ECDSA-AES256-GCM-SHA384.
 	//
 	// example:
 	//

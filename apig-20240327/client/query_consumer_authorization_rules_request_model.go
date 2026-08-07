@@ -13,6 +13,8 @@ type iQueryConsumerAuthorizationRulesRequest interface {
 	GetApiNameLike() *string
 	SetConsumerGroupId(v string) *QueryConsumerAuthorizationRulesRequest
 	GetConsumerGroupId() *string
+	SetConsumerGroupNameLike(v string) *QueryConsumerAuthorizationRulesRequest
+	GetConsumerGroupNameLike() *string
 	SetConsumerId(v string) *QueryConsumerAuthorizationRulesRequest
 	GetConsumerId() *string
 	SetConsumerNameLike(v string) *QueryConsumerAuthorizationRulesRequest
@@ -49,7 +51,8 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	// example:
 	//
 	// csg-8c13d2b4f8a1
-	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	ConsumerGroupId       *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	ConsumerGroupNameLike *string `json:"consumerGroupNameLike,omitempty" xml:"consumerGroupNameLike,omitempty"`
 	// The consumer ID.
 	//
 	// example:
@@ -134,6 +137,10 @@ func (s *QueryConsumerAuthorizationRulesRequest) GetConsumerGroupId() *string {
 	return s.ConsumerGroupId
 }
 
+func (s *QueryConsumerAuthorizationRulesRequest) GetConsumerGroupNameLike() *string {
+	return s.ConsumerGroupNameLike
+}
+
 func (s *QueryConsumerAuthorizationRulesRequest) GetConsumerId() *string {
 	return s.ConsumerId
 }
@@ -185,6 +192,11 @@ func (s *QueryConsumerAuthorizationRulesRequest) SetApiNameLike(v string) *Query
 
 func (s *QueryConsumerAuthorizationRulesRequest) SetConsumerGroupId(v string) *QueryConsumerAuthorizationRulesRequest {
 	s.ConsumerGroupId = &v
+	return s
+}
+
+func (s *QueryConsumerAuthorizationRulesRequest) SetConsumerGroupNameLike(v string) *QueryConsumerAuthorizationRulesRequest {
+	s.ConsumerGroupNameLike = &v
 	return s
 }
 

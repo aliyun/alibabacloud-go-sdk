@@ -30,9 +30,9 @@ type UpdateConsumerRequest struct {
 	//
 	// example:
 	//
-	// 测试消费者
+	// Test consumer
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether to enable the API consumer.
+	// Specifies whether to enable the consumer.
 	//
 	// example:
 	//

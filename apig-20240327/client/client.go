@@ -1439,6 +1439,10 @@ func (client *Client) CreateGatewayWithOptions(request *CreateGatewayRequest, he
 		body["gatewayEdition"] = request.GatewayEdition
 	}
 
+	if !dara.IsNil(request.GatewayMode) {
+		body["gatewayMode"] = request.GatewayMode
+	}
+
 	if !dara.IsNil(request.GatewayType) {
 		body["gatewayType"] = request.GatewayType
 	}
@@ -4598,7 +4602,7 @@ func (client *Client) GetEnvironment(environmentId *string, request *GetEnvironm
 
 // Summary:
 //
-// Retrieves basic information about a gateway, including the associated VPC, vSwitch, and gateway ingress.
+// Retrieves basic information about a gateway, including the VPC, vSwitch, and gateway ingress.
 //
 // @param headers - map
 //
@@ -4631,7 +4635,7 @@ func (client *Client) GetGatewayWithOptions(gatewayId *string, headers map[strin
 
 // Summary:
 //
-// Retrieves basic information about a gateway, including the associated VPC, vSwitch, and gateway ingress.
+// Retrieves basic information about a gateway, including the VPC, vSwitch, and gateway ingress.
 //
 // @return GetGatewayResponse
 func (client *Client) GetGateway(gatewayId *string) (_result *GetGatewayResponse, _err error) {
@@ -8292,6 +8296,10 @@ func (client *Client) QueryConsumerAuthorizationRulesWithOptions(request *QueryC
 		query["consumerGroupId"] = request.ConsumerGroupId
 	}
 
+	if !dara.IsNil(request.ConsumerGroupNameLike) {
+		query["consumerGroupNameLike"] = request.ConsumerGroupNameLike
+	}
+
 	if !dara.IsNil(request.ConsumerId) {
 		query["consumerId"] = request.ConsumerId
 	}
@@ -8697,7 +8705,7 @@ func (client *Client) SyncMCPServers(request *SyncMCPServersRequest) (_result *S
 
 // Summary:
 //
-// Adds labels to resources.
+// Tags resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -8752,7 +8760,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 
 // Summary:
 //
-// Adds labels to resources.
+// Tags resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -9283,7 +9291,7 @@ func (client *Client) UpdateAndAttachPolicy(policyId *string, request *UpdateAnd
 
 // Summary:
 //
-// Updates an API consumer.
+// Updates a consumer.
 //
 // @param request - UpdateConsumerRequest
 //
@@ -9346,7 +9354,7 @@ func (client *Client) UpdateConsumerWithOptions(consumerId *string, request *Upd
 
 // Summary:
 //
-// Updates an API consumer.
+// Updates a consumer.
 //
 // @param request - UpdateConsumerRequest
 //

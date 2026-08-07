@@ -13,6 +13,8 @@ type iCreateGatewayRequest interface {
 	GetChargeType() *string
 	SetGatewayEdition(v string) *CreateGatewayRequest
 	GetGatewayEdition() *string
+	SetGatewayMode(v string) *CreateGatewayRequest
+	GetGatewayMode() *string
 	SetGatewayType(v string) *CreateGatewayRequest
 	GetGatewayType() *string
 	SetLogConfig(v *CreateGatewayRequestLogConfig) *CreateGatewayRequest
@@ -34,11 +36,7 @@ type iCreateGatewayRequest interface {
 }
 
 type CreateGatewayRequest struct {
-	// The billing method. Valid values:
-	//
-	// - POSTPAY: subscription.
-	//
-	// - PREPAY: pay-as-you-go.
+	// The billing method.
 	//
 	// example:
 	//
@@ -58,11 +56,8 @@ type CreateGatewayRequest struct {
 	//
 	// Professional
 	GatewayEdition *string `json:"gatewayEdition,omitempty" xml:"gatewayEdition,omitempty"`
-	// The gateway type. Valid values:
-	//
-	// - AI: AI gateway.
-	//
-	// - API: cloud-native API gateway.
+	GatewayMode    *string `json:"gatewayMode,omitempty" xml:"gatewayMode,omitempty"`
+	// The gateway type.
 	//
 	// example:
 	//
@@ -118,6 +113,10 @@ func (s *CreateGatewayRequest) GetGatewayEdition() *string {
 	return s.GatewayEdition
 }
 
+func (s *CreateGatewayRequest) GetGatewayMode() *string {
+	return s.GatewayMode
+}
+
 func (s *CreateGatewayRequest) GetGatewayType() *string {
 	return s.GatewayType
 }
@@ -161,6 +160,11 @@ func (s *CreateGatewayRequest) SetChargeType(v string) *CreateGatewayRequest {
 
 func (s *CreateGatewayRequest) SetGatewayEdition(v string) *CreateGatewayRequest {
 	s.GatewayEdition = &v
+	return s
+}
+
+func (s *CreateGatewayRequest) SetGatewayMode(v string) *CreateGatewayRequest {
+	s.GatewayMode = &v
 	return s
 }
 
@@ -238,7 +242,7 @@ func (s *CreateGatewayRequest) Validate() error {
 }
 
 type CreateGatewayRequestLogConfig struct {
-	// The Simple Log Service (SLS) log configuration.
+	// The Simple Log Service (SLS) configuration, which controls gateway log collection.
 	Sls *CreateGatewayRequestLogConfigSls `json:"sls,omitempty" xml:"sls,omitempty" type:"Struct"`
 }
 
@@ -269,7 +273,7 @@ func (s *CreateGatewayRequestLogConfig) Validate() error {
 }
 
 type CreateGatewayRequestLogConfigSls struct {
-	// Specifies whether to enable SLS logging.
+	// Specifies whether to enable SLS log collection.
 	//
 	// example:
 	//
@@ -299,13 +303,7 @@ func (s *CreateGatewayRequestLogConfigSls) Validate() error {
 }
 
 type CreateGatewayRequestNetworkAccessConfig struct {
-	// The network access type. Valid values:
-	//
-	// - InternetAndIntranet: public and internal network.
-	//
-	// - Intranet: internal network.
-	//
-	// - Internet: public network.
+	// The network access type.
 	//
 	// example:
 	//
@@ -380,11 +378,7 @@ func (s *CreateGatewayRequestTag) Validate() error {
 }
 
 type CreateGatewayRequestZoneConfig struct {
-	// The zone selection option. Valid values:
-	//
-	// - Auto: automatic.
-	//
-	// - Manual: manual.
+	// The zone selection option.
 	//
 	// example:
 	//

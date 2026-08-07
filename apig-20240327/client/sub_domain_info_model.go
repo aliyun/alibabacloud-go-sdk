@@ -32,25 +32,13 @@ type SubDomainInfo struct {
 	//
 	// abc.com
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The network type. Valid values:
-	//
-	// Valid values:
-	//
-	// 	- Intranet
-	//
-	// 	- Internet
+	// The network type.
 	//
 	// example:
 	//
 	// Intranet
 	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	// The protocol.
-	//
-	// Valid values:
-	//
-	// 	- HTTPS
-	//
-	// 	- HTTP
+	// The protocol type supported by the subdomain. Valid values: HTTP, HTTPS.
 	//
 	// example:
 	//

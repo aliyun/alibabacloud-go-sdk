@@ -96,19 +96,13 @@ func (s *GetGatewayResponseBody) Validate() error {
 }
 
 type GetGatewayResponseBodyData struct {
-	// The billing type. Valid values:
-	//
-	// - POSTPAY: pay-as-you-go
-	//
-	// - PREPAY: subscription
+	// The billing method.
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
 	// The source from which the gateway was created. Valid values:
-	//
-	// - Console: The gateway was created from the console.
 	//
 	// example:
 	//
@@ -130,10 +124,6 @@ type GetGatewayResponseBodyData struct {
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
 	// The gateway instance edition. Valid values:
 	//
-	// - Professional: Standard instance.
-	//
-	// - Serverless: Serverless instance.
-	//
 	// example:
 	//
 	// Serverless
@@ -143,18 +133,15 @@ type GetGatewayResponseBodyData struct {
 	// example:
 	//
 	// gw-cq2vundlhtg***
-	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayId   *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayMode *string `json:"gatewayMode,omitempty" xml:"gatewayMode,omitempty"`
 	// The gateway type. Valid values:
-	//
-	// - API: API gateway.
-	//
-	// - AI: AI gateway.
 	//
 	// example:
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The network ISP type.
+	// The type of the network service provider.
 	//
 	// example:
 	//
@@ -186,31 +173,11 @@ type GetGatewayResponseBodyData struct {
 	SecurityGroup *GetGatewayResponseBodyDataSecurityGroup `json:"securityGroup,omitempty" xml:"securityGroup,omitempty" type:"Struct"`
 	// The gateway specification. Valid values:
 	//
-	// - apigw.small.x1: Small specification.
-	//
 	// example:
 	//
 	// apigw.small.x1
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 	// The gateway status. Valid values:
-	//
-	// - Running: The gateway is running.
-	//
-	// - Creating: The gateway is being created.
-	//
-	// - CreateFailed: The gateway failed to be created.
-	//
-	// - Upgrading: The gateway is being upgraded.
-	//
-	// - UpgradeFailed: The gateway failed to be upgraded.
-	//
-	// - Restarting: The gateway is being restarted.
-	//
-	// - RestartFailed: The gateway failed to be restarted.
-	//
-	// - Deleting: The gateway is being released.
-	//
-	// - DeleteFailed: The gateway failed to be released.
 	//
 	// example:
 	//
@@ -218,12 +185,13 @@ type GetGatewayResponseBodyData struct {
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The resource tags.
 	Tags []*GetGatewayResponseBodyDataTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The target version of the gateway. If this value differs from version, a version upgrade can be performed.
+	// The target version of the gateway. When this value differs from version, a version upgrade can be performed.
 	//
 	// example:
 	//
 	// 2.0.2
 	TargetVersion *string `json:"targetVersion,omitempty" xml:"targetVersion,omitempty"`
+	TenantId      *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// The update timestamp. Unit: milliseconds.
 	//
 	// example:
@@ -280,6 +248,10 @@ func (s *GetGatewayResponseBodyData) GetGatewayId() *string {
 	return s.GatewayId
 }
 
+func (s *GetGatewayResponseBodyData) GetGatewayMode() *string {
+	return s.GatewayMode
+}
+
 func (s *GetGatewayResponseBodyData) GetGatewayType() *string {
 	return s.GatewayType
 }
@@ -326,6 +298,10 @@ func (s *GetGatewayResponseBodyData) GetTags() []*GetGatewayResponseBodyDataTags
 
 func (s *GetGatewayResponseBodyData) GetTargetVersion() *string {
 	return s.TargetVersion
+}
+
+func (s *GetGatewayResponseBodyData) GetTenantId() *string {
+	return s.TenantId
 }
 
 func (s *GetGatewayResponseBodyData) GetUpdateTimestamp() *int64 {
@@ -380,6 +356,11 @@ func (s *GetGatewayResponseBodyData) SetGatewayEdition(v string) *GetGatewayResp
 
 func (s *GetGatewayResponseBodyData) SetGatewayId(v string) *GetGatewayResponseBodyData {
 	s.GatewayId = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyData) SetGatewayMode(v string) *GetGatewayResponseBodyData {
+	s.GatewayMode = &v
 	return s
 }
 
@@ -440,6 +421,11 @@ func (s *GetGatewayResponseBodyData) SetTags(v []*GetGatewayResponseBodyDataTags
 
 func (s *GetGatewayResponseBodyData) SetTargetVersion(v string) *GetGatewayResponseBodyData {
 	s.TargetVersion = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyData) SetTenantId(v string) *GetGatewayResponseBodyData {
+	s.TenantId = &v
 	return s
 }
 
@@ -533,7 +519,7 @@ type GetGatewayResponseBodyDataEnvironments struct {
 	//
 	// example:
 	//
-	// 默认环境
+	// Default environment
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
 	// The environment ID.
 	//
@@ -597,19 +583,11 @@ type GetGatewayResponseBodyDataLoadBalancers struct {
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
 	// The protocol version. Valid values:
 	//
-	// - ipv4: IPv4.
-	//
-	// - ipv6: IPv6.
-	//
 	// example:
 	//
 	// ipv4
 	AddressIpVersion *string `json:"addressIpVersion,omitempty" xml:"addressIpVersion,omitempty"`
 	// The load balancing address type. Valid values:
-	//
-	// - Internet: public network.
-	//
-	// - Intranet: private network.
 	//
 	// example:
 	//
@@ -631,9 +609,7 @@ type GetGatewayResponseBodyDataLoadBalancers struct {
 	//
 	// nlb-xoh3pghru7c***
 	LoadBalancerId *string `json:"loadBalancerId,omitempty" xml:"loadBalancerId,omitempty"`
-	// The load balancing provisioning mode of the gateway. Valid values:
-	//
-	// - Managed: Managed by the cloud-native API gateway.
+	// The load balancing mode of the gateway. Valid values:
 	//
 	// example:
 	//
@@ -641,21 +617,13 @@ type GetGatewayResponseBodyDataLoadBalancers struct {
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
 	// The list of listening ports.
 	Ports []*GetGatewayResponseBodyDataLoadBalancersPorts `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
-	// The load balancing status. Valid values:
-	//
-	// - Ready: Active.
-	//
-	// - NotCreate: No associated instance.
+	// The status of load balancing. Valid values:
 	//
 	// example:
 	//
 	// Ready
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The load balancing type. Valid values:
-	//
-	// - NLB: Network Load Balancer (NLB).
-	//
-	// - CLB: Classic Load Balancer (CLB).
+	// The load balancing type.
 	//
 	// example:
 	//
@@ -791,10 +759,6 @@ type GetGatewayResponseBodyDataLoadBalancersPorts struct {
 	// 443
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
 	// The protocol. Valid values:
-	//
-	// - TCP
-	//
-	// - UDP
 	//
 	// example:
 	//
@@ -972,7 +936,7 @@ type GetGatewayResponseBodyDataVSwitch struct {
 	//
 	// example:
 	//
-	// 杭州VPC虚拟交换机
+	// Hangzhou VPC vSwitch
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The vSwitch ID.
 	//
@@ -1017,7 +981,7 @@ type GetGatewayResponseBodyDataVpc struct {
 	//
 	// example:
 	//
-	// 杭州VPC
+	// Hangzhou VPC
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The VPC ID.
 	//
@@ -1062,7 +1026,7 @@ type GetGatewayResponseBodyDataZones struct {
 	//
 	// example:
 	//
-	// 杭州可用区E
+	// Hangzhou Zone E
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The vSwitch.
 	VSwitch *GetGatewayResponseBodyDataZonesVSwitch `json:"vSwitch,omitempty" xml:"vSwitch,omitempty" type:"Struct"`
@@ -1123,7 +1087,7 @@ type GetGatewayResponseBodyDataZonesVSwitch struct {
 	//
 	// example:
 	//
-	// 杭州VPC虚拟交换机
+	// Hangzhou VPC vSwitch
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The vSwitch ID.
 	//

@@ -42,7 +42,7 @@ type ListGatewaysShrinkRequest struct {
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The keyword for full match search. The search is case-insensitive.
+	// The keyword for full match search. Case-insensitive.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListGatewaysShrinkRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The list of tags.
 	TagShrink *string `json:"tag,omitempty" xml:"tag,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//

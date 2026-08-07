@@ -26,7 +26,7 @@ type ListGatewaysResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The gateway list query result.
+	// The query result of the gateway list.
 	Data *ListGatewaysResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The response message.
 	//
@@ -212,6 +212,10 @@ type ListGatewaysResponseBodyDataItems struct {
 	//
 	// gw-cpv54p5***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// example:
+	//
+	// ENTERPRISE
+	GatewayMode *string `json:"gatewayMode,omitempty" xml:"gatewayMode,omitempty"`
 	// The gateway type.
 	//
 	// example:
@@ -262,7 +266,7 @@ type ListGatewaysResponseBodyDataItems struct {
 	SubDomainInfos []*SubDomainInfo `json:"subDomainInfos,omitempty" xml:"subDomainInfos,omitempty" type:"Repeated"`
 	// The list of tags.
 	Tags []*ListGatewaysResponseBodyDataItemsTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The target version of the gateway. When this value differs from version, a version upgrade can be performed.
+	// The target version of the gateway. If this value differs from the version, a version upgrade can be performed.
 	//
 	// example:
 	//
@@ -318,6 +322,10 @@ func (s *ListGatewaysResponseBodyDataItems) GetGatewayEdition() *string {
 
 func (s *ListGatewaysResponseBodyDataItems) GetGatewayId() *string {
 	return s.GatewayId
+}
+
+func (s *ListGatewaysResponseBodyDataItems) GetGatewayMode() *string {
+	return s.GatewayMode
 }
 
 func (s *ListGatewaysResponseBodyDataItems) GetGatewayType() *string {
@@ -415,6 +423,11 @@ func (s *ListGatewaysResponseBodyDataItems) SetGatewayEdition(v string) *ListGat
 
 func (s *ListGatewaysResponseBodyDataItems) SetGatewayId(v string) *ListGatewaysResponseBodyDataItems {
 	s.GatewayId = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItems) SetGatewayMode(v string) *ListGatewaysResponseBodyDataItems {
+	s.GatewayMode = &v
 	return s
 }
 
@@ -601,7 +614,7 @@ type ListGatewaysResponseBodyDataItemsLoadBalancers struct {
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
 	// The list of listening ports.
 	Ports []*ListGatewaysResponseBodyDataItemsLoadBalancersPorts `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
-	// The load balancing status. Valid values:
+	// The status of the load balancing instance.
 	//
 	// example:
 	//

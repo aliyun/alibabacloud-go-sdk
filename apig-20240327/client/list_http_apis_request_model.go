@@ -52,7 +52,11 @@ type ListHttpApisRequest struct {
 	//
 	// gw-cq2avtllh****
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The gateway type filter. Valid values: **AI*	- and **API**.
+	// The gateway type associated with the HTTP API. Valid values:
+	//
+	// - API: cloud-native API gateway.
+	//
+	// - AI: AI gateway.
 	//
 	// example:
 	//
@@ -64,7 +68,7 @@ type ListHttpApisRequest struct {
 	//
 	// test-
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// The exact name to search for.
+	// Searches by exact name match.
 	//
 	// example:
 	//
@@ -76,13 +80,13 @@ type ListHttpApisRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	// The page size. Valid range: [1, 100]. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -102,25 +106,25 @@ type ListHttpApisRequest struct {
 	//
 	// Http,Rest
 	Types *string `json:"types,omitempty" xml:"types,omitempty"`
-	// Specifies whether to return information about APIs published to the specified environment.
+	// Specifies whether to return API information that has been published to the specified environment.
 	//
 	// example:
 	//
 	// true
 	WithAPIsPublishedToEnvironment *bool `json:"withAPIsPublishedToEnvironment,omitempty" xml:"withAPIsPublishedToEnvironment,omitempty"`
-	// The environment ID. If specified, the response includes consumer authentication policy information for each API in the specified environment.
+	// Specifies the environment ID. The response includes consumer authentication policy information for each API in the specified environment.
 	//
 	// example:
 	//
 	// env-xxx
 	WithAuthPolicyInEnvironmentId *string `json:"withAuthPolicyInEnvironmentId,omitempty" xml:"withAuthPolicyInEnvironmentId,omitempty"`
-	// Specifies whether authentication policies are enabled.
+	// Specifies whether permission authentication policies are enabled.
 	//
 	// example:
 	//
 	// true
 	WithAuthPolicyList *bool `json:"withAuthPolicyList,omitempty" xml:"withAuthPolicyList,omitempty"`
-	// The consumer ID. If specified, the response includes the authorization rule list for the specified consumer for each API.
+	// Specifies the consumer ID. The response includes the authorization rule list for the specified consumer for each API.
 	//
 	// example:
 	//
@@ -144,7 +148,7 @@ type ListHttpApisRequest struct {
 	//
 	// false
 	WithIngressInfo *bool `json:"withIngressInfo,omitempty" xml:"withIngressInfo,omitempty"`
-	// The plug-in ID. If specified, the response includes the plug-in publishing information for the specified plug-in.
+	// The plug-in ID. Used to retrieve plug-in publishing information based on this plug-in ID.
 	//
 	// example:
 	//

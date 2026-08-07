@@ -20,7 +20,7 @@ type iTagResourcesRequest interface {
 type TagResourcesRequest struct {
 	// The resource IDs. A maximum of 50 subkeys are supported.
 	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
-	// The resource type.
+	// The resource type used for the tagging operation. Set this to Gateway.
 	//
 	// example:
 	//

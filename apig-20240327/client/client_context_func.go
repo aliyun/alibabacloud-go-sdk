@@ -1035,6 +1035,10 @@ func (client *Client) CreateGatewayWithContext(ctx context.Context, request *Cre
 		body["gatewayEdition"] = request.GatewayEdition
 	}
 
+	if !dara.IsNil(request.GatewayMode) {
+		body["gatewayMode"] = request.GatewayMode
+	}
+
 	if !dara.IsNil(request.GatewayType) {
 		body["gatewayType"] = request.GatewayType
 	}
@@ -3321,7 +3325,7 @@ func (client *Client) GetEnvironmentWithContext(ctx context.Context, environment
 
 // Summary:
 //
-// Retrieves basic information about a gateway, including the associated VPC, vSwitch, and gateway ingress.
+// Retrieves basic information about a gateway, including the VPC, vSwitch, and gateway ingress.
 //
 // @param headers - map
 //
@@ -6101,6 +6105,10 @@ func (client *Client) QueryConsumerAuthorizationRulesWithContext(ctx context.Con
 		query["consumerGroupId"] = request.ConsumerGroupId
 	}
 
+	if !dara.IsNil(request.ConsumerGroupNameLike) {
+		query["consumerGroupNameLike"] = request.ConsumerGroupNameLike
+	}
+
 	if !dara.IsNil(request.ConsumerId) {
 		query["consumerId"] = request.ConsumerId
 	}
@@ -6395,7 +6403,7 @@ func (client *Client) SyncMCPServersWithContext(ctx context.Context, request *Sy
 
 // Summary:
 //
-// Adds labels to resources.
+// Tags resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -6833,7 +6841,7 @@ func (client *Client) UpdateAndAttachPolicyWithContext(ctx context.Context, poli
 
 // Summary:
 //
-// Updates an API consumer.
+// Updates a consumer.
 //
 // @param request - UpdateConsumerRequest
 //
