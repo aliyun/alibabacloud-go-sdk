@@ -20,7 +20,7 @@ type iDescribeSnapshotGroupsResponseBody interface {
 type DescribeSnapshotGroupsResponseBody struct {
 	// The pagination token for the next query.
 	//
-	// > If this parameter is empty, no more data is returned.
+	// > If this parameter is empty, no more results are available.
 	//
 	// example:
 	//

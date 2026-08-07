@@ -23,6 +23,8 @@ type iModifyAutoSnapshotPolicyExRequest interface {
 	GetResourceOwnerId() *int64
 	SetTargetCopyRegions(v string) *ModifyAutoSnapshotPolicyExRequest
 	GetTargetCopyRegions() *string
+	SetTargetTags(v []*ModifyAutoSnapshotPolicyExRequestTargetTags) *ModifyAutoSnapshotPolicyExRequest
+	GetTargetTags() []*ModifyAutoSnapshotPolicyExRequestTargetTags
 	SetAutoSnapshotPolicyId(v string) *ModifyAutoSnapshotPolicyExRequest
 	GetAutoSnapshotPolicyId() *string
 	SetAutoSnapshotPolicyName(v string) *ModifyAutoSnapshotPolicyExRequest
@@ -40,9 +42,9 @@ type iModifyAutoSnapshotPolicyExRequest interface {
 type ModifyAutoSnapshotPolicyExRequest struct {
 	// The retention period of cross-region snapshot replicas. Unit: days. Valid values:
 	//
-	// - -1: Snapshot replicas are permanently retained.
+	// - -1: permanently retained.
 	//
-	// - 1 to 65535: the number of days for which snapshot replicas are retained.
+	// - 1 to 65535: retained for the specified number of days.
 	//
 	// Default value: -1.
 	//
@@ -50,13 +52,13 @@ type ModifyAutoSnapshotPolicyExRequest struct {
 	//
 	// 30
 	CopiedSnapshotsRetentionDays *int32 `json:"CopiedSnapshotsRetentionDays,omitempty" xml:"CopiedSnapshotsRetentionDays,omitempty"`
-	// The encryption parameter for cross-region snapshot replication.
+	// The encryption parameter object for cross-region snapshot replication.
 	CopyEncryptionConfiguration *ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfiguration `json:"CopyEncryptionConfiguration,omitempty" xml:"CopyEncryptionConfiguration,omitempty" type:"Struct"`
-	// Specifies whether to allow automatic cross-region replication. Valid values:
+	// Specifies whether to allow automatic cross-region replication.
 	//
-	// - true: Allowed.
+	// - true: allowed.
 	//
-	// - false: Not allowed.
+	// - false: not allowed.
 	//
 	// example:
 	//
@@ -65,12 +67,16 @@ type ModifyAutoSnapshotPolicyExRequest struct {
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The destination region for cross-region snapshot replication. You can set one destination region.
+	// The destination region to which snapshots are replicated. Currently, you can set only one destination region.
 	//
 	// example:
 	//
 	// ["cn-hangzhou"]
 	TargetCopyRegions *string `json:"TargetCopyRegions,omitempty" xml:"TargetCopyRegions,omitempty"`
+	// The list of target resource tags. The automatic snapshot policy matches target resources based on tags.
+	//
+	// This parameter is required when AssociationType is set to AssociatedWithInstanceTag.
+	TargetTags []*ModifyAutoSnapshotPolicyExRequestTargetTags `json:"TargetTags,omitempty" xml:"TargetTags,omitempty" type:"Repeated"`
 	// The ID of the automatic snapshot policy. You can call [DescribeAutoSnapshotPolicyEx](https://help.aliyun.com/document_detail/25530.html) to query available automatic snapshot policies.
 	//
 	// This parameter is required.
@@ -79,7 +85,7 @@ type ModifyAutoSnapshotPolicyExRequest struct {
 	//
 	// sp-bp12m37ccmxvbmi5****
 	AutoSnapshotPolicyId *string `json:"autoSnapshotPolicyId,omitempty" xml:"autoSnapshotPolicyId,omitempty"`
-	// The name of the automatic snapshot policy. If this parameter is empty, the name is not modified.
+	// The name of the automatic snapshot policy. If this parameter is left empty, the name is not modified.
 	//
 	// example:
 	//
@@ -107,9 +113,9 @@ type ModifyAutoSnapshotPolicyExRequest struct {
 	RepeatWeekdays *string `json:"repeatWeekdays,omitempty" xml:"repeatWeekdays,omitempty"`
 	// The retention period of automatic snapshots. Unit: days. Valid values:
 	//
-	// - -1: Automatic snapshots are permanently retained.
+	// - -1: permanently retained.
 	//
-	// - 1 to 65536: the number of days for which automatic snapshots are retained.
+	// - 1 to 65536: retained for the specified number of days.
 	//
 	// Default value: -1.
 	//
@@ -165,6 +171,10 @@ func (s *ModifyAutoSnapshotPolicyExRequest) GetResourceOwnerId() *int64 {
 
 func (s *ModifyAutoSnapshotPolicyExRequest) GetTargetCopyRegions() *string {
 	return s.TargetCopyRegions
+}
+
+func (s *ModifyAutoSnapshotPolicyExRequest) GetTargetTags() []*ModifyAutoSnapshotPolicyExRequestTargetTags {
+	return s.TargetTags
 }
 
 func (s *ModifyAutoSnapshotPolicyExRequest) GetAutoSnapshotPolicyId() *string {
@@ -226,6 +236,11 @@ func (s *ModifyAutoSnapshotPolicyExRequest) SetTargetCopyRegions(v string) *Modi
 	return s
 }
 
+func (s *ModifyAutoSnapshotPolicyExRequest) SetTargetTags(v []*ModifyAutoSnapshotPolicyExRequestTargetTags) *ModifyAutoSnapshotPolicyExRequest {
+	s.TargetTags = v
+	return s
+}
+
 func (s *ModifyAutoSnapshotPolicyExRequest) SetAutoSnapshotPolicyId(v string) *ModifyAutoSnapshotPolicyExRequest {
 	s.AutoSnapshotPolicyId = &v
 	return s
@@ -262,6 +277,15 @@ func (s *ModifyAutoSnapshotPolicyExRequest) Validate() error {
 			return err
 		}
 	}
+	if s.TargetTags != nil {
+		for _, item := range s.TargetTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	return nil
 }
 
@@ -270,9 +294,9 @@ type ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfiguration struct {
 	Arn []*ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfigurationArn `json:"Arn,omitempty" xml:"Arn,omitempty" type:"Repeated"`
 	// Specifies whether to enable encryption for cross-region snapshot replication. Valid values:
 	//
-	// - true: Enabled.
+	// - true: enabled.
 	//
-	// - false: Disabled.
+	// - false: disabled.
 	//
 	// Default value: false.
 	//
@@ -393,5 +417,50 @@ func (s *ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfigurationArn) SetRol
 }
 
 func (s *ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfigurationArn) Validate() error {
+	return dara.Validate(s)
+}
+
+type ModifyAutoSnapshotPolicyExRequestTargetTags struct {
+	// The tag key.
+	//
+	// Valid values of N: 1 to 10.
+	//
+	// The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. The tag key cannot contain http:// or https://.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// Valid values of N: 1 to 10. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
+	//
+	// Note: If you pass in an empty value or an empty string, it indicates any value.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ModifyAutoSnapshotPolicyExRequestTargetTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyAutoSnapshotPolicyExRequestTargetTags) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAutoSnapshotPolicyExRequestTargetTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *ModifyAutoSnapshotPolicyExRequestTargetTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *ModifyAutoSnapshotPolicyExRequestTargetTags) SetKey(v string) *ModifyAutoSnapshotPolicyExRequestTargetTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ModifyAutoSnapshotPolicyExRequestTargetTags) SetValue(v string) *ModifyAutoSnapshotPolicyExRequestTargetTags {
+	s.Value = &v
+	return s
+}
+
+func (s *ModifyAutoSnapshotPolicyExRequestTargetTags) Validate() error {
 	return dara.Validate(s)
 }

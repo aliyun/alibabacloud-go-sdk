@@ -29,7 +29,7 @@ type DescribeAutoSnapshotPolicyExResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page when automatic snapshot policies are returned with pagination.
+	// The number of entries per page when the automatic snapshot policies are displayed by page.
 	//
 	// example:
 	//
@@ -146,6 +146,10 @@ func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPolicies) Validate(
 }
 
 type DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicy struct {
+	// example:
+	//
+	// AssociatedWithDisk
+	AssociationType              *string                                                                                                    `json:"AssociationType,omitempty" xml:"AssociationType,omitempty"`
 	AutoSnapshotPolicyId         *string                                                                                                    `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
 	AutoSnapshotPolicyName       *string                                                                                                    `json:"AutoSnapshotPolicyName,omitempty" xml:"AutoSnapshotPolicyName,omitempty"`
 	CopiedSnapshotsRetentionDays *int32                                                                                                     `json:"CopiedSnapshotsRetentionDays,omitempty" xml:"CopiedSnapshotsRetentionDays,omitempty"`
@@ -160,6 +164,7 @@ type DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPol
 	Status                       *string                                                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags                         *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTags                        `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	TargetCopyRegions            *string                                                                                                    `json:"TargetCopyRegions,omitempty" xml:"TargetCopyRegions,omitempty"`
+	TargetTags                   *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTags                  `json:"TargetTags,omitempty" xml:"TargetTags,omitempty" type:"Struct"`
 	TimePoints                   *string                                                                                                    `json:"TimePoints,omitempty" xml:"TimePoints,omitempty"`
 	Type                         *string                                                                                                    `json:"Type,omitempty" xml:"Type,omitempty"`
 	VolumeNums                   *int32                                                                                                     `json:"VolumeNums,omitempty" xml:"VolumeNums,omitempty"`
@@ -171,6 +176,10 @@ func (s DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshot
 
 func (s DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicy) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicy) GetAssociationType() *string {
+	return s.AssociationType
 }
 
 func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicy) GetAutoSnapshotPolicyId() *string {
@@ -229,6 +238,10 @@ func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapsho
 	return s.TargetCopyRegions
 }
 
+func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicy) GetTargetTags() *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTags {
+	return s.TargetTags
+}
+
 func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicy) GetTimePoints() *string {
 	return s.TimePoints
 }
@@ -239,6 +252,11 @@ func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapsho
 
 func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicy) GetVolumeNums() *int32 {
 	return s.VolumeNums
+}
+
+func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicy) SetAssociationType(v string) *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicy {
+	s.AssociationType = &v
+	return s
 }
 
 func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicy) SetAutoSnapshotPolicyId(v string) *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicy {
@@ -311,6 +329,11 @@ func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapsho
 	return s
 }
 
+func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicy) SetTargetTags(v *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTags) *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicy {
+	s.TargetTags = v
+	return s
+}
+
 func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicy) SetTimePoints(v string) *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicy {
 	s.TimePoints = &v
 	return s
@@ -334,6 +357,11 @@ func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapsho
 	}
 	if s.Tags != nil {
 		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TargetTags != nil {
+		if err := s.TargetTags.Validate(); err != nil {
 			return err
 		}
 	}
@@ -441,5 +469,74 @@ func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapsho
 }
 
 func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTagsTag) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTags struct {
+	TargetTag []*DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTagsTargetTag `json:"TargetTag,omitempty" xml:"TargetTag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTags) GetTargetTag() []*DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTagsTargetTag {
+	return s.TargetTag
+}
+
+func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTags) SetTargetTag(v []*DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTagsTargetTag) *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTags {
+	s.TargetTag = v
+	return s
+}
+
+func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTags) Validate() error {
+	if s.TargetTag != nil {
+		for _, item := range s.TargetTag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTagsTargetTag struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTagsTargetTag) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTagsTargetTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTagsTargetTag) GetTagKey() *string {
+	return s.TagKey
+}
+
+func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTagsTargetTag) GetTagValue() *string {
+	return s.TagValue
+}
+
+func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTagsTargetTag) SetTagKey(v string) *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTagsTargetTag {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTagsTargetTag) SetTagValue(v string) *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTagsTargetTag {
+	s.TagValue = &v
+	return s
+}
+
+func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTagsTargetTag) Validate() error {
 	return dara.Validate(s)
 }

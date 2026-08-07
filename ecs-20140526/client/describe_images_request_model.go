@@ -68,11 +68,11 @@ type iDescribeImagesRequest interface {
 }
 
 type DescribeImagesRequest struct {
-	// The scenario in which the image is to be used. Valid values:
+	// The scenario in which the image is used. Valid values:
 	//
-	// - CreateEcs (default): instance creation.
+	// - CreateEcs (default): creates an instance.
 	//
-	// - ChangeOS: system disk replacement or operating system change.
+	// - ChangeOS: replaces the system disk or changes the operating system.
 	//
 	// example:
 	//
@@ -80,25 +80,11 @@ type DescribeImagesRequest struct {
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
 	// The architecture of the image. Valid values:
 	//
-	// - i386.
-	//
-	// - x86_64.
-	//
-	// - arm64.
-	//
 	// example:
 	//
 	// i386
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// Specifies whether to perform only a dry run.
-	//
-	//
-	//
-	// - true: Sends a check request without querying resource status. The check items include whether your AccessKey pair is valid, whether Resource Access Management (RAM) user authorization is granted, and whether required parameters are specified. If the check fails, the corresponding error is returned. If the check succeeds, the error code DryRunOperation is returned.
-	//
-	// - false: Sends a normal request. After the check succeeds, an HTTP status code of 2XX is returned and the resource status is queried directly.
-	//
-	// Default value: false.
+	// Specifies whether to perform only a dry run for the request.
 	//
 	// example:
 	//
@@ -106,11 +92,11 @@ type DescribeImagesRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The list of filter conditions for querying resources.
 	Filter []*DescribeImagesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// The name of the image family. You can set this parameter to filter images that belong to the specified image family.
+	// The image family name. You can set this parameter to filter images that belong to the specified image family.
 	//
-	// Default value: empty.
+	// Default value: null.
 	//
-	// > For information about image families associated with Alibaba Cloud public images, see [Overview of public images](https://help.aliyun.com/document_detail/108393.html).
+	// > For information about image families associated with Alibaba Cloud official images, see [Public image overview](https://help.aliyun.com/document_detail/108393.html).
 	//
 	// example:
 	//
@@ -122,9 +108,9 @@ type DescribeImagesRequest struct {
 	//
 	// <summary>Naming conventions for image IDs</summary>
 	//
-	// - Public images: Named by operating system version, architecture, language, and release date. For example, the image ID for Windows Server 2008 R2 Enterprise Edition, 64-bit English is win2008r2_64_ent_sp1_en-us_40G_alibase_20190318.vhd.
+	// - Public image: Named based on the operating system version, architecture, language, and release date. For example, the image ID of a Windows Server 2008 R2 Enterprise Edition 64-bit English image is win2008r2_64_ent_sp1_en-us_40G_alibase_20190318.vhd.
 	//
-	// - Custom images, shared images, Alibaba Cloud Marketplace images, and community images: Start with m.
+	// - Custom image, shared image, Alibaba Cloud Marketplace image, and community image: Starts with m.
 	//
 	// </details>
 	//
@@ -132,7 +118,7 @@ type DescribeImagesRequest struct {
 	//
 	// m-bp1g7004ksh0oeuc****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The image name. Fuzzy search is supported.
+	// The name of the image. Fuzzy search is supported.
 	//
 	// example:
 	//
@@ -140,27 +126,11 @@ type DescribeImagesRequest struct {
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	// The source of the image. Valid values:
 	//
-	// - system: Public images provided by Alibaba Cloud that are not published through Alibaba Cloud Marketplace. This is different from the "Public Image" concept in the console.
-	//
-	// - self: Custom images that you created.
-	//
-	// - others: Includes shared images (images directly shared by other Alibaba Cloud users) and community images (custom images that other Alibaba Cloud users have made fully public). Note the following:
-	//
-	//     - To query community images, IsPublic must be set to true.
-	//
-	//     - To query shared images, IsPublic must be set to false or left empty.
-	//
-	// - marketplace: Images published by Alibaba Cloud or third-party independent software vendors (ISVs) in Alibaba Cloud Marketplace. These images must be purchased together with ECS instances. Check the billing details of Alibaba Cloud Marketplace images.
-	//
-	// Default value: empty.
-	//
-	// > An empty value returns results with values of system, self, and others.
-	//
 	// example:
 	//
 	// self
 	ImageOwnerAlias *string `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
-	// The Alibaba Cloud account ID of the image owner. This parameter takes effect only when you query shared images or community images.
+	// The Alibaba Cloud account ID to which the image belongs. This parameter takes effect only when you query shared images or community images.
 	//
 	// example:
 	//
@@ -174,9 +144,9 @@ type DescribeImagesRequest struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// Specifies whether to query published community images. Valid values:
 	//
-	// - true: Queries published community images. When you set this parameter to true, ImageOwnerAlias must be set to others.
+	// - true: Queries published community images. If you set this parameter to true, you must set ImageOwnerAlias to others.
 	//
-	// - false: Queries image types other than community images. The specific types depend on the ImageOwnerAlias parameter value.
+	// - false: Queries image types other than community images. The specific image type depends on the value of ImageOwnerAlias.
 	//
 	// Default value: false.
 	//
@@ -198,31 +168,19 @@ type DescribeImagesRequest struct {
 	IsSupportIoOptimized *bool `json:"IsSupportIoOptimized,omitempty" xml:"IsSupportIoOptimized,omitempty"`
 	// The operating system type of the image. Valid values:
 	//
-	// - windows.
-	//
-	// - linux.
-	//
 	// example:
 	//
 	// linux
 	OSType       *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the resources list.
-	//
-	// Minimum value: 1.
-	//
-	// Default value: 1.
+	// The page number of the image resources.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for a paging query. Settings for the number of entries to return on each page.
-	//
-	// Maximum value: 100.
-	//
-	// Default value: 10.
+	// The number of entries per page in a paged query. Settings for paging determine how many rows are returned per page.
 	//
 	// example:
 	//
@@ -236,9 +194,9 @@ type DescribeImagesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the custom image belongs. When you use this parameter to filter resources, the resource count cannot exceed 1000.
+	// The ID of the enterprise resource group to which the custom image belongs. When you use this parameter to filter resources, the number of resources cannot exceed 1,000.
 	//
-	// > Filtering by the default resource group is not supported.
+	// >Default resource group-based filtering is not supported.
 	//
 	// example:
 	//
@@ -260,43 +218,25 @@ type DescribeImagesRequest struct {
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 	// The status of the image. Valid values:
 	//
-	// - Creating: The image is being created.
-	//
-	// - Waiting: The image is waiting in a multi-task queue.
-	//
-	// - Available: The image is available for use.
-	//
-	// - UnAvailable: The image is unavailable.
-	//
-	// - CreateFailed: The image failed to be created.
-	//
-	// - Deprecated: The image is deprecated.
-	//
-	// - ALL: All image statuses.
-	//
-	// Default value: Available. Status is required only when Usable is specified, and has no default value in that case.
-	//
-	// > This parameter supports multiple values separated by commas (,). When set to ALL, all image statuses are queried. ALL cannot be used together with other status values.
-	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The list of tags.
 	Tag []*DescribeImagesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// Specifies whether the image is available for use.
+	// Indicates whether the image is available.
 	//
-	// > An available image can be immediately used to create instances. For more information about availability scenarios, see [Image instant availability](https://help.aliyun.com/document_detail/3044728.html).
+	// >An available image can be used immediately to create instances. For more available scenarios, see [Snapshot instant access](https://help.aliyun.com/document_detail/3044728.html).
 	//
 	// example:
 	//
 	// true
 	Usable *bool `json:"Usable,omitempty" xml:"Usable,omitempty"`
-	// Specifies whether the image is running on ECS instances. Valid values:
+	// Specifies whether the image is running on an ECS instance. Valid values:
 	//
-	// - instance: The image is in use. ECS instances are using this image.
+	// - instance: The image is in use by an ECS instance.
 	//
-	// - none: The image is idle. No ECS instances are using this image.
+	// - none: The image is idle and not in use by any ECS instance.
 	//
 	// example:
 	//
@@ -587,15 +527,15 @@ func (s *DescribeImagesRequest) Validate() error {
 }
 
 type DescribeImagesRequestFilter struct {
-	// The filter key for querying resources. Valid values:
+	// The filter key used to query resources. Valid values:
 	//
-	// - When set to `CreationStartTime`, queries resources created after the specified time point (`Filter.N.Value`).
+	// - CreationStartTime: queries information about resources that are created after the point in time specified by Filter.N.Value.
 	//
-	// - When set to `CreationEndTime`, queries resources created before the specified time point (`Filter.N.Value`).
+	// - CreationEndTime: queries information about resources that are created before the point in time specified by Filter.N.Value.
 	//
-	// - When set to `NetworkType`, queries resources of the specified network type.
+	// - NetworkType: queries information about resources of the specified network type.
 	//
-	// - When set to `CpuOnlineUpgrade`, `CpuOnlineDowngrade`, `MemoryOnlineUpgrade`, or `MemoryOnlineDowngrade`, queries the CPU or memory hot-plugging support of the specified image.
+	// - CpuOnlineUpgrade, CpuOnlineDowngrade, MemoryOnlineUpgrade, or MemoryOnlineDowngrade: queries the CPU or memory hot-plugging support of the specified image.
 	//
 	// Default value: null.
 	//
@@ -603,13 +543,13 @@ type DescribeImagesRequestFilter struct {
 	//
 	// CreationStartTime
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The filter value for querying resources.
+	// The filter value used when querying resources.
 	//
-	// - When `Filter.N.Key` is `CreationStartTime` or `CreationEndTime`, the format is `yyyy-MM-ddTHH:mmZ` in UTC+0.
+	// - When Filter.N.Key is `CreationStartTime` or `CreationEndTime`, the format is `yyyy-MM-ddTHH:mmZ` in the UTC+0 time zone.
 	//
-	// - When `Filter.N.Key` is `NetworkType`, valid network type values include `vpc` and `classic`.
+	// - When Filter.N.Key is `NetworkType`, you can specify network type values such as `vpc` and `classic`.
 	//
-	// - When `Filter.N.Key` is `CpuOnlineUpgrade`, `CpuOnlineDowngrade`, `MemoryOnlineUpgrade`, or `MemoryOnlineDowngrade`, valid values are `supported` and `unsupported`.
+	// - When Filter.N.Key is set to `CpuOnlineUpgrade`, `CpuOnlineDowngrade`, `MemoryOnlineUpgrade`, or `MemoryOnlineDowngrade`, the value can be `supported` or `unsupported`.
 	//
 	// Default value: null.
 	//
@@ -651,8 +591,6 @@ func (s *DescribeImagesRequestFilter) Validate() error {
 
 type DescribeImagesRequestTag struct {
 	// The tag key of the image. Valid values of N: 1 to 20.
-	//
-	// When you use a single tag to filter resources, the resource count with this tag cannot exceed 1000. When you use multiple tags to filter resources, the resource count of resources that have all specified tags attached cannot exceed 1000. If the resource count exceeds 1000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
 	//
 	// example:
 	//

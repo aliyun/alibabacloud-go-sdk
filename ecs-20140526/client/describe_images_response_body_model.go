@@ -191,6 +191,7 @@ type DescribeImagesResponseBodyImagesImage struct {
 	ProductCode             *string                                                  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	Progress                *string                                                  `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	ResourceGroupId         *string                                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecureBootOptions       *DescribeImagesResponseBodyImagesImageSecureBootOptions  `json:"SecureBootOptions,omitempty" xml:"SecureBootOptions,omitempty" type:"Struct"`
 	Size                    *int32                                                   `json:"Size,omitempty" xml:"Size,omitempty"`
 	Status                  *string                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
 	SupplierName            *string                                                  `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
@@ -317,6 +318,10 @@ func (s *DescribeImagesResponseBodyImagesImage) GetProgress() *string {
 
 func (s *DescribeImagesResponseBodyImagesImage) GetResourceGroupId() *string {
 	return s.ResourceGroupId
+}
+
+func (s *DescribeImagesResponseBodyImagesImage) GetSecureBootOptions() *DescribeImagesResponseBodyImagesImageSecureBootOptions {
+	return s.SecureBootOptions
 }
 
 func (s *DescribeImagesResponseBodyImagesImage) GetSize() *int32 {
@@ -483,6 +488,11 @@ func (s *DescribeImagesResponseBodyImagesImage) SetResourceGroupId(v string) *De
 	return s
 }
 
+func (s *DescribeImagesResponseBodyImagesImage) SetSecureBootOptions(v *DescribeImagesResponseBodyImagesImageSecureBootOptions) *DescribeImagesResponseBodyImagesImage {
+	s.SecureBootOptions = v
+	return s
+}
+
 func (s *DescribeImagesResponseBodyImagesImage) SetSize(v int32) *DescribeImagesResponseBodyImagesImage {
 	s.Size = &v
 	return s
@@ -526,6 +536,11 @@ func (s *DescribeImagesResponseBodyImagesImage) Validate() error {
 	}
 	if s.Features != nil {
 		if err := s.Features.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecureBootOptions != nil {
+		if err := s.SecureBootOptions.Validate(); err != nil {
 			return err
 		}
 	}
@@ -887,6 +902,31 @@ func (s *DescribeImagesResponseBodyImagesImageFeatures) SetNvmeSupport(v string)
 }
 
 func (s *DescribeImagesResponseBodyImagesImageFeatures) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeImagesResponseBodyImagesImageSecureBootOptions struct {
+	SecureBootSupport *string `json:"SecureBootSupport,omitempty" xml:"SecureBootSupport,omitempty"`
+}
+
+func (s DescribeImagesResponseBodyImagesImageSecureBootOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeImagesResponseBodyImagesImageSecureBootOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImagesResponseBodyImagesImageSecureBootOptions) GetSecureBootSupport() *string {
+	return s.SecureBootSupport
+}
+
+func (s *DescribeImagesResponseBodyImagesImageSecureBootOptions) SetSecureBootSupport(v string) *DescribeImagesResponseBodyImagesImageSecureBootOptions {
+	s.SecureBootSupport = &v
+	return s
+}
+
+func (s *DescribeImagesResponseBodyImagesImageSecureBootOptions) Validate() error {
 	return dara.Validate(s)
 }
 

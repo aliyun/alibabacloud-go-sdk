@@ -40,7 +40,7 @@ type DescribeAutoSnapshotPolicyExRequest struct {
 	//
 	// sp-bp67acfmxazb4ph****
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
-	// The name of the automatic snapshot policy. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). It must support characters in the Unicode letter category, which includes characters from various languages such as English and Chinese.
+	// The name of the automatic snapshot policy. The name must be 2 to 128 characters in length and can contain characters that are classified as letter in Unicode, including Chinese characters, English letters, and digits. The name can also contain colons (:), underscores (_), periods (.), or hyphens (-).
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeAutoSnapshotPolicyExRequest struct {
 	AutoSnapshotPolicyName *string `json:"AutoSnapshotPolicyName,omitempty" xml:"AutoSnapshotPolicyName,omitempty"`
 	OwnerAccount           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the automatic snapshot policy list.
+	// The page number of the automatic snapshot policy list. The results are displayed on multiple pages.
 	//
 	// Minimum value: 1.
 	//
@@ -58,7 +58,7 @@ type DescribeAutoSnapshotPolicyExRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page when automatic snapshot policies are returned with pagination.
+	// The number of entries per page when the automatic snapshot policies are displayed by page.
 	//
 	// Maximum value: 100.
 	//
@@ -76,9 +76,9 @@ type DescribeAutoSnapshotPolicyExRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group. When you use this parameter to filter resources, the resource count cannot exceed 1000.
+	// The ID of the resource group. If you use this parameter to filter resources, the resource count cannot exceed 1,000.
 	//
-	// > Filtering by the default resource group is not supported.
+	// >Filtering by the default resource group is not supported.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type DescribeAutoSnapshotPolicyExRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tag []*DescribeAutoSnapshotPolicyExRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 

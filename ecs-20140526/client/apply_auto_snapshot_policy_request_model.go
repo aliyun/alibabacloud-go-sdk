@@ -27,7 +27,7 @@ type ApplyAutoSnapshotPolicyRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the automatic snapshot policy.
+	// The ID of the target automatic snapshot policy.
 	//
 	// This parameter is required.
 	//

@@ -34,7 +34,7 @@ type iAssignPrivateIpAddressesRequest interface {
 }
 
 type AssignPrivateIpAddressesRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type AssignPrivateIpAddressesRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// One or more IPv4 prefixes to assign to the network interface controller (NIC). Valid values of N: 1 to 10.
 	//
-	// > To set IPv4 prefixes for the NIC, you must set either the Ipv4Prefix.N parameter or the Ipv4PrefixCount parameter, but not both.
+	// > If you need to set IPv4 prefixes for the NIC, you must set either the Ipv4Prefix.N parameter or the Ipv4PrefixCount parameter, but not both.
 	Ipv4Prefix []*string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty" type:"Repeated"`
 	// The number of randomly generated IPv4 prefixes to assign to the network interface controller (NIC). Valid values: 1 to 10.
 	//
-	// > To set IPv4 prefixes for the NIC, you must set either the Ipv4Prefix.N parameter or the Ipv4PrefixCount parameter, but not both.
+	// > If you need to set IPv4 prefixes for the NIC, you must set either the Ipv4Prefix.N parameter or the Ipv4PrefixCount parameter, but not both.
 	//
 	// example:
 	//
@@ -66,15 +66,15 @@ type AssignPrivateIpAddressesRequest struct {
 	//
 	// - When the NIC is in the active (`Available`) state: 1 to 32.
 	//
-	// - When the NIC is in the `InUse` state: subject to the instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+	// - When the NIC is in the `InUse` state: subject to the instance family. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// When you allocate secondary private IP addresses, you cannot specify both `PrivateIpAddress.N` and `SecondaryPrivateIpAddressCount`.
+	// When you allocate secondary private IP addresses, you cannot specify both PrivateIpAddress.N and SecondaryPrivateIpAddressCount.
 	//
 	// example:
 	//
 	// ``10.1.**.**``
 	PrivateIpAddress []*string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty" type:"Repeated"`
-	// The region ID of the network interface controller (NIC). You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the network interface controller (NIC). You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type AssignPrivateIpAddressesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The number of private IP addresses to be automatically assigned from the idle IP addresses within the vSwitch.
 	//
-	// When you assign secondary private IP addresses, you cannot specify both `PrivateIpAddress.N` and `SecondaryPrivateIpAddressCount`.
+	// When you assign secondary private IP addresses, you cannot specify both PrivateIpAddress.N and SecondaryPrivateIpAddressCount.
 	//
 	// example:
 	//
