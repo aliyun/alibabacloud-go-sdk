@@ -193,6 +193,7 @@ type ListNodesResponseBodyNodes struct {
 	//
 	// autoque3
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	Reason    *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The bidding policy of the node. Valid values:
 	//
 	// 	- NoSpot: The instances of the compute node are pay-as-you-go instances.
@@ -309,6 +310,10 @@ func (s *ListNodesResponseBodyNodes) GetQueueName() *string {
 	return s.QueueName
 }
 
+func (s *ListNodesResponseBodyNodes) GetReason() *string {
+	return s.Reason
+}
+
 func (s *ListNodesResponseBodyNodes) GetSpotStrategy() *string {
 	return s.SpotStrategy
 }
@@ -394,6 +399,11 @@ func (s *ListNodesResponseBodyNodes) SetPublicIpAddress(v string) *ListNodesResp
 
 func (s *ListNodesResponseBodyNodes) SetQueueName(v string) *ListNodesResponseBodyNodes {
 	s.QueueName = &v
+	return s
+}
+
+func (s *ListNodesResponseBodyNodes) SetReason(v string) *ListNodesResponseBodyNodes {
+	s.Reason = &v
 	return s
 }
 
