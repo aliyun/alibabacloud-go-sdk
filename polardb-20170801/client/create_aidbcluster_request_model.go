@@ -17,6 +17,8 @@ type iCreateAIDBClusterRequest interface {
 	GetAutoUseCoupon() *bool
 	SetClientToken(v string) *CreateAIDBClusterRequest
 	GetClientToken() *string
+	SetCreatePublicEndpoint(v string) *CreateAIDBClusterRequest
+	GetCreatePublicEndpoint() *string
 	SetDBClusterDescription(v string) *CreateAIDBClusterRequest
 	GetDBClusterDescription() *string
 	SetDBClusterId(v string) *CreateAIDBClusterRequest
@@ -41,6 +43,8 @@ type iCreateAIDBClusterRequest interface {
 	GetManagementMode() *string
 	SetModelName(v string) *CreateAIDBClusterRequest
 	GetModelName() *string
+	SetModelSpace(v string) *CreateAIDBClusterRequest
+	GetModelSpace() *string
 	SetOwnerAccount(v string) *CreateAIDBClusterRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *CreateAIDBClusterRequest
@@ -106,6 +110,10 @@ type CreateAIDBClusterRequest struct {
 	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// ON
+	CreatePublicEndpoint *string `json:"CreatePublicEndpoint,omitempty" xml:"CreatePublicEndpoint,omitempty"`
 	// The description of the cluster. You can use the description to perform a fuzzy search.
 	//
 	// example:
@@ -119,8 +127,6 @@ type CreateAIDBClusterRequest struct {
 	// pc-******************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The node specification.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -177,7 +183,11 @@ type CreateAIDBClusterRequest struct {
 	// example:
 	//
 	// Qwen3-30B-A3B
-	ModelName    *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// example:
+	//
+	// pms-xxx
+	ModelSpace   *string `json:"ModelSpace,omitempty" xml:"ModelSpace,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The password.
@@ -306,6 +316,10 @@ func (s *CreateAIDBClusterRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *CreateAIDBClusterRequest) GetCreatePublicEndpoint() *string {
+	return s.CreatePublicEndpoint
+}
+
 func (s *CreateAIDBClusterRequest) GetDBClusterDescription() *string {
 	return s.DBClusterDescription
 }
@@ -352,6 +366,10 @@ func (s *CreateAIDBClusterRequest) GetManagementMode() *string {
 
 func (s *CreateAIDBClusterRequest) GetModelName() *string {
 	return s.ModelName
+}
+
+func (s *CreateAIDBClusterRequest) GetModelSpace() *string {
+	return s.ModelSpace
 }
 
 func (s *CreateAIDBClusterRequest) GetOwnerAccount() *string {
@@ -442,6 +460,11 @@ func (s *CreateAIDBClusterRequest) SetClientToken(v string) *CreateAIDBClusterRe
 	return s
 }
 
+func (s *CreateAIDBClusterRequest) SetCreatePublicEndpoint(v string) *CreateAIDBClusterRequest {
+	s.CreatePublicEndpoint = &v
+	return s
+}
+
 func (s *CreateAIDBClusterRequest) SetDBClusterDescription(v string) *CreateAIDBClusterRequest {
 	s.DBClusterDescription = &v
 	return s
@@ -499,6 +522,11 @@ func (s *CreateAIDBClusterRequest) SetManagementMode(v string) *CreateAIDBCluste
 
 func (s *CreateAIDBClusterRequest) SetModelName(v string) *CreateAIDBClusterRequest {
 	s.ModelName = &v
+	return s
+}
+
+func (s *CreateAIDBClusterRequest) SetModelSpace(v string) *CreateAIDBClusterRequest {
+	s.ModelSpace = &v
 	return s
 }
 

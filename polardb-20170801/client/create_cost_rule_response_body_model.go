@@ -22,7 +22,7 @@ type CreateCostRuleResponseBody struct {
 	//
 	// 924d450014e64e88ac6e8486f8e990**
 	CostRuleId *string `json:"CostRuleId,omitempty" xml:"CostRuleId,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

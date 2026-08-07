@@ -15,6 +15,8 @@ type iDescribeAIDBClusterTaskAttributeResponseBody interface {
 	GetClusterNetworkType() *string
 	SetCreateTime(v string) *DescribeAIDBClusterTaskAttributeResponseBody
 	GetCreateTime() *string
+	SetCustomBucketInfo(v *DescribeAIDBClusterTaskAttributeResponseBodyCustomBucketInfo) *DescribeAIDBClusterTaskAttributeResponseBody
+	GetCustomBucketInfo() *DescribeAIDBClusterTaskAttributeResponseBodyCustomBucketInfo
 	SetDBClusterDescription(v string) *DescribeAIDBClusterTaskAttributeResponseBody
 	GetDBClusterDescription() *string
 	SetDBClusterId(v string) *DescribeAIDBClusterTaskAttributeResponseBody
@@ -71,7 +73,8 @@ type DescribeAIDBClusterTaskAttributeResponseBody struct {
 	// example:
 	//
 	// 2025-11-12T03:45:13Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime       *string                                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CustomBucketInfo *DescribeAIDBClusterTaskAttributeResponseBodyCustomBucketInfo `json:"CustomBucketInfo,omitempty" xml:"CustomBucketInfo,omitempty" type:"Struct"`
 	// The task name.
 	//
 	// example:
@@ -201,6 +204,10 @@ func (s *DescribeAIDBClusterTaskAttributeResponseBody) GetCreateTime() *string {
 	return s.CreateTime
 }
 
+func (s *DescribeAIDBClusterTaskAttributeResponseBody) GetCustomBucketInfo() *DescribeAIDBClusterTaskAttributeResponseBodyCustomBucketInfo {
+	return s.CustomBucketInfo
+}
+
 func (s *DescribeAIDBClusterTaskAttributeResponseBody) GetDBClusterDescription() *string {
 	return s.DBClusterDescription
 }
@@ -285,6 +292,11 @@ func (s *DescribeAIDBClusterTaskAttributeResponseBody) SetClusterNetworkType(v s
 
 func (s *DescribeAIDBClusterTaskAttributeResponseBody) SetCreateTime(v string) *DescribeAIDBClusterTaskAttributeResponseBody {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterTaskAttributeResponseBody) SetCustomBucketInfo(v *DescribeAIDBClusterTaskAttributeResponseBodyCustomBucketInfo) *DescribeAIDBClusterTaskAttributeResponseBody {
+	s.CustomBucketInfo = v
 	return s
 }
 
@@ -379,6 +391,11 @@ func (s *DescribeAIDBClusterTaskAttributeResponseBody) SetVSwitchId(v string) *D
 }
 
 func (s *DescribeAIDBClusterTaskAttributeResponseBody) Validate() error {
+	if s.CustomBucketInfo != nil {
+		if err := s.CustomBucketInfo.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.DataSets != nil {
 		for _, item := range s.DataSets {
 			if item != nil {
@@ -398,6 +415,34 @@ func (s *DescribeAIDBClusterTaskAttributeResponseBody) Validate() error {
 		}
 	}
 	return nil
+}
+
+type DescribeAIDBClusterTaskAttributeResponseBodyCustomBucketInfo struct {
+	// example:
+	//
+	// my-bucket
+	CustomOssBucketName *string `json:"CustomOssBucketName,omitempty" xml:"CustomOssBucketName,omitempty"`
+}
+
+func (s DescribeAIDBClusterTaskAttributeResponseBodyCustomBucketInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAIDBClusterTaskAttributeResponseBodyCustomBucketInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAIDBClusterTaskAttributeResponseBodyCustomBucketInfo) GetCustomOssBucketName() *string {
+	return s.CustomOssBucketName
+}
+
+func (s *DescribeAIDBClusterTaskAttributeResponseBodyCustomBucketInfo) SetCustomOssBucketName(v string) *DescribeAIDBClusterTaskAttributeResponseBodyCustomBucketInfo {
+	s.CustomOssBucketName = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterTaskAttributeResponseBodyCustomBucketInfo) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeAIDBClusterTaskAttributeResponseBodyDataSets struct {

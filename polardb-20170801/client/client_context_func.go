@@ -416,6 +416,62 @@ func (client *Client) AddPolarFsQuotaWithContext(ctx context.Context, request *A
 
 // Summary:
 //
+// 添加冷存授权账号
+//
+// @param request - AddPolarOSSAuthorizedAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddPolarOSSAuthorizedAccountResponse
+func (client *Client) AddPolarOSSAuthorizedAccountWithContext(ctx context.Context, request *AddPolarOSSAuthorizedAccountRequest, runtime *dara.RuntimeOptions) (_result *AddPolarOSSAuthorizedAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizedUserIds) {
+		query["AuthorizedUserIds"] = request.AuthorizedUserIds
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PfsInstanceId) {
+		query["PfsInstanceId"] = request.PfsInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddPolarOSSAuthorizedAccount"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddPolarOSSAuthorizedAccountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds SQL throttling rules.
 //
 // @param request - AddSQLRateLimitingRulesRequest
@@ -1877,6 +1933,10 @@ func (client *Client) CreateAIDBClusterWithContext(ctx context.Context, request 
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !dara.IsNil(request.CreatePublicEndpoint) {
+		query["CreatePublicEndpoint"] = request.CreatePublicEndpoint
+	}
+
 	if !dara.IsNil(request.DBClusterDescription) {
 		query["DBClusterDescription"] = request.DBClusterDescription
 	}
@@ -1923,6 +1983,10 @@ func (client *Client) CreateAIDBClusterWithContext(ctx context.Context, request 
 
 	if !dara.IsNil(request.ModelName) {
 		query["ModelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.ModelSpace) {
+		query["ModelSpace"] = request.ModelSpace
 	}
 
 	if !dara.IsNil(request.OwnerAccount) {
@@ -2035,6 +2099,10 @@ func (client *Client) CreateAIDBClusterApiKeyWithContext(ctx context.Context, re
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ModelSpaceName) {
+		query["ModelSpaceName"] = request.ModelSpaceName
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -2161,12 +2229,20 @@ func (client *Client) CreateAIDBClusterTaskWithContext(ctx context.Context, requ
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomOssBucketName) {
+		query["CustomOssBucketName"] = request.CustomOssBucketName
+	}
+
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
 	}
 
 	if !dara.IsNil(request.DBInstanceClass) {
 		query["DBInstanceClass"] = request.DBInstanceClass
+	}
+
+	if !dara.IsNil(request.DataserviceMode) {
+		query["DataserviceMode"] = request.DataserviceMode
 	}
 
 	if !dara.IsNil(request.DatasetPath) {
@@ -3655,6 +3731,14 @@ func (client *Client) CreateCostRuleWithContext(ctx context.Context, request *Cr
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CacheCostPointsPerMillion) {
 		query["CacheCostPointsPerMillion"] = request.CacheCostPointsPerMillion
+	}
+
+	if !dara.IsNil(request.EffectiveTargetType) {
+		query["EffectiveTargetType"] = request.EffectiveTargetType
+	}
+
+	if !dara.IsNil(request.EffectiveTargetValue) {
+		query["EffectiveTargetValue"] = request.EffectiveTargetValue
 	}
 
 	if !dara.IsNil(request.GwClusterId) {
@@ -6571,6 +6655,10 @@ func (client *Client) DeleteAIDBClusterWithContext(ctx context.Context, request 
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !dara.IsNil(request.ModelSpace) {
+		query["ModelSpace"] = request.ModelSpace
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6613,6 +6701,10 @@ func (client *Client) DeleteAIDBClusterApiKeyWithContext(ctx context.Context, re
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApiKey) {
 		query["ApiKey"] = request.ApiKey
+	}
+
+	if !dara.IsNil(request.ModelSpaceName) {
+		query["ModelSpaceName"] = request.ModelSpaceName
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -9406,6 +9498,62 @@ func (client *Client) DeletePolarFsQuotaWithContext(ctx context.Context, request
 
 // Summary:
 //
+// 删除冷存授权账号
+//
+// @param request - DeletePolarOSSAuthorizedAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePolarOSSAuthorizedAccountResponse
+func (client *Client) DeletePolarOSSAuthorizedAccountWithContext(ctx context.Context, request *DeletePolarOSSAuthorizedAccountRequest, runtime *dara.RuntimeOptions) (_result *DeletePolarOSSAuthorizedAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizedUserIds) {
+		query["AuthorizedUserIds"] = request.AuthorizedUserIds
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PfsInstanceId) {
+		query["PfsInstanceId"] = request.PfsInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePolarOSSAuthorizedAccount"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePolarOSSAuthorizedAccountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a throttling policy.
 //
 // @param request - DeleteRateLimitPolicyRequest
@@ -9601,6 +9749,10 @@ func (client *Client) DescribeAIDBClusterApiKeysWithContext(ctx context.Context,
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ModelSpaceName) {
+		query["ModelSpaceName"] = request.ModelSpaceName
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -11586,18 +11738,24 @@ func (client *Client) DescribeApplicationParametersWithContext(ctx context.Conte
 //
 // Queries the performance of a PolarDB AI application.
 //
-// @param request - DescribeApplicationPerformanceRequest
+// @param tmpReq - DescribeApplicationPerformanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeApplicationPerformanceResponse
-func (client *Client) DescribeApplicationPerformanceWithContext(ctx context.Context, request *DescribeApplicationPerformanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeApplicationPerformanceResponse, _err error) {
+func (client *Client) DescribeApplicationPerformanceWithContext(ctx context.Context, tmpReq *DescribeApplicationPerformanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeApplicationPerformanceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &DescribeApplicationPerformanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Filter) {
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, dara.String("filter"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
 		query["ApplicationId"] = request.ApplicationId
@@ -11645,6 +11803,10 @@ func (client *Client) DescribeApplicationPerformanceWithContext(ctx context.Cont
 
 	if !dara.IsNil(request.StartTime) {
 		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.FilterShrink) {
+		query["filter"] = request.FilterShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -13085,6 +13247,14 @@ func (client *Client) DescribeCostRulesWithContext(ctx context.Context, request 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.EffectiveTargetType) {
+		query["EffectiveTargetType"] = request.EffectiveTargetType
+	}
+
+	if !dara.IsNil(request.EffectiveTargetValue) {
+		query["EffectiveTargetValue"] = request.EffectiveTargetValue
+	}
+
 	if !dara.IsNil(request.GwClusterId) {
 		query["GwClusterId"] = request.GwClusterId
 	}
@@ -19068,7 +19238,7 @@ func (client *Client) DescribePolarFsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Retrieves the details of a PolarLakebase instance.
+// Retrieves the details of a Polarlakebase instance.
 //
 // @param request - DescribePolarFsAttributeRequest
 //
@@ -30019,7 +30189,7 @@ func (client *Client) RunPolarClawCronJobWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves memories based on a search query.
+// Retrieves memories.
 //
 // @param request - SearchMemoriesRequest
 //
@@ -30052,6 +30222,14 @@ func (client *Client) SearchMemoriesWithContext(ctx context.Context, request *Se
 
 	if !dara.IsNil(request.MemoryUserId) {
 		query["MemoryUserId"] = request.MemoryUserId
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["Page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
 	}
 
 	if !dara.IsNil(request.Query) {

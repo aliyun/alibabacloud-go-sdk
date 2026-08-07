@@ -19,6 +19,10 @@ type iSearchMemoriesRequest interface {
 	GetMemoryAgentId() *string
 	SetMemoryUserId(v string) *SearchMemoriesRequest
 	GetMemoryUserId() *string
+	SetPage(v int32) *SearchMemoriesRequest
+	GetPage() *int32
+	SetPageSize(v int32) *SearchMemoriesRequest
+	GetPageSize() *int32
 	SetQuery(v string) *SearchMemoriesRequest
 	GetQuery() *string
 	SetTopK(v string) *SearchMemoriesRequest
@@ -34,25 +38,25 @@ type SearchMemoriesRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The start time for filtering memories by creation time. Must be in UTC and ISO 8601 format.
+	// The start time for memory creation.
 	//
 	// example:
 	//
 	// yyyy-MM-ddTHH:mm:ssZ
 	CreateTimeBegin *string `json:"CreateTimeBegin,omitempty" xml:"CreateTimeBegin,omitempty"`
-	// The end time for filtering memories by creation time. Must be in UTC and ISO 8601 format.
+	// The end time for memory creation.
 	//
 	// example:
 	//
 	// yyyy-MM-ddTHH:mm:ssZ
 	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	// The agent ID associated with the memory.
+	// The memory agent ID.
 	//
 	// example:
 	//
 	// agent1
 	MemoryAgentId *string `json:"MemoryAgentId,omitempty" xml:"MemoryAgentId,omitempty"`
-	// The user ID associated with the memory.
+	// The memory user ID.
 	//
 	// This parameter is required.
 	//
@@ -60,15 +64,17 @@ type SearchMemoriesRequest struct {
 	//
 	// user1
 	MemoryUserId *string `json:"MemoryUserId,omitempty" xml:"MemoryUserId,omitempty"`
+	// The page number.
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of records per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The search query.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
 	// who are you
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The maximum number of results to return.
+	// Specifies the number of top results to return.
 	//
 	// example:
 	//
@@ -104,6 +110,14 @@ func (s *SearchMemoriesRequest) GetMemoryUserId() *string {
 	return s.MemoryUserId
 }
 
+func (s *SearchMemoriesRequest) GetPage() *int32 {
+	return s.Page
+}
+
+func (s *SearchMemoriesRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
 func (s *SearchMemoriesRequest) GetQuery() *string {
 	return s.Query
 }
@@ -134,6 +148,16 @@ func (s *SearchMemoriesRequest) SetMemoryAgentId(v string) *SearchMemoriesReques
 
 func (s *SearchMemoriesRequest) SetMemoryUserId(v string) *SearchMemoriesRequest {
 	s.MemoryUserId = &v
+	return s
+}
+
+func (s *SearchMemoriesRequest) SetPage(v int32) *SearchMemoriesRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *SearchMemoriesRequest) SetPageSize(v int32) *SearchMemoriesRequest {
+	s.PageSize = &v
 	return s
 }
 

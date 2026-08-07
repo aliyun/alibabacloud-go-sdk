@@ -33,6 +33,8 @@ type iDescribeApplicationPerformanceRequest interface {
 	GetStartStep() *int64
 	SetStartTime(v string) *DescribeApplicationPerformanceRequest
 	GetStartTime() *string
+	SetFilter(v map[string]interface{}) *DescribeApplicationPerformanceRequest
+	GetFilter() map[string]interface{}
 }
 
 type DescribeApplicationPerformanceRequest struct {
@@ -131,7 +133,8 @@ type DescribeApplicationPerformanceRequest struct {
 	// example:
 	//
 	// 2020-09-23T01:01Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *string                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Filter    map[string]interface{} `json:"filter,omitempty" xml:"filter,omitempty"`
 }
 
 func (s DescribeApplicationPerformanceRequest) String() string {
@@ -188,6 +191,10 @@ func (s *DescribeApplicationPerformanceRequest) GetStartStep() *int64 {
 
 func (s *DescribeApplicationPerformanceRequest) GetStartTime() *string {
 	return s.StartTime
+}
+
+func (s *DescribeApplicationPerformanceRequest) GetFilter() map[string]interface{} {
+	return s.Filter
 }
 
 func (s *DescribeApplicationPerformanceRequest) SetApplicationId(v string) *DescribeApplicationPerformanceRequest {
@@ -247,6 +254,11 @@ func (s *DescribeApplicationPerformanceRequest) SetStartStep(v int64) *DescribeA
 
 func (s *DescribeApplicationPerformanceRequest) SetStartTime(v string) *DescribeApplicationPerformanceRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeApplicationPerformanceRequest) SetFilter(v map[string]interface{}) *DescribeApplicationPerformanceRequest {
+	s.Filter = v
 	return s
 }
 

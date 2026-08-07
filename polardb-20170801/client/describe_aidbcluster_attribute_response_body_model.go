@@ -21,6 +21,8 @@ type iDescribeAIDBClusterAttributeResponseBody interface {
 	GetDBClusterId() *string
 	SetDBClusterStatus(v string) *DescribeAIDBClusterAttributeResponseBody
 	GetDBClusterStatus() *string
+	SetDBInstanceStatusDesc(v string) *DescribeAIDBClusterAttributeResponseBody
+	GetDBInstanceStatusDesc() *string
 	SetDBNodes(v []*DescribeAIDBClusterAttributeResponseBodyDBNodes) *DescribeAIDBClusterAttributeResponseBody
 	GetDBNodes() []*DescribeAIDBClusterAttributeResponseBodyDBNodes
 	SetDBVersion(v string) *DescribeAIDBClusterAttributeResponseBody
@@ -45,8 +47,12 @@ type iDescribeAIDBClusterAttributeResponseBody interface {
 	GetLockMode() *string
 	SetMaxQPM(v string) *DescribeAIDBClusterAttributeResponseBody
 	GetMaxQPM() *string
+	SetMaxTPM(v string) *DescribeAIDBClusterAttributeResponseBody
+	GetMaxTPM() *string
 	SetModelName(v string) *DescribeAIDBClusterAttributeResponseBody
 	GetModelName() *string
+	SetModelSpaceName(v string) *DescribeAIDBClusterAttributeResponseBody
+	GetModelSpaceName() *string
 	SetModelType(v string) *DescribeAIDBClusterAttributeResponseBody
 	GetModelType() *string
 	SetPayType(v string) *DescribeAIDBClusterAttributeResponseBody
@@ -82,7 +88,7 @@ type iDescribeAIDBClusterAttributeResponseBody interface {
 type DescribeAIDBClusterAttributeResponseBody struct {
 	// The node type. Valid values:
 	//
-	// - vnode: ACK-managed
+	// - vnode: managed by ACK
 	//
 	// - container: loginable container
 	//
@@ -135,7 +141,8 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	// example:
 	//
 	// Running
-	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
+	DBClusterStatus      *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
+	DBInstanceStatusDesc *string `json:"DBInstanceStatusDesc,omitempty" xml:"DBInstanceStatusDesc,omitempty"`
 	// The node details.
 	DBNodes []*DescribeAIDBClusterAttributeResponseBodyDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Repeated"`
 	// The cluster version. Valid values:
@@ -160,7 +167,7 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	EndpointList []*DescribeAIDBClusterAttributeResponseBodyEndpointList `json:"EndpointList,omitempty" xml:"EndpointList,omitempty" type:"Repeated"`
 	// The cluster expiration time.
 	//
-	// > This parameter returns a value only for clusters whose billing method is **Prepaid*	- (subscription). An empty value is returned for **Postpaid*	- (pay-as-you-go) clusters.
+	// > A specific value is returned only for clusters whose billing method is **Prepaid*	- (subscription). An empty value is returned for **Postpaid*	- (pay-as-you-go) clusters.
 	//
 	// example:
 	//
@@ -207,12 +214,14 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// 20
 	MaxQPM *string `json:"MaxQPM,omitempty" xml:"MaxQPM,omitempty"`
+	MaxTPM *string `json:"MaxTPM,omitempty" xml:"MaxTPM,omitempty"`
 	// The model name.
 	//
 	// example:
 	//
 	// Qwen3-Embedding-8B
-	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	ModelName      *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	ModelSpaceName *string `json:"ModelSpaceName,omitempty" xml:"ModelSpaceName,omitempty"`
 	// The model type.
 	//
 	// example:
@@ -257,13 +266,13 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// container
 	RunType *string `json:"RunType,omitempty" xml:"RunType,omitempty"`
-	// Valid values for Enterprise Edition storage type:
+	// The storage type for Enterprise Edition. Valid values:
 	//
 	// - **PSL5**
 	//
 	// - **PSL4**
 	//
-	// Valid values for Standard Edition storage type:
+	// The storage type for Standard Edition. Valid values:
 	//
 	// - **ESSDPL0**
 	//
@@ -281,7 +290,7 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	StorageType    *string                                                 `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	TimeSlicesInfo *DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfo `json:"TimeSlicesInfo,omitempty" xml:"TimeSlicesInfo,omitempty" type:"Struct"`
 	TimeSlicesType *string                                                 `json:"TimeSlicesType,omitempty" xml:"TimeSlicesType,omitempty"`
-	// The VPC ID specified for the zone switchover.
+	// The VPC ID that can be specified when switching zones.
 	//
 	// example:
 	//
@@ -304,7 +313,7 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// cn-hangzhou-d
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The zone IDs.
+	// The zone ID.
 	//
 	// example:
 	//
@@ -342,6 +351,10 @@ func (s *DescribeAIDBClusterAttributeResponseBody) GetDBClusterId() *string {
 
 func (s *DescribeAIDBClusterAttributeResponseBody) GetDBClusterStatus() *string {
 	return s.DBClusterStatus
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBody) GetDBInstanceStatusDesc() *string {
+	return s.DBInstanceStatusDesc
 }
 
 func (s *DescribeAIDBClusterAttributeResponseBody) GetDBNodes() []*DescribeAIDBClusterAttributeResponseBodyDBNodes {
@@ -392,8 +405,16 @@ func (s *DescribeAIDBClusterAttributeResponseBody) GetMaxQPM() *string {
 	return s.MaxQPM
 }
 
+func (s *DescribeAIDBClusterAttributeResponseBody) GetMaxTPM() *string {
+	return s.MaxTPM
+}
+
 func (s *DescribeAIDBClusterAttributeResponseBody) GetModelName() *string {
 	return s.ModelName
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBody) GetModelSpaceName() *string {
+	return s.ModelSpaceName
 }
 
 func (s *DescribeAIDBClusterAttributeResponseBody) GetModelType() *string {
@@ -486,6 +507,11 @@ func (s *DescribeAIDBClusterAttributeResponseBody) SetDBClusterStatus(v string) 
 	return s
 }
 
+func (s *DescribeAIDBClusterAttributeResponseBody) SetDBInstanceStatusDesc(v string) *DescribeAIDBClusterAttributeResponseBody {
+	s.DBInstanceStatusDesc = &v
+	return s
+}
+
 func (s *DescribeAIDBClusterAttributeResponseBody) SetDBNodes(v []*DescribeAIDBClusterAttributeResponseBodyDBNodes) *DescribeAIDBClusterAttributeResponseBody {
 	s.DBNodes = v
 	return s
@@ -546,8 +572,18 @@ func (s *DescribeAIDBClusterAttributeResponseBody) SetMaxQPM(v string) *Describe
 	return s
 }
 
+func (s *DescribeAIDBClusterAttributeResponseBody) SetMaxTPM(v string) *DescribeAIDBClusterAttributeResponseBody {
+	s.MaxTPM = &v
+	return s
+}
+
 func (s *DescribeAIDBClusterAttributeResponseBody) SetModelName(v string) *DescribeAIDBClusterAttributeResponseBody {
 	s.ModelName = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBody) SetModelSpaceName(v string) *DescribeAIDBClusterAttributeResponseBody {
+	s.ModelSpaceName = &v
 	return s
 }
 
@@ -718,7 +754,7 @@ type DescribeAIDBClusterAttributeResponseBodyDBNodes struct {
 	//
 	// 	- **MinorVersionUpgrading**: upgrading the minor version
 	//
-	// 	- **Maintaining**: under maintenance
+	// 	- **Maintaining**: being maintained
 	//
 	// 	- **Switching**: being switched
 	//
@@ -744,12 +780,14 @@ type DescribeAIDBClusterAttributeResponseBodyDBNodes struct {
 	//
 	// 8192
 	MemorySize *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	ModelName  *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	// The public IP address.
 	//
 	// example:
 	//
 	// 101.101.101.101
-	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
+	PublicIp      *string                                                         `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
+	SupportedApis []*DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis `json:"SupportedApis,omitempty" xml:"SupportedApis,omitempty" type:"Repeated"`
 	// The Kubernetes virtual node ID.
 	//
 	// example:
@@ -824,8 +862,16 @@ func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetMemorySize() *strin
 	return s.MemorySize
 }
 
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetModelName() *string {
+	return s.ModelName
+}
+
 func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetPublicIp() *string {
 	return s.PublicIp
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetSupportedApis() []*DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis {
+	return s.SupportedApis
 }
 
 func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetVNodeId() *string {
@@ -894,8 +940,18 @@ func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) SetMemorySize(v string
 	return s
 }
 
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) SetModelName(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodes {
+	s.ModelName = &v
+	return s
+}
+
 func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) SetPublicIp(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodes {
 	s.PublicIp = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) SetSupportedApis(v []*DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis) *DescribeAIDBClusterAttributeResponseBodyDBNodes {
+	s.SupportedApis = v
 	return s
 }
 
@@ -922,6 +978,15 @@ func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) SetZoneId(v string) *D
 func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) Validate() error {
 	if s.ChildVolumes != nil {
 		for _, item := range s.ChildVolumes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SupportedApis != nil {
+		for _, item := range s.SupportedApis {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -1022,6 +1087,61 @@ func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes) Validate()
 	return dara.Validate(s)
 }
 
+type DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis struct {
+	ApiName        *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	GenerationMode *string `json:"GenerationMode,omitempty" xml:"GenerationMode,omitempty"`
+	Path           *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Protocol       *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+}
+
+func (s DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis) GetApiName() *string {
+	return s.ApiName
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis) GetGenerationMode() *string {
+	return s.GenerationMode
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis) GetPath() *string {
+	return s.Path
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis) GetProtocol() *string {
+	return s.Protocol
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis) SetApiName(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis {
+	s.ApiName = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis) SetGenerationMode(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis {
+	s.GenerationMode = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis) SetPath(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis {
+	s.Path = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis) SetProtocol(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis {
+	s.Protocol = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribeAIDBClusterAttributeResponseBodyEndpointList struct {
 	// The list of network information of the instance.
 	NetInfoItems []*DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems `json:"NetInfoItems,omitempty" xml:"NetInfoItems,omitempty" type:"Repeated"`
@@ -1058,7 +1178,7 @@ func (s *DescribeAIDBClusterAttributeResponseBodyEndpointList) Validate() error 
 }
 
 type DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems struct {
-	// The database connection address.
+	// The database endpoint.
 	//
 	// example:
 	//

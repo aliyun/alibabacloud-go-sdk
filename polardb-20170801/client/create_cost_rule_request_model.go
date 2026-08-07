@@ -11,6 +11,10 @@ type iCreateCostRuleRequest interface {
 	GoString() string
 	SetCacheCostPointsPerMillion(v string) *CreateCostRuleRequest
 	GetCacheCostPointsPerMillion() *string
+	SetEffectiveTargetType(v string) *CreateCostRuleRequest
+	GetEffectiveTargetType() *string
+	SetEffectiveTargetValue(v string) *CreateCostRuleRequest
+	GetEffectiveTargetValue() *string
 	SetGwClusterId(v string) *CreateCostRuleRequest
 	GetGwClusterId() *string
 	SetInputCostPointsPerMillion(v string) *CreateCostRuleRequest
@@ -26,12 +30,32 @@ type iCreateCostRuleRequest interface {
 }
 
 type CreateCostRuleRequest struct {
-	// The number of cost points per million cache tokens. The default value is 0.
+	// The cost points per million cached tokens. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	CacheCostPointsPerMillion *string `json:"CacheCostPointsPerMillion,omitempty" xml:"CacheCostPointsPerMillion,omitempty"`
+	// The effective target type. Valid values:
+	//
+	// - global
+	//
+	// - consumerGroup
+	//
+	// - consumer
+	//
+	// Default value: global.
+	//
+	// example:
+	//
+	// global
+	EffectiveTargetType *string `json:"EffectiveTargetType,omitempty" xml:"EffectiveTargetType,omitempty"`
+	// The effective target value. This parameter is required when EffectiveTargetType is not set to global.
+	//
+	// example:
+	//
+	// user
+	EffectiveTargetValue *string `json:"EffectiveTargetValue,omitempty" xml:"EffectiveTargetValue,omitempty"`
 	// The gateway instance ID.
 	//
 	// This parameter is required.
@@ -40,13 +64,13 @@ type CreateCostRuleRequest struct {
 	//
 	// pg-xxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The number of cost points per million input tokens. The default value is 0.
+	// The cost points per million input tokens. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	InputCostPointsPerMillion *string `json:"InputCostPointsPerMillion,omitempty" xml:"InputCostPointsPerMillion,omitempty"`
-	// The name of the model, such as `gpt-4` or `qwen-turbo`.
+	// The model name, such as gpt-4 or qwen-turbo.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +86,7 @@ type CreateCostRuleRequest struct {
 	//
 	// ms-xxxxxx
 	ModelServiceId *string `json:"ModelServiceId,omitempty" xml:"ModelServiceId,omitempty"`
-	// The number of cost points per million output tokens. The default value is 0.
+	// The cost points per million output tokens. Default value: 0.
 	//
 	// example:
 	//
@@ -86,6 +110,14 @@ func (s CreateCostRuleRequest) GoString() string {
 
 func (s *CreateCostRuleRequest) GetCacheCostPointsPerMillion() *string {
 	return s.CacheCostPointsPerMillion
+}
+
+func (s *CreateCostRuleRequest) GetEffectiveTargetType() *string {
+	return s.EffectiveTargetType
+}
+
+func (s *CreateCostRuleRequest) GetEffectiveTargetValue() *string {
+	return s.EffectiveTargetValue
 }
 
 func (s *CreateCostRuleRequest) GetGwClusterId() *string {
@@ -114,6 +146,16 @@ func (s *CreateCostRuleRequest) GetRegionId() *string {
 
 func (s *CreateCostRuleRequest) SetCacheCostPointsPerMillion(v string) *CreateCostRuleRequest {
 	s.CacheCostPointsPerMillion = &v
+	return s
+}
+
+func (s *CreateCostRuleRequest) SetEffectiveTargetType(v string) *CreateCostRuleRequest {
+	s.EffectiveTargetType = &v
+	return s
+}
+
+func (s *CreateCostRuleRequest) SetEffectiveTargetValue(v string) *CreateCostRuleRequest {
+	s.EffectiveTargetValue = &v
 	return s
 }
 

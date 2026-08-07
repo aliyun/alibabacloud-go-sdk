@@ -11,6 +11,8 @@ type iDeleteAIDBClusterApiKeyRequest interface {
 	GoString() string
 	SetApiKey(v string) *DeleteAIDBClusterApiKeyRequest
 	GetApiKey() *string
+	SetModelSpaceName(v string) *DeleteAIDBClusterApiKeyRequest
+	GetModelSpaceName() *string
 	SetRegionId(v string) *DeleteAIDBClusterApiKeyRequest
 	GetRegionId() *string
 }
@@ -24,6 +26,10 @@ type DeleteAIDBClusterApiKeyRequest struct {
 	//
 	// xxx
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// example:
+	//
+	// pms-xxx
+	ModelSpaceName *string `json:"ModelSpaceName,omitempty" xml:"ModelSpaceName,omitempty"`
 	// The region ID.
 	//
 	// >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query region IDs.
@@ -48,12 +54,21 @@ func (s *DeleteAIDBClusterApiKeyRequest) GetApiKey() *string {
 	return s.ApiKey
 }
 
+func (s *DeleteAIDBClusterApiKeyRequest) GetModelSpaceName() *string {
+	return s.ModelSpaceName
+}
+
 func (s *DeleteAIDBClusterApiKeyRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
 func (s *DeleteAIDBClusterApiKeyRequest) SetApiKey(v string) *DeleteAIDBClusterApiKeyRequest {
 	s.ApiKey = &v
+	return s
+}
+
+func (s *DeleteAIDBClusterApiKeyRequest) SetModelSpaceName(v string) *DeleteAIDBClusterApiKeyRequest {
+	s.ModelSpaceName = &v
 	return s
 }
 

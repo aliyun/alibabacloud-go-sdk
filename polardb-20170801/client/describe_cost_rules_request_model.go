@@ -9,6 +9,10 @@ type iDescribeCostRulesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEffectiveTargetType(v string) *DescribeCostRulesRequest
+	GetEffectiveTargetType() *string
+	SetEffectiveTargetValue(v string) *DescribeCostRulesRequest
+	GetEffectiveTargetValue() *string
 	SetGwClusterId(v string) *DescribeCostRulesRequest
 	GetGwClusterId() *string
 	SetModelName(v string) *DescribeCostRulesRequest
@@ -24,6 +28,18 @@ type iDescribeCostRulesRequest interface {
 }
 
 type DescribeCostRulesRequest struct {
+	// Filters by effective target type. Valid values: global, consumerGroup, and consumer.
+	//
+	// example:
+	//
+	// global
+	EffectiveTargetType *string `json:"EffectiveTargetType,omitempty" xml:"EffectiveTargetType,omitempty"`
+	// Filters by effective target value.
+	//
+	// example:
+	//
+	// user
+	EffectiveTargetValue *string `json:"EffectiveTargetValue,omitempty" xml:"EffectiveTargetValue,omitempty"`
 	// The gateway instance ID.
 	//
 	// This parameter is required.
@@ -32,7 +48,7 @@ type DescribeCostRulesRequest struct {
 	//
 	// pg-xxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The model name, such as `gpt-4` or `qwen-turbo`.
+	// The model name, such as gpt-4 or qwen-turbo.
 	//
 	// example:
 	//
@@ -52,11 +68,11 @@ type DescribeCostRulesRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// - **30**
+	// 	- **30**
 	//
-	// - **50**
+	// 	- **50**
 	//
-	// - **100**
+	// 	- **100**
 	//
 	// Default value: 30.
 	//
@@ -78,6 +94,14 @@ func (s DescribeCostRulesRequest) String() string {
 
 func (s DescribeCostRulesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCostRulesRequest) GetEffectiveTargetType() *string {
+	return s.EffectiveTargetType
+}
+
+func (s *DescribeCostRulesRequest) GetEffectiveTargetValue() *string {
+	return s.EffectiveTargetValue
 }
 
 func (s *DescribeCostRulesRequest) GetGwClusterId() *string {
@@ -102,6 +126,16 @@ func (s *DescribeCostRulesRequest) GetPageSize() *int32 {
 
 func (s *DescribeCostRulesRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *DescribeCostRulesRequest) SetEffectiveTargetType(v string) *DescribeCostRulesRequest {
+	s.EffectiveTargetType = &v
+	return s
+}
+
+func (s *DescribeCostRulesRequest) SetEffectiveTargetValue(v string) *DescribeCostRulesRequest {
+	s.EffectiveTargetValue = &v
+	return s
 }
 
 func (s *DescribeCostRulesRequest) SetGwClusterId(v string) *DescribeCostRulesRequest {

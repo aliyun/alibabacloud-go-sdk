@@ -24,7 +24,7 @@ type iDescribeCostRulesResponseBody interface {
 }
 
 type DescribeCostRulesResponseBody struct {
-	// A list of cost rules.
+	// The list of cost rules.
 	Items []*DescribeCostRulesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -38,13 +38,13 @@ type DescribeCostRulesResponseBody struct {
 	//
 	// 30
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page. Valid values: 30, 50, and 100. Default value: 30.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *DescribeCostRulesResponseBody) Validate() error {
 }
 
 type DescribeCostRulesResponseBodyItems struct {
-	// The cost in points per one million cached tokens.
+	// The cost points per million cache tokens. Default value: 0.
 	//
 	// example:
 	//
@@ -146,13 +146,25 @@ type DescribeCostRulesResponseBodyItems struct {
 	//
 	// 924d450014e64e88ac6e8486f8e990**
 	CostRuleId *string `json:"CostRuleId,omitempty" xml:"CostRuleId,omitempty"`
-	// The time when the cost rule was created.
+	// The effective target type.
+	//
+	// example:
+	//
+	// global
+	EffectiveTargetType *string `json:"EffectiveTargetType,omitempty" xml:"EffectiveTargetType,omitempty"`
+	// The effective target value.
+	//
+	// example:
+	//
+	// user
+	EffectiveTargetValue *string `json:"EffectiveTargetValue,omitempty" xml:"EffectiveTargetValue,omitempty"`
+	// The creation time.
 	//
 	// example:
 	//
 	// 2026-01-04T16:09:29+08:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the cost rule was last updated.
+	// The last modification time.
 	//
 	// example:
 	//
@@ -164,7 +176,7 @@ type DescribeCostRulesResponseBodyItems struct {
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The cost in points per one million input tokens.
+	// The cost points per million input tokens. Default value: 0.
 	//
 	// example:
 	//
@@ -182,7 +194,7 @@ type DescribeCostRulesResponseBodyItems struct {
 	//
 	// ms-xxxxxxxxx
 	ModelServiceId *string `json:"ModelServiceId,omitempty" xml:"ModelServiceId,omitempty"`
-	// The cost in points per one million output tokens.
+	// The cost points per million output tokens. Default value: 0.
 	//
 	// example:
 	//
@@ -204,6 +216,14 @@ func (s *DescribeCostRulesResponseBodyItems) GetCacheCostPointsPerMillion() *str
 
 func (s *DescribeCostRulesResponseBodyItems) GetCostRuleId() *string {
 	return s.CostRuleId
+}
+
+func (s *DescribeCostRulesResponseBodyItems) GetEffectiveTargetType() *string {
+	return s.EffectiveTargetType
+}
+
+func (s *DescribeCostRulesResponseBodyItems) GetEffectiveTargetValue() *string {
+	return s.EffectiveTargetValue
 }
 
 func (s *DescribeCostRulesResponseBodyItems) GetGmtCreated() *string {
@@ -241,6 +261,16 @@ func (s *DescribeCostRulesResponseBodyItems) SetCacheCostPointsPerMillion(v stri
 
 func (s *DescribeCostRulesResponseBodyItems) SetCostRuleId(v string) *DescribeCostRulesResponseBodyItems {
 	s.CostRuleId = &v
+	return s
+}
+
+func (s *DescribeCostRulesResponseBodyItems) SetEffectiveTargetType(v string) *DescribeCostRulesResponseBodyItems {
+	s.EffectiveTargetType = &v
+	return s
+}
+
+func (s *DescribeCostRulesResponseBodyItems) SetEffectiveTargetValue(v string) *DescribeCostRulesResponseBodyItems {
+	s.EffectiveTargetValue = &v
 	return s
 }
 

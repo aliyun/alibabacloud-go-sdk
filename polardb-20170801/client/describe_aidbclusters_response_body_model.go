@@ -158,6 +158,7 @@ type DescribeAIDBClustersResponseBodyItemsDBCluster struct {
 	Expired              *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	KubeClusterId        *string `json:"KubeClusterId,omitempty" xml:"KubeClusterId,omitempty"`
 	LockMode             *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	ModelSpace           *string `json:"ModelSpace,omitempty" xml:"ModelSpace,omitempty"`
 	ModelType            *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -224,6 +225,10 @@ func (s *DescribeAIDBClustersResponseBodyItemsDBCluster) GetKubeClusterId() *str
 
 func (s *DescribeAIDBClustersResponseBodyItemsDBCluster) GetLockMode() *string {
 	return s.LockMode
+}
+
+func (s *DescribeAIDBClustersResponseBodyItemsDBCluster) GetModelSpace() *string {
+	return s.ModelSpace
 }
 
 func (s *DescribeAIDBClustersResponseBodyItemsDBCluster) GetModelType() *string {
@@ -322,6 +327,11 @@ func (s *DescribeAIDBClustersResponseBodyItemsDBCluster) SetKubeClusterId(v stri
 
 func (s *DescribeAIDBClustersResponseBodyItemsDBCluster) SetLockMode(v string) *DescribeAIDBClustersResponseBodyItemsDBCluster {
 	s.LockMode = &v
+	return s
+}
+
+func (s *DescribeAIDBClustersResponseBodyItemsDBCluster) SetModelSpace(v string) *DescribeAIDBClustersResponseBodyItemsDBCluster {
+	s.ModelSpace = &v
 	return s
 }
 

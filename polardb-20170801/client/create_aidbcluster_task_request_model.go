@@ -9,10 +9,14 @@ type iCreateAIDBClusterTaskRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCustomOssBucketName(v string) *CreateAIDBClusterTaskRequest
+	GetCustomOssBucketName() *string
 	SetDBClusterId(v string) *CreateAIDBClusterTaskRequest
 	GetDBClusterId() *string
 	SetDBInstanceClass(v string) *CreateAIDBClusterTaskRequest
 	GetDBInstanceClass() *string
+	SetDataserviceMode(v string) *CreateAIDBClusterTaskRequest
+	GetDataserviceMode() *string
 	SetDatasetPath(v string) *CreateAIDBClusterTaskRequest
 	GetDatasetPath() *string
 	SetEvalDatasetPath(v string) *CreateAIDBClusterTaskRequest
@@ -52,6 +56,10 @@ type iCreateAIDBClusterTaskRequest interface {
 }
 
 type CreateAIDBClusterTaskRequest struct {
+	// example:
+	//
+	// my-bucket
+	CustomOssBucketName *string `json:"CustomOssBucketName,omitempty" xml:"CustomOssBucketName,omitempty"`
 	// The cluster ID.
 	//
 	// This parameter is required.
@@ -66,6 +74,10 @@ type CreateAIDBClusterTaskRequest struct {
 	//
 	// polar.pg.g6.4xlarge.guh
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	// example:
+	//
+	// cold_storage
+	DataserviceMode *string `json:"DataserviceMode,omitempty" xml:"DataserviceMode,omitempty"`
 	// The training dataset ID. This parameter is required for fine-tuning.
 	//
 	// example:
@@ -177,12 +189,20 @@ func (s CreateAIDBClusterTaskRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateAIDBClusterTaskRequest) GetCustomOssBucketName() *string {
+	return s.CustomOssBucketName
+}
+
 func (s *CreateAIDBClusterTaskRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
 
 func (s *CreateAIDBClusterTaskRequest) GetDBInstanceClass() *string {
 	return s.DBInstanceClass
+}
+
+func (s *CreateAIDBClusterTaskRequest) GetDataserviceMode() *string {
+	return s.DataserviceMode
 }
 
 func (s *CreateAIDBClusterTaskRequest) GetDatasetPath() *string {
@@ -257,6 +277,11 @@ func (s *CreateAIDBClusterTaskRequest) GetZoneId() *string {
 	return s.ZoneId
 }
 
+func (s *CreateAIDBClusterTaskRequest) SetCustomOssBucketName(v string) *CreateAIDBClusterTaskRequest {
+	s.CustomOssBucketName = &v
+	return s
+}
+
 func (s *CreateAIDBClusterTaskRequest) SetDBClusterId(v string) *CreateAIDBClusterTaskRequest {
 	s.DBClusterId = &v
 	return s
@@ -264,6 +289,11 @@ func (s *CreateAIDBClusterTaskRequest) SetDBClusterId(v string) *CreateAIDBClust
 
 func (s *CreateAIDBClusterTaskRequest) SetDBInstanceClass(v string) *CreateAIDBClusterTaskRequest {
 	s.DBInstanceClass = &v
+	return s
+}
+
+func (s *CreateAIDBClusterTaskRequest) SetDataserviceMode(v string) *CreateAIDBClusterTaskRequest {
+	s.DataserviceMode = &v
 	return s
 }
 

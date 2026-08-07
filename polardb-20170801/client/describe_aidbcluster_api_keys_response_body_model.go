@@ -11,13 +11,19 @@ type iDescribeAIDBClusterApiKeysResponseBody interface {
 	GoString() string
 	SetApiKeys(v []*DescribeAIDBClusterApiKeysResponseBodyApiKeys) *DescribeAIDBClusterApiKeysResponseBody
 	GetApiKeys() []*DescribeAIDBClusterApiKeysResponseBodyApiKeys
+	SetPageNumber(v string) *DescribeAIDBClusterApiKeysResponseBody
+	GetPageNumber() *string
+	SetPageSize(v string) *DescribeAIDBClusterApiKeysResponseBody
+	GetPageSize() *string
 	SetRequestId(v string) *DescribeAIDBClusterApiKeysResponseBody
 	GetRequestId() *string
 }
 
 type DescribeAIDBClusterApiKeysResponseBody struct {
 	// API Keys。
-	ApiKeys []*DescribeAIDBClusterApiKeysResponseBodyApiKeys `json:"ApiKeys,omitempty" xml:"ApiKeys,omitempty" type:"Repeated"`
+	ApiKeys    []*DescribeAIDBClusterApiKeysResponseBodyApiKeys `json:"ApiKeys,omitempty" xml:"ApiKeys,omitempty" type:"Repeated"`
+	PageNumber *string                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *string                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Id of the request
 	//
 	// example:
@@ -38,12 +44,30 @@ func (s *DescribeAIDBClusterApiKeysResponseBody) GetApiKeys() []*DescribeAIDBClu
 	return s.ApiKeys
 }
 
+func (s *DescribeAIDBClusterApiKeysResponseBody) GetPageNumber() *string {
+	return s.PageNumber
+}
+
+func (s *DescribeAIDBClusterApiKeysResponseBody) GetPageSize() *string {
+	return s.PageSize
+}
+
 func (s *DescribeAIDBClusterApiKeysResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
 func (s *DescribeAIDBClusterApiKeysResponseBody) SetApiKeys(v []*DescribeAIDBClusterApiKeysResponseBodyApiKeys) *DescribeAIDBClusterApiKeysResponseBody {
 	s.ApiKeys = v
+	return s
+}
+
+func (s *DescribeAIDBClusterApiKeysResponseBody) SetPageNumber(v string) *DescribeAIDBClusterApiKeysResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterApiKeysResponseBody) SetPageSize(v string) *DescribeAIDBClusterApiKeysResponseBody {
+	s.PageSize = &v
 	return s
 }
 

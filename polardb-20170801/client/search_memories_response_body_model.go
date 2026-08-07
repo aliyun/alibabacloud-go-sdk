@@ -9,21 +9,33 @@ type iSearchMemoriesResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetPage(v string) *SearchMemoriesResponseBody
+	GetPage() *string
+	SetPageSize(v string) *SearchMemoriesResponseBody
+	GetPageSize() *string
 	SetRequestId(v string) *SearchMemoriesResponseBody
 	GetRequestId() *string
 	SetResults(v []*SearchMemoriesResponseBodyResults) *SearchMemoriesResponseBody
 	GetResults() []*SearchMemoriesResponseBodyResults
+	SetTotal(v string) *SearchMemoriesResponseBody
+	GetTotal() *string
+	SetTotalPages(v string) *SearchMemoriesResponseBody
+	GetTotalPages() *string
 }
 
 type SearchMemoriesResponseBody struct {
-	// The unique request ID.
+	Page     *string `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
 	//
 	// example:
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array of search results.
-	Results []*SearchMemoriesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	// The list of results.
+	Results    []*SearchMemoriesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	Total      *string                              `json:"Total,omitempty" xml:"Total,omitempty"`
+	TotalPages *string                              `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s SearchMemoriesResponseBody) String() string {
@@ -34,12 +46,38 @@ func (s SearchMemoriesResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *SearchMemoriesResponseBody) GetPage() *string {
+	return s.Page
+}
+
+func (s *SearchMemoriesResponseBody) GetPageSize() *string {
+	return s.PageSize
+}
+
 func (s *SearchMemoriesResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
 func (s *SearchMemoriesResponseBody) GetResults() []*SearchMemoriesResponseBodyResults {
 	return s.Results
+}
+
+func (s *SearchMemoriesResponseBody) GetTotal() *string {
+	return s.Total
+}
+
+func (s *SearchMemoriesResponseBody) GetTotalPages() *string {
+	return s.TotalPages
+}
+
+func (s *SearchMemoriesResponseBody) SetPage(v string) *SearchMemoriesResponseBody {
+	s.Page = &v
+	return s
+}
+
+func (s *SearchMemoriesResponseBody) SetPageSize(v string) *SearchMemoriesResponseBody {
+	s.PageSize = &v
+	return s
 }
 
 func (s *SearchMemoriesResponseBody) SetRequestId(v string) *SearchMemoriesResponseBody {
@@ -49,6 +87,16 @@ func (s *SearchMemoriesResponseBody) SetRequestId(v string) *SearchMemoriesRespo
 
 func (s *SearchMemoriesResponseBody) SetResults(v []*SearchMemoriesResponseBodyResults) *SearchMemoriesResponseBody {
 	s.Results = v
+	return s
+}
+
+func (s *SearchMemoriesResponseBody) SetTotal(v string) *SearchMemoriesResponseBody {
+	s.Total = &v
+	return s
+}
+
+func (s *SearchMemoriesResponseBody) SetTotalPages(v string) *SearchMemoriesResponseBody {
+	s.TotalPages = &v
 	return s
 }
 
@@ -66,49 +114,49 @@ func (s *SearchMemoriesResponseBody) Validate() error {
 }
 
 type SearchMemoriesResponseBodyResults struct {
-	// The creation time of the memory.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-09-26T08:25:44Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The unique ID of the memory.
+	// The memory ID.
 	//
 	// example:
 	//
 	// 423
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The content of the memory.
+	// The memory content.
 	//
 	// example:
 	//
 	// xxx
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The agent ID that owns the memory.
+	// The agent to which the memory belongs.
 	//
 	// example:
 	//
 	// agent1
 	MemoryAgentId *string `json:"MemoryAgentId,omitempty" xml:"MemoryAgentId,omitempty"`
-	// The user ID that owns the memory.
+	// The user to whom the memory belongs.
 	//
 	// example:
 	//
 	// user1
 	MemoryUserId *string `json:"MemoryUserId,omitempty" xml:"MemoryUserId,omitempty"`
-	// Additional metadata associated with the memory.
+	// The metadata.
 	//
 	// example:
 	//
 	// {\\"tags\\":\\"Issue_date_2023-11-30,VD_现行有效\\"}
 	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The relevance score of the result.
+	// The score.
 	//
 	// example:
 	//
 	// 12
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The update time of the memory.
+	// The update time.
 	//
 	// example:
 	//

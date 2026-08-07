@@ -671,6 +671,80 @@ func (client *Client) AddPolarFsQuota(request *AddPolarFsQuotaRequest) (_result 
 
 // Summary:
 //
+// 添加冷存授权账号
+//
+// @param request - AddPolarOSSAuthorizedAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddPolarOSSAuthorizedAccountResponse
+func (client *Client) AddPolarOSSAuthorizedAccountWithOptions(request *AddPolarOSSAuthorizedAccountRequest, runtime *dara.RuntimeOptions) (_result *AddPolarOSSAuthorizedAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizedUserIds) {
+		query["AuthorizedUserIds"] = request.AuthorizedUserIds
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PfsInstanceId) {
+		query["PfsInstanceId"] = request.PfsInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddPolarOSSAuthorizedAccount"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddPolarOSSAuthorizedAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加冷存授权账号
+//
+// @param request - AddPolarOSSAuthorizedAccountRequest
+//
+// @return AddPolarOSSAuthorizedAccountResponse
+func (client *Client) AddPolarOSSAuthorizedAccount(request *AddPolarOSSAuthorizedAccountRequest) (_result *AddPolarOSSAuthorizedAccountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddPolarOSSAuthorizedAccountResponse{}
+	_body, _err := client.AddPolarOSSAuthorizedAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds SQL throttling rules.
 //
 // @param request - AddSQLRateLimitingRulesRequest
@@ -2592,6 +2666,10 @@ func (client *Client) CreateAIDBClusterWithOptions(request *CreateAIDBClusterReq
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !dara.IsNil(request.CreatePublicEndpoint) {
+		query["CreatePublicEndpoint"] = request.CreatePublicEndpoint
+	}
+
 	if !dara.IsNil(request.DBClusterDescription) {
 		query["DBClusterDescription"] = request.DBClusterDescription
 	}
@@ -2638,6 +2716,10 @@ func (client *Client) CreateAIDBClusterWithOptions(request *CreateAIDBClusterReq
 
 	if !dara.IsNil(request.ModelName) {
 		query["ModelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.ModelSpace) {
+		query["ModelSpace"] = request.ModelSpace
 	}
 
 	if !dara.IsNil(request.OwnerAccount) {
@@ -2768,6 +2850,10 @@ func (client *Client) CreateAIDBClusterApiKeyWithOptions(request *CreateAIDBClus
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ModelSpaceName) {
+		query["ModelSpaceName"] = request.ModelSpaceName
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -2930,12 +3016,20 @@ func (client *Client) CreateAIDBClusterTaskWithOptions(request *CreateAIDBCluste
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomOssBucketName) {
+		query["CustomOssBucketName"] = request.CustomOssBucketName
+	}
+
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
 	}
 
 	if !dara.IsNil(request.DBInstanceClass) {
 		query["DBInstanceClass"] = request.DBInstanceClass
+	}
+
+	if !dara.IsNil(request.DataserviceMode) {
+		query["DataserviceMode"] = request.DataserviceMode
 	}
 
 	if !dara.IsNil(request.DatasetPath) {
@@ -4782,6 +4876,14 @@ func (client *Client) CreateCostRuleWithOptions(request *CreateCostRuleRequest, 
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CacheCostPointsPerMillion) {
 		query["CacheCostPointsPerMillion"] = request.CacheCostPointsPerMillion
+	}
+
+	if !dara.IsNil(request.EffectiveTargetType) {
+		query["EffectiveTargetType"] = request.EffectiveTargetType
+	}
+
+	if !dara.IsNil(request.EffectiveTargetValue) {
+		query["EffectiveTargetValue"] = request.EffectiveTargetValue
 	}
 
 	if !dara.IsNil(request.GwClusterId) {
@@ -8346,6 +8448,10 @@ func (client *Client) DeleteAIDBClusterWithOptions(request *DeleteAIDBClusterReq
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !dara.IsNil(request.ModelSpace) {
+		query["ModelSpace"] = request.ModelSpace
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8406,6 +8512,10 @@ func (client *Client) DeleteAIDBClusterApiKeyWithOptions(request *DeleteAIDBClus
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApiKey) {
 		query["ApiKey"] = request.ApiKey
+	}
+
+	if !dara.IsNil(request.ModelSpaceName) {
+		query["ModelSpaceName"] = request.ModelSpaceName
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -12123,6 +12233,80 @@ func (client *Client) DeletePolarFsQuota(request *DeletePolarFsQuotaRequest) (_r
 
 // Summary:
 //
+// 删除冷存授权账号
+//
+// @param request - DeletePolarOSSAuthorizedAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePolarOSSAuthorizedAccountResponse
+func (client *Client) DeletePolarOSSAuthorizedAccountWithOptions(request *DeletePolarOSSAuthorizedAccountRequest, runtime *dara.RuntimeOptions) (_result *DeletePolarOSSAuthorizedAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizedUserIds) {
+		query["AuthorizedUserIds"] = request.AuthorizedUserIds
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PfsInstanceId) {
+		query["PfsInstanceId"] = request.PfsInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePolarOSSAuthorizedAccount"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePolarOSSAuthorizedAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除冷存授权账号
+//
+// @param request - DeletePolarOSSAuthorizedAccountRequest
+//
+// @return DeletePolarOSSAuthorizedAccountResponse
+func (client *Client) DeletePolarOSSAuthorizedAccount(request *DeletePolarOSSAuthorizedAccountRequest) (_result *DeletePolarOSSAuthorizedAccountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeletePolarOSSAuthorizedAccountResponse{}
+	_body, _err := client.DeletePolarOSSAuthorizedAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a throttling policy.
 //
 // @param request - DeleteRateLimitPolicyRequest
@@ -12384,6 +12568,10 @@ func (client *Client) DescribeAIDBClusterApiKeysWithOptions(request *DescribeAID
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ModelSpaceName) {
+		query["ModelSpaceName"] = request.ModelSpaceName
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -14915,18 +15103,24 @@ func (client *Client) DescribeApplicationParameters(request *DescribeApplication
 //
 // Queries the performance of a PolarDB AI application.
 //
-// @param request - DescribeApplicationPerformanceRequest
+// @param tmpReq - DescribeApplicationPerformanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeApplicationPerformanceResponse
-func (client *Client) DescribeApplicationPerformanceWithOptions(request *DescribeApplicationPerformanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeApplicationPerformanceResponse, _err error) {
+func (client *Client) DescribeApplicationPerformanceWithOptions(tmpReq *DescribeApplicationPerformanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeApplicationPerformanceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &DescribeApplicationPerformanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Filter) {
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, dara.String("filter"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
 		query["ApplicationId"] = request.ApplicationId
@@ -14974,6 +15168,10 @@ func (client *Client) DescribeApplicationPerformanceWithOptions(request *Describ
 
 	if !dara.IsNil(request.StartTime) {
 		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.FilterShrink) {
+		query["filter"] = request.FilterShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -16810,6 +17008,14 @@ func (client *Client) DescribeCostRulesWithOptions(request *DescribeCostRulesReq
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.EffectiveTargetType) {
+		query["EffectiveTargetType"] = request.EffectiveTargetType
+	}
+
+	if !dara.IsNil(request.EffectiveTargetValue) {
+		query["EffectiveTargetValue"] = request.EffectiveTargetValue
+	}
+
 	if !dara.IsNil(request.GwClusterId) {
 		query["GwClusterId"] = request.GwClusterId
 	}
@@ -24459,7 +24665,7 @@ func (client *Client) DescribePolarFs(request *DescribePolarFsRequest) (_result 
 
 // Summary:
 //
-// Retrieves the details of a PolarLakebase instance.
+// Retrieves the details of a Polarlakebase instance.
 //
 // @param request - DescribePolarFsAttributeRequest
 //
@@ -24511,7 +24717,7 @@ func (client *Client) DescribePolarFsAttributeWithOptions(request *DescribePolar
 
 // Summary:
 //
-// Retrieves the details of a PolarLakebase instance.
+// Retrieves the details of a Polarlakebase instance.
 //
 // @param request - DescribePolarFsAttributeRequest
 //
@@ -38409,7 +38615,7 @@ func (client *Client) RunPolarClawCronJob(request *RunPolarClawCronJobRequest) (
 
 // Summary:
 //
-// Retrieves memories based on a search query.
+// Retrieves memories.
 //
 // @param request - SearchMemoriesRequest
 //
@@ -38442,6 +38648,14 @@ func (client *Client) SearchMemoriesWithOptions(request *SearchMemoriesRequest, 
 
 	if !dara.IsNil(request.MemoryUserId) {
 		query["MemoryUserId"] = request.MemoryUserId
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["Page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
 	}
 
 	if !dara.IsNil(request.Query) {
@@ -38477,7 +38691,7 @@ func (client *Client) SearchMemoriesWithOptions(request *SearchMemoriesRequest, 
 
 // Summary:
 //
-// Retrieves memories based on a search query.
+// Retrieves memories.
 //
 // @param request - SearchMemoriesRequest
 //

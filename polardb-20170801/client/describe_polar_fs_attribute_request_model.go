@@ -26,7 +26,7 @@ type DescribePolarFsAttributeRequest struct {
 	//
 	// pc-bp1q76364ird*****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The PolarLakebase instance ID.
+	// The Polarlakebase instance ID.
 	//
 	// This parameter is required.
 	//

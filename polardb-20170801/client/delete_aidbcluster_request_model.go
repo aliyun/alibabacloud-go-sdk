@@ -11,6 +11,8 @@ type iDeleteAIDBClusterRequest interface {
 	GoString() string
 	SetDBClusterId(v string) *DeleteAIDBClusterRequest
 	GetDBClusterId() *string
+	SetModelSpace(v string) *DeleteAIDBClusterRequest
+	GetModelSpace() *string
 }
 
 type DeleteAIDBClusterRequest struct {
@@ -22,6 +24,10 @@ type DeleteAIDBClusterRequest struct {
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// pms-xxx
+	ModelSpace *string `json:"ModelSpace,omitempty" xml:"ModelSpace,omitempty"`
 }
 
 func (s DeleteAIDBClusterRequest) String() string {
@@ -36,8 +42,17 @@ func (s *DeleteAIDBClusterRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
 
+func (s *DeleteAIDBClusterRequest) GetModelSpace() *string {
+	return s.ModelSpace
+}
+
 func (s *DeleteAIDBClusterRequest) SetDBClusterId(v string) *DeleteAIDBClusterRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *DeleteAIDBClusterRequest) SetModelSpace(v string) *DeleteAIDBClusterRequest {
+	s.ModelSpace = &v
 	return s
 }
 

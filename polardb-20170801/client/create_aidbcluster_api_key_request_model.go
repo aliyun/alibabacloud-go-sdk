@@ -11,6 +11,8 @@ type iCreateAIDBClusterApiKeyRequest interface {
 	GoString() string
 	SetDescription(v string) *CreateAIDBClusterApiKeyRequest
 	GetDescription() *string
+	SetModelSpaceName(v string) *CreateAIDBClusterApiKeyRequest
+	GetModelSpaceName() *string
 	SetRegionId(v string) *CreateAIDBClusterApiKeyRequest
 	GetRegionId() *string
 }
@@ -22,6 +24,10 @@ type CreateAIDBClusterApiKeyRequest struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// pms-xxx
+	ModelSpaceName *string `json:"ModelSpaceName,omitempty" xml:"ModelSpaceName,omitempty"`
 	// The region ID.
 	//
 	// > 	- You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the regions of all clusters under the specified account.
@@ -48,12 +54,21 @@ func (s *CreateAIDBClusterApiKeyRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *CreateAIDBClusterApiKeyRequest) GetModelSpaceName() *string {
+	return s.ModelSpaceName
+}
+
 func (s *CreateAIDBClusterApiKeyRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
 func (s *CreateAIDBClusterApiKeyRequest) SetDescription(v string) *CreateAIDBClusterApiKeyRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateAIDBClusterApiKeyRequest) SetModelSpaceName(v string) *CreateAIDBClusterApiKeyRequest {
+	s.ModelSpaceName = &v
 	return s
 }
 
