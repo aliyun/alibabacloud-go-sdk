@@ -14,7 +14,7 @@ type iDisableCheckProductResponseBody interface {
 }
 
 type DisableCheckProductResponseBody struct {
-	// The unique identifier of the request
+	// The request ID.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iDescribeProductsRequest interface {
 }
 
 type DescribeProductsRequest struct {
-	// The product type of the resource. If you omit this parameter, the API returns resources of all product types. For example, specify `oss` to query resources from Object Storage Service.
+	// Filters by the product type of the resource. If this parameter is not specified, all types are queried.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type DescribeProductsRequest struct {
 	//
 	// rc-000***123
 	ResourceCategoryId *string `json:"ResourceCategoryId,omitempty" xml:"ResourceCategoryId,omitempty"`
-	// A list of resource owner IDs for cross-account resource queries. If you omit this parameter, the API returns resources from the current account.
+	// The list of resource owner IDs. This parameter is used in cross-account scenarios. If this parameter is left empty, data of the current account is returned by default.
 	//
 	// example:
 	//
 	// [123***7890]
 	ResourceOwnerIds []*int64 `json:"ResourceOwnerIds,omitempty" xml:"ResourceOwnerIds,omitempty" type:"Repeated"`
-	// The ID of the resource\\"s region. If you omit this parameter, the API returns resources from all regions.
+	// Filters by the region where the resource resides. If this parameter is not specified, all regions are queried.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iCreateResourceCategoryResponseBody interface {
 }
 
 type CreateResourceCategoryResponseBody struct {
-	// The returned data.
+	// The response data.
 	Data *CreateResourceCategoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The unique identifier of the request.
 	//
@@ -62,7 +62,7 @@ func (s *CreateResourceCategoryResponseBody) Validate() error {
 }
 
 type CreateResourceCategoryResponseBodyData struct {
-	// Resource category ID.
+	// The resource category ID.
 	//
 	// example:
 	//

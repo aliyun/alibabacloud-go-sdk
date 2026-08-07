@@ -429,7 +429,7 @@ func (client *Client) DescribeProductDataRedundancyTypeStatWithContext(ctx conte
 
 // Summary:
 //
-// Queries the data protection score status for cloud products.
+// Queries the data protection score status of cloud services.
 //
 // @param tmpReq - DescribeProductsRequest
 //
@@ -484,6 +484,51 @@ func (client *Client) DescribeProductsWithContext(ctx context.Context, tmpReq *D
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeProductsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries available regions.
+//
+// Description:
+//
+// BDRC本身是中心化的产品，接口用于部分与Region相关的功能使用。
+//
+// @param request - DescribeRegionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
+func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRegions"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/regions"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRegionsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -595,7 +640,7 @@ func (client *Client) DescribeResourcesWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Lists all data protection rules.
+// Queries a list of data protection rules.
 //
 // @param tmpReq - DescribeRulesRequest
 //
@@ -821,7 +866,7 @@ func (client *Client) DescribeTopRiskyResourcesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Disables the data protection score for a cloud product.
+// Disables the data protection score for a cloud service.
 //
 // @param request - DisableCheckProductRequest
 //
@@ -915,7 +960,7 @@ func (client *Client) DisableCheckResourceWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Enables data protection scoring for a cloud product.
+// Enables data protection scoring for an Alibaba Cloud service.
 //
 // @param request - EnableCheckProductRequest
 //

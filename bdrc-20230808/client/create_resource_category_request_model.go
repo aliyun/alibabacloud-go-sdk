@@ -18,7 +18,7 @@ type iCreateResourceCategoryRequest interface {
 }
 
 type CreateResourceCategoryRequest struct {
-	// Resource category name.
+	// The resource category name.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type CreateResourceCategoryRequest struct {
 	//
 	// My***ResourceCategory
 	ResourceCategoryName *string `json:"ResourceCategoryName,omitempty" xml:"ResourceCategoryName,omitempty"`
-	// Resource matcher.
+	// The resource matcher.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type CreateResourceCategoryRequest struct {
 	//
 	//  }
 	ResourceMatcher *string `json:"ResourceMatcher,omitempty" xml:"ResourceMatcher,omitempty"`
-	// Resource type.
+	// The resource type.
 	//
 	// if can be null:
 	// false

@@ -30,33 +30,31 @@ type ListMessagesRequest struct {
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Message level.
+	// The message level.
 	//
 	// example:
 	//
 	// WARNING
 	MessageLevel *string `json:"MessageLevel,omitempty" xml:"MessageLevel,omitempty"`
-	// Messages with time earlier than this value.
+	// Filters messages with a time earlier than the specified value.
 	//
 	// example:
 	//
 	// 1740019610
 	MessageTimeEarlierThan *int64 `json:"MessageTimeEarlierThan,omitempty" xml:"MessageTimeEarlierThan,omitempty"`
-	// Messages with time later than this value.
+	// Filters messages with a time later than the specified value.
 	//
 	// example:
 	//
 	// 1740019609
 	MessageTimeLaterThan *int64 `json:"MessageTimeLaterThan,omitempty" xml:"MessageTimeLaterThan,omitempty"`
-	// Message type.
+	// The message type.
 	//
 	// example:
 	//
 	// SUB_PROTECTION_POLICY_MODIFIED
 	MessageType *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
-	// The pagination token. If more entries are to be returned on the next page, a pagination token is returned.
-	//
-	// > If this parameter returns data, it indicates that there are more pages. You can use the returned NextToken as a request parameter to obtain the next page of data until it returns Null, indicating that all data has been obtained.
+	// The pagination token. If there is a next page, this field has a return value. This parameter indicates that there is a next page as long as data is returned. You can use the returned NextToken as a request parameter to obtain the next page of data until Null is returned, which indicates that all data has been retrieved.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iDescribeProductsResponseBody interface {
 type DescribeProductsResponseBody struct {
 	// The returned data.
 	Data *DescribeProductsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
@@ -62,21 +62,21 @@ func (s *DescribeProductsResponseBody) Validate() error {
 }
 
 type DescribeProductsResponseBodyData struct {
-	// A list of cloud products and their data protection status.
+	// The collection of records returned in this request.
 	Content []*DescribeProductsResponseBodyDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
-	// The maximum number of entries returned per page.
+	// The maximum number of records returned in this request.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page of results. If this parameter is absent from the response, all results have been retrieved.
+	// The position from which the current call starts reading. An empty value indicates that all data has been read.
 	//
 	// example:
 	//
 	// b4fd3cffcacafd65e3818a0b9b2ff9a2
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total number of entries that match the query. This parameter is not returned by default.
+	// The total number of records that match the request conditions. This is an optional parameter and may not be returned by default.
 	//
 	// example:
 	//
@@ -142,37 +142,37 @@ func (s *DescribeProductsResponseBodyData) Validate() error {
 }
 
 type DescribeProductsResponseBodyDataContent struct {
-	// The count of failed check items.
+	// The number of failed check items.
 	//
 	// example:
 	//
 	// 1
 	CheckFailedCount *int64 `json:"CheckFailedCount,omitempty" xml:"CheckFailedCount,omitempty"`
-	// The count of resources that failed the check.
+	// The number of resources that failed the check.
 	//
 	// example:
 	//
 	// 1
 	CheckFailedResourceCount *int64 `json:"CheckFailedResourceCount,omitempty" xml:"CheckFailedResourceCount,omitempty"`
-	// The count of resources for which the check is disabled.
+	// The number of resources for which the check is disabled.
 	//
 	// example:
 	//
 	// 1
 	DisableCheckResourceCount *int64 `json:"DisableCheckResourceCount,omitempty" xml:"DisableCheckResourceCount,omitempty"`
-	// Indicates whether the data protection score is enabled for the cloud product.
+	// Indicates whether data protection score assessment is enabled.
 	//
 	// example:
 	//
 	// true
 	EnableCheck *bool `json:"EnableCheck,omitempty" xml:"EnableCheck,omitempty"`
-	// The cloud product type, such as `ECS` and `OSS`.
+	// The cloud service type, such as ecs or oss.
 	//
 	// example:
 	//
 	// oss
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The data protection score, ranging from 0 to 100.
+	// The data protection score (0 to 100).
 	//
 	// example:
 	//
@@ -180,31 +180,31 @@ type DescribeProductsResponseBodyDataContent struct {
 	ProtectionScore *int32 `json:"ProtectionScore,omitempty" xml:"ProtectionScore,omitempty"`
 	// The distribution of resources across different score ranges.
 	ProtectionScoreDistribution []*DescribeProductsResponseBodyDataContentProtectionScoreDistribution `json:"ProtectionScoreDistribution,omitempty" xml:"ProtectionScoreDistribution,omitempty" type:"Repeated"`
-	// The UNIX timestamp of the last data protection score update.
+	// The time when the data protection score was last updated (UNIX timestamp).
 	//
 	// example:
 	//
 	// 1726036498
 	ProtectionScoreUpdatedTime *int64 `json:"ProtectionScoreUpdatedTime,omitempty" xml:"ProtectionScoreUpdatedTime,omitempty"`
-	// The count of risky check items.
+	// The number of check items with risks.
 	//
 	// example:
 	//
 	// 1
 	RiskCount *int64 `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
-	// The count of risky resources.
+	// The number of resources with risks.
 	//
 	// example:
 	//
 	// 1
 	RiskyResourceCount *int64 `json:"RiskyResourceCount,omitempty" xml:"RiskyResourceCount,omitempty"`
-	// The total count of resources for the cloud product.
+	// The total number of resources.
 	//
 	// example:
 	//
 	// 100
 	TotalResourceCount *int64 `json:"TotalResourceCount,omitempty" xml:"TotalResourceCount,omitempty"`
-	// The count of resources pending a check.
+	// The number of resources pending check.
 	//
 	// example:
 	//
@@ -342,7 +342,7 @@ func (s *DescribeProductsResponseBodyDataContent) Validate() error {
 }
 
 type DescribeProductsResponseBodyDataContentProtectionScoreDistribution struct {
-	// The count of resources within this score range.
+	// The number of resources within the range.
 	//
 	// example:
 	//
@@ -388,13 +388,13 @@ func (s *DescribeProductsResponseBodyDataContentProtectionScoreDistribution) Val
 }
 
 type DescribeProductsResponseBodyDataContentProtectionScoreDistributionRange struct {
-	// The lower bound of the score range, inclusive.
+	// The lower bound of the range (inclusive).
 	//
 	// example:
 	//
 	// 0
 	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
-	// The upper bound of the score range, inclusive.
+	// The upper bound of the range (inclusive).
 	//
 	// example:
 	//

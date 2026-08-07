@@ -14,7 +14,7 @@ type iDisableCheckProductRequest interface {
 }
 
 type DisableCheckProductRequest struct {
-	// Product type
+	// The product type.
 	//
 	// This parameter is required.
 	//

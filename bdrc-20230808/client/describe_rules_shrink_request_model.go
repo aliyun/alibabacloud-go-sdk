@@ -24,13 +24,13 @@ type iDescribeRulesShrinkRequest interface {
 }
 
 type DescribeRulesShrinkRequest struct {
-	// The number of entries to return on each page. Maximum value: 50. Default value: 10.
+	// The maximum number of entries per page for a paged query. Maximum value: 50. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results. You can obtain this token from the `NextToken` parameter in the previous response.
+	// Specifies whether a next query token exists. Valid values: If NextToken is empty, no more results exist. If NextToken is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -43,7 +43,7 @@ type DescribeRulesShrinkRequest struct {
 	// rc-000***123
 	ResourceCategoryId     *string `json:"ResourceCategoryId,omitempty" xml:"ResourceCategoryId,omitempty"`
 	ResourceOwnerIdsShrink *string `json:"ResourceOwnerIds,omitempty" xml:"ResourceOwnerIds,omitempty"`
-	// The ID of the region where the resource resides.
+	// The region ID of the resource.
 	//
 	// example:
 	//

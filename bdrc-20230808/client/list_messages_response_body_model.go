@@ -16,9 +16,9 @@ type iListMessagesResponseBody interface {
 }
 
 type ListMessagesResponseBody struct {
-	// The data returned.
+	// The response data.
 	Data *ListMessagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *ListMessagesResponseBody) Validate() error {
 }
 
 type ListMessagesResponseBodyData struct {
-	// Response parameters.
+	// The response content.
 	Content []*ListMessagesResponseBodyDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
 	// The maximum number of results requested.
 	//
@@ -76,7 +76,7 @@ type ListMessagesResponseBodyData struct {
 	//
 	// eKDyCM0zFQ5op7jVMWmNNA==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total number of entries returned.
+	// The total number of results.
 	//
 	// example:
 	//
@@ -142,49 +142,49 @@ func (s *ListMessagesResponseBodyData) Validate() error {
 }
 
 type ListMessagesResponseBodyDataContent struct {
-	// Message ID.
+	// The message ID.
 	//
 	// example:
 	//
 	// zgrjap8j-us04-owef-fpmo-kdpr80pbss0k
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// Message level.
+	// The message level.
 	//
 	// example:
 	//
 	// WARNING
 	MessageLevel *string `json:"MessageLevel,omitempty" xml:"MessageLevel,omitempty"`
-	// Message name.
+	// The message name.
 	//
 	// example:
 	//
 	// MyMessage
 	MessageName *string `json:"MessageName,omitempty" xml:"MessageName,omitempty"`
-	// Message source ID.
+	// The message source ID.
 	//
 	// example:
 	//
 	// p-123***7890
 	MessageSourceId *string `json:"MessageSourceId,omitempty" xml:"MessageSourceId,omitempty"`
-	// Message source region ID.
+	// The region ID of the message source.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	MessageSourceRegionId *string `json:"MessageSourceRegionId,omitempty" xml:"MessageSourceRegionId,omitempty"`
-	// Message source type.
+	// The message source type.
 	//
 	// example:
 	//
 	// PROTECTION_POLICY
 	MessageSourceType *string `json:"MessageSourceType,omitempty" xml:"MessageSourceType,omitempty"`
-	// Message time.
+	// The message time.
 	//
 	// example:
 	//
 	// 1740019609
 	MessageTime *int64 `json:"MessageTime,omitempty" xml:"MessageTime,omitempty"`
-	// Message type.
+	// The message type.
 	//
 	// example:
 	//

@@ -633,7 +633,7 @@ func (client *Client) DescribeProductDataRedundancyTypeStat(request *DescribePro
 
 // Summary:
 //
-// Queries the data protection score status for cloud products.
+// Queries the data protection score status of cloud services.
 //
 // @param tmpReq - DescribeProductsRequest
 //
@@ -698,7 +698,7 @@ func (client *Client) DescribeProductsWithOptions(tmpReq *DescribeProductsReques
 
 // Summary:
 //
-// Queries the data protection score status for cloud products.
+// Queries the data protection score status of cloud services.
 //
 // @param request - DescribeProductsRequest
 //
@@ -708,6 +708,74 @@ func (client *Client) DescribeProducts(request *DescribeProductsRequest) (_resul
 	headers := make(map[string]*string)
 	_result = &DescribeProductsResponse{}
 	_body, _err := client.DescribeProductsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries available regions.
+//
+// Description:
+//
+// BDRC本身是中心化的产品，接口用于部分与Region相关的功能使用。
+//
+// @param request - DescribeRegionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
+func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRegions"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/regions"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries available regions.
+//
+// Description:
+//
+// BDRC本身是中心化的产品，接口用于部分与Region相关的功能使用。
+//
+// @param request - DescribeRegionsRequest
+//
+// @return DescribeRegionsResponse
+func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.DescribeRegionsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -837,7 +905,7 @@ func (client *Client) DescribeResources(request *DescribeResourcesRequest) (_res
 
 // Summary:
 //
-// Lists all data protection rules.
+// Queries a list of data protection rules.
 //
 // @param tmpReq - DescribeRulesRequest
 //
@@ -910,7 +978,7 @@ func (client *Client) DescribeRulesWithOptions(tmpReq *DescribeRulesRequest, hea
 
 // Summary:
 //
-// Lists all data protection rules.
+// Queries a list of data protection rules.
 //
 // @param request - DescribeRulesRequest
 //
@@ -1137,7 +1205,7 @@ func (client *Client) DescribeTopRiskyResources(request *DescribeTopRiskyResourc
 
 // Summary:
 //
-// Disables the data protection score for a cloud product.
+// Disables the data protection score for a cloud service.
 //
 // @param request - DisableCheckProductRequest
 //
@@ -1184,7 +1252,7 @@ func (client *Client) DisableCheckProductWithOptions(request *DisableCheckProduc
 
 // Summary:
 //
-// Disables the data protection score for a cloud product.
+// Disables the data protection score for a cloud service.
 //
 // @param request - DisableCheckProductRequest
 //
@@ -1269,7 +1337,7 @@ func (client *Client) DisableCheckResource(request *DisableCheckResourceRequest)
 
 // Summary:
 //
-// Enables data protection scoring for a cloud product.
+// Enables data protection scoring for an Alibaba Cloud service.
 //
 // @param request - EnableCheckProductRequest
 //
@@ -1316,7 +1384,7 @@ func (client *Client) EnableCheckProductWithOptions(request *EnableCheckProductR
 
 // Summary:
 //
-// Enables data protection scoring for a cloud product.
+// Enables data protection scoring for an Alibaba Cloud service.
 //
 // @param request - EnableCheckProductRequest
 //
