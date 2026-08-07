@@ -21,6 +21,8 @@ type iListLineagesRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListLineagesRequest
 	GetPageSize() *int32
+	SetRecentDays(v int32) *ListLineagesRequest
+	GetRecentDays() *int32
 	SetSortBy(v string) *ListLineagesRequest
 	GetSortBy() *string
 	SetSrcEntityId(v string) *ListLineagesRequest
@@ -69,7 +71,8 @@ type ListLineagesRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RecentDays *int32 `json:"RecentDays,omitempty" xml:"RecentDays,omitempty"`
 	// The field to sort the results by. The default is `Name`, which sorts by entity name.
 	//
 	// example:
@@ -122,6 +125,10 @@ func (s *ListLineagesRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListLineagesRequest) GetRecentDays() *int32 {
+	return s.RecentDays
+}
+
 func (s *ListLineagesRequest) GetSortBy() *string {
 	return s.SortBy
 }
@@ -161,6 +168,11 @@ func (s *ListLineagesRequest) SetPageNumber(v int32) *ListLineagesRequest {
 
 func (s *ListLineagesRequest) SetPageSize(v int32) *ListLineagesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListLineagesRequest) SetRecentDays(v int32) *ListLineagesRequest {
+	s.RecentDays = &v
 	return s
 }
 
