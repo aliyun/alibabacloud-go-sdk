@@ -36,7 +36,7 @@ type iDescribeParentInstanceRequest interface {
 }
 
 type DescribeParentInstanceRequest struct {
-	// The authorization status of the data asset instance.
+	// The authorization status of the data asset instance. Valid values:
 	//
 	// - **0**: Unauthorized.
 	//
@@ -46,7 +46,7 @@ type DescribeParentInstanceRequest struct {
 	//
 	// 0
 	AuthStatus *int32 `json:"AuthStatus,omitempty" xml:"AuthStatus,omitempty"`
-	// The connection status of the instance or a database in the instance. Valid values:
+	// The database connection status of the instance or the database under the instance. Valid values:
 	//
 	// - **-3**: The database is not created.
 	//
@@ -54,7 +54,7 @@ type DescribeParentInstanceRequest struct {
 	//
 	// - **-1**: Not connected.
 	//
-	// - **2**: Testing connectivity.
+	// - **2**: Connectivity test in progress.
 	//
 	// - **3**: Connected.
 	//
@@ -64,75 +64,75 @@ type DescribeParentInstanceRequest struct {
 	//
 	// 3
 	CheckStatus *int32 `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
-	// The instance status.
+	// The instance status. Valid values:
 	//
 	// - **Running**: Running.
 	//
 	// - **Released**: Released.
 	//
-	// - **DatabaseNotCreated**: Database not created.
+	// - **DatabaseNotCreated**: The database is not created.
 	//
 	// example:
 	//
 	// Running
 	ClusterStatus *string `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
-	// The number of the page to return for a paged query. Default value: **1**.
+	// The page number when paging is used. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// db_**t
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// The type of the database engine. Valid values:
+	// The engine type. Valid values:
 	//
-	// - **MySQL**.
+	// - **MySQL**
 	//
-	// - **MariaDB**.
+	// - **MariaDB**
 	//
-	// - **Oracle**.
+	// - **Oracle**
 	//
-	// - **PostgreSQL**.
+	// - **PostgreSQL**
 	//
-	// - **SQLServer**.
+	// - **SQLServer**
 	//
 	// example:
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The ID of the data asset instance.
+	// The instance ID of the asset to which the column data in the data asset table belongs.
 	//
 	// example:
 	//
 	// rm-*******xx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// - **zh_cn**: Simplified Chinese. This is the default value.
+	// - **zh_cn**: Chinese (Simplified). This is the default value.
 	//
-	// - **en_us**: U.S. English.
+	// - **en_us**: English (US).
 	//
 	// example:
 	//
 	// zh_cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the member account.
+	// The ID of the member accounts.
 	//
 	// example:
 	//
 	// **********8103
 	MemberAccount *int64 `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
-	// The number of entries to return on each page for a paged query. Default value: 10.
+	// The number of entries per page when paging is used. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// This parameter is required. The type of the product. Valid values:
+	// Required. The product type. Valid values:
 	//
 	// - **1**: MaxCompute
 	//
@@ -144,7 +144,7 @@ type DescribeParentInstanceRequest struct {
 	//
 	// - **5**: RDS
 	//
-	// - **6**: Self-managed database
+	// - **6**: SelfDB
 	//
 	// - **7**: PolarDB-X
 	//
@@ -176,7 +176,7 @@ type DescribeParentInstanceRequest struct {
 	//
 	// - **cn-shenzhen**: China (Shenzhen).
 	//
-	// - **cn-hongkong**: China (Hong Kong).
+	// - **cn-hongkong**: Hong Kong (China).
 	//
 	// example:
 	//

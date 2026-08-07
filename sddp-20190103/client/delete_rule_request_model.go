@@ -34,7 +34,11 @@ type DeleteRuleRequest struct {
 	//
 	// 122300
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The language of the data asset. Valid values: -**zh**: Chinese -**en**: English
+	// The language of the data asset. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
 	//
 	// example:
 	//

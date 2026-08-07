@@ -16,13 +16,13 @@ type iModifyRuleStatusResponseBody interface {
 }
 
 type ModifyRuleStatusResponseBody struct {
-	// The IDs of the rules whose status failed to be changed. Multiple IDs are separated by commas.
+	// The IDs of the rules whose status failed to be updated. Multiple IDs are separated by commas (,).
 	//
 	// example:
 	//
 	// 1,2,3,4
 	FailedIds *string `json:"FailedIds,omitempty" xml:"FailedIds,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

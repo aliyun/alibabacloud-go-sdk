@@ -22,27 +22,27 @@ type iDescribeInstancesResponseBody interface {
 }
 
 type DescribeInstancesResponseBody struct {
-	// The page number.
+	// The page number of the current page.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The details of the data asset instances.
+	// The details of the data asset instances returned.
 	Items []*DescribeInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of data asset instances returned on each page.
+	// The number of data asset instances on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 71064826-726F-4ADA-B879-05D8055476FB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of data asset instances.
+	// The total number of data asset instances returned.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type DescribeInstancesResponseBodyItems struct {
 	//
 	// ***DemoCenter
 	DepartName *string `json:"DepartName,omitempty" xml:"DepartName,omitempty"`
-	// The unique ID of the data asset instance that is recorded in Data Security Center.
+	// The unique ID of the data asset instance recorded in Data Security Center.
 	//
 	// example:
 	//
@@ -143,27 +143,27 @@ type DescribeInstancesResponseBodyItems struct {
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
 	// The security status of the data asset instance. Valid values:
 	//
-	// - **true**: secure
+	// - **true**: Secure.
 	//
-	// - **false**: insecure
+	// - **false**: Not secure.
 	//
 	// example:
 	//
 	// true
 	Labelsec *bool `json:"Labelsec,omitempty" xml:"Labelsec,omitempty"`
-	// The time when the last scan of the data asset instance was completed. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the most recent scan of the data asset instance was completed. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1637622793000
 	LastFinishTime *int64 `json:"LastFinishTime,omitempty" xml:"LastFinishTime,omitempty"`
-	// If multi-account management is enabled and the asset belongs to a member account, this parameter indicates the UID of the member account.
+	// If the management account has enabled multi-account management and the asset belongs to another member account, this field displays the UID of the member account.
 	//
 	// example:
 	//
 	// 12567890126
 	MemberAliUid *string `json:"MemberAliUid,omitempty" xml:"MemberAliUid,omitempty"`
-	// The list of data labels.
+	// The list of data tags.
 	ModelTags []*DescribeInstancesResponseBodyItemsModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
 	// The name of the data asset instance.
 	//
@@ -183,7 +183,7 @@ type DescribeInstancesResponseBodyItems struct {
 	//
 	// dtdep-239-******
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The name of the product to which the data asset instance belongs, such as MaxCompute, OSS, or RDS. For more information about the supported products, see [Data assets that can be scanned for sensitive data](https://help.aliyun.com/document_detail/212906.html).
+	// The name of the product to which the data asset instance belongs, such as MaxCompute, OSS, or RDS. For supported product names, see [Data types from which sensitive data can be detected](https://help.aliyun.com/document_detail/212906.html).
 	//
 	// example:
 	//
@@ -197,43 +197,43 @@ type DescribeInstancesResponseBodyItems struct {
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 	// The protection status of the data asset instance. Valid values:
 	//
-	// - **true**: The instance is protected.
+	// - **true**: Protected.
 	//
-	// - **false**: The instance is not protected.
+	// - **false**: Not protected.
 	//
 	// example:
 	//
 	// false
 	Protection *bool `json:"Protection,omitempty" xml:"Protection,omitempty"`
-	// The ID of the threat level for the data asset instance. The higher the threat level ID, the more sensitive the data.
+	// The risk level ID of the data asset instance. A higher risk level ID indicates more sensitive data is detected.
 	//
-	// - **1**: No sensitive data is detected. No threat.
+	// - **1**: No sensitive data is detected. No risk.
 	//
-	// - **2**: Threat level 1.
+	// - **2**: Sensitive data risk at level 1.
 	//
-	// - **3**: Threat level 2.
+	// - **3**: Sensitive data risk at level 2.
 	//
-	// - **4**: Threat level 3.
+	// - **4**: Sensitive data risk at level 3.
 	//
-	// - **5**: Threat level 4.
+	// - **5**: Sensitive data risk at level 4.
 	//
-	// - **6**: Threat level 5.
+	// - **6**: Sensitive data risk at level 5.
 	//
-	// - **7**: Threat level 6.
+	// - **7**: Sensitive data risk at level 6.
 	//
-	// - **8**: Threat level 7.
+	// - **8**: Sensitive data risk at level 7.
 	//
-	// - **9**: Threat level 8.
+	// - **9**: Sensitive data risk at level 8.
 	//
-	// - **10**: Threat level 9.
+	// - **10**: Sensitive data risk at level 9.
 	//
-	// - **11**: Threat level 10.
+	// - **11**: Sensitive data risk at level 10.
 	//
 	// example:
 	//
 	// 2
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// The name of the threat level for the data asset instance.
+	// The risk level name of the data asset instance.
 	//
 	// example:
 	//
@@ -247,15 +247,15 @@ type DescribeInstancesResponseBodyItems struct {
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// Indicates whether the data asset instance contains sensitive data. Valid values:
 	//
-	// - **true**: yes
+	// - **true**: Contains sensitive data.
 	//
-	// - **false**: no
+	// - **false**: Does not contain sensitive data.
 	//
 	// example:
 	//
 	// true
 	Sensitive *bool `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
-	// The total amount of sensitive data in the data asset instance. For example, if the data asset is an RDS instance, this parameter indicates the total number of sensitive tables in the instance.
+	// The total number of sensitive data items in the data asset instance. For example, if the data asset is ApsaraDB RDS, this value indicates the total number of sensitive tables in the databases of the instance.
 	//
 	// example:
 	//
@@ -267,7 +267,7 @@ type DescribeInstancesResponseBodyItems struct {
 	//
 	// tenant
 	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
-	// The total amount of data in the data asset instance. For example, if the data asset is an RDS instance, this parameter indicates the total number of tables in the instance.
+	// The total number of data items in the data asset instance. For example, if the data asset is ApsaraDB RDS, this value indicates the total number of tables in the databases of the instance.
 	//
 	// example:
 	//
@@ -486,25 +486,25 @@ func (s *DescribeInstancesResponseBodyItems) Validate() error {
 }
 
 type DescribeInstancesResponseBodyItemsModelTags struct {
-	// The ID of the data label. Valid values:
+	// The data tag ID. Valid values:
 	//
-	// - **101**: Personal sensitive information
+	// - **101**: personal sensitive information
 	//
-	// - **102**: Personal information
+	// - **102**: personal information
 	//
-	// - **107**: General information
+	// - **107**: general information
 	//
 	// example:
 	//
 	// 101
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the data label. Valid values:
+	// The data tag name. Valid values:
 	//
-	// - Personal sensitive information
+	// - 个人敏感信息
 	//
-	// - Personal information
+	// - 个人信息
 	//
-	// - General information
+	// - 通用信息
 	//
 	// example:
 	//

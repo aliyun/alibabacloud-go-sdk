@@ -14,7 +14,7 @@ type iManualTriggerMaskingProcessResponseBody interface {
 }
 
 type ManualTriggerMaskingProcessResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

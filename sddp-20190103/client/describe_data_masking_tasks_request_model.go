@@ -26,13 +26,13 @@ type iDescribeDataMaskingTasksRequest interface {
 }
 
 type DescribeDataMaskingTasksRequest struct {
-	// The page number to return.
+	// The page number for a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The product that the destination data source belongs to. Valid values:
+	// The service to which the destination data source belongs. Valid values:
 	//
 	// - **1**: MaxCompute.
 	//
@@ -50,7 +50,7 @@ type DescribeDataMaskingTasksRequest struct {
 	//
 	// 2
 	DstType *int32 `json:"DstType,omitempty" xml:"DstType,omitempty"`
-	// The end time for creating the data masking task. The value is a UNIX timestamp. Unit: milliseconds.
+	// The end time of the task creation period. Format: timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ type DescribeDataMaskingTasksRequest struct {
 	//
 	// zh_cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// A keyword to search for tasks. You can search by task name or task ID.
+	// The keyword used to search for tasks. You can search by task name or task ID.
 	//
 	// example:
 	//
 	// test
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
-	// The start time for creating the task. The value is a UNIX timestamp. Unit: milliseconds.
+	// The start time of the task creation period. Format: timestamp. Unit: milliseconds.
 	//
 	// example:
 	//

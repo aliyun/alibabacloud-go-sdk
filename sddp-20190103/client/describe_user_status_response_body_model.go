@@ -16,13 +16,13 @@ type iDescribeUserStatusResponseBody interface {
 }
 
 type DescribeUserStatusResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 769FB3C1-F4C9-42DF-9B72-7077A8989C13
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the current account.
+	// The details of the current logon account.
 	UserStatus *DescribeUserStatusResponseBodyUserStatus `json:"UserStatus,omitempty" xml:"UserStatus,omitempty" type:"Struct"`
 }
 
@@ -62,53 +62,53 @@ func (s *DescribeUserStatusResponseBody) Validate() error {
 }
 
 type DescribeUserStatusResponseBodyUserStatus struct {
-	// The authorized AccessKey ID of the user.
+	// The AccessKey ID authorized by the user.
 	//
 	// example:
 	//
 	// yourAccessKeyID
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	// Indicates whether the currently logged-in account has been granted the service role permissions for DSC asset synchronization. Valid values:
+	// Indicates whether the current logon account has authorized the service-linked role for DSC asset synchronization. Valid values:
 	//
 	// - **true**: authorized.
 	//
-	// - **false**: unauthorized.
+	// - **false**: not authorized.
 	//
 	// example:
 	//
 	// true
 	AssetRoleAuthed *bool `json:"AssetRoleAuthed,omitempty" xml:"AssetRoleAuthed,omitempty"`
-	// Indicates whether SQL Insights can be disabled. Valid values:
+	// Indicates whether SQL Explorer can be disabled. Valid values:
 	//
-	// - **true**: yes.
+	// - **true**: can be disabled.
 	//
-	// - **false**: no.
+	// - **false**: cannot be disabled.
 	//
 	// example:
 	//
 	// true
 	AuditClosable *bool `json:"AuditClosable,omitempty" xml:"AuditClosable,omitempty"`
-	// Indicates whether SQL Insights can be released.
+	// Indicates whether SQL Explorer can be released. Valid values:
 	//
-	// - **true**: yes.
+	// - **true**: can be released.
 	//
-	// - **false**: no.
+	// - **false**: cannot be released.
 	//
 	// example:
 	//
 	// true
 	AuditReleasable *bool `json:"AuditReleasable,omitempty" xml:"AuditReleasable,omitempty"`
-	// Indicates whether the current account is granted Resource Access Management (RAM) permissions on DSC. Valid values:
+	// Indicates whether the current logon account has authorized DSC to access RAM. Valid values:
 	//
-	// - **true**: The account is granted the permissions.
+	// - **true**: authorized.
 	//
-	// - **false**: The account is not granted the permissions.
+	// - **false**: not authorized.
 	//
 	// example:
 	//
 	// true
 	Authed *bool `json:"Authed,omitempty" xml:"Authed,omitempty"`
-	// The billing method of the DSC service for the current account. Valid values:
+	// The billing method of the DSC service purchased by the current logon account. Valid values:
 	//
 	// - **PREPAY**: subscription.
 	//
@@ -118,23 +118,23 @@ type DescribeUserStatusResponseBodyUserStatus struct {
 	//
 	// PREPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The permissions that the current account has. Valid values:
+	// The permissions of the current account. Valid values:
 	//
-	// - **0**: The account has the management or read-only permissions on Data Security Center.
+	// - **0**: has management or read-only permissions for Data Security Center.
 	//
-	// - **1**: The account has the management permissions on data domains.
+	// - **1**: has data domain management permissions.
 	//
 	// example:
 	//
 	// 1
 	DataManagerRole *int32 `json:"DataManagerRole,omitempty" xml:"DataManagerRole,omitempty"`
-	// The ID of the Data Security Center instance purchased by the Alibaba Cloud account.
+	// The instance ID of the Data Security Center product purchased by the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// sddp-cn-****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of instances in the current account.
+	// The number of instances in the current logon account.
 	//
 	// example:
 	//
@@ -146,23 +146,23 @@ type DescribeUserStatusResponseBodyUserStatus struct {
 	//
 	// 10
 	InstanceTotalCount *int64 `json:"InstanceTotalCount,omitempty" xml:"InstanceTotalCount,omitempty"`
-	// Indicates whether the Asset Lab feature is enabled. Valid values:
+	// Indicates whether the asset lab feature is enabled. Valid values:
 	//
 	// - **1**: enabled.
 	//
-	// - **0**: disabled.
+	// - **0**: not enabled.
 	//
 	// example:
 	//
 	// 1
 	LabStatus *int32 `json:"LabStatus,omitempty" xml:"LabStatus,omitempty"`
-	// The total OSS storage. Unit: bytes.
+	// The total OSS storage capacity. Unit: bytes.
 	//
 	// example:
 	//
 	// 2048
 	OssTotalSize *int64 `json:"OssTotalSize,omitempty" xml:"OssTotalSize,omitempty"`
-	// The total number of days that assets have been protected.
+	// The total number of days that user assets have been protected.
 	//
 	// example:
 	//
@@ -170,15 +170,15 @@ type DescribeUserStatusResponseBodyUserStatus struct {
 	ProtectionDays *int32 `json:"ProtectionDays,omitempty" xml:"ProtectionDays,omitempty"`
 	// Indicates whether the DSC service is purchased. Valid values:
 	//
-	// - **true**: yes.
+	// - **true**: purchased.
 	//
-	// - **false**: no.
+	// - **false**: not purchased.
 	//
 	// example:
 	//
 	// true
 	Purchased *bool `json:"Purchased,omitempty" xml:"Purchased,omitempty"`
-	// The number of days from service expiration to service release. Unit: days.
+	// The number of days from expiration to release. Unit: days.
 	//
 	// example:
 	//
@@ -190,39 +190,39 @@ type DescribeUserStatusResponseBodyUserStatus struct {
 	//
 	// 15000
 	ReleaseTime *int64 `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
-	// The number of remaining days in the protection period for the assets of the current account.
+	// The remaining days of the protection period for assets in the current logon account.
 	//
 	// example:
 	//
 	// 131
 	RemainDays *int32 `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
-	// Indicates whether the current account uses the trial version of the DSC service. Valid values:
+	// Indicates whether the current logon account is using a trial version of DSC. Valid values:
 	//
-	// - **true**: yes.
+	// - **true**: trial.
 	//
-	// - **false**: no.
+	// - **false**: non-trial.
 	//
 	// example:
 	//
 	// true
 	Trail *bool `json:"Trail,omitempty" xml:"Trail,omitempty"`
-	// Indicates whether the agent-based audit feature has been used. Valid values:
+	// Indicates whether the Agent audit feature has been used. Valid values:
 	//
-	// - **1**: yes.
+	// - **1**: has been used.
 	//
-	// - **0**: no.
+	// - **0**: has not been used.
 	//
 	// example:
 	//
 	// 1
 	UseAgentAudit *bool `json:"UseAgentAudit,omitempty" xml:"UseAgentAudit,omitempty"`
-	// The number of used instances.
+	// The number of instances that are used.
 	//
 	// example:
 	//
 	// 125
 	UseInstanceNum *int32 `json:"UseInstanceNum,omitempty" xml:"UseInstanceNum,omitempty"`
-	// The used Object Storage Service (OSS) storage. Unit: bytes.
+	// The used OSS storage capacity. Unit: bytes.
 	//
 	// example:
 	//

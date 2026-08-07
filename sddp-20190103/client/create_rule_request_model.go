@@ -50,7 +50,7 @@ type iCreateRuleRequest interface {
 }
 
 type CreateRuleRequest struct {
-	// The content type of the sensitive data detection rule. Valid values:
+	// The type of content in the sensitive data detection rule. Valid values:
 	//
 	// - **0**: keyword.
 	//
@@ -60,7 +60,7 @@ type CreateRuleRequest struct {
 	//
 	// 0
 	Category *int32 `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The content of the sensitive data detection rule. The content can be a regular expression or a keyword that is used to match sensitive data fields or text.
+	// The content of the sensitive data detection rule. The content can be a regular expression or keyword used to match sensitive data fields or text.
 	//
 	// This parameter is required.
 	//
@@ -70,9 +70,9 @@ type CreateRuleRequest struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The content type. Valid values:
 	//
-	// - **1**: SQL injection exploit.
+	// - **1**: SQL injection exploitation attempt.
 	//
-	// - **2**: SQL injection bypass.
+	// - **2**: SQL injection bypass attempt.
 	//
 	// - **3**: stored procedure abuse.
 	//
@@ -90,7 +90,7 @@ type CreateRuleRequest struct {
 	//
 	// ID card
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The language of the content in the request and response. Valid values:
+	// The language type for the request and response messages. Valid values:
 	//
 	// - **zh**: Chinese.
 	//
@@ -110,7 +110,7 @@ type CreateRuleRequest struct {
 	//
 	// 1
 	MatchType *int32 `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	// The IDs of the model rules for sensitive data auditing.
+	// The collection of model IDs for sensitive data auditing.
 	//
 	// example:
 	//
@@ -124,13 +124,13 @@ type CreateRuleRequest struct {
 	//
 	// rule-tst
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The name of the service to which the data asset belongs. Valid values: **MaxCompute**, **OSS**, **ADS**, **OTS**, and **RDS**.
+	// The name of the product to which the column data in the data asset table belongs. Valid values: **MaxCompute**, **OSS**, **ADS**, **OTS**, **RDS**, and others.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the service to which the data asset belongs. Valid values:
+	// The ID that corresponds to the product name of the data asset. Valid values:
 	//
 	// - **1**: MaxCompute
 	//
@@ -152,25 +152,25 @@ type CreateRuleRequest struct {
 	//
 	// - **1**: N/A. No sensitive data is detected.
 	//
-	// - **2**: S1. Level 1 sensitive data.
+	// - **2**: S1. Level-1 sensitive data.
 	//
-	// - **3**: S2. Level 2 sensitive data.
+	// - **3**: S2. Level-2 sensitive data.
 	//
-	// - **4**: S3. Level 3 sensitive data.
+	// - **4**: S3. Level-3 sensitive data.
 	//
-	// - **5**: S4. Level 4 sensitive data.
+	// - **5**: S4. Level-4 sensitive data.
 	//
 	// example:
 	//
 	// 2
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// The type of the rule. Valid values:
+	// The feature type of the rule. Valid values:
 	//
 	// - **1**: data detection rule.
 	//
 	// - **2**: audit policy.
 	//
-	// - **3**: anomaly detection rule.
+	// - **3**: outlier detection rule.
 	//
 	// - **99**: custom rule.
 	//
@@ -192,15 +192,15 @@ type CreateRuleRequest struct {
 	StatExpress *string `json:"StatExpress,omitempty" xml:"StatExpress,omitempty"`
 	// The status of the rule. Valid values:
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled.
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of data assets that the rule supports. Valid values:
+	// The asset form supported by the rule. Valid values:
 	//
 	// - **0**: all assets.
 	//
@@ -212,13 +212,13 @@ type CreateRuleRequest struct {
 	//
 	// 1
 	SupportForm *int32 `json:"SupportForm,omitempty" xml:"SupportForm,omitempty"`
-	// The code of the service to which the rule applies. Valid values: **MaxCompute**, **OSS**, **ADS**, **OTS**, and **RDS**.
+	// The target product code. Valid values: **MaxCompute**, **OSS**, **ADS**, **OTS**, **RDS**, and others.
 	//
 	// example:
 	//
 	// MaxCompute
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// The IDs of the template rules for sensitive data auditing.
+	// The collection of template IDs for sensitive data auditing.
 	//
 	// example:
 	//
@@ -226,11 +226,11 @@ type CreateRuleRequest struct {
 	TemplateRuleIds *string `json:"TemplateRuleIds,omitempty" xml:"TemplateRuleIds,omitempty"`
 	// The risk level. Valid values:
 	//
-	// - **1**: Low.
+	// - **1**: low.
 	//
-	// - **2**: Medium.
+	// - **2**: medium.
 	//
-	// - **3**: High.
+	// - **3**: high.
 	//
 	// example:
 	//

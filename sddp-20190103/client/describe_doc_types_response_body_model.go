@@ -16,9 +16,9 @@ type iDescribeDocTypesResponseBody interface {
 }
 
 type DescribeDocTypesResponseBody struct {
-	// A list of OSS file types.
+	// The list of OSS file types in the result.
 	DocTypeList []*DescribeDocTypesResponseBodyDocTypeList `json:"DocTypeList,omitempty" xml:"DocTypeList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The unique identifier that Alibaba Cloud generated for the request.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ func (s *DescribeDocTypesResponseBody) Validate() error {
 }
 
 type DescribeDocTypesResponseBodyDocTypeList struct {
-	// The code of the file type.
+	// The file type code.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type DescribeDocTypesResponseBodyDocTypeList struct {
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the file type.
+	// The file type name.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type CreateScanTaskResponseBody struct {
 	//
 	// 100
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -44,63 +44,63 @@ type iDescribeDataLimitsRequest interface {
 type DescribeDataLimitsRequest struct {
 	// The audit status. Valid values:
 	//
-	// - **1**: Auditing enabled.
+	// - **1**: audit enabled.
 	//
-	// - **0**: Auditing disabled.
+	// - **0**: audit disabled.
 	//
 	// example:
 	//
 	// 1
 	AuditStatus *int32 `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	// The connectivity test status. Valid values:
+	// The data detection status. Valid values:
 	//
-	// - **0**: Ready.
+	// - **0**: ready.
 	//
-	// - **1**: Running.
+	// - **1**: running.
 	//
-	// - **2**: Connectivity test in progress.
+	// - **2**: connectivity test in progress.
 	//
-	// - **3**: Connectivity test passed.
+	// - **3**: connectivity test passed.
 	//
-	// - **4**: Connectivity test failed.
+	// - **4**: connectivity test failed.
 	//
 	// example:
 	//
 	// 3
 	CheckStatus *int32 `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
-	// The page number to return.
+	// Settings the page number of the current page when you perform a paged query. For more information about paging, refer to the paging parameters.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The data masking status. Valid values:
+	// The data masking permission status. Valid values:
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled.
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled.
 	//
 	// example:
 	//
 	// 1
 	DatamaskStatus *int32 `json:"DatamaskStatus,omitempty" xml:"DatamaskStatus,omitempty"`
-	// The sensitive data detection status. Valid values:
+	// The detection permission status. Valid values:
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled.
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled.
 	//
 	// example:
 	//
 	// 1
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The end of the time range to query. This value is a UNIX timestamp. Unit: milliseconds.
+	// The end of the creation time range. Format: timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1616068534877
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The type of the database engine. Examples: **MySQL**, **SQLServer**, **Oracle**, **PostgreSQL**, and **MongoDB**.
+	// The database type. Valid values: **MySQL**, **SQLServer**, **Oracle**, **PostgreSQL**, **MongoDB**, and others.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type DescribeDataLimitsRequest struct {
 	//
 	// 2
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
 	// - **zh**: Chinese.
 	//
@@ -122,13 +122,13 @@ type DescribeDataLimitsRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the member account.
+	// The ID of the member accounts.
 	//
 	// example:
 	//
 	// **********8103
 	MemberAccount *int64 `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries to return on each page when you perform a paged query. For more information about paging, refer to the paging parameters.
 	//
 	// example:
 	//
@@ -136,41 +136,41 @@ type DescribeDataLimitsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the parent asset to which the data asset belongs. Valid values:
 	//
-	// - The name or ID of a MaxCompute project.
+	// - The project name or ID for MaxCompute.
 	//
-	// - The name or ID of an OSS bucket.
+	// - The bucket name or ID for OSS.
 	//
-	// - The name or ID of an RDS instance or database.
+	// - The instance name or ID, or the database name or ID for RDS.
 	//
 	// example:
 	//
 	// 1112
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// The type of service to which the data asset belongs. Data assets can be instances, databases, or buckets. Valid values:
+	// Required. The type of the product to which the data asset belongs. Valid values:
 	//
 	// - **1**: MaxCompute
 	//
 	// - **2**: OSS
 	//
-	// - **3**: AnalyticDB for MySQL
+	// - **3**: ADS
 	//
-	// - **4**: Tablestore
+	// - **4**: OTS
 	//
 	// - **5**: RDS
 	//
-	// - **6**: A self-managed database
+	// - **6**: SELF_DB
 	//
 	// example:
 	//
 	// 1
 	ResourceType *int32 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The ID of the region where the data asset is located.
+	// The region where the asset resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
-	// The beginning of the time range to query. This value is a UNIX timestamp. Unit: milliseconds.
+	// The start of the creation time range. Format: timestamp. Unit: milliseconds.
 	//
 	// example:
 	//

@@ -56,19 +56,19 @@ type ModifyDataLimitRequest struct {
 	//
 	// 1
 	AuditStatus *int32 `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	// Specifies whether to automatically trigger a rescan when a rule is changed. Valid values:
+	// Specifies whether to automatically trigger a rescan when rules change. Valid values:
 	//
-	// - **0**: Do not automatically trigger a rescan.
+	// - **0**: Do not trigger an automatic scan.
 	//
-	// - **1**: Automatically trigger a rescan.
+	// - **1**: Trigger an automatic scan.
 	//
-	// > If a rescan is automatically triggered, a full scan is performed on the data asset.
+	// > When a rule change triggers an automatic scan, a full scan is performed on all data in the data source.
 	//
 	// example:
 	//
 	// 1
 	AutoScan *int32 `json:"AutoScan,omitempty" xml:"AutoScan,omitempty"`
-	// The type of the database. Valid values:
+	// The database type. Valid values:
 	//
 	// - **MySQL**
 	//
@@ -84,9 +84,9 @@ type ModifyDataLimitRequest struct {
 	//
 	// 1
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	// The unique ID of the data asset.
+	// The unique ID of the data asset that belongs to the product associated with the DSC connection authorization configuration item.
 	//
-	// > Call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to query the ID of the data asset.
+	// > To modify a DSC connection authorization configuration item, you must provide the unique ID of the data asset that belongs to the associated product. You can call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +94,7 @@ type ModifyDataLimitRequest struct {
 	//
 	// 11
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response messages. Valid values:
 	//
 	// - **zh**: Chinese (default)
 	//
@@ -118,17 +118,17 @@ type ModifyDataLimitRequest struct {
 	//
 	// 30
 	LogStoreDay *int32 `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
-	// Specifies whether to modify the username and password that are used to connect to the database. Valid values:
+	// Specifies whether to modify the username and password for connecting to the database. Valid values:
 	//
-	// - **true**: Modify the username and password.
+	// - **true**: Modify.
 	//
-	// - **false**: Do not modify the username and password.
+	// - **false**: Do not modify.
 	//
 	// example:
 	//
 	// true
 	ModifyPassword *bool `json:"ModifyPassword,omitempty" xml:"ModifyPassword,omitempty"`
-	// The password for the ApsaraDB RDS database.
+	// The password used for the DSC connection authorization to the RDS database.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type ModifyDataLimitRequest struct {
 	//
 	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The service to which the data asset belongs. Valid values:
+	// The name of the product to which the data of the DSC connection authorization configuration item belongs. Valid values:
 	//
 	// - **1**: MaxCompute
 	//
@@ -158,7 +158,7 @@ type ModifyDataLimitRequest struct {
 	//
 	// 5
 	ResourceType *int32 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The number of sensitive data samples to return. This parameter takes effect only after data detection is enabled. Valid values:
+	// The number of sample entries for sensitive data detection after data detection is enabled. Valid values:
 	//
 	// - **0**
 	//
@@ -170,9 +170,9 @@ type ModifyDataLimitRequest struct {
 	//
 	// 0
 	SamplingSize *int32 `json:"SamplingSize,omitempty" xml:"SamplingSize,omitempty"`
-	// The security groups for agent-based auditing that uses PrivateLink.
+	// The security groups used by PrivateLink in agent-based auditing.
 	SecurityGroupIdList []*string `json:"SecurityGroupIdList,omitempty" xml:"SecurityGroupIdList,omitempty" type:"Repeated"`
-	// The ID of the region in which the data asset is located. Valid values:
+	// The region where the asset resides. Valid values:
 	//
 	// - **cn-beijing**: China (Beijing)
 	//
@@ -186,21 +186,21 @@ type ModifyDataLimitRequest struct {
 	//
 	// - **cn-shenzhen**: China (Shenzhen)
 	//
-	// - **cn-hongkong**: China (Hong Kong)
+	// - **cn-hongkong**: Hong Kong (China)
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
-	// The username for the ApsaraDB RDS database.
+	// The username used for the DSC connection authorization to the RDS database.
 	//
 	// example:
 	//
 	// User01
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The vSwitches for agent-based auditing that uses PrivateLink.
+	// The vSwitches used by PrivateLink in agent-based auditing.
 	VSwitchIdList []*string `json:"VSwitchIdList,omitempty" xml:"VSwitchIdList,omitempty" type:"Repeated"`
-	// The ID of the virtual private cloud (VPC) to which the data asset belongs.
+	// The VPC ID to which the data asset belongs.
 	//
 	// example:
 	//

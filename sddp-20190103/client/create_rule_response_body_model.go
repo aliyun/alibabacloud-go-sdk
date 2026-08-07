@@ -16,13 +16,13 @@ type iCreateRuleResponseBody interface {
 }
 
 type CreateRuleResponseBody struct {
-	// The unique ID of the sensitive data detection rule.
+	// The unique ID of the saved sensitive data detection rule.
 	//
 	// example:
 	//
 	// 1
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iManualTriggerMaskingProcessRequest interface {
 }
 
 type ManualTriggerMaskingProcessRequest struct {
-	// The ID of the data masking task. The value is an integer.
+	// The ID of the data masking task, represented as a number.
 	//
-	// > You can call the DescribeDataMaskingTasks operation to obtain the ID of the data masking task.
+	// <note>The data masking task ID is represented by a string of characters. You can call the DescribeDataMaskingTasks operation to obtain the ID.</note>
 	//
 	// This parameter is required.
 	//
@@ -28,9 +28,9 @@ type ManualTriggerMaskingProcessRequest struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The language of the request and response. Default value: zh_cn. Valid values:
 	//
-	// - **zh_cn**: Chinese
+	// - **zh_cn**: Chinese.
 	//
-	// - **en_us**: English
+	// - **en_us**: English.
 	//
 	// example:
 	//

@@ -32,7 +32,7 @@ type iDescribeInstancesRequest interface {
 }
 
 type DescribeInstancesRequest struct {
-	// The page number of the paged query. Default value: **1**.
+	// The page number of the current page in a paged query. Default value: **1**.
 	//
 	// example:
 	//
@@ -44,77 +44,75 @@ type DescribeInstancesRequest struct {
 	//
 	// 1
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	// The language of the request and response. Default value: **zh_cn**.
+	// The language of the request and response. Default value: **zh_cn**. Valid values:
 	//
-	// Valid values:
+	// - **zh_cn**: Chinese (Simplified).
 	//
-	// - **zh_cn**: Chinese
-	//
-	// - **en_us**: English
+	// - **en_us**: English (US).
 	//
 	// example:
 	//
 	// zh_cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The keyword to search for. Fuzzy match is supported. For example, if you enter "data", all data that contains "data" is returned.
+	// The search keyword. Fuzzy match is supported. For example, if you enter data, all data entries that contain data in the search item are returned.
 	//
 	// example:
 	//
 	// data
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The maximum number of data asset instances to return on each page of a paged query. Default value: **10**.
+	// The maximum number of data asset instances to return on each page in a paged query. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the product to which the data asset instance belongs, such as MaxCompute, OSS, or RDS. For more information about the supported products, see [Data assets that can be scanned for sensitive data](https://help.aliyun.com/document_detail/212906.html).
+	// The name of the product to which the data asset instance belongs, such as MaxCompute, OSS, or RDS. For supported product names, see [Data types from which sensitive data can be detected](https://help.aliyun.com/document_detail/212906.html).
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the product to which the data asset instance belongs. You can call the [DescribeDataAssets](~~DescribeDataAssets~~) operation to query the product ID.
+	// The ID of the product to which the data asset instance belongs. You can call the [DescribeDataAssets](~~DescribeDataAssets~~) operation to obtain the product ID.
 	//
 	// example:
 	//
 	// 1
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The ID of the threat level for the data asset instance. The higher the threat level ID, the more sensitive the data. Valid values:
+	// The risk level ID of the data asset instance. A higher risk level ID indicates more sensitive data is detected. Valid values:
 	//
-	// - **1**: No sensitive data is detected. No threat.
+	// - **1**: No sensitive data is detected. No risk.
 	//
-	// - **2**: Threat level 1.
+	// - **2**: Sensitive data risk at level 1.
 	//
-	// - **3**: Threat level 2.
+	// - **3**: Sensitive data risk at level 2.
 	//
-	// - **4**: Threat level 3.
+	// - **4**: Sensitive data risk at level 3.
 	//
-	// - **5**: Threat level 4.
+	// - **5**: Sensitive data risk at level 4.
 	//
-	// - **6**: Threat level 5.
+	// - **6**: Sensitive data risk at level 5.
 	//
-	// - **7**: Threat level 6.
+	// - **7**: Sensitive data risk at level 6.
 	//
-	// - **8**: Threat level 7.
+	// - **8**: Sensitive data risk at level 7.
 	//
-	// - **9**: Threat level 8.
+	// - **9**: Sensitive data risk at level 8.
 	//
-	// - **10**: Threat level 9.
+	// - **10**: Sensitive data risk at level 9.
 	//
-	// - **11**: Threat level 10.
+	// - **11**: Sensitive data risk at level 10.
 	//
 	// example:
 	//
 	// 2
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// The ID of the sensitive data detection rule that the data asset instance hits. You can call the [DescribeRules](~~DescribeRules~~) operation and view the value of the **Id*	- parameter in the response to obtain the rule ID.
+	// The ID of the sensitive data detection rule that the data asset instance hits. You can call the [DescribeRules](~~DescribeRules~~) operation and obtain the rule ID from the **Id*	- response parameter.
 	//
 	// example:
 	//
 	// 1111111
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The region where the data asset instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/214257.html).
+	// The region of the data asset instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/214257.html).
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iDescribeDocTypesRequest interface {
 }
 
 type DescribeDocTypesRequest struct {
-	// The language of the request and response. The default value is **zh_cn**. Valid values:
+	// The language of the request and response. Default value: **zh_cn**. Valid values:
 	//
 	// - **zh_cn**: Chinese.
 	//

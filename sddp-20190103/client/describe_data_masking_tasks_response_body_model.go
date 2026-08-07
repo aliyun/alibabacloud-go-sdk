@@ -22,27 +22,27 @@ type iDescribeDataMaskingTasksResponseBody interface {
 }
 
 type DescribeDataMaskingTasksResponseBody struct {
-	// The page number of the returned page.
+	// The page number of the current page in the results.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// A list of data masking tasks.
+	// The list of static data masking tasks.
 	Items []*DescribeDataMaskingTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of entries returned per page.
+	// The number of entries per page in the results.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 769FB3C1-F4C9-4******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries in the results.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeDataMaskingTasksResponseBody) Validate() error {
 }
 
 type DescribeDataMaskingTasksResponseBodyItems struct {
-	// The member account that the data masking destination belongs to.
+	// The member accounts to which the destination data belongs.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ type DescribeDataMaskingTasksResponseBodyItems struct {
 	DstMemberAccount *int64 `json:"DstMemberAccount,omitempty" xml:"DstMemberAccount,omitempty"`
 	// The destination path.
 	DstPath *string `json:"DstPath,omitempty" xml:"DstPath,omitempty"`
-	// The product that the destination data source belongs to. Valid values:
+	// The service to which the destination data source belongs. Valid values:
 	//
 	// - **1**: MaxCompute.
 	//
@@ -143,7 +143,7 @@ type DescribeDataMaskingTasksResponseBodyItems struct {
 	//
 	// 5
 	DstType *int32 `json:"DstType,omitempty" xml:"DstType,omitempty"`
-	// The type of the destination product. Valid values:
+	// The destination service type. Valid values:
 	//
 	// - **MaxCompute**.
 	//
@@ -161,31 +161,31 @@ type DescribeDataMaskingTasksResponseBodyItems struct {
 	//
 	// RDS
 	DstTypeCode *string `json:"DstTypeCode,omitempty" xml:"DstTypeCode,omitempty"`
-	// The time when the task was created. The value is a UNIX timestamp. Unit: milliseconds.
+	// The creation time. Format: timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1582992000000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Indicates whether the task is running.
+	// Indicates whether the task is being executed.
 	//
 	// example:
 	//
 	// false
 	HasUnfinishProcess *bool `json:"HasUnfinishProcess,omitempty" xml:"HasUnfinishProcess,omitempty"`
-	// The numerical ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the source table is masked.
+	// Indicates whether the task masks data in the original table.
 	//
 	// example:
 	//
 	// false
 	OriginalTable *bool `json:"OriginalTable,omitempty" xml:"OriginalTable,omitempty"`
-	// The creator of the task.
+	// The task creator.
 	//
 	// example:
 	//
@@ -197,7 +197,7 @@ type DescribeDataMaskingTasksResponseBodyItems struct {
 	//
 	// 1
 	RunCount *int32 `json:"RunCount,omitempty" xml:"RunCount,omitempty"`
-	// The member account that the data masking source belongs to.
+	// The member accounts to which the source data belongs.
 	//
 	// example:
 	//
@@ -205,7 +205,7 @@ type DescribeDataMaskingTasksResponseBodyItems struct {
 	SrcMemberAccount *int64 `json:"SrcMemberAccount,omitempty" xml:"SrcMemberAccount,omitempty"`
 	// The source path.
 	SrcPath *string `json:"SrcPath,omitempty" xml:"SrcPath,omitempty"`
-	// The type of the source product. Valid values:
+	// The source service type. Valid values:
 	//
 	// - **1**: MaxCompute.
 	//
@@ -223,7 +223,7 @@ type DescribeDataMaskingTasksResponseBodyItems struct {
 	//
 	// 5
 	SrcType *int32 `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
-	// The type of the source product. Valid values:
+	// The source service type. Valid values:
 	//
 	// - **MaxCompute**.
 	//
@@ -241,7 +241,7 @@ type DescribeDataMaskingTasksResponseBodyItems struct {
 	//
 	// RDS
 	SrcTypeCode *string `json:"SrcTypeCode,omitempty" xml:"SrcTypeCode,omitempty"`
-	// The status of the task. Valid values:
+	// The task status. Valid values:
 	//
 	// - **0**: Disabled.
 	//
@@ -251,19 +251,19 @@ type DescribeDataMaskingTasksResponseBodyItems struct {
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The string ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
 	// mt4HBgtw1B******
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The name of the task.
+	// The task name.
 	//
 	// example:
 	//
 	// Task name
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The execution method of the task. Valid values:
+	// The execution mode. Valid values:
 	//
 	// - **1**: Manual.
 	//

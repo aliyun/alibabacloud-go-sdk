@@ -138,6 +138,10 @@ type DescribeDataObjectsResponseBodyItems struct {
 	//
 	// DataBaseName
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// example:
+	//
+	// TABLE
+	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
 	// The code for the file category.
 	//
 	// example:
@@ -400,6 +404,10 @@ func (s *DescribeDataObjectsResponseBodyItems) GetDbName() *string {
 	return s.DbName
 }
 
+func (s *DescribeDataObjectsResponseBodyItems) GetEngineType() *string {
+	return s.EngineType
+}
+
 func (s *DescribeDataObjectsResponseBodyItems) GetFileCategoryCode() *int32 {
 	return s.FileCategoryCode
 }
@@ -550,6 +558,11 @@ func (s *DescribeDataObjectsResponseBodyItems) SetDataType(v string) *DescribeDa
 
 func (s *DescribeDataObjectsResponseBodyItems) SetDbName(v string) *DescribeDataObjectsResponseBodyItems {
 	s.DbName = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetEngineType(v string) *DescribeDataObjectsResponseBodyItems {
+	s.EngineType = &v
 	return s
 }
 

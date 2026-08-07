@@ -26,9 +26,9 @@ type DeleteDataLimitRequest struct {
 	//
 	// 1
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	// The unique ID of the data asset. The data asset can be an instance, a database, or a bucket.
+	// The unique ID of the data asset, such as an instance, database, or bucket.
 	//
-	// Call the DescribeDataLimits operation and check the Id parameter in the response to obtain this ID.
+	// Call the DescribeDataLimits operation to obtain the ID from the Id parameter in the response.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DeleteDataLimitRequest struct {
 	//
 	// 12033
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The language of the request and response. The default value is **zh_cn**. Valid values:
+	// The language of the request and response. Default value: **zh_cn**. Valid values:
 	//
 	// - **zh_cn**: Chinese.
 	//

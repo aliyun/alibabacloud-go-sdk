@@ -19,6 +19,8 @@ type iDescribeDataObjectsRequest interface {
 	GetDbName() *string
 	SetDomainId(v int64) *DescribeDataObjectsRequest
 	GetDomainId() *int64
+	SetEngineType(v string) *DescribeDataObjectsRequest
+	GetEngineType() *string
 	SetFeatureType(v int32) *DescribeDataObjectsRequest
 	GetFeatureType() *int32
 	SetFileCategoryCode(v int64) *DescribeDataObjectsRequest
@@ -101,7 +103,8 @@ type DescribeDataObjectsRequest struct {
 	// example:
 	//
 	// 2
-	DomainId *int64 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	DomainId   *int64  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
 	// This parameter is deprecated.
 	//
 	// example:
@@ -348,6 +351,10 @@ func (s *DescribeDataObjectsRequest) GetDomainId() *int64 {
 	return s.DomainId
 }
 
+func (s *DescribeDataObjectsRequest) GetEngineType() *string {
+	return s.EngineType
+}
+
 func (s *DescribeDataObjectsRequest) GetFeatureType() *int32 {
 	return s.FeatureType
 }
@@ -470,6 +477,11 @@ func (s *DescribeDataObjectsRequest) SetDbName(v string) *DescribeDataObjectsReq
 
 func (s *DescribeDataObjectsRequest) SetDomainId(v int64) *DescribeDataObjectsRequest {
 	s.DomainId = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetEngineType(v string) *DescribeDataObjectsRequest {
+	s.EngineType = &v
 	return s
 }
 

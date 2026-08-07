@@ -38,7 +38,7 @@ type iCreateScanTaskRequest interface {
 }
 
 type CreateScanTaskRequest struct {
-	// The unique ID of the data asset. The asset can be an instance, a database, or a bucket. Call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to obtain this ID.
+	// The unique ID of the data asset such as an instance, database, or bucket. You can call [DescribeDataLimits](~~DescribeDataLimits~~) to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type CreateScanTaskRequest struct {
 	//
 	// 1
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	// The interval in days between two consecutive custom scan tasks. The value must be between 1 and 2147483648.
+	// The interval in days between two consecutive custom scan tasks. Valid values: 1 to 2147483648.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type CreateScanTaskRequest struct {
 	//
 	// 1
 	IntervalDay *int32 `json:"IntervalDay,omitempty" xml:"IntervalDay,omitempty"`
-	// The language of the request and response.
+	// The language of the request and response. Valid values:
 	//
 	// - **zh**: Chinese.
 	//
@@ -70,25 +70,25 @@ type CreateScanTaskRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The scan scope for OSS assets. You can specify a prefix, a suffix, or a regular expression to match objects.
+	// The scan scope for OSS assets. Prefix match, suffix match, and regular expression match are supported.
 	//
 	// example:
 	//
 	// /test/test
 	OssScanPath *string `json:"OssScanPath,omitempty" xml:"OssScanPath,omitempty"`
-	// The type of resource to query. Valid values:
+	// The resource type of the product to query. Valid values:
 	//
 	// - **1**: MaxCompute.
 	//
 	// - **2**: OSS.
 	//
-	// - **3**: AnalyticDB.
+	// - **3**: ADS.
 	//
-	// - **4**: Tablestore.
+	// - **4**: OTS.
 	//
 	// - **5**: RDS.
 	//
-	// - **6**: a self-managed database.
+	// - **6**: SELF_DB.
 	//
 	// This parameter is required.
 	//
@@ -96,7 +96,7 @@ type CreateScanTaskRequest struct {
 	//
 	// 2
 	ResourceType *int64 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The hour at which the next scan task runs.
+	// The runtime of the next scan task. Unit: hours.
 	//
 	// This parameter is required.
 	//
@@ -104,7 +104,7 @@ type CreateScanTaskRequest struct {
 	//
 	// 12
 	RunHour *int32 `json:"RunHour,omitempty" xml:"RunHour,omitempty"`
-	// The minute at which the next scan task runs.
+	// The runtime of the next scan task. Unit: minutes.
 	//
 	// This parameter is required.
 	//
@@ -112,7 +112,7 @@ type CreateScanTaskRequest struct {
 	//
 	// 30
 	RunMinute *int32 `json:"RunMinute,omitempty" xml:"RunMinute,omitempty"`
-	// The matching rule for the scan scope of the custom scan task. This parameter takes effect only when you configure the **ScanRangeContent*	- parameter. Valid values:
+	// The scan scope matching rule for the custom scan task. This parameter takes effect only when used together with **ScanRangeContent**. Valid values:
 	//
 	// - **0**: full match.
 	//
@@ -128,9 +128,9 @@ type CreateScanTaskRequest struct {
 	//
 	// 0
 	ScanRange *int32 `json:"ScanRange,omitempty" xml:"ScanRange,omitempty"`
-	// The content to match for the scan of structured data assets. This parameter is used with the ScanRange parameter.
+	// The content to match within the scan scope of structured data assets by using prefix match, suffix match, or regular expression match.
 	//
-	// > If you set ScanRange to 0, the scan matches the exact value of this parameter. If you set ScanRange to 1, the scan matches items that have the prefix specified by this parameter. For example, if you set this parameter to \\`test/abc\\`, file paths that start with \\`test/abc\\` are matched. If you set ScanRange to 2, the scan matches items that have the suffix specified by this parameter. If you set ScanRange to 3, the scan matches items that match the regular expression specified by this parameter.
+	// > When ScanRange is set to 0, all content in this field is fully matched. When ScanRange is set to 1, the content in this field is matched by prefix. For example, if this field is set to test/abc, file paths that start with test/abc are matched. When ScanRange is set to 2, the content in this field is matched by suffix. When ScanRange is set to 3, the content in this field is matched by regular expression.
 	//
 	// This parameter is required.
 	//

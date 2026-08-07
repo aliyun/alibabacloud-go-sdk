@@ -24,9 +24,9 @@ type DescribeUserStatusRequest struct {
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the request and response. Valid values:
 	//
-	// - **zh_cn**: The default value. Simplified Chinese.
+	// - **zh_cn**: Chinese (Simplified). This is the default value.
 	//
-	// - **en_us**: American English.
+	// - **en_us**: English (US).
 	//
 	// example:
 	//

@@ -22,15 +22,15 @@ type iDescribeColumnsV2ResponseBody interface {
 }
 
 type DescribeColumnsV2ResponseBody struct {
-	// The page number. Default value: **1**.
+	// The page number in a paged query. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// A list of detection results for the columns in the data table.
+	// The list of column detection results in the data asset table.
 	Items []*DescribeColumnsV2ResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The maximum number of entries returned on each page. Default value: **10**.
+	// The maximum number of entries per page in a paged query. Default value: **10**.
 	//
 	// example:
 	//
@@ -117,19 +117,19 @@ func (s *DescribeColumnsV2ResponseBody) Validate() error {
 }
 
 type DescribeColumnsV2ResponseBodyItems struct {
-	// The time when the data in the column of the data asset table was created. The value is a UNIX timestamp. Unit: milliseconds.
+	// The creation time of the column data in the data asset table, in milliseconds.
 	//
 	// example:
 	//
 	// 1536751124000
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The data type of the data in the column of the data asset table.
+	// The data type of the column data in the data asset table.
 	//
 	// example:
 	//
 	// varchar
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The type of the database engine. Valid values:
+	// The engine type. Valid values:
 	//
 	// - **MySQL**
 	//
@@ -151,13 +151,13 @@ type DescribeColumnsV2ResponseBodyItems struct {
 	//
 	// 111111
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the data asset instance to which the data in the column belongs.
+	// The instance ID of the asset to which the column data in the data asset table belongs.
 	//
 	// example:
 	//
 	// 1232122
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the data asset instance to which the data in the column belongs.
+	// The name of the asset instance to which the column data in the data asset table belongs.
 	//
 	// example:
 	//
@@ -165,17 +165,17 @@ type DescribeColumnsV2ResponseBodyItems struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The column encryption status. Valid values:
 	//
-	// - **-1**: not encrypted
+	// - **-1**: not encrypted.
 	//
-	// - **1**: encryption successful
+	// - **1**: encryption succeeded.
 	//
-	// - **2**: encryption failed
+	// - **2**: encryption failed.
 	//
 	// example:
 	//
 	// -1
 	MaskingStatus *int32 `json:"MaskingStatus,omitempty" xml:"MaskingStatus,omitempty"`
-	// A list of data tags.
+	// The list of data tags.
 	ModelTags []*DescribeColumnsV2ResponseBodyItemsModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
 	// The name of the column in the data asset table.
 	//
@@ -183,9 +183,9 @@ type DescribeColumnsV2ResponseBodyItems struct {
 	//
 	// obj_id
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The name of the risk level for the data asset. Valid values:
+	// The risk level name of the asset. Valid values:
 	//
-	// - **N/A**: No sensitive data is detected.
+	// - **N/A**: no sensitive data detected.
 	//
 	// - **S1**: Level 1 sensitive data.
 	//
@@ -199,49 +199,49 @@ type DescribeColumnsV2ResponseBodyItems struct {
 	//
 	// S4
 	OdpsRiskLevelName *string `json:"OdpsRiskLevelName,omitempty" xml:"OdpsRiskLevelName,omitempty"`
-	// The code of the risk level for the data asset. Valid values:
+	// The risk level code of the asset. Valid values:
 	//
-	// - **1**: N/A
+	// - **1**: N/A.
 	//
-	// - **2**: S1
+	// - **2**: S1.
 	//
-	// - **3**: S2
+	// - **3**: S2.
 	//
-	// - **4**: S3
+	// - **4**: S3.
 	//
-	// - **5**: S4
+	// - **5**: S4.
 	//
-	// > A return value that is less than or equal to 1 indicates N/A.
+	// > A return value less than or equal to 1 indicates N/A.
 	//
 	// example:
 	//
 	// 3
 	OdpsRiskLevelValue *int32 `json:"OdpsRiskLevelValue,omitempty" xml:"OdpsRiskLevelValue,omitempty"`
-	// The name of the product to which the data in the column of the data asset table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	// The name of the product to which the column data in the data asset table belongs. Valid values: **MaxCompute, OSS, ADS, OTS, RDS**, and others.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the product to which the data asset belongs. Valid values:
+	// The ID that corresponds to the product name of the data asset. Valid values:
 	//
-	// - **1**: MaxCompute
+	// - **1**: MaxCompute.
 	//
-	// - **2**: OSS
+	// - **2**: OSS.
 	//
-	// - **3**: ADS
+	// - **3**: ADS.
 	//
-	// - **4**: OTS
+	// - **4**: OTS.
 	//
-	// - **5**: RDS
+	// - **5**: ApsaraDB RDS.
 	//
-	// - **6**: SELF_DB
+	// - **6**: SELF_DB.
 	//
 	// example:
 	//
 	// 5
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The region where the data asset resides.
+	// The region where the asset resides.
 	//
 	// example:
 	//
@@ -255,35 +255,35 @@ type DescribeColumnsV2ResponseBodyItems struct {
 	RevisionId *int64 `json:"RevisionId,omitempty" xml:"RevisionId,omitempty"`
 	// The revision status. Valid values:
 	//
-	// - 1: revised
+	// - 1: revised.
 	//
-	// - 0: not revised
+	// - 0: not revised.
 	//
 	// example:
 	//
 	// 1
 	RevisionStatus *int64 `json:"RevisionStatus,omitempty" xml:"RevisionStatus,omitempty"`
-	// The ID of the risk level for the data in the column of the data asset table. Valid values:
+	// The risk level ID of the column data in the data asset table. Valid values:
 	//
-	// - **1**: N/A
+	// - **1**: N/A.
 	//
-	// - **2**: S1
+	// - **2**: S1.
 	//
-	// - **3**: S2
+	// - **3**: S2.
 	//
-	// - **4**: S3
+	// - **4**: S3.
 	//
-	// - **5**: S4
+	// - **5**: S4.
 	//
-	// > A return value that is less than or equal to 1 indicates N/A.
+	// > A return value less than or equal to 1 indicates N/A.
 	//
 	// example:
 	//
 	// 4
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// The name of the risk level for the data in the column of the data asset table. Valid values:
+	// The risk level name of the column data in the data asset table. Valid values:
 	//
-	// - **N/A**: No sensitive data is detected.
+	// - **N/A**: no sensitive data detected.
 	//
 	// - **S1**: Level 1 sensitive data.
 	//
@@ -297,21 +297,21 @@ type DescribeColumnsV2ResponseBodyItems struct {
 	//
 	// S1
 	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	// The ID of the sensitive data detection rule that is hit by the data in the column.
+	// The ID of the sensitive data detection rule that the column data in the data asset table matches.
 	//
 	// example:
 	//
 	// 1004
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the sensitive data detection rule that is hit by the data in the column.
+	// The name of the sensitive data detection rule that the column data in the data asset table matches.
 	//
 	// example:
 	//
 	// name
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The name of the sensitivity level. Valid values:
+	// The sensitivity level name. Valid values:
 	//
-	// - **N/A**: No sensitive data is detected.
+	// - **N/A**: no sensitive data detected.
 	//
 	// - **S1**: Level 1 sensitive data.
 	//
@@ -325,23 +325,23 @@ type DescribeColumnsV2ResponseBodyItems struct {
 	//
 	// S2
 	SensLevelName *string `json:"SensLevelName,omitempty" xml:"SensLevelName,omitempty"`
-	// Indicates whether the data in the column of the data asset table is sensitive. Valid values:
+	// Indicates whether the column data in the data asset table contains sensitive data. Valid values:
 	//
-	// - true: The data in the column is sensitive.
+	// - true: The column data contains sensitive data.
 	//
-	// - false: The data in the column is not sensitive.
+	// - false: The column data does not contain sensitive data.
 	//
 	// example:
 	//
 	// true
 	Sensitive *bool `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
-	// The ID of the data asset table to which the data in the column belongs.
+	// The ID of the data asset table to which the column data belongs.
 	//
 	// example:
 	//
 	// 123
 	TableId *int64 `json:"TableId,omitempty" xml:"TableId,omitempty"`
-	// The name of the table that contains the revised target column.
+	// The name of the table to which the revised target column belongs.
 	//
 	// example:
 	//
@@ -587,25 +587,25 @@ func (s *DescribeColumnsV2ResponseBodyItems) Validate() error {
 }
 
 type DescribeColumnsV2ResponseBodyItemsModelTags struct {
-	// The ID of the data tag. Valid values:
+	// The data tag ID. Valid values:
 	//
-	// - **101**: Personal sensitive information
+	// - **101**: personal sensitive information
 	//
-	// - **102**: Personal information
+	// - **102**: personal information
 	//
-	// - **107**: General information
+	// - **107**: general information
 	//
 	// example:
 	//
 	// 101
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the data tag. Valid values:
+	// The data tag name. Valid values:
 	//
-	// - Personal sensitive information
+	// - 个人敏感信息
 	//
-	// - Personal information
+	// - 个人信息
 	//
-	// - General information
+	// - 通用信息
 	//
 	// example:
 	//

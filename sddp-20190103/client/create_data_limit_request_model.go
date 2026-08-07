@@ -52,31 +52,31 @@ type iCreateDataLimitRequest interface {
 type CreateDataLimitRequest struct {
 	// Specifies whether to enable auditing. Valid values:
 	//
-	// - **0**: Do not enable auditing.
+	// - **0**: Auditing is disabled.
 	//
-	// - **1**: Enable auditing.
+	// - **1**: Auditing is enabled.
 	//
 	// example:
 	//
 	// 1
 	AuditStatus *int32 `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	// Specifies whether to automatically trigger a rescan when a rule changes. Valid values:
+	// Specifies whether to automatically trigger a rescan when rules are changed. Valid values:
 	//
-	// - **0**: Do not trigger an automatic scan.
+	// - **0**: Automatic rescan is not triggered.
 	//
-	// - **1**: Trigger an automatic scan.
+	// - **1**: Automatic rescan is triggered.
 	//
-	// > If you enable this feature, a rule change triggers a full scan of all data in the data source.
+	// > When a rule change triggers an automatic rescan, a full scan is performed on all data in the data source.
 	//
 	// example:
 	//
 	// 1
 	AutoScan *int32 `json:"AutoScan,omitempty" xml:"AutoScan,omitempty"`
-	// The permission level of the credential. Valid values:
+	// The credential permission. Valid values:
 	//
-	// - **ReadOnly**: Read-only permissions.
+	// - **ReadOnly**: read-only permission.
 	//
-	// - **ReadWrite**: Read and write permissions.
+	// - **ReadWrite**: read and write permission.
 	//
 	// example:
 	//
@@ -88,13 +88,13 @@ type CreateDataLimitRequest struct {
 	//
 	// - **0**: Disabled.
 	//
-	// > The default value is 1 for the first authorization. For later authorizations, the value from the previous authorization is used. Set this parameter to 1 to detect sensitive data.
+	// > If the asset is authorized for the first time, the default value is 1. If the asset has been previously authorized, the value from the last authorization is used, which may be 0 or 1. To perform sensitive data detection on the asset, set this parameter to 1.
 	//
 	// example:
 	//
 	// 1
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The database engine type. Valid values:
+	// The type of the database. Valid values:
 	//
 	// - **MySQL**
 	//
@@ -104,11 +104,11 @@ type CreateDataLimitRequest struct {
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// Specifies whether to enable anomalous activity detection. Valid values:
+	// The anomalous activity detection status. Valid values:
 	//
 	// - **0**: Disabled.
 	//
-	// - **1**: Enabled. This is the default value.
+	// - **1**: Enabled (default).
 	//
 	// example:
 	//
@@ -120,27 +120,27 @@ type CreateDataLimitRequest struct {
 	//
 	// 2
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	// Specifies whether to immediately scan the authorized data asset. Valid values:
+	// Specifies whether to immediately scan the authorized asset. Valid values:
 	//
-	// - **false**: Do not scan immediately.
+	// - **false**: The asset is not immediately scanned.
 	//
-	// - **true**: Scan immediately.
+	// - **true**: The asset is immediately scanned.
 	//
 	// example:
 	//
 	// false
 	InstantlyScan *bool `json:"InstantlyScan,omitempty" xml:"InstantlyScan,omitempty"`
-	// The language of the content that is returned in the response. Default value: **zh_cn**. Valid values:
+	// The language of the request and response. Default value: **zh_cn**. Valid values:
 	//
-	// - **zh_cn**: Chinese
+	// - **zh_cn**: Chinese.
 	//
-	// - **en_us**: English
+	// - **en_us**: English.
 	//
 	// example:
 	//
 	// zh_cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The retention period of raw logs after you enable auditing. Unit: days. Valid values:
+	// The retention period of raw logs after auditing is enabled. Unit: days. Valid values:
 	//
 	// - **30**
 	//
@@ -154,7 +154,7 @@ type CreateDataLimitRequest struct {
 	//
 	// 30
 	LogStoreDay *int32 `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
-	// Specifies whether to enable Optical Character Recognition (OCR). Valid values:
+	// The OCR status. Valid values:
 	//
 	// - **1**: Enabled.
 	//
@@ -164,13 +164,13 @@ type CreateDataLimitRequest struct {
 	//
 	// 0
 	OcrStatus *int32 `json:"OcrStatus,omitempty" xml:"OcrStatus,omitempty"`
-	// The name of the data asset. The name consists of the instance ID and the database name, separated by a period (.).
+	// Required. The name of the asset, which consists of the instance ID and the database connection string separated by a period (.).
 	//
 	// example:
 	//
 	// rm-****34.******name
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// The password to access the database.
+	// The password used to access the database asset.
 	//
 	// example:
 	//
@@ -182,17 +182,17 @@ type CreateDataLimitRequest struct {
 	//
 	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The service to which the data asset belongs. Valid values:
+	// The type of the service to which the asset to be scanned belongs. Valid values:
 	//
-	// - **1**: MaxCompute
+	// - **1**: MaxCompute.
 	//
-	// - **2**: OSS
+	// - **2**: OSS.
 	//
-	// - **3**: ADS
+	// - **3**: ADS.
 	//
-	// - **4**: OTS
+	// - **4**: OTS.
 	//
-	// - **5**: RDS
+	// - **5**: RDS.
 	//
 	// This parameter is required.
 	//
@@ -200,7 +200,7 @@ type CreateDataLimitRequest struct {
 	//
 	// 1
 	ResourceType *int32 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The number of sensitive data samples to return after a scan. Valid values:
+	// The number of sample entries for sensitive data detection after data detection is enabled. Valid values:
 	//
 	// - **0**
 	//
@@ -208,27 +208,27 @@ type CreateDataLimitRequest struct {
 	//
 	// - **10**
 	//
-	// > The default value is 10.
+	// > Default value: 10.
 	//
 	// example:
 	//
 	// 0
 	SamplingSize *int32 `json:"SamplingSize,omitempty" xml:"SamplingSize,omitempty"`
-	// The region where the data asset is located. Valid values:
+	// Required. The region in which the asset resides. Valid values:
 	//
-	// - **cn-beijing**: China (Beijing)
+	// - **cn-beijing**: China (Beijing).
 	//
-	// - **cn-zhangjiakou**: China (Zhangjiakou)
+	// - **cn-zhangjiakou**: China (Zhangjiakou).
 	//
-	// - **cn-huhehaote**: China (Hohhot)
+	// - **cn-huhehaote**: China (Hohhot).
 	//
-	// - **cn-hangzhou**: China (Hangzhou)
+	// - **cn-hangzhou**: China (Hangzhou).
 	//
-	// - **cn-shanghai**: China (Shanghai)
+	// - **cn-shanghai**: China (Shanghai).
 	//
-	// - **cn-shenzhen**: China (Shenzhen)
+	// - **cn-shenzhen**: China (Shenzhen).
 	//
-	// - **cn-hongkong**: China (Hong Kong)
+	// - **cn-hongkong**: Hong Kong (China).
 	//
 	// example:
 	//
@@ -240,7 +240,7 @@ type CreateDataLimitRequest struct {
 	//
 	// 106.11.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The username for the database.
+	// The username of the database asset.
 	//
 	// example:
 	//

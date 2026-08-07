@@ -22,27 +22,27 @@ type iDescribeDataMaskingRunHistoryResponseBody interface {
 }
 
 type DescribeDataMaskingRunHistoryResponseBody struct {
-	// The page number of the returned page.
+	// The page number of the current page in the results.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// A list of data masking task details.
+	// The list of data masking task information.
 	Items []*DescribeDataMaskingRunHistoryResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of entries returned per page.
+	// The number of entries per page in the results.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 769FB3C1-F4C9-4******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries in the results.
 	//
 	// example:
 	//
@@ -117,43 +117,43 @@ func (s *DescribeDataMaskingRunHistoryResponseBody) Validate() error {
 }
 
 type DescribeDataMaskingRunHistoryResponseBodyItems struct {
-	// The number of data conflicts. This is the number of rows to be inserted into the destination table that conflict with existing data.
+	// The number of data conflict rows, which indicates the number of rows where the masked data to be inserted into the destination table conflicts with the existing data in the destination table.
 	//
 	// example:
 	//
 	// 0
 	ConflictCount *int64 `json:"ConflictCount,omitempty" xml:"ConflictCount,omitempty"`
-	// The type of service to which the masked data is destined. Valid values: **1*	- for MaxCompute, **2*	- for OSS, **3*	- for ADS, **4*	- for OTS, and **5*	- for RDS.
+	// The type of the destination product where the masked data is stored. Valid values: **1**: MaxCompute, **2**: OSS, **3**: ADS, **4**: OTS, **5**: RDS, and others.
 	//
 	// example:
 	//
 	// 2
 	DstType *int32 `json:"DstType,omitempty" xml:"DstType,omitempty"`
-	// The type of the destination service. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	// The type of the destination product. Valid values: **MaxCompute, OSS, ADS, OTS, RDS**, and others.
 	//
 	// example:
 	//
 	// OSS
 	DstTypeCode *string `json:"DstTypeCode,omitempty" xml:"DstTypeCode,omitempty"`
-	// The time when the execution ended. This is a UNIX timestamp in milliseconds.
+	// The end time of the execution.
 	//
 	// example:
 	//
 	// 1582251233000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The error code returned when the task fails. This parameter has a value only if the task fails.
+	// The error code for the task execution failure. This parameter has a value only when the task execution fails.
 	//
 	// example:
 	//
 	// masking_task_not_found
 	FailCode *string `json:"FailCode,omitempty" xml:"FailCode,omitempty"`
-	// The reason the task failed.
+	// The reason for the task execution failure.
 	//
 	// example:
 	//
 	// error
 	FailMsg *string `json:"FailMsg,omitempty" xml:"FailMsg,omitempty"`
-	// Indicates whether a download file is available.
+	// Indicates whether a download file exists. Valid values:
 	//
 	// - **1**: Yes.
 	//
@@ -163,7 +163,7 @@ type DescribeDataMaskingRunHistoryResponseBodyItems struct {
 	//
 	// 1
 	HasDownloadFile *int32 `json:"HasDownloadFile,omitempty" xml:"HasDownloadFile,omitempty"`
-	// The number of created subtasks.
+	// The number of subtasks that have been created.
 	//
 	// example:
 	//
@@ -175,7 +175,7 @@ type DescribeDataMaskingRunHistoryResponseBodyItems struct {
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The number of masked rows.
+	// The number of rows masked.
 	//
 	// example:
 	//
@@ -187,7 +187,7 @@ type DescribeDataMaskingRunHistoryResponseBodyItems struct {
 	//
 	// 100
 	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	// The number of times the task has been executed.
+	// The sequence number of the task execution.
 	//
 	// example:
 	//
@@ -199,53 +199,53 @@ type DescribeDataMaskingRunHistoryResponseBodyItems struct {
 	//
 	// add
 	SrcTableName *string `json:"SrcTableName,omitempty" xml:"SrcTableName,omitempty"`
-	// The type of service to which the source data belongs. Valid values: **1*	- for MaxCompute, **2*	- for OSS, **3*	- for ADS, **4*	- for OTS, and **5*	- for RDS.
+	// The type of the source product to which the data to be masked belongs. Valid values: **1**: MaxCompute, **2**: OSS, **3**: ADS, **4**: OTS, **5**: RDS, and others.
 	//
 	// example:
 	//
 	// 2
 	SrcType *int32 `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
-	// The type of the source service. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	// The type of the source product. Valid values: **MaxCompute, OSS, ADS, OTS, RDS**, and others.
 	//
 	// example:
 	//
 	// OSS
 	SrcTypeCode *string `json:"SrcTypeCode,omitempty" xml:"SrcTypeCode,omitempty"`
-	// The time when the execution started. This is a UNIX timestamp in milliseconds.
+	// The execution time. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1582251233000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The execution status of the task. Valid values:
+	// The task execution status. Valid values:
 	//
-	// - -**1**: pending.
+	// - **-1**: Waiting for execution.
 	//
-	// - **0**: running.
+	// - **0**: Running.
 	//
-	// - **1**: successful.
+	// - **1**: Executed successfully.
 	//
-	// - **2**: failed.
+	// - **2**: Execution failed.
 	//
-	// - **3**: stopped by user.
+	// - **3**: Terminated by user.
 	//
-	// - **4**: partially failed.
+	// - **4**: Partially failed.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
 	// mt4HBgtw1B******
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The execution method. Valid values:
+	// The execution mode. Valid values:
 	//
-	// - **1**: manual.
+	// - **1**: Manual.
 	//
-	// - **2**: scheduled.
+	// - **2**: Scheduled.
 	//
 	// example:
 	//

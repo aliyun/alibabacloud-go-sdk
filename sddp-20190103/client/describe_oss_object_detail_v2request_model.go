@@ -24,13 +24,13 @@ type iDescribeOssObjectDetailV2Request interface {
 }
 
 type DescribeOssObjectDetailV2Request struct {
-	// The name of the bucket.
+	// The bucket name.
 	//
 	// example:
 	//
 	// sddp-api-scan-demo
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The unique ID of the OSS object.
+	// The unique ID of the OSS storage object.
 	//
 	// > Call the [DescribeOssObjects](https://help.aliyun.com/document_detail/410152.html) operation to obtain the ID.
 	//
@@ -38,31 +38,31 @@ type DescribeOssObjectDetailV2Request struct {
 	//
 	// 12300
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The language of the content within the request and response. Default value: **en_us**. Valid values:
+	// The language of the request and response. Default value: **zh_cn**. Valid values:
 	//
-	// - **en_us**: Simplified Chinese
+	// - **zh_cn**: Simplified Chinese.
 	//
-	// - **en_us**: English (US)
+	// - **en_us**: English (US).
 	//
 	// example:
 	//
 	// zh_cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The full name of the object stored in OSS.
+	// The full name of the file stored in OSS.
 	//
 	// example:
 	//
 	// dir1/test.png
 	ObjectKey *string `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
-	// The ID of the region where the service is enabled. This is also the region where the bucket is located.
+	// The service region ID, which is the region ID of the bucket.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
-	// The ID of the industry-specific template.
+	// The industry template ID.
 	//
-	// > Call the [DescribeCategoryTemplateList](https://help.aliyun.com/document_detail/2399296.html) operation to obtain the ID of the industry-specific template.
+	// > Call the [DescribeCategoryTemplateList](https://help.aliyun.com/document_detail/2399296.html) operation to obtain the industry template ID.
 	//
 	// example:
 	//

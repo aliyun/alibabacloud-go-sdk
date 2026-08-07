@@ -22,27 +22,27 @@ type iDescribeDataLimitsResponseBody interface {
 }
 
 type DescribeDataLimitsResponseBody struct {
-	// The number of the returned page.
+	// The page number of the current page.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// A list of data assets.
+	// The list of data assets.
 	Items []*DescribeDataLimitsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of entries returned per page.
+	// The maximum number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 769FB3C1-F4C9-42DF-9B72-7077A8989***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -119,9 +119,9 @@ func (s *DescribeDataLimitsResponseBody) Validate() error {
 type DescribeDataLimitsResponseBodyItems struct {
 	// The audit status. Valid values:
 	//
-	// - **1**: Auditing enabled.
+	// - **1**: audit enabled.
 	//
-	// - **0**: Auditing disabled.
+	// - **0**: audit disabled.
 	//
 	// example:
 	//
@@ -129,41 +129,41 @@ type DescribeDataLimitsResponseBodyItems struct {
 	AuditStatus *int32 `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
 	// Indicates whether automatic scanning is enabled. Valid values:
 	//
-	// - **0**: No.
+	// - **0**: disabled.
 	//
-	// - **1**: Yes.
+	// - **1**: enabled.
 	//
 	// example:
 	//
 	// 1
 	AutoScan *int32 `json:"AutoScan,omitempty" xml:"AutoScan,omitempty"`
-	// The connectivity test status. Valid values:
+	// The data detection status. Valid values:
 	//
-	// - **0**: Ready.
+	// - **0**: ready.
 	//
-	// - **1**: Running.
+	// - **1**: running.
 	//
-	// - **2**: Connectivity test in progress.
+	// - **2**: connectivity test in progress.
 	//
-	// - **3**: Connectivity test passed.
+	// - **3**: connectivity test passed.
 	//
-	// - **4**: Connectivity test failed.
+	// - **4**: connectivity test failed.
 	//
 	// example:
 	//
 	// 3
 	CheckStatus *int32 `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
-	// The name of the connectivity test status.
+	// The name of the data detection status.
 	//
 	// example:
 	//
 	// Connectivity detection status
 	CheckStatusName *string `json:"CheckStatusName,omitempty" xml:"CheckStatusName,omitempty"`
-	// The data masking status. Valid values:
+	// The data masking permission status. Valid values:
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled.
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled.
 	//
 	// example:
 	//
@@ -175,45 +175,45 @@ type DescribeDataLimitsResponseBodyItems struct {
 	//
 	// 2.0
 	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
-	// The sensitive data detection status. Valid values:
+	// The detection permission status. Valid values:
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled.
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled.
 	//
 	// example:
 	//
 	// 1
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The database engine type. Examples: **MySQL**, **SQLServer**, **Oracle**, **PostgreSQL**, and **MongoDB**.
+	// The database type. Valid values: **MySQL**, **SQLServer**, **Oracle**, **PostgreSQL**, **MongoDB**, and others.
 	//
 	// example:
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The error code that is returned if the connectivity test fails.
+	// The error code.
 	//
 	// example:
 	//
 	// connect_network_error
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message that is returned if the connectivity test fails.
+	// The failure reason.
 	//
 	// example:
 	//
 	// Incorrect password.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The anomaly detection status. Valid values:
+	// The data leak prevention switch. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled.
 	//
-	// - **1**: Enabled (default).
+	// - **1**: enabled (default).
 	//
 	// example:
 	//
 	// 1
 	EventStatus *int32 `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
-	// The time when the data asset was created. This value is a UNIX timestamp. Unit: milliseconds.
+	// The creation time. Format: timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -231,15 +231,15 @@ type DescribeDataLimitsResponseBodyItems struct {
 	//
 	// 123
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	// The ID of the instance to which the data asset belongs.
+	// The instance ID of the asset to which the data asset table belongs.
 	//
 	// example:
 	//
 	// 12332
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the last full scan was complete. This value is a UNIX timestamp in milliseconds.
+	// The time when the last full scan was completed.
 	//
-	// - Format: UNIX timestamp
+	// - Format: timestamp
 	//
 	// - Unit: milliseconds
 	//
@@ -247,47 +247,47 @@ type DescribeDataLimitsResponseBodyItems struct {
 	//
 	// 145600000
 	LastFinishedTime *int64 `json:"LastFinishedTime,omitempty" xml:"LastFinishedTime,omitempty"`
-	// The time when the last scan started. This value is a UNIX timestamp in milliseconds.
+	// The time when the last scan of the data asset started. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 145600000
 	LastStartTime *int64 `json:"LastStartTime,omitempty" xml:"LastStartTime,omitempty"`
-	// The name of the region in which the data asset is located.
+	// The name of the region where the data resides.
 	//
 	// example:
 	//
 	// China (Hangzhou)
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The retention period of raw logs, in days.
+	// The raw log storage duration. Unit: days.
 	//
 	// example:
 	//
 	// 30
 	LogStoreDay *int32 `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
-	// The ID of the member account to which the data asset belongs.
+	// The member accounts ID.
 	//
 	// example:
 	//
 	// **********8103
 	MemberAccount *int64 `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
-	// The time when the next scan is scheduled to start. This value is a UNIX timestamp. Unit: milliseconds.
+	// The next execution time. Format: timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1676620236000
 	NextStartTime *int64 `json:"NextStartTime,omitempty" xml:"NextStartTime,omitempty"`
-	// The status of Optical Character Recognition (OCR). Valid values:
+	// The OCR status. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled.
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled.
 	//
 	// example:
 	//
 	// 1
 	OcrStatus *int32 `json:"OcrStatus,omitempty" xml:"OcrStatus,omitempty"`
-	// The ID of the parent asset, such as a bucket, DB, or **project**.
+	// The parent ID of the asset to query. Valid values: **bucket**, **db**, **project**, and others.
 	//
 	// example:
 	//
@@ -299,71 +299,71 @@ type DescribeDataLimitsResponseBodyItems struct {
 	//
 	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The status of the scan task. Valid values:
+	// The scan status. Valid values:
 	//
-	// - **-1**: Invalid.
+	// - **-1**: invalid.
 	//
-	// - **0**: Pending.
+	// - **0**: waiting.
 	//
-	// - **1**: Scanning.
+	// - **1**: scanning.
 	//
-	// - **2**: Paused.
+	// - **2**: paused.
 	//
-	// - **3**: Completed.
+	// - **3**: completed.
 	//
 	// example:
 	//
 	// 3
 	ProcessStatus *int32 `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
-	// The total number of data tables or files.
+	// The total number of tables or files.
 	//
 	// example:
 	//
 	// 100
 	ProcessTotalCount *int32 `json:"ProcessTotalCount,omitempty" xml:"ProcessTotalCount,omitempty"`
-	// The ID of the region in which the data asset is located.
+	// The region where the asset resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of service to which the data asset belongs. Data assets can be instances, databases, or buckets. Valid values:
+	// The type of the product to which the data asset belongs. Valid values:
 	//
 	// - **1**: MaxCompute
 	//
 	// - **2**: OSS
 	//
-	// - **3**: AnalyticDB for MySQL
+	// - **3**: ADS
 	//
-	// - **4**: Tablestore
+	// - **4**: OTS
 	//
 	// - **5**: RDS
 	//
-	// - **6**: A self-managed database
+	// - **6**: SELF_DB
 	//
 	// example:
 	//
 	// 5
 	ResourceType *int64 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The code of the service to which the data asset belongs. Examples: MaxCompute, OSS, ADS, OTS, and **RDS**.
+	// The product type code of the data source. Valid values: **MaxCompute**, **OSS**, **ADS**, **OTS**, **RDS**, and others.
 	//
 	// example:
 	//
 	// RDS
 	ResourceTypeCode *string `json:"ResourceTypeCode,omitempty" xml:"ResourceTypeCode,omitempty"`
-	// The number of sensitive data samples. Valid values: **0**, **5**, and **10**. Unit: entries.
+	// The sensitive data sampling size. Valid values: **0**, **5**, and **10**. Unit: entries.
 	//
 	// example:
 	//
 	// 5
 	SamplingSize *int32 `json:"SamplingSize,omitempty" xml:"SamplingSize,omitempty"`
-	// A list of security group IDs that are used by PrivateLink for agent-based auditing.
+	// The list of security group IDs used by PrivateLink in agent-based auditing.
 	SecurityGroupIdList []*string `json:"SecurityGroupIdList,omitempty" xml:"SecurityGroupIdList,omitempty" type:"Repeated"`
 	// Indicates whether auditing is supported. Valid values:
 	//
-	// - **true**: Yes.
+	// - **true**: Supported.
 	//
-	// - **false**: No.
+	// - **false**: Not supported.
 	//
 	// example:
 	//
@@ -371,19 +371,19 @@ type DescribeDataLimitsResponseBodyItems struct {
 	SupportAudit *bool `json:"SupportAudit,omitempty" xml:"SupportAudit,omitempty"`
 	// Indicates whether data masking is supported. Valid values:
 	//
-	// - **true**: Yes.
+	// - **true**: Supported.
 	//
-	// - **false**: No.
+	// - **false**: Not supported.
 	//
 	// example:
 	//
 	// true
 	SupportDatamask *bool `json:"SupportDatamask,omitempty" xml:"SupportDatamask,omitempty"`
-	// Indicates whether anomaly detection is supported. Valid values:
+	// Indicates whether anomalous activity detection is supported. Valid values:
 	//
-	// - **true**: Yes.
+	// - **true**: Supported.
 	//
-	// - **false**: No.
+	// - **false**: Not supported.
 	//
 	// example:
 	//
@@ -391,45 +391,45 @@ type DescribeDataLimitsResponseBodyItems struct {
 	SupportEvent *bool `json:"SupportEvent,omitempty" xml:"SupportEvent,omitempty"`
 	// Indicates whether OCR is supported. Valid values:
 	//
-	// - **true**: Yes.
+	// - **true**: Supported.
 	//
-	// - **false**: No.
+	// - **false**: Not supported.
 	//
 	// example:
 	//
 	// true
 	SupportOcr *bool `json:"SupportOcr,omitempty" xml:"SupportOcr,omitempty"`
-	// Indicates whether sensitive data detection is supported. Valid values:
+	// Indicates whether scanning is supported. Valid values:
 	//
-	// - **true**: Yes.
+	// - **true**: Supported.
 	//
-	// - **false**: No.
+	// - **false**: Not supported.
 	//
 	// example:
 	//
 	// true
 	SupportScan *bool `json:"SupportScan,omitempty" xml:"SupportScan,omitempty"`
-	// The alias of the tenant.
+	// The tenant alias.
 	//
 	// example:
 	//
 	// insta_gram
 	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
-	// The total number of fields. This parameter is returned only when the data asset is a table.
+	// The total number of fields in the data asset table.
 	//
 	// example:
 	//
 	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The username of the data asset owner.
+	// The username of the data owner.
 	//
 	// example:
 	//
 	// tsts
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// A list of vSwitch IDs that are used by PrivateLink for agent-based auditing.
+	// The list of vSwitch IDs used by PrivateLink in agent-based auditing.
 	VSwitchIdList []*string `json:"VSwitchIdList,omitempty" xml:"VSwitchIdList,omitempty" type:"Repeated"`
-	// The ID of the virtual private cloud (VPC) in which the data asset resides.
+	// The VPC ID to which the data asset belongs.
 	//
 	// example:
 	//

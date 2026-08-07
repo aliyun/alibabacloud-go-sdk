@@ -18,7 +18,7 @@ type iDescribeEventDetailRequest interface {
 type DescribeEventDetailRequest struct {
 	// The unique ID of the anomalous activity.
 	//
-	// > To query the details of a single anomalous activity, you must provide its unique ID. You can call the **DescribeEvents*	- operation to obtain the ID.
+	// > To query the details of a single anomalous activity, provide the unique ID of the anomalous activity. You can call the **DescribeEvents*	- operation to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DescribeEventDetailRequest struct {
 	//
 	// 13456723343
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
 	// - **zh**: Chinese.
 	//

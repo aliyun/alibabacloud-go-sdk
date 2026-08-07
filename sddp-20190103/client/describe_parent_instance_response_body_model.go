@@ -22,21 +22,21 @@ type iDescribeParentInstanceResponseBody interface {
 }
 
 type DescribeParentInstanceResponseBody struct {
-	// The page number of the returned page. Default value: **1**.
+	// The page number of the current page when paging is used. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The list of queried data assets.
+	// The list of data assets returned.
 	Items []*DescribeParentInstanceResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The maximum number of data asset instances returned on each page. Default value: **10**.
+	// The maximum number of data asset instances displayed per page when paging is used. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -127,7 +127,7 @@ type DescribeParentInstanceResponseBodyItems struct {
 	//
 	// 1
 	AuditStatus *int32 `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	// The authorization status of the data asset instance.
+	// The authorization status of the data asset instance. Valid values:
 	//
 	// - **0**: Unauthorized.
 	//
@@ -149,29 +149,29 @@ type DescribeParentInstanceResponseBodyItems struct {
 	//
 	// Running
 	ClusterStatus *string `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
-	// The type of the connection node. This parameter is valid only for MongoDB assets.
+	// The connection node type. This parameter is valid only for the MongoDB Asset Type.
 	//
 	// example:
 	//
 	// Primary
 	ConnectNode *string `json:"ConnectNode,omitempty" xml:"ConnectNode,omitempty"`
-	// The number of databases in the instance.
+	// The number of databases under the instance.
 	//
 	// example:
 	//
 	// 3
 	DbNum *string `json:"DbNum,omitempty" xml:"DbNum,omitempty"`
-	// The type of the database engine. Valid values:
+	// The engine type. Valid values:
 	//
-	// - **MySQL**.
+	// - **MySQL**
 	//
-	// - **MariaDB**.
+	// - **MariaDB**
 	//
-	// - **Oracle**.
+	// - **Oracle**
 	//
-	// - **PostgreSQL**.
+	// - **PostgreSQL**
 	//
-	// - **SQLServer**.
+	// - **SQLServer**
 	//
 	// example:
 	//
@@ -189,13 +189,13 @@ type DescribeParentInstanceResponseBodyItems struct {
 	//
 	// rm-*******t2vz
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The storage space of the instance. This parameter is valid only for OSS assets. Unit: bytes.
+	// The storage size of the instance. This parameter is valid only for the OSS Asset Type. Unit: bytes.
 	//
 	// example:
 	//
 	// 409600
 	InstanceSize *int64 `json:"InstanceSize,omitempty" xml:"InstanceSize,omitempty"`
-	// The name of the region. The following list describes the valid values:
+	// The region name. Valid values:
 	//
 	// - **China (Hangzhou)**
 	//
@@ -209,7 +209,7 @@ type DescribeParentInstanceResponseBodyItems struct {
 	//
 	// - **China (Guangzhou)**
 	//
-	// - **China (Hong Kong)**
+	// - **Hong Kong (China)**
 	//
 	// - **Singapore**
 	//
@@ -219,13 +219,13 @@ type DescribeParentInstanceResponseBodyItems struct {
 	//
 	// cn-hangzhou
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The ID of the member account.
+	// The ID of the member accounts.
 	//
 	// example:
 	//
 	// **********8103
 	MemberAccount *int64 `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
-	// The identifier of the authorized asset. If the asset is structured data, the identifier is in the format of \\`Instance ID.Database name\\`.
+	// The identifier of the authorized asset. For structured data, the identifier is in the format of instance ID.database name.
 	//
 	// example:
 	//
@@ -237,7 +237,7 @@ type DescribeParentInstanceResponseBodyItems struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the asset type. Valid values:
+	// The asset type name. Valid values:
 	//
 	// - **MaxCompute**
 	//
@@ -267,7 +267,7 @@ type DescribeParentInstanceResponseBodyItems struct {
 	//
 	// RDS
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The supported connection nodes. Multiple nodes are separated by commas.
+	// The supported connection nodes. Multiple nodes are separated by commas (,).
 	//
 	// example:
 	//
@@ -285,7 +285,7 @@ type DescribeParentInstanceResponseBodyItems struct {
 	//
 	// user1
 	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
-	// The number of unconnected databases in the instance.
+	// The number of unconnected databases under the instance.
 	//
 	// example:
 	//

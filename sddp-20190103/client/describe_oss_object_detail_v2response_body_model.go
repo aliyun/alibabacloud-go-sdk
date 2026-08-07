@@ -16,9 +16,9 @@ type iDescribeOssObjectDetailV2ResponseBody interface {
 }
 
 type DescribeOssObjectDetailV2ResponseBody struct {
-	// The details of the OSS object.
+	// The details of the OSS storage object.
 	OssObjectDetail *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail `json:"OssObjectDetail,omitempty" xml:"OssObjectDetail,omitempty" type:"Struct"`
-	// The ID of the request. Use this ID to troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *DescribeOssObjectDetailV2ResponseBody) Validate() error {
 }
 
 type DescribeOssObjectDetailV2ResponseBodyOssObjectDetail struct {
-	// The name of the bucket that stores the OSS object.
+	// The name of the bucket to which the OSS storage object belongs.
 	//
 	// example:
 	//
@@ -80,43 +80,43 @@ type DescribeOssObjectDetailV2ResponseBodyOssObjectDetail struct {
 	//
 	// Image file
 	FileCategoryName *string `json:"FileCategoryName,omitempty" xml:"FileCategoryName,omitempty"`
-	// The unique ID of the object.
+	// The unique ID of the column object.
 	//
 	// example:
 	//
 	// 1757262735738932224
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The data tags, separated by commas. Example: 101,102. Valid values:
+	// The data tags, separated by commas, such as 101,102. Valid values:
 	//
-	// - **101**: Personal sensitive information.
+	// - **101**: personal sensitive information.
 	//
-	// - **102**: Personal information.
+	// - **102**: personal information.
 	//
-	// - **107**: General information.
+	// - **107**: general information.
 	//
 	// example:
 	//
 	// 101,102
 	ModelTagIds *string `json:"ModelTagIds,omitempty" xml:"ModelTagIds,omitempty"`
-	// The name of the OSS object.
+	// The name of the OSS storage object.
 	//
 	// example:
 	//
 	// dir1/test.png
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The access control list (ACL) of the object.
+	// The ACL of the file object.
 	//
 	// example:
 	//
 	// private
 	ObjectAcl *string `json:"ObjectAcl,omitempty" xml:"ObjectAcl,omitempty"`
-	// The ID of the region where the OSS object is stored.
+	// The region ID of the OSS storage object.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the risk level of the data asset. Valid values:
+	// The risk level ID of the column data in the data asset table. Valid values:
 	//
 	// - **1**: N/A.
 	//
@@ -128,21 +128,21 @@ type DescribeOssObjectDetailV2ResponseBodyOssObjectDetail struct {
 	//
 	// - **5**: S4.
 	//
-	// > A return value of 1 or less indicates N/A.
+	// > A return value less than or equal to 1 indicates N/A.
 	//
 	// example:
 	//
 	// 4
 	RiskLevelId *int32 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// The name of the risk level of the OSS object.
+	// The risk level name of the OSS storage object.
 	//
 	// example:
 	//
 	// S2
 	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	// The list of sensitive data detection rules that the OSS object matches.
+	// The list of sensitive data detection rules that the OSS storage object hits.
 	RuleList []*DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
-	// The size of the file in bytes.
+	// The file size. Unit: bytes.
 	//
 	// example:
 	//
@@ -286,37 +286,37 @@ type DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList struct {
 	//
 	// 敏感图片信息
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The number of times the sensitive data detection rule was matched.
+	// The number of times the sensitive data detection rule is hit.
 	//
 	// example:
 	//
 	// 2
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// A list of tags for the detection model.
+	// The list of data tags.
 	ModelTags []*DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleListModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
-	// The ID of the risk level that is specified in the rule.
+	// The risk level ID of the OSS storage object. Valid values:
 	//
-	// - **1**: N/A
+	// - **1**: No sensitive data is detected.
 	//
-	// - **2**: S1
+	// - **2**: Level 1 sensitive data.
 	//
-	// - **3**: S2
+	// - **3**: Level 2 sensitive data.
 	//
-	// - **4**: S3
+	// - **4**: Level 3 sensitive data.
 	//
-	// - **5**: S4
+	// - **5**: Level 4 sensitive data.
 	//
 	// example:
 	//
 	// 3
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// The name of the risk level that is specified in the rule.
+	// The risk level name of the OSS storage object.
 	//
 	// example:
 	//
 	// S2
 	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	// The name of the matched sensitive data detection rule.
+	// The name of the sensitive data detection rule that is hit.
 	//
 	// example:
 	//
@@ -400,19 +400,19 @@ func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList) Validate(
 }
 
 type DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleListModelTags struct {
-	// The ID of the data tag for the detection model.
+	// The data tag ID of the detection model. Valid values:
 	//
-	// - **101**: Personal sensitive information.
+	// - **101**: personal sensitive information.
 	//
-	// - **102**: Personal information.
+	// - **102**: personal information.
 	//
-	// - **103**: Important data.
+	// - **103**: important data.
 	//
 	// example:
 	//
 	// 101
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the data tag for the detection model.
+	// The data tag name of the detection model. Valid values:
 	//
 	// - Personal sensitive information.
 	//

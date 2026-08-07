@@ -18,7 +18,7 @@ type iDisableUserConfigRequest interface {
 }
 
 type DisableUserConfigRequest struct {
-	// The code of the configuration item in the general anomaly alert configuration module. Call the [DescribeConfigs](~~DescribeConfigs~~) operation to obtain the code.
+	// The code of the configuration item in the anomaly alert general configuration module. You can call [DescribeConfigs](~~DescribeConfigs~~) to obtain the Code of the configuration item.
 	//
 	// example:
 	//
