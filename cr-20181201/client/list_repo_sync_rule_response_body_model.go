@@ -199,7 +199,9 @@ type ListRepoSyncRuleResponseBodySyncRules struct {
 	// example:
 	//
 	// 1572604642000
-	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	ModifiedTime        *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	NamespaceNameFilter *string `json:"NamespaceNameFilter,omitempty" xml:"NamespaceNameFilter,omitempty"`
+	Priority            *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The regular expression that is used to filter repositories.
 	//
 	// > This parameter is valid only when `SyncScope` is set to `NAMESPACE`.
@@ -322,6 +324,14 @@ func (s *ListRepoSyncRuleResponseBodySyncRules) GetModifiedTime() *int64 {
 	return s.ModifiedTime
 }
 
+func (s *ListRepoSyncRuleResponseBodySyncRules) GetNamespaceNameFilter() *string {
+	return s.NamespaceNameFilter
+}
+
+func (s *ListRepoSyncRuleResponseBodySyncRules) GetPriority() *int32 {
+	return s.Priority
+}
+
 func (s *ListRepoSyncRuleResponseBodySyncRules) GetRepoNameFilter() *string {
 	return s.RepoNameFilter
 }
@@ -403,6 +413,16 @@ func (s *ListRepoSyncRuleResponseBodySyncRules) SetLocalRepoName(v string) *List
 
 func (s *ListRepoSyncRuleResponseBodySyncRules) SetModifiedTime(v int64) *ListRepoSyncRuleResponseBodySyncRules {
 	s.ModifiedTime = &v
+	return s
+}
+
+func (s *ListRepoSyncRuleResponseBodySyncRules) SetNamespaceNameFilter(v string) *ListRepoSyncRuleResponseBodySyncRules {
+	s.NamespaceNameFilter = &v
+	return s
+}
+
+func (s *ListRepoSyncRuleResponseBodySyncRules) SetPriority(v int32) *ListRepoSyncRuleResponseBodySyncRules {
+	s.Priority = &v
 	return s
 }
 

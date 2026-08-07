@@ -1656,6 +1656,14 @@ func (client *Client) CreateRepoSyncRuleWithOptions(request *CreateRepoSyncRuleR
 		query["NamespaceName"] = request.NamespaceName
 	}
 
+	if !dara.IsNil(request.NamespaceNameFilter) {
+		query["NamespaceNameFilter"] = request.NamespaceNameFilter
+	}
+
+	if !dara.IsNil(request.Priority) {
+		query["Priority"] = request.Priority
+	}
+
 	if !dara.IsNil(request.RepoName) {
 		query["RepoName"] = request.RepoName
 	}
@@ -1766,6 +1774,10 @@ func (client *Client) CreateRepoSyncTaskWithOptions(request *CreateRepoSyncTaskR
 		query["Override"] = request.Override
 	}
 
+	if !dara.IsNil(request.Priority) {
+		query["Priority"] = request.Priority
+	}
+
 	if !dara.IsNil(request.RepoId) {
 		query["RepoId"] = request.RepoId
 	}
@@ -1858,6 +1870,10 @@ func (client *Client) CreateRepoSyncTaskByRuleWithOptions(request *CreateRepoSyn
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Priority) {
+		query["Priority"] = request.Priority
 	}
 
 	if !dara.IsNil(request.RepoId) {
@@ -4077,13 +4093,13 @@ func (client *Client) GetArtifactSubscriptionTaskResult(request *GetArtifactSubs
 //
 // Description:
 //
-// The temporary password is valid for 1 hour. If you use STS to make the request, the validity period of the temporary password is the same as that of the STS token used in the request.
+// The temporary password is valid for 1 hour. If you use STS to make the request, the validity period of the temporary password equals the validity period of the STS token used in the request.
 //
-// - The permissions granted by a temporary token obtained through an Alibaba Cloud account are the same as those granted when you log on to the instance with the username and password of the Alibaba Cloud account.
+// - The permissions granted by a temporary token obtained through an Alibaba Cloud account are the same as those granted when logging on to the instance with the username and password of the Alibaba Cloud account.
 //
-// - The permissions granted by a temporary token obtained through a RAM user are the same as those granted when you log on to the instance with the username and password of the RAM user.
+// - The permissions granted by a temporary token obtained through a RAM user are the same as those granted when logging on to the instance with the username and password of the RAM user.
 //
-// - The permissions granted by a temporary token obtained through STS are the same as those of the STS token.
+// - The permissions granted by a temporary token obtained through STS are the same as the permissions of the STS token.
 //
 // @param request - GetAuthorizationTokenRequest
 //
@@ -4135,13 +4151,13 @@ func (client *Client) GetAuthorizationTokenWithOptions(request *GetAuthorization
 //
 // Description:
 //
-// The temporary password is valid for 1 hour. If you use STS to make the request, the validity period of the temporary password is the same as that of the STS token used in the request.
+// The temporary password is valid for 1 hour. If you use STS to make the request, the validity period of the temporary password equals the validity period of the STS token used in the request.
 //
-// - The permissions granted by a temporary token obtained through an Alibaba Cloud account are the same as those granted when you log on to the instance with the username and password of the Alibaba Cloud account.
+// - The permissions granted by a temporary token obtained through an Alibaba Cloud account are the same as those granted when logging on to the instance with the username and password of the Alibaba Cloud account.
 //
-// - The permissions granted by a temporary token obtained through a RAM user are the same as those granted when you log on to the instance with the username and password of the RAM user.
+// - The permissions granted by a temporary token obtained through a RAM user are the same as those granted when logging on to the instance with the username and password of the RAM user.
 //
-// - The permissions granted by a temporary token obtained through STS are the same as those of the STS token.
+// - The permissions granted by a temporary token obtained through STS are the same as the permissions of the STS token.
 //
 // @param request - GetAuthorizationTokenRequest
 //

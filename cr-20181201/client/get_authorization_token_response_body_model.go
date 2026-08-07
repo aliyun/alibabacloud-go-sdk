@@ -42,7 +42,7 @@ type GetAuthorizationTokenResponseBody struct {
 	//
 	// 1571242083000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//

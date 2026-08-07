@@ -13,6 +13,8 @@ type iCreateRepoSyncTaskRequest interface {
 	GetInstanceId() *string
 	SetOverride(v bool) *CreateRepoSyncTaskRequest
 	GetOverride() *bool
+	SetPriority(v int32) *CreateRepoSyncTaskRequest
+	GetPriority() *int32
 	SetRepoId(v string) *CreateRepoSyncTaskRequest
 	GetRepoId() *string
 	SetTag(v string) *CreateRepoSyncTaskRequest
@@ -49,7 +51,8 @@ type CreateRepoSyncTaskRequest struct {
 	// example:
 	//
 	// true
-	Override *bool `json:"Override,omitempty" xml:"Override,omitempty"`
+	Override *bool  `json:"Override,omitempty" xml:"Override,omitempty"`
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// Image repository ID in the source instance
 	//
 	// This parameter is required.
@@ -130,6 +133,10 @@ func (s *CreateRepoSyncTaskRequest) GetOverride() *bool {
 	return s.Override
 }
 
+func (s *CreateRepoSyncTaskRequest) GetPriority() *int32 {
+	return s.Priority
+}
+
 func (s *CreateRepoSyncTaskRequest) GetRepoId() *string {
 	return s.RepoId
 }
@@ -169,6 +176,11 @@ func (s *CreateRepoSyncTaskRequest) SetInstanceId(v string) *CreateRepoSyncTaskR
 
 func (s *CreateRepoSyncTaskRequest) SetOverride(v bool) *CreateRepoSyncTaskRequest {
 	s.Override = &v
+	return s
+}
+
+func (s *CreateRepoSyncTaskRequest) SetPriority(v int32) *CreateRepoSyncTaskRequest {
+	s.Priority = &v
 	return s
 }
 

@@ -15,6 +15,10 @@ type iCreateRepoSyncRuleRequest interface {
 	GetLinkId() *string
 	SetNamespaceName(v string) *CreateRepoSyncRuleRequest
 	GetNamespaceName() *string
+	SetNamespaceNameFilter(v string) *CreateRepoSyncRuleRequest
+	GetNamespaceNameFilter() *string
+	SetPriority(v int32) *CreateRepoSyncRuleRequest
+	GetPriority() *int32
 	SetRepoName(v string) *CreateRepoSyncRuleRequest
 	GetRepoName() *string
 	SetRepoNameFilter(v string) *CreateRepoSyncRuleRequest
@@ -51,12 +55,15 @@ type CreateRepoSyncRuleRequest struct {
 	LinkId     *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
 	// The namespace name of the source instance.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// ns1
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// example:
+	//
+	// .*
+	NamespaceNameFilter *string `json:"NamespaceNameFilter,omitempty" xml:"NamespaceNameFilter,omitempty"`
+	Priority            *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The name of the image repository in the source instance.
 	//
 	// example:
@@ -119,8 +126,6 @@ type CreateRepoSyncRuleRequest struct {
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
 	// The namespace name of the destination instance.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// ns1
@@ -167,6 +172,14 @@ func (s *CreateRepoSyncRuleRequest) GetLinkId() *string {
 
 func (s *CreateRepoSyncRuleRequest) GetNamespaceName() *string {
 	return s.NamespaceName
+}
+
+func (s *CreateRepoSyncRuleRequest) GetNamespaceNameFilter() *string {
+	return s.NamespaceNameFilter
+}
+
+func (s *CreateRepoSyncRuleRequest) GetPriority() *int32 {
+	return s.Priority
 }
 
 func (s *CreateRepoSyncRuleRequest) GetRepoName() *string {
@@ -225,6 +238,16 @@ func (s *CreateRepoSyncRuleRequest) SetLinkId(v string) *CreateRepoSyncRuleReque
 
 func (s *CreateRepoSyncRuleRequest) SetNamespaceName(v string) *CreateRepoSyncRuleRequest {
 	s.NamespaceName = &v
+	return s
+}
+
+func (s *CreateRepoSyncRuleRequest) SetNamespaceNameFilter(v string) *CreateRepoSyncRuleRequest {
+	s.NamespaceNameFilter = &v
+	return s
+}
+
+func (s *CreateRepoSyncRuleRequest) SetPriority(v int32) *CreateRepoSyncRuleRequest {
+	s.Priority = &v
 	return s
 }
 

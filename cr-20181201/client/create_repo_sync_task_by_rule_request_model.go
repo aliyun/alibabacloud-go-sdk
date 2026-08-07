@@ -11,6 +11,8 @@ type iCreateRepoSyncTaskByRuleRequest interface {
 	GoString() string
 	SetInstanceId(v string) *CreateRepoSyncTaskByRuleRequest
 	GetInstanceId() *string
+	SetPriority(v int32) *CreateRepoSyncTaskByRuleRequest
+	GetPriority() *int32
 	SetRepoId(v string) *CreateRepoSyncTaskByRuleRequest
 	GetRepoId() *string
 	SetSyncRuleId(v string) *CreateRepoSyncTaskByRuleRequest
@@ -28,6 +30,7 @@ type CreateRepoSyncTaskByRuleRequest struct {
 	//
 	// cri-hpdfkc6utbaq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Priority   *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The ID of the image repository.
 	//
 	// This parameter is required.
@@ -66,6 +69,10 @@ func (s *CreateRepoSyncTaskByRuleRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *CreateRepoSyncTaskByRuleRequest) GetPriority() *int32 {
+	return s.Priority
+}
+
 func (s *CreateRepoSyncTaskByRuleRequest) GetRepoId() *string {
 	return s.RepoId
 }
@@ -80,6 +87,11 @@ func (s *CreateRepoSyncTaskByRuleRequest) GetTag() *string {
 
 func (s *CreateRepoSyncTaskByRuleRequest) SetInstanceId(v string) *CreateRepoSyncTaskByRuleRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateRepoSyncTaskByRuleRequest) SetPriority(v int32) *CreateRepoSyncTaskByRuleRequest {
+	s.Priority = &v
 	return s
 }
 

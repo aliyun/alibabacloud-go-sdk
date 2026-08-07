@@ -191,6 +191,7 @@ type ListRepoSyncTaskResponseBodySyncTasks struct {
 	ModifedTime *int64 `json:"ModifedTime,omitempty" xml:"ModifedTime,omitempty"`
 	// The modification time of the task.
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Priority     *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The ID of the batch sync task. This ID is the same as the sync record ID (`SyncRecordId`).
 	//
 	// > If an image matches multiple sync rules, multiple sync tasks are generated. These tasks share the same `SyncBatchTaskId`.
@@ -285,6 +286,10 @@ func (s *ListRepoSyncTaskResponseBodySyncTasks) GetModifiedTime() *int64 {
 	return s.ModifiedTime
 }
 
+func (s *ListRepoSyncTaskResponseBodySyncTasks) GetPriority() *int32 {
+	return s.Priority
+}
+
 func (s *ListRepoSyncTaskResponseBodySyncTasks) GetSyncBatchTaskId() *string {
 	return s.SyncBatchTaskId
 }
@@ -350,6 +355,11 @@ func (s *ListRepoSyncTaskResponseBodySyncTasks) SetModifedTime(v int64) *ListRep
 
 func (s *ListRepoSyncTaskResponseBodySyncTasks) SetModifiedTime(v int64) *ListRepoSyncTaskResponseBodySyncTasks {
 	s.ModifiedTime = &v
+	return s
+}
+
+func (s *ListRepoSyncTaskResponseBodySyncTasks) SetPriority(v int32) *ListRepoSyncTaskResponseBodySyncTasks {
+	s.Priority = &v
 	return s
 }
 

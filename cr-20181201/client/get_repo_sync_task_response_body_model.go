@@ -21,6 +21,8 @@ type iGetRepoSyncTaskResponseBody interface {
 	GetIsSuccess() *bool
 	SetLayerTasks(v []*GetRepoSyncTaskResponseBodyLayerTasks) *GetRepoSyncTaskResponseBody
 	GetLayerTasks() []*GetRepoSyncTaskResponseBodyLayerTasks
+	SetPriority(v int32) *GetRepoSyncTaskResponseBody
+	GetPriority() *int32
 	SetProgress(v int64) *GetRepoSyncTaskResponseBody
 	GetProgress() *int64
 	SetRequestId(v string) *GetRepoSyncTaskResponseBody
@@ -68,6 +70,7 @@ type GetRepoSyncTaskResponseBody struct {
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The synchronization tasks for the image layer.
 	LayerTasks []*GetRepoSyncTaskResponseBodyLayerTasks `json:"LayerTasks,omitempty" xml:"LayerTasks,omitempty" type:"Repeated"`
+	Priority   *int32                                   `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The synchronization progress. Valid values:
 	//
 	// 	- `0`: The synchronization starts or failed.
@@ -146,7 +149,7 @@ type GetRepoSyncTaskResponseBody struct {
 	//
 	// example:
 	//
-	// PASSIVE
+	// null
 	TaskTrigger *string `json:"TaskTrigger,omitempty" xml:"TaskTrigger,omitempty"`
 }
 
@@ -180,6 +183,10 @@ func (s *GetRepoSyncTaskResponseBody) GetIsSuccess() *bool {
 
 func (s *GetRepoSyncTaskResponseBody) GetLayerTasks() []*GetRepoSyncTaskResponseBodyLayerTasks {
 	return s.LayerTasks
+}
+
+func (s *GetRepoSyncTaskResponseBody) GetPriority() *int32 {
+	return s.Priority
 }
 
 func (s *GetRepoSyncTaskResponseBody) GetProgress() *int64 {
@@ -249,6 +256,11 @@ func (s *GetRepoSyncTaskResponseBody) SetIsSuccess(v bool) *GetRepoSyncTaskRespo
 
 func (s *GetRepoSyncTaskResponseBody) SetLayerTasks(v []*GetRepoSyncTaskResponseBodyLayerTasks) *GetRepoSyncTaskResponseBody {
 	s.LayerTasks = v
+	return s
+}
+
+func (s *GetRepoSyncTaskResponseBody) SetPriority(v int32) *GetRepoSyncTaskResponseBody {
+	s.Priority = &v
 	return s
 }
 
