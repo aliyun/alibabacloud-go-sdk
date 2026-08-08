@@ -1054,6 +1054,47 @@ func (client *Client) EnableCheckResourceWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 开启跨账号管理
+//
+// @param request - EnableCrossAccountManagementRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableCrossAccountManagementResponse
+func (client *Client) EnableCrossAccountManagementWithContext(ctx context.Context, request *EnableCrossAccountManagementRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EnableCrossAccountManagementResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableCrossAccountManagement"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/cross-accounts/enable-management"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableCrossAccountManagementResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the status of the Backup and Disaster Recovery Center.
 //
 // @param headers - map
@@ -1206,6 +1247,73 @@ func (client *Client) GetResourceCategoryWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetResourceCategoryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建跨账号纳管关系
+//
+// @param request - ListCrossAccountsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCrossAccountsResponse
+func (client *Client) ListCrossAccountsWithContext(ctx context.Context, request *ListCrossAccountsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListCrossAccountsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CrossAccountOwnerId) {
+		query["CrossAccountOwnerId"] = request.CrossAccountOwnerId
+	}
+
+	if !dara.IsNil(request.ManagementMode) {
+		query["ManagementMode"] = request.ManagementMode
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.TargetId) {
+		query["TargetId"] = request.TargetId
+	}
+
+	if !dara.IsNil(request.TargetType) {
+		query["TargetType"] = request.TargetType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCrossAccounts"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/cross-accounts"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCrossAccountsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1487,6 +1595,124 @@ func (client *Client) OpenBdrcServiceWithContext(ctx context.Context, headers ma
 		BodyType:    dara.String("json"),
 	}
 	_result = &OpenBdrcServiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 预检查资源数量
+//
+// @param tmpReq - PrecheckResourceCountRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PrecheckResourceCountResponse
+func (client *Client) PrecheckResourceCountWithContext(ctx context.Context, tmpReq *PrecheckResourceCountRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PrecheckResourceCountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &PrecheckResourceCountShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TagResourceMatchers) {
+		request.TagResourceMatchersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagResourceMatchers, dara.String("TagResourceMatchers"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ResourceType) {
+		body["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.TagResourceMatchersShrink) {
+		body["TagResourceMatchers"] = request.TagResourceMatchersShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PrecheckResourceCount"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/resources/precheck-count"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PrecheckResourceCountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新跨账号纳管关系
+//
+// @param tmpReq - UpdateCrossAccountsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCrossAccountsResponse
+func (client *Client) UpdateCrossAccountsWithContext(ctx context.Context, tmpReq *UpdateCrossAccountsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateCrossAccountsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateCrossAccountsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateTargets) {
+		request.CreateTargetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateTargets, dara.String("CreateTargets"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.DeleteTargets) {
+		request.DeleteTargetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeleteTargets, dara.String("DeleteTargets"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateTargetsShrink) {
+		body["CreateTargets"] = request.CreateTargetsShrink
+	}
+
+	if !dara.IsNil(request.DeleteTargetsShrink) {
+		body["DeleteTargets"] = request.DeleteTargetsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCrossAccounts"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/cross-accounts"),
+		Method:      dara.String("PATCH"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCrossAccountsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
