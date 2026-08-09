@@ -5548,7 +5548,7 @@ func (client *Client) GetConcurrentConversationQuota() (_result *GetConcurrentCo
 
 // Summary:
 //
-// Retrieves the list of contacts blocked for outbound calls.
+// Retrieves the outbound call blocklist.
 //
 // @param request - GetContactBlockListRequest
 //
@@ -5579,6 +5579,10 @@ func (client *Client) GetContactBlockListWithOptions(request *GetContactBlockLis
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.SearchPattern) {
+		query["SearchPattern"] = request.SearchPattern
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5604,7 +5608,7 @@ func (client *Client) GetContactBlockListWithOptions(request *GetContactBlockLis
 
 // Summary:
 //
-// Retrieves the list of contacts blocked for outbound calls.
+// Retrieves the outbound call blocklist.
 //
 // @param request - GetContactBlockListRequest
 //
@@ -5651,6 +5655,10 @@ func (client *Client) GetContactWhiteListWithOptions(request *GetContactWhiteLis
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SearchPattern) {
+		query["SearchPattern"] = request.SearchPattern
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -8370,7 +8378,7 @@ func (client *Client) ListScriptVoiceConfigs(request *ListScriptVoiceConfigsRequ
 
 // Summary:
 //
-// View the script list.
+// Queries the list of scripts.
 //
 // @param request - ListScriptsRequest
 //
@@ -8430,7 +8438,7 @@ func (client *Client) ListScriptsWithOptions(request *ListScriptsRequest, runtim
 
 // Summary:
 //
-// View the script list.
+// Queries the list of scripts.
 //
 // @param request - ListScriptsRequest
 //

@@ -30,7 +30,7 @@ type GetContactBlockListResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of blocked contacts.
+	// The contact blocklist.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type GetContactBlockListResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *GetContactBlockListResponseBody) Validate() error {
 }
 
 type GetContactBlockListResponseBodyContactBlocklistList struct {
-	// The data array.
+	// The array data.
 	//
 	// example:
 	//
@@ -218,19 +218,19 @@ func (s *GetContactBlockListResponseBodyContactBlocklistList) Validate() error {
 }
 
 type GetContactBlockListResponseBodyContactBlocklistListList struct {
-	// The unique key of the entry in the do-not-call list.
+	// The unique business key of the outbound call blocklist entry.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	ContactBlockListId *string `json:"ContactBlockListId,omitempty" xml:"ContactBlockListId,omitempty"`
-	// The time when the entry was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1640077685465
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The user who created the entry.
+	// The creator.
 	//
 	// example:
 	//
@@ -242,7 +242,7 @@ type GetContactBlockListResponseBodyContactBlocklistListList struct {
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the contact.
+	// The name.
 	//
 	// example:
 	//
@@ -254,7 +254,7 @@ type GetContactBlockListResponseBodyContactBlocklistListList struct {
 	//
 	// xxx
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The mobile phone number.
+	// The phone number.
 	//
 	// example:
 	//

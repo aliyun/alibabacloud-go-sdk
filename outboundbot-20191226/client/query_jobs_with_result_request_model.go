@@ -46,19 +46,19 @@ type QueryJobsWithResultRequest struct {
 	//
 	// 1579055783000
 	EndActualTimeFilter *int64 `json:"EndActualTimeFilter,omitempty" xml:"EndActualTimeFilter,omitempty"`
-	// Specifies whether the call was answered.
+	// Specifies whether the call is answered.
 	//
 	// example:
 	//
 	// true
 	HasAnsweredFilter *bool `json:"HasAnsweredFilter,omitempty" xml:"HasAnsweredFilter,omitempty"`
-	// Specifies whether the call was hung up due to rejection.
+	// Specifies whether the call is hung up due to rejection.
 	//
 	// example:
 	//
 	// false
 	HasHangUpByRejectionFilter *bool `json:"HasHangUpByRejectionFilter,omitempty" xml:"HasHangUpByRejectionFilter,omitempty"`
-	// Specifies whether the call reached the end of the flow.
+	// Specifies whether the call has reached the end of the flow.
 	//
 	// example:
 	//
@@ -88,37 +88,33 @@ type QueryJobsWithResultRequest struct {
 	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
 	// The job status filter. Valid values:
 	//
-	// - Scheduling: scheduling.
+	// - Scheduling: Scheduling in progress.
 	//
-	// - Executing: executing.
+	// - Executing: Executing in progress.
 	//
-	// - Succeeded: ended - reached.
+	// - Succeeded: Ended - Reached.
 	//
-	// - Paused: paused.
+	// - Paused: Paused.
 	//
-	// - Failed: ended - not reached.
+	// - Failed: Ended - Not reached.
 	//
-	// - Cancelled: cancelled - manual intervention.
+	// - Cancelled: Cancelled - Manual intervention.
 	//
 	// example:
 	//
 	// Succeeded
 	JobStatusFilter *string `json:"JobStatusFilter,omitempty" xml:"JobStatusFilter,omitempty"`
-	// The filter condition for labels associated with calls.
+	// The label-based filter condition for calls.
 	//
-	// > This condition only supports filtering by labels that have specific enumerated label values configured, that is, labels with specific label values configured in large language model scenarios.
+	// >This condition supports filtering only by labels that have specific enumerated label values configured, that is, labels with specific label values configured in large language model scenarios.
 	LabelsJson []*string `json:"LabelsJson,omitempty" xml:"LabelsJson,omitempty" type:"Repeated"`
 	// The page number.
-	//
-	// 	Notice: This parameter is required.</notice>
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
-	//
-	// 	Notice: This parameter is required.</notice>
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -136,77 +132,77 @@ type QueryJobsWithResultRequest struct {
 	//
 	// 1579055782000
 	StartActualTimeFilter *int64 `json:"StartActualTimeFilter,omitempty" xml:"StartActualTimeFilter,omitempty"`
-	// The call status, such as ["Executing","Succeeded"]. Separate multiple values with commas (,).
+	// The call status. Example: ["Executing","Succeeded"]. Separate multiple values with commas.
 	//
 	// Valid values:
 	//
-	// (Note: The **Succeeded*	- status has been subdivided into specific reasons. The **Succeeded**: 1 (answered) status is no longer returned. Instead, specific sub-reason types are returned.)
+	// (Note: The **Succeeded*	- status has been subdivided into specific reasons. The general **Succeeded**: 1 (Connected) status is no longer returned. Instead, specific sub-reason types are returned.)
 	//
-	// - **Executing**: 0 (dialing).
+	// - **Executing**: 0 (Calling).
 	//
-	// - **Succeeded**: 1 (answered).
+	// - **Succeeded**: 1 (Connected).
 	//
-	// - **NoAnswer**: 2 (not answered - no one picked up).
+	// - **NoAnswer**: 2 (Not connected - No answer).
 	//
-	// - **NotExist**: 3 (not answered - nonexistent number).
+	// - **NotExist**: 3 (Not connected - Nonexistent number).
 	//
-	// - **Busy**: 4 (not answered - busy).
+	// - **Busy**: 4 (Not connected - Busy).
 	//
-	// - **Cancelled**: 5 (not dialed - task stopped).
+	// - **Cancelled**: 5 (Not dialed - Task stopped).
 	//
-	// - **Failed**: 6 (failed).
+	// - **Failed**: 6 (Failed).
 	//
-	// - **NotConnected**: 7 (not answered - unreachable).
+	// - **NotConnected**: 7 (Not connected - Unreachable).
 	//
-	// - **PoweredOff**: 8 (not answered - powered off).
+	// - **PoweredOff**: 8 (Not connected - Powered off).
 	//
-	// - **OutOfService**: 9 (not answered - callee out of service).
+	// - **OutOfService**: 9 (Not connected - Callee out of service).
 	//
-	// - **InArrears**: 10 (not answered - callee has overdue payment).
+	// - **InArrears**: 10 (Not connected - Callee has overdue payment).
 	//
-	// - **EmptyNumber**: 11 (not dialed - nonexistent number, no outbound call).
+	// - **EmptyNumber**: 11 (Not dialed - Nonexistent number, no outbound call).
 	//
-	// - **PerDayCallCountLimit**: 12 (not dialed - daily limit exceeded).
+	// - **PerDayCallCountLimit**: 12 (Not dialed - Daily limit exceeded).
 	//
-	// - **ContactBlockList**: 13 (not dialed - blacklisted).
+	// - **ContactBlockList**: 13 (Not dialed - Blacklisted).
 	//
-	// - **CallerNotRegistered**: 14 (not dialed - caller number not registered).
+	// - **CallerNotRegistered**: 14 (Not dialed - Caller number not registered).
 	//
-	// - **Terminated**: 15 (not dialed - terminated).
+	// - **Terminated**: 15 (Not dialed - Terminated).
 	//
-	// - **VerificationCancelled**: 16 (not dialed - cancelled due to pre-call verification failure).
+	// - **VerificationCancelled**: 16 (Not dialed - Pre-call verification failed, cancelled).
 	//
-	// - **OutOfServiceNoCall**: 17 (not dialed - callee out of service, no outbound call).
+	// - **OutOfServiceNoCall**: 17 (Not dialed - Callee out of service, no outbound call).
 	//
-	// - **InArrearsNoCall**: 18 (not dialed - callee has overdue payment, no outbound call).
+	// - **InArrearsNoCall**: 18 (Not dialed - Callee has overdue payment, no outbound call).
 	//
-	// - **CallingNumberNotExist**: 19 (not dialed - caller number does not exist).
+	// - **CallingNumberNotExist**: 19 (Not dialed - Caller number does not exist).
 	//
-	// - **SucceededFinish**: 20 (answered - completed normally).
+	// - **SucceededFinish**: 20 (Connected - Normal completion).
 	//
-	// - **SucceededChatbotHangUpAfterNoAnswer**: 21 (answered - robot hung up after rejection).
+	// - **SucceededChatbotHangUpAfterNoAnswer**: 21 (Connected - Robot hung up after no recognition).
 	//
-	// - **SucceededChatbotHangUpAfterSilence**: 22 (answered - hung up due to silence timeout).
+	// - **SucceededChatbotHangUpAfterSilence**: 22 (Connected - Hung up due to silence timeout).
 	//
-	// - **SucceededClientHangUpAfterNoAnswer**: 23 (answered - user hung up after rejection).
+	// - **SucceededClientHangUpAfterNoAnswer**: 23 (Connected - User hung up after no recognition).
 	//
-	// - **SucceededClientHangUp**: 24 (answered - user hung up without reason).
+	// - **SucceededClientHangUp**: 24 (Connected - User hung up without reason).
 	//
-	// - **SucceededTransferByIntent**: 25 (answered - transferred to agent by intent).
+	// - **SucceededTransferByIntent**: 25 (Connected - Transferred to agent by intent match).
 	//
-	// - **SucceededTransferAfterNoAnswer**: 26 (answered - transferred to agent after rejection).
+	// - **SucceededTransferAfterNoAnswer**: 26 (Connected - Transferred to agent after no recognition).
 	//
-	// - **SucceededInoInterAction**: 27 (answered - no interaction from user side).
+	// - **SucceededInoInterAction**: 27 (Connected - No interaction from user).
 	//
-	// - **SucceededError**: 28 (answered - interrupted by system error).
+	// - **SucceededError**: 28 (Connected - System exception interruption).
 	//
-	// - **SucceededSpecialInterceptVoiceAssistant**: 29 (answered - special interception - voice assistant).
+	// - **SucceededSpecialInterceptVoiceAssistant**: 29 (Connected - Special intercept - Voice assistant).
 	//
-	// - **SucceededSpecialInterceptExtensionNumberTransfer**: 30 (answered - special interception - extension number transfer).
+	// - **SucceededSpecialInterceptExtensionNumberTransfer**: 30 (Connected - Special intercept - Extension number transfer).
 	//
-	// - **SucceededSpecialInterceptCustomSpecialIntercept**: 31 (answered - special interception - custom interception).
+	// - **SucceededSpecialInterceptCustomSpecialIntercept**: 31 (Connected - Special intercept - Custom intercept).
 	//
-	// - **HighRiskSipCode**: 32 (not dialed - high risk, no outbound call).
+	// - **HighRiskSipCode**: 32 (Not dialed - High risk, no outbound call).
 	//
 	// example:
 	//

@@ -17,10 +17,12 @@ type iGetContactBlockListRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *GetContactBlockListRequest
 	GetPageSize() *int32
+	SetSearchPattern(v string) *GetContactBlockListRequest
+	GetSearchPattern() *string
 }
 
 type GetContactBlockListRequest struct {
-	// Specifies whether to return the total number of entries.
+	// Specifies whether to display the total number of entries.
 	//
 	// example:
 	//
@@ -40,12 +42,13 @@ type GetContactBlockListRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries (required)
+	// The number of entries per page. This parameter is required.
 	//
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchPattern *string `json:"SearchPattern,omitempty" xml:"SearchPattern,omitempty"`
 }
 
 func (s GetContactBlockListRequest) String() string {
@@ -72,6 +75,10 @@ func (s *GetContactBlockListRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *GetContactBlockListRequest) GetSearchPattern() *string {
+	return s.SearchPattern
+}
+
 func (s *GetContactBlockListRequest) SetCountTotalRow(v bool) *GetContactBlockListRequest {
 	s.CountTotalRow = &v
 	return s
@@ -89,6 +96,11 @@ func (s *GetContactBlockListRequest) SetPageNumber(v int32) *GetContactBlockList
 
 func (s *GetContactBlockListRequest) SetPageSize(v int32) *GetContactBlockListRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *GetContactBlockListRequest) SetSearchPattern(v string) *GetContactBlockListRequest {
+	s.SearchPattern = &v
 	return s
 }
 

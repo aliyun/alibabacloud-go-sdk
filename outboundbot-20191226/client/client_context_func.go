@@ -4102,7 +4102,7 @@ func (client *Client) GetBaseStrategyPeriodWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Retrieves the list of contacts blocked for outbound calls.
+// Retrieves the outbound call blocklist.
 //
 // @param request - GetContactBlockListRequest
 //
@@ -4131,6 +4131,10 @@ func (client *Client) GetContactBlockListWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SearchPattern) {
+		query["SearchPattern"] = request.SearchPattern
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4187,6 +4191,10 @@ func (client *Client) GetContactWhiteListWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SearchPattern) {
+		query["SearchPattern"] = request.SearchPattern
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -6119,7 +6127,7 @@ func (client *Client) ListScriptVoiceConfigsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// View the script list.
+// Queries the list of scripts.
 //
 // @param request - ListScriptsRequest
 //

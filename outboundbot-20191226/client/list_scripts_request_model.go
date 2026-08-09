@@ -22,7 +22,7 @@ type iListScriptsRequest interface {
 }
 
 type ListScriptsRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -30,15 +30,15 @@ type ListScriptsRequest struct {
 	//
 	// bdd49242-114c-4045-b1d1-25ccc1756c75
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The NLU engine.
+	// The NLU robot engine.
 	//
-	// - Leave this parameter empty to query scripts that use small models.
+	// - If this parameter is left empty, small model scenarios are queried.
 	//
-	// - Set this parameter to `Prompts` to query scripts that use the text completion mode of a large model.
+	// - If this parameter is set to Prompts, the text input mode under large model scenarios is queried.
 	//
-	// - Set this parameter to `SSE_FUNCTION` to query scripts that use the function calling mode of a large model.
+	// - If this parameter is set to SSE_FUNCTION, the function computing mode under large model scenarios is queried.
 	//
-	// - Set this parameter to `BeeBot` to query scripts that use the workflow configuration mode of a large model.
+	// - If this parameter is set to BeeBot, the workflow configuration mode under large model scenarios is queried.
 	//
 	// example:
 	//
@@ -60,11 +60,11 @@ type ListScriptsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the script.
+	// The script name.
 	//
 	// example:
 	//
-	// 课程满意度回访
+	// Course satisfaction follow-up
 	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
 }
 

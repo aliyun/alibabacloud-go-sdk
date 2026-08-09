@@ -17,16 +17,18 @@ type iGetContactWhiteListRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *GetContactWhiteListRequest
 	GetPageSize() *int32
+	SetSearchPattern(v string) *GetContactWhiteListRequest
+	GetSearchPattern() *string
 }
 
 type GetContactWhiteListRequest struct {
-	// Whether to return the total count
+	// Specifies whether to return the total number of entries.
 	//
 	// example:
 	//
 	// true
 	CountTotalRow *bool `json:"CountTotalRow,omitempty" xml:"CountTotalRow,omitempty"`
-	// Instance ID
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,18 +36,19 @@ type GetContactWhiteListRequest struct {
 	//
 	// 2a830781-324e-4568-ae96-309f93090fe1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Page number
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of entries per page
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchPattern *string `json:"SearchPattern,omitempty" xml:"SearchPattern,omitempty"`
 }
 
 func (s GetContactWhiteListRequest) String() string {
@@ -72,6 +75,10 @@ func (s *GetContactWhiteListRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *GetContactWhiteListRequest) GetSearchPattern() *string {
+	return s.SearchPattern
+}
+
 func (s *GetContactWhiteListRequest) SetCountTotalRow(v bool) *GetContactWhiteListRequest {
 	s.CountTotalRow = &v
 	return s
@@ -89,6 +96,11 @@ func (s *GetContactWhiteListRequest) SetPageNumber(v int32) *GetContactWhiteList
 
 func (s *GetContactWhiteListRequest) SetPageSize(v int32) *GetContactWhiteListRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *GetContactWhiteListRequest) SetSearchPattern(v string) *GetContactWhiteListRequest {
+	s.SearchPattern = &v
 	return s
 }
 

@@ -24,37 +24,37 @@ type iGetContactWhiteListResponseBody interface {
 }
 
 type GetContactWhiteListResponseBody struct {
-	// API status code
+	// The API status code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Contact list
+	// The contact list.
 	//
 	// example:
 	//
 	// {}
 	ContactWhitelistList *GetContactWhiteListResponseBodyContactWhitelistList `json:"ContactWhitelistList,omitempty" xml:"ContactWhitelistList,omitempty" type:"Struct"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// API message
+	// The API response message.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -134,25 +134,25 @@ func (s *GetContactWhiteListResponseBody) Validate() error {
 }
 
 type GetContactWhiteListResponseBodyContactWhitelistList struct {
-	// Contact list
+	// The contact list.
 	//
 	// example:
 	//
 	// {}
 	List []*GetContactWhiteListResponseBodyContactWhitelistListList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// Page number
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of entries per page
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Total number of entries
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -218,49 +218,49 @@ func (s *GetContactWhiteListResponseBodyContactWhitelistList) Validate() error {
 }
 
 type GetContactWhiteListResponseBodyContactWhitelistListList struct {
-	// Whitelist ID
+	// The whitelist ID.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	ContactWhiteListId *string `json:"ContactWhiteListId,omitempty" xml:"ContactWhiteListId,omitempty"`
-	// Creation time
+	// The creation time.
 	//
 	// example:
 	//
 	// 1640174411848
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// Creator
+	// The creator.
 	//
 	// example:
 	//
-	// 测试123
+	// Test123
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// Instance ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Name
+	// The name.
 	//
 	// example:
 	//
-	// 张三
+	// John Smith
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Operator
+	// The operator.
 	//
 	// example:
 	//
 	// xxx
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// Mobile phone number
+	// The phone number.
 	//
 	// example:
 	//
 	// 13959999999
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// Remarks
+	// The remarks.
 	//
 	// example:
 	//
