@@ -24,23 +24,34 @@ type iGlobalHotelApplyRefundResponseBody interface {
 }
 
 type GlobalHotelApplyRefundResponseBody struct {
+	// The business data.
 	Data *GlobalHotelApplyRefundResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// CreateOrderFailed
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 创建订单失败
+	// Failed to create order
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// 260E4F99-983D-1919-834C-5C42E98E5B2B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId
@@ -119,12 +130,18 @@ func (s *GlobalHotelApplyRefundResponseBody) Validate() error {
 }
 
 type GlobalHotelApplyRefundResponseBodyData struct {
+	// The after-sales refund order ID.
+	//
 	// example:
 	//
 	// 100001
-	SellRefundOrderId  *int64                                                    `json:"SellRefundOrderId,omitempty" xml:"SellRefundOrderId,omitempty"`
+	SellRefundOrderId *int64 `json:"SellRefundOrderId,omitempty" xml:"SellRefundOrderId,omitempty"`
+	// The total penalty amount.
 	TotalPenaltyAmount *GlobalHotelApplyRefundResponseBodyDataTotalPenaltyAmount `json:"TotalPenaltyAmount,omitempty" xml:"TotalPenaltyAmount,omitempty" type:"Struct"`
-	TotalRefundAmount  *GlobalHotelApplyRefundResponseBodyDataTotalRefundAmount  `json:"TotalRefundAmount,omitempty" xml:"TotalRefundAmount,omitempty" type:"Struct"`
+	// The total refund amount.
+	TotalRefundAmount *GlobalHotelApplyRefundResponseBodyDataTotalRefundAmount `json:"TotalRefundAmount,omitempty" xml:"TotalRefundAmount,omitempty" type:"Struct"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId
@@ -190,14 +207,20 @@ func (s *GlobalHotelApplyRefundResponseBodyData) Validate() error {
 }
 
 type GlobalHotelApplyRefundResponseBodyDataTotalPenaltyAmount struct {
+	// The amount in the smallest currency unit.
+	//
 	// example:
 	//
 	// 10000
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The currency code in ISO 4217 format.
+	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId
@@ -244,14 +267,20 @@ func (s *GlobalHotelApplyRefundResponseBodyDataTotalPenaltyAmount) Validate() er
 }
 
 type GlobalHotelApplyRefundResponseBodyDataTotalRefundAmount struct {
+	// The amount in the smallest currency unit.
+	//
 	// example:
 	//
 	// 10000
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The currency code in ISO 4217 format.
+	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId

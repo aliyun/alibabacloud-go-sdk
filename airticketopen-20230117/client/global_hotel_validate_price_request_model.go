@@ -57,8 +57,11 @@ type GlobalHotelValidatePriceRequest struct {
 	// example:
 	//
 	// 1
-	RoomCount *int32  `json:"RoomCount,omitempty" xml:"RoomCount,omitempty"`
-	TracerId  *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
+	RoomCount *int32 `json:"RoomCount,omitempty" xml:"RoomCount,omitempty"`
+	// example:
+	//
+	// TracerId
+	TracerId *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
 }
 
 func (s GlobalHotelValidatePriceRequest) String() string {

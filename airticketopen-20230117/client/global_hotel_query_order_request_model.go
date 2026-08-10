@@ -20,20 +20,28 @@ type iGlobalHotelQueryOrderRequest interface {
 }
 
 type GlobalHotelQueryOrderRequest struct {
+	// The distributor account ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456
 	AccountNo *int64 `json:"AccountNo,omitempty" xml:"AccountNo,omitempty"`
+	// The external order number. At least one of ExternalOrderNo and OrderNo is required.
+	//
 	// example:
 	//
 	// EXT_ORDER_001
 	ExternalOrderNo *string `json:"ExternalOrderNo,omitempty" xml:"ExternalOrderNo,omitempty"`
+	// The sales order number. At least one of OrderNo and ExternalOrderNo is required.
+	//
 	// example:
 	//
 	// SO202606290001
 	OrderNo *string `json:"OrderNo,omitempty" xml:"OrderNo,omitempty"`
+	// TracerId
+	//
 	// example:
 	//
 	// TracerId

@@ -24,23 +24,34 @@ type iGlobalHotelBatchGetHotelDetailResponseBody interface {
 }
 
 type GlobalHotelBatchGetHotelDetailResponseBody struct {
+	// The business data.
 	Data *GlobalHotelBatchGetHotelDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// CityCodeRequired
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 城市编码不能为空
+	// City code cannot be empty
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 260E4F99-983D-1919-834C-5C42E98E5B2B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// traceId
+	//
 	// example:
 	//
 	// traceId
@@ -119,6 +130,7 @@ func (s *GlobalHotelBatchGetHotelDetailResponseBody) Validate() error {
 }
 
 type GlobalHotelBatchGetHotelDetailResponseBodyData struct {
+	// The list of hotel details.
 	Hotels []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotels `json:"Hotels,omitempty" xml:"Hotels,omitempty" type:"Repeated"`
 }
 
@@ -153,90 +165,136 @@ func (s *GlobalHotelBatchGetHotelDetailResponseBodyData) Validate() error {
 }
 
 type GlobalHotelBatchGetHotelDetailResponseBodyDataHotels struct {
+	// The address of the hotel.
+	//
 	// example:
 	//
 	// No.33 East Chang An Avenue
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The default check-in time.
+	//
 	// example:
 	//
 	// 14:00
 	CheckInTime *string `json:"CheckInTime,omitempty" xml:"CheckInTime,omitempty"`
+	// The default check-out time.
+	//
 	// example:
 	//
 	// 12:00
 	CheckOutTime *string `json:"CheckOutTime,omitempty" xml:"CheckOutTime,omitempty"`
+	// The city name.
+	//
 	// example:
 	//
 	// Beijing
 	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// The country name.
+	//
 	// example:
 	//
 	// China
 	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
+	// The description of the hotel.
+	//
 	// example:
 	//
-	// 五星级豪华酒店
+	// Five-star luxury hotel
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The error code for the individual hotel.
+	//
 	// example:
 	//
 	// HOTEL_NOT_FOUND
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message for the individual hotel.
+	//
 	// example:
 	//
-	// 酒店不存在
-	ErrorMessage *string                                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Facilities   []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities `json:"Facilities,omitempty" xml:"Facilities,omitempty" type:"Repeated"`
+	// Hotel does not exist
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The list of facilities.
+	Facilities []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities `json:"Facilities,omitempty" xml:"Facilities,omitempty" type:"Repeated"`
+	// The hotel name.
+	//
 	// example:
 	//
 	// Beijing Hotel
 	HotelName *string `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
+	// The Chinese name of the hotel.
+	//
 	// example:
 	//
 	// 北京饭店
 	HotelNameCn *string `json:"HotelNameCn,omitempty" xml:"HotelNameCn,omitempty"`
+	// The type of the hotel. Valid values: LUXURY, DELUXE, and COMFORT.
+	//
 	// example:
 	//
 	// LUXURY
 	HotelType *string `json:"HotelType,omitempty" xml:"HotelType,omitempty"`
+	// The latitude of the hotel.
+	//
 	// example:
 	//
 	// 39.9042
 	Latitude *string `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
+	// The longitude of the hotel.
+	//
 	// example:
 	//
 	// 116.4074
 	Longitude *string `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
+	// The year the hotel opened.
+	//
 	// example:
 	//
 	// 2018
-	OpeningTime *int32                                                          `json:"OpeningTime,omitempty" xml:"OpeningTime,omitempty"`
-	Pictures    []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPictures `json:"Pictures,omitempty" xml:"Pictures,omitempty" type:"Repeated"`
-	Policies    []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	OpeningTime *int32 `json:"OpeningTime,omitempty" xml:"OpeningTime,omitempty"`
+	// The list of pictures.
+	Pictures []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPictures `json:"Pictures,omitempty" xml:"Pictures,omitempty" type:"Repeated"`
+	// The hotel policy information.
+	Policies []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	// The source of the latitude and longitude coordinates.
+	//
 	// example:
 	//
 	// GOOGLE
 	PositionType *string `json:"PositionType,omitempty" xml:"PositionType,omitempty"`
+	// The year the hotel was last renovated.
+	//
 	// example:
 	//
 	// 2021
-	RenovationTime *int32                                                           `json:"RenovationTime,omitempty" xml:"RenovationTime,omitempty"`
-	RoomTypes      []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes `json:"RoomTypes,omitempty" xml:"RoomTypes,omitempty" type:"Repeated"`
+	RenovationTime *int32 `json:"RenovationTime,omitempty" xml:"RenovationTime,omitempty"`
+	// The list of room types.
+	RoomTypes []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes `json:"RoomTypes,omitempty" xml:"RoomTypes,omitempty" type:"Repeated"`
+	// The standard hotel ID on the platform.
+	//
 	// example:
 	//
 	// H001
 	StandardHotelId *string `json:"StandardHotelId,omitempty" xml:"StandardHotelId,omitempty"`
+	// The star rating of the hotel.
+	//
 	// example:
 	//
 	// 5
 	Star *string `json:"Star,omitempty" xml:"Star,omitempty"`
+	// The status of the hotel. Valid values: ONLINE and OFFLINE.
+	//
 	// example:
 	//
 	// ONLINE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The phone number of the hotel.
+	//
 	// example:
 	//
 	// +86-10-65137766
 	Tel *string `json:"Tel,omitempty" xml:"Tel,omitempty"`
+	// The time zone of the hotel in IANA ID format.
+	//
 	// example:
 	//
 	// Asia/Shanghai
@@ -517,18 +575,24 @@ func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotels) Validate() error 
 }
 
 type GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities struct {
+	// The facility description.
+	//
 	// example:
 	//
-	// 室外恒温泳池
+	// Outdoor heated swimming pool
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the facility.
+	//
 	// example:
 	//
-	// F001
-	FacilityId *string `json:"FacilityId,omitempty" xml:"FacilityId,omitempty"`
-	// example:
-	//
-	// 游泳池
+	// Swimming pool
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the facility.
+	//
+	// example:
+	//
+	// parkade
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities) String() string {
@@ -543,21 +607,16 @@ func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities) GetDesc
 	return s.Description
 }
 
-func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities) GetFacilityId() *string {
-	return s.FacilityId
-}
-
 func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities) GetName() *string {
 	return s.Name
 }
 
-func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities) SetDescription(v string) *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities {
-	s.Description = &v
-	return s
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities) GetType() *string {
+	return s.Type
 }
 
-func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities) SetFacilityId(v string) *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities {
-	s.FacilityId = &v
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities) SetDescription(v string) *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities {
+	s.Description = &v
 	return s
 }
 
@@ -566,39 +625,60 @@ func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities) SetName
 	return s
 }
 
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities) SetType(v string) *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities {
+	s.Type = &v
+	return s
+}
+
 func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities) Validate() error {
 	return dara.Validate(s)
 }
 
 type GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPictures struct {
+	// The description of the picture.
+	//
 	// example:
 	//
-	// 酒店大堂
+	// Hotel lobby
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The first-level category code.
+	//
 	// example:
 	//
 	// HOTEL
 	FirstCategoryCode *string `json:"FirstCategoryCode,omitempty" xml:"FirstCategoryCode,omitempty"`
+	// The first-level category name.
+	//
 	// example:
 	//
-	// 酒店
+	// Hotel
 	FirstCategoryName *string `json:"FirstCategoryName,omitempty" xml:"FirstCategoryName,omitempty"`
+	// Indicates whether the picture is the cover image.
+	//
 	// example:
 	//
 	// true
 	IsHeadPic *bool `json:"IsHeadPic,omitempty" xml:"IsHeadPic,omitempty"`
+	// The picture ID. The URL takes precedence.
+	//
 	// example:
 	//
 	// PIC001
 	PictureId *string `json:"PictureId,omitempty" xml:"PictureId,omitempty"`
+	// The second-level category code.
+	//
 	// example:
 	//
 	// LOBBY
 	SecondCategoryCode *string `json:"SecondCategoryCode,omitempty" xml:"SecondCategoryCode,omitempty"`
+	// The second-level category name.
+	//
 	// example:
 	//
-	// 大堂
+	// Lobby
 	SecondCategoryName *string `json:"SecondCategoryName,omitempty" xml:"SecondCategoryName,omitempty"`
+	// The URL of the picture.
+	//
 	// example:
 	//
 	// https://img.example.com/1.jpg
@@ -690,15 +770,20 @@ func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPictures) Validate(
 }
 
 type GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPolicies struct {
+	// The group name.
+	//
 	// example:
 	//
-	// 入住政策
+	// Check-in policy
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The group type ID.
+	//
 	// example:
 	//
 	// CHECK_IN
-	GroupTypeId *string                                                              `json:"GroupTypeId,omitempty" xml:"GroupTypeId,omitempty"`
-	Items       []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPoliciesItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	GroupTypeId *string `json:"GroupTypeId,omitempty" xml:"GroupTypeId,omitempty"`
+	// The list of policy items.
+	Items []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPoliciesItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
 func (s GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPolicies) String() string {
@@ -750,15 +835,22 @@ func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPolicies) Validate(
 }
 
 type GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPoliciesItems struct {
+	// The list of child items.
 	Children []interface{} `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
+	// The item name.
+	//
 	// example:
 	//
-	// 入住时间
+	// Check-in time
 	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
+	// The item type ID.
+	//
 	// example:
 	//
 	// CHECK_IN_TIME
 	ItemTypeId *string `json:"ItemTypeId,omitempty" xml:"ItemTypeId,omitempty"`
+	// The text value.
+	//
 	// example:
 	//
 	// 14:00
@@ -814,32 +906,48 @@ func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPoliciesItems) Vali
 }
 
 type GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes struct {
-	BedType  []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType  `json:"BedType,omitempty" xml:"BedType,omitempty" type:"Repeated"`
+	// The list of bed types.
+	BedType []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType `json:"BedType,omitempty" xml:"BedType,omitempty" type:"Repeated"`
+	// The list of room type pictures.
 	Pictures []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesPictures `json:"Pictures,omitempty" xml:"Pictures,omitempty" type:"Repeated"`
+	// The room type name.
+	//
 	// example:
 	//
 	// Deluxe King Room
 	RoomName *string `json:"RoomName,omitempty" xml:"RoomName,omitempty"`
+	// The Chinese room type name.
+	//
 	// example:
 	//
 	// 豪华大床房
 	RoomNameCn *string `json:"RoomNameCn,omitempty" xml:"RoomNameCn,omitempty"`
+	// The room size.
+	//
 	// example:
 	//
 	// 35.0
 	RoomSize *float64 `json:"RoomSize,omitempty" xml:"RoomSize,omitempty"`
+	// The size unit (SQM/SQFT).
+	//
 	// example:
 	//
 	// SQM
 	RoomSizeUnit *string `json:"RoomSizeUnit,omitempty" xml:"RoomSizeUnit,omitempty"`
+	// The platform standard room type ID.
+	//
 	// example:
 	//
 	// R001
 	StandardRoomId *string `json:"StandardRoomId,omitempty" xml:"StandardRoomId,omitempty"`
+	// The window type.
+	//
 	// example:
 	//
 	// WINDOW
 	WindowType *string `json:"WindowType,omitempty" xml:"WindowType,omitempty"`
+	// The defective window type code.
+	//
 	// example:
 	//
 	// SMALL_WINDOW
@@ -958,17 +1066,23 @@ func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes) Validate
 }
 
 type GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType struct {
+	// The number of beds.
+	//
 	// example:
 	//
 	// 1
 	BedCount *int32 `json:"BedCount,omitempty" xml:"BedCount,omitempty"`
+	// The bed width in meters.
+	//
 	// example:
 	//
 	// 1.8
 	BedSize *string `json:"BedSize,omitempty" xml:"BedSize,omitempty"`
+	// The bed type name.
+	//
 	// example:
 	//
-	// 大床
+	// King bed
 	BedType *string `json:"BedType,omitempty" xml:"BedType,omitempty"`
 }
 
@@ -1012,34 +1126,50 @@ func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType) V
 }
 
 type GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesPictures struct {
+	// The description of the picture.
+	//
 	// example:
 	//
-	// 酒店大堂
+	// Hotel lobby
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The first-level category code.
+	//
 	// example:
 	//
 	// HOTEL
 	FirstCategoryCode *string `json:"FirstCategoryCode,omitempty" xml:"FirstCategoryCode,omitempty"`
+	// The first-level category name.
+	//
 	// example:
 	//
-	// 酒店
+	// Hotel
 	FirstCategoryName *string `json:"FirstCategoryName,omitempty" xml:"FirstCategoryName,omitempty"`
+	// Indicates whether the picture is the cover image.
+	//
 	// example:
 	//
 	// true
 	IsHeadPic *bool `json:"IsHeadPic,omitempty" xml:"IsHeadPic,omitempty"`
+	// The picture ID. The URL takes precedence.
+	//
 	// example:
 	//
 	// PIC001
 	PictureId *string `json:"PictureId,omitempty" xml:"PictureId,omitempty"`
+	// The second-level category code.
+	//
 	// example:
 	//
 	// LOBBY
 	SecondCategoryCode *string `json:"SecondCategoryCode,omitempty" xml:"SecondCategoryCode,omitempty"`
+	// The second-level category name.
+	//
 	// example:
 	//
-	// 大堂
+	// Lobby
 	SecondCategoryName *string `json:"SecondCategoryName,omitempty" xml:"SecondCategoryName,omitempty"`
+	// The URL of the picture.
+	//
 	// example:
 	//
 	// https://img.example.com/1.jpg

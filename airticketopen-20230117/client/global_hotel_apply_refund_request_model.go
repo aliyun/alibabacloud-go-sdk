@@ -20,22 +20,30 @@ type iGlobalHotelApplyRefundRequest interface {
 }
 
 type GlobalHotelApplyRefundRequest struct {
+	// The distributor account ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456
 	AccountNo *int64 `json:"AccountNo,omitempty" xml:"AccountNo,omitempty"`
+	// The sales order number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// SO202606290001
 	OrderNo *string `json:"OrderNo,omitempty" xml:"OrderNo,omitempty"`
+	// The refund reason.
+	//
 	// example:
 	//
 	// GUEST_REQUEST
 	RefundReason *string `json:"RefundReason,omitempty" xml:"RefundReason,omitempty"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId

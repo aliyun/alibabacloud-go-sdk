@@ -24,23 +24,34 @@ type iGlobalHotelQueryAvailabilityResponseBody interface {
 }
 
 type GlobalHotelQueryAvailabilityResponseBody struct {
+	// The business data.
 	Data *GlobalHotelQueryAvailabilityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// CityCodeRequired
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 城市编码不能为空
+	// City code cannot be empty
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// 260E4F99-983D-1919-834C-5C42E98E5B2B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId
@@ -119,7 +130,10 @@ func (s *GlobalHotelQueryAvailabilityResponseBody) Validate() error {
 }
 
 type GlobalHotelQueryAvailabilityResponseBodyData struct {
+	// The room type offers grouped by standard hotel ID.
 	Hotels map[string][]*DataHotelsValue `json:"Hotels,omitempty" xml:"Hotels,omitempty"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId

@@ -22,22 +22,32 @@ type iGlobalHotelPayResponseBody interface {
 }
 
 type GlobalHotelPayResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// CreateOrderFailed
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 创建订单失败
+	// Failed to create order
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// 260E4F99-983D-1919-834C-5C42E98E5B2B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId

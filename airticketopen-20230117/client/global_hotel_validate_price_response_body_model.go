@@ -40,7 +40,10 @@ type GlobalHotelValidatePriceResponseBody struct {
 	// example:
 	//
 	// true
-	Success  *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// TracerId
 	TracerId *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
 }
 
@@ -122,7 +125,10 @@ type GlobalHotelValidatePriceResponseBodyData struct {
 	// itemOffer_123
 	ItemOfferId *string                                          `json:"ItemOfferId,omitempty" xml:"ItemOfferId,omitempty"`
 	Pricing     *GlobalHotelValidatePriceResponseBodyDataPricing `json:"Pricing,omitempty" xml:"Pricing,omitempty" type:"Struct"`
-	TracerId    *string                                          `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
+	// example:
+	//
+	// TracerId
+	TracerId *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
 }
 
 func (s GlobalHotelValidatePriceResponseBodyData) String() string {
@@ -193,7 +199,10 @@ type GlobalHotelValidatePriceResponseBodyDataCancellationPolicies struct {
 	//
 	// FREE_CANCELLATION
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	TracerId   *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
+	// example:
+	//
+	// TracerId
+	TracerId *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
 }
 
 func (s GlobalHotelValidatePriceResponseBodyDataCancellationPolicies) String() string {
@@ -264,7 +273,10 @@ type GlobalHotelValidatePriceResponseBodyDataCancellationPoliciesPenalties struc
 	// example:
 	//
 	// 1672531200000
-	Start    *int64  `json:"Start,omitempty" xml:"Start,omitempty"`
+	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
+	// example:
+	//
+	// TracerId
 	TracerId *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
 }
 
@@ -344,7 +356,10 @@ type GlobalHotelValidatePriceResponseBodyDataPricing struct {
 	//
 	// 10000
 	TotalAmount *string `json:"TotalAmount,omitempty" xml:"TotalAmount,omitempty"`
-	TracerId    *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
+	// example:
+	//
+	// TracerId
+	TracerId *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
 }
 
 func (s GlobalHotelValidatePriceResponseBodyDataPricing) String() string {
@@ -412,7 +427,10 @@ type GlobalHotelValidatePriceResponseBodyDataPricingNightlyPrices struct {
 	// example:
 	//
 	// 2026-07-01
-	Date     *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// example:
+	//
+	// TracerId
 	TracerId *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
 }
 

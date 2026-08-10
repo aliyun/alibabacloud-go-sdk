@@ -24,23 +24,37 @@ type iGlobalHotelCreateOrderResponseBody interface {
 }
 
 type GlobalHotelCreateOrderResponseBody struct {
+	// The business data.
 	Data *GlobalHotelCreateOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// CreateOrderFailed
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 创建订单失败
+	// Failed to create order
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// 260E4F99-983D-1919-834C-5C42E98E5B2B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
-	Success  *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// TracerId
+	//
+	// example:
+	//
+	// TracerId
 	TracerId *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
 }
 
@@ -116,10 +130,17 @@ func (s *GlobalHotelCreateOrderResponseBody) Validate() error {
 }
 
 type GlobalHotelCreateOrderResponseBodyData struct {
+	// The sales order number.
+	//
 	// example:
 	//
 	// SO202606290001
-	OrderNo  *string `json:"OrderNo,omitempty" xml:"OrderNo,omitempty"`
+	OrderNo *string `json:"OrderNo,omitempty" xml:"OrderNo,omitempty"`
+	// TracerId
+	//
+	// example:
+	//
+	// TracerId
 	TracerId *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
 }
 

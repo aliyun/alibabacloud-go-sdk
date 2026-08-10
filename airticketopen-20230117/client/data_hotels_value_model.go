@@ -22,20 +22,28 @@ type iDataHotelsValue interface {
 }
 
 type DataHotelsValue struct {
+	// The check-in date in the format of yyyy-MM-dd.
+	//
 	// example:
 	//
 	// 2026-01-01
 	CheckInDate *string `json:"CheckInDate,omitempty" xml:"CheckInDate,omitempty"`
+	// The check-out date in the format of yyyy-MM-dd.
+	//
 	// example:
 	//
 	// 2026-01-02
-	CheckOutDate *string                 `json:"CheckOutDate,omitempty" xml:"CheckOutDate,omitempty"`
-	Rooms        []*DataHotelsValueRooms `json:"Rooms,omitempty" xml:"Rooms,omitempty" type:"Repeated"`
+	CheckOutDate *string `json:"CheckOutDate,omitempty" xml:"CheckOutDate,omitempty"`
+	// The list of available room types for the day.
+	Rooms []*DataHotelsValueRooms `json:"Rooms,omitempty" xml:"Rooms,omitempty" type:"Repeated"`
+	// The standard room type ID.
+	//
 	// example:
 	//
 	// R001
-	StandardRoomId *string                  `json:"StandardRoomId,omitempty" xml:"StandardRoomId,omitempty"`
-	Offers         []*DataHotelsValueOffers `json:"Offers,omitempty" xml:"Offers,omitempty" type:"Repeated"`
+	StandardRoomId *string `json:"StandardRoomId,omitempty" xml:"StandardRoomId,omitempty"`
+	// All available offers for the room type.
+	Offers []*DataHotelsValueOffers `json:"Offers,omitempty" xml:"Offers,omitempty" type:"Repeated"`
 }
 
 func (s DataHotelsValue) String() string {
@@ -114,12 +122,16 @@ func (s *DataHotelsValue) Validate() error {
 }
 
 type DataHotelsValueRooms struct {
+	// The standard room type ID.
+	//
 	// example:
 	//
 	// R001
-	StandardRoomId     *string                                 `json:"StandardRoomId,omitempty" xml:"StandardRoomId,omitempty"`
+	StandardRoomId *string `json:"StandardRoomId,omitempty" xml:"StandardRoomId,omitempty"`
+	// The lowest selling price for the room type on the day.
 	LowestSellingPrice *DataHotelsValueRoomsLowestSellingPrice `json:"LowestSellingPrice,omitempty" xml:"LowestSellingPrice,omitempty" type:"Struct"`
-	Offers             []*DataHotelsValueRoomsOffers           `json:"Offers,omitempty" xml:"Offers,omitempty" type:"Repeated"`
+	// The list of all available offers for the room type. Calendar quotes cannot be used for price verification, so itemOfferKey is not returned.
+	Offers []*DataHotelsValueRoomsOffers `json:"Offers,omitempty" xml:"Offers,omitempty" type:"Repeated"`
 }
 
 func (s DataHotelsValueRooms) String() string {
@@ -176,14 +188,20 @@ func (s *DataHotelsValueRooms) Validate() error {
 }
 
 type DataHotelsValueRoomsLowestSellingPrice struct {
+	// The amount.
+	//
 	// example:
 	//
 	// 100.00
 	Amount *float64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The currency code.
+	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// traceId
+	//
 	// example:
 	//
 	// TraceId
@@ -230,33 +248,50 @@ func (s *DataHotelsValueRoomsLowestSellingPrice) Validate() error {
 }
 
 type DataHotelsValueRoomsOffers struct {
+	// The item-level offer identifier (price verification key, passed through as-is).
+	//
 	// example:
 	//
 	// itemOffer_123
 	ItemOfferKey *string `json:"ItemOfferKey,omitempty" xml:"ItemOfferKey,omitempty"`
+	// The rate plan name.
+	//
 	// example:
 	//
-	// 含早房
+	// Room with breakfast
 	RatePlanName *string `json:"RatePlanName,omitempty" xml:"RatePlanName,omitempty"`
+	// The meal type.
+	//
 	// example:
 	//
 	// BREAKFAST
 	MealType *string `json:"MealType,omitempty" xml:"MealType,omitempty"`
+	// The number of meals included.
+	//
 	// example:
 	//
 	// 2
-	MealCount          *int32                                          `json:"MealCount,omitempty" xml:"MealCount,omitempty"`
-	CancelPolicy       *DataHotelsValueRoomsOffersCancelPolicy         `json:"CancelPolicy,omitempty" xml:"CancelPolicy,omitempty" type:"Struct"`
-	SellingTotalPrice  *DataHotelsValueRoomsOffersSellingTotalPrice    `json:"SellingTotalPrice,omitempty" xml:"SellingTotalPrice,omitempty" type:"Struct"`
+	MealCount *int32 `json:"MealCount,omitempty" xml:"MealCount,omitempty"`
+	// The cancellation policy.
+	CancelPolicy *DataHotelsValueRoomsOffersCancelPolicy `json:"CancelPolicy,omitempty" xml:"CancelPolicy,omitempty" type:"Struct"`
+	// The total selling price.
+	SellingTotalPrice *DataHotelsValueRoomsOffersSellingTotalPrice `json:"SellingTotalPrice,omitempty" xml:"SellingTotalPrice,omitempty" type:"Struct"`
+	// The list of daily selling prices.
 	SellingDailyPrices []*DataHotelsValueRoomsOffersSellingDailyPrices `json:"SellingDailyPrices,omitempty" xml:"SellingDailyPrices,omitempty" type:"Repeated"`
+	// The number of available rooms.
+	//
 	// example:
 	//
 	// 5
 	AvailableRooms *int32 `json:"AvailableRooms,omitempty" xml:"AvailableRooms,omitempty"`
+	// The maximum number of guests.
+	//
 	// example:
 	//
 	// 3
 	MaxOccupancy *int32 `json:"MaxOccupancy,omitempty" xml:"MaxOccupancy,omitempty"`
+	// The confirmation type. Valid values: INSTANT_CONFIRM and NON_INSTANT_CONFIRM.
+	//
 	// example:
 	//
 	// INSTANT_CONFIRM
@@ -385,11 +420,16 @@ func (s *DataHotelsValueRoomsOffers) Validate() error {
 }
 
 type DataHotelsValueRoomsOffersCancelPolicy struct {
+	// The policy type. Valid values: NON_REFUNDABLE, FREE_CANCELLATION, and PARTIAL_REFUND.
+	//
 	// example:
 	//
 	// FREE_CANCELLATION
-	PolicyType *string                                            `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	Penalties  []*DataHotelsValueRoomsOffersCancelPolicyPenalties `json:"Penalties,omitempty" xml:"Penalties,omitempty" type:"Repeated"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The list of penalty details.
+	Penalties []*DataHotelsValueRoomsOffersCancelPolicyPenalties `json:"Penalties,omitempty" xml:"Penalties,omitempty" type:"Repeated"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId
@@ -445,26 +485,38 @@ func (s *DataHotelsValueRoomsOffersCancelPolicy) Validate() error {
 }
 
 type DataHotelsValueRoomsOffersCancelPolicyPenalties struct {
+	// The effective start time, in UTC millisecond timestamp.
+	//
 	// example:
 	//
 	// 1672531200000
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
+	// The effective end time, in UTC millisecond timestamp.
+	//
 	// example:
 	//
 	// 1672617600000
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
+	// The penalty type. Valid values: PERCENTAGE, AMOUNT, and NIGHTS.
+	//
 	// example:
 	//
 	// PERCENTAGE
 	PenaltyType *string `json:"PenaltyType,omitempty" xml:"PenaltyType,omitempty"`
+	// The penalty value (percentage, amount, or number of nights).
+	//
 	// example:
 	//
 	// 50
 	PenaltyValue *string `json:"PenaltyValue,omitempty" xml:"PenaltyValue,omitempty"`
+	// The currency. This parameter has a value only when PenaltyType is set to AMOUNT.
+	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// traceId
+	//
 	// example:
 	//
 	// TraceId
@@ -538,14 +590,20 @@ func (s *DataHotelsValueRoomsOffersCancelPolicyPenalties) Validate() error {
 }
 
 type DataHotelsValueRoomsOffersSellingTotalPrice struct {
+	// The amount.
+	//
 	// example:
 	//
 	// 100.00
 	Amount *float64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The currency code.
+	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId
@@ -592,11 +650,16 @@ func (s *DataHotelsValueRoomsOffersSellingTotalPrice) Validate() error {
 }
 
 type DataHotelsValueRoomsOffersSellingDailyPrices struct {
+	// The check-in date.
+	//
 	// example:
 	//
 	// 2026-07-01
-	Date  *string                                            `json:"Date,omitempty" xml:"Date,omitempty"`
+	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// The price for the day.
 	Price *DataHotelsValueRoomsOffersSellingDailyPricesPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId
@@ -648,14 +711,20 @@ func (s *DataHotelsValueRoomsOffersSellingDailyPrices) Validate() error {
 }
 
 type DataHotelsValueRoomsOffersSellingDailyPricesPrice struct {
+	// The amount.
+	//
 	// example:
 	//
 	// 100.00
 	Amount *float64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The currency code.
+	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// traceId
+	//
 	// example:
 	//
 	// TraceId
@@ -702,33 +771,50 @@ func (s *DataHotelsValueRoomsOffersSellingDailyPricesPrice) Validate() error {
 }
 
 type DataHotelsValueOffers struct {
+	// The item-domain offer identifier (price verification key, passed through as-is).
+	//
 	// example:
 	//
 	// itemOffer_123
 	ItemOfferKey *string `json:"ItemOfferKey,omitempty" xml:"ItemOfferKey,omitempty"`
+	// The rate plan name.
+	//
 	// example:
 	//
-	// 含早房
+	// Breakfast Included
 	RatePlanName *string `json:"RatePlanName,omitempty" xml:"RatePlanName,omitempty"`
+	// The meal type.
+	//
 	// example:
 	//
 	// BREAKFAST
 	MealType *string `json:"MealType,omitempty" xml:"MealType,omitempty"`
+	// The number of meals included.
+	//
 	// example:
 	//
 	// 2
-	MealCount          *int32                                     `json:"MealCount,omitempty" xml:"MealCount,omitempty"`
-	CancelPolicy       *DataHotelsValueOffersCancelPolicy         `json:"CancelPolicy,omitempty" xml:"CancelPolicy,omitempty" type:"Struct"`
-	SellingTotalPrice  *DataHotelsValueOffersSellingTotalPrice    `json:"SellingTotalPrice,omitempty" xml:"SellingTotalPrice,omitempty" type:"Struct"`
+	MealCount *int32 `json:"MealCount,omitempty" xml:"MealCount,omitempty"`
+	// The cancellation and modification policy.
+	CancelPolicy *DataHotelsValueOffersCancelPolicy `json:"CancelPolicy,omitempty" xml:"CancelPolicy,omitempty" type:"Struct"`
+	// The total selling price.
+	SellingTotalPrice *DataHotelsValueOffersSellingTotalPrice `json:"SellingTotalPrice,omitempty" xml:"SellingTotalPrice,omitempty" type:"Struct"`
+	// The list of daily selling prices.
 	SellingDailyPrices []*DataHotelsValueOffersSellingDailyPrices `json:"SellingDailyPrices,omitempty" xml:"SellingDailyPrices,omitempty" type:"Repeated"`
+	// The number of available rooms.
+	//
 	// example:
 	//
 	// 5
 	AvailableRooms *int32 `json:"AvailableRooms,omitempty" xml:"AvailableRooms,omitempty"`
+	// The maximum number of guests allowed.
+	//
 	// example:
 	//
 	// 3
 	MaxOccupancy *int32 `json:"MaxOccupancy,omitempty" xml:"MaxOccupancy,omitempty"`
+	// The confirmation type (INSTANT_CONFIRM/NON_INSTANT_CONFIRM).
+	//
 	// example:
 	//
 	// INSTANT_CONFIRM
@@ -857,11 +943,16 @@ func (s *DataHotelsValueOffers) Validate() error {
 }
 
 type DataHotelsValueOffersCancelPolicy struct {
+	// The policy type (NON_REFUNDABLE/FREE_CANCELLATION/PARTIAL_REFUND).
+	//
 	// example:
 	//
 	// FREE_CANCELLATION
-	PolicyType *string                                       `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	Penalties  []*DataHotelsValueOffersCancelPolicyPenalties `json:"Penalties,omitempty" xml:"Penalties,omitempty" type:"Repeated"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The list of penalty details.
+	Penalties []*DataHotelsValueOffersCancelPolicyPenalties `json:"Penalties,omitempty" xml:"Penalties,omitempty" type:"Repeated"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId
@@ -917,26 +1008,38 @@ func (s *DataHotelsValueOffersCancelPolicy) Validate() error {
 }
 
 type DataHotelsValueOffersCancelPolicyPenalties struct {
+	// The effective start time (UTC millisecond timestamp).
+	//
 	// example:
 	//
 	// 1672531200000
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
+	// The effective end time (UTC millisecond timestamp).
+	//
 	// example:
 	//
 	// 1672617600000
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
+	// The penalty type (PERCENTAGE/AMOUNT/NIGHTS).
+	//
 	// example:
 	//
 	// PERCENTAGE
 	PenaltyType *string `json:"PenaltyType,omitempty" xml:"PenaltyType,omitempty"`
+	// The penalty value (percentage/amount/number of nights).
+	//
 	// example:
 	//
 	// 50
 	PenaltyValue *string `json:"PenaltyValue,omitempty" xml:"PenaltyValue,omitempty"`
+	// The currency code (only applicable when the penalty type is AMOUNT).
+	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId
@@ -1010,14 +1113,20 @@ func (s *DataHotelsValueOffersCancelPolicyPenalties) Validate() error {
 }
 
 type DataHotelsValueOffersSellingTotalPrice struct {
+	// The amount.
+	//
 	// example:
 	//
 	// 100.00
 	Amount *float64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The currency code.
+	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId
@@ -1064,11 +1173,16 @@ func (s *DataHotelsValueOffersSellingTotalPrice) Validate() error {
 }
 
 type DataHotelsValueOffersSellingDailyPrices struct {
+	// The check-in date.
+	//
 	// example:
 	//
 	// 2026-07-01
-	Date  *string                                       `json:"Date,omitempty" xml:"Date,omitempty"`
+	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// The price for the day.
 	Price *DataHotelsValueOffersSellingDailyPricesPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId
@@ -1120,14 +1234,20 @@ func (s *DataHotelsValueOffersSellingDailyPrices) Validate() error {
 }
 
 type DataHotelsValueOffersSellingDailyPricesPrice struct {
+	// The amount.
+	//
 	// example:
 	//
 	// 100.00
 	Amount *float64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The currency code.
+	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId

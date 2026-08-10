@@ -2302,7 +2302,7 @@ func (client *Client) CreateOrderWithContext(ctx context.Context, tmpReq *Create
 
 // Summary:
 //
-// 申请退款
+// Applies for a refund.
 //
 // @param request - GlobalHotelApplyRefundRequest
 //
@@ -2361,7 +2361,7 @@ func (client *Client) GlobalHotelApplyRefundWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 批量查询酒店详情
+// Queries hotel details in batches.
 //
 // @param tmpReq - GlobalHotelBatchGetHotelDetailRequest
 //
@@ -2426,7 +2426,7 @@ func (client *Client) GlobalHotelBatchGetHotelDetailWithContext(ctx context.Cont
 
 // Summary:
 //
-// 取消或退款
+// Cancels or refunds an order.
 //
 // @param request - GlobalHotelCancelOrRefundRequest
 //
@@ -2536,7 +2536,7 @@ func (client *Client) GlobalHotelCancelOrderWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 创单并支付
+// Creates an order and processes the payment.
 //
 // @param tmpReq - GlobalHotelCreateAndPayRequest
 //
@@ -2617,7 +2617,7 @@ func (client *Client) GlobalHotelCreateAndPayWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 创建订单
+// Creates an order.
 //
 // @param tmpReq - GlobalHotelCreateOrderRequest
 //
@@ -2698,7 +2698,7 @@ func (client *Client) GlobalHotelCreateOrderWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 分销支付
+// Processes a distribution payment.
 //
 // @param request - GlobalHotelPayRequest
 //
@@ -2753,7 +2753,7 @@ func (client *Client) GlobalHotelPayWithContext(ctx context.Context, request *Gl
 
 // Summary:
 //
-// 查询酒店报价可用性
+// Queries the availability of hotel rate plans.
 //
 // @param tmpReq - GlobalHotelQueryAvailabilityRequest
 //
@@ -2842,7 +2842,7 @@ func (client *Client) GlobalHotelQueryAvailabilityWithContext(ctx context.Contex
 
 // Summary:
 //
-// 批量日历报价查询
+// Queries calendar-based availability and pricing for hotels in batch.
 //
 // @param tmpReq - GlobalHotelQueryCalendarAvailabilityRequest
 //
@@ -2931,7 +2931,7 @@ func (client *Client) GlobalHotelQueryCalendarAvailabilityWithContext(ctx contex
 
 // Summary:
 //
-// 查询订单
+// Queries an order.
 //
 // @param request - GlobalHotelQueryOrderRequest
 //
@@ -2990,7 +2990,7 @@ func (client *Client) GlobalHotelQueryOrderWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 分页查询城市行政区划（中英文）
+// Queries city administrative divisions by paging (in Chinese and English).
 //
 // @param request - GlobalHotelSearchCityPageRequest
 //
@@ -3053,7 +3053,7 @@ func (client *Client) GlobalHotelSearchCityPageWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 按城市分页查询酒店列表
+// Performs a paged query to retrieve the list of hotels by city with paging.
 //
 // @param request - GlobalHotelSearchHotelListRequest
 //

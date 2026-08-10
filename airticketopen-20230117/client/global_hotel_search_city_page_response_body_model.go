@@ -24,23 +24,34 @@ type iGlobalHotelSearchCityPageResponseBody interface {
 }
 
 type GlobalHotelSearchCityPageResponseBody struct {
+	// The business data.
 	Data *GlobalHotelSearchCityPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// CityCodeRequired
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 城市编码不能为空
+	// City code cannot be empty
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// 260E4F99-983D-1919-834C-5C42E98E5B2B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId
@@ -119,14 +130,20 @@ func (s *GlobalHotelSearchCityPageResponseBody) Validate() error {
 }
 
 type GlobalHotelSearchCityPageResponseBodyData struct {
+	// The list of cities.
+	//
 	// example:
 	//
 	// []
 	Cities []*GlobalHotelSearchCityPageResponseBodyDataCities `json:"Cities,omitempty" xml:"Cities,omitempty" type:"Repeated"`
+	// Indicates whether there is a next page.
+	//
 	// example:
 	//
 	// true
 	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -182,42 +199,54 @@ func (s *GlobalHotelSearchCityPageResponseBodyData) Validate() error {
 }
 
 type GlobalHotelSearchCityPageResponseBodyDataCities struct {
+	// The Chinese name of the city.
+	//
 	// example:
 	//
 	// 北京市
 	CnName *string `json:"CnName,omitempty" xml:"CnName,omitempty"`
+	// The city code.
+	//
 	// example:
 	//
 	// 110100
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The country code.
+	//
 	// example:
 	//
 	// 156
 	Country *int32 `json:"Country,omitempty" xml:"Country,omitempty"`
+	// The country code in ISO 3166-1 alpha-2 format.
+	//
 	// example:
 	//
 	// CN
 	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	// The English name of the city.
+	//
 	// example:
 	//
 	// Beijing
 	EnName *string `json:"EnName,omitempty" xml:"EnName,omitempty"`
+	// The administrative level.
+	//
 	// example:
 	//
 	// 3
 	Level *int32 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The parent city code.
+	//
 	// example:
 	//
 	// 110000
 	ParentCode *int32 `json:"ParentCode,omitempty" xml:"ParentCode,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// 1
 	Region *int32 `json:"Region,omitempty" xml:"Region,omitempty"`
-	// example:
-	//
-	// 1
-	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GlobalHotelSearchCityPageResponseBodyDataCities) String() string {
@@ -260,10 +289,6 @@ func (s *GlobalHotelSearchCityPageResponseBodyDataCities) GetRegion() *int32 {
 	return s.Region
 }
 
-func (s *GlobalHotelSearchCityPageResponseBodyDataCities) GetType() *int32 {
-	return s.Type
-}
-
 func (s *GlobalHotelSearchCityPageResponseBodyDataCities) SetCnName(v string) *GlobalHotelSearchCityPageResponseBodyDataCities {
 	s.CnName = &v
 	return s
@@ -301,11 +326,6 @@ func (s *GlobalHotelSearchCityPageResponseBodyDataCities) SetParentCode(v int32)
 
 func (s *GlobalHotelSearchCityPageResponseBodyDataCities) SetRegion(v int32) *GlobalHotelSearchCityPageResponseBodyDataCities {
 	s.Region = &v
-	return s
-}
-
-func (s *GlobalHotelSearchCityPageResponseBodyDataCities) SetType(v int32) *GlobalHotelSearchCityPageResponseBodyDataCities {
-	s.Type = &v
 	return s
 }
 

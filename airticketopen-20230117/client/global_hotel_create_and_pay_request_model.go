@@ -26,34 +26,48 @@ type iGlobalHotelCreateAndPayRequest interface {
 }
 
 type GlobalHotelCreateAndPayRequest struct {
+	// The distributor account ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456
 	AccountNo *int64 `json:"AccountNo,omitempty" xml:"AccountNo,omitempty"`
+	// The contact information.
+	//
 	// This parameter is required.
 	Contact *GlobalHotelCreateAndPayRequestContact `json:"Contact,omitempty" xml:"Contact,omitempty" type:"Struct"`
+	// The external order number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// EXT_ORDER_001
 	ExternalOrderNo *string `json:"ExternalOrderNo,omitempty" xml:"ExternalOrderNo,omitempty"`
+	// The guests grouped by room.
+	//
 	// This parameter is required.
 	Guests [][]*GlobalHotelCreateAndPayRequestGuests `json:"Guests,omitempty" xml:"Guests,omitempty" type:"Repeated"`
+	// The offer ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// itemOffer_123
 	ItemOfferId *string `json:"ItemOfferId,omitempty" xml:"ItemOfferId,omitempty"`
+	// The number of rooms.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	RoomCount *int32 `json:"RoomCount,omitempty" xml:"RoomCount,omitempty"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId
@@ -141,28 +155,38 @@ func (s *GlobalHotelCreateAndPayRequest) Validate() error {
 }
 
 type GlobalHotelCreateAndPayRequestContact struct {
+	// The email address of the contact.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// john@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The first name of the contact.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// John
 	FirstName *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
+	// The last name of the contact.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Doe
 	LastName *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
+	// The phone number of the contact.
+	//
 	// example:
 	//
 	// +86-13800138000
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId
@@ -227,18 +251,24 @@ func (s *GlobalHotelCreateAndPayRequestContact) Validate() error {
 }
 
 type GlobalHotelCreateAndPayRequestGuests struct {
+	// The first name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// John
 	FirstName *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
+	// The last name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Doe
 	LastName *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId

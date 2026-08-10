@@ -20,22 +20,30 @@ type iGlobalHotelBatchGetHotelDetailShrinkRequest interface {
 }
 
 type GlobalHotelBatchGetHotelDetailShrinkRequest struct {
+	// The ID of the distributor account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456
 	AccountNo *int64 `json:"AccountNo,omitempty" xml:"AccountNo,omitempty"`
+	// The language. For example, en or zh.
+	//
 	// example:
 	//
 	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The list of standard hotel IDs. A maximum of 100 IDs are supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ["H001","H002"]
 	StandardHotelIdsShrink *string `json:"StandardHotelIds,omitempty" xml:"StandardHotelIds,omitempty"`
+	// string
+	//
 	// example:
 	//
 	// traceId

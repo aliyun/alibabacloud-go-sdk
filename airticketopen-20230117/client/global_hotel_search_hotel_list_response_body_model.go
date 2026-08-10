@@ -24,23 +24,34 @@ type iGlobalHotelSearchHotelListResponseBody interface {
 }
 
 type GlobalHotelSearchHotelListResponseBody struct {
+	// The business data.
 	Data *GlobalHotelSearchHotelListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// CityCodeRequired
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 城市编码不能为空
+	// City code cannot be empty
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// 260E4F99-983D-1919-834C-5C42E98E5B2B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// traceId
+	//
 	// example:
 	//
 	// traceId
@@ -119,7 +130,10 @@ func (s *GlobalHotelSearchHotelListResponseBody) Validate() error {
 }
 
 type GlobalHotelSearchHotelListResponseBodyData struct {
+	// The list of hotels.
 	Hotels []*GlobalHotelSearchHotelListResponseBodyDataHotels `json:"Hotels,omitempty" xml:"Hotels,omitempty" type:"Repeated"`
+	// The total number of hotels.
+	//
 	// example:
 	//
 	// 100
@@ -166,22 +180,32 @@ func (s *GlobalHotelSearchHotelListResponseBodyData) Validate() error {
 }
 
 type GlobalHotelSearchHotelListResponseBodyDataHotels struct {
+	// The city name.
+	//
 	// example:
 	//
-	// 北京市
+	// Beijing
 	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// The country name.
+	//
 	// example:
 	//
-	// 中国
+	// China
 	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
+	// The hotel name.
+	//
 	// example:
 	//
-	// 北京饭店
+	// Beijing Hotel
 	HotelName *string `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
+	// The platform standard hotel ID.
+	//
 	// example:
 	//
 	// H001
 	StandardHotelId *string `json:"StandardHotelId,omitempty" xml:"StandardHotelId,omitempty"`
+	// The hotel status (ONLINE/OFFLINE).
+	//
 	// example:
 	//
 	// ONLINE

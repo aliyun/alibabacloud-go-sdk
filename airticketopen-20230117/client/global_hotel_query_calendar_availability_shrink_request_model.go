@@ -30,50 +30,68 @@ type iGlobalHotelQueryCalendarAvailabilityShrinkRequest interface {
 }
 
 type GlobalHotelQueryCalendarAvailabilityShrinkRequest struct {
+	// The account ID of the distributor.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456
 	AccountNo *int64 `json:"AccountNo,omitempty" xml:"AccountNo,omitempty"`
+	// The number of adults.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
 	AdultCount *int32 `json:"AdultCount,omitempty" xml:"AdultCount,omitempty"`
+	// The end date of the check-in date range in the format yyyy-MM-dd.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2026-08-03
 	CheckInDateEnd *string `json:"CheckInDateEnd,omitempty" xml:"CheckInDateEnd,omitempty"`
+	// The start date of the check-in date range in the format yyyy-MM-dd.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2026-08-01
 	CheckInDateStart *string `json:"CheckInDateStart,omitempty" xml:"CheckInDateStart,omitempty"`
+	// The number of children.
+	//
 	// example:
 	//
 	// 0
 	ChildCount *int32 `json:"ChildCount,omitempty" xml:"ChildCount,omitempty"`
+	// The list of children\\"s ages.
+	//
 	// example:
 	//
 	// []
 	ChildrenAgesShrink *string `json:"ChildrenAges,omitempty" xml:"ChildrenAges,omitempty"`
+	// The number of rooms.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	RoomCount *int32 `json:"RoomCount,omitempty" xml:"RoomCount,omitempty"`
+	// The IDs of the hotels.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ["H001"]
 	StandardHotelIdsShrink *string `json:"StandardHotelIds,omitempty" xml:"StandardHotelIds,omitempty"`
+	// TraceId
+	//
 	// example:
 	//
 	// traceId

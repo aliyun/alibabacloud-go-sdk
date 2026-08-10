@@ -26,34 +26,48 @@ type iGlobalHotelCreateOrderShrinkRequest interface {
 }
 
 type GlobalHotelCreateOrderShrinkRequest struct {
+	// The distributor account ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456
 	AccountNo *int64 `json:"AccountNo,omitempty" xml:"AccountNo,omitempty"`
+	// The contact information.
+	//
 	// This parameter is required.
 	ContactShrink *string `json:"Contact,omitempty" xml:"Contact,omitempty"`
+	// The external order number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// EXT_ORDER_001
 	ExternalOrderNo *string `json:"ExternalOrderNo,omitempty" xml:"ExternalOrderNo,omitempty"`
+	// The guests grouped by room.
+	//
 	// This parameter is required.
 	GuestsShrink *string `json:"Guests,omitempty" xml:"Guests,omitempty"`
+	// The offer ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// itemOffer_123
 	ItemOfferId *string `json:"ItemOfferId,omitempty" xml:"ItemOfferId,omitempty"`
+	// The number of rooms.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	RoomCount *int32 `json:"RoomCount,omitempty" xml:"RoomCount,omitempty"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId

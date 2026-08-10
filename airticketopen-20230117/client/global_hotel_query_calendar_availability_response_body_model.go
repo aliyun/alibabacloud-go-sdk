@@ -24,23 +24,34 @@ type iGlobalHotelQueryCalendarAvailabilityResponseBody interface {
 }
 
 type GlobalHotelQueryCalendarAvailabilityResponseBody struct {
+	// The business data.
 	Data *GlobalHotelQueryCalendarAvailabilityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// CityCodeRequired
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 城市编码不能为空
+	// City code cannot be empty
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// 260E4F99-983D-1919-834C-5C42E98E5B2B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId
@@ -119,8 +130,12 @@ func (s *GlobalHotelQueryCalendarAvailabilityResponseBody) Validate() error {
 }
 
 type GlobalHotelQueryCalendarAvailabilityResponseBodyData struct {
+	// The list of failed hotels (in partial success mode).
 	FailedHotels []*GlobalHotelQueryCalendarAvailabilityResponseBodyDataFailedHotels `json:"FailedHotels,omitempty" xml:"FailedHotels,omitempty" type:"Repeated"`
-	Hotels       map[string][]*DataHotelsValue                                       `json:"Hotels,omitempty" xml:"Hotels,omitempty"`
+	// The calendar quotes grouped by standard hotel ID.
+	Hotels map[string][]*DataHotelsValue `json:"Hotels,omitempty" xml:"Hotels,omitempty"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId
@@ -176,14 +191,20 @@ func (s *GlobalHotelQueryCalendarAvailabilityResponseBodyData) Validate() error 
 }
 
 type GlobalHotelQueryCalendarAvailabilityResponseBodyDataFailedHotels struct {
+	// The error code.
+	//
 	// example:
 	//
 	// HOTEL_NOT_FOUND
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error description.
+	//
 	// example:
 	//
-	// 酒店不存在
+	// The hotel does not exist
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The standard hotel ID.
+	//
 	// example:
 	//
 	// H001

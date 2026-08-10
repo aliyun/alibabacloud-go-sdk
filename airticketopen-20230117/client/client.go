@@ -2998,7 +2998,7 @@ func (client *Client) CreateOrder(request *CreateOrderRequest) (_result *CreateO
 
 // Summary:
 //
-// 申请退款
+// Applies for a refund.
 //
 // @param request - GlobalHotelApplyRefundRequest
 //
@@ -3057,7 +3057,7 @@ func (client *Client) GlobalHotelApplyRefundWithOptions(request *GlobalHotelAppl
 
 // Summary:
 //
-// 申请退款
+// Applies for a refund.
 //
 // @param request - GlobalHotelApplyRefundRequest
 //
@@ -3076,7 +3076,7 @@ func (client *Client) GlobalHotelApplyRefund(request *GlobalHotelApplyRefundRequ
 
 // Summary:
 //
-// 批量查询酒店详情
+// Queries hotel details in batches.
 //
 // @param tmpReq - GlobalHotelBatchGetHotelDetailRequest
 //
@@ -3141,7 +3141,7 @@ func (client *Client) GlobalHotelBatchGetHotelDetailWithOptions(tmpReq *GlobalHo
 
 // Summary:
 //
-// 批量查询酒店详情
+// Queries hotel details in batches.
 //
 // @param request - GlobalHotelBatchGetHotelDetailRequest
 //
@@ -3160,7 +3160,7 @@ func (client *Client) GlobalHotelBatchGetHotelDetail(request *GlobalHotelBatchGe
 
 // Summary:
 //
-// 取消或退款
+// Cancels or refunds an order.
 //
 // @param request - GlobalHotelCancelOrRefundRequest
 //
@@ -3215,7 +3215,7 @@ func (client *Client) GlobalHotelCancelOrRefundWithOptions(request *GlobalHotelC
 
 // Summary:
 //
-// 取消或退款
+// Cancels or refunds an order.
 //
 // @param request - GlobalHotelCancelOrRefundRequest
 //
@@ -3308,7 +3308,7 @@ func (client *Client) GlobalHotelCancelOrder(request *GlobalHotelCancelOrderRequ
 
 // Summary:
 //
-// 创单并支付
+// Creates an order and processes the payment.
 //
 // @param tmpReq - GlobalHotelCreateAndPayRequest
 //
@@ -3389,7 +3389,7 @@ func (client *Client) GlobalHotelCreateAndPayWithOptions(tmpReq *GlobalHotelCrea
 
 // Summary:
 //
-// 创单并支付
+// Creates an order and processes the payment.
 //
 // @param request - GlobalHotelCreateAndPayRequest
 //
@@ -3408,7 +3408,7 @@ func (client *Client) GlobalHotelCreateAndPay(request *GlobalHotelCreateAndPayRe
 
 // Summary:
 //
-// 创建订单
+// Creates an order.
 //
 // @param tmpReq - GlobalHotelCreateOrderRequest
 //
@@ -3489,7 +3489,7 @@ func (client *Client) GlobalHotelCreateOrderWithOptions(tmpReq *GlobalHotelCreat
 
 // Summary:
 //
-// 创建订单
+// Creates an order.
 //
 // @param request - GlobalHotelCreateOrderRequest
 //
@@ -3508,7 +3508,7 @@ func (client *Client) GlobalHotelCreateOrder(request *GlobalHotelCreateOrderRequ
 
 // Summary:
 //
-// 分销支付
+// Processes a distribution payment.
 //
 // @param request - GlobalHotelPayRequest
 //
@@ -3563,7 +3563,7 @@ func (client *Client) GlobalHotelPayWithOptions(request *GlobalHotelPayRequest, 
 
 // Summary:
 //
-// 分销支付
+// Processes a distribution payment.
 //
 // @param request - GlobalHotelPayRequest
 //
@@ -3582,7 +3582,7 @@ func (client *Client) GlobalHotelPay(request *GlobalHotelPayRequest) (_result *G
 
 // Summary:
 //
-// 查询酒店报价可用性
+// Queries the availability of hotel rate plans.
 //
 // @param tmpReq - GlobalHotelQueryAvailabilityRequest
 //
@@ -3671,7 +3671,7 @@ func (client *Client) GlobalHotelQueryAvailabilityWithOptions(tmpReq *GlobalHote
 
 // Summary:
 //
-// 查询酒店报价可用性
+// Queries the availability of hotel rate plans.
 //
 // @param request - GlobalHotelQueryAvailabilityRequest
 //
@@ -3690,7 +3690,7 @@ func (client *Client) GlobalHotelQueryAvailability(request *GlobalHotelQueryAvai
 
 // Summary:
 //
-// 批量日历报价查询
+// Queries calendar-based availability and pricing for hotels in batch.
 //
 // @param tmpReq - GlobalHotelQueryCalendarAvailabilityRequest
 //
@@ -3779,7 +3779,7 @@ func (client *Client) GlobalHotelQueryCalendarAvailabilityWithOptions(tmpReq *Gl
 
 // Summary:
 //
-// 批量日历报价查询
+// Queries calendar-based availability and pricing for hotels in batch.
 //
 // @param request - GlobalHotelQueryCalendarAvailabilityRequest
 //
@@ -3798,7 +3798,7 @@ func (client *Client) GlobalHotelQueryCalendarAvailability(request *GlobalHotelQ
 
 // Summary:
 //
-// 查询订单
+// Queries an order.
 //
 // @param request - GlobalHotelQueryOrderRequest
 //
@@ -3857,7 +3857,7 @@ func (client *Client) GlobalHotelQueryOrderWithOptions(request *GlobalHotelQuery
 
 // Summary:
 //
-// 查询订单
+// Queries an order.
 //
 // @param request - GlobalHotelQueryOrderRequest
 //
@@ -3876,7 +3876,7 @@ func (client *Client) GlobalHotelQueryOrder(request *GlobalHotelQueryOrderReques
 
 // Summary:
 //
-// 分页查询城市行政区划（中英文）
+// Queries city administrative divisions by paging (in Chinese and English).
 //
 // @param request - GlobalHotelSearchCityPageRequest
 //
@@ -3939,7 +3939,7 @@ func (client *Client) GlobalHotelSearchCityPageWithOptions(request *GlobalHotelS
 
 // Summary:
 //
-// 分页查询城市行政区划（中英文）
+// Queries city administrative divisions by paging (in Chinese and English).
 //
 // @param request - GlobalHotelSearchCityPageRequest
 //
@@ -3958,7 +3958,7 @@ func (client *Client) GlobalHotelSearchCityPage(request *GlobalHotelSearchCityPa
 
 // Summary:
 //
-// 按城市分页查询酒店列表
+// Performs a paged query to retrieve the list of hotels by city with paging.
 //
 // @param request - GlobalHotelSearchHotelListRequest
 //
@@ -4021,7 +4021,7 @@ func (client *Client) GlobalHotelSearchHotelListWithOptions(request *GlobalHotel
 
 // Summary:
 //
-// 按城市分页查询酒店列表
+// Performs a paged query to retrieve the list of hotels by city with paging.
 //
 // @param request - GlobalHotelSearchHotelListRequest
 //

@@ -24,23 +24,34 @@ type iGlobalHotelQueryOrderResponseBody interface {
 }
 
 type GlobalHotelQueryOrderResponseBody struct {
+	// The business data.
 	Data *GlobalHotelQueryOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// CreateOrderFailed
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 创建订单失败
+	// Failed to create order
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 260E4F99-983D-1919-834C-5C42E98E5B2B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// TracerId
+	//
 	// example:
 	//
 	// TracerId
@@ -119,34 +130,52 @@ func (s *GlobalHotelQueryOrderResponseBody) Validate() error {
 }
 
 type GlobalHotelQueryOrderResponseBodyData struct {
+	// The buyer ID.
+	//
 	// example:
 	//
 	// 123456
 	BuyerId *string `json:"BuyerId,omitempty" xml:"BuyerId,omitempty"`
+	// The external order number of the buyer.
+	//
 	// example:
 	//
 	// EXT_ORDER_001
 	ExternalOrderNo *string `json:"ExternalOrderNo,omitempty" xml:"ExternalOrderNo,omitempty"`
+	// The creation time in UTC millisecond timestamp.
+	//
 	// example:
 	//
 	// 1672531200000
-	GmtCreate *int64                                         `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	ItemInfo  *GlobalHotelQueryOrderResponseBodyDataItemInfo `json:"ItemInfo,omitempty" xml:"ItemInfo,omitempty" type:"Struct"`
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The item information.
+	ItemInfo *GlobalHotelQueryOrderResponseBodyDataItemInfo `json:"ItemInfo,omitempty" xml:"ItemInfo,omitempty" type:"Struct"`
+	// The order number.
+	//
 	// example:
 	//
 	// SO202606290001
-	OrderNo      *string                                              `json:"OrderNo,omitempty" xml:"OrderNo,omitempty"`
-	Payment      *GlobalHotelQueryOrderResponseBodyDataPayment        `json:"Payment,omitempty" xml:"Payment,omitempty" type:"Struct"`
+	OrderNo *string `json:"OrderNo,omitempty" xml:"OrderNo,omitempty"`
+	// The payment information.
+	Payment *GlobalHotelQueryOrderResponseBodyDataPayment `json:"Payment,omitempty" xml:"Payment,omitempty" type:"Struct"`
+	// The list of refund orders.
 	RefundOrders []*GlobalHotelQueryOrderResponseBodyDataRefundOrders `json:"RefundOrders,omitempty" xml:"RefundOrders,omitempty" type:"Repeated"`
-	RoomStays    []*GlobalHotelQueryOrderResponseBodyDataRoomStays    `json:"RoomStays,omitempty" xml:"RoomStays,omitempty" type:"Repeated"`
+	// The list of room stays.
+	RoomStays []*GlobalHotelQueryOrderResponseBodyDataRoomStays `json:"RoomStays,omitempty" xml:"RoomStays,omitempty" type:"Repeated"`
+	// The sales channel.
+	//
 	// example:
 	//
 	// POP
 	SalesChannel *string `json:"SalesChannel,omitempty" xml:"SalesChannel,omitempty"`
+	// The unified order status.
+	//
 	// example:
 	//
 	// CONFIRMED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// TracerId
+	//
 	// example:
 	//
 	// TracerId
@@ -293,25 +322,37 @@ func (s *GlobalHotelQueryOrderResponseBodyData) Validate() error {
 }
 
 type GlobalHotelQueryOrderResponseBodyDataItemInfo struct {
+	// The cancellation policy.
 	CancelPolicy *GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicy `json:"CancelPolicy,omitempty" xml:"CancelPolicy,omitempty" type:"Struct"`
+	// The check-in date in yyyy-MM-dd format.
+	//
 	// example:
 	//
 	// 2026-07-01
 	CheckIn *string `json:"CheckIn,omitempty" xml:"CheckIn,omitempty"`
+	// The number of guests checking in.
+	//
 	// example:
 	//
 	// 2
 	CheckInNumber *int32 `json:"CheckInNumber,omitempty" xml:"CheckInNumber,omitempty"`
+	// The check-out date in yyyy-MM-dd format.
+	//
 	// example:
 	//
 	// 2026-07-03
-	CheckOut    *string                                                     `json:"CheckOut,omitempty" xml:"CheckOut,omitempty"`
+	CheckOut *string `json:"CheckOut,omitempty" xml:"CheckOut,omitempty"`
+	// The list of nightly rates.
 	DailyPrices []*GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPrices `json:"DailyPrices,omitempty" xml:"DailyPrices,omitempty" type:"Repeated"`
-	Meal        *GlobalHotelQueryOrderResponseBodyDataItemInfoMeal          `json:"Meal,omitempty" xml:"Meal,omitempty" type:"Struct"`
+	// The meal information.
+	Meal *GlobalHotelQueryOrderResponseBodyDataItemInfoMeal `json:"Meal,omitempty" xml:"Meal,omitempty" type:"Struct"`
+	// The number of rooms.
+	//
 	// example:
 	//
 	// 1
-	RoomCount         *int32                                                          `json:"RoomCount,omitempty" xml:"RoomCount,omitempty"`
+	RoomCount *int32 `json:"RoomCount,omitempty" xml:"RoomCount,omitempty"`
+	// The total selling price.
 	SellingTotalPrice *GlobalHotelQueryOrderResponseBodyDataItemInfoSellingTotalPrice `json:"SellingTotalPrice,omitempty" xml:"SellingTotalPrice,omitempty" type:"Struct"`
 }
 
@@ -424,11 +465,16 @@ func (s *GlobalHotelQueryOrderResponseBodyDataItemInfo) Validate() error {
 }
 
 type GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicy struct {
+	// The list of cancellation penalties.
 	Penalties []*GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties `json:"Penalties,omitempty" xml:"Penalties,omitempty" type:"Repeated"`
+	// The cancellation policy type.
+	//
 	// example:
 	//
 	// FREE_CANCELLATION
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// TracerId
+	//
 	// example:
 	//
 	// TracerId
@@ -484,26 +530,38 @@ func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicy) Validate() e
 }
 
 type GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties struct {
+	// The currency code. This parameter is valid only when the penalty type is AMOUNT.
+	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The effective end time in UTC millisecond timestamp.
+	//
 	// example:
 	//
 	// 1672617600000
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
+	// The penalty type.
+	//
 	// example:
 	//
 	// PERCENTAGE
 	PenaltyType *string `json:"PenaltyType,omitempty" xml:"PenaltyType,omitempty"`
+	// The penalty value, which can be a percentage, amount, or number of nights.
+	//
 	// example:
 	//
 	// 50
 	PenaltyValue *string `json:"PenaltyValue,omitempty" xml:"PenaltyValue,omitempty"`
+	// The effective start time in UTC millisecond timestamp.
+	//
 	// example:
 	//
 	// 1672531200000
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
+	// TracerId
+	//
 	// example:
 	//
 	// TracerId
@@ -577,10 +635,13 @@ func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties) Val
 }
 
 type GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPrices struct {
+	// LocalDate
+	//
 	// example:
 	//
 	// LocalDate
-	Date  *string                                                        `json:"Date,omitempty" xml:"Date,omitempty"`
+	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// The price.
 	Price *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
 }
 
@@ -620,10 +681,13 @@ func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPrices) Validate() er
 }
 
 type GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice struct {
+	// cent
+	//
 	// example:
 	//
 	// 1
-	Cent     *int64                                                                 `json:"Cent,omitempty" xml:"Cent,omitempty"`
+	Cent *int64 `json:"Cent,omitempty" xml:"Cent,omitempty"`
+	// The currency.
 	Currency *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPriceCurrency `json:"Currency,omitempty" xml:"Currency,omitempty" type:"Struct"`
 }
 
@@ -663,14 +727,20 @@ func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice) Validate
 }
 
 type GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPriceCurrency struct {
+	// The currency code.
+	//
 	// example:
 	//
 	// USD
 	CurrencyCode *string `json:"CurrencyCode,omitempty" xml:"CurrencyCode,omitempty"`
+	// DefaultFractionDigits
+	//
 	// example:
 	//
 	// 1
 	DefaultFractionDigits *int32 `json:"DefaultFractionDigits,omitempty" xml:"DefaultFractionDigits,omitempty"`
+	// NumericCode
+	//
 	// example:
 	//
 	// 1
@@ -717,14 +787,20 @@ func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPriceCurrency) 
 }
 
 type GlobalHotelQueryOrderResponseBodyDataItemInfoMeal struct {
+	// The description.
+	//
 	// example:
 	//
-	// 含早餐
+	// Breakfast included
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The meal type.
+	//
 	// example:
 	//
 	// BREAKFAST
 	MealType *string `json:"MealType,omitempty" xml:"MealType,omitempty"`
+	// TracerId
+	//
 	// example:
 	//
 	// TracerId
@@ -771,14 +847,20 @@ func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoMeal) Validate() error {
 }
 
 type GlobalHotelQueryOrderResponseBodyDataItemInfoSellingTotalPrice struct {
+	// The amount in the smallest currency unit.
+	//
 	// example:
 	//
 	// 10000
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The currency code in ISO 4217 format.
+	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// TracerId
+	//
 	// example:
 	//
 	// TracerId
@@ -825,15 +907,22 @@ func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoSellingTotalPrice) Validat
 }
 
 type GlobalHotelQueryOrderResponseBodyDataPayment struct {
+	// The payment amount.
 	Amount *GlobalHotelQueryOrderResponseBodyDataPaymentAmount `json:"Amount,omitempty" xml:"Amount,omitempty" type:"Struct"`
+	// The payment completion time in UTC millisecond timestamp.
+	//
 	// example:
 	//
 	// 1672531200000
 	GmtPaid *int64 `json:"GmtPaid,omitempty" xml:"GmtPaid,omitempty"`
+	// The payment method.
+	//
 	// example:
 	//
 	// BALANCE
 	PaymentMethod *string `json:"PaymentMethod,omitempty" xml:"PaymentMethod,omitempty"`
+	// The payment transaction ID.
+	//
 	// example:
 	//
 	// PAY202606290001
@@ -894,14 +983,20 @@ func (s *GlobalHotelQueryOrderResponseBodyDataPayment) Validate() error {
 }
 
 type GlobalHotelQueryOrderResponseBodyDataPaymentAmount struct {
+	// The amount in the smallest currency unit.
+	//
 	// example:
 	//
 	// 10000
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The currency code in ISO 4217 format.
+	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// TracerId
+	//
 	// example:
 	//
 	// TracerId
@@ -948,28 +1043,40 @@ func (s *GlobalHotelQueryOrderResponseBodyDataPaymentAmount) Validate() error {
 }
 
 type GlobalHotelQueryOrderResponseBodyDataRefundOrders struct {
+	// The creation time of the refund order, in UTC millisecond timestamp.
+	//
 	// example:
 	//
 	// 1672531200000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The refund transaction ID.
+	//
 	// example:
 	//
 	// TXN001
 	RefundTransactionId *string `json:"RefundTransactionId,omitempty" xml:"RefundTransactionId,omitempty"`
+	// The reason for rejection.
+	//
 	// example:
 	//
-	// 供应商拒绝
+	// Supplier rejected
 	RejectReason *string `json:"RejectReason,omitempty" xml:"RejectReason,omitempty"`
+	// The external refund order number.
+	//
 	// example:
 	//
 	// RF202606290001
 	SellRefundOrderNo *string `json:"SellRefundOrderNo,omitempty" xml:"SellRefundOrderNo,omitempty"`
+	// The unified refund status.
+	//
 	// example:
 	//
 	// REFUNDED
-	Status             *string                                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The penalty amount on the sales side.
 	TotalPenaltyAmount *GlobalHotelQueryOrderResponseBodyDataRefundOrdersTotalPenaltyAmount `json:"TotalPenaltyAmount,omitempty" xml:"TotalPenaltyAmount,omitempty" type:"Struct"`
-	TotalRefundAmount  *GlobalHotelQueryOrderResponseBodyDataRefundOrdersTotalRefundAmount  `json:"TotalRefundAmount,omitempty" xml:"TotalRefundAmount,omitempty" type:"Struct"`
+	// The actual refund amount.
+	TotalRefundAmount *GlobalHotelQueryOrderResponseBodyDataRefundOrdersTotalRefundAmount `json:"TotalRefundAmount,omitempty" xml:"TotalRefundAmount,omitempty" type:"Struct"`
 }
 
 func (s GlobalHotelQueryOrderResponseBodyDataRefundOrders) String() string {
@@ -1058,14 +1165,20 @@ func (s *GlobalHotelQueryOrderResponseBodyDataRefundOrders) Validate() error {
 }
 
 type GlobalHotelQueryOrderResponseBodyDataRefundOrdersTotalPenaltyAmount struct {
+	// The amount in the smallest currency unit.
+	//
 	// example:
 	//
 	// 10000
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The currency code in ISO 4217 format.
+	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId
@@ -1112,14 +1225,20 @@ func (s *GlobalHotelQueryOrderResponseBodyDataRefundOrdersTotalPenaltyAmount) Va
 }
 
 type GlobalHotelQueryOrderResponseBodyDataRefundOrdersTotalRefundAmount struct {
+	// The amount in the smallest currency unit.
+	//
 	// example:
 	//
 	// 10000
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The currency code in ISO 4217 format.
+	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId
@@ -1166,19 +1285,26 @@ func (s *GlobalHotelQueryOrderResponseBodyDataRefundOrdersTotalRefundAmount) Val
 }
 
 type GlobalHotelQueryOrderResponseBodyDataRoomStays struct {
+	// The room confirmation ID.
+	//
 	// example:
 	//
 	// CONF001
-	ConfirmationId *string                                                 `json:"ConfirmationId,omitempty" xml:"ConfirmationId,omitempty"`
-	Guests         []*GlobalHotelQueryOrderResponseBodyDataRoomStaysGuests `json:"Guests,omitempty" xml:"Guests,omitempty" type:"Repeated"`
+	ConfirmationId *string `json:"ConfirmationId,omitempty" xml:"ConfirmationId,omitempty"`
+	// The list of guests.
+	Guests []*GlobalHotelQueryOrderResponseBodyDataRoomStaysGuests `json:"Guests,omitempty" xml:"Guests,omitempty" type:"Repeated"`
+	// The room index, starting from 1.
+	//
 	// example:
 	//
 	// 1
 	RoomIndex *int32 `json:"RoomIndex,omitempty" xml:"RoomIndex,omitempty"`
+	// The delivery status. Valid values: PENDING_CHECKIN, CHECKED_IN, CHECKED_OUT, and CANCELLED. The value is null before the delivery is created.
+	//
 	// example:
 	//
-	// 豪华大床房
-	RoomName *string `json:"RoomName,omitempty" xml:"RoomName,omitempty"`
+	// CHECKED_IN
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GlobalHotelQueryOrderResponseBodyDataRoomStays) String() string {
@@ -1201,8 +1327,8 @@ func (s *GlobalHotelQueryOrderResponseBodyDataRoomStays) GetRoomIndex() *int32 {
 	return s.RoomIndex
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyDataRoomStays) GetRoomName() *string {
-	return s.RoomName
+func (s *GlobalHotelQueryOrderResponseBodyDataRoomStays) GetStatus() *string {
+	return s.Status
 }
 
 func (s *GlobalHotelQueryOrderResponseBodyDataRoomStays) SetConfirmationId(v string) *GlobalHotelQueryOrderResponseBodyDataRoomStays {
@@ -1220,8 +1346,8 @@ func (s *GlobalHotelQueryOrderResponseBodyDataRoomStays) SetRoomIndex(v int32) *
 	return s
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyDataRoomStays) SetRoomName(v string) *GlobalHotelQueryOrderResponseBodyDataRoomStays {
-	s.RoomName = &v
+func (s *GlobalHotelQueryOrderResponseBodyDataRoomStays) SetStatus(v string) *GlobalHotelQueryOrderResponseBodyDataRoomStays {
+	s.Status = &v
 	return s
 }
 
@@ -1239,14 +1365,20 @@ func (s *GlobalHotelQueryOrderResponseBodyDataRoomStays) Validate() error {
 }
 
 type GlobalHotelQueryOrderResponseBodyDataRoomStaysGuests struct {
+	// The first name of the guest.
+	//
 	// example:
 	//
 	// John
 	FirstName *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
+	// The last name of the guest.
+	//
 	// example:
 	//
 	// Doe
 	LastName *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId

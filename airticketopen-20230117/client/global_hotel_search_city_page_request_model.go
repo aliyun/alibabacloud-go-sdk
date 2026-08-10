@@ -22,26 +22,36 @@ type iGlobalHotelSearchCityPageRequest interface {
 }
 
 type GlobalHotelSearchCityPageRequest struct {
+	// The distributor account ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456
 	AccountNo *int64 `json:"AccountNo,omitempty" xml:"AccountNo,omitempty"`
+	// The number of entries per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The country code in ISO 3166-1 alpha-2 format.
+	//
 	// example:
 	//
 	// CN
 	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	// The pagination offset, starting from 0.
+	//
 	// example:
 	//
 	// 0
 	Start *int32 `json:"Start,omitempty" xml:"Start,omitempty"`
+	// TraceId
+	//
 	// example:
 	//
 	// TraceId

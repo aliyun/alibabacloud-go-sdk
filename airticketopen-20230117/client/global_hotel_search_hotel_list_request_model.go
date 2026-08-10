@@ -22,26 +22,36 @@ type iGlobalHotelSearchHotelListRequest interface {
 }
 
 type GlobalHotelSearchHotelListRequest struct {
+	// The distributor account ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456
 	AccountNo *int64 `json:"AccountNo,omitempty" xml:"AccountNo,omitempty"`
+	// The city code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// beijing
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	// The page number. Pages start from 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// traceId
+	//
 	// example:
 	//
 	// traceId
