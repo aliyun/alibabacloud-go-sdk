@@ -16,10 +16,14 @@ type iUpdateInfiniteCanvasResponseBody interface {
 }
 
 type UpdateInfiniteCanvasResponseBody struct {
+	// The ID of the infinite canvas.
+	//
 	// example:
 	//
 	// canvas_gesad*
 	CanvasId *string `json:"CanvasId,omitempty" xml:"CanvasId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****

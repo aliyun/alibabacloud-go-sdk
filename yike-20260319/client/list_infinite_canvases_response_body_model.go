@@ -22,19 +22,28 @@ type iListInfiniteCanvasesResponseBody interface {
 }
 
 type ListInfiniteCanvasesResponseBody struct {
+	// The list of infinite canvases.
 	CanvasList []*ListInfiniteCanvasesResponseBodyCanvasList `json:"CanvasList,omitempty" xml:"CanvasList,omitempty" type:"Repeated"`
+	// The current page number. Default value: 1.
+	//
 	// example:
 	//
 	// 16
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of infinite canvases.
+	//
 	// example:
 	//
 	// 6
@@ -108,26 +117,38 @@ func (s *ListInfiniteCanvasesResponseBody) Validate() error {
 }
 
 type ListInfiniteCanvasesResponseBodyCanvasList struct {
+	// The infinite canvas ID.
+	//
 	// example:
 	//
 	// canvas_xxx
 	CanvasId *string `json:"CanvasId,omitempty" xml:"CanvasId,omitempty"`
+	// The cover URL.
+	//
 	// example:
 	//
 	// http://example.com/cover.png
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// The creation time, in milliseconds.
+	//
 	// example:
 	//
 	// 2025-12-26T10:21:17Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The last modification time.
+	//
 	// example:
 	//
 	// 2026-03-18T10:03:56Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The thumbnail height, in px.
+	//
 	// example:
 	//
 	// http://example.com/thumbnail2.png
 	Thumbnail *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
+	// The title of the infinite canvas.
+	//
 	// example:
 	//
 	// example

@@ -18,16 +18,22 @@ type iUpdateInfiniteCanvasRequest interface {
 }
 
 type UpdateInfiniteCanvasRequest struct {
+	// The ID of the infinite canvas.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// canvas_gesad*
 	CanvasId *string `json:"CanvasId,omitempty" xml:"CanvasId,omitempty"`
+	// The cover URL.
+	//
 	// example:
 	//
 	// https://*uncs.com/cover.png
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// The title of the infinite canvas.
+	//
 	// example:
 	//
 	// example

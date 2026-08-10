@@ -22,22 +22,36 @@ type iListInfiniteCanvasesRequest interface {
 }
 
 type ListInfiniteCanvasesRequest struct {
+	// The query keyword. Currently, only searching by infinite canvas ID is supported.
+	//
 	// example:
 	//
 	// canvas_xxx
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The current page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The field by which the results are sorted.
+	//
 	// example:
 	//
 	// CreatedTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The sort order. Valid values:
+	//
+	//  	- asc: ascending order
+	//
+	//  	- desc: descending order
+	//
 	// example:
 	//
 	// asc

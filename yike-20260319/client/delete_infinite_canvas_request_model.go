@@ -14,6 +14,8 @@ type iDeleteInfiniteCanvasRequest interface {
 }
 
 type DeleteInfiniteCanvasRequest struct {
+	// The ID of the infinite canvas.
+	//
 	// This parameter is required.
 	//
 	// example:

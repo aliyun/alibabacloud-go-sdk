@@ -20,20 +20,28 @@ type iCreateInfiniteCanvasRequest interface {
 }
 
 type CreateInfiniteCanvasRequest struct {
+	// The cover URL.
+	//
 	// example:
 	//
 	// 8fec0fd4172941f7a6213095c8657ecf
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// pd_061716***
 	ProductionId *string `json:"ProductionId,omitempty" xml:"ProductionId,omitempty"`
+	// The title of the infinite canvas.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 这是无限画布标题
+	// This is the infinite canvas title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws_2121**

@@ -14,6 +14,8 @@ type iGetInfiniteCanvasRequest interface {
 }
 
 type GetInfiniteCanvasRequest struct {
+	// The ID of the infinite canvas.
+	//
 	// This parameter is required.
 	//
 	// example:

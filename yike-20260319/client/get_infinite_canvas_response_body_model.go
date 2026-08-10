@@ -16,7 +16,10 @@ type iGetInfiniteCanvasResponseBody interface {
 }
 
 type GetInfiniteCanvasResponseBody struct {
+	// The details of the infinite canvas.
 	InfiniteCanvas *GetInfiniteCanvasResponseBodyInfiniteCanvas `json:"InfiniteCanvas,omitempty" xml:"InfiniteCanvas,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -59,26 +62,38 @@ func (s *GetInfiniteCanvasResponseBody) Validate() error {
 }
 
 type GetInfiniteCanvasResponseBodyInfiniteCanvas struct {
+	// The ID of the infinite canvas.
+	//
 	// example:
 	//
 	// canvas_gesad*
 	CanvasId *string `json:"CanvasId,omitempty" xml:"CanvasId,omitempty"`
+	// The cover URL.
+	//
 	// example:
 	//
 	// https://*uncs.com/cover.png
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// The creation time in UTC.
+	//
 	// example:
 	//
 	// 2026-07-01T08:42:16Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2026-07-01T08:42:16Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The thumbnail URL.
+	//
 	// example:
 	//
 	// https://*uncs.com/cover.png
 	Thumbnail *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
+	// The title of the infinite canvas.
+	//
 	// example:
 	//
 	// test infinite canvas

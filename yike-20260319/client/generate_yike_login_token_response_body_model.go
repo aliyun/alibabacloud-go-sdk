@@ -20,18 +20,26 @@ type iGenerateYikeLoginTokenResponseBody interface {
 }
 
 type GenerateYikeLoginTokenResponseBody struct {
+	// The session expiration time (UNIX timestamp in milliseconds).
+	//
 	// example:
 	//
 	// 1782008128000
 	ExpiresAt *string `json:"ExpiresAt,omitempty" xml:"ExpiresAt,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The logon token.
+	//
 	// example:
 	//
 	// ******d6931ff7e89b5eb19484*****
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The generated user ID.
+	//
 	// example:
 	//
 	// 23253**

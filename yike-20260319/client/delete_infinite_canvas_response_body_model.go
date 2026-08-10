@@ -16,10 +16,14 @@ type iDeleteInfiniteCanvasResponseBody interface {
 }
 
 type DeleteInfiniteCanvasResponseBody struct {
+	// The ID of the infinite canvas.
+	//
 	// example:
 	//
 	// canvas_adaasd*
 	CanvasId *string `json:"CanvasId,omitempty" xml:"CanvasId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ***F88A3-AC51-5588-859A-03144F082***

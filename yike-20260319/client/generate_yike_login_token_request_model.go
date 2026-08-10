@@ -28,34 +28,60 @@ type iGenerateYikeLoginTokenRequest interface {
 }
 
 type GenerateYikeLoginTokenRequest struct {
+	// Specifies whether automatic creation of a project is enabled. Default value: false.
+	//
 	// example:
 	//
 	// false
 	AutoCreateProduction *string `json:"AutoCreateProduction,omitempty" xml:"AutoCreateProduction,omitempty"`
+	// The token expiration time, in seconds. Default value: 30 days.
+	//
 	// example:
 	//
 	// 300
 	Expires *string `json:"Expires,omitempty" xml:"Expires,omitempty"`
+	// The nickname.
+	//
+	// - Format check: The maximum length is 50 characters.
+	//
+	// - Special character check: Chinese characters, English letters, digits, _ \\ / () ] [
+	//
 	// example:
 	//
 	// testNickName
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	// The role of the user in the project. Valid values:
+	//
+	// - common: Regular member.
+	//
+	// - edit: Operator with editing permissions.
+	//
+	// - manage: Administrator.
+	//
 	// example:
 	//
 	// common
 	ProductionAuth *string `json:"ProductionAuth,omitempty" xml:"ProductionAuth,omitempty"`
+	// The default credits granted to the user.
+	//
 	// example:
 	//
 	// 1000
 	SubUserCredit *string `json:"SubUserCredit,omitempty" xml:"SubUserCredit,omitempty"`
+	// The tenant ID. Submit a ticket to create one.
+	//
 	// example:
 	//
 	// tenttest
 	Tenant *string `json:"Tenant,omitempty" xml:"Tenant,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// userxxx
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws_8022674***
