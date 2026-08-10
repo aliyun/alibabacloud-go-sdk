@@ -20,13 +20,13 @@ type iInitializeV2ResponseBody interface {
 }
 
 type InitializeV2ResponseBody struct {
-	// The response code.
+	// The return code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The return message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type InitializeV2ResponseBody struct {
 	//
 	// 86C40EC3-5940-5F47-995C-BFE90B70E540
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The response result.
+	// The returned result.
 	Result *InitializeV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -102,9 +102,7 @@ type InitializeV2ResponseBodyResult struct {
 	//
 	// ***
 	ClientCfg *string `json:"ClientCfg,omitempty" xml:"ClientCfg,omitempty"`
-	// The standard authentication encryption protocol.
-	//
-	// > This field is required for H5 web integration using iframe embedding.
+	// The standard encryption protocol for authentication.
 	//
 	// example:
 	//

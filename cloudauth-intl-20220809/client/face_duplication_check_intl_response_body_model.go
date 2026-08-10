@@ -38,7 +38,7 @@ type FaceDuplicationCheckIntlResponseBody struct {
 	//
 	// 5E63B760-0ECB-5C07-8503-A65C27876968
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The response result.
 	Result *FaceDuplicationCheckIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -116,41 +116,35 @@ type FaceDuplicationCheckIntlResponseBodyResult struct {
 	DuplicateFace *string `json:"DuplicateFace,omitempty" xml:"DuplicateFace,omitempty"`
 	// The related result information.
 	ExtFaceInfo *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
-	// The estimated age of the face. This value may not be returned if the prediction fails.
+	// The predicted reference age of the face. The prediction may fail and the value may not be returned.
 	//
 	// example:
 	//
 	// 30
 	FaceAge *string `json:"FaceAge,omitempty" xml:"FaceAge,omitempty"`
-	// Indicates whether the captured face involves a liveness attack. Valid values:
-	//
-	// - Y: Attack detected.
-	//
-	// - N: No attack detected.
-	//
-	// This field is returned only when passive liveness detection is enabled.
+	// Indicates whether the captured face involves a liveness attack. Valid values: Y (attack detected) and N (no attack detected). This field is returned only when passive liveness detection is enabled.
 	//
 	// example:
 	//
 	// N
 	FaceAttack *string `json:"FaceAttack,omitempty" xml:"FaceAttack,omitempty"`
-	// The probability of a passive liveness detection attack on the face. The value ranges from 0 to 100. This field is returned only when passive liveness detection is enabled.
+	// The probability of a liveness attack on the face. The value ranges from 0 to 100. This field is returned only when passive liveness detection is enabled.
 	//
 	// example:
 	//
 	// 99
 	FaceAttackScore *string `json:"FaceAttackScore,omitempty" xml:"FaceAttackScore,omitempty"`
-	// The 1:1 face comparison score returned when the verification mode is 1 or 2. The value ranges from 0 to 100.
+	// The 1:1 comparison score returned when the verification mode is 1 or 2. The score ranges from 0 to 100.
 	//
 	// example:
 	//
 	// 98
 	FaceComparisonScore *string `json:"FaceComparisonScore,omitempty" xml:"FaceComparisonScore,omitempty"`
-	// The predicted gender of the face. This value may not be returned if the prediction fails. Valid values:
+	// The predicted gender of the face image. The prediction may fail and the value may not be returned. Valid values:
 	//
-	// - M: male
+	// - M: male.
 	//
-	// - F: female
+	// - F: female.
 	//
 	// example:
 	//
@@ -158,15 +152,15 @@ type FaceDuplicationCheckIntlResponseBodyResult struct {
 	FaceGender *string `json:"FaceGender,omitempty" xml:"FaceGender,omitempty"`
 	// The final verification result. Valid values:
 	//
-	// - Y: Passed.
+	// - Y: passed.
 	//
-	// - N: Not passed.
+	// - N: not passed.
 	//
 	// example:
 	//
 	// Y
 	FacePassed *string `json:"FacePassed,omitempty" xml:"FacePassed,omitempty"`
-	// The FACEID returned only when automatic registration is enabled and the face is successfully registered.
+	// The corresponding FACEID returned only when the customer has enabled automatic registration and the face is successfully registered.
 	//
 	// example:
 	//
@@ -174,15 +168,15 @@ type FaceDuplicationCheckIntlResponseBodyResult struct {
 	FaceRegistrationId *string `json:"FaceRegistrationId,omitempty" xml:"FaceRegistrationId,omitempty"`
 	// The face registration result. Valid values:
 	//
-	// - 0: Failed.
+	// - 0: failed.
 	//
-	// - 1: Succeeded.
+	// - 1: succeeded.
 	//
 	// example:
 	//
 	// 0
 	FaceRegistrationResult *int32 `json:"FaceRegistrationResult,omitempty" xml:"FaceRegistrationResult,omitempty"`
-	// The verification result description. For more information, see the ResultObject.SubCode error code description.
+	// The verification result description. For more information, refer to the ResultObject.SubCode error code description.
 	//
 	// example:
 	//

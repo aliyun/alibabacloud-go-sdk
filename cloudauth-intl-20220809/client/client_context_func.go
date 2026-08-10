@@ -2025,7 +2025,7 @@ func (client *Client) FaceCrossCompareIntlWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Performs face duplication check (FaceDuplicationCheckIntl) for scenarios where SDK integration is not feasible. Submits face images through the API to verify whether a user is a real person, compare the face against a stored face image for identity verification, search a face library to determine whether the face already exists, and automatically register the face in a specified face library after successful verification.
+// Performs server-side liveness detection and face duplication check (FaceDuplicationCheckIntl) for scenarios where SDK integration is not feasible. Submits face images through the API to verify whether the user is a real person, compare the face against a retained face image for identity verification, search face libraries to determine whether the face already exists, and automatically register the face to a specified face library after successful verification.
 //
 // @param request - FaceDuplicationCheckIntlRequest
 //
@@ -2107,6 +2107,10 @@ func (client *Client) FaceDuplicationCheckIntlWithContext(ctx context.Context, r
 
 	if !dara.IsNil(request.TargetFacePictureUrl) {
 		body["TargetFacePictureUrl"] = request.TargetFacePictureUrl
+	}
+
+	if !dara.IsNil(request.UpdateFaceIfUserExists) {
+		body["UpdateFaceIfUserExists"] = request.UpdateFaceIfUserExists
 	}
 
 	if !dara.IsNil(request.VerifyModel) {
@@ -2359,7 +2363,7 @@ func (client *Client) FaceLivenessV2WithContext(ctx context.Context, request *Fa
 
 // Summary:
 //
-// Performs real face detection by using face images obtained in advance through an API operation. The algorithm identifies whether a face is a screen recapture or printed photo to detect basic presentation liveness attacks that render such attack types, and supports comparison with another face image to authenticate whether they belong to the same person.
+// Performs real face detection by receiving pre-captured face images through the API operation. The algorithm primarily identifies whether a face is a screen replay or printed photo type of basic render liveness attack, and supports comparison with another face image to authenticate whether they belong to the same person.
 //
 // Description:
 //
@@ -2428,6 +2432,10 @@ func (client *Client) FaceVerifyIntlWithContext(ctx context.Context, request *Fa
 
 	if !dara.IsNil(request.TargetFacePictureUrl) {
 		query["TargetFacePictureUrl"] = request.TargetFacePictureUrl
+	}
+
+	if !dara.IsNil(request.UpdateFaceIfUserExists) {
+		query["UpdateFaceIfUserExists"] = request.UpdateFaceIfUserExists
 	}
 
 	if !dara.IsNil(request.VerifyModel) {
@@ -2753,7 +2761,7 @@ func (client *Client) IdnAuthorityVerifyIntlWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Initializes an authentication session.
+// Initializes an authentication process.
 //
 // @param tmpReq - InitializeRequest
 //
@@ -2992,6 +3000,10 @@ func (client *Client) InitializeWithContext(ctx context.Context, tmpReq *Initial
 
 	if !dara.IsNil(request.TemplateType) {
 		query["TemplateType"] = request.TemplateType
+	}
+
+	if !dara.IsNil(request.UpdateFaceIfUserExists) {
+		query["UpdateFaceIfUserExists"] = request.UpdateFaceIfUserExists
 	}
 
 	if !dara.IsNil(request.UseNFC) {
@@ -3276,6 +3288,10 @@ func (client *Client) InitializeV2WithContext(ctx context.Context, tmpReq *Initi
 
 	if !dara.IsNil(request.TemplateType) {
 		query["TemplateType"] = request.TemplateType
+	}
+
+	if !dara.IsNil(request.UpdateFaceIfUserExists) {
+		query["UpdateFaceIfUserExists"] = request.UpdateFaceIfUserExists
 	}
 
 	if !dara.IsNil(request.UseNFC) {

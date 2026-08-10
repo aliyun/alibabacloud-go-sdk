@@ -116,7 +116,7 @@ type FaceVerifyIntlResponseBodyResult struct {
 	DuplicateFace *string `json:"DuplicateFace,omitempty" xml:"DuplicateFace,omitempty"`
 	// The additional face result information.
 	ExtFaceInfo *FaceVerifyIntlResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
-	// The estimated age of the face. This value may not be returned if the prediction fails.
+	// The predicted reference age of the face. Prediction may fail and the value may not be returned in some cases.
 	//
 	// example:
 	//
@@ -124,33 +124,33 @@ type FaceVerifyIntlResponseBodyResult struct {
 	FaceAge *int64 `json:"FaceAge,omitempty" xml:"FaceAge,omitempty"`
 	// Indicates whether the captured face involves a liveness attack. Valid values:
 	//
-	// - Y: Attack detected.
+	// - Y: attack detected.
 	//
-	// - N: No attack detected.
+	// - N: no attack detected.
 	//
-	// This field is returned only when passive liveness detection is enabled.
+	// Returned when passive liveness detection is enabled.
 	//
 	// example:
 	//
 	// N
 	FaceAttack *string `json:"FaceAttack,omitempty" xml:"FaceAttack,omitempty"`
-	// The probability of a passive liveness detection attack on the face. Value range: 0 to 100. This field is returned only when passive liveness detection is enabled.
+	// The probability of a passive liveness detection attack on the face. Value range: 0 to 100. Returned when passive liveness detection is enabled.
 	//
 	// example:
 	//
 	// 99
 	FaceAttackScore *float64 `json:"FaceAttackScore,omitempty" xml:"FaceAttackScore,omitempty"`
-	// The comparison score between the face image submitted during verification and the reference face image. Value range: 0 to 100.
+	// The comparison score between the submitted face image and the reference face image during verification. Value range: 0 to 100.
 	//
 	// example:
 	//
 	// 95.0
 	FaceComparisonScore *float64 `json:"FaceComparisonScore,omitempty" xml:"FaceComparisonScore,omitempty"`
-	// The predicted gender of the face image. This value may not be returned if the prediction fails. Valid values:
+	// The predicted gender of the face image. Prediction may fail and the value may not be returned in some cases. Valid values:
 	//
-	// - M: Male.
+	// - M: male.
 	//
-	// - F: Female.
+	// - F: female.
 	//
 	// example:
 	//
@@ -158,15 +158,15 @@ type FaceVerifyIntlResponseBodyResult struct {
 	FaceGender *string `json:"FaceGender,omitempty" xml:"FaceGender,omitempty"`
 	// The final verification result. Valid values:
 	//
-	// - Y: Passed.
+	// - Y: passed.
 	//
-	// - N: Not passed.
+	// - N: not passed.
 	//
 	// example:
 	//
 	// Y
 	FacePassed *string `json:"FacePassed,omitempty" xml:"FacePassed,omitempty"`
-	// The face ID returned only when the customer has enabled automatic registration and the face is registered successfully.
+	// The corresponding FACEID returned only when the customer has enabled automatic registration and the face is registered successfully.
 	//
 	// example:
 	//
@@ -174,9 +174,9 @@ type FaceVerifyIntlResponseBodyResult struct {
 	FaceRegistrationId *string `json:"FaceRegistrationId,omitempty" xml:"FaceRegistrationId,omitempty"`
 	// The face registration result. Valid values:
 	//
-	// - 0: Failed.
+	// - 0: failed.
 	//
-	// - 1: Succeeded.
+	// - 1: succeeded.
 	//
 	// example:
 	//
@@ -329,25 +329,25 @@ type FaceVerifyIntlResponseBodyResultExtFaceInfo struct {
 	//
 	// 39.04
 	FaceQualityScore *float64 `json:"FaceQualityScore,omitempty" xml:"FaceQualityScore,omitempty"`
-	// The algorithm score for illumination, a sub-dimension of quality assessment. Value range: 0 to 100. A higher value indicates better quality.
+	// The algorithm score for illumination as a sub-dimension of quality assessment. Value range: 0 to 100. A higher value indicates better quality.
 	//
 	// example:
 	//
 	// 97.43
 	IlluminationScore *float64 `json:"IlluminationScore,omitempty" xml:"IlluminationScore,omitempty"`
-	// The algorithm score for key area occlusion, a sub-dimension of quality assessment. Value range: 0 to 100. A higher value indicates better quality.
+	// The algorithm score for key area occlusion as a sub-dimension of quality assessment. Value range: 0 to 100. A higher value indicates better quality.
 	//
 	// example:
 	//
 	// 100
 	KaOcclusionScore *float64 `json:"KaOcclusionScore,omitempty" xml:"KaOcclusionScore,omitempty"`
-	// The algorithm score for occlusion, a sub-dimension of quality assessment. Value range: 0 to 100. A higher value indicates better quality.
+	// The algorithm score for occlusion as a sub-dimension of quality assessment. Value range: 0 to 100. A higher value indicates better quality.
 	//
 	// example:
 	//
 	// 50.26
 	OcclusionScore *float64 `json:"OcclusionScore,omitempty" xml:"OcclusionScore,omitempty"`
-	// The image sharpness score, a sub-dimension of quality assessment. Value range: 0 to 100. A higher value indicates better quality.
+	// The image sharpness score as a sub-dimension of quality assessment. Value range: 0 to 100. A higher value indicates better quality.
 	//
 	// example:
 	//

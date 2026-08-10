@@ -121,6 +121,8 @@ type iInitializeShrinkRequest interface {
 	GetTemplateRanCount() *string
 	SetTemplateType(v string) *InitializeShrinkRequest
 	GetTemplateType() *string
+	SetUpdateFaceIfUserExists(v string) *InitializeShrinkRequest
+	GetUpdateFaceIfUserExists() *string
 	SetUseNFC(v string) *InitializeShrinkRequest
 	GetUseNFC() *string
 	SetVerifyModel(v string) *InitializeShrinkRequest
@@ -128,24 +130,25 @@ type iInitializeShrinkRequest interface {
 }
 
 type InitializeShrinkRequest struct {
-	// <warning>This feature is **not supported by Web SDK**. To use this feature, refer to App SDK integration.</warning>
+	// <warning>This feature is not supported by the **Web SDK**. To use this feature, use the App SDK.</warning>
 	//
-	// Specifies whether to enable strict face quality detection:
+	// Specifies whether to enable strict face quality detection. Valid values:
 	//
-	// - Y: enable (default)
+	// - Y: Enabled. This is the default value.
 	//
-	// - N: do not enable
+	// - N: Not enabled.
 	//
 	// example:
 	//
 	// N
 	AppQualityCheck *string `json:"AppQualityCheck,omitempty" xml:"AppQualityCheck,omitempty"`
-	// Specifies whether to enable authoritative identity verification. Currently, this applies only to second-generation ID cards in the Chinese mainland. (IDV product input parameter)
+	// Specifies whether to enable authoritative identity verification. Currently, this parameter applies only to second-generation ID cards in the Chinese mainland. This is an input parameter for the IDV product.
 	//
 	// example:
 	//
 	// Y
-	Authorize         *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
+	Authorize *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
+	// The automatic document classification configuration.
 	AutoDocPageConfig *string `json:"AutoDocPageConfig,omitempty" xml:"AutoDocPageConfig,omitempty"`
 	// Specifies whether to enable automatic registration.
 	//
@@ -153,29 +156,25 @@ type InitializeShrinkRequest struct {
 	//
 	// 0
 	AutoRegistration *string `json:"AutoRegistration,omitempty" xml:"AutoRegistration,omitempty"`
-	// The security token used for anti-replay and anti-tampering verification. If this parameter is passed in, the CallbackToken field is displayed in the callback URL.
+	// The security token used for anti-replay and anti-tampering verification. If this parameter is specified, the CallbackToken field is displayed in the callback URL.
 	//
 	// example:
 	//
 	// 7ca5c68d869344ea8eeb30cdfd544544-6358700
 	CallbackToken *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
-	// The callback notification URL for the authentication result. The default callback request method is GET, and the callback URL must start with https. After authentication is completed, the platform calls back this URL and automatically adds the transactionId, passed, and subcode fields.
+	// The callback URL for the authentication result. The callback request method is GET by default, and the callback URL must start with https. After the authentication is complete, the platform calls back this URL and automatically adds the transactionId, passed, and subcode fields.
 	//
 	// example:
 	//
 	// https://www.aliyun.com?callbackToken=1000004826&transactionId=shaxxxx&passed=Y&subCode=200
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
-	// Specifies whether to enable the adaptive color-changing window frame.
-	//
-	// - **Y**: enable
-	//
-	// - **N**: do not enable
+	// Specifies whether to enable the adaptive color-changing window border.
 	//
 	// example:
 	//
 	// N
 	ChameleonFrameEnable *string `json:"ChameleonFrameEnable,omitempty" xml:"ChameleonFrameEnable,omitempty"`
-	// Specifies whether to crop. (IDV product input parameter)
+	// Specifies whether to enable cropping. This is an input parameter for the IDV product.
 	//
 	// example:
 	//
@@ -183,15 +182,11 @@ type InitializeShrinkRequest struct {
 	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
 	// The date of birth on the document.
 	//
-	// Required when **MRTDInput = 2**.
-	//
 	// example:
 	//
 	// -
 	DateOfBirth *string `json:"DateOfBirth,omitempty" xml:"DateOfBirth,omitempty"`
-	// The expiry date on the document.
-	//
-	// Required when **MRTDInput*	- = 2.
+	// The expiration date on the document.
 	//
 	// example:
 	//
@@ -201,7 +196,7 @@ type InitializeShrinkRequest struct {
 	//
 	// example:
 	//
-	// John Smith.
+	// John Smith
 	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
 	// The document number of the user.
 	//
@@ -209,13 +204,9 @@ type InitializeShrinkRequest struct {
 	//
 	// 411xxxxxxxxxxx0001
 	DocNo *string `json:"DocNo,omitempty" xml:"DocNo,omitempty"`
-	// The custom configuration for whether to capture additional pages.
+	// The custom configuration for whether to collect additional pages.
 	DocPageConfigShrink *string `json:"DocPageConfig,omitempty" xml:"DocPageConfig,omitempty"`
-	// The document capture photo mode.
-	//
-	// - manual: manual capture.
-	//
-	// - auto: automatic capture (default).
+	// The document capture and photo mode.
 	//
 	// example:
 	//
@@ -223,21 +214,21 @@ type InitializeShrinkRequest struct {
 	DocScanMode *string `json:"DocScanMode,omitempty" xml:"DocScanMode,omitempty"`
 	// The document type.
 	//
-	// >For eKYC_PRO and ID_OCR_MAX solutions, see the official documentation: https://www.alibabacloud.com/help/zh/ekyc/latest/certificate-code-table?spm=a2c63.p38356.help-menu-445633.d_2_8_2_0.279147abwKAWbr
+	// >For the eKYC_PRO and ID_OCR_MAX solutions, see the official documentation at https://www.alibabacloud.com/help/zh/ekyc/latest/certificate-code-table?spm=a2c63.p38356.help-menu-445633.d_2_8_2_0.279147abwKAWbr
 	//
-	// >For ID_OCR, eKYC, and eKYC_MIN solutions, see the official documentation for the document type list: https://www.alibabacloud.com/help/zh/ekyc/latest/gnhekqy05ni51m4c?spm=a2c63.p38356.help-menu-445633.d_2_3_1_0_0_0.6243244777KoZ7
+	// >For the ID_OCR, eKYC, and eKYC_MIN solutions, see the document type list in the official documentation at https://www.alibabacloud.com/help/zh/ekyc/latest/gnhekqy05ni51m4c?spm=a2c63.p38356.help-menu-445633.d_2_3_1_0_0_0.6243244777KoZ7
 	//
 	// example:
 	//
 	// 00000001
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
-	// Specifies whether to store the verification video.
+	// Specifies whether to collect a verification video.
 	//
-	// - N: not required (default).
+	// - N: No (default).
 	//
-	// - Y: during authentication, the system simultaneously captures the user\\"s face verification video (1–2s video file) and returns it through the query operation.
+	// - Y: A short video (1 to 2 seconds) of the user\\"s face verification process is collected and returned through the query operation.
 	//
-	// > Because video files are large, the system discards video files when the network is unstable to prioritize the transmission of essential authentication images.
+	// > Because video files are large, the system discards video files when the network is unstable to prioritize the transmission of images required for verification.
 	//
 	// example:
 	//
@@ -245,27 +236,17 @@ type InitializeShrinkRequest struct {
 	DocVideo *string `json:"DocVideo,omitempty" xml:"DocVideo,omitempty"`
 	// The document number.
 	//
-	// Required when **MRTDInput = 2**.
-	//
 	// example:
 	//
 	// -
 	DocumentNumber *string `json:"DocumentNumber,omitempty" xml:"DocumentNumber,omitempty"`
-	// Specifies whether the recognition result page is editable during the document OCR recognition phase:
-	//
-	// - **0**: not editable
-	//
-	// - **1*	- (default): editable
+	// Specifies whether the recognition result page is editable during the document OCR recognition step:
 	//
 	// example:
 	//
 	// 0
 	EditOcrResult *string `json:"EditOcrResult,omitempty" xml:"EditOcrResult,omitempty"`
-	// The Indonesian email address. This field takes effect only when Authorize=T.
-	//
-	// >
-	//
-	// > - This field is required only when the Indonesian data source is enabled.
+	// The Indonesian email address. This field takes effect only when Authorize is set to T.
 	//
 	// example:
 	//
@@ -276,27 +257,28 @@ type InitializeShrinkRequest struct {
 	// example:
 	//
 	// 9be7b7d0180041219e5ab03ac6dab5fb
-	ExperienceCode     *string `json:"ExperienceCode,omitempty" xml:"ExperienceCode,omitempty"`
+	ExperienceCode *string `json:"ExperienceCode,omitempty" xml:"ExperienceCode,omitempty"`
+	// Specifies whether to enable face attribute check.
 	FaceAttributeCheck *string `json:"FaceAttributeCheck,omitempty" xml:"FaceAttributeCheck,omitempty"`
-	// The face libraries for comparison.
+	// The face libraries to compare against.
 	//
 	// example:
 	//
 	// 0e0c34a77f
 	FaceGroupCodes *string `json:"FaceGroupCodes,omitempty" xml:"FaceGroupCodes,omitempty"`
-	// The Base64-encoded face photo. If you use FacePictureBase64 to pass in the face photo, check the photo size and do not pass in an excessively large photo.
+	// The Base64-encoded face photo. If you use FacePictureBase64 to pass in a face photo, check the photo size and do not pass in an excessively large photo.
 	//
 	// example:
 	//
 	// Base64
 	FacePictureBase64 *string `json:"FacePictureBase64,omitempty" xml:"FacePictureBase64,omitempty"`
-	// The face photo URL. A publicly accessible HTTP or HTTPS link.
+	// The URL of the face photo. The URL must be a publicly accessible HTTP or HTTPS link.
 	//
 	// example:
 	//
 	// ***
 	FacePictureUrl *string `json:"FacePictureUrl,omitempty" xml:"FacePictureUrl,omitempty"`
-	// The registration face library.
+	// The face registration library.
 	//
 	// example:
 	//
@@ -308,39 +290,39 @@ type InitializeShrinkRequest struct {
 	//
 	// 0.5
 	FaceVerifyThreshold *string `json:"FaceVerifyThreshold,omitempty" xml:"FaceVerifyThreshold,omitempty"`
-	// The face image quality. (IDV product input parameter)
+	// The face image quality. This is an input parameter for the IDV product.
 	//
 	// example:
 	//
 	// Y
 	IdFaceQuality *string `json:"IdFaceQuality,omitempty" xml:"IdFaceQuality,omitempty"`
-	// Specifies whether to enable document anti-forgery detection. (IDV product input parameter)
+	// Specifies whether to enable document anti-forgery detection. This is an input parameter for the IDV product.
 	//
 	// example:
 	//
 	// Y
 	IdSpoof *string `json:"IdSpoof,omitempty" xml:"IdSpoof,omitempty"`
-	// The custom OCR quality detection threshold mode:
+	// The custom OCR quality detection threshold mode. Valid values:
 	//
-	// - **0**: standard mode
+	// - **0**: Standard mode.
 	//
-	// - **1**: strict mode
+	// - **1**: Strict mode.
 	//
-	// - **2**: loose mode
+	// - **2**: Loose mode.
 	//
-	// - **3*	- (default): disable quality detection
+	// - **3*	- (default): Quality detection disabled.
 	//
 	// example:
 	//
 	// 0
 	IdThreshold *string `json:"IdThreshold,omitempty" xml:"IdThreshold,omitempty"`
-	// The language configuration. (IDV product input parameter)
+	// The language configuration. This is an input parameter for the IDV product.
 	//
 	// example:
 	//
 	// en
 	LanguageConfig *string `json:"LanguageConfig,omitempty" xml:"LanguageConfig,omitempty"`
-	// The MRTD verification parameter input source. This parameter is required to decrypt information when reading document chip information via NFC.
+	// The input source of MRTD verification parameters. This parameter is required to decrypt information when reading document chip data via NFC.
 	//
 	// - **0**: user input
 	//
@@ -352,73 +334,65 @@ type InitializeShrinkRequest struct {
 	//
 	// 0
 	MRTDInput *string `json:"MRTDInput,omitempty" xml:"MRTDInput,omitempty"`
-	// The merchant-defined unique business ID used for subsequent troubleshooting. The value can contain letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
+	// The merchant-defined unique business ID for subsequent troubleshooting. The value can contain letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
 	//
 	// example:
 	//
 	// e0c34a***353888
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// Your custom user ID or other identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you desensitize this field value in advance, such as by hashing the value.
+	// Your custom user ID, or another identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you desensitize this field value in advance, for example, by hashing the value.
 	//
 	// example:
 	//
 	// 1221****6543
 	MerchantUserId *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
-	// The Metainfo environment parameter, which must be obtained through the client SDK.
+	// The Metainfo environment parameter, which must be obtained from the client SDK.
 	//
 	// example:
 	//
 	// {\\"bioMetaInfo\\":\\"4.1.0:2916352,0\\",\\"deviceType\\":\\"web\\",\\"ua\\":\\"Mozilla/5.0 (Macintosh
 	MetaInfo *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
-	// The Indonesian phone number. The format must be verified (starting with +62, followed by 9–11 digits). This field takes effect only when Authorize=T.
-	//
-	// >
-	//
-	// > - This field is required only when the Indonesian data source is enabled.
+	// The Indonesian phone number. The format must be verified (starting with +62, followed by 9 to 11 digits). This field takes effect only when Authorize is set to T.
 	//
 	// example:
 	//
 	// +6281293671234
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// The type of liveness detection to perform:
+	// The type of liveness detection to perform.
 	//
-	// - **LIVENESS*	- (default): blink action liveness detection.
+	// - **LIVENESS*	- (default): Blink-based liveness detection.
 	//
-	// - **PHOTINUS_LIVENESS**: blink action liveness + colorful liveness dual detection.
+	// - **PHOTINUS_LIVENESS**: Dual detection combining blink-based liveness detection and flash-based liveness detection.
 	//
 	// >
 	//
 	// > - For supported SDK versions, see [SDK release notes](https://www.alibabacloud.com/help/zh/ekyc/latest/sdk-publishing-record?spm=a2c63.p38356.0.i99).
 	//
-	// > - PC does not support colorful liveness dual detection.
+	// > - Flash-based dual liveness detection is not supported on PCs.
 	//
 	// example:
 	//
 	// PHOTINUS_LIVENESS
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// Specifies whether to enable OCR. (IDV product input parameter)
+	// Specifies whether to enable OCR. This is an input parameter for the IDV product.
 	//
 	// example:
 	//
 	// Y
 	Ocr *string `json:"Ocr,omitempty" xml:"Ocr,omitempty"`
-	// Specifies whether to return additional OCR recognition standardized format fields:
-	//
-	// 0: no (default)
-	//
-	// 1: yes
+	// Specifies whether to additionally return OCR recognition results in standardized format fields:
 	//
 	// example:
 	//
 	// 0
 	OcrValueStandard *string `json:"OcrValueStandard,omitempty" xml:"OcrValueStandard,omitempty"`
-	// The collection page configuration. Use commas to connect multiple pages. Valid values:
+	// The configuration for capture pages. Separate multiple pages with commas (,). Valid values:
 	//
-	// - **01**: document portrait page
+	// - **01**: the portrait side of the identity document.
 	//
-	// - **01,02**: document portrait page and back page
+	// - **01,02**: the portrait side and back side of the identity document.
 	//
-	// > When this value is set to 01,02, only Chinese ID cards and Vietnamese ID cards are currently supported.
+	// > When this parameter is set to 01,02, only China identity cards and Vietnam identity cards are supported.
 	//
 	// example:
 	//
@@ -426,22 +400,11 @@ type InitializeShrinkRequest struct {
 	Pages *string `json:"Pages,omitempty" xml:"Pages,omitempty"`
 	// Specifies whether to allow a degraded processing method when compatibility issues occur during mobile H5 authentication.
 	//
-	// - **url (default)**: supports degradation. The page displays the authentication URL, and the user can copy the URL or switch browsers to continue authentication.
-	//
-	// - **keep**: does not support degradation. Directly returns the error reason and ends the authentication flow.
-	//
-	//
-	// >
-	//
-	// > - PC does not support this switch.
-	//
-	// > - If the business scenario involves completing authentication within an in-app embedded web page, set this parameter to keep to disallow URL degradation.
-	//
 	// example:
 	//
 	// url
 	ProcedurePriority *string `json:"ProcedurePriority,omitempty" xml:"ProcedurePriority,omitempty"`
-	// The product solution to be integrated.
+	// The product plan to use.
 	//
 	// >For more information, see the official documentation: https://www.alibabacloud.com/help/zh/ekyc/latest/product-introduction?spm=a2c63.p38356.0.i1
 	//
@@ -449,19 +412,19 @@ type InitializeShrinkRequest struct {
 	//
 	// eKYC
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Specifies the order of document and face capture:
+	// Specifies the order of document and face verification steps. Valid values:
 	//
-	// - DOC_FACE (default)
+	// - DOC_FACE: Document first, then face. This is the default value.
 	//
-	// - FACE_DOC
+	// - FACE_DOC: Face first, then document.
 	//
-	// Note: This parameter is required only when ProductCode is KYC_GLOBAL.
+	// >**Note:*	- This parameter is required only when ProductCode is set to KYC_GLOBAL.
 	//
 	// example:
 	//
 	// DOC_FACE
 	ProductFlow *string `json:"ProductFlow,omitempty" xml:"ProductFlow,omitempty"`
-	// The number of duplicate faces returned.
+	// The number of duplicate faces to return.
 	//
 	// example:
 	//
@@ -479,27 +442,23 @@ type InitializeShrinkRequest struct {
 	//
 	// 0
 	SaveFacePicture *string `json:"SaveFacePicture,omitempty" xml:"SaveFacePicture,omitempty"`
-	// The scene code. (IDV product input parameter)
+	// The scene code. This is an input parameter for the IDV product.
 	//
 	// example:
 	//
 	// 123****123
 	SceneCode *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
-	// The pattern that represents different security levels of the authentication flow. Valid values:
-	//
-	// 01: normal pattern (default).
-	//
-	// 02: safe mode, a relatively strict pattern that is active for high-risk scenarios. (IDV product input parameter)
+	// The mode that represents different security levels of the authentication process. Valid values:
 	//
 	// example:
 	//
 	// 01
 	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
-	// Specifies whether to display the album upload entry during the document OCR recognition phase:
+	// Specifies whether to display the album upload entry during the document OCR recognition step. Valid values:
 	//
-	// - **1**: display (default)
+	// - **1**: Display. This is the default value.
 	//
-	// - **0**: do not display
+	// - **0**: Do not display.
 	//
 	// example:
 	//
@@ -507,25 +466,17 @@ type InitializeShrinkRequest struct {
 	ShowAlbumIcon *string `json:"ShowAlbumIcon,omitempty" xml:"ShowAlbumIcon,omitempty"`
 	// Specifies whether to display the guide page:
 	//
-	// - **1**: display (default)
-	//
-	// - **0**: do not display
-	//
 	// example:
 	//
 	// 1
 	ShowGuidePage *string `json:"ShowGuidePage,omitempty" xml:"ShowGuidePage,omitempty"`
-	// Specifies whether to display the recognition result page during the document OCR recognition phase:
-	//
-	// - **1**: display (default)
-	//
-	// - **0**: do not display
+	// Specifies whether to display the recognition result page during the document OCR recognition step:
 	//
 	// example:
 	//
 	// 1
 	ShowOcrResult *string `json:"ShowOcrResult,omitempty" xml:"ShowOcrResult,omitempty"`
-	// The custom UI configuration. Convert your custom UI configuration to a JSON string based on the configuration template and pass it in through this operation. For more information, see [IDV UI style customization](https://www.alibabacloud.com/help/zh/ekyc/latest/idv-kyc-custom-skin?spm=a2c63.p38356.0.i60).
+	// The custom UI configuration. Convert your custom UI configuration to a JSON string based on the configuration template, and pass it in through this parameter. For more information, see [IDV UI style customization](https://www.alibabacloud.com/help/zh/ekyc/latest/idv-kyc-custom-skin?spm=a2c63.p38356.0.i60).
 	//
 	// example:
 	//
@@ -547,7 +498,7 @@ type InitializeShrinkRequest struct {
 	//
 	// base64
 	TargetFacePicture *string `json:"TargetFacePicture,omitempty" xml:"TargetFacePicture,omitempty"`
-	// The portrait image URL. A publicly accessible HTTP or HTTPS link.
+	// The URL of the portrait image. The URL must be a publicly accessible HTTP or HTTPS link.
 	//
 	// example:
 	//
@@ -555,11 +506,11 @@ type InitializeShrinkRequest struct {
 	TargetFacePictureUrl *string `json:"TargetFacePictureUrl,omitempty" xml:"TargetFacePictureUrl,omitempty"`
 	// The custom action pool configuration for liveness detection.
 	//
-	// This parameter is required when Model is TEMPLATE.
+	// This parameter is required when Model is set to TEMPLATE.
 	//
-	// Configuration rule: separate multiple action codes with commas. Best Practices: include at least one frontal face action (such as blink), and do not exceed 3 actions in total.
+	// Configuration rule: Separate multiple action codes with commas. Best practice: Include at least one frontal face action (such as blink), and use no more than 3 actions in total.
 	//
-	// Action lookup table:
+	// Action code table:
 	//
 	// - Blink: 01
 	//
@@ -579,13 +530,7 @@ type InitializeShrinkRequest struct {
 	//
 	// 01,02,07
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	// The number of actions randomly selected from TemplateConfig.
-	//
-	// Takes effect only when TemplateType is Ran.
-	//
-	// - Validation rules:
-	//
-	// - The value must be greater than 1. The value must be less than or equal to the total number of actions configured in TemplateConfig. If not specified, the default value equals the total number of actions in TemplateConfig.
+	// The number of actions to randomly select from TemplateConfig.
 	//
 	// example:
 	//
@@ -593,21 +538,17 @@ type InitializeShrinkRequest struct {
 	TemplateRanCount *string `json:"TemplateRanCount,omitempty" xml:"TemplateRanCount,omitempty"`
 	// The execution order of liveness detection actions in TemplateConfig.
 	//
-	// This parameter is required when Model is TEMPLATE.
-	//
-	// - Seq: executes in the order configured in TemplateConfig from left to right.
-	//
-	// - Ran: executes in random order. When this option is selected, TemplateConfig must contain more than one action.
-	//
 	// example:
 	//
 	// Seq
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
-	// When **DocType*	- = 01000000 (global passport), specifies whether to enable NFC verification.
+	// Specifies whether to overwrite the existing face with the current face when MerchantUserId already exists during automatic registration. Y: overwrite. N: do not overwrite and return a message indicating that the UserId already exists.
+	UpdateFaceIfUserExists *string `json:"UpdateFaceIfUserExists,omitempty" xml:"UpdateFaceIfUserExists,omitempty"`
+	// Specifies whether to enable NFC verification when **DocType*	- is set to 01000000 (global passport). Valid values:
 	//
-	// - **Y*	- (enable)
+	// - **Y**: Enabled.
 	//
-	// - **N*	- (do not enable)
+	// - **N**: Not enabled.
 	//
 	// example:
 	//
@@ -851,6 +792,10 @@ func (s *InitializeShrinkRequest) GetTemplateRanCount() *string {
 
 func (s *InitializeShrinkRequest) GetTemplateType() *string {
 	return s.TemplateType
+}
+
+func (s *InitializeShrinkRequest) GetUpdateFaceIfUserExists() *string {
+	return s.UpdateFaceIfUserExists
 }
 
 func (s *InitializeShrinkRequest) GetUseNFC() *string {
@@ -1138,6 +1083,11 @@ func (s *InitializeShrinkRequest) SetTemplateRanCount(v string) *InitializeShrin
 
 func (s *InitializeShrinkRequest) SetTemplateType(v string) *InitializeShrinkRequest {
 	s.TemplateType = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetUpdateFaceIfUserExists(v string) *InitializeShrinkRequest {
+	s.UpdateFaceIfUserExists = &v
 	return s
 }
 
