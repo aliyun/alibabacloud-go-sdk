@@ -62,7 +62,7 @@ func (s *DescribeDBInstanceDataSourcesResponseBody) Validate() error {
 }
 
 type DescribeDBInstanceDataSourcesResponseBodyData struct {
-	// The columns.
+	// The column types.
 	Columns []*DescribeDBInstanceDataSourcesResponseBodyDataColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
 	// The cluster ID.
 	//
@@ -70,13 +70,13 @@ type DescribeDBInstanceDataSourcesResponseBodyData struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The account.
+	// The accounts.
 	//
 	// example:
 	//
 	// default
 	Schemas *string `json:"Schemas,omitempty" xml:"Schemas,omitempty"`
-	// The tables.
+	// The list of tables.
 	Tables []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
 }
 
@@ -156,11 +156,11 @@ type DescribeDBInstanceDataSourcesResponseBodyDataColumns struct {
 	//
 	// dbtest
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// Indicates whether the column is the primary key of the table. Valid values:
+	// Indicates whether the column is a primary key. Valid values:
 	//
-	// - **true**
+	// - **true**: The column is a primary key.
 	//
-	// - **false**
+	// - **false**: The column is not a primary key.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ type DescribeDBInstanceDataSourcesResponseBodyDataColumns struct {
 	//
 	// tableTest
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The type of the stored data.
+	// The data type of the stored data.
 	//
 	// example:
 	//

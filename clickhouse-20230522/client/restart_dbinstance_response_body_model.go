@@ -16,7 +16,7 @@ type iRestartDBInstanceResponseBody interface {
 }
 
 type RestartDBInstanceResponseBody struct {
-	// The data returned.
+	// The returned result.
 	Data *RestartDBInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//

@@ -38,29 +38,29 @@ type UpgradeMinorVersionRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The update time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The specified upgrade time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
-	// >  If you set SwitchTimeMode to SpecifyTime, you must configure this parameter to specify the update time.
+	// > This parameter is required when SwitchTimeMode is set to SpecifyTime.
 	//
 	// example:
 	//
 	// 2023-01-09T05:00:00Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	// Specifies whether to update the minor engine version of the cluster immediately. Valid values:
+	// Specifies when to upgrade. Valid values:
 	//
-	// 	- **Immediate**: The system immediately performs the update.
+	// - **Immediate**: upgrades immediately.
 	//
-	// 	- **MaintainTime**: The system performs the update during the specified maintenance window.
+	// - **MaintainTime**: upgrades during the O&M window.
 	//
-	// 	- **SpecifyTime**: The system performs the update at a specified time.
+	// - **SpecifyTime**: upgrades at a specified time.
 	//
 	// example:
 	//
 	// Immediate
 	SwitchTimeMode *string `json:"SwitchTimeMode,omitempty" xml:"SwitchTimeMode,omitempty"`
-	// The minor engine version to which you want to update.
+	// The target minor engine version.
 	//
-	// >  By default, TargetMinorVersion is not set and the minor engine version of the cluster is updated to the latest version.
+	// >By default, leave this parameter empty to upgrade to the latest minor engine version.
 	//
 	// example:
 	//

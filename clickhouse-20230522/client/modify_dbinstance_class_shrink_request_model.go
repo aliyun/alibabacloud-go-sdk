@@ -34,7 +34,7 @@ type iModifyDBInstanceClassShrinkRequest interface {
 }
 
 type ModifyDBInstanceClassShrinkRequest struct {
-	// The autoscaling configuration for the compute group.
+	// The automatic horizontal scaling configuration.
 	//
 	// if can be null:
 	// true
@@ -59,13 +59,13 @@ type ModifyDBInstanceClassShrinkRequest struct {
 	//
 	// 2
 	NodeCount *int32 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	// The maximum capacity per node for serverless autoscaling. Valid values: 4 to 32. This value must be greater than the minimum value.
+	// The maximum value for serverless node elastic scaling. Valid values: 4 to 32. The value must be greater than the minimum value.
 	//
 	// example:
 	//
 	// 4
 	NodeScaleMax *int32 `json:"NodeScaleMax,omitempty" xml:"NodeScaleMax,omitempty"`
-	// The minimum capacity per node for serverless autoscaling. Valid values: 4 to 32.
+	// The minimum value for serverless node elastic scaling. Valid values: 4 to 32.
 	//
 	// example:
 	//
@@ -79,19 +79,19 @@ type ModifyDBInstanceClassShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The maximum capacity for serverless autoscaling.
+	// The maximum value for serverless elastic scaling.
 	//
 	// example:
 	//
 	// 32
 	ScaleMax *int64 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	// The minimum capacity for serverless autoscaling.
+	// The minimum value for serverless elastic scaling.
 	//
 	// example:
 	//
 	// 8
 	ScaleMin *int64 `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
-	// The pre-purchased storage capacity in GB.
+	// The pre-purchased storage quota, in GB.
 	//
 	// example:
 	//

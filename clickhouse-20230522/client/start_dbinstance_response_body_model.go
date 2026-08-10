@@ -16,7 +16,7 @@ type iStartDBInstanceResponseBody interface {
 }
 
 type StartDBInstanceResponseBody struct {
-	// The data returned.
+	// The returned result.
 	Data *StartDBInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//

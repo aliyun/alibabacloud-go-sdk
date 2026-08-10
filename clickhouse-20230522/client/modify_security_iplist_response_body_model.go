@@ -16,7 +16,7 @@ type iModifySecurityIPListResponseBody interface {
 }
 
 type ModifySecurityIPListResponseBody struct {
-	// The returned result.
+	// The returned data.
 	Data *ModifySecurityIPListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -74,19 +74,19 @@ type ModifySecurityIPListResponseBodyData struct {
 	//
 	// cc-xxxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The name of the whitelist.
+	// The group name.
 	//
 	// example:
 	//
 	// test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The tag of the whitelist.
+	// The group tag.
 	//
 	// example:
 	//
 	// test
 	GroupTag *string `json:"GroupTag,omitempty" xml:"GroupTag,omitempty"`
-	// The IP addresses and CIDR blocks in the whitelist.
+	// The list of IP addresses in the whitelist group.
 	//
 	// example:
 	//

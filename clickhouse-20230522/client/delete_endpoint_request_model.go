@@ -22,13 +22,13 @@ type iDeleteEndpointRequest interface {
 }
 
 type DeleteEndpointRequest struct {
-	// The ID of the computing group.
+	// The compute group ID.
 	//
 	// example:
 	//
 	// cc-2ze34****-clickhouse
 	ComputingGroupId *string `json:"ComputingGroupId,omitempty" xml:"ComputingGroupId,omitempty"`
-	// The connection string of the public endpoint to delete.
+	// The prefix of the endpoint to be released, which is the prefix part of the ConnectionString parameter.
 	//
 	// example:
 	//
@@ -42,17 +42,17 @@ type DeleteEndpointRequest struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The network type of the endpoint. Valid values:
+	// The network type. Valid values:
 	//
-	// - VPC: a virtual private cloud (VPC) network.
+	// - Vpc: VPC network.
 	//
-	// - Public: a public network.
+	// - Public: public network.
 	//
 	// example:
 	//
 	// Public
 	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// This parameter is required.
 	//

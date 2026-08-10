@@ -30,21 +30,21 @@ type ModifySecurityIPListRequest struct {
 	//
 	// cc-xxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the whitelist whose settings you want to modify.
+	// The name of the group to modify.
 	//
 	// example:
 	//
 	// test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The modification mode.
+	// The modification mode. Valid values:
 	//
-	// 	- 0: overwrites the original IP addresses and CIDR blocks in the whitelist.
+	// - 0: overwrites the existing whitelist.
 	//
-	// 	- 1: adds the IP addresses and CIDR blocks to the whitelist.
+	// - 1: adds IP addresses to the whitelist.
 	//
-	// 	- 2: removes the IP addresses and CIDR blocks from the whitelist.
+	// - 2: removes IP addresses from the whitelist.
 	//
-	// >  We recommend that you set the value to 0.
+	// > Set this parameter to 0 to overwrite the existing whitelist.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ModifySecurityIPListRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IP addresses and CIDR blocks in the whitelist.
+	// The whitelisted IP addresses.
 	//
 	// example:
 	//

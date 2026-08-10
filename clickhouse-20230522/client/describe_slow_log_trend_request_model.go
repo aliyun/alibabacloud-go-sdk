@@ -26,7 +26,7 @@ type iDescribeSlowLogTrendRequest interface {
 }
 
 type DescribeSlowLogTrendRequest struct {
-	// The computing group ID.
+	// The compute group ID.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DescribeSlowLogTrendRequest struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end of the time range to query. The time is in UTC and uses the yyyy-MM-dd hh:mm:ss format.
+	// The end time of the query. Format: yyyy-MM-dd hh:mm:ss (UTC).
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type DescribeSlowLogTrendRequest struct {
 	//
 	// clickhouse
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// The minimum execution duration of a slow SQL query, in milliseconds. The minimum value is **1000**.
+	// The execution duration of slow SQL statements. The minimum value is **1000**. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type DescribeSlowLogTrendRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start of the time range to query. The time is in UTC and uses the yyyy-MM-dd hh:mm:ss format.
+	// The start time of the query. Format: yyyy-MM-dd hh:mm:ss (UTC).
 	//
 	// example:
 	//

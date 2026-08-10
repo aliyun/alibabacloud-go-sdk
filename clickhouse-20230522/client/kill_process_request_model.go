@@ -20,7 +20,7 @@ type iKillProcessRequest interface {
 }
 
 type KillProcessRequest struct {
-	// The computing group ID.
+	// The compute group ID.
 	//
 	// example:
 	//

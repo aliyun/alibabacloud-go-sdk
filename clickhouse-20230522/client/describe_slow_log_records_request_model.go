@@ -28,7 +28,7 @@ type iDescribeSlowLogRecordsRequest interface {
 }
 
 type DescribeSlowLogRecordsRequest struct {
-	// The computing group ID.
+	// The compute group ID.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end time of the query. The time must be in UTC and in `yyyy-MM-dd HH:mm:ss` format.
+	// The end of the time range to query. Format: yyyy-MM-dd hh:mm:ss (UTC).
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The minimum duration, in milliseconds, for a slow SQL query to be returned. The minimum value is **1000**.
+	// The execution duration of the slow SQL statement. The minimum value is **1000**. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time of the query. The time must be in UTC and in `yyyy-MM-dd HH:mm:ss` format.
+	// The beginning of the time range to query. Format: yyyy-MM-dd hh:mm:ss (UTC).
 	//
 	// example:
 	//

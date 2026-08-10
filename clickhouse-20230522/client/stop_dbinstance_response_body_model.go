@@ -16,7 +16,7 @@ type iStopDBInstanceResponseBody interface {
 }
 
 type StopDBInstanceResponseBody struct {
-	// The data returned.
+	// The returned result.
 	Data *StopDBInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//

@@ -30,19 +30,19 @@ type iDescribeDBInstancesRequest interface {
 }
 
 type DescribeDBInstancesRequest struct {
-	// A comma-separated list of instance IDs.
+	// The list of cluster IDs. Separate multiple cluster IDs with commas (,).
 	//
 	// example:
 	//
 	// cc-xxxxx,cx-xxxx
 	DBInstanceIds *string `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty"`
-	// The instance status.
+	// The cluster status.
 	//
 	// example:
 	//
 	// active
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	// The instance description.
+	// The cluster description.
 	//
 	// example:
 	//
@@ -74,13 +74,13 @@ type DescribeDBInstancesRequest struct {
 	//
 	// rg-4690g37929****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags for filtering instances.
+	// The tag information.
 	//
 	// example:
 	//
 	// DescribeDBInstances
 	Tags []*DescribeDBInstancesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// A comma-separated list of VPC IDs.
+	// The list of VPC IDs.
 	//
 	// example:
 	//

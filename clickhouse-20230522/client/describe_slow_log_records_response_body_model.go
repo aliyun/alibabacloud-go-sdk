@@ -16,7 +16,7 @@ type iDescribeSlowLogRecordsResponseBody interface {
 }
 
 type DescribeSlowLogRecordsResponseBody struct {
-	// The result.
+	// The returned result.
 	Data *DescribeSlowLogRecordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -74,7 +74,7 @@ type DescribeSlowLogRecordsResponseBodyData struct {
 	//
 	// Cluster test
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The list of slow log records.
+	// The result set.
 	ResultSet []*DescribeSlowLogRecordsResponseBodyDataResultSet `json:"ResultSet,omitempty" xml:"ResultSet,omitempty" type:"Repeated"`
 	// The total number of records.
 	//
@@ -142,7 +142,7 @@ func (s *DescribeSlowLogRecordsResponseBodyData) Validate() error {
 }
 
 type DescribeSlowLogRecordsResponseBodyDataResultSet struct {
-	// The IP address from which the query was initiated.
+	// The query address.
 	//
 	// example:
 	//
@@ -154,37 +154,37 @@ type DescribeSlowLogRecordsResponseBodyDataResultSet struct {
 	//
 	// \\"ae915a3ad30e77e67a7215d05b658cc6\\"
 	InitialQueryId *string `json:"InitialQueryId,omitempty" xml:"InitialQueryId,omitempty"`
-	// The user who initiated the query.
+	// The query user.
 	//
 	// example:
 	//
 	// bany
 	InitialUser *string `json:"InitialUser,omitempty" xml:"InitialUser,omitempty"`
-	// The peak memory usage for the query. Unit: bytes.
+	// The peak memory usage of the query. Unit: bytes.
 	//
 	// example:
 	//
 	// 4941696
 	MemoryUsage *int64 `json:"MemoryUsage,omitempty" xml:"MemoryUsage,omitempty"`
-	// The statement that was being executed.
+	// The query statement being executed.
 	//
 	// example:
 	//
 	// select 	- from test
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The execution duration of the slow query. The minimum value is **1000**. Unit: milliseconds.
+	// The execution duration of the slow SQL statement. The minimum value is **1000**. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 3000
 	QueryDurationMs *int64 `json:"QueryDurationMs,omitempty" xml:"QueryDurationMs,omitempty"`
-	// The start time of the query. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the query started. Format: yyyy-MM-dd hh:mm:ss (UTC).
 	//
 	// example:
 	//
 	// 2023-09-11 16:00:00
 	QueryStartTime *string `json:"QueryStartTime,omitempty" xml:"QueryStartTime,omitempty"`
-	// The size of the scanned data. Unit: bytes.
+	// The size of scanned data. Unit: bytes.
 	//
 	// example:
 	//
@@ -202,7 +202,7 @@ type DescribeSlowLogRecordsResponseBodyDataResultSet struct {
 	//
 	// 10
 	ResultBytes *int64 `json:"ResultBytes,omitempty" xml:"ResultBytes,omitempty"`
-	// The type of the slow query log.
+	// The slow log type.
 	//
 	// example:
 	//

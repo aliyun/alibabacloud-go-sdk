@@ -26,19 +26,19 @@ type iModifyDBInstanceConnectionStringRequest interface {
 }
 
 type ModifyDBInstanceConnectionStringRequest struct {
-	// The computing group ID.
+	// The compute group ID.
 	//
 	// example:
 	//
 	// cc-2ze34****-clickhouse
 	ComputingGroupId *string `json:"ComputingGroupId,omitempty" xml:"ComputingGroupId,omitempty"`
-	// The connection string.
+	// The endpoint.
 	//
 	// example:
 	//
 	// cc-2ze34****-clickhouse..clickhouseserver.pre.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The connection string prefix.
+	// The prefix of the database endpoint.
 	//
 	// example:
 	//
@@ -54,22 +54,19 @@ type ModifyDBInstanceConnectionStringRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The network type. Valid values:
 	//
-	// - `Vpc`: VPC
+	// - Vpc: VPC network.
 	//
-	// - `Public`: public network
+	// - Public: public network.
 	//
 	// example:
 	//
 	// Public
 	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
-	// - The database ports to disable. You can specify multiple ports, separated by commas.
+	// - Disables specified database ports. You can specify multiple ports separated by commas (,).
 	//
-	// - This parameter is supported only for clusters with a kernel version of 24.10.1.11098_1 or later.
+	// - Only clusters with a kernel version of 24.10.1.11098_1 or later support this parameter.
 	//
-	//
-	//   	Notice:
-	//
-	//   This parameter is not supported for clusters that were upgraded to kernel version 24.10.1.11098_1 or later from an earlier version.
+	// 	Notice: If the cluster was created with a version earlier than 24.10.1.11098_1 and later upgraded to version 24.10.1.11098_1 or later, this parameter is not supported.</notice>
 	//
 	// example:
 	//

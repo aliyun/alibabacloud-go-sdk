@@ -72,7 +72,7 @@ type DescribeProcessListResponseBodyData struct {
 	//
 	// example:
 	//
-	// For testing
+	// Test.
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	// The result set.
 	ResultSet []*DescribeProcessListResponseBodyDataResultSet `json:"ResultSet,omitempty" xml:"ResultSet,omitempty" type:"Repeated"`

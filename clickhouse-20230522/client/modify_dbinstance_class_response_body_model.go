@@ -80,13 +80,13 @@ type ModifyDBInstanceClassResponseBodyData struct {
 	//
 	// cc-gs5j3sua77*******
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The maximum capacity for serverless autoscaling.
+	// The maximum value for serverless elastic scaling.
 	//
 	// example:
 	//
 	// 32
 	ScaleMax *int64 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	// The minimum capacity for serverless autoscaling.
+	// The minimum value for serverless elastic scaling.
 	//
 	// example:
 	//

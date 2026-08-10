@@ -16,7 +16,7 @@ type iUpgradeMinorVersionResponseBody interface {
 }
 
 type UpgradeMinorVersionResponseBody struct {
-	// The returned result.
+	// The response result.
 	Data *UpgradeMinorVersionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//

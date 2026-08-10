@@ -16,7 +16,7 @@ type iDescribeSlowLogTrendResponseBody interface {
 }
 
 type DescribeSlowLogTrendResponseBody struct {
-	// The data returned.
+	// The returned result.
 	Data *DescribeSlowLogTrendResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -127,31 +127,31 @@ func (s *DescribeSlowLogTrendResponseBodyData) Validate() error {
 }
 
 type DescribeSlowLogTrendResponseBodyDataResultSet struct {
-	// The average execution duration, in milliseconds, of slow SQL queries within the time interval.
+	// The average execution duration of slow SQL statements. Unit: ms. The minimum value is **1000**.
 	//
 	// example:
 	//
 	// 2000
 	AvgQueryDurationMs *int64 `json:"AvgQueryDurationMs,omitempty" xml:"AvgQueryDurationMs,omitempty"`
-	// The number of slow SQL queries in the time interval.
+	// The total number of SQL statements within the current time period.
 	//
 	// example:
 	//
 	// 1
 	Cnt *int64 `json:"Cnt,omitempty" xml:"Cnt,omitempty"`
-	// The maximum execution duration, in milliseconds, of slow SQL queries within the time interval.
+	// The maximum execution duration of slow SQL statements. Unit: ms. The minimum value is **1000**.
 	//
 	// example:
 	//
 	// 3000
 	MaxQueryDurationMs *int64 `json:"MaxQueryDurationMs,omitempty" xml:"MaxQueryDurationMs,omitempty"`
-	// The minimum execution duration, in milliseconds, of slow SQL queries within the time interval.
+	// The minimum execution duration of slow SQL statements. Unit: ms. The minimum value is **1000**.
 	//
 	// example:
 	//
 	// 1000
 	MinQueryDurationMs *int64 `json:"MinQueryDurationMs,omitempty" xml:"MinQueryDurationMs,omitempty"`
-	// The start of the time interval for the data point. The time is in UTC and uses the yyyy-MM-dd hh:mm:ss format.
+	// The time when the query starts. Format: yyyy-MM-dd hh:mm:ss (UTC).
 	//
 	// example:
 	//

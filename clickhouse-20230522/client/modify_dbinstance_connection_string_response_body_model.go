@@ -62,7 +62,7 @@ func (s *ModifyDBInstanceConnectionStringResponseBody) Validate() error {
 }
 
 type ModifyDBInstanceConnectionStringResponseBodyData struct {
-	// The connection string.
+	// The endpoint.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type ModifyDBInstanceConnectionStringResponseBodyData struct {
 	//
 	// cc-xxxxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The disabled database ports.
+	// The database ports that are disabled.
 	//
 	// example:
 	//

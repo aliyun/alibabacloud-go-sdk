@@ -22,7 +22,7 @@ type iModifyBackupPolicyRequest interface {
 }
 
 type ModifyBackupPolicyRequest struct {
-	// The number of days to retain backups.
+	// The number of days for which backups are retained.
 	//
 	// example:
 	//

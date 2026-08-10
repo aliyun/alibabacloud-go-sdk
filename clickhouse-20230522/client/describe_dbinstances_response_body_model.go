@@ -16,7 +16,7 @@ type iDescribeDBInstancesResponseBody interface {
 }
 
 type DescribeDBInstancesResponseBody struct {
-	// The response data.
+	// The returned result.
 	Data *DescribeDBInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -142,7 +142,7 @@ func (s *DescribeDBInstancesResponseBodyData) Validate() error {
 }
 
 type DescribeDBInstancesResponseBodyDataDBInstances struct {
-	// The account ID.
+	// The user ID.
 	//
 	// example:
 	//
@@ -154,23 +154,23 @@ type DescribeDBInstancesResponseBodyDataDBInstances struct {
 	//
 	// 186681****
 	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	// The billing method for the instance. Valid values:
+	// The billing method. Valid values:
 	//
-	// - `PrePaid`: subscription.
+	// - PrePaid: subscription.
 	//
-	// - `PostPaid`: pay-as-you-go.
+	// - PostPaid: pay-as-you-go.
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The instance creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2022-12-04 21:16:15
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The instance ID.
+	// The cluster ID.
 	//
 	// example:
 	//
@@ -182,19 +182,19 @@ type DescribeDBInstancesResponseBodyDataDBInstances struct {
 	//
 	// False
 	DeletionProtection *string `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// The instance description.
+	// The parameter description.
 	//
 	// example:
 	//
 	// test_desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The engine.
+	// The engine type.
 	//
 	// example:
 	//
 	// clickhouse
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The engine version.
+	// The DPI engine version.
 	//
 	// example:
 	//
@@ -212,19 +212,19 @@ type DescribeDBInstancesResponseBodyDataDBInstances struct {
 	//
 	// 0
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The reason for the lock.
+	// The lock reason.
 	//
 	// example:
 	//
 	// null
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The maintenance window end time.
+	// The end time of the maintenance window.
 	//
 	// example:
 	//
 	// 04:00:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The maintenance window start time.
+	// The start time of the maintenance window.
 	//
 	// example:
 	//
@@ -242,13 +242,13 @@ type DescribeDBInstancesResponseBodyDataDBInstances struct {
 	//
 	// rg-acfmzy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The maximum compute capacity for serverless elastic scaling.
+	// The maximum value for serverless elastic scaling.
 	//
 	// example:
 	//
 	// 13
 	ScaleMax *int32 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	// The minimum compute capacity for serverless elastic scaling.
+	// The minimum value for serverless elastic scaling.
 	//
 	// example:
 	//
@@ -266,7 +266,7 @@ type DescribeDBInstancesResponseBodyDataDBInstances struct {
 	//
 	// oss
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The tags attached to the instance.
+	// The tags.
 	Tags []*DescribeDBInstancesResponseBodyDataDBInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The vSwitch ID.
 	//
@@ -274,7 +274,7 @@ type DescribeDBInstancesResponseBodyDataDBInstances struct {
 	//
 	// vsw-8vb5mw****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC ID.
+	// VPC ID。
 	//
 	// example:
 	//

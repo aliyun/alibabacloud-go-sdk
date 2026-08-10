@@ -16,7 +16,7 @@ type iKillProcessResponseBody interface {
 }
 
 type KillProcessResponseBody struct {
-	// The response data.
+	// The returned data.
 	Data *KillProcessResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *KillProcessResponseBody) Validate() error {
 }
 
 type KillProcessResponseBodyData struct {
-	// The number of terminated tasks.
+	// The number of stopped tasks.
 	//
 	// example:
 	//

@@ -1340,7 +1340,7 @@ func (client *Client) DeleteDB(request *DeleteDBRequest) (_result *DeleteDBRespo
 
 // Summary:
 //
-// The DeleteDBInstance operation releases an ApsaraDB for ClickHouse Enterprise Edition cluster.
+// Calls the DeleteDBInstance operation to release an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - DeleteDBInstanceRequest
 //
@@ -1388,7 +1388,7 @@ func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceReque
 
 // Summary:
 //
-// The DeleteDBInstance operation releases an ApsaraDB for ClickHouse Enterprise Edition cluster.
+// Calls the DeleteDBInstance operation to release an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - DeleteDBInstanceRequest
 //
@@ -1406,7 +1406,7 @@ func (client *Client) DeleteDBInstance(request *DeleteDBInstanceRequest) (_resul
 
 // Summary:
 //
-// Deletes a public endpoint.
+// Releases a public endpoint.
 //
 // @param request - DeleteEndpointRequest
 //
@@ -1466,7 +1466,7 @@ func (client *Client) DeleteEndpointWithOptions(request *DeleteEndpointRequest, 
 
 // Summary:
 //
-// Deletes a public endpoint.
+// Releases a public endpoint.
 //
 // @param request - DeleteEndpointRequest
 //
@@ -2390,7 +2390,7 @@ func (client *Client) DescribeDBInstanceConfigChangeLog(request *DescribeDBInsta
 
 // Summary:
 //
-// Queries the schema of a database or a table.
+// Queries the data structure of a database or table by calling the DescribeDBInstanceDataSources operation.
 //
 // @param request - DescribeDBInstanceDataSourcesRequest
 //
@@ -2446,7 +2446,7 @@ func (client *Client) DescribeDBInstanceDataSourcesWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the schema of a database or a table.
+// Queries the data structure of a database or table by calling the DescribeDBInstanceDataSources operation.
 //
 // @param request - DescribeDBInstanceDataSourcesRequest
 //
@@ -2464,7 +2464,7 @@ func (client *Client) DescribeDBInstanceDataSources(request *DescribeDBInstanceD
 
 // Summary:
 //
-// Call the DescribeDBInstances API to query a list of DB instances.
+// Queries the list of clusters.
 //
 // @param request - DescribeDBInstancesRequest
 //
@@ -2540,7 +2540,7 @@ func (client *Client) DescribeDBInstancesWithOptions(request *DescribeDBInstance
 
 // Summary:
 //
-// Call the DescribeDBInstances API to query a list of DB instances.
+// Queries the list of clusters.
 //
 // @param request - DescribeDBInstancesRequest
 //
@@ -3218,6 +3218,10 @@ func (client *Client) DescribeLangfuseUsers(request *DescribeLangfuseUsersReques
 //
 // Calls the DescribeProcessList operation to view queries that are currently running.
 //
+// Description:
+//
+// > This operation supports only community-compatible edition clusters created after December 01, 2021.
+//
 // @param request - DescribeProcessListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3297,6 +3301,10 @@ func (client *Client) DescribeProcessListWithOptions(request *DescribeProcessLis
 // Summary:
 //
 // Calls the DescribeProcessList operation to view queries that are currently running.
+//
+// Description:
+//
+// > This operation supports only community-compatible edition clusters created after December 01, 2021.
 //
 // @param request - DescribeProcessListRequest
 //
@@ -3425,7 +3433,7 @@ func (client *Client) DescribeSecurityIPList(request *DescribeSecurityIPListRequ
 
 // Summary:
 //
-// Call DescribeSlowLogRecords to query slow log records.
+// Queries slow query log details by calling the DescribeSlowLogRecords operation.
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -3497,7 +3505,7 @@ func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLog
 
 // Summary:
 //
-// Call DescribeSlowLogRecords to query slow log records.
+// Queries slow query log details by calling the DescribeSlowLogRecords operation.
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -3515,7 +3523,7 @@ func (client *Client) DescribeSlowLogRecords(request *DescribeSlowLogRecordsRequ
 
 // Summary:
 //
-// Queries the slow log trend.
+// Queries slow log trends by calling the DescribeSlowLogTrend operation.
 //
 // @param request - DescribeSlowLogTrendRequest
 //
@@ -3583,7 +3591,7 @@ func (client *Client) DescribeSlowLogTrendWithOptions(request *DescribeSlowLogTr
 
 // Summary:
 //
-// Queries the slow log trend.
+// Queries slow log trends by calling the DescribeSlowLogTrend operation.
 //
 // @param request - DescribeSlowLogTrendRequest
 //
@@ -3737,7 +3745,11 @@ func (client *Client) GetWhitelistTemplate(request *GetWhitelistTemplateRequest)
 
 // Summary:
 //
-// Terminates a running task.
+// Stops an ongoing task.
+//
+// Description:
+//
+// Make sure that you are familiar with the billing methods and [pricing](https://help.aliyun.com/document_detail/167450.html) of ApsaraDB for ClickHouse before you call this operation.
 //
 // @param request - KillProcessRequest
 //
@@ -3793,7 +3805,11 @@ func (client *Client) KillProcessWithOptions(request *KillProcessRequest, runtim
 
 // Summary:
 //
-// Terminates a running task.
+// Stops an ongoing task.
+//
+// Description:
+//
+// Make sure that you are familiar with the billing methods and [pricing](https://help.aliyun.com/document_detail/167450.html) of ApsaraDB for ClickHouse before you call this operation.
 //
 // @param request - KillProcessRequest
 //
@@ -4175,7 +4191,7 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 //
 // Description:
 //
-// > Data backup is supported only for ApsaraDB for ClickHouse clusters that run version 20.3, 20.8, or 21.8.
+// >ApsaraDB for ClickHouse clusters of versions 20.3, 20.8, and 21.8 support data backup.
 //
 // @param request - ModifyBackupPolicyRequest
 //
@@ -4239,7 +4255,7 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 //
 // Description:
 //
-// > Data backup is supported only for ApsaraDB for ClickHouse clusters that run version 20.3, 20.8, or 21.8.
+// >ApsaraDB for ClickHouse clusters of versions 20.3, 20.8, and 21.8 support data backup.
 //
 // @param request - ModifyBackupPolicyRequest
 //
@@ -4335,11 +4351,11 @@ func (client *Client) ModifyDBInstanceAttribute(request *ModifyDBInstanceAttribu
 
 // Summary:
 //
-// Use `ModifyDBInstanceClass` to modify the scaling configuration of a cluster.
+// Modifies the elastic configuration of an ApsaraDB for ClickHouse cluster.
 //
 // Description:
 //
-// Before you call this API, make sure that you understand the billing method and [pricing](https://help.aliyun.com/document_detail/167450.html) of ApsaraDB for ClickHouse.
+// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/167450.html) of ApsaraDB for ClickHouse.
 //
 // @param tmpReq - ModifyDBInstanceClassRequest
 //
@@ -4429,11 +4445,11 @@ func (client *Client) ModifyDBInstanceClassWithOptions(tmpReq *ModifyDBInstanceC
 
 // Summary:
 //
-// Use `ModifyDBInstanceClass` to modify the scaling configuration of a cluster.
+// Modifies the elastic configuration of an ApsaraDB for ClickHouse cluster.
 //
 // Description:
 //
-// Before you call this API, make sure that you understand the billing method and [pricing](https://help.aliyun.com/document_detail/167450.html) of ApsaraDB for ClickHouse.
+// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/167450.html) of ApsaraDB for ClickHouse.
 //
 // @param request - ModifyDBInstanceClassRequest
 //
@@ -4521,7 +4537,7 @@ func (client *Client) ModifyDBInstanceConfig(request *ModifyDBInstanceConfigRequ
 
 // Summary:
 //
-// Modifies the connection string of a cluster.
+// Calls the ModifyDBInstanceConnectionString operation to modify the endpoint of a cluster.
 //
 // @param request - ModifyDBInstanceConnectionStringRequest
 //
@@ -4589,7 +4605,7 @@ func (client *Client) ModifyDBInstanceConnectionStringWithOptions(request *Modif
 
 // Summary:
 //
-// Modifies the connection string of a cluster.
+// Calls the ModifyDBInstanceConnectionString operation to modify the endpoint of a cluster.
 //
 // @param request - ModifyDBInstanceConnectionStringRequest
 //
@@ -4767,7 +4783,85 @@ func (client *Client) ModifyLangfuseProjectMembership(request *ModifyLangfusePro
 
 // Summary:
 //
-// Modifies the whitelist settings of an ApsaraDB for ClickHouse cluster.
+// Modifies the whitelist of a Langfuse instance.
+//
+// @param request - ModifyLangfuseSecurityIPListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyLangfuseSecurityIPListResponse
+func (client *Client) ModifyLangfuseSecurityIPListWithOptions(request *ModifyLangfuseSecurityIPListRequest, runtime *dara.RuntimeOptions) (_result *ModifyLangfuseSecurityIPListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.ModifyMode) {
+		query["ModifyMode"] = request.ModifyMode
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SecurityIPList) {
+		query["SecurityIPList"] = request.SecurityIPList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyLangfuseSecurityIPList"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyLangfuseSecurityIPListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the whitelist of a Langfuse instance.
+//
+// @param request - ModifyLangfuseSecurityIPListRequest
+//
+// @return ModifyLangfuseSecurityIPListResponse
+func (client *Client) ModifyLangfuseSecurityIPList(request *ModifyLangfuseSecurityIPListRequest) (_result *ModifyLangfuseSecurityIPListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyLangfuseSecurityIPListResponse{}
+	_body, _err := client.ModifyLangfuseSecurityIPListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the whitelist settings of a cluster.
 //
 // @param request - ModifySecurityIPListRequest
 //
@@ -4827,7 +4921,7 @@ func (client *Client) ModifySecurityIPListWithOptions(request *ModifySecurityIPL
 
 // Summary:
 //
-// Modifies the whitelist settings of an ApsaraDB for ClickHouse cluster.
+// Modifies the whitelist settings of a cluster.
 //
 // @param request - ModifySecurityIPListRequest
 //
@@ -4997,7 +5091,7 @@ func (client *Client) ResetLangfuseUserPassword(request *ResetLangfuseUserPasswo
 
 // Summary:
 //
-// Restarts an ApsaraDB for ClickHouse Enterprise Edition cluster.
+// Restarts an ApsaraDB for ClickHouse cluster.
 //
 // @param request - RestartDBInstanceRequest
 //
@@ -5045,7 +5139,7 @@ func (client *Client) RestartDBInstanceWithOptions(request *RestartDBInstanceReq
 
 // Summary:
 //
-// Restarts an ApsaraDB for ClickHouse Enterprise Edition cluster.
+// Restarts an ApsaraDB for ClickHouse cluster.
 //
 // @param request - RestartDBInstanceRequest
 //
@@ -5063,7 +5157,7 @@ func (client *Client) RestartDBInstance(request *RestartDBInstanceRequest) (_res
 
 // Summary:
 //
-// Starts an ApsaraDB for ClickHouse Enterprise Edition cluster.
+// Calls the StartDBInstance operation to start an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - StartDBInstanceRequest
 //
@@ -5111,7 +5205,7 @@ func (client *Client) StartDBInstanceWithOptions(request *StartDBInstanceRequest
 
 // Summary:
 //
-// Starts an ApsaraDB for ClickHouse Enterprise Edition cluster.
+// Calls the StartDBInstance operation to start an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - StartDBInstanceRequest
 //
@@ -5129,7 +5223,7 @@ func (client *Client) StartDBInstance(request *StartDBInstanceRequest) (_result 
 
 // Summary:
 //
-// Stops an ApsaraDB for ClickHouse Enterprise Edition cluster.
+// Calls the StopDBInstance operation to pause an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - StopDBInstanceRequest
 //
@@ -5177,7 +5271,7 @@ func (client *Client) StopDBInstanceWithOptions(request *StopDBInstanceRequest, 
 
 // Summary:
 //
-// Stops an ApsaraDB for ClickHouse Enterprise Edition cluster.
+// Calls the StopDBInstance operation to pause an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - StopDBInstanceRequest
 //
@@ -5269,7 +5363,7 @@ func (client *Client) UpdateWhitelistTemplate(request *UpdateWhitelistTemplateRe
 
 // Summary:
 //
-// Updates the minor engine version of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// Upgrades the minor engine version of a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - UpgradeMinorVersionRequest
 //
@@ -5329,7 +5423,7 @@ func (client *Client) UpgradeMinorVersionWithOptions(request *UpgradeMinorVersio
 
 // Summary:
 //
-// Updates the minor engine version of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// Upgrades the minor engine version of a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - UpgradeMinorVersionRequest
 //
