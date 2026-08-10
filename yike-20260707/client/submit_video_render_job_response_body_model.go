@@ -18,14 +18,20 @@ type iSubmitVideoRenderJobResponseBody interface {
 }
 
 type SubmitVideoRenderJobResponseBody struct {
+	// The error code. This parameter is returned when the task is in the Failed state.
+	//
 	// example:
 	//
 	// 200
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 68ca759e798b40b4903b255*******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******

@@ -25,6 +25,8 @@ type iSubmitVideoGenerationJobRequest interface {
 	GetModel() *string
 	SetN(v int32) *SubmitVideoGenerationJobRequest
 	GetN() *int32
+	SetOutput(v string) *SubmitVideoGenerationJobRequest
+	GetOutput() *string
 	SetResolution(v string) *SubmitVideoGenerationJobRequest
 	GetResolution() *string
 	SetScene(v string) *SubmitVideoGenerationJobRequest
@@ -56,23 +58,23 @@ type SubmitVideoGenerationJobRequest struct {
 	//
 	// - Prompt: String. Required. The prompt.
 	//
-	// - Medias: The list of media items.
+	// - Medias: The media list.
 	//
-	//   - When JobType is image_to_video, this field is required and only 1 Media item is needed.
+	//   - When JobType is image_to_video, this field is required. Only 1 Media item is needed.
 	//
-	//   - When JobType is first_last_frame, this field is required and exactly 2 Media items are needed.
+	//   - When JobType is first_last_frame, this field is required. Only 2 Media items are needed.
 	//
-	//   - When JobType is reference_to_video, this field is required and up to 9 Media items are allowed.
+	//   - When JobType is reference_to_video, this field is required. A maximum of 9 Media items are supported.
 	//
-	// > The Media structure contains: Type, the media type (String, valid values: `image`/`video`/`audio`); URL, the media download URL (String); MediaId, the media asset ID (String).
+	// > The Media struct contains: Type, the media type, String, valid values are `image`/`video`/`audio`; URL, the media download URL, String; MediaId, the media asset ID, String.
 	//
 	// >
 	//
 	// example:
 	//
-	// {"Prompt":"Person in image 1 dunks a basketball on the court using image 2","Medias":[{"Type":"image","Url":"https://xxx/xxx.jpg"},{"Type":"image","Url":"https://xxx/xxx.jpg"}]}
+	// {"Prompt":"Person 1 is on the basketball court, and Person 2 makes a slam dunk","Medias":[{"Type":"image","Url":"https://xxx/xxx.jpg"},{"Type":"image","Url":"https://xxx/xxx.jpg"}]}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The task feature parameters. No configuration is required at this time.
+	// The task function parameters. No configuration is required at this time.
 	//
 	// example:
 	//
@@ -109,7 +111,8 @@ type SubmitVideoGenerationJobRequest struct {
 	// example:
 	//
 	// 1
-	N *int32 `json:"N,omitempty" xml:"N,omitempty"`
+	N      *int32  `json:"N,omitempty" xml:"N,omitempty"`
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
 	// The resolution. Valid values: 720P (default) and 1080P.
 	//
 	// example:
@@ -170,6 +173,10 @@ func (s *SubmitVideoGenerationJobRequest) GetN() *int32 {
 	return s.N
 }
 
+func (s *SubmitVideoGenerationJobRequest) GetOutput() *string {
+	return s.Output
+}
+
 func (s *SubmitVideoGenerationJobRequest) GetResolution() *string {
 	return s.Resolution
 }
@@ -219,6 +226,11 @@ func (s *SubmitVideoGenerationJobRequest) SetModel(v string) *SubmitVideoGenerat
 
 func (s *SubmitVideoGenerationJobRequest) SetN(v int32) *SubmitVideoGenerationJobRequest {
 	s.N = &v
+	return s
+}
+
+func (s *SubmitVideoGenerationJobRequest) SetOutput(v string) *SubmitVideoGenerationJobRequest {
+	s.Output = &v
 	return s
 }
 

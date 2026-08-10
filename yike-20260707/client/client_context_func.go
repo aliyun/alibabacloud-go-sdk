@@ -113,6 +113,68 @@ func (client *Client) CreateAssetCategoryWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// Creates an infinite canvas.
+//
+// Description:
+//
+// ## Operation description
+//
+// This API operation is used to query media asset content understanding jobs.
+//
+// @param request - CreateInfiniteCanvasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInfiniteCanvasResponse
+func (client *Client) CreateInfiniteCanvasWithContext(ctx context.Context, request *CreateInfiniteCanvasRequest, runtime *dara.RuntimeOptions) (_result *CreateInfiniteCanvasResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CoverUrl) {
+		query["CoverUrl"] = request.CoverUrl
+	}
+
+	if !dara.IsNil(request.ProductionId) {
+		query["ProductionId"] = request.ProductionId
+	}
+
+	if !dara.IsNil(request.Title) {
+		query["Title"] = request.Title
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateInfiniteCanvas"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateInfiniteCanvasResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a media asset category.
 //
 // Description:
@@ -151,6 +213,56 @@ func (client *Client) DeleteAssetCategoryWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAssetCategoryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an infinite canvas.
+//
+// Description:
+//
+// ## Operation description
+//
+// This API operation is used to query media asset content understanding jobs.
+//
+// @param request - DeleteInfiniteCanvasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInfiniteCanvasResponse
+func (client *Client) DeleteInfiniteCanvasWithContext(ctx context.Context, request *DeleteInfiniteCanvasRequest, runtime *dara.RuntimeOptions) (_result *DeleteInfiniteCanvasResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CanvasId) {
+		query["CanvasId"] = request.CanvasId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteInfiniteCanvas"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteInfiniteCanvasResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -203,6 +315,82 @@ func (client *Client) DeleteMediasWithContext(ctx context.Context, request *Dele
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteMediasResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a login token for an enterprise account.
+//
+// Description:
+//
+//	Notice:  The AI generation-related API operations in the 2026-03-19 API version will be deprecated soon. Upgrade to the 2026-07-07 API version.</notice>
+//
+// @param request - GenerateYikeLoginTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateYikeLoginTokenResponse
+func (client *Client) GenerateYikeLoginTokenWithContext(ctx context.Context, request *GenerateYikeLoginTokenRequest, runtime *dara.RuntimeOptions) (_result *GenerateYikeLoginTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoCreateProduction) {
+		query["AutoCreateProduction"] = request.AutoCreateProduction
+	}
+
+	if !dara.IsNil(request.Expires) {
+		query["Expires"] = request.Expires
+	}
+
+	if !dara.IsNil(request.NickName) {
+		query["NickName"] = request.NickName
+	}
+
+	if !dara.IsNil(request.ProductionAuth) {
+		query["ProductionAuth"] = request.ProductionAuth
+	}
+
+	if !dara.IsNil(request.SubUserCredit) {
+		query["SubUserCredit"] = request.SubUserCredit
+	}
+
+	if !dara.IsNil(request.Tenant) {
+		query["Tenant"] = request.Tenant
+	}
+
+	if !dara.IsNil(request.UserName) {
+		query["UserName"] = request.UserName
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GenerateYikeLoginToken"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GenerateYikeLoginTokenResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -301,13 +489,61 @@ func (client *Client) GetImageGenerationJobWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询媒资
+// Queries an infinite canvas.
 //
 // Description:
 //
-// ## 请求说明
+// ## Description
 //
-// 该API用于查询媒资内容理解作业。
+// This API is used to query a media asset content understanding job.
+//
+// @param request - GetInfiniteCanvasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInfiniteCanvasResponse
+func (client *Client) GetInfiniteCanvasWithContext(ctx context.Context, request *GetInfiniteCanvasRequest, runtime *dara.RuntimeOptions) (_result *GetInfiniteCanvasResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CanvasId) {
+		query["CanvasId"] = request.CanvasId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInfiniteCanvas"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInfiniteCanvasResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a media asset.
+//
+// Description:
+//
+// ## Operation description.
 //
 // @param request - GetMediaRequest
 //
@@ -501,7 +737,7 @@ func (client *Client) GetVideoGenerationJobWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询爆款新视频渲染任务
+// Submits a video rendering and composition task.
 //
 // @param request - GetVideoRenderJobRequest
 //
@@ -535,6 +771,66 @@ func (client *Client) GetVideoRenderJobWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVideoRenderJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询视频翻译任务
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该API用于根据`JobId`获取视频翻译任务的状态和详细信息。
+//
+// - `JobId`是必需参数，通过query或form方式传递。
+//
+// - 如果任务不存在或者不属于当前调用方，则返回`InvalidParameter`错误码与400状态码。
+//
+// - 成功响应时，HTTP状态码为200，任务对象位于`data.Job`中。
+//
+// - 当任务完成(`Status=Finished`)时，业务产物可以在`data.Job.Output`字段中找到，需要客户端进行一次JSON解析以获取具体结果。
+//
+// - 对于多语言目标的任务，直接使用`Output.AiResult.ResultMap`来获取各语言的具体结果；如果仅有一个目标语言，可以通过`data.Job.EditingProjectId`便捷地获取剪辑工程ID。
+//
+// @param request - GetVideoTranslationJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVideoTranslationJobResponse
+func (client *Client) GetVideoTranslationJobWithContext(ctx context.Context, request *GetVideoTranslationJobRequest, runtime *dara.RuntimeOptions) (_result *GetVideoTranslationJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		body["JobId"] = request.JobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetVideoTranslationJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetVideoTranslationJobResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -772,6 +1068,72 @@ func (client *Client) ListAssetCategoriesWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// Queries the list of infinite canvases.
+//
+// Description:
+//
+// ## Operation description
+//
+// This API is used to query media asset content understanding jobs.
+//
+// @param request - ListInfiniteCanvasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInfiniteCanvasesResponse
+func (client *Client) ListInfiniteCanvasesWithContext(ctx context.Context, request *ListInfiniteCanvasesRequest, runtime *dara.RuntimeOptions) (_result *ListInfiniteCanvasesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.SortOrder) {
+		query["SortOrder"] = request.SortOrder
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInfiniteCanvases"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInfiniteCanvasesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Returns media asset information that matches the specified filter conditions.
 //
 // @param request - SearchMediaRequest
@@ -916,13 +1278,13 @@ func (client *Client) SubmitImageGenerationJobWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 提交媒资内容理解作业
+// Submits a media asset content understanding job.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// 该API用于根据提供的媒资文件（比如视频链接）进行内容理解。此外，支持通过`UserData`字段传递自定义参数，在回调时原样返回。
+// This API operation performs content understanding based on the provided media asset files (such as video URLs). You can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
 //
 // @param request - SubmitMediaComprehensionJobRequest
 //
@@ -978,11 +1340,11 @@ func (client *Client) SubmitMediaComprehensionJobWithContext(ctx context.Context
 
 // Summary:
 //
-// 提交爆款复刻新脚本生成任务
+// Submits a creative script generation task.
 //
 // Description:
 //
-// 该 API 用于根据内容理解的结果与新商品/模特信息，仿写生成新的口播脚本。此外，支持通过UserData字段传递自定义参数，在回调时原样返回。
+// This API generates a new voiceover script based on content comprehension results and new product/model information by imitating the style of the original script. You can pass custom parameters through the UserData field, which are returned as-is in the callback.
 //
 // @param request - SubmitRemakeScriptJobRequest
 //
@@ -1081,6 +1443,10 @@ func (client *Client) SubmitVideoGenerationJobWithContext(ctx context.Context, r
 		query["N"] = request.N
 	}
 
+	if !dara.IsNil(request.Output) {
+		query["Output"] = request.Output
+	}
+
 	if !dara.IsNil(request.Resolution) {
 		query["Resolution"] = request.Resolution
 	}
@@ -1118,7 +1484,7 @@ func (client *Client) SubmitVideoGenerationJobWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 提交爆款新视频渲染任务
+// Submits a video rendering and compositing task.
 //
 // @param request - SubmitVideoRenderJobRequest
 //
@@ -1302,6 +1668,64 @@ func (client *Client) UpdateAssetCategoryWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAssetCategoryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the information of an infinite canvas.
+//
+// Description:
+//
+// ## Operation description
+//
+// This API operation is used to query media asset content understanding jobs.
+//
+// @param request - UpdateInfiniteCanvasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInfiniteCanvasResponse
+func (client *Client) UpdateInfiniteCanvasWithContext(ctx context.Context, request *UpdateInfiniteCanvasRequest, runtime *dara.RuntimeOptions) (_result *UpdateInfiniteCanvasResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CanvasId) {
+		query["CanvasId"] = request.CanvasId
+	}
+
+	if !dara.IsNil(request.CoverUrl) {
+		query["CoverUrl"] = request.CoverUrl
+	}
+
+	if !dara.IsNil(request.Title) {
+		query["Title"] = request.Title
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateInfiniteCanvas"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateInfiniteCanvasResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

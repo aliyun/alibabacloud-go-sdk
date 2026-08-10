@@ -18,14 +18,20 @@ type iSubmitRemakeScriptJobResponseBody interface {
 }
 
 type SubmitRemakeScriptJobResponseBody struct {
+	// The business error code. An empty string is returned when the submission is successful.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 68ca759e798b40b4903b255********
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
