@@ -299,7 +299,7 @@ func (client *Client) AddTenantMembersWithContext(ctx context.Context, tmpReq *A
 
 // Summary:
 //
-// Adds tenant members by using original user identities.
+// Adds tenant members by using source users.
 //
 // @param tmpReq - AddTenantMembersBySourceUserRequest
 //
@@ -5231,6 +5231,70 @@ func (client *Client) ExecuteAdHocTaskWithContext(ctx context.Context, tmpReq *E
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExecuteAdHocTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Executes a DDL statement: creates a table on a data source based on the specified data source identifier and DDL statement.
+//
+// @param tmpReq - ExecuteDDLRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteDDLResponse
+func (client *Client) ExecuteDDLWithContext(ctx context.Context, tmpReq *ExecuteDDLRequest, runtime *dara.RuntimeOptions) (_result *ExecuteDDLResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ExecuteDDLShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Context) {
+		request.ContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Context, dara.String("Context"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.DDLCommand) {
+		request.DDLCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DDLCommand, dara.String("DDLCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContextShrink) {
+		body["Context"] = request.ContextShrink
+	}
+
+	if !dara.IsNil(request.DDLCommandShrink) {
+		body["DDLCommand"] = request.DDLCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExecuteDDL"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExecuteDDLResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -13039,6 +13103,70 @@ func (client *Client) ListOperationRecordWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
+// Queries a list of nodes. Supports querying offline integration, real-time integration, and unstructured workflows (data aggregation, offline workflows, and real-time workflows). Supports multi-dimensional filtering by folder, keyword, node type, submit status, scheduling type, owner, label, and creator. Results are returned with pagination.
+//
+// @param tmpReq - ListPipelinesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPipelinesResponse
+func (client *Client) ListPipelinesWithContext(ctx context.Context, tmpReq *ListPipelinesRequest, runtime *dara.RuntimeOptions) (_result *ListPipelinesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListPipelinesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Context) {
+		request.ContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Context, dara.String("Context"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ListCommand) {
+		request.ListCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListCommand, dara.String("ListCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContextShrink) {
+		body["Context"] = request.ContextShrink
+	}
+
+	if !dara.IsNil(request.ListCommandShrink) {
+		body["ListCommand"] = request.ListCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPipelines"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPipelinesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the list of project members.
 //
 // @param tmpReq - ListProjectMembersRequest
@@ -13557,7 +13685,7 @@ func (client *Client) ListResourcePermissionOperationLogWithContext(ctx context.
 
 // Summary:
 //
-// Retrieves permission authorization records with pagination.
+// Retrieves permission authorization records by page.
 //
 // @param tmpReq - ListResourcePermissionsRequest
 //
@@ -13715,6 +13843,62 @@ func (client *Client) ListRowPermissionByUserIdWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRowPermissionByUserIdResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the data classification list by paging.
+//
+// @param tmpReq - ListSecurityClassifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSecurityClassifyResponse
+func (client *Client) ListSecurityClassifyWithContext(ctx context.Context, tmpReq *ListSecurityClassifyRequest, runtime *dara.RuntimeOptions) (_result *ListSecurityClassifyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListSecurityClassifyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSecurityClassify"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSecurityClassifyResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -15579,6 +15763,66 @@ func (client *Client) RevokeResourcePermissionWithContext(ctx context.Context, t
 
 // Summary:
 //
+// Retrieves knowledge graph entity or relationship records through semantic search.
+//
+// @param tmpReq - SearchKgBySemanticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchKgBySemanticResponse
+func (client *Client) SearchKgBySemanticWithContext(ctx context.Context, tmpReq *SearchKgBySemanticRequest, runtime *dara.RuntimeOptions) (_result *SearchKgBySemanticResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SearchKgBySemanticShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SearchCommand) {
+		request.SearchCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SearchCommand, dara.String("SearchCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SearchCommandShrink) {
+		body["SearchCommand"] = request.SearchCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SearchKgBySemantic"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchKgBySemanticResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Stops an ad hoc query task.
 //
 // @param request - StopAdHocTaskRequest
@@ -15677,6 +15921,70 @@ func (client *Client) SubmitBatchTaskWithContext(ctx context.Context, tmpReq *Su
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitBatchTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits an integration pipeline task by OAQueryId.
+//
+// @param tmpReq - SubmitPipelineByIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitPipelineByIdResponse
+func (client *Client) SubmitPipelineByIdWithContext(ctx context.Context, tmpReq *SubmitPipelineByIdRequest, runtime *dara.RuntimeOptions) (_result *SubmitPipelineByIdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SubmitPipelineByIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Context) {
+		request.ContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Context, dara.String("Context"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.QueryId) {
+		request.QueryIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryId, dara.String("QueryId"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContextShrink) {
+		body["Context"] = request.ContextShrink
+	}
+
+	if !dara.IsNil(request.QueryIdShrink) {
+		body["QueryId"] = request.QueryIdShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitPipelineById"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitPipelineByIdResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

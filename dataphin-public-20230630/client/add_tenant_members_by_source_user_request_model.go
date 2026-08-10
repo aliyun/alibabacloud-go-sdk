@@ -115,7 +115,7 @@ type AddTenantMembersBySourceUserRequestAddCommandSourceUserList struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xxTest
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The email address.
 	//
@@ -129,12 +129,13 @@ type AddTenantMembersBySourceUserRequestAddCommandSourceUserList struct {
 	//
 	// 13888888888
 	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	// The original ID of the user.
+	// The source user ID.
 	//
 	// example:
 	//
 	// 2323131
-	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceId   *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
 func (s AddTenantMembersBySourceUserRequestAddCommandSourceUserList) String() string {
@@ -169,6 +170,10 @@ func (s *AddTenantMembersBySourceUserRequestAddCommandSourceUserList) GetSourceI
 	return s.SourceId
 }
 
+func (s *AddTenantMembersBySourceUserRequestAddCommandSourceUserList) GetSourceType() *string {
+	return s.SourceType
+}
+
 func (s *AddTenantMembersBySourceUserRequestAddCommandSourceUserList) SetAccountName(v string) *AddTenantMembersBySourceUserRequestAddCommandSourceUserList {
 	s.AccountName = &v
 	return s
@@ -196,6 +201,11 @@ func (s *AddTenantMembersBySourceUserRequestAddCommandSourceUserList) SetMobileP
 
 func (s *AddTenantMembersBySourceUserRequestAddCommandSourceUserList) SetSourceId(v string) *AddTenantMembersBySourceUserRequestAddCommandSourceUserList {
 	s.SourceId = &v
+	return s
+}
+
+func (s *AddTenantMembersBySourceUserRequestAddCommandSourceUserList) SetSourceType(v string) *AddTenantMembersBySourceUserRequestAddCommandSourceUserList {
+	s.SourceType = &v
 	return s
 }
 

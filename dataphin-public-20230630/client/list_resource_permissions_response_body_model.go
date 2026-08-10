@@ -24,33 +24,33 @@ type iListResourcePermissionsResponseBody interface {
 }
 
 type ListResourcePermissionsResponseBody struct {
-	// Error code. OK indicates a normal request.
+	// The error code. A value of OK indicates that the request was successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// HTTP status code returned by the backend.
+	// The HTTP status code returned by the backend.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Error message.
+	// The error message returned for the request.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Paginated query result.
+	// The paged query result.
 	PageResult *ListResourcePermissionsResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -130,9 +130,9 @@ func (s *ListResourcePermissionsResponseBody) Validate() error {
 }
 
 type ListResourcePermissionsResponseBodyPageResult struct {
-	// Paginated list.
+	// The paged list.
 	Data []*ListResourcePermissionsResponseBodyPageResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Total number of records.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -180,25 +180,31 @@ func (s *ListResourcePermissionsResponseBodyPageResult) Validate() error {
 }
 
 type ListResourcePermissionsResponseBodyPageResultData struct {
-	// Authorization scope of the table. Specified table: selectTable. All tables in the project: projectAllTable. All logical tables in the business unit: bizUnitAllLogicTable.
+	// The authorization scope of the table. Valid values:
+	//
+	// - selectTable: a specified table.
+	//
+	// - projectAllTable: all tables in the project.
+	//
+	// - bizUnitAllLogicTable: all logical tables in the business unit.
 	//
 	// example:
 	//
 	// selectTable
 	AuthScope *string `json:"AuthScope,omitempty" xml:"AuthScope,omitempty"`
-	// Validity period settings.
+	// The validity period settings.
 	Period *ListResourcePermissionsResponseBodyPageResultDataPeriod `json:"Period,omitempty" xml:"Period,omitempty" type:"Struct"`
-	// List of validity periods for different permission types.
+	// The list of validity periods for different permission types.
 	PermissionPeriodList []*ListResourcePermissionsResponseBodyPageResultDataPermissionPeriodList `json:"PermissionPeriodList,omitempty" xml:"PermissionPeriodList,omitempty" type:"Repeated"`
-	// Record ID.
+	// The record ID.
 	//
 	// example:
 	//
 	// 12123111
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// Permission resource.
+	// The permission resource.
 	ResourceInfo *ListResourcePermissionsResponseBodyPageResultDataResourceInfo `json:"ResourceInfo,omitempty" xml:"ResourceInfo,omitempty" type:"Struct"`
-	// Authorized object.
+	// The authorized object.
 	TargetAccount *ListResourcePermissionsResponseBodyPageResultDataTargetAccount `json:"TargetAccount,omitempty" xml:"TargetAccount,omitempty" type:"Struct"`
 }
 
@@ -293,13 +299,13 @@ func (s *ListResourcePermissionsResponseBodyPageResultData) Validate() error {
 }
 
 type ListResourcePermissionsResponseBodyPageResultDataPeriod struct {
-	// Expiration time.
+	// The expiration time.
 	//
 	// example:
 	//
 	// 1712000000000
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Validity period type. Custom: CUSTOM. Long-term: LONG_TERM.
+	// The validity period type.
 	//
 	// example:
 	//
@@ -338,9 +344,9 @@ func (s *ListResourcePermissionsResponseBodyPageResultDataPeriod) Validate() err
 }
 
 type ListResourcePermissionsResponseBodyPageResultDataPermissionPeriodList struct {
-	// Validity period settings.
+	// The validity period settings.
 	Period *ListResourcePermissionsResponseBodyPageResultDataPermissionPeriodListPeriod `json:"Period,omitempty" xml:"Period,omitempty" type:"Struct"`
-	// Permission type.
+	// The permission type.
 	//
 	// example:
 	//
@@ -384,13 +390,13 @@ func (s *ListResourcePermissionsResponseBodyPageResultDataPermissionPeriodList) 
 }
 
 type ListResourcePermissionsResponseBodyPageResultDataPermissionPeriodListPeriod struct {
-	// Expiration time.
+	// The expiration time.
 	//
 	// example:
 	//
 	// 1712000000000
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Validity period type. Custom: CUSTOM. Long-term: LONG_TERM.
+	// The validity period type.
 	//
 	// example:
 	//
@@ -429,35 +435,39 @@ func (s *ListResourcePermissionsResponseBodyPageResultDataPermissionPeriodListPe
 }
 
 type ListResourcePermissionsResponseBodyPageResultDataResourceInfo struct {
-	// Business unit.
+	// The business unit.
 	BizUnitInfo *ListResourcePermissionsResponseBodyPageResultDataResourceInfoBizUnitInfo `json:"BizUnitInfo,omitempty" xml:"BizUnitInfo,omitempty" type:"Struct"`
-	// Resource display name.
+	// The display name of the resource.
 	//
 	// example:
 	//
 	// tb1
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// Resource environment type. Development: DEV. Production: PROD.
+	// The resource environment type. Valid values:
+	//
+	// - DEV: development.
+	//
+	// - PROD: production.
 	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// Permission resource ID.
+	// The ID of the permission resource.
 	//
 	// example:
 	//
 	// a.tb1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Permission resource name.
+	// The name of the permission resource.
 	//
 	// example:
 	//
 	// tb1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Project.
+	// The project.
 	ProjectInfo *ListResourcePermissionsResponseBodyPageResultDataResourceInfoProjectInfo `json:"ProjectInfo,omitempty" xml:"ProjectInfo,omitempty" type:"Struct"`
-	// Resource type. Valid values: PHYSICAL_TABLE, PHYSICAL_VIEW, LOGICAL_TABLE, LOGICAL_VIEW, REALTIME_LOGICAL_TABLE, REALTIME_MIRROR_TABLE, and DATASOURCE.
+	// The resource type. Valid values: PHYSICAL_TABLE, PHYSICAL_VIEW, LOGICAL_TABLE, LOGICAL_VIEW, REALTIME_LOGICAL_TABLE, REALTIME_MIRROR_TABLE, DATASOURCE.
 	//
 	// example:
 	//
@@ -551,25 +561,29 @@ func (s *ListResourcePermissionsResponseBodyPageResultDataResourceInfo) Validate
 }
 
 type ListResourcePermissionsResponseBodyPageResultDataResourceInfoBizUnitInfo struct {
-	// Display name.
+	// The display name.
 	//
 	// example:
 	//
 	// xx
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// Environment identifier. Development: DEV. Production: PROD.
+	// The environment identifier. Valid values:
+	//
+	// - DEV: development.
+	//
+	// - PROD: production.
 	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// ID.
+	// Id
 	//
 	// example:
 	//
 	// 121323
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Name.
+	// The name.
 	//
 	// example:
 	//
@@ -626,25 +640,29 @@ func (s *ListResourcePermissionsResponseBodyPageResultDataResourceInfoBizUnitInf
 }
 
 type ListResourcePermissionsResponseBodyPageResultDataResourceInfoProjectInfo struct {
-	// Display name.
+	// The display name.
 	//
 	// example:
 	//
 	// xx
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// Environment identifier. Development: DEV. Production: PROD.
+	// The environment identifier. Valid values:
+	//
+	// - DEV: development.
+	//
+	// - PROD: production.
 	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// Project ID.
+	// The project ID.
 	//
 	// example:
 	//
 	// 1123131
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Name.
+	// The name.
 	//
 	// example:
 	//
@@ -701,19 +719,25 @@ func (s *ListResourcePermissionsResponseBodyPageResultDataResourceInfoProjectInf
 }
 
 type ListResourcePermissionsResponseBodyPageResultDataTargetAccount struct {
-	// Personal account: the userId on the Dataphin side. Production account: the UserId obtained by calling the GetProjectProduceUser operation. User group: the user group ID obtained by calling the ListUserGroup operation.
+	// The account ID. For an individual account, this is the Dataphin-side userId. For a production account, this is the UserId obtained by calling the GetProjectProduceUser operation. For a user group, this is the user group ID obtained by calling the ListUserGroup operation.
 	//
 	// example:
 	//
 	// 1212131
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Personal account: the userId on the Dataphin side. Production account: the UserId obtained by calling the GetProjectProduceUser operation. User group: the user group ID obtained by calling the ListUserGroup operation.
+	// The account ID. For an individual account, this is the Dataphin-side userId. For a production account, this is the UserId obtained by calling the GetProjectProduceUser operation. For a user group, this is the user group ID obtained by calling the ListUserGroup operation.
 	//
 	// example:
 	//
 	// xx
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Authorization account type. Valid values: PERSONAL (personal account), PRODUCE (production account), and USER_GROUP (user group).
+	// The type of the authorized account. Valid values:
+	//
+	// - PERSONAL: individual account.
+	//
+	// - PRODUCE: production account.
+	//
+	// - USER_GROUP: user group.
 	//
 	// example:
 	//

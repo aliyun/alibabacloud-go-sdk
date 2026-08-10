@@ -16,7 +16,7 @@ type iListResourcePermissionOperationLogRequest interface {
 }
 
 type ListResourcePermissionOperationLogRequest struct {
-	// The paged request parameters.
+	// The pagination request.
 	//
 	// This parameter is required.
 	ListQuery *ListResourcePermissionOperationLogRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
@@ -74,7 +74,7 @@ type ListResourcePermissionOperationLogRequestListQuery struct {
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// This parameter is required.
 	//
@@ -86,13 +86,13 @@ type ListResourcePermissionOperationLogRequestListQuery struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xxTest
 	SearchText *string `json:"SearchText,omitempty" xml:"SearchText,omitempty"`
-	// The tab name. Valid values:
+	// The tab type. Valid values:
 	//
-	// - TABLE: table
+	// - TABLE: table.
 	//
-	// - DATASOURCE: datasource.
+	// - DATASOURCE: data source.
 	//
 	// This parameter is required.
 	//

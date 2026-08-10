@@ -16,7 +16,7 @@ type iListResourcePermissionOperationLogShrinkRequest interface {
 }
 
 type ListResourcePermissionOperationLogShrinkRequest struct {
-	// The paged request parameters.
+	// The pagination request.
 	//
 	// This parameter is required.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`

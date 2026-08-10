@@ -16,11 +16,11 @@ type iListResourcePermissionsRequest interface {
 }
 
 type ListResourcePermissionsRequest struct {
-	// Paginated request.
+	// The paged query request.
 	//
 	// This parameter is required.
 	ListQuery *ListResourcePermissionsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ func (s *ListResourcePermissionsRequest) Validate() error {
 }
 
 type ListResourcePermissionsRequestListQuery struct {
-	// Page number.
+	// The page number.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type ListResourcePermissionsRequestListQuery struct {
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// Number of records per page.
+	// The number of records per page.
 	//
 	// This parameter is required.
 	//
@@ -82,13 +82,17 @@ type ListResourcePermissionsRequestListQuery struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Search keyword.
+	// The search keyword.
 	//
 	// example:
 	//
-	// xx测试
+	// xxTest
 	SearchText *string `json:"SearchText,omitempty" xml:"SearchText,omitempty"`
-	// Tab name. Table: TABLE. Data source: DATASOURCE.
+	// The tab type. Valid values:
+	//
+	// - TABLE: table.
+	//
+	// - DATASOURCE: datasource.
 	//
 	// This parameter is required.
 	//
