@@ -34,21 +34,21 @@ type ModifyAuditLogFilterRequest struct {
 	//
 	// dds-bp12c5b040dc****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
+	// The collection types of audit logs. Separate multiple collection types with commas (,).
 	//
-	// - **admin**: O\\&M and management operations
+	// - **admin**: O&M and management operations.
 	//
-	// - **slow**: slow query logs
+	// - **slow**: Slow queries.
 	//
-	// - **query**: query operations
+	// - **query**: Query operations.
 	//
-	// - **insert**: insert operations
+	// - **insert**: Insert operations.
 	//
-	// - **update**: update operations
+	// - **update**: Update operations.
 	//
-	// - **delete**: delete operations
+	// - **delete**: Delete operations.
 	//
-	// - **command**: protocol commands such as the aggregate method
+	// - **command**: Protocol commands, such as the aggregate method.
 	//
 	// This parameter is required.
 	//
@@ -62,13 +62,22 @@ type ModifyAuditLogFilterRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The role of the node in the instance. Valid values:
 	//
-	// - **primary**
+	// - **db**: shard node
 	//
-	// - **secondary**
+	// - **mongos**: mongos node
+	//
+	//
+	//
+	//
+	//
+	//
+	// > Metric description
+	//
+	// > - This parameter applies only to sharded cluster instances. If this parameter is left empty, the default value db is used. You do not need to specify this parameter for replica set instances.
 	//
 	// example:
 	//
-	// primary
+	// db
 	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 

@@ -7201,15 +7201,13 @@ func (client *Client) ModifyActiveOperationTasksWithContext(ctx context.Context,
 
 // Summary:
 //
-// Modifies the audit log types collected for a MongoDB instance.
+// Modifies the collection types of audit logs for an ApsaraDB for MongoDB instance.
 //
 // Description:
 //
-// - The instance must be in the running state when you call this operation.
+// - The instance must be in the Running instance status when you invoke this operation.
 //
-// - This operation is applicable only to **general-purpose local-disk*	- or **dedicated local-disk*	- instances.
-//
-// - You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - This operation is limited to 30 calls per minute. If this limit is exceeded, the calls are throttled. Do not invoke this operation at a high frequency. If you require high-frequency calls, use a Logstore. For details, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // @param request - ModifyAuditLogFilterRequest
 //
