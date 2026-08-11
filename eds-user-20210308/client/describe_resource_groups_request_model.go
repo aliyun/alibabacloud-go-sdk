@@ -33,7 +33,7 @@ type iDescribeResourceGroupsRequest interface {
 
 type DescribeResourceGroupsRequest struct {
 	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
-	// The cloud platform resource group ID.
+	// The Alibaba Cloud resource group ID.
 	AliyunResourceGroupIds []*string `json:"AliyunResourceGroupIds,omitempty" xml:"AliyunResourceGroupIds,omitempty" type:"Repeated"`
 	// The channel tag.
 	//
@@ -66,15 +66,16 @@ type DescribeResourceGroupsRequest struct {
 	// example:
 	//
 	// AliyunConsole
-	Platform               *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The resource classification within the resource group.
 	ResourceClassification *string `json:"ResourceClassification,omitempty" xml:"ResourceClassification,omitempty"`
 	// The list of resource group IDs.
 	ResourceGroupIds []*string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
-	// The name of the resource group.
+	// The resource group name.
 	//
 	// example:
 	//
-	// 部门A资源组
+	// DepartmentAResourceGroup
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 }
 

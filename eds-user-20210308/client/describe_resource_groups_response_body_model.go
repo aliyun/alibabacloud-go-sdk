@@ -24,7 +24,7 @@ type DescribeResourceGroupsResponseBody struct {
 	//
 	// 68BA1DF7-8814-5AED-B844-F8F7F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of resource groups.
+	// The list of resource group information.
 	ResourceGroup []*DescribeResourceGroupsResponseBodyResourceGroup `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty" type:"Repeated"`
 	// The total number of resource groups.
 	//
@@ -105,9 +105,9 @@ type DescribeResourceGroupsResponseBodyResourceGroup struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// > The policies associated with the resource group.
 	//
-	// > - Associated policies take effect on cloud desktops in the resource group. If multiple policies are associated, they take effect based on policy priority.
+	// > - Associated policies take effect on cloud computers in the resource group. If multiple policies are associated, they take effect based on policy priority.
 	//
-	// > - If a cloud desktop in the resource group already has other policies specified, the policies associated with the resource group take precedence.
+	// > - If a cloud computer in the resource group already has other policies specified, the policies associated with the resource group take effect first.
 	Policies []*DescribeResourceGroupsResponseBodyResourceGroupPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
 	// The resource count in the resource group.
 	//
@@ -121,15 +121,15 @@ type DescribeResourceGroupsResponseBodyResourceGroup struct {
 	//
 	// rg-cyo0il2pzge1***
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The name of the resource group.
+	// The resource group name.
 	//
 	// example:
 	//
-	// 测试资源组
+	// TestResourceGroup
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 	// > The associated scheduled tasks.
 	//
-	// > - Associated scheduled tasks take effect on cloud desktops in the resource group. If a cloud desktop in the resource group already has other scheduled tasks associated, the tasks associated with the resource group take precedence.
+	// > - Associated scheduled tasks take effect on cloud computers in the resource group. If a cloud computer in the resource group already has other scheduled tasks associated, the tasks associated with the resource group take effect first.
 	Timers []*DescribeResourceGroupsResponseBodyResourceGroupTimers `json:"Timers,omitempty" xml:"Timers,omitempty" type:"Repeated"`
 }
 
@@ -324,7 +324,7 @@ type DescribeResourceGroupsResponseBodyResourceGroupPolicies struct {
 	//
 	// example:
 	//
-	// 测试策略123
+	// TestPolicy123
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -379,9 +379,10 @@ type DescribeResourceGroupsResponseBodyResourceGroupTimers struct {
 	//
 	// example:
 	//
-	// 测试任务123
+	// TestTask123
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	TimerStatus *string `json:"TimerStatus,omitempty" xml:"TimerStatus,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeResourceGroupsResponseBodyResourceGroupTimers) String() string {
@@ -408,6 +409,10 @@ func (s *DescribeResourceGroupsResponseBodyResourceGroupTimers) GetTimerStatus()
 	return s.TimerStatus
 }
 
+func (s *DescribeResourceGroupsResponseBodyResourceGroupTimers) GetType() *string {
+	return s.Type
+}
+
 func (s *DescribeResourceGroupsResponseBodyResourceGroupTimers) SetBindStatus(v string) *DescribeResourceGroupsResponseBodyResourceGroupTimers {
 	s.BindStatus = &v
 	return s
@@ -425,6 +430,11 @@ func (s *DescribeResourceGroupsResponseBodyResourceGroupTimers) SetName(v string
 
 func (s *DescribeResourceGroupsResponseBodyResourceGroupTimers) SetTimerStatus(v string) *DescribeResourceGroupsResponseBodyResourceGroupTimers {
 	s.TimerStatus = &v
+	return s
+}
+
+func (s *DescribeResourceGroupsResponseBodyResourceGroupTimers) SetType(v string) *DescribeResourceGroupsResponseBodyResourceGroupTimers {
+	s.Type = &v
 	return s
 }
 
