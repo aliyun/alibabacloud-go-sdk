@@ -3,6 +3,7 @@ package client
 
 import (
 	"context"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
@@ -1567,79 +1568,19 @@ func (client *Client) GetNetworkReachableAnalysisWithContext(ctx context.Context
 //
 // Supported analysis scenarios:
 //
-// - Internet performance observation dashboard scenario
-//
 // - Cross-zone internal network performance observation dashboard scenario
 //
 // - Cross-region internal network performance observation dashboard scenario
 //
-// ## Internet performance observation dashboard scenario
-//
-// **Note**
-//
-// The maximum query time span is 24 hours. If not specified, the most recent 1 hour is queried by default. The query result contains one data point per minute.
-//
-// ### **Request parameters**
-//
-// | **Name*	- | **Type*	- | **Required*	- | **Description*	- |
-//
-// | --- | --- | --- | --- |
-//
-// | RegionNo | string | Yes | The Alibaba Cloud region where the probing source is located. |
-//
-// | ResourceType | string | Yes | Set to **InternetProbing*	- to query Internet performance monitoring trends. |
-//
-// | MetricName | string | Yes | The metric for which to query trends. Valid value: **rtt**, the round-trip time of probing. |
-//
-// | Dimensions | object[\\] | Yes | The filter information. |
-//
-// | \\-Name | string | Yes | The filter condition. Valid values:
-//
-//   - **Country**: the probing country.
-//
-//   - **Province**: the probing province.
-//
-//   - **Isp**: the probing ISP.
-//
-//     **Note:*	- Specify at least one of the preceding parameters. |
-//
-// | \\-Value | string | Yes | The filter value corresponding to the filter condition. Examples:
-//
-//   - Country: China
-//
-//   - Province: Zhejiang
-//
-// - Isp: Alibaba
-//
-// **Note:*	- Country and province values are capitalized. The ISP parameter value must match the name displayed in the console. |
-//
-// ### **Response parameters**
-//
-// | **Name*	- | **Type*	- | **Description*	- |
-//
-// | --- | --- | --- |
-//
-// | RequestId | string | The request ID. |
-//
-// | Data | object | The cloud network metric trends data object. |
-//
-// | Metrics | array | The collection of metric trends data. |
-//
-// | \\-TimeStamp | long | The UNIX timestamp in milliseconds. |
-//
-// | \\-Value | double | The metric value corresponding to the **MetricName*	- input parameter. |
-//
-// | Unit | String | The unit of **Value**. |
-//
 // ## Cross-zone internal network performance observation dashboard scenario
 //
-// **Note**
+// **Description**
 //
-// -   If the query time span exceeds 5 days, the query result contains one data point per day.
+// -   If the query time span exceeds 5 days, the query result contains one data entry per day.
 //
-// -   If the query time span exceeds 1 day, the query result contains one data point per hour.
+// -   If the query time span exceeds 1 day, the query result contains one data entry per hour.
 //
-// -   If the query time span is less than 1 day, the query result contains one data point per 5 minutes.
+// -   If the query time span is less than 1 day, the query result contains one data entry per 5 minutes.
 //
 // ### **Request parameters**
 //
@@ -1657,9 +1598,9 @@ func (client *Client) GetNetworkReachableAnalysisWithContext(ctx context.Context
 //
 // | \\-Name | string | Yes | The filter condition. Valid values:
 //
-//   - **SourceZone**: the source zone for probing. This parameter is required.
+//   - **SourceZone**: the source zone of probing. This parameter is required.
 //
-//   - **DestinationZone**: the destination zone for probing. This parameter is required. |
+//   - **DestinationZone**: the destination zone of probing. This parameter is required. |
 //
 // | \\-Value | string | Yes | The filter value corresponding to the filter condition. Examples:
 //
@@ -1681,19 +1622,19 @@ func (client *Client) GetNetworkReachableAnalysisWithContext(ctx context.Context
 //
 // | \\-TimeStamp | long | The UNIX timestamp in milliseconds. |
 //
-// | \\-Value | double | The metric value corresponding to the **MetricName*	- input parameter. |
+// | \\-Value | double | The metric value corresponding to the input parameter **MetricName**. |
 //
 // | Unit | String | The unit of **Value**. |
 //
 // ## **Cross-region internal network performance observation dashboard scenario**
 //
-// **Note**
+// **Description**
 //
-// -   If the query time span exceeds 5 days, the query result contains one data point per day.
+// -   If the query time span exceeds 5 days, the query result contains one data entry per day.
 //
-// -   If the query time span exceeds 1 day, the query result contains one data point per hour.
+// -   If the query time span exceeds 1 day, the query result contains one data entry per hour.
 //
-// -   If the query time span is less than 1 day, the query result contains one data point per 5 minutes.
+// -   If the query time span is less than 1 day, the query result contains one data entry per 5 minutes.
 //
 // ### **Request parameters**
 //
@@ -1715,7 +1656,7 @@ func (client *Client) GetNetworkReachableAnalysisWithContext(ctx context.Context
 //
 // | Dimensions | object[\\] | No | The filter information. |
 //
-// | \\-Name | string | No | The filter condition. Valid value: **DestinationRegionNo**, the destination region for probing. This parameter is required. |
+// | \\-Name | string | No | The filter condition. Valid value: **DestinationRegionNo**, the destination region of probing. This parameter is required. |
 //
 // | \\-Value | string | No | The destination region ID. Example: DestinationRegionNo: cn-shenzhen |
 //
@@ -1733,7 +1674,7 @@ func (client *Client) GetNetworkReachableAnalysisWithContext(ctx context.Context
 //
 // | \\-TimeStamp | long | The UNIX timestamp in milliseconds. |
 //
-// | \\-Value | double | The metric value corresponding to the **MetricName*	- input parameter. |
+// | \\-Value | double | The metric value corresponding to the input parameter **MetricName**. |
 //
 // | Unit | String | The unit of **Value**. |
 //
@@ -2385,6 +2326,87 @@ func (client *Client) ListNisInspectionTasksWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListNisInspectionTasksResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Sends an A2A streaming message.
+//
+// @param tmpReq - SendNapalStreamMessageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendNapalStreamMessageResponse
+func (client *Client) SendNapalStreamMessageWithSSECtx(ctx context.Context, tmpReq *SendNapalStreamMessageRequest, runtime *dara.RuntimeOptions, _yield chan *SendNapalStreamMessageResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.sendNapalStreamMessageWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, tmpReq, runtime)
+	return
+}
+
+// Summary:
+//
+// Sends an A2A streaming message.
+//
+// @param tmpReq - SendNapalStreamMessageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendNapalStreamMessageResponse
+func (client *Client) SendNapalStreamMessageWithContext(ctx context.Context, tmpReq *SendNapalStreamMessageRequest, runtime *dara.RuntimeOptions) (_result *SendNapalStreamMessageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SendNapalStreamMessageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Configuration) {
+		request.ConfigurationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Configuration, dara.String("Configuration"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Message) {
+		request.MessageShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Message, dara.String("Message"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Metadata) {
+		request.MetadataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Metadata, dara.String("Metadata"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigurationShrink) {
+		body["Configuration"] = request.ConfigurationShrink
+	}
+
+	if !dara.IsNil(request.MessageShrink) {
+		body["Message"] = request.MessageShrink
+	}
+
+	if !dara.IsNil(request.MetadataShrink) {
+		body["Metadata"] = request.MetadataShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SendNapalStreamMessage"),
+		Version:     dara.String("2021-12-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SendNapalStreamMessageResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3155,4 +3177,74 @@ func (client *Client) UpdateNisInspectionTaskWithContext(ctx context.Context, re
 	}
 	_err = dara.Convert(_body, &_result)
 	return _result, _err
+}
+
+func (client *Client) sendNapalStreamMessageWithSSECtx_opYieldFunc(_yield chan *SendNapalStreamMessageResponse, _yieldErr chan error, ctx context.Context, tmpReq *SendNapalStreamMessageRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := tmpReq.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	request := &SendNapalStreamMessageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Configuration) {
+		request.ConfigurationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Configuration, dara.String("Configuration"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Message) {
+		request.MessageShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Message, dara.String("Message"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Metadata) {
+		request.MetadataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Metadata, dara.String("Metadata"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigurationShrink) {
+		body["Configuration"] = request.ConfigurationShrink
+	}
+
+	if !dara.IsNil(request.MessageShrink) {
+		body["Message"] = request.MessageShrink
+	}
+
+	if !dara.IsNil(request.MetadataShrink) {
+		body["Metadata"] = request.MetadataShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SendNapalStreamMessage"),
+		Version:     dara.String("2021-12-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
 }

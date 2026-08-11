@@ -1,3 +1,7 @@
+2026-08-11 Version: v2.5.0
+- Support API SendNapalStreamMessage.
+
+
 2026-07-28 Version: v2.4.0
 - Support API GetNisTrafficMetrics.
 - Update API DescribeNisTrafficRanking: add response parameters Body.FlowRankingList.$.PacketsIncrease.

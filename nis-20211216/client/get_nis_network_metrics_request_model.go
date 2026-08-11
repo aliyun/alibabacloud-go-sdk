@@ -32,9 +32,9 @@ type iGetNisNetworkMetricsRequest interface {
 }
 
 type GetNisNetworkMetricsRequest struct {
-	// Explicitly passes sub-account IDs.
+	// Explicitly passes member account IDs.
 	AccountIds []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-	// The start time, in **ms**, in **UNIX*	- timestamp format. If not specified, the most recent 1 hour is queried by default. The earliest start time is 7 days ago.
+	// The start time, in **ms**, in **UNIX*	- timestamp format. If not specified, the most recent 1 hour is queried by default. The earliest start time can be 7 days ago.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type GetNisNetworkMetricsRequest struct {
 	//
 	// -   RatelimitDropPps: rate of packets dropped due to throttling.
 	//
-	// -   ActiveSessionCount: concurrent sessions.
+	// -   ActiveSessionCount: concurrent session count.
 	//
 	// -   NewSessionPerSecond: new sessions per second.
 	//
@@ -102,7 +102,7 @@ type GetNisNetworkMetricsRequest struct {
 	//
 	// - PublicIpClb: static public IP address bound to a CLB instance (IPv4).
 	//
-	// - NAT: public traffic through SNAT.
+	// - NAT: public network traffic through SNAT.
 	//
 	// - TR: traffic through Cloud Enterprise Network (CEN) transit routers.
 	//
@@ -111,8 +111,6 @@ type GetNisNetworkMetricsRequest struct {
 	// - VBR: traffic through virtual border routers.
 	//
 	// - GA: traffic through Global Accelerator.
-	//
-	// - InternetProbing: Internet quality probing data.
 	//
 	// - IntranetProbing: internal network quality probing data.
 	//
@@ -135,7 +133,7 @@ type GetNisNetworkMetricsRequest struct {
 	// TimestampAscending
 	ScanBy      *string `json:"ScanBy,omitempty" xml:"ScanBy,omitempty"`
 	StepMinutes *int32  `json:"StepMinutes,omitempty" xml:"StepMinutes,omitempty"`
-	// Specifies whether to use cross-account access mode. This is a reserved parameter and is not currently supported.
+	// Specifies whether to use multi-account access mode. This is a reserved parameter and is not currently supported.
 	//
 	// example:
 	//
