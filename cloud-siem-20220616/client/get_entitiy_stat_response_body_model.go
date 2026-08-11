@@ -22,7 +22,7 @@ type iGetEntitiyStatResponseBody interface {
 }
 
 type GetEntitiyStatResponseBody struct {
-	// The status code of the request.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type GetEntitiyStatResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: successful.
+	// - true: The request was successful.
 	//
-	// - false: failed.
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -125,6 +125,7 @@ func (s *GetEntitiyStatResponseBody) Validate() error {
 }
 
 type GetEntitiyStatResponseBodyData struct {
+	AlertNum *int64 `json:"AlertNum,omitempty" xml:"AlertNum,omitempty"`
 	// The number of entities.
 	//
 	// example:
@@ -142,7 +143,8 @@ type GetEntitiyStatResponseBodyData struct {
 	// example:
 	//
 	// 5cde2118666ffda40783ebd7cec9a60a
-	EntityUuid *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
+	EntityUuid  *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
+	IncidentNum *int64  `json:"IncidentNum,omitempty" xml:"IncidentNum,omitempty"`
 }
 
 func (s GetEntitiyStatResponseBodyData) String() string {
@@ -151,6 +153,10 @@ func (s GetEntitiyStatResponseBodyData) String() string {
 
 func (s GetEntitiyStatResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetEntitiyStatResponseBodyData) GetAlertNum() *int64 {
+	return s.AlertNum
 }
 
 func (s *GetEntitiyStatResponseBodyData) GetEntityNum() *int32 {
@@ -165,6 +171,15 @@ func (s *GetEntitiyStatResponseBodyData) GetEntityUuid() *string {
 	return s.EntityUuid
 }
 
+func (s *GetEntitiyStatResponseBodyData) GetIncidentNum() *int64 {
+	return s.IncidentNum
+}
+
+func (s *GetEntitiyStatResponseBodyData) SetAlertNum(v int64) *GetEntitiyStatResponseBodyData {
+	s.AlertNum = &v
+	return s
+}
+
 func (s *GetEntitiyStatResponseBodyData) SetEntityNum(v int32) *GetEntitiyStatResponseBodyData {
 	s.EntityNum = &v
 	return s
@@ -177,6 +192,11 @@ func (s *GetEntitiyStatResponseBodyData) SetEntityType(v string) *GetEntitiyStat
 
 func (s *GetEntitiyStatResponseBodyData) SetEntityUuid(v string) *GetEntitiyStatResponseBodyData {
 	s.EntityUuid = &v
+	return s
+}
+
+func (s *GetEntitiyStatResponseBodyData) SetIncidentNum(v int64) *GetEntitiyStatResponseBodyData {
+	s.IncidentNum = &v
 	return s
 }
 

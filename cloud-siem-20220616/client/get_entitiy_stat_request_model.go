@@ -19,6 +19,8 @@ type iGetEntitiyStatRequest interface {
 	GetEntityType() *string
 	SetEntityUuid(v string) *GetEntitiyStatRequest
 	GetEntityUuid() *string
+	SetEntityUuids(v string) *GetEntitiyStatRequest
+	GetEntityUuids() *string
 	SetIncidentUuid(v string) *GetEntitiyStatRequest
 	GetIncidentUuid() *string
 	SetIsAsset(v string) *GetEntitiyStatRequest
@@ -65,7 +67,8 @@ type GetEntitiyStatRequest struct {
 	// example:
 	//
 	// 6c740667-80b2-476d-8924-2e706feb****
-	EntityUuid *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
+	EntityUuid  *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
+	EntityUuids *string `json:"EntityUuids,omitempty" xml:"EntityUuids,omitempty"`
 	// The incident ID.
 	//
 	// This parameter is required.
@@ -92,9 +95,9 @@ type GetEntitiyStatRequest struct {
 	IsMalwareEntity *string `json:"IsMalwareEntity,omitempty" xml:"IsMalwareEntity,omitempty"`
 	// The region where the threat detection and response data management center resides. Select the management center based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: the asset belongs to the Chinese mainland or Hong Kong (China).
+	// - cn-hangzhou: The assets belong to the Chinese mainland or Hong Kong (China).
 	//
-	// - ap-southeast-1: the asset belongs to a region outside the Chinese mainland.
+	// - ap-southeast-1: The assets belong to regions outside China.
 	//
 	// example:
 	//
@@ -156,6 +159,10 @@ func (s *GetEntitiyStatRequest) GetEntityUuid() *string {
 	return s.EntityUuid
 }
 
+func (s *GetEntitiyStatRequest) GetEntityUuids() *string {
+	return s.EntityUuids
+}
+
 func (s *GetEntitiyStatRequest) GetIncidentUuid() *string {
 	return s.IncidentUuid
 }
@@ -206,6 +213,11 @@ func (s *GetEntitiyStatRequest) SetEntityType(v string) *GetEntitiyStatRequest {
 
 func (s *GetEntitiyStatRequest) SetEntityUuid(v string) *GetEntitiyStatRequest {
 	s.EntityUuid = &v
+	return s
+}
+
+func (s *GetEntitiyStatRequest) SetEntityUuids(v string) *GetEntitiyStatRequest {
+	s.EntityUuids = &v
 	return s
 }
 

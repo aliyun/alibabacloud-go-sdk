@@ -9,6 +9,8 @@ type iListDisposeStrategyRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAlertUuid(v string) *ListDisposeStrategyRequest
+	GetAlertUuid() *string
 	SetCurrentPage(v int32) *ListDisposeStrategyRequest
 	GetCurrentPage() *int32
 	SetEffectiveStatus(v int32) *ListDisposeStrategyRequest
@@ -19,8 +21,18 @@ type iListDisposeStrategyRequest interface {
 	GetEntityIdentity() *string
 	SetEntityType(v string) *ListDisposeStrategyRequest
 	GetEntityType() *string
+	SetEntityUuidList(v []*string) *ListDisposeStrategyRequest
+	GetEntityUuidList() []*string
+	SetGroupBy(v string) *ListDisposeStrategyRequest
+	GetGroupBy() *string
+	SetGroupKey(v string) *ListDisposeStrategyRequest
+	GetGroupKey() *string
 	SetIncidentUuid(v string) *ListDisposeStrategyRequest
 	GetIncidentUuid() *string
+	SetMaxResults(v int32) *ListDisposeStrategyRequest
+	GetMaxResults() *int32
+	SetNextToken(v string) *ListDisposeStrategyRequest
+	GetNextToken() *string
 	SetOrder(v string) *ListDisposeStrategyRequest
 	GetOrder() *string
 	SetOrderField(v string) *ListDisposeStrategyRequest
@@ -33,8 +45,12 @@ type iListDisposeStrategyRequest interface {
 	GetPlaybookTypes() *string
 	SetPlaybookUuid(v string) *ListDisposeStrategyRequest
 	GetPlaybookUuid() *string
+	SetQueryMode(v string) *ListDisposeStrategyRequest
+	GetQueryMode() *string
 	SetRegionId(v string) *ListDisposeStrategyRequest
 	GetRegionId() *string
+	SetResponseRuleId(v string) *ListDisposeStrategyRequest
+	GetResponseRuleId() *string
 	SetRoleFor(v int64) *ListDisposeStrategyRequest
 	GetRoleFor() *int64
 	SetRoleType(v int32) *ListDisposeStrategyRequest
@@ -45,10 +61,13 @@ type iListDisposeStrategyRequest interface {
 	GetStartTime() *int64
 	SetStatus(v int32) *ListDisposeStrategyRequest
 	GetStatus() *int32
+	SetStrategyId(v string) *ListDisposeStrategyRequest
+	GetStrategyId() *string
 }
 
 type ListDisposeStrategyRequest struct {
-	// Current page number. Must be greater than or equal to 1.
+	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
+	// The current page number of the list. The value must be greater than or equal to 1.
 	//
 	// This parameter is required.
 	//
@@ -56,17 +75,13 @@ type ListDisposeStrategyRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Strategy status. Valid values:
-	//
-	// - 0: disabled
-	//
-	// - 1: enabled
+	// The policy status. Valid values:
 	//
 	// example:
 	//
 	// 0
 	EffectiveStatus *int32 `json:"EffectiveStatus,omitempty" xml:"EffectiveStatus,omitempty"`
-	// End time of the query, in milliseconds.
+	// The query end time, in milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -74,53 +89,48 @@ type ListDisposeStrategyRequest struct {
 	//
 	// 1577808000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Entity feature value. Use this to perform a fuzzy search on entities.
+	// The entity characteristic value. You can perform a fuzzy search on disposal entities.
 	//
 	// example:
 	//
 	// test22.php
 	EntityIdentity *string `json:"EntityIdentity,omitempty" xml:"EntityIdentity,omitempty"`
-	// Entity type. Valid values:
-	//
-	// - ip
-	//
-	// - process
-	//
-	// - file
+	// The entity type. Valid values:
 	//
 	// example:
 	//
 	// ip
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// Event ID.
+	EntityType     *string   `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	EntityUuidList []*string `json:"EntityUuidList,omitempty" xml:"EntityUuidList,omitempty" type:"Repeated"`
+	GroupBy        *string   `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
+	GroupKey       *string   `json:"GroupKey,omitempty" xml:"GroupKey,omitempty"`
+	// The incident ID.
 	//
 	// example:
 	//
 	// 49670d3bbf7aa9556a2fff3dbaa9****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// Sort order. Valid values:
-	//
-	// - desc: descending
-	//
-	// - asc: ascending
+	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sort direction. Valid values:
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// Sort field. Valid values:
+	// The field used to sort the results. Valid values:
 	//
-	// - GmtModified: sort by last modified time
+	// - GmtModified: sorts by update time
 	//
-	// - GmtCreate: sort by creation time
+	// - GmtCreate: sorts by creation time
 	//
-	// - FinishTime: sort by strategy end time
+	// - FinishTime: sorts by policy end time
 	//
 	// example:
 	//
 	// GmtModified
 	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
-	// Number of entries per page. Maximum value is 100.
+	// The number of entries per page. The maximum value is 100.
 	//
 	// This parameter is required.
 	//
@@ -128,15 +138,15 @@ type ListDisposeStrategyRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Unique name of the playbook.
+	// The unique identifier name of the playbook.
 	//
 	// example:
 	//
 	// WafBlockIP
 	PlaybookName *string `json:"PlaybookName,omitempty" xml:"PlaybookName,omitempty"`
-	// Playbook type. Valid values:
+	// The playbook type. Valid values:
 	//
-	// - system: manual disposal
+	// - system: manual handling
 	//
 	// - custom: event-triggered playbook
 	//
@@ -150,45 +160,43 @@ type ListDisposeStrategyRequest struct {
 	//
 	// system
 	PlaybookTypes *string `json:"PlaybookTypes,omitempty" xml:"PlaybookTypes,omitempty"`
-	// UUID of the playbook.
+	// The playbook UUID.
 	//
 	// example:
 	//
 	// system_aliyun_clb_process_book
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	// Location of the Data Management center for Threat Analysis and Response. Select the location based on where your assets are deployed. Valid values:
+	QueryMode    *string `json:"QueryMode,omitempty" xml:"QueryMode,omitempty"`
+	// The China (Hangzhou) region or China (Singapore) region where the China (Hangzhou) region or China (Singapore) region where the data management center of Cloud Threat Detection and Response (CTDR) resides. Specify the management center based on the region where your assets reside. Valid values:
 	//
-	// - cn-hangzhou: assets in the Chinese mainland or Hong Kong (China)
+	// - cn-hangzhou: Chinese mainland and Hong Kong (China).
 	//
-	// - ap-southeast-1: assets outside China
+	// - ap-southeast-1: outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Alibaba Cloud account ID when an administrator switches to another member\\"s perspective.
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResponseRuleId *string `json:"ResponseRuleId,omitempty" xml:"ResponseRuleId,omitempty"`
+	// The Alibaba Cloud account ID of the member to which the administrator switches the view.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// View type. Valid values:
-	//
-	// - 0: view for the current Alibaba Cloud account
-	//
-	// - 1: view for all accounts under the enterprise
+	// The view type.
 	//
 	// example:
 	//
 	// 1
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// ID of the security orchestration and automated response disposal strategy.
+	// The SOAR disposal policy ID.
 	//
 	// example:
 	//
 	// a50a49b7-6044-4593-ab15-2b46567c****
 	SophonTaskId *string `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
-	// Start time of the query, in milliseconds.
+	// The query start time, in milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -196,12 +204,13 @@ type ListDisposeStrategyRequest struct {
 	//
 	// 1577808000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Disposal strategy status.
+	// The disposal policy status.
 	//
 	// example:
 	//
 	// 200
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
 }
 
 func (s ListDisposeStrategyRequest) String() string {
@@ -210,6 +219,10 @@ func (s ListDisposeStrategyRequest) String() string {
 
 func (s ListDisposeStrategyRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListDisposeStrategyRequest) GetAlertUuid() *string {
+	return s.AlertUuid
 }
 
 func (s *ListDisposeStrategyRequest) GetCurrentPage() *int32 {
@@ -232,8 +245,28 @@ func (s *ListDisposeStrategyRequest) GetEntityType() *string {
 	return s.EntityType
 }
 
+func (s *ListDisposeStrategyRequest) GetEntityUuidList() []*string {
+	return s.EntityUuidList
+}
+
+func (s *ListDisposeStrategyRequest) GetGroupBy() *string {
+	return s.GroupBy
+}
+
+func (s *ListDisposeStrategyRequest) GetGroupKey() *string {
+	return s.GroupKey
+}
+
 func (s *ListDisposeStrategyRequest) GetIncidentUuid() *string {
 	return s.IncidentUuid
+}
+
+func (s *ListDisposeStrategyRequest) GetMaxResults() *int32 {
+	return s.MaxResults
+}
+
+func (s *ListDisposeStrategyRequest) GetNextToken() *string {
+	return s.NextToken
 }
 
 func (s *ListDisposeStrategyRequest) GetOrder() *string {
@@ -260,8 +293,16 @@ func (s *ListDisposeStrategyRequest) GetPlaybookUuid() *string {
 	return s.PlaybookUuid
 }
 
+func (s *ListDisposeStrategyRequest) GetQueryMode() *string {
+	return s.QueryMode
+}
+
 func (s *ListDisposeStrategyRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *ListDisposeStrategyRequest) GetResponseRuleId() *string {
+	return s.ResponseRuleId
 }
 
 func (s *ListDisposeStrategyRequest) GetRoleFor() *int64 {
@@ -282,6 +323,15 @@ func (s *ListDisposeStrategyRequest) GetStartTime() *int64 {
 
 func (s *ListDisposeStrategyRequest) GetStatus() *int32 {
 	return s.Status
+}
+
+func (s *ListDisposeStrategyRequest) GetStrategyId() *string {
+	return s.StrategyId
+}
+
+func (s *ListDisposeStrategyRequest) SetAlertUuid(v string) *ListDisposeStrategyRequest {
+	s.AlertUuid = &v
+	return s
 }
 
 func (s *ListDisposeStrategyRequest) SetCurrentPage(v int32) *ListDisposeStrategyRequest {
@@ -309,8 +359,33 @@ func (s *ListDisposeStrategyRequest) SetEntityType(v string) *ListDisposeStrateg
 	return s
 }
 
+func (s *ListDisposeStrategyRequest) SetEntityUuidList(v []*string) *ListDisposeStrategyRequest {
+	s.EntityUuidList = v
+	return s
+}
+
+func (s *ListDisposeStrategyRequest) SetGroupBy(v string) *ListDisposeStrategyRequest {
+	s.GroupBy = &v
+	return s
+}
+
+func (s *ListDisposeStrategyRequest) SetGroupKey(v string) *ListDisposeStrategyRequest {
+	s.GroupKey = &v
+	return s
+}
+
 func (s *ListDisposeStrategyRequest) SetIncidentUuid(v string) *ListDisposeStrategyRequest {
 	s.IncidentUuid = &v
+	return s
+}
+
+func (s *ListDisposeStrategyRequest) SetMaxResults(v int32) *ListDisposeStrategyRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDisposeStrategyRequest) SetNextToken(v string) *ListDisposeStrategyRequest {
+	s.NextToken = &v
 	return s
 }
 
@@ -344,8 +419,18 @@ func (s *ListDisposeStrategyRequest) SetPlaybookUuid(v string) *ListDisposeStrat
 	return s
 }
 
+func (s *ListDisposeStrategyRequest) SetQueryMode(v string) *ListDisposeStrategyRequest {
+	s.QueryMode = &v
+	return s
+}
+
 func (s *ListDisposeStrategyRequest) SetRegionId(v string) *ListDisposeStrategyRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListDisposeStrategyRequest) SetResponseRuleId(v string) *ListDisposeStrategyRequest {
+	s.ResponseRuleId = &v
 	return s
 }
 
@@ -371,6 +456,11 @@ func (s *ListDisposeStrategyRequest) SetStartTime(v int64) *ListDisposeStrategyR
 
 func (s *ListDisposeStrategyRequest) SetStatus(v int32) *ListDisposeStrategyRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListDisposeStrategyRequest) SetStrategyId(v string) *ListDisposeStrategyRequest {
+	s.StrategyId = &v
 	return s
 }
 

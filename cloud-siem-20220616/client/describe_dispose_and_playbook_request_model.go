@@ -28,19 +28,13 @@ type iDescribeDisposeAndPlaybookRequest interface {
 }
 
 type DescribeDisposeAndPlaybookRequest struct {
-	// The page number. The value must be greater than or equal to 1.
+	// The current page number. The value must be greater than or equal to 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The entity type. Valid values:
-	//
-	// - ip: IP address
-	//
-	// - process: process
-	//
-	// - file: file
 	//
 	// example:
 	//
@@ -52,7 +46,7 @@ type DescribeDisposeAndPlaybookRequest struct {
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
 	EntityUuid *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
-	// The event UUID.
+	// The incident UUID.
 	//
 	// example:
 	//
@@ -64,11 +58,11 @@ type DescribeDisposeAndPlaybookRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Select the data management center based on the region of your assets. Valid values:
+	// The region where the threat analysis data management center is located. Specify the management center region based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: Your assets reside in the Chinese mainland or Hong Kong (China).
+	// - cn-hangzhou: Your assets are located in the Chinese mainland or Hong Kong (China).
 	//
-	// - ap-southeast-1: Your assets reside in regions outside the Chinese mainland.
+	// - ap-southeast-1: Your assets are located outside China.
 	//
 	// example:
 	//
@@ -80,11 +74,7 @@ type DescribeDisposeAndPlaybookRequest struct {
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The view type. Valid values:
-	//
-	// - 0: the view of the current Alibaba Cloud account.
-	//
-	// - 1: the view of all accounts in the enterprise.
+	// The view type.
 	//
 	// example:
 	//

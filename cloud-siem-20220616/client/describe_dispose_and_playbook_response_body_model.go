@@ -22,7 +22,7 @@ type iDescribeDisposeAndPlaybookResponseBody interface {
 }
 
 type DescribeDisposeAndPlaybookResponseBody struct {
-	// The response status code.
+	// The request status code.
 	//
 	// example:
 	//
@@ -47,10 +47,6 @@ type DescribeDisposeAndPlaybookResponseBody struct {
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
-	//
-	// - true: Successful.
-	//
-	// - false: Failed.
 	//
 	// example:
 	//
@@ -290,9 +286,9 @@ type DescribeDisposeAndPlaybookResponseBodyDataResponseData struct {
 	//
 	// example:
 	//
-	// [{"name":"云安全中心-云服务器安全","code":"1"}]
+	// [{"name":"Security Center - Cloud Server Security","code":"1"}]
 	PlaybookList []*DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList `json:"PlaybookList,omitempty" xml:"PlaybookList,omitempty" type:"Repeated"`
-	// The disposition scope. The list of user IDs that can perform the disposition.
+	// The disposition scope, which is the list of user IDs that can perform the disposition.
 	//
 	// example:
 	//
@@ -403,11 +399,7 @@ func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseData) Validate() erro
 }
 
 type DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList struct {
-	// Indicates whether the playbook is available. Valid values:
-	//
-	// - 1: Available.
-	//
-	// - 0: Unavailable.
+	// Indicates whether the playbook is available.
 	//
 	// example:
 	//
@@ -439,17 +431,13 @@ type DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList struct {
 	//
 	// 7
 	OpCode *string `json:"OpCode,omitempty" xml:"OpCode,omitempty"`
-	// Indicates whether the playbook is selected by default for one-click event disposition. Valid values:
-	//
-	// - 2: Selected.
-	//
-	// - 1: Displayed but not selected.
+	// Specifies whether the playbook is selected by default for one-click incident disposition. Valid values:
 	//
 	// example:
 	//
 	// 2
 	OpLevel *string `json:"OpLevel,omitempty" xml:"OpLevel,omitempty"`
-	// The parameter list and corresponding parameter properties of the playbook.
+	// The parameter list of the playbook and the corresponding parameter properties.
 	ParamConfig []interface{} `json:"ParamConfig,omitempty" xml:"ParamConfig,omitempty" type:"Repeated"`
 	// The opcode configuration.
 	//
@@ -457,7 +445,9 @@ type DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList struct {
 	//
 	// {"opCode":"3"}
 	TaskConfig *string `json:"TaskConfig,omitempty" xml:"TaskConfig,omitempty"`
-	// The code that indicates why the playbook is unavailable. Valid values:
+	// The code that indicates why the playbook is unavailable.
+	//
+	// Valid values:
 	//
 	// - PARAM_INVALID: The input parameters are invalid.
 	//
@@ -473,11 +463,7 @@ type DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList struct {
 	//
 	// kill_process_isolate_file
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	// Indicates whether this is a WAF playbook. Valid values:
-	//
-	// - true: Yes.
-	//
-	// - false: No.
+	// Indicates whether the playbook is a WAF playbook. Valid values:
 	//
 	// example:
 	//

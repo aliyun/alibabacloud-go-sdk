@@ -2197,7 +2197,7 @@ func (client *Client) DescribeDisposeAndPlaybookWithContext(ctx context.Context,
 
 // Summary:
 //
-// Retrieves the list of playbooks used in a disposal policy.
+// Retrieves the list of playbooks used by a disposal policy.
 //
 // @param request - DescribeDisposeStrategyPlaybookRequest
 //
@@ -3313,7 +3313,7 @@ func (client *Client) GetDataStorageWithContext(ctx context.Context, request *Ge
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. A utility class with configuration examples is provided. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to assist with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - GetEntitiyStatRequest
 //
@@ -3346,6 +3346,10 @@ func (client *Client) GetEntitiyStatWithContext(ctx context.Context, request *Ge
 
 	if !dara.IsNil(request.EntityUuid) {
 		body["EntityUuid"] = request.EntityUuid
+	}
+
+	if !dara.IsNil(request.EntityUuids) {
+		body["EntityUuids"] = request.EntityUuids
 	}
 
 	if !dara.IsNil(request.IncidentUuid) {
@@ -4273,21 +4277,40 @@ func (client *Client) ListDeliveryWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Retrieve a list of system-recommended disposal strategies.
+// Retrieves the list of system-recommended disposal policies.
 //
-// @param request - ListDisposeStrategyRequest
+// @param tmpReq - ListDisposeStrategyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDisposeStrategyResponse
-func (client *Client) ListDisposeStrategyWithContext(ctx context.Context, request *ListDisposeStrategyRequest, runtime *dara.RuntimeOptions) (_result *ListDisposeStrategyResponse, _err error) {
+func (client *Client) ListDisposeStrategyWithContext(ctx context.Context, tmpReq *ListDisposeStrategyRequest, runtime *dara.RuntimeOptions) (_result *ListDisposeStrategyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ListDisposeStrategyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.EntityUuidList) {
+		request.EntityUuidListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EntityUuidList, dara.String("EntityUuidList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AlertUuid) {
+		body["AlertUuid"] = request.AlertUuid
+	}
+
 	if !dara.IsNil(request.CurrentPage) {
 		body["CurrentPage"] = request.CurrentPage
 	}
@@ -4306,6 +4329,18 @@ func (client *Client) ListDisposeStrategyWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.EntityType) {
 		body["EntityType"] = request.EntityType
+	}
+
+	if !dara.IsNil(request.EntityUuidListShrink) {
+		body["EntityUuidList"] = request.EntityUuidListShrink
+	}
+
+	if !dara.IsNil(request.GroupBy) {
+		body["GroupBy"] = request.GroupBy
+	}
+
+	if !dara.IsNil(request.GroupKey) {
+		body["GroupKey"] = request.GroupKey
 	}
 
 	if !dara.IsNil(request.IncidentUuid) {
@@ -4336,8 +4371,16 @@ func (client *Client) ListDisposeStrategyWithContext(ctx context.Context, reques
 		body["PlaybookUuid"] = request.PlaybookUuid
 	}
 
+	if !dara.IsNil(request.QueryMode) {
+		body["QueryMode"] = request.QueryMode
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResponseRuleId) {
+		body["ResponseRuleId"] = request.ResponseRuleId
 	}
 
 	if !dara.IsNil(request.RoleFor) {
@@ -4360,8 +4403,13 @@ func (client *Client) ListDisposeStrategyWithContext(ctx context.Context, reques
 		body["Status"] = request.Status
 	}
 
+	if !dara.IsNil(request.StrategyId) {
+		body["StrategyId"] = request.StrategyId
+	}
+
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ListDisposeStrategy"),

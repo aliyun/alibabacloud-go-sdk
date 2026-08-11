@@ -22,19 +22,19 @@ type iListEntitiesResponseBody interface {
 }
 
 type ListEntitiesResponseBody struct {
-	// The HTTP status code of the request.
+	// The request status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response data.
+	// The request return value.
 	//
 	// example:
 	//
 	// 123456
 	Data *ListEntitiesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message.
+	// The request return message.
 	//
 	// example:
 	//
@@ -47,10 +47,6 @@ type ListEntitiesResponseBody struct {
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
-	//
-	// - true: successful.
-	//
-	// - false: failed.
 	//
 	// example:
 	//
@@ -172,19 +168,19 @@ func (s *ListEntitiesResponseBodyData) Validate() error {
 }
 
 type ListEntitiesResponseBodyDataPageInfo struct {
-	// The page number of the current page.
+	// The current page number of the list.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The number of records returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -239,7 +235,7 @@ type ListEntitiesResponseBodyDataResponseData struct {
 	//
 	// 85
 	AgentConfidence *string `json:"AgentConfidence,omitempty" xml:"AgentConfidence,omitempty"`
-	// The disposal method recommended by the agent.
+	// The recommended disposal method from the agent.
 	//
 	// example:
 	//
@@ -278,11 +274,11 @@ type ListEntitiesResponseBodyDataResponseData struct {
 	//
 	// 123456789****
 	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	// The code of the cloud service provider from which the entity originates. Valid values:
+	// The cloud code of the entity source. Valid values:
 	//
-	// - aliyun: Alibaba Cloud
+	// - aliyun: Alibaba Cloud.
 	//
-	// - qcloud: Tencent Cloud
+	// - qcloud: Tencent Cloud.
 	//
 	// - hcloud: Huawei Cloud.
 	//
@@ -296,7 +292,7 @@ type ListEntitiesResponseBodyDataResponseData struct {
 	//
 	// 12345****
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The display information of the entity in JSON format.
+	// The entity display information in JSON format.
 	//
 	// example:
 	//
@@ -309,24 +305,6 @@ type ListEntitiesResponseBodyDataResponseData struct {
 	// 123.123.123.123
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
 	// The entity type. Valid values:
-	//
-	// - ip: IP address
-	//
-	// - domain: domain name
-	//
-	// - url: URL
-	//
-	// - process: process
-	//
-	// - file: file
-	//
-	// - host: host
-	//
-	// - cloud_account: cloud account
-	//
-	// - container: container
-	//
-	// - bucket: Object Storage Service (OSS) bucket.
 	//
 	// example:
 	//
@@ -370,19 +348,11 @@ type ListEntitiesResponseBodyDataResponseData struct {
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// Indicates whether the entity is an asset. Valid values:
 	//
-	// + 0: No.
-	//
-	// + 1: Yes.
-	//
 	// example:
 	//
 	// 1
 	IsAsset *string `json:"IsAsset,omitempty" xml:"IsAsset,omitempty"`
-	// Indicates whether the entity is malicious. Valid values:
-	//
-	// + 0: No.
-	//
-	// + 1: Yes.
+	// Specifies whether the entity is malicious. Valid values:
 	//
 	// example:
 	//
@@ -400,9 +370,9 @@ type ListEntitiesResponseBodyDataResponseData struct {
 	//
 	// 113091674488****
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
-	// The entity tags. The value is a JSON array string:
+	// The entity tags. The value is a JSON array string in the following format:
 	//
-	// `"[{"tagKey1":"tagValue1"},{"tagKey2":"tagValue2"}]"`.
+	// `"[{"tagKey1":"tagValue1"},{"tagKey2":"tagValue2"}]"`
 	//
 	// example:
 	//
