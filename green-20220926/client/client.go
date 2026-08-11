@@ -45,10 +45,10 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-shanghai-finance-1": dara.String("green.aliyuncs.com"),
 		"cn-north-2-gov-1":      dara.String("green.aliyuncs.com"),
 		"cn-shenzhen":           dara.String("green-cip.cn-shenzhen.aliyuncs.com"),
-		"cn-shanghai":           dara.String("green-cip.cn-shanghai.aliyuncs.com"),
-		"cn-hangzhou":           dara.String("green-cip.cn-hangzhou.aliyuncs.com"),
 		"cn-beijing":            dara.String("green-cip.cn-beijing.aliyuncs.com"),
+		"cn-shanghai":           dara.String("green-cip.cn-shanghai.aliyuncs.com"),
 		"ap-southeast-1":        dara.String("green-cip.ap-southeast-1.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("green-cip.cn-hangzhou.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -230,6 +230,88 @@ func (client *Client) AddAppAgent(request *AddAppAgentRequest) (_result *AddAppA
 	runtime := &dara.RuntimeOptions{}
 	_result = &AddAppAgentResponse{}
 	_body, _err := client.AddAppAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an app configuration.
+//
+// @param request - AddAppConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddAppConfigResponse
+func (client *Client) AddAppConfigWithOptions(request *AddAppConfigRequest, runtime *dara.RuntimeOptions) (_result *AddAppConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Classify) {
+		query["Classify"] = request.Classify
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.SysAppId) {
+		query["SysAppId"] = request.SysAppId
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddAppConfig"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddAppConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an app configuration.
+//
+// @param request - AddAppConfigRequest
+//
+// @return AddAppConfigResponse
+func (client *Client) AddAppConfig(request *AddAppConfigRequest) (_result *AddAppConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddAppConfigResponse{}
+	_body, _err := client.AddAppConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3031,6 +3113,538 @@ func (client *Client) ExportTextScanResult(request *ExportTextScanResultRequest)
 
 // Summary:
 //
+// Retrieves the details of an AI application.
+//
+// @param request - GetAiAppDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAiAppDetailResponse
+func (client *Client) GetAiAppDetailWithOptions(request *GetAiAppDetailRequest, runtime *dara.RuntimeOptions) (_result *GetAiAppDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAiAppDetail"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAiAppDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of an AI application.
+//
+// @param request - GetAiAppDetailRequest
+//
+// @return GetAiAppDetailResponse
+func (client *Client) GetAiAppDetail(request *GetAiAppDetailRequest) (_result *GetAiAppDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAiAppDetailResponse{}
+	_body, _err := client.GetAiAppDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves statistics for AI application details.
+//
+// @param request - GetAiAppDetailStatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAiAppDetailStatResponse
+func (client *Client) GetAiAppDetailStatWithOptions(request *GetAiAppDetailStatRequest, runtime *dara.RuntimeOptions) (_result *GetAiAppDetailStatResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAiAppDetailStat"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAiAppDetailStatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves statistics for AI application details.
+//
+// @param request - GetAiAppDetailStatRequest
+//
+// @return GetAiAppDetailStatResponse
+func (client *Client) GetAiAppDetailStat(request *GetAiAppDetailStatRequest) (_result *GetAiAppDetailStatResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAiAppDetailStatResponse{}
+	_body, _err := client.GetAiAppDetailStatWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the topology of an AI application.
+//
+// @param tmpReq - GetAiAppDetailTopoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAiAppDetailTopoResponse
+func (client *Client) GetAiAppDetailTopoWithOptions(tmpReq *GetAiAppDetailTopoRequest, runtime *dara.RuntimeOptions) (_result *GetAiAppDetailTopoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetAiAppDetailTopoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TimeQuery) {
+		request.TimeQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TimeQuery, dara.String("TimeQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TimeQueryShrink) {
+		query["TimeQuery"] = request.TimeQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAiAppDetailTopo"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAiAppDetailTopoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the topology of an AI application.
+//
+// @param request - GetAiAppDetailTopoRequest
+//
+// @return GetAiAppDetailTopoResponse
+func (client *Client) GetAiAppDetailTopo(request *GetAiAppDetailTopoRequest) (_result *GetAiAppDetailTopoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAiAppDetailTopoResponse{}
+	_body, _err := client.GetAiAppDetailTopoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of an application node in the agent topology.
+//
+// @param request - GetAiAppNodeDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAiAppNodeDetailResponse
+func (client *Client) GetAiAppNodeDetailWithOptions(request *GetAiAppNodeDetailRequest, runtime *dara.RuntimeOptions) (_result *GetAiAppNodeDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.NodeId) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !dara.IsNil(request.NodeName) {
+		query["NodeName"] = request.NodeName
+	}
+
+	if !dara.IsNil(request.NodeType) {
+		query["NodeType"] = request.NodeType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAiAppNodeDetail"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAiAppNodeDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of an application node in the agent topology.
+//
+// @param request - GetAiAppNodeDetailRequest
+//
+// @return GetAiAppNodeDetailResponse
+func (client *Client) GetAiAppNodeDetail(request *GetAiAppNodeDetailRequest) (_result *GetAiAppNodeDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAiAppNodeDetailResponse{}
+	_body, _err := client.GetAiAppNodeDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the overview information of AI applications.
+//
+// @param request - GetAiAppOverviewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAiAppOverviewResponse
+func (client *Client) GetAiAppOverviewWithOptions(request *GetAiAppOverviewRequest, runtime *dara.RuntimeOptions) (_result *GetAiAppOverviewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAiAppOverview"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAiAppOverviewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the overview information of AI applications.
+//
+// @param request - GetAiAppOverviewRequest
+//
+// @return GetAiAppOverviewResponse
+func (client *Client) GetAiAppOverview(request *GetAiAppOverviewRequest) (_result *GetAiAppOverviewResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAiAppOverviewResponse{}
+	_body, _err := client.GetAiAppOverviewWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves statistics data for AI applications.
+//
+// @param request - GetAiAppStatsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAiAppStatsResponse
+func (client *Client) GetAiAppStatsWithOptions(request *GetAiAppStatsRequest, runtime *dara.RuntimeOptions) (_result *GetAiAppStatsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ByMonth) {
+		query["ByMonth"] = request.ByMonth
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAiAppStats"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAiAppStatsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves statistics data for AI applications.
+//
+// @param request - GetAiAppStatsRequest
+//
+// @return GetAiAppStatsResponse
+func (client *Client) GetAiAppStats(request *GetAiAppStatsRequest) (_result *GetAiAppStatsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAiAppStatsResponse{}
+	_body, _err := client.GetAiAppStatsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of an app alert.
+//
+// @param request - GetAiAppTraceDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAiAppTraceDetailResponse
+func (client *Client) GetAiAppTraceDetailWithOptions(request *GetAiAppTraceDetailRequest, runtime *dara.RuntimeOptions) (_result *GetAiAppTraceDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TraceId) {
+		query["TraceId"] = request.TraceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAiAppTraceDetail"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAiAppTraceDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of an app alert.
+//
+// @param request - GetAiAppTraceDetailRequest
+//
+// @return GetAiAppTraceDetailResponse
+func (client *Client) GetAiAppTraceDetail(request *GetAiAppTraceDetailRequest) (_result *GetAiAppTraceDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAiAppTraceDetailResponse{}
+	_body, _err := client.GetAiAppTraceDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the import progress of proxy answer samples.
 //
 // @param request - GetAnswerImportProgressRequest
@@ -3719,6 +4333,72 @@ func (client *Client) GetGuardLogStats(request *GetGuardLogStatsRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetGuardLogStatsResponse{}
 	_body, _err := client.GetGuardLogStatsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves statistics information on AI application protection data.
+//
+// @param request - GetGuardStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGuardStatusResponse
+func (client *Client) GetGuardStatusWithOptions(request *GetGuardStatusRequest, runtime *dara.RuntimeOptions) (_result *GetGuardStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CommodityCode) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetGuardStatus"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetGuardStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves statistics information on AI application protection data.
+//
+// @param request - GetGuardStatusRequest
+//
+// @return GetGuardStatusResponse
+func (client *Client) GetGuardStatus(request *GetGuardStatusRequest) (_result *GetGuardStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetGuardStatusResponse{}
+	_body, _err := client.GetGuardStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4539,6 +5219,150 @@ func (client *Client) GetPromptTestResult(request *GetPromptTestResultRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetPromptTestResultResponse{}
 	_body, _err := client.GetPromptTestResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries QPS statistics information.
+//
+// @param request - GetQpsStatsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQpsStatsResponse
+func (client *Client) GetQpsStatsWithOptions(request *GetQpsStatsRequest, runtime *dara.RuntimeOptions) (_result *GetQpsStatsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetQpsStats"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetQpsStatsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries QPS statistics information.
+//
+// @param request - GetQpsStatsRequest
+//
+// @return GetQpsStatsResponse
+func (client *Client) GetQpsStats(request *GetQpsStatsRequest) (_result *GetQpsStatsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetQpsStatsResponse{}
+	_body, _err := client.GetQpsStatsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries risk posture statistics.
+//
+// @param request - GetRiskStatsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRiskStatsResponse
+func (client *Client) GetRiskStatsWithOptions(request *GetRiskStatsRequest, runtime *dara.RuntimeOptions) (_result *GetRiskStatsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Classify) {
+		query["Classify"] = request.Classify
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRiskStats"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRiskStatsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries risk posture statistics.
+//
+// @param request - GetRiskStatsRequest
+//
+// @return GetRiskStatsResponse
+func (client *Client) GetRiskStats(request *GetRiskStatsRequest) (_result *GetRiskStatsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetRiskStatsResponse{}
+	_body, _err := client.GetRiskStatsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5478,6 +6302,384 @@ func (client *Client) GetUserBuyStatus(request *GetUserBuyStatusRequest) (_resul
 
 // Summary:
 //
+// Initializes AI application log scanning and activates the service.
+//
+// @param request - InitAiAppScanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InitAiAppScanResponse
+func (client *Client) InitAiAppScanWithOptions(request *InitAiAppScanRequest, runtime *dara.RuntimeOptions) (_result *InitAiAppScanResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Channel) {
+		query["Channel"] = request.Channel
+	}
+
+	if !dara.IsNil(request.CommodityCode) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InitAiAppScan"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InitAiAppScanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Initializes AI application log scanning and activates the service.
+//
+// @param request - InitAiAppScanRequest
+//
+// @return InitAiAppScanResponse
+func (client *Client) InitAiAppScan(request *InitAiAppScanRequest) (_result *InitAiAppScanResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &InitAiAppScanResponse{}
+	_body, _err := client.InitAiAppScanWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a paginated list of AI applications.
+//
+// @param request - ListAiAppByPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAiAppByPageResponse
+func (client *Client) ListAiAppByPageWithOptions(request *ListAiAppByPageRequest, runtime *dara.RuntimeOptions) (_result *ListAiAppByPageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAiAppByPage"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAiAppByPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a paginated list of AI applications.
+//
+// @param request - ListAiAppByPageRequest
+//
+// @return ListAiAppByPageResponse
+func (client *Client) ListAiAppByPage(request *ListAiAppByPageRequest) (_result *ListAiAppByPageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAiAppByPageResponse{}
+	_body, _err := client.ListAiAppByPageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the list of risk events for AI applications.
+//
+// @param request - ListAiAppRiskEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAiAppRiskEventResponse
+func (client *Client) ListAiAppRiskEventWithOptions(request *ListAiAppRiskEventRequest, runtime *dara.RuntimeOptions) (_result *ListAiAppRiskEventResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAiAppRiskEvent"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAiAppRiskEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the list of risk events for AI applications.
+//
+// @param request - ListAiAppRiskEventRequest
+//
+// @return ListAiAppRiskEventResponse
+func (client *Client) ListAiAppRiskEvent(request *ListAiAppRiskEventRequest) (_result *ListAiAppRiskEventResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAiAppRiskEventResponse{}
+	_body, _err := client.ListAiAppRiskEventWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a paginated list of risk events for AI applications.
+//
+// @param request - ListAiAppRiskEventByPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAiAppRiskEventByPageResponse
+func (client *Client) ListAiAppRiskEventByPageWithOptions(request *ListAiAppRiskEventByPageRequest, runtime *dara.RuntimeOptions) (_result *ListAiAppRiskEventByPageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAiAppRiskEventByPage"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAiAppRiskEventByPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a paginated list of risk events for AI applications.
+//
+// @param request - ListAiAppRiskEventByPageRequest
+//
+// @return ListAiAppRiskEventByPageResponse
+func (client *Client) ListAiAppRiskEventByPage(request *ListAiAppRiskEventByPageRequest) (_result *ListAiAppRiskEventByPageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAiAppRiskEventByPageResponse{}
+	_body, _err := client.ListAiAppRiskEventByPageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the alert list of an application with pagination.
+//
+// @param request - ListAiAppWarningByPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAiAppWarningByPageResponse
+func (client *Client) ListAiAppWarningByPageWithOptions(request *ListAiAppWarningByPageRequest, runtime *dara.RuntimeOptions) (_result *ListAiAppWarningByPageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAiAppWarningByPage"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAiAppWarningByPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the alert list of an application with pagination.
+//
+// @param request - ListAiAppWarningByPageRequest
+//
+// @return ListAiAppWarningByPageResponse
+func (client *Client) ListAiAppWarningByPage(request *ListAiAppWarningByPageRequest) (_result *ListAiAppWarningByPageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAiAppWarningByPageResponse{}
+	_body, _err := client.ListAiAppWarningByPageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the list of proxy answer libraries.
 //
 // @param request - ListAnswerLibRequest
@@ -6341,7 +7543,11 @@ func (client *Client) LlmStreamChat(request *LlmStreamChatRequest) (_result *Llm
 
 // Summary:
 //
-// oss结果反馈
+// Provides feedback on OSS detection results.
+//
+// Description:
+//
+// This operation is not billed. Set the polling interval to 30 seconds (query results 30 seconds after submitting an asynchronous detection task). The maximum interval cannot exceed 24 hours. Otherwise, results are automatically deleted.
 //
 // @param request - MarkOssV2ResultRequest
 //
@@ -6405,7 +7611,11 @@ func (client *Client) MarkOssV2ResultWithOptions(request *MarkOssV2ResultRequest
 
 // Summary:
 //
-// oss结果反馈
+// Provides feedback on OSS detection results.
+//
+// Description:
+//
+// This operation is not billed. Set the polling interval to 30 seconds (query results 30 seconds after submitting an asynchronous detection task). The maximum interval cannot exceed 24 hours. Otherwise, results are automatically deleted.
 //
 // @param request - MarkOssV2ResultRequest
 //
@@ -7323,6 +8533,84 @@ func (client *Client) QueryCallbackByPage(request *QueryCallbackByPageRequest) (
 
 // Summary:
 //
+// Queries label configurations.
+//
+// @param request - QueryLabelConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryLabelConfigResponse
+func (client *Client) QueryLabelConfigWithOptions(request *QueryLabelConfigRequest, runtime *dara.RuntimeOptions) (_result *QueryLabelConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Classify) {
+		query["Classify"] = request.Classify
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.ServiceCode) {
+		query["ServiceCode"] = request.ServiceCode
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryLabelConfig"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryLabelConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries label configurations.
+//
+// @param request - QueryLabelConfigRequest
+//
+// @return QueryLabelConfigResponse
+func (client *Client) QueryLabelConfig(request *QueryLabelConfigRequest) (_result *QueryLabelConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryLabelConfigResponse{}
+	_body, _err := client.QueryLabelConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Reverts an app to a historical version.
 //
 // @param request - RecoverAppConfigHistoryRequest
@@ -7467,6 +8755,76 @@ func (client *Client) StopOnlineTest(request *StopOnlineTestRequest) (_result *S
 
 // Summary:
 //
+// Updates the scan status of AI applications.
+//
+// @param request - UpdateAiAppScanStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAiAppScanStatusResponse
+func (client *Client) UpdateAiAppScanStatusWithOptions(request *UpdateAiAppScanStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateAiAppScanStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppIds) {
+		query["AppIds"] = request.AppIds
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAiAppScanStatus"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAiAppScanStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the scan status of AI applications.
+//
+// @param request - UpdateAiAppScanStatusRequest
+//
+// @return UpdateAiAppScanStatusResponse
+func (client *Client) UpdateAiAppScanStatus(request *UpdateAiAppScanStatusRequest) (_result *UpdateAiAppScanStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAiAppScanStatusResponse{}
+	_body, _err := client.UpdateAiAppScanStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the evidence transfer configuration.
 //
 // @param request - UpdateBackupConfigRequest
@@ -7532,6 +8890,94 @@ func (client *Client) UpdateBackupConfig(request *UpdateBackupConfigRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateBackupConfigResponse{}
 	_body, _err := client.UpdateBackupConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the status of risk events.
+//
+// @param tmpReq - UpdateEventStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateEventStatusResponse
+func (client *Client) UpdateEventStatusWithOptions(tmpReq *UpdateEventStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateEventStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateEventStatusShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.EventIds) {
+		request.EventIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EventIds, dara.String("EventIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.EventIdsShrink) {
+		query["EventIds"] = request.EventIdsShrink
+	}
+
+	if !dara.IsNil(request.OperationCode) {
+		query["OperationCode"] = request.OperationCode
+	}
+
+	if !dara.IsNil(request.OperationParams) {
+		query["OperationParams"] = request.OperationParams
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateEventStatus"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateEventStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the status of risk events.
+//
+// @param request - UpdateEventStatusRequest
+//
+// @return UpdateEventStatusResponse
+func (client *Client) UpdateEventStatus(request *UpdateEventStatusRequest) (_result *UpdateEventStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateEventStatusResponse{}
+	_body, _err := client.UpdateEventStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7766,6 +9212,80 @@ func (client *Client) UpdateKeywordLib(request *UpdateKeywordLibRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateKeywordLibResponse{}
 	_body, _err := client.UpdateKeywordLibWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates Meta log information.
+//
+// @param request - UpdateMetaLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMetaLogResponse
+func (client *Client) UpdateMetaLogWithOptions(request *UpdateMetaLogRequest, runtime *dara.RuntimeOptions) (_result *UpdateMetaLogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CommodityCode) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !dara.IsNil(request.DeliveryRegion) {
+		query["DeliveryRegion"] = request.DeliveryRegion
+	}
+
+	if !dara.IsNil(request.Storage) {
+		query["Storage"] = request.Storage
+	}
+
+	if !dara.IsNil(request.Ttl) {
+		query["Ttl"] = request.Ttl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMetaLog"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMetaLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates Meta log information.
+//
+// @param request - UpdateMetaLogRequest
+//
+// @return UpdateMetaLogResponse
+func (client *Client) UpdateMetaLog(request *UpdateMetaLogRequest) (_result *UpdateMetaLogResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateMetaLogResponse{}
+	_body, _err := client.UpdateMetaLogWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
