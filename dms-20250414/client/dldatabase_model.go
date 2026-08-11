@@ -30,7 +30,7 @@ type DLDatabase struct {
 	//
 	// hive
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	// The ID of the database.
+	// The database ID.
 	//
 	// example:
 	//

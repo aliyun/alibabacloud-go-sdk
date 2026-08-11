@@ -16,7 +16,7 @@ type iPartitionError interface {
 }
 
 type PartitionError struct {
-	// The details of the error.
+	// The error details.
 	//
 	// example:
 	//

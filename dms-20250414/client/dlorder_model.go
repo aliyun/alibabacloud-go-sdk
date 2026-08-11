@@ -22,7 +22,7 @@ type DLOrder struct {
 	//
 	// col1
 	Col *string `json:"Col,omitempty" xml:"Col,omitempty"`
-	// The position of the column in the sort order.
+	// The position of the column in the sort.
 	//
 	// example:
 	//

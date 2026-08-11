@@ -16,7 +16,7 @@ type iDLResourceUri interface {
 }
 
 type DLResourceUri struct {
-	// The resource type. Valid values:
+	// The type of the resource. Valid values:
 	//
 	// - ARCHIVE
 	//
