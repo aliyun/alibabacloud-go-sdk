@@ -225,6 +225,7 @@ type ListExecutorGroupResponseBodyDataRecords struct {
 	//
 	// my first workflow
 	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableJobs      *int32  `json:"EnableJobs,omitempty" xml:"EnableJobs,omitempty"`
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
 	MaxJobs         *int32  `json:"MaxJobs,omitempty" xml:"MaxJobs,omitempty"`
 	// example:
@@ -289,6 +290,10 @@ func (s *ListExecutorGroupResponseBodyDataRecords) GetCurrentJobs() *int32 {
 
 func (s *ListExecutorGroupResponseBodyDataRecords) GetDescription() *string {
 	return s.Description
+}
+
+func (s *ListExecutorGroupResponseBodyDataRecords) GetEnableJobs() *int32 {
+	return s.EnableJobs
 }
 
 func (s *ListExecutorGroupResponseBodyDataRecords) GetIntegrationType() *string {
@@ -363,6 +368,11 @@ func (s *ListExecutorGroupResponseBodyDataRecords) SetCurrentJobs(v int32) *List
 
 func (s *ListExecutorGroupResponseBodyDataRecords) SetDescription(v string) *ListExecutorGroupResponseBodyDataRecords {
 	s.Description = &v
+	return s
+}
+
+func (s *ListExecutorGroupResponseBodyDataRecords) SetEnableJobs(v int32) *ListExecutorGroupResponseBodyDataRecords {
+	s.EnableJobs = &v
 	return s
 }
 

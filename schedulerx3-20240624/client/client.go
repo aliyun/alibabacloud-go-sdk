@@ -26,18 +26,18 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"eu-central-1":          dara.String("schedulerx3.eu-central-1.aliyuncs.com"),
-		"cn-zhangjiakou":        dara.String("schedulerx3.cn-zhangjiakou.aliyuncs.com"),
 		"cn-shenzhen":           dara.String("schedulerx3.cn-shenzhen.aliyuncs.com"),
-		"cn-shanghai-finance-1": dara.String("schedulerx3.cn-shanghai-finance-1.aliyuncs.com"),
-		"cn-shanghai":           dara.String("schedulerx3.cn-shanghai.aliyuncs.com"),
-		"cn-hongkong":           dara.String("schedulerx3.cn-hongkong.aliyuncs.com"),
-		"cn-hangzhou":           dara.String("schedulerx3.cn-hangzhou.aliyuncs.com"),
-		"cn-guangzhou":          dara.String("schedulerx3.cn-guangzhou.aliyuncs.com"),
-		"cn-chengdu":            dara.String("schedulerx3.cn-chengdu.aliyuncs.com"),
 		"cn-beijing":            dara.String("schedulerx3.cn-beijing.aliyuncs.com"),
-		"ap-southeast-1":        dara.String("schedulerx3.ap-southeast-1.aliyuncs.com"),
 		"ap-northeast-1":        dara.String("schedulerx3.ap-northeast-1.aliyuncs.com"),
+		"cn-chengdu":            dara.String("schedulerx3.cn-chengdu.aliyuncs.com"),
+		"cn-shanghai":           dara.String("schedulerx3.cn-shanghai.aliyuncs.com"),
+		"cn-guangzhou":          dara.String("schedulerx3.cn-guangzhou.aliyuncs.com"),
+		"cn-hongkong":           dara.String("schedulerx3.cn-hongkong.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("schedulerx3.ap-southeast-1.aliyuncs.com"),
+		"cn-zhangjiakou":        dara.String("schedulerx3.cn-zhangjiakou.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("schedulerx3.cn-hangzhou.aliyuncs.com"),
+		"eu-central-1":          dara.String("schedulerx3.eu-central-1.aliyuncs.com"),
+		"cn-shanghai-finance-1": dara.String("schedulerx3.cn-shanghai-finance-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -789,6 +789,10 @@ func (client *Client) CreateJobWithOptions(tmpReq *CreateJobRequest, runtime *da
 
 	if !dara.IsNil(request.JobType) {
 		body["JobType"] = request.JobType
+	}
+
+	if !dara.IsNil(request.Label) {
+		body["Label"] = request.Label
 	}
 
 	if !dara.IsNil(request.MaxAttempt) {
@@ -4126,6 +4130,10 @@ func (client *Client) ListJobsWithOptions(request *ListJobsRequest, runtime *dar
 		query["JobName"] = request.JobName
 	}
 
+	if !dara.IsNil(request.Label) {
+		query["Label"] = request.Label
+	}
+
 	if !dara.IsNil(request.PageNum) {
 		query["PageNum"] = request.PageNum
 	}
@@ -7300,6 +7308,10 @@ func (client *Client) UpdateJobWithOptions(tmpReq *UpdateJobRequest, runtime *da
 
 	if !dara.IsNil(request.JobId) {
 		body["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.Label) {
+		body["Label"] = request.Label
 	}
 
 	if !dara.IsNil(request.MaxAttempt) {

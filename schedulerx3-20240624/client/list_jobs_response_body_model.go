@@ -123,7 +123,7 @@ type ListJobsResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -197,6 +197,7 @@ func (s *ListJobsResponseBodyData) Validate() error {
 }
 
 type ListJobsResponseBodyDataRecords struct {
+	// The application ID.
 	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
 	// The application name.
 	//
@@ -204,7 +205,7 @@ type ListJobsResponseBodyDataRecords struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The retry interval upon a fault. Unit: seconds.
+	// The retry interval on error. Unit: seconds.
 	//
 	// example:
 	//
@@ -236,13 +237,13 @@ type ListJobsResponseBodyDataRecords struct {
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
 	// The current execution status. Valid values:
 	//
-	// - 0: not started
+	// - 0: Not started.
 	//
-	// - 1: running
+	// - 1: Running.
 	//
-	// - 2: queued
+	// - 2: Queued.
 	//
-	// - 3: waiting
+	// - 3: Waiting.
 	//
 	// example:
 	//
@@ -264,21 +265,21 @@ type ListJobsResponseBodyDataRecords struct {
 	//
 	// example:
 	//
-	// job01单机任务
+	// job01 standalone job
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The client-side blocking strategy. Valid values:
+	// The client blocking strategy. Valid values:
 	//
-	// - 1: serial execution on a single machine
+	// - 1: Serial execution on a single machine.
 	//
-	// - 2: ignore subsequent triggers
+	// - 2: Ignore subsequent schedules.
 	//
-	// - 3: override previous triggers
+	// - 3: Override previous schedules.
 	//
 	// example:
 	//
 	// 1
 	ExecutorBlockStrategy *string `json:"ExecutorBlockStrategy,omitempty" xml:"ExecutorBlockStrategy,omitempty"`
-	// The jobhandler name.
+	// The `jobhandler` name.
 	//
 	// example:
 	//
@@ -296,6 +297,12 @@ type ListJobsResponseBodyDataRecords struct {
 	//
 	// xxljob
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The job label information.
+	//
+	// example:
+	//
+	// {key:value}
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The end time of the last execution.
 	//
 	// example:
@@ -304,21 +311,21 @@ type ListJobsResponseBodyDataRecords struct {
 	LastExecuteEndTime *string `json:"LastExecuteEndTime,omitempty" xml:"LastExecuteEndTime,omitempty"`
 	// The result of the last execution. Valid values:
 	//
-	// - 4: succeeded
+	// - 4: Succeeded.
 	//
-	// - 5: failed
+	// - 5: Failed.
 	//
 	// example:
 	//
 	// 4
 	LastExecuteStatus *int32 `json:"LastExecuteStatus,omitempty" xml:"LastExecuteStatus,omitempty"`
-	// The maximum number of retry attempts upon failure. Set this value based on your business requirements.
+	// The maximum number of retry attempts on error. Set this based on your business requirements.
 	//
 	// example:
 	//
 	// 5
 	MaxAttempt *int32 `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
-	// The maximum number of concurrent instances.
+	// The maximum concurrency threshold.
 	//
 	// example:
 	//
@@ -336,7 +343,7 @@ type ListJobsResponseBodyDataRecords struct {
 	//
 	// 1
 	NodeType *int32 `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The notice configuration.
+	// The `Notice` configuration.
 	//
 	// example:
 	//
@@ -362,21 +369,21 @@ type ListJobsResponseBodyDataRecords struct {
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The routing strategy. Valid values:
 	//
-	// - 1: round-robin
+	// - 1: polling.
 	//
-	// - 2: random
+	// - 2: random.
 	//
-	// - 3: first
+	// - 3: first.
 	//
-	// - 4: last
+	// - 4: last.
 	//
-	// - 5: least frequently used
+	// - 5: least frequently used.
 	//
-	// - 6: least recently used
+	// - 6: least recently used.
 	//
-	// - 7: consistent hashing
+	// - 7: consistent hashing.
 	//
-	// - 8: shard broadcast
+	// - 8: shard broadcast.
 	//
 	// example:
 	//
@@ -402,9 +409,9 @@ type ListJobsResponseBodyDataRecords struct {
 	StartTimeType *int32 `json:"StartTimeType,omitempty" xml:"StartTimeType,omitempty"`
 	// The job status. Valid values:
 	//
-	// - 0: disabled
+	// - 0: DISABLE (disabled).
 	//
-	// - 1: enabled
+	// - 1: ENABLE (enabled).
 	//
 	// example:
 	//
@@ -418,15 +425,15 @@ type ListJobsResponseBodyDataRecords struct {
 	TimeExpression *string `json:"TimeExpression,omitempty" xml:"TimeExpression,omitempty"`
 	// The time type. Valid values:
 	//
-	// - -1: none
+	// - -1: none.
 	//
-	// - 1: cron
+	// - 1: cron.
 	//
-	// - 3: fix_rate
+	// - 3: fix_rate.
 	//
-	// - 5: one_time
+	// - 5: one_time.
 	//
-	// - 100: api
+	// - 100: api.
 	//
 	// example:
 	//
@@ -464,7 +471,7 @@ type ListJobsResponseBodyDataRecords struct {
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
 	// The extended attributes.
 	//
-	// > Not supported.
+	// > Not supported currently.
 	//
 	// example:
 	//
@@ -538,6 +545,10 @@ func (s *ListJobsResponseBodyDataRecords) GetJobId() *int64 {
 
 func (s *ListJobsResponseBodyDataRecords) GetJobType() *string {
 	return s.JobType
+}
+
+func (s *ListJobsResponseBodyDataRecords) GetLabel() *string {
+	return s.Label
 }
 
 func (s *ListJobsResponseBodyDataRecords) GetLastExecuteEndTime() *string {
@@ -700,6 +711,11 @@ func (s *ListJobsResponseBodyDataRecords) SetJobId(v int64) *ListJobsResponseBod
 
 func (s *ListJobsResponseBodyDataRecords) SetJobType(v string) *ListJobsResponseBodyDataRecords {
 	s.JobType = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataRecords) SetLabel(v string) *ListJobsResponseBodyDataRecords {
+	s.Label = &v
 	return s
 }
 

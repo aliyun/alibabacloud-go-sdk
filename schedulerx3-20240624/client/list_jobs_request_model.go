@@ -21,6 +21,8 @@ type iListJobsRequest interface {
 	GetJobId() *int64
 	SetJobName(v string) *ListJobsRequest
 	GetJobName() *string
+	SetLabel(v string) *ListJobsRequest
+	GetLabel() *string
 	SetPageNum(v int32) *ListJobsRequest
 	GetPageNum() *int32
 	SetPageSize(v int32) *ListJobsRequest
@@ -46,13 +48,13 @@ type ListJobsRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The job description.
+	// The description.
 	//
 	// example:
 	//
-	// job01单机任务
+	// job01 standalone job
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The jobhandler name.
+	// The `jobhandler` name.
 	//
 	// example:
 	//
@@ -70,6 +72,12 @@ type ListJobsRequest struct {
 	//
 	// job01
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The job label filter condition.
+	//
+	// example:
+	//
+	// {key:value}
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The page number.
 	//
 	// example:
@@ -82,7 +90,7 @@ type ListJobsRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The job status.
+	// The status.
 	//
 	// example:
 	//
@@ -128,6 +136,10 @@ func (s *ListJobsRequest) GetJobName() *string {
 	return s.JobName
 }
 
+func (s *ListJobsRequest) GetLabel() *string {
+	return s.Label
+}
+
 func (s *ListJobsRequest) GetPageNum() *int32 {
 	return s.PageNum
 }
@@ -171,6 +183,11 @@ func (s *ListJobsRequest) SetJobId(v int64) *ListJobsRequest {
 
 func (s *ListJobsRequest) SetJobName(v string) *ListJobsRequest {
 	s.JobName = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetLabel(v string) *ListJobsRequest {
+	s.Label = &v
 	return s
 }
 

@@ -587,6 +587,10 @@ func (client *Client) CreateJobWithContext(ctx context.Context, tmpReq *CreateJo
 		body["JobType"] = request.JobType
 	}
 
+	if !dara.IsNil(request.Label) {
+		body["Label"] = request.Label
+	}
+
 	if !dara.IsNil(request.MaxAttempt) {
 		body["MaxAttempt"] = request.MaxAttempt
 	}
@@ -3068,6 +3072,10 @@ func (client *Client) ListJobsWithContext(ctx context.Context, request *ListJobs
 		query["JobName"] = request.JobName
 	}
 
+	if !dara.IsNil(request.Label) {
+		query["Label"] = request.Label
+	}
+
 	if !dara.IsNil(request.PageNum) {
 		query["PageNum"] = request.PageNum
 	}
@@ -5426,6 +5434,10 @@ func (client *Client) UpdateJobWithContext(ctx context.Context, tmpReq *UpdateJo
 
 	if !dara.IsNil(request.JobId) {
 		body["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.Label) {
+		body["Label"] = request.Label
 	}
 
 	if !dara.IsNil(request.MaxAttempt) {

@@ -31,6 +31,8 @@ type iUpdateJobRequest interface {
 	GetJobHandler() *string
 	SetJobId(v int64) *UpdateJobRequest
 	GetJobId() *int64
+	SetLabel(v string) *UpdateJobRequest
+	GetLabel() *string
 	SetMaxAttempt(v int32) *UpdateJobRequest
 	GetMaxAttempt() *int32
 	SetMaxConcurrency(v int32) *UpdateJobRequest
@@ -66,6 +68,7 @@ type iUpdateJobRequest interface {
 }
 
 type UpdateJobRequest struct {
+	// The application ID.
 	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
 	// The application name.
 	//
@@ -125,7 +128,7 @@ type UpdateJobRequest struct {
 	//
 	// 1
 	ExecutorBlockStrategy *int32 `json:"ExecutorBlockStrategy,omitempty" xml:"ExecutorBlockStrategy,omitempty"`
-	// The JobHandler name.
+	// The jobhandler name.
 	//
 	// example:
 	//
@@ -139,13 +142,19 @@ type UpdateJobRequest struct {
 	//
 	// 74
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The node label information.
+	//
+	// example:
+	//
+	// {key:value}
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The maximum number of retry attempts upon node failure.
 	//
 	// example:
 	//
 	// 3
 	MaxAttempt *int32 `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
-	// The maximum number of concurrent instances for the node.
+	// The maximum concurrency of the node.
 	//
 	// >The maximum number of instances that can run simultaneously for the same node. A value of 1 indicates that repeated execution is not allowed. If the concurrency limit is exceeded, the current scheduling is skipped.
 	//
@@ -169,7 +178,7 @@ type UpdateJobRequest struct {
 	//
 	// test
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The node execution priority. Valid values:
+	// The execution priority of the node. Valid values:
 	//
 	// - 1: low
 	//
@@ -205,7 +214,7 @@ type UpdateJobRequest struct {
 	//
 	// 1
 	RouteStrategy *int32 `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
-	// The script content for non-BEAN nodes. Use this field to configure the script.
+	// The script configured for non-BEAN nodes.
 	//
 	// example:
 	//
@@ -227,13 +236,13 @@ type UpdateJobRequest struct {
 	//
 	// - none: No value is required.
 	//
-	// - cron: Specify a standard cron expression. Online verification is supported.
+	// - cron: Enter a standard cron expression. Online verification is supported.
 	//
 	// - api: No value is required.
 	//
-	// - fixed_rate: Specify a fixed frequency value in seconds. For example, 30 indicates that the node is triggered every 30 seconds.
+	// - fixed_rate: Enter a fixed frequency value in seconds. For example, 30 indicates that the node is triggered every 30 seconds.
 	//
-	// - one_time: Specify a scheduling time in the format of yyyy-MM-dd HH:mm:ss or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
+	// - one_time: Enter a scheduling time in the format of yyyy-MM-dd HH:mm:ss or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
 	//
 	// example:
 	//
@@ -257,7 +266,7 @@ type UpdateJobRequest struct {
 	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
 	// The time zone.
 	//
-	// > The default value is the time zone of the SchedulerX server.
+	// > Default value: the time zone of the SchedulerX server.
 	//
 	// example:
 	//
@@ -269,6 +278,8 @@ type UpdateJobRequest struct {
 	//
 	// 1
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The extended properties of the node.
+	//
 	// example:
 	//
 	// {"reponseMode":"streaming"}
@@ -325,6 +336,10 @@ func (s *UpdateJobRequest) GetJobHandler() *string {
 
 func (s *UpdateJobRequest) GetJobId() *int64 {
 	return s.JobId
+}
+
+func (s *UpdateJobRequest) GetLabel() *string {
+	return s.Label
 }
 
 func (s *UpdateJobRequest) GetMaxAttempt() *int32 {
@@ -446,6 +461,11 @@ func (s *UpdateJobRequest) SetJobId(v int64) *UpdateJobRequest {
 	return s
 }
 
+func (s *UpdateJobRequest) SetLabel(v string) *UpdateJobRequest {
+	s.Label = &v
+	return s
+}
+
 func (s *UpdateJobRequest) SetMaxAttempt(v int32) *UpdateJobRequest {
 	s.MaxAttempt = &v
 	return s
@@ -545,19 +565,19 @@ func (s *UpdateJobRequest) Validate() error {
 }
 
 type UpdateJobRequestNoticeConfig struct {
-	// The early termination threshold, in seconds.
+	// The early completion threshold, in seconds.
 	//
 	// example:
 	//
 	// 30
 	EndEarly *int32 `json:"EndEarly,omitempty" xml:"EndEarly,omitempty"`
-	// Specifies whether to enable the early termination alert.
+	// Specifies whether to enable the early completion alert.
 	EndEarlyEnable *bool `json:"EndEarlyEnable,omitempty" xml:"EndEarlyEnable,omitempty"`
 	// Specifies whether to enable the failure alert. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: Enables the failure alert.
 	//
-	// - **false**: Disabled.
+	// - **false**: Disables the failure alert.
 	//
 	// example:
 	//
@@ -573,9 +593,9 @@ type UpdateJobRequestNoticeConfig struct {
 	FailLimitTimes *int32 `json:"FailLimitTimes,omitempty" xml:"FailLimitTimes,omitempty"`
 	// Specifies whether to enable the no-available-machine alert. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: Enables the no-available-machine alert.
 	//
-	// - **false**: Disabled.
+	// - **false**: Disables the no-available-machine alert.
 	//
 	// example:
 	//
@@ -583,9 +603,9 @@ type UpdateJobRequestNoticeConfig struct {
 	MissWorkerEnable *bool `json:"MissWorkerEnable,omitempty" xml:"MissWorkerEnable,omitempty"`
 	// The notification channel. Valid values:
 	//
-	// - sms: text message
+	//  - sms: SMS
 	//
-	// - phone: phone call
+	//  - phone: phone call
 	//
 	// - mail: email
 	//
@@ -625,9 +645,9 @@ type UpdateJobRequestNoticeConfig struct {
 	TimeoutEnable *bool `json:"TimeoutEnable,omitempty" xml:"TimeoutEnable,omitempty"`
 	// Specifies whether to enable the timeout termination for the current trigger. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: Enables the timeout termination.
 	//
-	// - **false**: Disabled.
+	// - **false**: Disables the timeout termination.
 	//
 	// example:
 	//
@@ -740,7 +760,7 @@ func (s *UpdateJobRequestNoticeConfig) Validate() error {
 type UpdateJobRequestNoticeContacts struct {
 	// The contact type.
 	//
-	// > Default configurations: 1.
+	// >Default configurations: 1.
 	//
 	// example:
 	//

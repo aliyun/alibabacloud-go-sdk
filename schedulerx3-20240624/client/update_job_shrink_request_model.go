@@ -31,6 +31,8 @@ type iUpdateJobShrinkRequest interface {
 	GetJobHandler() *string
 	SetJobId(v int64) *UpdateJobShrinkRequest
 	GetJobId() *int64
+	SetLabel(v string) *UpdateJobShrinkRequest
+	GetLabel() *string
 	SetMaxAttempt(v int32) *UpdateJobShrinkRequest
 	GetMaxAttempt() *int32
 	SetMaxConcurrency(v int32) *UpdateJobShrinkRequest
@@ -66,6 +68,7 @@ type iUpdateJobShrinkRequest interface {
 }
 
 type UpdateJobShrinkRequest struct {
+	// The application ID.
 	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
 	// The application name.
 	//
@@ -125,7 +128,7 @@ type UpdateJobShrinkRequest struct {
 	//
 	// 1
 	ExecutorBlockStrategy *int32 `json:"ExecutorBlockStrategy,omitempty" xml:"ExecutorBlockStrategy,omitempty"`
-	// The JobHandler name.
+	// The jobhandler name.
 	//
 	// example:
 	//
@@ -139,13 +142,19 @@ type UpdateJobShrinkRequest struct {
 	//
 	// 74
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The node label information.
+	//
+	// example:
+	//
+	// {key:value}
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The maximum number of retry attempts upon node failure.
 	//
 	// example:
 	//
 	// 3
 	MaxAttempt *int32 `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
-	// The maximum number of concurrent instances for the node.
+	// The maximum concurrency of the node.
 	//
 	// >The maximum number of instances that can run simultaneously for the same node. A value of 1 indicates that repeated execution is not allowed. If the concurrency limit is exceeded, the current scheduling is skipped.
 	//
@@ -169,7 +178,7 @@ type UpdateJobShrinkRequest struct {
 	//
 	// test
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The node execution priority. Valid values:
+	// The execution priority of the node. Valid values:
 	//
 	// - 1: low
 	//
@@ -205,7 +214,7 @@ type UpdateJobShrinkRequest struct {
 	//
 	// 1
 	RouteStrategy *int32 `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
-	// The script content for non-BEAN nodes. Use this field to configure the script.
+	// The script configured for non-BEAN nodes.
 	//
 	// example:
 	//
@@ -227,13 +236,13 @@ type UpdateJobShrinkRequest struct {
 	//
 	// - none: No value is required.
 	//
-	// - cron: Specify a standard cron expression. Online verification is supported.
+	// - cron: Enter a standard cron expression. Online verification is supported.
 	//
 	// - api: No value is required.
 	//
-	// - fixed_rate: Specify a fixed frequency value in seconds. For example, 30 indicates that the node is triggered every 30 seconds.
+	// - fixed_rate: Enter a fixed frequency value in seconds. For example, 30 indicates that the node is triggered every 30 seconds.
 	//
-	// - one_time: Specify a scheduling time in the format of yyyy-MM-dd HH:mm:ss or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
+	// - one_time: Enter a scheduling time in the format of yyyy-MM-dd HH:mm:ss or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
 	//
 	// example:
 	//
@@ -257,7 +266,7 @@ type UpdateJobShrinkRequest struct {
 	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
 	// The time zone.
 	//
-	// > The default value is the time zone of the SchedulerX server.
+	// > Default value: the time zone of the SchedulerX server.
 	//
 	// example:
 	//
@@ -269,6 +278,8 @@ type UpdateJobShrinkRequest struct {
 	//
 	// 1
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The extended properties of the node.
+	//
 	// example:
 	//
 	// {"reponseMode":"streaming"}
@@ -325,6 +336,10 @@ func (s *UpdateJobShrinkRequest) GetJobHandler() *string {
 
 func (s *UpdateJobShrinkRequest) GetJobId() *int64 {
 	return s.JobId
+}
+
+func (s *UpdateJobShrinkRequest) GetLabel() *string {
+	return s.Label
 }
 
 func (s *UpdateJobShrinkRequest) GetMaxAttempt() *int32 {
@@ -443,6 +458,11 @@ func (s *UpdateJobShrinkRequest) SetJobHandler(v string) *UpdateJobShrinkRequest
 
 func (s *UpdateJobShrinkRequest) SetJobId(v int64) *UpdateJobShrinkRequest {
 	s.JobId = &v
+	return s
+}
+
+func (s *UpdateJobShrinkRequest) SetLabel(v string) *UpdateJobShrinkRequest {
+	s.Label = &v
 	return s
 }
 

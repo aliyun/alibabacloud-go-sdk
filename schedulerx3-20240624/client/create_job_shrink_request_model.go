@@ -31,6 +31,8 @@ type iCreateJobShrinkRequest interface {
 	GetJobHandler() *string
 	SetJobType(v string) *CreateJobShrinkRequest
 	GetJobType() *string
+	SetLabel(v string) *CreateJobShrinkRequest
+	GetLabel() *string
 	SetMaxAttempt(v int32) *CreateJobShrinkRequest
 	GetMaxAttempt() *int32
 	SetMaxConcurrency(v int32) *CreateJobShrinkRequest
@@ -76,7 +78,7 @@ type CreateJobShrinkRequest struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The retry interval. Unit: seconds. Default value: 30.
+	// The retry interval upon failure. Unit: seconds. Default value: 30.
 	//
 	// example:
 	//
@@ -142,6 +144,12 @@ type CreateJobShrinkRequest struct {
 	//
 	// xxljob
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The node label information.
+	//
+	// example:
+	//
+	// {key:value}
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The maximum number of retry attempts upon failure. Set this parameter based on your business requirements.
 	//
 	// example:
@@ -230,7 +238,7 @@ type CreateJobShrinkRequest struct {
 	//
 	// 1
 	StartTimeType *int32 `json:"StartTimeType,omitempty" xml:"StartTimeType,omitempty"`
-	// The node status. Default value: 1 (enabled). Valid values:
+	// The node status. Default value: enabled. Valid values:
 	//
 	// - 0: disabled
 	//
@@ -286,7 +294,7 @@ type CreateJobShrinkRequest struct {
 	//
 	// 1
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	// The configuration for K8s node types. Set this parameter if the node type is K8s.
+	// The configuration for K8s node types. This parameter is required for K8s node types.
 	//
 	// Job node: {"resource":"job"}
 	//
@@ -348,6 +356,10 @@ func (s *CreateJobShrinkRequest) GetJobHandler() *string {
 
 func (s *CreateJobShrinkRequest) GetJobType() *string {
 	return s.JobType
+}
+
+func (s *CreateJobShrinkRequest) GetLabel() *string {
+	return s.Label
 }
 
 func (s *CreateJobShrinkRequest) GetMaxAttempt() *int32 {
@@ -470,6 +482,11 @@ func (s *CreateJobShrinkRequest) SetJobHandler(v string) *CreateJobShrinkRequest
 
 func (s *CreateJobShrinkRequest) SetJobType(v string) *CreateJobShrinkRequest {
 	s.JobType = &v
+	return s
+}
+
+func (s *CreateJobShrinkRequest) SetLabel(v string) *CreateJobShrinkRequest {
+	s.Label = &v
 	return s
 }
 

@@ -31,6 +31,8 @@ type iCreateJobRequest interface {
 	GetJobHandler() *string
 	SetJobType(v string) *CreateJobRequest
 	GetJobType() *string
+	SetLabel(v string) *CreateJobRequest
+	GetLabel() *string
 	SetMaxAttempt(v int32) *CreateJobRequest
 	GetMaxAttempt() *int32
 	SetMaxConcurrency(v int32) *CreateJobRequest
@@ -76,7 +78,7 @@ type CreateJobRequest struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The retry interval. Unit: seconds. Default value: 30.
+	// The retry interval upon failure. Unit: seconds. Default value: 30.
 	//
 	// example:
 	//
@@ -142,6 +144,12 @@ type CreateJobRequest struct {
 	//
 	// xxljob
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The node label information.
+	//
+	// example:
+	//
+	// {key:value}
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The maximum number of retry attempts upon failure. Set this parameter based on your business requirements.
 	//
 	// example:
@@ -230,7 +238,7 @@ type CreateJobRequest struct {
 	//
 	// 1
 	StartTimeType *int32 `json:"StartTimeType,omitempty" xml:"StartTimeType,omitempty"`
-	// The node status. Default value: 1 (enabled). Valid values:
+	// The node status. Default value: enabled. Valid values:
 	//
 	// - 0: disabled
 	//
@@ -286,7 +294,7 @@ type CreateJobRequest struct {
 	//
 	// 1
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	// The configuration for K8s node types. Set this parameter if the node type is K8s.
+	// The configuration for K8s node types. This parameter is required for K8s node types.
 	//
 	// Job node: {"resource":"job"}
 	//
@@ -348,6 +356,10 @@ func (s *CreateJobRequest) GetJobHandler() *string {
 
 func (s *CreateJobRequest) GetJobType() *string {
 	return s.JobType
+}
+
+func (s *CreateJobRequest) GetLabel() *string {
+	return s.Label
 }
 
 func (s *CreateJobRequest) GetMaxAttempt() *int32 {
@@ -470,6 +482,11 @@ func (s *CreateJobRequest) SetJobHandler(v string) *CreateJobRequest {
 
 func (s *CreateJobRequest) SetJobType(v string) *CreateJobRequest {
 	s.JobType = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetLabel(v string) *CreateJobRequest {
+	s.Label = &v
 	return s
 }
 
@@ -657,11 +674,14 @@ func (s *CreateJobRequestCoordinate) Validate() error {
 }
 
 type CreateJobRequestNoticeConfig struct {
+	// The early completion threshold. Unit: seconds.
+	//
 	// example:
 	//
 	// 30
-	EndEarly       *int32 `json:"EndEarly,omitempty" xml:"EndEarly,omitempty"`
-	EndEarlyEnable *bool  `json:"EndEarlyEnable,omitempty" xml:"EndEarlyEnable,omitempty"`
+	EndEarly *int32 `json:"EndEarly,omitempty" xml:"EndEarly,omitempty"`
+	// Specifies whether to enable the early completion alert.
+	EndEarlyEnable *bool `json:"EndEarlyEnable,omitempty" xml:"EndEarlyEnable,omitempty"`
 	// Specifies whether to enable the failure alert. Valid values:
 	//
 	// - **true**: Enabled.
@@ -732,7 +752,7 @@ type CreateJobRequestNoticeConfig struct {
 	//
 	// true
 	TimeoutEnable *bool `json:"TimeoutEnable,omitempty" xml:"TimeoutEnable,omitempty"`
-	// Specifies whether to enable the timeout termination feature. Valid values:
+	// Specifies whether to enable the timeout termination. Valid values:
 	//
 	// - **true**: Enabled.
 	//
@@ -847,7 +867,7 @@ func (s *CreateJobRequestNoticeConfig) Validate() error {
 }
 
 type CreateJobRequestNoticeContacts struct {
-	// The object type of the notification recipient. Valid values:
+	// The Notification Recipient type. Valid values:
 	//
 	// - 1: alert contact
 	//

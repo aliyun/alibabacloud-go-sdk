@@ -36,7 +36,7 @@ type CreateJobResponseBody struct {
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use this ID to troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
