@@ -1,3 +1,20 @@
+2026-08-11 Version: v3.8.0
+- Support API CreateContextDatabaseApiKey.
+- Support API CreateContextDatabaseMember.
+- Support API CreateContextDatabaseWorkspace.
+- Support API DeleteContextDatabaseMember.
+- Support API DeleteContextDatabaseWorkspace.
+- Support API ListContextDatabaseApiKeys.
+- Support API ListContextDatabaseMembers.
+- Support API ListContextDatabaseWorkspaces.
+- Support API RevokeContextDatabaseApiKey.
+- Support API UpdateContextDatabaseApiKey.
+- Support API UpdateContextDatabaseMember.
+- Support API UpdateContextDatabaseWorkspace.
+- Update API ChatMessages: add request parameters Files.
+- Update API GetMessages: add response parameters Body.Data.$.MessageFiles.
+
+
 2026-08-06 Version: v3.7.0
 - Support API DescribeMOTokenUsageSummary.
 

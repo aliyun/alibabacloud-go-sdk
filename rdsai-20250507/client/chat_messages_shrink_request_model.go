@@ -13,6 +13,8 @@ type iChatMessagesShrinkRequest interface {
 	GetConversationId() *string
 	SetEventMode(v string) *ChatMessagesShrinkRequest
 	GetEventMode() *string
+	SetFilesShrink(v string) *ChatMessagesShrinkRequest
+	GetFilesShrink() *string
 	SetInputsShrink(v string) *ChatMessagesShrinkRequest
 	GetInputsShrink() *string
 	SetParentMessageId(v string) *ChatMessagesShrinkRequest
@@ -29,7 +31,8 @@ type ChatMessagesShrinkRequest struct {
 	// fea7bdca-e848-44dd-b1ae-852472b8****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
 	// The event output type. Valid values: inline and separate. Default value: inline. When set to inline, tool invocation events, sub-node events, and document events are included in the answer field of event = message. When set to separate, tool invocation events, sub-node events, and document events each have their own event.
-	EventMode *string `json:"EventMode,omitempty" xml:"EventMode,omitempty"`
+	EventMode   *string `json:"EventMode,omitempty" xml:"EventMode,omitempty"`
+	FilesShrink *string `json:"Files,omitempty" xml:"Files,omitempty"`
 	// The task input.
 	InputsShrink *string `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
 	// The parent message ID.
@@ -64,6 +67,10 @@ func (s *ChatMessagesShrinkRequest) GetEventMode() *string {
 	return s.EventMode
 }
 
+func (s *ChatMessagesShrinkRequest) GetFilesShrink() *string {
+	return s.FilesShrink
+}
+
 func (s *ChatMessagesShrinkRequest) GetInputsShrink() *string {
 	return s.InputsShrink
 }
@@ -83,6 +90,11 @@ func (s *ChatMessagesShrinkRequest) SetConversationId(v string) *ChatMessagesShr
 
 func (s *ChatMessagesShrinkRequest) SetEventMode(v string) *ChatMessagesShrinkRequest {
 	s.EventMode = &v
+	return s
+}
+
+func (s *ChatMessagesShrinkRequest) SetFilesShrink(v string) *ChatMessagesShrinkRequest {
+	s.FilesShrink = &v
 	return s
 }
 

@@ -26,8 +26,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"us-west-1":      dara.String("rdsai.us-west-1.aliyuncs.com"),
-		"eu-central-1":   dara.String("rdsai.eu-central-1.aliyuncs.com"),
 		"cn-wulanchabu":  dara.String("rdsai.aliyuncs.com"),
 		"cn-shenzhen":    dara.String("rdsai.aliyuncs.com"),
 		"cn-shanghai":    dara.String("rdsai.aliyuncs.com"),
@@ -40,6 +38,8 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"ap-southeast-3": dara.String("rdsai.ap-southeast-3.aliyuncs.com"),
 		"ap-southeast-1": dara.String("rdsai.ap-southeast-1.aliyuncs.com"),
 		"ap-northeast-1": dara.String("rdsai.ap-northeast-1.aliyuncs.com"),
+		"eu-central-1":   dara.String("rdsai.eu-central-1.aliyuncs.com"),
+		"us-west-1":      dara.String("rdsai.us-west-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -105,6 +105,10 @@ func (client *Client) ChatMessagesWithOptions(tmpReq *ChatMessagesRequest, runti
 	}
 	request := &ChatMessagesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Files) {
+		request.FilesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Files, dara.String("Files"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.Inputs) {
 		request.InputsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Inputs, dara.String("Inputs"), dara.String("json"))
 	}
@@ -116,6 +120,10 @@ func (client *Client) ChatMessagesWithOptions(tmpReq *ChatMessagesRequest, runti
 
 	if !dara.IsNil(request.EventMode) {
 		query["EventMode"] = request.EventMode
+	}
+
+	if !dara.IsNil(request.FilesShrink) {
+		query["Files"] = request.FilesShrink
 	}
 
 	if !dara.IsNil(request.InputsShrink) {
@@ -480,6 +488,244 @@ func (client *Client) CreateAppInstance(request *CreateAppInstanceRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateAppInstanceResponse{}
 	_body, _err := client.CreateAppInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建上下文数据库 API Key
+//
+// Description:
+//
+// 创建 API Key（返回明文 apiKey）。
+//
+// @param request - CreateContextDatabaseApiKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateContextDatabaseApiKeyResponse
+func (client *Client) CreateContextDatabaseApiKeyWithOptions(request *CreateContextDatabaseApiKeyRequest, runtime *dara.RuntimeOptions) (_result *CreateContextDatabaseApiKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MemberId) {
+		query["MemberId"] = request.MemberId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateContextDatabaseApiKey"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateContextDatabaseApiKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建上下文数据库 API Key
+//
+// Description:
+//
+// 创建 API Key（返回明文 apiKey）。
+//
+// @param request - CreateContextDatabaseApiKeyRequest
+//
+// @return CreateContextDatabaseApiKeyResponse
+func (client *Client) CreateContextDatabaseApiKey(request *CreateContextDatabaseApiKeyRequest) (_result *CreateContextDatabaseApiKeyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateContextDatabaseApiKeyResponse{}
+	_body, _err := client.CreateContextDatabaseApiKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建上下文数据库成员
+//
+// Description:
+//
+// 创建成员；当 GenerateInitialKey=true 时同时签发首把 API Key，并在响应中返回明文 ApiKey（敏感字段，仅此一次返回，请妥善保存）。创建成功后可通过 List / Get 查询成员及其名下 API Key 的元数据。
+//
+// @param request - CreateContextDatabaseMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateContextDatabaseMemberResponse
+func (client *Client) CreateContextDatabaseMemberWithOptions(request *CreateContextDatabaseMemberRequest, runtime *dara.RuntimeOptions) (_result *CreateContextDatabaseMemberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GenerateInitialKey) {
+		query["GenerateInitialKey"] = request.GenerateInitialKey
+	}
+
+	if !dara.IsNil(request.InitialKeyName) {
+		query["InitialKeyName"] = request.InitialKeyName
+	}
+
+	if !dara.IsNil(request.MemberName) {
+		query["MemberName"] = request.MemberName
+	}
+
+	if !dara.IsNil(request.Role) {
+		query["Role"] = request.Role
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateContextDatabaseMember"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateContextDatabaseMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建上下文数据库成员
+//
+// Description:
+//
+// 创建成员；当 GenerateInitialKey=true 时同时签发首把 API Key，并在响应中返回明文 ApiKey（敏感字段，仅此一次返回，请妥善保存）。创建成功后可通过 List / Get 查询成员及其名下 API Key 的元数据。
+//
+// @param request - CreateContextDatabaseMemberRequest
+//
+// @return CreateContextDatabaseMemberResponse
+func (client *Client) CreateContextDatabaseMember(request *CreateContextDatabaseMemberRequest) (_result *CreateContextDatabaseMemberResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateContextDatabaseMemberResponse{}
+	_body, _err := client.CreateContextDatabaseMemberWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建上下文数据库工作区
+//
+// Description:
+//
+// 创建 workspace + 首位成员 + 首把 API Key 的一次性引导，返回明文 apiKey。
+//
+// @param request - CreateContextDatabaseWorkspaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateContextDatabaseWorkspaceResponse
+func (client *Client) CreateContextDatabaseWorkspaceWithOptions(request *CreateContextDatabaseWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *CreateContextDatabaseWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MemberName) {
+		query["MemberName"] = request.MemberName
+	}
+
+	if !dara.IsNil(request.WorkspaceName) {
+		query["WorkspaceName"] = request.WorkspaceName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateContextDatabaseWorkspace"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateContextDatabaseWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建上下文数据库工作区
+//
+// Description:
+//
+// 创建 workspace + 首位成员 + 首把 API Key 的一次性引导，返回明文 apiKey。
+//
+// @param request - CreateContextDatabaseWorkspaceRequest
+//
+// @return CreateContextDatabaseWorkspaceResponse
+func (client *Client) CreateContextDatabaseWorkspace(request *CreateContextDatabaseWorkspaceRequest) (_result *CreateContextDatabaseWorkspaceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateContextDatabaseWorkspaceResponse{}
+	_body, _err := client.CreateContextDatabaseWorkspaceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1256,6 +1502,150 @@ func (client *Client) DeleteAppInstance(request *DeleteAppInstanceRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteAppInstanceResponse{}
 	_body, _err := client.DeleteAppInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除上下文数据库成员
+//
+// Description:
+//
+// 删除成员（硬删除，不可恢复）。
+//
+// @param request - DeleteContextDatabaseMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteContextDatabaseMemberResponse
+func (client *Client) DeleteContextDatabaseMemberWithOptions(request *DeleteContextDatabaseMemberRequest, runtime *dara.RuntimeOptions) (_result *DeleteContextDatabaseMemberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MemberId) {
+		query["MemberId"] = request.MemberId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteContextDatabaseMember"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteContextDatabaseMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除上下文数据库成员
+//
+// Description:
+//
+// 删除成员（硬删除，不可恢复）。
+//
+// @param request - DeleteContextDatabaseMemberRequest
+//
+// @return DeleteContextDatabaseMemberResponse
+func (client *Client) DeleteContextDatabaseMember(request *DeleteContextDatabaseMemberRequest) (_result *DeleteContextDatabaseMemberResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteContextDatabaseMemberResponse{}
+	_body, _err := client.DeleteContextDatabaseMemberWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除上下文数据库工作区
+//
+// Description:
+//
+// 删除业务空间（Workspace），硬删除、不可恢复。删除成功后本地元数据同步软删除，已删除的业务空间不再计入配额。
+//
+// @param request - DeleteContextDatabaseWorkspaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteContextDatabaseWorkspaceResponse
+func (client *Client) DeleteContextDatabaseWorkspaceWithOptions(request *DeleteContextDatabaseWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteContextDatabaseWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteContextDatabaseWorkspace"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteContextDatabaseWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除上下文数据库工作区
+//
+// Description:
+//
+// 删除业务空间（Workspace），硬删除、不可恢复。删除成功后本地元数据同步软删除，已删除的业务空间不再计入配额。
+//
+// @param request - DeleteContextDatabaseWorkspaceRequest
+//
+// @return DeleteContextDatabaseWorkspaceResponse
+func (client *Client) DeleteContextDatabaseWorkspace(request *DeleteContextDatabaseWorkspaceRequest) (_result *DeleteContextDatabaseWorkspaceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteContextDatabaseWorkspaceResponse{}
+	_body, _err := client.DeleteContextDatabaseWorkspaceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3541,7 +3931,7 @@ func (client *Client) GetInspectionReport(request *GetInspectionReportRequest) (
 
 // Summary:
 //
-// Retrieves a list of messages in a specific conversation.
+// Queries the details of specific conversation messages.
 //
 // @param request - GetMessagesRequest
 //
@@ -3597,7 +3987,7 @@ func (client *Client) GetMessagesWithOptions(request *GetMessagesRequest, runtim
 
 // Summary:
 //
-// Retrieves a list of messages in a specific conversation.
+// Queries the details of specific conversation messages.
 //
 // @param request - GetMessagesRequest
 //
@@ -4043,6 +4433,264 @@ func (client *Client) ListApiKeys(request *ListApiKeysRequest) (_result *ListApi
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListApiKeysResponse{}
 	_body, _err := client.ListApiKeysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出成员名下 API Key
+//
+// Description:
+//
+// 列出指定成员名下的 API Key（不返回明文）。
+//
+// @param request - ListContextDatabaseApiKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListContextDatabaseApiKeysResponse
+func (client *Client) ListContextDatabaseApiKeysWithOptions(request *ListContextDatabaseApiKeysRequest, runtime *dara.RuntimeOptions) (_result *ListContextDatabaseApiKeysResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.MemberId) {
+		query["MemberId"] = request.MemberId
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListContextDatabaseApiKeys"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListContextDatabaseApiKeysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出成员名下 API Key
+//
+// Description:
+//
+// 列出指定成员名下的 API Key（不返回明文）。
+//
+// @param request - ListContextDatabaseApiKeysRequest
+//
+// @return ListContextDatabaseApiKeysResponse
+func (client *Client) ListContextDatabaseApiKeys(request *ListContextDatabaseApiKeysRequest) (_result *ListContextDatabaseApiKeysResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListContextDatabaseApiKeysResponse{}
+	_body, _err := client.ListContextDatabaseApiKeysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出工作区成员
+//
+// Description:
+//
+// 列出指定业务空间下的全部成员，每个成员附带其名下 API Key 列表（不返回明文）。
+//
+// @param request - ListContextDatabaseMembersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListContextDatabaseMembersResponse
+func (client *Client) ListContextDatabaseMembersWithOptions(request *ListContextDatabaseMembersRequest, runtime *dara.RuntimeOptions) (_result *ListContextDatabaseMembersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListContextDatabaseMembers"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListContextDatabaseMembersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出工作区成员
+//
+// Description:
+//
+// 列出指定业务空间下的全部成员，每个成员附带其名下 API Key 列表（不返回明文）。
+//
+// @param request - ListContextDatabaseMembersRequest
+//
+// @return ListContextDatabaseMembersResponse
+func (client *Client) ListContextDatabaseMembers(request *ListContextDatabaseMembersRequest) (_result *ListContextDatabaseMembersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListContextDatabaseMembersResponse{}
+	_body, _err := client.ListContextDatabaseMembersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据workspaceId和状态过滤调用方账号下的工作区列表。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该API用于获取指定条件下的工作区列表。
+//
+// - `workspaceId` 和 `status` 参数均为可选，可以根据需要进行过滤。
+//
+// - 如果不提供任何过滤参数，则返回调用方账号下的所有工作区。
+//
+// - 注意：确保在请求中包含必要的认证信息（如callerUid、requestId等），否则将导致请求失败。
+//
+// @param request - ListContextDatabaseWorkspacesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListContextDatabaseWorkspacesResponse
+func (client *Client) ListContextDatabaseWorkspacesWithOptions(request *ListContextDatabaseWorkspacesRequest, runtime *dara.RuntimeOptions) (_result *ListContextDatabaseWorkspacesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListContextDatabaseWorkspaces"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListContextDatabaseWorkspacesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据workspaceId和状态过滤调用方账号下的工作区列表。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该API用于获取指定条件下的工作区列表。
+//
+// - `workspaceId` 和 `status` 参数均为可选，可以根据需要进行过滤。
+//
+// - 如果不提供任何过滤参数，则返回调用方账号下的所有工作区。
+//
+// - 注意：确保在请求中包含必要的认证信息（如callerUid、requestId等），否则将导致请求失败。
+//
+// @param request - ListContextDatabaseWorkspacesRequest
+//
+// @return ListContextDatabaseWorkspacesResponse
+func (client *Client) ListContextDatabaseWorkspaces(request *ListContextDatabaseWorkspacesRequest) (_result *ListContextDatabaseWorkspacesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListContextDatabaseWorkspacesResponse{}
+	_body, _err := client.ListContextDatabaseWorkspacesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5989,6 +6637,84 @@ func (client *Client) RestartInstance(request *RestartInstanceRequest) (_result 
 
 // Summary:
 //
+// 吊销上下文数据库 API Key
+//
+// Description:
+//
+// 吊销 API Key。
+//
+// @param request - RevokeContextDatabaseApiKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeContextDatabaseApiKeyResponse
+func (client *Client) RevokeContextDatabaseApiKeyWithOptions(request *RevokeContextDatabaseApiKeyRequest, runtime *dara.RuntimeOptions) (_result *RevokeContextDatabaseApiKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KeyId) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !dara.IsNil(request.MemberId) {
+		query["MemberId"] = request.MemberId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokeContextDatabaseApiKey"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevokeContextDatabaseApiKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 吊销上下文数据库 API Key
+//
+// Description:
+//
+// 吊销 API Key。
+//
+// @param request - RevokeContextDatabaseApiKeyRequest
+//
+// @return RevokeContextDatabaseApiKeyResponse
+func (client *Client) RevokeContextDatabaseApiKey(request *RevokeContextDatabaseApiKeyRequest) (_result *RevokeContextDatabaseApiKeyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RevokeContextDatabaseApiKeyResponse{}
+	_body, _err := client.RevokeContextDatabaseApiKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Starts an RDS AI application instance that is in the Stopped state.
 //
 // Description:
@@ -6248,6 +6974,248 @@ func (client *Client) UpdateApiKeyQuota(request *UpdateApiKeyQuotaRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateApiKeyQuotaResponse{}
 	_body, _err := client.UpdateApiKeyQuotaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新上下文数据库 API Key 元数据
+//
+// Description:
+//
+// 更新 API Key 的展示元数据。Name 与 Description 至少传其一；明文 Key 不重新签发。
+//
+// @param request - UpdateContextDatabaseApiKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateContextDatabaseApiKeyResponse
+func (client *Client) UpdateContextDatabaseApiKeyWithOptions(request *UpdateContextDatabaseApiKeyRequest, runtime *dara.RuntimeOptions) (_result *UpdateContextDatabaseApiKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.KeyId) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !dara.IsNil(request.MemberId) {
+		query["MemberId"] = request.MemberId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateContextDatabaseApiKey"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateContextDatabaseApiKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新上下文数据库 API Key 元数据
+//
+// Description:
+//
+// 更新 API Key 的展示元数据。Name 与 Description 至少传其一；明文 Key 不重新签发。
+//
+// @param request - UpdateContextDatabaseApiKeyRequest
+//
+// @return UpdateContextDatabaseApiKeyResponse
+func (client *Client) UpdateContextDatabaseApiKey(request *UpdateContextDatabaseApiKeyRequest) (_result *UpdateContextDatabaseApiKeyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateContextDatabaseApiKeyResponse{}
+	_body, _err := client.UpdateContextDatabaseApiKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新上下文数据库成员
+//
+// Description:
+//
+// 更新成员的角色 / 状态。
+//
+// @param request - UpdateContextDatabaseMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateContextDatabaseMemberResponse
+func (client *Client) UpdateContextDatabaseMemberWithOptions(request *UpdateContextDatabaseMemberRequest, runtime *dara.RuntimeOptions) (_result *UpdateContextDatabaseMemberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MemberId) {
+		query["MemberId"] = request.MemberId
+	}
+
+	if !dara.IsNil(request.Role) {
+		query["Role"] = request.Role
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateContextDatabaseMember"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateContextDatabaseMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新上下文数据库成员
+//
+// Description:
+//
+// 更新成员的角色 / 状态。
+//
+// @param request - UpdateContextDatabaseMemberRequest
+//
+// @return UpdateContextDatabaseMemberResponse
+func (client *Client) UpdateContextDatabaseMember(request *UpdateContextDatabaseMemberRequest) (_result *UpdateContextDatabaseMemberResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateContextDatabaseMemberResponse{}
+	_body, _err := client.UpdateContextDatabaseMemberWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改上下文数据库工作区
+//
+// Description:
+//
+// 修改 workspace 名称。
+//
+// @param request - UpdateContextDatabaseWorkspaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateContextDatabaseWorkspaceResponse
+func (client *Client) UpdateContextDatabaseWorkspaceWithOptions(request *UpdateContextDatabaseWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *UpdateContextDatabaseWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.WorkspaceName) {
+		query["WorkspaceName"] = request.WorkspaceName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateContextDatabaseWorkspace"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateContextDatabaseWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改上下文数据库工作区
+//
+// Description:
+//
+// 修改 workspace 名称。
+//
+// @param request - UpdateContextDatabaseWorkspaceRequest
+//
+// @return UpdateContextDatabaseWorkspaceResponse
+func (client *Client) UpdateContextDatabaseWorkspace(request *UpdateContextDatabaseWorkspaceRequest) (_result *UpdateContextDatabaseWorkspaceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateContextDatabaseWorkspaceResponse{}
+	_body, _err := client.UpdateContextDatabaseWorkspaceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6529,6 +7497,10 @@ func (client *Client) chatMessagesWithSSE_opYieldFunc(_yield chan *ChatMessagesR
 	}
 	request := &ChatMessagesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Files) {
+		request.FilesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Files, dara.String("Files"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.Inputs) {
 		request.InputsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Inputs, dara.String("Inputs"), dara.String("json"))
 	}
@@ -6540,6 +7512,10 @@ func (client *Client) chatMessagesWithSSE_opYieldFunc(_yield chan *ChatMessagesR
 
 	if !dara.IsNil(request.EventMode) {
 		query["EventMode"] = request.EventMode
+	}
+
+	if !dara.IsNil(request.FilesShrink) {
+		query["Files"] = request.FilesShrink
 	}
 
 	if !dara.IsNil(request.InputsShrink) {

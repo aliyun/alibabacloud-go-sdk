@@ -20,21 +20,21 @@ type iGetMessagesResponseBody interface {
 }
 
 type GetMessagesResponseBody struct {
-	// A list of message objects.
+	// The query result.
 	Data []*GetMessagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Indicates whether there are more messages to retrieve.
+	// Indicates whether there is a next page.
 	//
 	// example:
 	//
 	// true
 	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// The value of the Limit parameter used for this request.
+	// The maximum number of entries returned.
 	//
 	// example:
 	//
 	// 100
 	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The unique identifier for the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -100,26 +100,26 @@ func (s *GetMessagesResponseBody) Validate() error {
 }
 
 type GetMessagesResponseBodyData struct {
-	// The AI-generated response to the query.
+	// The answer.
 	//
 	// example:
 	//
-	// 您询问的实例rm-bp14as9914vd3***	- 磁盘使用率为23%，暂时不需要进行扩容。如果您需要进一步查看某个实例的详细配置、性能监控或进行其他操作，请告诉我具体需求！
+	// The disk usage of instance rm-bp14as9914vd3***	- is 23%, and scaling is not required for now. If you need to view the detailed configurations or performance monitoring of a specific instance, or perform other operations, let me know your specific requirements!
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
-	// The unique identifier for the conversation.
+	// The conversation ID.
 	//
 	// example:
 	//
 	// 9cbbe885-b240-4803-9d15-6781a3fd****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The Unix timestamp (in seconds) when the message was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1763986004
 	CreatedAt *string                              `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
 	Events    []*GetMessagesResponseBodyDataEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	// The user\\"s feedback on the answer, such as "like" or "dislike".
+	// The feedback.
 	//
 	// example:
 	//
@@ -128,20 +128,21 @@ type GetMessagesResponseBodyData struct {
 	GenerationFinishedAt *string `json:"GenerationFinishedAt,omitempty" xml:"GenerationFinishedAt,omitempty"`
 	GenerationStartedAt  *string `json:"GenerationStartedAt,omitempty" xml:"GenerationStartedAt,omitempty"`
 	GenerationStatus     *string `json:"GenerationStatus,omitempty" xml:"GenerationStatus,omitempty"`
-	// The unique identifier for the message.
+	// The message ID.
 	//
 	// example:
 	//
 	// 84dc9f9b-424a-404d-9c36-35e9d000****
-	Id              *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	LastSentEntryId *string `json:"LastSentEntryId,omitempty" xml:"LastSentEntryId,omitempty"`
-	// The user\\"s query.
+	Id              *string                                    `json:"Id,omitempty" xml:"Id,omitempty"`
+	LastSentEntryId *string                                    `json:"LastSentEntryId,omitempty" xml:"LastSentEntryId,omitempty"`
+	MessageFiles    []*GetMessagesResponseBodyDataMessageFiles `json:"MessageFiles,omitempty" xml:"MessageFiles,omitempty" type:"Repeated"`
+	// The query statement.
 	//
 	// example:
 	//
-	// 实例rm-bp14as9914vd3***	- 磁盘使用率，是否需要扩容
+	// What is the disk usage of instance rm-bp14as9914vd3****, and is scaling required?
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The resources that were retrieved to generate the answer.
+	// The retrieval resources.
 	RetrieverResources []interface{} `json:"RetrieverResources,omitempty" xml:"RetrieverResources,omitempty" type:"Repeated"`
 	StreamKey          *string       `json:"StreamKey,omitempty" xml:"StreamKey,omitempty"`
 }
@@ -192,6 +193,10 @@ func (s *GetMessagesResponseBodyData) GetId() *string {
 
 func (s *GetMessagesResponseBodyData) GetLastSentEntryId() *string {
 	return s.LastSentEntryId
+}
+
+func (s *GetMessagesResponseBodyData) GetMessageFiles() []*GetMessagesResponseBodyDataMessageFiles {
+	return s.MessageFiles
 }
 
 func (s *GetMessagesResponseBodyData) GetQuery() *string {
@@ -256,6 +261,11 @@ func (s *GetMessagesResponseBodyData) SetLastSentEntryId(v string) *GetMessagesR
 	return s
 }
 
+func (s *GetMessagesResponseBodyData) SetMessageFiles(v []*GetMessagesResponseBodyDataMessageFiles) *GetMessagesResponseBodyData {
+	s.MessageFiles = v
+	return s
+}
+
 func (s *GetMessagesResponseBodyData) SetQuery(v string) *GetMessagesResponseBodyData {
 	s.Query = &v
 	return s
@@ -274,6 +284,15 @@ func (s *GetMessagesResponseBodyData) SetStreamKey(v string) *GetMessagesRespons
 func (s *GetMessagesResponseBodyData) Validate() error {
 	if s.Events != nil {
 		for _, item := range s.Events {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MessageFiles != nil {
+		for _, item := range s.MessageFiles {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -316,5 +335,50 @@ func (s *GetMessagesResponseBodyDataEvents) SetEvent(v string) *GetMessagesRespo
 }
 
 func (s *GetMessagesResponseBodyDataEvents) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetMessagesResponseBodyDataMessageFiles struct {
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	PreviewUrl *string `json:"PreviewUrl,omitempty" xml:"PreviewUrl,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetMessagesResponseBodyDataMessageFiles) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetMessagesResponseBodyDataMessageFiles) GoString() string {
+	return s.String()
+}
+
+func (s *GetMessagesResponseBodyDataMessageFiles) GetId() *string {
+	return s.Id
+}
+
+func (s *GetMessagesResponseBodyDataMessageFiles) GetPreviewUrl() *string {
+	return s.PreviewUrl
+}
+
+func (s *GetMessagesResponseBodyDataMessageFiles) GetType() *string {
+	return s.Type
+}
+
+func (s *GetMessagesResponseBodyDataMessageFiles) SetId(v string) *GetMessagesResponseBodyDataMessageFiles {
+	s.Id = &v
+	return s
+}
+
+func (s *GetMessagesResponseBodyDataMessageFiles) SetPreviewUrl(v string) *GetMessagesResponseBodyDataMessageFiles {
+	s.PreviewUrl = &v
+	return s
+}
+
+func (s *GetMessagesResponseBodyDataMessageFiles) SetType(v string) *GetMessagesResponseBodyDataMessageFiles {
+	s.Type = &v
+	return s
+}
+
+func (s *GetMessagesResponseBodyDataMessageFiles) Validate() error {
 	return dara.Validate(s)
 }

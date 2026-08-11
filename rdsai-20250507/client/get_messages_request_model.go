@@ -20,20 +20,20 @@ type iGetMessagesRequest interface {
 }
 
 type GetMessagesRequest struct {
-	// The ID of the conversation.
+	// The conversation ID.
 	//
 	// example:
 	//
 	// 941c6f59-acf5-4e11-9adc-31e52e1f****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
 	EventMode      *string `json:"EventMode,omitempty" xml:"EventMode,omitempty"`
-	// The ID of the message from which to start fetching the list. Use this for pagination.
+	// The ID of the first message.
 	//
 	// example:
 	//
 	// 038866af-a050-4bc5-bfad-b7bfc838****
 	FirstId *string `json:"FirstId,omitempty" xml:"FirstId,omitempty"`
-	// The maximum number of messages to return per page. Valid values: 1–100. Default: 100.
+	// The number of entries per page in a paging query. Valid values: 1 to 100. Default value: 100.
 	//
 	// example:
 	//
