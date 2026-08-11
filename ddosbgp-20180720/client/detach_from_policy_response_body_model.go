@@ -14,7 +14,7 @@ type iDetachFromPolicyResponseBody interface {
 }
 
 type DetachFromPolicyResponseBody struct {
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//

@@ -46,6 +46,10 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-shenzhen-finance-1": dara.String("ddosbgp.aliyuncs.com"),
 		"cn-shanghai-finance-1": dara.String("ddosbgp.aliyuncs.com"),
 		"cn-north-2-gov-1":      dara.String("ddosbgp.aliyuncs.com"),
+		"cn-hongkong":           dara.String("ddosbgp.cn-hongkong.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("ddosbgp.ap-southeast-1.aliyuncs.com"),
+		"us-west-1":             dara.String("ddosbgp.us-west-1.aliyuncs.com"),
+		"us-east-1":             dara.String("ddosbgp.us-east-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -306,7 +310,11 @@ func (client *Client) AttachAssetGroupToInstance(request *AttachAssetGroupToInst
 
 // Summary:
 //
-// Associates a mitigation policy to a protected object.
+// Associates protection objects with a mitigation policy.
+//
+// Description:
+//
+// A mitigation policy that is associated with protection objects cannot be deleted.
 //
 // @param tmpReq - AttachToPolicyRequest
 //
@@ -364,7 +372,11 @@ func (client *Client) AttachToPolicyWithOptions(tmpReq *AttachToPolicyRequest, r
 
 // Summary:
 //
-// Associates a mitigation policy to a protected object.
+// Associates protection objects with a mitigation policy.
+//
+// Description:
+//
+// A mitigation policy that is associated with protection objects cannot be deleted.
 //
 // @param request - AttachToPolicyRequest
 //
@@ -524,6 +536,10 @@ func (client *Client) CheckGrant(request *CheckGrantRequest) (_result *CheckGran
 //
 // Creates a mitigation policy.
 //
+// Description:
+//
+// A mitigation policy that is associated with protected objects cannot be deleted.
+//
 // @param request - CreatePolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -575,6 +591,10 @@ func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, runt
 // Summary:
 //
 // Creates a mitigation policy.
+//
+// Description:
+//
+// A mitigation policy that is associated with protected objects cannot be deleted.
 //
 // @param request - CreatePolicyRequest
 //
@@ -686,11 +706,7 @@ func (client *Client) DeleteBlackhole(request *DeleteBlackholeRequest) (_result 
 
 // Summary:
 //
-// Removes specific IP addresses from an Anti-DDoS Origin instance.
-//
-// Description:
-//
-// The Anti-DDoS Origin Enterprise instance no longer protects the IP addresses that are removed.
+// Deletes an IP address from Anti-DDoS Origin and disables protection for that IP address.
 //
 // @param request - DeleteIpRequest
 //
@@ -746,11 +762,7 @@ func (client *Client) DeleteIpWithOptions(request *DeleteIpRequest, runtime *dar
 
 // Summary:
 //
-// Removes specific IP addresses from an Anti-DDoS Origin instance.
-//
-// Description:
-//
-// The Anti-DDoS Origin Enterprise instance no longer protects the IP addresses that are removed.
+// Deletes an IP address from Anti-DDoS Origin and disables protection for that IP address.
 //
 // @param request - DeleteIpRequest
 //
@@ -1176,7 +1188,11 @@ func (client *Client) DescribeDdosEvent(request *DescribeDdosEventRequest) (_res
 
 // Summary:
 //
-// Queries the bill of an Anti-DDoS Origin (Pay-as-you-go) instance.
+// Queries the pay-as-you-go billing information of an Anti-DDoS Origin instance.
+//
+// Description:
+//
+// This operation is used to perform a paged query of the billing details of all Anti-DDoS Origin instances owned by the current Alibaba Cloud account. The billing details include instance IDs, validity periods, and statuses. Paging is supported for this query.
 //
 // @param request - DescribeDdosOriginInstanceBillRequest
 //
@@ -1232,7 +1248,11 @@ func (client *Client) DescribeDdosOriginInstanceBillWithOptions(request *Describ
 
 // Summary:
 //
-// Queries the bill of an Anti-DDoS Origin (Pay-as-you-go) instance.
+// Queries the pay-as-you-go billing information of an Anti-DDoS Origin instance.
+//
+// Description:
+//
+// This operation is used to perform a paged query of the billing details of all Anti-DDoS Origin instances owned by the current Alibaba Cloud account. The billing details include instance IDs, validity periods, and statuses. Paging is supported for this query.
 //
 // @param request - DescribeDdosOriginInstanceBillRequest
 //
@@ -1328,11 +1348,15 @@ func (client *Client) DescribeExcpetionCount(request *DescribeExcpetionCountRequ
 
 // Summary:
 //
-// Queries the details of all Anti-DDoS Origin instances.
+// Queries the details of Anti-DDoS Origin instances.
 //
 // Description:
 //
-// Queries the details of all Anti-DDoS Origin instances.
+// This operation is used to query the details of all Anti-DDoS Origin instances owned by the current Alibaba Cloud account by paging, such as instance IDs, validity periods, and statuses.
+//
+// ### QPS limit
+//
+// You can invoke this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Invoke this operation within the limit.
 //
 // @param request - DescribeInstanceListRequest
 //
@@ -1424,11 +1448,15 @@ func (client *Client) DescribeInstanceListWithOptions(request *DescribeInstanceL
 
 // Summary:
 //
-// Queries the details of all Anti-DDoS Origin instances.
+// Queries the details of Anti-DDoS Origin instances.
 //
 // Description:
 //
-// Queries the details of all Anti-DDoS Origin instances.
+// This operation is used to query the details of all Anti-DDoS Origin instances owned by the current Alibaba Cloud account by paging, such as instance IDs, validity periods, and statuses.
+//
+// ### QPS limit
+//
+// You can invoke this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Invoke this operation within the limit.
 //
 // @param request - DescribeInstanceListRequest
 //
@@ -1507,6 +1535,124 @@ func (client *Client) DescribeInstanceSpecs(request *DescribeInstanceSpecsReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeInstanceSpecsResponse{}
 	_body, _err := client.DescribeInstanceSpecsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the network-layer interception records of Anti-DDoS Origin instances.
+//
+// Description:
+//
+// This operation is used to perform a paged query of the details of Layer 3 and Layer 4 packet interception records for all Anti-DDoS Origin instances owned by the current Alibaba Cloud account. Paging is supported.
+//
+// ### QPS limit
+//
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API invokes are throttled, which may affect your business. Invoke this operation at an appropriate frequency.
+//
+// @param request - DescribeNetworkLayerInterceptsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNetworkLayerInterceptsResponse
+func (client *Client) DescribeNetworkLayerInterceptsWithOptions(request *DescribeNetworkLayerInterceptsRequest, runtime *dara.RuntimeOptions) (_result *DescribeNetworkLayerInterceptsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DestinationIp) {
+		query["DestinationIp"] = request.DestinationIp
+	}
+
+	if !dara.IsNil(request.DestinationPort) {
+		query["DestinationPort"] = request.DestinationPort
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NetworkProtocol) {
+		query["NetworkProtocol"] = request.NetworkProtocol
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["Page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProtocolNumber) {
+		query["ProtocolNumber"] = request.ProtocolNumber
+	}
+
+	if !dara.IsNil(request.SourcePort) {
+		query["SourcePort"] = request.SourcePort
+	}
+
+	if !dara.IsNil(request.SrcIp) {
+		query["SrcIp"] = request.SrcIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeNetworkLayerIntercepts"),
+		Version:     dara.String("2018-07-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeNetworkLayerInterceptsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the network-layer interception records of Anti-DDoS Origin instances.
+//
+// Description:
+//
+// This operation is used to perform a paged query of the details of Layer 3 and Layer 4 packet interception records for all Anti-DDoS Origin instances owned by the current Alibaba Cloud account. Paging is supported.
+//
+// ### QPS limit
+//
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API invokes are throttled, which may affect your business. Invoke this operation at an appropriate frequency.
+//
+// @param request - DescribeNetworkLayerInterceptsRequest
+//
+// @return DescribeNetworkLayerInterceptsResponse
+func (client *Client) DescribeNetworkLayerIntercepts(request *DescribeNetworkLayerInterceptsRequest) (_result *DescribeNetworkLayerInterceptsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeNetworkLayerInterceptsResponse{}
+	_body, _err := client.DescribeNetworkLayerInterceptsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1630,15 +1776,15 @@ func (client *Client) DescribeOpEntities(request *DescribeOpEntitiesRequest) (_r
 
 // Summary:
 //
-// Queries the IP addresses that are protected by a specific Anti-DDoS Origin instance.
+// Queries the list of protected IP addresses for a single Anti-DDoS Origin instance.
 //
 // Description:
 //
-// You can call the DescribePackIpList operation to query the details about each IP address that is protected by a specific Anti-DDoS Origin instance by page. The details include the IP address and the type of the cloud asset to which the IP address belongs. The details also include the status of the IP address, such as whether blackhole filtering is triggered for the IP address.
+// You can call this operation to query a paginated list of protected IP addresses for an Anti-DDoS Origin instance. The query returns details such as the IP addresses, the types of cloud assets to which the IP addresses belong, and their current status, such as whether they are under blackhole filtering.
 //
-// ## Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation has a queries per second (QPS) limit of 10 for each user. Calls that exceed this limit are throttled, which may affect your business. We recommend that you call this operation within this limit.
 //
 // @param request - DescribePackIpListRequest
 //
@@ -1710,15 +1856,15 @@ func (client *Client) DescribePackIpListWithOptions(request *DescribePackIpListR
 
 // Summary:
 //
-// Queries the IP addresses that are protected by a specific Anti-DDoS Origin instance.
+// Queries the list of protected IP addresses for a single Anti-DDoS Origin instance.
 //
 // Description:
 //
-// You can call the DescribePackIpList operation to query the details about each IP address that is protected by a specific Anti-DDoS Origin instance by page. The details include the IP address and the type of the cloud asset to which the IP address belongs. The details also include the status of the IP address, such as whether blackhole filtering is triggered for the IP address.
+// You can call this operation to query a paginated list of protected IP addresses for an Anti-DDoS Origin instance. The query returns details such as the IP addresses, the types of cloud assets to which the IP addresses belong, and their current status, such as whether they are under blackhole filtering.
 //
-// ## Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation has a queries per second (QPS) limit of 10 for each user. Calls that exceed this limit are throttled, which may affect your business. We recommend that you call this operation within this limit.
 //
 // @param request - DescribePackIpListRequest
 //
@@ -1808,8 +1954,6 @@ func (client *Client) DescribeRdMemberList(request *DescribeRdMemberListRequest)
 //
 // Queries the status of the multi-account management feature.
 //
-// @param request - DescribeRdStatusRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRdStatusResponse
@@ -1853,7 +1997,7 @@ func (client *Client) DescribeRdStatus() (_result *DescribeRdStatusResponse, _er
 
 // Summary:
 //
-// Queries the regions of assets that can be protected by Anti-DDoS Origin Enterprise in a specific region.
+// Queries all regions supported by Anti-DDoS Origin Enterprise.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -1901,7 +2045,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 // Summary:
 //
-// Queries the regions of assets that can be protected by Anti-DDoS Origin Enterprise in a specific region.
+// Queries all regions supported by Anti-DDoS Origin Enterprise.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -1919,17 +2063,17 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// Queries traffic statistics of an Anti-DDoS Origin instance within a specific time period.
+// Queries the traffic statistics of a specified Anti-DDoS Origin instance within a specified time period.
 //
 // Description:
 //
-// You can call the DescribeTraffic operation to query traffic statistics of an Anti-DDoS Origin instance within a specific time period.
+// Queries the traffic statistics of a specified Anti-DDoS Origin instance within a specified time range.
 //
-// >  When you call this operation, you must configure the **InstanceId*	- parameter to specify the Anti-DDoS Origin instance whose traffic statistics you want to query.
+// > When calling this operation, you must set the **InstanceId*	- parameter to specify the Anti-DDoS Origin instance to query.
 //
-// ## Limits
+// ### QPS limit
 //
-// You can call this operation once per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The single-user QPS limit for this operation is 1 call per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation as appropriate.
 //
 // @param request - DescribeTrafficRequest
 //
@@ -2005,17 +2149,17 @@ func (client *Client) DescribeTrafficWithOptions(request *DescribeTrafficRequest
 
 // Summary:
 //
-// Queries traffic statistics of an Anti-DDoS Origin instance within a specific time period.
+// Queries the traffic statistics of a specified Anti-DDoS Origin instance within a specified time period.
 //
 // Description:
 //
-// You can call the DescribeTraffic operation to query traffic statistics of an Anti-DDoS Origin instance within a specific time period.
+// Queries the traffic statistics of a specified Anti-DDoS Origin instance within a specified time range.
 //
-// >  When you call this operation, you must configure the **InstanceId*	- parameter to specify the Anti-DDoS Origin instance whose traffic statistics you want to query.
+// > When calling this operation, you must set the **InstanceId*	- parameter to specify the Anti-DDoS Origin instance to query.
 //
-// ## Limits
+// ### QPS limit
 //
-// You can call this operation once per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The single-user QPS limit for this operation is 1 call per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation as appropriate.
 //
 // @param request - DescribeTrafficRequest
 //
@@ -2033,7 +2177,7 @@ func (client *Client) DescribeTraffic(request *DescribeTrafficRequest) (_result 
 
 // Summary:
 //
-// Removes protected objects from a mitigation policy.
+// Dissociates a mitigation policy from a protected object.
 //
 // @param tmpReq - DetachFromPolicyRequest
 //
@@ -2091,7 +2235,7 @@ func (client *Client) DetachFromPolicyWithOptions(tmpReq *DetachFromPolicyReques
 
 // Summary:
 //
-// Removes protected objects from a mitigation policy.
+// Dissociates a mitigation policy from a protected object.
 //
 // @param request - DetachFromPolicyRequest
 //
@@ -2185,7 +2329,7 @@ func (client *Client) DettachAssetGroupToInstance(request *DettachAssetGroupToIn
 
 // Summary:
 //
-// Queries whether Simple Log Service is activated.
+// Queries the activation status of Simple Log Service for the current Alibaba Cloud account.
 //
 // @param request - GetSlsOpenStatusRequest
 //
@@ -2233,7 +2377,7 @@ func (client *Client) GetSlsOpenStatusWithOptions(request *GetSlsOpenStatusReque
 
 // Summary:
 //
-// Queries whether Simple Log Service is activated.
+// Queries the activation status of Simple Log Service for the current Alibaba Cloud account.
 //
 // @param request - GetSlsOpenStatusRequest
 //
@@ -2251,7 +2395,7 @@ func (client *Client) GetSlsOpenStatus(request *GetSlsOpenStatusRequest) (_resul
 
 // Summary:
 //
-// Queries the Anti-DDoS Origin instances for which log analysis is enabled.
+// Queries Anti-DDoS Origin instances that have log analysis enabled.
 //
 // @param request - ListOpenedAccessLogInstancesRequest
 //
@@ -2303,7 +2447,7 @@ func (client *Client) ListOpenedAccessLogInstancesWithOptions(request *ListOpene
 
 // Summary:
 //
-// Queries the Anti-DDoS Origin instances for which log analysis is enabled.
+// Queries Anti-DDoS Origin instances that have log analysis enabled.
 //
 // @param request - ListOpenedAccessLogInstancesRequest
 //
@@ -2399,7 +2543,7 @@ func (client *Client) ListPolicy(request *ListPolicyRequest) (_result *ListPolic
 
 // Summary:
 //
-// Queries attachments to mitigation policies.
+// Queries the associations of mitigation policies.
 //
 // @param tmpReq - ListPolicyAttachmentRequest
 //
@@ -2469,7 +2613,7 @@ func (client *Client) ListPolicyAttachmentWithOptions(tmpReq *ListPolicyAttachme
 
 // Summary:
 //
-// Queries attachments to mitigation policies.
+// Queries the associations of mitigation policies.
 //
 // @param request - ListPolicyAttachmentRequest
 //
@@ -2755,11 +2899,11 @@ func (client *Client) ModifyPolicy(request *ModifyPolicyRequest) (_result *Modif
 
 // Summary:
 //
-// Modifies the content of the mitigation policy.
+// Modifies the content of a mitigation policy.
 //
 // Description:
 //
-// Make sure that all request parameters are configured when you call this operation. If any parameter is left empty, the configuration is deleted.
+// Make sure that you pass all parameters when you call this operation. If a parameter is left empty, the corresponding configuration is deleted.
 //
 // @param tmpReq - ModifyPolicyContentRequest
 //
@@ -2821,11 +2965,11 @@ func (client *Client) ModifyPolicyContentWithOptions(tmpReq *ModifyPolicyContent
 
 // Summary:
 //
-// Modifies the content of the mitigation policy.
+// Modifies the content of a mitigation policy.
 //
 // Description:
 //
-// Make sure that all request parameters are configured when you call this operation. If any parameter is left empty, the configuration is deleted.
+// Make sure that you pass all parameters when you call this operation. If a parameter is left empty, the corresponding configuration is deleted.
 //
 // @param request - ModifyPolicyContentRequest
 //
@@ -2843,15 +2987,15 @@ func (client *Client) ModifyPolicyContent(request *ModifyPolicyContentRequest) (
 
 // Summary:
 //
-// Adds remarks for a single Anti-DDoS Origin instance.
+// Sets a remark for a single Anti-DDoS Origin instance.
 //
 // Description:
 //
-// You can call the ModifyRemark operation to add remarks for a single Anti-DDoS Origin instance.
+// Sets a remark for a single Anti-DDoS Origin instance.
 //
-// ### [](#qps-)Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The single-user QPS limit for this API is 10 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this API appropriately.
 //
 // @param request - ModifyRemarkRequest
 //
@@ -2907,15 +3051,15 @@ func (client *Client) ModifyRemarkWithOptions(request *ModifyRemarkRequest, runt
 
 // Summary:
 //
-// Adds remarks for a single Anti-DDoS Origin instance.
+// Sets a remark for a single Anti-DDoS Origin instance.
 //
 // Description:
 //
-// You can call the ModifyRemark operation to add remarks for a single Anti-DDoS Origin instance.
+// Sets a remark for a single Anti-DDoS Origin instance.
 //
-// ### [](#qps-)Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The single-user QPS limit for this API is 10 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this API appropriately.
 //
 // @param request - ModifyRemarkRequest
 //

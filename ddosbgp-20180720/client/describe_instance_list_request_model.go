@@ -38,57 +38,59 @@ type iDescribeInstanceListRequest interface {
 }
 
 type DescribeInstanceListRequest struct {
-	// The number of the page to return.
+	// The IDs of the Anti-DDoS Origin instances to query. Specify the value in the `["<Instance ID 1>","<Instance ID 2>",……]` format.
 	//
 	// example:
 	//
 	// ["ddosbgp-cn-oew1pjrk****"]
 	InstanceIdList *string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty"`
-	// The field that is used to sort the Anti-DDoS Origin instances. Set the value to **expireTime**, which indicates that the instances are sorted based on the expiration time.
+	// The mitigation plan type of the Anti-DDoS Origin instance to query. Valid values:
 	//
-	// You can set the **Orderdire*	- parameter to specify the sorting method.
+	// - **0**: Professional.
+	//
+	// - **1**: Enterprise.
 	//
 	// example:
 	//
 	// 0
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The total number of Anti-DDoS Origin instances.
+	// The mitigation plan types of the Anti-DDoS Origin instances to query.
 	InstanceTypeList []*string `json:"InstanceTypeList,omitempty" xml:"InstanceTypeList,omitempty" type:"Repeated"`
-	// The sorting method. Valid values:
-	//
-	// 	- **desc**: the descending order. This is the default value.
-	//
-	// 	- **asc**: the ascending order.
+	// The IP address of the protected object for the Anti-DDoS Origin instance to query.
 	//
 	// example:
 	//
 	// 47.89.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The IP address of the object that is protected by the Anti-DDoS Origin instance to query.
+	// The protocol type of the IP assets protected by the Anti-DDoS Origin instance to query. Valid values:
+	//
+	// - **IPv4**: IPv4 protocol.
+	//
+	// - **IPv6**: IPv6 protocol.
 	//
 	// example:
 	//
 	// IPv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The ID of the region where the Anti-DDoS Origin instance to query resides.
+	// The field used to sort the Anti-DDoS Origin instance list. The value is fixed as **expireTime**, which indicates that instances are sorted by expiration time.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	// You can use the **Orderdire*	- parameter to specify the sort order.
 	//
 	// example:
 	//
 	// expireTime
 	Orderby *string `json:"Orderby,omitempty" xml:"Orderby,omitempty"`
-	// The tags that are added to the Anti-DDoS Origin instance.
+	// The sort order. Valid values:
+	//
+	// - **desc*	- (default): descending order by expiration time.
+	//
+	// - **asc**: ascending order by expiration time.
 	//
 	// example:
 	//
 	// desc
 	Orderdire *string `json:"Orderdire,omitempty" xml:"Orderdire,omitempty"`
-	// The protocol type of the IP address asset that is protected by the Anti-DDoS Origin instance to query. Valid values:
-	//
-	// 	- **Ipv4**: IPv4
-	//
-	// 	- **Ipv6**: IPv6
+	// The number of the page to return when paging is used.
 	//
 	// This parameter is required.
 	//
@@ -96,11 +98,7 @@ type DescribeInstanceListRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The mitigation plan of the Anti-DDoS Origin instance to query. Valid values:
-	//
-	// 	- **0**: the Professional mitigation plan
-	//
-	// 	- **1**: the Enterprise mitigation plan
+	// The number of instances on each page when paging is used.
 	//
 	// This parameter is required.
 	//
@@ -108,25 +106,29 @@ type DescribeInstanceListRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The tag that is added to the Anti-DDoS Origin instance.
+	// The region ID of the Anti-DDoS Origin instance to query.
+	//
+	// > You can call [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) to query all region IDs supported by Anti-DDoS Origin.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The number of entries to return on each page.
+	// The remark of the Anti-DDoS Origin instance to query. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The remarks of the Anti-DDoS Origin instance to query. Fuzzy match is supported.
+	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
+	//
+	// If you do not specify this parameter, the instance belongs to the default resource group.
 	//
 	// example:
 	//
 	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The key of the tag that is added to the Anti-DDoS Origin instance.
+	// The tags bound to the Anti-DDoS Origin instance to query.
 	Tag []*DescribeInstanceListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -269,17 +271,13 @@ func (s *DescribeInstanceListRequest) Validate() error {
 }
 
 type DescribeInstanceListRequestTag struct {
-	// The mitigation plan of the Anti-DDoS Origin instance.
+	// The key of the tag bound to the Anti-DDoS Origin instance to query.
 	//
 	// example:
 	//
 	// test-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The mitigation plan of the Anti-DDoS Origin instance. Valid values:
-	//
-	// 	- 0: the Professional mitigation plan.
-	//
-	// 	- 1: the Enterprise mitigation plan.
+	// The value of the tag bound to the Anti-DDoS Origin instance to query.
 	//
 	// example:
 	//

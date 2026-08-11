@@ -93,13 +93,13 @@ type DescribeRdMemberListResponseBodyMemberList struct {
 	//
 	// example:
 	//
-	// test1
+	// tes***
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The Alibaba Cloud account ID of the member.
 	//
 	// example:
 	//
-	// 1960279802016267
+	// 196027980201****
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 

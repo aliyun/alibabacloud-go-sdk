@@ -20,23 +20,23 @@ type iDescribeDdosOriginInstanceBillRequest interface {
 }
 
 type DescribeDdosOriginInstanceBillRequest struct {
-	// The end of the time range to query. The value is a timestamp. Unit: milliseconds. The time span between StartTime and EndTime cannot exceed 30 days.
+	// The end timestamp of the query. Unit: milliseconds. The time span cannot exceed 30 days.
 	//
 	// example:
 	//
 	// 1711382399410
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies whether to display the bill details. Valid values:
+	// Specifies whether to display billing details. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Displays billing information.
 	//
-	// 	- **false**
+	// - **false**: Displays only global instance information without billing details.
 	//
 	// example:
 	//
 	// false
 	IsShowList *bool `json:"IsShowList,omitempty" xml:"IsShowList,omitempty"`
-	// The beginning of the time range to query. The value is a timestamp. Unit: milliseconds.
+	// The start timestamp of the query. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -44,19 +44,19 @@ type DescribeDdosOriginInstanceBillRequest struct {
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The bill type. Valid values:
 	//
-	// 	- **flow_cn**: the bill for the clean bandwidth of elastic IP addresses (EIPs) with Anti-DDoS (Enhanced) enabled in the Chinese mainland.
+	// - **flow_cn**: clean traffic bill for EIPs with Anti-DDoS (Enhanced) enabled in the Chinese mainland.
 	//
-	// 	- **flow_ov**: the bill for the clean bandwidth of EIPs with Anti-DDoS (Enhanced) enabled outside the Chinese mainland.
+	// - **flow_ov**: clean traffic bill for EIPs with Anti-DDoS (Enhanced) enabled outside the Chinese mainland.
 	//
-	// 	- **standard_assets_flow_cn**: the bill for the clean bandwidth of regular Alibaba Cloud services in the Chinese mainland.
+	// - **standard_assets_flow_cn**: clean traffic bill for Regular Alibaba Cloud services in the Chinese mainland.
 	//
-	// 	- **standard_assets_flow_ov**: the bill for the clean bandwidth of regular Alibaba Cloud services outside the Chinese mainland.
+	// - **standard_assets_flow_ov**: clean traffic bill for Regular Alibaba Cloud services outside the Chinese mainland.
 	//
-	// 	- **function**: the bill for the basic fee.
+	// - **function**: feature activation bill.
 	//
-	// 	- **ip_count**: the bill for protected IP addresses.
+	// - **ip_count**: protected IP address count bill.
 	//
-	// 	- **monthly_summary**: the monthly summary bill.
+	// - **monthly_summary**: monthly summary bill.
 	//
 	// example:
 	//

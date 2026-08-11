@@ -16,7 +16,7 @@ type iReleaseDdosOriginInstanceRequest interface {
 type ReleaseDdosOriginInstanceRequest struct {
 	// The ID of the Anti-DDoS Origin instance that you want to release.
 	//
-	// >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
+	// > You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
 	//
 	// This parameter is required.
 	//

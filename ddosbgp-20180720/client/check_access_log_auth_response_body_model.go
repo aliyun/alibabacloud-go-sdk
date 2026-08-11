@@ -16,17 +16,17 @@ type iCheckAccessLogAuthResponseBody interface {
 }
 
 type CheckAccessLogAuthResponseBody struct {
-	// Indicates whether Anti-DDoS Origin was authorized to access Simple Log Service. Valid values:
+	// Indicates whether Anti-DDoS Origin is authorized to access Simple Log Service. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Authorized.
 	//
-	// 	- **false**
+	// - **false**: Not authorized.
 	//
 	// example:
 	//
 	// true
 	AccessLogAuth *bool `json:"AccessLogAuth,omitempty" xml:"AccessLogAuth,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

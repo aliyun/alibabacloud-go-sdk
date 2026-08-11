@@ -34,7 +34,7 @@ type DescribeRdMemberListRequest struct {
 	//
 	// example:
 	//
-	// rd-x9bLhd
+	// rd-x9bL**
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
 }
 

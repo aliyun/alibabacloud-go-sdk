@@ -18,7 +18,7 @@ type iAttachToPolicyShrinkRequest interface {
 }
 
 type AttachToPolicyShrinkRequest struct {
-	// The protected objects.
+	// The list of protection objects.
 	//
 	// This parameter is required.
 	IpPortProtocolListShrink *string `json:"IpPortProtocolList,omitempty" xml:"IpPortProtocolList,omitempty"`
@@ -29,7 +29,18 @@ type AttachToPolicyShrinkRequest struct {
 	// example:
 	//
 	// cd8b4d70-e4e0-413a-b390-e71d********
-	PolicyId    *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The version of the port-specific mitigation policy. Valid values:
+	//
+	// - **Not specified**: Associates the default surf anti-DDoS engine policy.
+	//
+	// - **2**: Associates the new stream anti-DDoS engine policy.
+	//
+	// > Only port-specific mitigation policies support this parameter.
+	//
+	// example:
+	//
+	// 2
 	PortVersion *string `json:"PortVersion,omitempty" xml:"PortVersion,omitempty"`
 }
 

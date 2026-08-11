@@ -26,7 +26,7 @@ type DescribeRegionsResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the regions of cloud assets that can be protected by Anti-DDoS Origin. The information includes region IDs and names.
+	// The region information of cloud assets that can be protected by Anti-DDoS Origin, including region IDs and names.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -34,11 +34,11 @@ type DescribeRegionsResponseBody struct {
 	//
 	// F7CA8B4E-FB15-4336-A351-8DC29D66EA82
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The call was successful.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type DescribeRegionsResponseBodyRegions struct {
 	//
 	// China (Hangzhou)
 	RegionEnName *string `json:"RegionEnName,omitempty" xml:"RegionEnName,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//

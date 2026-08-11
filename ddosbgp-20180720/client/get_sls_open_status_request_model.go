@@ -16,7 +16,7 @@ type iGetSlsOpenStatusRequest interface {
 }
 
 type GetSlsOpenStatusRequest struct {
-	// The ID of the region where the Anti-DDoS Origin instance resides.
+	// The region ID of the Anti-DDoS Origin instance.
 	//
 	// For more information about the valid values of this parameter, see [Regions and zones](https://help.aliyun.com/document_detail/188196.html).
 	//

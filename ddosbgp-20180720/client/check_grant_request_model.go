@@ -20,9 +20,9 @@ type iCheckGrantRequest interface {
 type CheckGrantRequest struct {
 	// Specifies whether to allow Anti-DDoS Origin to check the service-linked role. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type CheckGrantRequest struct {
 	IsSlr *bool `json:"IsSlr,omitempty" xml:"IsSlr,omitempty"`
 	// The ID of the region where the Anti-DDoS Origin instance resides.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
 	//
 	// example:
 	//

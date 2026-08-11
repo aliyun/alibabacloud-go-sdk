@@ -22,47 +22,31 @@ type iListPolicyRequest interface {
 }
 
 type ListPolicyRequest struct {
-	// The name of the policy.
+	// The policy name.
 	//
 	// example:
 	//
 	// test**
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The page number.
+	// Settings the page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page. Default value: **10**.
+	// The number of entries per page in a paged query. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The service type. Valid values:
-	//
-	// 	- **ecs**: Elastic Compute Service (ECS).
-	//
-	// 	- **slb**: Server Load Balancer (SLB).
-	//
-	// 	- **eip**: Elastic IP Address (EIP).
-	//
-	// 	- **gf-eip**: EIP with Anti-DDoS (Enhanced) enabled.
-	//
-	// >  This parameter is available only if Type is set to `default`.
+	// The applicable product type. Valid values:
 	//
 	// example:
 	//
 	// ecs
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The type of the policy. Valid values:
-	//
-	// 	- **default**: the default mitigation policy.
-	//
-	// 	- **l3**: IP-specific mitigation policies.
-	//
-	// 	- **l4**: port-specific mitigation policies.
+	// The policy type. Valid values:
 	//
 	// example:
 	//

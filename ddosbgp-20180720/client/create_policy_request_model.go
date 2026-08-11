@@ -18,20 +18,31 @@ type iCreatePolicyRequest interface {
 }
 
 type CreatePolicyRequest struct {
-	// The name of the policy.
+	// The policy name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The version of the port-specific mitigation policy. Valid values:
+	//
+	// - **Not specified**: creates a default surf DPI engine policy.
+	//
+	// - **2**: creates a new stream DPI engine policy.
+	//
+	// > Only port-specific mitigation policies support this parameter.
+	//
+	// example:
+	//
+	// 2
 	PortVersion *string `json:"PortVersion,omitempty" xml:"PortVersion,omitempty"`
-	// The type of the policy. Valid values:
+	// The policy type. Valid values:
 	//
-	// 	- **l3**: IP-specific mitigation policies.
+	// - **l3**: IP-specific mitigation policy.
 	//
-	// 	- **l4**: port-specific mitigation policies.
+	// - **l4**: port-specific mitigation policy.
 	//
 	// This parameter is required.
 	//

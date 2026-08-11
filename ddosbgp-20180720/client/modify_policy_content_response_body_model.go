@@ -14,7 +14,7 @@ type iModifyPolicyContentResponseBody interface {
 }
 
 type ModifyPolicyContentResponseBody struct {
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique ID for each request, which can be used for troubleshooting and diagnostics.
 	//
 	// example:
 	//

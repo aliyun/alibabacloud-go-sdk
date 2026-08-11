@@ -24,9 +24,9 @@ type CheckGrantResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether Anti-DDoS Origin is authorized to obtain information about the assets within the current Alibaba Cloud account. Valid values:
 	//
-	// 	- **1**: Anti-DDoS Origin is authorized to obtain information about the assets within the current Alibaba Cloud account.
+	// - **1**: Anti-DDoS Origin is authorized to obtain information about the assets within the current Alibaba Cloud account.
 	//
-	// 	- **0**: Anti-DDoS Origin is not authorized to obtain information about the assets within the current Alibaba Cloud account.
+	// - **0**: Anti-DDoS Origin is not authorized to obtain information about the assets within the current Alibaba Cloud account.
 	//
 	// example:
 	//

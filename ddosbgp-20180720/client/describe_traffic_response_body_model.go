@@ -16,7 +16,7 @@ type iDescribeTrafficResponseBody interface {
 }
 
 type DescribeTrafficResponseBody struct {
-	// The queried traffic statistics.
+	// The traffic statistics.
 	FlowList []*DescribeTrafficResponseBodyFlowList `json:"FlowList,omitempty" xml:"FlowList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -66,17 +66,17 @@ func (s *DescribeTrafficResponseBody) Validate() error {
 }
 
 type DescribeTrafficResponseBodyFlowList struct {
-	// The bandwidth of attack traffic. Unit: bit/s.
+	// The bandwidth of attack traffic. Unit: bps.
 	//
-	// >  This parameter is returned only if attack traffic exists.
+	// > This field is returned only when attack traffic exists.
 	//
 	// example:
 	//
 	// 0
 	AttackBps *int64 `json:"AttackBps,omitempty" xml:"AttackBps,omitempty"`
-	// The packet forwarding rate of attack traffic. Unit: packets per second.
+	// The packet forwarding rate of attack traffic. Unit: pps.
 	//
-	// >  This parameter is returned only if attack traffic exists.
+	// > This field is returned only when attack traffic exists.
 	//
 	// example:
 	//
@@ -84,33 +84,33 @@ type DescribeTrafficResponseBodyFlowList struct {
 	AttackPps *int64 `json:"AttackPps,omitempty" xml:"AttackPps,omitempty"`
 	// The type of the traffic statistics. Valid values:
 	//
-	// 	- **max**: the peak traffic within the specified interval
+	// - **max**: the peak traffic within the statistical interval.
 	//
-	// 	- **avg**: the average traffic within the specified interval
+	// - **avg**: the average traffic within the statistical interval.
 	//
 	// example:
 	//
 	// max
 	FlowType *string `json:"FlowType,omitempty" xml:"FlowType,omitempty"`
-	// The bandwidth of the total traffic. Unit: Kbit/s.
+	// The bandwidth of total traffic. Unit: Kbps.
 	//
 	// example:
 	//
 	// 417
 	Kbps *int32 `json:"Kbps,omitempty" xml:"Kbps,omitempty"`
-	// The ID of the traffic statistics.
+	// The ID of the traffic statistics entry.
 	//
 	// example:
 	//
 	// 8e33f19e-5644-11eb-b5c1-d89d67182200
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The packet forwarding rate of the total traffic. Unit: packets per second.
+	// The packet forwarding rate of total traffic. Unit: pps.
 	//
 	// example:
 	//
 	// 274
 	Pps *int32 `json:"Pps,omitempty" xml:"Pps,omitempty"`
-	// The time when the traffic statistics are calculated. This value is a UNIX timestamp. Unit: seconds.
+	// The time of the traffic statistics. Expressed as a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//

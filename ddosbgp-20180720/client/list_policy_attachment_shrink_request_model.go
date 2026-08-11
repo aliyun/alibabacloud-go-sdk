@@ -24,38 +24,47 @@ type iListPolicyAttachmentShrinkRequest interface {
 }
 
 type ListPolicyAttachmentShrinkRequest struct {
-	// The protected objects.
+	// The list of protected objects.
 	IpPortProtocolListShrink *string `json:"IpPortProtocolList,omitempty" xml:"IpPortProtocolList,omitempty"`
-	// The page number.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page. Default value: **10**.
+	// The number of rows per page in a paging query. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the policy.
+	// The policy ID.
 	//
 	// example:
 	//
 	// f38f6520-92b7-451e-b520-9ab3********
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The type of the policy. Valid values:
+	// The policy type. Valid values:
 	//
-	// 	- **default**: the default mitigation policies.
+	// - **default**: default mitigation policy.
 	//
-	// 	- **l3**: IP-specific mitigation policies.
+	// - **l3**: IP-specific mitigation policy.
 	//
-	// 	- **l4**: port-specific mitigation policies.
+	// - **l4**: port-specific mitigation policy.
 	//
 	// example:
 	//
 	// l3
-	PolicyType  *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The version of the port-specific mitigation policy. Valid values:
+	//
+	// - **Not specified**: queries the policy associations that attach to the default surf DPI engine.
+	//
+	// - **2**: queries the policy associations that attach to the new stream DPI engine.
+	//
+	// example:
+	//
+	// 2
 	PortVersion *string `json:"PortVersion,omitempty" xml:"PortVersion,omitempty"`
 }
 

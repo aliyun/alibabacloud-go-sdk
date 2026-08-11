@@ -18,7 +18,7 @@ type iAttachToPolicyRequest interface {
 }
 
 type AttachToPolicyRequest struct {
-	// The protected objects.
+	// The list of protection objects.
 	//
 	// This parameter is required.
 	IpPortProtocolList []*AttachToPolicyRequestIpPortProtocolList `json:"IpPortProtocolList,omitempty" xml:"IpPortProtocolList,omitempty" type:"Repeated"`
@@ -29,7 +29,18 @@ type AttachToPolicyRequest struct {
 	// example:
 	//
 	// cd8b4d70-e4e0-413a-b390-e71d********
-	PolicyId    *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The version of the port-specific mitigation policy. Valid values:
+	//
+	// - **Not specified**: Associates the default surf anti-DDoS engine policy.
+	//
+	// - **2**: Associates the new stream anti-DDoS engine policy.
+	//
+	// > Only port-specific mitigation policies support this parameter.
+	//
+	// example:
+	//
+	// 2
 	PortVersion *string `json:"PortVersion,omitempty" xml:"PortVersion,omitempty"`
 }
 
@@ -82,7 +93,7 @@ func (s *AttachToPolicyRequest) Validate() error {
 }
 
 type AttachToPolicyRequestIpPortProtocolList struct {
-	// The IP address of the protected object.
+	// The IP address of the protection object.
 	//
 	// This parameter is required.
 	//
@@ -90,22 +101,29 @@ type AttachToPolicyRequestIpPortProtocolList struct {
 	//
 	// 112.124.241.***
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The port number of the protected object.
+	// The port number of the protection object.
 	//
-	// >  This parameter is available for only port-specific mitigation policies.
+	// > Only port-specific mitigation policies support this parameter.
 	//
 	// example:
 	//
 	// 8*
-	Port      *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The port range of the protection object.
+	//
+	// > Only port-specific mitigation policies support this parameter.
+	//
+	// example:
+	//
+	// 8*-9*
 	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	// The protocol type of the protected object. Valid values:
+	// The protocol type of the protection object. Valid values:
 	//
-	// 	- **tcp**
+	// - **tcp**: Transmission Control Protocol.
 	//
-	// 	- **udp**
+	// - **udp**: User Datagram Protocol.
 	//
-	// >  This parameter is available for only port-specific mitigation policies.
+	// > Only port-specific mitigation policies support this parameter.
 	//
 	// example:
 	//

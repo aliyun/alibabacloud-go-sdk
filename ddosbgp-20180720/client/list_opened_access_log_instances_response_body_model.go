@@ -18,15 +18,15 @@ type iListOpenedAccessLogInstancesResponseBody interface {
 }
 
 type ListOpenedAccessLogInstancesResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 4DB64811-70A1-41C9-A0CE-CD8B260ED551
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The configuration of log analysis for the Anti-DDoS Origin instances.
+	// The log analysis configurations of Anti-DDoS Origin instances.
 	SlsConfigStatus []*ListOpenedAccessLogInstancesResponseBodySlsConfigStatus `json:"SlsConfigStatus,omitempty" xml:"SlsConfigStatus,omitempty" type:"Repeated"`
-	// The number of the Anti-DDoS Origin instances for which log analysis was enabled.
+	// The number of results returned, which is the number of Anti-DDoS Origin instances that have log analysis enabled.
 	//
 	// example:
 	//
@@ -83,17 +83,17 @@ func (s *ListOpenedAccessLogInstancesResponseBody) Validate() error {
 }
 
 type ListOpenedAccessLogInstancesResponseBodySlsConfigStatus struct {
-	// Indicates whether log analysis was enabled for the Anti-DDoS Origin instance. Valid values:
+	// Indicates whether log analysis is enabled for the instance. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Enabled.
 	//
-	// 	- **false**
+	// - **false**: Not enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The ID of the Anti-DDoS Origin instance.
+	// The instance ID of Anti-DDoS Origin.
 	//
 	// example:
 	//

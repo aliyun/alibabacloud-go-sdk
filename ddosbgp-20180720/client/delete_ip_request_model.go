@@ -22,7 +22,7 @@ type iDeleteIpRequest interface {
 type DeleteIpRequest struct {
 	// The ID of the Anti-DDoS Origin instance.
 	//
-	// >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
+	// > Call [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) to query the IDs of all Anti-DDoS Origin instances.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,11 @@ type DeleteIpRequest struct {
 	//
 	// ddosbgp-cn-npk1z7t9****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IP addresses that you want to remove from the Anti-DDoS Origin instance. This parameter is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
+	// A list of IP addresses to remove from the protected objects of the Anti-DDoS Origin instance. Specify the list as a string that is a JSON array. Each element in the array is a struct that contains the following field:
 	//
-	// 	- **ip**: required. The IP address that you want to remove. Data type: string.
+	// - **ip**: The IP address to remove. This parameter is a string and is required.
 	//
-	//     **
-	//
-	//     **Note*	- The IP addresses that you want to remove must be protected by the Anti-DDoS Origin instance.
+	//   > The IP address must be in the protection list of the Anti-DDoS Origin instance.
 	//
 	// This parameter is required.
 	//
@@ -44,9 +42,9 @@ type DeleteIpRequest struct {
 	//
 	// [{"ip":"1.XX.XX.1"},{"ip":"2.XX.XX.2"}]
 	IpList *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
-	// The ID of the region where the Anti-DDoS Origin instance resides.
+	// The region ID of the Anti-DDoS Origin instance.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	// > Call [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) to query all regions that Anti-DDoS Origin supports.
 	//
 	// example:
 	//
@@ -54,9 +52,9 @@ type DeleteIpRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Deprecated
 	//
-	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin instance belongs to the default resource group.
+	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. If you leave this parameter empty, the instance belongs to the default resource group.
 	//
-	// For information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
 	//
 	// example:
 	//

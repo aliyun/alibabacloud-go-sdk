@@ -24,7 +24,7 @@ type DettachAssetGroupToInstanceRequest struct {
 	AssetGroupList []*DettachAssetGroupToInstanceRequestAssetGroupList `json:"AssetGroupList,omitempty" xml:"AssetGroupList,omitempty" type:"Repeated"`
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+	// > You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DettachAssetGroupToInstanceRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the region in which the instance resides.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
 	//
 	// example:
 	//
@@ -109,9 +109,9 @@ type DettachAssetGroupToInstanceRequestAssetGroupList struct {
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// 	- **waf**: WAF instance
+	// - **waf**: WAF instance
 	//
-	// 	- **ga**: Global Accelerator (GA) instance
+	// - **ga**: Global Accelerator (GA) instance
 	//
 	// This parameter is required.
 	//

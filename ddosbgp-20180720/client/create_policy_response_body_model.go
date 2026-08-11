@@ -16,13 +16,13 @@ type iCreatePolicyResponseBody interface {
 }
 
 type CreatePolicyResponseBody struct {
-	// The ID of the policy.
+	// The policy ID.
 	//
 	// example:
 	//
 	// 83967609-7ea5-4f6d-a6ea-380b09e****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//

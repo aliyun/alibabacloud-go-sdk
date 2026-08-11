@@ -22,7 +22,7 @@ type iModifyPolicyContentShrinkRequest interface {
 type ModifyPolicyContentShrinkRequest struct {
 	// The policy content.
 	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ID of the policy.
+	// The policy ID.
 	//
 	// This parameter is required.
 	//
@@ -30,12 +30,17 @@ type ModifyPolicyContentShrinkRequest struct {
 	//
 	// 83967609-7ea5-4f6d-a6ea-380b09e****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the policy.
+	// The policy name.
 	//
 	// example:
 	//
 	// demo**
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The version of the port-specific mitigation policy. Valid values:
+	//
+	// example:
+	//
+	// 2
 	PortVersion *string `json:"PortVersion,omitempty" xml:"PortVersion,omitempty"`
 }
 

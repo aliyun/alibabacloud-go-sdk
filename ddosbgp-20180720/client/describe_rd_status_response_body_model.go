@@ -38,11 +38,11 @@ type DescribeRdStatusResponseBody struct {
 	CurrentUid *string `json:"CurrentUid,omitempty" xml:"CurrentUid,omitempty"`
 	// The type of the Alibaba Cloud account. Valid values:
 	//
-	// 	- **MasterAccount**: management account.
+	// - **MasterAccount**: management account.
 	//
-	// 	- **DelegatedAdminAccount**: delegated administrator account.
+	// - **DelegatedAdminAccount**: delegated administrator account.
 	//
-	// 	- **MemberAccount**: member.
+	// - **MemberAccount**: member.
 	//
 	// example:
 	//

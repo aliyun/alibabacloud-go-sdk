@@ -18,24 +18,35 @@ type iDetachFromPolicyShrinkRequest interface {
 }
 
 type DetachFromPolicyShrinkRequest struct {
-	// The protected objects.
+	// The list of protected objects.
 	//
 	// This parameter is required.
 	IpPortProtocolListShrink *string `json:"IpPortProtocolList,omitempty" xml:"IpPortProtocolList,omitempty"`
-	// The type of the policy. Valid values:
+	// The policy type. Valid values:
 	//
-	// 	- **default**: the default mitigation policies.
+	// - **default**: default mitigation policy.
 	//
-	// 	- **l3**: IP-specific mitigation policies.
+	// - **l3**: IP-specific mitigation policy.
 	//
-	// 	- **l4**: port-specific mitigation policies.
+	// - **l4**: port-specific mitigation policy.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// l3
-	PolicyType  *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The version of the port-specific mitigation policy. Valid values:
+	//
+	// - **Not specified**: dissociates the default surf anti-DDoS engine policy.
+	//
+	// - **2**: dissociates the new stream anti-DDoS engine policy.
+	//
+	// > Only port-specific mitigation policies support this parameter.
+	//
+	// example:
+	//
+	// 2
 	PortVersion *string `json:"PortVersion,omitempty" xml:"PortVersion,omitempty"`
 }
 

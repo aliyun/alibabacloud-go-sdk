@@ -14,7 +14,7 @@ type iDeleteIpResponseBody interface {
 }
 
 type DeleteIpResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

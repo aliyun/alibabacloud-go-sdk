@@ -16,17 +16,17 @@ type iGetSlsOpenStatusResponseBody interface {
 }
 
 type GetSlsOpenStatusResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// D01666F5-541B-4C78-98A6-D29E02DAAC7C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether Simple Log Service was activated. Valid values:
+	// Indicates whether Simple Log Service is activated for the current Alibaba Cloud account. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Simple Log Service is activated.
 	//
-	// 	- **false**
+	// - **false**: Simple Log Service is not activated.
 	//
 	// example:
 	//
