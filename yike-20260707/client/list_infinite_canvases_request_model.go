@@ -15,10 +15,14 @@ type iListInfiniteCanvasesRequest interface {
 	GetPageNo() *int32
 	SetPageSize(v int32) *ListInfiniteCanvasesRequest
 	GetPageSize() *int32
+	SetProductionId(v string) *ListInfiniteCanvasesRequest
+	GetProductionId() *string
 	SetSortBy(v string) *ListInfiniteCanvasesRequest
 	GetSortBy() *string
 	SetSortOrder(v string) *ListInfiniteCanvasesRequest
 	GetSortOrder() *string
+	SetWorkspaceId(v string) *ListInfiniteCanvasesRequest
+	GetWorkspaceId() *string
 }
 
 type ListInfiniteCanvasesRequest struct {
@@ -39,7 +43,8 @@ type ListInfiniteCanvasesRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductionId *string `json:"ProductionId,omitempty" xml:"ProductionId,omitempty"`
 	// The sort field and sort order. Separate multiple values with commas (,).
 	//
 	// example:
@@ -59,7 +64,8 @@ type ListInfiniteCanvasesRequest struct {
 	// example:
 	//
 	// Ascending
-	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	SortOrder   *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListInfiniteCanvasesRequest) String() string {
@@ -82,12 +88,20 @@ func (s *ListInfiniteCanvasesRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListInfiniteCanvasesRequest) GetProductionId() *string {
+	return s.ProductionId
+}
+
 func (s *ListInfiniteCanvasesRequest) GetSortBy() *string {
 	return s.SortBy
 }
 
 func (s *ListInfiniteCanvasesRequest) GetSortOrder() *string {
 	return s.SortOrder
+}
+
+func (s *ListInfiniteCanvasesRequest) GetWorkspaceId() *string {
+	return s.WorkspaceId
 }
 
 func (s *ListInfiniteCanvasesRequest) SetKeyword(v string) *ListInfiniteCanvasesRequest {
@@ -105,6 +119,11 @@ func (s *ListInfiniteCanvasesRequest) SetPageSize(v int32) *ListInfiniteCanvases
 	return s
 }
 
+func (s *ListInfiniteCanvasesRequest) SetProductionId(v string) *ListInfiniteCanvasesRequest {
+	s.ProductionId = &v
+	return s
+}
+
 func (s *ListInfiniteCanvasesRequest) SetSortBy(v string) *ListInfiniteCanvasesRequest {
 	s.SortBy = &v
 	return s
@@ -112,6 +131,11 @@ func (s *ListInfiniteCanvasesRequest) SetSortBy(v string) *ListInfiniteCanvasesR
 
 func (s *ListInfiniteCanvasesRequest) SetSortOrder(v string) *ListInfiniteCanvasesRequest {
 	s.SortOrder = &v
+	return s
+}
+
+func (s *ListInfiniteCanvasesRequest) SetWorkspaceId(v string) *ListInfiniteCanvasesRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
