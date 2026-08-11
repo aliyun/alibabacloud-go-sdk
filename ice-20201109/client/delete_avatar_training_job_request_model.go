@@ -14,7 +14,7 @@ type iDeleteAvatarTrainingJobRequest interface {
 }
 
 type DeleteAvatarTrainingJobRequest struct {
-	// The ID of the digital human training job.
+	// The ID of the digital human training task.
 	//
 	// This parameter is required.
 	//

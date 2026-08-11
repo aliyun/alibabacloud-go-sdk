@@ -28,65 +28,63 @@ type iSearchPublicMediaInfoRequest interface {
 }
 
 type SearchPublicMediaInfoRequest struct {
-	// Indicates whether the User has purchased a resource plan that includes this media asset.
+	// Specifies whether the user has purchased a resource plan that includes this media asset.
 	//
 	// example:
 	//
 	// true
 	Authorized *bool `json:"Authorized,omitempty" xml:"Authorized,omitempty"`
-	// Dynamic metadata search matching conditions.
+	// The dynamic metadata search matching conditions.
 	//
 	// example:
 	//
 	// "ApprovalStatus=\\"Available\\"&amp;MaterialBags=\\"boutiquemusic\\"&amp;Mood=\\"Nervous\\""
 	DynamicMetaDataMatchFields *string `json:"DynamicMetaDataMatchFields,omitempty" xml:"DynamicMetaDataMatchFields,omitempty"`
-	// Entity ID, used to identify different types of public copyright media assets. Valid values:
+	// The entity ID that identifies different types of public copyright media assets. Valid values:
 	//
-	// - Copyright_Music: Public copyright music
+	// - Copyright_Music: public copyright music
 	//
 	// example:
 	//
 	// Copyright_Music
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// Indicates whether the User has collected this media asset.
+	// Specifies whether the user has added the media asset to favorites.
 	//
 	// example:
 	//
 	// true
 	Favorite *bool `json:"Favorite,omitempty" xml:"Favorite,omitempty"`
-	// IMS media asset IDs.
-	//
-	// - Separate multiple IDs with commas.
+	// The IMS media asset IDs. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****,****15d4a4b0448391508f2cb486****
 	MediaIds *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
-	// Page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Number of entries per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Result sorting method: :. Valid values:
+	// The sorting method for results in the format of <field>:<order>. Valid values:
 	//
 	// field:
 	//
-	// - "UsageCount": usage
+	// - "UsageCount": usage count
 	//
 	// - "UnitPrice": unit price
 	//
 	// order:
 	//
-	// - "Desc": descending
+	// - "Desc": descending order
 	//
-	// - "Asc": ascending
+	// - "Asc": ascending order
 	//
 	// example:
 	//

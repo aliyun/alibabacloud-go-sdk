@@ -20,39 +20,39 @@ type iCreateLiveSnapshotTemplateRequest interface {
 }
 
 type CreateLiveSnapshotTemplateRequest struct {
-	// The naming format of the snapshot captured in overwrite mode.
+	// The overwrite snapshot file format.
 	//
-	// - The value cannot start with a forward slash (/). Only the suffix .jpg is supported.
+	// - The value cannot start with "/". Only the .jpg suffix is supported.
 	//
-	// - It cannot exceed 255 characters in length.
+	// - Maximum length: 255.
 	//
-	// - The {JobId} placeholder is supported. It specifies the ID of the snapshot job.
+	// - Supported placeholder: {JobId}: snapshot task ID.
 	//
-	// - Placeholders such as {UnixTimestamp}, {Sequence}, and {Date} are not allowed.
+	// - The placeholders {UnixTimestamp}, {Sequence}, and {Date} are not allowed.
 	//
-	// - You must specify at least one of the OverwriteFormat and SequenceFormat parameters.
+	// - At least one of the overwrite snapshot format or sequence snapshot format must be specified.
 	//
 	// example:
 	//
 	// snapshot/{JobId}.jpg
 	OverwriteFormat *string `json:"OverwriteFormat,omitempty" xml:"OverwriteFormat,omitempty"`
-	// The naming format of the snapshot captured in time series mode.
+	// The sequence snapshot file format.
 	//
-	// - The value cannot start with a forward slash (/). Only the suffix .jpg is supported.
+	// - The value cannot start with "/". Only the .jpg suffix is supported.
 	//
-	// - It cannot exceed 255 characters in length.
+	// - Maximum length: 255.
 	//
-	// - The {JobId}, {Date}, {UnixTimestamp}, and {Sequence} placeholders are supported. {JobId} specifies the ID of the snapshot job. {Date} specifies the date on which the snapshot is captured. {UnixTimestamp} specifies the timestamp of the snapshot. {Sequence} specifies the sequence number of the snapshot. You must specify at least one of the {UnixTimestamp} and {Sequence} placeholders.
+	// - Supported placeholders: {JobId}: snapshot task ID, {Date}: snapshot date, {UnixTimestamp}: timestamp, {Sequence}: serial number. At least one of {UnixTimestamp} or {Sequence} must be specified.
 	//
-	// - You must specify at least one of the OverwriteFormat and SequenceFormat parameters.
+	// - At least one of the overwrite snapshot format or sequence snapshot format must be specified.
 	//
 	// example:
 	//
 	// snapshot/{JobId}/{UnixTimestamp}.jpg
 	SequenceFormat *string `json:"SequenceFormat,omitempty" xml:"SequenceFormat,omitempty"`
-	// The name of the template.
+	// The template name.
 	//
-	// - It cannot exceed 128 characters in length.
+	// - Maximum length: 128.
 	//
 	// This parameter is required.
 	//
@@ -60,9 +60,9 @@ type CreateLiveSnapshotTemplateRequest struct {
 	//
 	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The interval between two adjacent snapshots. Unit: seconds.
+	// The snapshot time interval. Unit: seconds.
 	//
-	// - Valid values: [5,3600].
+	// - Valid values: 5 to 3600.
 	//
 	// This parameter is required.
 	//

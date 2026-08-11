@@ -14,7 +14,7 @@ type iBatchGetYikeAssetMediaInfosRequest interface {
 }
 
 type BatchGetYikeAssetMediaInfosRequest struct {
-	// The media asset IDs, separated by commas.
+	// The IDs of the media assets to query, separated by commas.
 	//
 	// example:
 	//

@@ -62,11 +62,11 @@ func (s *GetYikeAssetMediaInfoResponseBody) Validate() error {
 }
 
 type GetYikeAssetMediaInfoResponseBodyMediaInfo struct {
-	// Custom business data.
+	// The custom business information.
 	BizData *GetYikeAssetMediaInfoResponseBodyMediaInfoBizData `json:"BizData,omitempty" xml:"BizData,omitempty" type:"Struct"`
 	// The file information.
 	FileInfoList []*GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
-	// The basic information about the media asset.
+	// The basic information of the media asset.
 	MediaBasicInfo *GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
 	// The media asset ID.
 	//
@@ -150,13 +150,13 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoBizData struct {
 	//
 	// Label
 	AuditBlockedLabel *string `json:"AuditBlockedLabel,omitempty" xml:"AuditBlockedLabel,omitempty"`
-	// 审核状态。
+	// The audit status.
 	//
 	// example:
 	//
 	// Status
 	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	// 创建任务 ID。
+	// The ID of the creation task.
 	//
 	// example:
 	//
@@ -168,25 +168,25 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoBizData struct {
 	//
 	// fd-CBMEJaa2fA
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// 是否最喜爱的。
+	// Indicates whether the media asset is marked as a favorite.
 	//
 	// example:
 	//
 	// 1
 	IsFavorite *string `json:"IsFavorite,omitempty" xml:"IsFavorite,omitempty"`
-	// 是否被删除。
+	// Indicates whether the media asset is logically deleted.
 	//
 	// example:
 	//
 	// 1
 	IsLogicalDeleted *string `json:"IsLogicalDeleted,omitempty" xml:"IsLogicalDeleted,omitempty"`
-	// 媒资子类型。
+	// The media asset subtype.
 	//
 	// example:
 	//
 	// SubType
 	MediaAssetSubType *string `json:"MediaAssetSubType,omitempty" xml:"MediaAssetSubType,omitempty"`
-	// 媒资类型。
+	// The media asset type.
 	//
 	// example:
 	//
@@ -198,25 +198,25 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoBizData struct {
 	//
 	// ID
 	ProductionId *string `json:"ProductionId,omitempty" xml:"ProductionId,omitempty"`
-	// 提示词。
+	// The prompt.
 	//
 	// example:
 	//
-	// 请为上述内容生成一段摘要，字数必须限制在70字以内包含标点符号
+	// Generate a summary for the above content. The content generation must be limited to 70 characters including punctuation.
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	// 源 ID。
+	// The source ID.
 	//
 	// example:
 	//
 	// f4a26390f02371f0a1f4e6e7c758****
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// 源名称。
+	// The source name.
 	//
 	// example:
 	//
 	// SourceName
 	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
-	// 源类型。
+	// The source type.
 	//
 	// example:
 	//
@@ -354,13 +354,13 @@ func (s *GetYikeAssetMediaInfoResponseBodyMediaInfoBizData) Validate() error {
 }
 
 type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoList struct {
-	// An array of audio stream objects. A media asset can contain multiple audio streams.
+	// The audio stream information. A media asset may have multiple audio streams.
 	AudioStreamInfoList []*GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
-	// Basic file information, such as duration and size.
+	// The basic file information, including duration and size.
 	FileBasicInfo *GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
-	// An array of subtitle stream objects. A media asset can contain multiple subtitle streams.
+	// The subtitle stream information. A media asset may have multiple subtitle streams.
 	SubtitleStreamInfoList []*GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList `json:"SubtitleStreamInfoList,omitempty" xml:"SubtitleStreamInfoList,omitempty" type:"Repeated"`
-	// An array of video stream objects. A media asset can contain multiple video streams.
+	// The video stream information. A media asset may have multiple video streams.
 	VideoStreamInfoList []*GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
 }
 
@@ -463,13 +463,13 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList s
 	//
 	// 2
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// The codec\\"s long name.
+	// The long name of the codec.
 	//
 	// example:
 	//
 	// AAC (Advanced Audio Coding)
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// The codec\\"s short name.
+	// The short name of the codec.
 	//
 	// example:
 	//
@@ -487,7 +487,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList s
 	//
 	// mp4a
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	// The codec\\"s time base.
+	// The codec time base.
 	//
 	// example:
 	//
@@ -505,7 +505,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList s
 	//
 	// 10
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// The audio stream\\"s index.
+	// The audio stream index.
 	//
 	// example:
 	//
@@ -523,7 +523,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList s
 	//
 	// 10
 	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	// The profile.
+	// The codec profile.
 	//
 	// example:
 	//
@@ -736,7 +736,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo struct 
 	//
 	// 20
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The file\\"s creation time.
+	// The time when the file was created.
 	//
 	// example:
 	//
@@ -754,7 +754,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo struct 
 	//
 	// example.mp4
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The file size, in bytes.
+	// The file size in bytes.
 	//
 	// example:
 	//
@@ -790,13 +790,13 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo struct 
 	//
 	// 540
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The file\\"s last modification time.
+	// The time when the file was last modified.
 	//
 	// example:
 	//
 	// 2020-12-26T04:11:10Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The file\\"s storage region.
+	// The storage region of the file.
 	//
 	// example:
 	//
@@ -940,13 +940,13 @@ func (s *GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo) Va
 }
 
 type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList struct {
-	// The codec\\"s long name.
+	// The long name of the codec.
 	//
 	// example:
 	//
 	// SubRip Text
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// The codec\\"s short name.
+	// The short name of the codec.
 	//
 	// example:
 	//
@@ -964,7 +964,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoLis
 	//
 	// unicode
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	// The codec\\"s time base.
+	// The codec time base.
 	//
 	// example:
 	//
@@ -976,7 +976,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoLis
 	//
 	// 1
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The subtitle stream\\"s index.
+	// The subtitle stream index.
 	//
 	// example:
 	//
@@ -1117,13 +1117,13 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList s
 	//
 	// 20
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The codec\\"s long name.
+	// The long name of the codec.
 	//
 	// example:
 	//
 	// H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// The codec\\"s short name.
+	// The short name of the codec.
 	//
 	// example:
 	//
@@ -1141,7 +1141,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList s
 	//
 	// [0][0][0][0]
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	// The codec\\"s time base.
+	// The codec time base.
 	//
 	// example:
 	//
@@ -1165,7 +1165,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList s
 	//
 	// 24.0
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// Indicates whether the video stream contains B-frames.
+	// Indicates whether the video stream has B-frames.
 	//
 	// example:
 	//
@@ -1177,7 +1177,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList s
 	//
 	// 540
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The video stream\\"s index.
+	// The video stream index.
 	//
 	// example:
 	//
@@ -1189,7 +1189,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList s
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The encoding level.
+	// The codec level.
 	//
 	// example:
 	//
@@ -1207,7 +1207,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList s
 	//
 	// yuv420p
 	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// The profile.
+	// The codec profile.
 	//
 	// example:
 	//
@@ -1465,13 +1465,13 @@ func (s *GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoLi
 }
 
 type GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo struct {
-	// The associated business.
+	// The business to which the media asset belongs.
 	//
 	// example:
 	//
 	// AiSaas
 	Biz *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
-	// The business type.
+	// The business type of the media asset.
 	//
 	// example:
 	//
@@ -1501,25 +1501,25 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo struct {
 	//
 	// https://dtlive-bj.oss-cn-beijing.aliyuncs.com/cover/01e1271d-ff4f-4689-9c20-e1df81486859_open_live_cover.jpg
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The creation time.
+	// The time when the media asset was created.
 	//
 	// example:
 	//
 	// 2020-12-26T04:11:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The deletion time.
+	// The time when the media asset was deleted.
 	//
 	// example:
 	//
 	// 2020-12-26T04:11:15Z
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
-	// The description.
+	// The content description.
 	//
 	// example:
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The source URL of the media asset.
+	// The address of the media asset to be registered in the corresponding system.
 	//
 	// example:
 	//
@@ -1531,31 +1531,31 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo struct {
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The media tags.
+	// The tags.
 	//
 	// example:
 	//
 	// tag1
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
-	// The media type.
+	// The media type of the media asset.
 	//
 	// example:
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// The last modification time.
+	// The time when the media asset was last modified.
 	//
 	// example:
 	//
 	// 2020-12-26T04:11:10Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// A custom ID. It must be 6 to 64 characters long and can contain only lowercase letters, uppercase letters, digits, hyphens (-), and underscores (_). This ID must be unique per user.
+	// The custom ID. Only lowercase letters, uppercase letters, digits, hyphens, and underscores are supported. The value must be 6 to 64 characters in length and is unique within the user scope.
 	//
 	// example:
 	//
 	// 123-1234
 	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	// The snapshot information.
+	// The snapshots.
 	//
 	// example:
 	//
@@ -1573,7 +1573,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo struct {
 	//
 	// [{"bucket":"example-bucket","count":"32","iceJobId":"******83ec44d58b2069def2e******","location":"oss-cn-shanghai","snapshotRegular":"example/example-{Count}.jpg","spriteRegular":"example/example-{TileCount}.jpg","templateId":"******e438b14ff39293eaec25******","tileCount":"1"}]
 	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
-	// The asset\\"s status.
+	// The resource status.
 	//
 	// example:
 	//
@@ -1585,7 +1585,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo struct {
 	//
 	// ThumbURL240P
 	ThumbURL240P *string `json:"ThumbURL240P,omitempty" xml:"ThumbURL240P,omitempty"`
-	// The WebP-encoded thumbnail.
+	// The thumbnail encoded in WebP format.
 	//
 	// example:
 	//
@@ -1597,7 +1597,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo struct {
 	//
 	// v6l82k_176822379****.jpeg
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The upload source.
+	// The upload source of the media asset.
 	//
 	// example:
 	//

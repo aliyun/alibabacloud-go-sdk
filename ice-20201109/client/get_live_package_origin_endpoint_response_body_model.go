@@ -16,7 +16,7 @@ type iGetLivePackageOriginEndpointResponseBody interface {
 }
 
 type GetLivePackageOriginEndpointResponseBody struct {
-	// The information about the origin endpoints.
+	// The origin endpoint type.
 	LivePackageOriginEndpoint *GetLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint `json:"LivePackageOriginEndpoint,omitempty" xml:"LivePackageOriginEndpoint,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -74,7 +74,7 @@ type GetLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint struct {
 	//
 	// channel-1
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// The time when the endpoint was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -104,27 +104,27 @@ type GetLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint struct {
 	//
 	// channel-group-1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The IP address blacklist.
+	// The IP blacklist.
 	//
 	// example:
 	//
 	// 10.21.222.1/32
 	IpBlacklist *string `json:"IpBlacklist,omitempty" xml:"IpBlacklist,omitempty"`
-	// The IP address whitelist.
+	// The IP whitelist.
 	//
 	// example:
 	//
 	// 192.168.1.0/24,10.0.0.1/24
 	IpWhitelist *string `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
-	// The time when the endpoint was last modified.
+	// The last modified time.
 	//
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// Live packaging configuration
+	// The live packaging configuration.
 	LivePackagingConfig *LivePackagingConfig `json:"LivePackagingConfig,omitempty" xml:"LivePackagingConfig,omitempty"`
-	// The playlist name.
+	// The manifest name.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type GetLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint struct {
 	//
 	// HLS
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The number of days that time-shifted content is available.
+	// The number of time-shift days.
 	//
 	// example:
 	//

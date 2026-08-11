@@ -18,23 +18,23 @@ type iAlterSearchIndexResponseBody interface {
 }
 
 type AlterSearchIndexResponseBody struct {
-	// The status code returned.
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - true
+	// - true: successful.
 	//
-	// - false
+	// - false: failed.
 	//
 	// example:
 	//

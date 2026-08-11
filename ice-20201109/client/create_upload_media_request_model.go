@@ -26,89 +26,105 @@ type iCreateUploadMediaRequest interface {
 }
 
 type CreateUploadMediaRequest struct {
-	// The application ID. The default value is `app-1000000`.
+	// The application ID. Default value: app-1000000.
 	//
 	// example:
 	//
 	// app-1000000
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the entity. You can call the `CreateEntity` operation to create an entity and define a custom schema for dynamic metadata.
+	// The entity ID. You can call the CreateEntity operation to create an entity and customize the dynamic metadata structure.
 	//
 	// example:
 	//
 	// 9e177cac2fb44f8b8c67b199fcc7bffd
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The file information, provided as a JSON string containing the following fields:
+	// The file information in JSON format. This parameter contains the following fields:
 	//
-	// - `Type` (Required): The file type. Valid values: `video`, `image`, `audio`, `text`, and `other`.
+	// - Type (required): the file type. Valid values: video, image, audio, text, and other.
 	//
-	// - `Name` (Required): The filename without the extension.
+	// - Name (required): the file name without the file name extension.
 	//
-	// - `Size` (Optional): The file size.
+	// - Size (optional): the file size.
 	//
-	// - `Ext` (Required): The file extension.
+	// - Ext (required): the file name extension.
 	//
 	// example:
 	//
 	// {\\"Type\\":\\"video\\",\\"Name\\":\\"test\\",\\"Size\\":108078336,\\"Ext\\":\\"mp4\\"}
 	FileInfo *string `json:"FileInfo,omitempty" xml:"FileInfo,omitempty"`
-	// The media asset metadata, provided as a JSON string.
+	// The metadata of the media asset to upload, in JSON format.
 	//
-	// `Title` (Required):
+	// Title (required):
 	//
-	// - The title can be up to 128 characters in length.
+	// - The maximum length is 128 characters.
 	//
-	// - The title must be UTF-8 encoded.
+	// - UTF-8 encoded.
 	//
-	// `Description` (Optional):
+	// Description (optional):
 	//
-	// - The description can be up to 1,024 characters in length.
+	// - The maximum length is 1024 characters.
 	//
-	// - The description must be UTF-8 encoded.
+	// - UTF-8 encoded.
 	//
-	// `CateId` (Optional): The category ID.
+	// CateId (optional): the category ID.
 	//
-	// `Tags` (Optional): The tags of the media asset, separated by commas.
+	// Tags (optional): the tags.
 	//
-	// `BusinessType` (Required): The business type. Valid values depend on the `Type` specified in `FileInfo`.
+	// BusinessType (required): the business type. Valid values:
 	//
-	// - If `Type` is `video`: `opening` or `ending`.
+	// - When Type = video:
 	//
-	// - If `Type` is `image`: `default`, `cover`, or `watermark`.
+	// opening: opening credits. ending: ending credits.
 	//
-	// - If `Type` is `text`: `subtitles` or `font`.
+	// - When Type = image:
 	//
-	// -
+	//   default: default.
 	//
-	// - If `Type` is `other`: `general`.
+	//   cover: cover image.
 	//
-	// `CoverURL` (Optional): The URL of the cover image.<br>`DynamicMetaData` (Optional): A string for custom dynamic metadata.<br>
+	// - When Type = text:
+	//
+	//   subtitles: subtitles.
+	//
+	//   font: font.
+	//
+	// - When Type = material:
+	//
+	//   watermark: watermark.
+	//
+	// - general: general-purpose.
+	//
+	// CoverURL (optional): the cover URL.
+	//
+	// DynamicMetaData: the dynamic metadata. The value is a string.
 	//
 	// example:
 	//
 	// {\\"Title\\": \\"UploadTest\\", \\"Description\\": \\"UploadImageTest\\", \\"Tags\\": \\"tag1,tag2\\",\\"BusinessType\\":\\"cover\\"}
 	MediaMetaData *string `json:"MediaMetaData,omitempty" xml:"MediaMetaData,omitempty"`
-	// The post-processing configuration for `video` or `audio` uploads.
+	// Specifies the post-upload processing action when Type = video or audio.
 	//
-	// Set `ProcessType` to `Workflow`.
+	// ProcessType: set to Workflow.
 	//
-	// > - This parameter specifies an [asynchronous task](https://help.aliyun.com/document_detail/3027141.html), which is queued and runs in the background after you submit the request.
+	// >
+	//
+	// > - This parameter triggers an [asynchronous task](https://help.aliyun.com/document_detail/3027141.html). After submission, the task is not immediately completed and enters a background queue for asynchronous execution.
 	//
 	// example:
 	//
 	// {\\"ProcessType\\":\\"Workflow\\",\\"ProcessID\\":\\"74ba870f1a4873a3ba238e0bf6fa9***\\"}
 	PostProcessConfig *string `json:"PostProcessConfig,omitempty" xml:"PostProcessConfig,omitempty"`
-	// The destination storage configuration, provided as a JSON string.
+	// The destination storage address.
 	//
-	// - `StorageType`: Only `oss` is supported.
+	// - StorageType: only oss is supported.
 	//
-	// - `StorageLocation`: Only VOD storage is supported. You cannot upload to your own OSS buckets.
+	// - StorageLocation: only VOD storage is supported. User-owned OSS storage is not supported.
 	//
 	// example:
 	//
 	// {\\"StorageType\\":\\"oss\\",\\"StorageLocation\\":\\"outin-***.oss-cn-shanghai.aliyuncs.com\\"}
 	UploadTargetConfig *string `json:"UploadTargetConfig,omitempty" xml:"UploadTargetConfig,omitempty"`
-	// A JSON string for custom settings, such as configuring a message callback.
+	// The custom settings. The value is a JSON string that supports settings such as message callbacks.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iGetMediaProducingJobResponseBody interface {
 }
 
 type GetMediaProducingJobResponseBody struct {
-	// The details of the media producing job.
+	// The media producing job information.
 	MediaProducingJob *GetMediaProducingJobResponseBodyMediaProducingJob `json:"MediaProducingJob,omitempty" xml:"MediaProducingJob,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,49 +62,57 @@ func (s *GetMediaProducingJobResponseBody) Validate() error {
 }
 
 type GetMediaProducingJobResponseBodyMediaProducingJob struct {
-	// The clip parameters of the template used for the job.
+	// The template parameters of the media producing job.
 	//
 	// example:
 	//
 	// {"VideoArray":["****05512043f49f697f7425****","****05512043f49f697f7425****","****05512043f49f697f7425****"]}
 	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
-	// The error code of the media producing job. 	Notice: This parameter is returned only if the job fails.
+	// The error code of the media producing job.
+	//
+	// 	Notice: Check this field when the job fails.
 	//
 	// example:
 	//
 	// ExceededMaximumValue
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The time in UTC when the media producing job was completed, formatted as `YYYY-MM-DD\\"T\\"hh:mm:ss\\"Z\\"`.
+	// The time when the media producing job was completed, in UTC.
+	//
+	// Format: "YYYY-MM-DD\\"T\\"hh:mm:ss\\"Z\\"".
 	//
 	// example:
 	//
 	// 2020-12-23T13:33:52Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	// The time in UTC when the media producing job was created, formatted as `YYYY-MM-DD\\"T\\"hh:mm:ss\\"Z\\"`.
+	// The time when the media producing job was created, in UTC.
+	//
+	// Format: "YYYY-MM-DD\\"T\\"hh:mm:ss\\"Z\\"".
 	//
 	// example:
 	//
 	// 2020-12-23T13:33:40Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The duration of the output media. 	Notice: This parameter is returned only if the job is successful and the output is an audio or video file.
+	// The duration of the output media asset.
+	//
+	// 	Notice: This field has a value only when the producing job succeeds and the output media asset type is audio or video.
 	//
 	// example:
 	//
 	// 30.500000
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The job ID.
+	// The ID of the media producing job.
 	//
 	// example:
 	//
 	// ****cdb3e74639973036bc84****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the output media asset.
+	// The resource ID of the output media asset.
 	//
 	// example:
 	//
 	// ****0cc6ba49eab379332c5b****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The URL of the output media file.
+	// The resource file URL of the output media asset.
 	//
 	// example:
 	//
@@ -112,23 +120,22 @@ type GetMediaProducingJobResponseBodyMediaProducingJob struct {
 	MediaURL *string `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
 	// The error message of the media producing job.
 	//
-	// 	Notice:
-	//
-	// This parameter is returned only if the job fails.
+	// 	Notice: Check this field when the job fails.
 	//
 	// example:
 	//
 	// The specified "Width_Height" has exceeded maximum value.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The time in UTC when the media producing job was last modified, formatted as `YYYY-MM-DD\\"T\\"hh:mm:ss\\"Z\\"`.
+	// The time when the media producing job was last modified, in UTC.
+	//
+	// Format: "YYYY-MM-DD\\"T\\"hh:mm:ss\\"Z\\"".
 	//
 	// example:
 	//
 	// 2020-12-23T13:33:49Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The progress of the job. Valid values: 0 to 100.
-	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The project ID.
+	Progress     *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The ID of the cloud editing project.
 	//
 	// example:
 	//
@@ -136,27 +143,27 @@ type GetMediaProducingJobResponseBodyMediaProducingJob struct {
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The status of the media producing job. Valid values:
 	//
-	// - `Init` (Initialized)
+	// - Init: init state.
 	//
-	// - `Queuing` (In queue)
+	// - Queuing: queuing.
 	//
-	// - `Processing` (In progress)
+	// - Processing: processing.
 	//
-	// - `Success` (Successful)
+	// - Success: succeeded.
 	//
-	// - `Failed` (Failed)
+	// - Failed: failed.
 	//
 	// example:
 	//
 	// Failed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// If the job is a subtask of a batch smart one-click video creation task, this parameter contains the subtask\\"s materials, such as the title and speech script.
+	// If this media producing job is a subtask of a batch intelligent one-click video production job, this field returns the material information used by the subtask, such as the narration text and title.
 	//
 	// example:
 	//
-	// {"Title": "标题", "SpeechText": "批量智能一键成片口播文案"}
+	// {"Title": "Title", "SpeechText": "Narration text for batch intelligent one-click video production"}
 	SubJobMaterials *string `json:"SubJobMaterials,omitempty" xml:"SubJobMaterials,omitempty"`
-	// The ID of the template used for the job.
+	// The template ID of the media producing job.
 	//
 	// example:
 	//
@@ -168,13 +175,13 @@ type GetMediaProducingJobResponseBodyMediaProducingJob struct {
 	//
 	// {"VideoTracks":[{"VideoTrackClips":[{"MediaId":"****4d7cf14dc7b83b0e801c****"},{"MediaId":"****4d7cf14dc7b83b0e801c****"}]}]}
 	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
-	// The user data, in JSON format.
+	// The custom settings in JSON format.
 	//
 	// example:
 	//
 	// {"NotifyAddress":"http://xx.xx.xxx","Key":"Valuexxx"}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// The ID of the media asset in VOD (Video on Demand). This ID is returned if the job\\"s output is stored in VOD.
+	// If the output of the media producing job is delivered to ApsaraVideo VOD, the output is registered as a VOD media asset. The vodMediaId is the media asset ID in VOD.
 	//
 	// example:
 	//

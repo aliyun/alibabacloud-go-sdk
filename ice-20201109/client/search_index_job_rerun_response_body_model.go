@@ -20,7 +20,7 @@ type iSearchIndexJobRerunResponseBody interface {
 }
 
 type SearchIndexJobRerunResponseBody struct {
-	// The status code returned.
+	// The return code.
 	//
 	// example:
 	//
@@ -34,11 +34,11 @@ type SearchIndexJobRerunResponseBody struct {
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - true
+	// - true: Successful.
 	//
-	// - false
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *SearchIndexJobRerunResponseBody) Validate() error {
 }
 
 type SearchIndexJobRerunResponseBodyData struct {
-	// The media asset IDs that do not exist.
+	// The list of media asset IDs that do not exist.
 	MediaIdsNoExist []*string `json:"MediaIdsNoExist,omitempty" xml:"MediaIdsNoExist,omitempty" type:"Repeated"`
 }
 

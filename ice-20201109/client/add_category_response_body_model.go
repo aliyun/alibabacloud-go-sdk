@@ -16,7 +16,7 @@ type iAddCategoryResponseBody interface {
 }
 
 type AddCategoryResponseBody struct {
-	// The information about the category.
+	// The media asset category information.
 	Category *AddCategoryResponseBodyCategory `json:"Category,omitempty" xml:"Category,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -74,23 +74,23 @@ type AddCategoryResponseBodyCategory struct {
 	//
 	// Category 1
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The level of the category. A value of **0*	- indicates a level-1 category, a value of **1*	- indicates a level-2 category, and a value of **2*	- indicates a level-3 category.
+	// The category level. The first-level category has a level of **0**, the second-level category has a level of **1**, and the third-level category has a level of **2**.
 	//
 	// example:
 	//
 	// 0
 	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The ID of the parent category. By default, if ParentId is left empty or less than 1, -1 is returned, which indicates that the created category is the root directory.
+	// The parent category ID. If the ParentId parameter is set to empty or a value less than 1, the default return value is -1, which indicates that the created category is a root directory.
 	//
 	// example:
 	//
 	// -1
 	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// The type of the category. Valid values:
+	// The category type. Valid values:
 	//
-	// - **default**: audio, video, and image files. This is the default value.
+	// - **default*	- (default): audio, video, and image category.
 	//
-	// - **material**: short video materials.
+	// - **material**: short video material category.
 	//
 	// example:
 	//

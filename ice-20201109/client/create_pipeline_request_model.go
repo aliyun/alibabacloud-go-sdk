@@ -18,7 +18,7 @@ type iCreatePipelineRequest interface {
 }
 
 type CreatePipelineRequest struct {
-	// The name of the MPS queue.
+	// The pipeline name.
 	//
 	// This parameter is required.
 	//
@@ -26,19 +26,19 @@ type CreatePipelineRequest struct {
 	//
 	// test-pipeline
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The priority. Default value: 6. Valid values: 1 to 10. A greater value specifies a higher priority.
+	// The priority, ranging from 1 to 10. Default value: 6. A larger value indicates a higher priority.
 	//
 	// example:
 	//
 	// 6
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The type of the MPS queue. Valid values:
+	// The pipeline type. Valid values:
 	//
-	// 1. Standard: standard MPS queue.
+	// - Standard: standard pipeline.
 	//
-	// 2. Boost: MPS queue with transcoding speed boosted.
+	// - Boost: double-speed transcoding pipeline.
 	//
-	// 3. NarrowBandHDV2: MPS queue that supports Narrowband HD 2.0.
+	// - NarrowBandHDV2: Narrowband HD 2.0 pipeline.
 	//
 	// This parameter is required.
 	//

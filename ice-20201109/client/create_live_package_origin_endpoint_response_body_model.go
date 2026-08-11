@@ -16,7 +16,7 @@ type iCreateLivePackageOriginEndpointResponseBody interface {
 }
 
 type CreateLivePackageOriginEndpointResponseBody struct {
-	// The information about the origin endpoint.
+	// The LivePackageOriginEndpoint object.
 	LivePackageOriginEndpoint *CreateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint `json:"LivePackageOriginEndpoint,omitempty" xml:"LivePackageOriginEndpoint,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -68,7 +68,7 @@ type CreateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint struct
 	//
 	// Abcded123
 	AuthorizationCode *string `json:"AuthorizationCode,omitempty" xml:"AuthorizationCode,omitempty"`
-	// The channel name.
+	// The name of the channel.
 	//
 	// example:
 	//
@@ -80,37 +80,37 @@ type CreateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint struct
 	//
 	// 2023-04-01T12:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The endpoint description.
+	// The description of the endpoint.
 	//
 	// example:
 	//
 	// This is an origin endpoint.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The endpoint name.
+	// The name of the endpoint.
 	//
 	// example:
 	//
 	// endpoint-1
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// The endpoint URL.
+	// The playback URL of the endpoint.
 	//
 	// example:
 	//
 	// https://xxx.packagepull-abcxxx.ap-southeast-1.aliyuncsiceintl.com/v1/group01/1/ch01/manifest
 	EndpointUrl *string `json:"EndpointUrl,omitempty" xml:"EndpointUrl,omitempty"`
-	// The channel group name.
+	// The name of the channel group.
 	//
 	// example:
 	//
 	// channel-group-1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The IP address blacklist.
+	// The IP blacklist.
 	//
 	// example:
 	//
 	// 103.21.222.1/32,192.168.100.0/24
 	IpBlacklist *string `json:"IpBlacklist,omitempty" xml:"IpBlacklist,omitempty"`
-	// The IP address whitelist.
+	// The IP whitelist.
 	//
 	// example:
 	//
@@ -122,21 +122,21 @@ type CreateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint struct
 	//
 	// 2023-04-01T12:00:00Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// Live packaging configuration
+	// The live packaging configuration.
 	LivePackagingConfig *LivePackagingConfig `json:"LivePackagingConfig,omitempty" xml:"LivePackagingConfig,omitempty"`
-	// The playlist name.
+	// The manifest name.
 	//
 	// example:
 	//
 	// manifest
 	ManifestName *string `json:"ManifestName,omitempty" xml:"ManifestName,omitempty"`
-	// The protocol. Only HLS is supported.
+	// The protocol. Currently, only HLS is supported.
 	//
 	// example:
 	//
 	// HLS
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The number of days that time-shifted content is available. Maximum value: 30.
+	// The number of days for time-shifting. Maximum value: 30.
 	//
 	// example:
 	//

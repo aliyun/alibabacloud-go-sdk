@@ -22,23 +22,23 @@ type iGetYikeStoryboardJobResponseBody interface {
 }
 
 type GetYikeStoryboardJobResponseBody struct {
-	// The storyboard job ID. You can obtain this ID from the response parameters of the [SubmitStoryboardJob](https://help.aliyun.com/document_detail/461964.html) operation.
+	// The job ID. You can obtain this value from the response parameters of [Submit a packaging job](https://help.aliyun.com/document_detail/461964.html).
 	//
 	// example:
 	//
 	// ****a046-263c-3560-978a-fb287782****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// A JSON object that contains the parameters for the job. The structure of this object varies based on the AI algorithm.
+	// The algorithm job parameters. This is a JSON object whose content varies depending on the algorithm.
 	JobParams *GetYikeStoryboardJobResponseBodyJobParams `json:"JobParams,omitempty" xml:"JobParams,omitempty" type:"Struct"`
 	// The job result.
 	JobResult *GetYikeStoryboardJobResponseBodyJobResult `json:"JobResult,omitempty" xml:"JobResult,omitempty" type:"Struct"`
 	// The job status. Valid values:
 	//
-	// - **Succeeded**: The job completed successfully.
+	// - **Succeeded**: The job is processed.
 	//
-	// - **Failed**: The job failed to complete.
+	// - **Failed**: The job failed.
 	//
-	// - **Running**: The job is in progress.
+	// - **Running**: The job is being processed.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ type GetYikeStoryboardJobResponseBodyJobParams struct {
 	//
 	// https://test.oss-cn-shanghai.aliyuncs.com/test.mp4
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
-	// The model parameters.
+	// The random seed.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type GetYikeStoryboardJobResponseBodyJobParams struct {
 	//
 	// }
 	ModelParams *string `json:"ModelParams,omitempty" xml:"ModelParams,omitempty"`
-	// The narration voice.
+	// The narration voice ID.
 	//
 	// example:
 	//
@@ -154,13 +154,13 @@ type GetYikeStoryboardJobResponseBodyJobParams struct {
 	//
 	// 1K
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	// The shot generation mode.
+	// The shot prompt generation mode.
 	//
 	// example:
 	//
 	// multi
 	ShotPromptMode *string `json:"ShotPromptMode,omitempty" xml:"ShotPromptMode,omitempty"`
-	// The shot splitting mode.
+	// The shot split mode.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ type GetYikeStoryboardJobResponseBodyJobParams struct {
 	//
 	// \\- Maximum length: 128 bytes.
 	//
-	// \\- UTF-8 encoding.
+	// \\- UTF-8 encoded.
 	//
 	// example:
 	//
@@ -308,13 +308,13 @@ func (s *GetYikeStoryboardJobResponseBodyJobParams) Validate() error {
 }
 
 type GetYikeStoryboardJobResponseBodyJobResult struct {
-	// A list of IDs for storyboards that encountered an exception.
+	// The list of exception storyboard IDs.
 	//
 	// example:
 	//
 	// [\\"st_2053348871\\"]
 	ExceptionStoryboardIds *string `json:"ExceptionStoryboardIds,omitempty" xml:"ExceptionStoryboardIds,omitempty"`
-	// A list of shots that failed to generate.
+	// The list of failed shots.
 	//
 	// example:
 	//
@@ -326,19 +326,19 @@ type GetYikeStoryboardJobResponseBodyJobResult struct {
 	//
 	// https://test.oss-cn-shanghai.aliyuncs.com/test.mp4
 	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
-	// Detailed information about each storyboard in the job.
+	// The detailed storyboard information for the storyboard generation task.
 	//
 	// example:
 	//
 	// [{\\"storyboardId\\":\\"st_1541525214\\",\\"title\\":\\"test_1\\",\\"status\\":\\"Produced\\",\\"subStatus\\":\\"ProduceSucc\\"},{\\"storyboardId\\":\\"st_1633435355\\",\\"title\\":\\"test_2\\",\\"status\\":\\"Produced\\",\\"subStatus\\":\\"ProduceSucc\\"}]
 	StoryboardInfoList *string `json:"StoryboardInfoList,omitempty" xml:"StoryboardInfoList,omitempty"`
-	// A comma-separated list of successful storyboard IDs.
+	// The list of successful storyboard IDs, separated by commas.
 	//
 	// example:
 	//
 	// st_2118280473, st_2118280471
 	SuccessStoryboardIds *string `json:"SuccessStoryboardIds,omitempty" xml:"SuccessStoryboardIds,omitempty"`
-	// A list of IDs for successful storyboards.
+	// The list of successful storyboards.
 	//
 	// example:
 	//

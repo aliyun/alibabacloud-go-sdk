@@ -22,21 +22,21 @@ type iSearchMediaClipByFaceResponseBody interface {
 }
 
 type SearchMediaClipByFaceResponseBody struct {
-	// The status code returned.
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The media asset clips that meet the requirements.
+	// The collection of media asset clips that meet the requirements.
 	MediaClipList []*SearchMediaClipByFaceResponseBodyMediaClipList `json:"MediaClipList,omitempty" xml:"MediaClipList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// E44FFACD-9E90-555A-A09A-6FD3B7335E39
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true and false.
+	// Indicates whether the operation was successful. A value of true indicates success. A value of false indicates failure.
 	//
 	// example:
 	//
@@ -117,27 +117,37 @@ func (s *SearchMediaClipByFaceResponseBody) Validate() error {
 }
 
 type SearchMediaClipByFaceResponseBodyMediaClipList struct {
-	// The type of the character. Valid values: celebrity sensitive politician custom unknown
+	// The person type. Valid values:
+	//
+	// - celebrity: celebrity.
+	//
+	// - sensitive: sensitive person.
+	//
+	// - politician: political figure.
+	//
+	// - custom: custom person.
+	//
+	// - unknown: unknown person.
 	//
 	// example:
 	//
 	// celebrity
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The ID of the entity, which is the same as the entity ID returned in tag analysis.
+	// The entity ID, which corresponds to the entity ID in the label analysis results.
 	//
 	// example:
 	//
 	// 1031025****
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The name of the entity.
+	// The entity name.
 	//
 	// example:
 	//
 	// John Doe
 	LabelName *string `json:"LabelName,omitempty" xml:"LabelName,omitempty"`
-	// The information about clips related to the face.
+	// The clustering information of person clips.
 	OccurrencesInfos []*SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos `json:"OccurrencesInfos,omitempty" xml:"OccurrencesInfos,omitempty" type:"Repeated"`
-	// The score of the clip. The value is of the Float type. The value is in the range of [0,1].
+	// The score of the matched clip. The value is of the Float type and ranges from 0 to 1.
 	//
 	// example:
 	//
@@ -212,25 +222,25 @@ func (s *SearchMediaClipByFaceResponseBodyMediaClipList) Validate() error {
 }
 
 type SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos struct {
-	// The end time of the clip. Unit: seconds. The value is of the Float type.
+	// The end time of the matched clip, in seconds. The value is of the Float type.
 	//
 	// example:
 	//
 	// 69.06635
 	EndTime *float32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Expression.
+	// The facial expression.
 	//
 	// example:
 	//
-	// 平静
+	// Calm
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// The start time of the clip. Unit: seconds. The value is of the Float type.
+	// The start time of the matched clip, in seconds. The value is of the Float type.
 	//
 	// example:
 	//
 	// 61.066353
 	StartTime *float32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The information about the face in the clip.
+	// The detailed information of the face in the clip.
 	TrackData []*SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackData `json:"TrackData,omitempty" xml:"TrackData,omitempty" type:"Repeated"`
 }
 
@@ -292,9 +302,9 @@ func (s *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos) Validat
 }
 
 type SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackData struct {
-	// The coordinates of the face.
+	// The face coordinate information.
 	BoxPosition *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackDataBoxPosition `json:"BoxPosition,omitempty" xml:"BoxPosition,omitempty" type:"Struct"`
-	// The timestamp when the face appears in the clip. Unit: seconds. The value is of the Float type.
+	// The timestamp when the face appears in the media asset, in seconds. The value is of the Float type.
 	//
 	// example:
 	//
@@ -338,25 +348,25 @@ func (s *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackData
 }
 
 type SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackDataBoxPosition struct {
-	// The height of the rectangle frame. Unit: pixels.
+	// The height of the bounding box, in pixels.
 	//
 	// example:
 	//
 	// 168
 	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
-	// The width of the rectangle frame. Unit: pixels.
+	// The width of the bounding box, in pixels.
 	//
 	// example:
 	//
 	// 128
 	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
-	// The x-axis coordinate of the upper-left corner. Unit: pixels.
+	// The x-axis coordinate of the upper-left vertex, in pixels.
 	//
 	// example:
 	//
 	// 517
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
-	// The y-axis coordinate of the upper-left corner. Unit: pixels.
+	// The y-axis coordinate of the upper-left vertex, in pixels.
 	//
 	// example:
 	//

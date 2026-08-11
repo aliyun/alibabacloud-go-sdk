@@ -20,19 +20,19 @@ type iListYikeProductionsResponseBody interface {
 }
 
 type ListYikeProductionsResponseBody struct {
-	// The maximum number of results returned on each page.
+	// The maximum number of results to return.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. If more results are available, you can use this token in the next request to retrieve the next page of results. If this field is empty, all results have been returned.
+	// The pagination token for the next page.
 	//
 	// example:
 	//
 	// Token
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The list of projects.
+	// The project list.
 	ProductionList []*ListYikeProductionsResponseBodyProductionList `json:"ProductionList,omitempty" xml:"ProductionList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -112,13 +112,13 @@ type ListYikeProductionsResponseBodyProductionList struct {
 	//
 	// https://tagvvcloud-material-center-prod.oss-cn-hangzhou.aliyuncs.com/sumvideo/utils_image/sumvideo-video-cover.png
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	// The creation time of the project.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2026-01-07T02:21:36Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The creator name.
+	// The username of the creator.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type ListYikeProductionsResponseBodyProductionList struct {
 	//
 	// pd_463862****
 	ProductionId *string `json:"ProductionId,omitempty" xml:"ProductionId,omitempty"`
-	// The title of the project.
+	// The title.
 	//
 	// example:
 	//

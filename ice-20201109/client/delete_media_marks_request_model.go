@@ -16,15 +16,15 @@ type iDeleteMediaMarksRequest interface {
 }
 
 type DeleteMediaMarksRequest struct {
-	// The ID of the media asset.
+	// The media asset ID.
 	//
 	// example:
 	//
 	// ****c469e944b5a856828dc2****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The mark ID. You can specify multiple mark IDs separated with commas (,).
+	// The mark IDs. Multiple IDs are separated by commas.
 	//
-	// If you do not specify MediaMarkIds, all the marks of the media asset are deleted.
+	// If MediaMarkIds is empty, all mark information of the media asset is deleted by default.
 	//
 	// example:
 	//

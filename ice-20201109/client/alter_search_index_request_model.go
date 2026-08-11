@@ -20,33 +20,33 @@ type iAlterSearchIndexRequest interface {
 }
 
 type AlterSearchIndexRequest struct {
-	// The configurations of the index.
+	// The index configuration.
 	//
-	// > You must specify either IndexStatus or IndexConfig.
+	// 	Notice:  You must specify either IndexStatus or IndexConfig.
 	//
 	// example:
 	//
 	// {}
 	IndexConfig *string `json:"IndexConfig,omitempty" xml:"IndexConfig,omitempty"`
-	// The state of the index. Valid values:
+	// The index status. Default value: Active. Valid values:
 	//
-	// - active (default): the index is enabled.
+	// - Active: activated.
 	//
-	// - Deactive: the index is not enabled.
+	// - Deactive: deactivated.
 	//
-	// > You must specify either IndexStatus or IndexConfig.
+	// 	Notice:  You must specify either IndexStatus or IndexConfig.
 	//
 	// example:
 	//
 	// Active
 	IndexStatus *string `json:"IndexStatus,omitempty" xml:"IndexStatus,omitempty"`
-	// The category of the index. Valid values:
+	// The index type. Valid values:
 	//
-	// - mm: large visual model.
+	// - mm: large model.
 	//
-	// - face: face recognition.
+	// - face: face.
 	//
-	// - aiLabel: smart tagging.
+	// - aiLabel: intelligent tag.
 	//
 	// This parameter is required.
 	//
@@ -54,11 +54,11 @@ type AlterSearchIndexRequest struct {
 	//
 	// mm
 	IndexType *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
-	// The name of the search library.
+	// The search library name.
 	//
-	// - If you leave this parameter empty, the search index is created in the default search library of Intelligent Media Service (IMS). Default value: ims-default-search-lib.
+	// - If no search library name is specified, the search index is created in the default IMS search library. Default value: ims-default-search-lib.
 	//
-	// - To query information about an existing search library, call the [QuerySearchLib](https://help.aliyun.com/document_detail/2584455.html) API operation.
+	// - You can call the [QuerySearchLib](https://help.aliyun.com/document_detail/2584455.html) operation to query existing search library information.
 	//
 	// example:
 	//

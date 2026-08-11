@@ -18,7 +18,7 @@ type iListLiveTranscodeJobsResponseBody interface {
 }
 
 type ListLiveTranscodeJobsResponseBody struct {
-	// The list of transcoding jobs.
+	// The list of transcoding tasks.
 	JobList []*ListLiveTranscodeJobsResponseBodyJobList `json:"JobList,omitempty" xml:"JobList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListLiveTranscodeJobsResponseBody struct {
 	//
 	// ******3B-0E1A-586A-AC29-742247******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -83,41 +83,41 @@ func (s *ListLiveTranscodeJobsResponseBody) Validate() error {
 }
 
 type ListLiveTranscodeJobsResponseBodyJobList struct {
-	// The time when the job was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2022-07-20T02:48:58Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The job ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// ****a046-263c-3560-978a-fb287782****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The name of the transcoding job.
+	// The name of the transcoding task.
 	//
 	// example:
 	//
 	// mytask
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The information about the output stream.
+	// The output stream information.
 	OutputStream *ListLiveTranscodeJobsResponseBodyJobListOutputStream `json:"OutputStream,omitempty" xml:"OutputStream,omitempty" type:"Struct"`
-	// The start mode of the job.
+	// The start mode.
 	//
 	// example:
 	//
 	// 0
 	StartMode *int32 `json:"StartMode,omitempty" xml:"StartMode,omitempty"`
-	// The state of the job.
+	// The task status.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The information about the input stream.
+	// The input stream information.
 	StreamInput *ListLiveTranscodeJobsResponseBodyJobListStreamInput `json:"StreamInput,omitempty" xml:"StreamInput,omitempty" type:"Struct"`
-	// The ID of the transcoding template used by the transcoding job.
+	// The template ID corresponding to the transcoding task.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type ListLiveTranscodeJobsResponseBodyJobList struct {
 	//
 	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The type of the transcoding template used by the transcoding job.
+	// The type of the transcoding template corresponding to the transcoding task.
 	//
 	// example:
 	//
@@ -250,7 +250,7 @@ func (s *ListLiveTranscodeJobsResponseBodyJobList) Validate() error {
 }
 
 type ListLiveTranscodeJobsResponseBodyJobListOutputStream struct {
-	// The list of stream URLs.
+	// The list of playback URLs.
 	StreamInfos []*ListLiveTranscodeJobsResponseBodyJobListOutputStreamStreamInfos `json:"StreamInfos,omitempty" xml:"StreamInfos,omitempty" type:"Repeated"`
 }
 
@@ -285,13 +285,13 @@ func (s *ListLiveTranscodeJobsResponseBodyJobListOutputStream) Validate() error 
 }
 
 type ListLiveTranscodeJobsResponseBodyJobListOutputStreamStreamInfos struct {
-	// The URL of the output stream.
+	// The output stream URL.
 	//
 	// example:
 	//
 	// rtmp://mydomain/app/mytranscode1
 	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
-	// The type of the output stream protocol. Only the RTMP protocol is supported.
+	// The output stream protocol type. Currently, only the RTMP protocol is supported.
 	//
 	// example:
 	//
@@ -330,13 +330,13 @@ func (s *ListLiveTranscodeJobsResponseBodyJobListOutputStreamStreamInfos) Valida
 }
 
 type ListLiveTranscodeJobsResponseBodyJobListStreamInput struct {
-	// The URL of the input stream.
+	// The input stream URL.
 	//
 	// example:
 	//
 	// rtmp://mydomain/app/stream1
 	InputUrl *string `json:"InputUrl,omitempty" xml:"InputUrl,omitempty"`
-	// The type of the input stream.
+	// The input stream type.
 	//
 	// example:
 	//

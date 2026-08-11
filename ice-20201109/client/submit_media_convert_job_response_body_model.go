@@ -16,7 +16,7 @@ type iSubmitMediaConvertJobResponseBody interface {
 }
 
 type SubmitMediaConvertJobResponseBody struct {
-	// The media transcoding job.
+	// The media transcoding task.
 	Job *SubmitMediaConvertJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,35 +62,35 @@ func (s *SubmitMediaConvertJobResponseBody) Validate() error {
 }
 
 type SubmitMediaConvertJobResponseBodyJob struct {
-	// The idempotency token for the request.
+	// The idempotency parameter for the media transcoding task creation request.
 	//
 	// example:
 	//
 	// FB7F25E9-AD9B-1603-8AF6-F1E42DF2E706
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The error code returned if the job fails.
+	// The error code returned when the media transcoding task fails.
 	//
 	// example:
 	//
 	// InvalidParameter.ResourceContentBad
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The job configuration.
+	// The media transcoding task configuration.
 	Config *SubmitMediaConvertJobResponseBodyJobConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	// The job ID.
+	// The media transcoding task ID.
 	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The error message returned if the job fails.
+	// The detailed error message returned when the media transcoding task fails.
 	//
 	// example:
 	//
 	// The resource operated InputFile is bad
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The output details.
+	// The media transcoding output result list.
 	OutputDetails []*MediaConvertOutputDetail `json:"OutputDetails,omitempty" xml:"OutputDetails,omitempty" type:"Repeated"`
-	// The output group details.
+	// The media transcoding output group result list.
 	OutputGroupDetails []*MediaConvertOutputGroupDetail `json:"OutputGroupDetails,omitempty" xml:"OutputGroupDetails,omitempty" type:"Repeated"`
 	// The pipeline ID.
 	//
@@ -104,17 +104,17 @@ type SubmitMediaConvertJobResponseBodyJob struct {
 	//
 	// A2129C9F-CE95-58B5-B8C1-07758FF6C86F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The job status. Valid values:
+	// The media transcoding task status. Valid values:
 	//
-	// - Inited: The job has been initialized.
+	// - Inited: initialized.
 	//
-	// - Running: The job is running.
+	// - Running: running.
 	//
-	// - Success: The job has completed successfully.
+	// - Success: transcoding succeeded.
 	//
-	// - Failed: The job has failed.
+	// - Failed: transcoding failed.
 	//
-	// - Canceled: The job has been canceled.
+	// - Cancelled: canceled.
 	//
 	// example:
 	//
@@ -263,17 +263,17 @@ func (s *SubmitMediaConvertJobResponseBodyJob) Validate() error {
 }
 
 type SubmitMediaConvertJobResponseBodyJobConfig struct {
-	// The job inputs.
+	// The media transcoding task input list.
 	Inputs []*MediaConvertInput `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
-	// The job name.
+	// The task name.
 	//
 	// example:
 	//
 	// Name
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The output group configurations.
+	// The media transcoding task output group configuration list.
 	OutputGroups []*MediaConvertOutputGroup `json:"OutputGroups,omitempty" xml:"OutputGroups,omitempty" type:"Repeated"`
-	// The output configurations.
+	// The media transcoding output configuration list.
 	Outputs []*MediaConvertOutput `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
 }
 

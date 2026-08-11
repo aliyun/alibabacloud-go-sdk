@@ -16,7 +16,7 @@ type iRegisterMediaInfoResponseBody interface {
 }
 
 type RegisterMediaInfoResponseBody struct {
-	// The ID of the media asset in IMS.
+	// The IMS media asset ID.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iListAIAgentInstanceResponseBody interface {
 }
 
 type ListAIAgentInstanceResponseBody struct {
-	// List of agent instance objects.
+	// The list of agent instance structs.
 	Instances []*ListAIAgentInstanceResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,27 +66,27 @@ func (s *ListAIAgentInstanceResponseBody) Validate() error {
 }
 
 type ListAIAgentInstanceResponseBodyInstances struct {
-	// Template configuration used by the agent instance.
+	// The template configuration used by the agent instance.
 	AgentConfig *AIAgentConfig `json:"AgentConfig,omitempty" xml:"AgentConfig,omitempty"`
-	// URL of the call log file. The file contains a JSON-formatted CallLog structure.
+	// The URL of the agent conversation call log file. The file contains the CallLog struct in JSON format.
 	//
 	// example:
 	//
 	// https://example.com/call_logs/12345.json
 	CallLogUrl *string `json:"CallLogUrl,omitempty" xml:"CallLogUrl,omitempty"`
-	// Runtime configuration required by the agent.
+	// The runtime configuration required by the agent.
 	//
 	// example:
 	//
 	// {"VoiceChat":{"AgentUserId":"voice_agent_001","ChannelId":"voice_channel_001","AuthToken":"your_voice_chat_auth_token"}}
 	RuntimeConfig *AIAgentRuntimeConfig `json:"RuntimeConfig,omitempty" xml:"RuntimeConfig,omitempty"`
-	// Instance status:
+	// The instance status. Valid values:
 	//
-	// - Created: The call started but no connection was established between both ends.
+	// - Created: The call is initiated but the connection between the two ends is not established.
 	//
-	// - Executing: The call is in progress and a connection is established between both ends.
+	// - Executing: The call is in progress and the connection between the two ends is established.
 	//
-	// - Finished: The call ended.
+	// - Finished: The call has ended.
 	//
 	// example:
 	//
@@ -94,13 +94,13 @@ type ListAIAgentInstanceResponseBodyInstances struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Deprecated
 	//
-	// Template configuration used by the agent instance.
+	// The template configuration used by the agent instance.
 	//
 	// example:
 	//
 	// {"VoiceChat": {"VoiceId": "zhixiaoxia"}}
 	TemplateConfig *AIAgentTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	// User-defined information.
+	// The user-defined data.
 	//
 	// example:
 	//

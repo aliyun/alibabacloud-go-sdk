@@ -20,9 +20,9 @@ type iAddCategoryRequest interface {
 type AddCategoryRequest struct {
 	// The category name.
 	//
-	// - The value can be up to 64 bytes in length.
+	// - The maximum length is 64 bytes.
 	//
-	// - The value must be encoded in UTF-8.
+	// - UTF-8 encoding.
 	//
 	// This parameter is required.
 	//
@@ -30,17 +30,17 @@ type AddCategoryRequest struct {
 	//
 	// Third-level subcategory
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The ID of the parent category.
+	// The parent category ID.
 	//
 	// example:
 	//
 	// 5
 	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// The type of the category. Valid values:
+	// The category type. Valid values:
 	//
-	// - default: audio, video, and image files. This is the default value.
+	// - default (default): audio, video, and image category.
 	//
-	// - material: short video materials.
+	// - material: short video material category.
 	//
 	// example:
 	//

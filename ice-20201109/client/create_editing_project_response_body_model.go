@@ -16,9 +16,9 @@ type iCreateEditingProjectResponseBody interface {
 }
 
 type CreateEditingProjectResponseBody struct {
-	// The information about the online editing project.
+	// The cloud editing project.
 	Project *CreateEditingProjectResponseBodyProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -62,23 +62,23 @@ func (s *CreateEditingProjectResponseBody) Validate() error {
 }
 
 type CreateEditingProjectResponseBodyProject struct {
-	// The business configuration of the project. This parameter can be ignored for general editing projects.
+	// The business configuration of the project. This parameter can be ignored for standard editing projects.
 	//
 	// example:
 	//
 	// { "OutputMediaConfig" :    { "StorageLocation": "test-bucket.oss-cn-shanghai.aliyuncs.com", "Path": "test-path"   }, "OutputMediaTarget": "oss-object", "ReservationTime": "2021-06-21T08:05:00Z" }
 	BusinessConfig *string `json:"BusinessConfig,omitempty" xml:"BusinessConfig,omitempty"`
-	// The business status of the project. This parameter can be ignored for general editing projects. Valid values:
+	// The business status of the project. This parameter can be ignored for standard editing projects.
 	//
-	// - Reserving
+	// - Reserving: The live stream is being reserved.
 	//
-	// - ReservationCanceled
+	// - ReservationCanceled: The reservation is canceled.
 	//
-	// - BroadCasting
+	// - BroadCasting: The live stream is broadcasting.
 	//
-	// - LoadingFailed
+	// - LoadingFailed: Loading failed.
 	//
-	// - LiveFinished
+	// - LiveFinished: The live stream has ended.
 	//
 	// example:
 	//
@@ -90,105 +90,105 @@ type CreateEditingProjectResponseBodyProject struct {
 	//
 	// See the template user guide.
 	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
-	// The thumbnail URL of the online editing project.
+	// The cover URL of the cloud editing project.
 	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.png?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The method for creating the online editing project. Valid values:
+	// The creation source of the cloud editing project.
 	//
-	// \\- OpenAPI
+	// - OpenAPI
 	//
-	// \\- AliyunConsole
+	// - AliyunConsole
 	//
-	// \\- WebSDK
+	// - WebSDK
 	//
-	// \\- LiveEditingOpenAPI
+	// - LiveEditingOpenAPI
 	//
-	// \\- LiveEditingConsole
+	// - LiveEditingConsole
 	//
 	// example:
 	//
 	// WebSDK
 	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
-	// The time when the online editing project was created.
+	// The creation time of the cloud editing project.
 	//
 	// example:
 	//
 	// 2021-01-08T16:52:07Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the online editing project.
+	// The description of the project.
 	//
 	// example:
 	//
 	// example_description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The duration of the online editing project.
+	// The duration of the cloud editing project.
 	//
 	// example:
 	//
 	// 3.4200000
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The method for editing the online editing project. Valid values:
+	// The modification source of the cloud editing project.
 	//
-	// \\- OpenAPI
+	// - OpenAPI
 	//
-	// \\- AliyunConsole
+	// - AliyunConsole
 	//
-	// \\- WebSDK
+	// - WebSDK
 	//
-	// \\- LiveEditingOpenAPI
+	// - LiveEditingOpenAPI
 	//
-	// \\- LiveEditingConsole
+	// - LiveEditingConsole
 	//
 	// example:
 	//
 	// WebSDK
 	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
-	// The time when the online editing project was last edited.
+	// The modification time of the cloud editing project.
 	//
 	// example:
 	//
 	// 2021-01-08T16:52:07Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The ID of the online editing project.
+	// The ID of the cloud editing project.
 	//
 	// example:
 	//
 	// ****01bf24bf41c78b2754cb3187****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The type of the editing project. Default value: EditingProject. Valid values:
+	// The type of the editing project. Default value: EditingProject.
 	//
-	// \\- EditingProject: a regular editing project.
+	// - EditingProject: standard editing project.
 	//
-	// \\- LiveEditingProject: a live stream editing project.
+	// - LiveEditingProject: live editing project.
 	//
 	// example:
 	//
 	// LiveEditingProject
 	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
-	// The status of the online editing project.
+	// The status of the cloud editing project.
 	//
 	// Valid values:
 	//
-	// \\- 1: Draft
+	// - 1: Draft.
 	//
-	// \\- 2: Editing
+	// - 2: Editing.
 	//
-	// \\- 3: Producing
+	// - 3: Producing.
 	//
-	// \\- 4: Produced
+	// - 4: Produced.
 	//
-	// \\- 5: ProduceFailed
+	// - 5: ProduceFailed.
 	//
-	// \\- 7: Deleted
+	// - 7: Deleted.
 	//
 	// example:
 	//
 	// 2
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The status of the online editing project. For more information, see the status list.
+	// The status name of the cloud editing project, corresponding to the status name in the status list.
 	//
 	// example:
 	//
@@ -200,23 +200,23 @@ type CreateEditingProjectResponseBodyProject struct {
 	//
 	// ****96e8864746a0b6f3****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The template type of the online editing project. Valid values:
+	// The template type of the cloud editing project.
 	//
-	// \\- Timeline
+	// - Timeline
 	//
-	// \\- VETemplate
+	// - VETemplate
 	//
 	// example:
 	//
 	// Timeline
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
-	// The timeline of the online editing project, in the JSON format.<props="china">For more information about objects in a timeline, see [Timeline configurations](https://help.aliyun.com/document_detail/198823.htm?spm=a2c4g.11186623.2.9.90dc653dF67srN#topic-2024662). If you leave this parameter empty, an empty timeline is created and the duration of the online editing project is zero.
+	// The timeline of the cloud editing project in JSON format. For more information about the structure, see [TimeLine](~~198823#topic-2024662~~). If this field is empty, an empty timeline is created and the total duration of the cloud editing project is 0.
 	//
 	// example:
 	//
 	// {"VideoTracks":[{"VideoTrackClips":[{"MediaId":"****4d7cf14dc7b83b0e801c****"},{"MediaId":"****4d7cf14dc7b83b0e801c****"}]}]}
 	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
-	// The title of the online editing project.
+	// The title of the cloud editing project.
 	//
 	// example:
 	//

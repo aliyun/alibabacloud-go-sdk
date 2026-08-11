@@ -18,13 +18,13 @@ type iDeleteMediaMarksResponseBody interface {
 }
 
 type DeleteMediaMarksResponseBody struct {
-	// The ID of the media asset.
+	// The media asset ID.
 	//
 	// example:
 	//
 	// ****019b82e24b37a1c2958dec38****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The IDs of the deleted marks separated with commas (,).
+	// The IDs of the deleted marks, separated by commas.
 	//
 	// example:
 	//

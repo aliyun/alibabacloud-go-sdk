@@ -18,7 +18,7 @@ type iListYikeAssetFoldersRequest interface {
 }
 
 type ListYikeAssetFoldersRequest struct {
-	// The page number. Default value: 1.
+	// The current page number. Default value: 1.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListYikeAssetFoldersRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The project ID. If this parameter is omitted, folders in the default project are returned.
+	// The project ID. If this parameter is not specified, the default project is queried.
 	//
 	// example:
 	//

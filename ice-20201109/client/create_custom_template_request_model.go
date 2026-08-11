@@ -30,45 +30,45 @@ type CreateCustomTemplateRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The template subtype.
 	//
-	// Valid values for transcoding templates:
+	// Transcoding template subtypes:
 	//
-	// - 1 (Normal): regular template.
+	// - 1: normal transcoding template (Normal)
 	//
-	// - 2 (AudioTranscode): audio transcoding template.
+	// - 2: audio transcoding template (AudioTranscode)
 	//
-	// - 3 (Remux): container format conversion template.
+	// - 3: container format conversion (Remux)
 	//
-	// - 4 (NarrowBandV1): Narrowband HD 1.0 template.
+	// - 4: Narrowband HD 1.0 (NarrowBandV1)
 	//
-	// - 5 (NarrowBandV2): Narrowband HD 2.0 template.
+	// - 5: Narrowband HD 2.0 (NarrowBandV2)
 	//
-	// Valid values for snapshot templates:
+	// Snapshot template subtypes:
 	//
-	// - 1 (Normal): regular template.
+	// - 1: normal snapshot/static snapshot (Normal)
 	//
-	// - 2 (Sprite): sprite template.
+	// - 2: sprite snapshot (Sprite)
 	//
-	// - 3 (WebVtt): WebVTT template.
+	// - 3: WebVTT snapshot (WebVtt)
 	//
-	// Valid values for AI-assisted content moderation templates:
+	// AI review template subtypes:
 	//
-	// - 1 (Video): video moderation template.
+	// - 1: video review (Video)
 	//
-	// - 2 (Audio): audio moderation template.
+	// - 2: audio review (Audio)
 	//
-	// - 3 (Image): image moderation template.
+	// - 3: image review (Image)
 	//
-	// Valid values for AI-assisted intelligent erasure templates.
+	// AI intelligent erasure template subtypes:
 	//
-	// - 1 (VideoDelogo): logo erasure template.
+	// - 1: logo erasure (VideoDelogo)
 	//
-	// - 2 (VideoDetext): subtitle erasure template.
+	// - 2: subtitle erasure (VideoDetext)
 	//
 	// example:
 	//
 	// 1
 	Subtype *int32 `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
-	// The template configurations. For more information, see [Template parameters](https://help.aliyun.com/document_detail/448291.html).
+	// The template configuration. For detailed metric description, see [Template parameters](https://help.aliyun.com/document_detail/448291.html).
 	//
 	// This parameter is required.
 	//
@@ -76,29 +76,29 @@ type CreateCustomTemplateRequest struct {
 	//
 	// {"Container":{"Format":"flv"},"Video":{},"Audio":{}}
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	// The template type. Valid values:
+	// The templatetype. Valid values:
 	//
-	// - 1: transcoding template.
+	// - 1: transcoding template
 	//
-	// - 2: snapshot template.
+	// - 2: snapshot template
 	//
-	// - 3: animated image template.
+	// - 3: animated image template
 	//
-	// - 4\\. image watermark template.
+	// - 4: image watermark template
 	//
-	// - 5: text watermark template.
+	// - 5: text watermark template
 	//
-	// - 6: subtitle template.
+	// - 6: subtitle template
 	//
-	// - 7: AI-assisted content moderation template.
+	// - 7: AI intelligent review
 	//
-	// - 8: AI-assisted intelligent thumbnail template.
+	// - 8: AI intelligent cover
 	//
-	// - 9: AI-assisted intelligent erasure template.
+	// - 9: AI intelligent erasure
 	//
-	// - 10: AI-assisted media fingerprint analysis template.
+	// - 10: AI intelligent DNA template
 	//
-	// - 11: AI-assisted smart tagging template.
+	// - 11: AI intelligent label template
 	//
 	// This parameter is required.
 	//

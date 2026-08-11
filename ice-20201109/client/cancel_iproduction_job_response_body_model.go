@@ -18,15 +18,15 @@ type iCancelIProductionJobResponseBody interface {
 }
 
 type CancelIProductionJobResponseBody struct {
-	// The details about the access denial. This parameter is returned only if Resource Access Management (RAM) permission verification failed.
+	// The details about the access denial. This field is returned only when RAM authentication fails.
 	AccessDeniedDetail *CancelIProductionJobResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The message returned.
+	// The response message.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -79,37 +79,37 @@ func (s *CancelIProductionJobResponseBody) Validate() error {
 }
 
 type CancelIProductionJobResponseBodyAccessDeniedDetail struct {
-	// The operation that failed the permission check.
+	// The authentication action.
 	//
 	// example:
 	//
 	// ice:CancelIProductionJob
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The identity. Values:
+	// The identity used for authentication in the request. Valid values:
 	//
-	// - RAM user: a UID
+	// - RAM user: RAM user UID
 	//
 	// - RAM role: RoleName:RoleSessionName
 	//
-	// - Federated user: ProviderType/ProviderName
+	// - Federated: ProviderType/ProviderName
 	//
 	// example:
 	//
 	// ****4522705967****
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The account to which the principal belongs.
+	// The account to which the authenticate principal belongs.
 	//
 	// example:
 	//
 	// ****82303720****
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The type of identity that made the request. Valid values:
+	// The type of the identity used for authentication in the request. Valid values:
 	//
 	// - SubUser: RAM user
 	//
 	// - AssumedRoleUser: RAM role
 	//
-	// - Federated: SSO federated user
+	// - Federated: SSO federated identity
 	//
 	// example:
 	//
@@ -121,27 +121,27 @@ type CancelIProductionJobResponseBodyAccessDeniedDetail struct {
 	//
 	// ******AAZ/h8jzNEODc5QUUyLUZCOTAtNUQyQy1BMEFBLUUzODQxODUx******==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of policy that resulted in the denial. Valid values:
+	// The type of denial by the access policy. Valid values:
 	//
-	// - **ImplicitDeny**: The resource holder has not configured a policy for the current user. By default, unauthorized operations are denied.
+	// - **ImplicitDeny**: The resource owner has not configured a relevant permission policy for the current user. Access to unauthorized operations is denied by default.
 	//
-	// - **ExplicitDeny**: The RAM policy configured by the resource holder explicitly denies the current user access to the corresponding resources.
+	// - **ExplicitDeny**: The RAM policy configured by the resource owner explicitly denies the current user access to the corresponding resource.
 	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
-	// The type of policy that triggered the permission failure.
+	// The type of the policy that caused the access denial. Valid values:
 	//
-	// - **ControlPolicy**: control policy
+	// - **ControlPolicy**: control policy.
 	//
-	// - **SessionPolicy**: an additional policy attached to a temporary token.
+	// - **SessionPolicy**: an additional permission policy attached to a temporary token.
 	//
 	// - **AssumeRolePolicy**: the trust policy of a RAM role.
 	//
-	// - **AccountLevelIdentityBasedPolicy**: an identity-based policy at the account level (custom or system).
+	// - **AccountLevelIdentityBasedPolicy**: an identity-access policy at the account authorization scope, including custom policies and system policies.
 	//
-	// - **ResourceGroupLevelIdentityBasedPolicy**: an identity-based policy scoped to a resource group.
+	// - **ResourceGroupLevelIdentityBasedPolicy**: an identity-access policy at the resource group authorization scope, including custom policies and system policies.
 	//
 	// example:
 	//

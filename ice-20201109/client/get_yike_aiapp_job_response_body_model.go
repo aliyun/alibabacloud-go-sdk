@@ -32,25 +32,25 @@ type iGetYikeAIAppJobResponseBody interface {
 }
 
 type GetYikeAIAppJobResponseBody struct {
-	// The Yike AI App ID.
+	// The AI application ID.
 	//
 	// example:
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The input parameters for the Yike AI App, provided as a JSON string.
+	// The input parameters for running the AI application. The value is a string obtained after JSON serialize.
 	//
 	// example:
 	//
 	// {\\"LoadImage.1.TargetImage\\":\\"MediaId1\\"}
 	AppParams *string `json:"AppParams,omitempty" xml:"AppParams,omitempty"`
-	// The UTC time when the job finished, in `yyyy-MM-ddTHH:mm:ssZ` format.
+	// The time when the task ended. The time is in the yyyy-mm-ddTHH:mm:ssZ format (UTC).
 	//
 	// example:
 	//
 	// 2026-02-06T18:53:18.809+08:00
 	ExecutionFinishTime *string `json:"ExecutionFinishTime,omitempty" xml:"ExecutionFinishTime,omitempty"`
-	// The UTC time when the job started, in `yyyy-MM-ddTHH:mm:ssZ` format.
+	// The time when the task started. The time is in the yyyy-mm-ddTHH:mm:ssZ format (UTC).
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type GetYikeAIAppJobResponseBody struct {
 	//
 	// folder-u3ilwhoc36ux9a****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The job ID.
+	// The task ID.
 	//
 	// example:
 	//
@@ -80,19 +80,19 @@ type GetYikeAIAppJobResponseBody struct {
 	//
 	// 0622C702-41BE-467E-AF2E-883D4517962E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The job results.
+	// The task execution result.
 	Result *GetYikeAIAppJobResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// The status of the job. Valid values:
+	// The task status. Valid values:
 	//
-	// - `Created`: The job is created.
+	// - Created: The task is created.
 	//
-	// - `Queuing`: The job is queued for processing.
+	// - Queuing: The task is queuing.
 	//
-	// - `Executing`: The job is running.
+	// - Executing: The task is being executed.
 	//
-	// - `Finished`: The job completed successfully.
+	// - Finished: The task is completed.
 	//
-	// - `Failed`: The job failed.
+	// - Failed: The task failed.
 	//
 	// example:
 	//
@@ -208,11 +208,11 @@ func (s *GetYikeAIAppJobResponseBody) Validate() error {
 }
 
 type GetYikeAIAppJobResponseBodyResult struct {
-	// The audio results.
+	// The audio task result.
 	AudioResult []*GetYikeAIAppJobResponseBodyResultAudioResult `json:"AudioResult,omitempty" xml:"AudioResult,omitempty" type:"Repeated"`
-	// The image results.
+	// The image task result.
 	ImageResult []*GetYikeAIAppJobResponseBodyResultImageResult `json:"ImageResult,omitempty" xml:"ImageResult,omitempty" type:"Repeated"`
-	// The video results.
+	// The video task result.
 	VideoResult []*GetYikeAIAppJobResponseBodyResultVideoResult `json:"VideoResult,omitempty" xml:"VideoResult,omitempty" type:"Repeated"`
 }
 
@@ -289,7 +289,7 @@ type GetYikeAIAppJobResponseBodyResultAudioResult struct {
 	//
 	// 1a7852b032c371f0b64fe6f6c74b****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The OSS URL of the output file.
+	// The downloadable OSS URL.
 	//
 	// example:
 	//
@@ -334,7 +334,7 @@ type GetYikeAIAppJobResponseBodyResultImageResult struct {
 	//
 	// 1a7852b032c371f0b64fe6f6c74b****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The OSS URL of the output file.
+	// The downloadable OSS URL.
 	//
 	// example:
 	//
@@ -379,7 +379,7 @@ type GetYikeAIAppJobResponseBodyResultVideoResult struct {
 	//
 	// 1a7852b032c371f0b64fe6f6c74b****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The OSS URL of the output file.
+	// The downloadable OSS URL.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iCreateLiveTranscodeTemplateShrinkRequest interface {
 }
 
 type CreateLiveTranscodeTemplateShrinkRequest struct {
-	// The name of the template.
+	// The template name.
 	//
 	// This parameter is required.
 	//
@@ -26,17 +26,19 @@ type CreateLiveTranscodeTemplateShrinkRequest struct {
 	//
 	// my template
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The configuration of the template.
+	// The template configuration.
+	//
+	// > The pass parameter requirements vary based on the templatetype (Type). When Type is set to normal, at least one of the width and height parameters must be specified, and the frame rate and bitrate parameters are required. For other template types, specify the parameters based on your requirements.
 	TemplateConfigShrink *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	// The type of the template. Valid values:
+	// The template type. Valid values:
 	//
-	// - normal
+	// - normal: standard.
 	//
-	// - narrow-band
+	// - narrow-band: narrowband HD.
 	//
-	// - audio-only
+	// - audio-only: audio only.
 	//
-	// - origin
+	// - origin: original quality.
 	//
 	// This parameter is required.
 	//

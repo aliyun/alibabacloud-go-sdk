@@ -22,11 +22,11 @@ type DeleteCustomizedVoiceJobResponseBody struct {
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true
+	// - true: Successful.
 	//
-	// - false
+	// - false: Failed.
 	//
 	// example:
 	//

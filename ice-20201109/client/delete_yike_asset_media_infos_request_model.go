@@ -16,17 +16,17 @@ type iDeleteYikeAssetMediaInfosRequest interface {
 }
 
 type DeleteYikeAssetMediaInfosRequest struct {
-	// Specifies whether to perform a logical delete or a permanent delete. Valid values:
+	// Specifies whether to logically delete the media asset information and files. Valid values:
 	//
-	// - true (default): Performs a logical delete. This action moves the media asset to the recycle bin and retains its associated file.
+	// - true (default): logically deletes the media asset. The media asset is moved to the recycle bin, and the files are retained.
 	//
-	// - false: Performs a permanent delete. This action deletes both the media asset information and the associated file.
+	// - false: deletes the media asset information and files.
 	//
 	// example:
 	//
 	// true
 	LogicDelete *bool `json:"LogicDelete,omitempty" xml:"LogicDelete,omitempty"`
-	// A comma-separated list of media asset IDs.
+	// The media asset IDs. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//

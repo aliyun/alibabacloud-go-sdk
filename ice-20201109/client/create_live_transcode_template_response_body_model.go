@@ -22,7 +22,7 @@ type CreateLiveTranscodeTemplateResponseBody struct {
 	//
 	// ******3B-0E1A-586A-AC29-742247******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the template.
+	// The template ID.
 	//
 	// example:
 	//

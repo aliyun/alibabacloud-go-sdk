@@ -22,19 +22,19 @@ type iSubmitMediaProducingJobResponseBody interface {
 }
 
 type SubmitMediaProducingJobResponseBody struct {
-	// The job ID.
+	// The producing job ID.
 	//
 	// example:
 	//
 	// ****d80e4e4044975745c14b****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The media ID.
+	// The ID of the produced media asset.
 	//
 	// example:
 	//
 	// ****c469e944b5a856828dc2****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The project ID.
+	// The editing project ID.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type SubmitMediaProducingJobResponseBody struct {
 	//
 	// ****36-3C1E-4417-BDB2-1E034F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The VOD media ID. Returned if the output destination is VOD.
+	// The VOD media asset ID. This parameter is returned when the video output location is VOD.
 	//
 	// example:
 	//

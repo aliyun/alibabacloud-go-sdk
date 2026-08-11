@@ -24,7 +24,7 @@ type UpdateCustomTemplateRequest struct {
 	//
 	// test-template
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The [template parameters](https://help.aliyun.com/document_detail/448291.html).
+	// The [template parameter](https://help.aliyun.com/document_detail/448291.html).
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iCreateAvatarTrainingJobResponseBody interface {
 }
 
 type CreateAvatarTrainingJobResponseBody struct {
-	// The data returned.
+	// The response data.
 	Data *CreateAvatarTrainingJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -79,7 +79,7 @@ func (s *CreateAvatarTrainingJobResponseBody) Validate() error {
 }
 
 type CreateAvatarTrainingJobResponseBodyData struct {
-	// The ID of the digital human training job.
+	// The ID of the digital human training task.
 	//
 	// example:
 	//

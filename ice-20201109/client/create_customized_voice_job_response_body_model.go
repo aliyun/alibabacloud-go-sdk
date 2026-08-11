@@ -26,11 +26,11 @@ type CreateCustomizedVoiceJobResponseBody struct {
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
-	// - true: The request was successful.
+	// - true: The call was successful.
 	//
-	// - false: The request failed.
+	// - false: The call failed.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *CreateCustomizedVoiceJobResponseBody) Validate() error {
 }
 
 type CreateCustomizedVoiceJobResponseBodyData struct {
-	// The voice cloning job ID.
+	// The voice cloning task ID.
 	//
 	// example:
 	//

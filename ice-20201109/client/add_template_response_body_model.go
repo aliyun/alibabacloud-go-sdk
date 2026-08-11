@@ -16,7 +16,7 @@ type iAddTemplateResponseBody interface {
 }
 
 type AddTemplateResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -62,41 +62,25 @@ func (s *AddTemplateResponseBody) Validate() error {
 }
 
 type AddTemplateResponseBodyTemplate struct {
-	// The template configurations.
+	// See the Timeline template Config documentation.
 	//
 	// example:
 	//
-	// 参见Config文档
+	// See the Config documentation
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The URL of the template thumbnail.
+	// The template cover URL.
 	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/cover.jpg
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	// The source from which the template was created.
-	//
-	// Valid values:
-	//
-	// - AliyunConsole
-	//
-	// - WebSDK
-	//
-	// - OpenAPI
+	// The template creation source.
 	//
 	// example:
 	//
 	// OpenAPI
 	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
-	// The source from which the template was modified.
-	//
-	// Valid values:
-	//
-	// - AliyunConsole
-	//
-	// - WebSDK
-	//
-	// - OpenAPI
+	// The template modification source.
 	//
 	// example:
 	//
@@ -108,27 +92,13 @@ type AddTemplateResponseBodyTemplate struct {
 	//
 	// Template name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the preview video.
+	// The media asset ID of the preview video.
 	//
 	// example:
 	//
 	// ****01bf24bf41c78b2754cb3187****
 	PreviewMedia *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
-	// The template state.
-	//
-	// Valid values:
-	//
-	// - UploadFailed: Failed to upload the video.
-	//
-	// - ProcessFailed: Failed to process the advanced template.
-	//
-	// - Available: The template is available.
-	//
-	// - Uploading: The video is being uploaded.
-	//
-	// - Created: The template is created but not ready for use.
-	//
-	// - Processing: The advanced template is being processed.
+	// The template status.
 	//
 	// example:
 	//
@@ -140,13 +110,7 @@ type AddTemplateResponseBodyTemplate struct {
 	//
 	// ****01bf24bf41c78b2754cb3187****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The template type.
-	//
-	// Valid values:
-	//
-	// - Timeline: regular template.
-	//
-	// - VETemplate: advanced template.
+	// The templatetype.
 	//
 	// example:
 	//

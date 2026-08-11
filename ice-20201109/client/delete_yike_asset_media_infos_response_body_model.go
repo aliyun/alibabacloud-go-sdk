@@ -16,7 +16,7 @@ type iDeleteYikeAssetMediaInfosResponseBody interface {
 }
 
 type DeleteYikeAssetMediaInfosResponseBody struct {
-	// A list of the IDs or InputUrl values of media assets that could not be deleted.
+	// The list of IDs or InputUrls that failed to be deleted.
 	IgnoredList []*string `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Repeated"`
 	// The request ID.
 	//

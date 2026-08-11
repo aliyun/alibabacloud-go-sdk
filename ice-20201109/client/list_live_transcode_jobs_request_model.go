@@ -26,7 +26,7 @@ type iListLiveTranscodeJobsRequest interface {
 }
 
 type ListLiveTranscodeJobsRequest struct {
-	// The search keyword. You can use the job ID or name as the keyword to search for jobs. If you search for jobs by name, fuzzy match is supported.
+	// The search keyword. You can search by task ID or name. Name supports fuzzy match.
 	//
 	// example:
 	//
@@ -44,43 +44,47 @@ type ListLiveTranscodeJobsRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sorting order. By default, the query results are sorted by creation time in descending order. Valid values:
+	// The sort order. Sorts by CreateTime. Default value: desc.
 	//
-	// - asc
+	// - asc: ascending order
 	//
-	// - desc
+	// - desc: descending order
 	//
 	// example:
 	//
 	// asc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The start mode of the transcoding job.
+	// The start mode.
 	//
-	// - 0: The transcoding job immediately starts.
+	// - 0: start immediately
 	//
-	// - 1: The transcoding job starts at the scheduled time.
+	// - 1: scheduled start
 	//
 	// example:
 	//
 	// 0
 	StartMode *int32 `json:"StartMode,omitempty" xml:"StartMode,omitempty"`
-	// The state of the job.
+	// The task status.
 	//
-	// 0: The job is not started. 1: The job is in progress. 2: The job is stopped.
+	// - 0: not started
+	//
+	// - 1: running
+	//
+	// - 2: stopped
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the template used by the transcoding job.
+	// The template type corresponding to the transcoding task.
 	//
-	// - normal
+	// - normal: standard
 	//
-	// - narrow-band
+	// - narrow-band: narrow bandwidth high definition
 	//
-	// - audio-only
+	// - audio-only: audio only
 	//
-	// - origin
+	// - origin: original quality
 	//
 	// example:
 	//

@@ -14,9 +14,9 @@ type iAddFavoritePublicMediaRequest interface {
 }
 
 type AddFavoritePublicMediaRequest struct {
-	// The IDs of the Media Assets.
+	// The IMS media asset IDs.
 	//
-	// - Separate multiple IDs with commas.
+	// - Separate multiple IDs with commas (,).
 	//
 	// example:
 	//

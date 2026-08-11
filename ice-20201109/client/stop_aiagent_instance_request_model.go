@@ -16,7 +16,8 @@ type iStopAIAgentInstanceRequest interface {
 type StopAIAgentInstanceRequest struct {
 	// The agent instance ID.
 	//
-	// > The InstanceId is the unique ID returned after successfully starting an agent instance. For information about starting an agent, see [StartAIAgentInstance](https://help.aliyun.com/document_detail/2846201.html) and [GenerateAIAgentCall](https://help.aliyun.com/document_detail/2846209.html).
+	//
+	// > InstanceId is the unique ID returned after the agent instance is started successfully. For information about how to start an agent instance, see [StartAIAgentInstance](https://help.aliyun.com/document_detail/2846201.html) and [GenerateAIAgentCall](https://help.aliyun.com/document_detail/2846209.html).
 	//
 	// This parameter is required.
 	//

@@ -16,9 +16,9 @@ type iDeleteLiveSnapshotFilesResponseBody interface {
 }
 
 type DeleteLiveSnapshotFilesResponseBody struct {
-	// An array of deletion results.
+	// The list of deletion results.
 	DeleteFileResultList []*DeleteLiveSnapshotFilesResponseBodyDeleteFileResultList `json:"DeleteFileResultList,omitempty" xml:"DeleteFileResultList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ func (s *DeleteLiveSnapshotFilesResponseBody) Validate() error {
 }
 
 type DeleteLiveSnapshotFilesResponseBodyDeleteFileResultList struct {
-	// The creation timestamp of the file.
+	// The creation timestamp.
 	//
 	// example:
 	//
 	// 1660638613798
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The deletion result. A value of `OK` indicates the operation succeeded. Other values indicate that it failed.
+	// The deletion result. OK indicates that the deletion was successful. Other values indicate that the deletion failed.
 	//
 	// example:
 	//

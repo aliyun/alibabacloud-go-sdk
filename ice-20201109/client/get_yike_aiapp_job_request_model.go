@@ -14,7 +14,7 @@ type iGetYikeAIAppJobRequest interface {
 }
 
 type GetYikeAIAppJobRequest struct {
-	// The job ID.
+	// The task ID.
 	//
 	// example:
 	//

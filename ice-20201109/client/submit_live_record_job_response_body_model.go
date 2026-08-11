@@ -16,7 +16,7 @@ type iSubmitLiveRecordJobResponseBody interface {
 }
 
 type SubmitLiveRecordJobResponseBody struct {
-	// The ID of the recording job.
+	// The recording task ID.
 	//
 	// example:
 	//

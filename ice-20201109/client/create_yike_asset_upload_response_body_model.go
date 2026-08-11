@@ -20,25 +20,25 @@ type iCreateYikeAssetUploadResponseBody interface {
 }
 
 type CreateYikeAssetUploadResponseBody struct {
-	// OSS URL of the file without authentication.
+	// The OSS URL of the file (without authentication).
 	//
 	// example:
 	//
 	// http://outin-***.oss-cn-shanghai.aliyuncs.com/stream/48555e8b-181dd5a8c07/48555e8b-181dd5a8c07.mp4
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Upload URL.
+	// The upload address.
 	//
 	// example:
 	//
 	// eyJTZWN1cml0a2VuIjoiQ0FJU3p3TjF****
 	UploadAddress *string `json:"UploadAddress,omitempty" xml:"UploadAddress,omitempty"`
-	// Upload credential.
+	// The upload credential.
 	//
 	// example:
 	//

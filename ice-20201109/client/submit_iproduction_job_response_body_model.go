@@ -16,13 +16,13 @@ type iSubmitIProductionJobResponseBody interface {
 }
 
 type SubmitIProductionJobResponseBody struct {
-	// The ID of the job.
+	// The intelligent production job ID.
 	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

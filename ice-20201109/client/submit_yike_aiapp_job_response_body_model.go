@@ -16,13 +16,13 @@ type iSubmitYikeAIAppJobResponseBody interface {
 }
 
 type SubmitYikeAIAppJobResponseBody struct {
-	// The unique identifier for the submitted job.
+	// The task ID.
 	//
 	// example:
 	//
 	// ab4802364a2e49208c99efab82df****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// A unique identifier for the request.
+	// The request ID.
 	//
 	// example:
 	//

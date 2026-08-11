@@ -16,7 +16,7 @@ type iCreateLiveRecordTemplateRequest interface {
 }
 
 type CreateLiveRecordTemplateRequest struct {
-	// The name of the Live Record Template.
+	// The template name.
 	//
 	// This parameter is required.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -66,19 +66,19 @@ func (s *CreateLiveRecordTemplateRequest) Validate() error {
 }
 
 type CreateLiveRecordTemplateRequestRecordFormat struct {
-	// The duration of a recording cycle in seconds. If you omit this parameter, it defaults to 6 hours.
+	// The cycle recording duration. Unit: seconds. If this parameter is not specified, the default value is 6 hours.
 	//
-	// > - If a stream interruption during a recording cycle lasts less than 3 minutes, the recording continues in the same Recording File.
+	// > - If a live stream is interrupted during a recording cycle but resumes within 3 minutes, the recording continues in the same recording file.
 	//
-	// - A Recording File is finalized only after a stream interruption lasts for more than 3 minutes. To change this default 3-minute threshold, submit a ticket.
+	// - A live stream must be interrupted for more than 3 minutes before the last recording file is generated. If you need to modify the default 3-minute interruption time, submit a ticket.
 	//
 	// example:
 	//
 	// 3600
 	CycleDuration *int32 `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
-	// The recording format.
+	// The format.
 	//
-	// > If you set this parameter to `m3u8`, you must also specify the `SliceOssObjectPrefix` and `SliceDuration` parameters.
+	// >If you select the m3u8 format, you must also set the request parameters SliceOssObjectPrefix and SliceDuration.
 	//
 	// This parameter is required.
 	//
@@ -86,21 +86,21 @@ type CreateLiveRecordTemplateRequestRecordFormat struct {
 	//
 	// m3u8
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The name of the Recording File stored in Object Storage Service (OSS).
+	// The name of the recording file stored in OSS.
 	//
-	// - The file name must be less than 256 bytes and supports the following variables: {JobId}, {Sequence}, {StartTime}, {EndTime}, {EscapedStartTime}, and {EscapedEndTime}.
+	// - The file name must be less than 256 bytes and supports variable matching, including {JobId}, {Sequence}, {StartTime}, {EndTime}, {EscapedStartTime}, and {EscapedEndTime}.
 	//
-	// - The value must include either the {StartTime} or {EscapedStartTime} variable and either the {EndTime} or {EscapedEndTime} variable.
+	// - The parameter value must contain {StartTime} or {EscapedStartTime} and {EndTime} or {EscapedEndTime}.
 	//
 	// example:
 	//
 	// record/{JobId}/{Sequence}_{EscapedStartTime}_{EscapedEndTime}
 	OssObjectPrefix *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
-	// The duration of each slice in seconds.
+	// The duration of a single slice. Unit: seconds.
 	//
-	// > This parameter is valid only when `Format` is set to `m3u8`.
+	// >This parameter takes effect only when Format is set to m3u8.
 	//
-	// The default value is 30. The value must be an integer from 5 to 30.
+	// If this parameter is not specified, the default value is 30 seconds. Valid values: 5 to 30.
 	//
 	// example:
 	//
@@ -108,11 +108,11 @@ type CreateLiveRecordTemplateRequestRecordFormat struct {
 	SliceDuration *int32 `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
 	// The name of the TS slice.
 	//
-	// > This parameter is required only when `Format` is set to `m3u8`.
+	// >This parameter is required only when Format is set to m3u8.
 	//
-	// - The file name must be less than 256 bytes and supports the following variables: {JobId}, {UnixTimestamp}, and {Sequence}.
+	// - The default slice duration is 30 seconds. The name must be less than 256 bytes and supports variable matching, including {JobId}, {UnixTimestamp}, and {Sequence}.
 	//
-	// - The value must include the {UnixTimestamp} and {Sequence} variables.
+	// - The parameter value must contain the {UnixTimestamp} and {Sequence} variables.
 	//
 	// example:
 	//

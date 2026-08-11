@@ -18,13 +18,13 @@ type iUpdateMediaMarksResponseBody interface {
 }
 
 type UpdateMediaMarksResponseBody struct {
-	// The ID of the media asset.
+	// The media asset ID.
 	//
 	// example:
 	//
 	// 53afdf003a******6a16b5feac6402
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The IDs of the successfully modified marks.
+	// The IDs of the marks that were successfully updated.
 	//
 	// example:
 	//

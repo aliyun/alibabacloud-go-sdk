@@ -16,13 +16,17 @@ type iSetDefaultStorageLocationResponseBody interface {
 }
 
 type SetDefaultStorageLocationResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// ******5A-CAAC-4850-A3AF-B74606******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation succeeded. Valid values: true: succeeded. false: failed.
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
 	//
 	// example:
 	//

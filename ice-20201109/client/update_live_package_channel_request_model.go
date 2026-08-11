@@ -24,7 +24,7 @@ type iUpdateLivePackageChannelRequest interface {
 }
 
 type UpdateLivePackageChannelRequest struct {
-	// The channel name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+
+	// The channel name. The name can contain only uppercase and lowercase letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+
 	//
 	// This parameter is required.
 	//
@@ -32,13 +32,13 @@ type UpdateLivePackageChannelRequest struct {
 	//
 	// channel-1
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// The channel description. It can be up to 1,000 characters in length.
+	// The description. Maximum length: 1000 characters.
 	//
 	// example:
 	//
 	// This is a test channel.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The channel group name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+
+	// The channel group name. The name can contain only uppercase and lowercase letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type UpdateLivePackageChannelRequest struct {
 	//
 	// channel-group-1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The ingest protocol. Only HLS is supported.
+	// The input protocol. Currently, only HLS is supported.
 	//
 	// This parameter is required.
 	//
@@ -54,17 +54,13 @@ type UpdateLivePackageChannelRequest struct {
 	//
 	// HLS
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The number of M3U8 segments. Valid values: 2 to 100.
-	//
-	// This parameter is required.
+	// The number of segments in the input stream m3u8 file. Valid values: 2 to 100.
 	//
 	// example:
 	//
 	// 3
 	SegmentCount *int32 `json:"SegmentCount,omitempty" xml:"SegmentCount,omitempty"`
-	// The segment duration. Valid values: 1 to 30.
-	//
-	// This parameter is required.
+	// The segment duration of the input stream. Valid values: 1 to 30.
 	//
 	// example:
 	//

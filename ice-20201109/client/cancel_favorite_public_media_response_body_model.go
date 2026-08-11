@@ -16,9 +16,9 @@ type iCancelFavoritePublicMediaResponseBody interface {
 }
 
 type CancelFavoritePublicMediaResponseBody struct {
-	// List of IDs for which removing from favorites failed.
+	// The list of IDs that failed to be removed from favorites.
 	IgnoredList []*string `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Repeated"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//

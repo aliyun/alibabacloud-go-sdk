@@ -24,13 +24,13 @@ type iListYikeAssetFoldersResponseBody interface {
 type ListYikeAssetFoldersResponseBody struct {
 	// The folder list.
 	FolderList []*ListYikeAssetFoldersResponseBodyFolderList `json:"FolderList,omitempty" xml:"FolderList,omitempty" type:"Repeated"`
-	// The maximum number of results per page.
+	// The maximum number of results.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to retrieve the next page of results. If this parameter is not returned, all results have been retrieved.
+	// The token for the next page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListYikeAssetFoldersResponseBody struct {
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total count of folders.
+	// The total number of folders.
 	//
 	// example:
 	//

@@ -46,23 +46,23 @@ type SubmitYikeStoryboardJobRequest struct {
 	//
 	// 4:3
 	AspectRatio *string `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
-	// The storyboard generation execution mode.
+	// The execution mode for storyboard generation. Valid values:
 	//
-	// - `FullPipeline`: Executes the full generation pipeline, including both storyboard creation and shot video generation.
+	// - FullPipeline: full pipeline generation, which includes storyboard generation and shot video generation.
 	//
-	// - `StoryboardOnly`: Generates only the storyboard.
+	// - StoryboardOnly: generates only the storyboard.
 	//
 	// example:
 	//
 	// FullPipeline
 	ExecMode *string `json:"ExecMode,omitempty" xml:"ExecMode,omitempty"`
-	// The OSS address of the file.
+	// The OSS URL of the file.
 	//
 	// example:
 	//
 	// http://test.oss-cn-shanghai.aliyuncs.com/test.mp4
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
-	// Parameters for the model, in JSON format.
+	// The model feature parameters in JSON format.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type SubmitYikeStoryboardJobRequest struct {
 	//
 	// firstPersonNarration
 	ShotSplitMode *string `json:"ShotSplitMode,omitempty" xml:"ShotSplitMode,omitempty"`
-	// Specifies whether to skip a failed shot. The default value is `true`.
+	// Specifies whether to skip failed shots. Default value: True.
 	//
 	// example:
 	//
@@ -114,15 +114,15 @@ type SubmitYikeStoryboardJobRequest struct {
 	//
 	// RealisticPhotography
 	StyleId *string `json:"StyleId,omitempty" xml:"StyleId,omitempty"`
-	// The job title. It must be a UTF-8 encoded string of up to 128 bytes. If you do not specify a title, the system generates a default one based on the date.
+	// The task title. If not specified, a default title is automatically generated based on the date. The title cannot exceed 128 bytes in length and must be UTF-8 encoded.
 	//
 	// example:
 	//
 	// test-title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// Custom settings in JSON format. This parameter can contain the following field:
+	// The custom settings in JSON format. Fields:
 	//
-	// - The `NotifyAddress` field specifies the callback URL that is invoked when the job is complete. Both MNS and HTTP callbacks are supported.
+	// - NotifyAddress: the callback URL for task completion. MNS callbacks and HTTP callbacks are supported.
 	//
 	// example:
 	//

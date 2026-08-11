@@ -16,17 +16,17 @@ type iAddEditingProjectMaterialsRequest interface {
 }
 
 type AddEditingProjectMaterialsRequest struct {
-	// The material ID. Separate multiple material IDs with commas (,). Each type supports up to 10 material IDs. The following material types are supported:
+	// The material IDs. Separate multiple material IDs with commas (,). Each type supports up to 10 material IDs.
 	//
-	// - video
+	// - "video": video
 	//
-	// - audio
+	// - "audio": audio
 	//
-	// - image
+	// - "image": image
 	//
-	// - liveStream
+	// - "liveStream": live stream
 	//
-	// - editingProject
+	// - "editingProject": editing project
 	//
 	// This parameter is required.
 	//

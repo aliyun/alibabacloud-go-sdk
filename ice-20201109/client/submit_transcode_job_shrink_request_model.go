@@ -24,13 +24,13 @@ type iSubmitTranscodeJobShrinkRequest interface {
 }
 
 type SubmitTranscodeJobShrinkRequest struct {
-	// The idempotence key. Ensures request idempotence.
+	// The idempotency key that is used to ensure the idempotence of the request.
 	//
 	// example:
 	//
 	// ****12e8864746a0a398****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The input group for the job. A single input creates a transcoding job. Multiple inputs create a media merging job.
+	// The job input group. A single input creates a transcoding job. Multiple inputs create an audio and video stream merging job.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type SubmitTranscodeJobShrinkRequest struct {
 	//
 	// job-name
 	InputGroupShrink *string `json:"InputGroup,omitempty" xml:"InputGroup,omitempty"`
-	// The job name.
+	// The name of the job.
 	//
 	// example:
 	//
 	// job-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The output group for the job.
+	// The task output group.
 	//
 	// This parameter is required.
 	//
@@ -52,13 +52,13 @@ type SubmitTranscodeJobShrinkRequest struct {
 	//
 	// user-data
 	OutputGroupShrink *string `json:"OutputGroup,omitempty" xml:"OutputGroup,omitempty"`
-	// The job scheduling information.
+	// The task scheduling information.
 	//
 	// example:
 	//
 	// job-name
 	ScheduleConfigShrink *string `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty"`
-	// Custom settings in JSON format. The length is limited to 512 bytes. Supports [custom webhook address configuration](https://help.aliyun.com/document_detail/451631.html).
+	// Custom settings in JSON format. The value can be up to 512 bytes in length. [Custom callback URL configuration](https://help.aliyun.com/document_detail/451631.html) is supported.
 	//
 	// example:
 	//

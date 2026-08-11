@@ -14,7 +14,7 @@ type iGetMediaProducingJobRequest interface {
 }
 
 type GetMediaProducingJobRequest struct {
-	// The ID of the media production job.
+	// The ID of the media producing job.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iDeleteAvatarTrainingJobResponseBody interface {
 }
 
 type DeleteAvatarTrainingJobResponseBody struct {
-	// The data returned.
+	// The response data.
 	Data *DeleteAvatarTrainingJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -28,9 +28,9 @@ type DeleteAvatarTrainingJobResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - true
+	// - true: Successful.
 	//
-	// - false
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *DeleteAvatarTrainingJobResponseBody) Validate() error {
 }
 
 type DeleteAvatarTrainingJobResponseBodyData struct {
-	// The ID of the digital human training job.
+	// The ID of the digital human training task.
 	//
 	// example:
 	//

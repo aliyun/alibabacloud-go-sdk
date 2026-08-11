@@ -28,35 +28,35 @@ type iUpdateEditingProjectRequest interface {
 }
 
 type UpdateEditingProjectRequest struct {
-	// The business status of the project. You can typically ignore this parameter for standard cloud editing projects. Use this parameter to modify the project\\"s reservation status:
+	// The business status of the project. This parameter can be ignored for general editing projects. You can modify the reservation status of the project. Valid values:
 	//
-	// - `Reserving`: The project is being reserved.
+	// - Reserving: The project is being reserved.
 	//
-	// - `ReservationCanceled`: The reservation for the project is canceled.
+	// - ReservationCanceled: The reservation is canceled.
 	//
 	// example:
 	//
 	// Reserving
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The clip parameters for the template, in JSON format. This parameter is required if you specify `TemplateId`.<props="china"> For more information about the format, see [Create and use a standard template](https://help.aliyun.com/document_detail/328557.html) and [Create and use an advanced template](https://help.aliyun.com/document_detail/291418.html).
+	// The material parameters for the template in JSON format. If TemplateId is specified, ClipsParam must also be specified.<props="china">For more information about the format, see [Create and use a common template](https://help.aliyun.com/document_detail/328557.html) and [Create and use an advanced template](https://help.aliyun.com/document_detail/291418.html).
 	//
 	// example:
 	//
 	// See the template user guide.
 	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
-	// The project cover.
+	// The cover URL of the cloud editing project.
 	//
 	// example:
 	//
 	// https://****.com/6AB4D0E1E1C7446888****.png
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The project description.
+	// The description of the cloud editing project.
 	//
 	// example:
 	//
 	// testtimeline001desciption
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The project ID.
+	// The ID of the cloud editing project.
 	//
 	// This parameter is required.
 	//
@@ -64,15 +64,15 @@ type UpdateEditingProjectRequest struct {
 	//
 	// ****4ee4b97e27b525142a6b2****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The template ID. Use this parameter to quickly build a timeline.	Notice: You can specify only one of `ProjectId`, `Timeline`, and `TemplateId`. If you specify `TemplateId`, `ClipsParam` is required.
+	// The template ID, which is used to quickly build a timeline with minimal effort.	Notice: Exactly one of ProjectId, Timeline, and TemplateId must be specified. If TemplateId is specified, ClipsParam must also be specified.
 	//
 	// example:
 	//
 	// ****96e8864746a0b6f3****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The project timeline, in JSON format.
+	// The timeline of the cloud editing project in JSON format.
 	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
-	// The project title.
+	// The title of the cloud editing project.
 	//
 	// example:
 	//

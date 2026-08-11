@@ -18,9 +18,9 @@ type iBatchGetYikeAssetMediaInfosResponseBody interface {
 }
 
 type BatchGetYikeAssetMediaInfosResponseBody struct {
-	// The list of IDs of media assets that failed to be obtained.
+	// The list of IDs that failed to be retrieved.
 	IgnoredList []*string `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Repeated"`
-	// The list of matched media assets.
+	// The collection of media assets that meet the requirements.
 	MediaInfos []*BatchGetYikeAssetMediaInfosResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -79,13 +79,13 @@ func (s *BatchGetYikeAssetMediaInfosResponseBody) Validate() error {
 }
 
 type BatchGetYikeAssetMediaInfosResponseBodyMediaInfos struct {
-	// The business data.
+	// The business information.
 	BizData *BatchGetYikeAssetMediaInfosResponseBodyMediaInfosBizData `json:"BizData,omitempty" xml:"BizData,omitempty" type:"Struct"`
-	// The list of file information.
+	// The file list information.
 	FileInfoList []*BatchGetYikeAssetMediaInfosResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
 	// The basic information about the media asset.
 	MediaBasicInfo *BatchGetYikeAssetMediaInfosResponseBodyMediaInfosMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
-	// The ID of the media asset.
+	// The media asset ID.
 	//
 	// example:
 	//
@@ -173,19 +173,19 @@ type BatchGetYikeAssetMediaInfosResponseBodyMediaInfosBizData struct {
 	//
 	// pass
 	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	// The ID of the creation job.
+	// The ID of the creation task.
 	//
 	// example:
 	//
 	// ID
 	CreationJobId *string `json:"CreationJobId,omitempty" xml:"CreationJobId,omitempty"`
-	// The ID of the folder.
+	// The folder ID.
 	//
 	// example:
 	//
 	// pd_0617169475
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// Indicates whether the media asset is a favorite.
+	// Indicates whether the media asset is marked as a favorite.
 	//
 	// example:
 	//
@@ -197,19 +197,19 @@ type BatchGetYikeAssetMediaInfosResponseBodyMediaInfosBizData struct {
 	//
 	// 1
 	IsLogicalDeleted *string `json:"IsLogicalDeleted,omitempty" xml:"IsLogicalDeleted,omitempty"`
-	// The sub-type of the media asset.
+	// The media asset subtype.
 	//
 	// example:
 	//
 	// Image
 	MediaAssetSubType *string `json:"MediaAssetSubType,omitempty" xml:"MediaAssetSubType,omitempty"`
-	// The type of the media asset.
+	// The media asset type.
 	//
 	// example:
 	//
 	// HistoricalUpload
 	MediaAssetType *string `json:"MediaAssetType,omitempty" xml:"MediaAssetType,omitempty"`
-	// The ID of the production.
+	// The project ID.
 	//
 	// example:
 	//
@@ -356,7 +356,7 @@ func (s *BatchGetYikeAssetMediaInfosResponseBodyMediaInfosBizData) Validate() er
 }
 
 type BatchGetYikeAssetMediaInfosResponseBodyMediaInfosFileInfoList struct {
-	// The basic information about the file, including the duration and size.
+	// The basic file information, including duration and size.
 	FileBasicInfo *BatchGetYikeAssetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 }
 
@@ -393,31 +393,31 @@ type BatchGetYikeAssetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo 
 	//
 	// 30
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The duration of the file.
+	// The duration.
 	//
 	// example:
 	//
 	// 200
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The name of the file.
+	// The file name.
 	//
 	// example:
 	//
 	// example.mp4
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The size of the file, in bytes.
+	// The file size in bytes.
 	//
 	// example:
 	//
 	// 191
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The status of the file.
+	// The file status.
 	//
 	// example:
 	//
 	// Normal
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
-	// The type of the file.
+	// The file type.
 	//
 	// example:
 	//
@@ -429,7 +429,7 @@ type BatchGetYikeAssetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo 
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// The container format of the file.
+	// The container format.
 	//
 	// example:
 	//
@@ -441,7 +441,7 @@ type BatchGetYikeAssetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo 
 	//
 	// 416
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The region where the file is stored.
+	// The storage region of the file.
 	//
 	// example:
 	//
@@ -573,19 +573,19 @@ type BatchGetYikeAssetMediaInfosResponseBodyMediaInfosMediaBasicInfo struct {
 	//
 	// ICE
 	Biz *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
-	// The business type.
+	// The business type of the media asset.
 	//
 	// example:
 	//
 	// general
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// The category of the media asset.
+	// The category.
 	//
 	// example:
 	//
 	// category
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The URL of the cover image.
+	// The cover URL.
 	//
 	// example:
 	//
@@ -603,31 +603,31 @@ type BatchGetYikeAssetMediaInfosResponseBodyMediaInfosMediaBasicInfo struct {
 	//
 	// 2021-01-08T16:52:07Z
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
-	// The description of the media asset.
+	// The content description.
 	//
 	// example:
 	//
 	// sample_description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The source URL of the media asset.
+	// The address of the media asset to be registered in the corresponding system.
 	//
 	// example:
 	//
 	// https://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// The ID of the media asset.
+	// The media asset ID.
 	//
 	// example:
 	//
 	// *****64623a94eca8516569c8f*****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The tags of the media asset.
+	// The tags.
 	//
 	// example:
 	//
 	// tag1，tag2
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
-	// The type of the media asset.
+	// The media type of the media asset.
 	//
 	// example:
 	//
@@ -645,7 +645,7 @@ type BatchGetYikeAssetMediaInfosResponseBodyMediaInfosMediaBasicInfo struct {
 	//
 	// []
 	Snapshots *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
-	// The source of the media asset.
+	// The source.
 	//
 	// example:
 	//
@@ -657,13 +657,13 @@ type BatchGetYikeAssetMediaInfosResponseBodyMediaInfosMediaBasicInfo struct {
 	//
 	// [{"bucket":"example-bucket","count":"32","iceJobId":"******83ec44d58b2069def2e******","location":"oss-cn-shanghai","snapshotRegular":"example/example-{Count}.jpg","spriteRegular":"example/example-{TileCount}.jpg","templateId":"******e438b14ff39293eaec25******","tileCount":"1"}]
 	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
-	// The status of the media asset.
+	// The resource status.
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The title of the media asset.
+	// The title.
 	//
 	// example:
 	//
@@ -675,7 +675,7 @@ type BatchGetYikeAssetMediaInfosResponseBodyMediaInfosMediaBasicInfo struct {
 	//
 	// Init
 	TranscodeStatus *string `json:"TranscodeStatus,omitempty" xml:"TranscodeStatus,omitempty"`
-	// The custom user data.
+	// The user data.
 	//
 	// example:
 	//

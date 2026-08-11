@@ -28,79 +28,77 @@ type iAddTemplateRequest interface {
 }
 
 type AddTemplateRequest struct {
-	// - The template configurations. The Config object of a regular template is encapsulated based on the Timeline object of an online editing project. The Config object of a custom template provides more flexible features. If you have special requirements, we recommend that you understand the structure of a Config object and configure a custom template. For more information, see [Config object of a regular template](https://help.aliyun.com/document_detail/456193.html).
+	// - The standard template Config is an encapsulation based on the cloud editing Timeline. Custom template Config provides more flexibility. If you have special requirements, familiarize yourself with the Config structure and customize the template. For details, see [Standard template Config details](https://help.aliyun.com/document_detail/456193.html).
 	//
-	// - For more information about Config object examples, see [Basic template configurations](https://help.aliyun.com/document_detail/451634.html).
+	// - For more template Config examples, see [Common standard template Config examples](https://help.aliyun.com/document_detail/451634.html).
+	//
+	// - For one-click video production template Config configurations, see [One-click video production template configuration parameter description](https://help.aliyun.com/document_detail/2878274.html).
 	//
 	// example:
 	//
-	// 参见Timeline模板Config文档
+	// See the Timeline template Config documentation
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The URL of the template thumbnail.
+	// The template cover URL.
 	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/cover.jpg
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	// The name of the custom template.
+	// The custom template name.
 	//
 	// example:
 	//
 	// Template name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the template preview video.
+	// The media asset ID of the template preview video.
 	//
 	// example:
 	//
 	// ****01bf24bf41c78b2754cb3187****
 	PreviewMedia *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
-	// The IDs of the materials associated with the template for use by the regular template editor.
+	// The media assets associated with the template, used by the standard template editor.
 	//
 	// example:
 	//
 	// {"video":["1805a0c6ca544fb395a06ca683619655"]}
 	RelatedMediaids *string `json:"RelatedMediaids,omitempty" xml:"RelatedMediaids,omitempty"`
-	// The source from which the template is created. Valid values:
+	// The template creation source. Valid values:
 	//
-	// - OpenAPI
+	// - OpenAPI: created by using OpenAPI.
 	//
-	// - AliyunConsole
+	// - AliyunConsole: created by using the Alibaba Cloud Management Console.
 	//
-	// - WebSDK
-	//
-	// <!---->
+	// - WebSDK: created by using WebSDK.
 	//
 	// example:
 	//
 	// OpenAPI
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The template state. Valid values:
+	// The template status. Valid values:
 	//
-	// - Available: The template is available.
+	// - Available: normal.
 	//
-	// - Created: The template is created but not ready for use.
+	// - Created: created but not yet available.
 	//
-	// - Uploading: The video is being uploaded.
+	// - Uploading: uploading.
 	//
-	// - Processing: The advanced template is being processed.
+	// - Processing: advanced template is being analyzed.
 	//
-	// - UploadFailed: Failed to upload the video.
+	// - UploadFailed: upload failed.
 	//
-	// - ProcessFailed: Failed to process the advanced template.
-	//
-	// <!---->
+	// - ProcessFailed: advanced template analysis failed.
 	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The template type. Valid values:
+	// The templatetype. Valid values:
 	//
-	// - Timeline: a regular template created based on the timeline of a video editing project, in which multiple materials are arranged in sequence across multiple layers. It can be used to convert text and images into videos, create photo albums, add opening and closing parts, and apply the default watermark.
+	// - Timeline (standard template): a template created based on the Timeline of a video clip node (multiple materials on multiple tracks are concatenated in sequence). This templatetype can be used to implement effects such as image-to-video conversion, photo albums, intros and outros, and default watermarks.
 	//
-	// - VETemplate: an advanced template created using effects of Adobe After Effects (AE). It can be used to produce complex animations and advanced media effects.
+	// - VETemplate (advanced template): a template created based on Adobe After Effects (AE) effects. This templatetype can be used to implement advanced media effects with complex animations.
 	//
-	// <!---->
+	// - BatchEditing (one-click video production template): supports configurations for sticker watermarks, background music, background images, narration subtitle styles, title subtitle styles, and output resolution parameters. These configurations are automatically applied when you commit a one-click video production node.
 	//
 	// example:
 	//

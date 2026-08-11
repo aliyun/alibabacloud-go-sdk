@@ -24,9 +24,9 @@ type iCreateCustomizedVoiceJobRequest interface {
 type CreateCustomizedVoiceJobRequest struct {
 	// The gender. Valid values:
 	//
-	// - female
+	// - female: female.
 	//
-	// - male
+	// - male: male.
 	//
 	// This parameter is required.
 	//
@@ -36,11 +36,11 @@ type CreateCustomizedVoiceJobRequest struct {
 	Gender *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
 	// The scenario. Valid values:
 	//
-	// - story
+	// - story: story.
 	//
-	// - interaction
+	// - interaction: interaction.
 	//
-	// - navigation
+	// - navigation: navigation.
 	//
 	// This parameter is required.
 	//
@@ -50,19 +50,19 @@ type CreateCustomizedVoiceJobRequest struct {
 	Scenario *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
 	// The voice description.
 	//
-	// - Must be 256 characters or fewer.
+	// - The description cannot exceed 256 characters.
 	//
 	// example:
 	//
-	// 这是一个个性化声音
+	// This is a personalized voice
 	VoiceDesc *string `json:"VoiceDesc,omitempty" xml:"VoiceDesc,omitempty"`
-	// The custom voice ID. This is typically an English name or Pinyin.
+	// The custom voice ID (English name or pinyin of the voice).
 	//
-	// - Must be unique among your other custom voices.
+	// - The ID cannot be the same as any of your other custom voice IDs.
 	//
-	// - Must be 32 characters or fewer.
+	// - The ID cannot exceed 32 characters.
 	//
-	// - Can contain only letters and numbers.
+	// - Only letters and numbers are supported.
 	//
 	// This parameter is required.
 	//
@@ -70,9 +70,9 @@ type CreateCustomizedVoiceJobRequest struct {
 	//
 	// xiaozhuan
 	VoiceId *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
-	// The voice name, typically in Chinese.
+	// The voice name (generally a Chinese name).
 	//
-	// - Must be 32 characters or fewer.
+	// - The name cannot exceed 32 characters.
 	//
 	// example:
 	//

@@ -24,17 +24,17 @@ type iSubmitLiveSnapshotJobRequest interface {
 type SubmitLiveSnapshotJobRequest struct {
 	// The snapshot callback URL.
 	//
-	// - It cannot exceed 255 characters in length.
+	// - Maximum length: 255.
 	//
-	// - Both HTTP and HTTPS URLs are supported.
+	// - HTTP and HTTPS are supported.
 	//
 	// example:
 	//
 	// http://www.aliyun.com/snapshot/callback
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
-	// The name of the job.
+	// The task name.
 	//
-	// - It cannot exceed 128 characters in length.
+	// - Maximum length: 128.
 	//
 	// This parameter is required.
 	//
@@ -42,11 +42,11 @@ type SubmitLiveSnapshotJobRequest struct {
 	//
 	// Screenshot task1
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The information about the output snapshot.
+	// The snapshot output information.
 	//
 	// This parameter is required.
 	SnapshotOutput *SubmitLiveSnapshotJobRequestSnapshotOutput `json:"SnapshotOutput,omitempty" xml:"SnapshotOutput,omitempty" type:"Struct"`
-	// The information about the input stream.
+	// The stream input information.
 	//
 	// This parameter is required.
 	StreamInput *SubmitLiveSnapshotJobRequestStreamInput `json:"StreamInput,omitempty" xml:"StreamInput,omitempty" type:"Struct"`
@@ -136,7 +136,7 @@ type SubmitLiveSnapshotJobRequestSnapshotOutput struct {
 	//
 	// testbucket
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The output endpoint of the snapshot.
+	// The snapshot output endpoint.
 	//
 	// This parameter is required.
 	//
@@ -144,7 +144,7 @@ type SubmitLiveSnapshotJobRequestSnapshotOutput struct {
 	//
 	// oss-cn-shanghai.aliyuncs.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The storage type of the snapshot. The value can only be oss.
+	// The snapshot storage type. Currently, only oss is supported.
 	//
 	// This parameter is required.
 	//
@@ -194,7 +194,7 @@ func (s *SubmitLiveSnapshotJobRequestSnapshotOutput) Validate() error {
 }
 
 type SubmitLiveSnapshotJobRequestStreamInput struct {
-	// The type of the input stream. The value can only be rtmp.
+	// The stream input type. Currently, only rtmp is supported.
 	//
 	// This parameter is required.
 	//
@@ -202,9 +202,9 @@ type SubmitLiveSnapshotJobRequestStreamInput struct {
 	//
 	// rtmp
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The URL of the input stream.
+	// The stream input URL.
 	//
-	// - It cannot exceed 255 characters in length.
+	// - Maximum length: 255.
 	//
 	// This parameter is required.
 	//

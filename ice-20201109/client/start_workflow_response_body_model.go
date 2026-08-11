@@ -22,7 +22,7 @@ type StartWorkflowResponseBody struct {
 	//
 	// ******42-E8E1-4FBB-8E52-F4225C******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the workflow task.
+	// The workflow task ID.
 	//
 	// example:
 	//

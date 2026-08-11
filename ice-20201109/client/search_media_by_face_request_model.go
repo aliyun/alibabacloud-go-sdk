@@ -32,25 +32,25 @@ type iSearchMediaByFaceRequest interface {
 }
 
 type SearchMediaByFaceRequest struct {
-	// Custom filters. A JSON string. The following backing fields are supported: intField1 (integer type), strField1 and strField2 (string type). For the same field, only one matching mode can be specified. Filters across different fields are combined with a logical AND relationship.
+	// The custom filter. JSON string. Supported fields include integer field intField1 and string fields strField1 and strField2. Each field supports only one matching mode. Filters on different fields are combined with an AND relationship.
 	//
-	// - Exact match, for example: {"intField1":12,"strField1":"abc"}
+	// - Exact match, such as {"intField1":12,"strField1":"abc"}
 	//
-	// - Multi-value match, for example: {"intField1":[12,13],"strField1":["abc","cd"]}
+	// - Multi-value match, such as {"intField1":[12,13],"strField1":["abc","cd"]}
 	//
-	// - Range match, for example: {"intField1":{"gte":12,"lte":13}}
+	// - Range match, such as {"intField1":{"gte":12,"lte":13}}
 	//
 	// example:
 	//
 	// {"intField1":{"gte":12,"lte":13},"strField2":["cd","de"],"strField1":"abc"}
 	CustomFilters *string `json:"CustomFilters,omitempty" xml:"CustomFilters,omitempty"`
-	// The ID of the entity.
+	// The entity ID.
 	//
 	// example:
 	//
 	// 2d3bf1e35a1e42b5ab338d701efa****
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The token that is used to identify the query. You can use this parameter in the SearchMediaClipByFace operation to specify the same query conditions.
+	// The token used to identify paginated results under the same search condition. Use this parameter together with the FaceSearchToken parameter in the [refined search operation](https://help.aliyun.com/document_detail/612891.html).
 	//
 	// This parameter is required.
 	//
@@ -58,17 +58,17 @@ type SearchMediaByFaceRequest struct {
 	//
 	// zxtest-huangxuan-2023-3-7-V1
 	FaceSearchToken *string `json:"FaceSearchToken,omitempty" xml:"FaceSearchToken,omitempty"`
-	// The type of the media asset. Valid values:
+	// The media asset type. Valid values:
 	//
-	// - image
+	// - image: image
 	//
-	// - video
+	// - video: video
 	//
 	// example:
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// Namespace.
+	// The namespace.
 	//
 	// example:
 	//
@@ -100,9 +100,9 @@ type SearchMediaByFaceRequest struct {
 	//
 	// test1
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
-	// Creation time, in milliseconds UNIX timestamp. Use gte for greater than or equal to, and lte for less than or equal to.
+	// The creation time, in millisecond-precision timestamp. gte specifies greater than or equal to, and lte specifies less than or equal to.
 	//
-	// - Example range: {"gte":1761205662998,"lte":1771205662998}
+	// - Range, such as {"gte":1761205662998,"lte":1771205662998}
 	//
 	// example:
 	//

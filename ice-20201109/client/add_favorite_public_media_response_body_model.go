@@ -16,9 +16,8 @@ type iAddFavoritePublicMediaResponseBody interface {
 }
 
 type AddFavoritePublicMediaResponseBody struct {
-	// A list of Media Asset IDs that were not added to your Favorites. This happens if a Media Asset does not exist or is already in your Favorites.
 	IgnoredList []*string `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Repeated"`
-	// The Request ID.
+	// The request ID.
 	//
 	// example:
 	//

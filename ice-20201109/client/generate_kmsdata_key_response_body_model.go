@@ -16,7 +16,7 @@ type iGenerateKMSDataKeyResponseBody interface {
 }
 
 type GenerateKMSDataKeyResponseBody struct {
-	// The information about the data key.
+	// The data key (DK) information.
 	DataKey *GenerateKMSDataKeyResponseBodyDataKey `json:"DataKey,omitempty" xml:"DataKey,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,19 +62,19 @@ func (s *GenerateKMSDataKeyResponseBody) Validate() error {
 }
 
 type GenerateKMSDataKeyResponseBodyDataKey struct {
-	// The ciphertext of the encrypted data key. This parameter is used as CipherText when you create a transcoding job.
+	// The ciphertext of the encrypted data key (DK). This value is used for the CipherText parameter when you submit a transcoding job.
 	//
 	// example:
 	//
 	// ODZhOWVmZDktM2QxNi00ODk0LWJkNGYtMWZjNDNmM2YyYWJmS7FmDBBQ0BkKsQrtRnidtPwirmDcS0ZuJCU41xxAAWk4Z8qsADfbV0b+i6kQmlvj79dJdGOvtX69Uycs901qOjop4bTS****
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
-	// The ID of the customer master key (CMK). The ID must be globally unique.
+	// The globally unique identifier of the master key.
 	//
 	// example:
 	//
 	// 7906979c-8e06-46a2-be2d-68e3ccbc****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	// The Base64-encoded plaintext of the data key.
+	// The Base64-encoded plaintext of the data key (DK).
 	//
 	// example:
 	//

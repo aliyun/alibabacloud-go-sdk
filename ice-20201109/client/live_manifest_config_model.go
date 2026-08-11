@@ -23,6 +23,8 @@ type iLiveManifestConfig interface {
 	GetMinUpdatePeriod() *int32
 	SetMinVideoBitrate(v int32) *LiveManifestConfig
 	GetMinVideoBitrate() *int32
+	SetPartHoldBackMs(v int32) *LiveManifestConfig
+	GetPartHoldBackMs() *int32
 	SetPresentationDelay(v int32) *LiveManifestConfig
 	GetPresentationDelay() *int32
 	SetSegmentCount(v int32) *LiveManifestConfig
@@ -34,83 +36,84 @@ type iLiveManifestConfig interface {
 }
 
 type LiveManifestConfig struct {
-	// The type of ad markers to include in the manifest.
+	// The ad markers supported in the playlist. Valid values:
 	//
-	// 	- NONE: Removes all ad markers.
+	// - NONE: removes ad markers.
 	//
-	// 	- DATE_RANGE: Inserts EXT-X-DATERANGE tags (HLS spec). Valid for HLS/HLS-CMAF endpoints.
+	// - DATE_RANGE: uses the EXT-X-DATERANGE tag defined in the HLS specification. This value is available when the endpoint protocol is HLS/HLS_CMAF.
 	//
-	// 	- XML: Inserts XML-based ad markers (DASH spec). Valid for DASH endpoints.
+	// - XML: uses the XML ad markers defined in the DASH specification. This value is available when the endpoint protocol is DASH.
 	//
 	// example:
 	//
 	// NONE
 	AdMarkers *string `json:"AdMarkers,omitempty" xml:"AdMarkers,omitempty"`
-	// The interval, in seconds, at which to insert the EXT-X-PROGRAM-DATE-TIME tag into the playlist. By default, no tags are inserted. Valid values: 1 to 3600. Applies only to HLS and HLS-CMAF endpoints.
+	// The interval (in seconds) for inserting the EXT-X-PROGRAM-DATE-TIME time tag. By default, the tag is not inserted. Valid values: 1 to 3600. This parameter applies to the HLS/HLS_CMAF protocol.
 	//
 	// example:
 	//
 	// 5
 	DateTimeInterval *int32 `json:"DateTimeInterval,omitempty" xml:"DateTimeInterval,omitempty"`
-	// The duration of the startover window, in seconds. It defines the maximum time a viewer can seek backward in the live stream. Valid values: 1 to 3600. Default value: 60. Applies only to DASH endpoints.
+	// The maximum time-shift duration during live streaming. Unit: seconds. Valid values: 1 to 3600. Default value: 60. This parameter applies to DASH.
 	//
 	// example:
 	//
 	// 60
 	ManifestDuration *int32 `json:"ManifestDuration,omitempty" xml:"ManifestDuration,omitempty"`
-	// The maximum bitrate threshold (in bits per second) that video tracks must be at or below to be available for playback from this endpoint. It must be a positive integer. If not set, no maximum bitrate is enforced.
+	// The maximum input bitrate threshold (unit: bit/s). A video track must have a bitrate less than or equal to this threshold to be played from this endpoint. Valid values: integers greater than 0. By default, this parameter is empty and no maximum bitrate limit is set.
 	//
 	// example:
 	//
 	// 8000000
 	MaxVideoBitrate *int32 `json:"MaxVideoBitrate,omitempty" xml:"MaxVideoBitrate,omitempty"`
-	// The minimum buffer time, in seconds. Valid values: 1 to 30. Default value: the duration of two segments. Applies only to DASH endpoints.
+	// The minimum buffer time. Unit: seconds. Valid values: 1 to 30. Default value: 2 segment durations. This parameter applies only to DASH.
 	//
-	// Note: Setting this value too low may cause playback to stutter. We recommend a value no less than two segment durations.
+	// >  An excessively small minimum buffer time may cause playback stuttering. Set this parameter to a value no less than 2 segment durations.
 	//
 	// example:
 	//
 	// 8
 	MinBufferTime *int32 `json:"MinBufferTime,omitempty" xml:"MinBufferTime,omitempty"`
-	// The minimum update period for the manifest, in seconds. Valid values: 1 to 3600. Default value: the duration of two segments. Applies only to DASH endpoints.
+	// The minimum update interval. Unit: seconds. Valid values: 1 to 3600. Default value: 2 segment durations. This parameter applies to DASH.
 	//
-	// Note: For smooth playback, set this value to be less than MinBufferTime.
+	// >  Set this parameter to a value less than the minimum buffer time. An excessively large value may cause DASH playback stuttering.
 	//
 	// example:
 	//
 	// 8
 	MinUpdatePeriod *int32 `json:"MinUpdatePeriod,omitempty" xml:"MinUpdatePeriod,omitempty"`
-	// The minimum bitrate threshold (in bits per second) that video tracks must be at or above to be available for playback from this endpoint. It must be a positive integer. If not set, no minimum bitrate is enforced.
+	// The minimum input bitrate threshold (unit: bit/s). A video track must have a bitrate greater than or equal to this threshold to be played from this endpoint. Valid values: integers greater than 0. By default, this parameter is empty and no minimum bitrate is set.
 	//
 	// example:
 	//
 	// 1000000
 	MinVideoBitrate *int32 `json:"MinVideoBitrate,omitempty" xml:"MinVideoBitrate,omitempty"`
-	// The suggested presentation delay, in seconds. Valid values: 1 to 60. Default value: the duration of three segments.
+	PartHoldBackMs  *int32 `json:"PartHoldBackMs,omitempty" xml:"PartHoldBackMs,omitempty"`
+	// The suggested presentation delay. Unit: seconds. Valid values: 1 to 60. Default value: 3 segment durations.
 	//
 	// example:
 	//
 	// 12
 	PresentationDelay *int32 `json:"PresentationDelay,omitempty" xml:"PresentationDelay,omitempty"`
-	// The number of segments to include in the playlist. Applies to HLS and HLS-CMAF protocols. If not set, the channel\\"s default configuration is used. Valid values: 2 to 100.
+	// The number of segments. This parameter applies to the HLS/HLS_CMAF protocol. By default, the channel configuration is used. Valid values: 2 to 100.
 	//
 	// example:
 	//
 	// 3
 	SegmentCount *int32 `json:"SegmentCount,omitempty" xml:"SegmentCount,omitempty"`
-	// The format of the segment template. Only NUMBER_TIMELINE is supported (default). Applies only to DASH endpoints.
+	// The segment template. Currently, only NUMBER_TIMELINE (default) is supported. This parameter applies to DASH.
 	//
 	// example:
 	//
 	// NUMBER_TIMELINE
 	SegmentTemplateFormat *string `json:"SegmentTemplateFormat,omitempty" xml:"SegmentTemplateFormat,omitempty"`
-	// The order of streams in the master playlist. Valid values:
+	// The stream sorting rule. Valid values:
 	//
-	// 	- ORIGINAL: Preserves the original order of the input streams.
+	// - ORIGINAL: retains the original order of the input sub-manifest.
 	//
-	// 	- VIDEO_BITRATE_ASCENDING: sorts the streams in ascending order of bitrates, from lowest to highest.
+	// - VIDEO_BITRATE_ASCENDING: sorts by video stream bitrate in ascending order.
 	//
-	// 	- VIDEO_BITRATE_DESCENDING: sorts the streams in descending order of bitrates, from highest to lowest.
+	// - VIDEO_BITRATE_DESCENDING: sorts by video stream bitrate in descending order.
 	//
 	// example:
 	//
@@ -152,6 +155,10 @@ func (s *LiveManifestConfig) GetMinUpdatePeriod() *int32 {
 
 func (s *LiveManifestConfig) GetMinVideoBitrate() *int32 {
 	return s.MinVideoBitrate
+}
+
+func (s *LiveManifestConfig) GetPartHoldBackMs() *int32 {
+	return s.PartHoldBackMs
 }
 
 func (s *LiveManifestConfig) GetPresentationDelay() *int32 {
@@ -202,6 +209,11 @@ func (s *LiveManifestConfig) SetMinUpdatePeriod(v int32) *LiveManifestConfig {
 
 func (s *LiveManifestConfig) SetMinVideoBitrate(v int32) *LiveManifestConfig {
 	s.MinVideoBitrate = &v
+	return s
+}
+
+func (s *LiveManifestConfig) SetPartHoldBackMs(v int32) *LiveManifestConfig {
+	s.PartHoldBackMs = &v
 	return s
 }
 

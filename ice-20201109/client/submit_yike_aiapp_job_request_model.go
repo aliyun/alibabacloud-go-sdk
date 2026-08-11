@@ -28,19 +28,19 @@ type SubmitYikeAIAppJobRequest struct {
 	//
 	// app_test
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The AI application runtime parameters, as a JSON string.
+	// The runtime parameters of the AI application. The value is a JSON-serialized string.
 	//
 	// example:
 	//
 	// {"testKey":"testValue"}
 	AppParams *string `json:"AppParams,omitempty" xml:"AppParams,omitempty"`
-	// The ID of the folder. If provided, the output is saved to this folder.
+	// The folder ID. This parameter is used to save results to the specified folder.
 	//
 	// example:
 	//
 	// fd-cReaEcVqQK
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The ID of the project. If provided, the output is saved to this project.
+	// The project ID. This parameter is used to save results to the specified project.
 	//
 	// example:
 	//

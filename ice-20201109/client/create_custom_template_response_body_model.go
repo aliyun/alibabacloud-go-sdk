@@ -68,7 +68,7 @@ type CreateCustomTemplateResponseBodyCustomTemplate struct {
 	//
 	// 2022-04-19T02:04:31Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether the template is the default template.
+	// Indicates whether the template is a default template.
 	//
 	// example:
 	//
@@ -80,19 +80,19 @@ type CreateCustomTemplateResponseBodyCustomTemplate struct {
 	//
 	// 2022-04-19T02:04:31Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The template state.
+	// The template status.
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The subtype name of the template.
+	// The template subtype name.
 	//
 	// example:
 	//
 	// Remux
 	Subtype *string `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
-	// The template configurations.
+	// The template configuration.
 	//
 	// example:
 	//
@@ -110,13 +110,13 @@ type CreateCustomTemplateResponseBodyCustomTemplate struct {
 	//
 	// test-template
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The type ID of the template.
+	// The templatetype ID.
 	//
 	// example:
 	//
 	// 1
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The type name of the template.
+	// The templatetype name.
 	//
 	// example:
 	//

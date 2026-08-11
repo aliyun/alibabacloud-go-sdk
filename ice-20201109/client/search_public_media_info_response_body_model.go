@@ -18,15 +18,15 @@ type iSearchPublicMediaInfoResponseBody interface {
 }
 
 type SearchPublicMediaInfoResponseBody struct {
-	// Public copyright media asset information
+	// The public copyright media asset information.
 	PublicMediaInfos []*SearchPublicMediaInfoResponseBodyPublicMediaInfos `json:"PublicMediaInfos,omitempty" xml:"PublicMediaInfos,omitempty" type:"Repeated"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// ****3CFB-2767-54FD-B311-BD15A4C1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total amount of Data under the current request conditions.
+	// The total number of entries that match the request conditions.
 	//
 	// example:
 	//
@@ -83,21 +83,21 @@ func (s *SearchPublicMediaInfoResponseBody) Validate() error {
 }
 
 type SearchPublicMediaInfoResponseBodyPublicMediaInfos struct {
-	// Indicates whether you have purchased a resource plan that includes this media asset.
+	// Indicates whether a resource plan that includes this media asset has been purchased.
 	//
 	// example:
 	//
 	// true
 	Authorized *bool `json:"Authorized,omitempty" xml:"Authorized,omitempty"`
-	// Whether the media asset is collected.
+	// Indicates whether the media asset has been added to favorites.
 	//
 	// example:
 	//
 	// true
 	Favorite *bool `json:"Favorite,omitempty" xml:"Favorite,omitempty"`
-	// Media asset information
+	// The media asset information.
 	MediaInfo *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo `json:"MediaInfo,omitempty" xml:"MediaInfo,omitempty" type:"Struct"`
-	// Remaining validity period of the resource plan (Day)
+	// The remaining validity period of the resource plan, in days.
 	//
 	// example:
 	//
@@ -159,11 +159,11 @@ func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfos) Validate() error {
 }
 
 type SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo struct {
-	// Dynamic metadata
+	// The dynamic metadata.
 	DynamicMetaData *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoDynamicMetaData `json:"DynamicMetaData,omitempty" xml:"DynamicMetaData,omitempty" type:"Struct"`
 	// BasicInfo
 	MediaBasicInfo *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
-	// Media asset ID
+	// The media asset ID.
 	//
 	// example:
 	//
@@ -221,19 +221,19 @@ func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo) Validate() 
 }
 
 type SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoDynamicMetaData struct {
-	// Metadata JSON string
+	// The metadata JSON string.
 	//
 	// example:
 	//
 	// "{\\"AuditionUrl\\": \\"http://xxx\\", \\"AuditionCount\\": 3...}"
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Type. Valid values:
+	// The type. Valid values:
 	//
-	// - "ai": AI data processed and normalized from original AI results
+	// - "ai": AI data that is generated after unified processing of AI raw results.
 	//
-	// - "user-defined": User-defined metadata
+	// - "user-defined": user-defined metadata.
 	//
-	// - "system": System-provided
+	// - "system": system built-in metadata.
 	//
 	// example:
 	//
@@ -272,37 +272,37 @@ func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoDynamicMetaDa
 }
 
 type SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo struct {
-	// Media Asset Business Type
+	// The business type of the media asset.
 	//
 	// example:
 	//
 	// general
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// Categorization
+	// The category of the media asset.
 	//
 	// example:
 	//
 	// category
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// Thumbnail URL
+	// The cover URL of the media asset.
 	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.png?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// Media Asset Creation Time
+	// The time when the media asset was created.
 	//
 	// example:
 	//
 	// 2020-12-26T06:04:49Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Media Asset Deletion Time
+	// The time when the media asset was deleted.
 	//
 	// example:
 	//
 	// 2020-12-29T06:04:49Z
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
-	// Content description
+	// The content description of the media asset.
 	//
 	// example:
 	//
@@ -314,49 +314,49 @@ type SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo st
 	//
 	// icepublic-****87b921bb4a55908a72a0537e****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// Label
+	// The tags of the media asset.
 	//
 	// example:
 	//
 	// tag1
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
-	// Media asset media type
+	// The media type of the media asset.
 	//
 	// example:
 	//
 	// audio
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// Updated At
+	// The time when the media asset was last modified.
 	//
 	// example:
 	//
 	// 2020-12-26T06:04:50Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// Source
+	// The source of the media asset.
 	//
 	// example:
 	//
 	// oss
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// sprite
+	// The sprite images of the media asset.
 	//
 	// example:
 	//
 	// [{"bucket":"example-bucket","count":"32","iceJobId":"******83ec44d58b2069def2e******","location":"oss-cn-shanghai","snapshotRegular":"example/example-{Count}.jpg","spriteRegular":"example/example-{TileCount}.jpg","templateId":"******e438b14ff39293eaec25******","tileCount":"1"}]
 	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
-	// Resource status
+	// The status of the resource.
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// title
+	// The title of the media asset.
 	//
 	// example:
 	//
 	// title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// User Data
+	// The user data of the media asset.
 	//
 	// example:
 	//

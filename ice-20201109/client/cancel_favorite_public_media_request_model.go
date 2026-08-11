@@ -14,9 +14,9 @@ type iCancelFavoritePublicMediaRequest interface {
 }
 
 type CancelFavoritePublicMediaRequest struct {
-	// IMS media asset ID.
+	// The IMS media asset IDs.
 	//
-	// - Separate multiple IDs with commas.
+	// - Separate multiple IDs with commas (,).
 	//
 	// example:
 	//

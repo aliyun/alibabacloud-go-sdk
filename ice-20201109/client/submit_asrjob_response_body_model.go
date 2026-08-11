@@ -18,7 +18,7 @@ type iSubmitASRJobResponseBody interface {
 }
 
 type SubmitASRJobResponseBody struct {
-	// The ID of the intelligent job.
+	// The intelligent task ID.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type SubmitASRJobResponseBody struct {
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The job status. Valid values:
+	// The task status. Valid values:
 	//
 	// - Created
 	//

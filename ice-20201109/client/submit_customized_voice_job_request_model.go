@@ -16,19 +16,19 @@ type iSubmitCustomizedVoiceJobRequest interface {
 }
 
 type SubmitCustomizedVoiceJobRequest struct {
-	// The OSS URL where the demo audio will be saved.
+	// The audio output address of the sample.
 	//
-	// - If specified, the service generates a demo audio file at the provided OSS URL after training completes.
+	// - If you specify this parameter, a sample audio file is generated at the specified OSS address after training succeeds.
 	//
-	// - 	Notice:
+	// - If you do not specify this parameter, no sample audio is generated.
 	//
-	//   The URL must be a valid public address for an OSS object in your account.
+	// 	Notice: The address must be a valid public OSS address under your account.
 	//
 	// example:
 	//
 	// https://your-bucket.oss-cn-shanghai.aliyuncs.com/demo.MP3
 	DemoAudioMediaURL *string `json:"DemoAudioMediaURL,omitempty" xml:"DemoAudioMediaURL,omitempty"`
-	// The unique identifier for the voice.
+	// The voice ID.
 	//
 	// This parameter is required.
 	//

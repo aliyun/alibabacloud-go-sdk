@@ -26,11 +26,11 @@ type iSubmitAudioProduceJobRequest interface {
 }
 
 type SubmitAudioProduceJobRequest struct {
-	// The description of the job.
+	// The task description:
 	//
-	// - Cannot exceed 1,024 bytes.
+	// - Maximum length: 1024 bytes.
 	//
-	// - Must be UTF-8 encoded.
+	// - UTF-8 encoding.
 	//
 	// example:
 	//
@@ -38,34 +38,31 @@ type SubmitAudioProduceJobRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The audio production configuration:
 	//
-	// - `voice`: The [voice type](https://help.aliyun.com/document_detail/449563.html).
+	// - voice: the [voice type](https://help.aliyun.com/document_detail/449563.html).
 	//
-	// - `customizedVoice`: The ID of the custom voice for voice cloning.
+	// - customizedVoice: the VoiceId for voice cloning.
 	//
-	// - `format`: The output file format. Supported formats: `PCM`, `WAV`, and `MP3`.
+	// - format: the output file format. Valid values: PCM, WAV, and MP3.
 	//
-	// - `volume`: The volume. The value ranges from 0 to 100. Default: 50.
+	// - volume: the volume. Valid values: 0 to 100. Default value: 50.
 	//
-	// - `speech_rate`: The speech rate. The value ranges from -500 to 500. Default: 0.
+	// - speech_rate: the speech rate. Valid values: -500 to 500. Default value: 0.
 	//
-	//   - Values of -500, 0, and 500 correspond to 0.5x, 1.0x, and 2.0x speed, respectively.
+	//     - [-500, 0, 500] corresponds to the speed multiplier range of [0.5, 1.0, 2.0].
 	//
-	//   - Calculation method:
+	//     - The calculation method is as follows:
 	//
-	//     - For a 0.8x speed multiplier: (1 - 1/0.8) / 0.002 = -125.
+	//         - 0.8x speed: (1-1/0.8)/0.002 = -125
 	//
-	//     - For a 1.2x speed multiplier: (1 - 1/1.2) / 0.001 = 166.
+	//         - 1.2x speed: (1-1/1.2)/0.001 = 166
 	//
-	//     - For speed multipliers less than 1, use a factor of 0.002.
+	//         - For speeds less than 1x, use the 0.002 coefficient.
 	//
-	//     - For speed multipliers greater than 1, use a factor of 0.001.
+	//         - For speeds greater than 1x, use the 0.001 coefficient.
 	//
-	// - `pitch_rate`: The pitch rate. The value ranges from -500 to 500. Default: 0.
+	// - pitch_rate: the pitch. Valid values: -500 to 500. Default value: 0.
 	//
-	//
-	//   	Notice:
-	//
-	//   If you provide both `voice` and `customizedVoice`, `customizedVoice` takes precedence.
+	// <notice>If both voice and customizedVoice are specified, customizedVoice takes precedence.
 	//
 	// This parameter is required.
 	//
@@ -73,7 +70,7 @@ type SubmitAudioProduceJobRequest struct {
 	//
 	// {"voice":"Siqi","format":"MP3","volume":50}
 	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
-	// The text to synthesize. The maximum length is 10,000 characters. Supports [SSML](https://help.aliyun.com/document_detail/2672807.html).
+	// The text content. A maximum of 10,000 Chinese characters is supported. [SSML markup language](https://help.aliyun.com/document_detail/2672807.html) is supported.
 	//
 	// This parameter is required.
 	//
@@ -97,23 +94,23 @@ type SubmitAudioProduceJobRequest struct {
 	//
 	// }
 	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
-	// Specifies whether to overwrite an existing OSS file.
+	// Specifies whether to overwrite existing OSS files.
 	//
 	// example:
 	//
 	// true
 	Overwrite *bool `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
-	// The title of the job. If you do not provide a title, the system automatically generates one based on the current date.
+	// The task title. If not provided, a default title is automatically generated based on the date.
 	//
-	// - Cannot exceed 128 bytes.
+	// - Maximum length: 128 bytes.
 	//
-	// - Must be UTF-8 encoded.
+	// - UTF-8 encoding.
 	//
 	// example:
 	//
 	// China Regional Daily News
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// Custom settings in JSON format. The maximum length is 512 bytes. This parameter supports [custom callback address configuration](https://help.aliyun.com/document_detail/451631.html).
+	// The custom settings in JSON format. Maximum length: 512 bytes. [Custom callback URL configuration](https://help.aliyun.com/document_detail/451631.html) is supported.
 	//
 	// example:
 	//

@@ -24,19 +24,19 @@ type iSubmitLiveEditingJobResponseBody interface {
 }
 
 type SubmitLiveEditingJobResponseBody struct {
-	// The ID of the live editing job.
+	// The ID of the live editing task.
 	//
 	// example:
 	//
 	// ****d80e4e4044975745c14b****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the output media asset.
+	// The media asset ID of the output.
 	//
 	// example:
 	//
 	// ****c469e944b5a856828dc2****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The URL of the output file.
+	// The URL of the output.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type SubmitLiveEditingJobResponseBody struct {
 	//
 	// ****fddd7748b58bf1d47e95****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// ****36-3C1E-4417-BDB2-1E034F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the VOD media asset. This parameter is returned only if the output destination is VOD.
+	// The VOD media asset ID. This parameter is returned when the video output destination is VOD.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iUpdateLivePackageChannelResponseBody interface {
 }
 
 type UpdateLivePackageChannelResponseBody struct {
-	// The information about the live package channel.
+	// The details of the live packaging channel.
 	LivePackageChannel *UpdateLivePackageChannelResponseBodyLivePackageChannel `json:"LivePackageChannel,omitempty" xml:"LivePackageChannel,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -68,13 +68,13 @@ type UpdateLivePackageChannelResponseBodyLivePackageChannel struct {
 	//
 	// channel-1
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// The time when the channel was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2024-07-16T02:24:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The channel description. It can be up to 1,000 characters in length.
+	// The description. Maximum length: 1000 characters.
 	//
 	// example:
 	//
@@ -86,27 +86,27 @@ type UpdateLivePackageChannelResponseBodyLivePackageChannel struct {
 	//
 	// channel-group-1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The ingest endpoints.
+	// The array of ingest endpoints.
 	IngestEndpoints []*UpdateLivePackageChannelResponseBodyLivePackageChannelIngestEndpoints `json:"IngestEndpoints,omitempty" xml:"IngestEndpoints,omitempty" type:"Repeated"`
-	// The time when the channel was last modified.
+	// The last modified time.
 	//
 	// example:
 	//
 	// 2024-07-16T02:24:42Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// The ingest protocol. Only HLS is supported.
+	// The input stream protocol. HLS is supported.
 	//
 	// example:
 	//
 	// HLS
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The number of segments.
+	// The number of segments in the input stream.
 	//
 	// example:
 	//
 	// 3
 	SegmentCount *int32 `json:"SegmentCount,omitempty" xml:"SegmentCount,omitempty"`
-	// The segment duration.
+	// The segment duration of the input stream.
 	//
 	// example:
 	//

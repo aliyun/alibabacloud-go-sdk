@@ -18,9 +18,9 @@ type iListMediaInfoJobsResponseBody interface {
 }
 
 type ListMediaInfoJobsResponseBody struct {
-	// The list of media information analysis jobs.
+	// The list of media information jobs.
 	Jobs []*ListMediaInfoJobsResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. The token of the next page is returned after you call this operation for the first time.
+	// The token used to retrieve the next page. Leave this parameter empty for the first request. The token for the next page is returned after the first query.
 	//
 	// example:
 	//
@@ -83,19 +83,19 @@ func (s *ListMediaInfoJobsResponseBody) Validate() error {
 }
 
 type ListMediaInfoJobsResponseBodyJobs struct {
-	// Indicates whether asynchronous processing was performed.
+	// Indicates whether the job is processed asynchronously.
 	//
 	// example:
 	//
 	// true
 	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
-	// The time when the job was complete. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The job completion time. The time is in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The input of the job.
+	// The job input.
 	Input *ListMediaInfoJobsResponseBodyJobsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
 	// The job ID.
 	//
@@ -103,7 +103,7 @@ type ListMediaInfoJobsResponseBodyJobs struct {
 	//
 	// ab4802364a2e49208c99efab82df****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The details of the media information.
+	// The media information details.
 	MediaInfoProperty *ListMediaInfoJobsResponseBodyJobsMediaInfoProperty `json:"MediaInfoProperty,omitempty" xml:"MediaInfoProperty,omitempty" type:"Struct"`
 	// The job name.
 	//
@@ -119,13 +119,7 @@ type ListMediaInfoJobsResponseBodyJobs struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The scheduling information.
 	ScheduleConfig *ListMediaInfoJobsResponseBodyJobsScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
-	// The state of the job. Valid values:
-	//
-	// - Init: The job is submitted.
-	//
-	// - Success: The job is successful.
-	//
-	// - Fail: The job failed.
+	// The task status.
 	//
 	// example:
 	//
@@ -133,19 +127,13 @@ type ListMediaInfoJobsResponseBodyJobs struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The job submission information.
 	SubmitResultJson map[string]interface{} `json:"SubmitResultJson,omitempty" xml:"SubmitResultJson,omitempty"`
-	// The time when the job was submitted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The job submission time. The time is in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
 	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
-	// The source of the job. Valid values:
-	//
-	// - API
-	//
-	// - WorkFlow
-	//
-	// - Console
+	// The job source.
 	//
 	// example:
 	//
@@ -304,21 +292,17 @@ func (s *ListMediaInfoJobsResponseBodyJobs) Validate() error {
 }
 
 type ListMediaInfoJobsResponseBodyJobsInput struct {
-	// The media object.
+	// The media value:
 	//
-	// - If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+	// - If type is set to OSS, the value is a URL that supports the OSS protocol and HTTP protocol.
 	//
-	// - If Type is set to Media, the ID of a media asset is returned.
+	// - If type is set to Media, the value is a media asset ID.
 	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// The type of the media object. Valid values:
-	//
-	// - OSS: an Object Storage Service (OSS) object.
-	//
-	// - Media: a media asset.
+	// The media object type.
 	//
 	// example:
 	//
@@ -357,11 +341,11 @@ func (s *ListMediaInfoJobsResponseBodyJobsInput) Validate() error {
 }
 
 type ListMediaInfoJobsResponseBodyJobsMediaInfoProperty struct {
-	// The information about the audio stream.
+	// The audio stream information.
 	AudioStreamInfoList []*ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyAudioStreamInfoList `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
 	// The basic file information.
 	FileBasicInfo *ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
-	// The information about the video stream.
+	// The video stream information.
 	VideoStreamInfoList []*ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyVideoStreamInfoList `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
 }
 
@@ -434,79 +418,79 @@ type ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyAudioStreamInfoList struc
 	//
 	// 0.f
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The sound channel layout.
+	// The channel layout.
 	//
 	// example:
 	//
 	// stereo
 	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
-	// The number of sound channels.
+	// The number of audio channels.
 	//
 	// example:
 	//
 	// 2
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// The name of the encoding format.
+	// The codec format name.
 	//
 	// example:
 	//
 	// AAC (Advanced Audio Coding)
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// The encoding format.
+	// The codec format.
 	//
 	// example:
 	//
 	// aac
 	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// The encoder tag.
+	// The codec tag.
 	//
 	// example:
 	//
 	// 0x000f
 	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// The name of the encoder tag.
+	// The codec tag string.
 	//
 	// example:
 	//
 	// [15][0][0][0]
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	// The time base of the encoder.
+	// The codec time base.
 	//
 	// example:
 	//
 	// 1/44100
 	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// The duration of the stream. Unit: seconds.
+	// The duration. Unit: seconds.
 	//
 	// example:
 	//
 	// 403.039989
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The sequence number of the stream.
+	// The stream index.
 	//
 	// example:
 	//
 	// 1
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The language of the stream.
+	// The language.
 	//
 	// example:
 	//
 	// cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The sampling format.
+	// The sample format.
 	//
 	// example:
 	//
 	// fltp
 	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
-	// The sampling rate. Unit: Hz.
+	// The sample rate. Unit: Hz.
 	//
 	// example:
 	//
 	// 44100
 	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
-	// The start time of the stream.
+	// The start time.
 	//
 	// example:
 	//
@@ -674,7 +658,7 @@ type ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyFileBasicInfo struct {
 	//
 	// 888.563
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The duration of the video. Unit: seconds.
+	// The video duration. Unit: seconds.
 	//
 	// example:
 	//
@@ -692,25 +676,25 @@ type ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyFileBasicInfo struct {
 	//
 	// 31737
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The state of the file.
+	// The file status.
 	//
 	// example:
 	//
 	// Normal
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
-	// The file type. Valid values: source_file and transcode_file.
+	// The file type. Valid values:
 	//
 	// example:
 	//
 	// source_file
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The URL of the file.
+	// The file URL.
 	//
 	// example:
 	//
 	// http://bucket.oss-cn-shanghai.aliyuncs.com/path/to/file.m3u8
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// The name of the video format.
+	// The video format name.
 	//
 	// example:
 	//
@@ -722,13 +706,13 @@ type ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyFileBasicInfo struct {
 	//
 	// 478
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The ID of the media asset.
+	// The media asset ID.
 	//
 	// example:
 	//
 	// 4765337007f571edbfdf81848c01****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The region in which the file resides.
+	// The region where the file is stored.
 	//
 	// example:
 	//
@@ -875,43 +859,43 @@ type ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyVideoStreamInfoList struc
 	//
 	// 888.563
 	BitRate *string `json:"Bit_rate,omitempty" xml:"Bit_rate,omitempty"`
-	// The name of the encoding format.
+	// The codec format name.
 	//
 	// example:
 	//
 	// H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
 	CodecLongName *string `json:"Codec_long_name,omitempty" xml:"Codec_long_name,omitempty"`
-	// The encoding format.
+	// The codec format.
 	//
 	// example:
 	//
 	// h264
 	CodecName *string `json:"Codec_name,omitempty" xml:"Codec_name,omitempty"`
-	// The tag of the encoding format.
+	// The codec tag.
 	//
 	// example:
 	//
 	// 0x001b
 	CodecTag *string `json:"Codec_tag,omitempty" xml:"Codec_tag,omitempty"`
-	// The tag string of the encoding format.
+	// The codec tag string.
 	//
 	// example:
 	//
 	// [27][0][0][0]
 	CodecTagString *string `json:"Codec_tag_string,omitempty" xml:"Codec_tag_string,omitempty"`
-	// The time base of the encoder.
+	// The codec time base.
 	//
 	// example:
 	//
 	// 1/50
 	CodecTimeBase *string `json:"Codec_time_base,omitempty" xml:"Codec_time_base,omitempty"`
-	// The display aspect ratio.
+	// The display aspect ratio (DAR).
 	//
 	// example:
 	//
 	// 16:9
 	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
-	// The duration of the stream. Unit: seconds.
+	// The duration. Unit: seconds.
 	//
 	// example:
 	//
@@ -923,13 +907,13 @@ type ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyVideoStreamInfoList struc
 	//
 	// 25.0
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// Indicates whether the video stream contains bidirectional frames (B-frames). Valid values:
+	// Indicates whether B-frames exist. Valid values:
 	//
-	// - 0: The stream contains no B-frames.
+	// - 0: no B-frames.
 	//
-	// - 1: The stream contains one B-frame.
+	// - 1: one B-frame.
 	//
-	// - 2: The stream contains multiple consecutive B-frames.
+	// - 2: multiple consecutive B-frames.
 	//
 	// example:
 	//
@@ -941,19 +925,19 @@ type ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyVideoStreamInfoList struc
 	//
 	// 478
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The sequence number of the stream.
+	// The stream index.
 	//
 	// example:
 	//
 	// 0
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The language of the stream.
+	// The language.
 	//
 	// example:
 	//
 	// cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The codec level.
+	// The encoding level.
 	//
 	// example:
 	//
@@ -977,23 +961,19 @@ type ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyVideoStreamInfoList struc
 	//
 	// High
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// The rotation angle of the video image.
-	//
-	// - Valid values: 0, 90, 180, and 270.
-	//
-	// - Default value: 0.
+	// The video rotation angle.
 	//
 	// example:
 	//
 	// 0
 	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	// The aspect ratio of the area from which the sampling points are collected.
+	// The sample aspect ratio (SAR).
 	//
 	// example:
 	//
 	// 478:477
 	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
-	// The start time of the stream.
+	// The start time.
 	//
 	// example:
 	//
@@ -1233,13 +1213,13 @@ func (s *ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyVideoStreamInfoList) 
 }
 
 type ListMediaInfoJobsResponseBodyJobsScheduleConfig struct {
-	// The ID of the MPS queue to which the job was submitted.
+	// The pipeline ID.
 	//
 	// example:
 	//
 	// e37ebee5d98b4781897f6086e89f****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
+	// The job priority. A larger value indicates a higher priority. Valid values: 1 to 10.
 	//
 	// example:
 	//

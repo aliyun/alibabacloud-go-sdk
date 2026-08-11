@@ -16,7 +16,7 @@ type iSubYikeUserCreditRequest interface {
 }
 
 type SubYikeUserCreditRequest struct {
-	// The amount of credit to deduct. The value must be greater than 0 and cannot exceed the credit balance of the sub-account.
+	// The number of credits to deduct. The value must be greater than 0 and cannot exceed the credit balance of the RAM user.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type SubYikeUserCreditRequest struct {
 	//
 	// 50
 	Credit *int32 `json:"Credit,omitempty" xml:"Credit,omitempty"`
-	// The user ID of the sub-account.
+	// The ID of the RAM user.
 	//
 	// This parameter is required.
 	//

@@ -22,27 +22,27 @@ type iSearchMediaByFaceResponseBody interface {
 }
 
 type SearchMediaByFaceResponseBody struct {
-	// The status code returned.
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The media assets that meet the conditions.
+	// The list of media assets that match the search criteria.
 	MediaInfoList []*SearchMediaByFaceResponseBodyMediaInfoList `json:"MediaInfoList,omitempty" xml:"MediaInfoList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 7CA7D615-CFB1-5437-9A12-2D185C3EE6CB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true false
+	// Indicates whether the operation was successful. Valid values: true: The operation was successful. false: The operation failed.
 	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of data records that meet the specified filter condition.
+	// The total number of media assets that match the search criteria.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *SearchMediaByFaceResponseBody) Validate() error {
 }
 
 type SearchMediaByFaceResponseBodyMediaInfoList struct {
-	// The ID of the media asset.
+	// The media asset ID.
 	//
 	// example:
 	//

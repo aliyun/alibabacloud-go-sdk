@@ -16,7 +16,7 @@ type iDecryptKMSDataKeyResponseBody interface {
 }
 
 type DecryptKMSDataKeyResponseBody struct {
-	// The information about the decryption result.
+	// The decryption result.
 	DataKey *DecryptKMSDataKeyResponseBodyDataKey `json:"DataKey,omitempty" xml:"DataKey,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,13 +62,13 @@ func (s *DecryptKMSDataKeyResponseBody) Validate() error {
 }
 
 type DecryptKMSDataKeyResponseBodyDataKey struct {
-	// The ID of the customer master key (CMK) that was used to decrypt the ciphertext.
+	// The ID of the master key used to decrypt the ciphertext.
 	//
 	// example:
 	//
 	// 202b9877-5a25-46e3-a763-e20791b5****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	// The plaintext that is generated after decryption.
+	// The plaintext obtained after decryption.
 	//
 	// example:
 	//

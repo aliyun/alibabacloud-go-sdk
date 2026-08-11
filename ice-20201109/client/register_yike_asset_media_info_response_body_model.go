@@ -16,13 +16,13 @@ type iRegisterYikeAssetMediaInfoResponseBody interface {
 }
 
 type RegisterYikeAssetMediaInfoResponseBody struct {
-	// The ID of the media asset.
+	// The media asset ID.
 	//
 	// example:
 	//
 	// ****c469e944b5a856828dc2****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

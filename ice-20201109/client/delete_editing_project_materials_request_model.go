@@ -18,7 +18,7 @@ type iDeleteEditingProjectMaterialsRequest interface {
 }
 
 type DeleteEditingProjectMaterialsRequest struct {
-	// The material ID. Separate multiple material IDs with commas (,). You can specify up to 10 IDs.
+	// The IDs of the materials. Separate multiple material IDs with commas (,). You can specify up to 10 material IDs.
 	//
 	// This parameter is required.
 	//
@@ -26,17 +26,17 @@ type DeleteEditingProjectMaterialsRequest struct {
 	//
 	// *****cbd721b418a89a7dafb1dc*****,*****86f5d534c95997c55c96f*****
 	MaterialIds *string `json:"MaterialIds,omitempty" xml:"MaterialIds,omitempty"`
-	// The material type. Valid values:
+	// The type of the material. Valid values:
 	//
-	// \\- video
+	// - video
 	//
-	// \\- image
+	// - image
 	//
-	// \\- audio
+	// - audio
 	//
-	// \\- subtitle
+	// - subtitle
 	//
-	// \\- text
+	// - text
 	//
 	// This parameter is required.
 	//

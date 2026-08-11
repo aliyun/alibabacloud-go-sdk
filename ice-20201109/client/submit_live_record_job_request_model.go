@@ -22,7 +22,7 @@ type iSubmitLiveRecordJobRequest interface {
 }
 
 type SubmitLiveRecordJobRequest struct {
-	// The name of the recording job.
+	// The name of the recording task.
 	//
 	// This parameter is required.
 	//
@@ -36,15 +36,15 @@ type SubmitLiveRecordJobRequest struct {
 	//
 	// https://example.com/imsnotify
 	NotifyUrl *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
-	// The storage address of the recording.
+	// The recording storage address.
 	//
 	// This parameter is required.
 	RecordOutput *SubmitLiveRecordJobRequestRecordOutput `json:"RecordOutput,omitempty" xml:"RecordOutput,omitempty" type:"Struct"`
-	// The URL of the live stream.
+	// The live stream address.
 	//
 	// This parameter is required.
 	StreamInput *SubmitLiveRecordJobRequestStreamInput `json:"StreamInput,omitempty" xml:"StreamInput,omitempty" type:"Struct"`
-	// The ID of the recording template.
+	// The recording template ID.
 	//
 	// This parameter is required.
 	//
@@ -122,13 +122,13 @@ func (s *SubmitLiveRecordJobRequest) Validate() error {
 }
 
 type SubmitLiveRecordJobRequestRecordOutput struct {
-	// The bucket name.
+	// The name of the storage space.
 	//
 	// example:
 	//
 	// imsbucket1
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The endpoint of the storage service.
+	// The storage service endpoint.
 	//
 	// example:
 	//
@@ -184,7 +184,7 @@ func (s *SubmitLiveRecordJobRequestRecordOutput) Validate() error {
 }
 
 type SubmitLiveRecordJobRequestStreamInput struct {
-	// The type of the live stream URL. The value can only be rtmp.
+	// The type of the live stream address. Currently, only rtmp is supported.
 	//
 	// This parameter is required.
 	//
@@ -192,7 +192,7 @@ type SubmitLiveRecordJobRequestStreamInput struct {
 	//
 	// rtmp
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The URL of the live stream.
+	// The live stream address.
 	//
 	// example:
 	//

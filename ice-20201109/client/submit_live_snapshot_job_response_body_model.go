@@ -16,7 +16,7 @@ type iSubmitLiveSnapshotJobResponseBody interface {
 }
 
 type SubmitLiveSnapshotJobResponseBody struct {
-	// The job ID.
+	// The task ID.
 	//
 	// example:
 	//

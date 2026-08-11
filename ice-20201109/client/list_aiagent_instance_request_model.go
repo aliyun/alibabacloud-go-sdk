@@ -22,7 +22,7 @@ type iListAIAgentInstanceRequest interface {
 }
 
 type ListAIAgentInstanceRequest struct {
-	// Agent ID.
+	// The agent ID.
 	//
 	// This parameter is required.
 	//
@@ -30,25 +30,25 @@ type ListAIAgentInstanceRequest struct {
 	//
 	// 39f8e0bc005e4f309379701645f4***
 	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
-	// End time of the query in ISO 8601 format. No default value.
+	// The end time of the query in ISO 8601 format. No default value.
 	//
 	// example:
 	//
 	// 2023-01-02T00:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Page number. Default is 1. Valid values: 1 to 100.
+	// The page number. Default value: 1. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of results per page. Default is 10. Valid values: 0 to 100.
+	// The number of entries per page. Default value: 10. Valid values: 0 to 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Start time of the query in ISO 8601 format. No default value.
+	// The start time of the query in ISO 8601 format. No default value.
 	//
 	// example:
 	//

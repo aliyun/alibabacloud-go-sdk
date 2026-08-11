@@ -14,7 +14,7 @@ type iDeleteCustomizedVoiceJobRequest interface {
 }
 
 type DeleteCustomizedVoiceJobRequest struct {
-	// The ID of the human voice cloning job.
+	// The ID of the voice cloning task.
 	//
 	// This parameter is required.
 	//

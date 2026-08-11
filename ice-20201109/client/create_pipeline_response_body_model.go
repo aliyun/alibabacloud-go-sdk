@@ -16,7 +16,7 @@ type iCreatePipelineResponseBody interface {
 }
 
 type CreatePipelineResponseBody struct {
-	// The information about the MPS queue.
+	// The pipeline information.
 	Pipeline *CreatePipelineResponseBodyPipeline `json:"Pipeline,omitempty" xml:"Pipeline,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,57 +62,43 @@ func (s *CreatePipelineResponseBody) Validate() error {
 }
 
 type CreatePipelineResponseBodyPipeline struct {
-	// The time when the template was created.
+	// The time when the pipeline was created.
 	//
 	// example:
 	//
 	// 2022-07-12T16:17:54Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the template was last modified.
+	// The time when the pipeline was last modified.
 	//
 	// example:
 	//
 	// 2022-07-12T16:17:54Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The name of the MPS queue.
+	// The pipeline name.
 	//
 	// example:
 	//
 	// test-pipeline
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the MPS queue.
+	// The pipeline ID.
 	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The priority of the MPS queue.
+	// The pipeline priority.
 	//
 	// example:
 	//
 	// 6
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The type of the MPS queue.
-	//
-	// Valid values:
-	//
-	// - Boost: MPS queue with transcoding speed boosted.
-	//
-	// - Standard: standard MPS queue.
-	//
-	// - NarrowBandHDV2: MPS queue that supports Narrowband HD 2.0.
+	// The pipeline type.
 	//
 	// example:
 	//
 	// Standard
 	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	// The state of the MPS queue.
-	//
-	// Valid values:
-	//
-	// - Active
-	//
-	// - Paused
+	// The pipeline status.
 	//
 	// example:
 	//

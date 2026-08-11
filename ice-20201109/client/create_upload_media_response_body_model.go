@@ -24,27 +24,27 @@ type iCreateUploadMediaResponseBody interface {
 }
 
 type CreateUploadMediaResponseBody struct {
-	// The OSS URL of the file, without authentication parameters.
+	// The OSS URL of the file (without authentication).
 	//
 	// example:
 	//
 	// http://outin-***.oss-cn-north-2-gov-1.aliyuncs.com/sv/40360f05-181f63c3110-0004-cd8e-27f-de3c9.mp4
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
-	// The ID of the media asset.
+	// The media asset ID.
 	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The URL of the media asset.
+	// The media asset URL.
 	//
-	// > This will be a CDN URL if a CDN domain is configured, or an OSS URL otherwise. If you receive a 403 error when accessing this URL in a browser, it is likely because URL authentication is enabled for the VOD domain. To resolve this, either disable URL authentication or generate a signed URL for access.
+	// > If a CDN domain name is configured, a CDN URL is returned. Otherwise, an OSS URL is returned. If the returned MediaURL is inaccessible (403) in a browser, URL signing is enabled for the VOD domain name. Disable URL signing or generate a signing signature.
 	//
 	// example:
 	//
 	// https://xxq-live-playback.oss-cn-shanghai.aliyuncs.com/capture/5d96d2b4-111b-4e5d-a0e5-20f44405bb55.mp4
 	MediaURL *string `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type CreateUploadMediaResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The upload address.
 	//
-	// > The returned upload address is Base64-encoded and must be decoded before use. You only need to manually decode this address if you are using a native OSS SDK or an OSS API to perform the upload.
+	// > The upload address returned by the operation is a Base64-encoded value. When you call an SDK or API to upload media assets, decode the value by using Base64 before use. Only uploads through the native OSS SDK or OSS API require you to parse UploadAddress.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type CreateUploadMediaResponseBody struct {
 	UploadAddress *string `json:"UploadAddress,omitempty" xml:"UploadAddress,omitempty"`
 	// The upload credential.
 	//
-	// > The returned upload credential is Base64-encoded and must be decoded before use. You only need to manually decode this credential if you are using a native OSS SDK or an OSS API to perform the upload.
+	// > The upload credential returned by the operation is a Base64-encoded value. When you call an SDK or API to upload media assets, decode the value by using Base64 before use. Only uploads through the native OSS SDK or OSS API require you to parse UploadAuth.
 	//
 	// example:
 	//

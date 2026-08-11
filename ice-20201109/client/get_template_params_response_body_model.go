@@ -18,9 +18,9 @@ type iGetTemplateParamsResponseBody interface {
 }
 
 type GetTemplateParamsResponseBody struct {
-	// The queried parameters.
+	// The parameter list.
 	ParamList []*GetTemplateParamsResponseBodyParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -89,9 +89,9 @@ type GetTemplateParamsResponseBodyParamList struct {
 	//
 	// Subtitle test
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The thumbnail URL of the original material.
+	// The thumbnail URL of the original media.
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	// The height of the original material in the output video, in absolute pixel values. This value is returned only for standard templates created in the console.
+	// The height of the original media in the output video, in absolute pixel values. Currently, this value is returned only for common templates created in the console.
 	//
 	// example:
 	//
@@ -103,47 +103,39 @@ type GetTemplateParamsResponseBodyParamList struct {
 	//
 	// video1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The URL of the original material.
+	// The URL of the original media.
 	MediaUrl *string `json:"MediaUrl,omitempty" xml:"MediaUrl,omitempty"`
-	// In-point of the original material segment relative to the timeline, in seconds. This value is returned only for standard templates created in the console.
+	// The in-point of the original media clip relative to the timeline. Unit: seconds. Currently, this value is returned only for common templates created in the console.
 	//
 	// example:
 	//
 	// 5.5
 	TimelineIn *float32 `json:"TimelineIn,omitempty" xml:"TimelineIn,omitempty"`
-	// Out-point of the original material segment relative to the timeline, in seconds. This value is returned only for standard templates created in the console.
+	// The out-point of the original media clip relative to the timeline. Unit: seconds. Currently, this value is returned only for common templates created in the console.
 	//
 	// example:
 	//
 	// 8.5
 	TimelineOut *float32 `json:"TimelineOut,omitempty" xml:"TimelineOut,omitempty"`
-	// The material type.
-	//
-	// Valid values:
-	//
-	// - Video
-	//
-	// - Text
-	//
-	// - Image
+	// The media type.
 	//
 	// example:
 	//
 	// Image
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The width of the original material in the output video, in absolute pixel values. This value is returned only for standard templates created in the console.
+	// The width of the original media in the output video, in absolute pixel values. Currently, this value is returned only for common templates created in the console.
 	//
 	// example:
 	//
 	// 300
 	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	// The horizontal distance of the original material relative to the top-left corner of the video, in absolute pixel values. This value is returned only for standard templates created in the console.
+	// The horizontal distance of the original media from the upper-left corner of the video, in absolute pixel values. Currently, this value is returned only for common templates created in the console.
 	//
 	// example:
 	//
 	// 100
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
-	// The vertical distance of the original material relative to the top-left corner of the video, in absolute pixel values. This value is returned only for standard templates created in the console.
+	// The vertical distance of the original media from the upper-left corner of the video, in absolute pixel values. Currently, this value is returned only for common templates created in the console.
 	//
 	// example:
 	//

@@ -26,21 +26,25 @@ type iSubmitASRJobRequest interface {
 }
 
 type SubmitASRJobRequest struct {
-	// The job description. The maximum length is 128 bytes.
+	// The task description. The description can be up to 128 bytes in length.
 	//
 	// example:
 	//
 	// Test description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The duration of the segment to transcribe.
+	// The duration.
 	//
 	// example:
 	//
 	// 00:00:10
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The configuration for speech-to-text conversion:
+	// The audio-to-text recognition configuration:
 	//
-	// - HotwordLibraryIdList: A list of custom vocabulary IDs. Only one custom vocabulary ID is currently supported. Future releases will support multiple IDs.
+	// - HotwordLibraryIdList: the list of hotword library IDs. Currently, only one hotword library ID is supported. Support for multiple hotword library IDs is planned for the future.
+	//
+	// - SentenceMaxLength: the maximum length of each sentence in the output. Type: int.
+	//
+	// - EnableSemanticSentenceDetection: specifies whether to segment sentences based on semantics in the output. Type: bool. Default value: false.
 	//
 	// example:
 	//
@@ -50,25 +54,25 @@ type SubmitASRJobRequest struct {
 	//
 	// }
 	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
-	// The input configuration. Specify either an OSS URL or a media ID from the media library.
+	// The input configuration. OSS addresses and content library material IDs are supported.
 	//
 	// example:
 	//
-	// oss://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4 or ****20b48fb04483915d4f2cd8ac****
+	// oss://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4 或 ****20b48fb04483915d4f2cd8ac****
 	InputFile *string `json:"InputFile,omitempty" xml:"InputFile,omitempty"`
-	// The start time of the segment to be transcribed from the media file.
+	// The start time.
 	//
 	// example:
 	//
 	// 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The job title. The maximum length is 128 bytes.
+	// The task title. The title can be up to 128 bytes in length.
 	//
 	// example:
 	//
 	// Test title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// User-defined settings in JSON format. Use this to pass business-related data, such as the operating environment or other job details.
+	// The custom settings. You can pass in business information such as the business environment and task information. The value is a JSON string.
 	//
 	// example:
 	//

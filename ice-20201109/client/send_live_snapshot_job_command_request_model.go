@@ -16,15 +16,13 @@ type iSendLiveSnapshotJobCommandRequest interface {
 }
 
 type SendLiveSnapshotJobCommandRequest struct {
-	// The operation command.
+	// The operation instruction. Valid values:
 	//
-	// Valid values:
+	// - start: starts the task.
 	//
-	// - stop
+	// - stop: stops the task.
 	//
-	// - restart
-	//
-	// - start
+	// - restart: restarts the task.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +30,7 @@ type SendLiveSnapshotJobCommandRequest struct {
 	//
 	// start
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The ID of the snapshot job.
+	// The ID of the snapshot task.
 	//
 	// This parameter is required.
 	//

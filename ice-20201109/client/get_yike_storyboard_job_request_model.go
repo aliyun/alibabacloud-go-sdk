@@ -14,7 +14,7 @@ type iGetYikeStoryboardJobRequest interface {
 }
 
 type GetYikeStoryboardJobRequest struct {
-	// The storyboard job ID.
+	// The snapshot task ID.
 	//
 	// example:
 	//

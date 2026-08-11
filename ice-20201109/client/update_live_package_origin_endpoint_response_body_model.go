@@ -16,7 +16,7 @@ type iUpdateLivePackageOriginEndpointResponseBody interface {
 }
 
 type UpdateLivePackageOriginEndpointResponseBody struct {
-	// The information about the origin endpoint.
+	// The origin endpoint information.
 	LivePackageOriginEndpoint *UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint `json:"LivePackageOriginEndpoint,omitempty" xml:"LivePackageOriginEndpoint,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -80,7 +80,7 @@ type UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint struct
 	//
 	// 2023-04-01T12:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The endpoint description.
+	// The description of the endpoint.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ type UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint struct
 	//
 	// channel-group-1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The IP address blacklist. It supports subnet masks. Multiple IP addresses are separated by commas (,).
+	// The IP blacklist. Subnet masks are supported. Separate multiple IP addresses with commas (,).
 	//
 	// example:
 	//
 	// 10.21.222.1/32,192.168.100.0/24
 	IpBlacklist *string `json:"IpBlacklist,omitempty" xml:"IpBlacklist,omitempty"`
-	// The IP address whitelist. It supports subnet masks. Multiple IP addresses are separated by commas (,).
+	// The IP whitelist. Subnet masks are supported. Multiple IP addresses are separated with commas (,).
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint struct
 	//
 	// 2023-04-01T12:00:00Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// Live packaging configuration
+	// The live packaging configuration.
 	LivePackagingConfig *LivePackagingConfig `json:"LivePackagingConfig,omitempty" xml:"LivePackagingConfig,omitempty"`
 	// The playlist name. Default value: manifest.
 	//
@@ -130,13 +130,13 @@ type UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint struct
 	//
 	// manifest
 	ManifestName *string `json:"ManifestName,omitempty" xml:"ManifestName,omitempty"`
-	// The protocol. Only HLS is supported.
+	// The protocol. Currently, only HLS is supported.
 	//
 	// example:
 	//
 	// HLS
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The number of days that time-shifted content is available. Maximum value: 30.
+	// The number of time-shifting days. Maximum value: 30.
 	//
 	// example:
 	//

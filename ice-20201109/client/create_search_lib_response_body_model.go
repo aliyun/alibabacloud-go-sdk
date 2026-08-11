@@ -20,7 +20,7 @@ type iCreateSearchLibResponseBody interface {
 }
 
 type CreateSearchLibResponseBody struct {
-	// The status code.
+	// The return code.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type CreateSearchLibResponseBody struct {
 	//
 	// test1
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the call was successful. Valid values:
 	//
 	// - **true**: The call was successful.
 	//

@@ -20,7 +20,7 @@ type iSearchIndexJobRerunRequest interface {
 }
 
 type SearchIndexJobRerunRequest struct {
-	// The ID of the media asset. Separate multiple IDs with commas (,).
+	// The media asset IDs. Separate multiple IDs with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type SearchIndexJobRerunRequest struct {
 	//
 	// ******b48fb04483915d4f2cd8******,******c48fb37407365d4f2cd8******
 	MediaIds *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
-	// Namespace.
+	// The namespace.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type SearchIndexJobRerunRequest struct {
 	//
 	// test-1
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
-	// The type of the job. Separate multiple types with commas (,).
+	// The task type. Separate multiple types with commas (,). Valid values:
 	//
-	// - aiLabel: smart tagging.
+	// - aiLabel: intelligent tagging.
 	//
 	// - face: face recognition.
 	//
-	// - mm: large visual model.
+	// - mm: foundation model.
 	//
 	// example:
 	//

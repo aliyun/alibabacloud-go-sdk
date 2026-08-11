@@ -22,7 +22,7 @@ type iSubmitLiveRecordJobShrinkRequest interface {
 }
 
 type SubmitLiveRecordJobShrinkRequest struct {
-	// The name of the recording job.
+	// The name of the recording task.
 	//
 	// This parameter is required.
 	//
@@ -36,15 +36,15 @@ type SubmitLiveRecordJobShrinkRequest struct {
 	//
 	// https://example.com/imsnotify
 	NotifyUrl *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
-	// The storage address of the recording.
+	// The recording storage address.
 	//
 	// This parameter is required.
 	RecordOutputShrink *string `json:"RecordOutput,omitempty" xml:"RecordOutput,omitempty"`
-	// The URL of the live stream.
+	// The live stream address.
 	//
 	// This parameter is required.
 	StreamInputShrink *string `json:"StreamInput,omitempty" xml:"StreamInput,omitempty"`
-	// The ID of the recording template.
+	// The recording template ID.
 	//
 	// This parameter is required.
 	//

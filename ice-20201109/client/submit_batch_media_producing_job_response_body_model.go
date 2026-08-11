@@ -16,7 +16,7 @@ type iSubmitBatchMediaProducingJobResponseBody interface {
 }
 
 type SubmitBatchMediaProducingJobResponseBody struct {
-	// The ID of the batch job for one-click smart video creation.
+	// The batch intelligent one-click video production job ID.
 	//
 	// example:
 	//

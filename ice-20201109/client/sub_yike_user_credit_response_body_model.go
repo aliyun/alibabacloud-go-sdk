@@ -18,9 +18,9 @@ type iSubYikeUserCreditResponseBody interface {
 }
 
 type SubYikeUserCreditResponseBody struct {
-	// The error code returned if the operation fails. A possible value is:
+	// The error code returned when the deduction fails. Valid values:
 	//
-	// - `NOT_ENOUGH_ALLOCATE_CREDIT_QUOTA`: The sub-account\\"s credit balance is insufficient.
+	// - NOT_ENOUGH_ALLOCATE_CREDIT_QUOTA: the credit balance of the RAM user is insufficient.
 	//
 	// example:
 	//
@@ -32,11 +32,11 @@ type SubYikeUserCreditResponseBody struct {
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation succeeded.
+	// Indicates whether the deduction is successful. Valid values:
 	//
-	// - `true`: The operation succeeded.
+	// - true: Successful.
 	//
-	// - `false`: The operation failed.
+	// - false: Failed.
 	//
 	// example:
 	//

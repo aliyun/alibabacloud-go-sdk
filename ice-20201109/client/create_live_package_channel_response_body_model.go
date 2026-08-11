@@ -16,7 +16,7 @@ type iCreateLivePackageChannelResponseBody interface {
 }
 
 type CreateLivePackageChannelResponseBody struct {
-	// The information about the live package channel.
+	// The details of the live packaging channel.
 	LivePackageChannel *CreateLivePackageChannelResponseBodyLivePackageChannel `json:"LivePackageChannel,omitempty" xml:"LivePackageChannel,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -68,13 +68,13 @@ type CreateLivePackageChannelResponseBodyLivePackageChannel struct {
 	//
 	// example-channel
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// The time when the channel was created. It is in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC.
+	// The creation time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The channel description.
+	// The description.
 	//
 	// example:
 	//
@@ -88,25 +88,25 @@ type CreateLivePackageChannelResponseBodyLivePackageChannel struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The ingest endpoints.
 	IngestEndpoints []*CreateLivePackageChannelResponseBodyLivePackageChannelIngestEndpoints `json:"IngestEndpoints,omitempty" xml:"IngestEndpoints,omitempty" type:"Repeated"`
-	// The time when the channel was last modified. It is in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC.
+	// The creation time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// The ingest protocol. Only HLS is supported.
+	// The input protocol. Valid value: HLS.
 	//
 	// example:
 	//
 	// HLS
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The number of M3U8 segments.
+	// The number of m3u8 segments for the input stream.
 	//
 	// example:
 	//
 	// 3
 	SegmentCount *int32 `json:"SegmentCount,omitempty" xml:"SegmentCount,omitempty"`
-	// The segment duration.
+	// The segment duration of the input stream.
 	//
 	// example:
 	//

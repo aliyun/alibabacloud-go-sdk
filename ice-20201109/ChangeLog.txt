@@ -1,3 +1,6 @@
+2026-08-11 Version: v7.20.1
+- Generated golang 2020-11-09 for ICE.
+
 2026-07-16 Version: v7.20.0
 - Support API SubmitCosyVoiceCustomizedVoiceJob.
 

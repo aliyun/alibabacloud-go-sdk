@@ -16,13 +16,13 @@ type iCreateLiveRecordTemplateResponseBody interface {
 }
 
 type CreateLiveRecordTemplateResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0622C702-41BE-467E-AF2E-883D4517962E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the Live Record Template.
+	// The template ID.
 	//
 	// example:
 	//

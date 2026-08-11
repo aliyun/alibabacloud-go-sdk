@@ -18,11 +18,11 @@ type iDeleteLiveSnapshotFilesRequest interface {
 }
 
 type DeleteLiveSnapshotFilesRequest struct {
-	// A list of creation timestamps for the files to delete. You can specify up to 200 timestamps per request.
+	// The list of creation timestamps. A maximum of 200 entries can be deleted at a time.
 	//
 	// This parameter is required.
 	CreateTimestampList []*int64 `json:"CreateTimestampList,omitempty" xml:"CreateTimestampList,omitempty" type:"Repeated"`
-	// Specifies whether to delete the original OSS files. The default value is false.
+	// Specifies whether to delete the original files. Default value: false.
 	//
 	// example:
 	//
