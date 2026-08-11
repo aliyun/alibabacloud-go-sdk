@@ -138,7 +138,7 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// ca-4y3ca4khkcu**********ysf
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
-	// The current DMS unit.
+	// The current Data Management unit.
 	//
 	// example:
 	//
@@ -149,14 +149,36 @@ type ModifyCustomAgentResponseBodyData struct {
 	// example:
 	//
 	// {
+	//
+	//   "tableFlag" : true,
+	//
+	//   "scope" : "personal",
+	//
+	//   "personal" : {
+	//
+	//     "DataSourceType" : "remote_data_center",
+	//
+	//     "FileId" : "f-5qlrwaw10********s3gpw1z",
+	//
+	//     "Database" : "TestTable******.xlsx",
+	//
+	//     "Tables" : [ "Sheet1" ],
+	//
+	//     "TableIds" : [ "******" ],
+	//
+	//     "RegionId" : "cn-hangzhou"
+	//
+	//   }
+	//
+	// }
 	DataJson *string `json:"DataJson,omitempty" xml:"DataJson,omitempty"`
 	// The description of the custom agent.
 	//
 	// example:
 	//
-	// AgentTestDescription.
+	// AgentTestDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The current DMS unit.
+	// The current Data Management unit.
 	//
 	// example:
 	//
@@ -181,6 +203,12 @@ type ModifyCustomAgentResponseBodyData struct {
 	// example:
 	//
 	// Analysis framework:
+	//
+	// 1. Monitor core metrics (GMV, order volume, UV, conversion rate) on a daily, weekly, and monthly basis, analyze trends and year-over-year/month-over-month fluctuations;
+	//
+	// 2. Segment by new/existing customers, channels, and regions to identify growth drivers and weaknesses;
+	//
+	// 3. Conduct funnel analysis based on user behavior paths (browsing → add to cart → payment) to pinpoint drop-off stages;
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
 	// Indicates whether a periodic task is configured.
 	//
@@ -193,9 +221,18 @@ type ModifyCustomAgentResponseBodyData struct {
 	// example:
 	//
 	// Core metric definitions:
+	//
+	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders;
+	//
+	// 2. Order volume is the number of valid orders placed per day;
+	//
+	// 3. UV (Unique Visitors) refers to the deduplicated number of users who visit the website or app;
+	//
+	// 4. Conversion rate = number of paid orders / UV, reflecting traffic conversion efficiency;
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 	// The external knowledge bases.
-	KnowledgeConfigList []*ModifyCustomAgentResponseBodyDataKnowledgeConfigList `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
+	KnowledgeConfigList         []*ModifyCustomAgentResponseBodyDataKnowledgeConfigList         `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
+	KnowledgeSemanticConfigList []*ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList `json:"KnowledgeSemanticConfigList,omitempty" xml:"KnowledgeSemanticConfigList,omitempty" type:"Repeated"`
 	// The modifier.
 	//
 	// example:
@@ -212,7 +249,7 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// example:
 	//
-	// AgentTestName.
+	// AgentTestName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The next run time of the periodic task.
 	//
@@ -231,7 +268,8 @@ type ModifyCustomAgentResponseBodyData struct {
 	// example:
 	//
 	// cn-hangzhou
-	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the referenced historical session.
 	RelatedSessionId *string `json:"RelatedSessionId,omitempty" xml:"RelatedSessionId,omitempty"`
 	// The publish time.
 	//
@@ -251,13 +289,13 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// example:
 	//
-	// The text report requires all numbers to be written in Chinese characters instead of Arabic numerals.
+	// The text report requires that all numbers use Chinese numerals instead of Arabic numerals
 	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
 	// The web report format.
 	//
 	// example:
 	//
-	// The web report requires all numbers to be written in Chinese characters instead of Arabic numerals.
+	// The web report requires that all numbers use Chinese numerals instead of Arabic numerals
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
 	WebReportTheme  *string `json:"WebReportTheme,omitempty" xml:"WebReportTheme,omitempty"`
 	// The workspace ID.
@@ -338,6 +376,10 @@ func (s *ModifyCustomAgentResponseBodyData) GetKnowledge() *string {
 
 func (s *ModifyCustomAgentResponseBodyData) GetKnowledgeConfigList() []*ModifyCustomAgentResponseBodyDataKnowledgeConfigList {
 	return s.KnowledgeConfigList
+}
+
+func (s *ModifyCustomAgentResponseBodyData) GetKnowledgeSemanticConfigList() []*ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList {
+	return s.KnowledgeSemanticConfigList
 }
 
 func (s *ModifyCustomAgentResponseBodyData) GetModifier() *string {
@@ -476,6 +518,11 @@ func (s *ModifyCustomAgentResponseBodyData) SetKnowledgeConfigList(v []*ModifyCu
 	return s
 }
 
+func (s *ModifyCustomAgentResponseBodyData) SetKnowledgeSemanticConfigList(v []*ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList) *ModifyCustomAgentResponseBodyData {
+	s.KnowledgeSemanticConfigList = v
+	return s
+}
+
 func (s *ModifyCustomAgentResponseBodyData) SetModifier(v string) *ModifyCustomAgentResponseBodyData {
 	s.Modifier = &v
 	return s
@@ -559,6 +606,15 @@ func (s *ModifyCustomAgentResponseBodyData) Validate() error {
 	}
 	if s.KnowledgeConfigList != nil {
 		for _, item := range s.KnowledgeConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.KnowledgeSemanticConfigList != nil {
+		for _, item := range s.KnowledgeSemanticConfigList {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -722,7 +778,7 @@ type ModifyCustomAgentResponseBodyDataKnowledgeConfigList struct {
 	// mcp
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	KbUuid     *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
-	// The ID of the MCP Server.
+	// The ID of the MCP server.
 	//
 	// example:
 	//
@@ -769,8 +825,63 @@ func (s *ModifyCustomAgentResponseBodyDataKnowledgeConfigList) Validate() error 
 	return dara.Validate(s)
 }
 
+type ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList struct {
+	DbId          *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	KnowledgeUuid *string `json:"KnowledgeUuid,omitempty" xml:"KnowledgeUuid,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList) GetDbId() *string {
+	return s.DbId
+}
+
+func (s *ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList) GetKnowledgeUuid() *string {
+	return s.KnowledgeUuid
+}
+
+func (s *ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList) GetType() *string {
+	return s.Type
+}
+
+func (s *ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList) SetDbId(v string) *ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList {
+	s.DbId = &v
+	return s
+}
+
+func (s *ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList) SetInstanceId(v string) *ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList) SetKnowledgeUuid(v string) *ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList {
+	s.KnowledgeUuid = &v
+	return s
+}
+
+func (s *ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList) SetType(v string) *ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList {
+	s.Type = &v
+	return s
+}
+
+func (s *ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList) Validate() error {
+	return dara.Validate(s)
+}
+
 type ModifyCustomAgentResponseBodyDataScheduleTaskConfig struct {
-	// The cron expression for time-based scheduling.
+	// The cron expression for the time-based scheduling.
 	//
 	// example:
 	//
@@ -780,7 +891,7 @@ type ModifyCustomAgentResponseBodyDataScheduleTaskConfig struct {
 	//
 	// example:
 	//
-	// Analyze this data and provide a brief report.
+	// Analyze this data and provide a brief report
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// The ID of the referenced historical session.
 	//

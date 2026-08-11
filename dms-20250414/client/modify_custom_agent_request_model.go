@@ -27,6 +27,8 @@ type iModifyCustomAgentRequest interface {
 	GetKnowledge() *string
 	SetKnowledgeConfigList(v []*ModifyCustomAgentRequestKnowledgeConfigList) *ModifyCustomAgentRequest
 	GetKnowledgeConfigList() []*ModifyCustomAgentRequestKnowledgeConfigList
+	SetKnowledgeSemanticConfigList(v []*ModifyCustomAgentRequestKnowledgeSemanticConfigList) *ModifyCustomAgentRequest
+	GetKnowledgeSemanticConfigList() []*ModifyCustomAgentRequestKnowledgeSemanticConfigList
 	SetName(v string) *ModifyCustomAgentRequest
 	GetName() *string
 	SetRelatedSessionId(v string) *ModifyCustomAgentRequest
@@ -53,23 +55,169 @@ type ModifyCustomAgentRequest struct {
 	//
 	// ca-4y3ca4khkcu**********ysf
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
-	// The current DMS unit.
+	// The current Data Management unit.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The specified data scope, in **JSON string format**.
+	// The specified data scope in **JSON string format**.
+	//
+	// - Common parameter description
+	//
+	//   - tableFlag: true indicates a specified data scope
+	//
+	//   - scope: personal is a fixed value
+	//
+	//   - personal: pass parameters for file or database types
+	//
+	// **File type**. Pass parameters in the following format:
+	//
+	// - DataSourceType: remote_data_center is a fixed value
+	//
+	// - FileId: the file ID
+	//
+	// - Database: the database name returned by the ListDataCenterTable operation, which is typically the file name
+	//
+	// - Tables: the table name returned by the ListDataCenterTable operation
+	//
+	// - TableIds: the TableId returned by the ListDataCenterTable operation
+	//
+	// - RegionId: the current region
+	//
+	// ```
+	//
+	// {
+	//
+	//   "tableFlag": true,
+	//
+	//   "scope": "personal",
+	//
+	//   "personal": {
+	//
+	//     "DataSourceType": "remote_data_center",
+	//
+	//     "FileId": "f-f0jksn001ibmkoo********6v2zn6",
+	//
+	//     "Database": "diamonds.csv",
+	//
+	//     "Tables": [
+	//
+	//       "diamonds"
+	//
+	//     ],
+	//
+	//     "TableIds": [
+	//
+	//       "35hfn94pxl********50pi"
+	//
+	//     ],
+	//
+	//     "RegionId": "ap-southeast-1"
+	//
+	//   }
+	//
+	// }
+	//
+	// ```
+	//
+	// **Database type**. Pass parameters in the following format:
+	//
+	// - DataSourceType: database is a fixed value
+	//
+	// - DmsInstanceId: the DMS instance ID returned by the data center operation
+	//
+	// - DmsDatabaseId: the DMS database ID returned by the data center operation
+	//
+	// - FileId: the instance name (deprecated)
+	//
+	// - DbName: the database name returned by the data center operation
+	//
+	// - Database: the database name returned by the data center operation
+	//
+	// - Tables: the table name returned by the data center operation
+	//
+	// - TableIds: the TableId returned by the data center operation
+	//
+	// - Engine: the engine type (mysql or postgresql)
+	//
+	// - RegionId: the current region
+	//
+	// ```
+	//
+	// {
+	//
+	//   "tableFlag": true,
+	//
+	//   "scope": "personal",
+	//
+	//   "personal": {
+	//
+	//     "DataSourceType": "database",
+	//
+	//     "DmsInstanceId": "284***8",
+	//
+	//     "DmsDatabaseId": "769***45",
+	//
+	//     "FileId": "pgm-bp15095e*******6t",
+	//
+	//     "DbName": "pg_catalog",
+	//
+	//     "Database": "pg_catalog",
+	//
+	//     "Tables": [
+	//
+	//       "pg_aggregate"
+	//
+	//     ],
+	//
+	//     "TableIds": [
+	//
+	//       "5263****31"
+	//
+	//     ],
+	//
+	//     "Engine": "postgresql",
+	//
+	//     "RegionId": "ap-southeast-1"
+	//
+	//   }
+	//
+	// }
+	//
+	// ```
 	//
 	// example:
 	//
 	// {
+	//
+	//   "tableFlag" : true,
+	//
+	//   "scope" : "personal",
+	//
+	//   "personal" : {
+	//
+	//     "DataSourceType" : "remote_data_center",
+	//
+	//     "FileId" : "f-5qlrwaw10********s3gpw1z",
+	//
+	//     "Database" : "TestTable******.xlsx",
+	//
+	//     "Tables" : [ "Sheet1" ],
+	//
+	//     "TableIds" : [ "******" ],
+	//
+	//     "RegionId" : "cn-hangzhou"
+	//
+	//   }
+	//
+	// }
 	DataJson *string `json:"DataJson,omitempty" xml:"DataJson,omitempty"`
 	// The description of the custom agent.
 	//
 	// example:
 	//
-	// AgentTestDescription.
+	// AgentTestDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The execution configuration.
 	ExecutionConfig *ModifyCustomAgentRequestExecutionConfig `json:"ExecutionConfig,omitempty" xml:"ExecutionConfig,omitempty" type:"Struct"`
@@ -78,21 +226,37 @@ type ModifyCustomAgentRequest struct {
 	// example:
 	//
 	// Analysis framework:
+	//
+	// 1. Monitor core metrics (GMV, order volume, UV, conversion rate) on a daily, weekly, and monthly basis. Analyze trends and year-over-year/month-over-month fluctuations.
+	//
+	// 2. Segment by new vs. returning customers, channels, and regions to identify growth drivers and weaknesses.
+	//
+	// 3. Conduct funnel analysis based on user behavior paths (browsing → add to cart → payment) to pinpoint drop-off stages.
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
 	// The knowledge.
 	//
 	// example:
 	//
 	// Core metric definitions:
+	//
+	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders;
+	//
+	// 2. Order volume is the number of valid orders placed per day;
+	//
+	// 3. UV (Unique Visitors) refers to the deduplicated number of users who visit the website or app;
+	//
+	// 4. Conversion rate = number of paid orders / UV, reflecting traffic conversion efficiency;
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 	// The external knowledge bases.
-	KnowledgeConfigList []*ModifyCustomAgentRequestKnowledgeConfigList `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
+	KnowledgeConfigList         []*ModifyCustomAgentRequestKnowledgeConfigList         `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
+	KnowledgeSemanticConfigList []*ModifyCustomAgentRequestKnowledgeSemanticConfigList `json:"KnowledgeSemanticConfigList,omitempty" xml:"KnowledgeSemanticConfigList,omitempty" type:"Repeated"`
 	// The name of the custom agent.
 	//
 	// example:
 	//
-	// AgentTestName.
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// AgentTestName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the referenced historical session.
 	RelatedSessionId *string `json:"RelatedSessionId,omitempty" xml:"RelatedSessionId,omitempty"`
 	// The scheduled task configuration.
 	ScheduleTaskConfig *ModifyCustomAgentRequestScheduleTaskConfig `json:"ScheduleTaskConfig,omitempty" xml:"ScheduleTaskConfig,omitempty" type:"Struct"`
@@ -100,13 +264,13 @@ type ModifyCustomAgentRequest struct {
 	//
 	// example:
 	//
-	// The text report requires all numbers to be written in Chinese characters instead of Arabic numerals.
+	// The text report requires that all numbers use Chinese numerals instead of Arabic numerals
 	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
 	// The web report format.
 	//
 	// example:
 	//
-	// The web report requires all numbers to be written in Chinese characters instead of Arabic numerals.
+	// The web report requires that all numbers use Chinese numerals instead of Arabic numerals
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
 	WebReportTheme  *string `json:"WebReportTheme,omitempty" xml:"WebReportTheme,omitempty"`
 	// The workspace ID.
@@ -159,6 +323,10 @@ func (s *ModifyCustomAgentRequest) GetKnowledge() *string {
 
 func (s *ModifyCustomAgentRequest) GetKnowledgeConfigList() []*ModifyCustomAgentRequestKnowledgeConfigList {
 	return s.KnowledgeConfigList
+}
+
+func (s *ModifyCustomAgentRequest) GetKnowledgeSemanticConfigList() []*ModifyCustomAgentRequestKnowledgeSemanticConfigList {
+	return s.KnowledgeSemanticConfigList
 }
 
 func (s *ModifyCustomAgentRequest) GetName() *string {
@@ -234,6 +402,11 @@ func (s *ModifyCustomAgentRequest) SetKnowledgeConfigList(v []*ModifyCustomAgent
 	return s
 }
 
+func (s *ModifyCustomAgentRequest) SetKnowledgeSemanticConfigList(v []*ModifyCustomAgentRequestKnowledgeSemanticConfigList) *ModifyCustomAgentRequest {
+	s.KnowledgeSemanticConfigList = v
+	return s
+}
+
 func (s *ModifyCustomAgentRequest) SetName(v string) *ModifyCustomAgentRequest {
 	s.Name = &v
 	return s
@@ -282,6 +455,15 @@ func (s *ModifyCustomAgentRequest) Validate() error {
 	}
 	if s.KnowledgeConfigList != nil {
 		for _, item := range s.KnowledgeConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.KnowledgeSemanticConfigList != nil {
+		for _, item := range s.KnowledgeSemanticConfigList {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -445,7 +627,7 @@ type ModifyCustomAgentRequestKnowledgeConfigList struct {
 	// mcp
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	KbUuid     *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
-	// The ID of the MCP Server.
+	// The ID of the MCP server.
 	//
 	// example:
 	//
@@ -492,8 +674,63 @@ func (s *ModifyCustomAgentRequestKnowledgeConfigList) Validate() error {
 	return dara.Validate(s)
 }
 
+type ModifyCustomAgentRequestKnowledgeSemanticConfigList struct {
+	DbId          *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	KnowledgeUuid *string `json:"KnowledgeUuid,omitempty" xml:"KnowledgeUuid,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ModifyCustomAgentRequestKnowledgeSemanticConfigList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyCustomAgentRequestKnowledgeSemanticConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCustomAgentRequestKnowledgeSemanticConfigList) GetDbId() *string {
+	return s.DbId
+}
+
+func (s *ModifyCustomAgentRequestKnowledgeSemanticConfigList) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *ModifyCustomAgentRequestKnowledgeSemanticConfigList) GetKnowledgeUuid() *string {
+	return s.KnowledgeUuid
+}
+
+func (s *ModifyCustomAgentRequestKnowledgeSemanticConfigList) GetType() *string {
+	return s.Type
+}
+
+func (s *ModifyCustomAgentRequestKnowledgeSemanticConfigList) SetDbId(v string) *ModifyCustomAgentRequestKnowledgeSemanticConfigList {
+	s.DbId = &v
+	return s
+}
+
+func (s *ModifyCustomAgentRequestKnowledgeSemanticConfigList) SetInstanceId(v string) *ModifyCustomAgentRequestKnowledgeSemanticConfigList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyCustomAgentRequestKnowledgeSemanticConfigList) SetKnowledgeUuid(v string) *ModifyCustomAgentRequestKnowledgeSemanticConfigList {
+	s.KnowledgeUuid = &v
+	return s
+}
+
+func (s *ModifyCustomAgentRequestKnowledgeSemanticConfigList) SetType(v string) *ModifyCustomAgentRequestKnowledgeSemanticConfigList {
+	s.Type = &v
+	return s
+}
+
+func (s *ModifyCustomAgentRequestKnowledgeSemanticConfigList) Validate() error {
+	return dara.Validate(s)
+}
+
 type ModifyCustomAgentRequestScheduleTaskConfig struct {
-	// The cron expression for time-based scheduling.
+	// The cron expression for the time-based scheduling.
 	//
 	// example:
 	//
@@ -503,7 +740,7 @@ type ModifyCustomAgentRequestScheduleTaskConfig struct {
 	//
 	// example:
 	//
-	// Analyze this data and provide a brief report.
+	// Analyze this data and provide a brief report
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// The ID of the referenced historical session.
 	//

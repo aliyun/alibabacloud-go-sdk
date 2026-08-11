@@ -26,14 +26,14 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"us-west-1":      dara.String("dms.us-west-1.aliyuncs.com"),
-		"us-east-1":      dara.String("dms.us-east-1.aliyuncs.com"),
 		"cn-shenzhen":    dara.String("dms.cn-shenzhen.aliyuncs.com"),
+		"cn-beijing":     dara.String("dms.cn-beijing.aliyuncs.com"),
 		"cn-shanghai":    dara.String("dms.cn-shanghai.aliyuncs.com"),
 		"cn-hongkong":    dara.String("dms.cn-hongkong.aliyuncs.com"),
-		"cn-hangzhou":    dara.String("dms.cn-hangzhou.aliyuncs.com"),
-		"cn-beijing":     dara.String("dms.cn-beijing.aliyuncs.com"),
 		"ap-southeast-1": dara.String("dms.ap-southeast-1.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("dms.cn-hangzhou.aliyuncs.com"),
+		"us-west-1":      dara.String("dms.us-west-1.aliyuncs.com"),
+		"us-east-1":      dara.String("dms.us-east-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -874,6 +874,10 @@ func (client *Client) CreateCustomAgentWithOptions(tmpReq *CreateCustomAgentRequ
 		request.KnowledgeConfigListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KnowledgeConfigList, dara.String("KnowledgeConfigList"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.KnowledgeSemanticConfigList) {
+		request.KnowledgeSemanticConfigListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KnowledgeSemanticConfigList, dara.String("KnowledgeSemanticConfigList"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.ScheduleTaskConfig) {
 		request.ScheduleTaskConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScheduleTaskConfig, dara.String("ScheduleTaskConfig"), dara.String("json"))
 	}
@@ -909,6 +913,10 @@ func (client *Client) CreateCustomAgentWithOptions(tmpReq *CreateCustomAgentRequ
 
 	if !dara.IsNil(request.KnowledgeConfigListShrink) {
 		query["KnowledgeConfigList"] = request.KnowledgeConfigListShrink
+	}
+
+	if !dara.IsNil(request.KnowledgeSemanticConfigListShrink) {
+		query["KnowledgeSemanticConfigList"] = request.KnowledgeSemanticConfigListShrink
 	}
 
 	if !dara.IsNil(request.Name) {
@@ -2864,7 +2872,7 @@ func (client *Client) DeleteWorkspaceCode(request *DeleteWorkspaceCodeRequest) (
 
 // Summary:
 //
-// Retrieves the details of a custom agent by custom agent ID.
+// Retrieves the details of a custom agent by its ID.
 //
 // @param request - DescribeCustomAgentRequest
 //
@@ -2912,7 +2920,7 @@ func (client *Client) DescribeCustomAgentWithOptions(request *DescribeCustomAgen
 
 // Summary:
 //
-// Retrieves the details of a custom agent by custom agent ID.
+// Retrieves the details of a custom agent by its ID.
 //
 // @param request - DescribeCustomAgentRequest
 //
@@ -3784,6 +3792,170 @@ func (client *Client) GetDataAgentSubAccountInfo(request *GetDataAgentSubAccount
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetDataAgentSubAccountInfoResponse{}
 	_body, _err := client.GetDataAgentSubAccountInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the model usage summary of DataAgent analysis tasks within a specified time range, including the number of models used, total call count, total tokens consumed, and peak TPM.
+//
+// Description:
+//
+// Queries the model usage summary of DataAgent analysis tasks within a specified time range, including the number of models used, total model call count, total tokens consumed, and peak TPM. This operation is used to analyze and monitor the model resource consumption of DataAgent analysis tasks.
+//
+// @param request - GetDataAgentTaskModelUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataAgentTaskModelUsageResponse
+func (client *Client) GetDataAgentTaskModelUsageWithOptions(request *GetDataAgentTaskModelUsageRequest, runtime *dara.RuntimeOptions) (_result *GetDataAgentTaskModelUsageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BeginTime) {
+		query["BeginTime"] = request.BeginTime
+	}
+
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataAgentTaskModelUsage"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDataAgentTaskModelUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the model usage summary of DataAgent analysis tasks within a specified time range, including the number of models used, total call count, total tokens consumed, and peak TPM.
+//
+// Description:
+//
+// Queries the model usage summary of DataAgent analysis tasks within a specified time range, including the number of models used, total model call count, total tokens consumed, and peak TPM. This operation is used to analyze and monitor the model resource consumption of DataAgent analysis tasks.
+//
+// @param request - GetDataAgentTaskModelUsageRequest
+//
+// @return GetDataAgentTaskModelUsageResponse
+func (client *Client) GetDataAgentTaskModelUsage(request *GetDataAgentTaskModelUsageRequest) (_result *GetDataAgentTaskModelUsageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetDataAgentTaskModelUsageResponse{}
+	_body, _err := client.GetDataAgentTaskModelUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the TPM time series metrics of DataAgent analysis task model usage within a specified time range, returning token consumption at each time point with minute-level granularity.
+//
+// Description:
+//
+// Queries the TPM time series metrics of DataAgent analysis task model usage within a specified time range. The metrics are returned at minute-level granularity, showing the number of tokens consumed in each statistical interval for analyzing model usage trends over time.
+//
+// @param request - GetDataAgentTaskModelUsageMetricsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataAgentTaskModelUsageMetricsResponse
+func (client *Client) GetDataAgentTaskModelUsageMetricsWithOptions(request *GetDataAgentTaskModelUsageMetricsRequest, runtime *dara.RuntimeOptions) (_result *GetDataAgentTaskModelUsageMetricsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BeginTime) {
+		query["BeginTime"] = request.BeginTime
+	}
+
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataAgentTaskModelUsageMetrics"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDataAgentTaskModelUsageMetricsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the TPM time series metrics of DataAgent analysis task model usage within a specified time range, returning token consumption at each time point with minute-level granularity.
+//
+// Description:
+//
+// Queries the TPM time series metrics of DataAgent analysis task model usage within a specified time range. The metrics are returned at minute-level granularity, showing the number of tokens consumed in each statistical interval for analyzing model usage trends over time.
+//
+// @param request - GetDataAgentTaskModelUsageMetricsRequest
+//
+// @return GetDataAgentTaskModelUsageMetricsResponse
+func (client *Client) GetDataAgentTaskModelUsageMetrics(request *GetDataAgentTaskModelUsageMetricsRequest) (_result *GetDataAgentTaskModelUsageMetricsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetDataAgentTaskModelUsageMetricsResponse{}
+	_body, _err := client.GetDataAgentTaskModelUsageMetricsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7449,6 +7621,10 @@ func (client *Client) ModifyCustomAgentWithOptions(tmpReq *ModifyCustomAgentRequ
 		request.KnowledgeConfigListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KnowledgeConfigList, dara.String("KnowledgeConfigList"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.KnowledgeSemanticConfigList) {
+		request.KnowledgeSemanticConfigListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KnowledgeSemanticConfigList, dara.String("KnowledgeSemanticConfigList"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.ScheduleTaskConfig) {
 		request.ScheduleTaskConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScheduleTaskConfig, dara.String("ScheduleTaskConfig"), dara.String("json"))
 	}
@@ -7488,6 +7664,10 @@ func (client *Client) ModifyCustomAgentWithOptions(tmpReq *ModifyCustomAgentRequ
 
 	if !dara.IsNil(request.KnowledgeConfigListShrink) {
 		query["KnowledgeConfigList"] = request.KnowledgeConfigListShrink
+	}
+
+	if !dara.IsNil(request.KnowledgeSemanticConfigListShrink) {
+		query["KnowledgeSemanticConfigList"] = request.KnowledgeSemanticConfigListShrink
 	}
 
 	if !dara.IsNil(request.Name) {

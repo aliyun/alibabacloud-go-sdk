@@ -329,8 +329,9 @@ type ListCustomAgentResponseBodyDataContent struct {
 	// 3、UV（独立访客）指访问网站或APP的去重用户数；
 	//
 	// 4、转化率=支付订单数 / UV，反映流量转化效率；
-	Knowledge           *string                                                      `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
-	KnowledgeConfigList []*ListCustomAgentResponseBodyDataContentKnowledgeConfigList `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
+	Knowledge                   *string                                                              `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
+	KnowledgeConfigList         []*ListCustomAgentResponseBodyDataContentKnowledgeConfigList         `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
+	KnowledgeSemanticConfigList []*ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList `json:"KnowledgeSemanticConfigList,omitempty" xml:"KnowledgeSemanticConfigList,omitempty" type:"Repeated"`
 	// The user who last modified the agent.
 	//
 	// example:
@@ -479,6 +480,10 @@ func (s *ListCustomAgentResponseBodyDataContent) GetKnowledgeConfigList() []*Lis
 	return s.KnowledgeConfigList
 }
 
+func (s *ListCustomAgentResponseBodyDataContent) GetKnowledgeSemanticConfigList() []*ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList {
+	return s.KnowledgeSemanticConfigList
+}
+
 func (s *ListCustomAgentResponseBodyDataContent) GetModifier() *string {
 	return s.Modifier
 }
@@ -620,6 +625,11 @@ func (s *ListCustomAgentResponseBodyDataContent) SetKnowledgeConfigList(v []*Lis
 	return s
 }
 
+func (s *ListCustomAgentResponseBodyDataContent) SetKnowledgeSemanticConfigList(v []*ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList) *ListCustomAgentResponseBodyDataContent {
+	s.KnowledgeSemanticConfigList = v
+	return s
+}
+
 func (s *ListCustomAgentResponseBodyDataContent) SetModifier(v string) *ListCustomAgentResponseBodyDataContent {
 	s.Modifier = &v
 	return s
@@ -703,6 +713,15 @@ func (s *ListCustomAgentResponseBodyDataContent) Validate() error {
 	}
 	if s.KnowledgeConfigList != nil {
 		for _, item := range s.KnowledgeConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.KnowledgeSemanticConfigList != nil {
+		for _, item := range s.KnowledgeSemanticConfigList {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -900,6 +919,61 @@ func (s *ListCustomAgentResponseBodyDataContentKnowledgeConfigList) SetMcpServer
 }
 
 func (s *ListCustomAgentResponseBodyDataContentKnowledgeConfigList) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList struct {
+	DbId          *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	KnowledgeUuid *string `json:"KnowledgeUuid,omitempty" xml:"KnowledgeUuid,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList) GetDbId() *string {
+	return s.DbId
+}
+
+func (s *ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList) GetKnowledgeUuid() *string {
+	return s.KnowledgeUuid
+}
+
+func (s *ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList) GetType() *string {
+	return s.Type
+}
+
+func (s *ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList) SetDbId(v string) *ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList {
+	s.DbId = &v
+	return s
+}
+
+func (s *ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList) SetInstanceId(v string) *ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList) SetKnowledgeUuid(v string) *ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList {
+	s.KnowledgeUuid = &v
+	return s
+}
+
+func (s *ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList) SetType(v string) *ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList {
+	s.Type = &v
+	return s
+}
+
+func (s *ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList) Validate() error {
 	return dara.Validate(s)
 }
 
