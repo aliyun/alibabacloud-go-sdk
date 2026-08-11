@@ -22,19 +22,32 @@ type iEnterpriseContactQueryDetailResponseBody interface {
 }
 
 type EnterpriseContactQueryDetailResponseBody struct {
+  // The status code.
+  // 
   // example:
   // 
   // Success
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // The operation result.
   Data *EnterpriseContactQueryDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+  // The message.
+  // 
   // example:
   // 
   // successful
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+  // The request ID.
+  // 
   // example:
   // 
   // F81F2090-8260-5052-BB93-7DF8996D25EB
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // Indicates whether the operation was successful. Valid values:
+  // 
+  // - true: Successful.
+  // 
+  // - false: Failed.
+  // 
   // example:
   // 
   // True
@@ -104,34 +117,50 @@ func (s *EnterpriseContactQueryDetailResponseBody) Validate() error {
 }
 
 type EnterpriseContactQueryDetailResponseBodyData struct {
+  // The contact email address.
+  // 
   // example:
   // 
   // xx@xx.xx
   ContactEmail *string `json:"ContactEmail,omitempty" xml:"ContactEmail,omitempty"`
+  // The contact ID.
+  // 
   // example:
   // 
   // xx
   ContactId *int64 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+  // The contact mobile number.
+  // 
   // example:
   // 
   // 1xxxxxxxxxx
   ContactMobile *string `json:"ContactMobile,omitempty" xml:"ContactMobile,omitempty"`
+  // The contact name.
+  // 
   // example:
   // 
   // xxx
   ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+  // The position of the contact.
+  // 
   // example:
   // 
   // 4
   ContactPosition *string `json:"ContactPosition,omitempty" xml:"ContactPosition,omitempty"`
+  // The customer ID, compatible with the legacy model.
+  // 
   // example:
   // 
   // xxx
   CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+  // Indicates whether the email address is verified.
+  // 
   // example:
   // 
   // false
   EmailConfirmed *bool `json:"EmailConfirmed,omitempty" xml:"EmailConfirmed,omitempty"`
+  // The entity ID.
+  // 
   // example:
   // 
   // 3489d3bc-077a-449b-b41e-dd81f7451a42
@@ -142,26 +171,38 @@ type EnterpriseContactQueryDetailResponseBodyData struct {
   // 
   // customerId
   EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+  // Indicates whether the contact has subscribed to projects when querying contact details.
+  // 
   // example:
   // 
   // xxx
   HasSubscription *bool `json:"HasSubscription,omitempty" xml:"HasSubscription,omitempty"`
+  // Indicates whether the mobile number is verified.
+  // 
   // example:
   // 
   // false
   MobileConfirmed *bool `json:"MobileConfirmed,omitempty" xml:"MobileConfirmed,omitempty"`
+  // Indicates whether the contact is a shared contact.
+  // 
   // example:
   // 
   // false
   SharedContact *bool `json:"SharedContact,omitempty" xml:"SharedContact,omitempty"`
+  // The owner of the contact.
+  // 
   // example:
   // 
   // xxx
   Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+  // The time when the contact was last modified.
+  // 
   // example:
   // 
   // xxx
   UpdateDate *int64 `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+  // The user who last modified the contact.
+  // 
   // example:
   // 
   // xxx

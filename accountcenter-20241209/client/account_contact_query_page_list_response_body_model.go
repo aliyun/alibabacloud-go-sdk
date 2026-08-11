@@ -30,35 +30,56 @@ type iAccountContactQueryPageListResponseBody interface {
 }
 
 type AccountContactQueryPageListResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The operation result.
 	Data []*AccountContactQueryPageListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The log content of the standard output during function execution.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 3
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 19
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 27A90A55-120A-59DC-812E-62448D440E95
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
+	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 4
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -168,34 +189,50 @@ func (s *AccountContactQueryPageListResponseBody) Validate() error {
 }
 
 type AccountContactQueryPageListResponseBodyData struct {
+	// The email address of the contact.
+	//
 	// example:
 	//
 	// xxx@xxx.xx
 	ContactEmail *string `json:"ContactEmail,omitempty" xml:"ContactEmail,omitempty"`
+	// The contact ID.
+	//
 	// example:
 	//
 	// xxx
 	ContactId *int64 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// The mobile number of the contact.
+	//
 	// example:
 	//
 	// 1xxxxxxxxxx
 	ContactMobile *string `json:"ContactMobile,omitempty" xml:"ContactMobile,omitempty"`
+	// The contact name.
+	//
 	// example:
 	//
 	// xxx
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	// The position of the contact.
+	//
 	// example:
 	//
 	// 1
 	ContactPosition *string `json:"ContactPosition,omitempty" xml:"ContactPosition,omitempty"`
+	// The customer ID, compatible with the legacy model.
+	//
 	// example:
 	//
 	// xxx
 	CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	// Indicates whether the email address is verified.
+	//
 	// example:
 	//
 	// true
 	EmailConfirmed *bool `json:"EmailConfirmed,omitempty" xml:"EmailConfirmed,omitempty"`
+	// The entity ID.
+	//
 	// example:
 	//
 	// xxx
@@ -206,18 +243,26 @@ type AccountContactQueryPageListResponseBodyData struct {
 	//
 	// customerId
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// Indicates whether the mobile number is verified.
+	//
 	// example:
 	//
 	// true
 	MobileConfirmed *bool `json:"MobileConfirmed,omitempty" xml:"MobileConfirmed,omitempty"`
+	// Indicates whether the contact is a shared contact.
+	//
 	// example:
 	//
 	// false
 	SharedContact *bool `json:"SharedContact,omitempty" xml:"SharedContact,omitempty"`
+	// The time when the contact was last modified.
+	//
 	// example:
 	//
 	// xxx
 	UpdateDate *int64 `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The user who last modified the contact.
+	//
 	// example:
 	//
 	// xxx

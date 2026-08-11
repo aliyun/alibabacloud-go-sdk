@@ -22,19 +22,32 @@ type iAccountContactAddResponseBody interface {
 }
 
 type AccountContactAddResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data result of the current category statistics.
 	Data *AccountContactAddResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned by the operation.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E4E192DF-798B-58AE-B8BF-EBC15E2E85F2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// True
@@ -104,11 +117,16 @@ func (s *AccountContactAddResponseBody) Validate() error {
 }
 
 type AccountContactAddResponseBodyData struct {
+	// The contact ID.
+	//
 	// example:
 	//
 	// xxx
-	ContactId *int64                                        `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	ContactId *int64 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// The error status information.
 	ErrorList []*AccountContactAddResponseBodyDataErrorList `json:"ErrorList,omitempty" xml:"ErrorList,omitempty" type:"Repeated"`
+	// Indicates whether the operation is successful.
+	//
 	// example:
 	//
 	// True
@@ -164,14 +182,20 @@ func (s *AccountContactAddResponseBodyData) Validate() error {
 }
 
 type AccountContactAddResponseBodyDataErrorList struct {
+	// The error code.
+	//
 	// example:
 	//
 	// MOBILE_CODE_ILLEGAL
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The cause of the issue.
+	//
 	// example:
 	//
 	// MOBILE_CODE_ILLEGAL
 	ErrorDesc *string `json:"ErrorDesc,omitempty" xml:"ErrorDesc,omitempty"`
+	// The field with an exception.
+	//
 	// example:
 	//
 	// MOBILE_VERIFY_CODE

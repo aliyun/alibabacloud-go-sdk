@@ -22,22 +22,32 @@ type iEnterpriseContactDeleteRequest interface {
 }
 
 type EnterpriseContactDeleteRequest struct {
+  // The application name.
+  // 
   // example:
   // 
   // xxx
   AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+  // The ID of the contact to delete. You can call EnterpriseQueryPageList to query contact information by paging.
+  // 
   // example:
   // 
   // xxx
   ContactId *int64 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+  // The entity ID of the cross-enterprise management object.
+  // 
   // example:
   // 
   // null
   OrientedEcId *string `json:"OrientedEcId,omitempty" xml:"OrientedEcId,omitempty"`
+  // The enterprise currently switched to.
+  // 
   // example:
   // 
   // null
   OrientedLeId *string `json:"OrientedLeId,omitempty" xml:"OrientedLeId,omitempty"`
+  // The marketplace ID of the cross-enterprise management object.
+  // 
   // example:
   // 
   // null

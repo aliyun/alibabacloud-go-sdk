@@ -22,22 +22,32 @@ type iSendAsyncEmailCaptchaResponseBody interface {
 }
 
 type SendAsyncEmailCaptchaResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The operation result.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// Instance invalid-id-123 does not exist.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5E9636D3-6C10-5FAB-B391-EDD122E28BC6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True

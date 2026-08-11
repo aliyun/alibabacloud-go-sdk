@@ -22,22 +22,32 @@ type iSendAsyncMobileCaptchaResponseBody interface {
 }
 
 type SendAsyncMobileCaptchaResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The operation result.
+	//
 	// example:
 	//
 	// False
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique identifier of the request.
+	//
 	// example:
 	//
 	// 1409E8EE-8F9A-506B-BACB-B9DF3634C287
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True

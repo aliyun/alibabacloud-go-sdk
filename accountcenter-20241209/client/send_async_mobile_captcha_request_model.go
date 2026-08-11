@@ -18,14 +18,20 @@ type iSendAsyncMobileCaptchaRequest interface {
 }
 
 type SendAsyncMobileCaptchaRequest struct {
+	// The application name.
+	//
 	// example:
 	//
 	// xxx
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The contact information.
+	//
 	// example:
 	//
 	// xxx
 	ContactInfo *string `json:"ContactInfo,omitempty" xml:"ContactInfo,omitempty"`
+	// The contact ID.
+	//
 	// example:
 	//
 	// xxx

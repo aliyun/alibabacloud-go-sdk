@@ -22,22 +22,32 @@ type iAccountContactDeleteResponseBody interface {
 }
 
 type AccountContactDeleteResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result data.
+	//
 	// example:
 	//
 	// {\\"count\\": 1}
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8CCD6B37-98E7-5A68-B1F7-A900C9BFF45C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation is successful. A value of true indicates success. A value of false indicates failure.
+	//
 	// example:
 	//
 	// True

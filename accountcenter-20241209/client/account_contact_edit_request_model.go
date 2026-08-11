@@ -40,58 +40,86 @@ type iAccountContactEditRequest interface {
 }
 
 type AccountContactEditRequest struct {
+	// Application name.
+	//
 	// example:
 	//
 	// xxx
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Whether to asynchronously verify the email. Must be set to true for API calls. Otherwise, the verification code will be synchronously validated. Use the SendAsyncEmailCaptcha API to send the verification link.
+	//
 	// example:
 	//
 	// true
 	AsyncEmailVerify *bool `json:"AsyncEmailVerify,omitempty" xml:"AsyncEmailVerify,omitempty"`
+	// Whether to asynchronously verify the mobile number. Must be set to true for API calls. Otherwise, the verification code will be synchronously validated. Use the SendAsyncMobileCaptcha API to send the verification link.
+	//
 	// example:
 	//
 	// true
 	AsyncMobileVerify *bool `json:"AsyncMobileVerify,omitempty" xml:"AsyncMobileVerify,omitempty"`
+	// Contact email
+	//
 	// example:
 	//
 	// xxx@xxx.xx
 	ContactEmail *string `json:"ContactEmail,omitempty" xml:"ContactEmail,omitempty"`
+	// Contact ID. You can call AccountContactQueryPageList to query account contact information by page.
+	//
 	// example:
 	//
 	// xxx
 	ContactId *int64 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// Contact mobile number
+	//
 	// example:
 	//
 	// 1xxxxxxxxxx
 	ContactMobile *string `json:"ContactMobile,omitempty" xml:"ContactMobile,omitempty"`
+	// Contact name
+	//
 	// example:
 	//
 	// xxx
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	// Position:
+	//
 	// example:
 	//
 	// 0
 	ContactPosition *string `json:"ContactPosition,omitempty" xml:"ContactPosition,omitempty"`
+	// Email verification code
+	//
 	// example:
 	//
 	// null
 	EmailCode *string `json:"EmailCode,omitempty" xml:"EmailCode,omitempty"`
+	// SMS verification code
+	//
 	// example:
 	//
 	// null
 	MobileCode *string `json:"MobileCode,omitempty" xml:"MobileCode,omitempty"`
+	// Cross-enterprise management object entity ID
+	//
 	// example:
 	//
 	// null
 	OrientedEcId *string `json:"OrientedEcId,omitempty" xml:"OrientedEcId,omitempty"`
+	// Currently switched enterprise
+	//
 	// example:
 	//
 	// null
 	OrientedLeId *string `json:"OrientedLeId,omitempty" xml:"OrientedLeId,omitempty"`
+	// Cross-enterprise management object marketplace ID
+	//
 	// example:
 	//
 	// null
 	OrientedNbId *string `json:"OrientedNbId,omitempty" xml:"OrientedNbId,omitempty"`
+	// Whether it is an enterprise contact. This API sets the value to false by default.
+	//
 	// example:
 	//
 	// false

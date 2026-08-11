@@ -24,7 +24,11 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"ap-southeast-1": dara.String("accountcenter-intl.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("accountcenter.cn-hangzhou.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +62,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 添加私有联系人
+// Creates an account contact.
+//
+// Description:
+//
+// Creates an account contact.
 //
 // @param request - AccountContactAddRequest
 //
@@ -150,7 +158,11 @@ func (client *Client) AccountContactAddWithOptions(request *AccountContactAddReq
 
 // Summary:
 //
-// 添加私有联系人
+// Creates an account contact.
+//
+// Description:
+//
+// Creates an account contact.
 //
 // @param request - AccountContactAddRequest
 //
@@ -168,7 +180,7 @@ func (client *Client) AccountContactAdd(request *AccountContactAddRequest) (_res
 
 // Summary:
 //
-// 删除私有联系人
+// Delete a private contact.
 //
 // @param request - AccountContactDeleteRequest
 //
@@ -228,7 +240,7 @@ func (client *Client) AccountContactDeleteWithOptions(request *AccountContactDel
 
 // Summary:
 //
-// 删除私有联系人
+// Delete a private contact.
 //
 // @param request - AccountContactDeleteRequest
 //
@@ -246,7 +258,7 @@ func (client *Client) AccountContactDelete(request *AccountContactDeleteRequest)
 
 // Summary:
 //
-// 修改私有联系人
+// Modify a private contact.
 //
 // @param request - AccountContactEditRequest
 //
@@ -342,7 +354,7 @@ func (client *Client) AccountContactEditWithOptions(request *AccountContactEditR
 
 // Summary:
 //
-// 修改私有联系人
+// Modify a private contact.
 //
 // @param request - AccountContactEditRequest
 //
@@ -360,7 +372,7 @@ func (client *Client) AccountContactEdit(request *AccountContactEditRequest) (_r
 
 // Summary:
 //
-// 查询联系人详情
+// Queries the details of a contact.
 //
 // @param request - AccountContactQueryDetailRequest
 //
@@ -420,7 +432,7 @@ func (client *Client) AccountContactQueryDetailWithOptions(request *AccountConta
 
 // Summary:
 //
-// 查询联系人详情
+// Queries the details of a contact.
 //
 // @param request - AccountContactQueryDetailRequest
 //
@@ -438,7 +450,7 @@ func (client *Client) AccountContactQueryDetail(request *AccountContactQueryDeta
 
 // Summary:
 //
-// 查询联系人列表
+// Queries the contact list.
 //
 // @param request - AccountContactQueryPageListRequest
 //
@@ -520,7 +532,7 @@ func (client *Client) AccountContactQueryPageListWithOptions(request *AccountCon
 
 // Summary:
 //
-// 查询联系人列表
+// Queries the contact list.
 //
 // @param request - AccountContactQueryPageListRequest
 //
@@ -1782,7 +1794,13 @@ func (client *Client) EnterpriseAccountUpdateSessionExpireTime(request *Enterpri
 
 // Summary:
 //
-// 增加企业联系人
+// Adds an enterprise contact.
+//
+// Description:
+//
+// Creates an enterprise public contact.
+//
+// For information about Alibaba Cloud account authorization, refer to [documentation](https://www.alibabacloud.com/help/en/account/user-guide/add-business-address-and-business-contact).
 //
 // @param request - EnterpriseContactAddRequest
 //
@@ -1874,7 +1892,13 @@ func (client *Client) EnterpriseContactAddWithOptions(request *EnterpriseContact
 
 // Summary:
 //
-// 增加企业联系人
+// Adds an enterprise contact.
+//
+// Description:
+//
+// Creates an enterprise public contact.
+//
+// For information about Alibaba Cloud account authorization, refer to [documentation](https://www.alibabacloud.com/help/en/account/user-guide/add-business-address-and-business-contact).
 //
 // @param request - EnterpriseContactAddRequest
 //
@@ -1892,7 +1916,11 @@ func (client *Client) EnterpriseContactAdd(request *EnterpriseContactAddRequest)
 
 // Summary:
 //
-// 删除企业联系人
+// Deletes an enterprise contact.
+//
+// Description:
+//
+// Deletes an enterprise public contact. For information about Alibaba Cloud account authorization, refer to the [documentation](https://www.alibabacloud.com/help/en/account/user-guide/add-business-address-and-business-contact).
 //
 // @param request - EnterpriseContactDeleteRequest
 //
@@ -1952,7 +1980,11 @@ func (client *Client) EnterpriseContactDeleteWithOptions(request *EnterpriseCont
 
 // Summary:
 //
-// 删除企业联系人
+// Deletes an enterprise contact.
+//
+// Description:
+//
+// Deletes an enterprise public contact. For information about Alibaba Cloud account authorization, refer to the [documentation](https://www.alibabacloud.com/help/en/account/user-guide/add-business-address-and-business-contact).
 //
 // @param request - EnterpriseContactDeleteRequest
 //
@@ -1970,7 +2002,11 @@ func (client *Client) EnterpriseContactDelete(request *EnterpriseContactDeleteRe
 
 // Summary:
 //
-// 修改私企业联系人
+// Modifies a private enterprise contact.
+//
+// Description:
+//
+// Modifies a public enterprise contact. For information about primary account authorization, see [documentation](https://www.alibabacloud.com/help/en/account/user-guide/add-business-address-and-business-contact).
 //
 // @param request - EnterpriseContactEditRequest
 //
@@ -2066,7 +2102,11 @@ func (client *Client) EnterpriseContactEditWithOptions(request *EnterpriseContac
 
 // Summary:
 //
-// 修改私企业联系人
+// Modifies a private enterprise contact.
+//
+// Description:
+//
+// Modifies a public enterprise contact. For information about primary account authorization, see [documentation](https://www.alibabacloud.com/help/en/account/user-guide/add-business-address-and-business-contact).
 //
 // @param request - EnterpriseContactEditRequest
 //
@@ -2084,7 +2124,11 @@ func (client *Client) EnterpriseContactEdit(request *EnterpriseContactEditReques
 
 // Summary:
 //
-// 查询联系人详情
+// Queries the details of a contact.
+//
+// Description:
+//
+// Queries the details of a single enterprise contact.
 //
 // @param request - EnterpriseContactQueryDetailRequest
 //
@@ -2144,7 +2188,11 @@ func (client *Client) EnterpriseContactQueryDetailWithOptions(request *Enterpris
 
 // Summary:
 //
-// 查询联系人详情
+// Queries the details of a contact.
+//
+// Description:
+//
+// Queries the details of a single enterprise contact.
 //
 // @param request - EnterpriseContactQueryDetailRequest
 //
@@ -2162,7 +2210,11 @@ func (client *Client) EnterpriseContactQueryDetail(request *EnterpriseContactQue
 
 // Summary:
 //
-// 查询联系人列表
+// Query the contact list.
+//
+// Description:
+//
+// Query enterprise contacts by page.
 //
 // @param request - EnterpriseContactQueryPageListRequest
 //
@@ -2244,7 +2296,11 @@ func (client *Client) EnterpriseContactQueryPageListWithOptions(request *Enterpr
 
 // Summary:
 //
-// 查询联系人列表
+// Query the contact list.
+//
+// Description:
+//
+// Query enterprise contacts by page.
 //
 // @param request - EnterpriseContactQueryPageListRequest
 //
@@ -2253,6 +2309,234 @@ func (client *Client) EnterpriseContactQueryPageList(request *EnterpriseContactQ
 	runtime := &dara.RuntimeOptions{}
 	_result = &EnterpriseContactQueryPageListResponse{}
 	_body, _err := client.EnterpriseContactQueryPageListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建组织节点
+//
+// @param tmpReq - EnterpriseOrgCreateNodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnterpriseOrgCreateNodeResponse
+func (client *Client) EnterpriseOrgCreateNodeWithOptions(tmpReq *EnterpriseOrgCreateNodeRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseOrgCreateNodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &EnterpriseOrgCreateNodeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Ext) {
+		request.ExtShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ext, dara.String("Ext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		body["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.BizName) {
+		body["BizName"] = request.BizName
+	}
+
+	if !dara.IsNil(request.ExtShrink) {
+		body["Ext"] = request.ExtShrink
+	}
+
+	if !dara.IsNil(request.IsOpenApi) {
+		body["IsOpenApi"] = request.IsOpenApi
+	}
+
+	if !dara.IsNil(request.NodeId) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !dara.IsNil(request.NodeName) {
+		body["NodeName"] = request.NodeName
+	}
+
+	if !dara.IsNil(request.NodeType) {
+		body["NodeType"] = request.NodeType
+	}
+
+	if !dara.IsNil(request.OrientedEcId) {
+		body["OrientedEcId"] = request.OrientedEcId
+	}
+
+	if !dara.IsNil(request.OrientedLeId) {
+		body["OrientedLeId"] = request.OrientedLeId
+	}
+
+	if !dara.IsNil(request.OrientedNbId) {
+		body["OrientedNbId"] = request.OrientedNbId
+	}
+
+	if !dara.IsNil(request.ParentNodeId) {
+		body["ParentNodeId"] = request.ParentNodeId
+	}
+
+	if !dara.IsNil(request.ParentNodeType) {
+		body["ParentNodeType"] = request.ParentNodeType
+	}
+
+	if !dara.IsNil(request.ShowCompleteInfo) {
+		body["ShowCompleteInfo"] = request.ShowCompleteInfo
+	}
+
+	if !dara.IsNil(request.TreeId) {
+		body["TreeId"] = request.TreeId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnterpriseOrgCreateNode"),
+		Version:     dara.String("2024-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnterpriseOrgCreateNodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建组织节点
+//
+// @param request - EnterpriseOrgCreateNodeRequest
+//
+// @return EnterpriseOrgCreateNodeResponse
+func (client *Client) EnterpriseOrgCreateNode(request *EnterpriseOrgCreateNodeRequest) (_result *EnterpriseOrgCreateNodeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EnterpriseOrgCreateNodeResponse{}
+	_body, _err := client.EnterpriseOrgCreateNodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除组织节点
+//
+// @param tmpReq - EnterpriseOrgDeleteNodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnterpriseOrgDeleteNodeResponse
+func (client *Client) EnterpriseOrgDeleteNodeWithOptions(tmpReq *EnterpriseOrgDeleteNodeRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseOrgDeleteNodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &EnterpriseOrgDeleteNodeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Ext) {
+		request.ExtShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ext, dara.String("Ext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		body["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.BizName) {
+		body["BizName"] = request.BizName
+	}
+
+	if !dara.IsNil(request.ExtShrink) {
+		body["Ext"] = request.ExtShrink
+	}
+
+	if !dara.IsNil(request.IsOpenApi) {
+		body["IsOpenApi"] = request.IsOpenApi
+	}
+
+	if !dara.IsNil(request.NodeId) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !dara.IsNil(request.NodeType) {
+		body["NodeType"] = request.NodeType
+	}
+
+	if !dara.IsNil(request.OrientedEcId) {
+		body["OrientedEcId"] = request.OrientedEcId
+	}
+
+	if !dara.IsNil(request.OrientedLeId) {
+		body["OrientedLeId"] = request.OrientedLeId
+	}
+
+	if !dara.IsNil(request.OrientedNbId) {
+		body["OrientedNbId"] = request.OrientedNbId
+	}
+
+	if !dara.IsNil(request.ShowCompleteInfo) {
+		body["ShowCompleteInfo"] = request.ShowCompleteInfo
+	}
+
+	if !dara.IsNil(request.TreeId) {
+		body["TreeId"] = request.TreeId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnterpriseOrgDeleteNode"),
+		Version:     dara.String("2024-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnterpriseOrgDeleteNodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除组织节点
+//
+// @param request - EnterpriseOrgDeleteNodeRequest
+//
+// @return EnterpriseOrgDeleteNodeResponse
+func (client *Client) EnterpriseOrgDeleteNode(request *EnterpriseOrgDeleteNodeRequest) (_result *EnterpriseOrgDeleteNodeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EnterpriseOrgDeleteNodeResponse{}
+	_body, _err := client.EnterpriseOrgDeleteNodeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2337,6 +2621,118 @@ func (client *Client) EnterpriseOrgQueryLoadTree(request *EnterpriseOrgQueryLoad
 	runtime := &dara.RuntimeOptions{}
 	_result = &EnterpriseOrgQueryLoadTreeResponse{}
 	_body, _err := client.EnterpriseOrgQueryLoadTreeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 重命名组织节点
+//
+// @param tmpReq - EnterpriseOrgRenameNodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnterpriseOrgRenameNodeResponse
+func (client *Client) EnterpriseOrgRenameNodeWithOptions(tmpReq *EnterpriseOrgRenameNodeRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseOrgRenameNodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &EnterpriseOrgRenameNodeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Ext) {
+		request.ExtShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ext, dara.String("Ext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		body["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.BizName) {
+		body["BizName"] = request.BizName
+	}
+
+	if !dara.IsNil(request.ExtShrink) {
+		body["Ext"] = request.ExtShrink
+	}
+
+	if !dara.IsNil(request.IsOpenApi) {
+		body["IsOpenApi"] = request.IsOpenApi
+	}
+
+	if !dara.IsNil(request.NodeId) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !dara.IsNil(request.NodeName) {
+		body["NodeName"] = request.NodeName
+	}
+
+	if !dara.IsNil(request.NodeType) {
+		body["NodeType"] = request.NodeType
+	}
+
+	if !dara.IsNil(request.OrientedEcId) {
+		body["OrientedEcId"] = request.OrientedEcId
+	}
+
+	if !dara.IsNil(request.OrientedLeId) {
+		body["OrientedLeId"] = request.OrientedLeId
+	}
+
+	if !dara.IsNil(request.OrientedNbId) {
+		body["OrientedNbId"] = request.OrientedNbId
+	}
+
+	if !dara.IsNil(request.ShowCompleteInfo) {
+		body["ShowCompleteInfo"] = request.ShowCompleteInfo
+	}
+
+	if !dara.IsNil(request.TreeId) {
+		body["TreeId"] = request.TreeId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnterpriseOrgRenameNode"),
+		Version:     dara.String("2024-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnterpriseOrgRenameNodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重命名组织节点
+//
+// @param request - EnterpriseOrgRenameNodeRequest
+//
+// @return EnterpriseOrgRenameNodeResponse
+func (client *Client) EnterpriseOrgRenameNode(request *EnterpriseOrgRenameNodeRequest) (_result *EnterpriseOrgRenameNodeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EnterpriseOrgRenameNodeResponse{}
+	_body, _err := client.EnterpriseOrgRenameNodeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3390,7 +3786,11 @@ func (client *Client) EnterpriseUninvitedAdminInviteJoinEnterprise(request *Ente
 
 // Summary:
 //
-// 账号中心发送异步验证邮件
+// Sends an asynchronous email verification message to verify the email address of a specified contact.
+//
+// Description:
+//
+// Sends an asynchronous verification link for a contact\\"s email address. Additional rate limits apply. The same account and contact information combination cannot exceed 20 requests within 5 minutes. The same account cannot exceed 300 requests globally within 24 hours.
 //
 // @param request - SendAsyncEmailCaptchaRequest
 //
@@ -3442,7 +3842,11 @@ func (client *Client) SendAsyncEmailCaptchaWithOptions(request *SendAsyncEmailCa
 
 // Summary:
 //
-// 账号中心发送异步验证邮件
+// Sends an asynchronous email verification message to verify the email address of a specified contact.
+//
+// Description:
+//
+// Sends an asynchronous verification link for a contact\\"s email address. Additional rate limits apply. The same account and contact information combination cannot exceed 20 requests within 5 minutes. The same account cannot exceed 300 requests globally within 24 hours.
 //
 // @param request - SendAsyncEmailCaptchaRequest
 //
@@ -3460,7 +3864,11 @@ func (client *Client) SendAsyncEmailCaptcha(request *SendAsyncEmailCaptchaReques
 
 // Summary:
 //
-// 账号中心发送异步验证短信
+// Sends an asynchronous verification SMS to a phone number to verify the phone number of a specified contact.
+//
+// Description:
+//
+// Sends an asynchronous verification link for a contact\\"s contact information. Additional rate limits apply. The same account and contact information combination cannot exceed 20 requests within 5 minutes. The same account cannot exceed 300 requests globally within 24 hours.
 //
 // @param request - SendAsyncMobileCaptchaRequest
 //
@@ -3512,7 +3920,11 @@ func (client *Client) SendAsyncMobileCaptchaWithOptions(request *SendAsyncMobile
 
 // Summary:
 //
-// 账号中心发送异步验证短信
+// Sends an asynchronous verification SMS to a phone number to verify the phone number of a specified contact.
+//
+// Description:
+//
+// Sends an asynchronous verification link for a contact\\"s contact information. Additional rate limits apply. The same account and contact information combination cannot exceed 20 requests within 5 minutes. The same account cannot exceed 300 requests globally within 24 hours.
 //
 // @param request - SendAsyncMobileCaptchaRequest
 //

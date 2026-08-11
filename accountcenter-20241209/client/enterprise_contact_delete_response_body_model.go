@@ -22,22 +22,36 @@ type iEnterpriseContactDeleteResponseBody interface {
 }
 
 type EnterpriseContactDeleteResponseBody struct {
+  // The status code.
+  // 
   // example:
   // 
   // 200
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // The processing result.
+  // 
   // example:
   // 
   // true
   Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+  // The message.
+  // 
   // example:
   // 
   // Success
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+  // The request ID.
+  // 
   // example:
   // 
   // 36E0A548-4BA3-549B-8855-22E3F5C6D47E
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // Indicates whether the operation was successful. Valid values:
+  // 
+  // - true: Successful.
+  // 
+  // - false: Failed.
+  // 
   // example:
   // 
   // True

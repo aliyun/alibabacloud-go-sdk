@@ -30,37 +30,52 @@ type iEnterpriseContactQueryPageListResponseBody interface {
 }
 
 type EnterpriseContactQueryPageListResponseBody struct {
+  // The status code.
+  // 
   // example:
   // 
   // 200
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // The operation result.
   Data []*EnterpriseContactQueryPageListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-  // msg
+  // The returned message.
   // 
   // example:
   // 
   // successful
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+  // Current page number.
+  // 
   // example:
   // 
   // 1
   PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+  // Page size.
+  // 
   // example:
   // 
   // 10
   PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+  // The request ID.
+  // 
   // example:
   // 
   // C0A6196F-52A0-5EC9-B8D3-263CEF806EC4
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // Indicates whether the operation is successful. Valid values: true: The operation is successful. false: The operation failed.
+  // 
   // example:
   // 
   // True
   Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+  // Total data count.
+  // 
   // example:
   // 
   // 11
   TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+  // Total number of pages.
+  // 
   // example:
   // 
   // 0
@@ -170,53 +185,80 @@ func (s *EnterpriseContactQueryPageListResponseBody) Validate() error {
 }
 
 type EnterpriseContactQueryPageListResponseBodyData struct {
+  // The contact email.
+  // 
   // example:
   // 
   // xx@xx.xx
   ContactEmail *string `json:"ContactEmail,omitempty" xml:"ContactEmail,omitempty"`
+  // The contact ID.
+  // 
   // example:
   // 
   // xxx
   ContactId *int64 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+  // The contact mobile number.
+  // 
   // example:
   // 
   // 1xxxxxxxxxx
   ContactMobile *string `json:"ContactMobile,omitempty" xml:"ContactMobile,omitempty"`
+  // The contact name.
+  // 
+  // example:
+  // 
+  // 曾老师
   ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+  // The position.
+  // 
   // example:
   // 
   // 1
   ContactPosition *string `json:"ContactPosition,omitempty" xml:"ContactPosition,omitempty"`
+  // The customer ID, compatible with the old model.
+  // 
   // example:
   // 
   // xxx
   CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+  // Whether the email is verified.
+  // 
   // example:
   // 
   // true
   EmailConfirmed *bool `json:"EmailConfirmed,omitempty" xml:"EmailConfirmed,omitempty"`
+  // The entity ID.
+  // 
   // example:
   // 
   // xxx
   EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-  // leId/customerId
+  // The entity type. Valid values: leId and customerId.
   // 
   // example:
   // 
   // customerId
   EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+  // Whether the mobile number is verified.
+  // 
   // example:
   // 
   // true
   MobileConfirmed *bool `json:"MobileConfirmed,omitempty" xml:"MobileConfirmed,omitempty"`
+  // Whether it is a shared contact.
+  // 
   // example:
   // 
   // false
   SharedContact *bool `json:"SharedContact,omitempty" xml:"SharedContact,omitempty"`
+  // The time when the contact was last modified.
+  // 
   // example:
   // 
   // xxx
   UpdateDate *int64 `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+  // The user who last modified the contact.
+  // 
   // example:
   // 
   // xx

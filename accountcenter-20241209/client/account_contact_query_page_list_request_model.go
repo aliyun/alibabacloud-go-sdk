@@ -32,42 +32,62 @@ type iAccountContactQueryPageListRequest interface {
 }
 
 type AccountContactQueryPageListRequest struct {
+	// The application name.
+	//
 	// example:
 	//
 	// xxx
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The entity ID of the cross-enterprise management object.
+	//
 	// example:
 	//
 	// null
 	OrientedEcId *string `json:"OrientedEcId,omitempty" xml:"OrientedEcId,omitempty"`
+	// The ID of the enterprise currently switched to.
+	//
 	// example:
 	//
 	// null
 	OrientedLeId *string `json:"OrientedLeId,omitempty" xml:"OrientedLeId,omitempty"`
+	// The entity ID of the cross-enterprise management object.
+	//
 	// example:
 	//
 	// null
 	OrientedNbId *string `json:"OrientedNbId,omitempty" xml:"OrientedNbId,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies whether to query only private contacts of the account. Default value: true.
+	//
 	// example:
 	//
 	// true
 	PrivateContact *bool `json:"PrivateContact,omitempty" xml:"PrivateContact,omitempty"`
+	// The name, email address, or mobile number used to filter contacts.
+	//
 	// example:
 	//
 	// keyword
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Specifies whether to query only shared contacts. Default value: false.
+	//
 	// example:
 	//
 	// false
 	SharedContact *bool `json:"SharedContact,omitempty" xml:"SharedContact,omitempty"`
+	// Specifies whether to display complete information.
+	//
 	// example:
 	//
 	// false

@@ -22,19 +22,28 @@ type iAccountContactEditResponseBody interface {
 }
 
 type AccountContactEditResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// 200
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data result of the current category statistics
 	Data *AccountContactEditResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// E4E192DF-798B-58AE-B8BF-EBC15E2E85F2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation is successful. Valid values: true: succeeded. false: failed.
+	//
 	// example:
 	//
 	// True
@@ -104,11 +113,16 @@ func (s *AccountContactEditResponseBody) Validate() error {
 }
 
 type AccountContactEditResponseBodyData struct {
+	// Contact ID
+	//
 	// example:
 	//
 	// xxx
-	ContactId *int64                                         `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	ContactId *int64 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// Error codes.
 	ErrorList []*AccountContactEditResponseBodyDataErrorList `json:"ErrorList,omitempty" xml:"ErrorList,omitempty" type:"Repeated"`
+	// Whether successful
+	//
 	// example:
 	//
 	// {\\"TeamDesktops\\": [], \\"PrivateDesktops\\": [], \\"UnallocatedTeamDesktops\\": []}
@@ -164,14 +178,20 @@ func (s *AccountContactEditResponseBodyData) Validate() error {
 }
 
 type AccountContactEditResponseBodyDataErrorList struct {
+	// Error code
+	//
 	// example:
 	//
 	// MOBILE_CODE_ILLEGAL
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Cause of the diagnostic issue.
+	//
 	// example:
 	//
 	// MOBILE_CODE_ILLEGAL
 	ErrorDesc *string `json:"ErrorDesc,omitempty" xml:"ErrorDesc,omitempty"`
+	// Exception field
+	//
 	// example:
 	//
 	// MOBILE_VERIFY_CODE

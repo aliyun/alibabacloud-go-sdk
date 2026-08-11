@@ -40,58 +40,86 @@ type iEnterpriseContactEditRequest interface {
 }
 
 type EnterpriseContactEditRequest struct {
+  // The application name.
+  // 
   // example:
   // 
   // xxx
   AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+  // Specifies whether to asynchronously verify the email address. Set this parameter to true for API calls. Otherwise, the verification code is synchronously and strictly verified. Call SendAsyncEmailCaptcha to send a verification link.
+  // 
   // example:
   // 
   // true
   AsyncEmailVerify *bool `json:"AsyncEmailVerify,omitempty" xml:"AsyncEmailVerify,omitempty"`
+  // Specifies whether to asynchronously verify the mobile phone number. Set this parameter to true for API calls. Otherwise, the verification code is synchronously and strictly verified. Call SendAsyncMobileCaptcha to send a verification link.
+  // 
   // example:
   // 
   // true
   AsyncMobileVerify *bool `json:"AsyncMobileVerify,omitempty" xml:"AsyncMobileVerify,omitempty"`
+  // The email address of the contact.
+  // 
   // example:
   // 
   // xxx@xxx.xx
   ContactEmail *string `json:"ContactEmail,omitempty" xml:"ContactEmail,omitempty"`
+  // The ID of the contact to modify. You can invoke the EnterpriseContactQueryPageList operation to perform a paged query of account contact information.
+  // 
   // example:
   // 
   // xxx
   ContactId *int64 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+  // The mobile phone number of the contact.
+  // 
   // example:
   // 
   // 1xxxxxxxxxx
   ContactMobile *string `json:"ContactMobile,omitempty" xml:"ContactMobile,omitempty"`
+  // The name of the contact.
+  // 
   // example:
   // 
   // xxx
   ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+  // The position of the contact.
+  // 
   // example:
   // 
   // 2
   ContactPosition *string `json:"ContactPosition,omitempty" xml:"ContactPosition,omitempty"`
+  // The email verification code.
+  // 
   // example:
   // 
   // null
   EmailCode *string `json:"EmailCode,omitempty" xml:"EmailCode,omitempty"`
+  // The SMS verification code.
+  // 
   // example:
   // 
   // null
   MobileCode *string `json:"MobileCode,omitempty" xml:"MobileCode,omitempty"`
+  // The entity ID of the cross-enterprise management object.
+  // 
   // example:
   // 
   // null
   OrientedEcId *string `json:"OrientedEcId,omitempty" xml:"OrientedEcId,omitempty"`
+  // The ID of the enterprise to which you have switched.
+  // 
   // example:
   // 
   // null
   OrientedLeId *string `json:"OrientedLeId,omitempty" xml:"OrientedLeId,omitempty"`
+  // The sales channel ID of the cross-enterprise management object.
+  // 
   // example:
   // 
   // null
   OrientedNbId *string `json:"OrientedNbId,omitempty" xml:"OrientedNbId,omitempty"`
+  // Specifies whether the contact is a public contact. This operation sets this parameter to true by default.
+  // 
   // example:
   // 
   // true

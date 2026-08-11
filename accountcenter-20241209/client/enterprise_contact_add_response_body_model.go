@@ -22,19 +22,32 @@ type iEnterpriseContactAddResponseBody interface {
 }
 
 type EnterpriseContactAddResponseBody struct {
+  // The status code.
+  // 
   // example:
   // 
   // OK
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // The data result of the current category statistics.
   Data *EnterpriseContactAddResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+  // The error message.
+  // 
   // example:
   // 
   // Successful!
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+  // The request ID.
+  // 
   // example:
   // 
   // 40EA3ECB-2167-5A8E-9327-F7E59E508FA8
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // Indicates whether the operation is successful. Valid values:
+  // 
+  // - true: Successful.
+  // 
+  // - false: Failed.
+  // 
   // example:
   // 
   // True
@@ -104,11 +117,16 @@ func (s *EnterpriseContactAddResponseBody) Validate() error {
 }
 
 type EnterpriseContactAddResponseBodyData struct {
+  // The contact ID.
+  // 
   // example:
   // 
   // xxx
   ContactId *int64 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+  // The error status information.
   ErrorList []*EnterpriseContactAddResponseBodyDataErrorList `json:"ErrorList,omitempty" xml:"ErrorList,omitempty" type:"Repeated"`
+  // Indicates whether the operation is successful.
+  // 
   // example:
   // 
   // xxx
@@ -164,14 +182,20 @@ func (s *EnterpriseContactAddResponseBodyData) Validate() error {
 }
 
 type EnterpriseContactAddResponseBodyDataErrorList struct {
+  // The error code.
+  // 
   // example:
   // 
   // MOBILE_CODE_ILLEGAL
   ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+  // The description of the diagnosed issue.
+  // 
   // example:
   // 
   // Mobile Code Illegal
   ErrorDesc *string `json:"ErrorDesc,omitempty" xml:"ErrorDesc,omitempty"`
+  // The field that caused the exception.
+  // 
   // example:
   // 
   // MOBILE_VERIFY_CODE
