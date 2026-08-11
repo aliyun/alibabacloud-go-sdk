@@ -130,12 +130,12 @@ func (s *GlobalHotelApplyRefundResponseBody) Validate() error {
 }
 
 type GlobalHotelApplyRefundResponseBodyData struct {
-	// The after-sales refund order ID.
+	// The after-sales refund order number.
 	//
 	// example:
 	//
-	// 100001
-	SellRefundOrderId *int64 `json:"SellRefundOrderId,omitempty" xml:"SellRefundOrderId,omitempty"`
+	// RF202606290001
+	RefundOrderNo *string `json:"RefundOrderNo,omitempty" xml:"RefundOrderNo,omitempty"`
 	// The total penalty amount.
 	TotalPenaltyAmount *GlobalHotelApplyRefundResponseBodyDataTotalPenaltyAmount `json:"TotalPenaltyAmount,omitempty" xml:"TotalPenaltyAmount,omitempty" type:"Struct"`
 	// The total refund amount.
@@ -156,8 +156,8 @@ func (s GlobalHotelApplyRefundResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GlobalHotelApplyRefundResponseBodyData) GetSellRefundOrderId() *int64 {
-	return s.SellRefundOrderId
+func (s *GlobalHotelApplyRefundResponseBodyData) GetRefundOrderNo() *string {
+	return s.RefundOrderNo
 }
 
 func (s *GlobalHotelApplyRefundResponseBodyData) GetTotalPenaltyAmount() *GlobalHotelApplyRefundResponseBodyDataTotalPenaltyAmount {
@@ -172,8 +172,8 @@ func (s *GlobalHotelApplyRefundResponseBodyData) GetTracerId() *string {
 	return s.TracerId
 }
 
-func (s *GlobalHotelApplyRefundResponseBodyData) SetSellRefundOrderId(v int64) *GlobalHotelApplyRefundResponseBodyData {
-	s.SellRefundOrderId = &v
+func (s *GlobalHotelApplyRefundResponseBodyData) SetRefundOrderNo(v string) *GlobalHotelApplyRefundResponseBodyData {
+	s.RefundOrderNo = &v
 	return s
 }
 

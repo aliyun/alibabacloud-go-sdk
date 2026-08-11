@@ -22,13 +22,13 @@ type iDataHotelsValue interface {
 }
 
 type DataHotelsValue struct {
-	// The check-in date in the format of yyyy-MM-dd.
+	// The check-in date (yyyy-MM-dd).
 	//
 	// example:
 	//
 	// 2026-01-01
 	CheckInDate *string `json:"CheckInDate,omitempty" xml:"CheckInDate,omitempty"`
-	// The check-out date in the format of yyyy-MM-dd.
+	// The check-out date (yyyy-MM-dd).
 	//
 	// example:
 	//
@@ -128,9 +128,9 @@ type DataHotelsValueRooms struct {
 	//
 	// R001
 	StandardRoomId *string `json:"StandardRoomId,omitempty" xml:"StandardRoomId,omitempty"`
-	// The lowest selling price for the room type on the day.
-	LowestSellingPrice *DataHotelsValueRoomsLowestSellingPrice `json:"LowestSellingPrice,omitempty" xml:"LowestSellingPrice,omitempty" type:"Struct"`
-	// The list of all available offers for the room type. Calendar quotes cannot be used for price verification, so itemOfferKey is not returned.
+	// The lowest price for the room type on the day.
+	LowestPrice *DataHotelsValueRoomsLowestPrice `json:"LowestPrice,omitempty" xml:"LowestPrice,omitempty" type:"Struct"`
+	// The list of all available offers for the room type.
 	Offers []*DataHotelsValueRoomsOffers `json:"Offers,omitempty" xml:"Offers,omitempty" type:"Repeated"`
 }
 
@@ -146,8 +146,8 @@ func (s *DataHotelsValueRooms) GetStandardRoomId() *string {
 	return s.StandardRoomId
 }
 
-func (s *DataHotelsValueRooms) GetLowestSellingPrice() *DataHotelsValueRoomsLowestSellingPrice {
-	return s.LowestSellingPrice
+func (s *DataHotelsValueRooms) GetLowestPrice() *DataHotelsValueRoomsLowestPrice {
+	return s.LowestPrice
 }
 
 func (s *DataHotelsValueRooms) GetOffers() []*DataHotelsValueRoomsOffers {
@@ -159,8 +159,8 @@ func (s *DataHotelsValueRooms) SetStandardRoomId(v string) *DataHotelsValueRooms
 	return s
 }
 
-func (s *DataHotelsValueRooms) SetLowestSellingPrice(v *DataHotelsValueRoomsLowestSellingPrice) *DataHotelsValueRooms {
-	s.LowestSellingPrice = v
+func (s *DataHotelsValueRooms) SetLowestPrice(v *DataHotelsValueRoomsLowestPrice) *DataHotelsValueRooms {
+	s.LowestPrice = v
 	return s
 }
 
@@ -170,8 +170,8 @@ func (s *DataHotelsValueRooms) SetOffers(v []*DataHotelsValueRoomsOffers) *DataH
 }
 
 func (s *DataHotelsValueRooms) Validate() error {
-	if s.LowestSellingPrice != nil {
-		if err := s.LowestSellingPrice.Validate(); err != nil {
+	if s.LowestPrice != nil {
+		if err := s.LowestPrice.Validate(); err != nil {
 			return err
 		}
 	}
@@ -187,68 +187,68 @@ func (s *DataHotelsValueRooms) Validate() error {
 	return nil
 }
 
-type DataHotelsValueRoomsLowestSellingPrice struct {
-	// The amount.
+type DataHotelsValueRoomsLowestPrice struct {
+	// The amount in the smallest currency unit.
 	//
 	// example:
 	//
-	// 100.00
-	Amount *float64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// 287
+	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// The currency code.
 	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// traceId
+	// null
 	//
 	// example:
 	//
-	// TraceId
+	// null
 	TracerId *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
 }
 
-func (s DataHotelsValueRoomsLowestSellingPrice) String() string {
+func (s DataHotelsValueRoomsLowestPrice) String() string {
 	return dara.Prettify(s)
 }
 
-func (s DataHotelsValueRoomsLowestSellingPrice) GoString() string {
+func (s DataHotelsValueRoomsLowestPrice) GoString() string {
 	return s.String()
 }
 
-func (s *DataHotelsValueRoomsLowestSellingPrice) GetAmount() *float64 {
+func (s *DataHotelsValueRoomsLowestPrice) GetAmount() *string {
 	return s.Amount
 }
 
-func (s *DataHotelsValueRoomsLowestSellingPrice) GetCurrency() *string {
+func (s *DataHotelsValueRoomsLowestPrice) GetCurrency() *string {
 	return s.Currency
 }
 
-func (s *DataHotelsValueRoomsLowestSellingPrice) GetTracerId() *string {
+func (s *DataHotelsValueRoomsLowestPrice) GetTracerId() *string {
 	return s.TracerId
 }
 
-func (s *DataHotelsValueRoomsLowestSellingPrice) SetAmount(v float64) *DataHotelsValueRoomsLowestSellingPrice {
+func (s *DataHotelsValueRoomsLowestPrice) SetAmount(v string) *DataHotelsValueRoomsLowestPrice {
 	s.Amount = &v
 	return s
 }
 
-func (s *DataHotelsValueRoomsLowestSellingPrice) SetCurrency(v string) *DataHotelsValueRoomsLowestSellingPrice {
+func (s *DataHotelsValueRoomsLowestPrice) SetCurrency(v string) *DataHotelsValueRoomsLowestPrice {
 	s.Currency = &v
 	return s
 }
 
-func (s *DataHotelsValueRoomsLowestSellingPrice) SetTracerId(v string) *DataHotelsValueRoomsLowestSellingPrice {
+func (s *DataHotelsValueRoomsLowestPrice) SetTracerId(v string) *DataHotelsValueRoomsLowestPrice {
 	s.TracerId = &v
 	return s
 }
 
-func (s *DataHotelsValueRoomsLowestSellingPrice) Validate() error {
+func (s *DataHotelsValueRoomsLowestPrice) Validate() error {
 	return dara.Validate(s)
 }
 
 type DataHotelsValueRoomsOffers struct {
-	// The item-level offer identifier (price verification key, passed through as-is).
+	// The item-level offer identifier (price verification key, pass through as-is).
 	//
 	// example:
 	//
@@ -258,7 +258,7 @@ type DataHotelsValueRoomsOffers struct {
 	//
 	// example:
 	//
-	// Room with breakfast
+	// Breakfast included
 	RatePlanName *string `json:"RatePlanName,omitempty" xml:"RatePlanName,omitempty"`
 	// The meal type.
 	//
@@ -275,22 +275,22 @@ type DataHotelsValueRoomsOffers struct {
 	// The cancellation policy.
 	CancelPolicy *DataHotelsValueRoomsOffersCancelPolicy `json:"CancelPolicy,omitempty" xml:"CancelPolicy,omitempty" type:"Struct"`
 	// The total selling price.
-	SellingTotalPrice *DataHotelsValueRoomsOffersSellingTotalPrice `json:"SellingTotalPrice,omitempty" xml:"SellingTotalPrice,omitempty" type:"Struct"`
-	// The list of daily selling prices.
-	SellingDailyPrices []*DataHotelsValueRoomsOffersSellingDailyPrices `json:"SellingDailyPrices,omitempty" xml:"SellingDailyPrices,omitempty" type:"Repeated"`
+	TotalPrice *DataHotelsValueRoomsOffersTotalPrice `json:"TotalPrice,omitempty" xml:"TotalPrice,omitempty" type:"Struct"`
+	// The list of daily prices.
+	DailyPrices []*DataHotelsValueRoomsOffersDailyPrices `json:"DailyPrices,omitempty" xml:"DailyPrices,omitempty" type:"Repeated"`
 	// The number of available rooms.
 	//
 	// example:
 	//
 	// 5
 	AvailableRooms *int32 `json:"AvailableRooms,omitempty" xml:"AvailableRooms,omitempty"`
-	// The maximum number of guests.
+	// The maximum number of guests allowed.
 	//
 	// example:
 	//
 	// 3
 	MaxOccupancy *int32 `json:"MaxOccupancy,omitempty" xml:"MaxOccupancy,omitempty"`
-	// The confirmation type. Valid values: INSTANT_CONFIRM and NON_INSTANT_CONFIRM.
+	// The confirmation type (INSTANT_CONFIRM/NON_INSTANT_CONFIRM).
 	//
 	// example:
 	//
@@ -326,12 +326,12 @@ func (s *DataHotelsValueRoomsOffers) GetCancelPolicy() *DataHotelsValueRoomsOffe
 	return s.CancelPolicy
 }
 
-func (s *DataHotelsValueRoomsOffers) GetSellingTotalPrice() *DataHotelsValueRoomsOffersSellingTotalPrice {
-	return s.SellingTotalPrice
+func (s *DataHotelsValueRoomsOffers) GetTotalPrice() *DataHotelsValueRoomsOffersTotalPrice {
+	return s.TotalPrice
 }
 
-func (s *DataHotelsValueRoomsOffers) GetSellingDailyPrices() []*DataHotelsValueRoomsOffersSellingDailyPrices {
-	return s.SellingDailyPrices
+func (s *DataHotelsValueRoomsOffers) GetDailyPrices() []*DataHotelsValueRoomsOffersDailyPrices {
+	return s.DailyPrices
 }
 
 func (s *DataHotelsValueRoomsOffers) GetAvailableRooms() *int32 {
@@ -371,13 +371,13 @@ func (s *DataHotelsValueRoomsOffers) SetCancelPolicy(v *DataHotelsValueRoomsOffe
 	return s
 }
 
-func (s *DataHotelsValueRoomsOffers) SetSellingTotalPrice(v *DataHotelsValueRoomsOffersSellingTotalPrice) *DataHotelsValueRoomsOffers {
-	s.SellingTotalPrice = v
+func (s *DataHotelsValueRoomsOffers) SetTotalPrice(v *DataHotelsValueRoomsOffersTotalPrice) *DataHotelsValueRoomsOffers {
+	s.TotalPrice = v
 	return s
 }
 
-func (s *DataHotelsValueRoomsOffers) SetSellingDailyPrices(v []*DataHotelsValueRoomsOffersSellingDailyPrices) *DataHotelsValueRoomsOffers {
-	s.SellingDailyPrices = v
+func (s *DataHotelsValueRoomsOffers) SetDailyPrices(v []*DataHotelsValueRoomsOffersDailyPrices) *DataHotelsValueRoomsOffers {
+	s.DailyPrices = v
 	return s
 }
 
@@ -402,13 +402,13 @@ func (s *DataHotelsValueRoomsOffers) Validate() error {
 			return err
 		}
 	}
-	if s.SellingTotalPrice != nil {
-		if err := s.SellingTotalPrice.Validate(); err != nil {
+	if s.TotalPrice != nil {
+		if err := s.TotalPrice.Validate(); err != nil {
 			return err
 		}
 	}
-	if s.SellingDailyPrices != nil {
-		for _, item := range s.SellingDailyPrices {
+	if s.DailyPrices != nil {
+		for _, item := range s.DailyPrices {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -420,7 +420,7 @@ func (s *DataHotelsValueRoomsOffers) Validate() error {
 }
 
 type DataHotelsValueRoomsOffersCancelPolicy struct {
-	// The policy type. Valid values: NON_REFUNDABLE, FREE_CANCELLATION, and PARTIAL_REFUND.
+	// The policy type (NON_REFUNDABLE/FREE_CANCELLATION/PARTIAL_REFUND).
 	//
 	// example:
 	//
@@ -485,31 +485,31 @@ func (s *DataHotelsValueRoomsOffersCancelPolicy) Validate() error {
 }
 
 type DataHotelsValueRoomsOffersCancelPolicyPenalties struct {
-	// The effective start time, in UTC millisecond timestamp.
+	// The effective start time (UTC millisecond timestamp).
 	//
 	// example:
 	//
 	// 1672531200000
-	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
-	// The effective end time, in UTC millisecond timestamp.
+	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
+	// The effective end time (UTC millisecond timestamp).
 	//
 	// example:
 	//
 	// 1672617600000
-	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// The penalty type. Valid values: PERCENTAGE, AMOUNT, and NIGHTS.
+	End *string `json:"End,omitempty" xml:"End,omitempty"`
+	// The penalty type (PERCENTAGE/AMOUNT/NIGHTS).
 	//
 	// example:
 	//
 	// PERCENTAGE
 	PenaltyType *string `json:"PenaltyType,omitempty" xml:"PenaltyType,omitempty"`
-	// The penalty value (percentage, amount, or number of nights).
+	// The penalty value (percentage/amount/nights).
 	//
 	// example:
 	//
 	// 50
 	PenaltyValue *string `json:"PenaltyValue,omitempty" xml:"PenaltyValue,omitempty"`
-	// The currency. This parameter has a value only when PenaltyType is set to AMOUNT.
+	// The currency code (present only when the penalty type is AMOUNT).
 	//
 	// example:
 	//
@@ -531,11 +531,11 @@ func (s DataHotelsValueRoomsOffersCancelPolicyPenalties) GoString() string {
 	return s.String()
 }
 
-func (s *DataHotelsValueRoomsOffersCancelPolicyPenalties) GetStart() *int64 {
+func (s *DataHotelsValueRoomsOffersCancelPolicyPenalties) GetStart() *string {
 	return s.Start
 }
 
-func (s *DataHotelsValueRoomsOffersCancelPolicyPenalties) GetEnd() *int64 {
+func (s *DataHotelsValueRoomsOffersCancelPolicyPenalties) GetEnd() *string {
 	return s.End
 }
 
@@ -555,12 +555,12 @@ func (s *DataHotelsValueRoomsOffersCancelPolicyPenalties) GetTracerId() *string 
 	return s.TracerId
 }
 
-func (s *DataHotelsValueRoomsOffersCancelPolicyPenalties) SetStart(v int64) *DataHotelsValueRoomsOffersCancelPolicyPenalties {
+func (s *DataHotelsValueRoomsOffersCancelPolicyPenalties) SetStart(v string) *DataHotelsValueRoomsOffersCancelPolicyPenalties {
 	s.Start = &v
 	return s
 }
 
-func (s *DataHotelsValueRoomsOffersCancelPolicyPenalties) SetEnd(v int64) *DataHotelsValueRoomsOffersCancelPolicyPenalties {
+func (s *DataHotelsValueRoomsOffersCancelPolicyPenalties) SetEnd(v string) *DataHotelsValueRoomsOffersCancelPolicyPenalties {
 	s.End = &v
 	return s
 }
@@ -589,119 +589,119 @@ func (s *DataHotelsValueRoomsOffersCancelPolicyPenalties) Validate() error {
 	return dara.Validate(s)
 }
 
-type DataHotelsValueRoomsOffersSellingTotalPrice struct {
-	// The amount.
+type DataHotelsValueRoomsOffersTotalPrice struct {
+	// The amount in the smallest currency unit.
 	//
 	// example:
 	//
-	// 100.00
-	Amount *float64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// 287
+	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// The currency code.
 	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// TraceId
+	// null
 	//
 	// example:
 	//
-	// TraceId
+	// null
 	TracerId *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
 }
 
-func (s DataHotelsValueRoomsOffersSellingTotalPrice) String() string {
+func (s DataHotelsValueRoomsOffersTotalPrice) String() string {
 	return dara.Prettify(s)
 }
 
-func (s DataHotelsValueRoomsOffersSellingTotalPrice) GoString() string {
+func (s DataHotelsValueRoomsOffersTotalPrice) GoString() string {
 	return s.String()
 }
 
-func (s *DataHotelsValueRoomsOffersSellingTotalPrice) GetAmount() *float64 {
+func (s *DataHotelsValueRoomsOffersTotalPrice) GetAmount() *string {
 	return s.Amount
 }
 
-func (s *DataHotelsValueRoomsOffersSellingTotalPrice) GetCurrency() *string {
+func (s *DataHotelsValueRoomsOffersTotalPrice) GetCurrency() *string {
 	return s.Currency
 }
 
-func (s *DataHotelsValueRoomsOffersSellingTotalPrice) GetTracerId() *string {
+func (s *DataHotelsValueRoomsOffersTotalPrice) GetTracerId() *string {
 	return s.TracerId
 }
 
-func (s *DataHotelsValueRoomsOffersSellingTotalPrice) SetAmount(v float64) *DataHotelsValueRoomsOffersSellingTotalPrice {
+func (s *DataHotelsValueRoomsOffersTotalPrice) SetAmount(v string) *DataHotelsValueRoomsOffersTotalPrice {
 	s.Amount = &v
 	return s
 }
 
-func (s *DataHotelsValueRoomsOffersSellingTotalPrice) SetCurrency(v string) *DataHotelsValueRoomsOffersSellingTotalPrice {
+func (s *DataHotelsValueRoomsOffersTotalPrice) SetCurrency(v string) *DataHotelsValueRoomsOffersTotalPrice {
 	s.Currency = &v
 	return s
 }
 
-func (s *DataHotelsValueRoomsOffersSellingTotalPrice) SetTracerId(v string) *DataHotelsValueRoomsOffersSellingTotalPrice {
+func (s *DataHotelsValueRoomsOffersTotalPrice) SetTracerId(v string) *DataHotelsValueRoomsOffersTotalPrice {
 	s.TracerId = &v
 	return s
 }
 
-func (s *DataHotelsValueRoomsOffersSellingTotalPrice) Validate() error {
+func (s *DataHotelsValueRoomsOffersTotalPrice) Validate() error {
 	return dara.Validate(s)
 }
 
-type DataHotelsValueRoomsOffersSellingDailyPrices struct {
-	// The check-in date.
+type DataHotelsValueRoomsOffersDailyPrices struct {
+	// The check-in date (yyyy-MM-dd, time zone: hotel local time zone).
 	//
 	// example:
 	//
-	// 2026-07-01
+	// 2026-08-16
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
 	// The price for the day.
-	Price *DataHotelsValueRoomsOffersSellingDailyPricesPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
-	// TraceId
+	Price *DataHotelsValueRoomsOffersDailyPricesPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// null
 	//
 	// example:
 	//
-	// TraceId
+	// null
 	TracerId *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
 }
 
-func (s DataHotelsValueRoomsOffersSellingDailyPrices) String() string {
+func (s DataHotelsValueRoomsOffersDailyPrices) String() string {
 	return dara.Prettify(s)
 }
 
-func (s DataHotelsValueRoomsOffersSellingDailyPrices) GoString() string {
+func (s DataHotelsValueRoomsOffersDailyPrices) GoString() string {
 	return s.String()
 }
 
-func (s *DataHotelsValueRoomsOffersSellingDailyPrices) GetDate() *string {
+func (s *DataHotelsValueRoomsOffersDailyPrices) GetDate() *string {
 	return s.Date
 }
 
-func (s *DataHotelsValueRoomsOffersSellingDailyPrices) GetPrice() *DataHotelsValueRoomsOffersSellingDailyPricesPrice {
+func (s *DataHotelsValueRoomsOffersDailyPrices) GetPrice() *DataHotelsValueRoomsOffersDailyPricesPrice {
 	return s.Price
 }
 
-func (s *DataHotelsValueRoomsOffersSellingDailyPrices) GetTracerId() *string {
+func (s *DataHotelsValueRoomsOffersDailyPrices) GetTracerId() *string {
 	return s.TracerId
 }
 
-func (s *DataHotelsValueRoomsOffersSellingDailyPrices) SetDate(v string) *DataHotelsValueRoomsOffersSellingDailyPrices {
+func (s *DataHotelsValueRoomsOffersDailyPrices) SetDate(v string) *DataHotelsValueRoomsOffersDailyPrices {
 	s.Date = &v
 	return s
 }
 
-func (s *DataHotelsValueRoomsOffersSellingDailyPrices) SetPrice(v *DataHotelsValueRoomsOffersSellingDailyPricesPrice) *DataHotelsValueRoomsOffersSellingDailyPrices {
+func (s *DataHotelsValueRoomsOffersDailyPrices) SetPrice(v *DataHotelsValueRoomsOffersDailyPricesPrice) *DataHotelsValueRoomsOffersDailyPrices {
 	s.Price = v
 	return s
 }
 
-func (s *DataHotelsValueRoomsOffersSellingDailyPrices) SetTracerId(v string) *DataHotelsValueRoomsOffersSellingDailyPrices {
+func (s *DataHotelsValueRoomsOffersDailyPrices) SetTracerId(v string) *DataHotelsValueRoomsOffersDailyPrices {
 	s.TracerId = &v
 	return s
 }
 
-func (s *DataHotelsValueRoomsOffersSellingDailyPrices) Validate() error {
+func (s *DataHotelsValueRoomsOffersDailyPrices) Validate() error {
 	if s.Price != nil {
 		if err := s.Price.Validate(); err != nil {
 			return err
@@ -710,68 +710,68 @@ func (s *DataHotelsValueRoomsOffersSellingDailyPrices) Validate() error {
 	return nil
 }
 
-type DataHotelsValueRoomsOffersSellingDailyPricesPrice struct {
-	// The amount.
+type DataHotelsValueRoomsOffersDailyPricesPrice struct {
+	// The amount in the smallest currency unit.
 	//
 	// example:
 	//
-	// 100.00
-	Amount *float64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// 287
+	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// The currency code.
 	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// traceId
+	// null
 	//
 	// example:
 	//
-	// TraceId
+	// null
 	TracerId *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
 }
 
-func (s DataHotelsValueRoomsOffersSellingDailyPricesPrice) String() string {
+func (s DataHotelsValueRoomsOffersDailyPricesPrice) String() string {
 	return dara.Prettify(s)
 }
 
-func (s DataHotelsValueRoomsOffersSellingDailyPricesPrice) GoString() string {
+func (s DataHotelsValueRoomsOffersDailyPricesPrice) GoString() string {
 	return s.String()
 }
 
-func (s *DataHotelsValueRoomsOffersSellingDailyPricesPrice) GetAmount() *float64 {
+func (s *DataHotelsValueRoomsOffersDailyPricesPrice) GetAmount() *string {
 	return s.Amount
 }
 
-func (s *DataHotelsValueRoomsOffersSellingDailyPricesPrice) GetCurrency() *string {
+func (s *DataHotelsValueRoomsOffersDailyPricesPrice) GetCurrency() *string {
 	return s.Currency
 }
 
-func (s *DataHotelsValueRoomsOffersSellingDailyPricesPrice) GetTracerId() *string {
+func (s *DataHotelsValueRoomsOffersDailyPricesPrice) GetTracerId() *string {
 	return s.TracerId
 }
 
-func (s *DataHotelsValueRoomsOffersSellingDailyPricesPrice) SetAmount(v float64) *DataHotelsValueRoomsOffersSellingDailyPricesPrice {
+func (s *DataHotelsValueRoomsOffersDailyPricesPrice) SetAmount(v string) *DataHotelsValueRoomsOffersDailyPricesPrice {
 	s.Amount = &v
 	return s
 }
 
-func (s *DataHotelsValueRoomsOffersSellingDailyPricesPrice) SetCurrency(v string) *DataHotelsValueRoomsOffersSellingDailyPricesPrice {
+func (s *DataHotelsValueRoomsOffersDailyPricesPrice) SetCurrency(v string) *DataHotelsValueRoomsOffersDailyPricesPrice {
 	s.Currency = &v
 	return s
 }
 
-func (s *DataHotelsValueRoomsOffersSellingDailyPricesPrice) SetTracerId(v string) *DataHotelsValueRoomsOffersSellingDailyPricesPrice {
+func (s *DataHotelsValueRoomsOffersDailyPricesPrice) SetTracerId(v string) *DataHotelsValueRoomsOffersDailyPricesPrice {
 	s.TracerId = &v
 	return s
 }
 
-func (s *DataHotelsValueRoomsOffersSellingDailyPricesPrice) Validate() error {
+func (s *DataHotelsValueRoomsOffersDailyPricesPrice) Validate() error {
 	return dara.Validate(s)
 }
 
 type DataHotelsValueOffers struct {
-	// The item-domain offer identifier (price verification key, passed through as-is).
+	// The item offer key used for price verification. Pass through this value as-is.
 	//
 	// example:
 	//
@@ -781,7 +781,7 @@ type DataHotelsValueOffers struct {
 	//
 	// example:
 	//
-	// Breakfast Included
+	// Breakfast included
 	RatePlanName *string `json:"RatePlanName,omitempty" xml:"RatePlanName,omitempty"`
 	// The meal type.
 	//
@@ -795,12 +795,12 @@ type DataHotelsValueOffers struct {
 	//
 	// 2
 	MealCount *int32 `json:"MealCount,omitempty" xml:"MealCount,omitempty"`
-	// The cancellation and modification policy.
+	// The cancellation policy.
 	CancelPolicy *DataHotelsValueOffersCancelPolicy `json:"CancelPolicy,omitempty" xml:"CancelPolicy,omitempty" type:"Struct"`
 	// The total selling price.
-	SellingTotalPrice *DataHotelsValueOffersSellingTotalPrice `json:"SellingTotalPrice,omitempty" xml:"SellingTotalPrice,omitempty" type:"Struct"`
-	// The list of daily selling prices.
-	SellingDailyPrices []*DataHotelsValueOffersSellingDailyPrices `json:"SellingDailyPrices,omitempty" xml:"SellingDailyPrices,omitempty" type:"Repeated"`
+	TotalPrice *DataHotelsValueOffersTotalPrice `json:"TotalPrice,omitempty" xml:"TotalPrice,omitempty" type:"Struct"`
+	// The list of daily prices.
+	DailyPrices []*DataHotelsValueOffersDailyPrices `json:"DailyPrices,omitempty" xml:"DailyPrices,omitempty" type:"Repeated"`
 	// The number of available rooms.
 	//
 	// example:
@@ -849,12 +849,12 @@ func (s *DataHotelsValueOffers) GetCancelPolicy() *DataHotelsValueOffersCancelPo
 	return s.CancelPolicy
 }
 
-func (s *DataHotelsValueOffers) GetSellingTotalPrice() *DataHotelsValueOffersSellingTotalPrice {
-	return s.SellingTotalPrice
+func (s *DataHotelsValueOffers) GetTotalPrice() *DataHotelsValueOffersTotalPrice {
+	return s.TotalPrice
 }
 
-func (s *DataHotelsValueOffers) GetSellingDailyPrices() []*DataHotelsValueOffersSellingDailyPrices {
-	return s.SellingDailyPrices
+func (s *DataHotelsValueOffers) GetDailyPrices() []*DataHotelsValueOffersDailyPrices {
+	return s.DailyPrices
 }
 
 func (s *DataHotelsValueOffers) GetAvailableRooms() *int32 {
@@ -894,13 +894,13 @@ func (s *DataHotelsValueOffers) SetCancelPolicy(v *DataHotelsValueOffersCancelPo
 	return s
 }
 
-func (s *DataHotelsValueOffers) SetSellingTotalPrice(v *DataHotelsValueOffersSellingTotalPrice) *DataHotelsValueOffers {
-	s.SellingTotalPrice = v
+func (s *DataHotelsValueOffers) SetTotalPrice(v *DataHotelsValueOffersTotalPrice) *DataHotelsValueOffers {
+	s.TotalPrice = v
 	return s
 }
 
-func (s *DataHotelsValueOffers) SetSellingDailyPrices(v []*DataHotelsValueOffersSellingDailyPrices) *DataHotelsValueOffers {
-	s.SellingDailyPrices = v
+func (s *DataHotelsValueOffers) SetDailyPrices(v []*DataHotelsValueOffersDailyPrices) *DataHotelsValueOffers {
+	s.DailyPrices = v
 	return s
 }
 
@@ -925,13 +925,13 @@ func (s *DataHotelsValueOffers) Validate() error {
 			return err
 		}
 	}
-	if s.SellingTotalPrice != nil {
-		if err := s.SellingTotalPrice.Validate(); err != nil {
+	if s.TotalPrice != nil {
+		if err := s.TotalPrice.Validate(); err != nil {
 			return err
 		}
 	}
-	if s.SellingDailyPrices != nil {
-		for _, item := range s.SellingDailyPrices {
+	if s.DailyPrices != nil {
+		for _, item := range s.DailyPrices {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -1013,26 +1013,26 @@ type DataHotelsValueOffersCancelPolicyPenalties struct {
 	// example:
 	//
 	// 1672531200000
-	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
+	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
 	// The effective end time (UTC millisecond timestamp).
 	//
 	// example:
 	//
 	// 1672617600000
-	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
+	End *string `json:"End,omitempty" xml:"End,omitempty"`
 	// The penalty type (PERCENTAGE/AMOUNT/NIGHTS).
 	//
 	// example:
 	//
 	// PERCENTAGE
 	PenaltyType *string `json:"PenaltyType,omitempty" xml:"PenaltyType,omitempty"`
-	// The penalty value (percentage/amount/number of nights).
+	// The penalty value (percentage/amount/nights).
 	//
 	// example:
 	//
 	// 50
 	PenaltyValue *string `json:"PenaltyValue,omitempty" xml:"PenaltyValue,omitempty"`
-	// The currency code (only applicable when the penalty type is AMOUNT).
+	// The currency code. This field has a value only when the penalty type is AMOUNT.
 	//
 	// example:
 	//
@@ -1054,11 +1054,11 @@ func (s DataHotelsValueOffersCancelPolicyPenalties) GoString() string {
 	return s.String()
 }
 
-func (s *DataHotelsValueOffersCancelPolicyPenalties) GetStart() *int64 {
+func (s *DataHotelsValueOffersCancelPolicyPenalties) GetStart() *string {
 	return s.Start
 }
 
-func (s *DataHotelsValueOffersCancelPolicyPenalties) GetEnd() *int64 {
+func (s *DataHotelsValueOffersCancelPolicyPenalties) GetEnd() *string {
 	return s.End
 }
 
@@ -1078,12 +1078,12 @@ func (s *DataHotelsValueOffersCancelPolicyPenalties) GetTracerId() *string {
 	return s.TracerId
 }
 
-func (s *DataHotelsValueOffersCancelPolicyPenalties) SetStart(v int64) *DataHotelsValueOffersCancelPolicyPenalties {
+func (s *DataHotelsValueOffersCancelPolicyPenalties) SetStart(v string) *DataHotelsValueOffersCancelPolicyPenalties {
 	s.Start = &v
 	return s
 }
 
-func (s *DataHotelsValueOffersCancelPolicyPenalties) SetEnd(v int64) *DataHotelsValueOffersCancelPolicyPenalties {
+func (s *DataHotelsValueOffersCancelPolicyPenalties) SetEnd(v string) *DataHotelsValueOffersCancelPolicyPenalties {
 	s.End = &v
 	return s
 }
@@ -1112,119 +1112,119 @@ func (s *DataHotelsValueOffersCancelPolicyPenalties) Validate() error {
 	return dara.Validate(s)
 }
 
-type DataHotelsValueOffersSellingTotalPrice struct {
-	// The amount.
+type DataHotelsValueOffersTotalPrice struct {
+	// The amount in the smallest currency unit.
 	//
 	// example:
 	//
-	// 100.00
-	Amount *float64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// 287
+	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// The currency code.
 	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// TraceId
+	// null
 	//
 	// example:
 	//
-	// TraceId
+	// null
 	TracerId *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
 }
 
-func (s DataHotelsValueOffersSellingTotalPrice) String() string {
+func (s DataHotelsValueOffersTotalPrice) String() string {
 	return dara.Prettify(s)
 }
 
-func (s DataHotelsValueOffersSellingTotalPrice) GoString() string {
+func (s DataHotelsValueOffersTotalPrice) GoString() string {
 	return s.String()
 }
 
-func (s *DataHotelsValueOffersSellingTotalPrice) GetAmount() *float64 {
+func (s *DataHotelsValueOffersTotalPrice) GetAmount() *string {
 	return s.Amount
 }
 
-func (s *DataHotelsValueOffersSellingTotalPrice) GetCurrency() *string {
+func (s *DataHotelsValueOffersTotalPrice) GetCurrency() *string {
 	return s.Currency
 }
 
-func (s *DataHotelsValueOffersSellingTotalPrice) GetTracerId() *string {
+func (s *DataHotelsValueOffersTotalPrice) GetTracerId() *string {
 	return s.TracerId
 }
 
-func (s *DataHotelsValueOffersSellingTotalPrice) SetAmount(v float64) *DataHotelsValueOffersSellingTotalPrice {
+func (s *DataHotelsValueOffersTotalPrice) SetAmount(v string) *DataHotelsValueOffersTotalPrice {
 	s.Amount = &v
 	return s
 }
 
-func (s *DataHotelsValueOffersSellingTotalPrice) SetCurrency(v string) *DataHotelsValueOffersSellingTotalPrice {
+func (s *DataHotelsValueOffersTotalPrice) SetCurrency(v string) *DataHotelsValueOffersTotalPrice {
 	s.Currency = &v
 	return s
 }
 
-func (s *DataHotelsValueOffersSellingTotalPrice) SetTracerId(v string) *DataHotelsValueOffersSellingTotalPrice {
+func (s *DataHotelsValueOffersTotalPrice) SetTracerId(v string) *DataHotelsValueOffersTotalPrice {
 	s.TracerId = &v
 	return s
 }
 
-func (s *DataHotelsValueOffersSellingTotalPrice) Validate() error {
+func (s *DataHotelsValueOffersTotalPrice) Validate() error {
 	return dara.Validate(s)
 }
 
-type DataHotelsValueOffersSellingDailyPrices struct {
-	// The check-in date.
+type DataHotelsValueOffersDailyPrices struct {
+	// The check-in date in yyyy-MM-dd format, based on the hotel local time zone.
 	//
 	// example:
 	//
-	// 2026-07-01
+	// 2026-08-16
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
 	// The price for the day.
-	Price *DataHotelsValueOffersSellingDailyPricesPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
-	// TraceId
+	Price *DataHotelsValueOffersDailyPricesPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// null
 	//
 	// example:
 	//
-	// TraceId
+	// null
 	TracerId *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
 }
 
-func (s DataHotelsValueOffersSellingDailyPrices) String() string {
+func (s DataHotelsValueOffersDailyPrices) String() string {
 	return dara.Prettify(s)
 }
 
-func (s DataHotelsValueOffersSellingDailyPrices) GoString() string {
+func (s DataHotelsValueOffersDailyPrices) GoString() string {
 	return s.String()
 }
 
-func (s *DataHotelsValueOffersSellingDailyPrices) GetDate() *string {
+func (s *DataHotelsValueOffersDailyPrices) GetDate() *string {
 	return s.Date
 }
 
-func (s *DataHotelsValueOffersSellingDailyPrices) GetPrice() *DataHotelsValueOffersSellingDailyPricesPrice {
+func (s *DataHotelsValueOffersDailyPrices) GetPrice() *DataHotelsValueOffersDailyPricesPrice {
 	return s.Price
 }
 
-func (s *DataHotelsValueOffersSellingDailyPrices) GetTracerId() *string {
+func (s *DataHotelsValueOffersDailyPrices) GetTracerId() *string {
 	return s.TracerId
 }
 
-func (s *DataHotelsValueOffersSellingDailyPrices) SetDate(v string) *DataHotelsValueOffersSellingDailyPrices {
+func (s *DataHotelsValueOffersDailyPrices) SetDate(v string) *DataHotelsValueOffersDailyPrices {
 	s.Date = &v
 	return s
 }
 
-func (s *DataHotelsValueOffersSellingDailyPrices) SetPrice(v *DataHotelsValueOffersSellingDailyPricesPrice) *DataHotelsValueOffersSellingDailyPrices {
+func (s *DataHotelsValueOffersDailyPrices) SetPrice(v *DataHotelsValueOffersDailyPricesPrice) *DataHotelsValueOffersDailyPrices {
 	s.Price = v
 	return s
 }
 
-func (s *DataHotelsValueOffersSellingDailyPrices) SetTracerId(v string) *DataHotelsValueOffersSellingDailyPrices {
+func (s *DataHotelsValueOffersDailyPrices) SetTracerId(v string) *DataHotelsValueOffersDailyPrices {
 	s.TracerId = &v
 	return s
 }
 
-func (s *DataHotelsValueOffersSellingDailyPrices) Validate() error {
+func (s *DataHotelsValueOffersDailyPrices) Validate() error {
 	if s.Price != nil {
 		if err := s.Price.Validate(); err != nil {
 			return err
@@ -1233,62 +1233,62 @@ func (s *DataHotelsValueOffersSellingDailyPrices) Validate() error {
 	return nil
 }
 
-type DataHotelsValueOffersSellingDailyPricesPrice struct {
-	// The amount.
+type DataHotelsValueOffersDailyPricesPrice struct {
+	// The amount in the smallest currency unit.
 	//
 	// example:
 	//
-	// 100.00
-	Amount *float64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// 287
+	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// The currency code.
 	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// TraceId
+	// null
 	//
 	// example:
 	//
-	// TraceId
+	// null
 	TracerId *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
 }
 
-func (s DataHotelsValueOffersSellingDailyPricesPrice) String() string {
+func (s DataHotelsValueOffersDailyPricesPrice) String() string {
 	return dara.Prettify(s)
 }
 
-func (s DataHotelsValueOffersSellingDailyPricesPrice) GoString() string {
+func (s DataHotelsValueOffersDailyPricesPrice) GoString() string {
 	return s.String()
 }
 
-func (s *DataHotelsValueOffersSellingDailyPricesPrice) GetAmount() *float64 {
+func (s *DataHotelsValueOffersDailyPricesPrice) GetAmount() *string {
 	return s.Amount
 }
 
-func (s *DataHotelsValueOffersSellingDailyPricesPrice) GetCurrency() *string {
+func (s *DataHotelsValueOffersDailyPricesPrice) GetCurrency() *string {
 	return s.Currency
 }
 
-func (s *DataHotelsValueOffersSellingDailyPricesPrice) GetTracerId() *string {
+func (s *DataHotelsValueOffersDailyPricesPrice) GetTracerId() *string {
 	return s.TracerId
 }
 
-func (s *DataHotelsValueOffersSellingDailyPricesPrice) SetAmount(v float64) *DataHotelsValueOffersSellingDailyPricesPrice {
+func (s *DataHotelsValueOffersDailyPricesPrice) SetAmount(v string) *DataHotelsValueOffersDailyPricesPrice {
 	s.Amount = &v
 	return s
 }
 
-func (s *DataHotelsValueOffersSellingDailyPricesPrice) SetCurrency(v string) *DataHotelsValueOffersSellingDailyPricesPrice {
+func (s *DataHotelsValueOffersDailyPricesPrice) SetCurrency(v string) *DataHotelsValueOffersDailyPricesPrice {
 	s.Currency = &v
 	return s
 }
 
-func (s *DataHotelsValueOffersSellingDailyPricesPrice) SetTracerId(v string) *DataHotelsValueOffersSellingDailyPricesPrice {
+func (s *DataHotelsValueOffersDailyPricesPrice) SetTracerId(v string) *DataHotelsValueOffersDailyPricesPrice {
 	s.TracerId = &v
 	return s
 }
 
-func (s *DataHotelsValueOffersSellingDailyPricesPrice) Validate() error {
+func (s *DataHotelsValueOffersDailyPricesPrice) Validate() error {
 	return dara.Validate(s)
 }

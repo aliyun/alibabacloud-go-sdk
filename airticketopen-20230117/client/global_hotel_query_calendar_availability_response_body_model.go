@@ -130,8 +130,6 @@ func (s *GlobalHotelQueryCalendarAvailabilityResponseBody) Validate() error {
 }
 
 type GlobalHotelQueryCalendarAvailabilityResponseBodyData struct {
-	// The list of failed hotels (in partial success mode).
-	FailedHotels []*GlobalHotelQueryCalendarAvailabilityResponseBodyDataFailedHotels `json:"FailedHotels,omitempty" xml:"FailedHotels,omitempty" type:"Repeated"`
 	// The calendar quotes grouped by standard hotel ID.
 	Hotels map[string][]*DataHotelsValue `json:"Hotels,omitempty" xml:"Hotels,omitempty"`
 	// TraceId
@@ -150,21 +148,12 @@ func (s GlobalHotelQueryCalendarAvailabilityResponseBodyData) GoString() string 
 	return s.String()
 }
 
-func (s *GlobalHotelQueryCalendarAvailabilityResponseBodyData) GetFailedHotels() []*GlobalHotelQueryCalendarAvailabilityResponseBodyDataFailedHotels {
-	return s.FailedHotels
-}
-
 func (s *GlobalHotelQueryCalendarAvailabilityResponseBodyData) GetHotels() map[string][]*DataHotelsValue {
 	return s.Hotels
 }
 
 func (s *GlobalHotelQueryCalendarAvailabilityResponseBodyData) GetTracerId() *string {
 	return s.TracerId
-}
-
-func (s *GlobalHotelQueryCalendarAvailabilityResponseBodyData) SetFailedHotels(v []*GlobalHotelQueryCalendarAvailabilityResponseBodyDataFailedHotels) *GlobalHotelQueryCalendarAvailabilityResponseBodyData {
-	s.FailedHotels = v
-	return s
 }
 
 func (s *GlobalHotelQueryCalendarAvailabilityResponseBodyData) SetHotels(v map[string][]*DataHotelsValue) *GlobalHotelQueryCalendarAvailabilityResponseBodyData {
@@ -178,74 +167,5 @@ func (s *GlobalHotelQueryCalendarAvailabilityResponseBodyData) SetTracerId(v str
 }
 
 func (s *GlobalHotelQueryCalendarAvailabilityResponseBodyData) Validate() error {
-	if s.FailedHotels != nil {
-		for _, item := range s.FailedHotels {
-			if item != nil {
-				if err := item.Validate(); err != nil {
-					return err
-				}
-			}
-		}
-	}
-	return nil
-}
-
-type GlobalHotelQueryCalendarAvailabilityResponseBodyDataFailedHotels struct {
-	// The error code.
-	//
-	// example:
-	//
-	// HOTEL_NOT_FOUND
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error description.
-	//
-	// example:
-	//
-	// The hotel does not exist
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The standard hotel ID.
-	//
-	// example:
-	//
-	// H001
-	StandardHotelId *string `json:"StandardHotelId,omitempty" xml:"StandardHotelId,omitempty"`
-}
-
-func (s GlobalHotelQueryCalendarAvailabilityResponseBodyDataFailedHotels) String() string {
-	return dara.Prettify(s)
-}
-
-func (s GlobalHotelQueryCalendarAvailabilityResponseBodyDataFailedHotels) GoString() string {
-	return s.String()
-}
-
-func (s *GlobalHotelQueryCalendarAvailabilityResponseBodyDataFailedHotels) GetErrorCode() *string {
-	return s.ErrorCode
-}
-
-func (s *GlobalHotelQueryCalendarAvailabilityResponseBodyDataFailedHotels) GetErrorMessage() *string {
-	return s.ErrorMessage
-}
-
-func (s *GlobalHotelQueryCalendarAvailabilityResponseBodyDataFailedHotels) GetStandardHotelId() *string {
-	return s.StandardHotelId
-}
-
-func (s *GlobalHotelQueryCalendarAvailabilityResponseBodyDataFailedHotels) SetErrorCode(v string) *GlobalHotelQueryCalendarAvailabilityResponseBodyDataFailedHotels {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GlobalHotelQueryCalendarAvailabilityResponseBodyDataFailedHotels) SetErrorMessage(v string) *GlobalHotelQueryCalendarAvailabilityResponseBodyDataFailedHotels {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GlobalHotelQueryCalendarAvailabilityResponseBodyDataFailedHotels) SetStandardHotelId(v string) *GlobalHotelQueryCalendarAvailabilityResponseBodyDataFailedHotels {
-	s.StandardHotelId = &v
-	return s
-}
-
-func (s *GlobalHotelQueryCalendarAvailabilityResponseBodyDataFailedHotels) Validate() error {
 	return dara.Validate(s)
 }

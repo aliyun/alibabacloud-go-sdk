@@ -24,23 +24,34 @@ type iGlobalHotelValidatePriceResponseBody interface {
 }
 
 type GlobalHotelValidatePriceResponseBody struct {
+	// The business data.
 	Data *GlobalHotelValidatePriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// CreateOrderFailed
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 创建订单失败
+	// Failed to create order
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// 260E4F99-983D-1919-834C-5C42E98E5B2B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// TracerId
+	//
 	// example:
 	//
 	// TracerId
@@ -119,12 +130,20 @@ func (s *GlobalHotelValidatePriceResponseBody) Validate() error {
 }
 
 type GlobalHotelValidatePriceResponseBodyData struct {
+	// The cancellation policies.
 	CancellationPolicies []*GlobalHotelValidatePriceResponseBodyDataCancellationPolicies `json:"CancellationPolicies,omitempty" xml:"CancellationPolicies,omitempty" type:"Repeated"`
+	// The list of daily prices.
+	DailyPrices []*GlobalHotelValidatePriceResponseBodyDataDailyPrices `json:"DailyPrices,omitempty" xml:"DailyPrices,omitempty" type:"Repeated"`
+	// The price validation result ID, used for subsequent order creation.
+	//
 	// example:
 	//
 	// itemOffer_123
-	ItemOfferId *string                                          `json:"ItemOfferId,omitempty" xml:"ItemOfferId,omitempty"`
-	Pricing     *GlobalHotelValidatePriceResponseBodyDataPricing `json:"Pricing,omitempty" xml:"Pricing,omitempty" type:"Struct"`
+	ItemOfferId *string `json:"ItemOfferId,omitempty" xml:"ItemOfferId,omitempty"`
+	// The total selling price.
+	TotalPrice *GlobalHotelValidatePriceResponseBodyDataTotalPrice `json:"TotalPrice,omitempty" xml:"TotalPrice,omitempty" type:"Struct"`
+	// TracerId
+	//
 	// example:
 	//
 	// TracerId
@@ -143,12 +162,16 @@ func (s *GlobalHotelValidatePriceResponseBodyData) GetCancellationPolicies() []*
 	return s.CancellationPolicies
 }
 
+func (s *GlobalHotelValidatePriceResponseBodyData) GetDailyPrices() []*GlobalHotelValidatePriceResponseBodyDataDailyPrices {
+	return s.DailyPrices
+}
+
 func (s *GlobalHotelValidatePriceResponseBodyData) GetItemOfferId() *string {
 	return s.ItemOfferId
 }
 
-func (s *GlobalHotelValidatePriceResponseBodyData) GetPricing() *GlobalHotelValidatePriceResponseBodyDataPricing {
-	return s.Pricing
+func (s *GlobalHotelValidatePriceResponseBodyData) GetTotalPrice() *GlobalHotelValidatePriceResponseBodyDataTotalPrice {
+	return s.TotalPrice
 }
 
 func (s *GlobalHotelValidatePriceResponseBodyData) GetTracerId() *string {
@@ -160,13 +183,18 @@ func (s *GlobalHotelValidatePriceResponseBodyData) SetCancellationPolicies(v []*
 	return s
 }
 
+func (s *GlobalHotelValidatePriceResponseBodyData) SetDailyPrices(v []*GlobalHotelValidatePriceResponseBodyDataDailyPrices) *GlobalHotelValidatePriceResponseBodyData {
+	s.DailyPrices = v
+	return s
+}
+
 func (s *GlobalHotelValidatePriceResponseBodyData) SetItemOfferId(v string) *GlobalHotelValidatePriceResponseBodyData {
 	s.ItemOfferId = &v
 	return s
 }
 
-func (s *GlobalHotelValidatePriceResponseBodyData) SetPricing(v *GlobalHotelValidatePriceResponseBodyDataPricing) *GlobalHotelValidatePriceResponseBodyData {
-	s.Pricing = v
+func (s *GlobalHotelValidatePriceResponseBodyData) SetTotalPrice(v *GlobalHotelValidatePriceResponseBodyDataTotalPrice) *GlobalHotelValidatePriceResponseBodyData {
+	s.TotalPrice = v
 	return s
 }
 
@@ -185,8 +213,17 @@ func (s *GlobalHotelValidatePriceResponseBodyData) Validate() error {
 			}
 		}
 	}
-	if s.Pricing != nil {
-		if err := s.Pricing.Validate(); err != nil {
+	if s.DailyPrices != nil {
+		for _, item := range s.DailyPrices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TotalPrice != nil {
+		if err := s.TotalPrice.Validate(); err != nil {
 			return err
 		}
 	}
@@ -194,11 +231,16 @@ func (s *GlobalHotelValidatePriceResponseBodyData) Validate() error {
 }
 
 type GlobalHotelValidatePriceResponseBodyDataCancellationPolicies struct {
+	// The list of cancellation penalty details.
 	Penalties []*GlobalHotelValidatePriceResponseBodyDataCancellationPoliciesPenalties `json:"Penalties,omitempty" xml:"Penalties,omitempty" type:"Repeated"`
+	// The cancellation policy type (FREE_CANCEL/CONDITIONAL/NON_REFUNDABLE).
+	//
 	// example:
 	//
 	// FREE_CANCELLATION
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// TracerId
+	//
 	// example:
 	//
 	// TracerId
@@ -254,26 +296,38 @@ func (s *GlobalHotelValidatePriceResponseBodyDataCancellationPolicies) Validate(
 }
 
 type GlobalHotelValidatePriceResponseBodyDataCancellationPoliciesPenalties struct {
+	// The currency code. This field has a value only when the penalty type is AMOUNT.
+	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The effective end time as a UTC millisecond timestamp.
+	//
 	// example:
 	//
 	// 1672617600000
-	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
+	End *string `json:"End,omitempty" xml:"End,omitempty"`
+	// The penalty type (PERCENT/NIGHTS/NON_CANCELLABLE).
+	//
 	// example:
 	//
 	// PERCENTAGE
 	PenaltyType *string `json:"PenaltyType,omitempty" xml:"PenaltyType,omitempty"`
+	// The penalty value (percentage, amount, or number of nights). This field is not present when PenaltyType is NON_CANCELLABLE.
+	//
 	// example:
 	//
 	// 50
 	PenaltyValue *string `json:"PenaltyValue,omitempty" xml:"PenaltyValue,omitempty"`
+	// The effective start time as a UTC millisecond timestamp.
+	//
 	// example:
 	//
 	// 1672531200000
-	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
+	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
+	// TracerId
+	//
 	// example:
 	//
 	// TracerId
@@ -292,7 +346,7 @@ func (s *GlobalHotelValidatePriceResponseBodyDataCancellationPoliciesPenalties) 
 	return s.Currency
 }
 
-func (s *GlobalHotelValidatePriceResponseBodyDataCancellationPoliciesPenalties) GetEnd() *int64 {
+func (s *GlobalHotelValidatePriceResponseBodyDataCancellationPoliciesPenalties) GetEnd() *string {
 	return s.End
 }
 
@@ -304,7 +358,7 @@ func (s *GlobalHotelValidatePriceResponseBodyDataCancellationPoliciesPenalties) 
 	return s.PenaltyValue
 }
 
-func (s *GlobalHotelValidatePriceResponseBodyDataCancellationPoliciesPenalties) GetStart() *int64 {
+func (s *GlobalHotelValidatePriceResponseBodyDataCancellationPoliciesPenalties) GetStart() *string {
 	return s.Start
 }
 
@@ -317,7 +371,7 @@ func (s *GlobalHotelValidatePriceResponseBodyDataCancellationPoliciesPenalties) 
 	return s
 }
 
-func (s *GlobalHotelValidatePriceResponseBodyDataCancellationPoliciesPenalties) SetEnd(v int64) *GlobalHotelValidatePriceResponseBodyDataCancellationPoliciesPenalties {
+func (s *GlobalHotelValidatePriceResponseBodyDataCancellationPoliciesPenalties) SetEnd(v string) *GlobalHotelValidatePriceResponseBodyDataCancellationPoliciesPenalties {
 	s.End = &v
 	return s
 }
@@ -332,7 +386,7 @@ func (s *GlobalHotelValidatePriceResponseBodyDataCancellationPoliciesPenalties) 
 	return s
 }
 
-func (s *GlobalHotelValidatePriceResponseBodyDataCancellationPoliciesPenalties) SetStart(v int64) *GlobalHotelValidatePriceResponseBodyDataCancellationPoliciesPenalties {
+func (s *GlobalHotelValidatePriceResponseBodyDataCancellationPoliciesPenalties) SetStart(v string) *GlobalHotelValidatePriceResponseBodyDataCancellationPoliciesPenalties {
 	s.Start = &v
 	return s
 }
@@ -346,129 +400,183 @@ func (s *GlobalHotelValidatePriceResponseBodyDataCancellationPoliciesPenalties) 
 	return dara.Validate(s)
 }
 
-type GlobalHotelValidatePriceResponseBodyDataPricing struct {
+type GlobalHotelValidatePriceResponseBodyDataDailyPrices struct {
+	// The date in yyyy-MM-dd format, in the local time zone of the hotel.
+	//
 	// example:
 	//
-	// USD
-	Currency      *string                                                         `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	NightlyPrices []*GlobalHotelValidatePriceResponseBodyDataPricingNightlyPrices `json:"NightlyPrices,omitempty" xml:"NightlyPrices,omitempty" type:"Repeated"`
+	// 2026-08-16
+	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// The price for the night.
+	Price *GlobalHotelValidatePriceResponseBodyDataDailyPricesPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// null
+	//
 	// example:
 	//
-	// 10000
-	TotalAmount *string `json:"TotalAmount,omitempty" xml:"TotalAmount,omitempty"`
-	// example:
-	//
-	// TracerId
+	// null
 	TracerId *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
 }
 
-func (s GlobalHotelValidatePriceResponseBodyDataPricing) String() string {
+func (s GlobalHotelValidatePriceResponseBodyDataDailyPrices) String() string {
 	return dara.Prettify(s)
 }
 
-func (s GlobalHotelValidatePriceResponseBodyDataPricing) GoString() string {
+func (s GlobalHotelValidatePriceResponseBodyDataDailyPrices) GoString() string {
 	return s.String()
 }
 
-func (s *GlobalHotelValidatePriceResponseBodyDataPricing) GetCurrency() *string {
-	return s.Currency
+func (s *GlobalHotelValidatePriceResponseBodyDataDailyPrices) GetDate() *string {
+	return s.Date
 }
 
-func (s *GlobalHotelValidatePriceResponseBodyDataPricing) GetNightlyPrices() []*GlobalHotelValidatePriceResponseBodyDataPricingNightlyPrices {
-	return s.NightlyPrices
+func (s *GlobalHotelValidatePriceResponseBodyDataDailyPrices) GetPrice() *GlobalHotelValidatePriceResponseBodyDataDailyPricesPrice {
+	return s.Price
 }
 
-func (s *GlobalHotelValidatePriceResponseBodyDataPricing) GetTotalAmount() *string {
-	return s.TotalAmount
-}
-
-func (s *GlobalHotelValidatePriceResponseBodyDataPricing) GetTracerId() *string {
+func (s *GlobalHotelValidatePriceResponseBodyDataDailyPrices) GetTracerId() *string {
 	return s.TracerId
 }
 
-func (s *GlobalHotelValidatePriceResponseBodyDataPricing) SetCurrency(v string) *GlobalHotelValidatePriceResponseBodyDataPricing {
-	s.Currency = &v
+func (s *GlobalHotelValidatePriceResponseBodyDataDailyPrices) SetDate(v string) *GlobalHotelValidatePriceResponseBodyDataDailyPrices {
+	s.Date = &v
 	return s
 }
 
-func (s *GlobalHotelValidatePriceResponseBodyDataPricing) SetNightlyPrices(v []*GlobalHotelValidatePriceResponseBodyDataPricingNightlyPrices) *GlobalHotelValidatePriceResponseBodyDataPricing {
-	s.NightlyPrices = v
+func (s *GlobalHotelValidatePriceResponseBodyDataDailyPrices) SetPrice(v *GlobalHotelValidatePriceResponseBodyDataDailyPricesPrice) *GlobalHotelValidatePriceResponseBodyDataDailyPrices {
+	s.Price = v
 	return s
 }
 
-func (s *GlobalHotelValidatePriceResponseBodyDataPricing) SetTotalAmount(v string) *GlobalHotelValidatePriceResponseBodyDataPricing {
-	s.TotalAmount = &v
-	return s
-}
-
-func (s *GlobalHotelValidatePriceResponseBodyDataPricing) SetTracerId(v string) *GlobalHotelValidatePriceResponseBodyDataPricing {
+func (s *GlobalHotelValidatePriceResponseBodyDataDailyPrices) SetTracerId(v string) *GlobalHotelValidatePriceResponseBodyDataDailyPrices {
 	s.TracerId = &v
 	return s
 }
 
-func (s *GlobalHotelValidatePriceResponseBodyDataPricing) Validate() error {
-	if s.NightlyPrices != nil {
-		for _, item := range s.NightlyPrices {
-			if item != nil {
-				if err := item.Validate(); err != nil {
-					return err
-				}
-			}
+func (s *GlobalHotelValidatePriceResponseBodyDataDailyPrices) Validate() error {
+	if s.Price != nil {
+		if err := s.Price.Validate(); err != nil {
+			return err
 		}
 	}
 	return nil
 }
 
-type GlobalHotelValidatePriceResponseBodyDataPricingNightlyPrices struct {
+type GlobalHotelValidatePriceResponseBodyDataDailyPricesPrice struct {
+	// The amount in the smallest currency unit.
+	//
 	// example:
 	//
-	// 5000
+	// 574
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The currency code (ISO 4217).
+	//
 	// example:
 	//
-	// 2026-07-01
-	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// USD
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// null
+	//
 	// example:
 	//
-	// TracerId
+	// null
 	TracerId *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
 }
 
-func (s GlobalHotelValidatePriceResponseBodyDataPricingNightlyPrices) String() string {
+func (s GlobalHotelValidatePriceResponseBodyDataDailyPricesPrice) String() string {
 	return dara.Prettify(s)
 }
 
-func (s GlobalHotelValidatePriceResponseBodyDataPricingNightlyPrices) GoString() string {
+func (s GlobalHotelValidatePriceResponseBodyDataDailyPricesPrice) GoString() string {
 	return s.String()
 }
 
-func (s *GlobalHotelValidatePriceResponseBodyDataPricingNightlyPrices) GetAmount() *string {
+func (s *GlobalHotelValidatePriceResponseBodyDataDailyPricesPrice) GetAmount() *string {
 	return s.Amount
 }
 
-func (s *GlobalHotelValidatePriceResponseBodyDataPricingNightlyPrices) GetDate() *string {
-	return s.Date
+func (s *GlobalHotelValidatePriceResponseBodyDataDailyPricesPrice) GetCurrency() *string {
+	return s.Currency
 }
 
-func (s *GlobalHotelValidatePriceResponseBodyDataPricingNightlyPrices) GetTracerId() *string {
+func (s *GlobalHotelValidatePriceResponseBodyDataDailyPricesPrice) GetTracerId() *string {
 	return s.TracerId
 }
 
-func (s *GlobalHotelValidatePriceResponseBodyDataPricingNightlyPrices) SetAmount(v string) *GlobalHotelValidatePriceResponseBodyDataPricingNightlyPrices {
+func (s *GlobalHotelValidatePriceResponseBodyDataDailyPricesPrice) SetAmount(v string) *GlobalHotelValidatePriceResponseBodyDataDailyPricesPrice {
 	s.Amount = &v
 	return s
 }
 
-func (s *GlobalHotelValidatePriceResponseBodyDataPricingNightlyPrices) SetDate(v string) *GlobalHotelValidatePriceResponseBodyDataPricingNightlyPrices {
-	s.Date = &v
+func (s *GlobalHotelValidatePriceResponseBodyDataDailyPricesPrice) SetCurrency(v string) *GlobalHotelValidatePriceResponseBodyDataDailyPricesPrice {
+	s.Currency = &v
 	return s
 }
 
-func (s *GlobalHotelValidatePriceResponseBodyDataPricingNightlyPrices) SetTracerId(v string) *GlobalHotelValidatePriceResponseBodyDataPricingNightlyPrices {
+func (s *GlobalHotelValidatePriceResponseBodyDataDailyPricesPrice) SetTracerId(v string) *GlobalHotelValidatePriceResponseBodyDataDailyPricesPrice {
 	s.TracerId = &v
 	return s
 }
 
-func (s *GlobalHotelValidatePriceResponseBodyDataPricingNightlyPrices) Validate() error {
+func (s *GlobalHotelValidatePriceResponseBodyDataDailyPricesPrice) Validate() error {
+	return dara.Validate(s)
+}
+
+type GlobalHotelValidatePriceResponseBodyDataTotalPrice struct {
+	// The amount in the smallest currency unit.
+	//
+	// example:
+	//
+	// 574
+	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The currency code (ISO 4217).
+	//
+	// example:
+	//
+	// USD
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// null
+	//
+	// example:
+	//
+	// null
+	TracerId *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
+}
+
+func (s GlobalHotelValidatePriceResponseBodyDataTotalPrice) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GlobalHotelValidatePriceResponseBodyDataTotalPrice) GoString() string {
+	return s.String()
+}
+
+func (s *GlobalHotelValidatePriceResponseBodyDataTotalPrice) GetAmount() *string {
+	return s.Amount
+}
+
+func (s *GlobalHotelValidatePriceResponseBodyDataTotalPrice) GetCurrency() *string {
+	return s.Currency
+}
+
+func (s *GlobalHotelValidatePriceResponseBodyDataTotalPrice) GetTracerId() *string {
+	return s.TracerId
+}
+
+func (s *GlobalHotelValidatePriceResponseBodyDataTotalPrice) SetAmount(v string) *GlobalHotelValidatePriceResponseBodyDataTotalPrice {
+	s.Amount = &v
+	return s
+}
+
+func (s *GlobalHotelValidatePriceResponseBodyDataTotalPrice) SetCurrency(v string) *GlobalHotelValidatePriceResponseBodyDataTotalPrice {
+	s.Currency = &v
+	return s
+}
+
+func (s *GlobalHotelValidatePriceResponseBodyDataTotalPrice) SetTracerId(v string) *GlobalHotelValidatePriceResponseBodyDataTotalPrice {
+	s.TracerId = &v
+	return s
+}
+
+func (s *GlobalHotelValidatePriceResponseBodyDataTotalPrice) Validate() error {
 	return dara.Validate(s)
 }

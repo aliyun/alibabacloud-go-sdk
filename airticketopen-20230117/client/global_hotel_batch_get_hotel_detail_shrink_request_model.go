@@ -20,7 +20,7 @@ type iGlobalHotelBatchGetHotelDetailShrinkRequest interface {
 }
 
 type GlobalHotelBatchGetHotelDetailShrinkRequest struct {
-	// The ID of the distributor account.
+	// The distributor account ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type GlobalHotelBatchGetHotelDetailShrinkRequest struct {
 	//
 	// 123456
 	AccountNo *int64 `json:"AccountNo,omitempty" xml:"AccountNo,omitempty"`
-	// The language. For example, en or zh.
+	// The language (such as en or zh).
 	//
 	// example:
 	//

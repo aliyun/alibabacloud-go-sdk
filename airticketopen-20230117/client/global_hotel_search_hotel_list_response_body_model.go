@@ -44,7 +44,7 @@ type GlobalHotelSearchHotelListResponseBody struct {
 	//
 	// 260E4F99-983D-1919-834C-5C42E98E5B2B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

@@ -26,38 +26,52 @@ type iGlobalHotelValidatePriceRequest interface {
 }
 
 type GlobalHotelValidatePriceRequest struct {
+	// The distributor account ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456
 	AccountNo *int64 `json:"AccountNo,omitempty" xml:"AccountNo,omitempty"`
+	// The number of adults per room.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
 	Adults *int32 `json:"Adults,omitempty" xml:"Adults,omitempty"`
+	// The number of children per room.
+	//
 	// example:
 	//
 	// 0
 	Children *int32 `json:"Children,omitempty" xml:"Children,omitempty"`
+	// The list of children ages.
+	//
 	// example:
 	//
 	// [8]
 	ChildrenAges []*int32 `json:"ChildrenAges,omitempty" xml:"ChildrenAges,omitempty" type:"Repeated"`
+	// The offer key.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// itemOfferKey_abc123
 	ItemOfferKey *string `json:"ItemOfferKey,omitempty" xml:"ItemOfferKey,omitempty"`
+	// The number of rooms.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	RoomCount *int32 `json:"RoomCount,omitempty" xml:"RoomCount,omitempty"`
+	// TracerId
+	//
 	// example:
 	//
 	// TracerId

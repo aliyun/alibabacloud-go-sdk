@@ -46,7 +46,7 @@ type GlobalHotelQueryCalendarAvailabilityRequest struct {
 	//
 	// 2
 	AdultCount *int32 `json:"AdultCount,omitempty" xml:"AdultCount,omitempty"`
-	// The end date of the check-in date range in the format yyyy-MM-dd.
+	// The end date of the check-in period to query, in the format of yyyy-MM-dd. The date cannot be earlier than the start date. The date range includes both the start and end dates, with a maximum span of 30 days.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type GlobalHotelQueryCalendarAvailabilityRequest struct {
 	//
 	// 2026-08-03
 	CheckInDateEnd *string `json:"CheckInDateEnd,omitempty" xml:"CheckInDateEnd,omitempty"`
-	// The start date of the check-in date range in the format yyyy-MM-dd.
+	// The start date of the check-in period to query, in the format of yyyy-MM-dd. The date cannot be earlier than the current day.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +82,7 @@ type GlobalHotelQueryCalendarAvailabilityRequest struct {
 	//
 	// 1
 	RoomCount *int32 `json:"RoomCount,omitempty" xml:"RoomCount,omitempty"`
-	// The IDs of the hotels.
+	// The list of standard hotel IDs on the platform. A maximum of 10 IDs are supported.
 	//
 	// This parameter is required.
 	//

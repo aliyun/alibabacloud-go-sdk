@@ -38,13 +38,13 @@ type GlobalHotelQueryOrderResponseBody struct {
 	//
 	// Failed to create order
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The unique ID of the request.
+	// The unique identifier of the request.
 	//
 	// example:
 	//
 	// 260E4F99-983D-1919-834C-5C42E98E5B2B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -142,12 +142,12 @@ type GlobalHotelQueryOrderResponseBodyData struct {
 	//
 	// EXT_ORDER_001
 	ExternalOrderNo *string `json:"ExternalOrderNo,omitempty" xml:"ExternalOrderNo,omitempty"`
-	// The creation time in UTC millisecond timestamp.
+	// The creation time (UTC millisecond timestamp).
 	//
 	// example:
 	//
 	// 1672531200000
-	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The item information.
 	ItemInfo *GlobalHotelQueryOrderResponseBodyDataItemInfo `json:"ItemInfo,omitempty" xml:"ItemInfo,omitempty" type:"Struct"`
 	// The order number.
@@ -198,7 +198,7 @@ func (s *GlobalHotelQueryOrderResponseBodyData) GetExternalOrderNo() *string {
 	return s.ExternalOrderNo
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyData) GetGmtCreate() *int64 {
+func (s *GlobalHotelQueryOrderResponseBodyData) GetGmtCreate() *string {
 	return s.GmtCreate
 }
 
@@ -244,7 +244,7 @@ func (s *GlobalHotelQueryOrderResponseBodyData) SetExternalOrderNo(v string) *Gl
 	return s
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyData) SetGmtCreate(v int64) *GlobalHotelQueryOrderResponseBodyData {
+func (s *GlobalHotelQueryOrderResponseBodyData) SetGmtCreate(v string) *GlobalHotelQueryOrderResponseBodyData {
 	s.GmtCreate = &v
 	return s
 }
@@ -324,7 +324,7 @@ func (s *GlobalHotelQueryOrderResponseBodyData) Validate() error {
 type GlobalHotelQueryOrderResponseBodyDataItemInfo struct {
 	// The cancellation policy.
 	CancelPolicy *GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicy `json:"CancelPolicy,omitempty" xml:"CancelPolicy,omitempty" type:"Struct"`
-	// The check-in date in yyyy-MM-dd format.
+	// The check-in date (yyyy-MM-dd).
 	//
 	// example:
 	//
@@ -336,7 +336,7 @@ type GlobalHotelQueryOrderResponseBodyDataItemInfo struct {
 	//
 	// 2
 	CheckInNumber *int32 `json:"CheckInNumber,omitempty" xml:"CheckInNumber,omitempty"`
-	// The check-out date in yyyy-MM-dd format.
+	// The check-out date (yyyy-MM-dd).
 	//
 	// example:
 	//
@@ -353,7 +353,7 @@ type GlobalHotelQueryOrderResponseBodyDataItemInfo struct {
 	// 1
 	RoomCount *int32 `json:"RoomCount,omitempty" xml:"RoomCount,omitempty"`
 	// The total selling price.
-	SellingTotalPrice *GlobalHotelQueryOrderResponseBodyDataItemInfoSellingTotalPrice `json:"SellingTotalPrice,omitempty" xml:"SellingTotalPrice,omitempty" type:"Struct"`
+	TotalPrice *GlobalHotelQueryOrderResponseBodyDataItemInfoTotalPrice `json:"TotalPrice,omitempty" xml:"TotalPrice,omitempty" type:"Struct"`
 }
 
 func (s GlobalHotelQueryOrderResponseBodyDataItemInfo) String() string {
@@ -392,8 +392,8 @@ func (s *GlobalHotelQueryOrderResponseBodyDataItemInfo) GetRoomCount() *int32 {
 	return s.RoomCount
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyDataItemInfo) GetSellingTotalPrice() *GlobalHotelQueryOrderResponseBodyDataItemInfoSellingTotalPrice {
-	return s.SellingTotalPrice
+func (s *GlobalHotelQueryOrderResponseBodyDataItemInfo) GetTotalPrice() *GlobalHotelQueryOrderResponseBodyDataItemInfoTotalPrice {
+	return s.TotalPrice
 }
 
 func (s *GlobalHotelQueryOrderResponseBodyDataItemInfo) SetCancelPolicy(v *GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicy) *GlobalHotelQueryOrderResponseBodyDataItemInfo {
@@ -431,8 +431,8 @@ func (s *GlobalHotelQueryOrderResponseBodyDataItemInfo) SetRoomCount(v int32) *G
 	return s
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyDataItemInfo) SetSellingTotalPrice(v *GlobalHotelQueryOrderResponseBodyDataItemInfoSellingTotalPrice) *GlobalHotelQueryOrderResponseBodyDataItemInfo {
-	s.SellingTotalPrice = v
+func (s *GlobalHotelQueryOrderResponseBodyDataItemInfo) SetTotalPrice(v *GlobalHotelQueryOrderResponseBodyDataItemInfoTotalPrice) *GlobalHotelQueryOrderResponseBodyDataItemInfo {
+	s.TotalPrice = v
 	return s
 }
 
@@ -456,8 +456,8 @@ func (s *GlobalHotelQueryOrderResponseBodyDataItemInfo) Validate() error {
 			return err
 		}
 	}
-	if s.SellingTotalPrice != nil {
-		if err := s.SellingTotalPrice.Validate(); err != nil {
+	if s.TotalPrice != nil {
+		if err := s.TotalPrice.Validate(); err != nil {
 			return err
 		}
 	}
@@ -465,7 +465,7 @@ func (s *GlobalHotelQueryOrderResponseBodyDataItemInfo) Validate() error {
 }
 
 type GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicy struct {
-	// The list of cancellation penalties.
+	// The list of cancellation penalty details.
 	Penalties []*GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties `json:"Penalties,omitempty" xml:"Penalties,omitempty" type:"Repeated"`
 	// The cancellation policy type.
 	//
@@ -530,36 +530,36 @@ func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicy) Validate() e
 }
 
 type GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties struct {
-	// The currency code. This parameter is valid only when the penalty type is AMOUNT.
+	// The currency code (present only for AMOUNT type penalties).
 	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The effective end time in UTC millisecond timestamp.
+	// The effective end time (UTC millisecond timestamp).
 	//
 	// example:
 	//
 	// 1672617600000
-	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
+	End *string `json:"End,omitempty" xml:"End,omitempty"`
 	// The penalty type.
 	//
 	// example:
 	//
 	// PERCENTAGE
 	PenaltyType *string `json:"PenaltyType,omitempty" xml:"PenaltyType,omitempty"`
-	// The penalty value, which can be a percentage, amount, or number of nights.
+	// The penalty value (percentage, amount, or number of nights).
 	//
 	// example:
 	//
 	// 50
 	PenaltyValue *string `json:"PenaltyValue,omitempty" xml:"PenaltyValue,omitempty"`
-	// The effective start time in UTC millisecond timestamp.
+	// The effective start time (UTC millisecond timestamp).
 	//
 	// example:
 	//
 	// 1672531200000
-	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
+	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
 	// TracerId
 	//
 	// example:
@@ -580,7 +580,7 @@ func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties) Get
 	return s.Currency
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties) GetEnd() *int64 {
+func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties) GetEnd() *string {
 	return s.End
 }
 
@@ -592,7 +592,7 @@ func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties) Get
 	return s.PenaltyValue
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties) GetStart() *int64 {
+func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties) GetStart() *string {
 	return s.Start
 }
 
@@ -605,7 +605,7 @@ func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties) Set
 	return s
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties) SetEnd(v int64) *GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties {
+func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties) SetEnd(v string) *GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties {
 	s.End = &v
 	return s
 }
@@ -620,7 +620,7 @@ func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties) Set
 	return s
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties) SetStart(v int64) *GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties {
+func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties) SetStart(v string) *GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties {
 	s.Start = &v
 	return s
 }
@@ -643,6 +643,12 @@ type GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPrices struct {
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
 	// The price.
 	Price *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// null
+	//
+	// example:
+	//
+	// null
+	TracerId *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
 }
 
 func (s GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPrices) String() string {
@@ -661,6 +667,10 @@ func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPrices) GetPrice() *G
 	return s.Price
 }
 
+func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPrices) GetTracerId() *string {
+	return s.TracerId
+}
+
 func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPrices) SetDate(v string) *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPrices {
 	s.Date = &v
 	return s
@@ -668,6 +678,11 @@ func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPrices) SetDate(v str
 
 func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPrices) SetPrice(v *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice) *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPrices {
 	s.Price = v
+	return s
+}
+
+func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPrices) SetTracerId(v string) *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPrices {
+	s.TracerId = &v
 	return s
 }
 
@@ -681,14 +696,24 @@ func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPrices) Validate() er
 }
 
 type GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice struct {
-	// cent
+	// The amount in the smallest currency unit.
 	//
 	// example:
 	//
-	// 1
-	Cent *int64 `json:"Cent,omitempty" xml:"Cent,omitempty"`
+	// 10000
+	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// The currency.
-	Currency *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPriceCurrency `json:"Currency,omitempty" xml:"Currency,omitempty" type:"Struct"`
+	//
+	// example:
+	//
+	// USD
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// null
+	//
+	// example:
+	//
+	// null
+	TracerId *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
 }
 
 func (s GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice) String() string {
@@ -699,90 +724,34 @@ func (s GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice) GoString(
 	return s.String()
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice) GetCent() *int64 {
-	return s.Cent
+func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice) GetAmount() *string {
+	return s.Amount
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice) GetCurrency() *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPriceCurrency {
+func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice) GetCurrency() *string {
 	return s.Currency
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice) SetCent(v int64) *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice {
-	s.Cent = &v
+func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice) GetTracerId() *string {
+	return s.TracerId
+}
+
+func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice) SetAmount(v string) *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice {
+	s.Amount = &v
 	return s
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice) SetCurrency(v *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPriceCurrency) *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice {
-	s.Currency = v
+func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice) SetCurrency(v string) *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice {
+	s.Currency = &v
+	return s
+}
+
+func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice) SetTracerId(v string) *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice {
+	s.TracerId = &v
 	return s
 }
 
 func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice) Validate() error {
-	if s.Currency != nil {
-		if err := s.Currency.Validate(); err != nil {
-			return err
-		}
-	}
-	return nil
-}
-
-type GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPriceCurrency struct {
-	// The currency code.
-	//
-	// example:
-	//
-	// USD
-	CurrencyCode *string `json:"CurrencyCode,omitempty" xml:"CurrencyCode,omitempty"`
-	// DefaultFractionDigits
-	//
-	// example:
-	//
-	// 1
-	DefaultFractionDigits *int32 `json:"DefaultFractionDigits,omitempty" xml:"DefaultFractionDigits,omitempty"`
-	// NumericCode
-	//
-	// example:
-	//
-	// 1
-	NumericCode *int32 `json:"NumericCode,omitempty" xml:"NumericCode,omitempty"`
-}
-
-func (s GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPriceCurrency) String() string {
-	return dara.Prettify(s)
-}
-
-func (s GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPriceCurrency) GoString() string {
-	return s.String()
-}
-
-func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPriceCurrency) GetCurrencyCode() *string {
-	return s.CurrencyCode
-}
-
-func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPriceCurrency) GetDefaultFractionDigits() *int32 {
-	return s.DefaultFractionDigits
-}
-
-func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPriceCurrency) GetNumericCode() *int32 {
-	return s.NumericCode
-}
-
-func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPriceCurrency) SetCurrencyCode(v string) *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPriceCurrency {
-	s.CurrencyCode = &v
-	return s
-}
-
-func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPriceCurrency) SetDefaultFractionDigits(v int32) *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPriceCurrency {
-	s.DefaultFractionDigits = &v
-	return s
-}
-
-func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPriceCurrency) SetNumericCode(v int32) *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPriceCurrency {
-	s.NumericCode = &v
-	return s
-}
-
-func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPriceCurrency) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -846,75 +815,75 @@ func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoMeal) Validate() error {
 	return dara.Validate(s)
 }
 
-type GlobalHotelQueryOrderResponseBodyDataItemInfoSellingTotalPrice struct {
+type GlobalHotelQueryOrderResponseBodyDataItemInfoTotalPrice struct {
 	// The amount in the smallest currency unit.
 	//
 	// example:
 	//
-	// 10000
+	// 574
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The currency code in ISO 4217 format.
+	// The currency code (ISO 4217).
 	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// TracerId
+	// null
 	//
 	// example:
 	//
-	// TracerId
+	// null
 	TracerId *string `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
 }
 
-func (s GlobalHotelQueryOrderResponseBodyDataItemInfoSellingTotalPrice) String() string {
+func (s GlobalHotelQueryOrderResponseBodyDataItemInfoTotalPrice) String() string {
 	return dara.Prettify(s)
 }
 
-func (s GlobalHotelQueryOrderResponseBodyDataItemInfoSellingTotalPrice) GoString() string {
+func (s GlobalHotelQueryOrderResponseBodyDataItemInfoTotalPrice) GoString() string {
 	return s.String()
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoSellingTotalPrice) GetAmount() *string {
+func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoTotalPrice) GetAmount() *string {
 	return s.Amount
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoSellingTotalPrice) GetCurrency() *string {
+func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoTotalPrice) GetCurrency() *string {
 	return s.Currency
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoSellingTotalPrice) GetTracerId() *string {
+func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoTotalPrice) GetTracerId() *string {
 	return s.TracerId
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoSellingTotalPrice) SetAmount(v string) *GlobalHotelQueryOrderResponseBodyDataItemInfoSellingTotalPrice {
+func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoTotalPrice) SetAmount(v string) *GlobalHotelQueryOrderResponseBodyDataItemInfoTotalPrice {
 	s.Amount = &v
 	return s
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoSellingTotalPrice) SetCurrency(v string) *GlobalHotelQueryOrderResponseBodyDataItemInfoSellingTotalPrice {
+func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoTotalPrice) SetCurrency(v string) *GlobalHotelQueryOrderResponseBodyDataItemInfoTotalPrice {
 	s.Currency = &v
 	return s
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoSellingTotalPrice) SetTracerId(v string) *GlobalHotelQueryOrderResponseBodyDataItemInfoSellingTotalPrice {
+func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoTotalPrice) SetTracerId(v string) *GlobalHotelQueryOrderResponseBodyDataItemInfoTotalPrice {
 	s.TracerId = &v
 	return s
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoSellingTotalPrice) Validate() error {
+func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoTotalPrice) Validate() error {
 	return dara.Validate(s)
 }
 
 type GlobalHotelQueryOrderResponseBodyDataPayment struct {
 	// The payment amount.
 	Amount *GlobalHotelQueryOrderResponseBodyDataPaymentAmount `json:"Amount,omitempty" xml:"Amount,omitempty" type:"Struct"`
-	// The payment completion time in UTC millisecond timestamp.
+	// The payment completion time (UTC millisecond timestamp).
 	//
 	// example:
 	//
 	// 1672531200000
-	GmtPaid *int64 `json:"GmtPaid,omitempty" xml:"GmtPaid,omitempty"`
+	GmtPaid *string `json:"GmtPaid,omitempty" xml:"GmtPaid,omitempty"`
 	// The payment method.
 	//
 	// example:
@@ -941,7 +910,7 @@ func (s *GlobalHotelQueryOrderResponseBodyDataPayment) GetAmount() *GlobalHotelQ
 	return s.Amount
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyDataPayment) GetGmtPaid() *int64 {
+func (s *GlobalHotelQueryOrderResponseBodyDataPayment) GetGmtPaid() *string {
 	return s.GmtPaid
 }
 
@@ -958,7 +927,7 @@ func (s *GlobalHotelQueryOrderResponseBodyDataPayment) SetAmount(v *GlobalHotelQ
 	return s
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyDataPayment) SetGmtPaid(v int64) *GlobalHotelQueryOrderResponseBodyDataPayment {
+func (s *GlobalHotelQueryOrderResponseBodyDataPayment) SetGmtPaid(v string) *GlobalHotelQueryOrderResponseBodyDataPayment {
 	s.GmtPaid = &v
 	return s
 }
@@ -989,7 +958,7 @@ type GlobalHotelQueryOrderResponseBodyDataPaymentAmount struct {
 	//
 	// 10000
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The currency code in ISO 4217 format.
+	// The currency code (ISO 4217).
 	//
 	// example:
 	//
@@ -1043,30 +1012,30 @@ func (s *GlobalHotelQueryOrderResponseBodyDataPaymentAmount) Validate() error {
 }
 
 type GlobalHotelQueryOrderResponseBodyDataRefundOrders struct {
-	// The creation time of the refund order, in UTC millisecond timestamp.
+	// The refund order creation time (UTC millisecond timestamp).
 	//
 	// example:
 	//
 	// 1672531200000
-	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The external refund order number.
+	//
+	// example:
+	//
+	// RF202606290001
+	RefundOrderNo *string `json:"RefundOrderNo,omitempty" xml:"RefundOrderNo,omitempty"`
 	// The refund transaction ID.
 	//
 	// example:
 	//
 	// TXN001
 	RefundTransactionId *string `json:"RefundTransactionId,omitempty" xml:"RefundTransactionId,omitempty"`
-	// The reason for rejection.
+	// The rejection reason.
 	//
 	// example:
 	//
 	// Supplier rejected
 	RejectReason *string `json:"RejectReason,omitempty" xml:"RejectReason,omitempty"`
-	// The external refund order number.
-	//
-	// example:
-	//
-	// RF202606290001
-	SellRefundOrderNo *string `json:"SellRefundOrderNo,omitempty" xml:"SellRefundOrderNo,omitempty"`
 	// The unified refund status.
 	//
 	// example:
@@ -1087,8 +1056,12 @@ func (s GlobalHotelQueryOrderResponseBodyDataRefundOrders) GoString() string {
 	return s.String()
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyDataRefundOrders) GetGmtCreate() *int64 {
+func (s *GlobalHotelQueryOrderResponseBodyDataRefundOrders) GetGmtCreate() *string {
 	return s.GmtCreate
+}
+
+func (s *GlobalHotelQueryOrderResponseBodyDataRefundOrders) GetRefundOrderNo() *string {
+	return s.RefundOrderNo
 }
 
 func (s *GlobalHotelQueryOrderResponseBodyDataRefundOrders) GetRefundTransactionId() *string {
@@ -1097,10 +1070,6 @@ func (s *GlobalHotelQueryOrderResponseBodyDataRefundOrders) GetRefundTransaction
 
 func (s *GlobalHotelQueryOrderResponseBodyDataRefundOrders) GetRejectReason() *string {
 	return s.RejectReason
-}
-
-func (s *GlobalHotelQueryOrderResponseBodyDataRefundOrders) GetSellRefundOrderNo() *string {
-	return s.SellRefundOrderNo
 }
 
 func (s *GlobalHotelQueryOrderResponseBodyDataRefundOrders) GetStatus() *string {
@@ -1115,8 +1084,13 @@ func (s *GlobalHotelQueryOrderResponseBodyDataRefundOrders) GetTotalRefundAmount
 	return s.TotalRefundAmount
 }
 
-func (s *GlobalHotelQueryOrderResponseBodyDataRefundOrders) SetGmtCreate(v int64) *GlobalHotelQueryOrderResponseBodyDataRefundOrders {
+func (s *GlobalHotelQueryOrderResponseBodyDataRefundOrders) SetGmtCreate(v string) *GlobalHotelQueryOrderResponseBodyDataRefundOrders {
 	s.GmtCreate = &v
+	return s
+}
+
+func (s *GlobalHotelQueryOrderResponseBodyDataRefundOrders) SetRefundOrderNo(v string) *GlobalHotelQueryOrderResponseBodyDataRefundOrders {
+	s.RefundOrderNo = &v
 	return s
 }
 
@@ -1127,11 +1101,6 @@ func (s *GlobalHotelQueryOrderResponseBodyDataRefundOrders) SetRefundTransaction
 
 func (s *GlobalHotelQueryOrderResponseBodyDataRefundOrders) SetRejectReason(v string) *GlobalHotelQueryOrderResponseBodyDataRefundOrders {
 	s.RejectReason = &v
-	return s
-}
-
-func (s *GlobalHotelQueryOrderResponseBodyDataRefundOrders) SetSellRefundOrderNo(v string) *GlobalHotelQueryOrderResponseBodyDataRefundOrders {
-	s.SellRefundOrderNo = &v
 	return s
 }
 
@@ -1171,7 +1140,7 @@ type GlobalHotelQueryOrderResponseBodyDataRefundOrdersTotalPenaltyAmount struct 
 	//
 	// 10000
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The currency code in ISO 4217 format.
+	// The currency code (ISO 4217).
 	//
 	// example:
 	//
@@ -1231,7 +1200,7 @@ type GlobalHotelQueryOrderResponseBodyDataRefundOrdersTotalRefundAmount struct {
 	//
 	// 10000
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The currency code in ISO 4217 format.
+	// The currency code (ISO 4217).
 	//
 	// example:
 	//
@@ -1299,7 +1268,7 @@ type GlobalHotelQueryOrderResponseBodyDataRoomStays struct {
 	//
 	// 1
 	RoomIndex *int32 `json:"RoomIndex,omitempty" xml:"RoomIndex,omitempty"`
-	// The delivery status. Valid values: PENDING_CHECKIN, CHECKED_IN, CHECKED_OUT, and CANCELLED. The value is null before the delivery is created.
+	// The fulfillment status (PENDING_CHECKIN/CHECKED_IN/CHECKED_OUT/CANCELLED). The value is null before the fulfillment is created.
 	//
 	// example:
 	//
