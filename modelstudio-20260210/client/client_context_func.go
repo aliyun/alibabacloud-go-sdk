@@ -1009,6 +1009,245 @@ func (client *Client) ListApiKeysWithContext(ctx context.Context, request *ListA
 
 // Summary:
 //
+// Queries model throttling configurations for a workspace.
+//
+// @param request - ListModelLimitsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListModelLimitsResponse
+func (client *Client) ListModelLimitsWithContext(ctx context.Context, request *ListModelLimitsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListModelLimitsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Model) {
+		query["model"] = request.Model
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListModelLimits"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/modelstudio/models/limits"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListModelLimitsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries model authorizations for a workspace.
+//
+// Description:
+//
+// ## Operation description
+//
+// - Use `workspaceId` to specify the workspace to query (required, cannot be empty).
+//
+// - Token-based pagination is used: `nextToken` is a string-type offset. Do not pass it for the first page. `maxResults` defaults to 20. If the upper limit is exceeded, `InvalidParameter.maxResults` is returned.
+//
+// - `authorizationScope` controls the query dimension: `AUTHORIZED` = models that have been authorized for the specified action. `AUTHORIZABLE` = full authorizable catalog.
+//
+// - `modelAction` specifies the authorization action dimension. Currently only `INFERENCE` is supported. If left empty, it defaults to `INFERENCE`.
+//
+// - `filter` supports filtering by `name` (fuzzy match on model and name) or `model` (exact match on a single model).
+//
+// - Returns a `TokenBasedPage` that contains the authorization status (inference/fineTune/deploy) and rate limit information for each model.
+//
+// @param request - ListModelPermissionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListModelPermissionsResponse
+func (client *Client) ListModelPermissionsWithContext(ctx context.Context, request *ListModelPermissionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListModelPermissionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationScope) {
+		query["authorizationScope"] = request.AuthorizationScope
+	}
+
+	if !dara.IsNil(request.Filter) {
+		query["filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.ModelAction) {
+		query["modelAction"] = request.ModelAction
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListModelPermissions"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/modelstudio/models/permissions"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListModelPermissionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 模型元数据-查询基础模型列表
+//
+// @param tmpReq - ListModelsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListModelsResponse
+func (client *Client) ListModelsWithContext(ctx context.Context, tmpReq *ListModelsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListModelsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListModelsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Capabilities) {
+		request.CapabilitiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Capabilities, dara.String("capabilities"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Features) {
+		request.FeaturesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Features, dara.String("features"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Providers) {
+		request.ProvidersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Providers, dara.String("providers"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CapabilitiesShrink) {
+		query["capabilities"] = request.CapabilitiesShrink
+	}
+
+	if !dara.IsNil(request.ContextWindow) {
+		query["contextWindow"] = request.ContextWindow
+	}
+
+	if !dara.IsNil(request.FeaturesShrink) {
+		query["features"] = request.FeaturesShrink
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["language"] = request.Language
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Model) {
+		query["model"] = request.Model
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ProvidersShrink) {
+		query["providers"] = request.ProvidersShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListModels"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/modelstudio/models"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListModelsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the list of organization members including seat information. Supports filtering by name, status, and seat assignment, and supports pagination.
 //
 // @param request - ListOrganizationMembersRequest
@@ -1468,6 +1707,118 @@ func (client *Client) UpdateApiKeyWithContext(ctx context.Context, apiKeyId *str
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateApiKeyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the model throttling configuration for a workspace.
+//
+// @param tmpReq - UpdateModelLimitsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateModelLimitsResponse
+func (client *Client) UpdateModelLimitsWithContext(ctx context.Context, tmpReq *UpdateModelLimitsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateModelLimitsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateModelLimitsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.WorkspaceLimits) {
+		request.WorkspaceLimitsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WorkspaceLimits, dara.String("workspaceLimits"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.WorkspaceId) {
+		body["workspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.WorkspaceLimitsShrink) {
+		body["workspaceLimits"] = request.WorkspaceLimitsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateModelLimits"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/modelstudio/models/limits"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateModelLimitsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新业务空间模型授权
+//
+// @param request - UpdateModelPermissionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateModelPermissionsResponse
+func (client *Client) UpdateModelPermissionsWithContext(ctx context.Context, request *UpdateModelPermissionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateModelPermissionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccessAllEntities) {
+		body["accessAllEntities"] = request.AccessAllEntities
+	}
+
+	if !dara.IsNil(request.Models) {
+		body["models"] = request.Models
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["workspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateModelPermissions"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/modelstudio/models/permissions"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateModelPermissionsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
