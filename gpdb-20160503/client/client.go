@@ -39,20 +39,20 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-shenzhen-finance-1": dara.String("gpdb.aliyuncs.com"),
 		"cn-qingdao":            dara.String("gpdb.aliyuncs.com"),
 		"cn-north-2-gov-1":      dara.String("gpdb.aliyuncs.com"),
-		"me-east-1":             dara.String("gpdb.me-east-1.aliyuncs.com"),
-		"me-central-1":          dara.String("gpdb.me-central-1.aliyuncs.com"),
-		"eu-west-1":             dara.String("gpdb.eu-west-1.aliyuncs.com"),
-		"eu-central-1":          dara.String("gpdb.eu-central-1.aliyuncs.com"),
-		"cn-zhangjiakou":        dara.String("gpdb.cn-zhangjiakou.aliyuncs.com"),
 		"cn-wulanchabu":         dara.String("gpdb.cn-wulanchabu.aliyuncs.com"),
-		"cn-huhehaote":          dara.String("gpdb.cn-huhehaote.aliyuncs.com"),
-		"cn-chengdu":            dara.String("gpdb.cn-chengdu.aliyuncs.com"),
-		"cn-beijing-finance-1":  dara.String("gpdb.cn-beijing-finance-1.aliyuncs.com"),
-		"ap-southeast-7":        dara.String("gpdb.ap-southeast-7.aliyuncs.com"),
-		"ap-southeast-5":        dara.String("gpdb.ap-southeast-5.aliyuncs.com"),
-		"ap-southeast-3":        dara.String("gpdb.ap-southeast-3.aliyuncs.com"),
+		"cn-zhangjiakou":        dara.String("gpdb.cn-zhangjiakou.aliyuncs.com"),
 		"ap-northeast-2":        dara.String("gpdb.ap-northeast-2.aliyuncs.com"),
 		"ap-northeast-1":        dara.String("gpdb.ap-northeast-1.aliyuncs.com"),
+		"cn-chengdu":            dara.String("gpdb.cn-chengdu.aliyuncs.com"),
+		"ap-southeast-3":        dara.String("gpdb.ap-southeast-3.aliyuncs.com"),
+		"cn-huhehaote":          dara.String("gpdb.cn-huhehaote.aliyuncs.com"),
+		"ap-southeast-5":        dara.String("gpdb.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-7":        dara.String("gpdb.ap-southeast-7.aliyuncs.com"),
+		"eu-west-1":             dara.String("gpdb.eu-west-1.aliyuncs.com"),
+		"eu-central-1":          dara.String("gpdb.eu-central-1.aliyuncs.com"),
+		"me-east-1":             dara.String("gpdb.me-east-1.aliyuncs.com"),
+		"me-central-1":          dara.String("gpdb.me-central-1.aliyuncs.com"),
+		"cn-beijing-finance-1":  dara.String("gpdb.cn-beijing-finance-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -7915,7 +7915,7 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 //
 // Description:
 //
-// Queries the detailed information of a specified Supabase branch, including basic branch attributes, parent branch information, protection status, and connection information.
+// This operation queries the details of a specified Supabase branch and returns the basic attributes, parent branch information, protection status, and connection information of the branch.
 //
 // @param request - DescribeBranchRequest
 //
@@ -7967,7 +7967,7 @@ func (client *Client) DescribeBranchWithOptions(request *DescribeBranchRequest, 
 //
 // Description:
 //
-// Queries the detailed information of a specified Supabase branch, including basic branch attributes, parent branch information, protection status, and connection information.
+// This operation queries the details of a specified Supabase branch and returns the basic attributes, parent branch information, protection status, and connection information of the branch.
 //
 // @param request - DescribeBranchRequest
 //
@@ -16289,7 +16289,7 @@ func (client *Client) ListBackupJobs(request *ListBackupJobsRequest) (_result *L
 //
 // Description:
 //
-// Performs a paged query for all branches under a specified Supabase project. You can filter branches by parent branch, keyword, and sorting criteria. Paging is supported.
+// This operation performs a paging query of all branches under a specified Supabase project. You can filter results by parent branch, keyword, and sorting conditions.
 //
 // @param request - ListBranchesRequest
 //
@@ -16369,7 +16369,7 @@ func (client *Client) ListBranchesWithOptions(request *ListBranchesRequest, runt
 //
 // Description:
 //
-// Performs a paged query for all branches under a specified Supabase project. You can filter branches by parent branch, keyword, and sorting criteria. Paging is supported.
+// This operation performs a paging query of all branches under a specified Supabase project. You can filter results by parent branch, keyword, and sorting conditions.
 //
 // @param request - ListBranchesRequest
 //

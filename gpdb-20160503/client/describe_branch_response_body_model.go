@@ -92,7 +92,7 @@ type DescribeBranchResponseBodyBranch struct {
 	//
 	// test branch
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the branch automatically expires and is deleted, in ISO 8601 UTC format.
+	// The time when the branch expires and is automatically deleted, in ISO 8601 UTC format.
 	//
 	// example:
 	//
@@ -110,13 +110,13 @@ type DescribeBranchResponseBodyBranch struct {
 	//
 	// ParentData
 	InitSource *string `json:"InitSource,omitempty" xml:"InitSource,omitempty"`
-	// Indicates whether the branch is the default branch.
+	// Indicates whether this is the default branch.
 	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The parent branch ID, which specifies the parent branch for a new branch or a query condition.
+	// The parent branch ID, which specifies the parent branch of a new branch or a query condition.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type DescribeBranchResponseBodyBranch struct {
 	ParentLSN *string `json:"ParentLSN,omitempty" xml:"ParentLSN,omitempty"`
 	// The data synchronization point in time selected from the parent branch when this branch was created, in ISO 8601 UTC format.
 	//
-	// Note:
+	// Description:
 	//
 	// - For child branches, this value indicates the point in time of the parent branch selected during creation.
 	//
@@ -146,7 +146,7 @@ type DescribeBranchResponseBodyBranch struct {
 	//
 	// 2026-04-08T09:11:12Z
 	ParentTimestamp *string `json:"ParentTimestamp,omitempty" xml:"ParentTimestamp,omitempty"`
-	// The Supabase project ID associated with the primary branch.
+	// The Supabase project ID that corresponds to the primary branch.
 	//
 	// example:
 	//
@@ -170,13 +170,19 @@ type DescribeBranchResponseBodyBranch struct {
 	//
 	// Supabase
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The Supabase project ID that corresponds to the current branch.
+	//
+	// example:
+	//
+	// spb-xxxx
+	SpbProjectId *string `json:"SpbProjectId,omitempty" xml:"SpbProjectId,omitempty"`
 	// The branch status.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The branch tag list.
+	// The list of branch tags.
 	Tags []*DescribeBranchResponseBodyBranchTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -246,6 +252,10 @@ func (s *DescribeBranchResponseBodyBranch) GetProtected() *bool {
 
 func (s *DescribeBranchResponseBodyBranch) GetServiceType() *string {
 	return s.ServiceType
+}
+
+func (s *DescribeBranchResponseBodyBranch) GetSpbProjectId() *string {
+	return s.SpbProjectId
 }
 
 func (s *DescribeBranchResponseBodyBranch) GetStatus() *string {
@@ -328,6 +338,11 @@ func (s *DescribeBranchResponseBodyBranch) SetProtected(v bool) *DescribeBranchR
 
 func (s *DescribeBranchResponseBodyBranch) SetServiceType(v string) *DescribeBranchResponseBodyBranch {
 	s.ServiceType = &v
+	return s
+}
+
+func (s *DescribeBranchResponseBodyBranch) SetSpbProjectId(v string) *DescribeBranchResponseBodyBranch {
+	s.SpbProjectId = &v
 	return s
 }
 

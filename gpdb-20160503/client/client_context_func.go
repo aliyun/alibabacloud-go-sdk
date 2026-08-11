@@ -5989,7 +5989,7 @@ func (client *Client) DescribeBackupPolicyWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// Queries the detailed information of a specified Supabase branch, including basic branch attributes, parent branch information, protection status, and connection information.
+// This operation queries the details of a specified Supabase branch and returns the basic attributes, parent branch information, protection status, and connection information of the branch.
 //
 // @param request - DescribeBranchRequest
 //
@@ -12261,7 +12261,7 @@ func (client *Client) ListBackupJobsWithContext(ctx context.Context, request *Li
 //
 // Description:
 //
-// Performs a paged query for all branches under a specified Supabase project. You can filter branches by parent branch, keyword, and sorting criteria. Paging is supported.
+// This operation performs a paging query of all branches under a specified Supabase project. You can filter results by parent branch, keyword, and sorting conditions.
 //
 // @param request - ListBranchesRequest
 //

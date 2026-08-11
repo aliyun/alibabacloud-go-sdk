@@ -27,13 +27,13 @@ type iListBranchesResponseBody interface {
 
 type ListBranchesResponseBody struct {
 	Branches *ListBranchesResponseBodyBranches `json:"Branches,omitempty" xml:"Branches,omitempty" type:"Struct"`
-	// The maximum number of records to return in this request.
+	// The maximum number of records to return in this query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The cursor for the paged query. You do not need to specify this parameter for the first request. For subsequent requests, use the NextToken value returned in the previous response for paging.
+	// The cursor for paging query. You do not need to specify this parameter for the first query. For subsequent queries, use the NextToken value returned in the previous response.
 	//
 	// example:
 	//
@@ -69,7 +69,7 @@ type ListBranchesResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of branches that match the query criteria.
+	// The total number of branches that match the query conditions.
 	//
 	// example:
 	//
@@ -206,6 +206,7 @@ type ListBranchesResponseBodyBranchesBranch struct {
 	ProjectId        *string                                     `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	Protected        *bool                                       `json:"Protected,omitempty" xml:"Protected,omitempty"`
 	ServiceType      *string                                     `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	SpbProjectId     *string                                     `json:"SpbProjectId,omitempty" xml:"SpbProjectId,omitempty"`
 	Status           *string                                     `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags             *ListBranchesResponseBodyBranchesBranchTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
@@ -272,6 +273,10 @@ func (s *ListBranchesResponseBodyBranchesBranch) GetProtected() *bool {
 
 func (s *ListBranchesResponseBodyBranchesBranch) GetServiceType() *string {
 	return s.ServiceType
+}
+
+func (s *ListBranchesResponseBodyBranchesBranch) GetSpbProjectId() *string {
+	return s.SpbProjectId
 }
 
 func (s *ListBranchesResponseBodyBranchesBranch) GetStatus() *string {
@@ -349,6 +354,11 @@ func (s *ListBranchesResponseBodyBranchesBranch) SetProtected(v bool) *ListBranc
 
 func (s *ListBranchesResponseBodyBranchesBranch) SetServiceType(v string) *ListBranchesResponseBodyBranchesBranch {
 	s.ServiceType = &v
+	return s
+}
+
+func (s *ListBranchesResponseBodyBranchesBranch) SetSpbProjectId(v string) *ListBranchesResponseBodyBranchesBranch {
+	s.SpbProjectId = &v
 	return s
 }
 

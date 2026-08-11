@@ -30,13 +30,13 @@ type iListBranchesRequest interface {
 }
 
 type ListBranchesRequest struct {
-	// The maximum number of records to return in this request.
+	// The maximum number of records to return in this query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The cursor for the paged query. You do not need to specify this parameter for the first request. For subsequent requests, use the NextToken value returned in the previous response for paging.
+	// The cursor for paging query. You do not need to specify this parameter for the first query. For subsequent queries, use the NextToken value returned in the previous response.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type ListBranchesRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The parent branch ID. This parameter specifies the parent branch for a new branch or a query filter.
+	// The parent branch ID. Specifies the parent branch for a new branch or as a query filter condition.
 	//
 	// example:
 	//
@@ -78,13 +78,13 @@ type ListBranchesRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The search keyword. Fuzzy search by branch ID or branch name is supported.
+	// The search keyword. Supports fuzzy search by branch ID or branch name.
 	//
 	// example:
 	//
 	// main
 	Search *string `json:"Search,omitempty" xml:"Search,omitempty"`
-	// The field by which to sort the results.
+	// The sort field.
 	//
 	// Valid values:
 	//
@@ -100,7 +100,7 @@ type ListBranchesRequest struct {
 	//
 	// CreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The sort order.
+	// The sort direction.
 	//
 	// Valid values:
 	//
