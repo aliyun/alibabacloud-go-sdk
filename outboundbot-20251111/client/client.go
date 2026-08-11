@@ -61,7 +61,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 创建克隆音色
+// Creates an instance.
 //
 // @param request - CreateCloneVoiceRequest
 //
@@ -113,7 +113,7 @@ func (client *Client) CreateCloneVoiceWithOptions(request *CreateCloneVoiceReque
 
 // Summary:
 //
-// 创建克隆音色
+// Creates an instance.
 //
 // @param request - CreateCloneVoiceRequest
 //
@@ -131,7 +131,7 @@ func (client *Client) CreateCloneVoice(request *CreateCloneVoiceRequest) (_resul
 
 // Summary:
 //
-// Creates an instance.
+// Creates a flash message configuration.
 //
 // @param tmpReq - CreateFlashSmsAccessProfileRequest
 //
@@ -189,7 +189,7 @@ func (client *Client) CreateFlashSmsAccessProfileWithOptions(tmpReq *CreateFlash
 
 // Summary:
 //
-// Creates an instance.
+// Creates a flash message configuration.
 //
 // @param request - CreateFlashSmsAccessProfileRequest
 //
@@ -357,7 +357,7 @@ func (client *Client) CreateOutboundCallRestriction(request *CreateOutboundCallR
 
 // Summary:
 //
-// 创建场景
+// Creates an instance.
 //
 // @param request - CreateScriptRequest
 //
@@ -413,7 +413,7 @@ func (client *Client) CreateScriptWithOptions(request *CreateScriptRequest, runt
 
 // Summary:
 //
-// 创建场景
+// Creates an instance.
 //
 // @param request - CreateScriptRequest
 //
@@ -431,7 +431,7 @@ func (client *Client) CreateScript(request *CreateScriptRequest) (_result *Creat
 
 // Summary:
 //
-// 创建场景配置
+// Creates a scenario configuration.
 //
 // @param tmpReq - CreateScriptVersionRequest
 //
@@ -525,7 +525,7 @@ func (client *Client) CreateScriptVersionWithOptions(tmpReq *CreateScriptVersion
 
 // Summary:
 //
-// 创建场景配置
+// Creates a scenario configuration.
 //
 // @param request - CreateScriptVersionRequest
 //
@@ -543,7 +543,7 @@ func (client *Client) CreateScriptVersion(request *CreateScriptVersionRequest) (
 
 // Summary:
 //
-// 创建语音接入配置
+// Creates an instance.
 //
 // @param tmpReq - CreateVoiceAccessProfileRequest
 //
@@ -601,7 +601,7 @@ func (client *Client) CreateVoiceAccessProfileWithOptions(tmpReq *CreateVoiceAcc
 
 // Summary:
 //
-// 创建语音接入配置
+// Creates an instance.
 //
 // @param request - CreateVoiceAccessProfileRequest
 //
@@ -619,7 +619,7 @@ func (client *Client) CreateVoiceAccessProfile(request *CreateVoiceAccessProfile
 
 // Summary:
 //
-// 删除克隆音色
+// Deletes a scene.
 //
 // @param request - DeleteCloneVoiceRequest
 //
@@ -667,7 +667,7 @@ func (client *Client) DeleteCloneVoiceWithOptions(request *DeleteCloneVoiceReque
 
 // Summary:
 //
-// 删除克隆音色
+// Deletes a scene.
 //
 // @param request - DeleteCloneVoiceRequest
 //
@@ -685,7 +685,7 @@ func (client *Client) DeleteCloneVoice(request *DeleteCloneVoiceRequest) (_resul
 
 // Summary:
 //
-// 删除闪信配置
+// Deletes a flash message configuration.
 //
 // @param request - DeleteFlashSmsAccessProfileRequest
 //
@@ -733,7 +733,7 @@ func (client *Client) DeleteFlashSmsAccessProfileWithOptions(request *DeleteFlas
 
 // Summary:
 //
-// 删除闪信配置
+// Deletes a flash message configuration.
 //
 // @param request - DeleteFlashSmsAccessProfileRequest
 //
@@ -751,7 +751,7 @@ func (client *Client) DeleteFlashSmsAccessProfile(request *DeleteFlashSmsAccessP
 
 // Summary:
 //
-// Retrieves the details of an instance.
+// Retrieves instance details.
 //
 // @param request - DeleteInstanceRequest
 //
@@ -795,7 +795,7 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 
 // Summary:
 //
-// Retrieves the details of an instance.
+// Retrieves instance details.
 //
 // @param request - DeleteInstanceRequest
 //
@@ -885,7 +885,7 @@ func (client *Client) DeleteOutboundCallRestriction(request *DeleteOutboundCallR
 
 // Summary:
 //
-// 删除场景
+// Deletes a scenario.
 //
 // @param request - DeleteScriptRequest
 //
@@ -933,7 +933,7 @@ func (client *Client) DeleteScriptWithOptions(request *DeleteScriptRequest, runt
 
 // Summary:
 //
-// 删除场景
+// Deletes a scenario.
 //
 // @param request - DeleteScriptRequest
 //
@@ -951,7 +951,7 @@ func (client *Client) DeleteScript(request *DeleteScriptRequest) (_result *Delet
 
 // Summary:
 //
-// 删除三方语音配置
+// Deletes a third-party voice configuration.
 //
 // @param request - DeleteVoiceAccessProfileRequest
 //
@@ -999,7 +999,7 @@ func (client *Client) DeleteVoiceAccessProfileWithOptions(request *DeleteVoiceAc
 
 // Summary:
 //
-// 删除三方语音配置
+// Deletes a third-party voice configuration.
 //
 // @param request - DeleteVoiceAccessProfileRequest
 //
@@ -1017,7 +1017,7 @@ func (client *Client) DeleteVoiceAccessProfile(request *DeleteVoiceAccessProfile
 
 // Summary:
 //
-// 禁用消息订阅
+// Disables message subscription.
 //
 // @param request - DisableSubscriptionRequest
 //
@@ -1061,7 +1061,7 @@ func (client *Client) DisableSubscriptionWithOptions(request *DisableSubscriptio
 
 // Summary:
 //
-// 禁用消息订阅
+// Disables message subscription.
 //
 // @param request - DisableSubscriptionRequest
 //
@@ -1141,7 +1141,7 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 
 // Summary:
 //
-// 获取prompt场景模版
+// Retrieves a prompt scenario template.
 //
 // @param request - GetScriptProfileTemplateRequest
 //
@@ -1189,7 +1189,7 @@ func (client *Client) GetScriptProfileTemplateWithOptions(request *GetScriptProf
 
 // Summary:
 //
-// 获取prompt场景模版
+// Retrieves a prompt scenario template.
 //
 // @param request - GetScriptProfileTemplateRequest
 //
@@ -1207,7 +1207,7 @@ func (client *Client) GetScriptProfileTemplate(request *GetScriptProfileTemplate
 
 // Summary:
 //
-// 获取MQ配置
+// Retrieves the MQ configuration.
 //
 // @param request - GetSubscriptionRequest
 //
@@ -1251,7 +1251,7 @@ func (client *Client) GetSubscriptionWithOptions(request *GetSubscriptionRequest
 
 // Summary:
 //
-// 获取MQ配置
+// Retrieves the MQ configuration.
 //
 // @param request - GetSubscriptionRequest
 //
@@ -1269,7 +1269,7 @@ func (client *Client) GetSubscription(request *GetSubscriptionRequest) (_result 
 
 // Summary:
 //
-// 获取克隆音色可用模型列表
+// Retrieves the list of available models for voice cloning.
 //
 // @param request - ListCloneVoiceModelsRequest
 //
@@ -1317,7 +1317,7 @@ func (client *Client) ListCloneVoiceModelsWithOptions(request *ListCloneVoiceMod
 
 // Summary:
 //
-// 获取克隆音色可用模型列表
+// Retrieves the list of available models for voice cloning.
 //
 // @param request - ListCloneVoiceModelsRequest
 //
@@ -1335,7 +1335,7 @@ func (client *Client) ListCloneVoiceModels(request *ListCloneVoiceModelsRequest)
 
 // Summary:
 //
-// 获取克隆音色列表
+// Retrieves the list of cloned voices.
 //
 // @param request - ListCloneVoicesRequest
 //
@@ -1391,7 +1391,7 @@ func (client *Client) ListCloneVoicesWithOptions(request *ListCloneVoicesRequest
 
 // Summary:
 //
-// 获取克隆音色列表
+// Retrieves the list of cloned voices.
 //
 // @param request - ListCloneVoicesRequest
 //
@@ -1409,7 +1409,7 @@ func (client *Client) ListCloneVoices(request *ListCloneVoicesRequest) (_result 
 
 // Summary:
 //
-// 获取闪信配置列表
+// Retrieves the list of flash SMS configurations.
 //
 // @param request - ListFlashSmsAccessProfilesRequest
 //
@@ -1461,7 +1461,7 @@ func (client *Client) ListFlashSmsAccessProfilesWithOptions(request *ListFlashSm
 
 // Summary:
 //
-// 获取闪信配置列表
+// Retrieves the list of flash SMS configurations.
 //
 // @param request - ListFlashSmsAccessProfilesRequest
 //
@@ -1479,7 +1479,7 @@ func (client *Client) ListFlashSmsAccessProfiles(request *ListFlashSmsAccessProf
 
 // Summary:
 //
-// 获取闪信厂商列表
+// Retrieves the list of flash message providers.
 //
 // @param request - ListFlashSmsProvidersRequest
 //
@@ -1523,7 +1523,7 @@ func (client *Client) ListFlashSmsProvidersWithOptions(request *ListFlashSmsProv
 
 // Summary:
 //
-// 获取闪信厂商列表
+// Retrieves the list of flash message providers.
 //
 // @param request - ListFlashSmsProvidersRequest
 //
@@ -1541,7 +1541,7 @@ func (client *Client) ListFlashSmsProviders(request *ListFlashSmsProvidersReques
 
 // Summary:
 //
-// 获取闪信模版列表
+// Retrieves flash SMS templates.
 //
 // @param request - ListFlashSmsTemplatesRequest
 //
@@ -1597,7 +1597,7 @@ func (client *Client) ListFlashSmsTemplatesWithOptions(request *ListFlashSmsTemp
 
 // Summary:
 //
-// 获取闪信模版列表
+// Retrieves flash SMS templates.
 //
 // @param request - ListFlashSmsTemplatesRequest
 //
@@ -1685,7 +1685,7 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 
 // Summary:
 //
-// Retrieves the blacklists and whitelists of an outbound robot.
+// Retrieves the blacklists and whitelists.
 //
 // @param request - ListOutboundCallRestrictionsRequest
 //
@@ -1741,7 +1741,7 @@ func (client *Client) ListOutboundCallRestrictionsWithOptions(request *ListOutbo
 
 // Summary:
 //
-// Retrieves the blacklists and whitelists of an outbound robot.
+// Retrieves the blacklists and whitelists.
 //
 // @param request - ListOutboundCallRestrictionsRequest
 //
@@ -1759,7 +1759,7 @@ func (client *Client) ListOutboundCallRestrictions(request *ListOutboundCallRest
 
 // Summary:
 //
-// 获取场景配置模板列表
+// Retrieves the list of scenario configuration templates.
 //
 // @param request - ListScriptProfileTemplatesRequest
 //
@@ -1807,7 +1807,7 @@ func (client *Client) ListScriptProfileTemplatesWithOptions(request *ListScriptP
 
 // Summary:
 //
-// 获取场景配置模板列表
+// Retrieves the list of scenario configuration templates.
 //
 // @param request - ListScriptProfileTemplatesRequest
 //
@@ -1825,7 +1825,7 @@ func (client *Client) ListScriptProfileTemplates(request *ListScriptProfileTempl
 
 // Summary:
 //
-// 获取场景列表
+// Retrieves the details of an instance.
 //
 // @param tmpReq - ListScriptsRequest
 //
@@ -1895,7 +1895,7 @@ func (client *Client) ListScriptsWithOptions(tmpReq *ListScriptsRequest, runtime
 
 // Summary:
 //
-// 获取场景列表
+// Retrieves the details of an instance.
 //
 // @param request - ListScriptsRequest
 //
@@ -1913,7 +1913,7 @@ func (client *Client) ListScripts(request *ListScriptsRequest) (_result *ListScr
 
 // Summary:
 //
-// 根据流程ID获取场景列表
+// Retrieves the list of scenarios associated with a flow by flow ID.
 //
 // @param request - ListScriptsByFlowRequest
 //
@@ -1961,7 +1961,7 @@ func (client *Client) ListScriptsByFlowWithOptions(request *ListScriptsByFlowReq
 
 // Summary:
 //
-// 根据流程ID获取场景列表
+// Retrieves the list of scenarios associated with a flow by flow ID.
 //
 // @param request - ListScriptsByFlowRequest
 //
@@ -1979,7 +1979,7 @@ func (client *Client) ListScriptsByFlow(request *ListScriptsByFlowRequest) (_res
 
 // Summary:
 //
-// 获取系统配置列表
+// Retrieves the list of system configurations.
 //
 // @param request - ListSystemConfigsRequest
 //
@@ -2031,7 +2031,7 @@ func (client *Client) ListSystemConfigsWithOptions(request *ListSystemConfigsReq
 
 // Summary:
 //
-// 获取系统配置列表
+// Retrieves the list of system configurations.
 //
 // @param request - ListSystemConfigsRequest
 //
@@ -2049,7 +2049,7 @@ func (client *Client) ListSystemConfigs(request *ListSystemConfigsRequest) (_res
 
 // Summary:
 //
-// 获取语音接入配置列表
+// Retrieves the list of voice access configurations.
 //
 // @param request - ListVoiceAccessProfilesRequest
 //
@@ -2101,7 +2101,7 @@ func (client *Client) ListVoiceAccessProfilesWithOptions(request *ListVoiceAcces
 
 // Summary:
 //
-// 获取语音接入配置列表
+// Retrieves the list of voice access configurations.
 //
 // @param request - ListVoiceAccessProfilesRequest
 //
@@ -2119,7 +2119,7 @@ func (client *Client) ListVoiceAccessProfiles(request *ListVoiceAccessProfilesRe
 
 // Summary:
 //
-// 发布场景
+// Updates an instance.
 //
 // @param request - PublishScriptRequest
 //
@@ -2171,7 +2171,7 @@ func (client *Client) PublishScriptWithOptions(request *PublishScriptRequest, ru
 
 // Summary:
 //
-// 发布场景
+// Updates an instance.
 //
 // @param request - PublishScriptRequest
 //
@@ -2189,7 +2189,7 @@ func (client *Client) PublishScript(request *PublishScriptRequest) (_result *Pub
 
 // Summary:
 //
-// 更新克隆音色
+// Updates an instance.
 //
 // @param request - UpdateCloneVoiceRequest
 //
@@ -2241,7 +2241,7 @@ func (client *Client) UpdateCloneVoiceWithOptions(request *UpdateCloneVoiceReque
 
 // Summary:
 //
-// 更新克隆音色
+// Updates an instance.
 //
 // @param request - UpdateCloneVoiceRequest
 //
@@ -2259,7 +2259,7 @@ func (client *Client) UpdateCloneVoice(request *UpdateCloneVoiceRequest) (_resul
 
 // Summary:
 //
-// 更新闪信配置
+// Updates the flash message configuration.
 //
 // @param tmpReq - UpdateFlashSmsAccessProfileRequest
 //
@@ -2321,7 +2321,7 @@ func (client *Client) UpdateFlashSmsAccessProfileWithOptions(tmpReq *UpdateFlash
 
 // Summary:
 //
-// 更新闪信配置
+// Updates the flash message configuration.
 //
 // @param request - UpdateFlashSmsAccessProfileRequest
 //
@@ -2413,7 +2413,7 @@ func (client *Client) UpdateInstance(request *UpdateInstanceRequest) (_result *U
 
 // Summary:
 //
-// 更新场景
+// Updates an instance.
 //
 // @param request - UpdateScriptRequest
 //
@@ -2469,7 +2469,7 @@ func (client *Client) UpdateScriptWithOptions(request *UpdateScriptRequest, runt
 
 // Summary:
 //
-// 更新场景
+// Updates an instance.
 //
 // @param request - UpdateScriptRequest
 //
@@ -2487,7 +2487,127 @@ func (client *Client) UpdateScript(request *UpdateScriptRequest) (_result *Updat
 
 // Summary:
 //
-// 创建或更新MQ配置
+// 更新场景配置
+//
+// Description:
+//
+// ***
+//
+// @param tmpReq - UpdateScriptVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateScriptVersionResponse
+func (client *Client) UpdateScriptVersionWithOptions(tmpReq *UpdateScriptVersionRequest, runtime *dara.RuntimeOptions) (_result *UpdateScriptVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateScriptVersionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.InteractionConfig) {
+		request.InteractionConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InteractionConfig, dara.String("InteractionConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.LabelConfigs) {
+		request.LabelConfigsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelConfigs, dara.String("LabelConfigs"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ScriptProfile) {
+		request.ScriptProfileShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScriptProfile, dara.String("ScriptProfile"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SynthesizerConfig) {
+		request.SynthesizerConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SynthesizerConfig, dara.String("SynthesizerConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TranscriberConfig) {
+		request.TranscriberConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TranscriberConfig, dara.String("TranscriberConfig"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InteractionConfigShrink) {
+		body["InteractionConfig"] = request.InteractionConfigShrink
+	}
+
+	if !dara.IsNil(request.LabelConfigsShrink) {
+		body["LabelConfigs"] = request.LabelConfigsShrink
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		body["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.ScriptProfileShrink) {
+		body["ScriptProfile"] = request.ScriptProfileShrink
+	}
+
+	if !dara.IsNil(request.SynthesizerConfigShrink) {
+		body["SynthesizerConfig"] = request.SynthesizerConfigShrink
+	}
+
+	if !dara.IsNil(request.TranscriberConfigShrink) {
+		body["TranscriberConfig"] = request.TranscriberConfigShrink
+	}
+
+	if !dara.IsNil(request.VersionId) {
+		body["VersionId"] = request.VersionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateScriptVersion"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateScriptVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新场景配置
+//
+// Description:
+//
+// ***
+//
+// @param request - UpdateScriptVersionRequest
+//
+// @return UpdateScriptVersionResponse
+func (client *Client) UpdateScriptVersion(request *UpdateScriptVersionRequest) (_result *UpdateScriptVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateScriptVersionResponse{}
+	_body, _err := client.UpdateScriptVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates or updates a message queue (MQ) configuration.
 //
 // @param tmpReq - UpdateSubscriptionRequest
 //
@@ -2569,7 +2689,7 @@ func (client *Client) UpdateSubscriptionWithOptions(tmpReq *UpdateSubscriptionRe
 
 // Summary:
 //
-// 创建或更新MQ配置
+// Creates or updates a message queue (MQ) configuration.
 //
 // @param request - UpdateSubscriptionRequest
 //
@@ -2587,7 +2707,7 @@ func (client *Client) UpdateSubscription(request *UpdateSubscriptionRequest) (_r
 
 // Summary:
 //
-// 更新系统配置
+// Updates system configurations.
 //
 // @param tmpReq - UpdateSystemConfigsRequest
 //
@@ -2645,7 +2765,7 @@ func (client *Client) UpdateSystemConfigsWithOptions(tmpReq *UpdateSystemConfigs
 
 // Summary:
 //
-// 更新系统配置
+// Updates system configurations.
 //
 // @param request - UpdateSystemConfigsRequest
 //
@@ -2663,7 +2783,7 @@ func (client *Client) UpdateSystemConfigs(request *UpdateSystemConfigsRequest) (
 
 // Summary:
 //
-// 更新语音接入配置
+// Updates an instance.
 //
 // @param tmpReq - UpdateVoiceAccessProfileRequest
 //
@@ -2725,7 +2845,7 @@ func (client *Client) UpdateVoiceAccessProfileWithOptions(tmpReq *UpdateVoiceAcc
 
 // Summary:
 //
-// 更新语音接入配置
+// Updates an instance.
 //
 // @param request - UpdateVoiceAccessProfileRequest
 //

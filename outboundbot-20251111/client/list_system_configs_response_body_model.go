@@ -26,35 +26,35 @@ type iListSystemConfigsResponseBody interface {
 }
 
 type ListSystemConfigsResponseBody struct {
-	// 返回码
+	// The return code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
+	// The response data.
 	Data []*ListSystemConfigsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// HTTP状态码
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// 错误信息
+	// The error message.
 	//
 	// example:
 	//
 	// Instance does not exist. Instance=outb001
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 错误信息中的变量值列表
+	// The list of variable values in the error message.
 	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	// 请求ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FDAC7-13C5-1B64-A853-999DF105B9EF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否调用成功
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -147,37 +147,49 @@ func (s *ListSystemConfigsResponseBody) Validate() error {
 }
 
 type ListSystemConfigsResponseBodyData struct {
-	// 创建时间，毫秒级时间戳
+	// The creation time, in millisecond-level timestamp.
 	//
 	// example:
 	//
 	// 1786085104904
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 名称
+	// The system configuration name.\\
+	//
+	// callableTime: the outbound job window.\\
+	//
+	// calleeDailyAttemptLimit: the maximum number of daily calls to a single callee number.
 	//
 	// example:
 	//
 	// callableTime
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 对象ID
+	// The configuration type ID.\\
+	//
+	// If ObjectType is set to INSTANCE, this parameter specifies the instance ID.\\
+	//
+	// If ObjectType is set to TENANT, this parameter specifies the tenant ID.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b04
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	// 外呼开发时补充参数限制
+	// The configuration type.\\
+	//
+	// INSTANCE: instance-level.\\
+	//
+	// TENANT: tenant-level.
 	//
 	// example:
 	//
 	// INSTANCE
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	// 更新时间，毫秒级时间戳
+	// The update time, in millisecond-level timestamp.
 	//
 	// example:
 	//
 	// 1786085104904
 	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	// 值
+	// The system configuration content.
 	//
 	// example:
 	//

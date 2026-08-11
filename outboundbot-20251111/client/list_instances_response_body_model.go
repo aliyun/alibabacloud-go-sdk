@@ -143,7 +143,7 @@ func (s *ListInstancesResponseBody) Validate() error {
 }
 
 type ListInstancesResponseBodyData struct {
-	// The list of instances.
+	// The instance list.
 	Instances []*ListInstancesResponseBodyDataInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	// The current page number.
 	//
@@ -223,7 +223,7 @@ func (s *ListInstancesResponseBodyData) Validate() error {
 }
 
 type ListInstancesResponseBodyDataInstances struct {
-	// The number of concurrent connections.
+	// The concurrency.
 	//
 	// example:
 	//

@@ -159,7 +159,7 @@ type GetInstanceResponseBodyData struct {
 	//
 	// example:
 	//
-	// This is a large model robot
+	// This is a large language model chatbot
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The instance ID.
 	//

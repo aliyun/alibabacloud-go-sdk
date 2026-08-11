@@ -32,11 +32,11 @@ type DeleteOutboundCallRestrictionResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Not in use.
+	// The response data.
 	//
 	// example:
 	//
-	// Not in use
+	// xxx
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The HTTP status code.
 	//

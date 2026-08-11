@@ -26,35 +26,35 @@ type iListCloneVoiceModelsResponseBody interface {
 }
 
 type ListCloneVoiceModelsResponseBody struct {
-	// 返回码
+	// The return code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
+	// The response data.
 	Data *ListCloneVoiceModelsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// HTTP状态码
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// 错误信息
+	// The error message.
 	//
 	// example:
 	//
 	// Instance does not exist. Instance=392db13c-8901-4a25-b566-91d0d8114cec
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 错误信息中的变量值列表
+	// The list of variable values in the error message.
 	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	// 请求ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FDAC7-13C5-1B64-A853-999DF105B9EF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否调用成功
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -143,21 +143,21 @@ func (s *ListCloneVoiceModelsResponseBody) Validate() error {
 }
 
 type ListCloneVoiceModelsResponseBodyData struct {
-	// 数据列表
+	// The list of voice cloning models.
 	CloneVoiceModels []*ListCloneVoiceModelsResponseBodyDataCloneVoiceModels `json:"CloneVoiceModels,omitempty" xml:"CloneVoiceModels,omitempty" type:"Repeated"`
-	// 页码，从1开始
+	// The page number, starting from 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页记录数
+	// The number of records per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 符合条件的记录总数
+	// The total number of records that match the conditions.
 	//
 	// example:
 	//
@@ -223,19 +223,19 @@ func (s *ListCloneVoiceModelsResponseBodyData) Validate() error {
 }
 
 type ListCloneVoiceModelsResponseBodyDataCloneVoiceModels struct {
-	// 描述
+	// The description.
 	//
 	// example:
 	//
-	// 响应敏捷、自适应语气调节、复杂文本处理效果好
+	// Responsive, adaptive tone adjustment, effective complex text processing
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 显示名称
+	// The display name.
 	//
 	// example:
 	//
 	// Qwen
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// 名称
+	// The model name.
 	//
 	// example:
 	//

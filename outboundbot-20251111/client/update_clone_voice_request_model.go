@@ -18,23 +18,23 @@ type iUpdateCloneVoiceRequest interface {
 }
 
 type UpdateCloneVoiceRequest struct {
-	// 克隆音色ID
+	// The UUID of the cloned voice.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b15
 	CloneVoiceId *string `json:"CloneVoiceId,omitempty" xml:"CloneVoiceId,omitempty"`
-	// 实例ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 名称
+	// The name of the cloned voice.
 	//
 	// example:
 	//
-	// 测试克隆音
+	// TestClonedVoice
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

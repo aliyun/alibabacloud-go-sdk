@@ -14,7 +14,7 @@ type iDisableSubscriptionRequest interface {
 }
 
 type DisableSubscriptionRequest struct {
-	// 实例ID
+	// The instance ID.
 	//
 	// example:
 	//

@@ -26,35 +26,35 @@ type iGetSubscriptionResponseBody interface {
 }
 
 type GetSubscriptionResponseBody struct {
-	// 返回码
+	// The return code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
+	// The response data.
 	Data *GetSubscriptionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// HTTP状态码
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// 错误信息
+	// The error message.
 	//
 	// example:
 	//
 	// Instance does not exist. Instance=ob-1234567890
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 错误信息中的变量值列表
+	// The list of variable values in the error message.
 	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	// 请求ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FDAC7-13C5-1B64-A853-999DF105B9EF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否调用成功
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -143,57 +143,57 @@ func (s *GetSubscriptionResponseBody) Validate() error {
 }
 
 type GetSubscriptionResponseBodyData struct {
-	// true 表示禁用，false 表示启用
+	// Indicates whether the event push is disabled. A value of true indicates disabled, and a value of false indicates enabled.
 	//
 	// example:
 	//
 	// true
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// 接入点
+	// The endpoint.
 	//
 	// example:
 	//
 	// rmq-cn-h964u01wh12.cn-hangzhou.rmq.aliyuncs.com:8080
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// 事件列表
+	// The list of push content.
 	EventList []*GetSubscriptionResponseBodyDataEventList `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
-	// 实例ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// MQ的实例ID
+	// The MQ instance ID.
 	//
 	// example:
 	//
 	// rmq-cn-3g84vpf3712
 	MqInstanceId *string `json:"MqInstanceId,omitempty" xml:"MqInstanceId,omitempty"`
-	// 消息队列类型
+	// The MSMQ type.
 	//
 	// example:
 	//
 	// ROCKET_MQ_4
 	MqType *string `json:"MqType,omitempty" xml:"MqType,omitempty"`
-	// 田南+伽雷可斯
+	// The password.
 	//
 	// example:
 	//
 	// pa44w0rd
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// 生产者ID
+	// The producer ID.
 	//
 	// example:
 	//
 	// GID_123456
 	ProducerId *string `json:"ProducerId,omitempty" xml:"ProducerId,omitempty"`
-	// 主题
+	// The topic.
 	//
 	// example:
 	//
 	// OUTBOUND_BOT_TOPIC
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// 伽雷可斯
+	// The username.
 	//
 	// example:
 	//
@@ -313,19 +313,19 @@ func (s *GetSubscriptionResponseBodyData) Validate() error {
 }
 
 type GetSubscriptionResponseBodyDataEventList struct {
-	// true 表示禁用，false 表示启用
+	// Indicates whether the event push is disabled. A value of true indicates disabled, and a value of false indicates enabled.
 	//
 	// example:
 	//
 	// true
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// 显示名称
+	// The display name.
 	//
 	// example:
 	//
-	// 振铃
+	// Ringing
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// 名称
+	// The name.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iListFlashSmsProvidersRequest interface {
 }
 
 type ListFlashSmsProvidersRequest struct {
-	// 实例ID
+	// The instance ID.
 	//
 	// example:
 	//

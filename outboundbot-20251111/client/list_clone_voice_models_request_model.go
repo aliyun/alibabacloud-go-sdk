@@ -16,13 +16,13 @@ type iListCloneVoiceModelsRequest interface {
 }
 
 type ListCloneVoiceModelsRequest struct {
-	// 页码，从1开始
+	// The page number, starting from 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页记录数
+	// The number of records per page.
 	//
 	// example:
 	//

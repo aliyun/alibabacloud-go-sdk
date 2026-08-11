@@ -36,7 +36,7 @@ type CreateOutboundCallRestrictionResponseBody struct {
 	//
 	// example:
 	//
-	// Sample value
+	// xxxx
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The HTTP status code.
 	//

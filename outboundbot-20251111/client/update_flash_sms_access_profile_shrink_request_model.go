@@ -20,21 +20,33 @@ type iUpdateFlashSmsAccessProfileShrinkRequest interface {
 }
 
 type UpdateFlashSmsAccessProfileShrinkRequest struct {
-	// 接入配置
+	// The access configuration.
 	AccessProfileShrink *string `json:"AccessProfile,omitempty" xml:"AccessProfile,omitempty"`
-	// 接入配置ID
+	// The access configuration ID.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b04
 	AccessProfileId *string `json:"AccessProfileId,omitempty" xml:"AccessProfileId,omitempty"`
-	// 实例ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 供应商ID
+	// The provider ID. Valid values:
+	//
+	// - Uincall: Beijing Youyin Communication Co., Ltd.
+	//
+	// - ChuangLan: Beijing Chuanglan Cloud Intelligence Information Co., Ltd.
+	//
+	// - ChinaMobile: China Mobile.
+	//
+	// - ShangHaiTianNan: Shanghai Tiannan.
+	//
+	// - HeDao: Galaxis.
+	//
+	// - DySms: Alibaba Communication.
 	//
 	// example:
 	//

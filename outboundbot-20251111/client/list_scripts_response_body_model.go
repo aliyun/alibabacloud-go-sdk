@@ -26,35 +26,35 @@ type iListScriptsResponseBody interface {
 }
 
 type ListScriptsResponseBody struct {
-	// 返回码
+	// The return code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
+	// The response data.
 	Data *ListScriptsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// HTTP状态码
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// 错误信息
+	// The error message.
 	//
 	// example:
 	//
 	// Instance does not exist. Instance=ob-0987654321
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 错误信息中的变量值列表
+	// The list of variable values in the error message.
 	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	// 请求ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FDAC7-13C5-1B64-A853-999DF105B9EF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否调用成功
+	// Indicates whether the call is successful.
 	//
 	// example:
 	//
@@ -143,21 +143,21 @@ func (s *ListScriptsResponseBody) Validate() error {
 }
 
 type ListScriptsResponseBodyData struct {
-	// 页码，从1开始
+	// The page number, starting from 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页记录数
+	// The number of records per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 数据列表
+	// The data list.
 	Scripts []*ListScriptsResponseBodyDataScripts `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Repeated"`
-	// 符合条件的记录总数
+	// The total number of records that match the conditions.
 	//
 	// example:
 	//
@@ -223,73 +223,73 @@ func (s *ListScriptsResponseBodyData) Validate() error {
 }
 
 type ListScriptsResponseBodyDataScripts struct {
-	// 并发数
+	// The concurrency.
 	//
 	// example:
 	//
 	// 10
 	Concurrency *int32 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
-	// 创建时间，毫秒级时间戳
+	// The creation time, in millisecond-level timestamp.
 	//
 	// example:
 	//
 	// 1735660800000
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 描述
+	// The description.
 	//
 	// example:
 	//
-	// 询问用户对本次服务是否满意
+	// Ask the user whether they are satisfied with the service
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 草稿版本ID
+	// The draft version ID.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b60
 	DraftVersionId *string `json:"DraftVersionId,omitempty" xml:"DraftVersionId,omitempty"`
-	// 名称
+	// The name.
 	//
 	// example:
 	//
-	// 满意度调研
+	// Satisfaction Survey
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// NLU接入类型
+	// The NLU access type.
 	//
 	// example:
 	//
 	// MANAGED
 	NluAccessType *string `json:"NluAccessType,omitempty" xml:"NluAccessType,omitempty"`
-	// NLU引擎类型
+	// The NLU engine type.
 	//
 	// example:
 	//
 	// BEEBOT
 	NluEngine *string `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
-	// 电话号码
+	// The phone number bound to the scenario.
 	//
 	// example:
 	//
 	// 01057316547
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
-	// 已发布版本ID
+	// The published version ID.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b41
 	PublishedVersionId *string `json:"PublishedVersionId,omitempty" xml:"PublishedVersionId,omitempty"`
-	// 场景ID
+	// The scenario ID.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b04
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// 状态
+	// The scenario status.
 	//
 	// example:
 	//
 	// PUBLISHED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 更新时间，毫秒级时间戳
+	// The update time, in millisecond-level timestamp.
 	//
 	// example:
 	//

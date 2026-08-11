@@ -18,19 +18,19 @@ type iListFlashSmsAccessProfilesRequest interface {
 }
 
 type ListFlashSmsAccessProfilesRequest struct {
-	// 实例ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 页码，从1开始
+	// The page number, starting from 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页记录数
+	// The number of records per page.
 	//
 	// example:
 	//

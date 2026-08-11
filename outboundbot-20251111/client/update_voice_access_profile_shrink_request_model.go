@@ -20,25 +20,33 @@ type iUpdateVoiceAccessProfileShrinkRequest interface {
 }
 
 type UpdateVoiceAccessProfileShrinkRequest struct {
-	// 接入配置ID
+	// The access profile ID.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b15
 	AccessProfileId *string `json:"AccessProfileId,omitempty" xml:"AccessProfileId,omitempty"`
-	// 实例ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 目前支持IFLYTEK、VOLC
+	// The voice service provider. Valid values:
+	//
+	// - BAILIAN: Bailian.
+	//
+	// - VOLC: Doubao.
+	//
+	// - IFLYTEK: iFLYTEK.
+	//
+	// - TENCENT: Tencent.
 	//
 	// example:
 	//
 	// BAILIAN
 	NlsEngine *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
-	// 配置
+	// The vendor configuration information.
 	ProfileShrink *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 }
 

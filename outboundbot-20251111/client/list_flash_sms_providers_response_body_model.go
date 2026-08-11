@@ -26,35 +26,35 @@ type iListFlashSmsProvidersResponseBody interface {
 }
 
 type ListFlashSmsProvidersResponseBody struct {
-	// 返回码
+	// The return code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
+	// The response data.
 	Data []*ListFlashSmsProvidersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// HTTP状态码
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// 错误信息
+	// The error message.
 	//
 	// example:
 	//
 	// Instance does not exist. Instance=outb003
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 错误信息中的变量值列表
+	// The list of variable values in the error message.
 	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	// 请求ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b04
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否调用成功
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -147,19 +147,19 @@ func (s *ListFlashSmsProvidersResponseBody) Validate() error {
 }
 
 type ListFlashSmsProvidersResponseBodyData struct {
-	// 配置schema
+	// The provider parameter information.
 	//
 	// example:
 	//
 	// {\\"Pwd\\":{\\"displayName\\":\\"密码\\",\\"dataType\\":\\"TEXT\\",\\"displayOrder\\":2,\\"required\\":true,\\"maxLength\\":64},\\"User\\":{\\"displayName\\":\\"用户\\",\\"dataType\\":\\"TEXT\\",\\"displayOrder\\":1,\\"required\\":true,\\"maxLength\\":64},\\"Account\\":{\\"displayName\\":\\"账号\\",\\"dataType\\":\\"TEXT\\",\\"displayOrder\\":3,\\"required\\":true,\\"maxLength\\":64}}
 	ProfileSchema *string `json:"ProfileSchema,omitempty" xml:"ProfileSchema,omitempty"`
-	// 供应商ID
+	// The provider ID.
 	//
 	// example:
 	//
 	// Uincall
 	ProviderId *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
-	// 供应商名称
+	// The provider name.
 	//
 	// example:
 	//

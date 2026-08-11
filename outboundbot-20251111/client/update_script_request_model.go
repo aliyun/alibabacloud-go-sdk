@@ -20,25 +20,25 @@ type iUpdateScriptRequest interface {
 }
 
 type UpdateScriptRequest struct {
-	// 描述
+	// The description.
 	//
 	// example:
 	//
-	// 询问客户对本次服务的意见和建议
+	// Ask customers for their opinions and suggestions about the service
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 实例ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 名称
+	// The name.
 	//
 	// example:
 	//
-	// 满意度调研
+	// Satisfaction survey
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 场景ID
+	// The script ID.
 	//
 	// example:
 	//

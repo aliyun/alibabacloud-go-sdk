@@ -36,7 +36,7 @@ type CreateFlashSmsAccessProfileShrinkRequest struct {
 	//
 	// - ShangHaiTianNan: Shanghai Tiannan.
 	//
-	// - HeDao: Galexes.
+	// - HeDao: Galaxis.
 	//
 	// - DySms: Alibaba Communication.
 	//

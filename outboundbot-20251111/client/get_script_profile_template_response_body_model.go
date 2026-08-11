@@ -26,35 +26,35 @@ type iGetScriptProfileTemplateResponseBody interface {
 }
 
 type GetScriptProfileTemplateResponseBody struct {
-	// 返回码
+	// The return code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
+	// The response data.
 	Data *GetScriptProfileTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// HTTP状态码
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// 错误信息
+	// The error message.
 	//
 	// example:
 	//
 	// Instance does not exist. Instance=392db13c-8901-4a25-b566-91d0d8114cec
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 错误信息中的变量值列表
+	// The list of variable values in the error message.
 	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	// 请求ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FDAC7-13C5-1B64-A853-999DF105B9EF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否调用成功
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -143,53 +143,53 @@ func (s *GetScriptProfileTemplateResponseBody) Validate() error {
 }
 
 type GetScriptProfileTemplateResponseBodyData struct {
-	// 创建时间，毫秒级时间戳
+	// The creation time, in millisecond-level timestamp.
 	//
 	// example:
 	//
 	// 1735660800000
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 描述
+	// The description.
 	//
 	// example:
 	//
-	// 作为调研专员，对服务总体满意度、服务亮点、改进建议、服务效率、员工态度、再次选择意愿进行依次询问，并采集信息。
+	// As a survey specialist, sequentially ask about overall service satisfaction, service highlights, improvement suggestions, service efficiency, employee attitude, and willingness to choose again, and collect information
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 标签定义
+	// The label definition.
 	//
 	// example:
 	//
-	// [{\\"name\\":\\"总体满意度\\",\\"description\\":\\"收集对服务的整体满意度的评价信息\\",\\"candidateValues\\":[\\"非常满意\\",\\"满意\\",\\"一般\\",\\"不满意\\",\\"非常不满意\\"]},{\\"name\\":\\"服务亮点\\",\\"description\\":\\"客户对于服务亮点或者满意的地方的描述\\",\\"candidateValues\\":[]},{\\"name\\":\\"改进建议\\",\\"description\\":\\"客户对于改进意见的描述\\",\\"candidateValues\\":[]},{\\"name\\":\\"服务效率\\",\\"description\\":\\"客户对于服务响应速度和服务完成的时效性的反馈\\",\\"candidateValues\\":[]},{\\"name\\":\\"员工态度\\",\\"description\\":\\"客户对于对于服务人员的专业度和态度的评价\\",\\"candidateValues\\":[]},{\\"name\\":\\"再次选择意愿\\",\\"description\\":\\"客户是否愿意再次选择\\",\\"candidateValues\\":[\\"是\\",\\"否\\"]}]
+	// [{\\"name\\":\\"Overall Satisfaction\\",\\"description\\":\\"Collect evaluation information on overall satisfaction with the service\\",\\"candidateValues\\":[\\"Very Satisfied\\",\\"Satisfied\\",\\"Average\\",\\"Dissatisfied\\",\\"Very Dissatisfied\\"]},{\\"name\\":\\"Service Highlights\\",\\"description\\":\\"Customer description of service highlights or satisfactory aspects\\",\\"candidateValues\\":[]},{\\"name\\":\\"Improvement Suggestions\\",\\"description\\":\\"Customer description of improvement suggestions\\",\\"candidateValues\\":[]},{\\"name\\":\\"Service Efficiency\\",\\"description\\":\\"Customer feedback on service response speed and timeliness of service completion\\",\\"candidateValues\\":[]},{\\"name\\":\\"Employee Attitude\\",\\"description\\":\\"Customer evaluation of the professionalism and attitude of service personnel\\",\\"candidateValues\\":[]},{\\"name\\":\\"Willingness to Choose Again\\",\\"description\\":\\"Whether the customer is willing to choose again\\",\\"candidateValues\\":[\\"Yes\\",\\"No\\"]}]
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// 名称
+	// The name.
 	//
 	// example:
 	//
-	// 服务满意度调研
+	// Service Satisfaction Survey
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// schema定义
+	// The template details.
 	//
 	// example:
 	//
-	// {\\"name\\":\\"李明\\",\\"gender\\":\\"男\\"}
+	// {\\"name\\":\\"Li Ming\\",\\"gender\\":\\"Male\\"}
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	// 模板ID
+	// The template ID.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b59
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 更新时间，毫秒级时间戳
+	// The update time, in millisecond-level timestamp.
 	//
 	// example:
 	//
 	// 1735660800000
 	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	// 变量定义
+	// The variable definition.
 	//
 	// example:
 	//
-	// [{\\"name\\":\\"name\\",\\"description\\":\\"客户姓名\\"},{\\"name\\":\\"gender\\",\\"description\\":\\"客户性别\\"}]
+	// [{\\"name\\":\\"name\\",\\"description\\":\\"Customer name\\"},{\\"name\\":\\"gender\\",\\"description\\":\\"Customer gender\\"}]
 	Variables *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
 }
 

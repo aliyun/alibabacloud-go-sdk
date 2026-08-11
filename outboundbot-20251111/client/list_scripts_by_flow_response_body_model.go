@@ -26,35 +26,35 @@ type iListScriptsByFlowResponseBody interface {
 }
 
 type ListScriptsByFlowResponseBody struct {
-	// 返回码
+	// The return code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
+	// The response data.
 	Data []*ListScriptsByFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// HTTP状态码
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// 错误信息
+	// The error message.
 	//
 	// example:
 	//
 	// Instance does not exist. Instance=ob-1234567890
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 错误信息中的变量值列表
+	// The list of variable values in the error message.
 	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	// 请求ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FDAC7-13C5-1B64-A853-999DF105B9EF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否调用成功
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -147,19 +147,19 @@ func (s *ListScriptsByFlowResponseBody) Validate() error {
 }
 
 type ListScriptsByFlowResponseBodyData struct {
-	// 晓蜜机器人ID
+	// The chatbot ID.
 	//
 	// example:
 	//
 	// chatbot-cn-MQuyjjb666
 	ChatbotId *string `json:"ChatbotId,omitempty" xml:"ChatbotId,omitempty"`
-	// 名称
+	// The name.
 	//
 	// example:
 	//
-	// 满意度调研
+	// Satisfaction Survey
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 场景ID
+	// The scenario ID.
 	//
 	// example:
 	//

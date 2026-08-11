@@ -54,7 +54,7 @@ type ListOutboundCallRestrictionsResponseBody struct {
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b04
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the call is successful.
 	//
 	// example:
 	//
@@ -233,13 +233,13 @@ type ListOutboundCallRestrictionsResponseBodyDataOutboundCallRestrictions struct
 	//
 	// example:
 	//
-	// 示例值
+	// test
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
 	// The phone number.
 	//
 	// example:
 	//
-	// 示例值
+	// 134*****
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
 	// The policy. Valid values:
 	//
@@ -255,7 +255,7 @@ type ListOutboundCallRestrictionsResponseBodyDataOutboundCallRestrictions struct
 	//
 	// example:
 	//
-	// 示例值
+	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The outbound call restriction ID.
 	//

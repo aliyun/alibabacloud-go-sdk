@@ -30,51 +30,51 @@ type iUpdateSubscriptionShrinkRequest interface {
 }
 
 type UpdateSubscriptionShrinkRequest struct {
-	// 接入点
+	// The endpoint.
 	//
 	// example:
 	//
 	// rmq-cn-h964u01wh12.cn-hangzhou.rmq.aliyuncs.com:8080
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// 事件订阅列表
+	// The list of subscription items.
 	EventSubscriptionsShrink *string `json:"EventSubscriptions,omitempty" xml:"EventSubscriptions,omitempty"`
-	// 实例ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// MQ的实例ID
+	// The instance ID of the message queue.
 	//
 	// example:
 	//
 	// rmq-cn-3g84vpf3712
 	MqInstanceId *string `json:"MqInstanceId,omitempty" xml:"MqInstanceId,omitempty"`
-	// 消息队列类型
+	// The MSMQ type.
 	//
 	// example:
 	//
 	// ROCKET_MQ_4
 	MqType *string `json:"MqType,omitempty" xml:"MqType,omitempty"`
-	// 田南+伽雷可斯
+	// The password.
 	//
 	// example:
 	//
 	// pa44w0rd
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// 生产者ID
+	// The producer ID.
 	//
 	// example:
 	//
 	// GID_123456
 	ProducerId *string `json:"ProducerId,omitempty" xml:"ProducerId,omitempty"`
-	// 主题
+	// The topic.
 	//
 	// example:
 	//
 	// OUTBOUND_BOT_TOPIC
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// 伽雷可斯
+	// The username.
 	//
 	// example:
 	//

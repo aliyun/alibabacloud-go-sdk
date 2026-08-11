@@ -16,13 +16,13 @@ type iDeleteFlashSmsAccessProfileRequest interface {
 }
 
 type DeleteFlashSmsAccessProfileRequest struct {
-	// 接入配置ID
+	// The flash message configuration ID.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b04
 	AccessProfileId *string `json:"AccessProfileId,omitempty" xml:"AccessProfileId,omitempty"`
-	// 实例ID
+	// The instance ID.
 	//
 	// example:
 	//

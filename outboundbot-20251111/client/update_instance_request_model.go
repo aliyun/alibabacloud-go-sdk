@@ -20,7 +20,7 @@ type iUpdateInstanceRequest interface {
 }
 
 type UpdateInstanceRequest struct {
-	// The number of concurrent calls.
+	// The number of concurrent connections.
 	//
 	// example:
 	//

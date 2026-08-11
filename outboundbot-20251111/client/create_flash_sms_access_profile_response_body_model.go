@@ -36,7 +36,7 @@ type CreateFlashSmsAccessProfileResponseBody struct {
 	//
 	// example:
 	//
-	// Flash message configuration ID
+	// xxxxx
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The HTTP status code.
 	//

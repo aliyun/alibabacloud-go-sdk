@@ -26,35 +26,35 @@ type iListVoiceAccessProfilesResponseBody interface {
 }
 
 type ListVoiceAccessProfilesResponseBody struct {
-	// 返回码
+	// The return code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
+	// The response data.
 	Data *ListVoiceAccessProfilesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// HTTP状态码
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// 错误信息
+	// The error message.
 	//
 	// example:
 	//
 	// Instance does not exist. Instance=outb001,.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 错误信息中的变量值列表
+	// The list of variable values in the error message.
 	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	// 请求ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FDAC7-13C5-1B64-A853-999DF105B9EF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否调用成功
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -143,25 +143,25 @@ func (s *ListVoiceAccessProfilesResponseBody) Validate() error {
 }
 
 type ListVoiceAccessProfilesResponseBodyData struct {
-	// 页码，从1开始
+	// The page number, starting from 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页记录数
+	// The number of records per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 符合条件的记录总数
+	// The total number of records that match the conditions.
 	//
 	// example:
 	//
 	// 0
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// 数据列表
+	// The data list.
 	VoiceAccessProfiles []*ListVoiceAccessProfilesResponseBodyDataVoiceAccessProfiles `json:"VoiceAccessProfiles,omitempty" xml:"VoiceAccessProfiles,omitempty" type:"Repeated"`
 }
 
@@ -223,41 +223,49 @@ func (s *ListVoiceAccessProfilesResponseBodyData) Validate() error {
 }
 
 type ListVoiceAccessProfilesResponseBodyDataVoiceAccessProfiles struct {
-	// 接入配置ID
+	// The access profile ID.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b15
 	AccessProfileId *string `json:"AccessProfileId,omitempty" xml:"AccessProfileId,omitempty"`
-	// 能力列表
+	// The list of supported capabilities.
 	Capabilities []*string `json:"Capabilities,omitempty" xml:"Capabilities,omitempty" type:"Repeated"`
-	// 创建时间，毫秒级时间戳
+	// The creation time, in millisecond-level timestamp.
 	//
 	// example:
 	//
 	// 1735660800000
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 实例ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 目前支持IFLYTEK、VOLC
+	// The voice engine vendor. Valid values:
+	//
+	// - BAILIAN: Bailian.
+	//
+	// - VOLC: Doubao.
+	//
+	// - IFLYTEK: iFLYTEK.
+	//
+	// - TENCENT: Tencent.
 	//
 	// example:
 	//
 	// BAILIAN
 	NlsEngine *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
-	// 引擎显示名称(例如：豆包、货拉拉)
+	// The display name of the voice engine vendor.
 	//
 	// example:
 	//
-	// 百炼
+	// Bailian
 	NlsEngineName *string `json:"NlsEngineName,omitempty" xml:"NlsEngineName,omitempty"`
-	// 配置
+	// The configuration.
 	Profile *ListVoiceAccessProfilesResponseBodyDataVoiceAccessProfilesProfile `json:"Profile,omitempty" xml:"Profile,omitempty" type:"Struct"`
-	// 更新时间，毫秒级时间戳
+	// The update time, in millisecond-level timestamp.
 	//
 	// example:
 	//
@@ -355,59 +363,59 @@ func (s *ListVoiceAccessProfilesResponseBodyDataVoiceAccessProfiles) Validate() 
 }
 
 type ListVoiceAccessProfilesResponseBodyDataVoiceAccessProfilesProfile struct {
-	// 访问密钥
+	// Required when NlsEngine=VOLC.
 	//
 	// example:
 	//
 	// ****
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	// 百炼同时使用
+	// Required when NlsEngine=IFLYTEK or NlsEngine=BAILIAN.
 	//
 	// example:
 	//
 	// a9872e2342952e248727798f642936c7
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	// API密钥
+	// Required when NlsEngine=IFLYTEK.
 	//
 	// example:
 	//
 	// c0358c6e51c1013b446fdeb21a3a5d2e
 	ApiSecret *string `json:"ApiSecret,omitempty" xml:"ApiSecret,omitempty"`
-	// 科大讯飞使用
+	// Required when NlsEngine=IFLYTEK or NlsEngine=TENCENT.
 	//
 	// example:
 	//
 	// 9479688350
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 豆包使用
+	// Required when NlsEngine=VOLC.
 	//
 	// example:
 	//
 	// DW0yKRHQEe1nAd8c
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// 货拉拉使用
+	// Not currently in use.
 	//
 	// example:
 	//
-	// 暂无使用
+	// Not currently in use
 	AsrAppKey *string `json:"AsrAppKey,omitempty" xml:"AsrAppKey,omitempty"`
-	// 腾讯云使用，appId 已存在
+	// Required when NlsEngine=TENCENT.
 	//
 	// example:
 	//
 	// sci_r3b3e62udqcujnkerrorqztnpu
 	SecretId *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
-	// 密钥
+	// Required when NlsEngine=TENCENT.
 	//
 	// example:
 	//
 	// y5MZfFdW6yBZgJdKonHZBA
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
-	// TTS服务API Key
+	// Not currently in use.
 	//
 	// example:
 	//
-	// 暂无使用
+	// Not currently in use
 	TtsApiKey *string `json:"TtsApiKey,omitempty" xml:"TtsApiKey,omitempty"`
 }
 

@@ -20,25 +20,31 @@ type iCreateScriptRequest interface {
 }
 
 type CreateScriptRequest struct {
-	// 描述
+	// The description.
 	//
 	// example:
 	//
-	// 用于测试
+	// For testing
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 实例ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 名称
+	// The scenario name.
 	//
 	// example:
 	//
-	// 测试场景
+	// Test scenario
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// NLU引擎类型
+	// The NLU engine type. Valid values:
+	//
+	// - BEEBOT: integrates with Chatbot.
+	//
+	// - PROMPTS: prompt mode.
+	//
+	// - FUNCTION: integrates with Function Compute.
 	//
 	// example:
 	//

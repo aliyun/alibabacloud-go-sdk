@@ -20,21 +20,33 @@ type iUpdateFlashSmsAccessProfileRequest interface {
 }
 
 type UpdateFlashSmsAccessProfileRequest struct {
-	// 接入配置
+	// The access configuration.
 	AccessProfile *UpdateFlashSmsAccessProfileRequestAccessProfile `json:"AccessProfile,omitempty" xml:"AccessProfile,omitempty" type:"Struct"`
-	// 接入配置ID
+	// The access configuration ID.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b04
 	AccessProfileId *string `json:"AccessProfileId,omitempty" xml:"AccessProfileId,omitempty"`
-	// 实例ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 供应商ID
+	// The provider ID. Valid values:
+	//
+	// - Uincall: Beijing Youyin Communication Co., Ltd.
+	//
+	// - ChuangLan: Beijing Chuanglan Cloud Intelligence Information Co., Ltd.
+	//
+	// - ChinaMobile: China Mobile.
+	//
+	// - ShangHaiTianNan: Shanghai Tiannan.
+	//
+	// - HeDao: Galaxis.
+	//
+	// - DySms: Alibaba Communication.
 	//
 	// example:
 	//
@@ -96,63 +108,94 @@ func (s *UpdateFlashSmsAccessProfileRequest) Validate() error {
 }
 
 type UpdateFlashSmsAccessProfileRequestAccessProfile struct {
+	// Required when ProviderId is set to ShangHaiTianNan or Uincall.
+	//
 	// example:
 	//
 	// 6004200267
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// Required when ProviderId is set to ChinaMobile.
+	//
 	// example:
 	//
 	// TQChVEAabhaNp2AB
 	AesKey *string `json:"AesKey,omitempty" xml:"AesKey,omitempty"`
+	// Required when ProviderId is set to ChuangLan.
+	//
 	// example:
 	//
 	// N92685567
 	ApiAccount *string `json:"ApiAccount,omitempty" xml:"ApiAccount,omitempty"`
+	// Required when ProviderId is set to ChinaMobile.
+	//
 	// example:
 	//
 	// 100235
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// Required when ProviderId is set to ChinaMobile.
+	//
 	// example:
 	//
 	// 3aRsPrTsDG3OPNq5
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// Required when ProviderId is set to ChuangLan.
+	//
 	// example:
 	//
 	// Rp7hyUbtXMef23
 	ApiPassword *string `json:"ApiPassword,omitempty" xml:"ApiPassword,omitempty"`
+	// Required when ProviderId is set to ChinaMobile.
+	//
 	// example:
 	//
 	// 300012117547
-	CapAppId            *string                                                               `json:"CapAppId,omitempty" xml:"CapAppId,omitempty"`
+	CapAppId *string `json:"CapAppId,omitempty" xml:"CapAppId,omitempty"`
+	// The list of Alibaba Communication configurations. Required when ProviderId is set to DySms.
 	DySmsAccessProfiles []*UpdateFlashSmsAccessProfileRequestAccessProfileDySmsAccessProfiles `json:"DySmsAccessProfiles,omitempty" xml:"DySmsAccessProfiles,omitempty" type:"Repeated"`
+	// Required when ProviderId is set to ShangHaiTianNan.
+	//
 	// example:
 	//
 	// 10690101220
 	Extno *string `json:"Extno,omitempty" xml:"Extno,omitempty"`
+	// Required when ProviderId is set to ChuangLan.
+	//
 	// example:
 	//
 	// Rp7hyUbtXMef23
 	ManagementPassword *string `json:"ManagementPassword,omitempty" xml:"ManagementPassword,omitempty"`
+	// Required when ProviderId is set to ChuangLan.
+	//
 	// example:
 	//
 	// chuanglanrobot2
 	ManagementSubUserId *string `json:"ManagementSubUserId,omitempty" xml:"ManagementSubUserId,omitempty"`
+	// Required when ProviderId is set to ChuangLan.
+	//
 	// example:
 	//
 	// chuanglanrobot
 	ManagementUsername *string `json:"ManagementUsername,omitempty" xml:"ManagementUsername,omitempty"`
+	// Required when ProviderId is set to ShangHaiTianNan or HeDao.
+	//
 	// example:
 	//
 	// nu2DxxfZtY46
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// Required when ProviderId is set to Uincall.
+	//
 	// example:
 	//
 	// 828ee92ebc8241d3b37d0238dde6345e
 	Pwd *string `json:"Pwd,omitempty" xml:"Pwd,omitempty"`
+	// Required when ProviderId is set to Uincall.
+	//
 	// example:
 	//
 	// 6004200267_dev
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
+	// Required when ProviderId is set to HeDao.
+	//
 	// example:
 	//
 	// TEST10
@@ -325,18 +368,26 @@ func (s *UpdateFlashSmsAccessProfileRequestAccessProfile) Validate() error {
 }
 
 type UpdateFlashSmsAccessProfileRequestAccessProfileDySmsAccessProfiles struct {
+	// The template content.
+	//
 	// example:
 	//
-	// 我们联系您，您不在，稍后工作人员会继续联系您，如有打扰，请见谅
+	// We tried to reach you but you were unavailable. Our staff will contact you again shortly. We apologize for any inconvenience
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
-	// 测试
+	// Test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The signature name.
+	//
 	// example:
 	//
-	// 云呼叫中心
+	// Cloud Call Center
 	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// The template code.
+	//
 	// example:
 	//
 	// SMS_469075249
