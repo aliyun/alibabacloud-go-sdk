@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 创建 ApiKey
+// Creates an API key.
 //
 // @param request - CreateApiKeyRequest
 //
@@ -51,7 +51,7 @@ func (client *Client) CreateApiKeyWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// 创建 Team
+// Creates a Team.
 //
 // @param request - CreateTeamRequest
 //
@@ -93,7 +93,7 @@ func (client *Client) CreateTeamWithContext(ctx context.Context, request *Create
 
 // Summary:
 //
-// 删除 ApiKey
+// Deletes an API key.
 //
 // @param request - DeleteApiKeyRequest
 //
@@ -134,7 +134,7 @@ func (client *Client) DeleteApiKeyWithContext(ctx context.Context, apiKeyID *str
 
 // Summary:
 //
-// 删除 quota 配置
+// Deletes a Quota configuration.
 //
 // @param request - DeleteQuotaRequest
 //
@@ -181,7 +181,7 @@ func (client *Client) DeleteQuotaWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
-// 删除 Team
+// Deletes a team.
 //
 // @param request - DeleteTeamRequest
 //
@@ -222,7 +222,7 @@ func (client *Client) DeleteTeamWithContext(ctx context.Context, teamID *string,
 
 // Summary:
 //
-// 查看 ApiKey
+// Queries an API key.
 //
 // @param request - DescribeApiKeyRequest
 //
@@ -263,7 +263,7 @@ func (client *Client) DescribeApiKeyWithContext(ctx context.Context, apiKeyID *s
 
 // Summary:
 //
-// 获取 quota 配置
+// Retrieves the Quota configuration.
 //
 // @param request - DescribeQuotaRequest
 //
@@ -310,7 +310,7 @@ func (client *Client) DescribeQuotaWithContext(ctx context.Context, request *Des
 
 // Summary:
 //
-// 获取Team详情
+// Retrieves the details of a team.
 //
 // @param request - GetTeamRequest
 //
@@ -351,7 +351,7 @@ func (client *Client) GetTeamWithContext(ctx context.Context, teamID *string, re
 
 // Summary:
 //
-// 分页查询 ApiKey
+// Queries API keys by paging.
 //
 // @param request - ListApiKeysRequest
 //
@@ -422,7 +422,7 @@ func (client *Client) ListApiKeysWithContext(ctx context.Context, request *ListA
 
 // Summary:
 //
-// 查询 quota 配置
+// Queries the quota configurations of an account.
 //
 // @param request - ListQuotaRequest
 //
@@ -473,7 +473,7 @@ func (client *Client) ListQuotaWithContext(ctx context.Context, request *ListQuo
 
 // Summary:
 //
-// 查询 Team 列表
+// Queries a list of teams.
 //
 // @param request - ListTeamsRequest
 //
@@ -496,6 +496,10 @@ func (client *Client) ListTeamsWithContext(ctx context.Context, request *ListTea
 
 	if !dara.IsNil(request.PageSize) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Plan) {
+		query["plan"] = request.Plan
 	}
 
 	if !dara.IsNil(request.ResourceGroupID) {
@@ -532,7 +536,7 @@ func (client *Client) ListTeamsWithContext(ctx context.Context, request *ListTea
 
 // Summary:
 //
-// 重置 ApiKey
+// Resets an API key.
 //
 // @param request - ResetApiKeyRequest
 //
@@ -573,7 +577,7 @@ func (client *Client) ResetApiKeyWithContext(ctx context.Context, apiKeyID *stri
 
 // Summary:
 //
-// 更新 ApiKey
+// Updates an API key.
 //
 // @param request - UpdateApiKeyRequest
 //
@@ -615,7 +619,7 @@ func (client *Client) UpdateApiKeyWithContext(ctx context.Context, apiKeyID *str
 
 // Summary:
 //
-// 更新 quota 配置
+// Updates the Quota configuration.
 //
 // @param request - UpdateQuotaRequest
 //
@@ -657,7 +661,7 @@ func (client *Client) UpdateQuotaWithContext(ctx context.Context, request *Updat
 
 // Summary:
 //
-// 更新 Team
+// Updates a team.
 //
 // @param request - UpdateTeamRequest
 //

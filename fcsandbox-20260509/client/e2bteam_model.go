@@ -15,6 +15,8 @@ type iE2BTeam interface {
   GetCreatedTime() *string 
   SetDescription(v string) *E2BTeam
   GetDescription() *string 
+  SetPlan(v string) *E2BTeam
+  GetPlan() *string 
   SetResourceGroupID(v string) *E2BTeam
   GetResourceGroupID() *string 
   SetStatus(v string) *E2BTeam
@@ -28,13 +30,54 @@ type iE2BTeam interface {
 }
 
 type E2BTeam struct {
+  // Indicates whether the team name can be modified.
+  // 
+  // example:
+  // 
+  // false
   AllowUpdateTeamName *bool `json:"allowUpdateTeamName,omitempty" xml:"allowUpdateTeamName,omitempty"`
+  // The time when the team was created.
+  // 
+  // example:
+  // 
+  // 2025-05-23T11:26:25Z
   CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+  // The description.
+  // 
+  // example:
+  // 
+  // Open team
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  Plan *string `json:"plan,omitempty" xml:"plan,omitempty"`
+  // The resource group ID.
+  // 
+  // example:
+  // 
+  // rg-acfmwxqyrgwabcd
   ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
+  // The status of the team.
+  // 
+  // example:
+  // 
+  // active
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
+  // The unique identifier of the team.
+  // 
+  // example:
+  // 
+  // 70d1c834-0383-58d8-97ac-5336eb91abcd
   TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+  // The name of the team.
+  // 
+  // example:
+  // 
+  // dev
   TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
+  // The UID of the creator.
+  // 
+  // example:
+  // 
+  // 12345
   UserID *string `json:"userID,omitempty" xml:"userID,omitempty"`
 }
 
@@ -56,6 +99,10 @@ func (s *E2BTeam) GetCreatedTime() *string  {
 
 func (s *E2BTeam) GetDescription() *string  {
   return s.Description
+}
+
+func (s *E2BTeam) GetPlan() *string  {
+  return s.Plan
 }
 
 func (s *E2BTeam) GetResourceGroupID() *string  {
@@ -90,6 +137,11 @@ func (s *E2BTeam) SetCreatedTime(v string) *E2BTeam {
 
 func (s *E2BTeam) SetDescription(v string) *E2BTeam {
   s.Description = &v
+  return s
+}
+
+func (s *E2BTeam) SetPlan(v string) *E2BTeam {
+  s.Plan = &v
   return s
 }
 

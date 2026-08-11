@@ -14,6 +14,11 @@ type iDeleteQuotaRequest interface {
 }
 
 type DeleteQuotaRequest struct {
+	// Team ID
+	//
+	// example:
+	//
+	// f79d6a95-abcd-47a8-9167-eccf0622a998
 	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
 }
 

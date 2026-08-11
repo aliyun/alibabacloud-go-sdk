@@ -13,6 +13,8 @@ type iListTeamsRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListTeamsRequest
 	GetPageSize() *int32
+	SetPlan(v string) *ListTeamsRequest
+	GetPlan() *string
 	SetResourceGroupID(v string) *ListTeamsRequest
 	GetResourceGroupID() *string
 	SetTeamName(v string) *ListTeamsRequest
@@ -20,10 +22,31 @@ type iListTeamsRequest interface {
 }
 
 type ListTeamsRequest struct {
-	PageNumber      *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The page number, starting from 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of teams to display per page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Plan     *string `json:"plan,omitempty" xml:"plan,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmwxqyrgwabcd
 	ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
-	TeamName        *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
+	// The team name.
+	//
+	// example:
+	//
+	// DevTeam
+	TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
 }
 
 func (s ListTeamsRequest) String() string {
@@ -42,6 +65,10 @@ func (s *ListTeamsRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListTeamsRequest) GetPlan() *string {
+	return s.Plan
+}
+
 func (s *ListTeamsRequest) GetResourceGroupID() *string {
 	return s.ResourceGroupID
 }
@@ -57,6 +84,11 @@ func (s *ListTeamsRequest) SetPageNumber(v int32) *ListTeamsRequest {
 
 func (s *ListTeamsRequest) SetPageSize(v int32) *ListTeamsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListTeamsRequest) SetPlan(v string) *ListTeamsRequest {
+	s.Plan = &v
 	return s
 }
 

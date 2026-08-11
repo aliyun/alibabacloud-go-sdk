@@ -13,6 +13,8 @@ type iE2BListedTemplate interface {
   GetBuildStatus() *string 
   SetCategory(v string) *E2BListedTemplate
   GetCategory() *string 
+  SetContainerConfiguration(v *ContainerConfiguration) *E2BListedTemplate
+  GetContainerConfiguration() *ContainerConfiguration 
   SetCpuCount(v int32) *E2BListedTemplate
   GetCpuCount() *int32 
   SetCreatedAt(v string) *E2BListedTemplate
@@ -37,6 +39,8 @@ type iE2BListedTemplate interface {
   GetTeamID() *string 
   SetTeamName(v string) *E2BListedTemplate
   GetTeamName() *string 
+  SetTeamPlan(v string) *E2BListedTemplate
+  GetTeamPlan() *string 
   SetTemplateID(v string) *E2BListedTemplate
   GetTemplateID() *string 
   SetUpdatedAt(v string) *E2BListedTemplate
@@ -48,6 +52,7 @@ type iE2BListedTemplate interface {
 type E2BListedTemplate struct {
   BuildStatus *string `json:"buildStatus,omitempty" xml:"buildStatus,omitempty"`
   Category *string `json:"category,omitempty" xml:"category,omitempty"`
+  ContainerConfiguration *ContainerConfiguration `json:"containerConfiguration,omitempty" xml:"containerConfiguration,omitempty"`
   CpuCount *int32 `json:"cpuCount,omitempty" xml:"cpuCount,omitempty"`
   CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
   FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
@@ -60,6 +65,7 @@ type E2BListedTemplate struct {
   Tags []*E2BTemplateTag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
   TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
   TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
+  TeamPlan *string `json:"teamPlan,omitempty" xml:"teamPlan,omitempty"`
   TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
   UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
   UserID *string `json:"userID,omitempty" xml:"userID,omitempty"`
@@ -79,6 +85,10 @@ func (s *E2BListedTemplate) GetBuildStatus() *string  {
 
 func (s *E2BListedTemplate) GetCategory() *string  {
   return s.Category
+}
+
+func (s *E2BListedTemplate) GetContainerConfiguration() *ContainerConfiguration  {
+  return s.ContainerConfiguration
 }
 
 func (s *E2BListedTemplate) GetCpuCount() *int32  {
@@ -129,6 +139,10 @@ func (s *E2BListedTemplate) GetTeamName() *string  {
   return s.TeamName
 }
 
+func (s *E2BListedTemplate) GetTeamPlan() *string  {
+  return s.TeamPlan
+}
+
 func (s *E2BListedTemplate) GetTemplateID() *string  {
   return s.TemplateID
 }
@@ -148,6 +162,11 @@ func (s *E2BListedTemplate) SetBuildStatus(v string) *E2BListedTemplate {
 
 func (s *E2BListedTemplate) SetCategory(v string) *E2BListedTemplate {
   s.Category = &v
+  return s
+}
+
+func (s *E2BListedTemplate) SetContainerConfiguration(v *ContainerConfiguration) *E2BListedTemplate {
+  s.ContainerConfiguration = v
   return s
 }
 
@@ -211,6 +230,11 @@ func (s *E2BListedTemplate) SetTeamName(v string) *E2BListedTemplate {
   return s
 }
 
+func (s *E2BListedTemplate) SetTeamPlan(v string) *E2BListedTemplate {
+  s.TeamPlan = &v
+  return s
+}
+
 func (s *E2BListedTemplate) SetTemplateID(v string) *E2BListedTemplate {
   s.TemplateID = &v
   return s
@@ -227,6 +251,11 @@ func (s *E2BListedTemplate) SetUserID(v string) *E2BListedTemplate {
 }
 
 func (s *E2BListedTemplate) Validate() error {
+  if s.ContainerConfiguration != nil {
+    if err := s.ContainerConfiguration.Validate(); err != nil {
+      return err
+    }
+  }
   if s.LogConfiguration != nil {
     if err := s.LogConfiguration.Validate(); err != nil {
       return err

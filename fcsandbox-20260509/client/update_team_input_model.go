@@ -11,6 +11,8 @@ type iUpdateTeamInput interface {
 	GoString() string
 	SetDescription(v string) *UpdateTeamInput
 	GetDescription() *string
+	SetPlan(v string) *UpdateTeamInput
+	GetPlan() *string
 	SetResourceGroupID(v string) *UpdateTeamInput
 	GetResourceGroupID() *string
 	SetTeamName(v string) *UpdateTeamInput
@@ -18,9 +20,25 @@ type iUpdateTeamInput interface {
 }
 
 type UpdateTeamInput struct {
-	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// Development team
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Plan        *string `json:"plan,omitempty" xml:"plan,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmwxqyrgwabcd
 	ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
-	TeamName        *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
+	// The team name.
+	//
+	// example:
+	//
+	// dev
+	TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
 }
 
 func (s UpdateTeamInput) String() string {
@@ -35,6 +53,10 @@ func (s *UpdateTeamInput) GetDescription() *string {
 	return s.Description
 }
 
+func (s *UpdateTeamInput) GetPlan() *string {
+	return s.Plan
+}
+
 func (s *UpdateTeamInput) GetResourceGroupID() *string {
 	return s.ResourceGroupID
 }
@@ -45,6 +67,11 @@ func (s *UpdateTeamInput) GetTeamName() *string {
 
 func (s *UpdateTeamInput) SetDescription(v string) *UpdateTeamInput {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateTeamInput) SetPlan(v string) *UpdateTeamInput {
+	s.Plan = &v
 	return s
 }
 

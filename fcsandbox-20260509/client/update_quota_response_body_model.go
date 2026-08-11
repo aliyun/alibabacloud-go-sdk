@@ -20,9 +20,25 @@ type iUpdateQuotaResponseBody interface {
 }
 
 type UpdateQuotaResponseBody struct {
-	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
-	Quota     *Quota  `json:"quota,omitempty" xml:"quota,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The Quota configuration information.
+	Quota *Quota `json:"quota,omitempty" xml:"quota,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 2BCFAE0A-9FA9-5F72-8E8B-724632BC19A9
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

@@ -24,12 +24,33 @@ type iListQuotaResponseBody interface {
 }
 
 type ListQuotaResponseBody struct {
-	Code       *string  `json:"code,omitempty" xml:"code,omitempty"`
-	MaxResults *int32   `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	Message    *string  `json:"message,omitempty" xml:"message,omitempty"`
-	NextToken  *string  `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	Quotas     []*Quota `json:"quotas,omitempty" xml:"quotas,omitempty" type:"Repeated"`
-	RequestId  *string  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// 200
+	Code       *string `json:"code,omitempty" xml:"code,omitempty"`
+	MaxResults *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The pagination token used to retrieve more results. You do not need to specify this parameter for the first request. For subsequent requests, use the token obtained from the previous response.
+	//
+	// example:
+	//
+	// qxGrXje86XMrYQ51aJMy
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The list of quota configurations.
+	Quotas []*Quota `json:"quotas,omitempty" xml:"quotas,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 7ADFF8D8-D4BA-5F79-AD49-DDABFEA59B6C
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListQuotaResponseBody) String() string {

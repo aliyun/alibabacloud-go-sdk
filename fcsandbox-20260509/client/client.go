@@ -24,7 +24,15 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-shenzhen":    dara.String("fcsandbox.cn-shenzhen.aliyuncs.com"),
+		"cn-beijing":     dara.String("fcsandbox.cn-beijing.aliyuncs.com"),
+		"cn-shanghai":    dara.String("fcsandbox.cn-shanghai.aliyuncs.com"),
+		"cn-hongkong":    dara.String("fcsandbox.cn-hongkong.aliyuncs.com"),
+		"ap-southeast-1": dara.String("fcsandbox.ap-southeast-1.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("fcsandbox.cn-hangzhou.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +66,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 创建 ApiKey
+// Creates an API key.
 //
 // @param request - CreateApiKeyRequest
 //
@@ -100,7 +108,7 @@ func (client *Client) CreateApiKeyWithOptions(request *CreateApiKeyRequest, head
 
 // Summary:
 //
-// 创建 ApiKey
+// Creates an API key.
 //
 // @param request - CreateApiKeyRequest
 //
@@ -119,7 +127,7 @@ func (client *Client) CreateApiKey(request *CreateApiKeyRequest) (_result *Creat
 
 // Summary:
 //
-// 创建 Team
+// Creates a Team.
 //
 // @param request - CreateTeamRequest
 //
@@ -161,7 +169,7 @@ func (client *Client) CreateTeamWithOptions(request *CreateTeamRequest, headers 
 
 // Summary:
 //
-// 创建 Team
+// Creates a Team.
 //
 // @param request - CreateTeamRequest
 //
@@ -180,7 +188,7 @@ func (client *Client) CreateTeam(request *CreateTeamRequest) (_result *CreateTea
 
 // Summary:
 //
-// 删除 ApiKey
+// Deletes an API key.
 //
 // @param request - DeleteApiKeyRequest
 //
@@ -221,7 +229,7 @@ func (client *Client) DeleteApiKeyWithOptions(apiKeyID *string, request *DeleteA
 
 // Summary:
 //
-// 删除 ApiKey
+// Deletes an API key.
 //
 // @param request - DeleteApiKeyRequest
 //
@@ -240,7 +248,7 @@ func (client *Client) DeleteApiKey(apiKeyID *string, request *DeleteApiKeyReques
 
 // Summary:
 //
-// 删除 quota 配置
+// Deletes a Quota configuration.
 //
 // @param request - DeleteQuotaRequest
 //
@@ -287,7 +295,7 @@ func (client *Client) DeleteQuotaWithOptions(request *DeleteQuotaRequest, header
 
 // Summary:
 //
-// 删除 quota 配置
+// Deletes a Quota configuration.
 //
 // @param request - DeleteQuotaRequest
 //
@@ -306,7 +314,7 @@ func (client *Client) DeleteQuota(request *DeleteQuotaRequest) (_result *DeleteQ
 
 // Summary:
 //
-// 删除 Team
+// Deletes a team.
 //
 // @param request - DeleteTeamRequest
 //
@@ -347,7 +355,7 @@ func (client *Client) DeleteTeamWithOptions(teamID *string, request *DeleteTeamR
 
 // Summary:
 //
-// 删除 Team
+// Deletes a team.
 //
 // @param request - DeleteTeamRequest
 //
@@ -366,7 +374,7 @@ func (client *Client) DeleteTeam(teamID *string, request *DeleteTeamRequest) (_r
 
 // Summary:
 //
-// 查看 ApiKey
+// Queries an API key.
 //
 // @param request - DescribeApiKeyRequest
 //
@@ -407,7 +415,7 @@ func (client *Client) DescribeApiKeyWithOptions(apiKeyID *string, request *Descr
 
 // Summary:
 //
-// 查看 ApiKey
+// Queries an API key.
 //
 // @param request - DescribeApiKeyRequest
 //
@@ -426,7 +434,7 @@ func (client *Client) DescribeApiKey(apiKeyID *string, request *DescribeApiKeyRe
 
 // Summary:
 //
-// 获取 quota 配置
+// Retrieves the Quota configuration.
 //
 // @param request - DescribeQuotaRequest
 //
@@ -473,7 +481,7 @@ func (client *Client) DescribeQuotaWithOptions(request *DescribeQuotaRequest, he
 
 // Summary:
 //
-// 获取 quota 配置
+// Retrieves the Quota configuration.
 //
 // @param request - DescribeQuotaRequest
 //
@@ -492,7 +500,7 @@ func (client *Client) DescribeQuota(request *DescribeQuotaRequest) (_result *Des
 
 // Summary:
 //
-// 获取Team详情
+// Retrieves the details of a team.
 //
 // @param request - GetTeamRequest
 //
@@ -533,7 +541,7 @@ func (client *Client) GetTeamWithOptions(teamID *string, request *GetTeamRequest
 
 // Summary:
 //
-// 获取Team详情
+// Retrieves the details of a team.
 //
 // @param request - GetTeamRequest
 //
@@ -552,7 +560,7 @@ func (client *Client) GetTeam(teamID *string, request *GetTeamRequest) (_result 
 
 // Summary:
 //
-// 分页查询 ApiKey
+// Queries API keys by paging.
 //
 // @param request - ListApiKeysRequest
 //
@@ -623,7 +631,7 @@ func (client *Client) ListApiKeysWithOptions(request *ListApiKeysRequest, header
 
 // Summary:
 //
-// 分页查询 ApiKey
+// Queries API keys by paging.
 //
 // @param request - ListApiKeysRequest
 //
@@ -642,7 +650,7 @@ func (client *Client) ListApiKeys(request *ListApiKeysRequest) (_result *ListApi
 
 // Summary:
 //
-// 查询 quota 配置
+// Queries the quota configurations of an account.
 //
 // @param request - ListQuotaRequest
 //
@@ -693,7 +701,7 @@ func (client *Client) ListQuotaWithOptions(request *ListQuotaRequest, headers ma
 
 // Summary:
 //
-// 查询 quota 配置
+// Queries the quota configurations of an account.
 //
 // @param request - ListQuotaRequest
 //
@@ -712,7 +720,7 @@ func (client *Client) ListQuota(request *ListQuotaRequest) (_result *ListQuotaRe
 
 // Summary:
 //
-// 查询 Team 列表
+// Queries a list of teams.
 //
 // @param request - ListTeamsRequest
 //
@@ -735,6 +743,10 @@ func (client *Client) ListTeamsWithOptions(request *ListTeamsRequest, headers ma
 
 	if !dara.IsNil(request.PageSize) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Plan) {
+		query["plan"] = request.Plan
 	}
 
 	if !dara.IsNil(request.ResourceGroupID) {
@@ -771,7 +783,7 @@ func (client *Client) ListTeamsWithOptions(request *ListTeamsRequest, headers ma
 
 // Summary:
 //
-// 查询 Team 列表
+// Queries a list of teams.
 //
 // @param request - ListTeamsRequest
 //
@@ -790,7 +802,7 @@ func (client *Client) ListTeams(request *ListTeamsRequest) (_result *ListTeamsRe
 
 // Summary:
 //
-// 重置 ApiKey
+// Resets an API key.
 //
 // @param request - ResetApiKeyRequest
 //
@@ -831,7 +843,7 @@ func (client *Client) ResetApiKeyWithOptions(apiKeyID *string, request *ResetApi
 
 // Summary:
 //
-// 重置 ApiKey
+// Resets an API key.
 //
 // @param request - ResetApiKeyRequest
 //
@@ -850,7 +862,7 @@ func (client *Client) ResetApiKey(apiKeyID *string, request *ResetApiKeyRequest)
 
 // Summary:
 //
-// 更新 ApiKey
+// Updates an API key.
 //
 // @param request - UpdateApiKeyRequest
 //
@@ -892,7 +904,7 @@ func (client *Client) UpdateApiKeyWithOptions(apiKeyID *string, request *UpdateA
 
 // Summary:
 //
-// 更新 ApiKey
+// Updates an API key.
 //
 // @param request - UpdateApiKeyRequest
 //
@@ -911,7 +923,7 @@ func (client *Client) UpdateApiKey(apiKeyID *string, request *UpdateApiKeyReques
 
 // Summary:
 //
-// 更新 quota 配置
+// Updates the Quota configuration.
 //
 // @param request - UpdateQuotaRequest
 //
@@ -953,7 +965,7 @@ func (client *Client) UpdateQuotaWithOptions(request *UpdateQuotaRequest, header
 
 // Summary:
 //
-// 更新 quota 配置
+// Updates the Quota configuration.
 //
 // @param request - UpdateQuotaRequest
 //
@@ -972,7 +984,7 @@ func (client *Client) UpdateQuota(request *UpdateQuotaRequest) (_result *UpdateQ
 
 // Summary:
 //
-// 更新 Team
+// Updates a team.
 //
 // @param request - UpdateTeamRequest
 //
@@ -1014,7 +1026,7 @@ func (client *Client) UpdateTeamWithOptions(teamID *string, request *UpdateTeamR
 
 // Summary:
 //
-// 更新 Team
+// Updates a team.
 //
 // @param request - UpdateTeamRequest
 //

@@ -14,6 +14,7 @@ type iCreateTeamRequest interface {
 }
 
 type CreateTeamRequest struct {
+	// The request struct.
 	Body *CreateTeamInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

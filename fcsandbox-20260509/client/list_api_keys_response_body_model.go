@@ -26,13 +26,44 @@ type iListApiKeysResponseBody interface {
 }
 
 type ListApiKeysResponseBody struct {
-	ApiKeys    []*ApiKey `json:"apiKeys,omitempty" xml:"apiKeys,omitempty" type:"Repeated"`
-	Code       *string   `json:"code,omitempty" xml:"code,omitempty"`
-	Message    *string   `json:"message,omitempty" xml:"message,omitempty"`
-	PageNumber *int32    `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int32    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	RequestId  *string   `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Total      *int32    `json:"total,omitempty" xml:"total,omitempty"`
+	// The list of API keys.
+	ApiKeys []*ApiKey `json:"apiKeys,omitempty" xml:"apiKeys,omitempty" type:"Repeated"`
+	// The error code.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The page number, starting from 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of API keys displayed per page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 7ADFF8D8-D4BA-5F79-AD49-DDABFEA59B6C
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of records.
+	//
+	// example:
+	//
+	// 10
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListApiKeysResponseBody) String() string {

@@ -26,13 +26,52 @@ type iListApiKeysRequest interface {
 }
 
 type ListApiKeysRequest struct {
-	ApiKeyName      *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
-	PageNumber      *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The API key name.
+	//
+	// example:
+	//
+	// dev
+	ApiKeyName *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
+	// The current page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of teams to display per page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmwxqyrgwabcd
 	ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
-	Status          *string `json:"status,omitempty" xml:"status,omitempty"`
-	TeamID          *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
-	UserID          *string `json:"userID,omitempty" xml:"userID,omitempty"`
+	// The status. Valid values:
+	//
+	// - active
+	//
+	// - inactive
+	//
+	// example:
+	//
+	// Success
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The unique identifier of the team.
+	//
+	// example:
+	//
+	// 70d1c834-0383-58d8-97ac-5336eb91abcd
+	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+	// The UID of the creator.
+	//
+	// example:
+	//
+	// 123456789
+	UserID *string `json:"userID,omitempty" xml:"userID,omitempty"`
 }
 
 func (s ListApiKeysRequest) String() string {

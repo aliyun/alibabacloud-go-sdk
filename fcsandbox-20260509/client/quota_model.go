@@ -18,8 +18,23 @@ type iQuota interface {
 }
 
 type Quota struct {
-	CpuCores *int32  `json:"cpuCores,omitempty" xml:"cpuCores,omitempty"`
-	MemoryGB *int32  `json:"memoryGB,omitempty" xml:"memoryGB,omitempty"`
+	// The vCPU quota limit. Unit: cores.
+	//
+	// example:
+	//
+	// 32
+	CpuCores *int32 `json:"cpuCores,omitempty" xml:"cpuCores,omitempty"`
+	// The memory quota limit. Unit: GB.
+	//
+	// example:
+	//
+	// 64
+	MemoryGB *int32 `json:"memoryGB,omitempty" xml:"memoryGB,omitempty"`
+	// Team ID
+	//
+	// example:
+	//
+	// f79d6a95-abcd-47a8-9167-eccf0622a998
 	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
 }
 

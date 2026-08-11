@@ -9,6 +9,8 @@ type iUpdateTemplateInput interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetContainerConfiguration(v *ContainerConfiguration) *UpdateTemplateInput
+	GetContainerConfiguration() *ContainerConfiguration
 	SetLogConfiguration(v *LogConfiguration) *UpdateTemplateInput
 	GetLogConfiguration() *LogConfiguration
 	SetNetworkConfiguration(v *NetworkConfiguration) *UpdateTemplateInput
@@ -16,8 +18,9 @@ type iUpdateTemplateInput interface {
 }
 
 type UpdateTemplateInput struct {
-	LogConfiguration     *LogConfiguration     `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
-	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
+	ContainerConfiguration *ContainerConfiguration `json:"containerConfiguration,omitempty" xml:"containerConfiguration,omitempty"`
+	LogConfiguration       *LogConfiguration       `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
+	NetworkConfiguration   *NetworkConfiguration   `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
 }
 
 func (s UpdateTemplateInput) String() string {
@@ -28,12 +31,21 @@ func (s UpdateTemplateInput) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateTemplateInput) GetContainerConfiguration() *ContainerConfiguration {
+	return s.ContainerConfiguration
+}
+
 func (s *UpdateTemplateInput) GetLogConfiguration() *LogConfiguration {
 	return s.LogConfiguration
 }
 
 func (s *UpdateTemplateInput) GetNetworkConfiguration() *NetworkConfiguration {
 	return s.NetworkConfiguration
+}
+
+func (s *UpdateTemplateInput) SetContainerConfiguration(v *ContainerConfiguration) *UpdateTemplateInput {
+	s.ContainerConfiguration = v
+	return s
 }
 
 func (s *UpdateTemplateInput) SetLogConfiguration(v *LogConfiguration) *UpdateTemplateInput {
@@ -47,6 +59,11 @@ func (s *UpdateTemplateInput) SetNetworkConfiguration(v *NetworkConfiguration) *
 }
 
 func (s *UpdateTemplateInput) Validate() error {
+	if s.ContainerConfiguration != nil {
+		if err := s.ContainerConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.LogConfiguration != nil {
 		if err := s.LogConfiguration.Validate(); err != nil {
 			return err

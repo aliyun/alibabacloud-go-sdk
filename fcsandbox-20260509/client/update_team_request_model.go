@@ -14,6 +14,7 @@ type iUpdateTeamRequest interface {
 }
 
 type UpdateTeamRequest struct {
+	// The request body.
 	Body *UpdateTeamInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

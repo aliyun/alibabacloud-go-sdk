@@ -14,6 +14,7 @@ type iUpdateQuotaRequest interface {
 }
 
 type UpdateQuotaRequest struct {
+	// The Quota configuration information.
 	Body *Quota `json:"body,omitempty" xml:"body,omitempty"`
 }
 

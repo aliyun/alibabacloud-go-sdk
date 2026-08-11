@@ -41,6 +41,8 @@ type iE2BSandbox interface {
   GetTeamID() *string 
   SetTeamName(v string) *E2BSandbox
   GetTeamName() *string 
+  SetTeamPlan(v string) *E2BSandbox
+  GetTeamPlan() *string 
   SetTemplateID(v string) *E2BSandbox
   GetTemplateID() *string 
   SetTemplateName(v string) *E2BSandbox
@@ -66,6 +68,7 @@ type E2BSandbox struct {
   State *string `json:"state,omitempty" xml:"state,omitempty"`
   TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
   TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
+  TeamPlan *string `json:"teamPlan,omitempty" xml:"teamPlan,omitempty"`
   TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
   TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
   UserID *string `json:"userID,omitempty" xml:"userID,omitempty"`
@@ -141,6 +144,10 @@ func (s *E2BSandbox) GetTeamID() *string  {
 
 func (s *E2BSandbox) GetTeamName() *string  {
   return s.TeamName
+}
+
+func (s *E2BSandbox) GetTeamPlan() *string  {
+  return s.TeamPlan
 }
 
 func (s *E2BSandbox) GetTemplateID() *string  {
@@ -232,6 +239,11 @@ func (s *E2BSandbox) SetTeamID(v string) *E2BSandbox {
 
 func (s *E2BSandbox) SetTeamName(v string) *E2BSandbox {
   s.TeamName = &v
+  return s
+}
+
+func (s *E2BSandbox) SetTeamPlan(v string) *E2BSandbox {
+  s.TeamPlan = &v
   return s
 }
 

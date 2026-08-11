@@ -20,10 +20,26 @@ type iUpdateTeamResponseBody interface {
 }
 
 type UpdateTeamResponseBody struct {
-	Code      *string  `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string  `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId *string  `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Team      *E2BTeam `json:"team,omitempty" xml:"team,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 7ADFF8D8-D4BA-5F79-AD49-DDABFEA59B6C
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The team information.
+	Team *E2BTeam `json:"team,omitempty" xml:"team,omitempty"`
 }
 
 func (s UpdateTeamResponseBody) String() string {

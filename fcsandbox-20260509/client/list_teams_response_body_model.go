@@ -26,13 +26,44 @@ type iListTeamsResponseBody interface {
 }
 
 type ListTeamsResponseBody struct {
-	Code       *string    `json:"code,omitempty" xml:"code,omitempty"`
-	Message    *string    `json:"message,omitempty" xml:"message,omitempty"`
-	PageNumber *int32     `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int32     `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	RequestId  *string    `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Teams      []*E2BTeam `json:"teams,omitempty" xml:"teams,omitempty" type:"Repeated"`
-	Total      *int32     `json:"total,omitempty" xml:"total,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page. Default value: 20. Minimum value: 1. Maximum value: 50.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 7ADFF8D8-D4BA-5F79-AD49-DDABFEA59B6C
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The list of teams.
+	Teams []*E2BTeam `json:"teams,omitempty" xml:"teams,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 65
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListTeamsResponseBody) String() string {

@@ -14,6 +14,7 @@ type iCreateApiKeyRequest interface {
 }
 
 type CreateApiKeyRequest struct {
+	// The template base structure.
 	Body *CreateApiKeyInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
