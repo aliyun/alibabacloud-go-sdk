@@ -1,3 +1,6 @@
+2026-08-11 Version: v4.0.3
+- Generated golang 2019-01-03 for Sddp.
+
 2026-08-07 Version: v4.0.2
 - Update API DescribeDataObjects: add request parameters EngineType.
 - Update API DescribeDataObjects: add response parameters Body.Items.$.EngineType.

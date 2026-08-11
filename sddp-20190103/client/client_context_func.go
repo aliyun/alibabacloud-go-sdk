@@ -1793,15 +1793,15 @@ func (client *Client) DescribeDataObjectColumnDetailV2WithContext(ctx context.Co
 
 // Summary:
 //
-// Query data detection results for tables and files.
+// Queries the data detection results of data tables and files.
 //
 // Description:
 //
-// This operation queries data detection results for tables and files, to provide a comprehensive view across all your assets.
+// Queries the detection results of data tables and files. This allows you to query data detection results of assets from a global perspective.
 //
 // ## QPS limit
 //
-// The per-user QPS limit for this operation is 10 requests per second. If you exceed this limit, the system throttles your API calls. To prevent business disruptions, call this operation only when necessary.
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
 //
 // @param request - DescribeDataObjectsRequest
 //
@@ -1826,6 +1826,14 @@ func (client *Client) DescribeDataObjectsWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.CurrentPage) {
 		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Cursor) {
+		query["Cursor"] = request.Cursor
+	}
+
+	if !dara.IsNil(request.CursorDirection) {
+		query["CursorDirection"] = request.CursorDirection
 	}
 
 	if !dara.IsNil(request.DbName) {

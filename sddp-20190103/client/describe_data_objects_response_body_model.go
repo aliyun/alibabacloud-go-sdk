@@ -11,38 +11,59 @@ type iDescribeDataObjectsResponseBody interface {
 	GoString() string
 	SetCurrentPage(v int32) *DescribeDataObjectsResponseBody
 	GetCurrentPage() *int32
+	SetErrorCode(v string) *DescribeDataObjectsResponseBody
+	GetErrorCode() *string
+	SetErrorMessage(v string) *DescribeDataObjectsResponseBody
+	GetErrorMessage() *string
+	SetHasNext(v bool) *DescribeDataObjectsResponseBody
+	GetHasNext() *bool
+	SetHasPrevious(v bool) *DescribeDataObjectsResponseBody
+	GetHasPrevious() *bool
 	SetItems(v []*DescribeDataObjectsResponseBodyItems) *DescribeDataObjectsResponseBody
 	GetItems() []*DescribeDataObjectsResponseBodyItems
+	SetNextCursor(v string) *DescribeDataObjectsResponseBody
+	GetNextCursor() *string
 	SetPageSize(v int32) *DescribeDataObjectsResponseBody
 	GetPageSize() *int32
+	SetPreviousCursor(v string) *DescribeDataObjectsResponseBody
+	GetPreviousCursor() *string
 	SetRequestId(v string) *DescribeDataObjectsResponseBody
 	GetRequestId() *string
+	SetSyncStatus(v string) *DescribeDataObjectsResponseBody
+	GetSyncStatus() *string
 	SetTotalCount(v int32) *DescribeDataObjectsResponseBody
 	GetTotalCount() *int32
 }
 
 type DescribeDataObjectsResponseBody struct {
-	// The number of the page to return. Default value: **1**.
+	// The page number of the current page in a paged query. Settings the current page number for paging. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// A list of data objects.
-	Items []*DescribeDataObjectsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of data asset instances to return on each page. Default value: **10**.
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HasNext      *bool   `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	HasPrevious  *bool   `json:"HasPrevious,omitempty" xml:"HasPrevious,omitempty"`
+	// The list of data objects.
+	Items      []*DescribeDataObjectsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	NextCursor *string                                 `json:"NextCursor,omitempty" xml:"NextCursor,omitempty"`
+	// The maximum number of data asset instances to return per page in a paged query. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The unique ID of the request. Alibaba Cloud generates this ID to help you troubleshoot issues.
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PreviousCursor *string `json:"PreviousCursor,omitempty" xml:"PreviousCursor,omitempty"`
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
 	//
 	// example:
 	//
 	// E6F6460E-4330-549A-BD89-C183FB17571E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries that match the query.
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SyncStatus *string `json:"SyncStatus,omitempty" xml:"SyncStatus,omitempty"`
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -62,16 +83,44 @@ func (s *DescribeDataObjectsResponseBody) GetCurrentPage() *int32 {
 	return s.CurrentPage
 }
 
+func (s *DescribeDataObjectsResponseBody) GetErrorCode() *string {
+	return s.ErrorCode
+}
+
+func (s *DescribeDataObjectsResponseBody) GetErrorMessage() *string {
+	return s.ErrorMessage
+}
+
+func (s *DescribeDataObjectsResponseBody) GetHasNext() *bool {
+	return s.HasNext
+}
+
+func (s *DescribeDataObjectsResponseBody) GetHasPrevious() *bool {
+	return s.HasPrevious
+}
+
 func (s *DescribeDataObjectsResponseBody) GetItems() []*DescribeDataObjectsResponseBodyItems {
 	return s.Items
+}
+
+func (s *DescribeDataObjectsResponseBody) GetNextCursor() *string {
+	return s.NextCursor
 }
 
 func (s *DescribeDataObjectsResponseBody) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *DescribeDataObjectsResponseBody) GetPreviousCursor() *string {
+	return s.PreviousCursor
+}
+
 func (s *DescribeDataObjectsResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *DescribeDataObjectsResponseBody) GetSyncStatus() *string {
+	return s.SyncStatus
 }
 
 func (s *DescribeDataObjectsResponseBody) GetTotalCount() *int32 {
@@ -83,8 +132,33 @@ func (s *DescribeDataObjectsResponseBody) SetCurrentPage(v int32) *DescribeDataO
 	return s
 }
 
+func (s *DescribeDataObjectsResponseBody) SetErrorCode(v string) *DescribeDataObjectsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBody) SetErrorMessage(v string) *DescribeDataObjectsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBody) SetHasNext(v bool) *DescribeDataObjectsResponseBody {
+	s.HasNext = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBody) SetHasPrevious(v bool) *DescribeDataObjectsResponseBody {
+	s.HasPrevious = &v
+	return s
+}
+
 func (s *DescribeDataObjectsResponseBody) SetItems(v []*DescribeDataObjectsResponseBodyItems) *DescribeDataObjectsResponseBody {
 	s.Items = v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBody) SetNextCursor(v string) *DescribeDataObjectsResponseBody {
+	s.NextCursor = &v
 	return s
 }
 
@@ -93,8 +167,18 @@ func (s *DescribeDataObjectsResponseBody) SetPageSize(v int32) *DescribeDataObje
 	return s
 }
 
+func (s *DescribeDataObjectsResponseBody) SetPreviousCursor(v string) *DescribeDataObjectsResponseBody {
+	s.PreviousCursor = &v
+	return s
+}
+
 func (s *DescribeDataObjectsResponseBody) SetRequestId(v string) *DescribeDataObjectsResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBody) SetSyncStatus(v string) *DescribeDataObjectsResponseBody {
+	s.SyncStatus = &v
 	return s
 }
 
@@ -117,32 +201,34 @@ func (s *DescribeDataObjectsResponseBody) Validate() error {
 }
 
 type DescribeDataObjectsResponseBodyItems struct {
-	// An array of industry categories to which the sensitive data belongs.
+	// The list of industry categories to which the sensitive data belongs.
 	Categories  []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
 	ClusterType *string   `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The comment on the column.
+	// The column comment.
 	//
 	// example:
 	//
 	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The data type of the database column.
+	// The database column type.
 	//
 	// example:
 	//
 	// varchar
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// DataBaseName
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The engine type.
+	//
 	// example:
 	//
 	// TABLE
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The code for the file category.
+	// The file type.
 	//
 	// example:
 	//
@@ -154,13 +240,13 @@ type DescribeDataObjectsResponseBodyItems struct {
 	//
 	// 20000
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The description of the data asset instance.
+	// The instance description of the data object.
 	//
 	// example:
 	//
 	// instance description
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	// The ID of the data asset instance.
+	// The data asset instance ID.
 	//
 	// example:
 	//
@@ -184,7 +270,7 @@ type DescribeDataObjectsResponseBodyItems struct {
 	//
 	// 1687676649830
 	LastScanTime *int64 `json:"LastScanTime,omitempty" xml:"LastScanTime,omitempty"`
-	// The name of the Logstore in SLS.
+	// The SLS Logstore.
 	//
 	// example:
 	//
@@ -196,13 +282,13 @@ type DescribeDataObjectsResponseBodyItems struct {
 	//
 	// -1
 	MaskStatus *int32 `json:"MaskStatus,omitempty" xml:"MaskStatus,omitempty"`
-	// The ID of the member account.
+	// The member accounts ID.
 	//
 	// example:
 	//
 	// **********8103
 	MemberAccount *int64 `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
-	// A list of data tags.
+	// The list of data tags.
 	ModelTags []*DescribeDataObjectsResponseBodyItemsModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
 	// The name of the data object.
 	//
@@ -210,13 +296,13 @@ type DescribeDataObjectsResponseBodyItems struct {
 	//
 	// t_sddp_selfmysql_pers0
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The name of the file category.
+	// The file category name.
 	//
 	// example:
 	//
 	// text file
 	ObjectFileCategory *string `json:"ObjectFileCategory,omitempty" xml:"ObjectFileCategory,omitempty"`
-	// The type of the data object.
+	// The data object type.
 	//
 	// example:
 	//
@@ -228,37 +314,13 @@ type DescribeDataObjectsResponseBodyItems struct {
 	//
 	// rm-12**.db_***
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The name of the product to which the data object belongs. Valid values:
-	//
-	// - **MaxCompute**
-	//
-	// - **OSS**
-	//
-	// - **ADB-MYSQL**
-	//
-	// - **Table Store**
-	//
-	// - **RDS**
-	//
-	// - **SELF_DB**
-	//
-	// - **PolarDB-X**
-	//
-	// - **PolarDB**
-	//
-	// - **ADB-PG**
-	//
-	// - **OceanBase**
-	//
-	// - **MongoDB**
-	//
-	// - **Redis**
+	// The product name to which the data object belongs. Valid values:
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the product to which the data object belongs. Valid values:
+	// The ID that corresponds to the product name to which the data object belongs. Valid values:
 	//
 	// - **1**: MaxCompute
 	//
@@ -266,7 +328,7 @@ type DescribeDataObjectsResponseBodyItems struct {
 	//
 	// - **3**: ADB-MYSQL
 	//
-	// - **4**: Table Store
+	// - **4**: TableStore
 	//
 	// - **5**: RDS
 	//
@@ -288,87 +350,87 @@ type DescribeDataObjectsResponseBodyItems struct {
 	//
 	// 5
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The name of the Simple Log Service (SLS) project.
+	// The Simple Log Service (SLS) project.
 	//
 	// example:
 	//
 	// project
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// The ID of the region where the data object is located.
+	// The region ID to which the data object belongs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the region.
+	// The region name.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	// The risk level.
+	// The sensitivity level.
 	//
 	// example:
 	//
 	// 1
 	RiskLevelId *int32 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// The number of matched rules.
+	// The number of rules that are hit.
 	//
 	// example:
 	//
 	// 10
 	RuleCount *int32 `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
-	// A list of matched detection models.
+	// The list of detection models that are hit.
 	RuleList []*DescribeDataObjectsResponseBodyItemsRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
-	// The number of sensitive data fields.
+	// The number of sensitive data entries.
 	//
 	// example:
 	//
 	// 1
 	SensitiveCount *int32 `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
-	// The size of the file in bytes.
+	// The file size.
 	//
 	// example:
 	//
 	// 1000
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// A comma-separated string that specifies the count of matched rules for each risk level. The string follows the format `S1,S2...S10`, where the value at each position represents the count for the corresponding risk level.
+	// An array that consists of the number of rules hit for each sensitivity level, in the format "S1,S2,S3,S4,S5,S6,S7,S8,S9,S10", where S1 represents the number of rules hit at sensitivity level S1.
 	//
 	// example:
 	//
 	// 1,2,3,0,0,0,0,5,0,0
 	Sx *string `json:"Sx,omitempty" xml:"Sx,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//
 	// tableName
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
 	// 1
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The name of the task.
+	// The task name.
 	//
 	// example:
 	//
 	// test-task
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The task number.
+	// The user task number.
 	//
 	// example:
 	//
 	// 1000
 	TaskNumber *int64 `json:"TaskNumber,omitempty" xml:"TaskNumber,omitempty"`
-	// The ID of the industry template.
+	// The industry template ID.
 	//
 	// example:
 	//
 	// 1
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The name of the template.
+	// The template name.
 	//
 	// example:
 	//
@@ -749,25 +811,19 @@ func (s *DescribeDataObjectsResponseBodyItems) Validate() error {
 }
 
 type DescribeDataObjectsResponseBodyItemsModelTags struct {
-	// The ID of the data tag. Valid values:
+	// The data label ID. Valid values:
 	//
-	// - **101**: Personal sensitive information
+	// - **101**: Personal sensitive information.
 	//
-	// - **102**: Personal information
+	// - **102**: Personal information.
 	//
-	// - **107**: General information
+	// - **107**: General information.
 	//
 	// example:
 	//
 	// 101
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the data tag. Valid values:
-	//
-	// - **Personal sensitive information**
-	//
-	// - **Personal information**
-	//
-	// - **General information**
+	// The data tag name. Valid values:
 	//
 	// example:
 	//
@@ -806,45 +862,35 @@ func (s *DescribeDataObjectsResponseBodyItemsModelTags) Validate() error {
 }
 
 type DescribeDataObjectsResponseBodyItemsRuleList struct {
-	// The ID of the risk level. Valid values:
-	//
-	// - **1**: N/A - No sensitive data is detected
-	//
-	// - **2**: S1 - Level-1 sensitive data
-	//
-	// - **3**: S2 - Level-2 sensitive data
-	//
-	// - **4**: S3 - Level-3 sensitive data
-	//
-	// - **5**: S4 - Level-4 sensitive data
+	// The risk level ID of the sensitive data detection rule. Valid values:
 	//
 	// example:
 	//
 	// 2
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// The name of the risk level. Valid values:
+	// The risk level name of the data asset table. Valid values:
 	//
-	// - **N/A**: No sensitive data is detected
+	// - **N/A**: No sensitive data is detected.
 	//
-	// - **S1**: Level-1 sensitive data
+	// - **S1**: Level-1 sensitive data.
 	//
-	// - **S2**: Level-2 sensitive data
+	// - **S2**: Level-2 sensitive data.
 	//
-	// - **S3**: Level-3 sensitive data
+	// - **S3**: Level-3 sensitive data.
 	//
-	// - **S4**: Level-4 sensitive data
+	// - **S4**: Level-4 sensitive data.
 	//
 	// example:
 	//
 	// S1
 	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	// The hierarchical category of the rule, from the top-level to the leaf-level category in the template.
+	// The rule information described from the top to the bottom of the template.
 	//
 	// example:
 	//
 	// Personal sensitive information-ID card
 	RuleCategoryNameList *string `json:"RuleCategoryNameList,omitempty" xml:"RuleCategoryNameList,omitempty"`
-	// The number of matched detection models.
+	// The number of detection models that are hit.
 	//
 	// example:
 	//

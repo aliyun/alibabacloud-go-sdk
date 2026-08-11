@@ -27,11 +27,11 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"cn-hongkong":    dara.String("sddp-api.cn-hongkong.aliyuncs.com"),
-		"cn-zhangjiakou": dara.String("sddp.cn-zhangjiakou.aliyuncs.com"),
-		"cn-shanghai":    dara.String("sddp.cn-shanghai.aliyuncs.com"),
-		"cn-hangzhou":    dara.String("sddp.cn-hangzhou.aliyuncs.com"),
-		"ap-southeast-5": dara.String("sddp.ap-southeast-5.aliyuncs.com"),
 		"ap-southeast-1": dara.String("sddp.ap-southeast-1.aliyuncs.com"),
+		"cn-zhangjiakou": dara.String("sddp.cn-zhangjiakou.aliyuncs.com"),
+		"ap-southeast-5": dara.String("sddp.ap-southeast-5.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("sddp.cn-hangzhou.aliyuncs.com"),
+		"cn-shanghai":    dara.String("sddp.cn-shanghai.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -2352,15 +2352,15 @@ func (client *Client) DescribeDataObjectColumnDetailV2(request *DescribeDataObje
 
 // Summary:
 //
-// Query data detection results for tables and files.
+// Queries the data detection results of data tables and files.
 //
 // Description:
 //
-// This operation queries data detection results for tables and files, to provide a comprehensive view across all your assets.
+// Queries the detection results of data tables and files. This allows you to query data detection results of assets from a global perspective.
 //
 // ## QPS limit
 //
-// The per-user QPS limit for this operation is 10 requests per second. If you exceed this limit, the system throttles your API calls. To prevent business disruptions, call this operation only when necessary.
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
 //
 // @param request - DescribeDataObjectsRequest
 //
@@ -2385,6 +2385,14 @@ func (client *Client) DescribeDataObjectsWithOptions(request *DescribeDataObject
 
 	if !dara.IsNil(request.CurrentPage) {
 		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Cursor) {
+		query["Cursor"] = request.Cursor
+	}
+
+	if !dara.IsNil(request.CursorDirection) {
+		query["CursorDirection"] = request.CursorDirection
 	}
 
 	if !dara.IsNil(request.DbName) {
@@ -2524,15 +2532,15 @@ func (client *Client) DescribeDataObjectsWithOptions(request *DescribeDataObject
 
 // Summary:
 //
-// Query data detection results for tables and files.
+// Queries the data detection results of data tables and files.
 //
 // Description:
 //
-// This operation queries data detection results for tables and files, to provide a comprehensive view across all your assets.
+// Queries the detection results of data tables and files. This allows you to query data detection results of assets from a global perspective.
 //
 // ## QPS limit
 //
-// The per-user QPS limit for this operation is 10 requests per second. If you exceed this limit, the system throttles your API calls. To prevent business disruptions, call this operation only when necessary.
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
 //
 // @param request - DescribeDataObjectsRequest
 //

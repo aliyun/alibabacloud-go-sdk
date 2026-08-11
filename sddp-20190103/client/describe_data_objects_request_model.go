@@ -15,6 +15,10 @@ type iDescribeDataObjectsRequest interface {
 	GetBucket() *string
 	SetCurrentPage(v int32) *DescribeDataObjectsRequest
 	GetCurrentPage() *int32
+	SetCursor(v string) *DescribeDataObjectsRequest
+	GetCursor() *string
+	SetCursorDirection(v string) *DescribeDataObjectsRequest
+	GetCursorDirection() *string
 	SetDbName(v string) *DescribeDataObjectsRequest
 	GetDbName() *string
 	SetDomainId(v int64) *DescribeDataObjectsRequest
@@ -74,64 +78,64 @@ type iDescribeDataObjectsRequest interface {
 }
 
 type DescribeDataObjectsRequest struct {
-	// The version of the API.
+	// The parameter used for canary release evaluation.
 	//
 	// example:
 	//
 	// 1
 	APIVersion *int32 `json:"APIVersion,omitempty" xml:"APIVersion,omitempty"`
-	// The name of the OSS bucket.
+	// The OSS bucket filter.
 	//
 	// example:
 	//
 	// bucketName
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The page number of the returned page. Default value: 1.
+	// The page number in a paged query. Default value: 1.
 	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The name of the database.
+	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Cursor          *string `json:"Cursor,omitempty" xml:"Cursor,omitempty"`
+	CursorDirection *string `json:"CursorDirection,omitempty" xml:"CursorDirection,omitempty"`
+	// The database name filter.
 	//
 	// example:
 	//
 	// dataBaseName
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// The ID of the data domain to which the data asset belongs.
+	// The data domain ID to which the data asset belongs.
 	//
 	// example:
 	//
 	// 2
 	DomainId   *int64  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// This parameter is deprecated.
+	// **[Deprecated]*	- This parameter is deprecated.
 	//
 	// example:
 	//
 	// 2
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	// The code of the file category.
+	// The file category code.
 	//
 	// example:
 	//
 	// 1
 	FileCategoryCode *int64 `json:"FileCategoryCode,omitempty" xml:"FileCategoryCode,omitempty"`
-	// The type of the OSS file.
-	//
-	// > This parameter is valid only for querying data assets of the OSS type. You can call the [DescribeDocTypes](https://help.aliyun.com/document_detail/2536492.html) operation to obtain the supported OSS file types. Use the value of the `Code` parameter in the response.
+	// The OSS file type that can be detected.
 	//
 	// example:
 	//
 	// 100001
 	FileType *int64 `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The keyword of the instance ID.
+	// The keyword of the asset instance ID.
 	//
 	// example:
 	//
 	// 8vb54hn2g9j191ddz
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	// The language of the request and response. Default value: **zh_cn**. Valid values:
 	//
 	// - **zh_cn**: Chinese.
 	//
@@ -141,69 +145,63 @@ type DescribeDataObjectsRequest struct {
 	//
 	// zh_cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The name of the Logstore.
+	// The SLS Logstore filter.
 	//
 	// example:
 	//
 	// logstore
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	// Specifies whether to query data at the Logstore level. The Simple Log Service data catalog has two layers. Set this parameter to 1 to query data at the Logstore level.
+	// Specifies whether to query data at the Logstore dimension. The SLS page in the data catalog has two layers, and this parameter determines whether the query targets Logstore-level data.
 	//
 	// example:
 	//
 	// 1
 	LogStoreFlag *int32 `json:"LogStoreFlag,omitempty" xml:"LogStoreFlag,omitempty"`
-	// The ID of the member.
+	// The member accounts ID.
 	//
 	// example:
 	//
 	// **********8103
 	MemberAccount *int64 `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
-	// The model ID of the industry-specific rule template. You can specify multiple IDs. Separate them with commas (,).
+	// The model IDs of the industry template. Separate multiple IDs with commas.
 	//
-	// > You can call the [DescribeTemplateAllRules](https://help.aliyun.com/document_detail/2536491.html) operation to obtain the model ID of the industry-specific rule template.
+	// > You can call [DescribeTemplateAllRules](https://help.aliyun.com/document_detail/2536491.html) to obtain the model IDs of the industry template.
 	//
 	// example:
 	//
 	// 101
 	ModelIds *string `json:"ModelIds,omitempty" xml:"ModelIds,omitempty"`
-	// The data labels to be queried. You can specify multiple data labels. Separate them with commas (,). Valid values:
-	//
-	// - **101**: personal sensitive information
-	//
-	// - **102**: personal information
-	//
-	// - **107**: general information
+	// The data tags to query, separated by commas. Valid values:
 	//
 	// example:
 	//
 	// 101,102
 	ModelTagIds *string `json:"ModelTagIds,omitempty" xml:"ModelTagIds,omitempty"`
-	// The number of data assets to return on each page. Default value: **10**.
+	// The maximum number of data asset instances to return per page in a paged query. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The IDs of the parent asset categories to be queried. You can specify multiple IDs. Separate them with commas (,).
+	// The parent category IDs of the templates to query, separated by commas.
 	//
 	// example:
 	//
 	// 234,236,238
 	ParentCategoryIds *string `json:"ParentCategoryIds,omitempty" xml:"ParentCategoryIds,omitempty"`
-	// The path of the file.
+	// The file path filter.
 	//
 	// example:
 	//
 	// road
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The ID of the product.
+	// The product of the data catalog.
 	//
 	// example:
 	//
 	// 5
 	ProductId *int32 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The IDs of the products to which the data assets to be queried belong. You can specify multiple product IDs. Separate them with commas (,). We recommend that you specify this parameter. Valid values:
+	// We recommend that you specify this parameter. The IDs of the products to query. Separate multiple IDs with commas. Valid values:
 	//
 	// - **1**: MaxCompute
 	//
@@ -229,91 +227,75 @@ type DescribeDataObjectsRequest struct {
 	//
 	// - **25**: Redis
 	//
-	// > If you want to query data assets that belong to OSS, you cannot query data assets of other products. By default, data assets of products other than OSS are queried.
+	// > OSS is mutually exclusive with other products. If OSS is included in the query, no other products can be specified. By default, non-OSS products are queried.
 	//
 	// example:
 	//
 	// 1,5
 	ProductIds *string `json:"ProductIds,omitempty" xml:"ProductIds,omitempty"`
-	// The name of the Simple Log Service project.
+	// The SLS project filter.
 	//
 	// example:
 	//
 	// project
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// The keyword of the data asset to be queried.
+	// The keyword of the data object to query.
 	//
 	// example:
 	//
 	// t_sddp_selfmysql_pers0
 	QueryName *string `json:"QueryName,omitempty" xml:"QueryName,omitempty"`
-	// The region in which the data asset catalog resides.
+	// The region of the data catalog display page.
 	//
 	// example:
 	//
 	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the sensitivity levels. You can specify multiple sensitivity level IDs. Separate them with commas (,).
+	// The risk level filter.
 	//
 	// example:
 	//
 	// 1,2,3
 	RiskLevelIdList *string `json:"RiskLevelIdList,omitempty" xml:"RiskLevelIdList,omitempty"`
-	// The sensitivity level of the data asset. You can specify multiple sensitivity levels. Separate them with commas (,).
+	// The risk levels of the data assets that you want to query. Separate multiple risk levels with commas (,). Valid values:
 	//
-	// - **2**: S1, low sensitivity level
+	// - **2**: S1, low risk level.
 	//
-	// - **3**: S2, medium sensitivity level
+	// - **3**: S2, medium risk level.
 	//
-	// - **4**: S3, high sensitivity level
+	// - **4**: S3, high risk level.
 	//
-	// - **5**: S4, highest sensitivity level
+	// - **5**: S4, highest risk level.
 	//
 	// example:
 	//
 	// 2
 	RiskLevels *string `json:"RiskLevels,omitempty" xml:"RiskLevels,omitempty"`
-	// The IDs of the rules. You can specify multiple rule IDs. Separate them with commas (,).
+	// The rule filter.
 	//
 	// example:
 	//
 	// 1,2,3
 	RuleIds *string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty"`
-	// The region where the data asset resides. Valid values:
-	//
-	// - **cn-beijing**: China (Beijing)
-	//
-	// - **cn-zhangjiakou**: China (Zhangjiakou)
-	//
-	// - **cn-huhehaote**: China (Hohhot)
-	//
-	// - **cn-hangzhou**: China (Hangzhou)
-	//
-	// - **cn-shanghai**: China (Shanghai)
-	//
-	// - **cn-shenzhen**: China (Shenzhen)
-	//
-	// - **cn-hongkong**: China (Hong Kong)
+	// The region where the asset resides. Valid values:
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
-	// The name of the table.
+	// The node name filter.
 	//
 	// example:
 	//
 	// TableName
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The ID of the task.
+	// The task ID filter.
 	//
 	// example:
 	//
 	// 1
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The ID of the industry-specific rule template.
-	//
-	// > You can call the [DescribeCategoryTemplateList](https://help.aliyun.com/document_detail/2399296.html) operation to obtain the ID of the industry-specific rule template.
+	// The industry template ID.
 	//
 	// This parameter is required.
 	//
@@ -341,6 +323,14 @@ func (s *DescribeDataObjectsRequest) GetBucket() *string {
 
 func (s *DescribeDataObjectsRequest) GetCurrentPage() *int32 {
 	return s.CurrentPage
+}
+
+func (s *DescribeDataObjectsRequest) GetCursor() *string {
+	return s.Cursor
+}
+
+func (s *DescribeDataObjectsRequest) GetCursorDirection() *string {
+	return s.CursorDirection
 }
 
 func (s *DescribeDataObjectsRequest) GetDbName() *string {
@@ -467,6 +457,16 @@ func (s *DescribeDataObjectsRequest) SetBucket(v string) *DescribeDataObjectsReq
 
 func (s *DescribeDataObjectsRequest) SetCurrentPage(v int32) *DescribeDataObjectsRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetCursor(v string) *DescribeDataObjectsRequest {
+	s.Cursor = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetCursorDirection(v string) *DescribeDataObjectsRequest {
+	s.CursorDirection = &v
 	return s
 }
 
