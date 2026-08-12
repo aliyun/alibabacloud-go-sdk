@@ -22,7 +22,7 @@ type iModifyHybridCloudClusterBypassStatusRequest interface {
 }
 
 type ModifyHybridCloudClusterBypassStatusRequest struct {
-	// The ID of the hybrid cloud cluster.
+	// The resource ID of the hybrid cloud cluster.
 	//
 	// This parameter is required.
 	//
@@ -30,9 +30,9 @@ type ModifyHybridCloudClusterBypassStatusRequest struct {
 	//
 	// hdbc_cluster_****
 	ClusterResourceId *string `json:"ClusterResourceId,omitempty" xml:"ClusterResourceId,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The ID of the WAF instance.
 	//
-	// > Call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type ModifyHybridCloudClusterBypassStatusRequest struct {
 	//
 	// waf_elasticity-cn-0xldbqt****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -56,11 +56,11 @@ type ModifyHybridCloudClusterBypassStatusRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The status of the manual bypass. Valid values:
+	// The manual bypass enabling status. Valid values:
 	//
-	// - **on**: The manual bypass is enabled.
+	// - **on**: enabled.
 	//
-	// - **off*	- (default): The manual bypass is disabled.
+	// - **off (default)**: shutdown.
 	//
 	// This parameter is required.
 	//

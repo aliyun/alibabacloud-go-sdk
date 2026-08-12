@@ -28,13 +28,13 @@ type iDescribeHybridCloudSdkServersRequest interface {
 }
 
 type DescribeHybridCloudSdkServersRequest struct {
-	// The name of the hybrid cloud cluster that you want to query.
+	// The cluster name.
 	//
 	// example:
 	//
 	// testcluster
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The hostname of the hybrid cloud SDK server that you want to query.
+	// The hostname.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeHybridCloudSdkServersRequest struct {
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type DescribeHybridCloudSdkServersRequest struct {
 	//
 	// waf_v3prepaid_public_cn-i7m2***0b
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IP address of the hybrid cloud SDK server that you want to query.
+	// The device IP address.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type DescribeHybridCloudSdkServersRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The Alibaba Cloud resource group ID.
 	//
 	// example:
 	//

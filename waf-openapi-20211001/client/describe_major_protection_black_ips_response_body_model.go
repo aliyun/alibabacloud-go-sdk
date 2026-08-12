@@ -18,15 +18,15 @@ type iDescribeMajorProtectionBlackIpsResponseBody interface {
 }
 
 type DescribeMajorProtectionBlackIpsResponseBody struct {
-	// The list of IP addresses in the blacklist.
+	// The list of blacklisted IP addresses.
 	IpList []*DescribeMajorProtectionBlackIpsResponseBodyIpList `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 41631674-EEB0-5B02-BEB4-40A758E9B841
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of IP addresses in the blacklist.
+	// The total number of blacklisted IP addresses.
 	//
 	// example:
 	//
@@ -83,21 +83,21 @@ func (s *DescribeMajorProtectionBlackIpsResponseBody) Validate() error {
 }
 
 type DescribeMajorProtectionBlackIpsResponseBodyIpList struct {
-	// The description of the template.
+	// The description.
 	//
 	// example:
 	//
 	// test0003asdffas
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The timestamp after which the IP address blacklist becomes invalid. Unit: seconds.
+	// The expiration timestamp, in seconds.
 	//
-	// > If the value is **0**, the IP address blacklist is permanently valid.
+	// > A value of **0*	- indicates that the entry is permanently effective.
 	//
 	// example:
 	//
 	// 1662603328
 	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The time when the IP address in the blacklist was modified.
+	// The time when the blacklisted IP address was last modified.
 	//
 	// example:
 	//
@@ -109,7 +109,7 @@ type DescribeMajorProtectionBlackIpsResponseBodyIpList struct {
 	//
 	// 192.0.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The ID of the IP address blacklist rule for critical event protection.
+	// The ID of the critical event protection IP blacklist rule.
 	//
 	// example:
 	//

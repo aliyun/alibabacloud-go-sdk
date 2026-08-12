@@ -28,7 +28,7 @@ type iCreateCloudResourceShrinkRequest interface {
 type CreateCloudResourceShrinkRequest struct {
 	// The ID of the WAF instance.
 	//
-	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of your WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type CreateCloudResourceShrinkRequest struct {
 	//
 	// waf_v3prepaid_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The listening configuration.
+	// The listener configuration.
 	//
 	// This parameter is required.
 	ListenShrink *string `json:"Listen,omitempty" xml:"Listen,omitempty"`
@@ -48,7 +48,7 @@ type CreateCloudResourceShrinkRequest struct {
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
 	// The forwarding configuration.
 	RedirectShrink *string `json:"Redirect,omitempty" xml:"Redirect,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//

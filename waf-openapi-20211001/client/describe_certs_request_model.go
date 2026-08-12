@@ -26,11 +26,11 @@ type iDescribeCertsRequest interface {
 }
 
 type DescribeCertsRequest struct {
-	// The type of the encryption algorithm. Valid values:
+	// The type of encryption algorithm. Valid values:
 	//
-	// - **NotSM2 (default)**: Specifies a non-ShangMi (SM) cryptographic algorithm.
+	// - **NotSM2 (default)**: a non-Chinese cryptographic algorithm.
 	//
-	// - **SM2**: Specifies an SM cryptographic algorithm.
+	// - **SM2**: a Chinese cryptographic algorithm.
 	//
 	// example:
 	//
@@ -42,9 +42,9 @@ type DescribeCertsRequest struct {
 	//
 	// example.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The ID of the WAF instance.
+	// Instance ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of your current WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -52,23 +52,23 @@ type DescribeCertsRequest struct {
 	//
 	// waf_v3prepaid_public_cn-5yd****tb02
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number of the paged query. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **10**. Maximum value: 100.
+	// The number of rows per page in a paged query. Default value: **10**. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: The Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: Outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//

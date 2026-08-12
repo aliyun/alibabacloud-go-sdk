@@ -22,7 +22,7 @@ type iDescribeHybridCloudProcessMonitorRequest interface {
 type DescribeHybridCloudProcessMonitorRequest struct {
 	// The ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DescribeHybridCloudProcessMonitorRequest struct {
 	//
 	// waf-cn-7mz****hw0u
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the hybrid cloud cluster node.
+	// The machine identifier (MID). You can call the [DescribeHybridCloudSdkServers](https://help.aliyun.com/document_detail/2982006.html) operation to query the hybrid cloud SDK list and obtain this value.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DescribeHybridCloudProcessMonitorRequest struct {
 	//
 	// 2fdb63fea03b173bc9e65c24****d7d5
 	Mid *string `json:"Mid,omitempty" xml:"Mid,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -48,7 +48,7 @@ type DescribeHybridCloudProcessMonitorRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The Alibaba Cloud resource group ID.
 	//
 	// example:
 	//

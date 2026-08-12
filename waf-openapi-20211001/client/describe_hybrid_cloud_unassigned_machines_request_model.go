@@ -36,15 +36,15 @@ type DescribeHybridCloudUnassignedMachinesRequest struct {
 	//
 	// 123
 	ClusterId *int32 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The hostname of the server that you want to query.
+	// The hostname.
 	//
 	// example:
 	//
 	// online-xagent1
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -52,25 +52,25 @@ type DescribeHybridCloudUnassignedMachinesRequest struct {
 	//
 	// waf_v3prepaid_public_cn-5yd****7009
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IP address of the server that you want to query.
+	// The IP address of the server.
 	//
 	// example:
 	//
 	// 1.X.X.1
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The page number of the page to return. Default value: **1**.
+	// The page number to return in a paged query. Default value: **1**. For more information about paging, see the relevant parameter descriptions.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The number of entries per page in a paged query. Default value: **10**, which indicates that each page contains 10 entries. For more information about paging, see the relevant parameter descriptions.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//

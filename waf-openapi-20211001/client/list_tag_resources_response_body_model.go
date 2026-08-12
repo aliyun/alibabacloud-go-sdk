@@ -18,7 +18,7 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The token that is used to start the next query. If NextToken is empty, no more results exist.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListTagResourcesResponseBody struct {
 	//
 	// 716E64DA-044F-51C7-B528-2FBF****AE4F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource list.
+	// The list of resources.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -89,19 +89,19 @@ type ListTagResourcesResponseBodyTagResources struct {
 	//
 	// c754d2a4-28f1-46df-b557-9586173a****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type. ALIYUN::WAF::DEFENSERESOURCE is returned.
+	// The resource type. Fixed value: ALIYUN::WAF::DEFENSERESOURCE.
 	//
 	// example:
 	//
 	// ALIYUN::WAF::DEFENSERESOURCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag key.
+	// The tag key of the resource.
 	//
 	// example:
 	//
 	// TagKey1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
+	// The tag value of the resource.
 	//
 	// example:
 	//

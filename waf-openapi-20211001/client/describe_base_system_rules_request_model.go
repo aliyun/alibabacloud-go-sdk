@@ -76,7 +76,7 @@ type DescribeBaseSystemRulesRequest struct {
 	//
 	// - **logic_flaw**: business logic bug.
 	//
-	// - **arbitrary_file_reading**: arbitrary file reading.
+	// - **arbitrary_file_reading**: arbitrary file read.
 	//
 	// - **arbitrary_file_download**: arbitrary file download.
 	//
@@ -84,7 +84,7 @@ type DescribeBaseSystemRulesRequest struct {
 	//
 	// - **csrf**: cross-site request forgery.
 	//
-	// - **crlf**: CRLF.
+	// - **crlf**: CRLF injection.
 	//
 	// - **other**: other.
 	//
@@ -102,7 +102,7 @@ type DescribeBaseSystemRulesRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the returned rule content. Valid values:
+	// The language of the returned rules. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -112,13 +112,13 @@ type DescribeBaseSystemRulesRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The page number to return in a paged query. Default value: **1**, which indicates the first page. For more information about paging, see the PageSize parameter.
+	// The page number to return in a paged query. Default value: **1**, which indicates the first page. This parameter is used for paging.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Default value: 100, which indicates 100 entries per page. For more information about paging, see the PageNumber parameter.
+	// The number of entries per page in a paged query. Default value: 100. This parameter is used for paging.
 	//
 	// example:
 	//
@@ -142,13 +142,13 @@ type DescribeBaseSystemRulesRequest struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The risk level. Valid values:
 	//
-	// - **super_strict**: Super strict.
+	// - **super_strict**: super strict.
 	//
-	// - **strict**: Strict.
+	// - **strict**: strict.
 	//
-	// - **medium**: Medium.
+	// - **medium**: medium.
 	//
-	// - **loose**: Loose.
+	// - **loose**: loose.
 	//
 	// example:
 	//
@@ -180,9 +180,9 @@ type DescribeBaseSystemRulesRequest struct {
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The rule status. Valid values:
 	//
-	// - **1**: Disabled.
+	// - **1**: disabled.
 	//
-	// - **0**: Enabled.
+	// - **0**: enabled.
 	//
 	// example:
 	//
@@ -192,9 +192,9 @@ type DescribeBaseSystemRulesRequest struct {
 	//
 	// >
 	//
-	// > - You can specify this parameter to query the system protection rules in a specific Web core protection rule template.
+	// > - You can set this parameter to query the system protection rules in a specific Web core protection rule template. Settings apply to the specified template.
 	//
-	// > - If this parameter is left empty, the default settings of system protection rules are queried.
+	// > - If this parameter is left empty, the default configurations of system protection rules are queried.
 	//
 	// example:
 	//

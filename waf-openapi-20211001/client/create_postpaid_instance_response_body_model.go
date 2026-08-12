@@ -16,13 +16,13 @@ type iCreatePostpaidInstanceResponseBody interface {
 }
 
 type CreatePostpaidInstanceResponseBody struct {
-	// The ID of the WAF instance.
+	// The WAF instance ID.
 	//
 	// example:
 	//
 	// waf_v2_public_cn-x0r****gr1i
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

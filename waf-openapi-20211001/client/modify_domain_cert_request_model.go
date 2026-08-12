@@ -74,7 +74,7 @@ type ModifyDomainCertRequest struct {
 	//
 	// waf_v2_public_cn-ww**b06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//

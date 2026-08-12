@@ -16,7 +16,7 @@ type iDescribeHybridCloudClusterRuleResponseBody interface {
 }
 
 type DescribeHybridCloudClusterRuleResponseBody struct {
-	// The information about the rule.
+	// The rule information.
 	ClusterRule *DescribeHybridCloudClusterRuleResponseBodyClusterRule `json:"ClusterRule,omitempty" xml:"ClusterRule,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,45 +62,45 @@ func (s *DescribeHybridCloudClusterRuleResponseBody) Validate() error {
 }
 
 type DescribeHybridCloudClusterRuleResponseBodyClusterRule struct {
-	// The resource ID of the cluster rule.
+	// The cluster rule resource ID.
 	//
 	// example:
 	//
 	// hdbc-clusterrule-2m*****m0w
 	ClusterRuleResourceId *string `json:"ClusterRuleResourceId,omitempty" xml:"ClusterRuleResourceId,omitempty"`
-	// The configuration of the traffic routing rule.
+	// The traffic redirection rule configuration:
 	//
-	// - **check_mode**: Defines the traffic scope for the routing rule. Valid values:
+	// - **check_mode**: the mode selection. Valid values:
 	//
-	//   - **all**: Routes all traffic.
+	//   - **all**: full traffic redirection
 	//
-	//   - **part**: Routes a portion of the traffic.
+	//   - **part**: partial traffic redirection
 	//
-	// - **type**: The rule\\"s match type. Valid values:
+	// - **type**: the rule matching type. Valid values:
 	//
-	//   - **exact**: Exact match.
+	//   - **exact**: exact match
 	//
-	//   - **regex**: Regular expression match.
+	//   - **regex**: regular expression
 	//
-	// - **substance**: The value of the rule.
+	// - **substance**: the rule value
 	//
 	// example:
 	//
 	// {\\"check_mode\\":\\"all\\",\\"exclude\\":{\\"exact\\":[],\\"regex\\":[]}}
 	RuleConfig *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
-	// The status of the rule. Valid values:
+	// The rule status. Valid values:
 	//
-	// - **on**: Enabled.
+	// - **on**: enabled.
 	//
-	// - **off**: Disabled.
+	// - **off**: disabled.
 	//
 	// example:
 	//
 	// on
 	RuleStatus *string `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
-	// The type of the rule.
+	// The rule type. Valid values:
 	//
-	// - pullin: The traffic routing rule.
+	// - pullin: traffic redirection rule
 	//
 	// example:
 	//

@@ -46,6 +46,8 @@ type ModifyDomainRequest struct {
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// The ID of the WAF instance.
 	//
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -60,7 +62,11 @@ type ModifyDomainRequest struct {
 	//
 	// This parameter is required.
 	Redirect *ModifyDomainRequestRedirect `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
+	//
+	// - **cn-hangzhou**: the Chinese mainland.
+	//
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// This parameter is required.
 	//
@@ -162,13 +168,13 @@ type ModifyDomainRequestListen struct {
 	//
 	// 123
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The type of cipher suite to add. This parameter is available only when **HttpsPorts*	- is not empty, which indicates that the domain name uses HTTPS. Valid values:
+	// The type of cipher suite to add. This parameter is used only when **HttpsPorts*	- is not empty, which indicates that the domain name uses HTTPS. Valid values:
 	//
 	// example:
 	//
 	// 2
 	CipherSuite *int32 `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
-	// The specific custom cipher suites to add. This parameter is available only when **CipherSuite*	- is set to **99**.
+	// The specific custom cipher suites to add. This parameter is used only when **CipherSuite*	- is set to **99**.
 	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
 	// Specifies whether to support TLS 1.3. Valid values:
 	//
@@ -176,19 +182,31 @@ type ModifyDomainRequestListen struct {
 	//
 	// true
 	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
-	// Specifies whether to enable an exclusive IP address. This parameter is available only when **IPv6Enabled*	- is set to false and **ProtectionResource*	- is set to **share**, which indicates that a shared cluster is used. Valid values:
+	// Specifies whether to enable the exclusive IP address feature. This parameter is available only when **IPv6Enabled*	- is set to false and **ProtectionResource*	- is set to **share**. Valid values:
+	//
+	// - **true**: Enables the exclusive IP address feature.
+	//
+	// - **false*	- (default): Does not enable the exclusive IP address feature.
 	//
 	// example:
 	//
 	// true
 	ExclusiveIp *bool `json:"ExclusiveIp,omitempty" xml:"ExclusiveIp,omitempty"`
-	// Specifies whether to enable forced HTTPS redirect. This parameter is available only when **HttpsPorts*	- is not empty, which indicates that the domain name uses HTTPS, and **HttpPorts*	- is empty, which indicates that the domain name does not use HTTP. Valid values:
+	// Specifies whether to enable forced HTTPS redirect. This parameter takes effect only when **HttpsPorts*	- is not empty (indicating that the domain name uses the HTTPS protocol) and **HttpPorts*	- is empty (indicating that the domain name does not use the HTTP protocol). Valid values:
+	//
+	// - **true**: Enables forced HTTPS redirect.
+	//
+	// - **false**: Does not enable forced HTTPS redirect.
 	//
 	// example:
 	//
 	// true
 	FocusHttps *bool `json:"FocusHttps,omitempty" xml:"FocusHttps,omitempty"`
 	// Specifies whether HSTS includes subdomains. Valid values:
+	//
+	// - **true**: Enabled.
+	//
+	// - **false**: Not enabled.
 	//
 	// example:
 	//
@@ -206,7 +224,7 @@ type ModifyDomainRequestListen struct {
 	//
 	// false
 	HstsPreload *bool `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
-	// Specifies whether to enable HTTP/2. This parameter is available only when **HttpsPorts*	- is not empty, which indicates that the domain name uses HTTPS. Valid values:
+	// Specifies whether to enable HTTP/2. This parameter is used only when **HttpsPorts*	- is not empty, which indicates that the domain name uses HTTPS. Valid values:
 	//
 	// example:
 	//
@@ -228,31 +246,39 @@ type ModifyDomainRequestListen struct {
 	//
 	// share
 	ProtectionResource *string `json:"ProtectionResource,omitempty" xml:"ProtectionResource,omitempty"`
-	// Specifies whether to allow only SM2 client access. This parameter is available only when SM2Enable is set to true.
+	// Specifies whether to allow only client access. This parameter is used only when SM2Enable is set to true.
 	//
 	// example:
 	//
 	// true
 	SM2AccessOnly *bool `json:"SM2AccessOnly,omitempty" xml:"SM2AccessOnly,omitempty"`
-	// The ID of the SM2 certificate to add. This parameter is available only when SM2Enable is set to true.
+	// The ID of the China SM certificate to add. This parameter is used only when SM2Enable is set to true.
 	//
 	// example:
 	//
 	// 123-cn-hangzhou
 	SM2CertId *string `json:"SM2CertId,omitempty" xml:"SM2CertId,omitempty"`
-	// Specifies whether to enable SM2 certificates.
+	// Specifies whether to enable the China Encryption (China SM) certificate.
 	//
 	// example:
 	//
 	// true
 	SM2Enabled *bool `json:"SM2Enabled,omitempty" xml:"SM2Enabled,omitempty"`
-	// The TLS version to add. This parameter is available only when **HttpsPorts*	- is not empty, which indicates that the domain name uses HTTPS. Valid values:
+	// The TLS version to add. This parameter is used only when **HttpsPorts*	- is not empty (indicating that the domain name uses the HTTPS protocol). Valid values:
+	//
+	// - **tlsv1**: Supports TLS 1.0 and later. Provides the highest compatibility and the lowest security.
+	//
+	// - **tlsv1.1**: Supports TLS 1.1 and later. Provides good compatibility and good security.
+	//
+	// - **tlsv1.2**: Supports TLS 1.2 and later. Provides good compatibility and the highest security.
+	//
+	// - **tlsv1.3**: Supports only TLS 1.3. Provides the highest security and the lowest compatibility.
 	//
 	// example:
 	//
 	// tlsv1
 	TLSVersion *string `json:"TLSVersion,omitempty" xml:"TLSVersion,omitempty"`
-	// The method that WAF uses to obtain the originating IP address of the client. Valid values:
+	// The method that WAF uses to obtain the originating IP address of the client.
 	//
 	// example:
 	//
@@ -457,7 +483,7 @@ func (s *ModifyDomainRequestListen) Validate() error {
 type ModifyDomainRequestRedirect struct {
 	// The custom port configuration.
 	BackendPorts []*ModifyDomainRequestRedirectBackendPorts `json:"BackendPorts,omitempty" xml:"BackendPorts,omitempty" type:"Repeated"`
-	// The IP addresses or domain names of the origin servers that correspond to the domain name. You can specify only IP addresses or domain names, not both. When the back-to-origin address is a domain name, only IPv4 is supported. IPv6 is not supported.
+	// The IP addresses or domain names of the origin servers that correspond to the domain name. You can set only one type: origin server IP addresses or origin server domain names. When the back-to-origin address is a domain name, only IPv4 is supported. IPv6 is not supported.
 	Backends []*string `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
 	// The IP addresses or domain names of the secondary origin servers that correspond to the domain name.
 	BackupBackends []*string `json:"BackupBackends,omitempty" xml:"BackupBackends,omitempty" type:"Repeated"`
@@ -473,19 +499,23 @@ type ModifyDomainRequestRedirect struct {
 	//
 	// 120
 	ConnectTimeout *int32 `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
-	// Specifies whether to enable forced HTTP back-to-origin. This parameter is available only when **HttpsPorts*	- is not empty, which indicates that the domain name uses HTTPS. Valid values:
+	// Specifies whether to enable forced HTTP back-to-origin. This parameter is used only when **HttpsPorts*	- is not empty, which indicates that the domain name uses HTTPS. Valid values:
 	//
 	// example:
 	//
 	// true
 	FocusHttpBackend *bool `json:"FocusHttpBackend,omitempty" xml:"FocusHttpBackend,omitempty"`
-	// Specifies whether to enable HTTP/2 back-to-origin. Valid values:
+	// Specifies whether to enable origin fetch over HTTP/2. Valid values:
+	//
+	// - **true**: Enables origin fetch over HTTP/2.
+	//
+	// - **false**: Does not enable origin fetch over HTTP/2.
 	//
 	// example:
 	//
 	// true
 	Http2Origin *bool `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
-	// The maximum number of concurrent HTTP/2 back-to-origin connections. Valid values: 1 to 512. Default value: 2.
+	// The maximum number of concurrent connections for HTTP/2 back-to-origin. Valid values: 1 to 512. Default value: 2.
 	//
 	// example:
 	//
@@ -509,7 +539,13 @@ type ModifyDomainRequestRedirect struct {
 	//
 	// 15
 	KeepaliveTimeout *int32 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
-	// The load balancing algorithm used for back-to-origin. Valid values:
+	// The load balancing algorithm used for back-to-origin requests. Valid values:
+	//
+	// - **iphash**: IP Hash algorithm.
+	//
+	// - **roundRobin**: Round-robin algorithm.
+	//
+	// - **leastTime**: Least Time algorithm. This value is available only when **ProtectionResource*	- is set to **gslb**, which indicates that the protection resource type uses intelligent load balancing of the shared cluster.
 	//
 	// This parameter is required.
 	//
@@ -525,6 +561,10 @@ type ModifyDomainRequestRedirect struct {
 	MaxBodySize *int32 `json:"MaxBodySize,omitempty" xml:"MaxBodySize,omitempty"`
 	// Indicates whether the client source IP preservation feature is enabled.
 	//
+	// - **true**: The client source IP preservation feature is enabled. After this feature is enabled, backend services can view the originating IP address of the client.
+	//
+	// - **false**: The client source IP preservation feature is not enabled.
+	//
 	// example:
 	//
 	// false
@@ -539,11 +579,23 @@ type ModifyDomainRequestRedirect struct {
 	RequestHeaders []*ModifyDomainRequestRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
 	// Specifies whether to retry when WAF fails to forward requests to the origin server. Valid values:
 	//
+	// - **true*	- (default): Retry.
+	//
+	// - **false**: Do not retry.
+	//
 	// example:
 	//
 	// true
 	Retry *bool `json:"Retry,omitempty" xml:"Retry,omitempty"`
-	// The hybrid cloud forwarding rules. The value is a string converted from a JSON array. Each element in the JSON array is a struct that contains the following fields:
+	// The hybrid cloud forwarding rules. The value is a string that represents a JSON array. Each element in the JSON array is a struct that contains the following fields:
+	//
+	// - **rs**: Array type | The list of back-to-origin IP addresses or back-to-origin CNAMEs.
+	//
+	// - **backupRs**: Array type | The list of backup back-to-origin IP addresses or back-to-origin CNAMEs. This field is required. [] indicates that no backup is configured.
+	//
+	// - **location**: String type | The name of the protection node.
+	//
+	// - **locationId**: Long type | The ID of the protection node.
 	//
 	// example:
 	//
@@ -575,13 +627,17 @@ type ModifyDomainRequestRedirect struct {
 	//
 	// ]
 	RoutingRules *string `json:"RoutingRules,omitempty" xml:"RoutingRules,omitempty"`
-	// Specifies whether to enable back-to-origin SNI. This parameter is available only when **HttpsPorts*	- is not empty, which indicates that the domain name uses HTTPS. Valid values:
+	// Specifies whether to enable back-to-origin SNI. This parameter is used only when **HttpsPorts*	- is not empty, which indicates that the domain name uses HTTPS. Valid values:
 	//
 	// example:
 	//
 	// true
 	SniEnabled *bool `json:"SniEnabled,omitempty" xml:"SniEnabled,omitempty"`
-	// The value of the custom SNI extension field. If this parameter is not specified, the value of the **Host*	- field in the request header is used as the SNI extension field value by default.
+	// The value of the custom SNI extension field. If you do not set this parameter, the value of the **Host*	- field in the request header is used as the value of the SNI extension field by default.
+	//
+	// In most cases, you do not need to customize the SNI unless your business has special configuration requirements and you want WAF to use an SNI that is different from the actual request Host in back-to-origin requests (that is, the custom SNI set here).
+	//
+	// > This parameter is required only when **SniEnalbed*	- is set to xxx (custom back-to-origin SNI).
 	//
 	// example:
 	//
@@ -620,7 +676,11 @@ type ModifyDomainRequestRedirect struct {
 	//
 	// true
 	XClientIp *bool `json:"XClientIp,omitempty" xml:"XClientIp,omitempty"`
-	// Specifies whether to allow WAF to overwrite X-True-IP. Valid values:
+	// Specifies whether WAF is allowed to overwrite X-True-IP. Valid values:
+	//
+	// - **true*	- (default): WAF is allowed to overwrite.
+	//
+	// - **false**: WAF is not allowed to overwrite.
 	//
 	// if can be null:
 	// true
@@ -914,7 +974,11 @@ type ModifyDomainRequestRedirectBackendPorts struct {
 	//
 	// 80
 	ListenPort *int32 `json:"ListenPort,omitempty" xml:"ListenPort,omitempty"`
-	// The protocol of the listening port. Valid values:
+	// The protocol of the listener port. Valid values:
+	//
+	// - **http**: The protocol of the listener port is HTTP.
+	//
+	// - **https**: The protocol of the listener port is HTTPS.
 	//
 	// example:
 	//

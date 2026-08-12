@@ -40,19 +40,21 @@ type iCreateDefenseResourceShrinkRequest interface {
 }
 
 type CreateDefenseResourceShrinkRequest struct {
-	// The custom header fields used to obtain the actual client IP address when XFF proxy is enabled.
+	// The list of specified header fields.
 	//
-	// > If XffStatus is set to 1, WAF uses the first IP address from the specified header field as the client IP address to prevent XFF forgery. If you specify multiple header fields, WAF reads them in order. If no valid client IP address is found in the specified header fields, WAF falls back to the first IP address in the X-Forwarded-For header field.
+	// > When XffStatus is set to 1, the first IP in the specified header field is used as the client source IP to prevent XFF spoofing. When multiple headers are specified, the system attempts to obtain the source IP from each header in order. If the first header does not contain an IP, the system tries the second header, and so on. If no specified header contains an IP, the first IP in the X-Forwarded-For header is used. When XffStatus is set to 1, the IP is obtained from the first available header.
 	CustomHeadersShrink *string `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty"`
 	// The description of the protected object.
 	//
 	// example:
 	//
-	// test
+	// ResourceTest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The configuration details of the protected object, in JSON format.
+	// The specific parameter information of the protected object, which is a string converted from a JSON object constructed with a series of parameters.
 	//
-	// > The required parameters vary based on the values of **Product*	- and **Pattern**. For more information, see the **Description of the Detail parameter*	- section.
+	// > The parameters vary depending on the specified **cloud product*	- (**Product**) and **protection mode*	- (**Pattern**). For more information, see **Detail parameter description for protected objects**.
+	//
+	// 	Notice: When **Product*	- is set to **ecs**, **clb4**, **clb7**, or **nlb**, domain names connected to regions in the Chinese mainland must have completed ICP filing.</notice>
 	//
 	// This parameter is required.
 	//
@@ -62,7 +64,7 @@ type CreateDefenseResourceShrinkRequest struct {
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -70,17 +72,19 @@ type CreateDefenseResourceShrinkRequest struct {
 	//
 	// waf_v3prepaid_public_cn-4xl*******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the protected object belongs. This parameter is required only in multi-account scenarios. By default, the protected object belongs to the WAF administrator account.
+	// The ID of the account to which the protected object belongs in multi-account scenarios. By default, the protected object belongs to the WAF administrator account.
 	//
 	// example:
 	//
 	// 123221XXX
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	// The type of the protected object. Valid values:
+	// The protection mode of the protected object. Valid values:
 	//
-	// - **domain**: domain name.
+	// - **domain**: domain name-based protection.
 	//
-	// - **multi_service**: hybrid cloud deployment.
+	// - **multi_service**: hybrid cloud service-based protection.
+	//
+	// > Currently, only the following combinations are supported: when **Product*	- is set to **alb**, **ecs**, **clb4**, **clb7**, or **nlb**, **Pattern*	- must be set to **domain**. When **Product*	- is set to **waf**, **Pattern*	- must be set to **multi_service**.
 	//
 	// This parameter is required.
 	//
@@ -88,15 +92,15 @@ type CreateDefenseResourceShrinkRequest struct {
 	//
 	// domain
 	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
-	// The name of the Alibaba Cloud service. Valid values:
+	// The cloud product name. Valid values:
 	//
 	// - **alb**: Application Load Balancer (ALB).
 	//
 	// - **ecs**: Elastic Compute Service (ECS).
 	//
-	// - **clb4**: Layer 4 Classic Load Balancer (CLB).
+	// - **clb4**: Classic Load Balancer (CLB) Layer 4 access.
 	//
-	// - **clb7**: Layer 7 CLB.
+	// - **clb7**: Classic Load Balancer (CLB) Layer 7 access.
 	//
 	// - **nlb**: Network Load Balancer (NLB).
 	//
@@ -120,27 +124,29 @@ type CreateDefenseResourceShrinkRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the protected object.
 	//
-	// > - Only protected objects of hybrid cloud deployments support custom names.
+	// >
+	//
+	// > - Only protected objects in hybrid cloud service mode support custom protected object names.
 	//
 	// example:
 	//
 	// abctest.com
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The name of the protection group to which the protected object is added.
+	// The name of the protection group to which the protected object is added. This parameter is optional.
 	//
 	// example:
 	//
 	// testGroup
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The Alibaba Cloud resource group ID.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The origin type of the protected object. Valid values:
+	// The source of the protected object. Valid values:
 	//
-	// - **custom**: a user-defined protected object.
+	// - **custom**: user-defined.
 	//
 	// This parameter is required.
 	//
@@ -148,13 +154,13 @@ type CreateDefenseResourceShrinkRequest struct {
 	//
 	// custom
 	ResourceOrigin *string `json:"ResourceOrigin,omitempty" xml:"ResourceOrigin,omitempty"`
-	// A list of tags. You can add up to 20 tags.
+	// The tag list, which contains up to 20 items.
 	Tag []*CreateDefenseResourceShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// Indicates whether the X-Forwarded-For (XFF) proxy feature is enabled. Valid values:
+	// Specifies whether XFF proxy is enabled for the protected object. Valid values:
 	//
-	// - **0*	- (default): disabled.
+	// - **0**: Disabled (default).
 	//
-	// - **1**: enabled.
+	// - **1**: Enabled.
 	//
 	// example:
 	//
@@ -310,13 +316,13 @@ func (s *CreateDefenseResourceShrinkRequest) Validate() error {
 }
 
 type CreateDefenseResourceShrinkRequestTag struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// demoTagKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

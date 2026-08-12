@@ -34,11 +34,15 @@ type DeleteDomainRequest struct {
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	// The domain name that has been connected to WAF.
 	//
+	// > You must specify at least one of **Domain*	- and **DomainId**.
+	//
 	// example:
 	//
 	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The domain name ID.
+	//
+	// > You must specify at least one of **Domain*	- and **DomainId**.
 	//
 	// example:
 	//
@@ -46,7 +50,7 @@ type DeleteDomainRequest struct {
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//

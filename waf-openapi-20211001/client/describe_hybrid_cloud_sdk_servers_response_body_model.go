@@ -18,15 +18,15 @@ type iDescribeHybridCloudSdkServersResponseBody interface {
 }
 
 type DescribeHybridCloudSdkServersResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 3600F008-2E76-5D0B-BC76-EFBD****6D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the hybrid cloud SDK servers.
+	// The SDK information.
 	SdkServers []*DescribeHybridCloudSdkServersResponseBodySdkServers `json:"SdkServers,omitempty" xml:"SdkServers,omitempty" type:"Repeated"`
-	// The total number of hybrid cloud SDK servers returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -83,65 +83,65 @@ func (s *DescribeHybridCloudSdkServersResponseBody) Validate() error {
 }
 
 type DescribeHybridCloudSdkServersResponseBodySdkServers struct {
-	// The name of the hybrid cloud cluster to which the SDK server belongs.
+	// The cluster name.
 	//
 	// example:
 	//
 	// testcluster
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The time when the hybrid cloud SDK server was created. This value is a UNIX timestamp in milliseconds.
+	// The timestamp when the entry was created.
 	//
 	// example:
 	//
 	// 1621428205000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The hostname of the hybrid cloud SDK server.
+	// The hostname.
 	//
 	// example:
 	//
 	// qsh5-sec-8-fedd**005
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The IP address of the hybrid cloud SDK server.
+	// The IP address.
 	//
 	// example:
 	//
 	// 127.0.0.1
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The ID of the SDK server.
+	// The machine identifier (MID).
 	//
 	// example:
 	//
 	// b11327c21790846374051d5d**83c
 	Mid *string `json:"Mid,omitempty" xml:"Mid,omitempty"`
-	// The address of the protection group associated with the SDK server.
+	// The IP address of the backend server.
 	//
 	// example:
 	//
 	// 1.1.1.1
 	ProtectionGroupAddress *string `json:"ProtectionGroupAddress,omitempty" xml:"ProtectionGroupAddress,omitempty"`
-	// Indicates whether traffic redirection is enabled. Valid values:
+	// The traffic redirection status. Valid values:
 	//
-	// - **on**: Traffic redirection is enabled.
+	// - **on**: enabled.
 	//
-	// - **off**: Traffic redirection is disabled.
+	// - **off**: disabled.
 	//
 	// example:
 	//
 	// on
 	PullinStatus *string `json:"PullinStatus,omitempty" xml:"PullinStatus,omitempty"`
-	// The ID of the resource.
+	// The resource ID.
 	//
 	// example:
 	//
 	// test-antifaud-2.jqt.wafqax.top-waf
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The status of the hybrid cloud SDK server.
+	// The status.
 	//
 	// example:
 	//
 	// 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the hybrid cloud SDK server was last updated. This value is a UNIX timestamp in milliseconds.
+	// The timestamp when the entry was updated.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribeResourceLogDeliveryStatusResponseBody interface {
 }
 
 type DescribeResourceLogDeliveryStatusResponseBody struct {
-	// A list of log delivery configurations for the protected objects.
+	// The list of log delivery configurations for protected objects.
 	LogConfigs []*DescribeResourceLogDeliveryStatusResponseBodyLogConfigs `json:"LogConfigs,omitempty" xml:"LogConfigs,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,33 +66,33 @@ func (s *DescribeResourceLogDeliveryStatusResponseBody) Validate() error {
 }
 
 type DescribeResourceLogDeliveryStatusResponseBodyLogConfigs struct {
-	// The name of the log delivery configuration.
+	// The name of the delivery configuration.
 	//
 	// example:
 	//
 	// export-kafka
 	DeliveryName *string `json:"DeliveryName,omitempty" xml:"DeliveryName,omitempty"`
-	// The type of log delivery for the protected object. Valid values:
+	// The delivery type of the protected object. Valid values:
 	//
-	// - **syslog**: Logs are delivered to a syslog service.
+	// - **syslog**: delivered to a syslog service.
 	//
-	// - **kafka**: Logs are delivered to a Kafka service.
+	// - **kafka**: delivered to a Kafka service.
 	//
 	// example:
 	//
 	// kafka
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	// The name of the protected object, such as a domain name or Application Load Balancer (ALB) instance.
+	// The protected object.
 	//
 	// example:
 	//
 	// test.waf.com-waf
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// Indicates whether log delivery is enabled for the protected object. Valid values:
+	// The log delivery status of the protected object. Valid values:
 	//
-	// - **true**: Log delivery is enabled.
+	// - **true**: enabled.
 	//
-	// - **false**: Log delivery is disabled.
+	// - **false**: disabled.
 	//
 	// example:
 	//

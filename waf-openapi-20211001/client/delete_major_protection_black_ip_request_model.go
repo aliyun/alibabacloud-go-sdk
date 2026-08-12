@@ -24,9 +24,9 @@ type iDeleteMajorProtectionBlackIpRequest interface {
 }
 
 type DeleteMajorProtectionBlackIpRequest struct {
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The ID of the WAF instance.
 	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the current WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,9 @@ type DeleteMajorProtectionBlackIpRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IP address blacklist to be deleted. Supports custom IP addresses or IP address segments in the blacklist, and supports both IPv4 and IPv6. Multiple IP addresses are separated by commas (,). For more information, see [Critical event protection](https://help.aliyun.com/document_detail/425591.html).
+	// The IP blacklist to delete. Custom IP addresses or CIDR blocks are supported, including both IPv4 and IPv6. Separate multiple IP addresses with commas (,).
+	//
+	// For more information, see [Critical event protection](https://help.aliyun.com/document_detail/425591.html).
 	//
 	// This parameter is required.
 	//
@@ -42,11 +44,11 @@ type DeleteMajorProtectionBlackIpRequest struct {
 	//
 	// 192.0.XX.XX,192.0.XX.XX/24
 	IpList *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
-	// The region ID of the WAF instance. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: The Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: Outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -58,7 +60,7 @@ type DeleteMajorProtectionBlackIpRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The ID of the IP address blacklist rule for critical event protection.
+	// The ID of the IP blacklist rule for critical event protection.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +68,9 @@ type DeleteMajorProtectionBlackIpRequest struct {
 	//
 	// 20013135
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The ID of the critical event protection template.
+	// The ID of the critical event protection scenario template.
+	//
+	// > This parameter requires the ID of a protection template of the critical event protection type. You can create this type of template only after purchasing the critical event protection upgrade.
 	//
 	// This parameter is required.
 	//

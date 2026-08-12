@@ -24,13 +24,13 @@ type DescribeHybridCloudUnassignedMachinesResponseBody struct {
 	//
 	// 3EBCFCE9-4A3C-5E01-915D-691B****510A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of unassigned servers returned.
+	// The total number of entries returned.
 	//
 	// example:
 	//
 	// 28
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The unassigned servers in the hybrid cloud cluster.
+	// The list of unassigned machines in the hybrid cloud cluster.
 	UnassignedMachines []*DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines `json:"UnassignedMachines,omitempty" xml:"UnassignedMachines,omitempty" type:"Repeated"`
 }
 
@@ -83,19 +83,19 @@ func (s *DescribeHybridCloudUnassignedMachinesResponseBody) Validate() error {
 }
 
 type DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines struct {
-	// The number of CPU cores of the server.
+	// The number of CPU cores.
 	//
 	// example:
 	//
 	// 16
 	Cpu *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The custom name of the server.
+	// The node name.
 	//
 	// example:
 	//
 	// exampleName
 	CustomName *string `json:"CustomName,omitempty" xml:"CustomName,omitempty"`
-	// The hostname of the server.
+	// The hostname.
 	//
 	// example:
 	//
@@ -107,19 +107,19 @@ type DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines struct 
 	//
 	// 1.X.X.1
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The MAC address of the server.
+	// The MAC address of the device.
 	//
 	// example:
 	//
 	// 00163e2686ac
 	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	// The memory size of the server. Unit: KB.
+	// The memory size. Unit: KB. The conversion factor is 1000.
 	//
 	// example:
 	//
 	// 31580872
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The ID of the server.
+	// The machine identifier (MID).
 	//
 	// example:
 	//

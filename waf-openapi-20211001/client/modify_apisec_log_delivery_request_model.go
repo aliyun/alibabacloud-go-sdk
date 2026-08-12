@@ -26,7 +26,7 @@ type iModifyApisecLogDeliveryRequest interface {
 }
 
 type ModifyApisecLogDeliveryRequest struct {
-	// The type of the log subscription. Valid values:
+	// The log subscription type. Valid values:
 	//
 	// - **risk**: risk information.
 	//
@@ -40,9 +40,9 @@ type ModifyApisecLogDeliveryRequest struct {
 	//
 	// risk
 	AssertKey *string `json:"AssertKey,omitempty" xml:"AssertKey,omitempty"`
-	// The ID of the WAF instance.
+	// Instance ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type ModifyApisecLogDeliveryRequest struct {
 	//
 	// waf_v3_public_cn-uqm2z****0a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the region where logs are stored.
+	// The region ID for log storage.
 	//
 	// > You can call the [DescribeUserSlsLogRegions](https://help.aliyun.com/document_detail/2712598.html) operation to query available log storage regions.
 	//
@@ -60,9 +60,9 @@ type ModifyApisecLogDeliveryRequest struct {
 	//
 	// cn-hangzhou
 	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
-	// The name of the Logstore in Simple Log Service.
+	// The name of the SLS Logstore.
 	//
-	// > API security logs can only be delivered to Logstores whose name starts with apisec-.
+	// > You can call the [DescribeApisecSlsLogStores](https://help.aliyun.com/document_detail/2932935.html) operation to query available Logstores.
 	//
 	// This parameter is required.
 	//
@@ -70,9 +70,9 @@ type ModifyApisecLogDeliveryRequest struct {
 	//
 	// apisec-logstore***
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The name of the project in Simple Log Service.
+	// The name of the SLS project.
 	//
-	// > API security logs can only be delivered to projects whose name starts with apisec-.
+	// > You can call the [DescribeApisecSlsProjects](https://help.aliyun.com/document_detail/2932936.html) operation to query available projects.
 	//
 	// This parameter is required.
 	//
@@ -80,9 +80,9 @@ type ModifyApisecLogDeliveryRequest struct {
 	//
 	// apisec-project-14316572********
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
 	// - **ap-southeast-1**: outside the Chinese mainland.
 	//

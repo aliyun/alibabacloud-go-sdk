@@ -18,9 +18,9 @@ type iModifyHybridCloudSdkPullinStatusRequest interface {
 }
 
 type ModifyHybridCloudSdkPullinStatusRequest struct {
-	// The ID of the WAF instance.
+	// Instance ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to view the current WAF instance ID.
+	// > You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query instance ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type ModifyHybridCloudSdkPullinStatusRequest struct {
 	//
 	// waf-cn-7pp2le***01
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the SDK.
+	// The machine identifier (MID). You can call the [DescribeHybridCloudSdkServers](https://help.aliyun.com/document_detail/2982006.html) operation to query the hybrid cloud SDK list and obtain this value.
 	//
 	// This parameter is required.
 	//
@@ -36,11 +36,11 @@ type ModifyHybridCloudSdkPullinStatusRequest struct {
 	//
 	// b3dbc5153317c79d8ca9f9***ea
 	Mid *string `json:"Mid,omitempty" xml:"Mid,omitempty"`
-	// The status of traffic redirection. Valid values of the parameter:
+	// The traffic redirection status. Valid values:
 	//
-	// - **on**: Enable
+	// - **on**: enabled.
 	//
-	// - **off**: Disable
+	// - **off**: disabled.
 	//
 	// This parameter is required.
 	//

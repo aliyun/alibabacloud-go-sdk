@@ -66,7 +66,7 @@ func (s *DescribeDefenseResourceOwnerUidResponseBody) Validate() error {
 }
 
 type DescribeDefenseResourceOwnerUidResponseBodyOwnerInfos struct {
-	// The owner account ID of the protected object.
+	// The ID of the asset owner account of the protected object.
 	//
 	// example:
 	//

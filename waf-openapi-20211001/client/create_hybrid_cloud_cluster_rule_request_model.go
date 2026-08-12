@@ -26,9 +26,9 @@ type iCreateHybridCloudClusterRuleRequest interface {
 }
 
 type CreateHybridCloudClusterRuleRequest struct {
-	// The ID of the Hybrid Cloud WAF cluster.
+	// The ID of the hybrid cloud cluster.
 	//
-	// > This parameter applies only to hybrid cloud scenarios. Call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain information about Hybrid Cloud WAF clusters.
+	// > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain hybrid cloud cluster information.
 	//
 	// This parameter is required.
 	//
@@ -36,9 +36,9 @@ type CreateHybridCloudClusterRuleRequest struct {
 	//
 	// 428
 	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the WAF instance.
+	// Instance ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type CreateHybridCloudClusterRuleRequest struct {
 	//
 	// waf_elasticity-cn-0xldbqt****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -62,23 +62,23 @@ type CreateHybridCloudClusterRuleRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The configuration of the traffic redirection rule, in JSON format.
+	// The traffic redirection rule configuration.
 	//
-	// > The modes are mutually exclusive. You can select only one mode. If you change the mode, all traffic redirection rules in the previous mode are cleared.
+	// > The mode options are mutually exclusive. You can select only one. If you change the mode, all traffic redirection rules under the original mode are cleared.
 	//
-	// - **check_mode**: the traffic redirection mode. Valid values:
+	// - **check_mode**: the mode. Valid values:
 	//
-	//   - **all**: redirects all traffic.
+	//     - **all**: full traffic redirection.
 	//
-	//   - **part**: redirects a specific portion of traffic.
+	//     - **part**: partial traffic redirection.
 	//
-	// - **type**: the match type for the rule. Valid values:
+	// - **type**: the rule matching type. Valid values:
 	//
-	//   - **exact**: exact match.
+	//     - **exact**: exact match.
 	//
-	//   - **regex**: regular expression match.
+	//     - **regex**: regular expression.
 	//
-	// - **substance**: the match value of the rule.
+	// - **substance**: the rule value.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type CreateHybridCloudClusterRuleRequest struct {
 	//
 	// Specified partial drainage：{\\"check_mode\\": \\"part\\", \\"type\\": \\"exact\\", \\"substance\\": \\"12222\\"}
 	RuleConfig *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
-	// The status of the traffic redirection rule. Valid values:
+	// The rule status. Valid values:
 	//
 	// - **on**: enabled.
 	//
@@ -98,9 +98,9 @@ type CreateHybridCloudClusterRuleRequest struct {
 	//
 	// on
 	RuleStatus *string `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
-	// The type of the traffic redirection rule. Valid values:
+	// The rule type. Valid values:
 	//
-	// - **pullin**: traffic redirection
+	// - **pullin**: cluster traffic redirection.
 	//
 	// This parameter is required.
 	//

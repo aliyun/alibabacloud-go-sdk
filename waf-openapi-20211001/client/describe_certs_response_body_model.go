@@ -18,9 +18,9 @@ type iDescribeCertsResponseBody interface {
 }
 
 type DescribeCertsResponseBody struct {
-	// The list of certificates.
+	// The certificate list.
 	Certs []*DescribeCertsResponseBodyCerts `json:"Certs,omitempty" xml:"Certs,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,25 +83,25 @@ func (s *DescribeCertsResponseBody) Validate() error {
 }
 
 type DescribeCertsResponseBodyCerts struct {
-	// The time when the certificate expires.
+	// The expiration time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1976256736582
 	AfterDate *int64 `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
-	// The time when the certificate takes effect.
+	// The effective period. The value is a UNIX timestamp in the format of milliseconds (ms).
 	//
 	// example:
 	//
 	// 1976256836582
 	BeforeDate *int64 `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
-	// The globally unique ID of the certificate. The value follows a "\\<Certificate ID>-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of CertIdentifier is 123-cn-hangzhou.
+	// The global certificate ID, which is in the format of certificate ID + "-cn-hangzhou". For example, if the certificate ID is 123, the CertIdentifier is "123-cn-hangzhou".
 	//
 	// example:
 	//
 	// 12345-cn-hangzhou
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
-	// The name of the certificate.
+	// The certificate name.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ type DescribeCertsResponseBodyCerts struct {
 	//
 	// *.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The domain name for which the certificate is issued.
+	// The domain name supported by the certificate.
 	//
 	// example:
 	//

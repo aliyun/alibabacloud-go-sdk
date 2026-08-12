@@ -32,13 +32,13 @@ type DescribeHybridCloudServerRegionsRequest struct {
 	//
 	// waf_v3prepaid_public_cn-5yd****7009
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region code.	Notice: This parameter is required when RegionType is set to region. Set this parameter to the code of the selected continent.
+	// The region code.	Notice: This parameter is required when RegionType is set to region. The value is the code of the selected continent.</notice>
 	//
 	// example:
 	//
 	// 410
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//

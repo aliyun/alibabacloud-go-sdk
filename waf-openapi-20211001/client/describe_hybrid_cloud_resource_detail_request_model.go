@@ -38,7 +38,7 @@ type DescribeHybridCloudResourceDetailRequest struct {
 	//
 	// - **true**: Public cloud disaster recovery is enabled.
 	//
-	// - **false**: Public cloud disaster recovery is disabled.
+	// - **false**: Public cloud disaster recovery is not enabled.
 	//
 	// example:
 	//

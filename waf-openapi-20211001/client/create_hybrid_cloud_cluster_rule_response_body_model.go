@@ -16,13 +16,13 @@ type iCreateHybridCloudClusterRuleResponseBody interface {
 }
 
 type CreateHybridCloudClusterRuleResponseBody struct {
-	// The ID of the cluster rule resource.
+	// The cluster rule resource ID.
 	//
 	// example:
 	//
 	// hdbc-clusterrule-*******m0w
 	ClusterRuleResourceId *string `json:"ClusterRuleResourceId,omitempty" xml:"ClusterRuleResourceId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

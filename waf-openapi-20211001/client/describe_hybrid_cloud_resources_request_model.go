@@ -34,11 +34,11 @@ type DescribeHybridCloudResourcesRequest struct {
 	//
 	// 1.1.XX.XX
 	Backend *string `json:"Backend,omitempty" xml:"Backend,omitempty"`
-	// Specifies whether to enable public cloud disaster recovery. Valid values:
+	// Specifies whether public cloud disaster recovery is enabled. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: Public cloud disaster recovery is enabled.
 	//
-	// - **false**: Disabled.
+	// - **false**: Public cloud disaster recovery is not enabled.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type DescribeHybridCloudResourcesRequest struct {
 	//
 	// waf_v3prepaid_public_cn-***********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number to return when paging is used. Default value: **1**, which indicates the first page.
+	// The page number to return in a paging query. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page when paging is used. Default value: **10**, which indicates 10 entries per page.
+	// The number of entries per page in a paging query. Default value: **10**, which indicates 10 entries per page.
 	//
 	// example:
 	//

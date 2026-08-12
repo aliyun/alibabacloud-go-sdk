@@ -22,17 +22,17 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// A pagination token for the next query
+	// The token that is used to start the next query.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// - **cn-hangzhou**: indicates the Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: indicates regions outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,9 @@ type ListTagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource IDs. You can specify up to 50 resource IDs.
+	// The resource ID. You can specify up to 50 entries.
+	//
+	// > - This parameter is conditionally required. You must specify at least one ResourceId.N value. If ResourceType is set to ALIYUN::WAF::DEFENSERESOURCE, the value of ResourceId corresponds to the Resources[].Resource field returned by the [DescribeDefenseResources](https://help.aliyun.com/document_detail/461612.html) operation.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The resource type. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
 	//
@@ -50,7 +52,7 @@ type ListTagResourcesRequest struct {
 	//
 	// ALIYUN::WAF::DEFENSERESOURCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags that are added to the resource.
+	// The list of tags. You can specify up to 20 entries.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 

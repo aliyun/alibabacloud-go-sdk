@@ -22,7 +22,7 @@ type CreateDefenseResourceResponseBody struct {
 	//
 	// 1738C613-D054-5191-888B-DC0CF4C3A4A0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The name of the protected object that is created.
+	// The name of the created protected object.
 	//
 	// example:
 	//

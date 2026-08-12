@@ -32,7 +32,7 @@ type iDescribeHybridCloudClusterServersRequest interface {
 }
 
 type DescribeHybridCloudClusterServersRequest struct {
-	// The ID of the hybrid cloud cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -44,31 +44,31 @@ type DescribeHybridCloudClusterServersRequest struct {
 	//
 	// example:
 	//
-	// test
+	// groupTest
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The type of the hybrid cloud node group. Valid values:
 	//
 	// - **protect**: protection.
 	//
-	// - **control**: control.
+	// - **control**: management.
 	//
 	// - **storage**: storage.
 	//
-	// - **controlStorage**: control and storage.
+	// - **controlStorage**: management and storage.
 	//
 	// example:
 	//
 	// protect
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// The hostname of the server that you want to query.
+	// The hostname.
 	//
 	// example:
 	//
 	// online-***wwq
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The ID of the WAF instance.
+	// Instance ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type DescribeHybridCloudClusterServersRequest struct {
 	//
 	// waf_v3prepaid_public_cn-******nd07
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IP address of the server that you want to query.
+	// The IP address of the server.
 	//
 	// example:
 	//
@@ -88,13 +88,13 @@ type DescribeHybridCloudClusterServersRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The number of entries per page for paging. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -104,7 +104,7 @@ type DescribeHybridCloudClusterServersRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The Alibaba Cloud resource group ID.
 	//
 	// example:
 	//

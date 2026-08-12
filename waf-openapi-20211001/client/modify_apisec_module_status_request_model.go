@@ -36,7 +36,7 @@ type ModifyApisecModuleStatusRequest struct {
 	//
 	// waf_elasticity-cn-0xldbqtm**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -58,6 +58,8 @@ type ModifyApisecModuleStatusRequest struct {
 	ReportStatus *int64 `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
 	// The name of the protected object group to which the protected object is added.
 	//
+	// > You must specify at least one of **Resources*	- and **ResourceGroups**.
+	//
 	// example:
 	//
 	// group1
@@ -69,6 +71,8 @@ type ModifyApisecModuleStatusRequest struct {
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The name of the protected object.
+	//
+	// > You must specify at least one of **Resources*	- and **ResourceGroups**.
 	//
 	// example:
 	//

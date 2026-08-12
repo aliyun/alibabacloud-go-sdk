@@ -42,11 +42,11 @@ type ModifyHybridCloudServerRequest struct {
 	//
 	// example:
 	//
-	// 节点名称
+	// groupTest
 	CustomName *string `json:"CustomName,omitempty" xml:"CustomName,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) to query the ID of the current WAF instance.
+	// > You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type ModifyHybridCloudServerRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The node ID.
+	// The machine identifier (MID).
 	//
 	// This parameter is required.
 	//
@@ -78,7 +78,7 @@ type ModifyHybridCloudServerRequest struct {
 	//
 	// beijing
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//

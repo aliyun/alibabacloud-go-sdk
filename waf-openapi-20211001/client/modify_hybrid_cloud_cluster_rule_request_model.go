@@ -28,7 +28,9 @@ type iModifyHybridCloudClusterRuleRequest interface {
 }
 
 type ModifyHybridCloudClusterRuleRequest struct {
-	// [Deprecated] The ID of the hybrid cloud cluster.
+	// Deprecated
+	//
+	// **[Deprecated]*	- The ID of the hybrid cloud cluster.
 	//
 	// example:
 	//
@@ -42,7 +44,7 @@ type ModifyHybridCloudClusterRuleRequest struct {
 	ClusterRuleResourceId *string `json:"ClusterRuleResourceId,omitempty" xml:"ClusterRuleResourceId,omitempty"`
 	// Instance ID of the WAF instance.
 	//
-	// > You can call [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) to query instance ID of the current WAF instance.
+	// > You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query instance ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -70,19 +72,19 @@ type ModifyHybridCloudClusterRuleRequest struct {
 	//
 	// <notice>The mode cannot be modified.</notice>
 	//
-	// - **check_mode**: The mode. Valid values:
+	// - **check_mode**: the mode. Valid values:
 	//
 	//   - **all**: full traffic redirection.
 	//
 	//   - **part**: partial traffic redirection.
 	//
-	// - **type**: The rule matching type. Valid values:
+	// - **type**: the rule matching type. Valid values:
 	//
 	//   - **exact**: exact match.
 	//
 	//   - **regex**: regular expression.
 	//
-	// - **substance**: The rule value.
+	// - **substance**: the rule value.
 	//
 	// example:
 	//
@@ -98,7 +100,9 @@ type ModifyHybridCloudClusterRuleRequest struct {
 	//
 	// on
 	RuleStatus *string `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
-	// [Deprecated] The rule type. Valid values:
+	// Deprecated
+	//
+	// **[Deprecated]*	- The rule type. Valid values:
 	//
 	// - **pullin**: traffic redirection configuration.
 	//

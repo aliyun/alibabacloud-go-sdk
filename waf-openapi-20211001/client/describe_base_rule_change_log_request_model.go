@@ -26,7 +26,7 @@ type iDescribeBaseRuleChangeLogRequest interface {
 type DescribeBaseRuleChangeLogRequest struct {
 	// The ID of the WAF instance.
 	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the instance ID.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DescribeBaseRuleChangeLogRequest struct {
 	//
 	// waf-cn-mp9153****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the rule names in the response. Valid values:
+	// The language of the rule name. Valid values:
 	//
 	// - **zh**: Chinese.
 	//
@@ -44,23 +44,23 @@ type DescribeBaseRuleChangeLogRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The page number. Pages start from page 1. Default value: **1**.
+	// The page number to return when paging. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page when paging.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: The Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: Outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//

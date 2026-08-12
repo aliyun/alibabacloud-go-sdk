@@ -14,7 +14,7 @@ type iModifyMajorProtectionBlackIpResponseBody interface {
 }
 
 type ModifyMajorProtectionBlackIpResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

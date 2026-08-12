@@ -22,21 +22,21 @@ type iDescribeBotRuleLabelsResponseBody interface {
 }
 
 type DescribeBotRuleLabelsResponseBody struct {
-	// The number of entries per page for paging. Valid values: 1 to 200. Default value: 20.
+	// The number of entries per page in a paged query. Valid values: 1 to 200. Default value: 20. This parameter is used for paging.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next page. If a next page exists, this field has a return value.
+	// The pagination token for the next page. If a value is returned for this parameter, the next page exists.
 	//
-	// > If this parameter has a return value, a next page exists. You can use the returned **NextToken*	- as a request parameter to obtain the data on the next page. Repeat this process until no value is returned, which indicates that all data has been retrieved.
+	// > If this parameter has a return value, the next page exists. Use the returned NextToken value as a request parameter to retrieve the next page of data. Repeat until no value is returned, which indicates that all data has been retrieved.
 	//
 	// example:
 	//
 	// AAAAAGBgV9tolsLfijC4wam2htS*****D/46H3X2wIS
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -139,9 +139,9 @@ type DescribeBotRuleLabelsResponseBodyRuleLabels struct {
 	//
 	// - **js**: JavaScript verification.
 	//
-	// - **captcha**: Slider CAPTCHA.
+	// - **captcha**: slider CAPTCHA.
 	//
-	// - **captcha_strict**: Strict slider CAPTCHA.
+	// - **captcha_strict**: strict slider CAPTCHA.
 	//
 	// - **bypass**: Allow.
 	//
@@ -195,7 +195,7 @@ type DescribeBotRuleLabelsResponseBodyRuleLabels struct {
 	//
 	// example:
 	//
-	// Web,app
+	// web,app
 	SubScene *string `json:"SubScene,omitempty" xml:"SubScene,omitempty"`
 }
 

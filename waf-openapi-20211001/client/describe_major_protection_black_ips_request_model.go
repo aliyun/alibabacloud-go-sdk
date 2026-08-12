@@ -40,13 +40,13 @@ type DescribeMajorProtectionBlackIpsRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IP address to query. You can set this parameter to perform a fuzzy query on the added IP address blacklist.
+	// The IP address to query. You can set this parameter to perform a fuzzy match against the added IP blacklist.
 	//
 	// example:
 	//
 	// 192.0.XX.XX
 	IpLike *string `json:"IpLike,omitempty" xml:"IpLike,omitempty"`
-	// The property by which to sort the results in **descending order**. Valid values:
+	// The sorting attribute. Results are sorted in **descending order*	- by the specified attribute. Valid values:
 	//
 	// - **gmtModified**: sorts by modification time.
 	//
@@ -60,41 +60,43 @@ type DescribeMajorProtectionBlackIpsRequest struct {
 	//
 	// gmtModified
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number. Default value: **1**, which indicates the first page.
+	// The page number to return when paging is used. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **10**, which indicates 10 entries per page.
+	// The number of entries per page when paging is used. Default value: **10**, which indicates 10 entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: regions outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The Alibaba Cloud resource group ID.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The ID of the IP address blacklist rule for critical event protection.
+	// The ID of the critical event protection IP blacklist rule.
 	//
 	// example:
 	//
 	// 20013199
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The ID of the critical event protection template.
+	//
+	// > This parameter requires the ID of a protection template of the critical event protection type. You can create this type of template only after purchasing the critical event protection upgrade separately.
 	//
 	// example:
 	//

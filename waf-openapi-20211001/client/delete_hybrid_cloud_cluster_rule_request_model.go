@@ -20,7 +20,7 @@ type iDeleteHybridCloudClusterRuleRequest interface {
 }
 
 type DeleteHybridCloudClusterRuleRequest struct {
-	// The ID of the cluster rule resource.
+	// The resource ID of the cluster rule.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DeleteHybridCloudClusterRuleRequest struct {
 	ClusterRuleResourceId *string `json:"ClusterRuleResourceId,omitempty" xml:"ClusterRuleResourceId,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DeleteHybridCloudClusterRuleRequest struct {
 	//
 	// waf_elasticity-cn-0xldbqt****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//

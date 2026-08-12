@@ -24,13 +24,15 @@ type iDescribeHybridCloudClusterRuleRequest interface {
 }
 
 type DescribeHybridCloudClusterRuleRequest struct {
-	// [Deprecated] The ID of the hybrid cloud cluster.
+	// Deprecated
+	//
+	// **[Deprecated]*	- The hybrid cloud cluster ID.
 	//
 	// example:
 	//
 	// 1
 	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The resource ID of the cluster rule.
+	// The cluster rule resource ID.
 	//
 	// example:
 	//
@@ -38,7 +40,7 @@ type DescribeHybridCloudClusterRuleRequest struct {
 	ClusterRuleResourceId *string `json:"ClusterRuleResourceId,omitempty" xml:"ClusterRuleResourceId,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -46,25 +48,27 @@ type DescribeHybridCloudClusterRuleRequest struct {
 	//
 	// waf-cn-uqm33n***02
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: The Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: Outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The Alibaba Cloud resource group ID.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// [Deprecated] The type of the rule. Valid value:
+	// Deprecated
 	//
-	// - **pullin**: Traffic routing.
+	// **[Deprecated]*	- The rule type. Valid values:
+	//
+	// - **pullin**: cluster traffic redirection
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type DescribeBaseRuleChangeLogResponseBody struct {
 	//
 	// 6FBF08CB-8691-5B65-BBF8-***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of rule change records.
+	// The list of rule group changes.
 	Rules []*DescribeBaseRuleChangeLogResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 	// The total number of rule change records.
 	//
@@ -89,11 +89,11 @@ type DescribeBaseRuleChangeLogResponseBodyRules struct {
 	//
 	// CVE-2021-34538
 	CveId *string `json:"CveId,omitempty" xml:"CveId,omitempty"`
-	// The type of change. Valid values:
+	// The operation type. Valid values:
 	//
-	// - **add**: The rule was added.
+	// - add: added.
 	//
-	// - **modify**: The rule was modified.
+	// - modify: modified.
 	//
 	// example:
 	//
@@ -111,7 +111,7 @@ type DescribeBaseRuleChangeLogResponseBodyRules struct {
 	//
 	// Header XSS Scanner Behavior
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The time when the rule was updated, in UNIX timestamp format. Unit: milliseconds.
+	// The time when the rule was updated. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

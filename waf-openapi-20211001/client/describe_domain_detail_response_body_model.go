@@ -70,7 +70,7 @@ type DescribeDomainDetailResponseBody struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The SM2 certificate information.
 	SM2CertDetail *DescribeDomainDetailResponseBodySM2CertDetail `json:"SM2CertDetail,omitempty" xml:"SM2CertDetail,omitempty" type:"Struct"`
-	// The status of the domain name. Valid values:
+	// The domain name status. Valid values:
 	//
 	// example:
 	//
@@ -322,7 +322,11 @@ type DescribeDomainDetailResponseBodyListen struct {
 	//
 	// true
 	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
-	// Indicates whether the exclusive IP address feature is enabled. Valid values:
+	// Indicates whether an exclusive IP address is enabled. Valid values:
+	//
+	// - **true**: An exclusive IP address is enabled.
+	//
+	// - **false**: An exclusive IP address is not enabled.
 	//
 	// example:
 	//
@@ -335,6 +339,10 @@ type DescribeDomainDetailResponseBodyListen struct {
 	// true
 	FocusHttps *bool `json:"FocusHttps,omitempty" xml:"FocusHttps,omitempty"`
 	// Indicates whether HSTS includes subdomains. Valid values:
+	//
+	// - **true**: Enabled.
+	//
+	// - **false**: Not enabled.
 	HstsIncludeSubDomain *bool `json:"HstsIncludeSubDomain,omitempty" xml:"HstsIncludeSubDomain,omitempty"`
 	// The HSTS expiration time. Unit: seconds.
 	//
@@ -350,6 +358,10 @@ type DescribeDomainDetailResponseBodyListen struct {
 	HstsPreload *bool `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
 	// Indicates whether HTTP/2 is enabled. Valid values:
 	//
+	// - **true**: HTTP/2 is enabled.
+	//
+	// - **false**: HTTP/2 is not enabled.
+	//
 	// example:
 	//
 	// true
@@ -359,6 +371,10 @@ type DescribeDomainDetailResponseBodyListen struct {
 	// The listening port for the HTTPS protocol.
 	HttpsPorts []*int64 `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty" type:"Repeated"`
 	// Indicates whether IPv6 is enabled. Valid values:
+	//
+	// - **true**: IPv6 is enabled.
+	//
+	// - **false**: IPv6 is not enabled.
 	//
 	// example:
 	//
@@ -390,17 +406,33 @@ type DescribeDomainDetailResponseBodyListen struct {
 	SM2Enabled *bool `json:"SM2Enabled,omitempty" xml:"SM2Enabled,omitempty"`
 	// The TLS version. Valid values:
 	//
+	// - **tlsv1**: Supports TLS 1.0 and later. Provides the highest compatibility and the lowest security.
+	//
+	// - **tlsv1.1**: Supports TLS 1.1 and later. Provides good compatibility and good security.
+	//
+	// - **tlsv1.2**: Supports TLS 1.2 and later. Provides good compatibility and the highest security.
+	//
+	// - **tlsv1.3**: Supports only TLS 1.3. Provides the highest security and the lowest compatibility.
+	//
 	// example:
 	//
 	// tlsv1.2
 	TLSVersion *string `json:"TLSVersion,omitempty" xml:"TLSVersion,omitempty"`
 	// The method that WAF uses to obtain the originating IP address of the client. Valid values:
 	//
+	// - **0**: The client access traffic is not forwarded by other Layer 7 proxies before reaching WAF.
+	//
+	// - **1**: WAF reads the first value in the X-Forwarded-For (XFF) header field of the request as the client IP address.
+	//
+	// - **2**: WAF reads the value of a custom header field that you specify in the request as the client IP address.
+	//
+	// - **3**: WAF reads the Client IP from the Proxy Protocol header as the client IP address.
+	//
 	// example:
 	//
 	// 2
 	XffHeaderMode *int64 `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
-	// The list of custom header fields used to obtain the client IP address.
+	// The custom header fields used to obtain the client IP address.
 	XffHeaders []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
 }
 
@@ -609,7 +641,9 @@ type DescribeDomainDetailResponseBodyRedirect struct {
 	Backends []*DescribeDomainDetailResponseBodyRedirectBackends `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// The secondary back-to-origin addresses of the domain name.
+	// The secondary origin addresses of the domain name.
+	//
+	// > This parameter is about to be deprecated. Use **BackUpBackendList*	- to obtain the related information.
 	BackupBackends []*DescribeDomainDetailResponseBodyRedirectBackupBackends `json:"BackupBackends,omitempty" xml:"BackupBackends,omitempty" type:"Repeated"`
 	// The connection timeout period. Unit: seconds.
 	//
@@ -619,23 +653,31 @@ type DescribeDomainDetailResponseBodyRedirect struct {
 	ConnectTimeout *int32 `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
 	// Indicates whether forced HTTP back-to-origin is enabled. Valid values:
 	//
+	// - **true**: Forced HTTP back-to-origin is enabled.
+	//
+	// - **false**: Forced HTTP back-to-origin is not enabled.
+	//
 	// example:
 	//
 	// true
 	FocusHttpBackend *bool `json:"FocusHttpBackend,omitempty" xml:"FocusHttpBackend,omitempty"`
-	// The HTTP/2 back-to-origin setting.
+	// Indicates whether HTTP/2 back-to-origin is enabled.
 	//
 	// example:
 	//
 	// true
 	Http2Origin *bool `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
-	// The number of concurrent connections for HTTP/2 back-to-origin.
+	// The maximum number of concurrent connections for HTTP/2 back-to-origin.
 	//
 	// example:
 	//
 	// 128
 	Http2OriginMaxConcurrency *int32 `json:"Http2OriginMaxConcurrency,omitempty" xml:"Http2OriginMaxConcurrency,omitempty"`
-	// Indicates whether persistent connections are enabled. Valid values:
+	// Specifies whether to keep the connection alive. Valid values:
+	//
+	// - **true*	- (default): The connection is kept alive.
+	//
+	// - **false**: The connection is not kept alive.
 	//
 	// example:
 	//
@@ -653,7 +695,13 @@ type DescribeDomainDetailResponseBodyRedirect struct {
 	//
 	// 15
 	KeepaliveTimeout *int32 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
-	// The load balancing algorithm used for back-to-origin. Valid values:
+	// The load balancing algorithm used for back-to-origin requests. Valid values:
+	//
+	// - **iphash**: IP Hash algorithm.
+	//
+	// - **roundRobin**: round-robin algorithm.
+	//
+	// - **leastTime**: Least Time algorithm.
 	//
 	// example:
 	//
@@ -665,7 +713,11 @@ type DescribeDomainDetailResponseBodyRedirect struct {
 	//
 	// 2
 	MaxBodySize *int32 `json:"MaxBodySize,omitempty" xml:"MaxBodySize,omitempty"`
-	// Indicates whether the feature for preserving the originating IP address of the client is enabled.
+	// Indicates whether the client source IP address preservation feature is enabled.
+	//
+	// - **true**: The client source IP address preservation feature is enabled. After this feature is enabled, backend services can view the original IP address of the client.
+	//
+	// - **false**: The client source IP address preservation feature is not enabled.
 	//
 	// example:
 	//
@@ -677,15 +729,23 @@ type DescribeDomainDetailResponseBodyRedirect struct {
 	//
 	// 200
 	ReadTimeout *int32 `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
-	// The traffic mark fields and values of the domain name, which are used to mark traffic processed by WAF.
+	// The traffic tag fields and values of the domain name, which are used to tag traffic processed by WAF.
 	RequestHeaders []*DescribeDomainDetailResponseBodyRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
-	// Indicates whether WAF retries when back-to-origin fails. Valid values:
+	// Specifies whether to retry when WAF fails to forward requests to the origin server. Valid values:
+	//
+	// - **true*	- (default): Retry.
+	//
+	// - **false**: Do not retry.
 	//
 	// example:
 	//
 	// true
 	Retry *bool `json:"Retry,omitempty" xml:"Retry,omitempty"`
-	// Indicates whether back-to-origin SNI is enabled. Valid values:
+	// Indicates whether Server Name Indication (SNI) is enabled for back-to-origin requests. Valid values:
+	//
+	// - **true**: SNI is enabled for back-to-origin requests.
+	//
+	// - **false*	- (default): SNI is not enabled for back-to-origin requests.
 	//
 	// example:
 	//
@@ -697,13 +757,21 @@ type DescribeDomainDetailResponseBodyRedirect struct {
 	//
 	// www.aliyundoc.com
 	SniHost *string `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
-	// Indicates whether WAF is allowed to overwrite WL-Proxy-Client-IP. Valid values:
+	// Specifies whether WAF is allowed to overwrite the WL-Proxy-Client-IP header. Valid values:
+	//
+	// - **true*	- (default): WAF is allowed to overwrite the header.
+	//
+	// - **false**: WAF is not allowed to overwrite the header.
 	//
 	// example:
 	//
 	// true
 	WLProxyClientIp *bool `json:"WLProxyClientIp,omitempty" xml:"WLProxyClientIp,omitempty"`
-	// Indicates whether WAF is allowed to overwrite Web-Server-Type. Valid values:
+	// Specifies whether WAF is allowed to overwrite the Web-Server-Type header. Valid values:
+	//
+	// - **true*	- (default): WAF is allowed to overwrite the header.
+	//
+	// - **false**: WAF is not allowed to overwrite the header.
 	//
 	// example:
 	//
@@ -715,13 +783,21 @@ type DescribeDomainDetailResponseBodyRedirect struct {
 	//
 	// 200
 	WriteTimeout *int32 `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
-	// Indicates whether WAF is allowed to overwrite X-Client-IP. Valid values:
+	// Specifies whether WAF is allowed to overwrite X-Client-IP. Valid values:
+	//
+	// - **true*	- (default): WAF is allowed to overwrite the header.
+	//
+	// - **false**: WAF is not allowed to overwrite the header.
 	//
 	// example:
 	//
 	// true
 	XClientIp *bool `json:"XClientIp,omitempty" xml:"XClientIp,omitempty"`
-	// Indicates whether WAF is allowed to overwrite X-True-IP. Valid values:
+	// Specifies whether WAF is allowed to overwrite the X-True-IP header. Valid values:
+	//
+	// - **true*	- (default): WAF is allowed to overwrite the header.
+	//
+	// - **false**: WAF is not allowed to overwrite the header.
 	//
 	// example:
 	//
@@ -1031,6 +1107,10 @@ type DescribeDomainDetailResponseBodyRedirectBackendPorts struct {
 	// 80
 	ListenPort *int32 `json:"ListenPort,omitempty" xml:"ListenPort,omitempty"`
 	// The protocol type of the listener port. Valid values:
+	//
+	// - **http**: HTTP protocol.
+	//
+	// - **https**: HTTPS protocol.
 	//
 	// example:
 	//

@@ -66,7 +66,7 @@ func (s *DescribeDefenseRuleStatisticsResponseBody) Validate() error {
 }
 
 type DescribeDefenseRuleStatisticsResponseBodyStatisticsInfos struct {
-	// The number of rules that meet all the query conditions.
+	// The number of rules that meet all query conditions.
 	//
 	// example:
 	//

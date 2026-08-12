@@ -22,7 +22,7 @@ type iDescribePostpayBillsResponseBody interface {
 type DescribePostpayBillsResponseBody struct {
 	// The list of bill details.
 	BillDetail []*DescribePostpayBillsResponseBodyBillDetail `json:"BillDetail,omitempty" xml:"BillDetail,omitempty" type:"Repeated"`
-	// The number of entries per page for a paged query.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type DescribePostpayBillsResponseBodyBillDetail struct {
 	//
 	// {\\"aiWhiteListTemplateCount\\":4,\\"apisecResourceCount\\":2,\\"botAppTemplateCount\\":1,\\"botWebTemplateCount\\":4,\\"ccRuleCount\\":1,\\"customAclAdvanceRuleCount\\":4,\\"customResponseRuleCount\\":5,\\"dlpRuleCount\\":1,\\"gslb\\":1,\\"instanceFee\\":1,\\"ipv6\\":1,\\"nonPort\\":1,\\"qps\\":0,\\"regionBlockRuleCount\\":1,\\"threatIntelligenceTemplateCount\\":1,\\"wafBaseTemplateCount\\":4}
 	ChargeData *string `json:"ChargeData,omitempty" xml:"ChargeData,omitempty"`
-	// The total number of Credits.
+	// The total Credit.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type DescribePostpayBillsResponseBodyBillDetail struct {
 	//
 	// {\\"apisecTraffic\\":\\"8000\\",\\"apisecResourceCount\\":\\"3\\"}
 	CreditChargeData *string `json:"CreditChargeData,omitempty" xml:"CreditChargeData,omitempty"`
-	// The total number of SeCUs.
+	// The total SeCU.
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ type DescribePostpayBillsResponseBodyBillDetail struct {
 	//
 	// 1779123599
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of Credits consumed by features.
+	// The Credit consumed by features.
 	//
 	// example:
 	//
 	// 375
 	FunctionCredit *float64 `json:"FunctionCredit,omitempty" xml:"FunctionCredit,omitempty"`
-	// The number of SeCUs consumed by features.
+	// The SeCU consumed by features.
 	//
 	// example:
 	//
@@ -148,13 +148,13 @@ type DescribePostpayBillsResponseBodyBillDetail struct {
 	//
 	// 1779120000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The number of Credits consumed by traffic processing.
+	// The Credit consumed by traffic processing.
 	//
 	// example:
 	//
 	// 7
 	TrafficCredit *float64 `json:"TrafficCredit,omitempty" xml:"TrafficCredit,omitempty"`
-	// The number of SeCUs consumed by traffic processing.
+	// The SeCU consumed by traffic processing.
 	//
 	// example:
 	//

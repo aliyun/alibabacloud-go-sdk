@@ -177,7 +177,11 @@ func (client *Client) ClearAddressWithContext(ctx context.Context, request *Clea
 
 // Summary:
 //
-// Clears the IP blacklist for a critical event protection rule.
+// Clears the IP blacklist for a critical event protection scenario.
+//
+// Description:
+//
+// Before calling this operation, make sure that the WAF instance supports critical event protection. Critical event protection requires a separate upgrade purchase. Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the response parameter Details.MajorProtection is true, the instance supports critical event protection. If not, upgrade the instance to enable critical event protection.
 //
 // @param request - ClearMajorProtectionBlackIpRequest
 //
@@ -429,7 +433,17 @@ func (client *Client) CreateCertsWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// Connects a cloud service to Web Application Firewall (WAF) in cloud native mode. Currently, only ECS and CLB are supported.
+// Connects a cloud service to WAF in cloud native mode. Supported cloud services include ECS, CLB, NLB, and DDoS.
+//
+// Description:
+//
+// Before invoking this operation, complete the following steps:
+//
+// 1. Confirm that you have a WAF instance. Invoke [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of your WAF instance.
+//
+// 2. Confirm that the cloud service to be connected meets the applicable scope. For ECS, CLB, and NLB connections, verify the instance specifications and region. For more information, see the "Applicable Scope" section in [ECS Connection](https://help.aliyun.com/document_detail/464617.html), [CLB Connection](https://help.aliyun.com/document_detail/464614.html), and [NLB Connection](https://help.aliyun.com/document_detail/2853925.html). For DDoS connections, verify the domain name scope. For more information, see the "Applicable Scope" section in [DDoS Connection](https://help.aliyun.com/document_detail/3032763.html).
+//
+// After completing the preceding steps, invoke this operation to connect the cloud service to WAF in cloud native mode.
 //
 // @param tmpReq - CreateCloudResourceRequest
 //
@@ -895,7 +909,15 @@ func (client *Client) CreateDefenseTemplateWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Adds a domain name to a WAF instance for Website Config protection.
+// Adds a domain name to a WAF instance for Website Config.
+//
+// Description:
+//
+// Before you call this operation, the domain name (**Domain**) must meet the following requirements:
+//
+// - **Domain ownership verification**: If **AccessType*	- is set to **share*	- (CNAME access) or **hybrid_cloud_cname*	- (hybrid cloud CNAME access) with public cloud disaster recovery enabled, you must complete domain ownership verification first. Call the [DescribeVerifyContent](https://help.aliyun.com/document_detail/2985193.html) operation to obtain domain verification information, configure a DNS TXT record or upload an HTTP verification file based on the response, and then call the [VerifyDomainOwner](https://help.aliyun.com/document_detail/2985192.html) operation to complete domain ownership verification.
+//
+// - **ICP filing**: If **AccessType*	- is set to **share*	- (CNAME access) or **hybrid_cloud_cname*	- (hybrid cloud CNAME access) with public cloud disaster recovery enabled, and the domain name is connected to a region in the Chinese mainland, the domain name must have a valid ICP filing.
 //
 // @param tmpReq - CreateDomainRequest
 //
@@ -1081,7 +1103,11 @@ func (client *Client) CreateHybridCloudClusterWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Creates a Hybrid Cloud Web Application Firewall (WAF) cluster rule.
+// Creates cluster rule information.
+//
+// Description:
+//
+// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the Details.HybridCloud parameter in the response is true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - CreateHybridCloudClusterRuleRequest
 //
@@ -1229,7 +1255,11 @@ func (client *Client) CreateHybridCloudGroupWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Creates a hybrid cloud log forwarding delivery configuration.
+// Creates a log delivery configuration for hybrid cloud environments.
+//
+// Description:
+//
+// Before you call this operation, make sure that the WAF instance has hybrid cloud extension nodes purchased. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the value of the Details.HybridCloudNodeExtend response parameter is greater than 0, hybrid cloud extension nodes have been purchased. If not, log on to the WAF console and upgrade the instance to purchase hybrid cloud extension nodes.
 //
 // @param request - CreateLogDeliveryConfigRequest
 //
@@ -1293,11 +1323,11 @@ func (client *Client) CreateLogDeliveryConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Creates an IP address blacklist for critical event protection.
+// Adds IP addresses to the IP blacklist for critical event protection in WAF.
 //
 // Description:
 //
-// This operation is available only on the China site (aliyun.com).
+// Before calling this operation, make sure that the WAF instance supports critical event protection. Critical event protection requires a separate upgrade purchase. Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the response parameter Details.MajorProtection is true, the instance supports critical event protection. If not, upgrade the instance to enable critical event protection.
 //
 // @param request - CreateMajorProtectionBlackIpRequest
 //
@@ -1485,7 +1515,11 @@ func (client *Client) CreatePocFunctionWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates a pay-as-you-go Web Application Firewall (WAF) 3.0 instance.
+// Creates a Web Application Firewall (WAF) 3.0 pay-as-you-go instance.
+//
+// Description:
+//
+// Each Alibaba Cloud account can have only one WAF instance in the same region (the Chinese mainland or outside the Chinese mainland). Before calling this operation, call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to check whether a WAF instance already exists in the region specified by **RegionId**. If a pay-as-you-go instance already exists, call the [ReleaseInstance](https://help.aliyun.com/document_detail/2834183.html) operation to release it. If a subscription instance already exists, unsubscribe from it in the WAF console. You can create a new pay-as-you-go instance only after the existing instance is released or unsubscribed.
 //
 // @param request - CreatePostpaidInstanceRequest
 //
@@ -2269,7 +2303,11 @@ func (client *Client) DeleteDomainWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// Deletes a hybrid cloud cluster rule from a Web Application Firewall (WAF) instance.
+// Deletes cluster rule information.
+//
+// Description:
+//
+// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned parameter Details.HybridCloud is true, the hybrid cloud feature is enabled. If it is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - DeleteHybridCloudClusterRuleRequest
 //
@@ -2385,7 +2423,11 @@ func (client *Client) DeleteHybridCloudGroupWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Deletes a log delivery configuration.
+// Deletes a hybrid cloud log forwarding delivery configuration.
+//
+// Description:
+//
+// Before calling this operation, make sure that the WAF instance has purchased hybrid cloud extension nodes. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned parameter Details.HybridCloudNodeExtend is greater than 0, hybrid cloud extension nodes have been purchased. If not, log on to the WAF console and purchase hybrid cloud extension nodes by upgrading the instance.
 //
 // @param request - DeleteLogDeliveryConfigRequest
 //
@@ -2441,7 +2483,11 @@ func (client *Client) DeleteLogDeliveryConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Deletes an IP address from the blacklist for critical event protection.
+// Deletes blacklisted IPs from a critical event protection scenario.
+//
+// Description:
+//
+// Before calling this operation, make sure that the WAF instance supports critical event protection. Critical event protection requires a separate upgrade purchase. Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the response parameter Details.MajorProtection is true, the instance supports critical event protection. If not, upgrade the instance to enable critical event protection.
 //
 // @param request - DeleteMajorProtectionBlackIpRequest
 //
@@ -4073,7 +4119,7 @@ func (client *Client) DescribeApisecSensitiveDomainStatisticWithContext(ctx cont
 
 // Summary:
 //
-// Queries the Logstores whose names start with apisec- in Simple Log Service.
+// Queries the list of Logstores in Simple Log Service.
 //
 // @param request - DescribeApisecSlsLogStoresRequest
 //
@@ -4133,7 +4179,7 @@ func (client *Client) DescribeApisecSlsLogStoresWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the projects whose names start with apisec- in Simple Log Service.
+// Queries the list of Simple Log Service projects.
 //
 // @param request - DescribeApisecSlsProjectsRequest
 //
@@ -4385,7 +4431,7 @@ func (client *Client) DescribeApisecUserOperationsWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries protection rule change logs on a paginated basis.
+// Queries the change records of rule group rules by paging.
 //
 // @param request - DescribeBaseRuleChangeLogRequest
 //
@@ -4725,7 +4771,7 @@ func (client *Client) DescribeCertDetailWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Retrieves the list of certificates for a user.
+// Queries the certificate list of a user.
 //
 // @param request - DescribeCertsRequest
 //
@@ -5875,7 +5921,11 @@ func (client *Client) DescribeDefenseResourceNamesWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the asset owner account of protected objects in multi-account management scenarios.
+// Queries the asset owner account of a protected object in a multi-account management feature scenario.
+//
+// Description:
+//
+// Before calling this operation, make sure that a WAF instance already exists under the current Alibaba Cloud account. Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the InstanceId parameter in the response has a value (in the format of waf_v2_public_cn********60f), the instance exists. If no instance exists, call the [CreatePostpaidInstance](https://help.aliyun.com/document_detail/2773874.html) operation to create a pay-as-you-go instance, or log on to the WAF console to purchase an instance.
 //
 // @param request - DescribeDefenseResourceOwnerUidRequest
 //
@@ -6695,7 +6745,7 @@ func (client *Client) DescribeDomainDNSRecordWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the Website Config details.
+// Queries the details of a Website Config.
 //
 // @param request - DescribeDomainDetailRequest
 //
@@ -7335,7 +7385,11 @@ func (client *Client) DescribeFreeUserEventsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the system status of a node in a hybrid cloud cluster.
+// Queries the system status of hybrid cloud cluster nodes.
+//
+// Description:
+//
+// Before calling this operation, make sure that the hybrid cloud feature is enabled for your WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the Details.HybridCloud response parameter is true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - DescribeHybridCloudBasicMonitorRequest
 //
@@ -7391,7 +7445,11 @@ func (client *Client) DescribeHybridCloudBasicMonitorWithContext(ctx context.Con
 
 // Summary:
 //
-// Retrieves a hybrid cloud cluster rule.
+// Retrieves the rule information of a hybrid cloud cluster.
+//
+// Description:
+//
+// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned parameter Details.HybridCloud is true, the hybrid cloud feature is enabled. If it is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - DescribeHybridCloudClusterRuleRequest
 //
@@ -7507,7 +7565,11 @@ func (client *Client) DescribeHybridCloudClusterRulesWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the servers in a hybrid cloud Web Application Firewall (WAF) cluster.
+// Queries the list of machines in a cluster.
+//
+// Description:
+//
+// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the Details.HybridCloud response parameter is true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - DescribeHybridCloudClusterServersRequest
 //
@@ -7639,7 +7701,11 @@ func (client *Client) DescribeHybridCloudClustersWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the Hybrid Cloud WAF node groups that are added to Web Application Firewall (WAF).
+// Queries the list of hybrid cloud node groups added to Web Application Firewall (WAF).
+//
+// Description:
+//
+// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned Details.HybridCloud parameter is true, the hybrid cloud feature is enabled. If it is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - DescribeHybridCloudGroupsRequest
 //
@@ -7660,6 +7726,10 @@ func (client *Client) DescribeHybridCloudGroupsWithContext(ctx context.Context, 
 
 	if !dara.IsNil(request.ClusterProxyType) {
 		query["ClusterProxyType"] = request.ClusterProxyType
+	}
+
+	if !dara.IsNil(request.GroupDisplayName) {
+		query["GroupDisplayName"] = request.GroupDisplayName
 	}
 
 	if !dara.IsNil(request.GroupName) {
@@ -7715,7 +7785,11 @@ func (client *Client) DescribeHybridCloudGroupsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the status of applications on nodes in a hybrid cloud Web Application Firewall (WAF) cluster.
+// Queries the application status of hybrid cloud cluster nodes.
+//
+// Description:
+//
+// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned parameter Details.HybridCloud is true, the hybrid cloud feature is enabled. If it is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - DescribeHybridCloudProcessMonitorRequest
 //
@@ -7967,7 +8041,11 @@ func (client *Client) DescribeHybridCloudResourcesWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the hybrid cloud SDK servers that are managed by a Web Application Firewall (WAF) instance.
+// Queries the list of hybrid cloud SDKs.
+//
+// Description:
+//
+// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned parameter Details.HybridCloud is true, the hybrid cloud feature is enabled. If it is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - DescribeHybridCloudSdkServersRequest
 //
@@ -8039,7 +8117,11 @@ func (client *Client) DescribeHybridCloudSdkServersWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the dictionary of region information supported by hybrid cloud WAF, including ISPs, continents, and cities.
+// Queries the dictionary of region information supported by hybrid cloud, including ISPs, continents, and cities.
+//
+// Description:
+//
+// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned parameter Details.HybridCloud is true, the hybrid cloud feature is enabled. If it is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - DescribeHybridCloudServerRegionsRequest
 //
@@ -8099,7 +8181,11 @@ func (client *Client) DescribeHybridCloudServerRegionsWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the regions that are supported for hybrid cloud access in Web Application Firewall (WAF).
+// Queries the access regions.
+//
+// Description:
+//
+// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned parameter Details.HybridCloud is true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - DescribeHybridCloudSupportRegionsRequest
 //
@@ -8152,6 +8238,10 @@ func (client *Client) DescribeHybridCloudSupportRegionsWithContext(ctx context.C
 // Summary:
 //
 // Queries the list of unassigned servers in a hybrid cloud cluster.
+//
+// Description:
+//
+// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned Details.HybridCloud parameter is true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - DescribeHybridCloudUnassignedMachinesRequest
 //
@@ -8275,7 +8365,11 @@ func (client *Client) DescribeHybridCloudUnsupportPortsWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the available HTTP and HTTPS port ranges for hybrid cloud access.
+// Queries the port ranges that a customer is allowed to use for hybrid cloud access. The response includes both HTTP and HTTPS ports.
+//
+// Description:
+//
+// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the Details.HybridCloud parameter in the response is true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - DescribeHybridCloudUserRequest
 //
@@ -8327,7 +8421,7 @@ func (client *Client) DescribeHybridCloudUserWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Retrieves the details of the Web Application Firewall (WAF) instance in your Alibaba Cloud account.
+// Retrieves the details of a WAF instance in the current Alibaba Cloud account.
 //
 // @param request - DescribeInstanceRequest
 //
@@ -8571,7 +8665,11 @@ func (client *Client) DescribeLogDeliveryConfigsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the IP address blacklist for critical event protection in a paginated format.
+// Queries blacklisted IPs for critical event protection by paged query.
+//
+// Description:
+//
+// Before calling this operation, make sure that the WAF instance supports critical event protection. Critical event protection requires a separate upgrade purchase. Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the response parameter Details.MajorProtection is true, the instance supports critical event protection. If not, upgrade the instance to enable critical event protection.
 //
 // @param request - DescribeMajorProtectionBlackIpsRequest
 //
@@ -9379,7 +9477,7 @@ func (client *Client) DescribeRelatedDefenseRulesWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the certificates of a cloud product instance. This operation is available only in multi-account scenarios and returns the certificates of both the delegated administrator and the member that owns the instance. For example, if user A is a delegated administrator with cert1 and the instance lb-xx-1 belongs to member B who has cert2, a query for the instance lb-xx-1 returns both cert1 and cert2.
+// Queries the certificate list of a cloud service instance. This operation returns the certificate list of the current delegated administrator and the user who owns the instance. This operation is used only in multi-account scenarios. For example, if user A is the delegated administrator and has certificate cert1, and cloud service instance lb-xx-1 belongs to member user B and has certificate cert2, when you query instance lb-xx-1, the operation returns both cert1 and cert2.
 //
 // @param request - DescribeResourceInstanceCertsRequest
 //
@@ -9443,7 +9541,11 @@ func (client *Client) DescribeResourceInstanceCertsWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the log delivery status for protected objects.
+// Queries the log delivery status of protected objects.
+//
+// Description:
+//
+// Before calling this operation, make sure that the WAF instance has hybrid cloud extension nodes purchased. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned parameter Details.HybridCloudNodeExtend is greater than 0, hybrid cloud extension nodes have been purchased. If not, log on to the WAF console and upgrade the instance to purchase hybrid cloud extension nodes.
 //
 // @param request - DescribeResourceLogDeliveryStatusRequest
 //
@@ -10747,7 +10849,7 @@ func (client *Client) DescribeSensitiveDetectionResultWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the distribution of outbound traffic that contains personal information.
+// Queries the distribution of cross-border traffic that contains personal information.
 //
 // @param request - DescribeSensitiveOutboundDistributionRequest
 //
@@ -11147,7 +11249,7 @@ func (client *Client) DescribeSensitiveRequestsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries sensitive data statistics for tracing audits.
+// Queries the sensitive data statistics of tracing watermark audits.
 //
 // @param request - DescribeSensitiveStatisticRequest
 //
@@ -12091,7 +12193,11 @@ func (client *Client) DescribeUserEventTypeWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the log field configuration of a Web Application Firewall (WAF) instance, including additional fields, removed fields, delivery strategies, and extended settings.
+// Queries the default log field configuration of a user.
+//
+// Description:
+//
+// Before calling this operation, make sure that the log service is enabled for the WAF instance. Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the Details.LogService response parameter is true, the log service is enabled. If the log service is not enabled, log on to the WAF console and upgrade the instance to enable the log service.
 //
 // @param request - DescribeUserLogFieldConfigRequest
 //
@@ -12659,7 +12765,7 @@ func (client *Client) ListTagKeysWithContext(ctx context.Context, request *ListT
 
 // Summary:
 //
-// Queries the tags that are added to a resource.
+// Queries the tags that are attached to a resource.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -12991,7 +13097,19 @@ func (client *Client) ModifyApisecEventsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Updates the API security log subscription settings.
+// Modifies the API security log subscription.
+//
+// Description:
+//
+// Before calling this operation, ensure that you have completed the following steps:
+//
+// 1. Confirm that the API security feature is enabled. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the instance details. If the Details.AgenticApisec or Details.Apisec parameter in the response is true, the API security feature is enabled. If it is not enabled, log on to the WAF console and upgrade the instance to enable the API security feature.
+//
+// 2. Confirm that WAF is authorized to access cloud resources. You can call the [DescribeRoleAuthStatus](https://help.aliyun.com/document_detail/2990717.html) operation to query the authorization status. If WAF is not authorized, call the [InitializeWafOperationRole](https://help.aliyun.com/document_detail/2990727.html) operation to grant the authorization.
+//
+// 3. Call the [DescribeApisecSlsProjects](https://help.aliyun.com/document_detail/2932936.html) and [DescribeApisecSlsLogStores](https://help.aliyun.com/document_detail/2932935.html) operations to query available Simple Log Service (SLS) projects and Logstores.
+//
+// After completing the preceding steps, call this operation to configure API security log delivery.
 //
 // @param request - ModifyApisecLogDeliveryRequest
 //
@@ -13060,6 +13178,18 @@ func (client *Client) ModifyApisecLogDeliveryWithContext(ctx context.Context, re
 // Summary:
 //
 // Modifies the subscription status of API security logs.
+//
+// Description:
+//
+// Before you invoke this operation, make sure that you have created an API security log delivery configuration by invoking the [ModifyApisecLogDelivery](https://help.aliyun.com/document_detail/2932937.html) operation. If you have not created a delivery configuration, complete the following prerequisites:
+//
+// 1. Confirm that the API security feature is enabled. Invoke the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the instance details. If the Details.AgenticApisec or Details.Apisec parameter in the response is true, the API security feature is enabled.
+//
+// 2. Confirm that WAF is authorized to access cloud resources. Invoke the [DescribeRoleAuthStatus](https://help.aliyun.com/document_detail/2990717.html) operation to query the authorization status. If WAF is not authorized, invoke the [InitializeWafOperationRole](https://help.aliyun.com/document_detail/2990727.html) operation to grant the authorization.
+//
+// 3. Invoke the [DescribeApisecSlsProjects](https://help.aliyun.com/document_detail/2932936.html) and [DescribeApisecSlsLogStores](https://help.aliyun.com/document_detail/2932935.html) operations to query active SLS projects and Logstores, and then invoke the [ModifyApisecLogDelivery](https://help.aliyun.com/document_detail/2932937.html) operation to create a delivery configuration.
+//
+// After you complete the preceding steps, invoke this operation to enable or disable the delivery status of API security logs.
 //
 // @param request - ModifyApisecLogDeliveryStatusRequest
 //
@@ -13807,7 +13937,7 @@ func (client *Client) ModifyDefenseRuleCacheWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Enables or disables a protection rule.
+// Modifies the status of a protection rule.
 //
 // @param request - ModifyDefenseRuleStatusRequest
 //
@@ -14143,6 +14273,10 @@ func (client *Client) ModifyDomainWithContext(ctx context.Context, tmpReq *Modif
 //
 // Modifies the certificate of a domain name.
 //
+// Description:
+//
+// This operation supports modifying the certificate of a domain name that is added by using CNAME (**AccessType*	- is set to **share*	- or **hybrid_cloud_cname**). For domain names added in cloud native mode, call the [ModifyCloudResourceCert](https://help.aliyun.com/document_detail/2990691.html) operation to modify the certificate.
+//
 // @param request - ModifyDomainCertRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14269,7 +14403,11 @@ func (client *Client) ModifyDomainPunishStatusWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Updates hybrid cloud cluster settings, such as the cluster name, ports, and access mode.
+// Modifies cluster information.
+//
+// Description:
+//
+// Before calling this operation, make sure that the hybrid cloud feature is enabled for the Web Application Firewall (WAF) instance. Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the Details.HybridCloud parameter in the response is true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - ModifyHybridCloudClusterRequest
 //
@@ -14377,7 +14515,11 @@ func (client *Client) ModifyHybridCloudClusterWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Modifies the manual bypass status for a hybrid cloud cluster that is integrated with an SDK.
+// Modifies the manual bypass switch for a hybrid cloud SDK integration cluster.
+//
+// Description:
+//
+// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the Details.HybridCloud response parameter is true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - ModifyHybridCloudClusterBypassStatusRequest
 //
@@ -14438,6 +14580,10 @@ func (client *Client) ModifyHybridCloudClusterBypassStatusWithContext(ctx contex
 // Summary:
 //
 // Modifies the rule information of a hybrid cloud cluster.
+//
+// Description:
+//
+// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the Details.HybridCloud parameter in the response is true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - ModifyHybridCloudClusterRuleRequest
 //
@@ -14509,7 +14655,11 @@ func (client *Client) ModifyHybridCloudClusterRuleWithContext(ctx context.Contex
 
 // Summary:
 //
-// Modifies the information of a cluster group.
+// Modifies cluster group information.
+//
+// Description:
+//
+// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned Details.HybridCloud parameter is true, the hybrid cloud feature is enabled. If it is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - ModifyHybridCloudGroupRequest
 //
@@ -14643,6 +14793,10 @@ func (client *Client) ModifyHybridCloudGroupExpansionServerWithContext(ctx conte
 //
 // Deletes nodes from a cluster group.
 //
+// Description:
+//
+// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned parameter Details.HybridCloud is true, the hybrid cloud feature is enabled. If it is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
+//
 // @param request - ModifyHybridCloudGroupShrinkServerRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14705,7 +14859,11 @@ func (client *Client) ModifyHybridCloudGroupShrinkServerWithContext(ctx context.
 
 // Summary:
 //
-// Modifies the traffic redirection status of a hybrid cloud SDK.
+// Modifies the traffic redirection status of the hybrid cloud SDK.
+//
+// Description:
+//
+// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the Details.HybridCloud response parameter is true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - ModifyHybridCloudSdkPullinStatusRequest
 //
@@ -14758,6 +14916,10 @@ func (client *Client) ModifyHybridCloudSdkPullinStatusWithContext(ctx context.Co
 // Summary:
 //
 // Modifies hybrid cloud node information.
+//
+// Description:
+//
+// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned parameter Details.HybridCloud is true, the hybrid cloud feature is enabled. If it is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - ModifyHybridCloudServerRequest
 //
@@ -14893,7 +15055,11 @@ func (client *Client) ModifyLogDeliveryConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies an IP address blacklist for critical event protection.
+// Modifies the IP blacklist for a critical event protection scenario.
+//
+// Description:
+//
+// Before you call this operation, make sure that the WAF instance supports critical event protection. Critical event protection requires a separate upgrade purchase. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned parameter Details.MajorProtection is true, the instance supports critical event protection. If not, upgrade the instance to enable critical event protection.
 //
 // @param request - ModifyMajorProtectionBlackIpRequest
 //
@@ -15151,6 +15317,16 @@ func (client *Client) ModifyResourceLogDeliveryStatusWithContext(ctx context.Con
 //
 // Modifies the log field configuration of a protected object.
 //
+// Description:
+//
+// Before you invoke this operation, make sure you have completed the following steps:
+//
+// 1. Invoke the [DescribeDefenseResourceNames](https://help.aliyun.com/document_detail/2773867.html) operation to obtain the names of created protected objects.
+//
+// 2. Invoke the [DescribeResourceLogStatus](https://help.aliyun.com/document_detail/461429.html) operation to query the enabling status of logs for the protected object. If logging is not enabled, invoke the [ModifyResourceLogStatus](https://help.aliyun.com/document_detail/461427.html) operation to enable logging (Status=true).
+//
+// After completing the preceding steps, invoke this operation to modify the log field configuration of the protected object.
+//
 // @param request - ModifyResourceLogFieldConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -15375,7 +15551,11 @@ func (client *Client) ModifyTemplateResourcesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies the default log field configuration of a Web Application Firewall (WAF) instance for log delivery to Simple Log Service.
+// Modifies the default field configuration of the log service for a user.
+//
+// Description:
+//
+// Before calling this operation, make sure that the log service is activated for the WAF instance. Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the Details.LogService response parameter is true, the log service is activated. If the log service is not activated, log on to the WAF console and upgrade the instance to activate the log service.
 //
 // @param request - ModifyUserLogFieldConfigRequest
 //

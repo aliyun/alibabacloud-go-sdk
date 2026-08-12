@@ -20,7 +20,7 @@ type iDescribeUserLogFieldConfigRequest interface {
 }
 
 type DescribeUserLogFieldConfigRequest struct {
-	// The log delivery type. Valid values:
+	// The delivery type. Valid values:
 	//
 	// - **sls**: Simple Log Service.
 	//
@@ -30,7 +30,7 @@ type DescribeUserLogFieldConfigRequest struct {
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DescribeUserLogFieldConfigRequest struct {
 	//
 	// waf_v3prepaid_public_cn-0*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region in which the WAF instance resides. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -48,7 +48,7 @@ type DescribeUserLogFieldConfigRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//

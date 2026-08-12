@@ -24,9 +24,9 @@ type iDescribeResourceInstanceCertsRequest interface {
 }
 
 type DescribeResourceInstanceCertsRequest struct {
-	// The ID of the WAF instance.
+	// The WAF instance ID.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -34,19 +34,19 @@ type DescribeResourceInstanceCertsRequest struct {
 	//
 	// waf_v2_public_cn-*
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number to return in a paged query. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **10**.
+	// The number of entries per page in a paged query. Default value: **10**, which indicates 10 entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region of the Web Application Firewall (WAF) instance. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -56,13 +56,13 @@ type DescribeResourceInstanceCertsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the cloud resource.
+	// The cloud service instance ID.
 	//
 	// example:
 	//
 	// lb-bp1*****jqnnqk5uj2p
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
-	// The ID of the resource group.
+	// The Alibaba Cloud resource group ID.
 	//
 	// example:
 	//

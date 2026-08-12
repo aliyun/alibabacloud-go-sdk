@@ -28,7 +28,7 @@ type iCreateCloudResourceRequest interface {
 type CreateCloudResourceRequest struct {
 	// The ID of the WAF instance.
 	//
-	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of your WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type CreateCloudResourceRequest struct {
 	//
 	// waf_v3prepaid_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The listening configuration.
+	// The listener configuration.
 	//
 	// This parameter is required.
 	Listen *CreateCloudResourceRequestListen `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
@@ -48,7 +48,7 @@ type CreateCloudResourceRequest struct {
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
 	// The forwarding configuration.
 	Redirect *CreateCloudResourceRequestRedirect `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -167,7 +167,7 @@ func (s *CreateCloudResourceRequest) Validate() error {
 type CreateCloudResourceRequestListen struct {
 	// The list of certificate IDs.
 	Certificates []*CreateCloudResourceRequestListenCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// The type of cipher suite to add. This parameter is used only when **HttpsPorts*	- is not empty, which indicates that the domain name uses the HTTPS protocol. Valid values:
+	// The type of cipher suite to add. This parameter is used only when **HttpsPorts*	- is not empty, which indicates that the domain name uses HTTPS. Valid values:
 	//
 	// - **1**: all cipher suites.
 	//
@@ -181,9 +181,11 @@ type CreateCloudResourceRequestListen struct {
 	CipherSuite *int32 `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
 	// The specific custom cipher suites to add. This parameter is used only when **CipherSuite*	- is set to **99**.
 	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
-	// The domain name connected to WAF.
+	// The domain name to connect to WAF.
 	//
 	// > This parameter is required only when the cloud service type is ddos. For other service types, leave this field empty.
+	//
+	// > For the applicable scope of domain names, see the DDoS connection documentation listed in the operation description.
 	//
 	// example:
 	//
@@ -195,7 +197,7 @@ type CreateCloudResourceRequestListen struct {
 	//
 	// - **false**: TLS 1.3 is not supported.
 	//
-	// > This parameter is used only when HttpsPorts is not empty, which indicates that the domain name uses the HTTPS protocol. When TLSVersion is set to tlsv1.3, this value must be true.
+	// > This parameter is used only when HttpsPorts is not empty, which indicates that the domain name uses HTTPS. When TLSVersion is set to tlsv1.3, this value must be true.
 	//
 	// if can be null:
 	// true
@@ -204,7 +206,7 @@ type CreateCloudResourceRequestListen struct {
 	//
 	// true
 	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
-	// Specifies whether to enable HTTP/2. This parameter is used only when **HttpsPorts*	- is not empty, which indicates that the domain name uses the HTTPS protocol. Valid values:
+	// Specifies whether to enable HTTP/2. This parameter is used only when **HttpsPorts*	- is not empty, which indicates that the domain name uses HTTPS. Valid values:
 	//
 	// - **true**: HTTP/2 is enabled.
 	//
@@ -228,6 +230,8 @@ type CreateCloudResourceRequestListen struct {
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The ID of the cloud service instance.
 	//
+	// > The instance must meet the applicable scope of the corresponding cloud service (instance specifications, region, etc.). For more information, see the corresponding product connection documentation listed in the operation description.
+	//
 	// example:
 	//
 	// lb-bp1*****
@@ -242,23 +246,21 @@ type CreateCloudResourceRequestListen struct {
 	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
 	// The region ID of the cloud service.
 	//
-	//
-	//
 	// > This parameter is required when the instance ID to be connected has not been synchronized to WAF.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
-	// The TLS version to add. This parameter is used only when **HttpsPorts*	- is not empty, which indicates that the domain name uses the HTTPS protocol. Valid values:
+	// The TLS version to add. This parameter is used only when **HttpsPorts*	- is not empty, which indicates that the domain name uses HTTPS. Valid values:
 	//
-	// - **tlsv1**: Supports TLS 1.0 and later. Highest compatibility and lowest security.
+	// - **tlsv1**: TLS 1.0 and later. Highest compatibility and lowest security.
 	//
-	// - **tlsv1.1**: Supports TLS 1.1 and later. Good compatibility and good security.
+	// - **tlsv1.1**: TLS 1.1 and later. Good compatibility and good security.
 	//
-	// - **tlsv1.2**: Supports TLS 1.2 and later. Good compatibility and highest security.
+	// - **tlsv1.2**: TLS 1.2 and later. Good compatibility and highest security.
 	//
-	// - **tlsv1.3**: Supports only TLS 1.3. Highest security and lowest compatibility.
+	// - **tlsv1.3**: TLS 1.3 only. Highest security and lowest compatibility.
 	//
 	// example:
 	//
@@ -396,7 +398,7 @@ func (s *CreateCloudResourceRequestListen) Validate() error {
 }
 
 type CreateCloudResourceRequestListenCertificates struct {
-	// The certificate type for the HTTPS protocol. Valid values:
+	// The certificate type for HTTPS. Valid values:
 	//
 	// - **default**: default certificate.
 	//
@@ -408,7 +410,7 @@ type CreateCloudResourceRequestListenCertificates struct {
 	AppliedType *string `json:"AppliedType,omitempty" xml:"AppliedType,omitempty"`
 	// The ID of the certificate to add.
 	//
-	// > You can call [DescribeResourceInstanceCerts](https://help.aliyun.com/document_detail/2718120.html) to query the IDs of all SSL certificates associated with the cloud service instance.
+	// > Call [DescribeResourceInstanceCerts](https://help.aliyun.com/document_detail/2718120.html) to query the IDs of all SSL certificates associated with the cloud service instance.
 	//
 	// example:
 	//
@@ -457,17 +459,17 @@ type CreateCloudResourceRequestRedirect struct {
 	//
 	// true
 	Keepalive *bool `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
-	// The number of requests that reuse persistent connections. Valid values: 60 to 1000.
+	// The number of requests that can reuse a persistent connection. Valid values: 60 to 1000.
 	//
-	// > After persistent connections are enabled, this parameter specifies how many requests can reuse persistent connections.
+	// > The number of persistent connections to reuse after persistent connections are enabled.
 	//
 	// example:
 	//
 	// 1000
 	KeepaliveRequests *int32 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
-	// The timeout period of idle persistent connections. Valid values: 10 to 3600. Default value: 3600. Unit: seconds.
+	// The timeout period for idle persistent connections. Valid values: 10 to 3600. Default value: 3600. Unit: seconds.
 	//
-	// > Specifies how long an idle persistent connection can remain open before it is released.
+	// > The idle time after which a reused persistent connection is released.
 	//
 	// example:
 	//
@@ -475,7 +477,7 @@ type CreateCloudResourceRequestRedirect struct {
 	KeepaliveTimeout *int32 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
 	// The maximum request body size. Valid values: 2 to 10. Default value: 2. Unit: GB.
 	//
-	// > Only Ultimate Edition supports this parameter.
+	// > Only Ultimate Edition is supported.
 	//
 	// example:
 	//
@@ -489,9 +491,9 @@ type CreateCloudResourceRequestRedirect struct {
 	//
 	// 1
 	ReadTimeout *int32 `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
-	// The value of this parameter is in the format of [**{"k":"_key_","v":"_value_"}**], where **_key_*	- specifies the custom request header field and **_value_*	- specifies the value set for the field.
+	// The value of this parameter is in the format of [**{"k":"_key_","v":"_value_"}**], where **_key_*	- specifies the custom request header field and **_value_*	- specifies the value of the field.
 	//
-	// > If the custom header field already exists in the request, the system overwrites the value of the custom field in the request with the specified traffic tag value.
+	// > If the custom header field already exists in the request, the system overwrites the original value with the specified traffic mark value.
 	RequestHeaders []*CreateCloudResourceRequestRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
 	// The write timeout period. Unit: seconds.
 	//
@@ -503,11 +505,13 @@ type CreateCloudResourceRequestRedirect struct {
 	WriteTimeout *int32 `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
 	// The method that WAF uses to obtain the originating IP address of the client. Valid values:
 	//
-	// - **0**: No Layer 7 proxy is deployed in front of WAF.
+	// - **0**: No Layer 7 proxy is deployed before WAF.
 	//
-	// - **1**: WAF reads the first value of the X-Forwarded-For (XFF) header field as the client IP address.
+	// - **1**: WAF reads the first value in the X-Forwarded-For (XFF) header as the client IP address.
 	//
 	// - **2**: WAF reads the value of a custom header field that you specify as the client IP address.
+	//
+	// - **3**: WAF reads the Client IP from the Proxy Protocol header as the client IP address.
 	//
 	// example:
 	//
@@ -515,13 +519,13 @@ type CreateCloudResourceRequestRedirect struct {
 	XffHeaderMode *int32 `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
 	// The list of custom header fields used to obtain the client IP address, in the format of [**"header1","header2",……**].
 	//
-	// > This parameter is required only when **XffHeaderMode*	- is set to 2, which indicates that WAF reads the value of a custom header field that you specify as the client IP address.
+	// > This parameter is required only when **XffHeaderMode*	- is set to 2, which indicates that WAF reads the value of a custom header field as the client IP address.
 	XffHeaders []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
-	// Specifies whether to use X-Forward-For-Proto to pass the protocol of WAF. Valid values:
+	// Specifies whether to use X-Forward-For-Proto to pass the protocol used by WAF. Valid values:
 	//
-	// - **true*	- (default): The protocol of WAF is passed.
+	// - **true*	- (default): The protocol used by WAF is passed.
 	//
-	// - **false**: The protocol of WAF is not passed.
+	// - **false**: The protocol used by WAF is not passed.
 	//
 	// example:
 	//
@@ -641,13 +645,13 @@ func (s *CreateCloudResourceRequestRedirect) Validate() error {
 }
 
 type CreateCloudResourceRequestRedirectRequestHeaders struct {
-	// The specified custom request header field.
+	// The custom request header field.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value set for the custom request header field.
+	// The value of the custom request header field.
 	//
 	// example:
 	//

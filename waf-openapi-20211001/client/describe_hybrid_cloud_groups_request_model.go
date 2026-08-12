@@ -13,6 +13,8 @@ type iDescribeHybridCloudGroupsRequest interface {
 	GetClusterId() *int64
 	SetClusterProxyType(v string) *DescribeHybridCloudGroupsRequest
 	GetClusterProxyType() *string
+	SetGroupDisplayName(v string) *DescribeHybridCloudGroupsRequest
+	GetGroupDisplayName() *string
 	SetGroupName(v int32) *DescribeHybridCloudGroupsRequest
 	GetGroupName() *int32
 	SetGroupType(v string) *DescribeHybridCloudGroupsRequest
@@ -36,31 +38,39 @@ type DescribeHybridCloudGroupsRequest struct {
 	//
 	// 428
 	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The proxy type of the hybrid cloud cluster. Valid values:
+	// The proxy type of the cluster. Valid values:
 	//
-	// - **service**: SDK-based integration.
+	// - **service**: SDK integration.
 	//
-	// - **cname**: CNAME-based reverse proxy.
+	// - **cname**: reverse proxy.
 	//
 	// example:
 	//
 	// cname
 	ClusterProxyType *string `json:"ClusterProxyType,omitempty" xml:"ClusterProxyType,omitempty"`
-	// The name of the hybrid cloud node group that you want to query.
+	// The name of the hybrid cloud node group to query.
 	//
 	// example:
 	//
-	// groupName1
+	// testGroup
+	GroupDisplayName *string `json:"GroupDisplayName,omitempty" xml:"GroupDisplayName,omitempty"`
+	// Deprecated
+	//
+	// **[Deprecated]*	- Use GroupDisplayName for queries instead.
+	//
+	// example:
+	//
+	// 1
 	GroupName *int32 `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The type of the hybrid cloud node group. Valid values:
 	//
-	// - **protect**: protection node group.
+	// - **protect**: protection.
 	//
-	// - **control**: control node group.
+	// - **control**: management.
 	//
-	// - **storage**: storage node group.
+	// - **storage**: storage.
 	//
-	// - **controlStorage**: control and storage node group.
+	// - **controlStorage**: management and storage.
 	//
 	// example:
 	//
@@ -68,7 +78,7 @@ type DescribeHybridCloudGroupsRequest struct {
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -76,19 +86,19 @@ type DescribeHybridCloudGroupsRequest struct {
 	//
 	// waf_v3prepaid_public_cn-********w0b
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number to return in a paging query. Default value: **1**, which indicates that the first page is returned.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The number of entries per page in a paged query. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -98,7 +108,7 @@ type DescribeHybridCloudGroupsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the WAF instance belongs.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
@@ -120,6 +130,10 @@ func (s *DescribeHybridCloudGroupsRequest) GetClusterId() *int64 {
 
 func (s *DescribeHybridCloudGroupsRequest) GetClusterProxyType() *string {
 	return s.ClusterProxyType
+}
+
+func (s *DescribeHybridCloudGroupsRequest) GetGroupDisplayName() *string {
+	return s.GroupDisplayName
 }
 
 func (s *DescribeHybridCloudGroupsRequest) GetGroupName() *int32 {
@@ -157,6 +171,11 @@ func (s *DescribeHybridCloudGroupsRequest) SetClusterId(v int64) *DescribeHybrid
 
 func (s *DescribeHybridCloudGroupsRequest) SetClusterProxyType(v string) *DescribeHybridCloudGroupsRequest {
 	s.ClusterProxyType = &v
+	return s
+}
+
+func (s *DescribeHybridCloudGroupsRequest) SetGroupDisplayName(v string) *DescribeHybridCloudGroupsRequest {
+	s.GroupDisplayName = &v
 	return s
 }
 

@@ -26,19 +26,15 @@ type iModifyDefenseRuleStatusRequest interface {
 }
 
 type ModifyDefenseRuleStatusRequest struct {
-	// The type of the protection rule. Valid values:
-	//
-	// - **template*	- (default): a template protection rule.
-	//
-	// - **resource**: a rule that is configured for a protected object.
+	// The type of the protection rule.
 	//
 	// example:
 	//
 	// template
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
-	// The ID of the WAF instance.
+	// Instance ID of the WAF instance.
 	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +42,7 @@ type ModifyDefenseRuleStatusRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -56,7 +52,7 @@ type ModifyDefenseRuleStatusRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
@@ -70,11 +66,11 @@ type ModifyDefenseRuleStatusRequest struct {
 	//
 	// 20002615
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The new status of the protection rule. Valid values:
+	// The status of the protection rule to set. Valid values:
 	//
-	// - **0**: disabled
+	// - **0**: Disabled.
 	//
-	// - **1**: enabled
+	// - **1**: Enabled.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +78,7 @@ type ModifyDefenseRuleStatusRequest struct {
 	//
 	// 1
 	RuleStatus *int32 `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
-	// The ID of the protection template.
+	// The ID of the protection rule template.
 	//
 	// example:
 	//

@@ -30,6 +30,8 @@ type iDescribePostpayBillsRequest interface {
 type DescribePostpayBillsRequest struct {
 	// The end time. The value is a UNIX timestamp (UTC). Unit: seconds.
 	//
+	// > When querying pay-as-you-go bills, **StartTime*	- and **EndTime*	- are required parameters. You must specify both to determine the query time range.
+	//
 	// example:
 	//
 	// 1779195599
@@ -44,7 +46,7 @@ type DescribePostpayBillsRequest struct {
 	//
 	// waf-cn-zz11sr5****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries per page for a paged query.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
@@ -52,19 +54,19 @@ type DescribePostpayBillsRequest struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token for the next page. If a next page exists, this field has a return value.
 	//
-	// > If this parameter has a return value, a next page exists. Use the returned **NextToken*	- as a request parameter to obtain the next page of data. Repeat until no value is returned, which indicates that all data has been retrieved.
+	// > If this parameter has a return value, a next page exists. You can use the returned **NextToken*	- as a request parameter to obtain the data on the next page. Repeat this process until no value is returned, which indicates that all data has been retrieved.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The statistical period type for billing.
+	// The statistical period type of the bill.
 	//
 	// example:
 	//
 	// hour
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -81,6 +83,8 @@ type DescribePostpayBillsRequest struct {
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The start time. The value is a UNIX timestamp (UTC). Unit: seconds.
+	//
+	// > When querying pay-as-you-go bills, **StartTime*	- and **EndTime*	- are required parameters. You must specify both to determine the query time range.
 	//
 	// example:
 	//

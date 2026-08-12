@@ -16,7 +16,7 @@ type iDescribeApisecSlsLogStoresResponseBody interface {
 }
 
 type DescribeApisecSlsLogStoresResponseBody struct {
-	// The names of the Logstores in Simple Log Service.
+	// The list of Logstores in Simple Log Service.
 	LogStores []*string `json:"LogStores,omitempty" xml:"LogStores,omitempty" type:"Repeated"`
 	// The request ID.
 	//

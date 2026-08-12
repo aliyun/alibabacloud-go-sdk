@@ -22,9 +22,9 @@ type iClearMajorProtectionBlackIpRequest interface {
 }
 
 type ClearMajorProtectionBlackIpRequest struct {
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The ID of the WAF instance.
 	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type ClearMajorProtectionBlackIpRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -42,7 +42,7 @@ type ClearMajorProtectionBlackIpRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
@@ -56,7 +56,9 @@ type ClearMajorProtectionBlackIpRequest struct {
 	//
 	// 20012033
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The ID of the critical event protection template.
+	// The ID of the critical event protection scenario template.
+	//
+	// > This parameter must be set to the ID of a protection template of the critical event protection type. You can create this type of template only after purchasing the critical event protection upgrade.
 	//
 	// This parameter is required.
 	//

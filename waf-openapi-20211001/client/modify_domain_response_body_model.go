@@ -68,7 +68,7 @@ type ModifyDomainResponseBodyDomainInfo struct {
 	//
 	// xxxxxcvdaf.****.com
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	// The domain name to modify.
+	// The domain name to be modified.
 	//
 	// example:
 	//

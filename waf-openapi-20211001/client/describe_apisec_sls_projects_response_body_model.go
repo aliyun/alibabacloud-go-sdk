@@ -16,7 +16,7 @@ type iDescribeApisecSlsProjectsResponseBody interface {
 }
 
 type DescribeApisecSlsProjectsResponseBody struct {
-	// The names of the projects in Simple Log Service.
+	// The list of Simple Log Service projects.
 	Projects []*string `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Repeated"`
 	// The request ID.
 	//

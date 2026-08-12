@@ -18,7 +18,7 @@ type iDescribeHybridCloudProcessMonitorResponseBody interface {
 }
 
 type DescribeHybridCloudProcessMonitorResponseBody struct {
-	// The list of application statuses.
+	// The application status list.
 	ProcessMonitors []*DescribeHybridCloudProcessMonitorResponseBodyProcessMonitors `json:"ProcessMonitors,omitempty" xml:"ProcessMonitors,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,9 @@ type DescribeHybridCloudProcessMonitorResponseBody struct {
 	//
 	// DBF79169-B6A0-5C8E-86B2-CFE3****496E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// > This parameter is deprecated and no longer returns a valid value.
+	// Deprecated
+	//
+	// **[Deprecated]*	- This parameter is deprecated and no longer returns meaningful data.
 	//
 	// example:
 	//
@@ -83,9 +85,9 @@ func (s *DescribeHybridCloudProcessMonitorResponseBody) Validate() error {
 }
 
 type DescribeHybridCloudProcessMonitorResponseBodyProcessMonitors struct {
-	// The severity level of the application status. Valid values:
+	// The status. Valid values:
 	//
-	// - **normal**: normal.
+	// - **normal**: Normal.
 	//
 	// - **critical**: abnormal.
 	//
@@ -93,37 +95,37 @@ type DescribeHybridCloudProcessMonitorResponseBodyProcessMonitors struct {
 	//
 	// normal
 	Levle *string `json:"Levle,omitempty" xml:"Levle,omitempty"`
-	// The name of the application running on the cluster node. Valid values:
+	// The service. Valid values:
 	//
-	// - **tianqingproxy**: the central management service
+	// - **tianqingproxy**: centralized management service.
 	//
-	// - **redis**: the storage service
+	// - **redis**: storage service.
 	//
-	// - **scc**: the traffic metering service
+	// - **scc**: traffic computing service.
 	//
-	// - **keeper**: the threat intelligence service
+	// - **keeper**: threat intelligence service.
 	//
-	// - **node_exporter**: the application log upload service
+	// - **node_exporter**: application log upload service.
 	//
-	// - **xagent**: the traffic detection service
+	// - **xagent**: traffic detection service.
 	//
-	// - **noproxy**: the traffic forwarding service
+	// - **noproxy**: traffic forwarding service.
 	//
-	// - **xloge**: the attack log upload service
+	// - **xloge**: attack log upload service.
 	//
-	// - **ilogtail**: the log collection service
+	// - **ilogtail**: log collection service.
 	//
-	// - **xlogd**: the log analysis service
+	// - **xlogd**: log analysis feature.
 	//
 	// example:
 	//
 	// keeper
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
-	// The running status of the application. Valid values:
+	// The running status. Valid values:
 	//
 	// - **0**: abnormal.
 	//
-	// - **1**: normal.
+	// - **1**: Normal.
 	//
 	// example:
 	//

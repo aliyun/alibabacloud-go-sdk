@@ -46,11 +46,11 @@ type iModifyHybridCloudClusterRequest interface {
 }
 
 type ModifyHybridCloudClusterRequest struct {
-	// The network access mode of the hybrid cloud cluster. Valid values:
+	// The network access mode. Valid values:
 	//
-	// - **internet**: access over the Internet.
+	// - **internet**: public network access.
 	//
-	// - **vpc**: access over a leased line through a virtual private cloud (VPC).
+	// - **vpc**: Express Connect private network access.
 	//
 	// This parameter is required.
 	//
@@ -58,11 +58,11 @@ type ModifyHybridCloudClusterRequest struct {
 	//
 	// internet
 	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
-	// The region in which the leased line resides. This parameter is required when AccessMode is set to vpc. Valid values:
+	// The Express Connect access region. Valid values:
 	//
 	// - **cn-hangzhou**: Hangzhou.
 	//
-	// - **cn-beijing**: Beijing.
+	// - **cn-beiijng**: Beijing.
 	//
 	// - **cn-shanghai**: Shanghai.
 	//
@@ -70,7 +70,7 @@ type ModifyHybridCloudClusterRequest struct {
 	//
 	// cn-beijing
 	AccessRegion *string `json:"AccessRegion,omitempty" xml:"AccessRegion,omitempty"`
-	// The name of the hybrid cloud cluster.
+	// The cluster name.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +78,7 @@ type ModifyHybridCloudClusterRequest struct {
 	//
 	// waf-example-***
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The list of HTTP ports supported by the hybrid cloud cluster. Separate multiple ports with commas (,). Format: **port1,port2,port3**.
+	// The list of available ports for the HTTP protocol. The value is a string. If multiple ports are specified, they are returned in the format of **port1,port2,port3**.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type ModifyHybridCloudClusterRequest struct {
 	//
 	// 80,8080
 	HttpPorts *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
-	// The list of HTTPS ports supported by the hybrid cloud cluster. Separate multiple ports with commas (,). Format: **port1,port2,port3**.
+	// The list of available ports for the HTTPS protocol. The value is a string. If multiple ports are specified, they are returned in the format of **port1,port2,port3**.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +94,7 @@ type ModifyHybridCloudClusterRequest struct {
 	//
 	// 443,8443
 	HttpsPorts *string `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty"`
-	// The ID of the hybrid cloud cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -102,9 +102,9 @@ type ModifyHybridCloudClusterRequest struct {
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The WAF instance ID.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the current WAF instance ID.
 	//
 	// This parameter is required.
 	//
@@ -112,13 +112,13 @@ type ModifyHybridCloudClusterRequest struct {
 	//
 	// waf-cn-mp9153****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The log fields that are excluded from the response.
+	// The log fields to be returned.
 	//
 	// example:
 	//
 	// log_example
 	LogFieldsNotReturned *string `json:"LogFieldsNotReturned,omitempty" xml:"LogFieldsNotReturned,omitempty"`
-	// The maximum number of protection nodes that can be added to the hybrid cloud cluster.
+	// The number of protection nodes that can be added to the cluster.
 	//
 	// This parameter is required.
 	//
@@ -126,21 +126,21 @@ type ModifyHybridCloudClusterRequest struct {
 	//
 	// 1
 	ProtectionServerCount *int32 `json:"ProtectionServerCount,omitempty" xml:"ProtectionServerCount,omitempty"`
-	// Indicates whether the proxy gateway is enabled. Valid values:
+	// The proxy gateway mode. Valid values:
 	//
-	// - **on**: The proxy gateway is enabled.
+	// - on: enabled.
 	//
-	// - **off**: The proxy gateway is disabled.
+	// - off: disabled.
 	//
 	// example:
 	//
 	// off
 	ProxyStatus *string `json:"ProxyStatus,omitempty" xml:"ProxyStatus,omitempty"`
-	// The type of the hybrid cloud cluster. Valid values:
+	// The cluster type. Valid values:
 	//
-	// - **cname**: a reverse proxy cluster.
+	// - **cname**: reverse proxy cluster.
 	//
-	// - **service**: a service cluster.
+	// - **service**: service-based cluster.
 	//
 	// example:
 	//
@@ -156,19 +156,19 @@ type ModifyHybridCloudClusterRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The remarks of the hybrid cloud cluster.
+	// The remarks.
 	//
 	// example:
 	//
 	// remarkExample
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The ID of the Alibaba Cloud resource group to which the WAF instance belongs.
+	// The Alibaba Cloud resource group ID.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The rule configuration in JSON format. This includes settings such as the circuit breaker, request body length limit, and timeout.
+	// The rule configuration.
 	//
 	// example:
 	//
@@ -198,11 +198,11 @@ type ModifyHybridCloudClusterRequest struct {
 	//
 	// }
 	RuleConfig *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
-	// Indicates whether the rule is enabled. Valid values:
+	// The rule status. Valid values:
 	//
-	// - **on**: The rule is enabled.
+	// - **on**: enabled.
 	//
-	// - **off**: The rule is disabled.
+	// - **off**: disabled.
 	//
 	// example:
 	//
@@ -210,7 +210,7 @@ type ModifyHybridCloudClusterRequest struct {
 	RuleStatus *string `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
 	// The rule type. Valid values:
 	//
-	// - **bypass**: WAF bypasses security checks.
+	// bypass: bypasses security checks and directly allows the request.
 	//
 	// example:
 	//

@@ -62,7 +62,9 @@ func (s *DescribeHybridCloudResourceDetailResponseBody) Validate() error {
 }
 
 type DescribeHybridCloudResourceDetailResponseBodyDomain struct {
-	// CNAME
+	// The CNAME assigned by WAF to the domain name.
+	//
+	// > This parameter is returned only when **CnameEnabled*	- is set to true, which indicates that public cloud disaster recovery is enabled.
 	//
 	// example:
 	//
@@ -74,7 +76,7 @@ type DescribeHybridCloudResourceDetailResponseBodyDomain struct {
 	//
 	// www.*****.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// id
+	// The access ID.
 	//
 	// example:
 	//
@@ -199,7 +201,7 @@ func (s *DescribeHybridCloudResourceDetailResponseBodyDomain) Validate() error {
 }
 
 type DescribeHybridCloudResourceDetailResponseBodyDomainListen struct {
-	// The certificate ID.
+	// The ID of the certificate.
 	//
 	// example:
 	//
@@ -207,11 +209,11 @@ type DescribeHybridCloudResourceDetailResponseBodyDomainListen struct {
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
 	// The type of cipher suite. Valid values:
 	//
-	// - **1**: all cipher suites.
+	// - **1**: all cipher suites are added.
 	//
-	// - **2**: strong cipher suites.
+	// - **2**: strong cipher suites are added.
 	//
-	// - **99**: custom cipher suites.
+	// - **99**: custom cipher suites are added.
 	//
 	// example:
 	//
@@ -243,7 +245,7 @@ type DescribeHybridCloudResourceDetailResponseBodyDomainListen struct {
 	//
 	// - **true**: HTTPS forced redirect is enabled.
 	//
-	// - **false**: HTTPS forced redirect is disabled.
+	// - **false**: HTTPS forced redirect is not enabled.
 	//
 	// example:
 	//
@@ -253,7 +255,7 @@ type DescribeHybridCloudResourceDetailResponseBodyDomainListen struct {
 	//
 	// - **true**: HTTP/2 is enabled.
 	//
-	// - **false**: HTTP/2 is disabled.
+	// - **false**: HTTP/2 is not enabled.
 	//
 	// example:
 	//
@@ -267,7 +269,7 @@ type DescribeHybridCloudResourceDetailResponseBodyDomainListen struct {
 	//
 	// - **true**: IPv6 is enabled.
 	//
-	// - **false**: IPv6 is disabled.
+	// - **false**: IPv6 is not enabled.
 	//
 	// example:
 	//
@@ -277,7 +279,7 @@ type DescribeHybridCloudResourceDetailResponseBodyDomainListen struct {
 	//
 	// - **share**: shared cluster.
 	//
-	// - **gslb**: shared cluster with intelligent load balancing.
+	// - **gslb**: intelligent load balancing of the shared cluster.
 	//
 	// example:
 	//
@@ -295,21 +297,23 @@ type DescribeHybridCloudResourceDetailResponseBodyDomainListen struct {
 	//
 	// tlsv1
 	TLSVersion *string `json:"TLSVersion,omitempty" xml:"TLSVersion,omitempty"`
-	// The method that WAF uses to obtain the actual client IP address. Valid values:
+	// The method that WAF uses to obtain the originating IP address of the client. Valid values:
 	//
-	// - **0**: No Layer 7 proxy is deployed in front of WAF.
+	// - **0**: No Layer 7 proxy is deployed before WAF.
 	//
-	// - **1**: WAF reads the first value of the X-Forwarded-For (XFF) header field as the client IP address.
+	// - **1**: WAF reads the first value in the X-Forwarded-For (XFF) header as the client IP address.
 	//
-	// - **2**: WAF reads the value of a custom header field that you specify as the client IP address.
+	// - **2**: WAF reads the value of a custom field in the request header as the client IP address.
+	//
+	// - **3**: WAF reads the Client IP from the Proxy Protocol header as the client IP address.
 	//
 	// example:
 	//
 	// 1
 	XffHeaderMode *int32 `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
-	// The custom header fields used to obtain the client IP address, in the format of [**"header1","header2",……**].
+	// The list of custom fields used to obtain the client IP address, in the format of [**"header1","header2",……**].
 	//
-	// > This parameter is required only when **XffHeaderMode*	- is set to 2, which indicates that WAF reads the value of a custom header field that you specify in the request header as the client IP address.
+	// > This parameter is required only when **XffHeaderMode*	- is set to 2, which indicates that WAF reads the custom field value you specified in the request header as the client IP address.
 	XffHeaders []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
 }
 
@@ -452,7 +456,7 @@ func (s *DescribeHybridCloudResourceDetailResponseBodyDomainListen) Validate() e
 }
 
 type DescribeHybridCloudResourceDetailResponseBodyDomainRedirect struct {
-	// The custom port configuration. By default, this is the same as the listening port.
+	// The custom port configuration. By default, the port is the same as the listening port.
 	BackendPorts []*DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts `json:"BackendPorts,omitempty" xml:"BackendPorts,omitempty" type:"Repeated"`
 	// The IP address of the origin server or the domain name used for back-to-origin.
 	Backends []*string `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
@@ -460,7 +464,7 @@ type DescribeHybridCloudResourceDetailResponseBodyDomainRedirect struct {
 	//
 	// - **true**: Public cloud disaster recovery is enabled.
 	//
-	// - **false**: Public cloud disaster recovery is disabled.
+	// - **false**: Public cloud disaster recovery is not enabled.
 	//
 	// example:
 	//
@@ -476,31 +480,31 @@ type DescribeHybridCloudResourceDetailResponseBodyDomainRedirect struct {
 	//
 	// - **true**: Forced HTTP back-to-origin is enabled.
 	//
-	// - **false**: Forced HTTP back-to-origin is disabled.
+	// - **false**: Forced HTTP back-to-origin is not enabled.
 	//
 	// example:
 	//
 	// true
 	FocusHttpBackend *bool `json:"FocusHttpBackend,omitempty" xml:"FocusHttpBackend,omitempty"`
-	// Indicates whether persistent connections are enabled. Valid values:
+	// Indicates whether keep-alive connections are enabled. Valid values:
 	//
-	// - **true*	- (default): Persistent connections are enabled.
+	// - **true*	- (default): Keep-alive connections are enabled.
 	//
-	// - **false**: Persistent connections are disabled.
+	// - **false**: Keep-alive connections are not enabled.
 	//
 	// example:
 	//
 	// true
 	Keepalive *bool `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
-	// The number of requests that reuse persistent connections. Valid values: 60 to 1000.
+	// The number of requests that reuse keep-alive connections. Valid values: 60 to 1000.
 	//
-	// > This specifies how many persistent connections are reused after persistent connections are enabled.
+	// > After keep-alive connections are enabled, this parameter specifies how many keep-alive connections are reused.
 	//
 	// example:
 	//
 	// 1000
 	KeepaliveRequests *int64 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
-	// The idle timeout period of persistent connections.
+	// The idle timeout period of keep-alive connections.
 	//
 	// example:
 	//
@@ -508,11 +512,11 @@ type DescribeHybridCloudResourceDetailResponseBodyDomainRedirect struct {
 	KeepaliveTimeout *int64 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
 	// The load balancing algorithm used for back-to-origin. Valid values:
 	//
-	// - **iphash**: IP hash algorithm.
+	// - **iphash**: IP Hash algorithm.
 	//
 	// - **roundRobin**: round-robin algorithm.
 	//
-	// - **leastTime**: least-time back-to-origin algorithm.
+	// - **leastTime**: Least Time algorithm.
 	//
 	// example:
 	//
@@ -522,7 +526,7 @@ type DescribeHybridCloudResourceDetailResponseBodyDomainRedirect struct {
 	//
 	// - true: The client source IP preservation feature is enabled. After this feature is enabled, the backend service can view the originating IP address of the client.
 	//
-	// - false: The client source IP preservation feature is disabled.
+	// - false: The client source IP preservation feature is not enabled.
 	//
 	// example:
 	//
@@ -546,7 +550,7 @@ type DescribeHybridCloudResourceDetailResponseBodyDomainRedirect struct {
 	//
 	// true
 	Retry *bool `json:"Retry,omitempty" xml:"Retry,omitempty"`
-	// The hybrid cloud forwarding rules, expressed as a string converted from a JSON array. Each element in the JSON array is a structure that contains the following field:
+	// The hybrid cloud forwarding rules, expressed as a string converted from a JSON array. Each element in the JSON array is a structure that contains the following fields:
 	//
 	// - **rs**: Array type.
 	//
@@ -558,13 +562,13 @@ type DescribeHybridCloudResourceDetailResponseBodyDomainRedirect struct {
 	//
 	// - **true**: Back-to-origin SNI is enabled.
 	//
-	// - **false**: Back-to-origin SNI is disabled.
+	// - **false**: Back-to-origin SNI is not enabled.
 	//
 	// example:
 	//
 	// true
 	SniEnabled *bool `json:"SniEnabled,omitempty" xml:"SniEnabled,omitempty"`
-	// The custom value of the SNI extension field. If the value is empty, the SNI value is not customized, and the value of the **Host*	- field in the request header is used as the value of the SNI extension field by default.
+	// The custom value of the SNI extension field. If the value is empty, the SNI value is not customized, and the value of the **Host*	- field in the request header is used as the SNI extension field value by default.
 	//
 	// > This parameter is returned only when **SniStatus*	- is set to **1**, which indicates that back-to-origin SNI is enabled.
 	//

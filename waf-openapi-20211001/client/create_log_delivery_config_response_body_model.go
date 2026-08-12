@@ -16,7 +16,7 @@ type iCreateLogDeliveryConfigResponseBody interface {
 }
 
 type CreateLogDeliveryConfigResponseBody struct {
-	// The name of the forwarding delivery configuration.
+	// The name of the log delivery configuration.
 	//
 	// example:
 	//

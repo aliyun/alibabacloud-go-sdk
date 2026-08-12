@@ -26,7 +26,7 @@ type iModifyUserLogFieldConfigRequest interface {
 }
 
 type ModifyUserLogFieldConfigRequest struct {
-	// The delivery type. Valid value:
+	// The delivery type. Valid values:
 	//
 	// - **sls**: Simple Log Service.
 	//
@@ -34,21 +34,19 @@ type ModifyUserLogFieldConfigRequest struct {
 	//
 	// sls
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	// The extended configuration for log delivery, in JSON format.
+	// The extended configuration for log delivery. The value is a JSON string constructed from a set of parameters.
 	//
-	// > For more information, see the description of the **ExtendConfig*	- parameter.
+	// > For more information, see the **Log delivery extended configuration*	- parameter description.
 	//
 	// example:
 	//
 	// {\\"request_header\\":\\"App-Id,channelCode\\"}
 	ExtendConfig *string `json:"ExtendConfig,omitempty" xml:"ExtendConfig,omitempty"`
-	// The list of log fields to deliver. Use the \\`a,b,c,...\\` format.
+	// The list of log fields to deliver. Specify the fields in the "a,b,c,..." format.
 	//
-	// > - You must include all required log fields. Call the [DescribeCommonLogFields](~~DescribeCommonLogFields~~) operation to view the log fields that WAF supports.
+	// >   - All required log fields must be included. You can invoke the [DescribeCommonLogFields](~~DescribeCommonLogFields~~) operation to query the log fields supported by Simple Log Service for WAF.
 	//
-	// >
-	//
-	// > - If the log fields include **request_header**, use the **ExtendConfig*	- parameter to specify the request headers to deliver.
+	// > - If the log fields include **request_header**, use the **delivery extension configuration*	- (**ExtendConfig**) parameter to specify the request headers to deliver.
 	//
 	// This parameter is required.
 	//
@@ -56,9 +54,9 @@ type ModifyUserLogFieldConfigRequest struct {
 	//
 	// account,acl_action,acl_rule_id,acl_rule_type,acl_test,antiscan_action,antiscan_rule_id,antiscan_rule_type,antiscan_test,body_bytes_sent,bypass_matched_ids
 	FieldList *string `json:"FieldList,omitempty" xml:"FieldList,omitempty"`
-	// The ID of the WAF instance.
+	// Instance ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to view the ID of your WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -66,15 +64,15 @@ type ModifyUserLogFieldConfigRequest struct {
 	//
 	// waf_v2_public_cn-fou****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The log delivery strategy, in JSON array format. You can specify multiple strategies.
+	// The log delivery strategy. Multiple strategies are supported. The value is a JSON array string constructed from a set of parameters.
 	//
-	// > For more information, see the description of the **LogDeliveryStrategy*	- parameter.
+	// > For more information, see the **Log delivery strategy*	- parameter description.
 	//
 	// example:
 	//
 	// [{\\"logType\\":\\"blockLog\\",\\"rate\\":100},{\\"logType\\":\\"normalRequestLog\\",\\"rate\\":100},{\\"logType\\":\\"checkLog\\",\\"rate\\":100}]
 	LogDeliveryStrategy *string `json:"LogDeliveryStrategy,omitempty" xml:"LogDeliveryStrategy,omitempty"`
-	// The region in which the WAF instance resides. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//

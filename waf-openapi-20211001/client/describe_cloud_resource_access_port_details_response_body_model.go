@@ -83,7 +83,7 @@ func (s *DescribeCloudResourceAccessPortDetailsResponseBody) Validate() error {
 }
 
 type DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails struct {
-	// The list of certificates for the cloud service ports connected to WAF.
+	// The list of certificates for the cloud service port connected to WAF.
 	Certificates []*DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
 	// The cipher suite type. Valid values:
 	//
@@ -147,7 +147,7 @@ type DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails struct 
 	KeepaliveRequests *int32 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
 	// The idle timeout period for keep-alive connections. Valid values: 10 to 3600. Default value: 15. Unit: seconds.
 	//
-	// > Specifies how long an idle keep-alive connection is retained before it is released.
+	// > Specifies how long an idle keep-alive connection remains open before it is released.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails struct 
 	//
 	// 2
 	MaxBodySize *int32 `json:"MaxBodySize,omitempty" xml:"MaxBodySize,omitempty"`
-	// The UID that indicates the resource ownership of the cloud service.
+	// The UID of the cloud service resource ownership.
 	//
 	// example:
 	//
@@ -185,7 +185,7 @@ type DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails struct 
 	//
 	// https
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The read timeout period. Unit: seconds.
+	// The read timeout period, in seconds.
 	//
 	// Valid values: 1 to 3600.
 	//
@@ -213,7 +213,7 @@ type DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails struct 
 	//
 	// - **ClientCertOpend**: mutual authentication is enabled.
 	//
-	// - **NetworkConfigLost**: the cloud service network configuration is abnormal.
+	// - **NetworkConfigLost**: cloud service network configuration exception.
 	//
 	// example:
 	//
@@ -235,7 +235,7 @@ type DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails struct 
 	//
 	// tlsv1
 	TLSVersion *string `json:"TLSVersion,omitempty" xml:"TLSVersion,omitempty"`
-	// The write timeout period. Unit: seconds.
+	// The write timeout period, in seconds.
 	//
 	// Valid values: 1 to 3600.
 	//
@@ -251,15 +251,17 @@ type DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails struct 
 	//
 	// - **2**: WAF reads the value of a custom header field that you specify as the client IP address.
 	//
+	// - **3**: WAF reads the Client IP from the Proxy Protocol header as the client IP address.
+	//
 	// example:
 	//
 	// 0
 	XffHeaderMode *int32 `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
-	// The list of custom header fields used to obtain the client IP address, in the format **["header1","header2",...]**.
+	// The list of custom header fields used to obtain the client IP address, in the format **["header1","header2",……]**.
 	//
 	// > This parameter is required only when **XffHeaderMode*	- is set to 2 (WAF reads the value of a custom header field that you specify as the client IP address).
 	XffHeaders []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
-	// Specifies whether the X-Forward-For-Proto header is used to pass the WAF protocol. Valid values:
+	// Specifies whether the X-Forward-For-Proto header passes the WAF protocol. Valid values:
 	//
 	// - **true*	- (default): The WAF protocol is passed.
 	//
@@ -588,7 +590,7 @@ type DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsLogHeade
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the specified custom request header field.
+	// The value set for the specified custom request header field.
 	//
 	// example:
 	//
@@ -681,7 +683,7 @@ type DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatu
 	ProductCertName *string `json:"ProductCertName,omitempty" xml:"ProductCertName,omitempty"`
 	// The specific reason for the protection exception status. Valid values:
 	//
-	// - **UserUploadCert**: The certificate is manually uploaded.
+	// - **UserUploadCert**: The certificate was manually uploaded.
 	//
 	// - **CertNotExistInCertCenter**: The certificate does not exist in SSL Certificates Service.
 	//

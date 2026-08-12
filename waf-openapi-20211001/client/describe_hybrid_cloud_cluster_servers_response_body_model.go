@@ -18,7 +18,7 @@ type iDescribeHybridCloudClusterServersResponseBody interface {
 }
 
 type DescribeHybridCloudClusterServersResponseBody struct {
-	// The servers in the hybrid cloud cluster.
+	// The result list.
 	ClusterServers []*DescribeHybridCloudClusterServersResponseBodyClusterServers `json:"ClusterServers,omitempty" xml:"ClusterServers,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,7 +83,7 @@ func (s *DescribeHybridCloudClusterServersResponseBody) Validate() error {
 }
 
 type DescribeHybridCloudClusterServersResponseBodyClusterServers struct {
-	// The continent identifier of the server, such as `asiapacific`.
+	// The continent.
 	//
 	// example:
 	//
@@ -91,31 +91,31 @@ type DescribeHybridCloudClusterServersResponseBodyClusterServers struct {
 	Continents *string `json:"Continents,omitempty" xml:"Continents,omitempty"`
 	// The continent code of the protection cluster.
 	//
-	// > For a list of valid codes, see the supplementary description of response parameters.
+	// > For the list of code values, see the supplementary description of response parameters.
 	//
 	// example:
 	//
 	// 410
 	ContinentsValue *int32 `json:"ContinentsValue,omitempty" xml:"ContinentsValue,omitempty"`
-	// The number of CPU cores of the server.
+	// The number of CPU cores.
 	//
 	// example:
 	//
 	// 4
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The time when the server was created. This value is a UNIX timestamp. Unit: milliseconds.
+	// The creation timestamp, in milliseconds.
 	//
 	// example:
 	//
 	// 1665987186000
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The custom name of the server.
+	// The node name.
 	//
 	// example:
 	//
-	// 测试组
+	// customTest
 	CustomName *string `json:"CustomName,omitempty" xml:"CustomName,omitempty"`
-	// The ID of the node group.
+	// The node group ID.
 	//
 	// example:
 	//
@@ -125,89 +125,89 @@ type DescribeHybridCloudClusterServersResponseBodyClusterServers struct {
 	//
 	// example:
 	//
-	// 测试组。
+	// groupTest
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The type of the hybrid cloud node group. Valid values:
 	//
 	// - **protect**: protection.
 	//
-	// - **control**: control.
+	// - **control**: management.
 	//
 	// - **storage**: storage.
 	//
-	// - **controlStorage**: control and storage.
+	// - **controlStorage**: management and storage.
 	//
 	// example:
 	//
 	// protect
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// The hostname of the server.
+	// The hostname.
 	//
 	// example:
 	//
 	// qsh5-sec-waf-*****-6
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The IP address of the server.
+	// The IP address.
 	//
 	// example:
 	//
-	// 1.*.*1。
+	// 1.*.*1
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The running status of the server.
+	// The running status of the machine.
 	//
 	// example:
 	//
 	// running
 	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
-	// The MAC address of the server.
+	// The MAC address.
 	//
 	// example:
 	//
 	// **:**:00:02:eb:c7
 	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	// The memory size of the server. Unit: bytes.
+	// The memory data.
 	//
 	// example:
 	//
 	// 33547386880
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The machine ID (MID) of the server.
+	// The machine identifier (MID).
 	//
 	// example:
 	//
 	// 28ab688cd403563e8e173*****79600
 	Mid *string `json:"Mid,omitempty" xml:"Mid,omitempty"`
-	// The cloud service provider where the server resides.
+	// The cloud service provider.
 	//
 	// example:
 	//
-	// aliyun。
+	// aliyun
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The carrier code of the server.
+	// The operator value.
 	//
 	// example:
 	//
 	// 0
 	OperatorValue *int32 `json:"OperatorValue,omitempty" xml:"OperatorValue,omitempty"`
-	// The region identifier of the server, such as `beijing`.
+	// The region name.
 	//
 	// example:
 	//
 	// beijing
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-	// The numeric code of the region where the server resides.
+	// The region code.
 	//
 	// example:
 	//
 	// 0
 	RegionCodeValue *int32 `json:"RegionCodeValue,omitempty" xml:"RegionCodeValue,omitempty"`
-	// The health status of the server in the hybrid cloud cluster.
+	// The machine status.
 	//
 	// example:
 	//
 	// ok
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the server was last updated. This value is a UNIX timestamp. Unit: milliseconds.
+	// The last update timestamp.
 	//
 	// example:
 	//
