@@ -1,3 +1,6 @@
+2026-08-12 Version: v3.0.9
+- Generated golang 2022-12-15 for eflo-controller.
+
 2026-07-10 Version: v3.0.8
 - Update API UpdateNodeGroup: add request parameters SystemDisk.
 
