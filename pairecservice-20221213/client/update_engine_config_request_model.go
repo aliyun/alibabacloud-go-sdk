@@ -19,6 +19,8 @@ type iUpdateEngineConfigRequest interface {
 	GetInstanceId() *string
 	SetName(v string) *UpdateEngineConfigRequest
 	GetName() *string
+	SetType(v string) *UpdateEngineConfigRequest
+	GetType() *string
 }
 
 type UpdateEngineConfigRequest struct {
@@ -38,31 +40,44 @@ type UpdateEngineConfigRequest struct {
 	//
 	// }
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// update config
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The environment.
+	// The runtime environment.
 	//
-	// - Daily: Daily environment.
+	// Valid values:
 	//
-	// - Pre: Pre-production environment.
+	// - Daily: daily environment.
 	//
-	// - Prod: Production environment.
+	// - Pre: staging environment.
+	//
+	// - Prod: production environment.
 	//
 	// example:
 	//
 	// Pre
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	// The instance ID. To get the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+	// The instance ID. For information about how to obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
 	//
 	// example:
 	//
 	// pairec-cn-***test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the engine configuration.
+	// The engine configuration name.
 	//
 	// example:
 	//
 	// engine_config_v1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The engine configuration type.
+	//
+	// example:
+	//
+	// Normal
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateEngineConfigRequest) String() string {
@@ -93,6 +108,10 @@ func (s *UpdateEngineConfigRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *UpdateEngineConfigRequest) GetType() *string {
+	return s.Type
+}
+
 func (s *UpdateEngineConfigRequest) SetConfigValue(v string) *UpdateEngineConfigRequest {
 	s.ConfigValue = &v
 	return s
@@ -115,6 +134,11 @@ func (s *UpdateEngineConfigRequest) SetInstanceId(v string) *UpdateEngineConfigR
 
 func (s *UpdateEngineConfigRequest) SetName(v string) *UpdateEngineConfigRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateEngineConfigRequest) SetType(v string) *UpdateEngineConfigRequest {
+	s.Type = &v
 	return s
 }
 

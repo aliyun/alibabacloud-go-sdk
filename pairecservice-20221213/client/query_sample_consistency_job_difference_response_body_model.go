@@ -137,12 +137,20 @@ func (s *QuerySampleConsistencyJobDifferenceResponseBodyDifferenceHistogram) Val
 }
 
 type QuerySampleConsistencyJobDifferenceResponseBodyNumberFeatureDifferences struct {
-	DiffValue               *float64 `json:"DiffValue,omitempty" xml:"DiffValue,omitempty"`
-	ItemId                  *string  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	ReplyTableFeatureValue  *float64 `json:"ReplyTableFeatureValue,omitempty" xml:"ReplyTableFeatureValue,omitempty"`
-	RequestId               *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SampleTableFeatureValue *float64 `json:"SampleTableFeatureValue,omitempty" xml:"SampleTableFeatureValue,omitempty"`
-	UserId                  *string  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	DiffValue *float64 `json:"DiffValue,omitempty" xml:"DiffValue,omitempty"`
+	ItemId    *string  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	// example:
+	//
+	// 19
+	ReplyTableFeatureRawValue *string  `json:"ReplyTableFeatureRawValue,omitempty" xml:"ReplyTableFeatureRawValue,omitempty"`
+	ReplyTableFeatureValue    *float64 `json:"ReplyTableFeatureValue,omitempty" xml:"ReplyTableFeatureValue,omitempty"`
+	RequestId                 *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 18
+	SampleTableFeatureRawValue *string  `json:"SampleTableFeatureRawValue,omitempty" xml:"SampleTableFeatureRawValue,omitempty"`
+	SampleTableFeatureValue    *float64 `json:"SampleTableFeatureValue,omitempty" xml:"SampleTableFeatureValue,omitempty"`
+	UserId                     *string  `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s QuerySampleConsistencyJobDifferenceResponseBodyNumberFeatureDifferences) String() string {
@@ -161,12 +169,20 @@ func (s *QuerySampleConsistencyJobDifferenceResponseBodyNumberFeatureDifferences
 	return s.ItemId
 }
 
+func (s *QuerySampleConsistencyJobDifferenceResponseBodyNumberFeatureDifferences) GetReplyTableFeatureRawValue() *string {
+	return s.ReplyTableFeatureRawValue
+}
+
 func (s *QuerySampleConsistencyJobDifferenceResponseBodyNumberFeatureDifferences) GetReplyTableFeatureValue() *float64 {
 	return s.ReplyTableFeatureValue
 }
 
 func (s *QuerySampleConsistencyJobDifferenceResponseBodyNumberFeatureDifferences) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *QuerySampleConsistencyJobDifferenceResponseBodyNumberFeatureDifferences) GetSampleTableFeatureRawValue() *string {
+	return s.SampleTableFeatureRawValue
 }
 
 func (s *QuerySampleConsistencyJobDifferenceResponseBodyNumberFeatureDifferences) GetSampleTableFeatureValue() *float64 {
@@ -187,6 +203,11 @@ func (s *QuerySampleConsistencyJobDifferenceResponseBodyNumberFeatureDifferences
 	return s
 }
 
+func (s *QuerySampleConsistencyJobDifferenceResponseBodyNumberFeatureDifferences) SetReplyTableFeatureRawValue(v string) *QuerySampleConsistencyJobDifferenceResponseBodyNumberFeatureDifferences {
+	s.ReplyTableFeatureRawValue = &v
+	return s
+}
+
 func (s *QuerySampleConsistencyJobDifferenceResponseBodyNumberFeatureDifferences) SetReplyTableFeatureValue(v float64) *QuerySampleConsistencyJobDifferenceResponseBodyNumberFeatureDifferences {
 	s.ReplyTableFeatureValue = &v
 	return s
@@ -194,6 +215,11 @@ func (s *QuerySampleConsistencyJobDifferenceResponseBodyNumberFeatureDifferences
 
 func (s *QuerySampleConsistencyJobDifferenceResponseBodyNumberFeatureDifferences) SetRequestId(v string) *QuerySampleConsistencyJobDifferenceResponseBodyNumberFeatureDifferences {
 	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySampleConsistencyJobDifferenceResponseBodyNumberFeatureDifferences) SetSampleTableFeatureRawValue(v string) *QuerySampleConsistencyJobDifferenceResponseBodyNumberFeatureDifferences {
+	s.SampleTableFeatureRawValue = &v
 	return s
 }
 

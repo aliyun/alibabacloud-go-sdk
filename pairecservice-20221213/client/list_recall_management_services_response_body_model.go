@@ -22,13 +22,13 @@ type iListRecallManagementServicesResponseBody interface {
 }
 
 type ListRecallManagementServicesResponseBody struct {
-	// This parameter is not yet available.
+	// This parameter is not currently in effect.
 	//
 	// example:
 	//
 	// 0
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// This parameter is not yet available.
+	// This parameter is not currently in effect.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListRecallManagementServicesResponseBody struct {
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total count.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,19 +117,19 @@ func (s *ListRecallManagementServicesResponseBody) Validate() error {
 }
 
 type ListRecallManagementServicesResponseBodyRecallManagementServices struct {
-	// The ID of the current recall management service version.
+	// The ID of the currently active recall management service version.
 	//
 	// example:
 	//
 	// 1
 	CurrentRecallManagementServiceVersionId *string `json:"CurrentRecallManagementServiceVersionId,omitempty" xml:"CurrentRecallManagementServiceVersionId,omitempty"`
-	// The name of the current recall management service version.
+	// The name of the currently active recall management service version.
 	//
 	// example:
 	//
 	// version-1
 	CurrentRecallManagementServiceVersionName *string `json:"CurrentRecallManagementServiceVersionName,omitempty" xml:"CurrentRecallManagementServiceVersionName,omitempty"`
-	// The recall management service description.
+	// The description of the recall management service.
 	//
 	// example:
 	//
@@ -141,19 +141,19 @@ type ListRecallManagementServicesResponseBodyRecallManagementServices struct {
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The recall management service name.
+	// The service name of the recall management service.
 	//
 	// example:
 	//
 	// hot_group_recall
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The recall management service ID.
+	// The ID of the recall management service.
 	//
 	// example:
 	//

@@ -19,40 +19,53 @@ type iCreateEngineConfigRequest interface {
 	GetInstanceId() *string
 	SetName(v string) *CreateEngineConfigRequest
 	GetName() *string
+	SetType(v string) *CreateEngineConfigRequest
+	GetType() *string
 }
 
 type CreateEngineConfigRequest struct {
-	// The content of the engine config.
+	// The content of the engine configuration.
 	//
 	// example:
 	//
 	// {}
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// this is a test config
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The environment. Valid values:
+	// The runtime environment. Valid values:
 	//
-	// - `Daily`: The daily environment.
+	// - Daily: daily environment.
 	//
-	// - `Pre`: The pre-production environment.
+	// - Pre: staging environment.
 	//
-	// - `Prod`: The production environment.
+	// - Prod: production environment.
 	//
 	// example:
 	//
 	// Pre
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	// The ID of the instance. You can obtain this ID by calling the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+	// The instance ID. You can obtain the ID from the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
 	//
 	// example:
 	//
 	// pairec-cn-***test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the engine config.
+	// The name of the engine configuration.
 	//
 	// example:
 	//
 	// engine_config_v1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the engine configuration.
+	//
+	// example:
+	//
+	// Normal
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateEngineConfigRequest) String() string {
@@ -83,6 +96,10 @@ func (s *CreateEngineConfigRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateEngineConfigRequest) GetType() *string {
+	return s.Type
+}
+
 func (s *CreateEngineConfigRequest) SetConfigValue(v string) *CreateEngineConfigRequest {
 	s.ConfigValue = &v
 	return s
@@ -105,6 +122,11 @@ func (s *CreateEngineConfigRequest) SetInstanceId(v string) *CreateEngineConfigR
 
 func (s *CreateEngineConfigRequest) SetName(v string) *CreateEngineConfigRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateEngineConfigRequest) SetType(v string) *CreateEngineConfigRequest {
+	s.Type = &v
 	return s
 }
 

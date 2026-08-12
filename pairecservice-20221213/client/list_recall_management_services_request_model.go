@@ -13,6 +13,8 @@ type iListRecallManagementServicesRequest interface {
 	GetInstanceId() *string
 	SetMaxResults(v int32) *ListRecallManagementServicesRequest
 	GetMaxResults() *int32
+	SetName(v string) *ListRecallManagementServicesRequest
+	GetName() *string
 	SetNextToken(v string) *ListRecallManagementServicesRequest
 	GetNextToken() *string
 	SetOrder(v string) *ListRecallManagementServicesRequest
@@ -26,25 +28,31 @@ type iListRecallManagementServicesRequest interface {
 }
 
 type ListRecallManagementServicesRequest struct {
-	// **The ID of the instance.**
+	// The instance ID.
 	//
 	// example:
 	//
 	// pairec-cn-test123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// This parameter is not yet available.
+	// This parameter is not currently in effect.
 	//
 	// example:
 	//
 	// ""
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// This parameter is not yet available.
+	// Filters results by name.
+	//
+	// example:
+	//
+	// service-1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is not currently in effect.
 	//
 	// example:
 	//
 	// 0
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// **The sort order.*	- Valid values:
+	// The sort order. Valid values:
 	//
 	// - ASC: ascending order.
 	//
@@ -54,23 +62,23 @@ type ListRecallManagementServicesRequest struct {
 	//
 	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// **The number of the page to return.**
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// **The number of entries to return on each page.**
+	// The page size.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// **The field to sort by.*	- Valid values:
+	// The sorting field. Valid values:
 	//
-	// - GmtCreateTime: Sort by creation time.
+	// - GmtCreateTime: creation time.
 	//
-	// - GmtModifiedTime: Sort by modification time.
+	// - GmtModifiedTime: update time.
 	//
 	// example:
 	//
@@ -92,6 +100,10 @@ func (s *ListRecallManagementServicesRequest) GetInstanceId() *string {
 
 func (s *ListRecallManagementServicesRequest) GetMaxResults() *int32 {
 	return s.MaxResults
+}
+
+func (s *ListRecallManagementServicesRequest) GetName() *string {
+	return s.Name
 }
 
 func (s *ListRecallManagementServicesRequest) GetNextToken() *string {
@@ -121,6 +133,11 @@ func (s *ListRecallManagementServicesRequest) SetInstanceId(v string) *ListRecal
 
 func (s *ListRecallManagementServicesRequest) SetMaxResults(v int32) *ListRecallManagementServicesRequest {
 	s.MaxResults = &v
+	return s
+}
+
+func (s *ListRecallManagementServicesRequest) SetName(v string) *ListRecallManagementServicesRequest {
+	s.Name = &v
 	return s
 }
 

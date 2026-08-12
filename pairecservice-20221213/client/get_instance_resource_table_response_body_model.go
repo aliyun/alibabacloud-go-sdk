@@ -18,7 +18,7 @@ type iGetInstanceResourceTableResponseBody interface {
 }
 
 type GetInstanceResourceTableResponseBody struct {
-	// The list of fields in the data table.
+	// The list of fields in the table.
 	Fields []*GetInstanceResourceTableResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -95,7 +95,7 @@ type GetInstanceResourceTableResponseBodyFields struct {
 	//
 	// true
 	IsPartitionField *bool `json:"IsPartitionField,omitempty" xml:"IsPartitionField,omitempty"`
-	// The meaning of the field.
+	// The field meaning.
 	//
 	// example:
 	//

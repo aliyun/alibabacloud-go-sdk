@@ -18,7 +18,7 @@ type iListEngineConfigsResponseBody interface {
 }
 
 type ListEngineConfigsResponseBody struct {
-	// A list of engine configurations.
+	// The list of engine configurations.
 	EngineConfigs []*ListEngineConfigsResponseBodyEngineConfigs `json:"EngineConfigs,omitempty" xml:"EngineConfigs,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListEngineConfigsResponseBody struct {
 	//
 	// 74D958EF-3598-56FA-8296-FF1575CE43DF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of elements in the list.
 	//
 	// example:
 	//
@@ -89,21 +89,25 @@ type ListEngineConfigsResponseBodyEngineConfigs struct {
 	//
 	// {}
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	// The description of the engine configuration.
+	// The description.
+	//
+	// example:
+	//
+	// what
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the engine configuration.
+	// The engine configuration ID.
 	//
 	// example:
 	//
 	// 2
 	EngineConfigId *string `json:"EngineConfigId,omitempty" xml:"EngineConfigId,omitempty"`
-	// The environment. Valid values:
+	// The runtime environment.
 	//
-	// - **Daily**: the development and test environment.
+	// - Daily: daily environment.
 	//
-	// - **Pre**: the pre-production environment.
+	// - Pre: staging environment.
 	//
-	// - **Prod**: the production environment.
+	// - Prod: production environment.
 	//
 	// example:
 	//
@@ -115,7 +119,7 @@ type ListEngineConfigsResponseBodyEngineConfigs struct {
 	//
 	// 2023-08-07T01:43:42Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//
@@ -127,23 +131,29 @@ type ListEngineConfigsResponseBodyEngineConfigs struct {
 	//
 	// 2023-08-29 12:00:00
 	GmtReleasedTime *string `json:"GmtReleasedTime,omitempty" xml:"GmtReleasedTime,omitempty"`
-	// The name of the engine configuration.
+	// The engine configuration name.
 	//
 	// example:
 	//
 	// engine_config_v1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The status of the engine configuration. Valid values:
+	// The status.
 	//
-	// - **Released**: The configuration has been released.
+	// - Released: released.
 	//
-	// - **Unreleased**: The configuration has not been released.
+	// - UnReleased: not released.
 	//
 	// example:
 	//
 	// Released
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The version of the currently released or most recently updated engine configuration.
+	// The engine configuration type.
+	//
+	// example:
+	//
+	// Normal
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The version number of the currently released or most recently updated version.
 	//
 	// example:
 	//
@@ -195,6 +205,10 @@ func (s *ListEngineConfigsResponseBodyEngineConfigs) GetStatus() *string {
 	return s.Status
 }
 
+func (s *ListEngineConfigsResponseBodyEngineConfigs) GetType() *string {
+	return s.Type
+}
+
 func (s *ListEngineConfigsResponseBodyEngineConfigs) GetVersion() *string {
 	return s.Version
 }
@@ -241,6 +255,11 @@ func (s *ListEngineConfigsResponseBodyEngineConfigs) SetName(v string) *ListEngi
 
 func (s *ListEngineConfigsResponseBodyEngineConfigs) SetStatus(v string) *ListEngineConfigsResponseBodyEngineConfigs {
 	s.Status = &v
+	return s
+}
+
+func (s *ListEngineConfigsResponseBodyEngineConfigs) SetType(v string) *ListEngineConfigsResponseBodyEngineConfigs {
+	s.Type = &v
 	return s
 }
 

@@ -26,9 +26,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"us-west-1":      dara.String("pairecservice.us-west-1.aliyuncs.com"),
-		"us-east-1":      dara.String("pairecservice.us-east-1.aliyuncs.com"),
-		"eu-central-1":   dara.String("pairecservice.eu-central-1.aliyuncs.com"),
 		"cn-shenzhen":    dara.String("pairecservice.cn-shenzhen.aliyuncs.com"),
 		"cn-shanghai":    dara.String("pairecservice.cn-shanghai.aliyuncs.com"),
 		"cn-hongkong":    dara.String("pairecservice.cn-hongkong.aliyuncs.com"),
@@ -36,6 +33,9 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-beijing":     dara.String("pairecservice.cn-beijing.aliyuncs.com"),
 		"ap-southeast-5": dara.String("pairecservice.ap-southeast-5.aliyuncs.com"),
 		"ap-southeast-1": dara.String("pairecservice.ap-southeast-1.aliyuncs.com"),
+		"eu-central-1":   dara.String("pairecservice.eu-central-1.aliyuncs.com"),
+		"us-east-1":      dara.String("pairecservice.us-east-1.aliyuncs.com"),
+		"us-west-1":      dara.String("pairecservice.us-west-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -1745,7 +1745,7 @@ func (client *Client) CreateDataDiagnosisJobs(request *CreateDataDiagnosisJobsRe
 
 // Summary:
 //
-// Creates an engine config.
+// Creates an engine configuration.
 //
 // @param request - CreateEngineConfigRequest
 //
@@ -1782,6 +1782,10 @@ func (client *Client) CreateEngineConfigWithOptions(request *CreateEngineConfigR
 		body["Name"] = request.Name
 	}
 
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -1808,7 +1812,7 @@ func (client *Client) CreateEngineConfigWithOptions(request *CreateEngineConfigR
 
 // Summary:
 //
-// Creates an engine config.
+// Creates an engine configuration.
 //
 // @param request - CreateEngineConfigRequest
 //
@@ -6627,7 +6631,7 @@ func (client *Client) GetDataDiagnosis(DataDiagnosisId *string, request *GetData
 
 // Summary:
 //
-// Gets the details of an engine configuration.
+// Retrieves the details of an engine configuration.
 //
 // @param request - GetEngineConfigRequest
 //
@@ -6674,7 +6678,7 @@ func (client *Client) GetEngineConfigWithOptions(EngineConfigId *string, request
 
 // Summary:
 //
-// Gets the details of an engine configuration.
+// Retrieves the details of an engine configuration.
 //
 // @param request - GetEngineConfigRequest
 //
@@ -7077,7 +7081,7 @@ func (client *Client) GetInstanceResource(InstanceId *string, ResourceId *string
 
 // Summary:
 //
-// Retrieves the schema of a specified data table within a resource.
+// Retrieves the list of data tables under a data source.
 //
 // @param request - GetInstanceResourceTableRequest
 //
@@ -7118,7 +7122,7 @@ func (client *Client) GetInstanceResourceTableWithOptions(InstanceId *string, Re
 
 // Summary:
 //
-// Retrieves the schema of a specified data table within a resource.
+// Retrieves the list of data tables under a data source.
 //
 // @param request - GetInstanceResourceTableRequest
 //
@@ -9135,7 +9139,7 @@ func (client *Client) ListDataDiagnosisReports(DataDiagnosisId *string, request 
 
 // Summary:
 //
-// Retrieves a list of engine configurations.
+// Retrieves the list of engine configurations.
 //
 // @param request - ListEngineConfigsRequest
 //
@@ -9206,7 +9210,7 @@ func (client *Client) ListEngineConfigsWithOptions(request *ListEngineConfigsReq
 
 // Summary:
 //
-// Retrieves a list of engine configurations.
+// Retrieves the list of engine configurations.
 //
 // @param request - ListEngineConfigsRequest
 //
@@ -10497,19 +10501,19 @@ func (client *Client) ListRecallManagementServiceVersions(RecallManagementServic
 
 // Summary:
 //
-// This API returns a list of recall management services for a specified instance.
+// Queries the list of recall management services under a specified instance.
 //
 // Description:
 //
-// ## Description
+// ## Operation description
 //
-// Call `ListRecallManagementServices` to retrieve a list of recall management services for a specified instance based on parameters such as `InstanceId`, `PageNumber`, and `PageSize`. You can sort the results by creation time or modification time in ascending or descending order.
+// By calling the `ListRecallManagementServices` operation, you can retrieve the list of recall management services under a specific instance based on given parameters such as InstanceId, PageNumber, and PageSize. You can sort results by creation time or update time in ascending or descending order.
 //
-// - **InstanceId*	- is required. It specifies the target instance.
+// - **InstanceId*	- is required and specifies the instance to which the services belong.
 //
-// - The pagination parameters **PageNumber*	- and **PageSize*	- control the number of returned items and the page from which to start. This operation returns the first page of results by default.
+// - The pagination parameters **PageNumber*	- and **PageSize*	- allow you to control the amount of returned data and the page from which to start displaying results. By default, data from the first page is returned.
 //
-// - Use the **SortBy*	- and **Order*	- parameters to customize the sort order of the list.
+// - Use the **SortBy*	- and **Order*	- parameters to customize the sorting of the list.
 //
 // @param request - ListRecallManagementServicesRequest
 //
@@ -10532,6 +10536,10 @@ func (client *Client) ListRecallManagementServicesWithOptions(request *ListRecal
 
 	if !dara.IsNil(request.MaxResults) {
 		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
 	}
 
 	if !dara.IsNil(request.NextToken) {
@@ -10580,19 +10588,19 @@ func (client *Client) ListRecallManagementServicesWithOptions(request *ListRecal
 
 // Summary:
 //
-// This API returns a list of recall management services for a specified instance.
+// Queries the list of recall management services under a specified instance.
 //
 // Description:
 //
-// ## Description
+// ## Operation description
 //
-// Call `ListRecallManagementServices` to retrieve a list of recall management services for a specified instance based on parameters such as `InstanceId`, `PageNumber`, and `PageSize`. You can sort the results by creation time or modification time in ascending or descending order.
+// By calling the `ListRecallManagementServices` operation, you can retrieve the list of recall management services under a specific instance based on given parameters such as InstanceId, PageNumber, and PageSize. You can sort results by creation time or update time in ascending or descending order.
 //
-// - **InstanceId*	- is required. It specifies the target instance.
+// - **InstanceId*	- is required and specifies the instance to which the services belong.
 //
-// - The pagination parameters **PageNumber*	- and **PageSize*	- control the number of returned items and the page from which to start. This operation returns the first page of results by default.
+// - The pagination parameters **PageNumber*	- and **PageSize*	- allow you to control the amount of returned data and the page from which to start displaying results. By default, data from the first page is returned.
 //
-// - Use the **SortBy*	- and **Order*	- parameters to customize the sort order of the list.
+// - Use the **SortBy*	- and **Order*	- parameters to customize the sorting of the list.
 //
 // @param request - ListRecallManagementServicesRequest
 //
@@ -14496,7 +14504,7 @@ func (client *Client) UpdateDataDiagnosis(DataDiagnosisId *string, request *Upda
 
 // Summary:
 //
-// Updates an engine configuration.
+// Updates a specific engine configuration.
 //
 // @param request - UpdateEngineConfigRequest
 //
@@ -14533,6 +14541,10 @@ func (client *Client) UpdateEngineConfigWithOptions(EngineConfigId *string, requ
 		body["Name"] = request.Name
 	}
 
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -14559,7 +14571,7 @@ func (client *Client) UpdateEngineConfigWithOptions(EngineConfigId *string, requ
 
 // Summary:
 //
-// Updates an engine configuration.
+// Updates a specific engine configuration.
 //
 // @param request - UpdateEngineConfigRequest
 //

@@ -27,6 +27,8 @@ type iGetEngineConfigResponseBody interface {
 	GetRequestId() *string
 	SetStatus(v string) *GetEngineConfigResponseBody
 	GetStatus() *string
+	SetType(v string) *GetEngineConfigResponseBody
+	GetType() *string
 }
 
 type GetEngineConfigResponseBody struct {
@@ -36,33 +38,37 @@ type GetEngineConfigResponseBody struct {
 	//
 	// {}
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	// The description of the engine configuration.
+	// The description.
+	//
+	// example:
+	//
+	// this is a test config
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The environment. Valid values:
+	// The runtime environment. Valid values:
 	//
-	// - Daily: The daily environment.
+	// - Daily: daily environment.
 	//
-	// - Pre: The pre-production environment.
+	// - Pre: staging environment.
 	//
-	// - Prod: The production environment.
+	// - Prod: production environment.
 	//
 	// example:
 	//
 	// Pre
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	// The time the engine configuration was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2024-01-03T02:28:00.000Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time the engine configuration was last modified.
+	// The update time.
 	//
 	// example:
 	//
 	// 2024-08-27T12:00:00Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The time the engine configuration was published.
+	// The publish time.
 	//
 	// example:
 	//
@@ -82,14 +88,20 @@ type GetEngineConfigResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status. Valid values:
 	//
-	// - Released: Published
+	// - Released: published.
 	//
-	// - UnReleased: Unpublished
+	// - UnReleased: not published.
 	//
 	// example:
 	//
 	// Released
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The engine configuration type.
+	//
+	// example:
+	//
+	// Normal
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetEngineConfigResponseBody) String() string {
@@ -136,6 +148,10 @@ func (s *GetEngineConfigResponseBody) GetStatus() *string {
 	return s.Status
 }
 
+func (s *GetEngineConfigResponseBody) GetType() *string {
+	return s.Type
+}
+
 func (s *GetEngineConfigResponseBody) SetConfigValue(v string) *GetEngineConfigResponseBody {
 	s.ConfigValue = &v
 	return s
@@ -178,6 +194,11 @@ func (s *GetEngineConfigResponseBody) SetRequestId(v string) *GetEngineConfigRes
 
 func (s *GetEngineConfigResponseBody) SetStatus(v string) *GetEngineConfigResponseBody {
 	s.Status = &v
+	return s
+}
+
+func (s *GetEngineConfigResponseBody) SetType(v string) *GetEngineConfigResponseBody {
+	s.Type = &v
 	return s
 }
 
