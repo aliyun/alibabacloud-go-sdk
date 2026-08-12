@@ -131,6 +131,7 @@ func (s *ListGatewayFeaturesResponseBodyData) Validate() error {
 }
 
 type ListGatewayFeaturesResponseBodyDataItems struct {
+	Constraints *ListGatewayFeaturesResponseBodyDataItemsConstraints `json:"constraints,omitempty" xml:"constraints,omitempty" type:"Struct"`
 	// The parameter definition.
 	Definition *ListGatewayFeaturesResponseBodyDataItemsDefinition `json:"definition,omitempty" xml:"definition,omitempty" type:"Struct"`
 	// The parameter value.
@@ -149,12 +150,21 @@ func (s ListGatewayFeaturesResponseBodyDataItems) GoString() string {
 	return s.String()
 }
 
+func (s *ListGatewayFeaturesResponseBodyDataItems) GetConstraints() *ListGatewayFeaturesResponseBodyDataItemsConstraints {
+	return s.Constraints
+}
+
 func (s *ListGatewayFeaturesResponseBodyDataItems) GetDefinition() *ListGatewayFeaturesResponseBodyDataItemsDefinition {
 	return s.Definition
 }
 
 func (s *ListGatewayFeaturesResponseBodyDataItems) GetValue() *string {
 	return s.Value
+}
+
+func (s *ListGatewayFeaturesResponseBodyDataItems) SetConstraints(v *ListGatewayFeaturesResponseBodyDataItemsConstraints) *ListGatewayFeaturesResponseBodyDataItems {
+	s.Constraints = v
+	return s
 }
 
 func (s *ListGatewayFeaturesResponseBodyDataItems) SetDefinition(v *ListGatewayFeaturesResponseBodyDataItemsDefinition) *ListGatewayFeaturesResponseBodyDataItems {
@@ -168,12 +178,42 @@ func (s *ListGatewayFeaturesResponseBodyDataItems) SetValue(v string) *ListGatew
 }
 
 func (s *ListGatewayFeaturesResponseBodyDataItems) Validate() error {
+	if s.Constraints != nil {
+		if err := s.Constraints.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Definition != nil {
 		if err := s.Definition.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type ListGatewayFeaturesResponseBodyDataItemsConstraints struct {
+	BodyMaxSizeLimit *int32 `json:"bodyMaxSizeLimit,omitempty" xml:"bodyMaxSizeLimit,omitempty"`
+}
+
+func (s ListGatewayFeaturesResponseBodyDataItemsConstraints) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListGatewayFeaturesResponseBodyDataItemsConstraints) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayFeaturesResponseBodyDataItemsConstraints) GetBodyMaxSizeLimit() *int32 {
+	return s.BodyMaxSizeLimit
+}
+
+func (s *ListGatewayFeaturesResponseBodyDataItemsConstraints) SetBodyMaxSizeLimit(v int32) *ListGatewayFeaturesResponseBodyDataItemsConstraints {
+	s.BodyMaxSizeLimit = &v
+	return s
+}
+
+func (s *ListGatewayFeaturesResponseBodyDataItemsConstraints) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListGatewayFeaturesResponseBodyDataItemsDefinition struct {

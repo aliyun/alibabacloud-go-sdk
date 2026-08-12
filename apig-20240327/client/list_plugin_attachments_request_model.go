@@ -36,7 +36,7 @@ type ListPluginAttachmentsRequest struct {
 	//
 	// hr-cv2h58em1hkg7c6vt43g
 	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
-	// The plug-in mount point type. This parameter is not yet enabled.
+	// The plugin mount point type. This parameter is not yet enabled.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ type ListPluginAttachmentsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The plug-in ID.
+	// The plugin ID.
 	//
 	// example:
 	//

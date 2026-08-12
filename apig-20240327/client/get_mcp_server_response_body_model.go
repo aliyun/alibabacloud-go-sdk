@@ -102,7 +102,7 @@ type GetMcpServerResponseBodyData struct {
 	//
 	// api-xxx
 	ApiId *string `json:"apiId,omitempty" xml:"apiId,omitempty"`
-	// The list of assembly sources. This parameter is required when type is AssemblyMCP.
+	// The list of assembled sources. This parameter is required when type is AssemblyMCP.
 	AssembledSources []*GetMcpServerResponseBodyDataAssembledSources `json:"assembledSources,omitempty" xml:"assembledSources,omitempty" type:"Repeated"`
 	// The backend service of the route.
 	Backend *Backend `json:"backend,omitempty" xml:"backend,omitempty"`
@@ -132,7 +132,7 @@ type GetMcpServerResponseBodyData struct {
 	//
 	// example:
 	//
-	// 测试专用MCP Server
+	// Test MCP Server
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The list of domain name IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
@@ -168,7 +168,7 @@ type GetMcpServerResponseBodyData struct {
 	//
 	// example:
 	//
-	// MCP Server配置 base64
+	// MCP Server configuration base64
 	McpServerConfig *string `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty"`
 	// The MCP server plugin configuration attachment ID.
 	//

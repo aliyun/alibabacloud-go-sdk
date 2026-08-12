@@ -127,7 +127,7 @@ type DeployHttpApiRequestRestApiConfig struct {
 	//
 	// example:
 	//
-	// 用户服务API发布。
+	// User service API publish
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The publish environment configuration.
 	Environment *DeployHttpApiRequestRestApiConfigEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
@@ -252,7 +252,7 @@ type DeployHttpApiRequestRestApiConfigEnvironment struct {
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
 	// Deprecated
 	//
-	// The existing service configurations. In the single-service scenario, only one entry is allowed. In scenarios such as by-ratio or by-content, multiple entries are allowed.
+	// The existing service configurations. In the single service scenario, only one entry is allowed. In the by-ratio or by-content scenarios, multiple entries are allowed.
 	//
 	// if can be null:
 	// true
@@ -331,9 +331,9 @@ type DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs struct {
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
 	// The service protocol. Valid values:
 	//
-	// - HTTP
+	// - HTTP.
 	//
-	// - HTTPS
+	// - HTTPS.
 	//
 	// example:
 	//
@@ -431,7 +431,7 @@ func (s *DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs) Validate() 
 }
 
 type DeployHttpApiRequestRestApiConfigOperationDeployments struct {
-	// The action type.
+	// The operation type.
 	//
 	// example:
 	//

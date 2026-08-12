@@ -48,7 +48,7 @@ type ListHttpApiRoutesRequest struct {
 	//
 	// test-svc
 	BackendServiceName *string `json:"backendServiceName,omitempty" xml:"backendServiceName,omitempty"`
-	// Filters the API list by a specific consumer authorization rule ID. The response only includes authorized APIs.
+	// Filters the API list by a specific consumer authorization rule ID. The response includes only authorized APIs.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type ListHttpApiRoutesRequest struct {
 	//
 	// NotDeployed
 	DeployStatuses *string `json:"deployStatuses,omitempty" xml:"deployStatuses,omitempty"`
-	// Filters route information by domain name ID.
+	// The domain name ID used to filter route information.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type ListHttpApiRoutesRequest struct {
 	//
 	// env-cpqnr6tlhtgubc***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// Specifies whether the request is for a deployment scenario.
+	// Specifies whether this is a deployment scenario.
 	//
 	// example:
 	//
@@ -114,19 +114,19 @@ type ListHttpApiRoutesRequest struct {
 	//
 	// /v1
 	PathLike *string `json:"pathLike,omitempty" xml:"pathLike,omitempty"`
-	// Includes consumer authorization information in the response.
+	// Specifies whether to include consumer authorization information in the response.
 	//
 	// example:
 	//
 	// true
 	WithAuthPolicyInfo *bool `json:"withAuthPolicyInfo,omitempty" xml:"withAuthPolicyInfo,omitempty"`
-	// Includes the authorization rule list of the specified consumer ID for each route in the response.
+	// Specifies a consumer ID so that the response includes the authorization rule list for the specified consumer in each route.
 	//
 	// example:
 	//
 	// cs-xxx
 	WithConsumerInfoById *string `json:"withConsumerInfoById,omitempty" xml:"withConsumerInfoById,omitempty"`
-	// Includes the mount information of the specified plug-in ID for each route in the response.
+	// Specifies a plug-in ID so that the response includes the mount information of the specified plug-in in each route.
 	//
 	// example:
 	//

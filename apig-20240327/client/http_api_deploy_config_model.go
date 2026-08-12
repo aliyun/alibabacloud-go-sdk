@@ -19,6 +19,8 @@ type iHttpApiDeployConfig interface {
 	GetCustomDomainIds() []*string
 	SetCustomDomainInfos(v []*HttpApiDeployConfigCustomDomainInfos) *HttpApiDeployConfig
 	GetCustomDomainInfos() []*HttpApiDeployConfigCustomDomainInfos
+	SetEnableSystemModels(v bool) *HttpApiDeployConfig
+	GetEnableSystemModels() *bool
 	SetEnvDomainIds(v []*string) *HttpApiDeployConfig
 	GetEnvDomainIds() []*string
 	SetEnvDomainInfos(v []*HttpApiDeployConfigEnvDomainInfos) *HttpApiDeployConfig
@@ -44,13 +46,13 @@ type iHttpApiDeployConfig interface {
 }
 
 type HttpApiDeployConfig struct {
-	// Indicates whether auto-deploy is enabled.
+	// Specifies whether to automatically deploy.
 	//
 	// example:
 	//
 	// true
 	AutoDeploy *bool `json:"autoDeploy,omitempty" xml:"autoDeploy,omitempty"`
-	// The publishing scenario.
+	// The deployment scenario.
 	//
 	// example:
 	//
@@ -60,11 +62,17 @@ type HttpApiDeployConfig struct {
 	BuiltinRouteNames []*string `json:"builtinRouteNames,omitempty" xml:"builtinRouteNames,omitempty" type:"Repeated"`
 	// The list of custom domain name IDs.
 	CustomDomainIds []*string `json:"customDomainIds,omitempty" xml:"customDomainIds,omitempty" type:"Repeated"`
-	// The list of custom domain name information.
+	// The list of custom domain name details.
 	CustomDomainInfos []*HttpApiDeployConfigCustomDomainInfos `json:"customDomainInfos,omitempty" xml:"customDomainInfos,omitempty" type:"Repeated"`
-	// The list of environment domain name IDs. If this parameter is not specified, all environment domain names are bound. An empty array indicates that no environment domain names are bound.
+	// Specifies whether to enable gateway system models. This parameter takes effect only when the deployment scenario is AiAutoRouter. Default value: false. If enabled, built-in Qwen candidates from the platform are merged with the user\\"s own candidates.
+	//
+	// example:
+	//
+	// true
+	EnableSystemModels *bool `json:"enableSystemModels,omitempty" xml:"enableSystemModels,omitempty"`
+	// The list of environment domain name IDs. If not specified, all environment domain names are bound. An empty array indicates that no environment domain names are bound.
 	EnvDomainIds []*string `json:"envDomainIds,omitempty" xml:"envDomainIds,omitempty" type:"Repeated"`
-	// The list of environment domain name information.
+	// The list of environment domain name details.
 	EnvDomainInfos []*HttpApiDeployConfigEnvDomainInfos `json:"envDomainInfos,omitempty" xml:"envDomainInfos,omitempty" type:"Repeated"`
 	// The environment ID.
 	//
@@ -103,7 +111,7 @@ type HttpApiDeployConfig struct {
 	RouteBackend *Backend `json:"routeBackend,omitempty" xml:"routeBackend,omitempty"`
 	// The list of service configurations.
 	ServiceConfigs []*HttpApiDeployConfigServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
-	// The list of subdomain information.
+	// The subdomain content list.
 	SubDomains []*HttpApiDeployConfigSubDomains `json:"subDomains,omitempty" xml:"subDomains,omitempty" type:"Repeated"`
 }
 
@@ -133,6 +141,10 @@ func (s *HttpApiDeployConfig) GetCustomDomainIds() []*string {
 
 func (s *HttpApiDeployConfig) GetCustomDomainInfos() []*HttpApiDeployConfigCustomDomainInfos {
 	return s.CustomDomainInfos
+}
+
+func (s *HttpApiDeployConfig) GetEnableSystemModels() *bool {
+	return s.EnableSystemModels
 }
 
 func (s *HttpApiDeployConfig) GetEnvDomainIds() []*string {
@@ -201,6 +213,11 @@ func (s *HttpApiDeployConfig) SetCustomDomainIds(v []*string) *HttpApiDeployConf
 
 func (s *HttpApiDeployConfig) SetCustomDomainInfos(v []*HttpApiDeployConfigCustomDomainInfos) *HttpApiDeployConfig {
 	s.CustomDomainInfos = v
+	return s
+}
+
+func (s *HttpApiDeployConfig) SetEnableSystemModels(v bool) *HttpApiDeployConfig {
+	s.EnableSystemModels = &v
 	return s
 }
 
@@ -482,7 +499,7 @@ type HttpApiDeployConfigServiceConfigs struct {
 	//
 	// Qwen-Max-Service
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The observability-based routing configuration.
+	// The observability metric routing configuration.
 	//
 	// if can be null:
 	// true

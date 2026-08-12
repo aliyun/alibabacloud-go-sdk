@@ -46,12 +46,13 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	//
 	// api-xx
 	ApiNameLike *string `json:"apiNameLike,omitempty" xml:"apiNameLike,omitempty"`
-	// The consumer group ID. If specified, the authorization rules of the consumer group are queried.
+	// The consumer group ID. If specified, the authorization rules for the consumer group are queried.
 	//
 	// example:
 	//
 	// csg-8c13d2b4f8a1
-	ConsumerGroupId       *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// The consumer group name for fuzzy match.
 	ConsumerGroupNameLike *string `json:"consumerGroupNameLike,omitempty" xml:"consumerGroupNameLike,omitempty"`
 	// The consumer ID.
 	//

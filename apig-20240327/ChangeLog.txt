@@ -1,3 +1,14 @@
+2026-08-12 Version: v10.2.0
+- Support API BatchExportHttpApis.
+- Support API BatchImportHttpApis.
+- Support API GetBatchExportTask.
+- Support API GetBatchImportTask.
+- Support API ListBatchExportTasks.
+- Update API CreateHttpApiRoute: add request parameters body.backendConfig.services.$.modelName.
+- Update API ListGatewayFeatures: add response parameters Body.data.items.$.constraints.
+- Update API UpdateHttpApiRoute: add request parameters body.backendConfig.services.$.modelName.
+
+
 2026-08-07 Version: v10.1.2
 - Update API CreateGateway: add request parameters body.gatewayMode.
 - Update API GetGateway: add response parameters Body.data.gatewayMode.

@@ -62,7 +62,7 @@ type HttpRoute struct {
 	//
 	// example:
 	//
-	// 商品中心预发路由
+	// Route for user management API
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// List of domain information
 	DomainInfos []*HttpRouteDomainInfos `json:"domainInfos,omitempty" xml:"domainInfos,omitempty" type:"Repeated"`
@@ -317,7 +317,7 @@ type HttpRouteEnvironmentInfo struct {
 	//
 	// example:
 	//
-	// 商品中心预发环境
+	// prod
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
 	// The environment ID
 	//

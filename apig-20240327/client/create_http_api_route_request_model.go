@@ -32,13 +32,15 @@ type iCreateHttpApiRouteRequest interface {
 type CreateHttpApiRouteRequest struct {
 	// The backend service configuration of the route.
 	BackendConfig *CreateHttpApiRouteRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
+	// Deprecated
+	//
 	// The API deployment configurations.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
 	// The route description.
 	//
 	// example:
 	//
-	// 用户登录路由。
+	// User login route
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The domain name IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
@@ -48,7 +50,7 @@ type CreateHttpApiRouteRequest struct {
 	//
 	// env-cpqnr6tlhtgubcv***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The route match rule.
+	// The route match rules.
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
 	// The MCP route configuration.
 	McpRouteConfig *CreateHttpApiRouteRequestMcpRouteConfig `json:"mcpRouteConfig,omitempty" xml:"mcpRouteConfig,omitempty" type:"Struct"`
@@ -191,13 +193,13 @@ func (s *CreateHttpApiRouteRequest) Validate() error {
 type CreateHttpApiRouteRequestBackendConfig struct {
 	// The backend service scenario. Valid values:
 	//
-	// - SingleService: single service.
+	// - SingleService: Single service.
 	//
-	// - MultiServiceByRatio: multiple services with ratio-based canary release.
+	// - MultiServiceByRatio: Multiple services with ratio-based canary release.
 	//
-	// - Mock: mock service.
+	// - Mock: Mock service.
 	//
-	// - Redirect: redirect service.
+	// - Redirect: Redirect service.
 	//
 	// example:
 	//
@@ -247,6 +249,12 @@ func (s *CreateHttpApiRouteRequestBackendConfig) Validate() error {
 }
 
 type CreateHttpApiRouteRequestBackendConfigServices struct {
+	// The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewrite semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If not specified in the AiAutoRouter scenario, the default model of the AI service is used.
+	//
+	// example:
+	//
+	// qwen-plus
+	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
 	// The service port. Do not specify this parameter for dynamic ports.
 	//
 	// example:
@@ -255,9 +263,9 @@ type CreateHttpApiRouteRequestBackendConfigServices struct {
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
 	// The service protocol. Valid values:
 	//
-	// - HTTP.
+	// - HTTP
 	//
-	// - HTTPS.
+	// - HTTPS
 	//
 	// example:
 	//
@@ -269,7 +277,7 @@ type CreateHttpApiRouteRequestBackendConfigServices struct {
 	//
 	// svc-crbgq0dlhtgr***
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// The service version. This parameter is valid only in the tag-based scenario.
+	// The service version. This parameter is valid only in the by-tag scenario.
 	//
 	// example:
 	//
@@ -291,6 +299,10 @@ func (s CreateHttpApiRouteRequestBackendConfigServices) GoString() string {
 	return s.String()
 }
 
+func (s *CreateHttpApiRouteRequestBackendConfigServices) GetModelName() *string {
+	return s.ModelName
+}
+
 func (s *CreateHttpApiRouteRequestBackendConfigServices) GetPort() *int32 {
 	return s.Port
 }
@@ -309,6 +321,11 @@ func (s *CreateHttpApiRouteRequestBackendConfigServices) GetVersion() *string {
 
 func (s *CreateHttpApiRouteRequestBackendConfigServices) GetWeight() *int32 {
 	return s.Weight
+}
+
+func (s *CreateHttpApiRouteRequestBackendConfigServices) SetModelName(v string) *CreateHttpApiRouteRequestBackendConfigServices {
+	s.ModelName = &v
+	return s
 }
 
 func (s *CreateHttpApiRouteRequestBackendConfigServices) SetPort(v int32) *CreateHttpApiRouteRequestBackendConfigServices {
@@ -355,11 +372,11 @@ type CreateHttpApiRouteRequestMcpRouteConfig struct {
 	McpStatisticsEnable *bool `json:"mcpStatisticsEnable,omitempty" xml:"mcpStatisticsEnable,omitempty"`
 	// The service protocol. Valid values:
 	//
-	// - TCP.
+	// - TCP
 	//
-	// - HTTP.
+	// - HTTP
 	//
-	// - DUBBO.
+	// - DUBBO
 	//
 	// example:
 	//

@@ -68,7 +68,7 @@ type HttpApiApiInfo struct {
 	//
 	// example:
 	//
-	// 测试专用API
+	// for test only
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	EnableAuth  *bool   `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
 	// The API environment information.

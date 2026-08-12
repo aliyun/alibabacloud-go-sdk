@@ -269,6 +269,148 @@ func (client *Client) BatchDeleteConsumerAuthorizationRuleWithContext(ctx contex
 
 // Summary:
 //
+// 批量导出HTTP API
+//
+// @param request - BatchExportHttpApisRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchExportHttpApisResponse
+func (client *Client) BatchExportHttpApisWithContext(ctx context.Context, request *BatchExportHttpApisRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchExportHttpApisResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ApiIds) {
+		body["apiIds"] = request.ApiIds
+	}
+
+	if !dara.IsNil(request.ApiType) {
+		body["apiType"] = request.ApiType
+	}
+
+	if !dara.IsNil(request.ExtensionConfig) {
+		body["extensionConfig"] = request.ExtensionConfig
+	}
+
+	if !dara.IsNil(request.Format) {
+		body["format"] = request.Format
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		body["gatewayId"] = request.GatewayId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchExportHttpApis"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/http-apis/batch-export"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchExportHttpApisResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量导入HTTP API
+//
+// @param request - BatchImportHttpApisRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchImportHttpApisResponse
+func (client *Client) BatchImportHttpApisWithContext(ctx context.Context, request *BatchImportHttpApisRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchImportHttpApisResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AllowUpdate) {
+		body["allowUpdate"] = request.AllowUpdate
+	}
+
+	if !dara.IsNil(request.ApiType) {
+		body["apiType"] = request.ApiType
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		body["dryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		body["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.SpecFileUrl) {
+		body["specFileUrl"] = request.SpecFileUrl
+	}
+
+	if !dara.IsNil(request.SpecOssConfig) {
+		body["specOssConfig"] = request.SpecOssConfig
+	}
+
+	if !dara.IsNil(request.Strategy) {
+		body["strategy"] = request.Strategy
+	}
+
+	if !dara.IsNil(request.WithGatewayExtension) {
+		body["withGatewayExtension"] = request.WithGatewayExtension
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchImportHttpApis"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/http-apis/batch-import"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchImportHttpApisResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Removes consumer group members in batches.
 //
 // @param request - BatchRemoveConsumerGroupConsumersRequest
@@ -3033,6 +3175,88 @@ func (client *Client) GetAiModelProviderWithContext(ctx context.Context, modelPr
 
 // Summary:
 //
+// 查询批量导出任务
+//
+// @param request - GetBatchExportTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBatchExportTaskResponse
+func (client *Client) GetBatchExportTaskWithContext(ctx context.Context, taskId *string, request *GetBatchExportTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetBatchExportTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetBatchExportTask"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/http-api-batch-export-tasks/" + dara.PercentEncode(dara.StringValue(taskId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetBatchExportTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询批量操作任务
+//
+// @param request - GetBatchImportTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBatchImportTaskResponse
+func (client *Client) GetBatchImportTaskWithContext(ctx context.Context, taskId *string, request *GetBatchImportTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetBatchImportTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetBatchImportTask"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/http-api-batch-import-tasks/" + dara.PercentEncode(dara.StringValue(taskId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetBatchImportTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves an API consumer.
 //
 // @param headers - map
@@ -3579,7 +3803,7 @@ func (client *Client) GetHttpApiRouteWithContext(ctx context.Context, httpApiId 
 //
 // Description:
 //
-// The operation supports creating multiple services.
+// This operation supports creating multiple services.
 //
 // @param headers - map
 //
@@ -3986,7 +4210,7 @@ func (client *Client) GetTraceConfigWithContext(ctx context.Context, gatewayId *
 
 // Summary:
 //
-// Imports an HTTP API. This operation supports importing OpenAPI 2.0 and OpenAPI 3.0.x definition files as REST-type APIs.
+// Imports an HTTP API. You can import an OpenAPI 2.0 or OpenAPI 3.0.x definition file as a REST API.
 //
 // @param request - ImportHttpApiRequest
 //
@@ -4244,6 +4468,81 @@ func (client *Client) ListAiModelProvidersWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAiModelProvidersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询批量导出任务列表
+//
+// @param request - ListBatchExportTasksRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBatchExportTasksResponse
+func (client *Client) ListBatchExportTasksWithContext(ctx context.Context, request *ListBatchExportTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListBatchExportTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		query["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["startTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Statuses) {
+		query["statuses"] = request.Statuses
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListBatchExportTasks"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/http-api-batch-export-tasks"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListBatchExportTasksResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4941,7 +5240,7 @@ func (client *Client) ListGatewaysWithContext(ctx context.Context, tmpReq *ListG
 
 // Summary:
 //
-// Retrieves a list of API operations.
+// Retrieves the list of API operations.
 //
 // @param request - ListHttpApiOperationsRequest
 //
@@ -5325,7 +5624,7 @@ func (client *Client) ListMcpServersWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// Retrieves the list of plug-in mounts.
+// Retrieves the list of plugin mounts.
 //
 // @param request - ListPluginAttachmentsRequest
 //
@@ -7540,7 +7839,7 @@ func (client *Client) UpdateHttpApiOperationWithContext(ctx context.Context, htt
 
 // Summary:
 //
-// Updates a route of an HttpApi.
+// Updates the route of an HTTP API.
 //
 // @param request - UpdateHttpApiRouteRequest
 //

@@ -32,7 +32,7 @@ type UpdateHttpApiRouteRequest struct {
 	//
 	// example:
 	//
-	// 商品中心服务路由
+	// Product center service route
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The list of domain name IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
@@ -200,6 +200,12 @@ func (s *UpdateHttpApiRouteRequestBackendConfig) Validate() error {
 }
 
 type UpdateHttpApiRouteRequestBackendConfigServices struct {
+	// The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewrite semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If this field is not configured in the AiAutoRouter scenario, the default model of the AI service is used.
+	//
+	// example:
+	//
+	// qwen-plus
+	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
 	// The service port. Do not specify this parameter for dynamic ports.
 	//
 	// example:
@@ -244,6 +250,10 @@ func (s UpdateHttpApiRouteRequestBackendConfigServices) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateHttpApiRouteRequestBackendConfigServices) GetModelName() *string {
+	return s.ModelName
+}
+
 func (s *UpdateHttpApiRouteRequestBackendConfigServices) GetPort() *int32 {
 	return s.Port
 }
@@ -262,6 +272,11 @@ func (s *UpdateHttpApiRouteRequestBackendConfigServices) GetVersion() *string {
 
 func (s *UpdateHttpApiRouteRequestBackendConfigServices) GetWeight() *int32 {
 	return s.Weight
+}
+
+func (s *UpdateHttpApiRouteRequestBackendConfigServices) SetModelName(v string) *UpdateHttpApiRouteRequestBackendConfigServices {
+	s.ModelName = &v
+	return s
 }
 
 func (s *UpdateHttpApiRouteRequestBackendConfigServices) SetPort(v int32) *UpdateHttpApiRouteRequestBackendConfigServices {

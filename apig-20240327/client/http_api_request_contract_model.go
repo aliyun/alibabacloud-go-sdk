@@ -121,7 +121,7 @@ type HttpApiRequestContractBody struct {
 	//
 	// example:
 	//
-	// body参数描述
+	// This is a description.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The sample value.
 	//
@@ -135,27 +135,27 @@ type HttpApiRequestContractBody struct {
 	//
 	// {
 	//
-	//     "type": "object",
+	//       "type": "object",
 	//
-	//     "required": [
+	//       "required": [
 	//
-	//         "result"
+	//           "result"
 	//
-	//     ],
+	//       ],
 	//
-	//     "properties": {
+	//       "properties": {
 	//
-	//         "result": {
+	//           "result": {
 	//
-	//             "type": "string",
+	//               "type": "string",
 	//
-	//             "description": "操作结果，\\"ok\\" 表示成功"
+	//               "description": "Operation result. \\"ok\\" indicates success."
 	//
-	//         }
+	//           }
 	//
-	//     }
+	//       }
 	//
-	// }
+	//   }
 	JsonSchema *string `json:"jsonSchema,omitempty" xml:"jsonSchema,omitempty"`
 }
 

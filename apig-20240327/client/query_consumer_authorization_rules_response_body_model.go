@@ -471,7 +471,7 @@ func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) Validate() error 
 }
 
 type QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo struct {
-	// The API operation information.
+	// The operation information.
 	OperationInfo *HttpApiOperationInfo `json:"operationInfo,omitempty" xml:"operationInfo,omitempty"`
 	// The routing rule.
 	Route *HttpRoute `json:"route,omitempty" xml:"route,omitempty"`

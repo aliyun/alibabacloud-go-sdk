@@ -44,7 +44,7 @@ type UpdateHttpApiRequest struct {
 	AiProtocols []*string `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
 	// The authentication configuration.
 	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
-	// The base path of the API. The value must start with a forward slash (/).
+	// The API base path, which must start with /.
 	//
 	// This parameter is required.
 	//
@@ -54,11 +54,11 @@ type UpdateHttpApiRequest struct {
 	BasePath *string `json:"basePath,omitempty" xml:"basePath,omitempty"`
 	// The list of API deployment configurations.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
-	// The description of the API.
+	// The API description.
 	//
 	// example:
 	//
-	// 更新API描述
+	// Updated API description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Specifies whether to enable authentication.
 	//
@@ -74,7 +74,7 @@ type UpdateHttpApiRequest struct {
 	FirstByteTimeout *int32 `json:"firstByteTimeout,omitempty" xml:"firstByteTimeout,omitempty"`
 	// The configuration of the HTTP Ingress API.
 	IngressConfig *UpdateHttpApiRequestIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
-	// Specifies whether to only update the configuration without triggering a redeployment. Set this parameter to true to update the configuration only.
+	// Specifies whether to only modify the configuration without triggering redeployment. A value of true indicates that only the configuration is modified.
 	//
 	// example:
 	//
@@ -252,13 +252,13 @@ type UpdateHttpApiRequestIngressConfig struct {
 	//
 	// env-cr6ql0tlhtgmc****
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The Ingress class to listen on.
+	// The Ingress Class to listen on.
 	//
 	// example:
 	//
 	// mse
 	IngressClass *string `json:"ingressClass,omitempty" xml:"ingressClass,omitempty"`
-	// Specifies whether to update the address in the Ingress status.
+	// Specifies whether to update the address in the Ingress Status.
 	//
 	// example:
 	//

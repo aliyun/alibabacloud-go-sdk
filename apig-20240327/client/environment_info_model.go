@@ -36,7 +36,7 @@ type EnvironmentInfo struct {
   // 
   // example:
   // 
-  // 测试环境
+  // test-env
   Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
   // The creation timestamp.
   // 
@@ -54,7 +54,7 @@ type EnvironmentInfo struct {
   // 
   // example:
   // 
-  // 这是xxx的xx项目测试环境
+  // This is a test environment.
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
   // The environment ID.
   // 

@@ -40,7 +40,7 @@ type AiServiceConfig struct {
 	//
 	// example:
 	//
-	// Custom
+	// -
 	ApiKeyGenerateMode *string `json:"ApiKeyGenerateMode,omitempty" xml:"ApiKeyGenerateMode,omitempty"`
 	// The service endpoint.
 	//
@@ -58,7 +58,7 @@ type AiServiceConfig struct {
 	//
 	// example:
 	//
-	// gpt-4
+	// qwen-turbo
 	DefaultModelName *string `json:"defaultModelName,omitempty" xml:"defaultModelName,omitempty"`
 	// Specifies whether to enable health check.
 	//
@@ -70,7 +70,7 @@ type AiServiceConfig struct {
 	//
 	// example:
 	//
-	// true
+	// false
 	EnableOutlierDetection *bool `json:"enableOutlierDetection,omitempty" xml:"enableOutlierDetection,omitempty"`
 	// PAI-EAS service configuration settings.
 	PaiEASServiceConfig *AiServiceConfigPaiEASServiceConfig `json:"paiEASServiceConfig,omitempty" xml:"paiEASServiceConfig,omitempty" type:"Struct"`
@@ -81,46 +81,6 @@ type AiServiceConfig struct {
 	// example:
 	//
 	// qwen
-	//
-	// moonshot
-	//
-	// baichuan
-	//
-	// yi
-	//
-	// zhipuai
-	//
-	// 360ai
-	//
-	// hunyuan
-	//
-	// stepfun
-	//
-	// spark
-	//
-	// openai
-	//
-	// claude
-	//
-	// anthropic
-	//
-	// doubao
-	//
-	// minimax
-	//
-	// gemini
-	//
-	// azure
-	//
-	// deepseek
-	//
-	// custom
-	//
-	// pai-eas
-	//
-	// bedrock
-	//
-	// vertex
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
 	// Vertex AI service configuration.
 	VertexServiceConfig *AiServiceConfigVertexServiceConfig `json:"vertexServiceConfig,omitempty" xml:"vertexServiceConfig,omitempty" type:"Struct"`
@@ -272,7 +232,7 @@ type AiServiceConfigBedrockServiceConfig struct {
 	//
 	// example:
 	//
-	// us-east-1
+	// us-west-2
 	AwsRegion *string `json:"awsRegion,omitempty" xml:"awsRegion,omitempty"`
 	// AWS-SecretKey
 	//
@@ -332,19 +292,19 @@ type AiServiceConfigPaiEASServiceConfig struct {
 	//
 	// example:
 	//
-	// svc-cvaeb0um1hkqp79k72v0
+	// svc-d33onfmm1hkn5duhuqjg
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
 	// Name of the service.
 	//
 	// example:
 	//
-	// auto-ai-service
+	// service-hello
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 	// Workspace identifier.
 	//
 	// example:
 	//
-	// cb89d4de30042df4459442589664e00d
+	// plw-d5g7qsem1hkmih54g210
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
@@ -403,19 +363,19 @@ type AiServiceConfigVertexServiceConfig struct {
 	//
 	// example:
 	//
-	// {\\"type\\":\\"service_account\\",\\"project_id\\":\\"my-project\\",\\"private_key\\":\\"-----BEGIN PRIVATE KEY-----...\\",\\"client_email\\":\\"xxx@xxx.iam.gserviceaccount.com\\",\\"token_uri\\":\\"https://oauth2.googleapis.com/token\\"}
+	// {\\"type\\":\\"service_account\\",\\"project_id\\":\\"xxx\\",\\"private_key\\":\\"-----BEGIN PRIVATE KEY-----\\",\\"client_email\\":\\"xxx@xxx.iam.gserviceaccount.com\\",\\"token_uri\\":\\"https://oauth2.googleapis.com/token\\"}
 	VertexAuthKey *string `json:"vertexAuthKey,omitempty" xml:"vertexAuthKey,omitempty"`
 	// Vertex AI auth service name.
 	//
 	// example:
 	//
-	// google-oauth2
+	// custom-vertex-auth
 	VertexAuthServiceName *string `json:"vertexAuthServiceName,omitempty" xml:"vertexAuthServiceName,omitempty"`
 	// Vertex AI project ID.
 	//
 	// example:
 	//
-	// my-project
+	// my-gcp-project-123
 	VertexProjectId *string `json:"vertexProjectId,omitempty" xml:"vertexProjectId,omitempty"`
 	// Vertex AI region.
 	//

@@ -40,7 +40,7 @@ type iGetConsumerAuthorizationRuleResponseBody interface {
 type GetConsumerAuthorizationRuleResponseBody struct {
 	// The API information.
 	ApiInfo *HttpApiApiInfo `json:"apiInfo,omitempty" xml:"apiInfo,omitempty"`
-	// The consumer authorization rule ID used to filter the API list. The API list in the response contains only authorized APIs.
+	// The ID of the consumer authorization rule used to filter the API list. The API list in the response contains only authorized APIs.
 	//
 	// example:
 	//
