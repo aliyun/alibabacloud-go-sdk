@@ -248,6 +248,58 @@ func (client *Client) CreateClientUserWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// Creates a domain name list.
+//
+// Description:
+//
+// Creates a domain name list of a specified type (blacklist or whitelist) under the current tenant and returns the ListId of the new list. A maximum of 100 lists can be created for each list type per tenant.
+//
+// @param request - CreateDomainMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDomainMetaResponse
+func (client *Client) CreateDomainMetaWithContext(ctx context.Context, request *CreateDomainMetaRequest, runtime *dara.RuntimeOptions) (_result *CreateDomainMetaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListType) {
+		body["ListType"] = request.ListType
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDomainMeta"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDomainMetaResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Create dynamic routes for the current Alibaba Cloud account.
 //
 // Description:
@@ -1497,6 +1549,58 @@ func (client *Client) DeleteClientUserWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// Deletes a domain name list.
+//
+// Description:
+//
+// Deletes a specified domain name list under the current tenant. Before deletion, the system checks whether any domain name policy references the list. If the list is referenced, the deletion is rejected.
+//
+// @param request - DeleteDomainMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDomainMetaResponse
+func (client *Client) DeleteDomainMetaWithContext(ctx context.Context, request *DeleteDomainMetaRequest, runtime *dara.RuntimeOptions) (_result *DeleteDomainMetaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListId) {
+		body["ListId"] = request.ListId
+	}
+
+	if !dara.IsNil(request.ListType) {
+		body["ListType"] = request.ListType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDomainMeta"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDomainMetaResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Delete a dynamic route from your current Alibaba Cloud account.
 //
 // @param request - DeleteDynamicRouteRequest
@@ -2565,6 +2669,47 @@ func (client *Client) GetIdpConfigWithContext(ctx context.Context, request *GetI
 
 // Summary:
 //
+// Retrieves the phone number whitelist for visitor admission SMS logon.
+//
+// Description:
+//
+// Retrieves all phone numbers in the whitelist.
+//
+// @param request - GetNacPortalSmsPhoneWhitelistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNacPortalSmsPhoneWhitelistResponse
+func (client *Client) GetNacPortalSmsPhoneWhitelistWithContext(ctx context.Context, request *GetNacPortalSmsPhoneWhitelistRequest, runtime *dara.RuntimeOptions) (_result *GetNacPortalSmsPhoneWhitelistResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetNacPortalSmsPhoneWhitelist"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetNacPortalSmsPhoneWhitelistResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the details of a private access diagnostic task.
 //
 // @param request - GetPADiagnosisTaskRequest
@@ -3283,6 +3428,70 @@ func (client *Client) ListConnectorsWithContext(ctx context.Context, request *Li
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListConnectorsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of domain name lists.
+//
+// Description:
+//
+// Performs a paged query on the metadata of domain name lists (the header information of domain name blacklists/whitelists, excluding the specific domain name entries within the lists) for the current tenant with paging. You can filter by list type (blacklist/whitelist), perform fuzzy search by name, and specify whether to include system built-in default template lists in the results. Each record includes the number of domain name entries in the list.
+//
+// @param request - ListDomainMetasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDomainMetasResponse
+func (client *Client) ListDomainMetasWithContext(ctx context.Context, request *ListDomainMetasRequest, runtime *dara.RuntimeOptions) (_result *ListDomainMetasResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.DefaultTemplate) {
+		query["DefaultTemplate"] = request.DefaultTemplate
+	}
+
+	if !dara.IsNil(request.ListType) {
+		query["ListType"] = request.ListType
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDomainMetas"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDomainMetasResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4235,6 +4444,102 @@ func (client *Client) ListRegistrationPoliciesForUserGroupWithContext(ctx contex
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRegistrationPoliciesForUserGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of risk events under the current Alibaba Cloud account.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation performs paging query of risk events based on specified conditional criteria.
+//
+// - `CurrentPage` and `PageSize` are required parameters that specify the current page number and the number of entries per page.
+//
+// - You can set parameters such as `RiskId`, `RiskScene`, and `RiskCategory` to perform exact or fuzzy queries for specific risk events.
+//
+// - The `Status` and `StatusList` parameters cannot be used at the same time. They are used to filter risk events by disposition status.
+//
+// - Fuzzy matching is supported for `PolicyName` and `Username`.
+//
+// - The response includes the total number of risk events that match the query conditions and their details.
+//
+// @param request - ListRiskItemsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRiskItemsResponse
+func (client *Client) ListRiskItemsWithContext(ctx context.Context, request *ListRiskItemsRequest, runtime *dara.RuntimeOptions) (_result *ListRiskItemsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PolicyName) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !dara.IsNil(request.RiskCategory) {
+		query["RiskCategory"] = request.RiskCategory
+	}
+
+	if !dara.IsNil(request.RiskId) {
+		query["RiskId"] = request.RiskId
+	}
+
+	if !dara.IsNil(request.RiskLevel) {
+		query["RiskLevel"] = request.RiskLevel
+	}
+
+	if !dara.IsNil(request.RiskScene) {
+		query["RiskScene"] = request.RiskScene
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.StatusList) {
+		query["StatusList"] = request.StatusList
+	}
+
+	if !dara.IsNil(request.Username) {
+		query["Username"] = request.Username
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRiskItems"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRiskItemsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5379,6 +5684,58 @@ func (client *Client) UpdateClientUserStatusWithContext(ctx context.Context, req
 
 // Summary:
 //
+// Updates the name of a domain name list.
+//
+// @param request - UpdateDomainMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDomainMetaResponse
+func (client *Client) UpdateDomainMetaWithContext(ctx context.Context, request *UpdateDomainMetaRequest, runtime *dara.RuntimeOptions) (_result *UpdateDomainMetaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListId) {
+		body["ListId"] = request.ListId
+	}
+
+	if !dara.IsNil(request.ListType) {
+		body["ListType"] = request.ListType
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDomainMeta"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDomainMetaResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies a dynamic route in your Alibaba Cloud account.
 //
 // @param request - UpdateDynamicRouteRequest
@@ -5563,6 +5920,58 @@ func (client *Client) UpdateIdpDepartmentWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateIdpDepartmentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the phone number whitelist for visitor access SMS logon.
+//
+// Description:
+//
+// - A maximum of 1024 phone numbers are supported.
+//
+// - Duplicate phone numbers are not allowed. Phone numbers in invalid formats are rejected. Only Chinese mainland phone numbers are supported.
+//
+// - You must update all phone numbers at once. Incremental updates are not supported.
+//
+// @param request - UpdateNacPortalSmsPhoneWhitelistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNacPortalSmsPhoneWhitelistResponse
+func (client *Client) UpdateNacPortalSmsPhoneWhitelistWithContext(ctx context.Context, request *UpdateNacPortalSmsPhoneWhitelistRequest, runtime *dara.RuntimeOptions) (_result *UpdateNacPortalSmsPhoneWhitelistResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Phones) {
+		query["Phones"] = request.Phones
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateNacPortalSmsPhoneWhitelist"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateNacPortalSmsPhoneWhitelistResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5963,6 +6372,80 @@ func (client *Client) UpdateRegistrationPolicyWithContext(ctx context.Context, t
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateRegistrationPolicyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the current handling status and conclusion of a specified risk event.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation allows you to update the handling status of a specific risk event under your Alibaba Cloud account.
+//
+// - When `Status` is set to `Processed`, you must provide the `RiskConfirm` parameter to specify the manually confirmed risk conclusion.
+//
+// - If `Status` is `Unprocess` or `Processing`, do not include the `RiskConfirm` parameter.
+//
+// - The `RiskScene` parameter is optional. If not provided, the system automatically populates it based on `RiskId`.
+//
+// - The `RiskConfirmDesc` field provides additional explanation or remarks for the handling decision. The length must be 1 to 128 characters.
+//
+// @param request - UpdateRiskStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRiskStatusResponse
+func (client *Client) UpdateRiskStatusWithContext(ctx context.Context, request *UpdateRiskStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateRiskStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.RiskConfirm) {
+		body["RiskConfirm"] = request.RiskConfirm
+	}
+
+	if !dara.IsNil(request.RiskConfirmDesc) {
+		body["RiskConfirmDesc"] = request.RiskConfirmDesc
+	}
+
+	if !dara.IsNil(request.RiskId) {
+		body["RiskId"] = request.RiskId
+	}
+
+	if !dara.IsNil(request.RiskScene) {
+		body["RiskScene"] = request.RiskScene
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateRiskStatus"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateRiskStatusResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

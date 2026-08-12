@@ -1,3 +1,14 @@
+2026-08-12 Version: v1.17.0
+- Support API CreateDomainMeta.
+- Support API DeleteDomainMeta.
+- Support API GetNacPortalSmsPhoneWhitelist.
+- Support API ListDomainMetas.
+- Support API ListRiskItems.
+- Support API UpdateDomainMeta.
+- Support API UpdateNacPortalSmsPhoneWhitelist.
+- Support API UpdateRiskStatus.
+
+
 2026-08-04 Version: v1.16.1
 - Update API CreateApprovalProcess: add request parameters MatchSchemas.PrivateAccessBlockSchemaId.
 - Update API CreateApprovalProcess: add response parameters Body.Process.PrivateAccessBlockPolicies.
