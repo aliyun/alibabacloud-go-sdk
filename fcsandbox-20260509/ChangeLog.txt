@@ -1,3 +1,11 @@
+2026-08-12 Version: v1.3.0
+- Support API CreateVolume.
+- Support API DeleteVolume.
+- Support API GetVolume.
+- Support API ListVolumes.
+- Support API UpdateVolume.
+
+
 2026-08-11 Version: v1.2.1
 - Update API CreateApiKey: add response parameters Body.ipBlacklist.
 - Update API CreateApiKey: add response parameters Body.ipWhitelist.

@@ -28,7 +28,7 @@ type ListTeamsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of teams to display per page.
+	// The number of teams displayed per page.
 	//
 	// example:
 	//

@@ -188,6 +188,67 @@ func (client *Client) CreateTeam(request *CreateTeamRequest) (_result *CreateTea
 
 // Summary:
 //
+// Creates a volume.
+//
+// @param request - CreateVolumeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVolumeResponse
+func (client *Client) CreateVolumeWithOptions(request *CreateVolumeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateVolumeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateVolume"),
+		Version:     dara.String("2026-05-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-05-09/volumes"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateVolumeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a volume.
+//
+// @param request - CreateVolumeRequest
+//
+// @return CreateVolumeResponse
+func (client *Client) CreateVolume(request *CreateVolumeRequest) (_result *CreateVolumeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateVolumeResponse{}
+	_body, _err := client.CreateVolumeWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an API key.
 //
 // @param request - DeleteApiKeyRequest
@@ -374,6 +435,72 @@ func (client *Client) DeleteTeam(teamID *string, request *DeleteTeamRequest) (_r
 
 // Summary:
 //
+// 删除 Volume
+//
+// @param request - DeleteVolumeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVolumeResponse
+func (client *Client) DeleteVolumeWithOptions(volumeID *string, request *DeleteVolumeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteVolumeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TeamID) {
+		query["teamID"] = request.TeamID
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteVolume"),
+		Version:     dara.String("2026-05-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-05-09/volumes/" + dara.PercentEncode(dara.StringValue(volumeID))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteVolumeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除 Volume
+//
+// @param request - DeleteVolumeRequest
+//
+// @return DeleteVolumeResponse
+func (client *Client) DeleteVolume(volumeID *string, request *DeleteVolumeRequest) (_result *DeleteVolumeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteVolumeResponse{}
+	_body, _err := client.DeleteVolumeWithOptions(volumeID, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries an API key.
 //
 // @param request - DescribeApiKeyRequest
@@ -551,6 +678,72 @@ func (client *Client) GetTeam(teamID *string, request *GetTeamRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &GetTeamResponse{}
 	_body, _err := client.GetTeamWithOptions(teamID, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看 Volume
+//
+// @param request - GetVolumeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVolumeResponse
+func (client *Client) GetVolumeWithOptions(volumeID *string, request *GetVolumeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetVolumeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TeamID) {
+		query["teamID"] = request.TeamID
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetVolume"),
+		Version:     dara.String("2026-05-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-05-09/volumes/" + dara.PercentEncode(dara.StringValue(volumeID))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetVolumeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看 Volume
+//
+// @param request - GetVolumeRequest
+//
+// @return GetVolumeResponse
+func (client *Client) GetVolume(volumeID *string, request *GetVolumeRequest) (_result *GetVolumeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetVolumeResponse{}
+	_body, _err := client.GetVolumeWithOptions(volumeID, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -802,6 +995,96 @@ func (client *Client) ListTeams(request *ListTeamsRequest) (_result *ListTeamsRe
 
 // Summary:
 //
+// 分页查询 Volumes
+//
+// @param request - ListVolumesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVolumesResponse
+func (client *Client) ListVolumesWithOptions(request *ListVolumesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListVolumesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ResourceGroupID) {
+		query["resourceGroupID"] = request.ResourceGroupID
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TeamID) {
+		query["teamID"] = request.TeamID
+	}
+
+	if !dara.IsNil(request.UserID) {
+		query["userID"] = request.UserID
+	}
+
+	if !dara.IsNil(request.VolumeName) {
+		query["volumeName"] = request.VolumeName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListVolumes"),
+		Version:     dara.String("2026-05-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-05-09/volumes"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListVolumesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询 Volumes
+//
+// @param request - ListVolumesRequest
+//
+// @return ListVolumesResponse
+func (client *Client) ListVolumes(request *ListVolumesRequest) (_result *ListVolumesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListVolumesResponse{}
+	_body, _err := client.ListVolumesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Resets an API key.
 //
 // @param request - ResetApiKeyRequest
@@ -1036,6 +1319,67 @@ func (client *Client) UpdateTeam(teamID *string, request *UpdateTeamRequest) (_r
 	headers := make(map[string]*string)
 	_result = &UpdateTeamResponse{}
 	_body, _err := client.UpdateTeamWithOptions(teamID, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新 Volume
+//
+// @param request - UpdateVolumeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVolumeResponse
+func (client *Client) UpdateVolumeWithOptions(volumeID *string, request *UpdateVolumeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateVolumeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateVolume"),
+		Version:     dara.String("2026-05-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-05-09/volumes/" + dara.PercentEncode(dara.StringValue(volumeID))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateVolumeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新 Volume
+//
+// @param request - UpdateVolumeRequest
+//
+// @return UpdateVolumeResponse
+func (client *Client) UpdateVolume(volumeID *string, request *UpdateVolumeRequest) (_result *UpdateVolumeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateVolumeResponse{}
+	_body, _err := client.UpdateVolumeWithOptions(volumeID, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

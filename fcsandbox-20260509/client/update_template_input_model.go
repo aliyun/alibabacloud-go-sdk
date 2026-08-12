@@ -15,12 +15,15 @@ type iUpdateTemplateInput interface {
 	GetLogConfiguration() *LogConfiguration
 	SetNetworkConfiguration(v *NetworkConfiguration) *UpdateTemplateInput
 	GetNetworkConfiguration() *NetworkConfiguration
+	SetTeamID(v string) *UpdateTemplateInput
+	GetTeamID() *string
 }
 
 type UpdateTemplateInput struct {
 	ContainerConfiguration *ContainerConfiguration `json:"containerConfiguration,omitempty" xml:"containerConfiguration,omitempty"`
 	LogConfiguration       *LogConfiguration       `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
 	NetworkConfiguration   *NetworkConfiguration   `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
+	TeamID                 *string                 `json:"teamID,omitempty" xml:"teamID,omitempty"`
 }
 
 func (s UpdateTemplateInput) String() string {
@@ -43,6 +46,10 @@ func (s *UpdateTemplateInput) GetNetworkConfiguration() *NetworkConfiguration {
 	return s.NetworkConfiguration
 }
 
+func (s *UpdateTemplateInput) GetTeamID() *string {
+	return s.TeamID
+}
+
 func (s *UpdateTemplateInput) SetContainerConfiguration(v *ContainerConfiguration) *UpdateTemplateInput {
 	s.ContainerConfiguration = v
 	return s
@@ -55,6 +62,11 @@ func (s *UpdateTemplateInput) SetLogConfiguration(v *LogConfiguration) *UpdateTe
 
 func (s *UpdateTemplateInput) SetNetworkConfiguration(v *NetworkConfiguration) *UpdateTemplateInput {
 	s.NetworkConfiguration = v
+	return s
+}
+
+func (s *UpdateTemplateInput) SetTeamID(v string) *UpdateTemplateInput {
+	s.TeamID = &v
 	return s
 }
 
