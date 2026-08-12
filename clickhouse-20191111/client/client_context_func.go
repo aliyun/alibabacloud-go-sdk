@@ -505,11 +505,11 @@ func (client *Client) CheckClickhouseToRDSWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries whether changing the configuration parameters of an ApsaraDB for ClickHouse community-compatible cluster in XML mode requires a restart.
+// Calls the CheckModifyConfigNeedRestart operation to check whether modifying configuration parameters in XML mode requires a restart for an ApsaraDB for ClickHouse Community-compatible Edition cluster.
 //
 // Description:
 //
-// > 该接口仅支持 2021 年 12 月 01 日之后创建的社区兼容版集群。
+// >This operation supports only Community-compatible Edition clusters created after December 1, 2021.
 //
 // @param request - CheckModifyConfigNeedRestartRequest
 //
@@ -1013,11 +1013,11 @@ func (client *Client) CreateBackupPolicyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Create an Alibaba Cloud ClickHouse cluster.
+// Creates an ApsaraDB for ClickHouse cluster.
 //
 // Description:
 //
-// Before you call this API, make sure that you understand the billing method and [price](https://help.aliyun.com/document_detail/167450.html) of ApsaraDB for ClickHouse.
+// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/167450.html) of ApsaraDB for ClickHouse.
 //
 // @param request - CreateDBInstanceRequest
 //
@@ -2591,7 +2591,7 @@ func (client *Client) DescribeBackupPolicyWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// > The data backup feature is available only on ApsaraDB for ClickHouse clusters running version 21.8 or later.
+// >Only ApsaraDB for ClickHouse clusters of version 21.8 or later support the data backup feature.
 //
 // @param request - DescribeBackupsRequest
 //
@@ -2887,7 +2887,7 @@ func (client *Client) DescribeDBClusterAccessWhiteListWithContext(ctx context.Co
 
 // Summary:
 //
-// Retrieves details for a specific ApsaraDB for ClickHouse cluster.
+// Queries the information of a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - DescribeDBClusterAttributeRequest
 //

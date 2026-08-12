@@ -70,18 +70,22 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"rus-west-1-pop":              dara.String("clickhouse.aliyuncs.com"),
 		"us-east-1":                   dara.String("clickhouse.aliyuncs.com"),
 		"us-west-1":                   dara.String("clickhouse.aliyuncs.com"),
-		"me-central-1":                dara.String("clickhouse.me-central-1.aliyuncs.com"),
-		"eu-west-1":                   dara.String("clickhouse.eu-west-1.aliyuncs.com"),
-		"eu-central-1":                dara.String("clickhouse.eu-central-1.aliyuncs.com"),
-		"cn-zhangjiakou":              dara.String("clickhouse.cn-zhangjiakou.aliyuncs.com"),
-		"cn-wulanchabu":               dara.String("clickhouse.aliyuncs.com"),
 		"cn-huhehaote":                dara.String("clickhouse.cn-huhehaote.aliyuncs.com"),
-		"cn-guangzhou":                dara.String("clickhouse.cn-guangzhou.aliyuncs.com"),
-		"cn-chengdu":                  dara.String("clickhouse.cn-chengdu.aliyuncs.com"),
-		"ap-southeast-6":              dara.String("clickhouse.ap-southeast-6.aliyuncs.com"),
-		"ap-southeast-5":              dara.String("clickhouse.ap-southeast-5.aliyuncs.com"),
 		"ap-southeast-3":              dara.String("clickhouse.aliyuncs.com"),
+		"cn-wulanchabu":               dara.String("clickhouse.cn-wulanchabu.aliyuncs.com"),
+		"cn-zhangjiakou":              dara.String("clickhouse.cn-zhangjiakou.aliyuncs.com"),
 		"ap-northeast-1":              dara.String("clickhouse.ap-northeast-1.aliyuncs.com"),
+		"cn-chengdu":                  dara.String("clickhouse.cn-chengdu.aliyuncs.com"),
+		"cn-guangzhou":                dara.String("clickhouse.cn-guangzhou.aliyuncs.com"),
+		"ap-southeast-5":              dara.String("clickhouse.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-6":              dara.String("clickhouse.ap-southeast-6.aliyuncs.com"),
+		"ap-southeast-8":              dara.String("clickhouse.ap-southeast-8.aliyuncs.com"),
+		"us-southeast-1":              dara.String("clickhouse.us-southeast-1.aliyuncs.com"),
+		"na-south-1":                  dara.String("clickhouse.na-south-1.aliyuncs.com"),
+		"eu-central-1":                dara.String("clickhouse.eu-central-1.aliyuncs.com"),
+		"eu-west-1":                   dara.String("clickhouse.eu-west-1.aliyuncs.com"),
+		"me-central-1":                dara.String("clickhouse.me-central-1.aliyuncs.com"),
+		"cn-wulanchabu-gic-1":         dara.String("clickhouse.cn-wulanchabu-gic-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -738,11 +742,11 @@ func (client *Client) CheckClickhouseToRDS(request *CheckClickhouseToRDSRequest)
 
 // Summary:
 //
-// Queries whether changing the configuration parameters of an ApsaraDB for ClickHouse community-compatible cluster in XML mode requires a restart.
+// Calls the CheckModifyConfigNeedRestart operation to check whether modifying configuration parameters in XML mode requires a restart for an ApsaraDB for ClickHouse Community-compatible Edition cluster.
 //
 // Description:
 //
-// > 该接口仅支持 2021 年 12 月 01 日之后创建的社区兼容版集群。
+// >This operation supports only Community-compatible Edition clusters created after December 1, 2021.
 //
 // @param request - CheckModifyConfigNeedRestartRequest
 //
@@ -790,11 +794,11 @@ func (client *Client) CheckModifyConfigNeedRestartWithOptions(request *CheckModi
 
 // Summary:
 //
-// Queries whether changing the configuration parameters of an ApsaraDB for ClickHouse community-compatible cluster in XML mode requires a restart.
+// Calls the CheckModifyConfigNeedRestart operation to check whether modifying configuration parameters in XML mode requires a restart for an ApsaraDB for ClickHouse Community-compatible Edition cluster.
 //
 // Description:
 //
-// > 该接口仅支持 2021 年 12 月 01 日之后创建的社区兼容版集群。
+// >This operation supports only Community-compatible Edition clusters created after December 1, 2021.
 //
 // @param request - CheckModifyConfigNeedRestartRequest
 //
@@ -1388,11 +1392,11 @@ func (client *Client) CreateBackupPolicy(request *CreateBackupPolicyRequest) (_r
 
 // Summary:
 //
-// Create an Alibaba Cloud ClickHouse cluster.
+// Creates an ApsaraDB for ClickHouse cluster.
 //
 // Description:
 //
-// Before you call this API, make sure that you understand the billing method and [price](https://help.aliyun.com/document_detail/167450.html) of ApsaraDB for ClickHouse.
+// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/167450.html) of ApsaraDB for ClickHouse.
 //
 // @param request - CreateDBInstanceRequest
 //
@@ -1556,11 +1560,11 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 
 // Summary:
 //
-// Create an Alibaba Cloud ClickHouse cluster.
+// Creates an ApsaraDB for ClickHouse cluster.
 //
 // Description:
 //
-// Before you call this API, make sure that you understand the billing method and [price](https://help.aliyun.com/document_detail/167450.html) of ApsaraDB for ClickHouse.
+// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/167450.html) of ApsaraDB for ClickHouse.
 //
 // @param request - CreateDBInstanceRequest
 //
@@ -3398,7 +3402,7 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 //
 // Description:
 //
-// > The data backup feature is available only on ApsaraDB for ClickHouse clusters running version 21.8 or later.
+// >Only ApsaraDB for ClickHouse clusters of version 21.8 or later support the data backup feature.
 //
 // @param request - DescribeBackupsRequest
 //
@@ -3482,7 +3486,7 @@ func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest
 //
 // Description:
 //
-// > The data backup feature is available only on ApsaraDB for ClickHouse clusters running version 21.8 or later.
+// >Only ApsaraDB for ClickHouse clusters of version 21.8 or later support the data backup feature.
 //
 // @param request - DescribeBackupsRequest
 //
@@ -3796,7 +3800,7 @@ func (client *Client) DescribeDBClusterAccessWhiteList(request *DescribeDBCluste
 
 // Summary:
 //
-// Retrieves details for a specific ApsaraDB for ClickHouse cluster.
+// Queries the information of a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - DescribeDBClusterAttributeRequest
 //
@@ -3856,7 +3860,7 @@ func (client *Client) DescribeDBClusterAttributeWithOptions(request *DescribeDBC
 
 // Summary:
 //
-// Retrieves details for a specific ApsaraDB for ClickHouse cluster.
+// Queries the information of a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - DescribeDBClusterAttributeRequest
 //

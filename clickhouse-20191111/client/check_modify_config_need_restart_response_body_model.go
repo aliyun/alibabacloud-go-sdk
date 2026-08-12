@@ -16,17 +16,17 @@ type iCheckModifyConfigNeedRestartResponseBody interface {
 }
 
 type CheckModifyConfigNeedRestartResponseBody struct {
-	// 变更配置参数后是否重启。取值说明：
+	// Indicates whether a restart is required after the configuration parameters are modified. Valid values:
 	//
-	// - **true**：重启。
+	// - **true**: A restart is required.
 	//
-	// - **false**：不重启。
+	// - **false**: A restart is not required.
 	//
 	// example:
 	//
 	// true
 	NeedRestart *bool `json:"NeedRestart,omitempty" xml:"NeedRestart,omitempty"`
-	// 请求 ID。
+	// The request ID.
 	//
 	// example:
 	//

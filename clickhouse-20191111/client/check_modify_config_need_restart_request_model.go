@@ -16,7 +16,7 @@ type iCheckModifyConfigNeedRestartRequest interface {
 }
 
 type CheckModifyConfigNeedRestartRequest struct {
-	// The configuration parameters to change.
+	// The configuration parameters to be modified.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type CheckModifyConfigNeedRestartRequest struct {
 	//
 	// </yandex>
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query the information of all clusters in the target region, including the cluster ID.
+	// The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all clusters in the specified region, including cluster IDs.
 	//
 	// This parameter is required.
 	//

@@ -68,7 +68,20 @@ type CheckScaleOutBalancedRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ScalingType          *string `json:"ScalingType,omitempty" xml:"ScalingType,omitempty"`
+	// The specification change type. Valid values:
+	//
+	// - ScaleOut: horizontal scale-out
+	//
+	// - ScaleIn: horizontal scale-in
+	//
+	// - MultiAzUpgrade: upgrade to multi-active zone deployment
+	//
+	// - DiskDownGrade: cloud disk downgrade.
+	//
+	// example:
+	//
+	// ScaleOut
+	ScalingType *string `json:"ScalingType,omitempty" xml:"ScalingType,omitempty"`
 }
 
 func (s CheckScaleOutBalancedRequest) String() string {

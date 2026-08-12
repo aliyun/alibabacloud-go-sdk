@@ -76,21 +76,21 @@ type iCreateDBInstanceRequest interface {
 type CreateDBInstanceRequest struct {
 	// Specifies whether to enable auto-renewal.
 	//
-	// > This parameter applies only when `PayType` is set to `Prepaid`.
+	// >This parameter takes effect only when PayType is set to Prepaid.
 	//
 	// example:
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The ID of the backup set. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/360339.html) API to query backup set IDs.
+	// The backup set ID. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/360339.html) operation to query the backup set ID.
 	//
-	// > This parameter is required when restoring data to an ApsaraDB for ClickHouse cluster.
+	// >This parameter is required when you restore data for an ApsaraDB for ClickHouse cluster.
 	//
 	// example:
 	//
 	// b-12af23adsf
 	BackupSetID *string `json:"BackupSetID,omitempty" xml:"BackupSetID,omitempty"`
-	// A client token used to ensure request idempotence. The value must be a string of no more than 64 ASCII characters.
+	// The client token that is used to ensure the idempotence of the request. The value is a string that contains up to 64 ASCII characters.
 	//
 	// example:
 	//
@@ -98,9 +98,9 @@ type CreateDBInstanceRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The replica configuration. Valid values:
 	//
-	// - **Basic**: single-replica
+	// - **Basic**: single-replica edition.
 	//
-	// - **HighAvailability**: high availability (dual-replica)
+	// - **HighAvailability**: double-replica edition.
 	//
 	// This parameter is required.
 	//
@@ -108,73 +108,76 @@ type CreateDBInstanceRequest struct {
 	//
 	// Basic
 	DBClusterCategory *string `json:"DBClusterCategory,omitempty" xml:"DBClusterCategory,omitempty"`
-	// The instance type.<props="china">
+	// The cluster specifications.
 	//
-	// - For single-replica clusters, valid values are:
+	// <props="china">
 	//
-	//   - **LS20**: Large-storage, 20 cores, 88 GB
+	// - Single-replica edition. Valid values:
 	//
-	//   - **LS40**: Large-storage, 40 cores, 176 GB
+	//     - **LS20**: large storage, 20 cores, 88 GB.
 	//
-	//   - **LS80**: Large-storage, 80 cores, 352 GB
+	//     - **LS40**: large storage, 40 cores, 176 GB.
 	//
-	//   - **S8**: Standard, 8 cores, 32 GB
+	//     - **LS80**: large storage, 80 cores, 352 GB.
 	//
-	//   - **S16**: Standard, 16 cores, 64 GB
+	//     - **S8**: standard, 8 cores, 32 GB.
 	//
-	//   - **S32**: Standard, 32 cores, 128 GB
+	//     - **S16**: standard, 16 cores, 64 GB.
 	//
-	//   - **S64**: Standard, 64 cores, 256 GB
+	//     - **S32**: standard, 32 cores, 128 GB.
 	//
-	//   - **S80**: Standard, 80 cores, 384 GB
+	//     - **S64**: standard, 64 cores, 256 GB.
 	//
-	//   - **S104**: Standard, 104 cores, 384 GB
+	//     - **S80**: standard, 80 cores, 384 GB.
 	//
-	// - For high availability clusters, valid values are:
+	//     - **S104**: standard, 104 cores, 384 GB.
 	//
-	//   - **LC20**: Large-storage, 20 cores, 88 GB
+	// - Double-replica edition. Valid values:
 	//
-	//   - **LC40**: Large-storage, 40 cores, 176 GB
+	//     - **LC20**: large storage, 20 cores, 88 GB.
 	//
-	//   - **LC80**: Large-storage, 80 cores, 352 GB
+	//     - **LC40**: large storage, 40 cores, 176 GB.
 	//
-	//   - **C8**: Standard, 8 cores, 32 GB
+	//     - **LC80**: large storage, 80 cores, 352 GB.
 	//
-	//   - **C16**: Standard, 16 cores, 64 GB
+	//     - **C8**: standard, 8 cores, 32 GB.
 	//
-	//   - **C32**: Standard, 32 cores, 128 GB
+	//     - **C16**: standard, 16 cores, 64 GB.
 	//
-	//   - **C64**: Standard, 64 cores, 256 GB
+	//     - **C32**: standard, 32 cores, 128 GB.
 	//
-	//   - **C80**: Standard, 80 cores, 384 GB
+	//     - **C64**: standard, 64 cores, 256 GB.
 	//
-	//   - **C104**: Standard, 104 cores, 384 GB
+	//     - **C80**: standard, 80 cores, 384 GB.
+	//
+	//     - **C104**: standard, 104 cores, 384 GB.
+	//
 	//
 	// <props="intl">
 	//
-	// - For single-replica clusters, valid values are:
+	// - Single-replica edition. Valid values:
 	//
-	//   - **S8**: 8 cores, 32 GB
+	//   - **S8**: 8 cores, 32 GB.
 	//
-	//   - **S16**: 16 cores, 64 GB
+	//   - **S16**: 16 cores, 64 GB.
 	//
-	//   - **S32**: 32 cores, 128 GB
+	//   - **S32**: 32 cores, 128 GB.
 	//
-	//   - **S64**: 64 cores, 256 GB
+	//   - **S64**: 64 cores, 256 GB.
 	//
-	//   - **S104**: 104 cores, 384 GB
+	//   - **S104**: 104 cores, 384 GB.
 	//
-	// - For high availability clusters, valid values are:
+	// - Double-replica edition. Valid values:
 	//
-	//   - **C8**: 8 cores, 32 GB
+	//   - **C8**: 8 cores, 32 GB.
 	//
-	//   - **C16**: 16 cores, 64 GB
+	//   - **C16**: 16 cores, 64 GB.
 	//
-	//   - **C32**: 32 cores, 128 GB
+	//   - **C32**: 32 cores, 128 GB.
 	//
-	//   - **C64**: 64 cores, 256 GB
+	//   - **C64**: 64 cores, 256 GB.
 	//
-	//   - **C104**: 104 cores, 384 GB
+	//   - **C104**: 104 cores, 384 GB.
 	//
 	// This parameter is required.
 	//
@@ -188,7 +191,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// test
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	// The network type. Currently, only VPC is supported.
+	// The network type. Only VPC is supported.
 	//
 	// This parameter is required.
 	//
@@ -196,7 +199,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// VPC
 	DBClusterNetworkType *string `json:"DBClusterNetworkType,omitempty" xml:"DBClusterNetworkType,omitempty"`
-	// The engine version. Valid values:
+	// The kernel version. Valid values:
 	//
 	// - **21.8.10.19**
 	//
@@ -210,9 +213,9 @@ type CreateDBInstanceRequest struct {
 	DBClusterVersion *string `json:"DBClusterVersion,omitempty" xml:"DBClusterVersion,omitempty"`
 	// The number of nodes.
 	//
-	// - For single-replica clusters, the valid range is 1–48.
+	// - Single-replica edition: valid values: 1 to 48.
 	//
-	// - For high availability clusters, the valid range is 1–24.
+	// - Double-replica edition: valid values: 1 to 24.
 	//
 	// This parameter is required.
 	//
@@ -220,9 +223,9 @@ type CreateDBInstanceRequest struct {
 	//
 	// 1
 	DBNodeGroupCount *string `json:"DBNodeGroupCount,omitempty" xml:"DBNodeGroupCount,omitempty"`
-	// The storage capacity per node, in GB. The valid range is 100–32,000.
+	// The storage capacity per node. Valid values: 100 to 32000. Unit: GB.
 	//
-	// > The value must be a multiple of 100.
+	// >The step size is 100 GB.
 	//
 	// This parameter is required.
 	//
@@ -232,20 +235,15 @@ type CreateDBInstanceRequest struct {
 	DBNodeStorage *string `json:"DBNodeStorage,omitempty" xml:"DBNodeStorage,omitempty"`
 	// The storage type. Valid values:
 	//
-	// <props="china">
+	// <props="china">- **CloudESSD_PL0**: PL0 ESSD.
 	//
-	// - **CloudESSD_PL0**: ESSD PL0 cloud disk
+	// - **CloudESSD**: PL1 ESSD.
 	//
+	// - **CloudESSD_PL2**: PL2 ESSD.
 	//
+	// - **CloudESSD_PL3**: PL3 ESSD.
 	//
-	//
-	// - **CloudESSD**: ESSD PL1 cloud disk
-	//
-	// - **CloudESSD_PL2**: ESSD PL2 cloud disk
-	//
-	// - **CloudESSD_PL3**: ESSD PL3 cloud disk
-	//
-	// - **CloudEfficiency**: Ultra Disk
+	// - **CloudEfficiency**: ultra cloud disk.
 	//
 	// This parameter is required.
 	//
@@ -253,19 +251,19 @@ type CreateDBInstanceRequest struct {
 	//
 	// CloudESSD_PL2
 	DbNodeStorageType *string `json:"DbNodeStorageType,omitempty" xml:"DbNodeStorageType,omitempty"`
-	// This parameter is required when `EncryptionType` is set to `CloudDisk`.
+	// The ID of the key used for cloud disk encryption. This parameter is required when EncryptionType is set to CloudDisk.
 	//
-	// The ID of the cloud disk encryption key. You can create and manage keys in the Key Management Service console.
+	// You can view the key ID in the Key Management Service (KMS) console or create a key.
 	//
-	// > If `EncryptionType` is not specified, you do not need to specify this parameter.
+	// >If EncryptionType is not specified, you do not need to specify this parameter.
 	//
 	// example:
 	//
 	// 0d2470df-da7b-4786-b981-9a164dae****
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	// The encryption type. Only cloud disk encryption is supported. Set this value to **CloudDisk**.
+	// The encryption type. Only cloud disk encryption is supported. Set the value to **CloudDisk**.
 	//
-	// > If you do not specify this parameter, encryption is disabled.
+	// >If this parameter is not specified, data is not encrypted.
 	//
 	// example:
 	//
@@ -275,9 +273,9 @@ type CreateDBInstanceRequest struct {
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The billing method. Valid values:
 	//
-	// - **Postpaid**: pay-as-you-go
+	// - **Postpaid**: pay-as-you-go.
 	//
-	// - **Prepaid**: subscription
+	// - **Prepaid**: subscription.
 	//
 	// This parameter is required.
 	//
@@ -285,19 +283,19 @@ type CreateDBInstanceRequest struct {
 	//
 	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The subscription duration unit.
+	// The subscription type of the subscription cluster. Valid values:
 	//
-	// 	Notice: This parameter is required only when `PayType` is set to `Prepaid`.
+	// 	Notice: This parameter takes effect and is required only when PayType is set to Prepaid.
 	//
-	// - **Year**: Measured in years.
+	// - **Year**: subscription on a yearly basis.
 	//
-	// - **Month**: Measured in months.
+	// - **Month**: subscription on a monthly basis.
 	//
 	// example:
 	//
 	// Month
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) API to query the latest region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -305,7 +303,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group that contains the cluster.
+	// The ID of the resource group to which the cluster belongs.
 	//
 	// example:
 	//
@@ -313,29 +311,29 @@ type CreateDBInstanceRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the source cluster. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) API to query cluster IDs.
+	// The source cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query the cluster ID.
 	//
-	// > This parameter is required when restoring data to an ApsaraDB for ClickHouse cluster.
+	// >This parameter is required when you restore data for an ApsaraDB for ClickHouse cluster.
 	//
 	// example:
 	//
 	// cc-bp1lxbo89u950****
 	SourceDBClusterId *string `json:"SourceDBClusterId,omitempty" xml:"SourceDBClusterId,omitempty"`
-	// The tags to add to the cluster.
+	// The tag information.
 	Tags []*CreateDBInstanceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The subscription duration.
+	// The subscription duration of the subscription cluster.
 	//
-	// 	Notice: This parameter is required only when `PayType` is set to `Prepaid`.
+	// 	Notice: This parameter takes effect and is required only when PayType is set to Prepaid.
 	//
-	// - If `Period` is `Year`, the valid range is 1–3.
+	// - If Period is set to Year, valid values: 1 to 3 (integer).
 	//
-	// - If `Period` is `Month`, the valid range is 1–9.
+	// - If Period is set to Month, valid values: 1 to 9 (integer).
 	//
 	// example:
 	//
 	// 1
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// The VPC ID.
+	// VPC ID。
 	//
 	// This parameter is required.
 	//
@@ -343,19 +341,19 @@ type CreateDBInstanceRequest struct {
 	//
 	// vpc-bp175iuvg8nxqraf2****
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The ID of the secondary VSwitch.
+	// The secondary vSwitch.
 	//
 	// example:
 	//
 	// vsw-bp1gzt31twhlo0sa5****
 	VSwitchBak *string `json:"VSwitchBak,omitempty" xml:"VSwitchBak,omitempty"`
-	// The ID of the second standby VSwitch.
+	// The secondary vSwitch 2.
 	//
 	// example:
 	//
 	// vsw-bp1gzt31twhlo0sa5****
 	VSwitchBak2 *string `json:"VSwitchBak2,omitempty" xml:"VSwitchBak2,omitempty"`
-	// The VSwitch ID.
+	// The vSwitch ID.
 	//
 	// This parameter is required.
 	//
@@ -363,19 +361,19 @@ type CreateDBInstanceRequest struct {
 	//
 	// vsw-bp1gzt31twhlo0sa5****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the second standby availability zone.
+	// The secondary zone 2.
 	//
 	// example:
 	//
 	// cn-hangzhou-j
 	ZondIdBak2 *string `json:"ZondIdBak2,omitempty" xml:"ZondIdBak2,omitempty"`
-	// The availability zone ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) API to query the latest availability zone list.
+	// The zone ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the zone ID.
 	//
 	// example:
 	//
 	// cn-hangzhou-h
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The ID of the secondary availability zone.
+	// The secondary zone.
 	//
 	// example:
 	//

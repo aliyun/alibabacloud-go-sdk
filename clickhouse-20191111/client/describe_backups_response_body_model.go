@@ -48,7 +48,7 @@ type DescribeBackupsResponseBody struct {
 	//
 	// F5178C10-1407-4987-9133-DE4DC9119F75
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -123,41 +123,51 @@ func (s *DescribeBackupsResponseBody) Validate() error {
 }
 
 type DescribeBackupsResponseBodyItems struct {
-	// The end time of the backup. The time is in the yyyy-MM-ddTHH:mmZ format and is displayed in UTC.
+	// The time when the backup ended.
+	//
+	// Format: yyyy-MM-ddTHH:mmZ (UTC).
 	//
 	// example:
 	//
 	// 2021-11-22T18:28:41Z
 	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
-	// The data backup task ID.
+	// The ID of the backup task.
 	//
 	// example:
 	//
 	// 117403****
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The backup method. The value is always **Physical**, which indicates a physical backup.
+	// The backup method. The value is **Physical**, which indicates physical backup.
 	//
 	// example:
 	//
 	// Physical
 	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	// The number of cluster nodes.
+	// The backup type. Valid values: manual (manual backup) and scheduled (automatic backup).
 	//
-	// - For a single-replica edition cluster, the value is an integer from 1 to 48.
+	// example:
 	//
-	// - For a double-replica edition cluster, the value is an integer from 1 to 24.
+	// manual
+	BackupScheduleType *string `json:"BackupScheduleType,omitempty" xml:"BackupScheduleType,omitempty"`
+	// The number of nodes in the cluster.
+	//
+	// - Single-replica edition: valid values: 1 to 48.
+	//
+	// - Master-replica cluster: valid values: 1 to 24.
 	//
 	// example:
 	//
 	// {"shard_count": 4}
 	BackupSetInfo *string `json:"BackupSetInfo,omitempty" xml:"BackupSetInfo,omitempty"`
-	// The backup size. Unit: MB.
+	// The backup size.
+	//
+	// Unit: MB.
 	//
 	// example:
 	//
 	// 131072
 	BackupSize *int64 `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	// The start time of the backup. The time is in the yyyy-MM-ddTHH:mmZ format and is displayed in UTC.
+	// The time when the backup started. Format: yyyy-MM-ddTHH:mmZ (UTC).
 	//
 	// example:
 	//
@@ -165,7 +175,7 @@ type DescribeBackupsResponseBodyItems struct {
 	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
 	// The backup status. Valid values:
 	//
-	// - **Success**: The backup is successful.
+	// - **Success**: The backup is complete.
 	//
 	// - **Failure**: The backup failed.
 	//
@@ -189,7 +199,9 @@ type DescribeBackupsResponseBodyItems struct {
 	//
 	// cc-bp1qx68m06981****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The expiration time of the backup set. The time is in the yyyy-MM-ddTHH:mmZ format and is displayed in UTC.
+	// The expiration time of the backup set.
+	//
+	// Format: yyyy-MM-ddTHH:mmZ (UTC).
 	//
 	// example:
 	//
@@ -215,6 +227,10 @@ func (s *DescribeBackupsResponseBodyItems) GetBackupId() *string {
 
 func (s *DescribeBackupsResponseBodyItems) GetBackupMethod() *string {
 	return s.BackupMethod
+}
+
+func (s *DescribeBackupsResponseBodyItems) GetBackupScheduleType() *string {
+	return s.BackupScheduleType
 }
 
 func (s *DescribeBackupsResponseBodyItems) GetBackupSetInfo() *string {
@@ -257,6 +273,11 @@ func (s *DescribeBackupsResponseBodyItems) SetBackupId(v string) *DescribeBackup
 
 func (s *DescribeBackupsResponseBodyItems) SetBackupMethod(v string) *DescribeBackupsResponseBodyItems {
 	s.BackupMethod = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyItems) SetBackupScheduleType(v string) *DescribeBackupsResponseBodyItems {
+	s.BackupScheduleType = &v
 	return s
 }
 
