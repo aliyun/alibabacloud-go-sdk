@@ -22,19 +22,38 @@ type iGetNotificationClickRecordResponseBody interface {
 }
 
 type GetNotificationClickRecordResponseBody struct {
+	// The status code.
+	//
+	// - **200**: Succeeded.
+	//
+	// - **Others (400, 500)**: Failed.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The metadata.
 	Data *GetNotificationClickRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// > If the request was successful, a success message is returned. If the request failed, the failure reason is returned.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 99D93ED4-D462-5FC5-8518-9BC1C49C7B6C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -104,10 +123,22 @@ func (s *GetNotificationClickRecordResponseBody) Validate() error {
 }
 
 type GetNotificationClickRecordResponseBodyData struct {
+	// Indicates whether the user clicked cancel.
+	//
+	// - **true**: Canceled.
+	//
+	// - **false**: Not canceled.
+	//
 	// example:
 	//
 	// false
 	UserCancel *string `json:"UserCancel,omitempty" xml:"UserCancel,omitempty"`
+	// Indicates whether the user clicked confirm.
+	//
+	// - **true**: Confirmed.
+	//
+	// - **false**: Not confirmed.
+	//
 	// example:
 	//
 	// true

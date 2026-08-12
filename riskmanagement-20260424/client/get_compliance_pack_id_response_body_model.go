@@ -22,22 +22,40 @@ type iGetCompliancePackIdResponseBody interface {
 }
 
 type GetCompliancePackIdResponseBody struct {
+	// The status code. Valid values:
+	//
+	// - **200**: Succeeded.
+	//
+	// - **Others (400, 500)**: Failed.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The compliance package ID.
+	//
 	// example:
 	//
 	// cp-9g78b15xxxd0005d5a7
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 855FCC89-0B13-5FC0-AAD2-120878081C1C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true

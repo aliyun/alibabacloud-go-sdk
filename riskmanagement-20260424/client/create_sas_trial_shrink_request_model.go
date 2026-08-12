@@ -16,10 +16,13 @@ type iCreateSasTrialShrinkRequest interface {
 }
 
 type CreateSasTrialShrinkRequest struct {
+	// The region ID of the access control instance. You can call the DescribeRegions operation to query the region ID.
+	//
 	// example:
 	//
 	// cn-shenzhen
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Security Center SDK request.
 	SdkRequestShrink *string `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty"`
 }
 

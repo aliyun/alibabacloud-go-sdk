@@ -16,10 +16,13 @@ type iDescribeVersionConfigShrinkRequest interface {
 }
 
 type DescribeVersionConfigShrinkRequest struct {
+	// The ID of the region in which the instance resides.
+	//
 	// example:
 	//
 	// cn-guangzhou
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Security Center SDK request.
 	SdkRequestShrink *string `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty"`
 }
 

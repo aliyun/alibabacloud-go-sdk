@@ -16,10 +16,13 @@ type iBindAuthToMachineShrinkRequest interface {
 }
 
 type BindAuthToMachineShrinkRequest struct {
+	// The region ID of the Smart Access Gateway instance.
+	//
 	// example:
 	//
 	// cn-shenzhen
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Security Center SDK request.
 	SdkRequestShrink *string `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty"`
 }
 

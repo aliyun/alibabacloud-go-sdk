@@ -14,6 +14,7 @@ type iGetSecuritySuggestionListShrinkRequest interface {
 }
 
 type GetSecuritySuggestionListShrinkRequest struct {
+	// The request parameters.
 	ListConfigRulesRequestShrink *string `json:"ListConfigRulesRequest,omitempty" xml:"ListConfigRulesRequest,omitempty"`
 }
 

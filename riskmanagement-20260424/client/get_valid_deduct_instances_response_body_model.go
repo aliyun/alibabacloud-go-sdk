@@ -22,19 +22,32 @@ type iGetValidDeductInstancesResponseBody interface {
 }
 
 type GetValidDeductInstancesResponseBody struct {
+	// The return code. A value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data list.
 	Data *GetValidDeductInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The return message.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2FBDD713-00A5-5C98-B661-3FD31A349B6E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the current API call itself is successful. This does not indicate the success of subsequent business operations.
+	//
+	// - **true**: Successful.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -104,6 +117,7 @@ func (s *GetValidDeductInstancesResponseBody) Validate() error {
 }
 
 type GetValidDeductInstancesResponseBodyData struct {
+	// The message body.
 	Body *GetValidDeductInstancesResponseBodyDataBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
 }
 
@@ -134,7 +148,10 @@ func (s *GetValidDeductInstancesResponseBodyData) Validate() error {
 }
 
 type GetValidDeductInstancesResponseBodyDataBody struct {
+	// The data body.
 	Data *GetValidDeductInstancesResponseBodyDataBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The Security Center request ID.
+	//
 	// example:
 	//
 	// A6FB9AC3-4431-538F-BA8A-2A13AEA208A4
@@ -177,10 +194,17 @@ func (s *GetValidDeductInstancesResponseBodyDataBody) Validate() error {
 }
 
 type GetValidDeductInstancesResponseBodyDataBodyData struct {
+	// Indicates whether the account is eligible for a trial. Valid values:
+	//
+	// - **true**: Eligible.
+	//
+	// - **false**: Not eligible.
+	//
 	// example:
 	//
 	// true
-	CanTry            *bool                                                               `json:"CanTry,omitempty" xml:"CanTry,omitempty"`
+	CanTry *bool `json:"CanTry,omitempty" xml:"CanTry,omitempty"`
+	// The resource plan usage details.
 	DeductPackageList []*GetValidDeductInstancesResponseBodyDataBodyDataDeductPackageList `json:"DeductPackageList,omitempty" xml:"DeductPackageList,omitempty" type:"Repeated"`
 }
 
@@ -224,34 +248,60 @@ func (s *GetValidDeductInstancesResponseBodyDataBodyData) Validate() error {
 }
 
 type GetValidDeductInstancesResponseBodyDataBodyDataDeductPackageList struct {
+	// The number of authorizations consumed in the current metering cycle.
+	//
 	// example:
 	//
 	// 10
 	CurrentPeriodUsed *int64 `json:"CurrentPeriodUsed,omitempty" xml:"CurrentPeriodUsed,omitempty"`
+	// The end time.
+	//
 	// example:
 	//
 	// 1737734400000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The total capacity of the resource plan.
+	//
 	// example:
 	//
 	// 1000
 	InitCapacity *float64 `json:"InitCapacity,omitempty" xml:"InitCapacity,omitempty"`
+	// The resource plan instance ID.
+	//
 	// example:
 	//
 	// apigateway-hz-96f6659a1490
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The module code. Valid values:
+	//
+	// - **POST_HOST**: Host and container protection.
+	//
+	// - **CSPM**: Cloud product configuration check.
+	//
+	// - **VUL**: Vulnerability scanning.
+	//
 	// example:
 	//
 	// POST_HOST
 	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// The number of authorizations consumed up to the previous billing cycle.
+	//
 	// example:
 	//
 	// 1
 	PeriodCapacity *float64 `json:"PeriodCapacity,omitempty" xml:"PeriodCapacity,omitempty"`
+	// The start timestamp, in milliseconds.
+	//
 	// example:
 	//
 	// 1737734400000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The resource plan status. Valid values:
+	//
+	// - **valid**: Valid.
+	//
+	// - **invalid**: Invalid.
+	//
 	// example:
 	//
 	// CREATE_FAILED

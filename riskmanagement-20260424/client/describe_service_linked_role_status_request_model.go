@@ -16,10 +16,13 @@ type iDescribeServiceLinkedRoleStatusRequest interface {
 }
 
 type DescribeServiceLinkedRoleStatusRequest struct {
+	// The ID of the region in which the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId   *string                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Security Center SDK request.
 	SdkRequest *DescribeServiceLinkedRoleStatusRequestSdkRequest `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty" type:"Struct"`
 }
 
@@ -59,6 +62,12 @@ func (s *DescribeServiceLinkedRoleStatusRequest) Validate() error {
 }
 
 type DescribeServiceLinkedRoleStatusRequestSdkRequest struct {
+	// The service-linked role. Default value: **AliyunServiceRoleForSas**. Valid values:
+	//
+	// - **AliyunServiceRoleForSas**: the service-linked role for Security Center (sas). Security Center uses this role to access your resources in other Alibaba Cloud services.
+	//
+	// - **AliyunServiceRoleForSasCspm**: the service-linked role for Security Center - CSPM (sas-cspm). sas-cspm uses this role to access your resources in other Alibaba Cloud services.
+	//
 	// example:
 	//
 	// AliyunServiceRoleForSas

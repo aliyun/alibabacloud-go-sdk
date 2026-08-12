@@ -22,19 +22,32 @@ type iGetAlertRecordAnalysisResultRequest interface {
 }
 
 type GetAlertRecordAnalysisResultRequest struct {
+	// The unique identifier of the alert event. (Deprecated)
+	//
 	// example:
 	//
 	// 9b57f0fcf98181df8d8487d1cc91cb8d
 	AlarmUniqueInfo *string `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
+	// The language of the content. Valid values:
+	//
+	// - **zh*	- (default): Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// The unique ID of the alert event. (Deprecated)
+	//
 	// example:
 	//
 	// fc312aa0c32ba8a6147db6221fb1c1ee
-	UniqueInfo    *string                                             `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
+	UniqueInfo *string `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
+	// The array of tracing requests.
 	UniqueTagList []*GetAlertRecordAnalysisResultRequestUniqueTagList `json:"UniqueTagList,omitempty" xml:"UniqueTagList,omitempty" type:"Repeated"`
+	// The unique identifier of the asset. (Deprecated)
+	//
 	// example:
 	//
 	// ebde6d4e3e4aba728962eec43a69196e9J7tt7H47Pc
@@ -108,34 +121,54 @@ func (s *GetAlertRecordAnalysisResultRequest) Validate() error {
 }
 
 type GetAlertRecordAnalysisResultRequestUniqueTagList struct {
+	// The unique ID of the alert event.
+	//
 	// example:
 	//
 	// 10a19b654e73ff079ede61ce3f4465e0
 	AlarmUniqueInfo *string `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
+	// Indicates whether the result is liked. Valid values:
+	//
+	// - **true**: Liked.
+	//
+	// - **false**: Not liked.
+	//
 	// example:
 	//
 	// false
 	ChooseLike *bool `json:"ChooseLike,omitempty" xml:"ChooseLike,omitempty"`
+	// The public IP address.
+	//
 	// example:
 	//
 	// pc-bp19up785757dz800
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// i-rj9c7d4bli38***tuym
 	MachineInstanceId *string `json:"MachineInstanceId,omitempty" xml:"MachineInstanceId,omitempty"`
+	// The query tracing time.
+	//
 	// example:
 	//
 	// 2025-06-27 00:00:00
 	QueryTime *string `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
+	// The vulnerability type.
+	//
 	// example:
 	//
 	// BusinessLicense
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The unique identifier of the alert event.
+	//
 	// example:
 	//
 	// fc312aa0c32ba8a6147db6221fb1c1ee
 	UniqueInfo *string `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
+	// The unique identifier of the asset.
+	//
 	// example:
 	//
 	// 3309e55fcb1ed8d4bc6af098e62e0353RNabnQSO1bx

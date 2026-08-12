@@ -16,10 +16,13 @@ type iGetValidDeductInstancesShrinkRequest interface {
 }
 
 type GetValidDeductInstancesShrinkRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-fuzhou
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Security Center SDK request parameters.
 	SdkRequestShrink *string `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty"`
 }
 

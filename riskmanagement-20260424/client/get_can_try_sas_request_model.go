@@ -16,10 +16,13 @@ type iGetCanTrySasRequest interface {
 }
 
 type GetCanTrySasRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-guangzhou
-	RegionId   *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Security Center SDK request parameters.
 	SdkRequest *GetCanTrySasRequestSdkRequest `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty" type:"Struct"`
 }
 
@@ -59,10 +62,22 @@ func (s *GetCanTrySasRequest) Validate() error {
 }
 
 type GetCanTrySasRequestSdkRequest struct {
+	// Specifies whether the request is from the ECS console. Valid values:
+	//
+	// - **true**: The request is from the ECS console.
+	//
+	// - **false**: The request is not from the ECS console.
+	//
 	// example:
 	//
 	// true
 	FromEcs *bool `json:"FromEcs,omitempty" xml:"FromEcs,omitempty"`
+	// The language type for the request and response messages. Default value: zh. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh

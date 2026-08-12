@@ -22,19 +22,32 @@ type iGetAlertRecordAnalysisResultResponseBody interface {
 }
 
 type GetAlertRecordAnalysisResultResponseBody struct {
+	// The error code returned if the call fails. For more information, see error codes.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *GetAlertRecordAnalysisResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful‌
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 99D93ED4-D462-5FC5-8518-9BC1C49C7B6C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// - **true**: The call is successful.
+	//
+	// - **false**: The call fails.
+	//
 	// example:
 	//
 	// true
@@ -104,10 +117,13 @@ func (s *GetAlertRecordAnalysisResultResponseBody) Validate() error {
 }
 
 type GetAlertRecordAnalysisResultResponseBodyData struct {
+	// The code of the tracing result. (Deprecated)
+	//
 	// example:
 	//
 	// -
-	AnalysisCode  *string                                                      `json:"AnalysisCode,omitempty" xml:"AnalysisCode,omitempty"`
+	AnalysisCode *string `json:"AnalysisCode,omitempty" xml:"AnalysisCode,omitempty"`
+	// The list of tracing results.
 	UniqueTagList []*GetAlertRecordAnalysisResultResponseBodyDataUniqueTagList `json:"UniqueTagList,omitempty" xml:"UniqueTagList,omitempty" type:"Repeated"`
 }
 
@@ -151,42 +167,70 @@ func (s *GetAlertRecordAnalysisResultResponseBodyData) Validate() error {
 }
 
 type GetAlertRecordAnalysisResultResponseBodyDataUniqueTagList struct {
+	// The unique identifier of the alert event.
+	//
 	// example:
 	//
 	// 179deb12f25baac9b1e2909c419bcb1f
 	AlarmUniqueInfo *string `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
+	// The 16-digit AliUid of the user.
+	//
 	// example:
 	//
 	// 1248751055158884
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The code of the tracing result.
+	//
 	// example:
 	//
 	// test_code
 	AnalysisCode *string `json:"AnalysisCode,omitempty" xml:"AnalysisCode,omitempty"`
+	// The text of the tracing result.
+	//
 	// example:
 	//
 	// exception_alert
 	AnalysisResult *string `json:"AnalysisResult,omitempty" xml:"AnalysisResult,omitempty"`
+	// Indicates whether the result is liked. Valid values:
+	//
+	// - **true**: Liked.
+	//
+	// - **false**: Not liked.
+	//
 	// example:
 	//
 	// true
 	ChooseLike *bool `json:"ChooseLike,omitempty" xml:"ChooseLike,omitempty"`
+	// The IP address.
+	//
 	// example:
 	//
 	// 110.22.*8.111
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The instance ID of the server.
+	//
 	// example:
 	//
 	// i-adadasd-a**
 	MachineInstanceId *string `json:"MachineInstanceId,omitempty" xml:"MachineInstanceId,omitempty"`
+	// The display mode of the exception event details. Valid values:
+	//
+	// - **text**: plain text
+	//
+	// - **html**: rich text
+	//
 	// example:
 	//
 	// auto_breaking
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The unique ID of the alert event.
+	//
 	// example:
 	//
 	// 390317ce81d28bbbd83c05a90b39cd6c
 	UniqueInfo *string `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
+	// The UUID of the server.
+	//
 	// example:
 	//
 	// bb3051ca-c0dd-4da2-91be-ea5c80926132

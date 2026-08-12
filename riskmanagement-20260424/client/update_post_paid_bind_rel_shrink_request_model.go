@@ -16,10 +16,13 @@ type iUpdatePostPaidBindRelShrinkRequest interface {
 }
 
 type UpdatePostPaidBindRelShrinkRequest struct {
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-huhehaote
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Security Center SDK request parameters.
 	SdkRequestShrink *string `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty"`
 }
 

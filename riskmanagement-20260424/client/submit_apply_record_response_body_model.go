@@ -22,22 +22,44 @@ type iSubmitApplyRecordResponseBody interface {
 }
 
 type SubmitApplyRecordResponseBody struct {
+	// The status code.
+	//
+	// - **200**: Succeeded.
+	//
+	// - **Other (400, 500)**: Failed.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The submission result.
+	//
+	// - **true**: Submitted.
+	//
+	// - **false**: Submission failed.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The message content.
+	//
 	// example:
 	//
 	// successful‌
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6B57D35D-9DAC-5393-AE39-07697E37C2E7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The call status.
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true

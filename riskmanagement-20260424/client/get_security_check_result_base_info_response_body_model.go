@@ -22,19 +22,34 @@ type iGetSecurityCheckResultBaseInfoResponseBody interface {
 }
 
 type GetSecurityCheckResultBaseInfoResponseBody struct {
+	// The status code.
+	//
+	// >  200: The request was successful. Other codes (such as 500 or 400): An error occurred.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data list.
 	Data *GetSecurityCheckResultBaseInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The prompt message.
+	//
 	// example:
 	//
 	// successful‌
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 739705BB-B0EF-554B-B3A8-383F4F93E067
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the current API call itself was successful. This does not indicate the success of subsequent business operations.
+	//
+	// - **true**: Successful.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -104,18 +119,26 @@ func (s *GetSecurityCheckResultBaseInfoResponseBody) Validate() error {
 }
 
 type GetSecurityCheckResultBaseInfoResponseBodyData struct {
+	// The configuration item check result.
+	//
 	// example:
 	//
 	// true
 	ConfigCompleted *string `json:"ConfigCompleted,omitempty" xml:"ConfigCompleted,omitempty"`
+	// The number of pending security alerts.
+	//
 	// example:
 	//
 	// 1
 	PendingSecurityAlertCount *int32 `json:"PendingSecurityAlertCount,omitempty" xml:"PendingSecurityAlertCount,omitempty"`
+	// The number of pending vulnerabilities.
+	//
 	// example:
 	//
 	// 5
 	PendingVulnerabilityCount *int32 `json:"PendingVulnerabilityCount,omitempty" xml:"PendingVulnerabilityCount,omitempty"`
+	// The percentage of the health check task progress.
+	//
 	// example:
 	//
 	// 30%

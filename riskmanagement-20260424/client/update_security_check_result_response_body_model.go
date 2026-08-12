@@ -22,22 +22,42 @@ type iUpdateSecurityCheckResultResponseBody interface {
 }
 
 type UpdateSecurityCheckResultResponseBody struct {
+	// The status code.
+	//
+	// >  200: The request was successful. Other codes (500, 400, etc.): An error occurred.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result of updating the health check result.
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6B57D35D-9DAC-5393-AE39-07697E37C2E7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful:
+	//
+	// - **true**: The call was successful.
+	//
+	// -  **false**: The call failed.
+	//
 	// example:
 	//
 	// true

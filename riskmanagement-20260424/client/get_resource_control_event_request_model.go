@@ -18,16 +18,25 @@ type iGetResourceControlEventRequest interface {
 }
 
 type GetResourceControlEventRequest struct {
+	// The language. Valid values:
+	//
+	// - **zh*	- (default): Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// The alert event ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 09C-2PpwIzkpx2zG2fuFrAH55CpJaTK
-	EventId     *string   `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The list of specified event IDs.
 	EventIdList []*string `json:"EventIdList,omitempty" xml:"EventIdList,omitempty" type:"Repeated"`
 }
 

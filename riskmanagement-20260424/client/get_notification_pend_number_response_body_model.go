@@ -22,22 +22,36 @@ type iGetNotificationPendNumberResponseBody interface {
 }
 
 type GetNotificationPendNumberResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The number of pending items for security contacts.
+	//
 	// example:
 	//
 	// 5
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The prompt message.
+	//
 	// example:
 	//
 	// successful‌
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEE90F8C-EDC2-5394-953B-D07A121612B5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// True

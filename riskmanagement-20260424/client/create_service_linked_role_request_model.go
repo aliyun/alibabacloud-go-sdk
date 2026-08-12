@@ -16,10 +16,13 @@ type iCreateServiceLinkedRoleRequest interface {
 }
 
 type CreateServiceLinkedRoleRequest struct {
+	// The region ID of the Smart Access Gateway instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId   *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Security Center SDK request.
 	SdkRequest *CreateServiceLinkedRoleRequestSdkRequest `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty" type:"Struct"`
 }
 
@@ -59,6 +62,12 @@ func (s *CreateServiceLinkedRoleRequest) Validate() error {
 }
 
 type CreateServiceLinkedRoleRequestSdkRequest struct {
+	// The service-linked role. Default value: **AliyunServiceRoleForSas**. Valid values:
+	//
+	// - **AliyunServiceRoleForSas**: the service-linked role for Security Center (SAS). Security Center uses this role to access your resources in other Alibaba Cloud services.
+	//
+	// - **AliyunServiceRoleForSasCspm**: the service-linked role for Security Center - Cloud Security Posture Management (CSPM). SAS-CSPM uses this role to access your resources in other Alibaba Cloud services.
+	//
 	// example:
 	//
 	// AliyunServiceRoleForWebsiteBuildPublish

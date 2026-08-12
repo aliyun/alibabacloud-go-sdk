@@ -22,19 +22,32 @@ type iGetAlertRecordAnalysisResultShrinkRequest interface {
 }
 
 type GetAlertRecordAnalysisResultShrinkRequest struct {
+	// The unique identifier of the alert event. (Deprecated)
+	//
 	// example:
 	//
 	// 9b57f0fcf98181df8d8487d1cc91cb8d
 	AlarmUniqueInfo *string `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
+	// The language of the content. Valid values:
+	//
+	// - **zh*	- (default): Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// The unique ID of the alert event. (Deprecated)
+	//
 	// example:
 	//
 	// fc312aa0c32ba8a6147db6221fb1c1ee
-	UniqueInfo          *string `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
+	UniqueInfo *string `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
+	// The array of tracing requests.
 	UniqueTagListShrink *string `json:"UniqueTagList,omitempty" xml:"UniqueTagList,omitempty"`
+	// The unique identifier of the asset. (Deprecated)
+	//
 	// example:
 	//
 	// ebde6d4e3e4aba728962eec43a69196e9J7tt7H47Pc

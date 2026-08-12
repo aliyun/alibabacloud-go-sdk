@@ -22,19 +22,36 @@ type iGetServiceLinkedRoleStatusResponseBody interface {
 }
 
 type GetServiceLinkedRoleStatusResponseBody struct {
+	// The status code. Valid values:
+	//
+	// - **200**: Succeeded.
+	//
+	// - **Other (400, 500)**: Failed.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The query result.
 	Data *GetServiceLinkedRoleStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2FBDD713-00A5-5C98-B661-3FD31A349B6E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -104,6 +121,12 @@ func (s *GetServiceLinkedRoleStatusResponseBody) Validate() error {
 }
 
 type GetServiceLinkedRoleStatusResponseBodyData struct {
+	// The authorization status. Valid values:
+	//
+	// - **true**: authorized
+	//
+	// - **false**: not authorized
+	//
 	// example:
 	//
 	// true

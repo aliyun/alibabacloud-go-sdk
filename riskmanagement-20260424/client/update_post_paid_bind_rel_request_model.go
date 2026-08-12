@@ -16,10 +16,13 @@ type iUpdatePostPaidBindRelRequest interface {
 }
 
 type UpdatePostPaidBindRelRequest struct {
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-huhehaote
-	RegionId   *string                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Security Center SDK request parameters.
 	SdkRequest *UpdatePostPaidBindRelRequestSdkRequest `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty" type:"Struct"`
 }
 
@@ -59,15 +62,36 @@ func (s *UpdatePostPaidBindRelRequest) Validate() error {
 }
 
 type UpdatePostPaidBindRelRequestSdkRequest struct {
+	// Specifies whether to automatically bind newly added assets. Valid values:
+	//
+	// - **0**: Disabled.
+	//
+	// - **1**: Enabled.
+	//
 	// example:
 	//
 	// 1
 	AutoBind *int32 `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
+	// The edition to automatically bind when new assets are added. Valid values:
+	//
+	// - **1**: Free Edition.
+	//
+	// - **3**: Enterprise Edition.
+	//
+	// - **5**: Advanced Edition.
+	//
+	// - **6**: Anti-virus Edition.
+	//
+	// - **7**: Ultimate Edition.
+	//
 	// example:
 	//
 	// 3
-	AutoBindVersion *int32                                              `json:"AutoBindVersion,omitempty" xml:"AutoBindVersion,omitempty"`
-	BindAction      []*UpdatePostPaidBindRelRequestSdkRequestBindAction `json:"BindAction,omitempty" xml:"BindAction,omitempty" type:"Repeated"`
+	AutoBindVersion *int32 `json:"AutoBindVersion,omitempty" xml:"AutoBindVersion,omitempty"`
+	// The list of binding action parameters.
+	BindAction []*UpdatePostPaidBindRelRequestSdkRequestBindAction `json:"BindAction,omitempty" xml:"BindAction,omitempty" type:"Repeated"`
+	// Specifies whether to forcibly upgrade the edition.
+	//
 	// example:
 	//
 	// false
@@ -132,11 +156,32 @@ func (s *UpdatePostPaidBindRelRequestSdkRequest) Validate() error {
 }
 
 type UpdatePostPaidBindRelRequestSdkRequestBindAction struct {
+	// Specifies whether to bind all assets. Default value: **false**. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
 	// example:
 	//
 	// true
-	BindAll  *bool     `json:"BindAll,omitempty" xml:"BindAll,omitempty"`
+	BindAll *bool `json:"BindAll,omitempty" xml:"BindAll,omitempty"`
+	// The list of specified server UUIDs.
+	//
+	// > Number of items <= 1000. Number of items >= 0.
 	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
+	// The Security Center protection edition to bind. Valid values:
+	//
+	// - **1**: Free Edition.
+	//
+	// - **3**: Enterprise Edition.
+	//
+	// - **5**: Advanced Edition.
+	//
+	// - **6**: Anti-virus Edition.
+	//
+	// - **7**: Ultimate Edition.
+	//
 	// example:
 	//
 	// 1

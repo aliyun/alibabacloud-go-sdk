@@ -14,6 +14,14 @@ type iGetServiceLinkedRoleStatusRequest interface {
 }
 
 type GetServiceLinkedRoleStatusRequest struct {
+	// The authorization type. Valid values:
+	//
+	// - **SecuritySense**: security check authorization
+	//
+	// - **DisposalTool**: threat removal tool authorization
+	//
+	// - **SensePosture**: security posture authorization
+	//
 	// This parameter is required.
 	//
 	// example:

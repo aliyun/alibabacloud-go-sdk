@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// sas-绑定授权到机器
+// Bindss authorization to machines in Security Center.
 //
 // @param tmpReq - BindAuthToMachineRequest
 //
@@ -63,7 +63,7 @@ func (client *Client) BindAuthToMachineWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// sas-初始化云安全中心模块规则
+// Initializes Security Center module rules.
 //
 // @param tmpReq - CreateSasTrialRequest
 //
@@ -117,7 +117,7 @@ func (client *Client) CreateSasTrialWithContext(ctx context.Context, tmpReq *Cre
 
 // Summary:
 //
-// sas-创建服务关联角色
+// Creates a service-linked role for Security Center and authorizes Security Center to access cloud resources.
 //
 // @param tmpReq - CreateServiceLinkedRoleRequest
 //
@@ -171,7 +171,7 @@ func (client *Client) CreateServiceLinkedRoleWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 创建全盘扫描任务
+// Creates a full disk scan task.
 //
 // @param request - CreateVirusScanOnceTaskRequest
 //
@@ -223,7 +223,7 @@ func (client *Client) CreateVirusScanOnceTaskWithContext(ctx context.Context, re
 
 // Summary:
 //
-// sas-查询云安全中心实例列表
+// Queries the list of Security Center instances.
 //
 // @param tmpReq - DescribeCloudCenterInstancesRequest
 //
@@ -277,7 +277,7 @@ func (client *Client) DescribeCloudCenterInstancesWithContext(ctx context.Contex
 
 // Summary:
 //
-// sas-查询服务关联角色状态
+// Queries the status of a service-linked role for Security Center.
 //
 // @param tmpReq - DescribeServiceLinkedRoleStatusRequest
 //
@@ -331,7 +331,7 @@ func (client *Client) DescribeServiceLinkedRoleStatusWithContext(ctx context.Con
 
 // Summary:
 //
-// sas-查询安全告警事件
+// Queries security alert events in Security Center.
 //
 // @param tmpReq - DescribeSuspEventsRequest
 //
@@ -385,7 +385,7 @@ func (client *Client) DescribeSuspEventsWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// sas-查看已购买的云安全中心实例的版本详情
+// Queries the edition details of a purchased Security Center instance.
 //
 // @param tmpReq - DescribeVersionConfigRequest
 //
@@ -439,7 +439,7 @@ func (client *Client) DescribeVersionConfigWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 获取告警记录分析结果
+// Retrieves the analysis results of alert records.
 //
 // @param tmpReq - GetAlertRecordAnalysisResultRequest
 //
@@ -505,7 +505,7 @@ func (client *Client) GetAlertRecordAnalysisResultWithContext(ctx context.Contex
 
 // Summary:
 //
-// 调用云安全中心部分接口
+// Calls specific Security Center API operations.
 //
 // @param tmpReq - GetAliYunSafeCenterResultRequest
 //
@@ -619,7 +619,7 @@ func (client *Client) GetAliYunSafeCenterResultWithContext(ctx context.Context, 
 
 // Summary:
 //
-// sas-获取能否试用
+// Queries whether a user is eligible for a Security Center free trial.
 //
 // @param tmpReq - GetCanTrySasRequest
 //
@@ -673,7 +673,7 @@ func (client *Client) GetCanTrySasWithContext(ctx context.Context, tmpReq *GetCa
 
 // Summary:
 //
-// 获取安全合规包id
+// Retrieves the security compliance package ID.
 //
 // @param request - GetCompliancePackIdRequest
 //
@@ -710,7 +710,7 @@ func (client *Client) GetCompliancePackIdWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取一键处置赋权状态
+// Retrieves the authorization status for one-click disposal.
 //
 // @param request - GetDisposalToolStatusRequest
 //
@@ -754,7 +754,7 @@ func (client *Client) GetDisposalToolStatusWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取用户确认安全联系人记录
+// Retrieves the record of a user confirming a security contact.
 //
 // @param request - GetNotificationClickRecordRequest
 //
@@ -791,7 +791,7 @@ func (client *Client) GetNotificationClickRecordWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取安全联系人全部信息
+// Retrieves all information about security contacts.
 //
 // @param request - GetNotificationContactsRequest
 //
@@ -828,7 +828,7 @@ func (client *Client) GetNotificationContactsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取安全联系人待处理数
+// Retrieves the number of pending items for security contacts.
 //
 // @param request - GetNotificationPendNumberRequest
 //
@@ -865,7 +865,7 @@ func (client *Client) GetNotificationPendNumberWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询云资源管控事件详情
+// Queries the details of cloud resource control events.
 //
 // @param tmpReq - GetResourceControlEventRequest
 //
@@ -923,7 +923,7 @@ func (client *Client) GetResourceControlEventWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 获取安全体检基础信息
+// Retrieves the basic information of a security check.
 //
 // @param request - GetSecurityCheckBaseInfoRequest
 //
@@ -960,7 +960,7 @@ func (client *Client) GetSecurityCheckBaseInfoWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取安全检查结果基础信息
+// Retrieves the basic information of security check results.
 //
 // @param request - GetSecurityCheckResultBaseInfoRequest
 //
@@ -997,7 +997,7 @@ func (client *Client) GetSecurityCheckResultBaseInfoWithContext(ctx context.Cont
 
 // Summary:
 //
-// 获取安全优化建议列表
+// Retrieves a list of security optimization suggestions.
 //
 // @param tmpReq - GetSecuritySuggestionListRequest
 //
@@ -1047,7 +1047,7 @@ func (client *Client) GetSecuritySuggestionListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取安全优化建议条数
+// Retrieves the number of security optimization suggestions.
 //
 // @param request - GetSecuritySuggestionNumberRequest
 //
@@ -1084,7 +1084,7 @@ func (client *Client) GetSecuritySuggestionNumberWithContext(ctx context.Context
 
 // Summary:
 //
-// 获取服务关联角色状态
+// Retrieves the status of a service-linked role.
 //
 // @param request - GetServiceLinkedRoleStatusRequest
 //
@@ -1128,7 +1128,7 @@ func (client *Client) GetServiceLinkedRoleStatusWithContext(ctx context.Context,
 
 // Summary:
 //
-// sas-获取有效抵扣实例
+// Retrieves valid deductible instances for Security Center.
 //
 // @param tmpReq - GetValidDeductInstancesRequest
 //
@@ -1182,7 +1182,7 @@ func (client *Client) GetValidDeductInstancesWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// sas-初始化云安全中心模块规则
+// Initializes module rules for Security Center.
 //
 // @param tmpReq - InitSasModuleRuleRequest
 //
@@ -1244,7 +1244,7 @@ func (client *Client) InitSasModuleRuleWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 查询全盘扫描结果
+// Queries the results of a full disk scan.
 //
 // @param request - ListVirusScanMachineEventRequest
 //
@@ -1308,7 +1308,7 @@ func (client *Client) ListVirusScanMachineEventWithContext(ctx context.Context, 
 
 // Summary:
 //
-// sas-开启试用套餐
+// Starts a free trial of Security Center.
 //
 // @param request - OpenTrialPackageRequest
 //
@@ -1356,7 +1356,7 @@ func (client *Client) OpenTrialPackageWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询账号安全事件
+// Queries account security events.
 //
 // @param request - QueryAccountSafetyIncidentRequest
 //
@@ -1432,7 +1432,7 @@ func (client *Client) QueryAccountSafetyIncidentWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询云上安全指南的订阅状态
+// Queries the subscription status of the cloud security guide.
 //
 // @param request - QueryGuideSubStatusRequest
 //
@@ -1469,7 +1469,7 @@ func (client *Client) QueryGuideSubStatusWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询云资源管控事件
+// Queries cloud resource control events.
 //
 // @param tmpReq - QueryResourceControlEventsRequest
 //
@@ -1487,6 +1487,10 @@ func (client *Client) QueryResourceControlEventsWithContext(ctx context.Context,
 	openapiutil.Convert(tmpReq, request)
 	if !dara.IsNil(tmpReq.ActionCodes) {
 		request.ActionCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ActionCodes, dara.String("ActionCodes"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.BusinessCodes) {
+		request.BusinessCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BusinessCodes, dara.String("BusinessCodes"), dara.String("json"))
 	}
 
 	if !dara.IsNil(tmpReq.CaseCodesPrefix) {
@@ -1540,6 +1544,10 @@ func (client *Client) QueryResourceControlEventsWithContext(ctx context.Context,
 
 	if !dara.IsNil(request.BusinessCode) {
 		query["BusinessCode"] = request.BusinessCode
+	}
+
+	if !dara.IsNil(request.BusinessCodesShrink) {
+		query["BusinessCodes"] = request.BusinessCodesShrink
 	}
 
 	if !dara.IsNil(request.CaseCodesPrefixShrink) {
@@ -1651,7 +1659,7 @@ func (client *Client) QueryResourceControlEventsWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询安全体检简报
+// Queries the security check brief.
 //
 // @param request - QuerySecurityCheckReportRequest
 //
@@ -1688,7 +1696,7 @@ func (client *Client) QuerySecurityCheckReportWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 开启处置工具授权
+// Enables disposal tool authorization.
 //
 // @param request - StartDisposalToolServiceRequest
 //
@@ -1732,7 +1740,7 @@ func (client *Client) StartDisposalToolServiceWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 开启安全体检
+// Enables security check.
 //
 // @param request - StartSecurityCheckServiceRequest
 //
@@ -1769,7 +1777,7 @@ func (client *Client) StartSecurityCheckServiceWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 申请解封
+// Submits an unblocking request.
 //
 // @param tmpReq - SubmitApplyRecordRequest
 //
@@ -1839,7 +1847,7 @@ func (client *Client) SubmitApplyRecordWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// sas-更新后付费绑定关系
+// Updates the pay-as-you-go binding relationship for Security Center.
 //
 // @param tmpReq - UpdatePostPaidBindRelRequest
 //
@@ -1893,7 +1901,7 @@ func (client *Client) UpdatePostPaidBindRelWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 更新体检结果
+// Updates the health check result.
 //
 // @param request - UpdateSecurityCheckResultRequest
 //

@@ -16,10 +16,13 @@ type iGetValidDeductInstancesRequest interface {
 }
 
 type GetValidDeductInstancesRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-fuzhou
-	RegionId   *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Security Center SDK request parameters.
 	SdkRequest *GetValidDeductInstancesRequestSdkRequest `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty" type:"Struct"`
 }
 
@@ -59,14 +62,26 @@ func (s *GetValidDeductInstancesRequest) Validate() error {
 }
 
 type GetValidDeductInstancesRequestSdkRequest struct {
+	// The resource plan instance ID. You can call QueryResourcePackageInstances to query the ID.
+	//
 	// example:
 	//
 	// sas_cspm_dp_cn-***80001
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The resource plan name code. Valid values:
+	//
+	// - Vulnerability resource plan: **sas_vul_dp_cn**
+	//
+	// - CSPM resource plan: **sas_cspm_dp_cn**
+	//
+	// - Anti-virus Edition resource plan: **sas_viruspackage_dp_cn**
+	//
 	// example:
 	//
 	// sas_vul_dp_cn
 	Modules *string `json:"Modules,omitempty" xml:"Modules,omitempty"`
+	// The resource plan status. Default value: valid. This parameter cannot be modified.
+	//
 	// example:
 	//
 	// Available

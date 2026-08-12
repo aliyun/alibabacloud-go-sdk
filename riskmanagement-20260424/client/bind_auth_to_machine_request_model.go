@@ -16,10 +16,13 @@ type iBindAuthToMachineRequest interface {
 }
 
 type BindAuthToMachineRequest struct {
+	// The region ID of the Smart Access Gateway instance.
+	//
 	// example:
 	//
 	// cn-shenzhen
-	RegionId   *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Security Center SDK request.
 	SdkRequest *BindAuthToMachineRequestSdkRequest `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty" type:"Struct"`
 }
 
@@ -59,40 +62,106 @@ func (s *BindAuthToMachineRequest) Validate() error {
 }
 
 type BindAuthToMachineRequestSdkRequest struct {
+	// The authorization version of the asset. Valid values:
+	//
+	// - **6**: Anti-virus Edition
+	//
+	// - **5**: Advanced Edition
+	//
+	// - **3**: Enterprise Edition
+	//
+	// - **7**: Ultimate Edition
+	//
+	// - **10**: Value-added Service Edition
+	//
 	// example:
 	//
 	// 3
 	AuthVersion *int32 `json:"AuthVersion,omitempty" xml:"AuthVersion,omitempty"`
+	// Specifies whether to enable automatic binding. Valid values:
+	//
+	// - **0**: disabled
+	//
+	// - **1**: enabled
+	//
 	// example:
 	//
 	// 1
-	AutoBind *int32    `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
-	Bind     []*string `json:"Bind,omitempty" xml:"Bind,omitempty" type:"Repeated"`
+	AutoBind *int32 `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
+	// The collection of UUIDs to bind.
+	//
+	// > Bind and UnBind cannot both be empty.
+	//
+	// Maximum number of child entries: 1000.
+	Bind []*string `json:"Bind,omitempty" xml:"Bind,omitempty" type:"Repeated"`
+	// Specifies whether to bind all assets. Default value: **false**. Valid values:
+	//
+	// - **true**: yes
+	//
+	// - **false**: no
+	//
 	// example:
 	//
 	// true
 	BindAll *bool `json:"BindAll,omitempty" xml:"BindAll,omitempty"`
+	// The search conditions for assets. This parameter is in JSON format. Pay attention to the letter case when you specify this parameter.
+	//
+	// > You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. You can call the DescribeCriteria operation to query the supported search conditions.
+	//
 	// example:
 	//
 	// [{\\"name\\":\\"clientStatus\\",\\"value\\":\\"online\\"},{\\"name\\":\\"authVersion\\",\\"value\\":\\"1\\"}]
 	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
+	// Specifies whether this is a pre-binding operation. Valid values:
+	//
+	// - **0**: no
+	//
+	// - **1**: yes
+	//
+	// > After pre-binding is enabled, the corresponding authorization quota is automatically bound to the specified servers after the purchase is completed.
+	//
 	// example:
 	//
 	// 1
 	IsPreBind *int32 `json:"IsPreBind,omitempty" xml:"IsPreBind,omitempty"`
+	// The logical relationship between multiple search conditions. Valid values:
+	//
+	// - **OR**: The search conditions are in an **OR*	- relationship.
+	//
+	// - **AND**: The search conditions are in an **AND*	- relationship.
+	//
 	// example:
 	//
 	// AND
 	LogicalExp *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
+	// The order version associated with the pre-binding. Valid values:
+	//
+	// - **level7**: Anti-virus Edition
+	//
+	// - **level3**: Advanced Edition
+	//
+	// - **level2**: Enterprise Edition
+	//
+	// - **level8**: Ultimate Edition
+	//
+	// - **level10**: value-added service only
+	//
 	// example:
 	//
 	// level2
 	NtmVersion *int64 `json:"NtmVersion,omitempty" xml:"NtmVersion,omitempty"`
+	// The order ID associated with the pre-binding.
+	//
+	// > Note: This field is of the Long type. Precision loss may occur during the sequence/deserialization procedure. The value must not exceed 9007199254740991.
+	//
 	// example:
 	//
 	// 263076506250432
-	PreBindOrderId *int64    `json:"PreBindOrderId,omitempty" xml:"PreBindOrderId,omitempty"`
-	UnBind         []*string `json:"UnBind,omitempty" xml:"UnBind,omitempty" type:"Repeated"`
+	PreBindOrderId *int64 `json:"PreBindOrderId,omitempty" xml:"PreBindOrderId,omitempty"`
+	// The collection of UUIDs to unbind.
+	//
+	// > **Bind*	- and **UnBind*	- cannot both be empty.
+	UnBind []*string `json:"UnBind,omitempty" xml:"UnBind,omitempty" type:"Repeated"`
 }
 
 func (s BindAuthToMachineRequestSdkRequest) String() string {

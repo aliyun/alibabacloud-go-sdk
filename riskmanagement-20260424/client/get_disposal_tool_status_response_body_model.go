@@ -22,19 +22,32 @@ type iGetDisposalToolStatusResponseBody interface {
 }
 
 type GetDisposalToolStatusResponseBody struct {
+	// The status code. A value of 200 indicates success.
+	//
 	// example:
 	//
 	// Success
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *GetDisposalToolStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The prompt message.
+	//
 	// example:
 	//
 	// successful‌
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6D462855-7835-5F91-835E-A62E44EC01CC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -104,6 +117,12 @@ func (s *GetDisposalToolStatusResponseBody) Validate() error {
 }
 
 type GetDisposalToolStatusResponseBodyData struct {
+	// The authorization status. Valid values:
+	//
+	// - **true**: Authorized.
+	//
+	// - **false**: Not authorized.
+	//
 	// example:
 	//
 	// true

@@ -22,19 +22,28 @@ type iUpdatePostPaidBindRelResponseBody interface {
 }
 
 type UpdatePostPaidBindRelResponseBody struct {
+	// The error code returned if the call fails. For more information, see error codes.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *UpdatePostPaidBindRelResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 6E20BFD0-AA91-594F-B5A7-32CED4777DA0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful. Valid values: true: The call is successful. false: The call fails.
+	//
 	// example:
 	//
 	// true
@@ -104,6 +113,7 @@ func (s *UpdatePostPaidBindRelResponseBody) Validate() error {
 }
 
 type UpdatePostPaidBindRelResponseBodyData struct {
+	// The message body.
 	Body *UpdatePostPaidBindRelResponseBodyDataBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
 }
 
@@ -134,14 +144,20 @@ func (s *UpdatePostPaidBindRelResponseBodyData) Validate() error {
 }
 
 type UpdatePostPaidBindRelResponseBodyDataBody struct {
+	// The number of servers that are successfully bound.
+	//
 	// example:
 	//
 	// 1
 	BindCount *int64 `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 62A7DCE2-7D9C-511B-919E-0F46A9D19AE6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result code.
+	//
 	// example:
 	//
 	// OK

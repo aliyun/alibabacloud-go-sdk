@@ -22,19 +22,28 @@ type iInitSasModuleRuleResponseBody interface {
 }
 
 type InitSasModuleRuleResponseBody struct {
+	// The error code returned if the call fails. For more information, refer to error codes.
+	//
 	// example:
 	//
 	// 200
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The approval result.
 	Data *InitSasModuleRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message. The value is the same as the Code parameter.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2E130B0F-9E69-52FA-84FC-187FE1BA9489
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful. true: The call is successful. false: The call fails.
+	//
 	// example:
 	//
 	// true
@@ -104,6 +113,8 @@ func (s *InitSasModuleRuleResponseBody) Validate() error {
 }
 
 type InitSasModuleRuleResponseBodyData struct {
+	// The Security Center request ID.
+	//
 	// example:
 	//
 	// 14492571-0707-5130-85B4-4DDABB6BDF76

@@ -20,18 +20,34 @@ type iStartSecurityCheckServiceResponseBody interface {
 }
 
 type StartSecurityCheckServiceResponseBody struct {
+	// The status code.
+	//
+	// - **200**: Succeeded.
+	//
+	// - **Others (400, 500)**: Failed.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEE90F8C-EDC2-5394-953B-D07A121612B5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful.
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true

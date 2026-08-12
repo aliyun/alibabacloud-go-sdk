@@ -14,6 +14,10 @@ type iStartDisposalToolServiceRequest interface {
 }
 
 type StartDisposalToolServiceRequest struct {
+	// The authorization type.
+	//
+	// - **DisposalTool**: one-click disposal authorization type
+	//
 	// example:
 	//
 	// DisposalTool

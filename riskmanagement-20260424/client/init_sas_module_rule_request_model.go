@@ -20,15 +20,26 @@ type iInitSasModuleRuleRequest interface {
 }
 
 type InitSasModuleRuleRequest struct {
+	// Specifies whether to enable automatic binding. Valid values:
+	//
+	// - **0**: Disabled.
+	//
+	// - **1**: Enabled.
+	//
 	// example:
 	//
 	// 0
-	AutoBind  *int32                               `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
+	AutoBind *int32 `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
+	// The list of instances.
 	Instances []*InitSasModuleRuleRequestInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// Specifies whether to use the trial version.
+	//
 	// example:
 	//
 	// false
 	IsTrial *bool `json:"IsTrial,omitempty" xml:"IsTrial,omitempty"`
+	// The region ID of the access control instance.
+	//
 	// example:
 	//
 	// cn-guangzhou
@@ -93,18 +104,26 @@ func (s *InitSasModuleRuleRequest) Validate() error {
 }
 
 type InitSasModuleRuleRequestInstances struct {
+	// The number of CPU cores of the asset.
+	//
 	// example:
 	//
 	// 4
 	Cores *string `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// i-gw85zjrhsg2sgex7ovfx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region of the cloud phone.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The UUID of the instance.
+	//
 	// example:
 	//
 	// 168d374e-f449-4d0b-9556-14f233fa7171

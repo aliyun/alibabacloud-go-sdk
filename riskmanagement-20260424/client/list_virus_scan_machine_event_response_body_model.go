@@ -22,19 +22,32 @@ type iListVirusScanMachineEventResponseBody interface {
 }
 
 type ListVirusScanMachineEventResponseBody struct {
+	// code
+	//
 	// example:
 	//
 	// 200
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *ListVirusScanMachineEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message information.
+	//
 	// example:
 	//
 	// successful‌
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F0AD8096-E7A2-573D-ACF0-7CE9050CDE38
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
+	//
 	// example:
 	//
 	// True
@@ -104,12 +117,16 @@ func (s *ListVirusScanMachineEventResponseBody) Validate() error {
 }
 
 type ListVirusScanMachineEventResponseBodyData struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 1E222AB5-5C2B-50AD-8A96-E704AF80F2A0
-	RequestId                    *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the latest virus scan task.
 	VirusScanLatestTaskStatistic *ListVirusScanMachineEventResponseBodyDataVirusScanLatestTaskStatistic `json:"VirusScanLatestTaskStatistic,omitempty" xml:"VirusScanLatestTaskStatistic,omitempty" type:"Struct"`
-	VirusScanMachineEventList    *ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventList    `json:"VirusScanMachineEventList,omitempty" xml:"VirusScanMachineEventList,omitempty" type:"Struct"`
+	// The virus alerts detected on specific machines during virus scanning.
+	VirusScanMachineEventList *ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventList `json:"VirusScanMachineEventList,omitempty" xml:"VirusScanMachineEventList,omitempty" type:"Struct"`
 }
 
 func (s ListVirusScanMachineEventResponseBodyData) String() string {
@@ -162,55 +179,82 @@ func (s *ListVirusScanMachineEventResponseBodyData) Validate() error {
 }
 
 type ListVirusScanMachineEventResponseBodyDataVirusScanLatestTaskStatistic struct {
+	// The number of machines that completed scanning.
+	//
 	// example:
 	//
 	// 2
 	CompleteMachine *int32 `json:"CompleteMachine,omitempty" xml:"CompleteMachine,omitempty"`
+	// The server machine name.
+	//
 	// example:
 	//
 	// testMahine1
 	MachineName *string `json:"MachineName,omitempty" xml:"MachineName,omitempty"`
+	// The percentage of the scan task progress.
+	//
 	// example:
 	//
 	// 92
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The highest risk level of the detected alerts. Valid values:
+	//
 	// example:
 	//
 	// medium
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The number of machines on which no risks were detected.
+	//
 	// example:
 	//
 	// 1
 	SafeMachine *int32 `json:"SafeMachine,omitempty" xml:"SafeMachine,omitempty"`
+	// The number of machines scanned in this virus scan.
+	//
 	// example:
 	//
 	// 1
-	ScanMachine *int32    `json:"ScanMachine,omitempty" xml:"ScanMachine,omitempty"`
-	ScanPath    []*string `json:"ScanPath,omitempty" xml:"ScanPath,omitempty" type:"Repeated"`
+	ScanMachine *int32 `json:"ScanMachine,omitempty" xml:"ScanMachine,omitempty"`
+	// The file paths specified for scanning when the user-defined scan type is used.
+	ScanPath []*string `json:"ScanPath,omitempty" xml:"ScanPath,omitempty" type:"Repeated"`
+	// The scan timestamp, in milliseconds.
+	//
 	// example:
 	//
 	// 1681145862000
 	ScanTime *int64 `json:"ScanTime,omitempty" xml:"ScanTime,omitempty"`
+	// The scan type of this virus scan. Valid values:
+	//
 	// example:
 	//
 	// system
 	ScanType *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
+	// The status of the scan task.
+	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of security alerts detected during the scan.
+	//
 	// example:
 	//
 	// 0
 	SuspiciousCount *int32 `json:"SuspiciousCount,omitempty" xml:"SuspiciousCount,omitempty"`
+	// The number of machines on which risks were detected.
+	//
 	// example:
 	//
 	// 1
 	SuspiciousMachine *int32 `json:"SuspiciousMachine,omitempty" xml:"SuspiciousMachine,omitempty"`
+	// The ID of the scan task.
+	//
 	// example:
 	//
 	// t-0mqu9dhpi365dp5iyf
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The number of machines that did not complete scanning or failed during scanning.
+	//
 	// example:
 	//
 	// 1
@@ -356,7 +400,9 @@ func (s *ListVirusScanMachineEventResponseBodyDataVirusScanLatestTaskStatistic) 
 }
 
 type ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventList struct {
-	Data     []*ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventListData   `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The details of the alert events.
+	Data []*ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventListData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The pagination information.
 	PageInfo *ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventListPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 }
 
@@ -405,31 +451,46 @@ func (s *ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventList) Val
 }
 
 type ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventListData struct {
+	// The details of the anomalous event.
 	Details []*ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventListDataDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	// The ID of the alert event.
+	//
 	// example:
 	//
 	// 123-2CcoavZnCXrJKqk2KQKxp9WGwup
 	EventId *int64 `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The name (subtype) of the alert event.
+	//
 	// example:
 	//
-	// 恶意脚本代码执行
+	// Malicious script code execution.
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// i-wz92q7m5hsbgfhdss***
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The public IP address.
+	//
 	// example:
 	//
 	// 47.57.*1.65
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// The private IP address.
+	//
 	// example:
 	//
 	// 47.57.*1.65
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// The timestamp of the last occurrence, in milliseconds.
+	//
 	// example:
 	//
 	// 1682046733628
 	LastTimeStamp *int64 `json:"LastTimeStamp,omitempty" xml:"LastTimeStamp,omitempty"`
+	// The risk level of the alert event. Valid values:
+	//
 	// example:
 	//
 	// remind
@@ -530,18 +591,26 @@ func (s *ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventListData)
 }
 
 type ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventListDataDetails struct {
+	// The display type of valueDisplay. Valid values:
+	//
 	// example:
 	//
 	// download_url
 	InfoType *string `json:"InfoType,omitempty" xml:"InfoType,omitempty"`
+	// The display name of the alert event.
+	//
 	// example:
 	//
 	// Trojan Path
 	NameDisplay *string `json:"NameDisplay,omitempty" xml:"NameDisplay,omitempty"`
+	// The display method of the anomalous event details.
+	//
 	// example:
 	//
 	// text
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The additional attribute information of the anomalous event, such as the logon time or logon location for abnormal logon alerts, or the trojan file path or trojan type for trojan alerts.
+	//
 	// example:
 	//
 	// getopt
@@ -597,14 +666,20 @@ func (s *ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventListDataD
 }
 
 type ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventListPageInfo struct {
+	// The page number of the current page in a paged query.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The maximum number of entries displayed per page in a paged query.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of alert events returned.
+	//
 	// example:
 	//
 	// 0

@@ -22,19 +22,28 @@ type iDescribeCloudCenterInstancesResponseBody interface {
 }
 
 type DescribeCloudCenterInstancesResponseBody struct {
+	// The status of the API call.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of instance details.
 	Data *DescribeCloudCenterInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// 1B4C9A14-94E6-5EEB-BF39-7DACCE9AC0D6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -104,6 +113,7 @@ func (s *DescribeCloudCenterInstancesResponseBody) Validate() error {
 }
 
 type DescribeCloudCenterInstancesResponseBodyData struct {
+	// The string of the message body content encoded by using the Base64 algorithm.
 	Body *DescribeCloudCenterInstancesResponseBodyDataBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
 }
 
@@ -134,12 +144,22 @@ func (s *DescribeCloudCenterInstancesResponseBodyData) Validate() error {
 }
 
 type DescribeCloudCenterInstancesResponseBodyDataBody struct {
+	// The list of asset details.
 	Instances []*DescribeCloudCenterInstancesResponseBodyDataBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	PageInfo  *DescribeCloudCenterInstancesResponseBodyDataBodyPageInfo    `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The pagination information.
+	PageInfo *DescribeCloudCenterInstancesResponseBodyDataBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// 20EBDE7B-AA36-5D60-9DCA-151C48EDB9F8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
+	//
 	// example:
 	//
 	// True
@@ -209,182 +229,272 @@ func (s *DescribeCloudCenterInstancesResponseBodyDataBody) Validate() error {
 }
 
 type DescribeCloudCenterInstancesResponseBodyDataBodyInstances struct {
+	// Indicates whether the image has security alerts. Valid values:
+	//
 	// example:
 	//
 	// NO
 	AlarmStatus *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
+	// The application ID.
+	//
 	// example:
 	//
 	// FC2U0JVHWS49S2OT
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// guokent
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The type of the asset. Valid values:
+	//
 	// example:
 	//
 	// 1
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
+	// The name of the asset type.
+	//
 	// example:
 	//
 	// xxxxxx
 	AssetTypeName *string `json:"AssetTypeName,omitempty" xml:"AssetTypeName,omitempty"`
+	// The timestamp when the asset was bound for authorization. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1627974044000
 	AuthModifyTime *int64 `json:"AuthModifyTime,omitempty" xml:"AuthModifyTime,omitempty"`
+	// The authorization version of the asset. Valid values:
+	//
 	// example:
 	//
 	// 5
 	AuthVersion *int32 `json:"AuthVersion,omitempty" xml:"AuthVersion,omitempty"`
+	// The authorization version name of the asset. Valid values:
+	//
 	// example:
 	//
-	// 免费版
+	// Free Edition.
 	AuthVersionName *string `json:"AuthVersionName,omitempty" xml:"AuthVersionName,omitempty"`
+	// Indicates whether the asset is bound with authorization. Valid values:
+	//
 	// example:
 	//
 	// true
 	Bind *bool `json:"Bind,omitempty" xml:"Bind,omitempty"`
+	// Indicates whether web tamper-proofing authorization is bound. Valid values:
+	//
 	// example:
 	//
 	// none
 	BindFileProtectType *string `json:"BindFileProtectType,omitempty" xml:"BindFileProtectType,omitempty"`
+	// The online status of the client on the instance. Valid values:
+	//
 	// example:
 	//
 	// online
 	ClientStatus *string `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
+	// The sub-status of the client on the instance. Valid values:
+	//
 	// example:
 	//
 	// online
 	ClientSubStatus *string `json:"ClientSubStatus,omitempty" xml:"ClientSubStatus,omitempty"`
+	// The ID of the cluster where the resource group resides.
+	//
 	// example:
 	//
 	// cb703cb0ba6bd40d4a6d8de5bff050fb9
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The cluster name.
+	//
 	// example:
 	//
 	// auto-cn-heyuan
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The number of CPU cores of the asset.
+	//
 	// example:
 	//
 	// 9
 	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	// The CPU information of the asset.
+	//
 	// example:
 	//
 	// Intel(R) Xeon(R) Platinum 8269CY CPU @ 2.50GHz
 	CpuInfo *string `json:"CpuInfo,omitempty" xml:"CpuInfo,omitempty"`
+	// The timestamp when the cluster was created. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1607365213000
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The exposure status of the asset. Valid values:
+	//
 	// example:
 	//
 	// 0
 	ExposedStatus *int32 `json:"ExposedStatus,omitempty" xml:"ExposedStatus,omitempty"`
+	// The asset vendor. Separate multiple asset vendors with commas (,). Valid values:
+	//
 	// example:
 	//
 	// 0,1,2
 	Flag *int32 `json:"Flag,omitempty" xml:"Flag,omitempty"`
+	// The vendor of the asset. Valid values:
+	//
 	// example:
 	//
 	// ALIYUN
 	FlagName *string `json:"FlagName,omitempty" xml:"FlagName,omitempty"`
+	// The ID of the group to which the instance belongs.
+	//
 	// example:
 	//
 	// 86d30f8b0e124aadb7ef3197f9dbd1f5
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the group to which the asset belongs.
+	//
 	// example:
 	//
 	// default
 	GroupTrace *string `json:"GroupTrace,omitempty" xml:"GroupTrace,omitempty"`
+	// Indicates whether the asset contains containers. Valid values:
+	//
 	// example:
 	//
 	// YES
 	HasContainer *string `json:"HasContainer,omitempty" xml:"HasContainer,omitempty"`
+	// Indicates whether baseline risks are detected on the instance. Valid values:
+	//
 	// example:
 	//
 	// YES
 	HcStatus *string `json:"HcStatus,omitempty" xml:"HcStatus,omitempty"`
+	// The number of baseline risks on the instance.
+	//
 	// example:
 	//
 	// 1
 	HealthCheckCount *int32 `json:"HealthCheckCount,omitempty" xml:"HealthCheckCount,omitempty"`
+	// The importance level of the asset. Valid values:
+	//
 	// example:
 	//
 	// 2
 	Importance *int32 `json:"Importance,omitempty" xml:"Importance,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ls-cn-tl32rf**008
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// ra-supabase-22u1iv3hr**5v9
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The public IP address of the associated instance.
+	//
 	// example:
 	//
 	// 47.1**.52.125
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// The private IP address of the current server.
+	//
 	// example:
 	//
 	// 172.16.1**.245
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// The management IP address.
+	//
 	// example:
 	//
 	// 114.55.*4.*6
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The list of IP addresses of the system.
+	//
 	// example:
 	//
 	// 172.31.XX.XX,172.171.XX.XX
 	IpListString *string `json:"IpListString,omitempty" xml:"IpListString,omitempty"`
+	// The kernel version information.
+	//
 	// example:
 	//
 	// 3.10.0-1127.19.1.el7.x86_64
 	Kernel *string `json:"Kernel,omitempty" xml:"Kernel,omitempty"`
+	// The timestamp when the client last went online. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1637592907000
 	LastLoginTimestamp *int64 `json:"LastLoginTimestamp,omitempty" xml:"LastLoginTimestamp,omitempty"`
+	// The MAC address of the system.
+	//
 	// example:
 	//
 	// 00:13:3e:31:13:39,02:12:67:b8:**:**
 	MacListString *string `json:"MacListString,omitempty" xml:"MacListString,omitempty"`
+	// The total memory. Unit: MB.
+	//
 	// example:
 	//
 	// 1024
 	Mem *string `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	// The namespace.
+	//
 	// example:
 	//
 	// slsshpcorlsmetrics
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The operating system of the instance. Valid values:
+	//
 	// example:
 	//
 	// linux
 	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// The kernel version of the instance.
+	//
 	// example:
 	//
 	// AliOS7U2-x86-64
 	OsName *string `json:"OsName,omitempty" xml:"OsName,omitempty"`
+	// The number of pods.
+	//
 	// example:
 	//
 	// 8
 	PodCount *int32 `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
+	// The billing method of the protection edition bound to the current asset. Valid values:
+	//
 	// example:
 	//
 	// 1
 	PostPaidFlag *int32 `json:"PostPaidFlag,omitempty" xml:"PostPaidFlag,omitempty"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-hangzhouxxxx
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the region where the asset resides.
+	//
 	// example:
 	//
 	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region name.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	// The statistics of risk items on the asset. The value is in JSON format and contains the following fields:
+	//
 	// example:
 	//
 	// {
@@ -471,62 +581,92 @@ type DescribeCloudCenterInstancesResponseBodyDataBodyInstances struct {
 	//
 	// }
 	RiskCount *string `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
+	// Indicates whether risks exist. Valid values:
+	//
 	// example:
 	//
 	// NO
 	RiskStatus *string `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
+	// The number of security alerts on the asset.
+	//
 	// example:
 	//
 	// 5
 	SafeEventCount *string `json:"SafeEventCount,omitempty" xml:"SafeEventCount,omitempty"`
+	// The service ID. This parameter has a value only when the instance is a serverless instance that belongs to the PAI platform.
+	//
 	// example:
 	//
 	// dsw-76jlywunsif09bp15p
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The running status of the instance. Valid values:
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tag name of the asset instance.
+	//
 	// example:
 	//
 	// pre_20250714_idpt_adjust
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tag ID of the asset.
+	//
 	// example:
 	//
 	// d8586ab8be4549e3815995858d277763
 	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// The custom tags of the Lingjun node. This parameter is returned only when the machine is a Lingjun machine.
+	//
 	// example:
 	//
 	// app:test,type:lingjun
 	TagResources *string `json:"TagResources,omitempty" xml:"TagResources,omitempty"`
+	// The UUID of the terminal device.
+	//
 	// example:
 	//
 	// 1f0459ee-ed49-6484-8958-4f10f61e6362
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// The vendor of the asset. Valid values:
+	//
 	// example:
 	//
 	// 0
 	Vendor *int32 `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// The service provider name of the asset.
+	//
 	// example:
 	//
 	// IDC
 	VendorName *string `json:"VendorName,omitempty" xml:"VendorName,omitempty"`
+	// The account ID of the multi-cloud instance.
+	//
 	// example:
 	//
 	// 123
 	VendorUid *string `json:"VendorUid,omitempty" xml:"VendorUid,omitempty"`
+	// The account name of the multi-cloud instance.
+	//
 	// example:
 	//
 	// VendorUserName
 	VendorUserName *string `json:"VendorUserName,omitempty" xml:"VendorUserName,omitempty"`
+	// The ID of the VPC to which the instance belongs.
+	//
 	// example:
 	//
 	// vpc-2zek7v0z4r6lbp02xckei
 	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
+	// The number of vulnerabilities on the instance.
+	//
 	// example:
 	//
 	// 2
 	VulCount *int32 `json:"VulCount,omitempty" xml:"VulCount,omitempty"`
+	// Indicates whether vulnerabilities exist on the instance. Valid values:
+	//
 	// example:
 	//
 	// YES
@@ -1086,22 +1226,32 @@ func (s *DescribeCloudCenterInstancesResponseBodyDataBodyInstances) Validate() e
 }
 
 type DescribeCloudCenterInstancesResponseBodyDataBodyPageInfo struct {
+	// The total count.
+	//
 	// example:
 	//
 	// 7
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The maximum number of rows per page in a paged query.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The NextToken value returned when the NextToken method is used.
+	//
 	// example:
 	//
 	// m1NGAAAAAABzLzIwMjQwMg==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 0

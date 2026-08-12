@@ -14,6 +14,7 @@ type iGetSecuritySuggestionListRequest interface {
 }
 
 type GetSecuritySuggestionListRequest struct {
+	// The request parameters.
 	ListConfigRulesRequest *GetSecuritySuggestionListRequestListConfigRulesRequest `json:"ListConfigRulesRequest,omitempty" xml:"ListConfigRulesRequest,omitempty" type:"Struct"`
 }
 
@@ -44,38 +45,86 @@ func (s *GetSecuritySuggestionListRequest) Validate() error {
 }
 
 type GetSecuritySuggestionListRequestListConfigRulesRequest struct {
+	// The compliance package ID.
+	//
 	// example:
 	//
 	// cp-d7b061dbe91500aa179a
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The compliance evaluation result. Valid values:
+	//
+	// - **COMPLIANT**: Compliant.
+	//
+	// - **NON_COMPLIANT**: Non-compliant.
+	//
+	// - **NOT_APPLICABLE**: Not applicable.
+	//
+	// - **INSUFFICIENT_DATA**: Insufficient data.
+	//
+	// - **IGNORED**: Ignored.
+	//
 	// example:
 	//
 	// COMPLIANT
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// The name of the rule.
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The rule running status. Valid values:
+	//
+	// - **ACTIVE**: Active.
+	//
+	// - **DELETING**: Being deleted.
+	//
+	// - **EVALUATING**: Being evaluated.
+	//
+	// - **INACTIVE**: Inactive.
+	//
 	// example:
 	//
 	// ACTIVE
 	ConfigRuleState *string `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
+	// The query keyword.
+	//
+	// Supports fuzzy match on the rule ID, rule name, rule description, and rule template identifier.
+	//
 	// example:
 	//
 	// ecs
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number.
+	//
+	// > Minimum value: 1. Default value: 1.
+	//
 	// example:
 	//
 	// 3
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// > Valid values: 1 to 100. Minimum value: 1. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The resource type evaluated by the rule.
+	//
 	// example:
 	//
 	// ACS::ECS::Instance
 	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
+	// The risk level of the rule. Valid values:
+	//
+	// - **1**: High risk.
+	//
+	// - **2**: Medium risk.
+	//
+	// - **3**: Low risk.
+	//
 	// example:
 	//
 	// 1

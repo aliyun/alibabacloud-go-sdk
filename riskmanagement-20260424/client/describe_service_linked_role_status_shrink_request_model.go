@@ -16,10 +16,13 @@ type iDescribeServiceLinkedRoleStatusShrinkRequest interface {
 }
 
 type DescribeServiceLinkedRoleStatusShrinkRequest struct {
+	// The ID of the region in which the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Security Center SDK request.
 	SdkRequestShrink *string `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty"`
 }
 

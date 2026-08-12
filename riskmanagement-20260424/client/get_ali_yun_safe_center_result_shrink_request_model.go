@@ -32,20 +32,52 @@ type iGetAliYunSafeCenterResultShrinkRequest interface {
 }
 
 type GetAliYunSafeCenterResultShrinkRequest struct {
+	// Creates a node to query security alerting events triggered by the same rule or alerting type.
 	CreateSimilarSecurityEventsQueryTaskRequestShrink *string `json:"CreateSimilarSecurityEventsQueryTaskRequest,omitempty" xml:"CreateSimilarSecurityEventsQueryTaskRequest,omitempty"`
-	DescribeInstancesFullStatusRequestShrink          *string `json:"DescribeInstancesFullStatusRequest,omitempty" xml:"DescribeInstancesFullStatusRequest,omitempty"`
+	// Queries the running status of ECS instances.
+	DescribeInstancesFullStatusRequestShrink *string `json:"DescribeInstancesFullStatusRequest,omitempty" xml:"DescribeInstancesFullStatusRequest,omitempty"`
+	// Queries whether the list of security alerting events that match the same IP rule or same alerting type as the alerting event to be handled is empty.
 	DescribeSecurityEventOperationStatusRequestShrink *string `json:"DescribeSecurityEventOperationStatusRequest,omitempty" xml:"DescribeSecurityEventOperationStatusRequest,omitempty"`
-	DescribeSimilarSecurityEventsRequestShrink        *string `json:"DescribeSimilarSecurityEventsRequest,omitempty" xml:"DescribeSimilarSecurityEventsRequest,omitempty"`
-	GetAssetDetailByUuidRequestShrink                 *string `json:"GetAssetDetailByUuidRequest,omitempty" xml:"GetAssetDetailByUuidRequest,omitempty"`
-	HandleSecurityEventsRequestShrink                 *string `json:"HandleSecurityEventsRequest,omitempty" xml:"HandleSecurityEventsRequest,omitempty"`
-	HandleSimilarSecurityEventsRequestShrink          *string `json:"HandleSimilarSecurityEventsRequest,omitempty" xml:"HandleSimilarSecurityEventsRequest,omitempty"`
+	// Queries identical security alert events in Security Center.
+	DescribeSimilarSecurityEventsRequestShrink *string `json:"DescribeSimilarSecurityEventsRequest,omitempty" xml:"DescribeSimilarSecurityEventsRequest,omitempty"`
+	// The request parameters for querying the Security Center Agent status.
+	GetAssetDetailByUuidRequestShrink *string `json:"GetAssetDetailByUuidRequest,omitempty" xml:"GetAssetDetailByUuidRequest,omitempty"`
+	// Handles security alert events.
+	HandleSecurityEventsRequestShrink *string `json:"HandleSecurityEventsRequest,omitempty" xml:"HandleSecurityEventsRequest,omitempty"`
+	// Handles security alert events in batches based on the same IP rule or type.
+	HandleSimilarSecurityEventsRequestShrink *string `json:"HandleSimilarSecurityEventsRequest,omitempty" xml:"HandleSimilarSecurityEventsRequest,omitempty"`
+	// The code of the public API operation.
+	//
+	// - **GetAssetDetailByUuid**: Retrieves the Agent status. Request parameter: GetAssetDetailByUuidRequest.
+	//
+	// - **DescribeSimilarSecurityEvents**: Retrieves the list of instance IDs for identical security alerting events. Request parameter: DescribeSimilarSecurityEventsRequest.
+	//
+	// - **CreateSimilarSecurityEventsQueryTask**: Creates a node to query security alerting events triggered by the same rule or alerting type. Request parameter: CreateSimilarSecurityEventsQueryTaskRequest.
+	//
+	// - **DescribeSecurityEventOperationStatus**: Queries whether the list of security alerting events that match the same IP rule or same alerting type as the alerting event to be handled is empty. Request parameter: DescribeSecurityEventOperationStatusRequest.
+	//
+	// - **HandleSimilarSecurityEvents**: Handles security alerting events in batches based on the same IP rule or type. Request parameter: HandleSimilarSecurityEventsRequest.
+	//
+	// HandleSecurityEvents: Handles security alerting events. Request parameter: HandleSecurityEventsRequest.
+	//
+	// - **DescribeInstancesFullStatus**: Queries the running status of ECS instances. Request parameter: DescribeInstancesFullStatusRequest.
+	//
+	// - **ListInstances**: Queries the running status of simple application servers. Request parameter: ListInstancesRequest.
+	//
+	// - **StartConfigRuleEvaluation**: Re-evaluates security check rules.
+	//
+	// > Each API operation name corresponds to its own request parameters.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ListInstanceStatus
-	InterfaceCode              *string `json:"InterfaceCode,omitempty" xml:"InterfaceCode,omitempty"`
+	InterfaceCode *string `json:"InterfaceCode,omitempty" xml:"InterfaceCode,omitempty"`
+	// Queries the running status of simple application servers.
 	ListInstancesRequestShrink *string `json:"ListInstancesRequest,omitempty" xml:"ListInstancesRequest,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-guangzhou

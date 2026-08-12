@@ -22,19 +22,36 @@ type iGetNotificationContactsResponseBody interface {
 }
 
 type GetNotificationContactsResponseBody struct {
+	// The status code.
+	//
+	// - **200**: Success.
+	//
+	// - **Other (400, 500)**: Failure.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The query result.
 	Data []*GetNotificationContactsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The prompt message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2FBDD713-00A5-5C98-B661-3FD31A349B6E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation is successful.
+	//
+	// - **true**: Success.
+	//
+	// - **false**: Failure.
+	//
 	// example:
 	//
 	// true
@@ -108,36 +125,56 @@ func (s *GetNotificationContactsResponseBody) Validate() error {
 }
 
 type GetNotificationContactsResponseBodyData struct {
+	// The Alibaba Cloud account ID.
+	//
 	// example:
 	//
 	// 1355290655619147
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The message category code.
+	//
 	// example:
 	//
 	// prod_edu_content
 	CategoryCode *string `json:"CategoryCode,omitempty" xml:"CategoryCode,omitempty"`
+	// The message category description.
+	//
 	// example:
 	//
-	// 产品的使用场景、技术分享的相关内容
+	// Product usage scenarios and technical sharing content.
 	CategoryDesc *string `json:"CategoryDesc,omitempty" xml:"CategoryDesc,omitempty"`
+	// The category group code.
+	//
 	// example:
 	//
 	// prod_msg
 	CategoryGroupCode *string `json:"CategoryGroupCode,omitempty" xml:"CategoryGroupCode,omitempty"`
+	// The category group name.
+	//
 	// example:
 	//
-	// 产品消息
+	// Product messages.
 	CategoryGroupName *string `json:"CategoryGroupName,omitempty" xml:"CategoryGroupName,omitempty"`
+	// The message category name.
+	//
 	// example:
 	//
-	// 产品教育内容
-	CategoryName   *string                                                  `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// Product educational content.
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The channel list.
 	ChannelConfigs []*GetNotificationContactsResponseBodyDataChannelConfigs `json:"ChannelConfigs,omitempty" xml:"ChannelConfigs,omitempty" type:"Repeated"`
+	// Indicates whether all notification methods are selected.
+	//
+	// - **true**
+	//
+	// - **false**
+	//
 	// example:
 	//
 	// true
-	ChooseAllChannel *bool                                                     `json:"ChooseAllChannel,omitempty" xml:"ChooseAllChannel,omitempty"`
-	ContactInfoList  []*GetNotificationContactsResponseBodyDataContactInfoList `json:"ContactInfoList,omitempty" xml:"ContactInfoList,omitempty" type:"Repeated"`
+	ChooseAllChannel *bool `json:"ChooseAllChannel,omitempty" xml:"ChooseAllChannel,omitempty"`
+	// The general contact list.
+	ContactInfoList []*GetNotificationContactsResponseBodyDataContactInfoList `json:"ContactInfoList,omitempty" xml:"ContactInfoList,omitempty" type:"Repeated"`
 }
 
 func (s GetNotificationContactsResponseBodyData) String() string {
@@ -252,22 +289,44 @@ func (s *GetNotificationContactsResponseBodyData) Validate() error {
 }
 
 type GetNotificationContactsResponseBodyDataChannelConfigs struct {
+	// The channel type.
+	//
 	// example:
 	//
 	// email
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// Indicates whether the subscription is configured.
+	//
+	// - **NO**
+	//
+	// - **YES**
+	//
 	// example:
 	//
 	// NO
 	CheckedState *string `json:"CheckedState,omitempty" xml:"CheckedState,omitempty"`
+	// Indicates whether the channel is selected by default.
+	//
+	// - **NO**
+	//
+	// - **YES**
+	//
 	// example:
 	//
 	// NO
 	DefaultChecked *string `json:"DefaultChecked,omitempty" xml:"DefaultChecked,omitempty"`
+	// The fatigue limit.
+	//
 	// example:
 	//
 	// 7
 	FatigueDayLimit *int32 `json:"FatigueDayLimit,omitempty" xml:"FatigueDayLimit,omitempty"`
+	// Indicates whether the channel is modifiable.
+	//
+	// - **NO**
+	//
+	// - **YES**
+	//
 	// example:
 	//
 	// NO
@@ -332,38 +391,68 @@ func (s *GetNotificationContactsResponseBodyDataChannelConfigs) Validate() error
 }
 
 type GetNotificationContactsResponseBodyDataContactInfoList struct {
+	// The Alibaba Cloud account ID.
+	//
 	// example:
 	//
 	// 1492387044070147
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// Indicates whether the contact is bound.
+	//
+	// - **true**
+	//
+	// - **fasle**
+	//
 	// example:
 	//
 	// true
 	BindContact *bool `json:"BindContact,omitempty" xml:"BindContact,omitempty"`
+	// The contact email address.
+	//
 	// example:
 	//
 	// t*@qq.*
 	ContactEmail *string `json:"ContactEmail,omitempty" xml:"ContactEmail,omitempty"`
+	// The Account Center contact ID. A value of 0 indicates the account contact.
+	//
 	// example:
 	//
 	// 0
 	ContactId *int64 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// The Account Center contact mobile number (masked).
+	//
 	// example:
 	//
 	// 13580xxx136
 	ContactMobile *string `json:"ContactMobile,omitempty" xml:"ContactMobile,omitempty"`
+	// The Account Center contact name.
+	//
 	// example:
 	//
 	// shianyu
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	// Indicates whether the email address is verified.
+	//
+	// - **true**
+	//
+	// - **false**
+	//
 	// example:
 	//
 	// true
 	EmailConfirmed *bool `json:"EmailConfirmed,omitempty" xml:"EmailConfirmed,omitempty"`
+	// Indicates whether the Account Center contact mobile number is verified.
+	//
+	// - **true**
+	//
+	// - **false**
+	//
 	// example:
 	//
 	// true
 	MobileConfirmed *bool `json:"MobileConfirmed,omitempty" xml:"MobileConfirmed,omitempty"`
+	// The Account Center contact position.
+	//
 	// example:
 	//
 	// CEO

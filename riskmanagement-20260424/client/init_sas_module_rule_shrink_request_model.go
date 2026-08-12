@@ -20,15 +20,26 @@ type iInitSasModuleRuleShrinkRequest interface {
 }
 
 type InitSasModuleRuleShrinkRequest struct {
+	// Specifies whether to enable automatic binding. Valid values:
+	//
+	// - **0**: Disabled.
+	//
+	// - **1**: Enabled.
+	//
 	// example:
 	//
 	// 0
-	AutoBind        *int32  `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
+	AutoBind *int32 `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
+	// The list of instances.
 	InstancesShrink *string `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	// Specifies whether to use the trial version.
+	//
 	// example:
 	//
 	// false
 	IsTrial *bool `json:"IsTrial,omitempty" xml:"IsTrial,omitempty"`
+	// The region ID of the access control instance.
+	//
 	// example:
 	//
 	// cn-guangzhou

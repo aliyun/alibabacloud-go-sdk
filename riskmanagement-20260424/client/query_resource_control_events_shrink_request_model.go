@@ -17,6 +17,8 @@ type iQueryResourceControlEventsShrinkRequest interface {
 	GetAliyunLang() *string
 	SetBusinessCode(v string) *QueryResourceControlEventsShrinkRequest
 	GetBusinessCode() *string
+	SetBusinessCodesShrink(v string) *QueryResourceControlEventsShrinkRequest
+	GetBusinessCodesShrink() *string
 	SetCaseCodesPrefixShrink(v string) *QueryResourceControlEventsShrinkRequest
 	GetCaseCodesPrefixShrink() *string
 	SetCurrent(v int32) *QueryResourceControlEventsShrinkRequest
@@ -62,102 +64,153 @@ type iQueryResourceControlEventsShrinkRequest interface {
 }
 
 type QueryResourceControlEventsShrinkRequest struct {
+	// The action name code.
+	//
 	// example:
 	//
 	// shutdown
 	ActionCode *string `json:"ActionCode,omitempty" xml:"ActionCode,omitempty"`
+	// The collection of control action name codes.
+	//
 	// example:
 	//
 	// shutdown
 	ActionCodesShrink *string `json:"ActionCodes,omitempty" xml:"ActionCodes,omitempty"`
+	// The internationalization language.
+	//
 	// example:
 	//
 	// zh
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// The product.
+	//
 	// example:
 	//
 	// ecs
-	BusinessCode *string `json:"BusinessCode,omitempty" xml:"BusinessCode,omitempty"`
+	BusinessCode        *string `json:"BusinessCode,omitempty" xml:"BusinessCode,omitempty"`
+	BusinessCodesShrink *string `json:"BusinessCodes,omitempty" xml:"BusinessCodes,omitempty"`
+	// The collection of event name code prefixes.
+	//
 	// example:
 	//
 	// [\\"BANFF\\"]
 	CaseCodesPrefixShrink *string `json:"CaseCodesPrefix,omitempty" xml:"CaseCodesPrefix,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// short.industry.taobao.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The event name code.
+	//
 	// example:
 	//
 	// BANFF_ECS_PE_ECS_MINING_SHUTDOWN
 	EventCode *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
+	// The collection of event name codes.
+	//
 	// example:
 	//
 	// ["BANFF_ECS_PE_ECS_MINING_SHUTDOWN"]
 	EventCodesShrink *string `json:"EventCodes,omitempty" xml:"EventCodes,omitempty"`
+	// The event ID.
+	//
 	// example:
 	//
 	// 2PTOHhN3YUeaPWzq9FLmpdZ9EOW
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The collection of event IDs.
+	//
 	// example:
 	//
 	// [\\"7ac74fbfe06b2b85bb470083b7a05fb7\\",\\"1180c5bbff0a385b00d2cf73e3371d11\\"]
 	EventIdListShrink *string `json:"EventIdList,omitempty" xml:"EventIdList,omitempty"`
+	// The collection of excluded control action name codes.
+	//
 	// example:
 	//
 	// [\\"shutdown\\"]
 	ExcludeActionCodesShrink *string `json:"ExcludeActionCodes,omitempty" xml:"ExcludeActionCodes,omitempty"`
+	// The collection of excluded event name codes.
+	//
 	// example:
 	//
 	// [\\"TEST_CASE\\"]
 	ExcludeEventCodesShrink *string `json:"ExcludeEventCodes,omitempty" xml:"ExcludeEventCodes,omitempty"`
+	// The collection of excluded event reasons.
+	//
 	// example:
 	//
-	// [\\"挖矿告警\\",\\"挖矿管控事件\\",\\"挖矿\\"]
+	// [\\"Cryptomining alert\\",\\"Cryptomining control event\\",\\"Cryptomining\\"]
 	ExcludeReasonsShrink *string `json:"ExcludeReasons,omitempty" xml:"ExcludeReasons,omitempty"`
+	// The collection of included event reasons.
+	//
 	// example:
 	//
-	// [\\"挖矿告警\\",\\"挖矿管控事件\\",\\"挖矿\\"]
+	// [\\"Cryptomining alert\\",\\"Cryptomining control event\\",\\"Cryptomining\\"]
 	IncludeReasonsShrink *string `json:"IncludeReasons,omitempty" xml:"IncludeReasons,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// rm-0iw73ro05vcwn6ntq
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// IP
+	//
 	// example:
 	//
 	// 12.3*.22.11
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The penalty end time.
+	//
 	// example:
 	//
 	// 2026-03-16 15:15:00
 	PunishEndTime *string `json:"PunishEndTime,omitempty" xml:"PunishEndTime,omitempty"`
+	// The penalty start time.
+	//
 	// example:
 	//
 	// 2026-03-16 15:15:00
 	PunishStartTime *string `json:"PunishStartTime,omitempty" xml:"PunishStartTime,omitempty"`
+	// The event reason.
+	//
 	// example:
 	//
-	// 挖矿
+	// Cryptomining.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The collection of event source codes.
+	//
 	// example:
 	//
 	// [\\"MRM\\"]
 	SourceCodesShrink *string `json:"SourceCodes,omitempty" xml:"SourceCodes,omitempty"`
+	// The task status.
+	//
 	// example:
 	//
 	// Executing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The collection of task statuses.
+	//
 	// example:
 	//
 	// [\\"Executing\\"]
 	StatusListShrink *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
+	// The control URL.
+	//
 	// example:
 	//
 	// https://qimg.xiaohongshu.com/circe/1040g1v831qggp28ln0705oft1i6k1jil889lhso?imageView2/2/w/1080/format/jpg
@@ -186,6 +239,10 @@ func (s *QueryResourceControlEventsShrinkRequest) GetAliyunLang() *string {
 
 func (s *QueryResourceControlEventsShrinkRequest) GetBusinessCode() *string {
 	return s.BusinessCode
+}
+
+func (s *QueryResourceControlEventsShrinkRequest) GetBusinessCodesShrink() *string {
+	return s.BusinessCodesShrink
 }
 
 func (s *QueryResourceControlEventsShrinkRequest) GetCaseCodesPrefixShrink() *string {
@@ -289,6 +346,11 @@ func (s *QueryResourceControlEventsShrinkRequest) SetAliyunLang(v string) *Query
 
 func (s *QueryResourceControlEventsShrinkRequest) SetBusinessCode(v string) *QueryResourceControlEventsShrinkRequest {
 	s.BusinessCode = &v
+	return s
+}
+
+func (s *QueryResourceControlEventsShrinkRequest) SetBusinessCodesShrink(v string) *QueryResourceControlEventsShrinkRequest {
+	s.BusinessCodesShrink = &v
 	return s
 }
 

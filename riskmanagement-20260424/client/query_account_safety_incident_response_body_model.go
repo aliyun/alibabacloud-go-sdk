@@ -22,19 +22,34 @@ type iQueryAccountSafetyIncidentResponseBody interface {
 }
 
 type QueryAccountSafetyIncidentResponseBody struct {
+	// The status code.
+	//
+	// > 200: The request was successful. Other values (such as 500 or 400): An error occurred.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *QueryAccountSafetyIncidentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	//
 	// example:
 	//
 	// successful‌
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2FBDD713-00A5-5C98-B661-3FD31A349B6E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// - **true**
+	//
+	// - **false**
+	//
 	// example:
 	//
 	// true
@@ -104,7 +119,9 @@ func (s *QueryAccountSafetyIncidentResponseBody) Validate() error {
 }
 
 type QueryAccountSafetyIncidentResponseBodyData struct {
-	List     []*QueryAccountSafetyIncidentResponseBodyDataList   `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The event data.
+	List []*QueryAccountSafetyIncidentResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The pagination information.
 	PageInfo *QueryAccountSafetyIncidentResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 }
 
@@ -153,63 +170,106 @@ func (s *QueryAccountSafetyIncidentResponseBodyData) Validate() error {
 }
 
 type QueryAccountSafetyIncidentResponseBodyDataList struct {
+	// The control action name code.
+	//
 	// example:
 	//
 	// success_service
 	ActionCode *string `json:"ActionCode,omitempty" xml:"ActionCode,omitempty"`
+	// The control action name.
+	//
 	// example:
 	//
-	// 处罚直接成功
+	// Penalty executed successfully.
 	ActionName *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
+	// The time when the control action was removed.
+	//
+	// > Format: yyyy-MM-dd HH:mm:ss
+	//
 	// example:
 	//
 	// 2026-03-16 15:15:00
-	AntiPunishTime *string                                                   `json:"AntiPunishTime,omitempty" xml:"AntiPunishTime,omitempty"`
-	DateExtras     *QueryAccountSafetyIncidentResponseBodyDataListDateExtras `json:"DateExtras,omitempty" xml:"DateExtras,omitempty" type:"Struct"`
+	AntiPunishTime *string `json:"AntiPunishTime,omitempty" xml:"AntiPunishTime,omitempty"`
+	// The control action time information.
+	DateExtras *QueryAccountSafetyIncidentResponseBodyDataListDateExtras `json:"DateExtras,omitempty" xml:"DateExtras,omitempty" type:"Struct"`
+	// The event ID.
+	//
 	// example:
 	//
 	// 4ba4065e0b2206c05f86d5eaa00ae520
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The event impact.
+	//
 	// example:
 	//
 	// ak leak.
 	EventImpact *string `json:"EventImpact,omitempty" xml:"EventImpact,omitempty"`
+	// The control event name.
+	//
 	// example:
 	//
 	// ak leak.
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// The event reason.
+	//
 	// example:
 	//
 	// ak leak.
 	EventReason *string `json:"EventReason,omitempty" xml:"EventReason,omitempty"`
+	// The start time of the control action.
+	//
+	// > Format: yyyy-MM-dd HH:mm:ss
+	//
 	// example:
 	//
 	// 2026-03-16 15:15:00
 	PunishTime *string `json:"PunishTime,omitempty" xml:"PunishTime,omitempty"`
+	// The hardening suggestion.
+	//
 	// example:
 	//
 	// suggestion
 	Reinforcement *string `json:"Reinforcement,omitempty" xml:"Reinforcement,omitempty"`
+	// The cloud resource ID.
+	//
 	// example:
 	//
 	// i-2zeanc2b2vgfpbvp60cs
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The control object type.
+	//
 	// example:
 	//
 	// customer
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The event status. Valid values:
+	//
+	// - **Executing**: In progress.
+	//
+	// - **Removed**: Removed.
+	//
+	// - **Alerting**: Alerting.
+	//
+	// - **Ended**: Ended.
+	//
 	// example:
 	//
 	// Executing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The handling suggestion.
+	//
 	// example:
 	//
 	// suggestion
 	Tip *string `json:"Tip,omitempty" xml:"Tip,omitempty"`
+	// The help topic name.
+	//
 	// example:
 	//
 	// help
 	UserGuideName *string `json:"UserGuideName,omitempty" xml:"UserGuideName,omitempty"`
+	// The help topic URL.
+	//
 	// example:
 	//
 	// https://xxx.aliyun.com/
@@ -378,14 +438,26 @@ func (s *QueryAccountSafetyIncidentResponseBodyDataList) Validate() error {
 }
 
 type QueryAccountSafetyIncidentResponseBodyDataListDateExtras struct {
+	// The time when the alert ended.
+	//
+	// > Format: yyyy-MM-dd HH:mm:ss
+	//
 	// example:
 	//
 	// 2026-03-16 15:15:00
 	AlertEndTime *string `json:"AlertEndTime,omitempty" xml:"AlertEndTime,omitempty"`
+	// The time when the first alert was triggered.
+	//
+	// > Format: yyyy-MM-dd HH:mm:ss
+	//
 	// example:
 	//
 	// 2026-03-16 15:15:00
 	AlertStartTime *string `json:"AlertStartTime,omitempty" xml:"AlertStartTime,omitempty"`
+	// The time of the latest detection.
+	//
+	// > Format: yyyy-MM-dd HH:mm:ss
+	//
 	// example:
 	//
 	// 2026-03-16 15:15:00
@@ -432,14 +504,20 @@ func (s *QueryAccountSafetyIncidentResponseBodyDataListDateExtras) Validate() er
 }
 
 type QueryAccountSafetyIncidentResponseBodyDataPageInfo struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	Current *string `json:"Current,omitempty" xml:"Current,omitempty"`
+	// The number of assets displayed per page when you perform a paging query.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of events.
+	//
 	// example:
 	//
 	// 20

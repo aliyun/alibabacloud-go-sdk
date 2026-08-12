@@ -14,6 +14,10 @@ type iGetDisposalToolStatusRequest interface {
 }
 
 type GetDisposalToolStatusRequest struct {
+	// The authorization type.
+	//
+	// - **DisposalTool**: one-click disposal authorization type
+	//
 	// example:
 	//
 	// DisposalTool

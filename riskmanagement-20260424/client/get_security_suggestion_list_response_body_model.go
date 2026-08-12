@@ -22,19 +22,36 @@ type iGetSecuritySuggestionListResponseBody interface {
 }
 
 type GetSecuritySuggestionListResponseBody struct {
+	// The status code.
+	//
+	// - **200**: Success.
+	//
+	// - **Other (400, 500)**: Failure.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The query result.
 	Data *GetSecuritySuggestionListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 855FCC89-0B13-5FC0-AAD2-120878081C1C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -104,15 +121,22 @@ func (s *GetSecuritySuggestionListResponseBody) Validate() error {
 }
 
 type GetSecuritySuggestionListResponseBodyData struct {
+	// The list of rules.
 	ConfigRuleList []*GetSecuritySuggestionListResponseBodyDataConfigRuleList `json:"ConfigRuleList,omitempty" xml:"ConfigRuleList,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of rules.
+	//
 	// example:
 	//
 	// 51
@@ -177,57 +201,106 @@ func (s *GetSecuritySuggestionListResponseBodyData) Validate() error {
 }
 
 type GetSecuritySuggestionListResponseBodyDataConfigRuleList struct {
+	// The ID of the account to which the rule belongs.
+	//
 	// example:
 	//
 	// 1625772519123804
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The remediation type. Only OOS (CloudOps Orchestration Service) is supported.
+	//
 	// example:
 	//
 	// OOS
 	AutomationType *string `json:"AutomationType,omitempty" xml:"AutomationType,omitempty"`
+	// The aggregated compliance result of the rule.
+	//
 	// example:
 	//
 	// {count=1, complianceType=NON_COMPLIANT}
-	Compliance       *string                                                                  `json:"Compliance,omitempty" xml:"Compliance,omitempty"`
+	Compliance *string `json:"Compliance,omitempty" xml:"Compliance,omitempty"`
+	// The aggregated compliance result of the rule.
 	ComplianceObject *GetSecuritySuggestionListResponseBodyDataConfigRuleListComplianceObject `json:"ComplianceObject,omitempty" xml:"ComplianceObject,omitempty" type:"Struct"`
+	// The ARN of the rule.
+	//
 	// example:
 	//
 	// acs:config::100931896542****:rule/cr-fdc8626622af00f9****
 	ConfigRuleArn *string `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// cr-bqa2f25bc5ce00af6323
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// The name of the rule.
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The rule running status. Valid values:
+	//
+	// - **ACTIVE**: Active.
+	//
+	// - **DELETING**: Being deleted.
+	//
+	// - **EVALUATING**: Being evaluated.
+	//
+	// - **INACTIVE**: Inactive.
+	//
 	// example:
 	//
 	// ACTIVE
-	ConfigRuleState *string                                                          `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
-	CreateBy        *GetSecuritySuggestionListResponseBodyDataConfigRuleListCreateBy `json:"CreateBy,omitempty" xml:"CreateBy,omitempty" type:"Struct"`
+	ConfigRuleState *string `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
+	// The information about the rule creator.
+	CreateBy *GetSecuritySuggestionListResponseBodyDataConfigRuleListCreateBy `json:"CreateBy,omitempty" xml:"CreateBy,omitempty" type:"Struct"`
+	// The rule description.
+	//
 	// example:
 	//
 	// The description of the rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The resource type scope. Multiple resource types are separated by commas (,).
+	//
 	// example:
 	//
 	// ACS::EIP::EipAddress
 	ResourceTypesScope *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
+	// The risk level of the rule. Valid values:
+	//
+	// - **1**: High risk.
+	//
+	// - **2**: Medium risk.
+	//
+	// - **3**: Low risk.
+	//
 	// example:
 	//
 	// 1
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The rule identifier.
+	//
+	// - If the rule uses a managed rule, this parameter is the managed rule name.
+	//
+	// - If the rule uses a custom function, this parameter is the function ARN.
+	//
 	// example:
 	//
 	// eip-bandwidth-limit
 	SourceIdentifier *string `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
+	// The owner of the rule source. Valid values:
+	//
+	// - **CUSTOM_FC**: Custom rule.
+	//
+	// - **ALIYUN**: Rule template.
+	//
 	// example:
 	//
 	// ALIYUN
-	SourceOwner *string                                                        `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
-	Tags        []*GetSecuritySuggestionListResponseBodyDataConfigRuleListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	SourceOwner *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
+	// The tags of the rule.
+	Tags []*GetSecuritySuggestionListResponseBodyDataConfigRuleListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s GetSecuritySuggestionListResponseBodyDataConfigRuleList) String() string {
@@ -397,10 +470,22 @@ func (s *GetSecuritySuggestionListResponseBodyDataConfigRuleList) Validate() err
 }
 
 type GetSecuritySuggestionListResponseBodyDataConfigRuleListComplianceObject struct {
+	// The compliance evaluation result of the rule. Valid values:
+	//
+	// - **COMPLIANT**: Compliant.
+	//
+	// - **NON_COMPLIANT**: Non-compliant.
+	//
+	// - **NOT_APPLICABLE**: Not applicable.
+	//
+	// - **INSUFFICIENT_DATA**: Insufficient data.
+	//
 	// example:
 	//
 	// NON_COMPLIANT
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	// The number of evaluations corresponding to the summary result of the rule evaluation.
+	//
 	// example:
 	//
 	// 2
@@ -438,10 +523,14 @@ func (s *GetSecuritySuggestionListResponseBodyDataConfigRuleListComplianceObject
 }
 
 type GetSecuritySuggestionListResponseBodyDataConfigRuleListCreateBy struct {
+	// The ID of the compliance package to which the rule belongs.
+	//
 	// example:
 	//
 	// cp-fdc8626622af00f9****
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The compliance package name.
+	//
 	// example:
 	//
 	// The name of the compliance package.
@@ -479,10 +568,14 @@ func (s *GetSecuritySuggestionListResponseBodyDataConfigRuleListCreateBy) Valida
 }
 
 type GetSecuritySuggestionListResponseBodyDataConfigRuleListTags struct {
+	// The tag key of the rule.
+	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the rule.
+	//
 	// example:
 	//
 	// prod

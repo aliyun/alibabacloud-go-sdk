@@ -30,38 +30,72 @@ type iQueryAccountSafetyIncidentRequest interface {
 }
 
 type QueryAccountSafetyIncidentRequest struct {
+	// The language. Default value: zh.
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// The event name code.
+	//
 	// example:
 	//
 	// RISKCONTROL_IMS_IMS_BAN_SUBUSER
 	CaseCode *string `json:"CaseCode,omitempty" xml:"CaseCode,omitempty"`
+	// The current page number. The value must be greater than 0.
+	//
 	// example:
 	//
 	// 1
 	Current *string `json:"Current,omitempty" xml:"Current,omitempty"`
+	// The event ID.
+	//
 	// example:
 	//
 	// 2PTOHhN3YUeaPWzq9FLmpdZ9EOW
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The number of records per page. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The end time of the control action.
+	//
+	// > Format: yyyy-MM-dd HH:mm:ss
+	//
 	// example:
 	//
 	// 2026-03-16 15:15:00
 	PunishEndTime *string `json:"PunishEndTime,omitempty" xml:"PunishEndTime,omitempty"`
+	// The start time of the control action.
+	//
+	// > Format: yyyy-MM-dd HH:mm:ss
+	//
 	// example:
 	//
 	// 2026-03-16 15:15:00
 	PunishStartTime *string `json:"PunishStartTime,omitempty" xml:"PunishStartTime,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// RES001
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The event status. Valid values:
+	//
+	// - **Executing**: In progress.
+	//
+	// - **Removed**: Removed.
+	//
+	// - **Alerting**: Alerting.
+	//
+	// - **Ended**: Ended.
+	//
 	// example:
 	//
 	// Executing

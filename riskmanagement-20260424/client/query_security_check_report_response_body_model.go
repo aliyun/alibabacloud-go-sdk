@@ -22,19 +22,34 @@ type iQuerySecurityCheckReportResponseBody interface {
 }
 
 type QuerySecurityCheckReportResponseBody struct {
+	// The status code.
+	//
+	// >  200: The request was successful. Other codes (such as 500 or 400): An error occurred.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The query result.
 	Data *QuerySecurityCheckReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The description.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2FBDD713-00A5-5C98-B661-3FD31A349B6E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -104,30 +119,54 @@ func (s *QuerySecurityCheckReportResponseBody) Validate() error {
 }
 
 type QuerySecurityCheckReportResponseBodyData struct {
+	// The subscription status of the cloud security guide. Valid values:
+	//
+	// - **0**: not subscribed
+	//
+	// - **1**: subscribed
+	//
 	// example:
 	//
 	// 1
 	CloudSecurityGuide *int32 `json:"CloudSecurityGuide,omitempty" xml:"CloudSecurityGuide,omitempty"`
+	// The number of pending items for configuration audit.
+	//
 	// example:
 	//
 	// 3
 	ConfigCheckNumber *int32 `json:"ConfigCheckNumber,omitempty" xml:"ConfigCheckNumber,omitempty"`
+	// The number of pending items for security contacts.
+	//
 	// example:
 	//
 	// 3
 	ContactCheckNumber *int32 `json:"ContactCheckNumber,omitempty" xml:"ContactCheckNumber,omitempty"`
+	// The number of risk events.
+	//
 	// example:
 	//
 	// 3
 	RiskEventNumber *int32 `json:"RiskEventNumber,omitempty" xml:"RiskEventNumber,omitempty"`
+	// The number of pending items for Elastic Compute Service.
+	//
 	// example:
 	//
 	// 1
 	SasCheckNumber *int32 `json:"SasCheckNumber,omitempty" xml:"SasCheckNumber,omitempty"`
+	// The security check result status. Valid values:
+	//
+	// - **0**: no risk
+	//
+	// - **1**: risks exist
+	//
+	// - **2**: items to be optimized exist
+	//
 	// example:
 	//
 	// 1
 	SecurityStatus *int32 `json:"SecurityStatus,omitempty" xml:"SecurityStatus,omitempty"`
+	// The suggestion text.
+	//
 	// example:
 	//
 	// exist risk event。

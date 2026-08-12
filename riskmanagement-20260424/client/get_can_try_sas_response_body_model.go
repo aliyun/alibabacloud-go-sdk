@@ -22,19 +22,32 @@ type iGetCanTrySasResponseBody interface {
 }
 
 type GetCanTrySasResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The detailed information.
 	Data *GetCanTrySasResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message. The value is the same as the Code parameter value.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6B48613E-86DE-5411-BDBE-429C80B45F3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the current API call is successful. This does not indicate whether subsequent business operations are successful.
+	//
+	// - **true**: Successful.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -104,6 +117,7 @@ func (s *GetCanTrySasResponseBody) Validate() error {
 }
 
 type GetCanTrySasResponseBodyData struct {
+	// The message body.
 	Body *GetCanTrySasResponseBodyDataBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
 }
 
@@ -134,7 +148,10 @@ func (s *GetCanTrySasResponseBodyData) Validate() error {
 }
 
 type GetCanTrySasResponseBodyDataBody struct {
+	// The data.
 	Data *GetCanTrySasResponseBodyDataBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 0EBD97B8-65AD-52C8-94D5-A0F81E7D70D0
@@ -177,11 +194,26 @@ func (s *GetCanTrySasResponseBodyDataBody) Validate() error {
 }
 
 type GetCanTrySasResponseBodyDataBodyData struct {
+	// Indicates whether the user is eligible for a free trial. Valid values:
+	//
+	// - **1**: Eligible.
+	//
+	// - **0**: Not eligible.
+	//
 	// example:
 	//
 	// 1
-	CanTry         *int32   `json:"CanTry,omitempty" xml:"CanTry,omitempty"`
+	CanTry *int32 `json:"CanTry,omitempty" xml:"CanTry,omitempty"`
+	// The list of editions available for trial.
 	CanTryVersions []*int32 `json:"CanTryVersions,omitempty" xml:"CanTryVersions,omitempty" type:"Repeated"`
+	// The trial type. Valid values:
+	//
+	// - **0**: Trial is not allowed.
+	//
+	// - **1**: First trial.
+	//
+	// - **2**: Second trial.
+	//
 	// example:
 	//
 	// 1

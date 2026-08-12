@@ -16,10 +16,13 @@ type iDescribeSuspEventsShrinkRequest interface {
 }
 
 type DescribeSuspEventsShrinkRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-guangzhou
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Security Center SDK request parameters.
 	SdkRequestShrink *string `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty"`
 }
 

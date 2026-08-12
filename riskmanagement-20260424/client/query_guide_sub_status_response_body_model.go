@@ -22,22 +22,40 @@ type iQueryGuideSubStatusResponseBody interface {
 }
 
 type QueryGuideSubStatusResponseBody struct {
+	// The status of the API call.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The subscription status. Valid values:
+	//
+	// - **SUBSCRIBED**: Subscribed.
+	//
+	// - **UNSUBSCRIBED**: Unsubscribed.
+	//
 	// example:
 	//
 	// SUBSCRIBED
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The prompt message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3C107939-59BD-5EB9-B250-39559C830A85
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true

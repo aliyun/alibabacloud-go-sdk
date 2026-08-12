@@ -22,19 +22,28 @@ type iDescribeSuspEventsResponseBody interface {
 }
 
 type DescribeSuspEventsResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response information returned by Meta.
 	Data *DescribeSuspEventsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message. If the request is successful, a success message is returned. If the request fails, the failure reason is returned.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 67BD8435-6624-5484-A75D-170231B51615
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation is successful. Valid values: true: Successful. false: Failed.
+	//
 	// example:
 	//
 	// true
@@ -104,6 +113,7 @@ func (s *DescribeSuspEventsResponseBody) Validate() error {
 }
 
 type DescribeSuspEventsResponseBodyData struct {
+	// The message body.
 	Body *DescribeSuspEventsResponseBodyDataBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
 }
 
@@ -134,23 +144,34 @@ func (s *DescribeSuspEventsResponseBodyData) Validate() error {
 }
 
 type DescribeSuspEventsResponseBodyDataBody struct {
+	// The number of tasks.
+	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID of Security Center.
+	//
 	// example:
 	//
 	// AD2345D1-A498-58AF-97C0-88940AF87CB7
-	RequestId  *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The security alert event information.
 	SuspEvents []*DescribeSuspEventsResponseBodyDataBodySuspEvents `json:"SuspEvents,omitempty" xml:"SuspEvents,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 72
@@ -233,218 +254,328 @@ func (s *DescribeSuspEventsResponseBodyDataBody) Validate() error {
 }
 
 type DescribeSuspEventsResponseBodyDataBodySuspEvents struct {
+	// Indicates whether the alert is from offline analysis.
+	//
 	// example:
 	//
 	// true
 	Advanced *bool `json:"Advanced,omitempty" xml:"Advanced,omitempty"`
+	// The name of the alert event.
+	//
 	// example:
 	//
-	// 反弹shell_拦截
+	// Reverse shell_China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China.
 	AlarmEventName *string `json:"AlarmEventName,omitempty" xml:"AlarmEventName,omitempty"`
+	// The display name of the alerting event.
+	//
 	// example:
 	//
 	// Login with unusual location
 	AlarmEventNameDisplay *string `json:"AlarmEventNameDisplay,omitempty" xml:"AlarmEventNameDisplay,omitempty"`
+	// The event type of the alerting event.
+	//
 	// example:
 	//
 	// Unusual Logon
 	AlarmEventType *string `json:"AlarmEventType,omitempty" xml:"AlarmEventType,omitempty"`
+	// The display name of the alerting event type.
+	//
 	// example:
 	//
 	// Unusual Logon
 	AlarmEventTypeDisplay *string `json:"AlarmEventTypeDisplay,omitempty" xml:"AlarmEventTypeDisplay,omitempty"`
+	// The unique ID of the alert event.
+	//
 	// example:
 	//
 	// 8df914418f****
 	AlarmUniqueInfo *string `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
+	// The name of the application to which the alerting event belongs.
+	//
 	// example:
 	//
 	// dfield-cloud-service-prod
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Indicates whether automatic defense is enabled.
+	//
 	// example:
 	//
 	// true
 	AutoBreaking *bool `json:"AutoBreaking,omitempty" xml:"AutoBreaking,omitempty"`
+	// Specifies whether the alerting event is supported for online handling, such as quarantine. Valid values:
+	//
 	// example:
 	//
 	// true
 	CanBeDealOnLine *bool `json:"CanBeDealOnLine,omitempty" xml:"CanBeDealOnLine,omitempty"`
+	// Indicates whether the false positive marking can be unmarked. Valid values:
+	//
 	// example:
 	//
 	// true
 	CanCancelFault *bool `json:"CanCancelFault,omitempty" xml:"CanCancelFault,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// c8c87dae64c9947269091f36cfa9adc87
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Indicates whether critical event protection pattern is enabled for the server. Valid values:
+	//
 	// example:
 	//
 	// false
 	ContainHwMode *bool `json:"ContainHwMode,omitempty" xml:"ContainHwMode,omitempty"`
+	// The container ID.
+	//
 	// example:
 	//
 	// 95878ef8779fae3dd82126812edd910402fc550a72f9bce87e56a4435d018384
 	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	// The container image ID.
+	//
 	// example:
 	//
 	// sha256:2e5a3b0ae5f452b3cb458789a9a7542ef40035a84318469a8528c5e444db1****
 	ContainerImageId *string `json:"ContainerImageId,omitempty" xml:"ContainerImageId,omitempty"`
+	// The container image name.
+	//
 	// example:
 	//
 	// centos7_apache:v1.0.1
 	ContainerImageName *string `json:"ContainerImageName,omitempty" xml:"ContainerImageName,omitempty"`
+	// The data source. You can ignore this field.
+	//
 	// example:
 	//
 	// URL
 	DataSource *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	// The description of the impact of the alerting event.
+	//
 	// example:
 	//
 	// webshell
-	Desc    *string                                                    `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// The details of the alerting event.
 	Details []*DescribeSuspEventsResponseBodyDataBodySuspEventsDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	// The detection source. This is an invalid field.
+	//
 	// example:
 	//
 	// -
 	DetectSource *string `json:"DetectSource,omitempty" xml:"DetectSource,omitempty"`
+	// Indicates whether cloud sandbox detection is supported. Valid values:
+	//
 	// example:
 	//
 	// true
-	DisplaySandboxResult *bool                                                         `json:"DisplaySandboxResult,omitempty" xml:"DisplaySandboxResult,omitempty"`
-	EventNotes           []*DescribeSuspEventsResponseBodyDataBodySuspEventsEventNotes `json:"EventNotes,omitempty" xml:"EventNotes,omitempty" type:"Repeated"`
+	DisplaySandboxResult *bool `json:"DisplaySandboxResult,omitempty" xml:"DisplaySandboxResult,omitempty"`
+	// The remarks of the alerting event.
+	EventNotes []*DescribeSuspEventsResponseBodyDataBodySuspEventsEventNotes `json:"EventNotes,omitempty" xml:"EventNotes,omitempty" type:"Repeated"`
+	// The status of the alerting event. Valid values:
+	//
 	// example:
 	//
 	// 1
 	EventStatus *int32 `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
+	// The child class of the alerting event.
+	//
 	// example:
 	//
 	// login_common_location
 	EventSubType *string `json:"EventSubType,omitempty" xml:"EventSubType,omitempty"`
+	// Indicates whether the alerting event is associated with tracing information. Valid values:
+	//
 	// example:
 	//
 	// true
 	HasTraceInfo *bool `json:"HasTraceInfo,omitempty" xml:"HasTraceInfo,omitempty"`
+	// The unique identity of the alerting event.
+	//
 	// example:
 	//
 	// 3178
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The unique identity of the image.
+	//
 	// example:
 	//
 	// ccdab289-9765-47ef-af50-ba6be09aacd6
 	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
+	// The ID of the asset instance affected by the alerting event.
+	//
 	// example:
 	//
 	// i-9dp6dwsxdl9z5u1e2f****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// nginx
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The public IP address of the associated instance.
+	//
 	// example:
 	//
 	// 8.137.3*.6
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// The private network IP address of the instance.
+	//
 	// example:
 	//
 	// 10.36.*6.149
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// The K8s cluster ID.
+	//
 	// example:
 	//
 	// ce3c41ed427794a7bb3d9da4554fc8039
 	K8sClusterId *string `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
+	// The K8s cluster name.
+	//
 	// example:
 	//
 	// testName
 	K8sClusterName *string `json:"K8sClusterName,omitempty" xml:"K8sClusterName,omitempty"`
+	// The K8s namespace.
+	//
 	// example:
 	//
 	// default
 	K8sNamespace *string `json:"K8sNamespace,omitempty" xml:"K8sNamespace,omitempty"`
+	// The K8s node ID.
+	//
 	// example:
 	//
 	// i-bp14a1ay8e0aa9t0****
 	K8sNodeId *string `json:"K8sNodeId,omitempty" xml:"K8sNodeId,omitempty"`
+	// The K8s node name.
+	//
 	// example:
 	//
 	// N/A
 	K8sNodeName *string `json:"K8sNodeName,omitempty" xml:"K8sNodeName,omitempty"`
+	// The K8s pod name.
+	//
 	// example:
 	//
 	// myapp-pod
 	K8sPodName *string `json:"K8sPodName,omitempty" xml:"K8sPodName,omitempty"`
+	// Indicates whether large model analysis label is supported. Valid values:
+	//
 	// example:
 	//
 	// true
 	LargeModel *bool `json:"LargeModel,omitempty" xml:"LargeModel,omitempty"`
+	// The most recent time when the alerting event occurred.
+	//
 	// example:
 	//
 	// 2018-09-26 01:51:01
 	LastTime *string `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	// The UNIX timestamp of the last occurrence, in milliseconds.
+	//
 	// example:
 	//
 	// 1631699497000
 	LastTimeStamp *int64 `json:"LastTimeStamp,omitempty" xml:"LastTimeStamp,omitempty"`
+	// The risk level of the alerting event. Valid values:
+	//
 	// example:
 	//
 	// remind
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The status of the malicious behavior defense rule. Valid values:
+	//
 	// example:
 	//
 	// open
-	MaliciousRuleStatus *string   `json:"MaliciousRuleStatus,omitempty" xml:"MaliciousRuleStatus,omitempty"`
-	MarkList            []*string `json:"MarkList,omitempty" xml:"MarkList,omitempty" type:"Repeated"`
+	MaliciousRuleStatus *string `json:"MaliciousRuleStatus,omitempty" xml:"MaliciousRuleStatus,omitempty"`
+	// The collection of alerting event labels.
+	MarkList []*string `json:"MarkList,omitempty" xml:"MarkList,omitempty" type:"Repeated"`
+	// The advanced whitelist rules.
+	//
 	// example:
 	//
 	// <strong>1.</strong>&nbsp&nbsppath&nbsp&nbspcontain&nbsp&nbsp232&nbsp&nbsp
 	MarkMisRules *string `json:"MarkMisRules,omitempty" xml:"MarkMisRules,omitempty"`
+	// The full name of the alerting event.
+	//
 	// example:
 	//
 	// Unusual Logon-Login with unusual location
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the alerting event first occurred.
+	//
 	// example:
 	//
 	// 2018-09-26 01:51:01
 	OccurrenceTime *string `json:"OccurrenceTime,omitempty" xml:"OccurrenceTime,omitempty"`
+	// The UNIX timestamp of the first occurrence, in milliseconds.
+	//
 	// example:
 	//
 	// 1631699497000
 	OccurrenceTimeStamp *int64 `json:"OccurrenceTimeStamp,omitempty" xml:"OccurrenceTimeStamp,omitempty"`
+	// The fault code of the alerting event operation.
+	//
 	// example:
 	//
 	// kill_and_quara.Success
 	OperateErrorCode *string `json:"OperateErrorCode,omitempty" xml:"OperateErrorCode,omitempty"`
+	// The remarks of the alerting event operation.
+	//
 	// example:
 	//
 	// success
 	OperateMsg *string `json:"OperateMsg,omitempty" xml:"OperateMsg,omitempty"`
+	// The UNIX timestamp of the alerting event operation, in milliseconds.
+	//
 	// example:
 	//
 	// 1631699497000
 	OperateTime *int64 `json:"OperateTime,omitempty" xml:"OperateTime,omitempty"`
+	// The required edition:
+	//
 	// example:
 	//
 	// 1
 	SaleVersion *string `json:"SaleVersion,omitempty" xml:"SaleVersion,omitempty"`
+	// The IDs of the alerting events associated with this alerting event.
+	//
 	// example:
 	//
 	// 628978308
 	SecurityEventIds *string `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty"`
+	// The Alibaba Cloud account ID that generated the alert.
+	//
 	// example:
 	//
 	// 124075**67406
 	SourceAliUid *int64 `json:"SourceAliUid,omitempty" xml:"SourceAliUid,omitempty"`
+	// The attack stage.
+	//
 	// example:
 	//
 	// "["authority_maintenance"]"
 	Stages *string `json:"Stages,omitempty" xml:"Stages,omitempty"`
+	// The operation type supported by the alert:
+	//
 	// example:
 	//
 	// AI.false_positive
-	SupportOperateCode *string                                                        `json:"SupportOperateCode,omitempty" xml:"SupportOperateCode,omitempty"`
-	TacticItems        []*DescribeSuspEventsResponseBodyDataBodySuspEventsTacticItems `json:"TacticItems,omitempty" xml:"TacticItems,omitempty" type:"Repeated"`
+	SupportOperateCode *string `json:"SupportOperateCode,omitempty" xml:"SupportOperateCode,omitempty"`
+	// The display name of the attack stage.
+	TacticItems []*DescribeSuspEventsResponseBodyDataBodySuspEventsTacticItems `json:"TacticItems,omitempty" xml:"TacticItems,omitempty" type:"Repeated"`
+	// The unique key of the security alert.
+	//
 	// example:
 	//
 	// 1dfbdf56c5343b63c4854d08ec20e067
 	UniqueInfo *string `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
+	// The unique identifier of the associated instance.
+	//
 	// example:
 	//
 	// 9A75F21D3993C0A2B094A4AB132890B2
@@ -1004,18 +1135,26 @@ func (s *DescribeSuspEventsResponseBodyDataBodySuspEvents) Validate() error {
 }
 
 type DescribeSuspEventsResponseBodyDataBodySuspEventsDetails struct {
+	// The display name of the alerting event.
+	//
 	// example:
 	//
 	// login with unusual location
 	NameDisplay *string `json:"NameDisplay,omitempty" xml:"NameDisplay,omitempty"`
+	// The event type of the alerting event.
+	//
 	// example:
 	//
 	// text
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The path where the alerting event occurred.
+	//
 	// example:
 	//
 	// /etc/crontab
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The display path where the alerting event occurred.
+	//
 	// example:
 	//
 	// /etc/crontab
@@ -1071,14 +1210,20 @@ func (s *DescribeSuspEventsResponseBodyDataBodySuspEventsDetails) Validate() err
 }
 
 type DescribeSuspEventsResponseBodyDataBodySuspEventsEventNotes struct {
+	// The remark information.
+	//
 	// example:
 	//
 	// test
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	// The ID of the remark record.
+	//
 	// example:
 	//
 	// 2859481
 	NoteId *int64 `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
+	// The time when the event was recorded.
+	//
 	// example:
 	//
 	// 2018-09-26 01:51:01
@@ -1125,10 +1270,14 @@ func (s *DescribeSuspEventsResponseBodyDataBodySuspEventsEventNotes) Validate() 
 }
 
 type DescribeSuspEventsResponseBodyDataBodySuspEventsTacticItems struct {
+	// The ATT&CK tactic name.
+	//
 	// example:
 	//
 	// Malicious scripts-Malicious script code execution
 	TacticDisplayName *string `json:"TacticDisplayName,omitempty" xml:"TacticDisplayName,omitempty"`
+	// The ATT&CK attack stage information.
+	//
 	// example:
 	//
 	// TA0042

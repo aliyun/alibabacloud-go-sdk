@@ -16,10 +16,13 @@ type iCreateSasTrialRequest interface {
 }
 
 type CreateSasTrialRequest struct {
+	// The region ID of the access control instance. You can call the DescribeRegions operation to query the region ID.
+	//
 	// example:
 	//
 	// cn-shenzhen
-	RegionId   *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Security Center SDK request.
 	SdkRequest *CreateSasTrialRequestSdkRequest `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty" type:"Struct"`
 }
 
@@ -59,19 +62,51 @@ func (s *CreateSasTrialRequest) Validate() error {
 }
 
 type CreateSasTrialRequestSdkRequest struct {
+	// Specifies whether the request is from the ECS console. Valid values:
+	//
+	// - **true**: The request is from the ECS console.
+	//
+	// - **false**: The request is not from the ECS console.
+	//
 	// example:
 	//
 	// true
 	FromEcs *bool `json:"FromEcs,omitempty" xml:"FromEcs,omitempty"`
+	// The language of the request and response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// en
-	Lang        *string                                     `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The reason for applying for the trial.
 	RequestForm *CreateSasTrialRequestSdkRequestRequestForm `json:"RequestForm,omitempty" xml:"RequestForm,omitempty" type:"Struct"`
+	// The trial type. Valid values:
+	//
+	// - **0**: trial not allowed
+	//
+	// - **1**: first trial
+	//
+	// - **2**: second trial
+	//
+	//
+	// > Call the [GetCanTrySas](https://help.aliyun.com/document_detail/2623574.html) operation to obtain this parameter. The trial can be started only when the value is not 0.
+	//
 	// example:
 	//
 	// 1
 	TryType *int32 `json:"TryType,omitempty" xml:"TryType,omitempty"`
+	// The trial edition. Valid values:
+	//
+	// - **3**: Enterprise Edition.
+	//
+	// - **7**: Ultimate Edition.
+	//
+	// > Call the [GetCanTrySas](https://help.aliyun.com/document_detail/2623574.html) operation to obtain this parameter.
+	//
 	// example:
 	//
 	// 3
@@ -141,6 +176,8 @@ func (s *CreateSasTrialRequestSdkRequest) Validate() error {
 }
 
 type CreateSasTrialRequestSdkRequestRequestForm struct {
+	// The reason for applying for the trial.
+	//
 	// example:
 	//
 	// for poc

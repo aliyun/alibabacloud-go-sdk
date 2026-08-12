@@ -22,19 +22,28 @@ type iOpenTrialPackageResponseBody interface {
 }
 
 type OpenTrialPackageResponseBody struct {
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The operation result.
 	Data *OpenTrialPackageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 855FCC89-0B13-5FC0-AAD2-120878081C1C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -104,6 +113,8 @@ func (s *OpenTrialPackageResponseBody) Validate() error {
 }
 
 type OpenTrialPackageResponseBodyData struct {
+	// The Security Center request ID.
+	//
 	// example:
 	//
 	// 5F4B631D-0358-5B7B-8B84-FB924138ED91

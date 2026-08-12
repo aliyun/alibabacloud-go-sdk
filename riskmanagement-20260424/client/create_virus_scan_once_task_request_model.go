@@ -18,14 +18,20 @@ type iCreateVirusScanOnceTaskRequest interface {
 }
 
 type CreateVirusScanOnceTaskRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// rm-0iw73ro05vcwn6ntq
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The public IP address.
+	//
 	// example:
 	//
 	// 12.3*.22.11
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-zhangjiakou

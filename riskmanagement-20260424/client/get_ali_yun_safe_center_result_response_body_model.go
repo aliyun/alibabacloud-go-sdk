@@ -22,19 +22,30 @@ type iGetAliYunSafeCenterResultResponseBody interface {
 }
 
 type GetAliYunSafeCenterResultResponseBody struct {
+	// The status code.
+	//
+	// > 200: Success. Other values (500, 400, etc.): Error codes.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *GetAliYunSafeCenterResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 3C107939-59BD-5EB9-B250-39559C830A85
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the current API call is successful. Valid values: True/False. This does not indicate the success of subsequent business operations.
+	//
 	// example:
 	//
 	// true
@@ -104,27 +115,56 @@ func (s *GetAliYunSafeCenterResultResponseBody) Validate() error {
 }
 
 type GetAliYunSafeCenterResultResponseBodyData struct {
+	// The status of the Security Center Agent.
+	//
+	// - **true**: Enabled.
+	//
+	// - **false**: Not enabled.
+	//
 	// example:
 	//
 	// true
 	AgentStatus *bool `json:"AgentStatus,omitempty" xml:"AgentStatus,omitempty"`
+	// The running status of the ECS instance.
+	//
+	// - **true**: Running.
+	//
+	// - **false**: Not running.
+	//
 	// example:
 	//
 	// true
-	EcsInstanceStatus *bool    `json:"EcsInstanceStatus,omitempty" xml:"EcsInstanceStatus,omitempty"`
-	InstanceIds       []*int64 `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	EcsInstanceStatus *bool `json:"EcsInstanceStatus,omitempty" xml:"EcsInstanceStatus,omitempty"`
+	// The list of instance IDs of identical security alert events in Security Center.
+	InstanceIds []*int64 `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8169D779-3391-541F-936B-11F4EC09AD0D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The running status of the simple application server.
+	//
+	// - **true**: Running.
+	//
+	// - **false**: Not running.
+	//
 	// example:
 	//
 	// true
 	SwasInstanceStatus *bool `json:"SwasInstanceStatus,omitempty" xml:"SwasInstanceStatus,omitempty"`
+	// The task ID for querying security alerting events triggered by the same rule or alerting type.
+	//
 	// example:
 	//
 	// 12313123
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Indicates whether the list of security alerting events that match the same IP rule or same alerting type as the alerting event to be handled is empty.
+	//
+	// - **true**: Empty.
+	//
+	// - **false**: Not empty.
+	//
 	// example:
 	//
 	// true

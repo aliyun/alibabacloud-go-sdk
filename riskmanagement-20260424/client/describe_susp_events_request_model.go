@@ -16,10 +16,13 @@ type iDescribeSuspEventsRequest interface {
 }
 
 type DescribeSuspEventsRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-guangzhou
-	RegionId   *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Security Center SDK request parameters.
 	SdkRequest *DescribeSuspEventsRequestSdkRequest `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty" type:"Struct"`
 }
 
@@ -59,134 +62,202 @@ func (s *DescribeSuspEventsRequest) Validate() error {
 }
 
 type DescribeSuspEventsRequestSdkRequest struct {
+	// The unique ID of the alert event.
+	//
 	// example:
 	//
 	// 6838133766c37077d0515b0b557e6510
-	AlarmUniqueInfo *string   `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
-	AssetsTypeList  []*string `json:"AssetsTypeList,omitempty" xml:"AssetsTypeList,omitempty" type:"Repeated"`
+	AlarmUniqueInfo *string `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
+	// The list of asset types.
+	AssetsTypeList []*string `json:"AssetsTypeList,omitempty" xml:"AssetsTypeList,omitempty" type:"Repeated"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// xxljob-02f023138826b
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The container search field. Valid values:
+	//
 	// example:
 	//
 	// instanceId
 	ContainerFieldName *string `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
+	// The value of the container search field.
+	//
 	// example:
 	//
 	// ca9b91db58356b41af2932e8048310ab7daa415701fa62d823cf4f0406d5ce02
 	ContainerFieldValue *string `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The status of the alert event.
+	//
 	// example:
 	//
 	// Y
 	Dealed *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	// The detection source. This is an invalid field.
+	//
 	// example:
 	//
 	// -
 	DetectSource *string `json:"DetectSource,omitempty" xml:"DetectSource,omitempty"`
+	// The subtypes of the alert event. Separate multiple subtypes with commas (,).
+	//
 	// example:
 	//
 	// WEBSHELL
 	EventNames *string `json:"EventNames,omitempty" xml:"EventNames,omitempty"`
+	// The request source identifier. Set the value to **sas**.
+	//
 	// example:
 	//
 	// sas
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// The tag group ID.
+	//
 	// example:
 	//
 	// 18768
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The unique ID that identifies the alert event record.
+	//
 	// example:
 	//
 	// 3165
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The language type of the response. Valid values:
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The severity levels of the alert event. Separate multiple levels with commas (in descending order of severity).
+	//
 	// example:
 	//
 	// serious
 	Levels *string `json:"Levels,omitempty" xml:"Levels,omitempty"`
+	// The multi-account query type. Default value: **0**. Valid values:
+	//
 	// example:
 	//
 	// 0
 	MultiAccountActionType *int32 `json:"MultiAccountActionType,omitempty" xml:"MultiAccountActionType,omitempty"`
+	// The name of the asset affected by the alert event.
+	//
 	// example:
 	//
 	// ecs-xxx
-	Name                 *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of alert event handling result codes.
 	OperateErrorCodeList []*string `json:"OperateErrorCodeList,omitempty" xml:"OperateErrorCodeList,omitempty" type:"Repeated"`
+	// The end timestamp of the handling time.
+	//
 	// example:
 	//
 	// 2022-07-06 13:50:38
 	OperateTimeEnd *string `json:"OperateTimeEnd,omitempty" xml:"OperateTimeEnd,omitempty"`
+	// The start timestamp of the handling time.
+	//
 	// example:
 	//
 	// 2022-07-06 13:50:38
 	OperateTimeStart *string `json:"OperateTimeStart,omitempty" xml:"OperateTimeStart,omitempty"`
+	// The maximum number of entries per page in a paged query.
+	//
 	// example:
 	//
 	// 1
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The Alarm Metric of the alerting events to query. Valid values:
+	//
 	// example:
 	//
-	// 恶意脚本
+	// Malicious Scripts.
 	ParentEventTypes *string `json:"ParentEventTypes,omitempty" xml:"ParentEventTypes,omitempty"`
+	// The alert name or asset information to query.
+	//
 	// example:
 	//
 	// 192.168.XX.XX
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The Alibaba Cloud account ID of the member accounts in the resource folder.
+	//
 	// example:
 	//
 	// 5815612291408486
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	// The custom sort field. Default value: **operateTime**. Valid values:
+	//
 	// example:
 	//
 	// lastTime
 	SortColumn *string `json:"SortColumn,omitempty" xml:"SortColumn,omitempty"`
+	// The sort order based on certificate expiration time.
+	//
 	// example:
 	//
 	// asc
 	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
+	// The alert source.
+	//
 	// example:
 	//
 	// default
-	Source        *string  `json:"Source,omitempty" xml:"Source,omitempty"`
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The list of Alibaba Cloud account IDs that generated the alerts.
 	SourceAliUids []*int64 `json:"SourceAliUids,omitempty" xml:"SourceAliUids,omitempty" type:"Repeated"`
+	// The IP address of the access source.
+	//
 	// example:
 	//
 	// 2409:8a55:3827:cb50:5ad9:d5ff:fe87:f48c
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// Indicates whether the alert belongs to strict mode.
+	//
 	// example:
 	//
 	// N
-	StrictMode             *string   `json:"StrictMode,omitempty" xml:"StrictMode,omitempty"`
+	StrictMode *string `json:"StrictMode,omitempty" xml:"StrictMode,omitempty"`
+	// The list of operation types supported by the alert.
 	SupportOperateCodeList []*string `json:"SupportOperateCodeList,omitempty" xml:"SupportOperateCodeList,omitempty" type:"Repeated"`
+	// The ATT&CK tactic ID.
+	//
 	// example:
 	//
 	// TA0003
 	TacticId *string `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
+	// The container search target type. Valid values:
+	//
 	// example:
 	//
 	// containerId
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The end time of the latest occurrence time.
+	//
 	// example:
 	//
 	// 2022-07-06 13:50:38
 	TimeEnd *string `json:"TimeEnd,omitempty" xml:"TimeEnd,omitempty"`
+	// The start time of the latest occurrence time.
+	//
 	// example:
 	//
 	// 2022-07-06 13:50:38
 	TimeStart *string `json:"TimeStart,omitempty" xml:"TimeStart,omitempty"`
+	// The unique key of the security alert.
+	//
 	// example:
 	//
 	// f82680d9fdcb74a520fa385b7e9105b7
 	UniqueInfo *string `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
+	// The UUIDs of the servers for which to query alerts. Separate multiple UUIDs with commas (,).
+	//
 	// example:
 	//
 	// inet-eae09bb8-32b1-413b-a8ff-23932e043209

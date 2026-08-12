@@ -22,19 +22,28 @@ type iQueryResourceControlEventsResponseBody interface {
 }
 
 type QueryResourceControlEventsResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The metadata returned.
 	Data *QueryResourceControlEventsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The description.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 739705BB-B0EF-554B-B3A8-383F4F93E067
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
 	// example:
 	//
 	// true
@@ -104,7 +113,9 @@ func (s *QueryResourceControlEventsResponseBody) Validate() error {
 }
 
 type QueryResourceControlEventsResponseBodyData struct {
-	List     []*QueryResourceControlEventsResponseBodyDataList   `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The event list data.
+	List []*QueryResourceControlEventsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The pagination information.
 	PageInfo *QueryResourceControlEventsResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 }
 
@@ -153,126 +164,188 @@ func (s *QueryResourceControlEventsResponseBodyData) Validate() error {
 }
 
 type QueryResourceControlEventsResponseBodyDataList struct {
+	// The action code.
+	//
 	// example:
 	//
 	// DEPLOY_STAGE_REBOOT_TASK
 	ActionCode *string `json:"ActionCode,omitempty" xml:"ActionCode,omitempty"`
+	// The action name.
+	//
 	// example:
 	//
-	// 挖矿告警
+	// Cryptomining alert.
 	ActionName *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
+	// The time when the alert ended.
+	//
 	// example:
 	//
 	// 2026-03-16 15:15:00
 	AlertEndTime *string `json:"AlertEndTime,omitempty" xml:"AlertEndTime,omitempty"`
+	// The time when the first alert was triggered.
+	//
 	// example:
 	//
 	// 2026-03-16 15:15:00
 	AlertStartTime *string `json:"AlertStartTime,omitempty" xml:"AlertStartTime,omitempty"`
+	// The time when the control action was released.
+	//
 	// example:
 	//
 	// 2026-03-16 15:15:00
 	AntiPunishTime *string `json:"AntiPunishTime,omitempty" xml:"AntiPunishTime,omitempty"`
+	// The number of unblock application records.
+	//
 	// example:
 	//
 	// 1
 	ApplyRecordCount *int32 `json:"ApplyRecordCount,omitempty" xml:"ApplyRecordCount,omitempty"`
+	// The application status.
+	//
 	// example:
 	//
 	// AUDIT
 	ApplyStatus *string `json:"ApplyStatus,omitempty" xml:"ApplyStatus,omitempty"`
+	// Indicates whether the unblock application is processed through the review platform.
+	//
 	// example:
 	//
 	// false
 	ApplyTrial *bool `json:"ApplyTrial,omitempty" xml:"ApplyTrial,omitempty"`
+	// The product type name.
+	//
 	// example:
 	//
 	// e\\"c\\"s
 	BusinessName *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
+	// The event name code.
+	//
 	// example:
 	//
 	// TEST_IMS_ACCOUNT_PUNISH_WHITE_TEST
 	CaseCode *string `json:"CaseCode,omitempty" xml:"CaseCode,omitempty"`
+	// The controlled domain name.
+	//
 	// example:
 	//
 	// ubs-mm-nwwss-ddos.purchern.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The event ID.
+	//
 	// example:
 	//
 	// e791c08281b41e8240f897a424c188ae
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The event name.
+	//
 	// example:
 	//
-	// 挖矿管控事件
+	// Mining control event.
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// The extended information about the penalty.
+	//
 	// example:
 	//
 	// {\\"createAt\\":\\"2025-08-03 11:18:59\\",\\"updatedAt\\":\\"2025-08-03 11:18:59\\"}
 	Extras *string `json:"Extras,omitempty" xml:"Extras,omitempty"`
+	// The event type.
+	//
 	// example:
 	//
 	// 3
 	FormType *string `json:"FormType,omitempty" xml:"FormType,omitempty"`
+	// The latest time.
+	//
 	// example:
 	//
 	// 2026-03-16 15:15:00
 	GmtLatest *string `json:"GmtLatest,omitempty" xml:"GmtLatest,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// rm-3nsvwmt67pn72py1z
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The controlled IP address.
+	//
 	// example:
 	//
 	// 10.0.158.58
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The latest detection time.
+	//
 	// example:
 	//
 	// 2026-03-16 15:15:00
 	LastCheckTime *string `json:"LastCheckTime,omitempty" xml:"LastCheckTime,omitempty"`
+	// The estimated shutdown time.
+	//
 	// example:
 	//
 	// 2026-03-16 15:15:00
 	PreCloseTime *string `json:"PreCloseTime,omitempty" xml:"PreCloseTime,omitempty"`
+	// The source of the penalty.
+	//
 	// example:
 	//
 	// MRM
 	PunishFrom *string `json:"PunishFrom,omitempty" xml:"PunishFrom,omitempty"`
+	// The time when the control action was applied.
+	//
 	// example:
 	//
 	// 2026-03-16 15:15:00
 	PunishTime *string `json:"PunishTime,omitempty" xml:"PunishTime,omitempty"`
+	// The event reason.
+	//
 	// example:
 	//
-	// 挖矿告警
+	// Cryptomining alert.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The region information.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The security hardening suggestion.
+	//
 	// example:
 	//
 	// Suggestion
 	Reinforcement *string `json:"Reinforcement,omitempty" xml:"Reinforcement,omitempty"`
+	// The task status.
+	//
 	// example:
 	//
 	// Executing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether batch unblock applications are supported.
+	//
 	// example:
 	//
 	// true
 	SupportBatchApply *bool `json:"SupportBatchApply,omitempty" xml:"SupportBatchApply,omitempty"`
+	// Indicates whether a single unblock application is supported.
+	//
 	// example:
 	//
 	// true
 	SupportSingleApply *bool `json:"SupportSingleApply,omitempty" xml:"SupportSingleApply,omitempty"`
+	// The trigger type.
+	//
 	// example:
 	//
 	// miner
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The controlled URL.
+	//
 	// example:
 	//
 	// https://pm.alicdn.com/quali/bc98e42b619ad4127bf6437b87045597.jpg?auth_key=1758682451-0-0-897be72852503566bd6775cd9914f5aa
@@ -571,14 +644,20 @@ func (s *QueryResourceControlEventsResponseBodyDataList) Validate() error {
 }
 
 type QueryResourceControlEventsResponseBodyDataPageInfo struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 24
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of events.
+	//
 	// example:
 	//
 	// 1

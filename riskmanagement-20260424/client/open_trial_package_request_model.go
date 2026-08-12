@@ -16,10 +16,20 @@ type iOpenTrialPackageRequest interface {
 }
 
 type OpenTrialPackageRequest struct {
+	// Specifies whether to automatically disable the trial plan when it expires.
+	//
+	// - **1**: Enabled.
+	//
+	// - **0**: Disabled.
+	//
+	// Default value: 1.
+	//
 	// example:
 	//
 	// 0
 	AutoCloseSwitch *int32 `json:"AutoCloseSwitch,omitempty" xml:"AutoCloseSwitch,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-guangzhou

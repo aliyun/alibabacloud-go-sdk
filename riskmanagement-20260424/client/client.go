@@ -25,6 +25,9 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"public": dara.String("riskmanagement.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +61,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// sas-绑定授权到机器
+// Bindss authorization to machines in Security Center.
 //
 // @param tmpReq - BindAuthToMachineRequest
 //
@@ -112,7 +115,7 @@ func (client *Client) BindAuthToMachineWithOptions(tmpReq *BindAuthToMachineRequ
 
 // Summary:
 //
-// sas-绑定授权到机器
+// Bindss authorization to machines in Security Center.
 //
 // @param request - BindAuthToMachineRequest
 //
@@ -130,7 +133,7 @@ func (client *Client) BindAuthToMachine(request *BindAuthToMachineRequest) (_res
 
 // Summary:
 //
-// sas-初始化云安全中心模块规则
+// Initializes Security Center module rules.
 //
 // @param tmpReq - CreateSasTrialRequest
 //
@@ -184,7 +187,7 @@ func (client *Client) CreateSasTrialWithOptions(tmpReq *CreateSasTrialRequest, r
 
 // Summary:
 //
-// sas-初始化云安全中心模块规则
+// Initializes Security Center module rules.
 //
 // @param request - CreateSasTrialRequest
 //
@@ -202,7 +205,7 @@ func (client *Client) CreateSasTrial(request *CreateSasTrialRequest) (_result *C
 
 // Summary:
 //
-// sas-创建服务关联角色
+// Creates a service-linked role for Security Center and authorizes Security Center to access cloud resources.
 //
 // @param tmpReq - CreateServiceLinkedRoleRequest
 //
@@ -256,7 +259,7 @@ func (client *Client) CreateServiceLinkedRoleWithOptions(tmpReq *CreateServiceLi
 
 // Summary:
 //
-// sas-创建服务关联角色
+// Creates a service-linked role for Security Center and authorizes Security Center to access cloud resources.
 //
 // @param request - CreateServiceLinkedRoleRequest
 //
@@ -274,7 +277,7 @@ func (client *Client) CreateServiceLinkedRole(request *CreateServiceLinkedRoleRe
 
 // Summary:
 //
-// 创建全盘扫描任务
+// Creates a full disk scan task.
 //
 // @param request - CreateVirusScanOnceTaskRequest
 //
@@ -326,7 +329,7 @@ func (client *Client) CreateVirusScanOnceTaskWithOptions(request *CreateVirusSca
 
 // Summary:
 //
-// 创建全盘扫描任务
+// Creates a full disk scan task.
 //
 // @param request - CreateVirusScanOnceTaskRequest
 //
@@ -344,7 +347,7 @@ func (client *Client) CreateVirusScanOnceTask(request *CreateVirusScanOnceTaskRe
 
 // Summary:
 //
-// sas-查询云安全中心实例列表
+// Queries the list of Security Center instances.
 //
 // @param tmpReq - DescribeCloudCenterInstancesRequest
 //
@@ -398,7 +401,7 @@ func (client *Client) DescribeCloudCenterInstancesWithOptions(tmpReq *DescribeCl
 
 // Summary:
 //
-// sas-查询云安全中心实例列表
+// Queries the list of Security Center instances.
 //
 // @param request - DescribeCloudCenterInstancesRequest
 //
@@ -416,7 +419,7 @@ func (client *Client) DescribeCloudCenterInstances(request *DescribeCloudCenterI
 
 // Summary:
 //
-// sas-查询服务关联角色状态
+// Queries the status of a service-linked role for Security Center.
 //
 // @param tmpReq - DescribeServiceLinkedRoleStatusRequest
 //
@@ -470,7 +473,7 @@ func (client *Client) DescribeServiceLinkedRoleStatusWithOptions(tmpReq *Describ
 
 // Summary:
 //
-// sas-查询服务关联角色状态
+// Queries the status of a service-linked role for Security Center.
 //
 // @param request - DescribeServiceLinkedRoleStatusRequest
 //
@@ -488,7 +491,7 @@ func (client *Client) DescribeServiceLinkedRoleStatus(request *DescribeServiceLi
 
 // Summary:
 //
-// sas-查询安全告警事件
+// Queries security alert events in Security Center.
 //
 // @param tmpReq - DescribeSuspEventsRequest
 //
@@ -542,7 +545,7 @@ func (client *Client) DescribeSuspEventsWithOptions(tmpReq *DescribeSuspEventsRe
 
 // Summary:
 //
-// sas-查询安全告警事件
+// Queries security alert events in Security Center.
 //
 // @param request - DescribeSuspEventsRequest
 //
@@ -560,7 +563,7 @@ func (client *Client) DescribeSuspEvents(request *DescribeSuspEventsRequest) (_r
 
 // Summary:
 //
-// sas-查看已购买的云安全中心实例的版本详情
+// Queries the edition details of a purchased Security Center instance.
 //
 // @param tmpReq - DescribeVersionConfigRequest
 //
@@ -614,7 +617,7 @@ func (client *Client) DescribeVersionConfigWithOptions(tmpReq *DescribeVersionCo
 
 // Summary:
 //
-// sas-查看已购买的云安全中心实例的版本详情
+// Queries the edition details of a purchased Security Center instance.
 //
 // @param request - DescribeVersionConfigRequest
 //
@@ -632,7 +635,7 @@ func (client *Client) DescribeVersionConfig(request *DescribeVersionConfigReques
 
 // Summary:
 //
-// 获取告警记录分析结果
+// Retrieves the analysis results of alert records.
 //
 // @param tmpReq - GetAlertRecordAnalysisResultRequest
 //
@@ -698,7 +701,7 @@ func (client *Client) GetAlertRecordAnalysisResultWithOptions(tmpReq *GetAlertRe
 
 // Summary:
 //
-// 获取告警记录分析结果
+// Retrieves the analysis results of alert records.
 //
 // @param request - GetAlertRecordAnalysisResultRequest
 //
@@ -716,7 +719,7 @@ func (client *Client) GetAlertRecordAnalysisResult(request *GetAlertRecordAnalys
 
 // Summary:
 //
-// 调用云安全中心部分接口
+// Calls specific Security Center API operations.
 //
 // @param tmpReq - GetAliYunSafeCenterResultRequest
 //
@@ -830,7 +833,7 @@ func (client *Client) GetAliYunSafeCenterResultWithOptions(tmpReq *GetAliYunSafe
 
 // Summary:
 //
-// 调用云安全中心部分接口
+// Calls specific Security Center API operations.
 //
 // @param request - GetAliYunSafeCenterResultRequest
 //
@@ -848,7 +851,7 @@ func (client *Client) GetAliYunSafeCenterResult(request *GetAliYunSafeCenterResu
 
 // Summary:
 //
-// sas-获取能否试用
+// Queries whether a user is eligible for a Security Center free trial.
 //
 // @param tmpReq - GetCanTrySasRequest
 //
@@ -902,7 +905,7 @@ func (client *Client) GetCanTrySasWithOptions(tmpReq *GetCanTrySasRequest, runti
 
 // Summary:
 //
-// sas-获取能否试用
+// Queries whether a user is eligible for a Security Center free trial.
 //
 // @param request - GetCanTrySasRequest
 //
@@ -920,7 +923,7 @@ func (client *Client) GetCanTrySas(request *GetCanTrySasRequest) (_result *GetCa
 
 // Summary:
 //
-// 获取安全合规包id
+// Retrieves the security compliance package ID.
 //
 // @param request - GetCompliancePackIdRequest
 //
@@ -957,7 +960,7 @@ func (client *Client) GetCompliancePackIdWithOptions(request *GetCompliancePackI
 
 // Summary:
 //
-// 获取安全合规包id
+// Retrieves the security compliance package ID.
 //
 // @param request - GetCompliancePackIdRequest
 //
@@ -975,7 +978,7 @@ func (client *Client) GetCompliancePackId(request *GetCompliancePackIdRequest) (
 
 // Summary:
 //
-// 获取一键处置赋权状态
+// Retrieves the authorization status for one-click disposal.
 //
 // @param request - GetDisposalToolStatusRequest
 //
@@ -1019,7 +1022,7 @@ func (client *Client) GetDisposalToolStatusWithOptions(request *GetDisposalToolS
 
 // Summary:
 //
-// 获取一键处置赋权状态
+// Retrieves the authorization status for one-click disposal.
 //
 // @param request - GetDisposalToolStatusRequest
 //
@@ -1037,7 +1040,7 @@ func (client *Client) GetDisposalToolStatus(request *GetDisposalToolStatusReques
 
 // Summary:
 //
-// 获取用户确认安全联系人记录
+// Retrieves the record of a user confirming a security contact.
 //
 // @param request - GetNotificationClickRecordRequest
 //
@@ -1074,7 +1077,7 @@ func (client *Client) GetNotificationClickRecordWithOptions(request *GetNotifica
 
 // Summary:
 //
-// 获取用户确认安全联系人记录
+// Retrieves the record of a user confirming a security contact.
 //
 // @param request - GetNotificationClickRecordRequest
 //
@@ -1092,7 +1095,7 @@ func (client *Client) GetNotificationClickRecord(request *GetNotificationClickRe
 
 // Summary:
 //
-// 获取安全联系人全部信息
+// Retrieves all information about security contacts.
 //
 // @param request - GetNotificationContactsRequest
 //
@@ -1129,7 +1132,7 @@ func (client *Client) GetNotificationContactsWithOptions(request *GetNotificatio
 
 // Summary:
 //
-// 获取安全联系人全部信息
+// Retrieves all information about security contacts.
 //
 // @param request - GetNotificationContactsRequest
 //
@@ -1147,7 +1150,7 @@ func (client *Client) GetNotificationContacts(request *GetNotificationContactsRe
 
 // Summary:
 //
-// 获取安全联系人待处理数
+// Retrieves the number of pending items for security contacts.
 //
 // @param request - GetNotificationPendNumberRequest
 //
@@ -1184,7 +1187,7 @@ func (client *Client) GetNotificationPendNumberWithOptions(request *GetNotificat
 
 // Summary:
 //
-// 获取安全联系人待处理数
+// Retrieves the number of pending items for security contacts.
 //
 // @param request - GetNotificationPendNumberRequest
 //
@@ -1202,7 +1205,7 @@ func (client *Client) GetNotificationPendNumber(request *GetNotificationPendNumb
 
 // Summary:
 //
-// 查询云资源管控事件详情
+// Queries the details of cloud resource control events.
 //
 // @param tmpReq - GetResourceControlEventRequest
 //
@@ -1260,7 +1263,7 @@ func (client *Client) GetResourceControlEventWithOptions(tmpReq *GetResourceCont
 
 // Summary:
 //
-// 查询云资源管控事件详情
+// Queries the details of cloud resource control events.
 //
 // @param request - GetResourceControlEventRequest
 //
@@ -1278,7 +1281,7 @@ func (client *Client) GetResourceControlEvent(request *GetResourceControlEventRe
 
 // Summary:
 //
-// 获取安全体检基础信息
+// Retrieves the basic information of a security check.
 //
 // @param request - GetSecurityCheckBaseInfoRequest
 //
@@ -1315,7 +1318,7 @@ func (client *Client) GetSecurityCheckBaseInfoWithOptions(request *GetSecurityCh
 
 // Summary:
 //
-// 获取安全体检基础信息
+// Retrieves the basic information of a security check.
 //
 // @param request - GetSecurityCheckBaseInfoRequest
 //
@@ -1333,7 +1336,7 @@ func (client *Client) GetSecurityCheckBaseInfo(request *GetSecurityCheckBaseInfo
 
 // Summary:
 //
-// 获取安全检查结果基础信息
+// Retrieves the basic information of security check results.
 //
 // @param request - GetSecurityCheckResultBaseInfoRequest
 //
@@ -1370,7 +1373,7 @@ func (client *Client) GetSecurityCheckResultBaseInfoWithOptions(request *GetSecu
 
 // Summary:
 //
-// 获取安全检查结果基础信息
+// Retrieves the basic information of security check results.
 //
 // @param request - GetSecurityCheckResultBaseInfoRequest
 //
@@ -1388,7 +1391,7 @@ func (client *Client) GetSecurityCheckResultBaseInfo(request *GetSecurityCheckRe
 
 // Summary:
 //
-// 获取安全优化建议列表
+// Retrieves a list of security optimization suggestions.
 //
 // @param tmpReq - GetSecuritySuggestionListRequest
 //
@@ -1438,7 +1441,7 @@ func (client *Client) GetSecuritySuggestionListWithOptions(tmpReq *GetSecuritySu
 
 // Summary:
 //
-// 获取安全优化建议列表
+// Retrieves a list of security optimization suggestions.
 //
 // @param request - GetSecuritySuggestionListRequest
 //
@@ -1456,7 +1459,7 @@ func (client *Client) GetSecuritySuggestionList(request *GetSecuritySuggestionLi
 
 // Summary:
 //
-// 获取安全优化建议条数
+// Retrieves the number of security optimization suggestions.
 //
 // @param request - GetSecuritySuggestionNumberRequest
 //
@@ -1493,7 +1496,7 @@ func (client *Client) GetSecuritySuggestionNumberWithOptions(request *GetSecurit
 
 // Summary:
 //
-// 获取安全优化建议条数
+// Retrieves the number of security optimization suggestions.
 //
 // @param request - GetSecuritySuggestionNumberRequest
 //
@@ -1511,7 +1514,7 @@ func (client *Client) GetSecuritySuggestionNumber(request *GetSecuritySuggestion
 
 // Summary:
 //
-// 获取服务关联角色状态
+// Retrieves the status of a service-linked role.
 //
 // @param request - GetServiceLinkedRoleStatusRequest
 //
@@ -1555,7 +1558,7 @@ func (client *Client) GetServiceLinkedRoleStatusWithOptions(request *GetServiceL
 
 // Summary:
 //
-// 获取服务关联角色状态
+// Retrieves the status of a service-linked role.
 //
 // @param request - GetServiceLinkedRoleStatusRequest
 //
@@ -1573,7 +1576,7 @@ func (client *Client) GetServiceLinkedRoleStatus(request *GetServiceLinkedRoleSt
 
 // Summary:
 //
-// sas-获取有效抵扣实例
+// Retrieves valid deductible instances for Security Center.
 //
 // @param tmpReq - GetValidDeductInstancesRequest
 //
@@ -1627,7 +1630,7 @@ func (client *Client) GetValidDeductInstancesWithOptions(tmpReq *GetValidDeductI
 
 // Summary:
 //
-// sas-获取有效抵扣实例
+// Retrieves valid deductible instances for Security Center.
 //
 // @param request - GetValidDeductInstancesRequest
 //
@@ -1645,7 +1648,7 @@ func (client *Client) GetValidDeductInstances(request *GetValidDeductInstancesRe
 
 // Summary:
 //
-// sas-初始化云安全中心模块规则
+// Initializes module rules for Security Center.
 //
 // @param tmpReq - InitSasModuleRuleRequest
 //
@@ -1707,7 +1710,7 @@ func (client *Client) InitSasModuleRuleWithOptions(tmpReq *InitSasModuleRuleRequ
 
 // Summary:
 //
-// sas-初始化云安全中心模块规则
+// Initializes module rules for Security Center.
 //
 // @param request - InitSasModuleRuleRequest
 //
@@ -1725,7 +1728,7 @@ func (client *Client) InitSasModuleRule(request *InitSasModuleRuleRequest) (_res
 
 // Summary:
 //
-// 查询全盘扫描结果
+// Queries the results of a full disk scan.
 //
 // @param request - ListVirusScanMachineEventRequest
 //
@@ -1789,7 +1792,7 @@ func (client *Client) ListVirusScanMachineEventWithOptions(request *ListVirusSca
 
 // Summary:
 //
-// 查询全盘扫描结果
+// Queries the results of a full disk scan.
 //
 // @param request - ListVirusScanMachineEventRequest
 //
@@ -1807,7 +1810,7 @@ func (client *Client) ListVirusScanMachineEvent(request *ListVirusScanMachineEve
 
 // Summary:
 //
-// sas-开启试用套餐
+// Starts a free trial of Security Center.
 //
 // @param request - OpenTrialPackageRequest
 //
@@ -1855,7 +1858,7 @@ func (client *Client) OpenTrialPackageWithOptions(request *OpenTrialPackageReque
 
 // Summary:
 //
-// sas-开启试用套餐
+// Starts a free trial of Security Center.
 //
 // @param request - OpenTrialPackageRequest
 //
@@ -1873,7 +1876,7 @@ func (client *Client) OpenTrialPackage(request *OpenTrialPackageRequest) (_resul
 
 // Summary:
 //
-// 查询账号安全事件
+// Queries account security events.
 //
 // @param request - QueryAccountSafetyIncidentRequest
 //
@@ -1949,7 +1952,7 @@ func (client *Client) QueryAccountSafetyIncidentWithOptions(request *QueryAccoun
 
 // Summary:
 //
-// 查询账号安全事件
+// Queries account security events.
 //
 // @param request - QueryAccountSafetyIncidentRequest
 //
@@ -1967,7 +1970,7 @@ func (client *Client) QueryAccountSafetyIncident(request *QueryAccountSafetyInci
 
 // Summary:
 //
-// 查询云上安全指南的订阅状态
+// Queries the subscription status of the cloud security guide.
 //
 // @param request - QueryGuideSubStatusRequest
 //
@@ -2004,7 +2007,7 @@ func (client *Client) QueryGuideSubStatusWithOptions(request *QueryGuideSubStatu
 
 // Summary:
 //
-// 查询云上安全指南的订阅状态
+// Queries the subscription status of the cloud security guide.
 //
 // @param request - QueryGuideSubStatusRequest
 //
@@ -2022,7 +2025,7 @@ func (client *Client) QueryGuideSubStatus(request *QueryGuideSubStatusRequest) (
 
 // Summary:
 //
-// 查询云资源管控事件
+// Queries cloud resource control events.
 //
 // @param tmpReq - QueryResourceControlEventsRequest
 //
@@ -2040,6 +2043,10 @@ func (client *Client) QueryResourceControlEventsWithOptions(tmpReq *QueryResourc
 	openapiutil.Convert(tmpReq, request)
 	if !dara.IsNil(tmpReq.ActionCodes) {
 		request.ActionCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ActionCodes, dara.String("ActionCodes"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.BusinessCodes) {
+		request.BusinessCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BusinessCodes, dara.String("BusinessCodes"), dara.String("json"))
 	}
 
 	if !dara.IsNil(tmpReq.CaseCodesPrefix) {
@@ -2093,6 +2100,10 @@ func (client *Client) QueryResourceControlEventsWithOptions(tmpReq *QueryResourc
 
 	if !dara.IsNil(request.BusinessCode) {
 		query["BusinessCode"] = request.BusinessCode
+	}
+
+	if !dara.IsNil(request.BusinessCodesShrink) {
+		query["BusinessCodes"] = request.BusinessCodesShrink
 	}
 
 	if !dara.IsNil(request.CaseCodesPrefixShrink) {
@@ -2204,7 +2215,7 @@ func (client *Client) QueryResourceControlEventsWithOptions(tmpReq *QueryResourc
 
 // Summary:
 //
-// 查询云资源管控事件
+// Queries cloud resource control events.
 //
 // @param request - QueryResourceControlEventsRequest
 //
@@ -2222,7 +2233,7 @@ func (client *Client) QueryResourceControlEvents(request *QueryResourceControlEv
 
 // Summary:
 //
-// 查询安全体检简报
+// Queries the security check brief.
 //
 // @param request - QuerySecurityCheckReportRequest
 //
@@ -2259,7 +2270,7 @@ func (client *Client) QuerySecurityCheckReportWithOptions(request *QuerySecurity
 
 // Summary:
 //
-// 查询安全体检简报
+// Queries the security check brief.
 //
 // @param request - QuerySecurityCheckReportRequest
 //
@@ -2277,7 +2288,7 @@ func (client *Client) QuerySecurityCheckReport(request *QuerySecurityCheckReport
 
 // Summary:
 //
-// 开启处置工具授权
+// Enables disposal tool authorization.
 //
 // @param request - StartDisposalToolServiceRequest
 //
@@ -2321,7 +2332,7 @@ func (client *Client) StartDisposalToolServiceWithOptions(request *StartDisposal
 
 // Summary:
 //
-// 开启处置工具授权
+// Enables disposal tool authorization.
 //
 // @param request - StartDisposalToolServiceRequest
 //
@@ -2339,7 +2350,7 @@ func (client *Client) StartDisposalToolService(request *StartDisposalToolService
 
 // Summary:
 //
-// 开启安全体检
+// Enables security check.
 //
 // @param request - StartSecurityCheckServiceRequest
 //
@@ -2376,7 +2387,7 @@ func (client *Client) StartSecurityCheckServiceWithOptions(request *StartSecurit
 
 // Summary:
 //
-// 开启安全体检
+// Enables security check.
 //
 // @param request - StartSecurityCheckServiceRequest
 //
@@ -2394,7 +2405,7 @@ func (client *Client) StartSecurityCheckService(request *StartSecurityCheckServi
 
 // Summary:
 //
-// 申请解封
+// Submits an unblocking request.
 //
 // @param tmpReq - SubmitApplyRecordRequest
 //
@@ -2464,7 +2475,7 @@ func (client *Client) SubmitApplyRecordWithOptions(tmpReq *SubmitApplyRecordRequ
 
 // Summary:
 //
-// 申请解封
+// Submits an unblocking request.
 //
 // @param request - SubmitApplyRecordRequest
 //
@@ -2482,7 +2493,7 @@ func (client *Client) SubmitApplyRecord(request *SubmitApplyRecordRequest) (_res
 
 // Summary:
 //
-// sas-更新后付费绑定关系
+// Updates the pay-as-you-go binding relationship for Security Center.
 //
 // @param tmpReq - UpdatePostPaidBindRelRequest
 //
@@ -2536,7 +2547,7 @@ func (client *Client) UpdatePostPaidBindRelWithOptions(tmpReq *UpdatePostPaidBin
 
 // Summary:
 //
-// sas-更新后付费绑定关系
+// Updates the pay-as-you-go binding relationship for Security Center.
 //
 // @param request - UpdatePostPaidBindRelRequest
 //
@@ -2554,7 +2565,7 @@ func (client *Client) UpdatePostPaidBindRel(request *UpdatePostPaidBindRelReques
 
 // Summary:
 //
-// 更新体检结果
+// Updates the health check result.
 //
 // @param request - UpdateSecurityCheckResultRequest
 //
@@ -2591,7 +2602,7 @@ func (client *Client) UpdateSecurityCheckResultWithOptions(request *UpdateSecuri
 
 // Summary:
 //
-// 更新体检结果
+// Updates the health check result.
 //
 // @param request - UpdateSecurityCheckResultRequest
 //
