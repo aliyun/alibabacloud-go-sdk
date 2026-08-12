@@ -20,18 +20,26 @@ type iListSubTasksRequest interface {
 }
 
 type ListSubTasksRequest struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The main task ID returned upon task submission.
+	//
 	// example:
 	//
 	// 110146ac282314fe4f7cd11afc7540eb
 	RootTaskId *string `json:"RootTaskId,omitempty" xml:"RootTaskId,omitempty"`
+	// The task type.
+	//
 	// example:
 	//
 	// SKILL_CHECK

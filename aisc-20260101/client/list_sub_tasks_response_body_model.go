@@ -18,8 +18,12 @@ type iListSubTasksResponseBody interface {
 }
 
 type ListSubTasksResponseBody struct {
-	Data     []*ListSubTasksResponseBodyData   `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The list of task results.
+	Data []*ListSubTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The pagination information.
 	PageInfo *ListSubTasksResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 9FDE3D6F-26BD-5937-B0E5-8F47962B****
@@ -80,19 +84,28 @@ func (s *ListSubTasksResponseBody) Validate() error {
 }
 
 type ListSubTasksResponseBodyData struct {
+	// The hash value of the uploaded file.
+	//
 	// example:
 	//
 	// 03d1f08455e965cac0351eaa59256fd9
 	FileHash *string `json:"FileHash,omitempty" xml:"FileHash,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 4190063324899520
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The detection target.
+	//
 	// example:
 	//
 	// c7acb2f1264e4467887ef8f4c36c44ca1
-	Target            *string                                        `json:"Target,omitempty" xml:"Target,omitempty"`
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// The task result information.
 	TaskResultMessage *ListSubTasksResponseBodyDataTaskResultMessage `json:"TaskResultMessage,omitempty" xml:"TaskResultMessage,omitempty" type:"Struct"`
+	// The task status.
+	//
 	// example:
 	//
 	// success
@@ -162,6 +175,7 @@ func (s *ListSubTasksResponseBodyData) Validate() error {
 }
 
 type ListSubTasksResponseBodyDataTaskResultMessage struct {
+	// The skill check task result.
 	SkillCheckResult *ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResult `json:"SkillCheckResult,omitempty" xml:"SkillCheckResult,omitempty" type:"Struct"`
 }
 
@@ -192,6 +206,7 @@ func (s *ListSubTasksResponseBodyDataTaskResultMessage) Validate() error {
 }
 
 type ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResult struct {
+	// The file detection risk information.
 	RiskInfo []*ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfo `json:"RiskInfo,omitempty" xml:"RiskInfo,omitempty" type:"Repeated"`
 }
 
@@ -226,11 +241,16 @@ func (s *ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResult) Validate
 }
 
 type ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfo struct {
+	// The file detection risk list.
 	Ext *ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExt `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
+	// The file path.
+	//
 	// example:
 	//
 	// /home/97e55e6af371836f/
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The result type.
+	//
 	// example:
 	//
 	// file
@@ -282,10 +302,14 @@ func (s *ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfo) 
 }
 
 type ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExt struct {
-	Config    *ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtConfig    `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The configuration detection risks.
+	Config *ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The safety guardrail detection risks.
 	Guardrail *ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtGuardrail `json:"Guardrail,omitempty" xml:"Guardrail,omitempty" type:"Struct"`
+	// The sensitive information risks.
 	Sensitive *ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtSensitive `json:"Sensitive,omitempty" xml:"Sensitive,omitempty" type:"Struct"`
-	Virus     []*ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtVirus   `json:"Virus,omitempty" xml:"Virus,omitempty" type:"Repeated"`
+	// The virus detection risks.
+	Virus []*ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtVirus `json:"Virus,omitempty" xml:"Virus,omitempty" type:"Repeated"`
 }
 
 func (s ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExt) String() string {
@@ -361,6 +385,7 @@ func (s *ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoEx
 }
 
 type ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtConfig struct {
+	// The list of risk details.
 	Detail []*ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtConfigDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
 }
 
@@ -395,18 +420,26 @@ func (s *ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoEx
 }
 
 type ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtConfigDetail struct {
+	// The detected content.
+	//
 	// example:
 	//
 	// allowed-tools: Bash(agent-browser:*)
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// The skill configuration allows Bash execution via agent-browser:	- pattern without requiring user confirmation. This enables potentially dangerous command execution through the browser automation CLI.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The check item name.
+	//
 	// example:
 	//
 	// Dangerous Tools Without Confirmation
 	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
+	// The line number of the detected content.
+	//
 	// example:
 	//
 	// 2555
@@ -462,7 +495,10 @@ func (s *ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoEx
 }
 
 type ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtGuardrail struct {
+	// The list of risk details.
 	Detail []*ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtGuardrailDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
+	// The processing suggestion.
+	//
 	// example:
 	//
 	// block
@@ -509,15 +545,30 @@ func (s *ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoEx
 }
 
 type ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtGuardrailDetail struct {
+	// The risk level. Valid values:
+	//
+	// - **high**: High risk.
+	//
+	// - **medium**: Medium risk.
+	//
+	// - **low**: Low risk.
+	//
+	// - **none**: No risk.
+	//
 	// example:
 	//
 	// high
-	Level  *string                                                                                          `json:"Level,omitempty" xml:"Level,omitempty"`
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The list of result details.
 	Result []*ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtGuardrailDetailResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The processing suggestion.
+	//
 	// example:
 	//
 	// block
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	// The risk type.
+	//
 	// example:
 	//
 	// promptAttack
@@ -582,18 +633,34 @@ func (s *ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoEx
 }
 
 type ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtGuardrailDetailResult struct {
+	// The confidence score. Valid values: 0 to 100.
+	//
 	// example:
 	//
 	// 25
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The result description.
+	//
 	// example:
 	//
 	// Suspicious attacks.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The label information.
+	//
 	// example:
 	//
 	// attack
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The risk level. Valid values:
+	//
+	// - **high**: High risk.
+	//
+	// - **medium**: Medium risk.
+	//
+	// - **low**: Low risk.
+	//
+	// - **none**: No risk.
+	//
 	// example:
 	//
 	// high
@@ -649,6 +716,7 @@ func (s *ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoEx
 }
 
 type ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtSensitive struct {
+	// The list of risk details.
 	Detail []*ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtSensitiveDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
 }
 
@@ -683,10 +751,13 @@ func (s *ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoEx
 }
 
 type ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtSensitiveDetail struct {
+	// The description.
+	//
 	// example:
 	//
 	// aliyun_ak_24
-	Desc   *string   `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// The list of sensitive information.
 	Result []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -721,14 +792,20 @@ func (s *ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoEx
 }
 
 type ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtVirus struct {
+	// The extended information field. This is a reserved parameter.
+	//
 	// example:
 	//
 	// {}
 	Ext *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// The risk score. Maximum value: 100.
+	//
 	// example:
 	//
 	// 100
 	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The virus type.
+	//
 	// example:
 	//
 	// Backdoor
@@ -775,18 +852,26 @@ func (s *ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoEx
 }
 
 type ListSubTasksResponseBodyPageInfo struct {
+	// The number of data entries displayed on the current page.
+	//
 	// example:
 	//
 	// 1
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of records in the query result.
+	//
 	// example:
 	//
 	// 1

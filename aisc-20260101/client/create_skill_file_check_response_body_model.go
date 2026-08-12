@@ -16,8 +16,14 @@ type iCreateSkillFileCheckResponseBody interface {
 }
 
 type CreateSkillFileCheckResponseBody struct {
-	Data      *CreateSkillFileCheckResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task creation result.
+	Data *CreateSkillFileCheckResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 9FDE3D6F-26BD-5937-B0E5-8F47962B****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateSkillFileCheckResponseBody) String() string {
@@ -56,9 +62,25 @@ func (s *CreateSkillFileCheckResponseBody) Validate() error {
 }
 
 type CreateSkillFileCheckResponseBodyData struct {
-	FailCount     *int32                                               `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
-	RootTaskId    *string                                              `json:"RootTaskId,omitempty" xml:"RootTaskId,omitempty"`
-	SuccessCount  *int32                                               `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// The number of files that failed to be uploaded.
+	//
+	// example:
+	//
+	// 0
+	FailCount *int32 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	// The ID of the root task returned after the task is submitted.
+	//
+	// example:
+	//
+	// c6e7fa8a77df6e182ac3fcf1478ab83a
+	RootTaskId *string `json:"RootTaskId,omitempty" xml:"RootTaskId,omitempty"`
+	// The number of files that are uploaded.
+	//
+	// example:
+	//
+	// 10
+	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// The upload results.
 	UploadResults []*CreateSkillFileCheckResponseBodyDataUploadResults `json:"UploadResults,omitempty" xml:"UploadResults,omitempty" type:"Repeated"`
 }
 
@@ -120,11 +142,40 @@ func (s *CreateSkillFileCheckResponseBodyData) Validate() error {
 }
 
 type CreateSkillFileCheckResponseBodyDataUploadResults struct {
-	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	FileHash   *string `json:"FileHash,omitempty" xml:"FileHash,omitempty"`
-	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The error message returned when the file fails to be uploaded.
+	//
+	// example:
+	//
+	// Network error.
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The SHA256 value of the uploaded file.
+	//
+	// example:
+	//
+	// 514f44ebed1d0c1df5e16a116080b64b
+	FileHash *string `json:"FileHash,omitempty" xml:"FileHash,omitempty"`
+	// The name of the file.
+	//
+	// example:
+	//
+	// test-file
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The unique ID of the uploaded file. You can use this ID to query the task result.
+	//
+	// example:
+	//
+	// 1824jcadg01bsl10b
 	IdentifyId *string `json:"IdentifyId,omitempty" xml:"IdentifyId,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateSkillFileCheckResponseBodyDataUploadResults) String() string {

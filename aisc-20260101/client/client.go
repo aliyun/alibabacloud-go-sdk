@@ -24,7 +24,34 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-zhangjiakou":        dara.String("aisc.cn-shanghai.aliyuncs.com"),
+		"cn-wulanchabu":         dara.String("aisc.cn-shanghai.aliyuncs.com"),
+		"cn-shanghai":           dara.String("aisc.cn-shanghai.aliyuncs.com"),
+		"cn-qingdao":            dara.String("aisc.cn-shanghai.aliyuncs.com"),
+		"cn-nanjing":            dara.String("aisc.cn-shanghai.aliyuncs.com"),
+		"cn-huhehaote":          dara.String("aisc.cn-shanghai.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("aisc.cn-shanghai.aliyuncs.com"),
+		"cn-guangzhou":          dara.String("aisc.cn-shanghai.aliyuncs.com"),
+		"cn-beijing":            dara.String("aisc.cn-shanghai.aliyuncs.com"),
+		"ap-southeast-7":        dara.String("aisc.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-6":        dara.String("aisc.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-5":        dara.String("aisc.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("aisc.ap-southeast-1.aliyuncs.com"),
+		"ap-northeast-2":        dara.String("aisc.ap-southeast-1.aliyuncs.com"),
+		"ap-northeast-1":        dara.String("aisc.ap-southeast-1.aliyuncs.com"),
+		"eu-central-1":          dara.String("aisc.ap-southeast-1.aliyuncs.com"),
+		"eu-west-1":             dara.String("aisc.ap-southeast-1.aliyuncs.com"),
+		"us-east-1":             dara.String("aisc.ap-southeast-1.aliyuncs.com"),
+		"us-west-1":             dara.String("aisc.ap-southeast-1.aliyuncs.com"),
+		"me-east-1":             dara.String("aisc.ap-southeast-1.aliyuncs.com"),
+		"cn-beijing-finance-1":  dara.String("aisc.cn-shanghai.aliyuncs.com"),
+		"cn-hangzhou-finance":   dara.String("aisc.cn-shanghai.aliyuncs.com"),
+		"cn-heyuan-acdr-1":      dara.String("aisc.cn-shanghai.aliyuncs.com"),
+		"cn-shanghai-finance-1": dara.String("aisc.cn-shanghai.aliyuncs.com"),
+		"cn-shenzhen-finance-1": dara.String("aisc.cn-shanghai.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +85,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 批量发起用户自定义Skill检测
+// Initiates batch detection for user-defined skills.
 //
 // @param request - CreateSkillFileCheckRequest
 //
@@ -102,7 +129,7 @@ func (client *Client) CreateSkillFileCheckWithOptions(request *CreateSkillFileCh
 
 // Summary:
 //
-// 批量发起用户自定义Skill检测
+// Initiates batch detection for user-defined skills.
 //
 // @param request - CreateSkillFileCheckRequest
 //
@@ -120,7 +147,129 @@ func (client *Client) CreateSkillFileCheck(request *CreateSkillFileCheckRequest)
 
 // Summary:
 //
-// 获取子任务信息
+// Retrieves a list of agent risk events.
+//
+// @param request - ListAIAgentEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAIAgentEventResponse
+func (client *Client) ListAIAgentEventWithOptions(request *ListAIAgentEventRequest, runtime *dara.RuntimeOptions) (_result *ListAIAgentEventResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.AssetName) {
+		query["AssetName"] = request.AssetName
+	}
+
+	if !dara.IsNil(request.AssetType) {
+		query["AssetType"] = request.AssetType
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.InfraInstanceId) {
+		query["InfraInstanceId"] = request.InfraInstanceId
+	}
+
+	if !dara.IsNil(request.InfraName) {
+		query["InfraName"] = request.InfraName
+	}
+
+	if !dara.IsNil(request.InfraRegionId) {
+		query["InfraRegionId"] = request.InfraRegionId
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RiskLevel) {
+		query["RiskLevel"] = request.RiskLevel
+	}
+
+	if !dara.IsNil(request.RiskName) {
+		query["RiskName"] = request.RiskName
+	}
+
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.StatusList) {
+		query["StatusList"] = request.StatusList
+	}
+
+	if !dara.IsNil(request.Vendor) {
+		query["Vendor"] = request.Vendor
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAIAgentEvent"),
+		Version:     dara.String("2026-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAIAgentEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a list of agent risk events.
+//
+// @param request - ListAIAgentEventRequest
+//
+// @return ListAIAgentEventResponse
+func (client *Client) ListAIAgentEvent(request *ListAIAgentEventRequest) (_result *ListAIAgentEventResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAIAgentEventResponse{}
+	_body, _err := client.ListAIAgentEventWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Get subtask information.
 //
 // @param request - ListSubTasksRequest
 //
@@ -176,7 +325,7 @@ func (client *Client) ListSubTasksWithOptions(request *ListSubTasksRequest, runt
 
 // Summary:
 //
-// 获取子任务信息
+// Get subtask information.
 //
 // @param request - ListSubTasksRequest
 //

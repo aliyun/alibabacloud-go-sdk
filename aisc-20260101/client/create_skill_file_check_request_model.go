@@ -14,6 +14,7 @@ type iCreateSkillFileCheckRequest interface {
 }
 
 type CreateSkillFileCheckRequest struct {
+	// The file information.
 	Files []*CreateSkillFileCheckRequestFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
 }
 
@@ -48,8 +49,18 @@ func (s *CreateSkillFileCheckRequest) Validate() error {
 }
 
 type CreateSkillFileCheckRequestFiles struct {
+	// The public URL for downloading the file. The downloaded file must be a compressed package in tar.gz or zip format.
+	//
+	// example:
+	//
+	// https://test.oss-cn-hangzhou.aliyuncs.com/xxxx
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	FileName    *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file name. If this parameter is not specified, the file name is parsed from DownloadUrl.
+	//
+	// example:
+	//
+	// test-file
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 }
 
 func (s CreateSkillFileCheckRequestFiles) String() string {
