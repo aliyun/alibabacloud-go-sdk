@@ -18,18 +18,24 @@ type iDeleteNamespaceRequest interface {
 }
 
 type DeleteNamespaceRequest struct {
+	// The order instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f-cn-wwo36qj4g06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The namespace name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// di-593439443804417
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region.
+	//
 	// This parameter is required.
 	//
 	// example:

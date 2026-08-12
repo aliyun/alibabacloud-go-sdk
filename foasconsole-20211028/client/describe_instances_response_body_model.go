@@ -26,27 +26,44 @@ type iDescribeInstancesResponseBody interface {
 }
 
 type DescribeInstancesResponseBody struct {
+	// The details of the instance group.
 	Instances []*DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The number of instances per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// C8DF2A5B-6FBA-5651-A3D4-960F36640E6B
+	// C8DF2A5B-6FBA-5651-A3D4-960F3664****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of instances.
+	//
 	// example:
 	//
 	// 15
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 2
@@ -141,11 +158,29 @@ type DescribeInstancesResponseBodyInstances struct {
 	Ansm             *bool   `json:"Ansm,omitempty" xml:"Ansm,omitempty"`
 	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
 	AskClusterId     *string `json:"AskClusterId,omitempty" xml:"AskClusterId,omitempty"`
+	// The billing method. Valid values:
+	//
+	// - POST: pay-as-you-go.
+	//
+	// - PRE: subscription.
+	//
 	// example:
 	//
 	// PRE
 	ChargeType   *string                                             `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	ClusterState *DescribeInstancesResponseBodyInstancesClusterState `json:"ClusterState,omitempty" xml:"ClusterState,omitempty" type:"Struct"`
+	// The cluster status. Valid values:
+	//
+	// - CREATING: Being created.
+	//
+	// - RUNNING: Running.
+	//
+	// - DISABLE: Invalid.
+	//
+	// - DELETING: Being deleted.
+	//
+	// - DELETED: Deleted.
+	//
 	// example:
 	//
 	// RUNNING
@@ -153,6 +188,8 @@ type DescribeInstancesResponseBodyInstances struct {
 	ClusterUsedResources *DescribeInstancesResponseBodyInstancesClusterUsedResources `json:"ClusterUsedResources,omitempty" xml:"ClusterUsedResources,omitempty" type:"Struct"`
 	ClusterUsedStorage   *DescribeInstancesResponseBodyInstancesClusterUsedStorage   `json:"ClusterUsedStorage,omitempty" xml:"ClusterUsedStorage,omitempty" type:"Struct"`
 	Elastic              *bool                                                       `json:"Elastic,omitempty" xml:"Elastic,omitempty"`
+	// The elastic order ID.
+	//
 	// example:
 	//
 	// f-cn-e3afbd321
@@ -166,51 +203,84 @@ type DescribeInstancesResponseBodyInstances struct {
 	HaZoneId            *string                                                    `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
 	// This parameter is required.
 	HostAliases []*DescribeInstancesResponseBodyInstancesHostAliases `json:"HostAliases,omitempty" xml:"HostAliases,omitempty" type:"Repeated"`
+	// The instance ID.
+	//
 	// example:
 	//
-	// f-cn-zvp2q0zik06
+	// f-cn-zvp2q0z****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The workspace name.
+	//
 	// example:
 	//
 	// vvp1
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	MonitorType  *string `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
+	// The order status. Valid values:
+	//
+	// - NOT_INIT: The order is placed but components are not deployed.
+	//
+	// - NORMAL: Normal.
+	//
+	// - CEASE: Expired.
+	//
+	// - RELEASE: Overdue.
+	//
 	// example:
 	//
 	// NORMAL
 	OrderState *string                                        `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
 	OssInfo    *DescribeInstancesResponseBodyInstancesOssInfo `json:"OssInfo,omitempty" xml:"OssInfo,omitempty" type:"Struct"`
+	// The region of the instance.
+	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The time when the instance was created.
+	//
 	// example:
 	//
 	// 1629879567394
 	ResourceCreateTime *int64 `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty"`
+	// The expiration time.
+	//
 	// example:
 	//
 	// 1637337600000
 	ResourceExpiredTime *int64  `json:"ResourceExpiredTime,omitempty" xml:"ResourceExpiredTime,omitempty"`
 	ResourceGroupId     *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
-	// b3690a1655da47
-	ResourceId   *string                                             `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// b3690a1655****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource specification information.
 	ResourceSpec *DescribeInstancesResponseBodyInstancesResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
-	Storage      *DescribeInstancesResponseBodyInstancesStorage      `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
-	Tags         []*DescribeInstancesResponseBodyInstancesTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The storage information.
+	Storage                      *DescribeInstancesResponseBodyInstancesStorage `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
+	SupportDisasterRecoveryDrill *bool                                          `json:"SupportDisasterRecoveryDrill,omitempty" xml:"SupportDisasterRecoveryDrill,omitempty"`
+	// The tags.
+	Tags []*DescribeInstancesResponseBodyInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The ID of the user to whom the instance belongs.
+	//
 	// example:
 	//
-	// 1838996687368452
-	Uid         *string                                              `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// 183899668736****
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// The vSwitch IDs.
 	VSwitchIds  []*string                                            `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 	VSwitchInfo []*DescribeInstancesResponseBodyInstancesVSwitchInfo `json:"VSwitchInfo,omitempty" xml:"VSwitchInfo,omitempty" type:"Repeated"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-2ze9*******nxfmfcdi
 	VpcId   *string                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	VpcInfo *DescribeInstancesResponseBodyInstancesVpcInfo `json:"VpcInfo,omitempty" xml:"VpcInfo,omitempty" type:"Struct"`
+	// The zone ID of the instance.
+	//
 	// example:
 	//
 	// cn-beijing-g
@@ -343,6 +413,10 @@ func (s *DescribeInstancesResponseBodyInstances) GetResourceSpec() *DescribeInst
 
 func (s *DescribeInstancesResponseBodyInstances) GetStorage() *DescribeInstancesResponseBodyInstancesStorage {
 	return s.Storage
+}
+
+func (s *DescribeInstancesResponseBodyInstances) GetSupportDisasterRecoveryDrill() *bool {
+	return s.SupportDisasterRecoveryDrill
 }
 
 func (s *DescribeInstancesResponseBodyInstances) GetTags() []*DescribeInstancesResponseBodyInstancesTags {
@@ -520,6 +594,11 @@ func (s *DescribeInstancesResponseBodyInstances) SetResourceSpec(v *DescribeInst
 
 func (s *DescribeInstancesResponseBodyInstances) SetStorage(v *DescribeInstancesResponseBodyInstancesStorage) *DescribeInstancesResponseBodyInstances {
 	s.Storage = v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetSupportDisasterRecoveryDrill(v bool) *DescribeInstancesResponseBodyInstances {
+	s.SupportDisasterRecoveryDrill = &v
 	return s
 }
 
@@ -1434,10 +1513,14 @@ func (s *DescribeInstancesResponseBodyInstancesOssInfo) Validate() error {
 }
 
 type DescribeInstancesResponseBodyInstancesResourceSpec struct {
+	// The number of CPUs.
+	//
 	// example:
 	//
 	// 10
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The configured memory size.
+	//
 	// example:
 	//
 	// 40
@@ -1475,8 +1558,9 @@ func (s *DescribeInstancesResponseBodyInstancesResourceSpec) Validate() error {
 }
 
 type DescribeInstancesResponseBodyInstancesStorage struct {
-	FullyManaged                      *bool                                             `json:"FullyManaged,omitempty" xml:"FullyManaged,omitempty"`
-	OrderState                        *string                                           `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
+	FullyManaged *bool   `json:"FullyManaged,omitempty" xml:"FullyManaged,omitempty"`
+	OrderState   *string `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
+	// The OSS storage information.
 	Oss                               *DescribeInstancesResponseBodyInstancesStorageOss `json:"Oss,omitempty" xml:"Oss,omitempty" type:"Struct"`
 	SupportCreateFullyManagedStorage  *bool                                             `json:"SupportCreateFullyManagedStorage,omitempty" xml:"SupportCreateFullyManagedStorage,omitempty"`
 	SupportMigrationProgressDetection *bool                                             `json:"SupportMigrationProgressDetection,omitempty" xml:"SupportMigrationProgressDetection,omitempty"`
@@ -1545,6 +1629,8 @@ func (s *DescribeInstancesResponseBodyInstancesStorage) Validate() error {
 }
 
 type DescribeInstancesResponseBodyInstancesStorageOss struct {
+	// The name of the OSS bucket.
+	//
 	// example:
 	//
 	// oss_flink
@@ -1573,10 +1659,14 @@ func (s *DescribeInstancesResponseBodyInstancesStorageOss) Validate() error {
 }
 
 type DescribeInstancesResponseBodyInstancesTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// flink
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// test

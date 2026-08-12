@@ -26,27 +26,44 @@ type iDescribeNamespacesResponseBody interface {
 }
 
 type DescribeNamespacesResponseBody struct {
+	// The list of namespaces.
 	Namespaces []*DescribeNamespacesResponseBodyNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 67F33190-946B-1105-B6A1-E2DF0426DD51
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 5
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 2
@@ -139,27 +156,48 @@ func (s *DescribeNamespacesResponseBody) Validate() error {
 
 type DescribeNamespacesResponseBodyNamespaces struct {
 	ElasticResourceSpec *DescribeNamespacesResponseBodyNamespacesElasticResourceSpec `json:"ElasticResourceSpec,omitempty" xml:"ElasticResourceSpec,omitempty" type:"Struct"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1629879567394
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 1629879567394
 	GmtModified            *int64                                                          `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	GuaranteedResourceSpec *DescribeNamespacesResponseBodyNamespacesGuaranteedResourceSpec `json:"GuaranteedResourceSpec,omitempty" xml:"GuaranteedResourceSpec,omitempty" type:"Struct"`
 	Ha                     *bool                                                           `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// The name of the namespace.
+	//
 	// example:
 	//
 	// ns-1
-	Namespace    *string                                               `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The resource specification information.
 	ResourceSpec *DescribeNamespacesResponseBodyNamespacesResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+	// The used resources.
 	ResourceUsed *DescribeNamespacesResponseBodyNamespacesResourceUsed `json:"ResourceUsed,omitempty" xml:"ResourceUsed,omitempty" type:"Struct"`
+	// The status of the namespace. Valid values:
+	//
+	// - CREATING: Being created.
+	//
+	// - DELETING: Being deleted.
+	//
+	// - MODIFYING: Resource specifications are being modified.
+	//
+	// - SUCCESS: The last operation was successful.
+	//
+	// - FAILED: The last operation failed.
+	//
 	// example:
 	//
 	// SUCCESS
-	Status *string                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*DescribeNamespacesResponseBodyNamespacesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of tags.
+	Tags []*DescribeNamespacesResponseBodyNamespacesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeNamespacesResponseBodyNamespaces) String() string {
@@ -364,10 +402,14 @@ func (s *DescribeNamespacesResponseBodyNamespacesGuaranteedResourceSpec) Validat
 }
 
 type DescribeNamespacesResponseBodyNamespacesResourceSpec struct {
+	// The number of CPUs.
+	//
 	// example:
 	//
 	// 10
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The memory size.
+	//
 	// example:
 	//
 	// 40
@@ -405,11 +447,15 @@ func (s *DescribeNamespacesResponseBodyNamespacesResourceSpec) Validate() error 
 }
 
 type DescribeNamespacesResponseBodyNamespacesResourceUsed struct {
+	// The number of used CPUs.
+	//
 	// example:
 	//
 	// 2
 	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	Cu  *float32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// The amount of used memory.
+	//
 	// example:
 	//
 	// 4
@@ -456,10 +502,14 @@ func (s *DescribeNamespacesResponseBodyNamespacesResourceUsed) Validate() error 
 }
 
 type DescribeNamespacesResponseBodyNamespacesTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// flink
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// test

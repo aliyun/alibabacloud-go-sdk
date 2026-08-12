@@ -16,13 +16,17 @@ type iDeleteNamespaceResponseBody interface {
 }
 
 type DeleteNamespaceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 67F33190-946B-1105-B6A1-E2DF0426DD51
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation is successful.
+	//
 	// example:
 	//
-	// 是否成功
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

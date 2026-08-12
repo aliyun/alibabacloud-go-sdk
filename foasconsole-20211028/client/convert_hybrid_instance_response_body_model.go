@@ -20,15 +20,22 @@ type iConvertHybridInstanceResponseBody interface {
 }
 
 type ConvertHybridInstanceResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 000000
-	ErrCode   *string                                     `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The order information.
 	OrderInfo *ConvertHybridInstanceResponseBodyOrderInfo `json:"OrderInfo,omitempty" xml:"OrderInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 67F33190-946B-1105-B6A1-E2DF0426DD51
+	// 67F33190-946B-1105-B6A1-E2DF042*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -89,14 +96,23 @@ func (s *ConvertHybridInstanceResponseBody) Validate() error {
 }
 
 type ConvertHybridInstanceResponseBodyOrderInfo struct {
+	// The instance ID of the pay-as-you-go portion of hybrid billing.
+	//
+	// example:
+	//
+	// f-cn-asd***
 	ElasticInstanceId *string `json:"ElasticInstanceId,omitempty" xml:"ElasticInstanceId,omitempty"`
+	// The instance ID of the subscription portion of hybrid billing.
+	//
 	// example:
 	//
-	// f-cn-zvp2q0zik06
+	// f-cn-zvp2q*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
-	// 210406354694567
+	// 2104063546****
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 

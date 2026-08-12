@@ -16,12 +16,16 @@ type iQueryConvertPrepayInstancePriceRequest interface {
 }
 
 type QueryConvertPrepayInstancePriceRequest struct {
+	// The order instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// f-cn-wwo36qj4g06
+	// f-cn-wwo36qj4****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region.
+	//
 	// This parameter is required.
 	//
 	// example:

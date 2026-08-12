@@ -18,18 +18,24 @@ type iModifyElasticResourceSpecRequest interface {
 }
 
 type ModifyElasticResourceSpecRequest struct {
+	// The order instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// sc_flinkserverless_public_cn-7e22ae5sess
+	// sc_flinkserverless_public_cn-7e22ae****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The maximum pay-as-you-go resource specifications.
+	//
 	// This parameter is required.
 	ResourceSpec *ModifyElasticResourceSpecRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 }
@@ -79,12 +85,18 @@ func (s *ModifyElasticResourceSpecRequest) Validate() error {
 }
 
 type ModifyElasticResourceSpecRequestResourceSpec struct {
+	// The number of CPUs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The memory size.
+	//
+	// > The memory size must be 4 times the number of CPUs.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -26,31 +26,44 @@ type iDescribeSupportedZonesResponseBody interface {
 }
 
 type DescribeSupportedZonesResponseBody struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 23A9C718-DDAB-1696-B025-18FBC830F7C5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The number of zones.
+	//
 	// example:
 	//
 	// 8
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1
-	TotalPage *int32    `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
-	ZoneIds   []*string `json:"ZoneIds,omitempty" xml:"ZoneIds,omitempty" type:"Repeated"`
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// The zone information.
+	ZoneIds []*string `json:"ZoneIds,omitempty" xml:"ZoneIds,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSupportedZonesResponseBody) String() string {

@@ -16,10 +16,14 @@ type iModifyNamespaceSpecV2ResponseBody interface {
 }
 
 type ModifyNamespaceSpecV2ResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
-	// 23A9C718-DDAB-1696-B025-18FBC830F7C5
+	// 23A9C718-DDAB-1696-B025-18FBC83****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation is successful.
+	//
 	// example:
 	//
 	// true

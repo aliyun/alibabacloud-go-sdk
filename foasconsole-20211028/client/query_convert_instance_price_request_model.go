@@ -28,26 +28,36 @@ type iQueryConvertInstancePriceRequest interface {
 }
 
 type QueryConvertInstancePriceRequest struct {
+	// The number of pricing cycles.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The order instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f-cn-wwo36qj4g06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to enable auto-renewal.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	IsAutoRenew *bool `json:"IsAutoRenew,omitempty" xml:"IsAutoRenew,omitempty"`
+	// The resource specifications of the namespace.
+	//
 	// This parameter is required.
 	NamespaceResourceSpecs []*QueryConvertInstancePriceRequestNamespaceResourceSpecs `json:"NamespaceResourceSpecs,omitempty" xml:"NamespaceResourceSpecs,omitempty" type:"Repeated"`
+	// The pricing cycle. Only Year and Month are supported.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -55,6 +65,8 @@ type QueryConvertInstancePriceRequest struct {
 	// Month
 	PricingCycle  *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	// The region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -158,12 +170,16 @@ func (s *QueryConvertInstancePriceRequest) Validate() error {
 }
 
 type QueryConvertInstancePriceRequestNamespaceResourceSpecs struct {
+	// The namespace name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// lm-test-default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The resource specifications of the namespace.
+	//
 	// This parameter is required.
 	ResourceSpec *QueryConvertInstancePriceRequestNamespaceResourceSpecsResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 }
@@ -204,12 +220,18 @@ func (s *QueryConvertInstancePriceRequestNamespaceResourceSpecs) Validate() erro
 }
 
 type QueryConvertInstancePriceRequestNamespaceResourceSpecsResourceSpec struct {
+	// The number of CPUs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The memory size. Unit: GB.
+	//
+	// > The memory size must be 4 times the number of CPUs.
+	//
 	// This parameter is required.
 	//
 	// example:

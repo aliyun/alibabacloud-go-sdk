@@ -28,26 +28,36 @@ type iConvertInstanceRequest interface {
 }
 
 type ConvertInstanceRequest struct {
+	// The number of subscription cycles.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The order instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f-cn-wwo36qj4g06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to enable auto-renewal.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	IsAutoRenew *bool `json:"IsAutoRenew,omitempty" xml:"IsAutoRenew,omitempty"`
+	// The resource specifications of the namespace.
+	//
 	// This parameter is required.
 	NamespaceResourceSpecs []*ConvertInstanceRequestNamespaceResourceSpecs `json:"NamespaceResourceSpecs,omitempty" xml:"NamespaceResourceSpecs,omitempty" type:"Repeated"`
+	// The subscription cycle.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -55,6 +65,8 @@ type ConvertInstanceRequest struct {
 	// Month
 	PricingCycle  *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	// The region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -158,12 +170,16 @@ func (s *ConvertInstanceRequest) Validate() error {
 }
 
 type ConvertInstanceRequestNamespaceResourceSpecs struct {
+	// The namespace name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ns-1
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The resource specifications.
+	//
 	// This parameter is required.
 	ResourceSpec *ConvertInstanceRequestNamespaceResourceSpecsResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 }
@@ -204,12 +220,16 @@ func (s *ConvertInstanceRequestNamespaceResourceSpecs) Validate() error {
 }
 
 type ConvertInstanceRequestNamespaceResourceSpecsResourceSpec struct {
+	// The number of CPUs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The memory size.
+	//
 	// This parameter is required.
 	//
 	// example:

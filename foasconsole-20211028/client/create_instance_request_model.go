@@ -52,60 +52,141 @@ type iCreateInstanceRequest interface {
 }
 
 type CreateInstanceRequest struct {
+	// The processor architecture.
+	//
+	// example:
+	//
+	// X86
 	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
+	// Specifies whether to enable auto-renewal. Valid values:
+	//
+	// - **true**: Enabled.
+	//
+	// - **false**: Disabled. This is the default value.
+	//
+	// > This parameter does not take effect for pay-as-you-go instances.
+	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The billing method. Valid values:
+	//
+	// - POST: pay-as-you-go.
+	//
+	// - PRE: subscription.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PRE
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The subscription duration.
+	//
+	// > This parameter is required when ChargeType is set to PRE.
+	//
 	// example:
 	//
 	// 1
-	Duration *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Extra    *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The extended field.
+	//
+	// example:
+	//
+	// “”
+	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// Specifies whether to use zone-disaster recovery resources.
+	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// true
 	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// The zone-disaster recovery resource specifications.
+	//
 	// if can be null:
 	// true
 	HaResourceSpec *CreateInstanceRequestHaResourceSpec `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
+	// The list of vSwitch IDs in the secondary zone for zone-disaster recovery.
+	//
 	// if can be null:
 	// true
 	HaVSwitchIds []*string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
+	// The workspace name. The name must start with a lowercase letter and can contain lowercase letters, digits, and hyphens (-). The name cannot end with a hyphen.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rtc-e2e-test-pre
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	MonitorType  *string `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
+	// The type of monitoring and alerting service. You can select ARMS or CloudMonitor.
+	//
+	// example:
+	//
+	// TAIHAO
+	MonitorType *string `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
+	// The unit of the subscription duration. Valid values:
+	//
+	// - **year**: year.
+	//
+	// - **month**: month.
+	//
+	// > This parameter is required when ChargeType is set to PRE.
+	//
 	// example:
 	//
 	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The coupon code.
+	//
 	// example:
 	//
 	// 500043499350689
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
-	Region          *string                            `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceGroupId *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceSpec    *CreateInstanceRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmxbavps3rpiy
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The resource specifications.
+	//
+	// > This parameter is required when ChargeType is set to PRE.
+	ResourceSpec *CreateInstanceRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+	// The storage parameters.
+	//
 	// This parameter is required.
-	Storage          *CreateInstanceRequestStorage `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
-	Tag              []*CreateInstanceRequestTag   `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	UsePromotionCode *bool                         `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
+	Storage *CreateInstanceRequestStorage `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
+	// The list of tags. A maximum of 20 tags can be specified.
+	Tag []*CreateInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// Specifies whether to use a coupon. Valid values:
+	//
+	// - true: Use a coupon.
+	//
+	// - false: Do not use a coupon.
+	//
+	// example:
+	//
+	// true
+	UsePromotionCode *bool `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
+	// The list of vSwitch IDs.
+	//
 	// This parameter is required.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	// The virtual private cloud (VPC) ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -331,7 +412,17 @@ func (s *CreateInstanceRequest) Validate() error {
 }
 
 type CreateInstanceRequestHaResourceSpec struct {
-	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The number of CPUs for zone-disaster recovery.
+	//
+	// example:
+	//
+	// 10
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The memory size for zone-disaster recovery.
+	//
+	// example:
+	//
+	// 40
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
 }
 
@@ -366,10 +457,18 @@ func (s *CreateInstanceRequestHaResourceSpec) Validate() error {
 }
 
 type CreateInstanceRequestResourceSpec struct {
+	// The number of CPUs.
+	//
+	// > - This parameter is required for subscription workspaces. For pay-as-you-go workspaces, you do not need to specify this parameter.- The number of CPUs for the target project must be less than the remaining CPUs in the workspace (total purchased CPUs minus CPUs already allocated to other projects). Otherwise, an error is returned.
+	//
 	// example:
 	//
 	// 30
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The memory size. Unit: GB.
+	//
+	// > The memory size must be 4 times the number of CPUs.
+	//
 	// example:
 	//
 	// 120
@@ -407,8 +506,18 @@ func (s *CreateInstanceRequestResourceSpec) Validate() error {
 }
 
 type CreateInstanceRequestStorage struct {
-	FullyManaged *bool                            `json:"FullyManaged,omitempty" xml:"FullyManaged,omitempty"`
-	Oss          *CreateInstanceRequestStorageOss `json:"Oss,omitempty" xml:"Oss,omitempty" type:"Struct"`
+	// Specifies whether to use fully managed storage. You can select only one of fully managed storage or binding an OSS bucket. Valid values:
+	//
+	// - true: Use fully managed storage.
+	//
+	// - false: Do not use fully managed storage.
+	//
+	// example:
+	//
+	// false
+	FullyManaged *bool `json:"FullyManaged,omitempty" xml:"FullyManaged,omitempty"`
+	// The Object Storage Service (OSS) storage.
+	Oss *CreateInstanceRequestStorageOss `json:"Oss,omitempty" xml:"Oss,omitempty" type:"Struct"`
 }
 
 func (s CreateInstanceRequestStorage) String() string {
@@ -447,6 +556,8 @@ func (s *CreateInstanceRequestStorage) Validate() error {
 }
 
 type CreateInstanceRequestStorageOss struct {
+	// The name of the OSS bucket to bind.
+	//
 	// example:
 	//
 	// oss-flink-cn-shanghai-260343971602724445
@@ -475,7 +586,17 @@ func (s *CreateInstanceRequestStorageOss) Validate() error {
 }
 
 type CreateInstanceRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// test
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// tag
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

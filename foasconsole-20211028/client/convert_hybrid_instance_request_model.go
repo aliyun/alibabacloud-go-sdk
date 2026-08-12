@@ -18,18 +18,24 @@ type iConvertHybridInstanceRequest interface {
 }
 
 type ConvertHybridInstanceRequest struct {
+	// The order instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// sc_flinkserverless_public_cn-7e22ae5sess
+	// sc_flinkserverless_public_cn-7e22*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shenzhen
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The maximum resource specifications available for the pay-as-you-go portion of hybrid billing.
+	//
 	// This parameter is required.
 	ResourceSpec *ConvertHybridInstanceRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 }
@@ -79,12 +85,18 @@ func (s *ConvertHybridInstanceRequest) Validate() error {
 }
 
 type ConvertHybridInstanceRequestResourceSpec struct {
+	// The number of CPUs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The memory size. Unit: GB.
+	//
+	// > The memory size must be 4 times the number of CPUs.
+	//
 	// This parameter is required.
 	//
 	// example:

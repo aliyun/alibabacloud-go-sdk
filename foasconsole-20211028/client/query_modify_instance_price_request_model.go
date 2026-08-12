@@ -28,13 +28,24 @@ type iQueryModifyInstancePriceRequest interface {
 }
 
 type QueryModifyInstancePriceRequest struct {
+	// Specifies whether to select zone-disaster recovery resources.
+	//
+	// example:
+	//
+	// true
 	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// The zone-disaster recovery resource description.
+	//
 	// if can be null:
 	// true
 	HaResourceSpec *QueryModifyInstancePriceRequestHaResourceSpec `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
+	// The vSwitch group for the zone-disaster recovery secondary zone.
+	//
 	// if can be null:
 	// true
 	HaVSwitchIds []*string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
+	// The order instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -42,12 +53,16 @@ type QueryModifyInstancePriceRequest struct {
 	// f-cn-wwo36qj4g06
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The resource specifications.
+	//
 	// This parameter is required.
 	ResourceSpec     *QueryModifyInstancePriceRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 	UsePromotionCode *bool                                        `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
@@ -148,7 +163,17 @@ func (s *QueryModifyInstancePriceRequest) Validate() error {
 }
 
 type QueryModifyInstancePriceRequestHaResourceSpec struct {
-	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The number of CPUs for zone-disaster recovery.
+	//
+	// example:
+	//
+	// 20
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The memory size for zone-disaster recovery.
+	//
+	// example:
+	//
+	// 80
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
 }
 
@@ -183,12 +208,18 @@ func (s *QueryModifyInstancePriceRequestHaResourceSpec) Validate() error {
 }
 
 type QueryModifyInstancePriceRequestResourceSpec struct {
+	// The number of CPUs after the specification change.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The memory size after the specification change.
+	//
+	// >The memory size must be 4 times the number of CPUs.
+	//
 	// This parameter is required.
 	//
 	// example:

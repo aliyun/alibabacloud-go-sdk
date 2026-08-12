@@ -24,26 +24,36 @@ type iModifyNamespaceSpecV2Request interface {
 }
 
 type ModifyNamespaceSpecV2Request struct {
-	ElasticResourceSpec    *ModifyNamespaceSpecV2RequestElasticResourceSpec    `json:"ElasticResourceSpec,omitempty" xml:"ElasticResourceSpec,omitempty" type:"Struct"`
+	// The upper limit of pay-as-you-go resources allocated to the project namespace.
+	ElasticResourceSpec *ModifyNamespaceSpecV2RequestElasticResourceSpec `json:"ElasticResourceSpec,omitempty" xml:"ElasticResourceSpec,omitempty" type:"Struct"`
+	// The size of subscription resources allocated to the project namespace.
 	GuaranteedResourceSpec *ModifyNamespaceSpecV2RequestGuaranteedResourceSpec `json:"GuaranteedResourceSpec,omitempty" xml:"GuaranteedResourceSpec,omitempty" type:"Struct"`
+	// Specifies whether the project namespace uses zone-disaster recovery.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// The order instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// f-cn-wwo36qj4g06
+	// f-cn-wwo36qj****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The project namespace name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// di-593439443804417
+	// di-5934394438****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -129,12 +139,18 @@ func (s *ModifyNamespaceSpecV2Request) Validate() error {
 }
 
 type ModifyNamespaceSpecV2RequestElasticResourceSpec struct {
+	// The number of CPUs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The memory size. Unit: GB.
+	//
+	// > The memory size must be 4 times the number of CPUs.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -174,12 +190,18 @@ func (s *ModifyNamespaceSpecV2RequestElasticResourceSpec) Validate() error {
 }
 
 type ModifyNamespaceSpecV2RequestGuaranteedResourceSpec struct {
+	// The number of CPUs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The memory size. Unit: GB.
+	//
+	// > The memory size must be 4 times the number of CPUs.
+	//
 	// This parameter is required.
 	//
 	// example:

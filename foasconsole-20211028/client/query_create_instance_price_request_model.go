@@ -44,48 +44,95 @@ type iQueryCreateInstancePriceRequest interface {
 }
 
 type QueryCreateInstancePriceRequest struct {
+	// The processor architecture.
+	//
+	// example:
+	//
+	// X86
 	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
+	// Specifies whether to enable auto-renewal. Valid values:
+	//
+	// - **true**: enables auto-renewal.
+	//
+	// - **false**: does not enable auto-renewal. (Default)
+	//
+	// >This parameter is invalid for pay-as-you-go instances.
+	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The billing type. Valid values:
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PRE
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The number of billing cycles.
+	//
 	// example:
 	//
 	// 1
-	Duration *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Extra    *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	Ha       *bool   `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The extended reserved field.
+	//
+	// example:
+	//
+	// “”
+	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// Specifies whether to select zone-disaster recovery resources.
+	//
+	// example:
+	//
+	// true
+	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// The zone-disaster recovery resource specifications.
+	//
 	// if can be null:
 	// true
 	HaResourceSpec *QueryCreateInstancePriceRequestHaResourceSpec `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
+	// The workspace name.
+	//
 	// example:
 	//
 	// rtc-e2e-test-post
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The billing cycle. Subscription instances support only Year and Month. Pay-as-you-go instances support Hour.
+	//
 	// example:
 	//
 	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The coupon code.
+	//
 	// example:
 	//
 	// 500041860100636
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	// The region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
-	Region           *string                                      `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceSpec     *QueryCreateInstancePriceRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
-	Storage          *QueryCreateInstancePriceRequestStorage      `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
-	UsePromotionCode *bool                                        `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
-	VSwitchIds       []*string                                    `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The resource specifications.
+	ResourceSpec *QueryCreateInstancePriceRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+	// The storage information.
+	Storage *QueryCreateInstancePriceRequestStorage `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
+	// Specifies whether to use a coupon. Valid values:
+	//
+	// example:
+	//
+	// true
+	UsePromotionCode *bool `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
+	// The vSwitch IDs.
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	// The VPC ID of the user.
+	//
 	// example:
 	//
 	// vpc-2ze9xoh8qyt1rnxfmfcdi
@@ -264,11 +311,23 @@ func (s *QueryCreateInstancePriceRequest) Validate() error {
 }
 
 type QueryCreateInstancePriceRequestHaResourceSpec struct {
+	// The number of CPUs for zone-disaster recovery.
+	//
 	// if can be null:
 	// false
+	//
+	// example:
+	//
+	// 20
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The active memory size for zone-disaster recovery.
+	//
 	// if can be null:
 	// false
+	//
+	// example:
+	//
+	// 80
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
 }
 
@@ -303,10 +362,14 @@ func (s *QueryCreateInstancePriceRequestHaResourceSpec) Validate() error {
 }
 
 type QueryCreateInstancePriceRequestResourceSpec struct {
+	// The number of CPUs.
+	//
 	// example:
 	//
 	// 4
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The memory size.
+	//
 	// example:
 	//
 	// 16
@@ -344,6 +407,7 @@ func (s *QueryCreateInstancePriceRequestResourceSpec) Validate() error {
 }
 
 type QueryCreateInstancePriceRequestStorage struct {
+	// The OSS storage information.
 	Oss *QueryCreateInstancePriceRequestStorageOss `json:"Oss,omitempty" xml:"Oss,omitempty" type:"Struct"`
 }
 
@@ -374,6 +438,8 @@ func (s *QueryCreateInstancePriceRequestStorage) Validate() error {
 }
 
 type QueryCreateInstancePriceRequestStorageOss struct {
+	// The name of the OSS bucket.
+	//
 	// example:
 	//
 	// quicktracing

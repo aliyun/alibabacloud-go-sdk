@@ -20,24 +20,32 @@ type iModifyPrepayNamespaceSpecRequest interface {
 }
 
 type ModifyPrepayNamespaceSpecRequest struct {
+	// The order instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f-cn-wwo36qj4g06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The namespace name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// di-593440219799842
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shenzhen
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The namespace resource details.
+	//
 	// This parameter is required.
 	ResourceSpec *ModifyPrepayNamespaceSpecRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 }
@@ -96,12 +104,18 @@ func (s *ModifyPrepayNamespaceSpecRequest) Validate() error {
 }
 
 type ModifyPrepayNamespaceSpecRequestResourceSpec struct {
+	// The number of CPUs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The memory size. Unit: GB.
+	//
+	// > The memory size must be 4 times the number of CPUs.
+	//
 	// This parameter is required.
 	//
 	// example:

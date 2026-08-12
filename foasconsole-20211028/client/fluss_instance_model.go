@@ -17,6 +17,8 @@ type iFlussInstance interface {
 	GetConsoleUrl() *string
 	SetDiskSize(v int64) *FlussInstance
 	GetDiskSize() *int64
+	SetHa(v bool) *FlussInstance
+	GetHa() *bool
 	SetInstanceId(v string) *FlussInstance
 	GetInstanceId() *string
 	SetInstanceName(v string) *FlussInstance
@@ -35,6 +37,10 @@ type iFlussInstance interface {
 	GetTabletServerNum() *int64
 	SetTabletServerType(v string) *FlussInstance
 	GetTabletServerType() *string
+	SetTieringPostCu(v int64) *FlussInstance
+	GetTieringPostCu() *int64
+	SetTieringPreCu(v int64) *FlussInstance
+	GetTieringPreCu() *int64
 	SetUid(v string) *FlussInstance
 	GetUid() *string
 	SetVSwitches(v []*FlussVswitch) *FlussInstance
@@ -44,22 +50,43 @@ type iFlussInstance interface {
 }
 
 type FlussInstance struct {
-	ClusterState        *ClusterState   `json:"ClusterState,omitempty" xml:"ClusterState,omitempty"`
-	ClusterStatus       *string         `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
-	ConsoleUrl          *string         `json:"ConsoleUrl,omitempty" xml:"ConsoleUrl,omitempty"`
-	DiskSize            *int64          `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	InstanceId          *string         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName        *string         `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	OrderState          *string         `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
-	RegionId            *string         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceCreateTime  *int64          `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty"`
-	ResourceExpiredTime *int64          `json:"ResourceExpiredTime,omitempty" xml:"ResourceExpiredTime,omitempty"`
-	TabletServerModel   *string         `json:"TabletServerModel,omitempty" xml:"TabletServerModel,omitempty"`
-	TabletServerNum     *int64          `json:"TabletServerNum,omitempty" xml:"TabletServerNum,omitempty"`
-	TabletServerType    *string         `json:"TabletServerType,omitempty" xml:"TabletServerType,omitempty"`
-	Uid                 *string         `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	VSwitches           []*FlussVswitch `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
-	VpcId               *string         `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ClusterState *ClusterState `json:"ClusterState,omitempty" xml:"ClusterState,omitempty"`
+	// The cluster status.
+	ClusterStatus *string `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
+	// The URL of the instance management console.
+	ConsoleUrl *string `json:"ConsoleUrl,omitempty" xml:"ConsoleUrl,omitempty"`
+	// The disk size, in GB.
+	DiskSize *int64 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// Specifies whether high availability (HA) is enabled.
+	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// The instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The order state.
+	OrderState *string `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The creation time of the resource, as a UNIX timestamp in milliseconds.
+	ResourceCreateTime *int64 `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty"`
+	// The expiration time of the resource, as a UNIX timestamp in milliseconds.
+	ResourceExpiredTime *int64 `json:"ResourceExpiredTime,omitempty" xml:"ResourceExpiredTime,omitempty"`
+	// The tablet server model.
+	TabletServerModel *string `json:"TabletServerModel,omitempty" xml:"TabletServerModel,omitempty"`
+	// The number of tablet servers.
+	TabletServerNum *int64 `json:"TabletServerNum,omitempty" xml:"TabletServerNum,omitempty"`
+	// The tablet server type.
+	TabletServerType *string `json:"TabletServerType,omitempty" xml:"TabletServerType,omitempty"`
+	// The number of compute units (CUs) for post-tiering.
+	TieringPostCu *int64 `json:"TieringPostCu,omitempty" xml:"TieringPostCu,omitempty"`
+	// The number of compute units (CUs) for pre-tiering.
+	TieringPreCu *int64 `json:"TieringPreCu,omitempty" xml:"TieringPreCu,omitempty"`
+	// The Alibaba Cloud account ID (UID).
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// The VSwitch details.
+	VSwitches []*FlussVswitch `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
+	// The VPC ID.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s FlussInstance) String() string {
@@ -84,6 +111,10 @@ func (s *FlussInstance) GetConsoleUrl() *string {
 
 func (s *FlussInstance) GetDiskSize() *int64 {
 	return s.DiskSize
+}
+
+func (s *FlussInstance) GetHa() *bool {
+	return s.Ha
 }
 
 func (s *FlussInstance) GetInstanceId() *string {
@@ -122,6 +153,14 @@ func (s *FlussInstance) GetTabletServerType() *string {
 	return s.TabletServerType
 }
 
+func (s *FlussInstance) GetTieringPostCu() *int64 {
+	return s.TieringPostCu
+}
+
+func (s *FlussInstance) GetTieringPreCu() *int64 {
+	return s.TieringPreCu
+}
+
 func (s *FlussInstance) GetUid() *string {
 	return s.Uid
 }
@@ -151,6 +190,11 @@ func (s *FlussInstance) SetConsoleUrl(v string) *FlussInstance {
 
 func (s *FlussInstance) SetDiskSize(v int64) *FlussInstance {
 	s.DiskSize = &v
+	return s
+}
+
+func (s *FlussInstance) SetHa(v bool) *FlussInstance {
+	s.Ha = &v
 	return s
 }
 
@@ -196,6 +240,16 @@ func (s *FlussInstance) SetTabletServerNum(v int64) *FlussInstance {
 
 func (s *FlussInstance) SetTabletServerType(v string) *FlussInstance {
 	s.TabletServerType = &v
+	return s
+}
+
+func (s *FlussInstance) SetTieringPostCu(v int64) *FlussInstance {
+	s.TieringPostCu = &v
+	return s
+}
+
+func (s *FlussInstance) SetTieringPreCu(v int64) *FlussInstance {
+	s.TieringPreCu = &v
 	return s
 }
 

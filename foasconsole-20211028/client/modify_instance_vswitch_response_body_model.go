@@ -18,14 +18,20 @@ type iModifyInstanceVswitchResponseBody interface {
 }
 
 type ModifyInstanceVswitchResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 67F33190-946B-1105-B6A1-E2DF0426****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result information.
+	//
 	// example:
 	//
 	// F2C5B6A8-DD04-51F5-AAD5-BA2FE6FD****
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the operation was successful.
+	//
 	// example:
 	//
 	// true

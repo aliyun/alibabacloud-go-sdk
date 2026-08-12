@@ -26,27 +26,44 @@ type iDescribeSupportedRegionsResponseBody interface {
 }
 
 type DescribeSupportedRegionsResponseBody struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The number of regions per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Regions  []*DescribeSupportedRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of region information.
+	Regions []*DescribeSupportedRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B21DC47E-8928-199A-9F32-36D45E4693B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of regions returned.
+	//
 	// example:
 	//
 	// 10
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 2
@@ -138,15 +155,29 @@ func (s *DescribeSupportedRegionsResponseBody) Validate() error {
 }
 
 type DescribeSupportedRegionsResponseBodyRegions struct {
+	// The description.
+	//
+	// example:
+	//
+	// “”
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Extra       *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// The extended field.
+	//
+	// example:
+	//
+	// “”
+	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The region name.
+	//
 	// example:
 	//
-	// 华北2 (北京)
+	// China (Beijing)
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
 }
 

@@ -29,31 +29,42 @@ type DescribeNamespacesRequest struct {
 	// if can be null:
 	// true
 	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// The order instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f-cn-wwo36qj4g06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The namespace name.
+	//
 	// example:
 	//
 	// di-590843445844225
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
-	Region *string                          `json:"Region,omitempty" xml:"Region,omitempty"`
-	Tags   []*DescribeNamespacesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The list of tags.
+	Tags []*DescribeNamespacesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeNamespacesRequest) String() string {
@@ -141,10 +152,14 @@ func (s *DescribeNamespacesRequest) Validate() error {
 }
 
 type DescribeNamespacesRequestTags struct {
+	// The tag key.
+	//
 	// example:
 	//
-	// FLink
+	// Flink
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// test

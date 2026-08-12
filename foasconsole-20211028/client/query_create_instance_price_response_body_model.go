@@ -18,12 +18,16 @@ type iQueryCreateInstancePriceResponseBody interface {
 }
 
 type QueryCreateInstancePriceResponseBody struct {
+	// The price information, including the price and promotion rules.
 	PriceInfo *QueryCreateInstancePriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 67F33190-946B-1105-B6A1-E2DF0426DD51
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryCreateInstancePriceResponseBody) String() string {
@@ -71,36 +75,56 @@ func (s *QueryCreateInstancePriceResponseBody) Validate() error {
 }
 
 type QueryCreateInstancePriceResponseBodyPriceInfo struct {
+	// The error code.
+	//
 	// example:
 	//
 	// ORDER.INST_HAS_UNPAID_ORDER
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The currency unit.
+	//
 	// example:
 	//
 	// CNY
-	Currency       *string                                                      `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The price reduction information.
 	DepreciateInfo *QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
+	// The discount amount.
+	//
 	// example:
 	//
 	// 655.2
-	DiscountAmount     *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
-	IsContractActivity *bool    `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
+	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	// Indicates whether the enterprise customer discount is applied.
+	IsContractActivity *bool `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
+	// The Lingxiao request ID of the call.
+	//
 	// example:
 	//
 	// 67F33190-946B-1105-B6A1-E2DF0426DD51
 	LxRequestId *string `json:"LxRequestId,omitempty" xml:"LxRequestId,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 存在未支付订单，请先支付或取消原有订单
-	Message            *string                                                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	// An unpaid order exists. Pay for or cancel the existing order first
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The coupon group information.
 	OptionalPromotions []*QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
+	// The original price.
+	//
 	// example:
 	//
 	// 4368
-	OriginalAmount     *float32                                              `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	Rules              []*QueryCreateInstancePriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	StandDiscountPrice *string                                               `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
-	StandPrice         *string                                               `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
+	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	// The promotion rules.
+	Rules []*QueryCreateInstancePriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The promotional price based on the official website discount.
+	StandDiscountPrice *string `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
+	// The official website discounted price or direct sales contract discounted price.
+	StandPrice *string `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
+	// The final price, which is the original price minus the discount.
+	//
 	// example:
 	//
 	// 3712.8
@@ -260,12 +284,18 @@ func (s *QueryCreateInstancePriceResponseBodyPriceInfo) Validate() error {
 }
 
 type QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo struct {
-	CheapRate           *string `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
-	CheapStandAmount    *string `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
-	IsShow              *bool   `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
-	MonthPrice          *string `json:"MonthPrice,omitempty" xml:"MonthPrice,omitempty"`
+	// The price reduction rate.
+	CheapRate *string `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
+	// The standard total price after the price reduction.
+	CheapStandAmount *string `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
+	// Indicates whether to display the price reduction percentage.
+	IsShow *bool `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
+	// The monthly equivalent price.
+	MonthPrice *string `json:"MonthPrice,omitempty" xml:"MonthPrice,omitempty"`
+	// The original standard total price.
 	OriginalStandAmount *string `json:"OriginalStandAmount,omitempty" xml:"OriginalStandAmount,omitempty"`
-	StartTime           *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The start time of the price reduction.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo) String() string {
@@ -335,18 +365,26 @@ func (s *QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo) Validate()
 }
 
 type QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions struct {
+	// The coupon description.
+	//
 	// example:
 	//
-	// ￥1,391.5 优惠券 (有效期至 03/23/2022)
+	// ¥1,391.5 coupon (valid until 03/23/2022)
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// The coupon name.
+	//
 	// example:
 	//
-	// ￥1,391.5 优惠券
+	// ¥1,391.5 coupon
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// The coupon ID.
+	//
 	// example:
 	//
 	// 500011220010099
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
+	// Indicates whether the coupon is selected. Valid values:
+	//
 	// example:
 	//
 	// true
@@ -402,10 +440,14 @@ func (s *QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions) Valida
 }
 
 type QueryCreateInstancePriceResponseBodyPriceInfoRules struct {
+	// The promotion rule description.
+	//
 	// example:
 	//
-	// 买满1年，立享官网价格8.5折优惠。
+	// Get a 15% discount for a 1-year subscription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The promotion ID.
+	//
 	// example:
 	//
 	// 587

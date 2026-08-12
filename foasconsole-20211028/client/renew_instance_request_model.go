@@ -24,18 +24,24 @@ type iRenewInstanceRequest interface {
 }
 
 type RenewInstanceRequest struct {
+	// The number of subscription periods.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sc_flinkserverless_public_cn-7e22ae5sess
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The subscription period.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -43,6 +49,8 @@ type RenewInstanceRequest struct {
 	// Month
 	PricingCycle  *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

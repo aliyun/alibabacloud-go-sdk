@@ -28,13 +28,24 @@ type iQueryModifyInstancePriceShrinkRequest interface {
 }
 
 type QueryModifyInstancePriceShrinkRequest struct {
+	// Specifies whether to select zone-disaster recovery resources.
+	//
+	// example:
+	//
+	// true
 	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// The zone-disaster recovery resource description.
+	//
 	// if can be null:
 	// true
 	HaResourceSpecShrink *string `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty"`
+	// The vSwitch group for the zone-disaster recovery secondary zone.
+	//
 	// if can be null:
 	// true
 	HaVSwitchIdsShrink *string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty"`
+	// The order instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -42,12 +53,16 @@ type QueryModifyInstancePriceShrinkRequest struct {
 	// f-cn-wwo36qj4g06
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The resource specifications.
+	//
 	// This parameter is required.
 	ResourceSpecShrink *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
 	UsePromotionCode   *bool   `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`

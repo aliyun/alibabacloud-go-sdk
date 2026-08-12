@@ -28,12 +28,18 @@ type iModifyInstanceSpecShrinkRequest interface {
 }
 
 type ModifyInstanceSpecShrinkRequest struct {
+	// Specifies whether the workspace has zone-disaster recovery resources.
+	//
 	// example:
 	//
 	// true
-	Ha                   *bool   `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// The zone-disaster recovery resource specifications.
 	HaResourceSpecShrink *string `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty"`
-	HaVSwitchIdsShrink   *string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty"`
+	// The vSwitch group in the secondary zone for zone-disaster recovery.
+	HaVSwitchIdsShrink *string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty"`
+	// The order instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -41,12 +47,16 @@ type ModifyInstanceSpecShrinkRequest struct {
 	// f-cn-wwo36qj4g06
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The resource specifications.
+	//
 	// This parameter is required.
 	ResourceSpecShrink *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
 	UsePromotionCode   *bool   `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`

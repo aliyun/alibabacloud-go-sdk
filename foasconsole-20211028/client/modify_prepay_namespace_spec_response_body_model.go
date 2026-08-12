@@ -16,10 +16,18 @@ type iModifyPrepayNamespaceSpecResponseBody interface {
 }
 
 type ModifyPrepayNamespaceSpecResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 67F33190-946B-1105-B6A1-E2DF0426DD51
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// true

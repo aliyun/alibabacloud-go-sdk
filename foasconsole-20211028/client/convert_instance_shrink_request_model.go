@@ -28,26 +28,36 @@ type iConvertInstanceShrinkRequest interface {
 }
 
 type ConvertInstanceShrinkRequest struct {
+	// The number of subscription cycles.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The order instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f-cn-wwo36qj4g06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to enable auto-renewal.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	IsAutoRenew *bool `json:"IsAutoRenew,omitempty" xml:"IsAutoRenew,omitempty"`
+	// The resource specifications of the namespace.
+	//
 	// This parameter is required.
 	NamespaceResourceSpecsShrink *string `json:"NamespaceResourceSpecs,omitempty" xml:"NamespaceResourceSpecs,omitempty"`
+	// The subscription cycle.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -55,6 +65,8 @@ type ConvertInstanceShrinkRequest struct {
 	// Month
 	PricingCycle  *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	// The region.
+	//
 	// This parameter is required.
 	//
 	// example:

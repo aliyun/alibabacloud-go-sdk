@@ -18,11 +18,16 @@ type iCreateInstanceResponseBody interface {
 }
 
 type CreateInstanceResponseBody struct {
+	// The order information.
 	OrderInfo *CreateInstanceResponseBodyOrderInfo `json:"OrderInfo,omitempty" xml:"OrderInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 67F33190-946B-1105-B6A1-E2DF0426DD51
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -74,16 +79,30 @@ func (s *CreateInstanceResponseBody) Validate() error {
 }
 
 type CreateInstanceResponseBodyOrderInfo struct {
+	// The instance ID of the order.
+	//
 	// example:
 	//
 	// f-cn-zvp2q0zik06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 210406354694567
-	OrderId           *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The storage instance ID.
+	//
+	// example:
+	//
+	// sc_flinkstorage_public_cn-w*****
 	StorageInstanceId *string `json:"StorageInstanceId,omitempty" xml:"StorageInstanceId,omitempty"`
-	StorageOrderId    *int64  `json:"StorageOrderId,omitempty" xml:"StorageOrderId,omitempty"`
+	// The storage order ID.
+	//
+	// example:
+	//
+	// 240353501970749
+	StorageOrderId *int64 `json:"StorageOrderId,omitempty" xml:"StorageOrderId,omitempty"`
 }
 
 func (s CreateInstanceResponseBodyOrderInfo) String() string {

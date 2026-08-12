@@ -34,38 +34,56 @@ type iDescribeInstancesShrinkRequest interface {
 }
 
 type DescribeInstancesShrinkRequest struct {
+	// The architecture type.
+	//
 	// example:
 	//
 	// X86
 	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
+	// The payment type.
+	//
 	// example:
 	//
 	// PRE
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// Specifies whether mixed billing is used.
+	//
 	// example:
 	//
 	// true
 	Elastic *bool `json:"Elastic,omitempty" xml:"Elastic,omitempty"`
+	// The order instance ID.
+	//
 	// example:
 	//
 	// f-cn-wwo36qj4g06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// e2e-test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The namespace name.
+	//
 	// example:
 	//
 	// e2e-test-default
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 2
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The number of entries per page for a paged query. Maximum value: 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -73,7 +91,8 @@ type DescribeInstancesShrinkRequest struct {
 	// cn-shenzhen
 	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	TagsShrink      *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The tags of the instance.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s DescribeInstancesShrinkRequest) String() string {

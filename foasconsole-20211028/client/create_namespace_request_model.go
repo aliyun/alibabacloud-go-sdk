@@ -25,24 +25,31 @@ type CreateNamespaceRequest struct {
 	// if can be null:
 	// true
 	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// The order instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f-cn-wwo36qj4g06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The namespace name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// di-593440390152545
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shenzhen
-	Region       *string                             `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The resource specifications.
 	ResourceSpec *CreateNamespaceRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 }
 
@@ -109,10 +116,16 @@ func (s *CreateNamespaceRequest) Validate() error {
 }
 
 type CreateNamespaceRequestResourceSpec struct {
+	// The number of CPUs.
+	//
 	// example:
 	//
 	// 30
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The memory size. Unit: GB.
+	//
+	// > The memory size must be 4 times the number of CPUs.
+	//
 	// example:
 	//
 	// 120

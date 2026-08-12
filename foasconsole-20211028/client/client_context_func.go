@@ -9,7 +9,11 @@ import (
 
 // Summary:
 //
-// 开通弹性计算
+// Converts a subscription instance to a hybrid billing instance.
+//
+// Description:
+//
+// *Before using this API, make sure that you fully understand the billing method and [pricing](https://www.alibabacloud.com/help/en/flink/product-overview/hybrid-pricing) of hybrid billing for Realtime Compute for Apache Flink.**
 //
 // @param tmpReq - ConvertHybridInstanceRequest
 //
@@ -67,7 +71,11 @@ func (client *Client) ConvertHybridInstanceWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Changes the billing method of a workspace from pay-as-you-go to subscription.
+// Converts a pay-as-you-go workspace to a subscription workspace.
+//
+// Description:
+//
+// *Before using this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/help/en/flink/product-overview/switch-from-pay-as-you-go-to-subscription) of fully managed Flink.**
 //
 // @param tmpReq - ConvertInstanceRequest
 //
@@ -145,7 +153,11 @@ func (client *Client) ConvertInstanceWithContext(ctx context.Context, tmpReq *Co
 
 // Summary:
 //
-// Changes the billing method of a workspace from subscription to pay-as-you-go.
+// Converts a subscription instance to pay-as-you-go.
+//
+// Description:
+//
+// Before using this operation, make sure that you fully understand the [billing methods and pricing](https://www.alibabacloud.com/help/en/flink/product-overview/switch-from-subscription-to-pay-as-you-go) of Alibaba Cloud Realtime Compute for Apache Flink.
 //
 // @param request - ConvertPrepayInstanceRequest
 //
@@ -193,7 +205,11 @@ func (client *Client) ConvertPrepayInstanceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Creates a subscription workspace or a pay-as-you-go workspace of Realtime Compute for Apache Flink.
+// Creates a subscription or pay-as-you-go fully managed Flink workspace.
+//
+// Description:
+//
+// *Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/help/en/flink/product-overview/billing-overview) of fully managed Flink before you call this operation.**
 //
 // @param tmpReq - CreateInstanceRequest
 //
@@ -339,7 +355,7 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, tmpReq *Cre
 
 // Summary:
 //
-// Creates a namespace in a Realtime Compute for Apache Flink workspace.
+// Creates a workspace in a fully managed Flink instance.
 //
 // @param tmpReq - CreateNamespaceRequest
 //
@@ -405,7 +421,11 @@ func (client *Client) CreateNamespaceWithContext(ctx context.Context, tmpReq *Cr
 
 // Summary:
 //
-// Deletes a pay-as-you-go workspace of Realtime Compute for Apache Flink.
+// Releases a pay-as-you-go Realtime Compute for Apache Flink workspace.
+//
+// Description:
+//
+// *Before using this operation, make sure that you fully understand the billing method and [pricing](https://www.alibabacloud.com/help/en/flink/product-overview/refund-policy) of Realtime Compute for Apache Flink.**
 //
 // @param request - DeleteInstanceRequest
 //
@@ -453,7 +473,7 @@ func (client *Client) DeleteInstanceWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Deletes a namespace.
+// Deletes a project workspace.
 //
 // @param request - DeleteNamespaceRequest
 //
@@ -505,7 +525,7 @@ func (client *Client) DeleteNamespaceWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries the details of one or more Realtime Compute for Apache Flink workspaces.
+// Queries the details of one or more fully managed Flink workspaces.
 //
 // @param tmpReq - DescribeInstancesRequest
 //
@@ -551,7 +571,7 @@ func (client *Client) DescribeInstancesWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Queries the information about a namespace that belongs to a workspace.
+// Queries the namespace information of a specified instance.
 //
 // @param tmpReq - DescribeNamespacesRequest
 //
@@ -597,7 +617,7 @@ func (client *Client) DescribeNamespacesWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Obtains the zones that are supported by Realtime Compute for Apache Flink.
+// Retrieves information about zones that are available for purchase.
 //
 // @param request - DescribeSupportedZonesRequest
 //
@@ -637,7 +657,7 @@ func (client *Client) DescribeSupportedZonesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the tags of specified resources. You can query the key of a tag by tag value, or query the value of a tag by tag key. You can also obtain information about all tags that you use in a workspace in the console of fully managed Flink.
+// Queries resource tags. You can query tag keys by tag values, query tag values by tag keys, or retrieve all tag information used in your Flink fully managed workspace.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -697,7 +717,11 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 对按量弹性实例修改resource quota
+// Modifies the maximum pay-as-you-go resource limit for a hybrid billing instance.
+//
+// Description:
+//
+// Make sure that you are familiar with the [billing methods](https://www.alibabacloud.com/help/en/flink/user-guide/reconfigure-resources#task-2507532) and pricing of Realtime Compute for Apache Flink before you call this operation.
 //
 // @param tmpReq - ModifyElasticResourceSpecRequest
 //
@@ -755,7 +779,11 @@ func (client *Client) ModifyElasticResourceSpecWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Scale in or out a workspace to reconfigure resources for the workspace.
+// Scales up or scales down the resources of a workspace.
+//
+// Description:
+//
+// Make sure that you are familiar with the [billing methods](https://www.alibabacloud.com/help/en/flink/user-guide/reconfigure-resources#task-2507532) and pricing of Realtime Compute for Apache Flink before you call this operation.
 //
 // @param tmpReq - ModifyInstanceSpecRequest
 //
@@ -843,7 +871,11 @@ func (client *Client) ModifyInstanceSpecWithContext(ctx context.Context, tmpReq 
 //
 // Summary:
 //
-// 修改集群交换机
+// Modifies the vSwitches available to a Flink workspace.
+//
+// Description:
+//
+// Before using this operation, make sure that you fully understand the restrictions on [modifying vSwitches](https://www.alibabacloud.com/help/en/flink/user-guide/modify-a-vswitch) in Realtime Compute for Apache Flink.
 //
 // @param tmpReq - ModifyInstanceVswitchRequest
 //
@@ -905,7 +937,11 @@ func (client *Client) ModifyInstanceVswitchWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 修改namespace资源，包含按量和包年包月、混合计费
+// Modifies the resource configurations of a project namespace in a pay-as-you-go, subscription, or hybrid billing workspace.
+//
+// Description:
+//
+// >When calling this operation, note the following: - The order status must be normal, that is, OrderType=NORMAL. - When decreasing the quota, the specified resource specification quantity cannot be less than the quantity already in use. For details about the project resource specifications before and after the change, call [DescribeNamespaces](https://help.aliyun.com/document_detail/323441.html).
 //
 // @param tmpReq - ModifyNamespaceSpecV2Request
 //
@@ -983,7 +1019,11 @@ func (client *Client) ModifyNamespaceSpecV2WithContext(ctx context.Context, tmpR
 //
 // Summary:
 //
-// Modifies the configuration of the computing resources of a subscription fully managed Flink workspace. If the number of computing resources after the modification is less than the current number of computing resources, the scale-in operation is performed. If the number of computing resources after the modification is larger than the current number of computing resources, the scale-out operation is performed.
+// Modifies the compute resource specifications of a subscription Realtime Compute for Apache Flink instance. If the new specifications are smaller than the current specifications, a scale-in operation is performed. If the new specifications are larger than the current specifications, a scale-out operation is performed.
+//
+// Description:
+//
+// *Before using this operation, make sure that you fully understand the billing method and [pricing](https://www.alibabacloud.com/help/en/flink/product-overview/subscription) of Realtime Compute for Apache Flink.**
 //
 // @param tmpReq - ModifyPrepayInstanceSpecRequest
 //
@@ -1067,7 +1107,7 @@ func (client *Client) ModifyPrepayInstanceSpecWithContext(ctx context.Context, t
 //
 // Summary:
 //
-// Modifies the resource configurations of a namespace in a subscription workspace.
+// Modifies the specifications of a namespace in a subscription instance.
 //
 // @param tmpReq - ModifyPrepayNamespaceSpecRequest
 //
@@ -1129,7 +1169,7 @@ func (client *Client) ModifyPrepayNamespaceSpecWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the fee of switching the billing method of a workspace from pay-as-you-go to subscription.
+// Queries the price for converting a pay-as-you-go instance to a subscription instance.
 //
 // @param tmpReq - QueryConvertInstancePriceRequest
 //
@@ -1207,7 +1247,7 @@ func (client *Client) QueryConvertInstancePriceWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Obtains the estimated refund after the billing method of your Realtime Compute for Apache Flink workspace is changed from subscription to pay-as-you-go. After you change the billing method of your workspace to pay-as-you-go, bills are generated on an hourly basis.
+// Queries the estimated refund amount after converting your Flink instance from subscription to pay-as-you-go. After the conversion, your usage is metered hourly and bills are generated accordingly.
 //
 // @param request - QueryConvertPrepayInstancePriceRequest
 //
@@ -1255,7 +1295,7 @@ func (client *Client) QueryConvertPrepayInstancePriceWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the fee of creating a workspace.
+// Retrieves the price of a workspace for the current account.
 //
 // @param tmpReq - QueryCreateInstancePriceRequest
 //
@@ -1377,7 +1417,7 @@ func (client *Client) QueryCreateInstancePriceWithContext(ctx context.Context, t
 
 // Summary:
 //
-// Queries the fee of modifying the resource configuration of a workspace.
+// Queries the price for upgrading or downgrading an instance.
 //
 // @param tmpReq - QueryModifyInstancePriceRequest
 //
@@ -1463,7 +1503,7 @@ func (client *Client) QueryModifyInstancePriceWithContext(ctx context.Context, t
 
 // Summary:
 //
-// Queries the fee of renewing a subscription workspace.
+// Queries the renewal price of a subscription workspace.
 //
 // @param request - QueryRenewInstancePriceRequest
 //
@@ -1527,7 +1567,11 @@ func (client *Client) QueryRenewInstancePriceWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Renews a subscription workspace of Realtime Compute for Apache Flink.
+// Renews a subscription Realtime Compute for Apache Flink workspace.
+//
+// Description:
+//
+// *Before using this operation, make sure that you fully understand the billing method and [pricing](https://www.alibabacloud.com/help/en/flink/product-overview/renewal-policy) of Realtime Compute for Apache Flink.**
 //
 // @param request - RenewInstanceRequest
 //
@@ -1591,7 +1635,7 @@ func (client *Client) RenewInstanceWithContext(ctx context.Context, request *Ren
 
 // Summary:
 //
-// Adds tags to specified resources.
+// Call this API to add tags to resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -1647,7 +1691,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// Removes tags from specified resources.
+// Deletes resource tags.
 //
 // @param request - UntagResourcesRequest
 //

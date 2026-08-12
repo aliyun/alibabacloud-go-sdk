@@ -20,24 +20,32 @@ type iModifyPrepayNamespaceSpecShrinkRequest interface {
 }
 
 type ModifyPrepayNamespaceSpecShrinkRequest struct {
+	// The order instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f-cn-wwo36qj4g06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The namespace name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// di-593440219799842
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shenzhen
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The namespace resource details.
+	//
 	// This parameter is required.
 	ResourceSpecShrink *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
 }

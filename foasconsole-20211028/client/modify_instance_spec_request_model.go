@@ -28,12 +28,18 @@ type iModifyInstanceSpecRequest interface {
 }
 
 type ModifyInstanceSpecRequest struct {
+	// Specifies whether the workspace has zone-disaster recovery resources.
+	//
 	// example:
 	//
 	// true
-	Ha             *bool                                    `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// The zone-disaster recovery resource specifications.
 	HaResourceSpec *ModifyInstanceSpecRequestHaResourceSpec `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
-	HaVSwitchIds   []*string                                `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
+	// The vSwitch group in the secondary zone for zone-disaster recovery.
+	HaVSwitchIds []*string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
+	// The order instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -41,12 +47,16 @@ type ModifyInstanceSpecRequest struct {
 	// f-cn-wwo36qj4g06
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The resource specifications.
+	//
 	// This parameter is required.
 	ResourceSpec     *ModifyInstanceSpecRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 	UsePromotionCode *bool                                  `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
@@ -147,10 +157,16 @@ func (s *ModifyInstanceSpecRequest) Validate() error {
 }
 
 type ModifyInstanceSpecRequestHaResourceSpec struct {
+	// The number of CPUs.
+	//
 	// example:
 	//
 	// 10
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The memory size.
+	//
+	// >The memory size must be 4 times the number of CPUs.
+	//
 	// example:
 	//
 	// 40
@@ -188,12 +204,18 @@ func (s *ModifyInstanceSpecRequestHaResourceSpec) Validate() error {
 }
 
 type ModifyInstanceSpecRequestResourceSpec struct {
+	// The number of CPUs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The memory size.
+	//
+	// > The memory size must be 4 times the number of CPUs.
+	//
 	// This parameter is required.
 	//
 	// example:

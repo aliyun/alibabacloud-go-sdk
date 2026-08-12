@@ -18,14 +18,20 @@ type iModifyPrepayInstanceSpecResponseBody interface {
 }
 
 type ModifyPrepayInstanceSpecResponseBody struct {
+	// The order ID.
+	//
 	// example:
 	//
 	// 210406354690749
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 67F33190-946B-1105-B6A1-E2DF0426DD51
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation is successful.
+	//
 	// example:
 	//
 	// true

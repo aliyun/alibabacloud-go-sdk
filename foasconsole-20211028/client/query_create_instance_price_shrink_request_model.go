@@ -44,48 +44,95 @@ type iQueryCreateInstancePriceShrinkRequest interface {
 }
 
 type QueryCreateInstancePriceShrinkRequest struct {
+	// The processor architecture.
+	//
+	// example:
+	//
+	// X86
 	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
+	// Specifies whether to enable auto-renewal. Valid values:
+	//
+	// - **true**: enables auto-renewal.
+	//
+	// - **false**: does not enable auto-renewal. (Default)
+	//
+	// >This parameter is invalid for pay-as-you-go instances.
+	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The billing type. Valid values:
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PRE
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The number of billing cycles.
+	//
 	// example:
 	//
 	// 1
-	Duration *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Extra    *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	Ha       *bool   `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The extended reserved field.
+	//
+	// example:
+	//
+	// “”
+	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// Specifies whether to select zone-disaster recovery resources.
+	//
+	// example:
+	//
+	// true
+	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// The zone-disaster recovery resource specifications.
+	//
 	// if can be null:
 	// true
 	HaResourceSpecShrink *string `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty"`
+	// The workspace name.
+	//
 	// example:
 	//
 	// rtc-e2e-test-post
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The billing cycle. Subscription instances support only Year and Month. Pay-as-you-go instances support Hour.
+	//
 	// example:
 	//
 	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The coupon code.
+	//
 	// example:
 	//
 	// 500041860100636
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	// The region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
-	Region             *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The resource specifications.
 	ResourceSpecShrink *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
-	StorageShrink      *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
-	UsePromotionCode   *bool   `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
-	VSwitchIdsShrink   *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// The storage information.
+	StorageShrink *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	// Specifies whether to use a coupon. Valid values:
+	//
+	// example:
+	//
+	// true
+	UsePromotionCode *bool `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
+	// The vSwitch IDs.
+	VSwitchIdsShrink *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// The VPC ID of the user.
+	//
 	// example:
 	//
 	// vpc-2ze9xoh8qyt1rnxfmfcdi

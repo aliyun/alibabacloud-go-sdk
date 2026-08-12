@@ -18,18 +18,24 @@ type iConvertHybridInstanceShrinkRequest interface {
 }
 
 type ConvertHybridInstanceShrinkRequest struct {
+	// The order instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// sc_flinkserverless_public_cn-7e22ae5sess
+	// sc_flinkserverless_public_cn-7e22*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shenzhen
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The maximum resource specifications available for the pay-as-you-go portion of hybrid billing.
+	//
 	// This parameter is required.
 	ResourceSpecShrink *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
 }

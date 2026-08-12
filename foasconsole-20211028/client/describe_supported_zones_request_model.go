@@ -16,7 +16,14 @@ type iDescribeSupportedZonesRequest interface {
 }
 
 type DescribeSupportedZonesRequest struct {
+	// The processor architecture.
+	//
+	// example:
+	//
+	// X86
 	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing

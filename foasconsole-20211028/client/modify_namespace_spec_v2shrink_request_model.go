@@ -24,26 +24,36 @@ type iModifyNamespaceSpecV2ShrinkRequest interface {
 }
 
 type ModifyNamespaceSpecV2ShrinkRequest struct {
-	ElasticResourceSpecShrink    *string `json:"ElasticResourceSpec,omitempty" xml:"ElasticResourceSpec,omitempty"`
+	// The upper limit of pay-as-you-go resources allocated to the project namespace.
+	ElasticResourceSpecShrink *string `json:"ElasticResourceSpec,omitempty" xml:"ElasticResourceSpec,omitempty"`
+	// The size of subscription resources allocated to the project namespace.
 	GuaranteedResourceSpecShrink *string `json:"GuaranteedResourceSpec,omitempty" xml:"GuaranteedResourceSpec,omitempty"`
+	// Specifies whether the project namespace uses zone-disaster recovery.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// The order instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// f-cn-wwo36qj4g06
+	// f-cn-wwo36qj****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The project namespace name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// di-593439443804417
+	// di-5934394438****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region.
+	//
 	// This parameter is required.
 	//
 	// example:
