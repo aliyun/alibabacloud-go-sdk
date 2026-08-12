@@ -16,10 +16,14 @@ type iIsolateLeaderRequest interface {
 }
 
 type IsolateLeaderRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Enable read/write splitting. The Leader FE node handles write requests, and other nodes handle read requests.
+	//
 	// example:
 	//
 	// true

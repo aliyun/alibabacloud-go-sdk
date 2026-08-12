@@ -28,36 +28,50 @@ type iUpdatePublicNetworkStatusResponseBody interface {
 }
 
 type UpdatePublicNetworkStatusResponseBody struct {
-	// AccessDeniedDetail
+	// Access denied details.
 	//
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxx",     "EncodedDiagnosticMessage": "xxx",     "AuthPrincipalType": "xxx",     "AuthPrincipalDisplayName": "xxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "sr:xxx"   }
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Data returned by the operation.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidParams
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Invalid params: [instance not exists].
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The HTTP status code of the request.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 32A44F0D-BFF6-5664-999A-218BBDE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of instances.
+	//
 	// example:
 	//
 	// 100

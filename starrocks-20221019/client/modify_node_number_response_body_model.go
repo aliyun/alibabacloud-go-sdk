@@ -26,7 +26,7 @@ type iModifyNodeNumberResponseBody interface {
 }
 
 type ModifyNodeNumberResponseBody struct {
-	// The detailed information about the failed permission verification.
+	// The details of the permission verification failure.
 	//
 	// example:
 	//

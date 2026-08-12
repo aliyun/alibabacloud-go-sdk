@@ -28,31 +28,46 @@ type iDescribeInstanceConfigsResponseBody interface {
 }
 
 type DescribeInstanceConfigsResponseBody struct {
+	// The details of the access denied error.
+	//
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxx",     "EncodedDiagnosticMessage": "xxx",     "AuthPrincipalType": "xxx",     "AuthPrincipalDisplayName": "xxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "sr:xxx"   }
-	AccessDeniedDetail *string                                    `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Data               []*DescribeInstanceConfigsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The returned data.
+	Data []*DescribeInstanceConfigsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidParams
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Invalid params: [instance not exists].
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The HTTP request status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 32A44F0D-BFF6-5664-999A-218BBDE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// false
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of query results.
+	//
 	// example:
 	//
 	// 4
@@ -153,59 +168,102 @@ func (s *DescribeInstanceConfigsResponseBody) Validate() error {
 }
 
 type DescribeInstanceConfigsResponseBodyData struct {
+	// Indicates whether the configuration item can be modified.
+	//
 	// example:
 	//
 	// true
 	AllowModify *string `json:"AllowModify,omitempty" xml:"AllowModify,omitempty"`
+	// The key of the configuration item.
+	//
 	// example:
 	//
 	// enable_udf
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// The type of the configuration item. Valid values:
+	//
+	// - FE
+	//
+	// - BE
+	//
+	// - CORE
+	//
 	// example:
 	//
 	// FE
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The value of the configuration item.
+	//
 	// example:
 	//
 	// false
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// Indicates whether the item is a custom configuration.
+	//
 	// example:
 	//
 	// false
 	Custom *bool `json:"Custom,omitempty" xml:"Custom,omitempty"`
+	// Indicates whether it is the default compute group.
+	//
 	// example:
 	//
 	// true
 	DefaultNodeGroup *bool `json:"DefaultNodeGroup,omitempty" xml:"DefaultNodeGroup,omitempty"`
+	// The default value of the configuration item.
+	//
 	// example:
 	//
 	// true
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the configuration item\\"s feature.
+	//
+	// example:
+	//
+	// Whether to enable UDF.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The English description of the configuration item.
+	//
 	// example:
 	//
 	// A boolean value to control whether to enable the synchronization of the tablet metadata. true indicates enabling synchronization, and false indicates disabling it.
 	DescriptionEn *string `json:"DescriptionEn,omitempty" xml:"DescriptionEn,omitempty"`
+	// The compute group ID.
+	//
 	// example:
 	//
 	// ng-3d5ce6454354****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// The name of the compute group.
+	//
 	// example:
 	//
 	// ng_1
 	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
+	// Indicates whether the instance needs to be restarted after the configuration item is changed. Valid values:
+	//
+	// - **true**: Restart.
+	//
+	// - **false**: Do not restart.
+	//
 	// example:
 	//
 	// true
 	Restart *bool `json:"Restart,omitempty" xml:"Restart,omitempty"`
+	// The unit of the configuration item. An empty string is returned if no unit is available.
+	//
 	// example:
 	//
 	// s
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value range of the configuration item. An empty string is returned if no value range is available.
+	//
 	// example:
 	//
 	// true,false
 	ValueRange *string `json:"ValueRange,omitempty" xml:"ValueRange,omitempty"`
+	// The data type of the configuration item\\"s value.
+	//
 	// example:
 	//
 	// INT

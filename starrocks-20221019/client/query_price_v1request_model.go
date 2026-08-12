@@ -34,34 +34,70 @@ type iQueryPriceV1Request interface {
 }
 
 type QueryPriceV1Request struct {
-	AgentNodeGroup    *QueryPriceV1RequestAgentNodeGroup      `json:"AgentNodeGroup,omitempty" xml:"AgentNodeGroup,omitempty" type:"Struct"`
+	// Agent compute group.
+	AgentNodeGroup *QueryPriceV1RequestAgentNodeGroup `json:"AgentNodeGroup,omitempty" xml:"AgentNodeGroup,omitempty" type:"Struct"`
+	// BE or CN compute group information.
 	BackendNodeGroups []*QueryPriceV1RequestBackendNodeGroups `json:"BackendNodeGroups,omitempty" xml:"BackendNodeGroups,omitempty" type:"Repeated"`
+	// Subscription duration. Valid only when PayType is prePaid.
+	//
 	// example:
 	//
 	// 1
-	Duration           *int32                                   `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// FE node group information.
 	FrontendNodeGroups []*QueryPriceV1RequestFrontendNodeGroups `json:"FrontendNodeGroups,omitempty" xml:"FrontendNodeGroups,omitempty" type:"Repeated"`
+	// Observer compute group information.
 	ObserverNodeGroups []*QueryPriceV1RequestObserverNodeGroups `json:"ObserverNodeGroups,omitempty" xml:"ObserverNodeGroups,omitempty" type:"Repeated"`
+	// Instance edition:
+	//
+	// - Trial Edition (trial).
+	//
+	// - Standard Edition (official).
+	//
 	// example:
 	//
 	// official
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	// Payment type:
+	//
+	// 1. Subscription (prePaid).
+	//
+	// 2. Pay-as-you-go (postPaid).
+	//
 	// example:
 	//
 	// prePaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// Subscription duration unit:
+	//
+	// - Month (Month)
+	//
+	// - Year (Year)
+	//
+	// Valid only when PayType is prePaid.
+	//
 	// example:
 	//
 	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// Coupon ID.
+	//
 	// example:
 	//
 	// youhuiquan_12378dfj6
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Cluster run mode:
+	//
+	// - Shared-nothing (shared_nothing).
+	//
+	// - Shared-data (shared_data).
+	//
 	// example:
 	//
 	// shared_data
@@ -212,6 +248,8 @@ func (s *QueryPriceV1Request) Validate() error {
 }
 
 type QueryPriceV1RequestAgentNodeGroup struct {
+	// Number of CUs. A Compute Unit (CU) is the basic billing unit. One CU equals one vCPU plus 4 GiB of memory.
+	//
 	// example:
 	//
 	// 2
@@ -240,30 +278,62 @@ func (s *QueryPriceV1RequestAgentNodeGroup) Validate() error {
 }
 
 type QueryPriceV1RequestBackendNodeGroups struct {
+	// Number of CUs. A Compute Unit (CU) is the basic billing unit. One CU equals one vCPU plus 4 GiB of memory. For ramEnhanced instances, one CU equals one vCPU plus 8 GiB of memory.
+	//
 	// example:
 	//
 	// 8
 	Cu *string `json:"cu,omitempty" xml:"cu,omitempty"`
+	// Number of disks.
+	//
 	// example:
 	//
 	// 1
 	DiskNumber *int32 `json:"diskNumber,omitempty" xml:"diskNumber,omitempty"`
+	// Local SSD instance type for the node group. This field applies only to ECS-based instances with specType set to localSSD or bigData.
+	//
 	// example:
 	//
 	// local_ssd_4_4xlarge
 	LocalStorageInstanceType *string `json:"localStorageInstanceType,omitempty" xml:"localStorageInstanceType,omitempty"`
+	// Number of nodes.
+	//
 	// example:
 	//
 	// 3
 	ResidentNodeNumber *int32 `json:"residentNodeNumber,omitempty" xml:"residentNodeNumber,omitempty"`
+	// Compute group specification type. Supported types include the following:
+	//
+	// - standard: Standard Edition.
+	//
+	// - localSSD: Local SSD.
+	//
+	// - bigData: Large-storage Edition.
+	//
+	// - ramEnhanced: Memory-enhanced instance family.
+	//
+	// - networkEnhanced: Network-enhanced instance family.
+	//
 	// example:
 	//
 	// standard
 	SpecType *string `json:"specType,omitempty" xml:"specType,omitempty"`
+	// Disk performance level. Supported values include the following:
+	//
+	// - pl0: Maximum random read/write IOPS per disk is 10,000.
+	//
+	// - pl1: Maximum random read/write IOPS per disk is 50,000.
+	//
+	// - pl2: Maximum random read/write IOPS per disk is 100,000.
+	//
+	// - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+	//
 	// example:
 	//
 	// pl1
 	StoragePerformanceLevel *string `json:"storagePerformanceLevel,omitempty" xml:"storagePerformanceLevel,omitempty"`
+	// Storage size in GiB.
+	//
 	// example:
 	//
 	// 100
@@ -346,30 +416,44 @@ func (s *QueryPriceV1RequestBackendNodeGroups) Validate() error {
 }
 
 type QueryPriceV1RequestFrontendNodeGroups struct {
+	// Number of CUs. A Compute Unit (CU) is the basic billing unit. One CU equals one vCPU plus 4 GiB of memory.
+	//
 	// example:
 	//
 	// 8
 	Cu *string `json:"cu,omitempty" xml:"cu,omitempty"`
+	// Number of disks.
+	//
 	// example:
 	//
 	// 1
 	DiskNumber *int32 `json:"diskNumber,omitempty" xml:"diskNumber,omitempty"`
+	// Local SSD instance type. Do not set this field for FE compute groups.
+	//
 	// example:
 	//
 	// null
 	LocalStorageInstanceType *string `json:"localStorageInstanceType,omitempty" xml:"localStorageInstanceType,omitempty"`
+	// Number of nodes.
+	//
 	// example:
 	//
 	// 3
 	ResidentNodeNumber *int32 `json:"residentNodeNumber,omitempty" xml:"residentNodeNumber,omitempty"`
+	// Compute group specification type. Only standard is supported.
+	//
 	// example:
 	//
 	// standard
 	SpecType *string `json:"specType,omitempty" xml:"specType,omitempty"`
+	// Disk performance level. Only pl1 is supported. Maximum random read/write IOPS per disk is 50,000.
+	//
 	// example:
 	//
 	// pl1
 	StoragePerformanceLevel *string `json:"storagePerformanceLevel,omitempty" xml:"storagePerformanceLevel,omitempty"`
+	// Storage size in GiB.
+	//
 	// example:
 	//
 	// 100
@@ -452,30 +536,44 @@ func (s *QueryPriceV1RequestFrontendNodeGroups) Validate() error {
 }
 
 type QueryPriceV1RequestObserverNodeGroups struct {
+	// Number of CUs. A Compute Unit (CU) is the basic billing unit. One CU equals one vCPU plus 4 GiB of memory.
+	//
 	// example:
 	//
 	// 8
 	Cu *string `json:"cu,omitempty" xml:"cu,omitempty"`
+	// Number of disks.
+	//
 	// example:
 	//
 	// 1
 	DiskNumber *int32 `json:"diskNumber,omitempty" xml:"diskNumber,omitempty"`
+	// Local SSD instance type. Do not set this field for Observer compute groups.
+	//
 	// example:
 	//
 	// null
 	LocalStorageInstanceType *string `json:"localStorageInstanceType,omitempty" xml:"localStorageInstanceType,omitempty"`
+	// Number of nodes.
+	//
 	// example:
 	//
 	// 3
 	ResidentNodeNumber *int32 `json:"residentNodeNumber,omitempty" xml:"residentNodeNumber,omitempty"`
+	// Compute group specification type. Only standard is supported.
+	//
 	// example:
 	//
 	// standard
 	SpecType *string `json:"specType,omitempty" xml:"specType,omitempty"`
+	// Disk performance level. Only pl1 is supported. Maximum random read/write IOPS per disk is 50,000.
+	//
 	// example:
 	//
 	// pl1
 	StoragePerformanceLevel *string `json:"storagePerformanceLevel,omitempty" xml:"storagePerformanceLevel,omitempty"`
+	// Storage size in GiB.
+	//
 	// example:
 	//
 	// 100

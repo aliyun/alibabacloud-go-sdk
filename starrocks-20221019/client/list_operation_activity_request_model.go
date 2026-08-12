@@ -16,12 +16,16 @@ type iListOperationActivityRequest interface {
 }
 
 type ListOperationActivityRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The operation ID.
+	//
 	// example:
 	//
 	// op-f49743caa809****

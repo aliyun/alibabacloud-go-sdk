@@ -26,27 +26,40 @@ type iDescribeBackupsResponseBody interface {
 }
 
 type DescribeBackupsResponseBody struct {
+	// The returned data.
 	Data []*DescribeBackupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error code.
+	//
 	// example:
 	//
 	// Success
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Invalid params: [instance not exists].
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The HTTP request status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 32A44F0D-BFF6-5664-999A-218BBDE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// false
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of query results.
+	//
 	// example:
 	//
 	// 1
@@ -138,44 +151,73 @@ func (s *DescribeBackupsResponseBody) Validate() error {
 }
 
 type DescribeBackupsResponseBodyData struct {
+	// The end time of this backup.
+	//
 	// example:
 	//
 	// 1742179028000
 	BackupFinishedTime *int64 `json:"BackupFinishedTime,omitempty" xml:"BackupFinishedTime,omitempty"`
+	// The start time of this backup.
+	//
 	// example:
 	//
 	// 1742179018000
 	BackupStartTime *int64 `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	// The backup task ID.
+	//
 	// example:
 	//
 	// bt-12sui21312dd
 	BackupTaskId *string `json:"BackupTaskId,omitempty" xml:"BackupTaskId,omitempty"`
+	// The backup type:
+	//
+	// - **0**: Fast backup.
+	//
+	// - **1**: Consistent backup.
+	//
 	// example:
 	//
 	// FullBackup
-	BackupType  *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// The task description.
+	//
+	// example:
+	//
+	// 任务描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The expiration time of the backup data.
+	//
 	// example:
 	//
 	// 1742189008000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// c-d4be777ff5e8cXXX
-	InstanceId       *string                                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The backup instance information.
 	InstanceSnapshot *DescribeBackupsResponseBodyDataInstanceSnapshot `json:"InstanceSnapshot,omitempty" xml:"InstanceSnapshot,omitempty" type:"Struct"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The cloud disk size in GiB.
+	//
 	// example:
 	//
 	// 100
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The backup job status.
+	//
 	// example:
 	//
 	// RUNNING
-	Status   *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of backup subtasks.
 	SubTasks []*DescribeBackupsResponseBodyDataSubTasks `json:"SubTasks,omitempty" xml:"SubTasks,omitempty" type:"Repeated"`
 }
 
@@ -314,37 +356,67 @@ func (s *DescribeBackupsResponseBodyData) Validate() error {
 }
 
 type DescribeBackupsResponseBodyDataInstanceSnapshot struct {
+	// The instance name.
+	//
 	// example:
 	//
 	// c-37708ec80b5****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The minor version number.
+	//
 	// example:
 	//
 	// 3.3.13-1.0-1.7.2
-	MinorVersion *string                                                      `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	NodeGroups   []*DescribeBackupsResponseBodyDataInstanceSnapshotNodeGroups `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
+	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	// The compute group information.
+	NodeGroups []*DescribeBackupsResponseBodyDataInstanceSnapshotNodeGroups `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-aekzd7frphchx3a
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The cluster\\"s running mode:
+	//
+	// - Shared-nothing.
+	//
+	// - Shared-data.
+	//
 	// example:
 	//
 	// shared_data
 	RunMode *string `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
+	// The compute group specification type. Includes the following types:
+	//
+	// - standard: Standard Edition.
+	//
+	// - localSSD: Local SSD.
+	//
+	// - bigData: Large-capacity storage.
+	//
+	// - ramEnhanced: Memory-enhanced instance family.
+	//
+	// - networkEnhanced: Network-enhanced.
+	//
 	// example:
 	//
 	// standard
-	SpecType *string                                                `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	Tags     []*DescribeBackupsResponseBodyDataInstanceSnapshotTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	// The tag information.
+	Tags []*DescribeBackupsResponseBodyDataInstanceSnapshotTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The cluster version.
+	//
 	// example:
 	//
 	// 3.3
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -473,34 +545,78 @@ func (s *DescribeBackupsResponseBodyDataInstanceSnapshot) Validate() error {
 }
 
 type DescribeBackupsResponseBodyDataInstanceSnapshotNodeGroups struct {
+	// The compute group type. Includes the following values:
+	//
+	// - FE
+	//
+	// - BE
+	//
+	// - CN
+	//
+	// - OBSERVER
+	//
+	// - AGENT
+	//
 	// example:
 	//
 	// FE
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
+	// The number of CUs. A CU (Compute Unit) is the basic unit of measurement for the service. 1 CU equals 1 CPU core + 4 GiB memory. If SpecType is memory-enhanced instance family, 1 CU equals 1 CPU core + 8 GiB memory.
+	//
 	// example:
 	//
 	// 4
 	Cu *int32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// The number of disks.
+	//
 	// example:
 	//
 	// 2
 	DiskNumber *string `json:"DiskNumber,omitempty" xml:"DiskNumber,omitempty"`
+	// The node group\\"s local SSD instance type. This value is only meaningful for ECS instances where SpecType is local SSD or large-capacity storage.
+	//
 	// example:
 	//
 	// null
 	LocalStorageInstanceType *string `json:"LocalStorageInstanceType,omitempty" xml:"LocalStorageInstanceType,omitempty"`
+	// The number of nodes.
+	//
 	// example:
 	//
 	// 3
 	ResidentNodeNumber *string `json:"ResidentNodeNumber,omitempty" xml:"ResidentNodeNumber,omitempty"`
+	// The compute group specification type. Includes the following types:
+	//
+	// - standard: Standard Edition.
+	//
+	// - localSSD: Local SSD.
+	//
+	// - bigData: Large-capacity storage.
+	//
+	// - ramEnhanced: Memory-enhanced instance family.
+	//
+	// - networkEnhanced: Network-enhanced.
+	//
 	// example:
 	//
 	// standard
 	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	// The performance level (PL) of the cloud disk. Includes the following values:
+	//
+	// - pl0: Maximum random read/write IOPS of 10,000 per disk.
+	//
+	// - pl1: Maximum random read/write IOPS of 50,000 per disk.
+	//
+	// - pl2: Maximum random read/write IOPS of 100,000 per disk.
+	//
+	// - pl3: Maximum random read/write IOPS of 1,000,000 per disk.
+	//
 	// example:
 	//
 	// pl1
 	StoragePerformanceLevel *string `json:"StoragePerformanceLevel,omitempty" xml:"StoragePerformanceLevel,omitempty"`
+	// The storage size in GiB.
+	//
 	// example:
 	//
 	// 200
@@ -592,10 +708,14 @@ func (s *DescribeBackupsResponseBodyDataInstanceSnapshotNodeGroups) Validate() e
 }
 
 type DescribeBackupsResponseBodyDataInstanceSnapshotTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// bk-time
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// 1747708000
@@ -633,34 +753,50 @@ func (s *DescribeBackupsResponseBodyDataInstanceSnapshotTags) Validate() error {
 }
 
 type DescribeBackupsResponseBodyDataSubTasks struct {
+	// The database name.
+	//
 	// example:
 	//
 	// test1
 	DataBase *string `json:"DataBase,omitempty" xml:"DataBase,omitempty"`
+	// The snapshot ID.
+	//
 	// example:
 	//
 	// []
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The task end time.
+	//
 	// example:
 	//
 	// 1747718190
 	FinishedTime *int64 `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	// The data size in GiB.
+	//
 	// example:
 	//
 	// 1
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The snapshot name.
+	//
 	// example:
 	//
 	// 2025-02-10_backup
 	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+	// The task start date.
+	//
 	// example:
 	//
 	// 1747708190
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The backup job status.
+	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The data table name.
+	//
 	// example:
 	//
 	// cdc_ods_t2030_lcpf_api_topic_msg

@@ -18,18 +18,24 @@ type iDeleteBackupRequest interface {
 }
 
 type DeleteBackupRequest struct {
+	// The backup task ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// bk-yi2378sdhf2
 	BackupTaskId *string `json:"BackupTaskId,omitempty" xml:"BackupTaskId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

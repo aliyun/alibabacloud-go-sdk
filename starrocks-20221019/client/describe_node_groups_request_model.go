@@ -30,31 +30,98 @@ type iDescribeNodeGroupsRequest interface {
 }
 
 type DescribeNodeGroupsRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// c-718fb04c7112****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The page number for paging. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page for paging. Default value: 10.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The compute group type. Valid values:
+	//
+	// - FE
+	//
+	// - BE
+	//
+	// - CN
+	//
+	// - OBSERVER
+	//
+	// - AGENT
+	//
 	// example:
 	//
 	// FE
 	ComponentType *string `json:"componentType,omitempty" xml:"componentType,omitempty"`
+	// **[Deprecated]*	- The instance ID. This parameter is deprecated.
+	//
 	// example:
 	//
 	// null
-	InstanceId   *string   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The list of compute group IDs to query.
 	NodeGroupIds []*string `json:"nodeGroupIds,omitempty" xml:"nodeGroupIds,omitempty" type:"Repeated"`
+	// The compute group name.
+	//
 	// example:
 	//
 	// ng_1
 	NodeGroupName *string `json:"nodeGroupName,omitempty" xml:"nodeGroupName,omitempty"`
+	// The compute group status. Valid values:
+	//
+	// - UNPAID: Unpaid.
+	//
+	// - PAID: Paid.
+	//
+	// - CREATING_FAILED: Creation failed.
+	//
+	// - CREATING: Being created.
+	//
+	// - RUNNING: Running.
+	//
+	// - MODIFYING_CONFIG: Configuration being modified.
+	//
+	// - MODIFYING_TIMEZONE: Time zone being modified.
+	//
+	// - ELASTIC_SCALING_OUT: Elastic scale-out in progress.
+	//
+	// - ELASTIC_SCALING_IN: Elastic scale-in in progress.
+	//
+	// - SCALING_OUT: Scale-out in progress.
+	//
+	// - RESTARTING: Restarting.
+	//
+	// - SCALING_IN: Scale-in in progress.
+	//
+	// - SCALING_UP: Upgrading specifications.
+	//
+	// - SCALING_DOWN: Downgrading specifications.
+	//
+	// - UPGRADING: Upgrading.
+	//
+	// - ENABLE_PUBLIC_NETWORK: Enabling public network access.
+	//
+	// - DISABLE_PUBLIC_NETWORK: Disabling public network access.
+	//
+	// - SWITCH_AZ: Switching zone.
+	//
+	// - DISABLE: Disabled.
+	//
+	// - DELETING: Being deleted.
+	//
+	// - DELETED: Deleted.
+	//
 	// example:
 	//
 	// RUNNING

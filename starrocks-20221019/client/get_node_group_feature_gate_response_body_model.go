@@ -33,28 +33,41 @@ type GetNodeGroupFeatureGateResponseBody struct {
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxx",     "EncodedDiagnosticMessage": "xxx",     "AuthPrincipalType": "xxx",     "AuthPrincipalDisplayName": "xxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "sr:xxx"   }
-	AccessDeniedDetail *string                                  `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Data               *GetNodeGroupFeatureGateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Returned data.
+	Data *GetNodeGroupFeatureGateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error code.
+	//
 	// example:
 	//
 	// InvalidParams
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// Invalid params: [instance not exists].
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 32A44F0D-BFF6-5664-999A-218BBDE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Is the request successful?
+	//
 	// example:
 	//
 	// false
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total number of instances.
+	//
 	// example:
 	//
 	// 3
@@ -151,18 +164,26 @@ func (s *GetNodeGroupFeatureGateResponseBody) Validate() error {
 }
 
 type GetNodeGroupFeatureGateResponseBodyData struct {
+	// Node restart required after modifying disk size.
+	//
 	// example:
 	//
 	// true
 	NeedRestartAfterModifyDiskSize *bool `json:"NeedRestartAfterModifyDiskSize,omitempty" xml:"NeedRestartAfterModifyDiskSize,omitempty"`
+	// Supports modifying resources with fast restart.
+	//
 	// example:
 	//
 	// true
 	SupportFastModeModifyResource *bool `json:"SupportFastModeModifyResource,omitempty" xml:"SupportFastModeModifyResource,omitempty"`
+	// Supports fast restart.
+	//
 	// example:
 	//
 	// true
 	SupportFastRestart *bool `json:"SupportFastRestart,omitempty" xml:"SupportFastRestart,omitempty"`
+	// Supports modifying specification type.
+	//
 	// example:
 	//
 	// true

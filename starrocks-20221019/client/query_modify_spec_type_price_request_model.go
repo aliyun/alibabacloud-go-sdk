@@ -20,22 +20,30 @@ type iQueryModifySpecTypePriceRequest interface {
 }
 
 type QueryModifySpecTypePriceRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The compute group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ng-3d5ce6454354****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// The coupon ID.
+	//
 	// example:
 	//
 	// youhuiquan_12378dfj6
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
+	// The node type of the compute group.
+	//
 	// This parameter is required.
 	//
 	// example:

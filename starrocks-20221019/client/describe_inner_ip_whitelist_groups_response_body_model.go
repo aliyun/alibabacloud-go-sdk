@@ -24,27 +24,38 @@ type iDescribeInnerIpWhitelistGroupsResponseBody interface {
 }
 
 type DescribeInnerIpWhitelistGroupsResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidParams
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Invalid params: [instance not exists].
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The HTTP status code of the request.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 32A44F0D-BFF6-5664-999A-218BBDE74XXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// false
-	Success *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data    []*DescribeInnerIpWhitelistGroupsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// List of devices.
+	Data []*DescribeInnerIpWhitelistGroupsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 }
 
 func (s DescribeInnerIpWhitelistGroupsResponseBody) String() string {
@@ -123,7 +134,10 @@ func (s *DescribeInnerIpWhitelistGroupsResponseBody) Validate() error {
 }
 
 type DescribeInnerIpWhitelistGroupsResponseBodyData struct {
+	// The list of CIDR blocks.
 	CidrIpList []*string `json:"CidrIpList,omitempty" xml:"CidrIpList,omitempty" type:"Repeated"`
+	// The name of the whitelist group.
+	//
 	// example:
 	//
 	// test1

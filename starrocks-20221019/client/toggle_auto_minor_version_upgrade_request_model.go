@@ -16,12 +16,20 @@ type iToggleAutoMinorVersionUpgradeRequest interface {
 }
 
 type ToggleAutoMinorVersionUpgradeRequest struct {
+	// Specifies whether to enable automatic minor version upgrades. Valid values:
+	//
+	// - true: Enables automatic upgrades.
+	//
+	// - false: Disables automatic upgrades.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	AutoUpgrade *bool `json:"AutoUpgrade,omitempty" xml:"AutoUpgrade,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

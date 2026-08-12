@@ -18,14 +18,20 @@ type iUpdateInnerIpWhitelistGroupRequest interface {
 }
 
 type UpdateInnerIpWhitelistGroupRequest struct {
+	// The list of CIDR blocks for the whitelist.
+	//
 	// This parameter is required.
 	CidrIpList []*string `json:"CidrIpList,omitempty" xml:"CidrIpList,omitempty" type:"Repeated"`
+	// The ID of the private network whitelist group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sg-28sjsi12bs1
 	InnerIpWhitelistGroupId *string `json:"InnerIpWhitelistGroupId,omitempty" xml:"InnerIpWhitelistGroupId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

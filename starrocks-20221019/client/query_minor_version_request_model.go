@@ -16,10 +16,14 @@ type iQueryMinorVersionRequest interface {
 }
 
 type QueryMinorVersionRequest struct {
+	// The region ID of the cluster.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The major version of the instance.
+	//
 	// example:
 	//
 	// 3.3

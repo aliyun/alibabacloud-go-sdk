@@ -28,33 +28,46 @@ type iDescribeBackupPoliciesResponseBody interface {
 }
 
 type DescribeBackupPoliciesResponseBody struct {
-	// AccessDeniedDetail
+	// Details about the access denial.
 	//
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxx",     "EncodedDiagnosticMessage": "xxx",     "AuthPrincipalType": "xxx",     "AuthPrincipalDisplayName": "xxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "sr:xxx"   }
-	AccessDeniedDetail *string                                   `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Data               []*DescribeBackupPoliciesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Information about the instance.
+	Data []*DescribeBackupPoliciesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidParams
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Invalid params: [Region id should be select from set [cn-beijing, cn-hangzhou]]
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 32A44F0D-BFF6-5664-999A-218BBDE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// false
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of instances.
+	//
 	// example:
 	//
 	// 100
@@ -155,27 +168,40 @@ func (s *DescribeBackupPoliciesResponseBody) Validate() error {
 }
 
 type DescribeBackupPoliciesResponseBodyData struct {
+	// The number of days to retain backup data.
+	//
 	// example:
 	//
 	// 7
 	ExpireDays *int32 `json:"ExpireDays,omitempty" xml:"ExpireDays,omitempty"`
+	// The hour.
+	//
 	// example:
 	//
 	// 2
 	Hour *string `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// c-96f3bc7f04b2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The minute.
+	//
 	// example:
 	//
 	// 30
 	Minute *string `json:"Minute,omitempty" xml:"Minute,omitempty"`
+	// The backup policy ID.
+	//
 	// example:
 	//
 	// 1
-	PolicyId         *string  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The numeric values for the policy execution cycle.
 	RecurrenceValues []*int32 `json:"RecurrenceValues,omitempty" xml:"RecurrenceValues,omitempty" type:"Repeated"`
+	// The timeout period for the backup job.
+	//
 	// example:
 	//
 	// 3600

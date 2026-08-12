@@ -22,30 +22,40 @@ type iQueryRenewPriceRequest interface {
 }
 
 type QueryRenewPriceRequest struct {
+	// List of billing instance IDs to renew. Separate multiple IDs with commas.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c-3d6dc31ba67b1839
 	BillingInstanceIds *string `json:"BillingInstanceIds,omitempty" xml:"BillingInstanceIds,omitempty"`
+	// Renewal period.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Renewal unit.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// Coupon ID.
+	//
 	// example:
 	//
 	// youhuiquan_12378dfj6

@@ -28,33 +28,46 @@ type iGetInstanceFeatureGateResponseBody interface {
 }
 
 type GetInstanceFeatureGateResponseBody struct {
-	// AccessDeniedDetail
+	// The details of the access denial.
 	//
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxx",     "EncodedDiagnosticMessage": "xxx",     "AuthPrincipalType": "xxx",     "AuthPrincipalDisplayName": "xxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "sr:xxx"   }
-	AccessDeniedDetail *string                                 `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Data               *GetInstanceFeatureGateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The returned data.
+	Data *GetInstanceFeatureGateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidParams
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Invalid params: [instance not exists].
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B67D142D-D54E-184F-A306-22BDC01B2XXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// false
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of instances.
+	//
 	// example:
 	//
 	// 100
@@ -151,81 +164,122 @@ func (s *GetInstanceFeatureGateResponseBody) Validate() error {
 }
 
 type GetInstanceFeatureGateResponseBodyData struct {
+	// Whether the restart process can be controlled from the console.
+	//
 	// example:
 	//
 	// true
 	ConsoleControlRestart *bool `json:"ConsoleControlRestart,omitempty" xml:"ConsoleControlRestart,omitempty"`
+	// Whether materialized views can be managed.
+	//
 	// example:
 	//
 	// true
 	EnableManageMv *bool `json:"EnableManageMv,omitempty" xml:"EnableManageMv,omitempty"`
+	// Whether managed security groups are supported.
+	//
 	// example:
 	//
 	// true
 	FullManagedSecurityGroup *bool `json:"FullManagedSecurityGroup,omitempty" xml:"FullManagedSecurityGroup,omitempty"`
+	// Whether DLF meta tokens can be mounted.
+	//
 	// example:
 	//
 	// true
-	MountDlfMetaToken     *bool     `json:"MountDlfMetaToken,omitempty" xml:"MountDlfMetaToken,omitempty"`
+	MountDlfMetaToken *bool `json:"MountDlfMetaToken,omitempty" xml:"MountDlfMetaToken,omitempty"`
+	// A list of new configuration types.
 	SupportAddConfigTypes []*string `json:"SupportAddConfigTypes,omitempty" xml:"SupportAddConfigTypes,omitempty" type:"Repeated"`
+	// Whether data backup is supported.
+	//
+	// - **1**: Supports data backup.
+	//
+	// - **2**: Does not support data backup.
+	//
 	// example:
 	//
 	// true
 	SupportBackup *bool `json:"SupportBackup,omitempty" xml:"SupportBackup,omitempty"`
+	// Whether agents can be created.
+	//
 	// example:
 	//
 	// true
 	SupportCreateAgent *bool `json:"SupportCreateAgent,omitempty" xml:"SupportCreateAgent,omitempty"`
+	// Whether compute groups with specifications other than `standard` can be created.
+	//
 	// example:
 	//
 	// true
 	SupportCreateNonStandardNodeGroup *bool `json:"SupportCreateNonStandardNodeGroup,omitempty" xml:"SupportCreateNonStandardNodeGroup,omitempty"`
+	// Whether elastic ephemeral disks are supported.
+	//
 	// example:
 	//
 	// true
 	SupportEed *bool `json:"SupportEed,omitempty" xml:"SupportEed,omitempty"`
+	// Whether the AI function is supported.
+	//
 	// example:
 	//
 	// true
 	SupportEnableAi *bool `json:"SupportEnableAi,omitempty" xml:"SupportEnableAi,omitempty"`
+	// Whether SSL can be enabled.
+	//
 	// example:
 	//
 	// true
 	SupportEnableSSL *bool `json:"SupportEnableSSL,omitempty" xml:"SupportEnableSSL,omitempty"`
+	// Whether fast restart is supported for configuration changes.
+	//
 	// example:
 	//
 	// true
 	SupportFastModeModifyConfig *bool `json:"SupportFastModeModifyConfig,omitempty" xml:"SupportFastModeModifyConfig,omitempty"`
+	// Whether resources can be modified by using fast restart.
+	//
 	// example:
 	//
 	// true
 	SupportFastModeModifyResource *bool `json:"SupportFastModeModifyResource,omitempty" xml:"SupportFastModeModifyResource,omitempty"`
+	// Whether fast restart is supported.
+	//
 	// example:
 	//
 	// true
 	SupportFastRestart *bool `json:"SupportFastRestart,omitempty" xml:"SupportFastRestart,omitempty"`
+	// Whether the FE gateway is supported.
+	//
 	// example:
 	//
 	// true
 	SupportFeGateway *bool `json:"SupportFeGateway,omitempty" xml:"SupportFeGateway,omitempty"`
+	// Whether custom domain names are supported.
+	//
 	// example:
 	//
 	// true
 	SupportHostAlias *bool `json:"SupportHostAlias,omitempty" xml:"SupportHostAlias,omitempty"`
+	// Whether the time zone can be modified.
+	//
 	// example:
 	//
 	// true
 	SupportModifyTimezone *bool `json:"SupportModifyTimezone,omitempty" xml:"SupportModifyTimezone,omitempty"`
+	// Whether observers can be deployed across multiple availability zones (AZs).
+	//
 	// example:
 	//
 	// true
 	SupportMultiAZ *bool `json:"SupportMultiAZ,omitempty" xml:"SupportMultiAZ,omitempty"`
+	// Whether the instance uses compute nodes (CNs).
+	//
 	// example:
 	//
 	// true
 	UseComputeNode           *bool `json:"UseComputeNode,omitempty" xml:"UseComputeNode,omitempty"`
 	SupportCompactionService *bool `json:"supportCompactionService,omitempty" xml:"supportCompactionService,omitempty"`
-	// 是否支持Compaction Service白名单功能
+	// Whether the Compaction Service allowlist feature is supported.
 	//
 	// example:
 	//

@@ -24,26 +24,38 @@ type iDescribeInstanceDiagnosisResultRequest interface {
 }
 
 type DescribeInstanceDiagnosisResultRequest struct {
+	// Evaluation dimension.
+	//
 	// example:
 	//
 	// table_analysis
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number for paged queries. The default value is 1.
+	//
 	// example:
 	//
 	// 3
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of authorized entries displayed per page for paged queries. The default value is 10, and the maximum value is 50.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Report time.
+	//
 	// example:
 	//
 	// 2026-03-08
 	ReportDate *string `json:"ReportDate,omitempty" xml:"ReportDate,omitempty"`
+	// Status collection.
+	//
 	// example:
 	//
 	// healthy

@@ -18,14 +18,24 @@ type iRestartNodeGroupRequest interface {
 }
 
 type RestartNodeGroupRequest struct {
+	// Whether to restart in fast mode. Default value: false.
+	//
+	// - true: Restart compute nodes in fast mode. Nodes restart in batches. Within each batch, nodes restart in parallel. Between batches, restarts run sequentially.
+	//
+	// - false: Restart compute nodes using rolling restart.
+	//
 	// example:
 	//
 	// true
 	FastMode *bool `json:"FastMode,omitempty" xml:"FastMode,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the compute group.
+	//
 	// example:
 	//
 	// ng-3d5ce6454354****

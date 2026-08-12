@@ -16,10 +16,14 @@ type iSwitchActiveStandbyZonesRequest interface {
 }
 
 type SwitchActiveStandbyZonesRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the target zone.
+	//
 	// example:
 	//
 	// cn-hangzhou-k

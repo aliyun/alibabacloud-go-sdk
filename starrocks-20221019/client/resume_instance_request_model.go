@@ -14,6 +14,8 @@ type iResumeInstanceRequest interface {
 }
 
 type ResumeInstanceRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

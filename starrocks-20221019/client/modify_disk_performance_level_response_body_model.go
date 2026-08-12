@@ -26,7 +26,7 @@ type iModifyDiskPerformanceLevelResponseBody interface {
 }
 
 type ModifyDiskPerformanceLevelResponseBody struct {
-	// The detailed information about the failed permission verification.
+	// Details about the access denial.
 	//
 	// example:
 	//

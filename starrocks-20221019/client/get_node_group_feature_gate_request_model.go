@@ -16,12 +16,16 @@ type iGetNodeGroupFeatureGateRequest interface {
 }
 
 type GetNodeGroupFeatureGateRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Compute group ID.
+	//
 	// This parameter is required.
 	//
 	// example:

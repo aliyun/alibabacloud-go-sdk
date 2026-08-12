@@ -26,29 +26,40 @@ type iDescribeResourceConstraintsResponseBody interface {
 }
 
 type DescribeResourceConstraintsResponseBody struct {
-	// AccessDeniedDetail
+	// Details about the access denial.
 	//
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxx",     "EncodedDiagnosticMessage": "xxx",     "AuthPrincipalType": "xxx",     "AuthPrincipalDisplayName": "xxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "sr:xxx"   }
-	AccessDeniedDetail *string                                      `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Data               *DescribeResourceConstraintsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response data.
+	Data *DescribeResourceConstraintsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Invalid params: [instance not exists].
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The error code. A value of `Success` indicates that the request was successful.
+	//
 	// example:
 	//
 	// Success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B67D142D-D54E-184F-A306-22BDC01B2XXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -136,30 +147,66 @@ func (s *DescribeResourceConstraintsResponseBody) Validate() error {
 }
 
 type DescribeResourceConstraintsResponseBodyData struct {
-	AgentCu                         []*int32                                                                      `json:"AgentCu,omitempty" xml:"AgentCu,omitempty" type:"Repeated"`
-	BeCu                            []*int32                                                                      `json:"BeCu,omitempty" xml:"BeCu,omitempty" type:"Repeated"`
-	BeCuOnEcs                       []*int32                                                                      `json:"BeCuOnEcs,omitempty" xml:"BeCuOnEcs,omitempty" type:"Repeated"`
-	BeNumber                        *DescribeResourceConstraintsResponseBodyDataBeNumber                          `json:"BeNumber,omitempty" xml:"BeNumber,omitempty" type:"Struct"`
-	BeStorageConstraints            []*DescribeResourceConstraintsResponseBodyDataBeStorageConstraints            `json:"BeStorageConstraints,omitempty" xml:"BeStorageConstraints,omitempty" type:"Repeated"`
-	BigDataInstanceTypeConstraints  []*DescribeResourceConstraintsResponseBodyDataBigDataInstanceTypeConstraints  `json:"BigDataInstanceTypeConstraints,omitempty" xml:"BigDataInstanceTypeConstraints,omitempty" type:"Repeated"`
-	FeCu                            []*int32                                                                      `json:"FeCu,omitempty" xml:"FeCu,omitempty" type:"Repeated"`
-	FeCuOnEcs                       []*int32                                                                      `json:"FeCuOnEcs,omitempty" xml:"FeCuOnEcs,omitempty" type:"Repeated"`
-	FeNumber                        *DescribeResourceConstraintsResponseBodyDataFeNumber                          `json:"FeNumber,omitempty" xml:"FeNumber,omitempty" type:"Struct"`
-	FeSpecType                      []*DescribeResourceConstraintsResponseBodyDataFeSpecType                      `json:"FeSpecType,omitempty" xml:"FeSpecType,omitempty" type:"Repeated"`
-	FeStorage                       *DescribeResourceConstraintsResponseBodyDataFeStorage                         `json:"FeStorage,omitempty" xml:"FeStorage,omitempty" type:"Struct"`
-	HaFeResourceSpec                *DescribeResourceConstraintsResponseBodyDataHaFeResourceSpec                  `json:"HaFeResourceSpec,omitempty" xml:"HaFeResourceSpec,omitempty" type:"Struct"`
+	// The CU sizes for agents.
+	AgentCu []*int32 `json:"AgentCu,omitempty" xml:"AgentCu,omitempty" type:"Repeated"`
+	// The available CU (Compute Unit) sizes for BE nodes.
+	BeCu []*int32 `json:"BeCu,omitempty" xml:"BeCu,omitempty" type:"Repeated"`
+	// The CU sizes for BE nodes on ECS.
+	BeCuOnEcs []*int32 `json:"BeCuOnEcs,omitempty" xml:"BeCuOnEcs,omitempty" type:"Repeated"`
+	// The BE node configuration.
+	BeNumber *DescribeResourceConstraintsResponseBodyDataBeNumber `json:"BeNumber,omitempty" xml:"BeNumber,omitempty" type:"Struct"`
+	// The storage constraints for BE nodes.
+	BeStorageConstraints []*DescribeResourceConstraintsResponseBodyDataBeStorageConstraints `json:"BeStorageConstraints,omitempty" xml:"BeStorageConstraints,omitempty" type:"Repeated"`
+	// The specification constraints for big data instance types.
+	BigDataInstanceTypeConstraints []*DescribeResourceConstraintsResponseBodyDataBigDataInstanceTypeConstraints `json:"BigDataInstanceTypeConstraints,omitempty" xml:"BigDataInstanceTypeConstraints,omitempty" type:"Repeated"`
+	// The available CU sizes for FE nodes.
+	FeCu []*int32 `json:"FeCu,omitempty" xml:"FeCu,omitempty" type:"Repeated"`
+	// The CU sizes for FE nodes on ECS.
+	FeCuOnEcs []*int32 `json:"FeCuOnEcs,omitempty" xml:"FeCuOnEcs,omitempty" type:"Repeated"`
+	// The number of FE nodes.
+	FeNumber *DescribeResourceConstraintsResponseBodyDataFeNumber `json:"FeNumber,omitempty" xml:"FeNumber,omitempty" type:"Struct"`
+	// The instance types for FE nodes.
+	FeSpecType []*DescribeResourceConstraintsResponseBodyDataFeSpecType `json:"FeSpecType,omitempty" xml:"FeSpecType,omitempty" type:"Repeated"`
+	// The storage size for the FE node.
+	FeStorage *DescribeResourceConstraintsResponseBodyDataFeStorage `json:"FeStorage,omitempty" xml:"FeStorage,omitempty" type:"Struct"`
+	// The high availability (HA) FE node configuration.
+	HaFeResourceSpec *DescribeResourceConstraintsResponseBodyDataHaFeResourceSpec `json:"HaFeResourceSpec,omitempty" xml:"HaFeResourceSpec,omitempty" type:"Struct"`
+	// The specification constraints for local SSD instance types.
 	LocalSSDInstanceTypeConstraints []*DescribeResourceConstraintsResponseBodyDataLocalSSDInstanceTypeConstraints `json:"LocalSSDInstanceTypeConstraints,omitempty" xml:"LocalSSDInstanceTypeConstraints,omitempty" type:"Repeated"`
-	NormalFeResourceSpec            *DescribeResourceConstraintsResponseBodyDataNormalFeResourceSpec              `json:"NormalFeResourceSpec,omitempty" xml:"NormalFeResourceSpec,omitempty" type:"Struct"`
+	// The standard FE resource configuration.
+	NormalFeResourceSpec *DescribeResourceConstraintsResponseBodyDataNormalFeResourceSpec `json:"NormalFeResourceSpec,omitempty" xml:"NormalFeResourceSpec,omitempty" type:"Struct"`
+	// The instance type for compute nodes. Valid values:
+	//
+	// - `standard`: Standard.
+	//
+	// - `localSSD`: Local SSD.
+	//
+	// - `bigData`: Large-capacity storage.
+	//
+	// - `ramEnhanced`: Memory-enhanced.
+	//
+	// - `networkEnhanced`: Network-enhanced.
+	//
 	// example:
 	//
 	// standard
-	SpecType                      []*DescribeResourceConstraintsResponseBodyDataSpecType                    `json:"SpecType,omitempty" xml:"SpecType,omitempty" type:"Repeated"`
-	SplitDiskThresholdMap         map[string]map[string]interface{}                                         `json:"SplitDiskThresholdMap,omitempty" xml:"SplitDiskThresholdMap,omitempty"`
-	VersionConstraint             *DescribeResourceConstraintsResponseBodyDataVersionConstraint             `json:"VersionConstraint,omitempty" xml:"VersionConstraint,omitempty" type:"Struct"`
-	ZoneSupportedEedTypes         map[string][]*string                                                      `json:"ZoneSupportedEedTypes,omitempty" xml:"ZoneSupportedEedTypes,omitempty"`
-	ZoneSupportedSpecTypes        map[string][]*string                                                      `json:"ZoneSupportedSpecTypes,omitempty" xml:"ZoneSupportedSpecTypes,omitempty"`
+	SpecType []*DescribeResourceConstraintsResponseBodyDataSpecType `json:"SpecType,omitempty" xml:"SpecType,omitempty" type:"Repeated"`
+	// This parameter is deprecated.
+	//
+	// example:
+	//
+	// Deprecated.
+	SplitDiskThresholdMap map[string]map[string]interface{} `json:"SplitDiskThresholdMap,omitempty" xml:"SplitDiskThresholdMap,omitempty"`
+	// The version constraint.
+	VersionConstraint *DescribeResourceConstraintsResponseBodyDataVersionConstraint `json:"VersionConstraint,omitempty" xml:"VersionConstraint,omitempty" type:"Struct"`
+	// The EED types supported in each availability zone.
+	ZoneSupportedEedTypes map[string][]*string `json:"ZoneSupportedEedTypes,omitempty" xml:"ZoneSupportedEedTypes,omitempty"`
+	// The instance types supported in each availability zone.
+	ZoneSupportedSpecTypes map[string][]*string `json:"ZoneSupportedSpecTypes,omitempty" xml:"ZoneSupportedSpecTypes,omitempty"`
+	// The CU constraints for the compaction service.
 	CompactionServiceCuConstraint *DescribeResourceConstraintsResponseBodyDataCompactionServiceCuConstraint `json:"compactionServiceCuConstraint,omitempty" xml:"compactionServiceCuConstraint,omitempty" type:"Struct"`
-	ZoneSupportCompactionService  map[string][]*DataZoneSupportCompactionServiceValue                       `json:"zoneSupportCompactionService,omitempty" xml:"zoneSupportCompactionService,omitempty"`
+	// The compaction services supported in each availability zone.
+	ZoneSupportCompactionService map[string][]*DataZoneSupportCompactionServiceValue `json:"zoneSupportCompactionService,omitempty" xml:"zoneSupportCompactionService,omitempty"`
 }
 
 func (s DescribeResourceConstraintsResponseBodyData) String() string {
@@ -444,18 +491,26 @@ func (s *DescribeResourceConstraintsResponseBodyData) Validate() error {
 }
 
 type DescribeResourceConstraintsResponseBodyDataBeNumber struct {
+	// The default value.
+	//
 	// example:
 	//
 	// 1
 	Default *int32 `json:"Default,omitempty" xml:"Default,omitempty"`
+	// The maximum value.
+	//
 	// example:
 	//
 	// 10
 	Max *int32 `json:"Max,omitempty" xml:"Max,omitempty"`
+	// The minimum value.
+	//
 	// example:
 	//
 	// 1
 	Min *int32 `json:"Min,omitempty" xml:"Min,omitempty"`
+	// The step.
+	//
 	// example:
 	//
 	// 1
@@ -511,16 +566,27 @@ func (s *DescribeResourceConstraintsResponseBodyDataBeNumber) Validate() error {
 }
 
 type DescribeResourceConstraintsResponseBodyDataBeStorageConstraints struct {
-	Desc                 *string                                                                              `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// BE 存储约束描述
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// The disk count constraint.
 	DiskNumberConstraint *DescribeResourceConstraintsResponseBodyDataBeStorageConstraintsDiskNumberConstraint `json:"DiskNumberConstraint,omitempty" xml:"DiskNumberConstraint,omitempty" type:"Struct"`
+	// Indicates whether this is the default option.
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The disk performance level.
+	//
 	// example:
 	//
 	// PL1
-	Level           *string                                                                         `json:"Level,omitempty" xml:"Level,omitempty"`
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The value constraint.
 	ValueConstraint *DescribeResourceConstraintsResponseBodyDataBeStorageConstraintsValueConstraint `json:"ValueConstraint,omitempty" xml:"ValueConstraint,omitempty" type:"Struct"`
 }
 
@@ -592,18 +658,26 @@ func (s *DescribeResourceConstraintsResponseBodyDataBeStorageConstraints) Valida
 }
 
 type DescribeResourceConstraintsResponseBodyDataBeStorageConstraintsDiskNumberConstraint struct {
+	// The default value.
+	//
 	// example:
 	//
 	// 1
 	Default *int32 `json:"Default,omitempty" xml:"Default,omitempty"`
+	// The maximum number of disks.
+	//
 	// example:
 	//
 	// 10
 	Max *int32 `json:"Max,omitempty" xml:"Max,omitempty"`
+	// The minimum number of disks.
+	//
 	// example:
 	//
 	// 1
 	Min *int32 `json:"Min,omitempty" xml:"Min,omitempty"`
+	// The step.
+	//
 	// example:
 	//
 	// 1
@@ -659,18 +733,26 @@ func (s *DescribeResourceConstraintsResponseBodyDataBeStorageConstraintsDiskNumb
 }
 
 type DescribeResourceConstraintsResponseBodyDataBeStorageConstraintsValueConstraint struct {
+	// The default value.
+	//
 	// example:
 	//
 	// 1
 	Default *int32 `json:"Default,omitempty" xml:"Default,omitempty"`
+	// The maximum value.
+	//
 	// example:
 	//
 	// 5
 	Max *int32 `json:"Max,omitempty" xml:"Max,omitempty"`
+	// The minimum value.
+	//
 	// example:
 	//
 	// 1
 	Min *int32 `json:"Min,omitempty" xml:"Min,omitempty"`
+	// The step.
+	//
 	// example:
 	//
 	// 1
@@ -726,31 +808,50 @@ func (s *DescribeResourceConstraintsResponseBodyDataBeStorageConstraintsValueCon
 }
 
 type DescribeResourceConstraintsResponseBodyDataBigDataInstanceTypeConstraints struct {
+	// The number of vCPUs.
+	//
 	// example:
 	//
 	// 20
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The disk count.
+	//
 	// example:
 	//
 	// 8
 	DiskNumber *string `json:"DiskNumber,omitempty" xml:"DiskNumber,omitempty"`
-	Display    *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	// The display name.
+	//
+	// example:
+	//
+	// 20核 88GiB 8*7300GiB 本地HDD盘
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	// The corresponding ECS instance family.
+	//
 	// example:
 	//
 	// ecs.d2s.5xlarge
 	EcsInstanceType *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
+	// The instance type.
+	//
 	// example:
 	//
 	// local_hdd_2s_5xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// Indicates whether this is the default option.
+	//
 	// example:
 	//
 	// false
 	IsDefault *string `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The memory size, in GiB.
+	//
 	// example:
 	//
 	// 88
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The storage size, in GiB.
+	//
 	// example:
 	//
 	// 7300
@@ -842,18 +943,26 @@ func (s *DescribeResourceConstraintsResponseBodyDataBigDataInstanceTypeConstrain
 }
 
 type DescribeResourceConstraintsResponseBodyDataFeNumber struct {
+	// The default value.
+	//
 	// example:
 	//
 	// 3
 	Default *int32 `json:"Default,omitempty" xml:"Default,omitempty"`
+	// The maximum value.
+	//
 	// example:
 	//
 	// 11
 	Max *int32 `json:"Max,omitempty" xml:"Max,omitempty"`
+	// The minimum value.
+	//
 	// example:
 	//
 	// 1
 	Min *int32 `json:"Min,omitempty" xml:"Min,omitempty"`
+	// The step.
+	//
 	// example:
 	//
 	// 2
@@ -909,7 +1018,14 @@ func (s *DescribeResourceConstraintsResponseBodyDataFeNumber) Validate() error {
 }
 
 type DescribeResourceConstraintsResponseBodyDataFeSpecType struct {
+	// The display name.
+	//
+	// example:
+	//
+	// 标准版
 	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// standard
@@ -947,18 +1063,26 @@ func (s *DescribeResourceConstraintsResponseBodyDataFeSpecType) Validate() error
 }
 
 type DescribeResourceConstraintsResponseBodyDataFeStorage struct {
+	// The default value.
+	//
 	// example:
 	//
 	// 500
 	Default *int32 `json:"Default,omitempty" xml:"Default,omitempty"`
+	// The maximum value.
+	//
 	// example:
 	//
 	// 5000
 	Max *int32 `json:"Max,omitempty" xml:"Max,omitempty"`
+	// The minimum value.
+	//
 	// example:
 	//
 	// 200
 	Min *int32 `json:"Min,omitempty" xml:"Min,omitempty"`
+	// The step.
+	//
 	// example:
 	//
 	// 100
@@ -1014,14 +1138,20 @@ func (s *DescribeResourceConstraintsResponseBodyDataFeStorage) Validate() error 
 }
 
 type DescribeResourceConstraintsResponseBodyDataHaFeResourceSpec struct {
+	// The CU (Compute Unit) size.
+	//
 	// example:
 	//
 	// 16
 	Cu *int32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// The total number of nodes.
+	//
 	// example:
 	//
 	// 5
 	NodeNumber *int32 `json:"NodeNumber,omitempty" xml:"NodeNumber,omitempty"`
+	// The storage size, in GiB.
+	//
 	// example:
 	//
 	// 100
@@ -1068,31 +1198,50 @@ func (s *DescribeResourceConstraintsResponseBodyDataHaFeResourceSpec) Validate()
 }
 
 type DescribeResourceConstraintsResponseBodyDataLocalSSDInstanceTypeConstraints struct {
+	// The number of vCPUs.
+	//
 	// example:
 	//
 	// 16
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The disk count.
+	//
 	// example:
 	//
 	// 1
 	DiskNumber *string `json:"DiskNumber,omitempty" xml:"DiskNumber,omitempty"`
-	Display    *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	// The display name.
+	//
+	// example:
+	//
+	// [i2g]16核 64GiB 1*1788GiB 本地SSD盘
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	// The corresponding ECS instance family.
+	//
 	// example:
 	//
 	// ecs.i2g.4xlarge
 	EcsInstanceType *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
+	// The instance type.
+	//
 	// example:
 	//
 	// local_ssd_2g_4xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// Indicates whether this is the default option.
+	//
 	// example:
 	//
 	// true
 	IsDefault *string `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The memory size, in GiB.
+	//
 	// example:
 	//
 	// 64
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The storage size, in GiB.
+	//
 	// example:
 	//
 	// 1788
@@ -1184,14 +1333,20 @@ func (s *DescribeResourceConstraintsResponseBodyDataLocalSSDInstanceTypeConstrai
 }
 
 type DescribeResourceConstraintsResponseBodyDataNormalFeResourceSpec struct {
+	// The CU (Compute Unit) size.
+	//
 	// example:
 	//
 	// 64
 	Cu *int32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// The total number of nodes.
+	//
 	// example:
 	//
 	// 5
 	NodeNumber *int32 `json:"NodeNumber,omitempty" xml:"NodeNumber,omitempty"`
+	// The storage size, in GiB.
+	//
 	// example:
 	//
 	// 500
@@ -1238,7 +1393,14 @@ func (s *DescribeResourceConstraintsResponseBodyDataNormalFeResourceSpec) Valida
 }
 
 type DescribeResourceConstraintsResponseBodyDataSpecType struct {
+	// The display name.
+	//
+	// example:
+	//
+	// 标准版
 	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// standard
@@ -1276,12 +1438,16 @@ func (s *DescribeResourceConstraintsResponseBodyDataSpecType) Validate() error {
 }
 
 type DescribeResourceConstraintsResponseBodyDataVersionConstraint struct {
+	// The beta versions.
 	BetaVersions []*string `json:"BetaVersions,omitempty" xml:"BetaVersions,omitempty" type:"Repeated"`
+	// The default version.
+	//
 	// example:
 	//
 	// 3.3
-	DefaultVersion *string   `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	Versions       []*string `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
+	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	// The available versions.
+	Versions []*string `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
 }
 
 func (s DescribeResourceConstraintsResponseBodyDataVersionConstraint) String() string {
@@ -1324,18 +1490,26 @@ func (s *DescribeResourceConstraintsResponseBodyDataVersionConstraint) Validate(
 }
 
 type DescribeResourceConstraintsResponseBodyDataCompactionServiceCuConstraint struct {
+	// The default value.
+	//
 	// example:
 	//
 	// 16
 	Def *int32 `json:"def,omitempty" xml:"def,omitempty"`
+	// The maximum value.
+	//
 	// example:
 	//
 	// 256
 	Max *int32 `json:"max,omitempty" xml:"max,omitempty"`
+	// The minimum value.
+	//
 	// example:
 	//
 	// 8
 	Min *int32 `json:"min,omitempty" xml:"min,omitempty"`
+	// The step.
+	//
 	// example:
 	//
 	// 8

@@ -14,6 +14,8 @@ type iDescribeTimeTriggerScalingRulesRequest interface {
 }
 
 type DescribeTimeTriggerScalingRulesRequest struct {
+	// The ID of the compute group.
+	//
 	// example:
 	//
 	// ng-d332aa8bca48****

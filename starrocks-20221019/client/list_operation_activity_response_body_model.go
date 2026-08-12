@@ -28,31 +28,46 @@ type iListOperationActivityResponseBody interface {
 }
 
 type ListOperationActivityResponseBody struct {
+	// The details of the permission verification failure.
+	//
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxx",     "EncodedDiagnosticMessage": "xxx",     "AuthPrincipalType": "xxx",     "AuthPrincipalDisplayName": "xxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "sr:xxx"   }
-	AccessDeniedDetail *string                                  `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Data               []*ListOperationActivityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The returned data.
+	Data []*ListOperationActivityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidParams
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Invalid params: [instance not exists].
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 32A44F0D-BFF6-5664-999A-218BBDE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// false
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of query results.
+	//
 	// example:
 	//
 	// 440
@@ -153,24 +168,38 @@ func (s *ListOperationActivityResponseBody) Validate() error {
 }
 
 type ListOperationActivityResponseBodyData struct {
+	// The activity ID.
+	//
 	// example:
 	//
 	// ac-8f3f7c4026e3****
 	ActivityId *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
+	// The activity status. Valid values:
+	//
+	// - COMPLETED
+	//
+	// - RUNNING
+	//
 	// example:
 	//
 	// COMPLETED
 	ActivityStatus    *string `json:"ActivityStatus,omitempty" xml:"ActivityStatus,omitempty"`
 	ConsoleRetryCount *int32  `json:"ConsoleRetryCount,omitempty" xml:"ConsoleRetryCount,omitempty"`
+	// The end time of the activity.
+	//
 	// example:
 	//
 	// 1742178604000
 	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The activity name.
+	//
 	// example:
 	//
 	// UpdateClusterStatusToModifyingConfigStatus
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The start time of the activity.
+	//
 	// example:
 	//
 	// 1742178604000

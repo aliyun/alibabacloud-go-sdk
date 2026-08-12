@@ -32,24 +32,39 @@ type ModifyNodeNumberRequest struct {
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The warehouse ID.
+	// The compute group ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ng-3d5ce6454354****
-	NodeGroupId       *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	Parallelism       *int32  `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// The decommission concurrency for BE scale-in scenarios in compute-storage decoupled architecture. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	Parallelism *int32 `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	// The coupon ID.
+	//
+	// example:
+	//
+	// youhuiquan_promotion_option_id_for_blank
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
-	// The number of nodes to which you want to change to.
+	// The target number of nodes.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3
-	Target                        *int32 `json:"Target,omitempty" xml:"Target,omitempty"`
+	Target *int32 `json:"Target,omitempty" xml:"Target,omitempty"`
+	// The duration to wait for running tasks to complete before dropping nodes during CN scale-in scenarios in storage-compute disaggregation architecture.
+	//
+	// example:
+	//
+	// 60
 	TerminationGracePeriodSeconds *int32 `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
 }
 

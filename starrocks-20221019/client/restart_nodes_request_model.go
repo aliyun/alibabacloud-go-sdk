@@ -16,10 +16,13 @@ type iRestartNodesRequest interface {
 }
 
 type RestartNodesRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// c-b25e21e24388****
-	InstanceId        *string                                 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Information about compute group nodes to restart.
 	RestartNodeGroups []*RestartNodesRequestRestartNodeGroups `json:"RestartNodeGroups,omitempty" xml:"RestartNodeGroups,omitempty" type:"Repeated"`
 }
 
@@ -63,15 +66,24 @@ func (s *RestartNodesRequest) Validate() error {
 }
 
 type RestartNodesRequestRestartNodeGroups struct {
+	// Whether to use fast restart mode. Default is false.
+	//
+	// - true: Restart compute nodes in fast mode. Nodes restart in multiple batches. Within each batch, nodes restart in parallel. Batches execute sequentially.
+	//
+	// - false: Restart compute nodes using rolling restart.
+	//
 	// example:
 	//
 	// false
 	FastMode *bool `json:"FastMode,omitempty" xml:"FastMode,omitempty"`
+	// The compute group ID.
+	//
 	// example:
 	//
 	// ng-dcc7450e06a271b9
-	NodeGroupId *string   `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	NodeIds     []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
+	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// List of node IDs.
+	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
 }
 
 func (s RestartNodesRequestRestartNodeGroups) String() string {

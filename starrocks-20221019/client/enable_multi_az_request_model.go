@@ -18,11 +18,16 @@ type iEnableMultiAzRequest interface {
 }
 
 type EnableMultiAzRequest struct {
+  // Instance ID.
+  // 
   // example:
   // 
   // c-238sjh237s12***
   InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+  // Multi-zone information.
   Observers []*EnableMultiAzRequestObservers `json:"observers,omitempty" xml:"observers,omitempty" type:"Repeated"`
+  // Coupon.
+  // 
   // example:
   // 
   // youhuiquan_12378dfj6
@@ -78,10 +83,14 @@ func (s *EnableMultiAzRequest) Validate() error {
 }
 
 type EnableMultiAzRequestObservers struct {
+  // vSwitch ID.
+  // 
   // example:
   // 
   // vsw-x1232js012
   VswId *string `json:"vswId,omitempty" xml:"vswId,omitempty"`
+  // Zone ID.
+  // 
   // example:
   // 
   // cn-hangzhou-h

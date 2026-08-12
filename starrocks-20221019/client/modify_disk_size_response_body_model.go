@@ -26,13 +26,13 @@ type iModifyDiskSizeResponseBody interface {
 }
 
 type ModifyDiskSizeResponseBody struct {
-	// The detailed information about the failed permission verification.
+	// The details of the access denial.
 	//
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxx",     "EncodedDiagnosticMessage": "xxx",     "AuthPrincipalType": "xxx",     "AuthPrincipalDisplayName": "xxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "sr:xxx"   }
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The order ID.
+	// The ID of the order.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ModifyDiskSizeResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

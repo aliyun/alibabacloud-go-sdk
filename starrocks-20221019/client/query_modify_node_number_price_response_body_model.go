@@ -31,24 +31,35 @@ type QueryModifyNodeNumberPriceResponseBody struct {
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxx",     "EncodedDiagnosticMessage": "xxx",     "AuthPrincipalType": "xxx",     "AuthPrincipalDisplayName": "xxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "sr:xxx"   }
-	AccessDeniedDetail *string                                     `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Data               *QueryModifyNodeNumberPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The order information.
+	Data *QueryModifyNodeNumberPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidParams
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Invalid params: [instance not exists].
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 32A44F0D-BFF6-5664-999A-218BBDE74XXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// false
@@ -136,33 +147,56 @@ func (s *QueryModifyNodeNumberPriceResponseBody) Validate() error {
 }
 
 type QueryModifyNodeNumberPriceResponseBodyData struct {
+	// The component prices.
 	ComponentPrices []*QueryModifyNodeNumberPriceResponseBodyDataComponentPrices `json:"ComponentPrices,omitempty" xml:"ComponentPrices,omitempty" type:"Repeated"`
+	// The currency. Valid values:
+	//
+	// - CNY: Chinese Yuan.
+	//
+	// - USD: US Dollar.
+	//
+	// - JPY: Japanese Yen.
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The price reduction ratio.
+	//
 	// example:
 	//
 	// 0
 	DepreciateInfo *QueryModifyNodeNumberPriceResponseBodyDataDepreciateInfo `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
+	// The discount amount is the difference between the original amount and the amount payable. The amount payable is the final cost after any coupon deductions.
+	//
 	// example:
 	//
 	// 0
-	DiscountAmount     *float32                                                        `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	// The coupon information.
 	OptionalPromotions []*QueryModifyNodeNumberPriceResponseBodyDataOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
+	// The original price. This is calculated as: List Price × Billable Usage.
+	//
 	// example:
 	//
 	// 26710
-	OriginalAmount *float32                                           `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	Rules          []*QueryModifyNodeNumberPriceResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	// The returned data structure.
+	Rules []*QueryModifyNodeNumberPriceResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The discounted price based on the official website discount.
+	//
 	// example:
 	//
 	// 26710
 	StandDiscountPrice *float32 `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
+	// The official website discount price.
+	//
 	// example:
 	//
 	// 26710
 	StandPrice *float32 `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
+	// The payable amount.
+	//
 	// example:
 	//
 	// 26710
@@ -304,18 +338,26 @@ func (s *QueryModifyNodeNumberPriceResponseBodyData) Validate() error {
 }
 
 type QueryModifyNodeNumberPriceResponseBodyDataComponentPrices struct {
+	// The component name.
+	//
 	// example:
 	//
 	// RangerUserSync
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	// The discount.
+	//
 	// example:
 	//
 	// 0
 	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	// The original price of the order.
+	//
 	// example:
 	//
 	// 26710
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	// The actual transaction price of the order.
+	//
 	// example:
 	//
 	// 26710
@@ -371,18 +413,26 @@ func (s *QueryModifyNodeNumberPriceResponseBodyDataComponentPrices) Validate() e
 }
 
 type QueryModifyNodeNumberPriceResponseBodyDataDepreciateInfo struct {
+	// The price reduction ratio.
+	//
 	// example:
 	//
 	// 0
 	CheapRate *float32 `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
+	// The total price on the official website after the price reduction.
+	//
 	// example:
 	//
 	// 26710
 	CheapStandAmount *float32 `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
+	// Indicates whether to display the price reduction range.
+	//
 	// example:
 	//
 	// true
 	IsShow *bool `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
+	// The original total price on the official website.
+	//
 	// example:
 	//
 	// 26710
@@ -438,14 +488,20 @@ func (s *QueryModifyNodeNumberPriceResponseBodyDataDepreciateInfo) Validate() er
 }
 
 type QueryModifyNodeNumberPriceResponseBodyDataOptionalPromotions struct {
+	// The coupon description.
+	//
 	// example:
 	//
 	// youhuiquan_desc
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// The coupon name.
+	//
 	// example:
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// The coupon ID.
+	//
 	// example:
 	//
 	// youhuiquan_12378dfj6
@@ -492,14 +548,22 @@ func (s *QueryModifyNodeNumberPriceResponseBodyDataOptionalPromotions) Validate(
 }
 
 type QueryModifyNodeNumberPriceResponseBodyDataRules struct {
+	// The price for purchasing a batch of Elastic Compute Service (ECS) instances with a specific configuration. Valid values: 1 to 1000.
+	//
+	// Default value: 1.
+	//
 	// example:
 	//
 	// 10
 	Amount *float32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// rule_923su2sf
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 8uy3sh12sa

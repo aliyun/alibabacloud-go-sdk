@@ -24,26 +24,44 @@ type iModifyChargeTypeRequest interface {
 }
 
 type ModifyChargeTypeRequest struct {
+	// Whether to enable auto-renewal. This parameter takes effect only when payType is PrePaid. Default: disabled.
+	//
 	// example:
 	//
 	// True
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// List of billing instance IDs that require renewal. Separate multiple IDs with commas.
+	//
 	// example:
 	//
 	// c-3d6dc31ba67b1839
 	BillingInstanceIds *string `json:"BillingInstanceIds,omitempty" xml:"BillingInstanceIds,omitempty"`
+	// Subscription duration. This parameter takes effect only when payType is PrePaid.
+	//
 	// example:
 	//
 	// 2
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Cluster ID
+	//
 	// example:
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Subscription duration unit:
+	//
+	// - Month
+	//
+	// - Year
+	//
+	// This parameter takes effect only when payType is PrePaid.
+	//
 	// example:
 	//
 	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// Coupon ID.
+	//
 	// example:
 	//
 	// 2345

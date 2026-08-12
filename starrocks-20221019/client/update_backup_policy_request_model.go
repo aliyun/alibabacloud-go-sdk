@@ -26,27 +26,40 @@ type iUpdateBackupPolicyRequest interface {
 }
 
 type UpdateBackupPolicyRequest struct {
+	// Validity period in days.
+	//
 	// example:
 	//
 	// 7
 	ExpireDays *int32 `json:"ExpireDays,omitempty" xml:"ExpireDays,omitempty"`
+	// Trigger time: hour.
+	//
 	// example:
 	//
 	// 10
 	Hour *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// c-0104730e9de40215
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Trigger time: minute.
+	//
 	// example:
 	//
 	// 15
 	Minute *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
+	// Backup policy ID.
+	//
 	// example:
 	//
 	// bk-9812023
-	PolicyId         *string  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// Numerical values for the policy execution cycle.
 	RecurrenceValues []*int32 `json:"RecurrenceValues,omitempty" xml:"RecurrenceValues,omitempty" type:"Repeated"`
+	// Timeout duration for the backup policy.
+	//
 	// example:
 	//
 	// 3600

@@ -36,45 +36,73 @@ type iRestoreInstanceRequest interface {
 }
 
 type RestoreInstanceRequest struct {
+	// Cluster administrator password.
+	//
 	// example:
 	//
 	// password_example
 	AdminPassword *string `json:"AdminPassword,omitempty" xml:"AdminPassword,omitempty"`
+	// Enable auto-renewal. This parameter applies only when PayType is prePaid. Default: false.
+	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// Backup job ID.
+	//
 	// example:
 	//
 	// bk-adskj23hd9s
 	BackupTaskId *string `json:"BackupTaskId,omitempty" xml:"BackupTaskId,omitempty"`
+	// Subscription duration. This parameter applies only when PayType is prePaid.
+	//
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Instance name.
+	//
 	// example:
 	//
 	// c1
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Payment type:
+	//
+	// prePaid for subscription
+	//
+	// postPaid for pay-as-you-go
+	//
 	// example:
 	//
 	// prePaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// Billing cycle unit. This parameter applies only when PayType is prePaid.
+	//
+	// Month for monthly billing
+	//
+	// Year for yearly billing
+	//
 	// example:
 	//
 	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group ID.
+	//
 	// example:
 	//
 	// rg-aekzllkih7jqxxx
-	ResourceGroupId *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags            []*RestoreInstanceRequestTags      `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	VSwitches       []*RestoreInstanceRequestVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
-	// vpc ID
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Tag struct.
+	Tags []*RestoreInstanceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// VSwitch and zone information.
+	VSwitches []*RestoreInstanceRequestVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
+	// VPC ID.
 	//
 	// example:
 	//
@@ -221,10 +249,14 @@ func (s *RestoreInstanceRequest) Validate() error {
 }
 
 type RestoreInstanceRequestTags struct {
+	// Tag key.
+	//
 	// example:
 	//
 	// dukang-chengdu-sgueg
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// Tag value.
+	//
 	// example:
 	//
 	// {\\"reasons\\": [], \\"patterns\\": [], \\"aggregates\\": [], \\"event_statistic\\": {\\"statistic\\": {}}}
@@ -262,10 +294,14 @@ func (s *RestoreInstanceRequestTags) Validate() error {
 }
 
 type RestoreInstanceRequestVSwitches struct {
+	// VSwitch ID.
+	//
 	// example:
 	//
 	// vsw-bp19mlh98tm9teyyd****
 	VswId *string `json:"VswId,omitempty" xml:"VswId,omitempty"`
+	// Zone ID of the VSwitch.
+	//
 	// example:
 	//
 	// cn-hangzhou-i

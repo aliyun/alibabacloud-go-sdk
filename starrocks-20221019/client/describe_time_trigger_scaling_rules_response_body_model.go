@@ -26,27 +26,40 @@ type iDescribeTimeTriggerScalingRulesResponseBody interface {
 }
 
 type DescribeTimeTriggerScalingRulesResponseBody struct {
+	// The details of the access denial.
+	//
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxx",     "EncodedDiagnosticMessage": "xxx",     "AuthPrincipalType": "xxx",     "AuthPrincipalDisplayName": "xxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "sr:xxx"   }
-	AccessDeniedDetail *string                                            `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Data               []*DescribeTimeTriggerScalingRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The returned data.
+	Data []*DescribeTimeTriggerScalingRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidParams
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Invalid params: [instance not exists].
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The HTTP status code of the request.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 32A44F0D-BFF6-5664-999A-218BBDE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// false
@@ -138,20 +151,36 @@ func (s *DescribeTimeTriggerScalingRulesResponseBody) Validate() error {
 }
 
 type DescribeTimeTriggerScalingRulesResponseBodyData struct {
+	// The number of elastic nodes.
+	//
 	// example:
 	//
 	// 3
-	NodeNumber     *string                                                        `json:"NodeNumber,omitempty" xml:"NodeNumber,omitempty"`
-	ScalingInRule  *DescribeTimeTriggerScalingRulesResponseBodyDataScalingInRule  `json:"ScalingInRule,omitempty" xml:"ScalingInRule,omitempty" type:"Struct"`
+	NodeNumber *string `json:"NodeNumber,omitempty" xml:"NodeNumber,omitempty"`
+	// The scale-in rule.
+	ScalingInRule *DescribeTimeTriggerScalingRulesResponseBodyDataScalingInRule `json:"ScalingInRule,omitempty" xml:"ScalingInRule,omitempty" type:"Struct"`
+	// The scale-out rule.
 	ScalingOutRule *DescribeTimeTriggerScalingRulesResponseBodyDataScalingOutRule `json:"ScalingOutRule,omitempty" xml:"ScalingOutRule,omitempty" type:"Struct"`
+	// The ID of the scaling rule.
+	//
 	// example:
 	//
 	// r-d1775b776110****
 	ScalingRuleId *string `json:"ScalingRuleId,omitempty" xml:"ScalingRuleId,omitempty"`
+	// The name of the Auto Scaling policy.
+	//
 	// example:
 	//
 	// scale-test1
 	ScalingRuleName *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
+	// The current status of the rule. Valid values:
+	//
+	// - INACTIVE: The rule is not triggered.
+	//
+	// - ACTIVE: The rule is triggered.
+	//
+	// - DISABLED: The rule is disabled due to an overdue payment.
+	//
 	// example:
 	//
 	// INACTIVE
@@ -235,35 +264,70 @@ func (s *DescribeTimeTriggerScalingRulesResponseBodyData) Validate() error {
 }
 
 type DescribeTimeTriggerScalingRulesResponseBodyDataScalingInRule struct {
+	// The day of the execution time.
+	//
 	// example:
 	//
 	// 1
 	Day *int32 `json:"Day,omitempty" xml:"Day,omitempty"`
+	// The hour of the execution time.
+	//
 	// example:
 	//
 	// 12
 	Hour *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// The minute of the execution time.
+	//
 	// example:
 	//
 	// 24
 	Minute *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
+	// The month of the execution time.
+	//
 	// example:
 	//
 	// 3
 	Month *int32 `json:"Month,omitempty" xml:"Month,omitempty"`
+	// The trigger interval. Its meaning depends on the RecurrenceType value:
+	//
+	// - DAILY: The interval in days.
+	//
+	// - WEEKLY: The interval in weeks.
+	//
+	// - MONTHLY: The interval in months.
+	//
 	// example:
 	//
 	// WEEKLY
 	RecurrenceInterval *int32 `json:"RecurrenceInterval,omitempty" xml:"RecurrenceInterval,omitempty"`
+	// The trigger method. Valid values:
+	//
+	// - ONCE: One-time
+	//
+	// - DAILY: Daily
+	//
+	// - WEEKLY: Weekly
+	//
+	// - MONTHLY: Monthly
+	//
 	// example:
 	//
 	// ONCE
-	RecurrenceType   *string   `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
+	RecurrenceType *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
+	// The trigger values. Their meaning depends on the RecurrenceType value:
+	//
+	// -WEEKLY: The days of the week for execution.
+	//
+	// -MONTHLY: The days of the month for execution.
 	RecurrenceValues []*string `json:"RecurrenceValues,omitempty" xml:"RecurrenceValues,omitempty" type:"Repeated"`
+	// The second of the execution time.
+	//
 	// example:
 	//
 	// 30
 	Second *int32 `json:"Second,omitempty" xml:"Second,omitempty"`
+	// The year of the execution time.
+	//
 	// example:
 	//
 	// 2025
@@ -364,35 +428,70 @@ func (s *DescribeTimeTriggerScalingRulesResponseBodyDataScalingInRule) Validate(
 }
 
 type DescribeTimeTriggerScalingRulesResponseBodyDataScalingOutRule struct {
+	// The day of the execution time.
+	//
 	// example:
 	//
 	// 10
 	Day *int32 `json:"Day,omitempty" xml:"Day,omitempty"`
+	// The hour of the execution time.
+	//
 	// example:
 	//
 	// 3
 	Hour *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// The minute of the execution time.
+	//
 	// example:
 	//
 	// 30
 	Minute *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
+	// The month of the execution time.
+	//
 	// example:
 	//
 	// 12
 	Month *int32 `json:"Month,omitempty" xml:"Month,omitempty"`
+	// The trigger interval. Its meaning depends on the RecurrenceType value:
+	//
+	// - DAILY: The interval in days.
+	//
+	// - WEEKLY: The interval in weeks.
+	//
+	// - MONTHLY: The interval in months.
+	//
 	// example:
 	//
 	// 1
 	RecurrenceInterval *int32 `json:"RecurrenceInterval,omitempty" xml:"RecurrenceInterval,omitempty"`
+	// The trigger method. Valid values:
+	//
+	// - ONCE: One-time
+	//
+	// - DAILY: Daily
+	//
+	// - WEEKLY: Weekly
+	//
+	// - MONTHLY: Monthly
+	//
 	// example:
 	//
 	// ONCE
-	RecurrenceType   *string   `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
+	RecurrenceType *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
+	// The trigger values. Their meaning depends on the RecurrenceType value:
+	//
+	// -WEEKLY: The days of the week for execution.
+	//
+	// -MONTHLY: The days of the month for execution.
 	RecurrenceValues []*string `json:"RecurrenceValues,omitempty" xml:"RecurrenceValues,omitempty" type:"Repeated"`
+	// The second of the execution time.
+	//
 	// example:
 	//
 	// 20
 	Second *int32 `json:"Second,omitempty" xml:"Second,omitempty"`
+	// The year of the execution time.
+	//
 	// example:
 	//
 	// 2024

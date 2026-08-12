@@ -18,9 +18,12 @@ type iDataZoneSupportCompactionServiceValue interface {
 }
 
 type DataZoneSupportCompactionServiceValue struct {
-	ZoneId        *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+	// The availability zone ID.
+	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+	// The resource level.
 	ResourceLevel *string `json:"resourceLevel,omitempty" xml:"resourceLevel,omitempty"`
-	Recommended   *bool   `json:"recommended,omitempty" xml:"recommended,omitempty"`
+	// Indicates whether this is the recommended option.
+	Recommended *bool `json:"recommended,omitempty" xml:"recommended,omitempty"`
 }
 
 func (s DataZoneSupportCompactionServiceValue) String() string {

@@ -24,23 +24,34 @@ type iQueryRenewPriceResponseBody interface {
 }
 
 type QueryRenewPriceResponseBody struct {
+	// Response data.
 	Data []*QueryRenewPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Error code.
+	//
 	// example:
 	//
 	// InvalidParams
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// null
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 32A44F0D-BFF6-5664-999A-218BBDE74XXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// false
@@ -123,36 +134,54 @@ func (s *QueryRenewPriceResponseBody) Validate() error {
 }
 
 type QueryRenewPriceResponseBodyData struct {
+	// Billing instance ID. For the default compute group (FE compute group and default BE compute group), this value is the instance ID. Otherwise, it is the compute group ID.
+	//
 	// example:
 	//
 	// c-96f3bc7f04b2****
 	BillingInstanceId *string `json:"BillingInstanceId,omitempty" xml:"BillingInstanceId,omitempty"`
+	// Currency.
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// Total official price after discount.
+	//
 	// example:
 	//
 	// 9812
 	DepreciateInfo *QueryRenewPriceResponseBodyDataDepreciateInfo `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
+	// Discount amount = original amount − billable amount (including coupon discounts).
+	//
 	// example:
 	//
 	// 0
-	DiscountAmount     *float32                                             `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	// Coupon ID.
 	OptionalPromotions []*QueryRenewPriceResponseBodyDataOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
+	// Original amount = catalog price × usage.
+	//
 	// example:
 	//
 	// 9812
-	OriginalAmount *float32                                `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	Rules          []*QueryRenewPriceResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	// Data structure of the response.
+	Rules []*QueryRenewPriceResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// Discounted price based on the official discount.
+	//
 	// example:
 	//
 	// 9812
 	StandDiscountPrice *float32 `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
+	// Official discounted price.
+	//
 	// example:
 	//
 	// 9812
 	StandPrice *float32 `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
+	// Amount.
+	//
 	// example:
 	//
 	// 9812
@@ -285,18 +314,26 @@ func (s *QueryRenewPriceResponseBodyData) Validate() error {
 }
 
 type QueryRenewPriceResponseBodyDataDepreciateInfo struct {
+	// Discount rate.
+	//
 	// example:
 	//
 	// 0
 	CheapRate *float32 `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
+	// Total official price after discount.
+	//
 	// example:
 	//
 	// 9812
 	CheapStandAmount *float32 `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
+	// Indicates whether the discount amount is displayed.
+	//
 	// example:
 	//
 	// true
 	IsShow *bool `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
+	// Original total official price.
+	//
 	// example:
 	//
 	// 9812
@@ -352,14 +389,20 @@ func (s *QueryRenewPriceResponseBodyDataDepreciateInfo) Validate() error {
 }
 
 type QueryRenewPriceResponseBodyDataOptionalPromotions struct {
+	// Coupon description.
+	//
 	// example:
 	//
 	// youhuiquan_desc
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// Coupon name.
+	//
 	// example:
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// Coupon ID.
+	//
 	// example:
 	//
 	// youhuiquan_12378dfj6
@@ -406,14 +449,20 @@ func (s *QueryRenewPriceResponseBodyDataOptionalPromotions) Validate() error {
 }
 
 type QueryRenewPriceResponseBodyDataRules struct {
+	// Resource count.
+	//
 	// example:
 	//
 	// 1
 	Amount *float32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_8syh2j121ns
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Rule ID.
+	//
 	// example:
 	//
 	// 8su2i3hsdf128

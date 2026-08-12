@@ -20,18 +20,26 @@ type iUpdateGatewayRequest interface {
 }
 
 type UpdateGatewayRequest struct {
+	// The number of gateway nodes.
+	//
 	// example:
 	//
 	// 3
 	FeNodeNumber *int32 `json:"FeNodeNumber,omitempty" xml:"FeNodeNumber,omitempty"`
+	// The ID of the gateway.
+	//
 	// example:
 	//
 	// dg-65u7d65p5960fjq7
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The name of the gateway.
+	//
 	// example:
 	//
 	// polar-byd-glm-47
 	GatewayName *string `json:"GatewayName,omitempty" xml:"GatewayName,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// c-b25e21e24388****

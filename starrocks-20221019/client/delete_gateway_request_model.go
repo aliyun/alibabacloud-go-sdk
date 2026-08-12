@@ -16,10 +16,14 @@ type iDeleteGatewayRequest interface {
 }
 
 type DeleteGatewayRequest struct {
+	// The gateway ID.
+	//
 	// example:
 	//
 	// dg-2r69r8kpmn56k5s3
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// c-b25e21e24388****

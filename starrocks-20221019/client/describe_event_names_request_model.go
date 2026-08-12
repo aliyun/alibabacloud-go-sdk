@@ -14,6 +14,8 @@ type iDescribeEventNamesRequest interface {
 }
 
 type DescribeEventNamesRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// c-b25e21e24388****

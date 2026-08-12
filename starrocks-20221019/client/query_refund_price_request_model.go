@@ -16,10 +16,14 @@ type iQueryRefundPriceRequest interface {
 }
 
 type QueryRefundPriceRequest struct {
+	// A comma-separated list of instance IDs to cancel.
+	//
 	// example:
 	//
 	// ng-1syeu23,ng-81293sa
 	BillingInstanceIds *string `json:"billingInstanceIds,omitempty" xml:"billingInstanceIds,omitempty"`
+	// The instance ID. This field is deprecated.
+	//
 	// example:
 	//
 	// c-82su12s0kl12

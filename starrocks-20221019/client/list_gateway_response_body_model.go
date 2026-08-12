@@ -24,23 +24,34 @@ type iListGatewayResponseBody interface {
 }
 
 type ListGatewayResponseBody struct {
+	// The returned data.
 	Data []*ListGatewayResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidParams
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Invalid params: [instance not exists].
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 32A44F0D-BFF6-5664-999A-218BBDE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// false
@@ -123,45 +134,68 @@ func (s *ListGatewayResponseBody) Validate() error {
 }
 
 type ListGatewayResponseBodyData struct {
+	// Indicates whether public network access is enabled.
+	//
 	// example:
 	//
 	// true
 	EnablePublicNet *bool `json:"EnablePublicNet,omitempty" xml:"EnablePublicNet,omitempty"`
+	// The number of gateway nodes.
+	//
 	// example:
 	//
 	// 2
 	FeNodeNumber *int32 `json:"FeNodeNumber,omitempty" xml:"FeNodeNumber,omitempty"`
+	// The gateway ID.
+	//
 	// example:
 	//
 	// 13822
-	GatewayId   *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The gateway name.
+	//
+	// example:
+	//
+	// Gateway 1
 	GatewayName *string `json:"GatewayName,omitempty" xml:"GatewayName,omitempty"`
+	// The gateway type. Valid values are \\`Slb\\` and \\`Privatezone\\`.
+	//
 	// example:
 	//
 	// slb
 	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	// The internal endpoint.
+	//
 	// example:
 	//
 	// fe-c-b25e21e24388****-ab8sjd-internal.starrocks.aliyuncs.com
 	InternalDomain *string `json:"InternalDomain,omitempty" xml:"InternalDomain,omitempty"`
+	// The ID of the internal-facing Server Load Balancer (SLB) instance.
+	//
 	// example:
 	//
 	// lb-123abc
 	InternalSlbId *string `json:"InternalSlbId,omitempty" xml:"InternalSlbId,omitempty"`
-	// PrivatezoneId
+	// The ID of the PrivateZone.
 	//
 	// example:
 	//
 	// a62des2123243881b9s2sa220k2l38m9
 	PrivatezoneId *string `json:"PrivatezoneId,omitempty" xml:"PrivatezoneId,omitempty"`
+	// The public endpoint.
+	//
 	// example:
 	//
 	// fe-c-b25e21e24388****-8s272d.starrocks.aliyuncs.com
 	PublicDomain *string `json:"PublicDomain,omitempty" xml:"PublicDomain,omitempty"`
+	// The ID of the access control list (ACL) for public network access.
+	//
 	// example:
 	//
 	// acl-hsb123ksi2
 	PublicSlbAclId *string `json:"PublicSlbAclId,omitempty" xml:"PublicSlbAclId,omitempty"`
+	// The ID of the public-facing SLB instance.
+	//
 	// example:
 	//
 	// lb-abc123

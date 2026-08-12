@@ -16,6 +16,8 @@ type iCheckInventoryRequest interface {
 }
 
 type CheckInventoryRequest struct {
+	// Cluster information.
+	//
 	// example:
 	//
 	// {
@@ -60,6 +62,8 @@ type CheckInventoryRequest struct {
 	//
 	// }
 	ClusterInfo *string `json:"ClusterInfo,omitempty" xml:"ClusterInfo,omitempty"`
+	// Zone.
+	//
 	// example:
 	//
 	// cn-hangzhou-h

@@ -26,29 +26,40 @@ type iQueryModifyCuPriceResponseBody interface {
 }
 
 type QueryModifyCuPriceResponseBody struct {
-	// AccessDeniedDetail
+	// Details about the access denial.
 	//
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxx",     "EncodedDiagnosticMessage": "xxx",     "AuthPrincipalType": "xxx",     "AuthPrincipalDisplayName": "xxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "sr:xxx"   }
-	AccessDeniedDetail *string                             `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Data               *QueryModifyCuPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The returned data.
+	Data *QueryModifyCuPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidParams
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// null
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// B67D142D-D54E-184F-A306-22BDC01B2XXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
@@ -136,33 +147,50 @@ func (s *QueryModifyCuPriceResponseBody) Validate() error {
 }
 
 type QueryModifyCuPriceResponseBodyData struct {
+	// The prices of the components.
 	ComponentPrices []*QueryModifyCuPriceResponseBodyDataComponentPrices `json:"ComponentPrices,omitempty" xml:"ComponentPrices,omitempty" type:"Repeated"`
+	// The currency.
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The depreciation rate.
+	//
 	// example:
 	//
 	// 0
 	DepreciateInfo *QueryModifyCuPriceResponseBodyDataDepreciateInfo `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
+	// The discount amount. Discount amount = Original amount - Billable amount. The billable amount includes coupon deductions.
+	//
 	// example:
 	//
 	// 0
-	DiscountAmount     *float32                                                `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	// The coupon information.
 	OptionalPromotions []*QueryModifyCuPriceResponseBodyDataOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
+	// The original price. Original price = List price × Billing usage.
+	//
 	// example:
 	//
 	// 7986
-	OriginalAmount *float32                                   `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	Rules          []*QueryModifyCuPriceResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	// The data structure returned in the response.
+	Rules []*QueryModifyCuPriceResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The price after the standard discount is applied.
+	//
 	// example:
 	//
 	// 7986
 	StandDiscountPrice *float32 `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
+	// The discounted price on the official website.
+	//
 	// example:
 	//
 	// 7986
 	StandPrice *float32 `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
+	// The transaction amount.
+	//
 	// example:
 	//
 	// 7986
@@ -304,18 +332,26 @@ func (s *QueryModifyCuPriceResponseBodyData) Validate() error {
 }
 
 type QueryModifyCuPriceResponseBodyDataComponentPrices struct {
+	// The name of the component.
+	//
 	// example:
 	//
 	// cu_num
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	// The discount amount.
+	//
 	// example:
 	//
 	// 0
 	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	// The original price.
+	//
 	// example:
 	//
 	// 7986
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	// The final price, which is the original price minus the discount.
+	//
 	// example:
 	//
 	// 7986
@@ -371,18 +407,26 @@ func (s *QueryModifyCuPriceResponseBodyDataComponentPrices) Validate() error {
 }
 
 type QueryModifyCuPriceResponseBodyDataDepreciateInfo struct {
+	// The price reduction ratio.
+	//
 	// example:
 	//
 	// 0
 	CheapRate *float32 `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
+	// The total list price after the price reduction.
+	//
 	// example:
 	//
 	// 7986
 	CheapStandAmount *float32 `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
+	// Indicates whether to show the price reduction information.
+	//
 	// example:
 	//
 	// true
 	IsShow *bool `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
+	// The original total list price.
+	//
 	// example:
 	//
 	// 7986
@@ -438,14 +482,20 @@ func (s *QueryModifyCuPriceResponseBodyDataDepreciateInfo) Validate() error {
 }
 
 type QueryModifyCuPriceResponseBodyDataOptionalPromotions struct {
+	// The description of the coupon.
+	//
 	// example:
 	//
 	// youhuiquan_desc
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// The name of the coupon.
+	//
 	// example:
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// The ID of the coupon.
+	//
 	// example:
 	//
 	// youhuiquan_12378dfj6
@@ -492,14 +542,22 @@ func (s *QueryModifyCuPriceResponseBodyDataOptionalPromotions) Validate() error 
 }
 
 type QueryModifyCuPriceResponseBodyDataRules struct {
+	// The number of instances to purchase in a batch. You can use this parameter to query the price of purchasing multiple Elastic Compute Service (ECS) instances with a specific configuration. Valid values: 1 to 1000.
+	//
+	// Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	Amount *float32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The name of the rule.
+	//
 	// example:
 	//
 	// rule_123123
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the rule.
+	//
 	// example:
 	//
 	// ak72hajsd

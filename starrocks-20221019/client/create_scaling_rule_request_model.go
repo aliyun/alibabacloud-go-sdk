@@ -18,12 +18,16 @@ type iCreateScalingRuleRequest interface {
 }
 
 type CreateScalingRuleRequest struct {
+	// The compute group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ng-3d5ce6454354****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// The rule content.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -80,6 +84,8 @@ type CreateScalingRuleRequest struct {
 	//
 	// }
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// The trigger type.
+	//
 	// This parameter is required.
 	//
 	// example:

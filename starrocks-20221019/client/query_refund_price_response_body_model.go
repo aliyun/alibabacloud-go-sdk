@@ -26,32 +26,44 @@ type iQueryRefundPriceResponseBody interface {
 }
 
 type QueryRefundPriceResponseBody struct {
-	// AccessDeniedDetail
+	// The access denied detail.
 	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	// The refund amount.
+	//
 	// example:
 	//
 	// 18837
 	Data *float64 `json:"data,omitempty" xml:"data,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// None
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8C69A6D0-49B7-54B9-BF21-9AF52172A5F7
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// True

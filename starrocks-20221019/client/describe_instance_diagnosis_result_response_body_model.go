@@ -33,28 +33,41 @@ type DescribeInstanceDiagnosisResultResponseBody struct {
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxx",     "EncodedDiagnosticMessage": "xxx",     "AuthPrincipalType": "xxx",     "AuthPrincipalDisplayName": "xxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "sr:xxx"   }
-	AccessDeniedDetail *string                                            `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Data               []*DescribeInstanceDiagnosisResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Returned data.
+	Data []*DescribeInstanceDiagnosisResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Error code.
+	//
 	// example:
 	//
 	// InvalidParams
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// Invalid params: [instance not exists].
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// HTTP request status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 32A44F0D-BFF6-5664-999A-218BBDE74XXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the request was successful.
+	//
 	// example:
 	//
 	// false
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total number of query results.
+	//
 	// example:
 	//
 	// 3
@@ -155,45 +168,91 @@ func (s *DescribeInstanceDiagnosisResultResponseBody) Validate() error {
 }
 
 type DescribeInstanceDiagnosisResultResponseBodyData struct {
+	// Best Practices.
+	//
+	// example:
+	//
+	// 无
 	BestPractice *string `json:"BestPractice,omitempty" xml:"BestPractice,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Diagnosis item description.
+	//
+	// example:
+	//
+	// Evaluate unreasonable partition and bucket configuration
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Evaluation dimension.
+	//
 	// example:
 	//
 	// table_analysis
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	// Evaluation time.
+	//
 	// example:
 	//
 	// 2026-03-08T02:12:32Z
 	EvaluationTime *int64 `json:"EvaluationTime,omitempty" xml:"EvaluationTime,omitempty"`
+	// Full score for the evaluation item.
+	//
 	// example:
 	//
 	// 10.0
 	FullScore *float64 `json:"FullScore,omitempty" xml:"FullScore,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// c-b25e21e243889XXX
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Evaluation item introduction.
+	//
 	// example:
 	//
 	// for autotest
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
+	// Evaluation item ID.
+	//
 	// example:
 	//
 	// 02cf887a
-	ItemId   *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	// Evaluation item name.
+	//
+	// example:
+	//
+	// Evaluate unreasonable partition and bucket configuration
 	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
+	// Report date.
+	//
 	// example:
 	//
 	// 2026-03-08
 	ReportDate *string `json:"ReportDate,omitempty" xml:"ReportDate,omitempty"`
+	// Diagnosis score.
+	//
 	// example:
 	//
 	// 10.0
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// Status list.
+	//
+	// - healthy
+	//
+	// - info
+	//
+	// - medium
+	//
+	// - critical
+	//
 	// example:
 	//
 	// healthy
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Diagnosis suggestion.
+	//
+	// example:
+	//
+	// 未出现分桶大小超过5GB的情况，评估结果为健康。
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
 }
 

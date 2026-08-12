@@ -23,7 +23,7 @@ type iModifyDiskSizeRequest interface {
 
 type ModifyDiskSizeRequest struct {
 	FastMode *bool `json:"FastMode,omitempty" xml:"FastMode,omitempty"`
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -31,7 +31,7 @@ type ModifyDiskSizeRequest struct {
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The warehouse ID.
+	// The ID of the compute group.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type ModifyDiskSizeRequest struct {
 	// ng-3d5ce6454354****
 	NodeGroupId       *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
-	// The disk size to which you want to change to. Unit: GB.
+	// The target disk size. Unit: GB.
 	//
 	// This parameter is required.
 	//

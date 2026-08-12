@@ -14,6 +14,8 @@ type iDescribeInnerIpWhitelistGroupsRequest interface {
 }
 
 type DescribeInnerIpWhitelistGroupsRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

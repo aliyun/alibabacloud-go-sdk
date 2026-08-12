@@ -22,11 +22,11 @@ type iModifyDiskNumberRequest interface {
 }
 
 type ModifyDiskNumberRequest struct {
-	// Specifies whether to restart compute nodes in quick restart mode. Default value: false. Valid values:
+	// Specifies whether to restart the compute nodes in fast mode. Default value: false.
 	//
-	// 	- true: Compute nodes are restarted in quick restart mode in multiple batches. The batches are executed in parallel, and the nodes in each batch are restarted at the same time.
+	// - true: Restarts the compute nodes in fast mode. The nodes are restarted in batches. Nodes within a batch are restarted in parallel, and the batches are processed sequentially.
 	//
-	// 	- false: Compute nodes are restarted in rolling restart mode.
+	// - false: Restarts the compute nodes in rolling restart mode.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ModifyDiskNumberRequest struct {
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The warehouse ID.
+	// The compute group ID.
 	//
 	// This parameter is required.
 	//
@@ -49,7 +49,7 @@ type ModifyDiskNumberRequest struct {
 	// ng-3d5ce6454354****
 	NodeGroupId       *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
-	// The number of disks to which you want to change to.
+	// The target number of disks.
 	//
 	// This parameter is required.
 	//

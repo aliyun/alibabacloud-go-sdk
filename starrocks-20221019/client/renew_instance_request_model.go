@@ -22,30 +22,46 @@ type iRenewInstanceRequest interface {
 }
 
 type RenewInstanceRequest struct {
+	// A comma-separated list of billing instance IDs to renew. Billing instances include clusters and compute groups.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ng-dd8933281e46****
 	BillingInstanceIds *string `json:"BillingInstanceIds,omitempty" xml:"BillingInstanceIds,omitempty"`
+	// The subscription duration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Duration unit:
+	//
+	// - Month
+	//
+	// - Year
+	//
+	// Valid only when payType is PrePaid.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Year
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The coupon ID.
+	//
 	// example:
 	//
 	// youhuiquan_12378dfj6

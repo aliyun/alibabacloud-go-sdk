@@ -16,10 +16,13 @@ type iModifyHostAliasRequest interface {
 }
 
 type ModifyHostAliasRequest struct {
+	// Instance ID.
+	//
 	// example:
 	//
 	// c-b25e21e24388****
-	InstanceId  *string                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Host alias list.
 	HostAliases []*ModifyHostAliasRequestHostAliases `json:"hostAliases,omitempty" xml:"hostAliases,omitempty" type:"Repeated"`
 }
 
@@ -63,7 +66,10 @@ func (s *ModifyHostAliasRequest) Validate() error {
 }
 
 type ModifyHostAliasRequestHostAliases struct {
+	// Host alias.
 	Hostnames []*string `json:"hostnames,omitempty" xml:"hostnames,omitempty" type:"Repeated"`
+	// Machine IP
+	//
 	// example:
 	//
 	// 26.15.54.221

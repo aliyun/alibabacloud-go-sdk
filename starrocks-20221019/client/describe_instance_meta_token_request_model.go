@@ -14,6 +14,8 @@ type iDescribeInstanceMetaTokenRequest interface {
 }
 
 type DescribeInstanceMetaTokenRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

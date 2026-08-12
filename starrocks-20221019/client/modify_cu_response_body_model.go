@@ -26,7 +26,7 @@ type iModifyCuResponseBody interface {
 }
 
 type ModifyCuResponseBody struct {
-	// The detailed information about the failed permission verification.
+	// Details about the access denial.
 	//
 	// example:
 	//

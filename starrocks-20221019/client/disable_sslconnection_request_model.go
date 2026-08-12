@@ -14,6 +14,8 @@ type iDisableSSLConnectionRequest interface {
 }
 
 type DisableSSLConnectionRequest struct {
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// c-b25e21e24388****

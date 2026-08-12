@@ -18,14 +18,20 @@ type iRebootECSRequest interface {
 }
 
 type RebootECSRequest struct {
+	// The system event ID.
+	//
 	// example:
 	//
 	// 8c96a3fc8a0d4a48b5db5fdb9742fbbc
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The reboot time for the instance.
+	//
 	// example:
 	//
 	// 1772076782

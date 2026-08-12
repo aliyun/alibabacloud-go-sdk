@@ -24,26 +24,44 @@ type iQueryModifyChargeTypePriceRequest interface {
 }
 
 type QueryModifyChargeTypePriceRequest struct {
+	// Specifies whether to enable auto-renewal. This parameter is valid only when \\`payType\\` is set to \\`PrePaid\\`. The default value is false.
+	//
 	// example:
 	//
 	// True
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// A list of billing instance IDs to modify. Separate multiple IDs with commas.
+	//
 	// example:
 	//
 	// c-3d6dc31ba67b1839
 	BillingInstanceIds *string `json:"BillingInstanceIds,omitempty" xml:"BillingInstanceIds,omitempty"`
+	// The subscription duration. This parameter is valid only when \\`payType\\` is set to \\`PrePaid\\`.
+	//
 	// example:
 	//
 	// 2
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The unit of the subscription duration:
+	//
+	// - Month
+	//
+	// - Year
+	//
+	// This parameter is valid only when \\`payType\\` is set to \\`PrePaid\\`.
+	//
 	// example:
 	//
 	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The coupon ID.
+	//
 	// example:
 	//
 	// youhuiquan_promotion_option_id_for_blank

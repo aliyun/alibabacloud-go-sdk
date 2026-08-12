@@ -22,24 +22,32 @@ type iModifyScalingRuleRequest interface {
 }
 
 type ModifyScalingRuleRequest struct {
+	// New trigger type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// TIME_TRIGGER
 	NewTriggerType *string `json:"NewTriggerType,omitempty" xml:"NewTriggerType,omitempty"`
+	// Compute group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ng-3d5ce6454354****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// Old trigger type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// TIME_TRIGGER
 	OldTriggerType *string `json:"OldTriggerType,omitempty" xml:"OldTriggerType,omitempty"`
+	// Rule content.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -96,6 +104,8 @@ type ModifyScalingRuleRequest struct {
 	//
 	// }
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// ID of the scaling rule to modify.
+	//
 	// This parameter is required.
 	//
 	// example:

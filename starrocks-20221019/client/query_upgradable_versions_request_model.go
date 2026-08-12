@@ -26,9 +26,9 @@ type QueryUpgradableVersionsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Specifies whether to query the minor versions that you can upgrade to. Default value: true. Valid values:
 	//
-	// 	- true: The minor versions that you can upgrade to.
+	// - true: The minor versions that you can upgrade to.
 	//
-	// 	- false: The major versions that you can upgrade to.
+	// - false: The major versions that you can upgrade to.
 	//
 	// example:
 	//

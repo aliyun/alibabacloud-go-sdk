@@ -20,22 +20,30 @@ type iChangeResourceGroupRequest interface {
 }
 
 type ChangeResourceGroupRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c-1854345****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the destination resource group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rg-4352gdf****
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	// The ID of the region where the cluster resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource type. Only instance is supported.
+	//
 	// This parameter is required.
 	//
 	// example:

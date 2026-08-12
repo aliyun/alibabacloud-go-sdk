@@ -16,12 +16,16 @@ type iDeleteInnerIpWhitelistGroupRequest interface {
 }
 
 type DeleteInnerIpWhitelistGroupRequest struct {
+	// Internal network whitelist group name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-g1
 	InnerIpWhitelistGroupId *string `json:"InnerIpWhitelistGroupId,omitempty" xml:"InnerIpWhitelistGroupId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

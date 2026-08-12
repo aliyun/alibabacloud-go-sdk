@@ -20,6 +20,7 @@ type iUpgradeVersionRequest interface {
 }
 
 type UpgradeVersionRequest struct {
+	// Specifies whether to perform a fast restart.
 	FastMode *bool `json:"FastMode,omitempty" xml:"FastMode,omitempty"`
 	// The instance ID.
 	//
@@ -29,17 +30,19 @@ type UpgradeVersionRequest struct {
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether the minor version is upgraded. Default value: true. Valid values:
+	// Specifies whether this upgrade is a minor version upgrade. Default value: true.
 	//
-	// 	- true: The minor version is upgraded.
+	// Valid values:
 	//
-	// 	- false: The major version is upgraded.
+	// - true: minor version upgrade.
+	//
+	// - false: major engine version upgrade.
 	//
 	// example:
 	//
 	// true
 	Minor *bool `json:"Minor,omitempty" xml:"Minor,omitempty"`
-	// The version to which you want to upgrade.
+	// The target version number.
 	//
 	// This parameter is required.
 	//

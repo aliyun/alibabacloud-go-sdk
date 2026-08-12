@@ -18,14 +18,20 @@ type iAddGatewayRequest interface {
 }
 
 type AddGatewayRequest struct {
+	// The number of gateway nodes.
+	//
 	// example:
 	//
 	// 3
 	FeNodeNumber *int32 `json:"FeNodeNumber,omitempty" xml:"FeNodeNumber,omitempty"`
+	// The alias for the private gateway.
+	//
 	// example:
 	//
 	// eas_automation_test
 	GatewayName *string `json:"GatewayName,omitempty" xml:"GatewayName,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// c-b25e21e24388****

@@ -18,18 +18,24 @@ type iDeleteScalingRuleRequest interface {
 }
 
 type DeleteScalingRuleRequest struct {
+	// Compute group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ng-3d5ce6454354****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// ID of the scaling rule to delete.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// r-d01a1cac4081s****
 	ScalingRuleId *string `json:"ScalingRuleId,omitempty" xml:"ScalingRuleId,omitempty"`
+	// Trigger type.
+	//
 	// This parameter is required.
 	//
 	// example:

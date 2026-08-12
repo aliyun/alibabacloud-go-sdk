@@ -28,34 +28,50 @@ type iDescribeBackupsRequest interface {
 }
 
 type DescribeBackupsRequest struct {
+	// The backup task ID.
+	//
 	// example:
 	//
 	// bt-2389hsdui12m
 	BackupTaskId *string `json:"BackupTaskId,omitempty" xml:"BackupTaskId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The query page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page for paged query.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The list of statuses.
+	//
 	// example:
 	//
 	// COMPLETED
 	Statuses *string `json:"Statuses,omitempty" xml:"Statuses,omitempty"`
+	// The end time for querying backup jobs.
+	//
 	// example:
 	//
 	// 1747728000
 	TimePeriodEndTime *int64 `json:"TimePeriodEndTime,omitempty" xml:"TimePeriodEndTime,omitempty"`
+	// The start time for querying backup jobs.
+	//
 	// example:
 	//
 	// 1747708000

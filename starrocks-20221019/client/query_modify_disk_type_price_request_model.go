@@ -22,28 +22,38 @@ type iQueryModifyDiskTypePriceRequest interface {
 }
 
 type QueryModifyDiskTypePriceRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Compute group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ng-d332aa8bca48****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// Coupon ID.
+	//
 	// example:
 	//
 	// youhuiquan_12378dfj6
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
+	// Target disk type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// essd
 	TargetDiskType *string `json:"TargetDiskType,omitempty" xml:"TargetDiskType,omitempty"`
+	// Target disk performance.
+	//
 	// This parameter is required.
 	//
 	// example:

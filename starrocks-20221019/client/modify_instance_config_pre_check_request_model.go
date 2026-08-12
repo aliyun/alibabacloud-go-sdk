@@ -20,14 +20,19 @@ type iModifyInstanceConfigPreCheckRequest interface {
 }
 
 type ModifyInstanceConfigPreCheckRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c-b25e21e24388****
-	InstanceId      *string              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ConfigsToAdd    []*InstanceConfigDto `json:"configsToAdd,omitempty" xml:"configsToAdd,omitempty" type:"Repeated"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The configurations to add.
+	ConfigsToAdd []*InstanceConfigDto `json:"configsToAdd,omitempty" xml:"configsToAdd,omitempty" type:"Repeated"`
+	// The configurations to delete.
 	ConfigsToDelete []*InstanceConfigDto `json:"configsToDelete,omitempty" xml:"configsToDelete,omitempty" type:"Repeated"`
+	// The configurations to update.
 	ConfigsToUpdate []*InstanceConfigDto `json:"configsToUpdate,omitempty" xml:"configsToUpdate,omitempty" type:"Repeated"`
 }
 

@@ -31,24 +31,35 @@ type QueryEnableMultiAzPriceResponseBody struct {
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxx",     "EncodedDiagnosticMessage": "xxx",     "AuthPrincipalType": "xxx",     "AuthPrincipalDisplayName": "xxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "sr:xxx"   }
-	AccessDeniedDetail *string                                  `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Data               *QueryEnableMultiAzPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The returned data.
+	Data *QueryEnableMultiAzPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidParams
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Invalid params: [instance not exists].
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 32A44F0D-BFF6-5664-999A-218BBDE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
@@ -136,34 +147,58 @@ func (s *QueryEnableMultiAzPriceResponseBody) Validate() error {
 }
 
 type QueryEnableMultiAzPriceResponseBodyData struct {
+	// The component prices.
 	ComponentPrices []*QueryEnableMultiAzPriceResponseBodyDataComponentPrices `json:"ComponentPrices,omitempty" xml:"ComponentPrices,omitempty" type:"Repeated"`
+	// The currency. Valid values:
+	//
+	// - CNY: Chinese Yuan.
+	//
+	// - USD: U.S. dollar.
+	//
+	// - JPY: Japanese Yen.
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The total official price after the price reduction.
+	//
 	// example:
 	//
 	// 7641
 	DepreciateInfo *QueryEnableMultiAzPriceResponseBodyDataDepreciateInfo `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
+	// The discount amount. This is the original amount minus the bill\\"s payable amount, which includes coupon deductions.
+	//
 	// example:
 	//
 	// 0
-	DiscountAmount     *float32                                                     `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
-	ModuleInstance     []*QueryEnableMultiAzPriceResponseBodyDataModuleInstance     `json:"ModuleInstance,omitempty" xml:"ModuleInstance,omitempty" type:"Repeated"`
+	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	// The module ID.
+	ModuleInstance []*QueryEnableMultiAzPriceResponseBodyDataModuleInstance `json:"ModuleInstance,omitempty" xml:"ModuleInstance,omitempty" type:"Repeated"`
+	// The coupon information.
 	OptionalPromotions []*QueryEnableMultiAzPriceResponseBodyDataOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
+	// The original price. This is the list price multiplied by the usage.
+	//
 	// example:
 	//
 	// 7641
-	OriginalAmount *float32                                        `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	Rules          []*QueryEnableMultiAzPriceResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	// The returned data structure.
+	Rules []*QueryEnableMultiAzPriceResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The discounted price based on the official discount.
+	//
 	// example:
 	//
 	// 7641
 	StandDiscountPrice *float32 `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
+	// The official discounted price.
+	//
 	// example:
 	//
 	// 7641
 	StandPrice *float32 `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
+	// The amount.
+	//
 	// example:
 	//
 	// 7641
@@ -323,18 +358,26 @@ func (s *QueryEnableMultiAzPriceResponseBodyData) Validate() error {
 }
 
 type QueryEnableMultiAzPriceResponseBodyDataComponentPrices struct {
+	// The component name.
+	//
 	// example:
 	//
 	// multi-zone
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	// The discount amount for the order.
+	//
 	// example:
 	//
 	// 0
 	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	// The original price of the order.
+	//
 	// example:
 	//
 	// 7641
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	// The final price, which is the original price minus the discount.
+	//
 	// example:
 	//
 	// 7641
@@ -390,18 +433,26 @@ func (s *QueryEnableMultiAzPriceResponseBodyDataComponentPrices) Validate() erro
 }
 
 type QueryEnableMultiAzPriceResponseBodyDataDepreciateInfo struct {
+	// The price reduction percentage.
+	//
 	// example:
 	//
 	// 0
 	CheapRate *float32 `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
+	// The total official price after the price reduction.
+	//
 	// example:
 	//
 	// 7641
 	CheapStandAmount *float32 `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
+	// Indicates whether to show the price reduction.
+	//
 	// example:
 	//
 	// true
 	IsShow *bool `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
+	// The original total official price.
+	//
 	// example:
 	//
 	// 7641
@@ -457,18 +508,26 @@ func (s *QueryEnableMultiAzPriceResponseBodyDataDepreciateInfo) Validate() error
 }
 
 type QueryEnableMultiAzPriceResponseBodyDataModuleInstance struct {
+	// The identifier of the billing module.
+	//
 	// example:
 	//
 	// multi-zone
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	// The module name.
+	//
 	// example:
 	//
 	// zone
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	// The discounted price.
+	//
 	// example:
 	//
 	// 7641
 	StandPrice *string `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
+	// The original price of the product.
+	//
 	// example:
 	//
 	// 7641
@@ -524,14 +583,20 @@ func (s *QueryEnableMultiAzPriceResponseBodyDataModuleInstance) Validate() error
 }
 
 type QueryEnableMultiAzPriceResponseBodyDataOptionalPromotions struct {
+	// The coupon description.
+	//
 	// example:
 	//
 	// youhuiquan_desc
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// The coupon name.
+	//
 	// example:
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// The coupon ID.
+	//
 	// example:
 	//
 	// youhuiquan_12378dfj6
@@ -578,14 +643,20 @@ func (s *QueryEnableMultiAzPriceResponseBodyDataOptionalPromotions) Validate() e
 }
 
 type QueryEnableMultiAzPriceResponseBodyDataRules struct {
+	// The quantity.
+	//
 	// example:
 	//
 	// 2
 	Amount *float32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// rule_28sdhsu2320t
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 2ju2sd9dss

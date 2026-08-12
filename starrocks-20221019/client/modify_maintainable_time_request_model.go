@@ -16,12 +16,16 @@ type iModifyMaintainableTimeRequest interface {
 }
 
 type ModifyMaintainableTimeRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The maintenance window for the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

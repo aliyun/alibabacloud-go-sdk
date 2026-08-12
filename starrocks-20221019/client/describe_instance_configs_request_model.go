@@ -30,37 +30,64 @@ type iDescribeInstanceConfigsRequest interface {
 }
 
 type DescribeInstanceConfigsRequest struct {
+	// Indicates whether the configuration item can be modified.
+	//
 	// example:
 	//
 	// true
 	AllowModify *bool `json:"AllowModify,omitempty" xml:"AllowModify,omitempty"`
+	// The key of the configuration item.
+	//
 	// example:
 	//
 	// enable_udf
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// The type of the configuration item. Valid values:
+	//
+	// - FE
+	//
+	// - BE
+	//
+	// - CORE
+	//
 	// example:
 	//
 	// FE
-	ConfigType  *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The description of the configuration item\\"s feature.
+	//
+	// example:
+	//
+	// Whether to enable UDF.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether to return all configuration items.
+	//
 	// example:
 	//
 	// true
 	NeedTotal *bool `json:"NeedTotal,omitempty" xml:"NeedTotal,omitempty"`
+	// The compute group ID.
+	//
 	// example:
 	//
 	// ng-3d5ce6454354****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// The page number for the query. The default value is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page for a paged query. The default value is 20.
+	//
 	// example:
 	//
 	// 10

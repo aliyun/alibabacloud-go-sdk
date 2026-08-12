@@ -14,6 +14,8 @@ type iDescribeAvailableZonesRequest interface {
 }
 
 type DescribeAvailableZonesRequest struct {
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

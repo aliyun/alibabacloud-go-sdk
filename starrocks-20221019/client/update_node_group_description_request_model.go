@@ -18,14 +18,23 @@ type iUpdateNodeGroupDescriptionRequest interface {
 }
 
 type UpdateNodeGroupDescriptionRequest struct {
+	// The description of the compute group.
+	//
 	// example:
 	//
 	// okcc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the compute group.
+	//
 	// example:
 	//
 	// ng-3d5ce6454354****
-	NodeGroupId        *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// The RAM authorization information.
+	//
+	// example:
+	//
+	// Optional
 	XAcsRamAuthContext *string `json:"X-Acs-Ram-Auth-Context,omitempty" xml:"X-Acs-Ram-Auth-Context,omitempty"`
 }
 

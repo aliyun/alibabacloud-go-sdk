@@ -18,14 +18,24 @@ type iRollbackConfigModificationRequest interface {
 }
 
 type RollbackConfigModificationRequest struct {
+	// The ID of the configuration modification history.
+	//
 	// example:
 	//
 	// 187291
 	ConfigHistoryId *int64 `json:"ConfigHistoryId,omitempty" xml:"ConfigHistoryId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to restart the instance after the configuration is changed. Valid values:
+	//
+	// - **true**: Restart the instance.
+	//
+	// - **false**: Do not restart the instance.
+	//
 	// example:
 	//
 	// true

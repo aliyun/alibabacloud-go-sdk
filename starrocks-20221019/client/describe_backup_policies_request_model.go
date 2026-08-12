@@ -18,14 +18,20 @@ type iDescribeBackupPoliciesRequest interface {
 }
 
 type DescribeBackupPoliciesRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The policy ID.
+	//
 	// example:
 	//
 	// bk-policy-26ec5bc0ea67b5ef
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The ID of the region where the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou

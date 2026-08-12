@@ -24,23 +24,34 @@ type iCreateAgentResourceResponseBody interface {
 }
 
 type CreateAgentResourceResponseBody struct {
+	// Returned data.
 	Data *CreateAgentResourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error code.
+	//
 	// example:
 	//
 	// InvalidParams
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// Invalid params: [instance not exists].
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// HTTP request status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// B67D142D-D54E-184F-A306-22BDC01B2XXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
@@ -119,10 +130,14 @@ func (s *CreateAgentResourceResponseBody) Validate() error {
 }
 
 type CreateAgentResourceResponseBodyData struct {
+	// Compute group ID.
+	//
 	// example:
 	//
 	// ng-5e2ba600fee3****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// Order ID.
+	//
 	// example:
 	//
 	// 241526000650XXX

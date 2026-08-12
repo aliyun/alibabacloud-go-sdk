@@ -18,11 +18,16 @@ type iQueryEnableMultiAzPriceRequest interface {
 }
 
 type QueryEnableMultiAzPriceRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// c-8dsy12g*****
-	InstanceId *string                                    `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	Observers  []*QueryEnableMultiAzPriceRequestObservers `json:"observers,omitempty" xml:"observers,omitempty" type:"Repeated"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The list of observers.
+	Observers []*QueryEnableMultiAzPriceRequestObservers `json:"observers,omitempty" xml:"observers,omitempty" type:"Repeated"`
+	// The coupon.
+	//
 	// example:
 	//
 	// youhuiquan_12378dfj6
@@ -78,10 +83,14 @@ func (s *QueryEnableMultiAzPriceRequest) Validate() error {
 }
 
 type QueryEnableMultiAzPriceRequestObservers struct {
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-9sdur12t27s
 	VswId *string `json:"vswId,omitempty" xml:"vswId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-shanghai-h

@@ -14,6 +14,8 @@ type iDescribeSystemTimezoneRequest interface {
 }
 
 type DescribeSystemTimezoneRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

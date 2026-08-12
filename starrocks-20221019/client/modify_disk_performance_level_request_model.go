@@ -28,7 +28,7 @@ type ModifyDiskPerformanceLevelRequest struct {
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The warehouse ID.
+	// The compute group ID.
 	//
 	// This parameter is required.
 	//
@@ -37,17 +37,7 @@ type ModifyDiskPerformanceLevelRequest struct {
 	// ng-3d5ce6454354****
 	NodeGroupId       *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
-	// The disk performance level to which you want to change.
-	//
-	// Valid values:
-	//
-	// 	- pl0
-	//
-	// 	- pl1
-	//
-	// 	- pl2
-	//
-	// 	- pl3
+	// The target disk performance level.
 	//
 	// This parameter is required.
 	//

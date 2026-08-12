@@ -18,14 +18,20 @@ type iUpdateBackupRequest interface {
 }
 
 type UpdateBackupRequest struct {
+	// The ID of the region where the cluster is located.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the backup job.
+	//
 	// example:
 	//
 	// bk-t1232839
 	BackupTaskId *string `json:"backupTaskId,omitempty" xml:"backupTaskId,omitempty"`
+	// The description of the backup.
+	//
 	// example:
 	//
 	// backupTask-desc1

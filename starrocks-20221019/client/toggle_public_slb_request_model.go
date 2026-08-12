@@ -18,14 +18,24 @@ type iTogglePublicSlbRequest interface {
 }
 
 type TogglePublicSlbRequest struct {
+	// Is Internet-facing SLB enabled?
+	//
+	// - Enable: true
+	//
+	// - Disable: false
+	//
 	// example:
 	//
 	// true
 	EnablePublicSlb *bool `json:"EnablePublicSlb,omitempty" xml:"EnablePublicSlb,omitempty"`
+	// Private gateway ID.
+	//
 	// example:
 	//
 	// gw-0002xci9buu68ongixvk
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// c-b25e21e24388****

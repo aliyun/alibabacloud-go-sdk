@@ -27,6 +27,8 @@ type iCreateInstanceV1Request interface {
 	GetDlfCatalogType() *string
 	SetDuration(v int32) *CreateInstanceV1Request
 	GetDuration() *int32
+	SetEnableAiFunction(v bool) *CreateInstanceV1Request
+	GetEnableAiFunction() *bool
 	SetEnableMultiAz(v bool) *CreateInstanceV1Request
 	GetEnableMultiAz() *bool
 	SetEncrypted(v bool) *CreateInstanceV1Request
@@ -76,6 +78,8 @@ type iCreateInstanceV1Request interface {
 }
 
 type CreateInstanceV1Request struct {
+	// The administrator password of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -84,99 +88,180 @@ type CreateInstanceV1Request struct {
 	AdminPassword  *string                                `json:"AdminPassword,omitempty" xml:"AdminPassword,omitempty"`
 	AgentNodeGroup *CreateInstanceV1RequestAgentNodeGroup `json:"AgentNodeGroup,omitempty" xml:"AgentNodeGroup,omitempty" type:"Struct"`
 	AutoPay        *bool                                  `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Specifies whether to enable auto-renewal. This parameter takes effect only when payType is set to PrePaid. Auto-renewal is disabled by default.
+	//
 	// example:
 	//
 	// true
-	AutoRenew         *bool                                       `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The BE or CN node group information.
 	BackendNodeGroups []*CreateInstanceV1RequestBackendNodeGroups `json:"BackendNodeGroups,omitempty" xml:"BackendNodeGroups,omitempty" type:"Repeated"`
+	// Ensures the idempotence of the request. Generate a unique parameter value from your client. The ClientToken value supports only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The name of the DLF Catalog.
+	//
 	// example:
 	//
 	// paimon_test
 	DlfCatalogName *string `json:"DlfCatalogName,omitempty" xml:"DlfCatalogName,omitempty"`
+	// The type of the DLF Catalog. Valid values: paimon and iceberg.
+	//
 	// example:
 	//
 	// paimon
 	DlfCatalogType *string `json:"DlfCatalogType,omitempty" xml:"DlfCatalogType,omitempty"`
+	// The subscription duration. This parameter takes effect only when payType is set to PrePaid.
+	//
 	// example:
 	//
 	// 1
-	Duration      *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	EnableMultiAz *bool  `json:"EnableMultiAz,omitempty" xml:"EnableMultiAz,omitempty"`
+	Duration         *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EnableAiFunction *bool  `json:"EnableAiFunction,omitempty" xml:"EnableAiFunction,omitempty"`
+	// Specifies whether to enable disaster recovery.
+	EnableMultiAz *bool `json:"EnableMultiAz,omitempty" xml:"EnableMultiAz,omitempty"`
+	// Specifies whether to enable encryption.
+	//
 	// example:
 	//
 	// true
-	Encrypted          *bool                                        `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	// The FE node group information.
 	FrontendNodeGroups []*CreateInstanceV1RequestFrontendNodeGroups `json:"FrontendNodeGroups,omitempty" xml:"FrontendNodeGroups,omitempty" type:"Repeated"`
 	GatewayType        *string                                      `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	// The instance name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c1
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The KMS key ID.
+	//
 	// example:
 	//
 	// fdsdf****
 	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// The username of the associated Resource Access Management (RAM) user or the name of the associated RAM role.
+	//
 	// example:
 	//
 	// aliyun.test1
-	LinkedRamUserName  *string                                      `json:"LinkedRamUserName,omitempty" xml:"LinkedRamUserName,omitempty"`
+	LinkedRamUserName *string `json:"LinkedRamUserName,omitempty" xml:"LinkedRamUserName,omitempty"`
+	// The Observer node group information. Specify this parameter only when you need to enable cross-zone disaster recovery. The Observer node group specifications must be the same as those of the FE node group.
 	ObserverNodeGroups []*CreateInstanceV1RequestObserverNodeGroups `json:"ObserverNodeGroups,omitempty" xml:"ObserverNodeGroups,omitempty" type:"Repeated"`
+	// The name of the role used for password-free access to Object Storage Service (OSS).
+	//
 	// example:
 	//
 	// AliyunEMRStarRocksAccessingOSSRole
 	OssAccessingRoleName *string `json:"OssAccessingRoleName,omitempty" xml:"OssAccessingRoleName,omitempty"`
+	// The instance edition. Valid values:
+	//
+	// <ul>
+	//
+	// <li>trial: Trial Edition.</li>
+	//
+	// <li>official: Standard Edition.</li>
+	//
+	// </ul>
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// official
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	// The billing method. Valid values:
+	//
+	// <ol>
+	//
+	// <li>prePaid: subscription.</li>
+	//
+	// <li>postPaid: pay-as-you-go.</li>
+	//
+	// </ol>
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// prePaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The unit of the subscription duration. Valid values:
+	//
+	// <ul>
+	//
+	// <li>Month</li>
+	//
+	// <li>Year</li>
+	//
+	// </ul>
+	//
+	// This parameter takes effect only when payType is set to PrePaid.
+	//
 	// example:
 	//
 	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The RAM authentication type. Valid values:
+	//
+	// - RS: Resource Access Management (RAM) user.
+	//
+	// - RR: RAM role.
+	//
 	// example:
 	//
 	// RR
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	// The coupon ID.
+	//
 	// example:
 	//
 	// 165445235634
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
+	// The ID of the Resource Access Management (RAM) user or RAM role.
+	//
 	// example:
 	//
 	// 123456
 	RamUserId *string `json:"RamUserId,omitempty" xml:"RamUserId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-aekzllkih7jqxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The running mode of the cluster. Valid values:
+	//
+	// - shared_nothing: compute-storage coupled.
+	//
+	// - shared_data: storage-compute disaggregation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// shared_data
-	RunMode   *string                             `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
-	Tags      []*CreateInstanceV1RequestTags      `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	RunMode *string `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
+	// The instance tags.
+	Tags []*CreateInstanceV1RequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The vSwitch and zone information.
 	VSwitches []*CreateInstanceV1RequestVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
+	// The major version of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -191,6 +276,8 @@ type CreateInstanceV1Request struct {
 	//
 	// vpc-bp1fll2mci6d7pw8m****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The primary zone ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -241,6 +328,10 @@ func (s *CreateInstanceV1Request) GetDlfCatalogType() *string {
 
 func (s *CreateInstanceV1Request) GetDuration() *int32 {
 	return s.Duration
+}
+
+func (s *CreateInstanceV1Request) GetEnableAiFunction() *bool {
+	return s.EnableAiFunction
 }
 
 func (s *CreateInstanceV1Request) GetEnableMultiAz() *bool {
@@ -377,6 +468,11 @@ func (s *CreateInstanceV1Request) SetDlfCatalogType(v string) *CreateInstanceV1R
 
 func (s *CreateInstanceV1Request) SetDuration(v int32) *CreateInstanceV1Request {
 	s.Duration = &v
+	return s
+}
+
+func (s *CreateInstanceV1Request) SetEnableAiFunction(v bool) *CreateInstanceV1Request {
+	s.EnableAiFunction = &v
 	return s
 }
 
@@ -575,10 +671,14 @@ func (s *CreateInstanceV1RequestAgentNodeGroup) Validate() error {
 }
 
 type CreateInstanceV1RequestBackendNodeGroups struct {
+	// The number of CUs. A CU (Compute Unit) is the basic metering unit of the service. 1 CU = 1 CPU core + 4 GiB memory. When SpecType is set to memory-enhanced instance family, 1 CU = 1 CPU core + 8 GiB memory.
+	//
 	// example:
 	//
 	// 8
 	Cu *int32 `json:"cu,omitempty" xml:"cu,omitempty"`
+	// The number of disks.
+	//
 	// if can be null:
 	// false
 	//
@@ -586,26 +686,46 @@ type CreateInstanceV1RequestBackendNodeGroups struct {
 	//
 	// 1
 	DiskNumber *int32 `json:"diskNumber,omitempty" xml:"diskNumber,omitempty"`
+	// The local SSD instance type of the node group. This parameter takes effect only when the instance is ECS-based and SpecType is set to local SSD or large-scale storage.
+	//
 	// example:
 	//
 	// local_ssd_4_4xlarge
 	LocalStorageInstanceType *string `json:"localStorageInstanceType,omitempty" xml:"localStorageInstanceType,omitempty"`
+	// The number of nodes.
+	//
 	// example:
 	//
 	// 3
 	ResidentNodeNumber *int32 `json:"residentNodeNumber,omitempty" xml:"residentNodeNumber,omitempty"`
+	// The specification type of the node group. Valid values:
+	//
 	// example:
 	//
 	// standard
 	SpecType *string `json:"specType,omitempty" xml:"specType,omitempty"`
+	// The performance level of the cloud disk. Valid values:
+	//
+	// - pl0: A single disk delivers up to 10,000 random read/write IOPS.
+	//
+	// - pl1: A single disk delivers up to 50,000 random read/write IOPS.
+	//
+	// - pl2: A single disk delivers up to 100,000 random read/write IOPS.
+	//
+	// - pl3: A single disk delivers up to 1,000,000 random read/write IOPS.
+	//
 	// example:
 	//
 	// pl1
 	StoragePerformanceLevel *string `json:"storagePerformanceLevel,omitempty" xml:"storagePerformanceLevel,omitempty"`
+	// The storage size. Unit: GiB.
+	//
 	// example:
 	//
 	// 100
 	StorageSize *int32 `json:"storageSize,omitempty" xml:"storageSize,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-i
@@ -697,34 +817,50 @@ func (s *CreateInstanceV1RequestBackendNodeGroups) Validate() error {
 }
 
 type CreateInstanceV1RequestFrontendNodeGroups struct {
+	// The number of CUs. A CU (Compute Unit) is the basic metering unit of the service. 1 CU = 1 CPU core + 4 GiB memory.
+	//
 	// example:
 	//
 	// 8
 	Cu *int32 `json:"cu,omitempty" xml:"cu,omitempty"`
+	// The number of disks.
+	//
 	// example:
 	//
 	// 1
 	DiskNumber *int32 `json:"diskNumber,omitempty" xml:"diskNumber,omitempty"`
+	// The local SSD instance type. This parameter does not need to be set for the FE node group.
+	//
 	// example:
 	//
 	// null
 	LocalStorageInstanceType *string `json:"localStorageInstanceType,omitempty" xml:"localStorageInstanceType,omitempty"`
+	// The number of nodes.
+	//
 	// example:
 	//
 	// 3
 	ResidentNodeNumber *int32 `json:"residentNodeNumber,omitempty" xml:"residentNodeNumber,omitempty"`
+	// The specification type of the node group. Only standard is supported.
+	//
 	// example:
 	//
 	// standard
 	SpecType *string `json:"specType,omitempty" xml:"specType,omitempty"`
+	// The performance level (PL) of the cloud disk. Only pl1 is supported, which provides up to 50,000 random read/write IOPS per disk.
+	//
 	// example:
 	//
 	// pl1
 	StoragePerformanceLevel *string `json:"storagePerformanceLevel,omitempty" xml:"storagePerformanceLevel,omitempty"`
+	// The storage size. Unit: GiB.
+	//
 	// example:
 	//
 	// 100
 	StorageSize *int32 `json:"storageSize,omitempty" xml:"storageSize,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-i
@@ -816,34 +952,50 @@ func (s *CreateInstanceV1RequestFrontendNodeGroups) Validate() error {
 }
 
 type CreateInstanceV1RequestObserverNodeGroups struct {
+	// The number of CUs. A CU (Compute Unit) is the basic metering unit of the service. 1 CU = 1 CPU core + 4 GiB memory.
+	//
 	// example:
 	//
 	// 8
 	Cu *int32 `json:"cu,omitempty" xml:"cu,omitempty"`
+	// The number of disks.
+	//
 	// example:
 	//
 	// 1
 	DiskNumber *int32 `json:"diskNumber,omitempty" xml:"diskNumber,omitempty"`
+	// The local SSD instance type. This parameter does not need to be set for the Observer node group.
+	//
 	// example:
 	//
 	// null
 	LocalStorageInstanceType *string `json:"localStorageInstanceType,omitempty" xml:"localStorageInstanceType,omitempty"`
+	// The number of nodes.
+	//
 	// example:
 	//
 	// 3
 	ResidentNodeNumber *int32 `json:"residentNodeNumber,omitempty" xml:"residentNodeNumber,omitempty"`
+	// The specification type of the node group. Only standard is supported.
+	//
 	// example:
 	//
 	// standard
 	SpecType *string `json:"specType,omitempty" xml:"specType,omitempty"`
+	// The performance level (PL) of the cloud disk. Only pl1 is supported, which provides up to 50,000 random read/write IOPS per disk.
+	//
 	// example:
 	//
 	// pl1
 	StoragePerformanceLevel *string `json:"storagePerformanceLevel,omitempty" xml:"storagePerformanceLevel,omitempty"`
+	// The storage size. Unit: GiB.
+	//
 	// example:
 	//
 	// 100
 	StorageSize *int32 `json:"storageSize,omitempty" xml:"storageSize,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-i
@@ -935,10 +1087,14 @@ func (s *CreateInstanceV1RequestObserverNodeGroups) Validate() error {
 }
 
 type CreateInstanceV1RequestTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// v1
@@ -976,12 +1132,16 @@ func (s *CreateInstanceV1RequestTags) Validate() error {
 }
 
 type CreateInstanceV1RequestVSwitches struct {
+	// The vSwitch ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vsw-bp19mlh98tm9teyyd****
 	VswId *string `json:"VswId,omitempty" xml:"VswId,omitempty"`
+	// The zone ID of the vSwitch.
+	//
 	// example:
 	//
 	// cn-hangzhou-i

@@ -22,26 +22,40 @@ type iModifySpecTypeRequest interface {
 }
 
 type ModifySpecTypeRequest struct {
+	// Restart in fast restart mode. Default is false.
+	//
+	// - true: Restarts compute nodes in fast restart mode. Nodes restart in parallel within a batch, and batches execute sequentially.
+	//
+	// - false: Restarts compute nodes in rolling restart mode.
+	//
 	// example:
 	//
 	// true
 	FastMode *bool `json:"FastMode,omitempty" xml:"FastMode,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Compute group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ng-3d5ce6454354****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// Coupon ID.
+	//
 	// example:
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
+	// Target specifications type.
+	//
 	// This parameter is required.
 	//
 	// example:

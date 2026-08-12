@@ -16,10 +16,14 @@ type iDeleteBackupPolicyRequest interface {
 }
 
 type DeleteBackupPolicyRequest struct {
+	// Instance ID.
+	//
 	// example:
 	//
 	// c-0104730e9d*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Policy ID.
+	//
 	// example:
 	//
 	// bp-298ahiu289

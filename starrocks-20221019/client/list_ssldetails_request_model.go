@@ -14,6 +14,8 @@ type iListSSLDetailsRequest interface {
 }
 
 type ListSSLDetailsRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

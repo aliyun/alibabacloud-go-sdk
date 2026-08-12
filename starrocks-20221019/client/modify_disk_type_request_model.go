@@ -22,28 +22,38 @@ type iModifyDiskTypeRequest interface {
 }
 
 type ModifyDiskTypeRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the compute group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ng-3d5ce6454354****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// The ID of the coupon.
+	//
 	// example:
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
+	// The target disk type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// essd
 	TargetDiskType *string `json:"TargetDiskType,omitempty" xml:"TargetDiskType,omitempty"`
+	// The target disk performance level.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -31,24 +31,35 @@ type QueryPriceV1ResponseBody struct {
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxx",     "EncodedDiagnosticMessage": "xxx",     "AuthPrincipalType": "xxx",     "AuthPrincipalDisplayName": "xxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "sr:xxx"   }
-	AccessDeniedDetail *string                       `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Data               *QueryPriceV1ResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Response data.
+	Data *QueryPriceV1ResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error code.
+	//
 	// example:
 	//
 	// InvalidParams
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// Invalid params: [instance not exists].
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 32A44F0D-BFF6-5664-999A-218BBDE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -136,31 +147,48 @@ func (s *QueryPriceV1ResponseBody) Validate() error {
 }
 
 type QueryPriceV1ResponseBodyData struct {
+	// Component prices.
 	ComponentPrices []*QueryPriceV1ResponseBodyDataComponentPrices `json:"ComponentPrices,omitempty" xml:"ComponentPrices,omitempty" type:"Repeated"`
+	// Currency.
+	//
 	// example:
 	//
 	// CNY
-	Currency       *string                                     `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// Promotion information.
 	DepreciateInfo *QueryPriceV1ResponseBodyDataDepreciateInfo `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
+	// Discount amount = original amount − billable amount (including coupon discounts).
+	//
 	// example:
 	//
 	// 0
-	DiscountAmount     *float32                                          `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
-	ModuleInstance     []*QueryPriceV1ResponseBodyDataModuleInstance     `json:"ModuleInstance,omitempty" xml:"ModuleInstance,omitempty" type:"Repeated"`
+	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	// Product original price.
+	ModuleInstance []*QueryPriceV1ResponseBodyDataModuleInstance `json:"ModuleInstance,omitempty" xml:"ModuleInstance,omitempty" type:"Repeated"`
+	// Coupon information.
 	OptionalPromotions []*QueryPriceV1ResponseBodyDataOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
+	// Original amount = list price × usage.
+	//
 	// example:
 	//
 	// 8094
-	OriginalAmount *float32                             `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	Rules          []*QueryPriceV1ResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	// Response data structure.
+	Rules []*QueryPriceV1ResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// Discounted price.
+	//
 	// example:
 	//
 	// 8094
 	StandDiscountPrice *float32 `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
+	// Official discounted price.
+	//
 	// example:
 	//
 	// 8094
 	StandPrice *float32 `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
+	// Final amount.
+	//
 	// example:
 	//
 	// 8094
@@ -320,18 +348,26 @@ func (s *QueryPriceV1ResponseBodyData) Validate() error {
 }
 
 type QueryPriceV1ResponseBodyDataComponentPrices struct {
+	// Component name.
+	//
 	// example:
 	//
 	// FE
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	// Order discount amount.
+	//
 	// example:
 	//
 	// 0
 	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	// Original price.
+	//
 	// example:
 	//
 	// 3192
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	// Final price = original price − discount amount.
+	//
 	// example:
 	//
 	// 3192
@@ -387,18 +423,26 @@ func (s *QueryPriceV1ResponseBodyDataComponentPrices) Validate() error {
 }
 
 type QueryPriceV1ResponseBodyDataDepreciateInfo struct {
+	// Discount rate.
+	//
 	// example:
 	//
 	// 0
 	CheapRate *float32 `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
+	// Total official price after discount.
+	//
 	// example:
 	//
 	// 8094
 	CheapStandAmount *float32 `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
+	// Indicates whether to display the discount rate.
+	//
 	// example:
 	//
 	// true
 	IsShow *bool `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
+	// Original total official price.
+	//
 	// example:
 	//
 	// 8094
@@ -454,18 +498,26 @@ func (s *QueryPriceV1ResponseBodyDataDepreciateInfo) Validate() error {
 }
 
 type QueryPriceV1ResponseBodyDataModuleInstance struct {
+	// Pricing module code.
+	//
 	// example:
 	//
 	// cu_num
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	// Pricing module name.
+	//
 	// example:
 	//
 	// CU
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	// Discounted price.
+	//
 	// example:
 	//
 	// 1622
 	StandPrice *string `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
+	// Product original price.
+	//
 	// example:
 	//
 	// 1622
@@ -521,14 +573,20 @@ func (s *QueryPriceV1ResponseBodyDataModuleInstance) Validate() error {
 }
 
 type QueryPriceV1ResponseBodyDataOptionalPromotions struct {
+	// Coupon description.
+	//
 	// example:
 	//
 	// youhuiquan_desc
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// Coupon name.
+	//
 	// example:
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// Coupon ID.
+	//
 	// example:
 	//
 	// youhuiquan_12378dfj6
@@ -575,14 +633,20 @@ func (s *QueryPriceV1ResponseBodyDataOptionalPromotions) Validate() error {
 }
 
 type QueryPriceV1ResponseBodyDataRules struct {
+	// Quantity.
+	//
 	// example:
 	//
 	// 1
 	Amount *float32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// rule_8usi12321sa
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Rule ID.
+	//
 	// example:
 	//
 	// 7u22yshaasds

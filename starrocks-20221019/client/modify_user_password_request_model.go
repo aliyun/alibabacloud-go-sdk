@@ -16,10 +16,14 @@ type iModifyUserPasswordRequest interface {
 }
 
 type ModifyUserPasswordRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The client\\"s new password.
+	//
 	// example:
 	//
 	// ***

@@ -28,31 +28,46 @@ type iDescribeConfigHistoryResponseBody interface {
 }
 
 type DescribeConfigHistoryResponseBody struct {
+	// The access denied details.
+	//
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxx",     "EncodedDiagnosticMessage": "xxx",     "AuthPrincipalType": "xxx",     "AuthPrincipalDisplayName": "xxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "sr:xxx"   }
-	AccessDeniedDetail *string                                  `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Data               []*DescribeConfigHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The returned data.
+	Data []*DescribeConfigHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidParams
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Invalid params: [instance not exists].
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 32A44F0D-BFF6-5664-999A-218BBDE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// false
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 3
@@ -153,32 +168,48 @@ func (s *DescribeConfigHistoryResponseBody) Validate() error {
 }
 
 type DescribeConfigHistoryResponseBodyData struct {
+	// Details about the effect of the configuration change.
 	ConfigHistoryEffectDetails []*DescribeConfigHistoryResponseBodyDataConfigHistoryEffectDetails `json:"ConfigHistoryEffectDetails,omitempty" xml:"ConfigHistoryEffectDetails,omitempty" type:"Repeated"`
+	// The configuration history ID.
+	//
 	// example:
 	//
 	// 6838
-	ConfigHistoryId *string                                                `json:"ConfigHistoryId,omitempty" xml:"ConfigHistoryId,omitempty"`
-	ConfigMementos  []*DescribeConfigHistoryResponseBodyDataConfigMementos `json:"ConfigMementos,omitempty" xml:"ConfigMementos,omitempty" type:"Repeated"`
+	ConfigHistoryId *string `json:"ConfigHistoryId,omitempty" xml:"ConfigHistoryId,omitempty"`
+	// A list of configuration mementos.
+	ConfigMementos []*DescribeConfigHistoryResponseBodyDataConfigMementos `json:"ConfigMementos,omitempty" xml:"ConfigMementos,omitempty" type:"Repeated"`
+	// The effective status.
+	//
 	// example:
 	//
 	// effective
 	EffectStatus *string `json:"EffectStatus,omitempty" xml:"EffectStatus,omitempty"`
+	// Indicates whether the configuration modification has taken effect.
+	//
 	// example:
 	//
 	// true
 	Effected *bool `json:"Effected,omitempty" xml:"Effected,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 1742178604000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The ID of the user who modified the configuration.
+	//
 	// example:
 	//
 	// 149920818483****
 	OperatorId *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
+	// The reason for the configuration modification.
+	//
 	// example:
 	//
 	// Test.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// Indicates whether the change was a rollback.
+	//
 	// example:
 	//
 	// false
@@ -297,14 +328,20 @@ func (s *DescribeConfigHistoryResponseBodyData) Validate() error {
 }
 
 type DescribeConfigHistoryResponseBodyDataConfigHistoryEffectDetails struct {
+	// The effective status on the node.
+	//
 	// example:
 	//
 	// effective
 	EffectStatus *string `json:"EffectStatus,omitempty" xml:"EffectStatus,omitempty"`
+	// The compute group ID.
+	//
 	// example:
 	//
 	// ng-e6e15d2cdefdb38c
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// The node ID.
+	//
 	// example:
 	//
 	// 10000367486
@@ -351,22 +388,56 @@ func (s *DescribeConfigHistoryResponseBodyDataConfigHistoryEffectDetails) Valida
 }
 
 type DescribeConfigHistoryResponseBodyDataConfigMementos struct {
+	// The action performed. Valid values:
+	//
+	// - `MODIFY`
+	//
+	// - `ADD`
+	//
+	// - `DELETE`
+	//
 	// example:
 	//
 	// MODIFY
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The new value.
+	//
 	// example:
 	//
 	// 4
 	After *string `json:"After,omitempty" xml:"After,omitempty"`
+	// The previous value.
+	//
 	// example:
 	//
 	// 3
 	Before *string `json:"Before,omitempty" xml:"Before,omitempty"`
+	// The name of the configuration item.
+	//
 	// example:
 	//
 	// create_tablet_worker_count
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// The configuration type. Valid values:
+	//
+	// - `FE`
+	//
+	// - `BE`
+	//
+	// - `core-site.xml`
+	//
+	// - `hdfs-site.xml`
+	//
+	// - `kerberos.keytab`
+	//
+	// - `krb5.conf`
+	//
+	// - `jindosdk.cfg`
+	//
+	// - `hadoop-env.sh`
+	//
+	// - `hive-site.xml`
+	//
 	// example:
 	//
 	// FE

@@ -26,32 +26,46 @@ type iDescribeConfigHistoryRequest interface {
 }
 
 type DescribeConfigHistoryRequest struct {
+	// Filters the results by the effective status of the configuration.
+	//
 	// example:
 	//
 	// effective
 	EffectStatuses *string `json:"EffectStatuses,omitempty" xml:"EffectStatuses,omitempty"`
+	// The end time for the query, specified as a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1742178604000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to return the total number of configuration history records.
+	//
 	// example:
 	//
 	// true
 	NeedTotal *bool `json:"NeedTotal,omitempty" xml:"NeedTotal,omitempty"`
+	// The page number. The default value is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. The default value is 10.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start time for the query, specified as a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1742178604000

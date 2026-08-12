@@ -20,22 +20,30 @@ type iQueryModifyDiskPerformanceLevelPriceRequest interface {
 }
 
 type QueryModifyDiskPerformanceLevelPriceRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c-a7fa8b85ff6bced6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The compute group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ng-204ea5d711860b4d
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// The coupon ID.
+	//
 	// example:
 	//
 	// youhuiquan_12378dfj6
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
+	// The target disk performance level.
+	//
 	// This parameter is required.
 	//
 	// example:

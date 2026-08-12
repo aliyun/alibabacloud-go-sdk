@@ -14,6 +14,8 @@ type iEnableInternalSlbRequest interface {
 }
 
 type EnableInternalSlbRequest struct {
+  // The instance ID of the EMR Serverless StarRocks instance.
+  // 
   // example:
   // 
   // c-b25e21e24388****

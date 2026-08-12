@@ -32,35 +32,52 @@ type iModifyInstanceConfigRequest interface {
 }
 
 type ModifyInstanceConfigRequest struct {
+	// [Deprecated] List of configurations to add
+	//
 	// example:
 	//
 	// []
 	AddConfigList *string `json:"AddConfigList,omitempty" xml:"AddConfigList,omitempty"`
+	// Additional information
+	//
 	// example:
 	//
 	// [{\\"type\\":\\"sas_analysis_online-sas-operation-log-sh-sas-event-rasp\\",\\"configItemList\\":[{\\"key\\":\\"item_level\\",\\"valueList\\":[\\"all\\"]},{\\"key\\":\\"alert_type\\",\\"valueList\\":[\\"all\\"]}]}]
 	ConfigList *string `json:"ConfigList,omitempty" xml:"ConfigList,omitempty"`
+	// [Deprecated] List of configurations to delete
+	//
 	// example:
 	//
 	// []
 	DeleteConfigList *string `json:"DeleteConfigList,omitempty" xml:"DeleteConfigList,omitempty"`
+	// Sample ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c-991ca6180620****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Reason for modification
+	//
 	// example:
 	//
 	// test
-	Reason          *string              `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	ConfigsToAdd    []*InstanceConfigDto `json:"configsToAdd,omitempty" xml:"configsToAdd,omitempty" type:"Repeated"`
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// Configurations to add
+	ConfigsToAdd []*InstanceConfigDto `json:"configsToAdd,omitempty" xml:"configsToAdd,omitempty" type:"Repeated"`
+	// Configurations to delete
 	ConfigsToDelete []*InstanceConfigDto `json:"configsToDelete,omitempty" xml:"configsToDelete,omitempty" type:"Repeated"`
+	// Configurations to update
 	ConfigsToUpdate []*InstanceConfigDto `json:"configsToUpdate,omitempty" xml:"configsToUpdate,omitempty" type:"Repeated"`
+	// Whether to restart quickly
+	//
 	// example:
 	//
 	// true
 	FastMode *bool `json:"fastMode,omitempty" xml:"fastMode,omitempty"`
+	// Whether to restart.
+	//
 	// example:
 	//
 	// true

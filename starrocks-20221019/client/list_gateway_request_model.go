@@ -14,6 +14,8 @@ type iListGatewayRequest interface {
 }
 
 type ListGatewayRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// c-b25e21e24388****

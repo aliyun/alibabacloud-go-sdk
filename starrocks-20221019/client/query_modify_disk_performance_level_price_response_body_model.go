@@ -26,29 +26,40 @@ type iQueryModifyDiskPerformanceLevelPriceResponseBody interface {
 }
 
 type QueryModifyDiskPerformanceLevelPriceResponseBody struct {
-	// AccessDeniedDetail
+	// The details about access denial.
 	//
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxx",     "EncodedDiagnosticMessage": "xxx",     "AuthPrincipalType": "xxx",     "AuthPrincipalDisplayName": "xxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "sr:xxx"   }
-	AccessDeniedDetail *string                                               `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Data               *QueryModifyDiskPerformanceLevelPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The order ID.
+	Data *QueryModifyDiskPerformanceLevelPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidParams
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Invalid params: [instance not exists].
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The HTTP status code of the request.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 86865DD4-7733-5446-B52B-C9DA71961B76
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
@@ -136,33 +147,56 @@ func (s *QueryModifyDiskPerformanceLevelPriceResponseBody) Validate() error {
 }
 
 type QueryModifyDiskPerformanceLevelPriceResponseBodyData struct {
+	// The component prices.
 	ComponentPrices []*QueryModifyDiskPerformanceLevelPriceResponseBodyDataComponentPrices `json:"ComponentPrices,omitempty" xml:"ComponentPrices,omitempty" type:"Repeated"`
+	// The currency. Valid values:
+	//
+	// - CNY: Chinese Yuan.
+	//
+	// - USD: US Dollar.
+	//
+	// - JPY: Japanese Yen.
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The total official price after the price reduction.
+	//
 	// example:
 	//
 	// 17629
 	DepreciateInfo *QueryModifyDiskPerformanceLevelPriceResponseBodyDataDepreciateInfo `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
+	// The discount amount. Discount amount = Original price - Amount payable (including the amount deducted by coupons).
+	//
 	// example:
 	//
 	// 0
-	DiscountAmount     *float32                                                                  `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	// The coupon information.
 	OptionalPromotions []*QueryModifyDiskPerformanceLevelPriceResponseBodyDataOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
+	// The original price. Original price = List price × Usage.
+	//
 	// example:
 	//
 	// 17629
-	OriginalAmount *float32                                                     `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	Rules          []*QueryModifyDiskPerformanceLevelPriceResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	// A list of hit rules. Each item is a rule. Only information about the hit rules and their locations is returned.
+	Rules []*QueryModifyDiskPerformanceLevelPriceResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The discounted price based on the official discount.
+	//
 	// example:
 	//
 	// 17629
 	StandDiscountPrice *float32 `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
+	// The official discounted price.
+	//
 	// example:
 	//
 	// 17629
 	StandPrice *float32 `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
+	// The amount.
+	//
 	// example:
 	//
 	// 17629
@@ -304,18 +338,26 @@ func (s *QueryModifyDiskPerformanceLevelPriceResponseBodyData) Validate() error 
 }
 
 type QueryModifyDiskPerformanceLevelPriceResponseBodyDataComponentPrices struct {
+	// Resource group ID
+	//
 	// example:
 	//
 	// disk_type
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	// The discount.
+	//
 	// example:
 	//
 	// 0
 	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	// The original price.
+	//
 	// example:
 	//
 	// 17629
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	// The final price, which is the original price minus the discount.
+	//
 	// example:
 	//
 	// 17629
@@ -371,18 +413,26 @@ func (s *QueryModifyDiskPerformanceLevelPriceResponseBodyDataComponentPrices) Va
 }
 
 type QueryModifyDiskPerformanceLevelPriceResponseBodyDataDepreciateInfo struct {
+	// The price reduction ratio.
+	//
 	// example:
 	//
 	// 0
 	CheapRate *float32 `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
+	// The total official price after the price reduction.
+	//
 	// example:
 	//
 	// 17629
 	CheapStandAmount *float32 `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
+	// Indicates whether to display the price reduction range.
+	//
 	// example:
 	//
 	// true
 	IsShow *bool `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
+	// The original total official price.
+	//
 	// example:
 	//
 	// 17629
@@ -438,14 +488,20 @@ func (s *QueryModifyDiskPerformanceLevelPriceResponseBodyDataDepreciateInfo) Val
 }
 
 type QueryModifyDiskPerformanceLevelPriceResponseBodyDataOptionalPromotions struct {
+	// The coupon description.
+	//
 	// example:
 	//
 	// youhuiquan_desc
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// The coupon name.
+	//
 	// example:
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// The coupon ID.
+	//
 	// example:
 	//
 	// youhuiquan_12378dfj6
@@ -492,14 +548,20 @@ func (s *QueryModifyDiskPerformanceLevelPriceResponseBodyDataOptionalPromotions)
 }
 
 type QueryModifyDiskPerformanceLevelPriceResponseBodyDataRules struct {
+	// The number of purchased resources.
+	//
 	// example:
 	//
 	// 1
 	Amount *float32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// rule_128nsg182
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 78hujis12jd
