@@ -29,6 +29,8 @@ type iUpdateResponseRuleRequest interface {
 	GetResponseRuleName() *string
 	SetResponseRulePriority(v int32) *UpdateResponseRuleRequest
 	GetResponseRulePriority() *int32
+	SetResponseRuleRemark(v string) *UpdateResponseRuleRequest
+	GetResponseRuleRemark() *string
 	SetResponseRuleStatus(v int32) *UpdateResponseRuleRequest
 	GetResponseRuleStatus() *int32
 	SetResponseTriggerType(v string) *UpdateResponseRuleRequest
@@ -36,7 +38,7 @@ type iUpdateResponseRuleRequest interface {
 }
 
 type UpdateResponseRuleRequest struct {
-	// The language of the response messages. Valid values:
+	// The language of the response. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -46,93 +48,94 @@ type UpdateResponseRuleRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of results to return for a single request.
+	// The maximum number of data records to read in this request.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results. If you do not specify this parameter, the query starts from the first page.
+	// The pagination token that marks the position from which to start reading. If this parameter is left empty, data is read from the beginning.
 	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region where the data management center of Cloud SIEM is located. Select a region based on the location of your assets. Valid values:
+	// The region where the data management center of the threat analysis feature is located. Specify the management center based on the region of your assets. Valid values:
 	//
-	// - `cn-hangzhou`: China (Hangzhou). For assets in the Chinese mainland.
+	// - cn-hangzhou: the Chinese mainland.
 	//
-	// - `ap-southeast-1`: Asia Pacific SE 1 (Singapore). For assets in overseas regions.
+	// - ap-southeast-1: outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The action configuration for the automatic response rule.
+	// The action configuration of the automated response rule.
 	//
 	// example:
 	//
 	// [{"actionType":"doPlaybook","playbookName":"block waf IP","playbookUuid":"system_aliyun_waf_whole_process_book","disposeParam":{"period":"7d"}}]
 	ResponseActionConfig *string `json:"ResponseActionConfig,omitempty" xml:"ResponseActionConfig,omitempty"`
-	// The action for the automatic response rule. Valid values:
+	// The action type of the automated response rule. Valid values:
 	//
-	// - `doPlaybook`: Executes a playbook.
+	// - doPlaybook: execute a playbook.
 	//
-	// - `changeEventStatus`: Updates the event status.
+	// - changeEventStatus: update the event status.
 	//
-	// - `changeThreatLevel`: Updates the event threat level.
+	// - changeThreatLevel: update the event threat level.
 	//
-	// - `addEventTag`: Adds an event tag.
+	// - addEventTag: add an event label.
 	//
-	// - `deleteEventTag`: Deletes an event tag.
+	// - deleteEventTag: delete an event label.
 	//
-	// - `alertWhitelist`: Adds the alert to a whitelist.
+	// - alertWhitelist: add the alert to the whitelist.
 	//
 	// example:
 	//
 	// alertWhitelist
 	ResponseActionType *string `json:"ResponseActionType,omitempty" xml:"ResponseActionType,omitempty"`
-	// The trigger conditions for the rule.
+	// The trigger condition configuration of the rule.
 	//
 	// example:
 	//
 	// [{"left":{"value":"threat_level"},"operator":"equals","right":{"value":"suspicious"}}]
 	ResponseExecutionCondition *string `json:"ResponseExecutionCondition,omitempty" xml:"ResponseExecutionCondition,omitempty"`
-	// The ID of the automatic response rule.
+	// The ID of the automated response rule.
 	//
 	// example:
 	//
 	// 440918
 	ResponseRuleId *string `json:"ResponseRuleId,omitempty" xml:"ResponseRuleId,omitempty"`
-	// The name of the automatic response rule.
+	// The name of the automated response rule.
 	//
 	// example:
 	//
 	// Send Notification When Generating Urgent Incident
 	ResponseRuleName *string `json:"ResponseRuleName,omitempty" xml:"ResponseRuleName,omitempty"`
-	// The execution priority of the automatic response rule.
+	// The execution priority of the automated response rule.
 	//
 	// example:
 	//
 	// 1
-	ResponseRulePriority *int32 `json:"ResponseRulePriority,omitempty" xml:"ResponseRulePriority,omitempty"`
-	// The status of the rule. Valid values:
+	ResponseRulePriority *int32  `json:"ResponseRulePriority,omitempty" xml:"ResponseRulePriority,omitempty"`
+	ResponseRuleRemark   *string `json:"ResponseRuleRemark,omitempty" xml:"ResponseRuleRemark,omitempty"`
+	// The status of the automated response rule. Valid values:
 	//
-	// - `0`: disabled
+	// - 0: disabled.
 	//
-	// - `100`: enabled
+	// - 100: enabled.
 	//
 	// example:
 	//
 	// 0
 	ResponseRuleStatus *int32 `json:"ResponseRuleStatus,omitempty" xml:"ResponseRuleStatus,omitempty"`
-	// The trigger for the automatic response rule. Valid values:
+	// The trigger type of the automated response rule. Valid values:
 	//
-	// - `event`: The rule is triggered when an event occurs.
+	// - event: event occurred.
 	//
-	// - `event_update`: The rule is triggered when an event is updated.
+	// - event_update: event updated.
 	//
-	// - `alert`: The rule is triggered when an alert is generated.
+	// - alert: alert occurred.
 	//
 	// example:
 	//
@@ -186,6 +189,10 @@ func (s *UpdateResponseRuleRequest) GetResponseRuleName() *string {
 
 func (s *UpdateResponseRuleRequest) GetResponseRulePriority() *int32 {
 	return s.ResponseRulePriority
+}
+
+func (s *UpdateResponseRuleRequest) GetResponseRuleRemark() *string {
+	return s.ResponseRuleRemark
 }
 
 func (s *UpdateResponseRuleRequest) GetResponseRuleStatus() *int32 {
@@ -243,6 +250,11 @@ func (s *UpdateResponseRuleRequest) SetResponseRuleName(v string) *UpdateRespons
 
 func (s *UpdateResponseRuleRequest) SetResponseRulePriority(v int32) *UpdateResponseRuleRequest {
 	s.ResponseRulePriority = &v
+	return s
+}
+
+func (s *UpdateResponseRuleRequest) SetResponseRuleRemark(v string) *UpdateResponseRuleRequest {
+	s.ResponseRuleRemark = &v
 	return s
 }
 

@@ -40,21 +40,21 @@ type iListResponseRulesRequest interface {
 type ListResponseRulesRequest struct {
 	// The language of the response. Valid values:
 	//
-	// - **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries to return.
+	// The maximum number of data records to read in this request.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to retrieve the next page of results. If you leave this parameter empty, the first page of results is returned.
+	// The pagination token that marks the current reading position. Leave this parameter empty to read from the beginning.
 	//
 	// example:
 	//
@@ -76,73 +76,73 @@ type ListResponseRulesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region of the data management center for threat analysis. Select the region where your assets are located. Valid values:
+	// The region where the threat analysis data management center resides. Select the management center based on the region of your assets. Valid values:
 	//
-	// - `cn-hangzhou`: Your assets are in the Chinese mainland or China (Hong Kong).
+	// - cn-hangzhou: Your assets belong to the Chinese mainland or Hong Kong (China).
 	//
-	// - `ap-southeast-1`: Your assets are in international regions.
+	// - ap-southeast-1: Your assets belong to regions outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The action of the automated response rule. Valid values:
+	// The action type of the automatic response rule. Valid values:
 	//
-	// - `doPlaybook`: Executes a playbook.
+	// - doPlaybook: execute a playbook
 	//
-	// - `changeEventStatus`: Updates the status of an event.
+	// - changeEventStatus: update event status
 	//
-	// - `changeThreatLevel`: Updates the threat level of an event.
+	// - changeThreatLevel: update event threat level
 	//
-	// - `addEventTag`: Adds a tag to an event.
+	// - addEventTag: add an event label
 	//
-	// - `deleteEventTag`: Removes a tag from an event.
+	// - deleteEventTag: delete an event label
 	//
-	// - `alertWhitelist`: Adds an alert to the allowlist.
+	// - alertWhitelist: add alert to whitelist
 	//
 	// example:
 	//
 	// doPlaybook
 	ResponseActionType *string `json:"ResponseActionType,omitempty" xml:"ResponseActionType,omitempty"`
-	// The name of the automated response rule.
+	// The name of the automatic response rule.
 	//
 	// example:
 	//
 	// Send Notification When Generating Urgent Incident
 	ResponseRuleName *string `json:"ResponseRuleName,omitempty" xml:"ResponseRuleName,omitempty"`
-	// The status of the automated response rule. Valid values:
+	// The status of the automatic response rule. Valid values:
 	//
-	// - `0`: disabled
+	// - 0: disabled
 	//
-	// - `100`: enabled
+	// - 100: enabled
 	//
 	// example:
 	//
 	// 0
 	ResponseRuleStatus *int32 `json:"ResponseRuleStatus,omitempty" xml:"ResponseRuleStatus,omitempty"`
-	// The type of the automated response rule. Valid values:
+	// The type of the response rule. Valid values:
 	//
-	// - `preset`: A preset rule.
+	// - preset: predefined
 	//
-	// - `custom`: A custom rule.
+	// - custom: custom
 	//
 	// example:
 	//
 	// custom
 	ResponseRuleType *string `json:"ResponseRuleType,omitempty" xml:"ResponseRuleType,omitempty"`
-	// The trigger type of the automated response rule. Valid values:
+	// The trigger type of the automatic response rule. Valid values:
 	//
-	// - `event`: An event is generated.
+	// - event: event occurred
 	//
-	// - `event_update`: An event is updated.
+	// - event_update: event updated
 	//
-	// - `alert`: An alert is generated.
+	// - alert: alert occurred
 	//
 	// example:
 	//
 	// event
 	ResponseTriggerType *string `json:"ResponseTriggerType,omitempty" xml:"ResponseTriggerType,omitempty"`
-	// The ID of a member. An administrator can use this parameter to view data as the specified member.
+	// The user ID that the administrator switches to when viewing from another member\\"s perspective.
 	//
 	// example:
 	//
@@ -150,9 +150,9 @@ type ListResponseRulesRequest struct {
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 	// The view type. Valid values:
 	//
-	// - `0`: Displays data from the current Alibaba Cloud account.
+	// - 0: the current Alibaba Cloud account view.
 	//
-	// - `1`: Displays data from all accounts in the enterprise.
+	// - 1: the view of all accounts in the enterprise.
 	//
 	// example:
 	//

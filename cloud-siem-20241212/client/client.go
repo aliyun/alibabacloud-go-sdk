@@ -1338,7 +1338,7 @@ func (client *Client) CreateProduct(request *CreateProductRequest) (_result *Cre
 //
 // Description:
 //
-// Some parameters require complex JSON configurations. We provide a helper class with configuration examples. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - CreateResponseRuleRequest
 //
@@ -1389,6 +1389,10 @@ func (client *Client) CreateResponseRuleWithOptions(request *CreateResponseRuleR
 		body["ResponseRulePriority"] = request.ResponseRulePriority
 	}
 
+	if !dara.IsNil(request.ResponseRuleRemark) {
+		body["ResponseRuleRemark"] = request.ResponseRuleRemark
+	}
+
 	if !dara.IsNil(request.ResponseTriggerType) {
 		body["ResponseTriggerType"] = request.ResponseTriggerType
 	}
@@ -1430,7 +1434,7 @@ func (client *Client) CreateResponseRuleWithOptions(request *CreateResponseRuleR
 //
 // Description:
 //
-// Some parameters require complex JSON configurations. We provide a helper class with configuration examples. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - CreateResponseRuleRequest
 //
@@ -4005,6 +4009,124 @@ func (client *Client) GetUserConfig(request *GetUserConfigRequest) (_result *Get
 
 // Summary:
 //
+// 获取告警分组列表
+//
+// Description:
+//
+// 入参JsonConfig是一个非常复杂的JSON配置，为此我们提供了辅助工具类帮助具体配置示例，请参考[Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java)。
+//
+// @param request - ListAlertAggregationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAlertAggregationsResponse
+func (client *Client) ListAlertAggregationsWithOptions(request *ListAlertAggregationsRequest, runtime *dara.RuntimeOptions) (_result *ListAlertAggregationsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AggregationType) {
+		body["AggregationType"] = request.AggregationType
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.QueryCondition) {
+		body["QueryCondition"] = request.QueryCondition
+	}
+
+	if !dara.IsNil(request.QueryViewId) {
+		body["QueryViewId"] = request.QueryViewId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RoleFor) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !dara.IsNil(request.RoleType) {
+		body["RoleType"] = request.RoleType
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAlertAggregations"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAlertAggregationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取告警分组列表
+//
+// Description:
+//
+// 入参JsonConfig是一个非常复杂的JSON配置，为此我们提供了辅助工具类帮助具体配置示例，请参考[Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java)。
+//
+// @param request - ListAlertAggregationsRequest
+//
+// @return ListAlertAggregationsResponse
+func (client *Client) ListAlertAggregations(request *ListAlertAggregationsRequest) (_result *ListAlertAggregationsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAlertAggregationsResponse{}
+	_body, _err := client.ListAlertAggregationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves a list of alerts.
 //
 // Description:
@@ -5221,7 +5343,7 @@ func (client *Client) ListDetectionRules(request *ListDetectionRulesRequest) (_r
 //
 // Notifications are subject to frequency and time restrictions.
 //
-// Each user receives a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time window.
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
 //
 // @param tmpReq - ListIncidentsRequest
 //
@@ -5367,7 +5489,7 @@ func (client *Client) ListIncidentsWithOptions(tmpReq *ListIncidentsRequest, run
 //
 // Notifications are subject to frequency and time restrictions.
 //
-// Each user receives a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time window.
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
 //
 // @param request - ListIncidentsRequest
 //
@@ -6663,11 +6785,13 @@ func (client *Client) ListResponseRuleFields(request *ListResponseRuleFieldsRequ
 
 // Summary:
 //
-// # Paginated query of auto-response rules
+// Queries automatic response rules by paging.
 //
 // Description:
 //
-// Each user can receive up to two notifications per day between 08:00 and 20:00.
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user receives a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
 //
 // @param request - ListResponseRulesRequest
 //
@@ -6759,11 +6883,13 @@ func (client *Client) ListResponseRulesWithOptions(request *ListResponseRulesReq
 
 // Summary:
 //
-// # Paginated query of auto-response rules
+// Queries automatic response rules by paging.
 //
 // Description:
 //
-// Each user can receive up to two notifications per day between 08:00 and 20:00.
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user receives a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
 //
 // @param request - ListResponseRulesRequest
 //
@@ -9305,11 +9431,11 @@ func (client *Client) UpdateProduct(request *UpdateProductRequest) (_result *Upd
 
 // Summary:
 //
-// Updates an automatic response rule.
+// Updates an automated response rule.
 //
 // Description:
 //
-// Some request parameters require complex JSON configurations. We provide a helper utility class with configuration examples.
+// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - UpdateResponseRuleRequest
 //
@@ -9364,6 +9490,10 @@ func (client *Client) UpdateResponseRuleWithOptions(request *UpdateResponseRuleR
 		body["ResponseRulePriority"] = request.ResponseRulePriority
 	}
 
+	if !dara.IsNil(request.ResponseRuleRemark) {
+		body["ResponseRuleRemark"] = request.ResponseRuleRemark
+	}
+
 	if !dara.IsNil(request.ResponseRuleStatus) {
 		body["ResponseRuleStatus"] = request.ResponseRuleStatus
 	}
@@ -9397,11 +9527,11 @@ func (client *Client) UpdateResponseRuleWithOptions(request *UpdateResponseRuleR
 
 // Summary:
 //
-// Updates an automatic response rule.
+// Updates an automated response rule.
 //
 // Description:
 //
-// Some request parameters require complex JSON configurations. We provide a helper utility class with configuration examples.
+// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - UpdateResponseRuleRequest
 //

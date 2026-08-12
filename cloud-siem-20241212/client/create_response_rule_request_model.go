@@ -27,6 +27,8 @@ type iCreateResponseRuleRequest interface {
 	GetResponseRuleName() *string
 	SetResponseRulePriority(v string) *CreateResponseRuleRequest
 	GetResponseRulePriority() *string
+	SetResponseRuleRemark(v string) *CreateResponseRuleRequest
+	GetResponseRuleRemark() *string
 	SetResponseTriggerType(v string) *CreateResponseRuleRequest
 	GetResponseTriggerType() *string
 	SetRoleFor(v int64) *CreateResponseRuleRequest
@@ -38,61 +40,61 @@ type iCreateResponseRuleRequest interface {
 type CreateResponseRuleRequest struct {
 	// The language of the response. Valid values:
 	//
-	// - **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of results to return.
+	// The maximum number of data records to read in this request.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that specifies the position from which to start the query. If you do not specify this parameter, the query starts from the beginning.
+	// The pagination token that marks the current reading position. Leave this parameter empty to start reading from the beginning.
 	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The deployment region of the data management center for threat analysis. You must select a region based on the location of your assets. Valid values:
+	// The region where the threat detection and response data management center resides. Specify the management center based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: Your assets are in the Chinese mainland or Hong Kong (China).
+	// - cn-hangzhou: the Chinese mainland and Hong Kong (China).
 	//
-	// - ap-southeast-1: Your assets are in regions outside the Chinese mainland.
+	// - ap-southeast-1: regions outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The action configuration, specified as a JSON string.
+	// The action configuration of the automatic response rule.
 	//
 	// example:
 	//
 	// [{"actionType":"doPlaybook","playbookName":"block waf IP","playbookUuid":"system_aliyun_waf_whole_process_book","disposeParam":{"period":"7d"}}]
 	ResponseActionConfig *string `json:"ResponseActionConfig,omitempty" xml:"ResponseActionConfig,omitempty"`
-	// The action type for the automatic response rule. Valid values:
+	// The action type of the automatic response rule. Valid values:
 	//
-	// - doPlaybook: Runs a playbook.
+	// - doPlaybook: execute a playbook.
 	//
-	// - changeEventStatus: Changes the status of an event.
+	// - changeEventStatus: update the event status.
 	//
-	// - changeThreatLevel: Changes the threat level of an event.
+	// - changeThreatLevel: update the event threat level.
 	//
-	// - addEventTag: Adds a tag to an event.
+	// - addEventTag: add an event label.
 	//
-	// - deleteEventTag: Deletes a tag from an event.
+	// - deleteEventTag: delete an event label.
 	//
-	// - alertWhitelist: Adds an alert to the allowlist.
+	// - alertWhitelist: add the alert to the whitelist.
 	//
 	// example:
 	//
 	// doPlaybook
 	ResponseActionType *string `json:"ResponseActionType,omitempty" xml:"ResponseActionType,omitempty"`
-	// The trigger conditions for the rule, specified as a JSON string.
+	// The trigger condition configuration of the rule.
 	//
 	// example:
 	//
@@ -110,29 +112,30 @@ type CreateResponseRuleRequest struct {
 	//
 	// 1
 	ResponseRulePriority *string `json:"ResponseRulePriority,omitempty" xml:"ResponseRulePriority,omitempty"`
-	// The trigger type for the automatic response rule. Valid values:
+	ResponseRuleRemark   *string `json:"ResponseRuleRemark,omitempty" xml:"ResponseRuleRemark,omitempty"`
+	// The trigger type of the automatic response rule. Valid values:
 	//
-	// - event: An event is generated.
+	// - event: event occurrence.
 	//
-	// - event_update: An event is updated.
+	// - event_update: event update.
 	//
-	// - alert: An alert is generated.
+	// - alert: alert occurrence.
 	//
 	// example:
 	//
 	// event
 	ResponseTriggerType *string `json:"ResponseTriggerType,omitempty" xml:"ResponseTriggerType,omitempty"`
-	// The ID of the member account. An administrator uses this parameter to operate on behalf of the specified member.
+	// The user ID that the administrator switches to for viewing from the perspective of another member.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The operational scope. Valid values:
+	// The view type. Valid values:
 	//
-	// - 0: Sets the scope to the current Alibaba Cloud account.
+	// - 0: the view of the current Alibaba Cloud account.
 	//
-	// - 1: Sets the scope to all accounts in the enterprise.
+	// - 1: the view of all accounts in the enterprise.
 	//
 	// example:
 	//
@@ -182,6 +185,10 @@ func (s *CreateResponseRuleRequest) GetResponseRuleName() *string {
 
 func (s *CreateResponseRuleRequest) GetResponseRulePriority() *string {
 	return s.ResponseRulePriority
+}
+
+func (s *CreateResponseRuleRequest) GetResponseRuleRemark() *string {
+	return s.ResponseRuleRemark
 }
 
 func (s *CreateResponseRuleRequest) GetResponseTriggerType() *string {
@@ -238,6 +245,11 @@ func (s *CreateResponseRuleRequest) SetResponseRuleName(v string) *CreateRespons
 
 func (s *CreateResponseRuleRequest) SetResponseRulePriority(v string) *CreateResponseRuleRequest {
 	s.ResponseRulePriority = &v
+	return s
+}
+
+func (s *CreateResponseRuleRequest) SetResponseRuleRemark(v string) *CreateResponseRuleRequest {
+	s.ResponseRuleRemark = &v
 	return s
 }
 

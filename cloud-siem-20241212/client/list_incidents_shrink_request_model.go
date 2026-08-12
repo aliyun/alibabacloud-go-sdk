@@ -65,7 +65,7 @@ type ListIncidentsShrinkRequest struct {
 	// sas_71e24437d2797ce8fc59692905a4****
 	AlertUuid        *string   `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
 	DetectionRuleIds []*string `json:"DetectionRuleIds,omitempty" xml:"DetectionRuleIds,omitempty" type:"Repeated"`
-	// The end time as a UNIX timestamp in milliseconds (ms).
+	// The timestamp of the end time, in milliseconds (ms).
 	//
 	// example:
 	//
@@ -78,14 +78,6 @@ type ListIncidentsShrinkRequest struct {
 	// ECS unusual log in
 	IncidentName *string `json:"IncidentName,omitempty" xml:"IncidentName,omitempty"`
 	// The event status. Valid values:
-	//
-	// - 0: Unhandled.
-	//
-	// - 1: Handling.
-	//
-	// - 5: Handling failed.
-	//
-	// - 10: Handled.
 	//
 	// example:
 	//
@@ -103,17 +95,13 @@ type ListIncidentsShrinkRequest struct {
 	IncidentTags *string `json:"IncidentTags,omitempty" xml:"IncidentTags,omitempty"`
 	// The list of event UUIDs, separated by commas (,).
 	IncidentUuidsShrink *string `json:"IncidentUuids,omitempty" xml:"IncidentUuids,omitempty"`
-	// The language type of the response messages. Valid values:
-	//
-	// - **zh*	- (default): Chinese.
-	//
-	// - **en**: English.
+	// The language type of the response message. Valid values:
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries to return.
+	// The maximum number of entries to return in this request.
 	//
 	// example:
 	//
@@ -127,19 +115,15 @@ type ListIncidentsShrinkRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The sort direction. Valid values:
 	//
-	// - **desc*	- (default): Descending order.
-	//
-	// - **asc**: Ascending order.
-	//
 	// example:
 	//
 	// desc
 	OrderDirection *string `json:"OrderDirection,omitempty" xml:"OrderDirection,omitempty"`
-	// The name of the field used to sort the list.
+	// The field by which the list is sorted.
 	//
-	// - GmtModified: Event update time (default).
+	// - GmtModified: event update time (default).
 	//
-	// - ThreatScore: Threat score.
+	// - ThreatScore: threat score.
 	//
 	// example:
 	//
@@ -165,10 +149,6 @@ type ListIncidentsShrinkRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region where the threat analysis data management center is located. Select the management center based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: Your assets are located in the Chinese mainland.
-	//
-	// - ap-southeast-1: Your assets are located outside China.
-	//
 	// example:
 	//
 	// cn-hangzhou
@@ -185,7 +165,7 @@ type ListIncidentsShrinkRequest struct {
 	//
 	// b920ed22259f5412099e97dfda96****
 	RelateEntityId *string `json:"RelateEntityId,omitempty" xml:"RelateEntityId,omitempty"`
-	// The user ID of the member to which the administrator switches the view.
+	// The user ID that the administrator switches to for viewing from another member\\"s perspective.
 	//
 	// example:
 	//
@@ -193,31 +173,17 @@ type ListIncidentsShrinkRequest struct {
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 	// The view type. Valid values:
 	//
-	// - 0: The view of the current Alibaba Cloud account.
-	//
-	// - 1: The view of all accounts in the enterprise.
-	//
 	// example:
 	//
 	// 1
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The start time as a UNIX timestamp in milliseconds (ms).
+	// The timestamp of the start time, in milliseconds (ms).
 	//
 	// example:
 	//
 	// 1690102943000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The threat level. Valid values:
-	//
-	// - 5: Critical.
-	//
-	// - 4: High.
-	//
-	// - 3: Medium.
-	//
-	// - 2: Low.
-	//
-	// - 1: Informational.
 	//
 	// example:
 	//

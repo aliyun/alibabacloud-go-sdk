@@ -26,9 +26,9 @@ type iListIncidentsResponseBody interface {
 }
 
 type ListIncidentsResponseBody struct {
-	// The list of events.
+	// The list of incidents.
 	Incidents []*ListIncidentsResponseBodyIncidents `json:"Incidents,omitempty" xml:"Incidents,omitempty" type:"Repeated"`
-	// The maximum number of entries to return.
+	// The maximum number of entries to return in this request.
 	//
 	// example:
 	//
@@ -159,7 +159,7 @@ type ListIncidentsResponseBodyIncidents struct {
 	//
 	// 1603248483000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The detection rule ID.
+	// The ID of the detection rule.
 	//
 	// example:
 	//
@@ -174,21 +174,13 @@ type ListIncidentsResponseBodyIncidents struct {
 	//
 	// ECS unusual log in
 	IncidentName *string `json:"IncidentName,omitempty" xml:"IncidentName,omitempty"`
-	// The event remark.
+	// The remark of the incident.
 	//
 	// example:
 	//
 	// remark
 	IncidentRemark *string `json:"IncidentRemark,omitempty" xml:"IncidentRemark,omitempty"`
 	// The event status. Valid values:
-	//
-	// - 0: Unhandled.
-	//
-	// - 1: Handling.
-	//
-	// - 5: Handling failed.
-	//
-	// - 10: Handled.
 	//
 	// example:
 	//
@@ -200,7 +192,7 @@ type ListIncidentsResponseBodyIncidents struct {
 	//
 	// ["sys:data_source:siem","sys:trigger_type:auto"]
 	IncidentTags *string `json:"IncidentTags,omitempty" xml:"IncidentTags,omitempty"`
-	// The event UUID.
+	// The UUID of the incident.
 	//
 	// example:
 	//
@@ -212,13 +204,13 @@ type ListIncidentsResponseBodyIncidents struct {
 	//
 	// 1234567890xxxxxx
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The number of alerts associated with the event.
+	// The number of alerts associated with the incident.
 	//
 	// example:
 	//
 	// 3
 	RelateAlertCount *int32 `json:"RelateAlertCount,omitempty" xml:"RelateAlertCount,omitempty"`
-	// The number of assets associated with the event.
+	// The number of assets associated with the incident.
 	//
 	// example:
 	//
@@ -231,16 +223,6 @@ type ListIncidentsResponseBodyIncidents struct {
 	// 1603248483000
 	ResponseTime *int64 `json:"ResponseTime,omitempty" xml:"ResponseTime,omitempty"`
 	// The threat level. Valid values:
-	//
-	// - 5: Critical.
-	//
-	// - 4: High.
-	//
-	// - 3: Medium.
-	//
-	// - 2: Low.
-	//
-	// - 1: Informational.
 	//
 	// example:
 	//

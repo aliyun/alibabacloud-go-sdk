@@ -26,13 +26,13 @@ type iListResponseRulesResponseBody interface {
 }
 
 type ListResponseRulesResponseBody struct {
-	// The maximum number of entries returned for the current request.
+	// The maximum number of records returned in this request.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The position where the current query ends. If this parameter is empty, all data is returned.
+	// The position from which the current call starts reading. An empty value indicates that all data has been read.
 	//
 	// This parameter is required.
 	//
@@ -52,15 +52,15 @@ type ListResponseRulesResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of automated response rules.
+	// The list of automatic response rules.
 	ResponseRules []*ListResponseRulesResponseBodyResponseRules `json:"ResponseRules,omitempty" xml:"ResponseRules,omitempty" type:"Repeated"`
-	// The total number of entries that match the query conditions. This parameter is optional and may not always be returned.
+	// The total number of records that match the request conditions. This parameter is optional and is not returned by default.
 	//
 	// example:
 	//
@@ -159,59 +159,60 @@ type ListResponseRulesResponseBodyResponseRules struct {
 	//
 	// 1769843323000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The configuration of the action that is performed if the automated response rule is triggered.
+	// The action configuration of the automatic response rule.
 	//
 	// example:
 	//
 	// [{"actionType":"doPlaybook","playbookName":"block waf IP","playbookUuid":"system_aliyun_waf_whole_process_book","disposeParam":{"period":"7d"}}]
 	ResponseActionConfig *string `json:"ResponseActionConfig,omitempty" xml:"ResponseActionConfig,omitempty"`
-	// The type of the action. Valid values:
+	// The action type of the automatic response rule. Valid values:
 	//
-	// - `doPlaybook`: executes a playbook.
+	// - doPlaybook: execute a playbook
 	//
-	// - `changeEventStatus`: changes the status of an event.
+	// - changeEventStatus: update event status
 	//
-	// - `changeThreatLevel`: changes the threat level of an event.
+	// - changeThreatLevel: update event threat level
 	//
-	// - `addEventTag`: adds a tag to an event.
+	// - addEventTag: add an event label
 	//
-	// - `deleteEventTag`: removes a tag from an event.
+	// - deleteEventTag: delete an event label
 	//
-	// - `alertWhitelist`: adds an alert to the whitelist.
+	// - alertWhitelist: add alert to whitelist
 	//
 	// example:
 	//
 	// doPlaybook
 	ResponseActionType *string `json:"ResponseActionType,omitempty" xml:"ResponseActionType,omitempty"`
-	// The trigger condition of the rule.
+	// The trigger condition configuration of the rule.
 	//
 	// example:
 	//
 	// [{"left":{"value":"threat_level"},"operator":"equals","right":{"value":"suspicious"}}]
 	ResponseExecutionCondition *string `json:"ResponseExecutionCondition,omitempty" xml:"ResponseExecutionCondition,omitempty"`
-	// The ID of the automated response rule.
+	// The ID of the automatic response rule.
 	//
 	// example:
 	//
 	// 403235
 	ResponseRuleId *string `json:"ResponseRuleId,omitempty" xml:"ResponseRuleId,omitempty"`
-	// The name of the automated response rule.
+	// The name of the automatic response rule.
 	//
 	// example:
 	//
 	// Send Notification When Generating Urgent Incident
 	ResponseRuleName *string `json:"ResponseRuleName,omitempty" xml:"ResponseRuleName,omitempty"`
-	// The priority of the automated response rule.
+	// The execution priority of the automatic response rule.
 	//
 	// example:
 	//
 	// 1
-	ResponseRulePriority *int32 `json:"ResponseRulePriority,omitempty" xml:"ResponseRulePriority,omitempty"`
-	// The status of the automated response rule. Valid values:
+	ResponseRulePriority *int32  `json:"ResponseRulePriority,omitempty" xml:"ResponseRulePriority,omitempty"`
+	ResponseRuleRemark   *string `json:"ResponseRuleRemark,omitempty" xml:"ResponseRuleRemark,omitempty"`
+	// The status of the automatic response rule. Valid values:
 	//
-	// - `0`: disabled.
+	// - 0: disabled
 	//
-	// - `100`: enabled.
+	// - 100: enabled
 	//
 	// example:
 	//
@@ -219,27 +220,27 @@ type ListResponseRulesResponseBodyResponseRules struct {
 	ResponseRuleStatus *int32 `json:"ResponseRuleStatus,omitempty" xml:"ResponseRuleStatus,omitempty"`
 	// The type of the response rule. Valid values:
 	//
-	// - `preset`: a predefined rule.
+	// - preset: predefined
 	//
-	// - `custom`: a custom rule.
+	// - custom: custom
 	//
 	// example:
 	//
 	// custom
 	ResponseRuleType *string `json:"ResponseRuleType,omitempty" xml:"ResponseRuleType,omitempty"`
-	// The trigger type of the automated response rule. Valid values:
+	// The trigger type of the automatic response rule. Valid values:
 	//
-	// - `event`: triggered when an event occurs.
+	// - event: event occurred
 	//
-	// - `event_update`: triggered when an event is updated.
+	// - event_update: event updated
 	//
-	// - `alert`: triggered when an alert is generated.
+	// - alert: alert occurred
 	//
 	// example:
 	//
 	// event
 	ResponseTriggerType *string `json:"ResponseTriggerType,omitempty" xml:"ResponseTriggerType,omitempty"`
-	// The time when the rule was updated.
+	// The time when the rule was last updated.
 	//
 	// example:
 	//
@@ -281,6 +282,10 @@ func (s *ListResponseRulesResponseBodyResponseRules) GetResponseRuleName() *stri
 
 func (s *ListResponseRulesResponseBodyResponseRules) GetResponseRulePriority() *int32 {
 	return s.ResponseRulePriority
+}
+
+func (s *ListResponseRulesResponseBodyResponseRules) GetResponseRuleRemark() *string {
+	return s.ResponseRuleRemark
 }
 
 func (s *ListResponseRulesResponseBodyResponseRules) GetResponseRuleStatus() *int32 {
@@ -331,6 +336,11 @@ func (s *ListResponseRulesResponseBodyResponseRules) SetResponseRuleName(v strin
 
 func (s *ListResponseRulesResponseBodyResponseRules) SetResponseRulePriority(v int32) *ListResponseRulesResponseBodyResponseRules {
 	s.ResponseRulePriority = &v
+	return s
+}
+
+func (s *ListResponseRulesResponseBodyResponseRules) SetResponseRuleRemark(v string) *ListResponseRulesResponseBodyResponseRules {
+	s.ResponseRuleRemark = &v
 	return s
 }
 

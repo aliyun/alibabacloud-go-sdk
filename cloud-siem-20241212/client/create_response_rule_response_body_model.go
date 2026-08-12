@@ -16,7 +16,7 @@ type iCreateResponseRuleResponseBody interface {
 }
 
 type CreateResponseRuleResponseBody struct {
-	// The unique request ID.
+	// Id of the request
 	//
 	// example:
 	//
