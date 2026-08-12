@@ -282,7 +282,7 @@ type IncidentMemberStructEscalation struct {
 	//
 	// example:
 	//
-	// 通知运维团队
+	// Notify the operations team.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The ID of the event escalation.
 	//
@@ -294,7 +294,7 @@ type IncidentMemberStructEscalation struct {
 	//
 	// example:
 	//
-	// 第一阶段
+	// Phase one.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The index of the escalation stage.
 	//
@@ -306,7 +306,7 @@ type IncidentMemberStructEscalation struct {
 	//
 	// example:
 	//
-	// 告警升级至运维团队
+	// Alert escalated to the operations team.
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
@@ -378,7 +378,7 @@ type IncidentMemberStructScheduleGroup struct {
 	//
 	// example:
 	//
-	// 夜间值班组
+	// Night shift duty team.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

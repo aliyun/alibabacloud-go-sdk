@@ -18,13 +18,13 @@ type iApmMeasureConfig interface {
 }
 
 type ApmMeasureConfig struct {
-	// An array of dimension keys used to group the results.
+	// The grouping dimension.
 	GroupBy []*string `json:"groupBy,omitempty" xml:"groupBy,omitempty" type:"Repeated"`
-	// The unique code that identifies the metric.
+	// The metric code.
 	//
 	// This parameter is required.
 	MeasureCode *string `json:"measureCode,omitempty" xml:"measureCode,omitempty"`
-	// The aggregation period in seconds, which determines the time granularity of data points.
+	// The query time window in seconds.
 	//
 	// This parameter is required.
 	WindowSecs *int32 `json:"windowSecs,omitempty" xml:"windowSecs,omitempty"`

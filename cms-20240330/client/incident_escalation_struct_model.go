@@ -38,7 +38,7 @@ type IncidentEscalationStruct struct {
 	//
 	// example:
 	//
-	// 当告警未响应时，依次通知运维团队、值班经理、CTO
+	// When an alert is not acknowledged, notify the operations team, on-duty manager, and CTO sequentially.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The ID of the event escalation.
 	//
@@ -56,7 +56,7 @@ type IncidentEscalationStruct struct {
 	//
 	// example:
 	//
-	// 生产环境告警升级策略
+	// Production Environment Alert Escalation Policy.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The region ID.
 	//

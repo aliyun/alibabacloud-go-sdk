@@ -22,21 +22,21 @@ type iApmCompositeCompareConfig interface {
 }
 
 type ApmCompositeCompareConfig struct {
-	// The aggregation method for metric data. For example, `AVG`, `SUM`, or `MAX`.
+	// The aggregate functions used for aggregation.
 	//
 	// This parameter is required.
 	Aggregate *string `json:"aggregate,omitempty" xml:"aggregate,omitempty"`
-	// The operator for comparing the aggregated metric data against the `threshold`. For example, `GREATER_THAN` or `LESS_THAN`.
+	// The comparison operator. GTE/LTE indicates greater than or equal to/less than or equal to. YOY_UP/YOY_DOWN indicates year-over-year increase/decrease, which requires yoyTimeUnit and yoyTimeValue to be specified.
 	//
 	// This parameter is required.
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// The value to compare the aggregated metric data against. An alert is triggered when the metric data meets the condition defined by the `operator`.
+	// The threshold.
 	//
 	// This parameter is required.
 	Threshold *float32 `json:"threshold,omitempty" xml:"threshold,omitempty"`
-	// The time unit for the year-over-year (YoY) comparison. Use this parameter with `yoyTimeValue` to define the comparison period. Valid values are `day` and `week`.
+	// The year-over-year time unit. This parameter takes effect only when operator is set to YOY_UP or YOY_DOWN.
 	YoyTimeUnit *string `json:"yoyTimeUnit,omitempty" xml:"yoyTimeUnit,omitempty"`
-	// The time value for the YoY comparison. For example, if `yoyTimeUnit` is `day` and `yoyTimeValue` is `7`, the system compares current data with data from 7 days ago.
+	// The year-over-year time value. This parameter takes effect only when operator is set to YOY_UP or YOY_DOWN.
 	YoyTimeValue *int32 `json:"yoyTimeValue,omitempty" xml:"yoyTimeValue,omitempty"`
 }
 

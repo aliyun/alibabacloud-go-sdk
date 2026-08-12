@@ -42,14 +42,15 @@ type iSubscriptionForSNSView interface {
 }
 
 type SubscriptionForSNSView struct {
-	CreateTime         *string        `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Enable             *bool          `json:"enable,omitempty" xml:"enable,omitempty"`
-	FilterSetting      *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	Mode               *string        `json:"mode,omitempty" xml:"mode,omitempty"`
-	Name               *string        `json:"name,omitempty" xml:"name,omitempty"`
-	NotifyStrategyUuid *string        `json:"notifyStrategyUuid,omitempty" xml:"notifyStrategyUuid,omitempty"`
-	RegionId           *string        `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Specifies whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace=null). Valid values: true: subscribed. false or null: not subscribed.
+	CreateTime    *string        `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Enable        *bool          `json:"enable,omitempty" xml:"enable,omitempty"`
+	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
+	Mode          *string        `json:"mode,omitempty" xml:"mode,omitempty"`
+	Name          *string        `json:"name,omitempty" xml:"name,omitempty"`
+	// The reverse association to SNS (= snsUuid).
+	NotifyStrategyUuid *string `json:"notifyStrategyUuid,omitempty" xml:"notifyStrategyUuid,omitempty"`
+	RegionId           *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// Indicates whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace=null). Valid values: true: subscribed. false or null: not subscribed.
 	SubscribeLegacyEvent   *bool                   `json:"subscribeLegacyEvent,omitempty" xml:"subscribeLegacyEvent,omitempty"`
 	SubscriptionType       *string                 `json:"subscriptionType,omitempty" xml:"subscriptionType,omitempty"`
 	SyncFromType           *string                 `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`

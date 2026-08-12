@@ -50,7 +50,7 @@ type IncidentEventStruct struct {
 	//
 	// example:
 	//
-	// 检测到 user-service 实例 i-abc123 的 CPU 使用率达到 95%，已触发告警。
+	// Detected that the CPU usage of the user-service instance i-abc123 has reached 95%, triggering an alert.
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// The total count.
 	//
@@ -104,7 +104,7 @@ type IncidentEventStruct struct {
 	//
 	// example:
 	//
-	// 用户服务 CPU 使用率过高
+	// User service CPU usage is too high.
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 	// The user ID.
 	//

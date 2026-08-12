@@ -84,7 +84,7 @@ type MaintainWindowForView struct {
 	//
 	// example:
 	//
-	// 测试策略
+	// Test policy.
 	MaintainWindowName *string `json:"maintainWindowName,omitempty" xml:"maintainWindowName,omitempty"`
 	// The start time of the effective period.
 	//

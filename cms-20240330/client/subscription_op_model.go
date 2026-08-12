@@ -18,10 +18,11 @@ type iSubscriptionOp interface {
 }
 
 type SubscriptionOp struct {
+	// The operation type.
 	Op *string `json:"op,omitempty" xml:"op,omitempty"`
-	// create/update 必填
+	// Required for create and update operations.
 	Payload *SubscriptionForModify `json:"payload,omitempty" xml:"payload,omitempty"`
-	// update/remove 必填
+	// Required for update and remove operations.
 	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
 }
 

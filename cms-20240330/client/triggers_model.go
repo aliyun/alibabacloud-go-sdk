@@ -54,27 +54,48 @@ type iTriggers interface {
 }
 
 type Triggers struct {
-	ComparisonOperator *string              `json:"comparisonOperator,omitempty" xml:"comparisonOperator,omitempty"`
-	Conditions         []*TriggerConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	CountOperator      *string              `json:"countOperator,omitempty" xml:"countOperator,omitempty"`
-	CountThreshold     *int64               `json:"countThreshold,omitempty" xml:"countThreshold,omitempty"`
-	DurationSecs       *int32               `json:"durationSecs,omitempty" xml:"durationSecs,omitempty"`
-	ExpressionType     *string              `json:"expressionType,omitempty" xml:"expressionType,omitempty"`
-	LogicOperator      *string              `json:"logicOperator,omitempty" xml:"logicOperator,omitempty"`
-	MatchField         *string              `json:"matchField,omitempty" xml:"matchField,omitempty"`
-	MatchOperator      *string              `json:"matchOperator,omitempty" xml:"matchOperator,omitempty"`
-	MatchValue         *string              `json:"matchValue,omitempty" xml:"matchValue,omitempty"`
-	Max                *float64             `json:"max,omitempty" xml:"max,omitempty"`
-	MetricName         *string              `json:"metricName,omitempty" xml:"metricName,omitempty"`
-	Min                *float64             `json:"min,omitempty" xml:"min,omitempty"`
-	Operator           *string              `json:"operator,omitempty" xml:"operator,omitempty"`
-	Period             *int32               `json:"period,omitempty" xml:"period,omitempty"`
-	PreCondition       *string              `json:"preCondition,omitempty" xml:"preCondition,omitempty"`
-	QueryName          *string              `json:"queryName,omitempty" xml:"queryName,omitempty"`
-	Severity           *string              `json:"severity,omitempty" xml:"severity,omitempty"`
-	Statistics         *string              `json:"statistics,omitempty" xml:"statistics,omitempty"`
-	Threshold          interface{}          `json:"threshold,omitempty" xml:"threshold,omitempty"`
-	Times              *int32               `json:"times,omitempty" xml:"times,omitempty"`
+	// The comparison operator for CLOUD_MONITORING_CONDITION.
+	ComparisonOperator *string `json:"comparisonOperator,omitempty" xml:"comparisonOperator,omitempty"`
+	// The list of sub-conditions for UMODEL_METRICSET_MULTI or PROMETHEUS_MULTI with expressionType=COMPOSITE. Each item contains queryName, operator, and threshold.
+	Conditions []*TriggerConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	// The count comparison operator for SLS_MULTI_CONDITION. Valid values: GTE, GT, EQ, LTE, and LT.
+	CountOperator *string `json:"countOperator,omitempty" xml:"countOperator,omitempty"`
+	// The count threshold for SLS_MULTI_CONDITION. An alert is triggered when this threshold is met.
+	CountThreshold *int64 `json:"countThreshold,omitempty" xml:"countThreshold,omitempty"`
+	// The duration in seconds during which data must continuously meet the condition before an alert is triggered. If this parameter is not specified, the value of conditionConfig.durationSecs is inherited. This parameter is used by UMODEL_METRICSET_MULTI_CONDITION and PROMETHEUS_MULTI_CONDITION.
+	DurationSecs *int32 `json:"durationSecs,omitempty" xml:"durationSecs,omitempty"`
+	// The expression type. Valid values: SIMPLE and COMPOSITE. This parameter takes effect for UMODEL_METRICSET_MULTI_CONDITION and PROMETHEUS_MULTI_CONDITION.
+	ExpressionType *string `json:"expressionType,omitempty" xml:"expressionType,omitempty"`
+	// The logical operator for UMODEL_METRICSET_MULTI or PROMETHEUS_MULTI with expressionType=COMPOSITE. Valid values: AND, OR, and UNLESS.
+	LogicOperator *string `json:"logicOperator,omitempty" xml:"logicOperator,omitempty"`
+	// The log field name for SLS_MULTI_CONDITION. This parameter is required when matchOperator is set to CONTAINS, EQUALS, or REGEX. When matchOperator is set to PRESENT or NOT_PRESENT, specify the field name.
+	MatchField *string `json:"matchField,omitempty" xml:"matchField,omitempty"`
+	// The log match operator for SLS_MULTI_CONDITION. Valid values: PRESENT, NOT_PRESENT, CONTAINS, EQUALS, and REGEX. If this parameter is left empty, any data matches.
+	MatchOperator *string `json:"matchOperator,omitempty" xml:"matchOperator,omitempty"`
+	// The log match value for SLS_MULTI_CONDITION. This parameter is required when matchOperator is set to CONTAINS, EQUALS, or REGEX.
+	MatchValue *string `json:"matchValue,omitempty" xml:"matchValue,omitempty"`
+	// The upper bound of the range for UMODEL_METRICSET_MULTI with expressionType=SIMPLE. This parameter is required when operator is set to IN_RANGE or OUT_OF_RANGE. The value must be greater than or equal to min.
+	Max *float64 `json:"max,omitempty" xml:"max,omitempty"`
+	// The metric name. This parameter is used for CLOUD_MONITORING_CONDITION with expressionType=COMPOSITE. For SIMPLE, the metric name is specified at the conditionConfig level by the metricName parameter.
+	MetricName *string `json:"metricName,omitempty" xml:"metricName,omitempty"`
+	// The lower bound of the range for UMODEL_METRICSET_MULTI with expressionType=SIMPLE. This parameter is required when operator is set to IN_RANGE or OUT_OF_RANGE.
+	Min *float64 `json:"min,omitempty" xml:"min,omitempty"`
+	// The comparison operator for UMODEL_METRICSET_MULTI or PROMETHEUS_MULTI with expressionType=SIMPLE.
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// The aggregation period in seconds. This parameter is used for CLOUD_MONITORING_CONDITION with expressionType=COMPOSITE. For SIMPLE, the period is specified at the conditionConfig level by the period parameter.
+	Period *int32 `json:"period,omitempty" xml:"period,omitempty"`
+	// The precondition for CLOUD_MONITORING_CONDITION.
+	PreCondition *string `json:"preCondition,omitempty" xml:"preCondition,omitempty"`
+	// The referenced query name for UMODEL_METRICSET_MULTI or PROMETHEUS_MULTI with expressionType=SIMPLE. This corresponds to QueryConfigUnified.queries[].name.
+	QueryName *string `json:"queryName,omitempty" xml:"queryName,omitempty"`
+	// The severity level. Priority order: CRITICAL > ERROR > WARN / WARNING > INFO. When multiple triggers exist, they are sorted by this priority, and the first match triggers the alert. This parameter takes effect for SLS_MULTI_CONDITION and CLOUD_MONITORING_CONDITION with expressionType=SIMPLE.
+	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
+	// The statistical method for CLOUD_MONITORING_CONDITION.
+	Statistics *string `json:"statistics,omitempty" xml:"statistics,omitempty"`
+	// The threshold value. For CLOUD_MONITORING_CONDITION, this is a string. For UMODEL_METRICSET_MULTI and PROMETHEUS_MULTI, this is a numeric value.
+	Threshold interface{} `json:"threshold,omitempty" xml:"threshold,omitempty"`
+	// The number of consecutive times the condition must be met before an alert is triggered. This parameter is used for CLOUD_MONITORING_CONDITION with expressionType=SIMPLE and is set independently for each entry.
+	Times *int32 `json:"times,omitempty" xml:"times,omitempty"`
 }
 
 func (s Triggers) String() string {

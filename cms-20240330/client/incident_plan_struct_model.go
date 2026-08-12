@@ -58,7 +58,7 @@ type IncidentPlanStruct struct {
 	//
 	// example:
 	//
-	// 针对数据库连接数过高的应急处理方案
+	// Emergency response plan for excessively high database connection count.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// A list of escalation policy IDs.
 	EscalationId []*string `json:"escalationId,omitempty" xml:"escalationId,omitempty" type:"Repeated"`
@@ -86,7 +86,7 @@ type IncidentPlanStruct struct {
 	//
 	// example:
 	//
-	// 数据库连接数告警预案
+	// Database connection count alert contingency plan.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// A list of resource field mapping paths.
 	ResourceFiled []*IncidentPlanFieldPath `json:"resourceFiled,omitempty" xml:"resourceFiled,omitempty" type:"Repeated"`

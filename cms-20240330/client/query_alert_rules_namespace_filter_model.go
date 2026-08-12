@@ -14,6 +14,7 @@ type iQueryAlertRulesNamespaceFilter interface {
 }
 
 type QueryAlertRulesNamespaceFilter struct {
+	// The exact match.
 	Eq *string `json:"eq,omitempty" xml:"eq,omitempty"`
 }
 

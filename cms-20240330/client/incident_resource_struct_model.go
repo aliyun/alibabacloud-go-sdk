@@ -30,7 +30,7 @@ type IncidentResourceStruct struct {
 	//
 	// example:
 	//
-	// 生产环境 Web 服务器
+	// Production environment web server.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The event ID.
 	//

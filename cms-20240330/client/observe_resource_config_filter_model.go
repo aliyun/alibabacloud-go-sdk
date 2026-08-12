@@ -24,12 +24,18 @@ type iObserveResourceConfigFilter interface {
 }
 
 type ObserveResourceConfigFilter struct {
-	EntityDomain    *QueryAlertRulesEntityDomainFilter    `json:"entityDomain,omitempty" xml:"entityDomain,omitempty"`
-	EntityType      *QueryAlertRulesEntityTypeFilter      `json:"entityType,omitempty" xml:"entityType,omitempty"`
-	Namespace       *QueryAlertRulesNamespaceFilter       `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The UModel resource domain filter (exact match).
+	EntityDomain *QueryAlertRulesEntityDomainFilter `json:"entityDomain,omitempty" xml:"entityDomain,omitempty"`
+	// The UModel entity type filter (set inclusion/exclusion).
+	EntityType *QueryAlertRulesEntityTypeFilter `json:"entityType,omitempty" xml:"entityType,omitempty"`
+	// The CloudMonitor namespace filter (exact match).
+	Namespace *QueryAlertRulesNamespaceFilter `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The CloudMonitor product category filter (exact match).
 	ProductCategory *QueryAlertRulesProductCategoryFilter `json:"productCategory,omitempty" xml:"productCategory,omitempty"`
-	RelationType    *QueryAlertRulesRelationTypeFilter    `json:"relationType,omitempty" xml:"relationType,omitempty"`
-	Resources       *QueryAlertRulesResourcesFilter       `json:"resources,omitempty" xml:"resources,omitempty"`
+	// The relationship type filter (set inclusion/exclusion): ALL/UMODEL_ENTITY/CLOUD_INSTANCE/GROUP_V1/GROUP_V2/TAG.
+	RelationType *QueryAlertRulesRelationTypeFilter `json:"relationType,omitempty" xml:"relationType,omitempty"`
+	// The resources filter (contains uses OR matching; notContains excludes all).
+	Resources *QueryAlertRulesResourcesFilter `json:"resources,omitempty" xml:"resources,omitempty"`
 }
 
 func (s ObserveResourceConfigFilter) String() string {

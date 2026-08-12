@@ -30,18 +30,20 @@ type iSubscriptionAndNotifyStrategyForModify interface {
 }
 
 type SubscriptionAndNotifyStrategyForModify struct {
+	// The description.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	Enabled     *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// Optional. If omitted, the backend derives the name from `notifyStrategy`.
+	// Specifies whether to enable the subscription. Enabled by default during creation.
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// Optional. The backend derives the name from notifyStrategy if this parameter is not specified.
 	Name           *string                           `json:"name,omitempty" xml:"name,omitempty"`
 	NotifyStrategy *NotifyStrategyForSNSModify       `json:"notifyStrategy,omitempty" xml:"notifyStrategy,omitempty"`
 	ResponsePlan   *IncidentResponsePlanForSNSModify `json:"responsePlan,omitempty" xml:"responsePlan,omitempty"`
 	Subscription   *SubscriptionForSNSModify         `json:"subscription,omitempty" xml:"subscription,omitempty"`
-	// For update operations only. Use this parameter to batch create, update, and remove member subscriptions.
+	// Used exclusively for Update operations. Performs batch create, update, or remove adjustments on member subscriptions.
 	Subscriptions []*SubscriptionOp `json:"subscriptions,omitempty" xml:"subscriptions,omitempty" type:"Repeated"`
-	// Required for update operations but optional for create operations. If omitted during creation, the backend automatically generates a UUID.
+	// Required for Update. Can be omitted for Create, in which case the backend generates it.
 	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
-	// Required for update operations. The value must match the current version of the record. If the versions do not match, the request fails with an `OPTIMISTIC_LOCK_FAILED` error.
+	// Required for Update. The value must match the backend record for the write to succeed. If the values do not match, OPTIMISTIC_LOCK_FAILED is returned.
 	Version *int32 `json:"version,omitempty" xml:"version,omitempty"`
 }
 

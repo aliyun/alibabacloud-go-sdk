@@ -78,7 +78,7 @@ type NotifyStrategyForModify struct {
 	//
 	// example:
 	//
-	// 策略名称
+	// Policy name.
 	NotifyStrategyName *string `json:"notifyStrategyName,omitempty" xml:"notifyStrategyName,omitempty"`
 	// The push settings.
 	PushingSetting *NotifyStrategyForModifyPushingSetting `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty" type:"Struct"`

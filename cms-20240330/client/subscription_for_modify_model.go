@@ -57,7 +57,7 @@ type SubscriptionForModify struct {
 	//
 	// example:
 	//
-	// 测试订阅
+	// Test subscription.
 	SubscriptionName       *string                 `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
 	WorkspaceFilterSetting *WorkspaceFilterSetting `json:"workspaceFilterSetting,omitempty" xml:"workspaceFilterSetting,omitempty"`
 }

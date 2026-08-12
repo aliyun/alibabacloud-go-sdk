@@ -91,7 +91,7 @@ type SubscriptionForView struct {
 	//
 	// example:
 	//
-	// 订阅测试
+	// Subscription test.
 	SubscriptionName *string `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
 	// example:
 	//

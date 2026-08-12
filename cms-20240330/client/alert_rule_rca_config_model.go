@@ -16,8 +16,10 @@ type iAlertRuleRcaConfig interface {
 }
 
 type AlertRuleRcaConfig struct {
+	// The digital employee name.
 	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
-	EnableRca           *bool   `json:"enableRca,omitempty" xml:"enableRca,omitempty"`
+	// Indicates whether RCA is enabled.
+	EnableRca *bool `json:"enableRca,omitempty" xml:"enableRca,omitempty"`
 }
 
 func (s AlertRuleRcaConfig) String() string {

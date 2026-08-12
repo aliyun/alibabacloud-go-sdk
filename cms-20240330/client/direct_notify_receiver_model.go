@@ -18,9 +18,12 @@ type iDirectNotifyReceiver interface {
 }
 
 type DirectNotifyReceiver struct {
-	Channels    []*string `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
+	// The list of notification channels. This parameter is valid only for person-based types (CONTACT/GROUP/DUTY). Valid values: SMS, CALL, EMAIL.
+	Channels []*string `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
+	// The list of Notification Recipient identifiers. For person-based types, the identifiers are contacts, contact groups, or on-call schedule identifiers. For IM-based types, the identifiers are webhook identifiers.
 	Identifiers []*string `json:"identifiers,omitempty" xml:"identifiers,omitempty" type:"Repeated"`
-	TargetType  *string   `json:"targetType,omitempty" xml:"targetType,omitempty"`
+	// The Notification Recipient type. Person-object types (CONTACT/GROUP/DUTY) require channels to specify notification methods. IM-object types (DINGTALK/FEISHU/SLACK/WEIXIN/WEBHOOK) do not require channels.
+	TargetType *string `json:"targetType,omitempty" xml:"targetType,omitempty"`
 }
 
 func (s DirectNotifyReceiver) String() string {

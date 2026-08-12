@@ -22,11 +22,16 @@ type iSlsNamedQueryEntry interface {
 }
 
 type SlsNamedQueryEntry struct {
-	End      *int64  `json:"end,omitempty" xml:"end,omitempty"`
-	Expr     *string `json:"expr,omitempty" xml:"expr,omitempty"`
-	Start    *int64  `json:"start,omitempty" xml:"start,omitempty"`
+	// The end offset of the time range. This parameter is mutually exclusive with window.
+	End *int64 `json:"end,omitempty" xml:"end,omitempty"`
+	// The SPL query expression.
+	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
+	// The start offset of the time range. This parameter is mutually exclusive with window.
+	Start *int64 `json:"start,omitempty" xml:"start,omitempty"`
+	// The time unit. Valid values: day, hour, minute, and second.
 	TimeUnit *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
-	Window   *int64  `json:"window,omitempty" xml:"window,omitempty"`
+	// The snap window size. This parameter is mutually exclusive with start and end.
+	Window *int64 `json:"window,omitempty" xml:"window,omitempty"`
 }
 
 func (s SlsNamedQueryEntry) String() string {

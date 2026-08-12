@@ -30,7 +30,7 @@ type iCreateServiceRequest interface {
 }
 
 type CreateServiceRequest struct {
-	// The extended properties.
+	// The extended attributes.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type CreateServiceRequest struct {
 	//
 	// Mag test application
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The application ID. You do not typically need to specify this parameter.
+	// The application ID. Generally, you do not need to specify this parameter.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type CreateServiceRequest struct {
 	//
 	// mag_test
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// The service status. Do not specify this parameter when you create a service.
+	// The service status. You do not need to specify this parameter when creating a service.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type CreateServiceRequest struct {
 	//
 	// TRACE
 	ServiceType *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
-	// An array of tags.
+	// The tags.
 	Tags []*CreateServiceRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
@@ -189,13 +189,13 @@ func (s *CreateServiceRequest) Validate() error {
 }
 
 type CreateServiceRequestTags struct {
-	// The `key` of the tag.
+	// The tag `key`.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The `value` of the tag.
+	// The tag `value`.
 	//
 	// example:
 	//

@@ -24,12 +24,18 @@ type iCloudMonitoringCompositeEscalationEntry interface {
 }
 
 type CloudMonitoringCompositeEscalationEntry struct {
+	// The comparison operator.
 	ComparisonOperator *string `json:"comparisonOperator,omitempty" xml:"comparisonOperator,omitempty"`
-	MetricName         *string `json:"metricName,omitempty" xml:"metricName,omitempty"`
-	Period             *int32  `json:"period,omitempty" xml:"period,omitempty"`
-	PreCondition       *string `json:"preCondition,omitempty" xml:"preCondition,omitempty"`
-	Statistics         *string `json:"statistics,omitempty" xml:"statistics,omitempty"`
-	Threshold          *string `json:"threshold,omitempty" xml:"threshold,omitempty"`
+	// The metric name.
+	MetricName *string `json:"metricName,omitempty" xml:"metricName,omitempty"`
+	// The collection period, in seconds.
+	Period *int32 `json:"period,omitempty" xml:"period,omitempty"`
+	// The precondition.
+	PreCondition *string `json:"preCondition,omitempty" xml:"preCondition,omitempty"`
+	// The statistical method.
+	Statistics *string `json:"statistics,omitempty" xml:"statistics,omitempty"`
+	// The threshold.
+	Threshold *string `json:"threshold,omitempty" xml:"threshold,omitempty"`
 }
 
 func (s CloudMonitoringCompositeEscalationEntry) String() string {

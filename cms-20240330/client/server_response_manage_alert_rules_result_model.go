@@ -30,23 +30,22 @@ type iServerResponseManageAlertRulesResult interface {
 }
 
 type ServerResponseManageAlertRulesResult struct {
-	// The operation status code.
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The result of the operation.
+	// The response code.
+	Code *string                 `json:"code,omitempty" xml:"code,omitempty"`
 	Data *ManageAlertRulesResult `json:"data,omitempty" xml:"data,omitempty"`
-	// A message detailing the outcome of the request, such as a success message or an error description.
+	// The error message.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The token used to retrieve the next page of results. If the token is not returned, there are no more results.
+	// The pagination token.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The current page number.
+	// The page number.
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// The number of entries per page.
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The unique ID for the request. Provide this ID when contacting support for assistance.
+	// The request ID.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request succeeded (`true`) or failed (`false`).
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of entries that match the query.
+	// The total number of entries.
 	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 

@@ -40,7 +40,7 @@ type IncidentTimeline struct {
 	//
 	// example:
 	//
-	// 已通知运维团队进行排查
+	// The operations team has been notified to investigate.
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// The ID of the event.
 	//
@@ -70,7 +70,7 @@ type IncidentTimeline struct {
 	//
 	// example:
 	//
-	// 已联系运维团队
+	// The operations team has been contacted.
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 	// The type.
 	//

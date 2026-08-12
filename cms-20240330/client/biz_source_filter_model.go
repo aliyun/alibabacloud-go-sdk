@@ -14,6 +14,7 @@ type iBizSourceFilter interface {
 }
 
 type BizSourceFilter struct {
+	// The exact match value.
 	Eq *string `json:"eq,omitempty" xml:"eq,omitempty"`
 }
 

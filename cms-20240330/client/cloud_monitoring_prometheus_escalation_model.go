@@ -18,11 +18,11 @@ type iCloudMonitoringPrometheusEscalation interface {
 }
 
 type CloudMonitoringPrometheusEscalation struct {
-	// The PromQL expression that defines the alert condition. This parameter is required.
+	// The PromQL query statement.
 	PromQl *string `json:"promQl,omitempty" xml:"promQl,omitempty"`
-	// The severity of the alert that triggers the escalation. This parameter is required.
+	// The severity level.
 	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
-	// The number of consecutive times the condition must be met to trigger an escalation. This parameter is required.
+	// The number of consecutive times the alert is triggered.
 	Times *int32 `json:"times,omitempty" xml:"times,omitempty"`
 }
 

@@ -22,7 +22,7 @@ type UpdateServiceResponseBody struct {
 	//
 	// 123-0F43-23423-AC43-34234
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The ID of the service.
+	// The service ID.
 	//
 	// example:
 	//

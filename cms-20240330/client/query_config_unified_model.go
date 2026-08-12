@@ -84,46 +84,86 @@ type iQueryConfigUnified interface {
 }
 
 type QueryConfigUnified struct {
+	// The aggregation function (used when type=UMODEL_METRICSET_QUERY / UMODEL_LOGSET_QUERY).
 	Aggregate *string `json:"aggregate,omitempty" xml:"aggregate,omitempty"`
 	// Deprecated
-	CheckAfterDataComplete  *bool                          `json:"checkAfterDataComplete,omitempty" xml:"checkAfterDataComplete,omitempty"`
-	Dimensions              []map[string]*string           `json:"dimensions,omitempty" xml:"dimensions,omitempty" type:"Repeated"`
-	DurationSecs            *int64                         `json:"durationSecs,omitempty" xml:"durationSecs,omitempty"`
-	EnableDataCompleteCheck *bool                          `json:"enableDataCompleteCheck,omitempty" xml:"enableDataCompleteCheck,omitempty"`
-	EntityDomain            *string                        `json:"entityDomain,omitempty" xml:"entityDomain,omitempty"`
-	EntityFields            []*EntityFields                `json:"entityFields,omitempty" xml:"entityFields,omitempty" type:"Repeated"`
-	EntityFilters           []*EntityFilters               `json:"entityFilters,omitempty" xml:"entityFilters,omitempty" type:"Repeated"`
-	EntityType              *string                        `json:"entityType,omitempty" xml:"entityType,omitempty"`
-	Expr                    *string                        `json:"expr,omitempty" xml:"expr,omitempty"`
-	FilterList              []*FilterList                  `json:"filterList,omitempty" xml:"filterList,omitempty" type:"Repeated"`
-	FilterValues            []*PrometheusMetricFilterValue `json:"filterValues,omitempty" xml:"filterValues,omitempty" type:"Repeated"`
-	GroupFieldList          []*string                      `json:"groupFieldList,omitempty" xml:"groupFieldList,omitempty" type:"Repeated"`
-	GroupId                 *string                        `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	GroupType               *string                        `json:"groupType,omitempty" xml:"groupType,omitempty"`
-	Joinings                []*Joinings                    `json:"joinings,omitempty" xml:"joinings,omitempty" type:"Repeated"`
-	LabelFilters            []*LabelFilters                `json:"labelFilters,omitempty" xml:"labelFilters,omitempty" type:"Repeated"`
-	LegacyRaw               *string                        `json:"legacyRaw,omitempty" xml:"legacyRaw,omitempty"`
-	LegacyType              *string                        `json:"legacyType,omitempty" xml:"legacyType,omitempty"`
-	LogSet                  *string                        `json:"logSet,omitempty" xml:"logSet,omitempty"`
-	MeasureGroupKey         *string                        `json:"measureGroupKey,omitempty" xml:"measureGroupKey,omitempty"`
-	MeasureList             []*MeasureList                 `json:"measureList,omitempty" xml:"measureList,omitempty" type:"Repeated"`
-	Metric                  *string                        `json:"metric,omitempty" xml:"metric,omitempty"`
-	MetricGroupId           *string                        `json:"metricGroupId,omitempty" xml:"metricGroupId,omitempty"`
-	MetricId                *string                        `json:"metricId,omitempty" xml:"metricId,omitempty"`
+	//
+	// **[Deprecated]*	- Specifies whether to perform alert detection only after data is complete (originally used when type=PROMETHEUS_MULTI_QUERY). This field overlaps with enableDataCompleteCheck. Using this field in write path returns 400.
+	CheckAfterDataComplete *bool `json:"checkAfterDataComplete,omitempty" xml:"checkAfterDataComplete,omitempty"`
+	// The dimension list (used when type=CLOUD_MONITORING_QUERY. Each dimension is a key/value string mapping).
+	Dimensions []map[string]*string `json:"dimensions,omitempty" xml:"dimensions,omitempty" type:"Repeated"`
+	// The duration in seconds (used when type=PROMETHEUS_MULTI_QUERY).
+	DurationSecs *int64 `json:"durationSecs,omitempty" xml:"durationSecs,omitempty"`
+	// Indicates whether the data integrity check is enabled (used when type=PROMETHEUS_SINGLE_QUERY / PROMETHEUS_MULTI_QUERY / PROMETHEUS_PREDEFINED_METRIC_QUERY / PROMETHEUS_METRIC_GROUP_QUERY [deprecated]).
+	EnableDataCompleteCheck *bool `json:"enableDataCompleteCheck,omitempty" xml:"enableDataCompleteCheck,omitempty"`
+	// The entity domain (used when type=UMODEL_METRICSET_QUERY / UMODEL_METRICSET_MULTI_QUERY / UMODEL_LOGSET_QUERY. Works with entityType/entityFilters to locate UModel entities).
+	EntityDomain *string `json:"entityDomain,omitempty" xml:"entityDomain,omitempty"`
+	// The entity fields to include in the response (used when type=UMODEL_METRICSET_QUERY / UMODEL_METRICSET_MULTI_QUERY / UMODEL_LOGSET_QUERY).
+	EntityFields []*EntityFields `json:"entityFields,omitempty" xml:"entityFields,omitempty" type:"Repeated"`
+	// The entity filter list (used when type=UMODEL_METRICSET_QUERY / UMODEL_METRICSET_MULTI_QUERY / UMODEL_LOGSET_QUERY).
+	EntityFilters []*EntityFilters `json:"entityFilters,omitempty" xml:"entityFilters,omitempty" type:"Repeated"`
+	// The entity type (used when type=UMODEL_METRICSET_QUERY / UMODEL_METRICSET_MULTI_QUERY / UMODEL_LOGSET_QUERY).
+	EntityType *string `json:"entityType,omitempty" xml:"entityType,omitempty"`
+	// The query expression or SPL statement. Recommended when type=PROMETHEUS_SINGLE_QUERY. Optional when type=UMODEL_METRICSET_QUERY for custom SPL. Required when type=UMODEL_LOGSET_QUERY, where an SPL query statement must be provided (the service layer enforces this requirement).
+	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
+	// The APM filter condition list.
+	FilterList []*FilterList `json:"filterList,omitempty" xml:"filterList,omitempty" type:"Repeated"`
+	// The list of predefined metric filter values (used when type=PROMETHEUS_PREDEFINED_METRIC_QUERY / PROMETHEUS_METRIC_GROUP_QUERY [deprecated]).
+	FilterValues []*PrometheusMetricFilterValue `json:"filterValues,omitempty" xml:"filterValues,omitempty" type:"Repeated"`
+	// The group field list (used when type=SLS_MULTI_QUERY and groupType=custom).
+	GroupFieldList []*string `json:"groupFieldList,omitempty" xml:"groupFieldList,omitempty" type:"Repeated"`
+	// The resource group ID (used when type=CLOUD_MONITORING_QUERY and relationType=GROUP).
+	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// The grouping policy (used when type=SLS_MULTI_QUERY): none / label / custom.
+	GroupType *string `json:"groupType,omitempty" xml:"groupType,omitempty"`
+	// The join list (used when type=SLS_MULTI_QUERY. Maximum of 2: joinings[0] corresponds to the set operation between query 0 and query 1. joinings[1] corresponds to the set operation between query 1 and query 2).
+	Joinings []*Joinings `json:"joinings,omitempty" xml:"joinings,omitempty" type:"Repeated"`
+	// The label filter conditions (used when type=UMODEL_METRICSET_QUERY. For UMODEL_METRICSET_MULTI_QUERY, place labelFilters in each queries[*] entry).
+	LabelFilters []*LabelFilters `json:"labelFilters,omitempty" xml:"labelFilters,omitempty" type:"Repeated"`
+	// The original V1 query JSON string returned as a fallback when type=UNKNOWN_QUERY and read path parsing fails (contains the field values that triggered the failure, such as filter.operator=ABC). The frontend displays this field as read-only when it is not empty.
+	LegacyRaw *string `json:"legacyRaw,omitempty" xml:"legacyRaw,omitempty"`
+	// Returned when type=UNKNOWN_QUERY, indicating that this rule cannot be edited through the new API. Submit a ticket to contact the CloudMonitor team.
+	LegacyType *string `json:"legacyType,omitempty" xml:"legacyType,omitempty"`
+	// The log set name (used when type=UMODEL_LOGSET_QUERY).
+	LogSet *string `json:"logSet,omitempty" xml:"logSet,omitempty"`
+	// The measure group key (optional when type=APM_MULTI_QUERY, corresponds to V1 alertMetricInput.groupKey).
+	MeasureGroupKey *string `json:"measureGroupKey,omitempty" xml:"measureGroupKey,omitempty"`
+	// The APM measure configuration list.
+	MeasureList []*MeasureList `json:"measureList,omitempty" xml:"measureList,omitempty" type:"Repeated"`
+	// The metric name (required when type=UMODEL_METRICSET_QUERY. Required when type=CLOUD_MONITORING_QUERY, used together with namespace to uniquely identify CloudMonitor monitoring metrics).
+	Metric *string `json:"metric,omitempty" xml:"metric,omitempty"`
+	// The metric group ID (used when type=PROMETHEUS_PREDEFINED_METRIC_QUERY / PROMETHEUS_METRIC_GROUP_QUERY [deprecated]).
+	MetricGroupId *string `json:"metricGroupId,omitempty" xml:"metricGroupId,omitempty"`
+	// The predefined metric ID (used when type=PROMETHEUS_PREDEFINED_METRIC_QUERY).
+	MetricId *string `json:"metricId,omitempty" xml:"metricId,omitempty"`
 	// Deprecated
-	MetricIds   []*string                     `json:"metricIds,omitempty" xml:"metricIds,omitempty" type:"Repeated"`
-	MetricSet   *string                       `json:"metricSet,omitempty" xml:"metricSet,omitempty"`
-	Namespace   *string                       `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	OffsetSecs  *int64                        `json:"offsetSecs,omitempty" xml:"offsetSecs,omitempty"`
+	//
+	// **[Deprecated]*	- The list of predefined metric IDs (originally used when type=PROMETHEUS_METRIC_GROUP_QUERY). This query type is deprecated. Write path returns 400.
+	MetricIds []*string `json:"metricIds,omitempty" xml:"metricIds,omitempty" type:"Repeated"`
+	// The metric set name (used when type=UMODEL_METRICSET_QUERY).
+	MetricSet *string `json:"metricSet,omitempty" xml:"metricSet,omitempty"`
+	// The CloudMonitor namespace (Alibaba Cloud service name, used when type=CLOUD_MONITORING_QUERY).
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The query time offset in seconds (used when type=UMODEL_METRICSET_QUERY / UMODEL_LOGSET_QUERY). Works with windowSecs to implement an offset query over the range [T - windowSecs - offsetSecs, T - offsetSecs]. Valid range: [0, 86400].
+	OffsetSecs *int64 `json:"offsetSecs,omitempty" xml:"offsetSecs,omitempty"`
+	// The list of predefined metric parameter values (used when type=PROMETHEUS_PREDEFINED_METRIC_QUERY / PROMETHEUS_METRIC_GROUP_QUERY [deprecated]).
 	ParamValues []*PrometheusMetricParamValue `json:"paramValues,omitempty" xml:"paramValues,omitempty" type:"Repeated"`
 	// Deprecated
-	PromQl        *string    `json:"promQl,omitempty" xml:"promQl,omitempty"`
-	Queries       []*Queries `json:"queries,omitempty" xml:"queries,omitempty" type:"Repeated"`
-	RelationType  *string    `json:"relationType,omitempty" xml:"relationType,omitempty"`
-	ServiceIdList []*string  `json:"serviceIdList,omitempty" xml:"serviceIdList,omitempty" type:"Repeated"`
+	//
+	// **[Deprecated]*	- The legacy Prometheus query statement field. Use expr instead. This field is retained for backward compatibility. The backend automatically normalizes it to expr.
+	PromQl *string `json:"promQl,omitempty" xml:"promQl,omitempty"`
+	// The subquery list (polymorphic by type): when type=SLS_MULTI_QUERY, each entry is a SlsNamedQueryEntry (timeUnit/start/end/window/expr). When type=PROMETHEUS_MULTI_QUERY, each entry is a PrometheusNamedQueryEntry (name/expr). When type=UMODEL_METRICSET_MULTI_QUERY, each entry is a MetricSetNamedQueryEntry.
+	Queries []*Queries `json:"queries,omitempty" xml:"queries,omitempty" type:"Repeated"`
+	// The resource relation type (used when type=CLOUD_MONITORING_QUERY).
+	RelationType *string `json:"relationType,omitempty" xml:"relationType,omitempty"`
+	// The list of service IDs (used when type=APM_MULTI_QUERY).
+	ServiceIdList []*string `json:"serviceIdList,omitempty" xml:"serviceIdList,omitempty" type:"Repeated"`
+	// The query type. Valid values and associated fields: PROMETHEUS_SINGLE_QUERY (required: expr. Optional: enableDataCompleteCheck). PROMETHEUS_PREDEFINED_METRIC_QUERY (required: metricGroupId, metricId. Optional: paramValues, filterValues, enableDataCompleteCheck). PROMETHEUS_METRIC_GROUP_QUERY ([deprecated] required: metricGroupId, metricIds. Optional: paramValues, filterValues, enableDataCompleteCheck. Write path returns 400). UMODEL_METRICSET_QUERY (required: metricSet, metric, windowSecs, aggregate. Optional: expr, entityDomain/entityType/entityFilters, labelFilters, entityFields, offsetSecs). UMODEL_METRICSET_MULTI_QUERY (required: queries[*]. Optional: entityDomain/entityType/entityFilters, windowSecs, offsetSecs, aggregate). UMODEL_LOGSET_QUERY (required: logSet, expr, windowSecs, aggregate. Optional: entityDomain/entityType/entityFilters, labelFilters, offsetSecs). APM_MULTI_QUERY (required: serviceIdList, measureList. Optional: filterList, measureGroupKey). CLOUD_MONITORING_QUERY (required: namespace, metric, relationType. When relationType=INSTANCE, dimensions is required. When relationType=GROUP, groupId is required. When relationType=USER, leave both empty). UNKNOWN_QUERY (read-only fallback. Do not use in write path). Do not use non-enumerated values (such as CMS_BASIC_QUERY/SLS_QUERY). The backend returns Invalidtype 400.
+	//
 	// This parameter is required.
-	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
-	WindowSecs *int64  `json:"windowSecs,omitempty" xml:"windowSecs,omitempty"`
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The aggregation time window in seconds (used when type=UMODEL_METRICSET_QUERY / UMODEL_LOGSET_QUERY). Valid range: [60, 86400].
+	WindowSecs *int64 `json:"windowSecs,omitempty" xml:"windowSecs,omitempty"`
 }
 
 func (s QueryConfigUnified) String() string {

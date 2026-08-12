@@ -69,35 +69,58 @@ type iAlertRuleV2 interface {
 
 type AlertRuleV2 struct {
 	ActionIntegrationConfig *ActionIntegrationConfig `json:"actionIntegrationConfig,omitempty" xml:"actionIntegrationConfig,omitempty"`
-	Annotations             map[string]*string       `json:"annotations,omitempty" xml:"annotations,omitempty"`
-	ArmsIntegrationConfig   *ArmsIntegrationConfig   `json:"armsIntegrationConfig,omitempty" xml:"armsIntegrationConfig,omitempty"`
-	BizSource               *string                  `json:"bizSource,omitempty" xml:"bizSource,omitempty"`
-	ConditionConfig         *ConditionConfigUnified  `json:"conditionConfig,omitempty" xml:"conditionConfig,omitempty"`
-	ContentTemplate         *string                  `json:"contentTemplate,omitempty" xml:"contentTemplate,omitempty"`
-	CreatedAt               *string                  `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	DatasourceConfig        *DatasourceConfigUnified `json:"datasourceConfig,omitempty" xml:"datasourceConfig,omitempty"`
-	DatasourceType          *string                  `json:"datasourceType,omitempty" xml:"datasourceType,omitempty"`
-	DisplayName             *string                  `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Enabled                 *bool                    `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	Labels                  map[string]*string       `json:"labels,omitempty" xml:"labels,omitempty"`
-	NotifyConfig            *NotifyConfigUnified     `json:"notifyConfig,omitempty" xml:"notifyConfig,omitempty"`
-	NotifyStrategyId        *string                  `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
-	ObserveResourceConfig   *ObserveResourceConfig   `json:"observeResourceConfig,omitempty" xml:"observeResourceConfig,omitempty"`
+	// The annotations.
+	Annotations           map[string]*string     `json:"annotations,omitempty" xml:"annotations,omitempty"`
+	ArmsIntegrationConfig *ArmsIntegrationConfig `json:"armsIntegrationConfig,omitempty" xml:"armsIntegrationConfig,omitempty"`
+	// The business source. This field is read-only. Example values: managed_service_for_prometheus, umodel, application_insights, cloud_monitoring, and sls.
+	BizSource       *string                 `json:"bizSource,omitempty" xml:"bizSource,omitempty"`
+	ConditionConfig *ConditionConfigUnified `json:"conditionConfig,omitempty" xml:"conditionConfig,omitempty"`
+	// The content template.
+	ContentTemplate *string `json:"contentTemplate,omitempty" xml:"contentTemplate,omitempty"`
+	// The creation time in ISO 8601 format. This field is read-only.
+	CreatedAt        *string                  `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	DatasourceConfig *DatasourceConfigUnified `json:"datasourceConfig,omitempty" xml:"datasourceConfig,omitempty"`
+	// The data source type. This field is read-only and derived.
+	DatasourceType *string `json:"datasourceType,omitempty" xml:"datasourceType,omitempty"`
+	// The display name.
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// Specifies whether the alert rule is enabled.
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The labels.
+	Labels       map[string]*string   `json:"labels,omitempty" xml:"labels,omitempty"`
+	NotifyConfig *NotifyConfigUnified `json:"notifyConfig,omitempty" xml:"notifyConfig,omitempty"`
+	// The notification strategy ID. This field is read-only and derived from the first item in the notification strategy list.
+	NotifyStrategyId *string `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
+	// The observable resource configuration.
+	ObserveResourceConfig *ObserveResourceConfig `json:"observeResourceConfig,omitempty" xml:"observeResourceConfig,omitempty"`
 	// Deprecated
-	ObserveResourceGlobalScope *bool     `json:"observeResourceGlobalScope,omitempty" xml:"observeResourceGlobalScope,omitempty"`
-	ObserveResourceList        []*string `json:"observeResourceList,omitempty" xml:"observeResourceList,omitempty" type:"Repeated"`
+	//
+	// **[Deprecated]*	- Indicates whether the rule applies to all resources of this type. This field is read-only and derived. Use observeResourceConfig.relationType set to ALL for equivalent semantics in new integrations.
+	ObserveResourceGlobalScope *bool `json:"observeResourceGlobalScope,omitempty" xml:"observeResourceGlobalScope,omitempty"`
+	// The list of observable resource IDs. This field is read-only and derived.
+	ObserveResourceList []*string `json:"observeResourceList,omitempty" xml:"observeResourceList,omitempty" type:"Repeated"`
 	// Deprecated
-	ObserveResourceType *string                `json:"observeResourceType,omitempty" xml:"observeResourceType,omitempty"`
-	PartitionKey        *string                `json:"partitionKey,omitempty" xml:"partitionKey,omitempty"`
-	QueryConfig         *QueryConfigUnified    `json:"queryConfig,omitempty" xml:"queryConfig,omitempty"`
-	RcaConfig           *AlertRuleRcaConfig    `json:"rcaConfig,omitempty" xml:"rcaConfig,omitempty"`
-	RegionId            *string                `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	ScheduleConfig      *ScheduleConfigUnified `json:"scheduleConfig,omitempty" xml:"scheduleConfig,omitempty"`
-	SeverityLevels      *string                `json:"severityLevels,omitempty" xml:"severityLevels,omitempty"`
-	Status              *string                `json:"status,omitempty" xml:"status,omitempty"`
-	UpdatedAt           *string                `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	Uuid                *string                `json:"uuid,omitempty" xml:"uuid,omitempty"`
-	Workspace           *string                `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	//
+	// **[Deprecated]*	- The observable resource type. This field is read-only and derived. Use observeResourceConfig.entityType instead for new integrations.
+	ObserveResourceType *string `json:"observeResourceType,omitempty" xml:"observeResourceType,omitempty"`
+	// The partition key. This field is read-only and maintained by the system for rule routing and sharding.
+	PartitionKey *string             `json:"partitionKey,omitempty" xml:"partitionKey,omitempty"`
+	QueryConfig  *QueryConfigUnified `json:"queryConfig,omitempty" xml:"queryConfig,omitempty"`
+	// The RCA (root cause analysis) configuration.
+	RcaConfig *AlertRuleRcaConfig `json:"rcaConfig,omitempty" xml:"rcaConfig,omitempty"`
+	// The region ID. This field is aligned with V1 AlertRule.regionId. Priority: request body regionId > gateway callerRegionId.
+	RegionId       *string                `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	ScheduleConfig *ScheduleConfigUnified `json:"scheduleConfig,omitempty" xml:"scheduleConfig,omitempty"`
+	// The severity levels covered by this rule, separated by commas. This field is read-only and derived. The format is the same as the filter.severityLevels query parameter.
+	SeverityLevels *string `json:"severityLevels,omitempty" xml:"severityLevels,omitempty"`
+	// The alert status. This field is read-only.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The update time in ISO 8601 format. This field is read-only.
+	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The rule UUID. This field is system-generated and read-only.
+	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
+	// The workspace.
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s AlertRuleV2) String() string {

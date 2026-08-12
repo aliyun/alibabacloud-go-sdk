@@ -48,7 +48,7 @@ type IncidentEscalationStageStruct struct {
 	//
 	// example:
 	//
-	// 负责处理生产环境告警的主负责人
+	// Primary owner responsible for handling production environment alerts.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The effective time.
 	//
@@ -60,7 +60,7 @@ type IncidentEscalationStageStruct struct {
 	//
 	// example:
 	//
-	// 运维团队
+	// Operations team.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The stage index.
 	//

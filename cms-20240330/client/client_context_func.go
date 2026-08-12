@@ -687,6 +687,81 @@ func (client *Client) CreateContextStoreAPIKeyWithContext(ctx context.Context, w
 
 // Summary:
 //
+// Creates a DataPipeline.
+//
+// Description:
+//
+// Creates a data pipeline in a specified workspace.
+//
+// @param request - CreateDataPipelineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataPipelineResponse
+func (client *Client) CreateDataPipelineWithContext(ctx context.Context, workspace *string, request *CreateDataPipelineRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDataPipelineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Kind) {
+		body["kind"] = request.Kind
+	}
+
+	if !dara.IsNil(request.Outputs) {
+		body["outputs"] = request.Outputs
+	}
+
+	if !dara.IsNil(request.PipelineName) {
+		body["pipelineName"] = request.PipelineName
+	}
+
+	if !dara.IsNil(request.Processors) {
+		body["processors"] = request.Processors
+	}
+
+	if !dara.IsNil(request.Sinks) {
+		body["sinks"] = request.Sinks
+	}
+
+	if !dara.IsNil(request.Source) {
+		body["source"] = request.Source
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDataPipeline"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/datapipeline"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDataPipelineResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a dataset.
 //
 // @param request - CreateDatasetRequest
@@ -1360,7 +1435,7 @@ func (client *Client) CreatePrometheusVirtualInstanceWithContext(ctx context.Con
 
 // Summary:
 //
-// Creates a service for application observability.
+// Creates an application observability service.
 //
 // @param request - CreateServiceRequest
 //
@@ -1602,7 +1677,7 @@ func (client *Client) CreateServiceTaskWithContext(ctx context.Context, workspac
 
 // Summary:
 //
-// To share a console page or embed it into a third-party system without requiring a password, you can call the CreateTicket operation to generate a ticket. You can then use the ticket to create a password-free link.
+// Generates a ticket for passwordless access if you need to share console pages with others without requiring logon or embed them in third-party systems. After generating the ticket by calling CreateTicket, you can construct a passwordless access link.
 //
 // @param request - CreateTicketRequest
 //
@@ -2091,6 +2166,51 @@ func (client *Client) DeleteContextsWithContext(ctx context.Context, workspace *
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteContextsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a DataPipeline.
+//
+// Description:
+//
+// Deletes a data pipeline from a specified workspace.
+//
+// @param request - DeleteDataPipelineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataPipelineResponse
+func (client *Client) DeleteDataPipelineWithContext(ctx context.Context, workspace *string, pipelineName *string, request *DeleteDataPipelineRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDataPipelineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDataPipeline"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/datapipeline/" + dara.PercentEncode(dara.StringValue(pipelineName))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDataPipelineResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2639,7 +2759,7 @@ func (client *Client) DeletePrometheusVirtualInstanceWithContext(ctx context.Con
 
 // Summary:
 //
-// Deletes an Application Monitoring service.
+// Deletes an application observability service.
 //
 // @param request - DeleteServiceRequest
 //
@@ -3800,6 +3920,51 @@ func (client *Client) GetContextStoreWithContext(ctx context.Context, workspace 
 
 // Summary:
 //
+// Queries a DataPipeline.
+//
+// Description:
+//
+// Queries the configuration and running status of a data pipeline in a specified workspace.
+//
+// @param request - GetDataPipelineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataPipelineResponse
+func (client *Client) GetDataPipelineWithContext(ctx context.Context, workspace *string, pipelineName *string, request *GetDataPipelineRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDataPipelineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataPipeline"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/datapipeline/" + dara.PercentEncode(dara.StringValue(pipelineName))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDataPipelineResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the details of a specified dataset.
 //
 // @param request - GetDatasetRequest
@@ -4542,7 +4707,7 @@ func (client *Client) GetPrometheusViewWithContext(ctx context.Context, promethe
 
 // Summary:
 //
-// Retrieves the details of an Application Monitoring service.
+// Queries an application observability service.
 //
 // @param request - GetServiceRequest
 //
@@ -5643,6 +5808,61 @@ func (client *Client) ListContextStoresWithContext(ctx context.Context, workspac
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListContextStoresResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of DataPipelines.
+//
+// Description:
+//
+// Uses a paged query to retrieve data stream pipelines in a specified workspace. Paging is supported.
+//
+// @param request - ListDataPipelinesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataPipelinesResponse
+func (client *Client) ListDataPipelinesWithContext(ctx context.Context, workspace *string, request *ListDataPipelinesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDataPipelinesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataPipelines"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/datapipeline"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataPipelinesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6890,7 +7110,7 @@ func (client *Client) ListServiceTaskWithContext(ctx context.Context, workspace 
 
 // Summary:
 //
-// Queries a list of application observability services.
+// Queries application observability services in batches.
 //
 // @param tmpReq - ListServicesRequest
 //
@@ -7207,6 +7427,89 @@ func (client *Client) OpenCmsServiceWithContext(ctx context.Context, request *Op
 		BodyType:    dara.String("json"),
 	}
 	_result = &OpenCmsServiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Previews a data pipeline.
+//
+// Description:
+//
+// Compiles a candidate configuration and queries read-only samples grouped by dataset within a specified time window.
+//
+// @param request - PreviewDataPipelineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PreviewDataPipelineResponse
+func (client *Client) PreviewDataPipelineWithContext(ctx context.Context, workspace *string, request *PreviewDataPipelineRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PreviewDataPipelineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.FromTime) {
+		body["fromTime"] = request.FromTime
+	}
+
+	if !dara.IsNil(request.Kind) {
+		body["kind"] = request.Kind
+	}
+
+	if !dara.IsNil(request.Outputs) {
+		body["outputs"] = request.Outputs
+	}
+
+	if !dara.IsNil(request.PipelineName) {
+		body["pipelineName"] = request.PipelineName
+	}
+
+	if !dara.IsNil(request.Processors) {
+		body["processors"] = request.Processors
+	}
+
+	if !dara.IsNil(request.Sinks) {
+		body["sinks"] = request.Sinks
+	}
+
+	if !dara.IsNil(request.Source) {
+		body["source"] = request.Source
+	}
+
+	if !dara.IsNil(request.ToTime) {
+		body["toTime"] = request.ToTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PreviewDataPipeline"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/datapipeline/preview"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PreviewDataPipelineResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -8096,6 +8399,81 @@ func (client *Client) UpdateContextStoreWithContext(ctx context.Context, workspa
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateContextStoreResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a DataPipeline.
+//
+// Description:
+//
+// Modifies a specified data pipeline by using a complete candidate configuration.
+//
+// @param request - UpdateDataPipelineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataPipelineResponse
+func (client *Client) UpdateDataPipelineWithContext(ctx context.Context, workspace *string, pipelineName *string, request *UpdateDataPipelineRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDataPipelineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ExpectedVersion) {
+		body["expectedVersion"] = request.ExpectedVersion
+	}
+
+	if !dara.IsNil(request.Kind) {
+		body["kind"] = request.Kind
+	}
+
+	if !dara.IsNil(request.Outputs) {
+		body["outputs"] = request.Outputs
+	}
+
+	if !dara.IsNil(request.Processors) {
+		body["processors"] = request.Processors
+	}
+
+	if !dara.IsNil(request.Sinks) {
+		body["sinks"] = request.Sinks
+	}
+
+	if !dara.IsNil(request.Source) {
+		body["source"] = request.Source
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDataPipeline"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/datapipeline/" + dara.PercentEncode(dara.StringValue(pipelineName))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDataPipelineResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

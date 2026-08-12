@@ -24,13 +24,13 @@ type iListServicesRequest interface {
 }
 
 type ListServicesRequest struct {
-	// The maximum number of records to return for this request.
+	// The maximum number of entries to return in this request.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token for the next page of results. If this parameter is empty, it means you have reached the last page.
+	// The token for the next query. An empty value indicates the last page.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListServicesRequest struct {
 	//
 	// TRACE
 	ServiceType *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
-	// An array of tags.
+	// The tags.
 	//
 	// if can be null:
 	// true

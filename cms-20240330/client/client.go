@@ -26,48 +26,48 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"us-west-1":             dara.String("metrics.us-west-1.aliyuncs.com"),
-		"us-southeast-1":        dara.String("metrics.us-southeast-1.aliyuncs.com"),
-		"us-east-1":             dara.String("metrics.us-east-1.aliyuncs.com"),
-		"na-south-1":            dara.String("metrics.na-south-1.aliyuncs.com"),
-		"me-east-1":             dara.String("metrics.me-east-1.aliyuncs.com"),
-		"me-central-1":          dara.String("metrics.me-central-1.aliyuncs.com"),
-		"eu-west-2":             dara.String("metrics.eu-west-2.aliyuncs.com"),
-		"eu-west-1":             dara.String("metrics.eu-west-1.aliyuncs.com"),
-		"eu-central-1":          dara.String("metrics.eu-central-1.aliyuncs.com"),
-		"cn-zhongwei":           dara.String("metrics.cn-zhongwei.aliyuncs.com"),
-		"cn-zhengzhou-jva":      dara.String("metrics.cn-zhengzhou-jva.aliyuncs.com"),
-		"cn-zhangjiakou":        dara.String("metrics.cn-zhangjiakou.aliyuncs.com"),
-		"cn-wulanchabu-gic-1":   dara.String("metrics.cn-wulanchabu-gic-1.aliyuncs.com"),
-		"cn-wulanchabu":         dara.String("metrics.cn-wulanchabu.aliyuncs.com"),
-		"cn-wuhan-lr":           dara.String("metrics.cn-wuhan-lr.aliyuncs.com"),
-		"cn-shenzhen-finance-1": dara.String("metrics.cn-shenzhen-finance-1.aliyuncs.com"),
-		"cn-shenzhen":           dara.String("metrics.cn-shenzhen.aliyuncs.com"),
-		"cn-shanghai-finance-1": dara.String("metrics.cn-shanghai-finance-1.aliyuncs.com"),
-		"cn-shanghai":           dara.String("metrics.cn-shanghai.aliyuncs.com"),
-		"cn-qingdao":            dara.String("metrics.cn-qingdao.aliyuncs.com"),
-		"cn-north-2-gov-1":      dara.String("metrics.cn-north-2-gov-1.aliyuncs.com"),
-		"cn-nanjing":            dara.String("metrics.cn-nanjing.aliyuncs.com"),
-		"cn-huhehaote":          dara.String("metrics.cn-huhehaote.aliyuncs.com"),
-		"cn-hongkong":           dara.String("metrics.cn-hongkong.aliyuncs.com"),
-		"cn-heyuan-acdr-1":      dara.String("metrics.cn-heyuan-acdr-1.aliyuncs.com"),
-		"cn-heyuan":             dara.String("metrics.cn-heyuan.aliyuncs.com"),
-		"cn-hangzhou-finance":   dara.String("metrics.cn-hangzhou-finance.aliyuncs.com"),
-		"cn-hangzhou":           dara.String("metrics.cn-hangzhou.aliyuncs.com"),
-		"cn-guangzhou":          dara.String("metrics.cn-guangzhou.aliyuncs.com"),
-		"cn-fuzhou":             dara.String("metrics.cn-fuzhou.aliyuncs.com"),
-		"cn-chengdu":            dara.String("metrics.cn-chengdu.aliyuncs.com"),
-		"cn-beijing-finance-1":  dara.String("metrics.cn-beijing-finance-1.aliyuncs.com"),
 		"cn-beijing":            dara.String("metrics.cn-beijing.aliyuncs.com"),
-		"ap-southeast-8":        dara.String("metrics.ap-southeast-8.aliyuncs.com"),
-		"ap-southeast-7":        dara.String("metrics.ap-southeast-7.aliyuncs.com"),
-		"ap-southeast-6":        dara.String("metrics.ap-southeast-6.aliyuncs.com"),
-		"ap-southeast-5":        dara.String("metrics.ap-southeast-5.aliyuncs.com"),
-		"ap-southeast-3":        dara.String("metrics.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-1":        dara.String("metrics.ap-southeast-1.aliyuncs.com"),
-		"ap-south-1":            dara.String("metrics.ap-south-1.aliyuncs.com"),
+		"cn-zhengzhou-jva":      dara.String("metrics.cn-zhengzhou-jva.aliyuncs.com"),
+		"cn-heyuan":             dara.String("metrics.cn-heyuan.aliyuncs.com"),
+		"cn-zhangjiakou":        dara.String("metrics.cn-zhangjiakou.aliyuncs.com"),
 		"ap-northeast-2":        dara.String("metrics.ap-northeast-2.aliyuncs.com"),
 		"ap-northeast-1":        dara.String("metrics.ap-northeast-1.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("metrics.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-3":        dara.String("metrics.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-5":        dara.String("metrics.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-6":        dara.String("metrics.ap-southeast-6.aliyuncs.com"),
+		"ap-southeast-7":        dara.String("metrics.ap-southeast-7.aliyuncs.com"),
+		"ap-southeast-8":        dara.String("metrics.ap-southeast-8.aliyuncs.com"),
+		"cn-zhongwei":           dara.String("metrics.cn-zhongwei.aliyuncs.com"),
+		"cn-wulanchabu":         dara.String("metrics.cn-wulanchabu.aliyuncs.com"),
+		"cn-qingdao":            dara.String("metrics.cn-qingdao.aliyuncs.com"),
+		"cn-wuhan-lr":           dara.String("metrics.cn-wuhan-lr.aliyuncs.com"),
+		"cn-shanghai":           dara.String("metrics.cn-shanghai.aliyuncs.com"),
+		"cn-hongkong":           dara.String("metrics.cn-hongkong.aliyuncs.com"),
+		"cn-shenzhen":           dara.String("metrics.cn-shenzhen.aliyuncs.com"),
+		"cn-nanjing":            dara.String("metrics.cn-nanjing.aliyuncs.com"),
+		"cn-fuzhou":             dara.String("metrics.cn-fuzhou.aliyuncs.com"),
+		"cn-chengdu":            dara.String("metrics.cn-chengdu.aliyuncs.com"),
+		"cn-guangzhou":          dara.String("metrics.cn-guangzhou.aliyuncs.com"),
+		"cn-huhehaote":          dara.String("metrics.cn-huhehaote.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("metrics.cn-hangzhou.aliyuncs.com"),
+		"us-southeast-1":        dara.String("metrics.us-southeast-1.aliyuncs.com"),
+		"eu-west-1":             dara.String("metrics.eu-west-1.aliyuncs.com"),
+		"eu-west-2":             dara.String("metrics.eu-west-2.aliyuncs.com"),
+		"eu-central-1":          dara.String("metrics.eu-central-1.aliyuncs.com"),
+		"us-east-1":             dara.String("metrics.us-east-1.aliyuncs.com"),
+		"us-west-1":             dara.String("metrics.us-west-1.aliyuncs.com"),
+		"na-south-1":            dara.String("metrics.na-south-1.aliyuncs.com"),
+		"me-east-1":             dara.String("metrics.me-east-1.aliyuncs.com"),
+		"ap-south-1":            dara.String("metrics.ap-south-1.aliyuncs.com"),
+		"me-central-1":          dara.String("metrics.me-central-1.aliyuncs.com"),
+		"cn-hangzhou-finance":   dara.String("metrics.cn-hangzhou-finance.aliyuncs.com"),
+		"cn-shenzhen-finance-1": dara.String("metrics.cn-shenzhen-finance-1.aliyuncs.com"),
+		"cn-beijing-finance-1":  dara.String("metrics.cn-beijing-finance-1.aliyuncs.com"),
+		"cn-shanghai-finance-1": dara.String("metrics.cn-shanghai-finance-1.aliyuncs.com"),
+		"cn-wulanchabu-gic-1":   dara.String("metrics.cn-wulanchabu-gic-1.aliyuncs.com"),
+		"cn-heyuan-acdr-1":      dara.String("metrics.cn-heyuan-acdr-1.aliyuncs.com"),
+		"cn-north-2-gov-1":      dara.String("metrics.cn-north-2-gov-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -976,6 +976,104 @@ func (client *Client) CreateContextStoreAPIKey(workspace *string, contextStoreNa
 
 // Summary:
 //
+// Creates a DataPipeline.
+//
+// Description:
+//
+// Creates a data pipeline in a specified workspace.
+//
+// @param request - CreateDataPipelineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataPipelineResponse
+func (client *Client) CreateDataPipelineWithOptions(workspace *string, request *CreateDataPipelineRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDataPipelineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Kind) {
+		body["kind"] = request.Kind
+	}
+
+	if !dara.IsNil(request.Outputs) {
+		body["outputs"] = request.Outputs
+	}
+
+	if !dara.IsNil(request.PipelineName) {
+		body["pipelineName"] = request.PipelineName
+	}
+
+	if !dara.IsNil(request.Processors) {
+		body["processors"] = request.Processors
+	}
+
+	if !dara.IsNil(request.Sinks) {
+		body["sinks"] = request.Sinks
+	}
+
+	if !dara.IsNil(request.Source) {
+		body["source"] = request.Source
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDataPipeline"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/datapipeline"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDataPipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a DataPipeline.
+//
+// Description:
+//
+// Creates a data pipeline in a specified workspace.
+//
+// @param request - CreateDataPipelineRequest
+//
+// @return CreateDataPipelineResponse
+func (client *Client) CreateDataPipeline(workspace *string, request *CreateDataPipelineRequest) (_result *CreateDataPipelineResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateDataPipelineResponse{}
+	_body, _err := client.CreateDataPipelineWithOptions(workspace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a dataset.
 //
 // @param request - CreateDatasetRequest
@@ -1855,7 +1953,7 @@ func (client *Client) CreatePrometheusVirtualInstance(request *CreatePrometheusV
 
 // Summary:
 //
-// Creates a service for application observability.
+// Creates an application observability service.
 //
 // @param request - CreateServiceRequest
 //
@@ -1934,7 +2032,7 @@ func (client *Client) CreateServiceWithOptions(workspace *string, request *Creat
 
 // Summary:
 //
-// Creates a service for application observability.
+// Creates an application observability service.
 //
 // @param request - CreateServiceRequest
 //
@@ -2189,7 +2287,7 @@ func (client *Client) CreateServiceTask(workspace *string, serviceId *string, re
 
 // Summary:
 //
-// To share a console page or embed it into a third-party system without requiring a password, you can call the CreateTicket operation to generate a ticket. You can then use the ticket to create a password-free link.
+// Generates a ticket for passwordless access if you need to share console pages with others without requiring logon or embed them in third-party systems. After generating the ticket by calling CreateTicket, you can construct a passwordless access link.
 //
 // @param request - CreateTicketRequest
 //
@@ -2240,7 +2338,7 @@ func (client *Client) CreateTicketWithOptions(request *CreateTicketRequest, head
 
 // Summary:
 //
-// To share a console page or embed it into a third-party system without requiring a password, you can call the CreateTicket operation to generate a ticket. You can then use the ticket to create a password-free link.
+// Generates a ticket for passwordless access if you need to share console pages with others without requiring logon or embed them in third-party systems. After generating the ticket by calling CreateTicket, you can construct a passwordless access link.
 //
 // @param request - CreateTicketRequest
 //
@@ -2890,6 +2988,74 @@ func (client *Client) DeleteContexts(workspace *string, contextStoreName *string
 	headers := make(map[string]*string)
 	_result = &DeleteContextsResponse{}
 	_body, _err := client.DeleteContextsWithOptions(workspace, contextStoreName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a DataPipeline.
+//
+// Description:
+//
+// Deletes a data pipeline from a specified workspace.
+//
+// @param request - DeleteDataPipelineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataPipelineResponse
+func (client *Client) DeleteDataPipelineWithOptions(workspace *string, pipelineName *string, request *DeleteDataPipelineRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDataPipelineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDataPipeline"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/datapipeline/" + dara.PercentEncode(dara.StringValue(pipelineName))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDataPipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a DataPipeline.
+//
+// Description:
+//
+// Deletes a data pipeline from a specified workspace.
+//
+// @param request - DeleteDataPipelineRequest
+//
+// @return DeleteDataPipelineResponse
+func (client *Client) DeleteDataPipeline(workspace *string, pipelineName *string, request *DeleteDataPipelineRequest) (_result *DeleteDataPipelineResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteDataPipelineResponse{}
+	_body, _err := client.DeleteDataPipelineWithOptions(workspace, pipelineName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3677,7 +3843,7 @@ func (client *Client) DeletePrometheusVirtualInstance(prometheusInstanceId *stri
 
 // Summary:
 //
-// Deletes an Application Monitoring service.
+// Deletes an application observability service.
 //
 // @param request - DeleteServiceRequest
 //
@@ -3718,7 +3884,7 @@ func (client *Client) DeleteServiceWithOptions(workspace *string, serviceId *str
 
 // Summary:
 //
-// Deletes an Application Monitoring service.
+// Deletes an application observability service.
 //
 // @param request - DeleteServiceRequest
 //
@@ -5335,6 +5501,74 @@ func (client *Client) GetContextStore(workspace *string, contextStoreName *strin
 
 // Summary:
 //
+// Queries a DataPipeline.
+//
+// Description:
+//
+// Queries the configuration and running status of a data pipeline in a specified workspace.
+//
+// @param request - GetDataPipelineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataPipelineResponse
+func (client *Client) GetDataPipelineWithOptions(workspace *string, pipelineName *string, request *GetDataPipelineRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDataPipelineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataPipeline"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/datapipeline/" + dara.PercentEncode(dara.StringValue(pipelineName))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDataPipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a DataPipeline.
+//
+// Description:
+//
+// Queries the configuration and running status of a data pipeline in a specified workspace.
+//
+// @param request - GetDataPipelineRequest
+//
+// @return GetDataPipelineResponse
+func (client *Client) GetDataPipeline(workspace *string, pipelineName *string, request *GetDataPipelineRequest) (_result *GetDataPipelineResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetDataPipelineResponse{}
+	_body, _err := client.GetDataPipelineWithOptions(workspace, pipelineName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the details of a specified dataset.
 //
 // @param request - GetDatasetRequest
@@ -6390,7 +6624,7 @@ func (client *Client) GetPrometheusView(prometheusViewId *string, request *GetPr
 
 // Summary:
 //
-// Retrieves the details of an Application Monitoring service.
+// Queries an application observability service.
 //
 // @param request - GetServiceRequest
 //
@@ -6431,7 +6665,7 @@ func (client *Client) GetServiceWithOptions(workspace *string, serviceId *string
 
 // Summary:
 //
-// Retrieves the details of an Application Monitoring service.
+// Queries an application observability service.
 //
 // @param request - GetServiceRequest
 //
@@ -7879,6 +8113,84 @@ func (client *Client) ListContextStores(workspace *string, request *ListContextS
 	headers := make(map[string]*string)
 	_result = &ListContextStoresResponse{}
 	_body, _err := client.ListContextStoresWithOptions(workspace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of DataPipelines.
+//
+// Description:
+//
+// Uses a paged query to retrieve data stream pipelines in a specified workspace. Paging is supported.
+//
+// @param request - ListDataPipelinesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataPipelinesResponse
+func (client *Client) ListDataPipelinesWithOptions(workspace *string, request *ListDataPipelinesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDataPipelinesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataPipelines"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/datapipeline"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataPipelinesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of DataPipelines.
+//
+// Description:
+//
+// Uses a paged query to retrieve data stream pipelines in a specified workspace. Paging is supported.
+//
+// @param request - ListDataPipelinesRequest
+//
+// @return ListDataPipelinesResponse
+func (client *Client) ListDataPipelines(workspace *string, request *ListDataPipelinesRequest) (_result *ListDataPipelinesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListDataPipelinesResponse{}
+	_body, _err := client.ListDataPipelinesWithOptions(workspace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9540,7 +9852,7 @@ func (client *Client) ListServiceTask(workspace *string, serviceId *string, requ
 
 // Summary:
 //
-// Queries a list of application observability services.
+// Queries application observability services in batches.
 //
 // @param tmpReq - ListServicesRequest
 //
@@ -9613,7 +9925,7 @@ func (client *Client) ListServicesWithOptions(workspace *string, tmpReq *ListSer
 
 // Summary:
 //
-// Queries a list of application observability services.
+// Queries application observability services in batches.
 //
 // @param request - ListServicesRequest
 //
@@ -9953,6 +10265,112 @@ func (client *Client) OpenCmsService(request *OpenCmsServiceRequest) (_result *O
 	headers := make(map[string]*string)
 	_result = &OpenCmsServiceResponse{}
 	_body, _err := client.OpenCmsServiceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Previews a data pipeline.
+//
+// Description:
+//
+// Compiles a candidate configuration and queries read-only samples grouped by dataset within a specified time window.
+//
+// @param request - PreviewDataPipelineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PreviewDataPipelineResponse
+func (client *Client) PreviewDataPipelineWithOptions(workspace *string, request *PreviewDataPipelineRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PreviewDataPipelineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.FromTime) {
+		body["fromTime"] = request.FromTime
+	}
+
+	if !dara.IsNil(request.Kind) {
+		body["kind"] = request.Kind
+	}
+
+	if !dara.IsNil(request.Outputs) {
+		body["outputs"] = request.Outputs
+	}
+
+	if !dara.IsNil(request.PipelineName) {
+		body["pipelineName"] = request.PipelineName
+	}
+
+	if !dara.IsNil(request.Processors) {
+		body["processors"] = request.Processors
+	}
+
+	if !dara.IsNil(request.Sinks) {
+		body["sinks"] = request.Sinks
+	}
+
+	if !dara.IsNil(request.Source) {
+		body["source"] = request.Source
+	}
+
+	if !dara.IsNil(request.ToTime) {
+		body["toTime"] = request.ToTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PreviewDataPipeline"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/datapipeline/preview"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PreviewDataPipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Previews a data pipeline.
+//
+// Description:
+//
+// Compiles a candidate configuration and queries read-only samples grouped by dataset within a specified time window.
+//
+// @param request - PreviewDataPipelineRequest
+//
+// @return PreviewDataPipelineResponse
+func (client *Client) PreviewDataPipeline(workspace *string, request *PreviewDataPipelineRequest) (_result *PreviewDataPipelineResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PreviewDataPipelineResponse{}
+	_body, _err := client.PreviewDataPipelineWithOptions(workspace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11105,6 +11523,104 @@ func (client *Client) UpdateContextStore(workspace *string, contextStoreName *st
 	headers := make(map[string]*string)
 	_result = &UpdateContextStoreResponse{}
 	_body, _err := client.UpdateContextStoreWithOptions(workspace, contextStoreName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a DataPipeline.
+//
+// Description:
+//
+// Modifies a specified data pipeline by using a complete candidate configuration.
+//
+// @param request - UpdateDataPipelineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataPipelineResponse
+func (client *Client) UpdateDataPipelineWithOptions(workspace *string, pipelineName *string, request *UpdateDataPipelineRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDataPipelineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ExpectedVersion) {
+		body["expectedVersion"] = request.ExpectedVersion
+	}
+
+	if !dara.IsNil(request.Kind) {
+		body["kind"] = request.Kind
+	}
+
+	if !dara.IsNil(request.Outputs) {
+		body["outputs"] = request.Outputs
+	}
+
+	if !dara.IsNil(request.Processors) {
+		body["processors"] = request.Processors
+	}
+
+	if !dara.IsNil(request.Sinks) {
+		body["sinks"] = request.Sinks
+	}
+
+	if !dara.IsNil(request.Source) {
+		body["source"] = request.Source
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDataPipeline"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/datapipeline/" + dara.PercentEncode(dara.StringValue(pipelineName))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDataPipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a DataPipeline.
+//
+// Description:
+//
+// Modifies a specified data pipeline by using a complete candidate configuration.
+//
+// @param request - UpdateDataPipelineRequest
+//
+// @return UpdateDataPipelineResponse
+func (client *Client) UpdateDataPipeline(workspace *string, pipelineName *string, request *UpdateDataPipelineRequest) (_result *UpdateDataPipelineResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateDataPipelineResponse{}
+	_body, _err := client.UpdateDataPipelineWithOptions(workspace, pipelineName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

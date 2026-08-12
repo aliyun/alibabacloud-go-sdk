@@ -18,15 +18,15 @@ type iApmFilterConfig interface {
 }
 
 type ApmFilterConfig struct {
-	// The tag key to filter by. For example, to filter traces by region, set this parameter to `RegionId`.
+	// The dimension key.
 	//
 	// This parameter is required.
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The comparison operator used to match the tag\\"s value. Valid values: `EQUAL` and `NOT_EQUAL`.
+	// The filter type.
 	//
 	// This parameter is required.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The value to compare against the tag\\"s value. Used with the `key` and `type` parameters to form a complete filter condition.
+	// The filter value. This can be empty when type is ALL or DISABLED.
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

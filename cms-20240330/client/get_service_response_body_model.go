@@ -68,7 +68,7 @@ type GetServiceResponseBodyService struct {
 	//
 	// {"language":"java"}
 	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	// The time when the service was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -84,9 +84,9 @@ type GetServiceResponseBodyService struct {
 	//
 	// example:
 	//
-	// demo应用
+	// Demo application
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The ID of the ARMS application that is compatible with earlier versions.
+	// The ARMS application ID for backward compatibility.
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type GetServiceResponseBodyService struct {
 	//
 	// TRACE
 	ServiceType *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
-	// The array of tags.
+	// The tags.
 	Tags []*GetServiceResponseBodyServiceTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The workspace name.
 	//

@@ -36,7 +36,7 @@ type IncidentStruct struct {
 	//
 	// example:
 	//
-	// 检测到 RDS 实例 rds-bp1234567890abcdef 的连接数达到 1000，已触发告警。
+	// Detected that the connection count of RDS instance rds-bp1234567890abcdef has reached 1000, triggering an alert.
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// The list of escalation policies.
 	Escalations []*IncidentEscalationStruct `json:"escalations,omitempty" xml:"escalations,omitempty" type:"Repeated"`
@@ -72,7 +72,7 @@ type IncidentStruct struct {
 	//
 	// example:
 	//
-	// 数据库连接数过高
+	// Excessively high database connection count.
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 	// The user ID.
 	//

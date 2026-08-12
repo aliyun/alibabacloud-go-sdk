@@ -18,13 +18,15 @@ type iSubscriptionForSNSModify interface {
 }
 
 type SubscriptionForSNSModify struct {
+	// The filter configuration.
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	// Specifies whether to subscribe to legacy product events (CMS 1.0 / ARMS / SLS events where workspace=null). Valid values:
+	// Specifies whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace is null). Valid values:
 	//
 	// - true: Subscribe.
 	//
 	// - false or null: Do not subscribe.
-	SubscribeLegacyEvent   *bool                   `json:"subscribeLegacyEvent,omitempty" xml:"subscribeLegacyEvent,omitempty"`
+	SubscribeLegacyEvent *bool `json:"subscribeLegacyEvent,omitempty" xml:"subscribeLegacyEvent,omitempty"`
+	// The workspace filter configuration.
 	WorkspaceFilterSetting *WorkspaceFilterSetting `json:"workspaceFilterSetting,omitempty" xml:"workspaceFilterSetting,omitempty"`
 }
 

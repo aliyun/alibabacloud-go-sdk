@@ -16,8 +16,10 @@ type iSlsQueryJoin interface {
 }
 
 type SlsQueryJoin struct {
+	// The list of join conditions.
 	Conditions []*SlsJoinCondition `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	Type       *string             `json:"type,omitempty" xml:"type,omitempty"`
+	// The set operation type. Valid values: InnerJoin, LeftJoin, RightJoin, FullJoin, LeftExclude, RightExclude, CrossJoin, NoJoin, and Concat.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s SlsQueryJoin) String() string {

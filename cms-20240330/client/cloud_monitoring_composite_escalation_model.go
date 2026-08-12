@@ -20,13 +20,13 @@ type iCloudMonitoringCompositeEscalation interface {
 }
 
 type CloudMonitoringCompositeEscalation struct {
-	// A single entry in the escalation policy. See the `CloudMonitoringCompositeEscalationEntry` object for details.
+	// The list of multi-condition configurations.
 	Escalations []*CloudMonitoringCompositeEscalationEntry `json:"escalations,omitempty" xml:"escalations,omitempty" type:"Repeated"`
-	// Specifies the logical relationship for evaluating the conditions of the composite alert rule. Valid values: `and` and `or`.
+	// The logical relationship between conditions (AND/OR).
 	Relation *string `json:"relation,omitempty" xml:"relation,omitempty"`
-	// Specifies the severity level of the alert. For example: `Critical`, `Warning`, and `Info`.
+	// The severity level.
 	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
-	// Specifies the number of times the alert conditions must be met to trigger this escalation policy.
+	// The number of consecutive times the conditions are met before the alert is triggered.
 	Times *int32 `json:"times,omitempty" xml:"times,omitempty"`
 }
 

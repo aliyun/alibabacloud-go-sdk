@@ -104,7 +104,7 @@ type NotifyStrategyForView struct {
 	//
 	// example:
 	//
-	// 测试策略
+	// Test policy.
 	NotifyStrategyName *string `json:"notifyStrategyName,omitempty" xml:"notifyStrategyName,omitempty"`
 	// The push settings.
 	PushingSetting *NotifyStrategyForViewPushingSetting `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty" type:"Struct"`

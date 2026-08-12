@@ -24,12 +24,18 @@ type iSlsMultiConditionCaseConfig interface {
 }
 
 type SlsMultiConditionCaseConfig struct {
-	CountOperator  *string `json:"countOperator,omitempty" xml:"countOperator,omitempty"`
-	CountThreshold *int64  `json:"countThreshold,omitempty" xml:"countThreshold,omitempty"`
-	MatchField     *string `json:"matchField,omitempty" xml:"matchField,omitempty"`
-	MatchOperator  *string `json:"matchOperator,omitempty" xml:"matchOperator,omitempty"`
-	MatchValue     *string `json:"matchValue,omitempty" xml:"matchValue,omitempty"`
-	Severity       *string `json:"severity,omitempty" xml:"severity,omitempty"`
+	// The count comparison operator. Valid values: GTE, GT, EQ, LTE, LT.
+	CountOperator *string `json:"countOperator,omitempty" xml:"countOperator,omitempty"`
+	// The count threshold. The alert is triggered when this threshold is met.
+	CountThreshold *int64 `json:"countThreshold,omitempty" xml:"countThreshold,omitempty"`
+	// The log field name. Required when matchOperator is set to CONTAINS, EQUALS, or REGEX. Specify the field name when matchOperator is set to PRESENT or NOT_PRESENT.
+	MatchField *string `json:"matchField,omitempty" xml:"matchField,omitempty"`
+	// The log matching operator. Valid values: PRESENT (field exists), NOT_PRESENT (field does not exist), CONTAINS (contains), EQUALS (equals), REGEX (regular expression). If left empty, any data matches.
+	MatchOperator *string `json:"matchOperator,omitempty" xml:"matchOperator,omitempty"`
+	// The log match value. Required when matchOperator is set to CONTAINS, EQUALS, or REGEX.
+	MatchValue *string `json:"matchValue,omitempty" xml:"matchValue,omitempty"`
+	// The severity level.
+	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
 }
 
 func (s SlsMultiConditionCaseConfig) String() string {

@@ -18,11 +18,11 @@ type iCloudMonitoringExpressEscalation interface {
 }
 
 type CloudMonitoringExpressEscalation struct {
-	// The expression that defines the alert condition.
+	// The raw expression.
 	RawExpression *string `json:"rawExpression,omitempty" xml:"rawExpression,omitempty"`
-	// The alert severity that triggers the escalation.
+	// The severity level.
 	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
-	// The number of alert occurrences required to trigger the escalation.
+	// The number of consecutive times the alert is triggered.
 	Times *int32 `json:"times,omitempty" xml:"times,omitempty"`
 }
 

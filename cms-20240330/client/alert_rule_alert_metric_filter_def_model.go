@@ -44,7 +44,7 @@ type AlertRuleAlertMetricFilterDef struct {
 	//
 	// example:
 	//
-	// 应用状态
+	// Application Status
 	DisplayNameCn *string `json:"displayNameCn,omitempty" xml:"displayNameCn,omitempty"`
 	// The display name in English.
 	//
@@ -172,7 +172,7 @@ type AlertRuleAlertMetricFilterDefSupportedOpts struct {
 	//
 	// example:
 	//
-	// 在线
+	// Online
 	DisplayNameCn *string `json:"displayNameCn,omitempty" xml:"displayNameCn,omitempty"`
 	// The display name in English.
 	//

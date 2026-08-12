@@ -20,7 +20,7 @@ type IncidentPlanFieldPath struct {
 	//
 	// example:
 	//
-	// 服务名称
+	// Service name.
 	FieldAlias *string `json:"fieldAlias,omitempty" xml:"fieldAlias,omitempty"`
 	// A list of field paths.
 	FieldPath []*string `json:"fieldPath,omitempty" xml:"fieldPath,omitempty" type:"Repeated"`

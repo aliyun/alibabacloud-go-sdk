@@ -16,9 +16,9 @@ type iActionIntegrationConfig interface {
 }
 
 type ActionIntegrationConfig struct {
-	// A list of actions to perform.
+	// The list of action integration IDs.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// Indicates whether action integration is enabled.
+	// Indicates whether action integration is started.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 

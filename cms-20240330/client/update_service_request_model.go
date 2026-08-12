@@ -26,7 +26,7 @@ type UpdateServiceRequest struct {
 	//
 	// {"language":"java"}
 	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	// The description of the service. This parameter is valid only when serviceType is set to RUM.
+	// The service description. This parameter is valid only when serviceType is set to RUM.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type UpdateServiceRequest struct {
 	//
 	// api-monitor-test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The status of the service. This parameter is valid only when serviceType is set to RUM.
+	// The service status. This parameter is valid only when serviceType is set to RUM.
 	//
 	// example:
 	//

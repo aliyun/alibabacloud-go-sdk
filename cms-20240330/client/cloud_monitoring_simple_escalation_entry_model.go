@@ -24,12 +24,18 @@ type iCloudMonitoringSimpleEscalationEntry interface {
 }
 
 type CloudMonitoringSimpleEscalationEntry struct {
+	// The comparison operator.
 	ComparisonOperator *string `json:"comparisonOperator,omitempty" xml:"comparisonOperator,omitempty"`
-	PreCondition       *string `json:"preCondition,omitempty" xml:"preCondition,omitempty"`
-	Severity           *string `json:"severity,omitempty" xml:"severity,omitempty"`
-	Statistics         *string `json:"statistics,omitempty" xml:"statistics,omitempty"`
-	Threshold          *string `json:"threshold,omitempty" xml:"threshold,omitempty"`
-	Times              *int32  `json:"times,omitempty" xml:"times,omitempty"`
+	// The precondition.
+	PreCondition *string `json:"preCondition,omitempty" xml:"preCondition,omitempty"`
+	// The severity level.
+	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
+	// The statistics method.
+	Statistics *string `json:"statistics,omitempty" xml:"statistics,omitempty"`
+	// The threshold.
+	Threshold *string `json:"threshold,omitempty" xml:"threshold,omitempty"`
+	// The number of consecutive times the condition is triggered.
+	Times *int32 `json:"times,omitempty" xml:"times,omitempty"`
 }
 
 func (s CloudMonitoringSimpleEscalationEntry) String() string {

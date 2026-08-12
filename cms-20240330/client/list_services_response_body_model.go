@@ -22,13 +22,13 @@ type iListServicesResponseBody interface {
 }
 
 type ListServicesResponseBody struct {
-	// The maximum number of results returned. The maximum value is 200.
+	// The maximum number of entries returned. Maximum value: 200.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The paging token.
+	// The pagination token.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type ListServicesResponseBody struct {
 	//
 	// 0CEC5375-C554-562B-A65F-9A629907C1F0
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// A list of service information.
+	// The list of service information.
 	Services []*ListServicesResponseBodyServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListServicesResponseBody) Validate() error {
 }
 
 type ListServicesResponseBodyServices struct {
-	// Additional information.
+	// The extended information.
 	//
 	// example:
 	//
@@ -129,19 +129,19 @@ type ListServicesResponseBodyServices struct {
 	//
 	// 2025-07-01T02:23:59Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The service description. This parameter is valid only when serviceType is RUM.
+	// The service description. This parameter is valid only when serviceType is set to RUM.
 	//
 	// example:
 	//
 	// workspace api monitor test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The display name. This parameter is valid only when serviceType is RUM.
+	// The display name. This parameter is valid only when serviceType is set to RUM.
 	//
 	// example:
 	//
 	// test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The ID of the ARMS application for backward compatibility.
+	// The ARMS application ID for backward compatibility.
 	//
 	// example:
 	//
@@ -165,7 +165,7 @@ type ListServicesResponseBodyServices struct {
 	//
 	// demo-app
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// The service status. This parameter is valid only when serviceType is RUM.
+	// The service status. This parameter is valid only when serviceType is set to RUM.
 	//
 	// example:
 	//

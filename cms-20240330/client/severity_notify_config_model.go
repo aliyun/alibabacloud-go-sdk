@@ -16,8 +16,10 @@ type iSeverityNotifyConfig interface {
 }
 
 type SeverityNotifyConfig struct {
-	Receivers               []*DirectNotifyReceiver `json:"receivers,omitempty" xml:"receivers,omitempty" type:"Repeated"`
-	SendRecoverNotification *bool                   `json:"sendRecoverNotification,omitempty" xml:"sendRecoverNotification,omitempty"`
+	// The list of notification recipients. Each recipient specifies a type, an identifier, and the enabled channels.
+	Receivers []*DirectNotifyReceiver `json:"receivers,omitempty" xml:"receivers,omitempty" type:"Repeated"`
+	// Specifies whether to send recovery notifications for this severity level. If this parameter is left empty, the value falls back to the top-level sendRecoverNotification parameter.
+	SendRecoverNotification *bool `json:"sendRecoverNotification,omitempty" xml:"sendRecoverNotification,omitempty"`
 }
 
 func (s SeverityNotifyConfig) String() string {

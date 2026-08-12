@@ -30,7 +30,7 @@ type IncidentNoteStruct struct {
 	//
 	// example:
 	//
-	// 已联系运维团队，正在排查问题。
+	// The operations team has been contacted and is currently investigating the issue.
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// The content format.
 	//
@@ -163,7 +163,7 @@ type IncidentNoteStructOperator struct {
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The user ID.
 	//
