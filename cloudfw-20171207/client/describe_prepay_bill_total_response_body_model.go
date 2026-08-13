@@ -18,7 +18,7 @@ type iDescribePrepayBillTotalResponseBody interface {
 }
 
 type DescribePrepayBillTotalResponseBody struct {
-	// The bill list, with each entry representing a day.
+	// The bill list, aggregated by day.
 	BillList []*DescribePrepayBillTotalResponseBodyBillList `json:"BillList,omitempty" xml:"BillList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -89,13 +89,13 @@ type DescribePrepayBillTotalResponseBodyBillList struct {
 	//
 	// 5
 	BilledDetectionTraffic *float32 `json:"BilledDetectionTraffic,omitempty" xml:"BilledDetectionTraffic,omitempty"`
-	// The sensitive data detection traffic for the day.
+	// The sensitive data detection traffic of the day.
 	//
 	// example:
 	//
 	// 8
 	DailyDetectionTraffic *float32 `json:"DailyDetectionTraffic,omitempty" xml:"DailyDetectionTraffic,omitempty"`
-	// The total elastic traffic for the day. Unit: GB.
+	// The total elastic traffic of the day. Unit: GB.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ type DescribePrepayBillTotalResponseBodyBillList struct {
 	//
 	// 200
 	ElasticBandwidth *int64 `json:"ElasticBandwidth,omitempty" xml:"ElasticBandwidth,omitempty"`
-	// The end time of the day. The value is a UNIX timestamp. Unit: seconds.
+	// The end time of the day. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -149,7 +149,7 @@ type DescribePrepayBillTotalResponseBodyBillList struct {
 	//
 	// 1761588300
 	OverflowTime *int64 `json:"OverflowTime,omitempty" xml:"OverflowTime,omitempty"`
-	// The start time of the day. The value is a UNIX timestamp. Unit: seconds.
+	// The start time of the day. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

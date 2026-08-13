@@ -94,7 +94,7 @@ type DescribeInternetOpenServiceResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// 447458.0
+	// 447458
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
 	// The outbound traffic.
 	//

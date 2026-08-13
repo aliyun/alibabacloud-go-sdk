@@ -32,15 +32,15 @@ type ModifyPrivateDnsEndpointRequest struct {
 	//
 	// pd-12345
 	AccessInstanceId *string `json:"AccessInstanceId,omitempty" xml:"AccessInstanceId,omitempty"`
-	// The name of the private instance.
+	// The private instance name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Test
+	// test
 	AccessInstanceName *string `json:"AccessInstanceName,omitempty" xml:"AccessInstanceName,omitempty"`
-	// The primary DNS server.
+	// The primary DNS.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type ModifyPrivateDnsEndpointRequest struct {
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The secondary DNS server.
+	// The standby DNS.
 	//
 	// example:
 	//

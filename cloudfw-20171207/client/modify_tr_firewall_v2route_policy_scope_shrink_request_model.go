@@ -24,9 +24,9 @@ type iModifyTrFirewallV2RoutePolicyScopeShrinkRequest interface {
 }
 
 type ModifyTrFirewallV2RoutePolicyScopeShrinkRequest struct {
-	// The destination instances.
+	// The list of secondary traffic redirection instances.
 	DestCandidateListShrink *string `json:"DestCandidateList,omitempty" xml:"DestCandidateList,omitempty"`
-	// The ID of the TR firewall instance.
+	// The instance ID of the virtual private cloud (VPC) firewalls.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ModifyTrFirewallV2RoutePolicyScopeShrinkRequest struct {
 	//
 	// vfw-tr-6520de0253bc4669****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	// The language of the response. Valid values:
+	// The language of the response message. Valid values:
 	//
 	// - **zh*	- (default): Chinese
 	//
@@ -46,17 +46,17 @@ type ModifyTrFirewallV2RoutePolicyScopeShrinkRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// Specifies whether to restore the traffic redirection configuration. Valid values:
 	//
-	// - true: Rolls back the routes.
+	// - true: Route rollback.
 	//
-	// - false: Revokes the routes.
+	// - false: Route withdrawal.
 	//
 	// example:
 	//
 	// false
 	ShouldRecover *string `json:"ShouldRecover,omitempty" xml:"ShouldRecover,omitempty"`
-	// The source instances.
+	// The list of primary traffic redirection instances.
 	SrcCandidateListShrink *string `json:"SrcCandidateList,omitempty" xml:"SrcCandidateList,omitempty"`
-	// The ID of the routing policy.
+	// The ID of the firewall route policy.
 	//
 	// This parameter is required.
 	//

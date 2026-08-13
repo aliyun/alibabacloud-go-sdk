@@ -15,6 +15,8 @@ type iCreateVpcFirewallCenConfigureRequest interface {
 	GetFirewallSwitch() *string
 	SetFirewallVSwitchCidrBlock(v string) *CreateVpcFirewallCenConfigureRequest
 	GetFirewallVSwitchCidrBlock() *string
+	SetFirewallVSwitchZoneId(v string) *CreateVpcFirewallCenConfigureRequest
+	GetFirewallVSwitchZoneId() *string
 	SetFirewallVpcCidrBlock(v string) *CreateVpcFirewallCenConfigureRequest
 	GetFirewallVpcCidrBlock() *string
 	SetFirewallVpcStandbyZoneId(v string) *CreateVpcFirewallCenConfigureRequest
@@ -38,17 +40,19 @@ type iCreateVpcFirewallCenConfigureRequest interface {
 type CreateVpcFirewallCenConfigureRequest struct {
 	// The instance ID of the CEN instance.
 	//
+	// >  Prerequisite: The CEN instance must have been created by invoking the Cbn.CreateCen operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cen-x5jayxou71ad73****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The status of the virtual private cloud (VPC) firewall after you create a VPC firewall. Valid values:
+	// Settings for the virtual private cloud (VPC) firewall status after you create a VPC. Valid values:
 	//
-	// - **open*	- (default): The VPC firewall is automatically enabled after it is created.
+	// - **open*	- (default): The virtual private cloud (VPC) firewall is automatically enabled after it is created.
 	//
-	// - **close**: The VPC firewall is not automatically enabled after it is created. You can invoke the [ModifyVpcFirewallCenSwitchStatus](https://help.aliyun.com/document_detail/345780.html) operation to enable the VPC firewall.
+	// - **close**: The virtual private cloud (VPC) firewall is not automatically enabled after it is created. You can invoke the [ModifyVpcFirewallCenSwitchStatus](https://help.aliyun.com/document_detail/345780.html) operation to enable the firewall.
 	//
 	// This parameter is required.
 	//
@@ -56,15 +60,25 @@ type CreateVpcFirewallCenConfigureRequest struct {
 	//
 	// open
 	FirewallSwitch *string `json:"FirewallSwitch,omitempty" xml:"FirewallSwitch,omitempty"`
-	// The CIDR block of the vSwitch used by the firewall. Specify a CIDR block with a subnet mask of no more than 29 bits that does not conflict with your network planning. This CIDR block is allocated to the vSwitch that is created during the process to create a VPC firewall within the firewall security VPC (Cloud_Firewall_VSWITCH) for traffic redirection. The vSwitch CIDR block must be a subnet of the firewall VPC CIDR block.
+	// The CIDR block of the vSwitch used by the firewall. Specify a CIDR block with a subnet mask of no more than 29 bits that does not conflict with your network planning. This CIDR block is allocated to the vSwitch that is required during the create a VPC firewall procedure and is used for automatic creation of a vSwitch (Cloud_Firewall_VSWITCH) within the security VPC for traffic redirection. The vSwitch CIDR block must be a subnet of the firewall VPC CIDR block.
 	//
-	// If you leave this parameter empty, the default CIDR block 10.219.219.216/29 is automatically allocated.
+	// If you leave this parameter empty, the CIDR block 10.219.219.216/29 is automatically allocated by default.
 	//
 	// > This parameter takes effect only when a VPC firewall is created for the first time in the local region of the CEN instance.
-	FirewallVSwitchCidrBlock *string `json:"FirewallVSwitchCidrBlock,omitempty" xml:"FirewallVSwitchCidrBlock,omitempty"`
-	// The CIDR block of the VPC used by the firewall. Specify a CIDR block with a subnet mask of no more than 28 bits. This CIDR block is allocated to the VPC that is created during the process to create a VPC firewall (Cloud_Firewall_VPC) for traffic redirection.
 	//
-	// If you leave this parameter empty, the default CIDR block 10.0.0.0/8 is automatically allocated.
+	// example:
+	//
+	// 10.219.219.216/29
+	FirewallVSwitchCidrBlock *string `json:"FirewallVSwitchCidrBlock,omitempty" xml:"FirewallVSwitchCidrBlock,omitempty"`
+	// The zone ID of the vSwitch used by the firewall.
+	//
+	// example:
+	//
+	// cn-hangzhou-i
+	FirewallVSwitchZoneId *string `json:"FirewallVSwitchZoneId,omitempty" xml:"FirewallVSwitchZoneId,omitempty"`
+	// The CIDR block of the VPC used by the firewall. Specify a CIDR block with a subnet mask of no more than 28 bits. This CIDR block is allocated to the VPC that is required during the create a VPC firewall procedure and is used for automatic creation of a security VPC (Cloud_Firewall_VPC) for traffic redirection.
+	//
+	// If you leave this parameter empty, the CIDR block 10.0.0.0/8 is automatically allocated by default.
 	//
 	// > This parameter takes effect only when a VPC firewall is created for the first time in the local region of the CEN instance.
 	//
@@ -72,31 +86,31 @@ type CreateVpcFirewallCenConfigureRequest struct {
 	//
 	// 10.0.0.0/8
 	FirewallVpcCidrBlock *string `json:"FirewallVpcCidrBlock,omitempty" xml:"FirewallVpcCidrBlock,omitempty"`
-	// The ID of the secondary zone to which the firewall belongs. The firewall performs an automatic switchover to the secondary zone to continue running only when the primary zone becomes unavailable.
+	// The ID of the secondary active zone of the firewall. The firewall performs an automatic switchover to the secondary zone to continue running only when the primary zone becomes unavailable.
 	//
-	// If you leave this parameter empty, a default secondary zone is automatically allocated for the firewall.
+	// If you leave this parameter empty, a secondary zone is automatically allocated by default.
 	//
 	//
 	//
-	// > This parameter takes effect only when a VPC firewall is created for the first time in the local region of the CEN instance.
+	// > This parameter takes effect only when you create a VPC firewall for the first time in the local region of the CEN instance.
 	//
 	// example:
 	//
-	// cn-hangzhou-b
+	// 10.219.219.216/29
 	FirewallVpcStandbyZoneId *string `json:"FirewallVpcStandbyZoneId,omitempty" xml:"FirewallVpcStandbyZoneId,omitempty"`
-	// The ID of the primary active zone to which the firewall belongs. If your business is latency-sensitive, you can set the firewall zone to the same zone as the vSwitch of the business VPC to reduce latency.
+	// The ID of the primary active zone of the firewall. If your business is latency-sensitive, you can set the firewall zone to the same zone as the vSwitch of the business VPC to reduce latency.
 	//
-	// If you leave this parameter empty, a default zone is automatically allocated for the firewall.
+	// If you leave this parameter empty, a zone is automatically allocated by default.
 	//
 	//
 	//
-	// > This parameter takes effect only when a VPC firewall is created for the first time in the local region of the CEN instance.
+	// > This parameter takes effect only when you create a VPC firewall for the first time in the local region of the CEN instance.
 	//
 	// example:
 	//
 	// cn-hangzhou-a
 	FirewallVpcZoneId *string `json:"FirewallVpcZoneId,omitempty" xml:"FirewallVpcZoneId,omitempty"`
-	// The language of the request and response. Valid values:
+	// The language of the content within the request and response. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -112,7 +126,9 @@ type CreateVpcFirewallCenConfigureRequest struct {
 	//
 	// 258039427902****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The instance ID of the VPC for which you want to create a VPC firewall.
+	// The instance ID of the VPC-connected instance for which you want to create a virtual private cloud (VPC) firewall.
+	//
+	// >  Prerequisite: The VPC must have been attached to the CEN instance specified by CenId by invoking the Cbn.AttachCenChildInstance operation.
 	//
 	// This parameter is required.
 	//
@@ -134,7 +150,7 @@ type CreateVpcFirewallCenConfigureRequest struct {
 	//
 	// vpc-firewall-test
 	VpcFirewallName *string `json:"VpcFirewallName,omitempty" xml:"VpcFirewallName,omitempty"`
-	// The region ID of the VPC for which you want to create a VPC firewall.
+	// The region ID of the VPC for which you want to create a virtual private cloud (VPC) firewall.
 	//
 	// > For more information about the regions supported by Cloud Firewall, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
 	//
@@ -164,6 +180,10 @@ func (s *CreateVpcFirewallCenConfigureRequest) GetFirewallSwitch() *string {
 
 func (s *CreateVpcFirewallCenConfigureRequest) GetFirewallVSwitchCidrBlock() *string {
 	return s.FirewallVSwitchCidrBlock
+}
+
+func (s *CreateVpcFirewallCenConfigureRequest) GetFirewallVSwitchZoneId() *string {
+	return s.FirewallVSwitchZoneId
 }
 
 func (s *CreateVpcFirewallCenConfigureRequest) GetFirewallVpcCidrBlock() *string {
@@ -214,6 +234,11 @@ func (s *CreateVpcFirewallCenConfigureRequest) SetFirewallSwitch(v string) *Crea
 
 func (s *CreateVpcFirewallCenConfigureRequest) SetFirewallVSwitchCidrBlock(v string) *CreateVpcFirewallCenConfigureRequest {
 	s.FirewallVSwitchCidrBlock = &v
+	return s
+}
+
+func (s *CreateVpcFirewallCenConfigureRequest) SetFirewallVSwitchZoneId(v string) *CreateVpcFirewallCenConfigureRequest {
+	s.FirewallVSwitchZoneId = &v
 	return s
 }
 

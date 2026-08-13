@@ -50,101 +50,89 @@ type DescribeInvadeEventListRequest struct {
 	//
 	// 10.0.XX.XX
 	AssetsIP *string `json:"AssetsIP,omitempty" xml:"AssetsIP,omitempty"`
-	// The ID of the affected instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// ins_1321_asedb_****
 	AssetsInstanceId *string `json:"AssetsInstanceId,omitempty" xml:"AssetsInstanceId,omitempty"`
-	// The name of the affected instance.
+	// The instance name.
 	//
 	// example:
 	//
 	// ECS_test
 	AssetsInstanceName *string `json:"AssetsInstanceName,omitempty" xml:"AssetsInstanceName,omitempty"`
-	// The number of the page to return.
-	//
-	// Default: 1.
+	// Specifies the page number to return in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end of the time range to query. This must be a UNIX timestamp in seconds. If you omit this parameter, the query defaults to the current time.
+	// Specifies the end time of the query. The value is a UNIX timestamp in seconds. If this parameter is not specified, the current time is used.
 	//
 	// example:
 	//
 	// 1656837360
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// A unique identifier for the breach awareness event.
+	// The ID of the compromise awareness event.
 	//
 	// example:
 	//
 	// 69d189e2-ec17-4676-a2fe-02969234****
 	EventKey *string `json:"EventKey,omitempty" xml:"EventKey,omitempty"`
-	// The name of the breach awareness event.
+	// The name of the compromise awareness event.
 	//
 	// example:
 	//
 	// event_test
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The universally unique identifier (UUID) of the breach awareness event.
+	// The UUID of the compromise awareness event.
 	//
 	// example:
 	//
 	// fadd-dfdd-****
 	EventUuid *string `json:"EventUuid,omitempty" xml:"EventUuid,omitempty"`
-	// Specifies whether to query for ignored breach awareness events. Valid values:
-	//
-	// - **true**: Ignored.
-	//
-	// - **false**: Not ignored.
+	// Specifies whether the compromise awareness event is ignored. Valid values:
 	//
 	// example:
 	//
 	// true
 	IsIgnore *string `json:"IsIgnore,omitempty" xml:"IsIgnore,omitempty"`
-	// The language of the response. Valid values:
-	//
-	// - **zh*	- (default): Chinese.
-	//
-	// - **en**: English.
+	// The language type of the received message. Valid values:
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UID of the member account.
+	// The UID of the member accounts.
 	//
 	// example:
 	//
 	// 135809047715****
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The number of entries to return per page.
-	//
-	// Default: 6. Maximum: 10.
+	// Specifies the number of entries per page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// An array of processing statuses to filter events by. Only events with a status specified in this array are returned.
+	// The list of processing statuses.
 	//
 	// example:
 	//
 	// 1358090477156271
 	ProcessStatusList []*int32 `json:"ProcessStatusList,omitempty" xml:"ProcessStatusList,omitempty" type:"Repeated"`
-	// An array of risk levels to filter events by. Only events with a risk level specified in this array are returned.
+	// The risk assessment level.
 	RiskLevel []*int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// The source IP address that initiated the event.
+	// The source IP address of the requester.
 	//
 	// example:
 	//
 	// 192.0.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The start of the time range to query. This must be a UNIX timestamp in seconds. If you omit this parameter, the query defaults to the last 30 days.
+	// Specifies the start time of the query. The value is a UNIX timestamp in seconds. If this parameter is not specified, the query starts from the last 30 days.
 	//
 	// example:
 	//

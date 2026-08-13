@@ -18,7 +18,7 @@ type iDeleteVpcFirewallCenConfigureRequest interface {
 }
 
 type DeleteVpcFirewallCenConfigureRequest struct {
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -28,13 +28,13 @@ type DeleteVpcFirewallCenConfigureRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UID of the member account of the current Alibaba Cloud account.
+	// The UID of a member account of the current Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 258039427902****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The instance IDs of VPC firewalls.
+	// The list of instance IDs of VPC border firewalls.
 	//
 	// This parameter is required.
 	VpcFirewallIdList []*string `json:"VpcFirewallIdList,omitempty" xml:"VpcFirewallIdList,omitempty" type:"Repeated"`

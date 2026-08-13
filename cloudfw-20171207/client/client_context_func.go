@@ -185,9 +185,9 @@ func (client *Client) AddAddressBookWithContext(ctx context.Context, tmpReq *Add
 //
 // You can call this operation to create a policy that allows, denies, or monitors traffic that passes through Cloud Firewall.
 //
-// ## Rate limit
+// ## QPS limit
 //
-// The single-user queries per second (QPS) limit for this operation is 10. If the number of calls per second exceeds the limit, throttling is triggered. Throttling may affect your business. Call this operation as needed.
+// The single-user QPS limit for this operation is 10 calls per second. If the number of calls exceeds the limit, throttling is triggered, which may affect your business. Call this operation properly.
 //
 // @param request - AddControlPolicyRequest
 //
@@ -212,6 +212,10 @@ func (client *Client) AddControlPolicyWithContext(ctx context.Context, request *
 
 	if !dara.IsNil(request.ApplicationNameList) {
 		query["ApplicationNameList"] = request.ApplicationNameList
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
 	}
 
 	if !dara.IsNil(request.Description) {
@@ -244,6 +248,10 @@ func (client *Client) AddControlPolicyWithContext(ctx context.Context, request *
 
 	if !dara.IsNil(request.DomainResolveType) {
 		query["DomainResolveType"] = request.DomainResolveType
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.EndTime) {
@@ -331,7 +339,13 @@ func (client *Client) AddControlPolicyWithContext(ctx context.Context, request *
 //
 // Description:
 //
-// Creates an access control policy that allows, denies, or monitors traffic that passes through a NAT firewall.
+// Creates a DNS firewall access control policy to allow, deny, or monitor traffic that passes through the DNS firewall.
+//
+// ## Quota description
+//
+// DNS firewall policies are counted independently in the DNS policy table (counted separately by IP version), but they **share the same quota upper limit*	- with Internet access control policies (determined by the Cloud Firewall edition). If the number of address combinations after a single policy is expanded exceeds the limit, or the total number of user policies exceeds the limit, the error ErrorAclExtendedCountExceed (-200139) is returned.
+//
+// > The value returned by DescribeAclCheckQuota is the quota for ACL policy check (inspection) times, which is unrelated to firewall policy count quota and cannot be used to predict whether the quota for this operation is sufficient. Confirm firewall policy count quota in the Cloud Firewall console.
 //
 // @param request - AddDnsFirewallPolicyRequest
 //
@@ -475,11 +489,17 @@ func (client *Client) AddDomainResolveRealtimeTaskWithContext(ctx context.Contex
 //
 // Description:
 //
-// Adds member accounts to Cloud Firewall. The caller must be a delegated administrator (DA) or management account (MA) of the resource directory. Call DescribeInstanceRdAccounts to verify your identity before calling this operation.
+// Adds member accounts to Cloud Firewall.
 //
-// ## QPS limit
+// ## Before you begin
 //
-// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation as appropriate.
+// - The caller\\"s Alibaba Cloud account must be a delegated administrator (DA) or management account (MA) of a resource directory. Otherwise, the error ErrorInstanceAliuidNotDaMa (-103313) is returned. Call DescribeInstanceRdAccounts to verify the identity of the current account.
+//
+// - The member UID to be added must belong to the same resource directory. Otherwise, the error ErrorInstanceMemberNotBelongRd (-103308) is returned.
+//
+// ## Rate limit
+//
+// The single-user queries per second (QPS) limit for this operation is 10. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Call this operation as appropriate.
 //
 // @param request - AddInstanceMembersRequest
 //
@@ -751,9 +771,9 @@ func (client *Client) ClearLogStoreStorageWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// ## Rate limit
+// ## QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the number of calls exceeds the limit, throttling is triggered, which may affect your business. Manage your calls properly.
+// The single-user QPS limit for this operation is 10 calls per second. If the number of calls exceeds the limit, throttling is triggered. This may affect your business. Call this operation as needed.
 //
 // @param request - CreateAckClusterConnectorRequest
 //
@@ -985,11 +1005,17 @@ func (client *Client) CreateInstanceSyncTaskWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Creates an IPS Private IP Tracing configuration. This feature is in public preview. Before calling this operation, contact your account manager to activate the feature. You can call DescribeIpsPrivateAssoc to query the FunctionAssocStatus field to confirm the activation status.
+// Creates an IPS Private IP Tracing association.
 //
 // Description:
 //
-// Creates an IPS private network association. This feature is in public preview. Before calling this operation, contact your account manager to activate the feature. You can call DescribeIpsPrivateAssoc to query the FunctionAssocStatus field to confirm the activation status.
+// Creates an IPS Private IP Tracing association for an Internet NAT gateway that is already protected by Cloud Firewall.
+//
+// ## Before you begin
+//
+// - The target NAT gateway must already be managed by Cloud Firewall and asset synchronization must be complete. Asset synchronization is an asynchronous task. If you call this operation before synchronization is complete for a newly created NAT gateway, error code -103204 is returned.
+//
+// - If SNAT is configured for the NAT gateway, you must enable session logs first. Otherwise, error code -103583 is returned.
 //
 // @param request - CreateIpsPrivateAssocRequest
 //
@@ -1398,6 +1424,14 @@ func (client *Client) CreateSecurityProxyWithContext(ctx context.Context, reques
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.FirewallServiceMode) {
+		query["FirewallServiceMode"] = request.FirewallServiceMode
+	}
+
+	if !dara.IsNil(request.FirewallServiceZones) {
+		query["FirewallServiceZones"] = request.FirewallServiceZones
+	}
+
 	if !dara.IsNil(request.FirewallSwitch) {
 		query["FirewallSwitch"] = request.FirewallSwitch
 	}
@@ -1519,7 +1553,11 @@ func (client *Client) CreateSlsLogDispatchWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates a VPC firewall for a transit router. Prerequisites: (1) Purchase Cloud Firewall. (2) A Cloud Enterprise Network (CEN) instance is created and an Enterprise Edition transit router is enabled. (3) The transit router is synchronized to Cloud Firewall.
+// Creates a VPC firewall for a transit router. Before you begin: (1) Purchase Cloud Firewall. (2) Create a Cloud Enterprise Network (CEN) instance and enable an Enterprise Edition forwarding router. (3) Synchronize the transit router to Cloud Firewall.
+//
+// Description:
+//
+// Creates a virtual private cloud (VPC) firewall for an Enterprise Edition transit router (TR). Before calling this operation, create a CEN instance and an Enterprise Edition transit router in the CEN console, and synchronize the TR to Cloud Firewall. Then call this operation with the CEN ID, TransitRouterId, RegionNo, and RouteMode parameters.
 //
 // @param request - CreateTrFirewallV2Request
 //
@@ -1538,12 +1576,24 @@ func (client *Client) CreateTrFirewallV2WithContext(ctx context.Context, request
 		query["CenId"] = request.CenId
 	}
 
+	if !dara.IsNil(request.FirewallAttachmentZone) {
+		query["FirewallAttachmentZone"] = request.FirewallAttachmentZone
+	}
+
 	if !dara.IsNil(request.FirewallDescription) {
 		query["FirewallDescription"] = request.FirewallDescription
 	}
 
 	if !dara.IsNil(request.FirewallName) {
 		query["FirewallName"] = request.FirewallName
+	}
+
+	if !dara.IsNil(request.FirewallServiceMode) {
+		query["FirewallServiceMode"] = request.FirewallServiceMode
+	}
+
+	if !dara.IsNil(request.FirewallServiceZones) {
+		query["FirewallServiceZones"] = request.FirewallServiceZones
 	}
 
 	if !dara.IsNil(request.FirewallSubnetCidr) {
@@ -1590,6 +1640,10 @@ func (client *Client) CreateTrFirewallV2WithContext(ctx context.Context, request
 		query["TrAttachmentSlaveZone"] = request.TrAttachmentSlaveZone
 	}
 
+	if !dara.IsNil(request.TrAttachmentZones) {
+		query["TrAttachmentZones"] = request.TrAttachmentZones
+	}
+
 	if !dara.IsNil(request.TransitRouterId) {
 		query["TransitRouterId"] = request.TransitRouterId
 	}
@@ -1619,7 +1673,7 @@ func (client *Client) CreateTrFirewallV2WithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates a routing rule for a VPC firewall for a transit router. Prerequisites: Activate Cloud Firewall → Create a CEN instance → Create an Enterprise Edition transit router → Add VPCs to the transit router route table → Call CreateTrFirewallV2 to create a VPC firewall for the transit router.
+// Creates a routing rule for a VPC firewall for a transit router. **[Prerequisites]*	- Activate Cloud Firewall → Create a Cloud Enterprise Network (CEN) instance → Create an Enterprise Edition transit router → Add VPCs to the transit router route table → Call CreateTrFirewallV2 to create a VPC firewall for the transit router.
 //
 // @param tmpReq - CreateTrFirewallV2RoutePolicyRequest
 //
@@ -1697,15 +1751,15 @@ func (client *Client) CreateTrFirewallV2RoutePolicyWithContext(ctx context.Conte
 
 // Summary:
 //
-// Creates a virtual private cloud (VPC) firewall to protect mutual access traffic between network instances in a Cloud Enterprise Network (CEN) instance and a specified VPC.
+// Creates a virtual private cloud (VPC) firewall to protect traffic between network instances in a Cloud Enterprise Network (CEN) instance and a specified VPC.
 //
 // Description:
 //
-// This operation is used to create a virtual private cloud (VPC) firewall for VPC-connected instances in a CEN instance. The VPC firewall protects mutual access traffic between network instances (including VPCs, virtual border routers (VBRs), and Cloud Connect Networks (CCNs)) in the CEN instance and a specified VPC. The VPC firewall does not protect mutual access traffic between VBRs, between CCNs, or between VBRs and CCNs. **Prerequisites**: (1) Invoke the Cbn CreateCen operation to create a CEN instance. (2) Create at least two VPCs. (3) Invoke the Cbn AttachCenChildInstance operation to associate the VPCs with the CEN instance. (4) Ensure that no conflicting RouteMaps or transit router (TR) routing entries exist in the CEN instance. For more information, see [VPC border firewall limits](https://help.aliyun.com/document_detail/172295.html).
+// This operation is used to create a virtual private cloud (VPC) firewall for VPC-connected instances in a CEN instance. The virtual private cloud (VPC) firewall protects traffic between network instances (including VPCs, virtual border routers (VBRs), and Cloud Connect Networks (CCNs)) in the CEN instance and a specified VPC. The virtual private cloud (VPC) firewall does not protect traffic between VBRs, between CCNs, or between VBRs and CCNs. **Prerequisites**: (1) Invoke the Cbn CreateCen operation to create a CEN instance. (2) Create at least two VPCs. (3) Invoke the Cbn AttachCenChildInstance operation to associate the VPCs with the CEN instance. (4) Make sure no conflicting RouteMaps or transit router (TR) routing entries exist in the CEN instance. For more information, see [VPC border firewall limits](https://help.aliyun.com/document_detail/172295.html).
 //
 // ## Rate limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Manage your calls appropriately.
+// The single-user queries per second (QPS) limit for this operation is 10 calls per second. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Manage your calls appropriately.
 //
 // @param request - CreateVpcFirewallCenConfigureRequest
 //
@@ -1730,6 +1784,10 @@ func (client *Client) CreateVpcFirewallCenConfigureWithContext(ctx context.Conte
 
 	if !dara.IsNil(request.FirewallVSwitchCidrBlock) {
 		query["FirewallVSwitchCidrBlock"] = request.FirewallVSwitchCidrBlock
+	}
+
+	if !dara.IsNil(request.FirewallVSwitchZoneId) {
+		query["FirewallVSwitchZoneId"] = request.FirewallVSwitchZoneId
 	}
 
 	if !dara.IsNil(request.FirewallVpcCidrBlock) {
@@ -3067,7 +3125,7 @@ func (client *Client) DeletePrivateDnsEndpointWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Deletes the specified NAT firewall.
+// Deletes a NAT firewall.
 //
 // @param request - DeleteSecurityProxyRequest
 //
@@ -3163,17 +3221,17 @@ func (client *Client) DeleteTrFirewallV2WithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes a VPC firewall that protects traffic between network instances in a Cloud Enterprise Network (CEN) and a specified VPC.
+// Deletes a virtual private cloud (VPC) firewall that protects mutual access traffic between a network instance in a Cloud Enterprise Network (CEN) instance and a specified VPC.
 //
 // Description:
 //
-// This operation deletes a VPC firewall. The VPC firewall protects traffic between network instances (including VPCs, virtual border routers (VBRs), and Cloud Connect Networks (CCNs)) in a Cloud Enterprise Network (CEN) and a specified VPC.
+// This operation is used to delete a virtual private cloud (VPC) firewall that protects mutual access traffic between network instances (including VPCs, virtual border routers (VBRs), and Cloud Connect Networks (CCNs)) in a CEN instance and a specified VPC.
 //
-// Before calling this operation, call [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) to create a VPC firewall.
+// Before you invoke this operation, you must have already created a VPC border firewall by invoking the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
 //
 // ## QPS limit
 //
-// The queries per second (QPS) limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
+// The single-user QPS limit for this operation is 10 calls per second. If the number of calls exceeds the limit, throttling is triggered, which may affect your business. Invoke this operation as needed.
 //
 // @param request - DeleteVpcFirewallCenConfigureRequest
 //
@@ -3417,7 +3475,7 @@ func (client *Client) DescribeACLProtectTrendWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the list of regions for synchronization nodes.
+// Queries the list of regions for sync nodes.
 //
 // @param request - DescribeAccessInstanceRegionListRequest
 //
@@ -3457,7 +3515,7 @@ func (client *Client) DescribeAccessInstanceRegionListWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the progress of a synchronization node task.
+// Queries the task progress of a synchronization node.
 //
 // @param request - DescribeAccessInstanceTaskRequest
 //
@@ -4445,7 +4503,7 @@ func (client *Client) DescribeAssetListWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Retrieves the risk levels of assets.
+// Retrieves the risk level list of assets.
 //
 // @param request - DescribeAssetRiskListRequest
 //
@@ -4871,11 +4929,7 @@ func (client *Client) DescribeConfiguredDomainNamesWithContext(ctx context.Conte
 //
 // Description:
 //
-// This operation performs a paged query for information about access control policies.
-//
-// ## QPS limit
-//
-// The queries per second (QPS) limit for this operation is 10 for a single user. If you exceed this limit, API calls are throttled. This may affect your business. Plan your calls accordingly.
+// This operation is typically used for paging query of access control policy information.
 //
 // @param request - DescribeControlPolicyRequest
 //
@@ -4971,7 +5025,7 @@ func (client *Client) DescribeControlPolicyWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the domain name parse results of an access control policy.
+// Queries the domain name resolution results of an access control policy.
 //
 // @param request - DescribeControlPolicyDomainResolveRequest
 //
@@ -5423,7 +5477,7 @@ func (client *Client) DescribeFirewallDropTrendWithContext(ctx context.Context, 
 //
 // ### QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DescribeFirewallTaskRequest
 //
@@ -7055,7 +7109,7 @@ func (client *Client) DescribeInvadeEventDetailWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries Cloud Firewall threat detection events.
+// Queries information about compromise awareness events in Cloud Firewall.
 //
 // @param request - DescribeInvadeEventListRequest
 //
@@ -7735,7 +7789,7 @@ func (client *Client) DescribeNatFirewallDropTrafficTrendWithContext(ctx context
 
 // Summary:
 //
-// Queries NAT firewall details.
+// Retrieves the details of NAT firewalls.
 //
 // @param request - DescribeNatFirewallListRequest
 //
@@ -8923,7 +8977,7 @@ func (client *Client) DescribeOutgoingDomainWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Retrieves the details of outbound domains.
+// Retrieves the details of an outbound domain.
 //
 // @param request - DescribeOutgoingDomainDetailRequest
 //
@@ -11795,6 +11849,10 @@ func (client *Client) DescribeTrFirewallV2RoutePolicyListWithContext(ctx context
 //
 // Retrieves the details of a VPC firewall for a transit router.
 //
+// Description:
+//
+// Queries the details of a VPC firewall for an Enterprise Edition transit router. You can obtain the FirewallId by calling DescribeTrFirewallsV2List. If no firewall has been created, prepare an Enterprise Edition transit router in the Cloud Enterprise Network (CEN) console first, and then call CreateTrFirewallV2 to create the firewall and obtain the FirewallId.
+//
 // @param request - DescribeTrFirewallsV2DetailRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12491,15 +12549,15 @@ func (client *Client) DescribeUserAssetIPTrafficInfoWithContext(ctx context.Cont
 
 // Summary:
 //
-// Retrieves version information for a user.
+// Retrieves the version information of a user.
 //
 // Description:
 //
-// This operation queries information about your Cloud Firewall instance.
+// This operation is used to query and retrieve Cloud Firewall instance information for a user.
 //
 // ## QPS limit
 //
-// This operation is limited to 10 queries per second (QPS) per user. If you exceed this limit, API calls are throttled, which may affect your business. We recommend that you call this operation at a reasonable frequency.
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation at an appropriate frequency.
 //
 // @param request - DescribeUserBuyVersionRequest
 //
@@ -12647,7 +12705,7 @@ func (client *Client) DescribeVfwIPSConfigListWithContext(ctx context.Context, r
 //
 // ## QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
 //
 // @param request - DescribeVpcFirewallAccessDetailRequest
 //
@@ -12983,15 +13041,15 @@ func (client *Client) DescribeVpcFirewallAssetRegionListWithContext(ctx context.
 
 // Summary:
 //
-// Retrieves the details of a VPC firewall that protects traffic between a network instance in a Cloud Enterprise Network (CEN) and a specified VPC.
+// Queries the details of a virtual private cloud (VPC) firewall that protects traffic between network instances in a Cloud Enterprise Network (CEN) instance and a specified VPC.
 //
 // Description:
 //
-// You can call this operation to query the details of a VPC firewall. The VPC firewall protects traffic between a specified VPC and a network instance in a Cloud Enterprise Network (CEN). The network instance can be a VPC, a Virtual Border Router (VBR), or a Cloud Connect Network (CCN) instance.
+// This operation is used to query the details of a virtual private cloud (VPC) firewall. The VPC firewall protects traffic between network instances (including VPCs, virtual border routers (VBRs), and Cloud Connect Networks (CCNs)) in a CEN instance and a specified VPC.
 //
 // ## QPS limit
 //
-// This operation has a queries per second (QPS) limit of 10 for each user. If you exceed the limit, your API calls are throttled. This may affect your business. We recommend that you call this operation at a reasonable rate.
+// The single-user QPS limit for this operation is 10 calls per second. If the number of calls exceeds the limit, throttling is triggered, which may affect your business. Invoke this operation as appropriate.
 //
 // @param request - DescribeVpcFirewallCenDetailRequest
 //
@@ -13221,15 +13279,11 @@ func (client *Client) DescribeVpcFirewallCenSummaryListWithContext(ctx context.C
 
 // Summary:
 //
-// Retrieves all access control policies for a specific VPC boundary firewall.
+// Queries all access control policy information for a specified virtual private cloud (VPC) firewall.
 //
 // Description:
 //
-// This operation queries the access control policies for a VPC firewall. A VPC firewall uses different access control policies to protect traffic between two VPCs that are connected via Cloud Enterprise Network (CEN) or Express Connect.
-//
-// ## QPS limit
-//
-// The QPS limit for this operation is 10 requests per second per account. If you exceed this limit, your API calls are throttled.
+// This operation is used to query access control policies of virtual private cloud (VPC) firewalls. Virtual private cloud (VPC) firewalls use different access control policies when protecting traffic between two VPCs connected through Cloud Enterprise Network (CEN) or traffic between two VPCs connected through Express Connect.
 //
 // @param request - DescribeVpcFirewallControlPolicyRequest
 //
@@ -14013,13 +14067,13 @@ func (client *Client) DescribeVpcFirewallPrecheckDetailWithContext(ctx context.C
 
 // Summary:
 //
-// Retrieves a summary of VPC firewalls.
+// Retrieves the summary information of VPC firewalls.
 //
 // Description:
 //
 // ### QPS limit
 //
-// The queries per second (QPS) limit for this API operation is 10 for each user. If you exceed this limit, API calls are throttled. This can affect your business. Plan your API calls accordingly.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
 //
 // @param request - DescribeVpcFirewallSummaryInfoRequest
 //
@@ -14227,7 +14281,7 @@ func (client *Client) DescribeVpcFirewallTrafficTrendWithContext(ctx context.Con
 
 // Summary:
 //
-// Describes the available zones for a VPC firewall.
+// Queries the list of zones available for a VPC firewall.
 //
 // @param request - DescribeVpcFirewallZoneRequest
 //
@@ -14733,10 +14787,6 @@ func (client *Client) ListTlsInspectCACertificatesWithContext(ctx context.Contex
 //
 // This operation is used to modify an address book.
 //
-// ## QPS limit
-//
-// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation appropriately.
-//
 // @param tmpReq - ModifyAddressBookRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14784,8 +14834,16 @@ func (client *Client) ModifyAddressBookWithContext(ctx context.Context, tmpReq *
 		query["AutoAddTagEcs"] = request.AutoAddTagEcs
 	}
 
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.GroupName) {
@@ -14897,11 +14955,11 @@ func (client *Client) ModifyCfwInstanceWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// This operation modifies the configurations of an access control policy that allows, denies, or monitors traffic passing through Cloud Firewall.
+// This operation is used to modify the configurations of an access control policy that allows, denies, or monitors traffic through Cloud Firewall.
 //
 // ## QPS limit
 //
-// Each user can call this operation up to 10 times per second. If the limit is exceeded, API calls are throttled. This may affect your business. Plan your calls accordingly.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - ModifyControlPolicyRequest
 //
@@ -14930,6 +14988,10 @@ func (client *Client) ModifyControlPolicyWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.ApplicationNameList) {
 		query["ApplicationNameList"] = request.ApplicationNameList
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
 	}
 
 	if !dara.IsNil(request.Description) {
@@ -14962,6 +15024,10 @@ func (client *Client) ModifyControlPolicyWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.DomainResolveType) {
 		query["DomainResolveType"] = request.DomainResolveType
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.EndTime) {
@@ -15159,7 +15225,7 @@ func (client *Client) ModifyControlPolicyPriorityWithContext(ctx context.Context
 
 // Summary:
 //
-// Modifies the default intrusion prevention system (IPS) configuration.
+// Modifies the default IPS configuration.
 //
 // @param request - ModifyDefaultIPSConfigRequest
 //
@@ -15231,7 +15297,7 @@ func (client *Client) ModifyDefaultIPSConfigWithContext(ctx context.Context, req
 //
 // Description:
 //
-// Modifies a policy that allows, denies, or monitors traffic that passes through the DNS firewall.
+// Modifies a DNS firewall access control policy to allow, deny, or monitor DNS firewall traffic.
 //
 // @param request - ModifyDnsFirewallPolicyRequest
 //
@@ -16225,7 +16291,11 @@ func (client *Client) ModifyThreatIntelligenceSwitchWithContext(ctx context.Cont
 
 // Summary:
 //
-// Modifies the configuration of a VPC firewall for a transit router. Prerequisites: Create a Cloud Enterprise Network (CEN) Enterprise Edition transit router, call CreateTrFirewallV2 to create a VPC firewall for the transit router, and obtain the FirewallId before calling this operation.
+// Modifies the configuration of a VPC firewall for a transit router. Before you call this operation, create a Cloud Enterprise Network (CEN) Enterprise Edition transit router and then call CreateTrFirewallV2 to create a VPC firewall for the transit router. You can obtain the FirewallId and then call this operation.
+//
+// Description:
+//
+// Modifies the configuration of a VPC firewall for an Enterprise Edition transit router. Before you call this operation, create an Enterprise Edition transit router in the CEN console and call CreateTrFirewallV2 to create the firewall. You can call DescribeTrFirewallsV2List to obtain the FirewallId.
 //
 // @param request - ModifyTrFirewallV2ConfigurationRequest
 //
@@ -16277,11 +16347,11 @@ func (client *Client) ModifyTrFirewallV2ConfigurationWithContext(ctx context.Con
 
 // Summary:
 //
-// Modifies the scope of a routing policy for a VPC firewall that is created for a Transit Router (TR).
+// Modifies the route policy scope of a VPC firewall for a transit router.
 //
 // Description:
 //
-// You can modify the policy scope for *point-to-multipoint	- and *multipoint-to-multipoint	- scenarios, but not for *point-to-point	- scenarios.
+// Supports modifications for *point-to-multipoint	- and *multipoint interconnection	- scenarios. Modifications for *point-to-point	- scenarios are not supported.
 //
 // @param tmpReq - ModifyTrFirewallV2RoutePolicyScopeRequest
 //
@@ -16757,15 +16827,17 @@ func (client *Client) ModifyVpcFirewallCenSwitchStatusWithContext(ctx context.Co
 
 // Summary:
 //
-// Modifies the configuration of a VPC firewall that protects traffic between two VPCs connected by an Express Connect circuit.
+// Modifies the configurations of a virtual private cloud (VPC) firewall that controls traffic between two VPCs connected by using an Express Connect circuit.
 //
 // Description:
 //
-// This operation modifies the configuration of a VPC firewall that protects traffic between two VPCs connected by an Express Connect circuit. Before you call this operation, you must create a VPC firewall by calling the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
+// This operation is used to modify the configurations of a virtual private cloud (VPC) firewall that controls traffic between two VPCs connected by using an Express Connect circuit.
+//
+// Before you invoke this operation, make sure that you have created a virtual private cloud (VPC) firewall by invoking the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
 //
 // ## QPS limit
 //
-// The queries per second (QPS) limit for this operation is 10 calls per second for each user. If the number of calls per second exceeds the limit, throttling is triggered. Throttling may affect your business. You should plan your calls accordingly.
+// The single-user QPS limit for this operation is 10 calls per second. If the number of calls per second exceeds the limit, throttling is triggered. Throttling may affect your business. Invoke this operation within the limit.
 //
 // @param request - ModifyVpcFirewallConfigureRequest
 //
@@ -17181,17 +17253,17 @@ func (client *Client) ModifyVpcFirewallIPSWhitelistWithContext(ctx context.Conte
 
 // Summary:
 //
-// Enables or disables a VPC firewall. A VPC firewall protects traffic between two VPCs that are connected by an Express Connect circuit.
+// Modifies the status of a virtual private cloud (VPC) firewall that protects traffic between two VPCs connected through Express Connect.
 //
 // Description:
 //
-// This API call modifies the status of a VPC firewall. A VPC firewall protects traffic between two virtual private clouds (VPCs) that are connected by an Express Connect circuit. When the VPC firewall is enabled, it protects traffic between the two VPCs. When the VPC firewall is disabled, it no longer protects traffic between the two VPCs.
+// This operation is used to modify the status of a virtual private cloud (VPC) firewall that protects traffic between two VPCs connected through Express Connect. After you enable the VPC firewall, traffic between the two VPCs connected through Express Connect is protected by the VPC firewall. After you disable the VPC firewall, the VPC firewall no longer protects traffic between the two VPCs connected through Express Connect.
 //
-// Before you make this API call, you must create a VPC firewall using the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) API call.
+// Before you invoke this operation, make sure that you have invoked the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation to create a virtual private cloud (VPC) firewall.
 //
 // ## QPS limit
 //
-// The queries per second (QPS) limit for this API call is 10 for each Alibaba Cloud account. If you exceed the limit, your API calls are throttled, which may affect your business. Plan your API calls accordingly.
+// The single-user QPS limit for this operation is 10 calls per second. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Invoke this operation within the limit.
 //
 // @param request - ModifyVpcFirewallSwitchStatusRequest
 //

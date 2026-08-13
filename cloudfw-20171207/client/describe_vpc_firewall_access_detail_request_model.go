@@ -52,7 +52,7 @@ type DescribeVpcFirewallAccessDetailRequest struct {
 	//
 	// 192.0.XX.XX
 	AssetIP *string `json:"AssetIP,omitempty" xml:"AssetIP,omitempty"`
-	// The page number in a paging query. Settings this parameter to specify the current page for paging.
+	// The page number in a paged query.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type DescribeVpcFirewallAccessDetailRequest struct {
 	//
 	// - **out**: outbound.
 	//
-	// >If this parameter is not specified in Settings, traffic in all directions is queried.
+	// >If you do not configure this parameter in Settings, traffic in all directions is queried.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type DescribeVpcFirewallAccessDetailRequest struct {
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The number of entries per page in a paging query.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//

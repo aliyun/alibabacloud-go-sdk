@@ -9,6 +9,8 @@ type iDescribeVpcFirewallZoneResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetFirewallServiceMode(v string) *DescribeVpcFirewallZoneResponseBody
+	GetFirewallServiceMode() *string
 	SetRequestId(v string) *DescribeVpcFirewallZoneResponseBody
 	GetRequestId() *string
 	SetZoneList(v [][]*DescribeVpcFirewallZoneResponseBodyZoneList) *DescribeVpcFirewallZoneResponseBody
@@ -16,7 +18,17 @@ type iDescribeVpcFirewallZoneResponseBody interface {
 }
 
 type DescribeVpcFirewallZoneResponseBody struct {
-	// The ID of the request.
+	// The deployment mode of the virtual private cloud (VPC) firewall service. Valid values:
+	//
+	// - **PrimaryStandby**: active/standby mode.
+	//
+	// - **MultiPrimary**: active-active mode.
+	//
+	// example:
+	//
+	// PrimaryStandby
+	FirewallServiceMode *string `json:"FirewallServiceMode,omitempty" xml:"FirewallServiceMode,omitempty"`
+	// The request ID.
 	//
 	// example:
 	//
@@ -34,12 +46,21 @@ func (s DescribeVpcFirewallZoneResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeVpcFirewallZoneResponseBody) GetFirewallServiceMode() *string {
+	return s.FirewallServiceMode
+}
+
 func (s *DescribeVpcFirewallZoneResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
 func (s *DescribeVpcFirewallZoneResponseBody) GetZoneList() [][]*DescribeVpcFirewallZoneResponseBodyZoneList {
 	return s.ZoneList
+}
+
+func (s *DescribeVpcFirewallZoneResponseBody) SetFirewallServiceMode(v string) *DescribeVpcFirewallZoneResponseBody {
+	s.FirewallServiceMode = &v
+	return s
 }
 
 func (s *DescribeVpcFirewallZoneResponseBody) SetRequestId(v string) *DescribeVpcFirewallZoneResponseBody {
@@ -63,7 +84,7 @@ type DescribeVpcFirewallZoneResponseBodyZoneList struct {
 	//
 	// cn-hangzhou-c
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The name of the zone.
+	// The zone name.
 	//
 	// example:
 	//

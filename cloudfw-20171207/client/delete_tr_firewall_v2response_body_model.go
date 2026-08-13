@@ -14,7 +14,7 @@ type iDeleteTrFirewallV2ResponseBody interface {
 }
 
 type DeleteTrFirewallV2ResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

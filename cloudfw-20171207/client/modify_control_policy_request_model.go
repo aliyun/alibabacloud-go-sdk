@@ -17,6 +17,8 @@ type iModifyControlPolicyRequest interface {
 	GetApplicationName() *string
 	SetApplicationNameList(v []*string) *ModifyControlPolicyRequest
 	GetApplicationNameList() []*string
+	SetClientToken(v string) *ModifyControlPolicyRequest
+	GetClientToken() *string
 	SetDescription(v string) *ModifyControlPolicyRequest
 	GetDescription() *string
 	SetDestPort(v string) *ModifyControlPolicyRequest
@@ -33,6 +35,8 @@ type iModifyControlPolicyRequest interface {
 	GetDirection() *string
 	SetDomainResolveType(v string) *ModifyControlPolicyRequest
 	GetDomainResolveType() *string
+	SetDryRun(v bool) *ModifyControlPolicyRequest
+	GetDryRun() *bool
 	SetEndTime(v int64) *ModifyControlPolicyRequest
 	GetEndTime() *int64
 	SetLang(v string) *ModifyControlPolicyRequest
@@ -58,11 +62,11 @@ type iModifyControlPolicyRequest interface {
 }
 
 type ModifyControlPolicyRequest struct {
-	// The action that Cloud Firewall performs on the traffic. Valid values:
+	// The action that the access control policy performs on the traffic that passes through the firewall. Valid values:
 	//
-	// - **accept**: allows the traffic.
+	// - **accept**: allows access.
 	//
-	// - **drop**: denies the traffic.
+	// - **drop**: deny access.
 	//
 	// - **log**: monitors the traffic.
 	//
@@ -72,7 +76,7 @@ type ModifyControlPolicyRequest struct {
 	AclAction *string `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
 	// The unique ID of the access control policy.
 	//
-	// > To modify an access control policy, provide the unique ID of the policy. Call the [DescribeControlPolicy](https://help.aliyun.com/document_detail/138866.html) operation to obtain the ID.
+	// > To modify an access control policy, you must provide the unique ID of the policy. You can call the [DescribeControlPolicy](https://help.aliyun.com/document_detail/138866.html) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +86,7 @@ type ModifyControlPolicyRequest struct {
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
 	// Deprecated
 	//
-	// The application type supported by the access control policy. The following application types are supported:
+	// The application type supported by the access control policy. Valid values:
 	//
 	// - **ANY**
 	//
@@ -112,18 +116,24 @@ type ModifyControlPolicyRequest struct {
 	//
 	// - **SSL**
 	//
-	// > **ANY*	- indicates that the policy applies to all application types.
+	// > **ANY*	- indicates that the policy applies to all types of applications.
 	//
-	// > Specify either ApplicationNameList or ApplicationName. You cannot leave both empty. If you specify both, ApplicationNameList takes precedence.
+	// > You must specify either ApplicationNameList or ApplicationName. You cannot leave both parameters empty. If you specify both parameters, the value of ApplicationNameList takes precedence.
 	//
 	// example:
 	//
 	// HTTP
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// The list of application names.
+	// The application name list.
 	//
-	// > Specify either ApplicationNameList or ApplicationName. You cannot leave both empty. If you specify both, ApplicationNameList takes precedence.
+	// > You must specify either ApplicationNameList or ApplicationName. You cannot leave both parameters empty. If you specify both parameters, the value of ApplicationNameList takes precedence.
 	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
+	// The idempotence token.
+	//
+	// example:
+	//
+	// ddadxefexxxx
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the access control policy.
 	//
 	// example:
@@ -154,13 +164,13 @@ type ModifyControlPolicyRequest struct {
 	DestPortType *string `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
 	// The destination address in the access control policy.
 	//
-	// - If **DestinationType*	- is set to net, set **Destination*	- to a destination CIDR block. Example: 1.2.XX.XX/24
+	// - If **DestinationType*	- is set to net, **Destination*	- is a destination CIDR block. Example: 1.2.XX.XX/24.
 	//
-	// - If **DestinationType*	- is set to group, set **Destination*	- to the name of a destination address book. Example: db_group
+	// - If **DestinationType*	- is set to group, **Destination*	- is a destination address book name. Example: db_group.
 	//
-	// - If **DestinationType*	- is set to domain, set **Destination*	- to a destination domain name. Example: \\*.aliyuncs.com
+	// - If **DestinationType*	- is set to domain, **Destination*	- is a destination domain name. Example: *.aliyuncs.com.
 	//
-	// - If **DestinationType*	- is set to location, set **Destination*	- to a destination location code. Example: ["BJ11", "ZB"]
+	// - If **DestinationType*	- is set to location, **Destination*	- is a destination area. For specific area positional encoding, see the subsequent sections. Example: ["BJ11", "ZB"\\].
 	//
 	// example:
 	//
@@ -180,31 +190,33 @@ type ModifyControlPolicyRequest struct {
 	//
 	// net
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
-	// The direction of the traffic to which the access control policy applies. Valid values:
+	// The traffic direction of the access control policy. Valid values:
 	//
-	// - **in**: inbound traffic
+	// - **in**: inbound traffic access control
 	//
-	// - **out**: outbound traffic
+	// - **out**: outbound traffic access control
 	//
 	// example:
 	//
 	// in
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The domain name resolution method for the access control policy. Valid values:
+	// The domain name resolution method of the access control policy. Valid values:
 	//
-	// - **FQDN**: FQDN-based resolution
+	// 	- **FQDN**: FQDN-based
 	//
-	// - **DNS**: DNS-based dynamic resolution
+	// 	- **DNS**: DNS-based dynamic resolution
 	//
-	// - **FQDN_AND_DNS**: FQDN-based and DNS-based dynamic resolution
+	// 	- **FQDN_AND_DNS**: FQDN and DNS-based dynamic resolution
 	//
 	// example:
 	//
 	// FQDN
 	DomainResolveType *string `json:"DomainResolveType,omitempty" xml:"DomainResolveType,omitempty"`
-	// The end time of the policy validity period. The value is a UNIX timestamp. The time must be on the hour or half hour, and at least 30 minutes later than the start time.
+	// Specifies whether to perform a dry run.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The end time of the Policy Validity Period for the access control policy. The value is a UNIX timestamp in seconds format. The time must be on the hour or half hour and must be at least 30 minutes later than the start time. Settings for the access control policy validity period.
 	//
-	// > If RepeatType is set to Permanent, leave this parameter empty. If RepeatType is set to None, Daily, Weekly, or Monthly, you must specify this parameter.
+	// > If RepeatType is set to Permanent, this parameter is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, this parameter is required.
 	//
 	// example:
 	//
@@ -220,7 +232,7 @@ type ModifyControlPolicyRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The protocol type of the traffic in the access control policy. Valid values:
+	// The security protocol type in the access control policy. Valid values:
 	//
 	// - **ANY**
 	//
@@ -232,67 +244,67 @@ type ModifyControlPolicyRequest struct {
 	//
 	// > **ANY*	- indicates that the policy applies to all protocol types.
 	//
-	// > If the traffic direction is outbound and the destination is a domain name that belongs to a threat intelligence address book or a cloud service address book, you can set this parameter to TCP or ANY. If you set this parameter to TCP, you can set the application to HTTP, HTTPS, SMTP, SMTPS, or SSL. If you set this parameter to ANY, you must set the application to ANY.
+	// > If the traffic direction is outbound and the destination address is a threat intelligence address book or cloud service address book of the domain type, you can configure only the TCP or ANY protocol. If you select TCP, the application can be HTTP, HTTPS, SMTP, SMTPS, or SSL. If you select ANY, the application can only be ANY.
 	//
 	// example:
 	//
 	// TCP
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// The status of the access control policy. Valid values:
+	// The enabling status of the access control policy. Valid values:
 	//
 	// - true: The policy is enabled.
 	//
-	// - false: The policy is disabled.
+	// - false: The policy is in shutdown state.
 	//
 	// example:
 	//
 	// true
 	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
-	// The days of the week or month on which the policy is recurrent.
+	// The days of a week or of a month on which the access control policy takes effect. Settings for the Policy Validity Period recurrence days.
 	//
-	// - If RepeatType is set to `Permanent`, `None`, or `Daily`, leave this parameter empty.
+	// - If RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is an empty collection.
 	//
 	//   Example: []
 	//
-	// - If RepeatType is set to Weekly, you must specify this parameter.
+	// - If RepeatType is set to Weekly, RepeatDays cannot be empty.
 	//
 	//   Example: [0, 6]
 	//
-	// > If RepeatType is set to Weekly, the values in the array cannot be repeated.
+	// > If RepeatType is set to Weekly, the values in RepeatDays cannot be repeated.
 	//
-	// - If RepeatType is set to `Monthly`, you must specify this parameter.
+	// - If RepeatType is set to `Monthly`, RepeatDays cannot be empty.
 	//
 	//   Example: [1, 31]
 	//
-	// > If RepeatType is set to Monthly, the values in the array cannot be repeated.
+	// > If RepeatType is set to Monthly, the values in RepeatDays cannot be repeated.
 	RepeatDays []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
-	// The end time of the recurrence. The time is in the HH:mm format and in 24-hour format. Example: 23:00.
+	// The recurrence end time of the policy validity period. The time is in the HH:mm format and uses a 24-hour clock. Example: 23:00.
 	//
-	// > If RepeatType is set to Permanent or None, leave this parameter empty. If RepeatType is set to Daily, Weekly, or Monthly, you must specify this parameter.
+	// > If RepeatType is set to Permanent or None, this parameter is left empty. If RepeatType is set to Daily, Weekly, or Monthly, this parameter is required.
 	//
 	// example:
 	//
 	// 23:30
 	RepeatEndTime *string `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
-	// The start time of the recurrence. The time is in the HH:mm format and in 24-hour format. Example: 08:00.
+	// The recurrence start time of the policy validity period. The time is in the HH:mm format and uses a 24-hour clock. Example: 08:00.
 	//
-	// > If RepeatType is set to Permanent or None, leave this parameter empty. If RepeatType is set to Daily, Weekly, or Monthly, you must specify this parameter.
+	// > If RepeatType is set to Permanent or None, this parameter is left empty. If RepeatType is set to Daily, Weekly, or Monthly, this parameter is required.
 	//
 	// example:
 	//
 	// 08:00
 	RepeatStartTime *string `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
-	// The recurrence type for the policy validity period. Valid values:
+	// The recurrence type for the policy validity period of the access control policy. Valid values:
 	//
-	// - **Permanent*	- (default): The policy is always valid.
+	// - **Permanent*	- (default): always
 	//
-	// - **None**: The policy is valid only once.
+	// - **None**: one-time
 	//
-	// - **Daily**: The policy is valid daily.
+	// - **Daily**: daily
 	//
-	// - **Weekly**: The policy is valid weekly.
+	// - **Weekly**: weekly
 	//
-	// - **Monthly**: The policy is valid monthly.
+	// - **Monthly**: monthly
 	//
 	// example:
 	//
@@ -300,11 +312,11 @@ type ModifyControlPolicyRequest struct {
 	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy.
 	//
-	// - If **SourceType*	- is set to net, set **Source*	- to a source CIDR block. Example: 1.2.XX.XX/24
+	// - If **SourceType*	- is set to net, **Source*	- is a source CIDR block. Example: 1.2.XX.XX/24.
 	//
-	// - If **SourceType*	- is set to group, set **Source*	- to the name of a source address book. Example: db_group
+	// - If **SourceType*	- is set to group, **Source*	- is a source address book name. Example: db_group.
 	//
-	// - If **SourceType*	- is set to location, set **Source*	- to a source location code. Example: ["BJ11", "ZB"]
+	// - If **SourceType*	- is set to location, **Source*	- is a source area. For specific area positional encoding, see the subsequent sections. Example: ["BJ11", "ZB"\\].
 	//
 	// example:
 	//
@@ -322,9 +334,9 @@ type ModifyControlPolicyRequest struct {
 	//
 	// net
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The start time of the policy validity period. The value is a UNIX timestamp. The time must be on the hour or half hour, and at least 30 minutes earlier than the end time.
+	// The start time of the Policy Validity Period for the access control policy. The value is a UNIX timestamp in seconds format. The time must be on the hour or half hour and must be at least 30 minutes earlier than the end time. Settings for the access control policy validity period.
 	//
-	// > If RepeatType is set to Permanent, leave this parameter empty. If RepeatType is set to None, Daily, Weekly, or Monthly, you must specify this parameter.
+	// > If RepeatType is set to Permanent, this parameter is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, this parameter is required.
 	//
 	// example:
 	//
@@ -354,6 +366,10 @@ func (s *ModifyControlPolicyRequest) GetApplicationName() *string {
 
 func (s *ModifyControlPolicyRequest) GetApplicationNameList() []*string {
 	return s.ApplicationNameList
+}
+
+func (s *ModifyControlPolicyRequest) GetClientToken() *string {
+	return s.ClientToken
 }
 
 func (s *ModifyControlPolicyRequest) GetDescription() *string {
@@ -386,6 +402,10 @@ func (s *ModifyControlPolicyRequest) GetDirection() *string {
 
 func (s *ModifyControlPolicyRequest) GetDomainResolveType() *string {
 	return s.DomainResolveType
+}
+
+func (s *ModifyControlPolicyRequest) GetDryRun() *bool {
+	return s.DryRun
 }
 
 func (s *ModifyControlPolicyRequest) GetEndTime() *int64 {
@@ -452,6 +472,11 @@ func (s *ModifyControlPolicyRequest) SetApplicationNameList(v []*string) *Modify
 	return s
 }
 
+func (s *ModifyControlPolicyRequest) SetClientToken(v string) *ModifyControlPolicyRequest {
+	s.ClientToken = &v
+	return s
+}
+
 func (s *ModifyControlPolicyRequest) SetDescription(v string) *ModifyControlPolicyRequest {
 	s.Description = &v
 	return s
@@ -489,6 +514,11 @@ func (s *ModifyControlPolicyRequest) SetDirection(v string) *ModifyControlPolicy
 
 func (s *ModifyControlPolicyRequest) SetDomainResolveType(v string) *ModifyControlPolicyRequest {
 	s.DomainResolveType = &v
+	return s
+}
+
+func (s *ModifyControlPolicyRequest) SetDryRun(v bool) *ModifyControlPolicyRequest {
+	s.DryRun = &v
 	return s
 }
 

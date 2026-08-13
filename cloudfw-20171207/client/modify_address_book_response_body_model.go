@@ -9,12 +9,16 @@ type iModifyAddressBookResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDryRun(v bool) *ModifyAddressBookResponseBody
+	GetDryRun() *bool
 	SetRequestId(v string) *ModifyAddressBookResponseBody
 	GetRequestId() *string
 }
 
 type ModifyAddressBookResponseBody struct {
-	// The request ID.
+	// Indicates that this is a successful dry run response. A value of true indicates that only the dry run was completed and no actual modification was performed.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -30,8 +34,17 @@ func (s ModifyAddressBookResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyAddressBookResponseBody) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *ModifyAddressBookResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *ModifyAddressBookResponseBody) SetDryRun(v bool) *ModifyAddressBookResponseBody {
+	s.DryRun = &v
+	return s
 }
 
 func (s *ModifyAddressBookResponseBody) SetRequestId(v string) *ModifyAddressBookResponseBody {

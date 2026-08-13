@@ -111,7 +111,7 @@ type DescribeOutgoingAssetListResponseBodyAssetList struct {
 	//
 	// example:
 	//
-	// 244438.0
+	// 244438
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
 	// The number of IPS hits.
 	//

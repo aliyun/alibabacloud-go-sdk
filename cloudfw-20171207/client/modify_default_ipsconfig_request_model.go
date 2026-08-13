@@ -26,17 +26,17 @@ type iModifyDefaultIPSConfigRequest interface {
 }
 
 type ModifyDefaultIPSConfigRequest struct {
-	// The switch for basic policies. Valid values:
+	// Specifies whether to enable Basic Policies. Valid values:
 	//
 	// - **1**: Enable.
 	//
-	// - **0**: Disable.
+	// - **0**: shutdown.
 	//
 	// example:
 	//
 	// 1
 	BasicRules *int32 `json:"BasicRules,omitempty" xml:"BasicRules,omitempty"`
-	// The switch for threat intelligence. Valid values:
+	// Specifies whether to enable threat intelligence. Valid values:
 	//
 	// - **1**: Enable.
 	//
@@ -46,7 +46,7 @@ type ModifyDefaultIPSConfigRequest struct {
 	//
 	// 0
 	CtiRules *int32 `json:"CtiRules,omitempty" xml:"CtiRules,omitempty"`
-	// The language of the request and response. Valid values:
+	// The language type of the request and response. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -62,7 +62,7 @@ type ModifyDefaultIPSConfigRequest struct {
 	//
 	// 100
 	MaxSdl *int64 `json:"MaxSdl,omitempty" xml:"MaxSdl,omitempty"`
-	// The switch for virtual patching. Valid values:
+	// Specifies whether to enable virtual patches. Valid values:
 	//
 	// - **1**: Enable.
 	//
@@ -72,7 +72,7 @@ type ModifyDefaultIPSConfigRequest struct {
 	//
 	// 1
 	PatchRules *int32 `json:"PatchRules,omitempty" xml:"PatchRules,omitempty"`
-	// The IPS rule group. Valid values:
+	// The IPS rules group. Valid values:
 	//
 	// - **1**: Loose rule group.
 	//
@@ -84,11 +84,11 @@ type ModifyDefaultIPSConfigRequest struct {
 	//
 	// 1
 	RuleClass *int32 `json:"RuleClass,omitempty" xml:"RuleClass,omitempty"`
-	// The mode of the IPS. Valid values:
+	// The IPS defense mode. Valid values:
 	//
 	// - **1**: Block Mode.
 	//
-	// - **0**: Monitor Mode.
+	// - **0**: monitor mode.
 	//
 	// This parameter is required.
 	//

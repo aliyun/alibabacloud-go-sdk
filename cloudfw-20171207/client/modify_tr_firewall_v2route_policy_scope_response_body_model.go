@@ -16,13 +16,13 @@ type iModifyTrFirewallV2RoutePolicyScopeResponseBody interface {
 }
 
 type ModifyTrFirewallV2RoutePolicyScopeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// E7D4D635-0C70-5CEB-A609-851E94D51FBB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the routing policy.
+	// The ID of the firewall route policy.
 	//
 	// example:
 	//

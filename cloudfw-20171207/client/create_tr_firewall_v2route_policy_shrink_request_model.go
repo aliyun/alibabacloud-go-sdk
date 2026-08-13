@@ -26,11 +26,13 @@ type iCreateTrFirewallV2RoutePolicyShrinkRequest interface {
 }
 
 type CreateTrFirewallV2RoutePolicyShrinkRequest struct {
-	// The secondary traffic redirection instances.
-	DestCandidateListShrink *string `json:"DestCandidateList,omitempty" xml:"DestCandidateList,omitempty"`
-	// The ID of the virtual private cloud (VPC) firewall instance.
+	// The list of secondary traffic redirection instances.
 	//
-	// > FirewallId is required. If it is not specified, ErrorParameters(400) is returned. You can call DescribeTrFirewallsV2List to obtain the instance ID.
+	// > DestCandidateList is required. If this parameter is not specified, ErrorParameters(400) is returned.
+	DestCandidateListShrink *string `json:"DestCandidateList,omitempty" xml:"DestCandidateList,omitempty"`
+	// The instance ID of the virtual private cloud (VPC) firewall.
+	//
+	// > FirewallId is required. If this parameter is not specified, ErrorParameters(400) is returned. You can call DescribeTrFirewallsV2List to obtain instance ID.
 	//
 	// example:
 	//
@@ -46,19 +48,19 @@ type CreateTrFirewallV2RoutePolicyShrinkRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The description of the traffic redirection configuration.
+	// The description of the traffic redirection scenario.
 	//
 	// example:
 	//
 	// Singapore Point to Multipoint
 	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
-	// The name of the traffic redirection configuration.
+	// The name of the traffic redirection scenario.
 	//
 	// example:
 	//
 	// Singapore Point to Multipoint
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The traffic redirection scenario type for the virtual private cloud (VPC) firewall on a Cloud Enterprise Network (CEN) Enterprise Edition transit router. Valid values:
+	// The traffic redirection scenario type for the virtual private cloud (VPC) firewall for a CEN Enterprise Edition transit router. Valid values:
 	//
 	// - **fullmesh**: multi-point interconnection
 	//
@@ -66,11 +68,15 @@ type CreateTrFirewallV2RoutePolicyShrinkRequest struct {
 	//
 	// - **end_to_end**: point-to-multipoint
 	//
+	// > PolicyType is required. If this parameter is not specified, ErrorParameters(400) is returned.
+	//
 	// example:
 	//
 	// fullmesh
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The primary traffic redirection instances.
+	// The list of primary traffic redirection instances.
+	//
+	// > SrcCandidateList is required. If this parameter is not specified, ErrorParameters(400) is returned.
 	SrcCandidateListShrink *string `json:"SrcCandidateList,omitempty" xml:"SrcCandidateList,omitempty"`
 }
 

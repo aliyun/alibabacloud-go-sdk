@@ -94,13 +94,13 @@ type DescribeInternetOpenPortResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// 1456536639.0
+	// 1456536639
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
 	// The outbound traffic.
 	//
 	// example:
 	//
-	// 117200.0
+	// 117200
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
 	// The open port.
 	//

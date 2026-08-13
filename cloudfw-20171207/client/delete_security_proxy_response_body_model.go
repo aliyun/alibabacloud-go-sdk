@@ -14,7 +14,7 @@ type iDeleteSecurityProxyResponseBody interface {
 }
 
 type DeleteSecurityProxyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

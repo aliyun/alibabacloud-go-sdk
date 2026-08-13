@@ -87,7 +87,7 @@ type DescribeOutgoingDestinationResponseBodyDstList struct {
 	//
 	// example:
 	//
-	// test
+	// RecommendedRelease
 	AclRecommendDetail *string `json:"AclRecommendDetail,omitempty" xml:"AclRecommendDetail,omitempty"`
 	// The policy status.
 	//
@@ -135,7 +135,7 @@ type DescribeOutgoingDestinationResponseBodyDstList struct {
 	//
 	// example:
 	//
-	// test
+	// group-name
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// Indicates whether a recommended ACL exists.
 	//
@@ -147,7 +147,7 @@ type DescribeOutgoingDestinationResponseBodyDstList struct {
 	//
 	// example:
 	//
-	// 0.0
+	// 0
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
 	// Indicates whether the entry is manually marked as normal by the user.
 	//
@@ -159,7 +159,7 @@ type DescribeOutgoingDestinationResponseBodyDstList struct {
 	//
 	// example:
 	//
-	// 0.0
+	// 0
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
 	// The number of sessions.
 	//
@@ -338,7 +338,7 @@ type DescribeOutgoingDestinationResponseBodyDstListTagList struct {
 	//
 	// example:
 	//
-	// test
+	// tag-describe
 	TagDescribe *string `json:"TagDescribe,omitempty" xml:"TagDescribe,omitempty"`
 	// The tag ID.
 	//

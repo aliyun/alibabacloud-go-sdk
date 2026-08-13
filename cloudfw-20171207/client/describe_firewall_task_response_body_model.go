@@ -213,7 +213,7 @@ type DescribeFirewallTaskResponseBodyTaskSteps struct {
 	//
 	// 80
 	StepProgress *string `json:"StepProgress,omitempty" xml:"StepProgress,omitempty"`
-	// The status of the task step. Valid values:
+	// The task step status. Valid values:
 	//
 	// - **init*	-
 	//

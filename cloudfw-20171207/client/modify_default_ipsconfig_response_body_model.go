@@ -14,7 +14,7 @@ type iModifyDefaultIPSConfigResponseBody interface {
 }
 
 type ModifyDefaultIPSConfigResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

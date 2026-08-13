@@ -62,13 +62,13 @@ type iDescribeUserBuyVersionResponseBody interface {
 }
 
 type DescribeUserBuyVersionResponseBody struct {
-	// The quota for ACK cluster connectors.
+	// The ACK cluster connector quota.
 	//
 	// example:
 	//
 	// 5
 	AckClusterConnectorQuota *int64 `json:"AckClusterConnectorQuota,omitempty" xml:"AckClusterConnectorQuota,omitempty"`
-	// The ID of the Alibaba Cloud account.
+	// The AliUid of the Cloud Firewall account.
 	//
 	// example:
 	//
@@ -82,9 +82,9 @@ type DescribeUserBuyVersionResponseBody struct {
 	DefaultBandwidth *int64 `json:"DefaultBandwidth,omitempty" xml:"DefaultBandwidth,omitempty"`
 	// The expiration time of the Cloud Firewall instance.
 	//
-	// > The value is a UNIX timestamp in milliseconds.
+	// > The value is a millisecond-level UNIX timestamp.
 	//
-	// > This parameter does not apply to pay-as-you-go editions.
+	// > This field is meaningless when you use the pay-as-you-go edition.
 	//
 	// example:
 	//
@@ -96,55 +96,55 @@ type DescribeUserBuyVersionResponseBody struct {
 	//
 	// 1000
 	ExtensionBandwidth *int64 `json:"ExtensionBandwidth,omitempty" xml:"ExtensionBandwidth,omitempty"`
-	// The number of general-purpose instances.
+	// The general-purpose instance quota.
 	//
 	// example:
 	//
 	// 10
 	GeneralInstance *int64 `json:"GeneralInstance,omitempty" xml:"GeneralInstance,omitempty"`
-	// The ID of the Cloud Firewall instance.
+	// The ID of the purchased Cloud Firewall instance.
 	//
-	// > This parameter does not apply to trial editions.
+	// > This field is meaningless when you use the trial version.
 	//
 	// example:
 	//
 	// vipcloudfw-cn-xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The operational status of the Cloud Firewall instance. Valid values:
+	// The provisioning status of the Cloud Firewall instance. Valid values:
 	//
-	// - **normal**: The instance is running as expected.
+	// - **normal**: The instance is running normally.
 	//
 	// - **init**: The instance is being initialized.
 	//
 	// - **deleting**: The instance is being deleted.
 	//
-	// - **abnormal**: The instance is in an abnormal state.
+	// - **abnormal**: The instance is abnormal.
 	//
-	// - **free**: No valid instance is available.
+	// - **free**: No valid instance exists.
 	//
 	// example:
 	//
 	// normal
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The purchased traffic processing capability for the Internet firewall.
+	// The purchased traffic processing capacity of the Internet firewall.
 	//
 	// example:
 	//
 	// 3000
 	InternetBandwidth *int64 `json:"InternetBandwidth,omitempty" xml:"InternetBandwidth,omitempty"`
-	// The number of public IP addresses that can be protected.
+	// The purchased quota for the Internet border protection.
 	//
-	// > This parameter applies only to subscription instances.
+	// > This field takes effect only for subscription users.
 	//
 	// example:
 	//
 	// 63
 	IpNumber *int64 `json:"IpNumber,omitempty" xml:"IpNumber,omitempty"`
-	// Indicates whether log delivery is enabled. Valid values:
+	// The enabling status of log delivery. Valid values:
 	//
-	// - **true**: Enabled
+	// - **true**: Enabled.
 	//
-	// - **false**: Disabled
+	// - **false**: Disabled.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type DescribeUserBuyVersionResponseBody struct {
 	LogStatus *bool `json:"LogStatus,omitempty" xml:"LogStatus,omitempty"`
 	// The purchased log storage capacity.
 	//
-	// > This parameter applies only to subscription instances.
+	// > This field takes effect only for subscription users.
 	//
 	// example:
 	//
@@ -164,57 +164,57 @@ type DescribeUserBuyVersionResponseBody struct {
 	//
 	// 1
 	MajorVersion *int64 `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
-	// Indicates whether elastic billing for excess traffic is enabled. Valid values:
+	// Indicates whether burstable elastic billing is enabled. Valid values:
 	//
-	// - **1000000**: Enabled
+	// - **1000000**: Enabled.
 	//
-	// - **0**: Disabled
+	// - **0**: Disabled.
 	//
-	// > This parameter applies only to subscription instances.
+	// > This field takes effect only for subscription users.
 	//
 	// example:
 	//
 	// 0
 	MaxOverflow *int64 `json:"MaxOverflow,omitempty" xml:"MaxOverflow,omitempty"`
-	// The purchased traffic processing capability for the NAT firewall.
+	// The purchased traffic processing capacity of NAT firewalls.
 	//
 	// example:
 	//
 	// 3000
 	NatBandwidth *int64 `json:"NatBandwidth,omitempty" xml:"NatBandwidth,omitempty"`
-	// The quota for private DNS connectors.
+	// The private DNS connector quota.
 	//
 	// example:
 	//
 	// 5
 	PrivateDnsConnectorQuota *int64 `json:"PrivateDnsConnectorQuota,omitempty" xml:"PrivateDnsConnectorQuota,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F71B03EE-xxxxx-91D79CC6AA1A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether data leakage prevention is enabled.
+	// The enabling status of sensitive data leak detection. In the Resource field, true indicates enabled and false indicates disabled. In the API response, 1 indicates enabled and 0 indicates disabled.
 	//
 	// example:
 	//
 	// 1
 	Sdl *int64 `json:"Sdl,omitempty" xml:"Sdl,omitempty"`
-	// The time when the Cloud Firewall instance was enabled.
+	// The activation time of the Cloud Firewall instance.
 	//
-	// > The value is a UNIX timestamp in milliseconds.
+	// > The value is a millisecond-level UNIX timestamp.
 	//
 	// example:
 	//
 	// 1692504764000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The temporary bandwidth.
+	// The temporary upgrade bandwidth.
 	//
 	// example:
 	//
 	// 1000
 	TemporaryBandwidth *int64 `json:"TemporaryBandwidth,omitempty" xml:"TemporaryBandwidth,omitempty"`
-	// Indicates whether threat intelligence is enabled.
+	// The enabling status of threat intelligence.
 	//
 	// example:
 	//
@@ -222,15 +222,15 @@ type DescribeUserBuyVersionResponseBody struct {
 	ThreatIntelligence *int64 `json:"ThreatIntelligence,omitempty" xml:"ThreatIntelligence,omitempty"`
 	// The status of the Cloud Firewall instance. Valid values:
 	//
-	// - **true**: The instance is valid.
+	// - **true**: Valid.
 	//
-	// - **false**: The instance is invalid.
+	// - **false**: Invalid.
 	//
 	// example:
 	//
 	// true
 	UserStatus *bool `json:"UserStatus,omitempty" xml:"UserStatus,omitempty"`
-	// The edition of the Cloud Firewall instance. Valid values:
+	// The version of the Cloud Firewall instance. Valid values:
 	//
 	// - **2**: Premium Edition
 	//
@@ -238,21 +238,21 @@ type DescribeUserBuyVersionResponseBody struct {
 	//
 	// - **4**: Ultimate Edition
 	//
-	// - **10**: Pay-as-you-go
+	// - **10**: Pay-as-you-go Edition
 	//
 	// example:
 	//
 	// 2
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The purchased traffic processing capability for the VPC firewall.
+	// The purchased traffic processing capacity of VPC firewalls.
 	//
 	// example:
 	//
 	// 3000
 	VpcBandwidth *int64 `json:"VpcBandwidth,omitempty" xml:"VpcBandwidth,omitempty"`
-	// The number of purchased VPC firewalls.
+	// The purchased quota for VPC firewalls.
 	//
-	// > This parameter applies only to subscription instances.
+	// > This field takes effect only for subscription users.
 	//
 	// example:
 	//

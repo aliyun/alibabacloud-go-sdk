@@ -18,7 +18,7 @@ type iDescribeAssetRiskListResponseBody interface {
 }
 
 type DescribeAssetRiskListResponseBody struct {
-	// The details of the assets.
+	// The asset details returned.
 	AssetList []*DescribeAssetRiskListResponseBodyAssetList `json:"AssetList,omitempty" xml:"AssetList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,25 +83,25 @@ func (s *DescribeAssetRiskListResponseBody) Validate() error {
 }
 
 type DescribeAssetRiskListResponseBodyAssetList struct {
-	// The IP address of the server.
+	// The server IP address.
 	//
 	// example:
 	//
 	// 39.108.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The IP version of the asset protected by Cloud Firewall.
+	// The IP address version of the assets protected by Cloud Firewall.
 	//
 	// Valid values:
 	//
-	// - **4**: IPv4
+	// - **4**: IPv4 address.
 	//
-	// - **6**: IPv6
+	// - **6**: IPv6 address.
 	//
 	// example:
 	//
 	// 4
 	IpVersion *int64 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The reason for the risk.
+	// The risk reason.
 	//
 	// example:
 	//

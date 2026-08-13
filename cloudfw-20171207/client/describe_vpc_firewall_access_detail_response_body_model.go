@@ -87,7 +87,7 @@ type DescribeVpcFirewallAccessDetailResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// 17845821669.0
+	// 17845821669
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
 	// The number of bytes sent. Unit: bytes.
 	//

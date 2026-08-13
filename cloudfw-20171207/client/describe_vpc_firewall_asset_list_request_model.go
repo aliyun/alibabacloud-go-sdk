@@ -104,7 +104,7 @@ type DescribeVpcFirewallAssetListRequest struct {
 	//
 	// true
 	IsAITraffic *string `json:"IsAITraffic,omitempty" xml:"IsAITraffic,omitempty"`
-	// The language type of the request and response messages.
+	// The language of the request and response.
 	//
 	// example:
 	//

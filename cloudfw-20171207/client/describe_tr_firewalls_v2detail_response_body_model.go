@@ -11,6 +11,8 @@ type iDescribeTrFirewallsV2DetailResponseBody interface {
 	GoString() string
 	SetCenId(v string) *DescribeTrFirewallsV2DetailResponseBody
 	GetCenId() *string
+	SetFirewallAttachmentZone(v string) *DescribeTrFirewallsV2DetailResponseBody
+	GetFirewallAttachmentZone() *string
 	SetFirewallDescription(v string) *DescribeTrFirewallsV2DetailResponseBody
 	GetFirewallDescription() *string
 	SetFirewallEniId(v string) *DescribeTrFirewallsV2DetailResponseBody
@@ -23,6 +25,10 @@ type iDescribeTrFirewallsV2DetailResponseBody interface {
 	GetFirewallId() *string
 	SetFirewallName(v string) *DescribeTrFirewallsV2DetailResponseBody
 	GetFirewallName() *string
+	SetFirewallServiceMode(v string) *DescribeTrFirewallsV2DetailResponseBody
+	GetFirewallServiceMode() *string
+	SetFirewallServiceZones(v []*string) *DescribeTrFirewallsV2DetailResponseBody
+	GetFirewallServiceZones() []*string
 	SetFirewallStatus(v string) *DescribeTrFirewallsV2DetailResponseBody
 	GetFirewallStatus() *string
 	SetFirewallSubnetCidr(v string) *DescribeTrFirewallsV2DetailResponseBody
@@ -47,6 +53,8 @@ type iDescribeTrFirewallsV2DetailResponseBody interface {
 	GetTrAttachmentSlaveCidr() *string
 	SetTrAttachmentSlaveZone(v string) *DescribeTrFirewallsV2DetailResponseBody
 	GetTrAttachmentSlaveZone() *string
+	SetTrAttachmentZones(v []*DescribeTrFirewallsV2DetailResponseBodyTrAttachmentZones) *DescribeTrFirewallsV2DetailResponseBody
+	GetTrAttachmentZones() []*DescribeTrFirewallsV2DetailResponseBodyTrAttachmentZones
 	SetTransitRouterId(v string) *DescribeTrFirewallsV2DetailResponseBody
 	GetTransitRouterId() *string
 }
@@ -58,42 +66,56 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	//
 	// cen-37nddhri7jf0d2****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The zone ID used by the firewall connection.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
+	FirewallAttachmentZone *string `json:"FirewallAttachmentZone,omitempty" xml:"FirewallAttachmentZone,omitempty"`
 	// The description of the firewall.
 	//
 	// example:
 	//
 	// vpc-firewall-description
 	FirewallDescription *string `json:"FirewallDescription,omitempty" xml:"FirewallDescription,omitempty"`
-	// The ID of the firewall ENI.
+	// The ENI ID of the firewall.
 	//
 	// example:
 	//
 	// eni-uf621u00nafypeex****
 	FirewallEniId *string `json:"FirewallEniId,omitempty" xml:"FirewallEniId,omitempty"`
-	// The ID of the VPC in which the firewall ENI resides.
+	// The ID of the VPC to which the firewall ENI belongs.
 	//
 	// example:
 	//
 	// vpc-2zeppcci782zeh2bk****
 	FirewallEniVpcId *string `json:"FirewallEniVpcId,omitempty" xml:"FirewallEniVpcId,omitempty"`
-	// The ID of the vSwitch in which the firewall ENI resides.
+	// The ID of the vSwitch to which the firewall ENI belongs.
 	//
 	// example:
 	//
 	// vsw-uf6ptq1kl1c1d9pw9****
 	FirewallEniVswitchId *string `json:"FirewallEniVswitchId,omitempty" xml:"FirewallEniVswitchId,omitempty"`
-	// The instance ID of the virtual private cloud (VPC) firewall.
+	// The instance ID of the virtual private cloud (VPC) firewalls.
 	//
 	// example:
 	//
 	// vfw-tr-9c7c711abdfa4d80****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	// The instance name of the virtual private cloud (VPC) firewall.
+	// The name of the virtual private cloud (VPC) firewalls instance.
 	//
 	// example:
 	//
 	// cloudfirewall-manual
 	FirewallName *string `json:"FirewallName,omitempty" xml:"FirewallName,omitempty"`
+	// The deployment mode of the TR firewall service. Valid values: **PrimaryStandby*	- (active/standby mode) and **MultiPrimary*	- (active-active mode).
+	//
+	// example:
+	//
+	// PrimaryStandby
+	FirewallServiceMode *string `json:"FirewallServiceMode,omitempty" xml:"FirewallServiceMode,omitempty"`
+	// The list of zone IDs used by the TR firewall service.
+	FirewallServiceZones []*string `json:"FirewallServiceZones,omitempty" xml:"FirewallServiceZones,omitempty" type:"Repeated"`
 	// The status of the firewall. Valid values:
 	//
 	// - Creating: The firewall is being created.
@@ -106,30 +128,30 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	//
 	// Ready
 	FirewallStatus *string `json:"FirewallStatus,omitempty" xml:"FirewallStatus,omitempty"`
-	// The subnet CIDR block that is used to store the firewall ENI in the firewall VPC in automatic mode.
+	// The subnet CIDR block that hosts the firewall ENI in the firewall VPC in automatic mode.
 	//
 	// example:
 	//
 	// 10.0.1.0/24
 	FirewallSubnetCidr *string `json:"FirewallSubnetCidr,omitempty" xml:"FirewallSubnetCidr,omitempty"`
-	// The status of the virtual private cloud (VPC) firewall. Valid values:
+	// The status of the virtual private cloud (VPC) firewalls. Valid values:
 	//
-	// - **opened**: The firewall is enabled.
+	// - **opened**: enabled
 	//
-	// - **closed**: The firewall is disabled.
+	// - **closed**: disabled
 	//
-	// - **notconfigured**: The virtual private cloud (VPC) firewall is not configured.
+	// - **notconfigured**: The VPC firewall is not configured.
 	//
-	// - **configured**: The virtual private cloud (VPC) firewall is configured.
+	// - **configured**: The VPC firewall is configured.
 	//
-	// - **creating**: The virtual private cloud (VPC) firewall is being created.
+	// - **creating**: The VPC firewall is being created.
 	//
-	// - **opening**: The virtual private cloud (VPC) firewall is being enabled.
+	// - **opening**: The VPC firewall is being enabled.
 	//
-	// - **deleting**: The virtual private cloud (VPC) firewall is being deleted.
+	// - **deleting**: The VPC firewall is being deleted.
 	//
 	//
-	// > If this parameter is not set, virtual private cloud (VPC) firewalls in all states are queried.
+	// > If this parameter is not specified, virtual private cloud (VPC) firewalls in all states are queried.
 	//
 	// example:
 	//
@@ -163,37 +185,47 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	//
 	// managed
 	RouteMode *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
-	// The attachment ID that is used to connect to the transit router in the firewall VPC in automatic mode.
+	// The attachment ID used to connect to the transit router in the firewall VPC in automatic mode.
 	//
 	// example:
 	//
 	// tr-attach-r1llaxxeha71jsm36v
 	TrAttachmentId *string `json:"TrAttachmentId,omitempty" xml:"TrAttachmentId,omitempty"`
-	// The primary subnet CIDR block that is used to connect to the transit router in the firewall VPC in automatic mode.
+	// Deprecated
+	//
+	// The primary subnet CIDR block used to connect to the transit router in the firewall VPC in automatic mode.
 	//
 	// example:
 	//
 	// 10.0.2.0/24
 	TrAttachmentMasterCidr *string `json:"TrAttachmentMasterCidr,omitempty" xml:"TrAttachmentMasterCidr,omitempty"`
-	// The primary zone of the subnet that is used to connect to the transit router in the firewall VPC in automatic mode.
+	// Deprecated
+	//
+	// The primary zone used to connect to the transit router in the firewall VPC in automatic mode.
 	//
 	// example:
 	//
 	// cn-hangzhou-h
 	TrAttachmentMasterZone *string `json:"TrAttachmentMasterZone,omitempty" xml:"TrAttachmentMasterZone,omitempty"`
-	// The secondary subnet CIDR block that is used to connect to the transit router in the firewall VPC in automatic mode.
+	// Deprecated
+	//
+	// The secondary subnet CIDR block used to connect to the transit router in the firewall VPC in automatic mode.
 	//
 	// example:
 	//
 	// 10.0.3.0/24
 	TrAttachmentSlaveCidr *string `json:"TrAttachmentSlaveCidr,omitempty" xml:"TrAttachmentSlaveCidr,omitempty"`
-	// The secondary zone of the subnet that is used to connect to the transit router in the firewall VPC in automatic mode.
+	// Deprecated
+	//
+	// The secondary zone used to connect to the transit router in the firewall VPC in automatic mode.
 	//
 	// example:
 	//
 	// cn-hangzhou-i
 	TrAttachmentSlaveZone *string `json:"TrAttachmentSlaveZone,omitempty" xml:"TrAttachmentSlaveZone,omitempty"`
-	// The instance ID of the forward routing router.
+	// The list of zones and vSwitch CIDR blocks for the transit router connection.
+	TrAttachmentZones []*DescribeTrFirewallsV2DetailResponseBodyTrAttachmentZones `json:"TrAttachmentZones,omitempty" xml:"TrAttachmentZones,omitempty" type:"Repeated"`
+	// The instance ID of the transit router.
 	//
 	// example:
 	//
@@ -211,6 +243,10 @@ func (s DescribeTrFirewallsV2DetailResponseBody) GoString() string {
 
 func (s *DescribeTrFirewallsV2DetailResponseBody) GetCenId() *string {
 	return s.CenId
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBody) GetFirewallAttachmentZone() *string {
+	return s.FirewallAttachmentZone
 }
 
 func (s *DescribeTrFirewallsV2DetailResponseBody) GetFirewallDescription() *string {
@@ -235,6 +271,14 @@ func (s *DescribeTrFirewallsV2DetailResponseBody) GetFirewallId() *string {
 
 func (s *DescribeTrFirewallsV2DetailResponseBody) GetFirewallName() *string {
 	return s.FirewallName
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBody) GetFirewallServiceMode() *string {
+	return s.FirewallServiceMode
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBody) GetFirewallServiceZones() []*string {
+	return s.FirewallServiceZones
 }
 
 func (s *DescribeTrFirewallsV2DetailResponseBody) GetFirewallStatus() *string {
@@ -285,12 +329,21 @@ func (s *DescribeTrFirewallsV2DetailResponseBody) GetTrAttachmentSlaveZone() *st
 	return s.TrAttachmentSlaveZone
 }
 
+func (s *DescribeTrFirewallsV2DetailResponseBody) GetTrAttachmentZones() []*DescribeTrFirewallsV2DetailResponseBodyTrAttachmentZones {
+	return s.TrAttachmentZones
+}
+
 func (s *DescribeTrFirewallsV2DetailResponseBody) GetTransitRouterId() *string {
 	return s.TransitRouterId
 }
 
 func (s *DescribeTrFirewallsV2DetailResponseBody) SetCenId(v string) *DescribeTrFirewallsV2DetailResponseBody {
 	s.CenId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBody) SetFirewallAttachmentZone(v string) *DescribeTrFirewallsV2DetailResponseBody {
+	s.FirewallAttachmentZone = &v
 	return s
 }
 
@@ -321,6 +374,16 @@ func (s *DescribeTrFirewallsV2DetailResponseBody) SetFirewallId(v string) *Descr
 
 func (s *DescribeTrFirewallsV2DetailResponseBody) SetFirewallName(v string) *DescribeTrFirewallsV2DetailResponseBody {
 	s.FirewallName = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBody) SetFirewallServiceMode(v string) *DescribeTrFirewallsV2DetailResponseBody {
+	s.FirewallServiceMode = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBody) SetFirewallServiceZones(v []*string) *DescribeTrFirewallsV2DetailResponseBody {
+	s.FirewallServiceZones = v
 	return s
 }
 
@@ -384,11 +447,70 @@ func (s *DescribeTrFirewallsV2DetailResponseBody) SetTrAttachmentSlaveZone(v str
 	return s
 }
 
+func (s *DescribeTrFirewallsV2DetailResponseBody) SetTrAttachmentZones(v []*DescribeTrFirewallsV2DetailResponseBodyTrAttachmentZones) *DescribeTrFirewallsV2DetailResponseBody {
+	s.TrAttachmentZones = v
+	return s
+}
+
 func (s *DescribeTrFirewallsV2DetailResponseBody) SetTransitRouterId(v string) *DescribeTrFirewallsV2DetailResponseBody {
 	s.TransitRouterId = &v
 	return s
 }
 
 func (s *DescribeTrFirewallsV2DetailResponseBody) Validate() error {
+	if s.TrAttachmentZones != nil {
+		for _, item := range s.TrAttachmentZones {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeTrFirewallsV2DetailResponseBodyTrAttachmentZones struct {
+	// The CIDR block of the vSwitch for the transit router connection.
+	//
+	// example:
+	//
+	// 10.0.2.0/24
+	VSwitchCidr *string `json:"VSwitchCidr,omitempty" xml:"VSwitchCidr,omitempty"`
+	// The zone ID of the vSwitch for the transit router connection.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
+	VSwitchZoneId *string `json:"VSwitchZoneId,omitempty" xml:"VSwitchZoneId,omitempty"`
+}
+
+func (s DescribeTrFirewallsV2DetailResponseBodyTrAttachmentZones) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeTrFirewallsV2DetailResponseBodyTrAttachmentZones) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBodyTrAttachmentZones) GetVSwitchCidr() *string {
+	return s.VSwitchCidr
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBodyTrAttachmentZones) GetVSwitchZoneId() *string {
+	return s.VSwitchZoneId
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBodyTrAttachmentZones) SetVSwitchCidr(v string) *DescribeTrFirewallsV2DetailResponseBodyTrAttachmentZones {
+	s.VSwitchCidr = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBodyTrAttachmentZones) SetVSwitchZoneId(v string) *DescribeTrFirewallsV2DetailResponseBodyTrAttachmentZones {
+	s.VSwitchZoneId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBodyTrAttachmentZones) Validate() error {
 	return dara.Validate(s)
 }

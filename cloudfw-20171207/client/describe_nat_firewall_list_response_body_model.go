@@ -20,7 +20,7 @@ type iDescribeNatFirewallListResponseBody interface {
 type DescribeNatFirewallListResponseBody struct {
 	// The list of Cloud Firewalls.
 	NatFirewallList []*DescribeNatFirewallListResponseBodyNatFirewallList `json:"NatFirewallList,omitempty" xml:"NatFirewallList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -85,91 +85,99 @@ func (s *DescribeNatFirewallListResponseBody) Validate() error {
 type DescribeNatFirewallListResponseBodyNatFirewallList struct {
 	// The UID of the Alibaba Cloud account.
 	//
-	// > This is the primary account of the Cloud Firewall member account.
+	// > The management account of the Cloud Firewall member accounts.
 	//
 	// example:
 	//
 	// 19106481******
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The cause of the error.
+	// The error details.
 	//
 	// example:
 	//
 	// Firewall creation failed
 	ErrorDetail *string `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty"`
-	// The UID of the Cloud Firewall member account.
+	// The deployment mode of the NAT firewall service. Valid values: **PrimaryStandby*	- (active/standby mode) and **MultiPrimary*	- (active-active mode).
+	//
+	// example:
+	//
+	// PrimaryStandby
+	FirewallServiceMode *string `json:"FirewallServiceMode,omitempty" xml:"FirewallServiceMode,omitempty"`
+	// The list of zone IDs used by the NAT firewall service.
+	FirewallServiceZones []*string `json:"FirewallServiceZones,omitempty" xml:"FirewallServiceZones,omitempty" type:"Repeated"`
+	// The UID of the Cloud Firewall member accounts.
 	//
 	// example:
 	//
 	// 19106481******
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The ID of the NAT Gateway to query.
+	// The ID of the NAT gateway to query.
 	//
 	// example:
 	//
 	// ngw-uf6tnblxip4qcxg******
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The name of the NAT Gateway.
+	// The name of the NAT gateway.
 	//
 	// example:
 	//
 	// nat-gateway-test
 	NatGatewayName *string `json:"NatGatewayName,omitempty" xml:"NatGatewayName,omitempty"`
-	// The list of default route entries for the NAT Gateway.
+	// The list of default route entries for the NAT gateway.
 	NatRouteEntryList []*DescribeNatFirewallListResponseBodyNatFirewallListNatRouteEntryList `json:"NatRouteEntryList,omitempty" xml:"NatRouteEntryList,omitempty" type:"Repeated"`
-	// The ID of the NAT firewall.
+	// The NAT firewall ID.
 	//
 	// example:
 	//
 	// proxy-nat30******
 	ProxyId *string `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
-	// The name of the NAT firewall.
+	// The NAT firewall name.
 	//
 	// example:
 	//
 	// nat-firewall-test
 	ProxyName *string `json:"ProxyName,omitempty" xml:"ProxyName,omitempty"`
-	// The ID of the Elastic Network Interface (ENI) that the firewall uses.
+	// The elastic network interface (ENI) ID used by the firewall.
 	//
 	// example:
 	//
 	// eni-bp127llmo4v5qju******
 	ProxyNetworkInterfaceId *string `json:"ProxyNetworkInterfaceId,omitempty" xml:"ProxyNetworkInterfaceId,omitempty"`
-	// The ID of the route table that the firewall uses.
+	// The route table ID used by the firewall.
 	//
 	// example:
 	//
 	// vtb-bp1pmyga7p4j10a******
 	ProxyRouteTableId *string `json:"ProxyRouteTableId,omitempty" xml:"ProxyRouteTableId,omitempty"`
-	// The status of the Cloud Firewall. Valid values:
+	// The Cloud Firewall status. Valid values:
 	//
-	// - configuring: The firewall is being created.
+	// - configuring: being created
 	//
-	// - deleting: The firewall is being deleted.
+	// - deleting: being deleted
 	//
-	// - normal: The firewall is working as expected.
+	// - normal: normal
 	//
-	// - abnormal: The firewall is not working as expected.
+	// - abnormal: abnormal
 	//
-	// - opening: The firewall is being enabled.
+	// - opening: being enabled
 	//
-	// - closing: The firewall is being disabled.
+	// - closing: being disabled
 	//
-	// - closed: The firewall is disabled.
+	// - closed: disabled
 	//
 	// example:
 	//
 	// normal
 	ProxyStatus *string `json:"ProxyStatus,omitempty" xml:"ProxyStatus,omitempty"`
-	// The ID of the vSwitch that the firewall uses.
+	// The vSwitch ID used by the firewall.
 	//
 	// example:
 	//
 	// vsw-bp1amn3t1ktjjy8******
 	ProxyVSwitchId *string `json:"ProxyVSwitchId,omitempty" xml:"ProxyVSwitchId,omitempty"`
-	// The region ID where the Cloud Firewall is located.
+	// The region ID of the Cloud Firewall.
 	//
-	// > For more information about the regions where Cloud Firewall is available, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
+	// > For more information about the regions supported by Cloud Firewall, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
 	//
 	// example:
 	//
@@ -185,7 +193,7 @@ type DescribeNatFirewallListResponseBodyNatFirewallList struct {
 	//
 	// 0
 	StrictMode *int32 `json:"StrictMode,omitempty" xml:"StrictMode,omitempty"`
-	// The ID of the VPC instance.
+	// The VPC-connected instance ID.
 	//
 	// example:
 	//
@@ -213,6 +221,14 @@ func (s *DescribeNatFirewallListResponseBodyNatFirewallList) GetAliUid() *int64 
 
 func (s *DescribeNatFirewallListResponseBodyNatFirewallList) GetErrorDetail() *string {
 	return s.ErrorDetail
+}
+
+func (s *DescribeNatFirewallListResponseBodyNatFirewallList) GetFirewallServiceMode() *string {
+	return s.FirewallServiceMode
+}
+
+func (s *DescribeNatFirewallListResponseBodyNatFirewallList) GetFirewallServiceZones() []*string {
+	return s.FirewallServiceZones
 }
 
 func (s *DescribeNatFirewallListResponseBodyNatFirewallList) GetMemberUid() *int64 {
@@ -278,6 +294,16 @@ func (s *DescribeNatFirewallListResponseBodyNatFirewallList) SetAliUid(v int64) 
 
 func (s *DescribeNatFirewallListResponseBodyNatFirewallList) SetErrorDetail(v string) *DescribeNatFirewallListResponseBodyNatFirewallList {
 	s.ErrorDetail = &v
+	return s
+}
+
+func (s *DescribeNatFirewallListResponseBodyNatFirewallList) SetFirewallServiceMode(v string) *DescribeNatFirewallListResponseBodyNatFirewallList {
+	s.FirewallServiceMode = &v
+	return s
+}
+
+func (s *DescribeNatFirewallListResponseBodyNatFirewallList) SetFirewallServiceZones(v []*string) *DescribeNatFirewallListResponseBodyNatFirewallList {
+	s.FirewallServiceZones = v
 	return s
 }
 
@@ -371,19 +397,19 @@ type DescribeNatFirewallListResponseBodyNatFirewallListNatRouteEntryList struct 
 	//
 	// 0.0.0.0/0
 	DestinationCidr *string `json:"DestinationCidr,omitempty" xml:"DestinationCidr,omitempty"`
-	// The next hop of the original NAT Gateway.
+	// The original next hop address of the NAT gateway.
 	//
 	// example:
 	//
 	// ngw-2ze0s284r9atg5******
 	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	// The network type of the next hop. The value is \\`NatGateway\\`.
+	// The network type of the next hop. Valid values: NatGateway.
 	//
 	// example:
 	//
 	// NatGateway
 	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// The route table that contains the default route of the NAT Gateway.
+	// The route table that contains the default route of the NAT gateway.
 	//
 	// example:
 	//

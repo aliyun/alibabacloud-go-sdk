@@ -9,6 +9,10 @@ type iCreateSecurityProxyRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetFirewallServiceMode(v string) *CreateSecurityProxyRequest
+	GetFirewallServiceMode() *string
+	SetFirewallServiceZones(v []*string) *CreateSecurityProxyRequest
+	GetFirewallServiceZones() []*string
 	SetFirewallSwitch(v string) *CreateSecurityProxyRequest
 	GetFirewallSwitch() *string
 	SetFwVswitchZoneId(v string) *CreateSecurityProxyRequest
@@ -36,11 +40,23 @@ type iCreateSecurityProxyRequest interface {
 }
 
 type CreateSecurityProxyRequest struct {
+	// The deployment mode of the firewall service. Valid values:
+	//
+	// - PrimaryStandby: active/standby mode
+	//
+	// - MultiPrimary: active-active mode
+	//
+	// example:
+	//
+	// PrimaryStandby
+	FirewallServiceMode *string `json:"FirewallServiceMode,omitempty" xml:"FirewallServiceMode,omitempty"`
+	// The list of zone IDs used by the firewall service.
+	FirewallServiceZones []*string `json:"FirewallServiceZones,omitempty" xml:"FirewallServiceZones,omitempty" type:"Repeated"`
 	// The security protection switch. Valid values:
 	//
-	// - **open**: Enabled.
+	// - **open**: enabled
 	//
-	// - **close**: Disabled.
+	// - **close**: disabled
 	//
 	// example:
 	//
@@ -112,9 +128,9 @@ type CreateSecurityProxyRequest struct {
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// Specifies whether to use the automatic vSwitch mode. Valid values:
 	//
-	// - **true**: Automatic mode.
+	// - **true**: automatic mode
 	//
-	// - **false**: Manual mode.
+	// - **false**: manual mode
 	//
 	// > The default value of VswitchAuto is true. If VswitchAuto is set to true, VswitchCidr is required and must be a valid CIDR block. If VswitchAuto is set to false, VswitchId is required.
 	//
@@ -142,6 +158,14 @@ func (s CreateSecurityProxyRequest) String() string {
 
 func (s CreateSecurityProxyRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateSecurityProxyRequest) GetFirewallServiceMode() *string {
+	return s.FirewallServiceMode
+}
+
+func (s *CreateSecurityProxyRequest) GetFirewallServiceZones() []*string {
+	return s.FirewallServiceZones
 }
 
 func (s *CreateSecurityProxyRequest) GetFirewallSwitch() *string {
@@ -190,6 +214,16 @@ func (s *CreateSecurityProxyRequest) GetVswitchCidr() *string {
 
 func (s *CreateSecurityProxyRequest) GetVswitchId() *string {
 	return s.VswitchId
+}
+
+func (s *CreateSecurityProxyRequest) SetFirewallServiceMode(v string) *CreateSecurityProxyRequest {
+	s.FirewallServiceMode = &v
+	return s
+}
+
+func (s *CreateSecurityProxyRequest) SetFirewallServiceZones(v []*string) *CreateSecurityProxyRequest {
+	s.FirewallServiceZones = v
+	return s
 }
 
 func (s *CreateSecurityProxyRequest) SetFirewallSwitch(v string) *CreateSecurityProxyRequest {

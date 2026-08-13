@@ -66,13 +66,15 @@ type DescribeOutgoingDestinationRequest struct {
 	//
 	// AliYun
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The current page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The destination IP address.
+	// The legacy destination IP parameter.
+	//
+	// > The POP gateway passes this parameter through, but the backend of this operation does not read it. Specifying this parameter has no filtering effect. To filter by IP address, use PublicIP or PrivateIP. If only DstIP is specified, the operation returns MissingParameter.IpFilter (-340415) because no valid IP filtering parameter is provided.
 	//
 	// example:
 	//
@@ -118,17 +120,21 @@ type DescribeOutgoingDestinationRequest struct {
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The private IP address.
 	//
+	// > At least one of PublicIP and PrivateIP must be specified.
+	//
 	// example:
 	//
 	// 10.111.53XXX
 	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
 	// The public IP address.
 	//
+	// > At least one of PublicIP and PrivateIP must be specified.
+	//
 	// example:
 	//
 	// 47.96.74.XXX
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
-	// The security policy for Outbound Domain of outbound connections.
+	// The security policy for the Outbound Domain.
 	//
 	// example:
 	//
@@ -142,7 +148,7 @@ type DescribeOutgoingDestinationRequest struct {
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	// Deprecated
 	//
-	// The IP address of the access source. (This field is deprecated.)
+	// The IP address of the access source. **[Deprecated]**
 	//
 	// example:
 	//

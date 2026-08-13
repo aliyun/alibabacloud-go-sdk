@@ -40,23 +40,11 @@ type iDescribeOutgoingDomainRequest interface {
 type DescribeOutgoingDomainRequest struct {
 	// The product category. Default value: empty. Valid values:
 	//
-	// - **All**: All categories.
-	//
-	// - **RiskDomain**: Risky domain category.
-	//
-	// - **RiskIP**: Risky IP category.
-	//
-	// - **AliYun**: Alibaba Cloud product category.
-	//
-	// - **NotAliYun**: Non-Alibaba Cloud product category.
-	//
 	// example:
 	//
 	// All
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The page number of the results to return in a paged query.
-	//
-	// Default value: 1, which indicates the first page.
+	// The page number to return in a paged query.
 	//
 	// example:
 	//
@@ -64,15 +52,11 @@ type DescribeOutgoingDomainRequest struct {
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The source of the traffic statistics. Default value: Internet firewall. Valid values:
 	//
-	// - **internet**: Internet firewall.
-	//
-	// - **nat**: NAT firewall.
-	//
 	// example:
 	//
 	// nat
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The domain name of outbound connections.
+	// The domain name of the outbound connections.
 	//
 	// example:
 	//
@@ -86,11 +70,7 @@ type DescribeOutgoingDomainRequest struct {
 	//
 	// 1656750960
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies whether to collect statistics only on traffic that accesses AI services. Default value: false. Valid values:
-	//
-	// - **true**: Yes.
-	//
-	// - **false**: No.
+	// Specifies whether to collect statistics only on traffic that accesses AI services. Default value: no. Valid values:
 	//
 	// example:
 	//
@@ -98,27 +78,17 @@ type DescribeOutgoingDomainRequest struct {
 	IsAITraffic *string `json:"IsAITraffic,omitempty" xml:"IsAITraffic,omitempty"`
 	// The language type of the request message. Valid values:
 	//
-	// - **zh*	- (default): Chinese
-	//
-	// - **en**: English
-	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The sort order. Valid values:
-	//
-	// - **asc**: ascending order.
-	//
-	// - **desc*	- (default): descending order.
+	// The sort method. Valid values:
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The number of entries per page in a paged query.
-	//
-	// Default value: 6. Maximum value: 100.
 	//
 	// example:
 	//
@@ -130,11 +100,7 @@ type DescribeOutgoingDomainRequest struct {
 	//
 	// 192.0.XX.XX
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
-	// The field by which to sort the results. Valid values:
-	//
-	// - **SessionCount*	- (default): the number of requests.
-	//
-	// - **TotalBytes**: the total traffic volume.
+	// The sort order based on the specified field. Valid values:
 	//
 	// example:
 	//
@@ -148,81 +114,7 @@ type DescribeOutgoingDomainRequest struct {
 	//
 	// 1656664560
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The intelligence tags label ID. Valid values:
-	//
-	// - **AliYun**: Alibaba Cloud product.
-	//
-	// - **RiskDomain**: Risky domain.
-	//
-	// - **RiskIP**: Risky IP.
-	//
-	// - **TrustedDomain**: Trusted website.
-	//
-	// - **AliPay**: Alipay.
-	//
-	// - **DingDing**: DingTalk.
-	//
-	// - **WeChat**: WeChat.
-	//
-	// - **QQ**: Tencent QQ.
-	//
-	// - **SecurityService**: Security service.
-	//
-	// - **Microsoft**: Microsoft.
-	//
-	// - **Amazon**: Amazon.
-	//
-	// - **Pan**: Cloud drive.
-	//
-	// - **Map**: Map.
-	//
-	// - **Code**: Code hosting.
-	//
-	// - **SystemService**: System service.
-	//
-	// - **Taobao**: Taobao.
-	//
-	// - **Google**: Google.
-	//
-	// - **ThirdPartyService**: Third-party platform service.
-	//
-	// - **FirstFlow**: First Visit.
-	//
-	// - **Downloader**: Malicious download.
-	//
-	// - **Alexa Top1M**: Popular website.
-	//
-	// - **Miner**: Miner Pool.
-	//
-	// - **Intelligence**: Threat intelligence.
-	//
-	// - **DDoS**: DDoS Trojan.
-	//
-	// - **Ransomware**: Ransomware.
-	//
-	// - **Spyware**: Spyware.
-	//
-	// - **Rogue**: Rogue software.
-	//
-	// - **Botnet**: Botnets.
-	//
-	// - **Suspicious**: Suspicious website.
-	//
-	// - **C&C**: Remote control.
-	//
-	// - **Gang**: Gang.
-	//
-	// - **CVE**: CVE vulnerability.
-	//
-	// - **Backdoor**: Backdoor Trojan.
-	//
-	// - **Phishing**: Phishing website.
-	//
-	// - **APT**: APT attack.
-	//
-	// - **Supply Chain Attack**: Supply chain attack.
-	//
-	// - **Malicious software**: Malware.
+	// The intelligence tag ID. Valid values:
 	//
 	// example:
 	//

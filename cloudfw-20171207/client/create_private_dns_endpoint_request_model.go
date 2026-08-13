@@ -68,7 +68,7 @@ type CreatePrivateDnsEndpointRequest struct {
 	//
 	// UDP
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The UID of the Alibaba Cloud member account. This parameter is required when you use Cloud Firewall to manage member accounts.
+	// The UID of the Alibaba Cloud member accounts.
 	//
 	// example:
 	//
@@ -81,6 +81,8 @@ type CreatePrivateDnsEndpointRequest struct {
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The primary DNS server.
+	//
+	// > When PrivateDnsType is set to Custom, you must specify PrimaryDns and StandbyDns.
 	//
 	// example:
 	//
@@ -98,7 +100,7 @@ type CreatePrivateDnsEndpointRequest struct {
 	//
 	// 10.1.1.1
 	PrimaryVSwitchIp *string `json:"PrimaryVSwitchIp,omitempty" xml:"PrimaryVSwitchIp,omitempty"`
-	// The private DNS type. When PrivateDnsType is set to Custom, Port and IpProtocol are required. When PrivateDnsType is set to PrivateZone, the backend automatically sets the port to 53 and uses the default protocol. Valid values:
+	// The type of private DNS. When PrivateDnsType is set to Custom, Port and IpProtocol are required. When PrivateDnsType is set to PrivateZone, the backend automatically sets the port to 53 and uses the default protocol. Valid values:
 	//
 	// - **PrivateZone**
 	//
@@ -119,6 +121,8 @@ type CreatePrivateDnsEndpointRequest struct {
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	// The secondary DNS server.
+	//
+	// > When PrivateDnsType is set to Custom, you must specify PrimaryDns and StandbyDns.
 	//
 	// example:
 	//

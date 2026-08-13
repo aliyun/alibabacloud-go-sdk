@@ -16,7 +16,7 @@ type iCreateTrFirewallV2ResponseBody interface {
 }
 
 type CreateTrFirewallV2ResponseBody struct {
-	// The VPC firewall instance ID.
+	// The instance ID of the virtual private cloud (VPC) firewall.
 	//
 	// example:
 	//

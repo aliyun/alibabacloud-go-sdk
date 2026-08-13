@@ -36,13 +36,13 @@ type iAddDnsFirewallPolicyRequest interface {
 }
 
 type AddDnsFirewallPolicyRequest struct {
-	// The method that is used by the access control policy to control traffic that passes through Cloud Firewall. Valid values:
+	// The action that Cloud Firewall performs on the traffic in the access control policy. Valid values:
 	//
-	// - **accept**: allows the traffic.
+	// - **accept**: Allow.
 	//
-	// - **drop**: deny the traffic.
+	// - **drop**: Deny.
 	//
-	// - **log**: monitors the traffic.
+	// - **log**: Monitor.
 	//
 	// This parameter is required.
 	//
@@ -56,17 +56,17 @@ type AddDnsFirewallPolicyRequest struct {
 	//
 	// example:
 	//
-	// test
+	// Allow specified domain names
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination address in the access control policy.
 	//
 	// - If **DestinationType*	- is set to net, **Destination*	- is a destination CIDR block. Example: 1.2.3.4/24.
 	//
-	// - If **DestinationType*	- is set to group, **Destination*	- is the name of a destination address book. Example: db_group.
+	// - If **DestinationType*	- is set to group, **Destination*	- is a destination address book name. Example: db_group.
 	//
 	// - If **DestinationType*	- is set to domain, **Destination*	- is a destination domain name. Example: *.aliyuncs.com.
 	//
-	// - If **DestinationType*	- is set to location, **Destination*	- is a destination area (for specific area positional encoding, see the following sections). Example: ["BJ11", "ZB"\\].
+	// - If **DestinationType*	- is set to location, **Destination*	- is a destination area (see the area positional encoding below). Example: ["BJ11", "ZB"\\].
 	//
 	// This parameter is required.
 	//
@@ -74,13 +74,7 @@ type AddDnsFirewallPolicyRequest struct {
 	//
 	// db_group
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
-	// The type of the destination address in the access control policy.
-	//
-	// Valid values:
-	//
-	// - **group**: destination address book
-	//
-	// - **domain**: destination domain name
+	// The type of the destination address in the DNS firewall access control policy. Only group (destination address book) and domain (destination domain name) are supported. net and CIDR addresses are not applicable to this operation.
 	//
 	// This parameter is required.
 	//
@@ -88,15 +82,15 @@ type AddDnsFirewallPolicyRequest struct {
 	//
 	// domain
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
-	// The direction of the DNS firewall policy. The backend fixes this value to out (internal-to-external). Set Direction to out.
+	// The traffic direction of the DNS firewall access control policy.
+	//
+	// > This parameter is not validated on the backend. When you create or modify a DNS firewall policy, the direction is always stored as **out*	- (outbound). Passing **in*	- does not cause an error or take effect. The DNS firewall supports only outbound policies.
 	//
 	// example:
 	//
 	// out
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The IP address version supported.
-	//
-	// Valid values:
+	// The IP address version. Valid values:
 	//
 	// - **4**: IPv4
 	//
@@ -118,7 +112,7 @@ type AddDnsFirewallPolicyRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The priority of the policy. A smaller value indicates a higher priority. Valid values: 1 to 20000.
+	// The policy priority of the DNS firewall policy. Valid values: 1 to 20000. A smaller value indicates a higher policy priority.
 	//
 	// This parameter is required.
 	//
@@ -126,11 +120,11 @@ type AddDnsFirewallPolicyRequest struct {
 	//
 	// 1
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// Specifies whether to enable the access control policy. The policy is enabled by default after it is created. Valid values:
+	// The enabled status of the access control policy. The policy is enabled by default after creation. Valid values:
 	//
-	// - **true**: enables the access control policy.
+	// - **true**: Enable the access control policy.
 	//
-	// - **false**: does not enable the access control policy.
+	// - **false**: Disable the access control policy.
 	//
 	// This parameter is required.
 	//
@@ -142,7 +136,7 @@ type AddDnsFirewallPolicyRequest struct {
 	//
 	// - If **SourceType*	- is set to `net`, Source is a source CIDR block. Example: 10.2.XX.XX/24.
 	//
-	// - If **SourceType*	- is set to `group`, Source is the name of a source address book. Example: db_group.
+	// - If **SourceType*	- is set to `group`, Source is a source address book name. Example: db_group.
 	//
 	// This parameter is required.
 	//

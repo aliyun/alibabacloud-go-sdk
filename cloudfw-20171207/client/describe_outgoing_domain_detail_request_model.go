@@ -50,7 +50,7 @@ type DescribeOutgoingDomainDetailRequest struct {
 	//
 	// FullCoverage
 	AclCoverage *string `json:"AclCoverage,omitempty" xml:"AclCoverage,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type DescribeOutgoingDomainDetailRequest struct {
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The list of destination domain names to query. You must specify at least one of Domain or DomainList. If neither is specified, the API returns ErrorDomainName.
 	DomainList []*string `json:"DomainList,omitempty" xml:"DomainList,omitempty" type:"Repeated"`
-	// The end time of the query. Specify a UNIX timestamp in seconds.
+	// The end time of the query. Specify the value as a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type DescribeOutgoingDomainDetailRequest struct {
 	//
 	// 1733450528
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies whether to query outbound connections from NAT private IP addresses.
+	// Queries outbound connections from NAT private IP addresses.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type DescribeOutgoingDomainDetailRequest struct {
 	//
 	// 47.96.181.XXX
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
-	// The field by which to sort the results.
+	// The sort field.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ type DescribeOutgoingDomainDetailRequest struct {
 	//
 	// 121.15.137.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The start time of the query. Specify a UNIX timestamp in seconds.
+	// The start time of the query. Specify the value as a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//

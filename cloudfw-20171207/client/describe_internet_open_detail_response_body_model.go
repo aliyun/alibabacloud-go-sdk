@@ -112,13 +112,13 @@ type DescribeInternetOpenDetailResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// 0.0
+	// 0
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
 	// The outbound traffic. Unit: bytes.
 	//
 	// example:
 	//
-	// 0.0
+	// 0
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
 	// The port that is exposed to the Internet.
 	//

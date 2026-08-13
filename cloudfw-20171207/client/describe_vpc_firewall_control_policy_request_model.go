@@ -38,129 +38,79 @@ type iDescribeVpcFirewallControlPolicyRequest interface {
 }
 
 type DescribeVpcFirewallControlPolicyRequest struct {
-	// The action that is performed on traffic. Valid values:
-	//
-	// - **accept**: allows the traffic.
-	//
-	// - **drop**: denies the traffic.
-	//
-	// - **log**: monitors the traffic.
-	//
-	// > If you do not set this parameter, policies of all actions are queried.
+	// The action (settings) that Cloud Firewall performs on the traffic in the access control policy of the virtual private cloud (VPC) firewall. Valid values:
 	//
 	// example:
 	//
 	// accept
 	AclAction *string `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
-	// The unique ID of the access control policy.
+	// The unique identity ID of the access control policy of the virtual private cloud (VPC) firewall.
 	//
 	// example:
 	//
 	// 4037fbf7-3e39-4634-92a4-d0155247****
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	// The page number.
+	// The page number in a paged query. Settings the current page number for paging.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The description of the access control policy. Fuzzy match is supported.
+	// The description of the access control policy of the virtual private cloud (VPC) firewall. Fuzzy queries are supported.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination address in the access control policy. Fuzzy match is supported.
-	//
-	// > The value can be a CIDR block, a domain name, or an address book.
+	// The destination address in the access control policy of the virtual private cloud (VPC) firewall. Fuzzy queries are supported.
 	//
 	// example:
 	//
 	// 192.0.XX.XX/24
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
-	// The language of the request and response.
-	//
-	// Valid values:
-	//
-	// - **zh*	- (default): Chinese
-	//
-	// - **en**: English
+	// The language type for requests and responses.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UID of the member that is managed by your Alibaba Cloud account.
+	// The UID of a member account of the current Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 258039427902****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The number of entries per page.
-	//
-	// Maximum value: 50.
+	// The number of access control policies for the virtual private cloud (VPC) firewall on each page in a paged query. Settings the number of policies per page for paging.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The protocol type in the access control policy. Valid values:
-	//
-	// - **TCP**
-	//
-	// - **UDP**
-	//
-	// - **ICMP**
-	//
-	// - **ANY**: all protocols
-	//
-	// > If you do not set this parameter, policies of all protocols are queried.
+	// The protocol type of the traffic in the access control policy of the virtual private cloud (VPC) firewall. Valid values:
 	//
 	// example:
 	//
 	// TCP
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// The status of the access control policy. Valid values:
-	//
-	// - **true**: enabled
-	//
-	// - **false**: disabled
+	// The enabled status of the access control policy. Valid values:
 	//
 	// example:
 	//
 	// true
 	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
-	// The recurrence type of the access control policy. Valid values:
-	//
-	// - **Permanent*	- (default): The policy is always in effect.
-	//
-	// - **None**: The policy is a one-time policy.
-	//
-	// - **Daily**: The policy recurs daily.
-	//
-	// - **Weekly**: The policy recurs weekly.
-	//
-	// - **Monthly**: The policy recurs monthly.
+	// The recurrence type of the policy validity period for the access control policy. Valid values:
 	//
 	// example:
 	//
 	// Permanent
 	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
-	// The source address in the access control policy. Fuzzy match is supported.
-	//
-	// > The value can be a CIDR block or an address book.
+	// The source address in the access control policy of the virtual private cloud (VPC) firewall. Fuzzy queries are supported.
 	//
 	// example:
 	//
 	// 192.0.XX.XX/24
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The instance ID of the VPC boundary firewall. You can specify one of the following IDs:
-	//
-	// - The ID of a Cloud Enterprise Network (CEN) instance if the firewall protects traffic between two VPCs connected via the CEN instance.
-	//
-	// - The instance ID of the VPC boundary firewall if the firewall protects traffic between two VPCs connected via an Express Connect circuit.
-	//
-	// > You can call the [DescribeVpcFirewallList](https://help.aliyun.com/document_detail/159760.html) operation to obtain the ID.
+	// The instance ID of the virtual private cloud (VPC) firewall. Valid values:
 	//
 	// This parameter is required.
 	//

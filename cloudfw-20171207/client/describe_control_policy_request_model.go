@@ -38,29 +38,19 @@ type iDescribeControlPolicyRequest interface {
 }
 
 type DescribeControlPolicyRequest struct {
-	// The action that Cloud Firewall performs on the traffic. Valid values:
-	//
-	// - **accept**: Allow
-	//
-	// - **drop**: Deny
-	//
-	// - **log**: Monitor
-	//
-	// > If you do not set this parameter, all action types are queried.
+	// The action that Cloud Firewall performs on the traffic in the access control policy. Valid values:
 	//
 	// example:
 	//
 	// accept
 	AclAction *string `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
-	// The unique ID of the access control policy.
+	// The unique ID of the access control policy. You must specify at least one of AclUuid and Direction. If AclUuid is specified, you can query the policy by its ID.
 	//
 	// example:
 	//
 	// 00281255-d220-4db1-8f4f-c4df221a****
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	// The number of the page to return.
-	//
-	// Default value: 1.
+	// The page number of the current page displayed in a paging query.
 	//
 	// This parameter is required.
 	//
@@ -70,59 +60,35 @@ type DescribeControlPolicyRequest struct {
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The description of the access control policy. Fuzzy queries are supported.
 	//
-	// > If you do not set this parameter, the descriptions of all policies are queried.
-	//
 	// example:
 	//
-	// test
+	// Allow access to office network segment
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination address in the access control policy. Fuzzy queries are supported. The value of this parameter varies based on the value of the \\`DestinationType\\` parameter.
-	//
-	// - If \\`DestinationType\\` is \\`net\\`, the value of this parameter is a CIDR block. Example: 10.0.3.0/24.
-	//
-	// - If \\`DestinationType\\` is \\`domain\\`, the value of this parameter is a domain name. Example: aliyun.
-	//
-	// - If \\`DestinationType\\` is \\`group\\`, the value of this parameter is the name of an address book. Example: db_group.
-	//
-	// - If \\`DestinationType\\` is \\`location\\`, the value of this parameter is a region name. For more information about region codes, see AddControlPolicy. Example: \\`["BJ11", "ZB"]\\`.
-	//
-	// > If you do not set this parameter, all types of destination addresses are queried.
+	// The destination address in the access control policy. Fuzzy queries are supported. The value varies depending on the DestinationType (destination type).
 	//
 	// example:
 	//
 	// 192.0.XX.XX
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
-	// The traffic direction that the access control policy controls. Valid values:
-	//
-	// - **in**: Inbound traffic from an external source to an internal destination.
-	//
-	// - **out**: Outbound traffic from an internal source to an external destination.
+	// The traffic direction controlled by the access control policy. Valid values: in (inbound) or out (outbound). You must specify at least one of Direction and AclUuid. If AclUuid is not specified, you must specify a non-empty Direction. Otherwise, the ErrorParametersDirection error is returned.
 	//
 	// example:
 	//
 	// in
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The IP version supported. Valid values:
-	//
-	// - **4*	- (default): IPv4 address
-	//
-	// - **6**: IPv6 address
+	// The supported IP address version. Valid values:
 	//
 	// example:
 	//
 	// 6
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The language of the response message. Valid values:
-	//
-	// - **zh*	- (default): Chinese
-	//
-	// - **en**: English
+	// The language type for receiving messages. Valid values:
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries per page displayed in a paging query.
 	//
 	// This parameter is required.
 	//
@@ -132,55 +98,23 @@ type DescribeControlPolicyRequest struct {
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The protocol type of the traffic in the access control policy. Valid values:
 	//
-	// - **TCP**
-	//
-	// - **UDP**
-	//
-	// - **ICMP**
-	//
-	// - **ANY*	- (all protocol types)
-	//
-	// > If you do not set this parameter, all protocol types are queried.
-	//
 	// example:
 	//
 	// TCP
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// The status of the access control policy. Valid values:
-	//
-	// - **true**: The access control policy is enabled.
-	//
-	// - **false**: The access control policy is disabled.
+	// The enabled status of the access control policy. Valid values:
 	//
 	// example:
 	//
 	// true
 	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
-	// The recurrence type for the policy validity period of the access control policy. Valid values:
-	//
-	// - **Permanent*	- (default): Always
-	//
-	// - **None**: One-time
-	//
-	// - **Daily**: Daily
-	//
-	// - **Weekly**: Weekly
-	//
-	// - **Monthly**: Monthly
+	// The recurrence type of the policy validity period for the access control policy. Valid values:
 	//
 	// example:
 	//
 	// Permanent
 	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
-	// The source address in the access control policy. Fuzzy queries are supported. The value of this parameter varies based on the value of the \\`SourceType\\` parameter.
-	//
-	// - If \\`SourceType\\` is \\`net\\`, the value of this parameter is a CIDR block. Example: 192.0.XX.XX/24.
-	//
-	// - If \\`SourceType\\` is \\`group\\`, the value of this parameter is the name of a source address book. Example: \\`db_group\\`. If you leave this parameter empty, all source addresses are queried.
-	//
-	// - If \\`SourceType\\` is \\`location\\`, the value of this parameter is a source region. Example: \\`Beijing\\` or \\`beijing\\`. You can use either the Chinese name or the English name for the query.
-	//
-	// > If you do not set this parameter, all types of source addresses are queried.
+	// The source address in the access control policy. Fuzzy queries are supported. The value varies depending on the SourceType (source type).
 	//
 	// example:
 	//

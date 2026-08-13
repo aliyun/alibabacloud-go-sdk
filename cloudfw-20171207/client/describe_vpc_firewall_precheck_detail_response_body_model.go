@@ -18,7 +18,7 @@ type iDescribeVpcFirewallPrecheckDetailResponseBody interface {
 }
 
 type DescribeVpcFirewallPrecheckDetailResponseBody struct {
-	// Indicates whether a task exists.
+	// Indicates whether the task exists.
 	//
 	// example:
 	//

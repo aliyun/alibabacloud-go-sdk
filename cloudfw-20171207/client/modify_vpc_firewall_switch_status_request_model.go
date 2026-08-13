@@ -20,7 +20,7 @@ type iModifyVpcFirewallSwitchStatusRequest interface {
 }
 
 type ModifyVpcFirewallSwitchStatusRequest struct {
-	// The status of the VPC firewall. Valid values:
+	// The status of the virtual private cloud (VPC) firewall. Valid values:
 	//
 	// - **open**: enabled.
 	//
@@ -32,7 +32,7 @@ type ModifyVpcFirewallSwitchStatusRequest struct {
 	//
 	// open
 	FirewallSwitch *string `json:"FirewallSwitch,omitempty" xml:"FirewallSwitch,omitempty"`
-	// The language of the request and response. Valid values:
+	// The language of the content within the request and response. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -42,15 +42,15 @@ type ModifyVpcFirewallSwitchStatusRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UID of the member account.
+	// The UID of the member account of the current Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 258039427902****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The instance ID of the VPC firewall.
+	// The instance ID of the virtual private cloud (VPC) firewall.
 	//
-	// > Call the [DescribeVpcFirewallList](https://help.aliyun.com/document_detail/342932.html) API call to query the instance ID of the VPC firewall.
+	// > You can invoke the [DescribeVpcFirewallList](https://help.aliyun.com/document_detail/342932.html) operation to query the instance ID of the VPC firewall.
 	//
 	// This parameter is required.
 	//

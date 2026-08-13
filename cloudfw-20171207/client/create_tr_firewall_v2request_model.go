@@ -11,10 +11,16 @@ type iCreateTrFirewallV2Request interface {
 	GoString() string
 	SetCenId(v string) *CreateTrFirewallV2Request
 	GetCenId() *string
+	SetFirewallAttachmentZone(v string) *CreateTrFirewallV2Request
+	GetFirewallAttachmentZone() *string
 	SetFirewallDescription(v string) *CreateTrFirewallV2Request
 	GetFirewallDescription() *string
 	SetFirewallName(v string) *CreateTrFirewallV2Request
 	GetFirewallName() *string
+	SetFirewallServiceMode(v string) *CreateTrFirewallV2Request
+	GetFirewallServiceMode() *string
+	SetFirewallServiceZones(v []*string) *CreateTrFirewallV2Request
+	GetFirewallServiceZones() []*string
 	SetFirewallSubnetCidr(v string) *CreateTrFirewallV2Request
 	GetFirewallSubnetCidr() *string
 	SetFirewallVpcCidr(v string) *CreateTrFirewallV2Request
@@ -37,17 +43,25 @@ type iCreateTrFirewallV2Request interface {
 	GetTrAttachmentSlaveCidr() *string
 	SetTrAttachmentSlaveZone(v string) *CreateTrFirewallV2Request
 	GetTrAttachmentSlaveZone() *string
+	SetTrAttachmentZones(v []*string) *CreateTrFirewallV2Request
+	GetTrAttachmentZones() []*string
 	SetTransitRouterId(v string) *CreateTrFirewallV2Request
 	GetTransitRouterId() *string
 }
 
 type CreateTrFirewallV2Request struct {
-	// The CEN instance ID. This parameter is required when you invoke this operation.
+	// The ID of the CEN instance. This parameter is required. Create a CEN instance in the CEN console before calling this operation, and ensure that an Enterprise Edition transit router has been created.
 	//
 	// example:
 	//
 	// cen-4xbjup276au29r****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The zone ID used by the firewall connection.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
+	FirewallAttachmentZone *string `json:"FirewallAttachmentZone,omitempty" xml:"FirewallAttachmentZone,omitempty"`
 	// The description of the firewall.
 	//
 	// example:
@@ -60,6 +74,22 @@ type CreateTrFirewallV2Request struct {
 	//
 	// vpc-firewall-test
 	FirewallName *string `json:"FirewallName,omitempty" xml:"FirewallName,omitempty"`
+	// The deployment mode of the firewall service. Valid values:
+	//
+	// - **PrimaryStandby**: Primary/standby mode.
+	//
+	// - **MultiPrimary**: Active-active mode.
+	//
+	// > If this parameter is not specified, the system automatically selects a deployment mode based on the capabilities of the transit router. If an invalid value is specified, the error ErrorFwServiceMode (-360437) is returned. MultiPrimary mode does not support specifying zones.
+	//
+	// example:
+	//
+	// PrimaryStandby
+	FirewallServiceMode *string `json:"FirewallServiceMode,omitempty" xml:"FirewallServiceMode,omitempty"`
+	// The list of zone IDs used by the firewall service.
+	FirewallServiceZones []*string `json:"FirewallServiceZones,omitempty" xml:"FirewallServiceZones,omitempty" type:"Repeated"`
+	// Deprecated
+	//
 	// The subnet CIDR block used to store the firewall ENI in the firewall VPC in automatic mode.
 	//
 	// example:
@@ -84,7 +114,7 @@ type CreateTrFirewallV2Request struct {
 	//
 	// vsw-uf6ydz3vqj77mr5l6****
 	FirewallVswitchId *string `json:"FirewallVswitchId,omitempty" xml:"FirewallVswitchId,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response. Valid values:
 	//
 	// - **zh*	- (default): Chinese
 	//
@@ -94,25 +124,21 @@ type CreateTrFirewallV2Request struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The region ID of the transit router instance. This parameter is required in actual calls.
+	// The region ID of the Enterprise Edition transit router. This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The routing mode. Valid values:
-	//
-	// - **managed**: automatic mode.
-	//
-	// - **manual**: manual mode.
-	//
-	// > This parameter is required in actual calls. If RouteMode is set to managed (automatic), FirewallVpcCidr, FirewallSubnetCidr, TrAttachmentSlaveCidr, and TrAttachmentMasterCidr are required. If RouteMode is set to manual, FirewallVpcId, FirewallVswitchId, TrAttachmentSlaveZone, and TrAttachmentMasterZone are required. Required parameters vary by mode.
+	// The routing mode. This parameter is required. Valid values: managed (automatic mode) and manual (manual mode). In managed mode, you must specify FirewallVpcCidr, FirewallSubnetCidr, TrAttachmentSlaveCidr, and TrAttachmentMasterCidr. In manual mode, you must specify FirewallVpcId, FirewallVswitchId, TrAttachmentSlaveZone, and TrAttachmentMasterZone.
 	//
 	// example:
 	//
 	// managed
 	RouteMode *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
-	// The primary subnet CIDR block used to connect to the transit router in the firewall VPC in automatic mode.
+	// Deprecated
+	//
+	// The primary subnet CIDR block used to connect to the TR in the firewall VPC in automatic mode.
 	//
 	// example:
 	//
@@ -124,7 +150,9 @@ type CreateTrFirewallV2Request struct {
 	//
 	// cn-chengdu-a
 	TrAttachmentMasterZone *string `json:"TrAttachmentMasterZone,omitempty" xml:"TrAttachmentMasterZone,omitempty"`
-	// The secondary subnet CIDR block used to connect to the transit router in the firewall VPC in automatic mode.
+	// Deprecated
+	//
+	// The secondary subnet CIDR block used to connect to the TR in the firewall VPC in automatic mode.
 	//
 	// example:
 	//
@@ -136,7 +164,9 @@ type CreateTrFirewallV2Request struct {
 	//
 	// cn-chengdu-b
 	TrAttachmentSlaveZone *string `json:"TrAttachmentSlaveZone,omitempty" xml:"TrAttachmentSlaveZone,omitempty"`
-	// The transit router instance ID. This parameter is required when you invoke this operation.
+	// The list of zone IDs used by the TR connection.
+	TrAttachmentZones []*string `json:"TrAttachmentZones,omitempty" xml:"TrAttachmentZones,omitempty" type:"Repeated"`
+	// The ID of the Enterprise Edition transit router instance. This parameter is required. The transit router must belong to the CEN instance specified by CenId.
 	//
 	// example:
 	//
@@ -156,12 +186,24 @@ func (s *CreateTrFirewallV2Request) GetCenId() *string {
 	return s.CenId
 }
 
+func (s *CreateTrFirewallV2Request) GetFirewallAttachmentZone() *string {
+	return s.FirewallAttachmentZone
+}
+
 func (s *CreateTrFirewallV2Request) GetFirewallDescription() *string {
 	return s.FirewallDescription
 }
 
 func (s *CreateTrFirewallV2Request) GetFirewallName() *string {
 	return s.FirewallName
+}
+
+func (s *CreateTrFirewallV2Request) GetFirewallServiceMode() *string {
+	return s.FirewallServiceMode
+}
+
+func (s *CreateTrFirewallV2Request) GetFirewallServiceZones() []*string {
+	return s.FirewallServiceZones
 }
 
 func (s *CreateTrFirewallV2Request) GetFirewallSubnetCidr() *string {
@@ -208,12 +250,21 @@ func (s *CreateTrFirewallV2Request) GetTrAttachmentSlaveZone() *string {
 	return s.TrAttachmentSlaveZone
 }
 
+func (s *CreateTrFirewallV2Request) GetTrAttachmentZones() []*string {
+	return s.TrAttachmentZones
+}
+
 func (s *CreateTrFirewallV2Request) GetTransitRouterId() *string {
 	return s.TransitRouterId
 }
 
 func (s *CreateTrFirewallV2Request) SetCenId(v string) *CreateTrFirewallV2Request {
 	s.CenId = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2Request) SetFirewallAttachmentZone(v string) *CreateTrFirewallV2Request {
+	s.FirewallAttachmentZone = &v
 	return s
 }
 
@@ -224,6 +275,16 @@ func (s *CreateTrFirewallV2Request) SetFirewallDescription(v string) *CreateTrFi
 
 func (s *CreateTrFirewallV2Request) SetFirewallName(v string) *CreateTrFirewallV2Request {
 	s.FirewallName = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2Request) SetFirewallServiceMode(v string) *CreateTrFirewallV2Request {
+	s.FirewallServiceMode = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2Request) SetFirewallServiceZones(v []*string) *CreateTrFirewallV2Request {
+	s.FirewallServiceZones = v
 	return s
 }
 
@@ -279,6 +340,11 @@ func (s *CreateTrFirewallV2Request) SetTrAttachmentSlaveCidr(v string) *CreateTr
 
 func (s *CreateTrFirewallV2Request) SetTrAttachmentSlaveZone(v string) *CreateTrFirewallV2Request {
 	s.TrAttachmentSlaveZone = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2Request) SetTrAttachmentZones(v []*string) *CreateTrFirewallV2Request {
+	s.TrAttachmentZones = v
 	return s
 }
 

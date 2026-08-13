@@ -22,13 +22,13 @@ type iDescribeControlPolicyResponseBody interface {
 }
 
 type DescribeControlPolicyResponseBody struct {
-	// The page number of the returned page.
+	// The page number of the current page displayed in a paging query.
 	//
 	// example:
 	//
 	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries returned per page.
+	// The maximum number of entries per page displayed in a paging query.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type DescribeControlPolicyResponseBody struct {
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The information about the access control policies.
 	Policys []*DescribeControlPolicyResponseBodyPolicys `json:"Policys,omitempty" xml:"Policys,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of access control policies.
+	// The total number of the access control policies.
 	//
 	// example:
 	//
@@ -117,13 +117,7 @@ func (s *DescribeControlPolicyResponseBody) Validate() error {
 }
 
 type DescribeControlPolicyResponseBodyPolicys struct {
-	// The action that Cloud Firewall performs on the traffic. Valid values:
-	//
-	// - **accept**: Allow
-	//
-	// - **drop**: Deny
-	//
-	// - **log**: Monitor
+	// The action that Cloud Firewall performs on the traffic in the access control policy. Valid values:
 	//
 	// example:
 	//
@@ -135,43 +129,13 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	//
 	// 00281255-d220-4db1-8f4f-c4df221a****
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	// The application ID for the traffic in the access control policy.
+	// The application ID of the traffic in the access control policy.
 	//
 	// example:
 	//
 	// 10***
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The application type supported by the access control policy. Use \\`ApplicationNameList\\` instead. Valid values:
-	//
-	// - **FTP**
-	//
-	// - **HTTP**
-	//
-	// - **HTTPS**
-	//
-	// - **Memcache**
-	//
-	// - **MongoDB**
-	//
-	// - **MQTT**
-	//
-	// - **MySQL**
-	//
-	// - **RDP**
-	//
-	// - **Redis**
-	//
-	// - **SMTP**
-	//
-	// - **SMTPS**
-	//
-	// - **SSH**
-	//
-	// - **SSL**
-	//
-	// - **VNC**
-	//
-	// - **ANY*	- (all application types)
+	// The application type supported by the access control policy. We recommend that you use ApplicationNameList. Valid values:
 	//
 	// example:
 	//
@@ -179,7 +143,7 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The list of application names.
 	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
-	// The time when the policy was created. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the policy was created. The value is a UNIX timestamp in seconds, which is the number of seconds that have elapsed since January 1, 1970 (UTC).
 	//
 	// example:
 	//
@@ -189,15 +153,15 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	//
 	// example:
 	//
-	// test
+	// Allow access to office network segment
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination port for the traffic in the access control policy.
+	// The destination port of the traffic in the access control policy.
 	//
 	// example:
 	//
 	// 80
 	DestPort *string `json:"DestPort,omitempty" xml:"DestPort,omitempty"`
-	// The name of the destination port address book for the traffic in the access control policy.
+	// The name of the destination port address book in the access control policy.
 	//
 	// example:
 	//
@@ -205,25 +169,13 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	DestPortGroup *string `json:"DestPortGroup,omitempty" xml:"DestPortGroup,omitempty"`
 	// The list of ports in the destination port address book.
 	DestPortGroupPorts []*string `json:"DestPortGroupPorts,omitempty" xml:"DestPortGroupPorts,omitempty" type:"Repeated"`
-	// The destination port type for the traffic in the access control policy. Valid values:
-	//
-	// - **port**: port
-	//
-	// - **group**: port address book
+	// The type of the destination port in the access control policy. Valid values:
 	//
 	// example:
 	//
 	// port
 	DestPortType *string `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
-	// The destination address in the access control policy. The value of this parameter varies based on the value of the \\`DestinationType\\` parameter. Valid values:
-	//
-	// - If **DestinationType*	- is **net**, the destination address is a CIDR block. Example: 192.0.XX.XX/24.
-	//
-	// - If **DestinationType*	- is **domain**, the destination address is a domain name. Example: aliyuncs.com.
-	//
-	// - If **DestinationType*	- is **group**, the destination address is the name of an address book. Example: db_group.
-	//
-	// - If **DestinationType*	- is **location**, the destination address is a region name. For more information about region codes, see AddControlPolicy. Example: ["BJ11", "ZB"].
+	// The destination address in the access control policy. The value varies depending on the DestinationType (destination type). Valid values:
 	//
 	// example:
 	//
@@ -233,29 +185,11 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	DestinationGroupCidrs []*string `json:"DestinationGroupCidrs,omitempty" xml:"DestinationGroupCidrs,omitempty" type:"Repeated"`
 	// The type of the destination address book in the access control policy. Valid values:
 	//
-	// - **ip**: An IP address book that contains one or more CIDR blocks.
-	//
-	// - **tag**: An ECS tag-based address book that contains the IP addresses of the ECS instances with one or more tags.
-	//
-	// - **domain**: A domain name address book that contains one or more domain names.
-	//
-	// - **threat**: A threat intelligence address book that contains one or more malicious IP addresses or domain names.
-	//
-	// - **backsrc**: An origin URL address book that contains the origin URLs of one or more Anti-DDoS or WAF instances.
-	//
 	// example:
 	//
 	// ip
 	DestinationGroupType *string `json:"DestinationGroupType,omitempty" xml:"DestinationGroupType,omitempty"`
-	// The destination address type in the access control policy. Valid values:
-	//
-	// - **net**: destination CIDR block
-	//
-	// - **group**: destination address book
-	//
-	// - **domain**: destination domain name
-	//
-	// - **location**: destination region
+	// The type of the destination address in the access control policy. Valid values:
 	//
 	// example:
 	//
@@ -263,23 +197,19 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	// The traffic direction of the access control policy. Valid values:
 	//
-	// - **in**: inbound traffic
-	//
-	// - **out**: outbound traffic
-	//
 	// example:
 	//
 	// in
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	// Deprecated
 	//
-	// The result of the DNS resolution.
+	// The DNS resolution result.
 	//
 	// example:
 	//
 	// 192.0.XX.XX,192.0.XX.XX
 	DnsResult *string `json:"DnsResult,omitempty" xml:"DnsResult,omitempty"`
-	// The timestamp of the DNS resolution. The value is a UNIX timestamp. Unit: seconds.
+	// The timestamp of the DNS resolution. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -287,25 +217,17 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	DnsResultTime *int64 `json:"DnsResultTime,omitempty" xml:"DnsResultTime,omitempty"`
 	// The domain name resolution method of the access control policy. Valid values:
 	//
-	// - **FQDN**: FQDN-based
-	//
-	// - **DNS**: DNS-based dynamic resolution
-	//
-	// - **FQDN_AND_DNS**: FQDN- and DNS-based dynamic resolution
-	//
 	// example:
 	//
 	// FQDN
 	DomainResolveType *string `json:"DomainResolveType,omitempty" xml:"DomainResolveType,omitempty"`
-	// The end time of the policy validity period for the access control policy. The value is a UNIX timestamp. The time must be on the hour or half-hour, and at least 30 minutes later than the start time.
-	//
-	// > If \\`RepeatType\\` is \\`Permanent\\`, \\`EndTime\\` is empty. If \\`RepeatType\\` is \\`None\\`, \\`Daily\\`, \\`Weekly\\`, or \\`Monthly\\`, this parameter is required.
+	// The end time of the policy validity period for the access control policy. The value is a UNIX timestamp in seconds. The value must be on the hour or half hour and must be at least 30 minutes later than the start time.
 	//
 	// example:
 	//
 	// 1694764800
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The timestamp of the last hit. The value is a UNIX timestamp. Unit: seconds.
+	// The most recent time of hits. The value is in the format of a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -317,17 +239,13 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	//
 	// 100
 	HitTimes *int64 `json:"HitTimes,omitempty" xml:"HitTimes,omitempty"`
-	// The IP version supported. Valid values:
-	//
-	// - **4**: IPv4 address
-	//
-	// - **6**: IPv6 address
+	// The supported IP address version. Valid values:
 	//
 	// example:
 	//
 	// 6
 	IpVersion *int32 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The time when the policy was last modified. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the policy was last modified. The value is a UNIX timestamp in seconds, which is the number of seconds that have elapsed since January 1, 1970 (UTC).
 	//
 	// example:
 	//
@@ -335,97 +253,43 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The priority of the access control policy.
 	//
-	// The priority value starts from 1 and increases sequentially. A smaller value indicates a higher priority.
-	//
 	// example:
 	//
 	// 1
 	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The protocol type of the traffic in the access control policy. Valid values:
-	//
-	// - **ANY**
-	//
-	// - **TCP**
-	//
-	// - **UDP**
-	//
-	// - **ICMP**
+	// The security protocol type of the traffic in the access control policy. Valid values:
 	//
 	// example:
 	//
 	// TCP
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// The status of the access control policy. The policy is enabled by default after it is created. Valid values:
-	//
-	// - **true**: The access control policy is enabled.
-	//
-	// - **false**: The access control policy is disabled.
+	// The enabled status of the access control policy. The policy is enabled by default after creation. Valid values:
 	//
 	// example:
 	//
 	// true
 	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
-	// The collection of recurring dates for the policy validity period of the access control policy.
-	//
-	// - If \\`RepeatType\\` is \\`Permanent\\`, \\`None\\`, or \\`Daily\\`, \\`RepeatDays\\` is an empty collection.
-	//
-	//   Example: []
-	//
-	// - If \\`RepeatType\\` is \\`Weekly\\`, \\`RepeatDays\\` cannot be empty.
-	//
-	//   Example: [0, 6]
-	//
-	// > If \\`RepeatType\\` is set to \\`Weekly\\`, \\`RepeatDays\\` cannot contain duplicate values.
-	//
-	// - If \\`RepeatType\\` is \\`Monthly\\`, \\`RepeatDays\\` cannot be empty.
-	//
-	//   Example: [1, 31]
-	//
-	// > If \\`RepeatType\\` is set to \\`Monthly\\`, \\`RepeatDays\\` cannot contain duplicate values.
+	// The collection of recurrence days for the policy validity period of the access control policy.
 	RepeatDays []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
-	// The recurring end time for the policy validity period of the access control policy. Example: \\`23:30\\`. The time must be on the hour or half-hour, and at least 30 minutes later than the recurring start time.
-	//
-	// > If \\`RepeatType\\` is \\`Permanent\\` or \\`None\\`, \\`RepeatEndTime\\` is empty. If \\`RepeatType\\` is \\`Daily\\`, \\`Weekly\\`, or \\`Monthly\\`, this parameter is required.
-	//
-	// > The time is in the HH:mm format (24-hour). Examples: \\`08:00\\` and \\`23:30\\`.
+	// The recurrence end time of the policy validity period for the access control policy. Example: 23:30. The value must be on the hour or half hour and must be at least 30 minutes later than the recurrence start time.
 	//
 	// example:
 	//
 	// 23:30
 	RepeatEndTime *string `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
-	// The recurring start time for the policy validity period of the access control policy. Example: \\`08:00\\`. The time must be on the hour or half-hour, and at least 30 minutes earlier than the recurring end time.
-	//
-	// > If \\`RepeatType\\` is \\`Permanent\\` or \\`None\\`, \\`RepeatStartTime\\` is empty. If \\`RepeatType\\` is \\`Daily\\`, \\`Weekly\\`, or \\`Monthly\\`, this parameter is required.
-	//
-	// > The time is in the HH:mm format (24-hour). Examples: \\`08:00\\` and \\`23:30\\`.
+	// The recurrence start time of the policy validity period for the access control policy. Example: 08:00. The value must be on the hour or half hour and must be at least 30 minutes earlier than the recurrence end time.
 	//
 	// example:
 	//
 	// 08:00
 	RepeatStartTime *string `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
-	// The recurrence type for the policy validity period of the access control policy. Valid values:
-	//
-	// - **Permanent*	- (default): Always
-	//
-	// - **None**: One-time
-	//
-	// - **Daily**: Daily
-	//
-	// - **Weekly**: Weekly
-	//
-	// - **Monthly**: Monthly
+	// The recurrence type of the policy validity period for the access control policy. Valid values:
 	//
 	// example:
 	//
 	// Permanent
 	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy. Valid values:
-	//
-	// - If **SourceType*	- is `net`, the source address is a CIDR block. Example: 192.0.XX.XX/24.
-	//
-	// - If **SourceType*	- is `group`, the source address is the name of a source address book. Example: db_group.
-	//
-	// - If **SourceType*	- is `location`, the source address is a region. For more information about region codes, see [AddControlPolicy](https://help.aliyun.com/document_detail/138867.html). Example: ["BJ11", "ZB"].
 	//
 	// example:
 	//
@@ -435,43 +299,23 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	SourceGroupCidrs []*string `json:"SourceGroupCidrs,omitempty" xml:"SourceGroupCidrs,omitempty" type:"Repeated"`
 	// The type of the source address book in the access control policy. Valid values:
 	//
-	// - **ip**: An IP address book that contains one or more CIDR blocks.
-	//
-	// - **tag**: An ECS tag-based address book that contains the IP addresses of the ECS instances with one or more tags.
-	//
-	// - **domain**: A domain name address book that contains one or more domain names.
-	//
-	// - **threat**: A threat intelligence address book that contains one or more malicious IP addresses or domain names.
-	//
-	// - **backsrc**: An origin URL address book that contains the origin URLs of one or more Anti-DDoS or WAF instances.
-	//
 	// example:
 	//
 	// ip
 	SourceGroupType *string `json:"SourceGroupType,omitempty" xml:"SourceGroupType,omitempty"`
-	// The source address type in the access control policy. Valid values:
-	//
-	// - **net**: source CIDR block
-	//
-	// - **group**: source address book
-	//
-	// - **location**: source region
+	// The type of the source address in the access control policy. Valid values:
 	//
 	// example:
 	//
 	// net
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The number of specification entries that the access control policy consumes. This is the sum of entries consumed by each policy.
-	//
-	// The number of entries for a single policy is calculated as: Number of source addresses (CIDR blocks or regions) × Number of destination addresses (CIDR blocks, regions, or domain names) × Number of port ranges × Number of applications.
+	// The number of quota units consumed by the access control policy, which is the cumulative number of quota units consumed by each policy.
 	//
 	// example:
 	//
 	// 10000
 	SpreadCnt *int32 `json:"SpreadCnt,omitempty" xml:"SpreadCnt,omitempty"`
-	// The start time of the policy validity period for the access control policy. The value is a UNIX timestamp. The time must be on the hour or half-hour, and at least 30 minutes earlier than the end time.
-	//
-	// > If \\`RepeatType\\` is \\`Permanent\\`, \\`StartTime\\` is empty. If \\`RepeatType\\` is \\`None\\`, \\`Daily\\`, \\`Weekly\\`, or \\`Monthly\\`, this parameter is required.
+	// The start time of the policy validity period for the access control policy. The value is a UNIX timestamp in seconds. The value must be on the hour or half hour and must be at least 30 minutes earlier than the end time.
 	//
 	// example:
 	//

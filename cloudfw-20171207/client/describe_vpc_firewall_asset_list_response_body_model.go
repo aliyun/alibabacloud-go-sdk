@@ -105,7 +105,7 @@ type DescribeVpcFirewallAssetListResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// 0.0
+	// 0
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
 	// The number of IPS hits.
 	//
@@ -117,9 +117,9 @@ type DescribeVpcFirewallAssetListResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// 0.0
+	// 0
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
-	// The port list.
+	// The list of ports.
 	PortList []*string `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
 	// The region.
 	//

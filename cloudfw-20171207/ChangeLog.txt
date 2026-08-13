@@ -1,3 +1,43 @@
+2026-08-13 Version: v11.1.0
+- Support API DescribeTaskDispatchStatus.
+- Support API DescribeVpcFirewallTrafficTrend.
+- Support API ModifySlsDispatchConfig.
+- Update API AddControlPolicy: add request parameters ClientToken.
+- Update API AddControlPolicy: add request parameters DryRun.
+- Update API CreateSecurityProxy: add request parameters FirewallServiceMode.
+- Update API CreateSecurityProxy: add request parameters FirewallServiceZones.
+- Update API CreateTrFirewallV2: add request parameters FirewallAttachmentZone.
+- Update API CreateTrFirewallV2: add request parameters FirewallServiceMode.
+- Update API CreateTrFirewallV2: add request parameters FirewallServiceZones.
+- Update API CreateTrFirewallV2: add request parameters TrAttachmentZones.
+- Update API CreateVpcFirewallCenConfigure: add request parameters FirewallVSwitchZoneId.
+- Update API DescribeNatFirewallList: add response parameters Body.NatFirewallList.$.FirewallServiceMode.
+- Update API DescribeNatFirewallList: add response parameters Body.NatFirewallList.$.FirewallServiceZones.
+- Update API DescribeOutgoingDomain: add response parameters Body.DomainList.$.ApplicationPortList.
+- Update API DescribeTrFirewallsV2Detail: add response parameters Body.FirewallAttachmentZone.
+- Update API DescribeTrFirewallsV2Detail: add response parameters Body.FirewallServiceMode.
+- Update API DescribeTrFirewallsV2Detail: add response parameters Body.FirewallServiceZones.
+- Update API DescribeTrFirewallsV2Detail: add response parameters Body.TrAttachmentZones.
+- Update API DescribeTrafficLog: add request parameters QueryId.
+- Update API DescribeTrafficLog: add response parameters Body.QueryId.
+- Update API DescribeVpcFirewallCenDetail: add response parameters Body.FirewallVpc.FirewallServiceMode.
+- Update API DescribeVpcFirewallCenDetail: add response parameters Body.FirewallVpc.FirewallServiceZones.
+- Update API DescribeVpcFirewallCenDetail: add response parameters Body.LocalVpc.EniList.$.EniZoneId.
+- Update API DescribeVpcFirewallZone: add response parameters Body.FirewallServiceMode.
+- Update API ModifyAddressBook: add request parameters ClientToken.
+- Update API ModifyAddressBook: add request parameters DryRun.
+- Update API ModifyAddressBook: add response parameters Body.DryRun.
+- Update API ModifyControlPolicy: add request parameters ClientToken.
+- Update API ModifyControlPolicy: add request parameters DryRun.
+- Update API ModifyControlPolicy: add response parameters Body.DryRun.
+- Update API PutDisableFwSwitch: add request parameters ClientToken.
+- Update API PutDisableFwSwitch: add request parameters DryRun.
+- Update API PutDisableFwSwitch: add response parameters Body.DryRun.
+- Update API PutEnableFwSwitch: add request parameters ClientToken.
+- Update API PutEnableFwSwitch: add request parameters DryRun.
+- Update API PutEnableFwSwitch: add response parameters Body.DryRun.
+
+
 2026-07-22 Version: v11.1.0
 - Support API DescribeTaskDispatchStatus.
 - Support API DescribeVpcFirewallTrafficTrend.

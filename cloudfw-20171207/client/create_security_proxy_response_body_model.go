@@ -16,7 +16,7 @@ type iCreateSecurityProxyResponseBody interface {
 }
 
 type CreateSecurityProxyResponseBody struct {
-	// The NAT firewall ID.
+	// The ID of the NAT firewall.
 	//
 	// example:
 	//

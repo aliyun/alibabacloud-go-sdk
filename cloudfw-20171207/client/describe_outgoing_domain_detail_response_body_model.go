@@ -30,7 +30,7 @@ type DescribeOutgoingDomainDetailResponseBody struct {
 	//
 	// 98AF5888-9606-59CF-888F-032A9ED0****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type DescribeOutgoingDomainDetailResponseBodyAssetList struct {
 	//
 	// ngw-bp1utx6wj4x9qu9tl****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The name of the NAT gateway.
+	// The NAT gateway name.
 	//
 	// example:
 	//
@@ -186,13 +186,13 @@ type DescribeOutgoingDomainDetailResponseBodyAssetList struct {
 	//
 	// NatEIP
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The ID of the ACL rule.
+	// The ACL rule ID.
 	//
 	// example:
 	//
 	// 08a58465-ff4d-4c47-8782-eb008301****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
@@ -212,7 +212,7 @@ type DescribeOutgoingDomainDetailResponseBodyAssetList struct {
 	//
 	// 321120825843
 	TotalBytes *string `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
-	// The instance ID of the VPC-connected instance.
+	// The VPC instance ID.
 	//
 	// example:
 	//
@@ -431,7 +431,7 @@ func (s *DescribeOutgoingDomainDetailResponseBodyAssetList) Validate() error {
 }
 
 type DescribeOutgoingDomainDetailResponseBodyAssetListTagList struct {
-	// The risk category ID.
+	// The risk classification ID.
 	//
 	// example:
 	//

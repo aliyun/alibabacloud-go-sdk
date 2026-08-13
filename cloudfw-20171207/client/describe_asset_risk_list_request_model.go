@@ -20,7 +20,7 @@ type iDescribeAssetRiskListRequest interface {
 }
 
 type DescribeAssetRiskListRequest struct {
-	// The list of IP addresses to query. Separate multiple IP addresses with commas (,). You can query up to 20 IP addresses at a time. This parameter is required in practice. If you do not specify this parameter, the API returns a 400 error.
+	// The list of IP addresses to query. Separate multiple IP addresses with commas (,). You can query up to 20 IP addresses at a time. This parameter is required in practice. If this parameter is not specified, the API returns a 400 error.
 	//
 	// >- IPv4 example: 47.97.XX.XX.
 	//
@@ -40,7 +40,7 @@ type DescribeAssetRiskListRequest struct {
 	//
 	// 4
 	IpVersion *int32 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The language of the response. Valid values:
+	// The language type of the response message. Valid values:
 	//
 	// - **zh*	- (default): Chinese
 	//

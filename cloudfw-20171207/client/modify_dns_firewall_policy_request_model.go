@@ -34,13 +34,13 @@ type iModifyDnsFirewallPolicyRequest interface {
 }
 
 type ModifyDnsFirewallPolicyRequest struct {
-	// The action that Cloud Firewall performs on the traffic in the access control policy. Valid values:
+	// The action that the access control policy performs on traffic in Cloud Firewall. Valid values:
 	//
-	// - **accept**: Allow.
+	// - **accept**: allows the traffic.
 	//
-	// - **drop**: Deny.
+	// - **drop**: deny the traffic.
 	//
-	// - **log**: Monitor.
+	// - **log**: monitors the traffic.
 	//
 	// example:
 	//
@@ -64,11 +64,11 @@ type ModifyDnsFirewallPolicyRequest struct {
 	//
 	// - If **DestinationType*	- is set to net, **Destination*	- is a destination CIDR block. Example: 1.2.3.4/24.
 	//
-	// - If **DestinationType*	- is set to group, **Destination*	- is a destination address book name. Example: db_group.
+	// - If **DestinationType*	- is set to group, **Destination*	- is the name of a destination address book. Example: db_group.
 	//
 	// - If **DestinationType*	- is set to domain, **Destination*	- is a destination domain name. Example: *.aliyuncs.com.
 	//
-	// - If **DestinationType*	- is set to location, **Destination*	- is a destination area. For specific area positional encoding values, see the subsequent sections. Example: ["BJ11", "ZB"\\].
+	// - If **DestinationType*	- is set to location, **Destination*	- is a destination area. For more information about area positional encoding, see the following sections. Example: ["BJ11", "ZB"\\].
 	//
 	// example:
 	//
@@ -78,11 +78,11 @@ type ModifyDnsFirewallPolicyRequest struct {
 	//
 	// Valid values:
 	//
-	// - **net**: destination CIDR block.
+	// - **net**: destination CIDR block
 	//
-	// - **group**: destination address book.
+	// - **group**: destination address book
 	//
-	// - **domain**: destination domain name.
+	// - **domain**: destination domain name
 	//
 	// example:
 	//
@@ -104,11 +104,11 @@ type ModifyDnsFirewallPolicyRequest struct {
 	//
 	// 1
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The enabled status of the access control policy. The policy is enabled by default after it is created. Valid values:
+	// Specifies whether to enable the access control policy. The policy is enabled by default after it is created. Valid values:
 	//
-	// - **true**: Enable the access control policy.
+	// - **true**: enables the access control policy.
 	//
-	// - **false**: Disable the access control policy.
+	// - **false**: disables the access control policy.
 	//
 	// example:
 	//
@@ -123,9 +123,9 @@ type ModifyDnsFirewallPolicyRequest struct {
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The type of the source address in the access control policy. Valid values:
 	//
-	// - **net**: source CIDR block.
+	// - **net**: source CIDR block
 	//
-	// - **group**: source address book.
+	// - **group**: source address book
 	//
 	// example:
 	//

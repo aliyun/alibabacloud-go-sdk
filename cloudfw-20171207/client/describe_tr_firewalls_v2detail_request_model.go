@@ -16,9 +16,9 @@ type iDescribeTrFirewallsV2DetailRequest interface {
 }
 
 type DescribeTrFirewallsV2DetailRequest struct {
-	// The instance ID of the virtual private cloud (VPC) firewall.
+	// The ID of the VPC firewall instance. This parameter is required. If this parameter is not specified, the error ErrorMissingFirewallId (-360444, firewall id is required) is returned.
 	//
-	// > FirewallId is required. If this parameter is not specified, ErrorParameters(400) is returned. You can call DescribeTrFirewallsV2List to query existing FirewallId values. If no VPC firewall exists, create a CEN instance and a transit router first, and then call CreateTrFirewallV2 to obtain a FirewallId.
+	// > You can call DescribeTrFirewallsV2List to query existing FirewallId values (in the format of vfw-tr-*). If no firewall has been created, create an Enterprise Edition transit router in the CEN console first, and then call CreateTrFirewallV2.
 	//
 	// example:
 	//

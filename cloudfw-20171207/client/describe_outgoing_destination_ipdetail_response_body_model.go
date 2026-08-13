@@ -133,7 +133,7 @@ type DescribeOutgoingDestinationIPDetailResponseBodyAssetList struct {
 	//
 	// example:
 	//
-	// 0.0
+	// 0
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
 	// The ISP of the destination IP address.
 	//
@@ -169,7 +169,7 @@ type DescribeOutgoingDestinationIPDetailResponseBodyAssetList struct {
 	//
 	// example:
 	//
-	// 0.0
+	// 0
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
 	// The private IP address.
 	//

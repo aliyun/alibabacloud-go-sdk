@@ -87,7 +87,7 @@ type DescribeAclAppsResponseBodyAclApps struct {
 	//
 	// example:
 	//
-	// 1.0
+	// 1
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The application name.
 	//

@@ -40,7 +40,7 @@ type DescribeAccessInstanceTaskResponseBody struct {
 	//
 	// 15FCCC52-1E23-57AE-B5EF-3E00A3******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The time when the task was completed.
+	// The task completion time.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeAccessInstanceTaskResponseBody struct {
 	//
 	// Create an ACK cluster connector
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The time when the task was created.
+	// The task creation time.
 	//
 	// example:
 	//

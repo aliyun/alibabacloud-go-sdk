@@ -26,7 +26,7 @@ type iDescribeVpcFirewallZoneRequest interface {
 }
 
 type DescribeVpcFirewallZoneRequest struct {
-	// The ID of the CEN instance.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
 	//
 	// example:
 	//
@@ -38,13 +38,13 @@ type DescribeVpcFirewallZoneRequest struct {
 	//
 	// TransitRouter
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	// The language of the response.
+	// The language type.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UID of the Cloud Firewall member account.
+	// The UID of the Cloud Firewall member accounts.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type DescribeVpcFirewallZoneRequest struct {
 	//
 	// 222.212.86.7XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The ID of the TransitRouter instance.
+	// The transit router instance ID.
 	//
 	// example:
 	//

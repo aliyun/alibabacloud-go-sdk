@@ -9,12 +9,16 @@ type iModifyControlPolicyResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDryRun(v bool) *ModifyControlPolicyResponseBody
+	GetDryRun() *bool
 	SetRequestId(v string) *ModifyControlPolicyResponseBody
 	GetRequestId() *string
 }
 
 type ModifyControlPolicyResponseBody struct {
-	// The ID of the request.
+	// Indicates whether this is a successful dry run response. A value of true indicates that only the dry run was completed and no actual modification was performed.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The request ID.
 	//
 	// example:
 	//
@@ -30,8 +34,17 @@ func (s ModifyControlPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyControlPolicyResponseBody) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *ModifyControlPolicyResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *ModifyControlPolicyResponseBody) SetDryRun(v bool) *ModifyControlPolicyResponseBody {
+	s.DryRun = &v
+	return s
 }
 
 func (s *ModifyControlPolicyResponseBody) SetRequestId(v string) *ModifyControlPolicyResponseBody {
