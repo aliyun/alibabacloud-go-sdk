@@ -19,6 +19,8 @@ type iCreateSupabaseProjectRequest interface {
 	GetDiskPerformanceLevel() *string
 	SetEngineVersion(v string) *CreateSupabaseProjectRequest
 	GetEngineVersion() *string
+	SetLightweight(v bool) *CreateSupabaseProjectRequest
+	GetLightweight() *bool
 	SetPayType(v string) *CreateSupabaseProjectRequest
 	GetPayType() *string
 	SetPeriod(v string) *CreateSupabaseProjectRequest
@@ -102,6 +104,7 @@ type CreateSupabaseProjectRequest struct {
 	//
 	// PG15
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	Lightweight   *bool   `json:"Lightweight,omitempty" xml:"Lightweight,omitempty"`
 	// The billing method. If this parameter is not specified, the default value Free is used.
 	//
 	// Valid values:
@@ -233,6 +236,10 @@ func (s *CreateSupabaseProjectRequest) GetEngineVersion() *string {
 	return s.EngineVersion
 }
 
+func (s *CreateSupabaseProjectRequest) GetLightweight() *bool {
+	return s.Lightweight
+}
+
 func (s *CreateSupabaseProjectRequest) GetPayType() *string {
 	return s.PayType
 }
@@ -303,6 +310,11 @@ func (s *CreateSupabaseProjectRequest) SetDiskPerformanceLevel(v string) *Create
 
 func (s *CreateSupabaseProjectRequest) SetEngineVersion(v string) *CreateSupabaseProjectRequest {
 	s.EngineVersion = &v
+	return s
+}
+
+func (s *CreateSupabaseProjectRequest) SetLightweight(v bool) *CreateSupabaseProjectRequest {
+	s.Lightweight = &v
 	return s
 }
 

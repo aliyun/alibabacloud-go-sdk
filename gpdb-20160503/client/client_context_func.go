@@ -3412,6 +3412,10 @@ func (client *Client) CreateSupabaseProjectWithContext(ctx context.Context, requ
 		query["EngineVersion"] = request.EngineVersion
 	}
 
+	if !dara.IsNil(request.Lightweight) {
+		query["Lightweight"] = request.Lightweight
+	}
+
 	if !dara.IsNil(request.PayType) {
 		query["PayType"] = request.PayType
 	}

@@ -29,6 +29,8 @@ type iGetSupabaseProjectResponseBody interface {
 	GetEni() *string
 	SetInstanceVersion(v string) *GetSupabaseProjectResponseBody
 	GetInstanceVersion() *string
+	SetLightweight(v string) *GetSupabaseProjectResponseBody
+	GetLightweight() *string
 	SetPayType(v string) *GetSupabaseProjectResponseBody
 	GetPayType() *string
 	SetPrivateConnectUrl(v string) *GetSupabaseProjectResponseBody
@@ -134,6 +136,7 @@ type GetSupabaseProjectResponseBody struct {
 	//
 	// v1.0.3
 	InstanceVersion *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
+	Lightweight     *string `json:"Lightweight,omitempty" xml:"Lightweight,omitempty"`
 	// The billing method. Valid values:
 	//
 	// - `POSTPAY`: pay-as-you-go
@@ -302,6 +305,10 @@ func (s *GetSupabaseProjectResponseBody) GetInstanceVersion() *string {
 	return s.InstanceVersion
 }
 
+func (s *GetSupabaseProjectResponseBody) GetLightweight() *string {
+	return s.Lightweight
+}
+
 func (s *GetSupabaseProjectResponseBody) GetPayType() *string {
 	return s.PayType
 }
@@ -413,6 +420,11 @@ func (s *GetSupabaseProjectResponseBody) SetEni(v string) *GetSupabaseProjectRes
 
 func (s *GetSupabaseProjectResponseBody) SetInstanceVersion(v string) *GetSupabaseProjectResponseBody {
 	s.InstanceVersion = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetLightweight(v string) *GetSupabaseProjectResponseBody {
+	s.Lightweight = &v
 	return s
 }
 
