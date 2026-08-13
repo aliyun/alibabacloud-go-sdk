@@ -1,0 +1,78 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iRenameSourceRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetNewName(v string) *RenameSourceRequest
+	GetNewName() *string
+	SetSourceId(v string) *RenameSourceRequest
+	GetSourceId() *string
+	SetTenantId(v string) *RenameSourceRequest
+	GetTenantId() *string
+}
+
+type RenameSourceRequest struct {
+	// 新的数据源名称
+	//
+	// example:
+	//
+	// string_value
+	NewName *string `json:"newName,omitempty" xml:"newName,omitempty"`
+	// 数据源 ID（租户内唯一）
+	//
+	// example:
+	//
+	// exampleSourceId
+	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	//
+	// example:
+	//
+	// 10000
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s RenameSourceRequest) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RenameSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RenameSourceRequest) GetNewName() *string {
+	return s.NewName
+}
+
+func (s *RenameSourceRequest) GetSourceId() *string {
+	return s.SourceId
+}
+
+func (s *RenameSourceRequest) GetTenantId() *string {
+	return s.TenantId
+}
+
+func (s *RenameSourceRequest) SetNewName(v string) *RenameSourceRequest {
+	s.NewName = &v
+	return s
+}
+
+func (s *RenameSourceRequest) SetSourceId(v string) *RenameSourceRequest {
+	s.SourceId = &v
+	return s
+}
+
+func (s *RenameSourceRequest) SetTenantId(v string) *RenameSourceRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *RenameSourceRequest) Validate() error {
+	return dara.Validate(s)
+}
