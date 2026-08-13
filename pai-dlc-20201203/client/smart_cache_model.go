@@ -44,66 +44,98 @@ type iSmartCache interface {
 }
 
 type SmartCache struct {
+	// The number of cache workers.
+	//
 	// example:
 	//
 	// 10
 	CacheWorkerNum *int64 `json:"CacheWorkerNum,omitempty" xml:"CacheWorkerNum,omitempty"`
+	// The cache size per cache worker. Unit: GB.
+	//
 	// example:
 	//
 	// 100
 	CacheWorkerSize *int64 `json:"CacheWorkerSize,omitempty" xml:"CacheWorkerSize,omitempty"`
+	// The SmartCache description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The SmartCache name.
+	//
 	// example:
 	//
 	// test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The running duration.
+	//
 	// example:
 	//
 	// 123456
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// OSS Endpoint
+	//
 	// example:
 	//
 	// oss-cn-beijing-internal.aliyuncs.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The Alibaba Cloud NAS file system ID.
+	//
 	// example:
 	//
 	// 1ca404****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The creation time in UTC.
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The modification time in UTC.
+	//
 	// example:
 	//
 	// 2021-01-12T23:36:01Z
 	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	// The local mount directory of the data source.
+	//
 	// example:
 	//
 	// /root/data/
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The optional hyperparameters.
+	//
 	// example:
 	//
 	// {"num_threads": 32}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The OSS data source path.
+	//
 	// example:
 	//
 	// oss://buc/path/to/dir
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// SmartCacheId
+	//
 	// example:
 	//
 	// smartcache-20210114104214-vf9lowjt3pso
 	SmartCacheId *string `json:"SmartCacheId,omitempty" xml:"SmartCacheId,omitempty"`
+	// The running status.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The mounted data type.
+	//
 	// example:
 	//
 	// oss
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The creator ID.
+	//
 	// example:
 	//
 	// 189xxx

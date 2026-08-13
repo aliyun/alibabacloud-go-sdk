@@ -18,17 +18,23 @@ type iResources interface {
 }
 
 type Resources struct {
+	// The number of CPU cores.
+	//
 	// example:
 	//
 	// 10
 	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// The number of GPU cards.
+	//
 	// example:
 	//
 	// 8
 	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// The memory size.
+	//
 	// example:
 	//
-	// 1024（单位GB）
+	// 1024 (unit: GB)
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
 }
 

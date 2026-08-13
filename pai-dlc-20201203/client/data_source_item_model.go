@@ -46,7 +46,7 @@ type DataSourceItem struct {
 	//
 	// example:
 	//
-	// NAS
+	// nas
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 	// The data source description.
 	//

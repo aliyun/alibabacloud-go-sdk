@@ -16,10 +16,14 @@ type iMember interface {
 }
 
 type Member struct {
+	// The member ID.
+	//
 	// example:
 	//
 	// ken_12345
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// The member role.
+	//
 	// example:
 	//
 	// WorkspaceAdmin

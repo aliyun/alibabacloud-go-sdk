@@ -24,26 +24,38 @@ type iDebuggerConfig interface {
 }
 
 type DebuggerConfig struct {
+	// The configuration item details in JSON format.
+	//
 	// example:
 	//
-	// {\\"description\\":\\"这是一个新的pytorchjob模板\\"}
+	// {\\"description\\":\\"This is a new pytorchjob template\\"}
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The system-generated unique ID of the debug config.
+	//
 	// example:
 	//
 	// dc-vf9lowjt3pso
 	DebuggerConfigId *string `json:"DebuggerConfigId,omitempty" xml:"DebuggerConfigId,omitempty"`
+	// The description of the configuration item.
+	//
 	// example:
 	//
-	// 这是一个Pytorch的基础配置模板
+	// This is a basic Pytorch configuration template
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the template configuration item.
+	//
 	// example:
 	//
 	// Pytorch Experiment Config
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The creation time in UTC.
+	//
 	// example:
 	//
 	// 2021-01-12T14:35:00Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The modification time in UTC.
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:00Z

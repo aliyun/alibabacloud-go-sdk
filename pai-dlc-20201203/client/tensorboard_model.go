@@ -96,7 +96,7 @@ type Tensorboard struct {
 	//
 	// example:
 	//
-	// 60
+	// 1234567
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// Creation time (UTC).
 	//
@@ -147,13 +147,13 @@ type Tensorboard struct {
 	//
 	// example:
 	//
-	// ""
+	// Delete by user
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
 	// Status details.
 	//
 	// example:
 	//
-	// ""
+	// Tensorboard is deleted
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
 	// Request ID.
 	//

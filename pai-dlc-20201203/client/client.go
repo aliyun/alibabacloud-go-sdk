@@ -69,24 +69,24 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"eu-west-1-oxs":               dara.String("pai-dlc.aliyuncs.com"),
 		"me-east-1":                   dara.String("pai-dlc.aliyuncs.com"),
 		"rus-west-1-pop":              dara.String("pai-dlc.aliyuncs.com"),
-		"us-west-1":                   dara.String("pai-dlc.us-west-1.aliyuncs.com"),
-		"us-southeast-1":              dara.String("pai-dlc.us-southeast-1.aliyuncs.com"),
-		"us-east-1":                   dara.String("pai-dlc.us-east-1.aliyuncs.com"),
-		"eu-central-1":                dara.String("pai-dlc.eu-central-1.aliyuncs.com"),
 		"cn-wulanchabu":               dara.String("pai-dlc.cn-wulanchabu.aliyuncs.com"),
-		"cn-shenzhen":                 dara.String("pai-dlc.cn-shenzhen.aliyuncs.com"),
-		"cn-shanghai-finance-1":       dara.String("pai-dlc.cn-shanghai-finance-1.aliyuncs.com"),
+		"cn-beijing":                  dara.String("pai-dlc.cn-beijing.aliyuncs.com"),
 		"cn-shanghai":                 dara.String("pai-dlc.cn-shanghai.aliyuncs.com"),
 		"cn-hongkong":                 dara.String("pai-dlc.cn-hongkong.aliyuncs.com"),
-		"cn-hangzhou":                 dara.String("pai-dlc.cn-hangzhou.aliyuncs.com"),
-		"cn-guangzhou":                dara.String("pai-dlc.cn-guangzhou.aliyuncs.com"),
-		"cn-beijing":                  dara.String("pai-dlc.cn-beijing.aliyuncs.com"),
-		"ap-southeast-8":              dara.String("pai-dlc.ap-southeast-8.aliyuncs.com"),
-		"ap-southeast-7":              dara.String("pai-dlc.ap-southeast-7.aliyuncs.com"),
-		"ap-southeast-5":              dara.String("pai-dlc.ap-southeast-5.aliyuncs.com"),
-		"ap-southeast-3":              dara.String("pai-dlc.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-1":              dara.String("pai-dlc.ap-southeast-1.aliyuncs.com"),
+		"cn-shenzhen":                 dara.String("pai-dlc.cn-shenzhen.aliyuncs.com"),
 		"ap-northeast-1":              dara.String("pai-dlc.ap-northeast-1.aliyuncs.com"),
+		"cn-guangzhou":                dara.String("pai-dlc.cn-guangzhou.aliyuncs.com"),
+		"ap-southeast-1":              dara.String("pai-dlc.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-3":              dara.String("pai-dlc.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-5":              dara.String("pai-dlc.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-7":              dara.String("pai-dlc.ap-southeast-7.aliyuncs.com"),
+		"cn-hangzhou":                 dara.String("pai-dlc.cn-hangzhou.aliyuncs.com"),
+		"ap-southeast-8":              dara.String("pai-dlc.ap-southeast-8.aliyuncs.com"),
+		"us-east-1":                   dara.String("pai-dlc.us-east-1.aliyuncs.com"),
+		"us-southeast-1":              dara.String("pai-dlc.us-southeast-1.aliyuncs.com"),
+		"us-west-1":                   dara.String("pai-dlc.us-west-1.aliyuncs.com"),
+		"eu-central-1":                dara.String("pai-dlc.eu-central-1.aliyuncs.com"),
+		"cn-shanghai-finance-1":       dara.String("pai-dlc.cn-shanghai-finance-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -121,13 +121,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Creates a job and runs it in a cluster. You can specify the datasource config, code source configuration, startup command, and compute resource configuration for each node of the job.
+// Creates a job to run in a cluster. You can specify the datasource config, code source configuration, startup command, and compute resource configuration for each node of the job.
 //
 // Description:
 //
-// Make sure that you are familiar with the billing and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC before you call this operation.
-//
-//	Notice: The total length of CreateJob request parameters (including system-generated parameters) cannot exceed 65,536 bytes.
+// Before you use this operation, make sure that you fully understand the billing of PAI-DLC and its [pricing](https://help.aliyun.com/document_detail/171758.html).
 //
 // @param request - CreateJobRequest
 //
@@ -274,13 +272,11 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 
 // Summary:
 //
-// Creates a job and runs it in a cluster. You can specify the datasource config, code source configuration, startup command, and compute resource configuration for each node of the job.
+// Creates a job to run in a cluster. You can specify the datasource config, code source configuration, startup command, and compute resource configuration for each node of the job.
 //
 // Description:
 //
-// Make sure that you are familiar with the billing and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC before you call this operation.
-//
-//	Notice: The total length of CreateJob request parameters (including system-generated parameters) cannot exceed 65,536 bytes.
+// Before you use this operation, make sure that you fully understand the billing of PAI-DLC and its [pricing](https://help.aliyun.com/document_detail/171758.html).
 //
 // @param request - CreateJobRequest
 //
@@ -3428,6 +3424,180 @@ func (client *Client) StopTensorboard(TensorboardId *string, request *StopTensor
 	headers := make(map[string]*string)
 	_result = &StopTensorboardResponse{}
 	_body, _err := client.StopTensorboardWithOptions(TensorboardId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates and attaches tags to specified resources.
+//
+// Description:
+//
+// Before attaching tags, Alibaba Cloud checks the number of existing tags on the resource. If the limit is exceeded, an error message is returned.
+//
+// @param request - TagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
+func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		body["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		body["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.Tag) {
+		body["Tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TagResources"),
+		Version:     dara.String("2020-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/tags"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates and attaches tags to specified resources.
+//
+// Description:
+//
+// Before attaching tags, Alibaba Cloud checks the number of existing tags on the resource. If the limit is exceeded, an error message is returned.
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Unbinds tags from a specified list of resources.
+//
+// @param tmpReq - UntagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResourcesWithOptions(tmpReq *UntagResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UntagResourcesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ResourceId) {
+		request.ResourceIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceId, dara.String("ResourceId"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TagKey) {
+		request.TagKeyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagKey, dara.String("TagKey"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.All) {
+		query["All"] = request.All
+	}
+
+	if !dara.IsNil(request.ResourceIdShrink) {
+		query["ResourceId"] = request.ResourceIdShrink
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.TagKeyShrink) {
+		query["TagKey"] = request.TagKeyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UntagResources"),
+		Version:     dara.String("2020-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/tags"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Unbinds tags from a specified list of resources.
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

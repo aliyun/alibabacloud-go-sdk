@@ -142,7 +142,7 @@ type GetJobResponseBody struct {
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The elastic job parameters.
 	ElasticSpec *JobElasticSpec `json:"ElasticSpec,omitempty" xml:"ElasticSpec,omitempty"`
-	// Specifies whether the debugger task is enabled.
+	// Specifies whether the debugger job is enabled.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type GetJobResponseBody struct {
 	EnabledDebugger *bool `json:"EnabledDebugger,omitempty" xml:"EnabledDebugger,omitempty"`
 	// The environment variable configuration.
 	Envs map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	// The job creation time (UTC).
+	// The time when the job was created (UTC).
 	//
 	// example:
 	//
@@ -216,13 +216,13 @@ type GetJobResponseBody struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The status detail code, which is a classification of the sub-status under the current status (Status).
+	// The status detail code, which categorizes the sub-status under the current status (Status).
 	//
 	// example:
 	//
 	// JobStoppedByUser
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	// The detailed description of the status detail.
+	// The detailed description of the status.
 	//
 	// example:
 	//
@@ -254,7 +254,7 @@ type GetJobResponseBody struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The job restart records.
 	RestartRecord []*GetJobResponseBodyRestartRecord `json:"RestartRecord,omitempty" xml:"RestartRecord,omitempty" type:"Repeated"`
-	// The used retry count and maximum retry count for the job.
+	// The number of restarts used and the maximum number of restarts for the job.
 	//
 	// example:
 	//
@@ -275,7 +275,7 @@ type GetJobResponseBody struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The status history.
 	StatusHistory []*StatusTransitionItem `json:"StatusHistory,omitempty" xml:"StatusHistory,omitempty" type:"Repeated"`
-	// The job substatus, such as preemption retry status.
+	// The job sub-status, such as preemption retry status.
 	//
 	// example:
 	//
@@ -986,7 +986,7 @@ type GetJobResponseBodyDataSources struct {
 	//
 	// d*******
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The local mount path. This is an optional parameter. The default value is empty, which indicates that the mount path in the data source is used.
+	// The local mount path. This is an optional parameter. If left empty, the mount path specified in the data source is used.
 	//
 	// example:
 	//
@@ -1060,7 +1060,7 @@ type GetJobResponseBodyPods struct {
 	//
 	// 2021-01-12T14:36:01Z
 	GmtStartTime *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
-	// The history pods.
+	// The historical pods.
 	HistoryPods []*GetJobResponseBodyPodsHistoryPods `json:"HistoryPods,omitempty" xml:"HistoryPods,omitempty" type:"Repeated"`
 	// The network IP address of the pod.
 	//
@@ -1096,13 +1096,13 @@ type GetJobResponseBodyPods struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The pod substatus, such as preemption status. Valid values:
+	// The pod sub-status, such as preemption status. Valid values:
 	//
 	// example:
 	//
 	// Normal
 	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
-	// The pod type, which corresponds to a JobSpec in JobSpecs of CreateJob.
+	// The pod type, which corresponds to a JobSpec in the JobSpecs parameter of CreateJob.
 	//
 	// example:
 	//
@@ -1334,7 +1334,7 @@ type GetJobResponseBodyPodsHistoryPods struct {
 	//
 	// Failed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The pod substatus, such as preemption status. Valid values:
+	// The pod sub-status, such as preemption status. Valid values:
 	//
 	// example:
 	//
