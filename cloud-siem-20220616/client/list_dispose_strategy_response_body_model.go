@@ -449,13 +449,14 @@ type ListDisposeStrategyResponseBodyDataResponseData struct {
 	//
 	// ip
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The failure summary of the task.
 	//
 	// example:
 	//
 	// DisposalEntity failed which description is Aegis Quarantine File , return_info failed which description is Check Aegis Process Result , [ERROR DETAIL] *******.php:file not found
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The end time of the task.
+	// The finish time of the task.
 	//
 	// example:
 	//
@@ -525,7 +526,7 @@ type ListDisposeStrategyResponseBodyDataResponseData struct {
 	//
 	// [{ aliUid: 1766185894104675 }]
 	Scope []interface{} `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Repeated"`
-	// The SOAR disposal policy ID.
+	// The SOAR response policy ID.
 	//
 	// example:
 	//
@@ -655,6 +656,10 @@ func (s *ListDisposeStrategyResponseBodyDataResponseData) GetEntityType() *strin
 	return s.EntityType
 }
 
+func (s *ListDisposeStrategyResponseBodyDataResponseData) GetErrorCode() *string {
+	return s.ErrorCode
+}
+
 func (s *ListDisposeStrategyResponseBodyDataResponseData) GetErrorMessage() *string {
 	return s.ErrorMessage
 }
@@ -751,6 +756,11 @@ func (s *ListDisposeStrategyResponseBodyDataResponseData) SetEntityId(v int64) *
 
 func (s *ListDisposeStrategyResponseBodyDataResponseData) SetEntityType(v string) *ListDisposeStrategyResponseBodyDataResponseData {
 	s.EntityType = &v
+	return s
+}
+
+func (s *ListDisposeStrategyResponseBodyDataResponseData) SetErrorCode(v string) *ListDisposeStrategyResponseBodyDataResponseData {
+	s.ErrorCode = &v
 	return s
 }
 

@@ -22,7 +22,7 @@ type iDescribeDisposeAndPlaybookResponseBody interface {
 }
 
 type DescribeDisposeAndPlaybookResponseBody struct {
-	// The request status code.
+	// The response status code.
 	//
 	// example:
 	//
@@ -117,6 +117,7 @@ func (s *DescribeDisposeAndPlaybookResponseBody) Validate() error {
 }
 
 type DescribeDisposeAndPlaybookResponseBodyData struct {
+	Available *bool `json:"Available,omitempty" xml:"Available,omitempty"`
 	// The pagination information.
 	PageInfo *DescribeDisposeAndPlaybookResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	// The detailed data.
@@ -131,12 +132,21 @@ func (s DescribeDisposeAndPlaybookResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDisposeAndPlaybookResponseBodyData) GetAvailable() *bool {
+	return s.Available
+}
+
 func (s *DescribeDisposeAndPlaybookResponseBodyData) GetPageInfo() *DescribeDisposeAndPlaybookResponseBodyDataPageInfo {
 	return s.PageInfo
 }
 
 func (s *DescribeDisposeAndPlaybookResponseBodyData) GetResponseData() []*DescribeDisposeAndPlaybookResponseBodyDataResponseData {
 	return s.ResponseData
+}
+
+func (s *DescribeDisposeAndPlaybookResponseBodyData) SetAvailable(v bool) *DescribeDisposeAndPlaybookResponseBodyData {
+	s.Available = &v
+	return s
 }
 
 func (s *DescribeDisposeAndPlaybookResponseBodyData) SetPageInfo(v *DescribeDisposeAndPlaybookResponseBodyDataPageInfo) *DescribeDisposeAndPlaybookResponseBodyData {
@@ -270,6 +280,7 @@ type DescribeDisposeAndPlaybookResponseBodyDataResponseData struct {
 	//
 	// ip
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	EntityUuid *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
 	// The key-value pairs of opcode and oplevel.
 	//
 	// example:
@@ -324,6 +335,10 @@ func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseData) GetEntityType()
 	return s.EntityType
 }
 
+func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseData) GetEntityUuid() *string {
+	return s.EntityUuid
+}
+
 func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseData) GetOpcodeMap() map[string]*string {
 	return s.OpcodeMap
 }
@@ -362,6 +377,11 @@ func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseData) SetEntityInfo(v
 
 func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseData) SetEntityType(v string) *DescribeDisposeAndPlaybookResponseBodyDataResponseData {
 	s.EntityType = &v
+	return s
+}
+
+func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseData) SetEntityUuid(v string) *DescribeDisposeAndPlaybookResponseBodyDataResponseData {
+	s.EntityUuid = &v
 	return s
 }
 

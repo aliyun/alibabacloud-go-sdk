@@ -9,12 +9,16 @@ type iDescribeDisposeAndPlaybookRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAvailableOnly(v bool) *DescribeDisposeAndPlaybookRequest
+	GetAvailableOnly() *bool
 	SetCurrentPage(v int32) *DescribeDisposeAndPlaybookRequest
 	GetCurrentPage() *int32
 	SetEntityType(v string) *DescribeDisposeAndPlaybookRequest
 	GetEntityType() *string
 	SetEntityUuid(v string) *DescribeDisposeAndPlaybookRequest
 	GetEntityUuid() *string
+	SetEntityUuidList(v string) *DescribeDisposeAndPlaybookRequest
+	GetEntityUuidList() *string
 	SetIncidentUuid(v string) *DescribeDisposeAndPlaybookRequest
 	GetIncidentUuid() *string
 	SetPageSize(v int32) *DescribeDisposeAndPlaybookRequest
@@ -28,6 +32,7 @@ type iDescribeDisposeAndPlaybookRequest interface {
 }
 
 type DescribeDisposeAndPlaybookRequest struct {
+	AvailableOnly *bool `json:"AvailableOnly,omitempty" xml:"AvailableOnly,omitempty"`
 	// The current page number. The value must be greater than or equal to 1.
 	//
 	// example:
@@ -45,7 +50,8 @@ type DescribeDisposeAndPlaybookRequest struct {
 	// example:
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
-	EntityUuid *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
+	EntityUuid     *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
+	EntityUuidList *string `json:"EntityUuidList,omitempty" xml:"EntityUuidList,omitempty"`
 	// The incident UUID.
 	//
 	// example:
@@ -90,6 +96,10 @@ func (s DescribeDisposeAndPlaybookRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDisposeAndPlaybookRequest) GetAvailableOnly() *bool {
+	return s.AvailableOnly
+}
+
 func (s *DescribeDisposeAndPlaybookRequest) GetCurrentPage() *int32 {
 	return s.CurrentPage
 }
@@ -100,6 +110,10 @@ func (s *DescribeDisposeAndPlaybookRequest) GetEntityType() *string {
 
 func (s *DescribeDisposeAndPlaybookRequest) GetEntityUuid() *string {
 	return s.EntityUuid
+}
+
+func (s *DescribeDisposeAndPlaybookRequest) GetEntityUuidList() *string {
+	return s.EntityUuidList
 }
 
 func (s *DescribeDisposeAndPlaybookRequest) GetIncidentUuid() *string {
@@ -122,6 +136,11 @@ func (s *DescribeDisposeAndPlaybookRequest) GetRoleType() *int32 {
 	return s.RoleType
 }
 
+func (s *DescribeDisposeAndPlaybookRequest) SetAvailableOnly(v bool) *DescribeDisposeAndPlaybookRequest {
+	s.AvailableOnly = &v
+	return s
+}
+
 func (s *DescribeDisposeAndPlaybookRequest) SetCurrentPage(v int32) *DescribeDisposeAndPlaybookRequest {
 	s.CurrentPage = &v
 	return s
@@ -134,6 +153,11 @@ func (s *DescribeDisposeAndPlaybookRequest) SetEntityType(v string) *DescribeDis
 
 func (s *DescribeDisposeAndPlaybookRequest) SetEntityUuid(v string) *DescribeDisposeAndPlaybookRequest {
 	s.EntityUuid = &v
+	return s
+}
+
+func (s *DescribeDisposeAndPlaybookRequest) SetEntityUuidList(v string) *DescribeDisposeAndPlaybookRequest {
+	s.EntityUuidList = &v
 	return s
 }
 

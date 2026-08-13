@@ -2786,6 +2786,15 @@ func (client *Client) DescribeDisposeAndPlaybookWithOptions(request *DescribeDis
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AvailableOnly) {
+		query["AvailableOnly"] = request.AvailableOnly
+	}
+
+	if !dara.IsNil(request.EntityUuidList) {
+		query["EntityUuidList"] = request.EntityUuidList
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
 		body["CurrentPage"] = request.CurrentPage
@@ -2820,7 +2829,8 @@ func (client *Client) DescribeDisposeAndPlaybookWithOptions(request *DescribeDis
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DescribeDisposeAndPlaybook"),
@@ -5562,7 +5572,7 @@ func (client *Client) ListDelivery(request *ListDeliveryRequest) (_result *ListD
 
 // Summary:
 //
-// Retrieves the list of system-recommended disposal policies.
+// Retrieves the list of system-recommended response policies.
 //
 // @param tmpReq - ListDisposeStrategyRequest
 //
@@ -5718,7 +5728,7 @@ func (client *Client) ListDisposeStrategyWithOptions(tmpReq *ListDisposeStrategy
 
 // Summary:
 //
-// Retrieves the list of system-recommended disposal policies.
+// Retrieves the list of system-recommended response policies.
 //
 // @param request - ListDisposeStrategyRequest
 //

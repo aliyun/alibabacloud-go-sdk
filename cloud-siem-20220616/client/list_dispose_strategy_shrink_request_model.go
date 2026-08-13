@@ -67,7 +67,7 @@ type iListDisposeStrategyShrinkRequest interface {
 
 type ListDisposeStrategyShrinkRequest struct {
 	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
-	// The current page number of the list. The value must be greater than or equal to 1.
+	// The current page number, which must be greater than or equal to 1.
 	//
 	// This parameter is required.
 	//
@@ -89,7 +89,7 @@ type ListDisposeStrategyShrinkRequest struct {
 	//
 	// 1577808000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The entity characteristic value. You can perform a fuzzy search on disposal entities.
+	// The entity characteristic value, which can be used for fuzzy match on response entities.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type ListDisposeStrategyShrinkRequest struct {
 	EntityUuidListShrink *string `json:"EntityUuidList,omitempty" xml:"EntityUuidList,omitempty"`
 	GroupBy              *string `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
 	GroupKey             *string `json:"GroupKey,omitempty" xml:"GroupKey,omitempty"`
-	// The incident ID.
+	// The event ID.
 	//
 	// example:
 	//
@@ -118,19 +118,19 @@ type ListDisposeStrategyShrinkRequest struct {
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The field used to sort the results. Valid values:
+	// The field used to sort results. Valid values:
 	//
-	// - GmtModified: sorts by update time
+	// - GmtModified: sorts results by update time.
 	//
-	// - GmtCreate: sorts by creation time
+	// - GmtCreate: sorts results by creation time.
 	//
-	// - FinishTime: sorts by policy end time
+	// - FinishTime: sorts results by policy end time.
 	//
 	// example:
 	//
 	// GmtModified
 	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
-	// The number of entries per page. The maximum value is 100.
+	// The number of entries per page, with a maximum of 100.
 	//
 	// This parameter is required.
 	//
@@ -167,11 +167,7 @@ type ListDisposeStrategyShrinkRequest struct {
 	// system_aliyun_clb_process_book
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 	QueryMode    *string `json:"QueryMode,omitempty" xml:"QueryMode,omitempty"`
-	// The China (Hangzhou) region or China (Singapore) region where the China (Hangzhou) region or China (Singapore) region where the data management center of Cloud Threat Detection and Response (CTDR) resides. Specify the management center based on the region where your assets reside. Valid values:
-	//
-	// - cn-hangzhou: Chinese mainland and Hong Kong (China).
-	//
-	// - ap-southeast-1: outside China.
+	// The region where the data management center of Cloud Threat Detection and Response (CTDR) is located. Specify the management center based on the region of your assets. Valid values:
 	//
 	// example:
 	//
@@ -190,7 +186,7 @@ type ListDisposeStrategyShrinkRequest struct {
 	//
 	// 1
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The SOAR disposal policy ID.
+	// The SOAR response policy ID.
 	//
 	// example:
 	//
@@ -204,7 +200,7 @@ type ListDisposeStrategyShrinkRequest struct {
 	//
 	// 1577808000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The disposal policy status.
+	// The response policy status.
 	//
 	// example:
 	//
