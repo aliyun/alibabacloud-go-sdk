@@ -9,6 +9,316 @@ import (
 
 // Summary:
 //
+// Stops an outbound call campaign.
+//
+// Description:
+//
+// ***
+//
+// @param request - AbortCampaignRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AbortCampaignResponse
+func (client *Client) AbortCampaignWithContext(ctx context.Context, request *AbortCampaignRequest, runtime *dara.RuntimeOptions) (_result *AbortCampaignResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CampaignId) {
+		query["CampaignId"] = request.CampaignId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AbortCampaign"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AbortCampaignResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Stops an outbound call case.
+//
+// Description:
+//
+// ***
+//
+// @param tmpReq - AbortCasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AbortCasesResponse
+func (client *Client) AbortCasesWithContext(ctx context.Context, tmpReq *AbortCasesRequest, runtime *dara.RuntimeOptions) (_result *AbortCasesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AbortCasesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.PhoneNumbers) {
+		request.PhoneNumbersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PhoneNumbers, dara.String("PhoneNumbers"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CampaignId) {
+		query["CampaignId"] = request.CampaignId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PhoneNumbersShrink) {
+		query["PhoneNumbers"] = request.PhoneNumbersShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AbortCases"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AbortCasesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Appends contacts to an outbound call campaign.
+//
+// Description:
+//
+// ***
+//
+// @param tmpReq - AppendCasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AppendCasesResponse
+func (client *Client) AppendCasesWithContext(ctx context.Context, tmpReq *AppendCasesRequest, runtime *dara.RuntimeOptions) (_result *AppendCasesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AppendCasesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Cases) {
+		request.CasesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Cases, dara.String("Cases"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CampaignId) {
+		query["CampaignId"] = request.CampaignId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CasesShrink) {
+		body["Cases"] = request.CasesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AppendCases"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AppendCasesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an outbound call task.
+//
+// Description:
+//
+// ***
+//
+// @param tmpReq - CreateCampaignRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCampaignResponse
+func (client *Client) CreateCampaignWithContext(ctx context.Context, tmpReq *CreateCampaignRequest, runtime *dara.RuntimeOptions) (_result *CreateCampaignResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateCampaignShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Cases) {
+		request.CasesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Cases, dara.String("Cases"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Numbers) {
+		request.NumbersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Numbers, dara.String("Numbers"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AttemptOrder) {
+		query["AttemptOrder"] = request.AttemptOrder
+	}
+
+	if !dara.IsNil(request.CallableTime) {
+		query["CallableTime"] = request.CallableTime
+	}
+
+	if !dara.IsNil(request.CaseFileKey) {
+		query["CaseFileKey"] = request.CaseFileKey
+	}
+
+	if !dara.IsNil(request.DialingTimeoutSeconds) {
+		query["DialingTimeoutSeconds"] = request.DialingTimeoutSeconds
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.FixedQuota) {
+		query["FixedQuota"] = request.FixedQuota
+	}
+
+	if !dara.IsNil(request.FlashSmsParameters) {
+		query["FlashSmsParameters"] = request.FlashSmsParameters
+	}
+
+	if !dara.IsNil(request.HolidayRestricted) {
+		query["HolidayRestricted"] = request.HolidayRestricted
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxAttemptCount) {
+		query["MaxAttemptCount"] = request.MaxAttemptCount
+	}
+
+	if !dara.IsNil(request.MinAttemptInterval) {
+		query["MinAttemptInterval"] = request.MinAttemptInterval
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NumbersShrink) {
+		query["Numbers"] = request.NumbersShrink
+	}
+
+	if !dara.IsNil(request.RedialRestrictions) {
+		query["RedialRestrictions"] = request.RedialRestrictions
+	}
+
+	if !dara.IsNil(request.RunUntilEndTime) {
+		query["RunUntilEndTime"] = request.RunUntilEndTime
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Weight) {
+		query["Weight"] = request.Weight
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CasesShrink) {
+		body["Cases"] = request.CasesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCampaign"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCampaignResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an instance.
 //
 // @param request - CreateCloneVoiceRequest
@@ -775,6 +1085,54 @@ func (client *Client) DisableSubscriptionWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// Retrieves the details of an outbound campaign.
+//
+// @param request - GetCampaignRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCampaignResponse
+func (client *Client) GetCampaignWithContext(ctx context.Context, request *GetCampaignRequest, runtime *dara.RuntimeOptions) (_result *GetCampaignResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CampaignId) {
+		query["CampaignId"] = request.CampaignId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCampaign"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCampaignResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the details of an instance.
 //
 // @param request - GetInstanceRequest
@@ -901,6 +1259,86 @@ func (client *Client) GetSubscriptionWithContext(ctx context.Context, request *G
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSubscriptionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the list of outbound call campaigns.
+//
+// Description:
+//
+// ***
+//
+// @param request - ListCampaignsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCampaignsResponse
+func (client *Client) ListCampaignsWithContext(ctx context.Context, request *ListCampaignsRequest, runtime *dara.RuntimeOptions) (_result *ListCampaignsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActualStartTimeFrom) {
+		query["ActualStartTimeFrom"] = request.ActualStartTimeFrom
+	}
+
+	if !dara.IsNil(request.ActualStartTimeTo) {
+		query["ActualStartTimeTo"] = request.ActualStartTimeTo
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PlannedStartTimeFrom) {
+		query["PlannedStartTimeFrom"] = request.PlannedStartTimeFrom
+	}
+
+	if !dara.IsNil(request.PlannedStartTimeTo) {
+		query["PlannedStartTimeTo"] = request.PlannedStartTimeTo
+	}
+
+	if !dara.IsNil(request.State) {
+		query["State"] = request.State
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCampaigns"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCampaignsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1545,6 +1983,54 @@ func (client *Client) ListVoiceAccessProfilesWithContext(ctx context.Context, re
 
 // Summary:
 //
+// Pauses an outbound call campaign.
+//
+// @param request - PauseCampaignRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PauseCampaignResponse
+func (client *Client) PauseCampaignWithContext(ctx context.Context, request *PauseCampaignRequest, runtime *dara.RuntimeOptions) (_result *PauseCampaignResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CampaignId) {
+		query["CampaignId"] = request.CampaignId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PauseCampaign"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PauseCampaignResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates an instance.
 //
 // @param request - PublishScriptRequest
@@ -1587,6 +2073,110 @@ func (client *Client) PublishScriptWithContext(ctx context.Context, request *Pub
 		BodyType:    dara.String("json"),
 	}
 	_result = &PublishScriptResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 恢复外呼活动
+//
+// Description:
+//
+// ***
+//
+// @param request - ResumeCampaignRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResumeCampaignResponse
+func (client *Client) ResumeCampaignWithContext(ctx context.Context, request *ResumeCampaignRequest, runtime *dara.RuntimeOptions) (_result *ResumeCampaignResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CampaignId) {
+		query["CampaignId"] = request.CampaignId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResumeCampaign"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResumeCampaignResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交外呼活动
+//
+// Description:
+//
+// ***
+//
+// @param request - SubmitCampaignRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitCampaignResponse
+func (client *Client) SubmitCampaignWithContext(ctx context.Context, request *SubmitCampaignRequest, runtime *dara.RuntimeOptions) (_result *SubmitCampaignResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CampaignId) {
+		query["CampaignId"] = request.CampaignId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitCampaign"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitCampaignResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1823,7 +2413,7 @@ func (client *Client) UpdateScriptWithContext(ctx context.Context, request *Upda
 
 // Summary:
 //
-// 更新场景配置
+// Updates the scenario configuration.
 //
 // Description:
 //
