@@ -26,8 +26,8 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"cn-shanghai": dara.String("voicenavigator.cn-shanghai.aliyuncs.com"),
 		"cn-hangzhou": dara.String("voicenavigator.cn-hangzhou.aliyuncs.com"),
+		"cn-shanghai": dara.String("voicenavigator.cn-shanghai.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -328,7 +328,7 @@ func (client *Client) BeginDialogue(request *BeginDialogueRequest) (_result *Beg
 
 // Summary:
 //
-// Collects a number entered by a user during a call.
+// Collects digits.
 //
 // @param request - CollectedNumberRequest
 //
@@ -388,7 +388,7 @@ func (client *Client) CollectedNumberWithOptions(request *CollectedNumberRequest
 
 // Summary:
 //
-// Collects a number entered by a user during a call.
+// Collects digits.
 //
 // @param request - CollectedNumberRequest
 //
@@ -1240,7 +1240,7 @@ func (client *Client) DescribeStatisticalData(request *DescribeStatisticalDataRe
 
 // Summary:
 //
-// Queries the TTS configuration.
+// Queries the text-to-speech (TTS) configuration.
 //
 // @param request - DescribeTTSConfigRequest
 //
@@ -1254,7 +1254,15 @@ func (client *Client) DescribeTTSConfigWithOptions(request *DescribeTTSConfigReq
 			return _result, _err
 		}
 	}
-	query := openapiutil.Query(dara.ToMap(request))
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InstanceOwnerId) {
+		query["InstanceOwnerId"] = request.InstanceOwnerId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1263,7 +1271,7 @@ func (client *Client) DescribeTTSConfigWithOptions(request *DescribeTTSConfigReq
 		Version:     dara.String("2018-06-12"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
+		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("RPC"),
 		ReqBodyType: dara.String("formData"),
@@ -1280,7 +1288,7 @@ func (client *Client) DescribeTTSConfigWithOptions(request *DescribeTTSConfigReq
 
 // Summary:
 //
-// Queries the TTS configuration.
+// Queries the text-to-speech (TTS) configuration.
 //
 // @param request - DescribeTTSConfigRequest
 //
@@ -1298,7 +1306,7 @@ func (client *Client) DescribeTTSConfig(request *DescribeTTSConfigRequest) (_res
 
 // Summary:
 //
-// Use this API to continue a conversation with an intelligent assistant by processing a user\\"s utterance.
+// Initiates a conversation.
 //
 // @param request - DialogueRequest
 //
@@ -1370,7 +1378,7 @@ func (client *Client) DialogueWithOptions(request *DialogueRequest, runtime *dar
 
 // Summary:
 //
-// Use this API to continue a conversation with an intelligent assistant by processing a user\\"s utterance.
+// Initiates a conversation.
 //
 // @param request - DialogueRequest
 //
@@ -2545,6 +2553,10 @@ func (client *Client) ModifyTTSConfigWithOptions(request *ModifyTTSConfigRequest
 
 	if !dara.IsNil(request.AppKey) {
 		query["AppKey"] = request.AppKey
+	}
+
+	if !dara.IsNil(request.BackgroundMusicName) {
+		query["BackgroundMusicName"] = request.BackgroundMusicName
 	}
 
 	if !dara.IsNil(request.Engine) {

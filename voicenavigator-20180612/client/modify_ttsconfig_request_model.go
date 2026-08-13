@@ -13,6 +13,8 @@ type iModifyTTSConfigRequest interface {
 	GetAliCustomizedVoice() *string
 	SetAppKey(v string) *ModifyTTSConfigRequest
 	GetAppKey() *string
+	SetBackgroundMusicName(v string) *ModifyTTSConfigRequest
+	GetBackgroundMusicName() *string
 	SetEngine(v string) *ModifyTTSConfigRequest
 	GetEngine() *string
 	SetEngineXunfei(v string) *ModifyTTSConfigRequest
@@ -47,7 +49,8 @@ type ModifyTTSConfigRequest struct {
 	// example:
 	//
 	// 5b358afc
-	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	AppKey              *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	BackgroundMusicName *string `json:"BackgroundMusicName,omitempty" xml:"BackgroundMusicName,omitempty"`
 	// The TTS engine.
 	//
 	// example:
@@ -91,7 +94,7 @@ type ModifyTTSConfigRequest struct {
 	//
 	// example:
 	//
-	// [{\\"pronunciation\\":\\"环钱\\",\\"word\\":\\"还钱\\"}]
+	// [{\\"pronunciation\\":\\"huanqian\\",\\"word\\":\\"huanqian\\"}]
 	TtsOverrides *string `json:"TtsOverrides,omitempty" xml:"TtsOverrides,omitempty"`
 	// The voice.
 	//
@@ -121,6 +124,10 @@ func (s *ModifyTTSConfigRequest) GetAliCustomizedVoice() *string {
 
 func (s *ModifyTTSConfigRequest) GetAppKey() *string {
 	return s.AppKey
+}
+
+func (s *ModifyTTSConfigRequest) GetBackgroundMusicName() *string {
+	return s.BackgroundMusicName
 }
 
 func (s *ModifyTTSConfigRequest) GetEngine() *string {
@@ -170,6 +177,11 @@ func (s *ModifyTTSConfigRequest) SetAliCustomizedVoice(v string) *ModifyTTSConfi
 
 func (s *ModifyTTSConfigRequest) SetAppKey(v string) *ModifyTTSConfigRequest {
 	s.AppKey = &v
+	return s
+}
+
+func (s *ModifyTTSConfigRequest) SetBackgroundMusicName(v string) *ModifyTTSConfigRequest {
+	s.BackgroundMusicName = &v
 	return s
 }
 

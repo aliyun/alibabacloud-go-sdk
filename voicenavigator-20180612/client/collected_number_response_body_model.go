@@ -22,35 +22,35 @@ type iCollectedNumberResponseBody interface {
 }
 
 type CollectedNumberResponseBody struct {
-	// Specifies the next action to perform.
+	// The action.
 	//
 	// example:
 	//
 	// Broadcast
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The parameters for the action.
+	// The action parameters.
 	//
 	// example:
 	//
 	// {\\"duration\\":31340,\\"endTime\\":1638243934786,\\"hangUpDirection\\":\\"ivr\\",\\"startTime\\":1638243903446}
 	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
-	// Indicates whether the IVR playback can be interrupted.
+	// Indicates whether the IVR announcement can be interrupted.
 	//
 	// example:
 	//
 	// false
 	Interruptible *bool `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// da37319b-6c83-4268-9f19-814aed62e401
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The text to play back to the user.
+	// The announcement text.
 	//
 	// example:
 	//
-	// 收号内容是123
+	// The collected digits are 123
 	TextResponse *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
 }
 

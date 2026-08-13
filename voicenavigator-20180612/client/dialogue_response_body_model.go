@@ -22,7 +22,7 @@ type iDialogueResponseBody interface {
 }
 
 type DialogueResponseBody struct {
-	// The action to be performed.
+	// The action.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DialogueResponseBody struct {
 	//
 	// {\\"duration\\":2420,\\"endTime\\":1651717326805,\\"hangUpDirection\\":\\"client\\",\\"hasLastPlaybackCompleted\\":true,\\"startTime\\":1651717324385}
 	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
-	// Indicates whether the IVR greeting can be interrupted.
+	// Indicates whether the IVR broadcast can be interrupted.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DialogueResponseBody struct {
 	//
 	// 9DB8BA95-4513-54B9-9C67-A28909CFB4AD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The text to be broadcasted.
+	// The broadcast text.
 	//
 	// example:
 	//

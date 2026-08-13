@@ -221,7 +221,7 @@ func (client *Client) BeginDialogueWithContext(ctx context.Context, request *Beg
 
 // Summary:
 //
-// Collects a number entered by a user during a call.
+// Collects digits.
 //
 // @param request - CollectedNumberRequest
 //
@@ -881,7 +881,7 @@ func (client *Client) DescribeStatisticalDataWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the TTS configuration.
+// Queries the text-to-speech (TTS) configuration.
 //
 // @param request - DescribeTTSConfigRequest
 //
@@ -895,7 +895,15 @@ func (client *Client) DescribeTTSConfigWithContext(ctx context.Context, request 
 			return _result, _err
 		}
 	}
-	query := openapiutil.Query(dara.ToMap(request))
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InstanceOwnerId) {
+		query["InstanceOwnerId"] = request.InstanceOwnerId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -904,7 +912,7 @@ func (client *Client) DescribeTTSConfigWithContext(ctx context.Context, request 
 		Version:     dara.String("2018-06-12"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
+		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("RPC"),
 		ReqBodyType: dara.String("formData"),
@@ -921,7 +929,7 @@ func (client *Client) DescribeTTSConfigWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Use this API to continue a conversation with an intelligent assistant by processing a user\\"s utterance.
+// Initiates a conversation.
 //
 // @param request - DialogueRequest
 //
@@ -1862,6 +1870,10 @@ func (client *Client) ModifyTTSConfigWithContext(ctx context.Context, request *M
 
 	if !dara.IsNil(request.AppKey) {
 		query["AppKey"] = request.AppKey
+	}
+
+	if !dara.IsNil(request.BackgroundMusicName) {
+		query["BackgroundMusicName"] = request.BackgroundMusicName
 	}
 
 	if !dara.IsNil(request.Engine) {

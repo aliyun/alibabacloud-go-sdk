@@ -20,7 +20,7 @@ type iModifyGreetingConfigRequest interface {
 }
 
 type ModifyGreetingConfigRequest struct {
-	// The greeting words.
+	// The greeting message.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ModifyGreetingConfigRequest struct {
 	//
 	// 12f407b22cbe4890ac595f09985848d5
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The intent trigger.
+	// The trigger intent.
 	//
 	// example:
 	//

@@ -57,7 +57,7 @@ type ModifyAsrConfigRequest struct {
 	// 6cc9f5ca-2cb6-4cc7-a46b-2bbfd3e61b22
 	AsrCustomizationId *string `json:"AsrCustomizationId,omitempty" xml:"AsrCustomizationId,omitempty"`
 	AsrOverrides       *string `json:"AsrOverrides,omitempty" xml:"AsrOverrides,omitempty"`
-	// The hotword ID. You can view the ASR hotword ID on the [ASR Hotword Management page](https://aiccs.console.aliyun.com/sentence/vocab?spm=a2c4g.11186623.0.0.7f9bf965IKBpsi).
+	// The hotword ID. View the ASR hotword ID on the [ASR Hotword Management page](https://aiccs.console.aliyun.com/sentence/vocab?spm=a2c4g.11186623.0.0.7f9bf965IKBpsi).
 	//
 	// example:
 	//
@@ -74,8 +74,13 @@ type ModifyAsrConfigRequest struct {
 	// example:
 	//
 	// 0
-	ConfigLevel *int32  `json:"ConfigLevel,omitempty" xml:"ConfigLevel,omitempty"`
-	Engine      *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	ConfigLevel *int32 `json:"ConfigLevel,omitempty" xml:"ConfigLevel,omitempty"`
+	// The TTS engine.
+	//
+	// example:
+	//
+	// ali
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The entity ID corresponding to config_level.
 	//
 	// example:
@@ -86,7 +91,7 @@ type ModifyAsrConfigRequest struct {
 	//
 	// example:
 	//
-	// 语音识别
+	// Speech recognition.
 	NlsServiceType *string `json:"NlsServiceType,omitempty" xml:"NlsServiceType,omitempty"`
 }
 

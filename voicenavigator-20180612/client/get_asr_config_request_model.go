@@ -18,11 +18,11 @@ type iGetAsrConfigRequest interface {
 type GetAsrConfigRequest struct {
 	// The policy level. Valid values:
 	//
-	// - 0: system
+	// - 0: system.
 	//
-	// - 1: tenant
+	// - 1: tenant.
 	//
-	// - 2: instance
+	// - 2: instance.
 	//
 	// example:
 	//

@@ -13,6 +13,8 @@ type iDescribeTTSConfigResponseBody interface {
 	GetAliCustomizedVoice() *string
 	SetAppKey(v string) *DescribeTTSConfigResponseBody
 	GetAppKey() *string
+	SetBackgroundMusicName(v string) *DescribeTTSConfigResponseBody
+	GetBackgroundMusicName() *string
 	SetEngine(v string) *DescribeTTSConfigResponseBody
 	GetEngine() *string
 	SetEngineXunfei(v string) *DescribeTTSConfigResponseBody
@@ -36,7 +38,7 @@ type iDescribeTTSConfigResponseBody interface {
 }
 
 type DescribeTTSConfigResponseBody struct {
-	// The custom voice ID.
+	// The personalized custom voice ID.
 	//
 	// example:
 	//
@@ -47,7 +49,8 @@ type DescribeTTSConfigResponseBody struct {
 	// example:
 	//
 	// 5b358afc
-	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	AppKey              *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	BackgroundMusicName *string `json:"BackgroundMusicName,omitempty" xml:"BackgroundMusicName,omitempty"`
 	// The TTS engine.
 	//
 	// example:
@@ -85,11 +88,11 @@ type DescribeTTSConfigResponseBody struct {
 	//
 	// -150
 	SpeechRate *int32 `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	// The TTS error correction dictionary.
+	// The TTS correction dictionary.
 	//
 	// example:
 	//
-	// [{\\"pronunciation\\":\\"环钱\\",\\"word\\":\\"还钱\\"}]
+	// [{\\"pronunciation\\":\\"huanqian\\",\\"word\\":\\"huaiqian\\"}]
 	TtsOverrides *string `json:"TtsOverrides,omitempty" xml:"TtsOverrides,omitempty"`
 	// The voice.
 	//
@@ -119,6 +122,10 @@ func (s *DescribeTTSConfigResponseBody) GetAliCustomizedVoice() *string {
 
 func (s *DescribeTTSConfigResponseBody) GetAppKey() *string {
 	return s.AppKey
+}
+
+func (s *DescribeTTSConfigResponseBody) GetBackgroundMusicName() *string {
+	return s.BackgroundMusicName
 }
 
 func (s *DescribeTTSConfigResponseBody) GetEngine() *string {
@@ -168,6 +175,11 @@ func (s *DescribeTTSConfigResponseBody) SetAliCustomizedVoice(v string) *Describ
 
 func (s *DescribeTTSConfigResponseBody) SetAppKey(v string) *DescribeTTSConfigResponseBody {
 	s.AppKey = &v
+	return s
+}
+
+func (s *DescribeTTSConfigResponseBody) SetBackgroundMusicName(v string) *DescribeTTSConfigResponseBody {
+	s.BackgroundMusicName = &v
 	return s
 }
 

@@ -131,6 +131,10 @@ func (s *ModifyAsrConfigResponseBody) Validate() error {
 
 type ModifyAsrConfigResponseBodyData struct {
 	// The number of affected rows.
+	//
+	// example:
+	//
+	// 1
 	AffectedRows *int32 `json:"AffectedRows,omitempty" xml:"AffectedRows,omitempty"`
 }
 

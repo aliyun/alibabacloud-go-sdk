@@ -234,7 +234,7 @@ type ListDownloadTasksResponseBodyDownloadTasksList struct {
 	//
 	// example:
 	//
-	// 批量高阶内存整理_2022_02_17_10
+	// Batch_Advanced_Memory_Optimization_2022_02_17_10
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -311,7 +311,7 @@ type ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles struct {
 	//
 	// c32bf5675b704dc5b19200a89d2e85f1
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The completion progress of the download task.
+	// The download task completion progress.
 	//
 	// example:
 	//
@@ -327,7 +327,7 @@ type ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles struct {
 	//
 	// example:
 	//
-	// CBU阿里通信反馈-声音延迟
+	// CBU_Alibaba_Communication_Feedback-Audio_Delay.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
