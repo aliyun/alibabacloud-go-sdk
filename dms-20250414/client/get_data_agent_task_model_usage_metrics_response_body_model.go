@@ -22,7 +22,7 @@ type iGetDataAgentTaskModelUsageMetricsResponseBody interface {
 }
 
 type GetDataAgentTaskModelUsageMetricsResponseBody struct {
-	// The list of TPM time series metrics for model usage, returned in chronological order with usage at each time point.
+	// The list of TPM time series metrics for model usage, returned in chronological order.
 	Data []*GetDataAgentTaskModelUsageMetricsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error code returned when the request is abnormal.
 	//

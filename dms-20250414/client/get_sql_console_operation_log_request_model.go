@@ -64,7 +64,7 @@ type GetSqlConsoleOperationLogRequest struct {
 	//
 	// mysql
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	// The type of the SQL statement.
+	// The SQL statement type.
 	//
 	// example:
 	//

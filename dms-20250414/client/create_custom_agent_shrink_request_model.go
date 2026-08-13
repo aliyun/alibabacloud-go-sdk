@@ -45,35 +45,35 @@ type iCreateCustomAgentShrinkRequest interface {
 
 type CreateCustomAgentShrinkRequest struct {
 	CallbackConfigShrink *string `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty"`
-	// The current Data Management unit.
+	// The current DMS unit.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The specified data scope in **JSON string format**.
+	// The specified data range in **JSON string format**.
 	//
 	// - Common parameter description
 	//
-	//   - tableFlag: true indicates a specified data scope
+	//   - tableFlag: true indicates a specified data range.
 	//
-	//   - scope: personal is a fixed value
+	//   - scope: personal is a fixed value.
 	//
-	//   - personal: pass parameters for file or database types
+	//   - personal: pass parameters for file or database types.
 	//
 	// **File type**. Pass parameters in the following format:
 	//
-	// - DataSourceType: remote_data_center is a fixed value
+	// - DataSourceType: remote_data_center is a fixed value.
 	//
-	// - FileId: the file ID
+	// - FileId: The file ID.
 	//
-	// - Database: the database name returned by the ListDataCenterTable operation, which is typically the file name
+	// - Database: The database name returned by the ListDataCenterTable operation, which is usually the file name.
 	//
-	// - Tables: the table name returned by the ListDataCenterTable operation
+	// - Tables: The table name returned by the ListDataCenterTable operation.
 	//
-	// - TableIds: the TableId returned by the ListDataCenterTable operation
+	// - TableIds: The TableId returned by the ListDataCenterTable operation.
 	//
-	// - RegionId: the current region
+	// - RegionId: The current region.
 	//
 	// ```
 	//
@@ -103,7 +103,7 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	//     ],
 	//
-	//     "RegionId": "ap-southeast-1"
+	//     "RegionId": "cn-hangzhou"
 	//
 	//   }
 	//
@@ -111,27 +111,27 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// ```
 	//
-	// **Database type**. Pass parameters in the following format:
+	// **Database type**. Pass parameters as follows:
 	//
-	// - DataSourceType: database is a fixed value
+	// - DataSourceType: database is a fixed value.
 	//
-	// - DmsInstanceId: the DMS instance ID returned by the data center operation
+	// - DmsInstanceId: The DMS instance ID returned by the data center operation.
 	//
-	// - DmsDatabaseId: the DMS database ID returned by the data center operation
+	// - DmsDatabaseId: The DMS database ID returned by the data center operation.
 	//
-	// - FileId: the instance name (deprecated)
+	// - FileId: The instance name (deprecated).
 	//
-	// - DbName: the database name returned by the data center operation
+	// - DbName: The database name returned by the data center operation.
 	//
-	// - Database: the database name returned by the data center operation
+	// - Database: The database name returned by the data center operation.
 	//
-	// - Tables: the table name returned by the data center operation
+	// - Tables: The table name returned by the data center operation.
 	//
-	// - TableIds: the TableId returned by the data center operation
+	// - TableIds: The TableId returned by the data center operation.
 	//
-	// - Engine: the engine type (mysql or postgresql)
+	// - Engine: The engine type (mysql or postgresql).
 	//
-	// - RegionId: the current region
+	// - RegionId: The current region.
 	//
 	// ```
 	//
@@ -169,7 +169,7 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	//     "Engine": "postgresql",
 	//
-	//     "RegionId": "ap-southeast-1"
+	//     "RegionId": "cn-hangzhou"
 	//
 	//   }
 	//
@@ -197,7 +197,7 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	//     "TableIds" : [ "******" ],
 	//
-	//     "RegionId" : "ap-southeast-1"
+	//     "RegionId" : "cn-hangzhou"
 	//
 	//   }
 	//
@@ -256,13 +256,13 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// example:
 	//
-	// The text report requires all numbers to be written in words instead of Arabic numerals
+	// The text report requires all numbers to be written in Chinese characters instead of Arabic numerals
 	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
 	// The web report format.
 	//
 	// example:
 	//
-	// The web report requires all numbers to be written in words instead of Arabic numerals
+	// The web report requires all numbers to be written in Chinese characters instead of Arabic numerals
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
 	WebReportTheme  *string `json:"WebReportTheme,omitempty" xml:"WebReportTheme,omitempty"`
 	// The workspace ID.

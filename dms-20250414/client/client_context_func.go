@@ -392,7 +392,7 @@ func (client *Client) ConfigAirflowWithContext(ctx context.Context, tmpReq *Conf
 
 // Summary:
 //
-// # ConfigDataAgentMemory
+// Configures memory generation and usage for a DataAgent.
 //
 // @param request - ConfigDataAgentMemoryRequest
 //
@@ -2186,7 +2186,7 @@ func (client *Client) DeleteWorkspaceCodeWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves the details of a custom agent by its ID.
+// Retrieves the details of a custom agent by custom agent ID.
 //
 // @param request - DescribeCustomAgentRequest
 //
@@ -2877,7 +2877,7 @@ func (client *Client) GetDataAgentSubAccountInfoWithContext(ctx context.Context,
 //
 // Description:
 //
-// Queries the model usage summary of DataAgent analysis tasks within a specified time range, including the number of models used, total model call count, total tokens consumed, and peak TPM. This operation is used to analyze and monitor the model resource consumption of DataAgent analysis tasks.
+// Queries the model usage summary of DataAgent analysis tasks within a specified time range, including the number of models used, total model call count, total tokens consumed, and peak TPM. This operation is used to analyze and monitor model resource consumption of DataAgent analysis tasks.
 //
 // @param request - GetDataAgentTaskModelUsageRequest
 //
@@ -2902,6 +2902,10 @@ func (client *Client) GetDataAgentTaskModelUsageWithContext(ctx context.Context,
 
 	if !dara.IsNil(request.EndTime) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.PayLevel) {
+		query["PayLevel"] = request.PayLevel
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -2962,6 +2966,10 @@ func (client *Client) GetDataAgentTaskModelUsageMetricsWithContext(ctx context.C
 
 	if !dara.IsNil(request.EndTime) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.PayLevel) {
+		query["PayLevel"] = request.PayLevel
 	}
 
 	if !dara.IsNil(request.RegionId) {

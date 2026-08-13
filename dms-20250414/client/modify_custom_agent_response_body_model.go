@@ -22,7 +22,7 @@ type iModifyCustomAgentResponseBody interface {
 }
 
 type ModifyCustomAgentResponseBody struct {
-	// The response struct.
+	// The returned struct.
 	Data *ModifyCustomAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -138,7 +138,7 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// ca-4y3ca4khkcu**********ysf
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
-	// The current Data Management unit.
+	// The current DMS unit.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// AgentTestDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The current Data Management unit.
+	// The current DMS unit.
 	//
 	// example:
 	//
@@ -289,13 +289,13 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// example:
 	//
-	// The text report requires that all numbers use Chinese numerals instead of Arabic numerals
+	// The text report requires all numbers to be written in Chinese characters instead of Arabic numerals
 	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
 	// The web report format.
 	//
 	// example:
 	//
-	// The web report requires that all numbers use Chinese numerals instead of Arabic numerals
+	// The web report requires all numbers to be written in Chinese characters instead of Arabic numerals
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
 	WebReportTheme  *string `json:"WebReportTheme,omitempty" xml:"WebReportTheme,omitempty"`
 	// The workspace ID.
@@ -696,6 +696,7 @@ func (s *ModifyCustomAgentResponseBodyDataCallbackConfig) Validate() error {
 }
 
 type ModifyCustomAgentResponseBodyDataExecutionConfig struct {
+	ForbiddenAppendDataSource *bool `json:"ForbiddenAppendDataSource,omitempty" xml:"ForbiddenAppendDataSource,omitempty"`
 	// Specifies whether to disable user inquiries during the process.
 	//
 	// example:
@@ -730,6 +731,10 @@ func (s ModifyCustomAgentResponseBodyDataExecutionConfig) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyCustomAgentResponseBodyDataExecutionConfig) GetForbiddenAppendDataSource() *bool {
+	return s.ForbiddenAppendDataSource
+}
+
 func (s *ModifyCustomAgentResponseBodyDataExecutionConfig) GetSkipAskHuman() *bool {
 	return s.SkipAskHuman
 }
@@ -744,6 +749,11 @@ func (s *ModifyCustomAgentResponseBodyDataExecutionConfig) GetSkipSqlConfirm() *
 
 func (s *ModifyCustomAgentResponseBodyDataExecutionConfig) GetSkipWebReportConfirm() *bool {
 	return s.SkipWebReportConfirm
+}
+
+func (s *ModifyCustomAgentResponseBodyDataExecutionConfig) SetForbiddenAppendDataSource(v bool) *ModifyCustomAgentResponseBodyDataExecutionConfig {
+	s.ForbiddenAppendDataSource = &v
+	return s
 }
 
 func (s *ModifyCustomAgentResponseBodyDataExecutionConfig) SetSkipAskHuman(v bool) *ModifyCustomAgentResponseBodyDataExecutionConfig {
@@ -891,7 +901,7 @@ type ModifyCustomAgentResponseBodyDataScheduleTaskConfig struct {
 	//
 	// example:
 	//
-	// Analyze this data and provide a brief report
+	// Analyze this data and provide a briefing
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// The ID of the referenced historical session.
 	//

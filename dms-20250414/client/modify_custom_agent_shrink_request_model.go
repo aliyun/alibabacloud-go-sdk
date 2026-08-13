@@ -55,7 +55,7 @@ type ModifyCustomAgentShrinkRequest struct {
 	//
 	// ca-4y3ca4khkcu**********ysf
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
-	// The current Data Management unit.
+	// The current DMS unit.
 	//
 	// example:
 	//
@@ -77,7 +77,7 @@ type ModifyCustomAgentShrinkRequest struct {
 	//
 	// - FileId: the file ID
 	//
-	// - Database: the database name returned by the ListDataCenterTable operation, which is typically the file name
+	// - Database: the database name returned by the ListDataCenterTable operation, which is usually the file name
 	//
 	// - Tables: the table name returned by the ListDataCenterTable operation
 	//
@@ -113,7 +113,7 @@ type ModifyCustomAgentShrinkRequest struct {
 	//
 	//     ],
 	//
-	//     "RegionId": "ap-southeast-1"
+	//     "RegionId": "cn-hangzhou"
 	//
 	//   }
 	//
@@ -179,7 +179,7 @@ type ModifyCustomAgentShrinkRequest struct {
 	//
 	//     "Engine": "postgresql",
 	//
-	//     "RegionId": "ap-southeast-1"
+	//     "RegionId": "cn-hangzhou"
 	//
 	//   }
 	//
@@ -226,12 +226,6 @@ type ModifyCustomAgentShrinkRequest struct {
 	// example:
 	//
 	// Analysis framework:
-	//
-	// 1. Monitor core metrics (GMV, order volume, UV, conversion rate) on a daily, weekly, and monthly basis. Analyze trends and year-over-year/month-over-month fluctuations.
-	//
-	// 2. Segment by new vs. returning customers, channels, and regions to identify growth drivers and weaknesses.
-	//
-	// 3. Conduct funnel analysis based on user behavior paths (browsing → add to cart → payment) to pinpoint drop-off stages.
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
 	// The knowledge.
 	//
@@ -239,13 +233,13 @@ type ModifyCustomAgentShrinkRequest struct {
 	//
 	// Core metric definitions:
 	//
-	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders;
+	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders.
 	//
-	// 2. Order volume is the number of valid orders placed per day;
+	// 2. Order volume is the number of valid orders placed per day.
 	//
-	// 3. UV (Unique Visitors) refers to the deduplicated number of users who visit the website or app;
+	// 3. UV (Unique Visitors) refers to the deduplicated number of users who visit the website or app.
 	//
-	// 4. Conversion rate = number of paid orders / UV, reflecting traffic conversion efficiency;
+	// 4. Conversion rate = number of paid orders / UV, reflecting traffic conversion efficiency.
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 	// The external knowledge bases.
 	KnowledgeConfigListShrink         *string `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty"`
@@ -264,13 +258,13 @@ type ModifyCustomAgentShrinkRequest struct {
 	//
 	// example:
 	//
-	// The text report requires that all numbers use Chinese numerals instead of Arabic numerals
+	// The text report requires all numbers to be written in Chinese characters instead of Arabic numerals
 	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
 	// The web report format.
 	//
 	// example:
 	//
-	// The web report requires that all numbers use Chinese numerals instead of Arabic numerals
+	// The web report requires all numbers to be written in Chinese characters instead of Arabic numerals
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
 	WebReportTheme  *string `json:"WebReportTheme,omitempty" xml:"WebReportTheme,omitempty"`
 	// The workspace ID.

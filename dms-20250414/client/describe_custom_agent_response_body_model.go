@@ -117,7 +117,7 @@ func (s *DescribeCustomAgentResponseBody) Validate() error {
 }
 
 type DescribeCustomAgentResponseBodyData struct {
-	// The Alibaba Cloud account ID of the parent account.
+	// The Alibaba Cloud primary account ID.
 	//
 	// example:
 	//
@@ -164,13 +164,13 @@ type DescribeCustomAgentResponseBodyData struct {
 	//
 	//     "FileId" : "f-5qlrwaw10********s3gpw1z",
 	//
-	//     "Database" : "Test spreadsheet******.xlsx",
+	//     "Database" : "TestTable******.xlsx",
 	//
 	//     "Tables" : [ "Sheet1" ],
 	//
 	//     "TableIds" : [ "******" ],
 	//
-	//     "RegionId" : "ap-southeast-1"
+	//     "RegionId" : "cn-hangzhou"
 	//
 	//   }
 	//
@@ -181,7 +181,7 @@ type DescribeCustomAgentResponseBodyData struct {
 	//
 	// example:
 	//
-	// Agent test description
+	// AgentTestDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The current DMS unit.
 	//
@@ -213,7 +213,7 @@ type DescribeCustomAgentResponseBodyData struct {
 	//
 	// 2. Segment by new/existing customers, channels, and regions to identify growth sources and weaknesses;
 	//
-	// 3. Conduct funnel analysis based on user behavior paths (browse → add to cart → payment) to identify drop-off points;
+	// 3. Conduct funnel analysis based on user behavior paths (browse → add to cart → payment) to locate drop-off points;
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
 	// Specifies whether a periodic task is configured.
 	//
@@ -233,7 +233,7 @@ type DescribeCustomAgentResponseBodyData struct {
 	//
 	// 3. UV (Unique Visitors) refers to the deduplicated number of users who visit the website or app;
 	//
-	// 4. Conversion rate = number of paid orders / UV, reflecting traffic conversion efficiency;
+	// 4. Conversion rate = paid orders / UV, reflecting traffic conversion efficiency;
 	Knowledge                   *string                                                           `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 	KnowledgeConfigList         []*DescribeCustomAgentResponseBodyDataKnowledgeConfigList         `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
 	KnowledgeSemanticConfigList []*DescribeCustomAgentResponseBodyDataKnowledgeSemanticConfigList `json:"KnowledgeSemanticConfigList,omitempty" xml:"KnowledgeSemanticConfigList,omitempty" type:"Repeated"`
@@ -253,7 +253,7 @@ type DescribeCustomAgentResponseBodyData struct {
 	//
 	// example:
 	//
-	// Agent test name
+	// AgentTestName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The next run time of the periodic task.
 	//
@@ -713,6 +713,7 @@ func (s *DescribeCustomAgentResponseBodyDataCallbackConfig) Validate() error {
 }
 
 type DescribeCustomAgentResponseBodyDataExecutionConfig struct {
+	ForbiddenAppendDataSource *bool `json:"ForbiddenAppendDataSource,omitempty" xml:"ForbiddenAppendDataSource,omitempty"`
 	// Specifies whether to disable user inquiries during the process.
 	//
 	// example:
@@ -731,7 +732,7 @@ type DescribeCustomAgentResponseBodyDataExecutionConfig struct {
 	//
 	// true
 	SkipSqlConfirm *bool `json:"SkipSqlConfirm,omitempty" xml:"SkipSqlConfirm,omitempty"`
-	// Specifies whether to skip the web report drawing confirmation.
+	// Specifies whether to skip the web report rendering confirmation.
 	//
 	// example:
 	//
@@ -745,6 +746,10 @@ func (s DescribeCustomAgentResponseBodyDataExecutionConfig) String() string {
 
 func (s DescribeCustomAgentResponseBodyDataExecutionConfig) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCustomAgentResponseBodyDataExecutionConfig) GetForbiddenAppendDataSource() *bool {
+	return s.ForbiddenAppendDataSource
 }
 
 func (s *DescribeCustomAgentResponseBodyDataExecutionConfig) GetSkipAskHuman() *bool {
@@ -761,6 +766,11 @@ func (s *DescribeCustomAgentResponseBodyDataExecutionConfig) GetSkipSqlConfirm()
 
 func (s *DescribeCustomAgentResponseBodyDataExecutionConfig) GetSkipWebReportConfirm() *bool {
 	return s.SkipWebReportConfirm
+}
+
+func (s *DescribeCustomAgentResponseBodyDataExecutionConfig) SetForbiddenAppendDataSource(v bool) *DescribeCustomAgentResponseBodyDataExecutionConfig {
+	s.ForbiddenAppendDataSource = &v
+	return s
 }
 
 func (s *DescribeCustomAgentResponseBodyDataExecutionConfig) SetSkipAskHuman(v bool) *DescribeCustomAgentResponseBodyDataExecutionConfig {
@@ -894,7 +904,7 @@ type DescribeCustomAgentResponseBodyDataScheduleTaskConfig struct {
 	//
 	// 0 0 0 ? 	- 1-7
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// The query of the periodic task.
+	// The query for the periodic task.
 	//
 	// example:
 	//

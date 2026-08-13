@@ -24,13 +24,13 @@ type iGetDataAgentTaskModelUsageResponseBody interface {
 type GetDataAgentTaskModelUsageResponseBody struct {
 	// The summary data of model usage for DataAgent analysis tasks.
 	Data *GetDataAgentTaskModelUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned if the request failed.
+	// The error code returned if the request fails.
 	//
 	// example:
 	//
 	// DMS-DA-40411
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the request fails.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type GetDataAgentTaskModelUsageResponseBody struct {
 	//
 	// 67E910F2-***695C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//
@@ -117,6 +117,10 @@ func (s *GetDataAgentTaskModelUsageResponseBody) Validate() error {
 }
 
 type GetDataAgentTaskModelUsageResponseBodyData struct {
+	AccelerationRatio       *float64 `json:"AccelerationRatio,omitempty" xml:"AccelerationRatio,omitempty"`
+	RateLimitedSessionCount *int64   `json:"RateLimitedSessionCount,omitempty" xml:"RateLimitedSessionCount,omitempty"`
+	TotalLlmWaitDuration    *float64 `json:"TotalLlmWaitDuration,omitempty" xml:"TotalLlmWaitDuration,omitempty"`
+	TotalSessionCount       *int64   `json:"TotalSessionCount,omitempty" xml:"TotalSessionCount,omitempty"`
 	// The peak TPM (tokens per minute) within the query time range, which is the maximum number of tokens consumed per minute.
 	//
 	// example:
@@ -151,6 +155,22 @@ func (s GetDataAgentTaskModelUsageResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *GetDataAgentTaskModelUsageResponseBodyData) GetAccelerationRatio() *float64 {
+	return s.AccelerationRatio
+}
+
+func (s *GetDataAgentTaskModelUsageResponseBodyData) GetRateLimitedSessionCount() *int64 {
+	return s.RateLimitedSessionCount
+}
+
+func (s *GetDataAgentTaskModelUsageResponseBodyData) GetTotalLlmWaitDuration() *float64 {
+	return s.TotalLlmWaitDuration
+}
+
+func (s *GetDataAgentTaskModelUsageResponseBodyData) GetTotalSessionCount() *int64 {
+	return s.TotalSessionCount
+}
+
 func (s *GetDataAgentTaskModelUsageResponseBodyData) GetPeakTpm() *int64 {
 	return s.PeakTpm
 }
@@ -165,6 +185,26 @@ func (s *GetDataAgentTaskModelUsageResponseBodyData) GetTotalTokenConsumed() *in
 
 func (s *GetDataAgentTaskModelUsageResponseBodyData) GetUsedModels() *int64 {
 	return s.UsedModels
+}
+
+func (s *GetDataAgentTaskModelUsageResponseBodyData) SetAccelerationRatio(v float64) *GetDataAgentTaskModelUsageResponseBodyData {
+	s.AccelerationRatio = &v
+	return s
+}
+
+func (s *GetDataAgentTaskModelUsageResponseBodyData) SetRateLimitedSessionCount(v int64) *GetDataAgentTaskModelUsageResponseBodyData {
+	s.RateLimitedSessionCount = &v
+	return s
+}
+
+func (s *GetDataAgentTaskModelUsageResponseBodyData) SetTotalLlmWaitDuration(v float64) *GetDataAgentTaskModelUsageResponseBodyData {
+	s.TotalLlmWaitDuration = &v
+	return s
+}
+
+func (s *GetDataAgentTaskModelUsageResponseBodyData) SetTotalSessionCount(v int64) *GetDataAgentTaskModelUsageResponseBodyData {
+	s.TotalSessionCount = &v
+	return s
 }
 
 func (s *GetDataAgentTaskModelUsageResponseBodyData) SetPeakTpm(v int64) *GetDataAgentTaskModelUsageResponseBodyData {

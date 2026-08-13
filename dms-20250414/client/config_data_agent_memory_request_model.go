@@ -18,14 +18,28 @@ type iConfigDataAgentMemoryRequest interface {
 }
 
 type ConfigDataAgentMemoryRequest struct {
+	// The current DMS unit.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	// Specifies whether to enable memory generation. Valid values:
+	//
+	// - true: Enabled.
+	//
+	// - false: Disabled.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Specifies whether to enable memory recall usage. Valid values:
+	//
+	// true: Enabled.
+	//
+	// false: Disabled.
+	//
 	// example:
 	//
 	// true

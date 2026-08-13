@@ -803,6 +803,7 @@ func (s *ListCustomAgentResponseBodyDataContentCallbackConfig) Validate() error 
 }
 
 type ListCustomAgentResponseBodyDataContentExecutionConfig struct {
+	ForbiddenAppendDataSource *bool `json:"ForbiddenAppendDataSource,omitempty" xml:"ForbiddenAppendDataSource,omitempty"`
 	// Indicates whether to prevent user inquiries during the process.
 	//
 	// example:
@@ -837,6 +838,10 @@ func (s ListCustomAgentResponseBodyDataContentExecutionConfig) GoString() string
 	return s.String()
 }
 
+func (s *ListCustomAgentResponseBodyDataContentExecutionConfig) GetForbiddenAppendDataSource() *bool {
+	return s.ForbiddenAppendDataSource
+}
+
 func (s *ListCustomAgentResponseBodyDataContentExecutionConfig) GetSkipAskHuman() *bool {
 	return s.SkipAskHuman
 }
@@ -851,6 +856,11 @@ func (s *ListCustomAgentResponseBodyDataContentExecutionConfig) GetSkipSqlConfir
 
 func (s *ListCustomAgentResponseBodyDataContentExecutionConfig) GetSkipWebReportConfirm() *bool {
 	return s.SkipWebReportConfirm
+}
+
+func (s *ListCustomAgentResponseBodyDataContentExecutionConfig) SetForbiddenAppendDataSource(v bool) *ListCustomAgentResponseBodyDataContentExecutionConfig {
+	s.ForbiddenAppendDataSource = &v
+	return s
 }
 
 func (s *ListCustomAgentResponseBodyDataContentExecutionConfig) SetSkipAskHuman(v bool) *ListCustomAgentResponseBodyDataContentExecutionConfig {

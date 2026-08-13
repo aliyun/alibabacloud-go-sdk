@@ -142,7 +142,7 @@ type CreateCustomAgentResponseBodyData struct {
 	//
 	// ca-4y3ca4khkcu**********ysf
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
-	// The current Data Management unit.
+	// The current DMS unit.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type CreateCustomAgentResponseBodyData struct {
 	//
 	//     "FileId" : "f-5qlrwaw10********s3gpw1z",
 	//
-	//     "Database" : "TestTable******.xlsx",
+	//     "Database" : "测试表格******.xlsx",
 	//
 	//     "Tables" : [ "Sheet1" ],
 	//
@@ -182,7 +182,7 @@ type CreateCustomAgentResponseBodyData struct {
 	//
 	// AgentTestDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The current Data Management unit.
+	// The current DMS unit.
 	//
 	// example:
 	//
@@ -214,7 +214,7 @@ type CreateCustomAgentResponseBodyData struct {
 	//
 	// 3. Conduct funnel analysis based on user behavior paths (browsing → add to cart → payment) to pinpoint drop-off stages;
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
-	// Indicates whether a scheduled task is configured.
+	// Indicates whether a periodic task is configured.
 	//
 	// example:
 	//
@@ -226,13 +226,13 @@ type CreateCustomAgentResponseBodyData struct {
 	//
 	// Core metric definitions:
 	//
-	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders.
+	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders;
 	//
-	// 2. Order volume is the number of valid orders placed per day.
+	// 2. Order volume is the number of valid orders placed per day;
 	//
-	// 3. UV (Unique Visitors) refers to the deduplicated number of users who visit the website or app.
+	// 3. UV (Unique Visitors) refers to the deduplicated number of users who visit the website or app;
 	//
-	// 4. Conversion rate = number of paid orders / UV, reflecting traffic conversion efficiency.
+	// 4. Conversion rate = number of paid orders / UV, reflecting traffic conversion efficiency;
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 	// The external knowledge base configurations.
 	KnowledgeConfigList         []*CreateCustomAgentResponseBodyDataKnowledgeConfigList         `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
@@ -255,7 +255,7 @@ type CreateCustomAgentResponseBodyData struct {
 	//
 	// AgentTestName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The next run time of the scheduled task.
+	// The next run time of the periodic task.
 	//
 	// example:
 	//
@@ -281,7 +281,7 @@ type CreateCustomAgentResponseBodyData struct {
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	ReleaseTime *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
-	// The scheduled task configuration.
+	// The periodic task configuration.
 	ScheduleTaskConfig *CreateCustomAgentResponseBodyDataScheduleTaskConfig `json:"ScheduleTaskConfig,omitempty" xml:"ScheduleTaskConfig,omitempty" type:"Struct"`
 	// The status of the custom agent.
 	//
@@ -293,13 +293,13 @@ type CreateCustomAgentResponseBodyData struct {
 	//
 	// example:
 	//
-	// The text report requires all numbers to be written in words instead of Arabic numerals
+	// The text report requires all numbers to be written in Chinese characters instead of Arabic numerals
 	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
 	// The web report format.
 	//
 	// example:
 	//
-	// The web report requires all numbers to be written in words instead of Arabic numerals
+	// The web report requires all numbers to be written in Chinese characters instead of Arabic numerals
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
 	WebReportTheme  *string `json:"WebReportTheme,omitempty" xml:"WebReportTheme,omitempty"`
 	// The workspace ID.
@@ -700,6 +700,7 @@ func (s *CreateCustomAgentResponseBodyDataCallbackConfig) Validate() error {
 }
 
 type CreateCustomAgentResponseBodyDataExecutionConfig struct {
+	ForbiddenAppendDataSource *bool `json:"ForbiddenAppendDataSource,omitempty" xml:"ForbiddenAppendDataSource,omitempty"`
 	// Specifies whether to disable user inquiries during the process.
 	//
 	// example:
@@ -734,6 +735,10 @@ func (s CreateCustomAgentResponseBodyDataExecutionConfig) GoString() string {
 	return s.String()
 }
 
+func (s *CreateCustomAgentResponseBodyDataExecutionConfig) GetForbiddenAppendDataSource() *bool {
+	return s.ForbiddenAppendDataSource
+}
+
 func (s *CreateCustomAgentResponseBodyDataExecutionConfig) GetSkipAskHuman() *bool {
 	return s.SkipAskHuman
 }
@@ -748,6 +753,11 @@ func (s *CreateCustomAgentResponseBodyDataExecutionConfig) GetSkipSqlConfirm() *
 
 func (s *CreateCustomAgentResponseBodyDataExecutionConfig) GetSkipWebReportConfirm() *bool {
 	return s.SkipWebReportConfirm
+}
+
+func (s *CreateCustomAgentResponseBodyDataExecutionConfig) SetForbiddenAppendDataSource(v bool) *CreateCustomAgentResponseBodyDataExecutionConfig {
+	s.ForbiddenAppendDataSource = &v
+	return s
 }
 
 func (s *CreateCustomAgentResponseBodyDataExecutionConfig) SetSkipAskHuman(v bool) *CreateCustomAgentResponseBodyDataExecutionConfig {

@@ -15,6 +15,8 @@ type iGetDataAgentTaskModelUsageMetricsRequest interface {
 	GetDMSUnit() *string
 	SetEndTime(v string) *GetDataAgentTaskModelUsageMetricsRequest
 	GetEndTime() *string
+	SetPayLevel(v string) *GetDataAgentTaskModelUsageMetricsRequest
+	GetPayLevel() *string
 	SetRegionId(v string) *GetDataAgentTaskModelUsageMetricsRequest
 	GetRegionId() *string
 }
@@ -37,7 +39,8 @@ type GetDataAgentTaskModelUsageMetricsRequest struct {
 	// example:
 	//
 	// 1735747200
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	PayLevel *string `json:"PayLevel,omitempty" xml:"PayLevel,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -66,6 +69,10 @@ func (s *GetDataAgentTaskModelUsageMetricsRequest) GetEndTime() *string {
 	return s.EndTime
 }
 
+func (s *GetDataAgentTaskModelUsageMetricsRequest) GetPayLevel() *string {
+	return s.PayLevel
+}
+
 func (s *GetDataAgentTaskModelUsageMetricsRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -82,6 +89,11 @@ func (s *GetDataAgentTaskModelUsageMetricsRequest) SetDMSUnit(v string) *GetData
 
 func (s *GetDataAgentTaskModelUsageMetricsRequest) SetEndTime(v string) *GetDataAgentTaskModelUsageMetricsRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *GetDataAgentTaskModelUsageMetricsRequest) SetPayLevel(v string) *GetDataAgentTaskModelUsageMetricsRequest {
+	s.PayLevel = &v
 	return s
 }
 
