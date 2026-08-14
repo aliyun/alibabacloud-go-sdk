@@ -62,6 +62,8 @@ func (s *GetIntegrationPolicyResponseBody) Validate() error {
 }
 
 type GetIntegrationPolicyResponseBodyPolicy struct {
+	// The names of all components installed in this policy.
+	AddonNames []*string `json:"addonNames,omitempty" xml:"addonNames,omitempty" type:"Repeated"`
 	// The bound resource information.
 	BindResource *GetIntegrationPolicyResponseBodyPolicyBindResource `json:"bindResource,omitempty" xml:"bindResource,omitempty" type:"Struct"`
 	// The umodel installation status in the container environment.
@@ -128,6 +130,10 @@ func (s GetIntegrationPolicyResponseBodyPolicy) GoString() string {
 	return s.String()
 }
 
+func (s *GetIntegrationPolicyResponseBodyPolicy) GetAddonNames() []*string {
+	return s.AddonNames
+}
+
 func (s *GetIntegrationPolicyResponseBodyPolicy) GetBindResource() *GetIntegrationPolicyResponseBodyPolicyBindResource {
 	return s.BindResource
 }
@@ -174,6 +180,11 @@ func (s *GetIntegrationPolicyResponseBodyPolicy) GetUserId() *string {
 
 func (s *GetIntegrationPolicyResponseBodyPolicy) GetWorkspace() *string {
 	return s.Workspace
+}
+
+func (s *GetIntegrationPolicyResponseBodyPolicy) SetAddonNames(v []*string) *GetIntegrationPolicyResponseBodyPolicy {
+	s.AddonNames = v
+	return s
 }
 
 func (s *GetIntegrationPolicyResponseBodyPolicy) SetBindResource(v *GetIntegrationPolicyResponseBodyPolicyBindResource) *GetIntegrationPolicyResponseBodyPolicy {
@@ -360,7 +371,7 @@ type GetIntegrationPolicyResponseBodyPolicyEntityGroup struct {
 	EntityGroupName *string `json:"entityGroupName,omitempty" xml:"entityGroupName,omitempty"`
 	// The entity rules.
 	EntityRules *GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules `json:"entityRules,omitempty" xml:"entityRules,omitempty" type:"Struct"`
-	// The query parameter.
+	// Used for querying.
 	//
 	// example:
 	//
@@ -480,7 +491,7 @@ type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules struct {
 	Annotations []*GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesAnnotations `json:"annotations,omitempty" xml:"annotations,omitempty" type:"Repeated"`
 	// The list of entity types.
 	EntityTypes []*string `json:"entityTypes,omitempty" xml:"entityTypes,omitempty" type:"Repeated"`
-	// The list of field rules.
+	// The list of property rules.
 	FieldRules []*GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesFieldRules `json:"fieldRules,omitempty" xml:"fieldRules,omitempty" type:"Repeated"`
 	// The instance IDs.
 	InstanceIds []*string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
@@ -697,7 +708,7 @@ type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesFieldRules stru
 	//
 	// test
 	FieldKey *string `json:"fieldKey,omitempty" xml:"fieldKey,omitempty"`
-	// The field values.
+	// The field content.
 	FieldValues []*string `json:"fieldValues,omitempty" xml:"fieldValues,omitempty" type:"Repeated"`
 	// The operation to perform.
 	//

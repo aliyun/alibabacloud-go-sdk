@@ -11,6 +11,8 @@ type iListIntegrationPolicyServiceMonitorsRequest interface {
 	GoString() string
 	SetAddonReleaseName(v string) *ListIntegrationPolicyServiceMonitorsRequest
 	GetAddonReleaseName() *string
+	SetCollectorReleaseName(v string) *ListIntegrationPolicyServiceMonitorsRequest
+	GetCollectorReleaseName() *string
 	SetEncryptYaml(v bool) *ListIntegrationPolicyServiceMonitorsRequest
 	GetEncryptYaml() *bool
 	SetNamespace(v string) *ListIntegrationPolicyServiceMonitorsRequest
@@ -18,13 +20,19 @@ type iListIntegrationPolicyServiceMonitorsRequest interface {
 }
 
 type ListIntegrationPolicyServiceMonitorsRequest struct {
-	// The name of the add-on release.
+	// The name of the addon release.
 	//
 	// example:
 	//
 	// release-12345678
 	AddonReleaseName *string `json:"addonReleaseName,omitempty" xml:"addonReleaseName,omitempty"`
-	// Specifies whether to encrypt the YAML file.
+	// The probe identifier. If a release exists, pass the release name. If no release exists, pass the component name.
+	//
+	// example:
+	//
+	// collector:metric-agent:policy:policy-bfd3d455fd6f4bc8
+	CollectorReleaseName *string `json:"collectorReleaseName,omitempty" xml:"collectorReleaseName,omitempty"`
+	// Specifies whether to encrypt the YAML.
 	//
 	// example:
 	//
@@ -50,6 +58,10 @@ func (s *ListIntegrationPolicyServiceMonitorsRequest) GetAddonReleaseName() *str
 	return s.AddonReleaseName
 }
 
+func (s *ListIntegrationPolicyServiceMonitorsRequest) GetCollectorReleaseName() *string {
+	return s.CollectorReleaseName
+}
+
 func (s *ListIntegrationPolicyServiceMonitorsRequest) GetEncryptYaml() *bool {
 	return s.EncryptYaml
 }
@@ -60,6 +72,11 @@ func (s *ListIntegrationPolicyServiceMonitorsRequest) GetNamespace() *string {
 
 func (s *ListIntegrationPolicyServiceMonitorsRequest) SetAddonReleaseName(v string) *ListIntegrationPolicyServiceMonitorsRequest {
 	s.AddonReleaseName = &v
+	return s
+}
+
+func (s *ListIntegrationPolicyServiceMonitorsRequest) SetCollectorReleaseName(v string) *ListIntegrationPolicyServiceMonitorsRequest {
+	s.CollectorReleaseName = &v
 	return s
 }
 

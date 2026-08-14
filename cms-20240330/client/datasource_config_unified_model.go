@@ -28,13 +28,22 @@ type iDatasourceConfigUnified interface {
 }
 
 type DatasourceConfigUnified struct {
-	InstanceId      *string   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	LegacyRaw       *string   `json:"legacyRaw,omitempty" xml:"legacyRaw,omitempty"`
-	LegacyType      *string   `json:"legacyType,omitempty" xml:"legacyType,omitempty"`
-	ProductCategory *string   `json:"productCategory,omitempty" xml:"productCategory,omitempty"`
-	Project         *string   `json:"project,omitempty" xml:"project,omitempty"`
-	RegionId        *string   `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	Stores          []*Stores `json:"stores,omitempty" xml:"stores,omitempty" type:"Repeated"`
+	// The Prometheus instance ID (required when type=PROMETHEUS; ignored for other types).
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The original V1 datasource JSON string returned as a fallback when type=UNKNOWN and the read path fails to parse the datasource. If the frontend detects that this field is not empty, display it as read-only.
+	LegacyRaw *string `json:"legacyRaw,omitempty" xml:"legacyRaw,omitempty"`
+	// Returned when type=UNKNOWN, indicating that this rule cannot be edited through the new API. Submit a ticket to contact the CloudMonitor team.
+	LegacyType *string `json:"legacyType,omitempty" xml:"legacyType,omitempty"`
+	// The Alibaba Cloud service category (optional when type=CLOUD_MONITORING). If the source does not contain this information, the value unknown is returned.
+	ProductCategory *string `json:"productCategory,omitempty" xml:"productCategory,omitempty"`
+	// The Simple Log Service project name (required when type=SLS; all stores share the same project).
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The region ID (optional for PROMETHEUS / UMODEL / APM / SLS types; defaults to the same region as the rule or gateway. CLOUD_MONITORING does not use this field; use AlertRuleV2.regionId instead).
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The list of Simple Log Service stores (used when type=SLS; at least one store is required). Each store contains store and storeType fields. The project and regionId fields have been moved to the top level. The deprecated fields with the same names that remain in stores cause a 400 error if used in write paths.
+	Stores []*Stores `json:"stores,omitempty" xml:"stores,omitempty" type:"Repeated"`
+	// The datasource type. Valid values: PROMETHEUS (instanceId is required; regionId is optional). UMODEL (regionId is optional; other settings are carried in queryConfig/conditionConfig). APM (regionId is optional). CLOUD_MONITORING (regionId and productCategory are optional). UNKNOWN (read-only fallback; do not use in write paths). Do not use non-enumerated values (such as CMS_BASIC_DS or SLS_DS). The backend returns an Invalidtype 400 error.
+	//
 	// This parameter is required.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }

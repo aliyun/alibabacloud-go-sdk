@@ -34,7 +34,7 @@ type ListIntegrationPolicyCustomScrapeJobRulesResponseBody struct {
 	//
 	// policy-15abcc24c06f4797832b5954198e1ed1
 	PolicyId *string `json:"policyId,omitempty" xml:"policyId,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -100,25 +100,25 @@ func (s *ListIntegrationPolicyCustomScrapeJobRulesResponseBody) Validate() error
 }
 
 type ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRules struct {
-	// The add-on name.
+	// The addon name.
 	//
 	// example:
 	//
 	// cloud-ecs
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
-	// The name of the add-on release.
+	// The addon release name.
 	//
 	// example:
 	//
 	// release-12345678
 	AddonReleaseName *string `json:"addonReleaseName,omitempty" xml:"addonReleaseName,omitempty"`
-	// The add-on version.
+	// The addon version.
 	//
 	// example:
 	//
 	// 0.0.1
 	AddonVersion *string `json:"addonVersion,omitempty" xml:"addonVersion,omitempty"`
-	// The configuration YAML file.
+	// The configuration YAML.
 	//
 	// example:
 	//
@@ -126,13 +126,13 @@ type ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRules s
 	//
 	// - jobxxxxxx
 	ConfigYaml *string `json:"configYaml,omitempty" xml:"configYaml,omitempty"`
-	// The enabled status.
+	// The enabling status.
 	//
 	// example:
 	//
 	// mini
 	EnableStatus *string `json:"enableStatus,omitempty" xml:"enableStatus,omitempty"`
-	// Indicates whether the YAML file is encrypted.
+	// The encrypted YAML.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRules s
 	//
 	// 1
 	MatchedPodCount *int64 `json:"matchedPodCount,omitempty" xml:"matchedPodCount,omitempty"`
-	// The details.
+	// The detailed information.
 	//
 	// example:
 	//
@@ -293,13 +293,13 @@ type ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRulesSc
 	//
 	// mysql-exporter
 	JobName *string `json:"jobName,omitempty" xml:"jobName,omitempty"`
-	// The details.
+	// The detailed information.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The scrape path.
+	// The metrics path.
 	//
 	// example:
 	//

@@ -24,14 +24,6 @@ type iListIntegrationPoliciesResponseBody interface {
 type ListIntegrationPoliciesResponseBody struct {
 	// The page size.
 	//
-	// Default value:
-	//
-	// 	50
-	//
-	// Maximum value:
-	//
-	// 	50.
-	//
 	// example:
 	//
 	// 100
@@ -125,6 +117,8 @@ func (s *ListIntegrationPoliciesResponseBody) Validate() error {
 }
 
 type ListIntegrationPoliciesResponseBodyPolicies struct {
+	// The names of all components installed in this policy.
+	AddonNames []*string `json:"addonNames,omitempty" xml:"addonNames,omitempty" type:"Repeated"`
 	// The bound resource information.
 	BindResource *ListIntegrationPoliciesResponseBodyPoliciesBindResource `json:"bindResource,omitempty" xml:"bindResource,omitempty" type:"Struct"`
 	// The umodel installation status in the container environment.
@@ -173,7 +167,7 @@ type ListIntegrationPoliciesResponseBodyPolicies struct {
 	//
 	// rg-xxxxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The number of sub-releases.
+	// The sub-release count.
 	SubAddonRelease *ListIntegrationPoliciesResponseBodyPoliciesSubAddonRelease `json:"subAddonRelease,omitempty" xml:"subAddonRelease,omitempty" type:"Struct"`
 	// The user ID.
 	//
@@ -195,6 +189,10 @@ func (s ListIntegrationPoliciesResponseBodyPolicies) String() string {
 
 func (s ListIntegrationPoliciesResponseBodyPolicies) GoString() string {
 	return s.String()
+}
+
+func (s *ListIntegrationPoliciesResponseBodyPolicies) GetAddonNames() []*string {
+	return s.AddonNames
 }
 
 func (s *ListIntegrationPoliciesResponseBodyPolicies) GetBindResource() *ListIntegrationPoliciesResponseBodyPoliciesBindResource {
@@ -247,6 +245,11 @@ func (s *ListIntegrationPoliciesResponseBodyPolicies) GetUserId() *string {
 
 func (s *ListIntegrationPoliciesResponseBodyPolicies) GetWorkspace() *string {
 	return s.Workspace
+}
+
+func (s *ListIntegrationPoliciesResponseBodyPolicies) SetAddonNames(v []*string) *ListIntegrationPoliciesResponseBodyPolicies {
+	s.AddonNames = v
+	return s
 }
 
 func (s *ListIntegrationPoliciesResponseBodyPolicies) SetBindResource(v *ListIntegrationPoliciesResponseBodyPoliciesBindResource) *ListIntegrationPoliciesResponseBodyPolicies {
@@ -771,7 +774,7 @@ type ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesFieldRules
 	//
 	// test
 	FieldKey *string `json:"fieldKey,omitempty" xml:"fieldKey,omitempty"`
-	// The field values. Multiple values are separated by commas.
+	// The field values. Multiple values are separated by commas (,).
 	FieldValues []*string `json:"fieldValues,omitempty" xml:"fieldValues,omitempty" type:"Repeated"`
 	// The operation to perform.
 	//
@@ -1044,7 +1047,7 @@ type ListIntegrationPoliciesResponseBodyPoliciesSubAddonRelease struct {
 	//
 	// 30
 	Ready *int32 `json:"ready,omitempty" xml:"ready,omitempty"`
-	// The total number of rules.
+	// The number of rules.
 	//
 	// example:
 	//

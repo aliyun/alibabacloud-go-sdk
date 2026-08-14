@@ -8636,7 +8636,7 @@ func (client *Client) ListIntegrationPolicyCollectors(policyId *string, request 
 
 // Summary:
 //
-// Lists the custom service discovery rules for an Integration Center policy.
+// Retrieves the custom service discovery rules of a Provisioning policy.
 //
 // @param request - ListIntegrationPolicyCustomScrapeJobRulesRequest
 //
@@ -8655,6 +8655,10 @@ func (client *Client) ListIntegrationPolicyCustomScrapeJobRulesWithOptions(polic
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddonReleaseName) {
 		query["addonReleaseName"] = request.AddonReleaseName
+	}
+
+	if !dara.IsNil(request.CollectorReleaseName) {
+		query["collectorReleaseName"] = request.CollectorReleaseName
 	}
 
 	if !dara.IsNil(request.EncryptYaml) {
@@ -8691,7 +8695,7 @@ func (client *Client) ListIntegrationPolicyCustomScrapeJobRulesWithOptions(polic
 
 // Summary:
 //
-// Lists the custom service discovery rules for an Integration Center policy.
+// Retrieves the custom service discovery rules of a Provisioning policy.
 //
 // @param request - ListIntegrationPolicyCustomScrapeJobRulesRequest
 //
@@ -8792,11 +8796,11 @@ func (client *Client) ListIntegrationPolicyDashboards(policyId *string, request 
 
 // Summary:
 //
-// Lists the PodMonitor resources for an Integration Center policy.
+// Retrieves the PodMonitor resources of an access center policy.
 //
 // Description:
 //
-// This topic provides an example of how to list the PodMonitor resources for an Integration Center policy.
+// This topic provides an example on how to query the list of alert templates. The response shows that the alert template list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
 //
 // @param request - ListIntegrationPolicyPodMonitorsRequest
 //
@@ -8815,6 +8819,10 @@ func (client *Client) ListIntegrationPolicyPodMonitorsWithOptions(policyId *stri
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddonReleaseName) {
 		query["addonReleaseName"] = request.AddonReleaseName
+	}
+
+	if !dara.IsNil(request.CollectorReleaseName) {
+		query["collectorReleaseName"] = request.CollectorReleaseName
 	}
 
 	if !dara.IsNil(request.EncryptYaml) {
@@ -8851,11 +8859,11 @@ func (client *Client) ListIntegrationPolicyPodMonitorsWithOptions(policyId *stri
 
 // Summary:
 //
-// Lists the PodMonitor resources for an Integration Center policy.
+// Retrieves the PodMonitor resources of an access center policy.
 //
 // Description:
 //
-// This topic provides an example of how to list the PodMonitor resources for an Integration Center policy.
+// This topic provides an example on how to query the list of alert templates. The response shows that the alert template list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
 //
 // @param request - ListIntegrationPolicyPodMonitorsRequest
 //
@@ -8874,7 +8882,7 @@ func (client *Client) ListIntegrationPolicyPodMonitors(policyId *string, request
 
 // Summary:
 //
-// Retrieves the ServiceMonitor information for an Integration Center policy.
+// Retrieves the ServiceMonitor information of a Provisioning policy.
 //
 // @param request - ListIntegrationPolicyServiceMonitorsRequest
 //
@@ -8893,6 +8901,10 @@ func (client *Client) ListIntegrationPolicyServiceMonitorsWithOptions(policyId *
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddonReleaseName) {
 		query["addonReleaseName"] = request.AddonReleaseName
+	}
+
+	if !dara.IsNil(request.CollectorReleaseName) {
+		query["collectorReleaseName"] = request.CollectorReleaseName
 	}
 
 	if !dara.IsNil(request.EncryptYaml) {
@@ -8929,7 +8941,7 @@ func (client *Client) ListIntegrationPolicyServiceMonitorsWithOptions(policyId *
 
 // Summary:
 //
-// Retrieves the ServiceMonitor information for an Integration Center policy.
+// Retrieves the ServiceMonitor information of a Provisioning policy.
 //
 // @param request - ListIntegrationPolicyServiceMonitorsRequest
 //

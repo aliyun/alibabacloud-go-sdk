@@ -100,43 +100,43 @@ func (s *ListIntegrationPolicyServiceMonitorsResponseBody) Validate() error {
 }
 
 type ListIntegrationPolicyServiceMonitorsResponseBodyServiceMonitors struct {
-	// The add-on name.
+	// The addon name.
 	//
 	// example:
 	//
 	// cloud-acs-ecs
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
-	// The name of the add-on release.
+	// The addon release name.
 	//
 	// example:
 	//
 	// release-1234567
 	AddonReleaseName *string `json:"addonReleaseName,omitempty" xml:"addonReleaseName,omitempty"`
-	// The add-on version.
+	// The addon version.
 	//
 	// example:
 	//
 	// 0.0.1
 	AddonVersion *string `json:"addonVersion,omitempty" xml:"addonVersion,omitempty"`
-	// The configuration YAML file.
+	// The configuration YAML.
 	//
 	// example:
 	//
 	// apiVersion: xxxxx
 	ConfigYaml *string `json:"configYaml,omitempty" xml:"configYaml,omitempty"`
-	// The status.
+	// The enabling status.
 	//
 	// example:
 	//
 	// run
 	EnableStatus *string `json:"enableStatus,omitempty" xml:"enableStatus,omitempty"`
-	// Indicates whether the YAML file is encrypted.
+	// The encrypted YAML.
 	//
 	// example:
 	//
 	// YXBpVmVyc2lvbjogeHh4eHgK
 	EncryptYaml *bool `json:"encryptYaml,omitempty" xml:"encryptYaml,omitempty"`
-	// The list of Endpoints.
+	// The list of endpoints.
 	Endpoints []*ListIntegrationPolicyServiceMonitorsResponseBodyServiceMonitorsEndpoints `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
 	// The number of matched services.
 	//
@@ -144,7 +144,7 @@ type ListIntegrationPolicyServiceMonitorsResponseBodyServiceMonitors struct {
 	//
 	// 50
 	MatchedServiceCount *int64 `json:"matchedServiceCount,omitempty" xml:"matchedServiceCount,omitempty"`
-	// The name of the ServiceMonitor.
+	// The ServiceMonitor name.
 	//
 	// example:
 	//
@@ -282,7 +282,7 @@ type ListIntegrationPolicyServiceMonitorsResponseBodyServiceMonitorsEndpoints st
 	//
 	// 65
 	MatchedTargetCount *int64 `json:"matchedTargetCount,omitempty" xml:"matchedTargetCount,omitempty"`
-	// The collection path.
+	// The sampling path.
 	//
 	// example:
 	//

@@ -6206,7 +6206,7 @@ func (client *Client) ListIntegrationPolicyCollectorsWithContext(ctx context.Con
 
 // Summary:
 //
-// Lists the custom service discovery rules for an Integration Center policy.
+// Retrieves the custom service discovery rules of a Provisioning policy.
 //
 // @param request - ListIntegrationPolicyCustomScrapeJobRulesRequest
 //
@@ -6225,6 +6225,10 @@ func (client *Client) ListIntegrationPolicyCustomScrapeJobRulesWithContext(ctx c
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddonReleaseName) {
 		query["addonReleaseName"] = request.AddonReleaseName
+	}
+
+	if !dara.IsNil(request.CollectorReleaseName) {
+		query["collectorReleaseName"] = request.CollectorReleaseName
 	}
 
 	if !dara.IsNil(request.EncryptYaml) {
@@ -6320,11 +6324,11 @@ func (client *Client) ListIntegrationPolicyDashboardsWithContext(ctx context.Con
 
 // Summary:
 //
-// Lists the PodMonitor resources for an Integration Center policy.
+// Retrieves the PodMonitor resources of an access center policy.
 //
 // Description:
 //
-// This topic provides an example of how to list the PodMonitor resources for an Integration Center policy.
+// This topic provides an example on how to query the list of alert templates. The response shows that the alert template list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
 //
 // @param request - ListIntegrationPolicyPodMonitorsRequest
 //
@@ -6343,6 +6347,10 @@ func (client *Client) ListIntegrationPolicyPodMonitorsWithContext(ctx context.Co
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddonReleaseName) {
 		query["addonReleaseName"] = request.AddonReleaseName
+	}
+
+	if !dara.IsNil(request.CollectorReleaseName) {
+		query["collectorReleaseName"] = request.CollectorReleaseName
 	}
 
 	if !dara.IsNil(request.EncryptYaml) {
@@ -6379,7 +6387,7 @@ func (client *Client) ListIntegrationPolicyPodMonitorsWithContext(ctx context.Co
 
 // Summary:
 //
-// Retrieves the ServiceMonitor information for an Integration Center policy.
+// Retrieves the ServiceMonitor information of a Provisioning policy.
 //
 // @param request - ListIntegrationPolicyServiceMonitorsRequest
 //
@@ -6398,6 +6406,10 @@ func (client *Client) ListIntegrationPolicyServiceMonitorsWithContext(ctx contex
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddonReleaseName) {
 		query["addonReleaseName"] = request.AddonReleaseName
+	}
+
+	if !dara.IsNil(request.CollectorReleaseName) {
+		query["collectorReleaseName"] = request.CollectorReleaseName
 	}
 
 	if !dara.IsNil(request.EncryptYaml) {

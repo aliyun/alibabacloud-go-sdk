@@ -11,6 +11,8 @@ type iListIntegrationPolicyCustomScrapeJobRulesRequest interface {
 	GoString() string
 	SetAddonReleaseName(v string) *ListIntegrationPolicyCustomScrapeJobRulesRequest
 	GetAddonReleaseName() *string
+	SetCollectorReleaseName(v string) *ListIntegrationPolicyCustomScrapeJobRulesRequest
+	GetCollectorReleaseName() *string
 	SetEncryptYaml(v bool) *ListIntegrationPolicyCustomScrapeJobRulesRequest
 	GetEncryptYaml() *bool
 	SetNamespace(v string) *ListIntegrationPolicyCustomScrapeJobRulesRequest
@@ -18,13 +20,19 @@ type iListIntegrationPolicyCustomScrapeJobRulesRequest interface {
 }
 
 type ListIntegrationPolicyCustomScrapeJobRulesRequest struct {
-	// The name of the add-on release.
+	// The name of the addon release.
 	//
 	// example:
 	//
 	// release12345678
 	AddonReleaseName *string `json:"addonReleaseName,omitempty" xml:"addonReleaseName,omitempty"`
-	// Specifies whether to encrypt the YAML file.
+	// The probe identifier. If a release exists, pass the release name. If no release exists, pass the component name.
+	//
+	// example:
+	//
+	// collector:metric-agent:policy:policy-bfd3d455fd6f4bc8
+	CollectorReleaseName *string `json:"collectorReleaseName,omitempty" xml:"collectorReleaseName,omitempty"`
+	// Specifies whether to encrypt the YAML content.
 	//
 	// example:
 	//
@@ -50,6 +58,10 @@ func (s *ListIntegrationPolicyCustomScrapeJobRulesRequest) GetAddonReleaseName()
 	return s.AddonReleaseName
 }
 
+func (s *ListIntegrationPolicyCustomScrapeJobRulesRequest) GetCollectorReleaseName() *string {
+	return s.CollectorReleaseName
+}
+
 func (s *ListIntegrationPolicyCustomScrapeJobRulesRequest) GetEncryptYaml() *bool {
 	return s.EncryptYaml
 }
@@ -60,6 +72,11 @@ func (s *ListIntegrationPolicyCustomScrapeJobRulesRequest) GetNamespace() *strin
 
 func (s *ListIntegrationPolicyCustomScrapeJobRulesRequest) SetAddonReleaseName(v string) *ListIntegrationPolicyCustomScrapeJobRulesRequest {
 	s.AddonReleaseName = &v
+	return s
+}
+
+func (s *ListIntegrationPolicyCustomScrapeJobRulesRequest) SetCollectorReleaseName(v string) *ListIntegrationPolicyCustomScrapeJobRulesRequest {
+	s.CollectorReleaseName = &v
 	return s
 }
 

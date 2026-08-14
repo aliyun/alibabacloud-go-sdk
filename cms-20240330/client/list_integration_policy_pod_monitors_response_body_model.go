@@ -34,7 +34,7 @@ type ListIntegrationPolicyPodMonitorsResponseBody struct {
 	//
 	// policy-c9efed2b99c348d49e589c5f780fc074
 	PolicyId *string `json:"policyId,omitempty" xml:"policyId,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -100,37 +100,37 @@ func (s *ListIntegrationPolicyPodMonitorsResponseBody) Validate() error {
 }
 
 type ListIntegrationPolicyPodMonitorsResponseBodyPodMonitors struct {
-	// The name of the add-on.
+	// The addon name.
 	//
 	// example:
 	//
 	// cloud-ecs
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
-	// The name of the add-on release.
+	// The addon release name.
 	//
 	// example:
 	//
 	// release-2345678
 	AddonReleaseName *string `json:"addonReleaseName,omitempty" xml:"addonReleaseName,omitempty"`
-	// The version of the add-on.
+	// The addon version.
 	//
 	// example:
 	//
 	// 0.0.1
 	AddonVersion *string `json:"addonVersion,omitempty" xml:"addonVersion,omitempty"`
-	// The YAML configuration.
+	// The configuration YAML.
 	//
 	// example:
 	//
 	// apiVersion: xxxxx
 	ConfigYaml *string `json:"configYaml,omitempty" xml:"configYaml,omitempty"`
-	// The status.
+	// The enabling status.
 	//
 	// example:
 	//
 	// run
 	EnableStatus *string `json:"enableStatus,omitempty" xml:"enableStatus,omitempty"`
-	// Indicates whether the YAML file is encrypted.
+	// The encrypted YAML.
 	//
 	// example:
 	//
