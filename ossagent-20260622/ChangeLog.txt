@@ -1,3 +1,6 @@
+2026-08-14 Version: v1.0.1
+- Generated golang 2026-06-22 for OssAgent.
+
 2026-07-31 Version: v1.0.0
 - Generated golang 2026-06-22 for OssAgent.
 

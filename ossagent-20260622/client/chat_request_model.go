@@ -16,8 +16,14 @@ type iChatRequest interface {
 }
 
 type ChatRequest struct {
-	Messages  []*ChatRequestMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
-	SessionId *string                `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// The messages.
+	Messages []*ChatRequestMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
+	// The ID of the Q&A session.
+	//
+	// example:
+	//
+	// UUID
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
 }
 
 func (s ChatRequest) String() string {
@@ -60,8 +66,18 @@ func (s *ChatRequest) Validate() error {
 }
 
 type ChatRequestMessages struct {
+	// The conversation text content.
+	//
+	// example:
+	//
+	// Hello
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	Role    *string `json:"role,omitempty" xml:"role,omitempty"`
+	// The role of the message.
+	//
+	// example:
+	//
+	// user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
 }
 
 func (s ChatRequestMessages) String() string {

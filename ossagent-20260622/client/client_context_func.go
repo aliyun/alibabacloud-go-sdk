@@ -10,7 +10,7 @@ import (
 
 // Summary:
 //
-// 聊天流式接口
+// Initiates a streaming chat session.
 //
 // @param request - ChatRequest
 //
@@ -27,7 +27,7 @@ func (client *Client) ChatWithSSECtx(ctx context.Context, request *ChatRequest, 
 
 // Summary:
 //
-// 聊天流式接口
+// Initiates a streaming chat session.
 //
 // @param request - ChatRequest
 //
@@ -78,7 +78,7 @@ func (client *Client) ChatWithContext(ctx context.Context, request *ChatRequest,
 
 // Summary:
 //
-// 工具确认接口
+// Confirms a tool calling operation.
 //
 // @param request - ConfirmRequest
 //
@@ -95,7 +95,7 @@ func (client *Client) ConfirmWithSSECtx(ctx context.Context, request *ConfirmReq
 
 // Summary:
 //
-// 工具确认接口
+// Confirms a tool calling operation.
 //
 // @param request - ConfirmRequest
 //
@@ -158,7 +158,7 @@ func (client *Client) ConfirmWithContext(ctx context.Context, request *ConfirmRe
 
 // Summary:
 //
-// 聊天中断接口
+// Interrupts a chat session.
 //
 // @param request - InterruptRequest
 //

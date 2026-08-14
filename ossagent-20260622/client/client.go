@@ -24,7 +24,7 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 聊天流式接口
+// Initiates a streaming chat session.
 //
 // @param request - ChatRequest
 //
@@ -75,7 +75,7 @@ func (client *Client) ChatWithSSE(request *ChatRequest, headers map[string]*stri
 
 // Summary:
 //
-// 聊天流式接口
+// Initiates a streaming chat session.
 //
 // @param request - ChatRequest
 //
@@ -126,7 +126,7 @@ func (client *Client) ChatWithOptions(request *ChatRequest, headers map[string]*
 
 // Summary:
 //
-// 聊天流式接口
+// Initiates a streaming chat session.
 //
 // @param request - ChatRequest
 //
@@ -145,7 +145,7 @@ func (client *Client) Chat(request *ChatRequest) (_result *ChatResponse, _err er
 
 // Summary:
 //
-// 工具确认接口
+// Confirms a tool calling operation.
 //
 // @param request - ConfirmRequest
 //
@@ -162,7 +162,7 @@ func (client *Client) ConfirmWithSSE(request *ConfirmRequest, headers map[string
 
 // Summary:
 //
-// 工具确认接口
+// Confirms a tool calling operation.
 //
 // @param request - ConfirmRequest
 //
@@ -225,7 +225,7 @@ func (client *Client) ConfirmWithOptions(request *ConfirmRequest, headers map[st
 
 // Summary:
 //
-// 工具确认接口
+// Confirms a tool calling operation.
 //
 // @param request - ConfirmRequest
 //
@@ -244,7 +244,7 @@ func (client *Client) Confirm(request *ConfirmRequest) (_result *ConfirmResponse
 
 // Summary:
 //
-// 聊天中断接口
+// Interrupts a chat session.
 //
 // @param request - InterruptRequest
 //
@@ -285,7 +285,7 @@ func (client *Client) InterruptWithOptions(sessionId *string, request *Interrupt
 
 // Summary:
 //
-// 聊天中断接口
+// Interrupts a chat session.
 //
 // @param request - InterruptRequest
 //

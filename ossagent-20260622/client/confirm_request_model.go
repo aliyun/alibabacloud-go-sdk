@@ -22,10 +22,31 @@ type iConfirmRequest interface {
 }
 
 type ConfirmRequest struct {
-	Confirmed *bool                      `json:"confirmed,omitempty" xml:"confirmed,omitempty"`
-	Phase     *string                    `json:"phase,omitempty" xml:"phase,omitempty"`
-	Reason    *string                    `json:"reason,omitempty" xml:"reason,omitempty"`
-	SessionId *string                    `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// Specifies whether to approve the tool execution.
+	//
+	// example:
+	//
+	// true
+	Confirmed *bool `json:"confirmed,omitempty" xml:"confirmed,omitempty"`
+	// The current execution phase.
+	//
+	// example:
+	//
+	// PARAM_INPUT
+	Phase *string `json:"phase,omitempty" xml:"phase,omitempty"`
+	// The reason for whether to call the tool.
+	//
+	// example:
+	//
+	// null
+	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
+	// The Q&A session ID.
+	//
+	// example:
+	//
+	// UUID
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// The tool invocations.
 	ToolCalls []*ConfirmRequestToolCalls `json:"toolCalls,omitempty" xml:"toolCalls,omitempty" type:"Repeated"`
 }
 
@@ -96,9 +117,30 @@ func (s *ConfirmRequest) Validate() error {
 }
 
 type ConfirmRequestToolCalls struct {
-	Id            *string                `json:"id,omitempty" xml:"id,omitempty"`
+	// The tool ID, returned by the Chat operation.
+	//
+	// example:
+	//
+	// call_662cc029b3444d8d923a7ea6
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The command to execute for the tool calling operation, returned by the Chat operation.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "command": "api put-bucket-acl --bucket xxx --acl private",
+	//
+	//     "region": "cn-hangzhou"
+	//
+	// }
 	ModifiedInput map[string]interface{} `json:"modifiedInput,omitempty" xml:"modifiedInput,omitempty"`
-	Name          *string                `json:"name,omitempty" xml:"name,omitempty"`
+	// The consumer name.
+	//
+	// example:
+	//
+	// ossutil_safe
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ConfirmRequestToolCalls) String() string {
