@@ -20,11 +20,16 @@ type iListTranscriptionPhrasesResponseBody interface {
 }
 
 type ListTranscriptionPhrasesResponseBody struct {
+	// status code.
+	//
 	// example:
 	//
 	// 0
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response object.
 	Data *ListTranscriptionPhrasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// status description.
+	//
 	// example:
 	//
 	// success
@@ -91,15 +96,22 @@ func (s *ListTranscriptionPhrasesResponseBody) Validate() error {
 }
 
 type ListTranscriptionPhrasesResponseBodyData struct {
+	// error code.
+	//
 	// example:
 	//
 	// PHS.Exceed
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// error message.
+	//
 	// example:
 	//
 	// The num of the phrase exceeds the upper limit.
-	ErrorMessage *string                                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Phrases      []*ListTranscriptionPhrasesResponseBodyDataPhrases `json:"Phrases,omitempty" xml:"Phrases,omitempty" type:"Repeated"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Phrase objects.
+	Phrases []*ListTranscriptionPhrasesResponseBodyDataPhrases `json:"Phrases,omitempty" xml:"Phrases,omitempty" type:"Repeated"`
+	// Indicates whether the operation was successful.
+	//
 	// example:
 	//
 	// SUCCEEDED
@@ -164,14 +176,20 @@ func (s *ListTranscriptionPhrasesResponseBodyData) Validate() error {
 }
 
 type ListTranscriptionPhrasesResponseBodyDataPhrases struct {
+	// Phrase list description.
+	//
 	// example:
 	//
 	// custom fruit phrases list
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Phrase list name.
+	//
 	// example:
 	//
 	// fruit_phrase
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Phrase list ID.
+	//
 	// example:
 	//
 	// a93b91141c0f422fa114af203f8b****

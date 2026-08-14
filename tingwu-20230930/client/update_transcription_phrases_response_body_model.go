@@ -20,16 +20,21 @@ type iUpdateTranscriptionPhrasesResponseBody interface {
 }
 
 type UpdateTranscriptionPhrasesResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 0
-	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response object.
 	Data *UpdateTranscriptionPhrasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The status message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -91,14 +96,20 @@ func (s *UpdateTranscriptionPhrasesResponseBody) Validate() error {
 }
 
 type UpdateTranscriptionPhrasesResponseBodyData struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 0
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Indicates whether the operation succeeded.
+	//
 	// example:
 	//
 	// SUCCEEDED

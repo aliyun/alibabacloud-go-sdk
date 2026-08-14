@@ -18,16 +18,22 @@ type iCreateTranscriptionPhrasesRequest interface {
 }
 
 type CreateTranscriptionPhrasesRequest struct {
+	// The description of the phrases list.
+	//
 	// example:
 	//
 	// custom fruit phrases list
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the phrases list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// fruit_phrase
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// A JSON-formatted string that represents a map of words and their corresponding weights.
+	//
 	// This parameter is required.
 	//
 	// example:

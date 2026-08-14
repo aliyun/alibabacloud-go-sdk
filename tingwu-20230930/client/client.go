@@ -24,7 +24,10 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-beijing": dara.String("tingwu.cn-beijing.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +61,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 创建听悟任务
+// Create offline transcription and real-time meeting tasks in Tingwu.
 //
 // @param request - CreateTaskRequest
 //
@@ -123,7 +126,7 @@ func (client *Client) CreateTaskWithOptions(request *CreateTaskRequest, headers 
 
 // Summary:
 //
-// 创建听悟任务
+// Create offline transcription and real-time meeting tasks in Tingwu.
 //
 // @param request - CreateTaskRequest
 //
@@ -142,7 +145,7 @@ func (client *Client) CreateTask(request *CreateTaskRequest) (_result *CreateTas
 
 // Summary:
 //
-// 创建热词词表
+// Creates a custom vocabulary of transcription phrases.
 //
 // @param request - CreateTranscriptionPhrasesRequest
 //
@@ -197,7 +200,7 @@ func (client *Client) CreateTranscriptionPhrasesWithOptions(request *CreateTrans
 
 // Summary:
 //
-// 创建热词词表
+// Creates a custom vocabulary of transcription phrases.
 //
 // @param request - CreateTranscriptionPhrasesRequest
 //
@@ -216,7 +219,7 @@ func (client *Client) CreateTranscriptionPhrases(request *CreateTranscriptionPhr
 
 // Summary:
 //
-// 删除词表
+// Deletes phrase tables.
 //
 // @param headers - map
 //
@@ -249,7 +252,7 @@ func (client *Client) DeleteTranscriptionPhrasesWithOptions(PhraseId *string, he
 
 // Summary:
 //
-// 删除词表
+// Deletes phrase tables.
 //
 // @return DeleteTranscriptionPhrasesResponse
 func (client *Client) DeleteTranscriptionPhrases(PhraseId *string) (_result *DeleteTranscriptionPhrasesResponse, _err error) {
@@ -266,7 +269,7 @@ func (client *Client) DeleteTranscriptionPhrases(PhraseId *string) (_result *Del
 
 // Summary:
 //
-// 查询听悟任务信息
+// Query the job status and job result.
 //
 // @param headers - map
 //
@@ -299,7 +302,7 @@ func (client *Client) GetTaskInfoWithOptions(TaskId *string, headers map[string]
 
 // Summary:
 //
-// 查询听悟任务信息
+// Query the job status and job result.
 //
 // @return GetTaskInfoResponse
 func (client *Client) GetTaskInfo(TaskId *string) (_result *GetTaskInfoResponse, _err error) {
@@ -316,7 +319,7 @@ func (client *Client) GetTaskInfo(TaskId *string) (_result *GetTaskInfoResponse,
 
 // Summary:
 //
-// 查询热词词表信息
+// Queries information about hotword lists.
 //
 // @param headers - map
 //
@@ -349,7 +352,7 @@ func (client *Client) GetTranscriptionPhrasesWithOptions(PhraseId *string, heade
 
 // Summary:
 //
-// 查询热词词表信息
+// Queries information about hotword lists.
 //
 // @return GetTranscriptionPhrasesResponse
 func (client *Client) GetTranscriptionPhrases(PhraseId *string) (_result *GetTranscriptionPhrasesResponse, _err error) {
@@ -366,7 +369,7 @@ func (client *Client) GetTranscriptionPhrases(PhraseId *string) (_result *GetTra
 
 // Summary:
 //
-// 列举用户所有热词词表信息
+// Lists all of a user\\"s hot phrase lists.
 //
 // @param headers - map
 //
@@ -399,7 +402,7 @@ func (client *Client) ListTranscriptionPhrasesWithOptions(headers map[string]*st
 
 // Summary:
 //
-// 列举用户所有热词词表信息
+// Lists all of a user\\"s hot phrase lists.
 //
 // @return ListTranscriptionPhrasesResponse
 func (client *Client) ListTranscriptionPhrases() (_result *ListTranscriptionPhrasesResponse, _err error) {
@@ -416,7 +419,7 @@ func (client *Client) ListTranscriptionPhrases() (_result *ListTranscriptionPhra
 
 // Summary:
 //
-// 更新热词词表
+// Update a hotword list.
 //
 // @param request - UpdateTranscriptionPhrasesRequest
 //
@@ -471,7 +474,7 @@ func (client *Client) UpdateTranscriptionPhrasesWithOptions(PhraseId *string, re
 
 // Summary:
 //
-// 更新热词词表
+// Update a hotword list.
 //
 // @param request - UpdateTranscriptionPhrasesRequest
 //

@@ -20,16 +20,21 @@ type iGetTranscriptionPhrasesResponseBody interface {
 }
 
 type GetTranscriptionPhrasesResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// 0
-	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response object.
 	Data *GetTranscriptionPhrasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Status message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// Request ID.
 	//
 	// example:
 	//
@@ -91,15 +96,22 @@ func (s *GetTranscriptionPhrasesResponseBody) Validate() error {
 }
 
 type GetTranscriptionPhrasesResponseBodyData struct {
+	// Error code.
+	//
 	// example:
 	//
 	// 0
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// success
-	ErrorMessage *string                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Phrases      []*GetTranscriptionPhrasesResponseBodyDataPhrases `json:"Phrases,omitempty" xml:"Phrases,omitempty" type:"Repeated"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Hotword objects.
+	Phrases []*GetTranscriptionPhrasesResponseBodyDataPhrases `json:"Phrases,omitempty" xml:"Phrases,omitempty" type:"Repeated"`
+	// Indicates whether the operation succeeded.
+	//
 	// example:
 	//
 	// SUCCEEDED
@@ -164,18 +176,26 @@ func (s *GetTranscriptionPhrasesResponseBodyData) Validate() error {
 }
 
 type GetTranscriptionPhrasesResponseBodyDataPhrases struct {
+	// Hotword list description.
+	//
 	// example:
 	//
 	// custom fruit phrases list
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Hotword list name.
+	//
 	// example:
 	//
 	// fruit_phrase
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// ID of the phrase list.
+	//
 	// example:
 	//
 	// a93b91141c0f422fa114af203f8b****
 	PhraseId *string `json:"PhraseId,omitempty" xml:"PhraseId,omitempty"`
+	// Words and their weights in the hotword list, formatted as a JSON map string.
+	//
 	// example:
 	//
 	// {"苹果":3,"西瓜":3}

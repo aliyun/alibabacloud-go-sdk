@@ -20,11 +20,16 @@ type iCreateTranscriptionPhrasesResponseBody interface {
 }
 
 type CreateTranscriptionPhrasesResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 0
-	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned object.
 	Data *CreateTranscriptionPhrasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// A description of the status.
+	//
 	// example:
 	//
 	// success
@@ -91,18 +96,26 @@ func (s *CreateTranscriptionPhrasesResponseBody) Validate() error {
 }
 
 type CreateTranscriptionPhrasesResponseBodyData struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 0
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the phrases list.
+	//
 	// example:
 	//
 	// a93b91141c0f422fa114af203f8b****
 	PhraseId *string `json:"PhraseId,omitempty" xml:"PhraseId,omitempty"`
+	// Indicates whether the operation was successful.
+	//
 	// example:
 	//
 	// SUCCEEDED

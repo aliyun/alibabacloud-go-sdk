@@ -20,15 +20,22 @@ type iCreateTaskResponseBody interface {
 }
 
 type CreateTaskResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 0
-	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *CreateTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The status message.
+	//
 	// example:
 	//
 	// Success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID, used for troubleshooting only.
+	//
 	// example:
 	//
 	// 35124E1C-AE99-5D6C-A52E-BD689D8D****
@@ -89,15 +96,29 @@ func (s *CreateTaskResponseBody) Validate() error {
 }
 
 type CreateTaskResponseBodyData struct {
+	// The stream ingestion URL. Push audio streams to this URL for real-time transcription.
+	//
+	// example:
+	//
+	// wss://tingwu-realtime-cn-beijing.aliyuncs.com/api/ws/v1?mc=****
 	MeetingJoinUrl *string `json:"MeetingJoinUrl,omitempty" xml:"MeetingJoinUrl,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// c5394c6ee0fb474899d42215a3925c7e
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The custom identifier specified during task creation.
+	//
 	// example:
 	//
 	// task_tingwu_123
-	TaskKey    *string `json:"TaskKey,omitempty" xml:"TaskKey,omitempty"`
+	TaskKey *string `json:"TaskKey,omitempty" xml:"TaskKey,omitempty"`
+	// The task status.
+	//
+	// example:
+	//
+	// ONGOING
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 

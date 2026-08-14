@@ -20,15 +20,22 @@ type iGetTaskInfoResponseBody interface {
 }
 
 type GetTaskInfoResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 0
-	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned object.
 	Data *GetTaskInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Status description.
+	//
 	// example:
 	//
 	// Success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID, used only for joint debugging.
+	//
 	// example:
 	//
 	// 35124E1C-AE99-5D6C-A52E-BD689D8D****
@@ -89,24 +96,69 @@ func (s *GetTaskInfoResponseBody) Validate() error {
 }
 
 type GetTaskInfoResponseBodyData struct {
-	ErrorCode           *string                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage        *string                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	OutputMp3Path       *string                            `json:"OutputMp3Path,omitempty" xml:"OutputMp3Path,omitempty"`
-	OutputMp4Path       *string                            `json:"OutputMp4Path,omitempty" xml:"OutputMp4Path,omitempty"`
-	OutputSpectrumPath  *string                            `json:"OutputSpectrumPath,omitempty" xml:"OutputSpectrumPath,omitempty"`
-	OutputThumbnailPath *string                            `json:"OutputThumbnailPath,omitempty" xml:"OutputThumbnailPath,omitempty"`
-	Result              *GetTaskInfoResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Error code
+	//
+	// example:
+	//
+	// TSC.AudioFormat
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message
+	//
+	// example:
+	//
+	// Audio format invalid.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// URL link to the MP3 conversion result
+	//
+	// example:
+	//
+	// http://xxxx.com/tingwu/output/1738248324/094e964bf0e04e39/094e964bf0e04e39_20231222101008.mp3?Expires=1706064016
+	OutputMp3Path *string `json:"OutputMp3Path,omitempty" xml:"OutputMp3Path,omitempty"`
+	// URL link to the MP4 conversion result
+	//
+	// example:
+	//
+	// http://xxxx.com/tingwu/output/1738248324/094e964bf0e04e39/094e964bf0e04e39_20231222101008.mp4?Expires=1706064016
+	OutputMp4Path *string `json:"OutputMp4Path,omitempty" xml:"OutputMp4Path,omitempty"`
+	// URL link to the audio waveform graph
+	//
+	// example:
+	//
+	// http://xxxx.com/tingwu/output/1738248324/094e964bf0e04e39/094e964bf0e04e39_20231222101008.spectrum?Expires=1706064016
+	OutputSpectrumPath *string `json:"OutputSpectrumPath,omitempty" xml:"OutputSpectrumPath,omitempty"`
+	// URL link to the video thumbnail
+	//
+	// example:
+	//
+	// http://xxxx.com/tingwu/output/1738248324/094e964bf0e04e39/094e964bf0e04e39_20231222101008.png?Expires=1706064016
+	OutputThumbnailPath *string `json:"OutputThumbnailPath,omitempty" xml:"OutputThumbnailPath,omitempty"`
+	// A collection of results from various algorithm processing tasks. The result is returned as an HTTP link, which the user can use to parse the native result.
+	Result *GetTaskInfoResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Job ID.
+	//
 	// example:
 	//
 	// c5394c6ee0fb474899d42215a3925c7e
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The custom ID set by the user when creating the job.
+	//
 	// example:
 	//
 	// task_tingwu_123
 	TaskKey *string `json:"TaskKey,omitempty" xml:"TaskKey,omitempty"`
+	// Task Status.
+	//
+	// - ONGOING: The job is in progress.
+	//
+	// - COMPLETED: The job is completed.
+	//
+	// - FAILED: The job has failed.
+	//
+	// - INVALID: The job is invalid.
+	//
 	// example:
 	//
-	// COMPLETE
+	// COMPLETED
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
@@ -218,17 +270,72 @@ func (s *GetTaskInfoResponseBodyData) Validate() error {
 }
 
 type GetTaskInfoResponseBodyDataResult struct {
-	AutoChapters        *string `json:"AutoChapters,omitempty" xml:"AutoChapters,omitempty"`
-	ContentExtraction   *string `json:"ContentExtraction,omitempty" xml:"ContentExtraction,omitempty"`
-	CustomPrompt        *string `json:"CustomPrompt,omitempty" xml:"CustomPrompt,omitempty"`
+	// Link to the result of the Auto Chapters feature.
+	//
+	// example:
+	//
+	// http://xxxx.com/tingwu/output/1738248324/094e964bf0e04e39/094e964bf0e04e39_AutoChapters_20231222101215.json?Expires=1706064016
+	AutoChapters *string `json:"AutoChapters,omitempty" xml:"AutoChapters,omitempty"`
+	// URL link to the result of conversation content extraction
+	//
+	// example:
+	//
+	// http://xxxx.com/tingwu/output/1738248324/094e964bf0e04e39/094e964bf0e04e39_ ContentExtraction_20231222101215.json?Expires=1706064016
+	ContentExtraction *string `json:"ContentExtraction,omitempty" xml:"ContentExtraction,omitempty"`
+	// Link to the result of the Custom prompt
+	//
+	// example:
+	//
+	// http://xxxx.com/tingwu/output/1738248324/094e964bf0e04e39/094e964bf0e04e39_ CustomPrompt_20231222101215.json?Expires=1706064016
+	CustomPrompt *string `json:"CustomPrompt,omitempty" xml:"CustomPrompt,omitempty"`
+	// The URL link to the identity recognition result.
+	//
+	// example:
+	//
+	// http://xxxx.com/tingwu/output/1738248324/094e964bf0e04e39/094e964bf0e04e39_ IdentityRecognition_20231222101215.json?Expires=1706064016
 	IdentityRecognition *string `json:"IdentityRecognition,omitempty" xml:"IdentityRecognition,omitempty"`
-	MeetingAssistance   *string `json:"MeetingAssistance,omitempty" xml:"MeetingAssistance,omitempty"`
-	PptExtraction       *string `json:"PptExtraction,omitempty" xml:"PptExtraction,omitempty"`
-	ServiceInspection   *string `json:"ServiceInspection,omitempty" xml:"ServiceInspection,omitempty"`
-	Summarization       *string `json:"Summarization,omitempty" xml:"Summarization,omitempty"`
-	TextPolish          *string `json:"TextPolish,omitempty" xml:"TextPolish,omitempty"`
-	Transcription       *string `json:"Transcription,omitempty" xml:"Transcription,omitempty"`
-	Translation         *string `json:"Translation,omitempty" xml:"Translation,omitempty"`
+	// URL link to the result of Intelligent Meeting Summary
+	//
+	// example:
+	//
+	// http://xxxx.com/tingwu/output/1738248324/094e964bf0e04e39/094e964bf0e04e39_MeetingAssistance_20231222101112.json?Expires=1706064016
+	MeetingAssistance *string `json:"MeetingAssistance,omitempty" xml:"MeetingAssistance,omitempty"`
+	// URL link to the result of video PPT extraction and summarization
+	//
+	// example:
+	//
+	// http://xxxx.com/tingwu/output/1738248324/094e964bf0e04e39/094e964bf0e04e39_PptExtraction_20231222101215.json?Expires=1706064016
+	PptExtraction *string `json:"PptExtraction,omitempty" xml:"PptExtraction,omitempty"`
+	// Link to the result of service inspection
+	//
+	// example:
+	//
+	// http://xxxx.com/tingwu/output/1738248324/094e964bf0e04e39/094e964bf0e04e39_ ServiceInspection_20231222101215.json?Expires=1706064016
+	ServiceInspection *string `json:"ServiceInspection,omitempty" xml:"ServiceInspection,omitempty"`
+	// Link to the result of LLM-based summarization.
+	//
+	// example:
+	//
+	// http://xxxx.com/tingwu/output/1738248324/094e964bf0e04e39/094e964bf0e04e39_Summarization_20231222101215.json?Expires=1706064016
+	Summarization *string `json:"Summarization,omitempty" xml:"Summarization,omitempty"`
+	// Link to the result of spoken-to-written text conversion
+	//
+	// example:
+	//
+	// http://xxxx.com/tingwu/output/1738248324/094e964bf0e04e39/094e964bf0e04e39_TextPolish_20231222101215.json?Expires=1706064016
+	TextPolish *string `json:"TextPolish,omitempty" xml:"TextPolish,omitempty"`
+	// Link to the result of speech transcription.
+	//
+	// example:
+	//
+	// http://xxxx.com/tingwu/output/1738248324/094e964bf0e04e39/094e964bf0e04e39_Transcription_20231222101008.json?Expires=1706064016
+	Transcription *string `json:"Transcription,omitempty" xml:"Transcription,omitempty"`
+	// URL link to the result of text translation
+	//
+	// example:
+	//
+	// http://xxxx.com/tingwu/output/1738248324/094e964bf0e04e39/094e964bf0e04e39_Translation_20231222101215.json?Expires=1706064016
+	Translation *string `json:"Translation,omitempty" xml:"Translation,omitempty"`
 }
 
 func (s GetTaskInfoResponseBodyDataResult) String() string {

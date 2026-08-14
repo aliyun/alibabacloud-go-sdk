@@ -18,16 +18,22 @@ type iUpdateTranscriptionPhrasesRequest interface {
 }
 
 type UpdateTranscriptionPhrasesRequest struct {
+	// A description of the hotword list.
+	//
 	// example:
 	//
 	// custom fruit phrases list
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the hotword list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// fruit_phrase
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// A JSON map string that defines hotwords and their weights.
+	//
 	// This parameter is required.
 	//
 	// example:

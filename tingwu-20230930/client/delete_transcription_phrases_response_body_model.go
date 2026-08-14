@@ -21,14 +21,20 @@ type iDeleteTranscriptionPhrasesResponseBody interface {
 
 type DeleteTranscriptionPhrasesResponseBody struct {
 	Data *DeleteTranscriptionPhrasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error code.
+	//
 	// example:
 	//
 	// 0
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Is the operation successful?
+	//
 	// example:
 	//
 	// SUCCEEDED
@@ -89,9 +95,12 @@ func (s *DeleteTranscriptionPhrasesResponseBody) Validate() error {
 }
 
 type DeleteTranscriptionPhrasesResponseBodyData struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Is the operation successful?
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DeleteTranscriptionPhrasesResponseBodyData) String() string {

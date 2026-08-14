@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 创建听悟任务
+// Create offline transcription and real-time meeting tasks in Tingwu.
 //
 // @param request - CreateTaskRequest
 //
@@ -74,7 +74,7 @@ func (client *Client) CreateTaskWithContext(ctx context.Context, request *Create
 
 // Summary:
 //
-// 创建热词词表
+// Creates a custom vocabulary of transcription phrases.
 //
 // @param request - CreateTranscriptionPhrasesRequest
 //
@@ -129,7 +129,7 @@ func (client *Client) CreateTranscriptionPhrasesWithContext(ctx context.Context,
 
 // Summary:
 //
-// 删除词表
+// Deletes phrase tables.
 //
 // @param headers - map
 //
@@ -162,7 +162,7 @@ func (client *Client) DeleteTranscriptionPhrasesWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询听悟任务信息
+// Query the job status and job result.
 //
 // @param headers - map
 //
@@ -195,7 +195,7 @@ func (client *Client) GetTaskInfoWithContext(ctx context.Context, TaskId *string
 
 // Summary:
 //
-// 查询热词词表信息
+// Queries information about hotword lists.
 //
 // @param headers - map
 //
@@ -228,7 +228,7 @@ func (client *Client) GetTranscriptionPhrasesWithContext(ctx context.Context, Ph
 
 // Summary:
 //
-// 列举用户所有热词词表信息
+// Lists all of a user\\"s hot phrase lists.
 //
 // @param headers - map
 //
@@ -261,7 +261,7 @@ func (client *Client) ListTranscriptionPhrasesWithContext(ctx context.Context, h
 
 // Summary:
 //
-// 更新热词词表
+// Update a hotword list.
 //
 // @param request - UpdateTranscriptionPhrasesRequest
 //
