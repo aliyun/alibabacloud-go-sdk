@@ -185,8 +185,9 @@ type DescribeCreditDetailResponseBodyDataDetails struct {
 	//
 	// example:
 	//
-	// Open Xiaohongshu.
+	// Open Xiaohongshu
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DurationMs  *int64  `json:"DurationMs,omitempty" xml:"DurationMs,omitempty"`
 	InputTokens *int64  `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
 	// The instance ID.
 	//
@@ -211,6 +212,7 @@ type DescribeCreditDetailResponseBodyDataDetails struct {
 	// t-1fr0k51pozyr5****
 	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	TotalTokens *int64  `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+	TtftMs      *int64  `json:"TtftMs,omitempty" xml:"TtftMs,omitempty"`
 }
 
 func (s DescribeCreditDetailResponseBodyDataDetails) String() string {
@@ -239,6 +241,10 @@ func (s *DescribeCreditDetailResponseBodyDataDetails) GetCreditChange() *string 
 
 func (s *DescribeCreditDetailResponseBodyDataDetails) GetDescription() *string {
 	return s.Description
+}
+
+func (s *DescribeCreditDetailResponseBodyDataDetails) GetDurationMs() *int64 {
+	return s.DurationMs
 }
 
 func (s *DescribeCreditDetailResponseBodyDataDetails) GetInputTokens() *int64 {
@@ -277,6 +283,10 @@ func (s *DescribeCreditDetailResponseBodyDataDetails) GetTotalTokens() *int64 {
 	return s.TotalTokens
 }
 
+func (s *DescribeCreditDetailResponseBodyDataDetails) GetTtftMs() *int64 {
+	return s.TtftMs
+}
+
 func (s *DescribeCreditDetailResponseBodyDataDetails) SetApiKeyName(v string) *DescribeCreditDetailResponseBodyDataDetails {
 	s.ApiKeyName = &v
 	return s
@@ -299,6 +309,11 @@ func (s *DescribeCreditDetailResponseBodyDataDetails) SetCreditChange(v string) 
 
 func (s *DescribeCreditDetailResponseBodyDataDetails) SetDescription(v string) *DescribeCreditDetailResponseBodyDataDetails {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeCreditDetailResponseBodyDataDetails) SetDurationMs(v int64) *DescribeCreditDetailResponseBodyDataDetails {
+	s.DurationMs = &v
 	return s
 }
 
@@ -344,6 +359,11 @@ func (s *DescribeCreditDetailResponseBodyDataDetails) SetTaskId(v string) *Descr
 
 func (s *DescribeCreditDetailResponseBodyDataDetails) SetTotalTokens(v int64) *DescribeCreditDetailResponseBodyDataDetails {
 	s.TotalTokens = &v
+	return s
+}
+
+func (s *DescribeCreditDetailResponseBodyDataDetails) SetTtftMs(v int64) *DescribeCreditDetailResponseBodyDataDetails {
+	s.TtftMs = &v
 	return s
 }
 

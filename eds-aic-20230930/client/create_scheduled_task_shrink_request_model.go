@@ -58,7 +58,7 @@ type CreateScheduledTaskShrinkRequest struct {
 	//
 	// example:
 	//
-	// Auto-reply to DingTalk messages.
+	// Auto-reply to DingTalk messages
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The user prompt.
 	//
@@ -66,7 +66,7 @@ type CreateScheduledTaskShrinkRequest struct {
 	//
 	// example:
 	//
-	// Open DingTalk and reply to the first 5 unread messages.
+	// Open DingTalk and reply to the first 5 unread messages
 	UserPrompt *string `json:"UserPrompt,omitempty" xml:"UserPrompt,omitempty"`
 }
 

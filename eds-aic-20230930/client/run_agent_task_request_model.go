@@ -15,6 +15,8 @@ type iRunAgentTaskRequest interface {
 	GetInstanceIds() []*string
 	SetMaxSteps(v int32) *RunAgentTaskRequest
 	GetMaxSteps() *int32
+	SetRunConfig(v *RunAgentTaskRequestRunConfig) *RunAgentTaskRequest
+	GetRunConfig() *RunAgentTaskRequestRunConfig
 	SetScheduleId(v string) *RunAgentTaskRequest
 	GetScheduleId() *string
 	SetTargets(v []*RunAgentTaskRequestTargets) *RunAgentTaskRequest
@@ -42,21 +44,27 @@ type RunAgentTaskRequest struct {
 	//
 	// 30
 	MaxSteps *int32 `json:"MaxSteps,omitempty" xml:"MaxSteps,omitempty"`
-	// The scheduling plan ID. When specified, execution records are associated with the corresponding scheduled node, which facilitates aggregation query by scheduling dimension.
+	// The runtime configuration that carries the runtime parameters (skills) for this task.
+	//
+	// example:
+	//
+	// {"Skills":["sk-abc","sk-def"]}
+	RunConfig *RunAgentTaskRequestRunConfig `json:"RunConfig,omitempty" xml:"RunConfig,omitempty" type:"Struct"`
+	// The scheduling plan ID. When specified, the execution record is associated with the corresponding scheduled node, which facilitates aggregate query by scheduling dimension through aggregation.
 	//
 	// example:
 	//
 	// sch-260625-pbj2****
 	ScheduleId *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
-	// The array of target objects. Each element contains an InstanceId and a SessionId.
+	// The Targets array. Each element is an object that contains InstanceId and SessionId.
 	Targets []*RunAgentTaskRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
-	// The task configuration ID used to trigger a task with the specified configuration.
+	// The task configuration ID. This parameter is used to trigger a task with the specified configuration.
 	//
 	// example:
 	//
 	// tsk-260625-49be****
 	TaskConfigId *string `json:"TaskConfigId,omitempty" xml:"TaskConfigId,omitempty"`
-	// The timeout period of the task, in seconds. Valid values: 300 to 3600. Default value: 3600.
+	// The task timeout period, in seconds. Valid values: 300 to 3600. Default value: 3600.
 	//
 	// example:
 	//
@@ -66,7 +74,7 @@ type RunAgentTaskRequest struct {
 	//
 	// example:
 	//
-	// 去应用宝下载钉钉
+	// Go to App Store and download DingTalk
 	UserPrompt *string `json:"UserPrompt,omitempty" xml:"UserPrompt,omitempty"`
 }
 
@@ -88,6 +96,10 @@ func (s *RunAgentTaskRequest) GetInstanceIds() []*string {
 
 func (s *RunAgentTaskRequest) GetMaxSteps() *int32 {
 	return s.MaxSteps
+}
+
+func (s *RunAgentTaskRequest) GetRunConfig() *RunAgentTaskRequestRunConfig {
+	return s.RunConfig
 }
 
 func (s *RunAgentTaskRequest) GetScheduleId() *string {
@@ -125,6 +137,11 @@ func (s *RunAgentTaskRequest) SetMaxSteps(v int32) *RunAgentTaskRequest {
 	return s
 }
 
+func (s *RunAgentTaskRequest) SetRunConfig(v *RunAgentTaskRequestRunConfig) *RunAgentTaskRequest {
+	s.RunConfig = v
+	return s
+}
+
 func (s *RunAgentTaskRequest) SetScheduleId(v string) *RunAgentTaskRequest {
 	s.ScheduleId = &v
 	return s
@@ -151,6 +168,11 @@ func (s *RunAgentTaskRequest) SetUserPrompt(v string) *RunAgentTaskRequest {
 }
 
 func (s *RunAgentTaskRequest) Validate() error {
+	if s.RunConfig != nil {
+		if err := s.RunConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Targets != nil {
 		for _, item := range s.Targets {
 			if item != nil {
@@ -161,6 +183,36 @@ func (s *RunAgentTaskRequest) Validate() error {
 		}
 	}
 	return nil
+}
+
+type RunAgentTaskRequestRunConfig struct {
+	// The list of skill IDs. A maximum of 10 skill IDs are supported. Only the first skill is passed through during command delivery. All skills are stored in task_skill_relation for reverse lookup.
+	//
+	// example:
+	//
+	// ["sk-abc","sk-def"]
+	Skills []*string `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
+}
+
+func (s RunAgentTaskRequestRunConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunAgentTaskRequestRunConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RunAgentTaskRequestRunConfig) GetSkills() []*string {
+	return s.Skills
+}
+
+func (s *RunAgentTaskRequestRunConfig) SetSkills(v []*string) *RunAgentTaskRequestRunConfig {
+	s.Skills = v
+	return s
+}
+
+func (s *RunAgentTaskRequestRunConfig) Validate() error {
+	return dara.Validate(s)
 }
 
 type RunAgentTaskRequestTargets struct {

@@ -54,7 +54,7 @@ type ModifyScheduledTaskRequest struct {
 	//
 	// sch-260705-agb*****
 	ScheduledId *string `json:"ScheduledId,omitempty" xml:"ScheduledId,omitempty"`
-	// The status switch: ACTIVE/DISABLED.
+	// Switches the status. Valid values: ACTIVE and DISABLED.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type ModifyScheduledTaskRequest struct {
 	//
 	// example:
 	//
-	// NewTaskName.
+	// NewTaskName
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The CAS version number.
 	//
@@ -78,7 +78,7 @@ type ModifyScheduledTaskRequest struct {
 	//
 	// example:
 	//
-	// Execute daily data synchronization task.
+	// Execute daily data synchronization task
 	UserPrompt *string `json:"UserPrompt,omitempty" xml:"UserPrompt,omitempty"`
 }
 
@@ -172,7 +172,7 @@ func (s *ModifyScheduledTaskRequest) Validate() error {
 }
 
 type ModifyScheduledTaskRequestRunConfig struct {
-	// The extended parameters as a JSON string.
+	// The extended parameter JSON string.
 	//
 	// example:
 	//
@@ -184,7 +184,16 @@ type ModifyScheduledTaskRequestRunConfig struct {
 	//
 	// 10
 	MaxSteps *int32 `json:"MaxSteps,omitempty" xml:"MaxSteps,omitempty"`
-	// The timeout in seconds.
+	// The list of skill IDs. A maximum of 1 skill ID is supported. The value overwrites aim_task_config.run_config after modification.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// ["sk-abc"]
+	Skills []*string `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
+	// The timeout period, in seconds.
 	//
 	// example:
 	//
@@ -208,6 +217,10 @@ func (s *ModifyScheduledTaskRequestRunConfig) GetMaxSteps() *int32 {
 	return s.MaxSteps
 }
 
+func (s *ModifyScheduledTaskRequestRunConfig) GetSkills() []*string {
+	return s.Skills
+}
+
 func (s *ModifyScheduledTaskRequestRunConfig) GetTimeoutSeconds() *int32 {
 	return s.TimeoutSeconds
 }
@@ -219,6 +232,11 @@ func (s *ModifyScheduledTaskRequestRunConfig) SetExtraParams(v string) *ModifySc
 
 func (s *ModifyScheduledTaskRequestRunConfig) SetMaxSteps(v int32) *ModifyScheduledTaskRequestRunConfig {
 	s.MaxSteps = &v
+	return s
+}
+
+func (s *ModifyScheduledTaskRequestRunConfig) SetSkills(v []*string) *ModifyScheduledTaskRequestRunConfig {
+	s.Skills = v
 	return s
 }
 

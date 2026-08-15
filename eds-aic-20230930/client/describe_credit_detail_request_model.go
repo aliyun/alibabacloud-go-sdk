@@ -38,7 +38,7 @@ type DescribeCreditDetailRequest struct {
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	MaxResults  *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken   *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The list of plan packages or credit top-up packages.
+	// The list of plan packages or credit booster packages.
 	PackageIds []*string `json:"PackageIds,omitempty" xml:"PackageIds,omitempty" type:"Repeated"`
 	// The page number. Default value: 1.
 	//

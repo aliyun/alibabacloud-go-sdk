@@ -13,6 +13,8 @@ type iRenewMobileAgentPackageRequest interface {
 	GetAutoPay() *bool
 	SetAutoRenew(v bool) *RenewMobileAgentPackageRequest
 	GetAutoRenew() *bool
+	SetClientToken(v string) *RenewMobileAgentPackageRequest
+	GetClientToken() *string
 	SetMobileAgentPackageIds(v []*string) *RenewMobileAgentPackageRequest
 	GetMobileAgentPackageIds() []*string
 	SetPaidCallbackUrl(v string) *RenewMobileAgentPackageRequest
@@ -28,37 +30,44 @@ type iRenewMobileAgentPackageRequest interface {
 type RenewMobileAgentPackageRequest struct {
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// - **true**: Enables automatic payment. Make sure that your account balance is sufficient.
+	// - **true**: Automatic payment is enabled. Make sure that your account balance is sufficient.
 	//
-	// - **false*	- (default): Generates an unpaid order.
+	// - **false*	- (default): Only an order is generated. No payment is made.
 	//
-	// > If your account balance is insufficient, set this parameter to `false` to generate an unpaid order. You can then pay for the order in the Wuying Mobile Cloud Phone management console.
+	//
+	//
+	//
+	// > If your payment method has an insufficient balance, set this parameter to false. An unpaid order is generated, and you can log on to the Elastic Cloud Phone console to complete the payment.
+	//
+	// >
 	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Specifies whether to enable auto-renewal. The default value is `false`.
+	// Specifies whether to enable auto-renewal. Default value: false.
 	//
 	// example:
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// A list of mobile agent package IDs.
+	// The idempotence key.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The list of resource plan IDs.
 	MobileAgentPackageIds []*string `json:"MobileAgentPackageIds,omitempty" xml:"MobileAgentPackageIds,omitempty" type:"Repeated"`
-	// The URL to which a user is redirected after a successful payment.
+	// The redirect URL after a successful payment.
 	//
 	// example:
 	//
 	// https://aim.wuying.aliyun.com/nodes
 	PaidCallbackUrl *string `json:"PaidCallbackUrl,omitempty" xml:"PaidCallbackUrl,omitempty"`
-	// The renewal period. The `PeriodUnit` parameter specifies the time unit.
+	// The duration for which you want to purchase the resource. The unit is specified by `PeriodUnit`.
 	//
 	// example:
 	//
 	// 6
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the renewal period.
+	// The unit of the duration for which you want to purchase the resource.
 	//
 	// Valid values:
 	//
@@ -70,7 +79,7 @@ type RenewMobileAgentPackageRequest struct {
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The promotion ID.
+	// The ID of the promotional campaign.
 	//
 	// example:
 	//
@@ -92,6 +101,10 @@ func (s *RenewMobileAgentPackageRequest) GetAutoPay() *bool {
 
 func (s *RenewMobileAgentPackageRequest) GetAutoRenew() *bool {
 	return s.AutoRenew
+}
+
+func (s *RenewMobileAgentPackageRequest) GetClientToken() *string {
+	return s.ClientToken
 }
 
 func (s *RenewMobileAgentPackageRequest) GetMobileAgentPackageIds() []*string {
@@ -121,6 +134,11 @@ func (s *RenewMobileAgentPackageRequest) SetAutoPay(v bool) *RenewMobileAgentPac
 
 func (s *RenewMobileAgentPackageRequest) SetAutoRenew(v bool) *RenewMobileAgentPackageRequest {
 	s.AutoRenew = &v
+	return s
+}
+
+func (s *RenewMobileAgentPackageRequest) SetClientToken(v string) *RenewMobileAgentPackageRequest {
+	s.ClientToken = &v
 	return s
 }
 

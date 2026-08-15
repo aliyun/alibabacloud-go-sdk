@@ -54,7 +54,7 @@ type ModifyScheduledTaskShrinkRequest struct {
 	//
 	// sch-260705-agb*****
 	ScheduledId *string `json:"ScheduledId,omitempty" xml:"ScheduledId,omitempty"`
-	// The status switch: ACTIVE/DISABLED.
+	// Switches the status. Valid values: ACTIVE and DISABLED.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type ModifyScheduledTaskShrinkRequest struct {
 	//
 	// example:
 	//
-	// NewTaskName.
+	// NewTaskName
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The CAS version number.
 	//
@@ -78,7 +78,7 @@ type ModifyScheduledTaskShrinkRequest struct {
 	//
 	// example:
 	//
-	// Execute daily data synchronization task.
+	// Execute daily data synchronization task
 	UserPrompt *string `json:"UserPrompt,omitempty" xml:"UserPrompt,omitempty"`
 }
 

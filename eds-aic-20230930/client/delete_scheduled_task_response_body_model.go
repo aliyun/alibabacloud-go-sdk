@@ -123,7 +123,7 @@ type DeleteScheduledTaskResponseBodyTasks struct {
 	//
 	// sch-260705-agbx1eev
 	ScheduledId *string `json:"ScheduledId,omitempty" xml:"ScheduledId,omitempty"`
-	// Indicates whether the scheduled task is deleted successfully.
+	// Indicates whether the deletion is successful.
 	//
 	// example:
 	//

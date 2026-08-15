@@ -78,9 +78,7 @@ type DescribeAndroidInstancesRequest struct {
 	//
 	// user
 	AuthorizedUserId *string `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
-	// <props="china">The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/2807298.html) to query the list of regions that support purchasing cloud phones of different editions (Instance Edition/Matrix Edition).
-	//
-	// <props="intl">The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/2807298.html) to query the list of regions that support purchasing cloud phones..
+	// <props="china">The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/2807298.html) to query the list of regions that support purchasing cloud phones of different editions (Instance Edition or Matrix Edition).
 	//
 	// example:
 	//
@@ -106,7 +104,12 @@ type DescribeAndroidInstancesRequest struct {
 	//
 	// test
 	InstanceGroupName *string `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
-	InstanceVersion   *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
+	// The instance version. Default value: basic, which queries Wuying cloud phone instances.
+	//
+	// example:
+	//
+	// EnterpriseAi
+	InstanceVersion *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
 	// The ID of the bound key pair.
 	//
 	// example:
@@ -119,7 +122,7 @@ type DescribeAndroidInstancesRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that indicates the position from which to start reading. Leave this parameter empty to start reading from the beginning.
+	// The pagination token that indicates the position from which to start reading. Leave this parameter empty to read from the beginning.
 	//
 	// example:
 	//
@@ -127,21 +130,17 @@ type DescribeAndroidInstancesRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// <props="china">The matrix ID.
 	//
-	// <props="intl">This parameter is not publicly available..
-	//
 	// example:
 	//
 	// node_id
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// <props="china">The name of the matrix.
 	//
-	// <props="intl">This parameter is not publicly available..
-	//
 	// example:
 	//
 	// node_name
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The cloud phone network ID.
+	// The cloud phone network IDs.
 	OfficeSiteIds []*string `json:"OfficeSiteIds,omitempty" xml:"OfficeSiteIds,omitempty" type:"Repeated"`
 	// The private IP address of the instance.
 	//
@@ -149,7 +148,7 @@ type DescribeAndroidInstancesRequest struct {
 	//
 	// 10.0.162.136
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The public network rate limiting rule group ID. The rate limiting rule for instances in the basic shared network.
+	// The IDs of the public network rate limiting rule groups. These are rate limiting rules for instances in the basic shared network.
 	QosRuleIds []*string `json:"QosRuleIds,omitempty" xml:"QosRuleIds,omitempty" type:"Repeated"`
 	// The sales mode.
 	//
@@ -157,7 +156,17 @@ type DescribeAndroidInstancesRequest struct {
 	//
 	// Instance
 	SaleMode *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
-	SortKey  *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
+	// The sort key used when querying resources.
+	//
+	// example:
+	//
+	// CreationTime
+	SortKey *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
+	// The sort order. Default value: descending order. Valid values:
+	//
+	// example:
+	//
+	// ASC
 	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
 	// The instance status.
 	//

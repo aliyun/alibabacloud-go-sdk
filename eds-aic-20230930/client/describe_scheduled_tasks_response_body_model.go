@@ -169,7 +169,7 @@ type DescribeScheduledTasksResponseBodyTasks struct {
 	//
 	// 2026-06-12T10:00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The list of associated instance IDs.
+	// The list of bound instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The last execution time.
 	//
@@ -207,7 +207,7 @@ type DescribeScheduledTasksResponseBodyTasks struct {
 	//
 	// example:
 	//
-	// Daily data synchronization task.
+	// DailyDataSyncTask
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The total number of executions.
 	//
@@ -225,7 +225,7 @@ type DescribeScheduledTasksResponseBodyTasks struct {
 	//
 	// example:
 	//
-	// Execute daily data synchronization task.
+	// Execute daily data sync task
 	UserPrompt *string `json:"UserPrompt,omitempty" xml:"UserPrompt,omitempty"`
 	// The CAS version number.
 	//
@@ -400,7 +400,13 @@ type DescribeScheduledTasksResponseBodyTasksRunConfig struct {
 	//
 	// 10
 	MaxSteps *int32 `json:"MaxSteps,omitempty" xml:"MaxSteps,omitempty"`
-	// The timeout period, in seconds.
+	// The list of skill IDs.
+	//
+	// example:
+	//
+	// ["sk-abc"]
+	Skills []*string `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
+	// The timeout period in seconds.
 	//
 	// example:
 	//
@@ -424,6 +430,10 @@ func (s *DescribeScheduledTasksResponseBodyTasksRunConfig) GetMaxSteps() *int32 
 	return s.MaxSteps
 }
 
+func (s *DescribeScheduledTasksResponseBodyTasksRunConfig) GetSkills() []*string {
+	return s.Skills
+}
+
 func (s *DescribeScheduledTasksResponseBodyTasksRunConfig) GetTimeoutSeconds() *int32 {
 	return s.TimeoutSeconds
 }
@@ -435,6 +445,11 @@ func (s *DescribeScheduledTasksResponseBodyTasksRunConfig) SetExtraParams(v stri
 
 func (s *DescribeScheduledTasksResponseBodyTasksRunConfig) SetMaxSteps(v int32) *DescribeScheduledTasksResponseBodyTasksRunConfig {
 	s.MaxSteps = &v
+	return s
+}
+
+func (s *DescribeScheduledTasksResponseBodyTasksRunConfig) SetSkills(v []*string) *DescribeScheduledTasksResponseBodyTasksRunConfig {
+	s.Skills = v
 	return s
 }
 

@@ -58,7 +58,7 @@ type CreateScheduledTaskRequest struct {
 	//
 	// example:
 	//
-	// Auto-reply to DingTalk messages.
+	// Auto-reply to DingTalk messages
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The user prompt.
 	//
@@ -66,7 +66,7 @@ type CreateScheduledTaskRequest struct {
 	//
 	// example:
 	//
-	// Open DingTalk and reply to the first 5 unread messages.
+	// Open DingTalk and reply to the first 5 unread messages
 	UserPrompt *string `json:"UserPrompt,omitempty" xml:"UserPrompt,omitempty"`
 }
 
@@ -142,7 +142,7 @@ func (s *CreateScheduledTaskRequest) Validate() error {
 }
 
 type CreateScheduledTaskRequestRunConfig struct {
-	// The extended parameter JSON string.
+	// The extended parameters as a JSON string.
 	//
 	// example:
 	//
@@ -154,7 +154,13 @@ type CreateScheduledTaskRequestRunConfig struct {
 	//
 	// 10
 	MaxSteps *int32 `json:"MaxSteps,omitempty" xml:"MaxSteps,omitempty"`
-	// The timeout period, in seconds.
+	// The list of skill IDs, up to 1. Written to aim_task_config.run_config when the scheduled task is created and read when the callback is delivered.
+	//
+	// example:
+	//
+	// ["sk-abc"]
+	Skills []*string `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
+	// The timeout in seconds.
 	//
 	// example:
 	//
@@ -178,6 +184,10 @@ func (s *CreateScheduledTaskRequestRunConfig) GetMaxSteps() *int32 {
 	return s.MaxSteps
 }
 
+func (s *CreateScheduledTaskRequestRunConfig) GetSkills() []*string {
+	return s.Skills
+}
+
 func (s *CreateScheduledTaskRequestRunConfig) GetTimeoutSeconds() *int32 {
 	return s.TimeoutSeconds
 }
@@ -189,6 +199,11 @@ func (s *CreateScheduledTaskRequestRunConfig) SetExtraParams(v string) *CreateSc
 
 func (s *CreateScheduledTaskRequestRunConfig) SetMaxSteps(v int32) *CreateScheduledTaskRequestRunConfig {
 	s.MaxSteps = &v
+	return s
+}
+
+func (s *CreateScheduledTaskRequestRunConfig) SetSkills(v []*string) *CreateScheduledTaskRequestRunConfig {
+	s.Skills = v
 	return s
 }
 

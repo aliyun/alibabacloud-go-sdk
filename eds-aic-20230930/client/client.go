@@ -26,8 +26,8 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"cn-shanghai":    dara.String("eds-aic.cn-shanghai.aliyuncs.com"),
 		"ap-southeast-1": dara.String("eds-aic.ap-southeast-1.aliyuncs.com"),
+		"cn-shanghai":    dara.String("eds-aic.cn-shanghai.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -2988,7 +2988,7 @@ func (client *Client) DeletePolicyGroup(request *DeletePolicyGroupRequest) (_res
 
 // Summary:
 //
-// Deletes an agent scheduled task.
+// Deletes a scheduled task of an agent.
 //
 // @param request - DeleteScheduledTaskRequest
 //
@@ -3032,7 +3032,7 @@ func (client *Client) DeleteScheduledTaskWithOptions(request *DeleteScheduledTas
 
 // Summary:
 //
-// Deletes an agent scheduled task.
+// Deletes a scheduled task of an agent.
 //
 // @param request - DeleteScheduledTaskRequest
 //
@@ -4974,7 +4974,7 @@ func (client *Client) DescribeScheduledTaskExecutions(request *DescribeScheduled
 
 // Summary:
 //
-// Queries the list of scheduled tasks for an agent.
+// Queries the list of agent scheduled tasks.
 //
 // @param request - DescribeScheduledTasksRequest
 //
@@ -5046,7 +5046,7 @@ func (client *Client) DescribeScheduledTasksWithOptions(request *DescribeSchedul
 
 // Summary:
 //
-// Queries the list of scheduled tasks for an agent.
+// Queries the list of agent scheduled tasks.
 //
 // @param request - DescribeScheduledTasksRequest
 //
@@ -7314,6 +7314,80 @@ func (client *Client) ModifyInstanceChargeType(request *ModifyInstanceChargeType
 
 // Summary:
 //
+// Changes the specifications of instance groups. Currently, only specification upgrades are supported. Specification downgrades are not supported.
+//
+// @param request - ModifyInstanceGroupSpecRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstanceGroupSpecResponse
+func (client *Client) ModifyInstanceGroupSpecWithOptions(request *ModifyInstanceGroupSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceGroupSpecResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoPay) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !dara.IsNil(request.InstanceGroupIds) {
+		query["InstanceGroupIds"] = request.InstanceGroupIds
+	}
+
+	if !dara.IsNil(request.InstanceGroupSpec) {
+		query["InstanceGroupSpec"] = request.InstanceGroupSpec
+	}
+
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyInstanceGroupSpec"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyInstanceGroupSpecResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Changes the specifications of instance groups. Currently, only specification upgrades are supported. Specification downgrades are not supported.
+//
+// @param request - ModifyInstanceGroupSpecRequest
+//
+// @return ModifyInstanceGroupSpecResponse
+func (client *Client) ModifyInstanceGroupSpec(request *ModifyInstanceGroupSpecRequest) (_result *ModifyInstanceGroupSpecResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyInstanceGroupSpecResponse{}
+	_body, _err := client.ModifyInstanceGroupSpecWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the configuration of a JVS instance.
 //
 // @param request - ModifyJVSInstanceRequest
@@ -8498,7 +8572,7 @@ func (client *Client) RenewCloudPhoneNodes(request *RenewCloudPhoneNodesRequest)
 
 // Summary:
 //
-// Renews a mobile agent package.
+// Renews a resource plan.
 //
 // @param request - RenewMobileAgentPackageRequest
 //
@@ -8519,6 +8593,10 @@ func (client *Client) RenewMobileAgentPackageWithOptions(request *RenewMobileAge
 
 	if !dara.IsNil(request.AutoRenew) {
 		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
 	}
 
 	if !dara.IsNil(request.MobileAgentPackageIds) {
@@ -8566,7 +8644,7 @@ func (client *Client) RenewMobileAgentPackageWithOptions(request *RenewMobileAge
 
 // Summary:
 //
-// Renews a mobile agent package.
+// Renews a resource plan.
 //
 // @param request - RenewMobileAgentPackageRequest
 //
@@ -8740,20 +8818,26 @@ func (client *Client) ResumeAgentTask(request *ResumeAgentTaskRequest) (_result 
 
 // Summary:
 //
-// Triggers an Agent to execute an AI automation task on Mobile nodes.
+// Triggers an Agent on Mobile nodes to execute an AI automation task.
 //
-// @param request - RunAgentTaskRequest
+// @param tmpReq - RunAgentTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunAgentTaskResponse
-func (client *Client) RunAgentTaskWithOptions(request *RunAgentTaskRequest, runtime *dara.RuntimeOptions) (_result *RunAgentTaskResponse, _err error) {
+func (client *Client) RunAgentTaskWithOptions(tmpReq *RunAgentTaskRequest, runtime *dara.RuntimeOptions) (_result *RunAgentTaskResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &RunAgentTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RunConfig) {
+		request.RunConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RunConfig, dara.String("RunConfig"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizRegionId) {
 		query["BizRegionId"] = request.BizRegionId
@@ -8765,6 +8849,10 @@ func (client *Client) RunAgentTaskWithOptions(request *RunAgentTaskRequest, runt
 
 	if !dara.IsNil(request.MaxSteps) {
 		query["MaxSteps"] = request.MaxSteps
+	}
+
+	if !dara.IsNil(request.RunConfigShrink) {
+		query["RunConfig"] = request.RunConfigShrink
 	}
 
 	if !dara.IsNil(request.ScheduleId) {
@@ -8812,7 +8900,7 @@ func (client *Client) RunAgentTaskWithOptions(request *RunAgentTaskRequest, runt
 
 // Summary:
 //
-// Triggers an Agent to execute an AI automation task on Mobile nodes.
+// Triggers an Agent on Mobile nodes to execute an AI automation task.
 //
 // @param request - RunAgentTaskRequest
 //

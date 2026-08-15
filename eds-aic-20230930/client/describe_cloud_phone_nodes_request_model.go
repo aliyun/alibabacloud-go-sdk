@@ -62,7 +62,7 @@ type DescribeCloudPhoneNodesRequest struct {
 	//
 	// 20
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query. If the results of a query are not completely returned, the returned NextToken is not empty. You can pass the returned NextToken in the next request to continue the query.
+	// The pagination token for the next query. If the results of a query are not completely returned, the returned NextToken is not empty. You can pass the returned NextToken in the next query to continue retrieving results.
 	//
 	// example:
 	//

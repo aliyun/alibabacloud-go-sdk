@@ -54,13 +54,13 @@ type DescribeScheduledTasksRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The scheduled task IDs used to filter results.
+	// Filters by scheduled task IDs.
 	//
 	// example:
 	//
 	// ["scheduled-abcd1234"]
 	ScheduledIds []*string `json:"ScheduledIds,omitempty" xml:"ScheduledIds,omitempty" type:"Repeated"`
-	// The status used to filter results. Valid values: ACTIVE and DISABLED.
+	// Filters by status: ACTIVE/DISABLED.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type DescribeScheduledTasksRequest struct {
 	//
 	// example:
 	//
-	// Data synchronization.
+	// DataSync
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 

@@ -28,11 +28,11 @@ type DescribeCloudPhoneNodesResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Indicates whether a next pagination token exists. Valid values:
+	// The pagination token for the next query. Valid values:
 	//
-	// - If **NextToken*	- is empty, no next query exists.
+	// - If **NextToken*	- is empty, no more results exist.
 	//
-	// - If **NextToken*	- has a value, the value is the token for the next query.
+	// - If **NextToken*	- has a value, the value indicates the token from which the next query starts.
 	//
 	// example:
 	//
@@ -147,6 +147,7 @@ type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
 	BandwidthPackageType *string `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
 	// The array of tag information.
 	BizTags []*DescribeCloudPhoneNodesResponseBodyNodeModelBizTags `json:"BizTags,omitempty" xml:"BizTags,omitempty" type:"Repeated"`
+	Channel *string                                                `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	// The billing type.
 	//
 	// example:
@@ -214,7 +215,8 @@ type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
 	// example:
 	//
 	// node_name
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeName  *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	PackageId *string `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
 	// The number of instances provisioned under the cloud phone matrix.
 	//
 	// example:
@@ -293,6 +295,10 @@ func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) GetBizTags() []*DescribeC
 	return s.BizTags
 }
 
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) GetChannel() *string {
+	return s.Channel
+}
+
 func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) GetChargeType() *string {
 	return s.ChargeType
 }
@@ -339,6 +345,10 @@ func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) GetNodeId() *string {
 
 func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) GetNodeName() *string {
 	return s.NodeName
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) GetPackageId() *string {
+	return s.PackageId
 }
 
 func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) GetPhoneCount() *int32 {
@@ -405,6 +415,11 @@ func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetBizTags(v []*DescribeC
 	return s
 }
 
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetChannel(v string) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.Channel = &v
+	return s
+}
+
 func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetChargeType(v string) *DescribeCloudPhoneNodesResponseBodyNodeModel {
 	s.ChargeType = &v
 	return s
@@ -462,6 +477,11 @@ func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetNodeId(v string) *Desc
 
 func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetNodeName(v string) *DescribeCloudPhoneNodesResponseBodyNodeModel {
 	s.NodeName = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetPackageId(v string) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.PackageId = &v
 	return s
 }
 
