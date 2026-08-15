@@ -15,6 +15,8 @@ type iCreateWorkspaceRoleRequest interface {
 	GetRoleName() *string
 	SetRoleType(v string) *CreateWorkspaceRoleRequest
 	GetRoleType() *string
+	SetUserId(v string) *CreateWorkspaceRoleRequest
+	GetUserId() *string
 }
 
 type CreateWorkspaceRoleRequest struct {
@@ -32,6 +34,7 @@ type CreateWorkspaceRoleRequest struct {
 	//
 	// custom
 	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s CreateWorkspaceRoleRequest) String() string {
@@ -54,6 +57,10 @@ func (s *CreateWorkspaceRoleRequest) GetRoleType() *string {
 	return s.RoleType
 }
 
+func (s *CreateWorkspaceRoleRequest) GetUserId() *string {
+	return s.UserId
+}
+
 func (s *CreateWorkspaceRoleRequest) SetModulePermissions(v []*CreateWorkspaceRoleRequestModulePermissions) *CreateWorkspaceRoleRequest {
 	s.ModulePermissions = v
 	return s
@@ -66,6 +73,11 @@ func (s *CreateWorkspaceRoleRequest) SetRoleName(v string) *CreateWorkspaceRoleR
 
 func (s *CreateWorkspaceRoleRequest) SetRoleType(v string) *CreateWorkspaceRoleRequest {
 	s.RoleType = &v
+	return s
+}
+
+func (s *CreateWorkspaceRoleRequest) SetUserId(v string) *CreateWorkspaceRoleRequest {
+	s.UserId = &v
 	return s
 }
 

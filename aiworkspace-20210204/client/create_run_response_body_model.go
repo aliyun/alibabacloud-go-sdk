@@ -16,7 +16,7 @@ type iCreateRunResponseBody interface {
 }
 
 type CreateRunResponseBody struct {
-	// The ID of the run.
+	// The run ID.
 	//
 	// example:
 	//

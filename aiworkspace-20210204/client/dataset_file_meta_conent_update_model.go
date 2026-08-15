@@ -70,7 +70,7 @@ type DatasetFileMetaConentUpdate struct {
 	//
 	// example:
 	//
-	// 2025-01-12T14:36:01.001Z
+	// 2025-01-12T14:36:01Z
 	FileCreateTime *string `json:"FileCreateTime,omitempty" xml:"FileCreateTime,omitempty"`
 	// The file fingerprint information.
 	//
@@ -96,7 +96,7 @@ type DatasetFileMetaConentUpdate struct {
 	//
 	// example:
 	//
-	// 2025-01-12T14:36:01.001Z
+	// 2025-01-12T14:36:01Z
 	FileUpdateTime *string `json:"FileUpdateTime,omitempty" xml:"FileUpdateTime,omitempty"`
 	// Specific file metadata, such as the width and height of an image, and the bitrate and resolution of a video. Retrieval based on this metadata is not yet supported. The value is a JSON string.
 	//
@@ -178,25 +178,7 @@ type DatasetFileMetaConentUpdate struct {
 	//
 	// example:
 	//
-	// {
-	//
-	//     "user":{
-	//
-	//         "add":["Lane line","Sunny day"],
-	//
-	//         "remove":["Water horse"]
-	//
-	//     },
-	//
-	//     "user-delete-ai-tags":{
-	//
-	//         "add": ["Ground shadow"],
-	//
-	//         "remove": []
-	//
-	//     }
-	//
-	// }
+	// {"ai":["cat"], "user":["black"]}
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 

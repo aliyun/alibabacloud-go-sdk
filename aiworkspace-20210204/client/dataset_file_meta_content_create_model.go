@@ -100,9 +100,17 @@ type DatasetFileMetaContentCreate struct {
 	//
 	// {
 	//
-	//     "ImageHeight": 1080,
+	//     "Image":
 	//
-	//     "ImageWidth": 1920
+	//     {
+	//
+	//         "Width": 1920,
+	//
+	//         "Height": 1080,
+	//
+	//         "Channel": 3
+	//
+	//     }
 	//
 	// }
 	MetaAttributes *string `json:"MetaAttributes,omitempty" xml:"MetaAttributes,omitempty"`
@@ -128,15 +136,7 @@ type DatasetFileMetaContentCreate struct {
 	//
 	// example:
 	//
-	// {
-	//
-	//     "user":{
-	//
-	//         "add":["Lane line","Sunny day"]
-	//
-	//     }
-	//
-	// }
+	// {"user":["cat", "White"]}
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The unique URI of the file. This URI records the unique path of the file. The path can be an OSS or NAS path.
 	//

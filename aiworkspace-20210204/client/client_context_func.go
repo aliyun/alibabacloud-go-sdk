@@ -117,6 +117,10 @@ func (client *Client) AddImageWithContext(ctx context.Context, request *AddImage
 		body["SourceType"] = request.SourceType
 	}
 
+	if !dara.IsNil(request.UserId) {
+		body["UserId"] = request.UserId
+	}
+
 	if !dara.IsNil(request.WorkspaceId) {
 		body["WorkspaceId"] = request.WorkspaceId
 	}
@@ -1598,7 +1602,7 @@ func (client *Client) CreatePromptWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// Creates a run for an experiment. The run can be associated with a specific workload or be a standalone code execution.
+// Creates a run. A run belongs to an experiment and can be associated with a specific workload or can be a standalone code execution.
 //
 // @param request - CreateRunRequest
 //
@@ -1806,6 +1810,10 @@ func (client *Client) CreateWorkspaceRoleWithContext(ctx context.Context, Worksp
 
 	if !dara.IsNil(request.RoleType) {
 		body["RoleType"] = request.RoleType
+	}
+
+	if !dara.IsNil(request.UserId) {
+		body["UserId"] = request.UserId
 	}
 
 	req := &openapiutil.OpenApiRequest{

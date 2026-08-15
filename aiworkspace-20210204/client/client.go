@@ -66,14 +66,8 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"eu-west-1-oxs":               dara.String("aiworkspace.aliyuncs.com"),
 		"me-east-1":                   dara.String("aiworkspace.aliyuncs.com"),
 		"rus-west-1-pop":              dara.String("aiworkspace.aliyuncs.com"),
-		"us-west-1":                   dara.String("aiworkspace.us-west-1.aliyuncs.com"),
-		"us-southeast-1":              dara.String("aiworkspace.us-southeast-1.aliyuncs.com"),
-		"us-east-1":                   dara.String("aiworkspace.us-east-1.aliyuncs.com"),
-		"na-south-1":                  dara.String("aiworkspace.na-south-1.aliyuncs.com"),
-		"eu-central-1":                dara.String("aiworkspace.eu-central-1.aliyuncs.com"),
 		"cn-wulanchabu":               dara.String("aiworkspace.cn-wulanchabu.aliyuncs.com"),
 		"cn-shenzhen":                 dara.String("aiworkspace.cn-shenzhen.aliyuncs.com"),
-		"cn-shanghai-finance-1":       dara.String("aiworkspace.cn-shanghai-finance-1.aliyuncs.com"),
 		"cn-shanghai":                 dara.String("aiworkspace.cn-shanghai.aliyuncs.com"),
 		"cn-hongkong":                 dara.String("aiworkspace.cn-hongkong.aliyuncs.com"),
 		"cn-heyuan":                   dara.String("aiworkspace.cn-heyuan.aliyuncs.com"),
@@ -84,9 +78,15 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"ap-southeast-7":              dara.String("aiworkspace.ap-southeast-7.aliyuncs.com"),
 		"ap-southeast-3":              dara.String("aiworkspace.ap-southeast-3.aliyuncs.com"),
 		"ap-southeast-1":              dara.String("aiworkspace.ap-southeast-1.aliyuncs.com"),
-		"ap-south-1":                  dara.String("aiworkspace.ap-south-1.aliyuncs.com"),
 		"ap-northeast-2":              dara.String("aiworkspace.ap-northeast-2.aliyuncs.com"),
 		"ap-northeast-1":              dara.String("aiworkspace.ap-northeast-1.aliyuncs.com"),
+		"eu-central-1":                dara.String("aiworkspace.eu-central-1.aliyuncs.com"),
+		"na-south-1":                  dara.String("aiworkspace.na-south-1.aliyuncs.com"),
+		"us-east-1":                   dara.String("aiworkspace.us-east-1.aliyuncs.com"),
+		"us-southeast-1":              dara.String("aiworkspace.us-southeast-1.aliyuncs.com"),
+		"us-west-1":                   dara.String("aiworkspace.us-west-1.aliyuncs.com"),
+		"ap-south-1":                  dara.String("aiworkspace.ap-south-1.aliyuncs.com"),
+		"cn-shanghai-finance-1":       dara.String("aiworkspace.cn-shanghai-finance-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -250,6 +250,10 @@ func (client *Client) AddImageWithOptions(request *AddImageRequest, headers map[
 
 	if !dara.IsNil(request.SourceType) {
 		body["SourceType"] = request.SourceType
+	}
+
+	if !dara.IsNil(request.UserId) {
+		body["UserId"] = request.UserId
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
@@ -2167,7 +2171,7 @@ func (client *Client) CreatePrompt(request *CreatePromptRequest) (_result *Creat
 
 // Summary:
 //
-// Creates a run for an experiment. The run can be associated with a specific workload or be a standalone code execution.
+// Creates a run. A run belongs to an experiment and can be associated with a specific workload or can be a standalone code execution.
 //
 // @param request - CreateRunRequest
 //
@@ -2234,7 +2238,7 @@ func (client *Client) CreateRunWithOptions(request *CreateRunRequest, headers ma
 
 // Summary:
 //
-// Creates a run for an experiment. The run can be associated with a specific workload or be a standalone code execution.
+// Creates a run. A run belongs to an experiment and can be associated with a specific workload or can be a standalone code execution.
 //
 // @param request - CreateRunRequest
 //
@@ -2432,6 +2436,10 @@ func (client *Client) CreateWorkspaceRoleWithOptions(WorkspaceId *string, reques
 
 	if !dara.IsNil(request.RoleType) {
 		body["RoleType"] = request.RoleType
+	}
+
+	if !dara.IsNil(request.UserId) {
+		body["UserId"] = request.UserId
 	}
 
 	req := &openapiutil.OpenApiRequest{

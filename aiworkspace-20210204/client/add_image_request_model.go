@@ -27,6 +27,8 @@ type iAddImageRequest interface {
 	GetSourceId() *string
 	SetSourceType(v string) *AddImageRequest
 	GetSourceType() *string
+	SetUserId(v string) *AddImageRequest
+	GetUserId() *string
 	SetWorkspaceId(v string) *AddImageRequest
 	GetWorkspaceId() *string
 }
@@ -134,6 +136,7 @@ type AddImageRequest struct {
 	//
 	// Build
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The ID of the workspace to which the image belongs. For more information, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// example:
@@ -186,6 +189,10 @@ func (s *AddImageRequest) GetSourceType() *string {
 	return s.SourceType
 }
 
+func (s *AddImageRequest) GetUserId() *string {
+	return s.UserId
+}
+
 func (s *AddImageRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
@@ -232,6 +239,11 @@ func (s *AddImageRequest) SetSourceId(v string) *AddImageRequest {
 
 func (s *AddImageRequest) SetSourceType(v string) *AddImageRequest {
 	s.SourceType = &v
+	return s
+}
+
+func (s *AddImageRequest) SetUserId(v string) *AddImageRequest {
+	s.UserId = &v
 	return s
 }
 

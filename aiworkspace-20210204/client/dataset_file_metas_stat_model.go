@@ -16,10 +16,14 @@ type iDatasetFileMetasStat interface {
 }
 
 type DatasetFileMetasStat struct {
+	// The count after aggregation.
+	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The metadata property content.
+	//
 	// example:
 	//
 	// cat

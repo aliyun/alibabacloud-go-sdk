@@ -24,7 +24,7 @@ type iCreateRunRequest interface {
 }
 
 type CreateRunRequest struct {
-	// The ID of the experiment associated with the run.
+	// The experiment ID associated with the run.
 	//
 	// This parameter is required.
 	//
@@ -34,15 +34,15 @@ type CreateRunRequest struct {
 	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
 	// The list of labels for the run.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The name of the run. The naming convention is as follows:
+	// The name of the run. Naming rules:
 	//
-	// - Starts with a lowercase or uppercase letter.
+	// - Must start with a lowercase or uppercase letter.
 	//
-	// - Can contain lowercase letters, uppercase letters, digits, underscores (_), and hyphens (-).
+	// - Can contain uppercase and lowercase letters, digits, underscores (_), or hyphens (-).
 	//
-	// - The length must be 1 to 63 characters.
+	// - Must be 1 to 63 characters in length.
 	//
-	// If this parameter is left empty, the server-generated random ID (RunID) is used as the name.
+	// If the name is left empty during creation, the server-generated random ID (RunID) is used as the name.
 	//
 	// example:
 	//
@@ -50,13 +50,13 @@ type CreateRunRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The list of parameters for the run.
 	Params []*RunParam `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	// The ID of the PAI workload associated with the run.
+	// The PAI workload ID associated with the run.
 	//
 	// example:
 	//
 	// job-jdnhf***fnrimv
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The source type of the PAI workload associated with the run. Options include TrainingService, DLC, or empty. This parameter is optional. The default value is empty.
+	// The type of PAI workload source associated with the run. Valid values: TrainingService, DLC, or empty. This parameter is optional and defaults to empty.
 	//
 	// example:
 	//
