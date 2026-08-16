@@ -84,7 +84,7 @@ type DeleteAppInstancesResponseBodyDeleteAppInstanceModels struct {
 	//
 	// The parameter ProductType is invalid.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the deletion is triggered.
+	// Indicates whether the deletion is triggered successfully.
 	//
 	// example:
 	//

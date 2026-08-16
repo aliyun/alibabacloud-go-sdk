@@ -22,13 +22,13 @@ type iRemoveRuntimeChannelRequest interface {
 }
 
 type RemoveRuntimeChannelRequest struct {
-	// The agent platform.
+	// The Agent platform.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
-	// The agent provider.
+	// The Agent provider.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type RemoveRuntimeChannelRequest struct {
 	//
 	// dingtalk-connector
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of agent runtime IDs.
+	// The list of Agent runtime IDs.
 	//
 	// This parameter is required.
 	RuntimeIds []*string `json:"RuntimeIds,omitempty" xml:"RuntimeIds,omitempty" type:"Repeated"`

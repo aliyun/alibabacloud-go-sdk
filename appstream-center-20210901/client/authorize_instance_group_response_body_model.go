@@ -14,7 +14,7 @@ type iAuthorizeInstanceGroupResponseBody interface {
 }
 
 type AuthorizeInstanceGroupResponseBody struct {
-	// The request ID.
+	// 請求 ID。
 	//
 	// example:
 	//

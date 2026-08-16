@@ -42,7 +42,7 @@ type ListDesktopAgentRuntimeResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type ListDesktopAgentRuntimeResponseBodyData struct {
 	AgentInstanceInfoList []*ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList `json:"AgentInstanceInfoList,omitempty" xml:"AgentInstanceInfoList,omitempty" type:"Repeated"`
 	// The list of authorized users.
 	AuthUsers []*string `json:"AuthUsers,omitempty" xml:"AuthUsers,omitempty" type:"Repeated"`
-	// Indicates whether the agent runtime has a configured third-party channel.
+	// Indicates whether a third-party channel has been configured for the agent runtime.
 	//
 	// example:
 	//
@@ -143,32 +143,33 @@ type ListDesktopAgentRuntimeResponseBodyData struct {
 	//
 	// Agent-001
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The cloud computer status.
+	// The Cloud Desktop status.
 	//
 	// example:
 	//
 	// Running
 	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
-	// Indicates whether authorized users exist.
+	// Indicates whether there is an authorized user with authorization.
 	//
 	// example:
 	//
 	// true
-	HasAuthUser        *bool     `json:"HasAuthUser,omitempty" xml:"HasAuthUser,omitempty"`
+	HasAuthUser *bool `json:"HasAuthUser,omitempty" xml:"HasAuthUser,omitempty"`
+	// The management status list, parsed from the managementStatus composite value.
 	ManagementStatuses []*string `json:"ManagementStatuses,omitempty" xml:"ManagementStatuses,omitempty" type:"Repeated"`
-	// Indicates whether the agent runtime has a configured model.
+	// Indicates whether a model has been configured for the agent runtime.
 	//
 	// example:
 	//
 	// true
 	ModelConfigure *bool `json:"ModelConfigure,omitempty" xml:"ModelConfigure,omitempty"`
-	// The effective model template ID (returned only when modelConfigure=true).
+	// The active model template ID. This parameter is returned only when modelConfigure is set to true.
 	//
 	// example:
 	//
 	// mt-xxxx
 	ModelTemplateId *string `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
-	// The effective model template name (returned only when modelConfigure=true).
+	// The active model template name. This parameter is returned only when modelConfigure is set to true.
 	//
 	// example:
 	//
@@ -180,7 +181,7 @@ type ListDesktopAgentRuntimeResponseBodyData struct {
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The list of channels in QR code configuration.
+	// The list of channel codes in QR code configuration.
 	QrCodeConfiguringList []*string `json:"QrCodeConfiguringList,omitempty" xml:"QrCodeConfiguringList,omitempty" type:"Repeated"`
 	// The region ID.
 	//
@@ -188,7 +189,7 @@ type ListDesktopAgentRuntimeResponseBodyData struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The region location (domestic/overseas).
+	// The region location (the Chinese mainland or outside China).
 	//
 	// example:
 	//
@@ -196,13 +197,13 @@ type ListDesktopAgentRuntimeResponseBodyData struct {
 	RegionLocation *string `json:"RegionLocation,omitempty" xml:"RegionLocation,omitempty"`
 	// The resource group information.
 	ResourceGroup *ListDesktopAgentRuntimeResponseBodyDataResourceGroup `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty" type:"Struct"`
-	// The resource ID, which is the cloud computer ID.
+	// The resource ID, which is the Cloud Desktop ID.
 	//
 	// example:
 	//
 	// ecd-xxxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The risk information (returned only when the request parameter IncludeRiskInfo is set to true, otherwise null).
+	// The risk information. This parameter is returned only when the request parameter IncludeRiskInfo is set to true. Otherwise, null is returned.
 	RiskInfo *ListDesktopAgentRuntimeResponseBodyDataRiskInfo `json:"RiskInfo,omitempty" xml:"RiskInfo,omitempty" type:"Struct"`
 }
 
@@ -423,6 +424,8 @@ func (s *ListDesktopAgentRuntimeResponseBodyData) Validate() error {
 }
 
 type ListDesktopAgentRuntimeResponseBodyDataAgentImInfo struct {
+	// The agent IM online status (Online/Offline). Default value: Offline.
+	AgentImOnlineStatus *string `json:"AgentImOnlineStatus,omitempty" xml:"AgentImOnlineStatus,omitempty"`
 	// The agent IM status.
 	//
 	// example:
@@ -445,12 +448,21 @@ func (s ListDesktopAgentRuntimeResponseBodyDataAgentImInfo) GoString() string {
 	return s.String()
 }
 
+func (s *ListDesktopAgentRuntimeResponseBodyDataAgentImInfo) GetAgentImOnlineStatus() *string {
+	return s.AgentImOnlineStatus
+}
+
 func (s *ListDesktopAgentRuntimeResponseBodyDataAgentImInfo) GetAgentImStatus() *string {
 	return s.AgentImStatus
 }
 
 func (s *ListDesktopAgentRuntimeResponseBodyDataAgentImInfo) GetCloudSpaceStatus() *string {
 	return s.CloudSpaceStatus
+}
+
+func (s *ListDesktopAgentRuntimeResponseBodyDataAgentImInfo) SetAgentImOnlineStatus(v string) *ListDesktopAgentRuntimeResponseBodyDataAgentImInfo {
+	s.AgentImOnlineStatus = &v
+	return s
 }
 
 func (s *ListDesktopAgentRuntimeResponseBodyDataAgentImInfo) SetAgentImStatus(v string) *ListDesktopAgentRuntimeResponseBodyDataAgentImInfo {
@@ -480,9 +492,11 @@ type ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList struct {
 	//
 	// 2026.3.13
 	AgentInstanceVersion *string `json:"AgentInstanceVersion,omitempty" xml:"AgentInstanceVersion,omitempty"`
-	AgentPlatform        *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
-	AgentProvider        *string `json:"AgentProvider,omitempty" xml:"AgentProvider,omitempty"`
-	// Indicates whether the agent instance has a configured third-party channel.
+	// The agent platform (enum name, such as ENTERPRISE, JVS, or ENTERPRISE_JVS).
+	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
+	// The agent provider (enum name, such as OPEN_CLAW or HERMES_AGENT).
+	AgentProvider *string `json:"AgentProvider,omitempty" xml:"AgentProvider,omitempty"`
+	// Indicates whether a third-party channel has been configured for the agent instance.
 	//
 	// example:
 	//
@@ -496,7 +510,7 @@ type ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList struct {
 	//
 	// Admin
 	DeploymentSource *string `json:"DeploymentSource,omitempty" xml:"DeploymentSource,omitempty"`
-	// Indicates whether the agent instance has a configured model.
+	// Indicates whether a model has been configured for the agent instance.
 	//
 	// example:
 	//
@@ -649,19 +663,19 @@ func (s *ListDesktopAgentRuntimeResponseBodyDataResourceGroup) Validate() error 
 }
 
 type ListDesktopAgentRuntimeResponseBodyDataRiskInfo struct {
-	// Indicates whether the agent is uninstalled.
+	// Indicates whether the agent has been uninstalled.
 	//
 	// example:
 	//
 	// true
 	AgentUninstalled *bool `json:"AgentUninstalled,omitempty" xml:"AgentUninstalled,omitempty"`
-	// Indicates whether the third-party channel configuration is modified (inconsistent with the admin-distributed configuration).
+	// Indicates whether the third-party channel configuration has been modified (inconsistent with the administrator-distributed configuration).
 	//
 	// example:
 	//
 	// true
 	ChannelModified *bool `json:"ChannelModified,omitempty" xml:"ChannelModified,omitempty"`
-	// Indicates whether the model configuration is modified (inconsistent with the admin-distributed configuration).
+	// Indicates whether the model configuration has been modified (inconsistent with the administrator-distributed configuration).
 	//
 	// example:
 	//

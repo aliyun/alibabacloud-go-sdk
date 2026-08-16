@@ -16,7 +16,7 @@ type iDescribeWuyingServerEipInfoRequest interface {
 }
 
 type DescribeWuyingServerEipInfoRequest struct {
-	// The Internet service operation provider (ISP). Valid values:
+	// The Internet service operation provider. Valid values:
 	//
 	// - ChinaMobile: Shift.
 	//

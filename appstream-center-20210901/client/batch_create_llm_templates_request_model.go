@@ -129,7 +129,7 @@ type BatchCreateLlmTemplatesRequestLlmTemplateItems struct {
 	//
 	// 千问Plus系列模型
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to set this model as the default model. Each model group can have at most one default model.
+	// Specifies whether to set the model as the default model. A model group can have at most one default model.
 	//
 	// example:
 	//

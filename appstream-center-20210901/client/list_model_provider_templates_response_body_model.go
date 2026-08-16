@@ -24,13 +24,13 @@ type iListModelProviderTemplatesResponseBody interface {
 type ListModelProviderTemplatesResponseBody struct {
 	// The list of returned data objects.
 	Data []*ListModelProviderTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The page number of the current query result.
+	// The page number of the current query results.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in the query result.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListModelProviderTemplatesResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of query results.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListModelProviderTemplatesResponseBody) Validate() error {
 }
 
 type ListModelProviderTemplatesResponseBodyData struct {
-	// The model provider configuration as a JSON object.
+	// The model provider configuration JSON object.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type ListModelProviderTemplatesResponseBodyData struct {
 	//
 	// }
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The description of the model provider template.
+	// The model provider template description.
 	//
 	// example:
 	//
@@ -143,13 +143,13 @@ type ListModelProviderTemplatesResponseBodyData struct {
 	//
 	// true
 	EnableWuyingProxy *bool `json:"EnableWuyingProxy,omitempty" xml:"EnableWuyingProxy,omitempty"`
-	// The name of the model provider template.
+	// The model provider template name.
 	//
 	// example:
 	//
 	// 阿里云百炼
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The name of the model provider.
+	// The model provider name.
 	//
 	// example:
 	//

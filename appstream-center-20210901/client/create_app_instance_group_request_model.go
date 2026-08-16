@@ -68,7 +68,7 @@ type iCreateAppInstanceGroupRequest interface {
 }
 
 type CreateAppInstanceGroupRequest struct {
-	// The application image ID. You can obtain the ID from the **O&M*	- > **Custom Images*	- or **System Images*	- page in the [WUYING Cloud Application console](https://appstreaming.console.aliyun.com/).
+	// The application image ID. You can obtain the ID from the **O&M*	- > **Custom Images*	- or **System Images*	- page in the [WUYING CloudApp console](https://appstreaming.console.aliyun.com/).
 	//
 	// This parameter is required.
 	//
@@ -94,7 +94,7 @@ type CreateAppInstanceGroupRequest struct {
 	//
 	// pg-0clfzcy0adpcf****
 	AppPolicyId *string `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
-	// The authorization mode of the delivery group.
+	// The delivery group authorization mode.
 	//
 	// if can be null:
 	// true
@@ -185,7 +185,7 @@ type CreateAppInstanceGroupRequest struct {
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The unit of the subscription duration when `ChargeType` is set to `PrePaid`.
 	//
-	// > This parameter is case-sensitive. For example, `Week` is valid, but `week` is invalid.
+	// > This parameter is case-sensitive. For example, `Week` is valid, but `week` is not.
 	//
 	// If the request parameters do not match the valid combinations, such as `2 Week`, the API call succeeds but an error occurs during the order placement.
 	//
@@ -197,7 +197,7 @@ type CreateAppInstanceGroupRequest struct {
 	//
 	// Week
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The pre-opened application ID.
+	// The pre-opened AppId.
 	//
 	// example:
 	//
@@ -211,7 +211,7 @@ type CreateAppInstanceGroupRequest struct {
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The promotion ID. You can call the [GetResourcePrice](https://help.aliyun.com/document_detail/428503.html) operation to obtain the ID.
+	// The promotion ID. You can obtain the ID by calling the [GetResourcePrice](https://help.aliyun.com/document_detail/428503.html) operation.
 	//
 	// example:
 	//
@@ -221,7 +221,7 @@ type CreateAppInstanceGroupRequest struct {
 	RuntimePolicy *CreateAppInstanceGroupRequestRuntimePolicy `json:"RuntimePolicy,omitempty" xml:"RuntimePolicy,omitempty" type:"Struct"`
 	// The security policy.
 	SecurityPolicy *CreateAppInstanceGroupRequestSecurityPolicy `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty" type:"Struct"`
-	// The application recycling timeout period, in minutes. After an end user disconnects from a cloud application for a period of time, the cloud application process exits. This period is the application recycling timeout. Set this parameter to `-1` if you do not want the application to be recycled. Valid values: -1 and 3 to 300 (integer). Default value: `15`.
+	// The application recycling time, in minutes. After an end user disconnects from the cloud application for a period of time, the cloud application process exits. This period is the application recycling time. Set this parameter to `-1` if you do not want to recycle the application. Valid values: -1 and 3 to 300 (integer). Default value: `15`.
 	//
 	// This parameter is required.
 	//
@@ -244,7 +244,7 @@ type CreateAppInstanceGroupRequest struct {
 	// if can be null:
 	// true
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	// The user information of the users to be added to the delivery group. This field is required if the `Users` parameter is specified.
+	// The user information to be added to the delivery group as assigned users. This field is required if the `Users` parameter is specified.
 	UserInfo *CreateAppInstanceGroupRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 	// The list of usernames to be added to the delivery group as assigned users.
 	Users []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
@@ -557,9 +557,9 @@ func (s *CreateAppInstanceGroupRequest) Validate() error {
 }
 
 type CreateAppInstanceGroupRequestNetwork struct {
-	// The domain name rule configurations.
+	// The domain name rule configuration.
 	DomainRules []*CreateAppInstanceGroupRequestNetworkDomainRules `json:"DomainRules,omitempty" xml:"DomainRules,omitempty" type:"Repeated"`
-	// The duration (in minutes) after which the public IP address is refreshed upon the next logon. Minimum value: 60.
+	// The duration (in minutes) after which the public IP address is updated upon the next logon. Minimum value: 60.
 	//
 	// example:
 	//
@@ -571,7 +571,7 @@ type CreateAppInstanceGroupRequestNetwork struct {
 	//
 	// cn-hongkong+dir-842567****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The route configurations. This parameter can be configured only when the network policy type (`StrategyType`) is set to mixed mode (`Mixed`).
+	// The route configuration. This parameter can be configured only when the network policy type (`StrategyType`) is set to mixed mode (`Mixed`).
 	Routes []*CreateAppInstanceGroupRequestNetworkRoutes `json:"Routes,omitempty" xml:"Routes,omitempty" type:"Repeated"`
 	// The network policy type.
 	//
@@ -760,7 +760,7 @@ func (s *CreateAppInstanceGroupRequestNetworkRoutes) Validate() error {
 }
 
 type CreateAppInstanceGroupRequestNodePool struct {
-	// The maximum number of idle sessions. When this value is specified, auto scale-out is triggered only when the session usage exceeds `ScalingUsageThreshold` and the number of idle sessions in the current delivery group is less than `MaxIdleAppInstanceAmount`. Otherwise, the idle sessions are considered sufficient and no auto scale-out is performed. This parameter allows you to flexibly control elastic scaling behavior and reduce costs.
+	// The maximum number of idle sessions. When this value is specified, auto scale-out is triggered only when the session usage exceeds `ScalingUsageThreshold` and the number of idle sessions in the current delivery group is less than `MaxIdleAppInstanceAmount`. Otherwise, the idle sessions are considered sufficient and no auto scale-out is performed. This parameter helps you flexibly control elastic scaling behavior and reduce costs.
 	//
 	// example:
 	//
@@ -782,23 +782,23 @@ type CreateAppInstanceGroupRequestNodePool struct {
 	//
 	// 1
 	NodeAmount *int32 `json:"NodeAmount,omitempty" xml:"NodeAmount,omitempty"`
-	// The number of concurrent sessions, which is the number of sessions that a single resource can handle simultaneously. Too many concurrent sessions may degrade the application experience. The valid value range varies by resource specification. You can call the ListNodeInstanceType operation to obtain the valid value range for each resource specification.
+	// The number of concurrent sessions, which is the number of sessions that a single resource can handle simultaneously. Too many concurrent sessions may degrade the application experience. The valid values vary by resource specification. You can obtain the valid values for each specification by calling the ListNodeInstanceType operation.
 	//
 	// example:
 	//
 	// 2
 	NodeCapacity *int32 `json:"NodeCapacity,omitempty" xml:"NodeCapacity,omitempty"`
-	// The instance type ID of the resource to purchase. You can call the [ListNodeInstanceType](https://help.aliyun.com/document_detail/428502.html) operation to obtain the ID.
+	// The instance type ID of the resource to purchase. You can obtain the ID by calling the [ListNodeInstanceType](https://help.aliyun.com/document_detail/428502.html) operation.
 	//
 	// example:
 	//
 	// appstreaming.general.4c8g
 	NodeInstanceType *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
-	// The list of recurrence schedules. This field is required when `StrategyType` (scaling mode) is set to `NODE_SCALING_BY_SCHEDULE` (scheduled scaling).
+	// The list of policy execution cycles. This field is required when `StrategyType` (scaling mode) is set to `NODE_SCALING_BY_SCHEDULE` (scheduled scaling).
 	RecurrenceSchedules []*CreateAppInstanceGroupRequestNodePoolRecurrenceSchedules `json:"RecurrenceSchedules,omitempty" xml:"RecurrenceSchedules,omitempty" type:"Repeated"`
-	// The maximum duration (in minutes) that a resource without active sessions is retained. When no sessions are connected to a resource, a countdown starts based on this value. The resource is released when the countdown ends. Valid values: 5 to 120. Default value: 5. The following exceptions apply:
+	// The maximum duration (in minutes) that a resource without session connections is retained. When no sessions are connected to a resource, a countdown starts based on this value. The resource is released when the countdown ends. Valid values: 5 to 120. Default value: 5. The following exceptions apply:
 	//
-	// - If releasing the resource would trigger auto scale-out again, the scale-down is not performed to avoid repeated scaling operations.
+	// - If scale-in would trigger auto scale-out again, the scale-in is not performed to avoid repeated scaling operations.
 	//
 	// - If auto scale-out is triggered due to increased sessions during this period, the resource is not released as originally planned, and the countdown restarts.
 	//
@@ -806,19 +806,19 @@ type CreateAppInstanceGroupRequestNodePool struct {
 	//
 	// 5
 	ScalingDownAfterIdleMinutes *int32 `json:"ScalingDownAfterIdleMinutes,omitempty" xml:"ScalingDownAfterIdleMinutes,omitempty"`
-	// The number of resources to create per scale-out operation. Valid values: 1 to 10. This field is required when `StrategyType` is set to `NODE_SCALING_BY_USAGE` (elastic resources).
+	// The number of resources created per scale-out operation. Valid values: 1 to 10. This field is required when `StrategyType` is set to `NODE_SCALING_BY_USAGE` (elastic resources).
 	//
 	// example:
 	//
 	// 2
 	ScalingStep *int32 `json:"ScalingStep,omitempty" xml:"ScalingStep,omitempty"`
-	// The upper threshold of session usage (%). Auto scale-out is triggered when the session usage exceeds this threshold. The session usage is calculated as follows: `Session usage = Current sessions ÷ (Total resources × Concurrent sessions per resource) × 100%`. This field is required when `StrategyType` is set to `NODE_SCALING_BY_USAGE` (elastic resources). Valid values: 0 to 100. Default value: 85.
+	// The session usage threshold (%) that triggers auto scale-out. The formula for session usage is `Session usage = Current sessions ÷ (Total resources × Concurrent sessions per resource) × 100%`. This field is required when `StrategyType` is set to `NODE_SCALING_BY_USAGE` (elastic resources). Valid values: 0 to 100. Default value: 85.
 	//
 	// example:
 	//
 	// 85
 	ScalingUsageThreshold *string `json:"ScalingUsageThreshold,omitempty" xml:"ScalingUsageThreshold,omitempty"`
-	// The date when the policy expires. Format: yyyy-MM-dd. The interval between the expiration date and the effective date must be between 7 days and 1 year, inclusive. This field is required when `StrategyType` (scaling mode) is set to `NODE_SCALING_BY_SCHEDULE` (scheduled scaling).
+	// The date when the policy expires. Format: yyyy-MM-dd. The interval between the expiration date and the effective date must be between 7 days and 1 year (inclusive). This field is required when `StrategyType` (scaling mode) is set to `NODE_SCALING_BY_SCHEDULE` (scheduled scaling).
 	//
 	// example:
 	//
@@ -991,25 +991,25 @@ func (s *CreateAppInstanceGroupRequestNodePool) Validate() error {
 }
 
 type CreateAppInstanceGroupRequestNodePoolRecurrenceSchedules struct {
-	// The type of the recurrence schedule. You must specify both `RecurrenceType` and `RecurrenceValues`.
+	// The type of the policy execution cycle. You must specify both `RecurrenceType` and `RecurrenceValues`.
 	//
 	// example:
 	//
 	// weekly
 	RecurrenceType *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
-	// The list of recurrence values.
+	// The list of values for the policy execution cycle.
 	RecurrenceValues []*int32 `json:"RecurrenceValues,omitempty" xml:"RecurrenceValues,omitempty" type:"Repeated"`
-	// The list of time periods for the recurrence schedule. Requirements for time period settings:
+	// The list of time periods for the policy execution cycle. Requirements for time period settings:
 	//
 	// - You can add up to 3 time periods.
 	//
-	// - Time periods must not overlap.
+	// - Time periods cannot overlap.
 	//
 	// - The interval between time periods must be at least 5 minutes.
 	//
 	// - Each time period must be at least 15 minutes long.
 	//
-	// - All time periods combined must not span across days.
+	// - All time periods combined cannot span across days.
 	TimerPeriods []*CreateAppInstanceGroupRequestNodePoolRecurrenceSchedulesTimerPeriods `json:"TimerPeriods,omitempty" xml:"TimerPeriods,omitempty" type:"Repeated"`
 }
 
@@ -1122,21 +1122,21 @@ func (s *CreateAppInstanceGroupRequestNodePoolRecurrenceSchedulesTimerPeriods) V
 }
 
 type CreateAppInstanceGroupRequestRuntimePolicy struct {
-	// Specifies whether to enable debug mode. To call `GetDebugAppInstance` and `CreateImageFromAppInstanceGroup`, set this field to `ON`.
+	// Specifies whether to enable debug mode. To call `GetDebugAppInstance` and `CreateImageFromAppInstanceGroup`, you must set this field to `ON`.
 	//
 	// example:
 	//
 	// OFF
 	DebugMode *string `json:"DebugMode,omitempty" xml:"DebugMode,omitempty"`
-	// Specifies whether to allow only one application per session.
+	// Specifies whether only one application is allowed per session.
 	//
-	// - When enabled, opening multiple applications in the delivery group allocates a separate session for each application, consuming more sessions.
+	// - When enabled, if multiple applications in the delivery group are opened, a separate session is allocated for each application, consuming more sessions.
 	//
 	// example:
 	//
 	// false
 	PerSessionPerApp *bool `json:"PerSessionPerApp,omitempty" xml:"PerSessionPerApp,omitempty"`
-	// The scheduling mode for persistent sessions.
+	// The persistent session scheduling mode.
 	//
 	// if can be null:
 	// true
@@ -1145,7 +1145,7 @@ type CreateAppInstanceGroupRequestRuntimePolicy struct {
 	//
 	// DYNAMIC
 	PersistentAppInstanceScheduleMode *string `json:"PersistentAppInstanceScheduleMode,omitempty" xml:"PersistentAppInstanceScheduleMode,omitempty"`
-	// Specifies whether to enable session pre-opening.
+	// The session pre-open switch.
 	//
 	// - If not specified, the default value is true.
 	//
@@ -1159,9 +1159,9 @@ type CreateAppInstanceGroupRequestRuntimePolicy struct {
 	//
 	// NORMAL
 	SessionType *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
-	// The generation mode for session users.
+	// The generation mode of session users.
 	//
-	// - wyid: The session pre-open (SessionPreOpen) must be set to false.
+	// - wyid: In this case, session pre-open (sessionPreOpen) must be set to false.
 	//
 	// example:
 	//
@@ -1327,7 +1327,7 @@ type CreateAppInstanceGroupRequestStoragePolicyUserProfile struct {
 	//
 	// - If not specified, the default value is the delivery group ID.
 	//
-	// - For cross-delivery-group (same VPC) user data roaming, set the same value for all delivery groups involved.
+	// - For cross-delivery-group (same VPC) user data roaming, set the same value for all delivery groups that participate in roaming.
 	//
 	// example:
 	//
@@ -1339,7 +1339,7 @@ type CreateAppInstanceGroupRequestStoragePolicyUserProfile struct {
 	//
 	// NAS
 	RemoteStorageType *string `json:"RemoteStorageType,omitempty" xml:"RemoteStorageType,omitempty"`
-	// Specifies whether to enable user data roaming.
+	// The user data roaming switch.
 	//
 	// example:
 	//
@@ -1467,11 +1467,11 @@ type CreateAppInstanceGroupRequestVideoPolicy struct {
 	SessionResolutionWidth *int32 `json:"SessionResolutionWidth,omitempty" xml:"SessionResolutionWidth,omitempty"`
 	// The streaming mode. Used together with the `Webrtc` parameter to specify the protocol type.
 	//
-	// - `Webrtc`=`true` and `StreamingMode`=`video`: WebRTC streaming.
+	// - `Webrtc`=`true` and `StreamingMode`=`video`: WebRTC stream.
 	//
-	// - `Webrtc`=`false` and `StreamingMode`=`video`: video streaming.
+	// - `Webrtc`=`false` and `StreamingMode`=`video`: video stream.
 	//
-	// - `Webrtc`=`false` and `StreamingMode`=`mix`: mixed streaming.
+	// - `Webrtc`=`false` and `StreamingMode`=`mix`: mixed stream.
 	//
 	// example:
 	//
@@ -1479,7 +1479,7 @@ type CreateAppInstanceGroupRequestVideoPolicy struct {
 	StreamingMode *string `json:"StreamingMode,omitempty" xml:"StreamingMode,omitempty"`
 	// Specifies whether to use adaptive resolution.
 	//
-	// - `true`: The session resolution follows the terminal display area. In this case, `SessionResolutionWidth` and `SessionResolutionHeight` specify the maximum resolution values.
+	// - `true`: The session resolution follows the terminal display area. In this case, `SessionResolutionWidth` and `SessionResolutionHeight` are the maximum resolution values.
 	//
 	// - `false`: The session resolution does not follow the terminal display area. In this case, the resolution is fixed to the values of `SessionResolutionWidth` and `SessionResolutionHeight`.
 	//
@@ -1489,11 +1489,11 @@ type CreateAppInstanceGroupRequestVideoPolicy struct {
 	TerminalResolutionAdaptive *bool `json:"TerminalResolutionAdaptive,omitempty" xml:"TerminalResolutionAdaptive,omitempty"`
 	// Specifies whether to enable WebRTC. Used together with the `StreamingMode` parameter to specify the protocol type.
 	//
-	// - `Webrtc`=`true` and `StreamingMode`=`video`: WebRTC streaming.
+	// - `Webrtc`=`true` and `StreamingMode`=`video`: WebRTC stream.
 	//
-	// - `Webrtc`=`false` and `StreamingMode`=`video`: video streaming.
+	// - `Webrtc`=`false` and `StreamingMode`=`video`: video stream.
 	//
-	// - `Webrtc`=`false` and `StreamingMode`=`mix`: mixed streaming.
+	// - `Webrtc`=`false` and `StreamingMode`=`mix`: mixed stream.
 	//
 	// example:
 	//

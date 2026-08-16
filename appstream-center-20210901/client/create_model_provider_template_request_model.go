@@ -32,13 +32,13 @@ type iCreateModelProviderTemplateRequest interface {
 }
 
 type CreateModelProviderTemplateRequest struct {
-	// Agent platform.
+	// The Agent platform.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
-	// Agent provider name.
+	// The Agent provider name.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type CreateModelProviderTemplateRequest struct {
 	//
 	// OpenClaw
 	AgentProvider *string `json:"AgentProvider,omitempty" xml:"AgentProvider,omitempty"`
-	// Business type.
+	// The business type.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type CreateModelProviderTemplateRequest struct {
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// Model provider configuration JSON, containing connection information such as baseUrl, apiKey, and api. The apiKey is encrypted after creation. Not required when ProviderType is WuyingCredit, as it is copied from the system template.
+	// The model provider configuration in JSON format, which contains connection information such as baseUrl, apiKey, and api. The apiKey is encrypted after creation. When ProviderType is set to WuyingCredit, this parameter is not required because the configuration is copied from the system template.
 	//
 	// This parameter is required.
 	//
@@ -70,19 +70,19 @@ type CreateModelProviderTemplateRequest struct {
 	//
 	// }
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// Model provider template description.
+	// The description of the model provider template.
 	//
 	// example:
 	//
 	// 阿里云百炼服务商
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Whether to enable Wuying security proxy. Must be true when ProviderType is WuyingCredit.
+	// Specifies whether to enable the WUYING secure proxy. This parameter must be set to true when ProviderType is set to WuyingCredit.
 	//
 	// example:
 	//
 	// true
 	EnableWuyingProxy *bool `json:"EnableWuyingProxy,omitempty" xml:"EnableWuyingProxy,omitempty"`
-	// Associated model group ID.
+	// The ID of the associated model template.
 	//
 	// This parameter is required.
 	//
@@ -90,13 +90,13 @@ type CreateModelProviderTemplateRequest struct {
 	//
 	// mt-xxxx
 	ModelTemplateId *string `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
-	// Model provider template name.
+	// The name of the model provider template.
 	//
 	// example:
 	//
 	// 阿里云百炼
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Model provider name. Must be unique within the same model template. Naming rules vary by ProviderType. For details, see the ProviderType description.
+	// The model provider name. The name must be unique within the same model template. The naming rules vary based on the value of ProviderType. For more information, see the description of ProviderType.
 	//
 	// This parameter is required.
 	//
@@ -104,13 +104,13 @@ type CreateModelProviderTemplateRequest struct {
 	//
 	// bailian
 	ProviderName *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
-	// Model provider type. Different types impose different constraints on ProviderName and Config:
+	// The model provider type. Different types impose different constraints on ProviderName and Config. Valid values:
 	//
-	// - WuyingCredit: Wuying credit package. ProviderName must be wuying-credit. Created by copying from the system template. Config is not required.
+	// - WuyingCredit: WUYING credit plan. ProviderName must be set to wuying-credit. The template is created by copying from a system template, and Config is not required.
 	//
-	// - Managed: Managed provider. System-reserved names such as wuying-credit cannot be used. Config is required.
+	// - Managed: managed provider. System-reserved names such as wuying-credit cannot be used. Config is required.
 	//
-	// - Custom: User-defined provider. ProviderName must start with the provider- prefix. Config is required.
+	// - Custom: user-defined provider. ProviderName must start with the prefix provider-. Config is required.
 	//
 	// example:
 	//

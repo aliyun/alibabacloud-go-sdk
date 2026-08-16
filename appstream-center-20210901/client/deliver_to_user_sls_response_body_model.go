@@ -14,7 +14,7 @@ type iDeliverToUserSlsResponseBody interface {
 }
 
 type DeliverToUserSlsResponseBody struct {
-	// request ID
+	// The request ID.
 	//
 	// example:
 	//

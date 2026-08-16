@@ -30,7 +30,7 @@ type iAuthorizeInstanceGroupRequest interface {
 }
 
 type AuthorizeInstanceGroupRequest struct {
-	// The delivery group ID. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the value.
+	// 交付群組 ID。可呼叫 [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) 介面取得。
 	//
 	// This parameter is required.
 	//
@@ -38,28 +38,28 @@ type AuthorizeInstanceGroupRequest struct {
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The persistent session ID.
+	// 持續性工作階段 ID。
 	//
 	// example:
 	//
 	// p-0cc7s3mw2fg4j****
 	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
-	// The list of user group IDs to be authorized.
+	// 授權使用者群組 ID 清單。
 	//
 	// if can be null:
 	// true
 	AuthorizeUserGroupIds []*string `json:"AuthorizeUserGroupIds,omitempty" xml:"AuthorizeUserGroupIds,omitempty" type:"Repeated"`
-	// The list of usernames to be authorized for the delivery group. You can specify 1 to 100 usernames.
+	// 要新增交付群組授權的使用者名稱清單。可設定 1\\~100 個。
 	AuthorizeUserIds []*string `json:"AuthorizeUserIds,omitempty" xml:"AuthorizeUserIds,omitempty" type:"Repeated"`
-	// The user avatar ID.
+	// 使用者分身 ID。
 	//
-	// > This parameter is not available for public use.
+	// > 此參數未開放使用。
 	//
 	// example:
 	//
 	// default
 	AvatarId *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
-	// The product type.
+	// 產品類型。
 	//
 	// This parameter is required.
 	//
@@ -67,14 +67,14 @@ type AuthorizeInstanceGroupRequest struct {
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The list of user group IDs to be deauthorized.
+	// 取消授權使用者群組 ID 清單。
 	//
 	// if can be null:
 	// true
 	UnAuthorizeUserGroupIds []*string `json:"UnAuthorizeUserGroupIds,omitempty" xml:"UnAuthorizeUserGroupIds,omitempty" type:"Repeated"`
-	// The list of usernames to be deauthorized from the delivery group. You can specify 1 to 100 usernames.
+	// 要移除交付群組授權的使用者名稱清單。可設定 1\\~100 個。
 	UnAuthorizeUserIds []*string `json:"UnAuthorizeUserIds,omitempty" xml:"UnAuthorizeUserIds,omitempty" type:"Repeated"`
-	// The user information.
+	// 使用者資訊。
 	UserMeta *AuthorizeInstanceGroupRequestUserMeta `json:"UserMeta,omitempty" xml:"UserMeta,omitempty" type:"Struct"`
 }
 
@@ -177,13 +177,13 @@ func (s *AuthorizeInstanceGroupRequest) Validate() error {
 }
 
 type AuthorizeInstanceGroupRequestUserMeta struct {
-	// The AD domain name.
+	// AD 網域名稱。
 	//
 	// example:
 	//
 	// example.com
 	AdDomain *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
-	// The user type.
+	// 使用者類型。
 	//
 	// example:
 	//

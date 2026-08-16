@@ -68,7 +68,7 @@ type ListModelProviderTemplatesShrinkRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the model provider to filter by.
+	// The model provider name to filter by.
 	//
 	// example:
 	//

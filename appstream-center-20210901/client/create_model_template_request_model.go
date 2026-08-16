@@ -19,6 +19,8 @@ type iCreateModelTemplateRequest interface {
 	GetDescription() *string
 	SetName(v string) *CreateModelTemplateRequest
 	GetName() *string
+	SetRefScope(v string) *CreateModelTemplateRequest
+	GetRefScope() *string
 }
 
 type CreateModelTemplateRequest struct {
@@ -44,13 +46,13 @@ type CreateModelTemplateRequest struct {
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The template group description.
+	// The description of the model group.
 	//
 	// example:
 	//
-	// 测试模型分组
+	// Test model group
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The template group name.
+	// The name of the model group.
 	//
 	// This parameter is required.
 	//
@@ -58,6 +60,8 @@ type CreateModelTemplateRequest struct {
 	//
 	// model-template-001
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The authorization scope. This parameter is optional and effective only for Common model groups. Valid values: ALL_USER and USER_MIXED (strictly uppercase). If not specified, the default value is USER_MIXED for Common groups. Non-Common groups ignore this parameter and use RESOURCE_MIXED.
+	RefScope *string `json:"RefScope,omitempty" xml:"RefScope,omitempty"`
 }
 
 func (s CreateModelTemplateRequest) String() string {
@@ -88,6 +92,10 @@ func (s *CreateModelTemplateRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateModelTemplateRequest) GetRefScope() *string {
+	return s.RefScope
+}
+
 func (s *CreateModelTemplateRequest) SetAgentPlatform(v string) *CreateModelTemplateRequest {
 	s.AgentPlatform = &v
 	return s
@@ -110,6 +118,11 @@ func (s *CreateModelTemplateRequest) SetDescription(v string) *CreateModelTempla
 
 func (s *CreateModelTemplateRequest) SetName(v string) *CreateModelTemplateRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateModelTemplateRequest) SetRefScope(v string) *CreateModelTemplateRequest {
+	s.RefScope = &v
 	return s
 }
 

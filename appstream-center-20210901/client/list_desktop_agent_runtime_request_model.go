@@ -9,16 +9,26 @@ type iListDesktopAgentRuntimeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentImOnlineStatus(v string) *ListDesktopAgentRuntimeRequest
+	GetAgentImOnlineStatus() *string
 	SetAgentInstanceStatuses(v []*string) *ListDesktopAgentRuntimeRequest
 	GetAgentInstanceStatuses() []*string
 	SetAgentInstanceVersions(v []*string) *ListDesktopAgentRuntimeRequest
 	GetAgentInstanceVersions() []*string
 	SetAgentPlatform(v string) *ListDesktopAgentRuntimeRequest
 	GetAgentPlatform() *string
+	SetAgentPlatformList(v []*string) *ListDesktopAgentRuntimeRequest
+	GetAgentPlatformList() []*string
 	SetAgentProvider(v string) *ListDesktopAgentRuntimeRequest
 	GetAgentProvider() *string
+	SetAgentProviderList(v []*string) *ListDesktopAgentRuntimeRequest
+	GetAgentProviderList() []*string
+	SetAgentTemplateIds(v []*string) *ListDesktopAgentRuntimeRequest
+	GetAgentTemplateIds() []*string
 	SetAuthUsers(v []*string) *ListDesktopAgentRuntimeRequest
 	GetAuthUsers() []*string
+	SetBizRegionId(v string) *ListDesktopAgentRuntimeRequest
+	GetBizRegionId() *string
 	SetBizType(v int32) *ListDesktopAgentRuntimeRequest
 	GetBizType() *int32
 	SetChannelConfigure(v bool) *ListDesktopAgentRuntimeRequest
@@ -43,6 +53,8 @@ type iListDesktopAgentRuntimeRequest interface {
 	GetModelConfigure() *bool
 	SetModelTemplateId(v string) *ListDesktopAgentRuntimeRequest
 	GetModelTemplateId() *string
+	SetOfficeSiteId(v string) *ListDesktopAgentRuntimeRequest
+	GetOfficeSiteId() *string
 	SetPageNumber(v int32) *ListDesktopAgentRuntimeRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListDesktopAgentRuntimeRequest
@@ -54,6 +66,12 @@ type iListDesktopAgentRuntimeRequest interface {
 }
 
 type ListDesktopAgentRuntimeRequest struct {
+	// The agent IM online status filter.
+	//
+	// example:
+	//
+	// Online
+	AgentImOnlineStatus *string `json:"AgentImOnlineStatus,omitempty" xml:"AgentImOnlineStatus,omitempty"`
 	// The list of agent instance statuses.
 	//
 	// example:
@@ -72,25 +90,49 @@ type ListDesktopAgentRuntimeRequest struct {
 	//
 	// ENTERPRISE
 	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
-	// The name of the agent provider.
+	// The list of agent platforms. If AgentPlatform is also specified, AgentPlatform takes precedence and this list is ignored.
+	//
+	// example:
+	//
+	// ENTERPRISE
+	AgentPlatformList []*string `json:"AgentPlatformList,omitempty" xml:"AgentPlatformList,omitempty" type:"Repeated"`
+	// The agent provider name.
 	//
 	// example:
 	//
 	// OpenClaw
 	AgentProvider *string `json:"AgentProvider,omitempty" xml:"AgentProvider,omitempty"`
+	// The list of agent providers. If AgentProvider is also specified, AgentProvider takes precedence and this list is ignored.
+	//
+	// example:
+	//
+	// OpenClaw
+	AgentProviderList []*string `json:"AgentProviderList,omitempty" xml:"AgentProviderList,omitempty" type:"Repeated"`
+	// The list of agent template IDs. A match occurs only when all valid templates are assigned.
+	//
+	// example:
+	//
+	// at-xxxxx
+	AgentTemplateIds []*string `json:"AgentTemplateIds,omitempty" xml:"AgentTemplateIds,omitempty" type:"Repeated"`
 	// The list of authorized users.
 	//
 	// example:
 	//
 	// user001
 	AuthUsers []*string `json:"AuthUsers,omitempty" xml:"AuthUsers,omitempty" type:"Repeated"`
+	// The business region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	// The business type.
 	//
 	// example:
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// Specifies whether the third-party channel is configured.
+	// Specifies whether a third-party channel is configured.
 	//
 	// example:
 	//
@@ -114,37 +156,39 @@ type ListDesktopAgentRuntimeRequest struct {
 	//
 	// Desktop001
 	DesktopNames []*string `json:"DesktopNames,omitempty" xml:"DesktopNames,omitempty" type:"Repeated"`
-	// The list of cloud computer statuses.
+	// The list of Cloud Desktop statuses.
 	//
 	// example:
 	//
 	// Running
 	DesktopStatuses []*string `json:"DesktopStatuses,omitempty" xml:"DesktopStatuses,omitempty" type:"Repeated"`
-	// Specifies whether authorized users exist.
+	// Indicates whether an authorized user exists for authorization.
 	//
 	// example:
 	//
 	// true
 	HasAuthUser *bool `json:"HasAuthUser,omitempty" xml:"HasAuthUser,omitempty"`
-	// Specifies whether a risk exists. Used to filter cloud computers with or without risks. This parameter takes effect only when IncludeRiskInfo is set to true.
+	// Specifies whether a risk exists. This parameter is used to filter Cloud Desktops with or without risks and takes effect only when IncludeRiskInfo is set to true.
 	//
-	// Set to true to return only records with risks. Set to false to return only records without risks. If not specified, no filtering is applied.
+	// Set this parameter to true to return only records with risks. Set this parameter to false to return only records without risks. If you do not specify this parameter, no filtering is applied.
 	//
 	// example:
 	//
 	// true
 	HasRisk *bool `json:"HasRisk,omitempty" xml:"HasRisk,omitempty"`
-	// Specifies whether to query and return risk information. Default value: false. When set to true, the response includes the RiskInfo field, and the HasRisk filter condition takes effect.
+	// Specifies whether to query and return risk information. Default value: false. If set to true, the response includes the RiskInfo field, and the HasRisk filter takes effect.
 	//
 	// example:
 	//
 	// true
 	IncludeRiskInfo *bool `json:"IncludeRiskInfo,omitempty" xml:"IncludeRiskInfo,omitempty"`
+	// The management status filter, such as Hibernated.
+	//
 	// example:
 	//
 	// Hibernated
 	ManagementStatus *string `json:"ManagementStatus,omitempty" xml:"ManagementStatus,omitempty"`
-	// Specifies whether the model is configured.
+	// Specifies whether a model is configured.
 	//
 	// example:
 	//
@@ -156,7 +200,13 @@ type ListDesktopAgentRuntimeRequest struct {
 	//
 	// mt-xxxx
 	ModelTemplateId *string `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
-	// The page number, starting from 1. Values 0 and 1 return the same result.
+	// The office network ID.
+	//
+	// example:
+	//
+	// cn-hangzhou+dir-xxxx
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The page number. Starts from 1. Values 0 and 1 return the same result.
 	//
 	// example:
 	//
@@ -174,7 +224,7 @@ type ListDesktopAgentRuntimeRequest struct {
 	//
 	// rg-xxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The list of resource IDs (underlying real resource IDs).
+	// The list of resource IDs (underlying actual resource IDs).
 	//
 	// example:
 	//
@@ -190,6 +240,10 @@ func (s ListDesktopAgentRuntimeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListDesktopAgentRuntimeRequest) GetAgentImOnlineStatus() *string {
+	return s.AgentImOnlineStatus
+}
+
 func (s *ListDesktopAgentRuntimeRequest) GetAgentInstanceStatuses() []*string {
 	return s.AgentInstanceStatuses
 }
@@ -202,12 +256,28 @@ func (s *ListDesktopAgentRuntimeRequest) GetAgentPlatform() *string {
 	return s.AgentPlatform
 }
 
+func (s *ListDesktopAgentRuntimeRequest) GetAgentPlatformList() []*string {
+	return s.AgentPlatformList
+}
+
 func (s *ListDesktopAgentRuntimeRequest) GetAgentProvider() *string {
 	return s.AgentProvider
 }
 
+func (s *ListDesktopAgentRuntimeRequest) GetAgentProviderList() []*string {
+	return s.AgentProviderList
+}
+
+func (s *ListDesktopAgentRuntimeRequest) GetAgentTemplateIds() []*string {
+	return s.AgentTemplateIds
+}
+
 func (s *ListDesktopAgentRuntimeRequest) GetAuthUsers() []*string {
 	return s.AuthUsers
+}
+
+func (s *ListDesktopAgentRuntimeRequest) GetBizRegionId() *string {
+	return s.BizRegionId
 }
 
 func (s *ListDesktopAgentRuntimeRequest) GetBizType() *int32 {
@@ -258,6 +328,10 @@ func (s *ListDesktopAgentRuntimeRequest) GetModelTemplateId() *string {
 	return s.ModelTemplateId
 }
 
+func (s *ListDesktopAgentRuntimeRequest) GetOfficeSiteId() *string {
+	return s.OfficeSiteId
+}
+
 func (s *ListDesktopAgentRuntimeRequest) GetPageNumber() *int32 {
 	return s.PageNumber
 }
@@ -272,6 +346,11 @@ func (s *ListDesktopAgentRuntimeRequest) GetResourceGroupId() *string {
 
 func (s *ListDesktopAgentRuntimeRequest) GetResourceIds() []*string {
 	return s.ResourceIds
+}
+
+func (s *ListDesktopAgentRuntimeRequest) SetAgentImOnlineStatus(v string) *ListDesktopAgentRuntimeRequest {
+	s.AgentImOnlineStatus = &v
+	return s
 }
 
 func (s *ListDesktopAgentRuntimeRequest) SetAgentInstanceStatuses(v []*string) *ListDesktopAgentRuntimeRequest {
@@ -289,13 +368,33 @@ func (s *ListDesktopAgentRuntimeRequest) SetAgentPlatform(v string) *ListDesktop
 	return s
 }
 
+func (s *ListDesktopAgentRuntimeRequest) SetAgentPlatformList(v []*string) *ListDesktopAgentRuntimeRequest {
+	s.AgentPlatformList = v
+	return s
+}
+
 func (s *ListDesktopAgentRuntimeRequest) SetAgentProvider(v string) *ListDesktopAgentRuntimeRequest {
 	s.AgentProvider = &v
 	return s
 }
 
+func (s *ListDesktopAgentRuntimeRequest) SetAgentProviderList(v []*string) *ListDesktopAgentRuntimeRequest {
+	s.AgentProviderList = v
+	return s
+}
+
+func (s *ListDesktopAgentRuntimeRequest) SetAgentTemplateIds(v []*string) *ListDesktopAgentRuntimeRequest {
+	s.AgentTemplateIds = v
+	return s
+}
+
 func (s *ListDesktopAgentRuntimeRequest) SetAuthUsers(v []*string) *ListDesktopAgentRuntimeRequest {
 	s.AuthUsers = v
+	return s
+}
+
+func (s *ListDesktopAgentRuntimeRequest) SetBizRegionId(v string) *ListDesktopAgentRuntimeRequest {
+	s.BizRegionId = &v
 	return s
 }
 
@@ -356,6 +455,11 @@ func (s *ListDesktopAgentRuntimeRequest) SetModelConfigure(v bool) *ListDesktopA
 
 func (s *ListDesktopAgentRuntimeRequest) SetModelTemplateId(v string) *ListDesktopAgentRuntimeRequest {
 	s.ModelTemplateId = &v
+	return s
+}
+
+func (s *ListDesktopAgentRuntimeRequest) SetOfficeSiteId(v string) *ListDesktopAgentRuntimeRequest {
+	s.OfficeSiteId = &v
 	return s
 }
 

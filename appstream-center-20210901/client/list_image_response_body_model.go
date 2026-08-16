@@ -257,7 +257,7 @@ type ListImageResponseBodyData struct {
 	// BUILDER_MANUAL
 	ImageCreateMode *string `json:"ImageCreateMode,omitempty" xml:"ImageCreateMode,omitempty"`
 	ImageIconUrl    *string `json:"ImageIconUrl,omitempty" xml:"ImageIconUrl,omitempty"`
-	// The image ID. System image IDs are meaningful, while custom image IDs are automatically generated.
+	// The image ID. System image IDs are meaningful, while custom image IDs are auto-generated.
 	//
 	// example:
 	//
@@ -269,7 +269,7 @@ type ListImageResponseBodyData struct {
 	//
 	// DemoImage
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The effective region information for overlay layers.
+	// The overlay effective region information.
 	ImageRegionDistributeList []*ListImageResponseBodyDataImageRegionDistributeList `json:"ImageRegionDistributeList,omitempty" xml:"ImageRegionDistributeList,omitempty" type:"Repeated"`
 	// The regions.
 	ImageRegionList []*string `json:"ImageRegionList,omitempty" xml:"ImageRegionList,omitempty" type:"Repeated"`
@@ -279,7 +279,7 @@ type ListImageResponseBodyData struct {
 	//
 	// User
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	// The image language. If the package type is VHD or Container, this property is inherited from the ECS-packaged image in the image combination.
+	// The image language. If the package type is VHD/Container, this property is inherited from the ECS package type image in the image combination.
 	//
 	// example:
 	//
@@ -297,7 +297,7 @@ type ListImageResponseBodyData struct {
 	//
 	// true
 	OnlineVersion *bool `json:"OnlineVersion,omitempty" xml:"OnlineVersion,omitempty"`
-	// The sub-version from which the current image reads the primary image information. An image consists of multiple sub-versions.
+	// The sub-version from which the current image reads the main image information. An image consists of multiple sub-versions.
 	//
 	// example:
 	//
@@ -315,7 +315,7 @@ type ListImageResponseBodyData struct {
 	//
 	// ECS
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// The parent image ID. This parameter indicates only the inheritance relationship. System images do not have a parent image.
+	// The parent image ID. This only indicates the inheritance relationship. System images have no parent image.
 	//
 	// example:
 	//
@@ -327,9 +327,9 @@ type ListImageResponseBodyData struct {
 	//
 	// iv-xxx
 	ParentImageVersion *string `json:"ParentImageVersion,omitempty" xml:"ParentImageVersion,omitempty"`
-	// The operating system platform of the image.
+	// The image operating system platform.
 	//
-	// > If the package type is VHD or Container, this property is inherited from the ECS-packaged image in the image combination.
+	// > If the package type is VHD/Container, this property is inherited from the ECS package type image in the image combination.
 	//
 	// example:
 	//
@@ -403,13 +403,13 @@ type ListImageResponseBodyData struct {
 	//
 	// v0.1.0
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
-	// Indicates whether cloud disk encryption is enabled.
+	// Indicates whether disk encryption is enabled.
 	//
 	// example:
 	//
 	// true
 	VolumeEncryptionEnabled *bool `json:"VolumeEncryptionEnabled,omitempty" xml:"VolumeEncryptionEnabled,omitempty"`
-	// The KMS key ID used when cloud disk encryption is enabled.
+	// The KMS key ID used when disk encryption is enabled.
 	//
 	// example:
 	//
@@ -943,7 +943,7 @@ func (s *ListImageResponseBodyDataAppList) Validate() error {
 }
 
 type ListImageResponseBodyDataImageRegionDistributeList struct {
-	// The image ID. System image IDs are meaningful, while custom image IDs are automatically generated.
+	// The image ID. System image IDs are meaningful, while custom image IDs are auto-generated.
 	//
 	// example:
 	//

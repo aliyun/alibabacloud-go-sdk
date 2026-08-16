@@ -20,9 +20,9 @@ type iStopWuyingServerRequest interface {
 type StopWuyingServerRequest struct {
 	// Specifies whether to forcibly restart the workstation. Valid values:
 	//
-	// - True: forcibly restart
+	// - True: forcibly
 	//
-	// - False: do not forcibly restart.
+	// - False: not forcibly
 	//
 	// example:
 	//

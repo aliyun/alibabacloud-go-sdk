@@ -62,11 +62,11 @@ func (s *BatchCreateLlmTemplatesResponseBody) Validate() error {
 }
 
 type BatchCreateLlmTemplatesResponseBodyData struct {
-	// The list of IDs of the model templates that are created.
+	// The list of successfully created model template IDs.
 	LlmTemplateIds []*string `json:"LlmTemplateIds,omitempty" xml:"LlmTemplateIds,omitempty" type:"Repeated"`
 	// The list of skipped model configuration items.
 	SkippedItems []*BatchCreateLlmTemplatesResponseBodyDataSkippedItems `json:"SkippedItems,omitempty" xml:"SkippedItems,omitempty" type:"Repeated"`
-	// The number of model templates that are created.
+	// The number of successfully created items.
 	//
 	// example:
 	//
@@ -138,13 +138,13 @@ func (s *BatchCreateLlmTemplatesResponseBodyData) Validate() error {
 }
 
 type BatchCreateLlmTemplatesResponseBodyDataSkippedItems struct {
-	// The model code that is skipped.
+	// The model code that was skipped.
 	//
 	// example:
 	//
 	// qwen3.5-plus
 	LlmCode *string `json:"LlmCode,omitempty" xml:"LlmCode,omitempty"`
-	// The reason why the model is skipped.
+	// The reason why the item was skipped.
 	//
 	// example:
 	//

@@ -38,7 +38,9 @@ type iGetConnectionTicketRequest interface {
 }
 
 type GetConnectionTicketRequest struct {
-	// The access type. If you do not specify this parameter, both types are displayed. Valid values:
+	// The access type. If you do not specify this parameter, both types are displayed.
+	//
+	// Valid values:
 	//
 	// - INTERNET: Internet access.
 	//
@@ -84,7 +86,7 @@ type GetConnectionTicketRequest struct {
 	// p-0bxls9m3cl7s****
 	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
 	AppPolicyId             *string `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
-	// The application startup parameter. For information about how to obtain startup parameters, see [How to obtain application installation and startup parameters](https://help.aliyun.com/document_detail/426045.html).
+	// The application startup parameter. For information about how to obtain startup parameters, see [How to obtain application installation parameters and startup parameters](https://help.aliyun.com/document_detail/426045.html).
 	//
 	// example:
 	//
@@ -124,7 +126,7 @@ type GetConnectionTicketRequest struct {
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The task ID.
 	//
-	// > This request parameter is required for non-initial invokes. Use this parameter to check the task status and connection credentials.
+	// > This parameter is required for non-initial calls. Use this parameter to query the task status and connection credentials.
 	//
 	// example:
 	//

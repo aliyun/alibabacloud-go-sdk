@@ -28,7 +28,7 @@ type ModifyNodePoolAttributeShrinkRequest struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The number of concurrent sessions, which is the number of sessions that can be simultaneously connected to a single resource. If too many sessions are connected simultaneously, the application experience may degrade. The valid values vary depending on the resource specification. The valid values for each resource specification are as follows:
+	// The number of concurrent sessions, which is the number of sessions that can be simultaneously connected to a single resource. If too many sessions are connected simultaneously, the application experience may degrade. The value range varies depending on the resource specification. The value ranges for each resource specification are as follows:
 	//
 	// - appstreaming.general.4c8g: 1 to 2.
 	//
@@ -44,7 +44,7 @@ type ModifyNodePoolAttributeShrinkRequest struct {
 	//
 	// 2
 	NodeCapacity *int32 `json:"NodeCapacity,omitempty" xml:"NodeCapacity,omitempty"`
-	// The automatic scaling policy of the delivery group.
+	// The automatic scaling strategy of the delivery group.
 	NodePoolStrategyShrink *string `json:"NodePoolStrategy,omitempty" xml:"NodePoolStrategy,omitempty"`
 	// The resource group ID.
 	//

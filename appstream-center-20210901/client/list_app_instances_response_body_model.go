@@ -131,11 +131,11 @@ type ListAppInstancesResponseBodyAppInstanceModels struct {
 	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
 	// The binding information between the instance and the user.
 	BindInfo *ListAppInstancesResponseBodyAppInstanceModelsBindInfo `json:"BindInfo,omitempty" xml:"BindInfo,omitempty" type:"Struct"`
-	// The billing method of the instance. Valid values:
+	// The billing type of the instance. Valid values:
 	//
-	// - **PrePaid**: subscription.
+	// - **PrePaid**: subscription (prepaid).
 	//
-	// - **PostPaid**: pay-as-you-go.
+	// - **PostPaid**: pay-as-you-go (postpaid).
 	//
 	// > This parameter is returned only when the billing mode of the delivery group to which this instance belongs is resource-based billing (ChargeResourceMode=Node).
 	//
@@ -155,7 +155,7 @@ type ListAppInstancesResponseBodyAppInstanceModels struct {
 	//
 	// 2023-03-07T20:29:19.000+08:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The public IP address of the primary network interface controller (NIC). This value is returned only when the network policy (`StrategyType`) of the delivery group is set to the mixed pattern (`Mixed`). Otherwise, this value is empty.
+	// The public IP address of the primary network interface controller (NIC). This value is returned only when the network policy (`StrategyType`) of the delivery group is set to mixed mode pattern (`Mixed`). Otherwise, this value is empty.
 	//
 	// example:
 	//

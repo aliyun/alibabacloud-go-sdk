@@ -20,7 +20,7 @@ type iListModelTemplateResourceGroupRequest interface {
 }
 
 type ListModelTemplateResourceGroupRequest struct {
-	// The ID of the model group.
+	// The model group ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type ListModelTemplateResourceGroupRequest struct {
 	//
 	// mt-xxxxx
 	ModelTemplateId *string `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
-	// The page number. Pages start from page 1. Both 0 and 1 return the same result.
+	// The page number. Pages start from page 1. The values 0 and 1 return the same result.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iGetResourceRenewPriceRequest interface {
 }
 
 type GetResourceRenewPriceRequest struct {
-	// The delivery group ID. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
+	// The delivery group ID. You can call [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type GetResourceRenewPriceRequest struct {
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The numeric part of the purchase duration. This parameter is used together with PeriodUnit to specify the complete purchase duration.
+	// The numeric part of the resource purchase duration. This parameter is used together with PeriodUnit to specify the complete purchase duration.
 	//
 	// This parameter is required.
 	//
@@ -36,23 +36,23 @@ type GetResourceRenewPriceRequest struct {
 	//
 	// 1
 	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit part of the purchase duration. This parameter is used together with Period to specify the complete purchase duration. Valid combinations of Period and PeriodUnit:
+	// The unit part of the resource purchase duration. This parameter is used together with Period to specify the complete purchase duration. Valid combinations of Period and PeriodUnit:
 	//
-	// - 1 Week
+	// - 1 Week (1 week)
 	//
-	// - 1 Month
+	// - 1 Month (1 month)
 	//
-	// - 2 Month
+	// - 2 Month (2 months)
 	//
-	// - 3 Month
+	// - 3 Month (3 months)
 	//
-	// - 6 Month
+	// - 6 Month (6 months)
 	//
-	// - 1 Year
+	// - 1 Year (1 year)
 	//
-	// - 2 Year
+	// - 2 Year (2 years)
 	//
-	// - 3 Year
+	// - 3 Year (3 years)
 	//
 	// > This parameter is case-sensitive. For example, `Week` is valid, but `week` is invalid. If the request parameters do not match the combinations listed above, such as `2 Week`, the call to this operation succeeds, but an error occurs during the order placement phase.
 	//

@@ -16,7 +16,7 @@ type iDescribeWuyingServerEipInfoResponseBody interface {
 }
 
 type DescribeWuyingServerEipInfoResponseBody struct {
-	// The EIP information.
+	// The Elastic IP Address (EIP) information.
 	EipInfoModel *DescribeWuyingServerEipInfoResponseBodyEipInfoModel `json:"EipInfoModel,omitempty" xml:"EipInfoModel,omitempty" type:"Struct"`
 	// Id of the request
 	//

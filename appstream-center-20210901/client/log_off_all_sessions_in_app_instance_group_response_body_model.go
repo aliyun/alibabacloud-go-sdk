@@ -18,13 +18,13 @@ type iLogOffAllSessionsInAppInstanceGroupResponseBody interface {
 }
 
 type LogOffAllSessionsInAppInstanceGroupResponseBody struct {
-	// The error code returned when an error occurs.
+	// The error code returned if the operation failed.
 	//
 	// example:
 	//
 	// InvalidParameter.ProductType
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message returned when an error occurs.
+	// The error message returned if the operation failed.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iGetOtaTaskByTaskIdRequest interface {
 }
 
 type GetOtaTaskByTaskIdRequest struct {
-	// The over-the-air update task ID. You can call [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) to obtain the ID.
+	// The ID of the over-the-air update task. You can call [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) to obtain the ID.
 	//
 	// This parameter is required.
 	//

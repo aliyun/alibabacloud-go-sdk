@@ -54,15 +54,15 @@ type ModifyAppInstanceGroupAttributeShrinkRequest struct {
 	NetworkShrink *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	// The resource group object.
 	NodePoolShrink *string `json:"NodePool,omitempty" xml:"NodePool,omitempty"`
-	// Specifies whether to allow only one application per session.
+	// Specifies whether only one application can be opened per session.
 	//
-	// - If enabled, opening multiple applications within a delivery group allocates a separate session for each application, consuming more sessions.
+	// - If enabled, opening multiple applications within the delivery group allocates a separate session for each application, consuming more sessions.
 	//
 	// example:
 	//
 	// false
 	PerSessionPerApp *bool `json:"PerSessionPerApp,omitempty" xml:"PerSessionPerApp,omitempty"`
-	// The AppId of the pre-open application. If the PreOpenMode parameter is set to `SINGLE_APP`, PreOpenAppId cannot be an empty string.
+	// The AppId of the pre-open application. If the `PreOpenMode` parameter is set to `SINGLE_APP`, the `PreOpenAppId` parameter cannot be an empty string.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type ModifyAppInstanceGroupAttributeShrinkRequest struct {
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The security policy.
 	SecurityPolicyShrink *string `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty"`
-	// The session retention duration after disconnection, in minutes. After an end user session is disconnected, the session is retained for the specified duration before being logged off. Set this parameter to `-1` to retain the session indefinitely. Valid values: -1 and 3 to 300. Default value: `15`.
+	// The session disconnection retention duration, in minutes. After an end user session is disconnected, the session is retained for the duration specified here before being logged off. Set this parameter to `-1` to retain the session indefinitely. Valid values: -1 and 3 to 300. Default value: `15`.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iDeleteImageRequest interface {
 }
 
 type DeleteImageRequest struct {
-	// The AppStream image ID.
+	// The WUYING image ID.
 	//
 	// example:
 	//

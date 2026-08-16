@@ -56,9 +56,7 @@ type iListImageRequest interface {
 }
 
 type ListImageRequest struct {
-	// The list of supported regions.
-	//
-	// WUYING images are centralized. Use this parameter to query the regions where the image is deployed.
+	// The list of supported regions. WUYING images are centralized. Use this parameter to query the regions where the image is deployed.
 	BizRegionIdList []*string `json:"BizRegionIdList,omitempty" xml:"BizRegionIdList,omitempty" type:"Repeated"`
 	// The business type. This parameter is not publicly available.
 	//
@@ -113,7 +111,7 @@ type ListImageRequest struct {
 	//
 	// Ecs
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -383,13 +381,13 @@ func (s *ListImageRequest) Validate() error {
 }
 
 type ListImageRequestTagList struct {
-	// The custom tag key.
+	// The user-defined tag key.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The custom tag value.
+	// The user-defined tag value.
 	//
 	// example:
 	//

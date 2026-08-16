@@ -28,13 +28,19 @@ type iConfigRuntimeChannelRequest interface {
 }
 
 type ConfigRuntimeChannelRequest struct {
-	// The Agent platform (such as ENTERPRISE or JVS).
+	// The Agent platform.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
 	// The Agent provider.
+	//
+	// - JVS Computer: set to OpenClaw.
+	//
+	// - OpenClaw: set to OpenClaw.
+	//
+	// - Hermes Agent: set to HermesAgent.
 	//
 	// This parameter is required.
 	//
@@ -51,6 +57,36 @@ type ConfigRuntimeChannelRequest struct {
 	// dingtalk-connector
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The channel configuration JSON string.
+	//
+	// - Simple configuration mode example:
+	//
+	// ```json
+	//
+	// {
+	//
+	//     "appKey": "abc",
+	//
+	//     "appSecret": "efg"
+	//
+	// }
+	//
+	// ```
+	//
+	// - Custom configuration mode example:
+	//
+	// ```json
+	//
+	// {
+	//
+	//   "enabled": true,
+	//
+	//   "clientId": "xxx",
+	//
+	//   "clientSecret": "xxx"
+	//
+	// }
+	//
+	// ```
 	//
 	// This parameter is required.
 	//

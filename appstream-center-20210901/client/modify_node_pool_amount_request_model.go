@@ -26,7 +26,7 @@ type ModifyNodePoolAmountRequest struct {
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The node pool specification change parameters.
+	// The parameters for node pool specification changes.
 	//
 	// This parameter is required.
 	NodePool *ModifyNodePoolAmountRequestNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Struct"`
@@ -93,13 +93,13 @@ type ModifyNodePoolAmountRequestNodePool struct {
 	//
 	// 1
 	NodeAmount *int32 `json:"NodeAmount,omitempty" xml:"NodeAmount,omitempty"`
-	// The modification mode for subscription nodes.
+	// The subscription node modification mode.
 	//
 	// example:
 	//
 	// EXPAND_FROM_POST_PAID_EXPLICIT
 	PrePaidNodeAmountModifyMode *string `json:"PrePaidNodeAmountModifyMode,omitempty" xml:"PrePaidNodeAmountModifyMode,omitempty"`
-	// The list of nodes whose billing type is to be changed.
+	// The list of nodes whose billing type is to be modified.
 	PrePaidNodeAmountModifyNodeIds []*string `json:"PrePaidNodeAmountModifyNodeIds,omitempty" xml:"PrePaidNodeAmountModifyNodeIds,omitempty" type:"Repeated"`
 }
 

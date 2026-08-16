@@ -11,6 +11,8 @@ type iListNodeInstanceTypeRequest interface {
 	GoString() string
 	SetBizRegionId(v string) *ListNodeInstanceTypeRequest
 	GetBizRegionId() *string
+	SetChargeType(v string) *ListNodeInstanceTypeRequest
+	GetChargeType() *string
 	SetCpu(v float32) *ListNodeInstanceTypeRequest
 	GetCpu() *float32
 	SetGpu(v float32) *ListNodeInstanceTypeRequest
@@ -50,6 +52,7 @@ type ListNodeInstanceTypeRequest struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	ChargeType  *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The number of CPU cores.
 	//
 	// example:
@@ -62,7 +65,7 @@ type ListNodeInstanceTypeRequest struct {
 	//
 	// 1
 	Gpu *float32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	// The GPU memory size. This parameter is meaningful only for GPU-accelerated cloud desktops. Unit: MB.
+	// The GPU memory size. This parameter is meaningful for GPU-accelerated cloud desktops. Unit: MB.
 	//
 	// example:
 	//
@@ -81,7 +84,7 @@ type ListNodeInstanceTypeRequest struct {
 	//
 	// 10240
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The resource specification type to query. If you leave this parameter empty, all specification types are returned.
+	// The resource specification type to query. If this parameter is not specified, all specification types are returned.
 	//
 	// example:
 	//
@@ -93,7 +96,7 @@ type ListNodeInstanceTypeRequest struct {
 	//
 	// appstreaming.vgpu
 	NodeInstanceTypeFamily *string `json:"NodeInstanceTypeFamily,omitempty" xml:"NodeInstanceTypeFamily,omitempty"`
-	// CPU/Memory.
+	// CPU/Memory
 	//
 	// example:
 	//
@@ -130,7 +133,7 @@ type ListNodeInstanceTypeRequest struct {
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// DESC/ASC.
+	// DESC/ASC
 	//
 	// example:
 	//
@@ -148,6 +151,10 @@ func (s ListNodeInstanceTypeRequest) GoString() string {
 
 func (s *ListNodeInstanceTypeRequest) GetBizRegionId() *string {
 	return s.BizRegionId
+}
+
+func (s *ListNodeInstanceTypeRequest) GetChargeType() *string {
+	return s.ChargeType
 }
 
 func (s *ListNodeInstanceTypeRequest) GetCpu() *float32 {
@@ -212,6 +219,11 @@ func (s *ListNodeInstanceTypeRequest) GetSortType() *string {
 
 func (s *ListNodeInstanceTypeRequest) SetBizRegionId(v string) *ListNodeInstanceTypeRequest {
 	s.BizRegionId = &v
+	return s
+}
+
+func (s *ListNodeInstanceTypeRequest) SetChargeType(v string) *ListNodeInstanceTypeRequest {
+	s.ChargeType = &v
 	return s
 }
 

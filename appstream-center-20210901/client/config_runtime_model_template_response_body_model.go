@@ -26,7 +26,7 @@ type ConfigRuntimeModelTemplateResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//

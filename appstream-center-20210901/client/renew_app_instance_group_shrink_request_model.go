@@ -30,7 +30,7 @@ type iRenewAppInstanceGroupShrinkRequest interface {
 }
 
 type RenewAppInstanceGroupShrinkRequest struct {
-	// The ID of the delivery group.
+	// The delivery group ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type RenewAppInstanceGroupShrinkRequest struct {
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The numeric part of the resource purchase duration. This parameter is used together with PeriodUnit to specify the complete purchase duration.
+	// The numeric part of the resource purchase duration. This parameter is used together with `PeriodUnit` to represent the complete purchase duration.
 	//
 	// This parameter is required.
 	//
@@ -52,25 +52,25 @@ type RenewAppInstanceGroupShrinkRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit part of the resource purchase duration. This parameter is used together with Period to specify the complete purchase duration. Valid combinations of Period and PeriodUnit:
+	// The unit part of the resource purchase duration. This parameter is used together with `Period` to represent the complete purchase duration. Valid combinations of `Period` and `PeriodUnit`:
 	//
-	// - 1 Week (1 week)
+	// - 1 Week
 	//
-	// - 1 Month (1 month)
+	// - 1 Month
 	//
-	// - 2 Month (2 months)
+	// - 2 Month
 	//
-	// - 3 Month (3 months)
+	// - 3 Month
 	//
-	// - 6 Month (6 months)
+	// - 6 Month
 	//
-	// - 1 Year (1 year)
+	// - 1 Year
 	//
-	// - 2 Year (2 years)
+	// - 2 Year
 	//
-	// - 3 Year (3 years)
+	// - 3 Year
 	//
-	// > This parameter is case-sensitive. For example, `Week` is valid, but `week` is invalid. If the request parameters do not match the combinations listed above, such as `2 Week`, the call to this operation succeeds, but an error occurs during the order placement phase.
+	// > This parameter is case-sensitive. For example, `Week` is valid, but `week` is invalid. If the request parameters do not match the valid combinations listed above, such as `2 Week`, the call to this operation succeeds, but an error occurs during the order placement phase.
 	//
 	// This parameter is required.
 	//

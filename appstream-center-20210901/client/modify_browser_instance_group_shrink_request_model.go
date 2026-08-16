@@ -44,6 +44,8 @@ type ModifyBrowserInstanceGroupShrinkRequest struct {
 	//
 	// BrowserTest
 	CloudBrowserName *string `json:"CloudBrowserName,omitempty" xml:"CloudBrowserName,omitempty"`
+	// The maximum resource count. This parameter takes effect for monthly active pay-as-you-go billing.
+	//
 	// example:
 	//
 	// 5
@@ -51,7 +53,8 @@ type ModifyBrowserInstanceGroupShrinkRequest struct {
 	// The network configuration.
 	NetworkShrink *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	// The access policy.
-	PolicyShrink        *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	PolicyShrink *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The storage-related policy.
 	StoragePolicyShrink *string `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty"`
 	// The timers.
 	TimersShrink *string `json:"Timers,omitempty" xml:"Timers,omitempty"`

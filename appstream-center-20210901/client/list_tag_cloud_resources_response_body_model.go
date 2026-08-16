@@ -20,7 +20,7 @@ type iListTagCloudResourcesResponseBody interface {
 }
 
 type ListTagCloudResourcesResponseBody struct {
-	// The token that determines whether the next query exists based on the NextToken value.
+	// The pagination token that indicates whether more results exist.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type ListTagCloudResourcesResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of tags bound to the resources.
+	// The list of tags bound to resources.
 	ResourceTags []*ListTagCloudResourcesResponseBodyResourceTags `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty" type:"Repeated"`
 	// The total number of entries.
 	//

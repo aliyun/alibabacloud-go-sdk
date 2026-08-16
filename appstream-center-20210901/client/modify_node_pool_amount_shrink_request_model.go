@@ -26,7 +26,7 @@ type ModifyNodePoolAmountShrinkRequest struct {
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The node pool specification change parameters.
+	// The parameters for node pool specification changes.
 	//
 	// This parameter is required.
 	NodePoolShrink *string `json:"NodePool,omitempty" xml:"NodePool,omitempty"`

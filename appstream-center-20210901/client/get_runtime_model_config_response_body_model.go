@@ -82,13 +82,13 @@ type GetRuntimeModelConfigResponseBodyData struct {
 	//
 	// model-template-001
 	ModelTemplateName *string `json:"ModelTemplateName,omitempty" xml:"ModelTemplateName,omitempty"`
-	// The model template association type (returned only when an association exists).
+	// The model template association type (returned only when present).
 	//
 	// example:
 	//
 	// Runtime
 	ModelTemplateRefType *string `json:"ModelTemplateRefType,omitempty" xml:"ModelTemplateRefType,omitempty"`
-	// The resource group ID to which the runtime belongs. The value is null if the runtime is not associated with a resource group.
+	// The resource group ID to which the runtime belongs (null if not assigned to a resource group).
 	//
 	// example:
 	//
@@ -252,15 +252,17 @@ func (s *GetRuntimeModelConfigResponseBodyDataModelProviderList) Validate() erro
 }
 
 type GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList struct {
+	// The credit consumption multiplier. An empty value indicates the model does not participate in credit-based billing.
+	CreditMultiplier *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCreditMultiplier `json:"CreditMultiplier,omitempty" xml:"CreditMultiplier,omitempty" type:"Struct"`
 	// The model description.
 	//
 	// example:
 	//
-	// Qwen3.6原生视觉语言系列Plus模型，展现出与当前顶尖前沿模型相媲美的卓越性能，模型效果相较3.5系列显著提升。模型在Agentic coding、前端编程、Vibe coding等代码能力、多模态万物识别、OCR、物体定位等能力上显著增强。
+	// Qwen3.6原生视觉语言系列Plus模型，展现出与当前顶尖前沿模型相媲美的卓越性能，模型效果相较3.5系列显著提升。模型在Agentic coding、前端编程、Vibe coding等代码能力、多模态万物识别、OCR、物体定位等能力上显著增强
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The list of model features, such as function-calling, web-search, and structured-outputs.
+	// The list of model features (such as function-calling, web-search, and structured-outputs).
 	Features []*string `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
-	// The inference metadata, including request and response modalities.
+	// The inference metadata (request and response modalities).
 	InferenceMetadata *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListInferenceMetadata `json:"InferenceMetadata,omitempty" xml:"InferenceMetadata,omitempty" type:"Struct"`
 	// The model code.
 	//
@@ -274,13 +276,13 @@ type GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList struct {
 	//
 	// Qwen3.6-Plus
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The publish time in ISO 8601 format.
+	// The publish time (ISO 8601 format).
 	//
 	// example:
 	//
 	// 2026-03-04T06:25:17.000+00:00
 	PublishedTime *string `json:"PublishedTime,omitempty" xml:"PublishedTime,omitempty"`
-	// The model risk type. This parameter is returned only when the request parameter IncludeRiskInfo is set to true.
+	// The model risk type (returned only when the request parameter IncludeRiskInfo is set to true).
 	//
 	// example:
 	//
@@ -294,6 +296,10 @@ func (s GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList) Strin
 
 func (s GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList) GoString() string {
 	return s.String()
+}
+
+func (s *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList) GetCreditMultiplier() *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCreditMultiplier {
+	return s.CreditMultiplier
 }
 
 func (s *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList) GetDescription() *string {
@@ -322,6 +328,11 @@ func (s *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList) GetP
 
 func (s *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList) GetRiskType() *string {
 	return s.RiskType
+}
+
+func (s *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList) SetCreditMultiplier(v *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCreditMultiplier) *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList {
+	s.CreditMultiplier = v
+	return s
 }
 
 func (s *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList) SetDescription(v string) *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList {
@@ -360,6 +371,11 @@ func (s *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList) SetR
 }
 
 func (s *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList) Validate() error {
+	if s.CreditMultiplier != nil {
+		if err := s.CreditMultiplier.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.InferenceMetadata != nil {
 		if err := s.InferenceMetadata.Validate(); err != nil {
 			return err
@@ -368,10 +384,47 @@ func (s *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList) Vali
 	return nil
 }
 
+type GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCreditMultiplier struct {
+	// The maximum multiplier. An empty value indicates no upper limit. For example, Min=1 with an empty Max is displayed as 1x and above.
+	Max *float32 `json:"Max,omitempty" xml:"Max,omitempty"`
+	// The minimum multiplier. When equal to Max, it is a fixed multiplier. For example, Min=Max=2 is displayed as 2x.
+	Min *float32 `json:"Min,omitempty" xml:"Min,omitempty"`
+}
+
+func (s GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCreditMultiplier) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCreditMultiplier) GoString() string {
+	return s.String()
+}
+
+func (s *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCreditMultiplier) GetMax() *float32 {
+	return s.Max
+}
+
+func (s *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCreditMultiplier) GetMin() *float32 {
+	return s.Min
+}
+
+func (s *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCreditMultiplier) SetMax(v float32) *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCreditMultiplier {
+	s.Max = &v
+	return s
+}
+
+func (s *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCreditMultiplier) SetMin(v float32) *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCreditMultiplier {
+	s.Min = &v
+	return s
+}
+
+func (s *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCreditMultiplier) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListInferenceMetadata struct {
-	// The list of request modalities, such as Text, Image, and Audio.
+	// The list of request modalities (such as Text, Image, and Audio).
 	RequestModality []*string `json:"RequestModality,omitempty" xml:"RequestModality,omitempty" type:"Repeated"`
-	// The list of response modalities, such as Text, Image, and Audio.
+	// The list of response modalities (such as Text, Image, and Audio).
 	ResponseModality []*string `json:"ResponseModality,omitempty" xml:"ResponseModality,omitempty" type:"Repeated"`
 }
 

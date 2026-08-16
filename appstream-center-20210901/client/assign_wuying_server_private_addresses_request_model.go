@@ -16,12 +16,16 @@ type iAssignWuyingServerPrivateAddressesRequest interface {
 }
 
 type AssignWuyingServerPrivateAddressesRequest struct {
+	// The number of secondary private IP addresses to assign. Valid values: 1 to 50.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	SecondaryPrivateIpAddressCount *int32 `json:"SecondaryPrivateIpAddressCount,omitempty" xml:"SecondaryPrivateIpAddressCount,omitempty"`
+	// The ID of the development host.
+	//
 	// This parameter is required.
 	//
 	// example:

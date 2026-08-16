@@ -52,7 +52,7 @@ type ListAppInstanceGroupRequest struct {
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The delivery group name. Fuzzy match is used for the query. For example, if you set the delivery group name to `Office App`, all delivery groups whose names contain `Office App` are returned, such as `My Office App` and `Office App A`.
+	// The delivery group name. Fuzzy matching is used for the query. For example, if you set the delivery group name to `OfficeApp`, all delivery groups whose names contain `OfficeApp` are returned, such as `MyOfficeApp` and `OfficeAppA`.
 	//
 	// example:
 	//
@@ -67,7 +67,7 @@ type ListAppInstanceGroupRequest struct {
 	// if can be null:
 	// true
 	ExcludedUserGroupIds []*string `json:"ExcludedUserGroupIds,omitempty" xml:"ExcludedUserGroupIds,omitempty" type:"Repeated"`
-	// The specification type ID of the purchased resources. You can call the [ListNodeInstanceType](~~ListNodeInstanceType~~) operation to obtain this value.
+	// The specification type ID of the purchased resource. You can call the [ListNodeInstanceType](~~ListNodeInstanceType~~) operation to obtain this value.
 	//
 	// example:
 	//
@@ -109,7 +109,7 @@ type ListAppInstanceGroupRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The list of delivery group statuses.
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
-	// The tags.
+	// The list of tags.
 	//
 	// if can be null:
 	// true

@@ -42,7 +42,7 @@ type GetOtaTaskByTaskIdResponseBody struct {
 	//
 	// 0.0.1-R-20220708.110604
 	OtaVersion *string `json:"OtaVersion,omitempty" xml:"OtaVersion,omitempty"`
-	// The version description that describes the content of the over-the-air update.
+	// The release note that describes the content of the over-the-air update.
 	//
 	// example:
 	//

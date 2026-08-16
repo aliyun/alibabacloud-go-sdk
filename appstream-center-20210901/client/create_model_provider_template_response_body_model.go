@@ -16,9 +16,9 @@ type iCreateModelProviderTemplateResponseBody interface {
 }
 
 type CreateModelProviderTemplateResponseBody struct {
-	// Returned result object.
+	// The returned result object.
 	Data *CreateModelProviderTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *CreateModelProviderTemplateResponseBody) Validate() error {
 }
 
 type CreateModelProviderTemplateResponseBodyData struct {
-	// Model provider template ID.
+	// The ID of the model provider template.
 	//
 	// example:
 	//

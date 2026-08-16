@@ -22,7 +22,7 @@ type iListPersistentAppInstancesResponseBody interface {
 }
 
 type ListPersistentAppInstancesResponseBody struct {
-	// The page number of the query results currently displayed.
+	// The current page number of the query results.
 	//
 	// example:
 	//

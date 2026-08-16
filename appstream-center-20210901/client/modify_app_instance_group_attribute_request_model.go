@@ -54,15 +54,15 @@ type ModifyAppInstanceGroupAttributeRequest struct {
 	Network *ModifyAppInstanceGroupAttributeRequestNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 	// The resource group object.
 	NodePool *ModifyAppInstanceGroupAttributeRequestNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Struct"`
-	// Specifies whether to allow only one application per session.
+	// Specifies whether only one application can be opened per session.
 	//
-	// - If enabled, opening multiple applications within a delivery group allocates a separate session for each application, consuming more sessions.
+	// - If enabled, opening multiple applications within the delivery group allocates a separate session for each application, consuming more sessions.
 	//
 	// example:
 	//
 	// false
 	PerSessionPerApp *bool `json:"PerSessionPerApp,omitempty" xml:"PerSessionPerApp,omitempty"`
-	// The AppId of the pre-open application. If the PreOpenMode parameter is set to `SINGLE_APP`, PreOpenAppId cannot be an empty string.
+	// The AppId of the pre-open application. If the `PreOpenMode` parameter is set to `SINGLE_APP`, the `PreOpenAppId` parameter cannot be an empty string.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type ModifyAppInstanceGroupAttributeRequest struct {
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The security policy.
 	SecurityPolicy *ModifyAppInstanceGroupAttributeRequestSecurityPolicy `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty" type:"Struct"`
-	// The session retention duration after disconnection, in minutes. After an end user session is disconnected, the session is retained for the specified duration before being logged off. Set this parameter to `-1` to retain the session indefinitely. Valid values: -1 and 3 to 300. Default value: `15`.
+	// The session disconnection retention duration, in minutes. After an end user session is disconnected, the session is retained for the duration specified here before being logged off. Set this parameter to `-1` to retain the session indefinitely. Valid values: -1 and 3 to 300. Default value: `15`.
 	//
 	// example:
 	//
@@ -306,7 +306,7 @@ func (s *ModifyAppInstanceGroupAttributeRequestNetworkDomainRules) Validate() er
 }
 
 type ModifyAppInstanceGroupAttributeRequestNodePool struct {
-	// The number of concurrent sessions, which is the number of sessions that can be simultaneously connected to a single resource. Too many simultaneous sessions may degrade the application experience. The valid value range varies by resource specification. You can call the ListNodeInstanceType operation to query the valid value range for each resource specification.
+	// The number of concurrent sessions, which is the number of sessions that can be simultaneously connected to a single resource. If too many sessions are connected simultaneously, the application experience may degrade. The valid value range varies depending on the resource specification. You can call the ListNodeInstanceType operation to obtain the valid value range for each resource specification.
 	//
 	// example:
 	//
@@ -453,7 +453,7 @@ func (s *ModifyAppInstanceGroupAttributeRequestStoragePolicy) Validate() error {
 }
 
 type ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile struct {
-	// The ID of the user data storage system (NAS ID).
+	// The user data storage system ID (NAS ID).
 	//
 	// example:
 	//

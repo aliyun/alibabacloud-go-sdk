@@ -68,7 +68,7 @@ type iCreateAppInstanceGroupShrinkRequest interface {
 }
 
 type CreateAppInstanceGroupShrinkRequest struct {
-	// The application image ID. You can obtain the ID from the **O&M*	- > **Custom Images*	- or **System Images*	- page in the [WUYING Cloud Application console](https://appstreaming.console.aliyun.com/).
+	// The application image ID. You can obtain the ID from the **O&M*	- > **Custom Images*	- or **System Images*	- page in the [WUYING CloudApp console](https://appstreaming.console.aliyun.com/).
 	//
 	// This parameter is required.
 	//
@@ -94,7 +94,7 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	//
 	// pg-0clfzcy0adpcf****
 	AppPolicyId *string `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
-	// The authorization mode of the delivery group.
+	// The delivery group authorization mode.
 	//
 	// if can be null:
 	// true
@@ -185,7 +185,7 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The unit of the subscription duration when `ChargeType` is set to `PrePaid`.
 	//
-	// > This parameter is case-sensitive. For example, `Week` is valid, but `week` is invalid.
+	// > This parameter is case-sensitive. For example, `Week` is valid, but `week` is not.
 	//
 	// If the request parameters do not match the valid combinations, such as `2 Week`, the API call succeeds but an error occurs during the order placement.
 	//
@@ -197,7 +197,7 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	//
 	// Week
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The pre-opened application ID.
+	// The pre-opened AppId.
 	//
 	// example:
 	//
@@ -211,7 +211,7 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The promotion ID. You can call the [GetResourcePrice](https://help.aliyun.com/document_detail/428503.html) operation to obtain the ID.
+	// The promotion ID. You can obtain the ID by calling the [GetResourcePrice](https://help.aliyun.com/document_detail/428503.html) operation.
 	//
 	// example:
 	//
@@ -221,7 +221,7 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	RuntimePolicyShrink *string `json:"RuntimePolicy,omitempty" xml:"RuntimePolicy,omitempty"`
 	// The security policy.
 	SecurityPolicyShrink *string `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty"`
-	// The application recycling timeout period, in minutes. After an end user disconnects from a cloud application for a period of time, the cloud application process exits. This period is the application recycling timeout. Set this parameter to `-1` if you do not want the application to be recycled. Valid values: -1 and 3 to 300 (integer). Default value: `15`.
+	// The application recycling time, in minutes. After an end user disconnects from the cloud application for a period of time, the cloud application process exits. This period is the application recycling time. Set this parameter to `-1` if you do not want to recycle the application. Valid values: -1 and 3 to 300 (integer). Default value: `15`.
 	//
 	// This parameter is required.
 	//
@@ -244,7 +244,7 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	// if can be null:
 	// true
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	// The user information of the users to be added to the delivery group. This field is required if the `Users` parameter is specified.
+	// The user information to be added to the delivery group as assigned users. This field is required if the `Users` parameter is specified.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 	// The list of usernames to be added to the delivery group as assigned users.
 	Users []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`

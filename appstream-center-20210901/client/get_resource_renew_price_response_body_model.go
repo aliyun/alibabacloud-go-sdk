@@ -119,7 +119,7 @@ type GetResourceRenewPriceResponseBodyDataPrice struct {
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The discount amount. The actual price is calculated by subtracting the discount amount from the original price.
+	// The discount amount. The actual price equals the original price minus the discount amount.
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ type GetResourceRenewPriceResponseBodyDataPrice struct {
 	OriginalPrice *string `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
 	// The coupon descriptions.
 	Promotions []*GetResourceRenewPriceResponseBodyDataPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
-	// The actual price. The actual price is calculated by subtracting the discount amount from the original price.
+	// The actual price. The actual price equals the original price minus the discount amount.
 	//
 	// example:
 	//

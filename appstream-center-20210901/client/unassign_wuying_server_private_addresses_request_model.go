@@ -16,12 +16,16 @@ type iUnassignWuyingServerPrivateAddressesRequest interface {
 }
 
 type UnassignWuyingServerPrivateAddressesRequest struct {
+	// The list of secondary private IP addresses to unbind.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ["10.0.0.2","10.0.0.3"]
 	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" xml:"PrivateIpAddresses,omitempty" type:"Repeated"`
+	// The ID of the development host.
+	//
 	// This parameter is required.
 	//
 	// example:

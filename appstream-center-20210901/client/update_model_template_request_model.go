@@ -17,32 +17,40 @@ type iUpdateModelTemplateRequest interface {
 	GetModelTemplateId() *string
 	SetName(v string) *UpdateModelTemplateRequest
 	GetName() *string
+	SetRefScope(v string) *UpdateModelTemplateRequest
+	GetRefScope() *string
 }
 
 type UpdateModelTemplateRequest struct {
-	// The model group configuration JSON object.
+	// The model group configuration JSON object. You can use this field to modify the default model. The configuration format varies depending on the agent provider (AgentProvider):
+	//
+	// - **OpenClaw / AgenticComputer scenarios:**
+	//
+	// Set the default model by using the `defaults.model.primary` field in the format of `provider name/model code`.
+	//
+	// - **HermesAgent scenarios:**
+	//
+	// Specify the provider name by using `model.provider` and the model code by using `model.default`.
+	//
+	// > Note:
+	//
+	// > - When you modify the default model, the system verifies whether the specified provider and model code already exist in the model group.
 	//
 	// example:
 	//
-	// {
+	// OpenClaw：
 	//
-	// 	"defaults": {
+	// {"defaults":{"model":{"primary":"bailian/qwen3.5-plus"}}}
 	//
-	// 		"model": {
+	// HermesAgent：
 	//
-	// 			"primary": "bailian/qwen3.5-plus"
-	//
-	// 		}
-	//
-	// 	}
-	//
-	// }
+	// {"model":{"provider":"bailian","default":"qwen3.5-plus"}}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The template group description.
 	//
 	// example:
 	//
-	// 测试模型分组
+	// Test model group
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The model group ID.
 	//
@@ -58,6 +66,8 @@ type UpdateModelTemplateRequest struct {
 	//
 	// model-template-001
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The authorization scope. This parameter is optional and can be modified only for Common model groups. Valid values: ALL_USER and USER_MIXED.
+	RefScope *string `json:"RefScope,omitempty" xml:"RefScope,omitempty"`
 }
 
 func (s UpdateModelTemplateRequest) String() string {
@@ -84,6 +94,10 @@ func (s *UpdateModelTemplateRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *UpdateModelTemplateRequest) GetRefScope() *string {
+	return s.RefScope
+}
+
 func (s *UpdateModelTemplateRequest) SetConfig(v string) *UpdateModelTemplateRequest {
 	s.Config = &v
 	return s
@@ -101,6 +115,11 @@ func (s *UpdateModelTemplateRequest) SetModelTemplateId(v string) *UpdateModelTe
 
 func (s *UpdateModelTemplateRequest) SetName(v string) *UpdateModelTemplateRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateModelTemplateRequest) SetRefScope(v string) *UpdateModelTemplateRequest {
+	s.RefScope = &v
 	return s
 }
 

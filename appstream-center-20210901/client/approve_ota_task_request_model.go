@@ -22,7 +22,7 @@ type iApproveOtaTaskRequest interface {
 }
 
 type ApproveOtaTaskRequest struct {
-	// The delivery group ID. You can call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain the ID.
+	// The delivery group ID. You can call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain this value.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type ApproveOtaTaskRequest struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The over-the-air upgrade task type.
+	// The OTA upgrade task type.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type ApproveOtaTaskRequest struct {
 	//
 	// Fota
 	OtaType *string `json:"OtaType,omitempty" xml:"OtaType,omitempty"`
-	// The start time of the over-the-air upgrade task. Specify the time in ISO 8601 format.
+	// The start time of the OTA upgrade task. Specify the time in ISO 8601 format.
 	//
 	// This parameter is required.
 	//
@@ -56,9 +56,9 @@ type ApproveOtaTaskRequest struct {
 	//
 	// 2022-08-04T14:36:00+08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The over-the-air upgrade task ID. You can call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain the ID.
+	// The OTA upgrade task ID. You can call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain this value.
 	//
-	// > Each successful call of `ApproveOtaTask` causes the `TaskId` to change. Therefore, before calling this operation again, call `ListAppInstanceGroup` again to obtain the latest `TaskId`.
+	// > Each successful call to `ApproveOtaTask` causes the `TaskId` to change. Therefore, before calling this operation again, call `ListAppInstanceGroup` again to obtain the latest `TaskId`.
 	//
 	// This parameter is required.
 	//

@@ -26,7 +26,7 @@ type RemoveResourceGroupModelTemplateResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *RemoveResourceGroupModelTemplateResponseBody) Validate() error {
 }
 
 type RemoveResourceGroupModelTemplateResponseBodyData struct {
-	// The error code returned if the operation fails.
+	// The error code returned when the operation fails.
 	//
 	// example:
 	//
 	// InvalidParameter.resourceGroupIds
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message returned if the operation fails.
+	// The error message returned when the operation fails.
 	//
 	// example:
 	//
@@ -101,7 +101,7 @@ type RemoveResourceGroupModelTemplateResponseBodyData struct {
 	//
 	// rg-xxxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Indicates whether the operation is successful.
+	// Indicates whether the execution is successful.
 	//
 	// example:
 	//

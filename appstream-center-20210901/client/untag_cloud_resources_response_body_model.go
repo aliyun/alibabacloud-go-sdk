@@ -72,7 +72,7 @@ type UntagCloudResourcesResponseBodyFailedResources struct {
 	//
 	// UNTAG_RESOURCE_FAILED
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message.
+	// The error description.
 	//
 	// example:
 	//

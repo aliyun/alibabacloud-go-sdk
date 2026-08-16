@@ -22,7 +22,7 @@ type iUnbindRequest interface {
 }
 
 type UnbindRequest struct {
-	// The delivery group ID. You can call the [GetConnectionTicket](https://help.aliyun.com/document_detail/609336.html) operation to obtain the ID.
+	// The delivery group ID. You can call the [GetConnectionTicket](https://help.aliyun.com/document_detail/609336.html) operation to obtain this ID.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,13 @@ type UnbindRequest struct {
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The session ID. You can call the [GetConnectionTicket](https://help.aliyun.com/document_detail/609336.html) operation to obtain the ID.
+	// The session ID. You can call the [GetConnectionTicket](https://help.aliyun.com/document_detail/609336.html) operation to obtain this ID.
 	//
 	// example:
 	//
 	// ai-d297eyf83g5ni****
 	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	// The persistent session ID. You can call the [GetConnectionTicket](https://help.aliyun.com/document_detail/609336.html) operation to obtain the ID.
+	// The persistent session ID. You can call the [GetConnectionTicket](https://help.aliyun.com/document_detail/609336.html) operation to obtain this ID.
 	//
 	// example:
 	//

@@ -32,7 +32,7 @@ type iCreateImageByInstanceRequest interface {
 }
 
 type CreateImageByInstanceRequest struct {
-	// This parameter is applicable only when the instance type is cloud desktop. Specifies whether to clear user personal data. If you set this parameter to true, the created image clears data in all directories under C:\\Users except the Administrator and Public directories.
+	// This parameter applies only to Cloud Desktop instances. Specifies whether to clear user personal data. If set to true, the created image clears data in all directories under C:\\Users except Administrator and Public.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type CreateImageByInstanceRequest struct {
 	//
 	// my test image v1.0
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The type of disk data included in the image. By default, the image includes both the system cloud disk and data cloud disk of the instance.
+	// The type of disk data included in the image. By default, both the system cloud disk and data cloud disk of the instance are included.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type CreateImageByInstanceRequest struct {
 	//
 	// test
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The WUYING instance ID. The instance can be a cloud desktop instance or a workstation instance. To ensure data consistency in the image, stop the instance before creating the image.
+	// The WUYING instance ID. The instance can be a Cloud Desktop instance or a workstation instance. To ensure data consistency in the image, stop the instance before creating the image.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type CreateImageByInstanceRequest struct {
 	//
 	// WuyingServer
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The sub-instance ID. This parameter is not applicable to cloud desktop scenarios. In workstation scenarios, specify the persistent session ID to identify a specific instance.
+	// The sub-instance ID. This parameter does not apply to Cloud Desktop scenarios. In workstation scenarios, specify the persistent session ID to identify a specific instance.
 	//
 	// example:
 	//

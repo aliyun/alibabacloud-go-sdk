@@ -16,7 +16,10 @@ type iDescribeWuyingServerResponseBody interface {
 }
 
 type DescribeWuyingServerResponseBody struct {
+	// The details of the development workstation.
 	Data *DescribeWuyingServerResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -59,75 +62,112 @@ func (s *DescribeWuyingServerResponseBody) Validate() error {
 }
 
 type DescribeWuyingServerResponseBodyData struct {
+	// The bandwidth. Unit: Mbit/s.
+	//
 	// example:
 	//
 	// 10
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The billing type.
+	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The time when the workstation was created.
+	//
 	// example:
 	//
 	// 2026-01-01T00:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The maximum number of private IP addresses per ENI, including the primary IP address.
+	//
 	// example:
 	//
 	// 10
 	EniPrivateIpAddressQuantity *int32 `json:"EniPrivateIpAddressQuantity,omitempty" xml:"EniPrivateIpAddressQuantity,omitempty"`
+	// The time when the workstation expires.
+	//
 	// example:
 	//
 	// 2027-01-01T00:00:00Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The image ID.
+	//
 	// example:
 	//
 	// img-bp1234567890abcde
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The image name.
+	//
 	// example:
 	//
 	// Ubuntu 22.04
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The internal IP address.
+	//
 	// example:
 	//
 	// 10.0.0.1
 	NetworkInterfaceIp *string `json:"NetworkInterfaceIp,omitempty" xml:"NetworkInterfaceIp,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// cn-hangzhou+dir-abc123
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The workspace name.
+	//
 	// example:
 	//
-	// 默认工作区
+	// Default Workspace.
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
+	// The workspace type.
+	//
 	// example:
 	//
 	// Simple
 	OfficeSiteType *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
+	// The operating system type.
+	//
 	// example:
 	//
 	// Linux
-	OsType        *string                                              `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	// The set of private IP addresses, including the primary and secondary IP addresses.
 	PrivateIpSets []*DescribeWuyingServerResponseBodyDataPrivateIpSets `json:"PrivateIpSets,omitempty" xml:"PrivateIpSets,omitempty" type:"Repeated"`
+	// The status of the development workstation.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the system cloud disk.
+	//
 	// example:
 	//
 	// cloud_essd
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
+	// The size of the system cloud disk. Unit: GB.
+	//
 	// example:
 	//
 	// 80
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	// The ID of the development workstation.
+	//
 	// example:
 	//
 	// aig-bp1234567890abcde
 	WuyingServerId *string `json:"WuyingServerId,omitempty" xml:"WuyingServerId,omitempty"`
+	// The name of the development workstation.
+	//
 	// example:
 	//
 	// my-dev-server
@@ -327,10 +367,18 @@ func (s *DescribeWuyingServerResponseBodyData) Validate() error {
 }
 
 type DescribeWuyingServerResponseBodyDataPrivateIpSets struct {
+	// Indicates whether the IP address is the primary private IP address. Valid values:
+	//
+	// - true: The IP address is the primary private IP address.
+	//
+	// - false: The IP address is a secondary private IP address.
+	//
 	// example:
 	//
 	// true
 	Primary *bool `json:"Primary,omitempty" xml:"Primary,omitempty"`
+	// The private IP address.
+	//
 	// example:
 	//
 	// 10.0.0.1

@@ -28,7 +28,7 @@ type ListAuthorizedUserGroupsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries per page.
+	// The maximum number of entries returned per page.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ListAuthorizedUserGroupsResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListAuthorizedUserGroupsResponseBody) Validate() error {
 }
 
 type ListAuthorizedUserGroupsResponseBodyUserGroups struct {
-	// The delivery group ID.
+	// The ID of the delivery group.
 	//
 	// example:
 	//
@@ -129,13 +129,13 @@ type ListAuthorizedUserGroupsResponseBodyUserGroups struct {
 	//
 	// App
 	AuthMode *string `json:"AuthMode,omitempty" xml:"AuthMode,omitempty"`
-	// The user group ID.
+	// The ID of the user group.
 	//
 	// example:
 	//
 	// ug-00001
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The user group name.
+	// The name of the user group.
 	//
 	// example:
 	//

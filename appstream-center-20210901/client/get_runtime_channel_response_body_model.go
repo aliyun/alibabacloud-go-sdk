@@ -26,7 +26,7 @@ type GetRuntimeChannelResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -83,13 +83,17 @@ func (s *GetRuntimeChannelResponseBody) Validate() error {
 }
 
 type GetRuntimeChannelResponseBodyData struct {
-	// The URL of the channel avatar.
+	// The channel avatar URL.
+	//
+	// example:
+	//
+	// https://test.com/test.jpg
 	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
-	// The channel type. Valid values:
+	// The channel type.
 	//
-	// - System: a channel supported by the system.
+	// example:
 	//
-	// - Custom: a custom channel.
+	// System
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
 	// The channel code.
 	//
@@ -99,7 +103,7 @@ type GetRuntimeChannelResponseBodyData struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The channel configuration JSON string.
 	//
-	// Currently, only the simple configuration mode is supported. You must pass the AppKey and AppSecret parameters.
+	// Currently, only the simple configuration mode is supported. You must pass AppKey and AppSecret.
 	//
 	// example:
 	//
@@ -111,17 +115,25 @@ type GetRuntimeChannelResponseBodyData struct {
 	//
 	// }
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The configuration mode. Valid values:
+	// The configuration mode.
 	//
-	// - Simple: simple configuration mode.
+	// example:
 	//
-	// - Custom: custom configuration mode.
+	// Simple
 	ConfigMode *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
-	// The URL of the QR code configuration notification page. This parameter is returned only for the ENTERPRISE or ENTERPRISE_JVS platform.
+	// The QR code configuration notification page URL (returned only for ENTERPRISE/ENTERPRISE_JVS platforms).
+	//
+	// example:
+	//
+	// https://eds.console.aliyun.com/public/scan-pair?taskId=e7eb5d86-1b94-4d58-****-3b78b01df99e&code=dingtalk-connector&region=cn-shanghai
 	QrCodeNotifyUrl *string `json:"QrCodeNotifyUrl,omitempty" xml:"QrCodeNotifyUrl,omitempty"`
-	// The QR code configuration status. This parameter is returned only when the status is not in a final state.
+	// The QR code configuration status (returned only when not in a desired state).
+	//
+	// example:
+	//
+	// https://q.qq.com/qqbot/openclaw/entity-picker.html?session_id=c0882266-77c0-4094-af93-442*****2a58
 	QrCodeStatus *string `json:"QrCodeStatus,omitempty" xml:"QrCodeStatus,omitempty"`
-	// The risk type. This parameter is returned only when **includeRiskInfo=true**.
+	// The risk type (returned only when **includeRiskInfo=true**).
 	//
 	// example:
 	//

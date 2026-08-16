@@ -62,11 +62,7 @@ func (s *ListTenantConfigResponseBody) Validate() error {
 }
 
 type ListTenantConfigResponseBodyTenantConfigModel struct {
-	// Indicates whether resource expiration reminders are enabled. Valid values:
-	//
-	// - true: Enabled.
-	//
-	// - false: Not enabled.
+	// Indicates whether resource expiration reminders are enabled.
 	//
 	// example:
 	//

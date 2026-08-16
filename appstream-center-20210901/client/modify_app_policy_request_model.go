@@ -101,7 +101,7 @@ type ModifyAppPolicyRequestVideoPolicy struct {
 	//
 	// 1920
 	SessionResolutionWidth *int32 `json:"SessionResolutionWidth,omitempty" xml:"SessionResolutionWidth,omitempty"`
-	// The streaming mode. This parameter is used together with the Webrtc parameter to specify the protocol type.
+	// The streaming mode. Used together with the Webrtc parameter to specify the protocol type.
 	//
 	// - Webrtc=`true` and StreamingMode=`video`: WebRTC stream.
 	//
@@ -129,7 +129,7 @@ type ModifyAppPolicyRequestVideoPolicy struct {
 	//
 	// smooth
 	VisualQualityStrategy *string `json:"VisualQualityStrategy,omitempty" xml:"VisualQualityStrategy,omitempty"`
-	// Specifies whether to enable WebRTC. This parameter is used together with the StreamingMode parameter to specify the protocol type.
+	// Specifies whether to enable WebRTC. Used together with the StreamingMode parameter to specify the protocol type.
 	//
 	// - Webrtc=`true` and StreamingMode=`video`: WebRTC stream.
 	//

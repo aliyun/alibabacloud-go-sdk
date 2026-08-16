@@ -14,6 +14,8 @@ type iDescribeWuyingServerRequest interface {
 }
 
 type DescribeWuyingServerRequest struct {
+	// The ID of the development workstation.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -135,7 +135,7 @@ type ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels struct {
 	//
 	// 8192
 	GpuMemory *int64 `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
-	// The maximum number of concurrent sessions, which is the number of sessions that can be simultaneously connected to a single resource. If too many sessions are connected simultaneously, the application experience may degrade. The valid values vary depending on the resource specification. The valid values for each resource specification are as follows:
+	// The maximum number of concurrent sessions, which is the number of sessions that can be simultaneously connected to a single resource. If too many sessions are connected simultaneously, the application experience may degrade. The valid values vary by resource specification. The valid values for each resource specification are as follows:
 	//
 	// - appstreaming.general.2c4g: 1
 	//
@@ -167,7 +167,7 @@ type ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels struct {
 	//
 	// - appstreaming.vgpu.16c32g.8g: 1 to 8
 	//
-	// - appstreaming.vgpu.16c62g.8ga10: 1 to 8.
+	// - appstreaming.vgpu.16c62g.8ga10: 1 to 8
 	//
 	// example:
 	//
@@ -179,7 +179,7 @@ type ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels struct {
 	//
 	// 8192
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The ID of the resource specification type.
+	// The resource specification type ID.
 	//
 	// example:
 	//
@@ -191,11 +191,11 @@ type ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels struct {
 	//
 	// appstreaming.vgpu
 	NodeInstanceTypeFamily *string `json:"NodeInstanceTypeFamily,omitempty" xml:"NodeInstanceTypeFamily,omitempty"`
-	// The name of the resource specification.
+	// The resource specification name.
 	//
 	// example:
 	//
-	// 无影-通用型_4核8G
+	// WUYING-General-purpose_4vCPU8GB.
 	NodeTypeName *string `json:"NodeTypeName,omitempty" xml:"NodeTypeName,omitempty"`
 }
 

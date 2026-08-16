@@ -24,7 +24,7 @@ type iListAuthorizedUserGroupsRequest interface {
 }
 
 type ListAuthorizedUserGroupsRequest struct {
-	// The delivery group ID.
+	// The ID of the delivery group.
 	//
 	// This parameter is required.
 	//
@@ -32,13 +32,13 @@ type ListAuthorizedUserGroupsRequest struct {
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The user group ID. This parameter is used for exact match.
+	// The ID of the user group. This parameter is used for exact match.
 	//
 	// example:
 	//
 	// ug-00001
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The user group name. This parameter is used for fuzzy match.
+	// The name of the user group. This parameter is used for fuzzy match.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ListAuthorizedUserGroupsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries per page.
+	// The maximum number of entries to return per page.
 	//
 	// This parameter is required.
 	//

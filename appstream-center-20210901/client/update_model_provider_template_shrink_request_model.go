@@ -30,7 +30,7 @@ type UpdateModelProviderTemplateShrinkRequest struct {
 	//
 	// 阿里云百炼服务商
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to enable the Wuying security gateway proxy.
+	// Specifies whether to enable the WUYING security gateway proxy.
 	//
 	// example:
 	//

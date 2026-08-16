@@ -9,6 +9,8 @@ type iListLlmTemplatesShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBizType(v int32) *ListLlmTemplatesShrinkRequest
+	GetBizType() *int32
 	SetLlmCode(v string) *ListLlmTemplatesShrinkRequest
 	GetLlmCode() *string
 	SetLlmTemplateIdsShrink(v string) *ListLlmTemplatesShrinkRequest
@@ -21,10 +23,14 @@ type iListLlmTemplatesShrinkRequest interface {
 	GetPageSize() *int32
 	SetProviderTemplateId(v string) *ListLlmTemplatesShrinkRequest
 	GetProviderTemplateId() *string
+	SetSmartModel(v bool) *ListLlmTemplatesShrinkRequest
+	GetSmartModel() *bool
 }
 
 type ListLlmTemplatesShrinkRequest struct {
-	// The model code used for filtering. Fuzzy match is supported.
+	// The business type. This parameter is required when SmartModel is set to true.
+	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The model code filter. Fuzzy match is supported.
 	//
 	// example:
 	//
@@ -38,7 +44,7 @@ type ListLlmTemplatesShrinkRequest struct {
 	//
 	// mt-xxxx
 	ModelTemplateId *string `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
-	// The page number. Pages start from page 1. Values 0 and 1 return the same result.
+	// The page number, starting from 1. Values 0 and 1 return the same result.
 	//
 	// example:
 	//
@@ -56,6 +62,12 @@ type ListLlmTemplatesShrinkRequest struct {
 	//
 	// mpt-xxxx
 	ProviderTemplateId *string `json:"ProviderTemplateId,omitempty" xml:"ProviderTemplateId,omitempty"`
+	// Specifies whether to query smart models. If set to true, only LLMs under system preset smart models are returned, and BizType is required. Default value: false.
+	//
+	// example:
+	//
+	// false
+	SmartModel *bool `json:"SmartModel,omitempty" xml:"SmartModel,omitempty"`
 }
 
 func (s ListLlmTemplatesShrinkRequest) String() string {
@@ -64,6 +76,10 @@ func (s ListLlmTemplatesShrinkRequest) String() string {
 
 func (s ListLlmTemplatesShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListLlmTemplatesShrinkRequest) GetBizType() *int32 {
+	return s.BizType
 }
 
 func (s *ListLlmTemplatesShrinkRequest) GetLlmCode() *string {
@@ -88,6 +104,15 @@ func (s *ListLlmTemplatesShrinkRequest) GetPageSize() *int32 {
 
 func (s *ListLlmTemplatesShrinkRequest) GetProviderTemplateId() *string {
 	return s.ProviderTemplateId
+}
+
+func (s *ListLlmTemplatesShrinkRequest) GetSmartModel() *bool {
+	return s.SmartModel
+}
+
+func (s *ListLlmTemplatesShrinkRequest) SetBizType(v int32) *ListLlmTemplatesShrinkRequest {
+	s.BizType = &v
+	return s
 }
 
 func (s *ListLlmTemplatesShrinkRequest) SetLlmCode(v string) *ListLlmTemplatesShrinkRequest {
@@ -117,6 +142,11 @@ func (s *ListLlmTemplatesShrinkRequest) SetPageSize(v int32) *ListLlmTemplatesSh
 
 func (s *ListLlmTemplatesShrinkRequest) SetProviderTemplateId(v string) *ListLlmTemplatesShrinkRequest {
 	s.ProviderTemplateId = &v
+	return s
+}
+
+func (s *ListLlmTemplatesShrinkRequest) SetSmartModel(v bool) *ListLlmTemplatesShrinkRequest {
+	s.SmartModel = &v
 	return s
 }
 

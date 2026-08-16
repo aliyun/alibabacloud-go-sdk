@@ -17,8 +17,18 @@ type iListWuyingServerRequest interface {
 	GetBizType() *int32
 	SetChargeType(v string) *ListWuyingServerRequest
 	GetChargeType() *string
+	SetCreateTimeEnd(v string) *ListWuyingServerRequest
+	GetCreateTimeEnd() *string
+	SetCreateTimeStart(v string) *ListWuyingServerRequest
+	GetCreateTimeStart() *string
+	SetExpiredTimeEnd(v string) *ListWuyingServerRequest
+	GetExpiredTimeEnd() *string
+	SetExpiredTimeStart(v string) *ListWuyingServerRequest
+	GetExpiredTimeStart() *string
 	SetImageId(v string) *ListWuyingServerRequest
 	GetImageId() *string
+	SetNetworkInterfaceIp(v string) *ListWuyingServerRequest
+	GetNetworkInterfaceIp() *string
 	SetOfficeSiteId(v string) *ListWuyingServerRequest
 	GetOfficeSiteId() *string
 	SetPageNumber(v int32) *ListWuyingServerRequest
@@ -39,6 +49,8 @@ type iListWuyingServerRequest interface {
 	GetWuyingServerIdList() []*string
 	SetWuyingServerNameOrId(v string) *ListWuyingServerRequest
 	GetWuyingServerNameOrId() *string
+	SetZoneId(v string) *ListWuyingServerRequest
+	GetZoneId() *string
 }
 
 type ListWuyingServerRequest struct {
@@ -46,7 +58,7 @@ type ListWuyingServerRequest struct {
 	//
 	// example:
 	//
-	// Added
+	// RUNNING
 	AddVirtualNodePoolStatusList []*string `json:"AddVirtualNodePoolStatusList,omitempty" xml:"AddVirtualNodePoolStatusList,omitempty" type:"Repeated"`
 	// The region ID.
 	//
@@ -54,6 +66,8 @@ type ListWuyingServerRequest struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The business type.
+	//
 	// example:
 	//
 	// 1
@@ -64,12 +78,42 @@ type ListWuyingServerRequest struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The end time of the creation time range, in ISO 8601 format. This time point is exclusive.
+	//
+	// example:
+	//
+	// 2026-08-01T00:00:00Z
+	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// The start time of the creation time range, in ISO 8601 format. This time point is inclusive.
+	//
+	// example:
+	//
+	// 2026-07-01T00:00:00Z
+	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// The end time of the expiration time range, in ISO 8601 format. This time point is exclusive.
+	//
+	// example:
+	//
+	// 2026-08-01T00:00:00Z
+	ExpiredTimeEnd *string `json:"ExpiredTimeEnd,omitempty" xml:"ExpiredTimeEnd,omitempty"`
+	// The start time of the expiration time range, in ISO 8601 format. This time point is inclusive.
+	//
+	// example:
+	//
+	// 2026-07-01T00:00:00Z
+	ExpiredTimeStart *string `json:"ExpiredTimeStart,omitempty" xml:"ExpiredTimeStart,omitempty"`
 	// The image ID.
 	//
 	// example:
 	//
 	// img-bp13mu****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The internal IP address.
+	//
+	// example:
+	//
+	// 10.31.1.1
+	NetworkInterfaceIp *string `json:"NetworkInterfaceIp,omitempty" xml:"NetworkInterfaceIp,omitempty"`
 	// The office network ID.
 	//
 	// example:
@@ -82,12 +126,14 @@ type ListWuyingServerRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The product type.
+	//
 	// example:
 	//
 	// wuying_server
@@ -104,6 +150,8 @@ type ListWuyingServerRequest struct {
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of authorized users.
+	//
 	// example:
 	//
 	// user1
@@ -118,7 +166,7 @@ type ListWuyingServerRequest struct {
 	//
 	// example:
 	//
-	// aig-bp1234567890abcde
+	// 1
 	WuyingServerIdList []*string `json:"WuyingServerIdList,omitempty" xml:"WuyingServerIdList,omitempty" type:"Repeated"`
 	// The workstation name or workstation ID.
 	//
@@ -126,6 +174,12 @@ type ListWuyingServerRequest struct {
 	//
 	// exampleServerName
 	WuyingServerNameOrId *string `json:"WuyingServerNameOrId,omitempty" xml:"WuyingServerNameOrId,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListWuyingServerRequest) String() string {
@@ -152,8 +206,28 @@ func (s *ListWuyingServerRequest) GetChargeType() *string {
 	return s.ChargeType
 }
 
+func (s *ListWuyingServerRequest) GetCreateTimeEnd() *string {
+	return s.CreateTimeEnd
+}
+
+func (s *ListWuyingServerRequest) GetCreateTimeStart() *string {
+	return s.CreateTimeStart
+}
+
+func (s *ListWuyingServerRequest) GetExpiredTimeEnd() *string {
+	return s.ExpiredTimeEnd
+}
+
+func (s *ListWuyingServerRequest) GetExpiredTimeStart() *string {
+	return s.ExpiredTimeStart
+}
+
 func (s *ListWuyingServerRequest) GetImageId() *string {
 	return s.ImageId
+}
+
+func (s *ListWuyingServerRequest) GetNetworkInterfaceIp() *string {
+	return s.NetworkInterfaceIp
 }
 
 func (s *ListWuyingServerRequest) GetOfficeSiteId() *string {
@@ -196,6 +270,10 @@ func (s *ListWuyingServerRequest) GetWuyingServerNameOrId() *string {
 	return s.WuyingServerNameOrId
 }
 
+func (s *ListWuyingServerRequest) GetZoneId() *string {
+	return s.ZoneId
+}
+
 func (s *ListWuyingServerRequest) SetAddVirtualNodePoolStatusList(v []*string) *ListWuyingServerRequest {
 	s.AddVirtualNodePoolStatusList = v
 	return s
@@ -216,8 +294,33 @@ func (s *ListWuyingServerRequest) SetChargeType(v string) *ListWuyingServerReque
 	return s
 }
 
+func (s *ListWuyingServerRequest) SetCreateTimeEnd(v string) *ListWuyingServerRequest {
+	s.CreateTimeEnd = &v
+	return s
+}
+
+func (s *ListWuyingServerRequest) SetCreateTimeStart(v string) *ListWuyingServerRequest {
+	s.CreateTimeStart = &v
+	return s
+}
+
+func (s *ListWuyingServerRequest) SetExpiredTimeEnd(v string) *ListWuyingServerRequest {
+	s.ExpiredTimeEnd = &v
+	return s
+}
+
+func (s *ListWuyingServerRequest) SetExpiredTimeStart(v string) *ListWuyingServerRequest {
+	s.ExpiredTimeStart = &v
+	return s
+}
+
 func (s *ListWuyingServerRequest) SetImageId(v string) *ListWuyingServerRequest {
 	s.ImageId = &v
+	return s
+}
+
+func (s *ListWuyingServerRequest) SetNetworkInterfaceIp(v string) *ListWuyingServerRequest {
+	s.NetworkInterfaceIp = &v
 	return s
 }
 
@@ -268,6 +371,11 @@ func (s *ListWuyingServerRequest) SetWuyingServerIdList(v []*string) *ListWuying
 
 func (s *ListWuyingServerRequest) SetWuyingServerNameOrId(v string) *ListWuyingServerRequest {
 	s.WuyingServerNameOrId = &v
+	return s
+}
+
+func (s *ListWuyingServerRequest) SetZoneId(v string) *ListWuyingServerRequest {
+	s.ZoneId = &v
 	return s
 }
 

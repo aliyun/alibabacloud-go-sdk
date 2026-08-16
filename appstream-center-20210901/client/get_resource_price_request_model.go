@@ -36,7 +36,7 @@ type GetResourcePriceRequest struct {
 	//
 	// 1
 	Amount *int64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The ID of the session instance type to purchase. You can call the `ListAppInstanceType` operation to obtain the ID.
+	// The ID of the session specification type to purchase. You can obtain this value by calling the `ListAppInstanceType` operation.
 	//
 	// Either AppInstanceType or NodeInstanceType must have a value. If both have values, NodeInstanceType is used.
 	//
@@ -60,7 +60,7 @@ type GetResourcePriceRequest struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The ID of the resource instance type to purchase. You can call the [ListNodeInstanceType](https://help.aliyun.com/document_detail/428502.html) operation to obtain the ID.
+	// The ID of the resource specification type to purchase. You can obtain this value by calling the [ListNodeInstanceType](https://help.aliyun.com/document_detail/428502.html) operation.
 	//
 	// Either AppInstanceType or NodeInstanceType must have a value. If both have values, NodeInstanceType is used.
 	//
@@ -68,7 +68,7 @@ type GetResourcePriceRequest struct {
 	//
 	// appstreaming.vgpu.4c8g.2g
 	NodeInstanceType *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
-	// The numeric part of the purchase duration. This parameter is used together with PeriodUnit to specify the complete purchase duration.
+	// The numeric part of the resource purchase duration. This parameter is used together with PeriodUnit to specify the complete purchase duration.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type GetResourcePriceRequest struct {
 	//
 	// 1
 	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit part of the purchase duration. This parameter is used together with Period to specify the complete purchase duration. The following combinations of Period and PeriodUnit are supported:
+	// The unit part of the resource purchase duration. This parameter is used together with Period to specify the complete purchase duration. Valid combinations of Period and PeriodUnit:
 	//
 	// - 1 Week (1 week)
 	//
@@ -94,7 +94,7 @@ type GetResourcePriceRequest struct {
 	//
 	// - 3 Year (3 years)
 	//
-	// > This parameter is case-sensitive. For example, `Week` is valid, but `week` is invalid. If the request parameters do not match the supported combinations, such as `2 Week`, the API call succeeds but an error occurs during the order placement stage.
+	// > This parameter is case-sensitive. For example, `Week` is valid, but `week` is invalid. If the request parameters do not match the combinations listed above, such as `2 Week`, the call to this operation succeeds, but an error occurs during the order placement phase.
 	//
 	// This parameter is required.
 	//
