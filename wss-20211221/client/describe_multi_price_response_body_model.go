@@ -115,10 +115,6 @@ func (s *DescribeMultiPriceResponseBodyPriceInfo) Validate() error {
 type DescribeMultiPriceResponseBodyPriceInfoPrice struct {
 	// The currency unit.
 	//
-	// China site: CNY.
-	//
-	// International site: USD.
-	//
 	// example:
 	//
 	// CNY
@@ -353,7 +349,8 @@ type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails struc
 	// example:
 	//
 	// 10900
-	OriginalPrice           *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The savings plan discount price.
 	SavingPlanDiscountPrice *float32 `json:"SavingPlanDiscountPrice,omitempty" xml:"SavingPlanDiscountPrice,omitempty"`
 	// The actual payment price. The value is the original price minus the discount.
 	//
@@ -456,7 +453,8 @@ type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail struct 
 	// example:
 	//
 	// DurationPackage
-	ResourceType             *string  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The savings plan recommended price.
 	SavingPlanRecommendPrice *float32 `json:"SavingPlanRecommendPrice,omitempty" xml:"SavingPlanRecommendPrice,omitempty"`
 	// The actual payment price. The value is the original price minus the discount.
 	//
@@ -524,17 +522,22 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail) Va
 }
 
 type DescribeMultiPriceResponseBodyPriceInfoPricePromotions struct {
-	ActivityId   *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
-	Effective    *bool   `json:"Effective,omitempty" xml:"Effective,omitempty"`
+	// The activity ID.
+	ActivityId *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
+	// Indicates whether the activity is effective.
+	Effective *bool `json:"Effective,omitempty" xml:"Effective,omitempty"`
+	// The timestamp when the activity ends.
 	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	// The description of the promotion rule.
 	//
 	// example:
 	//
 	// new
-	OptionCode            *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	// The tiered pricing discount value.
 	PriceBreakReduceValue *string `json:"PriceBreakReduceValue,omitempty" xml:"PriceBreakReduceValue,omitempty"`
-	PriceBreakThreshold   *string `json:"PriceBreakThreshold,omitempty" xml:"PriceBreakThreshold,omitempty"`
+	// The tiered pricing threshold.
+	PriceBreakThreshold *string `json:"PriceBreakThreshold,omitempty" xml:"PriceBreakThreshold,omitempty"`
 	// The description of the promotion.
 	//
 	// example:
@@ -551,14 +554,15 @@ type DescribeMultiPriceResponseBodyPriceInfoPricePromotions struct {
 	//
 	// example:
 	//
-	// PromotionName
+	// Promotion name
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
 	// Indicates whether the promotion is selected.
 	//
 	// example:
 	//
 	// true
-	Selected       *bool   `json:"Selected,omitempty" xml:"Selected,omitempty"`
+	Selected *bool `json:"Selected,omitempty" xml:"Selected,omitempty"`
+	// The timestamp when the activity starts.
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 

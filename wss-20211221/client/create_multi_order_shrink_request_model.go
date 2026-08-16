@@ -22,6 +22,7 @@ type iCreateMultiOrderShrinkRequest interface {
 }
 
 type CreateMultiOrderShrinkRequest struct {
+	// The channel cookie information.
 	ChannelCookie *string `json:"ChannelCookie,omitempty" xml:"ChannelCookie,omitempty"`
 	// The product information.
 	OrderItems []*CreateMultiOrderShrinkRequestOrderItems `json:"OrderItems,omitempty" xml:"OrderItems,omitempty" type:"Repeated"`
@@ -33,7 +34,8 @@ type CreateMultiOrderShrinkRequest struct {
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	// The extended properties.
 	PropertiesShrink *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
+	// The UID of the reseller owner.
+	ResellerOwnerUid *int64 `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 }
 
 func (s CreateMultiOrderShrinkRequest) String() string {
@@ -121,24 +123,27 @@ type CreateMultiOrderShrinkRequestOrderItems struct {
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// Specifies whether this is a change purchase.
 	BuyChange *bool `json:"BuyChange,omitempty" xml:"BuyChange,omitempty"`
 	// The product modules.
-	Components      []*CreateMultiOrderShrinkRequestOrderItemsComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	InstanceIds     []*string                                            `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	PaidCallBackUrl *string                                              `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
+	Components []*CreateMultiOrderShrinkRequestOrderItemsComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	// The list of instance IDs.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The callback URL after the payment is completed.
+	PaidCallBackUrl *string `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
 	// The subscription duration. Valid values:
 	//
-	// - If `PeriodUnit` is set to `Year`: 1, 2, 3, or 5.
+	// - If PeriodUnit is set to Year: 1, 2, 3, and 5.
 	//
-	// - If `PeriodUnit` is set to `Month`: 1, 2, 3, or 6.
+	// - If PeriodUnit is set to Month: 1, 2, 3, and 6.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the billing cycle for the subscription instance.
+	// The unit of the subscription duration for a subscription instance.
 	//
-	// > This parameter is required only when the billing method of the instance is subscription. This parameter is case-sensitive. Make sure that the spelling is correct.
+	// > This parameter is required only when the billing method of the instance is subscription. This parameter is case-sensitive. Make sure that the value is spelled correctly.
 	//
 	// example:
 	//
@@ -152,11 +157,11 @@ type CreateMultiOrderShrinkRequestOrderItems struct {
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	// The list of resource IDs.
 	//
-	// > For monthly duration packages, this parameter corresponds to the cloud desktop ID. This parameter is required when OrderType is not `create`.
+	// > For monthly duration packages, this parameter corresponds to the cloud desktop ID. This parameter is required when OrderType is not set to `create`.
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 	// The resource type.
 	//
-	// > This parameter is case-sensitive. Make sure that the spelling is correct.
+	// > This parameter is case-sensitive. Make sure that the value is spelled correctly.
 	//
 	// This parameter is required.
 	//
@@ -304,19 +309,19 @@ type CreateMultiOrderShrinkRequestOrderItemsComponents struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the module.
 	//
-	// The following example values or valid values are available for each key of the Enterprise Edition monthly duration package:
+	// The following section describes the sample values and valid values for each key of the Enterprise Edition monthly duration package:
 	//
-	// - RegionId: cn-shanghai
+	// - RegionId: ap-southeast-1
 	//
 	// - InstanceType: eds.enterprise_office.4c8g
 	//
-	// - DurationType (hours): [Valid values]
+	// - DurationType (hours): Valid values:
 	//
 	//    - 120
 	//
 	//    - 250
 	//
-	// - OsType: [Valid values]
+	// - OsType: Valid values:
 	//
 	//    - Windows
 	//
@@ -324,7 +329,7 @@ type CreateMultiOrderShrinkRequestOrderItemsComponents struct {
 	//
 	// - RootDiskSize (GiB): 80
 	//
-	// - RootDiskCategory: [Valid values]
+	// - RootDiskCategory: Valid values:
 	//
 	//    - cloud_efficiency (ultra cloud disk)
 	//
@@ -332,7 +337,7 @@ type CreateMultiOrderShrinkRequestOrderItemsComponents struct {
 	//
 	//    - cloud_essd (enhanced standard SSD. Only specific instance types support this value.)
 	//
-	// - RootPerformanceLevel: [Valid values]
+	// - RootPerformanceLevel: Valid values:
 	//
 	//    - PL0
 	//

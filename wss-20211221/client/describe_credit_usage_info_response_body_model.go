@@ -112,6 +112,8 @@ func (s *DescribeCreditUsageInfoResponseBodyUsageInfoList) Validate() error {
 }
 
 type DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo struct {
+	AvailableAmount   *int32    `json:"AvailableAmount,omitempty" xml:"AvailableAmount,omitempty"`
+	ContactGroupNames []*string `json:"ContactGroupNames,omitempty" xml:"ContactGroupNames,omitempty" type:"Repeated"`
 	// The hourly consumption samples of the current credit package.
 	CreditTrendList []*DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList `json:"CreditTrendList,omitempty" xml:"CreditTrendList,omitempty" type:"Repeated"`
 	// The instance ID of the current active credit package.
@@ -124,26 +126,27 @@ type DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo struct {
 	//
 	// example:
 	//
-	// 当前周期积分余量
+	// Current period remaining credits
 	CurrentRemainCredit *int64 `json:"CurrentRemainCredit,omitempty" xml:"CurrentRemainCredit,omitempty"`
 	// The total credits of the current active credit package.
 	//
 	// example:
 	//
-	// 当前周期积分配额
+	// Current period credit quota
 	CurrentTotalCredit *int64 `json:"CurrentTotalCredit,omitempty" xml:"CurrentTotalCredit,omitempty"`
 	// The used credits of the current active credit package.
 	//
 	// example:
 	//
-	// 当前周期积分消耗
+	// Current period credits consumed
 	CurrentUsedCredit *int64 `json:"CurrentUsedCredit,omitempty" xml:"CurrentUsedCredit,omitempty"`
 	// The credit usage in the last 1 day.
 	//
 	// example:
 	//
-	// 最近一天消耗积分
-	DayUsedCredit *int64 `json:"DayUsedCredit,omitempty" xml:"DayUsedCredit,omitempty"`
+	// Credits consumed in the last day
+	DayUsedCredit   *int64  `json:"DayUsedCredit,omitempty" xml:"DayUsedCredit,omitempty"`
+	LastTriggeredAt *string `json:"LastTriggeredAt,omitempty" xml:"LastTriggeredAt,omitempty"`
 	// The shared credit quota in the current active period.
 	//
 	// example:
@@ -160,21 +163,24 @@ type DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo struct {
 	//
 	// example:
 	//
-	// 积分余量
-	RemainCredit *int64  `json:"RemainCredit,omitempty" xml:"RemainCredit,omitempty"`
-	TodayUsed    *string `json:"TodayUsed,omitempty" xml:"TodayUsed,omitempty"`
-	// The cumulative total credits.
+	// Remaining credits
+	RemainCredit     *int64                                                                     `json:"RemainCredit,omitempty" xml:"RemainCredit,omitempty"`
+	RemainCreditInfo *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo `json:"RemainCreditInfo,omitempty" xml:"RemainCreditInfo,omitempty" type:"Struct"`
+	// The quota used today.
+	TodayUsed *string `json:"TodayUsed,omitempty" xml:"TodayUsed,omitempty"`
+	// The total cumulative credits.
 	//
 	// example:
 	//
-	// 积分配额
-	TotalCredit *int64  `json:"TotalCredit,omitempty" xml:"TotalCredit,omitempty"`
-	TotalUsed   *string `json:"TotalUsed,omitempty" xml:"TotalUsed,omitempty"`
+	// Credit quota
+	TotalCredit *int64 `json:"TotalCredit,omitempty" xml:"TotalCredit,omitempty"`
+	// The cumulative used quota.
+	TotalUsed *string `json:"TotalUsed,omitempty" xml:"TotalUsed,omitempty"`
 	// The cumulative credit usage.
 	//
 	// example:
 	//
-	// 共计消耗积分
+	// Total credits consumed
 	TotalUsedCredit *int64 `json:"TotalUsedCredit,omitempty" xml:"TotalUsedCredit,omitempty"`
 	// The alert threshold percentage (0–100).
 	//
@@ -186,7 +192,7 @@ type DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo struct {
 	//
 	// example:
 	//
-	// 最近一周消耗积分
+	// Credits consumed in the last week
 	WeekUsedCredit *int64 `json:"WeekUsedCredit,omitempty" xml:"WeekUsedCredit,omitempty"`
 }
 
@@ -196,6 +202,14 @@ func (s DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) String() stri
 
 func (s DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetAvailableAmount() *int32 {
+	return s.AvailableAmount
+}
+
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetContactGroupNames() []*string {
+	return s.ContactGroupNames
 }
 
 func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetCreditTrendList() []*DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList {
@@ -222,6 +236,10 @@ func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetDayUsedCr
 	return s.DayUsedCredit
 }
 
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetLastTriggeredAt() *string {
+	return s.LastTriggeredAt
+}
+
 func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetPeriodTotalCredit() *int64 {
 	return s.PeriodTotalCredit
 }
@@ -232,6 +250,10 @@ func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetPeriodUse
 
 func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetRemainCredit() *int64 {
 	return s.RemainCredit
+}
+
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetRemainCreditInfo() *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo {
+	return s.RemainCreditInfo
 }
 
 func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetTodayUsed() *string {
@@ -256,6 +278,16 @@ func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetWarnPerce
 
 func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetWeekUsedCredit() *int64 {
 	return s.WeekUsedCredit
+}
+
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) SetAvailableAmount(v int32) *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo {
+	s.AvailableAmount = &v
+	return s
+}
+
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) SetContactGroupNames(v []*string) *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo {
+	s.ContactGroupNames = v
+	return s
 }
 
 func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) SetCreditTrendList(v []*DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList) *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo {
@@ -288,6 +320,11 @@ func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) SetDayUsedCr
 	return s
 }
 
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) SetLastTriggeredAt(v string) *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo {
+	s.LastTriggeredAt = &v
+	return s
+}
+
 func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) SetPeriodTotalCredit(v int64) *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo {
 	s.PeriodTotalCredit = &v
 	return s
@@ -300,6 +337,11 @@ func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) SetPeriodUse
 
 func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) SetRemainCredit(v int64) *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo {
 	s.RemainCredit = &v
+	return s
+}
+
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) SetRemainCreditInfo(v *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo) *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo {
+	s.RemainCreditInfo = v
 	return s
 }
 
@@ -343,17 +385,22 @@ func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) Validate() e
 			}
 		}
 	}
+	if s.RemainCreditInfo != nil {
+		if err := s.RemainCreditInfo.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 type DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList struct {
-	// The time point in the format of `yyyy-MM-dd HH` (accurate to the hour).
+	// The time point in the format `yyyy-MM-dd HH` (accurate to the hour).
 	//
 	// example:
 	//
 	// 2026-05-02 10
 	TimePoint *string `json:"TimePoint,omitempty" xml:"TimePoint,omitempty"`
-	// The number of credits consumed during the hour.
+	// The number of credits consumed in this hour.
 	//
 	// example:
 	//
@@ -388,5 +435,40 @@ func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendLis
 }
 
 func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo struct {
+	DeductingAmount *int32 `json:"DeductingAmount,omitempty" xml:"DeductingAmount,omitempty"`
+	PendingAmount   *int32 `json:"PendingAmount,omitempty" xml:"PendingAmount,omitempty"`
+}
+
+func (s DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo) GetDeductingAmount() *int32 {
+	return s.DeductingAmount
+}
+
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo) GetPendingAmount() *int32 {
+	return s.PendingAmount
+}
+
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo) SetDeductingAmount(v int32) *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo {
+	s.DeductingAmount = &v
+	return s
+}
+
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo) SetPendingAmount(v int32) *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo {
+	s.PendingAmount = &v
+	return s
+}
+
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo) Validate() error {
 	return dara.Validate(s)
 }

@@ -22,22 +22,22 @@ type iDescribeDeductionStatisticRequest interface {
 }
 
 type DescribeDeductionStatisticRequest struct {
-	// The end time, specified as a Unix timestamp.
+	// The end time (timestamp).
 	//
 	// example:
 	//
 	// 2025-06-06T02:14:00Z
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The list of instance IDs, specified as a JSON array.
+	// The list of instance IDs (JSON array).
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The list of periods, formatted as a JSON array of `PeriodParam` objects.
+	// The list of time periods in JSON array format. Each element is a `PeriodParam` object.
 	//
 	// if can be null:
 	// true
 	Periods []*DescribeDeductionStatisticRequestPeriods `json:"Periods,omitempty" xml:"Periods,omitempty" type:"Repeated"`
-	// The list of resource types, specified as a JSON array.
+	// The list of resource types in JSON array format.
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
-	// The start time, specified as a Unix timestamp.
+	// The start time (timestamp).
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type DescribeDeductionStatisticRequestPeriods struct {
 	//
 	// 2024-01-01
 	BaseTime *string `json:"BaseTime,omitempty" xml:"BaseTime,omitempty"`
-	// The period unit. For valid values, see the `PeriodUnit` enumeration.
+	// The time period unit. For more information, see the `PeriodUnit` enumeration.
 	//
 	// example:
 	//

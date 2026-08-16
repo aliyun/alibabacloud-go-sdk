@@ -24,15 +24,15 @@ type DescribeCreditUsageInfoRequest struct {
 	//
 	// BUSINESS
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The JSON string of instance IDs. This parameter can be omitted when `UsageType=User`. Set this parameter to the credit package instance ID when `UsageType=CreditPackage`, or to the `AgentId` when `UsageType=Agent`.
+	// The JSON string of instance IDs. This parameter can be omitted when `UsageType=User`. Pass a credit package instance ID when `UsageType=CreditPackage`, or pass an `AgentId` when `UsageType=Agent`.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The usage type. Valid values:
+	// The usage type (UsageType). Valid values:
 	//
-	// 	- User: Returns the usage, remaining credits, and consumption trends of the active credit packages for the current user.
+	// 	- User: Returns the usage, remaining credits, and consumption trends of the current user\\"s active credit packages.
 	//
 	// 	- CreditPackage: Requires a CreditPackageId. Returns the total and remaining credits of the specified credit package.
 	//
-	// 	- Agent: Requires an AgentId. Returns the cumulative credit usage, cumulative allocated quota, and the percentages of both.
+	// 	- Agent: Requires an AgentId. Returns the cumulative credit usage, cumulative allocated quota, and their percentages.
 	//
 	// example:
 	//

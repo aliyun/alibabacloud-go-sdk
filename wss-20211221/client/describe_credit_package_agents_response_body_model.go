@@ -20,21 +20,21 @@ type iDescribeCreditPackageAgentsResponseBody interface {
 }
 
 type DescribeCreditPackageAgentsResponseBody struct {
-	// A list of agents.
+	// The Agent list.
 	Agents []*DescribeCreditPackageAgentsResponseBodyAgents `json:"Agents,omitempty" xml:"Agents,omitempty" type:"Repeated"`
-	// The number of results returned on the current page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results. If this value is empty, all results have been returned.
+	// The pagination token. Set this parameter to an empty string for the first request. For subsequent requests, use the `nextToken` value from the previous response.
 	//
 	// example:
 	//
 	// eyJvZmZzZXQiOjIwfQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID. Provide this ID when contacting support.
+	// The request trace ID, which is used for troubleshooting.
 	//
 	// example:
 	//
@@ -100,25 +100,25 @@ func (s *DescribeCreditPackageAgentsResponseBody) Validate() error {
 }
 
 type DescribeCreditPackageAgentsResponseBodyAgents struct {
-	// The ID of the agent.
+	// Agent ID
 	//
 	// example:
 	//
 	// agent-abc
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// **The creation time of the instance.**
+	// **The instance creation time.**
 	//
 	// example:
 	//
 	// 2026-04-01 10:00:00
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// **The ID of the active credit package instance.**
+	// **The ID of the currently active credit package instance.**
 	//
 	// example:
 	//
 	// cp-inst-001
 	CreditPackageId *string `json:"CreditPackageId,omitempty" xml:"CreditPackageId,omitempty"`
-	// **The expiration time of the instance.**
+	// **The time when the instance expires.**
 	//
 	// example:
 	//
@@ -130,19 +130,19 @@ type DescribeCreditPackageAgentsResponseBodyAgents struct {
 	//
 	// jvs-copilot.standard
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// **The total credit.**
+	// **The total number of credits.**
 	//
 	// example:
 	//
 	// 2000
 	TotalCredit *int64 `json:"TotalCredit,omitempty" xml:"TotalCredit,omitempty"`
-	// **The amount of credit used.**
+	// **The amount of credits used.**
 	//
 	// example:
 	//
 	// 100
 	UsedCredit *int64 `json:"UsedCredit,omitempty" xml:"UsedCredit,omitempty"`
-	// **The alarm threshold, specified as a percentage. Valid values: 0 to 100.**
+	// **The alert threshold percentage (0–100).**
 	//
 	// example:
 	//

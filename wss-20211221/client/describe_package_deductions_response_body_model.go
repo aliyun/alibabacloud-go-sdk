@@ -28,7 +28,7 @@ type iDescribePackageDeductionsResponseBody interface {
 }
 
 type DescribePackageDeductionsResponseBody struct {
-	// The deduction details.
+	// The list of deduction details.
 	Deductions []*DescribePackageDeductionsResponseBodyDeductions `json:"Deductions,omitempty" xml:"Deductions,omitempty" type:"Repeated"`
 	// The current page number.
 	//
@@ -36,7 +36,7 @@ type DescribePackageDeductionsResponseBody struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paged query. Settings the number of rows per page for paging.
 	//
 	// example:
 	//
@@ -48,24 +48,25 @@ type DescribePackageDeductionsResponseBody struct {
 	//
 	// 833C4D2C-09C7-5CE6-8159-06758B964970
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of matching entries.
+	// The total number of deduction detail records returned.
 	//
 	// example:
 	//
 	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The total core-hours deducted for all matching entries.
+	// The total deducted core-hours.
 	//
 	// example:
 	//
 	// 10.1
 	TotalUsedCoreTime *float32 `json:"TotalUsedCoreTime,omitempty" xml:"TotalUsedCoreTime,omitempty"`
-	// The total usage duration of all matching entries, in seconds.
+	// The total usage duration.
 	//
 	// example:
 	//
 	// 100000
-	TotalUsedTime        *int64  `json:"TotalUsedTime,omitempty" xml:"TotalUsedTime,omitempty"`
+	TotalUsedTime *int64 `json:"TotalUsedTime,omitempty" xml:"TotalUsedTime,omitempty"`
+	// The total usage duration in decimal format.
 	TotalUsedTimeDecimal *string `json:"TotalUsedTimeDecimal,omitempty" xml:"TotalUsedTimeDecimal,omitempty"`
 }
 
@@ -175,46 +176,49 @@ type DescribePackageDeductionsResponseBodyDeductions struct {
 	//
 	// ecd-6wye9optu0kag****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The cloud computer name.
+	// The name of the cloud computer.
 	//
 	// example:
 	//
 	// DemoComputer
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The desktop type.
+	// The specifications of the cloud computer.
 	//
 	// example:
 	//
 	// eds.enterprise_office.4c8g
 	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
-	// The billing cycle end time.
+	// The end time of the period.
 	//
 	// example:
 	//
 	// 2024-07-31T03:00Z
-	EndTime           *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The group resource type.
 	GroupResourceType *string `json:"GroupResourceType,omitempty" xml:"GroupResourceType,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The core-hour package state.
+	// The instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The status of the core-hour package.
 	//
 	// example:
 	//
 	// Deleted
 	InstanceState *string `json:"InstanceState,omitempty" xml:"InstanceState,omitempty"`
-	InstanceType  *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The memory size, in MB.
+	// The instance type.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The memory size. Unit: MB.
 	//
 	// example:
 	//
 	// 8192
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The OS of the cloud computer.
+	// The operating system type of the cloud computer.
 	//
 	// example:
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The region ID.
+	// The region ID of the cloud computer.
 	//
 	// example:
 	//
@@ -226,27 +230,30 @@ type DescribePackageDeductionsResponseBodyDeductions struct {
 	//
 	// Desktop
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	SessionId    *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The billing cycle start time.
+	// The session ID.
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The start time of the period.
 	//
 	// example:
 	//
 	// 2024-07-31T02:00Z
 	StaTime *string `json:"StaTime,omitempty" xml:"StaTime,omitempty"`
-	// The deducted core-hours.
+	// The number of cores deducted in this period.
 	//
 	// example:
 	//
 	// 4.0
 	UsedCoreTime *float32 `json:"UsedCoreTime,omitempty" xml:"UsedCoreTime,omitempty"`
-	// The usage duration, in seconds.
+	// The usage duration. Unit: seconds.
 	//
 	// example:
 	//
 	// 3600
-	UsedTime          *int64  `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	UsedTimeDecimal   *string `json:"UsedTimeDecimal,omitempty" xml:"UsedTimeDecimal,omitempty"`
-	UsedTimeWithScale *int64  `json:"UsedTimeWithScale,omitempty" xml:"UsedTimeWithScale,omitempty"`
+	UsedTime *int64 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	// The usage duration in decimal format.
+	UsedTimeDecimal *string `json:"UsedTimeDecimal,omitempty" xml:"UsedTimeDecimal,omitempty"`
+	// The usage duration after proportional scaling.
+	UsedTimeWithScale *int64 `json:"UsedTimeWithScale,omitempty" xml:"UsedTimeWithScale,omitempty"`
 }
 
 func (s DescribePackageDeductionsResponseBodyDeductions) String() string {

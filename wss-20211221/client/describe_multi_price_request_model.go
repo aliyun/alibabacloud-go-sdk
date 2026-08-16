@@ -28,13 +28,13 @@ type DescribeMultiPriceRequest struct {
 	//
 	// create
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The package code. You do not need to specify this parameter for non-package types.
+	// The package code. You do not need to specify this parameter if the product is not a package.
 	//
 	// example:
 	//
 	// pacakge
 	PackageCode *string `json:"PackageCode,omitempty" xml:"PackageCode,omitempty"`
-	// The user ID of the resource ownership in reseller pattern. You do not need to specify this parameter in non-reseller pattern.
+	// The user ID of resource ownership in the reselling pattern. You do not need to specify this parameter if the product is not in the reselling pattern.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *DescribeMultiPriceRequest) Validate() error {
 }
 
 type DescribeMultiPriceRequestOrderItems struct {
-	// The purchase quantity.
+	// The quantity to purchase.
 	//
 	// example:
 	//
@@ -108,14 +108,11 @@ type DescribeMultiPriceRequestOrderItems struct {
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// The list of product modules.
 	Components []*DescribeMultiPriceRequestOrderItemsComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	Data       *string                                          `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The extended properties.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The subscription duration. Valid values:
-	//
-	// - If PeriodUnit is set to Year: 1, 2, or 3.
-	//
-	// - If PeriodUnit is set to Month: 1, 2, 3, or 6.
 	//
 	// example:
 	//
@@ -137,12 +134,11 @@ type DescribeMultiPriceRequestOrderItems struct {
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 	// The resource type.
 	//
-	// > This parameter is case-sensitive. Make sure that the value is spelled correctly.
-	//
 	// example:
 	//
 	// DurationPackage
-	ResourceType     *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The period of the savings plan.
 	SavingPlanPeriod *string `json:"SavingPlanPeriod,omitempty" xml:"SavingPlanPeriod,omitempty"`
 }
 
@@ -265,50 +261,6 @@ type DescribeMultiPriceRequestOrderItemsComponents struct {
 	// RegionId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the module.
-	//
-	// The following example values and valid values are for the Enterprise Edition monthly duration package:
-	//
-	// - RegionId: cn-shanghai
-	//
-	// - InstanceType: eds.enterprise_office.4c8g
-	//
-	// - DurationType (hours): Valid values:
-	//
-	//    - 120
-	//
-	//    - 250
-	//
-	// - OsType: Valid values:
-	//
-	//    - Windows
-	//
-	//    - Linux
-	//
-	// - RootDiskSize (GiB): 80
-	//
-	// - RootDiskCategory: Valid values:
-	//
-	//    - cloud_efficiency: ultra cloud disk
-	//
-	//    - cloud_auto: ESSD AutoPL cloud disk
-	//
-	//    - cloud_essd: enhanced standard SSD. Only specific instance types support this value.
-	//
-	// - RootPerformanceLevel: Valid values:
-	//
-	//    - PL0
-	//
-	//    - PL1
-	//
-	//    - PL2
-	//
-	//    - PL3
-	//
-	// - DataDiskSize (GiB): same as RootDiskSize
-	//
-	// - DataDiskCategory: same as RootDiskCategory
-	//
-	// - DataPerformanceLevel: same as RootPerformanceLevel
 	//
 	// example:
 	//

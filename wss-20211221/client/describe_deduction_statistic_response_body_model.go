@@ -62,11 +62,11 @@ func (s *DescribeDeductionStatisticResponseBody) Validate() error {
 }
 
 type DescribeDeductionStatisticResponseBodyData struct {
-	// **The available core-hour packages.**
+	// **The list of available core-hour package resources.**
 	AvailableCorePackages []*DescribeDeductionStatisticResponseBodyDataAvailableCorePackages `json:"AvailableCorePackages,omitempty" xml:"AvailableCorePackages,omitempty" type:"Repeated"`
 	// The deduction details.
 	Deductions []*DescribeDeductionStatisticResponseBodyDataDeductions `json:"Deductions,omitempty" xml:"Deductions,omitempty" type:"Repeated"`
-	// **The usage details.**
+	// **The usage list.**
 	Usages []*DescribeDeductionStatisticResponseBodyDataUsages `json:"Usages,omitempty" xml:"Usages,omitempty" type:"Repeated"`
 }
 
@@ -137,7 +137,7 @@ func (s *DescribeDeductionStatisticResponseBodyData) Validate() error {
 }
 
 type DescribeDeductionStatisticResponseBodyDataAvailableCorePackages struct {
-	// The Alibaba Cloud account ID.
+	// The Alibaba Cloud UID.
 	//
 	// example:
 	//
@@ -173,9 +173,9 @@ type DescribeDeductionStatisticResponseBodyDataAvailableCorePackages struct {
 	//
 	// CoreHour
 	GroupResourceType *string `json:"GroupResourceType,omitempty" xml:"GroupResourceType,omitempty"`
-	// Indicates whether the resource is a No-Lx resource.
+	// Indicates whether LingXiao is excluded.
 	NoLx *bool `json:"NoLx,omitempty" xml:"NoLx,omitempty"`
-	// The source of the No-Lx resource.
+	// The source when LingXiao is excluded.
 	//
 	// example:
 	//
@@ -358,7 +358,7 @@ func (s *DescribeDeductionStatisticResponseBodyDataAvailableCorePackages) Valida
 }
 
 type DescribeDeductionStatisticResponseBodyDataDeductions struct {
-	// The consumption duration in seconds.
+	// The consumption duration, in seconds.
 	//
 	// example:
 	//
@@ -418,7 +418,7 @@ func (s *DescribeDeductionStatisticResponseBodyDataDeductions) Validate() error 
 }
 
 type DescribeDeductionStatisticResponseBodyDataUsages struct {
-	// **The consumption duration in seconds.**
+	// **The consumption duration, in seconds.**
 	//
 	// example:
 	//
