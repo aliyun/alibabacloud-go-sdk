@@ -17,6 +17,12 @@ type iImageRemoveRequest interface {
 	GetNonObjectRemoveElements() []*int32
 	SetObjectRemoveElements(v []*int32) *ImageRemoveRequest
 	GetObjectRemoveElements() []*int32
+	SetPosition(v string) *ImageRemoveRequest
+	GetPosition() *string
+	SetUserImage(v []*string) *ImageRemoveRequest
+	GetUserImage() []*string
+	SetUserText(v []*string) *ImageRemoveRequest
+	GetUserText() []*string
 }
 
 type ImageRemoveRequest struct {
@@ -66,6 +72,18 @@ type ImageRemoveRequest struct {
 	//
 	// [1,2]
 	ObjectRemoveElements []*int32 `json:"ObjectRemoveElements,omitempty" xml:"ObjectRemoveElements,omitempty" type:"Repeated"`
+	// example:
+	//
+	// [10,10,100,100]
+	Position *string `json:"Position,omitempty" xml:"Position,omitempty"`
+	// example:
+	//
+	// ["https://img.alicdn.com/bao/uploaded/i2/xxx.jpg"]
+	UserImage []*string `json:"UserImage,omitempty" xml:"UserImage,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ["xx","yy"]
+	UserText []*string `json:"UserText,omitempty" xml:"UserText,omitempty" type:"Repeated"`
 }
 
 func (s ImageRemoveRequest) String() string {
@@ -92,6 +110,18 @@ func (s *ImageRemoveRequest) GetObjectRemoveElements() []*int32 {
 	return s.ObjectRemoveElements
 }
 
+func (s *ImageRemoveRequest) GetPosition() *string {
+	return s.Position
+}
+
+func (s *ImageRemoveRequest) GetUserImage() []*string {
+	return s.UserImage
+}
+
+func (s *ImageRemoveRequest) GetUserText() []*string {
+	return s.UserText
+}
+
 func (s *ImageRemoveRequest) SetImageUrl(v string) *ImageRemoveRequest {
 	s.ImageUrl = &v
 	return s
@@ -109,6 +139,21 @@ func (s *ImageRemoveRequest) SetNonObjectRemoveElements(v []*int32) *ImageRemove
 
 func (s *ImageRemoveRequest) SetObjectRemoveElements(v []*int32) *ImageRemoveRequest {
 	s.ObjectRemoveElements = v
+	return s
+}
+
+func (s *ImageRemoveRequest) SetPosition(v string) *ImageRemoveRequest {
+	s.Position = &v
+	return s
+}
+
+func (s *ImageRemoveRequest) SetUserImage(v []*string) *ImageRemoveRequest {
+	s.UserImage = v
+	return s
+}
+
+func (s *ImageRemoveRequest) SetUserText(v []*string) *ImageRemoveRequest {
+	s.UserText = v
 	return s
 }
 

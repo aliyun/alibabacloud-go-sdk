@@ -1,3 +1,9 @@
+2026-08-17 Version: v5.1.2
+- Update API ImageRemove: add request parameters Position.
+- Update API ImageRemove: add request parameters UserImage.
+- Update API ImageRemove: add request parameters UserText.
+
+
 2026-07-31 Version: v5.1.1
 - Generated golang 2026-04-28 for Aidge.
 

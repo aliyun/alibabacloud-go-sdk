@@ -17,6 +17,12 @@ type iImageRemoveShrinkRequest interface {
 	GetNonObjectRemoveElementsShrink() *string
 	SetObjectRemoveElementsShrink(v string) *ImageRemoveShrinkRequest
 	GetObjectRemoveElementsShrink() *string
+	SetPosition(v string) *ImageRemoveShrinkRequest
+	GetPosition() *string
+	SetUserImageShrink(v string) *ImageRemoveShrinkRequest
+	GetUserImageShrink() *string
+	SetUserTextShrink(v string) *ImageRemoveShrinkRequest
+	GetUserTextShrink() *string
 }
 
 type ImageRemoveShrinkRequest struct {
@@ -66,6 +72,18 @@ type ImageRemoveShrinkRequest struct {
 	//
 	// [1,2]
 	ObjectRemoveElementsShrink *string `json:"ObjectRemoveElements,omitempty" xml:"ObjectRemoveElements,omitempty"`
+	// example:
+	//
+	// [10,10,100,100]
+	Position *string `json:"Position,omitempty" xml:"Position,omitempty"`
+	// example:
+	//
+	// ["https://img.alicdn.com/bao/uploaded/i2/xxx.jpg"]
+	UserImageShrink *string `json:"UserImage,omitempty" xml:"UserImage,omitempty"`
+	// example:
+	//
+	// ["xx","yy"]
+	UserTextShrink *string `json:"UserText,omitempty" xml:"UserText,omitempty"`
 }
 
 func (s ImageRemoveShrinkRequest) String() string {
@@ -92,6 +110,18 @@ func (s *ImageRemoveShrinkRequest) GetObjectRemoveElementsShrink() *string {
 	return s.ObjectRemoveElementsShrink
 }
 
+func (s *ImageRemoveShrinkRequest) GetPosition() *string {
+	return s.Position
+}
+
+func (s *ImageRemoveShrinkRequest) GetUserImageShrink() *string {
+	return s.UserImageShrink
+}
+
+func (s *ImageRemoveShrinkRequest) GetUserTextShrink() *string {
+	return s.UserTextShrink
+}
+
 func (s *ImageRemoveShrinkRequest) SetImageUrl(v string) *ImageRemoveShrinkRequest {
 	s.ImageUrl = &v
 	return s
@@ -109,6 +139,21 @@ func (s *ImageRemoveShrinkRequest) SetNonObjectRemoveElementsShrink(v string) *I
 
 func (s *ImageRemoveShrinkRequest) SetObjectRemoveElementsShrink(v string) *ImageRemoveShrinkRequest {
 	s.ObjectRemoveElementsShrink = &v
+	return s
+}
+
+func (s *ImageRemoveShrinkRequest) SetPosition(v string) *ImageRemoveShrinkRequest {
+	s.Position = &v
+	return s
+}
+
+func (s *ImageRemoveShrinkRequest) SetUserImageShrink(v string) *ImageRemoveShrinkRequest {
+	s.UserImageShrink = &v
+	return s
+}
+
+func (s *ImageRemoveShrinkRequest) SetUserTextShrink(v string) *ImageRemoveShrinkRequest {
+	s.UserTextShrink = &v
 	return s
 }
 

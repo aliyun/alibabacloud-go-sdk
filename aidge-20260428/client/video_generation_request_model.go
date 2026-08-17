@@ -85,6 +85,8 @@ func (s *VideoGenerationRequest) Validate() error {
 }
 
 type VideoGenerationRequestInput struct {
+	// Specifies the purpose and description of images by asset index.
+	AssetBindings []*VideoGenerationRequestInputAssetBindings `json:"AssetBindings,omitempty" xml:"AssetBindings,omitempty" type:"Repeated"`
 	// The extended information.
 	Extra map[string]interface{} `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The list of product image URLs (1 to 6 images). The URLs must be publicly accessible.
@@ -109,6 +111,10 @@ func (s VideoGenerationRequestInput) GoString() string {
 	return s.String()
 }
 
+func (s *VideoGenerationRequestInput) GetAssetBindings() []*VideoGenerationRequestInputAssetBindings {
+	return s.AssetBindings
+}
+
 func (s *VideoGenerationRequestInput) GetExtra() map[string]interface{} {
 	return s.Extra
 }
@@ -119,6 +125,11 @@ func (s *VideoGenerationRequestInput) GetImages() []*string {
 
 func (s *VideoGenerationRequestInput) GetTitle() *string {
 	return s.Title
+}
+
+func (s *VideoGenerationRequestInput) SetAssetBindings(v []*VideoGenerationRequestInputAssetBindings) *VideoGenerationRequestInput {
+	s.AssetBindings = v
+	return s
 }
 
 func (s *VideoGenerationRequestInput) SetExtra(v map[string]interface{}) *VideoGenerationRequestInput {
@@ -137,6 +148,71 @@ func (s *VideoGenerationRequestInput) SetTitle(v string) *VideoGenerationRequest
 }
 
 func (s *VideoGenerationRequestInput) Validate() error {
+	if s.AssetBindings != nil {
+		for _, item := range s.AssetBindings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type VideoGenerationRequestInputAssetBindings struct {
+	// The asset index.
+	//
+	// example:
+	//
+	// 0
+	AssetIndex *int32 `json:"AssetIndex,omitempty" xml:"AssetIndex,omitempty"`
+	// The natural language description of the asset.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Valid values:
+	//
+	// - look_reference: appearance reference.
+	//
+	// - scene_reference: scene reference.
+	Slot *string `json:"Slot,omitempty" xml:"Slot,omitempty"`
+}
+
+func (s VideoGenerationRequestInputAssetBindings) String() string {
+	return dara.Prettify(s)
+}
+
+func (s VideoGenerationRequestInputAssetBindings) GoString() string {
+	return s.String()
+}
+
+func (s *VideoGenerationRequestInputAssetBindings) GetAssetIndex() *int32 {
+	return s.AssetIndex
+}
+
+func (s *VideoGenerationRequestInputAssetBindings) GetDescription() *string {
+	return s.Description
+}
+
+func (s *VideoGenerationRequestInputAssetBindings) GetSlot() *string {
+	return s.Slot
+}
+
+func (s *VideoGenerationRequestInputAssetBindings) SetAssetIndex(v int32) *VideoGenerationRequestInputAssetBindings {
+	s.AssetIndex = &v
+	return s
+}
+
+func (s *VideoGenerationRequestInputAssetBindings) SetDescription(v string) *VideoGenerationRequestInputAssetBindings {
+	s.Description = &v
+	return s
+}
+
+func (s *VideoGenerationRequestInputAssetBindings) SetSlot(v string) *VideoGenerationRequestInputAssetBindings {
+	s.Slot = &v
+	return s
+}
+
+func (s *VideoGenerationRequestInputAssetBindings) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -153,6 +229,8 @@ type VideoGenerationRequestIntent struct {
 	//
 	// -
 	Goal *string `json:"Goal,omitempty" xml:"Goal,omitempty"`
+	// Required when goal is set to scripted_video.
+	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
 }
 
 func (s VideoGenerationRequestIntent) String() string {
@@ -171,6 +249,10 @@ func (s *VideoGenerationRequestIntent) GetGoal() *string {
 	return s.Goal
 }
 
+func (s *VideoGenerationRequestIntent) GetScript() *string {
+	return s.Script
+}
+
 func (s *VideoGenerationRequestIntent) SetChannel(v string) *VideoGenerationRequestIntent {
 	s.Channel = &v
 	return s
@@ -178,6 +260,11 @@ func (s *VideoGenerationRequestIntent) SetChannel(v string) *VideoGenerationRequ
 
 func (s *VideoGenerationRequestIntent) SetGoal(v string) *VideoGenerationRequestIntent {
 	s.Goal = &v
+	return s
+}
+
+func (s *VideoGenerationRequestIntent) SetScript(v string) *VideoGenerationRequestIntent {
+	s.Script = &v
 	return s
 }
 
