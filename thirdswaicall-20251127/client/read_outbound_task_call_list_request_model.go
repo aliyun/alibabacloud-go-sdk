@@ -17,8 +17,12 @@ type iReadOutboundTaskCallListRequest interface {
 	GetCallStartTimeBegin() *int64
 	SetCallStartTimeEnd(v int64) *ReadOutboundTaskCallListRequest
 	GetCallStartTimeEnd() *int64
+	SetCallerUacAccountId(v string) *ReadOutboundTaskCallListRequest
+	GetCallerUacAccountId() *string
 	SetCurrent(v int32) *ReadOutboundTaskCallListRequest
 	GetCurrent() *int32
+	SetCurrentWorkspaceId(v string) *ReadOutboundTaskCallListRequest
+	GetCurrentWorkspaceId() *string
 	SetCustomerNameOrPhone(v string) *ReadOutboundTaskCallListRequest
 	GetCustomerNameOrPhone() *string
 	SetDisplayStatusList(v []*string) *ReadOutboundTaskCallListRequest
@@ -56,8 +60,16 @@ type ReadOutboundTaskCallListRequest struct {
 	CallStartTimeEnd *int64 `json:"CallStartTimeEnd,omitempty" xml:"CallStartTimeEnd,omitempty"`
 	// example:
 	//
+	// abc123***
+	CallerUacAccountId *string `json:"CallerUacAccountId,omitempty" xml:"CallerUacAccountId,omitempty"`
+	// example:
+	//
 	// 1
 	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// example:
+	//
+	// abc123***
+	CurrentWorkspaceId *string `json:"CurrentWorkspaceId,omitempty" xml:"CurrentWorkspaceId,omitempty"`
 	// example:
 	//
 	// 张先生
@@ -116,8 +128,16 @@ func (s *ReadOutboundTaskCallListRequest) GetCallStartTimeEnd() *int64 {
 	return s.CallStartTimeEnd
 }
 
+func (s *ReadOutboundTaskCallListRequest) GetCallerUacAccountId() *string {
+	return s.CallerUacAccountId
+}
+
 func (s *ReadOutboundTaskCallListRequest) GetCurrent() *int32 {
 	return s.Current
+}
+
+func (s *ReadOutboundTaskCallListRequest) GetCurrentWorkspaceId() *string {
+	return s.CurrentWorkspaceId
 }
 
 func (s *ReadOutboundTaskCallListRequest) GetCustomerNameOrPhone() *string {
@@ -172,8 +192,18 @@ func (s *ReadOutboundTaskCallListRequest) SetCallStartTimeEnd(v int64) *ReadOutb
 	return s
 }
 
+func (s *ReadOutboundTaskCallListRequest) SetCallerUacAccountId(v string) *ReadOutboundTaskCallListRequest {
+	s.CallerUacAccountId = &v
+	return s
+}
+
 func (s *ReadOutboundTaskCallListRequest) SetCurrent(v int32) *ReadOutboundTaskCallListRequest {
 	s.Current = &v
+	return s
+}
+
+func (s *ReadOutboundTaskCallListRequest) SetCurrentWorkspaceId(v string) *ReadOutboundTaskCallListRequest {
+	s.CurrentWorkspaceId = &v
 	return s
 }
 

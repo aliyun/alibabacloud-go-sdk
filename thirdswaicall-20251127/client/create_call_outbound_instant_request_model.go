@@ -11,6 +11,10 @@ type iCreateCallOutboundInstantRequest interface {
 	GoString() string
 	SetCalledNumber(v string) *CreateCallOutboundInstantRequest
 	GetCalledNumber() *string
+	SetCallerUacAccountId(v string) *CreateCallOutboundInstantRequest
+	GetCallerUacAccountId() *string
+	SetCurrentWorkspaceId(v string) *CreateCallOutboundInstantRequest
+	GetCurrentWorkspaceId() *string
 	SetCustomerName(v string) *CreateCallOutboundInstantRequest
 	GetCustomerName() *string
 	SetEncryptCall(v bool) *CreateCallOutboundInstantRequest
@@ -26,6 +30,14 @@ type CreateCallOutboundInstantRequest struct {
 	//
 	// 13800138000
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// example:
+	//
+	// abc123***
+	CallerUacAccountId *string `json:"CallerUacAccountId,omitempty" xml:"CallerUacAccountId,omitempty"`
+	// example:
+	//
+	// abc123***
+	CurrentWorkspaceId *string `json:"CurrentWorkspaceId,omitempty" xml:"CurrentWorkspaceId,omitempty"`
 	// example:
 	//
 	// 张三
@@ -56,6 +68,14 @@ func (s *CreateCallOutboundInstantRequest) GetCalledNumber() *string {
 	return s.CalledNumber
 }
 
+func (s *CreateCallOutboundInstantRequest) GetCallerUacAccountId() *string {
+	return s.CallerUacAccountId
+}
+
+func (s *CreateCallOutboundInstantRequest) GetCurrentWorkspaceId() *string {
+	return s.CurrentWorkspaceId
+}
+
 func (s *CreateCallOutboundInstantRequest) GetCustomerName() *string {
 	return s.CustomerName
 }
@@ -74,6 +94,16 @@ func (s *CreateCallOutboundInstantRequest) GetTaskId() *int64 {
 
 func (s *CreateCallOutboundInstantRequest) SetCalledNumber(v string) *CreateCallOutboundInstantRequest {
 	s.CalledNumber = &v
+	return s
+}
+
+func (s *CreateCallOutboundInstantRequest) SetCallerUacAccountId(v string) *CreateCallOutboundInstantRequest {
+	s.CallerUacAccountId = &v
+	return s
+}
+
+func (s *CreateCallOutboundInstantRequest) SetCurrentWorkspaceId(v string) *CreateCallOutboundInstantRequest {
+	s.CurrentWorkspaceId = &v
 	return s
 }
 

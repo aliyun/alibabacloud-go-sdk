@@ -28,6 +28,14 @@ func (client *Client) CreateCallOutboundInstantWithContext(ctx context.Context, 
 		body["CalledNumber"] = request.CalledNumber
 	}
 
+	if !dara.IsNil(request.CallerUacAccountId) {
+		body["CallerUacAccountId"] = request.CallerUacAccountId
+	}
+
+	if !dara.IsNil(request.CurrentWorkspaceId) {
+		body["CurrentWorkspaceId"] = request.CurrentWorkspaceId
+	}
+
 	if !dara.IsNil(request.CustomerName) {
 		body["CustomerName"] = request.CustomerName
 	}
@@ -86,6 +94,14 @@ func (client *Client) QueryTaskConcurrencyWithContext(ctx context.Context, reque
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationCode) {
 		body["ApplicationCode"] = request.ApplicationCode
+	}
+
+	if !dara.IsNil(request.CallerUacAccountId) {
+		body["CallerUacAccountId"] = request.CallerUacAccountId
+	}
+
+	if !dara.IsNil(request.CurrentWorkspaceId) {
+		body["CurrentWorkspaceId"] = request.CurrentWorkspaceId
 	}
 
 	if !dara.IsNil(request.TaskId) {
@@ -158,8 +174,16 @@ func (client *Client) ReadOutboundTaskCallListWithContext(ctx context.Context, t
 		body["CallStartTimeEnd"] = request.CallStartTimeEnd
 	}
 
+	if !dara.IsNil(request.CallerUacAccountId) {
+		body["CallerUacAccountId"] = request.CallerUacAccountId
+	}
+
 	if !dara.IsNil(request.Current) {
 		body["Current"] = request.Current
+	}
+
+	if !dara.IsNil(request.CurrentWorkspaceId) {
+		body["CurrentWorkspaceId"] = request.CurrentWorkspaceId
 	}
 
 	if !dara.IsNil(request.CustomerNameOrPhone) {

@@ -17,8 +17,12 @@ type iReadOutboundTaskCallListShrinkRequest interface {
 	GetCallStartTimeBegin() *int64
 	SetCallStartTimeEnd(v int64) *ReadOutboundTaskCallListShrinkRequest
 	GetCallStartTimeEnd() *int64
+	SetCallerUacAccountId(v string) *ReadOutboundTaskCallListShrinkRequest
+	GetCallerUacAccountId() *string
 	SetCurrent(v int32) *ReadOutboundTaskCallListShrinkRequest
 	GetCurrent() *int32
+	SetCurrentWorkspaceId(v string) *ReadOutboundTaskCallListShrinkRequest
+	GetCurrentWorkspaceId() *string
 	SetCustomerNameOrPhone(v string) *ReadOutboundTaskCallListShrinkRequest
 	GetCustomerNameOrPhone() *string
 	SetDisplayStatusListShrink(v string) *ReadOutboundTaskCallListShrinkRequest
@@ -56,8 +60,16 @@ type ReadOutboundTaskCallListShrinkRequest struct {
 	CallStartTimeEnd *int64 `json:"CallStartTimeEnd,omitempty" xml:"CallStartTimeEnd,omitempty"`
 	// example:
 	//
+	// abc123***
+	CallerUacAccountId *string `json:"CallerUacAccountId,omitempty" xml:"CallerUacAccountId,omitempty"`
+	// example:
+	//
 	// 1
 	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// example:
+	//
+	// abc123***
+	CurrentWorkspaceId *string `json:"CurrentWorkspaceId,omitempty" xml:"CurrentWorkspaceId,omitempty"`
 	// example:
 	//
 	// 张先生
@@ -116,8 +128,16 @@ func (s *ReadOutboundTaskCallListShrinkRequest) GetCallStartTimeEnd() *int64 {
 	return s.CallStartTimeEnd
 }
 
+func (s *ReadOutboundTaskCallListShrinkRequest) GetCallerUacAccountId() *string {
+	return s.CallerUacAccountId
+}
+
 func (s *ReadOutboundTaskCallListShrinkRequest) GetCurrent() *int32 {
 	return s.Current
+}
+
+func (s *ReadOutboundTaskCallListShrinkRequest) GetCurrentWorkspaceId() *string {
+	return s.CurrentWorkspaceId
 }
 
 func (s *ReadOutboundTaskCallListShrinkRequest) GetCustomerNameOrPhone() *string {
@@ -172,8 +192,18 @@ func (s *ReadOutboundTaskCallListShrinkRequest) SetCallStartTimeEnd(v int64) *Re
 	return s
 }
 
+func (s *ReadOutboundTaskCallListShrinkRequest) SetCallerUacAccountId(v string) *ReadOutboundTaskCallListShrinkRequest {
+	s.CallerUacAccountId = &v
+	return s
+}
+
 func (s *ReadOutboundTaskCallListShrinkRequest) SetCurrent(v int32) *ReadOutboundTaskCallListShrinkRequest {
 	s.Current = &v
+	return s
+}
+
+func (s *ReadOutboundTaskCallListShrinkRequest) SetCurrentWorkspaceId(v string) *ReadOutboundTaskCallListShrinkRequest {
+	s.CurrentWorkspaceId = &v
 	return s
 }
 
