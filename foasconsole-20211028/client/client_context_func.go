@@ -9,6 +9,50 @@ import (
 
 // Summary:
 //
+// Disables the Flink AI service.
+//
+// @param request - CloseFlinkAiServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloseFlinkAiServiceResponse
+func (client *Client) CloseFlinkAiServiceWithContext(ctx context.Context, request *CloseFlinkAiServiceRequest, runtime *dara.RuntimeOptions) (_result *CloseFlinkAiServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Region) {
+		body["Region"] = request.Region
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloseFlinkAiService"),
+		Version:     dara.String("2021-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloseFlinkAiServiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Converts a subscription instance to a hybrid billing instance.
 //
 // Description:
@@ -657,6 +701,94 @@ func (client *Client) DescribeSupportedZonesWithContext(ctx context.Context, req
 
 // Summary:
 //
+// Retrieves the status of the Flink AI service.
+//
+// @param request - GetFlinkAiServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFlinkAiServiceResponse
+func (client *Client) GetFlinkAiServiceWithContext(ctx context.Context, request *GetFlinkAiServiceRequest, runtime *dara.RuntimeOptions) (_result *GetFlinkAiServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Region) {
+		body["Region"] = request.Region
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetFlinkAiService"),
+		Version:     dara.String("2021-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetFlinkAiServiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the free quota usage of Flink AI services.
+//
+// @param request - GetFlinkAiServiceFreeQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFlinkAiServiceFreeQuotaResponse
+func (client *Client) GetFlinkAiServiceFreeQuotaWithContext(ctx context.Context, request *GetFlinkAiServiceFreeQuotaRequest, runtime *dara.RuntimeOptions) (_result *GetFlinkAiServiceFreeQuotaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Region) {
+		body["Region"] = request.Region
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetFlinkAiServiceFreeQuota"),
+		Version:     dara.String("2021-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetFlinkAiServiceFreeQuotaResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries resource tags. You can query tag keys by tag values, query tag values by tag keys, or retrieve all tag information used in your Flink fully managed workspace.
 //
 // @param request - ListTagResourcesRequest
@@ -707,6 +839,54 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the shutdown protection setting for a Flink AI service.
+//
+// @param request - ModifyAiServiceProtectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAiServiceProtectionResponse
+func (client *Client) ModifyAiServiceProtectionWithContext(ctx context.Context, request *ModifyAiServiceProtectionRequest, runtime *dara.RuntimeOptions) (_result *ModifyAiServiceProtectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DeletionProtection) {
+		body["DeletionProtection"] = request.DeletionProtection
+	}
+
+	if !dara.IsNil(request.Region) {
+		body["Region"] = request.Region
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyAiServiceProtection"),
+		Version:     dara.String("2021-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyAiServiceProtectionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1159,6 +1339,50 @@ func (client *Client) ModifyPrepayNamespaceSpecWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyPrepayNamespaceSpecResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Activates the Flink AI service.
+//
+// @param request - OpenFlinkAiServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenFlinkAiServiceResponse
+func (client *Client) OpenFlinkAiServiceWithContext(ctx context.Context, request *OpenFlinkAiServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenFlinkAiServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Region) {
+		body["Region"] = request.Region
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OpenFlinkAiService"),
+		Version:     dara.String("2021-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OpenFlinkAiServiceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
