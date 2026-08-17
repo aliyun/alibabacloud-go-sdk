@@ -2083,7 +2083,7 @@ func (client *Client) PublishScriptWithContext(ctx context.Context, request *Pub
 
 // Summary:
 //
-// 恢复外呼活动
+// Resumes an outbound campaign.
 //
 // Description:
 //
@@ -2135,7 +2135,7 @@ func (client *Client) ResumeCampaignWithContext(ctx context.Context, request *Re
 
 // Summary:
 //
-// 提交外呼活动
+// Submits an outbound call campaign.
 //
 // Description:
 //

@@ -2821,7 +2821,7 @@ func (client *Client) PublishScript(request *PublishScriptRequest) (_result *Pub
 
 // Summary:
 //
-// 恢复外呼活动
+// Resumes an outbound campaign.
 //
 // Description:
 //
@@ -2873,7 +2873,7 @@ func (client *Client) ResumeCampaignWithOptions(request *ResumeCampaignRequest, 
 
 // Summary:
 //
-// 恢复外呼活动
+// Resumes an outbound campaign.
 //
 // Description:
 //
@@ -2895,7 +2895,7 @@ func (client *Client) ResumeCampaign(request *ResumeCampaignRequest) (_result *R
 
 // Summary:
 //
-// 提交外呼活动
+// Submits an outbound call campaign.
 //
 // Description:
 //
@@ -2947,7 +2947,7 @@ func (client *Client) SubmitCampaignWithOptions(request *SubmitCampaignRequest, 
 
 // Summary:
 //
-// 提交外呼活动
+// Submits an outbound call campaign.
 //
 // Description:
 //

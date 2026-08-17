@@ -26,39 +26,39 @@ type iSubmitCampaignResponseBody interface {
 }
 
 type SubmitCampaignResponseBody struct {
-	// 结果码
+	// The result code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 操作是否成功
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// HTTP状态码
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// 错误信息
+	// The error message.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 错误信息参数列表
+	// The list of error message parameters.
 	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	// 请求ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 请求是否成功
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

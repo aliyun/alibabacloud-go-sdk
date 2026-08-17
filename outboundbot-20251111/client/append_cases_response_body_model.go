@@ -11,6 +11,8 @@ type iAppendCasesResponseBody interface {
 	GoString() string
 	SetCode(v string) *AppendCasesResponseBody
 	GetCode() *string
+	SetData(v []*AppendCasesResponseBodyData) *AppendCasesResponseBody
+	GetData() []*AppendCasesResponseBodyData
 	SetHttpStatusCode(v int32) *AppendCasesResponseBody
 	GetHttpStatusCode() *int32
 	SetMessage(v string) *AppendCasesResponseBody
@@ -29,7 +31,8 @@ type AppendCasesResponseBody struct {
 	// example:
 	//
 	// OK
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*AppendCasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The HTTP status code.
 	//
 	// example:
@@ -70,6 +73,10 @@ func (s *AppendCasesResponseBody) GetCode() *string {
 	return s.Code
 }
 
+func (s *AppendCasesResponseBody) GetData() []*AppendCasesResponseBodyData {
+	return s.Data
+}
+
 func (s *AppendCasesResponseBody) GetHttpStatusCode() *int32 {
 	return s.HttpStatusCode
 }
@@ -92,6 +99,11 @@ func (s *AppendCasesResponseBody) GetSuccess() *bool {
 
 func (s *AppendCasesResponseBody) SetCode(v string) *AppendCasesResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *AppendCasesResponseBody) SetData(v []*AppendCasesResponseBodyData) *AppendCasesResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -121,5 +133,55 @@ func (s *AppendCasesResponseBody) SetSuccess(v bool) *AppendCasesResponseBody {
 }
 
 func (s *AppendCasesResponseBody) Validate() error {
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type AppendCasesResponseBodyData struct {
+	// example:
+	//
+	// 133xxxxxxxx
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// example:
+	//
+	// bizId-xxxxxx
+	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
+}
+
+func (s AppendCasesResponseBodyData) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AppendCasesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AppendCasesResponseBodyData) GetPhoneNumber() *string {
+	return s.PhoneNumber
+}
+
+func (s *AppendCasesResponseBodyData) GetReferenceId() *string {
+	return s.ReferenceId
+}
+
+func (s *AppendCasesResponseBodyData) SetPhoneNumber(v string) *AppendCasesResponseBodyData {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *AppendCasesResponseBodyData) SetReferenceId(v string) *AppendCasesResponseBodyData {
+	s.ReferenceId = &v
+	return s
+}
+
+func (s *AppendCasesResponseBodyData) Validate() error {
 	return dara.Validate(s)
 }
