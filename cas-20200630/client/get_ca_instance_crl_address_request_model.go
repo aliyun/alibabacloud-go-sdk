@@ -16,13 +16,13 @@ type iGetCaInstanceCrlAddressRequest interface {
 }
 
 type GetCaInstanceCrlAddressRequest struct {
-	// The identifier of the CA certificate.
+	// The CA certificate identifier.
 	//
 	// example:
 	//
 	// 1f0167b4-ee84-XXX-49bc4d39fa68
 	CaIdentifier *string `json:"CaIdentifier,omitempty" xml:"CaIdentifier,omitempty"`
-	// The ID of the zone where the CAS instance resides.
+	// The zone ID of the China CAS instance.
 	//
 	// example:
 	//

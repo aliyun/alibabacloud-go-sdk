@@ -77,13 +77,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"rus-west-1-pop":              dara.String("cas.aliyuncs.com"),
 		"us-east-1":                   dara.String("cas.aliyuncs.com"),
 		"us-west-1":                   dara.String("cas.aliyuncs.com"),
-		"me-east-1":                   dara.String("cas.me-east-1.aliyuncs.com"),
-		"me-central-1":                dara.String("cas.me-central-1.aliyuncs.com"),
-		"eu-central-1":                dara.String("cas.eu-central-1.aliyuncs.com"),
 		"ap-southeast-2":              dara.String("cas.ap-southeast-2.aliyuncs.com"),
-		"ap-southeast-1":              dara.String("cas.ap-southeast-1.aliyuncs.com"),
-		"ap-south-1":                  dara.String("cas.ap-south-1.aliyuncs.com"),
 		"ap-northeast-1":              dara.String("cas.ap-northeast-1.aliyuncs.com"),
+		"ap-southeast-1":              dara.String("cas.ap-southeast-1.aliyuncs.com"),
+		"eu-central-1":                dara.String("cas.eu-central-1.aliyuncs.com"),
+		"me-central-1":                dara.String("cas.me-central-1.aliyuncs.com"),
+		"ap-south-1":                  dara.String("cas.ap-south-1.aliyuncs.com"),
+		"me-east-1":                   dara.String("cas.me-east-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -196,15 +196,15 @@ func (client *Client) AssignCertificateCount(request *AssignCertificateCountRequ
 
 // Summary:
 //
-// Issues a client certificate by using a system-generated certificate signing request (CSR). You must create a root CA certificate and a subordinate CA certificate before calling this operation.
+// Issues a single client certificate based on a system-generated certificate signing request (CSR).
 //
 // Description:
 //
-// Before you call this operation, you must create a root CA certificate by calling [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) and a subordinate CA certificate by calling [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html). Only subordinate CA certificates can issue client certificates.
+// Before you call this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and called [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html) to create a subordinate CA certificate. Only subordinate CA certificates can issue client certificates.
 //
 // ## QPS limit
 //
-// The queries per second (QPS) limit for this operation is 10 calls per second per user. Calls that exceed this limit are throttled, which can impact your business. We recommend that you call this operation at a reasonable rate.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - CreateClientCertificateRequest
 //
@@ -229,6 +229,10 @@ func (client *Client) CreateClientCertificateWithOptions(request *CreateClientCe
 
 	if !dara.IsNil(request.AliasName) {
 		query["AliasName"] = request.AliasName
+	}
+
+	if !dara.IsNil(request.AsynchronousFlag) {
+		query["AsynchronousFlag"] = request.AsynchronousFlag
 	}
 
 	if !dara.IsNil(request.BeforeTime) {
@@ -334,15 +338,15 @@ func (client *Client) CreateClientCertificateWithOptions(request *CreateClientCe
 
 // Summary:
 //
-// Issues a client certificate by using a system-generated certificate signing request (CSR). You must create a root CA certificate and a subordinate CA certificate before calling this operation.
+// Issues a single client certificate based on a system-generated certificate signing request (CSR).
 //
 // Description:
 //
-// Before you call this operation, you must create a root CA certificate by calling [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) and a subordinate CA certificate by calling [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html). Only subordinate CA certificates can issue client certificates.
+// Before you call this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and called [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html) to create a subordinate CA certificate. Only subordinate CA certificates can issue client certificates.
 //
 // ## QPS limit
 //
-// The queries per second (QPS) limit for this operation is 10 calls per second per user. Calls that exceed this limit are throttled, which can impact your business. We recommend that you call this operation at a reasonable rate.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - CreateClientCertificateRequest
 //
@@ -360,15 +364,15 @@ func (client *Client) CreateClientCertificate(request *CreateClientCertificateRe
 
 // Summary:
 //
-// Issues a client certificate by using a custom certificate signing request (CSR).
+// Issues a single client certificate based on a custom certificate signing request (CSR).
 //
 // Description:
 //
-// Before you call this operation, you must create a root CA certificate by calling [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) and a subordinate CA certificate by calling [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html). Only subordinate CA certificates can issue client certificates.
+// Before you call this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and called [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html) to create a sub-CA certificate. Only sub-CA certificates can issue client certificates.
 //
 // ## QPS limit
 //
-// This operation is limited to 10 queries per second (QPS) per user. If you exceed this limit, the system throttles your API calls, which may affect your business. We recommend that you plan your calls to avoid being throttled.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation as appropriate.
 //
 // @param request - CreateClientCertificateWithCsrRequest
 //
@@ -389,6 +393,10 @@ func (client *Client) CreateClientCertificateWithCsrWithOptions(request *CreateC
 
 	if !dara.IsNil(request.Algorithm) {
 		query["Algorithm"] = request.Algorithm
+	}
+
+	if !dara.IsNil(request.AsynchronousFlag) {
+		query["AsynchronousFlag"] = request.AsynchronousFlag
 	}
 
 	if !dara.IsNil(request.BeforeTime) {
@@ -492,15 +500,15 @@ func (client *Client) CreateClientCertificateWithCsrWithOptions(request *CreateC
 
 // Summary:
 //
-// Issues a client certificate by using a custom certificate signing request (CSR).
+// Issues a single client certificate based on a custom certificate signing request (CSR).
 //
 // Description:
 //
-// Before you call this operation, you must create a root CA certificate by calling [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) and a subordinate CA certificate by calling [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html). Only subordinate CA certificates can issue client certificates.
+// Before you call this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and called [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html) to create a sub-CA certificate. Only sub-CA certificates can issue client certificates.
 //
 // ## QPS limit
 //
-// This operation is limited to 10 queries per second (QPS) per user. If you exceed this limit, the system throttles your API calls, which may affect your business. We recommend that you plan your calls to avoid being throttled.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation as appropriate.
 //
 // @param request - CreateClientCertificateWithCsrRequest
 //
@@ -1004,15 +1012,15 @@ func (client *Client) CreateRootCACertificate(request *CreateRootCACertificateRe
 
 // Summary:
 //
-// Issues a server certificate by using a system-generated certificate signing request (CSR).
+// Issues a single server certificate based on a system-generated certificate signing request (CSR).
 //
 // Description:
 //
-// Before you call this operation, you must call [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root certificate authority (CA) certificate and [CreateSubCACertificate](https://help.aliyun.com/document_detail/465975.html) to create a subordinate CA certificate. Only a subordinate CA certificate can issue a server certificate.
+// Before you call this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and called [CreateSubCACertificate](https://help.aliyun.com/document_detail/465975.html) to create a subordinate CA certificate. Only subordinate CA certificates can issue server certificates.
 //
-// ## QPS limits
+// ## QPS limit
 //
-// The queries per second (QPS) limit for this operation is 10 calls per second for each user. If you exceed this limit, the system throttles your API calls, which can affect your business. Plan your calls accordingly.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - CreateServerCertificateRequest
 //
@@ -1033,6 +1041,10 @@ func (client *Client) CreateServerCertificateWithOptions(request *CreateServerCe
 
 	if !dara.IsNil(request.Algorithm) {
 		query["Algorithm"] = request.Algorithm
+	}
+
+	if !dara.IsNil(request.AsynchronousFlag) {
+		query["AsynchronousFlag"] = request.AsynchronousFlag
 	}
 
 	if !dara.IsNil(request.BeforeTime) {
@@ -1128,15 +1140,15 @@ func (client *Client) CreateServerCertificateWithOptions(request *CreateServerCe
 
 // Summary:
 //
-// Issues a server certificate by using a system-generated certificate signing request (CSR).
+// Issues a single server certificate based on a system-generated certificate signing request (CSR).
 //
 // Description:
 //
-// Before you call this operation, you must call [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root certificate authority (CA) certificate and [CreateSubCACertificate](https://help.aliyun.com/document_detail/465975.html) to create a subordinate CA certificate. Only a subordinate CA certificate can issue a server certificate.
+// Before you call this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and called [CreateSubCACertificate](https://help.aliyun.com/document_detail/465975.html) to create a subordinate CA certificate. Only subordinate CA certificates can issue server certificates.
 //
-// ## QPS limits
+// ## QPS limit
 //
-// The queries per second (QPS) limit for this operation is 10 calls per second for each user. If you exceed this limit, the system throttles your API calls, which can affect your business. Plan your calls accordingly.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - CreateServerCertificateRequest
 //
@@ -1154,15 +1166,15 @@ func (client *Client) CreateServerCertificate(request *CreateServerCertificateRe
 
 // Summary:
 //
-// Issues a server certificate by using a custom certificate signing request (CSR).
+// Issues a single server certificate based on a custom CSR.
 //
 // Description:
 //
-// Before you call this operation, you must call [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html) to create a subordinate CA certificate. Server-side certificates can be issued only by subordinate CA certificates.
+// Before you call this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and called [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html) to create a subordinate CA certificate. Only subordinate CA certificates can issue server certificates.
 //
-// ## Limits
+// ## QPS limit
 //
-// This operation has a queries per second (QPS) limit of 10 requests per user. If you exceed this limit, rate limiting is triggered, which may affect your business. Call this operation only as needed.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation as appropriate.
 //
 // @param request - CreateServerCertificateWithCsrRequest
 //
@@ -1183,6 +1195,10 @@ func (client *Client) CreateServerCertificateWithCsrWithOptions(request *CreateS
 
 	if !dara.IsNil(request.Algorithm) {
 		query["Algorithm"] = request.Algorithm
+	}
+
+	if !dara.IsNil(request.AsynchronousFlag) {
+		query["AsynchronousFlag"] = request.AsynchronousFlag
 	}
 
 	if !dara.IsNil(request.BeforeTime) {
@@ -1282,15 +1298,15 @@ func (client *Client) CreateServerCertificateWithCsrWithOptions(request *CreateS
 
 // Summary:
 //
-// Issues a server certificate by using a custom certificate signing request (CSR).
+// Issues a single server certificate based on a custom CSR.
 //
 // Description:
 //
-// Before you call this operation, you must call [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html) to create a subordinate CA certificate. Server-side certificates can be issued only by subordinate CA certificates.
+// Before you call this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and called [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html) to create a subordinate CA certificate. Only subordinate CA certificates can issue server certificates.
 //
-// ## Limits
+// ## QPS limit
 //
-// This operation has a queries per second (QPS) limit of 10 requests per user. If you exceed this limit, rate limiting is triggered, which may affect your business. Call this operation only as needed.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation as appropriate.
 //
 // @param request - CreateServerCertificateWithCsrRequest
 //
@@ -2450,17 +2466,17 @@ func (client *Client) GetCAInstanceStatus(request *GetCAInstanceStatusRequest) (
 
 // Summary:
 //
-// # Obtain the CRL URL of a CA
+// Retrieves the certificate revocation list (CRL) URL of a certificate authority (CA).
 //
 // Description:
 //
-// This API is used to query the status information of a private CA instance that you purchased through the SSL Certificates Service console by using the ID of the private CA instance. For example, the status of the CA instance, the number of certificates contained, the number of issued certificates, and so on.
+// Queries the status information of a private CA instance that you purchased in the SSL Certificate console by using the ID of the private CA instance. For example, you can query the status of the CA instance, the number of digital certificates included, and the number of digital certificates issued.
 //
-// Before calling this API, you must have purchased a private CA through the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
+// Before you invoke this operation, you must have purchased a private CA in the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
 //
-// ## QPS Limit
+// ## QPS limit
 //
-// The per-user QPS limit for this API is 10 calls per second. If the limit is exceeded, API calls will be throttled, which may affect your business. Please call the API appropriately.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, throttling is triggered. This may affect your business. Invoke this operation as needed.
 //
 // @param request - GetCaInstanceCrlAddressRequest
 //
@@ -2508,17 +2524,17 @@ func (client *Client) GetCaInstanceCrlAddressWithOptions(request *GetCaInstanceC
 
 // Summary:
 //
-// # Obtain the CRL URL of a CA
+// Retrieves the certificate revocation list (CRL) URL of a certificate authority (CA).
 //
 // Description:
 //
-// This API is used to query the status information of a private CA instance that you purchased through the SSL Certificates Service console by using the ID of the private CA instance. For example, the status of the CA instance, the number of certificates contained, the number of issued certificates, and so on.
+// Queries the status information of a private CA instance that you purchased in the SSL Certificate console by using the ID of the private CA instance. For example, you can query the status of the CA instance, the number of digital certificates included, and the number of digital certificates issued.
 //
-// Before calling this API, you must have purchased a private CA through the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
+// Before you invoke this operation, you must have purchased a private CA in the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
 //
-// ## QPS Limit
+// ## QPS limit
 //
-// The per-user QPS limit for this API is 10 calls per second. If the limit is exceeded, API calls will be throttled, which may affect your business. Please call the API appropriately.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, throttling is triggered. This may affect your business. Invoke this operation as needed.
 //
 // @param request - GetCaInstanceCrlAddressRequest
 //

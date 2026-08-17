@@ -31,19 +31,19 @@ type GetCaInstanceCrlAddressResponseBody struct {
 	// normal
 	CaInstanceStatus *string `json:"CaInstanceStatus,omitempty" xml:"CaInstanceStatus,omitempty"`
 	CaType           *string `json:"CaType,omitempty" xml:"CaType,omitempty"`
-	// The cron expression.
+	// The CRL URL.
 	//
 	// example:
 	//
 	// https://crl-cn-publish.oss-cn-hangzhou.aliyuncs.com/pca/crl/35118048/1f0be094-14bd-6caa-bd7f-db45730d510a.crl
 	CrlUrl *string `json:"CrlUrl,omitempty" xml:"CrlUrl,omitempty"`
-	// Used to identify whether there are new revoked certificates in the revocation list.
+	// The hash code used to identify whether the CRL contains new revoked certificates.
 	//
 	// example:
 	//
 	// 5481d1b1228fXXX40ee70dc8cd
 	HashCode *string `json:"HashCode,omitempty" xml:"HashCode,omitempty"`
-	// The next update time of the revocation list.
+	// The next update time of the CRL.
 	//
 	// example:
 	//
