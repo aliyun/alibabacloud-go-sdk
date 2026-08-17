@@ -1,3 +1,7 @@
+2026-08-17 Version: v1.18.0
+- Support API ListDomainItems.
+
+
 2026-08-12 Version: v1.17.0
 - Support API CreateDomainMeta.
 - Support API DeleteDomainMeta.

@@ -4782,6 +4782,92 @@ func (client *Client) ListConnectors(request *ListConnectorsRequest) (_result *L
 
 // Summary:
 //
+// 分页查询域名条目
+//
+// Description:
+//
+// 分页查询指定域名名单下的域名条目明细。与 ListDomainMetas配套使用：先拿到 `ListId`，再用本接口翻页查看该名单里的域名。
+//
+// @param request - ListDomainItemsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDomainItemsResponse
+func (client *Client) ListDomainItemsWithOptions(request *ListDomainItemsRequest, runtime *dara.RuntimeOptions) (_result *ListDomainItemsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.ItemValue) {
+		query["ItemValue"] = request.ItemValue
+	}
+
+	if !dara.IsNil(request.ListId) {
+		query["ListId"] = request.ListId
+	}
+
+	if !dara.IsNil(request.ListType) {
+		query["ListType"] = request.ListType
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDomainItems"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDomainItemsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询域名条目
+//
+// Description:
+//
+// 分页查询指定域名名单下的域名条目明细。与 ListDomainMetas配套使用：先拿到 `ListId`，再用本接口翻页查看该名单里的域名。
+//
+// @param request - ListDomainItemsRequest
+//
+// @return ListDomainItemsResponse
+func (client *Client) ListDomainItems(request *ListDomainItemsRequest) (_result *ListDomainItemsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDomainItemsResponse{}
+	_body, _err := client.ListDomainItemsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the list of domain name lists.
 //
 // Description:
