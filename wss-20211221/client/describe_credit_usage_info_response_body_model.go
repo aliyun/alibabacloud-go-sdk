@@ -115,7 +115,8 @@ type DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo struct {
 	AvailableAmount   *int32    `json:"AvailableAmount,omitempty" xml:"AvailableAmount,omitempty"`
 	ContactGroupNames []*string `json:"ContactGroupNames,omitempty" xml:"ContactGroupNames,omitempty" type:"Repeated"`
 	// The hourly consumption samples of the current credit package.
-	CreditTrendList []*DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList `json:"CreditTrendList,omitempty" xml:"CreditTrendList,omitempty" type:"Repeated"`
+	CreditTrendList            []*DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList `json:"CreditTrendList,omitempty" xml:"CreditTrendList,omitempty" type:"Repeated"`
+	CurrentInstanceExpiredTime *string                                                                     `json:"CurrentInstanceExpiredTime,omitempty" xml:"CurrentInstanceExpiredTime,omitempty"`
 	// The instance ID of the current active credit package.
 	//
 	// example:
@@ -216,6 +217,10 @@ func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetCreditTre
 	return s.CreditTrendList
 }
 
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetCurrentInstanceExpiredTime() *string {
+	return s.CurrentInstanceExpiredTime
+}
+
 func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetCurrentInstanceId() *string {
 	return s.CurrentInstanceId
 }
@@ -292,6 +297,11 @@ func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) SetContactGr
 
 func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) SetCreditTrendList(v []*DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList) *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo {
 	s.CreditTrendList = v
+	return s
+}
+
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) SetCurrentInstanceExpiredTime(v string) *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo {
+	s.CurrentInstanceExpiredTime = &v
 	return s
 }
 
