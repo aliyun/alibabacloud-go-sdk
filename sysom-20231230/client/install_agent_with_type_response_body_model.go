@@ -20,15 +20,26 @@ type iInstallAgentWithTypeResponseBody interface {
 }
 
 type InstallAgentWithTypeResponseBody struct {
+	// The status code.
+	//
+	// - `code == Success` indicates that the authorization is successful.
+	//
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
+	//
 	// example:
 	//
 	// Success
-	Code *string                               `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *InstallAgentWithTypeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Id of the request
+	//
 	// example:
 	//
 	// ""
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID, which can be used for end-to-end diagnostics.
+	//
 	// example:
 	//
 	// 1D8887FC-4BDB-5A1C-AB19-135C29A9E481
@@ -89,6 +100,10 @@ func (s *InstallAgentWithTypeResponseBody) Validate() error {
 }
 
 type InstallAgentWithTypeResponseBodyData struct {
+	// The task ID.
+	//
+	// You can use this task ID to call the GetAgentTask operation to check the task execution status.
+	//
 	// example:
 	//
 	// 26b3cd97389c43dcad6bc4901c36fcec

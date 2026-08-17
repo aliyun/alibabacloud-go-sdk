@@ -213,6 +213,22 @@ func (client *Client) CreateAlertDestinationWithContext(ctx context.Context, req
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["app_id"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AppSecret) {
+		body["app_secret"] = request.AppSecret
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["group_id"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.Imbot) {
+		body["imbot"] = request.Imbot
+	}
+
 	if !dara.IsNil(request.Name) {
 		body["name"] = request.Name
 	}
@@ -314,15 +330,15 @@ func (client *Client) CreateAlertStrategyWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 创建集群Vpc端点连接
+// Creates a VPC endpoint connection for a cluster.
 //
 // Description:
 //
-// - 需配合aliyun-tea-openapi-inner包的call_sseapi接口使用
+// - Use this operation with the call_sseapi interface of the aliyun-tea-openapi-inner package.
 //
-// - 需要按通用LLM服务输入参数填充参数，转为string后赋给llmParamString
+// - Populate parameters according to the general LLM service input parameters, convert them to a string, and assign the string to llmParamString.
 //
-// - 返回数据需将string转为dict后使用，参考通用LLM服务返回格式
+// - Convert the returned string to a dictionary before use. Refer to the general LLM service response format.
 //
 // @param request - CreateClusterVpcEndpointConnectionRequest
 //
@@ -2358,11 +2374,11 @@ func (client *Client) InstallAgentForClusterWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 在指定的实例上安装 Agent
+// Installs an Agent on a specified instance.
 //
 // Description:
 //
-// 调用本接口安装 Agent 是异步的，调用接口后会返回一个 task_id，可以凭借该 ID 调用 GetAgentTask 接口获取任务的执行情况。
+// Calling this operation to install an Agent is asynchronous. After the call, a task_id is returned. You can use this ID to call the GetAgentTask operation to retrieve the task execution status.
 //
 // @param request - InstallAgentWithTypeRequest
 //
@@ -2379,6 +2395,10 @@ func (client *Client) InstallAgentWithTypeWithContext(ctx context.Context, reque
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Tag) {
+		body["Tag"] = request.Tag
+	}
+
 	if !dara.IsNil(request.AgentId) {
 		body["agentId"] = request.AgentId
 	}
@@ -4066,11 +4086,11 @@ func (client *Client) UninstallAgentForClusterWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 卸载 SysOM Agent
+// Uninstalls a specified version of a component.
 //
 // Description:
 //
-// 调用本接口卸载 Agent 是异步的，调用接口后会返回一个 task_id，可以凭借该 ID 调用 GetAgentTask 接口获取任务的执行情况。
+// Calling this operation to uninstall an Agent is asynchronous. After the call, a task_id is returned. You can use this ID to call the GetAgentTask operation to retrieve the execution status of the task.
 //
 // @param request - UninstallAgentWithTypeRequest
 //
@@ -4150,8 +4170,24 @@ func (client *Client) UpdateAlertDestinationWithContext(ctx context.Context, req
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["app_id"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AppSecret) {
+		body["app_secret"] = request.AppSecret
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["group_id"] = request.GroupId
+	}
+
 	if !dara.IsNil(request.Id) {
 		body["id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Imbot) {
+		body["imbot"] = request.Imbot
 	}
 
 	if !dara.IsNil(request.Name) {
@@ -4546,11 +4582,11 @@ func (client *Client) UpgradeAgentForClusterWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 更新 SysOM Agent
+// Updates the version of an installed component to a specified version.
 //
 // Description:
 //
-// 调用本接口更新 Agent 是异步的，调用接口后会返回一个 task_id，可以凭借该 ID 调用 GetAgentTask 接口获取任务的执行情况。
+// Calling this operation to update the Agent is asynchronous. After the call, a task_id is returned. You can use this ID to call the GetAgentTask operation to retrieve the execution status of the task.
 //
 // @param request - UpgradeAgentWithTypeRequest
 //

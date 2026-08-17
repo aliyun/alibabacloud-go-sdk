@@ -20,15 +20,30 @@ type iUninstallAgentWithTypeResponseBody interface {
 }
 
 type UninstallAgentWithTypeResponseBody struct {
+	// The status code.
+	//
+	// - `code == Success` indicates that the authorization is successful.
+	//
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
+	//
 	// example:
 	//
 	// Success
-	Code *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *UninstallAgentWithTypeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error message.
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the request error information.
+	//
 	// example:
 	//
 	// “”
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID, which can be used for end-to-end diagnostics.
+	//
 	// example:
 	//
 	// 13772206-1162-5A0F-81F0-79A10C249A5E
@@ -89,6 +104,8 @@ func (s *UninstallAgentWithTypeResponseBody) Validate() error {
 }
 
 type UninstallAgentWithTypeResponseBodyData struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// 63fc5acb99e642d793f42912612e8001

@@ -18,16 +18,22 @@ type iCreateClusterVpcEndpointConnectionRequest interface {
 }
 
 type CreateClusterVpcEndpointConnectionRequest struct {
+	// The ID of the ACK cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ray-bzxw7g2r7301r3f2
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	// Specifies whether to perform a dry run.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// The region to which the cluster belongs.
+	//
 	// This parameter is required.
 	//
 	// example:

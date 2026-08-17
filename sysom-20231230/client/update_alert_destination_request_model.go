@@ -9,8 +9,16 @@ type iUpdateAlertDestinationRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppId(v string) *UpdateAlertDestinationRequest
+	GetAppId() *string
+	SetAppSecret(v string) *UpdateAlertDestinationRequest
+	GetAppSecret() *string
+	SetGroupId(v []*string) *UpdateAlertDestinationRequest
+	GetGroupId() []*string
 	SetId(v string) *UpdateAlertDestinationRequest
 	GetId() *string
+	SetImbot(v bool) *UpdateAlertDestinationRequest
+	GetImbot() *bool
 	SetName(v string) *UpdateAlertDestinationRequest
 	GetName() *string
 	SetParams(v *UpdateAlertDestinationRequestParams) *UpdateAlertDestinationRequest
@@ -22,12 +30,16 @@ type iUpdateAlertDestinationRequest interface {
 }
 
 type UpdateAlertDestinationRequest struct {
+	AppId     *string   `json:"app_id,omitempty" xml:"app_id,omitempty"`
+	AppSecret *string   `json:"app_secret,omitempty" xml:"app_secret,omitempty"`
+	GroupId   []*string `json:"group_id,omitempty" xml:"group_id,omitempty" type:"Repeated"`
 	// The ID of the alert contact.
 	//
 	// example:
 	//
 	// 1
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	Id    *string `json:"id,omitempty" xml:"id,omitempty"`
+	Imbot *bool   `json:"imbot,omitempty" xml:"imbot,omitempty"`
 	// The name of the alert contact.
 	//
 	// example:
@@ -58,8 +70,24 @@ func (s UpdateAlertDestinationRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateAlertDestinationRequest) GetAppId() *string {
+	return s.AppId
+}
+
+func (s *UpdateAlertDestinationRequest) GetAppSecret() *string {
+	return s.AppSecret
+}
+
+func (s *UpdateAlertDestinationRequest) GetGroupId() []*string {
+	return s.GroupId
+}
+
 func (s *UpdateAlertDestinationRequest) GetId() *string {
 	return s.Id
+}
+
+func (s *UpdateAlertDestinationRequest) GetImbot() *bool {
+	return s.Imbot
 }
 
 func (s *UpdateAlertDestinationRequest) GetName() *string {
@@ -78,8 +106,28 @@ func (s *UpdateAlertDestinationRequest) GetTarget() *string {
 	return s.Target
 }
 
+func (s *UpdateAlertDestinationRequest) SetAppId(v string) *UpdateAlertDestinationRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateAlertDestinationRequest) SetAppSecret(v string) *UpdateAlertDestinationRequest {
+	s.AppSecret = &v
+	return s
+}
+
+func (s *UpdateAlertDestinationRequest) SetGroupId(v []*string) *UpdateAlertDestinationRequest {
+	s.GroupId = v
+	return s
+}
+
 func (s *UpdateAlertDestinationRequest) SetId(v string) *UpdateAlertDestinationRequest {
 	s.Id = &v
+	return s
+}
+
+func (s *UpdateAlertDestinationRequest) SetImbot(v bool) *UpdateAlertDestinationRequest {
+	s.Imbot = &v
 	return s
 }
 

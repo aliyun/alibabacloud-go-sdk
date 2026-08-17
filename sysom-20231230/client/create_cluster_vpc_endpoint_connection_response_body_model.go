@@ -20,15 +20,22 @@ type iCreateClusterVpcEndpointConnectionResponseBody interface {
 }
 
 type CreateClusterVpcEndpointConnectionResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// Success
-	Code *string                                             `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned data.
 	Data *CreateClusterVpcEndpointConnectionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The description of the error code. This parameter is empty if no error occurs.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 2D693121-C925-5154-8DF6-C09A8B369822
@@ -89,6 +96,8 @@ func (s *CreateClusterVpcEndpointConnectionResponseBody) Validate() error {
 }
 
 type CreateClusterVpcEndpointConnectionResponseBodyData struct {
+	// The ID of the endpoint connection.
+	//
 	// example:
 	//
 	// ep-xxx

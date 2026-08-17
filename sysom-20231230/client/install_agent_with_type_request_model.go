@@ -9,6 +9,8 @@ type iInstallAgentWithTypeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetTag(v []*InstallAgentWithTypeRequestTag) *InstallAgentWithTypeRequest
+	GetTag() []*InstallAgentWithTypeRequestTag
 	SetAgentId(v string) *InstallAgentWithTypeRequest
 	GetAgentId() *string
 	SetAgentVersion(v string) *InstallAgentWithTypeRequest
@@ -22,28 +24,39 @@ type iInstallAgentWithTypeRequest interface {
 }
 
 type InstallAgentWithTypeRequest struct {
+	Tag []*InstallAgentWithTypeRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the component to install.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 74a86327-3170-412c-8e67-da3389ec56a9
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// The version of the component to install.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3.4.0-1
 	AgentVersion *string `json:"agentVersion,omitempty" xml:"agentVersion,omitempty"`
+	// The configuration ID of the component to install.
+	//
 	// example:
 	//
 	// f0078fbb-4213-11f0-a19b-00163e4ae208
 	ConfigId *string `json:"configId,omitempty" xml:"configId,omitempty"`
+	// The instance type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ecs
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// The list of instances on which to install the component.
+	//
 	// This parameter is required.
 	Instances []*InstallAgentWithTypeRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
 }
@@ -54,6 +67,10 @@ func (s InstallAgentWithTypeRequest) String() string {
 
 func (s InstallAgentWithTypeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *InstallAgentWithTypeRequest) GetTag() []*InstallAgentWithTypeRequestTag {
+	return s.Tag
 }
 
 func (s *InstallAgentWithTypeRequest) GetAgentId() *string {
@@ -74,6 +91,11 @@ func (s *InstallAgentWithTypeRequest) GetInstanceType() *string {
 
 func (s *InstallAgentWithTypeRequest) GetInstances() []*InstallAgentWithTypeRequestInstances {
 	return s.Instances
+}
+
+func (s *InstallAgentWithTypeRequest) SetTag(v []*InstallAgentWithTypeRequestTag) *InstallAgentWithTypeRequest {
+	s.Tag = v
+	return s
 }
 
 func (s *InstallAgentWithTypeRequest) SetAgentId(v string) *InstallAgentWithTypeRequest {
@@ -102,6 +124,15 @@ func (s *InstallAgentWithTypeRequest) SetInstances(v []*InstallAgentWithTypeRequ
 }
 
 func (s *InstallAgentWithTypeRequest) Validate() error {
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.Instances != nil {
 		for _, item := range s.Instances {
 			if item != nil {
@@ -114,13 +145,52 @@ func (s *InstallAgentWithTypeRequest) Validate() error {
 	return nil
 }
 
+type InstallAgentWithTypeRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s InstallAgentWithTypeRequestTag) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InstallAgentWithTypeRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *InstallAgentWithTypeRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *InstallAgentWithTypeRequestTag) GetValue() *string {
+	return s.Value
+}
+
+func (s *InstallAgentWithTypeRequestTag) SetKey(v string) *InstallAgentWithTypeRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *InstallAgentWithTypeRequestTag) SetValue(v string) *InstallAgentWithTypeRequestTag {
+	s.Value = &v
+	return s
+}
+
+func (s *InstallAgentWithTypeRequestTag) Validate() error {
+	return dara.Validate(s)
+}
+
 type InstallAgentWithTypeRequestInstances struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// i-wz9b9vucz1iubsz8sjqo
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

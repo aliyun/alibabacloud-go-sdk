@@ -1,3 +1,15 @@
+2026-08-17 Version: v1.19.1
+- Update API CreateAlertDestination: add request parameters body.app_id.
+- Update API CreateAlertDestination: add request parameters body.app_secret.
+- Update API CreateAlertDestination: add request parameters body.group_id.
+- Update API CreateAlertDestination: add request parameters body.imbot.
+- Update API InstallAgentWithType: add request parameters body.Tag.
+- Update API UpdateAlertDestination: add request parameters body.app_id.
+- Update API UpdateAlertDestination: add request parameters body.app_secret.
+- Update API UpdateAlertDestination: add request parameters body.group_id.
+- Update API UpdateAlertDestination: add request parameters body.imbot.
+
+
 2026-07-06 Version: v1.19.0
 - Support API UninstallAgentWithType.
 - Support API UpgradeAgentWithType.

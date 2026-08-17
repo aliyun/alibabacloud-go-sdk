@@ -9,6 +9,14 @@ type iCreateAlertDestinationRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppId(v string) *CreateAlertDestinationRequest
+	GetAppId() *string
+	SetAppSecret(v string) *CreateAlertDestinationRequest
+	GetAppSecret() *string
+	SetGroupId(v []*string) *CreateAlertDestinationRequest
+	GetGroupId() []*string
+	SetImbot(v bool) *CreateAlertDestinationRequest
+	GetImbot() *bool
 	SetName(v string) *CreateAlertDestinationRequest
 	GetName() *string
 	SetParams(v *CreateAlertDestinationRequestParams) *CreateAlertDestinationRequest
@@ -20,6 +28,10 @@ type iCreateAlertDestinationRequest interface {
 }
 
 type CreateAlertDestinationRequest struct {
+	AppId     *string   `json:"app_id,omitempty" xml:"app_id,omitempty"`
+	AppSecret *string   `json:"app_secret,omitempty" xml:"app_secret,omitempty"`
+	GroupId   []*string `json:"group_id,omitempty" xml:"group_id,omitempty" type:"Repeated"`
+	Imbot     *bool     `json:"imbot,omitempty" xml:"imbot,omitempty"`
 	// The name of the alert contact.
 	//
 	// example:
@@ -50,6 +62,22 @@ func (s CreateAlertDestinationRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateAlertDestinationRequest) GetAppId() *string {
+	return s.AppId
+}
+
+func (s *CreateAlertDestinationRequest) GetAppSecret() *string {
+	return s.AppSecret
+}
+
+func (s *CreateAlertDestinationRequest) GetGroupId() []*string {
+	return s.GroupId
+}
+
+func (s *CreateAlertDestinationRequest) GetImbot() *bool {
+	return s.Imbot
+}
+
 func (s *CreateAlertDestinationRequest) GetName() *string {
 	return s.Name
 }
@@ -64,6 +92,26 @@ func (s *CreateAlertDestinationRequest) GetSource() *string {
 
 func (s *CreateAlertDestinationRequest) GetTarget() *string {
 	return s.Target
+}
+
+func (s *CreateAlertDestinationRequest) SetAppId(v string) *CreateAlertDestinationRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateAlertDestinationRequest) SetAppSecret(v string) *CreateAlertDestinationRequest {
+	s.AppSecret = &v
+	return s
+}
+
+func (s *CreateAlertDestinationRequest) SetGroupId(v []*string) *CreateAlertDestinationRequest {
+	s.GroupId = v
+	return s
+}
+
+func (s *CreateAlertDestinationRequest) SetImbot(v bool) *CreateAlertDestinationRequest {
+	s.Imbot = &v
+	return s
 }
 
 func (s *CreateAlertDestinationRequest) SetName(v string) *CreateAlertDestinationRequest {
