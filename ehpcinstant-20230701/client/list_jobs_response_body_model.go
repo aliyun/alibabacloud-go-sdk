@@ -30,19 +30,21 @@ type ListJobsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 896D338C-E4F4-41EC-A154-D605E5DE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned. This parameter is optional and is not returned by default.
+	// The total number of entries that meet the filter conditions.
+	//
+	// This parameter is optional and may not be returned.
 	//
 	// example:
 	//
@@ -117,20 +119,25 @@ func (s *ListJobsResponseBody) Validate() error {
 }
 
 type ListJobsResponseBodyJobList struct {
-	// The additional information about the application.
+	// Additional information about the application.
 	//
 	// example:
 	//
 	// {\\"xxx\\": \\"xxxxx\\"}
 	AppExtraInfo *string `json:"AppExtraInfo,omitempty" xml:"AppExtraInfo,omitempty"`
-	AppName      *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The name of the application.
+	//
+	// example:
+	//
+	// Alphafold3
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The time when the job was submitted.
 	//
 	// example:
 	//
 	// 2024-01-25 12:29:21
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The end time of the job.
+	// The time when the job ended.
 	//
 	// example:
 	//
@@ -154,45 +161,47 @@ type ListJobsResponseBodyJobList struct {
 	//
 	// job-xxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The job name.
+	// The name of the job.
 	//
 	// example:
 	//
 	// testJob
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The UID of the creator.
+	// The UID of the user who created the job.
 	//
 	// example:
 	//
 	// 129**********
 	OwnerUid *string `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	// The start time of the job.
+	// The time when the job started.
 	//
 	// example:
 	//
 	// 2024-01-25 12:29:23
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the job. Valid values:
+	// The status of the job. Possible values:
 	//
-	// 	- Pending
+	// - Pending: The job is in the queue.
 	//
-	// 	- Initing
+	// - Initing: The job is initializing.
 	//
-	// 	- Succeed
+	// - Succeeded: The job was successful.
 	//
-	// 	- Failed
+	// - Failed: The job failed.
 	//
-	// 	- Running
+	// - Running: The job is running.
 	//
-	// 	- Exception
+	// - Exception: A scheduling exception occurred.
 	//
-	// 	- Retrying
+	// - Retrying: The job is being retried.
 	//
-	// 	- Expired
+	// - Expired: The job timed out.
 	//
-	// 	- Deleting
+	// - Suspended: The job is in hibernation.
 	//
-	// 	- Deleted
+	// - Restarting: The job is restarting.
+	//
+	// - Deleted: The job is deleted.
 	//
 	// example:
 	//
@@ -206,7 +215,7 @@ type ListJobsResponseBodyJobList struct {
 	//
 	// 1
 	TaskCount *int32 `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
-	// Indicate whether the job is a long-running job.
+	// Indicates whether the job is a long-running job.
 	//
 	// example:
 	//

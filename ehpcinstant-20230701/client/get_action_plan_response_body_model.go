@@ -44,37 +44,37 @@ type iGetActionPlanResponseBody interface {
 }
 
 type GetActionPlanResponseBody struct {
-	// The ID of the execution plan.
+	// ID of the execution plan.
 	//
 	// example:
 	//
 	// ap-hz036ubmx2qmw93k****
 	ActionPlanId *string `json:"ActionPlanId,omitempty" xml:"ActionPlanId,omitempty"`
-	// The name of the execution plan.
+	// Name of the execution plan.
 	//
 	// example:
 	//
 	// TestActionPlan
 	ActionPlanName *string `json:"ActionPlanName,omitempty" xml:"ActionPlanName,omitempty"`
-	// The type of the resource.
+	// Resource type.
 	//
 	// example:
 	//
 	// Standard
 	AllocationSpec *string `json:"AllocationSpec,omitempty" xml:"AllocationSpec,omitempty"`
-	// The ID of the application.
+	// ID of the application.
 	//
 	// example:
 	//
 	// ci-vm-rYfypJKwlN9Y
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The time when the execution plan was created.
+	// Time when the execution plan was created.
 	//
 	// example:
 	//
 	// 2025-08-10 18:28:05
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The expected scale of resources for the execution plan. If the ResourceType parameter is set to VcpuCapacity, the execution plan is expected to have 10000 vCPUs.
+	// Target resource size for the execution plan. If ResourceType is VCpuCapacity, this value represents the target vCPU count.
 	//
 	// example:
 	//
@@ -84,57 +84,57 @@ type GetActionPlanResponseBody struct {
 	//
 	// 60
 	IntervalMinutes *int32 `json:"IntervalMinutes,omitempty" xml:"IntervalMinutes,omitempty"`
-	// The computing power level.
+	// Computing power level.
 	//
 	// example:
 	//
 	// General
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The pre-processing script. Base64 encoding is required.
+	// Prologue script. Must be Base64-encoded.
 	//
 	// example:
 	//
 	// bHMgLWFsCmxzIC1hbGggfCB3YyAtbA==
 	PrologScript *string `json:"PrologScript,omitempty" xml:"PrologScript,omitempty"`
-	// The list of resource configurations in the region where the execution plan runs.
+	// List of region-specific resource configurations for the execution plan\\"s runtime environment.
 	Regions []*GetActionPlanResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The request ID.
+	// ID of the request.
 	//
 	// example:
 	//
 	// 896D338C-E4F4-41EC-A154-D605E5DE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Target resource type: the capacity of vCPUs or the number of execution nodes. Valid values:
+	// Type of target resource for the execution plan. Valid values are:
 	//
-	// 	- VCpuCapacity
+	// - VCpuCapacity: vCPU capacity
 	//
-	// 	- ExecutorCapacity
+	// - ExecutorCapacity: number of executor nodes
 	//
 	// example:
 	//
 	// VCpuCapacity
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The list of resource configurations of the execution plan runtime environment.
+	// List of resource configurations for the execution plan\\"s runtime environment.
 	Resources []*GetActionPlanResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	// The status of the execution plan. The possible values are as follows:
+	// Status of the execution plan. Valid values are:
 	//
-	// 	- Active Instant tasks are dynamically managed only when the execution plan is in the Active state.
+	// - Active: The execution plan is active and dynamically manages Instant jobs.
 	//
-	// 	- Inactive Instant tasks are no longer managed by execution plans in the Inactive state.
+	// - Inactive: The execution plan is inactive and no longer manages Instant jobs.
 	//
-	// 	- Deleting You cannot modify the parameters of an execution plan in this state.
+	// - Deleting: The execution plan is being deleted. You cannot modify parameters during this state.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The size of the resources currently managed by the execution plan.
+	// Current resource size managed by the execution plan.
 	//
 	// example:
 	//
 	// 1000
 	TotalCapacity *float32 `json:"TotalCapacity,omitempty" xml:"TotalCapacity,omitempty"`
-	// The time when the execution plan was last modified.
+	// Last time the execution plan was modified.
 	//
 	// example:
 	//
@@ -317,15 +317,15 @@ func (s *GetActionPlanResponseBody) Validate() error {
 }
 
 type GetActionPlanResponseBodyRegions struct {
-	// The region ID of the instance.
+	// ID of the region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of security groups available for the execution plan in the region.
+	// List of security groups available to the execution plan in this region.
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
-	// The list of VSwitches available for the execution plan in the region.
+	// List of vSwitches available to the execution plan in this region.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 }
 
@@ -369,13 +369,13 @@ func (s *GetActionPlanResponseBodyRegions) Validate() error {
 }
 
 type GetActionPlanResponseBodyResources struct {
-	// The number of CPUs in the running environment.
+	// Number of CPUs in the runtime environment.
 	//
 	// example:
 	//
 	// 64
 	Cores *float32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	// The memory size of the running environment. Unit: GiB.
+	// Memory size in the runtime environment, in GiB.
 	//
 	// example:
 	//

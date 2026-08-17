@@ -83,11 +83,11 @@ func (client *Client) AddImageWithContext(ctx context.Context, tmpReq *AddImageR
 
 // Summary:
 //
-// Create a E-HPC execution plan.
+// Creates an E-HPC execution plan.
 //
 // Description:
 //
-// *Make sure that you fully understand E-HPC Instnat billing methods and [prices](https://help.aliyun.com/zh/e-hpc/e-hpc-instant/product-overview/billing-overview?spm=a2c4g.11186623.help-menu-57664.d_0_2_0.5fdd28422y6UvO).
+// *Before you call this operation, ensure that you understand the billing methods and&#x20;**[**pricing**](https://help.aliyun.com/zh/e-hpc/e-hpc-instant/product-overview/billing-overview?spm=a2c4g.11186623.help-menu-57664.d_0_2_0.5fdd28422y6UvO)**&#x20;of E-HPC Instant.**
 //
 // @param tmpReq - CreateActionPlanRequest
 //
@@ -181,7 +181,7 @@ func (client *Client) CreateActionPlanWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// Create a E-HPC Instant job.
+// Creates an E-HPC Instant job.
 //
 // @param tmpReq - CreateJobRequest
 //
@@ -232,6 +232,10 @@ func (client *Client) CreateJobWithContext(ctx context.Context, tmpReq *CreateJo
 
 	if !dara.IsNil(request.JobScheduler) {
 		query["JobScheduler"] = request.JobScheduler
+	}
+
+	if !dara.IsNil(request.JobTemplateId) {
+		query["JobTemplateId"] = request.JobTemplateId
 	}
 
 	if !dara.IsNil(request.SecurityPolicyShrink) {
@@ -655,7 +659,7 @@ func (client *Client) DescribeJobMetricLastWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// # Query job logs
+// Retrieves the logs for a job.
 //
 // @param request - DescribeJobResultsRequest
 //
@@ -719,7 +723,7 @@ func (client *Client) DescribeJobResultsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Querying Execution Plan Details
+// Queries the details of an execution plan.
 //
 // @param request - GetActionPlanRequest
 //
@@ -823,7 +827,7 @@ func (client *Client) GetAppVersionsWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Obtains the information about an image.
+// Get image details.
 //
 // @param tmpReq - GetImageRequest
 //
@@ -885,7 +889,7 @@ func (client *Client) GetImageWithContext(ctx context.Context, tmpReq *GetImageR
 
 // Summary:
 //
-// Obtains the details of an execution job.
+// Retrieves the details of an execution job.
 //
 // @param request - GetJobRequest
 //
@@ -929,7 +933,7 @@ func (client *Client) GetJobWithContext(ctx context.Context, request *GetJobRequ
 
 // Summary:
 //
-// 查询作业保留时长
+// Retrieves the job record retention period.
 //
 // @param request - GetJobRecordDurationRequest
 //
@@ -966,7 +970,7 @@ func (client *Client) GetJobRecordDurationWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Obtains the details of a resource pool.
+// Retrieves the details of a specified resource pool.
 //
 // @param request - GetPoolRequest
 //
@@ -1182,7 +1186,7 @@ func (client *Client) ListExecutorEventsWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// # Querying Global Executor Information
+// Queries information about global executors.
 //
 // @param tmpReq - ListExecutorsRequest
 //
@@ -1318,11 +1322,11 @@ func (client *Client) ListImagesWithContext(ctx context.Context, tmpReq *ListIma
 
 // Summary:
 //
-// Queries job executor information.
+// Retrieves information about job executors.
 //
 // Description:
 //
-// Queries job executor information.
+// Retrieves information about job executors.
 //
 // @param request - ListJobExecutorsRequest
 //
@@ -1378,7 +1382,7 @@ func (client *Client) ListJobExecutorsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the jobs in a cluster.
+// Returns a list of jobs.
 //
 // @param tmpReq - ListJobsRequest
 //
@@ -1444,7 +1448,7 @@ func (client *Client) ListJobsWithContext(ctx context.Context, tmpReq *ListJobsR
 
 // Summary:
 //
-// Queries the resource pool list.
+// Lists resource pools.
 //
 // @param tmpReq - ListPoolsRequest
 //
@@ -1828,7 +1832,7 @@ func (client *Client) UpdateActionPlanWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 更新作业保留时长
+// Updates the job record duration.
 //
 // @param request - UpdateJobRecordDurationRequest
 //
@@ -1872,7 +1876,7 @@ func (client *Client) UpdateJobRecordDurationWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Update the resource pool configuration.
+// Updates the configuration of a resource pool.
 //
 // @param tmpReq - UpdatePoolRequest
 //

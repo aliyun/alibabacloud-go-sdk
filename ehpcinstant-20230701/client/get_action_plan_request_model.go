@@ -14,7 +14,7 @@ type iGetActionPlanRequest interface {
 }
 
 type GetActionPlanRequest struct {
-	// The ID of the execution plan.
+	// ID of the execution plan.
 	//
 	// example:
 	//

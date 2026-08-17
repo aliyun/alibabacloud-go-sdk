@@ -16,9 +16,9 @@ type iGetPoolRequest interface {
 type GetPoolRequest struct {
 	// The name of the resource pool.
 	//
-	// 	- The value can be up to 15 characters in length.
+	// - The name can be up to 15 characters long.
 	//
-	// 	- It can contain digits, uppercase letters, lowercase letters, underscores (_), and dots (.).
+	// - The name can contain letters, digits, underscores (_), and periods (.).
 	//
 	// This parameter is required.
 	//

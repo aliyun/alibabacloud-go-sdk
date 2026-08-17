@@ -24,7 +24,24 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-shenzhen":    dara.String("ehpcinstant.cn-shenzhen.aliyuncs.com"),
+		"cn-wulanchabu":  dara.String("ehpcinstant.cn-wulanchabu.aliyuncs.com"),
+		"cn-beijing":     dara.String("ehpcinstant.cn-beijing.aliyuncs.com"),
+		"ap-northeast-2": dara.String("ehpcinstant.ap-northeast-2.aliyuncs.com"),
+		"ap-northeast-1": dara.String("ehpcinstant.ap-northeast-1.aliyuncs.com"),
+		"cn-chengdu":     dara.String("ehpcinstant.cn-chengdu.aliyuncs.com"),
+		"cn-shanghai":    dara.String("ehpcinstant.cn-shanghai.aliyuncs.com"),
+		"cn-guangzhou":   dara.String("ehpcinstant.cn-guangzhou.aliyuncs.com"),
+		"cn-hongkong":    dara.String("ehpcinstant.cn-hongkong.aliyuncs.com"),
+		"cn-heyuan":      dara.String("ehpcinstant.cn-heyuan.aliyuncs.com"),
+		"ap-southeast-1": dara.String("ehpcinstant.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-3": dara.String("ehpcinstant.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-5": dara.String("ehpcinstant.ap-southeast-5.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("ehpcinstant.cn-hangzhou.aliyuncs.com"),
+		"eu-central-1":   dara.String("ehpcinstant.eu-central-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -150,11 +167,11 @@ func (client *Client) AddImage(request *AddImageRequest) (_result *AddImageRespo
 
 // Summary:
 //
-// Create a E-HPC execution plan.
+// Creates an E-HPC execution plan.
 //
 // Description:
 //
-// *Make sure that you fully understand E-HPC Instnat billing methods and [prices](https://help.aliyun.com/zh/e-hpc/e-hpc-instant/product-overview/billing-overview?spm=a2c4g.11186623.help-menu-57664.d_0_2_0.5fdd28422y6UvO).
+// *Before you call this operation, ensure that you understand the billing methods and&#x20;**[**pricing**](https://help.aliyun.com/zh/e-hpc/e-hpc-instant/product-overview/billing-overview?spm=a2c4g.11186623.help-menu-57664.d_0_2_0.5fdd28422y6UvO)**&#x20;of E-HPC Instant.**
 //
 // @param tmpReq - CreateActionPlanRequest
 //
@@ -248,11 +265,11 @@ func (client *Client) CreateActionPlanWithOptions(tmpReq *CreateActionPlanReques
 
 // Summary:
 //
-// Create a E-HPC execution plan.
+// Creates an E-HPC execution plan.
 //
 // Description:
 //
-// *Make sure that you fully understand E-HPC Instnat billing methods and [prices](https://help.aliyun.com/zh/e-hpc/e-hpc-instant/product-overview/billing-overview?spm=a2c4g.11186623.help-menu-57664.d_0_2_0.5fdd28422y6UvO).
+// *Before you call this operation, ensure that you understand the billing methods and&#x20;**[**pricing**](https://help.aliyun.com/zh/e-hpc/e-hpc-instant/product-overview/billing-overview?spm=a2c4g.11186623.help-menu-57664.d_0_2_0.5fdd28422y6UvO)**&#x20;of E-HPC Instant.**
 //
 // @param request - CreateActionPlanRequest
 //
@@ -270,7 +287,7 @@ func (client *Client) CreateActionPlan(request *CreateActionPlanRequest) (_resul
 
 // Summary:
 //
-// Create a E-HPC Instant job.
+// Creates an E-HPC Instant job.
 //
 // @param tmpReq - CreateJobRequest
 //
@@ -323,6 +340,10 @@ func (client *Client) CreateJobWithOptions(tmpReq *CreateJobRequest, runtime *da
 		query["JobScheduler"] = request.JobScheduler
 	}
 
+	if !dara.IsNil(request.JobTemplateId) {
+		query["JobTemplateId"] = request.JobTemplateId
+	}
+
 	if !dara.IsNil(request.SecurityPolicyShrink) {
 		query["SecurityPolicy"] = request.SecurityPolicyShrink
 	}
@@ -356,7 +377,7 @@ func (client *Client) CreateJobWithOptions(tmpReq *CreateJobRequest, runtime *da
 
 // Summary:
 //
-// Create a E-HPC Instant job.
+// Creates an E-HPC Instant job.
 //
 // @param request - CreateJobRequest
 //
@@ -894,7 +915,7 @@ func (client *Client) DescribeJobMetricLast(request *DescribeJobMetricLastReques
 
 // Summary:
 //
-// # Query job logs
+// Retrieves the logs for a job.
 //
 // @param request - DescribeJobResultsRequest
 //
@@ -958,7 +979,7 @@ func (client *Client) DescribeJobResultsWithOptions(request *DescribeJobResultsR
 
 // Summary:
 //
-// # Query job logs
+// Retrieves the logs for a job.
 //
 // @param request - DescribeJobResultsRequest
 //
@@ -976,7 +997,7 @@ func (client *Client) DescribeJobResults(request *DescribeJobResultsRequest) (_r
 
 // Summary:
 //
-// # Querying Execution Plan Details
+// Queries the details of an execution plan.
 //
 // @param request - GetActionPlanRequest
 //
@@ -1020,7 +1041,7 @@ func (client *Client) GetActionPlanWithOptions(request *GetActionPlanRequest, ru
 
 // Summary:
 //
-// # Querying Execution Plan Details
+// Queries the details of an execution plan.
 //
 // @param request - GetActionPlanRequest
 //
@@ -1116,7 +1137,7 @@ func (client *Client) GetAppVersions(request *GetAppVersionsRequest) (_result *G
 
 // Summary:
 //
-// Obtains the information about an image.
+// Get image details.
 //
 // @param tmpReq - GetImageRequest
 //
@@ -1178,7 +1199,7 @@ func (client *Client) GetImageWithOptions(tmpReq *GetImageRequest, runtime *dara
 
 // Summary:
 //
-// Obtains the information about an image.
+// Get image details.
 //
 // @param request - GetImageRequest
 //
@@ -1196,7 +1217,7 @@ func (client *Client) GetImage(request *GetImageRequest) (_result *GetImageRespo
 
 // Summary:
 //
-// Obtains the details of an execution job.
+// Retrieves the details of an execution job.
 //
 // @param request - GetJobRequest
 //
@@ -1240,7 +1261,7 @@ func (client *Client) GetJobWithOptions(request *GetJobRequest, runtime *dara.Ru
 
 // Summary:
 //
-// Obtains the details of an execution job.
+// Retrieves the details of an execution job.
 //
 // @param request - GetJobRequest
 //
@@ -1258,7 +1279,7 @@ func (client *Client) GetJob(request *GetJobRequest) (_result *GetJobResponse, _
 
 // Summary:
 //
-// 查询作业保留时长
+// Retrieves the job record retention period.
 //
 // @param request - GetJobRecordDurationRequest
 //
@@ -1295,7 +1316,7 @@ func (client *Client) GetJobRecordDurationWithOptions(request *GetJobRecordDurat
 
 // Summary:
 //
-// 查询作业保留时长
+// Retrieves the job record retention period.
 //
 // @param request - GetJobRecordDurationRequest
 //
@@ -1313,7 +1334,7 @@ func (client *Client) GetJobRecordDuration(request *GetJobRecordDurationRequest)
 
 // Summary:
 //
-// Obtains the details of a resource pool.
+// Retrieves the details of a specified resource pool.
 //
 // @param request - GetPoolRequest
 //
@@ -1357,7 +1378,7 @@ func (client *Client) GetPoolWithOptions(request *GetPoolRequest, runtime *dara.
 
 // Summary:
 //
-// Obtains the details of a resource pool.
+// Retrieves the details of a specified resource pool.
 //
 // @param request - GetPoolRequest
 //
@@ -1605,7 +1626,7 @@ func (client *Client) ListExecutorEvents(request *ListExecutorEventsRequest) (_r
 
 // Summary:
 //
-// # Querying Global Executor Information
+// Queries information about global executors.
 //
 // @param tmpReq - ListExecutorsRequest
 //
@@ -1663,7 +1684,7 @@ func (client *Client) ListExecutorsWithOptions(tmpReq *ListExecutorsRequest, run
 
 // Summary:
 //
-// # Querying Global Executor Information
+// Queries information about global executors.
 //
 // @param request - ListExecutorsRequest
 //
@@ -1777,11 +1798,11 @@ func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImage
 
 // Summary:
 //
-// Queries job executor information.
+// Retrieves information about job executors.
 //
 // Description:
 //
-// Queries job executor information.
+// Retrieves information about job executors.
 //
 // @param request - ListJobExecutorsRequest
 //
@@ -1837,11 +1858,11 @@ func (client *Client) ListJobExecutorsWithOptions(request *ListJobExecutorsReque
 
 // Summary:
 //
-// Queries job executor information.
+// Retrieves information about job executors.
 //
 // Description:
 //
-// Queries job executor information.
+// Retrieves information about job executors.
 //
 // @param request - ListJobExecutorsRequest
 //
@@ -1859,7 +1880,7 @@ func (client *Client) ListJobExecutors(request *ListJobExecutorsRequest) (_resul
 
 // Summary:
 //
-// Queries the jobs in a cluster.
+// Returns a list of jobs.
 //
 // @param tmpReq - ListJobsRequest
 //
@@ -1925,7 +1946,7 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, runtime *dara
 
 // Summary:
 //
-// Queries the jobs in a cluster.
+// Returns a list of jobs.
 //
 // @param request - ListJobsRequest
 //
@@ -1943,7 +1964,7 @@ func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsRespo
 
 // Summary:
 //
-// Queries the resource pool list.
+// Lists resource pools.
 //
 // @param tmpReq - ListPoolsRequest
 //
@@ -2001,7 +2022,7 @@ func (client *Client) ListPoolsWithOptions(tmpReq *ListPoolsRequest, runtime *da
 
 // Summary:
 //
-// Queries the resource pool list.
+// Lists resource pools.
 //
 // @param request - ListPoolsRequest
 //
@@ -2453,7 +2474,7 @@ func (client *Client) UpdateActionPlan(request *UpdateActionPlanRequest) (_resul
 
 // Summary:
 //
-// 更新作业保留时长
+// Updates the job record duration.
 //
 // @param request - UpdateJobRecordDurationRequest
 //
@@ -2497,7 +2518,7 @@ func (client *Client) UpdateJobRecordDurationWithOptions(request *UpdateJobRecor
 
 // Summary:
 //
-// 更新作业保留时长
+// Updates the job record duration.
 //
 // @param request - UpdateJobRecordDurationRequest
 //
@@ -2515,7 +2536,7 @@ func (client *Client) UpdateJobRecordDuration(request *UpdateJobRecordDurationRe
 
 // Summary:
 //
-// Update the resource pool configuration.
+// Updates the configuration of a resource pool.
 //
 // @param tmpReq - UpdatePoolRequest
 //
@@ -2577,7 +2598,7 @@ func (client *Client) UpdatePoolWithOptions(tmpReq *UpdatePoolRequest, runtime *
 
 // Summary:
 //
-// Update the resource pool configuration.
+// Updates the configuration of a resource pool.
 //
 // @param request - UpdatePoolRequest
 //

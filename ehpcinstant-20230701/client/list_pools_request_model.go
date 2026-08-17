@@ -18,7 +18,7 @@ type iListPoolsRequest interface {
 }
 
 type ListPoolsRequest struct {
-	// Queries the filter conditions of a resource pool.
+	// The filter conditions for querying resource pools.
 	Filter *ListPoolsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
 	// The page number. Default value: 1.
 	//
@@ -26,7 +26,7 @@ type ListPoolsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries on each page. Maximum value: 50. Default value: 10.
+	// The number of entries per page. Valid values: 1 to 50. Default value: 10.
 	//
 	// example:
 	//
@@ -79,17 +79,17 @@ func (s *ListPoolsRequest) Validate() error {
 }
 
 type ListPoolsRequestFilter struct {
-	// Queries the list of resource pool names.
+	// The list of resource pool names to query.
 	PoolName []*string `json:"PoolName,omitempty" xml:"PoolName,omitempty" type:"Repeated"`
-	// Queries resource pool status list.
+	// The list of resource pool statuses to query.
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
-	// For node pools created after this time, the time in the region is converted into a UNIX timestamp.
+	// Returns only resource pools created after the specified time. The time must be a Unix timestamp in UTC+8.
 	//
 	// example:
 	//
 	// 1703819914
 	TimeCreatedAfter *int32 `json:"TimeCreatedAfter,omitempty" xml:"TimeCreatedAfter,omitempty"`
-	// For node pools created before this time, the time in the region is converted into a UNIX timestamp.
+	// Returns only resource pools created before the specified time. The time must be a Unix timestamp in UTC+8.
 	//
 	// example:
 	//

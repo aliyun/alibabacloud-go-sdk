@@ -16,7 +16,7 @@ type iCreateActionPlanResponseBody interface {
 }
 
 type CreateActionPlanResponseBody struct {
-	// The ID of the execution plan.
+	// The execution plan ID.
 	//
 	// example:
 	//

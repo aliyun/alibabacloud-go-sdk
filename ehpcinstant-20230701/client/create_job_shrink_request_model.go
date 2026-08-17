@@ -19,6 +19,8 @@ type iCreateJobShrinkRequest interface {
 	GetJobName() *string
 	SetJobScheduler(v string) *CreateJobShrinkRequest
 	GetJobScheduler() *string
+	SetJobTemplateId(v string) *CreateJobShrinkRequest
+	GetJobTemplateId() *string
 	SetSecurityPolicyShrink(v string) *CreateJobShrinkRequest
 	GetSecurityPolicyShrink() *string
 	SetTasksShrink(v string) *CreateJobShrinkRequest
@@ -26,39 +28,34 @@ type iCreateJobShrinkRequest interface {
 }
 
 type CreateJobShrinkRequest struct {
-	// Dependency policy.
+	// The dependency policy.
 	DependencyPolicyShrink *string `json:"DependencyPolicy,omitempty" xml:"DependencyPolicy,omitempty"`
 	// The resource deployment policy.
 	DeploymentPolicyShrink *string `json:"DeploymentPolicy,omitempty" xml:"DeploymentPolicy,omitempty"`
-	// The description of the job.
+	// The job description.
 	//
 	// example:
 	//
 	// Demo
 	JobDescription *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
-	// The job name. The name must be 2 to 64 characters in length and can contain letters, digits, and Chinese characters. It can contain hyphens (-) and underscores (_).
+	// The job name. The name must be 2 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testjob
-	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The type of the job scheduler.
-	//
-	// 	- HPC
-	//
-	// 	- K8S
-	//
-	// Default value: HPC
+	JobName      *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobScheduler *string `json:"JobScheduler,omitempty" xml:"JobScheduler,omitempty"`
+	// The job template ID.
 	//
 	// example:
 	//
-	// HPC
-	JobScheduler *string `json:"JobScheduler,omitempty" xml:"JobScheduler,omitempty"`
+	// jt-xxxx
+	JobTemplateId *string `json:"JobTemplateId,omitempty" xml:"JobTemplateId,omitempty"`
 	// The security policy.
 	SecurityPolicyShrink *string `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty"`
-	// The list of tasks. Only one task is supported.
+	// The task list. Currently, only one task is supported.
 	//
 	// This parameter is required.
 	TasksShrink *string `json:"Tasks,omitempty" xml:"Tasks,omitempty"`
@@ -92,6 +89,10 @@ func (s *CreateJobShrinkRequest) GetJobScheduler() *string {
 	return s.JobScheduler
 }
 
+func (s *CreateJobShrinkRequest) GetJobTemplateId() *string {
+	return s.JobTemplateId
+}
+
 func (s *CreateJobShrinkRequest) GetSecurityPolicyShrink() *string {
 	return s.SecurityPolicyShrink
 }
@@ -122,6 +123,11 @@ func (s *CreateJobShrinkRequest) SetJobName(v string) *CreateJobShrinkRequest {
 
 func (s *CreateJobShrinkRequest) SetJobScheduler(v string) *CreateJobShrinkRequest {
 	s.JobScheduler = &v
+	return s
+}
+
+func (s *CreateJobShrinkRequest) SetJobTemplateId(v string) *CreateJobShrinkRequest {
+	s.JobTemplateId = &v
 	return s
 }
 

@@ -20,19 +20,19 @@ type iListJobsRequest interface {
 }
 
 type ListJobsRequest struct {
-	// Queries job filter conditions.
+	// The filter conditions for querying jobs.
 	Filter *ListJobsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
-	// The page number.
+	// The current page number.
 	//
-	// Pages start from page 1.
+	// Start value: 1
 	//
-	// Default value: 1.
+	// Default value: 1
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries on the current page. Default value: 50. Maximum value: 100.
+	// The number of entries to return on each page. The default value is 50. The maximum value is 100.
 	//
 	// example:
 	//
@@ -106,48 +106,54 @@ type ListJobsRequestFilter struct {
 	// example:
 	//
 	// job-xxxx
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The job name. Fuzzy search is supported.
+	JobId  *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobIds []*string `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
+	// The name of the job. Fuzzy search is supported.
 	//
 	// example:
 	//
 	// testJob
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The job status. Valid values:
+	// example:
 	//
-	// 	- Pending
+	// jt-xxxx
+	JobTemplateId *string `json:"JobTemplateId,omitempty" xml:"JobTemplateId,omitempty"`
+	// The status of the job. Valid values:
 	//
-	// 	- initing
+	// - Pending: The job is in the queue.
 	//
-	// 	- Succeed
+	// - Initing: The job is initializing.
 	//
-	// 	- Failed
+	// - Succeeded: The job was successful.
 	//
-	// 	- Running
+	// - Failed: The job failed.
 	//
-	// 	- Exception
+	// - Running: The job is running.
 	//
-	// 	- Retrying
+	// - Exception: A scheduling exception occurred.
 	//
-	// 	- Expired
+	// - Retrying: The job is being retried.
 	//
-	// 	- Suspended
+	// - Expired: The job timed out.
 	//
-	// 	- Restarting
+	// - Suspended: The job is in hibernation.
 	//
-	// 	- Deleted
+	// - Restarting: The job is restarting.
+	//
+	// - Deleted: The job is deleted.
 	//
 	// example:
 	//
 	// Running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// For jobs submitted after this time, the time in the region is converted into a UNIX timestamp (UI8).
+	Status *string                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tag    []*ListJobsRequestFilterTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The time after which the jobs were submitted. This is a UNIX timestamp based on the local time of the region. For sites in the Chinese mainland, the time zone is UTC+8.
 	//
 	// example:
 	//
 	// 1703819914
 	TimeCreatedAfter *int32 `json:"TimeCreatedAfter,omitempty" xml:"TimeCreatedAfter,omitempty"`
-	// For jobs submitted before this time, the time in the region is converted into a Unix timestamp (for domestic sites, the UI8 region).
+	// The time before which the jobs were submitted. This is a UNIX timestamp based on the local time of the region. For sites in the Chinese mainland, the time zone is UTC+8.
 	//
 	// example:
 	//
@@ -167,12 +173,24 @@ func (s *ListJobsRequestFilter) GetJobId() *string {
 	return s.JobId
 }
 
+func (s *ListJobsRequestFilter) GetJobIds() []*string {
+	return s.JobIds
+}
+
 func (s *ListJobsRequestFilter) GetJobName() *string {
 	return s.JobName
 }
 
+func (s *ListJobsRequestFilter) GetJobTemplateId() *string {
+	return s.JobTemplateId
+}
+
 func (s *ListJobsRequestFilter) GetStatus() *string {
 	return s.Status
+}
+
+func (s *ListJobsRequestFilter) GetTag() []*ListJobsRequestFilterTag {
+	return s.Tag
 }
 
 func (s *ListJobsRequestFilter) GetTimeCreatedAfter() *int32 {
@@ -188,13 +206,28 @@ func (s *ListJobsRequestFilter) SetJobId(v string) *ListJobsRequestFilter {
 	return s
 }
 
+func (s *ListJobsRequestFilter) SetJobIds(v []*string) *ListJobsRequestFilter {
+	s.JobIds = v
+	return s
+}
+
 func (s *ListJobsRequestFilter) SetJobName(v string) *ListJobsRequestFilter {
 	s.JobName = &v
 	return s
 }
 
+func (s *ListJobsRequestFilter) SetJobTemplateId(v string) *ListJobsRequestFilter {
+	s.JobTemplateId = &v
+	return s
+}
+
 func (s *ListJobsRequestFilter) SetStatus(v string) *ListJobsRequestFilter {
 	s.Status = &v
+	return s
+}
+
+func (s *ListJobsRequestFilter) SetTag(v []*ListJobsRequestFilterTag) *ListJobsRequestFilter {
+	s.Tag = v
 	return s
 }
 
@@ -209,25 +242,75 @@ func (s *ListJobsRequestFilter) SetTimeCreatedBefore(v int32) *ListJobsRequestFi
 }
 
 func (s *ListJobsRequestFilter) Validate() error {
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListJobsRequestFilterTag struct {
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// TestValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListJobsRequestFilterTag) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListJobsRequestFilterTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsRequestFilterTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *ListJobsRequestFilterTag) GetValue() *string {
+	return s.Value
+}
+
+func (s *ListJobsRequestFilterTag) SetKey(v string) *ListJobsRequestFilterTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListJobsRequestFilterTag) SetValue(v string) *ListJobsRequestFilterTag {
+	s.Value = &v
+	return s
+}
+
+func (s *ListJobsRequestFilterTag) Validate() error {
 	return dara.Validate(s)
 }
 
 type ListJobsRequestSortBy struct {
-	// The sorting label. Valid values:
+	// The field to sort by. Valid values:
 	//
-	// 	- time_start
+	// - time_start
 	//
-	// 	- job_name
+	// - job_name
 	//
 	// example:
 	//
 	// time_start
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The sorting order. Valid values:
+	// The sort order. Valid values:
 	//
-	// 	- ASC (default): ascending order
+	// - ASC (default): Ascending
 	//
-	// 	- DESC: descending order
+	// - DESC: Descending
 	//
 	// example:
 	//

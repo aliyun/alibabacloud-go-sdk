@@ -16,9 +16,9 @@ type iGetPoolResponseBody interface {
 }
 
 type GetPoolResponseBody struct {
-	// The information about the resource pool.
+	// The details of the resource pool.
 	PoolInfo *GetPoolResponseBodyPoolInfo `json:"PoolInfo,omitempty" xml:"PoolInfo,omitempty" type:"Struct"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,29 +62,39 @@ func (s *GetPoolResponseBody) Validate() error {
 }
 
 type GetPoolResponseBodyPoolInfo struct {
-	// The time when the resource pool is created.
+	// The time when the resource pool was created.
 	//
 	// example:
 	//
 	// 2024-12-01 20:00:00
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExecutorUsage *int32  `json:"ExecutorUsage,omitempty" xml:"ExecutorUsage,omitempty"`
-	// Indices whether the resource pool is the default resource pool. Valid values:
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The number of executors that are in use in the resource pool.
 	//
-	// 	- **true**
+	// example:
 	//
-	// 	- **false**
+	// 100
+	ExecutorUsage *int32 `json:"ExecutorUsage,omitempty" xml:"ExecutorUsage,omitempty"`
+	// Indicates whether the resource pool is the default resource pool. Valid values:
+	//
+	// - **true**
+	//
+	// - **false**
 	//
 	// example:
 	//
 	// true
-	IsDefault      *bool  `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The maximum number of concurrent executors per user in the resource pool.
+	//
+	// example:
+	//
+	// 100
 	MaxExecutorNum *int32 `json:"MaxExecutorNum,omitempty" xml:"MaxExecutorNum,omitempty"`
-	// The name of the resource group.
+	// The name of the resource pool.
 	//
-	// 	- The value can be up to 15 characters in length.
+	// - The name can be up to 15 characters long.
 	//
-	// 	- It can contain digits, uppercase letters, lowercase letters, underscores (_), and dots (.).
+	// - The name can contain letters, digits, underscores (_), and periods (.).
 	//
 	// example:
 	//
@@ -92,41 +102,43 @@ type GetPoolResponseBodyPoolInfo struct {
 	PoolName *string `json:"PoolName,omitempty" xml:"PoolName,omitempty"`
 	// The priority of the resource pool.
 	//
-	// 	- You can set a priority in the range of 1 to 99. The default value is 1, which is the lowest priority.
+	// - Valid values: 1 to 99. A larger value indicates a higher priority. Default value: 1.
 	//
-	// 	- Jobs submitted to a resource pool with a higher priority level value will be scheduled before pending jobs in a resource pool with a lower priority level value, and the priority level of the resource pool takes precedence over the priority of the job.
+	// - Jobs in a resource pool with a higher priority are scheduled before pending jobs in a resource pool with a lower priority. The priority of the resource pool takes precedence over the priority of a job.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The cause of the error.
+	// The reason for the error.
 	//
 	// example:
 	//
 	// Fails to **	- pool: ***.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The ID of the scheduling policy.
+	//
 	// example:
 	//
 	// policy-xxx
 	SchedulingPolicyId *string `json:"SchedulingPolicyId,omitempty" xml:"SchedulingPolicyId,omitempty"`
 	// The status of the resource pool. Valid values:
 	//
-	// 	- Creating: The resource pool is being created.
+	// - `Creating`: The resource pool is being created.
 	//
-	// 	- Updating: The resource pool is being updated.
+	// - `Updating`: The resource pool is being updated.
 	//
-	// 	- Deleting: The resource pool is being deleted.
+	// - `Deleting`: The resource pool is being deleted.
 	//
-	// 	- Working: The resource pool is working.
+	// - `Working`: The resource pool is active.
 	//
-	// 	- Deleted: The resource pool is deleted.
+	// - `Deleted`: The resource pool has been deleted.
 	//
 	// example:
 	//
 	// Working
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the resource pool was updated.
+	// The time when the resource pool was last updated.
 	//
 	// example:
 	//

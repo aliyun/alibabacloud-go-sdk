@@ -14,7 +14,7 @@ type iUpdateJobRecordDurationResponseBody interface {
 }
 
 type UpdateJobRecordDurationResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

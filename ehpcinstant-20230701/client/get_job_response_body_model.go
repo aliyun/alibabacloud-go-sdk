@@ -62,13 +62,13 @@ func (s *GetJobResponseBody) Validate() error {
 }
 
 type GetJobResponseBodyJobInfo struct {
-	// The additional information about the application.
+	// The application additional information.
 	//
 	// example:
 	//
 	// {\\"xxx\\": \\"xxxxx\\"}
 	AppExtraInfo *string `json:"AppExtraInfo,omitempty" xml:"AppExtraInfo,omitempty"`
-	// The time when the job was submitted.
+	// The job submission time.
 	//
 	// example:
 	//
@@ -77,19 +77,19 @@ type GetJobResponseBodyJobInfo struct {
 	DependencyPolicy *GetJobResponseBodyJobInfoDependencyPolicy `json:"DependencyPolicy,omitempty" xml:"DependencyPolicy,omitempty" type:"Struct"`
 	// The resource deployment policy.
 	DeploymentPolicy *GetJobResponseBodyJobInfoDeploymentPolicy `json:"DeploymentPolicy,omitempty" xml:"DeploymentPolicy,omitempty" type:"Struct"`
-	// The time when the job is complete.
+	// The job end time.
 	//
 	// example:
 	//
 	// 2024-03-05 20:01:48
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The description of the job.
+	// The job description.
 	//
 	// example:
 	//
 	// Demo
 	JobDescription *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
-	// The ID of the job.
+	// The job ID.
 	//
 	// example:
 	//
@@ -100,15 +100,10 @@ type GetJobResponseBodyJobInfo struct {
 	// example:
 	//
 	// testJob
-	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The type of the job scheduler.
-	//
-	// example:
-	//
-	// HPC
+	JobName        *string                                  `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	JobScheduler   *string                                  `json:"JobScheduler,omitempty" xml:"JobScheduler,omitempty"`
 	SecurityPolicy *GetJobResponseBodyJobInfoSecurityPolicy `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty" type:"Struct"`
-	// The time when the job started.
+	// The job start time.
 	//
 	// example:
 	//
@@ -116,33 +111,33 @@ type GetJobResponseBodyJobInfo struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The job status. Valid values:
 	//
-	// 	- Pending: The job is being queued.
+	// - Pending: the job is queued.
 	//
-	// 	- Initing: The job is being initialized.
+	// - Initing: the job is being initialized.
 	//
-	// 	- Succeed: The job is successfully run.
+	// - Succeed: the job succeeded.
 	//
-	// 	- Failed: The job failed to run.
+	// - Failed: the job failed.
 	//
-	// 	- Running: The job is running.
+	// - Running: the job is running.
 	//
-	// 	- Exception: scheduling exception
+	// - Exception: a scheduling exception occurred.
 	//
-	// 	- Retrying: The job is being retried.
+	// - Retrying: the job is being retried.
 	//
-	// 	- Expired: The job timed out.
+	// - Expired: the job timed out.
 	//
-	// 	- Deleted: The job is deleted.
+	// - Deleted: the job is deleted.
 	//
-	// 	- Suspended: job hibernation
+	// - Suspended: the job is suspended.
 	//
-	// 	- Restarting: The job is being restarted.
+	// - Restarting: the job is being restarted.
 	//
 	// example:
 	//
-	// Succeed
+	// Succeeded
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The list of tasks. Only one task is supported.
+	// The task list. Currently, only one task is supported.
 	Tasks []*GetJobResponseBodyJobInfoTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
@@ -369,31 +364,32 @@ func (s *GetJobResponseBodyJobInfoDependencyPolicyJobDependency) Validate() erro
 }
 
 type GetJobResponseBodyJobInfoDeploymentPolicy struct {
-	// The type of the resource. Only Dedicated is supported. You must enable a whitelist.
+	// The resource type. Currently, only Dedicated is supported. You must be added to the whitelist to use this feature.
 	//
 	// example:
 	//
 	// Dedicated
 	AllocationSpec *string `json:"AllocationSpec,omitempty" xml:"AllocationSpec,omitempty"`
-	// The computing power level. The following disk categories are supported:
+	// The computing power level. Valid values:
 	//
-	// 	- General
+	// - General: general-purpose.
 	//
-	// 	- Performance
+	// - Performance: compute-optimized.
 	//
-	// Default value: General
+	// Default value: General.
 	//
 	// example:
 	//
 	// General
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The network configuration information.
+	// The network configuration.
 	Network *GetJobResponseBodyJobInfoDeploymentPolicyNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 	// example:
 	//
 	// testpool
-	Pool *string `json:"Pool,omitempty" xml:"Pool,omitempty"`
-	// The list of job tags.
+	Pool     *string `json:"Pool,omitempty" xml:"Pool,omitempty"`
+	Priority *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The job tag list.
 	Tags []*GetJobResponseBodyJobInfoDeploymentPolicyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -421,6 +417,10 @@ func (s *GetJobResponseBodyJobInfoDeploymentPolicy) GetPool() *string {
 	return s.Pool
 }
 
+func (s *GetJobResponseBodyJobInfoDeploymentPolicy) GetPriority() *int32 {
+	return s.Priority
+}
+
 func (s *GetJobResponseBodyJobInfoDeploymentPolicy) GetTags() []*GetJobResponseBodyJobInfoDeploymentPolicyTags {
 	return s.Tags
 }
@@ -442,6 +442,11 @@ func (s *GetJobResponseBodyJobInfoDeploymentPolicy) SetNetwork(v *GetJobResponse
 
 func (s *GetJobResponseBodyJobInfoDeploymentPolicy) SetPool(v string) *GetJobResponseBodyJobInfoDeploymentPolicy {
 	s.Pool = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfoDeploymentPolicy) SetPriority(v int32) *GetJobResponseBodyJobInfoDeploymentPolicy {
+	s.Priority = &v
 	return s
 }
 
@@ -469,29 +474,23 @@ func (s *GetJobResponseBodyJobInfoDeploymentPolicy) Validate() error {
 }
 
 type GetJobResponseBodyJobInfoDeploymentPolicyNetwork struct {
-	// Whether the resource is created in the zone corresponding to the passed-in VSwitch parameter.
+	// Indicates whether resources are created in the zone that corresponds to the specified vSwitch.
 	//
-	// 	- true: The resource is created in the zone corresponding to the passed-in VSwitch parameter.
+	// - true: Resources are created in the zone that corresponds to the specified vSwitch.
 	//
-	// 	- false: The resource is created in any zone that has resources.
+	// - false: Resources are created in any zone that has available resources.
 	//
 	// example:
 	//
 	// false
 	EnableENIMapping *bool `json:"EnableENIMapping,omitempty" xml:"EnableENIMapping,omitempty"`
-	// Whether to create a public IP address.
-	//
-	// Valid values:
-	//
-	// 	- false: false.
-	//
-	// 	- true: true.
+	// Indicates whether a public IP address is created.
 	//
 	// example:
 	//
 	// false
 	EnableExternalIpAddress *bool `json:"EnableExternalIpAddress,omitempty" xml:"EnableExternalIpAddress,omitempty"`
-	// The VSwitch array.
+	// The vSwitch array.
 	Vswitch []*string `json:"Vswitch,omitempty" xml:"Vswitch,omitempty" type:"Repeated"`
 }
 
@@ -535,13 +534,13 @@ func (s *GetJobResponseBodyJobInfoDeploymentPolicyNetwork) Validate() error {
 }
 
 type GetJobResponseBodyJobInfoDeploymentPolicyTags struct {
-	// The key of the job tag.
+	// The job tag key.
 	//
 	// example:
 	//
 	// TestKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the job tag.
+	// The job tag value.
 	//
 	// example:
 	//
@@ -637,17 +636,17 @@ func (s *GetJobResponseBodyJobInfoSecurityPolicySecurityGroup) Validate() error 
 type GetJobResponseBodyJobInfoTasks struct {
 	// The task execution policy.
 	ExecutorPolicy *GetJobResponseBodyJobInfoTasksExecutorPolicy `json:"ExecutorPolicy,omitempty" xml:"ExecutorPolicy,omitempty" type:"Struct"`
-	// The execution status of the task.
+	// The task execution status.
 	ExecutorStatus []*GetJobResponseBodyJobInfoTasksExecutorStatus `json:"ExecutorStatus,omitempty" xml:"ExecutorStatus,omitempty" type:"Repeated"`
-	// The name of the task.
+	// The task name.
 	//
 	// example:
 	//
 	// task0
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The details of the task specification.
+	// The task specification details.
 	TaskSpec *GetJobResponseBodyJobInfoTasksTaskSpec `json:"TaskSpec,omitempty" xml:"TaskSpec,omitempty" type:"Struct"`
-	// Indicate whether the job is a long-running job.
+	// Indicates whether the job is long-running.
 	//
 	// example:
 	//
@@ -732,9 +731,9 @@ func (s *GetJobResponseBodyJobInfoTasks) Validate() error {
 }
 
 type GetJobResponseBodyJobInfoTasksExecutorPolicy struct {
-	// The details of the array job.
+	// The array job details.
 	ArraySpec *GetJobResponseBodyJobInfoTasksExecutorPolicyArraySpec `json:"ArraySpec,omitempty" xml:"ArraySpec,omitempty" type:"Struct"`
-	// The maximum number of nodes to run the job.
+	// The maximum number of nodes for running the job.
 	//
 	// example:
 	//
@@ -778,13 +777,13 @@ func (s *GetJobResponseBodyJobInfoTasksExecutorPolicy) Validate() error {
 }
 
 type GetJobResponseBodyJobInfoTasksExecutorPolicyArraySpec struct {
-	// The end value of the array job index. Valid values: 0 to 4999. The value must be greater than or equal to the value of IndexStart.
+	// The end value of the array job index. Valid values: 0 to 4999. The value must be greater than or equal to IndexStart.
 	//
 	// example:
 	//
 	// 9
 	IndexEnd *int32 `json:"IndexEnd,omitempty" xml:"IndexEnd,omitempty"`
-	// The starting value of the array job index. Valid values: 0 to 4999.
+	// The start value of the array job index. Valid values: 0 to 4999.
 	//
 	// example:
 	//
@@ -792,7 +791,7 @@ type GetJobResponseBodyJobInfoTasksExecutorPolicyArraySpec struct {
 	IndexStart *int32 `json:"IndexStart,omitempty" xml:"IndexStart,omitempty"`
 	// The interval of the array job index.
 	//
-	// > If the array job property is IndexStart=1,IndexEnd=5, and IndexStep=2, the array job contains three subtasks. The values of the subtask indexes are 1,3, and 5.
+	// > If the array job properties are IndexStart=1, IndexEnd=5, and IndexStep=2, the array job contains three subtasks with indexes 1, 3, and 5.
 	//
 	// example:
 	//
@@ -840,37 +839,37 @@ func (s *GetJobResponseBodyJobInfoTasksExecutorPolicyArraySpec) Validate() error
 }
 
 type GetJobResponseBodyJobInfoTasksExecutorStatus struct {
-	// Sub-job ID
+	// The subtask ID.
 	//
 	// example:
 	//
 	// 0
 	ArrayId *int32 `json:"ArrayId,omitempty" xml:"ArrayId,omitempty"`
-	// The time when the job was created.
+	// The job creation time.
 	//
 	// example:
 	//
 	// 2024-02-04 13:54:10
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The end time of the scaling plan job.
+	// The job end time.
 	//
 	// example:
 	//
 	// 2024-02-04 13:54:10
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time of the scaling plan job.
+	// The job start time.
 	//
 	// example:
 	//
 	// 2024-02-04 13:54:10
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the job.
+	// The job status.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The reason why the stack instance is in the OUTDATED state.
+	// The status reason description.
 	//
 	// example:
 	//
@@ -948,7 +947,7 @@ type GetJobResponseBodyJobInfoTasksTaskSpec struct {
 	// The resource information.
 	Resource    *GetJobResponseBodyJobInfoTasksTaskSpecResource    `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
 	RetryPolicy *GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicy `json:"RetryPolicy,omitempty" xml:"RetryPolicy,omitempty" type:"Struct"`
-	// The task execution configurations.
+	// The task execution configuration.
 	TaskExecutor []*GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutor `json:"TaskExecutor,omitempty" xml:"TaskExecutor,omitempty" type:"Repeated"`
 	VolumeMount  []*GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount  `json:"VolumeMount,omitempty" xml:"VolumeMount,omitempty" type:"Repeated"`
 }
@@ -1030,18 +1029,18 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpec) Validate() error {
 }
 
 type GetJobResponseBodyJobInfoTasksTaskSpecResource struct {
-	// The number of CPUs on which the job is run.
+	// The number of CPUs used to run the job.
 	//
 	// example:
 	//
 	// 1
 	Cores *float32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	// The array of the disks.
+	// The cloud disk array.
 	Disks          []*GetJobResponseBodyJobInfoTasksTaskSpecResourceDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
 	EnableHT       *bool                                                  `json:"EnableHT,omitempty" xml:"EnableHT,omitempty"`
 	HostNamePrefix *string                                                `json:"HostNamePrefix,omitempty" xml:"HostNamePrefix,omitempty"`
 	InstanceTypes  []*string                                              `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
-	// The memory capacity. Unit: GiB.
+	// The total amount of memory resources. Unit: GiB.
 	//
 	// example:
 	//
@@ -1125,17 +1124,17 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpecResource) Validate() error {
 }
 
 type GetJobResponseBodyJobInfoTasksTaskSpecResourceDisks struct {
-	// The size of the disk.
+	// The cloud disk size.
 	//
 	// example:
 	//
 	// 100
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The type of the disk. The following disk categories are supported:
+	// The cloud disk type. Valid values:
 	//
-	// 	- System: system disk.
+	// - System: system cloud disk.
 	//
-	// 	- Data: data disk.
+	// - Data: data cloud disk.
 	//
 	// example:
 	//
@@ -1253,7 +1252,7 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicyExitCodeActions) Valid
 }
 
 type GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutor struct {
-	// Use ECS instances.
+	// The ECS instance configuration.
 	VM *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM `json:"VM,omitempty" xml:"VM,omitempty" type:"Struct"`
 }
 
@@ -1290,13 +1289,13 @@ type GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM struct {
 	//
 	// m-xxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The pre-processing script. Base64 encoding is required.
+	// The preprocessing script. The script must be Base64-encoded.
 	//
 	// example:
 	//
 	// ZWNobyAiMTIzNCIgPiBgZGF0ZSArJXNg
 	PrologScript *string `json:"PrologScript,omitempty" xml:"PrologScript,omitempty"`
-	// The running-job script. Base64 encoding is required.
+	// The job execution script. The script must be Base64-encoded.
 	//
 	// example:
 	//

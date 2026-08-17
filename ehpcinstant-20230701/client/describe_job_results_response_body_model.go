@@ -18,15 +18,23 @@ type iDescribeJobResultsResponseBody interface {
 }
 
 type DescribeJobResultsResponseBody struct {
+	// The exit code of the command.
+	//
+	// - For Linux instances, this is the exit code of the shell command.
+	//
+	// - For Windows instances, this is the exit code of the batch or PowerShell command.
+	//
 	// example:
 	//
 	// 0
 	ExitCode *int64 `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	// The output of the command. If ContentEncoding is set to PlainText, the original output is returned. If ContentEncoding is set to Base64, the Base64-encoded output is returned.
+	//
 	// example:
 	//
 	// MTU6MzA6MDEK
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

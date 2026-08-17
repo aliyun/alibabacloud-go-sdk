@@ -24,26 +24,44 @@ type iDescribeJobResultsRequest interface {
 }
 
 type DescribeJobResultsRequest struct {
+	// The executor number.
+	//
 	// example:
 	//
 	// 0_1
 	ArrayIndex *int32 `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty"`
+	// The encoding format for the `CommandContent` and `Output` fields in the response. Valid values:
+	//
+	// - PlainText: Returns the original script content and output.
+	//
+	// - Base64: Returns the Base64-encoded script content and output.
+	//
+	// The default value is Base64.
+	//
 	// example:
 	//
 	// PlainText
 	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// job-xxxxxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The maximum size of the log in bytes. The value must be between 1 and 1,048,576 (1 MB).
+	//
 	// example:
 	//
 	// 1048576
 	LimitBytes *string `json:"LimitBytes,omitempty" xml:"LimitBytes,omitempty"`
+	// The time in UTC, formatted according to RFC 3339.
+	//
 	// example:
 	//
 	// 2024-09-02T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The task name.
+	//
 	// example:
 	//
 	// Task0

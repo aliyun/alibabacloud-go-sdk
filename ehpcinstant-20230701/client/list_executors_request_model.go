@@ -18,19 +18,15 @@ type iListExecutorsRequest interface {
 }
 
 type ListExecutorsRequest struct {
-	// Queries the Executor filter conditions.
+	// The filter conditions for querying executors.
 	Filter *ListExecutorsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
-	// The current page number.\\
-	//
-	// Starting value: 1\\
-	//
-	// Default value: 1
+	// The current page number.<br>Start value: 1<br>Default value: 1<br><br>
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. The number of entries returned per page. Default value: 50. Maximum value: 100.
+	// The number of entries to return on each page for a paged query. Default value: 50. Maximum value: 100.
 	//
 	// example:
 	//
@@ -83,38 +79,47 @@ func (s *ListExecutorsRequest) Validate() error {
 }
 
 type ListExecutorsRequestFilter struct {
-	// The list of executor IDs. A maximum of 100 IDs are supported.
+	// A list of executor IDs. You can specify up to 100 IDs.
 	ExecutorIds []*string `json:"ExecutorIds,omitempty" xml:"ExecutorIds,omitempty" type:"Repeated"`
-	// Executor image.
+	// The executor image.
 	//
 	// example:
 	//
 	// m-f8z0dfa96luxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The list of internal IP addresses. A maximum of 100 IP addresses are supported.
+	// A list of private IP addresses. You can specify up to 100 IP addresses.
 	IpAddresses []*string `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
-	// The job name. Exact filtering. Fuzzy query is not supported.
+	// The job name. Fuzzy queries are supported.
 	//
 	// example:
 	//
 	// testJob
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// Executor status list.
+	// example:
+	//
+	// jt-xxxx
+	JobTemplateId *string `json:"JobTemplateId,omitempty" xml:"JobTemplateId,omitempty"`
+	// A list of executor statuses.
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
-	// For jobs submitted after this time, the time in the region is converted into a UNIX timestamp (UI8).
+	// The jobs submitted after this time. This is a UNIX timestamp that is converted from the time in the region where the job is located. For sites in mainland China, the time is in the UTC+8 time zone.
 	//
 	// example:
 	//
 	// 1703819914
 	TimeCreatedAfter *int32 `json:"TimeCreatedAfter,omitempty" xml:"TimeCreatedAfter,omitempty"`
-	// For jobs submitted before this time, the time in the region is converted into a Unix timestamp (for domestic sites, the UI8 region).
+	// The jobs submitted before this time. This is a UNIX timestamp that is converted from the time in the region where the job is located. For sites in mainland China, the time is in the UTC+8 time zone.
 	//
 	// example:
 	//
 	// 1703820113
-	TimeCreatedBefore *int32  `json:"TimeCreatedBefore,omitempty" xml:"TimeCreatedBefore,omitempty"`
-	VpcId             *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the vSwitch.
+	TimeCreatedBefore *int32 `json:"TimeCreatedBefore,omitempty" xml:"TimeCreatedBefore,omitempty"`
+	// The virtual private cloud (VPC) ID.
+	//
+	// example:
+	//
+	// vpc-xxx
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The vSwitch ID.
 	//
 	// example:
 	//
@@ -144,6 +149,10 @@ func (s *ListExecutorsRequestFilter) GetIpAddresses() []*string {
 
 func (s *ListExecutorsRequestFilter) GetJobName() *string {
 	return s.JobName
+}
+
+func (s *ListExecutorsRequestFilter) GetJobTemplateId() *string {
+	return s.JobTemplateId
 }
 
 func (s *ListExecutorsRequestFilter) GetStatus() []*string {
@@ -183,6 +192,11 @@ func (s *ListExecutorsRequestFilter) SetIpAddresses(v []*string) *ListExecutorsR
 
 func (s *ListExecutorsRequestFilter) SetJobName(v string) *ListExecutorsRequestFilter {
 	s.JobName = &v
+	return s
+}
+
+func (s *ListExecutorsRequestFilter) SetJobTemplateId(v string) *ListExecutorsRequestFilter {
+	s.JobTemplateId = &v
 	return s
 }
 

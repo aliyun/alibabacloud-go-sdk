@@ -30,7 +30,7 @@ type CreateJobResponseBody struct {
 	//
 	// 896D338C-E4F4-41EC-A154-D605E5DE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of tasks.
+	// The task list.
 	Tasks []*CreateJobResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
@@ -85,7 +85,7 @@ func (s *CreateJobResponseBody) Validate() error {
 type CreateJobResponseBodyTasks struct {
 	// The list of executor IDs contained in the task.
 	ExecutorIds []*string `json:"ExecutorIds,omitempty" xml:"ExecutorIds,omitempty" type:"Repeated"`
-	// The name of the task.
+	// The task name.
 	//
 	// example:
 	//

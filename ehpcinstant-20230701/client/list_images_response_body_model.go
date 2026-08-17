@@ -153,6 +153,10 @@ type ListImagesResponseBodyImages struct {
 	// 2022-12-09T07:06:34Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the image.
+	//
+	// example:
+	//
+	// 应用测试镜像。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The document ID.
 	//

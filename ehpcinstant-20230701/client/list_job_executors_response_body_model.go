@@ -28,9 +28,9 @@ type iListJobExecutorsResponseBody interface {
 }
 
 type ListJobExecutorsResponseBody struct {
-	// Executor status statistics.
+	// Statistics about executor statuses.
 	ExecutorStatus *ListJobExecutorsResponseBodyExecutorStatus `json:"ExecutorStatus,omitempty" xml:"ExecutorStatus,omitempty" type:"Struct"`
-	// The executor list.
+	// A list of executors.
 	Executors []*ListJobExecutorsResponseBodyExecutors `json:"Executors,omitempty" xml:"Executors,omitempty" type:"Repeated"`
 	// The job ID.
 	//
@@ -38,13 +38,13 @@ type ListJobExecutorsResponseBody struct {
 	//
 	// job-xxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries on each page.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type ListJobExecutorsResponseBody struct {
 	//
 	// example:
 	//
-	// task0
+	// Task0
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The total number of list entries.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -169,49 +169,59 @@ func (s *ListJobExecutorsResponseBody) Validate() error {
 }
 
 type ListJobExecutorsResponseBodyExecutorStatus struct {
-	// The number of executers in the Deleted state.
+	// The number of executors in the Deleted state.
 	//
 	// example:
 	//
 	// 1
 	Deleted *int32 `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	// The number of executers in the abnormal state.
+	// The number of executors in the Exception state.
 	//
 	// example:
 	//
 	// 1
 	Exception *int32 `json:"Exception,omitempty" xml:"Exception,omitempty"`
-	// The number of executers in the Failed state.
+	// The number of executors in the Failed state.
 	//
 	// example:
 	//
 	// 1
 	Failed *int32 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// The number of executers in the initialized state.
+	// The number of executors in the Initing state.
 	//
 	// example:
 	//
 	// 1
 	Initing *int32 `json:"Initing,omitempty" xml:"Initing,omitempty"`
-	// The number of executers in the queued state.
+	// The number of executors in the Pending state.
 	//
 	// example:
 	//
 	// 1
-	Pending    *int32 `json:"Pending,omitempty" xml:"Pending,omitempty"`
+	Pending *int32 `json:"Pending,omitempty" xml:"Pending,omitempty"`
+	// The number of executors in the Restarting state.
+	//
+	// example:
+	//
+	// 1
 	Restarting *int32 `json:"Restarting,omitempty" xml:"Restarting,omitempty"`
-	// The number of executers in the running state.
+	// The number of executors in the Running state.
 	//
 	// example:
 	//
 	// 1
 	Running *int32 `json:"Running,omitempty" xml:"Running,omitempty"`
-	// The number of executoresin the Successful state.
+	// The number of executors in the Succeeded state.
 	//
 	// example:
 	//
 	// 1
 	Succeeded *int32 `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
+	// The number of executors in the Suspended state.
+	//
+	// example:
+	//
+	// 1
 	Suspended *int32 `json:"Suspended,omitempty" xml:"Suspended,omitempty"`
 }
 
@@ -309,41 +319,57 @@ func (s *ListJobExecutorsResponseBodyExecutorStatus) Validate() error {
 }
 
 type ListJobExecutorsResponseBodyExecutors struct {
+	// The resource type.
+	//
+	// - Standard: Standard.
+	//
+	// - Dedicated: Dedicated. To use this resource type, you must be added to the whitelist.
+	//
+	// - Economic: Economy. To use this resource type, you must be added to the whitelist.
+	//
+	// example:
+	//
+	// Standard
 	AllocationSpec *string `json:"AllocationSpec,omitempty" xml:"AllocationSpec,omitempty"`
-	// The executor index number.
+	// The index of the executor.
 	//
 	// example:
 	//
 	// 0
-	ArrayIndex    *int32 `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty"`
+	ArrayIndex *int32 `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty"`
+	// The retention period of the compute resources.
+	//
+	// example:
+	//
+	// 24
 	BlockDuration *int32 `json:"BlockDuration,omitempty" xml:"BlockDuration,omitempty"`
-	// The time when the storage resource was created.
+	// The time when the executor was created.
 	//
 	// example:
 	//
 	// 2024-02-20 10:04:10
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The end time.
+	// The time when the executor ended.
 	//
 	// example:
 	//
 	// 2024-02-20 10:04:18
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The executor ID. The format is JobId-TaskName-ArrayIndex.
+	// The ID of the executor. The format is \\`JobId-TaskName-ArrayIndex\\`.
 	//
 	// example:
 	//
 	// job-xxxx-Task0-1
 	ExecutorId     *string `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
 	ExpirationTime *string `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	// The list of public IP addresses of the nodes.
+	// A list of public IP addresses of the nodes.
 	ExternalIpAddress []*string `json:"ExternalIpAddress,omitempty" xml:"ExternalIpAddress,omitempty" type:"Repeated"`
 	// An array of node hostnames.
 	HostName []*string `json:"HostName,omitempty" xml:"HostName,omitempty" type:"Repeated"`
-	// The list of node IP addresses.
+	// A list of node IP addresses.
 	IpAddress   []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
 	Preemptible *bool     `json:"Preemptible,omitempty" xml:"Preemptible,omitempty"`
-	// The create time.
+	// The time when the executor started.
 	//
 	// example:
 	//
@@ -351,37 +377,39 @@ type ListJobExecutorsResponseBodyExecutors struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the executor. Valid values:
 	//
-	// 	- Pending
+	// - Pending: In queue
 	//
-	// 	- Initing
+	// - Initing: Initializing
 	//
-	// 	- Succeed
+	// - Succeed: Succeeded
 	//
-	// 	- Failed
+	// - Failed: Failed
 	//
-	// 	- Running
+	// - Running: Running
 	//
-	// 	- Unknown
+	// - Exception: Abnormal scheduling
 	//
-	// 	- Exception
+	// - Retrying: Retrying
 	//
-	// 	- Retrying
+	// - Expired: Timed out
 	//
-	// 	- Expired
+	// - Suspended: Job hibernating
 	//
-	// 	- Deleted
+	// - Restarting: Job restarting
+	//
+	// - Deleted: Deleted
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The description of the status reason.
+	// The reason for the status.
 	//
 	// example:
 	//
-	// Creating executor
+	// ExecutorReady
 	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
-	// The list of executor tags.
+	// A list of executor tags.
 	Tags []*ListJobExecutorsResponseBodyExecutorsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -542,13 +570,13 @@ func (s *ListJobExecutorsResponseBodyExecutors) Validate() error {
 }
 
 type ListJobExecutorsResponseBodyExecutorsTags struct {
-	// The key of the executor tag.
+	// The tag key of the executor.
 	//
 	// example:
 	//
 	// TestKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the executor tag.
+	// The tag value of the executor.
 	//
 	// example:
 	//

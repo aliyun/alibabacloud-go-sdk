@@ -20,25 +20,25 @@ type iGetImageResponseBody interface {
 }
 
 type GetImageResponseBody struct {
-	// The details of the image.
+	// Image details.
 	Image *GetImageResponseBodyImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation succeeded. Valid values:
 	//
-	// 	- true: The task is successful.
+	// - true: succeeded.
 	//
-	// 	- false: The error occurred.
+	// - false: failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total amount of data in this request.
+	// Total number of items returned for this request.
 	//
 	// example:
 	//
@@ -102,18 +102,22 @@ func (s *GetImageResponseBody) Validate() error {
 type GetImageResponseBodyImage struct {
 	AdditionalRegionsInfo []*GetImageResponseBodyImageAdditionalRegionsInfo `json:"AdditionalRegionsInfo,omitempty" xml:"AdditionalRegionsInfo,omitempty" type:"Repeated"`
 	AppId                 *string                                           `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The configuration details of the container image.
+	// Container image configuration details.
 	ContainerImageSpec *GetImageResponseBodyImageContainerImageSpec `json:"ContainerImageSpec,omitempty" xml:"ContainerImageSpec,omitempty" type:"Struct"`
-	// The time when the image was created.
+	// Image creation time.
 	//
 	// example:
 	//
 	// 2022-12-23T09:51:39Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the image.
+	// Image description.
+	//
+	// example:
+	//
+	// 应用测试镜像。
 	Description  *string                                `json:"Description,omitempty" xml:"Description,omitempty"`
 	DocumentInfo *GetImageResponseBodyImageDocumentInfo `json:"DocumentInfo,omitempty" xml:"DocumentInfo,omitempty" type:"Struct"`
-	// The type of the image.
+	// Image type.
 	//
 	// This parameter is required.
 	//
@@ -121,22 +125,22 @@ type GetImageResponseBodyImage struct {
 	//
 	// VM
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	// The name of the image.
+	// Image name.
 	//
 	// example:
 	//
 	// app-image
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The size of the image. Unit: GiB.
+	// Image size, in GiB.
 	//
 	// example:
 	//
 	// 40 GiB
 	Size   *string `json:"Size,omitempty" xml:"Size,omitempty"`
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The configuration details of the virtual machine image.
+	// Virtual machine image configuration details.
 	VMImageSpec *GetImageResponseBodyImageVMImageSpec `json:"VMImageSpec,omitempty" xml:"VMImageSpec,omitempty" type:"Struct"`
-	// The version.
+	// Version.
 	//
 	// example:
 	//
@@ -335,21 +339,21 @@ func (s *GetImageResponseBodyImageAdditionalRegionsInfo) Validate() error {
 
 type GetImageResponseBodyImageContainerImageSpec struct {
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// Whether the instance is an Alibaba Cloud image repository Enterprise Edition.
+	// Indicates whether the image is stored in an ACR Enterprise Edition instance. Valid values:
 	//
-	// 	- True
+	// - True: yes.
 	//
-	// 	- False
+	// - False: no.
 	//
 	// example:
 	//
 	// True
 	IsACREnterprise *bool `json:"IsACREnterprise,omitempty" xml:"IsACREnterprise,omitempty"`
-	// Whether it is an Alibaba Cloud image repository.
+	// Indicates whether the image is stored in an Alibaba Cloud Container Registry (ACR) instance. Valid values:
 	//
-	// 	- True
+	// - True: yes.
 	//
-	// 	- False
+	// - False: no.
 	//
 	// example:
 	//
@@ -357,15 +361,15 @@ type GetImageResponseBodyImageContainerImageSpec struct {
 	IsACRRegistry *bool   `json:"IsACRRegistry,omitempty" xml:"IsACRRegistry,omitempty"`
 	OsTag         *string `json:"OsTag,omitempty" xml:"OsTag,omitempty"`
 	Platform      *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The authentication of the private image repository.
+	// Authentication for a private image registry.
 	RegistryCredential *GetImageResponseBodyImageContainerImageSpecRegistryCredential `json:"RegistryCredential,omitempty" xml:"RegistryCredential,omitempty" type:"Struct"`
-	// The ID of the Container Registry Enterprise Edition image repository.
+	// ACR Enterprise Edition instance ID.
 	//
 	// example:
 	//
 	// cri-xyz795ygf8k9****
 	RegistryCriId *string `json:"RegistryCriId,omitempty" xml:"RegistryCriId,omitempty"`
-	// The endpoint of the container image.
+	// Container image registry URL.
 	//
 	// example:
 	//
@@ -463,19 +467,19 @@ func (s *GetImageResponseBodyImageContainerImageSpec) Validate() error {
 }
 
 type GetImageResponseBodyImageContainerImageSpecRegistryCredential struct {
-	// The password of the logon user.
+	// Password for the username.
 	//
 	// example:
 	//
 	// userpassword
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The registered address of the image repository.
+	// Registry server address.
 	//
 	// example:
 	//
 	// registry-vpc.cn-hangzhou.aliyuncs.com
 	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
-	// The username of the logon user.
+	// Username to log on to the registry.
 	//
 	// example:
 	//
@@ -568,25 +572,25 @@ func (s *GetImageResponseBodyImageDocumentInfo) Validate() error {
 }
 
 type GetImageResponseBodyImageVMImageSpec struct {
-	// The type of the architecture.
+	// Architecture type.
 	//
 	// example:
 	//
 	// x86_64
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// The image ID.
+	// Image ID.
 	//
 	// example:
 	//
 	// m-uf60twafjtaart******
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The ID of the specific OS version.
+	// OS version identifier.
 	//
 	// example:
 	//
 	// CentOS  7.6 64 bit
 	OsTag *string `json:"OsTag,omitempty" xml:"OsTag,omitempty"`
-	// The type of the platform.
+	// Platform type.
 	//
 	// example:
 	//
