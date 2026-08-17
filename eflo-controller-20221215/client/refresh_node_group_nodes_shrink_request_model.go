@@ -20,7 +20,7 @@ type iRefreshNodeGroupNodesShrinkRequest interface {
 type RefreshNodeGroupNodesShrinkRequest struct {
 	// The maximum disruptive action level allowed for the refresh operation. The system independently evaluates the action level required to refresh each drifted property of a node and performs the refresh within the specified action level constraint. If the action level required for a property exceeds the specified level, that property is skipped. Action levels in increasing order of disruption: Refresh < Reboot < Reimage.
 	//
-	// - Refresh (default): only refreshes the configuration in place without restarting or reimaging. Currently applicable only to the RamRoleName property.
+	// - Refresh (default): refreshes the configuration in place without restarting or reimaging. Currently applicable only to the RamRoleName property.
 	//
 	// - Reboot (not currently supported): allows restarting the node for the configuration to take effect. Supported properties include system cloud disk type and all properties supported by Refresh.
 	//

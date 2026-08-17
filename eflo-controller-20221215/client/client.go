@@ -1832,7 +1832,7 @@ func (client *Client) DescribeNodeGroup(request *DescribeNodeGroupRequest) (_res
 //
 // Description:
 //
-// The returned results include the following:
+// The returned results contain the following information:
 //
 // - The processing status of each node with configuration drift
 //
@@ -1904,7 +1904,7 @@ func (client *Client) DescribeNodeGroupRefreshTaskWithOptions(tmpReq *DescribeNo
 //
 // Description:
 //
-// The returned results include the following:
+// The returned results contain the following information:
 //
 // - The processing status of each node with configuration drift
 //
@@ -3404,11 +3404,11 @@ func (client *Client) ListNodeGroupDriftedNodes(request *ListNodeGroupDriftedNod
 
 // Summary:
 //
-// Queries a paging list of node group configuration refresh tasks.
+// Queries the list of node group configuration refresh tasks with paging.
 //
 // Description:
 //
-// If you do not know which node group has refresh tasks, you can perform a conditional query. The task list contains only summary information. To query task details, use the DescribeNodeGroupRefreshTask operation.
+// If you do not know which node group has refresh tasks, you can use conditional query. The task list contains only summary information. To query task details, use the DescribeNodeGroupRefreshTask operation.
 //
 // @param tmpReq - ListNodeGroupRefreshTasksRequest
 //
@@ -3474,11 +3474,11 @@ func (client *Client) ListNodeGroupRefreshTasksWithOptions(tmpReq *ListNodeGroup
 
 // Summary:
 //
-// Queries a paging list of node group configuration refresh tasks.
+// Queries the list of node group configuration refresh tasks with paging.
 //
 // Description:
 //
-// If you do not know which node group has refresh tasks, you can perform a conditional query. The task list contains only summary information. To query task details, use the DescribeNodeGroupRefreshTask operation.
+// If you do not know which node group has refresh tasks, you can use conditional query. The task list contains only summary information. To query task details, use the DescribeNodeGroupRefreshTask operation.
 //
 // @param request - ListNodeGroupRefreshTasksRequest
 //
@@ -3949,15 +3949,15 @@ func (client *Client) RebootNodes(request *RebootNodesRequest) (_result *RebootN
 
 // Summary:
 //
-// Refreshes node group configurations to existing nodes. Manually triggers the node group configuration to take effect on existing nodes. After node group properties are changed, existing nodes do not perform automatic synchronization by default, which causes configuration drift. You can call this operation to refresh node properties. The operation returns an asynchronous refresh task ID, and the result can be queried through DescribeNodeGroupRefreshTask.
+// Refreshes node group configurations to existing nodes. Manually triggers the node group configuration to take effect on existing nodes. After node group properties are changed, existing nodes do not perform automatic synchronization by default, which causes configuration drift. You can call this operation to refresh node properties. The operation returns an asynchronous refresh task ID. Query the result by calling DescribeNodeGroupRefreshTask.
 //
 // Description:
 //
-// Manually triggers the node group configuration to take effect on existing nodes. After node group properties are changed, existing nodes do not perform automatic synchronization by default, which causes configuration drift. You can call this operation to refresh node properties. The operation returns an asynchronous refresh task ID, and the result can be queried through DescribeNodeGroupRefreshTask.
+// Manually triggers the node group configuration to take effect on existing nodes. After node group properties are changed, existing nodes do not perform automatic synchronization by default, which causes configuration drift. You can call this operation to refresh node properties. The operation returns an asynchronous refresh task ID. Query the result by calling DescribeNodeGroupRefreshTask.
 //
 // Limits:
 //
-// - A node group can have only one running node group configuration refresh task at a time.
+// - Only one node group configuration refresh task can be running at a time for a node group.
 //
 // - When the asynchronous task executes the refresh, if a node is not in the "In Use" state, the refresh of that node is failed.
 //
@@ -4019,15 +4019,15 @@ func (client *Client) RefreshNodeGroupNodesWithOptions(tmpReq *RefreshNodeGroupN
 
 // Summary:
 //
-// Refreshes node group configurations to existing nodes. Manually triggers the node group configuration to take effect on existing nodes. After node group properties are changed, existing nodes do not perform automatic synchronization by default, which causes configuration drift. You can call this operation to refresh node properties. The operation returns an asynchronous refresh task ID, and the result can be queried through DescribeNodeGroupRefreshTask.
+// Refreshes node group configurations to existing nodes. Manually triggers the node group configuration to take effect on existing nodes. After node group properties are changed, existing nodes do not perform automatic synchronization by default, which causes configuration drift. You can call this operation to refresh node properties. The operation returns an asynchronous refresh task ID. Query the result by calling DescribeNodeGroupRefreshTask.
 //
 // Description:
 //
-// Manually triggers the node group configuration to take effect on existing nodes. After node group properties are changed, existing nodes do not perform automatic synchronization by default, which causes configuration drift. You can call this operation to refresh node properties. The operation returns an asynchronous refresh task ID, and the result can be queried through DescribeNodeGroupRefreshTask.
+// Manually triggers the node group configuration to take effect on existing nodes. After node group properties are changed, existing nodes do not perform automatic synchronization by default, which causes configuration drift. You can call this operation to refresh node properties. The operation returns an asynchronous refresh task ID. Query the result by calling DescribeNodeGroupRefreshTask.
 //
 // Limits:
 //
-// - A node group can have only one running node group configuration refresh task at a time.
+// - Only one node group configuration refresh task can be running at a time for a node group.
 //
 // - When the asynchronous task executes the refresh, if a node is not in the "In Use" state, the refresh of that node is failed.
 //

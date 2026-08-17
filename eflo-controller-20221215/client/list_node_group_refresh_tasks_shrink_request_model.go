@@ -28,7 +28,7 @@ type ListNodeGroupRefreshTasksShrinkRequest struct {
 	//
 	// i118191731740041623425
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The maximum number of entries per page for a paging query. Valid values: 1 to 500. Default value: 100.
+	// The maximum number of entries per page for paging. Valid values: 1 to 500. Default value: 100.
 	//
 	// example:
 	//

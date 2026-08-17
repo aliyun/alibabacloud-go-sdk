@@ -156,7 +156,7 @@ type ListNodeGroupRefreshTasksResponseBodyNodeGroupRefreshTasks struct {
 	//
 	// InProgress
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total number of nodes to be refreshed by this task.
+	// The total number of nodes to refresh in this task.
 	//
 	// example:
 	//

@@ -293,7 +293,7 @@ type DescribeNodeGroupRefreshTaskResponseBodyNodes struct {
 	//
 	// node-001
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The property drift list for the node, including both executed and skipped properties.
+	// The list of property drifts for the node, including both executed and skipped properties.
 	PropertyDrifts []*DescribeNodeGroupRefreshTaskResponseBodyNodesPropertyDrifts `json:"PropertyDrifts,omitempty" xml:"PropertyDrifts,omitempty" type:"Repeated"`
 	// The node refresh status. Valid values:
 	//
