@@ -22,32 +22,33 @@ type iHTTPTriggerConfig interface {
 }
 
 type HTTPTriggerConfig struct {
-	// Authentication configuration
+	// The authentication configuration.
 	//
 	// example:
 	//
 	// {"JWKS":{"foo":"bar"},"TokenLookup":"header:Authorization:Bearer,cookie:AuthorizationCookie","ClaimPassBy":"query:uid:uid,header:name:name"}
 	AuthConfig *string `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
-	// The authentication type. Valid values are:
+	// The authentication type. Valid values:
 	//
 	// - **function**: Authentication is required.
 	//
 	// - **anonymous**: Authentication is not required.
 	//
-	// > The default type is **function**.
+	// > The default value is **function**.
 	//
 	// example:
 	//
 	// anonymous
-	AuthType   *string     `json:"authType,omitempty" xml:"authType,omitempty"`
+	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	// The CORS configuration.
 	CorsConfig *CORSConfig `json:"corsConfig,omitempty" xml:"corsConfig,omitempty"`
-	// Specifies whether to disable access from the default public domain name. If set to true, accessing the function\\"s default public URL returns a 403 error. If set to false, this parameter has no effect.
+	// Specifies whether to disable access through the default public domain name. If set to true, accessing the default public URL of the function returns a 403 error. If set to false, access is not affected.
 	//
 	// example:
 	//
 	// true
 	DisableURLInternet *bool `json:"disableURLInternet,omitempty" xml:"disableURLInternet,omitempty"`
-	// The list of request methods. Multiple methods are supported.
+	// The list of request methods. Multiple methods can be supported simultaneously.
 	Methods []*string `json:"methods" xml:"methods" type:"Repeated"`
 }
 

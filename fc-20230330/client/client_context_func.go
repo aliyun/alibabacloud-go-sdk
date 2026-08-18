@@ -147,7 +147,7 @@ func (client *Client) CreateCustomDomainWithContext(ctx context.Context, request
 //
 // Description:
 //
-// When you create a function by using an OSS code package, if the error "unable to access object xxx in bucket xxx" is reported, grant the current user access permissions on the OSS bucket. For example, you can use the system access policy AliyunOSSReadOnlyAccess or a custom policy with finer granularity of authorization such as oss:GetObject. For details about the policy content, see [Grant a Resource Access Management (RAM) user permissions to read all resources in a bucket](https://help.aliyun.com/document_detail/199058.html).
+// When you create a function by using an OSS code package, if the error "unable to access object xxx in bucket xxx" is reported, grant the current user access permissions on the OSS bucket. For example, you can use the system access policy AliyunOSSReadOnlyAccess or a custom policy with finer granularity such as authorization for oss:GetObject. For details about the policy content, see [Grant a Resource Access Management (RAM) user permissions to read all resources in a bucket](https://help.aliyun.com/document_detail/199058.html).
 //
 // @param request - CreateFunctionRequest
 //
@@ -1143,7 +1143,7 @@ func (client *Client) GetCustomDomainWithContext(ctx context.Context, domainName
 
 // Summary:
 //
-// Retrieves information about a function.
+// Retrieves function information.
 //
 // @param request - GetFunctionRequest
 //
@@ -1918,7 +1918,7 @@ func (client *Client) ListFunctionVersionsWithContext(ctx context.Context, funct
 //
 // Description:
 //
-// ListFunctions returns only a subset of fields for function properties. To retrieve additional property fields for a specific function, including state, stateReasonCode, stateReason, lastUpdateStatus, lastUpdateStatusReasonCode, and lastUpdateStatusReason, use [GetFunction](https://help.aliyun.com/document_detail/2618610.html).
+// ListFunctions returns only a subset of function attribute fields. To retrieve more attribute fields for a specific function, including state, stateReasonCode, stateReason, lastUpdateStatus, lastUpdateStatusReasonCode, and lastUpdateStatusReason, use [GetFunction](https://help.aliyun.com/document_detail/2618610.html).
 //
 // @param tmpReq - ListFunctionsRequest
 //
@@ -3167,7 +3167,7 @@ func (client *Client) UpdateCustomDomainWithContext(ctx context.Context, domainN
 
 // Summary:
 //
-// Updates a function\\"s configuration.
+// Updates function information.
 //
 // @param request - UpdateFunctionRequest
 //

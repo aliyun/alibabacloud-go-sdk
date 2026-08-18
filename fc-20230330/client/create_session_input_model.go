@@ -33,6 +33,8 @@ type iCreateSessionInput interface {
 	GetSessionIdleTimeoutInSeconds() *int64
 	SetSessionTTLInSeconds(v int64) *CreateSessionInput
 	GetSessionTTLInSeconds() *int64
+	SetSnapshotId(v string) *CreateSessionInput
+	GetSnapshotId() *string
 }
 
 type CreateSessionInput struct {
@@ -70,7 +72,8 @@ type CreateSessionInput struct {
 	// example:
 	//
 	// 21600
-	SessionTTLInSeconds *int64 `json:"sessionTTLInSeconds,omitempty" xml:"sessionTTLInSeconds,omitempty"`
+	SessionTTLInSeconds *int64  `json:"sessionTTLInSeconds,omitempty" xml:"sessionTTLInSeconds,omitempty"`
+	SnapshotId          *string `json:"snapshotId,omitempty" xml:"snapshotId,omitempty"`
 }
 
 func (s CreateSessionInput) String() string {
@@ -127,6 +130,10 @@ func (s *CreateSessionInput) GetSessionIdleTimeoutInSeconds() *int64 {
 
 func (s *CreateSessionInput) GetSessionTTLInSeconds() *int64 {
 	return s.SessionTTLInSeconds
+}
+
+func (s *CreateSessionInput) GetSnapshotId() *string {
+	return s.SnapshotId
 }
 
 func (s *CreateSessionInput) SetAllowInternetAccess(v bool) *CreateSessionInput {
@@ -186,6 +193,11 @@ func (s *CreateSessionInput) SetSessionIdleTimeoutInSeconds(v int64) *CreateSess
 
 func (s *CreateSessionInput) SetSessionTTLInSeconds(v int64) *CreateSessionInput {
 	s.SessionTTLInSeconds = &v
+	return s
+}
+
+func (s *CreateSessionInput) SetSnapshotId(v string) *CreateSessionInput {
+	s.SnapshotId = &v
 	return s
 }
 

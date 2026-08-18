@@ -18,14 +18,15 @@ type iLifecycleHook interface {
 }
 
 type LifecycleHook struct {
+	// The callback command for the function lifecycle initialization phase. The handler and command parameters for the lifecycle hook execution entry point cannot be configured at the same time. Only one can take effect. Configuring both produces an error.
 	Command []*string `json:"command" xml:"command" type:"Repeated"`
-	// The handler of the hook. The definition is similar to that of a request handler.
+	// The execution entry point of the hook, similar in meaning to the handler.
 	//
 	// example:
 	//
 	// index.initializer
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// The timeout period of the hook. Unit: seconds.
+	// The timeout period of the hook, in seconds.
 	//
 	// example:
 	//

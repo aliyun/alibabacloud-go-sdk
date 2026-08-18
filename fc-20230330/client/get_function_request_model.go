@@ -14,7 +14,7 @@ type iGetFunctionRequest interface {
 }
 
 type GetFunctionRequest struct {
-	// The version or alias of the function.
+	// The function version or alias.
 	//
 	// example:
 	//

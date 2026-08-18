@@ -26,32 +26,32 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
+		"ap-northeast-1":        dara.String("fcv3.ap-northeast-1.aliyuncs.com"),
+		"ap-northeast-2":        dara.String("fcv3.ap-northeast-2.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("fcv3.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-2":        dara.String("fcv3.ap-southeast-2.aliyuncs.com"),
+		"ap-southeast-3":        dara.String("fcv3.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-5":        dara.String("fcv3.ap-southeast-5.aliyuncs.com	"),
+		"ap-southeast-7":        dara.String("fcv3.ap-southeast-7.aliyuncs.com"),
+		"cn-beijing":            dara.String("fcv3.cn-beijing.aliyuncs.com"),
+		"cn-chengdu":            dara.String("fcv3.cn-chengdu.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("fcv3.cn-hangzhou.aliyuncs.com"),
+		"cn-hongkong":           dara.String("fcv3.cn-hongkong.aliyuncs.com"),
+		"cn-huhehaote":          dara.String("fcv3.cn-huhehaote.aliyuncs.com"),
+		"cn-qingdao":            dara.String("fcv3.cn-qingdao.aliyuncs.com"),
+		"cn-shanghai":           dara.String("fcv3.cn-shanghai.aliyuncs.com"),
+		"cn-shenzhen":           dara.String("fcv3.cn-shenzhen.aliyuncs.com"),
+		"cn-wulanchabu":         dara.String("fcv3.cn-wulanchabu.aliyuncs.com"),
+		"cn-zhangjiakou":        dara.String("fcv3.cn-zhangjiakou.aliyuncs.com"),
 		"us-west-1":             dara.String("fcv3.us-west-1.aliyuncs.com"),
 		"us-east-1":             dara.String("fcv3.us-east-1.aliyuncs.com"),
-		"me-central-1":          dara.String("me-central-1.fc.aliyuncs.com"),
 		"eu-west-1":             dara.String("fcv3.eu-west-1.aliyuncs.com"),
 		"eu-central-1":          dara.String("fcv3.eu-central-1.aliyuncs.com"),
-		"cn-zhangjiakou":        dara.String("fcv3.cn-zhangjiakou.aliyuncs.com"),
-		"cn-wulanchabu":         dara.String("fcv3.cn-wulanchabu.aliyuncs.com"),
-		"cn-shenzhen":           dara.String("fcv3.cn-shenzhen.aliyuncs.com"),
+		"me-central-1":          dara.String("me-central-1.fc.aliyuncs.com"),
+		"ap-south-1":            dara.String("fcv3.ap-south-1.aliyuncs.com"),
 		"cn-shanghai-finance-1": dara.String("cn-shanghai-finance-1.fc.aliyuncs.com"),
-		"cn-shanghai":           dara.String("fcv3.cn-shanghai.aliyuncs.com"),
-		"cn-qingdao":            dara.String("fcv3.cn-qingdao.aliyuncs.com"),
-		"cn-huhehaote":          dara.String("fcv3.cn-huhehaote.aliyuncs.com"),
-		"cn-hongkong":           dara.String("fcv3.cn-hongkong.aliyuncs.com"),
 		"cn-heyuan-acdr-1":      dara.String("cn-heyuan-acdr-1.fc.aliyuncs.com"),
 		"cn-hangzhou-finance":   dara.String("cn-hangzhou-finance.fc.aliyuncs.com"),
-		"cn-hangzhou":           dara.String("fcv3.cn-hangzhou.aliyuncs.com"),
-		"cn-chengdu":            dara.String("fcv3.cn-chengdu.aliyuncs.com"),
-		"cn-beijing":            dara.String("fcv3.cn-beijing.aliyuncs.com"),
-		"ap-southeast-7":        dara.String("fcv3.ap-southeast-7.aliyuncs.com"),
-		"ap-southeast-5":        dara.String("fcv3.ap-southeast-5.aliyuncs.com	"),
-		"ap-southeast-3":        dara.String("fcv3.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-2":        dara.String("fcv3.ap-southeast-2.aliyuncs.com"),
-		"ap-southeast-1":        dara.String("fcv3.ap-southeast-1.aliyuncs.com"),
-		"ap-south-1":            dara.String("fcv3.ap-south-1.aliyuncs.com"),
-		"ap-northeast-2":        dara.String("fcv3.ap-northeast-2.aliyuncs.com"),
-		"ap-northeast-1":        dara.String("fcv3.ap-northeast-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -289,7 +289,7 @@ func (client *Client) CreateCustomDomain(request *CreateCustomDomainRequest) (_r
 //
 // Description:
 //
-// When you create a function by using an OSS code package, if the error "unable to access object xxx in bucket xxx" is reported, grant the current user access permissions on the OSS bucket. For example, you can use the system access policy AliyunOSSReadOnlyAccess or a custom policy with finer granularity of authorization such as oss:GetObject. For details about the policy content, see [Grant a Resource Access Management (RAM) user permissions to read all resources in a bucket](https://help.aliyun.com/document_detail/199058.html).
+// When you create a function by using an OSS code package, if the error "unable to access object xxx in bucket xxx" is reported, grant the current user access permissions on the OSS bucket. For example, you can use the system access policy AliyunOSSReadOnlyAccess or a custom policy with finer granularity such as authorization for oss:GetObject. For details about the policy content, see [Grant a Resource Access Management (RAM) user permissions to read all resources in a bucket](https://help.aliyun.com/document_detail/199058.html).
 //
 // @param request - CreateFunctionRequest
 //
@@ -335,7 +335,7 @@ func (client *Client) CreateFunctionWithOptions(request *CreateFunctionRequest, 
 //
 // Description:
 //
-// When you create a function by using an OSS code package, if the error "unable to access object xxx in bucket xxx" is reported, grant the current user access permissions on the OSS bucket. For example, you can use the system access policy AliyunOSSReadOnlyAccess or a custom policy with finer granularity of authorization such as oss:GetObject. For details about the policy content, see [Grant a Resource Access Management (RAM) user permissions to read all resources in a bucket](https://help.aliyun.com/document_detail/199058.html).
+// When you create a function by using an OSS code package, if the error "unable to access object xxx in bucket xxx" is reported, grant the current user access permissions on the OSS bucket. For example, you can use the system access policy AliyunOSSReadOnlyAccess or a custom policy with finer granularity such as authorization for oss:GetObject. For details about the policy content, see [Grant a Resource Access Management (RAM) user permissions to read all resources in a bucket](https://help.aliyun.com/document_detail/199058.html).
 //
 // @param request - CreateFunctionRequest
 //
@@ -1744,7 +1744,7 @@ func (client *Client) GetCustomDomain(domainName *string) (_result *GetCustomDom
 
 // Summary:
 //
-// Retrieves information about a function.
+// Retrieves function information.
 //
 // @param request - GetFunctionRequest
 //
@@ -1791,7 +1791,7 @@ func (client *Client) GetFunctionWithOptions(functionName *string, request *GetF
 
 // Summary:
 //
-// Retrieves information about a function.
+// Retrieves function information.
 //
 // @param request - GetFunctionRequest
 //
@@ -2798,7 +2798,7 @@ func (client *Client) ListFunctionVersions(functionName *string, request *ListFu
 //
 // Description:
 //
-// ListFunctions returns only a subset of fields for function properties. To retrieve additional property fields for a specific function, including state, stateReasonCode, stateReason, lastUpdateStatus, lastUpdateStatusReasonCode, and lastUpdateStatusReason, use [GetFunction](https://help.aliyun.com/document_detail/2618610.html).
+// ListFunctions returns only a subset of function attribute fields. To retrieve more attribute fields for a specific function, including state, stateReasonCode, stateReason, lastUpdateStatus, lastUpdateStatusReasonCode, and lastUpdateStatusReason, use [GetFunction](https://help.aliyun.com/document_detail/2618610.html).
 //
 // @param tmpReq - ListFunctionsRequest
 //
@@ -2891,7 +2891,7 @@ func (client *Client) ListFunctionsWithOptions(tmpReq *ListFunctionsRequest, hea
 //
 // Description:
 //
-// ListFunctions returns only a subset of fields for function properties. To retrieve additional property fields for a specific function, including state, stateReasonCode, stateReason, lastUpdateStatus, lastUpdateStatusReasonCode, and lastUpdateStatusReason, use [GetFunction](https://help.aliyun.com/document_detail/2618610.html).
+// ListFunctions returns only a subset of function attribute fields. To retrieve more attribute fields for a specific function, including state, stateReasonCode, stateReason, lastUpdateStatus, lastUpdateStatusReasonCode, and lastUpdateStatusReason, use [GetFunction](https://help.aliyun.com/document_detail/2618610.html).
 //
 // @param request - ListFunctionsRequest
 //
@@ -4494,7 +4494,7 @@ func (client *Client) UpdateCustomDomain(domainName *string, request *UpdateCust
 
 // Summary:
 //
-// Updates a function\\"s configuration.
+// Updates function information.
 //
 // @param request - UpdateFunctionRequest
 //
@@ -4536,7 +4536,7 @@ func (client *Client) UpdateFunctionWithOptions(functionName *string, request *U
 
 // Summary:
 //
-// Updates a function\\"s configuration.
+// Updates function information.
 //
 // @param request - UpdateFunctionRequest
 //

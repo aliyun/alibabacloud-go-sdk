@@ -34,7 +34,7 @@ type TLSConfig struct {
 	//
 	// example:
 	//
-	// TLSv1.2
+	// TLSv1.0
 	MinVersion *string `json:"minVersion,omitempty" xml:"minVersion,omitempty"`
 }
 

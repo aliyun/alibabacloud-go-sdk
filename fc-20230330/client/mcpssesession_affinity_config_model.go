@@ -16,10 +16,14 @@ type iMCPSSESessionAffinityConfig interface {
 }
 
 type MCPSSESessionAffinityConfig struct {
+	// The maximum number of sessions that a single instance can handle through simultaneous processing. Valid values: 1 to 200.
+	//
 	// example:
 	//
 	// 20
 	SessionConcurrencyPerInstance *int64 `json:"sessionConcurrencyPerInstance,omitempty" xml:"sessionConcurrencyPerInstance,omitempty"`
+	// The SSE path.
+	//
 	// example:
 	//
 	// /sse

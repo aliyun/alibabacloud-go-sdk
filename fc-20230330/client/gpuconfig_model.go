@@ -26,7 +26,7 @@ type GPUConfig struct {
 	//
 	// example:
 	//
-	// fc.gpu.tesla.1
+	// fc.gpu.ampere.1
 	GpuType *string `json:"gpuType,omitempty" xml:"gpuType,omitempty"`
 }
 

@@ -24,15 +24,23 @@ type iPutProvisionConfigInput interface {
 }
 
 type PutProvisionConfigInput struct {
+	// Specifies whether to always allocate CPU. Default value: true.
+	//
 	// example:
 	//
 	// true
 	AlwaysAllocateCPU *bool `json:"alwaysAllocateCPU,omitempty" xml:"alwaysAllocateCPU,omitempty"`
+	// Specifies whether to always allocate GPU. Default value: true.
+	//
 	// example:
 	//
 	// true
 	AlwaysAllocateGPU *bool `json:"alwaysAllocateGPU,omitempty" xml:"alwaysAllocateGPU,omitempty"`
-	// The number of target provisioned instances. Valid values: [0,10000].
+	// The default minimum number of provisioned instances. Valid values: 0 to 10000.
+	//
+	// > - If no metric-based auto elastic policy or scheduled elastic policy is configured, the current minimum number of instances equals the minimum number of instances you configured.
+	//
+	// > - If you configured multiple elastic policies for the minimum number of instances, the system calculates the minimum number of instances triggered by each policy and uses the maximum value among the elastic policies that are effective at the current time as the current minimum number of instances.
 	//
 	// if can be null:
 	// true
@@ -41,9 +49,13 @@ type PutProvisionConfigInput struct {
 	//
 	// 5
 	DefaultTarget *int64 `json:"defaultTarget,omitempty" xml:"defaultTarget,omitempty"`
-	// public
+	// The scheduled scaling configuration.
 	ScheduledActions []*ScheduledAction `json:"scheduledActions" xml:"scheduledActions" type:"Repeated"`
 	// Deprecated
+	//
+	// 	Notice: This parameter is no longer recommended. Use the defaultTarget parameter instead.</notice>
+	//
+	// The target number of provisioned resources. Valid values: 0 to 10000.
 	//
 	// This parameter is required.
 	//
@@ -53,7 +65,8 @@ type PutProvisionConfigInput struct {
 	// example:
 	//
 	// 1
-	Target                 *int64                  `json:"target,omitempty" xml:"target,omitempty"`
+	Target *int64 `json:"target,omitempty" xml:"target,omitempty"`
+	// The metric-based scaling policy configuration.
 	TargetTrackingPolicies []*TargetTrackingPolicy `json:"targetTrackingPolicies" xml:"targetTrackingPolicies" type:"Repeated"`
 }
 
