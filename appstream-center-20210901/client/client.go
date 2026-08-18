@@ -911,6 +911,10 @@ func (client *Client) CreateImageByInstanceWithOptions(request *CreateImageByIns
 		body["BizType"] = request.BizType
 	}
 
+	if !dara.IsNil(request.CopyProfile) {
+		body["CopyProfile"] = request.CopyProfile
+	}
+
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
 	}

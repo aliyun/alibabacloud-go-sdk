@@ -678,6 +678,10 @@ func (client *Client) CreateImageByInstanceWithContext(ctx context.Context, requ
 		body["BizType"] = request.BizType
 	}
 
+	if !dara.IsNil(request.CopyProfile) {
+		body["CopyProfile"] = request.CopyProfile
+	}
+
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
 	}

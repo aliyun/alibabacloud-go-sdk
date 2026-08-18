@@ -13,6 +13,8 @@ type iCreateImageByInstanceRequest interface {
 	GetAutoCleanUserdata() *bool
 	SetBizType(v int32) *CreateImageByInstanceRequest
 	GetBizType() *int32
+	SetCopyProfile(v bool) *CreateImageByInstanceRequest
+	GetCopyProfile() *bool
 	SetDescription(v string) *CreateImageByInstanceRequest
 	GetDescription() *string
 	SetDiskType(v string) *CreateImageByInstanceRequest
@@ -32,7 +34,7 @@ type iCreateImageByInstanceRequest interface {
 }
 
 type CreateImageByInstanceRequest struct {
-	// This parameter applies only to Cloud Desktop instances. Specifies whether to clear user personal data. If set to true, the created image clears data in all directories under C:\\Users except Administrator and Public.
+	// This parameter applies only to Cloud Desktop scenarios. Specifies whether to clear user personal data. If set to true, the created image clears data in all directories under C:\\Users except Administrator and Public.
 	//
 	// example:
 	//
@@ -43,7 +45,8 @@ type CreateImageByInstanceRequest struct {
 	// example:
 	//
 	// 1
-	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	BizType     *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	CopyProfile *bool  `json:"CopyProfile,omitempty" xml:"CopyProfile,omitempty"`
 	// The image description.
 	//
 	// example:
@@ -105,6 +108,10 @@ func (s *CreateImageByInstanceRequest) GetBizType() *int32 {
 	return s.BizType
 }
 
+func (s *CreateImageByInstanceRequest) GetCopyProfile() *bool {
+	return s.CopyProfile
+}
+
 func (s *CreateImageByInstanceRequest) GetDescription() *string {
 	return s.Description
 }
@@ -144,6 +151,11 @@ func (s *CreateImageByInstanceRequest) SetAutoCleanUserdata(v bool) *CreateImage
 
 func (s *CreateImageByInstanceRequest) SetBizType(v int32) *CreateImageByInstanceRequest {
 	s.BizType = &v
+	return s
+}
+
+func (s *CreateImageByInstanceRequest) SetCopyProfile(v bool) *CreateImageByInstanceRequest {
+	s.CopyProfile = &v
 	return s
 }
 

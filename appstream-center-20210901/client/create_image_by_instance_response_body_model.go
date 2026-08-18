@@ -22,7 +22,7 @@ type iCreateImageByInstanceResponseBody interface {
 }
 
 type CreateImageByInstanceResponseBody struct {
-	// The error code returned when the request fails.
+	// The error code returned if the request failed.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type CreateImageByInstanceResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned object.
 	Data *CreateImageByInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned when the request fails.
+	// The error message returned if the request failed.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type CreateImageByInstanceResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. A value of true indicates success. A value of false indicates failure.
+	// Indicates whether the request was successful. Valid values: true and false.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ type CreateImageByInstanceResponseBodyData struct {
 	//
 	// imgc-07hnjj5fp****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The ID of the image creation task.
+	// The task ID for creating the image.
 	//
 	// example:
 	//
