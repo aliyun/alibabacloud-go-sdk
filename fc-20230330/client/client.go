@@ -482,6 +482,97 @@ func (client *Client) CreateSession(functionName *string, request *CreateSession
 
 // Summary:
 //
+// 从正常且未过期的微沙箱会话中创建用户快照。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该 API 用于从指定的微沙箱会话中创建一个用户快照。
+//
+// - 可选参数 `qualifier` 用于标识创建源会话时使用的有效别名或具体函数版本。如果省略，默认为 `LATEST`。
+//
+// - 必须提供 `sessionId` 参数，以指定要从中创建快照的客户端会话 ID。
+//
+// - 描述信息 `description` 是可选的，但若提供，则不能包含控制字符，并且长度限制为 256 个 UTF-8 字节。
+//
+// @param request - CreateSnapshotRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSnapshotResponse
+func (client *Client) CreateSnapshotWithOptions(functionName *string, request *CreateSnapshotRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateSnapshotResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Qualifier) {
+		query["qualifier"] = request.Qualifier
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSnapshot"),
+		Version:     dara.String("2023-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2023-03-30/functions/" + dara.PercentEncode(dara.StringValue(functionName)) + "/snapshots"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSnapshotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 从正常且未过期的微沙箱会话中创建用户快照。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该 API 用于从指定的微沙箱会话中创建一个用户快照。
+//
+// - 可选参数 `qualifier` 用于标识创建源会话时使用的有效别名或具体函数版本。如果省略，默认为 `LATEST`。
+//
+// - 必须提供 `sessionId` 参数，以指定要从中创建快照的客户端会话 ID。
+//
+// - 描述信息 `description` 是可选的，但若提供，则不能包含控制字符，并且长度限制为 256 个 UTF-8 字节。
+//
+// @param request - CreateSnapshotRequest
+//
+// @return CreateSnapshotResponse
+func (client *Client) CreateSnapshot(functionName *string, request *CreateSnapshotRequest) (_result *CreateSnapshotResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateSnapshotResponse{}
+	_body, _err := client.CreateSnapshotWithOptions(functionName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a trigger.
 //
 // @param request - CreateTriggerRequest
@@ -1159,6 +1250,90 @@ func (client *Client) DeleteSession(functionName *string, sessionId *string, req
 	headers := make(map[string]*string)
 	_result = &DeleteSessionResponse{}
 	_body, _err := client.DeleteSessionWithOptions(functionName, sessionId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除用户快照
+//
+// Description:
+//
+// - 该 API 用于删除指定函数下的用户 MicroSandbox 快照。
+//
+// - 删除成功后，快照进入异步删除流程；接口返回 202 Accepted 表示删除请求已受理，不等待底层 Template、artifact 等物理资源清理完成。
+//
+// - 已进入删除中的快照重复删除仍返回 202 Accepted。
+//
+// - 如果指定快照在当前函数作用域下不存在，返回 204 No Content，用于支持幂等删除。
+//
+// - 如果快照仍被已恢复的 Session 使用，或存在未确认可清理的 consumer relation，返回 409 SnapshotInUse，不会删除快照。
+//
+// @param request - DeleteSnapshotRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSnapshotResponse
+func (client *Client) DeleteSnapshotWithOptions(functionName *string, snapshotId *string, request *DeleteSnapshotRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteSnapshotResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSnapshot"),
+		Version:     dara.String("2023-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2023-03-30/functions/" + dara.PercentEncode(dara.StringValue(functionName)) + "/snapshots/" + dara.PercentEncode(dara.StringValue(snapshotId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &DeleteSnapshotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除用户快照
+//
+// Description:
+//
+// - 该 API 用于删除指定函数下的用户 MicroSandbox 快照。
+//
+// - 删除成功后，快照进入异步删除流程；接口返回 202 Accepted 表示删除请求已受理，不等待底层 Template、artifact 等物理资源清理完成。
+//
+// - 已进入删除中的快照重复删除仍返回 202 Accepted。
+//
+// - 如果指定快照在当前函数作用域下不存在，返回 204 No Content，用于支持幂等删除。
+//
+// - 如果快照仍被已恢复的 Session 使用，或存在未确认可清理的 consumer relation，返回 409 SnapshotInUse，不会删除快照。
+//
+// @param request - DeleteSnapshotRequest
+//
+// @return DeleteSnapshotResponse
+func (client *Client) DeleteSnapshot(functionName *string, snapshotId *string, request *DeleteSnapshotRequest) (_result *DeleteSnapshotResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteSnapshotResponse{}
+	_body, _err := client.DeleteSnapshotWithOptions(functionName, snapshotId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2165,6 +2340,82 @@ func (client *Client) GetSession(functionName *string, sessionId *string, reques
 	headers := make(map[string]*string)
 	_result = &GetSessionResponse{}
 	_body, _err := client.GetSessionWithOptions(functionName, sessionId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取快照信息
+//
+// Description:
+//
+// - 该 API 用于获取指定函数下的用户 MicroSandbox 快照信息。
+//
+// - 仅当快照属于当前函数、状态为 Available 且未过期时返回快照详情。
+//
+// - 快照不存在、已过期、正在创建、正在删除、属于内部快照或不属于当前函数时，均按不可见处理，返回 404 SnapshotNotFound。
+//
+// @param request - GetSnapshotRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSnapshotResponse
+func (client *Client) GetSnapshotWithOptions(functionName *string, snapshotId *string, request *GetSnapshotRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSnapshotResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSnapshot"),
+		Version:     dara.String("2023-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2023-03-30/functions/" + dara.PercentEncode(dara.StringValue(functionName)) + "/snapshots/" + dara.PercentEncode(dara.StringValue(snapshotId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSnapshotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取快照信息
+//
+// Description:
+//
+// - 该 API 用于获取指定函数下的用户 MicroSandbox 快照信息。
+//
+// - 仅当快照属于当前函数、状态为 Available 且未过期时返回快照详情。
+//
+// - 快照不存在、已过期、正在创建、正在删除、属于内部快照或不属于当前函数时，均按不可见处理，返回 404 SnapshotNotFound。
+//
+// @param request - GetSnapshotRequest
+//
+// @return GetSnapshotResponse
+func (client *Client) GetSnapshot(functionName *string, snapshotId *string, request *GetSnapshotRequest) (_result *GetSnapshotResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetSnapshotResponse{}
+	_body, _err := client.GetSnapshotWithOptions(functionName, snapshotId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3387,6 +3638,112 @@ func (client *Client) ListSessions(functionName *string, request *ListSessionsRe
 	headers := make(map[string]*string)
 	_result = &ListSessionsResponse{}
 	_body, _err := client.ListSessionsWithOptions(functionName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出快照信息
+//
+// Description:
+//
+// - 该 API 用于列出当前账号下可见的用户 MicroSandbox 快照。
+//
+// - 仅返回未过期且状态为 Available 的用户快照。
+//
+// - 支持四种筛选方式：账号级列表、按函数过滤、按函数和源 SessionID 过滤、按函数、源 SessionID 和创建时 qualifier 过滤。
+//
+// - 结果按创建时间和快照 ID 稳定降序分页。
+//
+// - ListSnapshots 使用搜索索引查询，短时间内可能存在最终一致性延迟；GetSnapshot 和使用快照创建 Session 以主表强读为准。
+//
+// @param request - ListSnapshotsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSnapshotsResponse
+func (client *Client) ListSnapshotsWithOptions(request *ListSnapshotsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSnapshotsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FunctionName) {
+		query["functionName"] = request.FunctionName
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Qualifier) {
+		query["qualifier"] = request.Qualifier
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["sessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSnapshots"),
+		Version:     dara.String("2023-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2023-03-30/snapshots"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSnapshotsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出快照信息
+//
+// Description:
+//
+// - 该 API 用于列出当前账号下可见的用户 MicroSandbox 快照。
+//
+// - 仅返回未过期且状态为 Available 的用户快照。
+//
+// - 支持四种筛选方式：账号级列表、按函数过滤、按函数和源 SessionID 过滤、按函数、源 SessionID 和创建时 qualifier 过滤。
+//
+// - 结果按创建时间和快照 ID 稳定降序分页。
+//
+// - ListSnapshots 使用搜索索引查询，短时间内可能存在最终一致性延迟；GetSnapshot 和使用快照创建 Session 以主表强读为准。
+//
+// @param request - ListSnapshotsRequest
+//
+// @return ListSnapshotsResponse
+func (client *Client) ListSnapshots(request *ListSnapshotsRequest) (_result *ListSnapshotsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSnapshotsResponse{}
+	_body, _err := client.ListSnapshotsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
