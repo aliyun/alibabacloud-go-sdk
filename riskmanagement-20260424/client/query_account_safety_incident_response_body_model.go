@@ -190,6 +190,7 @@ type QueryAccountSafetyIncidentResponseBodyDataList struct {
 	//
 	// 2026-03-16 15:15:00
 	AntiPunishTime *string `json:"AntiPunishTime,omitempty" xml:"AntiPunishTime,omitempty"`
+	CallApi        *string `json:"CallApi,omitempty" xml:"CallApi,omitempty"`
 	// The control action time information.
 	DateExtras *QueryAccountSafetyIncidentResponseBodyDataListDateExtras `json:"DateExtras,omitempty" xml:"DateExtras,omitempty" type:"Struct"`
 	// The event ID.
@@ -215,7 +216,10 @@ type QueryAccountSafetyIncidentResponseBodyDataList struct {
 	// example:
 	//
 	// ak leak.
-	EventReason *string `json:"EventReason,omitempty" xml:"EventReason,omitempty"`
+	EventReason       *string `json:"EventReason,omitempty" xml:"EventReason,omitempty"`
+	EventType         *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	ExceptionCallTime *string `json:"ExceptionCallTime,omitempty" xml:"ExceptionCallTime,omitempty"`
+	ExceptionIp       *string `json:"ExceptionIp,omitempty" xml:"ExceptionIp,omitempty"`
 	// The start time of the control action.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
@@ -296,6 +300,10 @@ func (s *QueryAccountSafetyIncidentResponseBodyDataList) GetAntiPunishTime() *st
 	return s.AntiPunishTime
 }
 
+func (s *QueryAccountSafetyIncidentResponseBodyDataList) GetCallApi() *string {
+	return s.CallApi
+}
+
 func (s *QueryAccountSafetyIncidentResponseBodyDataList) GetDateExtras() *QueryAccountSafetyIncidentResponseBodyDataListDateExtras {
 	return s.DateExtras
 }
@@ -314,6 +322,18 @@ func (s *QueryAccountSafetyIncidentResponseBodyDataList) GetEventName() *string 
 
 func (s *QueryAccountSafetyIncidentResponseBodyDataList) GetEventReason() *string {
 	return s.EventReason
+}
+
+func (s *QueryAccountSafetyIncidentResponseBodyDataList) GetEventType() *string {
+	return s.EventType
+}
+
+func (s *QueryAccountSafetyIncidentResponseBodyDataList) GetExceptionCallTime() *string {
+	return s.ExceptionCallTime
+}
+
+func (s *QueryAccountSafetyIncidentResponseBodyDataList) GetExceptionIp() *string {
+	return s.ExceptionIp
 }
 
 func (s *QueryAccountSafetyIncidentResponseBodyDataList) GetPunishTime() *string {
@@ -363,6 +383,11 @@ func (s *QueryAccountSafetyIncidentResponseBodyDataList) SetAntiPunishTime(v str
 	return s
 }
 
+func (s *QueryAccountSafetyIncidentResponseBodyDataList) SetCallApi(v string) *QueryAccountSafetyIncidentResponseBodyDataList {
+	s.CallApi = &v
+	return s
+}
+
 func (s *QueryAccountSafetyIncidentResponseBodyDataList) SetDateExtras(v *QueryAccountSafetyIncidentResponseBodyDataListDateExtras) *QueryAccountSafetyIncidentResponseBodyDataList {
 	s.DateExtras = v
 	return s
@@ -385,6 +410,21 @@ func (s *QueryAccountSafetyIncidentResponseBodyDataList) SetEventName(v string) 
 
 func (s *QueryAccountSafetyIncidentResponseBodyDataList) SetEventReason(v string) *QueryAccountSafetyIncidentResponseBodyDataList {
 	s.EventReason = &v
+	return s
+}
+
+func (s *QueryAccountSafetyIncidentResponseBodyDataList) SetEventType(v string) *QueryAccountSafetyIncidentResponseBodyDataList {
+	s.EventType = &v
+	return s
+}
+
+func (s *QueryAccountSafetyIncidentResponseBodyDataList) SetExceptionCallTime(v string) *QueryAccountSafetyIncidentResponseBodyDataList {
+	s.ExceptionCallTime = &v
+	return s
+}
+
+func (s *QueryAccountSafetyIncidentResponseBodyDataList) SetExceptionIp(v string) *QueryAccountSafetyIncidentResponseBodyDataList {
+	s.ExceptionIp = &v
 	return s
 }
 

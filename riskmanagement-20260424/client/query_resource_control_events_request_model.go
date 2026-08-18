@@ -87,7 +87,8 @@ type QueryResourceControlEventsRequest struct {
 	// example:
 	//
 	// ecs
-	BusinessCode  *string   `json:"BusinessCode,omitempty" xml:"BusinessCode,omitempty"`
+	BusinessCode *string `json:"BusinessCode,omitempty" xml:"BusinessCode,omitempty"`
+	// The list of product types.
 	BusinessCodes []*string `json:"BusinessCodes,omitempty" xml:"BusinessCodes,omitempty" type:"Repeated"`
 	// The collection of event name code prefixes.
 	//
@@ -114,6 +115,8 @@ type QueryResourceControlEventsRequest struct {
 	// BANFF_ECS_PE_ECS_MINING_SHUTDOWN
 	EventCode *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
 	// The collection of event name codes.
+	//
+	// > Example: [\\\\\\"BANFF_ECS_PE_ECS_MINING_SHUTDOWN\\\\\\"]
 	//
 	// example:
 	//
@@ -189,7 +192,7 @@ type QueryResourceControlEventsRequest struct {
 	//
 	// example:
 	//
-	// Cryptomining.
+	// Cryptomining
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The collection of event source codes.
 	//
@@ -203,7 +206,17 @@ type QueryResourceControlEventsRequest struct {
 	//
 	// Executing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The collection of task statuses.
+	// The collection of task statuses. Valid values:
+	//
+	// - **Executing**: executing
+	//
+	// - **Removed**: removed
+	//
+	// - **Alerting**: alerting
+	//
+	// - **Ended**: ended
+	//
+	// - **Processed**: processed by the user and under platform review
 	//
 	// example:
 	//

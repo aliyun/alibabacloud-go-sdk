@@ -174,15 +174,15 @@ type QueryResourceControlEventsResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// Cryptomining alert.
+	// Cryptomining alert
 	ActionName *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
-	// The time when the alert ended.
+	// The alert end time.
 	//
 	// example:
 	//
 	// 2026-03-16 15:15:00
 	AlertEndTime *string `json:"AlertEndTime,omitempty" xml:"AlertEndTime,omitempty"`
-	// The time when the first alert was triggered.
+	// The first alert time.
 	//
 	// example:
 	//
@@ -201,6 +201,14 @@ type QueryResourceControlEventsResponseBodyDataList struct {
 	// 1
 	ApplyRecordCount *int32 `json:"ApplyRecordCount,omitempty" xml:"ApplyRecordCount,omitempty"`
 	// The application status.
+	//
+	// Valid values:
+	//
+	// - **AUDIT**: Under review.
+	//
+	// - **SUCCESS**: Approved.
+	//
+	// - **FAIL**: Rejected.
 	//
 	// example:
 	//
@@ -240,7 +248,7 @@ type QueryResourceControlEventsResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// Mining control event.
+	// Mining control event
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	// The extended information about the penalty.
 	//
@@ -300,7 +308,7 @@ type QueryResourceControlEventsResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// Cryptomining alert.
+	// Cryptomining alert
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The region information.
 	//
@@ -321,6 +329,16 @@ type QueryResourceControlEventsResponseBodyDataList struct {
 	// Suggestion
 	Reinforcement *string `json:"Reinforcement,omitempty" xml:"Reinforcement,omitempty"`
 	// The task status.
+	//
+	// - **Executing**: executing
+	//
+	// - **Removed**: removed
+	//
+	// - **Alerting**: alerting
+	//
+	// - **Ended**: ended
+	//
+	// - **Processed**: processed by the user and under platform review
 	//
 	// example:
 	//
@@ -650,7 +668,7 @@ type QueryResourceControlEventsResponseBodyDataPageInfo struct {
 	//
 	// 1
 	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
-	// The number of records per page.
+	// The number of records returned per page.
 	//
 	// example:
 	//
