@@ -26,30 +26,50 @@ type iModelRouterListDeptMembersRequest interface {
 }
 
 type ModelRouterListDeptMembersRequest struct {
+	// The authorization configuration filter. Valid values:
+	//
+	// - inherit: only members that inherit department settings.
+	//
+	// - custom: only members with custom settings.
+	//
+	// - Empty: all members.
+	//
 	// example:
 	//
 	// inherit
 	AuthConfig *string `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
+	// Specifies whether to include the authorized models and the number of associated keys for the member.
+	//
 	// example:
 	//
 	// false
 	IncludeAuthorization *bool `json:"includeAuthorization,omitempty" xml:"includeAuthorization,omitempty"`
+	// Specifies whether to include the monthly and permanent balance of the member\\"s sub-wallet.
+	//
 	// example:
 	//
 	// true
 	IncludeBalance *bool `json:"includeBalance,omitempty" xml:"includeBalance,omitempty"`
+	// The search keyword.
+	//
 	// example:
 	//
-	// 张三
+	// John
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// Filters members by the authorized model ID.
+	//
 	// example:
 	//
 	// 1
 	Model *string `json:"model,omitempty" xml:"model,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20

@@ -26,7 +26,7 @@ type UserDepartmentDTO struct {
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
 	// example:
 	//
-	// 研发部
+	// R&D Department
 	ClientName *string `json:"clientName,omitempty" xml:"clientName,omitempty"`
 	// example:
 	//
@@ -34,7 +34,7 @@ type UserDepartmentDTO struct {
 	RoleCode *string `json:"roleCode,omitempty" xml:"roleCode,omitempty"`
 	// example:
 	//
-	// 成员
+	// Member
 	RoleName *string `json:"roleName,omitempty" xml:"roleName,omitempty"`
 }
 

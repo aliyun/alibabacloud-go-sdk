@@ -40,7 +40,7 @@ type ModelRouterCreateUserRequest struct {
 	//
 	// example:
 	//
-	// John Smith
+	// John
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The phone number. This parameter is required.
 	//

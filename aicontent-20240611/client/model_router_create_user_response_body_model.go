@@ -134,7 +134,7 @@ func (s *ModelRouterCreateUserResponseBody) Validate() error {
 }
 
 type ModelRouterCreateUserResponseBodyData struct {
-	// The user ID. This ID is used as the userId addressing key for subsequent member API operations.
+	// The user ID. This ID is used as the userId addressing key for subsequent member-related operations.
 	//
 	// example:
 	//

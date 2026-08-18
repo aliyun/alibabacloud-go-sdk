@@ -13,6 +13,8 @@ type iModelRouterQueryCostTrendMetricsRequest interface {
 	GetApiKeyId() *int64
 	SetClientId(v int64) *ModelRouterQueryCostTrendMetricsRequest
 	GetClientId() *int64
+	SetClientIds(v string) *ModelRouterQueryCostTrendMetricsRequest
+	GetClientIds() *string
 	SetEndTime(v int64) *ModelRouterQueryCostTrendMetricsRequest
 	GetEndTime() *int64
 	SetGranularity(v string) *ModelRouterQueryCostTrendMetricsRequest
@@ -30,19 +32,25 @@ type iModelRouterQueryCostTrendMetricsRequest interface {
 }
 
 type ModelRouterQueryCostTrendMetricsRequest struct {
-	// Optional. Filters results by API Key ID. This parameter works in conjunction with the department and requires clientId to be specified first.
+	// Optional. Filters by API Key ID. This parameter is linked to the department and requires clientId to be specified first.
 	//
 	// example:
 	//
 	// 100
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
-	// Filters results by department ID.
+	// The department ID used to filter results.
 	//
 	// example:
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
-	// The end time, in UNIX timestamp format (seconds).
+	// The list of department IDs, separated by commas. Supports querying data for multiple departments. This parameter is mutually exclusive with clientId.
+	//
+	// example:
+	//
+	// 1,2,3
+	ClientIds *string `json:"clientIds,omitempty" xml:"clientIds,omitempty"`
+	// The end time, as a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +76,7 @@ type ModelRouterQueryCostTrendMetricsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Optional. Filters results by members (member IDs, separated by commas). If not specified, the department and all its members are included. If an empty value is specified, only the department is included without members.
+	// Optional. Filters by member IDs, separated by commas. If not specified, data for the department and all its members is returned. If an empty value is specified, only department data without members is returned.
 	//
 	// example:
 	//
@@ -86,7 +94,7 @@ type ModelRouterQueryCostTrendMetricsRequest struct {
 	//
 	// xxxx-xxx-xxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The start time, in UNIX timestamp format (seconds).
+	// The start time, as a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -110,6 +118,10 @@ func (s *ModelRouterQueryCostTrendMetricsRequest) GetApiKeyId() *int64 {
 
 func (s *ModelRouterQueryCostTrendMetricsRequest) GetClientId() *int64 {
 	return s.ClientId
+}
+
+func (s *ModelRouterQueryCostTrendMetricsRequest) GetClientIds() *string {
+	return s.ClientIds
 }
 
 func (s *ModelRouterQueryCostTrendMetricsRequest) GetEndTime() *int64 {
@@ -147,6 +159,11 @@ func (s *ModelRouterQueryCostTrendMetricsRequest) SetApiKeyId(v int64) *ModelRou
 
 func (s *ModelRouterQueryCostTrendMetricsRequest) SetClientId(v int64) *ModelRouterQueryCostTrendMetricsRequest {
 	s.ClientId = &v
+	return s
+}
+
+func (s *ModelRouterQueryCostTrendMetricsRequest) SetClientIds(v string) *ModelRouterQueryCostTrendMetricsRequest {
+	s.ClientIds = &v
 	return s
 }
 

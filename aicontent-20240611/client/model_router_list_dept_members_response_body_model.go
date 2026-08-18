@@ -24,26 +24,38 @@ type iModelRouterListDeptMembersResponseBody interface {
 }
 
 type ModelRouterListDeptMembersResponseBody struct {
+	// The response data object.
+	//
 	// example:
 	//
 	// {}
 	Data *ModelRouterListDeptMembersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The fault code.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -122,18 +134,26 @@ func (s *ModelRouterListDeptMembersResponseBody) Validate() error {
 }
 
 type ModelRouterListDeptMembersResponseBodyData struct {
+	// The list of returned data.
+	//
 	// example:
 	//
 	// []
 	List []*DeptMemberDTO `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 0

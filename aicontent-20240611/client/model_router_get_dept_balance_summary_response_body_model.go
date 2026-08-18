@@ -24,26 +24,38 @@ type iModelRouterGetDeptBalanceSummaryResponseBody interface {
 }
 
 type ModelRouterGetDeptBalanceSummaryResponseBody struct {
+	// The data object.
+	//
 	// example:
 	//
 	// {}
 	Data *DeptBalanceSummaryDTO `json:"data,omitempty" xml:"data,omitempty"`
+	// The fault message code.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

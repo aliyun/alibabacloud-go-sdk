@@ -18,14 +18,20 @@ type iModelRouterBatchCreateMemberApiKeysRequest interface {
 }
 
 type ModelRouterBatchCreateMemberApiKeysRequest struct {
+	// The expiration time in RFC 3339 format. This parameter is optional. If not specified, the key is permanently valid.
+	//
 	// example:
 	//
 	// 2027-01-01T00:00:00Z
 	ExpireAt *string `json:"expireAt,omitempty" xml:"expireAt,omitempty"`
+	// The key name. This parameter is optional.
+	//
 	// example:
 	//
 	// TestKey
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The list of member user IDs.
+	//
 	// example:
 	//
 	// []

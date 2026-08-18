@@ -188,7 +188,7 @@ type ModelRouterCreateBillingRuleResponseBodyData struct {
 	//
 	// example:
 	//
-	// 通义千问Plus
+	// Qwen-Plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
 	// The model type.
 	//

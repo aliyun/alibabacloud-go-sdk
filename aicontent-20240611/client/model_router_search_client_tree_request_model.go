@@ -14,9 +14,11 @@ type iModelRouterSearchClientTreeRequest interface {
 }
 
 type ModelRouterSearchClientTreeRequest struct {
+	// The search keyword, which can be a department name, username, or phone number.
+	//
 	// example:
 	//
-	// 研发部
+	// R&D Department
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
 }
 

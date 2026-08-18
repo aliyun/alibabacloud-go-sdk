@@ -34,7 +34,7 @@ type ModelRouterQueryObservationLogsResponseBody struct {
 	//
 	// []
 	Data *ModelRouterQueryObservationLogsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The fault information code.
+	// The fault code.
 	//
 	// example:
 	//
@@ -168,23 +168,34 @@ func (s *ModelRouterQueryObservationLogsResponseBody) Validate() error {
 }
 
 type ModelRouterQueryObservationLogsResponseBodyData struct {
+	// The list of log data.
 	List []*RequestLogDTO `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// maxResults
+	//
 	// example:
 	//
 	// 1
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token for the next query.
+	//
 	// example:
 	//
 	// 0
 	NextToken *int32 `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The number of entries returned per page. Default value: 10. Maximum value: 50.
+	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// None

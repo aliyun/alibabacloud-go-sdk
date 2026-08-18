@@ -13,6 +13,8 @@ type iModelRouterQueryObservationLogsRequest interface {
 	GetApiKeyId() *int64
 	SetClientId(v int64) *ModelRouterQueryObservationLogsRequest
 	GetClientId() *int64
+	SetClientIds(v string) *ModelRouterQueryObservationLogsRequest
+	GetClientIds() *string
 	SetEndTime(v string) *ModelRouterQueryObservationLogsRequest
 	GetEndTime() *string
 	SetGroupBy(v string) *ModelRouterQueryObservationLogsRequest
@@ -42,18 +44,24 @@ type iModelRouterQueryObservationLogsRequest interface {
 }
 
 type ModelRouterQueryObservationLogsRequest struct {
-	// The API key ID used to filter the results.
+	// The API key ID used to filter results.
 	//
 	// example:
 	//
 	// 1
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
-	// The client ID used to filter the results.
+	// The client ID used to filter results.
 	//
 	// example:
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The list of department IDs, separated by commas. You can query data for multiple departments. This parameter is mutually exclusive with client_id.
+	//
+	// example:
+	//
+	// 1,2,3
+	ClientIds *string `json:"clientIds,omitempty" xml:"clientIds,omitempty"`
 	// The custom end time.
 	//
 	// example:
@@ -72,11 +80,13 @@ type ModelRouterQueryObservationLogsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Optional. Filters results by member user IDs, separated by commas. If not specified, data for the department and all its members is returned. If an empty value is specified, only department data without member data is returned.
+	//
 	// example:
 	//
 	// 30001,30002
 	MemberUserIds *string `json:"memberUserIds,omitempty" xml:"memberUserIds,omitempty"`
-	// The model ID used to filter the results.
+	// The model ID used to filter results.
 	//
 	// example:
 	//
@@ -124,7 +134,7 @@ type ModelRouterQueryObservationLogsRequest struct {
 	//
 	// 2024-01-01T00:00:00Z
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The time range for the query. Valid values: 1h, 6h, 24h, 7d, 30d.
+	// The time range for the query. Valid values: 1h, 6h, 24h, 7d, and 30d.
 	//
 	// example:
 	//
@@ -146,6 +156,10 @@ func (s *ModelRouterQueryObservationLogsRequest) GetApiKeyId() *int64 {
 
 func (s *ModelRouterQueryObservationLogsRequest) GetClientId() *int64 {
 	return s.ClientId
+}
+
+func (s *ModelRouterQueryObservationLogsRequest) GetClientIds() *string {
+	return s.ClientIds
 }
 
 func (s *ModelRouterQueryObservationLogsRequest) GetEndTime() *string {
@@ -207,6 +221,11 @@ func (s *ModelRouterQueryObservationLogsRequest) SetApiKeyId(v int64) *ModelRout
 
 func (s *ModelRouterQueryObservationLogsRequest) SetClientId(v int64) *ModelRouterQueryObservationLogsRequest {
 	s.ClientId = &v
+	return s
+}
+
+func (s *ModelRouterQueryObservationLogsRequest) SetClientIds(v string) *ModelRouterQueryObservationLogsRequest {
+	s.ClientIds = &v
 	return s
 }
 

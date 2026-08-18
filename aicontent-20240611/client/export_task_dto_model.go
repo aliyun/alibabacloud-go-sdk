@@ -39,7 +39,7 @@ type ExportTaskDTO struct {
   Error *string `json:"error,omitempty" xml:"error,omitempty"`
   // example:
   // 
-  // 成员余额变更记录_20260730.csv
+  // MemberBalanceChangeRecords_20260730.csv
   Filename *string `json:"filename,omitempty" xml:"filename,omitempty"`
   // example:
   // 

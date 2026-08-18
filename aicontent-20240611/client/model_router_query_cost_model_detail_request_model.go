@@ -13,6 +13,8 @@ type iModelRouterQueryCostModelDetailRequest interface {
 	GetApiKeyId() *int64
 	SetClientId(v int64) *ModelRouterQueryCostModelDetailRequest
 	GetClientId() *int64
+	SetClientIds(v string) *ModelRouterQueryCostModelDetailRequest
+	GetClientIds() *string
 	SetEndTime(v int64) *ModelRouterQueryCostModelDetailRequest
 	GetEndTime() *int64
 	SetMaxResults(v int32) *ModelRouterQueryCostModelDetailRequest
@@ -46,6 +48,12 @@ type ModelRouterQueryCostModelDetailRequest struct {
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The list of department IDs, separated by commas. Supports querying data for multiple departments. This parameter is mutually exclusive with clientId.
+	//
+	// example:
+	//
+	// 1,2,3
+	ClientIds *string `json:"clientIds,omitempty" xml:"clientIds,omitempty"`
 	// The end time, in UNIX timestamp (seconds).
 	//
 	// This parameter is required.
@@ -60,7 +68,7 @@ type ModelRouterQueryCostModelDetailRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Optional. Filters by member IDs. Separate multiple IDs with commas. If not specified, the department and all its members are included. If an empty value is specified, only the department is included without members.
+	// Optional. Filters by member IDs, separated by commas. If not specified, the department and all its members are included. If an empty value is specified, only the department is included without members.
 	//
 	// example:
 	//
@@ -124,6 +132,10 @@ func (s *ModelRouterQueryCostModelDetailRequest) GetClientId() *int64 {
 	return s.ClientId
 }
 
+func (s *ModelRouterQueryCostModelDetailRequest) GetClientIds() *string {
+	return s.ClientIds
+}
+
 func (s *ModelRouterQueryCostModelDetailRequest) GetEndTime() *int64 {
 	return s.EndTime
 }
@@ -167,6 +179,11 @@ func (s *ModelRouterQueryCostModelDetailRequest) SetApiKeyId(v int64) *ModelRout
 
 func (s *ModelRouterQueryCostModelDetailRequest) SetClientId(v int64) *ModelRouterQueryCostModelDetailRequest {
 	s.ClientId = &v
+	return s
+}
+
+func (s *ModelRouterQueryCostModelDetailRequest) SetClientIds(v string) *ModelRouterQueryCostModelDetailRequest {
+	s.ClientIds = &v
 	return s
 }
 

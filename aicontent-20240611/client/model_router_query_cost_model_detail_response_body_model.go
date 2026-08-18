@@ -34,7 +34,7 @@ type ModelRouterQueryCostModelDetailResponseBody struct {
 	//
 	// []
 	Data *CostModelDetailRespDTO `json:"data,omitempty" xml:"data,omitempty"`
-	// The fault code.
+	// The error message code.
 	//
 	// example:
 	//

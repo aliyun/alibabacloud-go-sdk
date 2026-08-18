@@ -24,26 +24,38 @@ type iModelRouterListMemberSubscriptionsResponseBody interface {
 }
 
 type ModelRouterListMemberSubscriptionsResponseBody struct {
+	// The response data object.
+	//
 	// example:
 	//
 	// {}
 	Data *ModelRouterListMemberSubscriptionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The fault information code.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -122,6 +134,8 @@ func (s *ModelRouterListMemberSubscriptionsResponseBody) Validate() error {
 }
 
 type ModelRouterListMemberSubscriptionsResponseBodyData struct {
+	// The response data list.
+	//
 	// example:
 	//
 	// []

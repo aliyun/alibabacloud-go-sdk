@@ -34,7 +34,7 @@ type ModelRouterQueryCostOverviewMetricsResponseBody struct {
 	//
 	// []
 	Data []*MetricValueDTO `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The fault code.
+	// The fault information code.
 	//
 	// example:
 	//

@@ -24,26 +24,38 @@ type iModelRouterGetMemberBalanceLogsResponseBody interface {
 }
 
 type ModelRouterGetMemberBalanceLogsResponseBody struct {
+	// The response data object.
+	//
 	// example:
 	//
 	// {}
 	Data *ModelRouterGetMemberBalanceLogsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The fault code.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -122,18 +134,26 @@ func (s *ModelRouterGetMemberBalanceLogsResponseBody) Validate() error {
 }
 
 type ModelRouterGetMemberBalanceLogsResponseBodyData struct {
+	// The list of balance change logs.
+	//
 	// example:
 	//
 	// []
 	List []*ClientBalanceLogDTO `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 0

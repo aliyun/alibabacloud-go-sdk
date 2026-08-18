@@ -22,25 +22,41 @@ type iModelRouterTransferToMemberRequest interface {
 }
 
 type ModelRouterTransferToMemberRequest struct {
+	// The transfer amount.
+	//
 	// example:
 	//
 	// 100.00
 	Amount *float64 `json:"amount,omitempty" xml:"amount,omitempty"`
+	// The balance type. Valid values:
+	//
+	// - permanent
+	//
+	// - monthly
+	//
+	// Default value: permanent.
+	//
 	// example:
 	//
 	// permanent
 	BalanceType *string `json:"balanceType,omitempty" xml:"balanceType,omitempty"`
+	// The idempotency key. UUID v4 format is recommended.
+	//
 	// example:
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	IdempotencyKey *string `json:"idempotencyKey,omitempty" xml:"idempotencyKey,omitempty"`
+	// The monthly refresh quota for monthly-type transfers.
+	//
 	// example:
 	//
 	// 0
 	MonthlyQuota *float64 `json:"monthlyQuota,omitempty" xml:"monthlyQuota,omitempty"`
+	// The remark for the transfer.
+	//
 	// example:
 	//
-	// 转账
+	// Transfer
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 

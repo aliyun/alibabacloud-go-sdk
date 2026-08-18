@@ -13,6 +13,8 @@ type iModelRouterQueryCostOverviewMetricsRequest interface {
 	GetApiKeyId() *int64
 	SetClientId(v int64) *ModelRouterQueryCostOverviewMetricsRequest
 	GetClientId() *int64
+	SetClientIds(v string) *ModelRouterQueryCostOverviewMetricsRequest
+	GetClientIds() *string
 	SetEndTime(v int64) *ModelRouterQueryCostOverviewMetricsRequest
 	GetEndTime() *int64
 	SetGranularity(v string) *ModelRouterQueryCostOverviewMetricsRequest
@@ -30,19 +32,25 @@ type iModelRouterQueryCostOverviewMetricsRequest interface {
 }
 
 type ModelRouterQueryCostOverviewMetricsRequest struct {
-	// Optional. Filters by API key ID. This parameter works in conjunction with the department and requires clientId to be specified first.
+	// Optional. Filters results by API Key ID. This parameter is linked to the department and requires clientId to be specified first.
 	//
 	// example:
 	//
 	// 100
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
-	// The department ID used to filter results.
+	// Filters results by department ID.
 	//
 	// example:
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
-	// The end time, as a UNIX timestamp in seconds.
+	// The list of department IDs, separated by commas. Supports querying data for multiple departments. This parameter is mutually exclusive with clientId.
+	//
+	// example:
+	//
+	// 1,2,3
+	ClientIds *string `json:"clientIds,omitempty" xml:"clientIds,omitempty"`
+	// The end time, in UNIX timestamp (seconds).
 	//
 	// This parameter is required.
 	//
@@ -50,7 +58,7 @@ type ModelRouterQueryCostOverviewMetricsRequest struct {
 	//
 	// 1700086400
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// Automatically aggregated. No input required. The granularity of the data. Valid values: hourly and daily. Default value: hourly.
+	// Automatically aggregated. No input required. The granularity. Valid values: hourly and daily. Default value: hourly.
 	//
 	// example:
 	//
@@ -62,7 +70,7 @@ type ModelRouterQueryCostOverviewMetricsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Optional. Filters by members (member IDs, separated by commas). If not specified, the department and all its members are included. If an empty value is specified, only the department is included without members.
+	// Optional. Filters results by member IDs, separated by commas. If not specified, the department and all its members are included. If an empty value is specified, only the department is included without members.
 	//
 	// example:
 	//
@@ -80,7 +88,7 @@ type ModelRouterQueryCostOverviewMetricsRequest struct {
 	//
 	// xxxx-xxx-xxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The start time, as a UNIX timestamp in seconds.
+	// The start time, in UNIX timestamp (seconds).
 	//
 	// This parameter is required.
 	//
@@ -104,6 +112,10 @@ func (s *ModelRouterQueryCostOverviewMetricsRequest) GetApiKeyId() *int64 {
 
 func (s *ModelRouterQueryCostOverviewMetricsRequest) GetClientId() *int64 {
 	return s.ClientId
+}
+
+func (s *ModelRouterQueryCostOverviewMetricsRequest) GetClientIds() *string {
+	return s.ClientIds
 }
 
 func (s *ModelRouterQueryCostOverviewMetricsRequest) GetEndTime() *int64 {
@@ -141,6 +153,11 @@ func (s *ModelRouterQueryCostOverviewMetricsRequest) SetApiKeyId(v int64) *Model
 
 func (s *ModelRouterQueryCostOverviewMetricsRequest) SetClientId(v int64) *ModelRouterQueryCostOverviewMetricsRequest {
 	s.ClientId = &v
+	return s
+}
+
+func (s *ModelRouterQueryCostOverviewMetricsRequest) SetClientIds(v string) *ModelRouterQueryCostOverviewMetricsRequest {
+	s.ClientIds = &v
 	return s
 }
 

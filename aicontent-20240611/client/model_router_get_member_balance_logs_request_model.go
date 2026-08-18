@@ -20,18 +20,26 @@ type iModelRouterGetMemberBalanceLogsRequest interface {
 }
 
 type ModelRouterGetMemberBalanceLogsRequest struct {
+	// The change type filter.
+	//
 	// example:
 	//
 	// recharge
 	ChangeType *string `json:"changeType,omitempty" xml:"changeType,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// Specifies whether to skip the total count calculation.
+	//
 	// example:
 	//
 	// false

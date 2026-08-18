@@ -30,7 +30,7 @@ type ModelRouterCreateBalanceTransactionResponseBody struct {
 	//
 	// {}
 	Data *ClientBalanceDTO `json:"data,omitempty" xml:"data,omitempty"`
-	// The error message code.
+	// The fault message encoding.
 	//
 	// example:
 	//

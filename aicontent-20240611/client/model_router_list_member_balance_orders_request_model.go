@@ -22,22 +22,32 @@ type iModelRouterListMemberBalanceOrdersRequest interface {
 }
 
 type ModelRouterListMemberBalanceOrdersRequest struct {
+	// The balance type filter. Valid values: permanent and monthly.
+	//
 	// example:
 	//
 	// permanent
 	BalanceType *string `json:"balanceType,omitempty" xml:"balanceType,omitempty"`
+	// The change direction filter. Valid values: in and out.
+	//
 	// example:
 	//
 	// in
 	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
+	// The change type filter.
+	//
 	// example:
 	//
 	// recharge
 	OrderType *string `json:"orderType,omitempty" xml:"orderType,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20

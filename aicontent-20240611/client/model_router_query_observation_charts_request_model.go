@@ -13,6 +13,8 @@ type iModelRouterQueryObservationChartsRequest interface {
 	GetApiKeyId() *int64
 	SetClientId(v int64) *ModelRouterQueryObservationChartsRequest
 	GetClientId() *int64
+	SetClientIds(v string) *ModelRouterQueryObservationChartsRequest
+	GetClientIds() *string
 	SetEndTime(v string) *ModelRouterQueryObservationChartsRequest
 	GetEndTime() *string
 	SetMemberUserIds(v string) *ModelRouterQueryObservationChartsRequest
@@ -38,13 +40,19 @@ type ModelRouterQueryObservationChartsRequest struct {
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The list of department IDs, separated by commas. Supports querying data for multiple departments. This parameter is mutually exclusive with client_id.
+	//
+	// example:
+	//
+	// 1,2,3
+	ClientIds *string `json:"clientIds,omitempty" xml:"clientIds,omitempty"`
 	// The custom end time.
 	//
 	// example:
 	//
 	// 2024-01-02T00:00:00Z
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// Optional. Filters by member IDs. Separate multiple IDs with commas. If this parameter is not specified, the department and all its members are included. If an empty value is specified, only the department is included without members.
+	// Optional. Filters by member IDs, separated by commas. If not specified, the department and all its members are included. If an empty value is specified, only the department is included without members.
 	//
 	// example:
 	//
@@ -86,6 +94,10 @@ func (s *ModelRouterQueryObservationChartsRequest) GetClientId() *int64 {
 	return s.ClientId
 }
 
+func (s *ModelRouterQueryObservationChartsRequest) GetClientIds() *string {
+	return s.ClientIds
+}
+
 func (s *ModelRouterQueryObservationChartsRequest) GetEndTime() *string {
 	return s.EndTime
 }
@@ -113,6 +125,11 @@ func (s *ModelRouterQueryObservationChartsRequest) SetApiKeyId(v int64) *ModelRo
 
 func (s *ModelRouterQueryObservationChartsRequest) SetClientId(v int64) *ModelRouterQueryObservationChartsRequest {
 	s.ClientId = &v
+	return s
+}
+
+func (s *ModelRouterQueryObservationChartsRequest) SetClientIds(v string) *ModelRouterQueryObservationChartsRequest {
+	s.ClientIds = &v
 	return s
 }
 

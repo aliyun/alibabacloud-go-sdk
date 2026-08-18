@@ -13,6 +13,8 @@ type iModelRouterQueryCostModelListRequest interface {
 	GetApiKeyId() *int64
 	SetClientId(v int64) *ModelRouterQueryCostModelListRequest
 	GetClientId() *int64
+	SetClientIds(v string) *ModelRouterQueryCostModelListRequest
+	GetClientIds() *string
 	SetEndTime(v int64) *ModelRouterQueryCostModelListRequest
 	GetEndTime() *int64
 	SetGranularity(v string) *ModelRouterQueryCostModelListRequest
@@ -32,7 +34,7 @@ type iModelRouterQueryCostModelListRequest interface {
 }
 
 type ModelRouterQueryCostModelListRequest struct {
-	// Optional. Filters results by API key ID. This parameter works in conjunction with the department and requires clientId to be specified first.
+	// Optional. Filters results by API Key ID. This parameter is linked to the department and requires clientId to be specified first.
 	//
 	// example:
 	//
@@ -44,7 +46,13 @@ type ModelRouterQueryCostModelListRequest struct {
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
-	// The end time, as a UNIX timestamp in seconds.
+	// The list of department IDs, separated by commas. Supports querying data for multiple departments. This parameter is mutually exclusive with clientId.
+	//
+	// example:
+	//
+	// 1,2,3
+	ClientIds *string `json:"clientIds,omitempty" xml:"clientIds,omitempty"`
+	// The end time, in UNIX timestamp (seconds).
 	//
 	// This parameter is required.
 	//
@@ -52,7 +60,7 @@ type ModelRouterQueryCostModelListRequest struct {
 	//
 	// 1700086400
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// Automatic aggregation. You do not need to pass this parameter. Granularity: hourly/daily. Default value: hourly.
+	// Automatically aggregated. No input required. Granularity: hourly/daily. Default value: hourly.
 	//
 	// example:
 	//
@@ -64,7 +72,7 @@ type ModelRouterQueryCostModelListRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Optional. Filters results by member IDs, separated by commas. If not specified, the department and all its members are included. If an empty value is passed, only the department is included without members.
+	// Optional. Filters results by members (member IDs, separated by commas). If not specified, the department and all its members are included. If an empty value is passed, only the department is included without members.
 	//
 	// example:
 	//
@@ -82,13 +90,13 @@ type ModelRouterQueryCostModelListRequest struct {
 	//
 	// xxxx-xxx-xxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Performs a fuzzy match on the model name or code.
+	// Fuzzy search by model name or code.
 	//
 	// example:
 	//
 	// qwen
 	Search *string `json:"search,omitempty" xml:"search,omitempty"`
-	// The start time, as a UNIX timestamp in seconds.
+	// The start time, in UNIX timestamp (seconds).
 	//
 	// This parameter is required.
 	//
@@ -112,6 +120,10 @@ func (s *ModelRouterQueryCostModelListRequest) GetApiKeyId() *int64 {
 
 func (s *ModelRouterQueryCostModelListRequest) GetClientId() *int64 {
 	return s.ClientId
+}
+
+func (s *ModelRouterQueryCostModelListRequest) GetClientIds() *string {
+	return s.ClientIds
 }
 
 func (s *ModelRouterQueryCostModelListRequest) GetEndTime() *int64 {
@@ -153,6 +165,11 @@ func (s *ModelRouterQueryCostModelListRequest) SetApiKeyId(v int64) *ModelRouter
 
 func (s *ModelRouterQueryCostModelListRequest) SetClientId(v int64) *ModelRouterQueryCostModelListRequest {
 	s.ClientId = &v
+	return s
+}
+
+func (s *ModelRouterQueryCostModelListRequest) SetClientIds(v string) *ModelRouterQueryCostModelListRequest {
+	s.ClientIds = &v
 	return s
 }
 

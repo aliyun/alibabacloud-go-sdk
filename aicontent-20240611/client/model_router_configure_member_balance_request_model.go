@@ -18,14 +18,26 @@ type iModelRouterConfigureMemberBalanceRequest interface {
 }
 
 type ModelRouterConfigureMemberBalanceRequest struct {
+	// The balance type. Valid values:
+	//
+	// - amount: monetary amount.
+	//
+	// - tokens: token count.
+	//
+	// This parameter is required when balance throttling is enabled for the first time.
+	//
 	// example:
 	//
 	// amount
 	BalanceType *string `json:"balanceType,omitempty" xml:"balanceType,omitempty"`
+	// Specifies whether to enable balance throttling. Once enabled, it cannot be disabled.
+	//
 	// example:
 	//
 	// true
 	EnableBalance *bool `json:"enableBalance,omitempty" xml:"enableBalance,omitempty"`
+	// The initial balance. This parameter takes effect only when balance throttling is enabled for the first time.
+	//
 	// example:
 	//
 	// 0

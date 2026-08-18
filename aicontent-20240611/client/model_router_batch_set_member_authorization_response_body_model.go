@@ -30,7 +30,7 @@ type ModelRouterBatchSetMemberAuthorizationResponseBody struct {
 	//
 	// true
 	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
-	// The fault code.
+	// The fault information code.
 	//
 	// example:
 	//

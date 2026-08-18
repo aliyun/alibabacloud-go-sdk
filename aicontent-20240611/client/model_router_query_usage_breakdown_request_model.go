@@ -13,6 +13,8 @@ type iModelRouterQueryUsageBreakdownRequest interface {
 	GetApiKeyId() *int64
 	SetClientId(v int64) *ModelRouterQueryUsageBreakdownRequest
 	GetClientId() *int64
+	SetClientIds(v string) *ModelRouterQueryUsageBreakdownRequest
+	GetClientIds() *string
 	SetEndTime(v int64) *ModelRouterQueryUsageBreakdownRequest
 	GetEndTime() *int64
 	SetGranularity(v string) *ModelRouterQueryUsageBreakdownRequest
@@ -32,7 +34,7 @@ type iModelRouterQueryUsageBreakdownRequest interface {
 }
 
 type ModelRouterQueryUsageBreakdownRequest struct {
-	// Optional. Filters results by API Key ID. This parameter is linked to the department and requires clientId to be specified first.
+	// Optional. Filters results by API key ID. This parameter is linked to the department and requires clientId to be specified first.
 	//
 	// example:
 	//
@@ -44,7 +46,13 @@ type ModelRouterQueryUsageBreakdownRequest struct {
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
-	// The query end time, in UNIX timestamp format (seconds).
+	// The list of department IDs, separated by commas. Supports querying data for multiple departments. This parameter is mutually exclusive with clientId.
+	//
+	// example:
+	//
+	// 1,2,3
+	ClientIds *string `json:"clientIds,omitempty" xml:"clientIds,omitempty"`
+	// The query end time, in UNIX timestamp (seconds).
 	//
 	// This parameter is required.
 	//
@@ -66,7 +74,7 @@ type ModelRouterQueryUsageBreakdownRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Optional. Filters results by members (member IDs, separated by commas). If not specified, the department and all its members are included. If an empty value is specified, only the department is included without members.
+	// Optional. Filters results by member IDs, separated by commas. If not specified, the department and all its members are included. If an empty value is passed, only the department is included without members.
 	//
 	// example:
 	//
@@ -90,7 +98,7 @@ type ModelRouterQueryUsageBreakdownRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The query start time, in UNIX timestamp format (seconds).
+	// The query start time, in UNIX timestamp (seconds).
 	//
 	// This parameter is required.
 	//
@@ -114,6 +122,10 @@ func (s *ModelRouterQueryUsageBreakdownRequest) GetApiKeyId() *int64 {
 
 func (s *ModelRouterQueryUsageBreakdownRequest) GetClientId() *int64 {
 	return s.ClientId
+}
+
+func (s *ModelRouterQueryUsageBreakdownRequest) GetClientIds() *string {
+	return s.ClientIds
 }
 
 func (s *ModelRouterQueryUsageBreakdownRequest) GetEndTime() *int64 {
@@ -155,6 +167,11 @@ func (s *ModelRouterQueryUsageBreakdownRequest) SetApiKeyId(v int64) *ModelRoute
 
 func (s *ModelRouterQueryUsageBreakdownRequest) SetClientId(v int64) *ModelRouterQueryUsageBreakdownRequest {
 	s.ClientId = &v
+	return s
+}
+
+func (s *ModelRouterQueryUsageBreakdownRequest) SetClientIds(v string) *ModelRouterQueryUsageBreakdownRequest {
+	s.ClientIds = &v
 	return s
 }
 

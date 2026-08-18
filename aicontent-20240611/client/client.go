@@ -26,10 +26,10 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"public":      dara.String("aicontent.aliyuncs.com"),
-		"cn-shanghai": dara.String("aicontent.aliyuncs.com"),
-		"cn-hangzhou": dara.String("aicontent.cn-hangzhou.aliyuncs.com"),
 		"cn-beijing":  dara.String("aicontent.cn-beijing.aliyuncs.com"),
+		"cn-hangzhou": dara.String("aicontent.cn-hangzhou.aliyuncs.com"),
+		"cn-shanghai": dara.String("aicontent.aliyuncs.com"),
+		"public":      dara.String("aicontent.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -3105,7 +3105,7 @@ func (client *Client) ModelRouterBatchBindModelGroup(request *ModelRouterBatchBi
 
 // Summary:
 //
-// Batch creates API keys for members under a department in organization management.
+// Creates API keys in batches for members under a department in organization management.
 //
 // @param request - ModelRouterBatchCreateMemberApiKeysRequest
 //
@@ -3160,7 +3160,7 @@ func (client *Client) ModelRouterBatchCreateMemberApiKeysWithOptions(id *string,
 
 // Summary:
 //
-// Batch creates API keys for members under a department in organization management.
+// Creates API keys in batches for members under a department in organization management.
 //
 // @param request - ModelRouterBatchCreateMemberApiKeysRequest
 //
@@ -3389,7 +3389,7 @@ func (client *Client) ModelRouterBatchResetMemberAuthorization(id *string, reque
 
 // Summary:
 //
-// Sets authorization for multiple members under a department in batch.
+// Batch sets member authorization under a department.
 //
 // @param request - ModelRouterBatchSetMemberAuthorizationRequest
 //
@@ -3440,7 +3440,7 @@ func (client *Client) ModelRouterBatchSetMemberAuthorizationWithOptions(id *stri
 
 // Summary:
 //
-// Sets authorization for multiple members under a department in batch.
+// Batch sets member authorization under a department.
 //
 // @param request - ModelRouterBatchSetMemberAuthorizationRequest
 //
@@ -3681,7 +3681,7 @@ func (client *Client) ModelRouterConfigureClientBalance(id *string, request *Mod
 
 // Summary:
 //
-// 组织管理/配置成员子钱包余额
+// Configures the sub-wallet balance of a member in an organization.
 //
 // @param request - ModelRouterConfigureMemberBalanceRequest
 //
@@ -3736,7 +3736,7 @@ func (client *Client) ModelRouterConfigureMemberBalanceWithOptions(clientId *str
 
 // Summary:
 //
-// 组织管理/配置成员子钱包余额
+// Configures the sub-wallet balance of a member in an organization.
 //
 // @param request - ModelRouterConfigureMemberBalanceRequest
 //
@@ -3871,7 +3871,7 @@ func (client *Client) ModelRouterCreateApiKey(request *ModelRouterCreateApiKeyRe
 
 // Summary:
 //
-// Creates a balance transaction for customer management.
+// Manages customers or creates a balance transaction.
 //
 // @param request - ModelRouterCreateBalanceTransactionRequest
 //
@@ -3934,7 +3934,7 @@ func (client *Client) ModelRouterCreateBalanceTransactionWithOptions(id *string,
 
 // Summary:
 //
-// Creates a balance transaction for customer management.
+// Manages customers or creates a balance transaction.
 //
 // @param request - ModelRouterCreateBalanceTransactionRequest
 //
@@ -5187,6 +5187,108 @@ func (client *Client) ModelRouterExportMemberBalanceOrders(clientId *string, id 
 
 // Summary:
 //
+// Queries the total cost trend of bills in the Billing Center.
+//
+// @param request - ModelRouterGetBillingBillSummaryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterGetBillingBillSummaryResponse
+func (client *Client) ModelRouterGetBillingBillSummaryWithOptions(request *ModelRouterGetBillingBillSummaryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterGetBillingBillSummaryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKeyId) {
+		query["apiKeyId"] = request.ApiKeyId
+	}
+
+	if !dara.IsNil(request.ClientId) {
+		query["clientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.ClientIds) {
+		query["clientIds"] = request.ClientIds
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.MemberUserIds) {
+		query["memberUserIds"] = request.MemberUserIds
+	}
+
+	if !dara.IsNil(request.ModelId) {
+		query["modelId"] = request.ModelId
+	}
+
+	if !dara.IsNil(request.ModelTypes) {
+		query["modelTypes"] = request.ModelTypes
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["startTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterGetBillingBillSummary"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/billing/bills/summary"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterGetBillingBillSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the total cost trend of bills in the Billing Center.
+//
+// @param request - ModelRouterGetBillingBillSummaryRequest
+//
+// @return ModelRouterGetBillingBillSummaryResponse
+func (client *Client) ModelRouterGetBillingBillSummary(request *ModelRouterGetBillingBillSummaryRequest) (_result *ModelRouterGetBillingBillSummaryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterGetBillingBillSummaryResponse{}
+	_body, _err := client.ModelRouterGetBillingBillSummaryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Client Management/Get department balance
 //
 // @param request - ModelRouterGetClientBalanceRequest
@@ -5329,7 +5431,7 @@ func (client *Client) ModelRouterGetClientBalanceLogs(id *string, request *Model
 
 // Summary:
 //
-// 组织管理/获取部门余额概览
+// Retrieves the balance overview of a department.
 //
 // @param request - ModelRouterGetDeptBalanceSummaryRequest
 //
@@ -5370,7 +5472,7 @@ func (client *Client) ModelRouterGetDeptBalanceSummaryWithOptions(id *string, re
 
 // Summary:
 //
-// 组织管理/获取部门余额概览
+// Retrieves the balance overview of a department.
 //
 // @param request - ModelRouterGetDeptBalanceSummaryRequest
 //
@@ -5463,7 +5565,7 @@ func (client *Client) ModelRouterGetMemberApiKeys(clientId *string, id *string, 
 
 // Summary:
 //
-// 组织管理/获取成员子钱包余额
+// Retrieves the sub-wallet balance of a member in an organization.
 //
 // @param request - ModelRouterGetMemberBalanceRequest
 //
@@ -5504,7 +5606,7 @@ func (client *Client) ModelRouterGetMemberBalanceWithOptions(clientId *string, i
 
 // Summary:
 //
-// 组织管理/获取成员子钱包余额
+// Retrieves the sub-wallet balance of a member in an organization.
 //
 // @param request - ModelRouterGetMemberBalanceRequest
 //
@@ -5523,7 +5625,7 @@ func (client *Client) ModelRouterGetMemberBalance(clientId *string, id *string, 
 
 // Summary:
 //
-// 组织管理/获取成员余额变更日志
+// Retrieves the balance change logs of a member in an organization.
 //
 // @param request - ModelRouterGetMemberBalanceLogsRequest
 //
@@ -5582,7 +5684,7 @@ func (client *Client) ModelRouterGetMemberBalanceLogsWithOptions(clientId *strin
 
 // Summary:
 //
-// 组织管理/获取成员余额变更日志
+// Retrieves the balance change logs of a member in an organization.
 //
 // @param request - ModelRouterGetMemberBalanceLogsRequest
 //
@@ -5767,7 +5869,7 @@ func (client *Client) ModelRouterListBalanceOrders(id *string, request *ModelRou
 
 // Summary:
 //
-// 组织管理/获取部门成员列表
+// Retrieves the list of members in a specified department.
 //
 // @param request - ModelRouterListDeptMembersRequest
 //
@@ -5838,7 +5940,7 @@ func (client *Client) ModelRouterListDeptMembersWithOptions(id *string, request 
 
 // Summary:
 //
-// 组织管理/获取部门成员列表
+// Retrieves the list of members in a specified department.
 //
 // @param request - ModelRouterListDeptMembersRequest
 //
@@ -5857,7 +5959,7 @@ func (client *Client) ModelRouterListDeptMembers(id *string, request *ModelRoute
 
 // Summary:
 //
-// 组织管理/获取成员余额变更记录
+// Retrieves the balance change records of a member in the organization.
 //
 // @param request - ModelRouterListMemberBalanceOrdersRequest
 //
@@ -5920,7 +6022,7 @@ func (client *Client) ModelRouterListMemberBalanceOrdersWithOptions(clientId *st
 
 // Summary:
 //
-// 组织管理/获取成员余额变更记录
+// Retrieves the balance change records of a member in the organization.
 //
 // @param request - ModelRouterListMemberBalanceOrdersRequest
 //
@@ -5939,7 +6041,7 @@ func (client *Client) ModelRouterListMemberBalanceOrders(clientId *string, id *s
 
 // Summary:
 //
-// 组织管理/获取成员订阅列表
+// Retrieves the subscription list of a member in the organization.
 //
 // @param request - ModelRouterListMemberSubscriptionsRequest
 //
@@ -5980,7 +6082,7 @@ func (client *Client) ModelRouterListMemberSubscriptionsWithOptions(clientId *st
 
 // Summary:
 //
-// 组织管理/获取成员订阅列表
+// Retrieves the subscription list of a member in the organization.
 //
 // @param request - ModelRouterListMemberSubscriptionsRequest
 //
@@ -6272,6 +6374,10 @@ func (client *Client) ModelRouterQueryBillingCostBreakdownWithOptions(request *M
 
 	if !dara.IsNil(request.ClientId) {
 		query["clientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.ClientIds) {
+		query["clientIds"] = request.ClientIds
 	}
 
 	if !dara.IsNil(request.EndTime) {
@@ -6855,7 +6961,7 @@ func (client *Client) ModelRouterQueryConversationList(request *ModelRouterQuery
 
 // Summary:
 //
-// Retrieves the usage details of a model for billing management.
+// Retrieves model usage details for billing management.
 //
 // @param request - ModelRouterQueryCostModelDetailRequest
 //
@@ -6878,6 +6984,10 @@ func (client *Client) ModelRouterQueryCostModelDetailWithOptions(request *ModelR
 
 	if !dara.IsNil(request.ClientId) {
 		query["clientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.ClientIds) {
+		query["clientIds"] = request.ClientIds
 	}
 
 	if !dara.IsNil(request.EndTime) {
@@ -6942,7 +7052,7 @@ func (client *Client) ModelRouterQueryCostModelDetailWithOptions(request *ModelR
 
 // Summary:
 //
-// Retrieves the usage details of a model for billing management.
+// Retrieves model usage details for billing management.
 //
 // @param request - ModelRouterQueryCostModelDetailRequest
 //
@@ -6984,6 +7094,10 @@ func (client *Client) ModelRouterQueryCostModelListWithOptions(request *ModelRou
 
 	if !dara.IsNil(request.ClientId) {
 		query["clientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.ClientIds) {
+		query["clientIds"] = request.ClientIds
 	}
 
 	if !dara.IsNil(request.EndTime) {
@@ -7088,6 +7202,10 @@ func (client *Client) ModelRouterQueryCostOverviewMetricsWithOptions(request *Mo
 		query["clientId"] = request.ClientId
 	}
 
+	if !dara.IsNil(request.ClientIds) {
+		query["clientIds"] = request.ClientIds
+	}
+
 	if !dara.IsNil(request.EndTime) {
 		query["endTime"] = request.EndTime
 	}
@@ -7184,6 +7302,10 @@ func (client *Client) ModelRouterQueryCostTrendMetricsWithOptions(request *Model
 
 	if !dara.IsNil(request.ClientId) {
 		query["clientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.ClientIds) {
+		query["clientIds"] = request.ClientIds
 	}
 
 	if !dara.IsNil(request.EndTime) {
@@ -8124,6 +8246,10 @@ func (client *Client) ModelRouterQueryObservationChartsWithOptions(request *Mode
 		query["clientId"] = request.ClientId
 	}
 
+	if !dara.IsNil(request.ClientIds) {
+		query["clientIds"] = request.ClientIds
+	}
+
 	if !dara.IsNil(request.EndTime) {
 		query["endTime"] = request.EndTime
 	}
@@ -8189,7 +8315,7 @@ func (client *Client) ModelRouterQueryObservationCharts(request *ModelRouterQuer
 
 // Summary:
 //
-// Retrieves a list of model observation logs.
+// Retrieves a list of observation logs for model monitoring.
 //
 // @param request - ModelRouterQueryObservationLogsRequest
 //
@@ -8212,6 +8338,10 @@ func (client *Client) ModelRouterQueryObservationLogsWithOptions(request *ModelR
 
 	if !dara.IsNil(request.ClientId) {
 		query["clientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.ClientIds) {
+		query["clientIds"] = request.ClientIds
 	}
 
 	if !dara.IsNil(request.EndTime) {
@@ -8292,7 +8422,7 @@ func (client *Client) ModelRouterQueryObservationLogsWithOptions(request *ModelR
 
 // Summary:
 //
-// Retrieves a list of model observation logs.
+// Retrieves a list of observation logs for model monitoring.
 //
 // @param request - ModelRouterQueryObservationLogsRequest
 //
@@ -8311,7 +8441,7 @@ func (client *Client) ModelRouterQueryObservationLogs(request *ModelRouterQueryO
 
 // Summary:
 //
-// Retrieves observability metric data for models.
+// Retrieves observability metric data for model API calls.
 //
 // @param request - ModelRouterQueryObservationMetricsRequest
 //
@@ -8334,6 +8464,10 @@ func (client *Client) ModelRouterQueryObservationMetricsWithOptions(request *Mod
 
 	if !dara.IsNil(request.ClientId) {
 		query["clientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.ClientIds) {
+		query["clientIds"] = request.ClientIds
 	}
 
 	if !dara.IsNil(request.EndTime) {
@@ -8414,7 +8548,7 @@ func (client *Client) ModelRouterQueryObservationMetricsWithOptions(request *Mod
 
 // Summary:
 //
-// Retrieves observability metric data for models.
+// Retrieves observability metric data for model API calls.
 //
 // @param request - ModelRouterQueryObservationMetricsRequest
 //
@@ -8456,6 +8590,10 @@ func (client *Client) ModelRouterQueryUsageBreakdownWithOptions(request *ModelRo
 
 	if !dara.IsNil(request.ClientId) {
 		query["clientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.ClientIds) {
+		query["clientIds"] = request.ClientIds
 	}
 
 	if !dara.IsNil(request.EndTime) {
@@ -8566,6 +8704,10 @@ func (client *Client) ModelRouterQueryUserListWithOptions(request *ModelRouterQu
 
 	if !dara.IsNil(request.PageSize) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Phone) {
+		query["phone"] = request.Phone
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -8755,7 +8897,7 @@ func (client *Client) ModelRouterSaveFlowConfig(request *ModelRouterSaveFlowConf
 
 // Summary:
 //
-// 组织管理/部门树搜索定位
+// Searches and locates nodes in the department tree for organization management.
 //
 // @param request - ModelRouterSearchClientTreeRequest
 //
@@ -8802,7 +8944,7 @@ func (client *Client) ModelRouterSearchClientTreeWithOptions(request *ModelRoute
 
 // Summary:
 //
-// 组织管理/部门树搜索定位
+// Searches and locates nodes in the department tree for organization management.
 //
 // @param request - ModelRouterSearchClientTreeRequest
 //
@@ -9097,7 +9239,7 @@ func (client *Client) ModelRouterStopSubscription(id *string, request *ModelRout
 
 // Summary:
 //
-// 组织管理/部门向成员转账
+// Transfers funds from a department to a member within an organization.
 //
 // @param request - ModelRouterTransferToMemberRequest
 //
@@ -9160,7 +9302,7 @@ func (client *Client) ModelRouterTransferToMemberWithOptions(clientId *string, i
 
 // Summary:
 //
-// 组织管理/部门向成员转账
+// Transfers funds from a department to a member within an organization.
 //
 // @param request - ModelRouterTransferToMemberRequest
 //
