@@ -28,18 +28,18 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	client.EndpointMap = map[string]*string{
 		"cn-wulanchabu":  dara.String("rdsai.aliyuncs.com"),
 		"cn-shenzhen":    dara.String("rdsai.aliyuncs.com"),
-		"cn-shanghai":    dara.String("rdsai.aliyuncs.com"),
-		"cn-hongkong":    dara.String("rdsai.cn-hongkong.aliyuncs.com"),
-		"cn-hangzhou":    dara.String("rdsai.aliyuncs.com"),
-		"cn-guangzhou":   dara.String("rdsai.aliyuncs.com"),
-		"cn-chengdu":     dara.String("rdsai.cn-chengdu.aliyuncs.com"),
 		"cn-beijing":     dara.String("rdsai.aliyuncs.com"),
-		"ap-southeast-5": dara.String("rdsai.ap-southeast-5.aliyuncs.com"),
-		"ap-southeast-3": dara.String("rdsai.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-1": dara.String("rdsai.ap-southeast-1.aliyuncs.com"),
 		"ap-northeast-1": dara.String("rdsai.ap-northeast-1.aliyuncs.com"),
-		"eu-central-1":   dara.String("rdsai.eu-central-1.aliyuncs.com"),
+		"cn-chengdu":     dara.String("rdsai.cn-chengdu.aliyuncs.com"),
+		"cn-shanghai":    dara.String("rdsai.aliyuncs.com"),
+		"cn-guangzhou":   dara.String("rdsai.aliyuncs.com"),
+		"cn-hongkong":    dara.String("rdsai.cn-hongkong.aliyuncs.com"),
+		"ap-southeast-1": dara.String("rdsai.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-3": dara.String("rdsai.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-5": dara.String("rdsai.ap-southeast-5.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("rdsai.aliyuncs.com"),
 		"us-west-1":      dara.String("rdsai.us-west-1.aliyuncs.com"),
+		"eu-central-1":   dara.String("rdsai.eu-central-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -286,6 +286,14 @@ func (client *Client) CreateApiKeyWithOptions(request *CreateApiKeyRequest, runt
 
 	if !dara.IsNil(request.Quantity) {
 		query["Quantity"] = request.Quantity
+	}
+
+	if !dara.IsNil(request.RoleArn) {
+		query["RoleArn"] = request.RoleArn
+	}
+
+	if !dara.IsNil(request.RoleName) {
+		query["RoleName"] = request.RoleName
 	}
 
 	if !dara.IsNil(request.TokenQuota) {
@@ -1125,9 +1133,9 @@ func (client *Client) CreateSandboxTemplate(request *CreateSandboxTemplateReques
 //
 // # RDS PostgreSQL
 //
-// ### Related feature documentation
+// ### Related documentation
 //
-//	Warning: This API operation incurs fees. Read the related feature documentation before you perform this operation.
+//	Warning: This API operation incurs fees. Read the related documentation carefully before you perform this operation.
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -1225,9 +1233,9 @@ func (client *Client) CreateScheduledTaskWithOptions(request *CreateScheduledTas
 //
 // # RDS PostgreSQL
 //
-// ### Related feature documentation
+// ### Related documentation
 //
-//	Warning: This API operation incurs fees. Read the related feature documentation before you perform this operation.
+//	Warning: This API operation incurs fees. Read the related documentation carefully before you perform this operation.
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -1337,7 +1345,7 @@ func (client *Client) CreateSkill(request *CreateSkillRequest) (_result *CreateS
 //
 // ### Applicable engine
 //
-// [RDS AI Assistant Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
+// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - DeleteApiKeyRequest
 //
@@ -1391,7 +1399,7 @@ func (client *Client) DeleteApiKeyWithOptions(request *DeleteApiKeyRequest, runt
 //
 // ### Applicable engine
 //
-// [RDS AI Assistant Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
+// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - DeleteApiKeyRequest
 //
@@ -4068,7 +4076,7 @@ func (client *Client) GetModelOperatorOrder(request *GetModelOperatorOrderReques
 
 // Summary:
 //
-// Queries the IDs of all instances that are included by a specified scheduled inspection configuration.
+// Queries the list of all instance IDs included in a specified scheduled inspection configuration.
 //
 // @param request - GetScheduledInstancesRequest
 //
@@ -4120,7 +4128,7 @@ func (client *Client) GetScheduledInstancesWithOptions(request *GetScheduledInst
 
 // Summary:
 //
-// Queries the IDs of all instances that are included by a specified scheduled inspection configuration.
+// Queries the list of all instance IDs included in a specified scheduled inspection configuration.
 //
 // @param request - GetScheduledInstancesRequest
 //
@@ -4138,7 +4146,7 @@ func (client *Client) GetScheduledInstances(request *GetScheduledInstancesReques
 
 // Summary:
 //
-// Queries all inspection reports under a specified scheduled task, with support for time range filtering and pagination.
+// Queries all inspection reports under a specified scheduled task, with support for filtering by time range and pagination.
 //
 // @param request - GetScheduledReportsRequest
 //
@@ -4198,7 +4206,7 @@ func (client *Client) GetScheduledReportsWithOptions(request *GetScheduledReport
 
 // Summary:
 //
-// Queries all inspection reports under a specified scheduled task, with support for time range filtering and pagination.
+// Queries all inspection reports under a specified scheduled task, with support for filtering by time range and pagination.
 //
 // @param request - GetScheduledReportsRequest
 //
@@ -4606,15 +4614,7 @@ func (client *Client) ListContextDatabaseMembers(request *ListContextDatabaseMem
 //
 // Description:
 //
-// ## 请求说明
-//
-// - 该API用于获取指定条件下的工作区列表。
-//
-// - `workspaceId` 和 `status` 参数均为可选，可以根据需要进行过滤。
-//
-// - 如果不提供任何过滤参数，则返回调用方账号下的所有工作区。
-//
-// - 注意：确保在请求中包含必要的认证信息（如callerUid、requestId等），否则将导致请求失败。
+// 列出上下文数据库工作空间
 //
 // @param request - ListContextDatabaseWorkspacesRequest
 //
@@ -4674,15 +4674,7 @@ func (client *Client) ListContextDatabaseWorkspacesWithOptions(request *ListCont
 //
 // Description:
 //
-// ## 请求说明
-//
-// - 该API用于获取指定条件下的工作区列表。
-//
-// - `workspaceId` 和 `status` 参数均为可选，可以根据需要进行过滤。
-//
-// - 如果不提供任何过滤参数，则返回调用方账号下的所有工作区。
-//
-// - 注意：确保在请求中包含必要的认证信息（如callerUid、requestId等），否则将导致请求失败。
+// 列出上下文数据库工作空间
 //
 // @param request - ListContextDatabaseWorkspacesRequest
 //
@@ -6199,13 +6191,13 @@ func (client *Client) ModifyWhitelistIps(request *ModifyWhitelistIpsRequest) (_r
 
 // Summary:
 //
-// Renames an API key.
+// Renames a custom API key.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Applicable engine
 //
-// [RDS AI Assistant (Ultimate Edition)](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
+// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - RenameApiKeyRequest
 //
@@ -6230,6 +6222,14 @@ func (client *Client) RenameApiKeyWithOptions(request *RenameApiKeyRequest, runt
 
 	if !dara.IsNil(request.KeyName) {
 		query["KeyName"] = request.KeyName
+	}
+
+	if !dara.IsNil(request.RoleArn) {
+		query["RoleArn"] = request.RoleArn
+	}
+
+	if !dara.IsNil(request.RoleName) {
+		query["RoleName"] = request.RoleName
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -6257,13 +6257,13 @@ func (client *Client) RenameApiKeyWithOptions(request *RenameApiKeyRequest, runt
 
 // Summary:
 //
-// Renames an API key.
+// Renames a custom API key.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Applicable engine
 //
-// [RDS AI Assistant (Ultimate Edition)](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
+// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - RenameApiKeyRequest
 //

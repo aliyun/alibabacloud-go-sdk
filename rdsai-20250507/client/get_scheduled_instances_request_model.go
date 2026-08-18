@@ -18,13 +18,13 @@ type iGetScheduledInstancesRequest interface {
 }
 
 type GetScheduledInstancesRequest struct {
-	// The page number. Pages start from 1. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records on each page. Default value: 20. Maximum value: 100.
+	// The number of entries per page. Default value: 20. Maximum value: 100.
 	//
 	// example:
 	//

@@ -44,23 +44,23 @@ type CreateScheduledTaskRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The inspection frequency. Separate multiple values with commas (,). Default value: DAILY. Valid values:
 	//
-	// 	- DAILY: every day.
+	// 	- DAILY: every day
 	//
-	// 	- Monday: Monday.
+	// 	- Monday: Monday
 	//
-	// 	- Tuesday: Tuesday.
+	// 	- Tuesday: Tuesday
 	//
-	// 	- Wednesday: Wednesday.
+	// 	- Wednesday: Wednesday
 	//
-	// 	- Thursday: Thursday.
+	// 	- Thursday: Thursday
 	//
-	// 	- Friday: Friday.
+	// 	- Friday: Friday
 	//
-	// 	- Saturday: Saturday.
+	// 	- Saturday: Saturday
 	//
-	// 	- Sunday: Sunday.
+	// 	- Sunday: Sunday
 	//
-	// ### Note: DAILY overrides weekly values. For example, if you specify DAILY,Monday, the backend uses DAILY as the inspection frequency.
+	// ### Note: DAILY overrides weekly values. For example, if you specify DAILY,Monday, the system uses DAILY as the inspection frequency.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type CreateScheduledTaskRequest struct {
 	// RDS Inspection
 	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The report language. Default value: zh-CN. Valid values: zh-CN, zh-TW, ja-JP, and en-US.
+	// The language of the report. Default value: zh-CN. Valid values: zh-CN, zh-TW, ja-JP, and en-US.
 	//
 	// example:
 	//
@@ -90,14 +90,14 @@ type CreateScheduledTaskRequest struct {
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
 	ReportRegionId *string `json:"ReportRegionId,omitempty" xml:"ReportRegionId,omitempty"`
 	ReportType     *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
-	// The time to run the inspection task. Format: HH:mm:ssZ (UTC). Default value: 02:00:00Z.
+	// The time at which the inspection task is executed. Format: HH:mm:ssZ (UTC). Default value: 02:00:00Z.
 	//
 	// example:
 	//
 	// 02:00:00Z
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The time range for the inspection. Default value: the last 24 hours. Valid values: 1 to 168 (up to 7 days).
+	// The time range for the inspection. Default value: 24 (the last 24 hours). Valid values: 1 to 168 (up to 7 days).
 	//
 	// example:
 	//

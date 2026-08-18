@@ -30,7 +30,7 @@ type iCreateInspectionTaskRequest interface {
 }
 
 type CreateInspectionTaskRequest struct {
-	// The end time of the inspection range. Format: YYYY-MM-DDTHH:mm:ssZ (UTC). Default value: the current time.
+	// The end time of the inspection range. Format: YYYY-MM-DDTHH:mm:ssZ (UTC). Default value: the end time of the last 24 hours.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type CreateInspectionTaskRequest struct {
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
 	ReportRegionId *string `json:"ReportRegionId,omitempty" xml:"ReportRegionId,omitempty"`
 	ReportType     *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
-	// The start time of the inspection range. Format: YYYY-MM-DDTHH:mm:ssZ (UTC). Default value: 24 hours before the current time.
+	// The start time of the inspection range. Format: YYYY-MM-DDTHH:mm:ssZ (UTC). Default value: the start time of the last 24 hours.
 	//
 	// example:
 	//

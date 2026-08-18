@@ -161,7 +161,7 @@ type ListScheduledTasksResponseBodySchedules struct {
 	//
 	// example:
 	//
-	// Automatically inspect production ApsaraDB RDS instances at 2:00 AM every day
+	// Automatic inspection of production RDS instances at 2 AM every day
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The new inspection frequency. Separate multiple values with commas (,). Default value: DAILY. Valid values:
 	//

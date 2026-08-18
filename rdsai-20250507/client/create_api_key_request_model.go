@@ -21,11 +21,17 @@ type iCreateApiKeyRequest interface {
 	GetLimitType() *string
 	SetQuantity(v int32) *CreateApiKeyRequest
 	GetQuantity() *int32
+	SetRoleArn(v string) *CreateApiKeyRequest
+	GetRoleArn() *string
+	SetRoleName(v string) *CreateApiKeyRequest
+	GetRoleName() *string
 	SetTokenQuota(v int64) *CreateApiKeyRequest
 	GetTokenQuota() *int64
 }
 
 type CreateApiKeyRequest struct {
+	// The daily quota of the API key.
+	//
 	// example:
 	//
 	// 1000000000
@@ -36,7 +42,7 @@ type CreateApiKeyRequest struct {
 	//
 	// rds_copilot***_public_cn-*********6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the API key.
+	// The API key name.
 	//
 	// example:
 	//
@@ -48,7 +54,7 @@ type CreateApiKeyRequest struct {
 	//
 	// 0.2
 	LimitRate *float64 `json:"LimitRate,omitempty" xml:"LimitRate,omitempty"`
-	// The quota type. Valid values:
+	// The quota allocation method. Valid values:
 	//
 	// - ratio: by percentage.
 	//
@@ -65,8 +71,10 @@ type CreateApiKeyRequest struct {
 	// example:
 	//
 	// 1
-	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	// The quota for the current key.
+	Quantity *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The quota limit for the current key.
 	//
 	// example:
 	//
@@ -106,6 +114,14 @@ func (s *CreateApiKeyRequest) GetQuantity() *int32 {
 	return s.Quantity
 }
 
+func (s *CreateApiKeyRequest) GetRoleArn() *string {
+	return s.RoleArn
+}
+
+func (s *CreateApiKeyRequest) GetRoleName() *string {
+	return s.RoleName
+}
+
 func (s *CreateApiKeyRequest) GetTokenQuota() *int64 {
 	return s.TokenQuota
 }
@@ -137,6 +153,16 @@ func (s *CreateApiKeyRequest) SetLimitType(v string) *CreateApiKeyRequest {
 
 func (s *CreateApiKeyRequest) SetQuantity(v int32) *CreateApiKeyRequest {
 	s.Quantity = &v
+	return s
+}
+
+func (s *CreateApiKeyRequest) SetRoleArn(v string) *CreateApiKeyRequest {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *CreateApiKeyRequest) SetRoleName(v string) *CreateApiKeyRequest {
+	s.RoleName = &v
 	return s
 }
 

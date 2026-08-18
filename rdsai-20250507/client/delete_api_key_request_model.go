@@ -16,7 +16,7 @@ type iDeleteApiKeyRequest interface {
 }
 
 type DeleteApiKeyRequest struct {
-	// The API key to delete.
+	// Api Key
 	//
 	// This parameter is required.
 	//

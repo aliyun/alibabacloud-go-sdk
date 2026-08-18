@@ -15,10 +15,14 @@ type iRenameApiKeyRequest interface {
 	GetInstanceId() *string
 	SetKeyName(v string) *RenameApiKeyRequest
 	GetKeyName() *string
+	SetRoleArn(v string) *RenameApiKeyRequest
+	GetRoleArn() *string
+	SetRoleName(v string) *RenameApiKeyRequest
+	GetRoleName() *string
 }
 
 type RenameApiKeyRequest struct {
-	// The API key to rename.
+	// API KEY
 	//
 	// This parameter is required.
 	//
@@ -26,20 +30,22 @@ type RenameApiKeyRequest struct {
 	//
 	// sk-rds-*****
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// rds_copilot***_public_cn-*********6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The new name for the API key.
+	// The API key name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// api-*****
-	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	KeyName  *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s RenameApiKeyRequest) String() string {
@@ -62,6 +68,14 @@ func (s *RenameApiKeyRequest) GetKeyName() *string {
 	return s.KeyName
 }
 
+func (s *RenameApiKeyRequest) GetRoleArn() *string {
+	return s.RoleArn
+}
+
+func (s *RenameApiKeyRequest) GetRoleName() *string {
+	return s.RoleName
+}
+
 func (s *RenameApiKeyRequest) SetApiKey(v string) *RenameApiKeyRequest {
 	s.ApiKey = &v
 	return s
@@ -74,6 +88,16 @@ func (s *RenameApiKeyRequest) SetInstanceId(v string) *RenameApiKeyRequest {
 
 func (s *RenameApiKeyRequest) SetKeyName(v string) *RenameApiKeyRequest {
 	s.KeyName = &v
+	return s
+}
+
+func (s *RenameApiKeyRequest) SetRoleArn(v string) *RenameApiKeyRequest {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *RenameApiKeyRequest) SetRoleName(v string) *RenameApiKeyRequest {
+	s.RoleName = &v
 	return s
 }
 

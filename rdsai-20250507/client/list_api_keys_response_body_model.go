@@ -104,6 +104,8 @@ type ListApiKeysResponseBodyData struct {
 	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
 	// The list of custom API keys.
 	CustomKeyList []*ListApiKeysResponseBodyDataCustomKeyList `json:"CustomKeyList,omitempty" xml:"CustomKeyList,omitempty" type:"Repeated"`
+	// The daily throttling quota for the system API key.
+	//
 	// example:
 	//
 	// 100000000
@@ -132,7 +134,7 @@ type ListApiKeysResponseBodyData struct {
 	//
 	// sk-rds-xxx
 	SystemApiKey *string `json:"SystemApiKey,omitempty" xml:"SystemApiKey,omitempty"`
-	// The alert threshold percentage for SystemApiKey. For example, 80 indicates that an alert is triggered when the usage reaches 80%. The alert is reset when the usage drops below this percentage.
+	// The alert threshold percentage for SystemApiKey. For example, 80 indicates that an alert is triggered when the usage reaches 80%. The alert resets when the usage drops below this percentage.
 	//
 	// example:
 	//
@@ -255,6 +257,8 @@ type ListApiKeysResponseBodyDataCustomKeyList struct {
 	//
 	// sk-rds-*****
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The daily throttling quota.
+	//
 	// example:
 	//
 	// 100000000
@@ -265,37 +269,38 @@ type ListApiKeysResponseBodyDataCustomKeyList struct {
 	//
 	// false
 	IsRateLimited *bool `json:"IsRateLimited,omitempty" xml:"IsRateLimited,omitempty"`
-	// The name of the API key.
+	// The API key name.
 	//
 	// example:
 	//
 	// api-*****
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
-	// The quota ratio.
+	// The quota limit ratio.
 	//
 	// example:
 	//
 	// 0.2
 	LimitRate *float32 `json:"LimitRate,omitempty" xml:"LimitRate,omitempty"`
-	// The quota type. Valid values:
+	// The quota limit method. Valid values:
 	//
-	// - **fixed**: fixed value.
+	// - **fixed**: Fixed value.
 	//
-	// - **ratio**: percentage.
+	// - **ratio**: Percentage.
 	//
-	// - **auto**: automatic allocation.
+	// - **auto**: Automatic allocation.
 	//
 	// example:
 	//
 	// fixed
 	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
-	// The alert threshold percentage. For example, 80 indicates that an alert is triggered when the usage reaches 80%. The alert is reset when the usage drops below this percentage.
+	RoleArn   *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The alert threshold percentage. For example, 80 indicates that an alert is triggered when the usage reaches 80%. The alert resets when the usage drops below this percentage.
 	//
 	// example:
 	//
 	// 80
 	ThresholdPercent *int32 `json:"ThresholdPercent,omitempty" xml:"ThresholdPercent,omitempty"`
-	// The quota of the current key.
+	// The quota limit of the current key.
 	//
 	// example:
 	//
@@ -335,6 +340,10 @@ func (s *ListApiKeysResponseBodyDataCustomKeyList) GetLimitType() *string {
 	return s.LimitType
 }
 
+func (s *ListApiKeysResponseBodyDataCustomKeyList) GetRoleArn() *string {
+	return s.RoleArn
+}
+
 func (s *ListApiKeysResponseBodyDataCustomKeyList) GetThresholdPercent() *int32 {
 	return s.ThresholdPercent
 }
@@ -370,6 +379,11 @@ func (s *ListApiKeysResponseBodyDataCustomKeyList) SetLimitRate(v float32) *List
 
 func (s *ListApiKeysResponseBodyDataCustomKeyList) SetLimitType(v string) *ListApiKeysResponseBodyDataCustomKeyList {
 	s.LimitType = &v
+	return s
+}
+
+func (s *ListApiKeysResponseBodyDataCustomKeyList) SetRoleArn(v string) *ListApiKeysResponseBodyDataCustomKeyList {
+	s.RoleArn = &v
 	return s
 }
 

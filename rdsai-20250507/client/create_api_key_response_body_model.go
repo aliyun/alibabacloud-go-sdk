@@ -20,9 +20,9 @@ type iCreateApiKeyResponseBody interface {
 }
 
 type CreateApiKeyResponseBody struct {
-	// The returned data.
+	// The response data.
 	Data *CreateApiKeyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
@@ -166,9 +166,10 @@ type CreateApiKeyResponseBodyDataCustomKeyList struct {
 	// example:
 	//
 	// sk-rds-*****
-	ApiKey          *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	DailyTokenQuota *int64  `json:"DailyTokenQuota,omitempty" xml:"DailyTokenQuota,omitempty"`
-	// The name of the API key.
+	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The daily quota of the API key.
+	DailyTokenQuota *int64 `json:"DailyTokenQuota,omitempty" xml:"DailyTokenQuota,omitempty"`
+	// The API key name.
 	//
 	// example:
 	//
@@ -180,19 +181,20 @@ type CreateApiKeyResponseBodyDataCustomKeyList struct {
 	//
 	// 0.2
 	LimitRate *float32 `json:"LimitRate,omitempty" xml:"LimitRate,omitempty"`
-	// The quota type. Valid values:
+	// The quota allocation method. Valid values:
 	//
-	// - **fixed**: by fixed value.
+	// - **fixed**: By fixed value.
 	//
-	// - **ratio**: by percentage.
+	// - **ratio**: By percentage.
 	//
-	// - **auto**: automatic allocation.
+	// - **auto**: Automatic allocation.
 	//
 	// example:
 	//
 	// fixed
 	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
-	// The quota for the current key.
+	RoleArn   *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The quota limit for the current key.
 	//
 	// example:
 	//
@@ -228,6 +230,10 @@ func (s *CreateApiKeyResponseBodyDataCustomKeyList) GetLimitType() *string {
 	return s.LimitType
 }
 
+func (s *CreateApiKeyResponseBodyDataCustomKeyList) GetRoleArn() *string {
+	return s.RoleArn
+}
+
 func (s *CreateApiKeyResponseBodyDataCustomKeyList) GetTokenQuota() *int64 {
 	return s.TokenQuota
 }
@@ -254,6 +260,11 @@ func (s *CreateApiKeyResponseBodyDataCustomKeyList) SetLimitRate(v float32) *Cre
 
 func (s *CreateApiKeyResponseBodyDataCustomKeyList) SetLimitType(v string) *CreateApiKeyResponseBodyDataCustomKeyList {
 	s.LimitType = &v
+	return s
+}
+
+func (s *CreateApiKeyResponseBodyDataCustomKeyList) SetRoleArn(v string) *CreateApiKeyResponseBodyDataCustomKeyList {
+	s.RoleArn = &v
 	return s
 }
 

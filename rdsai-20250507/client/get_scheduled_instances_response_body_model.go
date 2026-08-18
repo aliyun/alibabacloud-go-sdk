@@ -26,21 +26,21 @@ type iGetScheduledInstancesResponseBody interface {
 }
 
 type GetScheduledInstancesResponseBody struct {
-	// The list of instances included in the inspection configuration.
+	// The list of instances.
 	Instances []*GetScheduledInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	// The response message.
 	//
 	// example:
 	//
-	// 获取巡检实例ID列表成功
+	// Successfully retrieved the list of inspection instance IDs
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number. Pages start from 1. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records on each page. Default value: 20. Maximum value: 100.
+	// The number of entries per page. Default value: 20. Maximum value: 100.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type GetScheduledInstancesResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// The request result.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of records that are returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -161,7 +161,7 @@ type GetScheduledInstancesResponseBodyInstances struct {
 	//
 	// example:
 	//
-	// 巡检测试实例。
+	// Inspection test instance
 	InstanceDesc *string `json:"InstanceDesc,omitempty" xml:"InstanceDesc,omitempty"`
 	// The instance ID.
 	//
@@ -169,13 +169,13 @@ type GetScheduledInstancesResponseBodyInstances struct {
 	//
 	// rm-2zep6e5u6l2yu****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region in which the instance resides.
+	// The region where the instance resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The status of the instance.
+	// The instance status.
 	//
 	// example:
 	//

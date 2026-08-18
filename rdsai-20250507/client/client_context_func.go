@@ -188,6 +188,14 @@ func (client *Client) CreateApiKeyWithContext(ctx context.Context, request *Crea
 		query["Quantity"] = request.Quantity
 	}
 
+	if !dara.IsNil(request.RoleArn) {
+		query["RoleArn"] = request.RoleArn
+	}
+
+	if !dara.IsNil(request.RoleName) {
+		query["RoleName"] = request.RoleName
+	}
+
 	if !dara.IsNil(request.TokenQuota) {
 		query["TokenQuota"] = request.TokenQuota
 	}
@@ -819,9 +827,9 @@ func (client *Client) CreateSandboxTemplateWithContext(ctx context.Context, requ
 //
 // # RDS PostgreSQL
 //
-// ### Related feature documentation
+// ### Related documentation
 //
-//	Warning: This API operation incurs fees. Read the related feature documentation before you perform this operation.
+//	Warning: This API operation incurs fees. Read the related documentation carefully before you perform this operation.
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -983,7 +991,7 @@ func (client *Client) CreateSkillWithContext(ctx context.Context, tmpReq *Create
 //
 // ### Applicable engine
 //
-// [RDS AI Assistant Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
+// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - DeleteApiKeyRequest
 //
@@ -2930,7 +2938,7 @@ func (client *Client) GetModelOperatorOrderWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the IDs of all instances that are included by a specified scheduled inspection configuration.
+// Queries the list of all instance IDs included in a specified scheduled inspection configuration.
 //
 // @param request - GetScheduledInstancesRequest
 //
@@ -2982,7 +2990,7 @@ func (client *Client) GetScheduledInstancesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries all inspection reports under a specified scheduled task, with support for time range filtering and pagination.
+// Queries all inspection reports under a specified scheduled task, with support for filtering by time range and pagination.
 //
 // @param request - GetScheduledReportsRequest
 //
@@ -3328,15 +3336,7 @@ func (client *Client) ListContextDatabaseMembersWithContext(ctx context.Context,
 //
 // Description:
 //
-// ## 请求说明
-//
-// - 该API用于获取指定条件下的工作区列表。
-//
-// - `workspaceId` 和 `status` 参数均为可选，可以根据需要进行过滤。
-//
-// - 如果不提供任何过滤参数，则返回调用方账号下的所有工作区。
-//
-// - 注意：确保在请求中包含必要的认证信息（如callerUid、requestId等），否则将导致请求失败。
+// 列出上下文数据库工作空间
 //
 // @param request - ListContextDatabaseWorkspacesRequest
 //
@@ -4474,13 +4474,13 @@ func (client *Client) ModifyWhitelistIpsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Renames an API key.
+// Renames a custom API key.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Applicable engine
 //
-// [RDS AI Assistant (Ultimate Edition)](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
+// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - RenameApiKeyRequest
 //
@@ -4505,6 +4505,14 @@ func (client *Client) RenameApiKeyWithContext(ctx context.Context, request *Rena
 
 	if !dara.IsNil(request.KeyName) {
 		query["KeyName"] = request.KeyName
+	}
+
+	if !dara.IsNil(request.RoleArn) {
+		query["RoleArn"] = request.RoleArn
+	}
+
+	if !dara.IsNil(request.RoleName) {
+		query["RoleName"] = request.RoleName
 	}
 
 	req := &openapiutil.OpenApiRequest{

@@ -157,7 +157,7 @@ type GetStandAloneReportsResponseBodyReports struct {
 	//
 	// 2026-01-22T08:20:31Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The inspection end time (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The inspection end time in the format of YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -167,7 +167,7 @@ type GetStandAloneReportsResponseBodyReports struct {
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReportLanguage  *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
 	ReportType      *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
-	// The inspection start time (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The inspection start time in the format of YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//

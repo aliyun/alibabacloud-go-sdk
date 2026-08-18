@@ -63,7 +63,7 @@ type ModifyScheduledTaskRequest struct {
 	// Monday
 	Frequency       *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
 	InspectionItems *string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty"`
-	// The new list of associated instance IDs. Separate multiple values with commas (,).
+	// The new list of associated instances. Separate multiple values with commas (,).
 	//
 	// example:
 	//
