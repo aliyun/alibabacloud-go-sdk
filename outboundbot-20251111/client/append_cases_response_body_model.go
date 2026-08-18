@@ -31,7 +31,8 @@ type AppendCasesResponseBody struct {
 	// example:
 	//
 	// OK
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of contacts that failed to be added.
 	Data []*AppendCasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The HTTP status code.
 	//
@@ -146,10 +147,14 @@ func (s *AppendCasesResponseBody) Validate() error {
 }
 
 type AppendCasesResponseBodyData struct {
+	// The phone number.
+	//
 	// example:
 	//
 	// 133xxxxxxxx
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The business ID.
+	//
 	// example:
 	//
 	// bizId-xxxxxx

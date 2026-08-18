@@ -1085,6 +1085,62 @@ func (client *Client) DisableSubscriptionWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// Retrieves the details of a call session.
+//
+// Description:
+//
+// ***
+//
+// @param request - GetCallDetailRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCallDetailRecordResponse
+func (client *Client) GetCallDetailRecordWithContext(ctx context.Context, request *GetCallDetailRecordRequest, runtime *dara.RuntimeOptions) (_result *GetCallDetailRecordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCallDetailRecord"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCallDetailRecordResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the details of an outbound campaign.
 //
 // @param request - GetCampaignRequest
@@ -1123,6 +1179,62 @@ func (client *Client) GetCampaignWithContext(ctx context.Context, request *GetCa
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCampaignResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a case.
+//
+// Description:
+//
+// ***
+//
+// @param request - GetCaseDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCaseDetailResponse
+func (client *Client) GetCaseDetailWithContext(ctx context.Context, request *GetCaseDetailRequest, runtime *dara.RuntimeOptions) (_result *GetCaseDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CaseId) {
+		query["CaseId"] = request.CaseId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCaseDetail"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCaseDetailResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1339,6 +1451,168 @@ func (client *Client) ListCampaignsWithContext(ctx context.Context, request *Lis
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListCampaignsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a list of cases.
+//
+// Description:
+//
+// ***
+//
+// @param tmpReq - ListCasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCasesResponse
+func (client *Client) ListCasesWithContext(ctx context.Context, tmpReq *ListCasesRequest, runtime *dara.RuntimeOptions) (_result *ListCasesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListCasesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CaseIds) {
+		request.CaseIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CaseIds, dara.String("CaseIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.DispositionCodes) {
+		request.DispositionCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DispositionCodes, dara.String("DispositionCodes"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.DispositionReasons) {
+		request.DispositionReasonsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DispositionReasons, dara.String("DispositionReasons"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.LabelSearch) {
+		request.LabelSearchShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelSearch, dara.String("LabelSearch"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.States) {
+		request.StatesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.States, dara.String("States"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccessChannelId) {
+		query["AccessChannelId"] = request.AccessChannelId
+	}
+
+	if !dara.IsNil(request.AccessChannelType) {
+		query["AccessChannelType"] = request.AccessChannelType
+	}
+
+	if !dara.IsNil(request.Caller) {
+		query["Caller"] = request.Caller
+	}
+
+	if !dara.IsNil(request.CampaignId) {
+		query["CampaignId"] = request.CampaignId
+	}
+
+	if !dara.IsNil(request.CaseCompleted) {
+		query["CaseCompleted"] = request.CaseCompleted
+	}
+
+	if !dara.IsNil(request.CaseIdsShrink) {
+		query["CaseIds"] = request.CaseIdsShrink
+	}
+
+	if !dara.IsNil(request.DispositionCodesShrink) {
+		query["DispositionCodes"] = request.DispositionCodesShrink
+	}
+
+	if !dara.IsNil(request.DispositionReasonsShrink) {
+		query["DispositionReasons"] = request.DispositionReasonsShrink
+	}
+
+	if !dara.IsNil(request.DraftVersion) {
+		query["DraftVersion"] = request.DraftVersion
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.LabelSearchShrink) {
+		query["LabelSearch"] = request.LabelSearchShrink
+	}
+
+	if !dara.IsNil(request.MaxRingingDuration) {
+		query["MaxRingingDuration"] = request.MaxRingingDuration
+	}
+
+	if !dara.IsNil(request.MaxTalkTime) {
+		query["MaxTalkTime"] = request.MaxTalkTime
+	}
+
+	if !dara.IsNil(request.MaxTalkTurns) {
+		query["MaxTalkTurns"] = request.MaxTalkTurns
+	}
+
+	if !dara.IsNil(request.MinRingingDuration) {
+		query["MinRingingDuration"] = request.MinRingingDuration
+	}
+
+	if !dara.IsNil(request.MinTalkTime) {
+		query["MinTalkTime"] = request.MinTalkTime
+	}
+
+	if !dara.IsNil(request.MinTalkTurns) {
+		query["MinTalkTurns"] = request.MinTalkTurns
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PhoneNumber) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.StatesShrink) {
+		query["States"] = request.StatesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCases"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCasesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
