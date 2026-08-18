@@ -30,9 +30,9 @@ type ModifyActiveOperationTasksRequest struct {
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 	// Specifies whether to immediately execute the event. Valid values:
 	//
-	// - 1: immediately execute
+	// - 1: immediately executes the event.
 	//
-	// - 0: execute at the specified time.
+	// - 0: executes the event at the specified time.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ModifyActiveOperationTasksRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The switchover start time in the YYYY-MM-DDThh:mm:ssZ format.
+	// The time when the switchover starts. Specify the time in the YYYY-MM-DDThh:mm:ssZ format.
 	//
 	// example:
 	//

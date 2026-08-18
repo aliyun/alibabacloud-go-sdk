@@ -68,7 +68,7 @@ type StartSwitchDatabaseRequest struct {
 	//
 	// etx-szr2rr6i*****
 	SlinkTaskId *string `json:"SlinkTaskId,omitempty" xml:"SlinkTaskId,omitempty"`
-	// The endpoint of the primary node of the source instance, which is typically the internal or public endpoint of the instance.
+	// The endpoint of the primary node of the source instance. This is typically the internal or public endpoint of the instance.
 	//
 	// example:
 	//

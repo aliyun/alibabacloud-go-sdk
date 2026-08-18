@@ -26,7 +26,7 @@ type UntagResourcesRequest struct {
 	//
 	// example:
 	//
-	// 是否全部删除
+	// Specifies whether to delete all tags
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The region ID.
 	//
@@ -40,7 +40,7 @@ type UntagResourcesRequest struct {
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type. Set this parameter to PolarDBXInstance.
+	// The resource type. The value must be PolarDBXInstance.
 	//
 	// This parameter is required.
 	//

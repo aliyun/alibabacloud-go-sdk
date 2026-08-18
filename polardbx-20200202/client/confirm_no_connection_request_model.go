@@ -32,7 +32,7 @@ type ConfirmNoConnectionRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The unique ID of the short-link task that identifies the task to be rolled back.
+	// The unique ID of the short-link task, which is used to identify the task to be rolled back.
 	//
 	// This parameter is required.
 	//

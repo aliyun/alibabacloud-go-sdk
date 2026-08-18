@@ -34,7 +34,7 @@ type iSubmitSqlFlashbackTaskRequest interface {
 }
 
 type SubmitSqlFlashbackTaskRequest struct {
-	// The name of the database.
+	// The database name.
 	//
 	// This parameter is required.
 	//
@@ -58,11 +58,11 @@ type SubmitSqlFlashbackTaskRequest struct {
 	//
 	// pxc-*********
 	PolardbxInstanceId *string `json:"PolardbxInstanceId,omitempty" xml:"PolardbxInstanceId,omitempty"`
-	// The restoration type. Valid values:
+	// The restore type. Valid values:
 	//
-	// - **1**: Image-based restoration.
+	// - **1**: image-based restore.
 	//
-	// - **0**: Reverse restoration.
+	// - **0**: reverse restore.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type SubmitSqlFlashbackTaskRequest struct {
 	//
 	// 0
 	RecallRestoreType *string `json:"RecallRestoreType,omitempty" xml:"RecallRestoreType,omitempty"`
-	// The matching mode. Valid values:
+	// The match type. Valid values:
 	//
 	// - **0**: exact match.
 	//
@@ -100,7 +100,7 @@ type SubmitSqlFlashbackTaskRequest struct {
 	//
 	// 1111
 	SqlPk *string `json:"SqlPk,omitempty" xml:"SqlPk,omitempty"`
-	// The type of SQL. Valid values: INSERT, UPDATE, and DELETE. Separate multiple types with commas (,).
+	// The type of SQL statement. Valid values: INSERT, UPDATE, and DELETE. Separate multiple types with commas (,).
 	//
 	// if can be null:
 	// true

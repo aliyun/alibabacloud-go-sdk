@@ -38,7 +38,7 @@ type ModifyEngineMigrationResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The additional information. The value success is returned if the request succeeds. Otherwise, an error code is returned.
+	// The additional information. The value success is returned if the request is successful. Otherwise, an error code is returned.
 	//
 	// example:
 	//

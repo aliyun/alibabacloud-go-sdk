@@ -32,7 +32,9 @@ type ModifyActiveOperationMaintainConfRequest struct {
 	//
 	// 1,2,3,4,5,6,7
 	CycleTime *string `json:"CycleTime,omitempty" xml:"CycleTime,omitempty"`
-	// The cycle mode. Set this parameter to Week.
+	// The cycle mode. Valid values:
+	//
+	// - Week: weekly.
 	//
 	// This parameter is required.
 	//

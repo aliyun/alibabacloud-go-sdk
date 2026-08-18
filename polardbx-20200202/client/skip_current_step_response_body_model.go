@@ -22,7 +22,7 @@ type iSkipCurrentStepResponseBody interface {
 type SkipCurrentStepResponseBody struct {
 	// The returned data.
 	Data *SkipCurrentStepResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The return message. This parameter is empty when the request succeeds. When the request fails, exception information such as error codes is returned.
+	// The returned message. This parameter is empty when the request succeeds. When the request fails, an exception message is returned, such as an error code.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type SkipCurrentStepResponseBody struct {
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

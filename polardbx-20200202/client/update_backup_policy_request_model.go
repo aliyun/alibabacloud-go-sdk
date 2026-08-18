@@ -54,7 +54,7 @@ type iUpdateBackupPolicyRequest interface {
 }
 
 type UpdateBackupPolicyRequest struct {
-	// The backup cycle. You must specify at least 2 days. The value is a 7-digit number. From left to right, each digit indicates whether backup is enabled from Monday to Sunday. A value of 0 indicates that backup is disabled, and a value of 1 indicates that backup is enabled:
+	// The backup cycle. You must specify at least 2 days. The value is a 7-digit number. From left to right, each digit represents whether backup is enabled from Monday to Sunday. A value of 0 indicates that backup is disabled, and a value of 1 indicates that backup is enabled:
 	//
 	// - First digit: Monday
 	//
@@ -68,13 +68,13 @@ type UpdateBackupPolicyRequest struct {
 	//
 	// - Sixth digit: Saturday
 	//
-	// - Seventh digit: Sunday.
+	// - Seventh digit: Sunday
 	//
 	// example:
 	//
 	// 1001000
 	BackupPeriod *string `json:"BackupPeriod,omitempty" xml:"BackupPeriod,omitempty"`
-	// The start time of the daily backup, in UTC.
+	// The daily backup start time in UTC.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type UpdateBackupPolicyRequest struct {
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
 	// The backup method. Valid values:
 	//
-	// - **P**: physical backup
+	// - **P**: physical backup.
 	//
 	// - **L**: logical backup.
 	//
@@ -102,26 +102,26 @@ type UpdateBackupPolicyRequest struct {
 	//
 	// P
 	BackupWay *string `json:"BackupWay,omitempty" xml:"BackupWay,omitempty"`
-	// The interval for cold data backups. Unit: days. Valid values: 1 to 59.
+	// The interval of cold data backups. Unit: days. Valid values: 1 to 59.
 	//
 	// example:
 	//
 	// 30
 	ColdDataBackupInterval *int32 `json:"ColdDataBackupInterval,omitempty" xml:"ColdDataBackupInterval,omitempty"`
-	// The retention period for cold data backups. Unit: days. Valid values: 30 to 730.
+	// The retention period of cold data backups. Unit: days. Valid values: 30 to 730.
 	//
 	// example:
 	//
 	// 30
 	ColdDataBackupRetention *int32 `json:"ColdDataBackupRetention,omitempty" xml:"ColdDataBackupRetention,omitempty"`
-	// The retention period for cross-region data backups. Unit: days.
+	// The retention period of cross-region data backups. Unit: days.
 	//
 	// example:
 	//
 	// 30
 	CrossRegionDataBackupRetention *int32  `json:"CrossRegionDataBackupRetention,omitempty" xml:"CrossRegionDataBackupRetention,omitempty"`
 	CrossRegionFilterValue         *string `json:"CrossRegionFilterValue,omitempty" xml:"CrossRegionFilterValue,omitempty"`
-	// The retention period for cross-region log backups. Unit: days.
+	// The retention period of cross-region log backups. Unit: days.
 	//
 	// example:
 	//
@@ -143,9 +143,9 @@ type UpdateBackupPolicyRequest struct {
 	DestCrossRegion *string `json:"DestCrossRegion,omitempty" xml:"DestCrossRegion,omitempty"`
 	// Specifies whether to forcibly clean up binary logs when the total space usage of the instance exceeds 80% or the remaining space is less than 50 GB. The cleanup starts from the earliest logs until the total space usage drops below 80% and the remaining space exceeds 50 GB. Valid values:
 	//
-	// - **1**: yes
+	// - **1**: Yes.
 	//
-	// - **0**: no.
+	// - **0**: No.
 	//
 	// example:
 	//
@@ -175,13 +175,13 @@ type UpdateBackupPolicyRequest struct {
 	//
 	// 7
 	LocalLogRetention *int32 `json:"LocalLogRetention,omitempty" xml:"LocalLogRetention,omitempty"`
-	// The number of binary logs retained locally. Default value: 60. Valid values: 6 to 100.
+	// The number of local binary logs to retain. Default value: 60. Valid values: 6 to 100.
 	//
 	// example:
 	//
 	// 60
 	LocalLogRetentionNumber *int32 `json:"LocalLogRetentionNumber,omitempty" xml:"LocalLogRetentionNumber,omitempty"`
-	// The maximum space usage for binary logs, expressed as a percentage. Valid values: 0 to 50. This parameter specifies a loop space. Default value: 30.
+	// The maximum binary log space usage in percentage. Valid values: 0 to 50. This parameter specifies a loop space. Default value: 30.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iCreateStructureImportTaskResponseBody interface {
 type CreateStructureImportTaskResponseBody struct {
 	// The returned result.
 	Data *CreateStructureImportTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message. > This parameter is empty if the request is successful. If the request fails, an exception message is returned, such as an error code.
+	// The returned message. > This parameter is empty if the request is successful. If the request fails, an exception message is returned, such as an error code.
 	//
 	// example:
 	//

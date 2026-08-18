@@ -32,7 +32,7 @@ type DescribeCdcClassListRequest struct {
 	//
 	// pxc-hzrh51fze****pon-cdc
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The region in which the instance resides.
+	// The region where the instance resides.
 	//
 	// This parameter is required.
 	//

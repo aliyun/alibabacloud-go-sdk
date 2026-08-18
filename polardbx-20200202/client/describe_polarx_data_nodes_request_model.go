@@ -54,7 +54,7 @@ type DescribePolarxDataNodesRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The keyword for filtering query results.
+	// The keyword for filtering results.
 	//
 	// example:
 	//

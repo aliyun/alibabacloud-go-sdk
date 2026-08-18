@@ -24,7 +24,7 @@ type DescribeSqlFlashbackTaskListRequest struct {
 	//
 	// pxc-**********
 	PolardbxInstanceId *string `json:"PolardbxInstanceId,omitempty" xml:"PolardbxInstanceId,omitempty"`
-	// The region in which the instance resides.
+	// The region where the instance resides.
 	//
 	// This parameter is required.
 	//

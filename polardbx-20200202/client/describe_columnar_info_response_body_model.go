@@ -126,7 +126,7 @@ type DescribeColumnarInfoResponseBodyData struct {
 	//
 	// polarx.n8.medium.col
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
-	// The new column store version.
+	// The new version of the column store.
 	//
 	// This parameter is required.
 	//
@@ -311,7 +311,7 @@ func (s *DescribeColumnarInfoResponseBodyDataInstanceTopologyList) Validate() er
 }
 
 type DescribeColumnarInfoResponseBodyDataInstanceTopologyListPhysicalNodes struct {
-	// The zone in which the instance resides.
+	// The zone where the instance resides.
 	//
 	// example:
 	//

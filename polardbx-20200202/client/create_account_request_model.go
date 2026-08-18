@@ -60,7 +60,7 @@ type CreateAccountRequest struct {
 	//
 	// - DMLOnly
 	//
-	// - DDLOnly.
+	// - DDLOnly
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type CreateAccountRequest struct {
 	//
 	// testdb
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The region in which the instance resides.
+	// The region where the instance resides.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type CreateAccountRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the security administrator account.
 	//
-	// > If three-role mode is enabled, this parameter is required. If three-role mode is not enabled, this parameter is not required.
+	// > If the three-role mode is enabled, this parameter is required. If the three-role mode is not enabled, this parameter is not required.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type CreateAccountRequest struct {
 	SecurityAccountName *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
 	// The password of the security administrator account.
 	//
-	// > If three-role mode is enabled, this parameter is required. If three-role mode is not enabled, this parameter is not required.
+	// > If the three-role mode is enabled, this parameter is required. If the three-role mode is not enabled, this parameter is not required.
 	//
 	// example:
 	//

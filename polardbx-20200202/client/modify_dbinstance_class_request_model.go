@@ -34,7 +34,7 @@ type iModifyDBInstanceClassRequest interface {
 }
 
 type ModifyDBInstanceClassRequest struct {
-	// The client token. It can be any unique string.
+	// The client token that is used to ensure the idempotence of the request. You can use any unique string.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type ModifyDBInstanceClassRequest struct {
 	//
 	// - polarxro.st.8xlarge.2e	60 cores, 470 GB (dedicated physical machine)
 	//
-	// - polarxro.st.12xlarge.2e	90 cores, 720 GB (dedicated physical machine).
+	// - polarxro.st.12xlarge.2e	90 cores, 720 GB (dedicated physical machine)
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type ModifyDBInstanceClassRequest struct {
 	//
 	// - rds.mysql.st.h43	60 cores, 470 GB (dedicated physical machine)
 	//
-	// - rds.mysql.st.v52	90 cores, 720 GB (dedicated physical machine).
+	// - rds.mysql.st.v52	90 cores, 720 GB (dedicated physical machine)
 	//
 	// example:
 	//
@@ -182,19 +182,19 @@ type ModifyDBInstanceClassRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to change specifications for multiple DNs.
+	// Specifies whether to perform a multi-specification change for DN nodes.
 	//
 	// example:
 	//
 	// true
 	SpecifiedDNScale *bool `json:"SpecifiedDNScale,omitempty" xml:"SpecifiedDNScale,omitempty"`
-	// The target specifications for each DN when changing specifications for multiple DNs.
+	// The target specification for each DN node when performing a multi-specification DN change.
 	//
 	// example:
 	//
 	// {"pxc-xdb-s-htr3rh44ki3s6a4354":"mysql.n4.medium.25","pxc-xdb-s-htr3rh44ki3s6a71c6":"mysql.n4.medium.25"}
 	SpecifiedDNSpecMapJson *string `json:"SpecifiedDNSpecMapJson,omitempty" xml:"SpecifiedDNSpecMapJson,omitempty"`
-	// The start time of the switch. The switch time range is [start time T, T+30m]. This parameter is not yet available.
+	// The switch start time. The switch time range is [start time T, T+30m]. This parameter is not yet available.
 	//
 	// example:
 	//
@@ -202,7 +202,7 @@ type ModifyDBInstanceClassRequest struct {
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
 	// The switch time. Valid values:
 	//
-	// - 0: immediately
+	// - 0: immediately.
 	//
 	// - 1: within the O&M window.
 	//
@@ -284,7 +284,7 @@ type ModifyDBInstanceClassRequest struct {
 	//
 	// - mysqlro.x4.4xlarge.1 	32 cores, 128 GB (dedicated)
 	//
-	// - mysqlro.x8.4xlarge.1	32 cores, 256 GB (dedicated).
+	// - mysqlro.x8.4xlarge.1	32 cores, 256 GB (dedicated)
 	//
 	// example:
 	//

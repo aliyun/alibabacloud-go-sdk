@@ -34,19 +34,19 @@ type DescribeBackupSetListRequest struct {
 	//
 	// pxc-xxxxxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The region where the backup sets reside. If you specify this parameter, backup sets in the specified region are returned. You can specify only one region at a time.
+	// The region where the backup set resides. After you specify this parameter, backup sets in the specified region are returned. Only one region can be specified at a time.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DestCrossRegion *string `json:"DestCrossRegion,omitempty" xml:"DestCrossRegion,omitempty"`
-	// The end time. Specify a UNIX timestamp in milliseconds.
+	// The end time timestamp, in milliseconds.
 	//
 	// example:
 	//
 	// 1635707845000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The page number. The value starts from 1.
+	// The page number, starting from 1.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type DescribeBackupSetListRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time. Specify a UNIX timestamp in milliseconds.
+	// The start time timestamp, in milliseconds.
 	//
 	// example:
 	//

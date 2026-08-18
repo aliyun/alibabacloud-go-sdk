@@ -18,14 +18,20 @@ type iRestoreDBInstanceResponseBody interface {
 }
 
 type RestoreDBInstanceResponseBody struct {
+	// The instance name.
+	//
 	// example:
 	//
 	// pxc-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 12345
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9B2F3840-XXXX-XXXX-XXXX-2D5C3A31797C

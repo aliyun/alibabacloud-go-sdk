@@ -34,7 +34,7 @@ type ModifyDatabaseDescriptionRequest struct {
 	//
 	// example:
 	//
-	// 测试数据库
+	// Test database
 	DbDescription *string `json:"DbDescription,omitempty" xml:"DbDescription,omitempty"`
 	// The database name.
 	//

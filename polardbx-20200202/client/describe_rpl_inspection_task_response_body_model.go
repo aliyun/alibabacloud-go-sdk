@@ -182,7 +182,7 @@ type DescribeRplInspectionTaskResponseBodyDataInspectionTaskList struct {
 	//
 	// SUCCEEDED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The timestamp of the most recent task update.
+	// The timestamp when the task was last updated.
 	//
 	// example:
 	//

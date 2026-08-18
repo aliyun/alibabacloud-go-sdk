@@ -16,7 +16,7 @@ type iDescribeDBInstanceSSLResponseBody interface {
 }
 
 type DescribeDBInstanceSSLResponseBody struct {
-	// The data structure.
+	// The data struct.
 	Data *DescribeDBInstanceSSLResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -68,17 +68,17 @@ type DescribeDBInstanceSSLResponseBodyData struct {
 	//
 	// pxc-sddddddcym7g7w****.polarx.singapore.rds.aliyuncs.com
 	CertCommonName *string `json:"CertCommonName,omitempty" xml:"CertCommonName,omitempty"`
-	// Indicates whether SSL is enabled for the instance:
+	// Indicates whether SSL is enabled for the instance. Valid values:
 	//
-	// - **true**: enabled
+	// - **true**: Enabled.
 	//
-	// - **false**: disabled
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// false
 	SSLEnabled *bool `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
-	// The expiration time of the SSL certificate.
+	// The certificate expiration time.
 	//
 	// example:
 	//

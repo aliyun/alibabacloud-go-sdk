@@ -20,9 +20,9 @@ type iUpdateBackupPolicyResponseBody interface {
 }
 
 type UpdateBackupPolicyResponseBody struct {
-	// The details of the backup policy.
+	// The backup policy details.
 	Data *UpdateBackupPolicyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message. The value success is returned if the request is successful. Otherwise, the corresponding error code is returned.
+	// The response message. "success" is returned if the request is successful. Otherwise, the corresponding error code is returned.
 	//
 	// example:
 	//

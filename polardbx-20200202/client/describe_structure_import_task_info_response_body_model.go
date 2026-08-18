@@ -20,9 +20,9 @@ type iDescribeStructureImportTaskInfoResponseBody interface {
 }
 
 type DescribeStructureImportTaskInfoResponseBody struct {
-	// The returned result set.
+	// The result set.
 	Data *DescribeStructureImportTaskInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message. This parameter is empty if the request is successful. If the request fails, an error message is returned, such as an error code.
+	// The returned message. This parameter is empty when the request succeeds. When the request fails, an exception message is returned, such as an error code.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribeStructureImportTaskInfoResponseBody struct {
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

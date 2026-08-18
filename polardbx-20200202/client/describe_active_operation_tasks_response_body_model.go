@@ -119,9 +119,9 @@ func (s *DescribeActiveOperationTasksResponseBody) Validate() error {
 type DescribeActiveOperationTasksResponseBodyItems struct {
 	// Indicates whether cancellation is allowed. Valid values:
 	//
-	// - **0**: Not allowed.
+	// - **0**: not allowed.
 	//
-	// - **1**: Allowed.
+	// - **1**: allowed.
 	//
 	// example:
 	//
@@ -129,15 +129,15 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	AllowCancel *string `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
 	// Indicates whether modification is allowed. Valid values:
 	//
-	// - **0**: Not allowed.
+	// - **0**: not allowed.
 	//
-	// - **1**: Allowed.
+	// - **1**: allowed.
 	//
 	// example:
 	//
 	// 0
 	AllowChange *string `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
-	// The change level. This parameter can be ignored.
+	// The change level (can be ignored).
 	//
 	// example:
 	//
@@ -191,19 +191,19 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The impact. This parameter is not returned.
+	// The impact (not output).
 	//
 	// example:
 	//
 	// --
 	Impact *string `json:"Impact,omitempty" xml:"Impact,omitempty"`
-	// The impact description in English.
+	// The impact in English.
 	//
 	// example:
 	//
 	// Transient instance disconnection
 	ImpactEn *string `json:"ImpactEn,omitempty" xml:"ImpactEn,omitempty"`
-	// The impact description in Chinese.
+	// The impact in Chinese.
 	//
 	// example:
 	//
@@ -239,7 +239,7 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// cn-shanghai-et15-b01
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The result information. This parameter can be ignored.
+	// The result information (can be ignored).
 	//
 	// example:
 	//
@@ -253,9 +253,9 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status. Valid values:
 	//
-	// - **3**: Pending.
+	// - **3**: pending.
 	//
-	// - **4**: Running.
+	// - **4**: running.
 	//
 	// example:
 	//
@@ -275,13 +275,13 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// rds_apsaradb_transfer
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The task type in English. This parameter can be ignored.
+	// The task type in English (can be ignored).
 	//
 	// example:
 	//
 	// --
 	TaskTypeEn *string `json:"TaskTypeEn,omitempty" xml:"TaskTypeEn,omitempty"`
-	// The task type in Chinese. This parameter can be ignored.
+	// The task type in Chinese (can be ignored).
 	//
 	// example:
 	//

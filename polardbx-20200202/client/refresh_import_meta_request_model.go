@@ -18,7 +18,7 @@ type iRefreshImportMetaRequest interface {
 }
 
 type RefreshImportMetaRequest struct {
-	// The instance ID. > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in the target region, including instance IDs.
+	// The instance ID. > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in the specified region, including instance IDs.
 	//
 	// example:
 	//

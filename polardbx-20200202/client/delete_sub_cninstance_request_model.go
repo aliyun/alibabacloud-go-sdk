@@ -18,6 +18,8 @@ type iDeleteSubCNInstanceRequest interface {
 }
 
 type DeleteSubCNInstanceRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25,6 +27,8 @@ type DeleteSubCNInstanceRequest struct {
 	// pxc-********
 	DBInstanceName      *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	InstanceClusterName *string `json:"InstanceClusterName,omitempty" xml:"InstanceClusterName,omitempty"`
+	// The region where the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:

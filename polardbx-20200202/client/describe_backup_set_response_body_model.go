@@ -132,13 +132,13 @@ type DescribeBackupSetResponseBodyData struct {
 	//
 	// 1
 	BackupType *int32 `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The time when the backup started.
+	// The backup start time.
 	//
 	// example:
 	//
 	// 1650250861754
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// The time when the backup ended.
+	// The backup end time.
 	//
 	// example:
 	//
@@ -266,7 +266,7 @@ type DescribeBackupSetResponseBodyDataOSSList struct {
 	//
 	// https://pre-rdsbak-cn-xxx.oss-cn-beijing.aliyuncs.com/custins2255/hins3084_data_20220418110623_qp.xb?OSSAccessKeyId=LTAI****************&Expires=1650441697&dd=7KJzkUSbXf6dwy
 	DownloadLink *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
-	// The internal network download URL for the OSS file.
+	// The internal network OSS download URL.
 	//
 	// example:
 	//

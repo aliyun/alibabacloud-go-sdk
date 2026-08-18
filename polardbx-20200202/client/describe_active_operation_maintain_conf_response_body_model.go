@@ -22,9 +22,9 @@ type DescribeActiveOperationMaintainConfResponseBody struct {
 	Config *DescribeActiveOperationMaintainConfResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
 	// Indicates whether the O&M window has been configured. Valid values:
 	//
-	// - 1: configured.
+	// - 1: Configured.
 	//
-	// - 0: not configured.
+	// - 0: Not configured.
 	//
 	// example:
 	//
@@ -101,13 +101,13 @@ type DescribeActiveOperationMaintainConfResponseBodyConfig struct {
 	//
 	// Week
 	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
-	// The end time of the O&M window.
+	// The O&M end time.
 	//
 	// example:
 	//
 	// 04:00:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time of the O&M window.
+	// The O&M start time.
 	//
 	// example:
 	//

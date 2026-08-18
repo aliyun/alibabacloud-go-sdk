@@ -22,13 +22,13 @@ type iCreateSuperAccountRequest interface {
 }
 
 type CreateSuperAccountRequest struct {
-	// The description of the account.
+	// The account description.
 	//
 	// example:
 	//
 	// testdbadescription
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The name of the account.
+	// The account name.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type CreateSuperAccountRequest struct {
 	//
 	// dba
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The password of the account.
+	// The account password.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type CreateSuperAccountRequest struct {
 	//
 	// testdbapassword
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	// The name of the instance.
+	// The instance name.
 	//
 	// This parameter is required.
 	//

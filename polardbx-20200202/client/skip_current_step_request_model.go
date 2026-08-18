@@ -18,13 +18,13 @@ type iSkipCurrentStepRequest interface {
 }
 
 type SkipCurrentStepRequest struct {
-	// The current operation step of the task.
+	// The current operation step number of the task.
 	//
 	// example:
 	//
 	// PRE_CHECK
 	CurrentStep *string `json:"CurrentStep,omitempty" xml:"CurrentStep,omitempty"`
-	// The region where the instance is located.
+	// The region where the instance resides.
 	//
 	// example:
 	//

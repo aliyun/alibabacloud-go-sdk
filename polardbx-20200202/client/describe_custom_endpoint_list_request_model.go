@@ -20,13 +20,13 @@ type iDescribeCustomEndpointListRequest interface {
 }
 
 type DescribeCustomEndpointListRequest struct {
-	// Specifies whether to check if the compute node (CN) has been deleted.
+	// Specifies whether to check if the CN node has been deleted.
 	//
 	// example:
 	//
 	// true
 	CheckDeleteCN *bool `json:"CheckDeleteCN,omitempty" xml:"CheckDeleteCN,omitempty"`
-	// The IDs of custom endpoints.
+	// The custom endpoint IDs.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DescribeCustomEndpointListRequest struct {
 	//
 	// pxc-xxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The region in which the instance resides.
+	// The region where the instance resides.
 	//
 	// example:
 	//

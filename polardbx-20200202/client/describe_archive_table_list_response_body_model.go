@@ -16,7 +16,7 @@ type iDescribeArchiveTableListResponseBody interface {
 }
 
 type DescribeArchiveTableListResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *DescribeArchiveTableListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// requestId
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -58,7 +58,7 @@ func (s *DescribeArchiveTableListResponseBody) Validate() error {
 }
 
 type DescribeArchiveTableListResponseBodyData struct {
-	// The page number.
+	// The page index.
 	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
 	// The number of entries per page.
 	PageSize          *int64                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -166,14 +166,14 @@ func (s *DescribeArchiveTableListResponseBodyData) Validate() error {
 
 type DescribeArchiveTableListResponseBodyDataTables struct {
 	ArchiveStatus *string `json:"ArchiveStatus,omitempty" xml:"ArchiveStatus,omitempty"`
-	// The time when the table was created.
+	// The creation time.
 	CreatedDate *int64 `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The number of files.
 	FileCount              *int32 `json:"FileCount,omitempty" xml:"FileCount,omitempty"`
 	LastSuccessArchiveTime *int64 `json:"LastSuccessArchiveTime,omitempty" xml:"LastSuccessArchiveTime,omitempty"`
 	// The database name.
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The space occupied by the table.
+	// The space size occupied by the table.
 	SpaceSize *float64 `json:"SpaceSize,omitempty" xml:"SpaceSize,omitempty"`
 	// The table name.
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`

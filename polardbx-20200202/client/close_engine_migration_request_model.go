@@ -26,13 +26,13 @@ type CloseEngineMigrationRequest struct {
 	//
 	// Default value: **true**.
 	//
-	// > Disabling binlog restarts your PolarDB cluster.
+	// > Disabling binlog will restart your PolarDB cluster.
 	//
 	// example:
 	//
 	// true
 	ContinueEnableBinlog *string `json:"ContinueEnableBinlog,omitempty" xml:"ContinueEnableBinlog,omitempty"`
-	// The name of the instance.
+	// The instance name.
 	//
 	// This parameter is required.
 	//

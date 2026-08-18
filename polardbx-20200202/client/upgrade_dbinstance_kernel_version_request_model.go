@@ -44,9 +44,9 @@ type UpgradeDBInstanceKernelVersionRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The switch mode. Valid values:
 	//
-	// - 0: immediately.
+	// - 0: immediately switches.
 	//
-	// - 1: during the O&M window.
+	// - 1: switches during the O&M window.
 	//
 	// example:
 	//

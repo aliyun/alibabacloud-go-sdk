@@ -16,13 +16,13 @@ type iDescribeScaleOutMigrateTaskListResponseBody interface {
 }
 
 type DescribeScaleOutMigrateTaskListResponseBody struct {
-	// Migration task progress.
+	// The migration task progress.
 	//
 	// example:
 	//
 	// 32
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

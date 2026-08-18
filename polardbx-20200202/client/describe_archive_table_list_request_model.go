@@ -28,7 +28,7 @@ type iDescribeArchiveTableListRequest interface {
 type DescribeArchiveTableListRequest struct {
 	// This parameter is required.
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The page number. Pages start from 1.
+	// The page number, starting from 1.
 	//
 	// This parameter is required.
 	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`

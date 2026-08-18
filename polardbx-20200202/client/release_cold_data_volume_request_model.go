@@ -16,7 +16,7 @@ type iReleaseColdDataVolumeRequest interface {
 }
 
 type ReleaseColdDataVolumeRequest struct {
-	// The name of the instance.
+	// The instance name.
 	//
 	// This parameter is required.
 	//

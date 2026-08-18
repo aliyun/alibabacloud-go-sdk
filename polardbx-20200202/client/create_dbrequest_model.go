@@ -42,21 +42,21 @@ type CreateDBRequest struct {
 	//
 	// testaccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The permissions granted to the account on the database. Valid values:
+	// The permissions granted to the account on the new database. Valid values:
 	//
-	// - **ReadWrite**: read and write permissions.
+	// - **ReadWrite**
 	//
-	// - **ReadOnly**: read-only permissions.
+	// - **ReadOnly**
 	//
-	// - **DMLOnly**: DML-only permissions.
+	// - **DMLOnly**
 	//
-	// - **DDLOnly**: DDL-only permissions.
+	// - **DDLOnly**
 	//
 	// example:
 	//
 	// ReadWrite
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
-	// The character set. Valid values:
+	// The character set. The following character sets are supported:
 	//
 	// - **utf8**
 	//
@@ -64,7 +64,7 @@ type CreateDBRequest struct {
 	//
 	// - **latin1**
 	//
-	// - **utf8mb4**.
+	// - **utf8mb4**
 	//
 	// This parameter is required.
 	//
@@ -94,11 +94,11 @@ type CreateDBRequest struct {
 	//
 	// testdb
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// The mode of the database. Valid values:
+	// The mode selected when creating the database. Valid values:
 	//
-	// - **auto**: The database supports automatic partitioning. You do not need to specify a partition key when you create a table.
+	// - **auto**: The database supports automatic partitioning. You do not need to specify a partition key when creating a table.
 	//
-	// - **drds**: The database does not support automatic partitioning. You must use the dedicated sharding syntax to specify sharding keys when you create a table.
+	// - **drds**: The database does not support automatic partitioning. You must use dedicated table and database sharding syntax and specify sharding keys when creating a table.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type CreateDBRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the security administrator account.
 	//
-	// > If the three-role mode is enabled, this parameter is required. If the three-role mode is not enabled, this parameter is not required.
+	// > If the three-role mode is enabled, this parameter is required. If the three-role mode is not enabled, this parameter is optional.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type CreateDBRequest struct {
 	SecurityAccountName *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
 	// The password of the security administrator account.
 	//
-	// > If the three-role mode is enabled, this parameter is required. If the three-role mode is not enabled, this parameter is not required.
+	// > If the three-role mode is enabled, this parameter is required. If the three-role mode is not enabled, this parameter is optional.
 	//
 	// example:
 	//

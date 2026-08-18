@@ -37,7 +37,7 @@ type UpdatePolarDBXInstanceNodeRequest struct {
 	//
 	// 2
 	CNNodeCount *int32 `json:"CNNodeCount,omitempty" xml:"CNNodeCount,omitempty"`
-	// The client token. You can set this parameter to any random string.
+	// The client token, which is an arbitrary random string.
 	//
 	// example:
 	//

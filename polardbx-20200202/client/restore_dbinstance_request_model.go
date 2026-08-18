@@ -74,142 +74,288 @@ type iRestoreDBInstanceRequest interface {
 }
 
 type RestoreDBInstanceRequest struct {
+	// Specifies whether to enable auto-renewal. Default value: true.
+	//
+	// - true: Enabled.
+	//
+	// - false: Disabled.
+	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The backup set ID.
+	//
 	// example:
 	//
 	// 111
 	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
+	// The region where the backup set resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-chengdu
 	BackupSetRegion *string `json:"BackupSetRegion,omitempty" xml:"BackupSetRegion,omitempty"`
+	// The number of compute nodes.
+	//
 	// example:
 	//
 	// 2
 	CNNodeCount *string `json:"CNNodeCount,omitempty" xml:"CNNodeCount,omitempty"`
+	// The client token used to ensure the idempotence of the request. Use a different value for each request.
+	//
 	// example:
 	//
 	// xxxxxx-xxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The name of the source instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-***
 	CloneInstanceName *string `json:"CloneInstanceName,omitempty" xml:"CloneInstanceName,omitempty"`
+	// The compute node specifications. Valid values:
+	//
+	// - polarx.x4.medium.2e: 2 cores, 8 GB
+	//
+	// - polarx.x4.large.2e: 4 cores, 16 GB
+	//
+	// - polarx.x8.large.2e: 4 cores, 32 GB
+	//
+	// - polarx.x4.xlarge.2e: 8 cores, 32 GB
+	//
+	// - polarx.x8.xlarge.2e: 8 cores, 64 GB
+	//
+	// - polarx.x4.2xlarge.2e: 16 cores, 64 GB
+	//
+	// - polarx.x8.2xlarge.2e: 16 cores, 128 GB
+	//
+	// - polarx.x4.4xlarge.2e: 32 cores, 128 GB
+	//
+	// - polarx.x8.4xlarge.2e: 32 cores, 256 GB
+	//
+	// - polarx.st.8xlarge.2e: 60 cores, 470 GB
+	//
+	// - polarx.st.12xlarge.2e: 90 cores, 720 GB
+	//
 	// example:
 	//
 	// polarx.x4.medium.2e
 	CnClass *string `json:"CnClass,omitempty" xml:"CnClass,omitempty"`
+	// The node specifications. Valid values:
+	//
+	// - polarx.x4.medium.2e: 2 cores, 8 GB
+	//
+	// - polarx.x4.large.2e: 4 cores, 16 GB
+	//
+	// - polarx.x8.large.2e: 4 cores, 32 GB
+	//
+	// - polarx.x4.xlarge.2e: 8 cores, 32 GB
+	//
+	// - polarx.x8.xlarge.2e: 8 cores, 64 GB
+	//
+	// - polarx.x4.2xlarge.2e: 16 cores, 64 GB
+	//
+	// - polarx.x8.2xlarge.2e: 16 cores, 128 GB
+	//
+	// - polarx.x4.4xlarge.2e: 32 cores, 128 GB
+	//
+	// - polarx.x8.4xlarge.2e: 32 cores, 256 GB
+	//
+	// - polarx.st.8xlarge.2e: 60 cores, 470 GB
+	//
+	// - polarx.st.12xlarge.2e: 90 cores, 720 GB
+	//
 	// example:
 	//
 	// polarx.x4.2xlarge.2d
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
+	// The number of instance nodes. The minimum value is 2.
+	//
 	// example:
 	//
 	// 2
 	DBNodeCount *int32 `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
+	// The number of storage nodes.
+	//
 	// example:
 	//
 	// 2
 	DNNodeCount *string `json:"DNNodeCount,omitempty" xml:"DNNodeCount,omitempty"`
+	// The storage node specifications. Valid values:
+	//
+	// - mysql.n4.medium.25: 2 cores, 8 GB
+	//
+	// - mysql.n4.large.25: 4 cores, 16 GB
+	//
+	// - mysql.x8.large.25: 4 cores, 32 GB
+	//
+	// - mysql.n4.xlarge.25: 8 cores, 32 GB
+	//
+	// - mysql.x8.xlarge.25: 8 cores, 64 GB
+	//
+	// - mysql.n4.2xlarge.25: 16 cores, 64 GB
+	//
+	// - mysql.x8.2xlarge.25: 16 cores, 128 GB
+	//
+	// - mysql.x4.4xlarge.25: 32 cores, 128 GB
+	//
+	// - mysql.x8.4xlarge.25: 32 cores, 256 GB
+	//
+	// - mysql.st.8xlarge.25: 60 cores, 470 GB
+	//
+	// - mysql.st.12xlarge.25: 90 cores, 720 GB
+	//
 	// example:
 	//
 	// mysql.n4.medium.25
 	DnClass *string `json:"DnClass,omitempty" xml:"DnClass,omitempty"`
+	// The MySQL DPI engine version. Valid values: 5.7 and 8.0.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5.7
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The GDN role.
+	//
 	// example:
 	//
 	// standby
 	GdnRole *string `json:"GdnRole,omitempty" xml:"GdnRole,omitempty"`
+	// The network type. Only VPC is supported.
+	//
 	// example:
 	//
 	// vpc
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The billing method of the instance.
+	//
+	// - PREPAY: subscription
+	//
+	// - POSTPAY: pay-as-you-go
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PREPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The billing cycle. Valid values for subscription: Year and Month. Default value for pay-as-you-go: Hour.
+	//
 	// example:
 	//
 	// Month
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The primary zone.
+	//
 	// example:
 	//
 	// cn-shenzhen-e
 	PrimaryZone *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	// The recovery type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Clone
 	RecoveryTypeCode *string `json:"RecoveryTypeCode,omitempty" xml:"RecoveryTypeCode,omitempty"`
+	// The region where the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID. This parameter can be left empty. This parameter is not supported.
+	//
 	// example:
 	//
 	// null
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The point in time to which you want to restore the instance. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+	//
 	// example:
 	//
 	// 2024-10-14T00:00:00Z
 	RestoreTime *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
+	// The secondary zone.
+	//
 	// example:
 	//
 	// cn-shenzhen-a
 	SecondaryZone *string `json:"SecondaryZone,omitempty" xml:"SecondaryZone,omitempty"`
+	// The instance series. Valid values:
+	//
+	// - enterprise: Enterprise Edition.
+	//
+	// - standard: Standard Edition.
+	//
 	// example:
 	//
 	// enterprise
 	Series *string `json:"Series,omitempty" xml:"Series,omitempty"`
+	// The region where the source instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-chengdu
 	SourceInstanceRegion *string `json:"SourceInstanceRegion,omitempty" xml:"SourceInstanceRegion,omitempty"`
+	// The storage type.
+	//
 	// example:
 	//
 	// cloud_auto
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The zone for Three-zone deployment.
+	//
 	// example:
 	//
 	// cn-shenzhen-e
 	TertiaryZone *string `json:"TertiaryZone,omitempty" xml:"TertiaryZone,omitempty"`
+	// The topology type. Valid values:
+	//
+	// - 3azones: three-zone deployment.
+	//
+	// - 1azone: single-zone deployment.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3azones
 	TopologyType *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
+	// The subscription duration. Specify the number of months or years.
+	//
+	// > If Period is set to Year, valid values of this parameter are 1, 2, and 3.
+	//
 	// example:
 	//
 	// 1
 	UsedTime *int32 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	// VPC ID。
+	//
 	// example:
 	//
 	// vpc-*****
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-*********
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The zone of the instance.
+	//
 	// example:
 	//
 	// cn-hangzhou-a

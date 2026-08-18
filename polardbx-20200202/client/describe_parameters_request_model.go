@@ -28,7 +28,7 @@ type DescribeParametersRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The parameter level. Valid values:
 	//
-	// - compute: compute layer
+	// - compute: compute layer.
 	//
 	// - storage: storage layer.
 	//

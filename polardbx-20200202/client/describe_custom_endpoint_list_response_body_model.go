@@ -68,7 +68,7 @@ type DescribeCustomEndpointListResponseBodyData struct {
 	//
 	// 0
 	CanDeleteCount *int32 `json:"CanDeleteCount,omitempty" xml:"CanDeleteCount,omitempty"`
-	// The details of the endpoints.
+	// The endpoint details.
 	Endpoints []*DescribeCustomEndpointListResponseBodyDataEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 }
 
@@ -120,7 +120,7 @@ type DescribeCustomEndpointListResponseBodyDataEndpoints struct {
 	//
 	// pxc-shra****zq0j01.polarx.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The ID of the custom endpoint.
+	// The custom endpoint ID.
 	//
 	// example:
 	//
@@ -132,45 +132,45 @@ type DescribeCustomEndpointListResponseBodyDataEndpoints struct {
 	//
 	// pxc-hz****zoxherr7
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The name of the custom endpoint.
+	// The name.
 	//
 	// example:
 	//
 	// Name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether a node automatically joins the cluster and starts providing services after the node is added or recovered.
+	// Specifies whether the node automatically joins the cluster and starts providing services after being added or restored.
 	//
 	// example:
 	//
 	// true
 	NodeAutoEnter *string `json:"NodeAutoEnter,omitempty" xml:"NodeAutoEnter,omitempty"`
-	// To query the metrics of a read-only node in a cloud-native read/write splitting architecture instance, set this parameter to **READONLY*	- and specify the **NodeId*	- parameter.
+	// If you want to query the metrics of a read-only node in a cloud-native read/write splitting architecture instance, set this parameter to **READONLY*	- along with the specific **NodeId**.
 	//
-	// >  In other cases, you do not need to specify this parameter or you can set it to **MASTER**.
+	// >  In other cases, you do not need to specify this parameter (or set it to **MASTER**).
 	//
 	// example:
 	//
 	// same_azone_as_last
 	NodeRole *string `json:"NodeRole,omitempty" xml:"NodeRole,omitempty"`
-	// The port used to connect to the instance.
+	// The connection port of the instance.
 	//
 	// example:
 	//
 	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The status of the custom endpoint.
+	// The status.
 	//
 	// example:
 	//
 	// created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-8vbkw****5yh4nrd639ih
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the virtual private cloud (VPC) in which the endpoint resides.
+	// The ID of the VPC where the endpoint resides.
 	//
 	// example:
 	//

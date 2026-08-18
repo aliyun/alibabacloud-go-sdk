@@ -24,7 +24,7 @@ type DescribeRdsVswitchesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the VPC in which the endpoint resides.
+	// The ID of the VPC in which the access endpoint resides.
 	//
 	// example:
 	//

@@ -33,7 +33,7 @@ type iDescribeDBInstancesRequest interface {
 
 type DescribeDBInstancesRequest struct {
 	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
-	// The description or remarks of the database.
+	// The description of the database.
 	//
 	// example:
 	//
@@ -51,19 +51,13 @@ type DescribeDBInstancesRequest struct {
 	//
 	// true
 	MustHasCdc *bool `json:"MustHasCdc,omitempty" xml:"MustHasCdc,omitempty"`
-	// The page number. Starts from 1.
+	// The page number. Pages start from 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The page size. Valid values:
-	//
-	// - 30
-	//
-	// - 50
-	//
-	// - 100.
 	//
 	// example:
 	//
@@ -84,10 +78,6 @@ type DescribeDBInstancesRequest struct {
 	// rg-acfmyst47******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The instance edition. Valid values:
-	//
-	// - **enterprise**: Enterprise Edition.
-	//
-	// - **standard**: Standard Edition.
 	//
 	// example:
 	//

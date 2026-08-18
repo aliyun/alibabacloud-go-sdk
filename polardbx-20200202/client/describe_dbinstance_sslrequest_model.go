@@ -22,7 +22,7 @@ type DescribeDBInstanceSSLRequest struct {
 	//
 	// pxc-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The ID of the region where the instance resides.
+	// The region ID of the instance.
 	//
 	// example:
 	//

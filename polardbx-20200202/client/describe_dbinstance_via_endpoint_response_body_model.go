@@ -84,7 +84,7 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstance struct {
 	//
 	// - **polarx.st.8xlarge.2e**: 60 cores, 470 GB
 	//
-	// - **polarx.st.12xlarge.2e**: 90 cores, 720 GB.
+	// - **polarx.st.12xlarge.2e**: 90 cores, 720 GB
 	//
 	// example:
 	//
@@ -188,7 +188,7 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstance struct {
 	//
 	// - **mysql.st.8xlarge.25**: 60 cores, 470 GB
 	//
-	// - **mysql.st.12xlarge.25**: 90 cores, 720 GB.
+	// - **mysql.st.12xlarge.25**: 90 cores, 720 GB
 	//
 	// example:
 	//
@@ -214,9 +214,9 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstance struct {
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
 	// Indicates whether the instance has expired. Valid values:
 	//
-	// - **true**: The instance has expired.
+	// - **true**: Expired.
 	//
-	// - **false**: The instance is running normally.
+	// - **false**: Not expired.
 	//
 	// example:
 	//
@@ -234,7 +234,7 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstance struct {
 	//
 	// 18
 	KindCode *int32 `json:"KindCode,omitempty" xml:"KindCode,omitempty"`
-	// The Long-Term Support (LTS) version number.
+	// The LTS version numbers.
 	//
 	// This parameter is required.
 	LTSVersions []*string `json:"LTSVersions,omitempty" xml:"LTSVersions,omitempty" type:"Repeated"`
@@ -254,9 +254,9 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstance struct {
 	//
 	// - **LockByRestoration**: Automatically locked before instance rollback.
 	//
-	// - **LockByDiskQuota**: Automatically locked because the instance storage is full.
+	// - **LockByDiskQuota**: Automatically locked due to insufficient disk space.
 	//
-	// - **LockReadInstanceByDiskQuota**: Automatically locked because the read-only instance storage is full.
+	// - **LockReadInstanceByDiskQuota**: Read-only instance automatically locked due to insufficient disk space.
 	//
 	// example:
 	//
@@ -302,7 +302,7 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstance struct {
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The names of the read-only instances.
+	// The names of read-only instances.
 	ReadDBInstances []*string `json:"ReadDBInstances,omitempty" xml:"ReadDBInstances,omitempty" type:"Repeated"`
 	// The region where the instance resides.
 	//
@@ -316,7 +316,7 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstance struct {
 	//
 	// rg-xxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The three-role mode status. Valid values:
+	// Indicates whether the three-role mode is enabled. Valid values:
 	//
 	// - **false**: Disabled.
 	//
@@ -334,7 +334,7 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstance struct {
 	//
 	// - **processing**: Being processed.
 	//
-	// - **unknown**: Unknown. The instance may be disconnected.
+	// - **unknown**: Unknown. This may be caused by the instance being unreachable.
 	//
 	// example:
 	//
@@ -842,7 +842,7 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstanceConnAddrs struct {
 	//
 	// vsw-*********
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The internal cloud instance ID within the VPC. You can ignore this parameter.
+	// The internal CloudInstanceId within the VPC. This parameter can be ignored.
 	//
 	// example:
 	//

@@ -26,9 +26,9 @@ type iDescribeEvaluateAndImportTasksResponseBody interface {
 }
 
 type DescribeEvaluateAndImportTasksResponseBody struct {
-	// The task details.
+	// The details of the restoration tasks.
 	Data []*DescribeEvaluateAndImportTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned message. > This parameter is empty when the request succeeds. When the request fails, exception information (such as error codes) is returned.
+	// The returned message. > This parameter is empty when the request succeeds. When the request fails, exception information such as an error code is returned.
 	//
 	// example:
 	//
@@ -169,13 +169,13 @@ type DescribeEvaluateAndImportTasksResponseBodyData struct {
 	//
 	// fase
 	Deleted *bool `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	// The task creation timestamp, in milliseconds.
+	// The timestamp when the task was created. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 2025-01-08T15:00Z
 	GmtCreated *int64 `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The modification time of the metadata information.
+	// The time when the metadata information was last modified.
 	//
 	// example:
 	//

@@ -28,13 +28,13 @@ type ModifyDBInstanceConnectionStringResponseBody struct {
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The new connection string information.
 	Data *ModifyDBInstanceConnectionStringResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message. This is typically an error message.
+	// The response message, which is typically an error message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID. It is a unique identifier.
+	// The request ID, which is a unique identifier.
 	//
 	// example:
 	//

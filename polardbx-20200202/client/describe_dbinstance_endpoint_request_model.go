@@ -20,20 +20,28 @@ type iDescribeDBInstanceEndpointRequest interface {
 }
 
 type DescribeDBInstanceEndpointRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The number of entries per page for a paged query. Maximum value: 100. Default value: If the value is not specified or is less than 10, the default value is 10. If the value is greater than 100, the default value is 100.
+	//
 	// example:
 	//
 	// 1000
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next query.
+	//
 	// example:
 	//
 	// xxdds
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region in which the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou

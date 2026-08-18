@@ -123,29 +123,7 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	//
 	// pxc-c-dmlgit****
 	CdcInstanceName *string `json:"CdcInstanceName,omitempty" xml:"CdcInstanceName,omitempty"`
-	// The CN node specifications. Valid values:
-	//
-	// - **polarx.x4.medium.2e**: 2 cores, 8 GB
-	//
-	// - **polarx.x4.large.2e**: 4 cores, 16 GB
-	//
-	// - **polarx.x8.large.2e**: 4 cores, 32 GB
-	//
-	// - **polarx.x4.xlarge.2e**: 8 cores, 32 GB
-	//
-	// - **polarx.x8.xlarge.2e**: 8 cores, 64 GB
-	//
-	// - **polarx.x4.2xlarge.2e**: 16 cores, 64 GB
-	//
-	// - **polarx.x8.2xlarge.2e**: 16 cores, 128 GB
-	//
-	// - **polarx.x4.4xlarge.2e**: 32 cores, 128 GB
-	//
-	// - **polarx.x8.4xlarge.2e**: 32 cores, 256 GB
-	//
-	// - **polarx.st.8xlarge.2e**: 60 cores, 470 GB
-	//
-	// - **polarx.st.12xlarge.2e**: 90 cores, 720 GB.
+	// The CN node specifications.
 	//
 	// example:
 	//
@@ -171,11 +149,7 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	//
 	// drds_polarxpre_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// Indicates whether the instance contains the multi-stream log service. Valid values:
-	//
-	// - **true**: The instance contains the multi-stream log service.
-	//
-	// - **false**: The instance does not contain the multi-stream log service.
+	// Specifies whether the instance contains the multi-stream log service. Valid values:
 	//
 	// example:
 	//
@@ -200,7 +174,7 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	//
 	// polarx
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The database version.
+	// The database engine version.
 	//
 	// example:
 	//
@@ -210,39 +184,9 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The DN node specifications. Valid values:
-	//
-	// - **mysql.n2.medium.25**: 2 cores, 4 GB
-	//
-	// - **mysql.n4.medium.25**: 2 cores, 8 GB
-	//
-	// - **mysql.x8.medium.25**: 2 cores, 16 GB
-	//
-	// - **mysql.n2.large.25**: 4 cores, 8 GB
-	//
-	// - **mysql.n4.large.25**: 4 cores, 16 GB
-	//
-	// - **mysql.x8.large.25**: 4 cores, 32 GB
-	//
-	// - **mysql.n2.xlarge.25**: 8 cores, 16 GB
-	//
-	// - **mysql.n4.xlarge.25**: 8 cores, 32 GB
-	//
-	// - **mysql.x8.xlarge.25**: 8 cores, 64 GB
-	//
-	// - **mysql.n4.2xlarge.25**: 16 cores, 64 GB
-	//
-	// - **mysql.x8.2xlarge.25**: 16 cores, 128 GB
-	//
-	// - **mysql.x4.4xlarge.25**: 32 cores, 128 GB
-	//
-	// - **mysql.x8.4xlarge.25**: 32 cores, 256 GB
-	//
-	// - **mysql.st.8xlarge.25**: 60 cores, 470 GB
-	//
-	// - **mysql.st.12xlarge.25**: 90 cores, 720 GB.
+	// The DN node specifications.
 	//
 	// example:
 	//
@@ -289,7 +233,7 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	//
 	// example:
 	//
-	// 欠费
+	// Overdue
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	// The current Milvus version.
 	//
@@ -318,10 +262,6 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	// The list of nodes.
 	Nodes []*DescribeDBInstancesResponseBodyDBInstancesNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 	// The billing method of the instance. Valid values:
-	//
-	// - **Postpaid**: pay-as-you-go.
-	//
-	// - **Prepaid**: subscription.
 	//
 	// example:
 	//
@@ -358,10 +298,6 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	SecondaryZone *string `json:"SecondaryZone,omitempty" xml:"SecondaryZone,omitempty"`
 	// The instance edition. Valid values:
 	//
-	// - **enterprise**: Enterprise Edition.
-	//
-	// - **standard**: Standard Edition.
-	//
 	// example:
 	//
 	// enterprise
@@ -381,27 +317,19 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	StorageUsed *int64 `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
 	// Indicates whether the instance supports multi-stream. Valid values:
 	//
-	// - **true**: Yes.
-	//
-	// - **false**: No.
-	//
 	// example:
 	//
 	// true
 	SupportBinlogX *bool `json:"SupportBinlogX,omitempty" xml:"SupportBinlogX,omitempty"`
 	// The set of tags.
 	TagSet []*DescribeDBInstancesResponseBodyDBInstancesTagSet `json:"TagSet,omitempty" xml:"TagSet,omitempty" type:"Repeated"`
-	// The third zone in the three-zone deployment.
+	// The tertiary active zone for three-zone deployment.
 	//
 	// example:
 	//
 	// cn-hangzhou-k
 	TertiaryZone *string `json:"TertiaryZone,omitempty" xml:"TertiaryZone,omitempty"`
-	// The topology type. Valid values:
-	//
-	// - **3azones**: three-zone deployment.
-	//
-	// - **1azone**: single-zone deployment.
+	// The topology type.
 	//
 	// This parameter is required.
 	//
@@ -409,11 +337,7 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	//
 	// 3azones
 	TopologyType *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
-	// The instance type. Valid values:
-	//
-	// - **ReadWrite**: primary instance.
-	//
-	// - **ReadOnly**: read-only instance.
+	// The instance type.
 	//
 	// example:
 	//

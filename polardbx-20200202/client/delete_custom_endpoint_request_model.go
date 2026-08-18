@@ -18,7 +18,7 @@ type iDeleteCustomEndpointRequest interface {
 }
 
 type DeleteCustomEndpointRequest struct {
-	// The ID of the custom endpoint domain name.
+	// The ID of the custom endpoint.
 	//
 	// example:
 	//

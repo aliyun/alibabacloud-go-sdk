@@ -57,9 +57,9 @@ type SwitchGdnMemberRoleRequest struct {
 	//
 	// example:
 	//
-	// 常规切换：switch_over
+	// Regular switchover: switch_over
 	//
-	// 强制切换：fail_over
+	// Forced switchover: fail_over
 	SwitchMode *string `json:"SwitchMode,omitempty" xml:"SwitchMode,omitempty"`
 	// The timeout period of the switchover task. Unit: seconds.
 	//

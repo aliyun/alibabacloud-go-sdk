@@ -50,7 +50,7 @@ type CreateStoragePoolRequest struct {
 	//
 	// node6
 	StoragePoolDNList *string `json:"StoragePoolDNList,omitempty" xml:"StoragePoolDNList,omitempty"`
-	// The name of the storage pool.
+	// The storage pool name.
 	//
 	// example:
 	//

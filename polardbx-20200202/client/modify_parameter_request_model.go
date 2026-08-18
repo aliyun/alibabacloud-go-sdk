@@ -40,16 +40,16 @@ type ModifyParameterRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The parameter type. Valid values:
 	//
-	// - **compute**: compute layer parameters.
+	// - **compute**: compute layer parameter.
 	//
-	// - **storage**: storage layer parameters.
+	// - **storage**: storage layer parameter.
 	//
 	// example:
 	//
 	// compute
 	ParamLevel       *string `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
-	// A JSON-formatted string. MapKey specifies the parameter name, and MapValue specifies the parameter value. The modifiable parameters are dynamically added or removed. Call the [DescribeParameterTemplates](https://help.aliyun.com/document_detail/196856.html) operation to query the available parameters. You can specify multiple parameters in a single request.
+	// A JSON-formatted string. MapKey specifies the parameter name, and MapValue specifies the parameter value. The modifiable parameters are dynamically added or removed. Call the [DescribeParameterTemplates](https://help.aliyun.com/document_detail/196856.html) operation to query the available parameters. You can specify multiple parameters at a time.
 	//
 	// example:
 	//

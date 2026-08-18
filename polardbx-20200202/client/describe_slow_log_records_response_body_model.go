@@ -164,7 +164,7 @@ type DescribeSlowLogRecordsResponseBodyItems struct {
 	//
 	// 1
 	Frows *string `json:"Frows,omitempty" xml:"Frows,omitempty"`
-	// The name and address of the client that connects to the database.
+	// The client name and address that connects to the database.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ type DescribeSlowLogRecordsResponseBodyItems struct {
 	//
 	// 10
 	ParseRowCounts *string `json:"ParseRowCounts,omitempty" xml:"ParseRowCounts,omitempty"`
-	// The timestamp in the YYYY-MM-ddTHH:mm.ss.SSSZ format (UTC).
+	// The timestamp. Format: YYYY-MM-ddTHH:mm.ss.SSSZ (UTC).
 	//
 	// - In CN slow logs, this field indicates the execution start time.
 	//
@@ -210,7 +210,7 @@ type DescribeSlowLogRecordsResponseBodyItems struct {
 	//
 	// 2024-11-22T02:22:22.444Z
 	QueryStartTime *string `json:"QueryStartTime,omitempty" xml:"QueryStartTime,omitempty"`
-	// The execution duration of the SQL statement. Unit: seconds.
+	// The execution duration of the SQL statement. Unit: seconds (s).
 	//
 	// example:
 	//
@@ -240,7 +240,7 @@ type DescribeSlowLogRecordsResponseBodyItems struct {
 	//
 	// 1
 	SCNT *string `json:"SCNT,omitempty" xml:"SCNT,omitempty"`
-	// The unique identifier of the SQL statement in slow query log statistics.
+	// The unique identity of the SQL statement in slow query log statistics.
 	//
 	// example:
 	//

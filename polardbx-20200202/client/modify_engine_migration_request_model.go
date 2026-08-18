@@ -24,9 +24,9 @@ type iModifyEngineMigrationRequest interface {
 }
 
 type ModifyEngineMigrationRequest struct {
-	// The specific endpoints to switch. Set this parameter to a JSON string that contains the pairs of endpoints to swap.
+	// The specific endpoints to switch. The value is a JSON string that corresponds to the endpoint pairs to be swapped.
 	//
-	// > This parameter takes effect only when SwapConnectionString is set to true.
+	// >This parameter takes effect only when SwapConnectionString is set to true.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ModifyEngineMigrationRequest struct {
 	SourceDBInstanceName *string `json:"SourceDBInstanceName,omitempty" xml:"SourceDBInstanceName,omitempty"`
 	// Specifies whether to automatically swap connection strings. Valid values:
 	//
-	// - true: The application does not need to modify its configuration. Connections are automatically directed to the new instance.
+	// - true: The application does not need to modify configurations. Connections are automatically directed to the new instance.
 	//
 	// - false: You must manually update the application endpoint.
 	//

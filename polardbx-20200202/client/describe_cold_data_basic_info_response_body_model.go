@@ -62,7 +62,7 @@ type DescribeColdDataBasicInfoResponseBodyData struct {
 	BackupSetCount *int32 `json:"BackupSetCount,omitempty" xml:"BackupSetCount,omitempty"`
 	// The data size of valid backup sets.
 	BackupSetSpaceSize *float64 `json:"BackupSetSpaceSize,omitempty" xml:"BackupSetSpaceSize,omitempty"`
-	// The underlying storage cloud service.
+	// The underlying storage cloud product.
 	CloudProduct *string `json:"CloudProduct,omitempty" xml:"CloudProduct,omitempty"`
 	// The data size of cold storage.
 	CurrentSpaceSize   *float64 `json:"CurrentSpaceSize,omitempty" xml:"CurrentSpaceSize,omitempty"`

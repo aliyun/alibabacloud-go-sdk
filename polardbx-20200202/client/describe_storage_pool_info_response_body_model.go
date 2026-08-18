@@ -24,7 +24,7 @@ type DescribeStoragePoolInfoResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of instance details.
+	// The instance details.
 	Data *DescribeStoragePoolInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -120,7 +120,7 @@ type DescribeStoragePoolInfoResponseBodyDataStoragePools struct {
 	//
 	// polar.mysql.x4.large
 	Class *string `json:"Class,omitempty" xml:"Class,omitempty"`
-	// The list of DN IDs.
+	// The list of DNs.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ type DescribeStoragePoolInfoResponseBodyDataStoragePools struct {
 	//
 	// pxc-xdb-s-pxcshr****rh7fn2654fc
 	DnIdString *string `json:"DnIdString,omitempty" xml:"DnIdString,omitempty"`
-	// The reserved field.
+	// A reserved field.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type DescribeStoragePoolInfoResponseBodyDataStoragePools struct {
 	//
 	// 2025-09-02 16:52:47.0
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The list of idle DN IDs.
+	// The list of idle DNs.
 	//
 	// example:
 	//

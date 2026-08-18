@@ -16,7 +16,10 @@ type iDeleteSubCNInstanceResponseBody interface {
 }
 
 type DeleteSubCNInstanceResponseBody struct {
+	// The returned data.
 	Data *DeleteSubCNInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 1A586DCB-39A6-4050-81CC-C7BD4CCDB49F
@@ -59,6 +62,8 @@ func (s *DeleteSubCNInstanceResponseBody) Validate() error {
 }
 
 type DeleteSubCNInstanceResponseBodyData struct {
+	// The backend task ID.
+	//
 	// example:
 	//
 	// 2209883

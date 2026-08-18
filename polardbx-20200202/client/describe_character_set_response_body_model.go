@@ -104,7 +104,7 @@ type DescribeCharacterSetResponseBodyData struct {
 	//
 	// - latin1
 	//
-	// - utf8.
+	// - utf8
 	CharacterSet []*string `json:"CharacterSet,omitempty" xml:"CharacterSet,omitempty" type:"Repeated"`
 	// The storage type of databases in the target instance. Currently, only polarx is supported.
 	//

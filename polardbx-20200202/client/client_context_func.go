@@ -113,6 +113,70 @@ func (client *Client) AllocateColdDataVolumeWithContext(ctx context.Context, req
 
 // Summary:
 //
+// Enables a public network connection for a ContextDB-X service ReplicaSet.
+//
+// Description:
+//
+// This operation is used to confirm that no active connections exist before a rollback task, ensuring operation safety.
+//
+// @param request - AllocateContextDBPublicConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AllocateContextDBPublicConnectionResponse
+func (client *Client) AllocateContextDBPublicConnectionWithContext(ctx context.Context, request *AllocateContextDBPublicConnectionRequest, runtime *dara.RuntimeOptions) (_result *AllocateContextDBPublicConnectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectionStringPrefix) {
+		query["ConnectionStringPrefix"] = request.ConnectionStringPrefix
+	}
+
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.NodeType) {
+		query["NodeType"] = request.NodeType
+	}
+
+	if !dara.IsNil(request.Port) {
+		query["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AllocateContextDBPublicConnection"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AllocateContextDBPublicConnectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Calls the AllocateInstancePublicConnection operation to create a public IP address.
 //
 // @param request - AllocateInstancePublicConnectionRequest
@@ -297,7 +361,7 @@ func (client *Client) AttachColumnarInstanceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Cancels active O&M event tasks by calling the CancelActiveOperationTasks operation.
+// Cancels active O&M event tasks.
 //
 // @param request - CancelActiveOperationTasksRequest
 //
@@ -343,7 +407,7 @@ func (client *Client) CancelActiveOperationTasksWithContext(ctx context.Context,
 //
 // Note:
 //
-// - The **endpoint*	- differs from other operations. Use **polardbx.aliyuncs.com*	- for Chinese mainland regions and Singapore. For other regions, use **polardbx.{region id}.aliyunc.com**.
+// - The **endpoint*	- differs from other operations. Use **polardbx.aliyuncs.com*	- for Chinese regions and Singapore. For other regions, use **polardbx.{region id}.aliyunc.com**.
 //
 // - When testing this API operation, if a service unavailable error is returned, verify that the **endpoint*	- is correct. You can switch the **service address*	- to **Dubai*	- or **India*	- to change the **endpoint*	- to **polardbx.aliyuncs.com**.
 //
@@ -401,7 +465,7 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Checks whether a PolarDB-X instance is authorized to use Key Management Service (KMS).
+// Queries whether a PolarDB-X instance is authorized to use Key Management Service (KMS).
 //
 // @param request - CheckCloudResourceAuthorizedRequest
 //
@@ -540,7 +604,7 @@ func (client *Client) CheckSqlAuditSlsStatusWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Closes the database engine migration process for a specified instance. After you start a data migration task from another database (such as a self-managed MySQL database or an ApsaraDB RDS instance) to PolarDB-X, you can call this operation to safely stop the migration process if you need to terminate or clean up the migration state.
+// Closes the database engine migration process for a specified instance. After a user starts a data migration task from another database (such as a self-managed MySQL or ApsaraDB RDS instance) to PolarDB-X, this operation can be called to safely stop the migration process if the migration needs to be terminated or the migration state needs to be cleaned up.
 //
 // @param request - CloseEngineMigrationRequest
 //
@@ -724,7 +788,7 @@ func (client *Client) CreateAccountWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// Calls the CreateBackup operation to create a backup.
+// Creates a backup by calling the CreateBackup operation.
 //
 // @param request - CreateBackupRequest
 //
@@ -776,11 +840,67 @@ func (client *Client) CreateBackupWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
+// Creates a ContextDB-X instance.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
+//
+// @param request - CreateContextDBRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateContextDBResponse
+func (client *Client) CreateContextDBWithContext(ctx context.Context, request *CreateContextDBRequest, runtime *dara.RuntimeOptions) (_result *CreateContextDBResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.OpenSearchInstanceName) {
+		query["OpenSearchInstanceName"] = request.OpenSearchInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateContextDB"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateContextDBResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a custom endpoint for a database instance.
 //
 // Description:
 //
-// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html)..
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
 //
 // @param request - CreateCustomEndpointRequest
 //
@@ -1110,11 +1230,11 @@ func (client *Client) CreateDBInstanceWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// Creates a data import task to import external data files, such as SQL scripts and CSV files, into a target database instance.
+// Creates a data import task to import external data files such as SQL scripts and CSV files into a target database instance.
 //
 // Description:
 //
-// Creates a data import task that imports SQL or CSV files stored in OSS or ECS, or directly provided files, into a target database instance. By specifying the instance ID, database name, engine type, data source (such as an OSS path), and import type, the system performs data write operations asynchronously or synchronously. This operation is applicable to scenarios such as data migration, initialization, and data backfill. A task ID is returned for subsequent status queries and management.
+// The CreateDataImportTask operation creates a data import task that supports importing SQL or CSV files stored in OSS, ECS, or directly uploaded into a target database instance. By specifying the instance ID, database name, engine type, data source (such as an OSS path), and import type, the system performs data write operations asynchronously or synchronously. This operation is applicable to scenarios such as data migration, initialization, and data backfill. A task ID is returned for subsequent status queries and management.
 //
 // @param request - CreateDataImportTaskRequest
 //
@@ -1250,7 +1370,7 @@ func (client *Client) CreateGatewayConsumerForPolarDBXWithContext(ctx context.Co
 
 // Summary:
 //
-// Creates a Global Database Network (GDN) instance.
+// Creates a GDN instance.
 //
 // @param request - CreateGdnInstanceRequest
 //
@@ -1318,11 +1438,11 @@ func (client *Client) CreateGdnInstanceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 创建GDN从实例
+// Adds a secondary instance to a global database network (GDN).
 //
 // Description:
 //
-// <props="china">更多关于实例账号的信息，请参见[账号管理](https://help.aliyun.com/document_detail/172163.html)。
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
 //
 // @param request - CreateGdnStandbyMemberRequest
 //
@@ -1614,7 +1734,59 @@ func (client *Client) CreatePolardbxSupabaseInstanceWithContext(ctx context.Cont
 
 // Summary:
 //
-// Performs a health check on the replication task during data migration.
+// Creates a PXFuse node.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
+//
+// @param request - CreatePxfuseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePxfuseResponse
+func (client *Client) CreatePxfuseWithContext(ctx context.Context, request *CreatePxfuseRequest, runtime *dara.RuntimeOptions) (_result *CreatePxfuseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePxfuse"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePxfuseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a health check on a replication task during data migration.
 //
 // Description:
 //
@@ -1898,7 +2070,7 @@ func (client *Client) CreateStoragePoolWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates a database schema import task. This operation allows you to import SQL script files or text content that contains DDL statements into a target database instance, and automatically performs schema operations such as creating tables, indexes, views, and stored procedures.
+// Creates a database schema import task. This operation imports SQL script files or text content that contains DDL statements into a target database instance and automatically executes structured operations such as creating tables, indexes, views, and stored procedures.
 //
 // @param request - CreateStructureImportTaskRequest
 //
@@ -2184,7 +2356,7 @@ func (client *Client) CreateTransformOperationWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Deletes an account by calling the DeleteAccount operation.
+// Calls the DeleteAccount operation to delete an account.
 //
 // @param request - DeleteAccountRequest
 //
@@ -2234,6 +2406,58 @@ func (client *Client) DeleteAccountWithContext(ctx context.Context, request *Del
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAccountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a ContextDB-X.
+//
+// Description:
+//
+// Deletes the custom endpoint of a specified database instance and disables access through the domain name.
+//
+// @param request - DeleteContextDBRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteContextDBResponse
+func (client *Client) DeleteContextDBWithContext(ctx context.Context, request *DeleteContextDBRequest, runtime *dara.RuntimeOptions) (_result *DeleteContextDBResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteContextDB"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteContextDBResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2300,7 +2524,7 @@ func (client *Client) DeleteCustomEndpointWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Deletes a database by calling the DeleteDB operation.
+// Calls the DeleteDB operation to delete a database.
 //
 // @param request - DeleteDBRequest
 //
@@ -2400,11 +2624,11 @@ func (client *Client) DeleteDBInstanceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Deletes an evaluation import task.
+// Deletes an assessment import task.
 //
 // Description:
 //
-// Deletes a created evaluation task and performs subsequent data import operations.
+// Deletes a created assessment task and performs subsequent data import operations.
 //
 // @param request - DeleteEvaluateAndImportTaskRequest
 //
@@ -2604,6 +2828,58 @@ func (client *Client) DeletePolardbxSupabaseInstanceWithContext(ctx context.Cont
 
 // Summary:
 //
+// Deletes a PXFuse node.
+//
+// Description:
+//
+// Deletes a custom endpoint of a specified database instance and disables access through the domain name.
+//
+// @param request - DeletePxfuseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePxfuseResponse
+func (client *Client) DeletePxfuseWithContext(ctx context.Context, request *DeletePxfuseRequest, runtime *dara.RuntimeOptions) (_result *DeletePxfuseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePxfuse"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePxfuseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a service account.
 //
 // Description:
@@ -2660,7 +2936,7 @@ func (client *Client) DeleteServiceAccountWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 删除自定义地址
+// Deletes a custom address.
 //
 // Description:
 //
@@ -2948,7 +3224,7 @@ func (client *Client) DescribeActiveOperationTasksWithContext(ctx context.Contex
 
 // Summary:
 //
-// Lists cold storage tables.
+// Queries the list of cold storage tables.
 //
 // @param request - DescribeArchiveTableListRequest
 //
@@ -3064,7 +3340,7 @@ func (client *Client) DescribeAvailableCrossRegionsWithContext(ctx context.Conte
 
 // Summary:
 //
-// Calls the DescribeBackupPolicy operation to query the backup settings of an instance.
+// Queries the backup settings of an instance.
 //
 // @param request - DescribeBackupPolicyRequest
 //
@@ -3168,7 +3444,7 @@ func (client *Client) DescribeBackupSetWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Calls the DescribeBackupSetList operation to query the list of backup sets.
+// Queries the list of backup sets by calling the DescribeBackupSetList operation.
 //
 // @param request - DescribeBackupSetListRequest
 //
@@ -3208,15 +3484,15 @@ func (client *Client) DescribeBackupSetListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Calls the DescribeBinaryLogList operation to query binlog logs.
+// Queries binary logs by calling the DescribeBinaryLogList operation.
 //
 // Description:
 //
-// - Binlog files are retained for 15 days by default.
+// - Binary log files are retained for 15 days by default.
 //
-// - The returned log list includes all logs whose record end time is after the query start time and whose record start time is before the query end time.
+// - The returned log list includes all logs log record end time is after the query start time and log record start time is before the query end time.
 //
-// - When the DownloadLink is not NULL, you can use this URL to download the backup file. This URL is valid for 2 days after it is generated. Download the file before the URL expires.
+// - When DownloadLink is not NULL, you can download the backup file from this URL. The URL is valid for 2 days after it is generated. Download the file before the URL expires.
 //
 // @param request - DescribeBinaryLogListRequest
 //
@@ -3290,9 +3566,9 @@ func (client *Client) DescribeBinaryLogListWithContext(ctx context.Context, requ
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list includes all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
+// - The returned log list includes all logs log record end time is after the query start time and log record start time is before the query end time.
 //
-// - If DownloadLink is not NULL, you can use this URL to download the backup file. This URL is valid for 2 days after it is generated. Download the file before the URL expires.
+// - When DownloadLink is not NULL, you can download the backup file from this URL. The URL is valid for 2 days after it is generated. Download the file before the expiration time.
 //
 // @param request - DescribeCdcClassListRequest
 //
@@ -3500,7 +3776,7 @@ func (client *Client) DescribeCharacterSetWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// The cold storage basic information.
+// Retrieves the basic information of cold storage.
 //
 // @param request - DescribeColdDataBasicInfoRequest
 //
@@ -3640,7 +3916,7 @@ func (client *Client) DescribeColumnarInfoWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries column store version information.
+// Queries the column store version information.
 //
 // Description:
 //
@@ -3648,7 +3924,7 @@ func (client *Client) DescribeColumnarInfoWithContext(ctx context.Context, reque
 //
 // - The returned log list includes all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
 //
-// - When DownloadLink is not NULL, you can download the backup file from this URL. This URL is valid for 2 days after it is generated. Download the file before the expiration time.
+// - If DownloadLink is not NULL, you can download the backup file from this URL. The URL is valid for 2 days after it is generated. Download the file before the URL expires.
 //
 // @param request - DescribeColumnarVersionListRequest
 //
@@ -3752,11 +4028,167 @@ func (client *Client) DescribeComponentPropetiesWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the list of custom endpoints defined by the user.
+// Queries the management credentials of ContextDB-X.
 //
 // Description:
 //
-// Queries the list of custom endpoints configured by the user. You can use this operation to manage and view the settings of private connections or VPC endpoint services.
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+//
+// @param request - DescribeContextDBConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeContextDBConfigResponse
+func (client *Client) DescribeContextDBConfigWithContext(ctx context.Context, request *DescribeContextDBConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeContextDBConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeContextDBConfig"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeContextDBConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the information of a ContextDB-X instance.
+//
+// Description:
+//
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+//
+// @param request - DescribeContextDBInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeContextDBInfoResponse
+func (client *Client) DescribeContextDBInfoWithContext(ctx context.Context, request *DescribeContextDBInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeContextDBInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeContextDBInfo"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeContextDBInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the whitelist of a ContextDB-X instance.
+//
+// Description:
+//
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+//
+// @param request - DescribeContextDBSecurityIpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeContextDBSecurityIpsResponse
+func (client *Client) DescribeContextDBSecurityIpsWithContext(ctx context.Context, request *DescribeContextDBSecurityIpsRequest, runtime *dara.RuntimeOptions) (_result *DescribeContextDBSecurityIpsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeContextDBSecurityIps"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeContextDBSecurityIpsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of user-defined custom domain names.
+//
+// Description:
+//
+// This operation retrieves the list of custom endpoints configured by the user, which facilitates the management and viewing of private connection or VPC endpoint service settings.
 //
 // @param request - DescribeCustomEndpointListRequest
 //
@@ -3864,7 +4296,7 @@ func (client *Client) DescribeDBInstanceAttributeWithContext(ctx context.Context
 
 // Summary:
 //
-// Calls the DescribeDBInstanceConfig operation to retrieve the configuration parameters of an instance.
+// Calls the DescribeDBInstanceConfig operation to retrieve instance configuration parameters.
 //
 // @param request - DescribeDBInstanceConfigRequest
 //
@@ -3916,11 +4348,11 @@ func (client *Client) DescribeDBInstanceConfigWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询endpoint列表
+// Queries custom endpoints.
 //
 // Description:
 //
-// 该接口用于获取用户已配置的自定义终端节点（Endpoint）列表，便于管理和查看私有连接或VPC终端服务的设置。
+// Queries the list of custom endpoints configured by a user, which helps manage and view private connection or VPC endpoint service settings.
 //
 // @param request - DescribeDBInstanceEndpointRequest
 //
@@ -4024,7 +4456,7 @@ func (client *Client) DescribeDBInstanceHAWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Views SSL information.
+// Queries SSL information.
 //
 // @param request - DescribeDBInstanceSSLRequest
 //
@@ -4072,7 +4504,7 @@ func (client *Client) DescribeDBInstanceSSLWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Calls the DescribeDBInstanceTDE operation to retrieve the details of Transparent Data Encryption (TDE) for an instance.
+// Queries the details of Transparent Data Encryption (TDE) for an instance.
 //
 // @param request - DescribeDBInstanceTDERequest
 //
@@ -4120,7 +4552,7 @@ func (client *Client) DescribeDBInstanceTDEWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Calls the DescribeDBInstanceTopology operation to retrieve the topology information of an instance.
+// Queries the topology information of an instance.
 //
 // @param request - DescribeDBInstanceTopologyRequest
 //
@@ -4180,7 +4612,7 @@ func (client *Client) DescribeDBInstanceTopologyWithContext(ctx context.Context,
 
 // Summary:
 //
-// Retrieves the basic information about an instance by using the endpoint of the instance.
+// Retrieves the basic information of an instance by using the endpoint of the instance.
 //
 // @param request - DescribeDBInstanceViaEndpointRequest
 //
@@ -4228,7 +4660,7 @@ func (client *Client) DescribeDBInstanceViaEndpointWithContext(ctx context.Conte
 
 // Summary:
 //
-// Calls the DescribeDBInstances operation to query a list of instances.
+// Queries a list of instances by calling the DescribeDBInstances operation.
 //
 // @param request - DescribeDBInstancesRequest
 //
@@ -4308,15 +4740,15 @@ func (client *Client) DescribeDBInstancesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the performance data of an instance by calling the DescribeDBNodePerformance operation.
+// Queries the performance data of an instance.
 //
 // Description:
 //
 // Note:
 //
-// - The **endpoint*	- differs from other API operations. Use **polardbx.aliyuncs.com*	- for Chinese regions and Singapore. For other regions, use **polardbx.{region id}.aliyunc.com**.
+// - The **endpoint*	- differs from other API operations. For Chinese mainland regions and Singapore, use **polardbx.aliyuncs.com**. For other regions, use **polardbx.{region id}.aliyunc.com**.
 //
-// - When debugging this API operation, if a service not active error is returned, confirm that the **endpoint*	- is correct. You can switch the **service address*	- to **Dubai*	- or **India*	- and change the **endpoint*	- to **polardbx.aliyuncs.com**.
+// - When debugging this API operation, if you receive a service unavailable error, verify that the **endpoint*	- is correct. You can switch the **service address*	- to **Dubai*	- or **India*	- and change the **endpoint*	- to **polardbx.aliyuncs.com**.
 //
 // @param request - DescribeDBNodePerformanceRequest
 //
@@ -4504,7 +4936,7 @@ func (client *Client) DescribeDbListWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Calls the DescribeDistributeTableList operation to retrieve the list of database tables.
+// Queries the list of database tables by calling the DescribeDistributeTableList operation.
 //
 // @param request - DescribeDistributeTableListRequest
 //
@@ -4604,7 +5036,7 @@ func (client *Client) DescribeEnabledCrossRegionsWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the list of PolarDB-X assessment import tasks. (Single).
+// Queries the list of PolarDB-X assessment import tasks. (single)
 //
 // @param request - DescribeEvaluateAndImportTaskRequest
 //
@@ -4656,7 +5088,7 @@ func (client *Client) DescribeEvaluateAndImportTaskWithContext(ctx context.Conte
 //
 // Description:
 //
-// Creates a data import task. You can use this operation to import SQL or CSV files stored in OSS or ECS, or directly provided files, into a destination database instance. By specifying the instance ID, database name, engine type, data source (such as an OSS path), and import type, the system performs data write operations asynchronously or synchronously. This operation is applicable to scenarios such as data migration, initialization, and data backfill. A task ID is returned for subsequent status queries and management.
+// The CreateDataImportTask operation creates a data import task. You can use this operation to import SQL or CSV files stored in OSS or ECS, or directly provided, into a destination database instance. By specifying the instance ID, database name, engine type, data source (such as an OSS path), and import type, the system performs data write operations asynchronously or synchronously. This operation is applicable to scenarios such as data migration, initialization, and data backfill. A task ID is returned for subsequent status queries and management.
 //
 // @param request - DescribeEvaluateAndImportTasksRequest
 //
@@ -4748,7 +5180,7 @@ func (client *Client) DescribeEventsWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Retrieves a list of global database network (GDN) instances.
+// Retrieves the list of global database network (GDN) instances.
 //
 // @param request - DescribeGdnInstancesRequest
 //
@@ -5008,7 +5440,7 @@ func (client *Client) DescribeParameterGroupsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Calls the DescribeParameterTemplates operation to retrieve the parameter template list for an instance.
+// Calls the DescribeParameterTemplates operation to retrieve the parameter template list of an instance.
 //
 // @param request - DescribeParameterTemplatesRequest
 //
@@ -5064,7 +5496,7 @@ func (client *Client) DescribeParameterTemplatesWithContext(ctx context.Context,
 
 // Summary:
 //
-// Calls the DescribeParameters operation to retrieve instance parameters.
+// Queries the parameters of an instance.
 //
 // @param request - DescribeParametersRequest
 //
@@ -5176,11 +5608,115 @@ func (client *Client) DescribePolarxDataNodesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the list of VPCs available for PolarDB-X.
+// Queries PXFuse instance information.
 //
 // Description:
 //
-// Queries the list of Virtual Private Clouds (VPCs) available under your account for database instances. You can use this operation to select an appropriate network environment when creating or managing database instances.
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+//
+// @param request - DescribePxfuseInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePxfuseInfoResponse
+func (client *Client) DescribePxfuseInfoWithContext(ctx context.Context, request *DescribePxfuseInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribePxfuseInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePxfuseInfo"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePxfuseInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the whitelist of a PXFuse instance.
+//
+// Description:
+//
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+//
+// @param request - DescribePxfuseSecurityIpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePxfuseSecurityIpsResponse
+func (client *Client) DescribePxfuseSecurityIpsWithContext(ctx context.Context, request *DescribePxfuseSecurityIpsRequest, runtime *dara.RuntimeOptions) (_result *DescribePxfuseSecurityIpsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePxfuseSecurityIps"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePxfuseSecurityIpsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of VPCs for PolarDB-X.
+//
+// Description:
+//
+// Queries the list of virtual private clouds (VPCs) available under your account. You can use this operation to select an appropriate network environment when creating or managing database instances.
 //
 // @param request - DescribeRdsVpcsRequest
 //
@@ -5232,7 +5768,7 @@ func (client *Client) DescribeRdsVpcsWithContext(ctx context.Context, request *D
 //
 // Description:
 //
-// Queries the list of available virtual private clouds (VPCs) under your account for an instance, so that you can select an appropriate network environment when creating or managing a database instance.
+// Queries the list of available virtual private clouds (VPCs) under your account for an instance, so that you can select an appropriate network environment when creating or managing database instances.
 //
 // @param request - DescribeRdsVswitchesRequest
 //
@@ -5284,7 +5820,7 @@ func (client *Client) DescribeRdsVswitchesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the details of a replication lag inspection task for an instance.
+// Queries the details of the replication lag inspection task for an instance.
 //
 // Description:
 //
@@ -5352,7 +5888,7 @@ func (client *Client) DescribeRplInspectionTaskWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Display the ScaleOut migration task progress.
+// Displays the progress of a ScaleOut migration task.
 //
 // @param request - DescribeScaleOutMigrateTaskListRequest
 //
@@ -5416,7 +5952,7 @@ func (client *Client) DescribeScaleOutMigrateTaskListWithContext(ctx context.Con
 
 // Summary:
 //
-// Calls the DescribeSecurityIps operation to view the IP whitelist of an instance.
+// Queries the IP whitelist of an instance.
 //
 // @param request - DescribeSecurityIpsRequest
 //
@@ -5516,7 +6052,7 @@ func (client *Client) DescribeServiceAccountWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the storage usage details of an instance, including the total capacity, used space, remaining space, and other information.
+// Queries the storage usage details of an instance, including total capacity, used space, and remaining space.
 //
 // @param request - DescribeShowStorageInfoRequest
 //
@@ -5808,7 +6344,7 @@ func (client *Client) DescribeStoragePoolInfoWithContext(ctx context.Context, re
 //
 // Description:
 //
-// The CreateDataImportTask operation creates a data import task. You can use this operation to import SQL or CSV files stored in OSS or ECS, or directly provided, into a destination database instance. Specify the instance ID, database name, engine type, data source (such as an OSS path), and import type. The system performs the data write operation asynchronously or synchronously. This operation is applicable to scenarios such as data migration, initialization, and data backfill. A task ID is returned for subsequent status queries and management.
+// The CreateDataImportTask operation creates a data import task. This operation supports importing SQL or CSV files stored in OSS or ECS, or directly provided, into a destination database instance. By specifying the instance ID, database name, engine type, data source (such as an OSS path), and import type, the system performs data write operations asynchronously or synchronously. This operation is applicable to scenarios such as data migration, initialization, and data backfill. A task ID is returned for subsequent status queries and management.
 //
 // @param request - DescribeStructureImportTaskInfoRequest
 //
@@ -6520,7 +7056,7 @@ func (client *Client) EnableRightsSeparationWithContext(ctx context.Context, req
 //
 // Description:
 //
-// > 	- The PolarDB-X 2.0 SQL audit and analysis feature itself is free of charge. However, Log Service charges fees for storage space, read traffic, number of requests, data transformation, data shipping, and other services. For more information about the SQL audit feature, see [Enable SQL Audit and Analysis](https://help.aliyun.com/document_detail/184619.html).
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - EnableSqlAuditRequest
 //
@@ -6776,7 +7312,7 @@ func (client *Client) MigrateDBInstanceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Calls the ModifyAccountDescription operation to modify the description of an account.
+// Modifies the description of an account by calling the ModifyAccountDescription operation.
 //
 // @param request - ModifyAccountDescriptionRequest
 //
@@ -6900,7 +7436,7 @@ func (client *Client) ModifyAccountPrivilegeWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Calls the ModifyActiveOperationMaintainConf operation to modify the time configuration of O&M events.
+// Modifies the time configuration of O&M events by calling the ModifyActiveOperationMaintainConf operation.
 //
 // @param request - ModifyActiveOperationMaintainConfRequest
 //
@@ -6940,7 +7476,7 @@ func (client *Client) ModifyActiveOperationMaintainConfWithContext(ctx context.C
 
 // Summary:
 //
-// Calls the ModifyActiveOperationTasks operation to modify the execution time of O&M events.
+// Modifies the execution time of O&M events.
 //
 // @param request - ModifyActiveOperationTasksRequest
 //
@@ -7000,7 +7536,7 @@ func (client *Client) ModifyActiveOperationTasksWithContext(ctx context.Context,
 //
 // Description:
 //
-// ***.
+// ***
 //
 // @param request - ModifyCdcClassRequest
 //
@@ -7064,7 +7600,7 @@ func (client *Client) ModifyCdcClassWithContext(ctx context.Context, request *Mo
 //
 // Description:
 //
-// ***.
+// ***
 //
 // @param request - ModifyColumnarClassRequest
 //
@@ -7114,6 +7650,70 @@ func (client *Client) ModifyColumnarClassWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyColumnarClassResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the whitelist of a ContextDB-X service ReplicaSet.
+//
+// Description:
+//
+// ***
+//
+// @param request - ModifyContextDBSecurityIpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyContextDBSecurityIpsResponse
+func (client *Client) ModifyContextDBSecurityIpsWithContext(ctx context.Context, request *ModifyContextDBSecurityIpsRequest, runtime *dara.RuntimeOptions) (_result *ModifyContextDBSecurityIpsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.ModifyMode) {
+		query["ModifyMode"] = request.ModifyMode
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SecurityIPList) {
+		query["SecurityIPList"] = request.SecurityIPList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyContextDBSecurityIps"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyContextDBSecurityIpsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7268,7 +7868,7 @@ func (client *Client) ModifyCustomEndpointNetWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Calls the ModifyDBInstanceClass operation to modify the specifications of an instance.
+// Calls the ModifyDBInstanceClass operation to modify the instance specifications.
 //
 // @param request - ModifyDBInstanceClassRequest
 //
@@ -7352,7 +7952,7 @@ func (client *Client) ModifyDBInstanceClassWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Calls the ModifyDBInstanceConfig operation to modify instance configuration items.
+// Calls the ModifyDBInstanceConfig operation to modify an instance configuration item.
 //
 // @param request - ModifyDBInstanceConfigRequest
 //
@@ -7408,7 +8008,7 @@ func (client *Client) ModifyDBInstanceConfigWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Modifies the connection string of an instance.
+// Modifies the connection string of an instance endpoint.
 //
 // @param request - ModifyDBInstanceConnectionStringRequest
 //
@@ -7524,7 +8124,7 @@ func (client *Client) ModifyDBInstanceDescriptionWithContext(ctx context.Context
 //
 // Description:
 //
-// ***.
+// ***
 //
 // @param request - ModifyDBInstanceMaintainTimeRequest
 //
@@ -7644,7 +8244,7 @@ func (client *Client) ModifyDBInstanceVipWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Calls the ModifyDatabaseDescription operation to modify the description of a database.
+// Modifies the description of a database.
 //
 // @param request - ModifyDatabaseDescriptionRequest
 //
@@ -7704,7 +8304,7 @@ func (client *Client) ModifyDatabaseDescriptionWithContext(ctx context.Context, 
 //
 // Description:
 //
-// ***.
+// ***
 //
 // @param request - ModifyEngineMigrationRequest
 //
@@ -7832,7 +8432,7 @@ func (client *Client) ModifyMem0SecurityIpsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Calls the ModifyParameter operation to modify instance parameters, including compute layer and storage layer parameters.
+// Modifies instance parameters, including parameters at the compute layer and storage layer.
 //
 // @param request - ModifyParameterRequest
 //
@@ -7886,6 +8486,70 @@ func (client *Client) ModifyParameterWithContext(ctx context.Context, request *M
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyParameterResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the PXFuse node whitelist.
+//
+// Description:
+//
+// ***
+//
+// @param request - ModifyPxfuseSecurityIpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyPxfuseSecurityIpsResponse
+func (client *Client) ModifyPxfuseSecurityIpsWithContext(ctx context.Context, request *ModifyPxfuseSecurityIpsRequest, runtime *dara.RuntimeOptions) (_result *ModifyPxfuseSecurityIpsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.ModifyMode) {
+		query["ModifyMode"] = request.ModifyMode
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SecurityIPList) {
+		query["SecurityIPList"] = request.SecurityIPList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyPxfuseSecurityIps"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyPxfuseSecurityIpsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -8076,7 +8740,7 @@ func (client *Client) ModifySupabaseSecurityIPListWithContext(ctx context.Contex
 
 // Summary:
 //
-// Performs a pre-check and feasibility assessment for a recovery task before you execute SQL flashback recovery.
+// Performs a pre-check and feasibility assessment on a recovery task before executing SQL flashback recovery.
 //
 // @param request - PreCheckSqlFlashbackTaskRequest
 //
@@ -8236,7 +8900,67 @@ func (client *Client) ReleaseColdDataVolumeWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Releases the public network connection of an instance by calling the ReleaseInstancePublicConnection operation.
+// Shuts down the public network connection for a ContextDB-X service ReplicaSet.
+//
+// Description:
+//
+// This operation is used to confirm that no active connections exist before a rollback task, ensuring operation safety.
+//
+// @param request - ReleaseContextDBPublicConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseContextDBPublicConnectionResponse
+func (client *Client) ReleaseContextDBPublicConnectionWithContext(ctx context.Context, request *ReleaseContextDBPublicConnectionRequest, runtime *dara.RuntimeOptions) (_result *ReleaseContextDBPublicConnectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentConnectionString) {
+		query["CurrentConnectionString"] = request.CurrentConnectionString
+	}
+
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.NodeType) {
+		query["NodeType"] = request.NodeType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReleaseContextDBPublicConnection"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ReleaseContextDBPublicConnectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Releases the public network connection of an instance.
 //
 // @param request - ReleaseInstancePublicConnectionRequest
 //
@@ -8412,7 +9136,7 @@ func (client *Client) ResetAccountPasswordWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// ***.
+// ***
 //
 // @param request - ResetAccountPasswordRestrictRequest
 //
@@ -8688,7 +9412,7 @@ func (client *Client) RestartSupabaseInstanceWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 克隆PolarDB-X实例
+// Clones a PolarDB-X instance.
 //
 // Description:
 //
@@ -8856,7 +9580,7 @@ func (client *Client) RestoreDBInstanceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// This API is used to skip the current step.
+// Skips the current step.
 //
 // @param request - SkipCurrentStepRequest
 //
@@ -9312,7 +10036,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// Removes tags from a resource.
+// Deletes tags from a resource.
 //
 // @param request - UntagResourcesRequest
 //
@@ -9372,7 +10096,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// Calls the UpdateBackupPolicy operation to modify the backup policy of an instance.
+// Modifies the backup policy of an instance.
 //
 // @param request - UpdateBackupPolicyRequest
 //
@@ -9496,11 +10220,11 @@ func (client *Client) UpdateBackupPolicyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 更新实例的管控参数
+// Modifies instance tags.
 //
 // Description:
 //
-// <props="china">更多关于实例账号的信息，请参见[账号管理](https://help.aliyun.com/document_detail/172163.html)。
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
 //
 // @param request - UpdateCustinsParamRequest
 //
@@ -9612,7 +10336,7 @@ func (client *Client) UpdateDBInstanceSSLWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Enables Transparent Data Encryption (TDE) for an instance by calling the UpdateDBInstanceTDE operation.
+// Enables Transparent Data Encryption (TDE) for an instance.
 //
 // @param request - UpdateDBInstanceTDERequest
 //

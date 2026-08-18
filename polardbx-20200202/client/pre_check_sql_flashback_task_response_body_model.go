@@ -20,9 +20,9 @@ type iPreCheckSqlFlashbackTaskResponseBody interface {
 }
 
 type PreCheckSqlFlashbackTaskResponseBody struct {
-	// The result set.
+	// The returned result set.
 	Data *PreCheckSqlFlashbackTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message. This parameter is empty when the request succeeds. If the request fails, an exception message is returned, such as an error code.
+	// The response message. This parameter is empty when the request succeeds. When the request fails, an exception message is returned, such as an error code.
 	//
 	// example:
 	//
@@ -127,7 +127,7 @@ func (s *PreCheckSqlFlashbackTaskResponseBodyData) Validate() error {
 }
 
 type PreCheckSqlFlashbackTaskResponseBodyDataCheckResult struct {
-	// Indicates whether valid binary log files exist. This value is used to determine whether operations such as flashback and synchronization can be performed.
+	// Indicates whether valid binary log files exist. This is used to determine whether flashback or synchronization operations can be performed.
 	BinlogExists *bool `json:"BinlogExists,omitempty" xml:"BinlogExists,omitempty"`
 	// Indicates whether the recording of original SQL query events is enabled. Valid values:
 	//

@@ -42,7 +42,7 @@ type ModifyCustomEndpointRequest struct {
 	//
 	// mydatabase
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The name of the custom endpoint.
+	// The name.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ModifyCustomEndpointRequest struct {
 	//
 	// true
 	NodeAutoEnter *bool `json:"NodeAutoEnter,omitempty" xml:"NodeAutoEnter,omitempty"`
-	// The node IDs.
+	// node ids
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type ModifyCustomEndpointRequest struct {
 	//
 	// master
 	NodeRole *string `json:"NodeRole,omitempty" xml:"NodeRole,omitempty"`
-	// The region ID of the instance.
+	// The region in which the instance resides.
 	//
 	// example:
 	//

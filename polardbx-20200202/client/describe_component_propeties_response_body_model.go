@@ -16,7 +16,7 @@ type iDescribeComponentPropetiesResponseBody interface {
 }
 
 type DescribeComponentPropetiesResponseBody struct {
-	// The export parameters of the exception event.
+	// The export parameters of exception events.
 	Properties []*DescribeComponentPropetiesResponseBodyProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -70,7 +70,7 @@ type DescribeComponentPropetiesResponseBodyProperties struct {
 	//
 	// example:
 	//
-	// 4核32G
+	// 4C32G
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The display order of the commodity module property.
 	//
@@ -86,7 +86,7 @@ type DescribeComponentPropetiesResponseBodyProperties struct {
 	//
 	// dn_node_spec
 	PropertyCode *string `json:"PropertyCode,omitempty" xml:"PropertyCode,omitempty"`
-	// The label value.
+	// The tag value.
 	//
 	// example:
 	//

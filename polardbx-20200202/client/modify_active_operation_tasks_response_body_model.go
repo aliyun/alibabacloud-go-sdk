@@ -16,7 +16,7 @@ type iModifyActiveOperationTasksResponseBody interface {
 }
 
 type ModifyActiveOperationTasksResponseBody struct {
-	// The list of O&M event IDs, separated by commas.
+	// The list of O&M event IDs, separated by commas (,).
 	//
 	// example:
 	//

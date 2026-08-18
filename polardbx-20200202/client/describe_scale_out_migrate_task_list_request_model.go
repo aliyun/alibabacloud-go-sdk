@@ -24,7 +24,7 @@ type iDescribeScaleOutMigrateTaskListRequest interface {
 }
 
 type DescribeScaleOutMigrateTaskListRequest struct {
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

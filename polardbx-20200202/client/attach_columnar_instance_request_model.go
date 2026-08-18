@@ -16,7 +16,7 @@ type iAttachColumnarInstanceRequest interface {
 }
 
 type AttachColumnarInstanceRequest struct {
-	// The instance name or ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

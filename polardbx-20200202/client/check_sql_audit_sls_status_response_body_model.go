@@ -24,9 +24,9 @@ type CheckSqlAuditSlsStatusResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The enabling status of the SQL audit feature. Valid values:
 	//
-	// 	- enabled: Enabled.
+	// 	- enabled: The feature is enabled.
 	//
-	// 	- disabled: Not enabled.
+	// 	- disabled: The feature is disabled.
 	//
 	// example:
 	//

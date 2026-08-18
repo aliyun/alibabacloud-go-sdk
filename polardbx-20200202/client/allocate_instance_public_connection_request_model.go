@@ -46,6 +46,8 @@ type AllocateInstancePublicConnectionRequest struct {
 	//
 	// pxc-**************
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The name of the instance CN cluster, such as default.
+	//
 	// example:
 	//
 	// default

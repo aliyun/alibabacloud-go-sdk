@@ -34,7 +34,7 @@ type DescribeGdnInstancesRequest struct {
 	FilterType *string `json:"FilterType,omitempty" xml:"FilterType,omitempty"`
 	// The filter value for querying resources.
 	//
-	// This parameter is used together with FilterKey.
+	// Used together with FilterKey.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeGdnInstancesRequest struct {
 	//
 	// pxc-***
 	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
-	// The GDN ID.
+	// GDN ID。
 	//
 	// example:
 	//

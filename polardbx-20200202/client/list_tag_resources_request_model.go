@@ -22,7 +22,7 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The token for the next query. If this parameter is empty, no more results exist.
+	// The token used to start the next query.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
-	// The label key.
+	// The key of the label.
 	//
 	// example:
 	//
 	// 1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The label value.
+	// The value of the label.
 	//
 	// example:
 	//

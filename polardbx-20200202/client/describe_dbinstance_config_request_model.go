@@ -34,7 +34,7 @@ type DescribeDBInstanceConfigRequest struct {
 	//
 	// pxc-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The ID of the region in which the instance resides.
+	// The ID of the region where the instance resides.
 	//
 	// This parameter is required.
 	//

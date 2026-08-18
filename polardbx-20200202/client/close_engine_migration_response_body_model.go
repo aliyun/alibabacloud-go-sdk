@@ -30,7 +30,7 @@ type CloseEngineMigrationResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The new endpoint information.
+	// The new endpoint connection string information.
 	Data *CloseEngineMigrationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//

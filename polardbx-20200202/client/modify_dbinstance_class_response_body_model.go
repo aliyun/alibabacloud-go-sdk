@@ -16,7 +16,7 @@ type iModifyDBInstanceClassResponseBody interface {
 }
 
 type ModifyDBInstanceClassResponseBody struct {
-	// The order ID. An order is generated when you upgrade, downgrade, or change the specifications of an instance.
+	// The order ID. An order is generated when you upgrade, downgrade, or change the instance specifications.
 	//
 	// example:
 	//

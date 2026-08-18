@@ -90,7 +90,7 @@ type CreateSQLEvaluateTaskRequest struct {
 	//
 	// etx-szr2rr6i*****
 	SlinkTaskId *string `json:"SlinkTaskId,omitempty" xml:"SlinkTaskId,omitempty"`
-	// Specifies whether to enable the source ApsaraDB RDS instance. Valid values: ***enable**: enabled. ***disabled**: disabled.
+	// Specifies whether to enable the source ApsaraDB RDS instance. Valid values: **enable**: enables the source ApsaraDB RDS instance. **disabled**: disables the source ApsaraDB RDS instance.
 	//
 	// example:
 	//

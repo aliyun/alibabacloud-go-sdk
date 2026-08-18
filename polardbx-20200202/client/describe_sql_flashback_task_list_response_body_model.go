@@ -201,9 +201,9 @@ type DescribeSqlFlashbackTaskListResponseBodyDataSqlFlashbackTasks struct {
 	RecallStatus *string `json:"RecallStatus,omitempty" xml:"RecallStatus,omitempty"`
 	// The recall type. Valid values:
 	//
-	// - **0**: exact match.
+	// - **0**: Exact match.
 	//
-	// - **1**: fuzzy match.
+	// - **1**: Fuzzy match.
 	//
 	// example:
 	//

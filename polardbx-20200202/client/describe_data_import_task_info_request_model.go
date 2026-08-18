@@ -24,7 +24,7 @@ type iDescribeDataImportTaskInfoRequest interface {
 }
 
 type DescribeDataImportTaskInfoRequest struct {
-	// The page number of failed records.
+	// The page number of the failed records.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type DescribeDataImportTaskInfoRequest struct {
 	//
 	// etx-szr2rr6i*****
 	SlinkTaskId *string `json:"SlinkTaskId,omitempty" xml:"SlinkTaskId,omitempty"`
-	// The page number of successful records.
+	// The page number of the successful records.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type DescribeGdnInstancesResponseBody struct {
 	Data *DescribeGdnInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The response message.
 	//
-	// > This parameter is empty when the request succeeds. When the request fails, an exception message is returned, such as an error code.
+	// > This parameter is empty when the request succeeds. If the request fails, an exception message is returned, such as an error code.
 	//
 	// example:
 	//
@@ -197,7 +197,7 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceList struct {
 	//
 	// 2025-01-02T13:11:10.000+0000
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The list of members.
+	// The member list.
 	MemberList []*DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
 	// The MySQL version supported by the instance.
 	//
@@ -214,7 +214,7 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceList struct {
 	//
 	// Creating
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The switchover log.
+	// The switchover history.
 	//
 	// example:
 	//
@@ -343,13 +343,13 @@ func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) Validate() error {
 }
 
 type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
-	// The instance type.
+	// The instance specifications.
 	//
 	// example:
 	//
 	// polarx.x4.medium.2e
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
-	// The CN node specifications. Valid values:
+	// The CN node specifications.
 	//
 	// - **polarx.x4.medium.2e**: 2 cores, 8 GB
 	//
@@ -371,7 +371,7 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
 	//
 	// - **polarx.st.8xlarge.2e**: 60 cores, 470 GB
 	//
-	// - **polarx.st.12xlarge.2e**: 90 cores, 720 GB.
+	// - **polarx.st.12xlarge.2e**: 90 cores, 720 GB
 	//
 	// example:
 	//
@@ -390,7 +390,7 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
 	// drds_polarxpre_public_cn
 	CommodityCode  *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	DataSyncStatus *string `json:"DataSyncStatus,omitempty" xml:"DataSyncStatus,omitempty"`
-	// The DN node specifications. Valid values:
+	// The DN node specifications.
 	//
 	// - **mysql.n2.medium.25**: 2 cores, 4 GB
 	//
@@ -420,7 +420,7 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
 	//
 	// - **mysql.st.8xlarge.25**: 60 cores, 470 GB
 	//
-	// - **mysql.st.12xlarge.25**: 90 cores, 720 GB.
+	// - **mysql.st.12xlarge.25**: 90 cores, 720 GB
 	//
 	// example:
 	//
@@ -487,7 +487,7 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
 	//
 	// cn-zhangjiakou-a
 	SecondaryZone *string `json:"SecondaryZone,omitempty" xml:"SecondaryZone,omitempty"`
-	// The data latency.
+	// The data replication lag.
 	//
 	// example:
 	//
@@ -503,17 +503,17 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
 	//
 	// example:
 	//
-	// prepared：参数初始化完毕
+	// prepared: Parameter initialization is complete.
 	//
-	// set_old_primary_readonly：原主实例已禁写
+	// set_old_primary_readonly: The original primary instance is set to read-only.
 	//
-	// set_new_primary_read_write：已切换
+	// set_new_primary_read_write: The switchover is complete.
 	//
-	// timeout：任务超时
+	// timeout: The task has timed out.
 	//
-	// rollback：已回滚
+	// rollback: The task has been rolled back
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The zone for Three-zone deployment. This zone is active only when three-zone deployment is enabled.
+	// The zone for three-zone deployment. This zone is active along with the primary and secondary zones.
 	//
 	// example:
 	//

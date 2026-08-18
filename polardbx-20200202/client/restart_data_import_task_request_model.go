@@ -26,7 +26,7 @@ type RestartDataImportTaskRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: ***30*****50*****100**. Default value: **30**.
+	// The number of entries per page. Valid values: ***30***, **50**, and **100**. Default value: **30**.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type RestartDataImportTaskRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the destination task.
+	// The ID of the target task.
 	//
 	// example:
 	//

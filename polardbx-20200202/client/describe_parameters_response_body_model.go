@@ -161,7 +161,7 @@ type DescribeParametersResponseBodyDataConfigParameters struct {
 	//
 	// example:
 	//
-	// 存储节点私有协议开关(-1关闭，0开启)
+	// Storage node private protocol switch (-1: disabled, 0: enabled)
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
 	// The parameter name.
 	//
@@ -221,7 +221,7 @@ type DescribeParametersResponseBodyDataRunningParameters struct {
 	//
 	// example:
 	//
-	// 存储节点私有协议开关(-1关闭，0开启)
+	// Storage node private protocol switch (-1: disabled, 0: enabled)
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
 	// The parameter name.
 	//

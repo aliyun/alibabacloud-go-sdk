@@ -18,14 +18,20 @@ type iCreateGdnStandbyMemberResponseBody interface {
 }
 
 type CreateGdnStandbyMemberResponseBody struct {
+	// The name of the created instance.
+	//
 	// example:
 	//
 	// pxc-hzravgpt8q****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 12345
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 173CA69A-3513-591D-8A09-C1EA37CBE2D9

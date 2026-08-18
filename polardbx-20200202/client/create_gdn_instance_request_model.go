@@ -34,7 +34,7 @@ type CreateGdnInstanceRequest struct {
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The description of the instance.
+	// The description information.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type CreateGdnInstanceRequest struct {
 	//
 	// gdn_mode_master_slave, gdn_mode_bidirectional
 	GdnMode *string `json:"GdnMode,omitempty" xml:"GdnMode,omitempty"`
-	// The region in which the instance resides.
+	// The region where the instance resides.
 	//
 	// This parameter is required.
 	//

@@ -22,7 +22,7 @@ type iDescribeCdcInfoResponseBody interface {
 type DescribeCdcInfoResponseBody struct {
 	// The instance data.
 	Data *DescribeCdcInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code of the request.
+	// The HTTP status code.
 	//
 	// This parameter is required.
 	//
@@ -106,7 +106,7 @@ type DescribeCdcInfoResponseBodyData struct {
 	//
 	// 15
 	BinlogPersistTime *int32 `json:"BinlogPersistTime,omitempty" xml:"BinlogPersistTime,omitempty"`
-	// The size of the binlog.
+	// The binlog size.
 	//
 	// This parameter is required.
 	//
@@ -122,7 +122,7 @@ type DescribeCdcInfoResponseBodyData struct {
 	//
 	// polarx-cdc-kernel-***
 	CdcNewVersion *string `json:"CdcNewVersion,omitempty" xml:"CdcNewVersion,omitempty"`
-	// The checksum switch status.
+	// The checksum switch.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type DescribeCdcInfoResponseBodyData struct {
 	//
 	// true
 	EnableCyclicReplication *bool `json:"EnableCyclicReplication,omitempty" xml:"EnableCyclicReplication,omitempty"`
-	// The list of instances.
+	// The instance list.
 	InstanceTopologyList []*DescribeCdcInfoResponseBodyDataInstanceTopologyList `json:"InstanceTopologyList,omitempty" xml:"InstanceTopologyList,omitempty" type:"Repeated"`
 	// server id
 	//
@@ -252,13 +252,13 @@ type DescribeCdcInfoResponseBodyDataInstanceTopologyList struct {
 	//
 	// BINLOG_X
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The remarks on the instance type.
+	// The instance type remarks.
 	//
 	// example:
 	//
 	// ***
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The name of the multi-stream group.
+	// The multi-stream group name.
 	//
 	// example:
 	//
@@ -270,13 +270,13 @@ type DescribeCdcInfoResponseBodyDataInstanceTopologyList struct {
 	//
 	// RECORD
 	HashLevel *string `json:"HashLevel,omitempty" xml:"HashLevel,omitempty"`
-	// The name of the instance.
+	// The instance name.
 	//
 	// example:
 	//
 	// pxc-***
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The array of nodes.
+	// The node array.
 	PhysicalNodes []*DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes `json:"PhysicalNodes,omitempty" xml:"PhysicalNodes,omitempty" type:"Repeated"`
 	// The number of splits.
 	//
@@ -371,13 +371,13 @@ func (s *DescribeCdcInfoResponseBodyDataInstanceTopologyList) Validate() error {
 }
 
 type DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes struct {
-	// The zone in which the instance resides.
+	// The zone where the instance resides.
 	//
 	// example:
 	//
 	// cn-hangzhou-h
 	AZone *string `json:"AZone,omitempty" xml:"AZone,omitempty"`
-	// The disk size. Unit: MB.
+	// The disk size, in MB.
 	//
 	// example:
 	//
@@ -395,7 +395,7 @@ type DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes struct {
 	//
 	// ***
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The name of the node.
+	// The node name.
 	//
 	// example:
 	//

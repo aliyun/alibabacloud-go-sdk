@@ -24,7 +24,7 @@ type ModifyAccountDescriptionRequest struct {
 	//
 	// example:
 	//
-	// 测试账号
+	// Test account
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
 	// The name of the instance account.
 	//

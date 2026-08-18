@@ -20,15 +20,22 @@ type iDescribeDBInstanceEndpointResponseBody interface {
 }
 
 type DescribeDBInstanceEndpointResponseBody struct {
+	// The monitoring data.
 	Data *DescribeDBInstanceEndpointResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The number of entries per page for a paged query. Maximum value: 100. Default value: If the value is not specified or is less than 10, the default value is 10. If the value is greater than 100, the default value is 100.
+	//
 	// example:
 	//
 	// 1000
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next query.
+	//
 	// example:
 	//
 	// xxdds
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// A501A191-BD70-5E50-98A9-C2A486A82****
@@ -89,6 +96,7 @@ func (s *DescribeDBInstanceEndpointResponseBody) Validate() error {
 }
 
 type DescribeDBInstanceEndpointResponseBodyData struct {
+	// The internal connection type. The value is fixed as 1, which indicates the classic network.
 	Items []*DescribeDBInstanceEndpointResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
@@ -123,7 +131,9 @@ func (s *DescribeDBInstanceEndpointResponseBodyData) Validate() error {
 }
 
 type DescribeDBInstanceEndpointResponseBodyDataItems struct {
-	Endpoint   *DescribeDBInstanceEndpointResponseBodyDataItemsEndpoint     `json:"Endpoint,omitempty" xml:"Endpoint,omitempty" type:"Struct"`
+	// The endpoint of the instance.
+	Endpoint *DescribeDBInstanceEndpointResponseBodyDataItemsEndpoint `json:"Endpoint,omitempty" xml:"Endpoint,omitempty" type:"Struct"`
+	// The addresses of the origin server.
 	RealServer []*DescribeDBInstanceEndpointResponseBodyDataItemsRealServer `json:"RealServer,omitempty" xml:"RealServer,omitempty" type:"Repeated"`
 }
 
@@ -172,67 +182,118 @@ func (s *DescribeDBInstanceEndpointResponseBodyDataItems) Validate() error {
 }
 
 type DescribeDBInstanceEndpointResponseBodyDataItemsEndpoint struct {
+	// The address.
+	//
 	// example:
 	//
 	// 10.21.1.82
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The instance specification type (specification code).
+	//
 	// example:
 	//
 	// mdb.shard.4x.large.d
 	Class *string `json:"Class,omitempty" xml:"Class,omitempty"`
+	// The ID of the endpoint group to which the endpoint belongs.
+	//
 	// example:
 	//
 	// epg-bp14wgzai7flglwdtkxfa
 	EndpointGroupId *int64 `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	// The logical node ID.
+	//
 	// example:
 	//
 	// 2899
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether this is the default vSwitch.
+	//
 	// example:
 	//
 	// True
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The payload type. Valid values:
+	//
+	// - agentTurn: agent conversation.
+	//
+	// - systemEvent: system event.
+	//
 	// example:
 	//
 	// instance
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// The network type of the endpoint. Valid values:
+	//
+	// 	- **Public**: public endpoint.
+	//
+	// 	- **Private**: private endpoint.
+	//
+	// 	- **Inner**: private endpoint (classic network).
+	//
 	// example:
 	//
 	// VPC
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	// The read/write type. Valid values:
+	//
+	// - ReadWrite: row store read/write.
+	//
+	// - ColumnarRead: column store read-only.
+	//
 	// example:
 	//
 	// 0
 	ReadType *string `json:"ReadType,omitempty" xml:"ReadType,omitempty"`
+	// The object name.
+	//
 	// example:
 	//
 	// sas-app
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	// The tunnel ID.
+	//
 	// example:
 	//
 	// 3522367
 	TunnelId *int64 `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
+	// The instance type. Valid values:
+	//
+	// - **ReadWrite**: primary instance.
+	//
+	// - **ReadOnly**: read-only instance.
+	//
 	// example:
 	//
 	// TXT
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UserVisible *bool   `json:"UserVisible,omitempty" xml:"UserVisible,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Indicates whether the endpoint is visible to the user.
+	UserVisible *bool `json:"UserVisible,omitempty" xml:"UserVisible,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-2ze51hh6s8tsjgy19g5eu
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance protected by the policy.
+	//
 	// example:
 	//
 	// http://100.100.100.200/latest/meta-data
 	Vip *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
+	// The ID of the VPC in which the endpoint resides.
+	//
 	// example:
 	//
 	// vpc-bp1s9j8s4h4uqejp9k2z3
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The VIP port, such as 80, 8080, or 443.
+	//
 	// example:
 	//
 	// vport
 	Vport *int64 `json:"Vport,omitempty" xml:"Vport,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// `curl uUys2ThR.popscan.xaliyun.com`
@@ -405,26 +466,46 @@ func (s *DescribeDBInstanceEndpointResponseBodyDataItemsEndpoint) Validate() err
 }
 
 type DescribeDBInstanceEndpointResponseBodyDataItemsRealServer struct {
+	// Indicates whether the node is enabled. For the compute layer, only the primary zone node is enabled. After a primary/secondary switchover, the standby compute node becomes the primary node. All storage layer nodes are enabled.
+	//
 	// example:
 	//
 	// False
 	Activated *bool `json:"Activated,omitempty" xml:"Activated,omitempty"`
+	// The instance specification type (specification code).
+	//
 	// example:
 	//
 	// dds.cs.mid
 	Class *string `json:"Class,omitempty" xml:"Class,omitempty"`
+	// The IP address.
+	//
 	// example:
 	//
 	// 172.29.32.166
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The port number.
+	//
 	// example:
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The replica ID.
+	//
 	// example:
 	//
 	// 节点id
 	ReplicaId *int64 `json:"ReplicaId,omitempty" xml:"ReplicaId,omitempty"`
+	// The weight of the destination route.
+	//
+	// - For VPN gateway instances that support the dual-tunnel mode for IPsec-VPN connections, the weight of the destination route is **100*	- by default and has no practical significance.
+	//
+	// - For VPN gateway instances that support the single-tunnel mode for IPsec-VPN connections, the weight represents the priority of the destination route:
+	//
+	//     - **100**: high priority. If multiple destination routes have the same destination CIDR block, the IPsec-VPN connection associated with this route serves as the active link.
+	//
+	//     - **0**: low priority. If multiple destination routes have the same destination CIDR block, the IPsec-VPN connection associated with this route serves as the standby link.
+	//
 	// example:
 	//
 	// 255

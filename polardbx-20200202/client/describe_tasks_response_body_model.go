@@ -135,7 +135,7 @@ type DescribeTasksResponseBodyItems struct {
 	//
 	// 2021-10-20T20:00:00Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The task progress, in percentage.
+	// The task progress, in percentage (%).
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ type DescribeTasksResponseBodyItems struct {
 	//
 	// ProgressInfo
 	ProgressInfo *string `json:"ProgressInfo,omitempty" xml:"ProgressInfo,omitempty"`
-	// The scale-out ID if the task is a scale-out task. This value serves as a unique key in the backend.
+	// The scale-out ID if the task is a scale-out task. This is a unique key in the backend.
 	//
 	// example:
 	//
@@ -157,13 +157,13 @@ type DescribeTasksResponseBodyItems struct {
 	//
 	// - **RUNNING**: The task is running.
 	//
-	// - **FAILED**: The task failed.
+	// - **FAILED**: The task failed and was interrupted.
 	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task action, which serves as the unique key for the backend task type.
+	// The task action, which is the unique key for the backend task type.
 	//
 	// example:
 	//

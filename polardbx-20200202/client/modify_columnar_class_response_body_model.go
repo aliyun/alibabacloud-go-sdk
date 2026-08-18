@@ -16,7 +16,7 @@ type iModifyColumnarClassResponseBody interface {
 }
 
 type ModifyColumnarClassResponseBody struct {
-	// The policy details returned.
+	// The returned policy details.
 	Data *ModifyColumnarClassResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//

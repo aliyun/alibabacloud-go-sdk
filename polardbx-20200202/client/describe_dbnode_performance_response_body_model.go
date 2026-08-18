@@ -28,7 +28,7 @@ type DescribeDBNodePerformanceResponseBody struct {
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The end of the time range to query. The time is in the YYYY-MM-ddTHH:mm:ssZ format (UTC).
+	// The end time of the query. Format: YYYY-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeDBNodePerformanceResponseBody struct {
 	//
 	// EFB5E10B-5268-170F-A378-9AF86CCEACC8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range to query. The time is in the YYYY-MM-ddTHH:mm:ssZ format (UTC).
+	// The start time of the query. Format: YYYY-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//

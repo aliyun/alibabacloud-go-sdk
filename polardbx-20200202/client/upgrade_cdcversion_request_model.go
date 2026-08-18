@@ -24,7 +24,7 @@ type iUpgradeCDCVersionRequest interface {
 }
 
 type UpgradeCDCVersionRequest struct {
-	// The target database engine version to which you want to upgrade. > You can call the [DescribeDBClusterVersion](https://help.aliyun.com/document_detail/196830.html) operation to query the upgrade instructions for all database engine versions in a specific region.
+	// The target database version to which you want to upgrade. > You can call the [DescribeDBClusterVersion](https://help.aliyun.com/document_detail/196830.html) operation to query the upgrade instructions for all database versions in the specified region.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type UpgradeCDCVersionRequest struct {
 	//
 	// polarx-cdc-kernel-5.4.19-20240928_17274884
 	CdcMinorVersion *string `json:"CdcMinorVersion,omitempty" xml:"CdcMinorVersion,omitempty"`
-	// The instance ID. > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in a specific region, including instance IDs.
+	// The instance ID. > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in the specified region, including instance IDs.
 	//
 	// example:
 	//

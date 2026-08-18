@@ -22,13 +22,13 @@ type iEnableSqlAuditRequest interface {
 }
 
 type EnableSqlAuditRequest struct {
-  // The name of the audit administrator account. > If the three-authority separation mode is enabled, this parameter is required. For more information about the three-authority separation module, see [Three-authority separation](https://help.aliyun.com/document_detail/213824.html).
+  // The name of the audit administrator account. > If the three-role mode is enabled, this parameter is required. For more information about the three-role mode, see [Three-role mode](https://help.aliyun.com/document_detail/213824.html).
   // 
   // example:
   // 
   // test_daa
   AuditAccountName *string `json:"AuditAccountName,omitempty" xml:"AuditAccountName,omitempty"`
-  // The password of the audit administrator account. > If the three-authority separation mode is enabled, this parameter is required. For more information about the three-authority separation module, see [Three-authority separation](https://help.aliyun.com/document_detail/213824.html).
+  // The password of the audit administrator account. > If the three-role mode is enabled, this parameter is required. For more information about the three-role mode, see [Three-role mode](https://help.aliyun.com/document_detail/213824.html).
   // 
   // example:
   // 
@@ -42,19 +42,19 @@ type EnableSqlAuditRequest struct {
   // 
   // pxc-****************
   DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-  // The number of days to retain audit logs:
+  // The number of days for which audit logs are retained.
   // 
-  // - 0: Do not retain (i.e., disable automatic log expiration)
+  // - 0: Logs are not retained. Automatic log expiration is disabled.
   // 
-  // - >0: Logs are automatically deleted after N days
+  // - Greater than 0: Logs are automatically deleted after N days.
   // 
-  // - >Common values: 30, 45, 90, 180, 365
+  // - Common values: 30, 45, 90, 180, and 365.
   // 
   // example:
   // 
   // 45
   ExpireAfterDays *int32 `json:"ExpireAfterDays,omitempty" xml:"ExpireAfterDays,omitempty"`
-  // The region where the instance is located.
+  // The region in which the instance resides.
   // 
   // This parameter is required.
   // 

@@ -34,7 +34,7 @@ type ModifyAccountPrivilegeRequest struct {
 	//
 	// account_sec
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The account permissions. Valid values:
+	// The account permission. Valid values:
 	//
 	// - **ReadWrite**
 	//
@@ -42,7 +42,7 @@ type ModifyAccountPrivilegeRequest struct {
 	//
 	// - **DMLOnly**
 	//
-	// - **DDLOnly**.
+	// - **DDLOnly**
 	//
 	// example:
 	//

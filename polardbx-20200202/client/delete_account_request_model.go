@@ -30,7 +30,7 @@ type DeleteAccountRequest struct {
 	//
 	// testaccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The name of the instance.
+	// The instance name.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DeleteAccountRequest struct {
 	//
 	// pxc-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The region in which the instance resides.
+	// The region where the instance resides.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type DeleteAccountRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the security administrator account.
 	//
-	// > If three-role mode is enabled, this parameter is required. If three-role mode is not enabled, you do not need to specify this parameter.
+	// > If three-role mode is enabled, this parameter is required. If three-role mode is not enabled, this parameter is not required.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type DeleteAccountRequest struct {
 	SecurityAccountName *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
 	// The password of the security administrator account.
 	//
-	// > If three-role mode is enabled, this parameter is required. If three-role mode is not enabled, you do not need to specify this parameter.
+	// > If three-role mode is enabled, this parameter is required. If three-role mode is not enabled, this parameter is not required.
 	//
 	// example:
 	//

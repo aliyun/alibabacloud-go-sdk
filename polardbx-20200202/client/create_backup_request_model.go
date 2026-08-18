@@ -18,7 +18,7 @@ type iCreateBackupRequest interface {
 }
 
 type CreateBackupRequest struct {
-	// The backup type. Currently, only "0" is supported, which indicates fast backup.
+	// The backup type. Currently, only "0" is supported, which indicates a fast backup.
 	//
 	// example:
 	//

@@ -34,7 +34,7 @@ type CheckCloudResourceAuthorizedRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The global resource descriptor ARN (Alibaba Cloud Resource Name) of the authorized role. After the authorization of this role is complete, the related KMS can be used. Format: acs:ram::$accountID:role/$roleName.
+	// The global resource descriptor ARN (Alibaba Cloud Resource Name) of the authorized role. After the authorization of the role is complete, the related KMS can be used. Format: acs:ram::$accountID:role/$roleName.
 	//
 	// - $accountID: the Alibaba Cloud account ID. To view the ID, logon to the Alibaba Cloud Management Console, move the mouse over the profile picture in the upper-right corner, and then click Security Settings.
 	//

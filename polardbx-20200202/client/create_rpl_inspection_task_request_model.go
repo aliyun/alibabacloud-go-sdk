@@ -34,7 +34,7 @@ type CreateRplInspectionTaskRequest struct {
 	//
 	// transfer_test3
 	DstDb *string `json:"DstDb,omitempty" xml:"DstDb,omitempty"`
-	// The password of the privileged account for the destination ApsaraDB RDS instance. > 	- The password must be 8 to 32 characters in length. 	- The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. 	- Special characters include ! @ # $ & % ^ 	- ( ) _ + - =.
+	// The password of the privileged user for the destination ApsaraDB RDS instance. > 	- The password must be 8 to 32 characters in length. 	- The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. 	- Special characters include ! @ # $ & % ^ 	- ( ) _ + - =
 	//
 	// example:
 	//

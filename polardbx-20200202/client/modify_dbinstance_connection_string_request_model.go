@@ -46,7 +46,7 @@ type ModifyDBInstanceConnectionStringRequest struct {
 	//
 	// 3300
 	NewPort *string `json:"NewPort,omitempty" xml:"NewPort,omitempty"`
-	// The new connection string prefix.
+	// The new address prefix.
 	//
 	// This parameter is required.
 	//

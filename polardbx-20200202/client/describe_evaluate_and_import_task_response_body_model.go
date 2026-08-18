@@ -22,7 +22,7 @@ type iDescribeEvaluateAndImportTaskResponseBody interface {
 type DescribeEvaluateAndImportTaskResponseBody struct {
 	// The returned result.
 	Data *DescribeEvaluateAndImportTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message. This parameter is empty when the request succeeds. If the request fails, an exception message is returned, such as an error code.
+	// The response message. This parameter is empty when the request succeeds. When the request fails, an exception message is returned, such as an error code.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type DescribeEvaluateAndImportTaskResponseBodyData struct {
 	//
 	// example:
 	//
-	// "{\\"structureImportResult\\":{\\"status\\":\\"finish\\",\\"finishedNum\\":382,\\"totalNum\\":382,\\"percentage\\":100},\\"switchTips\\":\\"正向同步延迟较小时才允许开始正向切换\\",\\"autoTableSuggestionSwitch\\":false,\\"structureAlterationMap\\":{},\\"acceptFilterMap\\":{\\"fr_import\\":[\\"dy_dr_new\\"],\\"e3plus_drp_prod_new\\":[],\\"qbtong_prod\\":[],\\"e3plus_account_prod\\":[],\\"e3plus_drp_prod\\":[]},\\"structChunkMap\\":{},\\"count\\":1,\\"requestId\\":\\"9380D025-C9B1-51D6-A4B9-733C4879CC4A\\"}",
+	// "{\\"structureImportResult\\":{\\"status\\":\\"finish\\",\\"finishedNum\\":382,\\"totalNum\\":382,\\"percentage\\":100},\\"switchTips\\":\\"Forward switchover is allowed only when the forward synchronization latency is low\\",\\"autoTableSuggestionSwitch\\":false,\\"structureAlterationMap\\":{},\\"acceptFilterMap\\":{\\"fr_import\\":[\\"dy_dr_new\\"],\\"e3plus_drp_prod_new\\":[],\\"qbtong_prod\\":[],\\"e3plus_account_prod\\":[],\\"e3plus_drp_prod\\":[]},\\"structChunkMap\\":{},\\"count\\":1,\\"requestId\\":\\"9380D025-C9B1-51D6-A4B9-733C4879CC4A\\"}",
 	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
 	// The creator of the import task.
 	//

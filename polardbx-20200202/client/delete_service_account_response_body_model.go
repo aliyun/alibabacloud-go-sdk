@@ -132,7 +132,7 @@ type DeleteServiceAccountResponseBodyAccessDeniedDetail struct {
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of missing permission.
+	// The type of the permission denial.
 	//
 	// example:
 	//

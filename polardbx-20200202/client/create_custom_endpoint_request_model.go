@@ -44,7 +44,7 @@ type CreateCustomEndpointRequest struct {
 	//
 	// ext-win-live-17
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether a node automatically joins the cluster and starts providing services after the node is added or recovered.
+	// Specifies whether the node automatically joins the cluster and starts providing services after being added or recovered.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type CreateCustomEndpointRequest struct {
 	//
 	// true
 	NodeAutoEnter *bool `json:"NodeAutoEnter,omitempty" xml:"NodeAutoEnter,omitempty"`
-	// The IDs of the monitored nodes when RemindUnit (object type) is set to NODE (node). Separate multiple IDs with commas (,). A maximum of 50 nodes can be monitored per rule.
+	// The IDs of the monitored nodes when RemindUnit (object type) is set to NODE (node). Separate multiple IDs with commas (,). A maximum of 50 nodes can be monitored by a single rule.
 	//
 	// This parameter is required.
 	//
@@ -60,9 +60,9 @@ type CreateCustomEndpointRequest struct {
 	//
 	// r-bp1l5kfgw8****c3iv
 	NodeIds *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
-	// To query the metrics of a read-only node in a cloud-native read/write splitting architecture instance, set this parameter to **READONLY*	- and specify the **NodeId*	- parameter.
+	// To query the metrics of a read-only node in a cloud-native read/write splitting architecture instance, specify **READONLY*	- for this parameter along with the specific **NodeId**.
 	//
-	// >  In other cases, you do not need to specify this parameter or you can set it to **MASTER**.
+	// >  In other cases, you do not need to specify this parameter or you can specify **MASTER**.
 	//
 	// example:
 	//

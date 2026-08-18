@@ -44,7 +44,7 @@ type UpdateDBInstanceTDERequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The global resource descriptor of the role, used to specify a specific role. For details, see RAM role overview.
+	// The global resource descriptor of the role. This parameter specifies the role to assume. For details, see RAM role overview.
 	//
 	// example:
 	//

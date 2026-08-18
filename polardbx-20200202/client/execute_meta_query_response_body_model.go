@@ -22,11 +22,11 @@ type iExecuteMetaQueryResponseBody interface {
 }
 
 type ExecuteMetaQueryResponseBody struct {
-  // The details about the access denial.
+  // The details of the access denial.
   AccessDeniedDetail *ExecuteMetaQueryResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-  // The instance details.
+  // The list of instance details.
   Data *ExecuteMetaQueryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-  // The additional information returned. If the request is successful, success is returned. If the request fails, the corresponding error code is returned.
+  // The additional information returned. If the request is successful, **success*	- is returned. If the request fails, the corresponding error code is returned.
   // 
   // example:
   // 

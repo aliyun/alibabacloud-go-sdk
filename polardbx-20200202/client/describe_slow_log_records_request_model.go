@@ -52,13 +52,13 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// testdb
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The node ID. You can specify multiple node IDs separated by commas (`,`). This parameter is required when you query storage nodes.
+	// The node IDs. You can specify multiple node IDs separated by commas (`,`). This parameter is required when you query storage nodes.
 	//
 	// example:
 	//
 	// pxc-i-mezcj4ejdz
 	DBNodeIds *string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty"`
-	// The start time of the query. Specify the time in the YYYY-MM-ddTHH:mmZ format (UTC).
+	// The start time of the query. Format: YYYY-MM-ddTHH:mmZ (UTC).
 	//
 	// This parameter is required.
 	//
@@ -88,7 +88,7 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time of the query. Specify the time in the YYYY-MM-ddTHH:mmZ format (UTC).
+	// The start time of the query. Format: YYYY-MM-ddTHH:mmZ (UTC).
 	//
 	// This parameter is required.
 	//

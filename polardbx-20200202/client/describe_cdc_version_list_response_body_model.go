@@ -16,7 +16,7 @@ type iDescribeCdcVersionListResponseBody interface {
 }
 
 type DescribeCdcVersionListResponseBody struct {
-	// The data struct.
+	// The response struct.
 	Data *DescribeCdcVersionListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//

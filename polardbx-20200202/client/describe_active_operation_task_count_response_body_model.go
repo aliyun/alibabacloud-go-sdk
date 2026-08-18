@@ -18,7 +18,7 @@ type iDescribeActiveOperationTaskCountResponseBody interface {
 }
 
 type DescribeActiveOperationTaskCountResponseBody struct {
-	// Indicates whether a pop-up notification is required. Valid values:
+	// Indicates whether a pop-up window is required. Valid values:
 	//
 	// - 1: Required.
 	//

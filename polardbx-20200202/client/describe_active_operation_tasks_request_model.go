@@ -38,11 +38,11 @@ type iDescribeActiveOperationTasksRequest interface {
 type DescribeActiveOperationTasksRequest struct {
 	// Specifies whether cancellation is allowed. Valid values:
 	//
-	// - **-1**: All O&M events can be canceled.
+	// - **-1**: allows cancellation of all O&M events.
 	//
-	// - **0**: Not allowed.
+	// - **0**: not allowed.
 	//
-	// - **1**: Allowed.
+	// - **1**: allowed.
 	//
 	// example:
 	//
@@ -50,11 +50,11 @@ type DescribeActiveOperationTasksRequest struct {
 	AllowCancel *int64 `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
 	// Specifies whether the time can be modified. Valid values:
 	//
-	// - **-1**: The time of all O&M events can be modified.
+	// - **-1**: allows modification of the time for all O&M events.
 	//
-	// - **0**: Not allowed.
+	// - **0**: not allowed.
 	//
-	// - **1**: Allowed.
+	// - **1**: allowed.
 	//
 	// example:
 	//
@@ -62,17 +62,17 @@ type DescribeActiveOperationTasksRequest struct {
 	AllowChange *int64 `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
 	// The change level. Default value: all. Valid values:
 	//
-	// - **all**: All levels of exception recovery and system O&M.
+	// - **all**: all levels of exception repair and system O&M.
 	//
-	// - **S0**: Exception recovery.
+	// - **S0**: exception repair.
 	//
-	// - **S1**: System O&M.
+	// - **S1**: system O&M.
 	//
 	// example:
 	//
 	// all
 	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
-	// The database type. Set this parameter to polarx.
+	// The database type. Set the value to polarx.
 	//
 	// example:
 	//
@@ -118,17 +118,17 @@ type DescribeActiveOperationTasksRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The task status. Valid values:
 	//
-	// - **-1**: All pending and running tasks.
+	// - **-1**: all pending and running tasks.
 	//
-	// - **3**: Pending.
+	// - **3**: pending.
 	//
-	// - **4**: Running.
+	// - **4**: running.
 	//
 	// example:
 	//
 	// -1
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task type. A value of all indicates that all tasks of the user are queried. Set this parameter to all.
+	// The task type. A value of all indicates that all tasks of the user are queried. Set the value to all.
 	//
 	// example:
 	//

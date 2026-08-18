@@ -64,9 +64,9 @@ func (s *DescribeDBInstanceTDEResponseBody) Validate() error {
 type DescribeDBInstanceTDEResponseBodyData struct {
 	// Indicates whether TDE is enabled. Valid values:
 	//
-	// - 0: TDE is disabled.
+	// - 0: Not enabled.
 	//
-	// - 1: TDE is enabled.
+	// - 1: Enabled.
 	//
 	// example:
 	//

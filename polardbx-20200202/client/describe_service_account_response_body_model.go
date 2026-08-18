@@ -26,7 +26,7 @@ type DescribeServiceAccountResponseBody struct {
 	AccessDeniedDetail *DescribeServiceAccountResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The instance details.
 	Data *DescribeServiceAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message. "success" is returned if the request was successful. Otherwise, the corresponding error code is returned.
+	// The response message. "success" is returned if the request was successful. Otherwise, an error code is returned.
 	//
 	// example:
 	//
@@ -204,7 +204,7 @@ func (s *DescribeServiceAccountResponseBodyAccessDeniedDetail) Validate() error 
 }
 
 type DescribeServiceAccountResponseBodyData struct {
-	// The service account in the list.
+	// A service account in the list.
 	ServiceAccounts []*DescribeServiceAccountResponseBodyDataServiceAccounts `json:"ServiceAccounts,omitempty" xml:"ServiceAccounts,omitempty" type:"Repeated"`
 }
 
@@ -245,7 +245,7 @@ type DescribeServiceAccountResponseBodyDataServiceAccounts struct {
 	//
 	// polardbx_meta_ro
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The time when the account was created.
+	// The creation time.
 	//
 	// example:
 	//

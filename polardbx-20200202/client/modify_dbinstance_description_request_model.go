@@ -24,7 +24,7 @@ type ModifyDBInstanceDescriptionRequest struct {
 	//
 	// example:
 	//
-	// 测试实例
+	// Test instance
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The instance ID.
 	//

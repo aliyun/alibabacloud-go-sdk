@@ -18,7 +18,7 @@ type iModifySecurityIpsResponseBody interface {
 }
 
 type ModifySecurityIpsResponseBody struct {
-	// The response message. success is returned if the request is successful. Otherwise, an error code is returned.
+	// The response message. "success" is returned if the request is successful. Otherwise, an error code is returned.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iDescribeAvailableCrossRegionsResponseBody interface {
 type DescribeAvailableCrossRegionsResponseBody struct {
 	// The parameter details.
 	Data []*DescribeAvailableCrossRegionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The additional information returned. If the request is successful, success is returned. If the request fails, the corresponding error code is returned.
+	// The additional information returned. "success" is returned if the request is successful. Otherwise, the corresponding error code is returned.
 	//
 	// example:
 	//
