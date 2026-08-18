@@ -20,9 +20,9 @@ type iInstallNodePoolComponentsRequest interface {
 type InstallNodePoolComponentsRequest struct {
 	// The list of node components.
 	Components []*InstallNodePoolComponentsRequestComponents `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
-	// The list of node names for the rolling update. By default, all nodes are included.
+	// The list of node names for the rolling operation. Default value: all nodes.
 	NodeNames []*string `json:"nodeNames,omitempty" xml:"nodeNames,omitempty" type:"Repeated"`
-	// The rolling update configuration.
+	// The rolling policy configuration.
 	RollingPolicy *InstallNodePoolComponentsRequestRollingPolicy `json:"rollingPolicy,omitempty" xml:"rollingPolicy,omitempty" type:"Struct"`
 }
 
@@ -173,13 +173,19 @@ func (s *InstallNodePoolComponentsRequestComponentsConfig) Validate() error {
 }
 
 type InstallNodePoolComponentsRequestRollingPolicy struct {
-	// The interval between batches during the upgrade. Unit: seconds.
+	// The upgrade interval between batches. Unit: seconds.
 	//
 	// example:
 	//
 	// 0
 	BatchInterval *int64 `json:"batchInterval,omitempty" xml:"batchInterval,omitempty"`
-	// The maximum number of nodes that can be processed in parallel per batch. Default value: 1.
+	// The maximum number of nodes that are allowed to fail during the rolling process. Default value: 0, which indicates that the task fails if any node fails. If the value is greater than 0, the task fails and stops when the cumulative number of failed nodes exceeds this value.
+	//
+	// example:
+	//
+	// 0
+	MaxFailedNodes *int64 `json:"maxFailedNodes,omitempty" xml:"maxFailedNodes,omitempty"`
+	// The maximum number of parallel operations per batch. Default value: 1.
 	//
 	// example:
 	//
@@ -205,6 +211,10 @@ func (s *InstallNodePoolComponentsRequestRollingPolicy) GetBatchInterval() *int6
 	return s.BatchInterval
 }
 
+func (s *InstallNodePoolComponentsRequestRollingPolicy) GetMaxFailedNodes() *int64 {
+	return s.MaxFailedNodes
+}
+
 func (s *InstallNodePoolComponentsRequestRollingPolicy) GetMaxParallelism() *int64 {
 	return s.MaxParallelism
 }
@@ -215,6 +225,11 @@ func (s *InstallNodePoolComponentsRequestRollingPolicy) GetPausePolicy() *string
 
 func (s *InstallNodePoolComponentsRequestRollingPolicy) SetBatchInterval(v int64) *InstallNodePoolComponentsRequestRollingPolicy {
 	s.BatchInterval = &v
+	return s
+}
+
+func (s *InstallNodePoolComponentsRequestRollingPolicy) SetMaxFailedNodes(v int64) *InstallNodePoolComponentsRequestRollingPolicy {
+	s.MaxFailedNodes = &v
 	return s
 }
 

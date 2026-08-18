@@ -154,7 +154,13 @@ func (s *ModifyNodePoolNodeConfigRequestOsConfig) Validate() error {
 }
 
 type ModifyNodePoolNodeConfigRequestRollingPolicy struct {
-	// Node updates in the node pool are performed in batches. This parameter specifies the maximum number of nodes that can be updated in parallel per batch.
+	// The maximum number of nodes that are allowed to fail during the rolling update. Default value: 0, which indicates that the task fails if any node fails. If the value is greater than 0, the task fails and stops when the cumulative number of failed nodes exceeds this value.
+	//
+	// example:
+	//
+	// 0
+	MaxFailedNodes *int64 `json:"max_failed_nodes,omitempty" xml:"max_failed_nodes,omitempty"`
+	// The node updates in the node pool are performed in batches. This parameter specifies the maximum number of nodes that can be updated in parallel per batch.
 	//
 	// Valid values: [1,10].
 	//
@@ -174,8 +180,17 @@ func (s ModifyNodePoolNodeConfigRequestRollingPolicy) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyNodePoolNodeConfigRequestRollingPolicy) GetMaxFailedNodes() *int64 {
+	return s.MaxFailedNodes
+}
+
 func (s *ModifyNodePoolNodeConfigRequestRollingPolicy) GetMaxParallelism() *int64 {
 	return s.MaxParallelism
+}
+
+func (s *ModifyNodePoolNodeConfigRequestRollingPolicy) SetMaxFailedNodes(v int64) *ModifyNodePoolNodeConfigRequestRollingPolicy {
+	s.MaxFailedNodes = &v
+	return s
 }
 
 func (s *ModifyNodePoolNodeConfigRequestRollingPolicy) SetMaxParallelism(v int64) *ModifyNodePoolNodeConfigRequestRollingPolicy {

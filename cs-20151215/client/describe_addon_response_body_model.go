@@ -30,43 +30,43 @@ type iDescribeAddonResponseBody interface {
 }
 
 type DescribeAddonResponseBody struct {
-	// CPU architectures supported by the component.
+	// The CPU architectures supported by the component.
 	Architecture []*string `json:"architecture,omitempty" xml:"architecture,omitempty" type:"Repeated"`
-	// Component category.
+	// The component category.
 	//
 	// example:
 	//
 	// network
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// Custom parameter schema of the component.
+	// The schema of custom parameters for the component.
 	//
 	// example:
 	//
 	// {}
 	ConfigSchema *string `json:"config_schema,omitempty" xml:"config_schema,omitempty"`
-	// Whether it is installed by default.
+	// Indicates whether the component is installed by default.
 	//
 	// example:
 	//
 	// true
 	InstallByDefault *bool `json:"install_by_default,omitempty" xml:"install_by_default,omitempty"`
-	// Whether it is a managed component.
+	// Indicates whether the component is managed.
 	//
 	// example:
 	//
 	// false
 	Managed *bool `json:"managed,omitempty" xml:"managed,omitempty"`
-	// Component name.
+	// The name of the component.
 	//
 	// example:
 	//
 	// coredns
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Information about the latest component versions.
+	// The information about newer versions of the component.
 	NewerVersions []*DescribeAddonResponseBodyNewerVersions `json:"newer_versions,omitempty" xml:"newer_versions,omitempty" type:"Repeated"`
-	// Operations supported by the component.
+	// The operations supported by the component.
 	SupportedActions []*string `json:"supported_actions,omitempty" xml:"supported_actions,omitempty" type:"Repeated"`
-	// Component version.
+	// The component version.
 	//
 	// example:
 	//
@@ -183,11 +183,11 @@ type DescribeAddonResponseBodyNewerVersions struct {
 	//
 	// 1.20.4
 	MinimumClusterVersion *string `json:"minimum_cluster_version,omitempty" xml:"minimum_cluster_version,omitempty"`
-	// Whether the component can be upgraded to this version.
+	// Indicates whether the component can be upgraded to this version.
 	//
-	// - true: Upgrade is supported.
+	// - true: The upgrade is supported.
 	//
-	// - false: Upgrade is not supported.
+	// - false: The upgrade is not supported.
 	//
 	// example:
 	//

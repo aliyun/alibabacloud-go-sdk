@@ -28,6 +28,7 @@ type iUpgradeClusterNodepoolRequest interface {
 }
 
 type UpgradeClusterNodepoolRequest struct {
+	// Specifies whether to ignore warning-level pre-checks.
 	IgnoreWarningCheck *bool `json:"ignore_warning_check,omitempty" xml:"ignore_warning_check,omitempty"`
 	// The system image ID of the node.
 	//
@@ -35,13 +36,13 @@ type UpgradeClusterNodepoolRequest struct {
 	//
 	// aliyun_3_x64_20G_container_optimized_20241226.vhd
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
-	// The Kubernetes version of the node. You can call [DescribeKubernetesVersionMetadata](https://help.aliyun.com/document_detail/2667899.html) to obtain the current cluster version information from the `KubernetesVersion` field.
+	// The Kubernetes version of the node. You can call [DescribeKubernetesVersionMetadata](https://help.aliyun.com/document_detail/2667899.html) to obtain the current cluster version information from `KubernetesVersion`.
 	//
 	// example:
 	//
 	// 1.32.1-aliyun.1
 	KubernetesVersion *string `json:"kubernetes_version,omitempty" xml:"kubernetes_version,omitempty"`
-	// The list of nodes to upgrade. If this parameter is not specified, all nodes in the node pool are upgraded.
+	// The list of nodes to upgrade. If not specified, all nodes in the node pool are upgraded by default.
 	NodeNames []*string `json:"node_names,omitempty" xml:"node_names,omitempty" type:"Repeated"`
 	// The rolling update configuration.
 	RollingPolicy *UpgradeClusterNodepoolRequestRollingPolicy `json:"rolling_policy,omitempty" xml:"rolling_policy,omitempty" type:"Struct"`
@@ -57,11 +58,11 @@ type UpgradeClusterNodepoolRequest struct {
 	//
 	// 1.6.36
 	RuntimeVersion *string `json:"runtime_version,omitempty" xml:"runtime_version,omitempty"`
-	// Specifies whether to use system cloud disk replacement for the upgrade. Valid values:
+	// Specifies whether to use disk replacement for the upgrade. Valid values:
 	//
-	// - true: Uses system cloud disk replacement to upgrade the node pool. ACK reinitializes the nodes based on the current node pool configurations, such as the logon method, labels, taints, operating system image, and runtime version.
+	// - true: Uses disk replacement to upgrade the node pool. ACK reinitializes the nodes based on the current node pool configurations, such as logon method, labels, taints, operating system image, and runtime version.
 	//
-	// - false: Does not use system cloud disk replacement.
+	// - false: Does not use disk replacement.
 	//
 	// Default value: false.
 	//
@@ -161,17 +162,23 @@ func (s *UpgradeClusterNodepoolRequest) Validate() error {
 }
 
 type UpgradeClusterNodepoolRequestRollingPolicy struct {
-	// The interval between batches during the upgrade. This parameter takes effect only when the pause policy is set to `NotPause`.
+	// The upgrade interval between batches. This parameter takes effect only when the pause policy is set to `NotPause`.
 	//
 	// Valid values: [5,120]. Unit: minutes.
 	//
-	// You can set this parameter to 0 to specify no interval between batches.
+	// This parameter can be set to 0, which indicates no interval between batches.
 	//
 	// example:
 	//
 	// 5
 	BatchInterval *int32 `json:"batch_interval,omitempty" xml:"batch_interval,omitempty"`
-	// The maximum number of nodes that can be updated in parallel per batch. Nodes in the node pool are updated in batches.
+	// The maximum number of nodes that are allowed to fail during the rolling update. Default value: 0, which indicates that the task fails if any node fails. If the value is greater than 0, the task fails and stops when the cumulative number of failed nodes exceeds this value.
+	//
+	// example:
+	//
+	// 0
+	MaxFailedNodes *int32 `json:"max_failed_nodes,omitempty" xml:"max_failed_nodes,omitempty"`
+	// The maximum number of nodes that can be updated in parallel per batch. Node pool updates are performed in batches.
 	//
 	// Valid values: [1,10].
 	//
@@ -183,11 +190,11 @@ type UpgradeClusterNodepoolRequestRollingPolicy struct {
 	MaxParallelism *int32 `json:"max_parallelism,omitempty" xml:"max_parallelism,omitempty"`
 	// The automatic pause policy during node upgrades. Valid values:
 	//
-	// - FirstBatch: pauses after the first batch is complete.
+	// - FirstBatch: Pauses after the first batch is complete.
 	//
-	// - EveryBatch: pauses after each batch is complete.
+	// - EveryBatch: Pauses after each batch is complete.
 	//
-	// - NotPause: does not pause.
+	// - NotPause: Does not pause.
 	//
 	// example:
 	//
@@ -207,6 +214,10 @@ func (s *UpgradeClusterNodepoolRequestRollingPolicy) GetBatchInterval() *int32 {
 	return s.BatchInterval
 }
 
+func (s *UpgradeClusterNodepoolRequestRollingPolicy) GetMaxFailedNodes() *int32 {
+	return s.MaxFailedNodes
+}
+
 func (s *UpgradeClusterNodepoolRequestRollingPolicy) GetMaxParallelism() *int32 {
 	return s.MaxParallelism
 }
@@ -217,6 +228,11 @@ func (s *UpgradeClusterNodepoolRequestRollingPolicy) GetPausePolicy() *string {
 
 func (s *UpgradeClusterNodepoolRequestRollingPolicy) SetBatchInterval(v int32) *UpgradeClusterNodepoolRequestRollingPolicy {
 	s.BatchInterval = &v
+	return s
+}
+
+func (s *UpgradeClusterNodepoolRequestRollingPolicy) SetMaxFailedNodes(v int32) *UpgradeClusterNodepoolRequestRollingPolicy {
+	s.MaxFailedNodes = &v
 	return s
 }
 

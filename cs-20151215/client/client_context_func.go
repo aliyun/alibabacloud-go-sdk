@@ -673,23 +673,11 @@ func (client *Client) CreateAutoscalingConfigWithContext(ctx context.Context, Cl
 
 // Summary:
 //
-// Creates an ACK cluster, including ACK managed clusters, ACK Serverless clusters, ACK Edge clusters, and registered clusters. When creating a cluster, you configure cluster information, cluster components, and ACK-related cloud resources.
+// Creates an ACK cluster, including ACK managed clusters, ACK Serverless clusters, ACK Edge clusters, and registered clusters. When you create a cluster, you configure cluster information, cluster components, and ACK-related cloud resources.
 //
 // Description:
 //
-// ### Generate OpenAPI request parameters from the console
-//
-// When you call the CreateCluster operation to create a cluster, if the API call fails due to incorrect request parameter combinations, you can generate the required request parameter combinations from the console. Perform the following steps:
-//
-// 1. Log on to the [Container Service console](https://csnew.console.aliyun.com) and choose **Cluster List*	- in the left-side navigation pane.
-//
-// 1. On the **Cluster List*	- page, click **Cluster Template**.
-//
-// 1. In the dialog box, select the cluster type that you want to create, click Create, and then configure the cluster information on the cluster configuration page.
-//
-// 1. After the configuration is complete, on the **Confirm Configuration*	- page, click **Equivalent Code*	- in the upper-right corner. The dialog box displays the parameter combinations required to create the cluster, which you can copy and use.
-//
-//	Notice: Starting from July 4, 2026, some request parameters will no longer take effect. For details about the changes and override parameter descriptions, see [Notice on changes to OpenAPI parameters and offline of OpenAPIs for ACK cluster management](https://help.aliyun.com/document_detail/2932733.html).</notice>
+// ### Generate OpenAPI request parameters by using the console.
 //
 // @param request - CreateClusterRequest
 //
@@ -1250,7 +1238,7 @@ func (client *Client) CreateClusterInspectConfigWithContext(ctx context.Context,
 
 // Summary:
 //
-// Creates a node pool for a cluster. A node pool is a logical collection of nodes that share the same attributes, allowing unified management and O&M operations such as node upgrades and elastic scaling. You can further leverage the automated O&M capabilities of node pools, including automatic OS CVE vulnerability patching, automatic faulty node recovery, and automatic kubelet and containerd version upgrades, to reduce O&M costs.
+// A node pool is a logical collection of nodes that share the same attributes, allowing unified management and O&M operations such as node upgrades and elastic scaling. You can further use the automated O&M capabilities of node pools, including automatic OS CVE vulnerability patching, automatic faulty node recovery, and automatic kubelet and containerd version upgrades, to reduce O&M costs. You can call CreateClusterNodePool to create a node pool for a cluster.
 //
 // @param request - CreateClusterNodePoolRequest
 //
@@ -1408,6 +1396,61 @@ func (client *Client) CreateKubernetesTriggerWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateKubernetesTriggerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 安装节点组件
+//
+// @param request - CreateNodePoolComponentInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateNodePoolComponentInstancesResponse
+func (client *Client) CreateNodePoolComponentInstancesWithContext(ctx context.Context, clusterId *string, nodepoolId *string, request *CreateNodePoolComponentInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateNodePoolComponentInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Components) {
+		body["components"] = request.Components
+	}
+
+	if !dara.IsNil(request.NodeNames) {
+		body["node_names"] = request.NodeNames
+	}
+
+	if !dara.IsNil(request.RollingPolicy) {
+		body["rolling_policy"] = request.RollingPolicy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateNodePoolComponentInstances"),
+		Version:     dara.String("2015-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/clusters/" + dara.PercentEncode(dara.StringValue(clusterId)) + "/nodepools/" + dara.PercentEncode(dara.StringValue(nodepoolId)) + "/component_instances"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateNodePoolComponentInstancesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1954,6 +1997,75 @@ func (client *Client) DeleteKubernetesTriggerWithContext(ctx context.Context, Id
 
 // Summary:
 //
+// 卸载节点组件
+//
+// @param tmpReq - DeleteNodePoolComponentInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNodePoolComponentInstanceResponse
+func (client *Client) DeleteNodePoolComponentInstanceWithContext(ctx context.Context, clusterId *string, nodepoolId *string, name *string, tmpReq *DeleteNodePoolComponentInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteNodePoolComponentInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteNodePoolComponentInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.NodeNames) {
+		request.NodeNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NodeNames, dara.String("node_names"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BatchInterval) {
+		query["batch_interval"] = request.BatchInterval
+	}
+
+	if !dara.IsNil(request.MaxFailedNodes) {
+		query["max_failed_nodes"] = request.MaxFailedNodes
+	}
+
+	if !dara.IsNil(request.MaxParallelism) {
+		query["max_parallelism"] = request.MaxParallelism
+	}
+
+	if !dara.IsNil(request.NodeNamesShrink) {
+		query["node_names"] = request.NodeNamesShrink
+	}
+
+	if !dara.IsNil(request.PausePolicy) {
+		query["pause_policy"] = request.PausePolicy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteNodePoolComponentInstance"),
+		Version:     dara.String("2015-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/clusters/" + dara.PercentEncode(dara.StringValue(clusterId)) + "/nodepools/" + dara.PercentEncode(dara.StringValue(nodepoolId)) + "/component_instances/" + dara.PercentEncode(dara.StringValue(name))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteNodePoolComponentInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a policy rule instance from a specified cluster.
 //
 // @param request - DeletePolicyInstanceRequest
@@ -2122,7 +2234,7 @@ func (client *Client) DeployPolicyInstanceWithContext(ctx context.Context, clust
 
 // Summary:
 //
-// You can call the DescribeAddon operation to query information about a specified component based on parameters such as region, cluster type, cluster subtype (profile), cluster version, and component name. The returned information includes whether the component is managed, component category, supported custom parameter schema, compatible OS architectures, and the minimum cluster version required by the component version.
+// Invokes the DescribeAddon operation to perform a parameter query for information about a specified component based on parameters such as region, cluster type, cluster child class (profile), cluster version, and component name. The returned information includes whether the component is managed, the component categorization, the schema of supported custom parameters, compatible operating system architectures, and the minimum cluster version required by the component version.
 //
 // @param request - DescribeAddonRequest
 //
@@ -2747,15 +2859,15 @@ func (client *Client) DescribeClusterNodePoolDetailWithContext(ctx context.Conte
 //
 // - When removing nodes, perform standardized operations through this API or the [Container Service console](https://cs.console.aliyun.com). Do not manually remove nodes by using `kubectl delete node`.
 //
-// - Do not directly release nodes, remove instances, or allow nodes to be passively released due to subscription instance expires in the ECS or ESS console (or through related APIs). In these cases, nodes are directly stopped and automatically removed from the Container Service console.
+// - Do not directly release nodes, remove instances in the ECS or ESS console (or through related APIs), or allow nodes to be passively released due to subscription instance expires. In these cases, nodes are directly stopped and automatically removed from the Container Service console.
 //
-// - If the node pool has a desired node count configured, the node pool automatically scales out other instances based on the corresponding configuration to maintain the node count at the desired number.
+// - If the node pool has a desired number of nodes configured, the node pool automatically scales out other instances based on the corresponding configuration to maintain the node count at the desired number.
 //
 // - Removing nodes involves Pod migration, which may affect your services. Perform this operation during off-peak hours. Unexpected risks may occur during the operation. Back up relevant data in advance.
 //
-// - When removing nodes, ACK executes a drain operation. Ensure that other nodes in the cluster have sufficient resources to avoid application Pods that cannot be scheduling.
+// - When removing nodes, ACK executes a drain operation. Ensure that other nodes in the cluster have sufficient resources to avoid application pods being unable to be scheduling.
 //
-// - Check the node affinity rules and scheduling policies of Pods on the nodes to be removed to ensure that Pods are not left unschedulable after node removal.
+// - Check the node affinity rules and scheduling policies of Pods on the nodes to be removed to ensure that Pods are not unschedulable on other nodes after the node is removed.
 //
 // @param request - DescribeClusterNodePoolsRequest
 //
@@ -4827,7 +4939,7 @@ func (client *Client) InstallClusterAddonsWithContext(ctx context.Context, Clust
 
 // Summary:
 //
-// Installs components on nodes. You can configure and specify nodes on which to install components.
+// Installs node components. You can configure and specify nodes on which to install components.
 //
 // @param request - InstallNodePoolComponentsRequest
 //
@@ -5205,6 +5317,134 @@ func (client *Client) ListClusterKubeconfigStatesWithContext(ctx context.Context
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListClusterKubeconfigStatesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询节点组件实例列表
+//
+// @param request - ListNodePoolComponentInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNodePoolComponentInstancesResponse
+func (client *Client) ListNodePoolComponentInstancesWithContext(ctx context.Context, clusterId *string, nodepoolId *string, request *ListNodePoolComponentInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListNodePoolComponentInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["max_results"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["next_token"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListNodePoolComponentInstances"),
+		Version:     dara.String("2015-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/clusters/" + dara.PercentEncode(dara.StringValue(clusterId)) + "/nodepools/" + dara.PercentEncode(dara.StringValue(nodepoolId)) + "/component_instances"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListNodePoolComponentInstancesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询节点池可安装的节点组件
+//
+// @param tmpReq - ListNodePoolComponentsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNodePoolComponentsResponse
+func (client *Client) ListNodePoolComponentsWithContext(ctx context.Context, clusterId *string, tmpReq *ListNodePoolComponentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListNodePoolComponentsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListNodePoolComponentsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.InstanceTypes) {
+		request.InstanceTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceTypes, dara.String("instance_types"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ImageId) {
+		query["image_id"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.ImageType) {
+		query["image_type"] = request.ImageType
+	}
+
+	if !dara.IsNil(request.InstanceTypesShrink) {
+		query["instance_types"] = request.InstanceTypesShrink
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["max_results"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["next_token"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.NodepoolId) {
+		query["nodepool_id"] = request.NodepoolId
+	}
+
+	if !dara.IsNil(request.NodepoolType) {
+		query["nodepool_type"] = request.NodepoolType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListNodePoolComponents"),
+		Version:     dara.String("2015-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/clusters/" + dara.PercentEncode(dara.StringValue(clusterId)) + "/nodepool_components"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListNodePoolComponentsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5747,11 +5987,11 @@ func (client *Client) ModifyClusterAddonWithContext(ctx context.Context, cluster
 
 // Summary:
 //
-// Modifies the configuration of a node pool based on the node pool ID by calling the ModifyClusterNodePool operation.
+// Updates the configuration of a node pool based on the node pool ID by calling the ModifyClusterNodePool operation.
 //
 // Description:
 //
-// <notice>Starting from July 4, 2026, the request parameters instance_deletion_protection, ingress_loadbalancer_id, and access_control_list will no longer take effect. For more information about the changes, see [Notice on changes to OpenAPI request and response parameters and OpenAPI deprecation for ACK cluster management](https://help.aliyun.com/document_detail/2932733.html).</notice>
+// <notice>Starting July 04, 2026, the request parameters instance_deletion_protection, ingress_loadbalancer_id, and access_control_list will no longer take effect. For more information about the changes, see [Announcement on changes to input and output parameters of OpenAPI operations related to ACK cluster management and the deprecation of specific OpenAPI operations](https://help.aliyun.com/document_detail/2932733.html).</notice>
 //
 // @param request - ModifyClusterNodePoolRequest
 //
@@ -5880,7 +6120,7 @@ func (client *Client) ModifyClusterTagsWithContext(ctx context.Context, ClusterI
 //
 // Description:
 //
-// > ACK supports modifying the kubelet configurations of nodes in a node pool. After the modification, the new configurations automatically take effect on existing nodes in the node pool. New nodes added to the node pool also use the new configurations.
+// > ACK supports modifying the kubelet configurations of nodes in a node pool. After the modification is complete, the configurations automatically take effect on existing nodes in the node pool, and new nodes added to the node pool also use the new configurations.
 //
 // @param request - ModifyNodePoolNodeConfigRequest
 //
@@ -7571,6 +7811,69 @@ func (client *Client) UpdateNodePoolComponentWithContext(ctx context.Context, cl
 
 // Summary:
 //
+// 更新节点组件
+//
+// @param request - UpdateNodePoolComponentInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNodePoolComponentInstanceResponse
+func (client *Client) UpdateNodePoolComponentInstanceWithContext(ctx context.Context, clusterId *string, nodepoolId *string, name *string, request *UpdateNodePoolComponentInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateNodePoolComponentInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		body["config"] = request.Config
+	}
+
+	if !dara.IsNil(request.DisableRolling) {
+		body["disable_rolling"] = request.DisableRolling
+	}
+
+	if !dara.IsNil(request.NodeNames) {
+		body["node_names"] = request.NodeNames
+	}
+
+	if !dara.IsNil(request.RollingPolicy) {
+		body["rolling_policy"] = request.RollingPolicy
+	}
+
+	if !dara.IsNil(request.Version) {
+		body["version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateNodePoolComponentInstance"),
+		Version:     dara.String("2015-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/clusters/" + dara.PercentEncode(dara.StringValue(clusterId)) + "/nodepools/" + dara.PercentEncode(dara.StringValue(nodepoolId)) + "/component_instances/" + dara.PercentEncode(dara.StringValue(name))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateNodePoolComponentInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the deletion protection status of a specified resource. Currently supported resource types include namespaces and services.
 //
 // You can call this operation to enable deletion protection for namespaces or services that involve critical business or sensitive data to avoid maintenance costs caused by accidental deletion.
@@ -7878,11 +8181,11 @@ func (client *Client) UpgradeClusterAddonsWithContext(ctx context.Context, Clust
 
 // Summary:
 //
-// Upgrades the kubelet version (which should match the control plane version), operating system version, or container runtime version of a specified cluster node pool.
+// Upgrades the kubelet version (recommended to match the control plane version), operating system version, or container runtime version of a specified cluster node pool.
 //
 // Description:
 //
-// Upgrades the Kubernetes version, operating system version, or container runtime version of nodes in a specified cluster node pool. After you call the UpgradeClusterNodepool operation, the API returns a task_id for the upgrade task. You can manage the task by calling the following task API operations:
+// Upgrades the Kubernetes version, operating system version, or container runtime version of nodes in a specified cluster node pool. After you successfully call the UpgradeClusterNodepool operation, the API returns a `task_id` for the upgrade task. You can manage the task by calling the following task-related API operations:
 //
 // - [Call DescribeTaskInfo to query task details](https://help.aliyun.com/document_detail/2667985.html)
 //
@@ -7890,7 +8193,7 @@ func (client *Client) UpgradeClusterAddonsWithContext(ctx context.Context, Clust
 //
 // - [Call ResumeTask to resume a paused task](https://help.aliyun.com/document_detail/2667987.html)
 //
-// - [Call CancelTask to cancel a running task](https://help.aliyun.com/document_detail/2667988.html).
+// - [Call CancelTask to cancel a running task](https://help.aliyun.com/document_detail/2667988.html)
 //
 // @param request - UpgradeClusterNodepoolRequest
 //

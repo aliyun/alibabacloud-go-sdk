@@ -28,7 +28,7 @@ type Runtime struct {
 	//
 	// example:
 	//
-	// containerd
+	// docker
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The version of the container runtime. By default, the latest version is used.
 	//
@@ -36,7 +36,7 @@ type Runtime struct {
 	//
 	// example:
 	//
-	// 1.6.20
+	// 19.03.5
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 

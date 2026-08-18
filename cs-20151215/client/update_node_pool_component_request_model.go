@@ -24,9 +24,9 @@ type iUpdateNodePoolComponentRequest interface {
 }
 
 type UpdateNodePoolComponentRequest struct {
-	// The node component configuration.
+	// The configuration of the node component.
 	Config *UpdateNodePoolComponentRequestConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// Specifies whether to disable rolling updates. Default value: false. When set to false, updating the baseline configuration triggers a rolling update of nodes.
+	// Specifies whether to disable rolling. Default value: false. If set to false, updating the baseline configuration triggers a rolling update of nodes.
 	DisableRolling *bool `json:"disableRolling,omitempty" xml:"disableRolling,omitempty"`
 	// The name of the node component.
 	//
@@ -36,7 +36,7 @@ type UpdateNodePoolComponentRequest struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The list of nodes to be included in the rolling update. By default, all nodes are included.
 	NodeNames []*string `json:"nodeNames,omitempty" xml:"nodeNames,omitempty" type:"Repeated"`
-	// The rolling update configuration.
+	// The rolling update policy.
 	RollingPolicy *UpdateNodePoolComponentRequestRollingPolicy `json:"rollingPolicy,omitempty" xml:"rollingPolicy,omitempty" type:"Struct"`
 	// The version of the node component.
 	//
@@ -153,12 +153,18 @@ func (s *UpdateNodePoolComponentRequestConfig) Validate() error {
 }
 
 type UpdateNodePoolComponentRequestRollingPolicy struct {
-	// The interval between batches during the upgrade, in seconds.
+	// The interval between batches during the upgrade. Unit: seconds.
 	//
 	// example:
 	//
 	// 0
 	BatchInterval *int64 `json:"batchInterval,omitempty" xml:"batchInterval,omitempty"`
+	// The maximum number of nodes that are allowed to fail during the rolling update. Default value: 0, which indicates that the task fails if any node fails. If the value is greater than 0, the task fails and stops when the cumulative number of failed nodes exceeds this value.
+	//
+	// example:
+	//
+	// 0
+	MaxFailedNodes *int64 `json:"maxFailedNodes,omitempty" xml:"maxFailedNodes,omitempty"`
 	// The maximum number of nodes that can be updated in parallel per batch. Default value: 1.
 	//
 	// example:
@@ -185,6 +191,10 @@ func (s *UpdateNodePoolComponentRequestRollingPolicy) GetBatchInterval() *int64 
 	return s.BatchInterval
 }
 
+func (s *UpdateNodePoolComponentRequestRollingPolicy) GetMaxFailedNodes() *int64 {
+	return s.MaxFailedNodes
+}
+
 func (s *UpdateNodePoolComponentRequestRollingPolicy) GetMaxParallelism() *int64 {
 	return s.MaxParallelism
 }
@@ -195,6 +205,11 @@ func (s *UpdateNodePoolComponentRequestRollingPolicy) GetPausePolicy() *string {
 
 func (s *UpdateNodePoolComponentRequestRollingPolicy) SetBatchInterval(v int64) *UpdateNodePoolComponentRequestRollingPolicy {
 	s.BatchInterval = &v
+	return s
+}
+
+func (s *UpdateNodePoolComponentRequestRollingPolicy) SetMaxFailedNodes(v int64) *UpdateNodePoolComponentRequestRollingPolicy {
+	s.MaxFailedNodes = &v
 	return s
 }
 
