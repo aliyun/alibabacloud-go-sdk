@@ -22,28 +22,38 @@ type iListDomainItemsRequest interface {
 }
 
 type ListDomainItemsRequest struct {
+	// The current page number in paging.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The domain name value filter. Fuzzy match is supported.
+	//
 	// example:
 	//
 	// example.com
 	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
+	// The list ID. This is a unique business identifier used for policy references and CRUD operations.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ladl-6f1exxxxx6ab59
 	ListId *string `json:"ListId,omitempty" xml:"ListId,omitempty"`
+	// The list type (Blacklist/Whitelist).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// la_domain_white_list
 	ListType *string `json:"ListType,omitempty" xml:"ListType,omitempty"`
+	// The number of entries per page in paging. Valid values: 1 to 1000.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -115,6 +115,124 @@ func (client *Client) AttachPolicy2ApprovalProcessWithContext(ctx context.Contex
 
 // Summary:
 //
+// Inserts domain name entries into a domain name list in batches.
+//
+// Description:
+//
+// Appends domain name entries in batches to a specified domain name list (`ListId`). Domain names must be second-level or higher domain names. Wildcard domain names (`*.example.com`) are supported, but overly broad patterns such as `*.com` or `*.com.cn` are prohibited.
+//
+// @param request - BatchCreateDomainItemsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchCreateDomainItemsResponse
+func (client *Client) BatchCreateDomainItemsWithContext(ctx context.Context, request *BatchCreateDomainItemsRequest, runtime *dara.RuntimeOptions) (_result *BatchCreateDomainItemsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.DomainItems) {
+		bodyFlat["DomainItems"] = request.DomainItems
+	}
+
+	if !dara.IsNil(request.ListId) {
+		body["ListId"] = request.ListId
+	}
+
+	if !dara.IsNil(request.ListType) {
+		body["ListType"] = request.ListType
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchCreateDomainItems"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchCreateDomainItemsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Batch deletes domain name entries from a domain name list.
+//
+// Description:
+//
+// Batch deletes domain name entries from a specified domain name list by entry IDs (`ItemIds`, obtained from the `ItemId` field returned by ListDomainItems).
+//
+// @param request - BatchDeleteDomainItemsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchDeleteDomainItemsResponse
+func (client *Client) BatchDeleteDomainItemsWithContext(ctx context.Context, request *BatchDeleteDomainItemsRequest, runtime *dara.RuntimeOptions) (_result *BatchDeleteDomainItemsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.ItemIds) {
+		bodyFlat["ItemIds"] = request.ItemIds
+	}
+
+	if !dara.IsNil(request.ListId) {
+		body["ListId"] = request.ListId
+	}
+
+	if !dara.IsNil(request.ListType) {
+		body["ListType"] = request.ListType
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchDeleteDomainItems"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchDeleteDomainItemsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an approval process under the current Alibaba Cloud account.
 //
 // @param tmpReq - CreateApprovalProcessRequest
@@ -2429,7 +2547,7 @@ func (client *Client) ExportUserDevicesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Retrieves the details of an approval instance for your Alibaba Cloud account.
+// Queries the details of an approval instance under the current Alibaba Cloud account.
 //
 // @param request - GetApprovalRequest
 //
@@ -3318,7 +3436,7 @@ func (client *Client) ListApprovalSchemasForApprovalProcessesWithContext(ctx con
 
 // Summary:
 //
-// Lists approval instances for your Alibaba Cloud account.
+// Queries the list of approval instances under the current Alibaba Cloud account.
 //
 // @param request - ListApprovalsRequest
 //
@@ -3438,11 +3556,11 @@ func (client *Client) ListConnectorsWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 分页查询域名条目
+// Queries domain name entries in a domain name list by paging.
 //
 // Description:
 //
-// 分页查询指定域名名单下的域名条目明细。与 ListDomainMetas配套使用：先拿到 `ListId`，再用本接口翻页查看该名单里的域名。
+// Queries the details of domain name entries in a specified domain name list by paging. Use this operation together with ListDomainMetas: first obtain the `ListId`, and then use this operation to perform paging through the domain names in the list.
 //
 // @param request - ListDomainItemsRequest
 //

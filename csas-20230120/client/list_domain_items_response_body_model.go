@@ -18,11 +18,16 @@ type iListDomainItemsResponseBody interface {
 }
 
 type ListDomainItemsResponseBody struct {
+	// The list of domain name entries.
 	DomainItems []*ListDomainItemsResponseBodyDomainItems `json:"DomainItems,omitempty" xml:"DomainItems,omitempty" type:"Repeated"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 019F68B5-2D0D-5399-9BB2-D81C13C2C05D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records that match the specified conditions. This is an optional parameter and may not be returned by default.
+	//
 	// example:
 	//
 	// 13
@@ -78,10 +83,14 @@ func (s *ListDomainItemsResponseBody) Validate() error {
 }
 
 type ListDomainItemsResponseBodyDomainItems struct {
+	// The time when the entry was created.
+	//
 	// example:
 	//
 	// 2026-08-01 10:20:30
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the entry was last modified.
+	//
 	// example:
 	//
 	// 2026-08-01 10:20:30
@@ -90,6 +99,8 @@ type ListDomainItemsResponseBodyDomainItems struct {
 	//
 	// 499
 	ItemId *int64 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	// The domain name. Wildcard domain names are supported.
+	//
 	// example:
 	//
 	// www.example.com

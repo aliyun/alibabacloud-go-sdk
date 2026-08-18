@@ -28,24 +28,65 @@ type iRule interface {
 }
 
 type Rule struct {
+	// The logical relationship between rules at the same level. Valid values:
+	//
+	// - **AND**: All rules at the same level must be hit.
+	//
+	// - **OR**: Any one rule at the same level can be hit.
+	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// AND
 	Combinator *string `json:"Combinator,omitempty" xml:"Combinator,omitempty"`
-	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The rule ID.
+	//
+	// example:
+	//
+	// 1361
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The endpoint device attribute field to match. Required for leaf rules.
+	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// mac
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The matching operator. Required for leaf rules.
+	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// equal
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The rule subtype.
+	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// windows
 	RuleSubType *string `json:"RuleSubType,omitempty" xml:"RuleSubType,omitempty"`
+	// The rule type.
+	//
 	// if can be null:
 	// true
-	RuleType *string   `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	Rules    []*Rule   `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	Values   []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	//
+	// example:
+	//
+	// device_info
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The list of matching rules. At least one rule must be included.
+	Rules []*Rule `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The set of values to match. Required for leaf rules and cannot be empty.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s Rule) String() string {

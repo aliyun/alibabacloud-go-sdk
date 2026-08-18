@@ -25,6 +25,8 @@ type iListApprovalsRequest interface {
 	GetCreatorUsername() *string
 	SetCurrentPage(v int64) *ListApprovalsRequest
 	GetCurrentPage() *int64
+	SetEffectStatuses(v []*string) *ListApprovalsRequest
+	GetEffectStatuses() []*string
 	SetOperatorUserId(v string) *ListApprovalsRequest
 	GetOperatorUserId() *string
 	SetOperatorUsername(v string) *ListApprovalsRequest
@@ -37,6 +39,8 @@ type iListApprovalsRequest interface {
 	GetProcessId() *string
 	SetProcessName(v string) *ListApprovalsRequest
 	GetProcessName() *string
+	SetReportTypes(v []*string) *ListApprovalsRequest
+	GetReportTypes() []*string
 	SetSchemaId(v string) *ListApprovalsRequest
 	GetSchemaId() *string
 	SetSchemaName(v string) *ListApprovalsRequest
@@ -46,45 +50,45 @@ type iListApprovalsRequest interface {
 }
 
 type ListApprovalsRequest struct {
-	// Collection of approval instance IDs.
+	// The collection of approval instance IDs.
 	ApprovalIds []*string `json:"ApprovalIds,omitempty" xml:"ApprovalIds,omitempty" type:"Repeated"`
-	// End time when the approval instance was created, in seconds since the Unix epoch.
+	// The end time for approval instance creation, in seconds-level timestamp.
 	//
 	// example:
 	//
 	// 1736750500
 	CreateEndTime *int64 `json:"CreateEndTime,omitempty" xml:"CreateEndTime,omitempty"`
-	// Start time when the approval instance was created, in seconds since the Unix epoch.
+	// The start time for approval instance creation, in seconds-level timestamp.
 	//
 	// example:
 	//
 	// 1730000000
 	CreateStartTime *int64 `json:"CreateStartTime,omitempty" xml:"CreateStartTime,omitempty"`
-	// Department of the user who created the approval instance.
+	// The department of the approval instance creator.
 	//
 	// example:
 	//
-	// 测试部
+	// QA Department
 	CreatorDepartment *string `json:"CreatorDepartment,omitempty" xml:"CreatorDepartment,omitempty"`
-	// ID of the device used to create the approval instance.
+	// The terminal device ID of the approval instance creator.
 	//
 	// example:
 	//
 	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
 	CreatorDevTag *string `json:"CreatorDevTag,omitempty" xml:"CreatorDevTag,omitempty"`
-	// ID of the user who created the approval instance.
+	// The ID of the approval instance creator.
 	//
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	CreatorUserId *string `json:"CreatorUserId,omitempty" xml:"CreatorUserId,omitempty"`
-	// Username of the user who created the approval instance.
+	// The username of the approval instance creator.
 	//
 	// example:
 	//
-	// 王先生
+	// Mr. Wang
 	CreatorUsername *string `json:"CreatorUsername,omitempty" xml:"CreatorUsername,omitempty"`
-	// Page number for the current page in a paged query. Valid values: 1 to 10000.
+	// The page number of the current page in a paging query. Valid values: 1 to 10000.
 	//
 	// This parameter is required.
 	//
@@ -92,19 +96,21 @@ type ListApprovalsRequest struct {
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// ID of the user who performed an operation on the approval instance.
+	// The list of report effective statuses. Valid values: Enabled, Expired.
+	EffectStatuses []*string `json:"EffectStatuses,omitempty" xml:"EffectStatuses,omitempty" type:"Repeated"`
+	// The ID of the approval instance operator.
 	//
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	OperatorUserId *string `json:"OperatorUserId,omitempty" xml:"OperatorUserId,omitempty"`
-	// Username of the user who performed an operation on the approval instance.
+	// The username of the approval instance operator.
 	//
 	// example:
 	//
-	// 李小姐
+	// Ms. Li
 	OperatorUsername *string `json:"OperatorUsername,omitempty" xml:"OperatorUsername,omitempty"`
-	// Number of entries per page in a paged query. Valid values: 1 to 500.
+	// The number of entries per page in a paging query. Valid values: 1 to 500.
 	//
 	// This parameter is required.
 	//
@@ -112,49 +118,39 @@ type ListApprovalsRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Policy type. Valid values:
-	//
-	// - **DomainBlacklist**: Domain blacklist.
-	//
-	// - **DomainWhitelist**: Domain whitelist.
-	//
-	// - **SoftwareBlock**: Software blocking.
-	//
-	// - **AppUninstall**: App uninstallation.
-	//
-	// - **DlpSend**: File outbound transfer.
-	//
-	// - **PeripheralBlock**: Peripheral control.
+	// The adaptation policy type. Valid values:
 	//
 	// example:
 	//
 	// DlpSend
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// ID of the associated approval process.
+	// The associated approval process ID.
 	//
 	// example:
 	//
 	// approval-process-fcc351b8a95b****
 	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	// Name of the associated approval process.
+	// The associated approval process name.
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
-	// ID of the associated approval template.
+	// The list of report types. If not specified, only ApprovalReport is queried.
+	ReportTypes []*string `json:"ReportTypes,omitempty" xml:"ReportTypes,omitempty" type:"Repeated"`
+	// The associated approval template ID.
 	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
 	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
-	// Name of the associated approval template.
+	// The associated approval template name.
 	//
 	// example:
 	//
 	// test
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// Collection of approval instance statuses.
+	// The collection of approval instance statuses.
 	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
 }
 
@@ -198,6 +194,10 @@ func (s *ListApprovalsRequest) GetCurrentPage() *int64 {
 	return s.CurrentPage
 }
 
+func (s *ListApprovalsRequest) GetEffectStatuses() []*string {
+	return s.EffectStatuses
+}
+
 func (s *ListApprovalsRequest) GetOperatorUserId() *string {
 	return s.OperatorUserId
 }
@@ -220,6 +220,10 @@ func (s *ListApprovalsRequest) GetProcessId() *string {
 
 func (s *ListApprovalsRequest) GetProcessName() *string {
 	return s.ProcessName
+}
+
+func (s *ListApprovalsRequest) GetReportTypes() []*string {
+	return s.ReportTypes
 }
 
 func (s *ListApprovalsRequest) GetSchemaId() *string {
@@ -274,6 +278,11 @@ func (s *ListApprovalsRequest) SetCurrentPage(v int64) *ListApprovalsRequest {
 	return s
 }
 
+func (s *ListApprovalsRequest) SetEffectStatuses(v []*string) *ListApprovalsRequest {
+	s.EffectStatuses = v
+	return s
+}
+
 func (s *ListApprovalsRequest) SetOperatorUserId(v string) *ListApprovalsRequest {
 	s.OperatorUserId = &v
 	return s
@@ -301,6 +310,11 @@ func (s *ListApprovalsRequest) SetProcessId(v string) *ListApprovalsRequest {
 
 func (s *ListApprovalsRequest) SetProcessName(v string) *ListApprovalsRequest {
 	s.ProcessName = &v
+	return s
+}
+
+func (s *ListApprovalsRequest) SetReportTypes(v []*string) *ListApprovalsRequest {
+	s.ReportTypes = v
 	return s
 }
 
