@@ -16,7 +16,7 @@ type iDescribeZonesResponseBody interface {
 }
 
 type DescribeZonesResponseBody struct {
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//

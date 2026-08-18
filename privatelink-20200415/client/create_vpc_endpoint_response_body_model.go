@@ -46,57 +46,37 @@ type iCreateVpcEndpointResponseBody interface {
 }
 
 type CreateVpcEndpointResponseBody struct {
-	// The IP version of the endpoint. Valid values:
-	//
-	// - **IPv4**: IPv4 (default).
-	//
-	// - **DualStack**: Dual-stack.
+	// The protocol version. Valid values:
 	//
 	// example:
 	//
 	// IPv4
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	// The bandwidth of the endpoint connection, in Mbps.
+	// The connection bandwidth of the endpoint. Unit: Mbps.
 	//
 	// example:
 	//
 	// 200
 	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The connection status of the endpoint. Valid values:
-	//
-	// - **Pending**: The endpoint is being modified.
-	//
-	// - **Connecting**: The endpoint is being connected.
-	//
-	// - **Connected**: The endpoint is connected.
-	//
-	// - **Disconnecting**: The endpoint is being disconnected.
-	//
-	// - **Disconnected**: The endpoint is disconnected.
-	//
-	// - **Deleting**: The endpoint is being deleted.
+	// The endpoint connection status. Valid values:
 	//
 	// example:
 	//
 	// Disconnected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	// The time the endpoint was created.
+	// The time when the endpoint was created.
 	//
 	// example:
 	//
 	// 2022-01-02T19:11:12Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The cross-region bandwidth in Mbps. This parameter is returned only when the endpoint and the endpoint service are in different regions.
+	// The cross-region bandwidth value of the endpoint. This parameter is applicable only when the endpoint and the endpoint service are in different regions. Unit: Mbps.
 	//
 	// example:
 	//
 	// 1000
 	CrossRegionBandwidth *int32 `json:"CrossRegionBandwidth,omitempty" xml:"CrossRegionBandwidth,omitempty"`
 	// The business status of the endpoint. Valid values:
-	//
-	// - **Normal**: The endpoint is running as expected.
-	//
-	// - **FinancialLocked**: The endpoint is locked due to overdue payments.
 	//
 	// example:
 	//
@@ -114,7 +94,7 @@ type CreateVpcEndpointResponseBody struct {
 	//
 	// ep-hp33b2e43fays7s8****.epsrv-hp3xdsq46ael67lo****.cn-huhehaote.privatelink.aliyuncs.com
 	EndpointDomain *string `json:"EndpointDomain,omitempty" xml:"EndpointDomain,omitempty"`
-	// The ID of the endpoint.
+	// The endpoint ID.
 	//
 	// example:
 	//
@@ -126,15 +106,7 @@ type CreateVpcEndpointResponseBody struct {
 	//
 	// test
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// The status of the endpoint. Valid values:
-	//
-	// - **Creating**: The endpoint is being created.
-	//
-	// - **Active**: The endpoint is available.
-	//
-	// - **Pending**: The endpoint is being modified.
-	//
-	// - **Deleting**: The endpoint is being deleted.
+	// The endpoint status. Valid values:
 	//
 	// example:
 	//
@@ -146,13 +118,13 @@ type CreateVpcEndpointResponseBody struct {
 	//
 	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the associated endpoint service.
+	// The ID of the endpoint service that is associated with the endpoint.
 	//
 	// example:
 	//
 	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The name of the associated endpoint service.
+	// The name of the endpoint service that is associated with the endpoint.
 	//
 	// example:
 	//
@@ -164,17 +136,13 @@ type CreateVpcEndpointResponseBody struct {
 	//
 	// cn-huhehaote
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
-	// The ID of the VPC that contains the endpoint.
+	// The VPC to which the endpoint belongs.
 	//
 	// example:
 	//
 	// vpc-hp356stwkxg3fn2xe****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// Indicates whether zone affinity is enabled. Valid values:
-	//
-	// - **true**: Zone affinity is enabled.
-	//
-	// - **false**: Zone affinity is disabled.
+	// Specifies whether to support zone affinity for the endpoint domain name when connecting to the service. Valid values:
 	//
 	// example:
 	//

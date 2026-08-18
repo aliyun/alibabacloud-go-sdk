@@ -22,11 +22,17 @@ type iDescribeZonesRequest interface {
 type DescribeZonesRequest struct {
 	// Specifies whether this is a cross-region scenario. Default value: false.
 	//
+	// Set CrossRegion to true and use it together with CrossRegionSide in the following scenarios:
+	//
+	// - **As a service consumer**: You need to create a cross-region endpoint to connect to an endpoint service in another region. To query the zones in the current region that support cross-region endpoints, set CrossRegion to true and CrossRegionSide to Endpoint.
+	//
+	// - **As a service provider**: You need to share your endpoint service across regions with service consumers in other regions. To query the zones in the current region that support cross-region sharing, set CrossRegion to true and CrossRegionSide to EndpointService.
+	//
 	// example:
 	//
 	// false
 	CrossRegion *bool `json:"CrossRegion,omitempty" xml:"CrossRegion,omitempty"`
-	// Specifies whether to query the active zones for the initiator side or the service side in a cross-region connection. Valid values:
+	// Specifies whether to query the active zone support for the initiator side or the service side in a cross-region connection. Valid values:
 	//
 	// - **Endpoint*	- (default): endpoint.
 	//
@@ -38,7 +44,7 @@ type DescribeZonesRequest struct {
 	//
 	// EndpointService
 	CrossRegionSide *string `json:"CrossRegionSide,omitempty" xml:"CrossRegionSide,omitempty"`
-	// The ID of the region where the zones reside. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the region ID.
+	// The ID of the region where the zones reside. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -46,15 +52,15 @@ type DescribeZonesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The zones supported by PrivateLink in a region depend on the backend service resource type. You can specify the service resource type when querying the zones supported by PrivateLink. Valid values:
+	// The zone availability of PrivateLink in a region depends on the backend EPS resource type. You can specify the EPS resource type when querying the list of zones supported by PrivateLink. Valid values:
 	//
-	// - **slb*	- (default): Classic Load Balancer (CLB), the service resource type is classic load balancing.
+	// - **slb*	- (default): the EPS resource type is Classic Load Balancer (CLB).
 	//
-	// - **alb**: Application Load Balancer (ALB), the service resource type is application load balancing.
+	// - **alb**: the EPS resource type is Application Load Balancer (ALB).
 	//
-	// - **nlb**: Network Load Balancer (NLB), the service resource type is network load balancing.
+	// - **nlb**: the EPS resource type is Network Load Balancer (NLB).
 	//
-	// - **gwlb**: Gateway Load Balancer (GWLB), the service resource type is gateway load balancing.
+	// - **gwlb**: the EPS resource type is Gateway Load Balancer (GWLB).
 	//
 	// example:
 	//

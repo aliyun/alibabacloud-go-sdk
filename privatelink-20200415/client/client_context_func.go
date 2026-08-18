@@ -377,11 +377,7 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// *CreateVpcEndpoint*	- is an asynchronous operation. After you send the request, the system returns an instance ID and starts creating the endpoint in the background. You can call [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/469349.html) to check the endpoint\\"s creation status:
-//
-// - **Creating**: The endpoint is being created.
-//
-// - **Active**: The endpoint is available.
+// *CreateVpcEndpoint*	- is an asynchronous operation. After you send a request, the system returns an instance ID, but the endpoint is not yet created. The background node is still in progress. You can invoke [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/469349.html) to query the creation status of the endpoint:
 //
 // @param request - CreateVpcEndpointRequest
 //
@@ -505,13 +501,13 @@ func (client *Client) CreateVpcEndpointWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates an endpoint service by calling the CreateVpcEndpointService operation.
+// Calls the CreateVpcEndpointService operation to create an endpoint service.
 //
 // Description:
 //
-// - Before you create an endpoint service, make sure that you have created a load balancer resource that supports PrivateLink. For more information, see [Create a load balancer instance](https://help.aliyun.com/document_detail/174064.html).
+// - Before you create an endpoint service, make sure that you have created a load balancing resource that supports PrivateLink. For more information, see [Create a load balancer instance](https://help.aliyun.com/document_detail/174064.html).
 //
-// - **CreateVpcEndpointService*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. The endpoint service is not created at the time the request is returned. You can call [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/183542.html) to query the creation status of the endpoint service:
+// - **CreateVpcEndpointService*	- is an asynchronous operation. After a request is sent, the system returns an instance ID, but the endpoint service is not yet created. The background node is still running. You can invoke [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/183542.html) to query the creation status of the endpoint service:
 //
 //   - If the endpoint service is in the **Creating*	- state, the endpoint service is being created.
 //
@@ -757,7 +753,7 @@ func (client *Client) DeleteVpcEndpointServiceWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Calls the DescribeRegions operation to query the list of regions supported by PrivateLink.
+// Queries the regions that support PrivateLink.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -809,7 +805,7 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries the zones supported by PrivateLink in a specified region. In cross-region scenarios, the supported zones on the endpoint side and the endpoint service side are independent of each other. This operation allows you to query the supported zones for the endpoint side and the endpoint service side separately.
+// Queries the list of zones supported by PrivateLink in a specified region. In cross-region scenarios, the zones supported on the endpoint side and the endpoint service side are independent of each other. This operation allows you to query the supported zones for the endpoint side and the endpoint service side separately.
 //
 // @param request - DescribeZonesRequest
 //
@@ -1341,7 +1337,7 @@ func (client *Client) EnableVpcEndpointZoneConnectionWithContext(ctx context.Con
 
 // Summary:
 //
-// Use `GetVpcEndpointAttribute` to query the attributes of a specified endpoint.
+// Queries the attributes of an endpoint.
 //
 // @param request - GetVpcEndpointAttributeRequest
 //
@@ -2035,7 +2031,7 @@ func (client *Client) ListVpcEndpointZonesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// The `ListVpcEndpoints` operation lists endpoints.
+// Queries a list of endpoints.
 //
 // @param request - ListVpcEndpointsRequest
 //
@@ -2179,13 +2175,13 @@ func (client *Client) OpenPrivateLinkServiceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Removes an account ID from the whitelist of an endpoint service.
+// Calls the RemoveUserFromVpcEndpointService operation to remove a user account from the service whitelist of an endpoint service.
 //
 // Description:
 //
-// - Before you remove an account ID from the whitelist of an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+// - Before removing a user account from the service whitelist, make sure the endpoint service is in the **Active*	- state. You can invoke the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the endpoint service status.
 //
-// - You cannot repeatedly call the **RemoveUserFromVpcEndpointService*	- operation to remove the ID of an Alibaba Cloud account from the whitelist of an endpoint service within a specified period of time.
+// - The **RemoveUserFromVpcEndpointService*	- operation does not support concurrent removal of user accounts from the service whitelist of the same endpoint service.
 //
 // @param request - RemoveUserFromVpcEndpointServiceRequest
 //
@@ -2473,11 +2469,11 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// The `UpdateVpcEndpointAttribute` operation modifies the properties of an endpoint.
+// Modifies the attributes of an endpoint.
 //
 // Description:
 //
-// The **UpdateVpcEndpointAttribute*	- operation cannot be called concurrently to modify endpoint properties for the same Alibaba Cloud main account.
+// The **UpdateVpcEndpointAttribute*	- operation does not support concurrent modification of endpoint attributes within the same Alibaba Cloud account.
 //
 // @param request - UpdateVpcEndpointAttributeRequest
 //
@@ -2641,13 +2637,13 @@ func (client *Client) UpdateVpcEndpointConnectionAttributeWithContext(ctx contex
 
 // Summary:
 //
-// The UpdateVpcEndpointServiceAttribute operation modifies the attributes of an endpoint service.
+// Calls the UpdateVpcEndpointServiceAttribute operation to modify the attributes of an endpoint service.
 //
 // Description:
 //
-// - Before you modify the attributes of an endpoint service, ensure that the service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to check the status of the endpoint service.
+// - Before you modify the attributes of an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the endpoint service status.
 //
-// - The **UpdateVpcEndpointServiceAttribute*	- operation does not support concurrent modifications to the attributes of an endpoint service within the same Alibaba Cloud account (root user).
+// - The **UpdateVpcEndpointServiceAttribute*	- operation does not support concurrent modification of endpoint service attributes within the same Alibaba Cloud account.
 //
 // @param request - UpdateVpcEndpointServiceAttributeRequest
 //

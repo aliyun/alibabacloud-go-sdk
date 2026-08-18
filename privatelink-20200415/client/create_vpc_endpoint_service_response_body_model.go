@@ -40,21 +40,21 @@ type iCreateVpcEndpointServiceResponseBody interface {
 }
 
 type CreateVpcEndpointServiceResponseBody struct {
-	// The IP version. Valid values:
+	// The protocol version. Valid values:
 	//
 	// - **IPv4**: IPv4.
 	//
-	// - **DualStack**: dual stack.
+	// - **DualStack**: dual-stack.
 	//
 	// example:
 	//
 	// IPv4
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	// Indicates whether endpoint connection requests are automatically accepted. Valid values:
+	// Indicates whether the endpoint service is configured to automatically accept endpoint connections. Valid values:
 	//
-	// - **true**: automatically accepts endpoint connection requests.
+	// - **true**: The endpoint service automatically accepts endpoint connections.
 	//
-	// - **false**: does not automatically accept endpoint connection requests.
+	// - **false**: The endpoint service does not automatically accept endpoint connections.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type CreateVpcEndpointServiceResponseBody struct {
 	//
 	// 8D8992C1-6712-423C-BAC5-E5E817484C6B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type CreateVpcEndpointServiceResponseBody struct {
 	//
 	// - **Normal**: normal.
 	//
-	// - **FinancialLocked**: locked due to overdue payments.
+	// - **FinancialLocked**: financial lock.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type CreateVpcEndpointServiceResponseBody struct {
 	//
 	// This is my EndpointService.
 	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
-	// The domain name of the endpoint service.
+	// The service domain name of the endpoint service.
 	//
 	// example:
 	//
@@ -106,13 +106,13 @@ type CreateVpcEndpointServiceResponseBody struct {
 	//
 	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The name of the endpoint service.
+	// The service name of the endpoint service.
 	//
 	// example:
 	//
 	// com.aliyuncs.privatelink.cn-huhehaote.epsrv-hp3vpx8yqxblby3i****
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The state of the endpoint service. Valid values:
+	// The endpoint service status. Valid values:
 	//
 	// - **Creating**: being created.
 	//
@@ -130,21 +130,21 @@ type CreateVpcEndpointServiceResponseBody struct {
 	//
 	// Indicates whether the endpoint service supports IPv6. Valid values:
 	//
-	// - **true**: yes.
+	// - **true**: supported.
 	//
-	// - **false**: no.
+	// - **false**: not supported.
 	//
 	// example:
 	//
 	// false
 	ServiceSupportIPv6 *bool `json:"ServiceSupportIPv6,omitempty" xml:"ServiceSupportIPv6,omitempty"`
-	// The list of regions in which the endpoint service is available. Service consumers can initiate endpoint connections from the regions in the list.
+	// The list of regions supported by the endpoint service. Service consumers can initiate endpoint connections from the regions in the list.
 	SupportedRegionSet []*CreateVpcEndpointServiceResponseBodySupportedRegionSet `json:"SupportedRegionSet,omitempty" xml:"SupportedRegionSet,omitempty" type:"Repeated"`
-	// Indicates whether zone affinity is enabled for endpoint domain name resolution. Valid values:
+	// Indicates whether zone affinity is supported for the endpoint domain name of the endpoint service. Valid values:
 	//
-	// - **true**: yes.
+	// - **true**: supported.
 	//
-	// - **false**: no.
+	// - **false**: not supported.
 	//
 	// example:
 	//
@@ -300,19 +300,19 @@ func (s *CreateVpcEndpointServiceResponseBody) Validate() error {
 }
 
 type CreateVpcEndpointServiceResponseBodySupportedRegionSet struct {
-	// The business status of the region in which the endpoint service is available. Valid values:
+	// The business status of the region supported by the endpoint service. Valid values:
 	//
 	// - **Normal**: normal.
 	//
-	// - **FinancialLocked**: locked due to overdue payments.
+	// - **FinancialLocked**: financial lock.
 	//
 	// example:
 	//
 	// Normal
 	RegionBusinessStatus *string `json:"RegionBusinessStatus,omitempty" xml:"RegionBusinessStatus,omitempty"`
-	// The state of the region in which the endpoint service is available. Valid values:
+	// The status of the region supported by the endpoint service. Valid values:
 	//
-	// - **Pending**: changing.
+	// - **Pending**: being modified.
 	//
 	// - **Available**: available.
 	//
@@ -328,7 +328,7 @@ type CreateVpcEndpointServiceResponseBodySupportedRegionSet struct {
 	RegionServiceStatus *string `json:"RegionServiceStatus,omitempty" xml:"RegionServiceStatus,omitempty"`
 	// Deprecated
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
-	// The ID of a region in which the endpoint service is available.
+	// The ID of the region supported by the endpoint service.
 	//
 	// example:
 	//

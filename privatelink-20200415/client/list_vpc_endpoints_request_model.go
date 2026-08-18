@@ -40,37 +40,37 @@ type iListVpcEndpointsRequest interface {
 }
 
 type ListVpcEndpointsRequest struct {
-	// The IP version. Valid values:
+	// The protocol version. Valid values:
 	//
-	// - **IPv4**: IPv4
+	// - **IPv4**: IPv4.
 	//
-	// - **DualStack**: dual stack
+	// - **DualStack**: dual-stack.
 	//
 	// example:
 	//
 	// IPv4
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	// The connection state of the endpoint. Valid values:
+	// The endpoint connection status. Valid values:
 	//
-	// - **Pending**: The endpoint connection is being modified.
+	// - **Pending**: being modified.
 	//
-	// - **Connecting**: The endpoint is connecting.
+	// - **Connecting**: connecting.
 	//
-	// - **Connected**: The endpoint is connected.
+	// - **Connected**: connected.
 	//
-	// - **Disconnecting**: The endpoint is disconnecting.
+	// - **Disconnecting**: disconnecting.
 	//
-	// - **Disconnected**: The endpoint is disconnected.
+	// - **Disconnected**: disconnected.
 	//
-	// - **Deleting**: The endpoint is being deleted.
+	// - **Deleting**: being deleted.
 	//
-	// - **ServiceDeleted**: The endpoint service with which the endpoint is associated has been deleted.
+	// - **ServiceDeleted**: the corresponding endpoint service has been deleted.
 	//
 	// example:
 	//
 	// Disconnected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	// The ID of the endpoint.
+	// The ID of the endpoint that you want to query.
 	//
 	// example:
 	//
@@ -84,47 +84,47 @@ type ListVpcEndpointsRequest struct {
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
 	// The status of the endpoint. Valid values:
 	//
-	// - **Creating**: The endpoint is being created.
+	// - **Creating**: being created.
 	//
-	// - **Active**: The endpoint is available.
+	// - **Active**: available.
 	//
-	// - **Pending**: The endpoint is being modified.
+	// - **Pending**: being modified.
 	//
-	// - **Deleting**: The endpoint is being deleted.
+	// - **Deleting**: being deleted.
 	//
 	// example:
 	//
 	// Active
 	EndpointStatus *string `json:"EndpointStatus,omitempty" xml:"EndpointStatus,omitempty"`
-	// The type of the endpoint. Valid values:
+	// The endpoint type. Valid values:
 	//
-	// - **Interface**: an interface endpoint
+	// - **Interface**: interface endpoint.
 	//
-	// - **Reverse**: a reverse endpoint
+	// - **Reverse**: reverse endpoint.
 	//
-	// - **GatewayLoadBalancer**: a Gateway Load Balancer-type endpoint
+	// - **GatewayLoadBalancer**: Gateway Load Balancer endpoint (GWLBe). You can create a Gateway Load Balancer endpoint (GWLBe) to connect to a Gateway Load Balancer (GWLB) for load balancing.
 	//
 	// example:
 	//
 	// Interface
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// The number of entries to return on each page. Valid values: **1*	- to **1000**. Default value: **50**.
+	// The number of entries per page. Valid values: **1*	- to **1000**. Default value: **50**.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results.
+	// Specifies whether to have a token for the next query. Valid values:
 	//
-	// - If this is your first query or no next page is available, you do not need to specify this parameter.
+	// - If this is the first query or there is no next query, you do not need to specify this parameter.
 	//
-	// - If a next page is available, set the value to the **NextToken*	- value that is returned from the previous call.
+	// - If a next query exists, set the value to the **NextToken*	- value returned by the previous API call.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region where the endpoint is deployed.
+	// The region ID of the endpoints that you want to query.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to obtain the region ID.
 	//
@@ -134,27 +134,27 @@ type ListVpcEndpointsRequest struct {
 	//
 	// cn-huhehaote
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// 1
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The name of the endpoint service with which the endpoint is associated.
+	// The service name of the endpoint service associated with the endpoint that you want to query.
 	//
 	// example:
 	//
 	// com.aliyuncs.privatelink.cn-huhehaote.epsrv-hp3vpx8yqxblby3i****
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The ID of the region where the endpoint service is deployed.
+	// The region ID of the endpoint service.
 	//
 	// example:
 	//
 	// cn-huhehaote
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tag []*ListVpcEndpointsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the VPC to which the endpoint belongs.
+	// The ID of the virtual private cloud (VPC) to which the endpoint belongs.
 	//
 	// example:
 	//
@@ -310,7 +310,7 @@ func (s *ListVpcEndpointsRequest) Validate() error {
 }
 
 type ListVpcEndpointsRequestTag struct {
-	// The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the instance. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
 	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
@@ -318,7 +318,7 @@ type ListVpcEndpointsRequestTag struct {
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The tag value of the instance. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
 	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//

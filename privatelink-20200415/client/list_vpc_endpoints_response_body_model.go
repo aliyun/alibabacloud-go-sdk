@@ -22,19 +22,19 @@ type iListVpcEndpointsResponseBody interface {
 }
 
 type ListVpcEndpointsResponseBody struct {
-	// A list of endpoints.
+	// The endpoint information.
 	Endpoints []*ListVpcEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results.
+	// Indicates whether a next query exists. Valid values:
 	//
-	// - If **NextToken*	- is empty, no next page exists.
+	// - If **NextToken*	- is empty, no next query exists.
 	//
-	// - If a value is returned, use it in your next request to retrieve the next page of results.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListVpcEndpointsResponseBody struct {
 	//
 	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries that match the query.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -121,37 +121,37 @@ func (s *ListVpcEndpointsResponseBody) Validate() error {
 }
 
 type ListVpcEndpointsResponseBodyEndpoints struct {
-	// The IP address family. Valid values:
+	// The protocol version. Valid values:
 	//
 	// - **IPv4**: IPv4.
 	//
-	// - **DualStack**: dual stack.
+	// - **DualStack**: dual-stack.
 	//
 	// example:
 	//
 	// IPv4
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	// The connection bandwidth of the endpoint, in Mbps.
+	// The connection bandwidth of the endpoint. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 1024
 	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The connection status of the endpoint. Valid values:
+	// The endpoint connection status. Valid values:
 	//
-	// - **Pending**: The connection is being modified.
+	// - **Pending**: being modified.
 	//
-	// - **Connecting**: The endpoint is being connected.
+	// - **Connecting**: connecting.
 	//
-	// - **Connected**: The endpoint is connected.
+	// - **Connected**: connected.
 	//
-	// - **Disconnecting**: The endpoint is being disconnected.
+	// - **Disconnecting**: disconnecting.
 	//
-	// - **Disconnected**: The endpoint is disconnected.
+	// - **Disconnected**: disconnected.
 	//
-	// - **Deleting**: The endpoint is being deleted.
+	// - **Deleting**: being deleted.
 	//
-	// - **ServiceDeleted**: The associated endpoint service has been deleted.
+	// - **ServiceDeleted**: the corresponding endpoint service has been deleted.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type ListVpcEndpointsResponseBodyEndpoints struct {
 	//
 	// 2021-09-24T18:00:07Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The bandwidth of the cross-region connection, in Mbps.
+	// The cross-region bandwidth of the endpoint. Unit: Mbit/s.
 	//
 	// example:
 	//
@@ -171,9 +171,9 @@ type ListVpcEndpointsResponseBodyEndpoints struct {
 	CrossRegionBandwidth *int32 `json:"CrossRegionBandwidth,omitempty" xml:"CrossRegionBandwidth,omitempty"`
 	// The business status of the endpoint. Valid values:
 	//
-	// - **Normal**: The endpoint is running as expected.
+	// - **Normal**: Normal.
 	//
-	// - **FinancialLocked**: The endpoint is locked due to an overdue payment.
+	// - **FinancialLocked**: locked due to overdue payment.
 	//
 	// example:
 	//
@@ -185,13 +185,13 @@ type ListVpcEndpointsResponseBodyEndpoints struct {
 	//
 	// This is my Endpoint.
 	EndpointDescription *string `json:"EndpointDescription,omitempty" xml:"EndpointDescription,omitempty"`
-	// The domain name of the endpoint.
+	// The endpoint domain name.
 	//
 	// example:
 	//
 	// ep-hp33b2e43fays7s8****.epsrv-hp3xdsq46ael67lo****.cn-huhehaote.privatelink.aliyuncs.com
 	EndpointDomain *string `json:"EndpointDomain,omitempty" xml:"EndpointDomain,omitempty"`
-	// The ID of the endpoint.
+	// The endpoint ID.
 	//
 	// example:
 	//
@@ -205,89 +205,95 @@ type ListVpcEndpointsResponseBodyEndpoints struct {
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
 	// The status of the endpoint. Valid values:
 	//
-	// - **Creating**: The endpoint is being created.
+	// - **Creating**: being created.
 	//
-	// - **Active**: The endpoint is available.
+	// - **Active**: available.
 	//
-	// - **Pending**: The endpoint is being modified.
+	// - **Pending**: being modified.
 	//
-	// - **Deleting**: The endpoint is being deleted.
+	// - **Deleting**: being deleted.
 	//
 	// example:
 	//
 	// Active
 	EndpointStatus *string `json:"EndpointStatus,omitempty" xml:"EndpointStatus,omitempty"`
-	// The type of the endpoint. Valid values:
+	// The endpoint type. Valid values:
 	//
-	// - **Interface**: an interface endpoint.
+	// - **Interface**: interface endpoint.
 	//
-	// - **Reverse**: a reverse endpoint.
+	// - **Reverse**: reverse endpoint.
 	//
-	// - **GatewayLoadBalancer**: a gateway load balancer endpoint.
+	// - **GatewayLoadBalancer**: Gateway Load Balancer endpoint (GWLBe). You can create a Gateway Load Balancer endpoint (GWLBe) to connect to a Gateway Load Balancer (GWLB) for load balancing.
 	//
 	// example:
 	//
 	// Interface
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// The RAM access policy. For details on the policy syntax, see [Basic elements of a RAM policy](https://help.aliyun.com/document_detail/93738.html).
+	// The RAM access policy. For more information about policy definitions, see [Basic elements of a permission policy](https://help.aliyun.com/document_detail/93738.html).
 	//
 	// example:
 	//
 	// {\\n  \\"Version\\": \\"1\\",\\n  \\"Statement\\": [\\n    {\\n      \\"Effect\\": \\"Allow\\",\\n      \\"Action\\": \\"*\\",\\n      \\"Principal\\": \\"*\\",\\n      \\"Resource\\": \\"*\\"\\n    }\\n  ]\\n}
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	// The ID of the region that contains the endpoint.
+	// Specifies whether managed protection is enabled. This parameter takes effect only for STS-based calls. Valid values:
+	//
+	// - **true**: enabled. After managed protection is enabled, only the same user who created the endpoint can modify or delete it through STS.
+	//
+	// - **false**: disabled.
+	ProtectedEnabled *bool `json:"ProtectedEnabled,omitempty" xml:"ProtectedEnabled,omitempty"`
+	// The region ID of the endpoint.
 	//
 	// example:
 	//
 	// cn-huhehaote
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The instance ID of the resource group.
 	//
 	// example:
 	//
 	// 1
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Indicates whether the endpoint and the endpoint service belong to the same Alibaba Cloud account. Valid values:
+	// Indicates whether the endpoint and the endpoint service belong to the same account. Valid values:
 	//
-	// - **true**
+	// - **true**: same account.
 	//
-	// - **false**
+	// - **false**: different accounts.
 	//
 	// example:
 	//
 	// true
 	ResourceOwner *bool `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
-	// The ID of the associated endpoint service.
+	// The ID of the endpoint service associated with the endpoint.
 	//
 	// example:
 	//
 	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The name of the associated endpoint service.
+	// The name of the endpoint service associated with the endpoint.
 	//
 	// example:
 	//
 	// com.aliyuncs.privatelink.cn-huhehaote.epsrv-hp3xdsq46ael67lo****
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The ID of the region where the associated endpoint service is deployed.
+	// The region ID of the endpoint service associated with the endpoint.
 	//
 	// example:
 	//
 	// cn-huhehaote
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
-	// A list of tags.
+	// The list of tags.
 	Tags []*ListVpcEndpointsResponseBodyEndpointsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the VPC to which the endpoint belongs.
+	// The ID of the virtual private cloud (VPC) to which the endpoint belongs.
 	//
 	// example:
 	//
 	// vpc-hp356stwkxg3fn2xe****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// Indicates whether zone-aware DNS resolution is enabled. Valid values:
+	// Indicates whether zone affinity is enabled for the endpoint domain name to resolve to the connected service. Valid values:
 	//
-	// - **true**
+	// - **true**: enabled.
 	//
-	// - **false**
+	// - **false**: disabled.
 	//
 	// example:
 	//
@@ -353,6 +359,10 @@ func (s *ListVpcEndpointsResponseBodyEndpoints) GetEndpointType() *string {
 
 func (s *ListVpcEndpointsResponseBodyEndpoints) GetPolicyDocument() *string {
 	return s.PolicyDocument
+}
+
+func (s *ListVpcEndpointsResponseBodyEndpoints) GetProtectedEnabled() *bool {
+	return s.ProtectedEnabled
 }
 
 func (s *ListVpcEndpointsResponseBodyEndpoints) GetRegionId() *string {
@@ -456,6 +466,11 @@ func (s *ListVpcEndpointsResponseBodyEndpoints) SetPolicyDocument(v string) *Lis
 	return s
 }
 
+func (s *ListVpcEndpointsResponseBodyEndpoints) SetProtectedEnabled(v bool) *ListVpcEndpointsResponseBodyEndpoints {
+	s.ProtectedEnabled = &v
+	return s
+}
+
 func (s *ListVpcEndpointsResponseBodyEndpoints) SetRegionId(v string) *ListVpcEndpointsResponseBodyEndpoints {
 	s.RegionId = &v
 	return s
@@ -515,13 +530,13 @@ func (s *ListVpcEndpointsResponseBodyEndpoints) Validate() error {
 }
 
 type ListVpcEndpointsResponseBodyEndpointsTags struct {
-	// The tag key.
+	// The tag key of the instance.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value of the instance.
 	//
 	// example:
 	//
