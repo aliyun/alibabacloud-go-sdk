@@ -38,7 +38,7 @@ type UpdateExperimentPlanResponseBody struct {
 	//
 	// 3FE4CD1E-FF41-56BE-B590-7A021D9C1524
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The update result. The value is updated if successful.
+	// The update result. The value is updated if the operation is successful.
 	//
 	// example:
 	//

@@ -257,6 +257,7 @@ func (s *ListAgentSpacesResponseBodyAgentSpaces) Validate() error {
 }
 
 type ListAgentSpacesResponseBodyAgentSpacesMseNamespace struct {
+	BindType *string `json:"bindType,omitempty" xml:"bindType,omitempty"`
 	// The MSE namespace ID.
 	//
 	// example:
@@ -279,12 +280,21 @@ func (s ListAgentSpacesResponseBodyAgentSpacesMseNamespace) GoString() string {
 	return s.String()
 }
 
+func (s *ListAgentSpacesResponseBodyAgentSpacesMseNamespace) GetBindType() *string {
+	return s.BindType
+}
+
 func (s *ListAgentSpacesResponseBodyAgentSpacesMseNamespace) GetNamespaceId() *string {
 	return s.NamespaceId
 }
 
 func (s *ListAgentSpacesResponseBodyAgentSpacesMseNamespace) GetNamespaceName() *string {
 	return s.NamespaceName
+}
+
+func (s *ListAgentSpacesResponseBodyAgentSpacesMseNamespace) SetBindType(v string) *ListAgentSpacesResponseBodyAgentSpacesMseNamespace {
+	s.BindType = &v
+	return s
 }
 
 func (s *ListAgentSpacesResponseBodyAgentSpacesMseNamespace) SetNamespaceId(v string) *ListAgentSpacesResponseBodyAgentSpacesMseNamespace {

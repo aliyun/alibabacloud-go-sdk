@@ -137,6 +137,10 @@ func (client *Client) CreateAgentSpaceWithContext(ctx context.Context, request *
 		body["description"] = request.Description
 	}
 
+	if !dara.IsNil(request.MseNamespaceId) {
+		body["mseNamespaceId"] = request.MseNamespaceId
+	}
+
 	if !dara.IsNil(request.TrajectoryStoreEnabled) {
 		body["trajectoryStoreEnabled"] = request.TrajectoryStoreEnabled
 	}
@@ -2039,7 +2043,7 @@ func (client *Client) GetPipelineStatsWithContext(ctx context.Context, agentSpac
 
 // Summary:
 //
-// Queries a list of AgentSpaces.
+// Queries the list of AgentSpaces.
 //
 // @param request - ListAgentSpacesRequest
 //
@@ -3592,7 +3596,7 @@ func (client *Client) UpdateEvaluatorSkillWithContext(ctx context.Context, name 
 //
 // Description:
 //
-// Calls UpdateExperimentPlan to update a specified experiment plan. Fields that are not passed remain unchanged. Only plans created by the current account can be updated.
+// Calls UpdateExperimentPlan to update a specified experiment plan. Fields that are not included in the request remain unchanged. Only plans created by the current account can be updated.
 //
 // @param request - UpdateExperimentPlanRequest
 //

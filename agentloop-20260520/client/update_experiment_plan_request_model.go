@@ -52,7 +52,7 @@ type UpdateExperimentPlanRequest struct {
 	//
 	// rca_benchmark_eval_experiment offline experiment.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The evaluator list. Omitting this field means no modification. Passing an empty array clears the list.
+	// The evaluator list. Omitting this field indicates no modification. Passing an empty array clears the list.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type UpdateExperimentPlanRequest struct {
 	//
 	// OFFLINE
 	ExperimentType *string `json:"experimentType,omitempty" xml:"experimentType,omitempty"`
-	// The experiment configuration list. When passed, the entire list is replaced. The number of items must be 1 to 5.
+	// The experiment configuration list. When specified, the entire list is replaced. The number of items must be 1 to 5.
 	//
 	// example:
 	//

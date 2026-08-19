@@ -26,15 +26,15 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"cn-zhangjiakou": dara.String("agentloop.cn-zhangjiakou.aliyuncs.com"),
 		"cn-shenzhen":    dara.String("agentloop.cn-shenzhen.aliyuncs.com"),
-		"cn-shanghai":    dara.String("agentloop.cn-shanghai.aliyuncs.com"),
-		"cn-hongkong":    dara.String("agentloop.cn-hongkong.aliyuncs.com"),
-		"cn-hangzhou":    dara.String("agentloop.cn-hangzhou.aliyuncs.com"),
-		"cn-guangzhou":   dara.String("agentloop.cn-guangzhou.aliyuncs.com"),
-		"cn-chengdu":     dara.String("agentloop.cn-chengdu.aliyuncs.com"),
 		"cn-beijing":     dara.String("agentloop.cn-beijing.aliyuncs.com"),
+		"cn-shanghai":    dara.String("agentloop.cn-shanghai.aliyuncs.com"),
+		"cn-guangzhou":   dara.String("agentloop.cn-guangzhou.aliyuncs.com"),
+		"cn-hongkong":    dara.String("agentloop.cn-hongkong.aliyuncs.com"),
 		"ap-southeast-1": dara.String("agentloop.ap-southeast-1.aliyuncs.com"),
+		"cn-zhangjiakou": dara.String("agentloop.cn-zhangjiakou.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("agentloop.cn-hangzhou.aliyuncs.com"),
+		"cn-chengdu":     dara.String("agentloop.cn-chengdu.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -233,6 +233,10 @@ func (client *Client) CreateAgentSpaceWithOptions(request *CreateAgentSpaceReque
 
 	if !dara.IsNil(request.Description) {
 		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.MseNamespaceId) {
+		body["mseNamespaceId"] = request.MseNamespaceId
 	}
 
 	if !dara.IsNil(request.TrajectoryStoreEnabled) {
@@ -2851,7 +2855,7 @@ func (client *Client) GetPipelineStats(agentSpace *string, pipelineName *string,
 
 // Summary:
 //
-// Queries a list of AgentSpaces.
+// Queries the list of AgentSpaces.
 //
 // @param request - ListAgentSpacesRequest
 //
@@ -2910,7 +2914,7 @@ func (client *Client) ListAgentSpacesWithOptions(request *ListAgentSpacesRequest
 
 // Summary:
 //
-// Queries a list of AgentSpaces.
+// Queries the list of AgentSpaces.
 //
 // @param request - ListAgentSpacesRequest
 //
@@ -4901,7 +4905,7 @@ func (client *Client) UpdateEvaluatorSkill(name *string, skillName *string, requ
 //
 // Description:
 //
-// Calls UpdateExperimentPlan to update a specified experiment plan. Fields that are not passed remain unchanged. Only plans created by the current account can be updated.
+// Calls UpdateExperimentPlan to update a specified experiment plan. Fields that are not included in the request remain unchanged. Only plans created by the current account can be updated.
 //
 // @param request - UpdateExperimentPlanRequest
 //
@@ -4992,7 +4996,7 @@ func (client *Client) UpdateExperimentPlanWithOptions(agentSpace *string, planId
 //
 // Description:
 //
-// Calls UpdateExperimentPlan to update a specified experiment plan. Fields that are not passed remain unchanged. Only plans created by the current account can be updated.
+// Calls UpdateExperimentPlan to update a specified experiment plan. Fields that are not included in the request remain unchanged. Only plans created by the current account can be updated.
 //
 // @param request - UpdateExperimentPlanRequest
 //

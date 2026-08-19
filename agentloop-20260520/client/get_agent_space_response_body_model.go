@@ -50,7 +50,7 @@ type GetAgentSpaceResponseBody struct {
 	//
 	// AutoCreated
 	CmsWorkspaceBindType *string `json:"cmsWorkspaceBindType,omitempty" xml:"cmsWorkspaceBindType,omitempty"`
-	// The time when the AgentSpace was created.
+	// The creation time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -64,7 +64,7 @@ type GetAgentSpaceResponseBody struct {
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The Microservices Engine (MSE) namespace.
+	// The MSE namespace.
 	MseNamespace *GetAgentSpaceResponseBodyMseNamespace `json:"mseNamespace,omitempty" xml:"mseNamespace,omitempty" type:"Struct"`
 	// The region ID.
 	//
@@ -84,7 +84,7 @@ type GetAgentSpaceResponseBody struct {
 	//
 	// default-cms-1837787111545040-cn-beijing
 	SlsProject *string `json:"slsProject,omitempty" xml:"slsProject,omitempty"`
-	// The time when the AgentSpace was last updated.
+	// The update time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -202,6 +202,7 @@ func (s *GetAgentSpaceResponseBody) Validate() error {
 }
 
 type GetAgentSpaceResponseBodyMseNamespace struct {
+	BindType *string `json:"bindType,omitempty" xml:"bindType,omitempty"`
 	// The ID of the MSE namespace.
 	//
 	// example:
@@ -224,12 +225,21 @@ func (s GetAgentSpaceResponseBodyMseNamespace) GoString() string {
 	return s.String()
 }
 
+func (s *GetAgentSpaceResponseBodyMseNamespace) GetBindType() *string {
+	return s.BindType
+}
+
 func (s *GetAgentSpaceResponseBodyMseNamespace) GetNamespaceId() *string {
 	return s.NamespaceId
 }
 
 func (s *GetAgentSpaceResponseBodyMseNamespace) GetNamespaceName() *string {
 	return s.NamespaceName
+}
+
+func (s *GetAgentSpaceResponseBodyMseNamespace) SetBindType(v string) *GetAgentSpaceResponseBodyMseNamespace {
+	s.BindType = &v
+	return s
 }
 
 func (s *GetAgentSpaceResponseBodyMseNamespace) SetNamespaceId(v string) *GetAgentSpaceResponseBodyMseNamespace {
