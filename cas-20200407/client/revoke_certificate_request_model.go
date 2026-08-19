@@ -16,6 +16,8 @@ type iRevokeCertificateRequest interface {
 }
 
 type RevokeCertificateRequest struct {
+	// The ID of the certificate to revoke.
+	//
 	// example:
 	//
 	// 51001

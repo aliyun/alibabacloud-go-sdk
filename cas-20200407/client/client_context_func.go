@@ -1949,7 +1949,7 @@ func (client *Client) EncryptWithContext(ctx context.Context, request *EncryptRe
 
 // Summary:
 //
-// Retrieves certificate details, excluding the certificate body and private key.
+// Queries the details of a certificate without returning the certificate content or private key content.
 //
 // @param request - GetCertificateDetailRequest
 //
@@ -1983,6 +1983,51 @@ func (client *Client) GetCertificateDetailWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCertificateDetailResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取证书资源包数量
+//
+// Description:
+//
+// 本接口用于查询您已创建的CA证书（包括根CA证书、子CA证书）的数量。
+//
+// ## QPS限制
+//
+// 本接口的单用户QPS限制为10次/秒。超过限制，API调用将会被限流，这可能影响您的业务，请合理调用。
+//
+// @param request - GetCertificatePackageCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCertificatePackageCountResponse
+func (client *Client) GetCertificatePackageCountWithContext(ctx context.Context, request *GetCertificatePackageCountRequest, runtime *dara.RuntimeOptions) (_result *GetCertificatePackageCountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCertificatePackageCount"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCertificatePackageCountResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3159,6 +3204,70 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListInstancesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the list of managed orders.
+//
+// Description:
+//
+// This operation is used to query user certificates or order lists. When OrderType is set to CERT or UPLOAD, it queries the certificate list. When OrderType is set to CPACK or BUY, it queries the order list.
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
+//
+// @param request - ListTrusteeOrderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTrusteeOrderResponse
+func (client *Client) ListTrusteeOrderWithContext(ctx context.Context, request *ListTrusteeOrderRequest, runtime *dara.RuntimeOptions) (_result *ListTrusteeOrderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CertificateId) {
+		query["CertificateId"] = request.CertificateId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OrderId) {
+		query["OrderId"] = request.OrderId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTrusteeOrder"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTrusteeOrderResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

@@ -62,23 +62,29 @@ type iGetCertificateDetailResponseBody interface {
 type GetCertificateDetailResponseBody struct {
 	// The certificate algorithm. Valid values:
 	//
-	// - **RSA**: The RSA algorithm.
+	// - **RSA**: RSA algorithm.
 	//
-	// - **ECC**: The ECC algorithm.
+	// - **ECC**: ECC algorithm.
 	//
-	// - **SM2**: The SM2 algorithm.
+	// - **SM2**: SM2 encryption algorithm.
 	//
 	// example:
 	//
 	// RSA
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The global ID of the certificate, which is used in various Alibaba Cloud services. The format of the ID is `<Certificate ID>-<Region ID>`. The region ID is `cn-hangzhou` for the China site and `ap-southeast-1` for the International site. For example, if a certificate ID is `123`, its `CertIdentifier` is `123-cn-hangzhou` for the China site and `123-ap-southeast-1` for the International site.
+	// The global certificate ID in the format of certificate ID + "-" + site region ID. This is commonly used across Alibaba Cloud services.
+	//
+	//   --For the China site, the format is certificate ID + "-cn-hangzhou".
+	//
+	// For the China site, the format is certificate ID + "-ap-southeast-1".
+	//
+	// For example, if the certificate ID is 123, the CertIdentifier on the China site is "123-cn-hangzhou", and the CertIdentifier on the China site is "123-ap-southeast-1".
 	//
 	// example:
 	//
 	// 21912069-cn-hangzhou
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
-	// The information about the certificate chain.
+	// The certificate chain information list.
 	CertificateChainList []*GetCertificateDetailResponseBodyCertificateChainList `json:"CertificateChainList,omitempty" xml:"CertificateChainList,omitempty" type:"Repeated"`
 	// The certificate ID.
 	//
@@ -92,61 +98,63 @@ type GetCertificateDetailResponseBody struct {
 	//
 	// 123
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
-	// The source of the certificate. Valid values:
+	// The certificate source. Valid values:
 	//
-	// - **BUY**: a purchased certificate.
+	// - BUY: purchased certificate.
 	//
-	// - **TEST**: a test certificate.
+	// - TEST: test certificate.
 	//
-	// - Upload the certificate.
+	// - UPLOAD: uploaded certificate.
 	//
 	// example:
 	//
 	// BUY
 	CertificateSource *string `json:"CertificateSource,omitempty" xml:"CertificateSource,omitempty"`
-	// The status of the certificate. Valid values:
+	// The certificate status. Valid values:
 	//
-	// - **issued**: The certificate is issued.
+	// - **issued**: issued.
 	//
-	// - **revoked**: The certificate is revoked.
+	// - **revoked**: revoked.
 	//
-	// - **willExpire**: The certificate is about to expire.
+	// - **willExpire**: about to expire.
 	//
-	// - **expired**: The certificate has expired.
+	// - **expired**: expired.
 	//
 	// example:
 	//
 	// issued
 	CertificateStatus *string `json:"CertificateStatus,omitempty" xml:"CertificateStatus,omitempty"`
-	// The common name.
+	// The common domain name.
 	//
 	// example:
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The ID of the company profile that is associated with the certificate application. This parameter is empty for DV certificates.
+	// The company information ID associated with the certificate application. This field is empty for DV certificates.
 	//
 	// example:
 	//
 	// 44211
 	CompanyId *int64 `json:"CompanyId,omitempty" xml:"CompanyId,omitempty"`
-	// The ID of the contact.
+	// The contact ID.
 	//
 	// example:
 	//
 	// 304066
 	ContactId *int64 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// The certificate signing request (CSR) used to issue the certificate.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE REQUEST----- ...... -----END CERTIFICATE REQUEST-----
 	Csr *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
-	// The domain names that are bound to the certificate. Multiple domain names are separated by commas (,).
+	// All domain names contained in the certificate. Multiple domain names are separated by commas.
 	//
 	// example:
 	//
 	// aliyundoc.com,example.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Indicates whether a private key is available. Valid values:
+	// Indicates whether a private key exists on the backend for the current certificate. Valid values:
 	//
 	// - **true**
 	//
@@ -156,63 +164,63 @@ type GetCertificateDetailResponseBody struct {
 	//
 	// true
 	ExistPrivateKey *bool `json:"ExistPrivateKey,omitempty" xml:"ExistPrivateKey,omitempty"`
-	// The fingerprint of the public key.
+	// The public key fingerprint.
 	//
 	// example:
 	//
 	// 123
 	FingerPrint *string `json:"FingerPrint,omitempty" xml:"FingerPrint,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// cas_dv-cn-123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The issuer of the certificate.
+	// The entity that issued the certificate.
 	//
 	// example:
 	//
 	// Digicert
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The key size.
+	// The key algorithm length.
 	//
-	// - For RSA algorithms, the key size is typically 2,048, 3,072, or 4,096 bits.
+	// - The RSA algorithm length is typically 2048, 3072, or 4096.
 	//
-	// - For ECC and SM2 algorithms, the key size is typically 256 bits.
+	// - The ECC and SM2 algorithm length is typically 256.
 	//
 	// example:
 	//
 	// 2048
 	KeySize *int32 `json:"KeySize,omitempty" xml:"KeySize,omitempty"`
-	// The end of the validity period of the certificate.
+	// The end time of the certificate validity period.
 	//
 	// example:
 	//
 	// 17326613180000
 	NotAfter *int64 `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The beginning of the validity period of the certificate.
+	// The start time of the certificate validity period.
 	//
 	// example:
 	//
 	// 17321613180000
 	NotBefore *int64 `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
-	// The ID of the request.
+	// The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 5979d897-d69f-4fc9-87dd-f3bb73c40b80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The serial number of the certificate.
+	// The certificate serial number.
 	//
 	// example:
 	//
 	// 123
 	Serial *string `json:"Serial,omitempty" xml:"Serial,omitempty"`
-	// The subject alternative names (SANs) of the certificate.
+	// The list of Subject Alternative Names (SANs) of the certificate, returned in array format. This corresponds to the `Subject Alternative Name` field of the certificate.
 	SubjectAlternativeNames []*string `json:"SubjectAlternativeNames,omitempty" xml:"SubjectAlternativeNames,omitempty" type:"Repeated"`
-	// The list of tags.
+	// The tag list.
 	Tags []*GetCertificateDetailResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The list of cloud services in which the certificate is deployed.
+	// The list of cloud services to which the current certificate is deployed.
 	UsingProductList []*string `json:"UsingProductList,omitempty" xml:"UsingProductList,omitempty" type:"Repeated"`
 }
 
@@ -463,31 +471,31 @@ func (s *GetCertificateDetailResponseBody) Validate() error {
 }
 
 type GetCertificateDetailResponseBodyCertificateChainList struct {
-	// The issuer of the certificate chain.
+	// The issuer name in the certificate chain.
 	//
 	// example:
 	//
 	// Digicert
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The end of the validity period.
+	// The end time of the certificate validity period.
 	//
 	// example:
 	//
 	// 17326613180000
 	NotAfter *int64 `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The beginning of the validity period.
+	// The start time of the certificate validity period.
 	//
 	// example:
 	//
 	// 17321613180000
 	NotBefore *int64 `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
-	// The remaining validity period of the certificate chain.
+	// The remaining days of the certificate chain validity period.
 	//
 	// example:
 	//
 	// 10
 	RemainDay *int32 `json:"RemainDay,omitempty" xml:"RemainDay,omitempty"`
-	// The common name of the certificate chain.
+	// The common name in the certificate chain.
 	//
 	// example:
 	//
@@ -553,9 +561,9 @@ func (s *GetCertificateDetailResponseBodyCertificateChainList) Validate() error 
 }
 
 type GetCertificateDetailResponseBodyTags struct {
-	// The tag key of the instance. You can specify 1 to 20 tag keys. The value cannot be an empty string.
+	// The tag key of the instance. Valid values of N: **1*	- to **20**. The tag key cannot be an empty string.
 	//
-	// The value can be up to 64 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
