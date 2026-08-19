@@ -1027,6 +1027,10 @@ func (client *Client) DeleteExecutorGroupWithContext(ctx context.Context, reques
 		body["ClusterId"] = request.ClusterId
 	}
 
+	if !dara.IsNil(request.DeleteJobs) {
+		body["DeleteJobs"] = request.DeleteJobs
+	}
+
 	if !dara.IsNil(request.Id) {
 		body["Id"] = request.Id
 	}

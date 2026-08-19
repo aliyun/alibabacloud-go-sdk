@@ -11,6 +11,8 @@ type iDeleteExecutorGroupRequest interface {
 	GoString() string
 	SetClusterId(v string) *DeleteExecutorGroupRequest
 	GetClusterId() *string
+	SetDeleteJobs(v bool) *DeleteExecutorGroupRequest
+	GetDeleteJobs() *bool
 	SetId(v int32) *DeleteExecutorGroupRequest
 	GetId() *int32
 	SetName(v string) *DeleteExecutorGroupRequest
@@ -23,7 +25,8 @@ type DeleteExecutorGroupRequest struct {
 	// example:
 	//
 	// xxljob-b6ec1xxxx
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DeleteJobs *bool   `json:"DeleteJobs,omitempty" xml:"DeleteJobs,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -45,6 +48,10 @@ func (s *DeleteExecutorGroupRequest) GetClusterId() *string {
 	return s.ClusterId
 }
 
+func (s *DeleteExecutorGroupRequest) GetDeleteJobs() *bool {
+	return s.DeleteJobs
+}
+
 func (s *DeleteExecutorGroupRequest) GetId() *int32 {
 	return s.Id
 }
@@ -55,6 +62,11 @@ func (s *DeleteExecutorGroupRequest) GetName() *string {
 
 func (s *DeleteExecutorGroupRequest) SetClusterId(v string) *DeleteExecutorGroupRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *DeleteExecutorGroupRequest) SetDeleteJobs(v bool) *DeleteExecutorGroupRequest {
+	s.DeleteJobs = &v
 	return s
 }
 
