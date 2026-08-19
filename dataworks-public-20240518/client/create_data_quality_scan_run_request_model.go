@@ -20,13 +20,13 @@ type iCreateDataQualityScanRunRequest interface {
 }
 
 type CreateDataQualityScanRunRequest struct {
-	// The data quality scan ID.
+	// The ID of the data quality monitoring task.
 	//
 	// example:
 	//
 	// 20000001
 	DataQualityScanId *int64 `json:"DataQualityScanId,omitempty" xml:"DataQualityScanId,omitempty"`
-	// The parameters for the run. The `triggerTime` parameter is required.
+	// The parameter settings used during the actual run. The `triggerTime` parameter is required.
 	Parameters []*CreateDataQualityScanRunRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	// The project ID.
 	//
@@ -34,7 +34,7 @@ type CreateDataQualityScanRunRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Specifies the scheduling resource group used to run the data quality scan. This object uses the same data structure as the scheduling API.
+	// The schedule resource group used when the data quality monitoring task runs. This shares the same data structure as the scheduling API.
 	RuntimeResource *CreateDataQualityScanRunRequestRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
 }
 
@@ -101,19 +101,19 @@ func (s *CreateDataQualityScanRunRequest) Validate() error {
 }
 
 type CreateDataQualityScanRunRequestParameters struct {
-	// The name of the parameter. The only supported value is:
+	// The parameter name. Currently supported parameter:
 	//
 	// - triggerTime
 	//
-	// No other scheduling parameters are currently supported.
+	// Other scheduling parameters are not supported.
 	//
 	// example:
 	//
 	// triggerTime
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The parameter value.
+	// The parameter value:
 	//
-	// - If the parameter name is triggerTime, this value must be the trigger time as a timestamp.
+	// - If the parameter name is triggerTime, the value must be the timestamp of the scheduling time.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ func (s *CreateDataQualityScanRunRequestParameters) Validate() error {
 }
 
 type CreateDataQualityScanRunRequestRuntimeResource struct {
-	// The number of compute units (CUs) to reserve from the resource group for the data quality scan.
+	// The CU configuration reserved for the resource group when running the data quality monitoring task.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type CreateDataQualityScanRunRequestRuntimeResource struct {
 	//
 	// e9455a13-ff00-4965-833c-337546ba4854
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The image configuration for running the data quality scan on the resource group.
+	// The image settings used when running the data quality monitoring task on the resource group.
 	//
 	// example:
 	//

@@ -83,8 +83,8 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"rus-west-1-pop":              dara.String("dataworks.aliyuncs.com"),
 		"us-east-1":                   dara.String("dataworks.us-east-1.aliyuncs.com"),
 		"us-west-1":                   dara.String("dataworks.us-west-1.aliyuncs.com"),
-		"me-central-1":                dara.String("dataworks.me-central-1.aliyuncs.com"),
 		"ap-northeast-2":              dara.String("dataworks.ap-northeast-2.aliyuncs.com"),
+		"me-central-1":                dara.String("dataworks.me-central-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -200,13 +200,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Terminates the specified deployment process. This operation changes the status of the process to Terminated but does not delete the process. You can still query the process.
+// Calls this operation to change the status of a specified deployment process to terminated. The deployment process is not deleted and can still be queried through query operations.
 //
 // Description:
 //
-//	Notice:
-//
-// This API may not be available in earlier versions of the SDK. In that case, use the AbolishDeployment API, which accepts the same parameters.
+//	Notice: This operation may not be available in earlier versions of the SDK. In this case, use the AbolishDeployment operation. The parameters are the same as those described in this document.
 //
 // @param request - AbolishPipelineRunRequest
 //
@@ -254,13 +252,11 @@ func (client *Client) AbolishPipelineRunWithOptions(request *AbolishPipelineRunR
 
 // Summary:
 //
-// Terminates the specified deployment process. This operation changes the status of the process to Terminated but does not delete the process. You can still query the process.
+// Calls this operation to change the status of a specified deployment process to terminated. The deployment process is not deleted and can still be queried through query operations.
 //
 // Description:
 //
-//	Notice:
-//
-// This API may not be available in earlier versions of the SDK. In that case, use the AbolishDeployment API, which accepts the same parameters.
+//	Notice: This operation may not be available in earlier versions of the SDK. In this case, use the AbolishDeployment operation. The parameters are the same as those described in this document.
 //
 // @param request - AbolishPipelineRunRequest
 //
@@ -278,11 +274,11 @@ func (client *Client) AbolishPipelineRun(request *AbolishPipelineRunRequest) (_r
 
 // Summary:
 //
-// Adds an entity to a collection in Data Map. Collections include categories and data albums. Entities can be only tables. If you want to add an entity to a data album, the account that you use must be attached the AliyunDataWorksFullAccess policy, or you are the data album creator or administrator.
+// Adds a specified entity object to a Data Map collection. The collection object can be a Data Map category or a data album. The entity object currently supports only the data table type. To add an entity to a data album, the caller must have the AliyunDataWorksFullAccess permission, or be the creator or administrator of the album.
 //
 // Description:
 //
-// 1. DataWorks Professional Edition or a higher edition is required.
+// 1. DataWorks Professional Edition or a more advanced edition is required.
 //
 // @param request - AddEntityIntoMetaCollectionRequest
 //
@@ -334,11 +330,11 @@ func (client *Client) AddEntityIntoMetaCollectionWithOptions(request *AddEntityI
 
 // Summary:
 //
-// Adds an entity to a collection in Data Map. Collections include categories and data albums. Entities can be only tables. If you want to add an entity to a data album, the account that you use must be attached the AliyunDataWorksFullAccess policy, or you are the data album creator or administrator.
+// Adds a specified entity object to a Data Map collection. The collection object can be a Data Map category or a data album. The entity object currently supports only the data table type. To add an entity to a data album, the caller must have the AliyunDataWorksFullAccess permission, or be the creator or administrator of the album.
 //
 // Description:
 //
-// 1. DataWorks Professional Edition or a higher edition is required.
+// 1. DataWorks Professional Edition or a more advanced edition is required.
 //
 // @param request - AddEntityIntoMetaCollectionRequest
 //
@@ -484,7 +480,7 @@ func (client *Client) ApplyResourceAccessPermission(request *ApplyResourceAccess
 //
 // - This operation allows you to approve or reject a specified approval process instance by passing in the ProcessInstanceId and approval information (including ApprovalComment and ApprovalAction).
 //
-// - ApprovalAction can be Agree or Deny, indicating approval or rejection respectively.
+// - ApprovalAction can be `Agree` or `Deny`, indicating approval or rejection respectively.
 //
 // - ApprovalComment is required and records the specific approval opinion.
 //
@@ -554,7 +550,7 @@ func (client *Client) ApproveProcessInstanceWithOptions(request *ApproveProcessI
 //
 // - This operation allows you to approve or reject a specified approval process instance by passing in the ProcessInstanceId and approval information (including ApprovalComment and ApprovalAction).
 //
-// - ApprovalAction can be Agree or Deny, indicating approval or rejection respectively.
+// - ApprovalAction can be `Agree` or `Deny`, indicating approval or rejection respectively.
 //
 // - ApprovalComment is required and records the specific approval opinion.
 //
@@ -736,11 +732,11 @@ func (client *Client) AssociateProjectToResourceGroup(request *AssociateProjectT
 //
 // Summary:
 //
-// Associates data quality rules with a data quality monitoring task.
+// Associates data quality rules with a data quality check task.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or higher to use this feature.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param tmpReq - AttachDataQualityRulesToEvaluationTaskRequest
 //
@@ -800,11 +796,11 @@ func (client *Client) AttachDataQualityRulesToEvaluationTaskWithOptions(tmpReq *
 //
 // Summary:
 //
-// Associates data quality rules with a data quality monitoring task.
+// Associates data quality rules with a data quality check task.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or higher to use this feature.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - AttachDataQualityRulesToEvaluationTaskRequest
 //
@@ -823,11 +819,11 @@ func (client *Client) AttachDataQualityRulesToEvaluationTask(request *AttachData
 
 // Summary:
 //
-// Creates metadata entities in a batch. All entities within a batch must have the same entity type. This operation currently supports only custom types and extended table types, which represent databases and tables.
+// Creates metadata entities in batches. All entities in the same batch must be of the same type. Currently, only custom entity types and extension table types (corresponding to Database/Table) are supported.
 //
 // Description:
 //
-// You must purchase DataWorks Professional Edition or a higher edition to use this operation.
+// DataWorks Professional Edition or a higher edition is required.
 //
 // @param tmpReq - BatchCreateMetaEntitiesRequest
 //
@@ -877,11 +873,11 @@ func (client *Client) BatchCreateMetaEntitiesWithOptions(tmpReq *BatchCreateMeta
 
 // Summary:
 //
-// Creates metadata entities in a batch. All entities within a batch must have the same entity type. This operation currently supports only custom types and extended table types, which represent databases and tables.
+// Creates metadata entities in batches. All entities in the same batch must be of the same type. Currently, only custom entity types and extension table types (corresponding to Database/Table) are supported.
 //
 // Description:
 //
-// You must purchase DataWorks Professional Edition or a higher edition to use this operation.
+// DataWorks Professional Edition or a higher edition is required.
 //
 // @param request - BatchCreateMetaEntitiesRequest
 //
@@ -899,11 +895,11 @@ func (client *Client) BatchCreateMetaEntities(request *BatchCreateMetaEntitiesRe
 
 // Summary:
 //
-// Deletes multiple meta entities in a batch. This operation deletes custom meta entities and extended table-based objects, such as databases and tables. You cannot delete a column individually. Instead, you must delete the entire table to remove its associated columns.
+// Deletes metadata entity objects in batches. Supports deleting custom entities and extension table type objects (Database/Table). Does not support deleting columns individually. You can delete associated Column objects by deleting the Table.
 //
 // Description:
 //
-// This operation requires DataWorks Professional Edition or higher.
+// Requires DataWorks Professional Edition or a higher edition.
 //
 // @param tmpReq - BatchDeleteMetaEntitiesRequest
 //
@@ -953,11 +949,11 @@ func (client *Client) BatchDeleteMetaEntitiesWithOptions(tmpReq *BatchDeleteMeta
 
 // Summary:
 //
-// Deletes multiple meta entities in a batch. This operation deletes custom meta entities and extended table-based objects, such as databases and tables. You cannot delete a column individually. Instead, you must delete the entire table to remove its associated columns.
+// Deletes metadata entity objects in batches. Supports deleting custom entities and extension table type objects (Database/Table). Does not support deleting columns individually. You can delete associated Column objects by deleting the Table.
 //
 // Description:
 //
-// This operation requires DataWorks Professional Edition or higher.
+// Requires DataWorks Professional Edition or a higher edition.
 //
 // @param request - BatchDeleteMetaEntitiesRequest
 //
@@ -975,11 +971,11 @@ func (client *Client) BatchDeleteMetaEntities(request *BatchDeleteMetaEntitiesRe
 
 // Summary:
 //
-// Performs incremental updates on multiple tasks at a time.
+// Updates multiple nodes in batches by using incremental updates.
 //
 // Description:
 //
-// DataWorks Basic Edition or higher is required.
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param tmpReq - BatchUpdateTasksRequest
 //
@@ -1033,11 +1029,11 @@ func (client *Client) BatchUpdateTasksWithOptions(tmpReq *BatchUpdateTasksReques
 
 // Summary:
 //
-// Performs incremental updates on multiple tasks at a time.
+// Updates multiple nodes in batches by using incremental updates.
 //
 // Description:
 //
-// DataWorks Basic Edition or higher is required.
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param request - BatchUpdateTasksRequest
 //
@@ -1055,13 +1051,13 @@ func (client *Client) BatchUpdateTasks(request *BatchUpdateTasksRequest) (_resul
 
 // Summary:
 //
-// Cancels an agent call in a specified session. This operation also supports interrupting an ongoing streaming response.
+// Interrupts the Agent call for a specified session, supporting interruption during streaming responses.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - This operation is used to actively interrupt an ongoing session, especially when the session is generating a streaming response.
+// - This operation is mainly used to actively interrupt an ongoing session, especially when the session is in a streaming response state.
 //
 // - `sessionId` is a required parameter that identifies the specific session to cancel.
 //
@@ -1121,13 +1117,13 @@ func (client *Client) CancelAgentSessionWithOptions(tmpReq *CancelAgentSessionRe
 
 // Summary:
 //
-// Cancels an agent call in a specified session. This operation also supports interrupting an ongoing streaming response.
+// Interrupts the Agent call for a specified session, supporting interruption during streaming responses.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - This operation is used to actively interrupt an ongoing session, especially when the session is generating a streaming response.
+// - This operation is mainly used to actively interrupt an ongoing session, especially when the session is in a streaming response state.
 //
 // - `sessionId` is a required parameter that identifies the specific session to cancel.
 //
@@ -1147,15 +1143,15 @@ func (client *Client) CancelAgentSession(request *CancelAgentSessionRequest) (_r
 
 // Summary:
 //
-// Clones a data source to create a new data source with the same configurations.
+// Clones a new data source based on an existing data source.
 //
 // Description:
 //
-// 1. This operation is available for all DataWorks editions.
+// 1. You must have purchased DataWorks Basic Edition or a higher edition.
 //
-// 2. To call this operation, you must have one of the following roles in DataWorks:
+// 2. You must have at least one of the following roles in the DataWorks workspace:
 //
-// - Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
+// - Tenant Owner, Storage Management Administrator, Project Owner, or O&M Engineer
 //
 // @param request - CloneDataSourceRequest
 //
@@ -1203,15 +1199,15 @@ func (client *Client) CloneDataSourceWithOptions(request *CloneDataSourceRequest
 
 // Summary:
 //
-// Clones a data source to create a new data source with the same configurations.
+// Clones a new data source based on an existing data source.
 //
 // Description:
 //
-// 1. This operation is available for all DataWorks editions.
+// 1. You must have purchased DataWorks Basic Edition or a higher edition.
 //
-// 2. To call this operation, you must have one of the following roles in DataWorks:
+// 2. You must have at least one of the following roles in the DataWorks workspace:
 //
-// - Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
+// - Tenant Owner, Storage Management Administrator, Project Owner, or O&M Engineer
 //
 // @param request - CloneDataSourceRequest
 //
@@ -1667,13 +1663,11 @@ func (client *Client) CreateBusiness(request *CreateBusinessRequest) (_result *C
 
 // Summary:
 //
-// Creates components.
+// Creates a component.
 //
 // Description:
 //
-//	Notice:
-//
-// This API does not support batch operations. If you specify multiple entities to be published, all entities except the first one are ignored.
+//	Notice: This operation does not support batch operations. If you specify multiple publish entities in the parameters, all entities except the first one are ignored.
 //
 // @param request - CreateComponentRequest
 //
@@ -1725,13 +1719,11 @@ func (client *Client) CreateComponentWithOptions(request *CreateComponentRequest
 
 // Summary:
 //
-// Creates components.
+// Creates a component.
 //
 // Description:
 //
-//	Notice:
-//
-// This API does not support batch operations. If you specify multiple entities to be published, all entities except the first one are ignored.
+//	Notice: This operation does not support batch operations. If you specify multiple publish entities in the parameters, all entities except the first one are ignored.
 //
 // @param request - CreateComponentRequest
 //
@@ -1749,15 +1741,15 @@ func (client *Client) CreateComponent(request *CreateComponentRequest) (_result 
 
 // Summary:
 //
-// Creates a computing resource in the specified workspace. The resource can be for a development environment or a production environment.
+// Creates a compute resource in a specified workspace. The compute resource can be in the development environment or production environment.
 //
 // Description:
 //
-// DataWorks Basic Edition or a more advanced edition is required.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // You must have at least one of the following roles in the DataWorks workspace:
 //
-// Tenant Owner, Workspace Administrator, Project Owner, O\\&M
+// Tenant Owner, Workspace Administrator, Project Owner, or O&M.
 //
 // @param request - CreateComputeResourceRequest
 //
@@ -1821,15 +1813,15 @@ func (client *Client) CreateComputeResourceWithOptions(request *CreateComputeRes
 
 // Summary:
 //
-// Creates a computing resource in the specified workspace. The resource can be for a development environment or a production environment.
+// Creates a compute resource in a specified workspace. The compute resource can be in the development environment or production environment.
 //
 // Description:
 //
-// DataWorks Basic Edition or a more advanced edition is required.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // You must have at least one of the following roles in the DataWorks workspace:
 //
-// Tenant Owner, Workspace Administrator, Project Owner, O\\&M
+// Tenant Owner, Workspace Administrator, Project Owner, or O&M.
 //
 // @param request - CreateComputeResourceRequest
 //
@@ -1847,29 +1839,29 @@ func (client *Client) CreateComputeResource(request *CreateComputeResourceReques
 
 // Summary:
 //
-// 创建元数据采集器
+// Creates a metadata crawler and configures the data source, collection scope, resource group, and scheduling method.
 //
 // Description:
 //
-// ## 使用场景
+// ## Scenarios
 //
-// 为指定数据源创建元数据采集器，并配置采集范围、资源组、调度方式和扩展配置。
+// Creates a metadata crawler for a specified data source and configures the collection scope, resource group, scheduling method, and extended configurations.
 //
-// ## 推荐流程
+// ## Recommended workflow
 //
-// 1. 调用 `GetCrawlerTypeCapabilities` 查询当前地域支持的采集器类型及其配置能力。
+// 1. Call `GetCrawlerTypeCapabilities` to query the crawler types and their configuration capabilities supported in the current region.
 //
-// 2. 使用与 `Type` 匹配的数据源创建采集器。
+// 2. Create a crawler by using a data source that matches the `Type` value. Before creating a crawler, ensure that the data source and the selected resource group pass the connectivity test by calling the `TestDataSourceConnectivity` API to avoid creating an invalid crawler.
 //
-// 3. 创建成功后，调用 `RunCrawler` 手动运行，或通过周期调度自动运行。
+// 3. After the crawler is created, call `RunCrawler` to manually run it, or configure periodic scheduling for automatic execution.
 //
-// ## 版本要求
+// ## Edition requirements
 //
-// 需要购买DataWorks基础版及以上版本才能使用。
+// DataWorks Basic Edition or a higher edition is required.
 //
-// ## 注意事项
+// ## Precautions
 //
-// 创建成功仅表示采集器配置已生成，不会立即执行元数据采集。
+// A successful creation only indicates that the crawler configuration has been generated. Metadata collection is not immediately executed.
 //
 // @param tmpReq - CreateCrawlerRequest
 //
@@ -1955,29 +1947,29 @@ func (client *Client) CreateCrawlerWithOptions(tmpReq *CreateCrawlerRequest, run
 
 // Summary:
 //
-// 创建元数据采集器
+// Creates a metadata crawler and configures the data source, collection scope, resource group, and scheduling method.
 //
 // Description:
 //
-// ## 使用场景
+// ## Scenarios
 //
-// 为指定数据源创建元数据采集器，并配置采集范围、资源组、调度方式和扩展配置。
+// Creates a metadata crawler for a specified data source and configures the collection scope, resource group, scheduling method, and extended configurations.
 //
-// ## 推荐流程
+// ## Recommended workflow
 //
-// 1. 调用 `GetCrawlerTypeCapabilities` 查询当前地域支持的采集器类型及其配置能力。
+// 1. Call `GetCrawlerTypeCapabilities` to query the crawler types and their configuration capabilities supported in the current region.
 //
-// 2. 使用与 `Type` 匹配的数据源创建采集器。
+// 2. Create a crawler by using a data source that matches the `Type` value. Before creating a crawler, ensure that the data source and the selected resource group pass the connectivity test by calling the `TestDataSourceConnectivity` API to avoid creating an invalid crawler.
 //
-// 3. 创建成功后，调用 `RunCrawler` 手动运行，或通过周期调度自动运行。
+// 3. After the crawler is created, call `RunCrawler` to manually run it, or configure periodic scheduling for automatic execution.
 //
-// ## 版本要求
+// ## Edition requirements
 //
-// 需要购买DataWorks基础版及以上版本才能使用。
+// DataWorks Basic Edition or a higher edition is required.
 //
-// ## 注意事项
+// ## Precautions
 //
-// 创建成功仅表示采集器配置已生成，不会立即执行元数据采集。
+// A successful creation only indicates that the crawler configuration has been generated. Metadata collection is not immediately executed.
 //
 // @param request - CreateCrawlerRequest
 //
@@ -2095,7 +2087,11 @@ func (client *Client) CreateCustomAttribute(request *CreateCustomAttributeReques
 
 // Summary:
 //
-// Creates an alert rule for a synchronization task.
+// Creates an alert rule for a data integration task.
+//
+// Description:
+//
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param tmpReq - CreateDIAlarmRuleRequest
 //
@@ -2145,7 +2141,11 @@ func (client *Client) CreateDIAlarmRuleWithOptions(tmpReq *CreateDIAlarmRuleRequ
 
 // Summary:
 //
-// Creates an alert rule for a synchronization task.
+// Creates an alert rule for a data integration task.
+//
+// Description:
+//
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - CreateDIAlarmRuleRequest
 //
@@ -2163,13 +2163,13 @@ func (client *Client) CreateDIAlarmRule(request *CreateDIAlarmRuleRequest) (_res
 
 // Summary:
 //
-// Create a new version of a data integration task.
+// Creates a data integration task.
 //
 // Description:
 //
-// - This API requires DataWorks Basic Edition or a higher edition.
+// - You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
-// - This API creates a data integration synchronization task. Key parameters include `SourceDataSourceSettings`, `DestinationDataSourceSettings`, and `MigrationType`. The `TransformationRules` parameter defines transformation rules for synchronized tables, such as adding columns or replacing table names. The `TableMappings` parameter specifies which tables to synchronize and their mapping rules. The `JobSettings` parameter configures task settings, including column mapping and scheduling.
+// - This operation creates a data integration synchronization task. Parameters include the source configuration SourceDataSourceSettings and the destination configuration DestinationDataSourceSettings, the supported synchronization type MigrationType, transformation rules defined through TransformationRules for mapping operations such as adding columns and renaming tables, specific tables to synchronize and the mapping rules to apply defined in TableMappings, and task-level settings such as column mappings and scheduling configurations defined in JobSettings.
 //
 // @param tmpReq - CreateDIJobRequest
 //
@@ -2301,13 +2301,13 @@ func (client *Client) CreateDIJobWithOptions(tmpReq *CreateDIJobRequest, runtime
 
 // Summary:
 //
-// Create a new version of a data integration task.
+// Creates a data integration task.
 //
 // Description:
 //
-// - This API requires DataWorks Basic Edition or a higher edition.
+// - You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
-// - This API creates a data integration synchronization task. Key parameters include `SourceDataSourceSettings`, `DestinationDataSourceSettings`, and `MigrationType`. The `TransformationRules` parameter defines transformation rules for synchronized tables, such as adding columns or replacing table names. The `TableMappings` parameter specifies which tables to synchronize and their mapping rules. The `JobSettings` parameter configures task settings, including column mapping and scheduling.
+// - This operation creates a data integration synchronization task. Parameters include the source configuration SourceDataSourceSettings and the destination configuration DestinationDataSourceSettings, the supported synchronization type MigrationType, transformation rules defined through TransformationRules for mapping operations such as adding columns and renaming tables, specific tables to synchronize and the mapping rules to apply defined in TableMappings, and task-level settings such as column mappings and scheduling configurations defined in JobSettings.
 //
 // @param request - CreateDIJobRequest
 //
@@ -2421,11 +2421,11 @@ func (client *Client) CreateDataAssetTag(request *CreateDataAssetTagRequest) (_r
 
 // Summary:
 //
-// Creates a data quality monitoring alert rule in a project.
+// Creates a data quality monitoring alert rule in a specified project.
 //
 // Description:
 //
-// DataWorks Basic Edition or a higher edition is required.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param tmpReq - CreateDataQualityAlertRuleRequest
 //
@@ -2491,11 +2491,11 @@ func (client *Client) CreateDataQualityAlertRuleWithOptions(tmpReq *CreateDataQu
 
 // Summary:
 //
-// Creates a data quality monitoring alert rule in a project.
+// Creates a data quality monitoring alert rule in a specified project.
 //
 // Description:
 //
-// DataWorks Basic Edition or a higher edition is required.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - CreateDataQualityAlertRuleRequest
 //
@@ -2519,7 +2519,7 @@ func (client *Client) CreateDataQualityAlertRule(request *CreateDataQualityAlert
 //
 // Description:
 //
-// DataWorks Basic Edition or higher is required.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param tmpReq - CreateDataQualityEvaluationTaskRequest
 //
@@ -2627,7 +2627,7 @@ func (client *Client) CreateDataQualityEvaluationTaskWithOptions(tmpReq *CreateD
 //
 // Description:
 //
-// DataWorks Basic Edition or higher is required.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - CreateDataQualityEvaluationTaskRequest
 //
@@ -2648,11 +2648,11 @@ func (client *Client) CreateDataQualityEvaluationTask(request *CreateDataQuality
 //
 // Summary:
 //
-// Creates a data quality evaluation task instance.
+// Creates a data quality check task instance.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or higher to use this operation.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param tmpReq - CreateDataQualityEvaluationTaskInstanceRequest
 //
@@ -2716,11 +2716,11 @@ func (client *Client) CreateDataQualityEvaluationTaskInstanceWithOptions(tmpReq 
 //
 // Summary:
 //
-// Creates a data quality evaluation task instance.
+// Creates a data quality check task instance.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or higher to use this operation.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - CreateDataQualityEvaluationTaskInstanceRequest
 //
@@ -2874,7 +2874,7 @@ func (client *Client) CreateDataQualityRule(request *CreateDataQualityRuleReques
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or above to use this feature.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param tmpReq - CreateDataQualityRuleTemplateRequest
 //
@@ -2954,7 +2954,7 @@ func (client *Client) CreateDataQualityRuleTemplateWithOptions(tmpReq *CreateDat
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or above to use this feature.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - CreateDataQualityRuleTemplateRequest
 //
@@ -3105,11 +3105,11 @@ func (client *Client) CreateDataQualityScan(request *CreateDataQualityScanReques
 
 // Summary:
 //
-// Triggers the specified data quality scan and returns the run ID.
+// Triggers the execution of a specified data quality monitoring task and returns the run instance ID.
 //
 // Description:
 //
-// This operation is available only in DataWorks Basic Edition and later versions.
+// DataWorks Basic Edition or a higher edition is required.
 //
 // @param tmpReq - CreateDataQualityScanRunRequest
 //
@@ -3175,11 +3175,11 @@ func (client *Client) CreateDataQualityScanRunWithOptions(tmpReq *CreateDataQual
 
 // Summary:
 //
-// Triggers the specified data quality scan and returns the run ID.
+// Triggers the execution of a specified data quality monitoring task and returns the run instance ID.
 //
 // Description:
 //
-// This operation is available only in DataWorks Basic Edition and later versions.
+// DataWorks Basic Edition or a higher edition is required.
 //
 // @param request - CreateDataQualityScanRunRequest
 //
@@ -3275,7 +3275,15 @@ func (client *Client) CreateDataQualityTemplate(request *CreateDataQualityTempla
 
 // Summary:
 //
-// Adds a data source to the development environment or production environment of a workspace.
+// Creates a data source in a specified project workspace for the development or production environment.
+//
+// Description:
+//
+// 1. You must have purchased DataWorks Basic Edition or a higher edition.
+//
+// 2. You must have at least one of the following roles in the DataWorks project workspace:
+//
+// - Tenant Owner, Storage Management Administrator, Project Owner, or O&M
 //
 // @param request - CreateDataSourceRequest
 //
@@ -3339,7 +3347,15 @@ func (client *Client) CreateDataSourceWithOptions(request *CreateDataSourceReque
 
 // Summary:
 //
-// Adds a data source to the development environment or production environment of a workspace.
+// Creates a data source in a specified project workspace for the development or production environment.
+//
+// Description:
+//
+// 1. You must have purchased DataWorks Basic Edition or a higher edition.
+//
+// 2. You must have at least one of the following roles in the DataWorks project workspace:
+//
+// - Tenant Owner, Storage Management Administrator, Project Owner, or O&M
 //
 // @param request - CreateDataSourceRequest
 //
@@ -3447,7 +3463,7 @@ func (client *Client) CreateDataSourceSharedRule(request *CreateDataSourceShared
 
 // Summary:
 //
-// Creates a dataset. This operation is supported only in workspaces that the user has joined. Currently, only DataWorks datasets are supported. The maximum number of datasets allowed per tenant is 2,000.
+// Creates a dataset. You can create a dataset only in a workspace that you have joined. Only DataWorks datasets are supported. The maximum number of datasets per tenant is 2000.
 //
 // @param tmpReq - CreateDatasetRequest
 //
@@ -3521,7 +3537,7 @@ func (client *Client) CreateDatasetWithOptions(tmpReq *CreateDatasetRequest, run
 
 // Summary:
 //
-// Creates a dataset. This operation is supported only in workspaces that the user has joined. Currently, only DataWorks datasets are supported. The maximum number of datasets allowed per tenant is 2,000.
+// Creates a dataset. You can create a dataset only in a workspace that you have joined. Only DataWorks datasets are supported. The maximum number of datasets per tenant is 2000.
 //
 // @param request - CreateDatasetRequest
 //
@@ -3539,7 +3555,7 @@ func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *Cre
 
 // Summary:
 //
-// Creates a dataset version. Currently supports DataWorks datasets only, with a maximum of 20 versions.
+// Creates a dataset version. Currently, only DataWorks datasets are supported. The maximum number of versions is 20.
 //
 // @param tmpReq - CreateDatasetVersionRequest
 //
@@ -3605,7 +3621,7 @@ func (client *Client) CreateDatasetVersionWithOptions(tmpReq *CreateDatasetVersi
 
 // Summary:
 //
-// Creates a dataset version. Currently supports DataWorks datasets only, with a maximum of 20 versions.
+// Creates a dataset version. Currently, only DataWorks datasets are supported. The maximum number of versions is 20.
 //
 // @param request - CreateDatasetVersionRequest
 //
@@ -3891,13 +3907,11 @@ func (client *Client) CreateFolder(request *CreateFolderRequest) (_result *Creat
 
 // Summary:
 //
-// Creates a user-defined function (UDF) in DataStudio. The information about the UDF is described by using FlowSpec.
+// Creates a UDF function in DataStudio. The UDF function information is described in FlowSpec format.
 //
 // Description:
 //
-//	Notice:
-//
-// This API does not support batch operations. If you define more than one UDF in the FlowSpec, all UDFs except the first one are ignored.
+//	Notice: This operation does not support batch operations. If more than one UDF function is defined in the FlowSpec, all functions after the first one are ignored.
 //
 // @param request - CreateFunctionRequest
 //
@@ -3945,13 +3959,11 @@ func (client *Client) CreateFunctionWithOptions(request *CreateFunctionRequest, 
 
 // Summary:
 //
-// Creates a user-defined function (UDF) in DataStudio. The information about the UDF is described by using FlowSpec.
+// Creates a UDF function in DataStudio. The UDF function information is described in FlowSpec format.
 //
 // Description:
 //
-//	Notice:
-//
-// This API does not support batch operations. If you define more than one UDF in the FlowSpec, all UDFs except the first one are ignored.
+//	Notice: This operation does not support batch operations. If more than one UDF function is defined in the FlowSpec, all functions after the first one are ignored.
 //
 // @param request - CreateFunctionRequest
 //
@@ -4145,15 +4157,15 @@ func (client *Client) CreateLineageRelationship(request *CreateLineageRelationsh
 //
 // Description:
 //
-// ## Usage notes
+// ## Operation description
 //
-// - When you submit a request, the system verifies the availability of the MCP Server based on the connection configuration.
+// - After submission, the system verifies the availability of the MCP Server based on the provided connection information.
 //
-// - If the MCP Server connection is unavailable, the API returns an error message.
+// - If the MCP Server connection is unavailable, the operation returns the corresponding error message.
 //
-// - The `Name` must be unique at the tenant level, start with a lowercase letter, and contain only lowercase letters, digits, underscores (_), and hyphens (-).
+// - The Name field must start with a lowercase letter and can contain only lowercase letters, digits, underscores (_), and hyphens (-). The name must be unique within the current account.
 //
-// - The `Visibility` parameter specifies the visibility level of the MCP Server. Valid values are `TENANT` (visible within the tenant), `PROJECT` (visible to specified projects), and `USER` (visible to specified users). You must also provide the `VisibilityScope` parameter to define the scope based on the selected visibility level.
+// - The Visibility field defines the visibility level of the MCP Server. Valid values: `TENANT` (visible within the account), `PROJECT` (visible to specified projects), and `USER` (visible to specified users). Depending on the selected value, provide the corresponding `VisibilityScope` parameter to further specify the visibility scope.
 //
 // @param tmpReq - CreateMcpServerRequest
 //
@@ -4223,15 +4235,15 @@ func (client *Client) CreateMcpServerWithOptions(tmpReq *CreateMcpServerRequest,
 //
 // Description:
 //
-// ## Usage notes
+// ## Operation description
 //
-// - When you submit a request, the system verifies the availability of the MCP Server based on the connection configuration.
+// - After submission, the system verifies the availability of the MCP Server based on the provided connection information.
 //
-// - If the MCP Server connection is unavailable, the API returns an error message.
+// - If the MCP Server connection is unavailable, the operation returns the corresponding error message.
 //
-// - The `Name` must be unique at the tenant level, start with a lowercase letter, and contain only lowercase letters, digits, underscores (_), and hyphens (-).
+// - The Name field must start with a lowercase letter and can contain only lowercase letters, digits, underscores (_), and hyphens (-). The name must be unique within the current account.
 //
-// - The `Visibility` parameter specifies the visibility level of the MCP Server. Valid values are `TENANT` (visible within the tenant), `PROJECT` (visible to specified projects), and `USER` (visible to specified users). You must also provide the `VisibilityScope` parameter to define the scope based on the selected visibility level.
+// - The Visibility field defines the visibility level of the MCP Server. Valid values: `TENANT` (visible within the account), `PROJECT` (visible to specified projects), and `USER` (visible to specified users). Depending on the selected value, provide the corresponding `VisibilityScope` parameter to further specify the visibility scope.
 //
 // @param request - CreateMcpServerRequest
 //
@@ -4505,13 +4517,11 @@ func (client *Client) CreateNetwork(request *CreateNetworkRequest) (_result *Cre
 
 // Summary:
 //
-// Creates a node in DataStudio. The information about the node is described by using FlowSpec.
+// Creates a data development node in the new version of DataStudio.
 //
 // Description:
 //
-//	Notice:
-//
-// This API does not support batch operations. If you define more than one node in the FlowSpec, all nodes except the first one are ignored.
+//	Notice: This operation does not support batch operations. If more than one node is defined in FlowSpec, all nodes after the first one are ignored.
 //
 // @param request - CreateNodeRequest
 //
@@ -4567,13 +4577,11 @@ func (client *Client) CreateNodeWithOptions(request *CreateNodeRequest, runtime 
 
 // Summary:
 //
-// Creates a node in DataStudio. The information about the node is described by using FlowSpec.
+// Creates a data development node in the new version of DataStudio.
 //
 // Description:
 //
-//	Notice:
-//
-// This API does not support batch operations. If you define more than one node in the FlowSpec, all nodes except the first one are ignored.
+//	Notice: This operation does not support batch operations. If more than one node is defined in FlowSpec, all nodes after the first one are ignored.
 //
 // @param request - CreateNodeRequest
 //
@@ -4933,6 +4941,10 @@ func (client *Client) CreateProcessDefinition(request *CreateProcessDefinitionRe
 //
 // Creates a workspace.
 //
+// Description:
+//
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
+//
 // @param tmpReq - CreateProjectRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5011,6 +5023,10 @@ func (client *Client) CreateProjectWithOptions(tmpReq *CreateProjectRequest, run
 //
 // Creates a workspace.
 //
+// Description:
+//
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
+//
 // @param request - CreateProjectRequest
 //
 // @return CreateProjectResponse
@@ -5027,11 +5043,11 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 
 // Summary:
 //
-// Adds a workspace member and assigns a workspace-level role to the member.
+// Adds a workspace member and grants workspace roles to the member.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param tmpReq - CreateProjectMemberRequest
 //
@@ -5089,11 +5105,11 @@ func (client *Client) CreateProjectMemberWithOptions(tmpReq *CreateProjectMember
 
 // Summary:
 //
-// Adds a workspace member and assigns a workspace-level role to the member.
+// Adds a workspace member and grants workspace roles to the member.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param request - CreateProjectMemberRequest
 //
@@ -5193,13 +5209,11 @@ func (client *Client) CreateProjectRole(request *CreateProjectRoleRequest) (_res
 
 // Summary:
 //
-// \\\\> You cannot use this API operation to create multiple file resources at a time. If you specify multiple file resources by using FlowSpec, the system creates only the first specified resource.
+// Creates a file resource for data development. The file resource information is defined in FlowSpec format.
 //
 // Description:
 //
-//	Notice:
-//
-// This API does not support batch operations. If you define more than one resource file in the FlowSpec, all resource files except the first one are ignored.
+//	Notice: This operation does not support batch operations. If more than one resource file is defined in the FlowSpec, all resource files after the first one are ignored.
 //
 // @param request - CreateResourceRequest
 //
@@ -5251,13 +5265,11 @@ func (client *Client) CreateResourceWithOptions(request *CreateResourceRequest, 
 
 // Summary:
 //
-// \\\\> You cannot use this API operation to create multiple file resources at a time. If you specify multiple file resources by using FlowSpec, the system creates only the first specified resource.
+// Creates a file resource for data development. The file resource information is defined in FlowSpec format.
 //
 // Description:
 //
-//	Notice:
-//
-// This API does not support batch operations. If you define more than one resource file in the FlowSpec, all resource files except the first one are ignored.
+//	Notice: This operation does not support batch operations. If more than one resource file is defined in the FlowSpec, all resource files after the first one are ignored.
 //
 // @param request - CreateResourceRequest
 //
@@ -5599,11 +5611,11 @@ func (client *Client) CreateResourceFileAdvance(request *CreateResourceFileAdvan
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or higher to use this operation.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
-// 2. **Before you call this operation, make sure that you understand how general-purpose resource groups in DataWorks are billed and review the [pricing](https://help.aliyun.com/document_detail/2680173.html).**
+// 2. **Before you call this operation, make sure that you fully understand the billing of DataWorks common resource groups and the [pricing](https://help.aliyun.com/document_detail/2680173.html).**
 //
-// 3. **Before you call this operation, make sure that you have created the AliyunServiceRoleForDataWorks service-linked role.**
+// 3. **Before you call this operation, make sure that you have created the service-linked role AliyunServiceRoleForDataWorks.**
 //
 // @param tmpReq - CreateResourceGroupRequest
 //
@@ -5701,11 +5713,11 @@ func (client *Client) CreateResourceGroupWithOptions(tmpReq *CreateResourceGroup
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or higher to use this operation.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
-// 2. **Before you call this operation, make sure that you understand how general-purpose resource groups in DataWorks are billed and review the [pricing](https://help.aliyun.com/document_detail/2680173.html).**
+// 2. **Before you call this operation, make sure that you fully understand the billing of DataWorks common resource groups and the [pricing](https://help.aliyun.com/document_detail/2680173.html).**
 //
-// 3. **Before you call this operation, make sure that you have created the AliyunServiceRoleForDataWorks service-linked role.**
+// 3. **Before you call this operation, make sure that you have created the service-linked role AliyunServiceRoleForDataWorks.**
 //
 // @param request - CreateResourceGroupRequest
 //
@@ -6299,13 +6311,11 @@ func (client *Client) CreateUdfFile(request *CreateUdfFileRequest) (_result *Cre
 
 // Summary:
 //
-// Creates a workflow in a directory of DataStudio.
+// Creates a workflow in a specified folder in DataStudio.
 //
 // Description:
 //
-//	Notice:
-//
-// This API does not support batch operations. If you define more than one workflow definition in the FlowSpec, all workflow definitions except the first one are ignored. In addition, nodes defined within the workflow definition are also ignored. Call the CreateNode API to create internal nodes one by one.
+//	Notice: This operation does not support batch operations. If more than one workflow is defined in FlowSpec, all workflows except the first one are ignored. In addition, nodes defined within the workflow are also ignored. Call the CreateNode operation to create internal nodes one by one.
 //
 // @param request - CreateWorkflowDefinitionRequest
 //
@@ -6353,13 +6363,11 @@ func (client *Client) CreateWorkflowDefinitionWithOptions(request *CreateWorkflo
 
 // Summary:
 //
-// Creates a workflow in a directory of DataStudio.
+// Creates a workflow in a specified folder in DataStudio.
 //
 // Description:
 //
-//	Notice:
-//
-// This API does not support batch operations. If you define more than one workflow definition in the FlowSpec, all workflow definitions except the first one are ignored. In addition, nodes defined within the workflow definition are also ignored. Call the CreateNode API to create internal nodes one by one.
+//	Notice: This operation does not support batch operations. If more than one workflow is defined in FlowSpec, all workflows except the first one are ignored. In addition, nodes defined within the workflow are also ignored. Call the CreateNode operation to create internal nodes one by one.
 //
 // @param request - CreateWorkflowDefinitionRequest
 //
@@ -6719,9 +6727,9 @@ func (client *Client) DeleteBusiness(request *DeleteBusinessRequest) (_result *D
 //
 // Description:
 //
-// 1. This operation requires DataWorks Basic Edition or a later version.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
-// 2. This operation requires one of the following roles in the DataWorks workspace: Tenant Owner, Workspace Administrator, Project Owner, or O\\&M.
+// 2. You must have at least one of the following roles in the DataWorks workspace: tenant owner, storage management administrator, project owner, or O&M engineer.
 //
 // @param request - DeleteCertificateRequest
 //
@@ -6773,9 +6781,9 @@ func (client *Client) DeleteCertificateWithOptions(request *DeleteCertificateReq
 //
 // Description:
 //
-// 1. This operation requires DataWorks Basic Edition or a later version.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
-// 2. This operation requires one of the following roles in the DataWorks workspace: Tenant Owner, Workspace Administrator, Project Owner, or O\\&M.
+// 2. You must have at least one of the following roles in the DataWorks workspace: tenant owner, storage management administrator, project owner, or O&M engineer.
 //
 // @param request - DeleteCertificateRequest
 //
@@ -6797,9 +6805,7 @@ func (client *Client) DeleteCertificate(request *DeleteCertificateRequest) (_res
 //
 // Description:
 //
-//	Notice:
-//
-// After a UDF is published, it cannot be deleted. You must unpublish the UDF before you can delete it.
+//	Notice: After a UDF function is published, it cannot be deleted. You must offline the function before deleting it.
 //
 // @param request - DeleteComponentRequest
 //
@@ -6851,9 +6857,7 @@ func (client *Client) DeleteComponentWithOptions(request *DeleteComponentRequest
 //
 // Description:
 //
-//	Notice:
-//
-// After a UDF is published, it cannot be deleted. You must unpublish the UDF before you can delete it.
+//	Notice: After a UDF function is published, it cannot be deleted. You must offline the function before deleting it.
 //
 // @param request - DeleteComponentRequest
 //
@@ -6953,27 +6957,27 @@ func (client *Client) DeleteComputeResource(request *DeleteComputeResourceReques
 
 // Summary:
 //
-// 删除元数据采集器
+// Deletes a specified metadata crawler.
 //
 // Description:
 //
-// ## 使用场景
+// ## Scenarios
 //
-// 删除不再使用的元数据采集器。
+// Delete metadata crawlers that are no longer in use.
 //
-// ## 推荐流程
+// ## Recommended procedure
 //
-// 1. 调用 `ListCrawlers` 查询采集器 ID。
+// 1. Call `ListCrawlers` to query the crawler ID.
 //
-// 2. 确认采集器不再需要后调用本接口。
+// 2. After confirming that the crawler is no longer needed, call this operation.
 //
-// ## 版本要求
+// ## Edition requirements
 //
-// 需要购买DataWorks基础版及以上版本才能使用。
+// DataWorks Basic Edition or higher is required.
 //
-// ## 注意事项
+// ## Precautions
 //
-// 删除成功后，该采集器不能继续查询、更新或运行。已采集元数据由系统清理，清理结果可能存在延迟。
+// After the crawler is deleted, it cannot be queried, updated, or run. The collected metadata is cleaned up by the system, and the cleanup result may be delayed.
 //
 // @param request - DeleteCrawlerRequest
 //
@@ -7017,27 +7021,27 @@ func (client *Client) DeleteCrawlerWithOptions(request *DeleteCrawlerRequest, ru
 
 // Summary:
 //
-// 删除元数据采集器
+// Deletes a specified metadata crawler.
 //
 // Description:
 //
-// ## 使用场景
+// ## Scenarios
 //
-// 删除不再使用的元数据采集器。
+// Delete metadata crawlers that are no longer in use.
 //
-// ## 推荐流程
+// ## Recommended procedure
 //
-// 1. 调用 `ListCrawlers` 查询采集器 ID。
+// 1. Call `ListCrawlers` to query the crawler ID.
 //
-// 2. 确认采集器不再需要后调用本接口。
+// 2. After confirming that the crawler is no longer needed, call this operation.
 //
-// ## 版本要求
+// ## Edition requirements
 //
-// 需要购买DataWorks基础版及以上版本才能使用。
+// DataWorks Basic Edition or higher is required.
 //
-// ## 注意事项
+// ## Precautions
 //
-// 删除成功后，该采集器不能继续查询、更新或运行。已采集元数据由系统清理，清理结果可能存在延迟。
+// After the crawler is deleted, it cannot be queried, updated, or run. The collected metadata is cleaned up by the system, and the cleanup result may be delayed.
 //
 // @param request - DeleteCrawlerRequest
 //
@@ -7321,11 +7325,11 @@ func (client *Client) DeleteDataAssetTag(request *DeleteDataAssetTagRequest) (_r
 
 // Summary:
 //
-// Deletes a data quality alert rule by ID.
+// Deletes a data quality monitoring alert rule based on the specified ID.
 //
 // Description:
 //
-// DataWorks Basic Edition or a higher edition is required.
+// DataWorks Basic Edition or a more advanced edition is required.
 //
 // @param request - DeleteDataQualityAlertRuleRequest
 //
@@ -7369,11 +7373,11 @@ func (client *Client) DeleteDataQualityAlertRuleWithOptions(request *DeleteDataQ
 
 // Summary:
 //
-// Deletes a data quality alert rule by ID.
+// Deletes a data quality monitoring alert rule based on the specified ID.
 //
 // Description:
 //
-// DataWorks Basic Edition or a higher edition is required.
+// DataWorks Basic Edition or a more advanced edition is required.
 //
 // @param request - DeleteDataQualityAlertRuleRequest
 //
@@ -7472,6 +7476,10 @@ func (client *Client) DeleteDataQualityEvaluationTask(request *DeleteDataQuality
 //
 // Deletes a data quality monitoring rule.
 //
+// Description:
+//
+// 需要购买DataWorks基础版及以上版本才能使用
+//
 // @param request - DeleteDataQualityRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7519,6 +7527,10 @@ func (client *Client) DeleteDataQualityRuleWithOptions(request *DeleteDataQualit
 // Summary:
 //
 // Deletes a data quality monitoring rule.
+//
+// Description:
+//
+// 需要购买DataWorks基础版及以上版本才能使用
 //
 // @param request - DeleteDataQualityRuleRequest
 //
@@ -7923,7 +7935,7 @@ func (client *Client) DeleteDataSourceSharedRule(request *DeleteDataSourceShared
 
 // Summary:
 //
-// Delete a dataset. Only DataWorks datasets are supported. This operation cascades to delete all associated dataset versions. Requires dataset creator or workspace administrator permissions.
+// Deletes a dataset. Only DataWorks datasets are supported. The corresponding dataset versions are cascade deleted. The operator must be the creator of the dataset or an administrator of the workspace to which the dataset belongs.
 //
 // @param request - DeleteDatasetRequest
 //
@@ -7967,7 +7979,7 @@ func (client *Client) DeleteDatasetWithOptions(request *DeleteDatasetRequest, ru
 
 // Summary:
 //
-// Delete a dataset. Only DataWorks datasets are supported. This operation cascades to delete all associated dataset versions. Requires dataset creator or workspace administrator permissions.
+// Deletes a dataset. Only DataWorks datasets are supported. The corresponding dataset versions are cascade deleted. The operator must be the creator of the dataset or an administrator of the workspace to which the dataset belongs.
 //
 // @param request - DeleteDatasetRequest
 //
@@ -8569,11 +8581,11 @@ func (client *Client) DeleteMetaEntityDef(request *DeleteMetaEntityDefRequest) (
 
 // Summary:
 //
-// Disassociates and deletes a network from a general resource group.
+// Disassociates and deletes a network resource from a general-purpose resource group.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - DeleteNetworkRequest
 //
@@ -8617,11 +8629,11 @@ func (client *Client) DeleteNetworkWithOptions(request *DeleteNetworkRequest, ru
 
 // Summary:
 //
-// Disassociates and deletes a network from a general resource group.
+// Disassociates and deletes a network resource from a general-purpose resource group.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - DeleteNetworkRequest
 //
@@ -8943,11 +8955,11 @@ func (client *Client) DeleteProject(request *DeleteProjectRequest) (_result *Del
 
 // Summary:
 //
-// Removes a workspace member and the workspace-level roles that are assigned to the member.
+// Removes a workspace member and the workspace roles granted to the member.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - DeleteProjectMemberRequest
 //
@@ -8995,11 +9007,11 @@ func (client *Client) DeleteProjectMemberWithOptions(request *DeleteProjectMembe
 
 // Summary:
 //
-// Removes a workspace member and the workspace-level roles that are assigned to the member.
+// Removes a workspace member and the workspace roles granted to the member.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - DeleteProjectMemberRequest
 //
@@ -9725,13 +9737,11 @@ func (client *Client) DeleteWorkflow(request *DeleteWorkflowRequest) (_result *D
 
 // Summary:
 //
-// Deletes a workflow from DataStudio.
+// Deletes a specified workflow in data development.
 //
 // Description:
 //
-//	Notice:
-//
-// After a workflow definition is published, it cannot be deleted. You must unpublish the workflow definition before you can delete it.
+//	Notice: After a workflow is published, it cannot be deleted. You must offline the workflow before deleting it.
 //
 // @param request - DeleteWorkflowDefinitionRequest
 //
@@ -9779,13 +9789,11 @@ func (client *Client) DeleteWorkflowDefinitionWithOptions(request *DeleteWorkflo
 
 // Summary:
 //
-// Deletes a workflow from DataStudio.
+// Deletes a specified workflow in data development.
 //
 // Description:
 //
-//	Notice:
-//
-// After a workflow definition is published, it cannot be deleted. You must unpublish the workflow definition before you can delete it.
+//	Notice: After a workflow is published, it cannot be deleted. You must offline the workflow before deleting it.
 //
 // @param request - DeleteWorkflowDefinitionRequest
 //
@@ -9803,7 +9811,7 @@ func (client *Client) DeleteWorkflowDefinition(request *DeleteWorkflowDefinition
 
 // Summary:
 //
-// Publish a file to the production environment.
+// Deploys a file to the production environment.
 //
 // @param request - DeployFileRequest
 //
@@ -9863,7 +9871,7 @@ func (client *Client) DeployFileWithOptions(request *DeployFileRequest, runtime 
 
 // Summary:
 //
-// Publish a file to the production environment.
+// Deploys a file to the production environment.
 //
 // @param request - DeployFileRequest
 //
@@ -10474,13 +10482,15 @@ func (client *Client) EstablishRelationTableToBusiness(request *EstablishRelatio
 
 // Summary:
 //
-// Executes a stage in a process.
+// Executes a specified stage of a publish flow.
 //
 // Description:
 //
-// > The stages in a process are sequential. For more information, see the GetDeployment operation. Skipping or repeating a stage is not allowed.
+//	Notice: The stages of a publish flow are sequential. For more information, see the response of GetPipelineRun. You cannot skip or repeat a stage.
 //
-// > The execution of a stage is asynchronous. The response of this operation indicates only whether a stage is triggered but does not indicate whether the execution of the stage is successful. You can call the GetDeployment operation to check whether the execution is successful.
+//	Notice: The execution is asynchronous. The response only indicates that the stage is triggered, not that the stage is executed. Check the response of GetPipelineRun for the execution result.
+//
+//	Notice: This operation may not be available in earlier SDK versions. In this case, use the ExecDeploymentStage operation. The parameters are the same as those described in this document.
 //
 // @param request - ExecPipelineRunStageRequest
 //
@@ -10534,13 +10544,15 @@ func (client *Client) ExecPipelineRunStageWithOptions(request *ExecPipelineRunSt
 
 // Summary:
 //
-// Executes a stage in a process.
+// Executes a specified stage of a publish flow.
 //
 // Description:
 //
-// > The stages in a process are sequential. For more information, see the GetDeployment operation. Skipping or repeating a stage is not allowed.
+//	Notice: The stages of a publish flow are sequential. For more information, see the response of GetPipelineRun. You cannot skip or repeat a stage.
 //
-// > The execution of a stage is asynchronous. The response of this operation indicates only whether a stage is triggered but does not indicate whether the execution of the stage is successful. You can call the GetDeployment operation to check whether the execution is successful.
+//	Notice: The execution is asynchronous. The response only indicates that the stage is triggered, not that the stage is executed. Check the response of GetPipelineRun for the execution result.
+//
+//	Notice: This operation may not be available in earlier SDK versions. In this case, use the ExecDeploymentStage operation. The parameters are the same as those described in this document.
 //
 // @param request - ExecPipelineRunStageRequest
 //
@@ -10558,11 +10570,11 @@ func (client *Client) ExecPipelineRunStage(request *ExecPipelineRunStageRequest)
 
 // Summary:
 //
-// Create a temporary workflow instance based on configurations.
+// Creates a temporary workflow instance based on the specified configuration.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param tmpReq - ExecuteAdhocWorkflowInstanceRequest
 //
@@ -10632,11 +10644,11 @@ func (client *Client) ExecuteAdhocWorkflowInstanceWithOptions(tmpReq *ExecuteAdh
 
 // Summary:
 //
-// Create a temporary workflow instance based on configurations.
+// Creates a temporary workflow instance based on the specified configuration.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param request - ExecuteAdhocWorkflowInstanceRequest
 //
@@ -10990,7 +11002,7 @@ func (client *Client) GetAgentSessionTokenUsage(request *GetAgentSessionTokenUsa
 
 // Summary:
 //
-// Queries a custom alert monitoring rule.
+// Retrieves a custom monitoring alert rule.
 //
 // @param request - GetAlertRuleRequest
 //
@@ -11030,7 +11042,7 @@ func (client *Client) GetAlertRuleWithOptions(request *GetAlertRuleRequest, runt
 
 // Summary:
 //
-// Queries a custom alert monitoring rule.
+// Retrieves a custom monitoring alert rule.
 //
 // @param request - GetAlertRuleRequest
 //
@@ -11134,7 +11146,7 @@ func (client *Client) GetApplicationContents(request *GetApplicationContentsRequ
 
 // Summary:
 //
-// Queries the information about a workflow.
+// Queries the details of a business process by calling GetBusiness.
 //
 // @param request - GetBusinessRequest
 //
@@ -11186,7 +11198,7 @@ func (client *Client) GetBusinessWithOptions(request *GetBusinessRequest, runtim
 
 // Summary:
 //
-// Queries the information about a workflow.
+// Queries the details of a business process by calling GetBusiness.
 //
 // @param request - GetBusinessRequest
 //
@@ -11204,11 +11216,11 @@ func (client *Client) GetBusiness(request *GetBusinessRequest) (_result *GetBusi
 
 // Summary:
 //
-// Queries the information about a catalog in Data Map. Only catalogs of the Data Lake Formation (DLF) and StarRocks metadata crawlers are supported.
+// Retrieves the details of a specified data catalog in DataWorks Data Map. Currently, DLF and StarRocks catalog types are supported.
 //
 // Description:
 //
-// 1. DataWorks Basic Edition or a higher edition is required.
+// 1. You must have DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - GetCatalogRequest
 //
@@ -11248,11 +11260,11 @@ func (client *Client) GetCatalogWithOptions(request *GetCatalogRequest, runtime 
 
 // Summary:
 //
-// Queries the information about a catalog in Data Map. Only catalogs of the Data Lake Formation (DLF) and StarRocks metadata crawlers are supported.
+// Retrieves the details of a specified data catalog in DataWorks Data Map. Currently, DLF and StarRocks catalog types are supported.
 //
 // Description:
 //
-// 1. DataWorks Basic Edition or a higher edition is required.
+// 1. You must have DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - GetCatalogRequest
 //
@@ -11562,29 +11574,29 @@ func (client *Client) GetComputeResource(request *GetComputeResourceRequest) (_r
 
 // Summary:
 //
-// 获取元数据采集器详情
+// Queries the configuration, status, and latest run information of a specified metadata crawler.
 //
 // Description:
 //
-// ## 使用场景
+// ## Scenarios
 //
-// 查询指定元数据采集器的配置、可用状态和最近一次运行信息。
+// Queries the configuration, availability status, and latest run information of a specified metadata crawler.
 //
-// ## 推荐流程
+// ## Recommended workflow
 //
-// 1. 调用 `ListCrawlers` 查询采集器 ID。
+// 1. Call `ListCrawlers` to query crawler IDs.
 //
-// 2. 调用本接口获取采集器详情。
+// 2. Call this operation to retrieve crawler details.
 //
-// 3. 如需查询完整运行历史，调用 `ListCrawlerRuns`。
+// 3. To query the complete run history, call `ListCrawlerRuns`.
 //
-// ## 版本要求
+// ## Edition requirements
 //
-// 需要购买DataWorks基础版及以上版本才能使用。
+// DataWorks Basic Edition or higher is required.
 //
-// ## 注意事项
+// ## Precautions
 //
-// 采集器尚未运行时，最近运行状态和任务实例 ID 可能为空。
+// If the crawler has not been run, the latest run status and task instance ID may be empty.
 //
 // @param request - GetCrawlerRequest
 //
@@ -11628,29 +11640,29 @@ func (client *Client) GetCrawlerWithOptions(request *GetCrawlerRequest, runtime 
 
 // Summary:
 //
-// 获取元数据采集器详情
+// Queries the configuration, status, and latest run information of a specified metadata crawler.
 //
 // Description:
 //
-// ## 使用场景
+// ## Scenarios
 //
-// 查询指定元数据采集器的配置、可用状态和最近一次运行信息。
+// Queries the configuration, availability status, and latest run information of a specified metadata crawler.
 //
-// ## 推荐流程
+// ## Recommended workflow
 //
-// 1. 调用 `ListCrawlers` 查询采集器 ID。
+// 1. Call `ListCrawlers` to query crawler IDs.
 //
-// 2. 调用本接口获取采集器详情。
+// 2. Call this operation to retrieve crawler details.
 //
-// 3. 如需查询完整运行历史，调用 `ListCrawlerRuns`。
+// 3. To query the complete run history, call `ListCrawlerRuns`.
 //
-// ## 版本要求
+// ## Edition requirements
 //
-// 需要购买DataWorks基础版及以上版本才能使用。
+// DataWorks Basic Edition or higher is required.
 //
-// ## 注意事项
+// ## Precautions
 //
-// 采集器尚未运行时，最近运行状态和任务实例 ID 可能为空。
+// If the crawler has not been run, the latest run status and task instance ID may be empty.
 //
 // @param request - GetCrawlerRequest
 //
@@ -11668,27 +11680,27 @@ func (client *Client) GetCrawler(request *GetCrawlerRequest) (_result *GetCrawle
 
 // Summary:
 //
-// 查询当前地域支持创建的元数据采集器类型及能力
+// Queries the crawler types supported in the current region, along with their collection scope, scheduling, and extension configuration capabilities.
 //
 // Description:
 //
-// ## 使用场景
+// ## Scenarios
 //
-// 查询当前地域支持创建的采集器类型，以及各类型支持的数据源、采集范围、资源组、调度、AI 元数据描述和扩展配置能力。
+// Queries the crawler types that can be created in the current region, as well as the data sources, collection scope, resource groups, scheduling, AI metadata description, and extension configuration capabilities supported by each type.
 //
-// ## 推荐流程
+// ## Recommended workflow
 //
-// 1. 在创建或更新采集器前调用本接口。
+// 1. Call this operation before creating or updating a crawler.
 //
-// 2. 根据返回的能力信息构造 `CreateCrawler` 或 `UpdateCrawler` 请求。
+// 2. Construct a `CreateCrawler` or `UpdateCrawler` request based on the returned capability information.
 //
-// ## 版本要求
+// ## Edition requirements
 //
-// 需要购买DataWorks基础版及以上版本才能使用。
+// DataWorks Basic Edition or a higher edition is required.
 //
-// ## 注意事项
+// ## Precautions
 //
-// 不同地域和采集器类型的能力可能不同，请以本接口的实际返回结果为准。
+// Capabilities may vary by region and crawler type. Use the actual response of this operation as the reference.
 //
 // @param request - GetCrawlerTypeCapabilitiesRequest
 //
@@ -11725,27 +11737,27 @@ func (client *Client) GetCrawlerTypeCapabilitiesWithOptions(request *GetCrawlerT
 
 // Summary:
 //
-// 查询当前地域支持创建的元数据采集器类型及能力
+// Queries the crawler types supported in the current region, along with their collection scope, scheduling, and extension configuration capabilities.
 //
 // Description:
 //
-// ## 使用场景
+// ## Scenarios
 //
-// 查询当前地域支持创建的采集器类型，以及各类型支持的数据源、采集范围、资源组、调度、AI 元数据描述和扩展配置能力。
+// Queries the crawler types that can be created in the current region, as well as the data sources, collection scope, resource groups, scheduling, AI metadata description, and extension configuration capabilities supported by each type.
 //
-// ## 推荐流程
+// ## Recommended workflow
 //
-// 1. 在创建或更新采集器前调用本接口。
+// 1. Call this operation before creating or updating a crawler.
 //
-// 2. 根据返回的能力信息构造 `CreateCrawler` 或 `UpdateCrawler` 请求。
+// 2. Construct a `CreateCrawler` or `UpdateCrawler` request based on the returned capability information.
 //
-// ## 版本要求
+// ## Edition requirements
 //
-// 需要购买DataWorks基础版及以上版本才能使用。
+// DataWorks Basic Edition or a higher edition is required.
 //
-// ## 注意事项
+// ## Precautions
 //
-// 不同地域和采集器类型的能力可能不同，请以本接口的实际返回结果为准。
+// Capabilities may vary by region and crawler type. Use the actual response of this operation as the reference.
 //
 // @param request - GetCrawlerTypeCapabilitiesRequest
 //
@@ -11957,11 +11969,11 @@ func (client *Client) GetDIJob(request *GetDIJobRequest) (_result *GetDIJobRespo
 
 // Summary:
 //
-// Obtains logs generated for a synchronization task.
+// Retrieves the task logs of a data integration node.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param request - GetDIJobLogRequest
 //
@@ -12001,11 +12013,11 @@ func (client *Client) GetDIJobLogWithOptions(request *GetDIJobLogRequest, runtim
 
 // Summary:
 //
-// Obtains logs generated for a synchronization task.
+// Retrieves the task logs of a data integration node.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param request - GetDIJobLogRequest
 //
@@ -12661,15 +12673,15 @@ func (client *Client) GetDataQualityTemplate(request *GetDataQualityTemplateRequ
 
 // Summary:
 //
-// Retrieves the details of a data source by data source ID.
+// Queries a specified data source by data source ID.
 //
 // Description:
 //
-// 1. This operation is available for all DataWorks editions.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
-// 2. To call this operation, you must have one of the following roles in DataWorks:
+// 2. You must have at least one of the following roles in the DataWorks workspace:
 //
-// - Tenant Owner, Workspace Administrator, Deployment, Development, Project Owner, and O\\&M
+// - Tenant Owner, Workspace Administrator, Deployment, Developer, Project Owner, or O&M Engineer
 //
 // @param request - GetDataSourceRequest
 //
@@ -12709,15 +12721,15 @@ func (client *Client) GetDataSourceWithOptions(request *GetDataSourceRequest, ru
 
 // Summary:
 //
-// Retrieves the details of a data source by data source ID.
+// Queries a specified data source by data source ID.
 //
 // Description:
 //
-// 1. This operation is available for all DataWorks editions.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
-// 2. To call this operation, you must have one of the following roles in DataWorks:
+// 2. You must have at least one of the following roles in the DataWorks workspace:
 //
-// - Tenant Owner, Workspace Administrator, Deployment, Development, Project Owner, and O\\&M
+// - Tenant Owner, Workspace Administrator, Deployment, Developer, Project Owner, or O&M Engineer
 //
 // @param request - GetDataSourceRequest
 //
@@ -12925,7 +12937,7 @@ func (client *Client) GetDatasetVersion(request *GetDatasetVersionRequest) (_res
 
 // Summary:
 //
-// Queries the information about a deployment package.
+// Retrieves the details of a deployment package.
 //
 // @param request - GetDeploymentPackageRequest
 //
@@ -12977,7 +12989,7 @@ func (client *Client) GetDeploymentPackageWithOptions(request *GetDeploymentPack
 
 // Summary:
 //
-// Queries the information about a deployment package.
+// Retrieves the details of a deployment package.
 //
 // @param request - GetDeploymentPackageRequest
 //
@@ -13069,7 +13081,7 @@ func (client *Client) GetFile(request *GetFileRequest) (_result *GetFileResponse
 
 // Summary:
 //
-// Invoke GetFileVersion to obtain the version details of a file.
+// Retrieves the version details of a file.
 //
 // @param request - GetFileVersionRequest
 //
@@ -13125,7 +13137,7 @@ func (client *Client) GetFileVersionWithOptions(request *GetFileVersionRequest, 
 
 // Summary:
 //
-// Invoke GetFileVersion to obtain the version details of a file.
+// Retrieves the version details of a file.
 //
 // @param request - GetFileVersionRequest
 //
@@ -13341,13 +13353,13 @@ func (client *Client) GetIDEEventDetail(request *GetIDEEventDetailRequest) (_res
 
 // Summary:
 //
-// Gets the details of an image by its ID.
+// Retrieves the details of a specified image by image ID.
 //
 // Description:
 //
-// 1. A subscription to DataWorks Basic Edition or a higher edition is required.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
-// 2. **Make sure that you have created the service-linked role AliyunServiceRoleForDataWorks before you call this operation.**
+// 2. **Before calling this operation, make sure that the service-linked role AliyunServiceRoleForDataWorks has been created.**
 //
 // @param request - GetImageRequest
 //
@@ -13395,13 +13407,13 @@ func (client *Client) GetImageWithOptions(request *GetImageRequest, runtime *dar
 
 // Summary:
 //
-// Gets the details of an image by its ID.
+// Retrieves the details of a specified image by image ID.
 //
 // Description:
 //
-// 1. A subscription to DataWorks Basic Edition or a higher edition is required.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
-// 2. **Make sure that you have created the service-linked role AliyunServiceRoleForDataWorks before you call this operation.**
+// 2. **Before calling this operation, make sure that the service-linked role AliyunServiceRoleForDataWorks has been created.**
 //
 // @param request - GetImageRequest
 //
@@ -13419,7 +13431,7 @@ func (client *Client) GetImage(request *GetImageRequest) (_result *GetImageRespo
 
 // Summary:
 //
-// Queries the status information of an asynchronous task. After you call an asynchronous operation, an asynchronous task is generated. You can call the GetJobStatus operation to query the status of the asynchronous task.
+// Returns the status of an asynchronous task. After calling an asynchronous API, poll this API to obtain the success status.
 //
 // @param request - GetJobStatusRequest
 //
@@ -13459,7 +13471,7 @@ func (client *Client) GetJobStatusWithOptions(request *GetJobStatusRequest, runt
 
 // Summary:
 //
-// Queries the status information of an asynchronous task. After you call an asynchronous operation, an asynchronous task is generated. You can call the GetJobStatus operation to query the status of the asynchronous task.
+// Returns the status of an asynchronous task. After calling an asynchronous API, poll this API to obtain the success status.
 //
 // @param request - GetJobStatusRequest
 //
@@ -13477,11 +13489,11 @@ func (client *Client) GetJobStatus(request *GetJobStatusRequest) (_result *GetJo
 
 // Summary:
 //
-// Retrieves details for a specific lineage relationship in the data map.
+// Retrieves the details of a specified lineage relationship in DataWorks Data Map.
 //
 // Description:
 //
-// 1. This operation is available only for DataWorks Standard Edition or later.
+// 1. You must have DataWorks Standard Edition or a higher edition to use this operation.
 //
 // @param request - GetLineageRelationshipRequest
 //
@@ -13521,11 +13533,11 @@ func (client *Client) GetLineageRelationshipWithOptions(request *GetLineageRelat
 
 // Summary:
 //
-// Retrieves details for a specific lineage relationship in the data map.
+// Retrieves the details of a specified lineage relationship in DataWorks Data Map.
 //
 // Description:
 //
-// 1. This operation is available only for DataWorks Standard Edition or later.
+// 1. You must have DataWorks Standard Edition or a higher edition to use this operation.
 //
 // @param request - GetLineageRelationshipRequest
 //
@@ -14083,13 +14095,11 @@ func (client *Client) GetPartition(request *GetPartitionRequest) (_result *GetPa
 
 // Summary:
 //
-// Gets the details of a Deployment Process.
+// Retrieves the details of a deployment process.
 //
 // Description:
 //
-//	Notice:
-//
-// For earlier SDK versions that do not include this API, use the GetDeployment API with the same parameters described in this document.
+//	Notice: This operation may not be available in earlier SDK versions. In this case, use the GetDeployment operation instead. The parameters are the same as those described in this document.
 //
 // @param request - GetPipelineRunRequest
 //
@@ -14129,13 +14139,11 @@ func (client *Client) GetPipelineRunWithOptions(request *GetPipelineRunRequest, 
 
 // Summary:
 //
-// Gets the details of a Deployment Process.
+// Retrieves the details of a deployment process.
 //
 // Description:
 //
-//	Notice:
-//
-// For earlier SDK versions that do not include this API, use the GetDeployment API with the same parameters described in this document.
+//	Notice: This operation may not be available in earlier SDK versions. In this case, use the GetDeployment operation instead. The parameters are the same as those described in this document.
 //
 // @param request - GetPipelineRunRequest
 //
@@ -14313,11 +14321,11 @@ func (client *Client) GetProcessInstance(request *GetProcessInstanceRequest) (_r
 
 // Summary:
 //
-// Queries the information about a DataWorks workspace.
+// Queries the details of a DataWorks workspace.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param request - GetProjectRequest
 //
@@ -14357,11 +14365,11 @@ func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime 
 
 // Summary:
 //
-// Queries the information about a DataWorks workspace.
+// Queries the details of a DataWorks workspace.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param request - GetProjectRequest
 //
@@ -14647,11 +14655,11 @@ func (client *Client) GetResource(request *GetResourceRequest) (_result *GetReso
 
 // Summary:
 //
-// Queries the information about a resource group based on its ID.
+// Retrieves the information of a specified resource group by ID.
 //
 // Description:
 //
-// DataWorks Basic Edition or a more advanced edition is required to use this feature.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - GetResourceGroupRequest
 //
@@ -14691,11 +14699,11 @@ func (client *Client) GetResourceGroupWithOptions(request *GetResourceGroupReque
 
 // Summary:
 //
-// Queries the information about a resource group based on its ID.
+// Retrieves the information of a specified resource group by ID.
 //
 // Description:
 //
-// DataWorks Basic Edition or a more advanced edition is required to use this feature.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - GetResourceGroupRequest
 //
@@ -15212,6 +15220,68 @@ func (client *Client) GetSkill(request *GetSkillRequest) (_result *GetSkillRespo
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetSkillResponse{}
 	_body, _err := client.GetSkillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a version snapshot.
+//
+// @param request - GetSnapshotRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSnapshotResponse
+func (client *Client) GetSnapshotWithOptions(request *GetSnapshotRequest, runtime *dara.RuntimeOptions) (_result *GetSnapshotResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSnapshot"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSnapshotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a version snapshot.
+//
+// @param request - GetSnapshotRequest
+//
+// @return GetSnapshotResponse
+func (client *Client) GetSnapshot(request *GetSnapshotRequest) (_result *GetSnapshotResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetSnapshotResponse{}
+	_body, _err := client.GetSnapshotWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16042,13 +16112,13 @@ func (client *Client) ImportWorkflowDefinition(request *ImportWorkflowDefinition
 //
 // 1. Obtain the `ExecutorJobId` from `RunSemanticJob` or `ListSemanticJobRuns`, and use the `ProjectId` of the job.
 //
-// 2. Optionally specify `RetryTimes` as needed.
+// 2. Optionally specify `RetryTimes`.
 //
-// 3. After the call, poll the final status by using `GetSemanticJobDetail`. If necessary, call `GetSemanticJobLog` for diagnostics.
+// 3. After the call, poll the final status by calling `GetSemanticJobDetail`. If necessary, call `GetSemanticJobLog` for diagnostics.
 //
-// ## Before you begin
+// ## Precautions
 //
-// A successful response indicates only that the stop request has been processed. It does not mean the job has reached a desired state.
+// A successful response indicates only that the stop request has been processed. It does not mean that the job has reached a desired state.
 //
 // @param request - KillSemanticJobRequest
 //
@@ -16112,13 +16182,13 @@ func (client *Client) KillSemanticJobWithOptions(request *KillSemanticJobRequest
 //
 // 1. Obtain the `ExecutorJobId` from `RunSemanticJob` or `ListSemanticJobRuns`, and use the `ProjectId` of the job.
 //
-// 2. Optionally specify `RetryTimes` as needed.
+// 2. Optionally specify `RetryTimes`.
 //
-// 3. After the call, poll the final status by using `GetSemanticJobDetail`. If necessary, call `GetSemanticJobLog` for diagnostics.
+// 3. After the call, poll the final status by calling `GetSemanticJobDetail`. If necessary, call `GetSemanticJobLog` for diagnostics.
 //
-// ## Before you begin
+// ## Precautions
 //
-// A successful response indicates only that the stop request has been processed. It does not mean the job has reached a desired state.
+// A successful response indicates only that the stop request has been processed. It does not mean that the job has reached a desired state.
 //
 // @param request - KillSemanticJobRequest
 //
@@ -16136,17 +16206,17 @@ func (client *Client) KillSemanticJob(request *KillSemanticJobRequest) (_result 
 
 // Summary:
 //
-// Retrieves a list of artifacts from a specified session.
+// Queries the list of artifact files produced by a specified session.
 //
 // Description:
 //
-// ## Request
+// ## Operation description
 //
-// - This operation retrieves all artifacts from a specific session. You can use the `Params.RequestId` parameter to filter for artifacts from a specific request.
+// - This operation queries all artifact files generated in a specific session. You can use the `Params.RequestId` parameter to filter files produced by a single request.
 //
-// - The `NextToken` parameter is a continuation token used to retrieve the next page of results. Do not specify this parameter for the first request.
+// - The `NextToken` parameter is used to retrieve more results in a paginated manner. You do not need to provide this value for the first call.
 //
-// - By default, this operation returns up to 50 artifacts per page. You can use the `MaxResults` parameter to specify a different limit.
+// - By default, a maximum of 50 records are returned per page. You can adjust this value by using the `MaxResults` parameter.
 //
 // @param tmpReq - ListAgentSessionArtifactsRequest
 //
@@ -16204,17 +16274,17 @@ func (client *Client) ListAgentSessionArtifactsWithOptions(tmpReq *ListAgentSess
 
 // Summary:
 //
-// Retrieves a list of artifacts from a specified session.
+// Queries the list of artifact files produced by a specified session.
 //
 // Description:
 //
-// ## Request
+// ## Operation description
 //
-// - This operation retrieves all artifacts from a specific session. You can use the `Params.RequestId` parameter to filter for artifacts from a specific request.
+// - This operation queries all artifact files generated in a specific session. You can use the `Params.RequestId` parameter to filter files produced by a single request.
 //
-// - The `NextToken` parameter is a continuation token used to retrieve the next page of results. Do not specify this parameter for the first request.
+// - The `NextToken` parameter is used to retrieve more results in a paginated manner. You do not need to provide this value for the first call.
 //
-// - By default, this operation returns up to 50 artifacts per page. You can use the `MaxResults` parameter to specify a different limit.
+// - By default, a maximum of 50 records are returned per page. You can adjust this value by using the `MaxResults` parameter.
 //
 // @param request - ListAgentSessionArtifactsRequest
 //
@@ -16336,15 +16406,15 @@ func (client *Client) ListAgentSessions(request *ListAgentSessionsRequest) (_res
 
 // Summary:
 //
-// Lists agents for the current tenant and supports filtering by name and pagination.
+// Queries the list of agents available to the current tenant, with support for filtering by name and pagination.
 //
 // Description:
 //
 // ## Request description
 //
-// - This operation lists all available agents for the current tenant.
+// - This operation queries all available agents under the current tenant.
 //
-// - You can filter the results by specifying an exact match for the `agentName` parameter.
+// - Supports exact match filtering by using the `agentName` parameter.
 //
 // @param tmpReq - ListAgentsRequest
 //
@@ -16402,15 +16472,15 @@ func (client *Client) ListAgentsWithOptions(tmpReq *ListAgentsRequest, runtime *
 
 // Summary:
 //
-// Lists agents for the current tenant and supports filtering by name and pagination.
+// Queries the list of agents available to the current tenant, with support for filtering by name and pagination.
 //
 // Description:
 //
 // ## Request description
 //
-// - This operation lists all available agents for the current tenant.
+// - This operation queries all available agents under the current tenant.
 //
-// - You can filter the results by specifying an exact match for the `agentName` parameter.
+// - Supports exact match filtering by using the `agentName` parameter.
 //
 // @param request - ListAgentsRequest
 //
@@ -17004,29 +17074,29 @@ func (client *Client) ListComputeResources(request *ListComputeResourcesRequest)
 
 // Summary:
 //
-// 查询元数据采集器运行记录
+// Queries the run records of a specified metadata crawler by paging, with optional filtering by time range and run status.
 //
 // Description:
 //
-// ## 使用场景
+// ## Scenarios
 //
-// 分页查询指定元数据采集器最近 30 天内的运行记录，并可按运行开始时间和状态筛选。
+// Queries the run records of a specified metadata crawler within the last 30 days by paging, with optional filtering by run start time and status.
 //
-// ## 推荐流程
+// ## Recommended workflow
 //
-// 1. 使用 `ListCrawlers` 查询采集器 ID。
+// 1. Invoke `ListCrawlers` to obtain the crawler ID.
 //
-// 2. 调用本接口查询运行记录和任务实例 ID。
+// 2. Invoke this operation to query run records and node instance IDs.
 //
-// 3. 对运行、停止等异步操作，以本接口返回的最终状态为准。
+// 3. For asynchronous operations such as running or stopping, use the final status returned by this operation as the source of truth.
 //
-// ## 版本要求
+// ## Edition requirements
 //
-// 需要购买DataWorks基础版及以上版本才能使用。
+// DataWorks Basic Edition or a higher edition is required.
 //
-// ## 注意事项
+// ## Precautions
 //
-// 未指定时间范围时，默认查询当前时间向前 30 天。
+// If no time range is specified, the system queries records from the last 30 days by default.
 //
 // @param request - ListCrawlerRunsRequest
 //
@@ -17090,29 +17160,29 @@ func (client *Client) ListCrawlerRunsWithOptions(request *ListCrawlerRunsRequest
 
 // Summary:
 //
-// 查询元数据采集器运行记录
+// Queries the run records of a specified metadata crawler by paging, with optional filtering by time range and run status.
 //
 // Description:
 //
-// ## 使用场景
+// ## Scenarios
 //
-// 分页查询指定元数据采集器最近 30 天内的运行记录，并可按运行开始时间和状态筛选。
+// Queries the run records of a specified metadata crawler within the last 30 days by paging, with optional filtering by run start time and status.
 //
-// ## 推荐流程
+// ## Recommended workflow
 //
-// 1. 使用 `ListCrawlers` 查询采集器 ID。
+// 1. Invoke `ListCrawlers` to obtain the crawler ID.
 //
-// 2. 调用本接口查询运行记录和任务实例 ID。
+// 2. Invoke this operation to query run records and node instance IDs.
 //
-// 3. 对运行、停止等异步操作，以本接口返回的最终状态为准。
+// 3. For asynchronous operations such as running or stopping, use the final status returned by this operation as the source of truth.
 //
-// ## 版本要求
+// ## Edition requirements
 //
-// 需要购买DataWorks基础版及以上版本才能使用。
+// DataWorks Basic Edition or a higher edition is required.
 //
-// ## 注意事项
+// ## Precautions
 //
-// 未指定时间范围时，默认查询当前时间向前 30 天。
+// If no time range is specified, the system queries records from the last 30 days by default.
 //
 // @param request - ListCrawlerRunsRequest
 //
@@ -17183,27 +17253,27 @@ func (client *Client) ListCrawlerTypes() (_result *ListCrawlerTypesResponse, _er
 
 // Summary:
 //
-// 查询元数据采集器列表
+// Queries metadata crawlers by paged query, and supports filtering by workspace, data source, type, environment, owner, and name.
 //
 // Description:
 //
-// ## 使用场景
+// ## Scenarios
 //
-// 分页查询有权访问的元数据采集器，并可按工作空间、数据源、采集器类型、环境、负责人和名称筛选。
+// Performs a paged query of metadata crawlers that you have access to. Supports filtering by workspace, data source, crawler type, environment, owner, and name.
 //
-// ## 推荐流程
+// ## Recommended flow
 //
-// 1. 按需组合筛选条件查询采集器列表。
+// 1. Combine filter conditions as needed to perform a conditional query of the crawler list.
 //
-// 2. 使用返回的采集器 ID 调用详情、更新、运行、停止、运行记录或删除接口。
+// 2. Use the returned crawler IDs to invoke the get details, update, run, stop, run records, or delete operations.
 //
-// ## 版本要求
+// ## Version requirements
 //
-// 需要购买DataWorks基础版及以上版本才能使用。
+// DataWorks Basic Edition or higher is required.
 //
-// ## 注意事项
+// ## Precautions
 //
-// 多个筛选条件同时提供时组合生效，名称支持模糊匹配。
+// When multiple filter conditions are provided at the same time, they take effect in combination. The name field supports fuzzy match.
 //
 // @param tmpReq - ListCrawlersRequest
 //
@@ -17281,27 +17351,27 @@ func (client *Client) ListCrawlersWithOptions(tmpReq *ListCrawlersRequest, runti
 
 // Summary:
 //
-// 查询元数据采集器列表
+// Queries metadata crawlers by paged query, and supports filtering by workspace, data source, type, environment, owner, and name.
 //
 // Description:
 //
-// ## 使用场景
+// ## Scenarios
 //
-// 分页查询有权访问的元数据采集器，并可按工作空间、数据源、采集器类型、环境、负责人和名称筛选。
+// Performs a paged query of metadata crawlers that you have access to. Supports filtering by workspace, data source, crawler type, environment, owner, and name.
 //
-// ## 推荐流程
+// ## Recommended flow
 //
-// 1. 按需组合筛选条件查询采集器列表。
+// 1. Combine filter conditions as needed to perform a conditional query of the crawler list.
 //
-// 2. 使用返回的采集器 ID 调用详情、更新、运行、停止、运行记录或删除接口。
+// 2. Use the returned crawler IDs to invoke the get details, update, run, stop, run records, or delete operations.
 //
-// ## 版本要求
+// ## Version requirements
 //
-// 需要购买DataWorks基础版及以上版本才能使用。
+// DataWorks Basic Edition or higher is required.
 //
-// ## 注意事项
+// ## Precautions
 //
-// 多个筛选条件同时提供时组合生效，名称支持模糊匹配。
+// When multiple filter conditions are provided at the same time, they take effect in combination. The name field supports fuzzy match.
 //
 // @param request - ListCrawlersRequest
 //
@@ -18282,7 +18352,7 @@ func (client *Client) ListDataQualityResults(request *ListDataQualityResultsRequ
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or higher to use this feature.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - ListDataQualityRuleTemplatesRequest
 //
@@ -18328,7 +18398,7 @@ func (client *Client) ListDataQualityRuleTemplatesWithOptions(request *ListDataQ
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or higher to use this feature.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - ListDataQualityRuleTemplatesRequest
 //
@@ -18349,11 +18419,11 @@ func (client *Client) ListDataQualityRuleTemplates(request *ListDataQualityRuleT
 //
 // Summary:
 //
-// Paginated query of data quality monitoring rules.
+// Queries quality monitoring rules by paging.
 //
 // Description:
 //
-// Requires DataWorks Basic Edition or above.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - ListDataQualityRulesRequest
 //
@@ -18395,11 +18465,11 @@ func (client *Client) ListDataQualityRulesWithOptions(request *ListDataQualityRu
 //
 // Summary:
 //
-// Paginated query of data quality monitoring rules.
+// Queries quality monitoring rules by paging.
 //
 // Description:
 //
-// Requires DataWorks Basic Edition or above.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - ListDataQualityRulesRequest
 //
@@ -19116,7 +19186,7 @@ func (client *Client) ListDatasets(request *ListDatasetsRequest) (_result *ListD
 
 // Summary:
 //
-// Queries a list of versions of files to be deployed.
+// Retrieves the list of file versions pending deployment.
 //
 // @param tmpReq - ListDeploymentPackageFilesRequest
 //
@@ -19210,7 +19280,7 @@ func (client *Client) ListDeploymentPackageFilesWithOptions(tmpReq *ListDeployme
 
 // Summary:
 //
-// Queries a list of versions of files to be deployed.
+// Retrieves the list of file versions pending deployment.
 //
 // @param request - ListDeploymentPackageFilesRequest
 //
@@ -19326,11 +19396,11 @@ func (client *Client) ListDeploymentPackages(request *ListDeploymentPackagesRequ
 
 // Summary:
 //
-// Queries a list of descendant instances of an instance by page.
+// Retrieves a paginated list of downstream instances for a specified instance.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// DataWorks Basic Edition or a more advanced edition is required.
 //
 // @param request - ListDownstreamTaskInstancesRequest
 //
@@ -19370,11 +19440,11 @@ func (client *Client) ListDownstreamTaskInstancesWithOptions(request *ListDownst
 
 // Summary:
 //
-// Queries a list of descendant instances of an instance by page.
+// Retrieves a paginated list of downstream instances for a specified instance.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// DataWorks Basic Edition or a more advanced edition is required.
 //
 // @param request - ListDownstreamTaskInstancesRequest
 //
@@ -19516,7 +19586,7 @@ func (client *Client) ListEntitiesInMetaCollection(request *ListEntitiesInMetaCo
 
 // Summary:
 //
-// Queries a list of file versions.
+// Queries the version list of a file.
 //
 // @param request - ListFileVersionsRequest
 //
@@ -19576,7 +19646,7 @@ func (client *Client) ListFileVersionsWithOptions(request *ListFileVersionsReque
 
 // Summary:
 //
-// Queries a list of file versions.
+// Queries the version list of a file.
 //
 // @param request - ListFileVersionsRequest
 //
@@ -19594,7 +19664,7 @@ func (client *Client) ListFileVersions(request *ListFileVersionsRequest) (_resul
 
 // Summary:
 //
-// Queries a list of files.
+// Queries a list of files by calling ListFiles.
 //
 // @param request - ListFilesRequest
 //
@@ -19698,7 +19768,7 @@ func (client *Client) ListFilesWithOptions(request *ListFilesRequest, runtime *d
 
 // Summary:
 //
-// Queries a list of files.
+// Queries a list of files by calling ListFiles.
 //
 // @param request - ListFilesRequest
 //
@@ -19794,7 +19864,7 @@ func (client *Client) ListFolders(request *ListFoldersRequest) (_result *ListFol
 
 // Summary:
 //
-// Queries a list of user-defined functions (UDFs) in DataStudio. You can also specify filter conditions to query specific UDFs.
+// Retrieves a paginated list of UDF functions in DataStudio. You can also use filter conditions to filter UDF functions.
 //
 // @param request - ListFunctionsRequest
 //
@@ -19834,7 +19904,7 @@ func (client *Client) ListFunctionsWithOptions(request *ListFunctionsRequest, ru
 
 // Summary:
 //
-// Queries a list of user-defined functions (UDFs) in DataStudio. You can also specify filter conditions to query specific UDFs.
+// Retrieves a paginated list of UDF functions in DataStudio. You can also use filter conditions to filter UDF functions.
 //
 // @param request - ListFunctionsRequest
 //
@@ -20222,13 +20292,13 @@ func (client *Client) ListLineageRelationships(request *ListLineageRelationships
 
 // Summary:
 //
-// Queries the upstream and downstream entities for a specified entity in Data Map. You can optionally include detailed lineage relationship information.
+// Queries the upstream and downstream lineage entities for a specified entity in DataWorks Data Map, with an option to include detailed lineage relationship information.
 //
 // Description:
 //
-// 1. To use this API, you must purchase DataWorks Standard Edition or a later edition.
+// 1. You must purchase DataWorks Standard Edition or a higher edition to use this operation.
 //
-// 2. Use this API to query the upstream and downstream entities of a specific entity and their lineage relationships.
+// 2. This operation queries the upstream and downstream entities of the current entity, as well as the lineage relationships between entities.
 //
 // @param request - ListLineagesRequest
 //
@@ -20268,13 +20338,13 @@ func (client *Client) ListLineagesWithOptions(request *ListLineagesRequest, runt
 
 // Summary:
 //
-// Queries the upstream and downstream entities for a specified entity in Data Map. You can optionally include detailed lineage relationship information.
+// Queries the upstream and downstream lineage entities for a specified entity in DataWorks Data Map, with an option to include detailed lineage relationship information.
 //
 // Description:
 //
-// 1. To use this API, you must purchase DataWorks Standard Edition or a later edition.
+// 1. You must purchase DataWorks Standard Edition or a higher edition to use this operation.
 //
-// 2. Use this API to query the upstream and downstream entities of a specific entity and their lineage relationships.
+// 2. This operation queries the upstream and downstream entities of the current entity, as well as the lineage relationships between entities.
 //
 // @param request - ListLineagesRequest
 //
@@ -21066,7 +21136,7 @@ func (client *Client) ListNodeDependencies(request *ListNodeDependenciesRequest)
 
 // Summary:
 //
-// Retrieves a paginated list of data development nodes that can be filtered by specified criteria.
+// Retrieves a list of data development nodes with paging, and supports filtered query by specified conditions.
 //
 // @param request - ListNodesRequest
 //
@@ -21106,7 +21176,7 @@ func (client *Client) ListNodesWithOptions(request *ListNodesRequest, runtime *d
 
 // Summary:
 //
-// Retrieves a paginated list of data development nodes that can be filtered by specified criteria.
+// Retrieves a list of data development nodes with paging, and supports filtered query by specified conditions.
 //
 // @param request - ListNodesRequest
 //
@@ -22370,7 +22440,7 @@ func (client *Client) ListResourceGroups(request *ListResourceGroupsRequest) (_r
 
 // Summary:
 //
-// Queries a list of file resources in DataStudio. You can also specify filter conditions to query specific file resources.
+// Queries resource files with pagination and filtering support.
 //
 // @param request - ListResourcesRequest
 //
@@ -22410,7 +22480,7 @@ func (client *Client) ListResourcesWithOptions(request *ListResourcesRequest, ru
 
 // Summary:
 //
-// Queries a list of file resources in DataStudio. You can also specify filter conditions to query specific file resources.
+// Queries resource files with pagination and filtering support.
 //
 // @param request - ListResourcesRequest
 //
@@ -22428,11 +22498,11 @@ func (client *Client) ListResources(request *ListResourcesRequest) (_result *Lis
 
 // Summary:
 //
-// Retrieves a list of routes for a network resource.
+// Retrieves the route list of a network resource.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - ListRoutesRequest
 //
@@ -22472,11 +22542,11 @@ func (client *Client) ListRoutesWithOptions(request *ListRoutesRequest, runtime 
 
 // Summary:
 //
-// Retrieves a list of routes for a network resource.
+// Retrieves the route list of a network resource.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - ListRoutesRequest
 //
@@ -22973,6 +23043,84 @@ func (client *Client) ListSkills(request *ListSkillsRequest) (_result *ListSkill
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListSkillsResponse{}
 	_body, _err := client.ListSkillsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a list of version snapshots.
+//
+// @param request - ListSnapshotsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSnapshotsResponse
+func (client *Client) ListSnapshotsWithOptions(request *ListSnapshotsRequest, runtime *dara.RuntimeOptions) (_result *ListSnapshotsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.ObjectId) {
+		query["ObjectId"] = request.ObjectId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSnapshots"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSnapshotsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a list of version snapshots.
+//
+// @param request - ListSnapshotsRequest
+//
+// @return ListSnapshotsResponse
+func (client *Client) ListSnapshots(request *ListSnapshotsRequest) (_result *ListSnapshotsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListSnapshotsResponse{}
+	_body, _err := client.ListSnapshotsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23664,11 +23812,11 @@ func (client *Client) ListWorkflowDefinitions(request *ListWorkflowDefinitionsRe
 
 // Summary:
 //
-// Returns a paginated list of workflow instances that can be filtered by specific criteria.
+// Retrieves a paging list of workflow instances, with optional filtered query by conditions.
 //
 // Description:
 //
-// Available with DataWorks Basic Edition or higher.
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param tmpReq - ListWorkflowInstancesRequest
 //
@@ -23774,11 +23922,11 @@ func (client *Client) ListWorkflowInstancesWithOptions(tmpReq *ListWorkflowInsta
 
 // Summary:
 //
-// Returns a paginated list of workflow instances that can be filtered by specific criteria.
+// Retrieves a paging list of workflow instances, with optional filtered query by conditions.
 //
 // Description:
 //
-// Available with DataWorks Basic Edition or higher.
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param request - ListWorkflowInstancesRequest
 //
@@ -25258,11 +25406,11 @@ func (client *Client) ResumeTaskInstances(request *ResumeTaskInstancesRequest) (
 
 // Summary:
 //
-// Revokes roles that are assigned to a member in a workspace.
+// Revokes roles from a workspace member.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// DataWorks Basic Edition or a more advanced edition is required to use this operation.
 //
 // @param tmpReq - RevokeMemberProjectRolesRequest
 //
@@ -25320,11 +25468,11 @@ func (client *Client) RevokeMemberProjectRolesWithOptions(tmpReq *RevokeMemberPr
 
 // Summary:
 //
-// Revokes roles that are assigned to a member in a workspace.
+// Revokes roles from a workspace member.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// DataWorks Basic Edition or a more advanced edition is required to use this operation.
 //
 // @param request - RevokeMemberProjectRolesRequest
 //
@@ -25416,35 +25564,35 @@ func (client *Client) RollbackParameter(request *RollbackParameterRequest) (_res
 
 // Summary:
 //
-// 运行元数据采集器
+// Triggers a specified metadata crawler to run and returns the submit status and associated task instance information.
 //
 // Description:
 //
-// ## 使用场景
+// ## Scenarios
 //
-// 提交指定元数据采集器的运行请求。
+// Submits a run request for a specified metadata crawler.
 //
-// ## 推荐流程
+// ## Recommended process
 //
-// 1. 调用 `ListCrawlers` 查询可运行的采集器 ID。
+// 1. Call `ListCrawlers` to query the IDs of available crawlers.
 //
-// 2. 调用本接口提交运行请求。
+// 2. Call this operation to submit a run request.
 //
-// 3. 调用 `ListCrawlerRuns` 查询最终运行状态。
+// 3. Call `ListCrawlerRuns` to query the final run status.
 //
-// ## 版本要求
+// ## Edition requirements
 //
-// 需要购买DataWorks基础版及以上版本才能使用。
+// DataWorks Basic Edition or higher is required.
 //
-// ## 费用说明
+// ## Billing description
 //
-// 运行采集任务会使用计算资源，可能产生费用，具体以实际使用的资源组和 DataWorks 计费规则为准。
+// Running a collection task consumes compute resources and may incur fees. The actual fees depend on the resource group used and the DataWorks billing rules.
 //
-// 当采集器已开启 AI 元数据描述能力（`EnableAiComment=true`）时，采集元数据并生成 AI 说明会消耗 Token。Token 赠送额度及超出额度后的计费规则，请参见 [Data Agent 费用](https://help.aliyun.com/zh/dataworks/dataworks-data-agent-agent-billing)。
+// If the crawler has the AI metadata description feature enabled (`EnableAiComment=true`), collecting metadata and generating AI descriptions consumes tokens. For information about the complimentary token quota and billing rules after the quota is exceeded, see [Data Agent billing](https://www.alibabacloud.com/help/en/dataworks/dataworks-data-agent-agent-billing).
 //
-// ## 注意事项
+// ## Precautions
 //
-// 接口成功仅表示运行请求已受理，不表示采集任务已经完成。
+// A successful response only indicates that the run request has been accepted. It does not indicate that the collection task is complete.
 //
 // @param request - RunCrawlerRequest
 //
@@ -25488,35 +25636,35 @@ func (client *Client) RunCrawlerWithOptions(request *RunCrawlerRequest, runtime 
 
 // Summary:
 //
-// 运行元数据采集器
+// Triggers a specified metadata crawler to run and returns the submit status and associated task instance information.
 //
 // Description:
 //
-// ## 使用场景
+// ## Scenarios
 //
-// 提交指定元数据采集器的运行请求。
+// Submits a run request for a specified metadata crawler.
 //
-// ## 推荐流程
+// ## Recommended process
 //
-// 1. 调用 `ListCrawlers` 查询可运行的采集器 ID。
+// 1. Call `ListCrawlers` to query the IDs of available crawlers.
 //
-// 2. 调用本接口提交运行请求。
+// 2. Call this operation to submit a run request.
 //
-// 3. 调用 `ListCrawlerRuns` 查询最终运行状态。
+// 3. Call `ListCrawlerRuns` to query the final run status.
 //
-// ## 版本要求
+// ## Edition requirements
 //
-// 需要购买DataWorks基础版及以上版本才能使用。
+// DataWorks Basic Edition or higher is required.
 //
-// ## 费用说明
+// ## Billing description
 //
-// 运行采集任务会使用计算资源，可能产生费用，具体以实际使用的资源组和 DataWorks 计费规则为准。
+// Running a collection task consumes compute resources and may incur fees. The actual fees depend on the resource group used and the DataWorks billing rules.
 //
-// 当采集器已开启 AI 元数据描述能力（`EnableAiComment=true`）时，采集元数据并生成 AI 说明会消耗 Token。Token 赠送额度及超出额度后的计费规则，请参见 [Data Agent 费用](https://help.aliyun.com/zh/dataworks/dataworks-data-agent-agent-billing)。
+// If the crawler has the AI metadata description feature enabled (`EnableAiComment=true`), collecting metadata and generating AI descriptions consumes tokens. For information about the complimentary token quota and billing rules after the quota is exceeded, see [Data Agent billing](https://www.alibabacloud.com/help/en/dataworks/dataworks-data-agent-agent-billing).
 //
-// ## 注意事项
+// ## Precautions
 //
-// 接口成功仅表示运行请求已受理，不表示采集任务已经完成。
+// A successful response only indicates that the run request has been accepted. It does not indicate that the collection task is complete.
 //
 // @param request - RunCrawlerRequest
 //
@@ -25784,11 +25932,11 @@ func (client *Client) StartDIJob(request *StartDIJobRequest) (_result *StartDIJo
 
 // Summary:
 //
-// Start multiple workflow instances in batch.
+// Starts multiple workflow instances in a batch.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param tmpReq - StartWorkflowInstancesRequest
 //
@@ -25842,11 +25990,11 @@ func (client *Client) StartWorkflowInstancesWithOptions(tmpReq *StartWorkflowIns
 
 // Summary:
 //
-// Start multiple workflow instances in batch.
+// Starts multiple workflow instances in a batch.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param request - StartWorkflowInstancesRequest
 //
@@ -25864,29 +26012,29 @@ func (client *Client) StartWorkflowInstances(request *StartWorkflowInstancesRequ
 
 // Summary:
 //
-// 停止元数据采集器运行
+// Stops the currently running task of a specified metadata crawler.
 //
 // Description:
 //
-// ## 使用场景
+// ## Scenarios
 //
-// 停止指定元数据采集器当前正在执行的运行任务。
+// Stops the currently running task of a specified metadata crawler.
 //
-// ## 推荐流程
+// ## Recommended workflow
 //
-// 1. 调用 `ListCrawlerRuns` 确认采集器存在正在执行的运行任务。
+// 1. Call `ListCrawlerRuns` to confirm that the crawler has a running task.
 //
-// 2. 调用本接口提交停止请求。
+// 2. Call this operation to submit a stop request.
 //
-// 3. 再次调用 `ListCrawlerRuns` 确认最终运行状态。
+// 3. Call `ListCrawlerRuns` again to confirm the final run status.
 //
-// ## 版本要求
+// ## Edition requirements
 //
-// 需要购买DataWorks基础版及以上版本才能使用。
+// DataWorks Basic Edition or a more advanced edition is required.
 //
-// ## 注意事项
+// ## Precautions
 //
-// 没有正在执行的运行任务时调用会失败。接口成功仅表示停止请求已受理。
+// The call fails if the crawler has no running task. A successful response only indicates that the stop request has been accepted.
 //
 // @param request - StopCrawlerRequest
 //
@@ -25930,29 +26078,29 @@ func (client *Client) StopCrawlerWithOptions(request *StopCrawlerRequest, runtim
 
 // Summary:
 //
-// 停止元数据采集器运行
+// Stops the currently running task of a specified metadata crawler.
 //
 // Description:
 //
-// ## 使用场景
+// ## Scenarios
 //
-// 停止指定元数据采集器当前正在执行的运行任务。
+// Stops the currently running task of a specified metadata crawler.
 //
-// ## 推荐流程
+// ## Recommended workflow
 //
-// 1. 调用 `ListCrawlerRuns` 确认采集器存在正在执行的运行任务。
+// 1. Call `ListCrawlerRuns` to confirm that the crawler has a running task.
 //
-// 2. 调用本接口提交停止请求。
+// 2. Call this operation to submit a stop request.
 //
-// 3. 再次调用 `ListCrawlerRuns` 确认最终运行状态。
+// 3. Call `ListCrawlerRuns` again to confirm the final run status.
 //
-// ## 版本要求
+// ## Edition requirements
 //
-// 需要购买DataWorks基础版及以上版本才能使用。
+// DataWorks Basic Edition or a more advanced edition is required.
 //
-// ## 注意事项
+// ## Precautions
 //
-// 没有正在执行的运行任务时调用会失败。接口成功仅表示停止请求已受理。
+// The call fails if the crawler has no running task. A successful response only indicates that the stop request has been accepted.
 //
 // @param request - StopCrawlerRequest
 //
@@ -26122,11 +26270,11 @@ func (client *Client) StopProcessInstance(request *StopProcessInstanceRequest) (
 
 // Summary:
 //
-// Stops multiple instances at a time.
+// Stops multiple instances in a batch.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param tmpReq - StopTaskInstancesRequest
 //
@@ -26180,11 +26328,11 @@ func (client *Client) StopTaskInstancesWithOptions(tmpReq *StopTaskInstancesRequ
 
 // Summary:
 //
-// Stops multiple instances at a time.
+// Stops multiple instances in a batch.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param request - StopTaskInstancesRequest
 //
@@ -27238,29 +27386,29 @@ func (client *Client) UpdateComputeResource(request *UpdateComputeResourceReques
 
 // Summary:
 //
-// 更新元数据采集器
+// Updates the resource group, collection scope, scheduling, and extension configurations of a specified metadata crawler.
 //
 // Description:
 //
-// ## 使用场景
+// ## Scenarios
 //
-// 部分更新指定元数据采集器的资源组、采集范围、调度、AI 元数据描述或扩展配置。
+// Partially updates the resource group, collection scope, scheduling, AI metadata description, or extension configurations of a specified metadata crawler.
 //
-// ## 推荐流程
+// ## Recommended workflow
 //
-// 1. 调用 `GetCrawler` 查询当前配置。
+// 1. Call `GetCrawler` to query the current configurations.
 //
-// 2. 调用 `GetCrawlerTypeCapabilities` 确认该采集器类型支持的配置能力。
+// 2. Call `GetCrawlerTypeCapabilities` to check the configuration capabilities supported by the crawler type.
 //
-// 3. 仅传入需要更新的字段调用本接口。
+// 3. Call this operation with only the fields that you want to update.
 //
-// ## 版本要求
+// ## Edition requirements
 //
-// 需要购买DataWorks基础版及以上版本才能使用。
+// DataWorks Basic Edition or a more advanced edition is required.
 //
-// ## 注意事项
+// ## Precautions
 //
-// 至少需要提供一个可更新字段；未提供的字段保持不变。
+// At least one updatable field must be provided. Fields that are not provided remain unchanged.
 //
 // @param tmpReq - UpdateCrawlerRequest
 //
@@ -27338,29 +27486,29 @@ func (client *Client) UpdateCrawlerWithOptions(tmpReq *UpdateCrawlerRequest, run
 
 // Summary:
 //
-// 更新元数据采集器
+// Updates the resource group, collection scope, scheduling, and extension configurations of a specified metadata crawler.
 //
 // Description:
 //
-// ## 使用场景
+// ## Scenarios
 //
-// 部分更新指定元数据采集器的资源组、采集范围、调度、AI 元数据描述或扩展配置。
+// Partially updates the resource group, collection scope, scheduling, AI metadata description, or extension configurations of a specified metadata crawler.
 //
-// ## 推荐流程
+// ## Recommended workflow
 //
-// 1. 调用 `GetCrawler` 查询当前配置。
+// 1. Call `GetCrawler` to query the current configurations.
 //
-// 2. 调用 `GetCrawlerTypeCapabilities` 确认该采集器类型支持的配置能力。
+// 2. Call `GetCrawlerTypeCapabilities` to check the configuration capabilities supported by the crawler type.
 //
-// 3. 仅传入需要更新的字段调用本接口。
+// 3. Call this operation with only the fields that you want to update.
 //
-// ## 版本要求
+// ## Edition requirements
 //
-// 需要购买DataWorks基础版及以上版本才能使用。
+// DataWorks Basic Edition or a more advanced edition is required.
 //
-// ## 注意事项
+// ## Precautions
 //
-// 至少需要提供一个可更新字段；未提供的字段保持不变。
+// At least one updatable field must be provided. Fields that are not provided remain unchanged.
 //
 // @param request - UpdateCrawlerRequest
 //
@@ -27668,11 +27816,11 @@ func (client *Client) UpdateDIJob(request *UpdateDIJobRequest) (_result *UpdateD
 
 // Summary:
 //
-// Updates a tag.
+// Updates a label.
 //
 // Description:
 //
-// This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
+// You must purchase DataWorks Enterprise Edition or a higher edition to use this feature.
 //
 // @param tmpReq - UpdateDataAssetTagRequest
 //
@@ -27738,11 +27886,11 @@ func (client *Client) UpdateDataAssetTagWithOptions(tmpReq *UpdateDataAssetTagRe
 
 // Summary:
 //
-// Updates a tag.
+// Updates a label.
 //
 // Description:
 //
-// This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
+// You must purchase DataWorks Enterprise Edition or a higher edition to use this feature.
 //
 // @param request - UpdateDataAssetTagRequest
 //
@@ -27764,7 +27912,7 @@ func (client *Client) UpdateDataAssetTag(request *UpdateDataAssetTagRequest) (_r
 //
 // Description:
 //
-// DataWorks Basic Edition or a higher edition is required.
+// DataWorks Basic Edition or a more advanced edition is required.
 //
 // @param tmpReq - UpdateDataQualityAlertRuleRequest
 //
@@ -27838,7 +27986,7 @@ func (client *Client) UpdateDataQualityAlertRuleWithOptions(tmpReq *UpdateDataQu
 //
 // Description:
 //
-// DataWorks Basic Edition or a higher edition is required.
+// DataWorks Basic Edition or a more advanced edition is required.
 //
 // @param request - UpdateDataQualityAlertRuleRequest
 //
@@ -29073,11 +29221,11 @@ func (client *Client) UpdateIDEEventResult(request *UpdateIDEEventResultRequest)
 //
 // Description:
 //
-// ## Description
+// ## Operation description
 //
-// This API updates the configuration of a specified MCP Server. Omitted fields retain their original values.
+// This API operation allows you to update the configuration of a specified MCP Server, including the service URL, transport protocol, custom request headers, and visibility settings. Fields that are not provided retain their existing values.
 //
-// **Note**: When you modify the`Visibility` parameter, you must provide either`ProjectIds` or`UserIds` in`VisibilityScope` to apply the correct access control scope.
+// **Note**: When you modify the `Visibility` parameter, selectively provide `ProjectIds` or `UserIds` in `VisibilityScope` based on the visibility setting to ensure that the correct access control scope is applied.
 //
 // @param tmpReq - UpdateMcpServerRequest
 //
@@ -29155,11 +29303,11 @@ func (client *Client) UpdateMcpServerWithOptions(tmpReq *UpdateMcpServerRequest,
 //
 // Description:
 //
-// ## Description
+// ## Operation description
 //
-// This API updates the configuration of a specified MCP Server. Omitted fields retain their original values.
+// This API operation allows you to update the configuration of a specified MCP Server, including the service URL, transport protocol, custom request headers, and visibility settings. Fields that are not provided retain their existing values.
 //
-// **Note**: When you modify the`Visibility` parameter, you must provide either`ProjectIds` or`UserIds` in`VisibilityScope` to apply the correct access control scope.
+// **Note**: When you modify the `Visibility` parameter, selectively provide `ProjectIds` or `UserIds` in `VisibilityScope` based on the visibility setting to ensure that the correct access control scope is applied.
 //
 // @param request - UpdateMcpServerRequest
 //

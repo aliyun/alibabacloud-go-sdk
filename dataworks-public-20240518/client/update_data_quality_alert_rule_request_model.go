@@ -22,19 +22,19 @@ type iUpdateDataQualityAlertRuleRequest interface {
 }
 
 type UpdateDataQualityAlertRuleRequest struct {
-	// The alert condition of the data quality monitoring rule.
+	// The alert condition of the data quality monitoring alert rule.
 	//
 	// example:
 	//
 	// results.any { r -> r.status == \\"fail\\" && r.rule.severity == \\"High\\" }
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// The ID of the alert rule.
+	// The alert rule ID.
 	//
 	// example:
 	//
 	// 105412
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Alert notification configurations.
+	// The alert notification configuration.
 	Notification *UpdateDataQualityAlertRuleRequestNotification `json:"Notification,omitempty" xml:"Notification,omitempty" type:"Struct"`
 	// The project ID.
 	//
@@ -42,7 +42,7 @@ type UpdateDataQualityAlertRuleRequest struct {
 	//
 	// 1000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The monitored target of the data quality monitoring rule.
+	// The monitoring target of the data quality monitoring alert rule.
 	Target *UpdateDataQualityAlertRuleRequestTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
 }
 
@@ -114,7 +114,7 @@ func (s *UpdateDataQualityAlertRuleRequest) Validate() error {
 }
 
 type UpdateDataQualityAlertRuleRequestNotification struct {
-	// The list of alert channels. You can set both Email and Sms at the same time. In other cases, only one channel can be set.
+	// The list of notification channels. You can set both Email and Sms at the same time. In other cases, only one channel can be specified.
 	//
 	// This parameter is required.
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
@@ -162,13 +162,13 @@ func (s *UpdateDataQualityAlertRuleRequestNotification) Validate() error {
 }
 
 type UpdateDataQualityAlertRuleRequestNotificationReceivers struct {
-	// Additional configurations required for the alert recipients. When ReceiverType is DingdingUrl, you can set `{"atAll":true}` to mention all members.
+	// The additional configuration required for the alert recipient. When ReceiverType is set to DingdingUrl, you can set `{"atAll":true}` to @ all members.
 	//
 	// example:
 	//
 	// {"atAll":true}
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// The type of alert recipients.
+	// The alerting accept object type. Valid values:
 	//
 	// - AliUid
 	//
@@ -192,7 +192,7 @@ type UpdateDataQualityAlertRuleRequestNotificationReceivers struct {
 	//
 	// TaskOwner
 	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
-	// The value of alert recipients.
+	// The values of the alert recipients.
 	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
 }
 
@@ -236,9 +236,9 @@ func (s *UpdateDataQualityAlertRuleRequestNotificationReceivers) Validate() erro
 }
 
 type UpdateDataQualityAlertRuleRequestTarget struct {
-	// The list of monitored target IDs. Currently, only one ID can be set.
+	// The list of monitoring target IDs. Currently, only one ID can be specified.
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
-	// The type of the monitored target. Only DataQualityScan is supported.
+	// The type of the monitored object. Only DataQualityScan is supported.
 	//
 	// example:
 	//

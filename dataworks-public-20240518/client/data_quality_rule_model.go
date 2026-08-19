@@ -379,8 +379,6 @@ func (s *DataQualityRuleCheckingConfigThresholds) Validate() error {
 }
 
 type DataQualityRuleCheckingConfigThresholdsCritical struct {
-	// 校验表达式
-	//
 	// example:
 	//
 	// 波动率类型规则使用，通过表达式来表示波动阈值。如：波动上升大于0.01： $checkValue > 0.01  波动下降大于0.01：$checkValue < -0.01   波动率绝对值：abs($checkValue) > 0.01
@@ -451,8 +449,6 @@ func (s *DataQualityRuleCheckingConfigThresholdsCritical) Validate() error {
 }
 
 type DataQualityRuleCheckingConfigThresholdsExpected struct {
-	// 阈值表达式
-	//
 	// example:
 	//
 	// 波动率类型规则使用，通过表达式来表示波动阈值。如：波动上升大于0.01： $checkValue > 0.01  波动下降大于0.01：$checkValue < -0.01   波动率绝对值：abs($checkValue) > 0.01
@@ -523,8 +519,6 @@ func (s *DataQualityRuleCheckingConfigThresholdsExpected) Validate() error {
 }
 
 type DataQualityRuleCheckingConfigThresholdsWarned struct {
-	// 阈值表达式
-	//
 	// example:
 	//
 	// 波动率类型规则使用，通过表达式来表示波动阈值。如：波动上升大于0.01： $checkValue > 0.01  波动下降大于0.01：$checkValue < -0.01   波动率绝对值：abs($checkValue) > 0.01

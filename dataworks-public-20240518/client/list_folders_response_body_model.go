@@ -24,7 +24,7 @@ type iListFoldersResponseBody interface {
 }
 
 type ListFoldersResponseBody struct {
-	// The list of folders that meet the conditions.
+	// The list of folders that meet the specified conditions.
 	Data *ListFoldersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -32,7 +32,7 @@ type ListFoldersResponseBody struct {
 	//
 	// Invalid.Tenant.ConnectionNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message
+	// The error message.
 	//
 	// example:
 	//
@@ -44,17 +44,17 @@ type ListFoldersResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. Used to troubleshoot errors.
+	// The request ID. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 0000-ABCD-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - true: success.
+	// - true: The call was successful.
 	//
-	// - false: failure.
+	// - false: The call failed.
 	//
 	// example:
 	//
@@ -136,19 +136,19 @@ func (s *ListFoldersResponseBody) Validate() error {
 type ListFoldersResponseBodyData struct {
 	// The list of folders.
 	Folders []*ListFoldersResponseBodyDataFolders `json:"Folders,omitempty" xml:"Folders,omitempty" type:"Repeated"`
-	// The current page number.
+	// The page number of the current page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of records that meet the query conditions.
+	// The total number of entries that meet the query conditions.
 	//
 	// example:
 	//
@@ -214,13 +214,13 @@ func (s *ListFoldersResponseBodyData) Validate() error {
 }
 
 type ListFoldersResponseBodyDataFolders struct {
-	// The folder ID.
+	// The ID of the folder.
 	//
 	// example:
 	//
 	// 2735c2****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The folder path.
+	// The path of the folder.
 	//
 	// example:
 	//

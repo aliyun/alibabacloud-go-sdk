@@ -20,7 +20,7 @@ type iCreateDIAlarmRuleResponseBody interface {
 type CreateDIAlarmRuleResponseBody struct {
 	// Deprecated
 	//
-	// This parameter is deprecated and is replaced by the Id parameter.
+	// **[Deprecated]*	- Use the Id parameter instead.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type CreateDIAlarmRuleResponseBody struct {
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The request ID. You can locate logs and troubleshoot issues based on the ID.
+	// The request ID. Used for locating logs and troubleshooting issues.
 	//
 	// example:
 	//

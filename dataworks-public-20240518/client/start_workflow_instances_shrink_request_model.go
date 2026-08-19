@@ -22,7 +22,7 @@ type StartWorkflowInstancesShrinkRequest struct {
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The IDs of workflow instances.
+	// The list of workflow instance IDs.
 	//
 	// This parameter is required.
 	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`

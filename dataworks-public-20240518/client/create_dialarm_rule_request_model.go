@@ -28,13 +28,13 @@ type iCreateDIAlarmRuleRequest interface {
 }
 
 type CreateDIAlarmRuleRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The idempotency parameter.
 	//
 	// example:
 	//
 	// ABFUOEUOTRTRJKE
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the synchronization task with which the alert rule is associated.
+	// The task ID associated with the alert rule.
 	//
 	// This parameter is required.
 	//
@@ -54,17 +54,17 @@ type CreateDIAlarmRuleRequest struct {
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The metric type in the alert rule. Valid values:
+	// The alert metric type. Valid values:
 	//
-	// - Heartbeat
+	// - Heartbeat: task status alert.
 	//
-	// - FailoverCount
+	// - FailoverCount: failover count alert.
 	//
-	// - Delay
+	// - Delay: task latency alert.
 	//
-	// - DdlReport
+	// - DdlReport: DDL notification.
 	//
-	// - ResourceUtilization
+	// - ResourceUtilization: resource group utilization.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +84,7 @@ type CreateDIAlarmRuleRequest struct {
 	//
 	// This parameter is required.
 	NotificationSettings *CreateDIAlarmRuleRequestNotificationSettings `json:"NotificationSettings,omitempty" xml:"NotificationSettings,omitempty" type:"Struct"`
-	// The conditions that can trigger the alert rule.
+	// The list of alert trigger conditions. Multiple conditions are supported.
 	//
 	// This parameter is required.
 	TriggerConditions []*CreateDIAlarmRuleRequestTriggerConditions `json:"TriggerConditions,omitempty" xml:"TriggerConditions,omitempty" type:"Repeated"`
@@ -191,21 +191,21 @@ func (s *CreateDIAlarmRuleRequest) Validate() error {
 type CreateDIAlarmRuleRequestNotificationSettings struct {
 	// Deprecated
 	//
-	// This parameter is deprecated and replaced by the MuteInterval parameter.
+	// **[Deprecated]*	- Use the MuteInterval parameter instead.
 	//
 	// example:
 	//
 	// 5
 	InhibitionInterval *int32 `json:"InhibitionInterval,omitempty" xml:"InhibitionInterval,omitempty"`
-	// The duration of the alert suppression interval. Default value: 5. Unit: minutes.
+	// The alert mute interval. Unit: minutes. Default value: 5.
 	//
 	// example:
 	//
 	// 5
 	MuteInterval *int32 `json:"MuteInterval,omitempty" xml:"MuteInterval,omitempty"`
-	// The alert notification methods.
+	// The alert notification channels.
 	NotificationChannels []*CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
-	// The settings of alert notification recipients.
+	// The alert notification receivers.
 	NotificationReceivers []*CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers `json:"NotificationReceivers,omitempty" xml:"NotificationReceivers,omitempty" type:"Repeated"`
 }
 
@@ -276,15 +276,15 @@ func (s *CreateDIAlarmRuleRequestNotificationSettings) Validate() error {
 }
 
 type CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels struct {
-	// The alert notification method. Valid values:
+	// The notification channel. Valid values:
 	//
-	// - Mail
+	// - Mail: email.
 	//
-	// - Phone
+	// - Phone: phone call.
 	//
-	// - Sms
+	// - Sms: text message.
 	//
-	// - Ding
+	// - Ding: DingTalk.
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
 	// The severity level. Valid values:
 	//
@@ -329,17 +329,17 @@ func (s *CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels) Valid
 }
 
 type CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers struct {
-	// The recipient type. Valid values: AliyunUid, DingToken, FeishuToken, and WebHookUrl.
+	// The receiver type. Valid values: AliyunUid, DingToken, FeishuToken, and WebHookUrl.
 	//
 	// example:
 	//
 	// DingToken
 	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
-	// The recipient.
+	// The receiver values.
 	//
-	// - If the ReceiverType parameter is set to AliyunUid, set this parameter to the Alibaba Cloud account ID of a user.
+	// - If the receiver type is AliyunUid, the value is the Alibaba Cloud account ID.
 	//
-	// - If the ReceiverType parameter is set to DingToken, set this parameter to the token of a DingTalk chatbot.
+	// - If the receiver type is DingToken, the value is the DingTalk token.
 	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
 }
 
@@ -376,11 +376,11 @@ func (s *CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers) Vali
 type CreateDIAlarmRuleRequestTriggerConditions struct {
 	// Deprecated
 	//
-	// This parameter is deprecated and replaced by the DdlTypes parameter.
+	// **[Deprecated]*	- Use the DdlTypes parameter instead.
 	DdlReportTags []*string `json:"DdlReportTags,omitempty" xml:"DdlReportTags,omitempty" type:"Repeated"`
-	// The types of DDL operations for which the alert rule takes effect.
+	// The list of DDL types that take effect. This parameter takes effect only when the metric type is DDL notification.
 	DdlTypes []*string `json:"DdlTypes,omitempty" xml:"DdlTypes,omitempty" type:"Repeated"`
-	// The time interval for alert calculation. Unit: minutes.
+	// The time window for alert calculation. Unit: minutes.
 	//
 	// example:
 	//
@@ -398,11 +398,11 @@ type CreateDIAlarmRuleRequestTriggerConditions struct {
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The alert threshold.
 	//
-	// - If the alert rule is for task status, you do not need to specify a threshold.
+	// - Task status alert: no threshold is required.
 	//
-	// - If the alert rule is for failovers, you must specify the number of failovers.
+	// - Failover count alert: the threshold is the number of failovers.
 	//
-	// - If the alert rule is for latency, you must specify the latency duration, in seconds.
+	// - Task latency alert: the threshold is the latency duration. Unit: seconds.
 	//
 	// example:
 	//

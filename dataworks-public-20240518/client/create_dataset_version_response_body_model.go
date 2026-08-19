@@ -32,7 +32,7 @@ type CreateDatasetVersionResponseBody struct {
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the dataset version was created successfully.
 	//
 	// example:
 	//

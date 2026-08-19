@@ -88,13 +88,13 @@ type Column struct {
 	//
 	// example:
 	//
-	// maxcompute-column:::project_name:[schema_name]:table_name:column_name
+	// maxcompute-column:123456::test_project:default:test_tbl:col1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name.
 	//
 	// example:
 	//
-	// column_name
+	// col1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Indicates whether the column is a partition key.
 	//
@@ -119,7 +119,7 @@ type Column struct {
 	//
 	// example:
 	//
-	// maxcompute-table:::project_name:[schema_name]:table_name
+	// maxcompute-table:123456::test_project:default:test_tbl
 	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
 	// The type.
 	//

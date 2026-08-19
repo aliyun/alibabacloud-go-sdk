@@ -18,12 +18,16 @@ type iGetCrawlerResponseBody interface {
 }
 
 type GetCrawlerResponseBody struct {
+	// The metadata crawler details.
 	Crawler *GetCrawlerResponseBodyCrawler `json:"Crawler,omitempty" xml:"Crawler,omitempty" type:"Struct"`
+	// The request ID. Used for locating logs and troubleshooting issues.
+	//
 	// example:
 	//
 	// 9252F32F-D855-549E-8898-61CF5A733050
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetCrawlerResponseBody) String() string {
@@ -71,66 +75,100 @@ func (s *GetCrawlerResponseBody) Validate() error {
 }
 
 type GetCrawlerResponseBodyCrawler struct {
+	// The creation time, in millisecond-level UNIX timestamp.
+	//
 	// example:
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// 12345
-	DataSourceId    *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	EnableAiComment *bool  `json:"EnableAiComment,omitempty" xml:"EnableAiComment,omitempty"`
+	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// Indicates whether AI metadata description is enabled.
+	EnableAiComment *bool `json:"EnableAiComment,omitempty" xml:"EnableAiComment,omitempty"`
+	// The DataWorks environment type. Valid values: Dev, Prod.
+	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The crawler ID.
+	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The latest run status. Valid values: WAITING, RUNNING, SUCCESS, ERROR, SHUTDOWN. This value may be empty if the crawler has not been run.
+	//
 	// example:
 	//
 	// SUCCESS
 	LastRunStatus *string `json:"LastRunStatus,omitempty" xml:"LastRunStatus,omitempty"`
+	// The DataWorks task instance ID associated with the latest run. This value may be empty if the crawler has not been run.
+	//
 	// example:
 	//
 	// 1234
 	LastRunTaskInstanceId *int64 `json:"LastRunTaskInstanceId,omitempty" xml:"LastRunTaskInstanceId,omitempty"`
+	// The meta entity ID associated with the crawler, which can be used to connect to metadata query APIs.
+	//
 	// example:
 	//
 	// starrocks:example-instance
 	MetaEntityId *string `json:"MetaEntityId,omitempty" xml:"MetaEntityId,omitempty"`
+	// The modification time, in millisecond-level UNIX timestamp.
+	//
 	// example:
 	//
 	// 1710239005403
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The crawler name.
+	//
 	// example:
 	//
 	// example_crawler
-	Name    *string            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The extended configuration for the crawler type.
 	Options map[string]*string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The DataWorks user ID of the crawler owner.
+	//
 	// example:
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The DataWorks workspace ID.
+	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The Serverless 2.0 resource group ID used to run the collection task.
+	//
 	// example:
 	//
 	// Serverless_res_group_1234567890123456_1234567890
-	ResourceGroupId *string                                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ScheduleConfig  *GetCrawlerResponseBodyCrawlerScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
-	Scope           *GetCrawlerResponseBodyCrawlerScope          `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Struct"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The schedule configuration.
+	ScheduleConfig *GetCrawlerResponseBodyCrawlerScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	// The collection scope configuration.
+	Scope *GetCrawlerResponseBodyCrawlerScope `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Struct"`
+	// The crawler status. The value is VALID if the crawler configuration is valid and the associated data source exists. Otherwise, the value is INVALID.
+	//
 	// example:
 	//
 	// VALID
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The DataWorks scheduling task ID associated with the crawler, which can be used to call GetTask to query the task definition.
+	//
 	// example:
 	//
 	// 1234
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The crawler type.
+	//
 	// example:
 	//
 	// starrocks
@@ -331,10 +369,14 @@ func (s *GetCrawlerResponseBodyCrawler) Validate() error {
 }
 
 type GetCrawlerResponseBodyCrawlerScheduleConfig struct {
+	// The cron expression.
+	//
 	// example:
 	//
 	// 0 0 2 ? 	- *
 	CronExpress *string `json:"CronExpress,omitempty" xml:"CronExpress,omitempty"`
+	// The schedule type. Valid values: MANUAL, NORMAL.
+	//
 	// example:
 	//
 	// NORMAL
@@ -372,11 +414,16 @@ func (s *GetCrawlerResponseBodyCrawlerScheduleConfig) Validate() error {
 }
 
 type GetCrawlerResponseBodyCrawlerScope struct {
+	// The exclusion regular expression for the collection scope.
+	//
 	// example:
 	//
 	// ^tmp_.*
-	ExcludeRegex *string   `json:"ExcludeRegex,omitempty" xml:"ExcludeRegex,omitempty"`
-	Items        []*string `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	ExcludeRegex *string `json:"ExcludeRegex,omitempty" xml:"ExcludeRegex,omitempty"`
+	// The collection scope entries.
+	Items []*string `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The collection scope granularity. Valid values: PROJECT, DATABASE, INSTANCE, CATALOG.
+	//
 	// example:
 	//
 	// DATABASE

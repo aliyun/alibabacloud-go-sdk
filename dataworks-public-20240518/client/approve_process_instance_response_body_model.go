@@ -14,7 +14,7 @@ type iApproveProcessInstanceResponseBody interface {
 }
 
 type ApproveProcessInstanceResponseBody struct {
-	// The request ID, which is used to locate logs and troubleshoot issues.
+	// The request ID. Used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//

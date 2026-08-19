@@ -26,55 +26,43 @@ type iSchema interface {
 }
 
 type Schema struct {
-	// 注释。
+	// The comment.
 	//
 	// example:
 	//
 	// test comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// 创建时间（毫秒级时间戳）。
+	// The creation time (millisecond-level timestamp).
 	//
 	// example:
 	//
 	// 1736852168000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// ID，可参考[元数据实体相关概念说明](https://help.aliyun.com/document_detail/2880092.html)。
-	//
-	// 格式为`${EntityType}:${实例ID或转义后的URL}:${数据目录名称}:${数据库名称}:${模式名称}`，对于不存在的层级置空。
-	//
-	// > 对于MaxCompute类型，此处的实例ID即为主账号ID，数据库名称即为MaxCompute项目名称。
+	// ID
 	//
 	// example:
 	//
-	// maxcompute-schema:123456XXX::test_project:default
-	//
-	// holo-schema:h-abc123xxx::test_db:test_schema
+	// maxcompute-schema:123456::test_project:default
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 更新时间（毫秒级时间戳）。
+	// The update time (millisecond-level timestamp).
 	//
 	// example:
 	//
 	// 1736852168000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// 名称。
+	// The name.
 	//
 	// example:
 	//
 	// test_db
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 父层级元数据实体ID，父层级实体类型取值参考ListCrawlerTypes接口。
-	//
-	// 格式为`${EntityType}:${实例ID或转义后的URL}:${数据目录名称}:${数据库名称}`，对于不存在的层级置空。
-	//
-	// > 对于MaxCompute类型，此处的实例ID即为主账号ID，数据库名称即为MaxCompute项目名称。
+	// The parent metadata entity ID.
 	//
 	// example:
 	//
-	// maxcompute-project:123456XXX::test_project
-	//
-	// holo-database:h-abc123xxx::test_db
+	// maxcompute-project:123456::test_project
 	ParentMetaEntityId *string `json:"ParentMetaEntityId,omitempty" xml:"ParentMetaEntityId,omitempty"`
-	// 类型。
+	// The type.
 	//
 	// example:
 	//

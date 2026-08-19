@@ -24,7 +24,7 @@ type iUpdateMcpServerShrinkRequest interface {
 }
 
 type UpdateMcpServerShrinkRequest struct {
-	// The new custom request headers, specified as key-value pairs.
+	// The new custom request headers (key-value pairs).
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type UpdateMcpServerShrinkRequest struct {
 	//
 	// SSE
 	Transport *string `json:"Transport,omitempty" xml:"Transport,omitempty"`
-	// The new service address. The address must start with`https://`.
+	// The new service URL. The URL must start with `https://`.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type UpdateMcpServerShrinkRequest struct {
 	//
 	// TENANT
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
-	// The new visibility scope. The fields in this object depend on the value of the `Visibility` parameter.
+	// The new visibility scope. Provide the corresponding field based on the Visibility setting.
 	VisibilityScopeShrink *string `json:"VisibilityScope,omitempty" xml:"VisibilityScope,omitempty"`
 }
 

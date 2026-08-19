@@ -24,28 +24,40 @@ type iListCrawlerRunsRequest interface {
 }
 
 type ListCrawlerRunsRequest struct {
+	// The ID of the metadata crawler. You can call ListCrawlers to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The page number. Pages start from 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20. Maximum value: 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The lower bound of the run start time, in millisecond-level UNIX timestamp. The value must be within the last 30 days. If not specified, the default value is 30 days before the current time.
+	//
 	// example:
 	//
 	// 1710239005403
 	StartTimeFrom *int64 `json:"StartTimeFrom,omitempty" xml:"StartTimeFrom,omitempty"`
+	// The upper bound of the run start time, in millisecond-level UNIX timestamp. The value must be within the last 30 days. If not specified, the default value is the current time.
+	//
 	// example:
 	//
 	// 1710325405403
 	StartTimeTo *int64 `json:"StartTimeTo,omitempty" xml:"StartTimeTo,omitempty"`
+	// The run status. Valid values: WAITING, RUNNING, SUCCESS, ERROR, SHUTDOWN.
+	//
 	// example:
 	//
 	// SUCCESS

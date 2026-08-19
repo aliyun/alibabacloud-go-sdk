@@ -16,13 +16,13 @@ type iCreateDataSourceResponseBody interface {
 }
 
 type CreateDataSourceResponseBody struct {
-	// The data source ID.
+	// The ID of the created data source. This is the unique identifier of the data source.
 	//
 	// example:
 	//
 	// 22130
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The request ID. You can locate logs and troubleshoot issues based on the ID.
+	// The request ID. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//

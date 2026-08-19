@@ -24,7 +24,7 @@ type iGetDeploymentPackageResponseBody interface {
 }
 
 type GetDeploymentPackageResponseBody struct {
-	// The deployment package details.
+	// The details of the deployment package.
 	Data *GetDeploymentPackageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -44,17 +44,17 @@ type GetDeploymentPackageResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. Use this ID to locate logs and troubleshoot issues.
+	// The request ID. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 0bc1ec92159376****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call succeeded. Valid values:
+	// Indicates whether the call was successful.
 	//
-	// - **true**
+	// - **true**: The call was successful.
 	//
-	// - **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -134,9 +134,9 @@ func (s *GetDeploymentPackageResponseBody) Validate() error {
 }
 
 type GetDeploymentPackageResponseBodyData struct {
-	// The deployment item details.
+	// The details of the deployed items.
 	DeployedItems []*GetDeploymentPackageResponseBodyDataDeployedItems `json:"DeployedItems,omitempty" xml:"DeployedItems,omitempty" type:"Repeated"`
-	// The deployment package details.
+	// The details of the deployment package.
 	Deployment *GetDeploymentPackageResponseBodyDataDeployment `json:"Deployment,omitempty" xml:"Deployment,omitempty" type:"Struct"`
 }
 
@@ -185,31 +185,33 @@ func (s *GetDeploymentPackageResponseBodyData) Validate() error {
 }
 
 type GetDeploymentPackageResponseBodyDataDeployedItems struct {
-	// The file ID.
+	// The ID of the file.
 	//
 	// example:
 	//
 	// 5076****
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The file version.
+	// The version of the file.
 	//
 	// example:
 	//
 	// 7
 	FileVersion *int64 `json:"FileVersion,omitempty" xml:"FileVersion,omitempty"`
-	// - UNPUBLISHED(0)
+	// The status of the deployed item. Valid values:
 	//
-	// - SUCCESS(1)
+	// - UNPUBLISHED(0): not published
 	//
-	// - ERROR(2)
+	// - SUCCESS(1): published successfully
 	//
-	// - CLONED(3)
+	// - ERROR(2): publishing failed
 	//
-	// - DEPLOY_ERROR(4)
+	// - CLONED(3): cloned successfully
 	//
-	// - CLONING(5)
+	// - DEPLOY_ERROR(4): publishing failed
 	//
-	// - REJECT(6)
+	// - CLONING(5): cloning in progress
+	//
+	// - REJECT(6): publishing rejected
 	//
 	// example:
 	//
@@ -257,65 +259,79 @@ func (s *GetDeploymentPackageResponseBodyDataDeployedItems) Validate() error {
 }
 
 type GetDeploymentPackageResponseBodyDataDeployment struct {
-	// The validation status of nodes in the deployment package. For packages deployed to the development environment (toEnviroment=1), you can only proceed to deploy to production if the package Status is 1 (succeeded) and CheckingStatus is empty (validation complete).
+	// The check status of the nodes involved in the deployment package. When the target environment is the development environment (toEnvironment=1), you can publish the file to the production environment only when the Status of the deployment package is 1 and CheckingStatus is empty.
 	//
-	// - 7: Validation failed
+	// - 7: The check failed.
 	//
-	// - 8: Validation in progress
+	// - 8: The check is in progress.
 	//
 	// example:
 	//
 	// 7
 	CheckingStatus *int32 `json:"CheckingStatus,omitempty" xml:"CheckingStatus,omitempty"`
-	// The timestamp (in milliseconds) when the deployment package was created.
+	// The timestamp when the deployment package was generated, in milliseconds.
 	//
 	// example:
 	//
 	// 1593877765000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The Alibaba Cloud account ID of the user who created the deployment package.
+	// The Alibaba Cloud user ID of the user who created the deployment package.
 	//
 	// example:
 	//
 	// 20030****
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The detailed error message when the deployment package fails (status is 2).
+	// The error message recorded when the deployment package fails to run (status is 2).
 	//
 	// example:
 	//
 	// Success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The timestamp (in milliseconds) when the deployment started.
+	// The timestamp when the deployment package started to run, in milliseconds.
 	//
 	// example:
 	//
 	// 1593877765000
 	ExecuteTime *int64 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	// The environment where the deployment is executed. Valid values: 0 (local) and 1 (development).
+	// The environment from which the deployment is initiated. Valid values:
+	//
+	// - 0: local
+	//
+	// - 1: development environment
 	//
 	// example:
 	//
 	// 0
 	FromEnvironment *int32 `json:"FromEnvironment,omitempty" xml:"FromEnvironment,omitempty"`
-	// The Alibaba Cloud account ID of the user who executed the deployment.
+	// The Alibaba Cloud user ID of the user who executed the deployment package.
 	//
 	// example:
 	//
 	// 2003****
 	HandlerId *string `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
-	// The deployment package name, displayed on the Deploy Center > Deployment Packages page.
+	// The name of the deployment package, which is displayed on the Task Publish > Deployment Package List page.
 	//
 	// example:
 	//
 	// ods_user_info_d-2020-07-04_20030****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The current status of the deployment package. Valid values: 0 (ready), 1 (succeeded), and 2 (failed).
+	// The current status of the deployment package. Valid values:
+	//
+	// - 0: ready
+	//
+	// - 1: successful
+	//
+	// - 2: failed
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The target environment for the deployment. Valid values: 1 (development) and 2 (production).
+	// The target environment to which the file information is published. Valid values:
+	//
+	// - 1: development environment
+	//
+	// - 2: production environment
 	//
 	// example:
 	//

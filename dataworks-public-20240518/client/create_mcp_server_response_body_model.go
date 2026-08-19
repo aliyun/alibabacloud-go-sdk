@@ -16,9 +16,9 @@ type iCreateMcpServerResponseBody interface {
 }
 
 type CreateMcpServerResponseBody struct {
-	// The created MCP Server.
+	// The registered MCP Server.
 	McpServer *CreateMcpServerResponseBodyMcpServer `json:"McpServer,omitempty" xml:"McpServer,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -63,6 +63,8 @@ func (s *CreateMcpServerResponseBody) Validate() error {
 
 type CreateMcpServerResponseBodyMcpServer struct {
 	// The time when the MCP Server was created.
+	//
+	// The value is a 13-digit number, such as `1780555634000`.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//

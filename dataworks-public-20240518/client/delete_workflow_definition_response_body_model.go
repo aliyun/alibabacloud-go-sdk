@@ -16,17 +16,17 @@ type iDeleteWorkflowDefinitionResponseBody interface {
 }
 
 type DeleteWorkflowDefinitionResponseBody struct {
-	// The request ID.
+	// The request ID, which is used for subsequent error troubleshooting.
 	//
 	// example:
 	//
 	// B17730C0-D959-548A-AE23-E754177CXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true
+	// - true: Succeeded.
 	//
-	// - false
+	// - false: Failed.
 	//
 	// example:
 	//

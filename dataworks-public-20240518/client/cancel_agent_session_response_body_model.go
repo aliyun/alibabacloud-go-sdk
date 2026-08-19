@@ -18,7 +18,7 @@ type iCancelAgentSessionResponseBody interface {
 type CancelAgentSessionResponseBody struct {
 	// The JSON-RPC response.
 	JsonRpcResponse *CancelAgentSessionResponseBodyJsonRpcResponse `json:"JsonRpcResponse,omitempty" xml:"JsonRpcResponse,omitempty" type:"Struct"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *CancelAgentSessionResponseBody) Validate() error {
 }
 
 type CancelAgentSessionResponseBodyJsonRpcResponse struct {
-	// The ID passed by the requester. The value is returned as-is in the response.
+	// The ID passed in by the requester, returned as-is in the response.
 	//
 	// example:
 	//

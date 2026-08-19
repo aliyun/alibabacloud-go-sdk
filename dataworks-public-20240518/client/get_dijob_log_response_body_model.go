@@ -16,13 +16,13 @@ type iGetDIJobLogResponseBody interface {
 }
 
 type GetDIJobLogResponseBody struct {
-	// The log.
+	// The task logs.
 	//
 	// example:
 	//
 	// >>>>>>>> stdout:n++++++++++++++++++executing sql: create database if not exists jindo_test location \\"oss://pangbei-hdfs/tmp/hive\\" n++n
 	Log *string `json:"Log,omitempty" xml:"Log,omitempty"`
-	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	// The request ID. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//

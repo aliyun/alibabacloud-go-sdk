@@ -16,13 +16,13 @@ type iCreateAlertRuleResponseBody interface {
 }
 
 type CreateAlertRuleResponseBody struct {
-	// The rule ID.
+	// The ID of the custom rule.
 	//
 	// example:
 	//
 	// 123123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The request ID.
+	// The request ID, which is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//

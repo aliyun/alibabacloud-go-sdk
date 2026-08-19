@@ -14,7 +14,7 @@ type iGetResourceGroupRequest interface {
 }
 
 type GetResourceGroupRequest struct {
-	// The ID of the resource group.
+	// The unique identifier of the resource group.
 	//
 	// This parameter is required.
 	//

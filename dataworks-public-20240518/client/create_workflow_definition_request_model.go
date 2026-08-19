@@ -16,7 +16,7 @@ type iCreateWorkflowDefinitionRequest interface {
 }
 
 type CreateWorkflowDefinitionRequest struct {
-	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace settings page to obtain the workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,13 @@ type CreateWorkflowDefinitionRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The FlowSpec field information about the workflow. For more information, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow/).
+	// The FlowSpec information that describes the workflow. For more information about the specification, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow).
+	//
+	// > How to quickly obtain a FlowSpec template?
+	//
+	// > - Open a workflow in DataStudio, and then click "Show Spec" in the upper-right corner to obtain the FlowSpec description of the current workflow. You can use this FlowSpec description to quickly build a template that meets your requirements.
+	//
+	// 	Notice: This operation only supports creating a workflow. Internal nodes described in FlowSpec are not created.
 	//
 	// This parameter is required.
 	//

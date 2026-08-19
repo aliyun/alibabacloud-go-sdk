@@ -32,31 +32,31 @@ type iListDeploymentPackagesRequest interface {
 }
 
 type ListDeploymentPackagesRequest struct {
-	// The Alibaba Cloud account ID of the deployment package creator.
+	// The Alibaba Cloud account UID of the deployment package creator.
 	//
 	// example:
 	//
 	// 110755000425****
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The maximum millisecond timestamp for when the deployment package was created.
+	// The maximum timestamp in milliseconds for the creation time of the deployment package.
 	//
 	// example:
 	//
 	// 1593877765000
 	EndCreateTime *int64 `json:"EndCreateTime,omitempty" xml:"EndCreateTime,omitempty"`
-	// The maximum millisecond timestamp for when the deployment package started executing.
+	// The maximum timestamp in milliseconds for the execution start time of the deployment package.
 	//
 	// example:
 	//
 	// 1593877765000
 	EndExecuteTime *int64 `json:"EndExecuteTime,omitempty" xml:"EndExecuteTime,omitempty"`
-	// The Alibaba Cloud account ID of the deployment package executor.
+	// The Alibaba Cloud account UID of the deployment package executor.
 	//
 	// example:
 	//
 	// 2003****
 	Executor *string `json:"Executor,omitempty" xml:"Executor,omitempty"`
-	// The keyword in the deployment package name. DataWorks supports fuzzy matching, meaning you can enter a keyword to query for deployment packages that contain it.
+	// The keyword in the deployment package name. DataWorks supports fuzzy match. You can enter a keyword to query deployment packages whose names contain the keyword.
 	//
 	// example:
 	//
@@ -68,33 +68,33 @@ type ListDeploymentPackagesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page. Default value: 10. Maximum value: 100.
+	// The number of entries per page. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The DataWorks workspace ID. You can log on to the DataWorks console and go to the workspace configuration page to query the ID. You must configure either this parameter or the ProjectIdentifier parameter to determine the DataWorks workspace to which the operation is applied.
+	// The ID of the DataWorks workspace. You can log on to the DataWorks console and go to the workspace configuration page to obtain the workspace ID. You must specify either this parameter or the ProjectIdentifier parameter to determine the DataWorks workspace for this API call.
 	//
 	// example:
 	//
 	// 10003
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The unique identifier of the DataWorks workspace, which is the identifier at the top of the Data Studio page where you switch workspaces. Either this parameter or ProjectId must be specified to determine which DataWorks workspace this API call operates on.
+	// The unique identifier of the DataWorks workspace, which is the English identifier displayed in the workspace switcher at the top of the DataStudio page. You must specify either this parameter or the ProjectId parameter to determine the DataWorks workspace for this API call.
 	//
 	// example:
 	//
 	// dw_project
 	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
-	// The status of the deployment package. Valid values:
+	// The current status of the deployment package. Valid values:
 	//
-	// - 0: It is ready.
+	// - 0: The deployment package is ready.
 	//
-	// - 1: It was successfully deployed.
+	// - 1: The deployment package is published.
 	//
-	// - 2: It failed to be deployed.
+	// - 2: The deployment package failed to be published.
 	//
-	// - 6: It was rejected.
+	// - 6: The deployment package is rejected.
 	//
 	// example:
 	//

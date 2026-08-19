@@ -16,7 +16,7 @@ type iUpdateDataAssetTagResponseBody interface {
 }
 
 type UpdateDataAssetTagResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

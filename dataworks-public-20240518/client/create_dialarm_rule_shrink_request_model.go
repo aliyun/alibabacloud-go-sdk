@@ -28,13 +28,13 @@ type iCreateDIAlarmRuleShrinkRequest interface {
 }
 
 type CreateDIAlarmRuleShrinkRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The idempotency parameter.
 	//
 	// example:
 	//
 	// ABFUOEUOTRTRJKE
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the synchronization task with which the alert rule is associated.
+	// The task ID associated with the alert rule.
 	//
 	// This parameter is required.
 	//
@@ -54,17 +54,17 @@ type CreateDIAlarmRuleShrinkRequest struct {
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The metric type in the alert rule. Valid values:
+	// The alert metric type. Valid values:
 	//
-	// - Heartbeat
+	// - Heartbeat: task status alert.
 	//
-	// - FailoverCount
+	// - FailoverCount: failover count alert.
 	//
-	// - Delay
+	// - Delay: task latency alert.
 	//
-	// - DdlReport
+	// - DdlReport: DDL notification.
 	//
-	// - ResourceUtilization
+	// - ResourceUtilization: resource group utilization.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +84,7 @@ type CreateDIAlarmRuleShrinkRequest struct {
 	//
 	// This parameter is required.
 	NotificationSettingsShrink *string `json:"NotificationSettings,omitempty" xml:"NotificationSettings,omitempty"`
-	// The conditions that can trigger the alert rule.
+	// The list of alert trigger conditions. Multiple conditions are supported.
 	//
 	// This parameter is required.
 	TriggerConditionsShrink *string `json:"TriggerConditions,omitempty" xml:"TriggerConditions,omitempty"`

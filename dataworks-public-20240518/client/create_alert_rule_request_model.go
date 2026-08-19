@@ -22,7 +22,7 @@ type iCreateAlertRuleRequest interface {
 }
 
 type CreateAlertRuleRequest struct {
-	// Indicates whether the rule is enabled.
+	// Specifies whether the alert rule is enabled.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type CreateAlertRuleRequest struct {
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The name of the rule.
+	// The name of the custom rule.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type CreateAlertRuleRequest struct {
 	//
 	// xm_create_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The configuration for the alert notification.
+	// The alert notification configuration.
 	Notification *CreateAlertRuleRequestNotification `json:"Notification,omitempty" xml:"Notification,omitempty" type:"Struct"`
-	// The ID of the Alibaba Cloud account used by the owner of the rule.
+	// The Alibaba Cloud UID of the owner of the custom rule.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type CreateAlertRuleRequest struct {
 	//
 	// 279114181****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The alert triggering condition.
+	// The condition that triggers the alert.
 	//
 	// This parameter is required.
 	TriggerCondition *CreateAlertRuleRequestTriggerCondition `json:"TriggerCondition,omitempty" xml:"TriggerCondition,omitempty" type:"Struct"`
@@ -122,17 +122,17 @@ func (s *CreateAlertRuleRequest) Validate() error {
 }
 
 type CreateAlertRuleRequestNotification struct {
-	// The alert notification channels.
+	// The list of alert channels.
 	//
 	// This parameter is required.
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
-	// The interval at which an alert notification is sent. Unit: minutes. Valid values: [5,10000].
+	// The alert interval, in minutes. Valid values: 5 to 10000.
 	//
 	// example:
 	//
 	// 30
 	IntervalInMinutes *int32 `json:"IntervalInMinutes,omitempty" xml:"IntervalInMinutes,omitempty"`
-	// The maximum number of times an alert notification can be sent within a calendar day. Valid values: [1, 10000].
+	// The maximum number of alerts within a calendar year. Valid values: 1 to 10000.
 	//
 	// example:
 	//
@@ -142,13 +142,13 @@ type CreateAlertRuleRequestNotification struct {
 	//
 	// This parameter is required.
 	Receivers []*CreateAlertRuleRequestNotificationReceivers `json:"Receivers,omitempty" xml:"Receivers,omitempty" type:"Repeated"`
-	// The end time for silence. The time is in the HH:mm format.
+	// The end time of the alert silence period, in the format of HH:mm.
 	//
 	// example:
 	//
 	// 00:00
 	SilenceEndTime *string `json:"SilenceEndTime,omitempty" xml:"SilenceEndTime,omitempty"`
-	// The start time for silence. The time is in the HH:mm format.
+	// The start time of the alert silence period, in the format of HH:mm.
 	//
 	// example:
 	//
@@ -232,35 +232,35 @@ func (s *CreateAlertRuleRequestNotification) Validate() error {
 }
 
 type CreateAlertRuleRequestNotificationReceivers struct {
-	// The additional configuration of the alert recipient. If the ReceiverType parameter is set to DingdingUrl, you can set this parameter to {"atAll":true} to remind all members in a DingTalk group.
+	// The additional configuration required for the alert recipient. If ReceiverType is DingdingUrl, you can set {"atAll":true} to @ all members.
 	//
 	// example:
 	//
 	// {"atAll":true}
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// The type of the alert recipient. Valid valves:
+	// The alert recipient type. Valid values:
 	//
-	// - AliUid: Alibaba Cloud account ID.
+	// - AliUid: Alibaba Cloud UID
 	//
-	// - Shift Schedules: the personnel in a shift schedule.
+	// - ShiftSchedule: shift schedule
 	//
-	// - TaskOwner: the task owner. The task owner can receive custom alerts and event alerts.
+	// - TaskOwner: node owner, applicable to custom alerting and event alerting
 	//
-	// - Owner: the baseline owner. The baseline owner can receive baseline alerts.
+	// - Owner: owner, applicable to baseline alerting
 	//
-	// - WebhookUrl: URL of a custom webhook.
+	// - WebhookUrl: custom webhook URL
 	//
-	// - DingdingUrl: DingTalk webhook URL.
+	// - DingdingUrl: DingTalk webhook URL
 	//
-	// - FeishuUrl: Lark webhook URL.
+	// - FeishuUrl: Lark webhook URL
 	//
-	// - WeixinUrl: WeCom webhook URL.
+	// - WeixinUrl: WeCom webhook URL
 	//
 	// example:
 	//
 	// TaskOwner
 	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
-	// The ID of the alert recipient.
+	// The values of the alert recipient.
 	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
 }
 
@@ -304,37 +304,37 @@ func (s *CreateAlertRuleRequestNotificationReceivers) Validate() error {
 }
 
 type CreateAlertRuleRequestTriggerCondition struct {
-	// The extended information about the rule. This parameter is required for specific types of alerts.
+	// The extension information. This parameter is required for certain trigger condition configurations.
 	Extension *CreateAlertRuleRequestTriggerConditionExtension `json:"Extension,omitempty" xml:"Extension,omitempty" type:"Struct"`
-	// The monitored objects.
+	// The monitored object.
 	Target *CreateAlertRuleRequestTriggerConditionTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
-	// The alert type. Valid values:
+	// The type of alert trigger. Valid values:
 	//
-	// - Finished: An instance is successfully run.
+	// - Finished: Instance completed.
 	//
-	// - UnFinished: An instance does not finish running before a specified point in time.
+	// - UnFinished: Instance not completed.
 	//
-	// - Error: An error occurs on an instance.
+	// - Error: Instance error.
 	//
-	// - CycleUnfinished: An instance does not finish running as expected within a specific cycle.
+	// - CycleUnfinished: Instance cycle not completed.
 	//
-	// - Timeout: An instance times out.
+	// - Timeout: Instance timeout.
 	//
-	// - InstanceTransferComplete: An instance is generated by the auto triggered node.
+	// - InstanceTransferComplete: Node-to-instance conversion completed.
 	//
-	// - InstanceTransferFluctuate: The number of generated instances fluctuates.
+	// - InstanceTransferFluctuate: Instance count fluctuation.
 	//
-	// - ExhaustedError: An error persists after an instance is automatically rerun.
+	// - ExhaustedError: Error persists after automatic reruns.
 	//
-	// - InstanceKeyword: An instance with errors contains specified keywords.
+	// - InstanceKeyword: Error instance contains keyword.
 	//
-	// - InstanceErrorCount: The number of instances on which an error occurs reaches a specified threshold.
+	// - InstanceErrorCount: Number of error instances.
 	//
-	// - InstanceErrorPercentage: The proportion of instances on which an error occurs in the workspace to the total number of instances reaches a specified threshold.
+	// - InstanceErrorPercentage: Percentage of error instances.
 	//
-	// - ResourceGroupPercentage: The usage rate of the resource group reaches a specified threshold.
+	// - ResourceGroupPercentage: Resource group utilization.
 	//
-	// - ResourceGroupWaitCount: The number of instances that are waiting for resources in the resource group reaches a specified threshold.
+	// - ResourceGroupWaitCount: Number of instances waiting for resources in the resource group.
 	//
 	// example:
 	//
@@ -392,19 +392,19 @@ func (s *CreateAlertRuleRequestTriggerCondition) Validate() error {
 }
 
 type CreateAlertRuleRequestTriggerConditionExtension struct {
-	// The configuration for an alert of the CycleUnfinished type.
+	// The cycle unfinished alert configuration.
 	CycleUnfinished *CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinished `json:"CycleUnfinished,omitempty" xml:"CycleUnfinished,omitempty" type:"Struct"`
-	// The configuration for an alert of the Error type.
+	// The error alert configuration.
 	Error *CreateAlertRuleRequestTriggerConditionExtensionError `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
-	// The configuration for an alert of the InstanceErrorCount type.
+	// The instance error count alert configuration.
 	InstanceErrorCount *CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount `json:"InstanceErrorCount,omitempty" xml:"InstanceErrorCount,omitempty" type:"Struct"`
-	// The configuration for an alert of the InstanceErrorPercentage type.
+	// The instance error percentage alert configuration.
 	InstanceErrorPercentage *CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage `json:"InstanceErrorPercentage,omitempty" xml:"InstanceErrorPercentage,omitempty" type:"Struct"`
-	// The configuration for an alert of the InstanceTransferFluctuate type.
+	// The instance transfer fluctuation alert configuration.
 	InstanceTransferFluctuate *CreateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate `json:"InstanceTransferFluctuate,omitempty" xml:"InstanceTransferFluctuate,omitempty" type:"Struct"`
-	// The configuration for an alert of the Timeout type.
+	// The timeout alert configuration.
 	Timeout *CreateAlertRuleRequestTriggerConditionExtensionTimeout `json:"Timeout,omitempty" xml:"Timeout,omitempty" type:"Struct"`
-	// The configuration for an alert of the UnFinished type.
+	// The unfinished alert configuration.
 	UnFinished *CreateAlertRuleRequestTriggerConditionExtensionUnFinished `json:"UnFinished,omitempty" xml:"UnFinished,omitempty" type:"Struct"`
 }
 
@@ -519,7 +519,7 @@ func (s *CreateAlertRuleRequestTriggerConditionExtension) Validate() error {
 }
 
 type CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinished struct {
-	// The configurations of the scheduling cycle and timeout period of the instance.
+	// The list of cycle and time configurations.
 	CycleAndTime []*CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime `json:"CycleAndTime,omitempty" xml:"CycleAndTime,omitempty" type:"Repeated"`
 }
 
@@ -554,13 +554,13 @@ func (s *CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinished) Validat
 }
 
 type CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime struct {
-	// The ID of the scheduling cycle of the instance. Valid values: [1,288].
+	// The cycle ID. Valid values: 1 to 288.
 	//
 	// example:
 	//
 	// 1
 	CycleId *int32 `json:"CycleId,omitempty" xml:"CycleId,omitempty"`
-	// The latest completion time of the instance within the scheduling cycle. The time is in the hh:mm format. Valid values of hh: [0,47]. Valid values of mm: [0,59].
+	// The timeout time, in the format of hh:mm. Valid values of hh: 0 to 47. Valid values of mm: 0 to 59.
 	//
 	// example:
 	//
@@ -599,13 +599,13 @@ func (s *CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndT
 }
 
 type CreateAlertRuleRequestTriggerConditionExtensionError struct {
-	// Specifies whether to trigger an alert if a batch synchronization task is automatically rerun upon a failure.
+	// Specifies whether to generate an alert when an offline task is automatically rerun due to failure.
 	//
 	// example:
 	//
 	// false
 	AutoRerunAlertEnabled *bool `json:"AutoRerunAlertEnabled,omitempty" xml:"AutoRerunAlertEnabled,omitempty"`
-	// The IDs of the real-time computing tasks. This parameter is required when you monitor real-time computing tasks.
+	// The IDs of real-time computing tasks to monitor.
 	StreamTaskIds []*int64 `json:"StreamTaskIds,omitempty" xml:"StreamTaskIds,omitempty" type:"Repeated"`
 }
 
@@ -640,7 +640,7 @@ func (s *CreateAlertRuleRequestTriggerConditionExtensionError) Validate() error 
 }
 
 type CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount struct {
-	// The maximum number of instances on which an error occurs. Valid values: [1,10000].
+	// The number of error instances. Valid values: 1 to 10000.
 	//
 	// example:
 	//
@@ -670,7 +670,7 @@ func (s *CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount) Vali
 }
 
 type CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage struct {
-	// The maximum percentage of instances on which an error occurs in the workspace to the total number of instances. Valid values: [1-100].
+	// The percentage of error instances. Valid values: 1 to 100.
 	//
 	// example:
 	//
@@ -700,19 +700,19 @@ func (s *CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage)
 }
 
 type CreateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate struct {
-	// The maximum percentage of fluctuation in the number of auto triggered node instances that are generated in your workspace. Valid values: [1-100].
+	// The percentage of instance transfer fluctuation. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 10
 	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	// The way in which the number of auto triggered node instances that are generated in your workspace fluctuates. Valid values:
+	// The type of instance transfer fluctuation. Valid values:
 	//
-	// - abs: the absolute value. The number of instances increases or decreases.
+	// - abs: absolute value
 	//
-	// - increase: The number of instances increases.
+	// - increase: increase
 	//
-	// - decrease: The number of instances decreases.
+	// - decrease: decrease
 	//
 	// example:
 	//
@@ -751,7 +751,7 @@ func (s *CreateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuat
 }
 
 type CreateAlertRuleRequestTriggerConditionExtensionTimeout struct {
-	// The timeout period. Unit: minutes. Valid values: [1, 21600].
+	// The timeout duration, in minutes. Valid values: 1 to 21600.
 	//
 	// example:
 	//
@@ -781,7 +781,7 @@ func (s *CreateAlertRuleRequestTriggerConditionExtensionTimeout) Validate() erro
 }
 
 type CreateAlertRuleRequestTriggerConditionExtensionUnFinished struct {
-	// The latest completion time of the instance. The period is in the hh:mm format. Valid values of hh: [0,47]. Valid values of mm: [0,59].
+	// The unfinished time, in the format of hh:mm. Valid values of hh: 0 to 47. Valid values of mm: 0 to 59.
 	//
 	// example:
 	//
@@ -811,11 +811,11 @@ func (s *CreateAlertRuleRequestTriggerConditionExtensionUnFinished) Validate() e
 }
 
 type CreateAlertRuleRequestTriggerConditionTarget struct {
-	// The nodes that are not to be monitored.
+	// The whitelist of monitored tasks.
 	AllowTasks []*int64 `json:"AllowTasks,omitempty" xml:"AllowTasks,omitempty" type:"Repeated"`
-	// The IDs of monitored objects.
+	// The list of monitored object IDs.
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
-	// The type of the monitored objects. Valid values:
+	// The monitored object type. Valid values:
 	//
 	// - Task: node
 	//
@@ -823,7 +823,7 @@ type CreateAlertRuleRequestTriggerConditionTarget struct {
 	//
 	// - Project: workspace
 	//
-	// - BizProcess: workflow
+	// - BizProcess: business process
 	//
 	// example:
 	//

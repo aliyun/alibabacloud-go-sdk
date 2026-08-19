@@ -18,7 +18,7 @@ type iListAgentSessionArtifactsResponseBody interface {
 type ListAgentSessionArtifactsResponseBody struct {
 	// The JSON-RPC response.
 	JsonRpcResponse *ListAgentSessionArtifactsResponseBodyJsonRpcResponse `json:"JsonRpcResponse,omitempty" xml:"JsonRpcResponse,omitempty" type:"Struct"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *ListAgentSessionArtifactsResponseBody) Validate() error {
 }
 
 type ListAgentSessionArtifactsResponseBodyJsonRpcResponse struct {
-	// The ID passed by the caller. The value is returned as-is in the response.
+	// The ID passed in by the requester. The value is returned as-is.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListAgentSessionArtifactsResponseBodyJsonRpcResponse struct {
 	//
 	// 2.0
 	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	// The paginated information of artifacts.
+	// The pagination information of model artifacts.
 	Result *ListAgentSessionArtifactsResponseBodyJsonRpcResponseResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -123,15 +123,15 @@ func (s *ListAgentSessionArtifactsResponseBodyJsonRpcResponse) Validate() error 
 }
 
 type ListAgentSessionArtifactsResponseBodyJsonRpcResponseResult struct {
-	// The list of artifacts.
+	// The list of model artifacts.
 	Artifacts []*ListAgentSessionArtifactsResponseBodyJsonRpcResponseResultArtifacts `json:"Artifacts,omitempty" xml:"Artifacts,omitempty" type:"Repeated"`
-	// The actual number of entries returned per page.
+	// The actual number of entries per page.
 	//
 	// example:
 	//
 	// 29
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page. The value is null if there are no more pages.
+	// The token for the next page. The value is null for the last page.
 	//
 	// example:
 	//
@@ -188,19 +188,19 @@ func (s *ListAgentSessionArtifactsResponseBodyJsonRpcResponseResult) Validate() 
 }
 
 type ListAgentSessionArtifactsResponseBodyJsonRpcResponseResultArtifacts struct {
-	// The name of the artifact.
+	// The name of the model artifact.
 	//
 	// example:
 	//
 	// mock_report.md
 	ArtifactName *string `json:"ArtifactName,omitempty" xml:"ArtifactName,omitempty"`
-	// The path of the artifact.
+	// The path of the model artifact.
 	//
 	// example:
 	//
 	// mock/mock_report.md
 	ArtifactPath *string `json:"ArtifactPath,omitempty" xml:"ArtifactPath,omitempty"`
-	// The type of the artifact, which is typically the file extension.
+	// The type of the model artifact, typically a file extension.
 	//
 	// example:
 	//

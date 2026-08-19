@@ -144,11 +144,15 @@ func (s *ListWorkflowInstancesResponseBodyPagingInfo) Validate() error {
 type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	// The business date.
 	//
+	// The value is a 13-digit number, such as `1710239005403`.
+	//
 	// example:
 	//
 	// 1710239005403
 	BizDate *int64 `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
 	// The creation time.
+	//
+	// The value is a 13-digit number, such as `1710239005403`.
 	//
 	// example:
 	//
@@ -160,7 +164,7 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	//
 	// 100
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The project environment.
+	// The project environment. Valid values:
 	//
 	// - Prod (production)
 	//
@@ -170,7 +174,9 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The time when the instance finished running.
+	// The finish time.
+	//
+	// The value is a 13-digit number, such as `1710239005403`.
 	//
 	// example:
 	//
@@ -183,6 +189,8 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The modification time.
+	//
+	// The value is a 13-digit number, such as `1710239005403`.
 	//
 	// example:
 	//
@@ -212,55 +220,57 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The time when the instance started running.
+	// The start time.
+	//
+	// The value is a 13-digit number, such as `1710239005403`.
 	//
 	// example:
 	//
 	// 1710239005403
 	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
-	// The running status of the workflow instance.
+	// The running status of the workflow instance. Valid values:
 	//
-	// - NotRun: Not run
+	// - NotRun: not run
 	//
-	// - Running: Running
+	// - Running: running
 	//
-	// - WaitTime: Waiting for TriggerTime
+	// - WaitTime: waiting for TriggerTime
 	//
-	// - CheckingCondition: Checking branch conditions
+	// - CheckingCondition: checking branch conditions
 	//
-	// - WaitResource: Waiting for resources
+	// - WaitResource: waiting for resources
 	//
-	// - Failure: Failed
+	// - Failure: failed
 	//
-	// - Success: Succeeded
+	// - Success: succeeded
 	//
-	// - Checking: Submitted for Data Quality check
+	// - Checking: submitted for data quality check
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task tags.
+	// The node tags.
 	Tags []*ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The type of the workflow instance.
+	// The type of the workflow instance. Valid values:
 	//
-	// - Normal: Periodic scheduling
+	// - Normal: periodic scheduling
 	//
-	// - Manual: Manual task
+	// - Manual: manual task
 	//
-	// - SmokeTest: Testing
+	// - SmokeTest: test
 	//
-	// - SupplementData: Backfill data
+	// - SupplementData: data backfill
 	//
-	// - ManualWorkflow: Manual workflow
+	// - ManualWorkflow: manual workflow
 	//
-	// - TriggerWorkflow: Trigger-based workflow
+	// - TriggerWorkflow: trigger-based workflow
 	//
 	// example:
 	//
 	// Normal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The unified workflow instance ID. All workflow instances within the same business date of a single trigger share the same value for this field.
+	// The unified workflow instance ID. All workflow instances within the same business date under a specific trigger share the same value for this field.
 	//
 	// example:
 	//
@@ -276,11 +286,11 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	//
 	// example:
 	//
-	// 周期工作流：
+	// Periodic workflow:
 	//
 	// key1=value1 key2=value2
 	//
-	// 手动业务流程：
+	// Manual workflow:
 	//
 	// {"key1":"value1", "key2": "value2"}
 	WorkflowParameters *string `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty"`

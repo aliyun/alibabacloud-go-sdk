@@ -40,7 +40,7 @@ type iListWorkflowInstancesRequest interface {
 }
 
 type ListWorkflowInstancesRequest struct {
-	// The business date. This is generally 00:00:00 of the day before the scheduled instance trigger time, in millisecond-level timestamp format, such as 1743350400000.
+	// The business date. This is typically 00:00:00 of the day before the scheduled time of the periodic instance. The value is a millisecond-level timestamp, such as 1743350400000.
 	//
 	// This parameter is required.
 	//
@@ -48,11 +48,17 @@ type ListWorkflowInstancesRequest struct {
 	//
 	// 1710239005403
 	BizDate *int64 `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	// The project environment. Valid values:
+	//
+	// - Prod: production
+	//
+	// - Dev: development
+	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The filter. In JSON format, multiple filter conditions have an AND relationship. Currently supported fields are: `status, executionDate`.
+	// The filter. The value is in JSON format. Multiple filter conditions have an AND relationship. Currently supported fields: `status, executionDate`.
 	//
 	// example:
 	//
@@ -64,7 +70,7 @@ type ListWorkflowInstancesRequest struct {
 	//
 	// }
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The list of workflow instance IDs. You can use this parameter to query multiple workflow instances at a time.
+	// The list of workflow instance IDs. You can use this parameter to query information about multiple workflow instances in a batch.
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
 	// The name. Fuzzy match is supported.
 	//
@@ -78,7 +84,7 @@ type ListWorkflowInstancesRequest struct {
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The page number, starting from 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
@@ -98,7 +104,7 @@ type ListWorkflowInstancesRequest struct {
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The list of sort fields. Sorting by trigger time, start time, and other fields is supported. The format is "sort field + sort order (Desc/Asc)" (Asc can be omitted). Valid values of the sort field:
+	// The list of sort fields. Sorting by scheduled time, start time, and other fields is supported. The format is "sort field + sort order (Desc/Asc)". Asc is the default if omitted. Valid values for the sort field:
 	//
 	// - TriggerTime (Desc/Asc)
 	//
@@ -110,33 +116,33 @@ type ListWorkflowInstancesRequest struct {
 	//
 	// - Id (Desc/Asc)
 	//
-	// Default value: Id Desc
+	// Default value: Id Desc.
 	//
 	// example:
 	//
 	// Id Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The list of tags. Results are returned if any one of the specified tags is matched.
+	// The list of tags. Results are returned if any one of the specified tags matches.
 	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The type of the workflow instance.
+	// The type of the workflow instance. Valid values:
 	//
-	// - Normal: Periodic scheduling
+	// - Normal: periodic scheduling
 	//
-	// - Manual: Manual task
+	// - Manual: manual task
 	//
-	// - SmokeTest: Testing
+	// - SmokeTest: test
 	//
-	// - SupplementData: Backfill data
+	// - SupplementData: data backfill
 	//
-	// - ManualWorkflow: Manual workflow
+	// - ManualWorkflow: manual workflow
 	//
-	// - TriggerWorkflow: Trigger-based workflow
+	// - TriggerWorkflow: trigger-based workflow
 	//
 	// example:
 	//
 	// Normal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The unified workflow instance ID. All workflow instances within the same business date of a single trigger share the same value for this field.
+	// The unified workflow instance ID. All workflow instances within the same business date under a specific trigger share the same value for this field.
 	//
 	// example:
 	//

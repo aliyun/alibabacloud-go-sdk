@@ -20,13 +20,13 @@ type iCreateDataQualityScanRunShrinkRequest interface {
 }
 
 type CreateDataQualityScanRunShrinkRequest struct {
-	// The data quality scan ID.
+	// The ID of the data quality monitoring task.
 	//
 	// example:
 	//
 	// 20000001
 	DataQualityScanId *int64 `json:"DataQualityScanId,omitempty" xml:"DataQualityScanId,omitempty"`
-	// The parameters for the run. The `triggerTime` parameter is required.
+	// The parameter settings used during the actual run. The `triggerTime` parameter is required.
 	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The project ID.
 	//
@@ -34,7 +34,7 @@ type CreateDataQualityScanRunShrinkRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Specifies the scheduling resource group used to run the data quality scan. This object uses the same data structure as the scheduling API.
+	// The schedule resource group used when the data quality monitoring task runs. This shares the same data structure as the scheduling API.
 	RuntimeResourceShrink *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
 }
 

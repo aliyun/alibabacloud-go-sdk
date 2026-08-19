@@ -22,7 +22,7 @@ type UpdateDataQualityAlertRuleResponseBody struct {
 	//
 	// 0bc14115***159376359
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the alert rule was updated.
+	// Indicates whether the alert rule is updated.
 	//
 	// example:
 	//

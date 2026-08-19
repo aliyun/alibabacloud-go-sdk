@@ -22,7 +22,7 @@ type iListFileVersionsRequest interface {
 }
 
 type ListFileVersionsRequest struct {
-	// The file ID. You can call [ListFiles](https://help.aliyun.com/document_detail/173942.html) to query the file ID.
+	// The ID of the file. You can call [ListFiles](https://help.aliyun.com/document_detail/173942.html) to query the file ID.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type ListFileVersionsRequest struct {
 	//
 	// 100000001
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The page number for pagination.
+	// The page number. Used for paging.
 	//
 	// example:
 	//
@@ -42,15 +42,15 @@ type ListFileVersionsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The DataWorks workspace ID. To find this, click the wrench icon in the upper-right corner and navigate to the workspace management page.
+	// The ID of the DataWorks workspace. You can click the small wrench icon in the upper-right corner of the page to go to the storage management page and view the ID.
 	//
 	// example:
 	//
 	// 100001
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The unique identifier of the DataWorks workspace, which is the identifier at the top of the Data Studio page where you switch workspaces.
+	// The unique identifier of the DataWorks workspace, which is the English identifier displayed in the workspace switcher at the top of the DataStudio page.
 	//
-	// Either this parameter or ProjectId must be specified to identify the target DataWorks workspace for this API call.
+	// You must set either this parameter or ProjectId to determine the DataWorks workspace for this API call.
 	//
 	// example:
 	//

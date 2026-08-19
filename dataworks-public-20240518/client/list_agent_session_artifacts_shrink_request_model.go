@@ -18,7 +18,7 @@ type iListAgentSessionArtifactsShrinkRequest interface {
 }
 
 type ListAgentSessionArtifactsShrinkRequest struct {
-	// The ID passed by the caller. The value is returned as-is in the response.
+	// The ID passed in by the requester. The value is returned as-is.
 	//
 	// example:
 	//

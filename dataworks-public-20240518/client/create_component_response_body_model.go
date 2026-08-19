@@ -16,7 +16,7 @@ type iCreateComponentResponseBody interface {
 }
 
 type CreateComponentResponseBody struct {
-	// The ID of the dataset acceleration component. To obtain the component ID, see [ListComponents](https://help.aliyun.com/document_detail/2979566.html).
+	// The component ID. For information about how to obtain the component ID, see [ListComponents](https://help.aliyun.com/document_detail/2979566.html).
 	//
 	// example:
 	//

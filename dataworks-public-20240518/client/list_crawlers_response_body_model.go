@@ -18,12 +18,16 @@ type iListCrawlersResponseBody interface {
 }
 
 type ListCrawlersResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListCrawlersResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID. Used to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 9252F32F-D855-549E-8898-61CF5A733050
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request succeeded.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListCrawlersResponseBody) String() string {
@@ -71,15 +75,22 @@ func (s *ListCrawlersResponseBody) Validate() error {
 }
 
 type ListCrawlersResponseBodyPagingInfo struct {
+	// The list of metadata crawlers.
 	Crawlers []*ListCrawlersResponseBodyPagingInfoCrawlers `json:"Crawlers,omitempty" xml:"Crawlers,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of records that match the query conditions.
+	//
 	// example:
 	//
 	// 1
@@ -144,59 +155,88 @@ func (s *ListCrawlersResponseBodyPagingInfo) Validate() error {
 }
 
 type ListCrawlersResponseBodyPagingInfoCrawlers struct {
+	// The creation time, expressed as a millisecond-precision UNIX timestamp.
+	//
 	// example:
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// 12345
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The DataWorks environment type. Valid values: Dev, Prod.
+	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The crawler ID.
+	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The most recent run status. Valid values: WAITING, RUNNING, SUCCESS, ERROR, SHUTDOWN. This field may be empty if the crawler has not run yet.
+	//
 	// example:
 	//
 	// SUCCESS
 	LastRunStatus *string `json:"LastRunStatus,omitempty" xml:"LastRunStatus,omitempty"`
+	// The meta entity ID associated with the crawler. You can use this ID to connect to metadata query APIs.
+	//
 	// example:
 	//
 	// starrocks:example-instance
 	MetaEntityId *string `json:"MetaEntityId,omitempty" xml:"MetaEntityId,omitempty"`
+	// The modification time, expressed as a millisecond-precision UNIX timestamp.
+	//
 	// example:
 	//
 	// 1710239005403
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The crawler name.
+	//
 	// example:
 	//
 	// example_crawler
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The DataWorks user ID of the crawler owner.
+	//
 	// example:
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The DataWorks workspace ID.
+	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the Serverless 2.0 resource group used to run the crawl task.
+	//
 	// example:
 	//
 	// Serverless_res_group_1234567890123456_1234567890
-	ResourceGroupId *string                                                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ScheduleConfig  *ListCrawlersResponseBodyPagingInfoCrawlersScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The schedule configuration.
+	ScheduleConfig *ListCrawlersResponseBodyPagingInfoCrawlersScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	// The crawler status. The value is VALID when the crawler configuration is valid and the associated data source exists. Otherwise, the value is INVALID.
+	//
 	// example:
 	//
 	// VALID
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The DataWorks scheduling node ID associated with the crawler. You can use this ID to call GetTask to query the node definition.
+	//
 	// example:
 	//
 	// 1234
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The crawler type.
+	//
 	// example:
 	//
 	// starrocks
@@ -356,10 +396,14 @@ func (s *ListCrawlersResponseBodyPagingInfoCrawlers) Validate() error {
 }
 
 type ListCrawlersResponseBodyPagingInfoCrawlersScheduleConfig struct {
+	// The cron expression.
+	//
 	// example:
 	//
 	// 0 0 2 ? 	- *
 	CronExpress *string `json:"CronExpress,omitempty" xml:"CronExpress,omitempty"`
+	// The schedule type. Valid values: MANUAL, NORMAL.
+	//
 	// example:
 	//
 	// NORMAL

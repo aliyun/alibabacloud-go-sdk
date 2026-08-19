@@ -18,7 +18,7 @@ type iListDeploymentPackagesResponseBody interface {
 type ListDeploymentPackagesResponseBody struct {
 	// The list of deployment packages that meet the query conditions.
 	Data *ListDeploymentPackagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *ListDeploymentPackagesResponseBody) Validate() error {
 }
 
 type ListDeploymentPackagesResponseBodyData struct {
-	// The returned list of deployment packages.
+	// The list of deployment packages.
 	Deployments []*ListDeploymentPackagesResponseBodyDataDeployments `json:"Deployments,omitempty" xml:"Deployments,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -70,13 +70,13 @@ type ListDeploymentPackagesResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of records that meet the conditions.
+	// The total number of entries that meet the conditions.
 	//
 	// example:
 	//
@@ -148,13 +148,13 @@ type ListDeploymentPackagesResponseBodyDataDeployments struct {
 	//
 	// 1593877765000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The Alibaba Cloud account ID of the deployment package creator.
+	// The Alibaba Cloud user ID of the deployment package creator.
 	//
 	// example:
 	//
 	// 2003****
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// When the deployment package fails to execute, this parameter is used to record the error message.
+	// The error message recorded when the deployment package fails to be executed.
 	//
 	// example:
 	//
@@ -166,13 +166,13 @@ type ListDeploymentPackagesResponseBodyDataDeployments struct {
 	//
 	// 1593877765000
 	ExecuteTime *int64 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	// The Alibaba Cloud account ID of the deployment package executor.
+	// The Alibaba Cloud user ID of the deployment package executor.
 	//
 	// example:
 	//
 	// 2003****
 	Executor *string `json:"Executor,omitempty" xml:"Executor,omitempty"`
-	// The ID of the deployment package. You can use this ID to call the [GetDeployment](https://help.aliyun.com/document_detail/173950.html) operation to get the deployment package details.
+	// The ID of the deployment package. You can use this ID to call the [GetDeployment](https://help.aliyun.com/document_detail/173950.html) operation to obtain the details of the deployment package.
 	//
 	// example:
 	//
@@ -184,15 +184,15 @@ type ListDeploymentPackagesResponseBodyDataDeployments struct {
 	//
 	// auto_created
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The status of the deployment package. Valid values:
+	// The current status of the deployment package. Valid values:
 	//
-	// - 0: It is ready.
+	// - 0: The deployment package is ready.
 	//
-	// - 1: It was successfully deployed.
+	// - 1: The deployment package is published.
 	//
-	// - 2: It failed to be deployed.
+	// - 2: The deployment package failed to be published.
 	//
-	// - 6: It was rejected.
+	// - 6: The deployment package is rejected.
 	//
 	// example:
 	//

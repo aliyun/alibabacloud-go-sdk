@@ -18,13 +18,13 @@ type iGetResourceGroupResponseBody interface {
 }
 
 type GetResourceGroupResponseBody struct {
-	// The request ID.
+	// The ID of the request, which is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details about the resource group.
+	// The detailed information of the resource group.
 	ResourceGroup *GetResourceGroupResponseBodyResourceGroup `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty" type:"Struct"`
 	// Indicates whether the request was successful.
 	//
@@ -79,39 +79,39 @@ func (s *GetResourceGroupResponseBody) Validate() error {
 }
 
 type GetResourceGroupResponseBodyResourceGroup struct {
-	// The ID of the Alibaba Cloud resource group.
+	// The ID of the Alibaba Cloud resource group to which the resource group belongs.
 	//
 	// example:
 	//
 	// rg-aek2kqofrgXXXXX
 	AliyunResourceGroupId *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
-	// The tags.
+	// The list of Alibaba Cloud tags.
 	AliyunResourceTags []*GetResourceGroupResponseBodyResourceGroupAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
-	// The time when the resource group was created. The value is a 64-bit timestamp.
+	// The creation time, represented as a 64-bit timestamp.
 	//
 	// example:
 	//
 	// 1727055811000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the account that is used to create the resource group.
+	// The ID of the user who created the resource group.
 	//
 	// example:
 	//
 	// 11075500042XXXXX
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The ID of the virtual private cloud (VPC) with which the resource group is associated by default.
+	// The ID of the default VPC bound to the resource group.
 	//
 	// example:
 	//
 	// vpc-m2et4f3oc8msfbccXXXXX
 	DefaultVpcId *string `json:"DefaultVpcId,omitempty" xml:"DefaultVpcId,omitempty"`
-	// The ID of the vSwitch with which the resource group is associated by default.
+	// The ID of the default vSwitch bound to the resource group.
 	//
 	// example:
 	//
 	// vsw-uf8usrhs7hjd9amsXXXXX
 	DefaultVswitchId *string `json:"DefaultVswitchId,omitempty" xml:"DefaultVswitchId,omitempty"`
-	// The ID of the resource group.
+	// The unique identifier of the resource group.
 	//
 	// example:
 	//
@@ -123,19 +123,23 @@ type GetResourceGroupResponseBodyResourceGroup struct {
 	//
 	// common_resource_group
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The instance ID of the order that is used to create the resource group.
+	// The order instance ID of the resource group.
 	//
 	// example:
 	//
 	// c442b330-3b10-4584-959e-736e4edXXXXX
 	OrderInstanceId *string `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
-	// The billing method of the resource group. Valid values: PrePaid and PostPaid. The value PrePaid indicates the subscription billing method, and the value PostPaid indicates the pay-as-you-go billing method.
+	// The billing method of the resource group. Valid values:
+	//
+	// - PrePaid: subscription.
+	//
+	// - PostPaid: pay-as-you-go.
 	//
 	// example:
 	//
 	// PrePaid
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// The description of the resource group.
+	// The remarks of the resource group.
 	//
 	// example:
 	//
@@ -143,13 +147,13 @@ type GetResourceGroupResponseBodyResourceGroup struct {
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The type of the resource group. Valid values:
 	//
-	// - CommonV2: Serverless resource group.
+	// - CommonV2: new-version resource group.
 	//
-	// - ExclusiveDataIntegration: Exclusive resource group for Data Integration.
+	// - ExclusiveDataIntegration: exclusive data integration resource group.
 	//
-	// - ExclusiveScheduler: Exclusive resource group for scheduling.
+	// - ExclusiveScheduler: exclusive scheduling resource group.
 	//
-	// - ExclusiveDataService: Exclusive resource group for DataService Studio.
+	// - ExclusiveDataService: exclusive data service resource group.
 	//
 	// example:
 	//
@@ -159,29 +163,29 @@ type GetResourceGroupResponseBodyResourceGroup struct {
 	Spec *GetResourceGroupResponseBodyResourceGroupSpec `json:"Spec,omitempty" xml:"Spec,omitempty" type:"Struct"`
 	// The status of the resource group. Valid values:
 	//
-	// - Normal: The resource group is running or in use.
+	// - Normal: normal (running/in service).
 	//
-	// - Stop: The resource group is expired.
+	// - Stop: frozen (expired).
 	//
-	// - Deleted: The resource group is released or destroyed.
+	// - Deleted: deleted (released/destroyed).
 	//
-	// - Creating: The resource group is being created.
+	// - Creating: being created.
 	//
-	// - CreateFailed: The resource group fails to be created.
+	// - CreateFailed: creation failed.
 	//
-	// - Updating: The resource group is being scaled in or out, or the configurations of the resource group are being changed.
+	// - Updating: being updated (scaling out/scaling in/specification change in progress).
 	//
-	// - UpdateFailed: The resource group fails to be scaled out or upgraded.
+	// - UpdateFailed: update failed (scale-out failed/upgrade failed).
 	//
-	// - Deleting: The resource group is being released or destroyed.
+	// - Deleting: being deleted (being released/being destroyed).
 	//
-	// - DeleteFailed: The resource group fails to be released or destroyed.
+	// - DeleteFailed: deletion failed (release failed/destruction failed).
 	//
-	// - Timeout: The operations that are performed on the resource group time out.
+	// - Timeout: operation timed out.
 	//
-	// - Freezed: The resource group is frozen.
+	// - Freezed: frozen.
 	//
-	// - Starting: The resource group is being started.
+	// - Starting: starting.
 	//
 	// example:
 	//
@@ -387,13 +391,13 @@ func (s *GetResourceGroupResponseBodyResourceGroupAliyunResourceTags) Validate()
 }
 
 type GetResourceGroupResponseBodyResourceGroupSpec struct {
-	// The number of resources in the resource group.
+	// The resource count.
 	//
 	// example:
 	//
 	// 1
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The number of compute units (CUs) in the resource group.
+	// The specification details.
 	//
 	// example:
 	//

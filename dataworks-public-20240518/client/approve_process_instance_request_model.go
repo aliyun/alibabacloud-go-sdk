@@ -24,9 +24,9 @@ type iApproveProcessInstanceRequest interface {
 type ApproveProcessInstanceRequest struct {
 	// The approval action. Valid values:
 	//
-	// - Agree: Approved.
+	// - Agree: approves the request.
 	//
-	// - Deny: Rejected.
+	// - Deny: rejects the request.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type ApproveProcessInstanceRequest struct {
 	//
 	// example:
 	//
-	// 同意授权
+	// Approve authorization
 	ApprovalComment *string `json:"ApprovalComment,omitempty" xml:"ApprovalComment,omitempty"`
 	// The idempotency token. We recommend that you use a UUID.
 	//
@@ -48,13 +48,13 @@ type ApproveProcessInstanceRequest struct {
 	//
 	// 1AFAE64E-D1BE-432B-A9*****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The new authorization expiration time. Unit: milliseconds (UNIX timestamp).
+	// The modified authorization expiration time. The value is a millisecond-level timestamp.
 	//
 	// example:
 	//
 	// 1782541464000
 	NewExpiration *int64 `json:"NewExpiration,omitempty" xml:"NewExpiration,omitempty"`
-	// The process instance ID. Both new and legacy Security Center approval forms are supported.
+	// The flow instance ID. Both new and legacy Security Center approval orders are supported.
 	//
 	// This parameter is required.
 	//

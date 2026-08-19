@@ -24,15 +24,15 @@ type iCreateDataQualityRuleTemplateRequest interface {
 }
 
 type CreateDataQualityRuleTemplateRequest struct {
-	// The sample validation settings.
+	// The sample verification settings.
 	CheckingConfig *CreateDataQualityRuleTemplateRequestCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
-	// The category directory where the custom template is stored. Hierarchy levels are separated by slashes. Each level name can be up to 1024 characters long and cannot contain whitespace characters or slashes.
+	// The directory path where the custom template is stored. Levels are separated by forward slashes (/). Each level name can be up to 1024 characters in length and cannot contain whitespace characters or forward slashes.
 	//
 	// example:
 	//
 	// /ods/order_data
 	DirectoryPath *string `json:"DirectoryPath,omitempty" xml:"DirectoryPath,omitempty"`
-	// The name of the rule template. It can be a combination of digits, English letters, Chinese characters, and half-width or full-width punctuation marks. The maximum length is 512 characters.
+	// The name of the rule template. The name can contain digits, letters, Chinese characters, and half-width or full-width punctuation marks. The name can be up to 512 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -50,11 +50,11 @@ type CreateDataQualityRuleTemplateRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The settings required for sample collection.
 	SamplingConfig *CreateDataQualityRuleTemplateRequestSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
-	// The visibility scope of the template:
+	// The visibility scope of the template. Valid values:
 	//
-	// - Tenant: available to the entire tenant
+	// - Tenant: available to the entire tenant.
 	//
-	// - Project: available only in the current project
+	// - Project: available only in the current project.
 	//
 	// example:
 	//
@@ -139,13 +139,13 @@ func (s *CreateDataQualityRuleTemplateRequest) Validate() error {
 }
 
 type CreateDataQualityRuleTemplateRequestCheckingConfig struct {
-	// Some threshold types require querying reference samples and then aggregating the values of those reference samples to derive the threshold used for comparison. An expression is used here to describe how the reference samples are queried.
+	// An expression that specifies how to query reference samples. Some threshold types require querying reference samples and then aggregating their values to derive the threshold for comparison.
 	//
 	// example:
 	//
 	// { "bizdate": [ "-1", "-7", "-1m" ] }
 	ReferencedSamplesFilter *string `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
-	// The threshold calculation method:
+	// The threshold calculation method. Valid values:
 	//
 	// - Fixed
 	//
@@ -196,37 +196,37 @@ func (s *CreateDataQualityRuleTemplateRequestCheckingConfig) Validate() error {
 }
 
 type CreateDataQualityRuleTemplateRequestSamplingConfig struct {
-	// The name of the metric to sample:
+	// The name of the sampling metric. Valid values:
 	//
-	// - Count: number of table rows
+	// - Count: the number of table rows.
 	//
-	// - Min: minimum field value
+	// - Min: the minimum value of a field.
 	//
-	// - Max: maximum field value
+	// - Max: the maximum value of a field.
 	//
-	// - Avg: average field value
+	// - Avg: the average value of a field.
 	//
-	// - DistinctCount: number of distinct field values
+	// - DistinctCount: the number of distinct values in a field.
 	//
-	// - DistinctPercent: ratio of the number of distinct field values to the number of data rows
+	// - DistinctPercent: the ratio of distinct values to the total number of rows.
 	//
-	// - DuplicatedCount: number of duplicate field values
+	// - DuplicatedCount: the number of duplicate values in a field.
 	//
-	// - DuplicatedPercent: ratio of the number of duplicate field values to the number of data rows
+	// - DuplicatedPercent: the ratio of duplicate values to the total number of rows.
 	//
-	// - TableSize: table size
+	// - TableSize: the table size.
 	//
-	// - NullValueCount: number of rows where the field is null
+	// - NullValueCount: the number of rows where the field value is null.
 	//
-	// - NullValuePercent: ratio of rows where the field is null
+	// - NullValuePercent: the ratio of rows where the field value is null.
 	//
-	// - GroupCount: each value and the corresponding number of data rows after aggregating by field value
+	// - GroupCount: the count of rows for each value after aggregation by field value.
 	//
-	// - CountNotIn: number of rows whose enum value does not match
+	// - CountNotIn: the number of rows that do not match the enumerated values.
 	//
-	// - CountDistinctNotIn: number of distinct values whose enum value does not match
+	// - CountDistinctNotIn: the number of distinct values that do not match the enumerated values.
 	//
-	// - UserDefinedSql: sample collection via a custom SQL statement
+	// - UserDefinedSql: sample collection through a custom SQL statement.
 	//
 	// example:
 	//
@@ -238,7 +238,7 @@ type CreateDataQualityRuleTemplateRequestSamplingConfig struct {
 	//
 	// {"SQL": "select count(1) from table;"}
 	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
-	// Runtime parameter setting statements to be inserted and executed before the sampling statement is executed. The maximum length is 1000 characters. Currently only MaxCompute is supported.
+	// The runtime parameter setting statements to execute before the sampling statement. The value can be up to 1000 characters in length. Currently, only MaxCompute is supported.
 	//
 	// example:
 	//

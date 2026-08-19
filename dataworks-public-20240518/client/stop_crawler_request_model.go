@@ -14,6 +14,8 @@ type iStopCrawlerRequest interface {
 }
 
 type StopCrawlerRequest struct {
+	// The ID of the metadata crawler. You can call ListCrawlers to query the ID.
+	//
 	// This parameter is required.
 	//
 	// example:

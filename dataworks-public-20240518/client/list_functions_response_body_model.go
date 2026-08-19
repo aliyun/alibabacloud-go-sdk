@@ -18,7 +18,7 @@ type iListFunctionsResponseBody interface {
 type ListFunctionsResponseBody struct {
 	// The pagination information.
 	PagingInfo *ListFunctionsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. Used for troubleshooting when an error occurs.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ func (s *ListFunctionsResponseBody) Validate() error {
 }
 
 type ListFunctionsResponseBodyPagingInfo struct {
-	// The function list.
+	// The list of functions.
 	Functions []*ListFunctionsResponseBodyPagingInfoFunctions `json:"Functions,omitempty" xml:"Functions,omitempty" type:"Repeated"`
-	// The page number.
+	// The page number of the returned data. Used for pagination.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type ListFunctionsResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that meet the filter conditions.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type ListFunctionsResponseBodyPagingInfoFunctions struct {
 	//
 	// xxx.jar,yyy.jar
 	ArmResource *string `json:"ArmResource,omitempty" xml:"ArmResource,omitempty"`
-	// The fully qualified class name of the UDF.
+	// The fully qualified class name of the UDF function.
 	//
 	// example:
 	//
@@ -160,33 +160,33 @@ type ListFunctionsResponseBodyPagingInfoFunctions struct {
 	//
 	// testUdf(xx,yy)
 	CommandDescription *string `json:"CommandDescription,omitempty" xml:"CommandDescription,omitempty"`
-	// The timestamp when the UDF was created.
+	// The timestamp when the UDF function was created.
 	//
 	// example:
 	//
 	// 1655953028000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Data source information of the UDF.
+	// The data source information of the UDF function.
 	DataSource *ListFunctionsResponseBodyPagingInfoFunctionsDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
-	// The database name. This parameter is used only when the function type is EMR Function.
+	// The database name. This field is used only when the function type is EMR Function.
 	//
 	// example:
 	//
 	// EMR_lake
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The general description of the function.
+	// The overall description of the function.
 	//
 	// example:
 	//
 	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Content of the nested function code
+	// The embedded function code content.
 	//
 	// example:
 	//
 	// print(\\"hello,world!\\")
 	EmbeddedCode *string `json:"EmbeddedCode,omitempty" xml:"EmbeddedCode,omitempty"`
-	// The nested code type.
+	// The embedded code type.
 	//
 	// Valid values:
 	//
@@ -204,13 +204,13 @@ type ListFunctionsResponseBodyPagingInfoFunctions struct {
 	//
 	// Python2
 	EmbeddedCodeType *string `json:"EmbeddedCodeType,omitempty" xml:"EmbeddedCodeType,omitempty"`
-	// The nested resource type.
+	// The embedded resource type.
 	//
 	// Valid values:
 	//
-	// - File: General resource file.
+	// - File: common resource file
 	//
-	// - Embedded: Embedded resource.
+	// - Embedded: embedded resource
 	//
 	// example:
 	//
@@ -224,15 +224,15 @@ type ListFunctionsResponseBodyPagingInfoFunctions struct {
 	//
 	// abc
 	ExampleDescription *string `json:"ExampleDescription,omitempty" xml:"ExampleDescription,omitempty"`
-	// The implementation code of the function and the list of resource files.
+	// The implementation code of the function. The list of resource files.
 	//
 	// example:
 	//
 	// xxx.jar,yyy.jar
 	FileResource *string `json:"FileResource,omitempty" xml:"FileResource,omitempty"`
-	// The unique identifier of the UDF.
+	// The unique identifier of the UDF function.
 	//
-	// > Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// 	Notice: This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. **This change does not affect normal SDK usage. The parameter is still returned in the type defined in the SDK**. Only when you upgrade the SDK across version 8.0.0, the type change may cause project compilation failures, and you need to manually correct the data type.
 	//
 	// example:
 	//
@@ -240,17 +240,19 @@ type ListFunctionsResponseBodyPagingInfoFunctions struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The modification time.
 	//
+	// The value is a 13-digit number, such as `1655953028000`.
+	//
 	// example:
 	//
 	// 1655953028000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The UDF name.
+	// The name of the UDF function.
 	//
 	// example:
 	//
 	// Function name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The owner of the UDF.
+	// The owner of the UDF function.
 	//
 	// example:
 	//
@@ -264,7 +266,7 @@ type ListFunctionsResponseBodyPagingInfoFunctions struct {
 	//
 	// yy: parameter information YYY
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	// The ID of the project to which the UDF belongs.
+	// The ID of the project to which the UDF function belongs.
 	//
 	// example:
 	//
@@ -278,23 +280,23 @@ type ListFunctionsResponseBodyPagingInfoFunctions struct {
 	ReturnValueDescription *string `json:"ReturnValueDescription,omitempty" xml:"ReturnValueDescription,omitempty"`
 	// The runtime resource group information.
 	RuntimeResource *ListFunctionsResponseBodyPagingInfoFunctionsRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	// Script information of the UDF.
+	// The script information of the UDF function.
 	Script *ListFunctionsResponseBodyPagingInfoFunctionsScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
-	// The UDF type.
+	// The type of the UDF function.
 	//
 	// Valid values:
 	//
-	// - Math: Mathematical operation functions
+	// - Math: mathematical operation function
 	//
-	// - Aggregate: Aggregation functions
+	// - Aggregate: aggregate functions
 	//
-	// - String: String processing functions
+	// - String: character string processing function
 	//
-	// - Date: Date functions
+	// - Date: date function
 	//
-	// - Analytic: Window functions
+	// - Analytic: window function
 	//
-	// - Other: Other functions
+	// - Other: other function
 	//
 	// example:
 	//
@@ -573,7 +575,7 @@ func (s *ListFunctionsResponseBodyPagingInfoFunctionsDataSource) Validate() erro
 }
 
 type ListFunctionsResponseBodyPagingInfoFunctionsRuntimeResource struct {
-	// The runtime resource group ID.
+	// The ID of the runtime resource group.
 	//
 	// example:
 	//
@@ -603,9 +605,9 @@ func (s *ListFunctionsResponseBodyPagingInfoFunctionsRuntimeResource) Validate()
 }
 
 type ListFunctionsResponseBodyPagingInfoFunctionsScript struct {
-	// The ID of the script.
+	// The script ID.
 	//
-	// > This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. However, compilation failures may occur due to the type change only when upgrading the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// 	Notice: This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. **This change does not affect normal SDK usage. The parameter is still returned in the type defined in the SDK**. Only when you upgrade the SDK across version 8.0.0, the type change may cause project compilation failures, and you need to manually correct the data type.
 	//
 	// example:
 	//
@@ -617,7 +619,7 @@ type ListFunctionsResponseBodyPagingInfoFunctionsScript struct {
 	//
 	// XXX/OpenAPI/function/function_name
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// Runtime
+	// The runtime.
 	Runtime *ListFunctionsResponseBodyPagingInfoFunctionsScriptRuntime `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
 }
 
@@ -666,7 +668,7 @@ func (s *ListFunctionsResponseBodyPagingInfoFunctionsScript) Validate() error {
 }
 
 type ListFunctionsResponseBodyPagingInfoFunctionsScriptRuntime struct {
-	// Command
+	// The command.
 	//
 	// example:
 	//

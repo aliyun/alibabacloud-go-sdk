@@ -18,7 +18,7 @@ type iListResourcesResponseBody interface {
 type ListResourcesResponseBody struct {
 	// The pagination information.
 	PagingInfo *ListResourcesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The unique ID of this request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *ListResourcesResponseBody) Validate() error {
 }
 
 type ListResourcesResponseBodyPagingInfo struct {
-	// The page number.
+	// The page number of the request, used for pagination.
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ type ListResourcesResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The returned resource list.
+	// The list of resources returned by the query.
 	Resources []*ListResourcesResponseBodyPagingInfoResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries that meet the filter conditions.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ func (s *ListResourcesResponseBodyPagingInfo) Validate() error {
 }
 
 type ListResourcesResponseBodyPagingInfoResources struct {
-	// The time when the file resource was created. This value is a UNIX timestamp.
+	// The timestamp when the file resource was created.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type ListResourcesResponseBodyPagingInfoResources struct {
 	DataSource *ListResourcesResponseBodyPagingInfoResourcesDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
 	// The unique identifier of the file resource.
 	//
-	// > Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// 	Notice: This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. **This change does not affect normal SDK usage. The parameter is still returned in the type defined in the SDK**. Only when you upgrade across SDK version 8.0.0, the type change may cause project compilation failures, and you need to manually correct the data type.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type ListResourcesResponseBodyPagingInfoResources struct {
 	//
 	// 1724505917000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The resource name.
+	// The name of the resource.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ type ListResourcesResponseBodyPagingInfoResources struct {
 	//
 	// 110755000425XXXX
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The ID of the DataWorks workspace. To obtain the workspace ID, log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and navigate to the workspace configuration page.
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the workspace ID.
 	//
 	// example:
 	//
@@ -184,7 +184,7 @@ type ListResourcesResponseBodyPagingInfoResources struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The script information.
 	Script *ListResourcesResponseBodyPagingInfoResourcesScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
-	// Source path of the file resource. This parameter is empty if the type is Local.
+	// The source path of the file resource. This field is empty when the type is Local.
 	//
 	// example:
 	//
@@ -194,35 +194,35 @@ type ListResourcesResponseBodyPagingInfoResources struct {
 	//
 	// Valid values:
 	//
-	// - Local
+	// - Local: local storage.
 	//
-	// - OSS
+	// - Oss: Object Storage Service.
 	//
 	// example:
 	//
 	// Local
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The destination storage path.
+	// The target storage path of the file resource.
 	//
 	// example:
 	//
 	// XXX/unknown/ide/1/XXX/20240820200851_963a9da676de44ef8d06a6576a8c4d6a.py
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// The destination storage type.
+	// The target storage type of the file resource.
 	//
 	// Valid values:
 	//
-	// - Gateway
+	// - Gateway: gateway.
 	//
-	// - OSS
+	// - Oss: Object Storage Service.
 	//
-	// - HDFS
+	// - Hdfs: HDFS file storage system.
 	//
 	// example:
 	//
 	// Oss
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The resource type.
+	// The resource file type.
 	//
 	// Valid values:
 	//
@@ -425,21 +425,21 @@ func (s *ListResourcesResponseBodyPagingInfoResourcesDataSource) Validate() erro
 }
 
 type ListResourcesResponseBodyPagingInfoResourcesScript struct {
-	// The ID of the script.
+	// The script ID.
 	//
-	// > This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// 	Notice: This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. **This change does not affect normal SDK usage. The parameter is still returned in the type defined in the SDK**. Only when you upgrade across SDK version 8.0.0, the type change may cause project compilation failures, and you need to manually correct the data type.
 	//
 	// example:
 	//
 	// 123348864897630XXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The script path.
+	// The path of the script.
 	//
 	// example:
 	//
 	// root/demo
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// Runtime
+	// The runtime.
 	Runtime *ListResourcesResponseBodyPagingInfoResourcesScriptRuntime `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
 }
 
@@ -488,7 +488,7 @@ func (s *ListResourcesResponseBodyPagingInfoResourcesScript) Validate() error {
 }
 
 type ListResourcesResponseBodyPagingInfoResourcesScriptRuntime struct {
-	// Command. This parameter indicates the file type.
+	// The command, which indicates the file type.
 	//
 	// example:
 	//

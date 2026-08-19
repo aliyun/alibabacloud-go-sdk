@@ -28,15 +28,15 @@ type iCreateProjectShrinkRequest interface {
 }
 
 type CreateProjectShrinkRequest struct {
-	// The ID of the Alibaba Cloud resource group to which the workspace belongs. You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) and go to the Resource Group page to query the ID.
+	// The ID of the Alibaba Cloud resource group to which the workspace belongs. You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) and go to the resource group list page to obtain the ID.
 	//
-	// You must configure this parameter to specify an Alibaba Cloud resource group for the workspace that you want to create.
+	// This parameter is used to manage the DataWorks workspace that you create within the specified Alibaba Cloud resource group.
 	//
 	// example:
 	//
 	// rg-acfmzbn7****
 	AliyunResourceGroupId *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
-	// The tags.
+	// The list of tags.
 	AliyunResourceTagsShrink *string `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty"`
 	// The description of the workspace.
 	//
@@ -46,19 +46,19 @@ type CreateProjectShrinkRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to enable the development environment. Valid values:
 	//
-	// - true : enables the development environment. In this case, the development environment is isolated from the production environment in the workspace.
+	// - true: The development environment is enabled for the workspace, which supports isolation between the development and production environments.
 	//
-	// - false: disables the development environment. In this case, only the production environment is used in the workspace.
+	// - false: Only the production environment is used.
 	//
 	// example:
 	//
 	// false
 	DevEnvironmentEnabled *bool `json:"DevEnvironmentEnabled,omitempty" xml:"DevEnvironmentEnabled,omitempty"`
-	// Specifies whether to disable the Develop role. Valid values:
+	// Specifies whether to disable the development role. Valid values:
 	//
-	// - false (default)
+	// - false: The development role is enabled. This is the default value.
 	//
-	// - true
+	// - true: The development role is disabled.
 	//
 	// example:
 	//
@@ -72,15 +72,15 @@ type CreateProjectShrinkRequest struct {
 	//
 	// Sora financial analysis
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The name of the workspace.
+	// The workspace name.
 	//
-	// Limits:
+	// Constraints:
 	//
-	// - The workspace name must be unqiue in a region.
+	// - The workspace name must be unique within the region.
 	//
-	// - The workspace name can contain letters, digits, and underscores (_), and must start with a letter.
+	// - The name must start with a letter and can contain only letters, digits, and underscores (_).
 	//
-	// - The workspace name must be 3 to 28 characters in length.
+	// - The name must be 3 to 28 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -88,11 +88,11 @@ type CreateProjectShrinkRequest struct {
 	//
 	// sora_finance
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether to enable scheduling of Platform for AI (PAI) tasks. Valid values:
+	// Specifies whether to enable PAI task scheduling. Valid values:
 	//
-	// - true: enables scheduling of PAI tasks. In this case, you can create a PAI node in a DataWorks workspace and configure scheduling properties for the node to implement periodic scheduling of PAI tasks.
+	// - true: You can create Machine Learning Platform for AI (PAI) nodes in the DataWorks workspace and run them on a periodic schedule based on the node configurations.
 	//
-	// - false: disables scheduling of PAI tasks.
+	// - false: PAI task scheduling is disabled.
 	//
 	// example:
 	//

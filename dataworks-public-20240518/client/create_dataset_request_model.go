@@ -26,7 +26,7 @@ type iCreateDatasetRequest interface {
 }
 
 type CreateDatasetRequest struct {
-	// The description of the dataset. It must not exceed 1,024 characters in length.
+	// The description of the dataset. The value can be up to 1024 characters in length.
 	//
 	// example:
 	//
@@ -34,19 +34,19 @@ type CreateDatasetRequest struct {
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The data type. Valid values:
 	//
-	// - COMMON: Common (Default)
+	// - COMMON: general-purpose (default).
 	//
-	// - PIC
+	// - PIC: image.
 	//
-	// - TEXT
+	// - TEXT: text.
 	//
-	// - TABLE
+	// - TABLE: table.
 	//
-	// - VIDEO
+	// - VIDEO: video.
 	//
-	// - AUDIO
+	// - AUDIO: audio.
 	//
-	// - INDEX
+	// - INDEX: index.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type CreateDatasetRequest struct {
 	//
 	// This parameter is required.
 	InitVersion *CreateDatasetRequestInitVersion `json:"InitVersion,omitempty" xml:"InitVersion,omitempty" type:"Struct"`
-	// The name of the dataset. It cannot be an empty string and must not exceed 128 characters in length.
+	// The name of the dataset. The value must be a non-empty string that is up to 128 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -64,13 +64,13 @@ type CreateDatasetRequest struct {
 	//
 	// test_oss_dataset
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The source of the dataset. Currently, only DataWorks is supported.
+	// The origin of the dataset. Only DataWorks is supported.
 	//
 	// example:
 	//
 	// DataWorks
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The DataWorks workspace ID.
+	// The ID of the DataWorks workspace.
 	//
 	// This parameter is required.
 	//
@@ -78,29 +78,13 @@ type CreateDatasetRequest struct {
 	//
 	// 12345
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The storage type. Currently supported values:
+	// The storage type. Valid values:
 	//
-	// - OSS
+	// - OSS: Object Storage Service.
 	//
-	// - NAS: General-purpose NAS file systems
+	// - NAS: general-purpose NAS file storage.
 	//
-	// - EXTREMENAS: Extreme NAS file systems
-	//
-	// - DLF_LANCE: Data Lake Formation
-	//
-	// Valid values:
-	//
-	// - NAS: General-purpose NAS file systems
-	//
-	// - MAXCOMPUTE: MaxCompute table
-	//
-	// - CPFS: Cloud Parallel File Storage
-	//
-	// - BMCPFS: CPFS for Lingjun
-	//
-	// - EXTREMENAS: Extreme NAS file systems
-	//
-	// - OSS: Object Storage Service
+	// - EXTREMENAS: extreme NAS file storage.
 	//
 	// - DLF_LANCE: Data Lake Formation.
 	//
@@ -193,39 +177,43 @@ func (s *CreateDatasetRequest) Validate() error {
 }
 
 type CreateDatasetRequestInitVersion struct {
-	// The description. It must not exceed 1,024 characters in length.
+	// The description. The value can be up to 1024 characters in length.
 	//
 	// example:
 	//
 	// Initial Version
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The storage import configuration for the dataset. The required configuration information varies by storage type.
+	// The storage import configuration of the dataset. The required configuration varies depending on the storage type.
 	//
-	// **NAS**
+	// <details>
 	//
-	// For valid values, refer to the response of the file storage API DescribeFileSystems.
+	// <summary>NAS</summary>
+	//
+	// The values can be obtained from the response of the File Storage NAS API DescribeFileSystems operation.
 	//
 	// ```JSON
 	//
 	// {
 	//
-	// "fileSystemId": "3b6XXX89c9", // The file system ID.
+	//   "fileSystemId": "3b6XXX89c9", // File system ID
 	//
-	// "fileSystemStorageType":  "Performance" // The storage specification of the file system.
+	//   "fileSystemStorageType": "Performance", // Storage specification of the file system
 	//
-	// "vpcId": "vpc-uf66oxxxrqge1t2gson7s" // The VPC ID of the mount point.
+	//   "vpcId": "vpc-uf66oxxxrqge1t2gson7s" // VPC ID of the mount target
 	//
 	// }
 	//
 	// ```
+	//
+	// </details>
 	ImportInfo map[string]*string `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
-	// The mount path. It must start with /mnt/. Default value: /mnt/data.
+	// The mount path. The value must start with /mnt/. Default value: /mnt/data.
 	//
 	// example:
 	//
 	// /mnt/data
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// URL
+	// The URL.
 	//
 	// This parameter is required.
 	//

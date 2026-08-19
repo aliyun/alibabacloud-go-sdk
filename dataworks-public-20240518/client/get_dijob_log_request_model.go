@@ -26,7 +26,7 @@ type iGetDIJobLogRequest interface {
 type GetDIJobLogRequest struct {
 	// Deprecated
 	//
-	// This parameter is deprecated. Use the Id parameter instead.
+	// **[Deprecated]*	- This parameter is deprecated. Use the Id parameter instead.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type GetDIJobLogRequest struct {
 	//
 	// 10
 	FailoverId *int64 `json:"FailoverId,omitempty" xml:"FailoverId,omitempty"`
-	// The ID of the synchronization task.
+	// The node ID.
 	//
 	// example:
 	//
@@ -50,17 +50,17 @@ type GetDIJobLogRequest struct {
 	//
 	// 6153616438
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the node. This parameter is applicable only to the tasks that are run on serverless resource groups. Valid values:
+	// The node type. This parameter is applicable only to tasks that run on resource group 2.0. Valid values:
 	//
-	// - **MASTER**: the master node, which is used to query the logs of JobManagers.
+	// 	- **MASTER**: retrieves the JobManager logs.
 	//
-	// - **WORKER**: the worker node, which is used to query the logs of TaskManagers.
+	// 	- **WORKER**: retrieves the TaskManager logs.
 	//
 	// example:
 	//
 	// MASTER
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The page number of the pagination query. The value is a positive integer greater than or equal to 1.
+	// The page number for paging. The value must be a positive integer greater than or equal to 1.
 	//
 	// example:
 	//

@@ -18,15 +18,20 @@ type iCreateCrawlerResponseBody interface {
 }
 
 type CreateCrawlerResponseBody struct {
+	// The ID of the newly created metadata crawler.
+	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID. Used to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 9252F32F-D855-549E-8898-61CF5A733050
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateCrawlerResponseBody) String() string {

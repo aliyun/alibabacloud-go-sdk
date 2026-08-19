@@ -18,13 +18,13 @@ type iCreateComponentRequest interface {
 }
 
 type CreateComponentRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// A reserved field.
 	//
 	// example:
 	//
 	// 1AFAE64E-D1BE-432B-A9****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The DataWorks workspace ID. You can call the [ListProjects](https://help.aliyun.com/document_detail/2852607.html) operation to obtain the ID.
+	// The ID of the DataWorks workspace where the data source resides. You can call the [ListProjects](https://help.aliyun.com/document_detail/2780068.html) operation to obtain the workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type CreateComponentRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The FlowSpec information for this UDF function. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
+	// The FlowSpec information that describes the workflow. For more information about the specification, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow/).
 	//
 	// This parameter is required.
 	//

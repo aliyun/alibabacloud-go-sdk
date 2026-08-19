@@ -24,7 +24,7 @@ type GetImageRequest struct {
 	//
 	// Custom_image_xxxx_xxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The image version. If you do not specify this parameter, the latest version is returned.
+	// The image version. If this parameter is not specified, the latest version is returned.
 	//
 	// example:
 	//

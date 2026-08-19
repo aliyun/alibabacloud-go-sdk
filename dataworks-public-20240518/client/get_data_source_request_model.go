@@ -14,7 +14,7 @@ type iGetDataSourceRequest interface {
 }
 
 type GetDataSourceRequest struct {
-	// The data source ID.
+	// The data source ID, which is the unique identifier of the data source.
 	//
 	// This parameter is required.
 	//

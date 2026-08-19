@@ -79,11 +79,11 @@ func (s *GetImageResponseBody) Validate() error {
 }
 
 type GetImageResponseBodyImage struct {
-	// The image visibility:
+	// The image visibility. Valid values:
 	//
-	// - Public: Visible to all users.
+	// - Public: visible to all users.
 	//
-	// - Private: Visible only to the creator.
+	// - Private: visible only to the creator.
 	//
 	// example:
 	//
@@ -127,7 +127,7 @@ type GetImageResponseBodyImage struct {
 	//
 	// Test image created by xxx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether synchronization to MaxCompute is enabled.
+	// Indicates whether synchronization with MaxCompute is enabled.
 	//
 	// example:
 	//
@@ -193,13 +193,13 @@ type GetImageResponseBodyImage struct {
 	//
 	// true
 	Official *bool `json:"Official,omitempty" xml:"Official,omitempty"`
-	// The image ID assigned by the provider.
+	// The image ID from the image provider.
 	//
 	// example:
 	//
 	// acr_image_id
 	ProviderImageId *string `json:"ProviderImageId,omitempty" xml:"ProviderImageId,omitempty"`
-	// The image provider type:
+	// The image reference data type. Valid values:
 	//
 	// - ACR: ACR image repository.
 	//
@@ -209,33 +209,33 @@ type GetImageResponseBodyImage struct {
 	//
 	// ACR
 	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
-	// The publish stage:
+	// The publish status. Valid values:
 	//
-	// - Untest: Not tested.
+	// - Untest: not tested.
 	//
-	// - Testing: Being tested.
+	// - Testing: being tested.
 	//
-	// - TestFailed: Test failed.
+	// - TestFailed: test failed.
 	//
-	// - Unpublished: Not published.
+	// - Unpublished: not published.
 	//
-	// - Publishing: Being published.
+	// - Publishing: being published.
 	//
-	// - Published: Published.
+	// - Published: published.
 	//
-	// - PublishFailed: Publish failed.
+	// - PublishFailed: publish failed.
 	//
-	// - Building: Being built.
+	// - Building: being built.
 	//
-	// - BuildSuccess: Build succeeded.
+	// - BuildSuccess: build succeeded.
 	//
-	// - BuildFailed: Build failed.
+	// - BuildFailed: build failed.
 	//
-	// - Accelerating: Being accelerated.
+	// - Accelerating: being accelerated.
 	//
-	// - AccelerateSuccess: Acceleration succeeded.
+	// - AccelerateSuccess: acceleration succeeded.
 	//
-	// - AccelerateFailed: Acceleration failed.
+	// - AccelerateFailed: acceleration failed.
 	//
 	// example:
 	//
@@ -253,15 +253,15 @@ type GetImageResponseBodyImage struct {
 	//
 	// 1GB
 	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The image status:
+	// The image status. Valid values:
 	//
-	// - Disabled: The image is disabled.
+	// - Disabled: disabled.
 	//
-	// - Expired: The image has expired.
+	// - Expired: expired.
 	//
-	// - Available: The image is available.
+	// - Available: active.
 	//
-	// - ReadOnly: The image is read-only.
+	// - ReadOnly: read-only.
 	//
 	// example:
 	//
@@ -593,7 +593,7 @@ func (s *GetImageResponseBodyImageBuildConfig) Validate() error {
 }
 
 type GetImageResponseBodyImageBuildConfigPackageInstallationScripts struct {
-	// The script content. If the content consists of package names, separate them with commas (,).
+	// The script content. If the content contains package names, separate them with commas (,).
 	//
 	// example:
 	//
@@ -638,9 +638,9 @@ func (s *GetImageResponseBodyImageBuildConfigPackageInstallationScripts) Validat
 }
 
 type GetImageResponseBodyImageSupported struct {
-	// The supported module:
+	// The supported module. Valid values:
 	//
-	// - Scheduler: Scheduling.
+	// - Scheduler: scheduling.
 	//
 	// example:
 	//

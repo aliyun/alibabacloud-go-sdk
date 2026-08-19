@@ -14,7 +14,7 @@ type iGetAlertRuleRequest interface {
 }
 
 type GetAlertRuleRequest struct {
-	// The rule ID.
+	// The ID of the custom alert rule.
 	//
 	// example:
 	//

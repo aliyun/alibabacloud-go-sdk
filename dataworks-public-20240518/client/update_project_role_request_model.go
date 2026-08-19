@@ -20,7 +20,7 @@ type iUpdateProjectRoleRequest interface {
 }
 
 type UpdateProjectRoleRequest struct {
-	// A reserved parameter.
+	// A reserved field.
 	//
 	// example:
 	//
@@ -38,9 +38,9 @@ type UpdateProjectRoleRequest struct {
 	//
 	// This parameter is required.
 	ModulePermissions []*UpdateProjectRoleRequestModulePermissions `json:"ModulePermissions,omitempty" xml:"ModulePermissions,omitempty" type:"Repeated"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the workspace management page to obtain the ID.
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the Storage Management page to obtain the ID.
 	//
-	// This parameter specifies the DataWorks workspace on which the API operation is performed.
+	// This parameter specifies the DataWorks workspace for this API invocation.
 	//
 	// This parameter is required.
 	//
@@ -114,23 +114,23 @@ type UpdateProjectRoleRequestModulePermissions struct {
 	//
 	// - 3: StreamStudio
 	//
-	// - 4: Deployment Center
+	// - 4: Deploy Management
 	//
-	// - 6: Data Security Guard
+	// - 6: Data Protection Umbrella
 	//
 	// - 7: Data Map
 	//
-	// - 8: Data Service
+	// - 8: DataService Studio
 	//
 	// - 9: Data Integration
 	//
 	// - 10: Data Modeling (DataBlau DDM)
 	//
-	// - 11: Data Studio
+	// - 11: DataStudio
 	//
 	// - 12: Data Quality
 	//
-	// - 13: Data Governance
+	// - 13: Data Governance Center
 	//
 	// - 14: Operation Center
 	//
@@ -138,7 +138,7 @@ type UpdateProjectRoleRequestModulePermissions struct {
 	//
 	// - 16: Migration Assistant
 	//
-	// - 17: Data Analysis
+	// - 17: Data Analytics
 	//
 	// - 18: Approval Center
 	//
@@ -152,11 +152,11 @@ type UpdateProjectRoleRequestModulePermissions struct {
 	ModuleId *int64 `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
 	// The permission type. Valid values:
 	//
-	// - Write: Read-only
+	// - Write: Edit.
 	//
-	// - Read: Edit
+	// - Read: Read-only.
 	//
-	// - NotSet: Not controlled
+	// - NotSet: Not controlled.
 	//
 	// example:
 	//

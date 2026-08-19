@@ -16,13 +16,13 @@ type iDeleteCertificateResponseBody interface {
 }
 
 type DeleteCertificateResponseBody struct {
-	// The request ID. Use this ID to locate logs and troubleshoot issues.
+	// The request ID. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// D9A61DC0-B922-421B-B706
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the certificate file was successfully deleted.
+	// Indicates whether the certificate file was deleted successfully.
 	//
 	// example:
 	//

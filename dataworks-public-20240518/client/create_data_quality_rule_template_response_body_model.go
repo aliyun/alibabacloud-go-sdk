@@ -16,13 +16,13 @@ type iCreateDataQualityRuleTemplateResponseBody interface {
 }
 
 type CreateDataQualityRuleTemplateResponseBody struct {
-	// The rule template Code.
+	// The code of the rule template.
 	//
 	// example:
 	//
 	// UserDefined:3001
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The API request ID.
+	// The request ID.
 	//
 	// example:
 	//

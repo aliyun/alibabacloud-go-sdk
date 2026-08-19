@@ -24,7 +24,7 @@ type iDeployFileResponseBody interface {
 }
 
 type DeployFileResponseBody struct {
-	// The deployment package ID. You must specify this ID as a parameter when you call the [GetDeployment](https://help.aliyun.com/document_detail/173950.html) operation to query the details of the deployment.
+	// The ID of the deployment package. You must pass this ID as a parameter when you call the [GetDeployment](https://help.aliyun.com/document_detail/173950.html) operation to obtain the details of this deployment.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type DeployFileResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
-	// - true: success.
+	// - true: The call was successful.
 	//
-	// - false: failure.
+	// - false: The call failed.
 	//
 	// example:
 	//

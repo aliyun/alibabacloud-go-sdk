@@ -18,7 +18,7 @@ type iGetCatalogResponseBody interface {
 }
 
 type GetCatalogResponseBody struct {
-	// Catalog information.
+	// The data catalog information.
 	Catalog *Catalog `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
 	// The request ID.
 	//

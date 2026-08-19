@@ -14,7 +14,7 @@ type iDeleteAlertRuleRequest interface {
 }
 
 type DeleteAlertRuleRequest struct {
-	// The rule ID.
+	// The ID of the custom rule.
 	//
 	// example:
 	//

@@ -86,7 +86,13 @@ type Table struct {
 	//
 	// example:
 	//
-	// dlf-table::catalog_id:database_name::table_name
+	// maxcompute-table:123456XXX::test_project::test_tbl
+	//
+	// dlf-table:123456XXX:test_catalog:test_db::test_tbl
+	//
+	// hms-table:c-abc123xxx::test_db::test_tbl
+	//
+	// holo-table:h-abc123xxx::test_db:test_schema:test_tbl
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The modification time, in millisecond-level timestamp.
 	//
@@ -98,7 +104,7 @@ type Table struct {
 	//
 	// example:
 	//
-	// table_name
+	// test_tbl
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The parent-level metadata entity ID. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
 	//
@@ -142,7 +148,15 @@ type Table struct {
 	//
 	// example:
 	//
-	// dlf-database::catalog_id:database_name
+	// maxcompute-schema:123456XXX::test_project_with_schema:default
+	//
+	// maxcompute-project:123456XXX::test_project_without_schema
+	//
+	// dlf-database:123456XXX:test_catalog:test_db
+	//
+	// hms-database:c-abc123xxx::test_db
+	//
+	// holo-schema:h-abc123xxx::test_db:test_schema
 	ParentMetaEntityId *string `json:"ParentMetaEntityId,omitempty" xml:"ParentMetaEntityId,omitempty"`
 	// The list of partition keys. This is empty for non-partitioned tables.
 	PartitionKeys   []*string          `json:"PartitionKeys,omitempty" xml:"PartitionKeys,omitempty" type:"Repeated"`

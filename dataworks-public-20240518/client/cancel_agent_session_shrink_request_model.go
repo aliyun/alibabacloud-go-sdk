@@ -18,7 +18,7 @@ type iCancelAgentSessionShrinkRequest interface {
 }
 
 type CancelAgentSessionShrinkRequest struct {
-	// The ID passed by the requester. The value is returned as-is in the response.
+	// The ID passed in by the requester, returned as-is in the response.
 	//
 	// example:
 	//

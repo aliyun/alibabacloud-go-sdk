@@ -16,9 +16,9 @@ type iGetDataSourceResponseBody interface {
 }
 
 type GetDataSourceResponseBody struct {
-	// The information about the data source.
+	// The data source details.
 	DataSource *GetDataSourceResponseBodyDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. Used for locating logs and troubleshooting issues.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ func (s *GetDataSourceResponseBody) Validate() error {
 }
 
 type GetDataSourceResponseBodyDataSource struct {
-	// The connection configurations of the data source, including the connection address, access identity, and environment information. The envType parameter specifies the environment in which the data source is used. Valid values of the envType parameter:
+	// The connection configuration of the data source, including the endpoint, access identity, and environment context. The data source environment type (envType) is a member property of this object. Valid values:
 	//
-	// - Dev: development environment
+	// - Dev: development environment.
 	//
-	// - Prod: production environment
+	// - Prod: production environment.
 	//
-	// The parameters that you need to configure for the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/document_detail/2852465.html).
+	// Different types of data sources have different property specifications under different configuration modes (ConnectionPropertiesMode). For more information, see [Data source connection properties (ConnectionProperties)](https://help.aliyun.com/document_detail/2852465.html).
 	//
 	// example:
 	//
@@ -90,25 +90,25 @@ type GetDataSourceResponseBodyDataSource struct {
 	//
 	// }
 	ConnectionProperties interface{} `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
-	// The mode in which the data source is added. The mode varies based on the data source type. Valid values:
+	// The category in which the data source is added. Different types have different subtypes with different parameter constraints. Examples:
 	//
-	// - InstanceMode: instance mode
+	// - InstanceMode: instance mode.
 	//
-	// - UrlMode: connection string mode
+	// - UrlMode: connection string mode.
 	//
-	// - CdhMode: CDH cluster mode
+	// - CdhMode: CDH mode.
 	//
 	// example:
 	//
 	// UrlMode
 	ConnectionPropertiesMode *string `json:"ConnectionPropertiesMode,omitempty" xml:"ConnectionPropertiesMode,omitempty"`
-	// The time when the data source was added. This value is a UNIX timestamp.
+	// The time when the data source was created (timestamp).
 	//
 	// example:
 	//
 	// 1698286929333
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the user who adds the data source.
+	// The ID of the user who created the data source.
 	//
 	// example:
 	//
@@ -120,19 +120,19 @@ type GetDataSourceResponseBodyDataSource struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The data source ID.
+	// The ID of the data source.
 	//
 	// example:
 	//
 	// 16738
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The time when the data source was last modified. This value is a UNIX timestamp.
+	// The time when the data source was last modified (timestamp).
 	//
 	// example:
 	//
 	// 1698286929333
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The ID of the user who modifies the data source.
+	// The ID of the user who last modified the data source.
 	//
 	// example:
 	//
@@ -144,13 +144,13 @@ type GetDataSourceResponseBodyDataSource struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the workspace with which the data source is associated.
+	// The ID of the workspace to which the data source belongs.
 	//
 	// example:
 	//
 	// 52660
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The unique business key of the data source. For example, the unique business key of a Hologres data source is in the `${tenantOwnerId}:${regionId}:${type}:${instanceId}:${database}` format.
+	// The business unique key of the data source. For example, the format for a Hologres data source is `${tenantOwnerId}:${regionId}:${type}:${instanceId}:${database}`.
 	//
 	// example:
 	//

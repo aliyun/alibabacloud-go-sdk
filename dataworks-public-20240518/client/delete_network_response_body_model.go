@@ -16,7 +16,7 @@ type iDeleteNetworkResponseBody interface {
 }
 
 type DeleteNetworkResponseBody struct {
-	// The request ID.
+	// The ID of the request, which is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//

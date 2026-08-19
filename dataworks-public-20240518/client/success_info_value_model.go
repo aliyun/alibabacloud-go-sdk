@@ -16,7 +16,7 @@ type iSuccessInfoValue interface {
 }
 
 type SuccessInfoValue struct {
-	// Indicates whether the request was successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//

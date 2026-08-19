@@ -16,9 +16,9 @@ type iListDeploymentPackageFilesResponseBody interface {
 }
 
 type ListDeploymentPackageFilesResponseBody struct {
-	// The pagination details.
+	// The pagination information.
 	PagingInfo *ListDeploymentPackageFilesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,21 +62,21 @@ func (s *ListDeploymentPackageFilesResponseBody) Validate() error {
 }
 
 type ListDeploymentPackageFilesResponseBodyPagingInfo struct {
-	// The list of files pending deployment.
+	// The list of file versions pending deployment.
 	DeploymentPackageFiles []*ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles `json:"DeploymentPackageFiles,omitempty" xml:"DeploymentPackageFiles,omitempty" type:"Repeated"`
-	// The page number. Pages start from page 1.
+	// The page number, starting from 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The page size. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that meet the conditions.
 	//
 	// example:
 	//
@@ -142,79 +142,81 @@ func (s *ListDeploymentPackageFilesResponseBodyPagingInfo) Validate() error {
 }
 
 type ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles struct {
-	// The change type, which is an integer. Valid values:
+	// The change type. Valid values:
 	//
-	// - 0: addition
+	// - 0: added.
 	//
-	// - 1: update
+	// - 1: updated.
 	//
-	// - 2: deletion
+	// - 2: deleted.
 	//
 	// example:
 	//
 	// 0
 	ChangeType *int32 `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
-	// The comment for committing.
+	// The comment provided at the time of commit.
 	//
 	// example:
 	//
-	// Test submission
+	// Test commit
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The time for committing.
+	// The commit time.
+	//
+	// The format is `yyyy-MM-dd HH:mm:ss`, for example, `2025-04-10 15:55:47`. This example does not include a time zone identifier.
 	//
 	// example:
 	//
 	// 2025-04-10 15:55:47
 	CommitTime *string `json:"CommitTime,omitempty" xml:"CommitTime,omitempty"`
-	// The ID of the Alibaba Cloud account used by the user who committed the file.
+	// The Alibaba Cloud account ID of the committer.
 	//
 	// example:
 	//
 	// 446***
 	CommitUser *string `json:"CommitUser,omitempty" xml:"CommitUser,omitempty"`
-	// The name of the Alibaba Cloud account used by the user who committed the file.
+	// The Alibaba Cloud account name of the committer.
 	//
 	// example:
 	//
 	// user***
 	CommitUserName *string `json:"CommitUserName,omitempty" xml:"CommitUserName,omitempty"`
-	// The file ID.
+	// The ID of the file.
 	//
 	// example:
 	//
 	// 520246913
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The name of the file of the current version.
+	// The name of the file that generated this file version.
 	//
 	// example:
 	//
 	// bak_part_basc_person_relation_all_da
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The file type. The code for files varies based on the file type. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
+	// The file type. Different file types have different codes. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
 	//
 	// example:
 	//
 	// 13
 	FileType *int32 `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The file version.
+	// The version number of the file.
 	//
 	// example:
 	//
 	// 34
 	FileVersion *int64 `json:"FileVersion,omitempty" xml:"FileVersion,omitempty"`
-	// The unique ID.
+	// The unique identifier.
 	//
 	// example:
 	//
 	// 650433503
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the version is a version in the production environment of the scheduling system.
+	// Indicates whether this version is the same as the current production version in scheduling.
 	//
 	// example:
 	//
 	// true
 	IsSameAsProductionVersion *bool `json:"IsSameAsProductionVersion,omitempty" xml:"IsSameAsProductionVersion,omitempty"`
-	// The scheduling property configurations of the node that corresponds to the file, which is a JSON string.
+	// The scheduling property configuration of the scheduling node to which this file belongs, stored as a JSON string.
 	//
 	// example:
 	//
@@ -312,7 +314,7 @@ type ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles stru
 	//
 	// }
 	NodeConfiguration *string `json:"NodeConfiguration,omitempty" xml:"NodeConfiguration,omitempty"`
-	// The ID of the auto triggered node that corresponds to the file.
+	// The node ID in scheduling that corresponds to this file.
 	//
 	// example:
 	//
@@ -324,41 +326,41 @@ type ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles stru
 	//
 	// 27595
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The test status in the development environment.
+	// The testing status in the development environment.
 	//
 	// example:
 	//
 	// Not tested
 	SmokeTestStatus *string `json:"SmokeTestStatus,omitempty" xml:"SmokeTestStatus,omitempty"`
-	// The status of the code file of the current version. Valid values:
+	// The status of the code file for this version. Valid values:
 	//
-	// - 2: Commit check in progress.
+	// - 2: commit check in progress.
 	//
-	// - 3: Commit check passed.
+	// - 3: commit check succeeded.
 	//
-	// - 4: Commit check failed.
+	// - 4: commit check rejected.
 	//
-	// - 10: Committing.
+	// - 10: committing.
 	//
-	// - 11: Committed.
+	// - 11: committed to the scheduling development environment.
 	//
-	// - 20: Approved.
+	// - 20: review approved.
 	//
-	// - 21: Rejected.
+	// - 21: review failed.
 	//
-	// - 22: Warning detected during checking.
+	// - 22: check has warnings.
 	//
-	// - 23: Under code review.
+	// - 23: code review in progress.
 	//
-	// - 24: Code review rejected.
+	// - 24: code review rejected.
 	//
-	// - 80: Deployment package created.
+	// - 80: deployment package created.
 	//
-	// - 100: Deploying.
+	// - 100: deploying.
 	//
-	// - 101: Deployed to the production environment.
+	// - 101: deployed to production.
 	//
-	// - 200: Cancelled.
+	// - 200: canceled.
 	//
 	// example:
 	//
@@ -370,19 +372,19 @@ type ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles stru
 	//
 	// 639415964191360
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The module to which the file belongs. Valid values:
+	// The functional module to which the file belongs. Valid values:
 	//
-	// - NORMAL: The file is used for DataStudio.
+	// - NORMAL: data development.
 	//
-	// - MANUAL: The file is used for a manually triggered node.
+	// - MANUAL: manual task.
 	//
-	// - MANUAL_BIZ: The file is used for a manually triggered workflow.
+	// - MANUAL_BIZ: manual workflow.
 	//
-	// - SKIP: The file is used for a dry-run node in DataStudio.
+	// - SKIP: dry-run scheduling in data development.
 	//
-	// - ADHOCQUERY: The file is used for an ad hoc query.
+	// - ADHOCQUERY: ad hoc query.
 	//
-	// - COMPONENT: The file is used for a script template.
+	// - COMPONENT: component management.
 	//
 	// example:
 	//

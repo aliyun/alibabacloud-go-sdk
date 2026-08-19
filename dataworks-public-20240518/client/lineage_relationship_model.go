@@ -30,7 +30,7 @@ type LineageRelationship struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The destination entity.
 	DstEntity *LineageEntity `json:"DstEntity,omitempty" xml:"DstEntity,omitempty"`
-	// The ID.
+	// ID
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type LineageRelationship struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The source entity.
 	SrcEntity *LineageEntity `json:"SrcEntity,omitempty" xml:"SrcEntity,omitempty"`
-	// The task.
+	// The node.
 	Task *LineageTask `json:"Task,omitempty" xml:"Task,omitempty"`
 }
 

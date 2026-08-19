@@ -24,7 +24,7 @@ type iCreateComputeResourceRequest interface {
 }
 
 type CreateComputeResourceRequest struct {
-	// The specific connection configuration of the computing resource, including the connection address, access identity, and environment information. The environment for the computing resource is a member attribute of this object. It includes DEV (development environment) and PROD (production environment). The value for EnvType is case-insensitive.
+	// The connection configuration of the compute resource, including the endpoint, access identity, and environment context. The EnvType field is a member property of this object and specifies the environment of the compute resource. Valid values: DEV (development environment) and PROD (production environment). The EnvType value is case-insensitive.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type CreateComputeResourceRequest struct {
 	//
 	// {     "EndpointMode": "custom",     "Database": "testdb",     "TaskSubmitter": "1107550004253538",     "InstanceId": "hgprecn-cn-x0r3oun4k001",     "SecurityProtocol": "authTypeNone",     "RegionId": "cn-beijing",     "EnvType": "Prod",     "AuthType": "Executor" }
 	ConnectionProperties *string `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
-	// Depending on the added source category, different types may have specific subtypes subject to distinct parameter constraints. For example, Hologres computing resources support InstanceMode and UrlMode.
+	// The category for adding the compute resource. Different types have different subtypes with different parameter constraints. For example, a Hologres compute resource supports InstanceMode (instance mode) and UrlMode (connection string mode).
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,13 @@ type CreateComputeResourceRequest struct {
 	//
 	// InstanceMode
 	ConnectionPropertiesMode *string `json:"ConnectionPropertiesMode,omitempty" xml:"ConnectionPropertiesMode,omitempty"`
-	// The description of the computing resource. The maximum length is 3000 characters.
+	// The description of the compute resource. The description can be up to 3,000 characters in length.
 	//
 	// example:
 	//
 	// demo_holo_cs
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the computing resource. It can contain letters, digits, and underscores (_), cannot start with a digit or an underscore, and has a maximum length of 255 characters.
+	// The name of the compute resource. The name can contain letters, digits, and underscores (_), and cannot start with a digit or underscore. The name can be up to 255 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type CreateComputeResourceRequest struct {
 	//
 	// 2
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The type of the computing resource. Multiple computing resource types are currently supported.
+	// The type of the compute resource. Multiple compute resource types are supported.
 	//
 	// This parameter is required.
 	//

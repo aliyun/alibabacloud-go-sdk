@@ -20,16 +20,22 @@ type iStopCrawlerResponseBody interface {
 }
 
 type StopCrawlerResponseBody struct {
+	// The ID of the metadata crawler.
+	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID. Used to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 9252F32F-D855-549E-8898-61CF5A733050
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StopAccepted *bool   `json:"StopAccepted,omitempty" xml:"StopAccepted,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the stop request was accepted. A value of true indicates that the request was accepted. Call ListCrawlerRuns to confirm the final run status.
+	StopAccepted *bool `json:"StopAccepted,omitempty" xml:"StopAccepted,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s StopCrawlerResponseBody) String() string {

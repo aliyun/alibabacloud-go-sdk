@@ -28,26 +28,38 @@ type iCreateCrawlerRequest interface {
 }
 
 type CreateCrawlerRequest struct {
+	// The ID of the data source associated with the crawler. The data source must be bound to a DataWorks workspace, and the data source type must match the Type value.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12345
-	DataSourceId    *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	EnableAiComment *bool  `json:"EnableAiComment,omitempty" xml:"EnableAiComment,omitempty"`
+	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// Specifies whether to enable AI metadata descriptions. This parameter is supported only when the SupportAiComment value returned by GetCrawlerTypeCapabilities is true.
+	EnableAiComment *bool `json:"EnableAiComment,omitempty" xml:"EnableAiComment,omitempty"`
+	// The name of the metadata crawler. The name can be up to 128 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example_crawler
-	Name    *string            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The extended configuration for the crawler type. The key names, value types, required fields, default values, and valid values are determined by the SupportedOptionKeys value returned by GetCrawlerTypeCapabilities.
 	Options map[string]*string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The ID of the Serverless 2.0 resource group used to run the collection task. Whether this parameter is required depends on the RequireResourceGroup value returned by GetCrawlerTypeCapabilities.
+	//
 	// example:
 	//
 	// Serverless_res_group_1234567890123456_1234567890
-	ResourceGroupId *string                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ScheduleConfig  *CreateCrawlerRequestScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
-	Scope           *CreateCrawlerRequestScope          `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Struct"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The scheduling configuration. If this parameter is not specified, manual scheduling is used.
+	ScheduleConfig *CreateCrawlerRequestScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	// The collection scope configuration. If this parameter is not specified, the DefaultScopeUnit value returned by GetCrawlerTypeCapabilities is used.
+	Scope *CreateCrawlerRequestScope `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Struct"`
+	// The crawler type. Call GetCrawlerTypeCapabilities to query the valid values supported in the current region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -151,10 +163,14 @@ func (s *CreateCrawlerRequest) Validate() error {
 }
 
 type CreateCrawlerRequestScheduleConfig struct {
+	// The six-field cron expression for periodic scheduling. This parameter is required when Type is set to NORMAL. The seconds field must be 0, and the scheduling frequency cannot exceed once per hour.
+	//
 	// example:
 	//
 	// 0 0 2 ? 	- *
 	CronExpress *string `json:"CronExpress,omitempty" xml:"CronExpress,omitempty"`
+	// The scheduling type. MANUAL indicates manual execution, and NORMAL indicates periodic scheduling. Data sources in the development environment support only MANUAL. Whether NORMAL is available depends on the SupportSchedule value returned by GetCrawlerTypeCapabilities.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -194,11 +210,16 @@ func (s *CreateCrawlerRequestScheduleConfig) Validate() error {
 }
 
 type CreateCrawlerRequestScope struct {
+	// The regular expression used to exclude objects from the collection scope. This parameter is supported only when the SupportExcludeRegex value returned by GetCrawlerTypeCapabilities is true.
+	//
 	// example:
 	//
 	// ^tmp_.*
-	ExcludeRegex *string   `json:"ExcludeRegex,omitempty" xml:"ExcludeRegex,omitempty"`
-	Items        []*string `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	ExcludeRegex *string `json:"ExcludeRegex,omitempty" xml:"ExcludeRegex,omitempty"`
+	// The list of database names. This parameter is supported only when Unit is set to DATABASE. A maximum of 1000 entries are allowed. Names cannot be empty or duplicated.
+	Items []*string `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The collection scope granularity. Valid values are determined by the SupportedScopeUnits value returned by GetCrawlerTypeCapabilities.
+	//
 	// This parameter is required.
 	//
 	// example:

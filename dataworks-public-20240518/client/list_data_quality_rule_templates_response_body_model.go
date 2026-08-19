@@ -16,9 +16,9 @@ type iListDataQualityRuleTemplatesResponseBody interface {
 }
 
 type ListDataQualityRuleTemplatesResponseBody struct {
-	// The paginated query result of data quality rule templates.
+	// The paging result of the data quality rule template paged query.
 	PagingInfo *ListDataQualityRuleTemplatesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The API request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ListDataQualityRuleTemplatesResponseBodyPagingInfo struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -150,13 +150,13 @@ type ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates 
 	//
 	// USER_DEFINED:123
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The category directory in which the custom template is stored. Levels are separated by forward slashes (/). Each level name can be up to 1,024 characters in length and cannot contain whitespace characters or slashes.
+	// The category directory where the custom template is stored. Levels are separated by forward slashes. Each level name can be up to 1024 characters in length and cannot contain whitespace characters or forward slashes.
 	//
 	// example:
 	//
 	// /ods/order_data
 	DirectoryPath *string `json:"DirectoryPath,omitempty" xml:"DirectoryPath,omitempty"`
-	// The name of the rule template. It can be a combination of digits, letters, Chinese characters, and half-width or full-width punctuation marks, and can be up to 512 characters in length.
+	// The name of the rule template. The name can contain digits, letters, Chinese characters, and half-width or full-width punctuation marks. The name can be up to 512 characters in length.
 	//
 	// example:
 	//
@@ -170,11 +170,11 @@ type ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates 
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The settings required for sample collection.
 	SamplingConfig *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
-	// The available scope of the template:
+	// The visibility scope of the template. Valid values:
 	//
-	// - Tenant: available to all tenants
+	// - Tenant: available to the entire tenant.
 	//
-	// - Project: available only in the current project
+	// - Project: available only in the current project.
 	//
 	// example:
 	//
@@ -268,13 +268,13 @@ func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTempla
 }
 
 type ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig struct {
-	// Some types of thresholds require reference samples to be queried, and then the values of the reference samples are aggregated to obtain the threshold for comparison. An expression is used here to indicate the query method of the reference samples.
+	// An expression that specifies how to query reference samples. Some threshold types require querying reference samples and then aggregating their values to derive the threshold for comparison.
 	//
 	// example:
 	//
 	// { "bizdate": [ "-1", "-7", "-1m" ] }
 	ReferencedSamplesFilter *string `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
-	// The threshold calculation method.
+	// The threshold calculation method. Valid values:
 	//
 	// - Fixed
 	//
@@ -325,37 +325,37 @@ func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTempla
 }
 
 type ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig struct {
-	// The name of the sampling metric.
+	// The metric name for sampling. Valid values:
 	//
-	// - Count: the number of table rows
+	// - Count: table row count.
 	//
-	// - Min: the minimum value of the field
+	// - Min: minimum value of the field.
 	//
-	// - Max: the maximum value of the field
+	// - Max: maximum value of the field.
 	//
-	// - Avg: the average value of the field
+	// - Avg: average value of the field.
 	//
-	// - DistinctCount: the number of unique values of the field
+	// - DistinctCount: number of unique values in the field.
 	//
-	// - DistinctPercent: the ratio of the number of unique values of the field to the number of data rows
+	// - DistinctPercent: ratio of unique values to total rows.
 	//
-	// - DuplicatedCount: the number of duplicate values of the field
+	// - DuplicatedCount: number of duplicate values in the field.
 	//
-	// - DuplicatedPercent: the ratio of the number of duplicate values of the field to the number of data rows
+	// - DuplicatedPercent: ratio of duplicate values to total rows.
 	//
-	// - TableSize: the size of the table
+	// - TableSize: table size.
 	//
-	// - NullValueCount: the number of rows in which the field is null
+	// - NullValueCount: number of rows where the field is null.
 	//
-	// - NullValuePercent: the ratio of rows in which the field is null
+	// - NullValuePercent: ratio of rows where the field is null.
 	//
-	// - GroupCount: each value and the corresponding number of data rows after aggregation by field value
+	// - GroupCount: row count for each value after aggregation by field value.
 	//
-	// - CountNotIn: the number of rows in which the enumeration value does not match
+	// - CountNotIn: number of rows with non-matching enumeration values.
 	//
-	// - CountDistinctNotIn: the number of unique values in which the enumeration value does not match
+	// - CountDistinctNotIn: number of unique values with non-matching enumeration values.
 	//
-	// - UserDefinedSql: collect samples by using custom SQL
+	// - UserDefinedSql: sample collection through custom SQL.
 	//
 	// example:
 	//
@@ -367,7 +367,7 @@ type ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesS
 	//
 	// {"Sql": "select count(1) from table;"}
 	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
-	// The runtime parameter setting statements that are inserted and executed before the sampling statement is executed. This parameter can be up to 1,000 characters in length. Currently, only MaxCompute is supported.
+	// The runtime parameter setting statements that are executed before the sampling statement. The value can be up to 1000 characters in length. Currently, only MaxCompute is supported.
 	//
 	// example:
 	//

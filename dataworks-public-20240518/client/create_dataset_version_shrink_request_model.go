@@ -22,13 +22,13 @@ type iCreateDatasetVersionShrinkRequest interface {
 }
 
 type CreateDatasetVersionShrinkRequest struct {
-	// The description for this dataset version. Maximum length: 1,024 characters.
+	// The description of the dataset version. The description can be up to 1024 characters in length.
 	//
 	// example:
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The dataset ID. Currently supports DataWorks datasets only.
+	// The dataset ID. Currently, only DataWorks datasets are supported.
 	//
 	// This parameter is required.
 	//
@@ -36,33 +36,37 @@ type CreateDatasetVersionShrinkRequest struct {
 	//
 	// dataworks-dataset:3pXXXb8o0ngr07njhps1
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The storage import configuration for the dataset. Required configuration varies by storage type.
+	// The storage import configuration for the dataset. The required configuration varies depending on the storage type.
 	//
-	// **NAS**
+	// <details>
 	//
-	// For valid values, see the response from the file storage API DescribeFileSystems.
+	// <summary>NAS</summary>
+	//
+	// The values can be obtained from the response of the File Storage API DescribeFileSystems operation.
 	//
 	// ```JSON
 	//
 	// {
 	//
-	// "fileSystemId": "3b6XXX89c9", // The file system ID.
+	//   "fileSystemId": "3b6XXX89c9", // The file system ID.
 	//
-	// "fileSystemStorageType":  "Performance" // The file system storage type.
+	//   "fileSystemStorageType": "Performance", // The storage specification of the file system.
 	//
-	// "vpcId": "vpc-uf66oxxxrqge1t2gson7s" // The VPC ID for the mount point.
+	//   "vpcId": "vpc-uf66oxxxrqge1t2gson7s" // The VPC ID of the mount target.
 	//
 	// }
 	//
 	// ```
+	//
+	// </details>
 	ImportInfoShrink *string `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
-	// The mount path, which must start with /mnt/. Default value: /mnt/data.
+	// The mount path. The path must start with /mnt/. Default value: /mnt/data.
 	//
 	// example:
 	//
 	// /mnt/data
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// URL
+	// The URL.
 	//
 	// This parameter is required.
 	//

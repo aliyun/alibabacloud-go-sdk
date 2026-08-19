@@ -22,7 +22,7 @@ type iCreateAlertRuleShrinkRequest interface {
 }
 
 type CreateAlertRuleShrinkRequest struct {
-	// Indicates whether the rule is enabled.
+	// Specifies whether the alert rule is enabled.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type CreateAlertRuleShrinkRequest struct {
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The name of the rule.
+	// The name of the custom rule.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type CreateAlertRuleShrinkRequest struct {
 	//
 	// xm_create_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The configuration for the alert notification.
+	// The alert notification configuration.
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	// The ID of the Alibaba Cloud account used by the owner of the rule.
+	// The Alibaba Cloud UID of the owner of the custom rule.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type CreateAlertRuleShrinkRequest struct {
 	//
 	// 279114181****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The alert triggering condition.
+	// The condition that triggers the alert.
 	//
 	// This parameter is required.
 	TriggerConditionShrink *string `json:"TriggerCondition,omitempty" xml:"TriggerCondition,omitempty"`

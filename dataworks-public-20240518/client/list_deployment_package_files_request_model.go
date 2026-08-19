@@ -36,7 +36,7 @@ type iListDeploymentPackageFilesRequest interface {
 }
 
 type ListDeploymentPackageFilesRequest struct {
-	// The workflow ID. You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to query the workflow ID by name.
+	// The ID of the workflow. You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to query the ID of the workflow by name.
 	//
 	// example:
 	//
@@ -44,35 +44,35 @@ type ListDeploymentPackageFilesRequest struct {
 	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
 	// The change type. Valid values:
 	//
-	// - 0: addition
+	// - 0: added.
 	//
-	// - 1: update
+	// - 1: updated.
 	//
-	// - 2: deletion
+	// - 2: deleted.
 	//
 	// example:
 	//
 	// 0
 	ChangeType *int32 `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
-	// The start date for committing. Specify the date in the yyyy-MM-dd format.
+	// The start date for the commit, in the format yyyy-MM-dd.
 	//
 	// example:
 	//
 	// 2025-01-01
 	CommitFrom *string `json:"CommitFrom,omitempty" xml:"CommitFrom,omitempty"`
-	// The end date (included) for committing. Specify the date in the yyyy-MM-dd format.
+	// The end date for the commit (inclusive), in the format yyyy-MM-dd.
 	//
 	// example:
 	//
 	// 2025-01-31
 	CommitTo *string `json:"CommitTo,omitempty" xml:"CommitTo,omitempty"`
-	// The ID of the user who commits the file.
+	// The user ID of the committer.
 	//
 	// example:
 	//
 	// 2003****
 	CommitUserId *string `json:"CommitUserId,omitempty" xml:"CommitUserId,omitempty"`
-	// The IDs of the files to be queried.
+	// The list of file IDs to query.
 	FileIds []*string `json:"FileIds,omitempty" xml:"FileIds,omitempty" type:"Repeated"`
 	// The name of the file.
 	//
@@ -80,9 +80,11 @@ type ListDeploymentPackageFilesRequest struct {
 	//
 	// Filename
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The type of the code for the file.
+	// The code type of the file.
 	//
-	// The code for files varies based on the file type. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html). You can call the [ListFileType](https://help.aliyun.com/document_detail/212428.html) operation to query the type of the code for the file.
+	// Different file types have different codes. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
+	//
+	// You can also call the [ListFileType](https://help.aliyun.com/document_detail/212428.html) operation to query the code type of a file.
 	//
 	// example:
 	//
@@ -100,7 +102,7 @@ type ListDeploymentPackageFilesRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -108,7 +110,7 @@ type ListDeploymentPackageFilesRequest struct {
 	//
 	// 12345
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The solution ID.
+	// The Solutions ID.
 	//
 	// example:
 	//

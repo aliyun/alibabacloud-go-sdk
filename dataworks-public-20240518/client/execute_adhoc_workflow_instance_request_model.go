@@ -24,23 +24,23 @@ type iExecuteAdhocWorkflowInstanceRequest interface {
 }
 
 type ExecuteAdhocWorkflowInstanceRequest struct {
-  // The data timestamp.
+  // The business date. The value is a timestamp.
   // 
   // example:
   // 
   // 1710239005403
   BizDate *int64 `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-  // The environment of the workspace. Valid values:
+  // The project environment. Valid values:
   // 
-  // - Prod: production environment
+  // - Prod: production
   // 
-  // - Dev: development environment
+  // - Dev: development
   // 
   // example:
   // 
   // Prod
   EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-  // The name of the workflow instance.
+  // The name.
   // 
   // This parameter is required.
   // 
@@ -56,7 +56,7 @@ type ExecuteAdhocWorkflowInstanceRequest struct {
   // 
   // 1000
   Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-  // The workspace ID.
+  // The project ID.
   // 
   // This parameter is required.
   // 
@@ -64,7 +64,7 @@ type ExecuteAdhocWorkflowInstanceRequest struct {
   // 
   // 100
   ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-  // The tasks.
+  // The list of tasks.
   // 
   // This parameter is required.
   Tasks []*ExecuteAdhocWorkflowInstanceRequestTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
@@ -146,7 +146,7 @@ func (s *ExecuteAdhocWorkflowInstanceRequest) Validate() error {
 }
 
 type ExecuteAdhocWorkflowInstanceRequestTasks struct {
-  // The unique code of the client. This code uniquely identifies a task.
+  // The client unique code of the task, which is used to uniquely identify a task.
   // 
   // This parameter is required.
   // 
@@ -154,7 +154,7 @@ type ExecuteAdhocWorkflowInstanceRequestTasks struct {
   // 
   // Task_0bc5213917368545132902xxxxxxxx
   ClientUniqueCode *string `json:"ClientUniqueCode,omitempty" xml:"ClientUniqueCode,omitempty"`
-  // The information about the associated data source.
+  // The associated data source information.
   DataSource *ExecuteAdhocWorkflowInstanceRequestTasksDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
   // The dependency information.
   Dependencies []*ExecuteAdhocWorkflowInstanceRequestTasksDependencies `json:"Dependencies,omitempty" xml:"Dependencies,omitempty" type:"Repeated"`
@@ -178,19 +178,19 @@ type ExecuteAdhocWorkflowInstanceRequestTasks struct {
   // 
   // 1000
   Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-  // The configurations of the runtime environment, such as the resource group information.
+  // The runtime environment configuration, such as resource group information.
   // 
   // This parameter is required.
   RuntimeResource *ExecuteAdhocWorkflowInstanceRequestTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-  // The script information.
+  // The script information for running the task.
   Script *ExecuteAdhocWorkflowInstanceRequestTasksScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
-  // The timeout period of task running. Unit: seconds.
+  // The timeout period for task execution. Unit: seconds.
   // 
   // example:
   // 
   // 3600
   Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-  // The type of the task.
+  // The task type.
   // 
   // This parameter is required.
   // 
@@ -346,7 +346,7 @@ func (s *ExecuteAdhocWorkflowInstanceRequestTasks) Validate() error {
 }
 
 type ExecuteAdhocWorkflowInstanceRequestTasksDataSource struct {
-  // The name of the data source.
+  // The data source name.
   // 
   // example:
   // 
@@ -376,7 +376,7 @@ func (s *ExecuteAdhocWorkflowInstanceRequestTasksDataSource) Validate() error {
 }
 
 type ExecuteAdhocWorkflowInstanceRequestTasksDependencies struct {
-  // The identifier of the output of the ancestor task.
+  // The output identifier of the dependent task.
   // 
   // example:
   // 
@@ -406,7 +406,7 @@ func (s *ExecuteAdhocWorkflowInstanceRequestTasksDependencies) Validate() error 
 }
 
 type ExecuteAdhocWorkflowInstanceRequestTasksInputs struct {
-  // The variables.
+  // The list of variable definitions.
   Variables []*ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -441,13 +441,13 @@ func (s *ExecuteAdhocWorkflowInstanceRequestTasksInputs) Validate() error {
 }
 
 type ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables struct {
-  // The name of the variable.
+  // The variable name.
   // 
   // example:
   // 
   // key1
   Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-  // The value of the variable. You must configure this parameter in the `The ancestor output: The output variable name of the ancestor task` format.
+  // The variable value. Specify the value in the format of `Upstream task Output:Upstream task output variable name`.
   // 
   // example:
   // 
@@ -486,9 +486,9 @@ func (s *ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables) Validate() err
 }
 
 type ExecuteAdhocWorkflowInstanceRequestTasksOutputs struct {
-  // The task outputs.
+  // The list of task output definitions.
   TaskOutputs []*ExecuteAdhocWorkflowInstanceRequestTasksOutputsTaskOutputs `json:"TaskOutputs,omitempty" xml:"TaskOutputs,omitempty" type:"Repeated"`
-  // The variables.
+  // The list of variable definitions.
   Variables []*ExecuteAdhocWorkflowInstanceRequestTasksOutputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -541,7 +541,7 @@ func (s *ExecuteAdhocWorkflowInstanceRequestTasksOutputs) Validate() error {
 }
 
 type ExecuteAdhocWorkflowInstanceRequestTasksOutputsTaskOutputs struct {
-  // The identifier of the output.
+  // The output identifier.
   // 
   // example:
   // 
@@ -571,7 +571,7 @@ func (s *ExecuteAdhocWorkflowInstanceRequestTasksOutputsTaskOutputs) Validate() 
 }
 
 type ExecuteAdhocWorkflowInstanceRequestTasksOutputsVariables struct {
-  // The name of the variable.
+  // The variable name.
   // 
   // example:
   // 
@@ -591,7 +591,7 @@ type ExecuteAdhocWorkflowInstanceRequestTasksOutputsVariables struct {
   // 
   // Constant
   Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-  // The value of the variable.
+  // The variable value.
   // 
   // example:
   // 
@@ -639,19 +639,19 @@ func (s *ExecuteAdhocWorkflowInstanceRequestTasksOutputsVariables) Validate() er
 }
 
 type ExecuteAdhocWorkflowInstanceRequestTasksRuntimeResource struct {
-  // The default number of compute units (CUs) configured for task running.
+  // The compute unit (CU) consumption configured for the task.
   // 
   // example:
   // 
   // 0.25
   Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
-  // The ID of the image configured for task running.
+  // The image ID configured for the task.
   // 
   // example:
   // 
   // i-xxxxxx
   Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-  // The ID of the resource group for scheduling configured for task running.
+  // The identifier of the schedule resource group configured for the task.
   // 
   // This parameter is required.
   // 
@@ -707,7 +707,7 @@ type ExecuteAdhocWorkflowInstanceRequestTasksScript struct {
   // 
   // echo "helloWorld"
   Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-  // The script parameters.
+  // The list of script parameters.
   // 
   // example:
   // 

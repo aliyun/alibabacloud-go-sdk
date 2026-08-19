@@ -16,13 +16,13 @@ type iStopTaskInstancesShrinkRequest interface {
 }
 
 type StopTaskInstancesShrinkRequest struct {
-	// Remarks.
+	// The remarks.
 	//
 	// example:
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID list of the task instance.
+	// The list of instance IDs.
 	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 }
 

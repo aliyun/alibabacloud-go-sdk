@@ -18,12 +18,16 @@ type iGetCrawlerTypeCapabilitiesResponseBody interface {
 }
 
 type GetCrawlerTypeCapabilitiesResponseBody struct {
+	// The list of crawler types and capabilities supported in the current region.
 	CrawlerTypes []*GetCrawlerTypeCapabilitiesResponseBodyCrawlerTypes `json:"CrawlerTypes,omitempty" xml:"CrawlerTypes,omitempty" type:"Repeated"`
+	// The request ID. Used for locating logs and troubleshooting issues.
+	//
 	// example:
 	//
 	// 9252F32F-D855-549E-8898-61CF5A733050
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetCrawlerTypeCapabilitiesResponseBody) String() string {
@@ -75,22 +79,36 @@ func (s *GetCrawlerTypeCapabilitiesResponseBody) Validate() error {
 }
 
 type GetCrawlerTypeCapabilitiesResponseBodyCrawlerTypes struct {
+	// The default collection scope granularity.
+	//
 	// example:
 	//
 	// DATABASE
 	DefaultScopeUnit *string `json:"DefaultScopeUnit,omitempty" xml:"DefaultScopeUnit,omitempty"`
+	// The display name.
+	//
 	// example:
 	//
 	// Hologres
-	DisplayName              *string                                                                   `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	RequireResourceGroup     *bool                                                                     `json:"RequireResourceGroup,omitempty" xml:"RequireResourceGroup,omitempty"`
-	SupportAiComment         *bool                                                                     `json:"SupportAiComment,omitempty" xml:"SupportAiComment,omitempty"`
-	SupportExcludeRegex      *bool                                                                     `json:"SupportExcludeRegex,omitempty" xml:"SupportExcludeRegex,omitempty"`
-	SupportSchedule          *bool                                                                     `json:"SupportSchedule,omitempty" xml:"SupportSchedule,omitempty"`
-	SupportedDatasourceTypes []*string                                                                 `json:"SupportedDatasourceTypes,omitempty" xml:"SupportedDatasourceTypes,omitempty" type:"Repeated"`
-	SupportedEntityTypes     []*GetCrawlerTypeCapabilitiesResponseBodyCrawlerTypesSupportedEntityTypes `json:"SupportedEntityTypes,omitempty" xml:"SupportedEntityTypes,omitempty" type:"Repeated"`
-	SupportedOptionKeys      []*GetCrawlerTypeCapabilitiesResponseBodyCrawlerTypesSupportedOptionKeys  `json:"SupportedOptionKeys,omitempty" xml:"SupportedOptionKeys,omitempty" type:"Repeated"`
-	SupportedScopeUnits      []*string                                                                 `json:"SupportedScopeUnits,omitempty" xml:"SupportedScopeUnits,omitempty" type:"Repeated"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Indicates whether a resource group must be specified when creating this type of crawler.
+	RequireResourceGroup *bool `json:"RequireResourceGroup,omitempty" xml:"RequireResourceGroup,omitempty"`
+	// Indicates whether AI metadata description is supported.
+	SupportAiComment *bool `json:"SupportAiComment,omitempty" xml:"SupportAiComment,omitempty"`
+	// Indicates whether schema or table exclusion regular expressions are supported.
+	SupportExcludeRegex *bool `json:"SupportExcludeRegex,omitempty" xml:"SupportExcludeRegex,omitempty"`
+	// Indicates whether periodic scheduling is supported.
+	SupportSchedule *bool `json:"SupportSchedule,omitempty" xml:"SupportSchedule,omitempty"`
+	// The list of supported data source types.
+	SupportedDatasourceTypes []*string `json:"SupportedDatasourceTypes,omitempty" xml:"SupportedDatasourceTypes,omitempty" type:"Repeated"`
+	// The metadata entity levels that the crawler type supports for collection.
+	SupportedEntityTypes []*GetCrawlerTypeCapabilitiesResponseBodyCrawlerTypesSupportedEntityTypes `json:"SupportedEntityTypes,omitempty" xml:"SupportedEntityTypes,omitempty" type:"Repeated"`
+	// The supported crawler extension configuration items.
+	SupportedOptionKeys []*GetCrawlerTypeCapabilitiesResponseBodyCrawlerTypesSupportedOptionKeys `json:"SupportedOptionKeys,omitempty" xml:"SupportedOptionKeys,omitempty" type:"Repeated"`
+	// The list of supported collection scope granularities.
+	SupportedScopeUnits []*string `json:"SupportedScopeUnits,omitempty" xml:"SupportedScopeUnits,omitempty" type:"Repeated"`
+	// The crawler type.
+	//
 	// example:
 	//
 	// holo
@@ -227,15 +245,22 @@ func (s *GetCrawlerTypeCapabilitiesResponseBodyCrawlerTypes) Validate() error {
 }
 
 type GetCrawlerTypeCapabilitiesResponseBodyCrawlerTypesSupportedEntityTypes struct {
+	// Indicates whether the metadata entity level is optional.
 	Optional *bool `json:"Optional,omitempty" xml:"Optional,omitempty"`
+	// The parent-level metadata entity subtype.
+	//
 	// example:
 	//
 	// instance
 	ParentSubType *string `json:"ParentSubType,omitempty" xml:"ParentSubType,omitempty"`
+	// The metadata entity subtype.
+	//
 	// example:
 	//
 	// database
 	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+	// The metadata entity type identifier.
+	//
 	// example:
 	//
 	// holo
@@ -291,16 +316,24 @@ func (s *GetCrawlerTypeCapabilitiesResponseBodyCrawlerTypesSupportedEntityTypes)
 }
 
 type GetCrawlerTypeCapabilitiesResponseBodyCrawlerTypesSupportedOptionKeys struct {
+	// The list of allowed values for the extension configuration item.
 	AllowedValues []*string `json:"AllowedValues,omitempty" xml:"AllowedValues,omitempty" type:"Repeated"`
+	// The default value of the extension configuration item.
+	//
 	// example:
 	//
 	// false
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// The name of the extension configuration item.
+	//
 	// example:
 	//
 	// CollectRecyclebin
-	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Required *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Indicates whether the extension configuration item is required.
+	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
+	// The value type of the extension configuration item, such as BOOLEAN.
+	//
 	// example:
 	//
 	// BOOLEAN

@@ -24,20 +24,30 @@ type iRunCrawlerResponseBody interface {
 }
 
 type RunCrawlerResponseBody struct {
+	// The ID of the metadata crawler.
+	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID. Used for locating logs and troubleshooting issues.
+	//
 	// example:
 	//
 	// 9252F32F-D855-549E-8898-61CF5A733050
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RunAccepted *bool   `json:"RunAccepted,omitempty" xml:"RunAccepted,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the run request was accepted. A value of true indicates that the request was accepted, but does not indicate that the collection task is complete.
+	RunAccepted *bool `json:"RunAccepted,omitempty" xml:"RunAccepted,omitempty"`
+	// The initial run status after submission. The value is WAITING when the run request is successfully accepted. To query the final status, call ListCrawlerRuns.
+	//
 	// example:
 	//
 	// WAITING
 	RunStatus *string `json:"RunStatus,omitempty" xml:"RunStatus,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The associated DataWorks task instance ID. This field may be empty. To query the final run record, call ListCrawlerRuns.
+	//
 	// example:
 	//
 	// 1234

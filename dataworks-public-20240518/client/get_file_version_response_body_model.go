@@ -24,7 +24,7 @@ type iGetFileVersionResponseBody interface {
 }
 
 type GetFileVersionResponseBody struct {
-	// Version details of the file.
+	// The version details of the file.
 	Data *GetFileVersionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -38,23 +38,23 @@ type GetFileVersionResponseBody struct {
 	//
 	// The connection does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The unique ID of this request. If an error occurs, you can troubleshoot the issue using this ID.
+	// The unique ID of the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the API call succeeded.
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - true: Succeeded.
+	// - true: The call was successful.
 	//
-	// - false: Failed.
+	// - false: The call failed.
 	//
 	// example:
 	//
@@ -134,43 +134,43 @@ func (s *GetFileVersionResponseBody) Validate() error {
 }
 
 type GetFileVersionResponseBodyData struct {
-	// The change type of this file version, including CREATE, UPDATE, and DELETE.
+	// The change type of this file version. Valid values: CREATE, UPDATE, and DELETE.
 	//
 	// example:
 	//
 	// UPDATE
 	ChangeType *string `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
-	// Description of this file version.
+	// The description of this file version.
 	//
 	// example:
 	//
 	// Second version submission
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// UNIX timestamp (in milliseconds) when the file version was generated.
+	// The timestamp when the file version was generated, in milliseconds.
 	//
 	// example:
 	//
 	// 1593881265000
 	CommitTime *int64 `json:"CommitTime,omitempty" xml:"CommitTime,omitempty"`
-	// User ID of the Alibaba Cloud user who generated this file version.
+	// The Alibaba Cloud user ID that generated this file version.
 	//
 	// example:
 	//
 	// 7384234****
 	CommitUser *string `json:"CommitUser,omitempty" xml:"CommitUser,omitempty"`
-	// The code of the file for this version.
+	// The file code that generated this file version.
 	//
 	// example:
 	//
 	// SHOW TABLES;
 	FileContent *string `json:"FileContent,omitempty" xml:"FileContent,omitempty"`
-	// File name used to generate this file version.
+	// The name of the file that generated this file version.
 	//
 	// example:
 	//
 	// ods_user_info_d
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// Basic information of the file used to generate this file version.
+	// The basic file information when this file version was generated.
 	//
 	// example:
 	//
@@ -182,59 +182,59 @@ type GetFileVersionResponseBodyData struct {
 	//
 	// 2
 	FileVersion *int32 `json:"FileVersion,omitempty" xml:"FileVersion,omitempty"`
-	// Indicates whether this file version is the latest version in the current production environment.
+	// Indicates whether this file version is the latest version in the production environment. Valid values:
 	//
-	// - true: It is the latest version.
+	// - true: The version is the latest version.
 	//
-	// - false: It is not the latest version.
+	// - false: The version is not the latest version.
 	//
 	// example:
 	//
 	// true
 	IsCurrentProd *bool `json:"IsCurrentProd,omitempty" xml:"IsCurrentProd,omitempty"`
-	// The scan configuration at the time this file version was generated.
+	// The scheduling configuration when this file version was generated.
 	//
 	// example:
 	//
 	// {"cycleType":0,"cronExpress":"00 05 00 	- 	- ?"}
 	NodeContent *string `json:"NodeContent,omitempty" xml:"NodeContent,omitempty"`
-	// The ID of the scheduling task corresponding to the generation of this file version.
+	// The ID of the scheduling node associated with the file version when it was generated.
 	//
 	// example:
 	//
 	// 3000001
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// Current status of the file version. Valid values:
+	// The current status of the file version. Valid values:
 	//
-	// - COMMITTING (Submitting)
+	// - COMMITTING: The version is being committed.
 	//
-	// - COMMITTED or CHECK_OK (Submitted)
+	// - COMMITTED or CHECK_OK: The version has been committed.
 	//
-	// - PACKAGED (Preparing for publish)
+	// - PACKAGED: The version is ready for deployment.
 	//
-	// - DEPLOYING (In Publish)
+	// - DEPLOYING: The version is being deployed.
 	//
-	// - DEPLOYED (Published)
+	// - DEPLOYED: The version has been deployed.
 	//
-	// - CANCELLED (Publish canceled)
+	// - CANCELLED: The deployment has been canceled.
 	//
 	// example:
 	//
 	// COMMITTED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Function module to which the file belongs. Valid values:
+	// The functional module to which the file belongs. Valid values:
 	//
-	// - 0: NORMAL (Data Development)
+	// - 0: NORMAL (DataStudio)
 	//
-	// - 1: MANUAL (one-time task)
+	// - 1: MANUAL (manual node)
 	//
-	// - 2: MANUAL_BIZ (manual pipeline)
+	// - 2: MANUAL_BIZ (manual workflow)
 	//
-	// - 3: SKIP (Dry-Run scheduling in Data Development)
+	// - 3: SKIP (dry-run scheduling in DataStudio)
 	//
-	// - 10: ADHOCQUERY (Ad Hoc Query)
+	// - 10: ADHOCQUERY (ad hoc query)
 	//
-	// - 30: COMPONENT (widget Management)
+	// - 30: COMPONENT (component management)
 	//
 	// example:
 	//

@@ -24,35 +24,35 @@ type iListDataQualityRuleTemplatesRequest interface {
 }
 
 type ListDataQualityRuleTemplatesRequest struct {
-	// The creation source of the rule template. This parameter is required.
+	// The creation source of the rule template. This parameter is required. Valid values:
 	//
-	// - System: system template
+	// - System: system template.
 	//
-	// - UserDefined: user-defined template
+	// - UserDefined: user-defined template.
 	//
 	// example:
 	//
 	// System
 	CreationSource *string `json:"CreationSource,omitempty" xml:"CreationSource,omitempty"`
-	// The category directory in which the custom template is stored. Levels are separated by forward slashes (/). Each level name can be up to 1,024 characters in length and cannot contain whitespace characters or backslashes.
+	// The category directory where the custom template is stored. Levels are separated by forward slashes (/). Each level name can be up to 1024 characters in length and cannot contain whitespace characters or backslashes.
 	//
 	// example:
 	//
 	// /ods/order_data
 	DirectoryPath *string `json:"DirectoryPath,omitempty" xml:"DirectoryPath,omitempty"`
-	// The fuzzy match of the template rule name. For a system template, the internationalized name of the system template is fuzzy matched based on the language.
+	// The fuzzy match for the template rule name. If the template is a system template, the internationalized name of the system template is fuzzy matched based on the language.
 	//
 	// example:
 	//
 	// Table rows
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of entries per page in a paginated query. Default value: 10.
+	// The page size for the paging query. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page number of a paginated query. Default value: 1.
+	// The page number for the paging query. Default value: 1.
 	//
 	// example:
 	//

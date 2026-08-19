@@ -14,7 +14,7 @@ type iGetJobStatusRequest interface {
 }
 
 type GetJobStatusRequest struct {
-	// The ID of the asynchronous task that is generated after you call an asynchronous operation.
+	// The task ID returned after calling an asynchronous API.
 	//
 	// This parameter is required.
 	//

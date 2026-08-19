@@ -16,9 +16,9 @@ type iGetPipelineRunResponseBody interface {
 }
 
 type GetPipelineRunResponseBody struct {
-	// The details of the pipeline run.
+	// The information about the deployment process.
 	Pipeline *GetPipelineRunResponseBodyPipeline `json:"Pipeline,omitempty" xml:"Pipeline,omitempty" type:"Struct"`
-	// The ID of the request. You can use this ID to locate logs and troubleshoot issues.
+	// The request ID. Used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,37 +62,39 @@ func (s *GetPipelineRunResponseBody) Validate() error {
 }
 
 type GetPipelineRunResponseBodyPipeline struct {
-	// The time when the pipeline run was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp when the deployment package was created.
 	//
 	// example:
 	//
 	// 1724984066000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the user who created the pipeline run.
+	// The creator of the deployment process.
 	//
 	// example:
 	//
 	// 137946317766XXXX
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The description of the pipeline run.
+	// The description of the deployment process.
 	//
 	// example:
 	//
-	// 发布流程描述信息
+	// Deployment process description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the pipeline run.
+	// The ID of the deployment process.
 	//
 	// example:
 	//
 	// a7ef0634-20ec-4a7c-a214-54020f91XXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The error message returned if the pipeline run fails.
+	// The error message returned when the deployment fails.
 	//
 	// example:
 	//
 	// Error message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The time when the pipeline run was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The modification time.
+	//
+	// The value is a 13-digit number, such as `1724984066000`.
 	//
 	// example:
 	//
@@ -104,23 +106,23 @@ type GetPipelineRunResponseBodyPipeline struct {
 	//
 	// 56160
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The stages in the pipeline run.
+	// The stage details.
 	Stages []*GetPipelineRunResponseBodyPipelineStages `json:"Stages,omitempty" xml:"Stages,omitempty" type:"Repeated"`
-	// The status of the pipeline run.
+	// The status of the deployment process.
 	//
 	// Valid values:
 	//
-	// - `Init`: The pipeline run is being initialized.
+	// - Init: Initialization.
 	//
-	// - `Running`: The pipeline run is in progress.
+	// - Running: Running.
 	//
-	// - `Success`: The pipeline run succeeded.
+	// - Success: Succeeded.
 	//
-	// - `Fail`: The pipeline run failed.
+	// - Fail: Failed.
 	//
-	// - `Terminated`: The pipeline run was terminated.
+	// - Termination: Terminated.
 	//
-	// - `Canceled`: The pipeline run was canceled.
+	// - Cancel: Canceled.
 	//
 	// example:
 	//
@@ -231,7 +233,7 @@ func (s *GetPipelineRunResponseBodyPipeline) Validate() error {
 }
 
 type GetPipelineRunResponseBodyPipelineStages struct {
-	// The code that identifies the stage.
+	// The code of the deployment stage.
 	//
 	// example:
 	//
@@ -243,9 +245,9 @@ type GetPipelineRunResponseBodyPipelineStages struct {
 	//
 	// Phase description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Detailed information about the stage.
+	// The detailed information about the stage.
 	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The exception message returned if the stage fails.
+	// The exception message of the deployment stage.
 	//
 	// example:
 	//
@@ -257,45 +259,45 @@ type GetPipelineRunResponseBodyPipelineStages struct {
 	//
 	// Publish package build
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The status of the stage.
+	// The status of the deployment stage.
 	//
 	// Valid values:
 	//
-	// - `Init`: The stage is being initialized.
+	// - Init: Initialization.
 	//
-	// - `Running`: The stage is in progress.
+	// - Running: Running.
 	//
-	// - `Success`: The stage succeeded.
+	// - Success: Succeeded.
 	//
-	// - `Fail`: The stage failed.
+	// - Fail: Failed.
 	//
-	// - `Terminated`: The stage was terminated.
+	// - Termination: Terminated.
 	//
-	// - `Canceled`: The stage was canceled.
+	// - Cancel: Canceled.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The sequence number of the stage within the pipeline.
+	// The step number of the deployment stage.
 	//
 	// example:
 	//
 	// 1
 	Step *int32 `json:"Step,omitempty" xml:"Step,omitempty"`
-	// The type of the stage.
+	// The type of the deployment stage.
 	//
 	// Valid values:
 	//
-	// - `Deploy`: A deployment operation.
+	// - Deploy: deploy operation
 	//
-	// - `Check`: A check operation.
+	// - Check: check operation
 	//
-	// - `Offline`: An offline operation.
+	// - Offline: offline operation
 	//
-	// - `Build`: A build operation.
+	// - Build: build operation
 	//
-	// - `Delete`: A delete operation.
+	// - Delete: delete operation
 	//
 	// example:
 	//

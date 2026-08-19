@@ -18,12 +18,16 @@ type iListCrawlerRunsResponseBody interface {
 }
 
 type ListCrawlerRunsResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListCrawlerRunsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID. Used for locating logs and troubleshooting issues.
+	//
 	// example:
 	//
 	// 9252F32F-D855-549E-8898-61CF5A733050
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListCrawlerRunsResponseBody) String() string {
@@ -71,15 +75,22 @@ func (s *ListCrawlerRunsResponseBody) Validate() error {
 }
 
 type ListCrawlerRunsResponseBodyPagingInfo struct {
+	// The list of metadata crawler run records.
 	CrawlerRuns []*ListCrawlerRunsResponseBodyPagingInfoCrawlerRuns `json:"CrawlerRuns,omitempty" xml:"CrawlerRuns,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of records that meet the query conditions.
+	//
 	// example:
 	//
 	// 1
@@ -144,26 +155,38 @@ func (s *ListCrawlerRunsResponseBodyPagingInfo) Validate() error {
 }
 
 type ListCrawlerRunsResponseBodyPagingInfoCrawlerRuns struct {
+	// The run duration, in seconds.
+	//
 	// example:
 	//
 	// 60
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The end time, in millisecond-level UNIX timestamp.
+	//
 	// example:
 	//
 	// 1710239065403
 	FinishedTime *int64 `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	// The start time, in millisecond-level UNIX timestamp.
+	//
 	// example:
 	//
 	// 1710239005403
 	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
+	// The run status. Valid values: WAITING, RUNNING, SUCCESS, ERROR, SHUTDOWN.
+	//
 	// example:
 	//
 	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The DataWorks task instance ID associated with this run.
+	//
 	// example:
 	//
 	// 1234
 	TaskInstanceId *int64 `json:"TaskInstanceId,omitempty" xml:"TaskInstanceId,omitempty"`
+	// The total number of tables involved in this run.
+	//
 	// example:
 	//
 	// 42

@@ -44,21 +44,21 @@ type iCreateDIJobShrinkRequest interface {
 }
 
 type CreateDIJobShrinkRequest struct {
-	// The description of the job.
+	// The description of the task.
 	//
 	// example:
 	//
 	// DI Job Demo
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Settings for the destination data sources.
+	// The list of destination data source settings.
 	DestinationDataSourceSettingsShrink *string `json:"DestinationDataSourceSettings,omitempty" xml:"DestinationDataSourceSettings,omitempty"`
-	// The type of the destination data source. Valid values: `Hologres`, `OSS-HDFS`, `OSS`, `MaxCompute`, `LogHub`, `StarRocks`, `DataHub`, `AnalyticDB for MySQL`, `Kafka`, and `Hive`.
+	// The type of the destination data source. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, LogHub, StarRocks, DataHub, AnalyticDB_For_MySQL, Kafka, Hive.
 	//
 	// example:
 	//
 	// Hologres
 	DestinationDataSourceType *string `json:"DestinationDataSourceType,omitempty" xml:"DestinationDataSourceType,omitempty"`
-	// The code for a job created in script mode.
+	// The code content in script mode.
 	//
 	// example:
 	//
@@ -416,21 +416,21 @@ type CreateDIJobShrinkRequest struct {
 	FileSpec *string `json:"FileSpec,omitempty" xml:"FileSpec,omitempty"`
 	// Deprecated
 	//
-	// This parameter is deprecated. Use the `Name` parameter instead.
+	// **[Deprecated]*	- Use the Name parameter instead.
 	//
 	// example:
 	//
 	// mysql_to_holo_sync_8772
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The settings for the synchronization job, including DDL processing policies, data type mappings between source and destination columns, and runtime parameters.
+	// The task-level settings, including DDL handling policies, source-to-destination column data type mapping policies, and task runtime parameters.
 	JobSettingsShrink *string `json:"JobSettings,omitempty" xml:"JobSettings,omitempty"`
-	// The job type. Valid values:
+	// The task type. Valid values:
 	//
-	// - `DatabaseRealtimeMigration`: Synchronizes multiple tables from multiple source databases in real time (stream synchronization). This type supports full, incremental, or both full and incremental synchronization.
+	//  - DatabaseRealtimeMigration: real-time migration of entire databases. Performs streaming synchronization of multiple tables from multiple source databases. Supports full-only, incremental-only, or full and incremental synchronization.
 	//
-	// - `DatabaseOfflineMigration`: Synchronizes multiple tables from multiple source databases in batches. This type supports full, incremental, or both full and incremental synchronization.
+	//  - DatabaseOfflineMigration: offline migration of entire databases. Performs batch synchronization of multiple tables from multiple source databases. Supports full-only, incremental-only, or full and incremental synchronization.
 	//
-	// - `SingleTableRealtimeMigration`: Synchronizes a single source table in real time (stream synchronization).
+	//  - SingleTableRealtimeMigration: real-time migration of a single table. Performs streaming synchronization of a single source table.
 	//
 	// example:
 	//
@@ -438,33 +438,35 @@ type CreateDIJobShrinkRequest struct {
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	// The synchronization type. Valid values:
 	//
-	// - `FullAndRealtimeIncremental`: Full and real-time incremental synchronization for an entire database.
+	// - FullAndRealtimeIncremental: full and real-time incremental synchronization for entire databases in real time.
 	//
-	// - `RealtimeIncremental`: Real-time incremental synchronization for a single table.
+	// - RealtimeIncremental: real-time incremental synchronization for single tables in real time.
 	//
-	// - `Full`: Full batch synchronization for an entire database.
+	// - Full: full synchronization for entire databases offline.
 	//
-	// - `OfflineIncremental`: Incremental synchronization in batch mode.
+	// - OfflineIncremental: offline incremental synchronization for entire databases offline.
 	//
-	// - `FullAndOfflineIncremental`: Full and incremental batch synchronization for an entire database.
+	// - FullAndOfflineIncremental: full and offline incremental synchronization for entire databases offline.
 	//
 	// example:
 	//
 	// FullAndRealtimeIncremental
 	MigrationType *string `json:"MigrationType,omitempty" xml:"MigrationType,omitempty"`
-	// The name of the job.
+	// The name of the task.
 	//
 	// example:
 	//
 	// mysql_to_holo_sync_8772
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The job owner.
+	// The owner of the task.
 	//
 	// example:
 	//
 	// 3726346
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The ID of the DataWorks workspace for this API call. To obtain the workspace ID, log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page.
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace management page to obtain the ID.
+	//
+	// This parameter specifies the DataWorks workspace for this API call.
 	//
 	// example:
 	//
@@ -472,21 +474,21 @@ type CreateDIJobShrinkRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The resource settings.
 	ResourceSettingsShrink *string `json:"ResourceSettings,omitempty" xml:"ResourceSettings,omitempty"`
-	// Settings for the source data sources.
+	// The list of source data source settings.
 	SourceDataSourceSettingsShrink *string `json:"SourceDataSourceSettings,omitempty" xml:"SourceDataSourceSettings,omitempty"`
-	// The type of the source data source. Valid values: `PolarDB`, `MySQL`, `Kafka`, `LogHub`, `Hologres`, `Oracle`, `OceanBase`, `MongoDB`, `Redshift`, `Hive`, `SQL Server`, `Doris`, and `ClickHouse`.
+	// The type of the source data source. Valid values: PolarDB, MySQL, Kafka, LogHub, Hologres, Oracle, OceanBase, MongoDB, RedShift, Hive, SQLServer, Doris, ClickHouse.
 	//
 	// example:
 	//
 	// MySQL
 	SourceDataSourceType *string `json:"SourceDataSourceType,omitempty" xml:"SourceDataSourceType,omitempty"`
-	// Transformation mappings for the objects to be synchronized. Each mapping defines selection rules for a group of source objects and the transformation rules to apply to them.
+	// The list of synchronization object transformation mappings. Each element describes a group of source object selection rules and the transformation rules applied to that group.
 	//
 	// > [ { "SourceObjectSelectionRules":[ { "ObjectType":"Database", "Action":"Include", "ExpressionType":"Exact", "Expression":"biz_db" }, { "ObjectType":"Schema", "Action":"Include", "ExpressionType":"Exact", "Expression":"s1" }, { "ObjectType":"Table", "Action":"Include", "ExpressionType":"Exact", "Expression":"table1" } ], "TransformationRuleNames":[ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema" } ] } ]
 	TableMappingsShrink *string `json:"TableMappings,omitempty" xml:"TableMappings,omitempty"`
-	// A list of transformation rules for the objects to be synchronized.
+	// The list of synchronization object transformation rule definitions.
 	//
-	// > [ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema", "RuleExpression":"{\\\\"expression\\\\":\\\\"${srcDatasoureName}_${srcDatabaseName}\\\\"}" } ]
+	// >[ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema", "RuleExpression":"{"expression":"${srcDatasoureName}_${srcDatabaseName}"}" } ]
 	TransformationRulesShrink *string `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty"`
 }
 

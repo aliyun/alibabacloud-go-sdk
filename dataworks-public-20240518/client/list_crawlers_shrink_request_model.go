@@ -28,31 +28,46 @@ type iListCrawlersShrinkRequest interface {
 }
 
 type ListCrawlersShrinkRequest struct {
+	// The list of data source IDs. Up to 10 IDs are supported.
 	DataSourceIdsShrink *string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty"`
+	// The DataWorks environment type. Dev indicates the development environment. Prod indicates the production environment.
+	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The metadata crawler name. Supports fuzzy match.
+	//
 	// example:
 	//
 	// example_crawler
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The DataWorks user ID of the crawler owner.
+	//
 	// example:
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The page number. Starts from 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20. Maximum value: 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The DataWorks workspace ID.
+	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The crawler type. Call GetCrawlerTypeCapabilities to query the valid values supported in the current region.
+	//
 	// example:
 	//
 	// starrocks

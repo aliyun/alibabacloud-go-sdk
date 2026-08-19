@@ -44,25 +44,25 @@ type iListFilesRequest interface {
 }
 
 type ListFilesRequest struct {
-	// The current commit status of the file. Valid values: 0 (the latest code is not committed) and 1 (the latest code is committed).
+	// The current commit status of the file. Valid values: 0 (the latest code has not been committed) and 1 (the latest code has been committed).
 	//
 	// example:
 	//
 	// 1
 	CommitStatus *int32 `json:"CommitStatus,omitempty" xml:"CommitStatus,omitempty"`
-	// The exact file name. The file name in the query result must exactly match this parameter.
+	// The file name for exact match. The file name in the query result exactly matches this parameter value.
 	//
 	// example:
 	//
 	// ods_create.sql
 	ExactFileName *string `json:"ExactFileName,omitempty" xml:"ExactFileName,omitempty"`
-	// The path to the folder where the file is located.
+	// The path of the folder where the file is stored.
 	//
 	// example:
 	//
 	// Business_process/my_first_business_process/MaxCompute/ods_layer
 	FileFolderPath *string `json:"FileFolderPath,omitempty" xml:"FileFolderPath,omitempty"`
-	// The list of file IDs. The file IDs in the query result must be a subset of this list. You can specify up to 50 file IDs at a time.
+	// The list of file IDs. The file IDs in the query result can only be a subset of this list. A maximum of 50 file IDs can be specified at a time.
 	//
 	// example:
 	//
@@ -70,31 +70,31 @@ type ListFilesRequest struct {
 	FileIdIn *string `json:"FileIdIn,omitempty" xml:"FileIdIn,omitempty"`
 	// The code type of the file.
 	//
-	// The code type of the file. Common code types and their corresponding file types include: 6 (Shell), 10 (ODPS SQL), 11 (ODPS MR), 23 (Data Integration), 24 (ODPS Script), 97 (PAI), 98 (Combined node), 99 (Virtual node), 221 (PyODPS 2), 225 (ODPS Spark), 227 (EMR Hive), 228 (EMR Spark), 229 (EMR Spark SQL), 230 (EMR MR), 239 (OSS object inspection), 257 (EMR Shell), 258 (EMR Spark Shell), 259 (EMR Presto), 260 (EMR Impala), 900 (Real-time sync), 1002 (PAI internal node), 1089 (Cross-tenant node), 1091 (Hologres development), 1093 (Hologres SQL), 1100 (Assignment node), 1106 (ForEach node), 1221 (PyODPS 3).
+	// Common codes and their corresponding file types include 6 (Shell), 10 (ODPS SQL), 11 (ODPS MR), 23 (Data Integration), 24 (ODPS Script), 97 (PAI), 98 (combined node), 99 (virtual node), 221 (PyODPS 2), 225 (ODPS Spark), 227 (EMR Hive), 228 (EMR Spark), 229 (EMR Spark SQL), 230 (EMR MR), 239 (OSS object check), 257 (EMR Shell), 258 (EMR Spark Shell), 259 (EMR Presto), 260 (EMR Impala), 900 (real-time synchronization), 1002 (PAI internal node), 1089 (cross-tenant node), 1091 (Hologres development), 1093 (Hologres SQL), 1100 (assignment node), 1106 (foreach node), 1221 (PyODPS 3).
 	//
 	// example:
 	//
 	// 10,23
 	FileTypes *string `json:"FileTypes,omitempty" xml:"FileTypes,omitempty"`
-	// The keyword for the file name. Fuzzy match is supported. You can enter a keyword to query all files that contain the keyword.
+	// The keyword of the file name. Fuzzy match is supported. You can enter a keyword to query all files whose names contain the keyword.
 	//
 	// example:
 	//
 	// ods
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The Alibaba Cloud account ID of the user who last updated the file.
+	// The Alibaba Cloud ID of the user who last updated the file.
 	//
 	// example:
 	//
 	// 11233***
 	LastEditUser *string `json:"LastEditUser,omitempty" xml:"LastEditUser,omitempty"`
-	// Specifies whether the query result includes the path to the folder where the file is located.
+	// Specifies whether the query result includes the path of the folder where the file is stored.
 	//
 	// example:
 	//
 	// false
 	NeedAbsoluteFolderPath *bool `json:"NeedAbsoluteFolderPath,omitempty" xml:"NeedAbsoluteFolderPath,omitempty"`
-	// Specifies whether the query result includes the file content. For files with large content, network transmission delays may occur.
+	// Specifies whether the query result includes the file content. For files with large content, network transmission latency may be significant.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type ListFilesRequest struct {
 	//
 	// 123541234
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The ID of the file owner.
+	// The owner of the file.
 	//
 	// example:
 	//
@@ -124,17 +124,17 @@ type ListFilesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID.
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the workspace ID.
 	//
-	// You must configure either this parameter or the ProjectIdentifier parameter to determine the DataWorks workspace to which the operation is applied.
+	// You must specify either this parameter or the ProjectIdentifier parameter to determine the DataWorks workspace for this API call.
 	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The DataWorks workspace name. To obtain the workspace name, log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and navigate to the workspace configuration page.
+	// The name of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the workspace name.
 	//
-	// You must specify either this parameter or ProjectId to identify the target DataWorks workspace for this API call.
+	// You must specify either this parameter or the ProjectId parameter to determine the DataWorks workspace for this API call.
 	//
 	// example:
 	//
@@ -142,17 +142,17 @@ type ListFilesRequest struct {
 	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
 	// The functional module to which the file belongs. Valid values:
 	//
-	// - NORMAL: Data Studio
+	// - NORMAL: DataStudio.
 	//
-	// - MANUAL: Manually triggered node
+	// - MANUAL: manual node.
 	//
-	// - MANUAL_BIZ: Manually triggered workflow
+	// - MANUAL_BIZ: manual workflow.
 	//
-	// - SKIP: Dry-run scheduling in Data Studio
+	// - SKIP: dry-run scheduling in DataStudio.
 	//
-	// - ADHOCQUERY: Ad hoc query
+	// - ADHOCQUERY: ad hoc query.
 	//
-	// - COMPONENT: Component management
+	// - COMPONENT: component management.
 	//
 	// example:
 	//

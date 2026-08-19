@@ -24,37 +24,37 @@ type iListDataQualityRulesRequest interface {
 }
 
 type ListDataQualityRulesRequest struct {
-	// ID of the associated data quality evaluation task.
+	// The ID of the associated quality check task.
 	//
 	// example:
 	//
 	// 10000
 	DataQualityEvaluationTaskId *int64 `json:"DataQualityEvaluationTaskId,omitempty" xml:"DataQualityEvaluationTaskId,omitempty"`
-	// Rule name for fuzzy matching.
+	// The rule name for fuzzy matching.
 	//
 	// example:
 	//
 	// unit_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Page number for paginated query. Default value: 1.
+	// The page number for paging. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of entries per page. Default value: 10. Maximum value: 200.
+	// The number of entries per page. Default value: 10. Maximum value: 200.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// DataWorks workspace ID.
+	// The DataWorks workspace ID.
 	//
 	// example:
 	//
 	// 10002
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The unique identifier of the table to which the rule applies in Data Map.
+	// The unique identifier of the table that the rule applies to in DataWorks Data Map.
 	//
 	// example:
 	//

@@ -32,9 +32,9 @@ type iCreateDataQualityEvaluationTaskRequest interface {
 }
 
 type CreateDataQualityEvaluationTaskRequest struct {
-	// The list of data quality rules associated with the data quality monitor. If DataQualityRule.Id is specified, the rule corresponding to that ID is associated with the newly created quality monitor. If not specified, a new rule is created from the other fields and associated with the newly created quality monitor.
+	// The list of data quality rules associated with the data quality monitoring task. If DataQualityRule.Id is specified, the rule corresponding to the ID is associated with the new quality monitoring task. If DataQualityRule.Id is not specified, a new rule is created based on the other fields and associated with the new quality monitoring task.
 	DataQualityRules []*CreateDataQualityEvaluationTaskRequestDataQualityRules `json:"DataQualityRules,omitempty" xml:"DataQualityRules,omitempty" type:"Repeated"`
-	// The ID of the data source. You can call [ListDataSources](https://help.aliyun.com/document_detail/211431.html) to obtain the ID of the data source.
+	// The data source ID. You can call [ListDataSources](https://help.aliyun.com/document_detail/211431.html) to obtain the data source ID.
 	//
 	// This parameter is required.
 	//
@@ -42,15 +42,15 @@ type CreateDataQualityEvaluationTaskRequest struct {
 	//
 	// 1
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The description of the quality monitoring task.
+	// The description of the data quality monitor task.
 	//
 	// example:
 	//
 	// OpenAPI create a data quality monitoring test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The hook settings.
+	// The callback settings.
 	Hooks []*CreateDataQualityEvaluationTaskRequestHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
-	// The name of the quality monitoring task.
+	// The name of the data quality monitor task.
 	//
 	// This parameter is required.
 	//
@@ -60,9 +60,7 @@ type CreateDataQualityEvaluationTaskRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The notification subscription configuration.
 	Notifications *CreateDataQualityEvaluationTaskRequestNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Struct"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the ID.
-	//
-	// This parameter specifies the DataWorks workspace used by this API call.
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace management page to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -70,25 +68,17 @@ type CreateDataQualityEvaluationTaskRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The extended configuration, a JSON-formatted string. This setting takes effect only for EMR-type data quality monitors.
-	//
-	// - queue: The YARN queue used when running EMR data quality validation. The default is the queue configured for the current project.
-	//
-	// - sqlEngine: The SQL engine used when running EMR data validation.
-	//
-	//     + HIVE_SQL
-	//
-	//     + SPARK_SQL
+	// The extended configuration. The value is a JSON-formatted string. This parameter takes effect only for EMR-type data quality monitors.
 	//
 	// example:
 	//
 	// { "queue": "default", "sqlEngine": "SPARK_SQL" }
 	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
-	// The data quality monitoring object.
+	// The monitored object of the data quality monitor.
 	//
 	// This parameter is required.
 	Target *CreateDataQualityEvaluationTaskRequestTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
-	// The trigger configuration of the data quality validation task.
+	// The trigger configuration of the data quality check task.
 	Trigger *CreateDataQualityEvaluationTaskRequestTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
 }
 
@@ -228,7 +218,7 @@ func (s *CreateDataQualityEvaluationTaskRequest) Validate() error {
 }
 
 type CreateDataQualityEvaluationTaskRequestDataQualityRules struct {
-	// The sample validation settings.
+	// The sample verification settings.
 	CheckingConfig *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
 	// The description of the data quality rule.
 	//
@@ -242,9 +232,9 @@ type CreateDataQualityEvaluationTaskRequestDataQualityRules struct {
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The list of error handlers for issues detected by the quality rule validation.
+	// The list of error handlers for quality rule verification issues.
 	ErrorHandlers []*CreateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty" type:"Repeated"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//
@@ -256,19 +246,15 @@ type CreateDataQualityEvaluationTaskRequestDataQualityRules struct {
 	//
 	// OpenAPI test rules
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The parameters required when collecting samples.
+	// The parameters required for sample collection.
 	SamplingConfig *CreateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
-	// The business severity level of the rule (corresponding to strong/weak rules in the console). Valid values:
-	//
-	// - Normal
-	//
-	// - High
+	// The severity level of the rule for the business (corresponding to strong or weak rules on the page). Valid values:
 	//
 	// example:
 	//
 	// High
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// The unique identifier of the rule template that the rule references.
+	// The unique identifier of the rule template referenced by the rule.
 	//
 	// example:
 	//
@@ -389,25 +375,15 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRules) Validate() erro
 }
 
 type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig struct {
-	// For some threshold types, reference samples must be queried and aggregated to derive the threshold used for comparison. This field uses an expression to describe how the reference samples are queried.
+	// The expression that specifies how to query reference samples. Some threshold types require querying reference samples and then aggregating the values of the reference samples to derive the threshold for comparison.
 	//
 	// example:
 	//
 	// {"bizdate": ["-1"]}
 	ReferencedSamplesFilter *string `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
-	// The validation threshold settings.
+	// The verification threshold settings.
 	Thresholds *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
-	// The method used to compute the threshold. Valid values:
-	//
-	// - Fixed
-	//
-	// - Fluctation
-	//
-	// - FluctationDiscreate
-	//
-	// - Auto
-	//
-	// - Average
+	// The threshold calculation method.
 	//
 	// example:
 	//
@@ -460,11 +436,11 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig) V
 }
 
 type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds struct {
-	// The threshold settings for the critical warning level.
+	// The threshold settings for critical warnings.
 	Critical *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical `json:"Critical,omitempty" xml:"Critical,omitempty" type:"Struct"`
 	// The expected threshold settings.
 	Expected *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected `json:"Expected,omitempty" xml:"Expected,omitempty" type:"Struct"`
-	// The threshold settings for the normal warning level.
+	// The threshold settings for normal warnings.
 	Warned *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned `json:"Warned,omitempty" xml:"Warned,omitempty" type:"Struct"`
 }
 
@@ -525,33 +501,21 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical struct {
 	// The threshold expression.
 	//
-	// Fluctuation-type rules must use expressions to specify the fluctuation threshold. For example:
+	// Rules of the fluctuation type must use expressions to represent fluctuation thresholds. Examples:
 	//
 	// - Fluctuation increase greater than 0.01: $checkValue > 0.01
 	//
 	// - Fluctuation decrease greater than 0.01: $checkValue < -0.01
 	//
-	// - Absolute fluctuation rate: abs($checkValue) > 0.01
+	// - Absolute value of fluctuation: abs($checkValue) > 0.01
 	//
-	// Fixed-value rules can also use expressions to configure thresholds. If both are configured, the expression takes precedence over Operator and Value.
+	// Rules of the fixed value type can also use expressions to configure thresholds. If both are configured, the expression takes precedence over Operator and Value.
 	//
 	// example:
 	//
 	// $checkValue > 0.01
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// The comparison operator. Valid values:
-	//
-	// - \\>
-	//
-	// - \\>=
-	//
-	// - <
-	//
-	// - <=
-	//
-	// - !=
-	//
-	// - =
+	// The comparison operator.
 	//
 	// example:
 	//
@@ -607,33 +571,21 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected struct {
 	// The threshold expression.
 	//
-	// Fluctuation-type rules must use expressions to specify the fluctuation threshold. For example:
+	// Rules of the fluctuation type must use expressions to represent fluctuation thresholds. Examples:
 	//
 	// - Fluctuation increase greater than 0.01: $checkValue > 0.01
 	//
 	// - Fluctuation decrease greater than 0.01: $checkValue < -0.01
 	//
-	// - Absolute fluctuation rate: abs($checkValue) > 0.01
+	// - Absolute value of fluctuation: abs($checkValue) > 0.01
 	//
-	// Fixed-value rules can also use expressions to configure thresholds. If both are configured, the expression takes precedence over Operator and Value.
+	// Rules of the fixed value type can also use expressions to configure thresholds. If both are configured, the expression takes precedence over Operator and Value.
 	//
 	// example:
 	//
 	// $checkValue > 0.01
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// The comparison operator. Valid values:
-	//
-	// - \\>
-	//
-	// - \\>=
-	//
-	// - <
-	//
-	// - <=
-	//
-	// - !=
-	//
-	// - =
+	// The comparison operator.
 	//
 	// example:
 	//
@@ -689,33 +641,21 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned struct {
 	// The threshold expression.
 	//
-	// Fluctuation-type rules must use expressions to specify the fluctuation threshold. For example:
+	// Rules of the fluctuation type must use expressions to represent fluctuation thresholds. Examples:
 	//
 	// - Fluctuation increase greater than 0.01: $checkValue > 0.01
 	//
 	// - Fluctuation decrease greater than 0.01: $checkValue < -0.01
 	//
-	// - Absolute fluctuation rate: abs($checkValue) > 0.01
+	// - Absolute value of fluctuation: abs($checkValue) > 0.01
 	//
-	// Fixed-value rules can also use expressions to configure thresholds. If both are configured, the expression takes precedence over Operator and Value.
+	// Rules of the fixed value type can also use expressions to configure thresholds. If both are configured, the expression takes precedence over Operator and Value.
 	//
 	// example:
 	//
 	// $checkValue > 0.01
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// The comparison operator. Valid values:
-	//
-	// - \\>
-	//
-	// - \\>=
-	//
-	// - <
-	//
-	// - <=
-	//
-	// - !=
-	//
-	// - =
+	// The comparison operator.
 	//
 	// example:
 	//
@@ -769,15 +709,13 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 }
 
 type CreateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers struct {
-	// For custom SQL rules, the user must specify a SQL statement to filter the problematic data.
+	// The SQL statement specified by the user to filter problematic data. This is required for custom SQL rules.
 	//
 	// example:
 	//
 	// SELECT 	- FROM ods_api_log WHERE status = \\"Error\\";
 	ErrorDataFilter *string `json:"ErrorDataFilter,omitempty" xml:"ErrorDataFilter,omitempty"`
-	// The type of the handler. Valid values:
-	//
-	// - SaveErrorData: retains the problematic data.
+	// The handler type:
 	//
 	// example:
 	//
@@ -818,7 +756,7 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers) Va
 type CreateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig struct {
 	// The name of the sampling metric. Valid values:
 	//
-	// - Count: the number of rows in the table.
+	// - Count: the number of table rows.
 	//
 	// - Min: the minimum value of the field.
 	//
@@ -826,45 +764,45 @@ type CreateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig struct
 	//
 	// - Avg: the average value of the field.
 	//
-	// - DistinctCount: the number of distinct values of the field.
+	// - DistinctCount: the number of distinct values in the field.
 	//
-	// - DistinctPercent: the ratio of the number of distinct values of the field to the number of rows.
+	// - DistinctPercent: the ratio of distinct values in the field to the total number of rows.
 	//
-	// - DuplicatedCount: the number of duplicate values of the field.
+	// - DuplicatedCount: the number of duplicate values in the field.
 	//
-	// - DuplicatedPercent: the ratio of the number of duplicate values of the field to the number of rows.
+	// - DuplicatedPercent: the ratio of duplicate values in the field to the total number of rows.
 	//
-	// - TableSize: the size of the table.
+	// - TableSize: the table size.
 	//
-	// - NullValueCount: the number of rows in which the field is null.
+	// - NullValueCount: the number of rows where the field is null.
 	//
-	// - NullValuePercent: the ratio of rows in which the field is null.
+	// - NullValuePercent: the ratio of rows where the field is null.
 	//
-	// - GroupCount: after grouping by the field value, the count of rows for each value.
+	// - GroupCount: the count of rows for each value after aggregation by field value.
 	//
-	// - CountNotIn: the number of rows whose enumeration values do not match.
+	// - CountNotIn: the number of rows that do not match the enumerated values.
 	//
-	// - CountDistinctNotIn: the number of distinct values whose enumeration values do not match.
+	// - CountDistinctNotIn: the number of distinct values that do not match the enumerated values.
 	//
-	// - UserDefinedSql: collect samples using a custom SQL statement.
+	// - UserDefinedSql: sample collection through a custom SQL statement.
 	//
 	// example:
 	//
 	// NullValueCount
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	// The parameters required when collecting samples.
+	// The parameters required for sample collection.
 	//
 	// example:
 	//
 	// { "Columns": [ "id", "name" ] , "SQL": "select count(1) from table;"}
 	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
-	// An additional filter condition applied during sampling to exclude data that is not of interest. The maximum length is 16,777,215 characters.
+	// The filter condition used to perform secondary filtering on data that is not of interest during sampling. The maximum length is 16,777,215 characters.
 	//
 	// example:
 	//
 	// status != \\"Succeeded\\"
 	SamplingFilter *string `json:"SamplingFilter,omitempty" xml:"SamplingFilter,omitempty"`
-	// The runtime parameter statements inserted and executed before the sampling statement is executed. The maximum length is 1000 characters. Only MaxCompute is currently supported.
+	// The runtime parameter setting statements that are executed before the sampling statement. The maximum length is 1,000 characters. Currently, only MaxCompute is supported.
 	//
 	// example:
 	//
@@ -921,19 +859,17 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig) V
 }
 
 type CreateDataQualityEvaluationTaskRequestHooks struct {
-	// The trigger condition of the hook. The hook action is triggered when this condition is met. Currently only two forms of expressions are supported:
+	// The hook trigger condition. When this condition is met, the hook action is triggered. Only two types of conditional expressions are supported:
 	//
-	// 1. Specify a single combination of rule severity and rule validation status, for example `${severity} == "High" AND ${status} == "Critical"`, which means the condition is met if among the executed rules there exists a rule whose severity is High and whose validation result is Critical.
+	// 1. Specify a single combination of rule severity type and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. This means that if any executed rule with a severity of High has a check result of Critical, the condition is met.
 	//
-	// 2. Specify multiple combinations of rule severity and rule validation status, for example `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`, which means the condition is met if among the executed rules there exists a rule whose severity is High and validation result is Critical, or a rule whose severity is Normal and validation result is Critical, or a rule whose severity is Normal and validation result is Error. The enumeration of severity in the expression is the same as severity in DataQualityRule, and the enumeration of status is the same as status in DataQualityResult.
+	// 2. Specify multiple combinations of rule severity type and rule check status, such as `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. This means that the condition is met if any executed rule with a severity of High has a check result of Critical, or any rule with a severity of Normal has a check result of Critical, or any rule with a severity of Normal has a check result of Error. The enumerated values of severity in the conditional expression are consistent with those of severity in DataQualityRule, and the enumerated values of status are consistent with those of status in DataQualityResult.
 	//
 	// example:
 	//
 	// (${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// The type of the hook. Currently only one type is supported:
-	//
-	// - BlockTaskInstance: blocks the scheduling task from continuing to run. If the data quality monitor is triggered by a scheduling task, after the monitor finishes running, Hook.Condition is evaluated to determine whether to block the scheduling task from continuing to run.
+	// The hook type. Currently, only one type is supported:
 	//
 	// example:
 	//
@@ -972,11 +908,11 @@ func (s *CreateDataQualityEvaluationTaskRequestHooks) Validate() error {
 }
 
 type CreateDataQualityEvaluationTaskRequestNotifications struct {
-	// The trigger condition of the notification. The notification is triggered when this condition is met. Currently only two forms of expressions are supported:
+	// The notification trigger condition. When this condition is met, a message notification is triggered. Currently, only two types of conditional expressions are supported:
 	//
-	// Specify a single combination of rule severity and rule validation status, for example `${severity} == "High" AND ${status} == "Critical"`, which means the condition is met if among the executed rules there exists a rule whose severity is High and whose validation result is Critical.
+	// Specify a single combination of rule severity type and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. This means that among the executed rules, if a rule with severity High has a check result of Critical, the condition is met.
 	//
-	// Specify multiple combinations of rule severity and rule validation status, for example `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`, which means the condition is met if among the executed rules there exists a rule whose severity is High and validation result is Critical, or a rule whose severity is Normal and validation result is Critical, or a rule whose severity is Normal and validation result is Error. The enumeration of severity in the expression is the same as severity in DataQualityRule, and the enumeration of status is the same as status in DataQualityResult.
+	// Specify multiple combinations of rule severity type and rule check status, such as `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. This means that among the executed rules, if a rule with severity High has a check result of Critical, or a rule with severity Normal has a check result of Critical, or a rule with severity Normal has a check result of Error, the condition is met. The enumeration values of severity in the conditional expression are consistent with the severity enumeration in DataQualityRule, and the enumeration values of status are consistent with the status enumeration in DataQualityResult.
 	//
 	// example:
 	//
@@ -1107,25 +1043,13 @@ func (s *CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotific
 }
 
 type CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers struct {
-	// Additional parameters used when sending alerts, in JSON format. Supported keys:
-	//
-	// - atAll: whether to mention all members (@all) in the group when sending a DingTalk alert. This key takes effect when ReceiverType is set to DingdingUrl.
+	// The additional parameter settings for sending alerts. The value is in JSON format. The following keys are supported:
 	//
 	// example:
 	//
 	// {  "atAll": true }
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// The type of the alert recipient. Valid values:
-	//
-	// - WebhookUrl: a custom webhook URL.
-	//
-	// - FeishuUrl: a Lark (Feishu) alert URL.
-	//
-	// - DingdingUrl: a DingTalk alert URL.
-	//
-	// - WeixinUrl: a WeCom (Enterprise WeChat) alert URL.
-	//
-	// - AliUid: an Alibaba Cloud user ID.
+	// The type of the alert recipient.
 	//
 	// example:
 	//
@@ -1203,7 +1127,7 @@ type CreateDataQualityEvaluationTaskRequestTarget struct {
 	//
 	// pt=$[yyyymmdd-1]
 	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
-	// The unique ID of the table in Data Map.
+	// The unique ID of the table in DataWorks Data Map.
 	//
 	// This parameter is required.
 	//
@@ -1253,13 +1177,13 @@ func (s *CreateDataQualityEvaluationTaskRequestTarget) Validate() error {
 }
 
 type CreateDataQualityEvaluationTaskRequestTrigger struct {
-	// The list of scheduling task IDs. This parameter is valid when Type is set to ByScheduledTaskInstance.
+	// The list of scheduling task IDs. This parameter is valid only when Type is set to ByScheduledTaskInstance.
 	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	// The trigger type of the quality monitoring task. Valid values:
+	// The trigger type for quality monitoring. Valid values:
 	//
-	// - ByManual: triggered manually. This is the default value.
+	// - ByManual: manual trigger. This is the default value.
 	//
-	// - ByScheduledTaskInstance: triggered by an associated scheduling task.
+	// - ByScheduledTaskInstance: triggered by an associated scheduled task instance.
 	//
 	// example:
 	//

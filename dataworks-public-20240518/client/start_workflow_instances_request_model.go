@@ -22,7 +22,7 @@ type StartWorkflowInstancesRequest struct {
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The IDs of workflow instances.
+	// The list of workflow instance IDs.
 	//
 	// This parameter is required.
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`

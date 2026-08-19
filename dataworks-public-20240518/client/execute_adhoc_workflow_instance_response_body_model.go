@@ -16,7 +16,7 @@ type iExecuteAdhocWorkflowInstanceResponseBody interface {
 }
 
 type ExecuteAdhocWorkflowInstanceResponseBody struct {
-  // The request ID.
+  // The request ID, which is used to locate logs and troubleshoot issues.
   // 
   // example:
   // 

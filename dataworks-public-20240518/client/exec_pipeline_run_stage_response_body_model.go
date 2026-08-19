@@ -16,21 +16,19 @@ type iExecPipelineRunStageResponseBody interface {
 }
 
 type ExecPipelineRunStageResponseBody struct {
-  // The request ID.
+  // The request ID. Used for locating logs and troubleshooting issues.
   // 
   // example:
   // 
   // AFBB799F-8578-51C5-A766-E922EDB8XXXX
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Indicates whether the request was successful. Valid values:
+  // Indicates whether the call is successful. Valid values:
   // 
-  // - true
+  // - true: The call is successful.
   // 
-  // - false
+  // - false: The call failed.
   // 
-  //   \\*\\*
-  // 
-  //   **Note:*	- The value of this parameter indicates only whether the stage is triggered but does not indicate whether the execution of the stage is successful.
+  // 	Notice: This only indicates whether the stage is triggered, not the execution result of the publish stage.
   // 
   // example:
   // 

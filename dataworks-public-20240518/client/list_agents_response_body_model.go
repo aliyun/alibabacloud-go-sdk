@@ -62,7 +62,7 @@ func (s *ListAgentsResponseBody) Validate() error {
 }
 
 type ListAgentsResponseBodyJsonRpcResponse struct {
-	// The request ID passed in by the caller. The value is returned as-is in the response.
+	// The ID passed in by the requester. The value is returned as-is.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListAgentsResponseBodyJsonRpcResponse struct {
 	//
 	// 2.0
 	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	// The paginated query result for agents.
+	// The paging query result for agents.
 	Result *ListAgentsResponseBodyJsonRpcResponseResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -137,7 +137,7 @@ type ListAgentsResponseBodyJsonRpcResponseResult struct {
 	//
 	// 2
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total number of agents that match the filter criteria.
+	// The total number of matched agents.
 	//
 	// example:
 	//

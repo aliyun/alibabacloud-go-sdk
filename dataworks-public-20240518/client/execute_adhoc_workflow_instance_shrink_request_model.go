@@ -24,23 +24,23 @@ type iExecuteAdhocWorkflowInstanceShrinkRequest interface {
 }
 
 type ExecuteAdhocWorkflowInstanceShrinkRequest struct {
-  // The data timestamp.
+  // The business date. The value is a timestamp.
   // 
   // example:
   // 
   // 1710239005403
   BizDate *int64 `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-  // The environment of the workspace. Valid values:
+  // The project environment. Valid values:
   // 
-  // - Prod: production environment
+  // - Prod: production
   // 
-  // - Dev: development environment
+  // - Dev: development
   // 
   // example:
   // 
   // Prod
   EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-  // The name of the workflow instance.
+  // The name.
   // 
   // This parameter is required.
   // 
@@ -56,7 +56,7 @@ type ExecuteAdhocWorkflowInstanceShrinkRequest struct {
   // 
   // 1000
   Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-  // The workspace ID.
+  // The project ID.
   // 
   // This parameter is required.
   // 
@@ -64,7 +64,7 @@ type ExecuteAdhocWorkflowInstanceShrinkRequest struct {
   // 
   // 100
   ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-  // The tasks.
+  // The list of tasks.
   // 
   // This parameter is required.
   TasksShrink *string `json:"Tasks,omitempty" xml:"Tasks,omitempty"`

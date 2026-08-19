@@ -24,9 +24,9 @@ type AttachDataQualityRulesToEvaluationTaskResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the association is successful. Valid values:
 	//
-	// - true: The call is successful.
+	// - true: The call succeeded.
 	//
-	// - false: The call fails.
+	// - false: The call failed.
 	//
 	// example:
 	//

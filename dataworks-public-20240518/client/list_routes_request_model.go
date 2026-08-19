@@ -22,7 +22,7 @@ type iListRoutesRequest interface {
 }
 
 type ListRoutesRequest struct {
-	// The network ID.
+	// The ID of the network resource.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ListRoutesRequest struct {
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the resource group.
+	// The unique identifier of the general quota.
 	//
 	// This parameter is required.
 	//
@@ -48,13 +48,13 @@ type ListRoutesRequest struct {
 	//
 	// Serverless_res_group_524257424564736_6831777003XXXXX
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The fields used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
+	// The list of sort fields. Fields such as scheduled time and start time are supported. The format is "sort field + sort order (Desc/Asc)" (Asc is the default if omitted). Valid values:
 	//
-	// - Id (Desc/Asc): the route ID
+	// - Id (Desc/Asc): route ID
 	//
-	// - DestinationCidr (Desc/Asc): the destination CIDR block of the route
+	// - DestinationCidr (Desc/Asc): destination CIDR
 	//
-	// - CreateTime (Desc/Asc): the time when the route is created
+	// - CreateTime (Desc/Asc): creation time
 	//
 	// Default value: CreateTime Asc.
 	//

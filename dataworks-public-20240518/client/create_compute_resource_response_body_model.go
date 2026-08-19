@@ -16,13 +16,13 @@ type iCreateComputeResourceResponseBody interface {
 }
 
 type CreateComputeResourceResponseBody struct {
-	// Returns the ID of the created computing resource.
+	// The ID of the created compute resource.
 	//
 	// example:
 	//
 	// 10001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The request ID. You can use the request ID to locate logs and troubleshoot issues.
+	// The request ID, which is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//

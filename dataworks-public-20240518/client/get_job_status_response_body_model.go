@@ -16,7 +16,7 @@ type iGetJobStatusResponseBody interface {
 }
 
 type GetJobStatusResponseBody struct {
-	// The real-time status information of the asynchronous task.
+	// The real-time result of the task status.
 	JobStatus *GetJobStatusResponseBodyJobStatus `json:"JobStatus,omitempty" xml:"JobStatus,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,51 +62,57 @@ func (s *GetJobStatusResponseBody) Validate() error {
 }
 
 type GetJobStatusResponseBodyJobStatus struct {
-	// Indicates whether the asynchronous task is complete. Valid values: True False
+	// Indicates whether the operation is complete. Valid values:
+	//
+	// - True: The current job has been completed.
+	//
+	// - False: The current job is still running.
 	//
 	// example:
 	//
 	// False
 	Completed *string `json:"Completed,omitempty" xml:"Completed,omitempty"`
-	// The time when the asynchronous task was created.
+	// The creation time.
+	//
+	// The value is a 13-digit number, such as `1729063449802`.
 	//
 	// example:
 	//
 	// 1729063449802
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The error message returned if the asynchronous task fails.
+	// The task failure information.
 	//
 	// example:
 	//
 	// Not Found
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
-	// The ID of the asynchronous task.
+	// The asynchronous task ID.
 	//
 	// example:
 	//
 	// C664CDE3-9C0B-5792-B17F-6C543783BBBC
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The type of the asynchronous task. Valid values:
+	// The task type.
 	//
-	// - **Create**: The asynchronous task is used to create an object.
+	// - **Create**: A creation task.
 	//
-	// - **Update**: The asynchronous task is used to update an object.
+	// - **Update**: An update task.
 	//
-	// - **Cancel**: The asynchronous task is used to cancel an operation.
+	// - **Cancel**: A cancellation task.
 	//
 	// example:
 	//
 	// Create
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The status of the asynchronous task. Valid values:
+	// The task status. Valid values:
 	//
-	// - **Success**
+	// - **Success**: succeeded.
 	//
-	// - **Fail**
+	// - **Fail**: failed.
 	//
-	// - **Cancel**
+	// - **Cancel**: canceled.
 	//
-	// - **Running**
+	// - **Running**: running.
 	//
 	// example:
 	//

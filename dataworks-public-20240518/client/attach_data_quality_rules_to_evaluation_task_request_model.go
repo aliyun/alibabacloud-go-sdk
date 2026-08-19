@@ -18,7 +18,7 @@ type iAttachDataQualityRulesToEvaluationTaskRequest interface {
 }
 
 type AttachDataQualityRulesToEvaluationTaskRequest struct {
-	// The ID of the associated data quality monitoring task.
+	// The ID of the associated quality check task.
 	//
 	// This parameter is required.
 	//
@@ -30,9 +30,9 @@ type AttachDataQualityRulesToEvaluationTaskRequest struct {
 	//
 	// This parameter is required.
 	DataQualityRuleIds []*int64 `json:"DataQualityRuleIds,omitempty" xml:"DataQualityRuleIds,omitempty" type:"Repeated"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Settings page to obtain the workspace ID.
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the workspace ID.
 	//
-	// This parameter specifies the DataWorks workspace in which the API operation is performed.
+	// This parameter specifies the DataWorks workspace for this API call.
 	//
 	// This parameter is required.
 	//

@@ -18,15 +18,20 @@ type iUpdateCrawlerResponseBody interface {
 }
 
 type UpdateCrawlerResponseBody struct {
+	// The ID of the updated metadata crawler.
+	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID. You can use this ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 9252F32F-D855-549E-8898-61CF5A733050
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateCrawlerResponseBody) String() string {

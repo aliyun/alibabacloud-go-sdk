@@ -18,9 +18,9 @@ type iListRoutesResponseBody interface {
 }
 
 type ListRoutesResponseBody struct {
-	// The pagination information.
+	// The paging information.
 	PagingInfo *ListRoutesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The ID of the request. It is used to locate logs and troubleshoot problems.
+	// The request ID, which is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -91,9 +91,9 @@ type ListRoutesResponseBodyPagingInfo struct {
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The routes of the network resource.
+	// The list of network resource routes.
 	RouteList []*ListRoutesResponseBodyPagingInfoRouteList `json:"RouteList,omitempty" xml:"RouteList,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -159,13 +159,13 @@ func (s *ListRoutesResponseBodyPagingInfo) Validate() error {
 }
 
 type ListRoutesResponseBodyPagingInfoRouteList struct {
-	// The creation time, which is a 64-bit timestamp.
+	// The creation time, represented as a 64-bit timestamp.
 	//
 	// example:
 	//
 	// 1727055811000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The destination CIDR block of the route.
+	// The destination CIDR of the route.
 	//
 	// example:
 	//
@@ -177,19 +177,19 @@ type ListRoutesResponseBodyPagingInfoRouteList struct {
 	//
 	// 1000
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The network resource ID.
+	// The ID of the network resource to which the route belongs.
 	//
 	// example:
 	//
 	// 1000
 	NetworkId *int64 `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The ID of the resource group.
+	// The unique identifier of the resource group to which the route belongs.
 	//
 	// example:
 	//
 	// Serverless_res_group_524257424564736_6831777003****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the network resource.
+	// The unique identifier of the network resource.
 	//
 	// example:
 	//

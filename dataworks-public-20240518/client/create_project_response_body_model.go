@@ -18,7 +18,7 @@ type iCreateProjectResponseBody interface {
 }
 
 type CreateProjectResponseBody struct {
-	// The workspace ID.
+	// The ID of the DataWorks workspace created by this operation.
 	//
 	// example:
 	//
@@ -26,13 +26,15 @@ type CreateProjectResponseBody struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// Deprecated
 	//
-	// The workspace ID. Note: This parameter is deprecated and is replaced by the Id parameter.
+	// The ID of the DataWorks workspace created by this operation.
+	//
+	// Note: This field is deprecated. Use the Id field instead.
 	//
 	// example:
 	//
 	// 123456
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The request ID.
+	// The request ID. Used for locating logs and troubleshooting issues.
 	//
 	// example:
 	//

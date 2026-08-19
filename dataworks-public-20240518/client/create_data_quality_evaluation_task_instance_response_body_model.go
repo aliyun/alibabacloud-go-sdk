@@ -16,7 +16,7 @@ type iCreateDataQualityEvaluationTaskInstanceResponseBody interface {
 }
 
 type CreateDataQualityEvaluationTaskInstanceResponseBody struct {
-	// The ID of the data quality monitoring instance.
+	// The data quality monitoring instance ID.
 	//
 	// example:
 	//
