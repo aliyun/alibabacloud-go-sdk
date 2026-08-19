@@ -125,7 +125,7 @@ type DescribeUserResourcePackageResponseBodyResourcePackageInfos struct {
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The current remaining capacity of the instance.
 	//
-	// - Unit for traffic plans: bytes.
+	// - Unit for traffic plans: Byte.
 	//
 	// - Unit for request plans: count.
 	//
@@ -157,7 +157,7 @@ type DescribeUserResourcePackageResponseBodyResourcePackageInfos struct {
 	//
 	// Data Transfer Plan in Asia Pacific 1
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The expiration time.
+	// The expiration time in UTC. Format: YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -165,7 +165,7 @@ type DescribeUserResourcePackageResponseBodyResourcePackageInfos struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The total capacity of the resource plan.
 	//
-	// - Unit for traffic plans: bytes.
+	// - Unit for traffic plans: Byte.
 	//
 	// - Unit for request plans: count.
 	//
@@ -191,7 +191,7 @@ type DescribeUserResourcePackageResponseBodyResourcePackageInfos struct {
 	//
 	// 100.000000
 	InitCapacityShowValue *string `json:"InitCapacityShowValue,omitempty" xml:"InitCapacityShowValue,omitempty"`
-	// The resource plan instance ID.
+	// The instance ID of the resource plan.
 	//
 	// example:
 	//
@@ -203,7 +203,7 @@ type DescribeUserResourcePackageResponseBodyResourcePackageInfos struct {
 	//
 	// CN
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The effective period.
+	// The effective period in UTC. Format: YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//

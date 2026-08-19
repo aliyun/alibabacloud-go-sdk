@@ -14,8 +14,6 @@ type iWafQuotaString interface {
 }
 
 type WafQuotaString struct {
-	// 正则表达式。
-	//
 	// example:
 	//
 	// ^\\d+$

@@ -66,13 +66,13 @@ type CreateSiteDeliveryTaskRequest struct {
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
 	// The delivery type. Valid values:
 	//
-	// - **sls**: Alibaba Cloud Simple Log Service.
+	// - **sls**: Simple Log Service.
 	//
 	// - **http**: HTTP service.
 	//
 	// - **aws3**: Amazon S3 service.
 	//
-	// - **oss**: Alibaba Cloud Object Storage Service.
+	// - **oss**: Object Storage Service (OSS).
 	//
 	// - **kafka**: Kafka service.
 	//
@@ -92,15 +92,17 @@ type CreateSiteDeliveryTaskRequest struct {
 	DiscardRate *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
 	// The selected log fields, separated by commas (,).
 	//
+	// > The field names must come from the FieldName values returned by the GetRealtimeDeliveryField operation, and the corresponding BusinessType must be specified.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// user_agent,ip_adress,ip_port
+	// ClientIP,ClientRequestURI,EdgeResponseStatusCode
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
 	// The filter rule version.
 	//
-	// > For backward compatibility with legacy filter rules, the default value is v1. New tasks use v2.
+	// > For backward compatibility with legacy filter rules, the default value is v1. Newly created tasks use v2.
 	//
 	// example:
 	//
@@ -112,7 +114,7 @@ type CreateSiteDeliveryTaskRequest struct {
 	KafkaDelivery *CreateSiteDeliveryTaskRequestKafkaDelivery `json:"KafkaDelivery,omitempty" xml:"KafkaDelivery,omitempty" type:"Struct"`
 	// The OSS delivery configuration.
 	OssDelivery *CreateSiteDeliveryTaskRequestOssDelivery `json:"OssDelivery,omitempty" xml:"OssDelivery,omitempty" type:"Struct"`
-	// The S3/S3-compatible delivery configuration parameters.
+	// The S3 or S3-compatible delivery configuration parameters.
 	S3Delivery *CreateSiteDeliveryTaskRequestS3Delivery `json:"S3Delivery,omitempty" xml:"S3Delivery,omitempty" type:"Struct"`
 	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
@@ -122,7 +124,7 @@ type CreateSiteDeliveryTaskRequest struct {
 	//
 	// 12312312112***
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The SLS delivery configuration.
+	// The Simple Log Service (SLS) delivery configuration.
 	SlsDelivery *CreateSiteDeliveryTaskRequestSlsDelivery `json:"SlsDelivery,omitempty" xml:"SlsDelivery,omitempty" type:"Struct"`
 	// The task name.
 	//
@@ -307,15 +309,15 @@ type CreateSiteDeliveryTaskRequestHttpDelivery struct {
 	//
 	// example:
 	//
-	// \\n
+	// true
 	LastLogSplit *bool `json:"LastLogSplit,omitempty" xml:"LastLogSplit,omitempty"`
-	// The log delivery packet prefix.
+	// The log delivery body prefix.
 	//
 	// example:
 	//
 	// cdnVersion:1.0
 	LogBodyPrefix *string `json:"LogBodyPrefix,omitempty" xml:"LogBodyPrefix,omitempty"`
-	// The log delivery packet suffix.
+	// The log delivery body suffix.
 	//
 	// example:
 	//
@@ -333,7 +335,7 @@ type CreateSiteDeliveryTaskRequestHttpDelivery struct {
 	//
 	// \\n
 	LogSplitWords *string `json:"LogSplitWords,omitempty" xml:"LogSplitWords,omitempty"`
-	// The maximum size per delivery, in MB.
+	// The maximum size per delivery. Unit: MB.
 	//
 	// example:
 	//
@@ -361,7 +363,7 @@ type CreateSiteDeliveryTaskRequestHttpDelivery struct {
 	StandardAuthOn *bool `json:"StandardAuthOn,omitempty" xml:"StandardAuthOn,omitempty"`
 	// The standard authentication parameters.
 	StandardAuthParam *CreateSiteDeliveryTaskRequestHttpDeliveryStandardAuthParam `json:"StandardAuthParam,omitempty" xml:"StandardAuthParam,omitempty" type:"Struct"`
-	// The timeout period, in seconds.
+	// The timeout period. Unit: seconds.
 	//
 	// example:
 	//
@@ -524,7 +526,7 @@ func (s *CreateSiteDeliveryTaskRequestHttpDelivery) Validate() error {
 type CreateSiteDeliveryTaskRequestHttpDeliveryStandardAuthParam struct {
 	// The encryption timeout period.
 	//
-	// > The value must be greater than 0. A value of 300 or greater is recommended.
+	// > The value must be greater than 0. A value of 300 or greater is recommended. Unit: seconds.
 	//
 	// example:
 	//
@@ -590,7 +592,7 @@ type CreateSiteDeliveryTaskRequestKafkaDelivery struct {
 	//
 	// kafka.LeastBytes
 	Balancer *string `json:"Balancer,omitempty" xml:"Balancer,omitempty"`
-	// The server array.
+	// The array of servers.
 	Brokers []*string `json:"Brokers,omitempty" xml:"Brokers,omitempty" type:"Repeated"`
 	// The compression method.
 	//
@@ -616,7 +618,7 @@ type CreateSiteDeliveryTaskRequestKafkaDelivery struct {
 	//
 	// dqc_test2
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// Specifies whether to enable SASL encrypted transmission for Kafka delivery.
+	// Specifies whether to enable SASL-encrypted transmission for Kafka delivery.
 	//
 	// > The delivery address must be configured with a public certificate. Self-signed certificate verification will fail.
 	//
@@ -821,7 +823,7 @@ type CreateSiteDeliveryTaskRequestS3Delivery struct {
 	BucketPath *string `json:"BucketPath,omitempty" xml:"BucketPath,omitempty"`
 	// The server endpoint. This parameter is required when S3Cmpt is set to true.
 	//
-	// > For S3-compatible services, configure DNS resolution by concatenating the Bucket and Endpoint addresses. For example, if Endpoint is example.com and Bucket is demo, the actual delivery address is demo.example.com.
+	// > For S3-compatible services, configure domain name resolution by concatenating the Bucket and Endpoint addresses. For example, if Endpoint is example.com and Bucket is demo, the actual delivery address is demo.example.com.
 	//
 	// example:
 	//
@@ -833,7 +835,7 @@ type CreateSiteDeliveryTaskRequestS3Delivery struct {
 	//
 	// logriver-test/log
 	PrefixPath *string `json:"PrefixPath,omitempty" xml:"PrefixPath,omitempty"`
-	// The region where the service is located.
+	// The region where the service resides.
 	//
 	// example:
 	//
@@ -859,7 +861,7 @@ type CreateSiteDeliveryTaskRequestS3Delivery struct {
 	//
 	// false
 	ServerSideEncryption *bool `json:"ServerSideEncryption,omitempty" xml:"ServerSideEncryption,omitempty"`
-	// The key verification method for S3 delivery.
+	// The verification method for S3 delivery keys.
 	//
 	// > The key configuration comes from the console or SDK. Keys from the console are encrypted during transmission. Keys from the SDK do not require encryption.
 	//
@@ -963,19 +965,19 @@ func (s *CreateSiteDeliveryTaskRequestS3Delivery) Validate() error {
 }
 
 type CreateSiteDeliveryTaskRequestSlsDelivery struct {
-	// The SLS real-time log Logstore name.
+	// The SLS Logstore name.
 	//
 	// example:
 	//
 	// accesslog-test
 	SLSLogStore *string `json:"SLSLogStore,omitempty" xml:"SLSLogStore,omitempty"`
-	// The SLS real-time log project name.
+	// The SLS project name.
 	//
 	// example:
 	//
 	// dcdn-test20240417
 	SLSProject *string `json:"SLSProject,omitempty" xml:"SLSProject,omitempty"`
-	// The region name of the SLS real-time log.
+	// The SLS real-time log region name.
 	//
 	// example:
 	//

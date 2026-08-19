@@ -52,7 +52,7 @@ type PurchaseRatePlanRequest struct {
 	//
 	// - true: Auto-renewal is enabled.
 	//
-	// - false: Auto-renewal is not enabled.
+	// - false: Auto-renewal is disabled.
 	//
 	// example:
 	//
@@ -87,7 +87,12 @@ type PurchaseRatePlanRequest struct {
 	// example:
 	//
 	// domestic
-	Coverage      *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	// The overage policy.
+	//
+	// example:
+	//
+	// limit_speed
 	OveragePolicy *string `json:"OveragePolicy,omitempty" xml:"OveragePolicy,omitempty"`
 	// The purchase period, in months. This parameter is required when you directly call this operation.
 	//
@@ -97,7 +102,7 @@ type PurchaseRatePlanRequest struct {
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The plan code.
 	//
-	// Chinese site
+	// China site
 	//
 	// - Free Edition: entranceplan
 	//
@@ -121,7 +126,7 @@ type PurchaseRatePlanRequest struct {
 	PlanCode *string `json:"PlanCode,omitempty" xml:"PlanCode,omitempty"`
 	// The plan name.
 	//
-	// Chinese site
+	// China site
 	//
 	// - Free Edition: entranceplan
 	//

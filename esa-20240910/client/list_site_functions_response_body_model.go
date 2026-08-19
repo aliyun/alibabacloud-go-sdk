@@ -24,7 +24,7 @@ type iListSiteFunctionsResponseBody interface {
 }
 
 type ListSiteFunctionsResponseBody struct {
-	// The configuration information.
+	// The response body configurations.
 	Configs *ListSiteFunctionsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Struct"`
 	// The current page number.
 	//
@@ -134,7 +134,7 @@ type ListSiteFunctionsResponseBodyConfigs struct {
 	CacheReserve []*ListSiteFunctionsResponseBodyConfigsCacheReserve `json:"CacheReserve,omitempty" xml:"CacheReserve,omitempty" type:"Repeated"`
 	// The cache rules.
 	CacheRules []*ListSiteFunctionsResponseBodyConfigsCacheRules `json:"CacheRules,omitempty" xml:"CacheRules,omitempty" type:"Repeated"`
-	// The cache tags. When using the purge-by-cache-tag feature, specifies the CacheTag name carried in the origin server response.
+	// The cache tag configuration. When using the purge-by-cache-tag feature, specifies the CacheTag name carried in the origin server response.
 	CacheTags []*ListSiteFunctionsResponseBodyConfigsCacheTags `json:"CacheTags,omitempty" xml:"CacheTags,omitempty" type:"Repeated"`
 	// The CNAME flattening configuration.
 	CnameFlattening []*ListSiteFunctionsResponseBodyConfigsCnameFlattening `json:"CnameFlattening,omitempty" xml:"CnameFlattening,omitempty" type:"Repeated"`
@@ -142,15 +142,15 @@ type ListSiteFunctionsResponseBodyConfigs struct {
 	CompressionRules []*ListSiteFunctionsResponseBodyConfigsCompressionRules `json:"CompressionRules,omitempty" xml:"CompressionRules,omitempty" type:"Repeated"`
 	// The Chinese mainland network optimization configuration.
 	CrossBorderOptimization []*ListSiteFunctionsResponseBodyConfigsCrossBorderOptimization `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty" type:"Repeated"`
-	// The custom response code rules.
+	// The custom response code configurations.
 	CustomResponseCode []*ListSiteFunctionsResponseBodyConfigsCustomResponseCode `json:"CustomResponseCode,omitempty" xml:"CustomResponseCode,omitempty" type:"Repeated"`
 	// The development mode configuration.
 	DevelopmentMode []*ListSiteFunctionsResponseBodyConfigsDevelopmentMode `json:"DevelopmentMode,omitempty" xml:"DevelopmentMode,omitempty" type:"Repeated"`
-	// The error page redirect rules.
+	// The error code redirect rules.
 	ErrorPagesRedirects []*ListSiteFunctionsResponseBodyConfigsErrorPagesRedirects `json:"ErrorPagesRedirects,omitempty" xml:"ErrorPagesRedirects,omitempty" type:"Repeated"`
 	// The inbound request header modification rules.
 	HttpIncomingRequestHeaderModificationRules []*ListSiteFunctionsResponseBodyConfigsHttpIncomingRequestHeaderModificationRules `json:"HttpIncomingRequestHeaderModificationRules,omitempty" xml:"HttpIncomingRequestHeaderModificationRules,omitempty" type:"Repeated"`
-	// The inbound response header modification rules.
+	// The rules for modifying inbound response headers.
 	HttpIncomingResponseHeaderModificationRules []*ListSiteFunctionsResponseBodyConfigsHttpIncomingResponseHeaderModificationRules `json:"HttpIncomingResponseHeaderModificationRules,omitempty" xml:"HttpIncomingResponseHeaderModificationRules,omitempty" type:"Repeated"`
 	// The request header modification rules.
 	HttpRequestHeaderModificationRules []*ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules `json:"HttpRequestHeaderModificationRules,omitempty" xml:"HttpRequestHeaderModificationRules,omitempty" type:"Repeated"`
@@ -166,6 +166,7 @@ type ListSiteFunctionsResponseBodyConfigs struct {
 	Ipv6 []*ListSiteFunctionsResponseBodyConfigsIpv6 `json:"Ipv6,omitempty" xml:"Ipv6,omitempty" type:"Repeated"`
 	// The managed transforms.
 	ManagedTransforms []*ListSiteFunctionsResponseBodyConfigsManagedTransforms `json:"ManagedTransforms,omitempty" xml:"ManagedTransforms,omitempty" type:"Repeated"`
+	MarkdownForAgent  []*ListSiteFunctionsResponseBodyConfigsMarkdownForAgent  `json:"MarkdownForAgent,omitempty" xml:"MarkdownForAgent,omitempty" type:"Repeated"`
 	// The network optimization configuration.
 	NetworkOptimization []*ListSiteFunctionsResponseBodyConfigsNetworkOptimization `json:"NetworkOptimization,omitempty" xml:"NetworkOptimization,omitempty" type:"Repeated"`
 	// The back-to-origin rules.
@@ -176,13 +177,13 @@ type ListSiteFunctionsResponseBodyConfigs struct {
 	RewriteUrlRules []*ListSiteFunctionsResponseBodyConfigsRewriteUrlRules `json:"RewriteUrlRules,omitempty" xml:"RewriteUrlRules,omitempty" type:"Repeated"`
 	// The search engine crawler bypass configuration.
 	SeoBypass []*ListSiteFunctionsResponseBodyConfigsSeoBypass `json:"SeoBypass,omitempty" xml:"SeoBypass,omitempty" type:"Repeated"`
-	// The site name exclusive configuration. When enabled, other accounts cannot create sites or subsites with the same name as the current site.
+	// Site name exclusive. When enabled, other accounts cannot create sites or subsites with the same name as the current site.
 	SiteNameExclusive []*ListSiteFunctionsResponseBodyConfigsSiteNameExclusive `json:"SiteNameExclusive,omitempty" xml:"SiteNameExclusive,omitempty" type:"Repeated"`
-	// The site acceleration pause configuration. Temporarily pauses the proxy acceleration feature for the entire site. When enabled, all DNS records directly return record values to clients.
+	// Site acceleration pause. Temporarily pauses the proxy acceleration feature for the entire site. When enabled, all DNS records directly return record values to the client.
 	SitePause []*ListSiteFunctionsResponseBodyConfigsSitePause `json:"SitePause,omitempty" xml:"SitePause,omitempty" type:"Repeated"`
 	// The tiered cache configuration.
 	TieredCache []*ListSiteFunctionsResponseBodyConfigsTieredCache `json:"TieredCache,omitempty" xml:"TieredCache,omitempty" type:"Repeated"`
-	// The video processing configuration.
+	// The video processing configurations.
 	VideoProcessing []*ListSiteFunctionsResponseBodyConfigsVideoProcessing `json:"VideoProcessing,omitempty" xml:"VideoProcessing,omitempty" type:"Repeated"`
 }
 
@@ -264,6 +265,10 @@ func (s *ListSiteFunctionsResponseBodyConfigs) GetIpv6() []*ListSiteFunctionsRes
 
 func (s *ListSiteFunctionsResponseBodyConfigs) GetManagedTransforms() []*ListSiteFunctionsResponseBodyConfigsManagedTransforms {
 	return s.ManagedTransforms
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigs) GetMarkdownForAgent() []*ListSiteFunctionsResponseBodyConfigsMarkdownForAgent {
+	return s.MarkdownForAgent
 }
 
 func (s *ListSiteFunctionsResponseBodyConfigs) GetNetworkOptimization() []*ListSiteFunctionsResponseBodyConfigsNetworkOptimization {
@@ -389,6 +394,11 @@ func (s *ListSiteFunctionsResponseBodyConfigs) SetIpv6(v []*ListSiteFunctionsRes
 
 func (s *ListSiteFunctionsResponseBodyConfigs) SetManagedTransforms(v []*ListSiteFunctionsResponseBodyConfigsManagedTransforms) *ListSiteFunctionsResponseBodyConfigs {
 	s.ManagedTransforms = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigs) SetMarkdownForAgent(v []*ListSiteFunctionsResponseBodyConfigsMarkdownForAgent) *ListSiteFunctionsResponseBodyConfigs {
+	s.MarkdownForAgent = v
 	return s
 }
 
@@ -600,6 +610,15 @@ func (s *ListSiteFunctionsResponseBodyConfigs) Validate() error {
 			}
 		}
 	}
+	if s.MarkdownForAgent != nil {
+		for _, item := range s.MarkdownForAgent {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.NetworkOptimization != nil {
 		for _, item := range s.NetworkOptimization {
 			if item != nil {
@@ -691,11 +710,7 @@ type ListSiteFunctionsResponseBodyConfigsCacheReserve struct {
 	//
 	// 392382988376064
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Specifies whether to enable cache reserve. Disabled by default. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether to enable cache reserve. This feature is disabled by default. Valid values:
 	//
 	// example:
 	//
@@ -757,12 +772,6 @@ type ListSiteFunctionsResponseBodyConfigsCacheRules struct {
 	AdditionalCacheablePorts *string `json:"AdditionalCacheablePorts,omitempty" xml:"AdditionalCacheablePorts,omitempty"`
 	// The browser cache mode. Valid values:
 	//
-	// - no_cache: no caching.
-	//
-	// - follow_origin: follows the origin server cache policy.
-	//
-	// - override_origin: overrides the origin server cache policy.
-	//
 	// example:
 	//
 	// follow_origin
@@ -783,33 +792,29 @@ type ListSiteFunctionsResponseBodyConfigsCacheRules struct {
 	//
 	// cache_all
 	BypassCache *string `json:"BypassCache,omitempty" xml:"BypassCache,omitempty"`
-	// Specifies whether to enable cache deception armor. This feature protects against web cache deception attacks by caching only content that passes validation. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether cache deception armor is enabled. This feature protects against web cache deception attacks by caching only content that passes validation. Valid values:
 	//
 	// example:
 	//
 	// on
 	CacheDeceptionArmor *string `json:"CacheDeceptionArmor,omitempty" xml:"CacheDeceptionArmor,omitempty"`
-	// The cache reserve eligibility. Controls whether requests bypass the cache reserve node during back-to-origin. Valid values:
+	// The cache reserve eligibility. Controls whether user requests bypass cache reserve nodes during back-to-origin. Valid values:
 	//
 	// - bypass_cache_reserve: requests bypass cache reserve.
 	//
-	// - eligible_for_cache_reserve: requests are eligible for cache reserve.
+	// - eligible_for_cache_reserve: eligible for cache reserve.
 	//
 	// example:
 	//
 	// bypass_cache_reserve
 	CacheReserveEligibility *string `json:"CacheReserveEligibility,omitempty" xml:"CacheReserveEligibility,omitempty"`
-	// Checks whether a cookie exists when generating cache keys. If the cookie exists, the cookie name (case-insensitive) is added to the cache key. Multiple cookie names are supported and separated by spaces.
+	// The cookie names to check for presence when generating cache keys. If a cookie exists, its name (case-insensitive) is added to the cache key. Multiple cookie names are separated by spaces.
 	//
 	// example:
 	//
 	// cookiename
 	CheckPresenceCookie *string `json:"CheckPresenceCookie,omitempty" xml:"CheckPresenceCookie,omitempty"`
-	// Checks whether a header exists when generating cache keys. If the header exists, the header name (case-insensitive) is added to the cache key. Multiple header names are supported and separated by spaces.
+	// The header names to check for presence when generating cache keys. If a header exists, its name (case-insensitive) is added to the cache key. Multiple header names are separated by spaces.
 	//
 	// example:
 	//
@@ -823,19 +828,19 @@ type ListSiteFunctionsResponseBodyConfigsCacheRules struct {
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	// The edge cache mode. Valid values:
 	//
-	// - follow_origin: follows the origin server cache policy (if present). Otherwise, uses the default cache policy.
+	// - follow_origin: follows the origin cache policy if one exists. Otherwise, uses the default cache policy.
 	//
-	// - no_cache: no caching.
+	// - no_cache: does not cache.
 	//
-	// - override_origin: overrides the origin server cache policy.
+	// - override_origin: overrides the origin cache policy.
 	//
-	// - follow_origin_bypass: follows the origin server cache policy (if present). Otherwise, does not cache.
+	// - follow_origin_bypass: follows the origin cache policy if one exists. Otherwise, does not cache.
 	//
 	// example:
 	//
 	// follow_origin
 	EdgeCacheMode *string `json:"EdgeCacheMode,omitempty" xml:"EdgeCacheMode,omitempty"`
-	// The edge cache expiration time, in seconds.
+	// The edge node cache expiration time, in seconds.
 	//
 	// example:
 	//
@@ -847,13 +852,13 @@ type ListSiteFunctionsResponseBodyConfigsCacheRules struct {
 	//
 	// 300
 	EdgeStatusCodeCacheTtl *string `json:"EdgeStatusCodeCacheTtl,omitempty" xml:"EdgeStatusCodeCacheTtl,omitempty"`
-	// The cookie names and their values to include when generating cache keys. Multiple values are supported and separated by spaces.
+	// The specified cookie names and their values to include when generating cache keys. Multiple values are separated by spaces.
 	//
 	// example:
 	//
 	// cookie_exapmle
 	IncludeCookie *string `json:"IncludeCookie,omitempty" xml:"IncludeCookie,omitempty"`
-	// The header names and their values to include when generating cache keys. Multiple values are supported and separated by spaces.
+	// The specified header names and their values to include when generating cache keys. Multiple values are separated by spaces.
 	//
 	// example:
 	//
@@ -865,33 +870,25 @@ type ListSiteFunctionsResponseBodyConfigsCacheRules struct {
 	//
 	// ignore
 	PostBodyCacheKey *string `json:"PostBodyCacheKey,omitempty" xml:"PostBodyCacheKey,omitempty"`
-	// The body size limit, in KB. Supports body sizes from 1 to 8 KB. If left empty, the default value of 8 KB is used.
+	// The body size limit, in KB. Supports body sizes from 1 to 8 KB. If the value is empty, the default value of 8 KB takes effect.
 	//
 	// example:
 	//
 	// 1
 	PostBodySizeLimit *string `json:"PostBodySizeLimit,omitempty" xml:"PostBodySizeLimit,omitempty"`
-	// The POST cache switch.
+	// Specifies whether POST caching is enabled.
 	//
 	// example:
 	//
 	// on
 	PostCache *string `json:"PostCache,omitempty" xml:"PostCache,omitempty"`
-	// The query strings to retain or remove. Multiple values are supported and separated by spaces.
+	// The query strings to retain or remove. Multiple values are separated by spaces.
 	//
 	// example:
 	//
 	// example
 	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
-	// The query string processing mode when generating cache keys. Valid values:
-	//
-	// - ignore_all: ignores all query strings.
-	//
-	// - exclude_query_string: removes specified query strings.
-	//
-	// - reserve_all: retains all query strings. This is the default value.
-	//
-	// - include_query_string: retains specified query strings.
+	// The processing mode for query strings when generating cache keys. Valid values:
 	//
 	// example:
 	//
@@ -903,11 +900,7 @@ type ListSiteFunctionsResponseBodyConfigsCacheRules struct {
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The rule switch. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether the rule is enabled. Valid values:
 	//
 	// example:
 	//
@@ -919,27 +912,19 @@ type ListSiteFunctionsResponseBodyConfigsCacheRules struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
 	// 1
 	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Specifies whether to serve stale cache. When enabled, the edge node can respond to user requests with cached expired content when the origin server is unavailable. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether to serve stale cache. When enabled, edge nodes can respond to user requests with cached expired content when the origin server is unavailable. Valid values:
 	//
 	// example:
 	//
 	// on
 	ServeStale *string `json:"ServeStale,omitempty" xml:"ServeStale,omitempty"`
-	// Specifies whether to sort query strings. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether to sort query strings for caching. Valid values:
 	//
 	// example:
 	//
@@ -947,29 +932,17 @@ type ListSiteFunctionsResponseBodyConfigsCacheRules struct {
 	SortQueryStringForCache *string `json:"SortQueryStringForCache,omitempty" xml:"SortQueryStringForCache,omitempty"`
 	// Specifies whether to include the type of the client when generating cache keys. Valid values:
 	//
-	// - on: enabled.
-	//
-	// - off: shutdown.
-	//
 	// example:
 	//
 	// on
 	UserDeviceType *string `json:"UserDeviceType,omitempty" xml:"UserDeviceType,omitempty"`
 	// Specifies whether to include the client geographic location when generating cache keys. Valid values:
 	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
 	// example:
 	//
 	// on
 	UserGeo *string `json:"UserGeo,omitempty" xml:"UserGeo,omitempty"`
 	// Specifies whether to include the client language type when generating cache keys. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
 	//
 	// example:
 	//
@@ -1244,10 +1217,6 @@ func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) Validate() error {
 type ListSiteFunctionsResponseBodyConfigsCacheTags struct {
 	// Specifies whether to ignore case. Valid values:
 	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
 	// example:
 	//
 	// on
@@ -1258,7 +1227,7 @@ type ListSiteFunctionsResponseBodyConfigsCacheTags struct {
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
@@ -1331,13 +1300,13 @@ type ListSiteFunctionsResponseBodyConfigsCnameFlattening struct {
 	//
 	// - flatten_all: flattens all records.
 	//
-	// - flatten_at_root: flattens only the root domain. This is the default value.
+	// - flatten_at_root: flattens only the root domain. The root domain is flattened by default.
 	//
 	// example:
 	//
 	// flatten_all
 	FlattenMode *string `json:"FlattenMode,omitempty" xml:"FlattenMode,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
@@ -1385,11 +1354,7 @@ func (s *ListSiteFunctionsResponseBodyConfigsCnameFlattening) Validate() error {
 }
 
 type ListSiteFunctionsResponseBodyConfigsCompressionRules struct {
-	// Specifies whether to enable Brotli compression. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// The Brotli compression setting. Valid values:
 	//
 	// example:
 	//
@@ -1401,11 +1366,7 @@ type ListSiteFunctionsResponseBodyConfigsCompressionRules struct {
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Specifies whether to enable Gzip compression. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// The Gzip compression setting. Valid values:
 	//
 	// example:
 	//
@@ -1417,11 +1378,7 @@ type ListSiteFunctionsResponseBodyConfigsCompressionRules struct {
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The rule switch. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether the rule is enabled. Valid values:
 	//
 	// example:
 	//
@@ -1433,17 +1390,13 @@ type ListSiteFunctionsResponseBodyConfigsCompressionRules struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
 	// 1
 	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Specifies whether to enable Zstd compression. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// The Zstd compression setting. Valid values:
 	//
 	// example:
 	//
@@ -1544,15 +1497,11 @@ type ListSiteFunctionsResponseBodyConfigsCrossBorderOptimization struct {
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	// Specifies whether to enable Chinese mainland network access optimization. Disabled by default. Valid values:
 	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
@@ -1618,33 +1567,29 @@ type ListSiteFunctionsResponseBodyConfigsCustomResponseCode struct {
 	//
 	// 200
 	ReturnCode *string `json:"ReturnCode,omitempty" xml:"ReturnCode,omitempty"`
-	// The rule content. Uses conditional expressions to match user requests. This parameter is not required when adding a global configuration. Two scenarios are supported:
+	// The rule content. A conditional expression is used to match user requests. You do not need to set this parameter when you add a global configuration. Two scenarios are supported:
 	//
-	// - Match all incoming requests: set the value to true.
+	// - Match all incoming requests: Set the value to true.
 	//
-	// - Match specified requests: set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
+	// - Match specified requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
 	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The rule switch. This parameter is not required when adding a global configuration. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether to enable the rule. You do not need to set this parameter when adding a global configuration. Valid values:
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The rule name. This parameter is not required when adding a global configuration.
+	// The rule name. You do not need to set this parameter when adding a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule execution order. A smaller value indicates a higher priority.
+	// The execution priority of the rule. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
@@ -1736,15 +1681,11 @@ type ListSiteFunctionsResponseBodyConfigsDevelopmentMode struct {
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	// The feature switch. Disabled by default. Valid values:
 	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
@@ -1798,35 +1739,31 @@ type ListSiteFunctionsResponseBodyConfigsErrorPagesRedirects struct {
 	//
 	// 473117342636032
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The error page redirect configuration.
+	// The error code redirect configuration.
 	ErrorPagesRedirect []*ListSiteFunctionsResponseBodyConfigsErrorPagesRedirectsErrorPagesRedirect `json:"ErrorPagesRedirect,omitempty" xml:"ErrorPagesRedirect,omitempty" type:"Repeated"`
-	// The rule content. Uses conditional expressions to match user requests. This parameter is not required when adding a global configuration. Two scenarios are supported:
+	// The rule content. A conditional expression is used to match user requests. You do not need to set this parameter when you add a global configuration. Two scenarios are supported:
 	//
-	// - Match all incoming requests: set the value to true.
+	// - Match all incoming requests: Set the value to true.
 	//
-	// - Match specified requests: set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
+	// - Match specified requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
 	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The rule switch. This parameter is not required when adding a global configuration. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether to enable the rule. You do not need to set this parameter when adding a global configuration. Valid values:
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The rule name. This parameter is not required when adding a global configuration.
+	// The rule name. You do not need to set this parameter when adding a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule execution order. A smaller value indicates a higher priority.
+	// The execution priority of the rule. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
@@ -1910,35 +1847,13 @@ func (s *ListSiteFunctionsResponseBodyConfigsErrorPagesRedirects) Validate() err
 }
 
 type ListSiteFunctionsResponseBodyConfigsErrorPagesRedirectsErrorPagesRedirect struct {
-	// The response status code used by the edge node when responding with the redirect address to the client. Valid values:
-	//
-	// - 400
-	//
-	// - 403
-	//
-	// - 404
-	//
-	// - 405
-	//
-	// - 414
-	//
-	// - 416
-	//
-	// - 500
-	//
-	// - 501
-	//
-	// - 502
-	//
-	// - 503
-	//
-	// - 504
+	// The response status code used by the node when returning the redirect address to the client. Valid values:
 	//
 	// example:
 	//
 	// 400
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	// The target URL after redirection.
+	// The target URL to which the request is redirected.
 	//
 	// example:
 	//
@@ -1991,11 +1906,7 @@ type ListSiteFunctionsResponseBodyConfigsHttpIncomingRequestHeaderModificationRu
 	//
 	// http.host eq "videoo.example.com"
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The rule switch. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether the rule is enabled. Valid values:
 	//
 	// example:
 	//
@@ -2007,7 +1918,7 @@ type ListSiteFunctionsResponseBodyConfigsHttpIncomingRequestHeaderModificationRu
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
@@ -2099,12 +2010,6 @@ type ListSiteFunctionsResponseBodyConfigsHttpIncomingRequestHeaderModificationRu
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The operation type. Valid values:
 	//
-	// - add: adds a header.
-	//
-	// - del: deletes a header.
-	//
-	// - modify: modifies a header.
-	//
 	// example:
 	//
 	// add
@@ -2171,11 +2076,7 @@ type ListSiteFunctionsResponseBodyConfigsHttpIncomingResponseHeaderModificationR
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The rule switch. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether the rule is enabled. Valid values:
 	//
 	// example:
 	//
@@ -2187,7 +2088,7 @@ type ListSiteFunctionsResponseBodyConfigsHttpIncomingResponseHeaderModificationR
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
@@ -2279,12 +2180,6 @@ type ListSiteFunctionsResponseBodyConfigsHttpIncomingResponseHeaderModificationR
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The operation type. Valid values:
 	//
-	// - add: adds a header.
-	//
-	// - del: deletes a header.
-	//
-	// - modify: modifies a header.
-	//
 	// example:
 	//
 	// add
@@ -2355,11 +2250,7 @@ type ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules stru
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The rule switch. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether the rule is enabled. Valid values:
 	//
 	// example:
 	//
@@ -2371,7 +2262,7 @@ type ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules stru
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
@@ -2463,12 +2354,6 @@ type ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRulesReque
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The operation type. Valid values:
 	//
-	// - add: adds a header.
-	//
-	// - del: deletes a header.
-	//
-	// - modify: modifies a header.
-	//
 	// example:
 	//
 	// add
@@ -2539,11 +2424,7 @@ type ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules str
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The rule switch. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether the rule is enabled. Valid values:
 	//
 	// example:
 	//
@@ -2555,7 +2436,7 @@ type ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules str
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
@@ -2647,12 +2528,6 @@ type ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRulesResp
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The operation type. Valid values:
 	//
-	// - add: adds a header.
-	//
-	// - del: deletes a header.
-	//
-	// - modify: modifies a header.
-	//
 	// example:
 	//
 	// add
@@ -2707,19 +2582,11 @@ func (s *ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules
 type ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration struct {
 	// The Alt-Svc feature switch. Disabled by default. Valid values:
 	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
 	// example:
 	//
 	// on
 	AltSvc *string `json:"AltSvc,omitempty" xml:"AltSvc,omitempty"`
 	// Specifies whether the Alt-Svc header includes the clear parameter. Disabled by default. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
 	//
 	// example:
 	//
@@ -2733,10 +2600,6 @@ type ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration struct {
 	AltSvcMa *string `json:"AltSvcMa,omitempty" xml:"AltSvcMa,omitempty"`
 	// Specifies whether the Alt-Svc header includes the persist parameter. Disabled by default. Valid values:
 	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
 	// example:
 	//
 	// on
@@ -2749,19 +2612,11 @@ type ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration struct {
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	// Specifies whether to enable HSTS. Disabled by default. Valid values:
 	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
 	// example:
 	//
 	// on
 	Hsts *string `json:"Hsts,omitempty" xml:"Hsts,omitempty"`
 	// Specifies whether to include subdomains in HSTS. Disabled by default. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
 	//
 	// example:
 	//
@@ -2775,33 +2630,17 @@ type ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration struct {
 	HstsMaxAge *string `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
 	// Specifies whether to enable HSTS preload. Disabled by default. Valid values:
 	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
 	// example:
 	//
 	// on
 	HstsPreload *string `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
 	// Specifies whether to enable forced HTTPS. Disabled by default. Valid values:
 	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
 	// example:
 	//
 	// on
 	HttpsForce *string `json:"HttpsForce,omitempty" xml:"HttpsForce,omitempty"`
-	// The status code used for forced HTTPS redirect. Valid values:
-	//
-	// - 301
-	//
-	// - 302
-	//
-	// - 307
-	//
-	// - 308
+	// The HTTP status code for forced HTTPS redirect. Valid values:
 	//
 	// example:
 	//
@@ -2815,10 +2654,6 @@ type ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration struct {
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
 	// The rule switch. Valid values:
 	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
 	// example:
 	//
 	// on
@@ -2829,7 +2664,7 @@ type ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
@@ -2985,13 +2820,13 @@ func (s *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration) Vali
 }
 
 type ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration struct {
-	// The custom cipher suites. Specifies the specific encryption algorithms selected when CiphersuiteGroup is set to custom.
+	// The custom cipher suite. Specifies the specific encryption algorithms selected when CiphersuiteGroup is set to custom.
 	//
 	// example:
 	//
 	// TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
 	Ciphersuite *string `json:"Ciphersuite,omitempty" xml:"Ciphersuite,omitempty"`
-	// The cipher suite group. All cipher suites are enabled by default. Valid values:
+	// The cipher suite group. By default, all cipher suites are enabled. Valid values:
 	//
 	// - all: all cipher suites.
 	//
@@ -3011,19 +2846,11 @@ type ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration struct {
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	// Specifies whether to enable HTTP/2. Enabled by default. Valid values:
 	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
 	// example:
 	//
 	// on
 	Http2 *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
 	// Specifies whether to enable HTTP/3. Enabled by default. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
 	//
 	// example:
 	//
@@ -3031,19 +2858,11 @@ type ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration struct {
 	Http3 *string `json:"Http3,omitempty" xml:"Http3,omitempty"`
 	// Specifies whether to enable HTTPS. Enabled by default. Valid values:
 	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
 	// example:
 	//
 	// on
 	Https *string `json:"Https,omitempty" xml:"Https,omitempty"`
 	// Specifies whether to enable OCSP stapling. Disabled by default. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
 	//
 	// example:
 	//
@@ -3055,11 +2874,7 @@ type ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration struct {
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The rule switch. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether the rule is enabled. Valid values:
 	//
 	// example:
 	//
@@ -3071,7 +2886,7 @@ type ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
@@ -3079,19 +2894,11 @@ type ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration struct {
 	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Specifies whether to enable TLS 1.0. Disabled by default. Valid values:
 	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
 	// example:
 	//
 	// on
 	Tls10 *string `json:"Tls10,omitempty" xml:"Tls10,omitempty"`
 	// Specifies whether to enable TLS 1.1. Enabled by default. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
 	//
 	// example:
 	//
@@ -3099,19 +2906,11 @@ type ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration struct {
 	Tls11 *string `json:"Tls11,omitempty" xml:"Tls11,omitempty"`
 	// Specifies whether to enable TLS 1.2. Enabled by default. Valid values:
 	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
 	// example:
 	//
 	// on
 	Tls12 *string `json:"Tls12,omitempty" xml:"Tls12,omitempty"`
 	// Specifies whether to enable TLS 1.3. Enabled by default. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
 	//
 	// example:
 	//
@@ -3285,11 +3084,7 @@ type ListSiteFunctionsResponseBodyConfigsImageTransform struct {
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Specifies whether to enable image transformation. Disabled by default. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether to enable image transformation. This feature is disabled by default. Valid values:
 	//
 	// example:
 	//
@@ -3301,11 +3096,7 @@ type ListSiteFunctionsResponseBodyConfigsImageTransform struct {
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The rule switch. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether the rule is enabled. Valid values:
 	//
 	// example:
 	//
@@ -3317,7 +3108,7 @@ type ListSiteFunctionsResponseBodyConfigsImageTransform struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
@@ -3418,15 +3209,11 @@ type ListSiteFunctionsResponseBodyConfigsIpv6 struct {
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	// Specifies whether to enable IPv6. Enabled by default. Valid values:
 	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
@@ -3476,15 +3263,11 @@ func (s *ListSiteFunctionsResponseBodyConfigsIpv6) Validate() error {
 type ListSiteFunctionsResponseBodyConfigsManagedTransforms struct {
 	// Specifies whether to add visitor geolocation headers. Valid values:
 	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
 	// example:
 	//
 	// on
 	AddClientGeolocationHeaders *string `json:"AddClientGeolocationHeaders,omitempty" xml:"AddClientGeolocationHeaders,omitempty"`
-	// Specifies whether to add the "ali-real-client-ip" header that contains the real client IP address. Valid values:
+	// Adds the "ali-real-client-ip" header that contains the originating IP address of the client. Valid values:
 	//
 	// - on: enabled.
 	//
@@ -3500,7 +3283,7 @@ type ListSiteFunctionsResponseBodyConfigsManagedTransforms struct {
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
@@ -3556,6 +3339,81 @@ func (s *ListSiteFunctionsResponseBodyConfigsManagedTransforms) Validate() error
 	return dara.Validate(s)
 }
 
+type ListSiteFunctionsResponseBodyConfigsMarkdownForAgent struct {
+	ConfigId   *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enable     *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Rule       *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence   *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsMarkdownForAgent) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsMarkdownForAgent) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsMarkdownForAgent) GetConfigId() *int64 {
+	return s.ConfigId
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsMarkdownForAgent) GetEnable() *string {
+	return s.Enable
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsMarkdownForAgent) GetRule() *string {
+	return s.Rule
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsMarkdownForAgent) GetRuleEnable() *string {
+	return s.RuleEnable
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsMarkdownForAgent) GetRuleName() *string {
+	return s.RuleName
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsMarkdownForAgent) GetSequence() *string {
+	return s.Sequence
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsMarkdownForAgent) SetConfigId(v int64) *ListSiteFunctionsResponseBodyConfigsMarkdownForAgent {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsMarkdownForAgent) SetEnable(v string) *ListSiteFunctionsResponseBodyConfigsMarkdownForAgent {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsMarkdownForAgent) SetRule(v string) *ListSiteFunctionsResponseBodyConfigsMarkdownForAgent {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsMarkdownForAgent) SetRuleEnable(v string) *ListSiteFunctionsResponseBodyConfigsMarkdownForAgent {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsMarkdownForAgent) SetRuleName(v string) *ListSiteFunctionsResponseBodyConfigsMarkdownForAgent {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsMarkdownForAgent) SetSequence(v string) *ListSiteFunctionsResponseBodyConfigsMarkdownForAgent {
+	s.Sequence = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsMarkdownForAgent) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListSiteFunctionsResponseBodyConfigsNetworkOptimization struct {
 	// The configuration ID.
 	//
@@ -3563,21 +3421,13 @@ type ListSiteFunctionsResponseBodyConfigsNetworkOptimization struct {
 	//
 	// 395901755670528
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Specifies whether to enable gRPC. Disabled by default. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether to enable gRPC. This feature is disabled by default. Valid values:
 	//
 	// example:
 	//
 	// on
 	Grpc *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
-	// Specifies whether to enable HTTP/2 back-to-origin. Disabled by default. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether to enable HTTP/2 back-to-origin. This feature is disabled by default. Valid values:
 	//
 	// example:
 	//
@@ -3591,10 +3441,6 @@ type ListSiteFunctionsResponseBodyConfigsNetworkOptimization struct {
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
 	// The rule switch. Valid values:
 	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
 	// example:
 	//
 	// on
@@ -3605,33 +3451,25 @@ type ListSiteFunctionsResponseBodyConfigsNetworkOptimization struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
 	// 1
 	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Specifies whether to enable smart routing. Disabled by default. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether to enable the smart routing service. This feature is disabled by default. Valid values:
 	//
 	// example:
 	//
 	// on
 	SmartRouting *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
-	// The maximum upload file size, in MB. Valid values: 100 to 500.
+	// The maximum upload file size. Unit: MB. Valid values: 100 to 500.
 	//
 	// example:
 	//
 	// 300
 	UploadMaxFilesize *string `json:"UploadMaxFilesize,omitempty" xml:"UploadMaxFilesize,omitempty"`
-	// Specifies whether to enable WebSocket. Enabled by default. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether to enable WebSocket. This feature is enabled by default. Valid values:
 	//
 	// example:
 	//
@@ -3748,7 +3586,7 @@ type ListSiteFunctionsResponseBodyConfigsOriginRules struct {
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The overridden DNS resolution record for back-to-origin requests.
+	// The rewritten DNS resolution record for back-to-origin requests.
 	//
 	// example:
 	//
@@ -3772,11 +3610,7 @@ type ListSiteFunctionsResponseBodyConfigsOriginRules struct {
 	//
 	// 4433
 	OriginHttpsPort *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
-	// Specifies whether to enable mTLS for back-to-origin. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether to enable mTLS for back-to-origin requests. Valid values:
 	//
 	// example:
 	//
@@ -3790,12 +3624,6 @@ type ListSiteFunctionsResponseBodyConfigsOriginRules struct {
 	OriginReadTimeout *string `json:"OriginReadTimeout,omitempty" xml:"OriginReadTimeout,omitempty"`
 	// The protocol used for back-to-origin requests. Valid values:
 	//
-	// - http: uses HTTP for back-to-origin.
-	//
-	// - https: uses HTTPS for back-to-origin.
-	//
-	// - follow: follows the client protocol for back-to-origin.
-	//
 	// example:
 	//
 	// http
@@ -3808,15 +3636,11 @@ type ListSiteFunctionsResponseBodyConfigsOriginRules struct {
 	OriginSni *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
 	// Specifies whether to enable origin server certificate verification. Valid values:
 	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
 	// example:
 	//
 	// on
 	OriginVerify *string `json:"OriginVerify,omitempty" xml:"OriginVerify,omitempty"`
-	// Specifies whether to use range-based origin fetch for file downloads. Valid values:
+	// Uses range-based origin fetch to download files. Valid values:
 	//
 	// - on: enabled.
 	//
@@ -3830,14 +3654,6 @@ type ListSiteFunctionsResponseBodyConfigsOriginRules struct {
 	Range *string `json:"Range,omitempty" xml:"Range,omitempty"`
 	// The range chunk size. Valid values:
 	//
-	// - 512KB
-	//
-	// - 1MB
-	//
-	// - 2MB
-	//
-	// - 4MB
-	//
 	// example:
 	//
 	// 512KB
@@ -3848,11 +3664,7 @@ type ListSiteFunctionsResponseBodyConfigsOriginRules struct {
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The rule switch. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether the rule is enabled. Valid values:
 	//
 	// example:
 	//
@@ -3864,7 +3676,7 @@ type ListSiteFunctionsResponseBodyConfigsOriginRules struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
@@ -4035,11 +3847,7 @@ type ListSiteFunctionsResponseBodyConfigsRedirectRules struct {
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Specifies whether to preserve the query string. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether to reserve the query string. Valid values:
 	//
 	// example:
 	//
@@ -4051,11 +3859,7 @@ type ListSiteFunctionsResponseBodyConfigsRedirectRules struct {
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The rule switch. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether the rule is enabled. Valid values:
 	//
 	// example:
 	//
@@ -4067,13 +3871,13 @@ type ListSiteFunctionsResponseBodyConfigsRedirectRules struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
 	// 1
 	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The response status code used by the edge node when responding with the redirect address to the client. Valid values:
+	// The HTTP status code used when the node responds to the client with a redirect address. Valid values:
 	//
 	// - 301
 	//
@@ -4096,8 +3900,6 @@ type ListSiteFunctionsResponseBodyConfigsRedirectRules struct {
 	// http://www.exapmle.com/index.html
 	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
 	// The redirect type. Valid values:
-	//
-	// - static: static mode.
 	//
 	// example:
 	//
@@ -4213,15 +4015,11 @@ type ListSiteFunctionsResponseBodyConfigsRewriteUrlRules struct {
 	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
 	// The query string rewrite type. Valid values:
 	//
-	// - static: static mode.
-	//
 	// example:
 	//
 	// static
 	RewriteQueryStringType *string `json:"RewriteQueryStringType,omitempty" xml:"RewriteQueryStringType,omitempty"`
 	// The path rewrite type. Valid values:
-	//
-	// - static: static mode.
 	//
 	// example:
 	//
@@ -4233,11 +4031,7 @@ type ListSiteFunctionsResponseBodyConfigsRewriteUrlRules struct {
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The rule switch. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether the rule is enabled. Valid values:
 	//
 	// example:
 	//
@@ -4249,7 +4043,7 @@ type ListSiteFunctionsResponseBodyConfigsRewriteUrlRules struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
@@ -4365,15 +4159,11 @@ type ListSiteFunctionsResponseBodyConfigsSeoBypass struct {
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	// The feature switch. Disabled by default. Valid values:
 	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
@@ -4429,15 +4219,11 @@ type ListSiteFunctionsResponseBodyConfigsSiteNameExclusive struct {
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	// The feature switch. Valid values:
 	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
@@ -4491,17 +4277,17 @@ type ListSiteFunctionsResponseBodyConfigsSitePause struct {
 	//
 	// 302426190190592
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Temporarily pauses the proxy acceleration feature for the entire site. When enabled, all DNS records directly return record values to clients. Valid values:
+	// Specifies whether to temporarily pause the proxy acceleration feature for the entire site. When enabled, all DNS records directly return record values to the client. Valid values:
 	//
-	// - true: site acceleration is paused.
+	// - true: Site acceleration is paused.
 	//
-	// - false: site acceleration is active.
+	// - false: Site acceleration is active.
 	//
 	// example:
 	//
 	// false
 	Paused *string `json:"Paused,omitempty" xml:"Paused,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
@@ -4551,14 +4337,6 @@ func (s *ListSiteFunctionsResponseBodyConfigsSitePause) Validate() error {
 type ListSiteFunctionsResponseBodyConfigsTieredCache struct {
 	// The tiered cache architecture mode. Valid values:
 	//
-	// - edge: edge cache layer.
-	//
-	// - edge_smart: edge cache layer + smart cache layer.
-	//
-	// - edge_regional: edge cache layer + regional cache layer.
-	//
-	// - edge_regional_smart: edge cache layer + regional cache layer + smart cache layer.
-	//
 	// example:
 	//
 	// edge_smart
@@ -4569,7 +4347,7 @@ type ListSiteFunctionsResponseBodyConfigsTieredCache struct {
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
@@ -4637,10 +4415,6 @@ type ListSiteFunctionsResponseBodyConfigsVideoProcessing struct {
 	FlvSeekStart *string `json:"FlvSeekStart,omitempty" xml:"FlvSeekStart,omitempty"`
 	// The FLV seeking mode. Valid values:
 	//
-	// - by_byte: seeks by byte.
-	//
-	// - by_time: seeks by time.
-	//
 	// example:
 	//
 	// by_time
@@ -4663,11 +4437,7 @@ type ListSiteFunctionsResponseBodyConfigsVideoProcessing struct {
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The rule switch. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether the rule is enabled. Valid values:
 	//
 	// example:
 	//
@@ -4679,17 +4449,13 @@ type ListSiteFunctionsResponseBodyConfigsVideoProcessing struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
 	// 1
 	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The video seeking switch. Valid values:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
+	// Specifies whether to enable the audio seeking feature. Valid values:
 	//
 	// example:
 	//

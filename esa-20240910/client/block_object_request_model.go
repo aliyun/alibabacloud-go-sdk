@@ -40,9 +40,9 @@ type BlockObjectRequest struct {
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// The type. Valid values:
 	//
-	// - **block**: blocks the URL.
+	// - **block**: Block.
 	//
-	// - **unblock**: unblocks the URL.
+	// - **unblock**: Unblock.
 	//
 	// This parameter is required.
 	//

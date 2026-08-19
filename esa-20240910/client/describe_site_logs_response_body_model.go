@@ -66,7 +66,7 @@ func (s *DescribeSiteLogsResponseBody) Validate() error {
 }
 
 type DescribeSiteLogsResponseBodySiteLogDetails struct {
-	// The total number of entries returned on the current page.
+	// The total number of entries returned on this page.
 	//
 	// example:
 	//
@@ -164,6 +164,8 @@ func (s *DescribeSiteLogsResponseBodySiteLogDetails) Validate() error {
 type DescribeSiteLogsResponseBodySiteLogDetailsLogInfos struct {
 	// The end time.
 	//
+	// > Date format example: yyyy-MM-ddTHH:mm:ssZ
+	//
 	// example:
 	//
 	// 2022-11-06T17:00:00Z
@@ -177,7 +179,7 @@ type DescribeSiteLogsResponseBodySiteLogDetailsLogInfos struct {
 	// The log path.
 	//
 	//
-	// > Pay attention to the Expires field (expiration timestamp) in the LogPath response parameter. After the expiration time, the log download link becomes invalid and must be obtained again.
+	// > Note the Expires field (expiration timestamp) in the LogPath response parameter. After the expiration time, the log download link becomes invalid and must be obtained again.
 	//
 	// example:
 	//
@@ -190,6 +192,8 @@ type DescribeSiteLogsResponseBodySiteLogDetailsLogInfos struct {
 	// 438304768
 	LogSize *int32 `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
 	// The start time.
+	//
+	// > Date format example: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//

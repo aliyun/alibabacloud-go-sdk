@@ -1077,7 +1077,7 @@ func (client *Client) CheckSiteNameWithContext(ctx context.Context, request *Che
 
 // Summary:
 //
-// Checks the name of a real-time log delivery task.
+// Checks the project name of a real-time log delivery task.
 //
 // @param request - CheckSiteProjectNameRequest
 //
@@ -4333,6 +4333,10 @@ func (client *Client) CreateSiteCustomLogWithContext(ctx context.Context, tmpReq
 //
 // Creates a real-time log delivery task.
 //
+// Description:
+//
+// The site plan associated with SiteId must support real-time log delivery (such as the Standard plan). Call GetSiteLogDeliveryQuota to perform a pre-check, or verify the plan level by checking the PlanName field returned by ListSites.
+//
 // @param tmpReq - CreateSiteDeliveryTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4579,27 +4583,27 @@ func (client *Client) CreateUrlObservationWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates a custom log delivery task for the user to destinations such as Simple Log Service (SLS), HTTP, Object Storage Service (OSS), S3, or Kafka.
+// Creates a custom log delivery task to deliver logs to destinations such as SLS, HTTP, OSS, S3, or Kafka.
 //
 // Description:
 //
-// This operation allows you to create a delivery task for specific log data. Multiple delivery destinations and detailed configuration options are supported, including but not limited to SLS storage, HTTP services, Alibaba Cloud OSS, S3-compatible storage, and Kafka message queues. You can customize the task name, select log fields, specify the data center, set the discard rate, choose the delivery type, and configure the delivery details based on the selected type.
+// This operation allows you to create a delivery node for specific log data. Multiple delivery destinations and detailed configuration options are supported, including but not limited to Simple Log Service (SLS), HTTP services, Alibaba Cloud Object Storage Service (OSS), S3-compatible storage, and Kafka MSMQ. You can customize the node name, select log fields, specify a data center, set the discard rate, select a delivery type, and configure the corresponding delivery details based on the selected type.
 //
-// - **Field selection**: Use `FieldName` to specify the log fields to be delivered.
+// - **Field selection**: Use `FieldName` to specify the log fields to deliver.
 //
-// - **Filter rules**: Use `FilterRules` to preprocess and filter log data.
+// - **Filter rules**: Use `FilterRules` to implement pre-processing and filtering of log data.
 //
-// - **Diverse delivery**: Supports SLS, HTTP(S), Alibaba Cloud OSS, S3-compatible storage, and Kafka, each with its specific configuration parameters.
+// - **Diverse delivery**: Supports SLS, HTTP(S), Alibaba Cloud OSS, S3-compatible storage, and Kafka delivery methods, each with its own specific configuration parameters.
 //
-// ## Usage notes
+// ## Before you begin
 //
-// - Ensure that the authentication information (such as AccessKey and SecretKey) has sufficient permissions to perform the delivery operation.
+// - Ensure that the provided credentials (such as AccessKey and SecretKey) have sufficient permissions to perform the delivery operation.
 //
-// - When you select an encrypted or authenticated delivery method, correctly configure the related security parameters.
+// - When you select a delivery method that requires encryption or authentication, correctly configure the related security parameters.
 //
-// - Verify the syntax correctness of `FilterRules` to ensure that the filtering logic meets expectations.
+// - Verify the syntax of `FilterRules` to ensure that the filtering logic meets your expectations.
 //
-// - Adjust advanced parameters such as retries and timeout based on actual requirements to optimize delivery efficiency and stability.
+// - Adjust advanced parameters such as the maximum number of retries and timeout period as needed to optimize delivery efficiency and stability.
 //
 // @param tmpReq - CreateUserDeliveryTaskRequest
 //
@@ -7177,6 +7181,72 @@ func (client *Client) DeleteRoutineCodeVersionWithContext(ctx context.Context, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRoutineCodeVersionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes environment variables of a Routine.
+//
+// Description:
+//
+// ## Operation description
+//
+// - When you create a Routine code version for deployment, the environment name `Env` supports only the staging environment `staging` or the production environment `production`.
+//
+// - The `CodeVersions` parameter supports canary release of up to two versions, and the total proportion of these versions must equal 100%.
+//
+// @param tmpReq - DeleteRoutineEnvironmentVariablesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRoutineEnvironmentVariablesResponse
+func (client *Client) DeleteRoutineEnvironmentVariablesWithContext(ctx context.Context, tmpReq *DeleteRoutineEnvironmentVariablesRequest, runtime *dara.RuntimeOptions) (_result *DeleteRoutineEnvironmentVariablesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteRoutineEnvironmentVariablesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.EnvironmentVariableKeys) {
+		request.EnvironmentVariableKeysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EnvironmentVariableKeys, dara.String("EnvironmentVariableKeys"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Env) {
+		body["Env"] = request.Env
+	}
+
+	if !dara.IsNil(request.EnvironmentVariableKeysShrink) {
+		body["EnvironmentVariableKeys"] = request.EnvironmentVariableKeysShrink
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteRoutineEnvironmentVariables"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteRoutineEnvironmentVariablesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -9787,7 +9857,7 @@ func (client *Client) DescribeUrlObservationDataWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the resource plan information of the current user by calling DescribeUserResourcePackage.
+// Queries the resource plan information of the current user.
 //
 // @param request - DescribeUserResourcePackageRequest
 //
@@ -12857,7 +12927,7 @@ func (client *Client) GetRedirectRuleWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Queries the scheduled automatic release time.
+// Queries the scheduled release time.
 //
 // @param request - GetReleaseTimeRequest
 //
@@ -14005,11 +14075,11 @@ func (client *Client) GetUserDeliveryTaskWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the remaining log delivery quota of each log category in your account.
+// Queries the remaining log delivery quota for each business type of a specified user.
 //
 // Description:
 //
-// This operation allows you to query the remaining real-time log delivery quota of each log category in your Alibaba Cloud account. You must provide your Alibaba Cloud account ID (aliUid) and log category (BusinessType). The system then returns the remaining quota of the log category to help you track the usage.
+// This operation allows you to query the real-time log delivery quota for different business types in your Alibaba Cloud account. You must provide your Alibaba Cloud user ID (aliUid) and the business type (BusinessType). The system returns the remaining quota for the specified business type, helping you understand the current quota usage.
 //
 // @param request - GetUserLogDeliveryQuotaRequest
 //
@@ -16976,6 +17046,70 @@ func (client *Client) ListRoutineCodeVersionsWithContext(ctx context.Context, re
 
 // Summary:
 //
+// Queries the environment variables of a Routine.
+//
+// Description:
+//
+// This operation allows you to perform a paged query of all Edge Routines (Routines) created under your account, and provides the Routine quota and usage for your current plan. You can specify the paging parameters `PageNumber` and `PageSize` to control the number of returned results, and use `SearchKeyWord` to perform a fuzzy search to filter specific Routine names.
+//
+// @param request - ListRoutineEnvironmentVariablesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRoutineEnvironmentVariablesResponse
+func (client *Client) ListRoutineEnvironmentVariablesWithContext(ctx context.Context, request *ListRoutineEnvironmentVariablesRequest, runtime *dara.RuntimeOptions) (_result *ListRoutineEnvironmentVariablesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Env) {
+		body["Env"] = request.Env
+	}
+
+	if !dara.IsNil(request.KeyWord) {
+		body["KeyWord"] = request.KeyWord
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRoutineEnvironmentVariables"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRoutineEnvironmentVariablesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // The records associated with the function.
 //
 // Description:
@@ -18724,7 +18858,7 @@ func (client *Client) OpenErServiceWithContext(ctx context.Context, request *Ope
 
 // Summary:
 //
-// Prefetches URLs to warm the cache.
+// Prefetches cache content.
 //
 // @param tmpReq - PreloadCachesRequest
 //
@@ -20470,6 +20604,78 @@ func (client *Client) SetOriginClientCertificateHostnamesWithContext(ctx context
 
 // Summary:
 //
+// Sets environment variables for a Routine.
+//
+// Description:
+//
+// - If you do not specify StartTime and EndTime, this operation returns data from the past 24 hours. If you specify StartTime and EndTime, this operation returns data for the specified time range.
+//
+// - The time granularity of returned data varies based on the time range specified by StartTime and EndTime.
+//
+//   - If the time range is less than or equal to 3 hours, data is returned at a 1-minute granularity.
+//
+//   - If the time range is greater than 3 hours and less than or equal to 1 day, data is returned at a 5-minute granularity.
+//
+//   - If the time range is greater than 1 day and less than or equal to 10 days, data is returned at an hourly granularity.
+//
+//   - If the time range is greater than 10 days and less than or equal to 31 days, data is returned at a daily granularity.
+//
+// @param tmpReq - SetRoutineEnvironmentVariablesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetRoutineEnvironmentVariablesResponse
+func (client *Client) SetRoutineEnvironmentVariablesWithContext(ctx context.Context, tmpReq *SetRoutineEnvironmentVariablesRequest, runtime *dara.RuntimeOptions) (_result *SetRoutineEnvironmentVariablesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SetRoutineEnvironmentVariablesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.EnvironmentVariables) {
+		request.EnvironmentVariablesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EnvironmentVariables, dara.String("EnvironmentVariables"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Env) {
+		body["Env"] = request.Env
+	}
+
+	if !dara.IsNil(request.EnvironmentVariablesShrink) {
+		body["EnvironmentVariables"] = request.EnvironmentVariablesShrink
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetRoutineEnvironmentVariables"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetRoutineEnvironmentVariablesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Starts a scheduled prefetch based on the prefetch plan ID.
 //
 // @param request - StartScheduledPreloadExecutionRequest
@@ -20752,6 +20958,96 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
+// Performs Tracing Analysis. You can use this operation to construct and initiate an impersonation HTTP/HTTPS request to the ESA platform, displaying the site configuration matching and effective settings on the ESA platform for the request.
+//
+// Description:
+//
+//	Notice: Before you use this operation, make sure that the site is connected to the ESA platform and enabled.
+//
+// @param tmpReq - TraceSiteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TraceSiteResponse
+func (client *Client) TraceSiteWithContext(ctx context.Context, tmpReq *TraceSiteRequest, runtime *dara.RuntimeOptions) (_result *TraceSiteResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &TraceSiteShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Body) {
+		request.BodyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Body, dara.String("Body"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Context) {
+		request.ContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Context, dara.String("Context"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Cookies) {
+		request.CookiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Cookies, dara.String("Cookies"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Headers) {
+		request.HeadersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Headers, dara.String("Headers"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BodyShrink) {
+		body["Body"] = request.BodyShrink
+	}
+
+	if !dara.IsNil(request.ContextShrink) {
+		body["Context"] = request.ContextShrink
+	}
+
+	if !dara.IsNil(request.CookiesShrink) {
+		body["Cookies"] = request.CookiesShrink
+	}
+
+	if !dara.IsNil(request.HeadersShrink) {
+		body["Headers"] = request.HeadersShrink
+	}
+
+	if !dara.IsNil(request.Method) {
+		body["Method"] = request.Method
+	}
+
+	if !dara.IsNil(request.Protocol) {
+		body["Protocol"] = request.Protocol
+	}
+
+	if !dara.IsNil(request.Url) {
+		body["Url"] = request.Url
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TraceSite"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TraceSiteResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a resource tag based on a specified resource ID.
 //
 // @param request - UntagResourcesRequest
@@ -20806,6 +21102,54 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 		BodyType:    dara.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Changes the specifications of a bot instance.
+//
+// @param request - UpdateBotSpecRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateBotSpecResponse
+func (client *Client) UpdateBotSpecWithContext(ctx context.Context, request *UpdateBotSpecRequest, runtime *dara.RuntimeOptions) (_result *UpdateBotSpecResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BotInstanceLevel) {
+		query["BotInstanceLevel"] = request.BotInstanceLevel
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateBotSpec"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateBotSpecResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -21570,6 +21914,62 @@ func (client *Client) UpdateCustomScenePolicyWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateCustomScenePolicyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the specifications of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - UpdateDDoSSpecRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDDoSSpecResponse
+func (client *Client) UpdateDDoSSpecWithContext(ctx context.Context, request *UpdateDDoSSpecRequest, runtime *dara.RuntimeOptions) (_result *UpdateDDoSSpecResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DDoSBillingMode) {
+		query["DDoSBillingMode"] = request.DDoSBillingMode
+	}
+
+	if !dara.IsNil(request.DDoSBurstableDomesticProtection) {
+		query["DDoSBurstableDomesticProtection"] = request.DDoSBurstableDomesticProtection
+	}
+
+	if !dara.IsNil(request.DDoSBurstableOverseasProtection) {
+		query["DDoSBurstableOverseasProtection"] = request.DDoSBurstableOverseasProtection
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDDoSSpec"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDDoSSpecResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -24586,7 +24986,11 @@ func (client *Client) UpdateUrlObservationWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Updates a delivery task configuration. You can modify the task name, selected fields, real-time log type, and discard rate.
+// Modifies the delivery task configuration of a user, allowing you to set the task name, select fields, specify the real-time log type, and adjust the discard rate.
+//
+// Description:
+//
+// Before calling this operation, you must have successfully created a task with the target TaskName by using CreateUserDeliveryTask. Only then can you use this operation to update the delivery task configuration.
 //
 // @param request - UpdateUserDeliveryTaskRequest
 //

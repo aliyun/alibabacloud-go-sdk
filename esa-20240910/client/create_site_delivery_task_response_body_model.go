@@ -26,6 +26,8 @@ type CreateSiteDeliveryTaskResponseBody struct {
 	//
 	// - **oversea**: outside the Chinese mainland.
 	//
+	// - **global**: global.
+	//
 	// example:
 	//
 	// cn

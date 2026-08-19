@@ -22,7 +22,7 @@ type iCreateUserDeliveryTaskResponseBody interface {
 type CreateUserDeliveryTaskResponseBody struct {
 	// The data center. Valid values:
 	//
-	// - **cn**: Chinese mainland.
+	// - **cn**: the Chinese mainland.
 	//
 	// - **sg**: global (excluding the Chinese mainland).
 	//

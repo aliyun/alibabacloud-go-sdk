@@ -22,7 +22,7 @@ type iDescribeSiteLogsRequest interface {
 }
 
 type DescribeSiteLogsRequest struct {
-	// The end time for retrieving logs.
+	// The end time for log retrieval.
 	//
 	// The date is in ISO 8601 format and uses UTC+0 time in the format of yyyy-MM-ddTHH:mm:ssZ.
 	//
@@ -52,7 +52,7 @@ type DescribeSiteLogsRequest struct {
 	//
 	// 123456***
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The start time for retrieving logs.
+	// The start time for log retrieval.
 	//
 	// The date is in ISO 8601 format and uses UTC+0 time in the format of yyyy-MM-ddTHH:mm:ssZ.
 	//

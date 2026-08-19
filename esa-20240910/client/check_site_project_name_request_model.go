@@ -16,15 +16,17 @@ type iCheckSiteProjectNameRequest interface {
 }
 
 type CheckSiteProjectNameRequest struct {
-	// The name of the real-time log delivery task.
+	// The real-time log project name.
+	//
+	// > Allowed character set (hyphens only, no underscores), length range, and naming rule examples (such as \\"ali-dcdn-log-56\\")
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// user_log
+	// ali-dcdn-log-56
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can call [ListSites](https://help.aliyun.com/document_detail/2850189.html) to obtain the site ID.
 	//
 	// example:
 	//

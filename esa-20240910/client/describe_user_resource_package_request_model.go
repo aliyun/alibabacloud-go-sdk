@@ -26,7 +26,7 @@ type iDescribeUserResourcePackageRequest interface {
 }
 
 type DescribeUserResourcePackageRequest struct {
-	// The resource plan instance ID.
+	// The instance ID of the resource plan.
 	//
 	// example:
 	//
@@ -51,11 +51,17 @@ type DescribeUserResourcePackageRequest struct {
 	//
 	// - endTime: the expiration time of the instance.
 	//
+	// - StartTime: the effective period of the instance.
+	//
+	// - EndTime: the expiration time of the instance.
+	//
+	// - default: no sorting field.
+	//
 	// example:
 	//
 	// startTime
 	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
-	// The sorting collation. Default value: desc. Valid values:
+	// The sorting rule. Default value: desc. Valid values:
 	//
 	// - asc
 	//

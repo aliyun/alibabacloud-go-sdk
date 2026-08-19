@@ -20,11 +20,11 @@ type iCheckSiteProjectNameResponseBody interface {
 }
 
 type CheckSiteProjectNameResponseBody struct {
-	// Indicates whether the task name is valid. Valid values:
+	// Valid values:
 	//
-	// 	- **true**
+	// - **true**: Can be added.
 	//
-	// 	- **false**
+	// - **false**: Cannot be added.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type CheckSiteProjectNameResponseBody struct {
 	//
 	// project name pass the check
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the real-time log delivery task.
+	// The real-time log project name.
 	//
 	// example:
 	//

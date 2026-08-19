@@ -36,12 +36,6 @@ type ListSiteFunctionsRequest struct {
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	// The configuration type. You can use this parameter to query global configurations or rule configurations. Valid values:
 	//
-	// - global: queries global configurations.
-	//
-	// - rule: queries rule configurations.
-	//
-	// This parameter is optional. If not specified, both global and rule configurations are returned. This parameter takes effect only when the FunctionName parameter is specified.
-	//
 	// example:
 	//
 	// rule
@@ -64,7 +58,7 @@ type ListSiteFunctionsRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The rule name. Returns the rule that matches the specified name. This parameter takes effect only when the FunctionName parameter is specified.
+	// The rule name. Filters the rule that matches the specified name. This parameter takes effect only when FunctionName is specified.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iGetReleaseTimeResponseBody interface {
 }
 
 type GetReleaseTimeResponseBody struct {
-	// The scheduled release time.
+	// The scheduled release time. Format: yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
 	//
 	// example:
 	//

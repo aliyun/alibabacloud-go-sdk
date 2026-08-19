@@ -66,13 +66,13 @@ type CreateSiteDeliveryTaskShrinkRequest struct {
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
 	// The delivery type. Valid values:
 	//
-	// - **sls**: Alibaba Cloud Simple Log Service.
+	// - **sls**: Simple Log Service.
 	//
 	// - **http**: HTTP service.
 	//
 	// - **aws3**: Amazon S3 service.
 	//
-	// - **oss**: Alibaba Cloud Object Storage Service.
+	// - **oss**: Object Storage Service (OSS).
 	//
 	// - **kafka**: Kafka service.
 	//
@@ -92,15 +92,17 @@ type CreateSiteDeliveryTaskShrinkRequest struct {
 	DiscardRate *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
 	// The selected log fields, separated by commas (,).
 	//
+	// > The field names must come from the FieldName values returned by the GetRealtimeDeliveryField operation, and the corresponding BusinessType must be specified.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// user_agent,ip_adress,ip_port
+	// ClientIP,ClientRequestURI,EdgeResponseStatusCode
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
 	// The filter rule version.
 	//
-	// > For backward compatibility with legacy filter rules, the default value is v1. New tasks use v2.
+	// > For backward compatibility with legacy filter rules, the default value is v1. Newly created tasks use v2.
 	//
 	// example:
 	//
@@ -112,7 +114,7 @@ type CreateSiteDeliveryTaskShrinkRequest struct {
 	KafkaDeliveryShrink *string `json:"KafkaDelivery,omitempty" xml:"KafkaDelivery,omitempty"`
 	// The OSS delivery configuration.
 	OssDeliveryShrink *string `json:"OssDelivery,omitempty" xml:"OssDelivery,omitempty"`
-	// The S3/S3-compatible delivery configuration parameters.
+	// The S3 or S3-compatible delivery configuration parameters.
 	S3DeliveryShrink *string `json:"S3Delivery,omitempty" xml:"S3Delivery,omitempty"`
 	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
@@ -122,7 +124,7 @@ type CreateSiteDeliveryTaskShrinkRequest struct {
 	//
 	// 12312312112***
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The SLS delivery configuration.
+	// The Simple Log Service (SLS) delivery configuration.
 	SlsDeliveryShrink *string `json:"SlsDelivery,omitempty" xml:"SlsDelivery,omitempty"`
 	// The task name.
 	//

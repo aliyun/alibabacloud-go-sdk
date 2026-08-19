@@ -40,23 +40,19 @@ type iCreateUserDeliveryTaskShrinkRequest interface {
 type CreateUserDeliveryTaskShrinkRequest struct {
 	// The real-time log type. Valid values:
 	//
-	// - **dcdn_log_access_l1 (default)**: access logs.
+	// - **dcdn_log_er_pod**: edge container logs.
 	//
-	// - **dcdn_log_er**: edge function logs.
-	//
-	// - **dcdn_log_waf**: security protection logs.
-	//
-	// - **dcdn_log_ipa**: Layer 4 acceleration logs.
+	// - **dcdn_log_dns**: edge DNS logs.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// dcdn_log_access_l1
+	// dcdn_log_er_pod
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	// The data center. Valid values:
 	//
-	// - **cn**: Chinese mainland.
+	// - **cn**: the Chinese mainland.
 	//
 	// - **sg**: global (excluding the Chinese mainland).
 	//
@@ -84,21 +80,33 @@ type CreateUserDeliveryTaskShrinkRequest struct {
 	//
 	// sls
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	Details      *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// The list of Edge Routine (ER) pods to configure.
+	//
+	// example:
+	//
+	// xxx,xxx
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
 	// The discard rate. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	DiscardRate *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
-	// The fields to be selected, separated by commas (,).
+	// The fields to deliver, separated by commas (,).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// user_agent,ip_address,ip_port
+	// ClientIP,ClientRequestURI,EdgeResponseStatusCode
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// The version of the filter rule.
+	//
+	// > This parameter is used for backward compatibility with legacy filter rules. The default value is v1. New tasks use v2.
+	//
+	// example:
+	//
+	// v2
 	FilterVer *string `json:"FilterVer,omitempty" xml:"FilterVer,omitempty"`
 	// The HTTP delivery configuration parameters.
 	HttpDeliveryShrink *string `json:"HttpDelivery,omitempty" xml:"HttpDelivery,omitempty"`
