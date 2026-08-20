@@ -31,6 +31,10 @@ type ChatMessagesRequest struct {
 	// fea7bdca-e848-44dd-b1ae-852472b8****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
 	// The event output type. Valid values: inline and separate. Default value: inline. When set to inline, tool invocation events, sub-node events, and document events are included in the answer field of event = message. When set to separate, tool invocation events, sub-node events, and document events each have their own event.
+	//
+	// example:
+	//
+	// inline
 	EventMode *string                     `json:"EventMode,omitempty" xml:"EventMode,omitempty"`
 	Files     []*ChatMessagesRequestFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
 	// The task input.
@@ -47,7 +51,7 @@ type ChatMessagesRequest struct {
 	//
 	// example:
 	//
-	// Instance rm-bp14as9914vd3***	- disk usage, whether expansion is needed
+	// Disk usage of instance rm-bp14as9914vd3****, is capacity expansion needed
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
@@ -177,12 +181,17 @@ func (s *ChatMessagesRequestFiles) Validate() error {
 }
 
 type ChatMessagesRequestInputs struct {
-	// The user-specific agent ID.
+	// The custom agent ID for the user.
 	//
 	// example:
 	//
 	// d1b7d639-f34e-44c7-8231-987da14d****
-	CustomAgentId  *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
+	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
+	// Specifies whether to enable deep thinking mode.
+	//
+	// example:
+	//
+	// true
 	EnableThinking *string `json:"EnableThinking,omitempty" xml:"EnableThinking,omitempty"`
 	// The conversation language.
 	//
@@ -190,13 +199,23 @@ type ChatMessagesRequestInputs struct {
 	//
 	// zh-cn
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	ModelId  *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// The model ID.
+	//
+	// example:
+	//
+	// qwen3.7-max
+	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
 	// The region ID.
 	//
 	// example:
 	//
 	// cn-beijing
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The thinking depth.
+	//
+	// example:
+	//
+	// default
 	ThinkEffort *string `json:"ThinkEffort,omitempty" xml:"ThinkEffort,omitempty"`
 	// The time zone. Default value: **Asia/Shanghai**.
 	//
