@@ -28,12 +28,20 @@ func (client *Client) CreateCallOutboundInstantWithContext(ctx context.Context, 
 		body["CalledNumber"] = request.CalledNumber
 	}
 
+	if !dara.IsNil(request.CallerNumber) {
+		body["CallerNumber"] = request.CallerNumber
+	}
+
 	if !dara.IsNil(request.CallerUacAccountId) {
 		body["CallerUacAccountId"] = request.CallerUacAccountId
 	}
 
 	if !dara.IsNil(request.CurrentWorkspaceId) {
 		body["CurrentWorkspaceId"] = request.CurrentWorkspaceId
+	}
+
+	if !dara.IsNil(request.CustomerLineCode) {
+		body["CustomerLineCode"] = request.CustomerLineCode
 	}
 
 	if !dara.IsNil(request.CustomerName) {
