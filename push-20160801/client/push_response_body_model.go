@@ -16,7 +16,7 @@ type iPushResponseBody interface {
 }
 
 type PushResponseBody struct {
-	// The ID of the message for a push.
+	// The message ID that identifies a push operation.
 	//
 	// example:
 	//

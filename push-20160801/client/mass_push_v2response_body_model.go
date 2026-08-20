@@ -16,9 +16,9 @@ type iMassPushV2ResponseBody interface {
 }
 
 type MassPushV2ResponseBody struct {
-	// List of message IDs.
+	// The list of message IDs.
 	MessageIds []*string `json:"MessageIds,omitempty" xml:"MessageIds,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

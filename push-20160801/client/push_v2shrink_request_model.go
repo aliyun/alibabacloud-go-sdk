@@ -18,7 +18,7 @@ type iPushV2ShrinkRequest interface {
 }
 
 type PushV2ShrinkRequest struct {
-	// AppKey value.
+	// The AppKey information.
 	//
 	// This parameter is required.
 	//
@@ -26,19 +26,19 @@ type PushV2ShrinkRequest struct {
 	//
 	// ****530646
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// An idempotency token to prevent duplicate pushes caused by client-side retries. If you call this API with the same IdempotentToken within 15 minutes, only one push is sent. Subsequent calls return the result of the first successful push.
-	//
-	// > - Format the token as a standard 36-character UUID (8-4-4-4-12). Valid characters are hexadecimal digits 0–9 and a–f. Case-insensitive.
+	// An idempotence parameter that prevents duplicate push notifications caused by retries from the API caller. If you use the same IdempotentToken within 15 minutes, only one push notification is sent, and subsequent calls return the result of the first successful push.
 	//
 	// >
 	//
-	// > - This parameter prevents duplicates only from retries. It does not prevent duplicates from concurrent calls.
+	// > - The parameter format is a standard 36-character UUID (8-4-4-4-12). Each valid character is a hexadecimal digit in the range 0-9 or a-f, case-insensitive.
+	//
+	// > - This parameter only prevents duplicate push notifications caused by retries. It cannot prevent duplicate push notifications caused by concurrent calls.
 	//
 	// example:
 	//
 	// c8016d13-6e76-****-9bda-769383d11787
 	IdempotentToken *string `json:"IdempotentToken,omitempty" xml:"IdempotentToken,omitempty"`
-	// Push task definition.
+	// The push task.
 	//
 	// This parameter is required.
 	PushTaskShrink *string `json:"PushTask,omitempty" xml:"PushTask,omitempty"`

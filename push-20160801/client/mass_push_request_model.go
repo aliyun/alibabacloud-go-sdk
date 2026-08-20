@@ -18,7 +18,7 @@ type iMassPushRequest interface {
 }
 
 type MassPushRequest struct {
-	// The AppKey of the application.
+	// AppKey information.
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type MassPushRequest struct {
 	//
 	// 23267207
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// An idempotency parameter that prevents duplicate pushes caused by API client retries. If you make a call with the same IdempotentToken within 15 minutes, only one push is performed, and subsequent calls return the result of the first successful push.
-	//
-	// > - The parameter format is a standard 36-character UUID (8-4-4-4-12). Each valid character is a hexadecimal digit from 0-9 or a-f, case-insensitive.
+	// An idempotency parameter used to prevent duplicate pushes caused by API caller retries. When calls are made with the same IdempotentToken within 15 minutes, only one push is performed, and subsequent calls return the result of the first successful push.
 	//
 	// >
 	//
-	// > - This parameter only prevents duplicate pushes caused by retries. It cannot prevent duplicate pushes caused by concurrent calls.
+	// > - The parameter format is a standard 36-character UUID (8-4-4-4-12). Each valid character is a hexadecimal digit in the range 0-9 or a-f, case-insensitive.
+	//
+	// > - This parameter is only used to prevent duplicate pushes caused by retries and cannot prevent duplicate pushes caused by concurrent calls.
 	//
 	// example:
 	//
@@ -93,41 +93,41 @@ func (s *MassPushRequest) Validate() error {
 }
 
 type MassPushRequestPushTask struct {
-	// Specifies the activity to open when the notification is tapped.
+	// Specify the Activity to open from the notification.
 	//
-	// This is required only when PushTask.N.AndroidOpenType is set to "Activity". For example: `com.alibaba.cloudpushdemo.bizactivity`.
+	// Only applicable when PushTask.N.AndroidOpenType="Activity", e.g., `com.alibaba.cloudpushdemo.bizactivity`.
 	//
 	// example:
 	//
 	// com.alibaba.cloudpushdemo.bizactivity
 	AndroidActivity *string `json:"AndroidActivity,omitempty" xml:"AndroidActivity,omitempty"`
-	// Sets the value to add to the badge number. The value is added to the original badge number. The value range is [1, 99].
+	// Set the badge increment value. The value is added to the existing badge count. Value range: [1-99].
 	//
-	// > This is effective only for pushes through Huawei or Honor vendor channels. If both AndroidBadgeAddNum and AndroidBadgeSetNum are present, AndroidBadgeSetNum takes precedence.
+	// > Only valid for Huawei/Honor vendor channel pushes. When both AndroidBadgeAddNum and AndroidBadgeSetNum are present, AndroidBadgeSetNum takes precedence.
 	//
 	// example:
 	//
 	// 1
 	AndroidBadgeAddNum *int32 `json:"AndroidBadgeAddNum,omitempty" xml:"AndroidBadgeAddNum,omitempty"`
-	// The full class name of the entry Activity of the application for badge settings.
+	// Full class name of the app entry Activity for badge settings.
 	//
-	// > This is effective only for pushes through Huawei or Honor vendor channels.
+	// > Only valid for Huawei/Honor vendor channel pushes.
 	//
 	// example:
 	//
 	// com.alibaba.cloudpushdemo.bizactivity
 	AndroidBadgeClass *string `json:"AndroidBadgeClass,omitempty" xml:"AndroidBadgeClass,omitempty"`
-	// Sets a fixed number for the badge. The value range is [0, 99].
+	// Set the badge to a fixed number. Value range: [0-99].
 	//
-	// > For vendor channel pushes, this is effective only for Huawei and Honor channels. For pushes through Alibaba Cloud\\"s proprietary channel, this is effective only on Huawei, Honor, and vivo models.
+	// > For vendor channel pushes, this only takes effect on Huawei and Honor channels. For Alibaba Cloud proprietary channel pushes, this only takes effect on Huawei, Honor, and vivo devices.
 	//
 	// example:
 	//
 	// 5
 	AndroidBadgeSetNum *int32 `json:"AndroidBadgeSetNum,omitempty" xml:"AndroidBadgeSetNum,omitempty"`
-	// The body in long text mode. Length limit: 1,000 bytes (one Chinese character is counted as 3 bytes). The actual limit depends on the specific vendor channel.
+	// Body in long text mode. Length limit: 1,000 bytes (1 Chinese character counts as 3 bytes). Subject to specific vendor channel restrictions when sending.
 	//
-	// Currently supported on:
+	// Currently supported:
 	//
 	// - Huawei: EMUI 10 and later
 	//
@@ -139,61 +139,61 @@ type MassPushRequestPushTask struct {
 	//
 	// - Meizu: Flyme
 	//
-	// - Alibaba Cloud\\"s proprietary channel: Android SDK 3.6.0 and later
+	// - Proprietary channel: Android SDK 3.6.0 and later
 	//
-	// If this parameter is not provided in long text mode, the first non-empty value from Body or AndroidPopupBody is used.
+	// If this parameter is not provided in long text mode, the first non-empty value from Body and AndroidPopupBody is used.
 	//
 	// example:
 	//
 	// 示例长文本
 	AndroidBigBody *string `json:"AndroidBigBody,omitempty" xml:"AndroidBigBody,omitempty"`
-	// The image URL in big picture mode. Currently supported on: Alibaba Cloud\\"s proprietary channel with Android SDK 3.6.0 or later.
+	// Image URL in big picture mode. Currently supported: Proprietary channel: Android SDK 3.6.0 and later.
 	//
 	// example:
 	//
 	// https://imag.example.com/image.png
 	AndroidBigPictureUrl *string `json:"AndroidBigPictureUrl,omitempty" xml:"AndroidBigPictureUrl,omitempty"`
-	// The title in long text mode. Length limit: 200 bytes (one Chinese character is counted as 3 bytes).
+	// Title in long text mode. Length limit: 200 bytes (1 Chinese character counts as 3 bytes).
 	//
-	// - Currently, this is only supported by Honor channels and Huawei channels on EMUI 11 and later.
+	// - Currently only supported by the Honor channel and Huawei channel EMUI 11 and later.
 	//
-	// - If this parameter is not provided in long text mode, the first non-empty value from Title or AndroidPopupTitle is used.
+	// - If this parameter is not provided in long text mode, the first non-empty value from Title and AndroidPopupTitle is used.
 	//
 	// example:
 	//
 	// 示例长标题
 	AndroidBigTitle *string `json:"AndroidBigTitle,omitempty" xml:"AndroidBigTitle,omitempty"`
-	// Sets the extended properties of the notification. This parameter does not take effect when the push type PushType is set to MESSAGE.
+	// Set notification extended properties. This property does not take effect when the push type PushType is set to MESSAGE.
 	//
-	// This parameter must be passed in JSON map format, or it will fail to parse.
+	// This parameter must be passed in JSON map format; otherwise, parsing errors will occur.
 	//
 	// example:
 	//
 	// {"key1":"value1","api_name":"PushNoticeToAndroidRequest"}
 	AndroidExtParameters *string `json:"AndroidExtParameters,omitempty" xml:"AndroidExtParameters,omitempty"`
-	// Sets the Honor channel notification type:
+	// Set the Honor channel notification type:
 	//
-	// - **0**: Formal notification (default).
+	// - **0**: Production notification (default).
 	//
 	// - **1**: Test notification.
 	//
-	// > Each application can send 1,000 test notifications per day, and these are not subject to the daily push limit per device.
+	// > Each application can send up to 1,000 test notifications per day, and this is not subject to the daily per-device push limit.
 	//
 	// example:
 	//
 	// 1
 	AndroidHonorTargetUserType *int32 `json:"AndroidHonorTargetUserType,omitempty" xml:"AndroidHonorTargetUserType,omitempty"`
-	// Sets the parameters for Huawei quick notifications
+	// Set the Huawei instant notification parameter:
 	//
-	// - **0**: Send a normal Huawei notification (default).
+	// - **0**: Send a regular Huawei notification (default).
 	//
-	// - **1**: Send a Huawei quick notification.
+	// - **1**: Send a Huawei instant notification.
 	//
 	// example:
 	//
 	// 1
 	AndroidHuaweiBusinessType *int32 `json:"AndroidHuaweiBusinessType,omitempty" xml:"AndroidHuaweiBusinessType,omitempty"`
-	// A JSON string of the Huawei Android Live Notification data structure [LiveNotificationPayload](https://developer.huawei.com/consumer/cn/doc/HMSCore-References/rest-live-0000001562939968#ZH-CN_TOPIC_0000001700850537__p195121620102511). For development and integration, see the [Huawei Live Notification Push Guide](https://help.aliyun.com/document_detail/2983768.html).
+	// JSON string of the Huawei Android Live Notification data structure [LiveNotificationPayload](https://developer.huawei.com/consumer/cn/doc/HMSCore-References/rest-live-0000001562939968#ZH-CN_TOPIC_0000001700850537__p195121620102511). For development integration, see [Huawei Live Notification Push Guide](https://help.aliyun.com/document_detail/2983768.html)
 	//
 	// example:
 	//
@@ -217,39 +217,39 @@ type MassPushRequestPushTask struct {
 	//
 	// }
 	AndroidHuaweiLiveNotificationPayload *string `json:"AndroidHuaweiLiveNotificationPayload,omitempty" xml:"AndroidHuaweiLiveNotificationPayload,omitempty"`
-	// The receipt ID for the Huawei channel. View this receipt ID in the receipt parameter configuration on the Huawei Push operations platform.
+	// Huawei channel receipt ID. This receipt ID can be found in the receipt parameter configuration on the Huawei channel push operations platform.
 	//
-	// > If the default receipt configuration on the Huawei Push operations platform is the Alibaba Cloud receipt, you do not need to provide this. If not, we recommend that you first configure the default receipt ID for the Huawei channel in the Alibaba Cloud EMAS Mobile Push console.
+	// > If the default receipt configuration on the Huawei channel push operations platform is set to Alibaba Cloud receipt, this is not required. If not, we recommend configuring the default Huawei channel receipt ID in the Alibaba Cloud EMAS Mobile Push console first.
 	//
 	// example:
 	//
 	// RCP4C123456
 	AndroidHuaweiReceiptId *string `json:"AndroidHuaweiReceiptId,omitempty" xml:"AndroidHuaweiReceiptId,omitempty"`
-	// Sets the Huawei channel notification type:
+	// Set the Huawei channel notification type:
 	//
-	// - **0**: Formal notification (default).
+	// - **0**: Production notification (default).
 	//
 	// - **1**: Test notification.
 	//
-	// > Each application can send 500 test notifications per day, and these are not subject to the daily push limit per device.
+	// > Each application can send up to 500 test notifications per day, and this is not subject to the daily per-device push limit.
 	//
 	// example:
 	//
 	// 1
 	AndroidHuaweiTargetUserType *int32 `json:"AndroidHuaweiTargetUserType,omitempty" xml:"AndroidHuaweiTargetUserType,omitempty"`
-	// The URL for the right-side icon. Currently supported on:
+	// Right-side icon URL. Currently supported:
 	//
-	// - Huawei EMUI (applicable only in long text mode and inbox mode)
+	// - Huawei EMUI (only applicable in long text mode and Inbox mode)
 	//
-	// - Honor Magic UI (applicable only in long text mode)
+	// - Honor Magic UI (only applicable in long text mode)
 	//
-	// - Alibaba Cloud\\"s proprietary channel: Android SDK 3.5.0 and later
+	// - Proprietary channel: Android SDK 3.5.0 and later
 	//
 	// example:
 	//
 	// https://imag.example.com/image.png
 	AndroidImageUrl *string `json:"AndroidImageUrl,omitempty" xml:"AndroidImageUrl,omitempty"`
-	// The body in inbox mode. The content must be a valid JSON array with no more than 5 elements. Currently supported on:
+	// Body content in Inbox mode. The content must be a valid JSON Array with no more than 5 elements. Currently supported:
 	//
 	// - Huawei: EMUI 9 and later
 	//
@@ -259,7 +259,7 @@ type MassPushRequestPushTask struct {
 	//
 	// - OPPO: ColorOS 5.0 and later
 	//
-	// - Alibaba Cloud\\"s proprietary channel: Android SDK 3.6.0 and later
+	// - Proprietary channel: Android SDK 3.6.0 and later
 	//
 	// example:
 	//
@@ -267,9 +267,9 @@ type MassPushRequestPushTask struct {
 	AndroidInboxBody *string `json:"AndroidInboxBody,omitempty" xml:"AndroidInboxBody,omitempty"`
 	// Meizu message type
 	//
-	// - 0 Public message (default)
+	// - 0: Public message (default)
 	//
-	// - 1 Private message
+	// - 1: Private message
 	//
 	// if can be null:
 	// false
@@ -278,229 +278,225 @@ type MassPushRequestPushTask struct {
 	//
 	// 0
 	AndroidMeizuNoticeMsgType *int32 `json:"AndroidMeizuNoticeMsgType,omitempty" xml:"AndroidMeizuNoticeMsgType,omitempty"`
-	// Function 1: After applying for [self-classification permissions](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/message-classification-0000001149358835?#section3410731125514), use this parameter to identify the message type, determine the [message reminder method](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/message-classification-0000001149358835#ZH-CN_TOPIC_0000001149358835__p3850133955718), and expedite the sending of specific message types. For valid values, see the [message classification standards](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/message-classification-0000001149358835#section1076611477914) in the official Huawei Push documentation. Fill in the "Cloud-side notification category value" or "Local notification category value" from the documentation table.
+	// Purpose 1: After completing the [self-classification privilege application](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/message-classification-0000001149358835?#section3410731125514), this is used to identify the message type, determine the [notification alert method](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/message-classification-0000001149358835#ZH-CN_TOPIC_0000001149358835__p3850133955718), and speed up delivery for specific message types. For valid values, refer to the Huawei Push official documentation\\"s [Message Classification Standard](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/message-classification-0000001149358835#section1076611477914). Use the "Cloud notification category value" or "Local notification category value" from the documentation table.
 	//
-	// Function 2: After applying for [special permissions](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/faq-0000001050042183#section037425218509), use this parameter to identify high-priority pass-through scenarios. Valid values:
+	// Purpose 2: After [applying for special permissions](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/faq-0000001050042183#section037425218509), this is used to identify high-priority pass-through scenarios. Valid values:
 	//
-	// - VOIP: Video calls
+	// - VOIP: Audio/video calls
 	//
 	// - PLAY_VOICE: Voice playback
 	//
-	// > For "Cloud-side notification category values" that are "Not applicable", all pushes go through Alibaba Cloud\\"s proprietary channel. For "Local notification category values" that are "Not applicable", all pushes go through the Huawei channel.
+	// > For "Cloud notification category values" marked as "Not applicable", the Alibaba Cloud proprietary channel is used. For "Local notification category values" marked as "Not applicable", the Huawei channel is used.
 	//
 	// example:
 	//
 	// SUBSCRIPTION
 	AndroidMessageHuaweiCategory *string `json:"AndroidMessageHuaweiCategory,omitempty" xml:"AndroidMessageHuaweiCategory,omitempty"`
-	// The delivery priority for Huawei channel notifications. Valid values:
+	// Huawei channel notification delivery priority. Valid values:
 	//
 	// - HIGH
 	//
 	// - NORMAL
 	//
-	// You must apply for permissions. For more information, see [Application Link](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/faq-0000001050042183#section037425218509).
+	// Permission application is required. See: [Application link](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/faq-0000001050042183#section037425218509).
 	//
 	// example:
 	//
 	// HIGH
 	AndroidMessageHuaweiUrgency *string `json:"AndroidMessageHuaweiUrgency,omitempty" xml:"AndroidMessageHuaweiUrgency,omitempty"`
-	// OPPO manages messages in two categories: Communication and Services, and Content and Marketing.
+	// OPPO classifies messages into two categories: Communication & Service, and Content & Marketing.
 	//
-	// Communication and Services (requires permission application):
+	// Communication & Service (permission application required):
 	//
 	// - IM: Instant messaging, audio, and video calls
 	//
-	// - ACCOUNT: Changes in personal accounts and assets
+	// - ACCOUNT: Personal account and asset changes
 	//
 	// - DEVICE_REMINDER: Personal device reminders
 	//
-	// - ORDER: Changes in personal order or logistics status
+	// - ORDER: Personal order/logistics status changes
 	//
-	// - TODO: Personal schedules or to-do items
+	// - TODO: Personal schedule/to-do items
 	//
 	// - SUBSCRIPTION: Personal subscriptions
 	//
-	// Content and Marketing:
+	// Content & Marketing:
 	//
 	// - NEWS: News and information
 	//
 	// - CONTENT: Content recommendations
 	//
-	// - MARKETING: Platform activities
+	// - MARKETING: Platform promotions
 	//
 	// - SOCIAL: Social updates
 	//
-	// For more information, see [OPUSH Message Classification Rules](https://open.oppomobile.com/new/developmentDoc/info?id=13189)
+	// For details, see [OPUSH Message Classification Rules](https://open.oppomobile.com/new/developmentDoc/info?id=13189)
 	//
 	// example:
 	//
 	// MARKETING
 	AndroidMessageOppoCategory *string `json:"AndroidMessageOppoCategory,omitempty" xml:"AndroidMessageOppoCategory,omitempty"`
-	// The reminder level for OPPO channel notification bar messages. Valid values:
+	// OPPO channel notification bar message alert level. Valid values:
 	//
 	// - 1: Notification bar
 	//
-	// - 2: Notification bar, lock screen, ringtone, vibration (default notification level for Communication and Services messages)
+	// - 2: Notification bar, lock screen, ringtone, and vibration (default notification level for Communication & Service messages)
 	//
-	// - 16: Notification bar, lock screen, ringtone, vibration, banner (requires permission application)
+	// - 16: Notification bar, lock screen, ringtone, vibration, and banner (permission application required)
 	//
-	// > When using the AndroidMessageOppoNotifyLevel parameter, you must also pass the AndroidMessageOppoCategory parameter.
+	// > When using the AndroidMessageOppoNotifyLevel parameter, the AndroidMessageOppoCategory parameter must also be provided.
 	//
 	// example:
 	//
 	// 1
 	AndroidMessageOppoNotifyLevel *int32 `json:"AndroidMessageOppoNotifyLevel,omitempty" xml:"AndroidMessageOppoNotifyLevel,omitempty"`
-	// vivo manages messages in two categories: system messages and operational messages.
+	// vivo classifies messages into two categories: System messages and Operational messages.
 	//
 	// System messages:
 	//
 	// - IM: Instant messages
 	//
-	// - ACCOUNT: Account and asset
+	// - ACCOUNT: Account and assets
 	//
-	// - TODO: Schedule and to-do
+	// - TODO: Schedule and to-do items
 	//
 	// - DEVICE_REMINDER: Device information
 	//
-	// - ORDER: Order and logistics
+	// - ORDER: Orders and logistics
 	//
-	// - SUBSCRIPTION: Subscription reminder
+	// - SUBSCRIPTION: Subscription reminders
 	//
 	// Operational messages:
 	//
 	// - NEWS: News
 	//
-	// - CONTENT: Content recommendation
+	// - CONTENT: Content recommendations
 	//
-	// - MARKETING: Operational activity
+	// - MARKETING: Operational campaigns
 	//
 	// - SOCIAL: Social updates
 	//
-	// > For more information, see [Classification Description](https://dev.vivo.com.cn/documentCenter/doc/359#s-ef3qugc3)
+	// > For details, see [Classification Description](https://dev.vivo.com.cn/documentCenter/doc/359#s-ef3qugc3)
 	//
 	// example:
 	//
 	// TODO
 	AndroidMessageVivoCategory *string `json:"AndroidMessageVivoCategory,omitempty" xml:"AndroidMessageVivoCategory,omitempty"`
-	// The notification sound for the Huawei vendor channel. Specify the name of the audio file stored in the app/src/main/res/raw/ directory of the client project. Do not include the file format suffix.
+	// Huawei vendor channel notification sound. Specify the name of an audio file stored in the client project\\"s app/src/main/res/raw/ directory. The file extension is not required.
 	//
-	// If you do not set this parameter, the default ringtone is used.
+	// If not set, the default ringtone is used.
 	//
 	// example:
 	//
 	// alicloud_notification_sound
 	AndroidMusic *string `json:"AndroidMusic,omitempty" xml:"AndroidMusic,omitempty"`
-	// The priority that determines the position of the Android notification in the notification bar. Valid values: -2, -1, 0, 1, and 2.
+	// Priority of the notification position in the Android notification bar. Valid values: -2, -1, 0, 1, 2.
 	//
 	// example:
 	//
 	// 0
 	AndroidNotificationBarPriority *int32 `json:"AndroidNotificationBarPriority,omitempty" xml:"AndroidNotificationBarPriority,omitempty"`
-	// The custom Android notification bar style. Valid values: 1 to 100.
+	// Android custom notification bar style. Value range: 1-100.
 	//
 	// example:
 	//
 	// 2
 	AndroidNotificationBarType *int32 `json:"AndroidNotificationBarType,omitempty" xml:"AndroidNotificationBarType,omitempty"`
-	// The channel ID for the Android app. It must correspond to a channel ID in the app.
+	// The channelId of the Android app. Must match the channelId configured in the app.
 	//
-	// - Set the NotificationChannel parameter. For more information about its use, see [FAQ: Why are notifications not received on devices with Android 8.0 or later?](https://help.aliyun.com/document_detail/67398.html).
+	// - Set the NotificationChannel parameter. For specific usage, see [FAQ: Notifications not received on Android 8.0+ devices](https://help.aliyun.com/document_detail/67398.html).
 	//
-	// - Because the channel_id for the OPPO private message channel is the same as the app\\"s channelId, this value is used for the channel_id when pushing through the OPPO channel.
+	// - Since the OPPO notification private channel\\"s channel_id is the same as the app\\"s channelId, the channel_id takes this value when pushing through the OPPO channel.
 	//
-	// - For pushes through Huawei, FCM, and Alibaba Cloud\\"s proprietary channels, this value is used for the channel_id.
+	// - For Huawei, FCM, and Alibaba Cloud proprietary channel pushes, the channel_id takes this value.
 	//
 	// example:
 	//
 	// 1
 	AndroidNotificationChannel *string `json:"AndroidNotificationChannel,omitempty" xml:"AndroidNotificationChannel,omitempty"`
-	// Message grouping. For messages in the same group, the notification bar displays only the latest message and the total number of messages received for that group. It does not display all messages and cannot be expanded. Currently supported on:
+	// Message grouping. Messages in the same group display only the latest one and the total count of messages received in that group in the notification bar. All messages are not displayed and cannot be expanded. Currently supported:
 	//
 	// - Huawei vendor channel
 	//
 	// - Honor vendor channel
 	//
-	// - Alibaba Cloud\\"s proprietary channel with Android SDK 3.9.1 and earlier
+	// - Proprietary channel: Android SDK 3.9.1 and earlier
 	//
-	// > This parameter is not supported by Alibaba Cloud\\"s proprietary channel on Android SDK 3.9.2 and later.
+	// > The proprietary channel no longer supports this parameter on Android SDK 3.9.2 and later.
 	//
 	// example:
 	//
 	// group-1
 	AndroidNotificationGroup *string `json:"AndroidNotificationGroup,omitempty" xml:"AndroidNotificationGroup,omitempty"`
-	// Sets the importance parameter for Honor notification message classification, which determines the notification behavior on the user\\"s device. Valid values:
+	// Set the Honor notification message classification importance parameter, which determines the notification behavior on user devices. Valid values:
 	//
-	// - LOW: Marketing messages
+	// - LOW: Information and marketing messages
 	//
 	// - NORMAL: Service and communication messages
 	//
-	// Apply for this on the Honor platform. [Application Link](https://developer.honor.com/cn/docs/11002/guides/notification-class#%E8%87%AA%E5%88%86%E7%B1%BB%E6%9D%83%E7%9B%8A%E7%94%B3%E8%AF%B7).
+	// Application is required on the Honor platform. [Application link](https://developer.honor.com/cn/docs/11002/guides/notification-class#%E8%87%AA%E5%88%86%E7%B1%BB%E6%9D%83%E7%9B%8A%E7%94%B3%E8%AF%B7).
 	//
 	// example:
 	//
 	// LOW
 	AndroidNotificationHonorChannel *string `json:"AndroidNotificationHonorChannel,omitempty" xml:"AndroidNotificationHonorChannel,omitempty"`
-	// Sets the importance parameter for Huawei notification message classification, which determines the notification behavior on the user\\"s device. Valid values:
+	// Set the Huawei notification message classification importance parameter, which determines the notification behavior on user devices. Valid values:
 	//
-	// - LOW: Marketing messages
+	// - LOW: Information and marketing messages
 	//
 	// - NORMAL: Service and communication messages
 	//
-	// > 	- For the Huawei channel, use AndroidMessageHuaweiCategory for notification classification. AndroidNotificationHuaweiChannel is no longer required.
+	// >- The Huawei channel now recommends using AndroidMessageHuaweiCategory for notification classification. AndroidNotificationHuaweiChannel is no longer required.
 	//
-	// >
-	//
-	// > 	- You must apply for this on the Huawei platform. [Application Link](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/message-classification-0000001149358835#section893184112272).
+	// >- Application is required on the Huawei platform. [Application link](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/message-classification-0000001149358835#section893184112272).
 	//
 	// example:
 	//
 	// LOW
 	AndroidNotificationHuaweiChannel *string `json:"AndroidNotificationHuaweiChannel,omitempty" xml:"AndroidNotificationHuaweiChannel,omitempty"`
-	// The unique ID for each message when it is displayed as a notification. Different notification messages can have the same NotifyId to allow new notifications to overwrite old ones.
+	// Unique identifier for each message displayed in the notification bar. Different notification bar messages can share the same NotifyId, allowing new notifications to replace old ones.
 	//
 	// example:
 	//
 	// 100001
 	AndroidNotificationNotifyId *int32 `json:"AndroidNotificationNotifyId,omitempty" xml:"AndroidNotificationNotifyId,omitempty"`
-	// Message grouping. Messages in the same group are displayed collapsed in the notification bar and can be expanded. Notifications from different groups are displayed separately. Currently supported on:
+	// Message grouping. Messages in the same group are displayed collapsed in the notification bar and can be expanded. Notifications from different groups are displayed separately. Currently supported:
 	//
-	// - Alibaba Cloud\\"s proprietary channel with Android SDK 3.9.2 and later
+	// - Proprietary channel: Android SDK 3.9.2 and later
 	//
 	// example:
 	//
 	// thread-1
 	AndroidNotificationThreadId *string `json:"AndroidNotificationThreadId,omitempty" xml:"AndroidNotificationThreadId,omitempty"`
-	// Sets the vivo notification message classification. Valid values:
+	// Set the vivo notification message classification. Valid values:
 	//
 	// - 0: Operational messages (default)
 	//
 	// - 1: System messages
 	//
-	// > 	- For the vivo channel, use AndroidMessageVivoCategory for notification classification. AndroidNotificationVivoChannel is no longer required.
+	// >- The vivo channel now recommends using AndroidMessageVivoCategory for notification classification. AndroidNotificationVivoChannel is no longer required.
 	//
-	// >
-	//
-	// > 	- Apply for this on the vivo platform. For more information, see [Application Link](https://dev.vivo.com.cn/documentCenter/doc/359).
+	// >- Application is required on the vivo platform. See: [Application link](https://dev.vivo.com.cn/documentCenter/doc/359).
 	//
 	// example:
 	//
 	// 0
 	AndroidNotificationVivoChannel *string `json:"AndroidNotificationVivoChannel,omitempty" xml:"AndroidNotificationVivoChannel,omitempty"`
-	// Sets the channel ID for the Xiaomi notification type. Apply for it on the Xiaomi platform. For more information, see [Application Link](https://dev.mi.com/console/doc/detail?pId=2422#_4).
+	// Set the channelId for Xiaomi notification types. Application is required on the Xiaomi platform. See: [Application link](https://dev.mi.com/console/doc/detail?pId=2422#_4).
 	//
-	// > - A single application can apply for a maximum of 8 channels on the Xiaomi platform. Plan accordingly.
+	// >- A single application on the Xiaomi channel can apply for up to 8 channels. Please plan ahead.
 	//
 	// example:
 	//
 	// michannel
 	AndroidNotificationXiaomiChannel *string `json:"AndroidNotificationXiaomiChannel,omitempty" xml:"AndroidNotificationXiaomiChannel,omitempty"`
-	// The notification reminder method. Valid values:
+	// Notification alert type. Valid values:
 	//
-	// - **VIBRATE**: Vibrate (default)
+	// - **VIBRATE**: Vibration (default)
 	//
 	// - **SOUND**: Sound
 	//
-	// - **BOTH**: Sound and vibrate
+	// - **BOTH**: Sound and vibration
 	//
 	// - **NONE**: Silent
 	//
@@ -508,27 +504,27 @@ type MassPushRequestPushTask struct {
 	//
 	// VIBRATE
 	AndroidNotifyType *string `json:"AndroidNotifyType,omitempty" xml:"AndroidNotifyType,omitempty"`
-	// The action to take after a notification is tapped. Valid values:
+	// Action after clicking the notification. Valid values:
 	//
-	// - APPLICATION: Open the application (default)
+	// - APPLICATION: Open the app (default)
 	//
-	// - ACTIVITY: Open the application\\"s AndroidActivity
+	// - ACTIVITY: Open an Android Activity
 	//
 	// - URL: Open a URL
 	//
-	// - NONE: No action
+	// - NONE: No navigation
 	//
 	// example:
 	//
 	// APPLICATION
 	AndroidOpenType *string `json:"AndroidOpenType,omitempty" xml:"AndroidOpenType,omitempty"`
-	// The URL to open after the Android device receives the push. This is required only when PushTask.N.AndroidOpenType is set to "URL".
+	// The URL to open after Android receives the push. Only applicable when PushTask.N.AndroidOpenType="URL".
 	//
 	// example:
 	//
 	// https://xxxx.xxx
 	AndroidOpenUrl *string `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
-	// A JSON string of the OPPO Fluid Cloud intent deletion data structure [data](https://open.oppomobile.com/documentation/page/info?id=13578). This parameter is invalid if the AndroidOppoIntelligentIntent parameter is already filled. For development and integration, see the [OPPO Fluid Cloud Push Guide](https://help.aliyun.com/document_detail/2997310.html).
+	// JSON string of the OPPO Fluid Cloud intent deletion data structure [data](https://open.oppomobile.com/documentation/page/info?id=13578). This parameter is ignored when the AndroidOppoIntelligentIntent parameter is already provided. For development integration, see [OPPO Fluid Cloud Push Guide](https://help.aliyun.com/document_detail/2997310.html)
 	//
 	// example:
 	//
@@ -552,7 +548,7 @@ type MassPushRequestPushTask struct {
 	//
 	// }
 	AndroidOppoDeleteIntentData *string `json:"AndroidOppoDeleteIntentData,omitempty" xml:"AndroidOppoDeleteIntentData,omitempty"`
-	// A JSON string of the OPPO Fluid Cloud intent sharing data structure [IntelligentIntent](https://open.oppomobile.com/documentation/page/info?id=13565). For development and integration, see the [OPPO Fluid Cloud Push Guide](https://help.aliyun.com/document_detail/2997310.html).
+	// JSON string of the OPPO Fluid Cloud intent sharing data structure [IntelligentIntent](https://open.oppomobile.com/documentation/page/info?id=13565). For development integration, see [OPPO Fluid Cloud Push Guide](https://help.aliyun.com/document_detail/2997310.html)
 	//
 	// example:
 	//
@@ -586,13 +582,13 @@ type MassPushRequestPushTask struct {
 	//
 	// }
 	AndroidOppoIntelligentIntent *string `json:"AndroidOppoIntelligentIntent,omitempty" xml:"AndroidOppoIntelligentIntent,omitempty"`
-	// Sets the OPPO Fluid Cloud push environment
+	// Set the OPPO Fluid Cloud push environment:
 	//
 	// - **0**: Production environment (default).
 	//
-	// - **1**: Staging environment.
+	// - **1**: Test environment.
 	//
-	// > The OPPO Fluid Cloud staging environment needs to be set up on the client side. For more information, see [Environment Setup](https://open.oppomobile.com/documentation/page/info?id=13590).
+	// > The OPPO Fluid Cloud test environment requires client-side setup. See [Environment Setup](https://open.oppomobile.com/documentation/page/info?id=13590).
 	//
 	// example:
 	//
@@ -606,9 +602,7 @@ type MassPushRequestPushTask struct {
 	//
 	// OPPO private message template ID
 	//
-	// 	Warning:
-	//
-	// The OPPO private message template feature is no longer supported by MaasPush. To use this feature, use the Push, PushV2, or MassPushV2 API instead.
+	// 	Warning: The OPPO private message template feature is no longer supported by MaasPush. To use this feature, please use the Push, PushV2, or MassPushV2 API instead.
 	//
 	// example:
 	//
@@ -618,73 +612,71 @@ type MassPushRequestPushTask struct {
 	//
 	// OPPO private message template title parameters
 	AndroidOppoPrivateTitleParameters map[string]*string `json:"AndroidOppoPrivateTitleParameters,omitempty" xml:"AndroidOppoPrivateTitleParameters,omitempty"`
-	// Specifies the Activity to which the user is redirected after tapping the notification.
+	// Specify the Activity to navigate to when the notification is clicked.
 	//
 	// example:
 	//
 	// com.alibaba.cloudpushdemo.bizactivity
 	AndroidPopupActivity *string `json:"AndroidPopupActivity,omitempty" xml:"AndroidPopupActivity,omitempty"`
-	// The body content in auxiliary pop-up mode. This parameter is required if the AndroidPopupActivity parameter is not empty.
+	// Body content in auxiliary popup mode. Required when the AndroidPopupActivity parameter is not empty.
 	//
-	// Length limit: 200 characters. Both Chinese and English characters count as one.
+	// Length limit: 200 characters (both Chinese and English characters count as one character each).
 	//
-	// If you use a vendor channel, comply with the vendor channel\\"s restrictions. For more information, see [Limits on auxiliary channel pushes for Android](https://help.aliyun.com/document_detail/165253.html).
+	// When using vendor channels, you must also comply with the vendor channel restrictions. For details, see [Android Auxiliary Channel Push Limits](https://help.aliyun.com/document_detail/165253.html).
 	//
 	// example:
 	//
 	// hello
 	AndroidPopupBody *string `json:"AndroidPopupBody,omitempty" xml:"AndroidPopupBody,omitempty"`
-	// The title content in auxiliary pop-up mode. This parameter is required if the AndroidPopupActivity parameter is not empty.
+	// Title content in auxiliary popup mode. Required when the AndroidPopupActivity parameter is not empty.
 	//
-	// Length limit: 50 characters. Both Chinese and English characters count as one.
+	// Length limit: 50 characters (both Chinese and English characters count as one character each).
 	//
-	// If you use a vendor channel, comply with the vendor channel\\"s restrictions. For more information, see [Limits on auxiliary channel pushes for Android](https://help.aliyun.com/document_detail/165253.html).
+	// When using vendor channels, you must also comply with the vendor channel restrictions. For details, see [Android Auxiliary Channel Push Limits](https://help.aliyun.com/document_detail/165253.html).
 	//
 	// example:
 	//
 	// hello
 	AndroidPopupTitle *string `json:"AndroidPopupTitle,omitempty" xml:"AndroidPopupTitle,omitempty"`
-	// If the push type is MESSAGE and the device is offline, this push uses the auxiliary pop-up feature. The default value is false. This parameter takes effect only when PushType is MESSAGE.
+	// When the push type is message and the device is offline, this push will use the auxiliary popup feature. Defaults to false. Only takes effect when PushType=MESSAGE.
 	//
-	// If a message is successfully converted to a notification, the displayed notification uses the values of the AndroidPopupTitle and AndroidPopupBody parameters. When the user taps the notification, the data retrieved by the onSysNoticeOpened method of the auxiliary pop-up uses the values of the Title and Body parameters.
+	// If the message-to-notification conversion push is successful, the notification displays the data set by the server\\"s AndroidPopupTitle and AndroidPopupBody parameter values. The data obtained when clicking the notification in the auxiliary popup\\"s onSysNoticeOpened method is the server-set Title and Body parameter values.
 	//
 	// example:
 	//
 	// true
 	AndroidRemind *bool `json:"AndroidRemind,omitempty" xml:"AndroidRemind,omitempty"`
-	// The notification style. Valid values:
+	// Notification style. Valid values:
 	//
 	// - **0**: Standard mode (default)
 	//
-	// - **1**: Long text mode (supported by Huawei, Honor, Xiaomi, OPPO, Meizu, and Alibaba Cloud\\"s proprietary channel)
+	// - **1**: Long text mode (supported by Huawei, Honor, Xiaomi, OPPO, Meizu, and proprietary channels)
 	//
-	// - **2**: Big picture mode (supported by Alibaba Cloud\\"s proprietary channel, not supported on Xiaomi models)
+	// - **2**: Big picture mode (supported by proprietary channel, not supported on Xiaomi devices)
 	//
-	// - **3**: List mode (supported by Huawei, Honor, Xiaomi, OPPO, and Alibaba Cloud\\"s proprietary channel)
+	// - **3**: List mode (supported by Huawei, Honor, Xiaomi, OPPO, and proprietary channels)
 	//
-	// > This parameter is required for non-standard modes.
+	// > This parameter is required when using non-standard modes.
 	//
 	// example:
 	//
 	// 1
 	AndroidRenderStyle *string `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
-	// Sets the vendor channel notification type:
+	// Set the vendor channel notification type:
 	//
-	// - **0**: Formal notification (default).
+	// - **0**: Production notification (default).
 	//
 	// - **1**: Test notification.
 	//
-	// > 	- Configuring this parameter is equivalent to configuring the AndroidHuaweiTargetUserType, AndroidHonorTargetUserType, AndroidVivoPushMode, and AndroidOppoIntentEnv parameters at the same time. A specific vendor channel parameter can override this parameter.
+	// >- Configuring this parameter is equivalent to simultaneously configuring the AndroidHuaweiTargetUserType, AndroidHonorTargetUserType, AndroidVivoPushMode, and AndroidOppoIntentEnv parameters. The corresponding parameter for a specific vendor channel can override this parameter.
 	//
-	// >
-	//
-	// > 	- Currently supported: Huawei channel, Honor channel, vivo channel, OPPO Fluid Cloud.
+	// >- Currently supported: Huawei channel, Honor channel, vivo channel, and OPPO Fluid Cloud.
 	//
 	// example:
 	//
 	// 1
 	AndroidTargetUserType *int32 `json:"AndroidTargetUserType,omitempty" xml:"AndroidTargetUserType,omitempty"`
-	// A JSON string of the vivo Atomic Island data structure [liveMessage](https://dev.vivo.com.cn/documentCenter/doc/896#s-fdagzbd4). For development and integration, see the [vivo Atomic Island Push Guide](https://help.aliyun.com/zh/document_detail/3030718.html).
+	// JSON string of the vivo Atomic Island data structure [liveMessage](https://dev.vivo.com.cn/documentCenter/doc/896#s-fdagzbd4). For development integration, see [vivo Atomic Island Push Guide](https://help.aliyun.com/zh/document_detail/3030718.html)
 	//
 	// example:
 	//
@@ -708,21 +700,21 @@ type MassPushRequestPushTask struct {
 	//
 	// }
 	AndroidVivoLiveMessage *string `json:"AndroidVivoLiveMessage,omitempty" xml:"AndroidVivoLiveMessage,omitempty"`
-	// Sets the vivo channel notification type:
+	// Set the vivo channel notification type:
 	//
-	// - **0**: Formal push (default).
+	// - **0**: Production push (default).
 	//
 	// - **1**: Test push.
 	//
-	// > For test pushes, configure the test devices in the vivo console beforehand. You can obtain the test device\\"s RegId by searching for "onReceiveRegId regId" in the device startup logs.
+	// > For test pushes, configure test devices in the vivo console in advance. The test device RegId can be obtained by searching for "onReceiveRegId regId" in the device startup logs.
 	//
 	// example:
 	//
 	// 1
 	AndroidVivoPushMode *int32 `json:"AndroidVivoPushMode,omitempty" xml:"AndroidVivoPushMode,omitempty"`
-	// The receipt ID for the vivo channel. View this receipt ID in the application information of the push service on the vivo open platform.
+	// vivo channel receipt ID. This receipt ID can be found in the app information section of the push service on the vivo open platform.
 	//
-	// > If the default receipt configuration on the vivo open platform is the Alibaba Cloud receipt, you do not need to provide this. If not, we recommend that you first configure the default receipt ID for the vivo channel in the Alibaba Cloud EMAS Mobile Push console.
+	// > If the default receipt configuration on the vivo open platform is set to Alibaba Cloud receipt, this is not required. If not, we recommend configuring the default vivo channel receipt ID in the Alibaba Cloud EMAS Mobile Push console first.
 	//
 	// example:
 	//
@@ -730,7 +722,7 @@ type MassPushRequestPushTask struct {
 	AndroidVivoReceiptId *string `json:"AndroidVivoReceiptId,omitempty" xml:"AndroidVivoReceiptId,omitempty"`
 	// Deprecated
 	//
-	// This parameter is deprecated. All third-party auxiliary pop-ups are now supported by the new **AndroidPopupActivity*	- parameter.
+	// This parameter has been deprecated. All third-party auxiliary popups are now supported by the new parameter **AndroidPopupActivity**.
 	//
 	// example:
 	//
@@ -738,7 +730,7 @@ type MassPushRequestPushTask struct {
 	AndroidXiaoMiActivity *string `json:"AndroidXiaoMiActivity,omitempty" xml:"AndroidXiaoMiActivity,omitempty"`
 	// Deprecated
 	//
-	// This parameter is deprecated. All third-party auxiliary pop-ups are now supported by the new **AndroidPopupBody*	- parameter.
+	// This parameter has been deprecated. All third-party auxiliary popups are now supported by the new parameter **AndroidPopupBody**.
 	//
 	// example:
 	//
@@ -746,7 +738,7 @@ type MassPushRequestPushTask struct {
 	AndroidXiaoMiNotifyBody *string `json:"AndroidXiaoMiNotifyBody,omitempty" xml:"AndroidXiaoMiNotifyBody,omitempty"`
 	// Deprecated
 	//
-	// This parameter is deprecated. All third-party auxiliary pop-ups are now supported by the new **AndroidPopupTitle*	- parameter.
+	// This parameter has been deprecated. All third-party auxiliary popups are now supported by the new parameter **AndroidPopupTitle**.
 	//
 	// example:
 	//
@@ -754,13 +746,13 @@ type MassPushRequestPushTask struct {
 	AndroidXiaoMiNotifyTitle *string `json:"AndroidXiaoMiNotifyTitle,omitempty" xml:"AndroidXiaoMiNotifyTitle,omitempty"`
 	// Deprecated
 	//
-	// This parameter is deprecated. Since August 2023, Xiaomi no longer supports dynamically setting small icons, right-side icons, or large pictures during pushes on new devices or systems.
+	// This parameter has been deprecated. Since August 2023, Xiaomi has officially discontinued support for dynamically setting small icons, right-side icons, and big pictures during push on new devices/systems.
 	//
 	// example:
 	//
 	// https://f6.market.xiaomi.com/download/MiPass/aaa/bbb.png
 	AndroidXiaomiBigPictureUrl *string `json:"AndroidXiaomiBigPictureUrl,omitempty" xml:"AndroidXiaomiBigPictureUrl,omitempty"`
-	// A JSON string of the Xiaomi HyperOS Island data structure [miui.focus.param](https://dev.mi.com/xiaomihyperos/documentation/detail?pId=2131). For development and integration, see the [Xiaomi HyperOS Island Push Guide](https://help.aliyun.com/zh/document_detail/3037956.html).
+	// JSON string of the Xiaomi Super Island data structure [miui.focus.param](https://dev.mi.com/xiaomihyperos/documentation/detail?pId=2131). For development integration, see [Xiaomi Super Island Push Guide](https://help.aliyun.com/zh/document_detail/3037956.html)
 	//
 	// example:
 	//
@@ -794,7 +786,7 @@ type MassPushRequestPushTask struct {
 	//
 	// }
 	AndroidXiaomiFocusParam *string `json:"AndroidXiaomiFocusParam,omitempty" xml:"AndroidXiaomiFocusParam,omitempty"`
-	// A JSON string of the Xiaomi HyperOS Island data image [miui.focus.pic_xxx](https://dev.mi.com/xiaomihyperos/documentation/detail?pId=2131). For development and integration, see the [Xiaomi HyperOS Island Push Guide](https://help.aliyun.com/zh/document_detail/3037956.html).
+	// JSON string of the Xiaomi Super Island images [miui.focus.pic_xxx](https://dev.mi.com/xiaomihyperos/documentation/detail?pId=2131). For development integration, see [Xiaomi Super Island Push Guide](https://help.aliyun.com/zh/document_detail/3037956.html)
 	//
 	// example:
 	//
@@ -810,29 +802,39 @@ type MassPushRequestPushTask struct {
 	AndroidXiaomiFocusPics *string `json:"AndroidXiaomiFocusPics,omitempty" xml:"AndroidXiaomiFocusPics,omitempty"`
 	// Deprecated
 	//
-	// This parameter is deprecated. Since August 2023, Xiaomi no longer supports dynamically setting small icons, right-side icons, or large pictures during pushes on new devices or systems.
+	// This parameter has been deprecated. Since August 2023, Xiaomi has officially discontinued support for dynamically setting small icons, right-side icons, and big pictures during push on new devices/systems.
 	//
 	// example:
 	//
 	// https://imag.example.com/image.png
-	AndroidXiaomiImageUrl       *string `json:"AndroidXiaomiImageUrl,omitempty" xml:"AndroidXiaomiImageUrl,omitempty"`
-	AndroidXiaomiTemplateId     *string `json:"AndroidXiaomiTemplateId,omitempty" xml:"AndroidXiaomiTemplateId,omitempty"`
+	AndroidXiaomiImageUrl *string `json:"AndroidXiaomiImageUrl,omitempty" xml:"AndroidXiaomiImageUrl,omitempty"`
+	// Xiaomi private message template ID
+	//
+	// example:
+	//
+	// P10645
+	AndroidXiaomiTemplateId *string `json:"AndroidXiaomiTemplateId,omitempty" xml:"AndroidXiaomiTemplateId,omitempty"`
+	// Xiaomi private message template parameters, JSON string
+	//
+	// example:
+	//
+	// {"keywords1":"Tom","keywords2":"phone"}
 	AndroidXiaomiTemplateParams *string `json:"AndroidXiaomiTemplateParams,omitempty" xml:"AndroidXiaomiTemplateParams,omitempty"`
-	// The content of the notification or message for Android and HarmonyOS pushes. The content of the message or notification for iOS. The content size is limited. For more information, see [Product limits](https://help.aliyun.com/document_detail/92832.html).
+	// Content of the notification/message for Android and HarmonyOS pushes; iOS message/notification content. The push content size is limited. See [Product Limits](https://help.aliyun.com/document_detail/92832.html).
 	//
 	// example:
 	//
 	// hello
 	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
-	// The device type. Valid values:
+	// Device type. Valid values:
 	//
-	// - HARMONY: HarmonyOS devices
+	// - HARMONY: HarmonyOS device
 	//
-	// - iOS: iOS devices
+	// - iOS: iOS device
 	//
-	// - ANDROID: Android devices
+	// - ANDROID: Android device
 	//
-	// - ALL: If the AppKey is for an old version of a dual-platform application, this value indicates that pushes are sent to both Android and iOS devices. If the AppKey is for a new version of a single-platform application, the effect is the same as specifying the device type corresponding to that application type.
+	// - ALL: When the AppKey is for a legacy dual-platform app, this pushes to both Android and iOS devices simultaneously. When the AppKey is for a new single-platform app, the effect is the same as specifying the device type corresponding to the app type.
 	//
 	// This parameter is required.
 	//
@@ -840,139 +842,135 @@ type MassPushRequestPushTask struct {
 	//
 	// HARMONY
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	// The time-to-live (TTL) for offline messages or notifications. Use this with StoreOffline. After the TTL expires, the message or notification is no longer sent. The maximum TTL is 72 hours. The default is 72 hours.
+	// Expiration time of offline messages/notifications. Used together with StoreOffline. Expired messages will no longer be sent. The maximum retention period is 72 hours. The default is 72 hours.
 	//
-	// The time must be in ISO 8601 format and in UTC: YYYY-MM-DDThh:mm:ssZ. The expiration time must be at least 3 seconds later than the current time or the scheduled push time (`ExpireTime > PushTime + 3 seconds`). The 3-second buffer accounts for potential network and system latency. Set the TTL to at least 1 minute for individual pushes and at least 10 minutes for full or batch pushes.
+	// The time format follows the ISO 8601 standard and must use UTC time in the format YYYY-MM-DDThh:mm:ssZ. The expiration time cannot be earlier than the current time or the scheduled push time plus 3 seconds (`ExpireTime > PushTime + 3 seconds`). The 3-second buffer accounts for network and system latency. We recommend at least 1 minute for unicast pushes and at least 10 minutes for broadcast and batch pushes.
 	//
 	// example:
 	//
 	// 2019-02-20T00:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The action corresponding to the in-app page ability.
+	// The action corresponding to the built-in page ability of the app.
 	//
-	// 	Notice:
+	// 	Notice: When HarmonyActionType is APP_CUSTOM_PAGE, at least one of HarmonyUri and HarmonyAction must be provided.
 	//
-	// When HarmonyActionType is APP_CUSTOM_PAGE, at least one of HarmonyUri and HarmonyAction must be filled in.
-	//
-	//
-	//
-	// For more information, see [ClickAction.action](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section152462191216) on the HarmonyOS website.
+	// For details, see HarmonyOS official documentation [ClickAction.action](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section152462191216)
 	//
 	// example:
 	//
 	// com.example.action
 	HarmonyAction *string `json:"HarmonyAction,omitempty" xml:"HarmonyAction,omitempty"`
-	// The action to take after a notification is tapped. Valid values:
+	// Action after clicking the notification. Valid values:
 	//
-	// - APP_HOME_PAGE: Open the application home page
+	// - APP_HOME_PAGE: Open the app home page
 	//
-	// - APP_CUSTOM_PAGE: Open a custom application page
+	// - APP_CUSTOM_PAGE: Open a custom app page
 	//
 	// example:
 	//
 	// APP_HOME_PAGE
 	HarmonyActionType *string `json:"HarmonyActionType,omitempty" xml:"HarmonyActionType,omitempty"`
-	// The number to add to the HarmonyOS application badge. See the [HarmonyOS badge addNum field description](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section266310382145).<br>
+	// HarmonyOS app badge increment number. See [HarmonyOS badge addNum field description](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section266310382145).</br>
 	//
-	// Supported starting from HarmonyOS SDK version 1.2.0.<br>
+	// Supported from HarmonyOS SDK 1.2.0.
 	//
 	// example:
 	//
 	// 1
 	HarmonyBadgeAddNum *int32 `json:"HarmonyBadgeAddNum,omitempty" xml:"HarmonyBadgeAddNum,omitempty"`
-	// The number to set for the HarmonyOS application badge. See the [HarmonyOS badge setNum field description](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section266310382145).<br>
+	// HarmonyOS app badge set number. See [HarmonyOS badge setNum field description](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section266310382145).</br>
 	//
-	// Supported starting from HarmonyOS SDK version 1.2.0.<br>
+	// Supported from HarmonyOS SDK 1.2.0.
 	//
 	// example:
 	//
 	// 1
 	HarmonyBadgeSetNum *int32 `json:"HarmonyBadgeSetNum,omitempty" xml:"HarmonyBadgeSetNum,omitempty"`
-	// The notification message category. After applying for notification message self-classification permissions, use this to identify the message type. Different notification message types affect how messages are displayed and reminded. Valid values:
+	// Notification message category. After completing the notification message self-classification privilege application, this is used to identify the message type. Different notification message types affect the display and alert methods. Valid values:
 	//
 	// - IM: Instant messaging
 	//
-	// - VOIP: Video call
+	// - VOIP: Audio/video calls
 	//
-	// - SUBSCRIPTION: Subscription
+	// - SUBSCRIPTION: Subscriptions
 	//
 	// - TRAVEL: Travel
 	//
 	// - HEALTH: Health
 	//
-	// - WORK: Work item reminder
+	// - WORK: Work task reminders
 	//
 	// - ACCOUNT: Account updates
 	//
-	// - EXPRESS: Order & logistics
+	// - EXPRESS: Orders & logistics
 	//
 	// - FINANCE: Finance
 	//
-	// - DEVICE_REMINDER: Device reminder
+	// - DEVICE_REMINDER: Device reminders
 	//
 	// - MAIL: Email
 	//
-	// - CUSTOMER_SERVICE: Customer service message
+	// - CUSTOMER_SERVICE: Customer service messages
 	//
-	// - MARKETING: News, content recommendations, social updates, product promotions, financial updates, lifestyle information, surveys, feature recommendations, and operational activities (only identifies content, does not expedite message sending), collectively referred to as marketing messages.
+	// - MARKETING: News, content recommendations, social updates, product promotions, financial updates, lifestyle information, surveys, feature recommendations, and operational campaigns (only marks the content, does not speed up message delivery), collectively referred to as information and marketing messages
 	//
-	// For more information, see [Notification.category](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section17371529101117) on the HarmonyOS website.
+	// For details, see HarmonyOS official documentation [Notification.category](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section17371529101117)
 	//
 	// example:
 	//
 	// IM
 	HarmonyCategory *string `json:"HarmonyCategory,omitempty" xml:"HarmonyCategory,omitempty"`
-	// Sets the extended properties of the notification. This parameter does not take effect when the push type PushType is set to MESSAGE.
+	// Set notification extended properties. This property does not take effect when the push type PushType is set to MESSAGE.
 	//
-	// This parameter must be passed in JSON map format, or it will fail to parse.
+	// This parameter must be passed in JSON map format; otherwise, parsing errors will occur.
 	//
 	// example:
 	//
 	// {"key1":"value1","api_name":"PushNoticeToAndroidRequest"}
 	HarmonyExtParameters *string `json:"HarmonyExtParameters,omitempty" xml:"HarmonyExtParameters,omitempty"`
-	// Extra data for the extended notification message.<br>
+	// Extra data for notification extension messages.</br>
 	//
-	// Effective when sending HarmonyOS extended notification messages.<br>
+	// Valid when sending HarmonyOS notification extension messages.</br>
 	//
-	// Conceptually equivalent to the extraData field of a HarmonyOS extended notification message. For a detailed definition, see [HarmonyOS ExtensionPayload Description](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section161192514234).<br>
+	// Conceptually equivalent to the extraData field of HarmonyOS notification extension messages. For the specific definition, see [HarmonyOS ExtensionPayload Description](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section161192514234).</br>
 	//
-	// Supported starting from HarmonyOS SDK version 1.2.0.<br><br><br>
+	// Supported from HarmonyOS SDK 1.2.0.
 	//
 	// example:
 	//
 	// 示例额外数据
 	HarmonyExtensionExtraData *string `json:"HarmonyExtensionExtraData,omitempty" xml:"HarmonyExtensionExtraData,omitempty"`
-	// When PushType is NOTICE, specifies whether it is a HarmonyOS extended notification message.
+	// When PushType is NOTICE, whether this is a HarmonyOS notification extension message.
 	//
-	// - true: Send an extended notification message
+	// - true: Send a notification extension message
 	//
-	// - false: Send a normal notification (default)
+	// - false: Send a regular notification (default)
 	//
-	// You must apply for permission on the HarmonyOS side before sending extended notification messages. For more information, see [Send Extended Notification Messages](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/push-send-extend-noti-V5) in the HarmonyOS documentation.<br>
+	// Notification extension messages require permission to be applied for on the HarmonyOS side before sending. For details, see the HarmonyOS documentation [Send Notification Extension Messages](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/push-send-extend-noti-V5).</br>
 	//
-	// Supported starting from HarmonyOS SDK version 1.2.0.<br>
+	// Supported from HarmonyOS SDK 1.2.0.
 	//
 	// example:
 	//
 	// true
 	HarmonyExtensionPush *bool `json:"HarmonyExtensionPush,omitempty" xml:"HarmonyExtensionPush,omitempty"`
-	// The URL for the large icon on the right of the notification. The URL must use the HTTPS protocol.
+	// URL for the large icon on the right side of the notification. The URL must use the HTTPS protocol.
 	//
-	// > Supported image formats are png, jpg, jpeg, heif, gif, and bmp. The image length × width must be less than 25,000 pixels.
+	// > Supported image formats: png, jpg, jpeg, heif, gif, bmp. Image dimensions must satisfy height × width < 25,000 pixels.
 	//
-	// For more information, see [Notification.image](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section17371529101117) on the HarmonyOS website.
+	// For details, see HarmonyOS official documentation [Notification.image](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section17371529101117)
 	//
 	// example:
 	//
 	// https://example.com/xxx.png
 	HarmonyImageUrl *string `json:"HarmonyImageUrl,omitempty" xml:"HarmonyImageUrl,omitempty"`
-	// The content for the multi-line text style. This field is required when HarmonyRenderStyle is MULTI_LINE. A maximum of 3 content entries are supported.
+	// Content for multi-line text style. Required when HarmonyRenderStyle is MULTI_LINE. Up to 3 content items are supported.
 	//
 	// example:
 	//
 	// ["1.content1","2.content2","3.content3"]
 	HarmonyInboxContent *string `json:"HarmonyInboxContent,omitempty" xml:"HarmonyInboxContent,omitempty"`
-	// A JSON string of the HarmonyOS Live Window data structure [LiveViewPayload](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V13/push-scenariozed-api-request-param-V13#section66881469306). For development and integration, see the [HarmonyOS Live Window Push Guide](https://help.aliyun.com/document_detail/2982112.html).
+	// JSON string of the HarmonyOS Live View data structure [LiveViewPayload](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V13/push-scenariozed-api-request-param-V13#section66881469306). For development integration, see [HarmonyOS Live View Push Guide](https://help.aliyun.com/document_detail/2982112.html)
 	//
 	// example:
 	//
@@ -998,65 +996,65 @@ type MassPushRequestPushTask struct {
 	//
 	// }
 	HarmonyLiveViewPayload *string `json:"HarmonyLiveViewPayload,omitempty" xml:"HarmonyLiveViewPayload,omitempty"`
-	// Uses the specified type of notification channel. This is effective only when the Alibaba Cloud proprietary channel is online.
+	// Use the specified type of notification slot. Only valid when the Alibaba Cloud proprietary channel is online.
 	//
 	// - SOCIAL_COMMUNICATION: Social communication.
 	//
-	// - SERVICE_INFORMATION: Service reminder.
+	// - SERVICE_INFORMATION: Service reminders.
 	//
 	// - CONTENT_INFORMATION: Content information.
 	//
-	// - CUSTOMER_SERVICE: Customer service message. This type is used for customer service messages between users and businesses and must be initiated by the user.
+	// - CUSTOMER_SERVICE: Customer service messages. This type is used for customer service messages between users and merchants, and must be initiated by the user.
 	//
-	// - OTHER_TYPES: Other.
+	// - OTHER_TYPES: Others.
 	//
-	// For more information, see [SlotType](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-notificationmanager-V5#slottype) on the HarmonyOS website.
+	// For details, see HarmonyOS official documentation [SlotType](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-notificationmanager-V5#slottype)
 	//
 	// example:
 	//
 	// SOCIAL_COMMUNICATION
 	HarmonyNotificationSlotType *string `json:"HarmonyNotificationSlotType,omitempty" xml:"HarmonyNotificationSlotType,omitempty"`
-	// The unique ID for each message when it is displayed as a notification. If not included, the push service automatically generates a unique ID for each message. Different notification messages can have the same notifyId to allow new messages to overwrite old ones.
+	// Unique identifier for each message displayed in the notification. When not provided, the push service automatically generates a unique identifier for each message. Different notification messages can share the same notifyId, enabling new messages to replace old ones.
 	//
-	// For more information, see [Notification.notifyId](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section17371529101117) on the HarmonyOS website.
+	// For details, see HarmonyOS official documentation [Notification.notifyId](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section17371529101117)
 	//
 	// example:
 	//
 	// 0
 	HarmonyNotifyId *int32 `json:"HarmonyNotifyId,omitempty" xml:"HarmonyNotifyId,omitempty"`
-	// The receipt ID for the HarmonyOS channel. View this receipt ID in the receipt parameter configuration on the HarmonyOS Push operations platform.
+	// HarmonyOS channel receipt ID. This receipt ID can be found in the receipt parameter configuration on the HarmonyOS channel push operations platform.
 	//
-	// > If the default receipt configuration on the HarmonyOS Push operations platform is the Alibaba Cloud receipt, you do not need to provide this. If not, we recommend that you first configure the default receipt ID for the HarmonyOS channel in the Alibaba Cloud EMAS Mobile Push console.
+	// > If the default receipt configuration on the HarmonyOS channel push operations platform is set to Alibaba Cloud receipt, this is not required. If not, we recommend configuring the default HarmonyOS channel receipt ID in the Alibaba Cloud EMAS Mobile Push console first.
 	//
-	// For more information, see [pushOptions.receiptId](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section418321011212) on the HarmonyOS website.
+	// For details, see HarmonyOS official documentation [pushOptions.receiptId](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section418321011212)
 	//
 	// example:
 	//
 	// RCPB***DFD5
 	HarmonyReceiptId *string `json:"HarmonyReceiptId,omitempty" xml:"HarmonyReceiptId,omitempty"`
-	// If the push type is MESSAGE and the device is offline, this push uses the auxiliary pop-up feature. The default value is false. This parameter is effective only when PushType is set to MESSAGE.
+	// When the push type is message and the device is offline, this push will use the auxiliary popup feature. Defaults to false. Only takes effect when PushType=MESSAGE.
 	//
-	// If a message is successfully converted to a notification, the data displayed in the notification is the value of the server-side HarmonyRemindTitle and HarmonyRemindBody parameters.
+	// If the message-to-notification conversion push is successful, the notification displays the data set by the server\\"s HarmonyRemindTitle and HarmonyRemindBody parameter values.
 	//
 	// example:
 	//
 	// false
 	HarmonyRemind *bool `json:"HarmonyRemind,omitempty" xml:"HarmonyRemind,omitempty"`
-	// The HarmonyOS notification content used when a message is converted to a notification. This is effective only when HarmonyRemind is set to true.
+	// HarmonyOS notification content used when converting HarmonyOS messages to notifications. Only valid when HarmonyRemind is true.
 	//
 	// example:
 	//
 	// 您有一条新消息，请查收
 	HarmonyRemindBody *string `json:"HarmonyRemindBody,omitempty" xml:"HarmonyRemindBody,omitempty"`
-	// The HarmonyOS notification title used when a message is converted to a notification. This is effective only when HarmonyRemind is set to true.
+	// HarmonyOS notification title used when converting HarmonyOS messages to notifications. Only valid when HarmonyRemind is true.
 	//
 	// example:
 	//
 	// 新消息
 	HarmonyRemindTitle *string `json:"HarmonyRemindTitle,omitempty" xml:"HarmonyRemindTitle,omitempty"`
-	// The notification message style:
+	// Notification message style:
 	//
-	// - NORMAL: Normal notification (default)
+	// - NORMAL: Standard notification (default)
 	//
 	// - MULTI_LINE: Multi-line text style
 	//
@@ -1064,47 +1062,47 @@ type MassPushRequestPushTask struct {
 	//
 	// NORMAL
 	HarmonyRenderStyle *string `json:"HarmonyRenderStyle,omitempty" xml:"HarmonyRenderStyle,omitempty"`
-	// The test message flag:
+	// Test message flag:
 	//
 	// - false: Normal message (default)
 	//
 	// - true: Test message
 	//
-	// For more information, see [pushOptions.testMessage](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section418321011212) on the HarmonyOS website.
+	// For details, see HarmonyOS official documentation [pushOptions.testMessage](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section418321011212)
 	//
 	// example:
 	//
 	// true
 	HarmonyTestMessage *bool `json:"HarmonyTestMessage,omitempty" xml:"HarmonyTestMessage,omitempty"`
-	// The URI corresponding to the in-app page ability.
+	// The URI corresponding to the built-in page ability of the app.
 	//
-	// 	Notice: When HarmonyActionType is APP_CUSTOM_PAGE, at least one of HarmonyUri and HarmonyAction must be filled in. When there are multiple Abilities, fill in the action and URI for each Ability separately. The action is used with priority to find the corresponding in-app page.
+	// 	Notice: When HarmonyActionType is APP_CUSTOM_PAGE, at least one of HarmonyUri and HarmonyAction must be provided. When multiple Abilities exist, provide different action and URI values for each Ability. The action is prioritized when looking up the corresponding built-in app page.
 	//
-	// For more information, see [ClickAction.uri](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section152462191216) on the HarmonyOS website.
+	// For details, see HarmonyOS official documentation [ClickAction.uri](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section152462191216)
 	//
 	// example:
 	//
 	// https://www.example.com:8080/push/example
 	HarmonyUri *string `json:"HarmonyUri,omitempty" xml:"HarmonyUri,omitempty"`
-	// A custom ID for the push task. If JobKey is not empty, this field is included in the receipt logs. For more information about how to view receipt logs, see [Receipt logs](https://help.aliyun.com/document_detail/434651.html).
+	// Custom identifier for the push task. When JobKey is not empty, this field will be included in the receipt logs. For receipt log details, see [Receipt Logs](https://help.aliyun.com/document_detail/434651.html).
 	//
 	// example:
 	//
 	// 123
 	JobKey *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
-	// Specifies the time for a scheduled push. If you do not set this parameter, the push is sent immediately.
+	// Used for scheduled sending. If not set, the default is immediate sending.
 	//
-	// The time must be in ISO 8601 format and in UTC: YYYY-MM-DDThh:mm:ssZ.
+	// The time format follows the ISO 8601 standard and must use UTC time in the format YYYY-MM-DDThh:mm:ssZ.
 	//
 	// example:
 	//
 	// 2019-02-20T00:00:00Z
 	PushTime *string `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
-	// The push type. Valid values:
+	// Push type. Valid values:
 	//
-	// - MESSAGE: a message.
+	// - MESSAGE: indicates a message.
 	//
-	// - NOTICE: a notification.
+	// - NOTICE: indicates a notification.
 	//
 	// This parameter is required.
 	//
@@ -1112,9 +1110,9 @@ type MassPushRequestPushTask struct {
 	//
 	// MESSAGE
 	PushType *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
-	// Specifies the sending channels. Valid values:
+	// Specify sending channels. Valid values:
 	//
-	// - accs: Alibaba Cloud\\"s proprietary channel
+	// - accs: Alibaba Cloud proprietary channel
 	//
 	// - huawei: Huawei channel
 	//
@@ -1136,19 +1134,13 @@ type MassPushRequestPushTask struct {
 	//
 	// - harmony: HarmonyOS channel
 	//
-	// > 	- If you do not configure this parameter, all channels can be used.
+	// >- If this parameter is not configured, all channels are available.
 	//
-	// >
+	// >- If this parameter is configured, only the specified channels are used.
 	//
-	// > 	- If you configure this parameter, only the specified channels are used.
+	// >- If the configured channels conflict with the sending strategy (e.g., iOS notifications only go through the APNs channel, but this parameter does not include apns), the push will not be sent.
 	//
-	// >
-	//
-	// > 	- If the configured channels conflict with the sending policy (for example, iOS notifications are sent only through the APNs channel, but this parameter does not include apns), the push is not sent.
-	//
-	// >
-	//
-	// > 	- If you configure gcm, both Google GCM and FCM channels can be used. If you configure fcm, only the Google FCM channel can be used.
+	// >- If gcm is configured, both Google GCM and FCM channels can be used. If fcm is configured, only the Google FCM channel can be used.
 	//
 	// example:
 	//
@@ -1156,27 +1148,27 @@ type MassPushRequestPushTask struct {
 	SendChannels *string `json:"SendChannels,omitempty" xml:"SendChannels,omitempty"`
 	// Deprecated
 	//
-	// This parameter is deprecated.
+	// This parameter has been deprecated.
 	//
 	// example:
 	//
 	// 0
 	SendSpeed *int32 `json:"SendSpeed,omitempty" xml:"SendSpeed,omitempty"`
-	// Specifies whether to save offline messages or notifications. The default value is false.
+	// Whether to store offline messages/notifications. StoreOffline defaults to false.
 	//
-	// If you save them, and a user is offline, the message or notification is resent when the user comes online before the time-to-live (TTL) specified by ExpireTime expires. The default TTL is 72 hours. iOS notifications are sent through the APNs channel and are not affected by this parameter.
+	// If stored, when the user is offline during push, the message will be resent when the user comes online within the expiration time (ExpireTime). ExpireTime defaults to 72 hours. iOS notifications are delivered through the APNs channel and are not affected by StoreOffline.
 	//
 	// example:
 	//
 	// true
 	StoreOffline *bool `json:"StoreOffline,omitempty" xml:"StoreOffline,omitempty"`
-	// The push target. Valid values:
+	// Push target. Valid values:
 	//
-	// - DEVICE: Push by device.
+	// - DEVICE: push by device.
 	//
-	// - ACCOUNT: Push by account.
+	// - ACCOUNT: push by account.
 	//
-	// - ALIAS: Push by alias.
+	// - ALIAS: push by alias.
 	//
 	// This parameter is required.
 	//
@@ -1184,13 +1176,13 @@ type MassPushRequestPushTask struct {
 	//
 	// DEVICE
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// Set this parameter based on the value of Target. To specify multiple values, separate them with commas. If you exceed the limit, send multiple pushes.
+	// Set based on Target. Multiple values are separated by commas. If the limit is exceeded, you need to split the push into multiple calls.
 	//
-	// - If you set Target to DEVICE, specify device IDs, such as `deviceid1,deviceid2`. You can specify up to 1,000 device IDs.
+	// - Target=DEVICE: values such as `deviceid1,deviceid2` (up to 1,000 supported).
 	//
-	// - If you set Target to ACCOUNT, specify accounts, such as `account1,account2`. You can specify up to 1,000 accounts.
+	// - Target=ACCOUNT: values such as `account1,account2` (up to 1,000 supported).
 	//
-	// - If you set Target to ALIAS, specify aliases, such as `alias1,alias2`. You can specify up to 1,000 aliases.
+	// - Target=ALIAS: values such as `alias1,alias2` (up to 1,000 supported).
 	//
 	// This parameter is required.
 	//
@@ -1198,79 +1190,79 @@ type MassPushRequestPushTask struct {
 	//
 	// deviceid1,deviceid2
 	TargetValue *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
-	// The title of the notification or message. The length is limited to 200 bytes.
+	// Title of the notification/message during push. Length limit: 200 bytes.
 	//
-	// This parameter is required for Android and HarmonyOS pushes. It is optional for iOS notification pushes. If you specify it for iOS:
+	// Required for Android and HarmonyOS pushes. Optional for iOS push notifications. If provided:
 	//
-	// - For iOS 10 and later, the notification title is displayed.
+	// 	- iOS 10+: the notification displays the title.
 	//
-	// - For iOS versions from 8.2 to 10, it replaces the application name in the notification.
+	// 	- iOS 8.2 <= iOS version < iOS 10: replaces the notification app name.
 	//
 	// example:
 	//
 	// title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// Specifies whether to automatically truncate titles and content that are too long.
+	// Whether to automatically truncate titles and content that are too long.
 	//
-	// Note: This applies only to vendor channels that have explicit limits on title and content length. It does not apply to channels such as APNs, Huawei, and Honor, which limit the total request body size instead of the title and content length.
+	// Note: This only applies to vendor channels that explicitly limit title and content length. It does not apply to channels like APNs, Huawei, and Honor that do not limit title and content individually but only limit the total request body size.
 	//
 	// example:
 	//
 	// false
 	Trim *bool `json:"Trim,omitempty" xml:"Trim,omitempty"`
-	// iOS notifications are sent through APNs. Specify the environment information.
+	// iOS notifications are sent through the APNs center. You need to specify the corresponding environment information.
 	//
-	// - DEV: The development environment. This applies to applications installed and debugged directly from Xcode.
+	// - DEV: Development environment, applicable to apps installed and debugged directly via Xcode.
 	//
-	// - PRODUCT: The production environment. This applies to applications distributed through the App Store, TestFlight, Ad Hoc, or enterprise distribution.
+	// - PRODUCT: Production environment, applicable to apps distributed through App Store, TestFlight, Ad Hoc, and enterprise distribution.
 	//
 	// example:
 	//
 	// DEV
 	IOSApnsEnv *string `json:"iOSApnsEnv,omitempty" xml:"iOSApnsEnv,omitempty"`
-	// The badge number on the top-right corner of the iOS application icon.
+	// iOS app icon badge number in the upper-right corner.
 	//
-	// > If iOSBadgeAutoIncrement is set to true, this parameter must be empty.
+	// > If iOSBadgeAutoIncrement is set to True, this field must be empty.
 	//
 	// example:
 	//
 	// 0
 	IOSBadge *int32 `json:"iOSBadge,omitempty" xml:"iOSBadge,omitempty"`
-	// Specifies whether to enable the auto-increment badge feature. The default value is false.
+	// Whether to enable badge auto-increment. Defaults to false.
 	//
 	// > When this is set to true, iOSBadge must be empty.
 	//
-	// The auto-increment badge feature is maintained by the push server, which keeps a badge count for each device. To use this feature, use SDK version 1.9.5 or later and actively sync the badge number to the server.
+	// The badge auto-increment feature is maintained by the push server for each device\\"s badge count. Users must use SDK version V1.9.5 or later and actively sync the badge number to the server.
 	//
 	// example:
 	//
 	// true
 	IOSBadgeAutoIncrement *bool `json:"iOSBadgeAutoIncrement,omitempty" xml:"iOSBadgeAutoIncrement,omitempty"`
-	// The extended properties for iOS notifications.
+	// Extended properties of iOS notifications.
 	//
-	// For iOS 10 and later, specify the resource URL for a rich push notification, such as `{"attachment": "https://xxxx.xxx/notification_pic.png"}`. This parameter must be passed in JSON map format, or it will fail to parse.
+	// On iOS 10+, you can specify the resource URL for rich media push notifications here: `{"attachment": "https://xxxx.xxx/notification_pic.png"} `. This parameter must be passed in JSON map format; otherwise, parsing errors will occur.
 	//
 	// example:
 	//
 	// {"attachment": "https://xxxx.xxx/notification_pic.png"}
 	IOSExtParameters *string `json:"iOSExtParameters,omitempty" xml:"iOSExtParameters,omitempty"`
-	// The interruption level. Valid values:
+	// Interruption level. Valid values:
 	//
-	// - passive: The system adds the notification to the notification list without lighting up the screen or playing a sound.
+	// - passive: The system adds the notification to the notification list without lighting up the screen or playing sound.
 	//
-	// - active: The system immediately displays the notification, lights up the screen, and can play a sound.
+	// - active: The system immediately displays the notification, lights up the screen, and can play sound.
 	//
-	// - time-sensitive: The system immediately presents the notification, lights up the screen, and can play a sound, but does not break through system notification controls.
+	// - time-sensitive: The system immediately presents the notification, lights up the screen, and can play sound, but does not break through system notification controls.
 	//
-	// - critical: The system immediately displays the notification, lights up the screen, and plays a sound, bypassing the mute switch.
+	// - critical: The system immediately displays the notification, lights up the screen, and plays sound bypassing the mute switch.
 	//
 	// example:
 	//
 	// active
 	IOSInterruptionLevel *string `json:"iOSInterruptionLevel,omitempty" xml:"iOSInterruptionLevel,omitempty"`
-	// A JSON string for the static pass-through parameters of a Dynamic Island push. It contains static, user-defined information, such as product numbers and order information.
+	// JSON string. Static pass-through parameters for Dynamic Island push. Contains static user-defined information such as product ID and order information.
 	//
-	// > Required when iOSLiveActivityEvent is set to start.
+	// > Required when iOSLiveActivityEvent is start.
 	//
 	// example:
 	//
@@ -1278,103 +1270,103 @@ type MassPushRequestPushTask struct {
 	IOSLiveActivityAttributes *string `json:"iOSLiveActivityAttributes,omitempty" xml:"iOSLiveActivityAttributes,omitempty"`
 	// The type of Live Activity to start.
 	//
-	// > Required when iOSLiveActivityEvent is set to start.
+	// > Required when iOSLiveActivityEvent is start.
 	//
 	// example:
 	//
 	// OrderActivityAttributes
 	IOSLiveActivityAttributesType *string `json:"iOSLiveActivityAttributesType,omitempty" xml:"iOSLiveActivityAttributesType,omitempty"`
-	// The dynamic pass-through parameters for a Dynamic Island push. It contains real-time updated information, such as price or inventory changes.
+	// Dynamic pass-through parameters for Dynamic Island push. Contains real-time update information such as price and inventory changes.
 	//
 	// example:
 	//
 	// {"status": "delivered", "estimatedArrival": "2023-12-31T12:00:00Z"}
 	IOSLiveActivityContentState *string `json:"iOSLiveActivityContentState,omitempty" xml:"iOSLiveActivityContentState,omitempty"`
-	// The time until which an ended Live Activity remains on the lock screen. The maximum duration is 4 hours.
+	// The ended Live Activity will remain on the lock screen until the specified time, up to a maximum of 4 hours.
 	//
 	// example:
 	//
 	// 1743131967
 	IOSLiveActivityDismissalDate *int64 `json:"iOSLiveActivityDismissalDate,omitempty" xml:"iOSLiveActivityDismissalDate,omitempty"`
-	// Starts, updates, or ends a Live Activity.
+	// Start, update, or end a Live Activity.
 	//
-	// - Enumeration: start | update | end
+	// - Enum: start | update | end
 	//
 	// example:
 	//
 	// start
 	IOSLiveActivityEvent *string `json:"iOSLiveActivityEvent,omitempty" xml:"iOSLiveActivityEvent,omitempty"`
-	// The Live Activity ID reported by the device to your server. This is the unique identifier for a Live Activity.
+	// The Live Activity ID reported by the device to the user\\"s server. A unique identifier for the Live Activity.
 	//
 	// example:
 	//
 	// 66B94673-B32E-4CA7-863C-3E523054FD46
 	IOSLiveActivityId *string `json:"iOSLiveActivityId,omitempty" xml:"iOSLiveActivityId,omitempty"`
-	// A UNIX timestamp in seconds that marks the content of the activity as outdated.
+	// Timestamp in seconds, marking the expiration time of the activity content.
 	//
 	// example:
 	//
 	// 1743131967
 	IOSLiveActivityStaleDate *int64 `json:"iOSLiveActivityStaleDate,omitempty" xml:"iOSLiveActivityStaleDate,omitempty"`
-	// The sound for the iOS notification. Specify the name of the audio file stored in the app bundle or the Library/Sounds directory of the sandbox. For more information, see How to set notification sounds for iOS pushes.
+	// iOS notification sound. Specify the name of an audio file stored in the app bundle or the sandbox Library/Sounds directory. See: How to set notification sound for iOS push.
 	//
-	// If you specify an empty string (""), the notification is silent. If you do not set this parameter, the default value is \\"default\\", which is the system alert sound.
+	// If set to an empty string (""), the notification is silent. If not set, the default system alert sound is used.
 	//
 	// example:
 	//
 	// ””
 	IOSMusic *string `json:"iOSMusic,omitempty" xml:"iOSMusic,omitempty"`
-	// The mutable content flag for iOS notifications (for iOS 10 and later). If set to true, notifications pushed through APNs can be processed by an extension before being displayed. For silent notifications, this must be set to true.
+	// iOS notification processing extension flag (iOS 10+). If set to true, APNs push notifications can reach the Extension for processing before being displayed. Must be set to true for silent notifications.
 	//
 	// example:
 	//
 	// true
 	IOSMutableContent *bool `json:"iOSMutableContent,omitempty" xml:"iOSMutableContent,omitempty"`
-	// Specifies the iOS notification category (for iOS 10 and later).
+	// Specify the iOS notification Category (iOS 10+).
 	//
 	// example:
 	//
 	// ios
 	IOSNotificationCategory *string `json:"iOSNotificationCategory,omitempty" xml:"iOSNotificationCategory,omitempty"`
-	// If a device receives messages with the same CollapseId, they are merged into one. If the device is offline and receives multiple messages with the same CollapseId, only one is displayed in the notification bar. This parameter is supported on iOS 10 and later.
+	// When a device receives messages with the same CollapseId, they are merged into one. When the device is offline, consecutive messages with the same CollapseId will show only one notification in the notification bar. Supported on iOS 10+.
 	//
 	// example:
 	//
 	// ZD2011
 	IOSNotificationCollapseId *string `json:"iOSNotificationCollapseId,omitempty" xml:"iOSNotificationCollapseId,omitempty"`
-	// Groups iOS remote notifications using this property. It marks the identifier for a collapsed group. This is supported only on iOS 12.0 and later.
+	// Groups iOS remote notifications using this property, marking the group identifier for collapsed notifications. Only supported on iOS 12.0+.
 	//
 	// example:
 	//
 	// abc
 	IOSNotificationThreadId *string `json:"iOSNotificationThreadId,omitempty" xml:"iOSNotificationThreadId,omitempty"`
-	// The score for highlighting the summary. The value must be a floating-point number from 0 to 1.
+	// Summary highlight score. Value range: a floating-point number in [0,1\\].
 	//
 	// example:
 	//
 	// 0.01
 	IOSRelevanceScore *float64 `json:"iOSRelevanceScore,omitempty" xml:"iOSRelevanceScore,omitempty"`
-	// If a device is offline when a message is pushed (meaning the persistent connection to the Mobile Push server is unavailable), this push is sent once as a notification through the Apple APNs channel.
+	// When the device is offline during message push (i.e., the persistent connection channel to the Mobile Push server is disconnected), this push will be delivered as a notification through Apple\\"s APNs channel once.
 	//
-	// > Converting offline messages to notifications is only applicable to the production environment.
+	// > Offline message-to-notification conversion only applies to the production environment.
 	//
 	// example:
 	//
 	// true
 	IOSRemind *bool `json:"iOSRemind,omitempty" xml:"iOSRemind,omitempty"`
-	// The content of the iOS notification when an iOS message is converted to a notification. This parameter is valid only when iOSApnsEnv is set to PRODUCT and iOSRemind is set to true.
+	// iOS notification content used when converting iOS messages to notifications. Only valid when iOSApnsEnv=PRODUCT and iOSRemind is true.
 	//
 	// example:
 	//
 	// ios通知body
 	IOSRemindBody *string `json:"iOSRemindBody,omitempty" xml:"iOSRemindBody,omitempty"`
-	// Specifies whether to enable iOS silent notifications.
+	// Whether to enable iOS silent notification.
 	//
 	// example:
 	//
 	// true
 	IOSSilentNotification *bool `json:"iOSSilentNotification,omitempty" xml:"iOSSilentNotification,omitempty"`
-	// The subtitle of the iOS notification (for iOS 10 and later).
+	// iOS notification subtitle content (iOS 10+).
 	//
 	// example:
 	//
