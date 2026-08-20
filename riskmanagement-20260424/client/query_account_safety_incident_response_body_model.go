@@ -24,7 +24,7 @@ type iQueryAccountSafetyIncidentResponseBody interface {
 type QueryAccountSafetyIncidentResponseBody struct {
 	// The status code.
 	//
-	// > 200: The request was successful. Other values (such as 500 or 400): An error occurred.
+	// > 200: success. Other values (such as 500 or 400): error codes.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type QueryAccountSafetyIncidentResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *QueryAccountSafetyIncidentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The prompt message.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type QueryAccountSafetyIncidentResponseBody struct {
 	//
 	// 2FBDD713-00A5-5C98-B661-3FD31A349B6E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request was successful. Valid values:
 	//
 	// - **true**
 	//
@@ -180,9 +180,9 @@ type QueryAccountSafetyIncidentResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// Penalty executed successfully.
+	// 处罚直接成功
 	ActionName *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
-	// The time when the control action was removed.
+	// The control removal time.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -190,8 +190,13 @@ type QueryAccountSafetyIncidentResponseBodyDataList struct {
 	//
 	// 2026-03-16 15:15:00
 	AntiPunishTime *string `json:"AntiPunishTime,omitempty" xml:"AntiPunishTime,omitempty"`
-	CallApi        *string `json:"CallApi,omitempty" xml:"CallApi,omitempty"`
-	// The control action time information.
+	// The called API operation.
+	//
+	// example:
+	//
+	// AddDomainRecord
+	CallApi *string `json:"CallApi,omitempty" xml:"CallApi,omitempty"`
+	// The control time information.
 	DateExtras *QueryAccountSafetyIncidentResponseBodyDataListDateExtras `json:"DateExtras,omitempty" xml:"DateExtras,omitempty" type:"Struct"`
 	// The event ID.
 	//
@@ -216,11 +221,28 @@ type QueryAccountSafetyIncidentResponseBodyDataList struct {
 	// example:
 	//
 	// ak leak.
-	EventReason       *string `json:"EventReason,omitempty" xml:"EventReason,omitempty"`
-	EventType         *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	EventReason *string `json:"EventReason,omitempty" xml:"EventReason,omitempty"`
+	// The event subtype name.
+	//
+	// example:
+	//
+	// 可疑身份调用敏感
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The exception call time.
+	//
+	// > Format: yyyy-MM-dd HH:mm:ss
+	//
+	// example:
+	//
+	// 2026-03-16 15:15:00
 	ExceptionCallTime *string `json:"ExceptionCallTime,omitempty" xml:"ExceptionCallTime,omitempty"`
-	ExceptionIp       *string `json:"ExceptionIp,omitempty" xml:"ExceptionIp,omitempty"`
-	// The start time of the control action.
+	// The exception IP address.
+	//
+	// example:
+	//
+	// 39.1X4.63.XX9
+	ExceptionIp *string `json:"ExceptionIp,omitempty" xml:"ExceptionIp,omitempty"`
+	// The control start time.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -478,7 +500,7 @@ func (s *QueryAccountSafetyIncidentResponseBodyDataList) Validate() error {
 }
 
 type QueryAccountSafetyIncidentResponseBodyDataListDateExtras struct {
-	// The time when the alert ended.
+	// The alert end time.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -486,7 +508,7 @@ type QueryAccountSafetyIncidentResponseBodyDataListDateExtras struct {
 	//
 	// 2026-03-16 15:15:00
 	AlertEndTime *string `json:"AlertEndTime,omitempty" xml:"AlertEndTime,omitempty"`
-	// The time when the first alert was triggered.
+	// The first alert time.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -494,7 +516,7 @@ type QueryAccountSafetyIncidentResponseBodyDataListDateExtras struct {
 	//
 	// 2026-03-16 15:15:00
 	AlertStartTime *string `json:"AlertStartTime,omitempty" xml:"AlertStartTime,omitempty"`
-	// The time of the latest detection.
+	// The latest detection time.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -550,7 +572,7 @@ type QueryAccountSafetyIncidentResponseBodyDataPageInfo struct {
 	//
 	// 1
 	Current *string `json:"Current,omitempty" xml:"Current,omitempty"`
-	// The number of assets displayed per page when you perform a paging query.
+	// The number of assets displayed on each page in a paging query.
 	//
 	// example:
 	//

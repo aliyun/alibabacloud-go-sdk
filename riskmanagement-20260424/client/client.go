@@ -1878,19 +1878,41 @@ func (client *Client) OpenTrialPackage(request *OpenTrialPackageRequest) (_resul
 //
 // Queries account security events.
 //
-// @param request - QueryAccountSafetyIncidentRequest
+// @param tmpReq - QueryAccountSafetyIncidentRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryAccountSafetyIncidentResponse
-func (client *Client) QueryAccountSafetyIncidentWithOptions(request *QueryAccountSafetyIncidentRequest, runtime *dara.RuntimeOptions) (_result *QueryAccountSafetyIncidentResponse, _err error) {
+func (client *Client) QueryAccountSafetyIncidentWithOptions(tmpReq *QueryAccountSafetyIncidentRequest, runtime *dara.RuntimeOptions) (_result *QueryAccountSafetyIncidentResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &QueryAccountSafetyIncidentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ActionCodes) {
+		request.ActionCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ActionCodes, dara.String("ActionCodes"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.CaseCodes) {
+		request.CaseCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CaseCodes, dara.String("CaseCodes"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.EventIds) {
+		request.EventIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EventIds, dara.String("EventIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Statuses) {
+		request.StatusesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Statuses, dara.String("Statuses"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActionCodesShrink) {
+		query["ActionCodes"] = request.ActionCodesShrink
+	}
+
 	if !dara.IsNil(request.AliyunLang) {
 		query["AliyunLang"] = request.AliyunLang
 	}
@@ -1899,12 +1921,20 @@ func (client *Client) QueryAccountSafetyIncidentWithOptions(request *QueryAccoun
 		query["CaseCode"] = request.CaseCode
 	}
 
+	if !dara.IsNil(request.CaseCodesShrink) {
+		query["CaseCodes"] = request.CaseCodesShrink
+	}
+
 	if !dara.IsNil(request.Current) {
 		query["Current"] = request.Current
 	}
 
 	if !dara.IsNil(request.EventId) {
 		query["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.EventIdsShrink) {
+		query["EventIds"] = request.EventIdsShrink
 	}
 
 	if !dara.IsNil(request.PageSize) {
@@ -1925,6 +1955,10 @@ func (client *Client) QueryAccountSafetyIncidentWithOptions(request *QueryAccoun
 
 	if !dara.IsNil(request.Status) {
 		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.StatusesShrink) {
+		query["Statuses"] = request.StatusesShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
