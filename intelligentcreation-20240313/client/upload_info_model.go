@@ -11,6 +11,8 @@ type iUploadInfo interface {
 	GoString() string
 	SetAccessId(v string) *UploadInfo
 	GetAccessId() *string
+	SetAccessUrl(v string) *UploadInfo
+	GetAccessUrl() *string
 	SetHost(v string) *UploadInfo
 	GetHost() *string
 	SetKey(v string) *UploadInfo
@@ -29,7 +31,8 @@ type UploadInfo struct {
 	// example:
 	//
 	// xxxxxx
-	AccessId *string `json:"accessId,omitempty" xml:"accessId,omitempty"`
+	AccessId  *string `json:"accessId,omitempty" xml:"accessId,omitempty"`
+	AccessUrl *string `json:"accessUrl,omitempty" xml:"accessUrl,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -72,6 +75,10 @@ func (s *UploadInfo) GetAccessId() *string {
 	return s.AccessId
 }
 
+func (s *UploadInfo) GetAccessUrl() *string {
+	return s.AccessUrl
+}
+
 func (s *UploadInfo) GetHost() *string {
 	return s.Host
 }
@@ -94,6 +101,11 @@ func (s *UploadInfo) GetUrl() *string {
 
 func (s *UploadInfo) SetAccessId(v string) *UploadInfo {
 	s.AccessId = &v
+	return s
+}
+
+func (s *UploadInfo) SetAccessUrl(v string) *UploadInfo {
+	s.AccessUrl = &v
 	return s
 }
 
