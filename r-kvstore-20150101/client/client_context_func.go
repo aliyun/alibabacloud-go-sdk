@@ -467,17 +467,17 @@ func (client *Client) CheckCloudResourceAuthorizedWithContext(ctx context.Contex
 
 // Summary:
 //
-// Create an account for an ApsaraDB for Tair (Redis OSS-compatible) instance.
+// Creates an account for a Tair (Redis® OSS-Compatible) instance.
 //
 // Description:
 //
-// This API supports only instances compatible with Redis 4.0 or later versions.
+// This API operation supports only instances that are compatible with Redis 4.0 or later.
 //
-//   - The instance must be in the running status to use this API.
+//   - The instance status must be Running when you call this API operation.
 //
-//   - You can create up to 18 accounts for an instance.
+//   - You can create up to 18 accounts for each instance.
 //
-// > For the corresponding console operation, see [Account Management](https://help.aliyun.com/document_detail/92665.html).
+// > For the console operation that corresponds to this API operation, see [Account management](https://help.aliyun.com/document_detail/92665.html).
 //
 // @param request - CreateAccountRequest
 //
@@ -522,6 +522,10 @@ func (client *Client) CreateAccountWithContext(ctx context.Context, request *Cre
 
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Parameters) {
+		query["Parameters"] = request.Parameters
 	}
 
 	if !dara.IsNil(request.ResourceOwnerAccount) {
@@ -2787,7 +2791,7 @@ func (client *Client) DeleteShardingNodeWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries information about a specific account in a specified ApsaraDB for Redis (Tair-compatible) instance.
+// Queries the information about an account in a specified ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
 //
 // @param request - DescribeAccountsRequest
 //
@@ -2818,12 +2822,24 @@ func (client *Client) DescribeAccountsWithContext(ctx context.Context, request *
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
 	if !dara.IsNil(request.ResourceOwnerAccount) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
 
 	if !dara.IsNil(request.ResourceOwnerId) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SearchAccountName) {
+		query["SearchAccountName"] = request.SearchAccountName
 	}
 
 	if !dara.IsNil(request.SecurityToken) {
@@ -6785,11 +6801,11 @@ func (client *Client) DescribeParameterModificationHistoryWithContext(ctx contex
 
 // Summary:
 //
-// Queries the parameters and their default values that are supported by Tair (Redis OSS-compatible) instances of different architectures and major versions.
+// Queries the parameter list and default values of a Tair (Redis® OSS-Compatible) database instance for different architectures and major engine versions.
 //
 // Description:
 //
-// After you call this operation to query the parameters and default values of an instance, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/473844.html) operation to reconfigure the parameters of the instance.
+// After you call this operation to query the parameter list and default values, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/473844.html) operation to modify the parameters of a Redis instance based on your business requirements.
 //
 // @param request - DescribeParameterTemplatesRequest
 //
@@ -6826,6 +6842,10 @@ func (client *Client) DescribeParameterTemplatesWithContext(ctx context.Context,
 
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ParameterCategory) {
+		query["ParameterCategory"] = request.ParameterCategory
 	}
 
 	if !dara.IsNil(request.ResourceGroupId) {
@@ -9137,6 +9157,66 @@ func (client *Client) ModifyAccountDescriptionWithContext(ctx context.Context, r
 
 // Summary:
 //
+// 修改账号参数
+//
+// Description:
+//
+// 目前仅支持Tair Serverless KV实例。
+//
+// @param request - ModifyAccountParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAccountParameterResponse
+func (client *Client) ModifyAccountParameterWithContext(ctx context.Context, request *ModifyAccountParameterRequest, runtime *dara.RuntimeOptions) (_result *ModifyAccountParameterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountName) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Parameters) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyAccountParameter"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyAccountParameterResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the password of an account for a Tair (Redis OSS-compatible) instance.
 //
 // @param request - ModifyAccountPasswordRequest
@@ -11051,11 +11131,11 @@ func (client *Client) ModifyInstanceSSLWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Changes the configurations of a Tair (Redis OSS-compatible) instance.
+// Changes the specifications of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
 //
 // Description:
 //
-// >  For more information about the procedure, impacts, limits, and fees of this operation, see [Change the configurations of an instance](https://help.aliyun.com/document_detail/26353.html).
+// > For information about the execution process, impacts, feature limits, and billing of specification changes, see [Change instance configurations](https://help.aliyun.com/document_detail/26353.html).
 //
 // @param request - ModifyInstanceSpecRequest
 //

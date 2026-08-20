@@ -68,15 +68,15 @@ type iModifyInstanceSpecRequest interface {
 type ModifyInstanceSpecRequest struct {
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// 	- **true*	- (default): enables automatic payment.
+	// 	- **true**: Automatic payment is enabled. This is the default value.
 	//
-	// 	- **false**: disables automatic payment. If you set this parameter to **false**, the instance must be manually renewed before it expires. For more information, see [Renew an instance](https://help.aliyun.com/document_detail/26352.html).
+	// 	- **false**: Automatic payment is disabled. If you set this parameter to **false**, you must manually renew the instance before the instance expires in the console. For details, see [Manual renewal](https://help.aliyun.com/document_detail/26352.html).
 	//
 	// example:
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The ID of the promotional event or the business information.
+	// The activity ID and business information.
 	//
 	// example:
 	//
@@ -94,45 +94,45 @@ type ModifyInstanceSpecRequest struct {
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	// The time when you want the configurations to be changed. Valid values:
+	// The time when the specification change takes effect. Valid values:
 	//
-	// 	- **Immediately*	- (default): immediately changes the configurations.
+	// 	- **Immediately**: The specification change takes effect immediately. This is the default value.
 	//
-	// 	- **MaintainTime**: changes the configurations within the maintenance window. You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) operation to change the maintenance window.
+	// 	- **MaintainTime**: The specification change takes effect during the maintenance window of the instance. You can call [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) to modify the maintenance window.
 	//
 	// example:
 	//
 	// Immediately
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// Specifies whether to enable forced transmission during a configuration change. Valid values:
+	// Specifies whether to enable forced transmission. Valid values:
 	//
-	// 	- **false*	- (default): Before the configuration change, the system checks the minor version of the instance. If the minor version of the instance is outdated, an error is reported. You must update the minor version of the instance and try again.
+	// - **false*	- (default): Before the specification change, the system checks the current minor engine version of the instance. If the minor engine version is too old, an error is returned. You must upgrade the minor engine version and retry.
 	//
-	// 	- **true**: The system skips the version check and directly performs the configuration change.
+	// - **true**: Skips the check and directly executes the specification change operation.
 	//
 	// example:
 	//
 	// false
 	ForceTrans *bool `json:"ForceTrans,omitempty" xml:"ForceTrans,omitempty"`
-	// Specifies whether to forcibly change the configurations. Valid values:
+	// Specifies whether to forcibly change the specifications. Valid values:
 	//
-	// 	- **false**: The system does not forcefully change the configurations.
+	// 	- **false**: does not forcibly change the specifications.
 	//
-	// 	- **true*	- (default): The system forcefully changes the configurations.
+	// 	- **true**: forcibly changes the specifications. This is the default value.
 	//
 	// example:
 	//
 	// true
 	ForceUpgrade *bool `json:"ForceUpgrade,omitempty" xml:"ForceUpgrade,omitempty"`
-	// The new instance type. You can call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/473765.html) operation to query the instance types available for configuration change within the zone to which the instance belongs.
+	// The new instance type. You can call [DescribeAvailableResource](https://help.aliyun.com/document_detail/473765.html) to query the instance types available for specification changes in the zone where the instance resides.
 	//
-	// >  For more information about the instance types, see [Overview](https://help.aliyun.com/document_detail/26350.html).
+	// > For more information about instance types, see [Instance type navigation](https://help.aliyun.com/document_detail/26350.html).
 	//
 	// example:
 	//
 	// redis.master.small.default
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the instance ID.
+	// The instance ID. You can call [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -140,41 +140,39 @@ type ModifyInstanceSpecRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The major version of the classic instance that you want to upgrade. Valid values: **2.8**, **4.0**, and **5.0**.
+	// The major engine version for upgrading a classic instance. Valid values: **2.8**, **4.0**, and **5.0**.
 	//
-	// >  The **InstanceClass*	- parameter is required when you upgrade the instance version. This parameter indicates that you can upgrade the instance version only when you update the instance specifications. If you only need to upgrade the instance version, call the [ModifyInstanceMajorVersion](https://help.aliyun.com/document_detail/473776.html) operation.
+	// > When you upgrade the version, the **InstanceClass*	- parameter is required. This indicates that this operation supports version upgrades only when the instance specifications are also changed. To upgrade only the instance version, call [ModifyInstanceMajorVersion](https://help.aliyun.com/document_detail/473776.html).
 	//
 	// example:
 	//
 	// 5.0
 	MajorVersion *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
-	// The type of the node. Valid values:
+	// The node type. Valid values:
 	//
-	// 	- **MASTER_SLAVE**: high availability (master-replica)
+	// 	- **MASTER_SLAVE**: high availability (dual-replica)
 	//
-	// 	- **STAND_ALONE**: standalone
+	// 	- **STAND_ALONE**: single replica
 	//
-	// 	- **double**: master-replica
+	// 	- **double**: dual-replica
 	//
-	// 	- **single**: standalone
+	// 	- **single**: single replica
 	//
-	// >  To create a cloud-native instance, set this parameter to **MASTER_SLAVE*	- or **STAND_ALONE**. To create a classic instance, set this parameter to **double*	- or **single**.
+	// > For cloud-native instances, select **MASTER_SLAVE*	- or **STAND_ALONE**. For classic instances, select **double*	- or **single**.
 	//
 	// example:
 	//
 	// MASTER_SLAVE
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The change type. This parameter is required when you change the configurations of a subscription instance. Valid values:
+	// The type of specification change. This parameter is required when you change the specifications of a subscription instance. Valid values:
 	//
-	// 	- **UPGRADE*	- (default): upgrades the configurations of the subscription instance.
+	// 	- **UPGRADE**: Upgrade. This is the default value.
 	//
-	// 	- **DOWNGRADE**: downgrades the configurations of the subscription instance.
+	// 	- **DOWNGRADE**: Downgrade.
 	//
-	// >
+	// > 	- You must set this parameter to **DOWNGRADE*	- when you downgrade a subscription instance.
 	//
-	// 	- To downgrade a subscription instance, you must set this parameter to **DOWNGRADE**.
-	//
-	// 	- If the price of an instance increases after its configurations are changed, the instance is upgraded. If the price decreases, the instance is downgraded. For example, the price of an 8 GB read/write splitting instance with five read replicas is higher than that of a 16 GB cluster instance. If you want to change a 16 GB cluster instance to an 8 GB read/write splitting instance with five read replicas, you must upgrade the instance.
+	// > 	- If the price of the target instance type is higher than that of the current instance type, the change is an upgrade. Otherwise, the change is a downgrade. For example, the price of the read/write splitting 8 GB edition (5 read-only nodes) is higher than that of the 16 GB cluster edition. Changing from the latter to the former is an upgrade.
 	//
 	// example:
 	//
@@ -182,31 +180,31 @@ type ModifyInstanceSpecRequest struct {
 	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of read replicas in the primary zone. Valid values: 0 to 5. This parameter applies only to the following scenarios:
+	// The number of read-only nodes in the primary zone. This parameter is applicable only to cloud-native read/write splitting instances.
 	//
-	// 	- If the instance is a cloud-native standard instance, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture.
+	// 	- For standard architecture instances, valid values are 0 to 9. A value of 0 indicates that read/write splitting is shutdown and the instance is switched to the standard architecture.
 	//
-	// 	- If the instance is a cloud-native read/write splitting instance, you can use this parameter to customize the number of read replicas. You can also set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+	// 	- For cluster architecture instances, valid values are 1 to 4, which specifies the number of read-only nodes per data shard.
+	//
+	// > For multi-zone instances, you can use this parameter together with the SlaveReadOnlyCount parameter to specify the number of read-only nodes in the primary and secondary zones.
+	//
+	// > 	- For standard architecture instances, the sum of this parameter and SlaveReadOnlyCount cannot exceed 9.
+	//
+	// > 	- For cluster architecture instances, the sum of this parameter and SlaveReadOnlyCount cannot exceed 4.
 	//
 	// example:
 	//
 	// 5
 	ReadOnlyCount *int32 `json:"ReadOnlyCount,omitempty" xml:"ReadOnlyCount,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) to query available regions. Use this parameter to specify the region of the instance whose specifications you want to change.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The number of replica nodes in the primary zone. This parameter is applicable only to cloud-native multi-replica cluster instances. Valid values: 1 to 4.
+	// The number of replica nodes in the primary zone. This parameter is applicable only to cloud-native cluster multi-replica instances. You can use this parameter to specify a custom number of replica nodes. Valid values: 1 to 4.
 	//
-	// >
-	//
-	// 	- The sum of the values of this parameter and the SlaveReplicaCount parameter cannot be greater than 4.
-	//
-	// 	- You can specify either ReplicaCount or ReadOnlyCount.
-	//
-	// 	- A master-replica instance cannot contain multiple replica nodes.
+	// > For multi-zone instances, you can use this parameter together with the SlaveReplicaCount parameter to specify the number of replica nodes in the primary and secondary zones. The sum of this parameter and the SlaveReplicaCount parameter cannot exceed 4.
 	//
 	// example:
 	//
@@ -214,43 +212,48 @@ type ModifyInstanceSpecRequest struct {
 	ReplicaCount         *int32  `json:"ReplicaCount,omitempty" xml:"ReplicaCount,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecondaryZoneId      *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
-	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The number of shards. This parameter is applicable only to cloud-native cluster instances.
+	// The secondary zone ID. This parameter is required when you change the specifications of a single-zone instance and migrate it to a multi-zone deployment. You can call [DescribeZones](https://help.aliyun.com/document_detail/473764.html) to query available zones.
+	//
+	// > The value of this parameter must be different from the value of the ZoneId parameter. Do not set this parameter to the ID of a multi-zone.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
+	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
+	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The number of shards. This parameter is applicable only to cloud-native cluster instances. You can use this parameter to specify a custom number of shards.
 	//
 	// >
 	//
-	// 	- If you want to change a cloud-native cluster instance to a standard instance, you must explicitly set the ShardCount parameter to 1 and specify the specifications of the master-replica instance.
+	// > - To change a cloud-native cluster instance to a standard architecture, set ShardCount to 1 and set the instance type to a standard instance type.
 	//
-	// 	- To change a cloud-native standard instance to a cluster instance, you must explicitly set the ShardCount parameter to a value greater than 1 and specify the specifications of the cluster instance.
+	// > - To change a cloud-native standard instance to a cluster architecture, set ShardCount to a value greater than 1 and set the instance type to a cluster instance type.
 	//
 	// example:
 	//
 	// 8
 	ShardCount *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
-	// The number of read replicas in the secondary zone when you create a read/write splitting instance that is deployed across multiple zones. Valid values: 1 to 9. The sum of the values of this parameter and the ReadOnlyCount parameter cannot be greater than 9.
+	// The number of read-only nodes in the secondary zone.
 	//
 	// example:
 	//
 	// 2
 	SlaveReadOnlyCount *int32 `json:"SlaveReadOnlyCount,omitempty" xml:"SlaveReadOnlyCount,omitempty"`
-	// The number of replica nodes in the secondary zone when you create a cloud-native multi-replica cluster instance that is deployed across multiple zones. The sum of the values of this parameter and the ReplicaCount parameter cannot be greater than 4.
-	//
-	// >  When you create a cloud-native multi-replica cluster instance that is deployed across multiple zones, you must specify both SlaveReplicaCount and SecondaryZoneId.
+	// The number of replica nodes in the secondary zone.
 	//
 	// example:
 	//
 	// 1
 	SlaveReplicaCount *int32 `json:"SlaveReplicaCount,omitempty" xml:"SlaveReplicaCount,omitempty"`
-	// The source of the operation. This parameter is used only for internal maintenance. You do not need to specify this parameter.
+	// The source of the request. This parameter is used only for internal maintenance and does not need to be specified.
 	//
 	// example:
 	//
 	// SDK
 	SourceBiz *string `json:"SourceBiz,omitempty" xml:"SourceBiz,omitempty"`
-	// The storage capacity of the ESSD/SSD-based instance. The valid values vary based on the instance type. For more information, see [ESSD/SSD-based instances](https://help.aliyun.com/document_detail/2527111.html).
+	// The storage capacity of a cloud disk instance. The valid values vary based on the instance type. For more information, see [Cloud disk-based instance types](https://help.aliyun.com/document_detail/2527111.html).
 	//
-	// >  This parameter is required only when you set the **InstanceType*	- parameter to **tair_essd*	- to create an ESSD-based instance. If you create a Tair **SSD**-based instance, the Storage parameter is automatically specified based on predefined specifications. You do not need to specify this parameter.
+	// > This parameter is required only when **InstanceType*	- is set to **tair_essd*	- and you are creating a Tair ESSD-based cloud disk instance. For Tair SSD-based cloud disk instances, the storage capacity is a fixed value based on the instance type, and you do not need to specify this parameter.
 	//
 	// example:
 	//
@@ -258,7 +261,7 @@ type ModifyInstanceSpecRequest struct {
 	Storage *int32 `json:"Storage,omitempty" xml:"Storage,omitempty"`
 	// The storage type. Valid values: **essd_pl1**, **essd_pl2**, and **essd_pl3**.
 	//
-	// >  This parameter is required only when you set the **InstanceType*	- parameter to **tair_essd*	- to create an ESSD-based instance.
+	// > This parameter is required only when **InstanceType*	- is set to **tair_essd*	- and the instance is a Tair ESSD-based cloud disk instance.
 	//
 	// example:
 	//

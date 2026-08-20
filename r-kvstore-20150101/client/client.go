@@ -63,40 +63,38 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-zhengzhou-nebula-1":       dara.String("r-kvstore.aliyuncs.com"),
 		"eu-west-1-oxs":               dara.String("r-kvstore.aliyuncs.com"),
 		"rus-west-1-pop":              dara.String("r-kvstore.aliyuncs.com"),
-		"us-west-1":                   dara.String("r-kvstore.us-west-1.aliyuncs.com"),
-		"us-southeast-1":              dara.String("r-kvstore.us-southeast-1.aliyuncs.com"),
+		"cn-zhengzhou-jva":            dara.String("r-kvstore.cn-zhengzhou-jva.aliyuncs.com"),
+		"cn-wuhan-lr":                 dara.String("r-kvstore.cn-wuhan-lr.aliyuncs.com"),
+		"cn-hongkong":                 dara.String("r-kvstore.cn-hongkong.aliyuncs.com"),
+		"cn-zhangjiakou":              dara.String("r-kvstore.cn-zhangjiakou.aliyuncs.com"),
+		"cn-shenzhen":                 dara.String("r-kvstore.cn-shenzhen.aliyuncs.com"),
+		"cn-nanjing":                  dara.String("r-kvstore.cn-nanjing.aliyuncs.com"),
+		"ap-northeast-2":              dara.String("r-kvstore.ap-northeast-2.aliyuncs.com"),
+		"ap-northeast-1":              dara.String("r-kvstore.ap-northeast-1.aliyuncs.com"),
+		"cn-fuzhou":                   dara.String("r-kvstore.cn-fuzhou.aliyuncs.com"),
+		"cn-chengdu":                  dara.String("r-kvstore.cn-chengdu.aliyuncs.com"),
+		"cn-guangzhou":                dara.String("r-kvstore.cn-guangzhou.aliyuncs.com"),
+		"ap-southeast-1":              dara.String("r-kvstore.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-2":              dara.String("r-kvstore.ap-southeast-2.aliyuncs.com"),
+		"ap-southeast-3":              dara.String("r-kvstore.ap-southeast-3.aliyuncs.com"),
+		"cn-huhehaote":                dara.String("r-kvstore.cn-huhehaote.aliyuncs.com"),
+		"ap-southeast-5":              dara.String("r-kvstore.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-6":              dara.String("r-kvstore.ap-southeast-6.aliyuncs.com"),
+		"ap-southeast-7":              dara.String("r-kvstore.ap-southeast-7.aliyuncs.com"),
 		"us-east-1":                   dara.String("r-kvstore.us-east-1.aliyuncs.com"),
+		"us-southeast-1":              dara.String("r-kvstore.us-southeast-1.aliyuncs.com"),
+		"eu-west-1":                   dara.String("r-kvstore.eu-west-1.aliyuncs.com"),
+		"us-west-1":                   dara.String("r-kvstore.us-west-1.aliyuncs.com"),
+		"eu-central-1":                dara.String("r-kvstore.eu-central-1.aliyuncs.com"),
 		"na-south-1":                  dara.String("r-kvstore.na-south-1.aliyuncs.com"),
 		"me-east-1":                   dara.String("r-kvstore.me-east-1.aliyuncs.com"),
 		"me-central-1":                dara.String("r-kvstore.me-central-1.aliyuncs.com"),
-		"eu-west-2":                   dara.String("r-kvstore.eu-west-2.aliyuncs.com"),
-		"eu-west-1":                   dara.String("r-kvstore.eu-west-1.aliyuncs.com"),
-		"eu-central-1":                dara.String("r-kvstore.eu-central-1.aliyuncs.com"),
-		"cn-zhongwei":                 dara.String("r-kvstore.cn-zhongwei.aliyuncs.com"),
-		"cn-zhengzhou-jva":            dara.String("r-kvstore.cn-zhengzhou-jva.aliyuncs.com"),
-		"cn-zhangjiakou":              dara.String("r-kvstore.cn-zhangjiakou.aliyuncs.com"),
-		"cn-wulanchabu-gic-1":         dara.String("r-kvstore.cn-wulanchabu-gic-1.aliyuncs.com"),
-		"cn-wuhan-lr":                 dara.String("r-kvstore.cn-wuhan-lr.aliyuncs.com"),
-		"cn-shenzhen-finance-1":       dara.String("r-kvstore.cn-shenzhen-finance-1.aliyuncs.com"),
-		"cn-shenzhen":                 dara.String("r-kvstore.cn-shenzhen.aliyuncs.com"),
-		"cn-shanghai-finance-1":       dara.String("r-kvstore.cn-shanghai-finance-1.aliyuncs.com"),
-		"cn-north-2-gov-1":            dara.String("r-kvstore.cn-north-2-gov-1.aliyuncs.com"),
-		"cn-nanjing":                  dara.String("r-kvstore.cn-nanjing.aliyuncs.com"),
-		"cn-huhehaote":                dara.String("r-kvstore.cn-huhehaote.aliyuncs.com"),
-		"cn-hongkong":                 dara.String("r-kvstore.cn-hongkong.aliyuncs.com"),
+		"ap-south-1":                  dara.String("r-kvstore.ap-south-1.aliyuncs.com"),
 		"cn-heyuan-acdr-1":            dara.String("r-kvstore.cn-heyuan-acdr-1.aliyuncs.com"),
-		"cn-guangzhou":                dara.String("r-kvstore.cn-guangzhou.aliyuncs.com"),
-		"cn-fuzhou":                   dara.String("r-kvstore.cn-fuzhou.aliyuncs.com"),
-		"cn-chengdu":                  dara.String("r-kvstore.cn-chengdu.aliyuncs.com"),
+		"cn-shenzhen-finance-1":       dara.String("r-kvstore.cn-shenzhen-finance-1.aliyuncs.com"),
 		"cn-beijing-finance-1":        dara.String("r-kvstore.cn-beijing-finance-1.aliyuncs.com"),
-		"ap-southeast-8":              dara.String("r-kvstore.ap-southeast-8.aliyuncs.com"),
-		"ap-southeast-7":              dara.String("r-kvstore.ap-southeast-7.aliyuncs.com"),
-		"ap-southeast-6":              dara.String("r-kvstore.ap-southeast-6.aliyuncs.com"),
-		"ap-southeast-5":              dara.String("r-kvstore.ap-southeast-5.aliyuncs.com"),
-		"ap-southeast-3":              dara.String("r-kvstore.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-1":              dara.String("r-kvstore.ap-southeast-1.aliyuncs.com"),
-		"ap-northeast-2":              dara.String("r-kvstore.ap-northeast-2.aliyuncs.com"),
-		"ap-northeast-1":              dara.String("r-kvstore.ap-northeast-1.aliyuncs.com"),
+		"cn-shanghai-finance-1":       dara.String("r-kvstore.cn-shanghai-finance-1.aliyuncs.com"),
+		"cn-wulanchabu-gic-1":         dara.String("r-kvstore.cn-wulanchabu-gic-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -735,17 +733,17 @@ func (client *Client) CheckCloudResourceAuthorized(request *CheckCloudResourceAu
 
 // Summary:
 //
-// Create an account for an ApsaraDB for Tair (Redis OSS-compatible) instance.
+// Creates an account for a Tair (Redis® OSS-Compatible) instance.
 //
 // Description:
 //
-// This API supports only instances compatible with Redis 4.0 or later versions.
+// This API operation supports only instances that are compatible with Redis 4.0 or later.
 //
-//   - The instance must be in the running status to use this API.
+//   - The instance status must be Running when you call this API operation.
 //
-//   - You can create up to 18 accounts for an instance.
+//   - You can create up to 18 accounts for each instance.
 //
-// > For the corresponding console operation, see [Account Management](https://help.aliyun.com/document_detail/92665.html).
+// > For the console operation that corresponds to this API operation, see [Account management](https://help.aliyun.com/document_detail/92665.html).
 //
 // @param request - CreateAccountRequest
 //
@@ -792,6 +790,10 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !dara.IsNil(request.Parameters) {
+		query["Parameters"] = request.Parameters
+	}
+
 	if !dara.IsNil(request.ResourceOwnerAccount) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -833,17 +835,17 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 
 // Summary:
 //
-// Create an account for an ApsaraDB for Tair (Redis OSS-compatible) instance.
+// Creates an account for a Tair (Redis® OSS-Compatible) instance.
 //
 // Description:
 //
-// This API supports only instances compatible with Redis 4.0 or later versions.
+// This API operation supports only instances that are compatible with Redis 4.0 or later.
 //
-//   - The instance must be in the running status to use this API.
+//   - The instance status must be Running when you call this API operation.
 //
-//   - You can create up to 18 accounts for an instance.
+//   - You can create up to 18 accounts for each instance.
 //
-// > For the corresponding console operation, see [Account Management](https://help.aliyun.com/document_detail/92665.html).
+// > For the console operation that corresponds to this API operation, see [Account management](https://help.aliyun.com/document_detail/92665.html).
 //
 // @param request - CreateAccountRequest
 //
@@ -3585,7 +3587,7 @@ func (client *Client) DeleteShardingNode(request *DeleteShardingNodeRequest) (_r
 
 // Summary:
 //
-// Queries information about a specific account in a specified ApsaraDB for Redis (Tair-compatible) instance.
+// Queries the information about an account in a specified ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
 //
 // @param request - DescribeAccountsRequest
 //
@@ -3616,12 +3618,24 @@ func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsReque
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
 	if !dara.IsNil(request.ResourceOwnerAccount) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
 
 	if !dara.IsNil(request.ResourceOwnerId) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SearchAccountName) {
+		query["SearchAccountName"] = request.SearchAccountName
 	}
 
 	if !dara.IsNil(request.SecurityToken) {
@@ -3653,7 +3667,7 @@ func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsReque
 
 // Summary:
 //
-// Queries information about a specific account in a specified ApsaraDB for Redis (Tair-compatible) instance.
+// Queries the information about an account in a specified ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
 //
 // @param request - DescribeAccountsRequest
 //
@@ -8623,11 +8637,11 @@ func (client *Client) DescribeParameterModificationHistory(request *DescribePara
 
 // Summary:
 //
-// Queries the parameters and their default values that are supported by Tair (Redis OSS-compatible) instances of different architectures and major versions.
+// Queries the parameter list and default values of a Tair (Redis® OSS-Compatible) database instance for different architectures and major engine versions.
 //
 // Description:
 //
-// After you call this operation to query the parameters and default values of an instance, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/473844.html) operation to reconfigure the parameters of the instance.
+// After you call this operation to query the parameter list and default values, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/473844.html) operation to modify the parameters of a Redis instance based on your business requirements.
 //
 // @param request - DescribeParameterTemplatesRequest
 //
@@ -8664,6 +8678,10 @@ func (client *Client) DescribeParameterTemplatesWithOptions(request *DescribePar
 
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ParameterCategory) {
+		query["ParameterCategory"] = request.ParameterCategory
 	}
 
 	if !dara.IsNil(request.ResourceGroupId) {
@@ -8707,11 +8725,11 @@ func (client *Client) DescribeParameterTemplatesWithOptions(request *DescribePar
 
 // Summary:
 //
-// Queries the parameters and their default values that are supported by Tair (Redis OSS-compatible) instances of different architectures and major versions.
+// Queries the parameter list and default values of a Tair (Redis® OSS-Compatible) database instance for different architectures and major engine versions.
 //
 // Description:
 //
-// After you call this operation to query the parameters and default values of an instance, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/473844.html) operation to reconfigure the parameters of the instance.
+// After you call this operation to query the parameter list and default values, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/473844.html) operation to modify the parameters of a Redis instance based on your business requirements.
 //
 // @param request - DescribeParameterTemplatesRequest
 //
@@ -11667,6 +11685,88 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 
 // Summary:
 //
+// 修改账号参数
+//
+// Description:
+//
+// 目前仅支持Tair Serverless KV实例。
+//
+// @param request - ModifyAccountParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAccountParameterResponse
+func (client *Client) ModifyAccountParameterWithOptions(request *ModifyAccountParameterRequest, runtime *dara.RuntimeOptions) (_result *ModifyAccountParameterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountName) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Parameters) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyAccountParameter"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyAccountParameterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改账号参数
+//
+// Description:
+//
+// 目前仅支持Tair Serverless KV实例。
+//
+// @param request - ModifyAccountParameterRequest
+//
+// @return ModifyAccountParameterResponse
+func (client *Client) ModifyAccountParameter(request *ModifyAccountParameterRequest) (_result *ModifyAccountParameterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyAccountParameterResponse{}
+	_body, _err := client.ModifyAccountParameterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the password of an account for a Tair (Redis OSS-compatible) instance.
 //
 // @param request - ModifyAccountPasswordRequest
@@ -14093,11 +14193,11 @@ func (client *Client) ModifyInstanceSSL(request *ModifyInstanceSSLRequest) (_res
 
 // Summary:
 //
-// Changes the configurations of a Tair (Redis OSS-compatible) instance.
+// Changes the specifications of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
 //
 // Description:
 //
-// >  For more information about the procedure, impacts, limits, and fees of this operation, see [Change the configurations of an instance](https://help.aliyun.com/document_detail/26353.html).
+// > For information about the execution process, impacts, feature limits, and billing of specification changes, see [Change instance configurations](https://help.aliyun.com/document_detail/26353.html).
 //
 // @param request - ModifyInstanceSpecRequest
 //
@@ -14245,11 +14345,11 @@ func (client *Client) ModifyInstanceSpecWithOptions(request *ModifyInstanceSpecR
 
 // Summary:
 //
-// Changes the configurations of a Tair (Redis OSS-compatible) instance.
+// Changes the specifications of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
 //
 // Description:
 //
-// >  For more information about the procedure, impacts, limits, and fees of this operation, see [Change the configurations of an instance](https://help.aliyun.com/document_detail/26353.html).
+// > For information about the execution process, impacts, feature limits, and billing of specification changes, see [Change instance configurations](https://help.aliyun.com/document_detail/26353.html).
 //
 // @param request - ModifyInstanceSpecRequest
 //

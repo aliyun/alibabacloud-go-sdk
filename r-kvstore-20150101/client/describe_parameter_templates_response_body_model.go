@@ -22,7 +22,7 @@ type iDescribeParameterTemplatesResponseBody interface {
 }
 
 type DescribeParameterTemplatesResponseBody struct {
-	// The database engine that is run on the instance. The value **Redis*	- is returned for this parameter.
+	// The database type. The return value is fixed as **Redis**.
 	//
 	// example:
 	//
@@ -34,14 +34,14 @@ type DescribeParameterTemplatesResponseBody struct {
 	//
 	// 5.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The number of parameters that are supported by the instance.
+	// The number of parameters.
 	//
 	// example:
 	//
 	// 24
 	ParameterCount *string                                           `json:"ParameterCount,omitempty" xml:"ParameterCount,omitempty"`
 	Parameters     *DescribeParameterTemplatesResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

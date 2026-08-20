@@ -11,18 +11,42 @@ type iDescribeAccountsResponseBody interface {
 	GoString() string
 	SetAccounts(v *DescribeAccountsResponseBodyAccounts) *DescribeAccountsResponseBody
 	GetAccounts() *DescribeAccountsResponseBodyAccounts
+	SetPageNumber(v int32) *DescribeAccountsResponseBody
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeAccountsResponseBody
+	GetPageSize() *int32
 	SetRequestId(v string) *DescribeAccountsResponseBody
 	GetRequestId() *string
+	SetTotalCount(v int32) *DescribeAccountsResponseBody
+	GetTotalCount() *int32
 }
 
 type DescribeAccountsResponseBody struct {
 	Accounts *DescribeAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
+	// The page number.
+	//
+	// example:
+	//
+	// 100
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
 	// 6C9E114C-217C-4118-83C0-B4070222****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeAccountsResponseBody) String() string {
@@ -37,8 +61,20 @@ func (s *DescribeAccountsResponseBody) GetAccounts() *DescribeAccountsResponseBo
 	return s.Accounts
 }
 
+func (s *DescribeAccountsResponseBody) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeAccountsResponseBody) GetPageSize() *int32 {
+	return s.PageSize
+}
+
 func (s *DescribeAccountsResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *DescribeAccountsResponseBody) GetTotalCount() *int32 {
+	return s.TotalCount
 }
 
 func (s *DescribeAccountsResponseBody) SetAccounts(v *DescribeAccountsResponseBodyAccounts) *DescribeAccountsResponseBody {
@@ -46,8 +82,23 @@ func (s *DescribeAccountsResponseBody) SetAccounts(v *DescribeAccountsResponseBo
 	return s
 }
 
+func (s *DescribeAccountsResponseBody) SetPageNumber(v int32) *DescribeAccountsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeAccountsResponseBody) SetPageSize(v int32) *DescribeAccountsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
 func (s *DescribeAccountsResponseBody) SetRequestId(v string) *DescribeAccountsResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAccountsResponseBody) SetTotalCount(v int32) *DescribeAccountsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -101,6 +152,10 @@ type DescribeAccountsResponseBodyAccountsAccount struct {
 	AccountType        *string                                                        `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	DatabasePrivileges *DescribeAccountsResponseBodyAccountsAccountDatabasePrivileges `json:"DatabasePrivileges,omitempty" xml:"DatabasePrivileges,omitempty" type:"Struct"`
 	InstanceId         *string                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// {"access-db-id":"1","cu-limit":"10"}
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 }
 
 func (s DescribeAccountsResponseBodyAccountsAccount) String() string {
@@ -135,6 +190,10 @@ func (s *DescribeAccountsResponseBodyAccountsAccount) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *DescribeAccountsResponseBodyAccountsAccount) GetParameters() *string {
+	return s.Parameters
+}
+
 func (s *DescribeAccountsResponseBodyAccountsAccount) SetAccountDescription(v string) *DescribeAccountsResponseBodyAccountsAccount {
 	s.AccountDescription = &v
 	return s
@@ -162,6 +221,11 @@ func (s *DescribeAccountsResponseBodyAccountsAccount) SetDatabasePrivileges(v *D
 
 func (s *DescribeAccountsResponseBodyAccountsAccount) SetInstanceId(v string) *DescribeAccountsResponseBodyAccountsAccount {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeAccountsResponseBodyAccountsAccount) SetParameters(v string) *DescribeAccountsResponseBodyAccountsAccount {
+	s.Parameters = &v
 	return s
 }
 

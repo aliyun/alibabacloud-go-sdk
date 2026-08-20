@@ -21,6 +21,8 @@ type iDescribeParameterTemplatesRequest interface {
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *DescribeParameterTemplatesRequest
 	GetOwnerId() *int64
+	SetParameterCategory(v string) *DescribeParameterTemplatesRequest
+	GetParameterCategory() *string
 	SetResourceGroupId(v string) *DescribeParameterTemplatesRequest
 	GetResourceGroupId() *string
 	SetResourceOwnerAccount(v string) *DescribeParameterTemplatesRequest
@@ -32,11 +34,13 @@ type iDescribeParameterTemplatesRequest interface {
 }
 
 type DescribeParameterTemplatesRequest struct {
-	// The architecture of the instance. For more information, see [Overview](https://help.aliyun.com/document_detail/86132.html). Valid values:
+	// The architecture of the instance. For more information, see [Architecture overview](https://help.aliyun.com/document_detail/86132.html). Valid values:
 	//
-	// 	- **logic**: The instance is a cluster master-replica instance or a read/write splitting instance.
+	// 	- **logic**: cluster or read/write splitting architecture.
 	//
-	// 	- **normal**: The instance is a standard master-replica instance.
+	// 	- **normal**: standard architecture (primary/secondary).
+	//
+	// <props="china">If **EngineVersion*	- is set to **6.0**, this parameter does not support the value **logic**.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +48,7 @@ type DescribeParameterTemplatesRequest struct {
 	//
 	// logic
 	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
-	// The database engine that is run on the instance. Set the value to **Redis**.
+	// The database type. Set the value to **Redis**.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +64,7 @@ type DescribeParameterTemplatesRequest struct {
 	//
 	// 5.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the IDs of instances.
+	// The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to obtain the instance ID.
 	//
 	// example:
 	//
@@ -68,9 +72,15 @@ type DescribeParameterTemplatesRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the resource group to which the instance belongs. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the IDs of resource groups.
+	// The parameter category.
 	//
-	// >  You can also query the ID of a resource group in the Resource Management console. For more information, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+	// example:
+	//
+	// account
+	ParameterCategory *string `json:"ParameterCategory,omitempty" xml:"ParameterCategory,omitempty"`
+	// The resource group ID. You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to obtain the resource group ID.
+	//
+	// > You can also obtain the resource group ID in the console. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
@@ -111,6 +121,10 @@ func (s *DescribeParameterTemplatesRequest) GetOwnerAccount() *string {
 
 func (s *DescribeParameterTemplatesRequest) GetOwnerId() *int64 {
 	return s.OwnerId
+}
+
+func (s *DescribeParameterTemplatesRequest) GetParameterCategory() *string {
+	return s.ParameterCategory
 }
 
 func (s *DescribeParameterTemplatesRequest) GetResourceGroupId() *string {
@@ -156,6 +170,11 @@ func (s *DescribeParameterTemplatesRequest) SetOwnerAccount(v string) *DescribeP
 
 func (s *DescribeParameterTemplatesRequest) SetOwnerId(v int64) *DescribeParameterTemplatesRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeParameterTemplatesRequest) SetParameterCategory(v string) *DescribeParameterTemplatesRequest {
+	s.ParameterCategory = &v
 	return s
 }
 

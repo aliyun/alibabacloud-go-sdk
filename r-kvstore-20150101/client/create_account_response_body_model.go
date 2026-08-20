@@ -26,19 +26,19 @@ type CreateAccountResponseBody struct {
 	//
 	// demoaccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The name of the account.
+	// **[Deprecated]*	- This parameter is deprecated.
 	//
 	// example:
 	//
 	// demoaccount
 	AcountName *string `json:"AcountName,omitempty" xml:"AcountName,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

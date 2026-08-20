@@ -25,6 +25,8 @@ type iCreateAccountRequest interface {
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *CreateAccountRequest
 	GetOwnerId() *int64
+	SetParameters(v string) *CreateAccountRequest
+	GetParameters() *string
 	SetResourceOwnerAccount(v string) *CreateAccountRequest
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *CreateAccountRequest
@@ -38,23 +40,23 @@ type iCreateAccountRequest interface {
 type CreateAccountRequest struct {
 	// The description of the account.
 	//
-	// 	- The description must start with a letter, and cannot start with `http://` or `https://`.
+	// 	- Must start with a Chinese character or an English letter. Cannot start with `http://` or `https://`.
 	//
-	// 	- The description can contain letters, digits, underscores (_), and hyphens (-).
+	// 	- Can contain Chinese characters, English letters, digits, underscores (_), and hyphens (-).
 	//
-	// 	- The description must be 2 to 256 characters in length.
+	// 	- Must be 2 to 256 characters in length.
 	//
 	// example:
 	//
 	// testaccount
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The name of the account. The name must meet the following requirements:
+	// The account name. The name must meet the following requirements:
 	//
-	// 	- The name must start with a lowercase letter and can contain lowercase letters, digits, and underscores (_).
+	// 	- Starts with a lowercase letter and contains only lowercase letters, digits, or underscores (_).
 	//
-	// 	- The name can be up to 100 characters in length.
+	// 	- Contains up to 100 characters.
 	//
-	// 	- The name cannot be one of the reserved words listed in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/redis/user-guide/create-and-manage-database-accounts#section-u3q-817-om3) section.
+	// 	- Cannot be a <props="china">[Redis reserved account name](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts#section-u3q-817-om3)<props="intl">[Redis reserved account name](https://www.alibabacloud.com/help/zh/redis/user-guide/create-and-manage-database-accounts#section-u3q-817-om3).
 	//
 	// This parameter is required.
 	//
@@ -62,7 +64,7 @@ type CreateAccountRequest struct {
 	//
 	// demoaccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The password of the account. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and specific special characters. These special characters include `! @ # $ % ^ & 	- ( ) _ + - =`
+	// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. The following special characters are supported: `!@#$%^&*()_+-=`.
 	//
 	// This parameter is required.
 	//
@@ -72,30 +74,36 @@ type CreateAccountRequest struct {
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
 	// The permissions of the account. Valid values:
 	//
-	// 	- **RoleReadOnly**: The account has read-only permissions.
+	// 	- **RoleReadOnly**: read-only permissions.
 	//
-	// 	- **RoleReadWrite**: The account has read and write permissions.
+	// 	- **RoleReadWrite**: read and write permissions. This is the default value.
 	//
 	// example:
 	//
 	// RoleReadOnly
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
-	// The type of the account. Set the value to **Normal**, which indicates that the account is a standard account.
+	// The account type. Set the value to **Normal*	- (standard account).
 	//
 	// example:
 	//
 	// Normal
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The account parameters to modify in JSON format. The new values overwrite the original values.
+	//
+	// example:
+	//
+	// {"access-db-id":"1","cu-limit":"10"}
+	Parameters           *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -145,6 +153,10 @@ func (s *CreateAccountRequest) GetOwnerAccount() *string {
 
 func (s *CreateAccountRequest) GetOwnerId() *int64 {
 	return s.OwnerId
+}
+
+func (s *CreateAccountRequest) GetParameters() *string {
+	return s.Parameters
 }
 
 func (s *CreateAccountRequest) GetResourceOwnerAccount() *string {
@@ -200,6 +212,11 @@ func (s *CreateAccountRequest) SetOwnerAccount(v string) *CreateAccountRequest {
 
 func (s *CreateAccountRequest) SetOwnerId(v int64) *CreateAccountRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateAccountRequest) SetParameters(v string) *CreateAccountRequest {
+	s.Parameters = &v
 	return s
 }
 
