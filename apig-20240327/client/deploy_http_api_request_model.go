@@ -129,6 +129,12 @@ type DeployHttpApiRequestRestApiConfig struct {
 	//
 	// User service API publish
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Specifies whether to enable REST API route compression. If omitted or set to false, operations are published individually. If set to true, the API is published as a single prefix route. This parameter is ignored for historical version publishing, which uses the routing mode saved in the historical version.
+	//
+	// example:
+	//
+	// true
+	EnableRouteCompression *bool `json:"enableRouteCompression,omitempty" xml:"enableRouteCompression,omitempty"`
 	// The publish environment configuration.
 	Environment *DeployHttpApiRequestRestApiConfigEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
 	// The gateway ID.
@@ -137,7 +143,7 @@ type DeployHttpApiRequestRestApiConfig struct {
 	//
 	// gw-cvn2u46m1hkun04oll8g
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The operation-level publish control list.
+	// The operation-level deployment control list.
 	OperationDeployments []*DeployHttpApiRequestRestApiConfigOperationDeployments `json:"operationDeployments,omitempty" xml:"operationDeployments,omitempty" type:"Repeated"`
 	// Deprecated
 	//
@@ -163,6 +169,10 @@ func (s *DeployHttpApiRequestRestApiConfig) GetDescription() *string {
 	return s.Description
 }
 
+func (s *DeployHttpApiRequestRestApiConfig) GetEnableRouteCompression() *bool {
+	return s.EnableRouteCompression
+}
+
 func (s *DeployHttpApiRequestRestApiConfig) GetEnvironment() *DeployHttpApiRequestRestApiConfigEnvironment {
 	return s.Environment
 }
@@ -185,6 +195,11 @@ func (s *DeployHttpApiRequestRestApiConfig) GetRevisionId() *string {
 
 func (s *DeployHttpApiRequestRestApiConfig) SetDescription(v string) *DeployHttpApiRequestRestApiConfig {
 	s.Description = &v
+	return s
+}
+
+func (s *DeployHttpApiRequestRestApiConfig) SetEnableRouteCompression(v bool) *DeployHttpApiRequestRestApiConfig {
+	s.EnableRouteCompression = &v
 	return s
 }
 
@@ -234,7 +249,7 @@ func (s *DeployHttpApiRequestRestApiConfig) Validate() error {
 type DeployHttpApiRequestRestApiConfigEnvironment struct {
 	// Deprecated
 	//
-	// The API publish scenario. Backend configurations cannot be specified during publishing. Configure them in advance by using UpdateHttpApi or UpdateHttpApiOperation before publishing.
+	// The API publish scenario. Backend configurations cannot be specified during publishing. Use UpdateHttpApi or UpdateHttpApiOperation to configure the backend before publishing.
 	//
 	// example:
 	//
@@ -252,7 +267,7 @@ type DeployHttpApiRequestRestApiConfigEnvironment struct {
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
 	// Deprecated
 	//
-	// The existing service configurations. In the single-service scenario, only one entry is allowed. In ratio-based or content-based scenarios, multiple entries are allowed. Backend configurations cannot be specified during publishing. Configure them in advance by using UpdateHttpApi or UpdateHttpApiOperation before publishing.
+	// The existing service configurations. In the single service scenario, only one entry is allowed. In ratio-based or content-based scenarios, multiple entries are allowed. Backend configurations cannot be specified during publishing. Use UpdateHttpApi or UpdateHttpApiOperation to configure the backend before publishing.
 	//
 	// if can be null:
 	// true
@@ -329,7 +344,7 @@ type DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs struct {
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The Terms of Service. Valid values:
+	// The service protocol:
 	//
 	// - HTTP.
 	//

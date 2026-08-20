@@ -37,6 +37,8 @@ type iHttpApiDeployConfig interface {
 	GetMock() *HttpApiMockContract
 	SetPolicyConfigs(v []*HttpApiPolicyConfigs) *HttpApiDeployConfig
 	GetPolicyConfigs() []*HttpApiPolicyConfigs
+	SetRestApiRouteMode(v string) *HttpApiDeployConfig
+	GetRestApiRouteMode() *string
 	SetRouteBackend(v *Backend) *HttpApiDeployConfig
 	GetRouteBackend() *Backend
 	SetServiceConfigs(v []*HttpApiDeployConfigServiceConfigs) *HttpApiDeployConfig
@@ -104,6 +106,12 @@ type HttpApiDeployConfig struct {
 	Mock *HttpApiMockContract `json:"mock,omitempty" xml:"mock,omitempty"`
 	// The list of policy configurations.
 	PolicyConfigs []*HttpApiPolicyConfigs `json:"policyConfigs,omitempty" xml:"policyConfigs,omitempty" type:"Repeated"`
+	// The current online routing mode of the REST API. ordinary indicates per-Operation routing. compressed indicates single-prefix routing for the API. This field is not returned for non-REST APIs.
+	//
+	// example:
+	//
+	// ordinary
+	RestApiRouteMode *string `json:"restApiRouteMode,omitempty" xml:"restApiRouteMode,omitempty"`
 	// The backend service information.
 	//
 	// if can be null:
@@ -111,7 +119,7 @@ type HttpApiDeployConfig struct {
 	RouteBackend *Backend `json:"routeBackend,omitempty" xml:"routeBackend,omitempty"`
 	// The list of service configurations.
 	ServiceConfigs []*HttpApiDeployConfigServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
-	// The subdomain content list.
+	// The list of subdomain contents.
 	SubDomains []*HttpApiDeployConfigSubDomains `json:"subDomains,omitempty" xml:"subDomains,omitempty" type:"Repeated"`
 }
 
@@ -177,6 +185,10 @@ func (s *HttpApiDeployConfig) GetMock() *HttpApiMockContract {
 
 func (s *HttpApiDeployConfig) GetPolicyConfigs() []*HttpApiPolicyConfigs {
 	return s.PolicyConfigs
+}
+
+func (s *HttpApiDeployConfig) GetRestApiRouteMode() *string {
+	return s.RestApiRouteMode
 }
 
 func (s *HttpApiDeployConfig) GetRouteBackend() *Backend {
@@ -258,6 +270,11 @@ func (s *HttpApiDeployConfig) SetMock(v *HttpApiMockContract) *HttpApiDeployConf
 
 func (s *HttpApiDeployConfig) SetPolicyConfigs(v []*HttpApiPolicyConfigs) *HttpApiDeployConfig {
 	s.PolicyConfigs = v
+	return s
+}
+
+func (s *HttpApiDeployConfig) SetRestApiRouteMode(v string) *HttpApiDeployConfig {
+	s.RestApiRouteMode = &v
 	return s
 }
 
