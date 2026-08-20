@@ -35,6 +35,8 @@ type iUpdateHttpApiRequest interface {
 	GetRemoveBasePathOnForward() *bool
 	SetVersionConfig(v *HttpApiVersionConfig) *UpdateHttpApiRequest
 	GetVersionConfig() *HttpApiVersionConfig
+	SetDryRun(v bool) *UpdateHttpApiRequest
+	GetDryRun() *bool
 }
 
 type UpdateHttpApiRequest struct {
@@ -44,7 +46,7 @@ type UpdateHttpApiRequest struct {
 	AiProtocols []*string `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
 	// The authentication configuration.
 	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
-	// The API base path, which must start with /.
+	// The base path of the API. The value must start with a forward slash (/).
 	//
 	// This parameter is required.
 	//
@@ -54,11 +56,11 @@ type UpdateHttpApiRequest struct {
 	BasePath *string `json:"basePath,omitempty" xml:"basePath,omitempty"`
 	// The list of API deployment configurations.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
-	// The API description.
+	// The description of the API.
 	//
 	// example:
 	//
-	// Updated API description
+	// Update API description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Specifies whether to enable authentication.
 	//
@@ -74,7 +76,7 @@ type UpdateHttpApiRequest struct {
 	FirstByteTimeout *int32 `json:"firstByteTimeout,omitempty" xml:"firstByteTimeout,omitempty"`
 	// The configuration of the HTTP Ingress API.
 	IngressConfig *UpdateHttpApiRequestIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
-	// Specifies whether to only modify the configuration without triggering redeployment. A value of true indicates that only the configuration is modified.
+	// Specifies whether to only modify the configuration. If set to true, only the configuration is modified without triggering a redeployment.
 	//
 	// example:
 	//
@@ -88,8 +90,10 @@ type UpdateHttpApiRequest struct {
 	//
 	// true
 	RemoveBasePathOnForward *bool `json:"removeBasePathOnForward,omitempty" xml:"removeBasePathOnForward,omitempty"`
-	// The API versioning configuration.
+	// The versioning configuration of the API.
 	VersionConfig *HttpApiVersionConfig `json:"versionConfig,omitempty" xml:"versionConfig,omitempty"`
+	// Specifies whether to perform only a dry run. If set to true, all synchronous validations identical to a real update are performed without updating any configurations or producing side effects. If not specified or set to false, the behavior is the same as the existing version.
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
 func (s UpdateHttpApiRequest) String() string {
@@ -150,6 +154,10 @@ func (s *UpdateHttpApiRequest) GetRemoveBasePathOnForward() *bool {
 
 func (s *UpdateHttpApiRequest) GetVersionConfig() *HttpApiVersionConfig {
 	return s.VersionConfig
+}
+
+func (s *UpdateHttpApiRequest) GetDryRun() *bool {
+	return s.DryRun
 }
 
 func (s *UpdateHttpApiRequest) SetAgentProtocols(v []*string) *UpdateHttpApiRequest {
@@ -214,6 +222,11 @@ func (s *UpdateHttpApiRequest) SetRemoveBasePathOnForward(v bool) *UpdateHttpApi
 
 func (s *UpdateHttpApiRequest) SetVersionConfig(v *HttpApiVersionConfig) *UpdateHttpApiRequest {
 	s.VersionConfig = v
+	return s
+}
+
+func (s *UpdateHttpApiRequest) SetDryRun(v bool) *UpdateHttpApiRequest {
+	s.DryRun = &v
 	return s
 }
 

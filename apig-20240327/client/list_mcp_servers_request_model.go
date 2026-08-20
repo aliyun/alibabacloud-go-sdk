@@ -46,7 +46,7 @@ type ListMcpServersRequest struct {
 	//
 	// gw-co370icmjeu****
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The fuzzy match keyword for searching MCP servers by API name.
+	// Fuzzy searches for MCP servers by API name.
 	//
 	// example:
 	//

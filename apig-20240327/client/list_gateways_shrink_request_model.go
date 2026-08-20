@@ -74,7 +74,7 @@ type ListGatewaysShrinkRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The list of tags.
 	TagShrink *string `json:"tag,omitempty" xml:"tag,omitempty"`
-	// The VPC ID.
+	// The virtual private cloud (VPC) ID.
 	//
 	// example:
 	//

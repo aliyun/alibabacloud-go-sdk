@@ -22,7 +22,7 @@ type DeployHttpApiRequest struct {
 	//
 	// The HTTP API deployment configuration.
 	HttpApiConfig *DeployHttpApiRequestHttpApiConfig `json:"httpApiConfig,omitempty" xml:"httpApiConfig,omitempty" type:"Struct"`
-	// The REST API deployment configuration. Required when the HTTP API being published is a REST API.
+	// The REST API deployment configuration. Required when the HTTP API being published is a REST API. At least one of revisionId, environment, or gatewayId must be provided to identify the publish target.
 	RestApiConfig *DeployHttpApiRequestRestApiConfig `json:"restApiConfig,omitempty" xml:"restApiConfig,omitempty" type:"Struct"`
 	// The route ID. Required when publishing a route of an HTTP API.
 	//
@@ -137,13 +137,13 @@ type DeployHttpApiRequestRestApiConfig struct {
 	//
 	// gw-cvn2u46m1hkun04oll8g
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The operation-level deployment control list.
+	// The operation-level publish control list.
 	OperationDeployments []*DeployHttpApiRequestRestApiConfigOperationDeployments `json:"operationDeployments,omitempty" xml:"operationDeployments,omitempty" type:"Repeated"`
 	// Deprecated
 	//
 	// The operation IDs.
 	OperationIds []*string `json:"operationIds,omitempty" xml:"operationIds,omitempty" type:"Repeated"`
-	// The historical version number. If this field is specified, the publish information is based on the historical version.
+	// The historical version number. If specified, the publish uses the information from this historical version.
 	//
 	// example:
 	//
@@ -234,7 +234,7 @@ func (s *DeployHttpApiRequestRestApiConfig) Validate() error {
 type DeployHttpApiRequestRestApiConfigEnvironment struct {
 	// Deprecated
 	//
-	// The API publish scenario.
+	// The API publish scenario. Backend configurations cannot be specified during publishing. Configure them in advance by using UpdateHttpApi or UpdateHttpApiOperation before publishing.
 	//
 	// example:
 	//
@@ -252,7 +252,7 @@ type DeployHttpApiRequestRestApiConfigEnvironment struct {
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
 	// Deprecated
 	//
-	// The existing service configurations. In the single service scenario, only one entry is allowed. In the by-ratio or by-content scenarios, multiple entries are allowed.
+	// The existing service configurations. In the single-service scenario, only one entry is allowed. In ratio-based or content-based scenarios, multiple entries are allowed. Backend configurations cannot be specified during publishing. Configure them in advance by using UpdateHttpApi or UpdateHttpApiOperation before publishing.
 	//
 	// if can be null:
 	// true
@@ -317,7 +317,7 @@ func (s *DeployHttpApiRequestRestApiConfigEnvironment) Validate() error {
 }
 
 type DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs struct {
-	// The match condition configuration related to API publishing.
+	// The match condition configuration for API publishing.
 	//
 	// example:
 	//
@@ -329,7 +329,7 @@ type DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs struct {
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The service protocol. Valid values:
+	// The Terms of Service. Valid values:
 	//
 	// - HTTP.
 	//
@@ -351,7 +351,7 @@ type DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs struct {
 	//
 	// v1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The weight. Valid values: 1 to 100. This parameter takes effect only in the by-ratio scenario.
+	// The weight. Valid values: 1 to 100. This parameter takes effect only in ratio-based scenarios.
 	//
 	// example:
 	//
@@ -431,7 +431,7 @@ func (s *DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs) Validate() 
 }
 
 type DeployHttpApiRequestRestApiConfigOperationDeployments struct {
-	// The operation type.
+	// The action type.
 	//
 	// example:
 	//

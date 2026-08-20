@@ -34,17 +34,64 @@ type iTransportCertificateInfo interface {
 }
 
 type TransportCertificateInfo struct {
-	Algorithm              *string   `json:"algorithm,omitempty" xml:"algorithm,omitempty"`
-	CertIdentifier         *string   `json:"certIdentifier,omitempty" xml:"certIdentifier,omitempty"`
-	CertName               *string   `json:"certName,omitempty" xml:"certName,omitempty"`
-	CertificateMatchStatus *string   `json:"certificateMatchStatus,omitempty" xml:"certificateMatchStatus,omitempty"`
-	CommonName             *string   `json:"commonName,omitempty" xml:"commonName,omitempty"`
-	CoveredDomains         []*string `json:"coveredDomains,omitempty" xml:"coveredDomains,omitempty" type:"Repeated"`
-	Issuer                 *string   `json:"issuer,omitempty" xml:"issuer,omitempty"`
-	MatchedDomains         []*string `json:"matchedDomains,omitempty" xml:"matchedDomains,omitempty" type:"Repeated"`
-	NotAfterTimestamp      *int64    `json:"notAfterTimestamp,omitempty" xml:"notAfterTimestamp,omitempty"`
-	NotBeforeTimestamp     *int64    `json:"notBeforeTimestamp,omitempty" xml:"notBeforeTimestamp,omitempty"`
-	Sans                   *string   `json:"sans,omitempty" xml:"sans,omitempty"`
+	// The signature/key algorithm.
+	//
+	// example:
+	//
+	// RSA_2048
+	Algorithm *string `json:"algorithm,omitempty" xml:"algorithm,omitempty"`
+	// The certificate identifier (certificate ID under the APIG cloud account).
+	//
+	// example:
+	//
+	// cert-1（1716***@cn-hangzhou 形态）
+	CertIdentifier *string `json:"certIdentifier,omitempty" xml:"certIdentifier,omitempty"`
+	// The certificate name.
+	//
+	// example:
+	//
+	// cert-name
+	CertName *string `json:"certName,omitempty" xml:"certName,omitempty"`
+	// The match status between the certificate and gateway instance domain names.
+	//
+	// example:
+	//
+	// Matched
+	CertificateMatchStatus *string `json:"certificateMatchStatus,omitempty" xml:"certificateMatchStatus,omitempty"`
+	// The certificate Common Name (CN).
+	//
+	// example:
+	//
+	// api.example.com
+	CommonName *string `json:"commonName,omitempty" xml:"commonName,omitempty"`
+	// The set of covered domain names parsed from CN and SAN (deduplicated in lowercase, may contain *. wildcards).
+	CoveredDomains []*string `json:"coveredDomains,omitempty" xml:"coveredDomains,omitempty" type:"Repeated"`
+	// The certificate issuer.
+	//
+	// example:
+	//
+	// DigiCert Secure Site CN CA G3
+	Issuer *string `json:"issuer,omitempty" xml:"issuer,omitempty"`
+	// The gateway instance domain names matched by covered domains (ordered by instance domain name, deduplicated).
+	MatchedDomains []*string `json:"matchedDomains,omitempty" xml:"matchedDomains,omitempty" type:"Repeated"`
+	// The expiration timestamp (Unix milliseconds, from the certificate afterDate).
+	//
+	// example:
+	//
+	// 1747958400000
+	NotAfterTimestamp *int64 `json:"notAfterTimestamp,omitempty" xml:"notAfterTimestamp,omitempty"`
+	// The effective period UNIX timestamp (Unix milliseconds, from the certificate beforeDate).
+	//
+	// example:
+	//
+	// 1716336000000
+	NotBeforeTimestamp *int64 `json:"notBeforeTimestamp,omitempty" xml:"notBeforeTimestamp,omitempty"`
+	// The raw SAN string (separated by commas, semicolons, or whitespace. Elements may have a DNS: prefix).
+	//
+	// example:
+	//
+	// DNS:*.example.org, DNS:foo.example.net
+	Sans *string `json:"sans,omitempty" xml:"sans,omitempty"`
 }
 
 func (s TransportCertificateInfo) String() string {

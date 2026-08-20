@@ -42,7 +42,7 @@ type iDomainInfo interface {
 }
 
 type DomainInfo struct {
-	// The SSL Certificates Service certificate identity.
+	// The certificate identity from SSL Certificates Service.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type DomainInfo struct {
 	//
 	// false
 	ForceHttps *bool `json:"forceHttps,omitempty" xml:"forceHttps,omitempty"`
-	// Specifies whether to enable mTLS mutual authentication.
+	// Specifies whether to enable mutual TLS (mTLS) authentication.
 	//
 	// example:
 	//
@@ -126,7 +126,17 @@ type DomainInfo struct {
 	//
 	// Published
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The maximum TLS version. TLS 1.3 is the maximum supported version.
+	//
+	// example:
+	//
+	// TLS 1.3
 	TlsMax *string `json:"tlsMax,omitempty" xml:"tlsMax,omitempty"`
+	// The minimum TLS version. TLS 1.0 is the minimum supported version.
+	//
+	// example:
+	//
+	// TLS 1.0
 	TlsMin *string `json:"tlsMin,omitempty" xml:"tlsMin,omitempty"`
 	// The update timestamp.
 	//

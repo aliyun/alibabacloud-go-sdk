@@ -22,7 +22,7 @@ type iHttpRouteMatch interface {
 }
 
 type HttpRouteMatch struct {
-	// The rules for matching based on HTTP request headers.
+	// The list of HTTP request header matching rules.
 	Headers []*HttpRouteMatchHeaders `json:"headers,omitempty" xml:"headers,omitempty" type:"Repeated"`
 	// Specifies whether the path is case-insensitive.
 	//
@@ -30,11 +30,11 @@ type HttpRouteMatch struct {
 	//
 	// true
 	IgnoreUriCase *bool `json:"ignoreUriCase,omitempty" xml:"ignoreUriCase,omitempty"`
-	// The HTTP methods.
+	// The list of request methods.
 	Methods []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
 	// The path rule.
 	Path *HttpRouteMatchPath `json:"path,omitempty" xml:"path,omitempty" type:"Struct"`
-	// The rules for matching based on query parameters.
+	// The list of query request parameter matching rules.
 	QueryParams []*HttpRouteMatchQueryParams `json:"queryParams,omitempty" xml:"queryParams,omitempty" type:"Repeated"`
 }
 
@@ -119,25 +119,25 @@ func (s *HttpRouteMatch) Validate() error {
 }
 
 type HttpRouteMatchHeaders struct {
-	// The header name.
+	// The name of the header.
 	//
 	// example:
 	//
 	// dev
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The match type. Valid values:
+	// The header matching type. Valid values:
 	//
-	// 	- Exact: exact match
+	// - Exact: exact match.
 	//
-	// 	- Prefix: prefix match
+	// - Prefix: prefix match.
 	//
-	// 	- Regex: regular expression
+	// - Regex: regular expression match.
 	//
 	// example:
 	//
 	// Exact
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The header value.
+	// The value of the header.
 	//
 	// example:
 	//
@@ -185,13 +185,13 @@ func (s *HttpRouteMatchHeaders) Validate() error {
 }
 
 type HttpRouteMatchPath struct {
-	// The path matching type. Valid values:
+	// The path matching rule. Valid values:
 	//
-	// 	- Exact: exact match
+	// - Exact: exact match.
 	//
-	// 	- Prefix: prefix match
+	// - Prefix: prefix match.
 	//
-	// 	- Regex: regular expression
+	// - Regex: regular expression match.
 	//
 	// example:
 	//
@@ -242,13 +242,13 @@ type HttpRouteMatchQueryParams struct {
 	//
 	// age
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The match type. Valid values:
+	// The query parameter matching type. Valid values:
 	//
-	// 	- Exact: exact match
+	// - Exact: exact match.
 	//
-	// 	- Prefix: prefix match
+	// - Prefix: prefix match.
 	//
-	// 	- Regex: regular expression
+	// - Regex: regular expression match.
 	//
 	// example:
 	//

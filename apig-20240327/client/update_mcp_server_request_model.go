@@ -60,7 +60,7 @@ type UpdateMcpServerRequest struct {
 	//
 	// example:
 	//
-	// 商品中心服务路由
+	// Product center service routing
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The domain name IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
@@ -70,9 +70,9 @@ type UpdateMcpServerRequest struct {
 	//
 	// /sse
 	ExposedUriPath *string `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
-	// The list of canary release MCP server route configurations.
+	// The list of canary release MCP server routing configurations.
 	GrayMcpServerConfigs []*UpdateMcpServerRequestGrayMcpServerConfigs `json:"grayMcpServerConfigs,omitempty" xml:"grayMcpServerConfigs,omitempty" type:"Repeated"`
-	// The route match rule.
+	// The route match rules.
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
 	// The HTTP-to-MCP configuration.
 	McpServerConfig *UpdateMcpServerRequestMcpServerConfig `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty" type:"Struct"`
@@ -90,7 +90,7 @@ type UpdateMcpServerRequest struct {
 	//
 	// - SSE: Server-Sent Events protocol.
 	//
-	// - StreamableHTTP: streamable HTTP protocol.
+	// - StreamableHTTP: Streamable HTTP protocol.
 	//
 	// This parameter is required.
 	//
@@ -470,7 +470,7 @@ func (s *UpdateMcpServerRequestBackendConfigServices) Validate() error {
 type UpdateMcpServerRequestGrayMcpServerConfigs struct {
 	// The backend configuration.
 	BackendConfig *UpdateMcpServerRequestGrayMcpServerConfigsBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
-	// The route match rule.
+	// The route match rules.
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
 	// The route ID.
 	//

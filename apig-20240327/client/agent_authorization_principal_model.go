@@ -16,9 +16,25 @@ type iAgentAuthorizationPrincipal interface {
 }
 
 type AgentAuthorizationPrincipal struct {
+	// The ID of the authorization principal. Specify a consumer ID or consumer group ID based on the value of principalType.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// consumer-1
 	PrincipalId *string `json:"principalId,omitempty" xml:"principalId,omitempty"`
+	// The type of the authorization principal. Valid values:
+	//
+	// - Consumer: consumer.
+	//
+	// - ConsumerGroup: consumer group.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Consumer
 	PrincipalType *string `json:"principalType,omitempty" xml:"principalType,omitempty"`
 }
 

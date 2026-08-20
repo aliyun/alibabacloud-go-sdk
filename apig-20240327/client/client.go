@@ -235,7 +235,7 @@ func (client *Client) AddGatewayQuotaRule(gatewayId *string, request *AddGateway
 
 // Summary:
 //
-// Authorizes a security group that allows a gateway to access services.
+// Authorizes a security group to allow gateway access to services.
 //
 // @param request - AddGatewaySecurityGroupRuleRequest
 //
@@ -290,7 +290,7 @@ func (client *Client) AddGatewaySecurityGroupRuleWithOptions(gatewayId *string, 
 
 // Summary:
 //
-// Authorizes a security group that allows a gateway to access services.
+// Authorizes a security group to allow gateway access to services.
 //
 // @param request - AddGatewaySecurityGroupRuleRequest
 //
@@ -558,6 +558,10 @@ func (client *Client) BatchImportHttpApisWithOptions(request *BatchImportHttpApi
 
 	if !dara.IsNil(request.ResourceGroupId) {
 		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.SpecContentBase64) {
+		body["specContentBase64"] = request.SpecContentBase64
 	}
 
 	if !dara.IsNil(request.SpecFileUrl) {
@@ -1405,6 +1409,11 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, head
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DryRun) {
+		query["dryRun"] = request.DryRun
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CaCertIdentifier) {
 		body["caCertIdentifier"] = request.CaCertIdentifier
@@ -1464,6 +1473,7 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, head
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -3377,14 +3387,28 @@ func (client *Client) DeleteGatewaySecurityGroupRule(gatewayId *string, security
 //
 // Deletes a specified HTTP API.
 //
+// @param request - DeleteHttpApiRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteHttpApiResponse
-func (client *Client) DeleteHttpApiWithOptions(httpApiId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteHttpApiResponse, _err error) {
+func (client *Client) DeleteHttpApiWithOptions(httpApiId *string, request *DeleteHttpApiRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteHttpApiResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DryRun) {
+		query["dryRun"] = request.DryRun
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DeleteHttpApi"),
@@ -3410,12 +3434,14 @@ func (client *Client) DeleteHttpApiWithOptions(httpApiId *string, headers map[st
 //
 // Deletes a specified HTTP API.
 //
+// @param request - DeleteHttpApiRequest
+//
 // @return DeleteHttpApiResponse
-func (client *Client) DeleteHttpApi(httpApiId *string) (_result *DeleteHttpApiResponse, _err error) {
+func (client *Client) DeleteHttpApi(httpApiId *string, request *DeleteHttpApiRequest) (_result *DeleteHttpApiResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteHttpApiResponse{}
-	_body, _err := client.DeleteHttpApiWithOptions(httpApiId, headers, runtime)
+	_body, _err := client.DeleteHttpApiWithOptions(httpApiId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5038,7 +5064,7 @@ func (client *Client) GetGatewayQuotaRule(gatewayId *string, ruleId *string, req
 //
 // Description:
 //
-// Retrieves the usage details of a specific consumer under a quota rule. This operation takes effect only for AI gateways with a version later than 2.1.19.
+// This operation retrieves the usage details of a consumer under a quota rule. This operation applies only to AI gateways with a version later than 2.1.19.
 //
 // @param request - GetGatewayQuotaRuleSubjectUsageRequest
 //
@@ -5097,7 +5123,7 @@ func (client *Client) GetGatewayQuotaRuleSubjectUsageWithOptions(gatewayId *stri
 //
 // Description:
 //
-// Retrieves the usage details of a specific consumer under a quota rule. This operation takes effect only for AI gateways with a version later than 2.1.19.
+// This operation retrieves the usage details of a consumer under a quota rule. This operation applies only to AI gateways with a version later than 2.1.19.
 //
 // @param request - GetGatewayQuotaRuleSubjectUsageRequest
 //
@@ -5118,14 +5144,28 @@ func (client *Client) GetGatewayQuotaRuleSubjectUsage(gatewayId *string, ruleId 
 //
 // Retrieves HTTP API information.
 //
+// @param request - GetHttpApiRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetHttpApiResponse
-func (client *Client) GetHttpApiWithOptions(httpApiId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetHttpApiResponse, _err error) {
+func (client *Client) GetHttpApiWithOptions(httpApiId *string, request *GetHttpApiRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetHttpApiResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExpandPolicyConfigs) {
+		query["expandPolicyConfigs"] = request.ExpandPolicyConfigs
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("GetHttpApi"),
@@ -5151,12 +5191,14 @@ func (client *Client) GetHttpApiWithOptions(httpApiId *string, headers map[strin
 //
 // Retrieves HTTP API information.
 //
+// @param request - GetHttpApiRequest
+//
 // @return GetHttpApiResponse
-func (client *Client) GetHttpApi(httpApiId *string) (_result *GetHttpApiResponse, _err error) {
+func (client *Client) GetHttpApi(httpApiId *string, request *GetHttpApiRequest) (_result *GetHttpApiResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetHttpApiResponse{}
-	_body, _err := client.GetHttpApiWithOptions(httpApiId, headers, runtime)
+	_body, _err := client.GetHttpApiWithOptions(httpApiId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7591,7 +7633,7 @@ func (client *Client) ListHttpApis(request *ListHttpApisRequest) (_result *ListH
 
 // Summary:
 //
-// Retrieves a list of MCP servers.
+// Retrieves the list of MCP servers.
 //
 // Description:
 //
@@ -7666,7 +7708,7 @@ func (client *Client) ListMcpServersWithOptions(request *ListMcpServersRequest, 
 
 // Summary:
 //
-// Retrieves a list of MCP servers.
+// Retrieves the list of MCP servers.
 //
 // Description:
 //
@@ -10461,6 +10503,11 @@ func (client *Client) UpdateHttpApiWithOptions(httpApiId *string, request *Updat
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DryRun) {
+		query["dryRun"] = request.DryRun
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AgentProtocols) {
 		body["agentProtocols"] = request.AgentProtocols
@@ -10516,6 +10563,7 @@ func (client *Client) UpdateHttpApiWithOptions(httpApiId *string, request *Updat
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -10719,7 +10767,7 @@ func (client *Client) UpdateHttpApiRoute(httpApiId *string, routeId *string, req
 //
 // Description:
 //
-// Only sources of the **Container Service*	- type can update the Ingress listener configuration.
+// Only sources of the **Container Service*	- type are allowed to update the Ingress listener configuration.
 //
 // @param request - UpdateMcpServerRequest
 //
@@ -10814,7 +10862,7 @@ func (client *Client) UpdateMcpServerWithOptions(mcpServerId *string, request *U
 //
 // Description:
 //
-// Only sources of the **Container Service*	- type can update the Ingress listener configuration.
+// Only sources of the **Container Service*	- type are allowed to update the Ingress listener configuration.
 //
 // @param request - UpdateMcpServerRequest
 //

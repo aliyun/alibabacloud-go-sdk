@@ -212,6 +212,14 @@ type ListGatewaysResponseBodyDataItems struct {
 	//
 	// gw-cpv54p5***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The running mode of the AI MultiTenantServerless gateway. Valid values:
+	//
+	// - ENTERPRISE: Enterprise Edition.
+	//
+	// - STANDARD: Standard Edition.
+	//
+	// This parameter is returned only for AI MultiTenantServerless gateways.
+	//
 	// example:
 	//
 	// ENTERPRISE
@@ -222,7 +230,7 @@ type ListGatewaysResponseBodyDataItems struct {
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// Indicates whether the gateway instance was created before AI gateway was released.
+	// Indicates whether the gateway instance was created before the AI gateway was released.
 	//
 	// example:
 	//
@@ -266,7 +274,7 @@ type ListGatewaysResponseBodyDataItems struct {
 	SubDomainInfos []*SubDomainInfo `json:"subDomainInfos,omitempty" xml:"subDomainInfos,omitempty" type:"Repeated"`
 	// The list of tags.
 	Tags []*ListGatewaysResponseBodyDataItemsTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The target version of the gateway. If this value differs from the version, a version upgrade can be performed.
+	// The target version of the gateway. When this value differs from version, a version upgrade can be performed.
 	//
 	// example:
 	//

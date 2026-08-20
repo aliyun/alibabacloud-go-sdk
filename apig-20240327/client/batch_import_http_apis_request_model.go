@@ -19,6 +19,8 @@ type iBatchImportHttpApisRequest interface {
 	GetGatewayId() *string
 	SetResourceGroupId(v string) *BatchImportHttpApisRequest
 	GetResourceGroupId() *string
+	SetSpecContentBase64(v string) *BatchImportHttpApisRequest
+	GetSpecContentBase64() *string
 	SetSpecFileUrl(v string) *BatchImportHttpApisRequest
 	GetSpecFileUrl() *string
 	SetSpecOssConfig(v *BatchImportHttpApisRequestSpecOssConfig) *BatchImportHttpApisRequest
@@ -37,7 +39,10 @@ type BatchImportHttpApisRequest struct {
 	//
 	// Http
 	ApiType *string `json:"apiType,omitempty" xml:"apiType,omitempty"`
-	DryRun  *bool   `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// example:
+	//
+	// true
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 	// example:
 	//
 	// gw-xxx
@@ -45,7 +50,8 @@ type BatchImportHttpApisRequest struct {
 	// example:
 	//
 	// rg-xxx
-	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	ResourceGroupId   *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	SpecContentBase64 *string `json:"specContentBase64,omitempty" xml:"specContentBase64,omitempty"`
 	// example:
 	//
 	// https://oss-cn-hangzhou.aliyuncs.com/my-bucket/imports/batch.zip
@@ -54,8 +60,11 @@ type BatchImportHttpApisRequest struct {
 	// example:
 	//
 	// ExistFirst
-	Strategy             *string `json:"strategy,omitempty" xml:"strategy,omitempty"`
-	WithGatewayExtension *bool   `json:"withGatewayExtension,omitempty" xml:"withGatewayExtension,omitempty"`
+	Strategy *string `json:"strategy,omitempty" xml:"strategy,omitempty"`
+	// example:
+	//
+	// false
+	WithGatewayExtension *bool `json:"withGatewayExtension,omitempty" xml:"withGatewayExtension,omitempty"`
 }
 
 func (s BatchImportHttpApisRequest) String() string {
@@ -84,6 +93,10 @@ func (s *BatchImportHttpApisRequest) GetGatewayId() *string {
 
 func (s *BatchImportHttpApisRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
+}
+
+func (s *BatchImportHttpApisRequest) GetSpecContentBase64() *string {
+	return s.SpecContentBase64
 }
 
 func (s *BatchImportHttpApisRequest) GetSpecFileUrl() *string {
@@ -124,6 +137,11 @@ func (s *BatchImportHttpApisRequest) SetGatewayId(v string) *BatchImportHttpApis
 
 func (s *BatchImportHttpApisRequest) SetResourceGroupId(v string) *BatchImportHttpApisRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *BatchImportHttpApisRequest) SetSpecContentBase64(v string) *BatchImportHttpApisRequest {
+	s.SpecContentBase64 = &v
 	return s
 }
 

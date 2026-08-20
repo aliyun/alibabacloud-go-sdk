@@ -124,7 +124,7 @@ type GetGatewayQuotaRuleSubjectUsageResponseBodyData struct {
 	//
 	// 180
 	OutputAmount *int64 `json:"outputAmount,omitempty" xml:"outputAmount,omitempty"`
-	// Indicates whether the quota limit is exceeded.
+	// Indicates whether the limit is exceeded.
 	//
 	// example:
 	//

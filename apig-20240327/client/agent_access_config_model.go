@@ -22,13 +22,32 @@ type iAgentAccessConfig interface {
 }
 
 type AgentAccessConfig struct {
-	AiRequestLogEnabled *bool                           `json:"aiRequestLogEnabled,omitempty" xml:"aiRequestLogEnabled,omitempty"`
-	Authorization       *AgentAccessConfigAuthorization `json:"authorization,omitempty" xml:"authorization,omitempty" type:"Struct"`
+	// Specifies whether to enable AI request logging. Default value if omitted: true.
+	//
+	// example:
+	//
+	// false
+	AiRequestLogEnabled *bool `json:"aiRequestLogEnabled,omitempty" xml:"aiRequestLogEnabled,omitempty"`
+	// The consumer authorization configuration for Agent access. If omitted, consumer authorization is not enabled.
+	Authorization *AgentAccessConfigAuthorization `json:"authorization,omitempty" xml:"authorization,omitempty" type:"Struct"`
+	// The base path of the Agent access entry. The path must start with a forward slash (/).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// /agent
 	BasePath *string `json:"basePath,omitempty" xml:"basePath,omitempty"`
+	// The list of domain name IDs bound to the Agent access entry. At least one domain name must be specified.
+	//
 	// This parameter is required.
-	DomainIds               []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
-	RemoveBasePathOnForward *bool     `json:"removeBasePathOnForward,omitempty" xml:"removeBasePathOnForward,omitempty"`
+	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
+	// Specifies whether to remove the base path when forwarding requests to the backend. Default value if omitted: false.
+	//
+	// example:
+	//
+	// true
+	RemoveBasePathOnForward *bool `json:"removeBasePathOnForward,omitempty" xml:"removeBasePathOnForward,omitempty"`
 }
 
 func (s AgentAccessConfig) String() string {
@@ -94,9 +113,21 @@ func (s *AgentAccessConfig) Validate() error {
 }
 
 type AgentAccessConfigAuthorization struct {
+	// The authentication type of the Agent access entry. Specify this parameter only when enabled is set to true.
+	//
+	// example:
+	//
+	// Apikey
 	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	// Specifies whether to enable consumer authorization. If set to true, authType must be specified and at least one principal must be provided. If set to false, no principals can be specified.
+	//
 	// This parameter is required.
-	Enabled    *bool                          `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The list of consumers or consumer groups that are granted Agent access permissions. At least one principal must be specified when enabled is set to true.
 	Principals []*AgentAuthorizationPrincipal `json:"principals,omitempty" xml:"principals,omitempty" type:"Repeated"`
 }
 

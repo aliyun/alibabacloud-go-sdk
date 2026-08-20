@@ -36,7 +36,7 @@ type iCreateGatewayRequest interface {
 }
 
 type CreateGatewayRequest struct {
-	// The billing method.
+	// The billing method. Required for the Serverless edition and must be set to POSTPAY.
 	//
 	// example:
 	//
@@ -56,8 +56,13 @@ type CreateGatewayRequest struct {
 	//
 	// Professional
 	GatewayEdition *string `json:"gatewayEdition,omitempty" xml:"gatewayEdition,omitempty"`
-	GatewayMode    *string `json:"gatewayMode,omitempty" xml:"gatewayMode,omitempty"`
-	// The gateway type.
+	// The running mode for AI multi-tenant V2. Default value: ENTERPRISE. Only allowed when the gateway type is AI and the edition is MultiTenantServerless.
+	//
+	// example:
+	//
+	// ENTERPRISE
+	GatewayMode *string `json:"gatewayMode,omitempty" xml:"gatewayMode,omitempty"`
+	// The gateway type. Must be explicitly set to AI for AI Serverless or multi-tenant editions.
 	//
 	// example:
 	//
@@ -65,7 +70,7 @@ type CreateGatewayRequest struct {
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
 	// The gateway log configuration.
 	LogConfig *CreateGatewayRequestLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty" type:"Struct"`
-	// The gateway name.
+	// The gateway name. Required for all editions.
 	//
 	// example:
 	//
@@ -79,7 +84,7 @@ type CreateGatewayRequest struct {
 	//
 	// rg-ahr5uil8raz0rq3b
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The node specifications.
+	// The node specifications. Required for the Serverless edition.
 	//
 	// example:
 	//
@@ -87,13 +92,13 @@ type CreateGatewayRequest struct {
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 	// The list of tags.
 	Tag []*CreateGatewayRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
-	// The VPC ID.
+	// The VPC ID. Required for all editions.
 	//
 	// example:
 	//
 	// vpc-zm0x16tomfiat1mk9f6rs
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The zone configuration.
+	// The zone configuration. Required for all editions.
 	ZoneConfig *CreateGatewayRequestZoneConfig `json:"zoneConfig,omitempty" xml:"zoneConfig,omitempty" type:"Struct"`
 }
 
@@ -242,7 +247,7 @@ func (s *CreateGatewayRequest) Validate() error {
 }
 
 type CreateGatewayRequestLogConfig struct {
-	// The Simple Log Service (SLS) configuration, which controls gateway log collection.
+	// The Simple Log Service (SLS) configuration that controls gateway log collection.
 	Sls *CreateGatewayRequestLogConfigSls `json:"sls,omitempty" xml:"sls,omitempty" type:"Struct"`
 }
 
@@ -273,7 +278,7 @@ func (s *CreateGatewayRequestLogConfig) Validate() error {
 }
 
 type CreateGatewayRequestLogConfigSls struct {
-	// Specifies whether to enable SLS log collection.
+	// Specifies whether to enable log collection.
 	//
 	// example:
 	//

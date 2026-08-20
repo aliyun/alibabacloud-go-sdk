@@ -131,6 +131,7 @@ func (s *ListGatewayFeaturesResponseBodyData) Validate() error {
 }
 
 type ListGatewayFeaturesResponseBodyDataItems struct {
+	// The runtime constraints calculated based on the current gateway form. Only returned for certain features.
 	Constraints *ListGatewayFeaturesResponseBodyDataItemsConstraints `json:"constraints,omitempty" xml:"constraints,omitempty" type:"Struct"`
 	// The parameter definition.
 	Definition *ListGatewayFeaturesResponseBodyDataItemsDefinition `json:"definition,omitempty" xml:"definition,omitempty" type:"Struct"`
@@ -192,6 +193,11 @@ func (s *ListGatewayFeaturesResponseBodyDataItems) Validate() error {
 }
 
 type ListGatewayFeaturesResponseBodyDataItemsConstraints struct {
+	// The maximum body collection size per request in bytes. This value is returned based on the managed form of the gateway deployment cluster. Only the log-request-response feature returns this field.
+	//
+	// example:
+	//
+	// 5120
 	BodyMaxSizeLimit *int32 `json:"bodyMaxSizeLimit,omitempty" xml:"bodyMaxSizeLimit,omitempty"`
 }
 
@@ -227,7 +233,7 @@ type ListGatewayFeaturesResponseBodyDataItemsDefinition struct {
 	//
 	// example:
 	//
-	// 作用于请求与响应环节，启用gzip会对请求响应进行压缩，会减少网关流量，增加网关cpu消耗
+	// Applies to request and response phases. Enabling gzip compresses request responses, which reduces gateway traffic but increases gateway CPU consumption
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name of the parameter.
 	//
@@ -237,9 +243,9 @@ type ListGatewayFeaturesResponseBodyDataItemsDefinition struct {
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// The parameter group. Valid values:
 	//
-	// - Telemetry: observability parameter.
+	// - Telemetry: observability-related parameter.
 	//
-	// - Engine: engine parameter.
+	// - Engine: engine-related parameter.
 	//
 	// example:
 	//
@@ -249,7 +255,7 @@ type ListGatewayFeaturesResponseBodyDataItemsDefinition struct {
 	//
 	// - Trigger: toggle.
 	//
-	// - Input: input.
+	// - Input: text input.
 	//
 	// - SingleSelect: single-select.
 	//
@@ -309,15 +315,15 @@ type ListGatewayFeaturesResponseBodyDataItemsDefinition struct {
 	//
 	// - string: String.
 	//
-	// - int32: Integer.
+	// - int32: 32-bit integer.
 	//
-	// - int64: Long integer.
+	// - int64: 64-bit integer.
 	//
 	// - json: JSON format.
 	//
 	// - array: JSON array format.
 	//
-	// - float: Float.
+	// - float: Floating-point.
 	//
 	// example:
 	//
@@ -488,7 +494,7 @@ func (s *ListGatewayFeaturesResponseBodyDataItemsDefinition) Validate() error {
 }
 
 type ListGatewayFeaturesResponseBodyDataItemsDefinitionValueOptions struct {
-	// The pass parameter key.
+	// The key used to pass the parameter.
 	//
 	// example:
 	//
@@ -498,7 +504,7 @@ type ListGatewayFeaturesResponseBodyDataItemsDefinitionValueOptions struct {
 	//
 	// example:
 	//
-	// 保持不变
+	// Keep unchanged
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
 }
 

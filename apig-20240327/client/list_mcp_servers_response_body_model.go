@@ -96,7 +96,7 @@ func (s *ListMcpServersResponseBody) Validate() error {
 }
 
 type ListMcpServersResponseBodyData struct {
-	// The list of MCP servers.
+	// The MCP server list information.
 	Items []*ListMcpServersResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -182,19 +182,19 @@ type ListMcpServersResponseBodyDataItems struct {
 	//
 	// api-xxx
 	ApiId *string `json:"apiId,omitempty" xml:"apiId,omitempty"`
-	// The list of assembly sources. This parameter is required when type is AssemblyMCP.
+	// The list of assembled sources. This parameter is required when type is AssemblyMCP.
 	AssembledSources []*ListMcpServersResponseBodyDataItemsAssembledSources `json:"assembledSources,omitempty" xml:"assembledSources,omitempty" type:"Repeated"`
 	// The backend service of the route.
 	Backend *Backend `json:"backend,omitempty" xml:"backend,omitempty"`
 	// The creation source type. Valid values:
 	//
-	// - ApiGatewayHttpToMCP: gateway-managed HTTP-to-MCP conversion.
+	// - ApiGatewayHttpToMCP: gateway-managed HTTP-to-MCP.
 	//
 	// - ApiGatewayMcpHosting: gateway-managed MCP direct proxy.
 	//
 	// - ApiGatewayAssembly: gateway MCP assembly.
 	//
-	// - NacosHttpToMCP: gateway-managed Nacos-synced HTTP-to-MCP conversion.
+	// - NacosHttpToMCP: gateway-managed Nacos-synced HTTP-to-MCP.
 	//
 	// - NacosMcpHosting: gateway-managed Nacos-synced MCP direct proxy.
 	//
@@ -212,7 +212,7 @@ type ListMcpServersResponseBodyDataItems struct {
 	//
 	// example:
 	//
-	// 这是xxx的xx项目测试环境
+	// This is the test environment for the xx project of xxx
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The list of domain name IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
@@ -242,7 +242,7 @@ type ListMcpServersResponseBodyDataItems struct {
 	//
 	// example:
 	//
-	// HTTP转MCP Config base64值
+	// Base64-encoded value of the HTTP-to-MCP configuration
 	McpServerConfig *string `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty"`
 	// MCP Server ID
 	//
@@ -256,7 +256,7 @@ type ListMcpServersResponseBodyDataItems struct {
 	//
 	// /mcp-servers/test-mcp
 	McpServerPath *string `json:"mcpServerPath,omitempty" xml:"mcpServerPath,omitempty"`
-	// Indicates whether MCP observability is enabled. Default value: false.
+	// Specifies whether MCP observability is enabled. Default value: false.
 	//
 	// example:
 	//
@@ -286,7 +286,7 @@ type ListMcpServersResponseBodyDataItems struct {
 	//
 	// example:
 	//
-	// 可选值：RealMCP、AssemblyMCP
+	// Valid values: RealMCP, AssemblyMCP
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -591,7 +591,7 @@ type ListMcpServersResponseBodyDataItemsNacosMcpSyncInfo struct {
 	//
 	// example:
 	//
-	// 同步的MCP Server ID
+	// The synced MCP server ID
 	ImportMcpServerId *string `json:"importMcpServerId,omitempty" xml:"importMcpServerId,omitempty"`
 	// The Nacos namespace.
 	//

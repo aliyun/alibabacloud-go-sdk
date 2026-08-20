@@ -122,7 +122,11 @@ type GetGatewayResponseBodyData struct {
 	//
 	// 1719386834548
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
-	// The gateway instance edition. Valid values:
+	// The edition of the gateway instance. Valid values:
+	//
+	// - Professional: standard instance.
+	//
+	// - Serverless: Serverless.
 	//
 	// example:
 	//
@@ -133,7 +137,12 @@ type GetGatewayResponseBodyData struct {
 	// example:
 	//
 	// gw-cq2vundlhtg***
-	GatewayId   *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The running mode of AI multi-tenant V2. Default value: ENTERPRISE. This parameter can be specified only when AI + MultiTenantServerless is used.
+	//
+	// example:
+	//
+	// STANDARD
 	GatewayMode *string `json:"gatewayMode,omitempty" xml:"gatewayMode,omitempty"`
 	// The gateway type. Valid values:
 	//
@@ -191,7 +200,12 @@ type GetGatewayResponseBodyData struct {
 	//
 	// 2.0.2
 	TargetVersion *string `json:"targetVersion,omitempty" xml:"targetVersion,omitempty"`
-	TenantId      *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	// The tenant ID returned in STANDARD mode.
+	//
+	// example:
+	//
+	// pt-xxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// The update timestamp. Unit: milliseconds.
 	//
 	// example:

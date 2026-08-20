@@ -37,22 +37,24 @@ type iCreateDomainRequest interface {
 	GetTlsMax() *string
 	SetTlsMin(v string) *CreateDomainRequest
 	GetTlsMin() *string
+	SetDryRun(v bool) *CreateDomainRequest
+	GetDryRun() *bool
 }
 
 type CreateDomainRequest struct {
-	// The CA certificate identifier. This parameter is optional for Dedicated with HTTPS. This parameter is not allowed for Serverless and is not validated for Dedicated with HTTP.
+	// The CA certificate identifier. This parameter is optional for Dedicated scope with HTTPS. It is not allowed for Serverless scope and is not validated for Dedicated scope with HTTP.
 	//
 	// example:
 	//
 	// 1ef1da5f-38ed-69b3-****-037781890265
 	CaCertIdentifier *string `json:"caCertIdentifier,omitempty" xml:"caCertIdentifier,omitempty"`
-	// The certificate identifier. This parameter is required for Dedicated with HTTPS and must pass validation. This parameter is not allowed for Serverless and is not validated for Dedicated with HTTP.
+	// The certificate identifier. This parameter is required for Dedicated scope with HTTPS and must pass validation. It is not allowed for Serverless scope and is not validated for Dedicated scope with HTTP.
 	//
 	// example:
 	//
 	// 1ef1da5f-38ed-69b3-****-037781890265
 	CertIdentifier *string `json:"certIdentifier,omitempty" xml:"certIdentifier,omitempty"`
-	// The client CA certificate. This parameter is conditionally required for Dedicated with HTTPS (when MTLSEnabled is set to true). This parameter is not allowed for Serverless and is not validated for Dedicated with HTTP.
+	// The client CA certificate. This parameter is conditionally required for Dedicated scope with HTTPS (required when MTLSEnabled is set to true). It is not allowed for Serverless scope and is not validated for Dedicated scope with HTTP.
 	//
 	// example:
 	//
@@ -78,7 +80,7 @@ type CreateDomainRequest struct {
 	//
 	// Dedicated
 	DomainScope *string `json:"domainScope,omitempty" xml:"domainScope,omitempty"`
-	// Specifies whether to enable forced HTTPS redirect for the HTTPS protocol type. This parameter is required for Serverless and for Dedicated with HTTPS. This parameter is not validated for Dedicated with HTTP.
+	// Specifies whether to enable forced HTTPS redirect for the HTTPS protocol type. This parameter is required for Serverless scope and for Dedicated scope with HTTPS. It is not validated for Dedicated scope with HTTP.
 	//
 	// example:
 	//
@@ -104,9 +106,9 @@ type CreateDomainRequest struct {
 	//
 	// Open
 	Http2Option *string `json:"http2Option,omitempty" xml:"http2Option,omitempty"`
-	// Specifies whether to enable mTLS mutual authentication. This parameter is optional for Dedicated with HTTPS. When set to true, ClientCACert is required. This parameter is not allowed for Serverless.
+	// Specifies whether to enable mTLS mutual authentication. This parameter is optional for Dedicated scope with HTTPS. When set to true, ClientCACert is required. This parameter is not allowed for Serverless scope.
 	MTLSEnabled *bool `json:"mTLSEnabled,omitempty" xml:"mTLSEnabled,omitempty"`
-	// The domain name. The name must be 1 to 128 characters in length, such as abc.com.
+	// The domain name. The name must be 1 to 128 characters in length. Example: abc.com.
 	//
 	// This parameter is required.
 	//
@@ -114,7 +116,7 @@ type CreateDomainRequest struct {
 	//
 	// abc.com
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The protocol type used by the domain name. Valid values: HTTP and HTTPS. This parameter is required for the Dedicated scope and is not allowed for the Serverless scope.
+	// The protocol type used by the domain name. Valid values: HTTP, HTTPS. This parameter is required for the Dedicated scope and is not allowed for the Serverless scope.
 	//
 	// example:
 	//
@@ -128,18 +130,20 @@ type CreateDomainRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The TLS cipher suite configuration, including the configuration type, cipher suite names, and supported TLS versions. This configuration is supported only for HTTPS domain names in the Dedicated scope.
 	TlsCipherSuitesConfig *TlsCipherSuitesConfig `json:"tlsCipherSuitesConfig,omitempty" xml:"tlsCipherSuitesConfig,omitempty"`
-	// The maximum TLS protocol version. This parameter is optional for Dedicated with HTTPS. If not specified, the value is derived from TlsMin. The value must be greater than or equal to TlsMin. This parameter is not allowed for Serverless.
+	// The maximum TLS protocol version. This parameter is optional for Dedicated scope with HTTPS. If not specified, the value is derived from TlsMin. The value must be greater than or equal to TlsMin. This parameter is not allowed for Serverless scope.
 	//
 	// example:
 	//
 	// TLS1.3
 	TlsMax *string `json:"tlsMax,omitempty" xml:"tlsMax,omitempty"`
-	// The minimum TLS protocol version. This parameter is optional for Dedicated with HTTPS. If not specified, the default value is TLS 1.0. Valid values: TLS 1.0 to TLS 1.3, compatible with TLSv1.x. This parameter is not allowed for Serverless.
+	// The minimum TLS protocol version. This parameter is optional for Dedicated scope with HTTPS. If not specified, the default value is TLS 1.0. Valid values: TLS 1.0 to TLS 1.3 (compatible with TLSv1.x). This parameter is not allowed for Serverless scope.
 	//
 	// example:
 	//
 	// TLS1.0
 	TlsMin *string `json:"tlsMin,omitempty" xml:"tlsMin,omitempty"`
+	// Specifies whether to perform only a dry run validation. If set to true, all synchronous validations identical to an actual creation are performed (including idempotency checks for existing test domain names), but no domain name is created and no side effects are produced. If not specified or set to false, the behavior is the same as the existing version.
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
 func (s CreateDomainRequest) String() string {
@@ -204,6 +208,10 @@ func (s *CreateDomainRequest) GetTlsMax() *string {
 
 func (s *CreateDomainRequest) GetTlsMin() *string {
 	return s.TlsMin
+}
+
+func (s *CreateDomainRequest) GetDryRun() *bool {
+	return s.DryRun
 }
 
 func (s *CreateDomainRequest) SetCaCertIdentifier(v string) *CreateDomainRequest {
@@ -273,6 +281,11 @@ func (s *CreateDomainRequest) SetTlsMax(v string) *CreateDomainRequest {
 
 func (s *CreateDomainRequest) SetTlsMin(v string) *CreateDomainRequest {
 	s.TlsMin = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetDryRun(v bool) *CreateDomainRequest {
+	s.DryRun = &v
 	return s
 }
 

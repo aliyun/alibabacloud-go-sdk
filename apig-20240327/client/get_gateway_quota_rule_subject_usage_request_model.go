@@ -18,6 +18,11 @@ type iGetGatewayQuotaRuleSubjectUsageRequest interface {
 }
 
 type GetGatewayQuotaRuleSubjectUsageRequest struct {
+	// Specifies whether to filter zero values.
+	//
+	// example:
+	//
+	// true
 	FilterFailedRequests *bool `json:"filterFailedRequests,omitempty" xml:"filterFailedRequests,omitempty"`
 	// The page number of the detailed consumption (request) records of the consumer within the cycle.
 	//

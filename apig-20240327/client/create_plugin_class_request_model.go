@@ -32,7 +32,7 @@ type iCreatePluginClassRequest interface {
 }
 
 type CreatePluginClassRequest struct {
-	// The alias of the plugin.
+	// The alias of the plugin class. This parameter is required. If this parameter is not specified, the service returns InvalidParameter.WithValue.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type CreatePluginClassRequest struct {
 	//
 	// Custom authentication plugin for validating tokens in request headers
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The execution priority of the plugin.
+	// The execution priority of the plugin. This parameter is required when executeStage is specified. The default value 0 is invalid. Set this parameter to 200.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type CreatePluginClassRequest struct {
 	//
 	// my-wasm-plugin
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The minimum gateway version that the plugin is compatible with.
+	// The minimum gateway version supported by the plugin.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type CreatePluginClassRequest struct {
 	//
 	// Initial version with basic token validation
 	VersionDescription *string `json:"versionDescription,omitempty" xml:"versionDescription,omitempty"`
-	// The programming language used to develop the WASM plugin.
+	// The development language of the WASM plugin. Valid values: TinyGo.
 	//
 	// This parameter is required.
 	//

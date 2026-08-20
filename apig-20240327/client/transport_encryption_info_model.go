@@ -22,11 +22,32 @@ type iTransportEncryptionInfo interface {
 }
 
 type TransportEncryptionInfo struct {
+	// The list of transport certificates added by the user.
 	Certificates []*TransportCertificateInfo `json:"certificates,omitempty" xml:"certificates,omitempty" type:"Repeated"`
-	DeployError  *string                     `json:"deployError,omitempty" xml:"deployError,omitempty"`
-	DeployStatus *string                     `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
-	Http2Enabled *bool                       `json:"http2Enabled,omitempty" xml:"http2Enabled,omitempty"`
-	TlsPolicy    *string                     `json:"tlsPolicy,omitempty" xml:"tlsPolicy,omitempty"`
+	// The reason for the deployment failure.
+	//
+	// example:
+	//
+	// “”
+	DeployError *string `json:"deployError,omitempty" xml:"deployError,omitempty"`
+	// The submit status.
+	//
+	// example:
+	//
+	// Success
+	DeployStatus *string `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
+	// Indicates whether HTTP/2 is enabled.
+	//
+	// example:
+	//
+	// true
+	Http2Enabled *bool `json:"http2Enabled,omitempty" xml:"http2Enabled,omitempty"`
+	// The TLS cipher suite policy.
+	//
+	// example:
+	//
+	// tls_cipher_policy_1_2
+	TlsPolicy *string `json:"tlsPolicy,omitempty" xml:"tlsPolicy,omitempty"`
 }
 
 func (s TransportEncryptionInfo) String() string {

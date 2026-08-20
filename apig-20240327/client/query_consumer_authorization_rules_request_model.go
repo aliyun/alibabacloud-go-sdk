@@ -46,13 +46,17 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	//
 	// api-xx
 	ApiNameLike *string `json:"apiNameLike,omitempty" xml:"apiNameLike,omitempty"`
-	// The consumer group ID. If specified, the authorization rules for the consumer group are queried.
+	// The consumer group ID. If specified, the authorization rules of this consumer group are queried.
 	//
 	// example:
 	//
 	// csg-8c13d2b4f8a1
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
 	// The consumer group name for fuzzy match.
+	//
+	// example:
+	//
+	// team
 	ConsumerGroupNameLike *string `json:"consumerGroupNameLike,omitempty" xml:"consumerGroupNameLike,omitempty"`
 	// The consumer ID.
 	//
@@ -60,7 +64,7 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	//
 	// cs-ct21c16m1hkp64hk6qmg
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
-	// The consumer name.
+	// The consumer name for fuzzy match.
 	//
 	// example:
 	//
@@ -114,7 +118,7 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	//
 	// HttpApiRoute
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The service source type.
+	// The service source types.
 	//
 	// example:
 	//

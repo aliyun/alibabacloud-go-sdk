@@ -74,7 +74,7 @@ type ListGatewaysRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The list of tags.
 	Tag []*ListGatewaysRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
-	// The VPC ID.
+	// The virtual private cloud (VPC) ID.
 	//
 	// example:
 	//

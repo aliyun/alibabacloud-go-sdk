@@ -79,15 +79,16 @@ type Service struct {
 	// example:
 	//
 	// 1725617840096
-	CreateTimestamp *int64    `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	DnsServers      []*string `json:"dnsServers,omitempty" xml:"dnsServers,omitempty" type:"Repeated"`
+	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// The list of DNS servers.
+	DnsServers []*string `json:"dnsServers,omitempty" xml:"dnsServers,omitempty" type:"Repeated"`
 	// The execution mode of CloudFlow.
 	//
 	// example:
 	//
 	// StartExecution
 	ExpressType *string `json:"expressType,omitempty" xml:"expressType,omitempty"`
-	// The gateway instance ID.
+	// The instance ID of the gateway.
 	//
 	// example:
 	//
@@ -106,10 +107,17 @@ type Service struct {
 	// example:
 	//
 	// Healthy
-	HealthStatus          *string  `json:"healthStatus,omitempty" xml:"healthStatus,omitempty"`
+	HealthStatus *string `json:"healthStatus,omitempty" xml:"healthStatus,omitempty"`
+	// The healthy panic threshold.
+	//
+	// example:
+	//
+	// 1
 	HealthyPanicThreshold *float32 `json:"healthyPanicThreshold,omitempty" xml:"healthyPanicThreshold,omitempty"`
 	// The label information of the service.
 	LabelDetails []*LabelDetail `json:"labelDetails,omitempty" xml:"labelDetails,omitempty" type:"Repeated"`
+	// The resource ID of the model provider.
+	//
 	// example:
 	//
 	// mp-xxxx
@@ -125,7 +133,8 @@ type Service struct {
 	// example:
 	//
 	// PUBLIC
-	Namespace        *string                  `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The configuration for removing abnormal instances.
 	OutlierDetection *ServiceOutlierDetection `json:"outlierDetection,omitempty" xml:"outlierDetection,omitempty" type:"Struct"`
 	// The circuit-broken endpoints.
 	OutlierEndpoints []*string `json:"outlierEndpoints,omitempty" xml:"outlierEndpoints,omitempty" type:"Repeated"`
@@ -149,10 +158,14 @@ type Service struct {
 	//
 	// rg-xxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The masked error code of the runtime details.
+	//
 	// example:
 	//
 	// RuntimeEndpointTimeout
 	RuntimeDetailErrorCode *string `json:"runtimeDetailErrorCode,omitempty" xml:"runtimeDetailErrorCode,omitempty"`
+	// The runtime detail status.
+	//
 	// example:
 	//
 	// Available
@@ -171,7 +184,7 @@ type Service struct {
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 	// The unhealthy endpoints.
 	UnhealthyEndpoints []*string `json:"unhealthyEndpoints,omitempty" xml:"unhealthyEndpoints,omitempty" type:"Repeated"`
-	// The time when the service was updated.
+	// The time when the service was created.
 	//
 	// example:
 	//
@@ -493,11 +506,36 @@ func (s *Service) Validate() error {
 }
 
 type ServiceOutlierDetection struct {
-	BaseEjectionTime              *int32 `json:"baseEjectionTime,omitempty" xml:"baseEjectionTime,omitempty"`
-	Enable                        *bool  `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The base ejection duration in seconds. Valid values: 1 to 3600.
+	//
+	// example:
+	//
+	// 30
+	BaseEjectionTime *int32 `json:"baseEjectionTime,omitempty" xml:"baseEjectionTime,omitempty"`
+	// Specifies whether to enable outlier detection.
+	//
+	// example:
+	//
+	// false
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The minimum number of hosts. The value must be greater than or equal to 0.
+	//
+	// example:
+	//
+	// 1
 	FailurePercentageMinimumHosts *int32 `json:"failurePercentageMinimumHosts,omitempty" xml:"failurePercentageMinimumHosts,omitempty"`
-	FailurePercentageThreshold    *int32 `json:"failurePercentageThreshold,omitempty" xml:"failurePercentageThreshold,omitempty"`
-	Interval                      *int32 `json:"interval,omitempty" xml:"interval,omitempty"`
+	// The failure rate threshold in percentage. Valid values: 1 to 100.
+	//
+	// example:
+	//
+	// 80
+	FailurePercentageThreshold *int32 `json:"failurePercentageThreshold,omitempty" xml:"failurePercentageThreshold,omitempty"`
+	// The detection interval in seconds. Valid values: 1 to 3600.
+	//
+	// example:
+	//
+	// 30
+	Interval *int32 `json:"interval,omitempty" xml:"interval,omitempty"`
 }
 
 func (s ServiceOutlierDetection) String() string {

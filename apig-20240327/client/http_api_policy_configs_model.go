@@ -25,6 +25,8 @@ type iHttpApiPolicyConfigs interface {
 	GetAiToolSelectionConfig() *AiToolSelectionConfig
 	SetEnable(v bool) *HttpApiPolicyConfigs
 	GetEnable() *bool
+	SetPolicyReference(v *HttpApiPolicyReference) *HttpApiPolicyConfigs
+	GetPolicyReference() *HttpApiPolicyReference
 	SetSemanticRouterConfig(v *HttpApiPolicyConfigsSemanticRouterConfig) *HttpApiPolicyConfigs
 	GetSemanticRouterConfig() *HttpApiPolicyConfigsSemanticRouterConfig
 	SetType(v string) *HttpApiPolicyConfigs
@@ -32,57 +34,64 @@ type iHttpApiPolicyConfigs interface {
 }
 
 type HttpApiPolicyConfigs struct {
-	// AiCacheConfig
+	// The AI cache configuration.
 	//
 	// if can be null:
 	// true
 	AiCacheConfig *AiCacheConfig `json:"aiCacheConfig,omitempty" xml:"aiCacheConfig,omitempty"`
-	// AiFallbackConfig
+	// The AI fallback configuration.
 	//
 	// if can be null:
 	// false
 	AiFallbackConfig *AiFallbackConfig `json:"aiFallbackConfig,omitempty" xml:"aiFallbackConfig,omitempty"`
-	// AiNetworkSearchConfig
+	// The AI web search configuration.
 	//
 	// if can be null:
 	// true
 	AiNetworkSearchConfig *AiNetworkSearchConfig `json:"aiNetworkSearchConfig,omitempty" xml:"aiNetworkSearchConfig,omitempty"`
-	// AiSecurityGuardConfig
+	// The AI security protection configuration.
 	//
 	// if can be null:
 	// false
 	AiSecurityGuardConfig *AiSecurityGuardConfig `json:"aiSecurityGuardConfig,omitempty" xml:"aiSecurityGuardConfig,omitempty"`
-	// AiStatisticsConfig
+	// The AI statistics configuration.
 	//
 	// if can be null:
 	// false
 	AiStatisticsConfig *AiStatisticsConfig `json:"aiStatisticsConfig,omitempty" xml:"aiStatisticsConfig,omitempty"`
-	// AiTokenRateLimitConfig
+	// Deprecated
+	//
+	// The AI token rate limiting configuration.
 	//
 	// if can be null:
 	// false
 	AiTokenRateLimitConfig *AiTokenRateLimitConfig `json:"aiTokenRateLimitConfig,omitempty" xml:"aiTokenRateLimitConfig,omitempty"`
-	// AiToolSelectionConfig
+	// The AI tool selection configuration.
 	//
 	// if can be null:
 	// true
 	AiToolSelectionConfig *AiToolSelectionConfig `json:"aiToolSelectionConfig,omitempty" xml:"aiToolSelectionConfig,omitempty"`
-	// Policy Enable
+	// Indicates whether the policy is enabled.
 	//
 	// example:
 	//
-	// true
+	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// SemanticRouterConfig
+	// The read-only compatible reference. GetHttpApi returns policyId/policyAttachmentId for ModelAPI AiTokenRateLimit. This must be stripped before write path persistence and is not used as a bind/unbind instruction.
+	//
+	// if can be null:
+	// true
+	PolicyReference *HttpApiPolicyReference `json:"policyReference,omitempty" xml:"policyReference,omitempty"`
+	// The semantic routing configuration.
 	//
 	// if can be null:
 	// false
 	SemanticRouterConfig *HttpApiPolicyConfigsSemanticRouterConfig `json:"semanticRouterConfig,omitempty" xml:"semanticRouterConfig,omitempty" type:"Struct"`
-	// Policy Type
+	// The policy template type.
 	//
 	// example:
 	//
-	// AiCache
+	// K8S
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -124,6 +133,10 @@ func (s *HttpApiPolicyConfigs) GetAiToolSelectionConfig() *AiToolSelectionConfig
 
 func (s *HttpApiPolicyConfigs) GetEnable() *bool {
 	return s.Enable
+}
+
+func (s *HttpApiPolicyConfigs) GetPolicyReference() *HttpApiPolicyReference {
+	return s.PolicyReference
 }
 
 func (s *HttpApiPolicyConfigs) GetSemanticRouterConfig() *HttpApiPolicyConfigsSemanticRouterConfig {
@@ -174,6 +187,11 @@ func (s *HttpApiPolicyConfigs) SetEnable(v bool) *HttpApiPolicyConfigs {
 	return s
 }
 
+func (s *HttpApiPolicyConfigs) SetPolicyReference(v *HttpApiPolicyReference) *HttpApiPolicyConfigs {
+	s.PolicyReference = v
+	return s
+}
+
 func (s *HttpApiPolicyConfigs) SetSemanticRouterConfig(v *HttpApiPolicyConfigsSemanticRouterConfig) *HttpApiPolicyConfigs {
 	s.SemanticRouterConfig = v
 	return s
@@ -220,6 +238,11 @@ func (s *HttpApiPolicyConfigs) Validate() error {
 			return err
 		}
 	}
+	if s.PolicyReference != nil {
+		if err := s.PolicyReference.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.SemanticRouterConfig != nil {
 		if err := s.SemanticRouterConfig.Validate(); err != nil {
 			return err
@@ -229,7 +252,7 @@ func (s *HttpApiPolicyConfigs) Validate() error {
 }
 
 type HttpApiPolicyConfigsSemanticRouterConfig struct {
-	// Timeout in milliseconds
+	// The timeout period, in milliseconds.
 	//
 	// example:
 	//

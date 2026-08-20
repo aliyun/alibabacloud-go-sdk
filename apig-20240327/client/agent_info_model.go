@@ -36,22 +36,72 @@ type iAgentInfo interface {
 }
 
 type AgentInfo struct {
+	// The associated resource information for the Agent access capability. Returns null if the Agent access capability is not configured.
+	//
 	// if can be null:
 	// true
-	AgentAccess         *AgentInfoAgentAccess `json:"agentAccess,omitempty" xml:"agentAccess,omitempty" type:"Struct"`
-	AgentId             *string               `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	AgentType           *string               `json:"agentType,omitempty" xml:"agentType,omitempty"`
-	AllowedCapabilities []*string             `json:"allowedCapabilities,omitempty" xml:"allowedCapabilities,omitempty" type:"Repeated"`
-	CreateTimestamp     *int64                `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	Description         *string               `json:"description,omitempty" xml:"description,omitempty"`
-	GatewayId           *string               `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	AgentAccess *AgentInfoAgentAccess `json:"agentAccess,omitempty" xml:"agentAccess,omitempty" type:"Struct"`
+	// Agent ID。
+	//
+	// example:
+	//
+	// agent-1
+	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// The Agent type. DashScope (Bailian) allows only Agent access. Dify allows both Agent access and model access. ClaudeCode allows only model access. Custom allows both Agent access and model access.
+	//
+	// example:
+	//
+	// Custom
+	AgentType *string `json:"agentType,omitempty" xml:"agentType,omitempty"`
+	// The list of capabilities that the current Agent type allows to be configured. This field does not indicate that the capabilities are already configured. To determine whether a capability is configured, check whether agentAccess or modelAccess is null.
+	AllowedCapabilities []*string `json:"allowedCapabilities,omitempty" xml:"allowedCapabilities,omitempty" type:"Repeated"`
+	// The Agent creation time, in Unix millisecond timestamp.
+	//
+	// example:
+	//
+	// 1755129600000
+	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// The Agent description.
+	//
+	// example:
+	//
+	// custom agent
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The gateway ID to which the Agent belongs. When reading the associated API deployment configuration, select the configuration whose gatewayId matches this value.
+	//
+	// example:
+	//
+	// gateway-1
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The associated resource information for the model access capability. Returns null if the model access capability is not configured.
+	//
 	// if can be null:
 	// true
-	ModelAccess     *AgentInfoModelAccess `json:"modelAccess,omitempty" xml:"modelAccess,omitempty" type:"Struct"`
-	Name            *string               `json:"name,omitempty" xml:"name,omitempty"`
-	ResourceGroupId *string               `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	Status          *string               `json:"status,omitempty" xml:"status,omitempty"`
-	UpdateTimestamp *int64                `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
+	ModelAccess *AgentInfoModelAccess `json:"modelAccess,omitempty" xml:"modelAccess,omitempty" type:"Struct"`
+	// The Agent name.
+	//
+	// example:
+	//
+	// my-agent
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The resource group ID in which the Agent is saved.
+	//
+	// example:
+	//
+	// rg-1
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The Agent status. An Agent that is successfully created and queryable always returns Ready. Internal creation or compensation states are not returned externally.
+	//
+	// example:
+	//
+	// Ready
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The Agent last update time, in Unix millisecond timestamp.
+	//
+	// example:
+	//
+	// 1755129600000
+	UpdateTimestamp *int64 `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
 }
 
 func (s AgentInfo) String() string {
@@ -185,6 +235,11 @@ func (s *AgentInfo) Validate() error {
 }
 
 type AgentInfoAgentAccess struct {
+	// The HTTP API ID associated with the Agent access capability. The frontend uses this ID to call existing HTTP API, route, consumer authorization, policy, and plugin query interfaces.
+	//
+	// example:
+	//
+	// { "httpApiId": "api-abc123" }
 	HttpApiId *string `json:"httpApiId,omitempty" xml:"httpApiId,omitempty"`
 }
 
@@ -210,8 +265,14 @@ func (s *AgentInfoAgentAccess) Validate() error {
 }
 
 type AgentInfoModelAccess struct {
+	// The list of consumer identity bindings maintained by the Agent domain. The Model API ID and the consumer IDs in this list together identify the Agent identity and take effect on all routes of the Model API. Consumer details and their Model API authorization details can be obtained through existing Consumer API and consumer authorization query interfaces.
 	ConsumerIds []*string `json:"consumerIds,omitempty" xml:"consumerIds,omitempty" type:"Repeated"`
-	ModelApiId  *string   `json:"modelApiId,omitempty" xml:"modelApiId,omitempty"`
+	// The Model API ID associated with the model access capability. Model Access does not distinguish routes. The frontend uses this ID to query the Model API basic information and all routes.
+	//
+	// example:
+	//
+	// { "modelApiId": "model-api-1" }
+	ModelApiId *string `json:"modelApiId,omitempty" xml:"modelApiId,omitempty"`
 }
 
 func (s AgentInfoModelAccess) String() string {
