@@ -39,23 +39,24 @@ type iCreateSessionInput interface {
 
 type CreateSessionInput struct {
 	AllowInternetAccess *bool `json:"allowInternetAccess,omitempty" xml:"allowInternetAccess,omitempty"`
-	// Default value: False. This indicates that after a session with a specific SessionID expires, you can send requests with the same SessionID. The system treats it as a new session and binds it to a new instance. If set to True, the SessionID cannot be reused after the session expires.
+	// Specifies whether to disable session ID reuse. Default value: False, which indicates that after a session expires, you can use the same SessionID to initiate requests. The system treats this as a new session and binds it to a new instance. If set to True, the SessionID cannot be reused after the session expires.
 	//
 	// example:
 	//
 	// false
-	DisableSessionIdReuse *bool          `json:"disableSessionIdReuse,omitempty" xml:"disableSessionIdReuse,omitempty"`
-	EnableAutoPause       *bool          `json:"enableAutoPause,omitempty" xml:"enableAutoPause,omitempty"`
-	EnableAutoResume      *bool          `json:"enableAutoResume,omitempty" xml:"enableAutoResume,omitempty"`
-	JuiceFsConfig         *JuiceFsConfig `json:"juiceFsConfig,omitempty" xml:"juiceFsConfig,omitempty"`
+	DisableSessionIdReuse *bool `json:"disableSessionIdReuse,omitempty" xml:"disableSessionIdReuse,omitempty"`
+	EnableAutoPause       *bool `json:"enableAutoPause,omitempty" xml:"enableAutoPause,omitempty"`
+	EnableAutoResume      *bool `json:"enableAutoResume,omitempty" xml:"enableAutoResume,omitempty"`
+	// The JuiceFs mount configuration.
+	JuiceFsConfig *JuiceFsConfig `json:"juiceFsConfig,omitempty" xml:"juiceFsConfig,omitempty"`
 	// The NAS configuration. After this parameter is configured, instances associated with the session can access the specified NAS resources.
 	NasConfig *NASConfig                  `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
 	Network   *CreateSessionNetworkConfig `json:"network,omitempty" xml:"network,omitempty"`
-	// The OSS mount configuration. After this parameter is configured, instances associated with the session can access the specified OSS resources.
+	// The OSS configuration. After this parameter is configured, instances associated with the session can access the specified OSS resources.
 	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
 	// The PolarFs configuration. After this parameter is configured, instances associated with the session can access the specified PolarFs resources.
 	PolarFsConfig *PolarFsConfig `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
-	// The custom session ID. If not specified, the server generates one. If specified, this value is used as the session ID. This parameter applies only to the HEADER_FIELD affinity mode. Format: the length is limited to [0,64]. The first character must be from **a-zA-Z0-9_**. Subsequent characters can be from **a-zA-Z0-9_-**.
+	// The custom session ID. If not configured, the server generates one. If configured, this value is used as the session ID. This parameter is applicable only to the HEADER_FIELD affinity mode. Format: The length is limited to [0,64]. The first character must be from **a-zA-Z0-9_**. Subsequent characters can be from **a-zA-Z0-9_-**.
 	//
 	// example:
 	//

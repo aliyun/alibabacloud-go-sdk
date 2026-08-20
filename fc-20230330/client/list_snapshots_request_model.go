@@ -22,22 +22,32 @@ type iListSnapshotsRequest interface {
 }
 
 type ListSnapshotsRequest struct {
+	// The function name.
+	//
 	// example:
 	//
 	// my-func
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	// The maximum number of snapshots to return. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The pagination token used to retrieve more results.
+	//
 	// example:
 	//
 	// caeba0be03****f84eb48b699f0a4883
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The function alias.
+	//
 	// example:
 	//
 	// alias
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	// The source session ID from which the snapshot was created. When specified, functionName must also be specified.
+	//
 	// example:
 	//
 	// test-session-id-1

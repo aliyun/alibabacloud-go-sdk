@@ -16,7 +16,10 @@ type iListSnapshotsOutput interface {
 }
 
 type ListSnapshotsOutput struct {
+	// The token used to retrieve the next page of results. This parameter is not returned if no more results are available.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The list of snapshots.
+	//
 	// This parameter is required.
 	Snapshots []*Snapshot `json:"snapshots" xml:"snapshots" type:"Repeated"`
 }

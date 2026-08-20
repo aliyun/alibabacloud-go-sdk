@@ -9,12 +9,15 @@ type iPauseSessionRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetFileSystemOnly(v string) *PauseSessionRequest
+	GetFileSystemOnly() *string
 	SetQualifier(v string) *PauseSessionRequest
 	GetQualifier() *string
 }
 
 type PauseSessionRequest struct {
-	// The alias or version of the function associated with the session to save.
+	FileSystemOnly *string `json:"fileSystemOnly,omitempty" xml:"fileSystemOnly,omitempty"`
+	// The function alias or version associated with the session ID to save.
 	//
 	// example:
 	//
@@ -30,8 +33,17 @@ func (s PauseSessionRequest) GoString() string {
 	return s.String()
 }
 
+func (s *PauseSessionRequest) GetFileSystemOnly() *string {
+	return s.FileSystemOnly
+}
+
 func (s *PauseSessionRequest) GetQualifier() *string {
 	return s.Qualifier
+}
+
+func (s *PauseSessionRequest) SetFileSystemOnly(v string) *PauseSessionRequest {
+	s.FileSystemOnly = &v
+	return s
 }
 
 func (s *PauseSessionRequest) SetQualifier(v string) *PauseSessionRequest {

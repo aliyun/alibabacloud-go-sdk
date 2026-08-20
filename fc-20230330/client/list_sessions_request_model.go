@@ -46,7 +46,7 @@ type ListSessionsRequest struct {
 	//
 	// test-session-id-1
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The session status to filter by. By default, all session information in Active or Expired status is returned. Set this parameter to Active to retrieve only active session information, or to Expired to retrieve only expired session information.
+	// The session status to filter by. By default, all session information in Active or Expired status is returned. You can specify Active to retrieve only active session information, or specify Expired to retrieve only expired session information.
 	//
 	// example:
 	//

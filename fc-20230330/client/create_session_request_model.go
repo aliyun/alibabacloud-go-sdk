@@ -16,7 +16,7 @@ type iCreateSessionRequest interface {
 }
 
 type CreateSessionRequest struct {
-	// The session configuration.
+	// The session configuration for creating the session.
 	Body *CreateSessionInput `json:"body,omitempty" xml:"body,omitempty"`
 	// The version or alias of the function to which the session belongs.
 	//

@@ -17,6 +17,8 @@ type iCreateSessionNetworkConfig interface {
 	GetDenyOut() []*string
 	SetMaskRequestHost(v string) *CreateSessionNetworkConfig
 	GetMaskRequestHost() *string
+	SetRules(v map[string][]*SessionNetworkRule) *CreateSessionNetworkConfig
+	GetRules() map[string][]*SessionNetworkRule
 }
 
 type CreateSessionNetworkConfig struct {
@@ -24,6 +26,8 @@ type CreateSessionNetworkConfig struct {
 	AllowPublicTraffic *bool     `json:"allowPublicTraffic,omitempty" xml:"allowPublicTraffic,omitempty"`
 	DenyOut            []*string `json:"denyOut" xml:"denyOut" type:"Repeated"`
 	MaskRequestHost    *string   `json:"maskRequestHost,omitempty" xml:"maskRequestHost,omitempty"`
+	// The request transform rules configured by exact target host. Supports transform.headers and transform.headerValueReplacements.
+	Rules map[string][]*SessionNetworkRule `json:"rules" xml:"rules"`
 }
 
 func (s CreateSessionNetworkConfig) String() string {
@@ -50,6 +54,10 @@ func (s *CreateSessionNetworkConfig) GetMaskRequestHost() *string {
 	return s.MaskRequestHost
 }
 
+func (s *CreateSessionNetworkConfig) GetRules() map[string][]*SessionNetworkRule {
+	return s.Rules
+}
+
 func (s *CreateSessionNetworkConfig) SetAllowOut(v []*string) *CreateSessionNetworkConfig {
 	s.AllowOut = v
 	return s
@@ -67,6 +75,11 @@ func (s *CreateSessionNetworkConfig) SetDenyOut(v []*string) *CreateSessionNetwo
 
 func (s *CreateSessionNetworkConfig) SetMaskRequestHost(v string) *CreateSessionNetworkConfig {
 	s.MaskRequestHost = &v
+	return s
+}
+
+func (s *CreateSessionNetworkConfig) SetRules(v map[string][]*SessionNetworkRule) *CreateSessionNetworkConfig {
+	s.Rules = v
 	return s
 }
 
