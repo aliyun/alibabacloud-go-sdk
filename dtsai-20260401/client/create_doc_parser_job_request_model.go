@@ -9,20 +9,50 @@ type iCreateDocParserJobRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentName(v string) *CreateDocParserJobRequest
+	GetAgentName() *string
+	SetAsrLanguage(v string) *CreateDocParserJobRequest
+	GetAsrLanguage() *string
+	SetAudioClipOutput(v bool) *CreateDocParserJobRequest
+	GetAudioClipOutput() *bool
+	SetAudioWindowSeconds(v int32) *CreateDocParserJobRequest
+	GetAudioWindowSeconds() *int32
+	SetChunkSummary(v bool) *CreateDocParserJobRequest
+	GetChunkSummary() *bool
 	SetFileFormat(v string) *CreateDocParserJobRequest
 	GetFileFormat() *string
 	SetFileName(v string) *CreateDocParserJobRequest
 	GetFileName() *string
 	SetFileUrl(v string) *CreateDocParserJobRequest
 	GetFileUrl() *string
+	SetFrameOutput(v bool) *CreateDocParserJobRequest
+	GetFrameOutput() *bool
+	SetGlobalSummary(v bool) *CreateDocParserJobRequest
+	GetGlobalSummary() *bool
 	SetImageMode(v string) *CreateDocParserJobRequest
 	GetImageMode() *string
+	SetImageUnderstanding(v string) *CreateDocParserJobRequest
+	GetImageUnderstanding() *string
+	SetMediaChunkIntervalSeconds(v int32) *CreateDocParserJobRequest
+	GetMediaChunkIntervalSeconds() *int32
+	SetMediaChunkStrategy(v string) *CreateDocParserJobRequest
+	GetMediaChunkStrategy() *string
+	SetMediaFramesPerMinute(v float64) *CreateDocParserJobRequest
+	GetMediaFramesPerMinute() *float64
+	SetMediaMaxFrameBudget(v int32) *CreateDocParserJobRequest
+	GetMediaMaxFrameBudget() *int32
+	SetMediaMinFrameBudget(v int32) *CreateDocParserJobRequest
+	GetMediaMinFrameBudget() *int32
 	SetOssFileUrl(v string) *CreateDocParserJobRequest
 	GetOssFileUrl() *string
 	SetOutputFormat(v string) *CreateDocParserJobRequest
 	GetOutputFormat() *string
+	SetParseScene(v string) *CreateDocParserJobRequest
+	GetParseScene() *string
 	SetRegionId(v string) *CreateDocParserJobRequest
 	GetRegionId() *string
+	SetResponseMode(v string) *CreateDocParserJobRequest
+	GetResponseMode() *string
 	SetResultType(v string) *CreateDocParserJobRequest
 	GetResultType() *string
 	SetTableFormat(v string) *CreateDocParserJobRequest
@@ -30,6 +60,11 @@ type iCreateDocParserJobRequest interface {
 }
 
 type CreateDocParserJobRequest struct {
+	AgentName          *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	AsrLanguage        *string `json:"AsrLanguage,omitempty" xml:"AsrLanguage,omitempty"`
+	AudioClipOutput    *bool   `json:"AudioClipOutput,omitempty" xml:"AudioClipOutput,omitempty"`
+	AudioWindowSeconds *int32  `json:"AudioWindowSeconds,omitempty" xml:"AudioWindowSeconds,omitempty"`
+	ChunkSummary       *bool   `json:"ChunkSummary,omitempty" xml:"ChunkSummary,omitempty"`
 	// The format of the input file. Valid values:
 	//
 	// - **pdf**: PDF file.
@@ -79,8 +114,16 @@ type CreateDocParserJobRequest struct {
 	// example:
 	//
 	// https://xxx.oss-cn-beijing.aliyuncs.com/document.pdf?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx
-	FileUrl   *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	ImageMode *string `json:"ImageMode,omitempty" xml:"ImageMode,omitempty"`
+	FileUrl                   *string  `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	FrameOutput               *bool    `json:"FrameOutput,omitempty" xml:"FrameOutput,omitempty"`
+	GlobalSummary             *bool    `json:"GlobalSummary,omitempty" xml:"GlobalSummary,omitempty"`
+	ImageMode                 *string  `json:"ImageMode,omitempty" xml:"ImageMode,omitempty"`
+	ImageUnderstanding        *string  `json:"ImageUnderstanding,omitempty" xml:"ImageUnderstanding,omitempty"`
+	MediaChunkIntervalSeconds *int32   `json:"MediaChunkIntervalSeconds,omitempty" xml:"MediaChunkIntervalSeconds,omitempty"`
+	MediaChunkStrategy        *string  `json:"MediaChunkStrategy,omitempty" xml:"MediaChunkStrategy,omitempty"`
+	MediaFramesPerMinute      *float64 `json:"MediaFramesPerMinute,omitempty" xml:"MediaFramesPerMinute,omitempty"`
+	MediaMaxFrameBudget       *int32   `json:"MediaMaxFrameBudget,omitempty" xml:"MediaMaxFrameBudget,omitempty"`
+	MediaMinFrameBudget       *int32   `json:"MediaMinFrameBudget,omitempty" xml:"MediaMinFrameBudget,omitempty"`
 	// The OSS file URL.
 	OssFileUrl *string `json:"OssFileUrl,omitempty" xml:"OssFileUrl,omitempty"`
 	// The output format of the parsing result. Valid values:
@@ -93,6 +136,7 @@ type CreateDocParserJobRequest struct {
 	//
 	// markdown
 	OutputFormat *string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
+	ParseScene   *string `json:"ParseScene,omitempty" xml:"ParseScene,omitempty"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -100,9 +144,10 @@ type CreateDocParserJobRequest struct {
 	// example:
 	//
 	// cn-beijing
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResultType  *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
-	TableFormat *string `json:"TableFormat,omitempty" xml:"TableFormat,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResponseMode *string `json:"ResponseMode,omitempty" xml:"ResponseMode,omitempty"`
+	ResultType   *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
+	TableFormat  *string `json:"TableFormat,omitempty" xml:"TableFormat,omitempty"`
 }
 
 func (s CreateDocParserJobRequest) String() string {
@@ -111,6 +156,26 @@ func (s CreateDocParserJobRequest) String() string {
 
 func (s CreateDocParserJobRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDocParserJobRequest) GetAgentName() *string {
+	return s.AgentName
+}
+
+func (s *CreateDocParserJobRequest) GetAsrLanguage() *string {
+	return s.AsrLanguage
+}
+
+func (s *CreateDocParserJobRequest) GetAudioClipOutput() *bool {
+	return s.AudioClipOutput
+}
+
+func (s *CreateDocParserJobRequest) GetAudioWindowSeconds() *int32 {
+	return s.AudioWindowSeconds
+}
+
+func (s *CreateDocParserJobRequest) GetChunkSummary() *bool {
+	return s.ChunkSummary
 }
 
 func (s *CreateDocParserJobRequest) GetFileFormat() *string {
@@ -125,8 +190,40 @@ func (s *CreateDocParserJobRequest) GetFileUrl() *string {
 	return s.FileUrl
 }
 
+func (s *CreateDocParserJobRequest) GetFrameOutput() *bool {
+	return s.FrameOutput
+}
+
+func (s *CreateDocParserJobRequest) GetGlobalSummary() *bool {
+	return s.GlobalSummary
+}
+
 func (s *CreateDocParserJobRequest) GetImageMode() *string {
 	return s.ImageMode
+}
+
+func (s *CreateDocParserJobRequest) GetImageUnderstanding() *string {
+	return s.ImageUnderstanding
+}
+
+func (s *CreateDocParserJobRequest) GetMediaChunkIntervalSeconds() *int32 {
+	return s.MediaChunkIntervalSeconds
+}
+
+func (s *CreateDocParserJobRequest) GetMediaChunkStrategy() *string {
+	return s.MediaChunkStrategy
+}
+
+func (s *CreateDocParserJobRequest) GetMediaFramesPerMinute() *float64 {
+	return s.MediaFramesPerMinute
+}
+
+func (s *CreateDocParserJobRequest) GetMediaMaxFrameBudget() *int32 {
+	return s.MediaMaxFrameBudget
+}
+
+func (s *CreateDocParserJobRequest) GetMediaMinFrameBudget() *int32 {
+	return s.MediaMinFrameBudget
 }
 
 func (s *CreateDocParserJobRequest) GetOssFileUrl() *string {
@@ -137,8 +234,16 @@ func (s *CreateDocParserJobRequest) GetOutputFormat() *string {
 	return s.OutputFormat
 }
 
+func (s *CreateDocParserJobRequest) GetParseScene() *string {
+	return s.ParseScene
+}
+
 func (s *CreateDocParserJobRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *CreateDocParserJobRequest) GetResponseMode() *string {
+	return s.ResponseMode
 }
 
 func (s *CreateDocParserJobRequest) GetResultType() *string {
@@ -147,6 +252,31 @@ func (s *CreateDocParserJobRequest) GetResultType() *string {
 
 func (s *CreateDocParserJobRequest) GetTableFormat() *string {
 	return s.TableFormat
+}
+
+func (s *CreateDocParserJobRequest) SetAgentName(v string) *CreateDocParserJobRequest {
+	s.AgentName = &v
+	return s
+}
+
+func (s *CreateDocParserJobRequest) SetAsrLanguage(v string) *CreateDocParserJobRequest {
+	s.AsrLanguage = &v
+	return s
+}
+
+func (s *CreateDocParserJobRequest) SetAudioClipOutput(v bool) *CreateDocParserJobRequest {
+	s.AudioClipOutput = &v
+	return s
+}
+
+func (s *CreateDocParserJobRequest) SetAudioWindowSeconds(v int32) *CreateDocParserJobRequest {
+	s.AudioWindowSeconds = &v
+	return s
+}
+
+func (s *CreateDocParserJobRequest) SetChunkSummary(v bool) *CreateDocParserJobRequest {
+	s.ChunkSummary = &v
+	return s
 }
 
 func (s *CreateDocParserJobRequest) SetFileFormat(v string) *CreateDocParserJobRequest {
@@ -164,8 +294,48 @@ func (s *CreateDocParserJobRequest) SetFileUrl(v string) *CreateDocParserJobRequ
 	return s
 }
 
+func (s *CreateDocParserJobRequest) SetFrameOutput(v bool) *CreateDocParserJobRequest {
+	s.FrameOutput = &v
+	return s
+}
+
+func (s *CreateDocParserJobRequest) SetGlobalSummary(v bool) *CreateDocParserJobRequest {
+	s.GlobalSummary = &v
+	return s
+}
+
 func (s *CreateDocParserJobRequest) SetImageMode(v string) *CreateDocParserJobRequest {
 	s.ImageMode = &v
+	return s
+}
+
+func (s *CreateDocParserJobRequest) SetImageUnderstanding(v string) *CreateDocParserJobRequest {
+	s.ImageUnderstanding = &v
+	return s
+}
+
+func (s *CreateDocParserJobRequest) SetMediaChunkIntervalSeconds(v int32) *CreateDocParserJobRequest {
+	s.MediaChunkIntervalSeconds = &v
+	return s
+}
+
+func (s *CreateDocParserJobRequest) SetMediaChunkStrategy(v string) *CreateDocParserJobRequest {
+	s.MediaChunkStrategy = &v
+	return s
+}
+
+func (s *CreateDocParserJobRequest) SetMediaFramesPerMinute(v float64) *CreateDocParserJobRequest {
+	s.MediaFramesPerMinute = &v
+	return s
+}
+
+func (s *CreateDocParserJobRequest) SetMediaMaxFrameBudget(v int32) *CreateDocParserJobRequest {
+	s.MediaMaxFrameBudget = &v
+	return s
+}
+
+func (s *CreateDocParserJobRequest) SetMediaMinFrameBudget(v int32) *CreateDocParserJobRequest {
+	s.MediaMinFrameBudget = &v
 	return s
 }
 
@@ -179,8 +349,18 @@ func (s *CreateDocParserJobRequest) SetOutputFormat(v string) *CreateDocParserJo
 	return s
 }
 
+func (s *CreateDocParserJobRequest) SetParseScene(v string) *CreateDocParserJobRequest {
+	s.ParseScene = &v
+	return s
+}
+
 func (s *CreateDocParserJobRequest) SetRegionId(v string) *CreateDocParserJobRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDocParserJobRequest) SetResponseMode(v string) *CreateDocParserJobRequest {
+	s.ResponseMode = &v
 	return s
 }
 

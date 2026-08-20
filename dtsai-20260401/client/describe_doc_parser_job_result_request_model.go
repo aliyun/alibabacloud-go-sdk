@@ -9,13 +9,18 @@ type iDescribeDocParserJobResultRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentName(v string) *DescribeDocParserJobResultRequest
+	GetAgentName() *string
 	SetJobId(v string) *DescribeDocParserJobResultRequest
 	GetJobId() *string
 	SetRegionId(v string) *DescribeDocParserJobResultRequest
 	GetRegionId() *string
+	SetResultType(v string) *DescribeDocParserJobResultRequest
+	GetResultType() *string
 }
 
 type DescribeDocParserJobResultRequest struct {
+	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 	// The document parsing task ID. You can obtain this ID by calling CreateDocParserJob.
 	//
 	// This parameter is required.
@@ -31,7 +36,8 @@ type DescribeDocParserJobResultRequest struct {
 	// example:
 	//
 	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResultType *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
 }
 
 func (s DescribeDocParserJobResultRequest) String() string {
@@ -42,12 +48,25 @@ func (s DescribeDocParserJobResultRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDocParserJobResultRequest) GetAgentName() *string {
+	return s.AgentName
+}
+
 func (s *DescribeDocParserJobResultRequest) GetJobId() *string {
 	return s.JobId
 }
 
 func (s *DescribeDocParserJobResultRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *DescribeDocParserJobResultRequest) GetResultType() *string {
+	return s.ResultType
+}
+
+func (s *DescribeDocParserJobResultRequest) SetAgentName(v string) *DescribeDocParserJobResultRequest {
+	s.AgentName = &v
+	return s
 }
 
 func (s *DescribeDocParserJobResultRequest) SetJobId(v string) *DescribeDocParserJobResultRequest {
@@ -57,6 +76,11 @@ func (s *DescribeDocParserJobResultRequest) SetJobId(v string) *DescribeDocParse
 
 func (s *DescribeDocParserJobResultRequest) SetRegionId(v string) *DescribeDocParserJobResultRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDocParserJobResultRequest) SetResultType(v string) *DescribeDocParserJobResultRequest {
+	s.ResultType = &v
 	return s
 }
 

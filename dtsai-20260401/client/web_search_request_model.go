@@ -9,6 +9,8 @@ type iWebSearchRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentName(v string) *WebSearchRequest
+	GetAgentName() *string
 	SetMaxResults(v int32) *WebSearchRequest
 	GetMaxResults() *int32
 	SetQuery(v string) *WebSearchRequest
@@ -22,6 +24,7 @@ type iWebSearchRequest interface {
 }
 
 type WebSearchRequest struct {
+	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 	// The maximum number of results to return. Default value: 10. Valid values: 1 to 50.
 	//
 	// example:
@@ -43,9 +46,11 @@ type WebSearchRequest struct {
 	// example:
 	//
 	// cn-beijing
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The list of domain names.
 	UrlScopeDomains *string `json:"UrlScopeDomains,omitempty" xml:"UrlScopeDomains,omitempty"`
-	UrlScopeMode    *string `json:"UrlScopeMode,omitempty" xml:"UrlScopeMode,omitempty"`
+	// The URL scope mode.
+	UrlScopeMode *string `json:"UrlScopeMode,omitempty" xml:"UrlScopeMode,omitempty"`
 }
 
 func (s WebSearchRequest) String() string {
@@ -54,6 +59,10 @@ func (s WebSearchRequest) String() string {
 
 func (s WebSearchRequest) GoString() string {
 	return s.String()
+}
+
+func (s *WebSearchRequest) GetAgentName() *string {
+	return s.AgentName
 }
 
 func (s *WebSearchRequest) GetMaxResults() *int32 {
@@ -74,6 +83,11 @@ func (s *WebSearchRequest) GetUrlScopeDomains() *string {
 
 func (s *WebSearchRequest) GetUrlScopeMode() *string {
 	return s.UrlScopeMode
+}
+
+func (s *WebSearchRequest) SetAgentName(v string) *WebSearchRequest {
+	s.AgentName = &v
+	return s
 }
 
 func (s *WebSearchRequest) SetMaxResults(v int32) *WebSearchRequest {

@@ -9,6 +9,8 @@ type iWebFetchRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentName(v string) *WebFetchRequest
+	GetAgentName() *string
 	SetOutputFormat(v string) *WebFetchRequest
 	GetOutputFormat() *string
 	SetRegionId(v string) *WebFetchRequest
@@ -18,6 +20,7 @@ type iWebFetchRequest interface {
 }
 
 type WebFetchRequest struct {
+	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 	// The output format. Valid values:
 	//
 	// - **markdown**: Markdown format.
@@ -56,6 +59,10 @@ func (s WebFetchRequest) GoString() string {
 	return s.String()
 }
 
+func (s *WebFetchRequest) GetAgentName() *string {
+	return s.AgentName
+}
+
 func (s *WebFetchRequest) GetOutputFormat() *string {
 	return s.OutputFormat
 }
@@ -66,6 +73,11 @@ func (s *WebFetchRequest) GetRegionId() *string {
 
 func (s *WebFetchRequest) GetUrl() *string {
 	return s.Url
+}
+
+func (s *WebFetchRequest) SetAgentName(v string) *WebFetchRequest {
+	s.AgentName = &v
+	return s
 }
 
 func (s *WebFetchRequest) SetOutputFormat(v string) *WebFetchRequest {

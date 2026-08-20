@@ -58,7 +58,7 @@ type WebSearchResponseBody struct {
 	//
 	// A30D0930-xxxx-xxxx-xxxx-C2C661CC8B58
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The search result list.
+	// The list of search results.
 	SearchResult []*WebSearchResponseBodySearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
 	// Indicates whether the request was successful.
 	//
@@ -168,7 +168,7 @@ func (s *WebSearchResponseBody) Validate() error {
 }
 
 type WebSearchResponseBodySearchResult struct {
-	// The summary of the web page content.
+	// The snippet of the web page content.
 	//
 	// example:
 	//

@@ -19,6 +19,14 @@ type iCreateDocParserJobResponseBody interface {
 	GetJobId() *string
 	SetRequestId(v string) *CreateDocParserJobResponseBody
 	GetRequestId() *string
+	SetResult(v string) *CreateDocParserJobResponseBody
+	GetResult() *string
+	SetResultType(v string) *CreateDocParserJobResponseBody
+	GetResultType() *string
+	SetResultUrl(v string) *CreateDocParserJobResponseBody
+	GetResultUrl() *string
+	SetStatus(v string) *CreateDocParserJobResponseBody
+	GetStatus() *string
 	SetSuccess(v bool) *CreateDocParserJobResponseBody
 	GetSuccess() *bool
 }
@@ -53,7 +61,11 @@ type CreateDocParserJobResponseBody struct {
 	// example:
 	//
 	// A30D0930-xxxx-xxxx-xxxx-C2C661CC8B58
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	ResultType *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
+	ResultUrl  *string `json:"ResultUrl,omitempty" xml:"ResultUrl,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates whether the request was successful.
 	//
 	// example:
@@ -90,6 +102,22 @@ func (s *CreateDocParserJobResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *CreateDocParserJobResponseBody) GetResult() *string {
+	return s.Result
+}
+
+func (s *CreateDocParserJobResponseBody) GetResultType() *string {
+	return s.ResultType
+}
+
+func (s *CreateDocParserJobResponseBody) GetResultUrl() *string {
+	return s.ResultUrl
+}
+
+func (s *CreateDocParserJobResponseBody) GetStatus() *string {
+	return s.Status
+}
+
 func (s *CreateDocParserJobResponseBody) GetSuccess() *bool {
 	return s.Success
 }
@@ -116,6 +144,26 @@ func (s *CreateDocParserJobResponseBody) SetJobId(v string) *CreateDocParserJobR
 
 func (s *CreateDocParserJobResponseBody) SetRequestId(v string) *CreateDocParserJobResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDocParserJobResponseBody) SetResult(v string) *CreateDocParserJobResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *CreateDocParserJobResponseBody) SetResultType(v string) *CreateDocParserJobResponseBody {
+	s.ResultType = &v
+	return s
+}
+
+func (s *CreateDocParserJobResponseBody) SetResultUrl(v string) *CreateDocParserJobResponseBody {
+	s.ResultUrl = &v
+	return s
+}
+
+func (s *CreateDocParserJobResponseBody) SetStatus(v string) *CreateDocParserJobResponseBody {
+	s.Status = &v
 	return s
 }
 

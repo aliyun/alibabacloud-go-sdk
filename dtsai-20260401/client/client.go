@@ -163,6 +163,26 @@ func (client *Client) CreateDocParserJobWithOptions(request *CreateDocParserJobR
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		query["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.AsrLanguage) {
+		query["AsrLanguage"] = request.AsrLanguage
+	}
+
+	if !dara.IsNil(request.AudioClipOutput) {
+		query["AudioClipOutput"] = request.AudioClipOutput
+	}
+
+	if !dara.IsNil(request.AudioWindowSeconds) {
+		query["AudioWindowSeconds"] = request.AudioWindowSeconds
+	}
+
+	if !dara.IsNil(request.ChunkSummary) {
+		query["ChunkSummary"] = request.ChunkSummary
+	}
+
 	if !dara.IsNil(request.FileFormat) {
 		query["FileFormat"] = request.FileFormat
 	}
@@ -175,8 +195,40 @@ func (client *Client) CreateDocParserJobWithOptions(request *CreateDocParserJobR
 		query["FileUrl"] = request.FileUrl
 	}
 
+	if !dara.IsNil(request.FrameOutput) {
+		query["FrameOutput"] = request.FrameOutput
+	}
+
+	if !dara.IsNil(request.GlobalSummary) {
+		query["GlobalSummary"] = request.GlobalSummary
+	}
+
 	if !dara.IsNil(request.ImageMode) {
 		query["ImageMode"] = request.ImageMode
+	}
+
+	if !dara.IsNil(request.ImageUnderstanding) {
+		query["ImageUnderstanding"] = request.ImageUnderstanding
+	}
+
+	if !dara.IsNil(request.MediaChunkIntervalSeconds) {
+		query["MediaChunkIntervalSeconds"] = request.MediaChunkIntervalSeconds
+	}
+
+	if !dara.IsNil(request.MediaChunkStrategy) {
+		query["MediaChunkStrategy"] = request.MediaChunkStrategy
+	}
+
+	if !dara.IsNil(request.MediaFramesPerMinute) {
+		query["MediaFramesPerMinute"] = request.MediaFramesPerMinute
+	}
+
+	if !dara.IsNil(request.MediaMaxFrameBudget) {
+		query["MediaMaxFrameBudget"] = request.MediaMaxFrameBudget
+	}
+
+	if !dara.IsNil(request.MediaMinFrameBudget) {
+		query["MediaMinFrameBudget"] = request.MediaMinFrameBudget
 	}
 
 	if !dara.IsNil(request.OssFileUrl) {
@@ -187,8 +239,16 @@ func (client *Client) CreateDocParserJobWithOptions(request *CreateDocParserJobR
 		query["OutputFormat"] = request.OutputFormat
 	}
 
+	if !dara.IsNil(request.ParseScene) {
+		query["ParseScene"] = request.ParseScene
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResponseMode) {
+		query["ResponseMode"] = request.ResponseMode
 	}
 
 	if !dara.IsNil(request.ResultType) {
@@ -378,12 +438,20 @@ func (client *Client) DescribeDocParserJobResultWithOptions(request *DescribeDoc
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		query["AgentName"] = request.AgentName
+	}
+
 	if !dara.IsNil(request.JobId) {
 		query["JobId"] = request.JobId
 	}
 
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResultType) {
+		query["ResultType"] = request.ResultType
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -458,6 +526,10 @@ func (client *Client) DescribeDocParserJobStatusWithOptions(request *DescribeDoc
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		query["AgentName"] = request.AgentName
+	}
+
 	if !dara.IsNil(request.JobId) {
 		query["JobId"] = request.JobId
 	}
@@ -536,6 +608,10 @@ func (client *Client) WebFetchWithOptions(request *WebFetchRequest, runtime *dar
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		query["AgentName"] = request.AgentName
+	}
+
 	if !dara.IsNil(request.OutputFormat) {
 		query["OutputFormat"] = request.OutputFormat
 	}
@@ -603,7 +679,7 @@ func (client *Client) WebFetch(request *WebFetchRequest) (_result *WebFetchRespo
 //
 // - Region: Only China (Beijing) and Singapore regions are supported.
 //
-// - Fees: Free of charge during the public preview. No fees are charged.
+// - Fees: Free during the public preview period. No fees are charged.
 //
 // @param request - WebSearchRequest
 //
@@ -618,6 +694,10 @@ func (client *Client) WebSearchWithOptions(request *WebSearchRequest, runtime *d
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		query["AgentName"] = request.AgentName
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		query["MaxResults"] = request.MaxResults
 	}
@@ -669,7 +749,7 @@ func (client *Client) WebSearchWithOptions(request *WebSearchRequest, runtime *d
 //
 // - Region: Only China (Beijing) and Singapore regions are supported.
 //
-// - Fees: Free of charge during the public preview. No fees are charged.
+// - Fees: Free during the public preview period. No fees are charged.
 //
 // @param request - WebSearchRequest
 //
