@@ -9,21 +9,27 @@ type iAuthDiagnosisRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *AuthDiagnosisRequest
+	GetXDebugId() *string
 	SetAutoCreateRole(v bool) *AuthDiagnosisRequest
 	GetAutoCreateRole() *bool
 	SetAutoInstallAgent(v bool) *AuthDiagnosisRequest
 	GetAutoInstallAgent() *bool
 	SetInstances(v []*AuthDiagnosisRequestInstances) *AuthDiagnosisRequest
 	GetInstances() []*AuthDiagnosisRequestInstances
+	SetXSysomInvokeSource(v string) *AuthDiagnosisRequest
+	GetXSysomInvokeSource() *string
 }
 
 type AuthDiagnosisRequest struct {
+	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// Specifies whether to enable automatic creation of the service-linked role.
 	AutoCreateRole *bool `json:"autoCreateRole,omitempty" xml:"autoCreateRole,omitempty"`
-	// Specifies whether to automatically install the agent.
+	// Specifies whether to automatically install the latest version of the agent if it is not installed.
 	AutoInstallAgent *bool `json:"autoInstallAgent,omitempty" xml:"autoInstallAgent,omitempty"`
-	// The list of instances to authorize for diagnostics.
-	Instances []*AuthDiagnosisRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	// The list of instances authorized for diagnosis.
+	Instances          []*AuthDiagnosisRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	XSysomInvokeSource *string                          `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s AuthDiagnosisRequest) String() string {
@@ -32,6 +38,10 @@ func (s AuthDiagnosisRequest) String() string {
 
 func (s AuthDiagnosisRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AuthDiagnosisRequest) GetXDebugId() *string {
+	return s.XDebugId
 }
 
 func (s *AuthDiagnosisRequest) GetAutoCreateRole() *bool {
@@ -46,6 +56,15 @@ func (s *AuthDiagnosisRequest) GetInstances() []*AuthDiagnosisRequestInstances {
 	return s.Instances
 }
 
+func (s *AuthDiagnosisRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *AuthDiagnosisRequest) SetXDebugId(v string) *AuthDiagnosisRequest {
+	s.XDebugId = &v
+	return s
+}
+
 func (s *AuthDiagnosisRequest) SetAutoCreateRole(v bool) *AuthDiagnosisRequest {
 	s.AutoCreateRole = &v
 	return s
@@ -58,6 +77,11 @@ func (s *AuthDiagnosisRequest) SetAutoInstallAgent(v bool) *AuthDiagnosisRequest
 
 func (s *AuthDiagnosisRequest) SetInstances(v []*AuthDiagnosisRequestInstances) *AuthDiagnosisRequest {
 	s.Instances = v
+	return s
+}
+
+func (s *AuthDiagnosisRequest) SetXSysomInvokeSource(v string) *AuthDiagnosisRequest {
+	s.XSysomInvokeSource = &v
 	return s
 }
 

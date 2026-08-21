@@ -28,9 +28,9 @@ type InstallAgentForClusterResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status code.
 	//
-	// - If `code == Success`, the authorization is successful.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Any other status code indicates authorization failure. Check the `message` field for detailed error information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type InstallAgentForClusterResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//

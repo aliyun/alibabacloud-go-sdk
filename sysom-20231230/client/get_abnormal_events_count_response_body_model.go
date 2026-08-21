@@ -18,15 +18,15 @@ type iGetAbnormalEventsCountResponseBody interface {
 }
 
 type GetAbnormalEventsCountResponseBody struct {
-	// Response code.
+	// The response code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response data.
+	// The returned data.
 	Data []*GetAbnormalEventsCountResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// When success is false, this value is not empty, indicating a business error message.
+	// The business error message. This parameter is not empty when success is false.
 	//
 	// example:
 	//
@@ -83,15 +83,15 @@ func (s *GetAbnormalEventsCountResponseBody) Validate() error {
 }
 
 type GetAbnormalEventsCountResponseBodyData struct {
-	// List of abnormal events.
+	// The list of abnormal events.
 	EventList []*string `json:"eventList,omitempty" xml:"eventList,omitempty" type:"Repeated"`
-	// Abnormal event type.
+	// The type of the abnormal event.
 	//
 	// example:
 	//
 	// health
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// Count of abnormal event type.
+	// The number of abnormal events of this type.
 	//
 	// example:
 	//

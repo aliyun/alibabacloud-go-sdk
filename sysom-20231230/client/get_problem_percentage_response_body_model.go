@@ -22,19 +22,19 @@ type iGetProblemPercentageResponseBody interface {
 }
 
 type GetProblemPercentageResponseBody struct {
-	// Status code.
+	// The status code.
 	//
-	// - If `code == Success`, the authorization is successful.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate authorization failure. Check the `message` field for detailed error information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response data.
+	// The returned data.
 	Data []*GetProblemPercentageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Error message.
+	// The error message.
 	//
 	// - If `code == Success`, this field is empty.
 	//
@@ -44,13 +44,13 @@ type GetProblemPercentageResponseBody struct {
 	//
 	// result: code=1 msg=(Request failed, status_code != 200)
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 35F91AAB-5FDF-5A22-B211-C7C6B00817D0
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// Total number of data entries.
+	// The total amount of data.
 	//
 	// example:
 	//
@@ -125,13 +125,13 @@ func (s *GetProblemPercentageResponseBody) Validate() error {
 }
 
 type GetProblemPercentageResponseBodyData struct {
-	// Abnormal item type.
+	// The type of the abnormal item.
 	//
 	// example:
 	//
 	// saturation
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// Number of abnormal items.
+	// The number of abnormal items of this type.
 	//
 	// example:
 	//

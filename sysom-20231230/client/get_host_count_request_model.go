@@ -9,6 +9,8 @@ type iGetHostCountRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *GetHostCountRequest
+	GetXDebugId() *string
 	SetCluster(v string) *GetHostCountRequest
 	GetCluster() *string
 	SetEnd(v float32) *GetHostCountRequest
@@ -17,9 +19,12 @@ type iGetHostCountRequest interface {
 	GetInstance() *string
 	SetStart(v float32) *GetHostCountRequest
 	GetStart() *float32
+	SetXSysomInvokeSource(v string) *GetHostCountRequest
+	GetXSysomInvokeSource() *string
 }
 
 type GetHostCountRequest struct {
+	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The cluster ID.
 	//
 	// example:
@@ -43,7 +48,8 @@ type GetHostCountRequest struct {
 	// example:
 	//
 	// 1725797727754
-	Start *float32 `json:"start,omitempty" xml:"start,omitempty"`
+	Start              *float32 `json:"start,omitempty" xml:"start,omitempty"`
+	XSysomInvokeSource *string  `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s GetHostCountRequest) String() string {
@@ -52,6 +58,10 @@ func (s GetHostCountRequest) String() string {
 
 func (s GetHostCountRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetHostCountRequest) GetXDebugId() *string {
+	return s.XDebugId
 }
 
 func (s *GetHostCountRequest) GetCluster() *string {
@@ -68,6 +78,15 @@ func (s *GetHostCountRequest) GetInstance() *string {
 
 func (s *GetHostCountRequest) GetStart() *float32 {
 	return s.Start
+}
+
+func (s *GetHostCountRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *GetHostCountRequest) SetXDebugId(v string) *GetHostCountRequest {
+	s.XDebugId = &v
+	return s
 }
 
 func (s *GetHostCountRequest) SetCluster(v string) *GetHostCountRequest {
@@ -87,6 +106,11 @@ func (s *GetHostCountRequest) SetInstance(v string) *GetHostCountRequest {
 
 func (s *GetHostCountRequest) SetStart(v float32) *GetHostCountRequest {
 	s.Start = &v
+	return s
+}
+
+func (s *GetHostCountRequest) SetXSysomInvokeSource(v string) *GetHostCountRequest {
+	s.XSysomInvokeSource = &v
 	return s
 }
 

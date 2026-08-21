@@ -9,6 +9,8 @@ type iListInstancesWithEcsInfoRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *ListInstancesWithEcsInfoRequest
+	GetXDebugId() *string
 	SetCurrent(v int32) *ListInstancesWithEcsInfoRequest
 	GetCurrent() *int32
 	SetHealthStatus(v string) *ListInstancesWithEcsInfoRequest
@@ -39,9 +41,12 @@ type iListInstancesWithEcsInfoRequest interface {
 	GetResourceGroupIdName() *string
 	SetResourceGroupName(v string) *ListInstancesWithEcsInfoRequest
 	GetResourceGroupName() *string
+	SetXSysomInvokeSource(v string) *ListInstancesWithEcsInfoRequest
+	GetXSysomInvokeSource() *string
 }
 
 type ListInstancesWithEcsInfoRequest struct {
+	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The page number for pagination. This parameter specifies the current page.
 	//
 	// example:
@@ -129,7 +134,8 @@ type ListInstancesWithEcsInfoRequest struct {
 	// example:
 	//
 	// default resource group
-	ResourceGroupName *string `json:"resource_group_name,omitempty" xml:"resource_group_name,omitempty"`
+	ResourceGroupName  *string `json:"resource_group_name,omitempty" xml:"resource_group_name,omitempty"`
+	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s ListInstancesWithEcsInfoRequest) String() string {
@@ -138,6 +144,10 @@ func (s ListInstancesWithEcsInfoRequest) String() string {
 
 func (s ListInstancesWithEcsInfoRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesWithEcsInfoRequest) GetXDebugId() *string {
+	return s.XDebugId
 }
 
 func (s *ListInstancesWithEcsInfoRequest) GetCurrent() *int32 {
@@ -198,6 +208,15 @@ func (s *ListInstancesWithEcsInfoRequest) GetResourceGroupIdName() *string {
 
 func (s *ListInstancesWithEcsInfoRequest) GetResourceGroupName() *string {
 	return s.ResourceGroupName
+}
+
+func (s *ListInstancesWithEcsInfoRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *ListInstancesWithEcsInfoRequest) SetXDebugId(v string) *ListInstancesWithEcsInfoRequest {
+	s.XDebugId = &v
+	return s
 }
 
 func (s *ListInstancesWithEcsInfoRequest) SetCurrent(v int32) *ListInstancesWithEcsInfoRequest {
@@ -272,6 +291,11 @@ func (s *ListInstancesWithEcsInfoRequest) SetResourceGroupIdName(v string) *List
 
 func (s *ListInstancesWithEcsInfoRequest) SetResourceGroupName(v string) *ListInstancesWithEcsInfoRequest {
 	s.ResourceGroupName = &v
+	return s
+}
+
+func (s *ListInstancesWithEcsInfoRequest) SetXSysomInvokeSource(v string) *ListInstancesWithEcsInfoRequest {
+	s.XSysomInvokeSource = &v
 	return s
 }
 

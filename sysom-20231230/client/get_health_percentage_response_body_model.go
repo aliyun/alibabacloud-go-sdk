@@ -20,9 +20,9 @@ type iGetHealthPercentageResponseBody interface {
 type GetHealthPercentageResponseBody struct {
 	// The status code.
 	//
-	// - `code == Success` indicates that the authorization was successful.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault message.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
@@ -87,7 +87,7 @@ func (s *GetHealthPercentageResponseBody) Validate() error {
 }
 
 type GetHealthPercentageResponseBodyData struct {
-	// The health level of the node or pod.
+	// The health level of the node or Pod.
 	//
 	// example:
 	//

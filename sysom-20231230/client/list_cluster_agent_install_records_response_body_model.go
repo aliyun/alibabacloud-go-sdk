@@ -22,35 +22,35 @@ type iListClusterAgentInstallRecordsResponseBody interface {
 }
 
 type ListClusterAgentInstallRecordsResponseBody struct {
-	// Request ID, which can be used for end-to-end diagnostics.
+	// The request ID, which can be used for end-to-end diagnostics.
 	//
 	// example:
 	//
 	// B149FD9C-ED5C-5765-B3AD-05AA4A4D64D7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Status code.
+	// The status code.
 	//
 	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate authorization failure. When authorization fails, check the `message` field for detailed error information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response results.
+	// The returned result.
 	Data []*ListClusterAgentInstallRecordsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Error message.
+	// The error message.
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Total number of query results.
+	// The total number of query results.
 	//
 	// example:
 	//
@@ -127,7 +127,7 @@ func (s *ListClusterAgentInstallRecordsResponseBody) Validate() error {
 type ListClusterAgentInstallRecordsResponseBodyData struct {
 	AgentConfigId   *string `json:"agent_config_id,omitempty" xml:"agent_config_id,omitempty"`
 	AgentConfigName *string `json:"agent_config_name,omitempty" xml:"agent_config_name,omitempty"`
-	// Cluster ID.
+	// The cluster ID.
 	//
 	// > This cluster ID is not the ACK cluster ID.
 	//
@@ -135,31 +135,31 @@ type ListClusterAgentInstallRecordsResponseBodyData struct {
 	//
 	// cbf7a37bc905d4682a3338b3744810269
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2024-12-25T15:08:19
 	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	// Canary release configuration.
+	// The canary release environment.
 	//
 	// example:
 	//
 	// {}
 	GrayscaleConfig *string `json:"grayscale_config,omitempty" xml:"grayscale_config,omitempty"`
-	// Component ID.
+	// The component ID.
 	//
 	// example:
 	//
 	// 74a86327-3170-412c-8e67-da3389ec56a9
 	PluginId *string `json:"plugin_id,omitempty" xml:"plugin_id,omitempty"`
-	// Plugin version.
+	// The plug-in version.
 	//
 	// example:
 	//
 	// 3.4.0-1
 	PluginVersion *string `json:"plugin_version,omitempty" xml:"plugin_version,omitempty"`
-	// Modification time.
+	// The modification time.
 	//
 	// example:
 	//

@@ -106,7 +106,7 @@ func (s *InstallAgentResponseBody) Validate() error {
 type InstallAgentResponseBodyData struct {
 	// The task ID.
 	//
-	// You can use this task ID to call the GetAgentTask operation to retrieve the task execution status.
+	// You can use this task ID to call the GetAgentTask operation to query the task execution status.
 	//
 	// example:
 	//

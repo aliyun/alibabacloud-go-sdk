@@ -9,6 +9,8 @@ type iUpgradeAgentWithTypeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *UpgradeAgentWithTypeRequest
+	GetXDebugId() *string
 	SetAgentId(v string) *UpgradeAgentWithTypeRequest
 	GetAgentId() *string
 	SetAgentVersion(v string) *UpgradeAgentWithTypeRequest
@@ -17,9 +19,12 @@ type iUpgradeAgentWithTypeRequest interface {
 	GetInstanceType() *string
 	SetInstances(v []*UpgradeAgentWithTypeRequestInstances) *UpgradeAgentWithTypeRequest
 	GetInstances() []*UpgradeAgentWithTypeRequestInstances
+	SetXSysomInvokeSource(v string) *UpgradeAgentWithTypeRequest
+	GetXSysomInvokeSource() *string
 }
 
 type UpgradeAgentWithTypeRequest struct {
+	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The ID of the component to update.
 	//
 	// This parameter is required.
@@ -45,7 +50,8 @@ type UpgradeAgentWithTypeRequest struct {
 	// The list of instances for which to update the component.
 	//
 	// This parameter is required.
-	Instances []*UpgradeAgentWithTypeRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	Instances          []*UpgradeAgentWithTypeRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	XSysomInvokeSource *string                                 `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s UpgradeAgentWithTypeRequest) String() string {
@@ -54,6 +60,10 @@ func (s UpgradeAgentWithTypeRequest) String() string {
 
 func (s UpgradeAgentWithTypeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpgradeAgentWithTypeRequest) GetXDebugId() *string {
+	return s.XDebugId
 }
 
 func (s *UpgradeAgentWithTypeRequest) GetAgentId() *string {
@@ -70,6 +80,15 @@ func (s *UpgradeAgentWithTypeRequest) GetInstanceType() *string {
 
 func (s *UpgradeAgentWithTypeRequest) GetInstances() []*UpgradeAgentWithTypeRequestInstances {
 	return s.Instances
+}
+
+func (s *UpgradeAgentWithTypeRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *UpgradeAgentWithTypeRequest) SetXDebugId(v string) *UpgradeAgentWithTypeRequest {
+	s.XDebugId = &v
+	return s
 }
 
 func (s *UpgradeAgentWithTypeRequest) SetAgentId(v string) *UpgradeAgentWithTypeRequest {
@@ -89,6 +108,11 @@ func (s *UpgradeAgentWithTypeRequest) SetInstanceType(v string) *UpgradeAgentWit
 
 func (s *UpgradeAgentWithTypeRequest) SetInstances(v []*UpgradeAgentWithTypeRequestInstances) *UpgradeAgentWithTypeRequest {
 	s.Instances = v
+	return s
+}
+
+func (s *UpgradeAgentWithTypeRequest) SetXSysomInvokeSource(v string) *UpgradeAgentWithTypeRequest {
+	s.XSysomInvokeSource = &v
 	return s
 }
 

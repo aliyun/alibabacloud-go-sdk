@@ -22,9 +22,9 @@ type iStartAIDiffAnalysisResponseBody interface {
 type StartAIDiffAnalysisResponseBody struct {
 	// The status code.
 	//
-	// - `code == Success` indicates that the authorization is successful.
+	// - `code == Success` indicates that authorization is successful.
 	//
-	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
+	// - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
@@ -38,31 +38,31 @@ type StartAIDiffAnalysisResponseBody struct {
 	//
 	//   {
 	//
-	//       name: "xxx", #算子名称
+	//       name: "xxx", #operator name
 	//
-	//       before_time: 2, # 前者总耗时
+	//       before_time: 2, # total time of the former
 	//
-	//       after_time: 4, # 后者总耗时
+	//       after_time: 4, # total time of the latter
 	//
-	//       time_diff: 2,  # 耗时差异
+	//       time_diff: 2,  # time difference
 	//
-	//       before_time_perc: "80%", # 前者总耗时百分比
+	//       before_time_perc: "80%", # total time percentage of the former
 	//
-	//       after_time_perc: "23%", # 后者总耗时百分比
+	//       after_time_perc: "23%", # total time percentage of the latter
 	//
-	//       time_perc_diff: "-54%",  # 耗时差异
+	//       time_perc_diff: "-54%",  # time percentage difference
 	//
-	//       before_count: 1, # 前者总调用差异
+	//       before_count: 1, # total call count of the former
 	//
-	//       after_count: 2,  # 后者总调用差异
+	//       after_count: 2,  # total call count of the latter
 	//
-	//       count_diff: 1,   # 调用差异
+	//       count_diff: 1,   # call count difference
 	//
-	//       before_count_perc: "56%", # 前者总调用差异
+	//       before_count_perc: "56%", # total call percentage of the former
 	//
-	//       after_count_perc: "32%",  # 后者总调用差异
+	//       after_count_perc: "32%",  # total call percentage of the latter
 	//
-	//       count_perc_diff: "44%",   # 调用差异
+	//       count_perc_diff: "44%",   # call percentage difference
 	//
 	//   },
 	//

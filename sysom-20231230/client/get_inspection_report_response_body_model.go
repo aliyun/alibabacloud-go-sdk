@@ -22,9 +22,9 @@ type iGetInspectionReportResponseBody interface {
 type GetInspectionReportResponseBody struct {
 	// The status code.
 	//
-	// - If `code == Success`, the authorization is successful.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
+	// - Other status codes indicate that the authorization has failed. Check the `message` field for the detailed error message.
 	//
 	// example:
 	//

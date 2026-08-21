@@ -22,9 +22,9 @@ type iCreateVmcoreDiagnosisTaskResponseBody interface {
 type CreateVmcoreDiagnosisTaskResponseBody struct {
 	// The status code.
 	//
-	// - If code is Success, the authorization is successful.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate that the authorization has failed. Check the message field for the detailed fault message.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
@@ -34,9 +34,9 @@ type CreateVmcoreDiagnosisTaskResponseBody struct {
 	Data *CreateVmcoreDiagnosisTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error message.
 	//
-	// - If code is Success, this field is empty.
+	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the error message for the request.
+	// - Otherwise, this field contains the request error message.
 	//
 	// example:
 	//

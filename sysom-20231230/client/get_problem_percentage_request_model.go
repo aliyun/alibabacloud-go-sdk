@@ -9,6 +9,8 @@ type iGetProblemPercentageRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *GetProblemPercentageRequest
+	GetXDebugId() *string
 	SetCluster(v string) *GetProblemPercentageRequest
 	GetCluster() *string
 	SetEnd(v float32) *GetProblemPercentageRequest
@@ -17,16 +19,19 @@ type iGetProblemPercentageRequest interface {
 	GetInstance() *string
 	SetStart(v float32) *GetProblemPercentageRequest
 	GetStart() *float32
+	SetXSysomInvokeSource(v string) *GetProblemPercentageRequest
+	GetXSysomInvokeSource() *string
 }
 
 type GetProblemPercentageRequest struct {
-	// Cluster ID.
+	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
+	// The cluster ID.
 	//
 	// example:
 	//
 	// 2ijff4be-bf24-4070-89ca-c47c879b0g32
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	// End time.
+	// The end time.
 	//
 	// This parameter is required.
 	//
@@ -34,20 +39,21 @@ type GetProblemPercentageRequest struct {
 	//
 	// 1725801327754
 	End *float32 `json:"end,omitempty" xml:"end,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-wz9d00ut2ska3mlyhn6j
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	// Start time.
+	// The start time.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1725797727754
-	Start *float32 `json:"start,omitempty" xml:"start,omitempty"`
+	Start              *float32 `json:"start,omitempty" xml:"start,omitempty"`
+	XSysomInvokeSource *string  `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s GetProblemPercentageRequest) String() string {
@@ -56,6 +62,10 @@ func (s GetProblemPercentageRequest) String() string {
 
 func (s GetProblemPercentageRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetProblemPercentageRequest) GetXDebugId() *string {
+	return s.XDebugId
 }
 
 func (s *GetProblemPercentageRequest) GetCluster() *string {
@@ -72,6 +82,15 @@ func (s *GetProblemPercentageRequest) GetInstance() *string {
 
 func (s *GetProblemPercentageRequest) GetStart() *float32 {
 	return s.Start
+}
+
+func (s *GetProblemPercentageRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *GetProblemPercentageRequest) SetXDebugId(v string) *GetProblemPercentageRequest {
+	s.XDebugId = &v
+	return s
 }
 
 func (s *GetProblemPercentageRequest) SetCluster(v string) *GetProblemPercentageRequest {
@@ -91,6 +110,11 @@ func (s *GetProblemPercentageRequest) SetInstance(v string) *GetProblemPercentag
 
 func (s *GetProblemPercentageRequest) SetStart(v float32) *GetProblemPercentageRequest {
 	s.Start = &v
+	return s
+}
+
+func (s *GetProblemPercentageRequest) SetXSysomInvokeSource(v string) *GetProblemPercentageRequest {
+	s.XSysomInvokeSource = &v
 	return s
 }
 

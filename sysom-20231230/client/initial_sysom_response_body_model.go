@@ -28,7 +28,7 @@ type InitialSysomResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status code.
 	//
-	// - `code == Success`: The authorization is successful.
+	// - `code == Success` indicates that the authorization is successful.
 	//
 	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//

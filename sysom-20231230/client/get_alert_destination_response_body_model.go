@@ -22,9 +22,9 @@ type iGetAlertDestinationResponseBody interface {
 type GetAlertDestinationResponseBody struct {
 	// The status code.
 	//
-	// - If `code == Success`, the authorization is successful.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type GetAlertDestinationResponseBodyData struct {
 	//
 	// console
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The alert notification target. Currently, only DingTalk chatbots are supported.
+	// The alert push target. Currently, only DingTalk chatbots are supported.
 	//
 	// example:
 	//

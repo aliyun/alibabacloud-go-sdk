@@ -9,6 +9,8 @@ type iUpdateAlertDestinationRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *UpdateAlertDestinationRequest
+	GetXDebugId() *string
 	SetAppId(v string) *UpdateAlertDestinationRequest
 	GetAppId() *string
 	SetAppSecret(v string) *UpdateAlertDestinationRequest
@@ -27,9 +29,12 @@ type iUpdateAlertDestinationRequest interface {
 	GetSource() *string
 	SetTarget(v string) *UpdateAlertDestinationRequest
 	GetTarget() *string
+	SetXSysomInvokeSource(v string) *UpdateAlertDestinationRequest
+	GetXSysomInvokeSource() *string
 }
 
 type UpdateAlertDestinationRequest struct {
+	XDebugId  *string   `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	AppId     *string   `json:"app_id,omitempty" xml:"app_id,omitempty"`
 	AppSecret *string   `json:"app_secret,omitempty" xml:"app_secret,omitempty"`
 	GroupId   []*string `json:"group_id,omitempty" xml:"group_id,omitempty" type:"Repeated"`
@@ -59,7 +64,8 @@ type UpdateAlertDestinationRequest struct {
 	// example:
 	//
 	// dingtalk
-	Target *string `json:"target,omitempty" xml:"target,omitempty"`
+	Target             *string `json:"target,omitempty" xml:"target,omitempty"`
+	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s UpdateAlertDestinationRequest) String() string {
@@ -68,6 +74,10 @@ func (s UpdateAlertDestinationRequest) String() string {
 
 func (s UpdateAlertDestinationRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateAlertDestinationRequest) GetXDebugId() *string {
+	return s.XDebugId
 }
 
 func (s *UpdateAlertDestinationRequest) GetAppId() *string {
@@ -104,6 +114,15 @@ func (s *UpdateAlertDestinationRequest) GetSource() *string {
 
 func (s *UpdateAlertDestinationRequest) GetTarget() *string {
 	return s.Target
+}
+
+func (s *UpdateAlertDestinationRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *UpdateAlertDestinationRequest) SetXDebugId(v string) *UpdateAlertDestinationRequest {
+	s.XDebugId = &v
+	return s
 }
 
 func (s *UpdateAlertDestinationRequest) SetAppId(v string) *UpdateAlertDestinationRequest {
@@ -148,6 +167,11 @@ func (s *UpdateAlertDestinationRequest) SetSource(v string) *UpdateAlertDestinat
 
 func (s *UpdateAlertDestinationRequest) SetTarget(v string) *UpdateAlertDestinationRequest {
 	s.Target = &v
+	return s
+}
+
+func (s *UpdateAlertDestinationRequest) SetXSysomInvokeSource(v string) *UpdateAlertDestinationRequest {
+	s.XSysomInvokeSource = &v
 	return s
 }
 

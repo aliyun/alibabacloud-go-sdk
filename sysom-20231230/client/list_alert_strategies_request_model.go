@@ -9,6 +9,8 @@ type iListAlertStrategiesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *ListAlertStrategiesRequest
+	GetXDebugId() *string
 	SetCurrent(v int32) *ListAlertStrategiesRequest
 	GetCurrent() *int32
 	SetMaxResults(v int32) *ListAlertStrategiesRequest
@@ -19,9 +21,12 @@ type iListAlertStrategiesRequest interface {
 	GetNextToken() *string
 	SetPageSize(v int32) *ListAlertStrategiesRequest
 	GetPageSize() *int32
+	SetXSysomInvokeSource(v string) *ListAlertStrategiesRequest
+	GetXSysomInvokeSource() *string
 }
 
 type ListAlertStrategiesRequest struct {
+	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The current page number (starting from 1).
 	//
 	// example:
@@ -51,7 +56,8 @@ type ListAlertStrategiesRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize           *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s ListAlertStrategiesRequest) String() string {
@@ -60,6 +66,10 @@ func (s ListAlertStrategiesRequest) String() string {
 
 func (s ListAlertStrategiesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListAlertStrategiesRequest) GetXDebugId() *string {
+	return s.XDebugId
 }
 
 func (s *ListAlertStrategiesRequest) GetCurrent() *int32 {
@@ -80,6 +90,15 @@ func (s *ListAlertStrategiesRequest) GetNextToken() *string {
 
 func (s *ListAlertStrategiesRequest) GetPageSize() *int32 {
 	return s.PageSize
+}
+
+func (s *ListAlertStrategiesRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *ListAlertStrategiesRequest) SetXDebugId(v string) *ListAlertStrategiesRequest {
+	s.XDebugId = &v
+	return s
 }
 
 func (s *ListAlertStrategiesRequest) SetCurrent(v int32) *ListAlertStrategiesRequest {
@@ -104,6 +123,11 @@ func (s *ListAlertStrategiesRequest) SetNextToken(v string) *ListAlertStrategies
 
 func (s *ListAlertStrategiesRequest) SetPageSize(v int32) *ListAlertStrategiesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListAlertStrategiesRequest) SetXSysomInvokeSource(v string) *ListAlertStrategiesRequest {
+	s.XSysomInvokeSource = &v
 	return s
 }
 

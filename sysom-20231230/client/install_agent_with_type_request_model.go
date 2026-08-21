@@ -9,6 +9,8 @@ type iInstallAgentWithTypeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *InstallAgentWithTypeRequest
+	GetXDebugId() *string
 	SetTag(v []*InstallAgentWithTypeRequestTag) *InstallAgentWithTypeRequest
 	GetTag() []*InstallAgentWithTypeRequestTag
 	SetAgentId(v string) *InstallAgentWithTypeRequest
@@ -21,10 +23,13 @@ type iInstallAgentWithTypeRequest interface {
 	GetInstanceType() *string
 	SetInstances(v []*InstallAgentWithTypeRequestInstances) *InstallAgentWithTypeRequest
 	GetInstances() []*InstallAgentWithTypeRequestInstances
+	SetXSysomInvokeSource(v string) *InstallAgentWithTypeRequest
+	GetXSysomInvokeSource() *string
 }
 
 type InstallAgentWithTypeRequest struct {
-	Tag []*InstallAgentWithTypeRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	XDebugId *string                           `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
+	Tag      []*InstallAgentWithTypeRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the component to install.
 	//
 	// This parameter is required.
@@ -58,7 +63,8 @@ type InstallAgentWithTypeRequest struct {
 	// The list of instances on which to install the component.
 	//
 	// This parameter is required.
-	Instances []*InstallAgentWithTypeRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	Instances          []*InstallAgentWithTypeRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	XSysomInvokeSource *string                                 `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s InstallAgentWithTypeRequest) String() string {
@@ -67,6 +73,10 @@ func (s InstallAgentWithTypeRequest) String() string {
 
 func (s InstallAgentWithTypeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *InstallAgentWithTypeRequest) GetXDebugId() *string {
+	return s.XDebugId
 }
 
 func (s *InstallAgentWithTypeRequest) GetTag() []*InstallAgentWithTypeRequestTag {
@@ -91,6 +101,15 @@ func (s *InstallAgentWithTypeRequest) GetInstanceType() *string {
 
 func (s *InstallAgentWithTypeRequest) GetInstances() []*InstallAgentWithTypeRequestInstances {
 	return s.Instances
+}
+
+func (s *InstallAgentWithTypeRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *InstallAgentWithTypeRequest) SetXDebugId(v string) *InstallAgentWithTypeRequest {
+	s.XDebugId = &v
+	return s
 }
 
 func (s *InstallAgentWithTypeRequest) SetTag(v []*InstallAgentWithTypeRequestTag) *InstallAgentWithTypeRequest {
@@ -120,6 +139,11 @@ func (s *InstallAgentWithTypeRequest) SetInstanceType(v string) *InstallAgentWit
 
 func (s *InstallAgentWithTypeRequest) SetInstances(v []*InstallAgentWithTypeRequestInstances) *InstallAgentWithTypeRequest {
 	s.Instances = v
+	return s
+}
+
+func (s *InstallAgentWithTypeRequest) SetXSysomInvokeSource(v string) *InstallAgentWithTypeRequest {
+	s.XSysomInvokeSource = &v
 	return s
 }
 

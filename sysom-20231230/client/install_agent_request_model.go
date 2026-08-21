@@ -9,6 +9,8 @@ type iInstallAgentRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *InstallAgentRequest
+	GetXDebugId() *string
 	SetAgentId(v string) *InstallAgentRequest
 	GetAgentId() *string
 	SetAgentVersion(v string) *InstallAgentRequest
@@ -17,9 +19,12 @@ type iInstallAgentRequest interface {
 	GetInstallType() *string
 	SetInstances(v []*InstallAgentRequestInstances) *InstallAgentRequest
 	GetInstances() []*InstallAgentRequestInstances
+	SetXSysomInvokeSource(v string) *InstallAgentRequest
+	GetXSysomInvokeSource() *string
 }
 
 type InstallAgentRequest struct {
+	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The ID of the component to install.
 	//
 	// This parameter is required.
@@ -55,7 +60,8 @@ type InstallAgentRequest struct {
 	// The list of instances on which to install the component.
 	//
 	// This parameter is required.
-	Instances []*InstallAgentRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	Instances          []*InstallAgentRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	XSysomInvokeSource *string                         `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s InstallAgentRequest) String() string {
@@ -64,6 +70,10 @@ func (s InstallAgentRequest) String() string {
 
 func (s InstallAgentRequest) GoString() string {
 	return s.String()
+}
+
+func (s *InstallAgentRequest) GetXDebugId() *string {
+	return s.XDebugId
 }
 
 func (s *InstallAgentRequest) GetAgentId() *string {
@@ -80,6 +90,15 @@ func (s *InstallAgentRequest) GetInstallType() *string {
 
 func (s *InstallAgentRequest) GetInstances() []*InstallAgentRequestInstances {
 	return s.Instances
+}
+
+func (s *InstallAgentRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *InstallAgentRequest) SetXDebugId(v string) *InstallAgentRequest {
+	s.XDebugId = &v
+	return s
 }
 
 func (s *InstallAgentRequest) SetAgentId(v string) *InstallAgentRequest {
@@ -99,6 +118,11 @@ func (s *InstallAgentRequest) SetInstallType(v string) *InstallAgentRequest {
 
 func (s *InstallAgentRequest) SetInstances(v []*InstallAgentRequestInstances) *InstallAgentRequest {
 	s.Instances = v
+	return s
+}
+
+func (s *InstallAgentRequest) SetXSysomInvokeSource(v string) *InstallAgentRequest {
+	s.XSysomInvokeSource = &v
 	return s
 }
 

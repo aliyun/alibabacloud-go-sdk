@@ -9,6 +9,8 @@ type iGetRangeScoreRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *GetRangeScoreRequest
+	GetXDebugId() *string
 	SetCluster(v string) *GetRangeScoreRequest
 	GetCluster() *string
 	SetEnd(v float32) *GetRangeScoreRequest
@@ -17,9 +19,12 @@ type iGetRangeScoreRequest interface {
 	GetInstance() *string
 	SetStart(v float32) *GetRangeScoreRequest
 	GetStart() *float32
+	SetXSysomInvokeSource(v string) *GetRangeScoreRequest
+	GetXSysomInvokeSource() *string
 }
 
 type GetRangeScoreRequest struct {
+	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The cluster ID.
 	//
 	// example:
@@ -47,7 +52,8 @@ type GetRangeScoreRequest struct {
 	// example:
 	//
 	// 1725797727754
-	Start *float32 `json:"start,omitempty" xml:"start,omitempty"`
+	Start              *float32 `json:"start,omitempty" xml:"start,omitempty"`
+	XSysomInvokeSource *string  `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s GetRangeScoreRequest) String() string {
@@ -56,6 +62,10 @@ func (s GetRangeScoreRequest) String() string {
 
 func (s GetRangeScoreRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetRangeScoreRequest) GetXDebugId() *string {
+	return s.XDebugId
 }
 
 func (s *GetRangeScoreRequest) GetCluster() *string {
@@ -72,6 +82,15 @@ func (s *GetRangeScoreRequest) GetInstance() *string {
 
 func (s *GetRangeScoreRequest) GetStart() *float32 {
 	return s.Start
+}
+
+func (s *GetRangeScoreRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *GetRangeScoreRequest) SetXDebugId(v string) *GetRangeScoreRequest {
+	s.XDebugId = &v
+	return s
 }
 
 func (s *GetRangeScoreRequest) SetCluster(v string) *GetRangeScoreRequest {
@@ -91,6 +110,11 @@ func (s *GetRangeScoreRequest) SetInstance(v string) *GetRangeScoreRequest {
 
 func (s *GetRangeScoreRequest) SetStart(v float32) *GetRangeScoreRequest {
 	s.Start = &v
+	return s
+}
+
+func (s *GetRangeScoreRequest) SetXSysomInvokeSource(v string) *GetRangeScoreRequest {
+	s.XSysomInvokeSource = &v
 	return s
 }
 

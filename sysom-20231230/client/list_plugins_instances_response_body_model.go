@@ -46,7 +46,7 @@ type ListPluginsInstancesResponseBody struct {
 	//
 	// 35F91AAB-5FDF-5A22-B211-C7C6B00817D0
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// The total number of entries returned.
+	// The total number of query results.
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ type ListPluginsInstancesResponseBodyData struct {
 	//
 	// allowed-repos-qmf8w
 	InstanceName *string `json:"instance_name,omitempty" xml:"instance_name,omitempty"`
-	// The instance tag.
+	// The instance tags.
 	InstanceTag []*ListPluginsInstancesResponseBodyDataInstanceTag `json:"instance_tag,omitempty" xml:"instance_tag,omitempty" type:"Repeated"`
 	// The operating system name of the instance.
 	//

@@ -9,6 +9,8 @@ type iListAlertDestinationsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *ListAlertDestinationsRequest
+	GetXDebugId() *string
 	SetCurrent(v int32) *ListAlertDestinationsRequest
 	GetCurrent() *int32
 	SetMaxResults(v int32) *ListAlertDestinationsRequest
@@ -19,39 +21,43 @@ type iListAlertDestinationsRequest interface {
 	GetNextToken() *string
 	SetPageSize(v int32) *ListAlertDestinationsRequest
 	GetPageSize() *int32
+	SetXSysomInvokeSource(v string) *ListAlertDestinationsRequest
+	GetXSysomInvokeSource() *string
 }
 
 type ListAlertDestinationsRequest struct {
-	// Current page number (starting from 1)
+	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
+	// The current page number (starting from 1).
 	//
 	// example:
 	//
 	// 1
 	Current *int32 `json:"current,omitempty" xml:"current,omitempty"`
-	// Maximum number of records to retrieve at a time.
+	// The maximum number of records to retrieve in a single request.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Alert contact name
+	// The name of the alert contact.
 	//
 	// example:
 	//
 	// name1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Pagination token for the next request.
+	// The pagination token for the next request.
 	//
 	// example:
 	//
 	// c2f78a783f49457caba6bace6f6f79e4
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Page size
+	// The number of records per page.
 	//
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize           *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s ListAlertDestinationsRequest) String() string {
@@ -60,6 +66,10 @@ func (s ListAlertDestinationsRequest) String() string {
 
 func (s ListAlertDestinationsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListAlertDestinationsRequest) GetXDebugId() *string {
+	return s.XDebugId
 }
 
 func (s *ListAlertDestinationsRequest) GetCurrent() *int32 {
@@ -80,6 +90,15 @@ func (s *ListAlertDestinationsRequest) GetNextToken() *string {
 
 func (s *ListAlertDestinationsRequest) GetPageSize() *int32 {
 	return s.PageSize
+}
+
+func (s *ListAlertDestinationsRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *ListAlertDestinationsRequest) SetXDebugId(v string) *ListAlertDestinationsRequest {
+	s.XDebugId = &v
+	return s
 }
 
 func (s *ListAlertDestinationsRequest) SetCurrent(v int32) *ListAlertDestinationsRequest {
@@ -104,6 +123,11 @@ func (s *ListAlertDestinationsRequest) SetNextToken(v string) *ListAlertDestinat
 
 func (s *ListAlertDestinationsRequest) SetPageSize(v int32) *ListAlertDestinationsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListAlertDestinationsRequest) SetXSysomInvokeSource(v string) *ListAlertDestinationsRequest {
+	s.XSysomInvokeSource = &v
 	return s
 }
 

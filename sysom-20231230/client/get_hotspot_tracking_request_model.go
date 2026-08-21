@@ -9,6 +9,8 @@ type iGetHotspotTrackingRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *GetHotspotTrackingRequest
+	GetXDebugId() *string
 	SetBegEnd(v int64) *GetHotspotTrackingRequest
 	GetBegEnd() *int64
 	SetBegStart(v int64) *GetHotspotTrackingRequest
@@ -21,9 +23,12 @@ type iGetHotspotTrackingRequest interface {
 	GetPid() *int64
 	SetTable(v string) *GetHotspotTrackingRequest
 	GetTable() *string
+	SetXSysomInvokeSource(v string) *GetHotspotTrackingRequest
+	GetXSysomInvokeSource() *string
 }
 
 type GetHotspotTrackingRequest struct {
+	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The end time.
 	//
 	// This parameter is required.
@@ -69,7 +74,8 @@ type GetHotspotTrackingRequest struct {
 	// example:
 	//
 	// prof_on
-	Table *string `json:"table,omitempty" xml:"table,omitempty"`
+	Table              *string `json:"table,omitempty" xml:"table,omitempty"`
+	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s GetHotspotTrackingRequest) String() string {
@@ -78,6 +84,10 @@ func (s GetHotspotTrackingRequest) String() string {
 
 func (s GetHotspotTrackingRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetHotspotTrackingRequest) GetXDebugId() *string {
+	return s.XDebugId
 }
 
 func (s *GetHotspotTrackingRequest) GetBegEnd() *int64 {
@@ -102,6 +112,15 @@ func (s *GetHotspotTrackingRequest) GetPid() *int64 {
 
 func (s *GetHotspotTrackingRequest) GetTable() *string {
 	return s.Table
+}
+
+func (s *GetHotspotTrackingRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *GetHotspotTrackingRequest) SetXDebugId(v string) *GetHotspotTrackingRequest {
+	s.XDebugId = &v
+	return s
 }
 
 func (s *GetHotspotTrackingRequest) SetBegEnd(v int64) *GetHotspotTrackingRequest {
@@ -131,6 +150,11 @@ func (s *GetHotspotTrackingRequest) SetPid(v int64) *GetHotspotTrackingRequest {
 
 func (s *GetHotspotTrackingRequest) SetTable(v string) *GetHotspotTrackingRequest {
 	s.Table = &v
+	return s
+}
+
+func (s *GetHotspotTrackingRequest) SetXSysomInvokeSource(v string) *GetHotspotTrackingRequest {
+	s.XSysomInvokeSource = &v
 	return s
 }
 

@@ -24,13 +24,13 @@ type UpdateAlertDestinationResponseBody struct {
 	//
 	// - If `code == Success`, the authorization is successful.
 	//
-	// - Other status codes indicate authorization has failed. Check the `message` field for the detailed error message.
+	// - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// SysomOpenAPI.InvalidParameter
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response data.
+	// The returned result.
 	//
 	// example:
 	//

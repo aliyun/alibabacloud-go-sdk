@@ -22,9 +22,9 @@ type iGetAlertStrategyResponseBody interface {
 type GetAlertStrategyResponseBody struct {
 	// The status code.
 	//
-	// - If `code == Success`, the authorization is successful.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate authorization failed. Check the `message` field for the detailed fault message.
+	// - Other status codes indicate that the authorization failed. If the authorization fails, check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type GetAlertStrategyResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//
@@ -237,13 +237,14 @@ func (s *GetAlertStrategyResponseBodyData) Validate() error {
 
 type GetAlertStrategyResponseBodyDataStrategy struct {
 	// The collection of clusters for which alerts are received.
-	Clusters     []*string   `json:"clusters,omitempty" xml:"clusters,omitempty" type:"Repeated"`
+	Clusters []*string `json:"clusters,omitempty" xml:"clusters,omitempty" type:"Repeated"`
+	// The alert contacts.
 	Destinations interface{} `json:"destinations,omitempty" xml:"destinations,omitempty"`
-	// 接收告警的异常项列表
+	// The list of anomaly items for which alerts are received.
 	//
 	// example:
 	//
-	// 节点CPU使用率检测
+	// Node CPU utilization detection
 	Items interface{} `json:"items,omitempty" xml:"items,omitempty"`
 }
 

@@ -22,15 +22,15 @@ type iGetHotspotCompareResponseBody interface {
 }
 
 type GetHotspotCompareResponseBody struct {
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// SysomOpenAPI.ServerError
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response data
+	// The returned data.
 	Data *GetHotspotCompareResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Response message
+	// The response message.
 	//
 	// example:
 	//
@@ -42,7 +42,11 @@ type GetHotspotCompareResponseBody struct {
 	//
 	// 2D693121-C925-5154-8DF6-C09A8B369822
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true: API call succeeded; false: API call failed
+	// Indicates whether the API call was successful. Valid values:
+	//
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
 	//
 	// example:
 	//
@@ -113,11 +117,11 @@ func (s *GetHotspotCompareResponseBody) Validate() error {
 }
 
 type GetHotspotCompareResponseBodyData struct {
-	// Differential flame graph data
+	// The differential flame graph data.
 	Flame *GetHotspotCompareResponseBodyDataFlame `json:"flame,omitempty" xml:"flame,omitempty" type:"Struct"`
-	// Hotspot time series 1
+	// The hot spot time series 1.
 	SeriesInstance1 *GetHotspotCompareResponseBodyDataSeriesInstance1 `json:"series_instance1,omitempty" xml:"series_instance1,omitempty" type:"Struct"`
-	// Hotspot time series 2
+	// The hot spot time series 2.
 	SeriesInstance2 *GetHotspotCompareResponseBodyDataSeriesInstance2 `json:"series_instance2,omitempty" xml:"series_instance2,omitempty" type:"Struct"`
 }
 
@@ -176,9 +180,9 @@ func (s *GetHotspotCompareResponseBodyData) Validate() error {
 }
 
 type GetHotspotCompareResponseBodyDataFlame struct {
-	// Field name list
+	// The list of field names.
 	Columns []*string `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
-	// Flame graph data list
+	// The list of flame graph data.
 	Values [][]*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 
@@ -213,9 +217,9 @@ func (s *GetHotspotCompareResponseBodyDataFlame) Validate() error {
 }
 
 type GetHotspotCompareResponseBodyDataSeriesInstance1 struct {
-	// Field name list
+	// The list of field names.
 	Columns []*string `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
-	// Hotspot time series data list
+	// The list of hot spot time series data.
 	Values [][]*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 
@@ -250,9 +254,9 @@ func (s *GetHotspotCompareResponseBodyDataSeriesInstance1) Validate() error {
 }
 
 type GetHotspotCompareResponseBodyDataSeriesInstance2 struct {
-	// Field name list
+	// The list of field names.
 	Columns []*string `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
-	// Hotspot time series data list
+	// The list of hot spot time series data.
 	Values [][]*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 

@@ -22,25 +22,25 @@ type iListDiagnosisResponseBody interface {
 }
 
 type ListDiagnosisResponseBody struct {
-	// Request ID, which can be used for full-link diagnostics
+	// The request ID, which can be used for end-to-end diagnostics.
 	//
 	// example:
 	//
 	// 44841312-7227-55C9-AE03-D59729BFAE38
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Status code
+	// The status code.
 	//
-	// - If `code == Success`, the authorization is successful.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate authorization failure. When authorization fails, check the `message` field for detailed error information.
+	// - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data
+	// The returned data.
 	Data []*ListDiagnosisResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Error message
+	// The error message.
 	//
 	// - If `code == Success`, this field is empty.
 	//
@@ -52,7 +52,7 @@ type ListDiagnosisResponseBody struct {
 	//
 	// SysomOpenAPIAssumeRoleException: EntityNotExist.Role The role not exists: acs:ram::xxxxx:role/aliyunserviceroleforsysom
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Total
+	// The total number of records.
 	//
 	// example:
 	//
@@ -127,13 +127,13 @@ func (s *ListDiagnosisResponseBody) Validate() error {
 }
 
 type ListDiagnosisResponseBodyData struct {
-	// Diagnostic error code. 0 indicates no error.
+	// The diagnostic error code. A value of 0 indicates no error.
 	//
 	// example:
 	//
 	// 0
 	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
-	// Diagnostic command
+	// The diagnostic command.
 	//
 	// example:
 	//
@@ -165,19 +165,19 @@ type ListDiagnosisResponseBodyData struct {
 	//
 	// }
 	Command interface{} `json:"command,omitempty" xml:"command,omitempty"`
-	// Creation time
+	// The creation time.
 	//
 	// example:
 	//
 	// 2024-12-25T15:08:19
 	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
 	// Diagnosis failed
 	ErrMsg *string `json:"err_msg,omitempty" xml:"err_msg,omitempty"`
-	// Diagnostic parameters
+	// The diagnostic parameters.
 	//
 	// example:
 	//
@@ -195,7 +195,7 @@ type ListDiagnosisResponseBodyData struct {
 	//
 	// }
 	Params interface{} `json:"params,omitempty" xml:"params,omitempty"`
-	// Diagnostic result
+	// The diagnostic result.
 	//
 	// example:
 	//
@@ -633,41 +633,41 @@ type ListDiagnosisResponseBodyData struct {
 	//
 	// }
 	Result interface{} `json:"result,omitempty" xml:"result,omitempty"`
-	// Diagnostic type
+	// The diagnostic type.
 	//
 	// example:
 	//
 	// memgraph
 	ServiceName *string `json:"service_name,omitempty" xml:"service_name,omitempty"`
-	// Execution status of the diagnostic task.
+	// The execution status of the diagnostic task.
 	//
 	// Valid values:
 	//
-	// - **Ready**: Ready
+	// - **Ready**: Ready.
 	//
-	// - **Running**: Running
+	// - **Running**: Running.
 	//
-	// - **Success**: Execution succeeded
+	// - **Success**: Succeeded.
 	//
-	// - **Fail**: Execution failed
+	// - **Fail**: Failed.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Task ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// grcuU21a
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
-	// Update time
+	// The update time.
 	//
 	// example:
 	//
 	// 2024-12-25T15:08:19
 	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	// URL for diagnostic details
+	// The URL of the diagnostic details.
 	//
 	// example:
 	//

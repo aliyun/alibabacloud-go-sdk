@@ -9,6 +9,8 @@ type iListPodsOfInstanceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *ListPodsOfInstanceRequest
+	GetXDebugId() *string
 	SetClusterId(v string) *ListPodsOfInstanceRequest
 	GetClusterId() *string
 	SetCurrent(v int64) *ListPodsOfInstanceRequest
@@ -17,9 +19,12 @@ type iListPodsOfInstanceRequest interface {
 	GetInstance() *string
 	SetPageSize(v int64) *ListPodsOfInstanceRequest
 	GetPageSize() *int64
+	SetXSysomInvokeSource(v string) *ListPodsOfInstanceRequest
+	GetXSysomInvokeSource() *string
 }
 
 type ListPodsOfInstanceRequest struct {
+	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The cluster ID.
 	//
 	// example:
@@ -43,7 +48,8 @@ type ListPodsOfInstanceRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize           *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s ListPodsOfInstanceRequest) String() string {
@@ -52,6 +58,10 @@ func (s ListPodsOfInstanceRequest) String() string {
 
 func (s ListPodsOfInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListPodsOfInstanceRequest) GetXDebugId() *string {
+	return s.XDebugId
 }
 
 func (s *ListPodsOfInstanceRequest) GetClusterId() *string {
@@ -68,6 +78,15 @@ func (s *ListPodsOfInstanceRequest) GetInstance() *string {
 
 func (s *ListPodsOfInstanceRequest) GetPageSize() *int64 {
 	return s.PageSize
+}
+
+func (s *ListPodsOfInstanceRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *ListPodsOfInstanceRequest) SetXDebugId(v string) *ListPodsOfInstanceRequest {
+	s.XDebugId = &v
+	return s
 }
 
 func (s *ListPodsOfInstanceRequest) SetClusterId(v string) *ListPodsOfInstanceRequest {
@@ -87,6 +106,11 @@ func (s *ListPodsOfInstanceRequest) SetInstance(v string) *ListPodsOfInstanceReq
 
 func (s *ListPodsOfInstanceRequest) SetPageSize(v int64) *ListPodsOfInstanceRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListPodsOfInstanceRequest) SetXSysomInvokeSource(v string) *ListPodsOfInstanceRequest {
+	s.XSysomInvokeSource = &v
 	return s
 }
 

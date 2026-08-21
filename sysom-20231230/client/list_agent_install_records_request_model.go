@@ -9,6 +9,8 @@ type iListAgentInstallRecordsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *ListAgentInstallRecordsRequest
+	GetXDebugId() *string
 	SetCurrent(v int64) *ListAgentInstallRecordsRequest
 	GetCurrent() *int64
 	SetInstanceId(v string) *ListAgentInstallRecordsRequest
@@ -23,9 +25,12 @@ type iListAgentInstallRecordsRequest interface {
 	GetRegion() *string
 	SetStatus(v string) *ListAgentInstallRecordsRequest
 	GetStatus() *string
+	SetXSysomInvokeSource(v string) *ListAgentInstallRecordsRequest
+	GetXSysomInvokeSource() *string
 }
 
 type ListAgentInstallRecordsRequest struct {
+	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The current page number. Pages start from page 1.
 	//
 	// example:
@@ -67,7 +72,8 @@ type ListAgentInstallRecordsRequest struct {
 	// example:
 	//
 	// Installed
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Status             *string `json:"status,omitempty" xml:"status,omitempty"`
+	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s ListAgentInstallRecordsRequest) String() string {
@@ -76,6 +82,10 @@ func (s ListAgentInstallRecordsRequest) String() string {
 
 func (s ListAgentInstallRecordsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListAgentInstallRecordsRequest) GetXDebugId() *string {
+	return s.XDebugId
 }
 
 func (s *ListAgentInstallRecordsRequest) GetCurrent() *int64 {
@@ -104,6 +114,15 @@ func (s *ListAgentInstallRecordsRequest) GetRegion() *string {
 
 func (s *ListAgentInstallRecordsRequest) GetStatus() *string {
 	return s.Status
+}
+
+func (s *ListAgentInstallRecordsRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *ListAgentInstallRecordsRequest) SetXDebugId(v string) *ListAgentInstallRecordsRequest {
+	s.XDebugId = &v
+	return s
 }
 
 func (s *ListAgentInstallRecordsRequest) SetCurrent(v int64) *ListAgentInstallRecordsRequest {
@@ -138,6 +157,11 @@ func (s *ListAgentInstallRecordsRequest) SetRegion(v string) *ListAgentInstallRe
 
 func (s *ListAgentInstallRecordsRequest) SetStatus(v string) *ListAgentInstallRecordsRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListAgentInstallRecordsRequest) SetXSysomInvokeSource(v string) *ListAgentInstallRecordsRequest {
+	s.XSysomInvokeSource = &v
 	return s
 }
 

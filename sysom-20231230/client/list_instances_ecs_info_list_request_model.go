@@ -9,6 +9,8 @@ type iListInstancesEcsInfoListRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *ListInstancesEcsInfoListRequest
+	GetXDebugId() *string
 	SetInfoType(v string) *ListInstancesEcsInfoListRequest
 	GetInfoType() *string
 	SetInstanceId(v string) *ListInstancesEcsInfoListRequest
@@ -19,9 +21,12 @@ type iListInstancesEcsInfoListRequest interface {
 	GetPluginId() *string
 	SetRegion(v string) *ListInstancesEcsInfoListRequest
 	GetRegion() *string
+	SetXSysomInvokeSource(v string) *ListInstancesEcsInfoListRequest
+	GetXSysomInvokeSource() *string
 }
 
 type ListInstancesEcsInfoListRequest struct {
+	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The type of information to retrieve.
 	//
 	// This parameter is required.
@@ -30,7 +35,7 @@ type ListInstancesEcsInfoListRequest struct {
 	//
 	// ip
 	InfoType *string `json:"info_type,omitempty" xml:"info_type,omitempty"`
-	// Specifies the instance ID to filter and return the Agent installation status of the specified instance.
+	// Specifies the instance ID to filter the Agent installation status of the specified instance.
 	//
 	// example:
 	//
@@ -42,7 +47,7 @@ type ListInstancesEcsInfoListRequest struct {
 	//
 	// managed
 	ManagedType *string `json:"managed_type,omitempty" xml:"managed_type,omitempty"`
-	// Specifies the component ID to filter and return the instance information list for the corresponding component.
+	// Specifies the component ID to filter the instance information list for the corresponding component.
 	//
 	// example:
 	//
@@ -55,7 +60,8 @@ type ListInstancesEcsInfoListRequest struct {
 	// example:
 	//
 	// cn-shenzhen
-	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	Region             *string `json:"region,omitempty" xml:"region,omitempty"`
+	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s ListInstancesEcsInfoListRequest) String() string {
@@ -64,6 +70,10 @@ func (s ListInstancesEcsInfoListRequest) String() string {
 
 func (s ListInstancesEcsInfoListRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesEcsInfoListRequest) GetXDebugId() *string {
+	return s.XDebugId
 }
 
 func (s *ListInstancesEcsInfoListRequest) GetInfoType() *string {
@@ -84,6 +94,15 @@ func (s *ListInstancesEcsInfoListRequest) GetPluginId() *string {
 
 func (s *ListInstancesEcsInfoListRequest) GetRegion() *string {
 	return s.Region
+}
+
+func (s *ListInstancesEcsInfoListRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *ListInstancesEcsInfoListRequest) SetXDebugId(v string) *ListInstancesEcsInfoListRequest {
+	s.XDebugId = &v
+	return s
 }
 
 func (s *ListInstancesEcsInfoListRequest) SetInfoType(v string) *ListInstancesEcsInfoListRequest {
@@ -108,6 +127,11 @@ func (s *ListInstancesEcsInfoListRequest) SetPluginId(v string) *ListInstancesEc
 
 func (s *ListInstancesEcsInfoListRequest) SetRegion(v string) *ListInstancesEcsInfoListRequest {
 	s.Region = &v
+	return s
+}
+
+func (s *ListInstancesEcsInfoListRequest) SetXSysomInvokeSource(v string) *ListInstancesEcsInfoListRequest {
+	s.XSysomInvokeSource = &v
 	return s
 }
 

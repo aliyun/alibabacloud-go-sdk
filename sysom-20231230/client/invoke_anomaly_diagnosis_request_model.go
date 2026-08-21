@@ -9,17 +9,23 @@ type iInvokeAnomalyDiagnosisRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *InvokeAnomalyDiagnosisRequest
+	GetXDebugId() *string
 	SetUuid(v string) *InvokeAnomalyDiagnosisRequest
 	GetUuid() *string
+	SetXSysomInvokeSource(v string) *InvokeAnomalyDiagnosisRequest
+	GetXSysomInvokeSource() *string
 }
 
 type InvokeAnomalyDiagnosisRequest struct {
+	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The UUID of the anomaly event.
 	//
 	// example:
 	//
 	// 8047d763-5465-4a8c-b1cd-23f5a8ba2594
-	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
+	Uuid               *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
+	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s InvokeAnomalyDiagnosisRequest) String() string {
@@ -30,12 +36,30 @@ func (s InvokeAnomalyDiagnosisRequest) GoString() string {
 	return s.String()
 }
 
+func (s *InvokeAnomalyDiagnosisRequest) GetXDebugId() *string {
+	return s.XDebugId
+}
+
 func (s *InvokeAnomalyDiagnosisRequest) GetUuid() *string {
 	return s.Uuid
 }
 
+func (s *InvokeAnomalyDiagnosisRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *InvokeAnomalyDiagnosisRequest) SetXDebugId(v string) *InvokeAnomalyDiagnosisRequest {
+	s.XDebugId = &v
+	return s
+}
+
 func (s *InvokeAnomalyDiagnosisRequest) SetUuid(v string) *InvokeAnomalyDiagnosisRequest {
 	s.Uuid = &v
+	return s
+}
+
+func (s *InvokeAnomalyDiagnosisRequest) SetXSysomInvokeSource(v string) *InvokeAnomalyDiagnosisRequest {
+	s.XSysomInvokeSource = &v
 	return s
 }
 

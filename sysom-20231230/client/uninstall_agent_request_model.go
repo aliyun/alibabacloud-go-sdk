@@ -9,15 +9,20 @@ type iUninstallAgentRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *UninstallAgentRequest
+	GetXDebugId() *string
 	SetAgentId(v string) *UninstallAgentRequest
 	GetAgentId() *string
 	SetAgentVersion(v string) *UninstallAgentRequest
 	GetAgentVersion() *string
 	SetInstances(v []*UninstallAgentRequestInstances) *UninstallAgentRequest
 	GetInstances() []*UninstallAgentRequestInstances
+	SetXSysomInvokeSource(v string) *UninstallAgentRequest
+	GetXSysomInvokeSource() *string
 }
 
 type UninstallAgentRequest struct {
+	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The ID of the component to uninstall.
 	//
 	// This parameter is required.
@@ -37,7 +42,8 @@ type UninstallAgentRequest struct {
 	// The list of instances from which to uninstall the component.
 	//
 	// This parameter is required.
-	Instances []*UninstallAgentRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	Instances          []*UninstallAgentRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	XSysomInvokeSource *string                           `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s UninstallAgentRequest) String() string {
@@ -46,6 +52,10 @@ func (s UninstallAgentRequest) String() string {
 
 func (s UninstallAgentRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UninstallAgentRequest) GetXDebugId() *string {
+	return s.XDebugId
 }
 
 func (s *UninstallAgentRequest) GetAgentId() *string {
@@ -60,6 +70,15 @@ func (s *UninstallAgentRequest) GetInstances() []*UninstallAgentRequestInstances
 	return s.Instances
 }
 
+func (s *UninstallAgentRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *UninstallAgentRequest) SetXDebugId(v string) *UninstallAgentRequest {
+	s.XDebugId = &v
+	return s
+}
+
 func (s *UninstallAgentRequest) SetAgentId(v string) *UninstallAgentRequest {
 	s.AgentId = &v
 	return s
@@ -72,6 +91,11 @@ func (s *UninstallAgentRequest) SetAgentVersion(v string) *UninstallAgentRequest
 
 func (s *UninstallAgentRequest) SetInstances(v []*UninstallAgentRequestInstances) *UninstallAgentRequest {
 	s.Instances = v
+	return s
+}
+
+func (s *UninstallAgentRequest) SetXSysomInvokeSource(v string) *UninstallAgentRequest {
+	s.XSysomInvokeSource = &v
 	return s
 }
 

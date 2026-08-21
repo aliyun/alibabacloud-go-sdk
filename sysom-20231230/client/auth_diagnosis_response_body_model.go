@@ -40,7 +40,7 @@ type AuthDiagnosisResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the error information of the request.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//

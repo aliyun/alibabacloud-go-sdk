@@ -9,15 +9,20 @@ type iUpgradeAgentRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *UpgradeAgentRequest
+	GetXDebugId() *string
 	SetAgentId(v string) *UpgradeAgentRequest
 	GetAgentId() *string
 	SetAgentVersion(v string) *UpgradeAgentRequest
 	GetAgentVersion() *string
 	SetInstances(v []*UpgradeAgentRequestInstances) *UpgradeAgentRequest
 	GetInstances() []*UpgradeAgentRequestInstances
+	SetXSysomInvokeSource(v string) *UpgradeAgentRequest
+	GetXSysomInvokeSource() *string
 }
 
 type UpgradeAgentRequest struct {
+	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The ID of the component to update.
 	//
 	// This parameter is required.
@@ -34,10 +39,11 @@ type UpgradeAgentRequest struct {
 	//
 	// 3.4.0-1
 	AgentVersion *string `json:"agent_version,omitempty" xml:"agent_version,omitempty"`
-	// The list of instances for which you want to update the component.
+	// The list of instances on which to update the component.
 	//
 	// This parameter is required.
-	Instances []*UpgradeAgentRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	Instances          []*UpgradeAgentRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	XSysomInvokeSource *string                         `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s UpgradeAgentRequest) String() string {
@@ -46,6 +52,10 @@ func (s UpgradeAgentRequest) String() string {
 
 func (s UpgradeAgentRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpgradeAgentRequest) GetXDebugId() *string {
+	return s.XDebugId
 }
 
 func (s *UpgradeAgentRequest) GetAgentId() *string {
@@ -60,6 +70,15 @@ func (s *UpgradeAgentRequest) GetInstances() []*UpgradeAgentRequestInstances {
 	return s.Instances
 }
 
+func (s *UpgradeAgentRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *UpgradeAgentRequest) SetXDebugId(v string) *UpgradeAgentRequest {
+	s.XDebugId = &v
+	return s
+}
+
 func (s *UpgradeAgentRequest) SetAgentId(v string) *UpgradeAgentRequest {
 	s.AgentId = &v
 	return s
@@ -72,6 +91,11 @@ func (s *UpgradeAgentRequest) SetAgentVersion(v string) *UpgradeAgentRequest {
 
 func (s *UpgradeAgentRequest) SetInstances(v []*UpgradeAgentRequestInstances) *UpgradeAgentRequest {
 	s.Instances = v
+	return s
+}
+
+func (s *UpgradeAgentRequest) SetXSysomInvokeSource(v string) *UpgradeAgentRequest {
+	s.XSysomInvokeSource = &v
 	return s
 }
 

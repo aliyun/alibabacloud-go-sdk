@@ -30,9 +30,9 @@ type ListAgentsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status code.
 	//
-	// - If code is Success, the authorization is successful.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate authorization failed. Check the message field for the detailed fault information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
@@ -42,9 +42,9 @@ type ListAgentsResponseBody struct {
 	Data []*ListAgentsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// The error message.
 	//
-	// - If code is Success, this field is empty.
+	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//
@@ -149,7 +149,7 @@ type ListAgentsResponseBodyData struct {
 	//
 	// SysOM Agent
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The supported architectures. Multiple architectures are separated by commas.
+	// The supported architectures (multiple architectures are separated by commas).
 	//
 	// example:
 	//
@@ -165,7 +165,7 @@ type ListAgentsResponseBodyData struct {
 	//
 	// Control
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The time when the component was last updated.
+	// The time when the component was updated.
 	//
 	// example:
 	//
@@ -287,7 +287,7 @@ type ListAgentsResponseBodyDataVersions struct {
 	//
 	// sysom.sh uninstall
 	UninstallScript *string `json:"uninstall_script,omitempty" xml:"uninstall_script,omitempty"`
-	// The time when the component version was last updated.
+	// The time when the component version was updated.
 	//
 	// example:
 	//

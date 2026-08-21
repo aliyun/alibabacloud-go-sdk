@@ -20,29 +20,29 @@ type iGetAgentResponseBody interface {
 }
 
 type GetAgentResponseBody struct {
-	// Request ID, which can be used for end-to-end diagnostics
+	// The request ID, which can be used for end-to-end diagnostics.
 	//
 	// example:
 	//
 	// 2024-09-14T20:46:08
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Status code
+	// The status code.
 	//
-	// - `code == Success` indicates the authorization is successful;
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate authorization failure. Check the `message` field for detailed error information when authorization fails;
+	// - Other status codes indicate that the authorization failed. If the authorization fails, check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response data.
+	// The returned data.
 	Data *GetAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Error message
+	// The error message.
 	//
-	// - If `code == Success`, this field is empty;
+	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//
@@ -104,49 +104,49 @@ func (s *GetAgentResponseBody) Validate() error {
 }
 
 type GetAgentResponseBodyData struct {
-	// Agent creation time
+	// The time when the component was created.
 	//
 	// example:
 	//
 	// 2024-09-14T20:46:08
 	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	// Agent description
+	// The component description.
 	//
 	// example:
 	//
 	// SysOM Agent
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Agent ID
+	// The component ID.
 	//
 	// example:
 	//
 	// 74a86327-3170-412c-8e67-da3389ec56a9
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// Agent name
+	// The component name.
 	//
 	// example:
 	//
 	// SysOM
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Supported architectures
+	// The supported architectures.
 	//
 	// example:
 	//
 	// x86
 	SupportArch *string `json:"support_arch,omitempty" xml:"support_arch,omitempty"`
-	// Agent type
+	// The agent type.
 	//
 	// example:
 	//
 	// control
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// Update time
+	// The time when the component was last updated.
 	//
 	// example:
 	//
 	// 2024-09-14T20:46:08
 	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	// Agent version information
+	// The component version information.
 	Versions []*GetAgentResponseBodyDataVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
 }
 
@@ -244,37 +244,37 @@ func (s *GetAgentResponseBodyData) Validate() error {
 }
 
 type GetAgentResponseBodyDataVersions struct {
-	// Agent version creation time
+	// The time when the agent version was created.
 	//
 	// example:
 	//
 	// 2024-09-14T20:46:08
 	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	// Installation script for this agent version
+	// The installation script for this agent version.
 	//
 	// example:
 	//
 	// sysom.sh install
 	InstallScript *string `json:"install_script,omitempty" xml:"install_script,omitempty"`
-	// Uninstallation script for this agent version
+	// The uninstallation script for this agent version.
 	//
 	// example:
 	//
 	// sysom.sh uninstall
 	UninstallScript *string `json:"uninstall_script,omitempty" xml:"uninstall_script,omitempty"`
-	// Agent version update time
+	// The time when the agent version was last updated.
 	//
 	// example:
 	//
 	// 2024-09-14T20:46:08
 	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	// Upgrade script for this agent version
+	// The update script for this agent version.
 	//
 	// example:
 	//
 	// sysom.sh upgrade
 	UpgradeScript *string `json:"upgrade_script,omitempty" xml:"upgrade_script,omitempty"`
-	// Agent version number
+	// The agent version number.
 	//
 	// example:
 	//

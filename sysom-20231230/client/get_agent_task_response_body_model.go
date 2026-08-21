@@ -30,7 +30,7 @@ type GetAgentTaskResponseBody struct {
 	//
 	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault message.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type GetAgentTaskResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error information.
+	// - Otherwise, this field contains the request error message.
 	//
 	// example:
 	//
@@ -164,11 +164,11 @@ func (s *GetAgentTaskResponseBodyData) Validate() error {
 }
 
 type GetAgentTaskResponseBodyDataJobs struct {
-	// The cause of the task failure. This field is returned only when the task fails.
+	// The reason that caused the task to fail. This field is returned only when the task execution fails.
 	//
 	// example:
 	//
-	// 已废弃（误用）
+	// Deprecated (misused)
 	Error *string `json:"error,omitempty" xml:"error,omitempty"`
 	// The error code of the subtask failure. Valid values:
 	//
@@ -194,19 +194,19 @@ type GetAgentTaskResponseBodyDataJobs struct {
 	//
 	// 	- RPM_LOCK_HELD: The RPM lock is held.
 	//
-	// 	- DISK_SPACE_INSUFFICIENT: Insufficient disk space.
+	// 	- DISK_SPACE_INSUFFICIENT: The disk space is insufficient.
 	//
 	// 	- NODE_LOAD_HIGH: The node load is high.
 	//
-	// 	- COMMAND_FAILED: Command execution failed.
+	// 	- COMMAND_FAILED: The command execution failed.
 	//
 	// 	- CLIENT_NOT_RUNNING: The Cloud Assistant Agent is not running.
 	//
 	// 	- CLIENT_NOT_RESPONSE: The Cloud Assistant Agent is not responding.
 	//
-	// 	- DELIVERY_TIMEOUT: Command delivery timed out.
+	// 	- DELIVERY_TIMEOUT: The command delivery timed out.
 	//
-	// 	- EXECUTION_TIMEOUT: Command execution timed out.
+	// 	- EXECUTION_TIMEOUT: The command execution timed out.
 	//
 	// 	- TASK_CONCURRENCY_LIMIT: The task concurrency limit is reached.
 	//
@@ -236,25 +236,25 @@ type GetAgentTaskResponseBodyDataJobs struct {
 	//
 	// 	- The RPM lock is held. Try again later.
 	//
-	// 	- Insufficient disk space.
+	// 	- The disk space is insufficient.
 	//
 	// 	- The node load is too high. Try again later.
 	//
-	// 	- Command execution failed. Try again later.
+	// 	- The command execution failed. Try again later.
 	//
 	// 	- The Cloud Assistant Agent is not running.
 	//
 	// 	- The Cloud Assistant Agent is not responding.
 	//
-	// 	- Command delivery timed out.
+	// 	- The command delivery timed out.
 	//
-	// 	- Command execution timed out.
+	// 	- The command execution timed out.
 	//
 	// 	- The task concurrency limit is reached.
 	//
 	// example:
 	//
-	// 磁盘空间不足
+	// The disk space is insufficient
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
 	// The instance ID.
 	//
@@ -288,17 +288,17 @@ type GetAgentTaskResponseBodyDataJobs struct {
 	//
 	// example:
 	//
-	// 已废弃（误用）
+	// Deprecated (misused)
 	Result *string `json:"result,omitempty" xml:"result,omitempty"`
 	// The subtask status. Valid values:
 	//
-	// - Created: Created.
+	// - Created: The subtask is created.
 	//
-	// - Running: Running.
+	// - Running: The subtask is running.
 	//
-	// - Success: The task succeeded.
+	// - Success: The subtask succeeded.
 	//
-	// - Fail: The task failed.
+	// - Fail: The subtask failed.
 	//
 	// example:
 	//

@@ -9,6 +9,8 @@ type iCreateVmcoreDiagnosisTaskRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *CreateVmcoreDiagnosisTaskRequest
+	GetXDebugId() *string
 	SetDebuginfoCommonUrl(v string) *CreateVmcoreDiagnosisTaskRequest
 	GetDebuginfoCommonUrl() *string
 	SetDebuginfoUrl(v string) *CreateVmcoreDiagnosisTaskRequest
@@ -19,26 +21,29 @@ type iCreateVmcoreDiagnosisTaskRequest interface {
 	GetTaskType() *string
 	SetVmcoreUrl(v string) *CreateVmcoreDiagnosisTaskRequest
 	GetVmcoreUrl() *string
+	SetXSysomInvokeSource(v string) *CreateVmcoreDiagnosisTaskRequest
+	GetXSysomInvokeSource() *string
 }
 
 type CreateVmcoreDiagnosisTaskRequest struct {
-	// The download URL of the debuginfo-common file. This parameter is optional when the diagnostic type is vmcore.
+	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
+	// The download URL of the debuginfo-common file. This parameter is optional when the diagnosis type is vmcore.
 	//
-	// For CentOS or Alinux kernels, the corresponding debuginfo-common file is automatically downloaded, and you do not need to specify this parameter. For other distribution kernels, manually provide the download URL of the debuginfo-common file that corresponds to the kernel version.
+	// For CentOS or Alinux kernel diagnostics, the corresponding debuginfo-common file is automatically downloaded, so this parameter is not required. For other distribution kernels, manually provide the download URL of the debuginfo-common file that corresponds to the kernel version.
 	//
 	// example:
 	//
 	// https://bucket-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/debuginfo-common/file/path
 	DebuginfoCommonUrl *string `json:"debuginfoCommonUrl,omitempty" xml:"debuginfoCommonUrl,omitempty"`
-	// The download URL of the debuginfo file. This parameter is optional when the diagnostic type is vmcore.
+	// The download URL of the debuginfo file. This parameter is optional when the diagnosis type is vmcore.
 	//
-	// For CentOS or Alinux kernels, the corresponding debuginfo file is automatically downloaded, and you do not need to specify this parameter. For other distribution kernels, manually provide the download URL of the debuginfo file that corresponds to the kernel version.
+	// For CentOS or Alinux kernel diagnostics, the corresponding debuginfo file is automatically downloaded, so this parameter is not required. For other distribution kernels, manually provide the download URL of the debuginfo file that corresponds to the kernel version.
 	//
 	// example:
 	//
 	// https://bucket-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/debuginfo/file/path
 	DebuginfoUrl *string `json:"debuginfoUrl,omitempty" xml:"debuginfoUrl,omitempty"`
-	// The download URL of the dmesg log file. This parameter is required when the diagnostic type is dmesg.
+	// The download URL of the dmesg log file. This parameter is required when the diagnosis type is dmesg.
 	//
 	// example:
 	//
@@ -56,12 +61,13 @@ type CreateVmcoreDiagnosisTaskRequest struct {
 	//
 	// vmcore
 	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
-	// The download URL of the vmcore file. This parameter is required when the diagnostic type is vmcore.
+	// The download URL of the vmcore file. This parameter is required when the diagnosis type is vmcore.
 	//
 	// example:
 	//
 	// https://bucket-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/vmcore/file/path
-	VmcoreUrl *string `json:"vmcoreUrl,omitempty" xml:"vmcoreUrl,omitempty"`
+	VmcoreUrl          *string `json:"vmcoreUrl,omitempty" xml:"vmcoreUrl,omitempty"`
+	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s CreateVmcoreDiagnosisTaskRequest) String() string {
@@ -70,6 +76,10 @@ func (s CreateVmcoreDiagnosisTaskRequest) String() string {
 
 func (s CreateVmcoreDiagnosisTaskRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateVmcoreDiagnosisTaskRequest) GetXDebugId() *string {
+	return s.XDebugId
 }
 
 func (s *CreateVmcoreDiagnosisTaskRequest) GetDebuginfoCommonUrl() *string {
@@ -90,6 +100,15 @@ func (s *CreateVmcoreDiagnosisTaskRequest) GetTaskType() *string {
 
 func (s *CreateVmcoreDiagnosisTaskRequest) GetVmcoreUrl() *string {
 	return s.VmcoreUrl
+}
+
+func (s *CreateVmcoreDiagnosisTaskRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *CreateVmcoreDiagnosisTaskRequest) SetXDebugId(v string) *CreateVmcoreDiagnosisTaskRequest {
+	s.XDebugId = &v
+	return s
 }
 
 func (s *CreateVmcoreDiagnosisTaskRequest) SetDebuginfoCommonUrl(v string) *CreateVmcoreDiagnosisTaskRequest {
@@ -114,6 +133,11 @@ func (s *CreateVmcoreDiagnosisTaskRequest) SetTaskType(v string) *CreateVmcoreDi
 
 func (s *CreateVmcoreDiagnosisTaskRequest) SetVmcoreUrl(v string) *CreateVmcoreDiagnosisTaskRequest {
 	s.VmcoreUrl = &v
+	return s
+}
+
+func (s *CreateVmcoreDiagnosisTaskRequest) SetXSysomInvokeSource(v string) *CreateVmcoreDiagnosisTaskRequest {
+	s.XSysomInvokeSource = &v
 	return s
 }
 

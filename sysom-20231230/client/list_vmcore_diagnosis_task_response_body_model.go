@@ -22,23 +22,23 @@ type iListVmcoreDiagnosisTaskResponseBody interface {
 }
 
 type ListVmcoreDiagnosisTaskResponseBody struct {
-	// Status code.
+	// The status code.
 	//
-	// - `code == Success` indicates the authorization was successful.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate authorization failure. When authorization fails, check the `message` field for detailed error information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response data.
+	// The returned data.
 	Data []*ListVmcoreDiagnosisTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Error message.
+	// The error message.
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the error message of the request.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListVmcoreDiagnosisTaskResponseBody struct {
 	//
 	// 2D693121-C925-5154-8DF6-C09A8B369822
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Total number of tasks
+	// The total number of tasks.
 	//
 	// example:
 	//
@@ -125,31 +125,31 @@ func (s *ListVmcoreDiagnosisTaskResponseBody) Validate() error {
 }
 
 type ListVmcoreDiagnosisTaskResponseBodyData struct {
-	// Task creation time
+	// The task creation time.
 	//
 	// example:
 	//
 	// 2025-12-02T17:36:12
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
 	// error message
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// Task ID
+	// The task ID.
 	//
 	// example:
 	//
 	// bbe94a98-4192-4172-b856-95777e0a55d7
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// Task status
+	// The task status.
 	//
 	// example:
 	//
 	// running
 	TaskStatus *string `json:"taskStatus,omitempty" xml:"taskStatus,omitempty"`
-	// Task type
+	// The task type.
 	//
 	// example:
 	//

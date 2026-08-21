@@ -20,19 +20,19 @@ type iInvokeDiagnosisResponseBody interface {
 }
 
 type InvokeDiagnosisResponseBody struct {
-	// Status code.
+	// The status code.
 	//
-	// - If `code == Success`, the authorization is successful.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate authorization failure. When authorization fails, check the `message` field for detailed error information.
+	// - Other status codes indicate the authorization is failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response result.
+	// The returned result.
 	Data *InvokeDiagnosisResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Error message.
+	// The error message.
 	//
 	// - If `code == Success`, this field is empty.
 	//
@@ -42,7 +42,7 @@ type InvokeDiagnosisResponseBody struct {
 	//
 	// SysomOpenAPIAssumeRoleException: EntityNotExist.Role The role not exists: acs:ram::xxxxx:role/aliyunserviceroleforsysom
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ func (s *InvokeDiagnosisResponseBody) Validate() error {
 }
 
 type InvokeDiagnosisResponseBodyData struct {
-	// Diagnosis task ID. You can use this ID to call the `GetDiagnosisResult` API to query the diagnosis result.
+	// The diagnostic task ID. You can use this ID to call the `GetDiagnosisResult` operation to query the diagnosis result.
 	//
 	// example:
 	//

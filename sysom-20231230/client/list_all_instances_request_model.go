@@ -9,6 +9,8 @@ type iListAllInstancesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *ListAllInstancesRequest
+	GetXDebugId() *string
 	SetCurrent(v string) *ListAllInstancesRequest
 	GetCurrent() *string
 	SetFilters(v string) *ListAllInstancesRequest
@@ -27,40 +29,43 @@ type iListAllInstancesRequest interface {
 	GetPluginId() *string
 	SetRegion(v string) *ListAllInstancesRequest
 	GetRegion() *string
+	SetXSysomInvokeSource(v string) *ListAllInstancesRequest
+	GetXSysomInvokeSource() *string
 }
 
 type ListAllInstancesRequest struct {
-	// Current page number.
+	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	Current *string `json:"current,omitempty" xml:"current,omitempty"`
-	// List of filter information.
+	// The list of filter conditions.
 	//
 	// example:
 	//
 	// {}
 	Filters *string `json:"filters,omitempty" xml:"filters,omitempty"`
-	// Instance type.
+	// The instance type.
 	//
 	// example:
 	//
 	// ecs
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// Management type.
+	// The management type.
 	//
 	// example:
 	//
 	// managed
 	ManagedType *string `json:"managedType,omitempty" xml:"managedType,omitempty"`
-	// Maximum number of records to retrieve at a time.
+	// The maximum number of records to retrieve in a single request.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Pagination token.
+	// The pagination token.
 	//
 	// > If this parameter is not empty, more data is available.
 	//
@@ -68,24 +73,25 @@ type ListAllInstancesRequest struct {
 	//
 	// U+w1wv2R4ZWR5oZLXD0+Dp4dD+2BRJj42DLT6GrZysw=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Number of entries returned per page. Default value: pageSize=10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Plugin ID.
+	// The plugin ID.
 	//
 	// example:
 	//
 	// 01fc4a0b-f199-4885-9861-b4054a310fe7
 	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	Region             *string `json:"region,omitempty" xml:"region,omitempty"`
+	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s ListAllInstancesRequest) String() string {
@@ -94,6 +100,10 @@ func (s ListAllInstancesRequest) String() string {
 
 func (s ListAllInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListAllInstancesRequest) GetXDebugId() *string {
+	return s.XDebugId
 }
 
 func (s *ListAllInstancesRequest) GetCurrent() *string {
@@ -130,6 +140,15 @@ func (s *ListAllInstancesRequest) GetPluginId() *string {
 
 func (s *ListAllInstancesRequest) GetRegion() *string {
 	return s.Region
+}
+
+func (s *ListAllInstancesRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *ListAllInstancesRequest) SetXDebugId(v string) *ListAllInstancesRequest {
+	s.XDebugId = &v
+	return s
 }
 
 func (s *ListAllInstancesRequest) SetCurrent(v string) *ListAllInstancesRequest {
@@ -174,6 +193,11 @@ func (s *ListAllInstancesRequest) SetPluginId(v string) *ListAllInstancesRequest
 
 func (s *ListAllInstancesRequest) SetRegion(v string) *ListAllInstancesRequest {
 	s.Region = &v
+	return s
+}
+
+func (s *ListAllInstancesRequest) SetXSysomInvokeSource(v string) *ListAllInstancesRequest {
+	s.XSysomInvokeSource = &v
 	return s
 }
 

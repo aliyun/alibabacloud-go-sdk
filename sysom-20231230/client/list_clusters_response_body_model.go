@@ -22,25 +22,25 @@ type iListClustersResponseBody interface {
 }
 
 type ListClustersResponseBody struct {
-	// Request ID, which can be used for end-to-end diagnostics.
+	// The request ID, which can be used for end-to-end diagnostics.
 	//
 	// example:
 	//
 	// B149FD9C-ED5C-5765-B3AD-05AA4A4D64D7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Status code.
+	// The status code.
 	//
-	// - If `code == Success`, the authorization is successful.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate authorization failure. Check the `message` field for detailed error information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response data.
+	// The returned data.
 	Data []*ListClustersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Error message.
+	// The error message.
 	//
 	// - If `code == Success`, this field is empty.
 	//
@@ -50,7 +50,7 @@ type ListClustersResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Total number of records.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -125,11 +125,11 @@ func (s *ListClustersResponseBody) Validate() error {
 }
 
 type ListClustersResponseBodyData struct {
-	// Actual cluster ID.
+	// The actual cluster ID.
 	//
-	// > - For `ACK` type clusters, this cluster ID is the ACK cluster ID.
+	// > - For `ACK` type clusters, this is the ACK cluster ID.
 	//
-	// > - For `CUSTOM` type clusters, this cluster ID serves as a unique identifier with no additional meaning.
+	// > - For `CUSTOM` type clusters, this serves as a unique identifier with no additional meaning.
 	//
 	// example:
 	//
@@ -137,11 +137,11 @@ type ListClustersResponseBodyData struct {
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
 	// - `Running`: The cluster is managed normally.
 	//
-	// - `Installing`: The cluster has an installation task in progress.
+	// - `Installing`: An installation task is in progress for the cluster.
 	//
-	// - `Uninstalling`: The cluster has an uninstallation task in progress.
+	// - `Uninstalling`: An uninstallation task is in progress for the cluster.
 	//
-	// - `Upgrading`: The cluster has an upgrade task in progress.
+	// - `Upgrading`: An update task is in progress for the cluster.
 	//
 	// - `Offline`: The cluster is offline and management is abnormal.
 	//
@@ -151,37 +151,37 @@ type ListClustersResponseBodyData struct {
 	ClusterStatus *string `json:"cluster_status,omitempty" xml:"cluster_status,omitempty"`
 	// - `ACK`: ACK cluster.
 	//
-	// - `CUSTOM`: Custom cluster (the default cluster belongs to custom clusters).
+	// - `CUSTOM`: Custom cluster (default clusters belong to custom clusters).
 	//
 	// example:
 	//
 	// ACK
 	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2024-12-25T15:08:19
 	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	// Cluster ID.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// 5389fba5-92a1-4ff4-9b26-773b97828144
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// Cluster name.
+	// The cluster name.
 	//
 	// example:
 	//
 	// auto-name-sbvCT
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// Update time.
+	// The update time.
 	//
 	// example:
 	//

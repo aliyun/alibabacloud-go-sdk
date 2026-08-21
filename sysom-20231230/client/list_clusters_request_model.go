@@ -9,6 +9,8 @@ type iListClustersRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *ListClustersRequest
+	GetXDebugId() *string
 	SetClusterId(v string) *ListClustersRequest
 	GetClusterId() *string
 	SetClusterStatus(v string) *ListClustersRequest
@@ -23,12 +25,15 @@ type iListClustersRequest interface {
 	GetName() *string
 	SetPageSize(v int64) *ListClustersRequest
 	GetPageSize() *int64
+	SetXSysomInvokeSource(v string) *ListClustersRequest
+	GetXSysomInvokeSource() *string
 }
 
 type ListClustersRequest struct {
-	// Filter by cluster ID.
+	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
+	// Filters by cluster ID.
 	//
-	// > This cluster ID is not the ACK cluster ID, but the `id` field in the data returned by this API.
+	// > This cluster ID is not the ACK cluster ID. It is the `id` field returned by this operation.
 	//
 	// example:
 	//
@@ -36,11 +41,11 @@ type ListClustersRequest struct {
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
 	// - `Running`: The cluster is managed normally.
 	//
-	// - `Installing`: The cluster has an installation task in progress.
+	// - `Installing`: An installation task is in progress for the cluster.
 	//
-	// - `Uninstalling`: The cluster has an uninstallation task in progress.
+	// - `Uninstalling`: An uninstallation task is in progress for the cluster.
 	//
-	// - `Upgrading`: The cluster has an upgrade task in progress.
+	// - `Upgrading`: An update task is in progress for the cluster.
 	//
 	// - `Offline`: The cluster is offline and management is abnormal.
 	//
@@ -50,36 +55,37 @@ type ListClustersRequest struct {
 	ClusterStatus *string `json:"cluster_status,omitempty" xml:"cluster_status,omitempty"`
 	// - `ACK`: ACK cluster.
 	//
-	// - `CUSTOM`: Custom cluster (the default cluster belongs to custom clusters).
+	// - `CUSTOM`: Custom cluster (default clusters belong to custom clusters).
 	//
 	// example:
 	//
 	// ACK
 	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
-	// Current page number (starting from page 1)
+	// The current page number (starting from page 1).
 	//
 	// example:
 	//
 	// 1
 	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
-	// This field is deprecated. Use the cluster_id field to filter instead.
+	// **[Deprecated]*	- Use the cluster_id parameter to filter instead.
 	//
 	// example:
 	//
 	// cb7d4cc26c8f845fb8a8255ffd394820e
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// Filter by plugin name
+	// Filters plugins by plugin name.
 	//
 	// example:
 	//
 	// proxy-next-upstream
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Page size
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize           *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s ListClustersRequest) String() string {
@@ -88,6 +94,10 @@ func (s ListClustersRequest) String() string {
 
 func (s ListClustersRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListClustersRequest) GetXDebugId() *string {
+	return s.XDebugId
 }
 
 func (s *ListClustersRequest) GetClusterId() *string {
@@ -116,6 +126,15 @@ func (s *ListClustersRequest) GetName() *string {
 
 func (s *ListClustersRequest) GetPageSize() *int64 {
 	return s.PageSize
+}
+
+func (s *ListClustersRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *ListClustersRequest) SetXDebugId(v string) *ListClustersRequest {
+	s.XDebugId = &v
+	return s
 }
 
 func (s *ListClustersRequest) SetClusterId(v string) *ListClustersRequest {
@@ -150,6 +169,11 @@ func (s *ListClustersRequest) SetName(v string) *ListClustersRequest {
 
 func (s *ListClustersRequest) SetPageSize(v int64) *ListClustersRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListClustersRequest) SetXSysomInvokeSource(v string) *ListClustersRequest {
+	s.XSysomInvokeSource = &v
 	return s
 }
 

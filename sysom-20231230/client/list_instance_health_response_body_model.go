@@ -24,9 +24,9 @@ type iListInstanceHealthResponseBody interface {
 type ListInstanceHealthResponseBody struct {
 	// The status code.
 	//
-	// - If `code == Success`, the authorization is successful.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListInstanceHealthResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error information.
+	// - Otherwise, this field contains the error information of the request.
 	//
 	// example:
 	//
@@ -165,7 +165,7 @@ type ListInstanceHealthResponseBodyData struct {
 	//
 	//
 	//
-	// > An instance in the Offline status indicates that the heartbeat between the node and the SysOM server is lost. It does not mean that the corresponding ECS instance is not running.
+	// > An instance in the Offline state indicates that the heartbeat between the node and the SysOM server is lost. It does not mean that the corresponding ECS instance is not running.
 	//
 	// example:
 	//

@@ -9,6 +9,8 @@ type iGetHotspotCompareRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *GetHotspotCompareRequest
+	GetXDebugId() *string
 	SetBeg1End(v int64) *GetHotspotCompareRequest
 	GetBeg1End() *int64
 	SetBeg1Start(v int64) *GetHotspotCompareRequest
@@ -29,10 +31,13 @@ type iGetHotspotCompareRequest interface {
 	GetPid2() *int64
 	SetTable(v string) *GetHotspotCompareRequest
 	GetTable() *string
+	SetXSysomInvokeSource(v string) *GetHotspotCompareRequest
+	GetXSysomInvokeSource() *string
 }
 
 type GetHotspotCompareRequest struct {
-	// End time 1
+	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
+	// The end time 1.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +45,7 @@ type GetHotspotCompareRequest struct {
 	//
 	// 1725415774000
 	Beg1End *int64 `json:"beg1_end,omitempty" xml:"beg1_end,omitempty"`
-	// Start time 1
+	// The start time 1.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +53,7 @@ type GetHotspotCompareRequest struct {
 	//
 	// 1725415474000
 	Beg1Start *int64 `json:"beg1_start,omitempty" xml:"beg1_start,omitempty"`
-	// End time 2
+	// The end time 2.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +61,7 @@ type GetHotspotCompareRequest struct {
 	//
 	// 1725415774000
 	Beg2End *int64 `json:"beg2_end,omitempty" xml:"beg2_end,omitempty"`
-	// Start time 2
+	// The start time 2.
 	//
 	// This parameter is required.
 	//
@@ -64,13 +69,13 @@ type GetHotspotCompareRequest struct {
 	//
 	// 1725415474000
 	Beg2Start *int64 `json:"beg2_start,omitempty" xml:"beg2_start,omitempty"`
-	// Hotspot type
+	// The hot spot type.
 	//
 	// example:
 	//
 	// alloc
 	HotType *string `json:"hot_type,omitempty" xml:"hot_type,omitempty"`
-	// Instance 1
+	// The instance 1.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +83,7 @@ type GetHotspotCompareRequest struct {
 	//
 	// i-2zei55fwj8nnu31h3z46"
 	Instance1 *string `json:"instance1,omitempty" xml:"instance1,omitempty"`
-	// Instance 2
+	// The instance 2.
 	//
 	// This parameter is required.
 	//
@@ -86,26 +91,27 @@ type GetHotspotCompareRequest struct {
 	//
 	// 0
 	Instance2 *string `json:"instance2,omitempty" xml:"instance2,omitempty"`
-	// Instance 1 process
+	// The process of instance 1.
 	//
 	// example:
 	//
 	// 0
 	Pid1 *int64 `json:"pid1,omitempty" xml:"pid1,omitempty"`
-	// Instance 2 process
+	// The process of instance 2.
 	//
 	// example:
 	//
 	// i-2zei55fwj8nnu31h3z46
 	Pid2 *int64 `json:"pid2,omitempty" xml:"pid2,omitempty"`
-	// Query table name
+	// The name of the table to query.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// prof_on
-	Table *string `json:"table,omitempty" xml:"table,omitempty"`
+	Table              *string `json:"table,omitempty" xml:"table,omitempty"`
+	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s GetHotspotCompareRequest) String() string {
@@ -114,6 +120,10 @@ func (s GetHotspotCompareRequest) String() string {
 
 func (s GetHotspotCompareRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetHotspotCompareRequest) GetXDebugId() *string {
+	return s.XDebugId
 }
 
 func (s *GetHotspotCompareRequest) GetBeg1End() *int64 {
@@ -154,6 +164,15 @@ func (s *GetHotspotCompareRequest) GetPid2() *int64 {
 
 func (s *GetHotspotCompareRequest) GetTable() *string {
 	return s.Table
+}
+
+func (s *GetHotspotCompareRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *GetHotspotCompareRequest) SetXDebugId(v string) *GetHotspotCompareRequest {
+	s.XDebugId = &v
+	return s
 }
 
 func (s *GetHotspotCompareRequest) SetBeg1End(v int64) *GetHotspotCompareRequest {
@@ -203,6 +222,11 @@ func (s *GetHotspotCompareRequest) SetPid2(v int64) *GetHotspotCompareRequest {
 
 func (s *GetHotspotCompareRequest) SetTable(v string) *GetHotspotCompareRequest {
 	s.Table = &v
+	return s
+}
+
+func (s *GetHotspotCompareRequest) SetXSysomInvokeSource(v string) *GetHotspotCompareRequest {
+	s.XSysomInvokeSource = &v
 	return s
 }
 

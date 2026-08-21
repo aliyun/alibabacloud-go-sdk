@@ -26,21 +26,21 @@ type iListAllInstancesResponseBody interface {
 }
 
 type ListAllInstancesResponseBody struct {
-	// Status code.
+	// The status code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data.
+	// The returned data.
 	Data []*ListAllInstancesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Maximum number of results returned.
+	// The maximum number of entries returned.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// - If `code == Success`, this field is empty.
 	//
@@ -50,7 +50,7 @@ type ListAllInstancesResponseBody struct {
 	//
 	// instance not exists
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Pagination token.
+	// The pagination token.
 	//
 	// > A non-empty value indicates that more data is available.
 	//
@@ -64,7 +64,7 @@ type ListAllInstancesResponseBody struct {
 	//
 	// 2D693121-C925-5154-8DF6-C09A8B369822
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Total number of query results.
+	// The total number of query results.
 	//
 	// example:
 	//
@@ -157,129 +157,129 @@ func (s *ListAllInstancesResponseBody) Validate() error {
 }
 
 type ListAllInstancesResponseBodyData struct {
-	// Agent configuration ID.
+	// The agent configuration ID.
 	//
 	// example:
 	//
 	// test_id
 	AgentConfigId *string `json:"agentConfigId,omitempty" xml:"agentConfigId,omitempty"`
-	// Agent configuration name.
+	// The agent configuration name.
 	//
 	// example:
 	//
 	// test_name
 	AgentConfigName *string `json:"agentConfigName,omitempty" xml:"agentConfigName,omitempty"`
-	// Extended information.
+	// The extended information.
 	Attributes []*ListAllInstancesResponseBodyDataAttributes `json:"attributes,omitempty" xml:"attributes,omitempty" type:"Repeated"`
-	// Cluster ID.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// 3b24a621-acb3-11ef-8c90-00163e1029af
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	// Cluster name.
+	// The cluster name.
 	//
 	// example:
 	//
 	// zjk_vpc_domain_1
 	ClusterName *string `json:"clusterName,omitempty" xml:"clusterName,omitempty"`
-	// Image ID.
+	// The image ID.
 	//
 	// example:
 	//
 	// aliyun_3_x64_20G_alibase_20250117.vhd
 	ImageId *string `json:"imageId,omitempty" xml:"imageId,omitempty"`
-	// Installation level.
+	// The installation level.
 	//
 	// example:
 	//
 	// Cluster
 	InstallLevel *string `json:"installLevel,omitempty" xml:"installLevel,omitempty"`
-	// Installation type.
+	// The installation type.
 	//
 	// example:
 	//
 	// console
 	InstallType *string `json:"installType,omitempty" xml:"installType,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-bp17uabeke9v7n30abm2
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// Instance name.
+	// The instance name.
 	//
 	// example:
 	//
 	// test
 	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	// Instance type.
+	// The instance type.
 	//
 	// example:
 	//
 	// ecs
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// Kernel version.
+	// The kernel version.
 	//
 	// example:
 	//
 	// 5.10.134-18.al8.x86_64
 	KernelVersion *string `json:"kernelVersion,omitempty" xml:"kernelVersion,omitempty"`
-	// Management level.
+	// The management level.
 	//
 	// example:
 	//
 	// cluster
 	ManageLevel *string `json:"manageLevel,omitempty" xml:"manageLevel,omitempty"`
-	// Management type.
+	// The management type.
 	//
 	// example:
 	//
 	// managed
 	ManageType *string `json:"manageType,omitempty" xml:"manageType,omitempty"`
-	// Operating system architecture.
+	// The operating system architecture.
 	//
 	// example:
 	//
 	// x86_64
 	OsArch *string `json:"osArch,omitempty" xml:"osArch,omitempty"`
-	// Operating system health score.
+	// The operating system health score.
 	//
 	// example:
 	//
 	// 100
 	OsHealthScore *int32 `json:"osHealthScore,omitempty" xml:"osHealthScore,omitempty"`
-	// Operating system name.
+	// The operating system name.
 	//
 	// example:
 	//
 	// alios
 	OsName *string `json:"osName,omitempty" xml:"osName,omitempty"`
-	// Private IP address.
+	// The private IP address.
 	//
 	// example:
 	//
 	// 172.21.172.7
 	PrivateIp *string `json:"privateIp,omitempty" xml:"privateIp,omitempty"`
-	// Public IP address.
+	// The public IP address.
 	//
 	// example:
 	//
 	// 47.98.215.58
 	PublicIp *string `json:"publicIp,omitempty" xml:"publicIp,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// 3b24a621-acb3-11ef-8c90-00163e1029af
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// Resource group name.
+	// The resource group name.
 	//
 	// example:
 	//
 	// xxxx
 	ResourceGroupName *string `json:"resourceGroupName,omitempty" xml:"resourceGroupName,omitempty"`
-	// Running status of the instance. Valid values:
+	// The running status of the instance. Valid values:
 	//
 	// - **Running**: The instance is running.
 	//
@@ -287,7 +287,7 @@ type ListAllInstancesResponseBodyData struct {
 	//
 	//
 	//
-	// > An instance in the Offline status indicates that the heartbeat from the node to the SysOM server is lost. It does not necessarily mean that the corresponding ECS instance is not running.
+	// > An instance in the Offline state indicates that the heartbeat from the node to the SysOM server is lost. It does not mean that the corresponding ECS instance is not running.
 	//
 	// example:
 	//
@@ -515,19 +515,19 @@ func (s *ListAllInstancesResponseBodyData) Validate() error {
 }
 
 type ListAllInstancesResponseBodyDataAttributes struct {
-	// Information key.
+	// The information key.
 	//
 	// example:
 	//
 	// sysom
 	InfoKey *string `json:"infoKey,omitempty" xml:"infoKey,omitempty"`
-	// Information type.
+	// The information type.
 	//
 	// example:
 	//
 	// instance_tag
 	InfoType *string `json:"infoType,omitempty" xml:"infoType,omitempty"`
-	// Information value.
+	// The information value.
 	//
 	// example:
 	//

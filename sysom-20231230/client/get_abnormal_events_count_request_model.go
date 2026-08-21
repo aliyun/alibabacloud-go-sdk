@@ -9,6 +9,8 @@ type iGetAbnormalEventsCountRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *GetAbnormalEventsCountRequest
+	GetXDebugId() *string
 	SetCluster(v string) *GetAbnormalEventsCountRequest
 	GetCluster() *string
 	SetEnd(v float32) *GetAbnormalEventsCountRequest
@@ -25,57 +27,61 @@ type iGetAbnormalEventsCountRequest interface {
 	GetShowPod() *int32
 	SetStart(v float32) *GetAbnormalEventsCountRequest
 	GetStart() *float32
+	SetXSysomInvokeSource(v string) *GetAbnormalEventsCountRequest
+	GetXSysomInvokeSource() *string
 }
 
 type GetAbnormalEventsCountRequest struct {
-	// Cluster ID.
+	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
+	// The cluster ID.
 	//
 	// example:
 	//
 	// 2ijff4be-bf24-4070-89ca-c47c879b0g32
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	// End time.
+	// The end time.
 	//
 	// example:
 	//
 	// 1725801327754
 	End *float32 `json:"end,omitempty" xml:"end,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-wz9d00ut2ska3mlyhn6j
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	// Level of abnormal events.
+	// The severity level of abnormal events.
 	//
 	// example:
 	//
 	// potential
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// The namespace where the Pod resides.
+	// The namespace of the pod.
 	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// Pod name.
+	// The pod name.
 	//
 	// example:
 	//
 	// test-pod
 	Pod *string `json:"pod,omitempty" xml:"pod,omitempty"`
-	// Whether to display Pod abnormal events.
+	// Specifies whether to display abnormal events of the pod.
 	//
 	// example:
 	//
 	// 1
 	ShowPod *int32 `json:"showPod,omitempty" xml:"showPod,omitempty"`
-	// Start time.
+	// The start time.
 	//
 	// example:
 	//
 	// 1725797727754
-	Start *float32 `json:"start,omitempty" xml:"start,omitempty"`
+	Start              *float32 `json:"start,omitempty" xml:"start,omitempty"`
+	XSysomInvokeSource *string  `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s GetAbnormalEventsCountRequest) String() string {
@@ -84,6 +90,10 @@ func (s GetAbnormalEventsCountRequest) String() string {
 
 func (s GetAbnormalEventsCountRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetAbnormalEventsCountRequest) GetXDebugId() *string {
+	return s.XDebugId
 }
 
 func (s *GetAbnormalEventsCountRequest) GetCluster() *string {
@@ -116,6 +126,15 @@ func (s *GetAbnormalEventsCountRequest) GetShowPod() *int32 {
 
 func (s *GetAbnormalEventsCountRequest) GetStart() *float32 {
 	return s.Start
+}
+
+func (s *GetAbnormalEventsCountRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *GetAbnormalEventsCountRequest) SetXDebugId(v string) *GetAbnormalEventsCountRequest {
+	s.XDebugId = &v
+	return s
 }
 
 func (s *GetAbnormalEventsCountRequest) SetCluster(v string) *GetAbnormalEventsCountRequest {
@@ -155,6 +174,11 @@ func (s *GetAbnormalEventsCountRequest) SetShowPod(v int32) *GetAbnormalEventsCo
 
 func (s *GetAbnormalEventsCountRequest) SetStart(v float32) *GetAbnormalEventsCountRequest {
 	s.Start = &v
+	return s
+}
+
+func (s *GetAbnormalEventsCountRequest) SetXSysomInvokeSource(v string) *GetAbnormalEventsCountRequest {
+	s.XSysomInvokeSource = &v
 	return s
 }
 

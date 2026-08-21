@@ -20,15 +20,15 @@ type iStartAIAnalysisResponseBody interface {
 }
 
 type StartAIAnalysisResponseBody struct {
-	// Response code.
+	// The return code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response data
+	// The response data.
 	Data *StartAIAnalysisResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *StartAIAnalysisResponseBody) Validate() error {
 }
 
 type StartAIAnalysisResponseBodyData struct {
-	// AI analysis ID
+	// The AI analysis ID.
 	//
 	// example:
 	//

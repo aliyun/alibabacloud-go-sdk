@@ -28,9 +28,9 @@ type UpgradeAgentForClusterResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status code.
 	//
-	// - If `code == Success`, the authorization is successful.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate authorization failure. In this case, check the `message` field for detailed error information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type UpgradeAgentForClusterResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ func (s *UpgradeAgentForClusterResponseBody) Validate() error {
 type UpgradeAgentForClusterResponseBodyData struct {
 	// The task ID.
 	//
-	// You can use this task ID to call the GetAgentTask operation to query the task execution status.
+	// You can use this task ID to call the GetAgentTask operation to check the execution status of the task.
 	//
 	// example:
 	//

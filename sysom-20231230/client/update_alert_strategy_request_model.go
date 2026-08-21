@@ -9,6 +9,8 @@ type iUpdateAlertStrategyRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *UpdateAlertStrategyRequest
+	GetXDebugId() *string
 	SetEnabled(v bool) *UpdateAlertStrategyRequest
 	GetEnabled() *bool
 	SetId(v int64) *UpdateAlertStrategyRequest
@@ -19,9 +21,12 @@ type iUpdateAlertStrategyRequest interface {
 	GetName() *string
 	SetStrategy(v *UpdateAlertStrategyRequestStrategy) *UpdateAlertStrategyRequest
 	GetStrategy() *UpdateAlertStrategyRequestStrategy
+	SetXSysomInvokeSource(v string) *UpdateAlertStrategyRequest
+	GetXSysomInvokeSource() *string
 }
 
 type UpdateAlertStrategyRequest struct {
+	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// Specifies whether the alert policy is enabled.
 	//
 	// This parameter is required.
@@ -37,8 +42,9 @@ type UpdateAlertStrategyRequest struct {
 	// example:
 	//
 	// 1
-	Id       *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	K8sLabel *bool  `json:"k8sLabel,omitempty" xml:"k8sLabel,omitempty"`
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The Kubernetes labels.
+	K8sLabel *bool `json:"k8sLabel,omitempty" xml:"k8sLabel,omitempty"`
 	// The Policy Name of the alerting policy.
 	//
 	// This parameter is required.
@@ -50,7 +56,8 @@ type UpdateAlertStrategyRequest struct {
 	// The details of the alert policy.
 	//
 	// This parameter is required.
-	Strategy *UpdateAlertStrategyRequestStrategy `json:"strategy,omitempty" xml:"strategy,omitempty" type:"Struct"`
+	Strategy           *UpdateAlertStrategyRequestStrategy `json:"strategy,omitempty" xml:"strategy,omitempty" type:"Struct"`
+	XSysomInvokeSource *string                             `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s UpdateAlertStrategyRequest) String() string {
@@ -59,6 +66,10 @@ func (s UpdateAlertStrategyRequest) String() string {
 
 func (s UpdateAlertStrategyRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateAlertStrategyRequest) GetXDebugId() *string {
+	return s.XDebugId
 }
 
 func (s *UpdateAlertStrategyRequest) GetEnabled() *bool {
@@ -79,6 +90,15 @@ func (s *UpdateAlertStrategyRequest) GetName() *string {
 
 func (s *UpdateAlertStrategyRequest) GetStrategy() *UpdateAlertStrategyRequestStrategy {
 	return s.Strategy
+}
+
+func (s *UpdateAlertStrategyRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *UpdateAlertStrategyRequest) SetXDebugId(v string) *UpdateAlertStrategyRequest {
+	s.XDebugId = &v
+	return s
 }
 
 func (s *UpdateAlertStrategyRequest) SetEnabled(v bool) *UpdateAlertStrategyRequest {
@@ -106,6 +126,11 @@ func (s *UpdateAlertStrategyRequest) SetStrategy(v *UpdateAlertStrategyRequestSt
 	return s
 }
 
+func (s *UpdateAlertStrategyRequest) SetXSysomInvokeSource(v string) *UpdateAlertStrategyRequest {
+	s.XSysomInvokeSource = &v
+	return s
+}
+
 func (s *UpdateAlertStrategyRequest) Validate() error {
 	if s.Strategy != nil {
 		if err := s.Strategy.Validate(); err != nil {
@@ -117,9 +142,10 @@ func (s *UpdateAlertStrategyRequest) Validate() error {
 
 type UpdateAlertStrategyRequestStrategy struct {
 	// The collection of clusters for which alerts are received.
-	Clusters     []*string `json:"clusters,omitempty" xml:"clusters,omitempty" type:"Repeated"`
-	Destinations []*int32  `json:"destinations,omitempty" xml:"destinations,omitempty" type:"Repeated"`
-	// 接收告警的异常项合计
+	Clusters []*string `json:"clusters,omitempty" xml:"clusters,omitempty" type:"Repeated"`
+	// The alert contacts.
+	Destinations []*int32 `json:"destinations,omitempty" xml:"destinations,omitempty" type:"Repeated"`
+	// The collection of anomaly items for which alerts are received.
 	Items []*string `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 

@@ -42,7 +42,7 @@ type UninstallAgentForClusterResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the error information of the request.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ func (s *UninstallAgentForClusterResponseBody) Validate() error {
 }
 
 type UninstallAgentForClusterResponseBodyData struct {
-	// The task ID. You can use this task ID to call GetAgentTasK to query the execution status of the task.
+	// The task ID. You can use this task ID to call GetAgentTask to query the execution status of the task.
 	//
 	// example:
 	//

@@ -26,51 +26,51 @@ type iListAlertDestinationsResponseBody interface {
 }
 
 type ListAlertDestinationsResponseBody struct {
-	// Status code
+	// The status code.
 	//
-	// - `code == Success` indicates that the authorization was successful;
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate authorization failure. When authorization fails, check the `message` field for detailed error information;
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response data.
+	// The returned data.
 	//
 	// example:
 	//
 	// {}
 	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
-	// Maximum number of records to retrieve at a time.
+	// The maximum number of records to retrieve in a single request.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Error message
+	// The error message.
 	//
-	// - If `code == Success`, this field is empty;
+	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error information.
+	// - Otherwise, this field contains the error information for the request.
 	//
 	// example:
 	//
 	// server error
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Pagination token for the next request.
+	// The pagination token for the next request.
 	//
 	// example:
 	//
 	// c2f78a783f49457caba6bace6f6f79e4
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 2D693121-C925-5154-8DF6-C09A8B369822
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Maximum number of records returned by this request
+	// The maximum number of records returned by this request based on MaxResults.
 	//
 	// example:
 	//

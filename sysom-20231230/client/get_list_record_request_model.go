@@ -9,6 +9,8 @@ type iGetListRecordRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetXDebugId(v string) *GetListRecordRequest
+	GetXDebugId() *string
 	SetAnalysisId(v string) *GetListRecordRequest
 	GetAnalysisId() *string
 	SetCurrent(v int64) *GetListRecordRequest
@@ -19,9 +21,12 @@ type iGetListRecordRequest interface {
 	GetPageSize() *int64
 	SetRegion(v string) *GetListRecordRequest
 	GetRegion() *string
+	SetXSysomInvokeSource(v string) *GetListRecordRequest
+	GetXSysomInvokeSource() *string
 }
 
 type GetListRecordRequest struct {
+	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
 	// The ID of the analysis record to query the status of.
 	//
 	// example:
@@ -46,7 +51,8 @@ type GetListRecordRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	Region             *string `json:"region,omitempty" xml:"region,omitempty"`
+	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
 }
 
 func (s GetListRecordRequest) String() string {
@@ -55,6 +61,10 @@ func (s GetListRecordRequest) String() string {
 
 func (s GetListRecordRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetListRecordRequest) GetXDebugId() *string {
+	return s.XDebugId
 }
 
 func (s *GetListRecordRequest) GetAnalysisId() *string {
@@ -75,6 +85,15 @@ func (s *GetListRecordRequest) GetPageSize() *int64 {
 
 func (s *GetListRecordRequest) GetRegion() *string {
 	return s.Region
+}
+
+func (s *GetListRecordRequest) GetXSysomInvokeSource() *string {
+	return s.XSysomInvokeSource
+}
+
+func (s *GetListRecordRequest) SetXDebugId(v string) *GetListRecordRequest {
+	s.XDebugId = &v
+	return s
 }
 
 func (s *GetListRecordRequest) SetAnalysisId(v string) *GetListRecordRequest {
@@ -99,6 +118,11 @@ func (s *GetListRecordRequest) SetPageSize(v int64) *GetListRecordRequest {
 
 func (s *GetListRecordRequest) SetRegion(v string) *GetListRecordRequest {
 	s.Region = &v
+	return s
+}
+
+func (s *GetListRecordRequest) SetXSysomInvokeSource(v string) *GetListRecordRequest {
+	s.XSysomInvokeSource = &v
 	return s
 }
 
