@@ -24,9 +24,9 @@ type ListSoftwareForUserDeviceResponseBody struct {
 	//
 	// 102350E7-1A20-58F5-9D63-ABEA820AE6E1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of software applications.
+	// The list of software installed on the endpoint device.
 	Software []*ListSoftwareForUserDeviceResponseBodySoftware `json:"Software,omitempty" xml:"Software,omitempty" type:"Repeated"`
-	// The total number of software applications.
+	// The total number of software installed on the endpoint device.
 	//
 	// example:
 	//
@@ -83,25 +83,25 @@ func (s *ListSoftwareForUserDeviceResponseBody) Validate() error {
 }
 
 type ListSoftwareForUserDeviceResponseBodySoftware struct {
-	// The publisher of the software.
+	// The software publisher.
 	//
 	// example:
 	//
 	// Alibaba (China) Network Technology Co.,Ltd.
 	Inc *string `json:"Inc,omitempty" xml:"Inc,omitempty"`
-	// The time when the software was installed.
+	// The software installation time.
 	//
 	// example:
 	//
 	// 2023-08-18 02:43:02
 	InstallTime *string `json:"InstallTime,omitempty" xml:"InstallTime,omitempty"`
-	// The name of the software.
+	// The software name.
 	//
 	// example:
 	//
-	// 钉钉
+	// DingTalk
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The versions of the software.
+	// The collection of software versions.
 	Versions []*string `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
 }
 

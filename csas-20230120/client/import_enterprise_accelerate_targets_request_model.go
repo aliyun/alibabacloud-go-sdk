@@ -16,7 +16,7 @@ type iImportEnterpriseAccelerateTargetsRequest interface {
 }
 
 type ImportEnterpriseAccelerateTargetsRequest struct {
-	// ID of the enterprise acceleration policy.
+	// The ID of the enterprise acceleration policy.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type ImportEnterpriseAccelerateTargetsRequest struct {
 	//
 	// eap-6457339b546c4cfb
 	EapId *string `json:"EapId,omitempty" xml:"EapId,omitempty"`
-	// URL of the file to import.
+	// The URL of the import file.
 	//
 	// This parameter is required.
 	//

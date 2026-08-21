@@ -16,7 +16,7 @@ type iCreateWmExtractTaskResponseBody interface {
 }
 
 type CreateWmExtractTaskResponseBody struct {
-	// The information about the watermark extraction task.
+	// The watermark extraction task information.
 	Data *CreateWmExtractTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -62,7 +62,7 @@ func (s *CreateWmExtractTaskResponseBody) Validate() error {
 }
 
 type CreateWmExtractTaskResponseBodyData struct {
-	// The task ID. You can use task IDs to query task results.
+	// The task ID, which is used to query the task result.
 	//
 	// example:
 	//

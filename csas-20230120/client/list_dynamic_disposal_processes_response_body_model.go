@@ -87,7 +87,7 @@ type ListDynamicDisposalProcessesResponseBodyDisposalProcesses struct {
 	//
 	// example:
 	//
-	// 场景险部
+	// IT
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
 	// Device ID.
 	//
@@ -580,13 +580,13 @@ type ListDynamicDisposalProcessesResponseBodyDisposalProcessesDeviceStatusInfo s
 	//
 	// example:
 	//
-	// 测试
+	// test
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 	// Identified office area name.
 	//
 	// example:
 	//
-	// 办公地点
+	// office
 	Workshop *string `json:"Workshop,omitempty" xml:"Workshop,omitempty"`
 	// ZTNA enablement status.
 	//

@@ -44,14 +44,15 @@ type iUpdatePrivateAccessApplicationShrinkRequest interface {
 }
 
 type UpdatePrivateAccessApplicationShrinkRequest struct {
+	// The application address groups. This parameter can be specified when ConfigMode is set to Precise. This parameter cannot be specified when ConfigMode is an empty string.
 	AddressGroups []*AddressGroup `json:"AddressGroups,omitempty" xml:"AddressGroups,omitempty" type:"Repeated"`
-	// The addresses of the internal-facing access application. You can specify up to 1000 addresses.
+	// The addresses of the private access application. You can specify up to 1000 addresses.
 	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	// The ID of the internal-facing access application. You can obtain the value from the following operations:
+	// The ID of the private access application. You can obtain the value from:
 	//
-	// - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): lists internal-facing access applications.
+	// - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): Lists private access applications.
 	//
-	// - [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): creates an internal-facing access application.
+	// - [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): Creates a private access application.
 	//
 	// This parameter is required.
 	//
@@ -59,15 +60,20 @@ type UpdatePrivateAccessApplicationShrinkRequest struct {
 	//
 	// pa-application-e12860ef6c48****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	ConfigMode    *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
-	// The description of the internal-facing access application. The description must be 1 to 128 characters in length and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
+	// The configuration mode. Valid values:
+	//
+	// 	- Empty string: default mode.
+	//
+	// 	- Precise: precise mode.
+	ConfigMode *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
+	// The description of the private access application. The description must be 1 to 128 characters in length and can contain Chinese characters, letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
 	//
 	// if can be null:
 	// true
 	//
 	// example:
 	//
-	// 这是一条内网访问应用
+	// This is a private access application
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The browser access mode parameter: the Layer 7 application configuration.
 	L7ConfigShrink *string `json:"L7Config,omitempty" xml:"L7Config,omitempty"`
@@ -91,20 +97,21 @@ type UpdatePrivateAccessApplicationShrinkRequest struct {
 	//
 	// app1.example.com
 	L7ProxyDomainPrivate *string `json:"L7ProxyDomainPrivate,omitempty" xml:"L7ProxyDomainPrivate,omitempty"`
-	// The modification type of the internal-facing access application. Valid values:
+	// The modification type of the private access application. Valid values:
 	//
 	// - **Cover*	- (default): overwrites the original addresses, port ranges, and tag IDs with the values of the **Addresses**, **PortRanges**, and **TagIds*	- parameters.
 	//
-	// - **Append**: adds the values of the **Addresses**, **PortRanges**, and **TagIds*	- parameters to the original addresses, port ranges, and tag IDs.
+	// - **Append**: appends the values of the **Addresses**, **PortRanges**, and **TagIds*	- parameters to the original addresses, port ranges, and tag IDs.
 	//
 	// example:
 	//
 	// Cover
 	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The port ranges of the internal-facing access application. You can specify up to 65535 port ranges. Multiple port ranges cannot be duplicate or overlap.
+	// The application name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The port ranges of the private access application. You can specify up to 65535 port ranges. Multiple port ranges cannot overlap.
 	PortRanges []*UpdatePrivateAccessApplicationShrinkRequestPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
-	// The protocol of the internal-facing access application. Valid values:
+	// The protocol of the private access application. Valid values:
 	//
 	// - **All**: all protocols.
 	//
@@ -116,7 +123,7 @@ type UpdatePrivateAccessApplicationShrinkRequest struct {
 	//
 	// All
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The status of the internal-facing access application. Valid values:
+	// The status of the private access application. Valid values:
 	//
 	// - **Enabled**: enabled.
 	//
@@ -126,12 +133,13 @@ type UpdatePrivateAccessApplicationShrinkRequest struct {
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The IDs of internal-facing access tags. You can associate up to 6 custom internal-facing access tags with each internal-facing access application.
+	// The IDs of private access tags. A private access application can be associated with up to 6 custom private access tags.
 	//
 	// if can be null:
 	// true
-	TagIds                         []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
-	UnauthorizedAccessConfigShrink *string   `json:"UnauthorizedAccessConfig,omitempty" xml:"UnauthorizedAccessConfig,omitempty"`
+	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	// The configuration for unauthorized application access requests.
+	UnauthorizedAccessConfigShrink *string `json:"UnauthorizedAccessConfig,omitempty" xml:"UnauthorizedAccessConfig,omitempty"`
 }
 
 func (s UpdatePrivateAccessApplicationShrinkRequest) String() string {

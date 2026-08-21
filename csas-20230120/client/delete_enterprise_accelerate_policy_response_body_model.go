@@ -14,7 +14,7 @@ type iDeleteEnterpriseAcceleratePolicyResponseBody interface {
 }
 
 type DeleteEnterpriseAcceleratePolicyResponseBody struct {
-	// The ID of this request.
+	// The ID of the request.
 	//
 	// example:
 	//

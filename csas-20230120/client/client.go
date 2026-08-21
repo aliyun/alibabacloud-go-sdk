@@ -62,6 +62,75 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// Appends associated terminal devices to a static device label in batches.
+//
+// @param request - AddDeviceGroupMatchDevicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddDeviceGroupMatchDevicesResponse
+func (client *Client) AddDeviceGroupMatchDevicesWithOptions(request *AddDeviceGroupMatchDevicesRequest, runtime *dara.RuntimeOptions) (_result *AddDeviceGroupMatchDevicesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.DevTags) {
+		bodyFlat["DevTags"] = request.DevTags
+	}
+
+	if !dara.IsNil(request.DeviceGroupId) {
+		body["DeviceGroupId"] = request.DeviceGroupId
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddDeviceGroupMatchDevices"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddDeviceGroupMatchDevicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Appends associated terminal devices to a static device label in batches.
+//
+// @param request - AddDeviceGroupMatchDevicesRequest
+//
+// @return AddDeviceGroupMatchDevicesResponse
+func (client *Client) AddDeviceGroupMatchDevices(request *AddDeviceGroupMatchDevicesRequest) (_result *AddDeviceGroupMatchDevicesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddDeviceGroupMatchDevicesResponse{}
+	_body, _err := client.AddDeviceGroupMatchDevicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Attaches the private access applications of a Connector under the current Alibaba Cloud account.
 //
 // @param tmpReq - AttachApplication2ConnectorRequest
@@ -366,7 +435,153 @@ func (client *Client) BatchDeleteDomainItems(request *BatchDeleteDomainItemsRequ
 
 // Summary:
 //
-// Creates an approval process under the current Alibaba Cloud account.
+// Deletes internal-facing applications in batches.
+//
+// Description:
+//
+// Applications that are referenced by office network recognition or policies cannot be deleted. References:
+//
+// - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): Lists internal-facing access applications in batches.
+//
+// - [ListPrivateAccessPolices](~~ListPrivateAccessPolices~~): Lists internal-facing access policies in batches.
+//
+// @param request - BatchDeletePrivateAccessApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchDeletePrivateAccessApplicationResponse
+func (client *Client) BatchDeletePrivateAccessApplicationWithOptions(request *BatchDeletePrivateAccessApplicationRequest, runtime *dara.RuntimeOptions) (_result *BatchDeletePrivateAccessApplicationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationIds) {
+		bodyFlat["ApplicationIds"] = request.ApplicationIds
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchDeletePrivateAccessApplication"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchDeletePrivateAccessApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes internal-facing applications in batches.
+//
+// Description:
+//
+// Applications that are referenced by office network recognition or policies cannot be deleted. References:
+//
+// - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): Lists internal-facing access applications in batches.
+//
+// - [ListPrivateAccessPolices](~~ListPrivateAccessPolices~~): Lists internal-facing access policies in batches.
+//
+// @param request - BatchDeletePrivateAccessApplicationRequest
+//
+// @return BatchDeletePrivateAccessApplicationResponse
+func (client *Client) BatchDeletePrivateAccessApplication(request *BatchDeletePrivateAccessApplicationRequest) (_result *BatchDeletePrivateAccessApplicationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &BatchDeletePrivateAccessApplicationResponse{}
+	_body, _err := client.BatchDeletePrivateAccessApplicationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes internal network access policies in batches.
+//
+// @param request - BatchDeletePrivateAccessPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchDeletePrivateAccessPolicyResponse
+func (client *Client) BatchDeletePrivateAccessPolicyWithOptions(request *BatchDeletePrivateAccessPolicyRequest, runtime *dara.RuntimeOptions) (_result *BatchDeletePrivateAccessPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.PolicyIds) {
+		bodyFlat["PolicyIds"] = request.PolicyIds
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchDeletePrivateAccessPolicy"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchDeletePrivateAccessPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes internal network access policies in batches.
+//
+// @param request - BatchDeletePrivateAccessPolicyRequest
+//
+// @return BatchDeletePrivateAccessPolicyResponse
+func (client *Client) BatchDeletePrivateAccessPolicy(request *BatchDeletePrivateAccessPolicyRequest) (_result *BatchDeletePrivateAccessPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &BatchDeletePrivateAccessPolicyResponse{}
+	_body, _err := client.BatchDeletePrivateAccessPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an approval flow under the current Alibaba Cloud account.
 //
 // @param tmpReq - CreateApprovalProcessRequest
 //
@@ -431,7 +646,7 @@ func (client *Client) CreateApprovalProcessWithOptions(tmpReq *CreateApprovalPro
 
 // Summary:
 //
-// Creates an approval process under the current Alibaba Cloud account.
+// Creates an approval flow under the current Alibaba Cloud account.
 //
 // @param request - CreateApprovalProcessRequest
 //
@@ -526,6 +741,164 @@ func (client *Client) CreateClientUser(request *CreateClientUserRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateClientUserResponse{}
 	_body, _err := client.CreateClientUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a connector.
+//
+// @param request - CreateConnectorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateConnectorResponse
+func (client *Client) CreateConnectorWithOptions(request *CreateConnectorRequest, runtime *dara.RuntimeOptions) (_result *CreateConnectorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Bandwidth) {
+		body["Bandwidth"] = request.Bandwidth
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Region) {
+		body["Region"] = request.Region
+	}
+
+	if !dara.IsNil(request.SwitchStatus) {
+		body["SwitchStatus"] = request.SwitchStatus
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateConnector"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateConnectorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a connector.
+//
+// @param request - CreateConnectorRequest
+//
+// @return CreateConnectorResponse
+func (client *Client) CreateConnector(request *CreateConnectorRequest) (_result *CreateConnectorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateConnectorResponse{}
+	_body, _err := client.CreateConnectorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a device label.
+//
+// @param tmpReq - CreateDeviceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDeviceGroupResponse
+func (client *Client) CreateDeviceGroupWithOptions(tmpReq *CreateDeviceGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateDeviceGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateDeviceGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DynamicRule) {
+		request.DynamicRuleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DynamicRule, dara.String("DynamicRule"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DynamicOperator) {
+		body["DynamicOperator"] = request.DynamicOperator
+	}
+
+	if !dara.IsNil(request.DynamicRuleShrink) {
+		body["DynamicRule"] = request.DynamicRuleShrink
+	}
+
+	if !dara.IsNil(request.GroupType) {
+		body["GroupType"] = request.GroupType
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDeviceGroup"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDeviceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a device label.
+//
+// @param request - CreateDeviceGroupRequest
+//
+// @return CreateDeviceGroupResponse
+func (client *Client) CreateDeviceGroup(request *CreateDeviceGroupRequest) (_result *CreateDeviceGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateDeviceGroupResponse{}
+	_body, _err := client.CreateDeviceGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -718,7 +1091,7 @@ func (client *Client) CreateDynamicRoute(request *CreateDynamicRouteRequest) (_r
 
 // Summary:
 //
-// Creates an enterprise accelerate policy.
+// Creates an enterprise acceleration policy.
 //
 // @param request - CreateEnterpriseAcceleratePolicyRequest
 //
@@ -794,7 +1167,7 @@ func (client *Client) CreateEnterpriseAcceleratePolicyWithOptions(request *Creat
 
 // Summary:
 //
-// Creates an enterprise accelerate policy.
+// Creates an enterprise acceleration policy.
 //
 // @param request - CreateEnterpriseAcceleratePolicyRequest
 //
@@ -812,7 +1185,7 @@ func (client *Client) CreateEnterpriseAcceleratePolicy(request *CreateEnterprise
 
 // Summary:
 //
-// Creates enterprise acceleration addresses.
+// Creates an enterprise acceleration address.
 //
 // @param request - CreateEnterpriseAccelerateTargetRequest
 //
@@ -863,7 +1236,7 @@ func (client *Client) CreateEnterpriseAccelerateTargetWithOptions(request *Creat
 
 // Summary:
 //
-// Creates enterprise acceleration addresses.
+// Creates an enterprise acceleration address.
 //
 // @param request - CreateEnterpriseAccelerateTargetRequest
 //
@@ -872,6 +1245,88 @@ func (client *Client) CreateEnterpriseAccelerateTarget(request *CreateEnterprise
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateEnterpriseAccelerateTargetResponse{}
 	_body, _err := client.CreateEnterpriseAccelerateTargetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a traffic forwarding rule.
+//
+// @param request - CreateForwardStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateForwardStrategyResponse
+func (client *Client) CreateForwardStrategyWithOptions(request *CreateForwardStrategyRequest, runtime *dara.RuntimeOptions) (_result *CreateForwardStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DestinationId) {
+		body["DestinationId"] = request.DestinationId
+	}
+
+	if !dara.IsNil(request.DestinationType) {
+		body["DestinationType"] = request.DestinationType
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Priority) {
+		body["Priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateForwardStrategy"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateForwardStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a traffic forwarding rule.
+//
+// @param request - CreateForwardStrategyRequest
+//
+// @return CreateForwardStrategyResponse
+func (client *Client) CreateForwardStrategy(request *CreateForwardStrategyRequest) (_result *CreateForwardStrategyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateForwardStrategyResponse{}
+	_body, _err := client.CreateForwardStrategyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1335,11 +1790,11 @@ func (client *Client) CreatePrivateAccessPolicy(request *CreatePrivateAccessPoli
 
 // Summary:
 //
-// Creates a private access tag for the current Alibaba Cloud account.
+// Creates an internal-facing access tag under the current Alibaba Cloud account.
 //
 // Description:
 //
-// By default, you can create up to 500 private access tags.
+// You can create up to 500 internal-facing access tags by default.
 //
 // @param request - CreatePrivateAccessTagRequest
 //
@@ -1387,11 +1842,11 @@ func (client *Client) CreatePrivateAccessTagWithOptions(request *CreatePrivateAc
 
 // Summary:
 //
-// Creates a private access tag for the current Alibaba Cloud account.
+// Creates an internal-facing access tag under the current Alibaba Cloud account.
 //
 // Description:
 //
-// By default, you can create up to 500 private access tags.
+// You can create up to 500 internal-facing access tags by default.
 //
 // @param request - CreatePrivateAccessTagRequest
 //
@@ -1400,6 +1855,302 @@ func (client *Client) CreatePrivateAccessTag(request *CreatePrivateAccessTagRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreatePrivateAccessTagResponse{}
 	_body, _err := client.CreatePrivateAccessTagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a software ban policy.
+//
+// @param request - CreateProhibitedPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProhibitedPolicyResponse
+func (client *Client) CreateProhibitedPolicyWithOptions(request *CreateProhibitedPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateProhibitedPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AllowReport) {
+		body["AllowReport"] = request.AllowReport
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Enabled) {
+		body["Enabled"] = request.Enabled
+	}
+
+	if !dara.IsNil(request.ForceKill) {
+		body["ForceKill"] = request.ForceKill
+	}
+
+	if !dara.IsNil(request.MainButtonTextCh) {
+		body["MainButtonTextCh"] = request.MainButtonTextCh
+	}
+
+	if !dara.IsNil(request.MainButtonTextEn) {
+		body["MainButtonTextEn"] = request.MainButtonTextEn
+	}
+
+	if !dara.IsNil(request.MatchMode) {
+		body["MatchMode"] = request.MatchMode
+	}
+
+	if !dara.IsNil(request.MinorButtonTextCh) {
+		body["MinorButtonTextCh"] = request.MinorButtonTextCh
+	}
+
+	if !dara.IsNil(request.MinorButtonTextEn) {
+		body["MinorButtonTextEn"] = request.MinorButtonTextEn
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ObjectType) {
+		body["ObjectType"] = request.ObjectType
+	}
+
+	if !dara.IsNil(request.PolicyType) {
+		body["PolicyType"] = request.PolicyType
+	}
+
+	if !dara.IsNil(request.Priority) {
+		body["Priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.PromptCh) {
+		body["PromptCh"] = request.PromptCh
+	}
+
+	if !dara.IsNil(request.PromptEn) {
+		body["PromptEn"] = request.PromptEn
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.SoftwareIds) {
+		bodyFlat["SoftwareIds"] = request.SoftwareIds
+	}
+
+	if !dara.IsNil(request.TagIds) {
+		bodyFlat["TagIds"] = request.TagIds
+	}
+
+	if !dara.IsNil(request.TitleCh) {
+		body["TitleCh"] = request.TitleCh
+	}
+
+	if !dara.IsNil(request.TitleEn) {
+		body["TitleEn"] = request.TitleEn
+	}
+
+	if !dara.IsNil(request.UserGroupIds) {
+		bodyFlat["UserGroupIds"] = request.UserGroupIds
+	}
+
+	if !dara.IsNil(request.Whitelist) {
+		bodyFlat["Whitelist"] = request.Whitelist
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateProhibitedPolicy"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateProhibitedPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a software ban policy.
+//
+// @param request - CreateProhibitedPolicyRequest
+//
+// @return CreateProhibitedPolicyResponse
+func (client *Client) CreateProhibitedPolicy(request *CreateProhibitedPolicyRequest) (_result *CreateProhibitedPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateProhibitedPolicyResponse{}
+	_body, _err := client.CreateProhibitedPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a custom disabled software entry.
+//
+// @param request - CreateProhibitedSoftwareRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProhibitedSoftwareResponse
+func (client *Client) CreateProhibitedSoftwareWithOptions(request *CreateProhibitedSoftwareRequest, runtime *dara.RuntimeOptions) (_result *CreateProhibitedSoftwareResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.LinuxProcesses) {
+		bodyFlat["LinuxProcesses"] = request.LinuxProcesses
+	}
+
+	if !dara.IsNil(request.MacOSProcesses) {
+		bodyFlat["MacOSProcesses"] = request.MacOSProcesses
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.TagIds) {
+		bodyFlat["TagIds"] = request.TagIds
+	}
+
+	if !dara.IsNil(request.WindowsProcesses) {
+		bodyFlat["WindowsProcesses"] = request.WindowsProcesses
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateProhibitedSoftware"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateProhibitedSoftwareResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a custom disabled software entry.
+//
+// @param request - CreateProhibitedSoftwareRequest
+//
+// @return CreateProhibitedSoftwareResponse
+func (client *Client) CreateProhibitedSoftware(request *CreateProhibitedSoftwareRequest) (_result *CreateProhibitedSoftwareResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateProhibitedSoftwareResponse{}
+	_body, _err := client.CreateProhibitedSoftwareWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a custom disabled software tag.
+//
+// @param request - CreateProhibitedTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProhibitedTagResponse
+func (client *Client) CreateProhibitedTagWithOptions(request *CreateProhibitedTagRequest, runtime *dara.RuntimeOptions) (_result *CreateProhibitedTagResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateProhibitedTag"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateProhibitedTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a custom disabled software tag.
+//
+// @param request - CreateProhibitedTagRequest
+//
+// @return CreateProhibitedTagResponse
+func (client *Client) CreateProhibitedTag(request *CreateProhibitedTagRequest) (_result *CreateProhibitedTagResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateProhibitedTagResponse{}
+	_body, _err := client.CreateProhibitedTagWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1605,7 +2356,7 @@ func (client *Client) CreateUserGroup(request *CreateUserGroupRequest) (_result 
 
 // Summary:
 //
-// Generates a transparent base image for web, screen, or app watermarks.
+// Retrieves the invisible watermark transparent background image for web watermarks, screen watermarks, and App watermarks.
 //
 // @param tmpReq - CreateWmBaseImageRequest
 //
@@ -1693,7 +2444,7 @@ func (client *Client) CreateWmBaseImageWithOptions(tmpReq *CreateWmBaseImageRequ
 
 // Summary:
 //
-// Generates a transparent base image for web, screen, or app watermarks.
+// Retrieves the invisible watermark transparent background image for web watermarks, screen watermarks, and App watermarks.
 //
 // @param request - CreateWmBaseImageRequest
 //
@@ -1711,11 +2462,11 @@ func (client *Client) CreateWmBaseImage(request *CreateWmBaseImageRequest) (_res
 
 // Summary:
 //
-// Create a digital watermarking embedding Job.
+// Creates a digital watermarking embedding task.
 //
 // Description:
 //
-// By default, you can create up to 500 groups.
+// You can create a maximum of 500 user groups by default.
 //
 // @param tmpReq - CreateWmEmbedTaskRequest
 //
@@ -1841,11 +2592,11 @@ func (client *Client) CreateWmEmbedTaskWithOptions(tmpReq *CreateWmEmbedTaskRequ
 
 // Summary:
 //
-// Create a digital watermarking embedding Job.
+// Creates a digital watermarking embedding task.
 //
 // Description:
 //
-// By default, you can create up to 500 groups.
+// You can create a maximum of 500 user groups by default.
 //
 // @param request - CreateWmEmbedTaskRequest
 //
@@ -1863,7 +2614,7 @@ func (client *Client) CreateWmEmbedTask(request *CreateWmEmbedTaskRequest) (_res
 
 // Summary:
 //
-// Create a digital watermarking fetch job.
+// Creates a digital watermarking extraction task.
 //
 // @param tmpReq - CreateWmExtractTaskRequest
 //
@@ -1955,7 +2706,7 @@ func (client *Client) CreateWmExtractTaskWithOptions(tmpReq *CreateWmExtractTask
 
 // Summary:
 //
-// Create a digital watermarking fetch job.
+// Creates a digital watermarking extraction task.
 //
 // @param request - CreateWmExtractTaskRequest
 //
@@ -2170,11 +2921,204 @@ func (client *Client) DeleteClientUser(request *DeleteClientUserRequest) (_resul
 
 // Summary:
 //
+// Deletes a connector.
+//
+// @param request - DeleteConnectorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteConnectorResponse
+func (client *Client) DeleteConnectorWithOptions(request *DeleteConnectorRequest, runtime *dara.RuntimeOptions) (_result *DeleteConnectorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectorId) {
+		body["ConnectorId"] = request.ConnectorId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteConnector"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteConnectorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a connector.
+//
+// @param request - DeleteConnectorRequest
+//
+// @return DeleteConnectorResponse
+func (client *Client) DeleteConnector(request *DeleteConnectorRequest) (_result *DeleteConnectorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteConnectorResponse{}
+	_body, _err := client.DeleteConnectorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a ConnectorClient under the current Alibaba Cloud account.
+//
+// @param request - DeleteConnectorClientRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteConnectorClientResponse
+func (client *Client) DeleteConnectorClientWithOptions(request *DeleteConnectorClientRequest, runtime *dara.RuntimeOptions) (_result *DeleteConnectorClientResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectorId) {
+		body["ConnectorId"] = request.ConnectorId
+	}
+
+	if !dara.IsNil(request.DevTag) {
+		body["DevTag"] = request.DevTag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteConnectorClient"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteConnectorClientResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a ConnectorClient under the current Alibaba Cloud account.
+//
+// @param request - DeleteConnectorClientRequest
+//
+// @return DeleteConnectorClientResponse
+func (client *Client) DeleteConnectorClient(request *DeleteConnectorClientRequest) (_result *DeleteConnectorClientResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteConnectorClientResponse{}
+	_body, _err := client.DeleteConnectorClientWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes instance tags in batches.
+//
+// @param request - DeleteDeviceGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDeviceGroupsResponse
+func (client *Client) DeleteDeviceGroupsWithOptions(request *DeleteDeviceGroupsRequest, runtime *dara.RuntimeOptions) (_result *DeleteDeviceGroupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.DeviceGroupIds) {
+		bodyFlat["DeviceGroupIds"] = request.DeviceGroupIds
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDeviceGroups"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDeviceGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes instance tags in batches.
+//
+// @param request - DeleteDeviceGroupsRequest
+//
+// @return DeleteDeviceGroupsResponse
+func (client *Client) DeleteDeviceGroups(request *DeleteDeviceGroupsRequest) (_result *DeleteDeviceGroupsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteDeviceGroupsResponse{}
+	_body, _err := client.DeleteDeviceGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a domain name list.
 //
 // Description:
 //
-// Deletes a specified domain name list under the current tenant. Before deletion, the system checks whether any domain name policy references the list. If the list is referenced, the deletion is rejected.
+// Deletes a specified domain name list under the current tenant. Before deletion, the system checks whether any domain name policy references the list. If a reference exists, the deletion is rejected.
 //
 // @param request - DeleteDomainMetaRequest
 //
@@ -2226,7 +3170,7 @@ func (client *Client) DeleteDomainMetaWithOptions(request *DeleteDomainMetaReque
 //
 // Description:
 //
-// Deletes a specified domain name list under the current tenant. Before deletion, the system checks whether any domain name policy references the list. If the list is referenced, the deletion is rejected.
+// Deletes a specified domain name list under the current tenant. Before deletion, the system checks whether any domain name policy references the list. If a reference exists, the deletion is rejected.
 //
 // @param request - DeleteDomainMetaRequest
 //
@@ -2368,7 +3312,7 @@ func (client *Client) DeleteEnterpriseAcceleratePolicy(request *DeleteEnterprise
 
 // Summary:
 //
-// Deletes an enterprise acceleration address.
+// Deletes enterprise acceleration addresses.
 //
 // @param request - DeleteEnterpriseAccelerateTargetRequest
 //
@@ -2419,7 +3363,7 @@ func (client *Client) DeleteEnterpriseAccelerateTargetWithOptions(request *Delet
 
 // Summary:
 //
-// Deletes an enterprise acceleration address.
+// Deletes enterprise acceleration addresses.
 //
 // @param request - DeleteEnterpriseAccelerateTargetRequest
 //
@@ -2428,6 +3372,68 @@ func (client *Client) DeleteEnterpriseAccelerateTarget(request *DeleteEnterprise
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteEnterpriseAccelerateTargetResponse{}
 	_body, _err := client.DeleteEnterpriseAccelerateTargetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a forwarding rule.
+//
+// @param request - DeleteForwardStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteForwardStrategyResponse
+func (client *Client) DeleteForwardStrategyWithOptions(request *DeleteForwardStrategyRequest, runtime *dara.RuntimeOptions) (_result *DeleteForwardStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ForwardId) {
+		body["ForwardId"] = request.ForwardId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteForwardStrategy"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteForwardStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a forwarding rule.
+//
+// @param request - DeleteForwardStrategyRequest
+//
+// @return DeleteForwardStrategyResponse
+func (client *Client) DeleteForwardStrategy(request *DeleteForwardStrategyRequest) (_result *DeleteForwardStrategyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteForwardStrategyResponse{}
+	_body, _err := client.DeleteForwardStrategyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2778,6 +3784,201 @@ func (client *Client) DeletePrivateAccessTag(request *DeletePrivateAccessTagRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeletePrivateAccessTagResponse{}
 	_body, _err := client.DeletePrivateAccessTagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes software prohibition policies in batches.
+//
+// @param request - DeleteProhibitedPoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProhibitedPoliciesResponse
+func (client *Client) DeleteProhibitedPoliciesWithOptions(request *DeleteProhibitedPoliciesRequest, runtime *dara.RuntimeOptions) (_result *DeleteProhibitedPoliciesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.PolicyIds) {
+		bodyFlat["PolicyIds"] = request.PolicyIds
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteProhibitedPolicies"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteProhibitedPoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes software prohibition policies in batches.
+//
+// @param request - DeleteProhibitedPoliciesRequest
+//
+// @return DeleteProhibitedPoliciesResponse
+func (client *Client) DeleteProhibitedPolicies(request *DeleteProhibitedPoliciesRequest) (_result *DeleteProhibitedPoliciesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteProhibitedPoliciesResponse{}
+	_body, _err := client.DeleteProhibitedPoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes custom prohibited software in batches.
+//
+// @param request - DeleteProhibitedSoftwareRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProhibitedSoftwareResponse
+func (client *Client) DeleteProhibitedSoftwareWithOptions(request *DeleteProhibitedSoftwareRequest, runtime *dara.RuntimeOptions) (_result *DeleteProhibitedSoftwareResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.SoftwareIds) {
+		bodyFlat["SoftwareIds"] = request.SoftwareIds
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteProhibitedSoftware"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteProhibitedSoftwareResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes custom prohibited software in batches.
+//
+// @param request - DeleteProhibitedSoftwareRequest
+//
+// @return DeleteProhibitedSoftwareResponse
+func (client *Client) DeleteProhibitedSoftware(request *DeleteProhibitedSoftwareRequest) (_result *DeleteProhibitedSoftwareResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteProhibitedSoftwareResponse{}
+	_body, _err := client.DeleteProhibitedSoftwareWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除自定义标签
+//
+// @param request - DeleteProhibitedTagsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProhibitedTagsResponse
+func (client *Client) DeleteProhibitedTagsWithOptions(request *DeleteProhibitedTagsRequest, runtime *dara.RuntimeOptions) (_result *DeleteProhibitedTagsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.TagIds) {
+		bodyFlat["TagIds"] = request.TagIds
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteProhibitedTags"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteProhibitedTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除自定义标签
+//
+// @param request - DeleteProhibitedTagsRequest
+//
+// @return DeleteProhibitedTagsResponse
+func (client *Client) DeleteProhibitedTags(request *DeleteProhibitedTagsRequest) (_result *DeleteProhibitedTagsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteProhibitedTagsResponse{}
+	_body, _err := client.DeleteProhibitedTagsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3494,7 +4695,7 @@ func (client *Client) GetApproval(request *GetApprovalRequest) (_result *GetAppr
 
 // Summary:
 //
-// Queries the details of an approval flow under the current Alibaba Cloud account.
+// Queries the details of an approval process under the current Alibaba Cloud account.
 //
 // @param request - GetApprovalProcessRequest
 //
@@ -3534,7 +4735,7 @@ func (client *Client) GetApprovalProcessWithOptions(request *GetApprovalProcessR
 
 // Summary:
 //
-// Queries the details of an approval flow under the current Alibaba Cloud account.
+// Queries the details of an approval process under the current Alibaba Cloud account.
 //
 // @param request - GetApprovalProcessRequest
 //
@@ -3610,7 +4811,7 @@ func (client *Client) GetApprovalSchema(request *GetApprovalSchemaRequest) (_res
 
 // Summary:
 //
-// Queries the details of the auto-start and anti-uninstall policy for your Alibaba Cloud account.
+// Queries the details of the auto-start and anti-uninstall policy under the current Alibaba Cloud account.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -3639,7 +4840,7 @@ func (client *Client) GetBootAndAntiUninstallPolicyWithOptions(runtime *dara.Run
 
 // Summary:
 //
-// Queries the details of the auto-start and anti-uninstall policy for your Alibaba Cloud account.
+// Queries the details of the auto-start and anti-uninstall policy under the current Alibaba Cloud account.
 //
 // @return GetBootAndAntiUninstallPolicyResponse
 func (client *Client) GetBootAndAntiUninstallPolicy() (_result *GetBootAndAntiUninstallPolicyResponse, _err error) {
@@ -3713,6 +4914,254 @@ func (client *Client) GetClientUser(request *GetClientUserRequest) (_result *Get
 
 // Summary:
 //
+// Queries the details of a connector.
+//
+// @param request - GetConnectorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConnectorResponse
+func (client *Client) GetConnectorWithOptions(request *GetConnectorRequest, runtime *dara.RuntimeOptions) (_result *GetConnectorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetConnector"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetConnectorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a connector.
+//
+// @param request - GetConnectorRequest
+//
+// @return GetConnectorResponse
+func (client *Client) GetConnector(request *GetConnectorRequest) (_result *GetConnectorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetConnectorResponse{}
+	_body, _err := client.GetConnectorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a ConnectorClient.
+//
+// @param request - GetConnectorClientRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConnectorClientResponse
+func (client *Client) GetConnectorClientWithOptions(request *GetConnectorClientRequest, runtime *dara.RuntimeOptions) (_result *GetConnectorClientResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetConnectorClient"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetConnectorClientResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a ConnectorClient.
+//
+// @param request - GetConnectorClientRequest
+//
+// @return GetConnectorClientResponse
+func (client *Client) GetConnectorClient(request *GetConnectorClientRequest) (_result *GetConnectorClientResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetConnectorClientResponse{}
+	_body, _err := client.GetConnectorClientWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a specified device label.
+//
+// @param request - GetDeviceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDeviceGroupResponse
+func (client *Client) GetDeviceGroupWithOptions(request *GetDeviceGroupRequest, runtime *dara.RuntimeOptions) (_result *GetDeviceGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DeviceGroupId) {
+		query["DeviceGroupId"] = request.DeviceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDeviceGroup"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDeviceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a specified device label.
+//
+// @param request - GetDeviceGroupRequest
+//
+// @return GetDeviceGroupResponse
+func (client *Client) GetDeviceGroup(request *GetDeviceGroupRequest) (_result *GetDeviceGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetDeviceGroupResponse{}
+	_body, _err := client.GetDeviceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the online time distribution of a specified terminal device on a specified date, aggregated by minute.
+//
+// @param request - GetDeviceOnlineHeatmapRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDeviceOnlineHeatmapResponse
+func (client *Client) GetDeviceOnlineHeatmapWithOptions(request *GetDeviceOnlineHeatmapRequest, runtime *dara.RuntimeOptions) (_result *GetDeviceOnlineHeatmapResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Date) {
+		query["Date"] = request.Date
+	}
+
+	if !dara.IsNil(request.DevTag) {
+		query["DevTag"] = request.DevTag
+	}
+
+	if !dara.IsNil(request.SaseUserId) {
+		query["SaseUserId"] = request.SaseUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDeviceOnlineHeatmap"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDeviceOnlineHeatmapResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the online time distribution of a specified terminal device on a specified date, aggregated by minute.
+//
+// @param request - GetDeviceOnlineHeatmapRequest
+//
+// @return GetDeviceOnlineHeatmapResponse
+func (client *Client) GetDeviceOnlineHeatmap(request *GetDeviceOnlineHeatmapRequest) (_result *GetDeviceOnlineHeatmapResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetDeviceOnlineHeatmapResponse{}
+	_body, _err := client.GetDeviceOnlineHeatmapWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves details about a dynamic route in your Alibaba Cloud account.
 //
 // @param request - GetDynamicRouteRequest
@@ -3762,6 +5211,72 @@ func (client *Client) GetDynamicRoute(request *GetDynamicRouteRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetDynamicRouteResponse{}
 	_body, _err := client.GetDynamicRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a forwarding rule.
+//
+// Description:
+//
+// Creates a domain name list of a specified type (blacklist/whitelist) under the current tenant and returns the ListId of the new list. You can create up to 100 lists of each type per tenant.
+//
+// @param request - GetForwardStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetForwardStrategyResponse
+func (client *Client) GetForwardStrategyWithOptions(request *GetForwardStrategyRequest, runtime *dara.RuntimeOptions) (_result *GetForwardStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetForwardStrategy"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetForwardStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a forwarding rule.
+//
+// Description:
+//
+// Creates a domain name list of a specified type (blacklist/whitelist) under the current tenant and returns the ListId of the new list. You can create up to 100 lists of each type per tenant.
+//
+// @param request - GetForwardStrategyRequest
+//
+// @return GetForwardStrategyResponse
+func (client *Client) GetForwardStrategy(request *GetForwardStrategyRequest) (_result *GetForwardStrategyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetForwardStrategyResponse{}
+	_body, _err := client.GetForwardStrategyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4066,6 +5581,128 @@ func (client *Client) GetPrivateAccessPolicy(request *GetPrivateAccessPolicyRequ
 
 // Summary:
 //
+// Queries the details of a specified software prohibition policy.
+//
+// @param request - GetProhibitedPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProhibitedPolicyResponse
+func (client *Client) GetProhibitedPolicyWithOptions(request *GetProhibitedPolicyRequest, runtime *dara.RuntimeOptions) (_result *GetProhibitedPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetProhibitedPolicy"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetProhibitedPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a specified software prohibition policy.
+//
+// @param request - GetProhibitedPolicyRequest
+//
+// @return GetProhibitedPolicyResponse
+func (client *Client) GetProhibitedPolicy(request *GetProhibitedPolicyRequest) (_result *GetProhibitedPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetProhibitedPolicyResponse{}
+	_body, _err := client.GetProhibitedPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a specified prohibited software.
+//
+// @param tmpReq - GetProhibitedSoftwareRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProhibitedSoftwareResponse
+func (client *Client) GetProhibitedSoftwareWithOptions(tmpReq *GetProhibitedSoftwareRequest, runtime *dara.RuntimeOptions) (_result *GetProhibitedSoftwareResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetProhibitedSoftwareShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SoftwareId) {
+		request.SoftwareIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SoftwareId, dara.String("SoftwareId"), dara.String("json"))
+	}
+
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetProhibitedSoftware"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetProhibitedSoftwareResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a specified prohibited software.
+//
+// @param request - GetProhibitedSoftwareRequest
+//
+// @return GetProhibitedSoftwareResponse
+func (client *Client) GetProhibitedSoftware(request *GetProhibitedSoftwareRequest) (_result *GetProhibitedSoftwareResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetProhibitedSoftwareResponse{}
+	_body, _err := client.GetProhibitedSoftwareWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a device registration policy within the current Alibaba Cloud account.
 //
 // @param request - GetRegistrationPolicyRequest
@@ -4173,6 +5810,80 @@ func (client *Client) GetUserDevice(request *GetUserDeviceRequest) (_result *Get
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetUserDeviceResponse{}
 	_body, _err := client.GetUserDeviceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the workload usage trends of a specified endpoint device.
+//
+// @param request - GetUserDeviceWorkloadTrendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserDeviceWorkloadTrendResponse
+func (client *Client) GetUserDeviceWorkloadTrendWithOptions(request *GetUserDeviceWorkloadTrendRequest, runtime *dara.RuntimeOptions) (_result *GetUserDeviceWorkloadTrendResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DeviceTag) {
+		query["DeviceTag"] = request.DeviceTag
+	}
+
+	if !dara.IsNil(request.From) {
+		query["From"] = request.From
+	}
+
+	if !dara.IsNil(request.To) {
+		query["To"] = request.To
+	}
+
+	if !dara.IsNil(request.WorkloadType) {
+		query["WorkloadType"] = request.WorkloadType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetUserDeviceWorkloadTrend"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetUserDeviceWorkloadTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the workload usage trends of a specified endpoint device.
+//
+// @param request - GetUserDeviceWorkloadTrendRequest
+//
+// @return GetUserDeviceWorkloadTrendResponse
+func (client *Client) GetUserDeviceWorkloadTrend(request *GetUserDeviceWorkloadTrendRequest) (_result *GetUserDeviceWorkloadTrendResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetUserDeviceWorkloadTrendResponse{}
+	_body, _err := client.GetUserDeviceWorkloadTrendWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4356,7 +6067,7 @@ func (client *Client) GetWmExtractTask(request *GetWmExtractTaskRequest) (_resul
 
 // Summary:
 //
-// Batch import acceleration addresses.
+// Imports acceleration addresses in batches.
 //
 // @param request - ImportEnterpriseAccelerateTargetsRequest
 //
@@ -4404,7 +6115,7 @@ func (client *Client) ImportEnterpriseAccelerateTargetsWithOptions(request *Impo
 
 // Summary:
 //
-// Batch import acceleration addresses.
+// Imports acceleration addresses in batches.
 //
 // @param request - ImportEnterpriseAccelerateTargetsRequest
 //
@@ -4935,6 +6646,80 @@ func (client *Client) ListConnectors(request *ListConnectorsRequest) (_result *L
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListConnectorsResponse{}
 	_body, _err := client.ListConnectorsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of device groups under the current Alibaba Cloud account by using paging.
+//
+// @param request - ListDeviceGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDeviceGroupsResponse
+func (client *Client) ListDeviceGroupsWithOptions(request *ListDeviceGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListDeviceGroupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.DeviceGroupIds) {
+		query["DeviceGroupIds"] = request.DeviceGroupIds
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDeviceGroups"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDeviceGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of device groups under the current Alibaba Cloud account by using paging.
+//
+// @param request - ListDeviceGroupsRequest
+//
+// @return ListDeviceGroupsResponse
+func (client *Client) ListDeviceGroups(request *ListDeviceGroupsRequest) (_result *ListDeviceGroupsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDeviceGroupsResponse{}
+	_body, _err := client.ListDeviceGroupsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6063,6 +7848,64 @@ func (client *Client) ListPopTrafficStatistics(request *ListPopTrafficStatistics
 
 // Summary:
 //
+// Queries the Layer 7 switches of internal-facing applications in batches.
+//
+// @param request - ListPrivateAccessApplicationL7SwitchesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPrivateAccessApplicationL7SwitchesResponse
+func (client *Client) ListPrivateAccessApplicationL7SwitchesWithOptions(request *ListPrivateAccessApplicationL7SwitchesRequest, runtime *dara.RuntimeOptions) (_result *ListPrivateAccessApplicationL7SwitchesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPrivateAccessApplicationL7Switches"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPrivateAccessApplicationL7SwitchesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the Layer 7 switches of internal-facing applications in batches.
+//
+// @param request - ListPrivateAccessApplicationL7SwitchesRequest
+//
+// @return ListPrivateAccessApplicationL7SwitchesResponse
+func (client *Client) ListPrivateAccessApplicationL7Switches(request *ListPrivateAccessApplicationL7SwitchesRequest) (_result *ListPrivateAccessApplicationL7SwitchesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListPrivateAccessApplicationL7SwitchesResponse{}
+	_body, _err := client.ListPrivateAccessApplicationL7SwitchesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries information about all internal-facing access applications under the current Alibaba Cloud account.
 //
 // @param request - ListPrivateAccessApplicationsRequest
@@ -6393,6 +8236,222 @@ func (client *Client) ListPrivateAccessTagsForDynamicRoute(request *ListPrivateA
 
 // Summary:
 //
+// Queries the list of software prohibition policies under the current Alibaba Cloud account by paging.
+//
+// @param tmpReq - ListProhibitedPoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProhibitedPoliciesResponse
+func (client *Client) ListProhibitedPoliciesWithOptions(tmpReq *ListProhibitedPoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListProhibitedPoliciesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListProhibitedPoliciesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SoftwareId) {
+		request.SoftwareIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SoftwareId, dara.String("SoftwareId"), dara.String("json"))
+	}
+
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListProhibitedPolicies"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListProhibitedPoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of software prohibition policies under the current Alibaba Cloud account by paging.
+//
+// @param request - ListProhibitedPoliciesRequest
+//
+// @return ListProhibitedPoliciesResponse
+func (client *Client) ListProhibitedPolicies(request *ListProhibitedPoliciesRequest) (_result *ListProhibitedPoliciesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListProhibitedPoliciesResponse{}
+	_body, _err := client.ListProhibitedPoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of prohibited software under the current Alibaba Cloud account by using paging.
+//
+// @param tmpReq - ListProhibitedSoftwareRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProhibitedSoftwareResponse
+func (client *Client) ListProhibitedSoftwareWithOptions(tmpReq *ListProhibitedSoftwareRequest, runtime *dara.RuntimeOptions) (_result *ListProhibitedSoftwareResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListProhibitedSoftwareShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TagId) {
+		request.TagIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagId, dara.String("TagId"), dara.String("json"))
+	}
+
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListProhibitedSoftware"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListProhibitedSoftwareResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of prohibited software under the current Alibaba Cloud account by using paging.
+//
+// @param request - ListProhibitedSoftwareRequest
+//
+// @return ListProhibitedSoftwareResponse
+func (client *Client) ListProhibitedSoftware(request *ListProhibitedSoftwareRequest) (_result *ListProhibitedSoftwareResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListProhibitedSoftwareResponse{}
+	_body, _err := client.ListProhibitedSoftwareWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of prohibited software tags under the current Alibaba Cloud account by paging.
+//
+// @param tmpReq - ListProhibitedTagsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProhibitedTagsResponse
+func (client *Client) ListProhibitedTagsWithOptions(tmpReq *ListProhibitedTagsRequest, runtime *dara.RuntimeOptions) (_result *ListProhibitedTagsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListProhibitedTagsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SoftwareId) {
+		request.SoftwareIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SoftwareId, dara.String("SoftwareId"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PolicyId) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !dara.IsNil(request.SoftwareIdShrink) {
+		query["SoftwareId"] = request.SoftwareIdShrink
+	}
+
+	if !dara.IsNil(request.TagIds) {
+		query["TagIds"] = request.TagIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListProhibitedTags"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListProhibitedTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of prohibited software tags under the current Alibaba Cloud account by paging.
+//
+// @param request - ListProhibitedTagsRequest
+//
+// @return ListProhibitedTagsResponse
+func (client *Client) ListProhibitedTags(request *ListProhibitedTagsRequest) (_result *ListProhibitedTagsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListProhibitedTagsResponse{}
+	_body, _err := client.ListProhibitedTagsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Query the list of device registration policies for your Alibaba Cloud account.
 //
 // @param request - ListRegistrationPoliciesRequest
@@ -6515,7 +8574,7 @@ func (client *Client) ListRegistrationPoliciesForUserGroup(request *ListRegistra
 //
 // ## Operation description
 //
-// - This operation performs paging query of risk events based on specified conditional criteria.
+// - This operation is used for paging query of risk events that meet specified conditional criteria.
 //
 // - `CurrentPage` and `PageSize` are required parameters that specify the current page number and the number of entries per page.
 //
@@ -6523,9 +8582,9 @@ func (client *Client) ListRegistrationPoliciesForUserGroup(request *ListRegistra
 //
 // - The `Status` and `StatusList` parameters cannot be used at the same time. They are used to filter risk events by disposition status.
 //
-// - Fuzzy matching is supported for `PolicyName` and `Username`.
+// - Fuzzy match queries are supported by settings `PolicyName` and `Username`.
 //
-// - The response includes the total number of risk events that match the query conditions and their details.
+// - The response includes the total number of risk events that meet the query conditions and their details.
 //
 // @param request - ListRiskItemsRequest
 //
@@ -6611,7 +8670,7 @@ func (client *Client) ListRiskItemsWithOptions(request *ListRiskItemsRequest, ru
 //
 // ## Operation description
 //
-// - This operation performs paging query of risk events based on specified conditional criteria.
+// - This operation is used for paging query of risk events that meet specified conditional criteria.
 //
 // - `CurrentPage` and `PageSize` are required parameters that specify the current page number and the number of entries per page.
 //
@@ -6619,9 +8678,9 @@ func (client *Client) ListRiskItemsWithOptions(request *ListRiskItemsRequest, ru
 //
 // - The `Status` and `StatusList` parameters cannot be used at the same time. They are used to filter risk events by disposition status.
 //
-// - Fuzzy matching is supported for `PolicyName` and `Username`.
+// - Fuzzy match queries are supported by settings `PolicyName` and `Username`.
 //
-// - The response includes the total number of risk events that match the query conditions and their details.
+// - The response includes the total number of risk events that meet the query conditions and their details.
 //
 // @param request - ListRiskItemsRequest
 //
@@ -6639,7 +8698,7 @@ func (client *Client) ListRiskItems(request *ListRiskItemsRequest) (_result *Lis
 
 // Summary:
 //
-// Lists the software installed on a user device.
+// Queries the list of software installed on user endpoint devices under the current Alibaba Cloud account.
 //
 // @param request - ListSoftwareForUserDeviceRequest
 //
@@ -6679,7 +8738,7 @@ func (client *Client) ListSoftwareForUserDeviceWithOptions(request *ListSoftware
 
 // Summary:
 //
-// Lists the software installed on a user device.
+// Queries the list of software installed on user endpoint devices under the current Alibaba Cloud account.
 //
 // @param request - ListSoftwareForUserDeviceRequest
 //
@@ -6813,7 +8872,7 @@ func (client *Client) ListTagsForPrivateAccessPolicy(request *ListTagsForPrivate
 
 // Summary:
 //
-// Retrieves a list of uninstallation requests for your Alibaba Cloud account.
+// Queries the list of uninstall applications under the current Alibaba Cloud account in batches.
 //
 // @param request - ListUninstallApplicationsRequest
 //
@@ -6853,7 +8912,7 @@ func (client *Client) ListUninstallApplicationsWithOptions(request *ListUninstal
 
 // Summary:
 //
-// Retrieves a list of uninstallation requests for your Alibaba Cloud account.
+// Queries the list of uninstall applications under the current Alibaba Cloud account in batches.
 //
 // @param request - ListUninstallApplicationsRequest
 //
@@ -7537,6 +9596,237 @@ func (client *Client) ModifyEnterpriseAcceleratePolicy(request *ModifyEnterprise
 
 // Summary:
 //
+// Modifies a forwarding rule.
+//
+// @param request - ModifyForwardStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyForwardStrategyResponse
+func (client *Client) ModifyForwardStrategyWithOptions(request *ModifyForwardStrategyRequest, runtime *dara.RuntimeOptions) (_result *ModifyForwardStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DestinationId) {
+		body["DestinationId"] = request.DestinationId
+	}
+
+	if !dara.IsNil(request.DestinationType) {
+		body["DestinationType"] = request.DestinationType
+	}
+
+	if !dara.IsNil(request.ForwardId) {
+		body["ForwardId"] = request.ForwardId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Priority) {
+		body["Priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyForwardStrategy"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyForwardStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a forwarding rule.
+//
+// @param request - ModifyForwardStrategyRequest
+//
+// @return ModifyForwardStrategyResponse
+func (client *Client) ModifyForwardStrategy(request *ModifyForwardStrategyRequest) (_result *ModifyForwardStrategyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyForwardStrategyResponse{}
+	_body, _err := client.ModifyForwardStrategyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the binding items of a forwarding rule.
+//
+// @param request - ModifyForwardStrategyBindingItemsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyForwardStrategyBindingItemsResponse
+func (client *Client) ModifyForwardStrategyBindingItemsWithOptions(request *ModifyForwardStrategyBindingItemsRequest, runtime *dara.RuntimeOptions) (_result *ModifyForwardStrategyBindingItemsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ItemIds) {
+		query["ItemIds"] = request.ItemIds
+	}
+
+	if !dara.IsNil(request.MatchMode) {
+		query["MatchMode"] = request.MatchMode
+	}
+
+	if !dara.IsNil(request.ModifyType) {
+		query["ModifyType"] = request.ModifyType
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ForwardId) {
+		body["ForwardId"] = request.ForwardId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyForwardStrategyBindingItems"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyForwardStrategyBindingItemsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the binding items of a forwarding rule.
+//
+// @param request - ModifyForwardStrategyBindingItemsRequest
+//
+// @return ModifyForwardStrategyBindingItemsResponse
+func (client *Client) ModifyForwardStrategyBindingItems(request *ModifyForwardStrategyBindingItemsRequest) (_result *ModifyForwardStrategyBindingItemsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyForwardStrategyBindingItemsResponse{}
+	_body, _err := client.ModifyForwardStrategyBindingItemsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes associated terminal devices from a static device label in batches.
+//
+// @param request - RemoveDeviceGroupMatchDevicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveDeviceGroupMatchDevicesResponse
+func (client *Client) RemoveDeviceGroupMatchDevicesWithOptions(request *RemoveDeviceGroupMatchDevicesRequest, runtime *dara.RuntimeOptions) (_result *RemoveDeviceGroupMatchDevicesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.DevTags) {
+		bodyFlat["DevTags"] = request.DevTags
+	}
+
+	if !dara.IsNil(request.DeviceGroupId) {
+		body["DeviceGroupId"] = request.DeviceGroupId
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveDeviceGroupMatchDevices"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveDeviceGroupMatchDevicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes associated terminal devices from a static device label in batches.
+//
+// @param request - RemoveDeviceGroupMatchDevicesRequest
+//
+// @return RemoveDeviceGroupMatchDevicesResponse
+func (client *Client) RemoveDeviceGroupMatchDevices(request *RemoveDeviceGroupMatchDevicesRequest) (_result *RemoveDeviceGroupMatchDevicesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RemoveDeviceGroupMatchDevicesResponse{}
+	_body, _err := client.RemoveDeviceGroupMatchDevicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Revokes a user device session.
 //
 // @param request - RevokeUserDeviceSessionRequest
@@ -7674,7 +9964,7 @@ func (client *Client) RevokeUserSession(request *RevokeUserSessionRequest) (_res
 
 // Summary:
 //
-// Updates an approval flow under the current Alibaba Cloud account.
+// Updates an approval process under the current Alibaba Cloud account.
 //
 // @param tmpReq - UpdateApprovalProcessRequest
 //
@@ -7765,7 +10055,7 @@ func (client *Client) UpdateApprovalProcessWithOptions(tmpReq *UpdateApprovalPro
 
 // Summary:
 //
-// Updates an approval flow under the current Alibaba Cloud account.
+// Updates an approval process under the current Alibaba Cloud account.
 //
 // @param request - UpdateApprovalProcessRequest
 //
@@ -7783,7 +10073,7 @@ func (client *Client) UpdateApprovalProcess(request *UpdateApprovalProcessReques
 
 // Summary:
 //
-// Updates the status of an approval instance under your Alibaba Cloud account.
+// Updates the instance status of an approval under the current Alibaba Cloud account.
 //
 // @param request - UpdateApprovalStatusRequest
 //
@@ -7831,7 +10121,7 @@ func (client *Client) UpdateApprovalStatusWithOptions(request *UpdateApprovalSta
 
 // Summary:
 //
-// Updates the status of an approval instance under your Alibaba Cloud account.
+// Updates the instance status of an approval under the current Alibaba Cloud account.
 //
 // @param request - UpdateApprovalStatusRequest
 //
@@ -8145,6 +10435,228 @@ func (client *Client) UpdateClientUserStatus(request *UpdateClientUserStatusRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateClientUserStatusResponse{}
 	_body, _err := client.UpdateClientUserStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a Connector instance under the current Alibaba Cloud account.
+//
+// @param request - UpdateConnectorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateConnectorResponse
+func (client *Client) UpdateConnectorWithOptions(request *UpdateConnectorRequest, runtime *dara.RuntimeOptions) (_result *UpdateConnectorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccelerateStatus) {
+		body["AccelerateStatus"] = request.AccelerateStatus
+	}
+
+	if !dara.IsNil(request.ConnectorId) {
+		body["ConnectorId"] = request.ConnectorId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.SwitchStatus) {
+		body["SwitchStatus"] = request.SwitchStatus
+	}
+
+	if !dara.IsNil(request.VipCidr) {
+		body["VipCidr"] = request.VipCidr
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateConnector"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateConnectorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a Connector instance under the current Alibaba Cloud account.
+//
+// @param request - UpdateConnectorRequest
+//
+// @return UpdateConnectorResponse
+func (client *Client) UpdateConnector(request *UpdateConnectorRequest) (_result *UpdateConnectorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateConnectorResponse{}
+	_body, _err := client.UpdateConnectorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a ConnectorClient under the current Alibaba Cloud account.
+//
+// @param request - UpdateConnectorClientRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateConnectorClientResponse
+func (client *Client) UpdateConnectorClientWithOptions(request *UpdateConnectorClientRequest, runtime *dara.RuntimeOptions) (_result *UpdateConnectorClientResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectorId) {
+		body["ConnectorId"] = request.ConnectorId
+	}
+
+	if !dara.IsNil(request.DevTag) {
+		body["DevTag"] = request.DevTag
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateConnectorClient"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateConnectorClientResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a ConnectorClient under the current Alibaba Cloud account.
+//
+// @param request - UpdateConnectorClientRequest
+//
+// @return UpdateConnectorClientResponse
+func (client *Client) UpdateConnectorClient(request *UpdateConnectorClientRequest) (_result *UpdateConnectorClientResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateConnectorClientResponse{}
+	_body, _err := client.UpdateConnectorClientWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a device label.
+//
+// @param request - UpdateDeviceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDeviceGroupResponse
+func (client *Client) UpdateDeviceGroupWithOptions(request *UpdateDeviceGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateDeviceGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DeviceGroupId) {
+		body["DeviceGroupId"] = request.DeviceGroupId
+	}
+
+	if !dara.IsNil(request.DynamicOperator) {
+		body["DynamicOperator"] = request.DynamicOperator
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDeviceGroup"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDeviceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a device label.
+//
+// @param request - UpdateDeviceGroupRequest
+//
+// @return UpdateDeviceGroupResponse
+func (client *Client) UpdateDeviceGroup(request *UpdateDeviceGroupRequest) (_result *UpdateDeviceGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateDeviceGroupResponse{}
+	_body, _err := client.UpdateDeviceGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8619,7 +11131,7 @@ func (client *Client) UpdateNacUserCertStatus(request *UpdateNacUserCertStatusRe
 
 // Summary:
 //
-// Modifies an internal-facing access application under the current Alibaba Cloud account.
+// Modifies a private access application under the current Alibaba Cloud account.
 //
 // @param tmpReq - UpdatePrivateAccessApplicationRequest
 //
@@ -8736,7 +11248,7 @@ func (client *Client) UpdatePrivateAccessApplicationWithOptions(tmpReq *UpdatePr
 
 // Summary:
 //
-// Modifies an internal-facing access application under the current Alibaba Cloud account.
+// Modifies a private access application under the current Alibaba Cloud account.
 //
 // @param request - UpdatePrivateAccessApplicationRequest
 //
@@ -8745,6 +11257,103 @@ func (client *Client) UpdatePrivateAccessApplication(request *UpdatePrivateAcces
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdatePrivateAccessApplicationResponse{}
 	_body, _err := client.UpdatePrivateAccessApplicationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the Layer 7 access switch for an internal-facing application.
+//
+// @param request - UpdatePrivateAccessApplicationL7SwitchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePrivateAccessApplicationL7SwitchResponse
+func (client *Client) UpdatePrivateAccessApplicationL7SwitchWithOptions(request *UpdatePrivateAccessApplicationL7SwitchRequest, runtime *dara.RuntimeOptions) (_result *UpdatePrivateAccessApplicationL7SwitchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		body["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.DevTagMarkStatus) {
+		body["DevTagMarkStatus"] = request.DevTagMarkStatus
+	}
+
+	if !dara.IsNil(request.DownloadAuditStatus) {
+		body["DownloadAuditStatus"] = request.DownloadAuditStatus
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.PortRanges) {
+		bodyFlat["PortRanges"] = request.PortRanges
+	}
+
+	if !dara.IsNil(request.SrcIpMarkStatus) {
+		body["SrcIpMarkStatus"] = request.SrcIpMarkStatus
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TimeoutSec) {
+		body["TimeoutSec"] = request.TimeoutSec
+	}
+
+	if !dara.IsNil(request.UserMarkStatus) {
+		body["UserMarkStatus"] = request.UserMarkStatus
+	}
+
+	if !dara.IsNil(request.ZeroTrustStatus) {
+		body["ZeroTrustStatus"] = request.ZeroTrustStatus
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdatePrivateAccessApplicationL7Switch"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdatePrivateAccessApplicationL7SwitchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the Layer 7 access switch for an internal-facing application.
+//
+// @param request - UpdatePrivateAccessApplicationL7SwitchRequest
+//
+// @return UpdatePrivateAccessApplicationL7SwitchResponse
+func (client *Client) UpdatePrivateAccessApplicationL7Switch(request *UpdatePrivateAccessApplicationL7SwitchRequest) (_result *UpdatePrivateAccessApplicationL7SwitchResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdatePrivateAccessApplicationL7SwitchResponse{}
+	_body, _err := client.UpdatePrivateAccessApplicationL7SwitchWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8903,6 +11512,314 @@ func (client *Client) UpdatePrivateAccessPolicy(request *UpdatePrivateAccessPoli
 
 // Summary:
 //
+// Updates a software prohibition policy.
+//
+// @param request - UpdateProhibitedPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateProhibitedPolicyResponse
+func (client *Client) UpdateProhibitedPolicyWithOptions(request *UpdateProhibitedPolicyRequest, runtime *dara.RuntimeOptions) (_result *UpdateProhibitedPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AllowReport) {
+		body["AllowReport"] = request.AllowReport
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Enabled) {
+		body["Enabled"] = request.Enabled
+	}
+
+	if !dara.IsNil(request.ForceKill) {
+		body["ForceKill"] = request.ForceKill
+	}
+
+	if !dara.IsNil(request.MainButtonTextCh) {
+		body["MainButtonTextCh"] = request.MainButtonTextCh
+	}
+
+	if !dara.IsNil(request.MainButtonTextEn) {
+		body["MainButtonTextEn"] = request.MainButtonTextEn
+	}
+
+	if !dara.IsNil(request.MatchMode) {
+		body["MatchMode"] = request.MatchMode
+	}
+
+	if !dara.IsNil(request.MinorButtonTextCh) {
+		body["MinorButtonTextCh"] = request.MinorButtonTextCh
+	}
+
+	if !dara.IsNil(request.MinorButtonTextEn) {
+		body["MinorButtonTextEn"] = request.MinorButtonTextEn
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ObjectType) {
+		body["ObjectType"] = request.ObjectType
+	}
+
+	if !dara.IsNil(request.PolicyId) {
+		body["PolicyId"] = request.PolicyId
+	}
+
+	if !dara.IsNil(request.PolicyType) {
+		body["PolicyType"] = request.PolicyType
+	}
+
+	if !dara.IsNil(request.Priority) {
+		body["Priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.PromptCh) {
+		body["PromptCh"] = request.PromptCh
+	}
+
+	if !dara.IsNil(request.PromptEn) {
+		body["PromptEn"] = request.PromptEn
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.SoftwareIds) {
+		bodyFlat["SoftwareIds"] = request.SoftwareIds
+	}
+
+	if !dara.IsNil(request.TagIds) {
+		bodyFlat["TagIds"] = request.TagIds
+	}
+
+	if !dara.IsNil(request.TitleCh) {
+		body["TitleCh"] = request.TitleCh
+	}
+
+	if !dara.IsNil(request.TitleEn) {
+		body["TitleEn"] = request.TitleEn
+	}
+
+	if !dara.IsNil(request.UserGroupIds) {
+		bodyFlat["UserGroupIds"] = request.UserGroupIds
+	}
+
+	if !dara.IsNil(request.Whitelist) {
+		bodyFlat["Whitelist"] = request.Whitelist
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateProhibitedPolicy"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateProhibitedPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a software prohibition policy.
+//
+// @param request - UpdateProhibitedPolicyRequest
+//
+// @return UpdateProhibitedPolicyResponse
+func (client *Client) UpdateProhibitedPolicy(request *UpdateProhibitedPolicyRequest) (_result *UpdateProhibitedPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateProhibitedPolicyResponse{}
+	_body, _err := client.UpdateProhibitedPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a custom prohibited software entry.
+//
+// @param request - UpdateProhibitedSoftwareRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateProhibitedSoftwareResponse
+func (client *Client) UpdateProhibitedSoftwareWithOptions(request *UpdateProhibitedSoftwareRequest, runtime *dara.RuntimeOptions) (_result *UpdateProhibitedSoftwareResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.LinuxProcesses) {
+		bodyFlat["LinuxProcesses"] = request.LinuxProcesses
+	}
+
+	if !dara.IsNil(request.MacOSProcesses) {
+		bodyFlat["MacOSProcesses"] = request.MacOSProcesses
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.SoftwareId) {
+		body["SoftwareId"] = request.SoftwareId
+	}
+
+	if !dara.IsNil(request.TagIds) {
+		bodyFlat["TagIds"] = request.TagIds
+	}
+
+	if !dara.IsNil(request.WindowsProcesses) {
+		bodyFlat["WindowsProcesses"] = request.WindowsProcesses
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateProhibitedSoftware"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateProhibitedSoftwareResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a custom prohibited software entry.
+//
+// @param request - UpdateProhibitedSoftwareRequest
+//
+// @return UpdateProhibitedSoftwareResponse
+func (client *Client) UpdateProhibitedSoftware(request *UpdateProhibitedSoftwareRequest) (_result *UpdateProhibitedSoftwareResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateProhibitedSoftwareResponse{}
+	_body, _err := client.UpdateProhibitedSoftwareWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a custom prohibited software tag.
+//
+// @param request - UpdateProhibitedTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateProhibitedTagResponse
+func (client *Client) UpdateProhibitedTagWithOptions(request *UpdateProhibitedTagRequest, runtime *dara.RuntimeOptions) (_result *UpdateProhibitedTagResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.TagId) {
+		body["TagId"] = request.TagId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateProhibitedTag"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateProhibitedTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a custom prohibited software tag.
+//
+// @param request - UpdateProhibitedTagRequest
+//
+// @return UpdateProhibitedTagResponse
+func (client *Client) UpdateProhibitedTag(request *UpdateProhibitedTagRequest) (_result *UpdateProhibitedTagResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateProhibitedTagResponse{}
+	_body, _err := client.UpdateProhibitedTagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies a device registration policy for your Alibaba Cloud account.
 //
 // @param tmpReq - UpdateRegistrationPolicyRequest
@@ -9022,13 +11939,13 @@ func (client *Client) UpdateRegistrationPolicy(request *UpdateRegistrationPolicy
 
 // Summary:
 //
-// Updates the current handling status and conclusion of a specified risk event.
+// Updates the current processing status and conclusion of a specified risk event.
 //
 // Description:
 //
 // ## Request description
 //
-// - This operation allows you to update the handling status of a specific risk event under your Alibaba Cloud account.
+// - This operation allows you to update the processing status of a specific risk event under your Alibaba Cloud account.
 //
 // - When `Status` is set to `Processed`, you must provide the `RiskConfirm` parameter to specify the manually confirmed risk conclusion.
 //
@@ -9036,7 +11953,7 @@ func (client *Client) UpdateRegistrationPolicy(request *UpdateRegistrationPolicy
 //
 // - The `RiskScene` parameter is optional. If not provided, the system automatically populates it based on `RiskId`.
 //
-// - The `RiskConfirmDesc` field provides additional explanation or remarks for the handling decision. The length must be 1 to 128 characters.
+// - The `RiskConfirmDesc` field provides additional explanation or remarks for the processing decision. The length must be 1 to 128 characters.
 //
 // @param request - UpdateRiskStatusRequest
 //
@@ -9096,13 +12013,13 @@ func (client *Client) UpdateRiskStatusWithOptions(request *UpdateRiskStatusReque
 
 // Summary:
 //
-// Updates the current handling status and conclusion of a specified risk event.
+// Updates the current processing status and conclusion of a specified risk event.
 //
 // Description:
 //
 // ## Request description
 //
-// - This operation allows you to update the handling status of a specific risk event under your Alibaba Cloud account.
+// - This operation allows you to update the processing status of a specific risk event under your Alibaba Cloud account.
 //
 // - When `Status` is set to `Processed`, you must provide the `RiskConfirm` parameter to specify the manually confirmed risk conclusion.
 //
@@ -9110,7 +12027,7 @@ func (client *Client) UpdateRiskStatusWithOptions(request *UpdateRiskStatusReque
 //
 // - The `RiskScene` parameter is optional. If not provided, the system automatically populates it based on `RiskId`.
 //
-// - The `RiskConfirmDesc` field provides additional explanation or remarks for the handling decision. The length must be 1 to 128 characters.
+// - The `RiskConfirmDesc` field provides additional explanation or remarks for the processing decision. The length must be 1 to 128 characters.
 //
 // @param request - UpdateRiskStatusRequest
 //
@@ -9128,7 +12045,7 @@ func (client *Client) UpdateRiskStatus(request *UpdateRiskStatusRequest) (_resul
 
 // Summary:
 //
-// Batch updates the status of uninstall requests for your Alibaba Cloud account.
+// Updates the status of uninstall applications in batches under the current Alibaba Cloud account.
 //
 // @param request - UpdateUninstallApplicationsStatusRequest
 //
@@ -9179,7 +12096,7 @@ func (client *Client) UpdateUninstallApplicationsStatusWithOptions(request *Upda
 
 // Summary:
 //
-// Batch updates the status of uninstall requests for your Alibaba Cloud account.
+// Updates the status of uninstall applications in batches under the current Alibaba Cloud account.
 //
 // @param request - UpdateUninstallApplicationsStatusRequest
 //

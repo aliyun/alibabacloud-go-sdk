@@ -20,7 +20,7 @@ type iListUninstallApplicationsResponseBody interface {
 type ListUninstallApplicationsResponseBody struct {
 	// The list of uninstall applications.
 	Applications []*ListUninstallApplicationsResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -95,31 +95,31 @@ type ListUninstallApplicationsResponseBodyApplications struct {
 	//
 	// 2023-07-17 18:46:55
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The user\\"s department.
+	// The department to which the user belongs.
 	//
 	// example:
 	//
-	// 测试部
+	// Testing Department
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
-	// The device ID.
+	// The ID of the terminal device.
 	//
 	// example:
 	//
 	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
 	DevTag *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
-	// The operating system of the device. Valid values:
+	// The operating system type of the terminal device. Valid values:
 	//
-	// - **Windows**
+	// - **Windows**: Windows.
 	//
-	// - **macOS**
+	// - **macOS**: macOS.
 	//
-	// - **Linux**
+	// - **Linux**: Linux.
 	//
-	// - **Android**
+	// - **Android**: Android.
 	//
-	// - **iOS**
+	// - **iOS**: iOS.
 	//
-	// - **Windows_Wuying**: Elastic Desktop Service.
+	// - **Windows_Wuying**: WUYING Workspace.
 	//
 	// example:
 	//
@@ -127,25 +127,25 @@ type ListUninstallApplicationsResponseBodyApplications struct {
 	DevType *string `json:"DevType,omitempty" xml:"DevType,omitempty"`
 	// The list of full department paths.
 	FullDepartment []*string `json:"FullDepartment,omitempty" xml:"FullDepartment,omitempty" type:"Repeated"`
-	// The hostname of the device.
+	// The name of the terminal device.
 	//
 	// example:
 	//
 	// win10-64bit
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// The name of the Identity Provider (IdP).
+	// The name of the user identity source.
 	//
 	// example:
 	//
-	// 测试身份源
+	// Test identity source
 	IdpName *string `json:"IdpName,omitempty" xml:"IdpName,omitempty"`
-	// Indicates whether the application has been uninstalled.
+	// Indicates whether the uninstallation has been performed.
 	//
 	// example:
 	//
 	// false
 	IsUninstall *bool `json:"IsUninstall,omitempty" xml:"IsUninstall,omitempty"`
-	// The MAC address of the device.
+	// The MAC address of the terminal device.
 	//
 	// example:
 	//
@@ -155,7 +155,7 @@ type ListUninstallApplicationsResponseBodyApplications struct {
 	//
 	// example:
 	//
-	// 这是一个测试
+	// This is a test
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The user ID.
 	//
@@ -163,13 +163,13 @@ type ListUninstallApplicationsResponseBodyApplications struct {
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
-	// The status of the uninstall application. Valid values:
+	// The uninstall application status. Valid values:
 	//
-	// - **Pending**
+	// - **Pending**: Pending processing.
 	//
-	// - **Approved**
+	// - **Approved**: Approved.
 	//
-	// - **Rejected**
+	// - **Rejected**: Rejected.
 	//
 	// example:
 	//
@@ -179,7 +179,7 @@ type ListUninstallApplicationsResponseBodyApplications struct {
 	//
 	// example:
 	//
-	// 王先生
+	// Mr. Wang
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 

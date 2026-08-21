@@ -32,7 +32,7 @@ type iListRiskItemsRequest interface {
 }
 
 type ListRiskItemsRequest struct {
-	// The current page number in a paging query. Valid values: 1 to 10000.
+	// The page number of the current page in a paging query. Valid values: 1 to 10000.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type ListRiskItemsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the risk analysis policy. Fuzzy matching is supported.
+	// The name of the risk analysis policy. Fuzzy match is supported.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ListRiskItemsRequest struct {
 	//
 	// identify_safe
 	RiskCategory *string `json:"RiskCategory,omitempty" xml:"RiskCategory,omitempty"`
-	// The risk event ID. If specified, the system performs an exact query for the specified risk event.
+	// The risk event ID. If specified, the exact risk event is queried.
 	//
 	// example:
 	//
@@ -96,9 +96,11 @@ type ListRiskItemsRequest struct {
 	//
 	// 	- `device_share`: device sharing.
 	//
-	// 	- `remote_logon`: remote logon.
+	// 	- `remote_logon`: remote logon from an unusual location.
 	//
 	// 	- `sensitive_data_leakage`: sensitive data exfiltration.
+	//
+	// 	- `compressed_archive_exfil`: compressed data exfiltration from the internal network.
 	//
 	// 	- `lateral_scanning`: lateral scanning.
 	//
@@ -112,15 +114,15 @@ type ListRiskItemsRequest struct {
 	//
 	// account_stolen
 	RiskScene *string `json:"RiskScene,omitempty" xml:"RiskScene,omitempty"`
-	// The disposition status of the risk event. This parameter cannot be used together with `StatusList`.
+	// The disposition status of the risk event. This parameter cannot be set together with `StatusList`.
 	//
 	// example:
 	//
 	// Unprocess
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The list of disposition statuses of risk events, in Flat serialization format. This parameter cannot be used together with Status.
+	// The list of disposition statuses of risk events, in Flat serialization format. This parameter cannot be set together with Status.
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
-	// The username associated with the risk event. Fuzzy matching is supported. Maximum length: 128 characters.
+	// The username associated with the risk event. Fuzzy match is supported. Maximum length: 128 characters.
 	//
 	// example:
 	//

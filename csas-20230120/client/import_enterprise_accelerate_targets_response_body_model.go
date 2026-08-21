@@ -16,13 +16,13 @@ type iImportEnterpriseAccelerateTargetsResponseBody interface {
 }
 
 type ImportEnterpriseAccelerateTargetsResponseBody struct {
-	// ID of the import task.
+	// The ID of the import task.
 	//
 	// example:
 	//
 	// 1648723859058501
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// ID of this request.
+	// The request ID.
 	//
 	// example:
 	//

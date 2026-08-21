@@ -24,7 +24,7 @@ type CreateEnterpriseAccelerateTargetRequest struct {
 	//
 	// eap-eec34d4b12fcca61
 	EapId *string `json:"EapId,omitempty" xml:"EapId,omitempty"`
-	// A list of enterprise acceleration addresses.
+	// The list of enterprise acceleration addresses.
 	//
 	// This parameter is required.
 	Target []*string `json:"Target,omitempty" xml:"Target,omitempty" type:"Repeated"`

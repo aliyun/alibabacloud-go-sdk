@@ -16,11 +16,11 @@ type iUpdateApprovalStatusRequest interface {
 }
 
 type UpdateApprovalStatusRequest struct {
-	// The ID of the approval instance. Obtain the value from:
+	// The approval instance ID. You can obtain this value from the following operations:
 	//
-	// - [ListApprovals](~~ListApprovals~~): Query a list of approval instances in batches.
+	// - [ListApprovals](~~ListApprovals~~): Lists approval instances.
 	//
-	// - [GetApproval](~~GetApproval~~): Query the details of an approval instance.
+	// - [GetApproval](~~GetApproval~~): Queries the details of an approval instance.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type UpdateApprovalStatusRequest struct {
 	//
 	// approval-872b5e911b35****
 	ApprovalId *string `json:"ApprovalId,omitempty" xml:"ApprovalId,omitempty"`
-	// The status of the approval instance. Valid values:
+	// The approval instance status. Valid values:
 	//
 	// - **Approved**: Approved.
 	//

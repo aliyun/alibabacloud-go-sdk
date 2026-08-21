@@ -30,47 +30,47 @@ type iCreateEnterpriseAcceleratePolicyRequest interface {
 }
 
 type CreateEnterpriseAcceleratePolicyRequest struct {
-	// Acceleration pattern:
+	// The acceleration mode. Valid values:
 	//
-	// - **whitelist**: Whitelist acceleration
+	// - **whiltelist**: whitelist-based acceleration.
 	//
-	// - **global**: Global acceleration
+	// - **global**: global acceleration.
 	//
-	// - **build-in-list**: Built-in application acceleration
+	// - **build-in-list**: built-in application acceleration.
 	//
 	// example:
 	//
 	// whitelist
 	AccelerationType *string `json:"AccelerationType,omitempty" xml:"AccelerationType,omitempty"`
-	// Policy description. Length: 1 to 512 characters.
+	// The description of the enterprise management policy. The description must be 1 to 512 characters in length.
 	//
 	// example:
 	//
-	// 用于全局网络访问的加速策略
+	// Acceleration policy for global network access
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Policy Name.
+	// The policy name.
 	//
 	// example:
 	//
-	// 全局加速策略
+	// GlobalAccelerationPolicy
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Priority.
+	// The priority.
 	//
 	// example:
 	//
 	// 99
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// Whether to display this policy in the client:
+	// Specifies whether to display the policy in the client. Valid values:
 	//
-	// - **0**: Do not display
+	// - **0**: not displayed.
 	//
-	// - **1**: Display
+	// - **1**: displayed.
 	//
 	// example:
 	//
 	// 1
 	ShowInClient *int32 `json:"ShowInClient,omitempty" xml:"ShowInClient,omitempty"`
-	// The IP address or domain name of the acceleration instance.
+	// The address (IP address or domain name) of the acceleration instance.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +78,7 @@ type CreateEnterpriseAcceleratePolicyRequest struct {
 	//
 	// 12.34.56.XX
 	UpstreamHost *string `json:"UpstreamHost,omitempty" xml:"UpstreamHost,omitempty"`
-	// Port for the accelerated instance. The port must be between 1000 and 60000.
+	// The port of the acceleration instance. Valid values: 1000 to 60000.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type CreateEnterpriseAcceleratePolicyRequest struct {
 	//
 	// 1000
 	UpstreamPort *int32 `json:"UpstreamPort,omitempty" xml:"UpstreamPort,omitempty"`
-	// Accelerated instance.
+	// The acceleration instance.
 	//
 	// This parameter is required.
 	//
@@ -94,13 +94,13 @@ type CreateEnterpriseAcceleratePolicyRequest struct {
 	//
 	// ga
 	UpstreamType *string `json:"UpstreamType,omitempty" xml:"UpstreamType,omitempty"`
-	// User group for acceleration.
+	// The acceleration user group.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 测试用户组
+	// TestUserGroup
 	UserAttributeGroup *string `json:"UserAttributeGroup,omitempty" xml:"UserAttributeGroup,omitempty"`
 }
 

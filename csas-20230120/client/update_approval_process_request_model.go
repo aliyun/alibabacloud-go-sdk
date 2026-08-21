@@ -31,7 +31,7 @@ type iUpdateApprovalProcessRequest interface {
 
 type UpdateApprovalProcessRequest struct {
 	ApprovalType *int32 `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
-	// The description of the approval flow. The description must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces. Chinese characters are supported.
+	// The description of the approval process. The description must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces. Chinese characters are supported.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type UpdateApprovalProcessRequest struct {
 	MatchSchemaConfigs *UpdateApprovalProcessRequestMatchSchemaConfigs `json:"MatchSchemaConfigs,omitempty" xml:"MatchSchemaConfigs,omitempty" type:"Struct"`
 	// The matched approval templates.
 	MatchSchemas *UpdateApprovalProcessRequestMatchSchemas `json:"MatchSchemas,omitempty" xml:"MatchSchemas,omitempty" type:"Struct"`
-	// The ID of the approval flow.
+	// The ID of the approval process.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type UpdateApprovalProcessRequest struct {
 	//
 	// approval-process-f16bf74b2b29****
 	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	// The name of the approval flow. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). Chinese characters are supported.
+	// The name of the approval process. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). Chinese characters are supported.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type ListRiskItemsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of risk events.
 	RiskItems []*ListRiskItemsResponseBodyRiskItems `json:"RiskItems,omitempty" xml:"RiskItems,omitempty" type:"Repeated"`
-	// The total number of risk events that match the query conditions.
+	// The total number of risk events that meet the query conditions.
 	//
 	// example:
 	//
@@ -95,7 +95,7 @@ type ListRiskItemsResponseBodyRiskItems struct {
 	//
 	// The account logged on from an unusual device, and the behavior is inconsistent with the historical baseline
 	AiConclusion *string `json:"AiConclusion,omitempty" xml:"AiConclusion,omitempty"`
-	// The risk judgment provided by AI. An empty string is returned if no AI analysis result exists. Valid values:
+	// The risk judgment provided by AI. An empty string is returned if no AI analysis results exist. Valid values:
 	//
 	// 	- `Risk`: determined as risky.
 	//
@@ -159,7 +159,7 @@ type ListRiskItemsResponseBodyRiskItems struct {
 	//
 	// identify_safe
 	RiskCategory *string `json:"RiskCategory,omitempty" xml:"RiskCategory,omitempty"`
-	// The manually confirmed risk conclusion. An empty string is returned if the event has not been confirmed. Valid values:
+	// The manually confirmed risk conclusion. An empty string is returned if not confirmed. Valid values:
 	//
 	// 	- `Risk`: confirmed as risky.
 	//
@@ -175,7 +175,7 @@ type ListRiskItemsResponseBodyRiskItems struct {
 	//
 	// example:
 	//
-	// Upon investigation, the logon was not authorized by the user
+	// After verification, the logon was not authorized by the user
 	RiskConfirmDesc *string `json:"RiskConfirmDesc,omitempty" xml:"RiskConfirmDesc,omitempty"`
 	// The risk description.
 	//
@@ -223,7 +223,7 @@ type ListRiskItemsResponseBodyRiskItems struct {
 	//
 	// - `device_share`: device sharing.
 	//
-	// - `remote_logon`: remote logon.
+	// - `remote_logon`: remote logon from an unusual location.
 	//
 	// - `sensitive_data_leakage`: sensitive data exfiltration.
 	//
@@ -261,7 +261,7 @@ type ListRiskItemsResponseBodyRiskItems struct {
 	//
 	// example:
 	//
-	// Verify the account user and freeze the account or reset credentials based on the investigation results
+	// Verify the account user and freeze the account or reset credentials based on the verification result
 	Solution *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
 	// The disposition status of the risk event. Valid values:
 	//

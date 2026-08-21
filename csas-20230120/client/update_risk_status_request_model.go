@@ -34,7 +34,7 @@ type UpdateRiskStatusRequest struct {
 	//
 	// Risk
 	RiskConfirm *string `json:"RiskConfirm,omitempty" xml:"RiskConfirm,omitempty"`
-	// The description of the risk event handling. The length must be 1 to 128 characters.
+	// The description of the risk event processing decision. The value must be 1 to 128 characters in length.
 	//
 	// example:
 	//
@@ -60,6 +60,8 @@ type UpdateRiskStatusRequest struct {
 	//
 	// 	- sensitive_data_leakage: Sensitive data leakage.
 	//
+	// 	- `compressed_archive_exfil`: Internal network data compression and exfiltration.
+	//
 	// 	- lateral_scanning: Lateral scanning.
 	//
 	// 	- ai_skill_malware: Malicious skill.
@@ -72,7 +74,7 @@ type UpdateRiskStatusRequest struct {
 	//
 	// account_stolen
 	RiskScene *string `json:"RiskScene,omitempty" xml:"RiskScene,omitempty"`
-	// The handling status of the risk event. Valid values:
+	// The processing status of the risk event. Valid values:
 	//
 	// 	- `Unprocess`: Unprocessed.
 	//

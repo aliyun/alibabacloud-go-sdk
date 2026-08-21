@@ -44,13 +44,13 @@ type iCreateWmEmbedTaskShrinkRequest interface {
 }
 
 type CreateWmEmbedTaskShrinkRequest struct {
-	// Audio control parameters.
+	// The audio control parameters.
 	AudioControlShrink *string `json:"AudioControl,omitempty" xml:"AudioControl,omitempty"`
-	// CSV watermark embedding control parameters.
+	// The CSV watermark embedding control parameters.
 	CsvControlShrink *string `json:"CsvControl,omitempty" xml:"CsvControl,omitempty"`
-	// Document watermark control parameters.
+	// The document watermark control parameters.
 	DocumentControlShrink *string `json:"DocumentControl,omitempty" xml:"DocumentControl,omitempty"`
-	// URL for downloading the file to embed. The URL must support public network access.
+	// The URL for downloading the file to be embedded. The URL must be active for public network access.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type CreateWmEmbedTaskShrinkRequest struct {
 	//
 	// https://example.com/abc****.pdf
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// The filename of the file to embed. The backend validates the file type based on the filename extension.
+	// The name of the file to be embedded. The backend validates the file type based on the file name extension.
 	//
 	// This parameter is required.
 	//
@@ -66,81 +66,69 @@ type CreateWmEmbedTaskShrinkRequest struct {
 	//
 	// abc****.pdf
 	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
-	// Image watermark control parameters.
+	// The image watermark control parameters.
 	ImageControlShrink *string `json:"ImageControl,omitempty" xml:"ImageControl,omitempty"`
-	// Image watermark parameter: the desired JPEG compression quality factor for the output image. Default value is 95. Valid range: 1 to 100.
+	// The image watermark parameter that specifies the expected JPEG compression quality factor of the output image. Default value: 95. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 95
 	ImageEmbedJpegQuality *int64 `json:"ImageEmbedJpegQuality,omitempty" xml:"ImageEmbedJpegQuality,omitempty"`
-	// Image watermark parameter: A higher value indicates greater robustness but reduced visual quality. Default value: 2. Valid values: 0 to 4.
+	// The image watermark parameter. A larger value indicates higher robustness but lower visual quality. Default value: 2. Valid values: 0 to 4.
 	//
 	// example:
 	//
 	// 2
 	ImageEmbedLevel *int64 `json:"ImageEmbedLevel,omitempty" xml:"ImageEmbedLevel,omitempty"`
 	// Specifies whether to enable invisible watermark embedding. Default value: true.
-	//
-	// Valid values:
-	//
-	// - **true**: Yes
-	//
-	// - **false**: No
 	InvisibleEnable *bool `json:"InvisibleEnable,omitempty" xml:"InvisibleEnable,omitempty"`
-	// Short video watermark parameter: specifies the video bitrate. By default, the video bitrate is automatically retrieved. You can use this parameter to explicitly specify the bitrate used during extraction. This parameter usually does not need to be set.
+	// The short video watermark parameter that specifies the video bitrate. By default, the video bitrate is automatically obtained. You can use this parameter to forcibly specify the bitrate used during extraction. Typically, you do not need to set this parameter.
 	//
 	// example:
 	//
 	// 3000k
 	VideoBitrate *string `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
-	// Video control parameters.
+	// The video control parameters.
 	VideoControlShrink *string `json:"VideoControl,omitempty" xml:"VideoControl,omitempty"`
-	// Video watermark parameter: whether to use the long-video watermark software development kit (SDK). The default value is false. Valid values:
+	// Video watermark parameter. Specifies whether to use the long video watermark SDK. Valid values:
 	//
-	// - **true**: Yes
+	// - **true**: The long video watermark SDK is used.
 	//
-	// - **false**: No
+	// - **false**: The long video watermark SDK is not used.
+	//
+	// Default value: false.
 	//
 	// example:
 	//
 	// false
 	VideoIsLong *bool `json:"VideoIsLong,omitempty" xml:"VideoIsLong,omitempty"`
-	// Base64-encoded string-formatted watermark information. If this value is set, WmInfoUint cannot be set.
+	// The watermark information in Base64-encoded string format. If this parameter is set, WmInfoUint cannot be set.
 	//
 	// example:
 	//
 	// aGVsbG8gc2F*****
 	WmInfoBytesB64 *string `json:"WmInfoBytesB64,omitempty" xml:"WmInfoBytesB64,omitempty"`
-	// The bit width of the watermark information. The default value is 32. This parameter must be consistent between embedding and extraction. For example, if a 40-bit software development kit (SDK) is used for embedding, this value must also be set to 40 during extraction.
+	// The bit width of the watermark information capacity. Default value: 32. This parameter must be consistent between embedding and extraction. For example, if the 40-bit SDK is used for embedding, set this parameter to 40 during extraction as well.
 	//
 	// example:
 	//
 	// 32
 	WmInfoSize *int64 `json:"WmInfoSize,omitempty" xml:"WmInfoSize,omitempty"`
-	// Watermark information in decimal numeric format. If this parameter is set, WmInfoBytesB64 cannot be set.
-	//
-	// The valid value range depends on the WmInfoSize parameter:
-	//
-	// - When WmInfoSize is 32, the value range is 1 to 4294967295.
-	//
-	// - When WmInfoSize is 40, the value range is 1 to 1099511627775.
-	//
-	// - When WmInfoSize is 64, the value range is 1 to 18446744073709551615.
+	// The watermark information in decimal number format. If this parameter is set, WmInfoBytesB64 cannot be set.
 	//
 	// example:
 	//
 	// 123***
 	WmInfoUint *string `json:"WmInfoUint,omitempty" xml:"WmInfoUint,omitempty"`
-	// Watermark type. Valid values:
+	// The watermark type. Valid values:
 	//
-	// - **PureDocument**: Document watermark.
+	// - **PureDocument**: document watermark.
 	//
-	// - **PureImage**: Image watermark.
+	// - **PureImage**: image watermark.
 	//
-	// - **PureAudio**: Audio watermark.
+	// - **PureAudio**: audio watermark.
 	//
-	// - **PureVideo**: Video watermark.
+	// - **PureVideo**: video watermark.
 	//
 	// - **AigcDocument**: AIGC document watermark.
 	//

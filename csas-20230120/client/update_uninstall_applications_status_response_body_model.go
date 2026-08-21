@@ -16,9 +16,9 @@ type iUpdateUninstallApplicationsStatusResponseBody interface {
 }
 
 type UpdateUninstallApplicationsStatusResponseBody struct {
-	// List of uninstall requests.
+	// The list of uninstall applications.
 	Applications []*UpdateUninstallApplicationsStatusResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	// The ID of this request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,85 +66,85 @@ func (s *UpdateUninstallApplicationsStatusResponseBody) Validate() error {
 }
 
 type UpdateUninstallApplicationsStatusResponseBodyApplications struct {
-	// Uninstall request ID.
+	// The uninstall application ID.
 	//
 	// example:
 	//
 	// uninstall-app-6646831ac314****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// Time when the uninstall request was created.
+	// The time when the uninstall application was created.
 	//
 	// example:
 	//
 	// 2023-07-17 18:46:55
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Department to which the user belongs.
+	// The department to which the user belongs.
 	//
 	// example:
 	//
-	// 测试部
+	// Testing Department
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
-	// Endpoint device ID.
+	// The ID of the endpoint device.
 	//
 	// example:
 	//
 	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
 	DevTag *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
-	// Operating system type of the endpoint device. Valid values:
+	// The operating system type of the endpoint device. Valid values:
 	//
-	// - **Windows**: Windows operating system.
+	// - **Windows**: Windows.
 	//
-	// - **macOS**: macOS operating system.
+	// - **macOS**: macOS.
 	//
-	// - **Linux**: Linux operating system.
+	// - **Linux**: Linux.
 	//
-	// - **Android**: Android operating system.
+	// - **Android**: Android.
 	//
-	// - **iOS**: iOS operating system.
+	// - **iOS**: iOS.
 	//
-	// - **Windows_Wuying**: Alibaba Cloud Desktop operating system.
+	// - **Windows_Wuying**: WUYING Workspace.
 	//
 	// example:
 	//
 	// Windows
 	DevType *string `json:"DevType,omitempty" xml:"DevType,omitempty"`
-	// Device name of the endpoint.
+	// The name of the endpoint device.
 	//
 	// example:
 	//
 	// win10-64bit
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// Name of the user identity source.
+	// The name of the identity provider.
 	//
 	// example:
 	//
-	// 测试身份源
+	// Test Identity Provider
 	IdpName *string `json:"IdpName,omitempty" xml:"IdpName,omitempty"`
-	// Indicates whether the uninstall has been executed.
+	// Indicates whether the uninstallation has been performed.
 	//
 	// example:
 	//
 	// false
 	IsUninstall *bool `json:"IsUninstall,omitempty" xml:"IsUninstall,omitempty"`
-	// MAC address of the endpoint device.
+	// The MAC address of the endpoint device.
 	//
 	// example:
 	//
 	// 00:16:XX:XX:7c:46
 	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	// Reason for the request.
+	// The reason for the application.
 	//
 	// example:
 	//
-	// 这是一个测试
+	// This is a test
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// User ID.
+	// The user ID.
 	//
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
-	// Status of the uninstall request. Valid values:
+	// The status of the uninstall application. Valid values:
 	//
 	// - **Pending**: Pending.
 	//
@@ -156,11 +156,11 @@ type UpdateUninstallApplicationsStatusResponseBodyApplications struct {
 	//
 	// Approved
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Username.
+	// The username.
 	//
 	// example:
 	//
-	// 王先生
+	// Mr. Wang
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 

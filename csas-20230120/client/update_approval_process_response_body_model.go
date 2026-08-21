@@ -16,7 +16,7 @@ type iUpdateApprovalProcessResponseBody interface {
 }
 
 type UpdateApprovalProcessResponseBody struct {
-	// The approval flow.
+	// The approval process.
 	Process *UpdateApprovalProcessResponseBodyProcess `json:"Process,omitempty" xml:"Process,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -65,13 +65,13 @@ type UpdateApprovalProcessResponseBodyProcess struct {
 	// The list of policies associated with terminal uninstall.
 	AppUninstallPolicies *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies `json:"AppUninstallPolicies,omitempty" xml:"AppUninstallPolicies,omitempty" type:"Struct"`
 	ApprovalType         *int32                                                        `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
-	// The time when the approval flow was created.
+	// The time when the approval process was created.
 	//
 	// example:
 	//
 	// 2022-07-11 15:31:39
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the approval flow.
+	// The description of the approval process.
 	//
 	// example:
 	//
@@ -91,13 +91,13 @@ type UpdateApprovalProcessResponseBodyProcess struct {
 	// The list of policies associated with peripheral control.
 	PeripheraBlockPolicies     *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies     `json:"PeripheraBlockPolicies,omitempty" xml:"PeripheraBlockPolicies,omitempty" type:"Struct"`
 	PrivateAccessBlockPolicies *UpdateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies `json:"PrivateAccessBlockPolicies,omitempty" xml:"PrivateAccessBlockPolicies,omitempty" type:"Struct"`
-	// The ID of the approval flow.
+	// The ID of the approval process.
 	//
 	// example:
 	//
 	// approval-process-2677fcf063f5****
 	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	// The name of the approval flow.
+	// The name of the approval process.
 	//
 	// example:
 	//
@@ -1253,7 +1253,7 @@ type UpdateApprovalProcessResponseBodyProcessProcessNodes struct {
 	//
 	// example:
 	//
-	// Wang
+	// Mr. Wang
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 

@@ -14,7 +14,7 @@ type iCreateEnterpriseAccelerateTargetResponseBody interface {
 }
 
 type CreateEnterpriseAccelerateTargetResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

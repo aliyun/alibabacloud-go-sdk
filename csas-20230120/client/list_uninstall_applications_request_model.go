@@ -28,9 +28,9 @@ type iListUninstallApplicationsRequest interface {
 }
 
 type ListUninstallApplicationsRequest struct {
-	// An array of uninstall application IDs.
+	// The collection of uninstall application IDs.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
-	// The number of the page to return. Valid values: 1 to 10000.
+	// The page number of the current page in a paging query. Valid values: 1 to 10000.
 	//
 	// This parameter is required.
 	//
@@ -38,25 +38,25 @@ type ListUninstallApplicationsRequest struct {
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The department. The value must be 1 to 128 characters long and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces.
+	// The department to which the user belongs. The value is 1 to 128 characters in length, supports Chinese and uppercase and lowercase letters, and can contain digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces.
 	//
 	// example:
 	//
-	// 测试部
+	// Testing Department
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
-	// The hostname of the endpoint. The value must be 1 to 128 characters long and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces. If you enter only an underscore (`_`), the query also returns endpoints with names that contain 4-byte UTF-8 characters.
+	// The name of the terminal device. The value is 1 to 128 characters in length, supports Chinese and uppercase and lowercase letters, and can contain digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces. Entering only an underscore (_) additionally queries all terminal devices whose names contain 4-byte UTF-8 characters.
 	//
 	// example:
 	//
 	// win10-64bit
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// The MAC address of the endpoint.
+	// The MAC address of the terminal device.
 	//
 	// example:
 	//
 	// 00:16:XX:XX:7c:46
 	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	// The number of entries per page. Valid values: 1 to 500.
+	// The number of entries per page in a paging query. Valid values: 1 to 500.
 	//
 	// This parameter is required.
 	//
@@ -64,13 +64,13 @@ type ListUninstallApplicationsRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// An array of uninstall application statuses.
+	// The collection of uninstall application statuses.
 	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
-	// The username. The value must be 1 to 128 characters long and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), asterisks (\\*), at signs (@), and spaces.
+	// The username. The value is 1 to 128 characters in length, supports Chinese and uppercase and lowercase letters, and can contain digits, periods (.), underscores (_), hyphens (-), asterisks (*), at signs (@), and spaces.
 	//
 	// example:
 	//
-	// 王先生
+	// Mr. Wang
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 

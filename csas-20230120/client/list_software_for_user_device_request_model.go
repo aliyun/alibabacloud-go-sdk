@@ -18,7 +18,7 @@ type iListSoftwareForUserDeviceRequest interface {
 }
 
 type ListSoftwareForUserDeviceRequest struct {
-	// The page number. Valid values: 1 to 10,000.
+	// The page number of the current page in a paged query. Valid values: 1 to 10000.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type ListSoftwareForUserDeviceRequest struct {
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The ID of the user device. Call one of the following operations to obtain the device ID:
+	// The endpoint device ID. You can obtain this value from the following operations:
 	//
-	// - [GetUserDevice](~~GetUserDevice~~): Get the details of a user device.
+	// - [GetUserDevice](~~GetUserDevice~~): Queries the details of a user endpoint device.
 	//
-	// - [ListUserDevices](~~ListUserDevices~~): Get a list of user devices.
+	// - [ListUserDevices](~~ListUserDevices~~): Queries user endpoint devices in batches.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type ListSoftwareForUserDeviceRequest struct {
 	//
 	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
 	DeviceTag *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
-	// The number of entries per page. Valid values: 1 to 500.
+	// The number of entries per page in a paged query. Valid values: 1 to 500.
 	//
 	// This parameter is required.
 	//

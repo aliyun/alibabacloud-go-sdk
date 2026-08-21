@@ -16,7 +16,7 @@ type iDeleteEnterpriseAccelerateTargetRequest interface {
 }
 
 type DeleteEnterpriseAccelerateTargetRequest struct {
-	// Enterprise acceleration policy ID.
+	// The ID of the enterprise acceleration policy.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteEnterpriseAccelerateTargetRequest struct {
 	//
 	// eap-ed1f0e392a28a4e6
 	EapId *string `json:"EapId,omitempty" xml:"EapId,omitempty"`
-	// List of enterprise acceleration targets.
+	// The list of enterprise acceleration addresses.
 	//
 	// This parameter is required.
 	Target []*string `json:"Target,omitempty" xml:"Target,omitempty" type:"Repeated"`
