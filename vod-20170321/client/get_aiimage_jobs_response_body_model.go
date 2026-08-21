@@ -16,9 +16,9 @@ type iGetAIImageJobsResponseBody interface {
 }
 
 type GetAIImageJobsResponseBody struct {
-	// The image AI processing jobs.
+	// The list of AI image processing tasks.
 	AIImageJobList []*GetAIImageJobsResponseBodyAIImageJobList `json:"AIImageJobList,omitempty" xml:"AIImageJobList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ func (s *GetAIImageJobsResponseBody) Validate() error {
 }
 
 type GetAIImageJobsResponseBodyAIImageJobList struct {
-	// The Object Storage Service (OSS) URL of the image file.
+	// The OSS URL of the AI image.
 	//
-	// > This parameter does not include the complete authentication information. To obtain the authentication information, you must generate a signed URL. Alternatively, you can call the [ListAIImageInfo](~~ListAIImageInfo~~) operation to obtain the image information.
+	// >This is the task result. The URL does not contain complete authentication information. To obtain authentication information, generate it yourself or call the [ListAIImage](https://help.aliyun.com/document_detail/186924.html) operation to retrieve the media asset result.
 	//
 	// example:
 	//
@@ -80,13 +80,13 @@ type GetAIImageJobsResponseBodyAIImageJobList struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The time when the image AI processing job was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the AI image processing task was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2020-10-15T03:30:03Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the image AI processing job.
+	// The ID of the AI image processing task.
 	//
 	// example:
 	//
@@ -98,43 +98,43 @@ type GetAIImageJobsResponseBodyAIImageJobList struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The status of the job. Valid values:
+	// The task status. Valid values:
 	//
-	// 	- **success**
+	// - **success**: The task is successful.
 	//
-	// 	- **fail**
+	// - **fail**: The task failed.
 	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The configurations of the AI template that was used to submit the job.
+	// The snapshot of the configuration information of the specified template when the task was submitted.
 	//
 	// example:
 	//
 	// {"Format":"gif","SetDefaultCover":"true"}
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	// The ID of the AI template.
+	// The AI template ID.
 	//
 	// example:
 	//
 	// 5a86a00f15194*****d7fe7de1b4a173
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The user data.
+	// The custom settings.
 	//
-	// 	- The value must be a JSON string.
+	// - The value must be a JSON string.
 	//
-	// 	- The MessageCallback or Extend parameter is returned.
+	// - The value must contain the MessageCallback or Extend parameter.
 	//
-	// 	- The value contains a maximum of 512 bytes.
+	// - The maximum length is 512 bytes.
 	//
-	// For more information, see the "UserData: specifies the custom configurations for media upload" section of the [Request parameters](https://help.aliyun.com/document_detail/86952.html) topic.
+	// For more information about the parameter structure, see [UserData](https://help.aliyun.com/document_detail/86952.html).
 	//
 	// example:
 	//
 	// {"Extend":{"localId":"****","test":"www"}}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// The ID of the video.
+	// The video ID.
 	//
 	// example:
 	//

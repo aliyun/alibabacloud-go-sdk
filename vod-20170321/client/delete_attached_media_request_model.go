@@ -14,11 +14,11 @@ type iDeleteAttachedMediaRequest interface {
 }
 
 type DeleteAttachedMediaRequest struct {
-	// The ID of the auxiliary media asset that you want to delete.
+	// The auxiliary media asset IDs.
 	//
-	// 	- Separate multiple IDs with commas (,). You can specify up to 20 IDs.
+	// - Separate multiple IDs with commas (,). A maximum of 20 IDs are supported.
 	//
-	// 	- You can obtain the ID from the response to the [CreateUploadAttachedMedia](~~CreateUploadAttachedMedia~~) operation that you call to obtain the upload URL and credential.
+	// - The IDs are returned after you call the [CreateUploadAttachedMedia](~~CreateUploadAttachedMedia~~) operation to obtain the upload URL and credential for auxiliary media assets.
 	//
 	// This parameter is required.
 	//

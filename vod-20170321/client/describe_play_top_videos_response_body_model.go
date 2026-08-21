@@ -34,14 +34,14 @@ type DescribePlayTopVideosResponseBody struct {
 	//
 	// 100
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4B0BCF9F-2FD5-4817-****-7BEBBE3AF90B"
 	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TopPlayVideos *DescribePlayTopVideosResponseBodyTopPlayVideos `json:"TopPlayVideos,omitempty" xml:"TopPlayVideos,omitempty" type:"Struct"`
-	// The total number of entries that were collected in playback statistics on top videos.
+	// The total number of top videos.
 	//
 	// example:
 	//

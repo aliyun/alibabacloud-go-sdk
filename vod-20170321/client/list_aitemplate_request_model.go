@@ -14,11 +14,11 @@ type iListAITemplateRequest interface {
 }
 
 type ListAITemplateRequest struct {
-	// The type of the AI template. Valid values:
+	// The templatetype of the AI template. Valid values:
 	//
-	// 	- **AIMediaAudit**: automated review
+	// - **AIMediaAudit**: automated review.
 	//
-	// 	- **AIImage**: smart thumbnail
+	// - **AIImage**: smart thumbnail.
 	//
 	// This parameter is required.
 	//

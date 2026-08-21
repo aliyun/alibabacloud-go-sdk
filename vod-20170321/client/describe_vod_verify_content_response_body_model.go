@@ -22,7 +22,7 @@ type DescribeVodVerifyContentResponseBody struct {
 	//
 	// verify_dffeb661*****3a59c31cd91f
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

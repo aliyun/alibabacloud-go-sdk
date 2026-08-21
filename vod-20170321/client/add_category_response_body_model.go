@@ -16,9 +16,9 @@ type iAddCategoryResponseBody interface {
 }
 
 type AddCategoryResponseBody struct {
-	// The information about the category.
+	// The media asset category information.
 	Category *AddCategoryResponseBodyCategory `json:"Category,omitempty" xml:"Category,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,41 +62,41 @@ func (s *AddCategoryResponseBody) Validate() error {
 }
 
 type AddCategoryResponseBodyCategory struct {
-	// The ID of the category. You can use the value of this parameter when you call the [UpdateCategory](~~UpdateCategory~~), [DeleteCategory](~~DeleteCategory~~), and [GetCategories](~~GetCategories~~) operations.
+	// The category ID. This ID can be used as a request parameter for the [UpdateCategory](~~UpdateCategory~~), [DeleteCategory](~~DeleteCategory~~), and [GetCategories](~~GetCategories~~) operations.
 	//
 	// example:
 	//
 	// 10020
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The name of the category.
+	// The category name.
 	//
 	// example:
 	//
-	// test
+	// Comedy
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The level of the category. Valid values:
+	// The category level. Valid values:
 	//
-	// 	- **0**: level 1 category
+	// - **0**: level-0 category.
 	//
-	// 	- **1**: level 2 category
+	// - **1**: level-1 category.
 	//
-	// 	- **1**: level 3 category
+	// - **2**: level-2 category.
 	//
 	// example:
 	//
 	// 1
 	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The ID of the parent category.
+	// The parent category ID.
 	//
 	// example:
 	//
 	// 100012
 	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// The type of the category. Valid values:
+	// The category type. Valid values:
 	//
-	// 	- **default**: audio, video, and image files
+	// - **default**: audio/video/image category.
 	//
-	// 	- **material**: short video materials
+	// - **material**: short video material category.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iCreateAppInfoResponseBody interface {
 }
 
 type CreateAppInfoResponseBody struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

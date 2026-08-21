@@ -18,7 +18,9 @@ type iAddAITemplateRequest interface {
 }
 
 type AddAITemplateRequest struct {
-	// The detailed configurations of the AI template. The value must be a JSON string. For more information, see [AITemplateConfig](~~89863#title-vd3-499-o36~~).
+	// The detailed configuration of the AI template. The value is a JSON string.
+	//
+	// For more information, see [AITemplateConfig](~~89863#title-vd3-499-o36~~).
 	//
 	// This parameter is required.
 	//
@@ -26,7 +28,7 @@ type AddAITemplateRequest struct {
 	//
 	// {"AuditItem":["terrorism","porn"],"AuditRange":["image-cover","text-title","video"],"AuditContent":["screen"],"AuditAutoBlock":"yes"}
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	// The name of the AI template. The name can be up to 128 bytes in length.
+	// The name of the AI template. Maximum length: 128 bytes.
 	//
 	// This parameter is required.
 	//
@@ -34,11 +36,11 @@ type AddAITemplateRequest struct {
 	//
 	// AI-media-test
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The type of the AI template. Valid values:
+	// The templatetype of the AI template. Valid values:
 	//
-	// 	- **AIMediaAudit**: automated review
+	// - **AIMediaAudit**: automated review.
 	//
-	// 	- **AIImage**: smart thumbnail
+	// - **AIImage**: smart thumbnail.
 	//
 	// This parameter is required.
 	//

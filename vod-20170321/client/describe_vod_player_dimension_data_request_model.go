@@ -22,26 +22,76 @@ type iDescribeVodPlayerDimensionDataRequest interface {
 }
 
 type DescribeVodPlayerDimensionDataRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app-1000000
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The dimension type. Valid values:
+	//
+	// - Os: operating system.
+	//
+	// - AppVersion: application version.
+	//
+	// - SdkVersion: SDK version.
+	//
+	// - Codec: codec.
+	//
+	// - VideoType: video format.
+	//
+	// - Network: network type.
+	//
+	// - Isp: Internet service provider.
+	//
+	// - VideoDefinition: resolution.
+	//
+	// - Domain: domain name.
+	//
+	// - Country: country.
+	//
+	// - Province: province.
+	//
+	// - ErrorCode: error code.
+	//
+	// - IsHw: whether hardware decoding is used.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Os
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	// The end time of the query. Specify the time in the yyyy-mm-ddthh:mm:ssz format (UTC).
+	//
 	// example:
 	//
 	// 2025-06-05T15:59:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The region filter used when querying the Province or Isp dimension metadata. Valid values:
+	//
+	// - ALL (default): all regions.
+	//
+	// - CN: China.
+	//
+	// - OVERSEAS: outside China.
+	//
 	// example:
 	//
 	// ALL
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The start time of the query. Specify the time in the <i>yyyy-mm-dd</i>t<i>hh:mm:ss</i>z format (UTC).
+	//
+	// >
+	//
+	// > - Playback data from the last year is supported.
+	//
+	// > - The time range for a single query cannot exceed 31 days.
+	//
+	// > - The time interval is left-closed and right-open [StartTime, EndTime).
+	//
 	// example:
 	//
 	// 2025-06-24T00:55:06Z

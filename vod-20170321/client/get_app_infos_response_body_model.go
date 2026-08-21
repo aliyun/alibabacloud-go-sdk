@@ -20,17 +20,17 @@ type iGetAppInfosResponseBody interface {
 }
 
 type GetAppInfosResponseBody struct {
-	// The details of applications.
+	// The list of application information.
 	AppInfoList []*GetAppInfosResponseBodyAppInfoList `json:"AppInfoList,omitempty" xml:"AppInfoList,omitempty" type:"Repeated"`
-	// The HTTP status code that is returned.
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The IDs of applications that do not exist.
+	// The list of application IDs that do not exist.
 	NonExistAppIds []*string `json:"NonExistAppIds,omitempty" xml:"NonExistAppIds,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,31 +96,31 @@ func (s *GetAppInfosResponseBody) Validate() error {
 }
 
 type GetAppInfosResponseBodyAppInfoList struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The time when the application was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The creation time in UTC. The time follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2019-03-01T08:00:00Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the application.
+	// The application description.
 	//
 	// example:
 	//
 	// my first app.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The last time when the application was modified. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The modification time in UTC. The time follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -132,21 +132,21 @@ type GetAppInfosResponseBodyAppInfoList struct {
 	//
 	// rg-aekzko7fsuj****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the application. Valid values:
+	// The application status. Valid values:
 	//
-	// 	- **Normal**
+	// - **Normal**: normal.
 	//
-	// 	- **Disable**
+	// - **Disable**: disabled.
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the application. Valid values:
+	// The application type. Valid values:
 	//
-	// 	- **System**
+	// - **System**: system default.
 	//
-	// 	- **Custom**
+	// - **Custom**: user-created.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iAddEditingProjectMaterialsResponseBody interface {
 }
 
 type AddEditingProjectMaterialsResponseBody struct {
-	// The materials.
+	// The list of materials.
 	MaterialList []*AddEditingProjectMaterialsResponseBodyMaterialList `json:"MaterialList,omitempty" xml:"MaterialList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,103 +66,103 @@ func (s *AddEditingProjectMaterialsResponseBody) Validate() error {
 }
 
 type AddEditingProjectMaterialsResponseBodyMaterialList struct {
-	// The ID of the category.
+	// The category ID.
 	//
 	// example:
 	//
 	// 1000487543
 	CateId *int32 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The category name of the material.
+	// The material category name.
 	//
 	// example:
 	//
-	// cate1
+	// Category 1
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The thumbnail URL.
+	// The thumbnail URL of the material.
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the material was created. The time follows the ISO 8601 standard in the *YYYY-MM-DD**Thh:mm:ss	- format. The time is displayed in UTC.
+	// The time when the material was created. The time follows the format: <i>yyyy-mm-dd</i>t<i>hh:mm:ss</i>z (UTC).
 	//
 	// example:
 	//
 	// 2019-10-02T08:26Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the user.
+	// The user ID.
 	//
 	// example:
 	//
 	// 1234751840694470
 	CustomerId *int64 `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
-	// The description of the material.
+	// The material description.
 	//
 	// example:
 	//
-	// test material
+	// Material description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The duration of the material. Unit: seconds. The value is accurate to four decimal places.
+	// The material duration. Unit: seconds. The value is accurate to four decimal places.
 	//
 	// example:
 	//
 	// 3690.2332
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The ID of the material.
+	// The material ID.
 	//
 	// example:
 	//
 	// 85befc4118b84c6723e53b80b1****
 	MaterialId *string `json:"MaterialId,omitempty" xml:"MaterialId,omitempty"`
-	// The type of the material. Valid values:
+	// The material type. Valid values:
 	//
-	// 	- **video**
+	// - **video**: video.
 	//
-	// 	- **audio**
+	// - **audio**: audio-only.
 	//
-	// 	- **image**
+	// - **image**: image.
 	//
 	// example:
 	//
 	// video
 	MaterialType *string `json:"MaterialType,omitempty" xml:"MaterialType,omitempty"`
-	// The time when the material was last updated. The time follows the ISO 8601 standard in the *YYYY-MM-DD**Thh:mm:ss	- format. The time is displayed in UTC.
+	// The time when the material was last modified. The time follows the format: <i>yyyy-mm-dd</i>t<i>hh:mm:ss</i>z (UTC).
 	//
 	// example:
 	//
 	// 2022-11-25T07:28:34Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The size of the material.
+	// The file size.
 	//
 	// example:
 	//
 	// 1682694
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The URLs of snapshots.
+	// The array of snapshot URLs for the material.
 	Snapshots []*string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
-	// The configuration of the sprite snapshot.
+	// The sprite configuration.
 	//
 	// example:
 	//
 	// xxx
 	SpriteConfig *string `json:"SpriteConfig,omitempty" xml:"SpriteConfig,omitempty"`
-	// The URLs of sprite snapshots.
+	// The array of sprite URLs for the material.
 	Sprites []*string `json:"Sprites,omitempty" xml:"Sprites,omitempty" type:"Repeated"`
-	// The status of the material. Valid values:
+	// The material status. Valid values:
 	//
-	// 	- **Normal**
+	// - **Normal**: Normal.
 	//
-	// 	- **Uploading**
+	// - **Uploading**: Uploading.
 	//
-	// 	- **UploadFail**
+	// - **UploadFail**: Upload failed.
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag of the material. Multiple tags are separated by commas (,).
+	// The material tags. Multiple tags are separated by commas (,).
 	//
 	// example:
 	//
 	// tag1,tag2
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The title of the material.
+	// The material title.
 	//
 	// example:
 	//

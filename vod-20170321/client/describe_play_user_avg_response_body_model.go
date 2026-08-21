@@ -16,7 +16,7 @@ type iDescribePlayUserAvgResponseBody interface {
 }
 
 type DescribePlayUserAvgResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

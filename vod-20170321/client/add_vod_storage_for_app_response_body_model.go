@@ -16,13 +16,13 @@ type iAddVodStorageForAppResponseBody interface {
 }
 
 type AddVodStorageForAppResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 25818875-5F78-4A*****F6-D7393642CA58
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The address of the VOD bucket.
+	// The storage address of the created VOD system bucket.
 	//
 	// example:
 	//

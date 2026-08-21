@@ -24,9 +24,9 @@ type iDescribeVodDomainLogRequest interface {
 }
 
 type DescribeVodDomainLogRequest struct {
-	// The domain name for CDN.
+	// The accelerated domain name for ApsaraVideo VOD.
 	//
-	// >  You can specify only one domain name in each query.
+	// > Only a single domain name is supported.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DescribeVodDomainLogRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. The maximum time range that can be specified is one year. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+	// The end of the time range to query. The end time must be later than the start time. The interval between the start time and end time cannot exceed one year. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format (UTC).
 	//
 	// example:
 	//
@@ -49,15 +49,15 @@ type DescribeVodDomainLogRequest struct {
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
 	//
-	// 	- Default value: **300**.
+	// - Default value: **300**
 	//
-	// 	- Valid values: **1 to 1000**.
+	// - Maximum value: **1000**
 	//
 	// example:
 	//
 	// 300
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+	// The beginning of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format (UTC).
 	//
 	// example:
 	//

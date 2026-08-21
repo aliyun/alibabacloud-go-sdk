@@ -26,7 +26,7 @@ type iSetCrossdomainContentRequest interface {
 }
 
 type SetCrossdomainContentRequest struct {
-	// The content of the cross-domain policy file. The file must be in the XML format and can contain up to 2,048 characters.
+	// The content of the cross-domain file. The content is in XML format and cannot exceed 2,048 characters.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type SetCrossdomainContentRequest struct {
 	//
 	// 3461111
 	ResourceRealOwnerId *string `json:"ResourceRealOwnerId,omitempty" xml:"ResourceRealOwnerId,omitempty"`
-	// The URL of the Object Storage Service (OSS) bucket.
+	// The OSS storage address.
 	//
 	// This parameter is required.
 	//

@@ -18,7 +18,7 @@ type iUpdateAITemplateRequest interface {
 }
 
 type UpdateAITemplateRequest struct {
-	// The detailed configurations of the AI template. The value is a JSON string. For more information, see [AITemplateConfig](~~89863#title-vd3-499-o36~~).
+	// The detailed configuration of the AI template. The value is a JSON string. For more information, see [AITemplateConfig](~~89863#title-vd3-499-o36~~).
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type UpdateAITemplateRequest struct {
 	//
 	// {"AuditItem":["terrorism","porn"],"AuditRange":["text-title","video"],"AuditContent":["screen"],"AuditAutoBlock":"yes"}
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	// The ID of the AI template. You can use one of the following methods to obtain the ID:
+	// The ID of the AI template. You can obtain the template ID by using one of the following methods:
 	//
-	// 	- Call the [AddAITemplate](https://help.aliyun.com/document_detail/102930.html) operation to add an AI template if no AI template exists. The value of TemplateId in the response is the ID of the AI template.
+	// - When you call the [AddAITemplate](https://help.aliyun.com/document_detail/102930.html) operation to add an AI template, the AI template ID is the value of TemplateId in the response.
 	//
-	// 	- Call the [ListAITemplate](https://help.aliyun.com/document_detail/102936.html) operation if the template already exists. The value of TemplateId in the response is the ID of the AI template.
+	// - After the AI template is added, call the [ListAITemplate](https://help.aliyun.com/document_detail/102936.html) operation to query the AI template ID, which is the value of TemplateId in the response.
 	//
 	// This parameter is required.
 	//

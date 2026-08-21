@@ -22,17 +22,17 @@ type iUpdateMediaStorageClassResponseBody interface {
 type UpdateMediaStorageClassResponseBody struct {
 	ForbiddenList *UpdateMediaStorageClassResponseBodyForbiddenList `json:"ForbiddenList,omitempty" xml:"ForbiddenList,omitempty" type:"Struct"`
 	IgnoredList   *UpdateMediaStorageClassResponseBodyIgnoredList   `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 30FA0B7C-3A81-5449-93CD-ACA149E6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The state of the task. Valid values:
+	// The task status. Valid values:
 	//
-	// 	- **Processing**
+	// - **Processing**: Processing.
 	//
-	// 	- **Failed**
+	// - **Failed**: Failed.
 	//
 	// example:
 	//

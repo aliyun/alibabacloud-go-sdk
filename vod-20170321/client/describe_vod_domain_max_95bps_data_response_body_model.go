@@ -29,7 +29,7 @@ type iDescribeVodDomainMax95BpsDataResponseBody interface {
 
 type DescribeVodDomainMax95BpsDataResponseBody struct {
 	DetailData *DescribeVodDomainMax95BpsDataResponseBodyDetailData `json:"DetailData,omitempty" xml:"DetailData,omitempty" type:"Struct"`
-	// The domain name for CDN.
+	// The accelerated domain name information.
 	//
 	// example:
 	//
@@ -41,11 +41,7 @@ type DescribeVodDomainMax95BpsDataResponseBody struct {
 	//
 	// 16777590.28
 	DomesticMax95Bps *string `json:"DomesticMax95Bps,omitempty" xml:"DomesticMax95Bps,omitempty"`
-	// The end of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// >  The end time must be later than the start time.
+	// The end time of the data.
 	//
 	// example:
 	//
@@ -69,9 +65,7 @@ type DescribeVodDomainMax95BpsDataResponseBody struct {
 	//
 	// 25818875-5F78-4A*****F6-D7393642CA58
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start time of the data.
 	//
 	// example:
 	//

@@ -26,13 +26,13 @@ type iSetVodDomainCertificateRequest interface {
 }
 
 type SetVodDomainCertificateRequest struct {
-	// The name of the certificate.
+	// The certificate name.
 	//
 	// example:
 	//
 	// cert_name
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// The domain name that is secured by the certificate. The domain name must use HTTPS acceleration.
+	// The accelerated domain name to which the certificate belongs. The domain name must be of the HTTPS acceleration type.
 	//
 	// This parameter is required.
 	//
@@ -41,17 +41,17 @@ type SetVodDomainCertificateRequest struct {
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The private key. This parameter is required only if you enable the SSL certificate.
+	// The content of the private key. If you do not enable the certificate, you do not need to enter this parameter. If you configure a certificate, enter the private key content.
 	//
 	// example:
 	//
 	// ****
 	SSLPri *string `json:"SSLPri,omitempty" xml:"SSLPri,omitempty"`
-	// Specifies whether to enable the SSL certificate. Default value: off. Valid values:
+	// Specifies whether to enable the HTTPS certificate. Valid values:
 	//
-	// 	- **on**
+	// - **on**: enabled.
 	//
-	// 	- **off**
+	// - **off*	- (default): disabled.
 	//
 	// This parameter is required.
 	//
@@ -59,7 +59,7 @@ type SetVodDomainCertificateRequest struct {
 	//
 	// off
 	SSLProtocol *string `json:"SSLProtocol,omitempty" xml:"SSLProtocol,omitempty"`
-	// The content of the certificate. This parameter is required only if you enable the SSL certificate.
+	// The content of the security certificate. If you do not enable the certificate, you do not need to enter this parameter. If you configure a certificate, enter the certificate content.
 	//
 	// example:
 	//

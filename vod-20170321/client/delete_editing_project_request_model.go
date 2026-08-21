@@ -24,7 +24,7 @@ type iDeleteEditingProjectRequest interface {
 type DeleteEditingProjectRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the online editing project. Separate multiple IDs with commas (,).
+	// The online editing project IDs. Separate multiple IDs with commas (,).
 	//
 	// This parameter is required.
 	//

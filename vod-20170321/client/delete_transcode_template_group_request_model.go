@@ -18,11 +18,11 @@ type iDeleteTranscodeTemplateGroupRequest interface {
 }
 
 type DeleteTranscodeTemplateGroupRequest struct {
-	// Specifies whether to forcibly delete the transcoding template group. Valid values:
+	// Indicates whether to force delete the entire transcoding template group. Valid values:
 	//
-	// 	- **true**: deletes the transcoding template group and all the transcoding templates in the group.
+	// - **true**: Force deletes the entire template group and all its transcoding templates.
 	//
-	// 	- **false*	- (default): deletes only the specified transcoding templates from the transcoding template group.
+	// - **false*	- (default): Deletes only the specified transcoding templates.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type DeleteTranscodeTemplateGroupRequest struct {
 	TranscodeTemplateGroupId *string `json:"TranscodeTemplateGroupId,omitempty" xml:"TranscodeTemplateGroupId,omitempty"`
 	// The IDs of the transcoding templates that you want to delete.
 	//
-	// 	- Separate multiple IDs with commas (,).
+	// - Separate multiple IDs with commas (,).
 	//
-	// 	- You can specify a maximum of 10 IDs.
+	// - A maximum of 10 template IDs are supported.
 	//
-	// 	- This parameter is required if you set ForceDelGroup to false or leave ForceDelGroup empty.
+	// - This parameter is required if the ForceDelGroup parameter is empty or set to false.
 	//
 	// example:
 	//

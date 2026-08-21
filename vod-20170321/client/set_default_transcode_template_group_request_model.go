@@ -14,7 +14,7 @@ type iSetDefaultTranscodeTemplateGroupRequest interface {
 }
 
 type SetDefaultTranscodeTemplateGroupRequest struct {
-	// The ID of the transcoding template group.
+	// The transcoding template group ID.
 	//
 	// This parameter is required.
 	//

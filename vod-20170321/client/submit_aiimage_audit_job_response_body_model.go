@@ -16,13 +16,13 @@ type iSubmitAIImageAuditJobResponseBody interface {
 }
 
 type SubmitAIImageAuditJobResponseBody struct {
-	// The ID of the image review job.
+	// The image review task ID.
 	//
 	// example:
 	//
 	// b1aa3024aee64*****6dc8ca20dbc328
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

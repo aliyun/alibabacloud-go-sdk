@@ -16,7 +16,10 @@ type iGetAppPlayKeyResponseBody interface {
 }
 
 type GetAppPlayKeyResponseBody struct {
+	// The application playback key information.
 	AppPlayKey *GetAppPlayKeyResponseBodyAppPlayKey `json:"AppPlayKey,omitempty" xml:"AppPlayKey,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 25818875-5F78-4A*****F6-D7393642CA58
@@ -59,18 +62,30 @@ func (s *GetAppPlayKeyResponseBody) Validate() error {
 }
 
 type GetAppPlayKeyResponseBodyAppPlayKey struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// app-1000000
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The time when the playback key was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	//
 	// example:
 	//
 	// 2025-03-18T03:59:01Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The time when the playback key was last modified. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	//
 	// example:
 	//
 	// 2025-03-18T03:59:01Z
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	// The playback key.
+	//
+	// - Only uppercase letters, lowercase letters, and digits are supported. The length must be 8 to 20 characters.
+	//
+	// - UTF-8 encoding.
+	//
 	// example:
 	//
 	// yzNgTUtAl6HAuosIA

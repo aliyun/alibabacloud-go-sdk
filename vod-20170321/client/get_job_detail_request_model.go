@@ -16,7 +16,7 @@ type iGetJobDetailRequest interface {
 }
 
 type GetJobDetailRequest struct {
-	// The ID of the task.
+	// The task ID. Note: To query a transcoding task by TaskId, see [GetTranscodeTask](https://www.alibabacloud.com/help/en/vod/developer-reference/api-vod-2017-03-21-gettranscodetask).
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,13 @@ type GetJobDetailRequest struct {
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The task type. Valid values:
 	//
-	// 	- transcode
+	// - transcode
 	//
-	// 	- snapshot
+	// - snapshot
 	//
-	// 	- ai
+	// - ai
+	//
+	// - workflow
 	//
 	// This parameter is required.
 	//

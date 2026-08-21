@@ -22,7 +22,7 @@ type iUpdateVodDomainRequest interface {
 }
 
 type UpdateVodDomainRequest struct {
-	// The domain name.
+	// The accelerated domain name.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type UpdateVodDomainRequest struct {
 	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The information about the addresses of origin servers.
+	// The addresses of the origin server. For more information about the Sources parameter, see the **Sources*	- section.
 	//
 	// example:
 	//

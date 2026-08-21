@@ -16,9 +16,9 @@ type iDescribeVodCertificateListResponseBody interface {
 }
 
 type DescribeVodCertificateListResponseBody struct {
-	// The information about each certificate.
+	// The certificate list information.
 	CertificateListModel *DescribeVodCertificateListResponseBodyCertificateListModel `json:"CertificateListModel,omitempty" xml:"CertificateListModel,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -63,7 +63,7 @@ func (s *DescribeVodCertificateListResponseBody) Validate() error {
 
 type DescribeVodCertificateListResponseBodyCertificateListModel struct {
 	CertList *DescribeVodCertificateListResponseBodyCertificateListModelCertList `json:"CertList,omitempty" xml:"CertList,omitempty" type:"Struct"`
-	// The number of certificates that are returned.
+	// The number of certificates.
 	//
 	// example:
 	//

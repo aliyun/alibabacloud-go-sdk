@@ -18,13 +18,13 @@ type iDecryptKMSDataKeyResponseBody interface {
 }
 
 type DecryptKMSDataKeyResponseBody struct {
-	// The ID of the customer master key (CMK) that was used to decrypt the ciphertext.
+	// The ID of the master key used to decrypt the ciphertext.
 	//
 	// example:
 	//
 	// 202b9877-5a25-46e3-a763-e20791b5****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	// The plaintext that is generated after decryption.
+	// The decrypted plaintext.
 	//
 	// example:
 	//

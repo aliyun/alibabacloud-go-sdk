@@ -36,13 +36,13 @@ type iProduceEditingProjectVideoRequest interface {
 }
 
 type ProduceEditingProjectVideoRequest struct {
-	// The ID of the application. Default value: **app-1000000**. For more information, see [Multi-application service](https://help.aliyun.com/document_detail/113600.html).
+	// The application ID. Default value: **app-1000000**. For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
 	//
 	// example:
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The thumbnail URL of the online editing project.
+	// The thumbnail of the online editing project.
 	//
 	// example:
 	//
@@ -52,28 +52,32 @@ type ProduceEditingProjectVideoRequest struct {
 	//
 	// example:
 	//
-	// description test
+	// Cloud clip project description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The video metadata. The value must be in JSON format. For more information about the parameter structure, see [MediaMetadata](~~52839#title_rtf_ry5_gjp~~).
+	// The metadata of the produced video in JSON format. For more information about the structure, see [MediaMetadata](~~52839#title-rtf-ry5-gjp~~).
 	//
 	// example:
 	//
-	// {"Description":"video description","Title":"userData test"}
+	// {"Description":"Synthetic Video Description","Title":"Synthetic userData test"}
 	MediaMetadata *string `json:"MediaMetadata,omitempty" xml:"MediaMetadata,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The configuration of video production. The value must be in the JSON format. For more information about the parameter structure, see [ProduceConfig](~~52839#title-ybl-7cs-y7d~~).
+	// The production configuration in JSON format. For more information about the structure, see [ProduceConfig](~~52839#title-ybl-7cs-y7d~~).
 	//
-	// >  StorageLocation is required if you produce videos in a region other than China (Shanghai).
+	// <notice>
+	//
+	// The StorageLocation field can be ignored when the file storage region is Shanghai. It is required when the file storage region is in other regions.
+	//
+	// </notice>
 	//
 	// example:
 	//
 	// {"TemplateGroupId":"6d11e25ea30a4c465435c74****"}
 	ProduceConfig *string `json:"ProduceConfig,omitempty" xml:"ProduceConfig,omitempty"`
-	// The ID of the online editing project. You can use one of the following methods to obtain the ID of the online editing project:
+	// The online editing project ID. You can obtain the ID by using one of the following methods:
 	//
-	// 	- Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Production Center*	- > **Video Editing*	- to view the ID of the online editing project.
+	// - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com), choose **Production Center*	- > **Video Editing**, and view the ID.
 	//
-	// 	- Obtain the value of ProjectId from the response to the [AddEditingProject](https://help.aliyun.com/document_detail/69048.html) operation.
+	// - Obtain the value of the ProjectId parameter returned when you call the [CreateEditingProject](https://help.aliyun.com/document_detail/69048.html) operation.
 	//
 	// example:
 	//
@@ -81,7 +85,9 @@ type ProduceEditingProjectVideoRequest struct {
 	ProjectId            *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The timeline of the online editing project. The value must be in JSON format. For more information about the parameter structure, see [Timeline](~~52839#07bc7fe0f2xuh~~).
+	// The timeline of the online editing project in JSON format. For more information about the structure, see [Timeline](~~52839#07bc7fe0f2xuh~~).
+	//
+	// >Make sure that each VideoTrackClip object contains a valid MediaId. Otherwise, the request fails.
 	//
 	// example:
 	//
@@ -91,11 +97,11 @@ type ProduceEditingProjectVideoRequest struct {
 	//
 	// example:
 	//
-	// editing project test
+	// Cloud Clip Project Title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The custom configurations, such as the callback configuration. The value must be a JSON string. For more information about the parameter structure, see [UserData](~~86952#title_vz7_xzs_0c5~~).
+	// The custom settings in JSON format. The maximum length is 256 characters. The settings support message callbacks and other configurations. For more information about the structure, see [UserData](~~86952#title-vz7-xzs-0c5~~).
 	//
-	// > The callback configurations take effect only after you specify an HTTP URL for receiving callback notifications and select the event types in the ApsaraVideo VOD console.
+	// > To use the message callback in this parameter, configure the HTTP callback URL and select the corresponding callback event types in the console. Otherwise, the callback settings do not take effect.
 	//
 	// example:
 	//

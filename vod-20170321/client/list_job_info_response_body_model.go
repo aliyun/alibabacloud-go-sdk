@@ -20,21 +20,21 @@ type iListJobInfoResponseBody interface {
 }
 
 type ListJobInfoResponseBody struct {
-	// The historical tasks of the last 6 months.
+	// The historical task list within the last 6 months.
 	JobInfoList []*ListJobInfoResponseBodyJobInfoList `json:"JobInfoList,omitempty" xml:"JobInfoList,omitempty" type:"Repeated"`
-	// The type of the task. Valid values:
+	// The task type. Valid values:
 	//
-	// 	- transcode
+	// - transcode
 	//
-	// 	- snapshot
+	// - snapshot
 	//
-	// 	- ai
+	// - ai
 	//
 	// example:
 	//
 	// transcode
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The ID of the media asset.
+	// The media asset ID.
 	//
 	// example:
 	//
@@ -106,31 +106,31 @@ func (s *ListJobInfoResponseBody) Validate() error {
 }
 
 type ListJobInfoResponseBodyJobInfoList struct {
-	// The time when the task was complete.
+	// The time when the task was completed.
 	//
 	// example:
 	//
 	// 2024-10-14T07:39:34Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	// The time when the task was created. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the task was created, in UTC. Format: YYYY-MM-DDTHH:MM:SSZ.
 	//
 	// example:
 	//
 	// 2024-10-14T07:39:25Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
 	// 5c9dff751ba**********59d50a967f5
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The status of the task.
+	// The task status.
 	//
 	// example:
 	//
 	// TranscodeSuccess
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the user who submitted the task.
+	// The ID of the user who initiated the task.
 	//
 	// example:
 	//

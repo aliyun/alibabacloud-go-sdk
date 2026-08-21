@@ -18,9 +18,9 @@ type iDescribePlayUserTotalRequest interface {
 }
 
 type DescribePlayUserTotalRequest struct {
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end time of the query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
-	// >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 180 days.
+	// > The end time must be later than the start time. The maximum time span between the start time and end time is 180 days.
 	//
 	// This parameter is required.
 	//
@@ -29,7 +29,7 @@ type DescribePlayUserTotalRequest struct {
 	// 2016-06-30T13:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start time of the query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
 	//
 	// This parameter is required.
 	//

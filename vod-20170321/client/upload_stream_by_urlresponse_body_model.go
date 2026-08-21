@@ -20,27 +20,27 @@ type iUploadStreamByURLResponseBody interface {
 }
 
 type UploadStreamByURLResponseBody struct {
-	// The URL of the OSS object.
+	// The OSS file URL of the transcoded stream.
 	//
 	// example:
 	//
 	// http://outin-31059bcee7810a200163e1c8dba****.oss-cn-shanghai.aliyuncs.com/lesson-01.mp4
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 7AE96389-DF1E-598D-816B-7B40F13B4620
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The URL of the input stream. This parameter is used when you call the [GetURLUploadInfos](https://help.aliyun.com/document_detail/106830.html) operation.
+	// The input URL of the transcoded stream. This value can be used as a request parameter of the [GetURLUploadInfos](https://help.aliyun.com/document_detail/106830.html) operation.
 	//
 	// example:
 	//
 	// https://example.com/lesson-01.mp4
 	SourceURL *string `json:"SourceURL,omitempty" xml:"SourceURL,omitempty"`
-	// The ID of the stream upload job. This parameter is used when you call the [GetURLUploadInfos](https://help.aliyun.com/document_detail/106830.html) operation.
+	// The job ID of the transcoded stream. This value can be used as a request parameter of the [GetURLUploadInfos](https://help.aliyun.com/document_detail/106830.html) operation.
 	//
-	// In ApsaraVideo VOD, you can upload only one transcoded stream in an upload job. For more information, see the PlayInfo: the playback information about a video stream section in [Basic structures](https://help.aliyun.com/document_detail/52839.html).
+	// ApsaraVideo VOD uses the job ID to uniquely identify a transcoded stream file. For more information, see [Basic data types - PlayInfo](https://help.aliyun.com/document_detail/52839.html).
 	//
 	// example:
 	//

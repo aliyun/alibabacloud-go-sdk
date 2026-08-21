@@ -18,39 +18,39 @@ type iGetImageInfoRequest interface {
 }
 
 type GetImageInfoRequest struct {
-	// The time when the image URL expires. Unit: seconds.
+	// The validity period of the image access URL. Unit: seconds.
 	//
-	// 	- If you set OutputType to cdn:
+	// - If OutputType is set to cdn:
 	//
-	//     	- This parameter takes effect only if URL authentication is enabled. Otherwise, the image URL does not expire.
+	//     - The image URL expires only if URL signing is enabled. Otherwise, the URL is permanently valid.
 	//
-	//     	- Minimum value: 1.
+	//     - Minimum value: 1.
 	//
-	//     	- Maximum value: unlimited.
+	//     - Maximum value: unlimited.
 	//
-	//     	- Default value: If you leave this parameter empty, the default validity period that is specified in URL signing is used.
+	//     - Default value: If this parameter is not specified, the default validity period specified in URL signing is used.
 	//
-	// 	- If you set OutputType to oss:
+	// - If OutputType is set to oss:
 	//
-	//     	- This parameter takes effect only when the ACL of the Object Storage Service (OSS) bucket is private. Otherwise, the image URL does not expire.
+	//     - The playback URL expires only if the storage permission is set to private. Otherwise, the URL is permanently valid.
 	//
-	//     	- Minimum value: 1.
+	//     - Minimum value: 1.
 	//
-	//     	- If you store the image in the VOD bucket, the maximum value of this parameter is **2592000*	- (30 days). If you store the image in an OSS bucket, the maximum value of this parameter is **129600*	- (36 hours). The maximum value is limited to reduce security risks of the origin.
+	//     - Maximum value: To reduce security risks to the origin server, the maximum value is **2592000*	- (30 days) if the image is stored in a VOD system bucket, and **129600*	- (36 hours) if the image is stored in your own OSS bucket.
 	//
-	//     	- Default value: 3600.
+	//     - Default value: If this parameter is not specified, the value is 3600.
 	//
 	// example:
 	//
 	// 3600
 	AuthTimeout *int64 `json:"AuthTimeout,omitempty" xml:"AuthTimeout,omitempty"`
-	// The ID of the image. You can use one of the following methods to obtain the ID:
+	// The image ID. You can obtain the image ID by using one of the following methods:
 	//
-	// 	- Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com/). In the left-side navigation pane, choose Media Files > Image. On the Image page, view the image ID.
+	// - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com/) and choose **Media Files > Images*	- to view the ID.
 	//
-	// 	- Obtain the image ID from the response to the [CreateUploadImage](~~CreateUploadImage~~) operation that you call to obtain the upload URL and credential.
+	// - Obtain the ID from the response of the [CreateUploadImage](~~CreateUploadImage~~) operation when you retrieve the upload URL and credential.
 	//
-	// 	- Obtain the image ID from the response to the [SearchMedia](~~SearchMedia~~) operation that you call to query the image.
+	// - Obtain the ID from the response of the [SearchMedia](~~SearchMedia~~) operation when you query images.
 	//
 	// This parameter is required.
 	//
@@ -58,11 +58,11 @@ type GetImageInfoRequest struct {
 	//
 	// 3e34733b40b9a96ccf5c1ff6f69****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The type of the output image URL. Valid values:
+	// The type of the image access URL to return. Valid values:
 	//
-	// 	- oss: OSS URL
+	// - oss: the origin URL.
 	//
-	// 	- cdn: CDN URL
+	// - cdn (default): the accelerated URL.
 	//
 	// example:
 	//

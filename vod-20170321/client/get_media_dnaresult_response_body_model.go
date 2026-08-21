@@ -16,9 +16,9 @@ type iGetMediaDNAResultResponseBody interface {
 }
 
 type GetMediaDNAResultResponseBody struct {
-	// The media fingerprinting results.
+	// The media fingerprint result.
 	DNAResult *GetMediaDNAResultResponseBodyDNAResult `json:"DNAResult,omitempty" xml:"DNAResult,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *GetMediaDNAResultResponseBody) Validate() error {
 }
 
 type GetMediaDNAResultResponseBodyDNAResult struct {
-	// The video fingerprint recognition result.
+	// The media fingerprint recognition results.
 	VideoDNA []*GetMediaDNAResultResponseBodyDNAResultVideoDNA `json:"VideoDNA,omitempty" xml:"VideoDNA,omitempty" type:"Repeated"`
 }
 
@@ -97,15 +97,15 @@ func (s *GetMediaDNAResultResponseBodyDNAResult) Validate() error {
 }
 
 type GetMediaDNAResultResponseBodyDNAResultVideoDNA struct {
-	// The details of the matched video. Information such as the location and duration of the video is returned.
+	// The details of the similar video, including the position and duration.
 	Detail []*GetMediaDNAResultResponseBodyDNAResultVideoDNADetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
-	// The ID of the video that has a similar fingerprint.
+	// The ID of the similar video.
 	//
 	// example:
 	//
 	// 6ad8987da46f4b*****490ce2873745
 	PrimaryKey *string `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
-	// The similarity between the fingerprints of the input video and the matched video. 1 indicates that the fingerprints of the two videos are the same.
+	// The similarity of the video. A similarity value of 1 indicates 100% similarity.
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ func (s *GetMediaDNAResultResponseBodyDNAResultVideoDNA) Validate() error {
 }
 
 type GetMediaDNAResultResponseBodyDNAResultVideoDNADetail struct {
-	// The start time and duration of the matched video.
+	// The start time and duration of the video in the library.
 	Duplication *GetMediaDNAResultResponseBodyDNAResultVideoDNADetailDuplication `json:"Duplication,omitempty" xml:"Duplication,omitempty" type:"Struct"`
 	// The start time and duration of the input video.
 	Input *GetMediaDNAResultResponseBodyDNAResultVideoDNADetailInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`

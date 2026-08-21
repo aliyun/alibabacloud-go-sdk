@@ -18,7 +18,7 @@ type iVerifyVodDomainOwnerRequest interface {
 }
 
 type VerifyVodDomainOwnerRequest struct {
-	// The domain name of which you want to verify the ownership. You can specify only one domain name in each call.
+	// The domain name to verify. Only a single domain name can be verified at a time.
 	//
 	// This parameter is required.
 	//
@@ -27,11 +27,11 @@ type VerifyVodDomainOwnerRequest struct {
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The verification method. Valid values:
+	// The domain name ownership verification method. Valid values:
 	//
-	// 	- **dnsCheck**: uses a Domain Name System (DNS) record
+	// - **dnsCheck**: DNS resolution verification.
 	//
-	// 	- **fileCheck**: uses a verification file
+	// - **fileCheck**: File verification.
 	//
 	// This parameter is required.
 	//

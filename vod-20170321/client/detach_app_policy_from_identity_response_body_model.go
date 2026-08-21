@@ -18,11 +18,11 @@ type iDetachAppPolicyFromIdentityResponseBody interface {
 }
 
 type DetachAppPolicyFromIdentityResponseBody struct {
-	// The names of the policies that failed to be granted to the RAM user or RAM role.
+	// The policy names that failed to be revoked.
 	FailedPolicyNames []*string `json:"FailedPolicyNames,omitempty" xml:"FailedPolicyNames,omitempty" type:"Repeated"`
-	// The name of the policy that was not found.
+	// The policy names that do not exist.
 	NonExistPolicyNames []*string `json:"NonExistPolicyNames,omitempty" xml:"NonExistPolicyNames,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

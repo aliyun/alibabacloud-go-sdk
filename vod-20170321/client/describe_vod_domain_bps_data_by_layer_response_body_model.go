@@ -19,13 +19,13 @@ type iDescribeVodDomainBpsDataByLayerResponseBody interface {
 
 type DescribeVodDomainBpsDataByLayerResponseBody struct {
 	BpsDataInterval *DescribeVodDomainBpsDataByLayerResponseBodyBpsDataInterval `json:"BpsDataInterval,omitempty" xml:"BpsDataInterval,omitempty" type:"Struct"`
-	// The time interval between the entries returned. Unit: seconds.
+	// The time interval between each record, which is the time granularity of the data. Unit: seconds.
 	//
 	// example:
 	//
 	// 300
 	DataInterval *int32 `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

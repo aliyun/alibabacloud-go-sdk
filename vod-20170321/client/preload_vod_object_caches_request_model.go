@@ -24,27 +24,27 @@ type iPreloadVodObjectCachesRequest interface {
 }
 
 type PreloadVodObjectCachesRequest struct {
-	// The acceleration region in which you want to prefetch content. If you do not specify a region, the value overseas is used.
-	//
-	// 	- **domestic**: Chinese mainland
-	//
-	// 	- **overseas**: outside the Chinese mainland
+	// The prefetch region. Valid values: **domestic**, **overseas**.
 	//
 	// example:
 	//
 	// domestic
 	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// Specifies whether to prefetch content to POPs. Valid values:
+	// Specifies whether to directly prefetch content to L2 nodes. Valid values:
 	//
-	// 	- **true**: prefetches content to nodes that include L2 DCDN nodes.
+	// - **true**: The prefetch node level must include L2 nodes.
 	//
-	// 	- **false**: prefetches content to L2 POPs or L3 POPs.
+	// - **false**: Only back-to-origin layer nodes are prefetched. This is the **default value**. The back-to-origin layer node may be an L2 node or an L3 node.
 	//
 	// example:
 	//
 	// true
 	L2Preload *bool `json:"L2Preload,omitempty" xml:"L2Preload,omitempty"`
-	// The URL of the file to be prefetched. Separate multiple URLs with line breaks (\\n or \\r\\n).
+	// The URL of the file to prefetch. Separate multiple URLs with line breaks (
+	//
+	//  or
+	//
+	// ).
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type PreloadVodObjectCachesRequest struct {
 	ObjectPath    *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The custom header for prefetch in the JSON format.
+	// The default header carried in a prefetch request is Accept-Encoding:gzip. If you want the prefetch request to carry other headers or implement multi-copy prefetch, use this parameter to customize prefetch headers. Submit the value in JSON format.
 	//
 	// example:
 	//

@@ -26,11 +26,11 @@ type iDescribeVodDomainTrafficDataResponseBody interface {
 }
 
 type DescribeVodDomainTrafficDataResponseBody struct {
-	// The time interval at which data is returned, which is the time granularity. Unit: seconds.
+	// The time interval between the data entries, which is the time granularity of the data. Unit: seconds.
 	//
 	// example:
 	//
-	// 3600
+	// 300
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
 	// The accelerated domain name.
 	//
@@ -38,25 +38,25 @@ type DescribeVodDomainTrafficDataResponseBody struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range.
+	// The end of the time range for the returned data.
 	//
 	// example:
 	//
 	// 2019-01-20T14:59:58Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D94E471F-1A27-442E-552D-D4D2000C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range.
+	// The beginning of the time range for the returned data.
 	//
 	// example:
 	//
 	// 2019-01-20T13:59:58Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total amount of network traffic.
+	// The total traffic.
 	//
 	// example:
 	//

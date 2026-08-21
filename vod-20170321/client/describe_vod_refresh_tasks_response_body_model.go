@@ -22,26 +22,26 @@ type iDescribeVodRefreshTasksResponseBody interface {
 }
 
 type DescribeVodRefreshTasksResponseBody struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 174F6032-AA26-470D-****-36F0EB205BEE
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Tasks     *DescribeVodRefreshTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

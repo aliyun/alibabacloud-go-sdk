@@ -16,9 +16,9 @@ type iDescribeVodSSLCertificateListResponseBody interface {
 }
 
 type DescribeVodSSLCertificateListResponseBody struct {
-	// The information about certificates.
+	// The certificate list information.
 	CertificateListModel *DescribeVodSSLCertificateListResponseBodyCertificateListModel `json:"CertificateListModel,omitempty" xml:"CertificateListModel,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -63,19 +63,19 @@ func (s *DescribeVodSSLCertificateListResponseBody) Validate() error {
 
 type DescribeVodSSLCertificateListResponseBodyCertificateListModel struct {
 	CertList *DescribeVodSSLCertificateListResponseBodyCertificateListModelCertList `json:"CertList,omitempty" xml:"CertList,omitempty" type:"Struct"`
-	// The number of certificates that are returned.
+	// The number of certificates.
 	//
 	// example:
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The current page number. The start value is 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: integers from 1 to 1000.
+	// The page size. Valid values: any integer from 1 to 1000.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iMoveAppResourceRequest interface {
 }
 
 type MoveAppResourceRequest struct {
-	// The resource ID. You can specify a maximum of 20 IDs at a time. Separate multiple IDs with commas (,).
+	// The resource IDs. Separate multiple IDs with commas (,). You can specify a maximum of 20 IDs at a time.
 	//
 	// This parameter is required.
 	//
@@ -28,11 +28,11 @@ type MoveAppResourceRequest struct {
 	ResourceIds *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
 	// The resource type. Valid values:
 	//
-	// 	- **video**: video files.
+	// - **video**: video.
 	//
-	// 	- **image**: image files.
+	// - **image**: image.
 	//
-	// 	- **attached**: auxiliary media assets.
+	// - **attached**: auxiliary media asset.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type MoveAppResourceRequest struct {
 	//
 	// video
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The ID of the application to which resources are migrated. Default value: **app-1000000**. For more information, see [Use the multi-application service](https://help.aliyun.com/document_detail/113600.html).
+	// The ID of the destination application. Default value: **app-1000000**. For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
 	//
 	// This parameter is required.
 	//

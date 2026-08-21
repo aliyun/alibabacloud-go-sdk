@@ -28,13 +28,13 @@ type iAddVodDomainRequest interface {
 }
 
 type AddVodDomainRequest struct {
-	// The URL that is used for health checks.
+	// The health check URL.
 	//
 	// example:
 	//
 	// www.example.com/test.html
 	CheckUrl *string `json:"CheckUrl,omitempty" xml:"CheckUrl,omitempty"`
-	// The domain name that you want to accelerate. Wildcard domain names that start with periods (.) are supported. Example: .example.com.
+	// The accelerated domain name to be added to ApsaraVideo VOD. Wildcard domain names are supported, starting with a period (.), such as .example.com.
 	//
 	// This parameter is required.
 	//
@@ -44,20 +44,20 @@ type AddVodDomainRequest struct {
 	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// This parameter is applicable to users of level 3 or higher in the Chinese mainland and users outside the Chinese mainland. Default value: domestic. Valid values:
+	// This parameter is valid for international users and Chinese mainland users of L3 or higher. Valid values:
 	//
-	// 	- **domestic**: Chinese mainland
+	// - **domestic*	- (default): the Chinese mainland.
 	//
-	// 	- **overseas**: outside the Chinese mainland
+	// - **overseas**: Hong Kong (China), Macao (China), Taiwan (China), and regions outside China.
 	//
-	// 	- **global**: regions in and outside the Chinese mainland
+	// - **global**: global acceleration.
 	//
 	// example:
 	//
 	// domestic
 	Scope         *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The information about the addresses of origin servers. For more information, see the **Sources*	- table in this topic.
+	// The list of origin addresses. For more information about the parameters, see the **Sources*	- table below.
 	//
 	// This parameter is required.
 	//
@@ -65,7 +65,7 @@ type AddVodDomainRequest struct {
 	//
 	// [{"content":"1.1.1.1","type":"ipaddr","priority":"20","port":80}]
 	Sources *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	// The top-level domain.
+	// The top-level domain name.
 	//
 	// example:
 	//

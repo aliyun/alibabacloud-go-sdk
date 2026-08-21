@@ -18,11 +18,11 @@ type iCreateAppInfoRequest interface {
 }
 
 type CreateAppInfoRequest struct {
-	// The name of the application. The application name must be unique.
+	// The application name. The name must be unique.
 	//
-	// 	- The name can contain letters, digits, periods (.), hyphens (-), and at signs (@). The name can be up to 128 characters in length.
+	// - The name can be up to 128 characters in length and can contain Chinese characters, letters, digits, periods (.), hyphens (-), and at signs (@).
 	//
-	// 	- The value must be encoded in UTF-8.
+	// - UTF-8 encoding.
 	//
 	// This parameter is required.
 	//
@@ -30,11 +30,11 @@ type CreateAppInfoRequest struct {
 	//
 	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The description of the application.
+	// The application description.
 	//
-	// 	- The description can contain up to 512 characters in length.
+	// - The description can be up to 512 characters in length.
 	//
-	// 	- The value must be encoded in UTF-8.
+	// - UTF-8 encoding.
 	//
 	// example:
 	//

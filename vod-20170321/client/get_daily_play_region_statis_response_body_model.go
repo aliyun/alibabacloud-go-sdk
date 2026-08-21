@@ -20,9 +20,14 @@ type iGetDailyPlayRegionStatisResponseBody interface {
 }
 
 type GetDailyPlayRegionStatisResponseBody struct {
+	// The CSV file information returned.
 	DailyPlayRegionStatisList []*GetDailyPlayRegionStatisResponseBodyDailyPlayRegionStatisList `json:"DailyPlayRegionStatisList,omitempty" xml:"DailyPlayRegionStatisList,omitempty" type:"Repeated"`
-	EmptyDates                []*string                                                        `json:"EmptyDates,omitempty" xml:"EmptyDates,omitempty" type:"Repeated"`
-	FailDates                 []*string                                                        `json:"FailDates,omitempty" xml:"FailDates,omitempty" type:"Repeated"`
+	// If no playback data exists on a specific day, the date is displayed in this field.
+	EmptyDates []*string `json:"EmptyDates,omitempty" xml:"EmptyDates,omitempty" type:"Repeated"`
+	// If the playback data export fails on a specific day, the date is displayed in this field.
+	FailDates []*string `json:"FailDates,omitempty" xml:"FailDates,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 67720502-CDDB-3F1C-8A91-12258*******
@@ -87,10 +92,14 @@ func (s *GetDailyPlayRegionStatisResponseBody) Validate() error {
 }
 
 type GetDailyPlayRegionStatisResponseBodyDailyPlayRegionStatisList struct {
+	// The playback date, in days. Format: yyyy-MM-dd.
+	//
 	// example:
 	//
 	// 2025-03-20
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// The download URL of the CSV file.
+	//
 	// example:
 	//
 	// https://outin-e70266d4ed*******0163e1403e7.oss-cn-shanghai.aliyuncs.com/dataexport/play/cn_hangzhou_20250320_video_traffic.csv?*******

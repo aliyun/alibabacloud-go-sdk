@@ -16,7 +16,7 @@ type iDescribeVodVerifyContentRequest interface {
 }
 
 type DescribeVodVerifyContentRequest struct {
-	// The domain name for which you want to verify the ownership. You can specify only one domain name in each call.
+	// The domain name to be verified. Only a single domain name is supported.
 	//
 	// This parameter is required.
 	//

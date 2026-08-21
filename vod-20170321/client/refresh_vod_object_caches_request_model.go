@@ -22,17 +22,21 @@ type iRefreshVodObjectCachesRequest interface {
 }
 
 type RefreshVodObjectCachesRequest struct {
-	// Specifies whether to purge resources in a directory if the resources requested are different from the resources on the origin server.
+	// Specifies whether to purge all resources in the corresponding directory when the back-to-origin content is inconsistent with the origin server resources. Default value: false.
 	//
-	// 	- **true**: refreshes all resources in the directory. If you set this parameter to true, when the requested content matches the resource in the directory, the POP retrieves the resource from the origin server, returns the resource to the client, and caches the resource.
+	// - **true**: purges all resources in the corresponding directory. When "Purge All Resources" is selected, if the requested content matches a resource in the directory, the CDN node fetches the new resource from the origin server, returns it to the user, and re-caches the resource.
 	//
-	// 	- **false*	- (default): refreshes the changed resources in the directory. If you set this parameter to false, when the requested content matches the resource in the directory, the POP obtains the Last-Modified parameter of the resource from the origin server. If the value of the obtained Last-Modified parameter is the same as that of the cached resource, the cached resource is returned. Otherwise, the POP retrieves the resource from the origin server, returns the resource to the client, and caches the resource.
+	// - **false**: purges only changed resources in the corresponding directory. When "Purge Changed Resources" is selected, if the requested content matches a resource in the directory, the CDN node retrieves the Last-Modified information of the resource from the origin server. If it matches the currently cached resource, the cached resource is returned directly. If it does not match, the CDN node fetches the new resource from the origin server, returns it to the user, and re-caches the resource.
 	//
 	// example:
 	//
 	// false
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
-	// The URL of the file to be prefetched. Separate multiple URLs with line breaks (\\n or \\r\\n).
+	// The URL of the file to prefetch. Separate multiple URLs with line breaks (
+	//
+	//  or
+	//
+	// ).
 	//
 	// This parameter is required.
 	//
@@ -40,15 +44,15 @@ type RefreshVodObjectCachesRequest struct {
 	//
 	// abc.com/image/1.png
 	ObjectPath *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
-	// The type of the object that you want to refresh. Valid values:
+	// The type of purge. Valid values:
 	//
-	// 	- **File*	- (default): refreshes one or more files.
+	// - **File*	- (default): file purge.
 	//
-	// 	- **Directory**: refreshes the files in specified directories.
+	// - **Directory**: directory purge.
 	//
-	// 	- **Regex**: refreshes content based on regular expressions.
+	// - **Regex**: regular expression-based purge.
 	//
-	// 	- **IgnoreParams**: removes the question mark (?) and parameters after the question mark (?) in a request URL and refreshes content. After you call this operation with the request URL submitted, the system compares the submitted URL with the URL of the cached resource without specific parameters. If the URLs match, the POPs refresh the cached resource.
+	// - **IgnoreParams**: parameter-stripped purge. Parameter stripping refers to removing the question mark (?) and all characters after it from the request URL. Parameter-stripped purge means that you submit a parameter-stripped URL through the API, and the submitted URL is matched against cached resource URLs after parameter stripping. If a cached resource URL matches the submitted URL after parameter stripping, the CDN node purges the cached resource.
 	//
 	// example:
 	//

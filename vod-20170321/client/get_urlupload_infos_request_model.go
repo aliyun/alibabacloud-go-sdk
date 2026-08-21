@@ -16,25 +16,25 @@ type iGetURLUploadInfosRequest interface {
 }
 
 type GetURLUploadInfosRequest struct {
-	// The one or more IDs of upload jobs. You can obtain the job IDs in the response parameter JobId of the [UploadMediaByURL](https://help.aliyun.com/document_detail/86311.html) operation.
+	// The list of upload task IDs (JobId). The list consists of one or more JobId values. A JobId is the value of the JobId parameter returned when you call the [UploadMediaByURL](https://help.aliyun.com/document_detail/86311.html) operation.
 	//
-	// - You can specify a maximum of 10 IDs.
+	// - A maximum of 10 IDs are supported.
 	//
 	// - Separate multiple IDs with commas (,).
 	//
-	// > You must set one of the JobIds and the UploadURLs parameters. If you set both the JobIds and UploadURLs parameters, only the value of the JobIds parameter takes effect.
+	// > You must specify either JobIds or UploadURLs. If both are specified, only JobIds is processed.
 	//
 	// example:
 	//
 	// 86c1925fba0****,7afb201e7fa****,2cc4997378****
 	JobIds *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
-	// The one or more upload URLs of the source files. Separate multiple URLs with commas (,). You can specify a maximum of 10 URLs.
+	// The list of source video file URLs. Separate multiple URLs with commas (,). A maximum of 10 URLs are supported.
 	//
-	// > 	- You must encode the URLs before you use the URLs.
+	// > - URL-encode the URLs before use.
 	//
-	// > 	- If a media file is uploaded multiple times, pass the URL of the media file to this parameter only once.
+	// > - If the same URL video is uploaded multiple times, pass in a single URL for the query.
 	//
-	// > 	- You must set one of the JobIds and the UploadURLs parameters. If you set both the JobIds and UploadURLs parameters, only the value of the JobIds parameter takes effect.
+	// > - You must specify either JobIds or UploadURLs. If both are specified, only JobIds is processed.
 	//
 	// example:
 	//

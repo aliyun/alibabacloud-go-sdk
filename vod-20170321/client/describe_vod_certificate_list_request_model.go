@@ -18,7 +18,7 @@ type iDescribeVodCertificateListRequest interface {
 }
 
 type DescribeVodCertificateListRequest struct {
-	// The domain name for CDN.
+	// The accelerated domain name for ApsaraVideo VOD.
 	//
 	// example:
 	//

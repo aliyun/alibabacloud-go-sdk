@@ -22,43 +22,43 @@ type iGetCategoriesRequest interface {
 }
 
 type GetCategoriesRequest struct {
-	// The ID of the category. If you specify this parameter, the system queries the category based on the ID. You can specify only one category ID. You can use one of the following methods to obtain the ID:
+	// The category ID. If you specify this parameter, the information about the specified category is returned. Only a single category ID is supported. You can obtain the category ID by using the following methods:
 	//
-	// 	- Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). Choose **Configuration Management*	- > **Media Management*	- > **Categories**. On the Audio and Video / Image Category or Short Video Material Category tab, view the category ID.
+	// - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management*	- > **Media Asset Management Configuration*	- > **Category Management*	- to view the category ID.
 	//
-	// 	- Obtain the category ID from the response to the [AddCategory](~~AddCategory~~) operation.
+	// - Obtain the category ID from the response of the [AddCategory](~~AddCategory~~) operation when you create a category.
 	//
 	// example:
 	//
 	// 49339****
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The number of the page where the subcategories to be returned are listed. Default value: **1**.
+	// The page number of the subcategory list. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries to return on each page of the subcategory list. Default value: **10**. Maximum value: **100**.
+	// The number of entries per page of the subcategory list. Default value: **10**. Maximum value: **100**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sorting method of the results. Valid values:
+	// The method for sorting the query results. Valid values:
 	//
-	// 	- **CreationTime:Desc*	- (default): The results are sorted in reverse chronological order based on the creation time.
+	// - **CreationTime:Desc*	- (default): sorts the results by creation time in descending order.
 	//
-	// 	- **CreationTime:Asc**: The results are sorted in chronological order based on the creation time.
+	// - **CreationTime:Asc**: sorts the results by creation time in ascending order.
 	//
 	// example:
 	//
 	// CreationTime:Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The type of the category. If you specify this parameter, the system queries the category based on the type. Valid values:
+	// The categorization type. If you specify this parameter, a filtered query is performed to return categories of the specified type. Valid values:
 	//
-	// 	- **default*	- (default): audio, video, and image files
+	// - **default**: audio, video, and image categorization.
 	//
-	// 	- **material**: short video materials
+	// - **material**: short video material categorization.
 	//
 	// example:
 	//

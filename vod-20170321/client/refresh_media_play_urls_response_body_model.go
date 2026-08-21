@@ -20,7 +20,7 @@ type iRefreshMediaPlayUrlsResponseBody interface {
 }
 
 type RefreshMediaPlayUrlsResponseBody struct {
-	// The IDs of the media files that cannot be operated on. In most cases, media files cannot be operated on because you are not authorized to perform the operations. For more information, see [Overview](https://help.aliyun.com/document_detail/113600.html).
+	// The list of audio or video IDs that are forbidden. This is typically because you do not have multi-application permissions. For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type RefreshMediaPlayUrlsResponseBody struct {
 	//
 	// 41d465e31957****
 	MediaRefreshJobId *string `json:"MediaRefreshJobId,omitempty" xml:"MediaRefreshJobId,omitempty"`
-	// The IDs of the media files that do not exist.
+	// The list of audio or video IDs that do not exist.
 	//
 	// example:
 	//
 	// ca3a8f6e4957b658067095869****
 	NonExistMediaIds *string `json:"NonExistMediaIds,omitempty" xml:"NonExistMediaIds,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

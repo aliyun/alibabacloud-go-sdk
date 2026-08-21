@@ -22,7 +22,7 @@ type SetDefaultAITemplateResponseBody struct {
 	//
 	// 8E70E3F8-E2EE-47BC-4677-379D6F28****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the AI template.
+	// The AI template ID.
 	//
 	// example:
 	//

@@ -20,9 +20,9 @@ type iGetCategoriesResponseBody interface {
 }
 
 type GetCategoriesResponseBody struct {
-	// The information about the category.
+	// The details of the category.
 	Category *GetCategoriesResponseBodyCategory `json:"Category,omitempty" xml:"Category,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -33,7 +33,7 @@ type GetCategoriesResponseBody struct {
 	//
 	// example:
 	//
-	// 3795
+	// 2
 	SubTotal *int64 `json:"SubTotal,omitempty" xml:"SubTotal,omitempty"`
 }
 
@@ -96,25 +96,25 @@ func (s *GetCategoriesResponseBody) Validate() error {
 }
 
 type GetCategoriesResponseBodyCategory struct {
-	// The ID of the category.
+	// The category ID.
 	//
 	// example:
 	//
 	// 100
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The name of the category.
+	// The category name.
 	//
 	// example:
 	//
-	// film
+	// Movie
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The level of the category. Valid values:
+	// The category level. Valid values:
 	//
-	// 	- **0**: level 1 category
+	// - **0**: level-1 category.
 	//
-	// 	- **1**: level 2 category
+	// - **1**: level-2 category.
 	//
-	// 	- **2**: level 3 category
+	// - **2**: level-3 category.
 	//
 	// example:
 	//
@@ -126,11 +126,11 @@ type GetCategoriesResponseBodyCategory struct {
 	//
 	// 100012****
 	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// The type of the category. Valid values:
+	// The category type. Valid values:
 	//
-	// 	- **default**: audio, video, and image files
+	// - **default**: audio, video, and image category.
 	//
-	// 	- **material**: short video materials
+	// - **material**: short video material category.
 	//
 	// example:
 	//

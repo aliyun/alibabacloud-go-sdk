@@ -18,15 +18,15 @@ type iListAppInfoResponseBody interface {
 }
 
 type ListAppInfoResponseBody struct {
-	// The details of applications.
+	// The list of application information.
 	AppInfoList []*ListAppInfoResponseBodyAppInfoList `json:"AppInfoList,omitempty" xml:"AppInfoList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 25818875-5F78-4A13-4D5C-D7393642****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -83,31 +83,31 @@ func (s *ListAppInfoResponseBody) Validate() error {
 }
 
 type ListAppInfoResponseBodyAppInfoList struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The time when the application was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the application was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2019-03-01T08:00:00Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the application.
+	// The application description.
 	//
 	// example:
 	//
 	// my first app.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The last time when the application was modified. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	// The time when the application was last modified. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format (UTC).
 	//
 	// example:
 	//
@@ -119,27 +119,27 @@ type ListAppInfoResponseBodyAppInfoList struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-aekzko7fsuj****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the application. Valid values:
+	// The application status. Valid values:
 	//
-	// 	- **Normal**
+	// - **Normal**
 	//
-	// 	- **Disable**
+	// - **Disable**
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the application. Valid values:
+	// The application type. Valid values:
 	//
-	// 	- **System**
+	// - **System**: system default.
 	//
-	// 	- **Custom**
+	// - **Custom**: user-created.
 	//
 	// example:
 	//

@@ -14,6 +14,8 @@ type iSetAppPlayKeyResponseBody interface {
 }
 
 type SetAppPlayKeyResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 25818875-5F78-4A*****F6-D7393642CA58

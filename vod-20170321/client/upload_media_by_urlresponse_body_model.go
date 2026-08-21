@@ -16,13 +16,13 @@ type iUploadMediaByURLResponseBody interface {
 }
 
 type UploadMediaByURLResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 25818875-5F78-4AF6-D7393642CA58****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the upload job.
+	// The list of upload jobs.
 	UploadJobs []*UploadMediaByURLResponseBodyUploadJobs `json:"UploadJobs,omitempty" xml:"UploadJobs,omitempty" type:"Repeated"`
 }
 
@@ -72,7 +72,7 @@ type UploadMediaByURLResponseBodyUploadJobs struct {
 	//
 	// ad90a501b1b94fb72374ad005046****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The URL of the source file that is uploaded in the upload job.
+	// The source file URL of the upload job.
 	//
 	// example:
 	//

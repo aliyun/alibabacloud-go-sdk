@@ -22,7 +22,7 @@ type iDescribeVodMediaPlayDataResponseBody interface {
 }
 
 type DescribeVodMediaPlayDataResponseBody struct {
-	// The page number.
+	// The page number of the returned data.
 	//
 	// example:
 	//
@@ -34,9 +34,9 @@ type DescribeVodMediaPlayDataResponseBody struct {
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The data returned.
+	// The list of returned data.
 	QoeInfoList []*DescribeVodMediaPlayDataResponseBodyQoeInfoList `json:"QoeInfoList,omitempty" xml:"QoeInfoList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -117,37 +117,37 @@ func (s *DescribeVodMediaPlayDataResponseBody) Validate() error {
 }
 
 type DescribeVodMediaPlayDataResponseBodyQoeInfoList struct {
-	// The number of visits to the audio or video per day.
+	// The number of unique visitors for the audio or video file.
 	//
 	// example:
 	//
 	// 5
 	DAU *float32 `json:"DAU,omitempty" xml:"DAU,omitempty"`
-	// The ID of the media file (VideoId).
+	// The media ID, which is the audio or video ID (VideoId).
 	//
 	// example:
 	//
 	// 9ae2af636ca6c10412f44891fc****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The total playback duration of the audio or video. Unit: seconds.
+	// The total play duration for the audio or video file. Unit: seconds.
 	//
 	// example:
 	//
 	// 2400
 	PlayDuration *float32 `json:"PlayDuration,omitempty" xml:"PlayDuration,omitempty"`
-	// The average playback duration of the audio or video per viewer. Unit: seconds.
+	// The average play duration per user for the audio or video file. Unit: seconds.
 	//
 	// example:
 	//
 	// 120
 	PlayDurationPerUv *float32 `json:"PlayDurationPerUv,omitempty" xml:"PlayDurationPerUv,omitempty"`
-	// The average number of times that the audio or video was played per viewer.
+	// The average number of plays per user for the audio or video file.
 	//
 	// example:
 	//
 	// 4
 	PlayPerVv *float32 `json:"PlayPerVv,omitempty" xml:"PlayPerVv,omitempty"`
-	// The total number of times the audio or video has been played.
+	// The total number of plays for the audio or video file.
 	//
 	// example:
 	//
@@ -159,11 +159,11 @@ type DescribeVodMediaPlayDataResponseBodyQoeInfoList struct {
 	//
 	// 246
 	VideoDuration *float32 `json:"VideoDuration,omitempty" xml:"VideoDuration,omitempty"`
-	// The name of the audio or video file.
+	// The title of the audio or video file.
 	//
 	// example:
 	//
-	// title
+	// Alibaba Cloud VOD video title
 	VideoTitle *string `json:"VideoTitle,omitempty" xml:"VideoTitle,omitempty"`
 }
 

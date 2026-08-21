@@ -16,13 +16,13 @@ type iGetAIVideoTagResultResponseBody interface {
 }
 
 type GetAIVideoTagResultResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 8829B4DB-AFD9-4FF6-12965DBFFA14****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The result data.
 	VideoTagResult *GetAIVideoTagResultResponseBodyVideoTagResult `json:"VideoTagResult,omitempty" xml:"VideoTagResult,omitempty" type:"Struct"`
 }
 
@@ -62,15 +62,15 @@ func (s *GetAIVideoTagResultResponseBody) Validate() error {
 }
 
 type GetAIVideoTagResultResponseBodyVideoTagResult struct {
-	// The video categories.
+	// The collection of video categories.
 	Category []*GetAIVideoTagResultResponseBodyVideoTagResultCategory `json:"Category,omitempty" xml:"Category,omitempty" type:"Repeated"`
-	// The keyword tags.
+	// The collection of keyword tags.
 	Keyword []*GetAIVideoTagResultResponseBodyVideoTagResultKeyword `json:"Keyword,omitempty" xml:"Keyword,omitempty" type:"Repeated"`
-	// The location tags.
+	// The collection of location tags.
 	Location []*GetAIVideoTagResultResponseBodyVideoTagResultLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Repeated"`
-	// The figure tags.
+	// The collection of person tags.
 	Person []*GetAIVideoTagResultResponseBodyVideoTagResultPerson `json:"Person,omitempty" xml:"Person,omitempty" type:"Repeated"`
-	// The time tags.
+	// The collection of time tags.
 	Time []*GetAIVideoTagResultResponseBodyVideoTagResultTime `json:"Time,omitempty" xml:"Time,omitempty" type:"Repeated"`
 }
 
@@ -177,11 +177,11 @@ func (s *GetAIVideoTagResultResponseBodyVideoTagResult) Validate() error {
 }
 
 type GetAIVideoTagResultResponseBodyVideoTagResultCategory struct {
-	// The tag string.
+	// The label.
 	//
 	// example:
 	//
-	// Retouching
+	// Beauty
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -207,13 +207,13 @@ func (s *GetAIVideoTagResultResponseBodyVideoTagResultCategory) Validate() error
 }
 
 type GetAIVideoTagResultResponseBodyVideoTagResultKeyword struct {
-	// The tag string.
+	// The label.
 	//
 	// example:
 	//
 	// Cushion
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The points in time when the tags are displayed. Unit: milliseconds.
+	// The collection of time points. Unit: milliseconds.
 	Times []*string `json:"Times,omitempty" xml:"Times,omitempty" type:"Repeated"`
 }
 
@@ -248,13 +248,13 @@ func (s *GetAIVideoTagResultResponseBodyVideoTagResultKeyword) Validate() error 
 }
 
 type GetAIVideoTagResultResponseBodyVideoTagResultLocation struct {
-	// The tag string.
+	// The label.
 	//
 	// example:
 	//
 	// Asia
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The points in time when the tags are displayed. Unit: milliseconds.
+	// The collection of time points. Unit: milliseconds.
 	Times []*string `json:"Times,omitempty" xml:"Times,omitempty" type:"Repeated"`
 }
 
@@ -289,21 +289,21 @@ func (s *GetAIVideoTagResultResponseBodyVideoTagResultLocation) Validate() error
 }
 
 type GetAIVideoTagResultResponseBodyVideoTagResultPerson struct {
-	// The URL of the profile photo.
+	// The face URL.
 	//
-	// > This parameter is returned only when a figure tag was used.
+	// > This field is returned only for person tag results.
 	//
 	// example:
 	//
 	// http://example.com/aivideotag/8829B4DB-AFD9-4F*****F6-12965DBFFA14/Index_****.jpg
 	FaceUrl *string `json:"FaceUrl,omitempty" xml:"FaceUrl,omitempty"`
-	// The tag string.
+	// The label.
 	//
 	// example:
 	//
-	// John
+	// Xiao Wang
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The points in time when the tags are displayed. Unit: milliseconds.
+	// The collection of time points. Unit: milliseconds.
 	Times []*string `json:"Times,omitempty" xml:"Times,omitempty" type:"Repeated"`
 }
 
@@ -347,13 +347,13 @@ func (s *GetAIVideoTagResultResponseBodyVideoTagResultPerson) Validate() error {
 }
 
 type GetAIVideoTagResultResponseBodyVideoTagResultTime struct {
-	// The tag string.
+	// The label.
 	//
 	// example:
 	//
-	// Milliseconds
+	// Millisecond
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The points in time when the tags are displayed. Unit: milliseconds.
+	// The collection of time points. Unit: milliseconds.
 	Times []*string `json:"Times,omitempty" xml:"Times,omitempty" type:"Repeated"`
 }
 

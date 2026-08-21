@@ -14,7 +14,7 @@ type iDeleteMultipartUploadResponseBody interface {
 }
 
 type DeleteMultipartUploadResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -20,18 +20,19 @@ type iDeleteMezzaninesResponseBody interface {
 }
 
 type DeleteMezzaninesResponseBody struct {
+	// The list of custom IDs that do not exist.
 	NonExistReferenceIds []*string `json:"NonExistReferenceIds,omitempty" xml:"NonExistReferenceIds,omitempty" type:"Repeated"`
-	// The IDs of the audio or video files that do not exist.
+	// The list of audio or video IDs that do not exist.
 	NonExistVideoIds []*string `json:"NonExistVideoIds,omitempty" xml:"NonExistVideoIds,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 25818875-5F78-4AF6-D7393642CA58****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The IDs of the audio or video files whose source files cannot be deleted.
+	// The list of audio or video IDs that cannot be deleted.
 	//
-	// >  In most cases, source files cannot be deleted if they are used for original-quality playback or you do not have required permissions to delete them. For more information, see [Overview](https://help.aliyun.com/document_detail/113600.html).
+	// > This is typically because the source file is used as the original stream (if the video transcoding pattern is no transcoding or asynchronous transcoding, the source file is used as the original stream for playback and cannot be deleted by default) or because of insufficient [permissions](https://help.aliyun.com/document_detail/113600.html).
 	UnRemoveableVideoIds []*string `json:"UnRemoveableVideoIds,omitempty" xml:"UnRemoveableVideoIds,omitempty" type:"Repeated"`
 }
 

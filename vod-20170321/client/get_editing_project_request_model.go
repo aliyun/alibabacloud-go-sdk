@@ -24,7 +24,7 @@ type iGetEditingProjectRequest interface {
 type GetEditingProjectRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the online editing project.
+	// The online editing project ID.
 	//
 	// This parameter is required.
 	//

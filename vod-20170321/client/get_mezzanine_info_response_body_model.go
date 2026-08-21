@@ -16,9 +16,9 @@ type iGetMezzanineInfoResponseBody interface {
 }
 
 type GetMezzanineInfoResponseBody struct {
-	// The information about the source file.
+	// The file information.
 	Mezzanine *GetMezzanineInfoResponseBodyMezzanine `json:"Mezzanine,omitempty" xml:"Mezzanine,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,140 +62,148 @@ func (s *GetMezzanineInfoResponseBody) Validate() error {
 }
 
 type GetMezzanineInfoResponseBodyMezzanine struct {
-	// The codec time base.
+	// The audio stream information.
 	AudioStreamList []*GetMezzanineInfoResponseBodyMezzanineAudioStreamList `json:"AudioStreamList,omitempty" xml:"AudioStreamList,omitempty" type:"Repeated"`
-	// The bitrate of the file. Unit: Kbit/s.
+	// The file bitrate. Unit: Kbps.
 	//
 	// example:
 	//
 	// 771.2280
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The time when the file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the file was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2017-11-14T09:15:50Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The duration of the file. Unit: seconds.
+	// The file duration. Unit: seconds.
 	//
 	// example:
 	//
 	// 42.4930
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	FileMD5  *string `json:"FileMD5,omitempty" xml:"FileMD5,omitempty"`
-	// The name of the file.
+	// The file name.
 	//
 	// example:
 	//
 	// 27ffc438-164h67f57ef-0005-6884-51a-1****.mp4
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The URL of the file.
+	// The source file URL.
 	//
 	// example:
 	//
 	// http://example-bucket-****.oss-cn-shanghai.aliyuncs.com/27ffc438-164h67f57ef-0005-6884-51a-1****.mp4
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
-	// The frame rate of the file. Unit: frames per second.
+	// The file frame rate, in frames per second.
 	//
 	// example:
 	//
 	// 25.0000
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// The height of the file. Unit: pixel.
+	// The file height. Unit: px.
 	//
 	// example:
 	//
 	// 540
 	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The type of the mezzanine file URL. Valid values:
+	// The type of the output URL. Valid values:
 	//
-	// - **oss**: OSS URL
+	// - **oss**: back-to-origin URL.
 	//
-	// - **cdn*	- (default): CDN URL
+	// - **cdn*	- (default): CDN URL.
 	//
-	// > If you specify an OSS URL for the video stream, the video stream must be in the MP4 format.
+	// > Only OSS URLs in the MP4 playback format are supported.
 	//
 	// example:
 	//
 	// oss
 	OutputType *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
-	// The preprocess status od the media.
+	// The preprocessing status. Valid values:
+	//
+	// - **UnPreprocess**: Not preprocessed.
+	//
+	// - **Preprocessing**: Being preprocessed.
+	//
+	// - **PreprocessSucceed**: Preprocessed.
+	//
+	// - **PreprocessFailed**: Failed to be preprocessed.
 	//
 	// example:
 	//
 	// UnPreprocess
 	PreprocessStatus *string `json:"PreprocessStatus,omitempty" xml:"PreprocessStatus,omitempty"`
-	// The period of time in which the object remains in the restored state.
+	// The expiration time of the media asset restore.
 	//
 	// example:
 	//
 	// 2023-03-30T10:14:14Z
 	RestoreExpiration *string `json:"RestoreExpiration,omitempty" xml:"RestoreExpiration,omitempty"`
-	// The restoration status of the audio or video file. Valid values:
+	// The restore status of the media asset. Valid values:
 	//
-	// 	- **Processing**
+	// - **Processing**: Being restored.
 	//
-	// 	- **Success**
+	// - **Success**: Restored.
 	//
-	// 	- **Failed**
+	// - **Failed**: Failed to be restored.
 	//
 	// example:
 	//
 	// Success
 	RestoreStatus *string `json:"RestoreStatus,omitempty" xml:"RestoreStatus,omitempty"`
-	// The size of the file. Unit: byte.
+	// The file size. Unit: bytes.
 	//
 	// example:
 	//
 	// 4096477
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The status of the file. Valid values:
+	// The file status. Valid values:
 	//
-	// 	- **Uploading**: The file is being uploaded. This is the initial status.
+	// - **Uploading**: The file is being uploaded. This is the initial status.
 	//
-	// 	- **Normal**: The file is uploaded.
+	// - **Normal**: The file is uploaded.
 	//
-	// 	- **UploadFail**: The file fails to be uploaded.
+	// - **UploadFail**: The file failed to be uploaded.
 	//
-	// 	- **Deleted**: The file is deleted.
+	// - **Deleted**: The file is deleted.
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage class of the audio file. Valid values:
+	// The storage class of the media asset. Valid values:
 	//
-	// 	- **Standard**: All media resources are stored as Standard objects.
+	// - **Standard**: Standard.
 	//
-	// 	- **IA**: All media resources are stored as IA objects.
+	// - **IA**: Infrequent Access for media assets.
 	//
-	// 	- **Archive**: All media resources are stored as Archive objects.
+	// - **Archive**: Archive for media assets.
 	//
-	// 	- **ColdArchive**: All media resources are stored as Cold Archive objects.
+	// - **ColdArchive**: Cold Archive for media assets.
 	//
-	// 	- **SourceIA**: Only the source files are IA objects.
+	// - **SourceIA**: Infrequent Access for source files.
 	//
-	// 	- **SourceArchive**: Only the source files are Archive objects.
+	// - **SourceArchive**: Archive for source files.
 	//
-	// 	- **SourceColdArchive**: Only the source files are Cold Archive objects.
+	// - **SourceColdArchive**: Cold Archive for source files.
 	//
-	// 	- **Changing**: The storage class of the audio file is being changed.
+	// - **Changing**: The storage class of the media asset is being changed.
 	//
-	// 	- **SourceChanging**: The storage class of the source file is being changed.
+	// - **SourceChanging**: The storage class of the source file is being changed.
 	//
 	// example:
 	//
 	// Standard
 	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
-	// The ID of the video.
+	// The video ID.
 	//
 	// example:
 	//
 	// 1f1a6fc03ca04814031b8a6559e****
 	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
-	// The HDR type of the video stream.
+	// The video stream information.
 	VideoStreamList []*GetMezzanineInfoResponseBodyMezzanineVideoStreamList `json:"VideoStreamList,omitempty" xml:"VideoStreamList,omitempty" type:"Repeated"`
-	// The width of the file. Unit: pixel.
+	// The file width. Unit: px.
 	//
 	// example:
 	//
@@ -411,11 +419,11 @@ type GetMezzanineInfoResponseBodyMezzanineAudioStreamList struct {
 	//
 	// 62.885
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The output layout of the sound channels. Valid values:
+	// The channel layout. Valid values:
 	//
-	// 	- **mono**
+	// - **mono**: mono.
 	//
-	// 	- **stereo**
+	// - **stereo**: stereo.
 	//
 	// example:
 	//
@@ -427,25 +435,25 @@ type GetMezzanineInfoResponseBodyMezzanineAudioStreamList struct {
 	//
 	// 1
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// The full name of the encoding format.
+	// The full name of the codec.
 	//
 	// example:
 	//
 	// AAC (Advanced Audio Coding)
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// The short name of the encoding format.
+	// The short name of the codec.
 	//
 	// example:
 	//
 	// aac
 	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// The tag of the encoding format.
+	// The codec tag.
 	//
 	// example:
 	//
 	// 0x6134706d
 	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// The tag string of the encoding format.
+	// The codec tag string.
 	//
 	// example:
 	//
@@ -457,13 +465,13 @@ type GetMezzanineInfoResponseBodyMezzanineAudioStreamList struct {
 	//
 	// 1/44100
 	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// The duration of the audio file.
+	// The duration.
 	//
 	// example:
 	//
 	// 3.227574
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The sequence number of the audio stream. The value indicates the position of the audio stream in all audio streams.
+	// The sequence number of the audio stream, which identifies the position of the audio stream in the overall media stream.
 	//
 	// example:
 	//
@@ -481,25 +489,25 @@ type GetMezzanineInfoResponseBodyMezzanineAudioStreamList struct {
 	//
 	// 1
 	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	// The sampling format.
+	// The sample format.
 	//
 	// example:
 	//
 	// fltp
 	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
-	// The sampling rate of the audio stream.
+	// The sample rate.
 	//
 	// example:
 	//
 	// 44100
 	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
-	// The beginning of the time range during which the data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The start time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The time base of the audio stream.
+	// The time base.
 	//
 	// example:
 	//
@@ -670,31 +678,31 @@ type GetMezzanineInfoResponseBodyMezzanineVideoStreamList struct {
 	//
 	// 30.0
 	AvgFPS *string `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
-	// The bitrate. Unit: Kbit/s.
+	// The file bitrate. Unit: Kbps.
 	//
 	// example:
 	//
 	// 500
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The full name of the encoding format.
+	// The full name of the codec.
 	//
 	// example:
 	//
 	// H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// The short name of the encoding format.
+	// The short name of the codec.
 	//
 	// example:
 	//
 	// h264
 	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// The tag of the encoding format.
+	// The codec tag.
 	//
 	// example:
 	//
 	// 0x31637661
 	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// The tag string of the encoding format.
+	// The codec tag string.
 	//
 	// example:
 	//
@@ -706,19 +714,19 @@ type GetMezzanineInfoResponseBodyMezzanineVideoStreamList struct {
 	//
 	// 1/60
 	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// The display aspect ratio (DAR) of the video stream.
+	// The display aspect ratio.
 	//
 	// example:
 	//
 	// 0:1
 	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
-	// The duration of the audio file.
+	// The duration.
 	//
 	// example:
 	//
 	// 3.166667
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The frame rate of the output file.
+	// The target frame rate.
 	//
 	// example:
 	//
@@ -736,13 +744,13 @@ type GetMezzanineInfoResponseBodyMezzanineVideoStreamList struct {
 	//
 	// 0
 	HasBFrames *string `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
-	// The height of the video stream.
+	// The height of the video resolution.
 	//
 	// example:
 	//
 	// 320
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The sequence number of the video stream. The value indicates the position of the video stream in all video streams.
+	// The sequence number of the video stream, which identifies the position of the video stream in the overall media stream.
 	//
 	// example:
 	//
@@ -778,31 +786,31 @@ type GetMezzanineInfoResponseBodyMezzanineVideoStreamList struct {
 	//
 	// Main
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// The rotation angle of the video. Valid values: **[0,360)**.
+	// The video rotation angle. Value range: **[0, 360)**.
 	//
 	// example:
 	//
 	// 90
 	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	// The sample aspect ratio (SAR) of the video stream.
+	// The sample aspect ratio.
 	//
 	// example:
 	//
 	// 0:1
 	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
-	// The beginning of the time range during which the data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The start time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The time base of the audio stream.
+	// The time base.
 	//
 	// example:
 	//
 	// 0.000000
 	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
-	// The width of the video in pixels.
+	// The width of the video resolution.
 	//
 	// example:
 	//

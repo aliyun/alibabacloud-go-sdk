@@ -16,13 +16,13 @@ type iPreloadVodObjectCachesResponseBody interface {
 }
 
 type PreloadVodObjectCachesResponseBody struct {
-	// The ID of the prefetch task. Separate multiple task IDs with commas (,).
+	// The task ID returned for the prefetch operation. Multiple task IDs are separated by commas (,).
 	//
 	// example:
 	//
 	// 9524****
 	PreloadTaskId *string `json:"PreloadTaskId,omitempty" xml:"PreloadTaskId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

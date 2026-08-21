@@ -16,7 +16,7 @@ type iUpdateTranscodeTemplateGroupResponseBody interface {
 }
 
 type UpdateTranscodeTemplateGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

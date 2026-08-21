@@ -16,9 +16,9 @@ type iGetMediaAuditResultDetailResponseBody interface {
 }
 
 type GetMediaAuditResultDetailResponseBody struct {
-	// Details about review results.
+	// The details of the review results.
 	MediaAuditResultDetail *GetMediaAuditResultDetailResponseBodyMediaAuditResultDetail `json:"MediaAuditResultDetail,omitempty" xml:"MediaAuditResultDetail,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ func (s *GetMediaAuditResultDetailResponseBody) Validate() error {
 }
 
 type GetMediaAuditResultDetailResponseBodyMediaAuditResultDetail struct {
-	// The review results returned.
+	// The list of video review result details.
 	List []*GetMediaAuditResultDetailResponseBodyMediaAuditResultDetailList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// The total number of snapshots returned.
+	// The total number of video review result screenshots.
 	//
 	// example:
 	//
@@ -112,145 +112,145 @@ func (s *GetMediaAuditResultDetailResponseBodyMediaAuditResultDetail) Validate()
 }
 
 type GetMediaAuditResultDetailResponseBodyMediaAuditResultDetailList struct {
-	// The category of the review result. Valid values:
+	// The classification of the ad review result. Valid values:
 	//
-	// 	- **normal**: normal content.
+	// - **normal**: Normal.
 	//
-	// 	- **ad**: other ads.
+	// - **ad**: Other ads.
 	//
-	// 	- **politics**: political content in text.
+	// - **politics**: Text contains politically sensitive content.
 	//
-	// 	- **porn**: pornographic content in text.
+	// - **porn**: Text contains pornographic content.
 	//
-	// 	- **abuse**: verbal abuse in text.
+	// - **abuse**: Text contains abusive content.
 	//
-	// 	- **terrorism**: terrorist content in text.
+	// - **terrorism**: Text contains terrorism-related content.
 	//
-	// 	- **contraband**: prohibited content in text.
+	// - **contraband**: Text contains prohibited content.
 	//
-	// 	- **spam**: spam content in text.
+	// - **spam**: Text contains other spam content.
 	//
-	// 	- **npx**: illegal ad
+	// - **npx**: Psoriasis ads.
 	//
-	// 	- **qrcode**: QR code.
+	// - **qrcode**: Contains a QR code.
 	//
-	// 	- **programCode**: mini program code.
+	// - **programCode**: Contains a mini program code.
 	//
 	// example:
 	//
 	// normal
 	AdLabel *string `json:"AdLabel,omitempty" xml:"AdLabel,omitempty"`
-	// The score of the video snapshot in the ad review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+	// The hit score of the video screenshot for the ad review result. Value range: `[0-100]`, with a precision of 10 decimal places. The hit result indicates the probability of the corresponding classification label. A higher value indicates higher accuracy.
 	//
 	// example:
 	//
 	// 100
 	AdScore *string `json:"AdScore,omitempty" xml:"AdScore,omitempty"`
-	// The category of the review result. Valid values:
+	// The classification of the undesirable scene review result. Valid values:
 	//
-	// 	- **normal**: normal content.
+	// - **normal**: Normal.
 	//
-	// 	- **meaningless**: meaningless content, such as a black or white screen.
+	// - **meaningless**: The image has no content (for example, a black screen or white screen).
 	//
-	// 	- **PIP**: picture-in-picture.
+	// - **PIP**: Picture-in-Picture (PiP).
 	//
-	// 	- **smoking**: smoking.
+	// - **smoking**: Smoking.
 	//
-	// 	- **drivelive**: live broadcasting in a running vehicle.
+	// - **drivelive**: In-car live streaming.
 	//
 	// example:
 	//
 	// normal
 	LiveLabel *string `json:"LiveLabel,omitempty" xml:"LiveLabel,omitempty"`
-	// The score of the video snapshot in the undesirable content review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+	// The hit score of the video screenshot for the undesirable scene review result. Value range: `[0-100]`, with a precision of 10 decimal places. The hit result indicates the probability of the corresponding classification label. A higher value indicates higher accuracy.
 	//
 	// example:
 	//
 	// 100
 	LiveScore *string `json:"LiveScore,omitempty" xml:"LiveScore,omitempty"`
-	// The category of the review result. Valid values:
+	// The classification of the logo review result. Valid values:
 	//
-	// 	- **normal**: normal content.
+	// - **normal**: Normal.
 	//
-	// 	- **TV**: controlled TV station logo.
+	// - **TV**: Contains a regulated logo.
 	//
-	// 	- **trademark**: trademark.
+	// - **trademark**: Contains a trademark.
 	//
 	// example:
 	//
 	// normal
 	LogoLabel *string `json:"LogoLabel,omitempty" xml:"LogoLabel,omitempty"`
-	// The score of the video snapshot in the logo review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+	// The hit score of the video screenshot for the logo review result. Value range: `[0-100]`, with a precision of 10 decimal places. The hit result indicates the probability of the corresponding classification label. A higher value indicates higher accuracy.
 	//
 	// example:
 	//
 	// 100
 	LogoScore *string `json:"LogoScore,omitempty" xml:"LogoScore,omitempty"`
-	// The category of the review result. Valid values:
+	// The classification of the pornography review result. Valid values:
 	//
-	// 	- **normal**
+	// - **normal**: Normal.
 	//
-	// 	- **porn**
+	// - **porn**: Pornographic.
 	//
-	// 	- **sexy**
+	// - **sexy**: Sexy.
 	//
 	// example:
 	//
 	// normal
 	PornLabel *string `json:"PornLabel,omitempty" xml:"PornLabel,omitempty"`
-	// The score of the video snapshot in the pornographic content review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+	// The hit score of the video screenshot for the pornography review result. Value range: `[0-100]`, with a precision of 10 decimal places. The hit result indicates the probability of the corresponding classification label. A higher value indicates higher accuracy.
 	//
 	// example:
 	//
 	// 100.00
 	PornScore *string `json:"PornScore,omitempty" xml:"PornScore,omitempty"`
-	// The category of the review result. Valid values:
+	// The classification of the terrorism review result. Valid values:
 	//
-	// 	- **normal**
+	// - **normal**: Normal.
 	//
-	// 	- **bloody**
+	// - **bloody**: Bloody.
 	//
-	// 	- **explosion**
+	// - **explosion**: Explosion and smoke.
 	//
-	// 	- **outfit**
+	// - **outfit**: Special attire.
 	//
-	// 	- **logo**
+	// - **logo**: Special logo.
 	//
-	// 	- **weapon**
+	// - **weapon**: Weapon.
 	//
-	// 	- **politics**
+	// - **politics**: Politically sensitive.
 	//
-	// 	- **violence**
+	// - **violence**: Fighting.
 	//
-	// 	- **crowd**
+	// - **crowd**: Crowd gathering.
 	//
-	// 	- **parade**
+	// - **parade**: Parade.
 	//
-	// 	- **carcrash**
+	// - **carcrash**: Car crash scene.
 	//
-	// 	- **flag**
+	// - **flag**: Flag.
 	//
-	// 	- **location**
+	// - **location**: Landmark.
 	//
-	// 	- **others**
+	// - **others**: Others.
 	//
 	// example:
 	//
 	// normal
 	TerrorismLabel *string `json:"TerrorismLabel,omitempty" xml:"TerrorismLabel,omitempty"`
-	// The score of the video snapshot in the terrorist content review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+	// The hit score of the video screenshot for the terrorism review result. Value range: `[0-100]`, with a precision of 10 decimal places. The hit result indicates the probability of the corresponding classification label. A higher value indicates higher accuracy.
 	//
 	// example:
 	//
 	// 100.00
 	TerrorismScore *string `json:"TerrorismScore,omitempty" xml:"TerrorismScore,omitempty"`
-	// The timestamp of the snapshot in the video. Unit: milliseconds.
+	// The position of the video screenshot in the video. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 3005
 	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The URL of the video snapshot.
+	// The URL of the video screenshot.
 	//
 	// example:
 	//

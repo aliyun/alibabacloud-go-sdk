@@ -24,7 +24,7 @@ type iDescribeVodDomainQpsDataResponseBody interface {
 }
 
 type DescribeVodDomainQpsDataResponseBody struct {
-	// The time interval between the data entries returned. Unit: seconds.
+	// The time interval between entries. Unit: seconds.
 	//
 	// example:
 	//
@@ -36,20 +36,20 @@ type DescribeVodDomainQpsDataResponseBody struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which data was queried. The time follows the ISO 8601 standard in the *YYYY-MM-DD**Thh:mm:ss	- format. The time is displayed in UTC.
+	// The end time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2024-05-02T15:59:00Z
 	EndTime         *string                                              `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	QpsDataInterval *DescribeVodDomainQpsDataResponseBodyQpsDataInterval `json:"QpsDataInterval,omitempty" xml:"QpsDataInterval,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 25818875-5F78-4AF6-D7393642CA58*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range during which data was queried. The time follows the ISO 8601 standard in the *YYYY-MM-DD**Thh:mm:ss	- format. The time is displayed in UTC.
+	// The start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//

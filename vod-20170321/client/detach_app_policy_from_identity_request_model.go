@@ -20,21 +20,21 @@ type iDetachAppPolicyFromIdentityRequest interface {
 }
 
 type DetachAppPolicyFromIdentityRequest struct {
-	// The ID of the application. This parameter is optional if you set PolicyNames to VODAppAdministratorAccess. This parameter is required if you set PolicyNames to a value other than VODAppAdministratorAccess.
+	// The application ID. If the policy name is VODAppAdministratorAccess, this parameter is optional. For other policies, this parameter is required.
 	//
-	// 	- Default value: **app-1000000**.
+	// - Value (default): **app-1000000**.
 	//
-	// 	- For more information, see [Overview](https://help.aliyun.com/document_detail/113600.html).
+	// - For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
 	//
 	// example:
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the RAM user or the name of the RAM role.
+	// The identity name.
 	//
-	// 	- Specifies the ID of the RAM user for this parameter if you set IdentityType to RamUser.
+	// - If the type is RamUser, specify the Resource Access Management (RAM) user ID.
 	//
-	// 	- Specifies the name of the RAM role for this parameter if you set IdentityType to RamRole.
+	// - If the type is RamRole, specify the role name.
 	//
 	// This parameter is required.
 	//
@@ -42,11 +42,11 @@ type DetachAppPolicyFromIdentityRequest struct {
 	//
 	// test****name
 	IdentityName *string `json:"IdentityName,omitempty" xml:"IdentityName,omitempty"`
-	// The type of the identity. Valid values:
+	// The identity type. Valid values:
 	//
-	// 	- **RamUser**: RAM user
+	// - **RamUser**: Resource Access Management (RAM) user.
 	//
-	// 	- **RamRole**: RAM role
+	// - **RamRole**: RAM role.
 	//
 	// This parameter is required.
 	//
@@ -54,13 +54,13 @@ type DetachAppPolicyFromIdentityRequest struct {
 	//
 	// RamUser
 	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
-	// The name of the policy. Separate multiple names with commas (,). Only system policies are supported.
+	// The policy names. Separate multiple names with commas (,). Only system policies are supported. Valid values:
 	//
-	// 	- **VODAppFullAccess**: permissions to manage all resources in an application
+	// - **VODAppFullAccess**: permissions to manage and operate all resources in the application.
 	//
-	// 	- **VODAppReadOnlyAccess**: permissions to read all resources in an application
+	// - **VODAppReadOnlyAccess**: read-only permissions for all resources in the application.
 	//
-	// 	- **VODAppAdministratorAccess**: permissions of the application administrator
+	// - **VODAppAdministratorAccess**: application administrator permissions.
 	//
 	// This parameter is required.
 	//

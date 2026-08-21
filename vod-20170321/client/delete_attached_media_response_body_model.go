@@ -18,7 +18,7 @@ type iDeleteAttachedMediaResponseBody interface {
 type DeleteAttachedMediaResponseBody struct {
 	// The IDs of the auxiliary media assets that failed to be deleted.
 	NonExistMediaIds []*string `json:"NonExistMediaIds,omitempty" xml:"NonExistMediaIds,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

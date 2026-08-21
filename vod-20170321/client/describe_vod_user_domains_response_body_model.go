@@ -23,7 +23,7 @@ type iDescribeVodUserDomainsResponseBody interface {
 
 type DescribeVodUserDomainsResponseBody struct {
 	Domains *DescribeVodUserDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
-	// The page number.
+	// The page number of the returned data.
 	//
 	// example:
 	//
@@ -35,7 +35,7 @@ type DescribeVodUserDomainsResponseBody struct {
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

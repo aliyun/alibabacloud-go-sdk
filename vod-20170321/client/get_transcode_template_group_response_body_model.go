@@ -22,7 +22,7 @@ type GetTranscodeTemplateGroupResponseBody struct {
 	//
 	// 6730AC93-7B12-4B*****7F-49EE1FE8BC49
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the transcoding template group.
+	// The transcoding template group data.
 	TranscodeTemplateGroup *GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroup `json:"TranscodeTemplateGroup,omitempty" xml:"TranscodeTemplateGroup,omitempty" type:"Struct"`
 }
 
@@ -62,13 +62,13 @@ func (s *GetTranscodeTemplateGroupResponseBody) Validate() error {
 }
 
 type GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroup struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The time when the transcoding template group was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the template group was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
@@ -76,43 +76,43 @@ type GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroup struct {
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// Indicates whether the template group is the default one. Valid values:
 	//
-	// 	- **Default**
+	// - **Default**: The template group is the default one.
 	//
-	// 	- **NotDefault**
+	// - **NotDefault**: The template group is not the default one.
 	//
 	// example:
 	//
 	// NotDefault
 	IsDefault *string `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// Indicates whether the transcoding template group is locked. Valid values:
+	// Indicates whether the template group is locked. Valid values:
 	//
-	// 	- **Disabled**: The template group is not locked.
+	// - **Disabled**: Not locked.
 	//
-	// 	- **Enabled**: The template group is locked.
+	// - **Enabled**: Locked.
 	//
 	// example:
 	//
 	// Enabled
 	Locked *string `json:"Locked,omitempty" xml:"Locked,omitempty"`
-	// The time when the transcoding template group was last modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the template group was last modified. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2018-12-12T11:20:51Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The name of the transcoding template group.
+	// The name of the template group.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the transcoding template group.
+	// The transcoding template group ID.
 	//
 	// example:
 	//
 	// a59b11f697c716*****6ae1502142d0
 	TranscodeTemplateGroupId *string `json:"TranscodeTemplateGroupId,omitempty" xml:"TranscodeTemplateGroupId,omitempty"`
-	// The information about the transcoding templates.
+	// The list of transcoding template configurations.
 	TranscodeTemplateList []*GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTemplateList `json:"TranscodeTemplateList,omitempty" xml:"TranscodeTemplateList,omitempty" type:"Repeated"`
 }
 
@@ -210,115 +210,115 @@ func (s *GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroup) Validate()
 }
 
 type GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTemplateList struct {
-	// The transcoding configurations of the audio stream. The value is a JSON string.
+	// The audio stream transcoding configuration parameters (JSON string).
 	//
 	// example:
 	//
-	// {\\"Codec\\":\\"AAC\\",\\"Remove\\":\\"false\\",\\"Bitrate\\":\\"44\\",\\"Samplerate\\":\\"32000\\",\\"Channels\\":\\"2\\",\\"Profile\\":\\"aac_low\\"}
+	// {"Codec":"AAC","Remove":"false","Bitrate":"44","Samplerate":"32000","Channels":"2","Profile":"aac_low"}
 	Audio *string `json:"Audio,omitempty" xml:"Audio,omitempty"`
-	// The clipping configurations of the video. The value is a JSON string. For example, this parameter is returned if you extract 5 seconds of content from a video to generate a new video.
+	// The video clipping configuration (JSON string). For example, set this parameter if you want to extract 5 seconds of content from a video to generate a new video.
 	//
 	// example:
 	//
-	// {\\"TimeSpan\\":{\\"Seek\\":\\"1\\",\\"Duration\\":\\"5\\"}
+	// {"TimeSpan":{"Seek":"1","Duration":"5"}
 	Clip *string `json:"Clip,omitempty" xml:"Clip,omitempty"`
-	// The format of the container used to encapsulate audio and video streams. The value is a JSON string.
+	// The container format for encapsulating audio and video streams (JSON string).
 	//
 	// example:
 	//
 	// "Format":"m3u8"
 	Container *string `json:"Container,omitempty" xml:"Container,omitempty"`
-	// The content of the copyright watermark.
+	// The copyright watermark information.
 	//
 	// example:
 	//
 	// {
 	//
-	// 	"Content": "test"
+	// "Content": "Test copyright watermark text"
 	//
 	// }
 	CopyrightMark *string `json:"CopyrightMark,omitempty" xml:"CopyrightMark,omitempty"`
-	// Valid values for the definition of a common transcoding template:
+	// The definition mark for normal transcoding templates:
 	//
-	// 	- **LD**: low definition.
+	// - **LD*	- (low definition)
 	//
-	// 	- **SD**: standard definition.
+	// - **SD*	- (standard definition)
 	//
-	// 	- **HD**: high definition.
+	// - **HD*	- (high definition)
 	//
-	// 	- **FHD**: ultra high definition.
+	// - **FHD*	- (full high definition)
 	//
-	// 	- **OD**: original quality.
+	// - **OD*	- (original definition, container format conversion)
 	//
-	// 	- **2K**
+	// - **2K**
 	//
-	// 	- **4K**
+	// - **4K**
 	//
-	// 	- **SQ**: standard sound quality.
+	// - **SQ*	- (standard audio quality)
 	//
-	// 	- **HQ**: high sound quality.
+	// - **HQ*	- (high audio quality)
 	//
-	// Valid values for the definition of a Narrowband HD™ 1.0 transcoding template:
+	// The definition mark for Narrowband HD 1.0 built-in transcoding templates:
 	//
-	// 	- **LD-NBV1**: low definition.
+	// - **LD-NBV1*	- (low definition)
 	//
-	// 	- **SD-NBV1**: standard definition.
+	// - **SD-NBV1*	- (standard definition)
 	//
-	// 	- **HD-NBV1**: high definition.
+	// - **HD-NBV1*	- (high definition)
 	//
-	// 	- **FHD-NBV1**: ultra high definition.
+	// - **FHD-NBV1*	- (full high definition)
 	//
-	// 	- **2K-NBV1**
+	// - **2K-NBV1**
 	//
-	// 	- **4K-NBV1**
+	// - **4K-NBV1**
 	//
-	// > 	- You cannot change the definition of a transcoding template.
+	// > - The definition mark of transcoding templates cannot be modified.
 	//
-	// >	- You cannot modify the system parameters, such as the video resolution, audio resolution, and bitrate, of Narrowband HD™ 1.0 transcoding templates.
+	// > - The audio and video resolution, bitrate, and other parameters of Narrowband HD 1.0 transcoding templates are built into the system and cannot be modified.
 	//
-	// >	- You can create only Narrowband HD™ 1.0 transcoding templates that support the FLV, M3U8 (HLS), and MP4 output formats.
+	// > - Narrowband HD 1.0 transcoding templates can only be created in FLV, M3U8 (HLS), or MP4 format.
 	//
 	// example:
 	//
 	// SD
 	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	// The encryption configuration for transcoding.
+	// The transcoding encryption configuration.
 	//
 	// example:
 	//
 	// "EncryptType":"Private"
 	EncryptSetting *string `json:"EncryptSetting,omitempty" xml:"EncryptSetting,omitempty"`
-	// The transcoding segment configurations. This parameter must be returned if HTTP-Live-Streaming (HLS) encryption is used. The value is a JSON string.
+	// The segment setting parameters for transcoding. Required for HLS (JSON string).
 	//
 	// example:
 	//
 	// "Segment": { "Duration":"6" }
 	MuxConfig *string `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty"`
-	// The packaging configuration. Only HLS packaging and DASH packaging are supported. The value is a JSON string.
+	// The packaging configuration. Only HLS adaptive bitrate streaming packaging and DASH packaging are supported (JSON string).
 	//
 	// example:
 	//
 	// "PackageType":"HLSPackage","PackageConfig":{   "BandWidth":"900000"  }
 	PackageSetting *string `json:"PackageSetting,omitempty" xml:"PackageSetting,omitempty"`
-	// The video rotation identifier. It is used to control the image rotation angle. For example, if you set this parameter to 180, the video image is turned upside down. Valid values: `[0,360]`.
+	// The video rotation parameter. Controls the rotation angle of the video. For example, if set to 180, the video is flipped upside down. Value range: `[0,360]`.
 	//
 	// example:
 	//
 	// 90
 	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	// The subtitle configurations. The value is a JSON string.
+	// The subtitle configuration (JSON string).
 	//
 	// example:
 	//
 	// [{"SubtitleUrl":"http://outin-test.oss-cn-shanghai.aliyuncs.com/subtitles/c737fece-14f1-4364-b107-d5f7f8edde0e.ass","CharEncode":"utf-8"}]
 	SubtitleList *string `json:"SubtitleList,omitempty" xml:"SubtitleList,omitempty"`
-	// The name of the transcoding template.
+	// The transcoding template name.
 	//
 	// example:
 	//
 	// test
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The content of the tracing watermark.
+	// The tracing watermark information.
 	//
 	// example:
 	//
@@ -328,13 +328,13 @@ type GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTemplat
 	//
 	// }
 	TraceMark *string `json:"TraceMark,omitempty" xml:"TraceMark,omitempty"`
-	// The conditional transcoding configurations. This parameter can be used if you want to determine the basic logic based on the bitrate and resolution of the source file before the video is transcoded. The value is a JSON-formatted string.
+	// The conditional transcoding parameters. Set this parameter if you want to perform basic logic checks based on the bitrate or resolution of the source file before outputting the transcoded video (JSON string).
 	//
 	// example:
 	//
 	// {"IsCheckReso":"true","IsCheckResoFail":"false","IsCheckVideoBitrate":"false","IsCheckVideoBitrateFail":"false","IsCheckAudioBitrate":"false","IsCheckAudioBitrateFail":"false"}
 	TransConfig *string `json:"TransConfig,omitempty" xml:"TransConfig,omitempty"`
-	// The custom path used to store the output files.
+	// The custom transcoding output path.
 	//
 	// example:
 	//
@@ -346,25 +346,25 @@ type GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTemplat
 	//
 	// 696d29a11erc057*****a3acc398d02f4
 	TranscodeTemplateId *string `json:"TranscodeTemplateId,omitempty" xml:"TranscodeTemplateId,omitempty"`
-	// The type of the transcoding template. Valid values:
+	// The templatetype. Valid values:
 	//
-	// 	- **Normal*	- (default): a common transcoding template. The PackageSetting parameter cannot be set for this type of template.
+	// - **Normal*	- (default): a normal transcoding template. The PackageSetting parameter cannot be configured in Settings for this type of template.
 	//
-	// 	- **VideoPackage**: a video stream package template. If this type of template is used, ApsaraVideo VOD transcodes a video into video streams in different bitrates and packages these video streams with a file. The PackageSetting parameter must be set for this type of template.
+	// - **VideoPackage**: a video stream packaging template. This type of template first transcodes and then builds adaptive bitrate streaming. The PackageSetting parameter must be configured in Settings for this type of template.
 	//
-	// 	- **SubtitlePackage**: a subtitle package template. If this type of template is used, ApsaraVideo VOD adds the subtitle information to the output file generated by packaging the multi-bitrate video streams of the corresponding video without transcoding. You must set the PackageSetting parameter for a subtitle package template and associate the subtitle package template with a video stream package template. A template group can contain only one subtitle package template.
+	// - **SubtitlePackage**: a subtitle packaging template. This type of template does not transcode but only builds the corresponding subtitle information into the adaptive bitrate streaming output file. The PackageSetting parameter must be configured in Settings for this type of template. This type of template cannot exist alone in a template group and must be configured together with a VideoPackage type template. Only one SubtitlePackage template can be configured in a template group.
 	//
 	// example:
 	//
 	// Normal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The transcoding configurations of the video stream. The value is a JSON string.
+	// The video stream transcoding configuration parameters (JSON string).
 	//
 	// example:
 	//
 	// {"Codec":"H.264","Bitrate":"900","Width":"960","Remove":"false","Fps":"30"}
 	Video *string `json:"Video,omitempty" xml:"Video,omitempty"`
-	// The IDs of the associated watermarks.
+	// The IDs of associated image and text watermark templates.
 	WatermarkIds []*string `json:"WatermarkIds,omitempty" xml:"WatermarkIds,omitempty" type:"Repeated"`
 }
 

@@ -14,7 +14,7 @@ type iDeleteDynamicImageResponseBody interface {
 }
 
 type DeleteDynamicImageResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

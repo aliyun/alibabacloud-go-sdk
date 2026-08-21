@@ -18,9 +18,9 @@ type iMoveAppResourceResponseBody interface {
 }
 
 type MoveAppResourceResponseBody struct {
-	// The IDs of the resources that failed to be migrated.
+	// The IDs of resources that failed to be migrated.
 	FailedResourceIds []*string `json:"FailedResourceIds,omitempty" xml:"FailedResourceIds,omitempty" type:"Repeated"`
-	// The IDs of the resources that were not found.
+	// The IDs of resources that do not exist.
 	NonExistResourceIds []*string `json:"NonExistResourceIds,omitempty" xml:"NonExistResourceIds,omitempty" type:"Repeated"`
 	// The request ID.
 	//

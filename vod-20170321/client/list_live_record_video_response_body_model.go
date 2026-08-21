@@ -19,7 +19,7 @@ type iListLiveRecordVideoResponseBody interface {
 
 type ListLiveRecordVideoResponseBody struct {
 	LiveRecordVideoList *ListLiveRecordVideoResponseBodyLiveRecordVideoList `json:"LiveRecordVideoList,omitempty" xml:"LiveRecordVideoList,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

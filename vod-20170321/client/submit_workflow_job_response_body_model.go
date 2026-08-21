@@ -16,7 +16,7 @@ type iSubmitWorkflowJobResponseBody interface {
 }
 
 type SubmitWorkflowJobResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

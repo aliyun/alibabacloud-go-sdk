@@ -18,7 +18,7 @@ type iDescribeVodDomainDetailRequest interface {
 }
 
 type DescribeVodDomainDetailRequest struct {
-	// The domain name for CDN.
+	// The VOD acceleration domain name.
 	//
 	// This parameter is required.
 	//

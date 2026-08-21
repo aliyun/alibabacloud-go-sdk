@@ -28,19 +28,19 @@ type iUpdateVideoInfoRequest interface {
 }
 
 type UpdateVideoInfoRequest struct {
-	// The category ID. You can use one of the following methods to obtain the ID:
+	// The category ID. You can obtain the ID by using one of the following methods:
 	//
-	// 	- Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management*	- > **Media Management*	- > **Categories*	- to view the category ID of the media file.
+	// - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management*	- > **Media Management*	- > **Categories*	- to view the category ID.
 	//
-	// 	- View the value of the CateId parameter returned by the [AddCategory](https://help.aliyun.com/document_detail/56401.html) operation that you called to create a category.
+	// - Obtain the category ID from the value of the CateId response parameter when you call the [AddCategory](https://help.aliyun.com/document_detail/56401.html) operation to create a category.
 	//
-	// 	- View the value of the CateId parameter returned by the [GetCategories](https://help.aliyun.com/document_detail/56406.html) operation that you called to query a category.
+	// - Call the [GetCategories](https://help.aliyun.com/document_detail/56406.html) operation to query the category ID, which is the value of the CateId response parameter.
 	//
 	// example:
 	//
 	// 384761111
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The URL of the audio/video thumbnail.
+	// The thumbnail URL of the audio or video file.
 	//
 	// example:
 	//
@@ -48,25 +48,27 @@ type UpdateVideoInfoRequest struct {
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
 	// The description of the audio or video file.
 	//
-	// 	- The description can be up to 1,024 bytes in length.
+	// - The description can be up to 1024 bytes in length.
 	//
-	// 	- The value is encoded in UTF-8.
+	// - The value is encoded in UTF-8.
 	//
 	// example:
 	//
-	// video description
+	// Alibaba Cloud VOD video description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The custom ID. Only lowercase letters, uppercase letters, digits, hyphens, and underscores are supported. The value must be 6 to 64 characters in length and is unique at the user level.
+	//
 	// example:
 	//
 	// 123-123
 	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	// The tags of the media file.
+	// The tags.
 	//
-	// 	- Each tag can be up to 32 bytes in length. You can specify up to 16 tags.
+	// - Each tag can be up to 32 bytes in length. A maximum of 16 tags can be specified.
 	//
-	// 	- Separate multiple tags with commas (,).
+	// - Separate multiple tags with commas (,).
 	//
-	// 	- The value is encoded in UTF-8.
+	// - The value is encoded in UTF-8.
 	//
 	// example:
 	//
@@ -74,27 +76,27 @@ type UpdateVideoInfoRequest struct {
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The title of the audio or video file.
 	//
-	// 	- The name cannot exceed 128 bytes.
+	// - The title can be up to 128 bytes in length.
 	//
-	// 	- The value is encoded in UTF-8.
+	// - The value is encoded in UTF-8.
 	//
 	// example:
 	//
-	// video title
+	// Alibaba Cloud VOD Video Title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// Custom settings. This is a JSON string that supports message callbacks, upload acceleration, and other settings. For more information, please refer to [UserData](https://help.aliyun.com/document_detail/86952.html).
+	// The custom settings. The value is a JSON string that supports settings such as message callbacks and upload acceleration. For more information, see [UserData](https://help.aliyun.com/document_detail/86952.html).
 	//
 	// example:
 	//
 	// {"MessageCallback":{"CallbackURL":"http://example.aliyundoc.com"},"Extend":{"localId":"*****","test":"www"}}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// The ID of the audio or video file. Perform the following operations to obtain the storage address:
+	// The audio or video ID. You can obtain the ID by using one of the following methods:
 	//
-	// 	- Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Media Files*	- > **Audio/Video**. On the Video and Audio page, view the ID of the audio or video file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
+	// - For videos uploaded through the console, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Files*	- > **Audio/Video*	- to view the audio or video ID.
 	//
-	// 	- Obtain the value of VideoId from the response to the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation that you called to obtain the upload URL and credential.
+	// - Obtain the video ID from the value of the VideoId response parameter when you call the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation to obtain the upload URL and credential.
 	//
-	// 	- View the value of the VideoId parameter returned by the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation that you called to query media information after the audio or video file is uploaded.
+	// - After the video is uploaded, call the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation to query the audio or video ID, which is the value of the VideoId response parameter.
 	//
 	// example:
 	//

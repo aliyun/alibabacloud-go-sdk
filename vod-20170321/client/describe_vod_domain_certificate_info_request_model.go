@@ -18,7 +18,7 @@ type iDescribeVodDomainCertificateInfoRequest interface {
 }
 
 type DescribeVodDomainCertificateInfoRequest struct {
-	// The accelerated domain name.
+	// The accelerated domain name for ApsaraVideo VOD.
 	//
 	// This parameter is required.
 	//

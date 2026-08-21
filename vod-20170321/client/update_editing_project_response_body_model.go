@@ -14,7 +14,7 @@ type iUpdateEditingProjectResponseBody interface {
 }
 
 type UpdateEditingProjectResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

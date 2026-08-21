@@ -18,10 +18,14 @@ type iDescribeVodUserVipsByDomainResponseBody interface {
 }
 
 type DescribeVodUserVipsByDomainResponseBody struct {
+	// The accelerated domain name for ApsaraVideo VOD.
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6730AC93-7B12-4B*****7F-49EE1FE8BC49

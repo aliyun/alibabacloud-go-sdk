@@ -22,13 +22,13 @@ type iRestoreMediaResponseBody interface {
 type RestoreMediaResponseBody struct {
 	ForbiddenList *RestoreMediaResponseBodyForbiddenList `json:"ForbiddenList,omitempty" xml:"ForbiddenList,omitempty" type:"Struct"`
 	IgnoredList   *RestoreMediaResponseBodyIgnoredList   `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 8E70E3F8-E2EE-47BC-4677-379D6F28****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//

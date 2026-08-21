@@ -20,16 +20,17 @@ type iGetVideoInfosResponseBody interface {
 }
 
 type GetVideoInfosResponseBody struct {
+	// The list of custom IDs that do not exist.
 	NonExistReferenceIds []*string `json:"NonExistReferenceIds,omitempty" xml:"NonExistReferenceIds,omitempty" type:"Repeated"`
-	// The IDs of the videos that do not exist.
+	// The list of audio or video IDs that do not exist.
 	NonExistVideoIds []*string `json:"NonExistVideoIds,omitempty" xml:"NonExistVideoIds,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 25818875-5F78-4AF6-D7393642CA58****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the audio or video files.
+	// The information about the audio and video files.
 	VideoList []*GetVideoInfosResponseBodyVideoList `json:"VideoList,omitempty" xml:"VideoList,omitempty" type:"Repeated"`
 }
 
@@ -91,23 +92,23 @@ func (s *GetVideoInfosResponseBody) Validate() error {
 }
 
 type GetVideoInfosResponseBodyVideoList struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the category.
+	// The category ID.
 	//
 	// example:
 	//
 	// 781111****
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The name of the category.
+	// The category name.
 	//
 	// example:
 	//
-	// This is a category name.
+	// cate1
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
 	// The thumbnail URL of the audio or video file.
 	//
@@ -115,7 +116,7 @@ type GetVideoInfosResponseBodyVideoList struct {
 	//
 	// https://example.aliyundoc.com/****.jpg
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the media file was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the audio or video file was created. The time follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -125,13 +126,13 @@ type GetVideoInfosResponseBodyVideoList struct {
 	//
 	// example:
 	//
-	// This is a category description.
+	// Alibaba Cloud VOD video description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the offline download feature is enabled. If you enable the offline download feature, users can download and play videos by using the ApsaraVideo Player on a local PC. For more information, see [Configure download settings](https://help.aliyun.com/document_detail/86107.html). Valid values:
+	// The status of the offline download switch. If the offline download feature is enabled, mobile users can cache videos to their local devices for offline viewing by using ApsaraVideo Player. For more information, see [Offline download](https://help.aliyun.com/document_detail/86107.html). Valid values:
 	//
-	// 	- **on**: the offline download feature is enabled.
+	// - **on**: enabled. Offline download is allowed.
 	//
-	// 	- **off**: the offline download feature is not enabled.
+	// - **off**: disabled. Offline download is not allowed.
 	//
 	// example:
 	//
@@ -143,81 +144,83 @@ type GetVideoInfosResponseBodyVideoList struct {
 	//
 	// 120
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The time when the audio or video file was last updated. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The last time when the audio or video file was updated. The time follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2017-06-26T06:38:48Z
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	// The custom ID. The value can contain only lowercase letters, uppercase letters, digits, hyphens (-), and underscores (_), and must be 6 to 64 characters in length. The value is unique at the user level.
+	//
 	// example:
 	//
 	// 123-123
 	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	// The period of time in which the audio file remains in the restored state.
+	// The expiration time of the media asset restoration.
 	//
 	// example:
 	//
 	// 2023-03-30T10:14:14Z
 	RestoreExpiration *string `json:"RestoreExpiration,omitempty" xml:"RestoreExpiration,omitempty"`
-	// The restoration status of the audio file. Valid values:
+	// The restoration status of the media asset. Valid values:
 	//
-	// 	- **Processing**
+	// - **Processing**: The media asset is being restored.
 	//
-	// 	- **Success**
+	// - **Success**: The media asset is restored.
 	//
-	// 	- **Failed**
+	// - **Failed**: The media asset failed to be restored.
 	//
 	// example:
 	//
 	// Success
 	RestoreStatus *string `json:"RestoreStatus,omitempty" xml:"RestoreStatus,omitempty"`
-	// The size of the source file. Unit: bytes.
+	// The size of the audio or video source file. Unit: bytes.
 	//
 	// example:
 	//
 	// 453
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The video snapshot URLs.
+	// The array of video snapshot URLs.
 	Snapshots []*string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
-	// The status of the video. Valid values:
+	// The video status. Valid values:
 	//
-	// 	- **Uploading**
+	// - **Uploading**: The video is being uploaded.
 	//
-	// 	- **UploadFail**
+	// - **UploadFail**: The video failed to be uploaded.
 	//
-	// 	- **UploadSucc**
+	// - **UploadSucc**: The video has been uploaded.
 	//
-	// 	- **Transcoding**
+	// - **Transcoding**: The video is being transcoded.
 	//
-	// 	- **TranscodeFail**
+	// - **TranscodeFail**: The video failed to be transcoded.
 	//
-	// 	- **Blocked**
+	// - **Blocked**: The video is blocked.
 	//
-	// 	- **Normal**
+	// - **Normal**: The video is in a normal state.
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage class of the audio file. Valid values:
+	// The storage class of the media asset. Valid values:
 	//
-	// 	- **Standard**: All media resources are stored as Standard objects.
+	// - **Standard**: standard.
 	//
-	// 	- **IA**: All media resources are stored as IA objects.
+	// - **IA**: media asset Infrequent Access.
 	//
-	// 	- **Archive**: All media resources are stored as Archive objects.
+	// - **Archive**: media asset Archive.
 	//
-	// 	- **ColdArchive**: All media resources are stored as Cold Archive objects.
+	// - **ColdArchive**: media asset Cold Archive.
 	//
-	// 	- **SourceIA**: Only the source files are IA objects.
+	// - **SourceIA**: source file Infrequent Access.
 	//
-	// 	- **SourceArchive**: Only the source files are Archive objects.
+	// - **SourceArchive**: source file Archive.
 	//
-	// 	- **SourceColdArchive**: Only the source file is stored as a Cold Archive object.
+	// - **SourceColdArchive**: source file Cold Archive.
 	//
-	// 	- **Changing**: The storage class of the video file is being changed.
+	// - **Changing**: the media asset storage class is being changed.
 	//
-	// 	- **SourceChanging**: The storage class of the source file is being changed.
+	// - **SourceChanging**: the source file storage class is being changed.
 	//
 	// example:
 	//
@@ -235,7 +238,7 @@ type GetVideoInfosResponseBodyVideoList struct {
 	//
 	// tag1, tag2
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The ID of the transcoding template group.
+	// The transcoding template group ID.
 	//
 	// example:
 	//
@@ -245,15 +248,15 @@ type GetVideoInfosResponseBodyVideoList struct {
 	//
 	// example:
 	//
-	// Video tiltle
+	// Alibaba Cloud VOD Video Title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// Custom settings. This is a JSON string that supports settings such as message callbacks and upload acceleration. For more information, please refer to [UserData](https://help.aliyun.com/document_detail/86952.html).
+	// The custom settings. The value is a JSON string that supports settings such as message callbacks and upload acceleration. For more information, see [UserData](https://help.aliyun.com/document_detail/86952.html).
 	//
 	// example:
 	//
 	// {"MessageCallback":{"CallbackURL":"http://example.aliyundoc.com"},"Extend":{"localId":"*****","test":"www"}}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// The ID of the audio or video file.
+	// The audio or video ID.
 	//
 	// example:
 	//

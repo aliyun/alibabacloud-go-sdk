@@ -18,19 +18,19 @@ type iSubmitAIMediaAuditJobResponseBody interface {
 }
 
 type SubmitAIMediaAuditJobResponseBody struct {
-	// The ID of the job.
+	// The job ID.
 	//
 	// example:
 	//
 	// bdbc266af6893943a70176d92e99****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the media file.
+	// The audio or video ID.
 	//
 	// example:
 	//
 	// fe028d09441afffb138cd7ee****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

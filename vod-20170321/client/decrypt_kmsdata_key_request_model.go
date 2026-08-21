@@ -22,7 +22,7 @@ type iDecryptKMSDataKeyRequest interface {
 }
 
 type DecryptKMSDataKeyRequest struct {
-	// The ciphertext to be decrypted.
+	// The ciphertext to decrypt.
 	//
 	// This parameter is required.
 	//

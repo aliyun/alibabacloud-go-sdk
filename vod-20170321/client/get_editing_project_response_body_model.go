@@ -16,9 +16,9 @@ type iGetEditingProjectResponseBody interface {
 }
 
 type GetEditingProjectResponseBody struct {
-	// The information about the online editing project.
+	// The online editing project.
 	Project *GetEditingProjectResponseBodyProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type GetEditingProjectResponseBodyProject struct {
 	//
 	// https://****.com/6AB4D0E1E1C74468883516C2349****.png
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the online editing project was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the online editing project was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
@@ -80,41 +80,41 @@ type GetEditingProjectResponseBodyProject struct {
 	//
 	// testdescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The last time when the online editing project was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the online editing project was last modified. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2017-10-23T14:27:26Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The ID of the online editing project.
+	// The online editing project ID.
 	//
 	// example:
 	//
 	// fb2101bf24b27*****54cb318787dc
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The region where the online editing project was created.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the online editing project. Separate multiple states with commas (,). By default, all online editing projects were queried. Valid values:
+	// The status of the online editing project. Multiple statuses are separated by commas (,). By default, all online editing projects are returned. Valid values:
 	//
-	// 	- **Normal**: indicates that the online editing project is in draft.
+	// - **Normal**: draft.
 	//
-	// 	- **Producing**: indicates that the video is being produced.
+	// - **Producing**: being produced.
 	//
-	// 	- **Produced**: indicates that the video was produced.
+	// - **Produced**: produced.
 	//
-	// 	- **ProduceFailed**: indicates that the video failed to be produced.
+	// - **ProduceFailed**: failed to be produced.
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The path of the Object Storage Service (OSS) bucket where the online editing project is stored.
+	// The storage address.
 	//
-	// > To view the path of the OSS bucket, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com/?spm=a2c4g.11186623.2.15.6948257eaZ4m54#/vod/settings/censored), and choose **Configuration Management*	- > **Media Management*	- > **Storage**. On the Storage page, you can view the path of the OSS bucket.
+	// > You can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com/?spm=a2c4g.11186623.2.15.6948257eaZ4m54#/vod/settings/censored) and choose **Configuration Management*	- > **Media Asset Management Configuration*	- > **Storage Management*	- to view the storage address.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ type GetEditingProjectResponseBodyProject struct {
 	//
 	// example:
 	//
-	// video_1508736815000
+	// Video_1508736815000
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

@@ -14,7 +14,7 @@ type iSetAuditSecurityIpResponseBody interface {
 }
 
 type SetAuditSecurityIpResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iDeleteCategoryResponseBody interface {
 }
 
 type DeleteCategoryResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -22,13 +22,13 @@ type iDescribeVodDomainHitRateDataRequest interface {
 }
 
 type DescribeVodDomainHitRateDataRequest struct {
-	// The accelerated domain name.
+	// The accelerated domain name to query.
 	//
-	// 	- If you leave this parameter empty, the merged data of all your accelerated domain names is returned.
+	// - If you do not specify this parameter, the pooled data of all accelerated domain names is returned by default.
 	//
-	// 	- You can specify multiple domain names and separate them with commas (,). You can specify a maximum of 500 domain names in each call.
+	// - Batch queries are supported. Separate multiple domain names with commas (,). You can specify up to 500 domain names at a time.
 	//
-	// 	- To obtain the accelerated domain name, perform the following steps: Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management > CDN Configuration > Domain Names**. On the Domain Names page, view the accelerated domain names. Alternatively, you can call the [DescribeVodUserDomains](~~DescribeVodUserDomains~~) operation to query the accelerated domain names.
+	// - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com), and choose **Configuration Management > CDN Configuration > Domain Names*	- in the left-side navigation pane to view the accelerated domain names that you have added to ApsaraVideo VOD. You can also call the [DescribeVodUserDomains](~~DescribeVodUserDomains~~) operation to query the list of accelerated domain names.
 	//
 	// example:
 	//
@@ -38,19 +38,19 @@ type DescribeVodDomainHitRateDataRequest struct {
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
-	// >  The end time must be later than the start time.
+	// > The end time must be later than the start time.
 	//
 	// example:
 	//
 	// 2024-01-20T14:59:58Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time granularity. Unit: seconds. Valid values: **300**, **3600**, and **86400**. If you leave this parameter empty or specify an invalid value, the default value is used. The supported time granularity varies based on the time range specified by `EndTime` and `StartTime`. The following content describes the supported time granularity.
+	// The time granularity of the data to query. Unit: seconds. Valid values: **300**, **3600**, and **86400**. If you do not specify this parameter or specify an unsupported value, the default value is used. The supported time granularity varies based on the time span specified by `StartTime` and `EndTime`:
 	//
-	// 	- Time range per query < 3 days: **300*	- (default), **3600**, and **86400**
+	// - Less than 3 days (exclusive): **300*	- (default), **3600**, and **86400**.
 	//
-	// 	- 3 days ≤ Time range per query < 31 days: **3600*	- (default) and **86400**
+	// - 3 to 31 days (exclusive): **3600*	- (default) and **86400**.
 	//
-	// 	- 31 days ≤ Time range per query ≤ 90 days: **86400*	- (default)
+	// - 31 days or more: **86400*	- (default).
 	//
 	// example:
 	//

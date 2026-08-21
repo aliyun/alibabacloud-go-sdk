@@ -22,7 +22,7 @@ type iGetMediaDNAResultRequest interface {
 }
 
 type GetMediaDNAResultRequest struct {
-	// The ID of the video.
+	// The video ID.
 	//
 	// This parameter is required.
 	//

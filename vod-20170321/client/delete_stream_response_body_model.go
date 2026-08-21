@@ -14,7 +14,7 @@ type iDeleteStreamResponseBody interface {
 }
 
 type DeleteStreamResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

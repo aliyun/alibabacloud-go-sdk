@@ -14,7 +14,7 @@ type iCreateAuditResponseBody interface {
 }
 
 type CreateAuditResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

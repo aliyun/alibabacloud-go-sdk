@@ -26,15 +26,13 @@ type iDescribeVodStorageDataRequest interface {
 }
 
 type DescribeVodStorageDataRequest struct {
-	// The ID of the application.
-	//
-	// 	- Default value: **app-1000000**.
+	// The application ID. If you have activated the multi-application feature, you can specify this parameter to query the storage usage of a specific application. If you do not specify this parameter, the total storage usage of all applications is returned. You can obtain the value of this parameter from the AppId response parameter of the [CreateAppInfo](~~CreateAppInfo~~) operation. For more information, see [Multi-application](https://help.aliyun.com/document_detail/113601.html).
 	//
 	// example:
 	//
 	// app-1000000
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end of the time range to query. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// This parameter is required.
 	//
@@ -43,21 +41,21 @@ type DescribeVodStorageDataRequest struct {
 	// 2019-02-01T15:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region in which you want to query storage data. If you leave this parameter empty, data in all regions is returned. Separate multiple regions with commas (,). Valid values:
+	// The storage region. By default, data of all regions is returned. You can specify multiple regions separated by commas (,). Valid values:
 	//
-	// 	- **cn-shanghai**: China (Shanghai)
+	// - **cn-shanghai**: Shanghai.
 	//
-	// 	- **cn-beijing**: China (Beijing)
+	// - **cn-beijing**: Beijing.
 	//
-	// 	- **eu-central-1**: Germany (Frankfurt)
+	// - **eu-central-1**: Germany.
 	//
-	// 	- **ap-southeast-1**: Singapore
+	// - **ap-southeast-1**: Singapore.
 	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The start of the time range to query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// This parameter is required.
 	//
@@ -65,13 +63,13 @@ type DescribeVodStorageDataRequest struct {
 	//
 	// 2019-02-01T14:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the Object Storage Service (OSS) bucket. If you leave this parameter empty, data of all buckets is returned. Separate multiple transcoding specifications with commas (,).
+	// The storage name (Alibaba Cloud OSS bucket name). By default, data of all storage buckets is returned. You can specify multiple storage names separated by commas (,).
 	//
 	// example:
 	//
 	// bucket
 	Storage *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
-	// The storage class. Set the value to **OSS**.
+	// The storage type. Set the value to **OSS**.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iListDynamicImageResponseBody interface {
 }
 
 type ListDynamicImageResponseBody struct {
-	// The list of animated stickers.
+	// The animated image results.
 	DynamicImageList []*ListDynamicImageResponseBodyDynamicImageList `json:"DynamicImageList,omitempty" xml:"DynamicImageList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,67 +66,71 @@ func (s *ListDynamicImageResponseBody) Validate() error {
 }
 
 type ListDynamicImageResponseBodyDynamicImageList struct {
-	// The time when the animated sticker was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the animated image was created. The time follows the format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
 	// 2020-07-28T02:01:06Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The duration of the animated sticker. Unit: seconds.
+	// The duration of the animated image. Unit: seconds.
 	//
 	// example:
 	//
 	// 2
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The ID of the animated sticker.
+	// The animated image ID.
 	//
 	// example:
 	//
 	// 2b4e51df60323ef43d6e336ecf****
 	DynamicImageId *string `json:"DynamicImageId,omitempty" xml:"DynamicImageId,omitempty"`
-	// The size of the animated sticker file. Unit: byte.
+	// The size of the animated image file. Unit: bytes.
 	//
 	// example:
 	//
 	// 119866
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The URL of the animated sticker file.
+	// The URL of the animated image file.
 	//
 	// example:
 	//
 	// https://example.aliyundoc.com/2e114f110059*****0c3193918fd449a/image/dynamic/2b4e51df60*****323ef43d6e336ecf.webp?auth_key=1597296785-0-0-4a48e85*****bd2bb358e0b3cade
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
-	// The format of the animated sticker. Valid values: gif and webp.
+	// The format of the animated image. Valid values:
+	//
+	// - **gif**
+	//
+	// - **webp**
 	//
 	// example:
 	//
 	// webp
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The frame rate of the animated sticker. Unit: frames per second.
+	// The frame rate of the animated image. Unit: frames per second.
 	//
 	// example:
 	//
 	// 10
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// The height of the animated sticker. Unit: pixel.
+	// The height of the animated image. Unit: px.
 	//
 	// example:
 	//
 	// 360
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The job ID for creating the animated sticker.
+	// The animated image job ID.
 	//
 	// example:
 	//
 	// 2bf4390af9e5491c09cc720ad****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the video.
+	// The video ID.
 	//
 	// example:
 	//
 	// 2e114f1100590c3193918fd449a****
 	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
-	// The width of the animated sticker. Unit: pixel.
+	// The width of the animated image. Unit: px.
 	//
 	// example:
 	//

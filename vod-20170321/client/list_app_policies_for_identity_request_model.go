@@ -18,27 +18,27 @@ type iListAppPoliciesForIdentityRequest interface {
 }
 
 type ListAppPoliciesForIdentityRequest struct {
-	// The ID of the application. Default value: **app-1000000**. For more information, see [Overview](https://help.aliyun.com/document_detail/113600.html).
+	// The application ID. Default value: **app-1000000**. For more information, see [Multiple applications](https://help.aliyun.com/document_detail/113600.html).
 	//
 	// example:
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the identity.
+	// The identity name.
 	//
-	// 	- Specifies the ID of the RAM user when the IdentityType parameter is set to RamUser.
+	// - If IdentityType is set to RamUser, specify the Resource Access Management (RAM) user ID.
 	//
-	// 	- Specifies the name of the RAM role when the IdentityType parameter is set to RamRole.
+	// - If IdentityType is set to RamRole, specify the role name.
 	//
 	// example:
 	//
 	// test****name
 	IdentityName *string `json:"IdentityName,omitempty" xml:"IdentityName,omitempty"`
-	// The type of the identity. Valid values:
+	// The identity type. Valid values:
 	//
-	// 	- **RamUser**: a RAM user.
+	// - **RamUser**: Resource Access Management (RAM) user.
 	//
-	// 	- **RamRole**: a RAM role.
+	// - **RamRole**: RAM role.
 	//
 	// example:
 	//

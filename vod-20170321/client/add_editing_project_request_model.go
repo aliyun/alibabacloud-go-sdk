@@ -30,7 +30,7 @@ type iAddEditingProjectRequest interface {
 }
 
 type AddEditingProjectRequest struct {
-	// The thumbnail URL of the online editing project. If you leave this parameter empty and materials exist on the video track in the timeline, the thumbnail of the first material is used by default.
+	// The thumbnail of the online editing project. If this parameter is left empty and the video track on the timeline already contains materials, the thumbnail of the first material on the timeline is used by default.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type AddEditingProjectRequest struct {
 	//
 	// testtimeline001desciption
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The region in which ApsaraVideo VOD is activated.
+	// The service region.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type AddEditingProjectRequest struct {
 	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The timeline of the online editing project in JSON format. For more information about the structure, see [Timeline](https://help.aliyun.com/document_detail/52839.html).
+	// The timeline of the online editing project. JSON format. For the specific structure definition, see [Timeline](https://help.aliyun.com/document_detail/52839.html).
 	//
-	// If you leave this parameter empty, an empty timeline is created and the duration of the online editing project is zero.
+	// If this parameter is left empty, an empty timeline is created and the total duration of the online editing project is 0.
 	//
 	// example:
 	//

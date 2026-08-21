@@ -16,13 +16,13 @@ type iGenerateDownloadSecretKeyResponseBody interface {
 }
 
 type GenerateDownloadSecretKeyResponseBody struct {
-	// The key file for secure download.
+	// The generated secure download key.
 	//
 	// example:
 	//
 	// ***
 	AppEncryptKey *string `json:"AppEncryptKey,omitempty" xml:"AppEncryptKey,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

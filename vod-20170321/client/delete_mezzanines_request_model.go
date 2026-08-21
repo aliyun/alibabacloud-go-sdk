@@ -18,29 +18,31 @@ type iDeleteMezzaninesRequest interface {
 }
 
 type DeleteMezzaninesRequest struct {
-	// Specifies whether to forcibly delete the source file. Valid values:
+	// Specifies whether to force delete the source file. Valid values:
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default): No.
 	//
-	// 	- **true**
+	// - **true**: Yes.
 	//
-	// >  If a video is uploaded without transcoding or is asynchronously transcoded, the source file of the video is used for original-quality playback. By default, the source file of the video cannot be deleted. To forcibly delete the mezzanine file, set this parameter to **true**.
+	// > If the video transcoding pattern is set to no transcoding or asynchronous transcoding, the source file is used as the original stream for playback and cannot be deleted by default. To force delete the source file of such a video, go to Settings and set this parameter to **true**.
 	//
 	// example:
 	//
 	// false
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The list of custom IDs. Specify one or more custom IDs separated by commas (,). A maximum of 20 IDs are supported.
+	//
 	// example:
 	//
 	// 123-123,1234-1234
 	ReferenceIds *string `json:"ReferenceIds,omitempty" xml:"ReferenceIds,omitempty"`
-	// The IDs of audio or video files whose source files that you want to delete. You can specify up to 20 IDs. Separate multiple IDs with commas (,). You can use one of the following methods to obtain the ID:
+	// The list of audio or video IDs whose source files you want to delete. You can specify a maximum of 20 IDs at a time. Separate multiple IDs with commas (,). You can obtain the IDs by using the following methods:
 	//
-	// 	- After you upload a video in the [ApsaraVideo VOD console](https://vod.console.aliyun.com), you can log on to the ApsaraVideo VOD console and choose **Media Files*	- > **Audio/Video*	- to view the ID of the video.
+	// - For audio or video files uploaded through the console, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Files*	- > **Audio/Video*	- to view the audio or video IDs.
 	//
-	// 	- Obtain the value of VideoId from the response to the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation that you called to obtain the upload URL and credential.
+	// - When you call the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation to obtain the upload URL and credential, the audio or video ID is the value of the VideoId response parameter.
 	//
-	// 	- Obtain the value of VideoId from the response to the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation that you called to query media information after the audio or video file is uploaded.
+	// - After the audio or video file is uploaded, you can call the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation to query the audio or video ID, which is the value of the VideoId response parameter.
 	//
 	// example:
 	//

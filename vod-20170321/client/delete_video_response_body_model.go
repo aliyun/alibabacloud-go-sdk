@@ -20,16 +20,15 @@ type iDeleteVideoResponseBody interface {
 }
 
 type DeleteVideoResponseBody struct {
-	// The IDs of the videos that cannot be deleted.
+	// The list of video IDs for which the operation is forbidden.
 	//
-	// > Generally, videos cannot be deleted if you do not have the required [permissions](https://help.aliyun.com/document_detail/113600.html).
-	ForbiddenVideoIds    []*string `json:"ForbiddenVideoIds,omitempty" xml:"ForbiddenVideoIds,omitempty" type:"Repeated"`
+	// > This is typically caused by insufficient [permissions](https://help.aliyun.com/document_detail/113600.html).
+	ForbiddenVideoIds []*string `json:"ForbiddenVideoIds,omitempty" xml:"ForbiddenVideoIds,omitempty" type:"Repeated"`
+	// The list of custom IDs that do not exist.
 	NonExistReferenceIds []*string `json:"NonExistReferenceIds,omitempty" xml:"NonExistReferenceIds,omitempty" type:"Repeated"`
-	// The IDs of the videos that do not exist.
-	//
-	// > If the list of videos to be deleted contains one or more videos that do not exist, the IDs of these non-existing videos are returned. If none of the videos in the list exists, a 404 error is returned.
+	// The list of video IDs that do not exist.
 	NonExistVideoIds []*string `json:"NonExistVideoIds,omitempty" xml:"NonExistVideoIds,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

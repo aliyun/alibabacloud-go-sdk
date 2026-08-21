@@ -16,7 +16,7 @@ type iDescribePlayUserTotalResponseBody interface {
 }
 
 type DescribePlayUserTotalResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

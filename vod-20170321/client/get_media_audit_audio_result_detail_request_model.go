@@ -24,7 +24,7 @@ type iGetMediaAuditAudioResultDetailRequest interface {
 }
 
 type GetMediaAuditAudioResultDetailRequest struct {
-	// The ID of the video. You can query the video ID by using the ApsaraVideo VOD console or calling the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation.
+	// The audio ID. You can query the audio ID in the ApsaraVideo VOD console or obtain it from the response of the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type GetMediaAuditAudioResultDetailRequest struct {
 	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. This parameter is optional. If you do not specify this parameter, all results are returned without pagination.
+	// The page number. This parameter is optional. If you do not specify this parameter, all results are returned without pagination.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iDeleteVodSpecificConfigRequest interface {
 }
 
 type DeleteVodSpecificConfigRequest struct {
-	// The ID of the configuration.
+	// The configuration ID.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DeleteVodSpecificConfigRequest struct {
 	//
 	// 2317****
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The accelerated domain name.
+	// The accelerated domain name for ApsaraVideo VOD.
 	//
 	// This parameter is required.
 	//
@@ -38,11 +38,11 @@ type DeleteVodSpecificConfigRequest struct {
 	//
 	// www.example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The environment from which the domain name configurations are deleted. Valid values:
+	// The environment from which you want to delete the configuration. Valid values:
 	//
-	// 	- online: production environment
+	// - online: production environment
 	//
-	// 	- gray: simulation environment
+	// - gray: canary release environment
 	//
 	// example:
 	//

@@ -20,19 +20,19 @@ type iAttachAppPolicyToIdentityRequest interface {
 }
 
 type AttachAppPolicyToIdentityRequest struct {
-	// The ID of the application. Default value: **app-1000000**. For more information, see [Multi-application service](https://help.aliyun.com/document_detail/113600.html).
+	// The application ID. Default value: **app-1000000**. For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
 	//
-	// > This parameter is optional only if you set the policy name to VODAppAdministratorAccess.
+	// > If the policy name is VODAppAdministratorAccess, this parameter is optional. For other policies, this parameter is required.
 	//
 	// example:
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the RAM user or the name of the RAM role.
+	// The identity name.
 	//
-	// 	- Specify the ID of the RAM user when the IdentityType parameter is set to RamUser.
+	// - If the type is RamUser, specify the Resource Access Management (RAM) user ID.
 	//
-	// 	- Specify the name of the RAM role when the IdentityType parameter is set to RamRole.
+	// - If the type is RamRole, specify the role name.
 	//
 	// This parameter is required.
 	//
@@ -40,11 +40,11 @@ type AttachAppPolicyToIdentityRequest struct {
 	//
 	// ****
 	IdentityName *string `json:"IdentityName,omitempty" xml:"IdentityName,omitempty"`
-	// The type of the identity. Valid values:
+	// The identity type. Valid values:
 	//
-	// 	- **RamUser**: a RAM user
+	// - **RamUser**: Resource Access Management (RAM) user.
 	//
-	// 	- **RamRole**: a RAM role
+	// - **RamRole**: RAM role.
 	//
 	// This parameter is required.
 	//
@@ -52,13 +52,13 @@ type AttachAppPolicyToIdentityRequest struct {
 	//
 	// RamRole
 	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
-	// The name of the policy. Only system policies are supported. Separate multiple policy names with commas (,). Valid values:
+	// The policy names. Separate multiple names with commas (,). Only system policies are supported. Valid values:
 	//
-	// 	- **VODAppFullAccess**: permissions to manage all resources in an application.
+	// - **VODAppFullAccess**: permissions to manage and operate all resources in the application.
 	//
-	// 	- **VODAppReadOnlyAccess**: permissions to read all resources in an application.
+	// - **VODAppReadOnlyAccess**: read-only permissions on all resources in the application.
 	//
-	// 	- **VODAppAdministratorAccess**: permissions of the application administrator.
+	// - **VODAppAdministratorAccess**: application administrator permissions.
 	//
 	// This parameter is required.
 	//

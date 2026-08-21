@@ -32,17 +32,17 @@ type ListAppInfoRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The resource group ID to which the instance belongs.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-aekzko7fsuj****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the application. You can specify the status of the applications that you want to query. After an application is created, it enters the **Normal*	- state. Valid values:
+	// The application status. You can query applications in a specified status. After an application is created, the status is **Normal*	- by default. Valid values:
 	//
-	// 	- **Normal**
+	// - **Normal**
 	//
-	// 	- **Disable**
+	// - **Disable**
 	//
 	// example:
 	//

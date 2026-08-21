@@ -26,9 +26,9 @@ type iUploadStreamByURLRequest interface {
 }
 
 type UploadStreamByURLRequest struct {
-	// The quality of the video stream.
+	// The definition of the video stream.
 	//
-	// For more information about valid values of this parameter, see [Parameters for media assets](https://help.aliyun.com/document_detail/124671.html).
+	// For valid values of this parameter, see [Media asset parameter description - Definition](https://help.aliyun.com/document_detail/124671.html).
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type UploadStreamByURLRequest struct {
 	//
 	// HD
 	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	// The file name extension of the transcoded stream.
+	// The file name extension of the transcoded stream file.
 	//
-	// For more information, see the Supported media file formats section in [Overview](https://help.aliyun.com/document_detail/55396.html).
+	// For supported audio and video file formats, see [Overview](https://help.aliyun.com/document_detail/55396.html).
 	//
-	// If you set a value for this parameter, the file name extension specified in StreamURL is overwritten.
+	// If this parameter is not empty, it overwrites the file name extension in the StreamURL.
 	//
-	// >  This parameter is required if you do not specify a file name extension in StreamURL.
+	// 	Notice: This parameter is required if the StreamURL does not contain a file name extension.
 	//
 	// example:
 	//
@@ -50,29 +50,27 @@ type UploadStreamByURLRequest struct {
 	FileExtension *string `json:"FileExtension,omitempty" xml:"FileExtension,omitempty"`
 	// The HDR type of the transcoded stream. Valid values:
 	//
-	// 	- HDR
+	// - HDR
 	//
-	// 	- HDR10
+	// - HDR10
 	//
-	// 	- HLG
+	// - HLG
 	//
-	// 	- DolbyVision
+	// - DolbyVision
 	//
-	// 	- HDRVivid
+	// - HDRVivid
 	//
-	// 	- SDR+
+	// - SDR+
 	//
-	// >
+	// > - Case-insensitive.
 	//
-	// 	- The HDR type of the transcoded stream is not case-sensitive.
-	//
-	// 	- You can leave this parameter empty for non-HDR streams.
+	// > - Leave this parameter empty for non-HDR videos.
 	//
 	// example:
 	//
 	// HDR10
 	HDRType *string `json:"HDRType,omitempty" xml:"HDRType,omitempty"`
-	// The media ID in ApsaraVideo VOD.
+	// The ID of the ApsaraVideo VOD media asset that corresponds to the transcoded stream.
 	//
 	// This parameter is required.
 	//
@@ -80,9 +78,11 @@ type UploadStreamByURLRequest struct {
 	//
 	// ca3a8f6e49*****57b65806709586
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The URL of the transcoded stream.
+	// The URL of the transcoded stream file.
 	//
-	// If URL authentication is required, you must pass authentication information in this parameter and make sure that the URL can be accessed over the Internet.
+	// If the URL of the transcoded stream requires authentication, include the authentication parameters in StreamURL and make sure the URL is accessible through public network access.
+	//
+	// >You can obtain the audio or video URL from the console or by invoking the GetPlayInfo operation.
 	//
 	// This parameter is required.
 	//
@@ -90,17 +90,17 @@ type UploadStreamByURLRequest struct {
 	//
 	// https://example.com/lesson-01.mp4
 	StreamURL *string `json:"StreamURL,omitempty" xml:"StreamURL,omitempty"`
-	// Metadata information for uploading media files, in JSON string format.
+	// The metadata of the media file to upload. The value is a JSON string.
 	//
-	// For more information, please refer to the table below for UploadMetadata.
+	// - For more information, see the **UploadMetadata*	- table below.
 	//
 	// example:
 	//
 	// {"AddressMapping":"1","CustomPath":"test/xxx","CustomFileName":"xxx.mp4","isOverwritePath":"0"}
 	UploadMetadata *string `json:"UploadMetadata,omitempty" xml:"UploadMetadata,omitempty"`
-	// The user-defined parameter. For more information, see the "UserData: specifies the custom configurations for media upload" section of the [Request parameters](https://help.aliyun.com/document_detail/86952.html) topic.
+	// The custom parameter. For more information, see [UserData](https://help.aliyun.com/document_detail/86952.html).
 	//
-	// >  The callback configurations you specify for this parameter take effect only after you specify the HTTP callback URL and select specific callback events in the ApsaraVideo VOD console. For more information about how to configure HTTP callback settings in the ApsaraVideo VOD console, see [Configure callback settings](https://help.aliyun.com/document_detail/86071.html).
+	// > To use the message callback in this parameter, configure the HTTP callback URL and select the corresponding callback event types in the console. Otherwise, the callback settings do not take effect. For information about how to configure HTTP callbacks in the console, see [Callback settings](https://help.aliyun.com/document_detail/86071.html).
 	//
 	// example:
 	//

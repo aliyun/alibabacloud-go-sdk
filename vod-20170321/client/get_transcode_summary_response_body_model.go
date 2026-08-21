@@ -18,15 +18,15 @@ type iGetTranscodeSummaryResponseBody interface {
 }
 
 type GetTranscodeSummaryResponseBody struct {
-	// The IDs of the audio or video files that do not exist.
+	// The IDs of audio or video files that do not exist.
 	NonExistVideoIds []*string `json:"NonExistVideoIds,omitempty" xml:"NonExistVideoIds,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 25818875-5F78-4A*****F6-D7393642CA58
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The transcoding summary of the file.
+	// The video transcoding summary list of audio or video files.
 	TranscodeSummaryList []*GetTranscodeSummaryResponseBodyTranscodeSummaryList `json:"TranscodeSummaryList,omitempty" xml:"TranscodeSummaryList,omitempty" type:"Repeated"`
 }
 
@@ -79,43 +79,43 @@ func (s *GetTranscodeSummaryResponseBody) Validate() error {
 }
 
 type GetTranscodeSummaryResponseBodyTranscodeSummaryList struct {
-	// The time when the transcoding task was complete. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the transcoding task was complete. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2019-01-23T12:40:12Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	// The time when the transcoding task was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the transcoding task was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2019-01-23T12:35:12Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The summaries of transcoding jobs.
+	// The list of transcoding job summaries.
 	TranscodeJobInfoSummaryList []*GetTranscodeSummaryResponseBodyTranscodeSummaryListTranscodeJobInfoSummaryList `json:"TranscodeJobInfoSummaryList,omitempty" xml:"TranscodeJobInfoSummaryList,omitempty" type:"Repeated"`
-	// The status of the transcoding task. Valid values:
+	// The transcoding status. Valid values:
 	//
-	// 	- **Processing**: Transcoding is in process.
+	// - **Processing**: The transcoding task is in progress.
 	//
-	// 	- **Partial**: Some transcoding jobs were complete.
+	// - **Partial**: The transcoding task is partially complete.
 	//
-	// 	- **CompleteAllSucc**: All transcoding jobs were successful.
+	// - **CompleteAllSucc**: All transcoding jobs are complete and successful.
 	//
-	// 	- **CompleteAllFail**: All transcoding jobs failed. If an exception occurs in the source file, no transcoding job is initiated and the transcoding task fails.
+	// - **CompleteAllFail**: All transcoding jobs are complete but all failed. If the source file has issues, no transcoding jobs are initiated and the entire transcoding task fails.
 	//
-	// 	- **CompletePartialSucc**: All transcoding jobs were complete but only some were successful.
+	// - **CompletePartialSucc**: All transcoding jobs are complete but only some are successful.
 	//
 	// example:
 	//
 	// Processing
 	TranscodeStatus *string `json:"TranscodeStatus,omitempty" xml:"TranscodeStatus,omitempty"`
-	// The ID of the transcoding template group.
+	// The ID of the transcoding template group used for transcoding.
 	//
 	// example:
 	//
 	// 44f9e406bbb*****736a9abe876ecc0
 	TranscodeTemplateGroupId *string `json:"TranscodeTemplateGroupId,omitempty" xml:"TranscodeTemplateGroupId,omitempty"`
-	// The ID of the audio or video file.
+	// The audio or video ID.
 	//
 	// example:
 	//
@@ -199,25 +199,25 @@ func (s *GetTranscodeSummaryResponseBodyTranscodeSummaryList) Validate() error {
 }
 
 type GetTranscodeSummaryResponseBodyTranscodeSummaryListTranscodeJobInfoSummaryList struct {
-	// The average bitrate of the output video. Unit: Kbit/s.
+	// The average bitrate of the transcoded video output. Unit: Kbps.
 	//
 	// example:
 	//
 	// 749
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The time when the transcoding job was complete. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the transcoding job was complete. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2019-02-27T03:40:51Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	// The time when the transcoding job was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the transcoding job was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2019-02-27T03:34:46Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The duration of the output video. Unit: seconds.
+	// The duration of the transcoded video output. Unit: seconds.
 	//
 	// example:
 	//
@@ -235,25 +235,25 @@ type GetTranscodeSummaryResponseBodyTranscodeSummaryListTranscodeJobInfoSummaryL
 	//
 	// ErrorMessage
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The size of the output video. Unit: bytes.
+	// The file size of the transcoded video output. Unit: bytes.
 	//
 	// example:
 	//
 	// 1144259
 	Filesize *int64 `json:"Filesize,omitempty" xml:"Filesize,omitempty"`
-	// The container format of the output video.
+	// The container format of the transcoded video output.
 	//
 	// example:
 	//
 	// mp4
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The frame rate of the output video. Unit: frames per second.
+	// The frame rate of the transcoded video output. Unit: frames per second.
 	//
 	// example:
 	//
 	// 30
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// The height of the output video. Unit: pixels.
+	// The height of the transcoded video output. Unit: px.
 	//
 	// example:
 	//
@@ -261,31 +261,31 @@ type GetTranscodeSummaryResponseBodyTranscodeSummaryListTranscodeJobInfoSummaryL
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
 	// The status of the transcoding job. Valid values:
 	//
-	// 	- **Transcoding**: Transcoding is in process.
+	// - **Transcoding**: The transcoding job is in progress.
 	//
-	// 	- **TranscodeSuccess**: The job was successful.
+	// - **TranscodeSuccess**: The transcoding job is successful.
 	//
-	// 	- **TranscodeFail**: The job failed.
+	// - **TranscodeFail**: The transcoding job failed.
 	//
 	// example:
 	//
 	// Transcoding
 	TranscodeJobStatus *string `json:"TranscodeJobStatus,omitempty" xml:"TranscodeJobStatus,omitempty"`
-	// The transcoding progress. Valid values: `[0,100]`.
+	// The transcoding progress. Value range: `[0,100]`.
 	//
 	// example:
 	//
 	// 100
 	TranscodeProgress *int64 `json:"TranscodeProgress,omitempty" xml:"TranscodeProgress,omitempty"`
-	// The ID of the transcoding template.
+	// The ID of the transcoding template used.
 	//
 	// example:
 	//
 	// 57496724ae2*****0968d6e08acc8f6
 	TranscodeTemplateId *string `json:"TranscodeTemplateId,omitempty" xml:"TranscodeTemplateId,omitempty"`
-	// The IDs of the watermarks that are applied to the output video.
+	// The list of watermarks used for transcoding.
 	WatermarkIdList []*string `json:"WatermarkIdList,omitempty" xml:"WatermarkIdList,omitempty" type:"Repeated"`
-	// The width of the output video. Unit: pixels.
+	// The width of the transcoded video output. Unit: px.
 	//
 	// example:
 	//

@@ -20,21 +20,21 @@ type iProduceEditingProjectVideoResponseBody interface {
 type ProduceEditingProjectVideoResponseBody struct {
 	// The ID of the produced video.
 	//
-	// > 	- This parameter is returned for each request.
+	// > - The video production operation synchronously returns the ID of the produced video.
 	//
-	// > 	- If a value is returned for this parameter, the video production task is being asynchronously processed.
+	// > - When MediaId is returned, the video production has entered the asynchronous processing phase.
 	//
 	// example:
 	//
 	// 006204a11bb386bb25491f95f****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The ID of the online editing project.
+	// The online editing project ID.
 	//
 	// example:
 	//
 	// fb2101bf24b4cb318787dc****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

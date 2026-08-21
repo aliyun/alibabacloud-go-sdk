@@ -16,9 +16,9 @@ type iAddEditingProjectResponseBody interface {
 }
 
 type AddEditingProjectResponseBody struct {
-	// The information about the online editing project. For more information about the structure, see [EditingProject](https://help.aliyun.com/document_detail/52839.html).
+	// The online editing project. For the specific structure definition, see [EditingProject](https://help.aliyun.com/document_detail/52839.html).
 	Project *AddEditingProjectResponseBodyProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *AddEditingProjectResponseBody) Validate() error {
 }
 
 type AddEditingProjectResponseBodyProject struct {
-	// The time when the online editing project was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the online editing project was created. The time follows the format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type AddEditingProjectResponseBodyProject struct {
 	//
 	// testtimeline001desciption
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the online editing project was last modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The last time when the online editing project was modified. The time follows the format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
@@ -88,13 +88,13 @@ type AddEditingProjectResponseBodyProject struct {
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The status of the online editing project. Valid values:
 	//
-	// 	- **Normal**: the online editing project is in draft.
+	// - **Normal**: draft.
 	//
-	// 	- **Producing**: the video is being produced.
+	// - **Producing**: being produced.
 	//
-	// 	- **Produced**: the video is produced.
+	// - **Produced**: produced.
 	//
-	// 	- **ProduceFailed**: the video failed to be produced.
+	// - **ProduceFailed**: failed to be produced.
 	//
 	// example:
 	//

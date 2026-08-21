@@ -24,32 +24,32 @@ type iDescribeVodDomainSrcBpsDataResponseBody interface {
 }
 
 type DescribeVodDomainSrcBpsDataResponseBody struct {
-	// The time interval at which data is returned, which is the time granularity. Unit: seconds.
+	// The time interval between consecutive data entries, which is the time granularity of the data. Unit: seconds.
 	//
 	// example:
 	//
 	// 300
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The accelerated domain name whose ICP filing status you want to update.
+	// The accelerated domain name.
 	//
 	// example:
 	//
 	// sample.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range.
+	// The end of the time range for the returned data.
 	//
 	// example:
 	//
 	// 2022-08-23T02:02:57Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 25818875-5F78-4A13-BEF6-****
 	RequestId             *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SrcBpsDataPerInterval *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerInterval `json:"SrcBpsDataPerInterval,omitempty" xml:"SrcBpsDataPerInterval,omitempty" type:"Struct"`
-	// The beginning of the time range.
+	// The beginning of the time range for the returned data.
 	//
 	// example:
 	//

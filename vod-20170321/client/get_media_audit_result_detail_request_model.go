@@ -16,7 +16,7 @@ type iGetMediaAuditResultDetailRequest interface {
 }
 
 type GetMediaAuditResultDetailRequest struct {
-	// The ID of the video.
+	// The video ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetMediaAuditResultDetailRequest struct {
 	//
 	// 93ab850b4f6f*****54b6e91d24d81d4
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The page number. The default value is **1**. A maximum of **20*	- records can be returned on each page.
+	// The page number of the video content review results. Default value: **1**. A maximum of **20*	- records are returned per page.
 	//
 	// This parameter is required.
 	//

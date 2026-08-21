@@ -16,13 +16,13 @@ type iListVodTemplateResponseBody interface {
 }
 
 type ListVodTemplateResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 2A56B75B-B7E6-48*****27-A9BEAA3E50A8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The snapshot templates.
+	// The list of snapshot template data.
 	VodTemplateInfoList []*ListVodTemplateResponseBodyVodTemplateInfoList `json:"VodTemplateInfoList,omitempty" xml:"VodTemplateInfoList,omitempty" type:"Repeated"`
 }
 
@@ -66,57 +66,57 @@ func (s *ListVodTemplateResponseBody) Validate() error {
 }
 
 type ListVodTemplateResponseBodyVodTemplateInfoList struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The time when the template was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the template was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2018-11-30T08:05:59:57Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// Indicates whether the template is the default one. Valid values:
+	// Indicates whether the template is the default template. Valid values:
 	//
-	// 	- **Default**: The template is the default one.
+	// - **Default**: The template is the default template.
 	//
-	// 	- **NotDefault**: The template is not the default one.
+	// - **NotDefault**: The template is not the default template.
 	//
 	// example:
 	//
 	// NotDefault
 	IsDefault *string `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The time when the template was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the template was last modified. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2018-11-30T09:05:59:97Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The name of the template.
+	// The template name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The detailed configurations of the template. The value is a JSON-formatted string. For more information about the data structure, see the "SnapshotTemplateConfig" section of the [Media processing parameters](https://help.aliyun.com/document_detail/98618.html) topic.
+	// The detailed template configuration in JSON format. For more information about the data structure, see [SnapshotTemplateConfig](https://help.aliyun.com/document_detail/98618.html).
 	//
 	// example:
 	//
 	// {\\"SnapshotConfig\\":{\\"Count\\":10,\\"SpecifiedOffsetTime\\":0,\\"Interval\\":1},\\"SnapshotType\\":\\"NormalSnapshot\\"}
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	// The type of the template. Valid values:
+	// The templatetype. Valid values:
 	//
-	// 	- **Snapshot**
+	// - **Snapshot**: snapshot.
 	//
-	// 	- **DynamicImage**
+	// - **DynamicImage**: animated image.
 	//
 	// example:
 	//
 	// Snapshot
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
-	// The ID of the template.
+	// The template ID.
 	//
 	// example:
 	//

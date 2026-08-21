@@ -14,7 +14,7 @@ type iSetCrossdomainContentResponseBody interface {
 }
 
 type SetCrossdomainContentResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

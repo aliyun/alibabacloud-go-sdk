@@ -16,9 +16,9 @@ type iGetImageInfoResponseBody interface {
 }
 
 type GetImageInfoResponseBody struct {
-	// The information about the image.
+	// The image information.
 	ImageInfo *GetImageInfoResponseBodyImageInfo `json:"ImageInfo,omitempty" xml:"ImageInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,91 +62,85 @@ func (s *GetImageInfoResponseBody) Validate() error {
 }
 
 type GetImageInfoResponseBodyImageInfo struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the category.
+	// The category ID.
 	//
 	// example:
 	//
 	// 254766071
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The name of the category.
+	// The category name.
 	//
 	// example:
 	//
-	// test name
+	// Test
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The time when the image was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the image was created. The time follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2018-11-21T02:37:23Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the image.
+	// The image description.
 	//
 	// example:
 	//
-	// test description
+	// Test description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the image.
+	// The image ID.
 	//
 	// example:
 	//
 	// bbc65bba53f9*****ed90de118a7849
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The type of the image. Valid values:
+	// The image type. Valid values:
 	//
-	// 	- **CoverSnapshot**: thumbnail snapshot.
+	// - **default**: regular image.
 	//
-	// 	- **NormalSnapshot**: normal snapshot.
-	//
-	// 	- **SpriteSnapshot**: sprite snapshot.
-	//
-	// 	- **SpriteOriginSnapshot**: sprite source snapshot.
-	//
-	// 	- **All**: images of all the preceding types. Multiple types other than All can return for this parameter. Multiple types are separated by commas (,).
+	// - **cover**: video thumbnail.
 	//
 	// example:
 	//
-	// NormalSnapshot
+	// default
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	// The source information about the image.
+	// The mezzanine information of the image.
 	Mezzanine *GetImageInfoResponseBodyImageInfoMezzanine `json:"Mezzanine,omitempty" xml:"Mezzanine,omitempty" type:"Struct"`
-	// The status of the image. Valid values:
+	// The image status. Valid values:
 	//
-	// 	- **Uploading**: The image is being uploaded. This is the initial status.
+	// - **Uploading**: The image is being uploaded. This is the initial status.
 	//
-	// 	- **Normal**: The image is uploaded.
+	// - **Normal**: The image is uploaded.
 	//
-	// 	- **UploadFail**: The image fails to be uploaded.
+	// - **UploadFail**: The image failed to be uploaded.
 	//
 	// example:
 	//
 	// Uploading
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The bucket in which the image is stored.
+	// The storage address of the image file.
 	//
 	// example:
 	//
 	// outin-****..oss-cn-shanghai.aliyuncs.com
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	// The tags of the image. Multiple tags are separated by commas (,).
+	// The image tags. Multiple tags are separated by commas (,).
 	//
 	// example:
 	//
 	// tag1,tag2,tag3
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The title of the image.
+	// The image title.
 	//
 	// example:
 	//
 	// this is a sample
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The image URL. If a domain name for CDN is specified, a CDN URL is returned. Otherwise, an OSS URL is returned.
+	// The image access URL. If a CDN domain name is configured, the CDN URL is returned. Otherwise, the OSS URL is returned.
 	//
 	// example:
 	//
@@ -289,7 +283,7 @@ func (s *GetImageInfoResponseBodyImageInfo) Validate() error {
 }
 
 type GetImageInfoResponseBodyImageInfoMezzanine struct {
-	// The size of the image. Unit: bytes.
+	// The file size. Unit: bytes.
 	//
 	// example:
 	//
@@ -301,19 +295,19 @@ type GetImageInfoResponseBodyImageInfoMezzanine struct {
 	//
 	// https://outin-bfefbb*****163e1c7426.oss-cn-XXXXXXXX.aliyuncs.com/image/default/5E84CD536*****D4DAD.png?Expires=1590982353&OSSAccessKeyId=*****&Signature=ALPET74o*****c%3D
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
-	// The height of the image. Unit: pixels.
+	// The image height. Unit: pixel.
 	//
 	// example:
 	//
 	// 200
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The URL of the source file.
+	// The address of the uploaded source image file.
 	//
 	// example:
 	//
 	// ****.gif
 	OriginalFileName *string `json:"OriginalFileName,omitempty" xml:"OriginalFileName,omitempty"`
-	// The width of the image. Unit: pixels.
+	// The image width. Unit: pixel.
 	//
 	// example:
 	//

@@ -20,12 +20,13 @@ type iUpdateVideoInfosResponseBody interface {
 }
 
 type UpdateVideoInfosResponseBody struct {
-	// The IDs of the videos that cannot be modified. Generally, videos cannot be modified if you do not have required [permissions](https://help.aliyun.com/document_detail/113600.html).
-	ForbiddenVideoIds    []*string `json:"ForbiddenVideoIds,omitempty" xml:"ForbiddenVideoIds,omitempty" type:"Repeated"`
+	// The IDs of the audio and video files that cannot be operated on. This is typically caused by insufficient [permissions](https://help.aliyun.com/document_detail/113600.html).
+	ForbiddenVideoIds []*string `json:"ForbiddenVideoIds,omitempty" xml:"ForbiddenVideoIds,omitempty" type:"Repeated"`
+	// The list of custom IDs that do not exist.
 	NonExistReferenceIds []*string `json:"NonExistReferenceIds,omitempty" xml:"NonExistReferenceIds,omitempty" type:"Repeated"`
-	// The IDs of the videos that do not exist.
+	// The IDs of the audio and video files that do not exist.
 	NonExistVideoIds []*string `json:"NonExistVideoIds,omitempty" xml:"NonExistVideoIds,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

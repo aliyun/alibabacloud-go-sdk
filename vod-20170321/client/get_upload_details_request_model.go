@@ -16,13 +16,13 @@ type iGetUploadDetailsRequest interface {
 }
 
 type GetUploadDetailsRequest struct {
-	// The ID of the media file, namely, the audio or video ID. You can specify a maximum of 20 IDs. Separate multiple IDs with commas (,). You can use one of the following methods to obtain the audio or video ID:
+	// The media IDs, which are audio or video IDs (VideoId). Separate multiple IDs with commas (,). A maximum of 20 IDs are supported. You can obtain the IDs by using the following methods:
 	//
-	// 	- Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files*	- > **Audio/Video**. On the Video and Audio page, you can view the audio or video ID. Use this method if the audio or video file is uploaded by using the ApsaraVideo VOD console.
+	// - For audio or video files uploaded through the console, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Files*	- > **Audio/Video*	- to view the audio or video ID.
 	//
-	// 	- View the value of the VideoId parameter returned by the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation that you called to obtain an upload URL and credential.
+	// - When you call the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation to obtain the upload URL and credential, the video ID is the value of the VideoId response parameter.
 	//
-	// 	- View the value of the VideoId parameter returned by the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation that you called to query media information after the audio or video file is uploaded.
+	// - After the audio or video file is uploaded, you can call the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation to query the video ID, which is the value of the VideoId response parameter.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type GetUploadDetailsRequest struct {
 	//
 	// 61ccbdb06fa83012be4d8083f6****,7d2fbc380b0e08e55f****
 	MediaIds *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
-	// The type of the media file. Set the value to **video**, which indicates audio and video files.
+	// The media type. Set the value to **video*	- (audio/video).
 	//
 	// example:
 	//

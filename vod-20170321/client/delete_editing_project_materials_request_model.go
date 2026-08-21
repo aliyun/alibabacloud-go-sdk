@@ -26,7 +26,9 @@ type iDeleteEditingProjectMaterialsRequest interface {
 }
 
 type DeleteEditingProjectMaterialsRequest struct {
-	// The material ID. Separate multiple material IDs with commas (,).
+	// The material IDs. These are media asset IDs, such as VideoId for videos, ImageId for images, and MediaId for auxiliary media assets. Separate multiple material IDs with commas (,).
+	//
+	// To obtain material IDs, see [Search for media information](https://help.aliyun.com/document_detail/86044.html).
 	//
 	// This parameter is required.
 	//
@@ -34,13 +36,13 @@ type DeleteEditingProjectMaterialsRequest struct {
 	//
 	// 9e3101bf24bf41c*****123318788ca
 	MaterialIds *string `json:"MaterialIds,omitempty" xml:"MaterialIds,omitempty"`
-	// The type of the material. Valid values:
+	// The material type. Valid values:
 	//
-	// 	- **video**
+	// - **video**: video.
 	//
-	// 	- **audio**
+	// - **audio**: audio-only.
 	//
-	// 	- **image**
+	// - **image**: image.
 	//
 	// This parameter is required.
 	//

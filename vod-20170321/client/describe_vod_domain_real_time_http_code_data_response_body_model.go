@@ -24,9 +24,9 @@ type iDescribeVodDomainRealTimeHttpCodeDataResponseBody interface {
 }
 
 type DescribeVodDomainRealTimeHttpCodeDataResponseBody struct {
-	// The time interval at which data is returned. Unit: seconds.
+	// The time interval between data entries. Unit: seconds.
 	//
-	// The returned value varies based on the time range per query. Valid values: 60 (1 minute), 300 (5 minutes), and 3600 (1 hour). For more information, see the **Time granularity*	- section in the **API documentation**.
+	// Based on the time range per query, this parameter returns a fixed value of 60 (1 minute), 300 (5 minutes), or 3600 (1 hour). For more information, see **Time granularity of returned data*	- in the **operation description**.
 	//
 	// example:
 	//
@@ -38,20 +38,20 @@ type DescribeVodDomainRealTimeHttpCodeDataResponseBody struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range.
+	// The end of the time range for the returned data.
 	//
 	// example:
 	//
 	// 2019-11-30T05:40:00Z
 	EndTime              *string                                                                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RealTimeHttpCodeData *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeData `json:"RealTimeHttpCodeData,omitempty" xml:"RealTimeHttpCodeData,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// BC858082-736F-4A25-867B-E5B67C85ACF7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range.
+	// The beginning of the time range for the returned data.
 	//
 	// example:
 	//

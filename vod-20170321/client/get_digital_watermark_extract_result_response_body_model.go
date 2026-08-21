@@ -16,9 +16,9 @@ type iGetDigitalWatermarkExtractResultResponseBody interface {
 }
 
 type GetDigitalWatermarkExtractResultResponseBody struct {
-	// The details of the watermark extraction job.
+	// The details of the watermark extraction jobs.
 	AiExtractResultList []*GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList `json:"AiExtractResultList,omitempty" xml:"AiExtractResultList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -72,11 +72,11 @@ type GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList struct {
 	//
 	// 2023-09-16T02:49:04Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The error message.
+	// The error message. This parameter is returned only when the watermark extraction job fails (the value of `Status` is `Failed`).
 	//
 	// example:
 	//
-	// successful
+	// query copyright info err
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the watermark extraction job.
 	//
@@ -92,17 +92,17 @@ type GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList struct {
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The status of the watermark extraction job. Valid values:
 	//
-	// 	- **Success**
+	// - **Success**: The job succeeded.
 	//
-	// 	- **Failed**
+	// - **Failed**: The job failed.
 	//
-	// 	- **Processing**
+	// - **Processing**: The job is being processed.
 	//
 	// example:
 	//
-	// Success
+	// Failed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The extracted watermark content.
+	// The extracted watermark text.
 	//
 	// example:
 	//

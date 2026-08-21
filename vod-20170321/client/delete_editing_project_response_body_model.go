@@ -14,7 +14,7 @@ type iDeleteEditingProjectResponseBody interface {
 }
 
 type DeleteEditingProjectResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

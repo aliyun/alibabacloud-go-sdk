@@ -16,9 +16,9 @@ type iGetMediaAuditResultTimelineResponseBody interface {
 }
 
 type GetMediaAuditResultTimelineResponseBody struct {
-	// The collection of review result timelines.
+	// The collection of automated review result timelines.
 	MediaAuditResultTimeline *GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimeline `json:"MediaAuditResultTimeline,omitempty" xml:"MediaAuditResultTimeline,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,15 +62,15 @@ func (s *GetMediaAuditResultTimelineResponseBody) Validate() error {
 }
 
 type GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimeline struct {
-	// The collection of ad timelines.
+	// The collection of advertisement detection timelines.
 	Ad []*GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineAd `json:"Ad,omitempty" xml:"Ad,omitempty" type:"Repeated"`
-	// The collection of undesirable content timelines.
+	// The collection of undesirable scene timelines.
 	Live []*GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineLive `json:"Live,omitempty" xml:"Live,omitempty" type:"Repeated"`
-	// The collection of logo timelines.
+	// The collection of logo detection timelines.
 	Logo []*GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineLogo `json:"Logo,omitempty" xml:"Logo,omitempty" type:"Repeated"`
-	// The collection of pornographic content timelines.
+	// The collection of pornography detection timelines.
 	Porn []*GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelinePorn `json:"Porn,omitempty" xml:"Porn,omitempty" type:"Repeated"`
-	// The collection of terrorist content timelines.
+	// The collection of terrorism detection timelines.
 	Terrorism []*GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineTerrorism `json:"Terrorism,omitempty" xml:"Terrorism,omitempty" type:"Repeated"`
 }
 
@@ -177,41 +177,41 @@ func (s *GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimeline) Valida
 }
 
 type GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineAd struct {
-	// The category of the review result. Valid values:
+	// The classification of the advertisement detection result. Valid values:
 	//
-	// 	- **normal**: normal content.
+	// - **normal**: normal.
 	//
-	// 	- **ad**: other ads.
+	// - **ad**: other advertisements.
 	//
-	// 	- **politics**: political content in text.
+	// - **politics**: text contains political content.
 	//
-	// 	- **porn**: pornographic content in text.
+	// - **porn**: text contains pornographic content.
 	//
-	// 	- **abuse**: abuse in text.
+	// - **abuse**: text contains abusive content.
 	//
-	// 	- **terrorism**: terrorist content in text.
+	// - **terrorism**: text contains terrorism-related content.
 	//
-	// 	- **contraband**: prohibited content in text.
+	// - **contraband**: text contains prohibited content.
 	//
-	// 	- **spam**: spam content.
+	// - **spam**: text contains other spam content.
 	//
-	// 	- **npx**: illegal ad.
+	// - **npx**: psoriasis advertisements.
 	//
-	// 	- **qrcode**: QR code.
+	// - **qrcode**: contains a QR code.
 	//
-	// 	- **programCode**: mini program code.
+	// - **programCode**: contains a mini program code.
 	//
 	// example:
 	//
 	// ad
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The score of the video snapshot in the ad review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+	// The hit score of the video screenshot for the advertisement detection result. Value range: `[0-100]`, with a precision of 10 decimal places. The hit result indicates the probability of the corresponding classification label. A higher value indicates higher accuracy.
 	//
 	// example:
 	//
 	// 100
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The timestamp of the snapshot in the video. Unit: milliseconds.
+	// The position of the video screenshot in the video. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -259,29 +259,29 @@ func (s *GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineAd) Vali
 }
 
 type GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineLive struct {
-	// The categories of undesired content review results. Valid values:
+	// The classification of the undesirable content detection result. Valid values:
 	//
-	// 	- **normal**: normal content.
+	// - **normal**: normal.
 	//
-	// 	- **meaningless**: meaningless content, such as a black or white screen.
+	// - **meaningless**: no content in the image (such as a black screen or white screen).
 	//
-	// 	- **PIP**: picture-in-picture.
+	// - **PIP**: Picture-in-Picture (PiP).
 	//
-	// 	- **smoking**: smoking.
+	// - **smoking**: smoking.
 	//
-	// 	- **drivelive**: live broadcasting in a running vehicle.
+	// - **drivelive**: in-car live streaming.
 	//
 	// example:
 	//
-	// pip
+	// smoking
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The score of the video snapshot in the undesirable content review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+	// The hit score of the video screenshot for the undesirable content detection result. Value range: `[0-100]`, with a precision of 10 decimal places. The hit result indicates the probability of the corresponding classification label. A higher value indicates higher accuracy.
 	//
 	// example:
 	//
 	// 100
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The timestamp of the snapshot in the video. Unit: milliseconds.
+	// The position of the video screenshot in the video. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -329,25 +329,25 @@ func (s *GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineLive) Va
 }
 
 type GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineLogo struct {
-	// The category of the review result. Valid values:
+	// The classification of the logo detection result. Valid values:
 	//
-	// 	- **normal**: normal content.
+	// - **normal**: normal.
 	//
-	// 	- **TV**: controlled TV station logo.
+	// - **TV**: contains a regulated logo.
 	//
-	// 	- **trademark**: trademark.
+	// - **trademark**: contains a trademark.
 	//
 	// example:
 	//
-	// logo
+	// normal
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The score of the video snapshot in the logo review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+	// The hit score of the video screenshot for the logo detection result. Value range: `[0-100]`, with a precision of 10 decimal places. The hit result indicates the probability of the corresponding classification label. A higher value indicates higher accuracy.
 	//
 	// example:
 	//
 	// 100
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The timestamp of the snapshot in the video. Unit: milliseconds.
+	// The position of the video screenshot in the video. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -395,25 +395,25 @@ func (s *GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineLogo) Va
 }
 
 type GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelinePorn struct {
-	// The category of the review result. Valid values:
+	// The classification of the pornography detection result. Valid values:
 	//
-	// 	- **porn**
+	// - **porn**: pornographic content.
 	//
-	// 	- **sexy**
+	// - **sexy**: sexually suggestive content.
 	//
-	// 	- **normal**
+	// - **normal**: normal content.
 	//
 	// example:
 	//
 	// porn
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The score of the video snapshot in the pornographic content review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+	// The hit score of the video screenshot for the pornography detection result. Value range: `[0-100]`, with a precision of 10 decimal places. The hit result indicates the probability of the corresponding classification label. A higher value indicates higher accuracy.
 	//
 	// example:
 	//
 	// 100.00
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The timestamp of the snapshot in the video. Unit: milliseconds.
+	// The position of the video screenshot in the video. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -461,47 +461,47 @@ func (s *GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelinePorn) Va
 }
 
 type GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineTerrorism struct {
-	// The category of the review result. Valid values:
+	// The terrorism and political content detection result. Valid values:
 	//
-	// 	- **normal**
+	// - **normal**: normal.
 	//
-	// 	- **bloody**
+	// - **bloody**: bloody content.
 	//
-	// 	- **explosion**
+	// - **explosion**: explosions and smoke.
 	//
-	// 	- **outfit**
+	// - **outfit**: special attire.
 	//
-	// 	- **logo**
+	// - **logo**: special logos.
 	//
-	// 	- **weapon**
+	// - **weapon**: weapons.
 	//
-	// 	- **politics**
+	// - **politics**: political content.
 	//
-	// 	- **violence**
+	// - **violence**: fighting.
 	//
-	// 	- **crowd**
+	// - **crowd**: crowd gathering.
 	//
-	// 	- **parade**
+	// - **parade**: parades.
 	//
-	// 	- **carcrash**
+	// - **carcrash**: car accident scenes.
 	//
-	// 	- **flag**
+	// - **flag**: flags.
 	//
-	// 	- **location**
+	// - **location**: landmarks.
 	//
-	// 	- **others**
+	// - **others**: others.
 	//
 	// example:
 	//
 	// normal
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The score of the video snapshot in the terrorist content review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+	// The hit score of the video screenshot for the terrorism and political content detection result. Value range: `[0-100]`, with a precision of 10 decimal places. The hit result indicates the probability of the corresponding classification label. A higher value indicates higher accuracy.
 	//
 	// example:
 	//
 	// 100.00
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The timestamp of the snapshot in the video. Unit: milliseconds.
+	// The position in the video. Unit: milliseconds.
 	//
 	// example:
 	//

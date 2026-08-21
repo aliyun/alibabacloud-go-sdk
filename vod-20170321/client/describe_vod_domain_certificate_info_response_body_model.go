@@ -17,7 +17,7 @@ type iDescribeVodDomainCertificateInfoResponseBody interface {
 
 type DescribeVodDomainCertificateInfoResponseBody struct {
 	CertInfos *DescribeVodDomainCertificateInfoResponseBodyCertInfos `json:"CertInfos,omitempty" xml:"CertInfos,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

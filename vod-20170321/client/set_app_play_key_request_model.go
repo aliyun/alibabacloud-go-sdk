@@ -22,11 +22,19 @@ type iSetAppPlayKeyRequest interface {
 }
 
 type SetAppPlayKeyRequest struct {
+	// The application ID. Default value: **app-1000000**. For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
+	//
 	// example:
 	//
 	// app-1000231
 	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The playback key.
+	//
+	// - Only uppercase letters, lowercase letters, and digits are supported. The length must be 8 to 20 characters.
+	//
+	// - UTF-8 encoding.
+	//
 	// example:
 	//
 	// yzNgTUtAl6HAuosIA

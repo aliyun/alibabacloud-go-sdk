@@ -20,7 +20,7 @@ type iDescribePlayTopVideosRequest interface {
 }
 
 type DescribePlayTopVideosRequest struct {
-	// The time to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The date to query. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// This parameter is required.
 	//
@@ -35,7 +35,7 @@ type DescribePlayTopVideosRequest struct {
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries to return on each page. The default value is **100**. The maximum value is **1000**.
+	// The number of entries per page. Default value: **100**. Maximum value: **1000**.
 	//
 	// example:
 	//

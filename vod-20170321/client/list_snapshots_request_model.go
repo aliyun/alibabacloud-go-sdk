@@ -22,13 +22,13 @@ type iListSnapshotsRequest interface {
 }
 
 type ListSnapshotsRequest struct {
-	// The validity period of the snapshot URL. Default value: **3600**. Minimum value: **3600**. Unit: seconds.
+	// The expiration time of the snapshot access URL. Default value: **3600**. Minimum value: **3600**. Unit: seconds.
 	//
-	// 	- This parameter takes effect only when you enable URL signing. For more information, see [Configure URL signing](https://help.aliyun.com/document_detail/57007.html).
+	// - This parameter takes effect only if [URL authentication](https://help.aliyun.com/document_detail/57007.html) is enabled.
 	//
-	// 	- If you specify a value smaller than **3,600 seconds**, **3600*	- is used by default.
+	// - If the specified value is less than **3600 seconds**, the default value of **3600 seconds*	- is used.
 	//
-	// 	- If the snapshot URL is an Object Storage Service (OSS) URL, the maximum value for this parameter is **2592000*	- (30 days). This reduces risks on the origin.
+	// - If the returned URL is an OSS URL, the maximum value is **2592000*	- (30 days) to reduce security risks to the origin server.
 	//
 	// example:
 	//
@@ -48,27 +48,27 @@ type ListSnapshotsRequest struct {
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The type of snapshots to return. Valid values:
 	//
-	// 	- **CoverSnapshot**: thumbnail snapshot
+	// - **CoverSnapshot*	- (default): thumbnail snapshots.
 	//
-	// 	- **NormalSnapshot**: regular snapshot
+	// - **NormalSnapshot**: normal snapshots.
 	//
-	// 	- **SpriteSnapshot**: sprite snapshot
+	// - **SpriteSnapshot**: sprites.
 	//
-	// 	- **SpriteOriginSnapshot**: sprite source snapshot
+	// - **SpriteOriginSnapshot**: original images of sprites.
 	//
-	// 	- **WebVttSnapshot**: WebVTT snapshot
+	// - **WebVttSnapshot**: WebVTT snapshots.
 	//
 	// example:
 	//
 	// CoverSnapshot
 	SnapshotType *string `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
-	// The ID of the video. You can use one of the following methods to obtain the ID:
+	// The video ID. You can obtain the video ID by using one of the following methods:
 	//
-	// 	- Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Media Files*	- > **Audio/Video*	- to view the video ID.
+	// - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Files*	- > **Audio/Video*	- to view the video ID.
 	//
-	// 	- Obtain the video ID from the response to the [CreateUploadVideo](~~CreateUploadVideo~~) operation that you call to obtain the upload URL and credential.
+	// - Obtain the video ID from the response of the [CreateUploadVideo](~~CreateUploadVideo~~) operation that you call to obtain the upload URL and credential.
 	//
-	// 	- Obtain the video ID from the response to the [SearchMedia](~~SearchMedia~~) operation that you call to query videos.
+	// - Obtain the video ID from the response of the [SearchMedia](~~SearchMedia~~) operation that you call to query videos.
 	//
 	// This parameter is required.
 	//

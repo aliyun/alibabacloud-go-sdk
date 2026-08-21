@@ -16,11 +16,11 @@ type iListAppPoliciesForIdentityResponseBody interface {
 }
 
 type ListAppPoliciesForIdentityResponseBody struct {
-	// The details of each policy.
+	// The list of access policy names.
 	//
-	// > A maximum of 100 entries can be returned.
+	// > A maximum of 100 entries are returned.
 	AppPolicyList []*ListAppPoliciesForIdentityResponseBodyAppPolicyList `json:"AppPolicyList,omitempty" xml:"AppPolicyList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -68,47 +68,47 @@ func (s *ListAppPoliciesForIdentityResponseBody) Validate() error {
 }
 
 type ListAppPoliciesForIdentityResponseBodyAppPolicyList struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The time when the application policy was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the application policy was granted to the role. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
 	// 2019-01-01T01:01:01Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the policy.
+	// The policy description.
 	//
 	// example:
 	//
 	// App full access permission
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The last time when the application policy was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the application policy granted to the role was last modified. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
 	// 2019-01-01T01:08:01Z
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	// The name of the policy.
+	// The policy name.
 	//
 	// example:
 	//
 	// VODAppFullAccess
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The type of the policy. Valid values:
+	// The policy type. Valid values:
 	//
-	// 	- **System**
+	// - **System**: system policy.
 	//
-	// 	- **Custom**
+	// - **Custom**: user-defined policy.
 	//
 	// example:
 	//
 	// System
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The content of the policy.
+	// The policy value.
 	//
 	// example:
 	//

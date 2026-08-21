@@ -16,13 +16,13 @@ type iDescribeVodTieringStorageRetrievalDataResponseBody interface {
 }
 
 type DescribeVodTieringStorageRetrievalDataResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 25818875-5F78-4A13-BEF6-D73936****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The data retrieval information.
+	// The retrieval data.
 	RetrievalData []*DescribeVodTieringStorageRetrievalDataResponseBodyRetrievalData `json:"RetrievalData,omitempty" xml:"RetrievalData,omitempty" type:"Repeated"`
 }
 
@@ -66,19 +66,19 @@ func (s *DescribeVodTieringStorageRetrievalDataResponseBody) Validate() error {
 }
 
 type DescribeVodTieringStorageRetrievalDataResponseBodyRetrievalData struct {
-	// The retrieved Cold Archive data in the bulk mode.
+	// The Cold Archive bulk retrieval data.
 	//
 	// example:
 	//
 	// 123
 	CABulkRetrievalData *int64 `json:"CABulkRetrievalData,omitempty" xml:"CABulkRetrievalData,omitempty"`
-	// The retrieved Cold Archive data in the expedited mode.
+	// The Cold Archive high-priority retrieval data.
 	//
 	// example:
 	//
 	// 123
 	CAHighPriorRetrievalData *int64 `json:"CAHighPriorRetrievalData,omitempty" xml:"CAHighPriorRetrievalData,omitempty"`
-	// The retrieved Cold Archive data in the standard mode.
+	// The Cold Archive standard retrieval data.
 	//
 	// example:
 	//
@@ -90,19 +90,19 @@ type DescribeVodTieringStorageRetrievalDataResponseBodyRetrievalData struct {
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The data retrieval information.
+	// The retrieval data.
 	//
 	// example:
 	//
 	// 1234
 	RetrievalData *int64 `json:"RetrievalData,omitempty" xml:"RetrievalData,omitempty"`
-	// The storage type.
+	// The media asset storage class.
 	//
 	// example:
 	//
 	// IA
 	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
-	// The timestamp of the returned data. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The start time of the time interval. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//

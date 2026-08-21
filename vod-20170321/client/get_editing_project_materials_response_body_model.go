@@ -17,7 +17,7 @@ type iGetEditingProjectMaterialsResponseBody interface {
 
 type GetEditingProjectMaterialsResponseBody struct {
 	MaterialList *GetEditingProjectMaterialsResponseBodyMaterialList `json:"MaterialList,omitempty" xml:"MaterialList,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

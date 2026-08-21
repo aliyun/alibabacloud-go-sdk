@@ -20,7 +20,7 @@ type iDescribeMediaDistributionRequest interface {
 }
 
 type DescribeMediaDistributionRequest struct {
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The maximum time range to query is 6 months.
+	// The end time of CreationTime. The end time must be later than the start time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC). The maximum time span between the start time and end time is six months.
 	//
 	// example:
 	//
@@ -28,43 +28,43 @@ type DescribeMediaDistributionRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The statistical interval. Default value: day. Valid values:
 	//
-	// 	- hour: natural hour of the start and end time.
+	// - hour: by hour. Statistics are collected based on the calendar hours within the specified time range.
 	//
-	// 	- day: natural day of the start and end time.
+	// - day: by day. Statistics are collected based on the calendar days within the specified time range.
 	//
-	// 	- week: natural week of the start and end time.
+	// - week: by week. Statistics are collected based on the calendar weeks within the specified time range.
 	//
-	// 	- month: natural month of the start and end time.
+	// - month: by month. Statistics are collected based on the calendar months within the specified time range.
 	//
 	// example:
 	//
 	// day
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The maximum time range to query is 6 months.
+	// The start time of CreationTime. Format: yyyy-MM-ddTHH:mm:ssZ (UTC). The maximum time span between the start time and end time is six months.
 	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The hierarchical storage type. Valid values:
+	// The storage class. Valid values:
 	//
-	// 	- Standard
+	// - Standard: standard storage.
 	//
-	// 	- IA
+	// - IA: Infrequent Access.
 	//
-	// 	- Archive
+	// - Archive: Archive storage.
 	//
-	// 	- ColdArchive
+	// - ColdArchive: Cold Archive storage.
 	//
-	// 	- SourceIA
+	// - SourceIA: Infrequent Access for source files.
 	//
-	// 	- SourceArchive
+	// - SourceArchive: Archive storage for source files.
 	//
-	// 	- SourceColdArchive
+	// - SourceColdArchive: Cold Archive storage for source files.
 	//
-	// 	- Changing
+	// - Changing: the media asset storage class is being changed.
 	//
-	// 	- SourceChanging
+	// - SourceChanging: the source file storage class is being changed.
 	//
 	// example:
 	//

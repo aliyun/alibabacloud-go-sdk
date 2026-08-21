@@ -16,13 +16,13 @@ type iListVodTemplateRequest interface {
 }
 
 type ListVodTemplateRequest struct {
-	// The ID of the application. Set the value to **app-1000000**. For more information, see [Overview](https://help.aliyun.com/document_detail/113600.html).
+	// The application ID. Set the value to **app-1000000**. For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
 	//
 	// example:
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The type of the template. Set the value to **Snapshot**.
+	// The templatetype. Set the value to **Snapshot**.
 	//
 	// This parameter is required.
 	//

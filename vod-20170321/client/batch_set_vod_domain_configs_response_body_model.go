@@ -14,7 +14,7 @@ type iBatchSetVodDomainConfigsResponseBody interface {
 }
 
 type BatchSetVodDomainConfigsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

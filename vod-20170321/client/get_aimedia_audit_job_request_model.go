@@ -14,7 +14,7 @@ type iGetAIMediaAuditJobRequest interface {
 }
 
 type GetAIMediaAuditJobRequest struct {
-	// The ID of the intelligent review job.
+	// The ID of the automated review job.
 	//
 	// This parameter is required.
 	//

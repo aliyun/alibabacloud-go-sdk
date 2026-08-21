@@ -16,13 +16,13 @@ type iUpdateAITemplateResponseBody interface {
 }
 
 type UpdateAITemplateResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 25818875-5F78-4A13-BEF6-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the template.
+	// The template ID.
 	//
 	// example:
 	//

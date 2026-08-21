@@ -17,7 +17,7 @@ type iSubmitPreprocessJobsResponseBody interface {
 
 type SubmitPreprocessJobsResponseBody struct {
 	PreprocessJobs *SubmitPreprocessJobsResponseBodyPreprocessJobs `json:"PreprocessJobs,omitempty" xml:"PreprocessJobs,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

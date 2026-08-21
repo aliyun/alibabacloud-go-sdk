@@ -25,7 +25,7 @@ type iDescribeVodDomainReqHitRateDataResponseBody interface {
 
 type DescribeVodDomainReqHitRateDataResponseBody struct {
 	Data *DescribeVodDomainReqHitRateDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The time interval at which data is returned, which is the time granularity. Unit: seconds.
+	// The time interval between data entries, which is the time granularity of the data. Unit: seconds.
 	//
 	// example:
 	//
@@ -37,19 +37,19 @@ type DescribeVodDomainReqHitRateDataResponseBody struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range.
+	// The end of the time range for the returned data.
 	//
 	// example:
 	//
 	// 2023-12-22T08:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D94E471F-1A27-442E-552D-D4D2000C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range.
+	// The beginning of the time range for the returned data.
 	//
 	// example:
 	//

@@ -16,6 +16,7 @@ type iDescribeVodPlayerCollectDataResponseBody interface {
 }
 
 type DescribeVodPlayerCollectDataResponseBody struct {
+	// The returned data list.
 	DataList []*DescribeVodPlayerCollectDataResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -65,18 +66,26 @@ func (s *DescribeVodPlayerCollectDataResponseBody) Validate() error {
 }
 
 type DescribeVodPlayerCollectDataResponseBodyDataList struct {
+	// The returned data metric.
+	//
 	// example:
 	//
 	// Vv
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The value of the returned data metric.
+	//
 	// example:
 	//
 	// 100.0
 	Value *float64 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The period-over-period percentage.
+	//
 	// example:
 	//
 	// 0.5
 	ValueRatio *float64 `json:"ValueRatio,omitempty" xml:"ValueRatio,omitempty"`
+	// The period-over-period value of the returned data metric.
+	//
 	// example:
 	//
 	// 200.0

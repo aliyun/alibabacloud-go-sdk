@@ -14,7 +14,7 @@ type iGetMediaAuditResultTimelineRequest interface {
 }
 
 type GetMediaAuditResultTimelineRequest struct {
-	// The ID of the video.
+	// The video ID.
 	//
 	// This parameter is required.
 	//

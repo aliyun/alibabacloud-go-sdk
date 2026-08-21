@@ -18,13 +18,13 @@ type iGetVideoPlayAuthResponseBody interface {
 }
 
 type GetVideoPlayAuthResponseBody struct {
-	// The credential for media playback.
+	// The playback credential for the audio or video file.
 	//
 	// example:
 	//
 	// sstyYuew6789000000xtt7TYUh****
 	PlayAuth *string `json:"PlayAuth,omitempty" xml:"PlayAuth,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -79,31 +79,31 @@ func (s *GetVideoPlayAuthResponseBody) Validate() error {
 }
 
 type GetVideoPlayAuthResponseBodyVideoMeta struct {
-	// The thumbnail URL of the media file.
+	// The thumbnail URL of the audio or video file.
 	//
 	// example:
 	//
 	// https://example.aliyundoc.com/****.jpg
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The duration of the media file. Unit: seconds.
+	// The duration of the audio or video file. Unit: seconds.
 	//
 	// example:
 	//
 	// 120.0
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The status of the media file. For more information about the value range and description, see [Status: the status of a video](~~52839#title-vqg-8cz-7p8~~).
+	// The status of the audio or video file. For valid values and descriptions, see [Status: audio and video status](~~52839#title-vqg-8cz-7p8~~).
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The title of the media file.
+	// The title of the audio or video file.
 	//
 	// example:
 	//
-	// VOD
+	// Alibaba Cloud VOD Video Title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The ID of the media file.
+	// The audio or video ID.
 	//
 	// example:
 	//

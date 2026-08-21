@@ -24,12 +24,18 @@ type iDescribeVodPlayerMetricDataResponseBody interface {
 }
 
 type DescribeVodPlayerMetricDataResponseBody struct {
+	// The list of returned data.
 	DataList []*DescribeVodPlayerMetricDataResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	Extend   *DescribeVodPlayerMetricDataResponseBodyExtend     `json:"Extend,omitempty" xml:"Extend,omitempty" type:"Struct"`
+	// The extended information.
+	Extend *DescribeVodPlayerMetricDataResponseBodyExtend `json:"Extend,omitempty" xml:"Extend,omitempty" type:"Struct"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 5000
@@ -40,6 +46,8 @@ type DescribeVodPlayerMetricDataResponseBody struct {
 	//
 	// 25818875-5F78-4A*****F6-D7393642CA58
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of data points.
+	//
 	// example:
 	//
 	// 500
@@ -127,106 +135,158 @@ func (s *DescribeVodPlayerMetricDataResponseBody) Validate() error {
 }
 
 type DescribeVodPlayerMetricDataResponseBodyDataList struct {
+	// The average completion plays per user.
+	//
 	// example:
 	//
 	// 2
 	AvgPerCompletionVv *float64 `json:"AvgPerCompletionVv,omitempty" xml:"AvgPerCompletionVv,omitempty"`
+	// The average play duration per user, in milliseconds (ms).
+	//
 	// example:
 	//
 	// 100000
 	AvgPerPlayDuration *float64 `json:"AvgPerPlayDuration,omitempty" xml:"AvgPerPlayDuration,omitempty"`
+	// The average plays per user.
+	//
 	// example:
 	//
 	// 10
 	AvgPerVv *float64 `json:"AvgPerVv,omitempty" xml:"AvgPerVv,omitempty"`
+	// The average playback bitrate, in bps.
+	//
 	// example:
 	//
 	// 100
 	AvgPlayBitrate *float64 `json:"AvgPlayBitrate,omitempty" xml:"AvgPlayBitrate,omitempty"`
+	// The average play duration, in milliseconds (ms).
+	//
 	// example:
 	//
 	// 100000
 	AvgPlayDuration *float64 `json:"AvgPlayDuration,omitempty" xml:"AvgPlayDuration,omitempty"`
+	// The average start bitrate, in bps.
+	//
 	// example:
 	//
 	// 100
 	AvgStartBitrate *float64 `json:"AvgStartBitrate,omitempty" xml:"AvgStartBitrate,omitempty"`
+	// The average video duration, in milliseconds (ms).
+	//
 	// example:
 	//
 	// 100000
 	AvgVideoDuration *float64 `json:"AvgVideoDuration,omitempty" xml:"AvgVideoDuration,omitempty"`
+	// The completion rate.
+	//
 	// example:
 	//
 	// 0.8
 	CompletionRate *float64 `json:"CompletionRate,omitempty" xml:"CompletionRate,omitempty"`
+	// The completion count.
+	//
 	// example:
 	//
 	// 500
 	CompletionVv *float64 `json:"CompletionVv,omitempty" xml:"CompletionVv,omitempty"`
+	// The dimension.
+	//
 	// example:
 	//
 	// H265_MP4_WIFI
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	// The error count per 100 seconds.
+	//
 	// example:
 	//
 	// 1
 	ErrorCount100s *float64 `json:"ErrorCount100s,omitempty" xml:"ErrorCount100s,omitempty"`
+	// The first frame time, in milliseconds (ms).
+	//
 	// example:
 	//
 	// 100
 	FirstFrame *float64 `json:"FirstFrame,omitempty" xml:"FirstFrame,omitempty"`
+	// The 5-second bounce rate.
+	//
 	// example:
 	//
 	// 0.1
 	JumpRate5s *float64 `json:"JumpRate5s,omitempty" xml:"JumpRate5s,omitempty"`
+	// The play failure rate.
+	//
 	// example:
 	//
 	// 0.2
 	PlayFailRate *float64 `json:"PlayFailRate,omitempty" xml:"PlayFailRate,omitempty"`
+	// The actual play count.
+	//
 	// example:
 	//
 	// 1000
 	RealVv *float64 `json:"RealVv,omitempty" xml:"RealVv,omitempty"`
+	// The instant play rate.
+	//
 	// example:
 	//
 	// 0.8
 	SecondPlayRate *float64 `json:"SecondPlayRate,omitempty" xml:"SecondPlayRate,omitempty"`
+	// The non-play rate.
+	//
 	// example:
 	//
 	// 0.01
 	SeedFailRate *float64 `json:"SeedFailRate,omitempty" xml:"SeedFailRate,omitempty"`
+	// The seek duration, in milliseconds (ms).
+	//
 	// example:
 	//
 	// 100
 	SeekDuration *float64 `json:"SeekDuration,omitempty" xml:"SeekDuration,omitempty"`
+	// The slow play rate.
+	//
 	// example:
 	//
 	// 0.2
 	SlowPlayRate *float64 `json:"SlowPlayRate,omitempty" xml:"SlowPlayRate,omitempty"`
+	// The stuttering count per 100 seconds.
+	//
 	// example:
 	//
 	// 2
 	StuckCount100s *string `json:"StuckCount100s,omitempty" xml:"StuckCount100s,omitempty"`
+	// The stuttering rate by count.
+	//
 	// example:
 	//
 	// 0.1
 	StuckCountRate *float64 `json:"StuckCountRate,omitempty" xml:"StuckCountRate,omitempty"`
+	// The stuttering duration per 100 seconds, in milliseconds (ms).
+	//
 	// example:
 	//
 	// 200
 	StuckDuration100s *float64 `json:"StuckDuration100s,omitempty" xml:"StuckDuration100s,omitempty"`
+	// The timestamp of the data. Format: yyyy-mm-ddthh:mm:ssz (UTC).
+	//
 	// example:
 	//
 	// 2025-06-24T00:55:06Z
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// The total play duration, in milliseconds (ms).
+	//
 	// example:
 	//
 	// 100000
 	TotalPlayDuration *float64 `json:"TotalPlayDuration,omitempty" xml:"TotalPlayDuration,omitempty"`
+	// The number of playback users.
+	//
 	// example:
 	//
 	// 500
 	Uv *float64 `json:"Uv,omitempty" xml:"Uv,omitempty"`
+	// The play count.
+	//
 	// example:
 	//
 	// 800
@@ -480,14 +540,20 @@ func (s *DescribeVodPlayerMetricDataResponseBodyDataList) Validate() error {
 }
 
 type DescribeVodPlayerMetricDataResponseBodyExtend struct {
+	// The latest time with data points within the specified time range. Format: yyyy-mm-ddthh:mm:ssz (UTC).
+	//
 	// example:
 	//
 	// 2025-06-05T15:59:59Z
 	ActualEndTime *string `json:"ActualEndTime,omitempty" xml:"ActualEndTime,omitempty"`
+	// The earliest time with data points within the specified time range. Format: yyyy-mm-ddthh:mm:ssz (UTC).
+	//
 	// example:
 	//
 	// 2025-06-24T00:55:06Z
 	ActualStartTime *string `json:"ActualStartTime,omitempty" xml:"ActualStartTime,omitempty"`
+	// The time granularity of the queried data, in seconds (s).
+	//
 	// example:
 	//
 	// 3600

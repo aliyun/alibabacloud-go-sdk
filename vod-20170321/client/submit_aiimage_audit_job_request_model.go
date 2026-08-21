@@ -26,23 +26,23 @@ type iSubmitAIImageAuditJobRequest interface {
 }
 
 type SubmitAIImageAuditJobRequest struct {
-	// The configuration information about the review job.
+	// The review node configuration.
 	//
-	// 	- Other configuration items of the review job. Only the ResourceType field is supported. This field is used to specify the type of media files. You can adjust review standards and rules based on the type of media files.
+	// - Other configuration items of the review node. Currently, only the ResourceType field is supported, which is used to specify the media file type and adjust the review standards and rules for the specified type.
 	//
-	// 	- The value of ResourceType can contain only letters, digits, and underscores (_).
+	// - Usage notes for ResourceType: only letters, digits, and underscores are allowed.
 	//
-	// > 	- You can specify a value for the ResourceType field based on the preceding limits. After you specify a value for the ResourceType field, you must [submit a ticket](https://yida.alibaba-inc.com/o/ticketapply). The value takes effect after Alibaba Cloud processes your ticket.
+	// >- You can customize the ResourceType field as described in the usage notes. After customization, [submit a Yida form](https://yida.alibaba-inc.com/o/ticketapply) to commit to Alibaba Cloud for spooling before the configuration takes effect.
 	//
-	// >	- If you want to change moderation policies and rules based on ResourceType, [submit a ticket](https://yida.alibaba-inc.com/o/ticketapply) to contact technical support.
+	// >- To adjust the review standards and rules for a specific ResourceType, [submit a Yida form](https://yida.alibaba-inc.com/o/ticketapply) to request technical support.
 	//
 	// example:
 	//
 	// {"ResourceType":"****_short_video"}
 	MediaAuditConfiguration *string `json:"MediaAuditConfiguration,omitempty" xml:"MediaAuditConfiguration,omitempty"`
-	// The ID of the image.
+	// The image ID.
 	//
-	// The unique ID of the image is returned after the image is uploaded to ApsaraVideo VOD.
+	// The unique identifier of the image returned after the image is uploaded to ApsaraVideo VOD.
 	//
 	// This parameter is required.
 	//
@@ -54,17 +54,17 @@ type SubmitAIImageAuditJobRequest struct {
 	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the AI template. You can use one of the following methods to obtain the ID:
+	// The AI template ID. You can obtain the ID by using one of the following methods:
 	//
-	// 	- Obtain the value of TemplateId from the response to the [AddAITemplate](https://help.aliyun.com/document_detail/102930.html) operation that you call to create an AI template.
+	// - When you call the [Add AI template](https://help.aliyun.com/document_detail/102930.html) operation to add an AI template, the AI template ID is the value of TemplateId in the response.
 	//
-	// 	- Obtain the value of TemplateId from the response to the [ListAITemplate](https://help.aliyun.com/document_detail/102936.html) operation that you call to create an AI template.
+	// - After the AI template is added, call the [Query AI template list](https://help.aliyun.com/document_detail/102936.html) operation to obtain the AI template ID, which is the value of TemplateId in the response.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// VOD-0003-00****
+	// a07a7f7d7d10eb9fd999e56ecc****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 

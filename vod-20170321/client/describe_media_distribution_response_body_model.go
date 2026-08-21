@@ -18,7 +18,7 @@ type iDescribeMediaDistributionResponseBody interface {
 }
 
 type DescribeMediaDistributionResponseBody struct {
-	// The distribution list of media assets. The data is displayed based on the statistical cycle of the natural hour, day, week, or month of the start and end time.
+	// The distribution list of audio and video media assets. Statistics are displayed based on the statistical period (calendar hour, day, week, or month) within the specified time range.
 	MediaDistributionList []*DescribeMediaDistributionResponseBodyMediaDistributionList `json:"MediaDistributionList,omitempty" xml:"MediaDistributionList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type DescribeMediaDistributionResponseBody struct {
 	//
 	// 25818875-5F78-4AF6-D7393642CA58****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of media assets returned.
+	// The total number of audio and video media assets.
 	//
 	// example:
 	//
@@ -83,19 +83,19 @@ func (s *DescribeMediaDistributionResponseBody) Validate() error {
 }
 
 type DescribeMediaDistributionResponseBodyMediaDistributionList struct {
-	// The number of media assets that are queried during the specified time range.
+	// The number of media assets that match the specified time range within the statistical period.
 	//
 	// example:
 	//
 	// 12
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The end of the time range during which data is queried (exclusive). The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The end time (exclusive) of the statistical period. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//
 	// 2017-11-14T00:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start of the time range during which data is queried (inclusive). The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The start time (inclusive) of the statistical period. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//

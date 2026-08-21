@@ -20,7 +20,7 @@ type iRefreshUploadVideoResponseBody interface {
 }
 
 type RefreshUploadVideoResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -28,7 +28,7 @@ type RefreshUploadVideoResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The upload URL.
 	//
-	// >  The returned upload URL is a Base64-encoded URL. You must decode the Base64-encoded upload URL before you use an SDK or call an API operation to upload media files. You need to parse UploadAddress only if you use the OSS SDK or call an OSS API operation to upload media files.
+	// >The upload URL returned by this operation is a Base64-encoded value. When you use an SDK or API to upload media assets, you must decode the value in Base64 before use. You need to parse UploadAddress only if you use the China (China) native OSS SDK or OSS API for upload.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type RefreshUploadVideoResponseBody struct {
 	UploadAddress *string `json:"UploadAddress,omitempty" xml:"UploadAddress,omitempty"`
 	// The upload credential.
 	//
-	// >  The returned upload credential is a Base64-encoded value. You must decode the Base64-encoded upload URL before you use an SDK or call an API operation to upload media files. You need to parse UploadAuth only if you use the OSS SDK or call an OSS API operation to upload media files.
+	// >The upload credential returned by this operation is a Base64-encoded value. When you use an SDK or API to upload media assets, you must decode the value in Base64 before use. You need to parse UploadAuth only if you use the native OSS SDK or OSS API for upload.
 	//
 	// example:
 	//
 	// FJU3p3TZ0NUIyeW****
 	UploadAuth *string `json:"UploadAuth,omitempty" xml:"UploadAuth,omitempty"`
-	// The ID of the audio or video file.
+	// The audio or video ID.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iCreateUploadVideoResponseBody interface {
 }
 
 type CreateUploadVideoResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -28,7 +28,7 @@ type CreateUploadVideoResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The upload URL.
 	//
-	// > The returned upload URL is a Base64-encoded URL. You must decode the Base64-encoded URL before you use an SDK or call an API operation to upload media files. You need to parse UploadAddress only if you use the Object Storage Service (OSS) SDK or call an OSS API operation to upload media files.
+	// > The upload URL returned by this operation is a Base64-encoded value. When you use an SDK or API to upload media assets, you must Base64-decode the value before use. Only uploads by using the native OSS SDK or OSS API require you to parse UploadAddress.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type CreateUploadVideoResponseBody struct {
 	UploadAddress *string `json:"UploadAddress,omitempty" xml:"UploadAddress,omitempty"`
 	// The upload credential.
 	//
-	// > The returned upload credential is a Base64-encoded value. You must decode the Base64-encoded credential before you use an SDK or call an API operation to upload media files. You need to parse UploadAuth only if you use the OSS SDK or call an OSS API operation to upload media files.
+	// > The upload credential returned by this operation is a Base64-encoded value. When you use an SDK or API to upload media assets, you must Base64-decode the value before use. Only uploads by using the native OSS SDK or OSS API require you to parse UploadAuth.
 	//
 	// example:
 	//
 	// eyJFbmRwb2ludCI6Imm****
 	UploadAuth *string `json:"UploadAuth,omitempty" xml:"UploadAuth,omitempty"`
-	// The ID of the audio or video file. VideoId can be used as a request parameter when you call an operation for media asset management, media processing, or media review.
+	// The audio or video ID. This ID can be used as a request parameter for media asset management, media processing, and content moderation operations.
 	//
 	// example:
 	//

@@ -14,11 +14,11 @@ type iGetAITemplateRequest interface {
 }
 
 type GetAITemplateRequest struct {
-	// The ID of the AI template. You can use one of the following methods to obtain the ID:
+	// The AI template ID. You can obtain the ID by using one of the following methods:
 	//
-	// 	- Call the [AddAITemplate](https://help.aliyun.com/document_detail/102930.html) operation to add an AI template if no AI template exists. The value of TemplateId in the response is the ID of the AI template.
+	// - When you call the [AddAITemplate](https://help.aliyun.com/document_detail/102930.html) operation to add an AI template, the AI template ID is the value of the TemplateId parameter in the response.
 	//
-	// 	- Call the [ListAITemplate](https://help.aliyun.com/document_detail/102936.html) operation if the template already exists. The value of TemplateId in the response is the ID of the AI template.
+	// - After the AI template is added, you can call the [ListAITemplate](https://help.aliyun.com/document_detail/102936.html) operation to query the AI template ID, which is the value of the TemplateId parameter in the response.
 	//
 	// This parameter is required.
 	//

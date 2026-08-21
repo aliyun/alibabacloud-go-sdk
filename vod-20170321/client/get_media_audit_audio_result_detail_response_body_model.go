@@ -16,9 +16,9 @@ type iGetMediaAuditAudioResultDetailResponseBody interface {
 }
 
 type GetMediaAuditAudioResultDetailResponseBody struct {
-	// Details of review results.
+	// The review results.
 	MediaAuditAudioResultDetail *GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetail `json:"MediaAuditAudioResultDetail,omitempty" xml:"MediaAuditAudioResultDetail,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,15 +62,15 @@ func (s *GetMediaAuditAudioResultDetailResponseBody) Validate() error {
 }
 
 type GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetail struct {
-	// The list of results.
+	// The result list.
 	List []*GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetailList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageTotal *int32 `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
-	// The total number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -127,43 +127,49 @@ func (s *GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetail) 
 }
 
 type GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetailList struct {
-	// The end time of the audio that failed the review. Unit: seconds.
+	// The end time of the problematic audio segment. Unit: seconds.
 	//
 	// example:
 	//
 	// 10
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The review results. Valid values:
+	// The category of the audio review result. Valid values:
 	//
-	// 	- **spam**
+	// - **normal**: Normal.
 	//
-	// 	- **ad**
+	// - **spam**: Contains spam.
 	//
-	// 	- **abuse**
+	// - **ad**: Advertisement.
 	//
-	// 	- **flood**
+	// - **politics**: Political content.
 	//
-	// 	- **contraband**
+	// - **terrorism**: Terrorist content.
 	//
-	// 	- **meaningless**
+	// - **abuse**: Abusive content.
 	//
-	// 	- **normal**
+	// - **porn**: Pornographic content.
+	//
+	// - **flood**: Junk content.
+	//
+	// - **contraband**: Prohibited content.
+	//
+	// - **meaningless**: Meaningless content.
 	//
 	// example:
 	//
 	// abuse
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The start time of the audio that failed the review. Unit: seconds.
+	// The start time of the problematic audio segment. Unit: seconds.
 	//
 	// example:
 	//
 	// 8
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The text that corresponds to the audio.
+	// The text content corresponding to the audio.
 	//
 	// example:
 	//
-	// beauty
+	// Tiananmen
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 

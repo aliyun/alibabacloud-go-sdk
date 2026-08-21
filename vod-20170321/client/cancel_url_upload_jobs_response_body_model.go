@@ -18,11 +18,11 @@ type iCancelUrlUploadJobsResponseBody interface {
 }
 
 type CancelUrlUploadJobsResponseBody struct {
-	// The IDs of canceled jobs.
+	// The list of tasks that were successfully canceled.
 	CanceledJobs []*string `json:"CanceledJobs,omitempty" xml:"CanceledJobs,omitempty" type:"Repeated"`
-	// The jobs that do not exist.
+	// The list of tasks that do not exist.
 	NonExists []*string `json:"NonExists,omitempty" xml:"NonExists,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -19,13 +19,13 @@ type iSearchEditingProjectResponseBody interface {
 
 type SearchEditingProjectResponseBody struct {
 	ProjectList *SearchEditingProjectResponseBodyProjectList `json:"ProjectList,omitempty" xml:"ProjectList,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 9262E3DA-07FA-48*****62-FCBB6BC61D08
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of online editing projects returned.
+	// The total number of online editing projects.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDeleteVodTemplateResponseBody interface {
 }
 
 type DeleteVodTemplateResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

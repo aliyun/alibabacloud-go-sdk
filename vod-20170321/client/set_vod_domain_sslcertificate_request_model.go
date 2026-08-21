@@ -34,41 +34,41 @@ type iSetVodDomainSSLCertificateRequest interface {
 }
 
 type SetVodDomainSSLCertificateRequest struct {
-	// The ID of the certificate.
+	// The certificate ID.
 	//
 	// example:
 	//
 	// 12342707
 	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The name of the certificate.
+	// The certificate name.
 	//
 	// example:
 	//
 	// cert_name
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// The region of the certificate. Valid values:
+	// The certificate region. Valid values:
 	//
-	// 	- **ap-southeast-1**: Singapore
+	// - **ap-southeast-1*	- (Singapore)
 	//
-	// 	- **cn-hangzhou**: China (Hangzhou)
+	// - **cn-hangzhou*	- (Hangzhou)
 	//
-	// Default value: **cn-hangzhou**
+	// Default value: **cn-hangzhou**.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	CertRegion *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
-	// The type of the certificate.
+	// The certificate type. Valid values:
 	//
-	// 	- **upload**: a user-uploaded SSL certificate.
+	// - **upload**: an uploaded certificate.
 	//
-	// 	- **cas**: a certificate that is acquired through Certificate Management Service.
+	// - **cas**: a certificate from SSL Certificates Service.
 	//
 	// example:
 	//
 	// cas
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// VOD acceleration domain.
+	// The accelerated domain name for ApsaraVideo VOD.
 	//
 	// This parameter is required.
 	//
@@ -76,24 +76,28 @@ type SetVodDomainSSLCertificateRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Specifies whether the certificate is issued in canary releases. If you set this parameter to **staging**, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
+	// Specifies whether to distribute the certificate in a canary release environment. Valid values:
+	//
+	// - **staging**: distributes the certificate in a canary release environment.
+	//
+	// If this parameter is not specified or set to any other value, the certificate is formally distributed.
 	//
 	// example:
 	//
 	// staging
 	Env     *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The private key. This parameter is required only if you enable the certificate.
+	// The content of the private key. If you do not enable the certificate, you do not need to specify this parameter. If you configure a certificate, enter the private key content.
 	//
 	// example:
 	//
 	// ****
 	SSLPri *string `json:"SSLPri,omitempty" xml:"SSLPri,omitempty"`
-	// Specifies whether to enable the SSL certificate. Default value: off. Valid values:
+	// Specifies whether to enable the HTTPS certificate. Valid values:
 	//
-	// 	- **on**
+	// - **on**: Enabled.
 	//
-	// 	- **off**
+	// - **off**: Disabled.
 	//
 	// This parameter is required.
 	//
@@ -101,7 +105,7 @@ type SetVodDomainSSLCertificateRequest struct {
 	//
 	// off
 	SSLProtocol *string `json:"SSLProtocol,omitempty" xml:"SSLProtocol,omitempty"`
-	// The content of the certificate. This parameter is required only if you enable the SSL certificate.
+	// The content of the security certificate. If you do not enable the certificate, you do not need to specify this parameter. If you configure a certificate, enter the certificate content.
 	//
 	// example:
 	//

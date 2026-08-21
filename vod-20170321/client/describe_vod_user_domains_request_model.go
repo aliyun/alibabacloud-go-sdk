@@ -28,52 +28,52 @@ type iDescribeVodUserDomainsRequest interface {
 }
 
 type DescribeVodUserDomainsRequest struct {
-	// The domain name. The value of this parameter is used as a filter condition for a fuzzy match.
+	// The accelerated domain name for ApsaraVideo VOD. Fuzzy match filtering is supported.
 	//
 	// example:
 	//
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The search method. Valid values:
+	// The domain name query type. Valid values:
 	//
-	// 	- **fuzzy_match*	- (default): fuzzy match.
+	// - **fuzzy_match*	- (default): fuzzy match.
 	//
-	// 	- **pre_match**: prefix match
+	// - **pre_match**: prefix match.
 	//
-	// 	- **suf_match**: suffix match
+	// - **suf_match**: suffix match.
 	//
-	// 	- **full_match**: exact match
+	// - **full_match**: exact match.
 	//
 	// example:
 	//
 	// fuzzy_match
 	DomainSearchType *string `json:"DomainSearchType,omitempty" xml:"DomainSearchType,omitempty"`
-	// The status of the domain name. Value values:
+	// The domain name status filter. Valid values:
 	//
-	// 	- **online**: indicates that the domain name is enabled.
+	// - **online**: Enabled.
 	//
-	// 	- **offline**: indicates that the domain name is disabled.
+	// - **offline**: Disabled.
 	//
-	// 	- **configuring**: indicates that the domain name is being configured.
+	// - **configuring**: Being configured.
 	//
-	// 	- **configure_failed**: indicates that the domain name failed to be configured.
+	// - **configure_failed**: Configuration failed.
 	//
-	// 	- **checking**: indicates that the domain name is under review.
+	// - **checking**: Being reviewed.
 	//
-	// 	- **check_failed**: indicates that the domain name failed the review.
+	// - **check_failed**: Review failed.
 	//
 	// example:
 	//
 	// online
 	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number.
+	// The number of the page to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **20**. Maximum value: **50**. Valid values: **1*	- to **50**.
+	// The number of entries per page. Default value: **20**. Maximum value: **50**. Valid values: any integer from **1*	- to **50**.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ func (s *DescribeVodUserDomainsRequest) Validate() error {
 }
 
 type DescribeVodUserDomainsRequestTag struct {
-	// The key of tag N. Valid values of N: **1*	- to **20**.
+	// The tag key. Valid values of N: **1*	- to **20**.
 	//
 	// By default, all tag keys are queried.
 	//
@@ -186,7 +186,7 @@ type DescribeVodUserDomainsRequestTag struct {
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N. Valid values of N: **1*	- to **20**.
+	// The tag value. Valid values of N: **1*	- to **20**.
 	//
 	// By default, all tag values are queried.
 	//

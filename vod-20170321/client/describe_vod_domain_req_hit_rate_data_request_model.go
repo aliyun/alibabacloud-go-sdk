@@ -20,33 +20,33 @@ type iDescribeVodDomainReqHitRateDataRequest interface {
 }
 
 type DescribeVodDomainReqHitRateDataRequest struct {
-	// The accelerated domain name.
+	// The accelerated domain name to query.
 	//
-	// 	- If you leave this parameter empty, the merged data of all your accelerated domain names is returned.
+	// - If you do not specify this parameter, the pooled data of all accelerated domain names is returned by default.
 	//
-	// 	- You can specify a maximum of 500 accelerated domain names. Separate multiple domain names with commas (,).
+	// - Batch query is supported. Separate multiple domain names with commas (,). You can specify up to 500 domain names at a time.
+	//
+	// - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com), and choose **Configuration Management > CDN Configuration > Domain Names*	- in the left-side navigation pane to view the accelerated domain names that you have added to ApsaraVideo VOD. You can also call the [DescribeVodUserDomains](~~DescribeVodUserDomains~~) operation to query the list of accelerated domain names.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query.
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// >  The end time must be later than the start time.
+	// > The end time must be later than the start time.
 	//
 	// example:
 	//
 	// 2023-12-22T08:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time granularity. Unit: seconds. Valid values: **300**, **3600**, and **86400**. If you leave this parameter empty or specify an invalid value, the default value is used. The supported time granularity varies based on the time range specified by `EndTime` and `StartTime`. The following content describes the supported time granularity.
+	// The time granularity of the data to query. Unit: seconds. Valid values: **300**, **3600**, and **86400**. If you do not specify this parameter or specify an unsupported value, the default value is used. Based on the time span specified by `StartTime` and `EndTime`, the supported time granularity is as follows:
 	//
-	// 	- Time range per query < 3 days: **300*	- (default), **3600**, and **86400**
+	// - Less than 3 days (exclusive): **300*	- (default), **3600**, and **86400**.
 	//
-	// 	- 3 days ≤ Time range per query < 31 days: **3600*	- (default) and **86400**
+	// - 3 to 31 days (exclusive): **3600*	- (default) and **86400**.
 	//
-	// 	- 31 days ≤ Time range per query ≤ 90 days: **86400*	- (default)
+	// - 31 days or more: **86400*	- (default).
 	//
 	// example:
 	//

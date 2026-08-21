@@ -18,10 +18,18 @@ type iDescribeVodUserVipsByDomainRequest interface {
 }
 
 type DescribeVodUserVipsByDomainRequest struct {
+	// Specifies whether to query healthy VIPs. Valid values:
+	//
+	// - **on**: Healthy VIPs.
+	//
+	// - **off**: All VIPs.
+	//
 	// example:
 	//
 	// on
 	Available *string `json:"Available,omitempty" xml:"Available,omitempty"`
+	// The accelerated domain name for ApsaraVideo VOD. Only a single domain name can be queried.
+	//
 	// This parameter is required.
 	//
 	// example:

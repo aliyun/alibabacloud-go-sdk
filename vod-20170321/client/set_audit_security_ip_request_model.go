@@ -18,11 +18,11 @@ type iSetAuditSecurityIpRequest interface {
 }
 
 type SetAuditSecurityIpRequest struct {
-	// The IP addresses that you want to add to the review security group. You can add a maximum of 100 IP addresses to a review security group. Separate multiple IP addresses with commas (,). You can add IP addresses in the following formats to review security groups:
+	// The list of security IP addresses for review. Each group supports a maximum of 100 IP addresses. Separate multiple IP addresses with commas (,). The following formats are supported:
 	//
-	// 	- IP address: 192.168.0.1
+	// - Exact IP address: 192.168.0.1
 	//
-	// 	- CIDR block: 192.168.0.1/24. /24 indicates that the prefix of the CIDR block is 24 bits in length. You can replace 24 with a value that ranges `from 1 to 32`.
+	// - CIDR block: 192.168.0.1/24 (Classless Inter-Domain Routing. /24 specifies the length of the prefix in the address. Valid values: `[1,32]`.)
 	//
 	// This parameter is required.
 	//
@@ -30,21 +30,21 @@ type SetAuditSecurityIpRequest struct {
 	//
 	// 192.168.0.1
 	Ips *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
-	// The operation type. Valid values:
+	// The operation mode. Valid values:
 	//
-	// 	- **Append*	- (default): adds the IP addresses to the original whitelist.
+	// - **Append**: default value. Appends IP addresses to the IP address whitelist.
 	//
-	// 	- **Cover**: overwrites the original whitelist.
+	// - **Cover**: overwrites the existing IP address whitelist.
 	//
-	// 	- **Delete**: removes the IP addresses from the original whitelist.
+	// - **Delete**: deletes IP addresses from the IP address whitelist.
 	//
-	// >  If the value that you specify is invalid, the default value is used.
+	// > If the specified value is not within the valid values, the default value (Append) is used.
 	//
 	// example:
 	//
 	// Cover
 	OperateMode *string `json:"OperateMode,omitempty" xml:"OperateMode,omitempty"`
-	// The name of the review security group. Default value: **Default**. You can specify a maximum of 10 review security groups.
+	// The name of the security group for review. Default value: **Default**. A maximum of 10 security groups are supported.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iSubmitSnapshotJobResponseBody interface {
 }
 
 type SubmitSnapshotJobResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 25818875-5F78-5EB0-4AF6-D7393642****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the snapshot job.
+	// The snapshot job information.
 	SnapshotJob *SubmitSnapshotJobResponseBodySnapshotJob `json:"SnapshotJob,omitempty" xml:"SnapshotJob,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *SubmitSnapshotJobResponseBody) Validate() error {
 }
 
 type SubmitSnapshotJobResponseBodySnapshotJob struct {
-	// The ID of the snapshot job.
+	// The snapshot job ID.
 	//
 	// example:
 	//

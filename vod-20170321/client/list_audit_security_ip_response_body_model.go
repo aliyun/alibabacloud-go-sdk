@@ -22,7 +22,7 @@ type ListAuditSecurityIpResponseBody struct {
 	//
 	// 664BBD08-C7DB-4E*****73-9D0958D9A899
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the review security group.
+	// The details of the review security IPs.
 	SecurityIpList []*ListAuditSecurityIpResponseBodySecurityIpList `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty" type:"Repeated"`
 }
 
@@ -66,25 +66,25 @@ func (s *ListAuditSecurityIpResponseBody) Validate() error {
 }
 
 type ListAuditSecurityIpResponseBodySecurityIpList struct {
-	// The time when the review security group was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the security IP group was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2018-05-22T06:54:23Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The IP addresses in the review security group.
+	// The list of security IPs.
 	//
 	// example:
 	//
 	// 30.27.14.0/24,30.39.127.245
 	Ips *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
-	// The time when the review security group was last modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the security IP group was last modified. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2018-05-22T06:55:14Z
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	// The name of the review security group.
+	// The name of the security IP group.
 	//
 	// example:
 	//

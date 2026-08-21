@@ -20,15 +20,22 @@ type iDescribeVodEditingUsageDataResponseBody interface {
 }
 
 type DescribeVodEditingUsageDataResponseBody struct {
+	// The usage data.
 	EditingData []*DescribeVodEditingUsageDataResponseBodyEditingData `json:"EditingData,omitempty" xml:"EditingData,omitempty" type:"Repeated"`
+	// The end of the time range to query. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	//
 	// example:
 	//
 	// 2024-11-07T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6CB55B62-6E5F-54D1-80BF-DFA3DE9F0***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The beginning of the time range to query. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	//
 	// example:
 	//
 	// 2024-11-06T16:00:00Z
@@ -93,18 +100,26 @@ func (s *DescribeVodEditingUsageDataResponseBody) Validate() error {
 }
 
 type DescribeVodEditingUsageDataResponseBodyEditingData struct {
+	// The audio or video duration. Unit: seconds.
+	//
 	// example:
 	//
 	// 123
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The output specification.
+	//
 	// example:
 	//
 	// H264.SD
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	// The start time of the time interval. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	//
 	// example:
 	//
 	// 2024-11-06T16:00:00Z

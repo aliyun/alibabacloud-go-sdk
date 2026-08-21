@@ -18,17 +18,17 @@ type iDescribeVodStorageDataResponseBody interface {
 }
 
 type DescribeVodStorageDataResponseBody struct {
-	// The time granularity at which the data was queried. Valid values:
+	// The time granularity of the returned data. Valid values:
 	//
-	// 	- **hour**
+	// - **hour**: hourly data.
 	//
-	// 	- **day**
+	// - **day**: daily data.
 	//
 	// example:
 	//
 	// day
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

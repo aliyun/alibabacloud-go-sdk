@@ -14,7 +14,7 @@ type iSetVodDomainSSLCertificateResponseBody interface {
 }
 
 type SetVodDomainSSLCertificateResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

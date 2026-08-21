@@ -26,13 +26,13 @@ type iGetEditingProjectMaterialsRequest interface {
 }
 
 type GetEditingProjectMaterialsRequest struct {
-	// The type of the material. Valid values:
+	// The material type. Valid values:
 	//
-	// 	- **video**
+	// - **video**: video
 	//
-	// 	- **audio**
+	// - **audio**: audio-only
 	//
-	// 	- **image**
+	// - **image**: image
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type GetEditingProjectMaterialsRequest struct {
 	MaterialType *string `json:"MaterialType,omitempty" xml:"MaterialType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the online editing project. You can use one of the following methods to obtain the ID of the online editing project:
+	// The online editing project ID. You can obtain the ID by using one of the following methods:
 	//
-	// 	- Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Production Center*	- > **Video Editing*	- to obtain the ID of the specified online editing project.
+	// - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com), and choose **Production Center*	- > **Video Editing*	- to view the ID.
 	//
-	// 	- Call the **AddEditingProject*	- operation. The value of the response parameter ProjectId is the ID of the specified online editing project.
+	// - Obtain the value of the ProjectId response parameter when you create a project by calling the **CreateEditingProject*	- operation.
 	//
 	// This parameter is required.
 	//
@@ -54,11 +54,11 @@ type GetEditingProjectMaterialsRequest struct {
 	ProjectId            *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the material. Valid values:
+	// The material type. Valid values:
 	//
-	// 	- **video**
+	// - **video**: video
 	//
-	// 	- **audio**
+	// - **audio**: audio-only
 	//
 	// example:
 	//

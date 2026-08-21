@@ -14,7 +14,7 @@ type iUpdateVodDomainResponseBody interface {
 }
 
 type UpdateVodDomainResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

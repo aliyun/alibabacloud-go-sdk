@@ -20,7 +20,7 @@ type iListAIJobResponseBody interface {
 type ListAIJobResponseBody struct {
 	AIJobList        *ListAIJobResponseBodyAIJobList        `json:"AIJobList,omitempty" xml:"AIJobList,omitempty" type:"Struct"`
 	NonExistAIJobIds *ListAIJobResponseBodyNonExistAIJobIds `json:"NonExistAIJobIds,omitempty" xml:"NonExistAIJobIds,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

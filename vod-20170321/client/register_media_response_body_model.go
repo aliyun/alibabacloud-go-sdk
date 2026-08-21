@@ -18,11 +18,11 @@ type iRegisterMediaResponseBody interface {
 }
 
 type RegisterMediaResponseBody struct {
-	// The URLs of the media files that failed to be registered.
+	// The list of file URLs that failed to be registered.
 	FailedFileURLs []*string `json:"FailedFileURLs,omitempty" xml:"FailedFileURLs,omitempty" type:"Repeated"`
-	// The media files that are registered, including newly registered and repeatedly registered media files.
+	// The list of media assets that are successfully registered, including both newly registered files and previously registered files.
 	RegisteredMediaList []*RegisterMediaResponseBodyRegisteredMediaList `json:"RegisteredMediaList,omitempty" xml:"RegisteredMediaList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -79,23 +79,23 @@ func (s *RegisterMediaResponseBody) Validate() error {
 }
 
 type RegisterMediaResponseBodyRegisteredMediaList struct {
-	// The URL of the media file.
+	// The OSS file URL.
 	//
 	// example:
 	//
 	// http://****.oss-cn-shanghai.aliyuncs.com/vod_sample_01.mp4
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
-	// The ID of the media file that is registered with ApsaraVideo VOD. If the registered media file is an audio or video file, the value of this parameter is the same as that of the VideoId parameter.
+	// The VOD media ID. If the registered media file is an audio or video file, this value corresponds to the VideoId in ApsaraVideo VOD.
 	//
 	// example:
 	//
 	// d97af32828084d1896683b1aa38****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// Indicates whether the media file is newly registered or repeatedly registered. Valid values:
+	// Indicates whether the media asset is newly registered or repeatedly registered.
 	//
-	// 	- **true**: The media file is newly registered.
+	// - **true**: newly registered.
 	//
-	// 	- **false**: The media file is repeatedly registered.
+	// - **false**: repeatedly registered.
 	//
 	// example:
 	//

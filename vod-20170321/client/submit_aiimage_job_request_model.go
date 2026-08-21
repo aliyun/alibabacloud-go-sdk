@@ -28,19 +28,19 @@ type iSubmitAIImageJobRequest interface {
 }
 
 type SubmitAIImageJobRequest struct {
-	// The ID of the pipeline that is used for the AI processing job.
+	// The AI task pipeline ID.
 	//
-	// >  This parameter is optional if you specify a default pipeline ID. If you want to use a separate pipeline to submit multiple AI processing jobs., submit a ticket or contact Alibaba Cloud after-sales engineers. For more information about how to submit a ticket, see [Contact us](https://help.aliyun.com/document_detail/464625.html).
+	// > A default ID is available, so this parameter is optional. If you need to perform batch imports, use a separate task pipeline. Submit a ticket to request configuration or contact Alibaba Cloud after-sales support for configuration. For more information about how to submit a ticket, see [Contact us](https://help.aliyun.com/document_detail/464625.html).
 	//
 	// example:
 	//
 	// 6492025b8f*****6ba5bb755a33438
 	AIPipelineId *string `json:"AIPipelineId,omitempty" xml:"AIPipelineId,omitempty"`
-	// The ID of the AI template. You can use one of the following methods to obtain the ID:
+	// The AI image template ID. You can obtain the template ID by using one of the following methods:
 	//
-	// 	- Obtain the value of TemplateId from the response to the [AddAITemplate](https://help.aliyun.com/document_detail/102930.html) that you call to create the template.
+	// - When you create an image template by calling the [AddAITemplate](https://help.aliyun.com/document_detail/102930.html) operation, the template ID is the value of the TemplateId parameter in the response.
 	//
-	// 	- Obtain the value of TemplateId from the response to the [ListAITemplate](https://help.aliyun.com/document_detail/102936.html) operation after you create the template.
+	// - After the template is created, you can call the [ListAITemplate](https://help.aliyun.com/document_detail/102936.html) operation to query the AI image template ID, which is the value of the TemplateId parameter in the response.
 	//
 	// This parameter is required.
 	//
@@ -52,27 +52,27 @@ type SubmitAIImageJobRequest struct {
 	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The user data.
+	// The custom settings.
 	//
-	// 	- The value must be a JSON string.
+	// - The value must be a JSON string.
 	//
-	// 	- You must specify the MessageCallback or Extend parameter.
+	// - The value must contain the MessageCallback or Extend parameter.
 	//
-	// 	- The value can contain a maximum of 512 bytes.
+	// - The maximum length is 512 bytes.
 	//
-	// For more information, see the "UserData: specifies the custom configurations for media upload" section of the [Request parameters](https://help.aliyun.com/document_detail/86952.html) topic.
+	// For more information about the parameter structure, see [UserData](https://help.aliyun.com/document_detail/86952.html).
 	//
 	// example:
 	//
 	// {"Extend":{"localId":"****","test":"www"}}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// The ID of the video. You can use one of the following methods to obtain the ID:
+	// The video ID. You can obtain the video ID by using one of the following methods:
 	//
-	// 	- Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files*	- > **Audio/Video**. On the Video and Audio page, view the ID of the video file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
+	// - For videos uploaded through the console, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Files*	- > **Audio/Video*	- to view the video ID.
 	//
-	// 	- Obtain the value of VideoId from the response to the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation that you call to upload the video.
+	// - When you upload a video by calling the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation, the video ID is the value of the VideoId parameter in the response.
 	//
-	// 	- Obtain the value of VideoId from the response to the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation after you upload the video.
+	// - After the video is uploaded, you can call the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation to query the video ID, which is the value of the VideoId parameter in the response.
 	//
 	// This parameter is required.
 	//

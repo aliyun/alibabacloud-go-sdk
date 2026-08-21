@@ -14,7 +14,7 @@ type iUpdateAppInfoResponseBody interface {
 }
 
 type UpdateAppInfoResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

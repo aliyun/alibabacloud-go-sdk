@@ -24,17 +24,18 @@ type iDescribeVodDomainMax95BpsDataRequest interface {
 }
 
 type DescribeVodDomainMax95BpsDataRequest struct {
-	// The cycle to query the 95th percentile bandwidth data. Valid values:
+	// The cycle for the 95th percentile bandwidth. Default value: day. Valid values:
 	//
-	// 	- day (default)
+	// - day: queries the 95th percentile bandwidth by day.
 	//
-	// 	- month
+	// - month: queries the 95th percentile bandwidth by month.
 	//
 	// example:
 	//
 	// month
 	Cycle *string `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
-	// The domain name to be queried for acceleration. If the parameter is empty, the data merged from all accelerated domain names will be returned by default.
+	// The accelerated domain name to query. If this parameter is left empty, the merged data of all accelerated domain names is returned by default.
+	//
 	//
 	// > Batch domain name queries are not supported.
 	//
@@ -42,20 +43,23 @@ type DescribeVodDomainMax95BpsDataRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// End time point. The date format follows the ISO8601 representation and uses UTC time, in the format yyyy-MM-dd\\"T\\"HH:mm:ssZ.
+	// The end time of the query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	//
+	// > The end time must be later than the start time.
 	//
 	// example:
 	//
 	// 2017-01-12T13:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Start time point. The date format follows the ISO8601 representation and uses UTC time, in the format yyyy-MM-dd\\"T\\"HH:mm:ssZ.
+	// The start time of the query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The start time point for getting the data. The date format follows the ISO8601 representation and uses UTC time, in the format yyyy-MM-dd\\"T\\"HH:mm:ssZ.
+	// The start time point for data retrieval. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//

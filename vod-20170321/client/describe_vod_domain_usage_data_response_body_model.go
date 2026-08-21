@@ -28,51 +28,51 @@ type iDescribeVodDomainUsageDataResponseBody interface {
 }
 
 type DescribeVodDomainUsageDataResponseBody struct {
-	// The billable region where the data was collected.
+	// The usage region.
 	//
 	// example:
 	//
 	// CN
 	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// The time interval between the entries returned. Unit: seconds.
+	// The time interval between records. Unit: seconds.
 	//
 	// example:
 	//
 	// 300
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The accelerated domain name.
+	// The accelerated domain name information.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The end time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2015-12-10T12:20:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// B955107D-E658-4E77-****-E0AC3D31693E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The start time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2015-12-10T10:20:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of the data. Valid values:
+	// The data type. Valid values:
 	//
-	// 	- **bps**: bandwidth
+	// - **bps**: bandwidth.
 	//
-	// 	- **traf**: traffic
+	//  - **traf**: traffic.
 	//
 	// example:
 	//
-	// static
+	// bps
 	Type                 *string                                                     `json:"Type,omitempty" xml:"Type,omitempty"`
 	UsageDataPerInterval *DescribeVodDomainUsageDataResponseBodyUsageDataPerInterval `json:"UsageDataPerInterval,omitempty" xml:"UsageDataPerInterval,omitempty" type:"Struct"`
 }

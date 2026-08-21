@@ -16,13 +16,13 @@ type iSubmitMediaDNADeleteJobResponseBody interface {
 }
 
 type SubmitMediaDNADeleteJobResponseBody struct {
-	// The ID of the job.
+	// The job ID.
 	//
 	// example:
 	//
 	// 6805B2EC-CE87-****-8FF6-9C0E97719A26
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

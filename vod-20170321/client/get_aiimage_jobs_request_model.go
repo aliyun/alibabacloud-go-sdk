@@ -22,11 +22,11 @@ type iGetAIImageJobsRequest interface {
 }
 
 type GetAIImageJobsRequest struct {
-	// The ID of the image AI processing job. You can obtain the value of JobId from the response to the [SubmitAIImageJob](~~SubmitAIImageJob~~) operation.
+	// The IDs of AI image processing tasks. The value consists of one or more job IDs. A job ID is the value of the JobId parameter returned by the [SubmitAIImageJob](https://help.aliyun.com/document_detail/186922.html) operation.
 	//
-	// 	- You can specify a maximum of 10 IDs.
+	// - A maximum of 10 IDs are supported.
 	//
-	// 	- Separate multiple IDs with commas (,).
+	// - Separate multiple IDs with commas (,).
 	//
 	// This parameter is required.
 	//

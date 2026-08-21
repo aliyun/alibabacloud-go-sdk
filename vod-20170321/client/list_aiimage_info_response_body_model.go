@@ -16,9 +16,9 @@ type iListAIImageInfoResponseBody interface {
 }
 
 type ListAIImageInfoResponseBody struct {
-	// The image files that are uploaded for AI processing.
+	// The list of AI image files.
 	AIImageInfoList []*ListAIImageInfoResponseBodyAIImageInfoList `json:"AIImageInfoList,omitempty" xml:"AIImageInfoList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,33 +66,33 @@ func (s *ListAIImageInfoResponseBody) Validate() error {
 }
 
 type ListAIImageInfoResponseBodyAIImageInfoList struct {
-	// The ID of the image information.
+	// The ID of the image data information.
 	//
 	// example:
 	//
 	// b89a6aabf1b6197ebd6fe6cf29****
 	AIImageInfoId *string `json:"AIImageInfoId,omitempty" xml:"AIImageInfoId,omitempty"`
-	// The time when the file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the data was created. The time follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2020-10-15T03:30:03Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The URL of the image file.
+	// The URL of the AI image file.
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
-	// The format of the image. Valid values: **gif*	- and **png**.
+	// The image format. Valid values: **gif*	- and **png**.
 	//
 	// example:
 	//
 	// gif
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The ID of the image AI processing job.
+	// The ID of the AI image processing job.
 	//
 	// example:
 	//
 	// cf08a2c6e11ee1711b738b9067****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The score of the image.
+	// The image score.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type ListAIImageInfoResponseBodyAIImageInfoList struct {
 	//
 	// b547f3f0e199c3b457369f3cf****
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The ID of the video.
+	// The video ID.
 	//
 	// example:
 	//

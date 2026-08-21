@@ -20,25 +20,25 @@ type iGetAuditHistoryResponseBody interface {
 }
 
 type GetAuditHistoryResponseBody struct {
-	// The review records.
+	// The list of review history records.
 	Histories []*GetAuditHistoryResponseBodyHistories `json:"Histories,omitempty" xml:"Histories,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 04F0F334-1335-43*****D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The manual review result. Valid values:
+	// The review result. Indicates the result of the current manual review. Valid values:
 	//
-	// - **Normal**: The video can be played.
+	// - **Normal**: the content is normal.
 	//
-	// - **Blocked**: The video is blocked.
+	// - **Blocked**: the content is blocked.
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total number of review records.
+	// The total number of review history records.
 	//
 	// example:
 	//
@@ -110,29 +110,29 @@ type GetAuditHistoryResponseBodyHistories struct {
 	//
 	// auditor
 	Auditor *string `json:"Auditor,omitempty" xml:"Auditor,omitempty"`
-	// The review comments, which are provided by the reviewer.
+	// The review details, which are the specific comments provided by the reviewer.
 	//
 	// example:
 	//
 	// Contains nudity
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The time when the review record was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the record was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The reason why the video failed the review. If the video failed the review, specify the reason.
+	// The reason for rejection. If the review result is rejection, the reason must be provided.
 	//
 	// example:
 	//
 	// Pornographic video
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The manual review result. Valid values:
+	// The review result. Valid values:
 	//
-	// - **Normal**: The video can be played.
+	// - **Normal**
 	//
-	// - **Blocked**: The video is blocked.
+	// - **Blocked**
 	//
 	// example:
 	//

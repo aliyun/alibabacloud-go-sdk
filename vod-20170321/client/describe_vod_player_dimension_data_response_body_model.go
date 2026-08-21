@@ -16,6 +16,7 @@ type iDescribeVodPlayerDimensionDataResponseBody interface {
 }
 
 type DescribeVodPlayerDimensionDataResponseBody struct {
+	// The returned data list.
 	DataList []*string `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
 	// Id of the request
 	//

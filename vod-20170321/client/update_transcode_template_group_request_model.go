@@ -20,11 +20,13 @@ type iUpdateTranscodeTemplateGroupRequest interface {
 }
 
 type UpdateTranscodeTemplateGroupRequest struct {
-	// The lock status of the transcoding template group. Valid values:
+	// The lock state of the template group. Valid values:
 	//
-	// 	- **Enabled**: The transcoding template group is locked and cannot be modified.
+	// - **Enabled**: locked. A locked template group cannot be modified.
 	//
-	// 	- **Disabled*	- (default): The transcoding template group is not locked.
+	// - **Disabled*	- (default): unlocked.
+	//
+	// Default value: **Disabled**. If you specify this parameter, the lock state of the template group is changed, while the name and configurations of the transcoding template group remain unchanged.
 	//
 	// example:
 	//
@@ -32,9 +34,9 @@ type UpdateTranscodeTemplateGroupRequest struct {
 	Locked *string `json:"Locked,omitempty" xml:"Locked,omitempty"`
 	// The name of the transcoding template group.
 	//
-	// 	- The name cannot exceed 128 bytes.
+	// - The name can be up to 128 bytes in length.
 	//
-	// 	- The value must be encoded in UTF-8.
+	// - The name is encoded in UTF-8.
 	//
 	// example:
 	//
@@ -48,7 +50,7 @@ type UpdateTranscodeTemplateGroupRequest struct {
 	//
 	// 4c71a339fe*****52b4fa6f4527
 	TranscodeTemplateGroupId *string `json:"TranscodeTemplateGroupId,omitempty" xml:"TranscodeTemplateGroupId,omitempty"`
-	// The configurations of the transcoding template. The value must be a JSON string. For more information about the data structure, see [TranscodeTemplate](~~52839#title-9mb-8o2-uu6~~).
+	// The transcoding template configurations (a JSON string). For more information about the parameter structure, see [TranscodeTemplate](~~52839#title-9mb-8o2-uu6~~).
 	//
 	// example:
 	//

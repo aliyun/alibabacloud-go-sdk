@@ -20,7 +20,7 @@ type iDescribeVodDomainRealTimeReqHitRateDataRequest interface {
 }
 
 type DescribeVodDomainRealTimeReqHitRateDataRequest struct {
-	// You can specify multiple domain names and separate them with commas (,). You can specify a maximum of 100 domain names in each call. If you specify multiple domain names, merged data is returned.
+	// The accelerated domain names. Separate multiple domain names with commas (,). You can specify up to 100 domain names at a time. When you query data for multiple domain names, the returned data is the aggregated data for all specified domain names.
 	//
 	// This parameter is required.
 	//
@@ -28,20 +28,16 @@ type DescribeVodDomainRealTimeReqHitRateDataRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query.
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// >  The end time must be later than the start time.
+	// > The end time must be later than the start time.
 	//
 	// example:
 	//
 	// 2024-01-02T11:26:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The beginning of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//

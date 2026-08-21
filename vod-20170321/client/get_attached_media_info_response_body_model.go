@@ -18,11 +18,11 @@ type iGetAttachedMediaInfoResponseBody interface {
 }
 
 type GetAttachedMediaInfoResponseBody struct {
-	// The information about the media assets.
+	// The information about the auxiliary media assets.
 	AttachedMediaList []*GetAttachedMediaInfoResponseBodyAttachedMediaList `json:"AttachedMediaList,omitempty" xml:"AttachedMediaList,omitempty" type:"Repeated"`
 	// The IDs of the auxiliary media assets that do not exist.
 	NonExistMediaIds []*string `json:"NonExistMediaIds,omitempty" xml:"NonExistMediaIds,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -79,35 +79,35 @@ func (s *GetAttachedMediaInfoResponseBody) Validate() error {
 }
 
 type GetAttachedMediaInfoResponseBodyAttachedMediaList struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// app-*****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The categories.
+	// The list of categories.
 	Categories []*GetAttachedMediaInfoResponseBodyAttachedMediaListCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// The time when the auxiliary media asset was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the auxiliary media asset was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2019-01-01T10:00:00Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the auxiliary media asset.
+	// The description.
 	//
-	// >  This parameter is returned only when a description is specified for the auxiliary media asset.
+	// >This parameter is returned only if the auxiliary media asset has a description.
 	//
 	// example:
 	//
-	// description test
+	// Description test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the auxiliary media asset.
+	// The auxiliary media asset ID.
 	//
 	// example:
 	//
 	// 0222e203cf80f9c22870a4d2c****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The time when the auxiliary media asset was last updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the auxiliary media asset was last updated. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
@@ -115,11 +115,11 @@ type GetAttachedMediaInfoResponseBodyAttachedMediaList struct {
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
 	// The status of the auxiliary media asset. Valid values:
 	//
-	// 	- **Uploading**
+	// - **Uploading**: uploading.
 	//
-	// 	- **Normal**
+	// - **Normal**: Normal.
 	//
-	// 	- **UploadFail**
+	// - **UploadFail**: upload failed.
 	//
 	// example:
 	//
@@ -131,35 +131,35 @@ type GetAttachedMediaInfoResponseBodyAttachedMediaList struct {
 	//
 	// outin-bfefbb9*****c7426.oss-cn-shanghai.aliyuncs.com
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	// The tags of the auxiliary media asset.
+	// The tags.
 	//
-	// >  This parameter is returned only when tags are specified for the auxiliary media asset.
+	// >This parameter is returned only if the auxiliary media asset has tag information.
 	//
 	// example:
 	//
 	// tag1,tag2
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The title of the auxiliary media asset.
+	// The title.
 	//
 	// example:
 	//
-	// subtitle test
+	// Subtitle test
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The type of the auxiliary media asset.
+	// The type of the auxiliary media asset. Valid values:
 	//
-	// 	- **watermark**
+	// - **watermark**: watermark.
 	//
-	// 	- **subtitle**
+	// - **subtitle**: subtitle.
 	//
-	// 	- **material**
+	// - **material**: material.
 	//
 	// example:
 	//
 	// subtitle
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The URL of the auxiliary media asset.
+	// The access URL of the auxiliary media asset.
 	//
-	// >  If a CDN domain name is specified, a CDN URL is returned. Otherwise, an OSS URL is returned.
+	// > If a CDN domain name is configured in ApsaraVideo VOD, the CDN URL is returned. Otherwise, the OSS URL is returned.
 	//
 	// example:
 	//
@@ -297,19 +297,19 @@ func (s *GetAttachedMediaInfoResponseBodyAttachedMediaList) Validate() error {
 }
 
 type GetAttachedMediaInfoResponseBodyAttachedMediaListCategories struct {
-	// The ID of the category.
+	// The category ID.
 	//
 	// example:
 	//
 	// 1000224338
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The name of the category.
+	// The category name.
 	//
 	// example:
 	//
-	// category test
+	// Test
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The level of the category.
+	// The category level.
 	//
 	// example:
 	//

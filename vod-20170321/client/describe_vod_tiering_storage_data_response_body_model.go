@@ -16,13 +16,13 @@ type iDescribeVodTieringStorageDataResponseBody interface {
 }
 
 type DescribeVodTieringStorageDataResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 25818875-5F78-4AF6-D7393642CA58****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The storage usage data returned.
+	// The storage usage data.
 	StorageData []*DescribeVodTieringStorageDataResponseBodyStorageData `json:"StorageData,omitempty" xml:"StorageData,omitempty" type:"Repeated"`
 }
 
@@ -66,19 +66,19 @@ func (s *DescribeVodTieringStorageDataResponseBody) Validate() error {
 }
 
 type DescribeVodTieringStorageDataResponseBodyStorageData struct {
-	// The data that is stored less than a month. Unit: bytes.
+	// The size of data stored for less than one month. Unit: bytes.
 	//
 	// example:
 	//
 	// 123
 	LessthanMonthDatasize *int64 `json:"LessthanMonthDatasize,omitempty" xml:"LessthanMonthDatasize,omitempty"`
-	// The region in which data is queried.
+	// The storage region.
 	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The storage type.
+	// The storage class.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type DescribeVodTieringStorageDataResponseBodyStorageData struct {
 	//
 	// 1234
 	StorageUtilization *int64 `json:"StorageUtilization,omitempty" xml:"StorageUtilization,omitempty"`
-	// The timestamp of the data returned. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The start time of the time interval. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//

@@ -37,13 +37,13 @@ type DescribeVodSSLCertificateListRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: integers from 1 to 1000.
+	// The page size. Valid values: any integer from 1 to 1000.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The keyword that is used to query certificates.
+	// The certificate name for fuzzy match.
 	//
 	// example:
 	//

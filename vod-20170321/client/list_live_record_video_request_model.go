@@ -28,53 +28,53 @@ type iListLiveRecordVideoRequest interface {
 }
 
 type ListLiveRecordVideoRequest struct {
-	// The name of the application that was used to record the live stream.
+	// The name of the application used during recording.
 	//
 	// example:
 	//
 	// testApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The domain name of the recorded live stream.
+	// The domain name used during recording.
 	//
 	// example:
 	//
-	// example.aliyundoc.com
+	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. The query is performed based on the time range during which the required live streams were recorded. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end time of the recording operation (when the live stream recording begins). The end time must be later than the start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
 	// 2017-01-11T13:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries to return on each page. Maximum value: **100**. Default value: **10**.
+	// The number of entries per page. Maximum value: **100**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sorting rule of the results. Valid values:
+	// The sorting method for results. Valid values:
 	//
-	// 	- **CreationTime:Desc**: The results are sorted in reverse chronological order based on the creation time.
+	// - **CreationTime:Desc*	- (default): sorted by creation time in descending order.
 	//
-	// 	- **CreationTime:Asc**: The results are sorted in chronological order based on the creation time.
+	// - **CreationTime:Asc**: sorted by creation time in ascending order.
 	//
 	// example:
 	//
 	// CreationTime:Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The beginning of the time range to query. The query is performed based on the time range during which the required live streams were recorded. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The start time of the recording operation (when the live stream recording begins). Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the recorded live stream.
+	// The name of the live stream used during recording.
 	//
 	// example:
 	//

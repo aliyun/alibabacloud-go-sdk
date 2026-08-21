@@ -16,9 +16,9 @@ type iDeleteTranscodeTemplateGroupResponseBody interface {
 }
 
 type DeleteTranscodeTemplateGroupResponseBody struct {
-	// The IDs of transcoding templates that were not found.
+	// The IDs of transcoding templates that do not exist when you delete transcoding templates by specifying template IDs.
 	NonExistTranscodeTemplateIds []*string `json:"NonExistTranscodeTemplateIds,omitempty" xml:"NonExistTranscodeTemplateIds,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

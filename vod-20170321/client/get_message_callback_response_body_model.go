@@ -16,9 +16,9 @@ type iGetMessageCallbackResponseBody interface {
 }
 
 type GetMessageCallbackResponseBody struct {
-	// The configuration of the event notification.
+	// The event notification configuration.
 	MessageCallback *GetMessageCallbackResponseBodyMessageCallback `json:"MessageCallback,omitempty" xml:"MessageCallback,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,23 +62,23 @@ func (s *GetMessageCallbackResponseBody) Validate() error {
 }
 
 type GetMessageCallbackResponseBodyMessageCallback struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// app-1000000
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The cryptographic key. This parameter is returned only for HTTP callbacks.
+	// The authentication key when the callback method is set to HTTP.
 	//
 	// example:
 	//
 	// 12345678abc
 	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
-	// Indicates whether callback authentication is enabled. This parameter is returned only for HTTP callbacks. Valid values:
+	// The callback authentication switch when the callback method is set to HTTP. Valid values:
 	//
-	// 	- **on**
+	// - **on**: enabled.
 	//
-	// 	- **off**
+	// - **off**: disabled.
 	//
 	// example:
 	//
@@ -86,33 +86,33 @@ type GetMessageCallbackResponseBodyMessageCallback struct {
 	AuthSwitch *string `json:"AuthSwitch,omitempty" xml:"AuthSwitch,omitempty"`
 	// The callback method. Valid values:
 	//
-	// 	- **HTTP**
+	// - **HTTP**
 	//
-	// 	- **MNS**
+	// - **MNS**
 	//
 	// example:
 	//
 	// HTTP
 	CallbackType *string `json:"CallbackType,omitempty" xml:"CallbackType,omitempty"`
-	// The callback URL. This parameter is returned only for HTTP callbacks.
+	// The callback URL when the callback method is set to HTTP.
 	//
 	// example:
 	//
 	// http://test.com/test
 	CallbackURL *string `json:"CallbackURL,omitempty" xml:"CallbackURL,omitempty"`
-	// The type of the callback event.
+	// The callback event types.
 	//
 	// example:
 	//
 	// FileUploadComplete,StreamTranscodeComplete,TranscodeComplete,SnapshotComplete,AIComplete,AddLiveRecordVideoComplete,CreateAuditComplete,UploadByURLComplete,ProduceMediaComplete,LiveRecordVideoComposeStart,ImageUploadComplete,VideoAnalysisComplete
 	EventTypeList *string `json:"EventTypeList,omitempty" xml:"EventTypeList,omitempty"`
-	// The public endpoint of MNS. This parameter is returned only for MNS callbacks.
+	// The public endpoint of the MSMQ when the callback method is set to MNS.
 	//
 	// example:
 	//
 	// http://1234567.mns.cn-shanghai-internal.aliyuncs.com/
 	MnsEndpoint *string `json:"MnsEndpoint,omitempty" xml:"MnsEndpoint,omitempty"`
-	// The name of the Message Service (MNS) queue. This parameter is returned only for MNS callbacks.
+	// The name of the MSMQ when the callback method is set to MNS.
 	//
 	// example:
 	//

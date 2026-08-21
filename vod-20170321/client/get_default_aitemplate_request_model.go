@@ -14,7 +14,7 @@ type iGetDefaultAITemplateRequest interface {
 }
 
 type GetDefaultAITemplateRequest struct {
-	// The type of the AI template. Set the value to **AIMediaAudit**, which specifies the automated review.
+	// The AI templatetype. Set the value to **AIMediaAudit*	- (automated review).
 	//
 	// This parameter is required.
 	//

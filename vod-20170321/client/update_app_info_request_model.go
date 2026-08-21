@@ -20,11 +20,7 @@ type iUpdateAppInfoRequest interface {
 }
 
 type UpdateAppInfoRequest struct {
-	// The ID of the application.
-	//
-	// 	- Default value: **app-1000000**.
-	//
-	// 	- For more information, see [Overview](https://help.aliyun.com/document_detail/113600.html).
+	// The application ID. This is the value of the AppId parameter returned by the [CreateApp](https://help.aliyun.com/document_detail/113266.html) or [GetAppInfos](https://help.aliyun.com/document_detail/114000.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -32,31 +28,31 @@ type UpdateAppInfoRequest struct {
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The new application name.
 	//
-	// 	- The name can contain up to 128 characters in length, including Chinese letters, digits, and periods (.), dash (-), and at character (@).
+	// - The name can be up to 128 characters in length and can contain Chinese characters, letters, digits, periods (.), hyphens (-), and at signs (@).
 	//
-	// 	- The name can contain only UTF-8 characters.
+	// - UTF-8 encoding.
 	//
 	// example:
 	//
 	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The description of the application.
+	// The new application description.
 	//
-	// 	- The description can contain up to 512 characters in length.
+	// - The description can be up to 512 characters in length.
 	//
-	// 	- The description can contain only UTF-8 characters.
+	// - UTF-8 encoding.
 	//
 	// example:
 	//
 	// my first app.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The status of the application. Valid values:
+	// The new application status. Valid values:
 	//
-	// 	- **Normal**
+	// - **Normal**: Normal.
 	//
-	// 	- **Disable**
+	// - **Disable**: Disabled.
 	//
 	// example:
 	//

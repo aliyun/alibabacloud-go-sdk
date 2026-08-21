@@ -14,7 +14,7 @@ type iSetVodDomainCertificateResponseBody interface {
 }
 
 type SetVodDomainCertificateResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

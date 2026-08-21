@@ -17,7 +17,7 @@ type iDescribeVodDomainRealTimeBpsDataResponseBody interface {
 
 type DescribeVodDomainRealTimeBpsDataResponseBody struct {
 	Data *DescribeVodDomainRealTimeBpsDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

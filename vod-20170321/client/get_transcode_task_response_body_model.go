@@ -20,17 +20,17 @@ type iGetTranscodeTaskResponseBody interface {
 }
 
 type GetTranscodeTaskResponseBody struct {
-	// The nonexistent job ID.
+	// The IDs of transcoding jobs that do not exist.
 	NonExistJobIds []*string `json:"NonExistJobIds,omitempty" xml:"NonExistJobIds,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F4C6D5BE-BF13-45*****6C-516EA8906DCD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// List of transcode job information.
+	// The transcoding job information.
 	TranscodeJobInfoList []*GetTranscodeTaskResponseBodyTranscodeJobInfoList `json:"TranscodeJobInfoList,omitempty" xml:"TranscodeJobInfoList,omitempty" type:"Repeated"`
-	// Details about transcoding tasks.
+	// The transcoding task information.
 	TranscodeTask *GetTranscodeTaskResponseBodyTranscodeTask `json:"TranscodeTask,omitempty" xml:"TranscodeTask,omitempty" type:"Struct"`
 }
 
@@ -97,63 +97,65 @@ func (s *GetTranscodeTaskResponseBody) Validate() error {
 }
 
 type GetTranscodeTaskResponseBodyTranscodeJobInfoList struct {
-	// The complete time of the transcoding job. The format is yyyy-MM-dd\\"T\\"HH:mm:ssZ (UTC time).
+	// The time when the transcoding job was completed. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2019-02-26T08:30:16Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	// The creation time of the transcoding job. The format is yyyy-MM-dd\\"T\\"HH:mm:ssZ (UTC time).
+	// The time when the transcoding job was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2019-02-26T08:27:16Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The clarity and audio quality types are defined as follows:
+	// The video definition. Valid values:
 	//
-	// - SD: Standard Definition.
+	// - **LD**: fluent.
 	//
-	// - HD: High Definition.
+	// - **SD**: standard definition.
 	//
-	// - FHD: Full High Definition.
+	// - **HD**: high definition.
 	//
-	// - OD: Original Definition.
+	// - **FHD**: ultra high definition.
 	//
-	// - 2K: 2K.
+	// - **OD**: original quality.
 	//
-	// - 4K: 4K.
+	// - **2K**: 2K.
 	//
-	// - SQ: Standard Audio Quality.
+	// - **4K**: 4K.
 	//
-	// - HQ: High Audio Quality.
+	// - **SQ**: standard sound quality.
 	//
-	// - AUTO: Adaptive Bitrate.  This is only available when the transcoding template is configured with packaging settings. Please refer to [the Transcoding Template Configuration - Package Setting](https://api.aliyun-inc.com/~~52839~~?spm=openapi-amp.newDocPublishment.0.0.65b0281fNUFIXC) for more details.
+	// - **HQ**: high sound quality.
 	//
-	// > This value represents the clarity label configured in the transcoding template and does not indicate the actual resolution range of the transcoded output file.
+	// - **AUTO**: adaptive bitrate streaming. This definition is available only when packaging is configured in the transcoding template. For more information, see [Transcoding template configuration - PackageSetting](https://help.aliyun.com/document_detail/52839.html).
+	//
+	// > This value is the definition label configured in the transcoding template and does not indicate the actual resolution range of the transcoded output file.
 	//
 	// example:
 	//
 	// LD
 	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	// The error code.
+	// The error code returned when the transcoding job failed.
 	//
 	// example:
 	//
 	// 200
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
+	// The error message returned when the transcoding job failed.
 	//
 	// example:
 	//
 	// ErrorMessage
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The OSS address of the source file for transcoding.
+	// The OSS URL of the transcoding source file.
 	//
 	// example:
 	//
 	// http://outin-40564*****e1403e7.oss-cn-shanghai.aliyuncs.com/customerTrans/5b95e568f8e*****47f38e/31f1184c-*****b2a2-f94-c213f.wmv
 	InputFileUrl *string `json:"InputFileUrl,omitempty" xml:"InputFileUrl,omitempty"`
-	// Information about the transcoded output files.
+	// The information about the transcoding output file.
 	OutputFile *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile `json:"OutputFile,omitempty" xml:"OutputFile,omitempty" type:"Struct"`
 	// The priority of the transcoding task.
 	//
@@ -161,31 +163,31 @@ type GetTranscodeTaskResponseBodyTranscodeJobInfoList struct {
 	//
 	// 6
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the transcode job.
+	// The transcoding job ID.
 	//
 	// example:
 	//
 	// 38f0e513c88*****85515f9d50be188
 	TranscodeJobId *string `json:"TranscodeJobId,omitempty" xml:"TranscodeJobId,omitempty"`
-	// The status of the transcoding job:
+	// The status of the transcoding job. Valid values:
 	//
-	// Transcoding: Transcoding in progress.
+	// - **Transcoding**: transcoding in progress.
 	//
-	// TranscodeSuccess: Transcoding successful.
+	// - **TranscodeSuccess**: transcoding succeeded.
 	//
-	// TranscodeFail: Transcoding failed.
+	// - **TranscodeFail**: transcoding failed.
 	//
 	// example:
 	//
 	// Transcoding
 	TranscodeJobStatus *string `json:"TranscodeJobStatus,omitempty" xml:"TranscodeJobStatus,omitempty"`
-	// The processing progress of the transcoding job. The value range is [0, 100].
+	// The transcoding job progress. Value range: `[0,100]`.
 	//
 	// example:
 	//
-	// 80
+	// 2019-02-26T08:30:16Z
 	TranscodeProgress *int64 `json:"TranscodeProgress,omitempty" xml:"TranscodeProgress,omitempty"`
-	// The ID of the template used for the transcode job.
+	// The ID of the transcoding template used for transcoding.
 	//
 	// example:
 	//
@@ -319,79 +321,79 @@ func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoList) Validate() error {
 }
 
 type GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile struct {
-	// List of audio streams.
+	// The list of audio streams.
 	//
 	// example:
 	//
 	// "AudioStreamList": "[{\\"Bitrate\\":\\"64.533\\",\\"ChannelLayout\\":\\"stereo\\",\\"Channels\\":\\"2\\",\\"CodecLongName\\":\\"AAC (Advanced Audio Coding)\\",\\"CodecName\\":\\"aac\\",\\"CodecTag\\":\\"0x6134706d\\",\\"CodecTagString\\":\\"mp4a\\",\\"CodecTimeBase\\":\\"1/44100\\",\\"Duration\\":\\"12.615533\\",\\"Index\\":\\"1\\",\\"Lang\\":\\"und\\",\\"SampleFmt\\":\\"fltp\\",\\"Samplerate\\":\\"44100\\",\\"StartTime\\":\\"-0.046440\\",\\"Timebase\\":\\"1/44100\\"}]
 	AudioStreamList *string `json:"AudioStreamList,omitempty" xml:"AudioStreamList,omitempty"`
-	// Average bitrate of the transcoded output file. Unit: Kbps.
+	// The average bitrate of the transcoding output file. Unit: Kbps.
 	//
 	// example:
 	//
 	// 964
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// Duration of the transcoded output file. Unit: seconds (s).
+	// The duration of the transcoding output file. Unit: seconds.
 	//
 	// example:
 	//
 	// 12
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// Encryption configuration used for the transcoded output file. Values:
+	// The encryption configuration used for the transcoding output file. Valid values:
 	//
-	// - AliyunVoDEncryption: Alibaba Cloud Video Encryption (private encryption).
+	// - **AliyunVoDEncryption**: Alibaba Cloud video encryption (proprietary encryption).
 	//
-	// - HLSEncryption: HLS standard encryption.
+	// - **HLSEncryption**: HLS encryption.
 	//
 	// example:
 	//
 	// {\\"EncryptType\\":\\"AliyunVoDEncryption\\"}
 	Encryption *string `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
-	// Size of the transcoded output file. Unit: bytes (B).
+	// The size of the transcoding output file. Unit: bytes.
 	//
 	// example:
 	//
 	// 851076
 	Filesize *int64 `json:"Filesize,omitempty" xml:"Filesize,omitempty"`
-	// Container format of the transcoded output file.
+	// The container format of the transcoding output file.
 	//
 	// example:
 	//
 	// m3u8
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// Frame rate of the transcoded output file. Unit: frames per second (fps).
+	// The frame rate of the transcoding output file. Unit: frames per second.
 	//
 	// example:
 	//
 	// 25
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// Height of the video frame in the transcoded output file. Unit: pixels (px).
+	// The height of the transcoding output video. Unit: px.
 	//
 	// example:
 	//
 	// 360
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// OSS address of the transcoded output file.
+	// The OSS URL of the transcoding output file.
 	//
 	// example:
 	//
 	// http://outin-40564*****e1403e7.oss-cn-shanghai.aliyuncs.com/883f5d*****f20aaa352f/c3be4f073*****7d5193ec8-{DestMd5}-od-S00000001-200000.mp4
 	OutputFileUrl *string `json:"OutputFileUrl,omitempty" xml:"OutputFileUrl,omitempty"`
-	// List of subtitle streams.
+	// The list of subtitle streams.
 	//
 	// example:
 	//
 	// []
 	SubtitleStreamList *string `json:"SubtitleStreamList,omitempty" xml:"SubtitleStreamList,omitempty"`
-	// List of video streams.
+	// The list of video streams.
 	//
 	// example:
 	//
 	// [{\\"AvgFPS\\":\\"30.0\\",\\"Bitrate\\":\\"933.814\\",\\"CodecLongName\\":\\"H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10\\",\\"CodecName\\":\\"h264\\",\\"CodecTag\\":\\"0x31637661\\",\\"CodecTagString\\":\\"avc1\\",\\"CodecTimeBase\\":\\"1/60\\",\\"Dar\\":\\"9:16\\",\\"Duration\\":\\"12.033333\\",\\"Fps\\":\\"30.0\\",\\"HasBFrames\\":\\"2\\",\\"Height\\":\\"360\\",\\"Index\\":\\"0\\",\\"Lang\\":\\"und\\",\\"Level\\":\\"30\\",\\"PixFmt\\":\\"yuv420p\\",\\"Profile\\":\\"High\\",\\"Sar\\":\\"81:256\\",\\"StartTime\\":\\"0.000000\\",\\"Timebase\\":\\"1/15360\\",\\"Width\\":\\"640\\"}]
 	VideoStreamList *string `json:"VideoStreamList,omitempty" xml:"VideoStreamList,omitempty"`
-	// List of watermarks used for transcoding.
+	// The list of watermarks used for transcoding.
 	WatermarkIdList []*string `json:"WatermarkIdList,omitempty" xml:"WatermarkIdList,omitempty" type:"Repeated"`
-	// Width of the video frame in the transcoded output file. Unit: pixels (px).
+	// The width of the transcoding output video. Unit: px.
 	//
 	// example:
 	//
@@ -529,13 +531,13 @@ func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile) Validate() 
 }
 
 type GetTranscodeTaskResponseBodyTranscodeTask struct {
-	// The time when the transcoding task was complete. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the transcoding task was completed. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2019-01-23T12:40:12Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	// The time when the transcoding task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the transcoding task was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
@@ -543,45 +545,45 @@ type GetTranscodeTaskResponseBodyTranscodeTask struct {
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The status of the transcoding task. Valid values:
 	//
-	// 	- **Processing**: In progress.
+	// - **Processing**: processing in progress.
 	//
-	// 	- **Partial**: Some transcoding jobs were complete.
+	// - **Partial**: partially completed.
 	//
-	// 	- **CompleteAllSucc**: All transcoding jobs were successful.
+	// - **CompleteAllSucc**: all transcoding jobs are completed and succeeded.
 	//
-	// 	- **CompleteAllFail**: All transcoding jobs failed. If an exception occurs in the source file, no transcoding job is initiated and the transcoding task fails.
+	// - **CompleteAllFail**: all transcoding jobs are completed but failed. If the source file has issues, no transcoding jobs are initiated and the entire transcoding task fails.
 	//
-	// 	- **CompletePartialSucc**: All transcoding jobs were complete but only some were successful.
+	// - **CompletePartialSucc**: all transcoding jobs are completed but only some succeeded.
 	//
 	// example:
 	//
 	// Processing
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// Details about transcoding jobs.
+	// The transcoding job information.
 	TranscodeJobInfoList []*GetTranscodeTaskResponseBodyTranscodeTaskTranscodeJobInfoList `json:"TranscodeJobInfoList,omitempty" xml:"TranscodeJobInfoList,omitempty" type:"Repeated"`
-	// The ID of the transcoding task.
+	// The transcoding task ID.
 	//
 	// example:
 	//
 	// b1b65ab107e14*****3dbb900f6c1fe0
 	TranscodeTaskId *string `json:"TranscodeTaskId,omitempty" xml:"TranscodeTaskId,omitempty"`
-	// The ID of the transcoding template group.
+	// The ID of the transcoding template group used for transcoding.
 	//
 	// example:
 	//
 	// b500c7094bd241*****3e9900752d7c3
 	TranscodeTemplateGroupId *string `json:"TranscodeTemplateGroupId,omitempty" xml:"TranscodeTemplateGroupId,omitempty"`
-	// The mode in which the transcoding task is triggered. Valid values:
+	// The trigger type. Valid values:
 	//
-	// 	- **Auto**: The transcoding task is automatically triggered when the video is uploaded.
+	// - **Auto**: automatically triggered after a video is uploaded.
 	//
-	// 	- **Manual**: The transcoding task is triggered by calling the SubmitTranscodeJobs operation.
+	// - **Manual**: triggered by calling the SubmitTranscodeJobs operation.
 	//
 	// example:
 	//
 	// Auto
 	Trigger *string `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
-	// The ID of the audio or video file.
+	// The audio or video ID.
 	//
 	// example:
 	//
@@ -683,41 +685,41 @@ func (s *GetTranscodeTaskResponseBodyTranscodeTask) Validate() error {
 }
 
 type GetTranscodeTaskResponseBodyTranscodeTaskTranscodeJobInfoList struct {
-	// The time when the transcoding job was complete. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the transcoding job was completed. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2019-02-26T08:30:16Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	// The time when the transcoding job was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the transcoding job was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2019-02-26T08:27:16Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The video resolution. Valid values:
+	// The video definition. Valid values:
 	//
-	// 	- **LD**: low definition
+	// - **LD**: fluent.
 	//
-	// 	- **SD**: standard definition
+	// - **SD**: standard definition.
 	//
-	// 	- **HD**: high definition
+	// - **HD**: high definition.
 	//
-	// 	- **FHD**: ultra high definition
+	// - **FHD**: ultra high definition.
 	//
-	// 	- **OD**: original definition
+	// - **OD**: original quality.
 	//
-	// 	- **2K**: 2K
+	// - **2K**: 2K.
 	//
-	// 	- **4K**: 4K
+	// - **4K**: 4K.
 	//
-	// 	- **SQ**: standard sound quality
+	// - **SQ**: standard sound quality.
 	//
-	// 	- **HQ**: high sound quality
+	// - **HQ**: high sound quality.
 	//
-	// 	- **AUTO**: adaptive bitrate Adaptive bitrate streams are returned only if PackageSetting is set in the transcoding template. For more information, see [Basic structures](https://help.aliyun.com/document_detail/52839.html).
+	// - **AUTO**: adaptive bitrate streaming. This definition is available only when packaging is configured in the transcoding template. For more information, see [Transcoding template configuration - PackageSetting](https://help.aliyun.com/document_detail/52839.html).
 	//
-	// > This parameter indicates the definition that is configured in the transcoding template and does not indicate the actual resolution of the output video.
+	// > This value is the definition label configured in the transcoding template and does not indicate the actual resolution range of the transcoded output file.
 	//
 	// example:
 	//
@@ -735,45 +737,45 @@ type GetTranscodeTaskResponseBodyTranscodeTaskTranscodeJobInfoList struct {
 	//
 	// ErrorMessage
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The Object Storage Service (OSS) URL of the input file.
+	// The OSS URL of the transcoding source file.
 	//
 	// example:
 	//
 	// http://outin-40564*****e1403e7.oss-cn-shanghai.aliyuncs.com/customerTrans/5b95e568f8e*****47f38e/31f1184c-*****b2a2-f94-c213f.wmv
 	InputFileUrl *string `json:"InputFileUrl,omitempty" xml:"InputFileUrl,omitempty"`
-	// The information about the output file.
+	// The information about the transcoding output file.
 	OutputFile *GetTranscodeTaskResponseBodyTranscodeTaskTranscodeJobInfoListOutputFile `json:"OutputFile,omitempty" xml:"OutputFile,omitempty" type:"Struct"`
-	// The priority of the transcoding job.
+	// The priority of the transcoding task.
 	//
 	// example:
 	//
 	// 6
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the transcoding job.
+	// The transcoding job ID.
 	//
 	// example:
 	//
 	// 38f0e513c88*****85515f9d50be188
 	TranscodeJobId *string `json:"TranscodeJobId,omitempty" xml:"TranscodeJobId,omitempty"`
-	// The status of the transcoding job.
+	// The status of the transcoding job. Valid values:
 	//
-	// 	- **Transcoding**
+	// - **Transcoding**: transcoding in progress.
 	//
-	// 	- **TranscodeSuccess**
+	// - **TranscodeSuccess**: transcoding succeeded.
 	//
-	// 	- **TranscodeFail**
+	// - **TranscodeFail**: transcoding failed.
 	//
 	// example:
 	//
 	// Transcoding
 	TranscodeJobStatus *string `json:"TranscodeJobStatus,omitempty" xml:"TranscodeJobStatus,omitempty"`
-	// The progress of the transcoding job. Valid values: `[0,100]`.
+	// The transcoding job progress. Value range: `[0,100]`.
 	//
 	// example:
 	//
 	// 100
 	TranscodeProgress *int64 `json:"TranscodeProgress,omitempty" xml:"TranscodeProgress,omitempty"`
-	// The ID of the transcoding template.
+	// The ID of the transcoding template used for transcoding.
 	//
 	// example:
 	//
@@ -907,79 +909,79 @@ func (s *GetTranscodeTaskResponseBodyTranscodeTaskTranscodeJobInfoList) Validate
 }
 
 type GetTranscodeTaskResponseBodyTranscodeTaskTranscodeJobInfoListOutputFile struct {
-	// The audio streams.
+	// The list of audio streams.
 	//
 	// example:
 	//
 	// "AudioStreamList": "[{\\"Bitrate\\":\\"64.533\\",\\"ChannelLayout\\":\\"stereo\\",\\"Channels\\":\\"2\\",\\"CodecLongName\\":\\"AAC (Advanced Audio Coding)\\",\\"CodecName\\":\\"aac\\",\\"CodecTag\\":\\"0x6134706d\\",\\"CodecTagString\\":\\"mp4a\\",\\"CodecTimeBase\\":\\"1/44100\\",\\"Duration\\":\\"12.615533\\",\\"Index\\":\\"1\\",\\"Lang\\":\\"und\\",\\"SampleFmt\\":\\"fltp\\",\\"Samplerate\\":\\"44100\\",\\"StartTime\\":\\"-0.046440\\",\\"Timebase\\":\\"1/44100\\"}]
 	AudioStreamList *string `json:"AudioStreamList,omitempty" xml:"AudioStreamList,omitempty"`
-	// The average bitrate of the output file. Unit: Kbit/s.
+	// The average bitrate of the transcoding output file. Unit: Kbps.
 	//
 	// example:
 	//
 	// 964
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The length of the output file. Unit: seconds.
+	// The duration of the transcoding output file. Unit: seconds.
 	//
 	// example:
 	//
 	// 12
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The encryption method of the output file. Valid values:
+	// The encryption configuration used for the transcoding output file. Valid values:
 	//
-	// 	- **AliyunVoDEncryption**: Alibaba Cloud proprietary cryptography
+	// - **AliyunVoDEncryption**: Alibaba Cloud video encryption (proprietary encryption).
 	//
-	// 	- **HLSEncryption**: HTTP Live Streaming (HLS) encryption
+	// - **HLSEncryption**: HLS encryption.
 	//
 	// example:
 	//
 	// {\\"EncryptType\\":\\"AliyunVoDEncryption\\"}
 	Encryption *string `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
-	// The size of the output file. Unit: byte.
+	// The size of the transcoding output file. Unit: bytes.
 	//
 	// example:
 	//
 	// 851076
 	Filesize *int64 `json:"Filesize,omitempty" xml:"Filesize,omitempty"`
-	// The container format of the output file.
+	// The container format of the transcoding output file.
 	//
 	// example:
 	//
 	// m3u8
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The frame rate of the output file. Unit: frames per second.
+	// The frame rate of the transcoding output file. Unit: frames per second.
 	//
 	// example:
 	//
 	// 25
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// The height of the output video. Unit: pixels.
+	// The height of the transcoding output video. Unit: px.
 	//
 	// example:
 	//
 	// 360
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The OSS URL of the output file.
+	// The OSS URL of the transcoding output file.
 	//
 	// example:
 	//
 	// http://outin-40564*****e1403e7.oss-cn-shanghai.aliyuncs.com/883f5d*****f20aaa352f/c3be4f073*****7d5193ec8-{DestMd5}-od-S00000001-200000.mp4
 	OutputFileUrl *string `json:"OutputFileUrl,omitempty" xml:"OutputFileUrl,omitempty"`
-	// The subtitle streams.
+	// The list of subtitle streams.
 	//
 	// example:
 	//
 	// []
 	SubtitleStreamList *string `json:"SubtitleStreamList,omitempty" xml:"SubtitleStreamList,omitempty"`
-	// The video streams.
+	// The list of video streams.
 	//
 	// example:
 	//
 	// [{\\"AvgFPS\\":\\"30.0\\",\\"Bitrate\\":\\"933.814\\",\\"CodecLongName\\":\\"H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10\\",\\"CodecName\\":\\"h264\\",\\"CodecTag\\":\\"0x31637661\\",\\"CodecTagString\\":\\"avc1\\",\\"CodecTimeBase\\":\\"1/60\\",\\"Dar\\":\\"9:16\\",\\"Duration\\":\\"12.033333\\",\\"Fps\\":\\"30.0\\",\\"HasBFrames\\":\\"2\\",\\"Height\\":\\"360\\",\\"Index\\":\\"0\\",\\"Lang\\":\\"und\\",\\"Level\\":\\"30\\",\\"PixFmt\\":\\"yuv420p\\",\\"Profile\\":\\"High\\",\\"Sar\\":\\"81:256\\",\\"StartTime\\":\\"0.000000\\",\\"Timebase\\":\\"1/15360\\",\\"Width\\":\\"640\\"}]
 	VideoStreamList *string `json:"VideoStreamList,omitempty" xml:"VideoStreamList,omitempty"`
-	// The IDs of the watermarks used by the output file.
+	// The list of watermark IDs used for the transcoding output file.
 	WatermarkIdList []*string `json:"WatermarkIdList,omitempty" xml:"WatermarkIdList,omitempty" type:"Repeated"`
-	// The width of the output video. Unit: pixels.
+	// The width of the transcoding output video. Unit: px.
 	//
 	// example:
 	//

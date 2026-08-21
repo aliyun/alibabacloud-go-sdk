@@ -17,7 +17,7 @@ type iDescribeVodDomainRealTimeByteHitRateDataResponseBody interface {
 
 type DescribeVodDomainRealTimeByteHitRateDataResponseBody struct {
 	Data *DescribeVodDomainRealTimeByteHitRateDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

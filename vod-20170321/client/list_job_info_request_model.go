@@ -16,13 +16,13 @@ type iListJobInfoRequest interface {
 }
 
 type ListJobInfoRequest struct {
-	// The type of the task. Valid values:
+	// The task type. Valid values:
 	//
-	// 	- transcode
+	// - transcode
 	//
-	// 	- snapshot
+	// - snapshot
 	//
-	// 	- ai
+	// - ai
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type ListJobInfoRequest struct {
 	//
 	// transcode
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The ID of the media asset.
+	// The media asset ID.
 	//
 	// This parameter is required.
 	//
