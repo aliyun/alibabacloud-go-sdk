@@ -16,7 +16,7 @@ type iCheckResourceStockResponseBody interface {
 }
 
 type CheckResourceStockResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ func (s *CheckResourceStockResponseBody) Validate() error {
 }
 
 type CheckResourceStockResponseBodyResourceStockModels struct {
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type CheckResourceStockResponseBodyResourceStockModels struct {
 	//
 	// Available
 	StockStatus *string `json:"StockStatus,omitempty" xml:"StockStatus,omitempty"`
-	// The ID of the zone.
+	// The zone ID.
 	//
 	// example:
 	//

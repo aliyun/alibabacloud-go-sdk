@@ -1,3 +1,6 @@
+2026-08-21 Version: v4.30.3
+- Generated golang 2023-09-30 for eds-aic.
+
 2026-08-15 Version: v4.30.2
 - Update API DescribeCloudPhoneNodes: add response parameters Body.NodeModel.$.Channel.
 - Update API DescribeCloudPhoneNodes: add response parameters Body.NodeModel.$.PackageId.

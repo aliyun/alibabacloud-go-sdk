@@ -22,19 +22,19 @@ type iCheckResourceStockRequest interface {
 }
 
 type CheckResourceStockRequest struct {
-	// The ID of the instance type.
+	// The specification ID.
 	//
 	// example:
 	//
 	// acp.basic.small
 	AcpSpecId *string `json:"AcpSpecId,omitempty" xml:"AcpSpecId,omitempty"`
-	// The number of Cloud Phone instances.
+	// The number of cloud phone instances.
 	//
 	// example:
 	//
 	// 2
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type CheckResourceStockRequest struct {
 	//
 	// false
 	GpuAcceleration *bool `json:"GpuAcceleration,omitempty" xml:"GpuAcceleration,omitempty"`
-	// The zone where the resource resides.
+	// The zone to which the resource belongs.
 	//
 	// example:
 	//
