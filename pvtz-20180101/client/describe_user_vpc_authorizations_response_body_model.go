@@ -24,37 +24,37 @@ type iDescribeUserVpcAuthorizationsResponseBody interface {
 }
 
 type DescribeUserVpcAuthorizationsResponseBody struct {
-	// The page number.
+	// The page number of the returned data.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 46973D4C-E3E4-4ABA-9190-9A9DE406C7E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of authorizations.
 	//
 	// example:
 	//
 	// 100
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	// The total number of returned pages.
+	// The total number of pages returned.
 	//
 	// example:
 	//
 	// 5
 	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
-	// The Alibaba Cloud accounts to which the permissions on the resources are granted.
+	// The information about the Alibaba Cloud accounts that own the authorized resources.
 	Users []*DescribeUserVpcAuthorizationsResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
@@ -134,35 +134,35 @@ func (s *DescribeUserVpcAuthorizationsResponseBody) Validate() error {
 }
 
 type DescribeUserVpcAuthorizationsResponseBodyUsers struct {
-	// The authorization scope. Valid values:
+	// The authorization type. Valid values:
 	//
-	// 	- NORMAL: general authorization
+	// - NORMAL: A regular authorization.
 	//
-	// 	- CLOUD_PRODUCT: cloud service-related authorization
+	// - CLOUD_PRODUCT: An authorization for an Alibaba Cloud service.
 	//
 	// example:
 	//
 	// NORMAL
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The name of the Alibaba Cloud account to which the permissions on the resources are granted.
+	// The name of the Alibaba Cloud account that owns the authorized resources.
 	//
 	// example:
 	//
 	// alidn****@test.com
 	AuthorizedAliyunId *string `json:"AuthorizedAliyunId,omitempty" xml:"AuthorizedAliyunId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the permissions on the resources are granted.
+	// The ID of the Alibaba Cloud account that owns the authorized resources.
 	//
 	// example:
 	//
 	// 141339776561****
 	AuthorizedUserId *int64 `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
-	// The time when the authorization was performed. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time when the authorization was created.
 	//
 	// example:
 	//
 	// 2023-05-08T02:31Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the authorization was performed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp that indicates when the authorization was created.
 	//
 	// example:
 	//

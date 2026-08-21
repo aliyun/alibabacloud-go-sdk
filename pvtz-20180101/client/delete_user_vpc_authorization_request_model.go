@@ -16,19 +16,19 @@ type iDeleteUserVpcAuthorizationRequest interface {
 }
 
 type DeleteUserVpcAuthorizationRequest struct {
-	// The authorization scope. Valid values:
+	// The authorization type. Valid values:
 	//
-	// 	- NORMAL: general authorization
+	// - NORMAL: Standard authorization.
 	//
-	// 	- NORMAL: cloud service-related authorization
+	// - CLOUD_PRODUCT: Cloud product authorization.
 	//
-	// Default value: NORMAL.
+	// Default value: NORMAL
 	//
 	// example:
 	//
 	// NORMAL
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The ID of the Alibaba Cloud account.
+	// The ID of the Alibaba Cloud account that owns the authorized resources.
 	//
 	// This parameter is required.
 	//

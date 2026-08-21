@@ -23,11 +23,11 @@ type iUpdateCustomLineRequest interface {
 
 type UpdateCustomLineRequest struct {
 	DnsCategory *string `json:"DnsCategory,omitempty" xml:"DnsCategory,omitempty"`
-	// The IPv4 CIDR blocks.
+	// An array of IPv4 address ranges for the custom line. Specify each range in the `StartIP-EndIP` format.
 	//
 	// This parameter is required.
 	Ipv4s []*string `json:"Ipv4s,omitempty" xml:"Ipv4s,omitempty" type:"Repeated"`
-	// The language.
+	// The language of the response. Valid values: `en` and `zh`. Default value: `en`.
 	//
 	// example:
 	//
@@ -42,6 +42,10 @@ type UpdateCustomLineRequest struct {
 	// 100003
 	LineId *string `json:"LineId,omitempty" xml:"LineId,omitempty"`
 	// The name of the custom line.
+	//
+	// example:
+	//
+	// Test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

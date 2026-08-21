@@ -26,27 +26,44 @@ type iDescribeIntranetUserCanAnalysisVpcsRequest interface {
 }
 
 type DescribeIntranetUserCanAnalysisVpcsRequest struct {
+	// The network type.
+	//
 	// example:
 	//
 	// CLOUD
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 100
-	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The level in the query hierarchy. For example, you can query for VPCs that belong to a specific cloud account.
+	//
+	// example:
+	//
+	// 1
 	QueryTreeLevel *int32 `json:"QueryTreeLevel,omitempty" xml:"QueryTreeLevel,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The owner of the VPC.
+	//
 	// example:
 	//
 	// 1204673843521685
 	VpcOwner *int64 `json:"VpcOwner,omitempty" xml:"VpcOwner,omitempty"`
+	// The VPC type.
+	//
 	// example:
 	//
 	// STANDARD

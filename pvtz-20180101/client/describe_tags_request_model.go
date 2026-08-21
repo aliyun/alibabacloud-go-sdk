@@ -22,29 +22,29 @@ type iDescribeTagsRequest interface {
 type DescribeTagsRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
-	// Default value: en.
+	// Default value: en
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. The start value is 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum number: 1. Default value: 20.
+	// The number of entries per page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The resource type. Valid value: ZONE.
+	// The resource type. Set the value to ZONE.
 	//
 	// This parameter is required.
 	//

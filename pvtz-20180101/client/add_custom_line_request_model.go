@@ -22,13 +22,13 @@ type iAddCustomLineRequest interface {
 }
 
 type AddCustomLineRequest struct {
-	// This parameter is not available. You can ignore it.
+	// This parameter is not available to users. You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// INTRANET
 	DnsCategory *string `json:"DnsCategory,omitempty" xml:"DnsCategory,omitempty"`
-	// The IPv4 CIDR blocks.
+	// The list of IPv4 address segments.
 	//
 	// This parameter is required.
 	Ipv4s []*string `json:"Ipv4s,omitempty" xml:"Ipv4s,omitempty" type:"Repeated"`
@@ -41,8 +41,12 @@ type AddCustomLineRequest struct {
 	// The name of the custom line.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Custom Route-test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// This parameter is not available. You can ignore it.
+	// This parameter is not available to users. You do not need to specify this parameter.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribeZoneVpcTreeResponseBody interface {
 }
 
 type DescribeZoneVpcTreeResponseBody struct {
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//

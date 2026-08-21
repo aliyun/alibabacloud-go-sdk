@@ -17,7 +17,7 @@ type iDescribeRequestGraphResponseBody interface {
 
 type DescribeRequestGraphResponseBody struct {
 	RequestDetails *DescribeRequestGraphResponseBodyRequestDetails `json:"RequestDetails,omitempty" xml:"RequestDetails,omitempty" type:"Struct"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//

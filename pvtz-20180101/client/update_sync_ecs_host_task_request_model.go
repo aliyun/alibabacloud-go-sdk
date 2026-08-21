@@ -22,25 +22,25 @@ type iUpdateSyncEcsHostTaskRequest interface {
 type UpdateSyncEcsHostTaskRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
-	// Default value: en.
+	// Default value: en
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The regions to be synchronized.
+	// The regions for synchronization.
 	//
 	// This parameter is required.
 	Region []*UpdateSyncEcsHostTaskRequestRegion `json:"Region,omitempty" xml:"Region,omitempty" type:"Repeated"`
-	// The state of the hostname synchronization task. Valid values:
+	// The status of the ECS hostname sync task. Valid values:
 	//
-	// 	- ON: The task is started.
+	// - ON: enables the task.
 	//
-	// 	- OFF: The task is ended.
+	// - OFF: disables the task.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type UpdateSyncEcsHostTaskRequest struct {
 	//
 	// ON
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The zone ID. This ID uniquely identifies the zone.
+	// The unique ID of the zone.
 	//
 	// This parameter is required.
 	//
@@ -122,7 +122,7 @@ type UpdateSyncEcsHostTaskRequestRegion struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID to which the region belongs. This parameter is used in cross-account synchronization scenarios.
+	// The ID of the user who owns the region. This parameter is used for cross-account synchronization.
 	//
 	// example:
 	//

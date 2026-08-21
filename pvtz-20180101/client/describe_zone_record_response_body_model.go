@@ -44,25 +44,25 @@ type iDescribeZoneRecordResponseBody interface {
 }
 
 type DescribeZoneRecordResponseBody struct {
-	// The time when the DNS record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the record was created.
 	//
 	// example:
 	//
 	// 2018-01-23T03:15Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the DNS record was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp that indicates when the record was created.
 	//
 	// example:
 	//
 	// 1516775741000
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The resolution line.
+	// The DNS resolution line.
 	//
 	// example:
 	//
 	// default
 	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	// The priority of the mail exchanger (MX) record.
+	// The priority of the mail exchange (MX) record.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type DescribeZoneRecordResponseBody struct {
 	//
 	// 5808
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The description of the DNS record.
+	// The remarks.
 	//
 	// example:
 	//
@@ -86,23 +86,23 @@ type DescribeZoneRecordResponseBody struct {
 	//
 	// 0B7AD377-7E86-44A8-B9A8-53E8666E72FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The hostname.
+	// The host record.
 	//
 	// example:
 	//
 	// www
 	Rr *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
-	// The state of the DNS record. Valid values:
+	// The status of the DNS record. Valid values:
 	//
-	// 	- **ENABLE**: The DNS record is enabled.
+	// - **ENABLE**: The DNS record is enabled.
 	//
-	// 	- **DISABLE**: The DNS record is disabled.
+	// - **DISABLE**: The DNS record is paused.
 	//
 	// example:
 	//
 	// ENABLE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time to live (TTL) of the DNS record.
+	// The time to live (TTL).
 	//
 	// example:
 	//
@@ -114,13 +114,13 @@ type DescribeZoneRecordResponseBody struct {
 	//
 	// A
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time when the DNS record was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the record was last updated.
 	//
 	// example:
 	//
 	// 2018-01-24T06:35Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The time when the DNS record was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp that indicates when the record was last updated.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ type DescribeZoneRecordResponseBody struct {
 	//
 	// 127.0.0.1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// The weight value of the DNS record.
+	// The weight of the DNS record.
 	//
 	// example:
 	//

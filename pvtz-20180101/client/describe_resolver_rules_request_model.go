@@ -24,13 +24,13 @@ type iDescribeResolverRulesRequest interface {
 }
 
 type DescribeResolverRulesRequest struct {
-	// The outbound endpoint ID.
+	// The ID of the outbound endpoint.
 	//
 	// example:
 	//
 	// hr****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The keyword of the forwarding rule name. Fuzzy search is supported. The value is not case-sensitive.
+	// The keyword for the name of the forwarding rule. The search is case-insensitive and supports fuzzy match.
 	//
 	// example:
 	//
@@ -38,21 +38,21 @@ type DescribeResolverRulesRequest struct {
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
-	// Default value: en.
+	// Default value: en
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Specifies whether to return virtual private clouds (VPCs) associated with the forwarding rule. Valid values:
+	// Specifies whether to return the list of virtual private clouds (VPCs) that are associated with the forwarding rule. Valid values:
 	//
-	// 	- true
+	// - true: returns the list.
 	//
-	// 	- false
+	// - false: does not return the list.
 	//
 	// Default value: false.
 	//
@@ -60,13 +60,13 @@ type DescribeResolverRulesRequest struct {
 	//
 	// true
 	NeedDetailAttributes *bool `json:"NeedDetailAttributes,omitempty" xml:"NeedDetailAttributes,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The number of the page to return. The start value is 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries to return on each page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//

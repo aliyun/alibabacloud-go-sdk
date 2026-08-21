@@ -24,7 +24,7 @@ type AddZoneRecordResponseBody struct {
 	//
 	// 429570****
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//

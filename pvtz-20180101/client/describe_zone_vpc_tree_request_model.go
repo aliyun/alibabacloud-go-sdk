@@ -18,11 +18,11 @@ type iDescribeZoneVpcTreeRequest interface {
 type DescribeZoneVpcTreeRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
-	// Default value: en.
+	// Default value: en
 	//
 	// example:
 	//

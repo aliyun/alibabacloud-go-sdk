@@ -16,8 +16,9 @@ type iDescribePvtzStatisticsGlobalOverviewResponseBody interface {
 }
 
 type DescribePvtzStatisticsGlobalOverviewResponseBody struct {
+	// The statistical results.
 	Data *DescribePvtzStatisticsGlobalOverviewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -61,26 +62,38 @@ func (s *DescribePvtzStatisticsGlobalOverviewResponseBody) Validate() error {
 }
 
 type DescribePvtzStatisticsGlobalOverviewResponseBodyData struct {
+	// The average resolution latency for all VPCs with traffic analysis enabled. The average resolution latency is the average time from when an Alibaba Cloud DNS server receives a DNS query to when it returns a response.
+	//
 	// example:
 	//
 	// 15
 	AvgResolveLatency *int64 `json:"AvgResolveLatency,omitempty" xml:"AvgResolveLatency,omitempty"`
+	// The trend in the average resolution latency for all VPCs with traffic analysis enabled.
+	//
 	// example:
 	//
 	// -2
 	AvgResolveLatencyTrend *int64 `json:"AvgResolveLatencyTrend,omitempty" xml:"AvgResolveLatencyTrend,omitempty"`
+	// The average resolution success rate for all VPCs with traffic analysis enabled.
+	//
 	// example:
 	//
 	// 98
 	AvgSuccessRatio *int64 `json:"AvgSuccessRatio,omitempty" xml:"AvgSuccessRatio,omitempty"`
+	// The trend in the average resolution success rate for all VPCs with traffic analysis enabled.
+	//
 	// example:
 	//
 	// 1
 	AvgSuccessRatioTrend *int64 `json:"AvgSuccessRatioTrend,omitempty" xml:"AvgSuccessRatioTrend,omitempty"`
+	// The total number of resolutions for all VPCs with traffic analysis enabled.
+	//
 	// example:
 	//
 	// 100000
 	TotalResolveCount *int64 `json:"TotalResolveCount,omitempty" xml:"TotalResolveCount,omitempty"`
+	// The trend in the resolution volume for all VPCs with traffic analysis enabled.
+	//
 	// example:
 	//
 	// 5

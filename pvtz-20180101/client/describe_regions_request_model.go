@@ -26,19 +26,19 @@ type iDescribeRegionsRequest interface {
 type DescribeRegionsRequest struct {
 	// The supported language. Valid values:
 	//
-	// 	- zh-CN: Chinese
+	// - zh-CN: Chinese
 	//
-	// 	- en-US: English
+	// - en-US: English
 	//
 	// Default value: en-US.
 	//
-	// >  AcceptLanguage has a higher priority than Lang.
+	// > This parameter has a higher priority than Lang.
 	//
 	// example:
 	//
-	// en-US
+	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the Alibaba Cloud account to which the permissions on the resources are granted.
+	// The ID of the Alibaba Cloud account to which the authorized resources belong.
 	//
 	// example:
 	//
@@ -46,41 +46,41 @@ type DescribeRegionsRequest struct {
 	AuthorizedUserId *int64 `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
 	// The language of the response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// Default value: **en**.
 	//
-	// >  Lang has a lower priority than AcceptLanguage.
+	// > This parameter has a lower priority than AcceptLanguage.
 	//
 	// example:
 	//
-	// en
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The scenario. Valid values:
 	//
-	// 	- AUTH: the built-in authoritative module
+	// - AUTH: built-in authoritative server
 	//
-	// 	- FWD: the forward module
+	// - FWD: forwarding management
 	//
-	// 	- RA: the traffic analysis module
+	// - RA: traffic analysis
 	//
 	// example:
 	//
 	// AUTH
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	// The IP address of the client.
+	// The IP address of the user.
 	//
 	// example:
 	//
-	// 192.168.XX.XX
+	// 192.0.XX.XX
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	// The VPC type. Valid values:
+	// The type of the VPC. Valid values:
 	//
-	// 	- STANDARD: standard VPC
+	// - STANDARD: standard VPC.
 	//
-	// 	- EDS: Elastic Desktop Service (EDS) workspace VPC
+	// - EDS: Elastic Desktop Service (EDS) VPC.
 	//
 	// example:
 	//

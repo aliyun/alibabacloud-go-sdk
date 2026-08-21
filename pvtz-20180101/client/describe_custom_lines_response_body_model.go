@@ -25,13 +25,13 @@ type iDescribeCustomLinesResponseBody interface {
 
 type DescribeCustomLinesResponseBody struct {
 	CustomLines *DescribeCustomLinesResponseBodyCustomLines `json:"CustomLines,omitempty" xml:"CustomLines,omitempty" type:"Struct"`
-	// The page number. Pages start from page **1**. Default value: **1**.
+	// The page number of the returned page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1 to 100**. Default value: **10**.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -49,7 +49,7 @@ type DescribeCustomLinesResponseBody struct {
 	//
 	// 100
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	// The total number of returned pages.
+	// The total number of pages returned.
 	//
 	// example:
 	//

@@ -46,69 +46,69 @@ type DescribeResolverEndpointResponseBody struct {
 	//
 	// 2020-07-13 10:45:56
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the endpoint was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the endpoint was created. This is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1594608356000
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The endpoint ID. This ID uniquely identifies the endpoint.
+	// The ID of the endpoint.
 	//
 	// example:
 	//
-	// hr****
+	// hra0**
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The configurations of the source IP addresses for outbound traffic.
+	// A list of IP address configurations for the outbound traffic source.
 	IpConfigs []*DescribeResolverEndpointResponseBodyIpConfigs `json:"IpConfigs,omitempty" xml:"IpConfigs,omitempty" type:"Repeated"`
 	// The name of the endpoint.
 	//
 	// example:
 	//
-	// test
+	// Endpoint-test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 45020ED9-6319-4CA7-9475-6E8D6446E84F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the security group. The security group rules are applied to the outbound virtual private cloud (VPC).
+	// The ID of the security group. The rules in the security group are applied to the outbound VPC.
 	//
 	// example:
 	//
 	// sg-8vb3sigz86xc-group-****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The state of the endpoint. Valid values:
+	// The status of the endpoint. Valid values:
 	//
-	// 	- SUCCESS: The endpoint works as expected.
+	// - SUCCESS: The endpoint works as expected.
 	//
-	// 	- INIT: The endpoint is being created.
+	// - INIT: The endpoint is being created.
 	//
-	// 	- FAILED: The endpoint failed to be created.
+	// - FAILED: The endpoint failed to be created.
 	//
-	// 	- CHANGE_INIT: The endpoint is being modified.
+	// - CHANGE_INIT: The endpoint is being modified.
 	//
-	// 	- CHANGE_FAILED: The endpoint failed to be modified.
+	// - CHANGE_FAILED: The endpoint failed to be modified.
 	//
-	// 	- EXCEPTION: The endpoint encountered an exception.
+	// - EXCEPTION: An exception occurred on the endpoint.
 	//
 	// example:
 	//
 	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the endpoint was updated.
+	// The time when the endpoint was last updated.
 	//
 	// example:
 	//
 	// 2020-07-13 10:48:39
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The time when the endpoint was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the endpoint was last updated. This is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1594608519000
 	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	// The ID of the outbound VPC. All outbound Domain Name System (DNS) requests of the resolver are forwarded by this VPC.
+	// The ID of the outbound virtual private cloud (VPC). All outbound DNS query traffic from the Resolver is forwarded through this VPC.
 	//
 	// example:
 	//
@@ -120,17 +120,17 @@ type DescribeResolverEndpointResponseBody struct {
 	//
 	// vpc-name-test
 	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-	// The region ID of the outbound VPC.
+	// The ID of the region where the outbound VPC is located.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	VpcRegionId *string `json:"VpcRegionId,omitempty" xml:"VpcRegionId,omitempty"`
-	// The name of the region where the outbound VPC resides.
+	// The name of the region where the outbound VPC is located.
 	//
 	// example:
 	//
-	// HuaBei
+	// North China
 	VpcRegionName *string `json:"VpcRegionName,omitempty" xml:"VpcRegionName,omitempty"`
 }
 
@@ -282,7 +282,7 @@ func (s *DescribeResolverEndpointResponseBody) Validate() error {
 }
 
 type DescribeResolverEndpointResponseBodyIpConfigs struct {
-	// The ID of the zone to which the vSwitch belongs.
+	// The ID of the zone where the vSwitch is located.
 	//
 	// example:
 	//
@@ -294,7 +294,7 @@ type DescribeResolverEndpointResponseBodyIpConfigs struct {
 	//
 	// 172.16.XX.XX/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The source IP address of outbound traffic. The IP address must be within the specified CIDR block. If this parameter is left empty, the system automatically allocates an IP address.
+	// An IP address within the specified CIDR block. If you leave this parameter empty, the system automatically assigns an IP address.
 	//
 	// example:
 	//

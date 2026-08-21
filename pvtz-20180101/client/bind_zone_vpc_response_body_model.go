@@ -14,7 +14,7 @@ type iBindZoneVpcResponseBody interface {
 }
 
 type BindZoneVpcResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

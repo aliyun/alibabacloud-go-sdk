@@ -24,27 +24,27 @@ type iTagResourcesRequest interface {
 type TagResourcesRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
-	// Default value: en.
+	// Default value: en
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Specifies whether to replace the original tags added to the resources. Valid values:
+	// Specifies whether to modify the tag list. Valid values:
 	//
-	// 	- True: replaces the original tags.
+	// - True: Overwrites the existing tag list.
 	//
-	// 	- False (default): appends the specified one or more tags to the original tags. If a new tag has the same key but a different value from an original tag, the new tag replaces the original tag.
+	// - False (default): Appends tags to the existing list. If a tag key already exists, its value is updated.
 	//
 	// example:
 	//
 	// true
 	OverWrite *bool `json:"OverWrite,omitempty" xml:"OverWrite,omitempty"`
-	// The resource IDs, which are zone IDs. You can specify up to 50 zone IDs.
+	// The list of resource IDs. These are the IDs of the zones. You can specify up to 50 IDs.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type TagResourcesRequest struct {
 	//
 	// 97fe9321a476d0861f624d3f738dcc38
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type. Valid value: ZONE.
+	// The resource type. The value must be ZONE.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type TagResourcesRequest struct {
 	//
 	// ZONE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags to add to the resources.
+	// The list of tags.
 	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -133,13 +133,13 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The key of tag N to add to the resources.
+	// The tag key.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to add to the resources.
+	// The tag value.
 	//
 	// example:
 	//

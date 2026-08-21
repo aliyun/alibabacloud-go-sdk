@@ -20,7 +20,7 @@ type iDeleteZoneRequest interface {
 }
 
 type DeleteZoneRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token to ensure the idempotence of the request. Generate a unique value from your client for this parameter. The token must contain only ASCII characters and be no more than 64 characters in length.
 	//
 	// example:
 	//
@@ -28,11 +28,11 @@ type DeleteZoneRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
-	// Default value: en.
+	// Default: en.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type DeleteZoneRequest struct {
 	//
 	// 127.0.XX.XX
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	// The zone ID. This ID uniquely identifies the zone.
+	// The unique ID of the zone.
 	//
-	// >  If you want to delete a built-in authoritative zone whose effective scope is configured, you must disassociate the zone from the effective scope first.
+	// > You must dissociate a built-in authoritative domain name from its scope before you delete it.
 	//
 	// This parameter is required.
 	//

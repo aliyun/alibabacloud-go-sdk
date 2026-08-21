@@ -16,21 +16,21 @@ type iDescribeUserServiceStatusResponseBody interface {
 }
 
 type DescribeUserServiceStatusResponseBody struct {
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 99626905-678A-4E8A-984E-6AEB09993996
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Current user\\"s service status:
+	// The service status of the current user:
 	//
-	// 	- **CLOSED**: Not activated
+	// - **CLOSED**: The service is not activated.
 	//
-	// 	- **OPENED**: Activated
+	// - **OPENED**: The service is activated.
 	//
-	// 	- **IN_DEBT**: Overdue payment
+	// - **IN_DEBT**: The service has an overdue payment.
 	//
-	// 	- **IN_DEBT_OVER_DUE**: Payment overdue
+	// - **IN_DEBT_OVER_DUE**: The service is suspended due to an overdue payment.
 	//
 	// example:
 	//

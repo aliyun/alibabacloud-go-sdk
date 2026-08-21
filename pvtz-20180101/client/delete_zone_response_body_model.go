@@ -16,13 +16,13 @@ type iDeleteZoneResponseBody interface {
 }
 
 type DeleteZoneResponseBody struct {
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// E246E023-F2EB-4034-83F7-B13FCF31459C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The zone ID. This ID uniquely identifies the zone.
+	// The unique ID of the zone.
 	//
 	// example:
 	//

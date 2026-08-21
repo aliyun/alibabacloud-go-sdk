@@ -24,25 +24,34 @@ type iDescribePvtzStatisticsSummaryResponseBody interface {
 }
 
 type DescribePvtzStatisticsSummaryResponseBody struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
-	CurPage  *int32                                               `json:"CurPage,omitempty" xml:"CurPage,omitempty"`
+	CurPage *int32 `json:"CurPage,omitempty" xml:"CurPage,omitempty"`
+	// A list of statistical entries for the current page.
 	PageData []*DescribePvtzStatisticsSummaryResponseBodyPageData `json:"PageData,omitempty" xml:"PageData,omitempty" type:"Repeated"`
+	// The number of entries per page. The maximum value is **100**. The default value is **10**.
+	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// F0FCB52A-D512-41A0-8595-40234EDCFD8B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 10
 	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 11
@@ -125,76 +134,114 @@ func (s *DescribePvtzStatisticsSummaryResponseBody) Validate() error {
 }
 
 type DescribePvtzStatisticsSummaryResponseBodyPageData struct {
+	// The UNIX timestamp for the start of the current statistical period, rounded down to the minute.
+	//
 	// example:
 	//
 	// 1776774900000
 	AggrTimestamp *int64 `json:"AggrTimestamp,omitempty" xml:"AggrTimestamp,omitempty"`
+	// The total number of requests.
+	//
 	// example:
 	//
 	// 4
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// lb-ni1iadds-2c8uyzvgrm5ftsnq.clb.gz-tencentclb.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The fluctuation rate.
+	//
 	// example:
 	//
 	// 19
 	FluctuationValue *int32 `json:"FluctuationValue,omitempty" xml:"FluctuationValue,omitempty"`
+	// The average resolution latency, in milliseconds (ms).
+	//
 	// example:
 	//
 	// 30
 	Latency *int64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
+	// The resolution line.
+	//
 	// example:
 	//
 	// default
 	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	// The statistics module.
+	//
 	// example:
 	//
 	// AUTHORITY
 	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// The value from the previous statistical period.
+	//
 	// example:
 	//
 	// 2227
 	PreviousCount *int64 `json:"PreviousCount,omitempty" xml:"PreviousCount,omitempty"`
+	// The protocol type.
+	//
 	// example:
 	//
 	// UDP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The DNS query type.
+	//
 	// example:
 	//
 	// A
 	Qtype *string `json:"Qtype,omitempty" xml:"Qtype,omitempty"`
+	// The success rate.
+	//
 	// example:
 	//
 	// 30
 	Ratio *int64 `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	// The DNS response code.
+	//
 	// example:
 	//
 	// 0
 	Rcode *string `json:"Rcode,omitempty" xml:"Rcode,omitempty"`
+	// The source IP address of the request.
+	//
 	// example:
 	//
 	// 110.19.60.72
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The source ISP of the request.
+	//
 	// example:
 	//
 	// telecom
 	SourceIsp *string `json:"SourceIsp,omitempty" xml:"SourceIsp,omitempty"`
+	// The source region of the request.
+	//
 	// example:
 	//
 	// cn-beijing
 	SourceRegion *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-bp1uvv79h1t8unnzdh3nq
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the zone. The operation\\"s behavior depends on whether you specify this parameter:
+	//
+	// - If you specify a ZoneId, the operation returns the change log of DNS records for that zone.<br>
+	//
+	// - If you omit ZoneId, the operation returns the change log of all zone operations and DNS resolution changes for all zones in your account.
+	//
 	// example:
 	//
 	// 479226c2db1f9bed449b0502c13bcd9d
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The zone name.
+	//
 	// example:
 	//
 	// bwcj.biz

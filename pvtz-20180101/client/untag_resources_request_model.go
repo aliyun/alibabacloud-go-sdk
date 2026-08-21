@@ -22,23 +22,23 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to remove all tags of the specified zones. Valid values:
+	// Specifies whether to remove all tags. Valid values:
 	//
-	// 	- true: removes all tags of the specified zones.
+	// - true: Removes all tags from the specified zones.
 	//
-	// 	- false: removes only the tags with the specified tag keys.
+	// - false: Removes only the tags that have the specified tag keys (TagKey.N).
 	//
 	// Default value: false.
 	//
 	// example:
 	//
-	// true
+	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// The language of the response. Valid values:
+	// The language of the return value. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// Default value: en.
 	//
@@ -46,7 +46,7 @@ type UntagResourcesRequest struct {
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The resource IDs, which are zone IDs. You can specify up to 50 zone IDs.
+	// A list of resource IDs, which are the zone IDs. You can specify up to 50 resource IDs.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type UntagResourcesRequest struct {
 	//
 	// 97fe9321a476d0861f624d3f738dcc38
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type. The value of ResourceType can only be ZONE.
+	// The resource type. Set the value to ZONE.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type UntagResourcesRequest struct {
 	//
 	// ZONE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The keys of tags that you want to remove. You can specify up to 20 tag keys.
+	// A list of tag keys. You can specify up to 20 tag keys.
 	//
 	// example:
 	//

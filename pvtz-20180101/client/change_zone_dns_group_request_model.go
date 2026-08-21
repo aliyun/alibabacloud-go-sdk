@@ -18,17 +18,21 @@ type iChangeZoneDnsGroupRequest interface {
 }
 
 type ChangeZoneDnsGroupRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence.
+	// A client token that is used to ensure the idempotence of the request. Generate a unique value for this parameter on your client. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence.
 	//
 	// example:
 	//
 	// 85456erer657cfgfg3437
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The logical location of the built-in authoritative module in which the zone is added. Valid values:
+	// The built-in authoritative DNS group.
 	//
-	// 	- Normal zone: regular module
+	// - Standard zone group: NORMAL_ZONE
 	//
-	// 	- Fast Zone: acceleration module
+	// - Acceleration zone group: FAST_ZONE
+	//
+	// <props="china">
+	//
+	// > Starting from April 30, 2025 (UTC+8), when new users of Alibaba Cloud DNS PrivateZone create a zone, the zone is set to an acceleration zone by default.
 	//
 	// This parameter is required.
 	//

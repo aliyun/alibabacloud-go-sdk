@@ -24,19 +24,19 @@ type iDescribeZonesResponseBody interface {
 }
 
 type DescribeZonesResponseBody struct {
-	// The page number.
+	// The page number of the returned data.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type DescribeZonesResponseBody struct {
 	//
 	// example:
 	//
-	// 3
+	// 1
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	// The total number of returned pages.
+	// The total number of pages returned.
 	//
 	// example:
 	//
-	// 3
+	// 1
 	TotalPages *int32                          `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 	Zones      *DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }

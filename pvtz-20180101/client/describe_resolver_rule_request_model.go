@@ -18,9 +18,9 @@ type iDescribeResolverRuleRequest interface {
 type DescribeResolverRuleRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// Default value: en.
 	//
@@ -28,7 +28,7 @@ type DescribeResolverRuleRequest struct {
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the forwarding rule.
+	// The forwarding rule ID.
 	//
 	// This parameter is required.
 	//

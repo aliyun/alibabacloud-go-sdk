@@ -20,7 +20,7 @@ type iUpdateRecordRemarkRequest interface {
 }
 
 type UpdateRecordRemarkRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token used to ensure the idempotence of a request. The client generates this value, which must be unique across different requests. The token can be up to 64 ASCII characters in length.
 	//
 	// example:
 	//
@@ -28,9 +28,9 @@ type UpdateRecordRemarkRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// Default value: en.
 	//
@@ -46,7 +46,7 @@ type UpdateRecordRemarkRequest struct {
 	//
 	// 202991****
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The description of the DNS record.
+	// The remarks.
 	//
 	// example:
 	//

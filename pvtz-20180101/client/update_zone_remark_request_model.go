@@ -22,7 +22,7 @@ type iUpdateZoneRemarkRequest interface {
 }
 
 type UpdateZoneRemarkRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client-generated token that is used to ensure the idempotence of the request. Make sure that the token is unique for each request. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
@@ -30,9 +30,9 @@ type UpdateZoneRemarkRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// Default value: en.
 	//
@@ -40,7 +40,7 @@ type UpdateZoneRemarkRequest struct {
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The new description. If you leave Remark empty, the zone has no description.
+	// The new remark. To clear the remark, set this parameter to an empty string.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type UpdateZoneRemarkRequest struct {
 	//
 	// 127.0.XX.XX
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	// The zone ID. This ID uniquely identifies the zone.
+	// The unique ID of the zone.
 	//
 	// This parameter is required.
 	//

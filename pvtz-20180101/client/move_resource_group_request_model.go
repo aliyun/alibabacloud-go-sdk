@@ -20,7 +20,7 @@ type iMoveResourceGroupRequest interface {
 }
 
 type MoveResourceGroupRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token that ensures the idempotence of the request. Generate a unique value on your client. The token must contain only ASCII characters and be no more than 64 characters in length.
 	//
 	// example:
 	//
@@ -28,9 +28,9 @@ type MoveResourceGroupRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// Default value: en.
 	//
@@ -38,7 +38,7 @@ type MoveResourceGroupRequest struct {
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the new resource group.
+	// The ID of the destination resource group.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type MoveResourceGroupRequest struct {
 	//
 	// rg-aekz2qj7awz****
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	// The zone ID. This ID uniquely identifies the zone.
+	// The unique ID of the zone.
 	//
 	// This parameter is required.
 	//

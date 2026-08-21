@@ -28,11 +28,11 @@ type iDescribeRequestGraphRequest interface {
 }
 
 type DescribeRequestGraphRequest struct {
-	// The business ID. BizId is specified together with BizType.
+	// The data ID. This parameter is used with BizType.
 	//
-	// 	- If you set BizType to AUTH_ZONE, set BizId to a zone ID.
+	// - If BizType is set to AUTH_ZONE, set this parameter to the zone ID.
 	//
-	// 	- If you set BizType to RESOLVER_RULE, set BizId to the ID of a forwarding rule.
+	// - If BizType is set to RESOLVER_RULE, set this parameter to the forwarding rule ID.
 	//
 	// example:
 	//
@@ -40,27 +40,27 @@ type DescribeRequestGraphRequest struct {
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The business type. Valid values:
 	//
-	// 	- AUTH_ZONE: authoritative zone
+	// - AUTH_ZONE: An authoritative zone.
 	//
-	// 	- RESOLVER_RULE: forwarding rule
+	// - RESOLVER_RULE: A forwarding rule.
 	//
 	// example:
 	//
 	// AUTH_ZONE
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The end of the time range to query. Set the time to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The end of the time range to query. This is a UNIX timestamp.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1571673600000
+	// 1721723624000
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// Default value: en.
 	//
@@ -68,21 +68,21 @@ type DescribeRequestGraphRequest struct {
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The beginning of the time range to query. Set the time to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The start of the time range to query. This is a UNIX timestamp.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1571587200000
+	// 1721036404000
 	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
-	// The IP address of the client.
+	// The user\\"s IP address.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// The ID of the Virtual Private Cloud (VPC).
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type DescribeRequestGraphRequest struct {
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The zone ID.
 	//
-	// >  To query the number of DNS requests for a zone, you can specify ZoneId or BizType and BizId.
+	// > To query the number of requests for a zone, specify either ZoneId or both BizType and BizId.
 	//
 	// example:
 	//

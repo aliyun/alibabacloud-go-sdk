@@ -16,7 +16,7 @@ type iUpdateSyncEcsHostTaskResponseBody interface {
 }
 
 type UpdateSyncEcsHostTaskResponseBody struct {
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
@@ -24,9 +24,9 @@ type UpdateSyncEcsHostTaskResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - True: The request succeeded.
 	//
-	// 	- false
+	// - False: The request failed.
 	//
 	// example:
 	//

@@ -28,23 +28,23 @@ type UpdateResolverEndpointRequest struct {
 	//
 	// hr****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The source IP addresses of outbound traffic. You can add two to six IP addresses.
+	// A list of source IP addresses for outbound traffic. Specify at least two and up to six IP addresses.
 	//
-	// >  You must add at least two source IP addresses for outbound traffic to ensure high availability. We recommend that you add two IP addresses that reside in different zones. You can add up to six source IP addresses.
+	// > To ensure high availability (HA), an outbound endpoint requires at least two source IP addresses. We recommend that you assign these IP addresses to different zones. An outbound endpoint supports a maximum of six source IP addresses.
 	IpConfig []*UpdateResolverEndpointRequestIpConfig `json:"IpConfig,omitempty" xml:"IpConfig,omitempty" type:"Repeated"`
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
-	// Default value: en.
+	// Default value: en
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The endpoint name.
+	// The name of the endpoint.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ func (s *UpdateResolverEndpointRequest) Validate() error {
 }
 
 type UpdateResolverEndpointRequestIpConfig struct {
-	// The ID of the zone to which the vSwitch belongs.
+	// The ID of the zone where the vSwitch is located.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type UpdateResolverEndpointRequestIpConfig struct {
 	//
 	// 172.16.XX.XX/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The source IP address of outbound traffic. The IP address must be within the specified CIDR block. If you leave this parameter empty, the system automatically allocates an IP address.
+	// An IP address that is within the CIDR block of the vSwitch. If you leave this parameter empty, the system automatically assigns an IP address.
 	//
 	// example:
 	//

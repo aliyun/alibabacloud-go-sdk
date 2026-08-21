@@ -41,15 +41,15 @@ type iDescribeResolverRuleResponseBody interface {
 
 type DescribeResolverRuleResponseBody struct {
 	BindEdgeDnsClusters []*DescribeResolverRuleResponseBodyBindEdgeDnsClusters `json:"BindEdgeDnsClusters,omitempty" xml:"BindEdgeDnsClusters,omitempty" type:"Repeated"`
-	// The virtual private clouds (VPCs) that are associated with the forwarding rule.
+	// A list of Virtual Private Clouds (VPCs) that are associated with the forwarding rule.
 	BindVpcs []*DescribeResolverRuleResponseBodyBindVpcs `json:"BindVpcs,omitempty" xml:"BindVpcs,omitempty" type:"Repeated"`
-	// The time when the forwarding rule was created.
+	// The time when the rule was created.
 	//
 	// example:
 	//
 	// 2020-07-13 10:51:44
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the forwarding rule was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp that indicates when the rule was created.
 	//
 	// example:
 	//
@@ -61,15 +61,15 @@ type DescribeResolverRuleResponseBody struct {
 	//
 	// hr****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The endpoint name.
+	// The name of the endpoint.
 	//
 	// example:
 	//
-	// endpoint-test
+	// Endpoint-test
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// The destination IP addresses.
+	// A list of destination IP addresses.
 	ForwardIps []*DescribeResolverRuleResponseBodyForwardIps `json:"ForwardIps,omitempty" xml:"ForwardIps,omitempty" type:"Repeated"`
-	// The ID of the forwarding rule.
+	// The forwarding rule ID.
 	//
 	// example:
 	//
@@ -79,35 +79,35 @@ type DescribeResolverRuleResponseBody struct {
 	//
 	// example:
 	//
-	// forward rule-test
+	// Forwarding rule-test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 13D5113B-7E34-407F-A9C1-D96CD2B04277
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The type of the forwarding rule. Valid value:
+	// The type of the forwarding rule. The only valid value is OUTBOUND, which indicates that traffic is forwarded to an external IP address.
 	//
-	// OUTBOUND: outbound forwarding rule. This type of rule forwards Domain Name System (DNS) requests to one or more external IP addresses.
+	// OUTBOUND: Forwards to an external IP.
 	//
 	// example:
 	//
 	// OUTBOUND
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time when the forwarding rule was updated.
+	// The time when the rule was last updated.
 	//
 	// example:
 	//
 	// 2020-07-13 10:51:44
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The time when the forwarding rule was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp that indicates when the rule was last updated.
 	//
 	// example:
 	//
 	// 1594608704000
 	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	// The name of the forward zone.
+	// The name of the forwarding zone.
 	//
 	// example:
 	//
@@ -332,11 +332,11 @@ type DescribeResolverRuleResponseBodyBindVpcs struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The region name.
+	// The name of the region.
 	//
 	// example:
 	//
-	// hangzhou
+	// Hangzhou test
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
 	// The VPC ID.
 	//
@@ -350,11 +350,11 @@ type DescribeResolverRuleResponseBodyBindVpcs struct {
 	//
 	// vpc-name-test
 	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-	// The VPC type. Valid values:
+	// The type of the VPC. Valid values:
 	//
-	// 	- STANDARD: standard VPC
+	// - STANDARD: A standard VPC.
 	//
-	// 	- EDS: Elastic Desktop Service (EDS) workspace VPC
+	// - EDS: An Elastic Desktop Service (EDS) workspace VPC.
 	//
 	// example:
 	//
@@ -441,11 +441,11 @@ type DescribeResolverRuleResponseBodyForwardIps struct {
 	//
 	// 172.16.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The port number.
+	// The destination port.
 	//
 	// example:
 	//
-	// 8080
+	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 

@@ -25,31 +25,31 @@ type iSearchCustomLinesResponseBody interface {
 
 type SearchCustomLinesResponseBody struct {
 	CustomLines *SearchCustomLinesResponseBodyCustomLines `json:"CustomLines,omitempty" xml:"CustomLines,omitempty" type:"Struct"`
-	// The page number. Default value: 1.
+	// The page number. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1 to 100**. Default value: **10**.
+	// The number of entries per page for a paged query. The maximum value is **100**. The default value is **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 46973D4C-E3E4-4ABA-9190-9A9DE406C7E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 100
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	// The total number of returned pages.
+	// The total number of pages.
 	//
 	// example:
 	//

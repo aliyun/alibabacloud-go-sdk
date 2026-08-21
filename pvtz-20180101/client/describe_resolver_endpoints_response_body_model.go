@@ -24,21 +24,21 @@ type iDescribeResolverEndpointsResponseBody interface {
 }
 
 type DescribeResolverEndpointsResponseBody struct {
-	// The endpoints.
+	// The list of endpoints.
 	Endpoints []*DescribeResolverEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
-	// The page number.
+	// The page number of the returned data.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 2
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
@@ -140,25 +140,25 @@ type DescribeResolverEndpointsResponseBodyEndpoints struct {
 	//
 	// 2020-07-13 10:36:26
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the endpoint was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the endpoint was created. This is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1594607786000
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The endpoint ID.
+	// The ID of the endpoint.
 	//
 	// example:
 	//
 	// hr****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The source IP addresses of outbound traffic.
+	// The list of source IP addresses for outbound traffic.
 	IpConfigs []*DescribeResolverEndpointsResponseBodyEndpointsIpConfigs `json:"IpConfigs,omitempty" xml:"IpConfigs,omitempty" type:"Repeated"`
 	// The name of the endpoint.
 	//
 	// example:
 	//
-	// endpoint-test
+	// Endpoint-test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the security group.
 	//
@@ -166,37 +166,37 @@ type DescribeResolverEndpointsResponseBodyEndpoints struct {
 	//
 	// sg-0jld3m9yq7l2cw12****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The state of the endpoint that you queried. Valid values:
+	// The status of the endpoint. Description:
 	//
-	// 	- SUCCESS: The endpoint works as expected.
+	// - SUCCESS: The endpoint is working as expected.
 	//
-	// 	- INIT: The endpoint is being created.
+	// - INIT: The endpoint is being created.
 	//
-	// 	- FAILED: The endpoint failed to be created.
+	// - FAILED: The endpoint failed to be created.
 	//
-	// 	- CHANGE_INIT: The endpoint is being modified.
+	// - CHANGE_INIT: The endpoint is being modified.
 	//
-	// 	- CHANGE_FAILED: The endpoint failed to be modified.
+	// - CHANGE_FAILED: The endpoint failed to be modified.
 	//
-	// 	- EXCEPTION: The endpoint encountered an exception.
+	// - EXCEPTION: The endpoint is not working as expected.
 	//
 	// example:
 	//
 	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the endpoint was updated.
+	// The time when the endpoint was last updated.
 	//
 	// example:
 	//
 	// 2020-07-13 10:38:24
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The time when the endpoint was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the endpoint was last updated. This is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1594607904000
 	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	// The ID of the outbound VPC. All outbound Domain Name System (DNS) requests of the resolver are forwarded by this VPC.
+	// The ID of the outbound VPC. All outbound DNS query traffic from the Resolver is forwarded through this VPC.
 	//
 	// example:
 	//
@@ -208,17 +208,17 @@ type DescribeResolverEndpointsResponseBodyEndpoints struct {
 	//
 	// vpc-test-name
 	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-	// The region ID of the outbound VPC.
+	// The ID of the region where the outbound VPC is located.
 	//
 	// example:
 	//
 	// cn-zhangjiakou
 	VpcRegionId *string `json:"VpcRegionId,omitempty" xml:"VpcRegionId,omitempty"`
-	// The name of the region where the VPC resides.
+	// The name of the region where the outbound VPC is located.
 	//
 	// example:
 	//
-	// China East 1 (Hangzhou)
+	// Hangzhou VPC test
 	VpcRegionName *string `json:"VpcRegionName,omitempty" xml:"VpcRegionName,omitempty"`
 }
 
@@ -361,25 +361,25 @@ func (s *DescribeResolverEndpointsResponseBodyEndpoints) Validate() error {
 }
 
 type DescribeResolverEndpointsResponseBodyEndpointsIpConfigs struct {
-	// The ID of the zone to which the vSwitch belongs.
+	// The ID of the zone where the vSwitch is located.
 	//
 	// example:
 	//
 	// cn-zhangjiakou-a
 	AzId *string `json:"AzId,omitempty" xml:"AzId,omitempty"`
-	// The IPv4 CIDR block of the vSwitch.
+	// The subnet mask, which is the IPv4 CIDR block of the vSwitch.
 	//
 	// example:
 	//
 	// 172.16.XX.XX/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The source IP address of outbound traffic. The IP address must be within the specified CIDR block.
+	// The IP address within the CIDR block.
 	//
 	// example:
 	//
 	// 172.16.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//

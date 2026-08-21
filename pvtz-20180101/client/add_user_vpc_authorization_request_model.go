@@ -22,9 +22,9 @@ type iAddUserVpcAuthorizationRequest interface {
 type AddUserVpcAuthorizationRequest struct {
 	// The authorization channel. Valid values:
 	//
-	// 	- AUTH_CODE: A verification code is used for authorization.
+	// - AUTH_CODE: verification code authorization.
 	//
-	// 	- RESOURCE_DIRECTORY: A resource directory is used for authorization.
+	// - RESOURCE_DIRECTORY: resource directory authorization.
 	//
 	// Default value: AUTH_CODE.
 	//
@@ -34,29 +34,27 @@ type AddUserVpcAuthorizationRequest struct {
 	AuthChannel *string `json:"AuthChannel,omitempty" xml:"AuthChannel,omitempty"`
 	// The verification code.
 	//
-	// >
+	// > - If AuthChannel is empty or set to AUTH_CODE, specify the verification code.
 	//
-	// 	- The specified authentication code is used if the value of AuthChannel is left empty or is set to AUTH_CODE.
-	//
-	// 	- In other cases, a random 6-digit number is used. Example: 123456.
+	// > - In other cases, specify a random 6-digit number, such as 123456.
 	//
 	// example:
 	//
 	// 123456
 	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	// The authorization scope. Valid values:
+	// The authorization type. Valid values:
 	//
-	// 	- NORMAL: general authorization
+	// - NORMAL: normal authorization.
 	//
-	// 	- CLOUD_PRODUCT: cloud service-related authorization
+	// - CLOUD_PRODUCT: cloud product authorization.
 	//
 	// example:
 	//
 	// NORMAL
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The ID of the Alibaba Cloud account to which the permissions on the resources are granted.
+	// The ID of the Alibaba Cloud account that owns the authorized resource.
 	//
-	// >  You can set an effective scope across accounts only by using an Alibaba Cloud account instead of a RAM user. You can set an effective scope across accounts registered on the same site. For example, you can perform the operation across accounts that are both registered on the Alibaba Cloud China site or Alibaba Cloud international site. You cannot set an effective scope across accounts registered on different sites. For example, you cannot perform the operation across accounts that are separately registered on the Alibaba Cloud China site and Alibaba Cloud international site.
+	// >Cross-account authorization only supports Alibaba Cloud accounts (primary accounts) and does not support RAM users. Only accounts within the same site can be associated, such as between Alibaba Cloud China Website (www.aliyun.com) accounts or between Alibaba Cloud International Website (www.alibabacloud.com) accounts. Cross-site association is not supported, such as between a China Website account and an International Website account.
 	//
 	// This parameter is required.
 	//

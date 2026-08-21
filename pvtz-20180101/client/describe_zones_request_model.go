@@ -34,7 +34,7 @@ type iDescribeZonesRequest interface {
 }
 
 type DescribeZonesRequest struct {
-	// The keyword of the zone name. The value is not case-sensitive. You can set SearchMode to LIKE or EXACT. The default value of SearchMode is LIKE.
+	// The keyword of the zone name. The search is not case-sensitive. You can set the SearchMode parameter to switch between exact search and fuzzy search. The default mode is fuzzy search.
 	//
 	// example:
 	//
@@ -42,9 +42,9 @@ type DescribeZonesRequest struct {
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// Default value: en.
 	//
@@ -58,19 +58,19 @@ type DescribeZonesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
+	// The number of entries to return on each page. Maximum value: **100**. Default value: **20**.
 	//
 	// example:
 	//
-	// 100
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the virtual private cloud (VPC) associated with the zone.
+	// The region ID of the VPC that is associated with the zone.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	QueryRegionId *string `json:"QueryRegionId,omitempty" xml:"QueryRegionId,omitempty"`
-	// The ID of the VPC associated with the zone.
+	// The ID of the VPC that is associated with the zone.
 	//
 	// example:
 	//
@@ -82,37 +82,37 @@ type DescribeZonesRequest struct {
 	//
 	// rg-aekz2qj7awz****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags added to the zone.
+	// The resource tags that are added to the zone.
 	ResourceTag []*DescribeZonesRequestResourceTag `json:"ResourceTag,omitempty" xml:"ResourceTag,omitempty" type:"Repeated"`
-	// The search mode. The value of Keyword is the search scope. Valid values:
+	// The search mode. This parameter takes effect only when the Keyword parameter is specified. Valid values:
 	//
-	// 	- **LIKE*	- (default): fuzzy search
+	// - **LIKE**: fuzzy search (default)
 	//
-	// 	- **EXACT**: exact search
+	// - **EXACT**: exact search
 	//
 	// Default value: **LIKE**.
 	//
 	// example:
 	//
-	// LIKE
+	// EXACT
 	SearchMode *string `json:"SearchMode,omitempty" xml:"SearchMode,omitempty"`
-	// The types of cloud services.
+	// The list of cloud service types.
 	//
 	// example:
 	//
 	// BLINK
 	ZoneTag []*string `json:"ZoneTag,omitempty" xml:"ZoneTag,omitempty" type:"Repeated"`
-	// The zone type. Valid values:
+	// The type of the zones to query. Valid values:
 	//
-	// 	- **AUTH_ZONE**: authoritative zone
+	// - **AUTH_ZONE**: authoritative zones.
 	//
-	// 	- **CLOUD_PRODUCT_ZONE**: authoritative zone for cloud services
+	// - **CLOUD_PRODUCT_ZONE**: zones for cloud services.
 	//
 	// Default value: **AUTH_ZONE**.
 	//
 	// example:
 	//
-	// CLOUD_PRODUCT_ZONE
+	// AUTH_ZONE
 	ZoneType *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
 }
 
@@ -237,13 +237,13 @@ func (s *DescribeZonesRequest) Validate() error {
 }
 
 type DescribeZonesRequestResourceTag struct {
-	// The key of tag N added to the zone.
+	// The key of the resource tag.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N added to the zone.
+	// The value of the resource tag.
 	//
 	// example:
 	//

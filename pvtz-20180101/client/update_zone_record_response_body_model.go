@@ -22,7 +22,7 @@ type UpdateZoneRecordResponseBody struct {
 	//
 	// 172223****
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iBindResolverRuleVpcResponseBody interface {
 }
 
 type BindResolverRuleVpcResponseBody struct {
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//

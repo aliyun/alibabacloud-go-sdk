@@ -14,7 +14,7 @@ type iUpdateResolverEndpointResponseBody interface {
 }
 
 type UpdateResolverEndpointResponseBody struct {
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//

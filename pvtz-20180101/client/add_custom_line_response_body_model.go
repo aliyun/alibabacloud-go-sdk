@@ -25,6 +25,10 @@ type AddCustomLineResponseBody struct {
 	// 1065001
 	LineId *string `json:"LineId,omitempty" xml:"LineId,omitempty"`
 	// The name of the custom line.
+	//
+	// example:
+	//
+	// Custom Route-test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The request ID.
 	//

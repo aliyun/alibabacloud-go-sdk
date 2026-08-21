@@ -22,7 +22,7 @@ type UpdateRecordRemarkResponseBody struct {
 	//
 	// 202991****
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

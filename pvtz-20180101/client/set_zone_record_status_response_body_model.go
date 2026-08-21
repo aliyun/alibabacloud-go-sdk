@@ -24,21 +24,21 @@ type SetZoneRecordStatusResponseBody struct {
 	//
 	// 207541****
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// 39CB16E5-4180-49F2-A060-23C0ECEB80D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The state of the DNS record. Valid values:
+	// The status of the DNS record. Valid values:
 	//
-	// 	- ENABLE: The DNS record is enabled.
+	// - ENABLE: DNS resolution is enabled.
 	//
-	// 	- DISABLE: The DNS record is disabled.
+	// - DISABLE: DNS resolution is paused.
 	//
 	// example:
 	//
-	// DISABLE
+	// ENABLE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

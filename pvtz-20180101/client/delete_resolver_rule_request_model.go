@@ -22,7 +22,7 @@ type DeleteResolverRuleRequest struct {
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The forwarding rule ID.
+	// The ID of the forwarding rule.
 	//
 	// This parameter is required.
 	//

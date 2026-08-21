@@ -18,17 +18,17 @@ type iCheckZoneNameResponseBody interface {
 }
 
 type CheckZoneNameResponseBody struct {
-	// Indicates whether the zone name can be added. Valid values:
+	// The result of the check. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The zone name can be added.
 	//
-	// 	- **false**
+	// - **false**: The zone name cannot be added.
 	//
 	// example:
 	//
 	// true
 	Check *bool `json:"Check,omitempty" xml:"Check,omitempty"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//

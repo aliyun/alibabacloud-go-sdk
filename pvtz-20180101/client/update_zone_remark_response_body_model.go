@@ -16,13 +16,13 @@ type iUpdateZoneRemarkResponseBody interface {
 }
 
 type UpdateZoneRemarkResponseBody struct {
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// C6F1D541-E7A6-447A-A2B5-9F7A20B2A8FB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The zone ID. This ID uniquely identifies the zone.
+	// The unique ID of the zone.
 	//
 	// example:
 	//

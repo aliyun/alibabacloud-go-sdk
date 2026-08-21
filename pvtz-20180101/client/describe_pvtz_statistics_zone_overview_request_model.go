@@ -24,20 +24,42 @@ type iDescribePvtzStatisticsZoneOverviewRequest interface {
 }
 
 type DescribePvtzStatisticsZoneOverviewRequest struct {
+	// The language of the response. Valid values:
+	//
+	// - `zh-CN`: Chinese
+	//
+	// - `en-US`: English
+	//
+	// Default value: `en-US`.
+	//
+	// > This parameter takes precedence over the `Lang` parameter.
+	//
 	// example:
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// A client token to ensure request idempotence. Your client must generate a unique token for each request. The token can contain only ASCII characters.
+	//
 	// example:
 	//
 	// 234534535432323...
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The statistical module.
+	//
 	// example:
 	//
 	// AUTHORITY
-	Module         *string                                                   `json:"Module,omitempty" xml:"Module,omitempty"`
-	NetworkParams  []*DescribePvtzStatisticsZoneOverviewRequestNetworkParams `json:"NetworkParams,omitempty" xml:"NetworkParams,omitempty" type:"Repeated"`
-	OverviewPeriod *string                                                   `json:"OverviewPeriod,omitempty" xml:"OverviewPeriod,omitempty"`
+	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// The network parameters.
+	NetworkParams []*DescribePvtzStatisticsZoneOverviewRequestNetworkParams `json:"NetworkParams,omitempty" xml:"NetworkParams,omitempty" type:"Repeated"`
+	// The statistical period.
+	//
+	// example:
+	//
+	// DAY
+	OverviewPeriod *string `json:"OverviewPeriod,omitempty" xml:"OverviewPeriod,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -120,20 +142,30 @@ func (s *DescribePvtzStatisticsZoneOverviewRequest) Validate() error {
 }
 
 type DescribePvtzStatisticsZoneOverviewRequestNetworkParams struct {
+	// The region ID of the VPC.
+	//
 	// example:
 	//
 	// cn-hongkong
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// VPC ID。
+	// The ID of the VPC.
 	//
 	// example:
 	//
 	// vpc-uf68l2l04nqoyg7ie1kaw
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the VPC belongs.
+	//
 	// example:
 	//
 	// 5209821778041881
 	VpcOwner *string `json:"VpcOwner,omitempty" xml:"VpcOwner,omitempty"`
+	// The type of the VPC. Valid values:
+	//
+	// - `STANDARD`: standard VPC
+	//
+	// - `EDS`: Elastic Desktop Service (EDS) VPC
+	//
 	// example:
 	//
 	// STANDARD

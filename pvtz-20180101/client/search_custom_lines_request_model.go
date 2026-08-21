@@ -32,19 +32,19 @@ type iSearchCustomLinesRequest interface {
 }
 
 type SearchCustomLinesRequest struct {
-	// The end of the time range during which the custom lines are created to query. Set the time to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The end of the creation time range. This value is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1672136518234
 	CreateTimestampEnd *int64 `json:"CreateTimestampEnd,omitempty" xml:"CreateTimestampEnd,omitempty"`
-	// The beginning of the time range during which the custom lines are created to query. Set the time to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The start of the creation time range. This value is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1672136518123
 	CreateTimestampStart *int64 `json:"CreateTimestampStart,omitempty" xml:"CreateTimestampStart,omitempty"`
-	// The IDs of the creators for the custom lines.
+	// The list of creator IDs.
 	Creator []*string `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Repeated"`
 	// The IPv4 address.
 	//
@@ -58,27 +58,31 @@ type SearchCustomLinesRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The name of the custom line.
+	// The name of the custom ACL.
+	//
+	// example:
+	//
+	// Test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The page number. Pages start from page **1**. Default value: **1**.
+	// The page number. The value starts from **1**. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1 to 100**. Default value: **10**.
+	// The number of entries per page for a paged query. The maximum value is **100**. The default value is **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The end of the time range during which the custom lines are updated to query. Set the time to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The end of the update time range. This value is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1672136518000
 	UpdateTimestampEnd *int64 `json:"UpdateTimestampEnd,omitempty" xml:"UpdateTimestampEnd,omitempty"`
-	// The beginning of the time range during which the custom lines are updated to query. Set the time to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The start of the update time range. This value is a UNIX timestamp.
 	//
 	// example:
 	//

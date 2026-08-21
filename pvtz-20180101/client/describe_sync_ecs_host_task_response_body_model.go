@@ -26,33 +26,33 @@ type iDescribeSyncEcsHostTaskResponseBody interface {
 type DescribeSyncEcsHostTaskResponseBody struct {
 	EcsRegions *DescribeSyncEcsHostTaskResponseBodyEcsRegions `json:"EcsRegions,omitempty" xml:"EcsRegions,omitempty" type:"Struct"`
 	Regions    *DescribeSyncEcsHostTaskResponseBodyRegions    `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// 75446CC1-FC9A-4595-8D96-089D73D7A63D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether hostname automatic synchronization is enabled. Valid values:
+	// The status of the automatic hostname synchronization feature. Valid values:
 	//
-	// 	- ON: Hostname automatic synchronization is enabled. After this feature is enabled, the system automatically reads the hostnames of the Elastic Compute Service (ECS) instances in the specified regions and updates Domain Name System (DNS) records at an interval of 1 minute.
+	// - ON: Enabled. The system reads the hostnames of ECS instances in the selected region and updates the DNS records every minute.
 	//
-	// 	- OFF: Hostname automatic synchronization is disabled.
+	// - OFF: Disabled.
 	//
 	// example:
 	//
 	// ON
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the task was successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- True
+	// - True
 	//
-	// 	- False
+	// - False
 	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The zone ID. This ID uniquely identifies the zone.
+	// The unique ID of the zone.
 	//
 	// example:
 	//

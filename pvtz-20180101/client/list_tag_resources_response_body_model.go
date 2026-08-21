@@ -18,19 +18,19 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The token for the next query. If this parameter is empty, all results have been returned.
 	//
 	// example:
 	//
 	// 23423****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 75446CC1-FC9A-4595-8D96-089D73D7A63D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tags added to the resources.
+	// The list of tagged resources.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -83,7 +83,7 @@ func (s *ListTagResourcesResponseBody) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	// The resource ID, which is a zone ID.
+	// The resource ID. In this case, the zone ID.
 	//
 	// example:
 	//
@@ -95,13 +95,13 @@ type ListTagResourcesResponseBodyTagResources struct {
 	//
 	// ZONE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The key of tag N added to the resource.
+	// The tag key.
 	//
 	// example:
 	//
 	// env
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of tag N added to the resource.
+	// The tag value.
 	//
 	// example:
 	//

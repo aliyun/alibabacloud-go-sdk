@@ -20,9 +20,9 @@ type AddResolverEndpointResponseBody struct {
 	//
 	// example:
 	//
-	// hra0**
+	// hr****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//

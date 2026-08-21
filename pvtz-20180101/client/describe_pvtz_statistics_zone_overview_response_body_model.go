@@ -16,8 +16,9 @@ type iDescribePvtzStatisticsZoneOverviewResponseBody interface {
 }
 
 type DescribePvtzStatisticsZoneOverviewResponseBody struct {
+	// The statistical results.
 	Data *DescribePvtzStatisticsZoneOverviewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -61,14 +62,20 @@ func (s *DescribePvtzStatisticsZoneOverviewResponseBody) Validate() error {
 }
 
 type DescribePvtzStatisticsZoneOverviewResponseBodyData struct {
+	// The number of domains with refused responses.
+	//
 	// example:
 	//
 	// 2
 	RefusedDomainCount *int64 `json:"RefusedDomainCount,omitempty" xml:"RefusedDomainCount,omitempty"`
+	// The number of domains with a sudden drop in QPS.
+	//
 	// example:
 	//
 	// 3
 	SuddenDropDomainCount *int64 `json:"SuddenDropDomainCount,omitempty" xml:"SuddenDropDomainCount,omitempty"`
+	// The number of domains with a sudden increase in QPS.
+	//
 	// example:
 	//
 	// 5

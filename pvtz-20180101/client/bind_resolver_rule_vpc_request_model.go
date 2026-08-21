@@ -20,9 +20,9 @@ type iBindResolverRuleVpcRequest interface {
 type BindResolverRuleVpcRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// Default value: en.
 	//
@@ -30,7 +30,7 @@ type BindResolverRuleVpcRequest struct {
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the forwarding rule.
+	// The forwarding rule ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type BindResolverRuleVpcRequest struct {
 	//
 	// hr****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The VPCs that you want to associate with the forwarding rule.
+	// The VPCs to associate.
 	Vpc []*BindResolverRuleVpcRequestVpc `json:"Vpc,omitempty" xml:"Vpc,omitempty" type:"Repeated"`
 }
 
@@ -105,9 +105,9 @@ type BindResolverRuleVpcRequestVpc struct {
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The VPC type. Valid values:
 	//
-	// 	- STANDARD: standard VPC
+	// - STANDARD: standard VPC.
 	//
-	// 	- EDS: Elastic Desktop Service (EDS) workspace VPC
+	// - EDS: Elastic Desktop Service workspace VPC.
 	//
 	// example:
 	//

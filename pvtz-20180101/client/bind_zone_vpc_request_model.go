@@ -22,7 +22,7 @@ type iBindZoneVpcRequest interface {
 }
 
 type BindZoneVpcRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client-generated token that is used to ensure the idempotence of the request. You can use the client to generate a unique token for the request. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
@@ -30,11 +30,11 @@ type BindZoneVpcRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - `zh`: Chinese.
 	//
-	// 	- en: English
+	// - `en`: English.
 	//
-	// Default value: en.
+	// Default value: `en`.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type BindZoneVpcRequest struct {
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 	// The VPCs.
 	//
-	// >  If Vpcs is left empty, all VPCs that are associated with the zone are disassociated from the zone.
+	// > If you leave this parameter empty, all VPCs bound to the zone are unbound.
 	Vpcs []*BindZoneVpcRequestVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Repeated"`
-	// The zone ID. This ID uniquely identifies the zone.
+	// The unique ID of the zone.
 	//
 	// This parameter is required.
 	//
@@ -127,23 +127,23 @@ func (s *BindZoneVpcRequest) Validate() error {
 }
 
 type BindZoneVpcRequestVpcs struct {
-	// The region ID of the VPC.
+	// The ID of the region where the VPC is located.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The VPC ID. If the zone is already associated with VPCs and you do not specify this parameter, the associated VPCs are disassociated from the zone.
+	// The ID of the VPC.
 	//
 	// example:
 	//
 	// vpc-f8zvrvr1payllgz38****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The VPC type. Valid values:
+	// The type of the VPC. Valid values:
 	//
-	// 	- **STANDARD**: standard VPC
+	// - **STANDARD**: a standard VPC.
 	//
-	// 	- **EDS**: Elastic Desktop Service (EDS) workspace VPC
+	// - **EDS**: an Elastic Desktop Service VPC.
 	//
 	// example:
 	//

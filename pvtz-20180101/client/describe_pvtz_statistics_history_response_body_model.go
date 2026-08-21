@@ -16,8 +16,9 @@ type iDescribePvtzStatisticsHistoryResponseBody interface {
 }
 
 type DescribePvtzStatisticsHistoryResponseBody struct {
+	// The statistical data.
 	Data []*DescribePvtzStatisticsHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -65,38 +66,56 @@ func (s *DescribePvtzStatisticsHistoryResponseBody) Validate() error {
 }
 
 type DescribePvtzStatisticsHistoryResponseBodyData struct {
+	// The number of requests.
+	//
 	// example:
 	//
 	// 29
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// wget At8P8tza.popscan.xaliyun.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The number of failed requests.
+	//
 	// example:
 	//
 	// 100
 	FailCount *int64 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	// The protocol.
+	//
 	// example:
 	//
 	// UDP、TCP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The query type.
+	//
 	// example:
 	//
 	// A
 	Qtype *string `json:"Qtype,omitempty" xml:"Qtype,omitempty"`
+	// The success rate.
+	//
 	// example:
 	//
 	// 95
 	Ratio *int64 `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	// The number of successful requests.
+	//
 	// example:
 	//
 	// 5
 	SuccessCount *int64 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// The timestamp of the data point. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1687190400000
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The name of the zone.
+	//
 	// example:
 	//
 	// cn-zhangjiakou-share.log.aliyuncs.com

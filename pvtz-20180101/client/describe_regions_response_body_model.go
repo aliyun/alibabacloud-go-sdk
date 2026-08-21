@@ -17,11 +17,11 @@ type iDescribeRegionsResponseBody interface {
 
 type DescribeRegionsResponseBody struct {
 	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
-	// AF7D4DCE-0776-47F2-A9B2-6FB85A87AA60
+	// 1E0F6898-F854-5133-A4CB-9C094152D05A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

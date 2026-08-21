@@ -22,7 +22,7 @@ type iSetProxyPatternRequest interface {
 }
 
 type SetProxyPatternRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token to ensure the idempotence of the request. The token must be unique for each request. It can contain only ASCII characters and must be no more than 64 characters in length.
 	//
 	// example:
 	//
@@ -30,21 +30,21 @@ type SetProxyPatternRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
-	// Default value: en.
+	// Default value: en
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Specifies whether to enable the recursive resolution proxy for subdomain names. Valid values:
+	// The proxy mode for recursive resolution of subdomains. Valid values:
 	//
-	// 	- **ZONE**: disables the recursive resolution proxy for subdomain names. In this case, NXDOMAIN is returned if the queried subdomain name does not exist in the zone.
+	// - **ZONE**: Disables the proxy. If a subdomain does not exist, an NXDOMAIN response is returned.
 	//
-	// 	- **RECORD**: enables the recursive resolution proxy for subdomain names. In this case, if the queried domain name does not exist in the zone, Domain Name System (DNS) requests are recursively forwarded to the forward module and then to the recursion module until DNS results are returned.
+	// - **RECORD**: Enables the proxy. If a subdomain does not exist, the system queries the forwarding and recursion modules and returns the final result.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type SetProxyPatternRequest struct {
 	//
 	// 10.61.XX.XX
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	// The zone ID. This ID uniquely identifies the zone.
+	// The unique ID of the zone.
 	//
 	// This parameter is required.
 	//

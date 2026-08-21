@@ -24,33 +24,33 @@ type iDescribeResolverRulesResponseBody interface {
 }
 
 type DescribeResolverRulesResponseBody struct {
-	// The page number.
+	// The page number of the returned page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// A10E03D7-808C-422D-9144-F8586C2E2297
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The forwarding rules.
+	// The list of forwarding rules.
 	Rules []*DescribeResolverRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 1
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	// The total number of returned pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -135,33 +135,33 @@ func (s *DescribeResolverRulesResponseBody) Validate() error {
 
 type DescribeResolverRulesResponseBodyRules struct {
 	BindEdgeDnsClusters []*DescribeResolverRulesResponseBodyRulesBindEdgeDnsClusters `json:"BindEdgeDnsClusters,omitempty" xml:"BindEdgeDnsClusters,omitempty" type:"Repeated"`
-	// The VPCs associated with the forwarding rule.
+	// The list of associated VPCs.
 	BindVpcs []*DescribeResolverRulesResponseBodyRulesBindVpcs `json:"BindVpcs,omitempty" xml:"BindVpcs,omitempty" type:"Repeated"`
-	// The time when the forwarding was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	// The time when the rule was created.
 	//
 	// example:
 	//
 	// 2020-07-13 10:51:44
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the forwarding rule was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The UNIX timestamp when the rule was created.
 	//
 	// example:
 	//
 	// 1594608704000
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The endpoint ID.
+	// The ID of the endpoint.
 	//
 	// example:
 	//
 	// hr****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The endpoint name.
+	// The name of the endpoint.
 	//
 	// example:
 	//
-	// endpoint-test
+	// Endpoint-test
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// The IP addresses and ports of the external DNS servers. Enter the IP addresses and ports of the destination servers to which the DNS requests are forwarded.
+	// The IP addresses and ports of the destination servers in an external DNS system. DNS query traffic is forwarded to these servers.
 	ForwardIps []*DescribeResolverRulesResponseBodyRulesForwardIps `json:"ForwardIps,omitempty" xml:"ForwardIps,omitempty" type:"Repeated"`
 	// The ID of the forwarding rule.
 	//
@@ -173,30 +173,30 @@ type DescribeResolverRulesResponseBodyRules struct {
 	//
 	// example:
 	//
-	// forward rule-test
+	// Forwarding rule-test
 	Name                   *string                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
 	PriorityForwardConfigs []*DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs `json:"PriorityForwardConfigs,omitempty" xml:"PriorityForwardConfigs,omitempty" type:"Repeated"`
-	// The type of the forwarding rule.
+	// The type of the forwarding rule. Currently, only forwarding to an external IP address is supported. Valid value:
 	//
-	// The parameter value can only be OUTBOUND, which indicates that Domain Name System (DNS) requests are forwarded to one or more external IP addresses.
+	// OUTBOUND: Forwards DNS requests to an external IP address.
 	//
 	// example:
 	//
 	// OUTBOUND
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time when the forwarding rule was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	// The time when the rule was last updated.
 	//
 	// example:
 	//
 	// 2020-07-13 10:51:44
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The time when the forwarding rule was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The UNIX timestamp when the rule was last updated.
 	//
 	// example:
 	//
 	// 1594608704000
 	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	// The zone for which you want to forward DNS requests.
+	// The domain name (zone) for which DNS requests are forwarded.
 	//
 	// example:
 	//
@@ -424,41 +424,41 @@ func (s *DescribeResolverRulesResponseBodyRulesBindEdgeDnsClusters) Validate() e
 }
 
 type DescribeResolverRulesResponseBodyRulesBindVpcs struct {
-	// The region ID of the VPC.
+	// The ID of the region where the VPC resides.
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// cn-wulanchabu
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the region to which the VPC belongs.
+	// The name of the region where the VPC resides.
 	//
 	// example:
 	//
-	// ap-southeast-1
+	// China (Ulanqab)
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	// The VPC ID. This ID uniquely identifies the VPC.
+	// The unique ID of the VPC.
 	//
 	// example:
 	//
 	// vpc-0jl96awrjt75ezglc****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The VPC name.
+	// The name of the VPC.
 	//
 	// example:
 	//
 	// vpc-name-test
 	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-	// The VPC type. Valid values:
+	// The type of the VPC. Valid values:
 	//
-	// 	- STANDARD: standard VPC
+	// - STANDARD: a standard VPC.
 	//
-	// 	- EDS: Elastic Desktop Service (EDS) workspace VPC
+	// - EDS: a workspace VPC of Elastic Desktop Service (EDS).
 	//
 	// example:
 	//
 	// STANDARD
 	VpcType *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
-	// The user ID to which the VPC belongs.
+	// The user ID (UID) of the account to which the VPC belongs.
 	//
 	// example:
 	//
@@ -533,17 +533,17 @@ func (s *DescribeResolverRulesResponseBodyRulesBindVpcs) Validate() error {
 }
 
 type DescribeResolverRulesResponseBodyRulesForwardIps struct {
-	// The IP address of the destination server.
+	// The destination IP address.
 	//
 	// example:
 	//
 	// 172.16.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The port of the destination server.
+	// The port of the destination IP address.
 	//
 	// example:
 	//
-	// 8080
+	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 

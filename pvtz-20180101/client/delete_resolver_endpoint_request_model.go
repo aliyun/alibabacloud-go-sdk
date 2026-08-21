@@ -16,19 +16,19 @@ type iDeleteResolverEndpointRequest interface {
 }
 
 type DeleteResolverEndpointRequest struct {
-	// The endpoint ID. This ID uniquely identifies the endpoint.
+	// The unique ID of the endpoint.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// hr****
+	// hra0**
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// Default value: en.
 	//

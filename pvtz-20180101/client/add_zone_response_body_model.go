@@ -20,11 +20,11 @@ type iAddZoneResponseBody interface {
 }
 
 type AddZoneResponseBody struct {
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
-	// 46973D4C-E3E4-4ABA-9190-9A9DE406C7E
+	// 54F10A2A-C3CF-59D4-810F-F18DDD93FE20
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
 	//
@@ -32,7 +32,7 @@ type AddZoneResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The zone ID. This ID uniquely identifies the zone.
+	// The unique ID of the zone.
 	//
 	// example:
 	//

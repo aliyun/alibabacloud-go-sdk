@@ -36,7 +36,7 @@ type iAddZoneRecordRequest interface {
 }
 
 type AddZoneRecordRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. A client generates this value to ensure that it is unique among different requests. The value can be up to 64 ASCII characters in length.
 	//
 	// example:
 	//
@@ -44,49 +44,49 @@ type AddZoneRecordRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
-	// Default value: en.
+	// Default value: en
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The DNS request source. Valid values:
+	// The source of the DNS resolution request. Valid values:
 	//
-	// 	- default: the default resolution line. The default line is equivalent to a global line. We recommend that you configure a default line to ensure that a DNS record can be returned if no intelligent line is matched.
+	// - default: The default line. This is equivalent to a global line. Configure a default line to ensure that a DNS record is returned even if no smart line is hit.
 	//
-	// 	- Alibaba Cloud lines: indicate that DNS requests are originated from Alibaba Cloud, including Alibaba Cloud public cloud, Alibaba Finance Cloud, and Alibaba Gov Cloud.
+	// - Alibaba Cloud line: The DNS resolution request comes from Alibaba Cloud, including Public Cloud, Alibaba Finance Cloud, and Alibaba Gov Cloud.
 	//
-	// 	- Custom lines: You can configure custom lines so that Private DNS can return specific IP addresses for DNS requests that are originated from a specific CIDR block.
+	// - Custom line: Customize internal domain name resolution to return a specific IP address for DNS query requests from a specific IP address segment.
+	//
+	// > 	- Only zones in built-in authoritative acceleration regions support adding DNS resolution request source lines.
 	//
 	// >
 	//
-	// 	- Only built-in authoritative acceleration zones support custom lines.
-	//
-	// 	- Set Line to default if you want to choose the default line. Set Line to a specific line code if you want to choose an Alibaba Cloud line or a custom line. Example: aliyun_r_cn-beijing-a.
+	// > 	- To use the default line, enter "default". For Alibaba Cloud lines and custom lines, enter the specified line code. Example: aliyun_r_cn-beijing-a
 	//
 	// example:
 	//
 	// default
 	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	// The priority of the mail exchanger (MX) record. Valid values: **1 to 99**. A smaller value indicates a higher priority.
+	// The priority of the MX record. A smaller value indicates a higher priority. Valid values: **[1, 99]**.
 	//
 	// example:
 	//
 	// 5
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The description of the DNS record.
+	// The remarks.
 	//
 	// example:
 	//
 	// en
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The hostname. The hostname is the prefix of the subdomain name for the zone. Example: www, @, \\	- (used for wildcard DNS resolution), and mail (used for specifying the mail server that receives emails).
+	// The host record. A host record is the prefix of a domain name. Common host records include www, @, \\	- (for wildcard DNS), and mail (for mailboxes).
 	//
-	// For example, if you want to resolve the domain name @.exmaple.com, you must set Rr to @ instead of leaving Rr empty.
+	// For example, to resolve @.example.com, set the host record to "@", not an empty string.
 	//
 	// This parameter is required.
 	//
@@ -94,29 +94,29 @@ type AddZoneRecordRequest struct {
 	//
 	// www
 	Rr *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
-	// The time to live (TTL) period. Valid values: 5, 30, 60, 3600, 43200, and 86400. Unit: seconds. Default value: 60.
+	// The time to live (TTL). The unit is seconds (s). Valid values are 5, 30, 60, 3600 (1 hour), 43200 (12 hours), and 86400 (1 day). The default value is 60.
 	//
 	// example:
 	//
 	// 60
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The type of the DNS record. Valid values:
+	// The type of the DNS record. The following types are supported:
 	//
-	// 	- **A**: An A record maps a domain name to an IPv4 address in the dotted decimal notation format.
+	// - **A**: Maps a domain name to an IPv4 address in dotted decimal notation.
 	//
-	// 	- **AAAA**: An AAAA record maps a domain name to an IPv6 address.
+	// - **AAAA**: Maps a domain name to an IPv6 address.
 	//
-	// 	- **CNAME**: A canonical name (CNAME) record maps a domain name to another domain name.
+	// - **CNAME**: Maps a domain name to another domain name.
 	//
-	// 	- **TXT**: A text (TXT) record usually serves as a Sender Policy Framework (SPF) record to prevent email spam. The record value of the TXT record can be up to 255 characters in length.
+	// - **TXT**: A text record. The text can be up to 255 characters in length. TXT records are often used for Sender Policy Framework (SPF) records to prevent spam.
 	//
-	// 	- **MX**: A mail exchanger (MX) record maps a domain name to the domain name of a mail server.
+	// - **MX**: Maps a domain name to the domain name of a mail server.
 	//
-	// 	- **PTR**: A pointer (PTR) record maps an IP address to a domain name.
+	// - **PTR**: Maps an IP address to a domain name.
 	//
-	// 	- **SRV**: A service (SRV) record specifies a server that hosts a specific service. Enter a record value in the format of Priority Weight Port Destination domain name. Separate these items with spaces.
+	// - **SRV**: Specifies the server for a specific service. The format is: Priority Weight Port Target. Separate each value with a space.
 	//
-	// >  Before you add a PTR record, you must configure a reverse lookup zone. For more information, see [Add PTR records](https://help.aliyun.com/document_detail/2592976.html).
+	// > Before adding a PTR record, configure a reverse lookup zone. For more information, see [Reverse DNS lookups and PTR records](https://help.aliyun.com/document_detail/2592976.html).
 	//
 	// This parameter is required.
 	//
@@ -130,7 +130,7 @@ type AddZoneRecordRequest struct {
 	//
 	// 127.0.XX.XX
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	// The record value. You need to enter the record value based on the DNS record type.
+	// The record value. Enter a value based on the DNS record type.
 	//
 	// This parameter is required.
 	//
@@ -138,13 +138,13 @@ type AddZoneRecordRequest struct {
 	//
 	// 114.55.XX.XX
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// The weight value of the address. You can set a different weight value for each address. This way, addresses are returned based on the weight values for DNS requests. A weight value must be an integer that ranges from 1 to 100. Default value: 1.
+	// The weight. Valid values are integers from 1 to 100. The default value is 1. Set different weights for each address to return addresses based on the weight ratio for DNS queries.
 	//
 	// example:
 	//
 	// 1
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	// The zone ID. This ID uniquely identifies the zone.
+	// The ID of the zone. This is the unique identifier of the zone.
 	//
 	// This parameter is required.
 	//

@@ -56,17 +56,17 @@ type iDescribeZoneInfoResponseBody interface {
 type DescribeZoneInfoResponseBody struct {
 	BindEdgeDnsClusters *DescribeZoneInfoResponseBodyBindEdgeDnsClusters `json:"BindEdgeDnsClusters,omitempty" xml:"BindEdgeDnsClusters,omitempty" type:"Struct"`
 	BindVpcs            *DescribeZoneInfoResponseBodyBindVpcs            `json:"BindVpcs,omitempty" xml:"BindVpcs,omitempty" type:"Struct"`
-	// The time when the zone was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time when the zone was created.
 	//
 	// example:
 	//
-	// 2018-01-23T03:15Z
+	// 2024-07-15T09:40Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the zone was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp that indicates when the zone was created.
 	//
 	// example:
 	//
-	// 1516775741000
+	// 1721036404000
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
 	// The creator of the zone.
 	//
@@ -80,21 +80,21 @@ type DescribeZoneInfoResponseBody struct {
 	//
 	// USER
 	CreatorType *string `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
-	// The logical location type of the built-in authoritative module in which the zone is added. Valid values:
+	// The DNS group. Valid values:
 	//
-	// 	- **NORMAL_ZONE**: regular module
+	// - **NORMAL_ZONE**: Regular group
 	//
-	// 	- **FAST_ZONE**: acceleration module
+	// - **FAST_ZONE**: Fast group
 	//
 	// example:
 	//
 	// FAST_ZONE
 	DnsGroup *string `json:"DnsGroup,omitempty" xml:"DnsGroup,omitempty"`
-	// Indicates whether the zone is being removed to another logical location. Valid values:
+	// The status of switching the DNS group for the zone. You can switch a zone between the regular and fast groups. Valid values:
 	//
-	// 	- true
+	// - true: The DNS group is being switched.
 	//
-	// 	- false
+	// - false: The DNS group is not being switched.
 	//
 	// example:
 	//
@@ -102,37 +102,37 @@ type DescribeZoneInfoResponseBody struct {
 	DnsGroupChanging *bool `json:"DnsGroupChanging,omitempty" xml:"DnsGroupChanging,omitempty"`
 	// Indicates whether the zone is a reverse lookup zone. Valid values:
 	//
-	// 	- true
+	// - true: The zone is a reverse lookup zone.
 	//
-	// 	- false
+	// - false: The zone is not a reverse lookup zone.
 	//
 	// example:
 	//
 	// false
 	IsPtr *bool `json:"IsPtr,omitempty" xml:"IsPtr,omitempty"`
-	// Indicates whether the recursive resolution proxy for subdomain names is enabled. Valid values:
+	// Indicates whether the recursive proxy for subdomains is enabled.
 	//
-	// 	- ZONE: The recursive resolution proxy for subdomain names is disabled. In this case, NXDOMAIN is returned if the queried domain name does not exist in the zone.
+	// - ZONE: Disabled. If a non-existent subdomain is resolved, an NXDOMAIN response is returned to indicate that the subdomain does not exist.
 	//
-	// 	- RECORD: The recursive resolution proxy for subdomain names is enabled. In this case, if the queried domain name does not exist in the zone, DNS requests are recursively forwarded to the forward module and then to the recursion module until DNS results are returned.
+	// - RECORD: Enabled. If a non-existent subdomain is resolved, the system queries the forwarding and recursion modules in sequence and uses the final result to respond to the DNS query.
 	//
 	// example:
 	//
 	// ZONE
 	ProxyPattern *string `json:"ProxyPattern,omitempty" xml:"ProxyPattern,omitempty"`
-	// The total number of DNS records added in the zone.
+	// The total number of DNS records in the zone.
 	//
 	// example:
 	//
-	// 2
+	// 5
 	RecordCount *int32 `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
-	// The description of the zone.
+	// The remarks.
 	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
@@ -144,55 +144,55 @@ type DescribeZoneInfoResponseBody struct {
 	//
 	// rg-acfmykd63gt****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. Valid values:
+	// Indicates whether secondary DNS is enabled. Valid values:
 	//
-	// 	- **true**: The secondary DNS feature is enabled.
+	// - **true**: Enabled
 	//
-	// 	- **false**: The secondary DNS feature is disabled.
+	// - **false**: Disabled
 	//
 	// example:
 	//
-	// true
+	// false
 	SlaveDns *bool `json:"SlaveDns,omitempty" xml:"SlaveDns,omitempty"`
-	// The time when the zone was last updated. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time when the zone was last updated.
 	//
 	// example:
 	//
-	// 2018-01-24T06:35Z
+	// 2024-07-22T09:39Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The time when the zone was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp that indicates when the zone was last updated.
 	//
 	// example:
 	//
-	// 1516775741000
+	// 1721641148000
 	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	// The zone ID. This ID uniquely identifies the zone.
+	// The unique ID of the zone.
 	//
 	// example:
 	//
 	// df2d03865266bd9842306db586d3****
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The zone name.
+	// The name of the zone.
 	//
 	// example:
 	//
 	// zone-test.cn
 	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
-	// The tag added to the zone.
+	// The tag of the zone.
 	//
 	// example:
 	//
 	// pvtz
 	ZoneTag *string `json:"ZoneTag,omitempty" xml:"ZoneTag,omitempty"`
-	// The zone type. Valid values:
+	// The type of the zone. Valid values:
 	//
-	// 	- **AUTH_ZONE**: authoritative zone
+	// - **AUTH_ZONE**: Authoritative zone.
 	//
-	// 	- **CLOUD_PRODUCT_ZONE**: authoritative zone for cloud services
+	// - **CLOUD_PRODUCT_ZONE**: Authoritative zone for a cloud product.
 	//
 	// example:
 	//
-	// CLOUD_PRODUCT_ZONE
+	// AUTH_ZONE
 	ZoneType *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
 }
 

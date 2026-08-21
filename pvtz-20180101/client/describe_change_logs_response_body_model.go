@@ -25,35 +25,35 @@ type iDescribeChangeLogsResponseBody interface {
 
 type DescribeChangeLogsResponseBody struct {
 	ChangeLogs *DescribeChangeLogsResponseBodyChangeLogs `json:"ChangeLogs,omitempty" xml:"ChangeLogs,omitempty" type:"Struct"`
-	// The page number.
+	// The page number of the returned data.
 	//
 	// example:
 	//
-	// 2
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// F0FCB52A-D512-41A0-8595-40234EDCFD8B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of logs.
 	//
 	// example:
 	//
-	// 100
+	// 1
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
 	// The total number of pages returned.
 	//
 	// example:
 	//
-	// 100
+	// 1
 	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 

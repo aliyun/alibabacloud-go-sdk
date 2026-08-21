@@ -18,17 +18,17 @@ type iDescribeStatisticSummaryRequest interface {
 type DescribeStatisticSummaryRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// Default value: en.
 	//
 	// example:
 	//
-	// en
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The IP address of the client.
+	// The user\\"s IP address.
 	//
 	// example:
 	//

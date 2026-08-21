@@ -24,26 +24,37 @@ type iDescribeIntranetUserCanAnalysisVpcsResponseBody interface {
 }
 
 type DescribeIntranetUserCanAnalysisVpcsResponseBody struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 11
 	CurPage *int32 `json:"CurPage,omitempty" xml:"CurPage,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C6F1D541-E7A6-447A-A2B5-9F7A20B2A8FB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 0
 	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 35
-	TotalSize                     *int32                                                                        `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// A list of VPCs that the user can analyze.
 	UserCanAnalysisVpcsPopResults *DescribeIntranetUserCanAnalysisVpcsResponseBodyUserCanAnalysisVpcsPopResults `json:"UserCanAnalysisVpcsPopResults,omitempty" xml:"UserCanAnalysisVpcsPopResults,omitempty" type:"Struct"`
 }
 

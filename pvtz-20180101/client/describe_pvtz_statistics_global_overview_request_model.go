@@ -18,11 +18,16 @@ type iDescribePvtzStatisticsGlobalOverviewRequest interface {
 }
 
 type DescribePvtzStatisticsGlobalOverviewRequest struct {
+	// The network parameters.
 	NetworkParams []*DescribePvtzStatisticsGlobalOverviewRequestNetworkParams `json:"NetworkParams,omitempty" xml:"NetworkParams,omitempty" type:"Repeated"`
+	// The statistical period. Valid values: `DAY`, `WEEK`, and `MONTH`.
+	//
 	// example:
 	//
 	// DAY, WEEK, MONTH
 	OverviewPeriod *string `json:"OverviewPeriod,omitempty" xml:"OverviewPeriod,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -78,20 +83,30 @@ func (s *DescribePvtzStatisticsGlobalOverviewRequest) Validate() error {
 }
 
 type DescribePvtzStatisticsGlobalOverviewRequestNetworkParams struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hongkong
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-bp1y5y4wk5810n50cx765
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the VPC belongs.
+	//
 	// example:
 	//
 	// 5924158341670144
 	VpcOwner *string `json:"VpcOwner,omitempty" xml:"VpcOwner,omitempty"`
+	// The type of the VPC. Valid values:
+	//
+	// - **STANDARD**: standard VPC
+	//
+	// - **EDS**: Elastic Desktop Service (EDS) VPC
+	//
 	// example:
 	//
 	// STANDARD

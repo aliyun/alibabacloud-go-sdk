@@ -26,9 +26,9 @@ type iListTagResourcesRequest interface {
 type ListTagResourcesRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// Default value: en.
 	//
@@ -36,19 +36,19 @@ type ListTagResourcesRequest struct {
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The token that is used to start the next query. It is returned in the response to the previous query.
 	//
 	// example:
 	//
 	// 23423****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The resource IDs, which are zone IDs. You can specify up to 50 zone IDs.
+	// A list of resource IDs. In this case, a list of zone IDs. You can specify up to 50 IDs.
 	//
 	// example:
 	//
 	// 97fe9321a476d0861f624d3f738dcc38
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type. Valid value: ZONE.
+	// The resource type. Set the value to ZONE.
 	//
 	// This parameter is required.
 	//
@@ -56,13 +56,13 @@ type ListTagResourcesRequest struct {
 	//
 	// ZONE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The number of entries per page. Maximum value: 200. Default value: 20.
+	// The number of entries to return on each page. Maximum value: 200. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The tags added to the resources.
+	// A list of tags.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -142,13 +142,13 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
-	// The key of tag N added to the resource.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N added to the resource.
+	// The value of the tag.
 	//
 	// example:
 	//

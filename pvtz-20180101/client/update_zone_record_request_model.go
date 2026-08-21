@@ -34,7 +34,7 @@ type iUpdateZoneRecordRequest interface {
 }
 
 type UpdateZoneRecordRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token that is used to ensure the idempotence of the request. The client generates the value, which must be unique among different requests. The token can contain a maximum of 64 ASCII characters.
 	//
 	// example:
 	//
@@ -42,31 +42,31 @@ type UpdateZoneRecordRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
-	// Default value: en.
+	// Default value: en
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The resolution line. Default value: default.
+	// The DNS resolution line. The default value is default.
 	//
 	// example:
 	//
 	// default
 	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	// The priority of the MX record. You can set priorities for different email servers. Valid values: 1 to 99. A smaller value indicates a higher priority.
+	// The priority of the MX record. You can set different priorities for mail servers. Valid values: 1 to 99. A smaller value indicates a higher priority.
 	//
-	// >  This parameter is required if the type of the DNS record is MX.
+	// > This parameter is required if the record type is MX.
 	//
 	// example:
 	//
-	// 60
+	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the DNS record. You can call the DescribeZoneRecords operation to query a list of DNS records.
+	// The ID of the DNS record. To obtain the ID, call the DescribeZoneRecords operation to query a list of DNS records.
 	//
 	// This parameter is required.
 	//
@@ -74,9 +74,9 @@ type UpdateZoneRecordRequest struct {
 	//
 	// 172223****
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The hostname. The hostname is the prefix of the subdomain name for zone. Example: www, @, \\	- (used for wildcard DNS resolution), and mail (used for specifying the mail server that receives emails).
+	// The host record. This is the prefix of a domain name. Common examples include www, @, \\	- (for wildcard DNS), and mail (for mailboxes).
 	//
-	// For example, if you want to resolve the domain name @.exmaple.com, you must set Rr to @ instead of leaving Rr empty.
+	// For example, to resolve @.example.com, set the host record to "@", not an empty string.
 	//
 	// This parameter is required.
 	//
@@ -84,29 +84,29 @@ type UpdateZoneRecordRequest struct {
 	//
 	// www
 	Rr *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
-	// The TTL period. Valid values: 5, 30, 60, 3600, 43200, and 86400. Unit: seconds.
+	// The time to live (TTL) in seconds (s). Valid values: 5, 30, 60, 3600 (1 hour), 43200 (12 hours), and 86400 (1 day).
 	//
 	// example:
 	//
 	// 60
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The type of the DNS record. Valid values:
+	// The type of the DNS record. The following types are supported:
 	//
-	// 	- **A**: An A record maps a domain name to an IPv4 address in the dotted decimal notation format.
+	// - **A**: Maps a domain name to an IPv4 address in dotted decimal notation.
 	//
-	// 	- **AAAA**: An AAAA record maps a domain name to an IPv6 address.
+	// - **AAAA**: Maps a domain name to an IPv6 address.
 	//
-	// 	- **CNAME**: A canonical name (CNAME) record maps a domain name to another domain name.
+	// - **CNAME**: Maps a domain name to another domain name.
 	//
-	// 	- **TXT**: A text (TXT) record usually serves as a Sender Policy Framework (SPF) record to prevent email spam. The record value of the TXT record can be up to 255 characters in length.
+	// - **TXT**: A text record. The text can be up to 255 characters in length. TXT records are often used for Sender Policy Framework (SPF) records to prevent spam.
 	//
-	// 	- **MX**: A mail exchanger (MX) record maps a domain name to the domain name of a mail server.
+	// - **MX**: Maps a domain name to the domain name of a mail server.
 	//
-	// 	- **PTR**: A pointer (PTR) record maps an IP address to a domain name.
+	// - **PTR**: Maps an IP address to a domain name.
 	//
-	// 	- **SRV**: A service (SRV) record specifies a server that hosts a specific service. Enter a record value in the format of Priority Weight Port Destination domain name. Separate these items with spaces.
+	// - **SRV**: A service record that specifies the server for a specific service. The format is: Priority Weight Port Target. Each part must be separated by a space.
 	//
-	// >  Before you add a PTR record, you must configure a reverse lookup zone. For more information, see [Add PTR records](https://help.aliyun.com/document_detail/2592976.html).
+	// > Before adding a PTR record, configure a reverse lookup zone. For more information, see [Reverse DNS lookup and PTR records](https://help.aliyun.com/document_detail/2592976.html)
 	//
 	// This parameter is required.
 	//
@@ -120,7 +120,7 @@ type UpdateZoneRecordRequest struct {
 	//
 	// 127.0.XX.XX
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	// The record value. You need to enter the record value based on the DNS record type.
+	// The record value. Enter a value that corresponds to the record type.
 	//
 	// This parameter is required.
 	//
@@ -128,7 +128,7 @@ type UpdateZoneRecordRequest struct {
 	//
 	// 192.16.XX.XX
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// The weight value of the address. You can set a different weight value for each address. This way, addresses are returned based on the weight values for DNS requests. A weight value must be an integer that ranges from 1 to 100.
+	// The weight of the record. Valid values are integers from 1 to 100. The default value is 1. You can set different weights for records to return IP addresses in proportion to their weights.
 	//
 	// example:
 	//

@@ -36,50 +36,50 @@ type iDescribeCustomLineInfoResponseBody interface {
 }
 
 type DescribeCustomLineInfoResponseBody struct {
-	// The time when the custom line was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2018-01-23T03:15Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the custom line was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The creation timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1516775741000
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The creator of the custom line.
+	// The creator.
 	//
 	// example:
 	//
 	// 260282302749096109
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The type of the creator. Valid values:
+	// The subtype of the creator. Valid values:
 	//
-	// 	- CUSTOM: Alibaba Cloud account
+	// - `CUSTOM`: Alibaba Cloud account
 	//
-	// 	- SUB: RAM user
+	// - `SUB`: RAM user
 	//
-	// 	- STS: assumed role that obtains the Security Token Service (STS) token of a RAM role
+	// - `STS`: assumed role
 	//
-	// 	- OTHER: other roles
+	// - `OTHER`: other roles
 	//
 	// example:
 	//
 	// CUSTOM
 	CreatorSubType *string `json:"CreatorSubType,omitempty" xml:"CreatorSubType,omitempty"`
-	// The role of the creator. Valid values:
+	// The creator type. Valid values:
 	//
-	// 	- USER: user
+	// - `USER`: user
 	//
-	// 	- SYSTEM: system
+	// - `SYSTEM`: system
 	//
 	// example:
 	//
 	// USER
 	CreatorType *string `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
 	Dnscategory *string `json:"Dnscategory,omitempty" xml:"Dnscategory,omitempty"`
-	// The IPv4 CIDR blocks.
+	// A list of IPv4 address segments.
 	Ipv4s []*string `json:"Ipv4s,omitempty" xml:"Ipv4s,omitempty" type:"Repeated"`
 	// The unique ID of the custom line.
 	//
@@ -87,7 +87,11 @@ type DescribeCustomLineInfoResponseBody struct {
 	//
 	// 100003
 	LineId *string `json:"LineId,omitempty" xml:"LineId,omitempty"`
-	// The name of the custom line.
+	// The custom line name.
+	//
+	// example:
+	//
+	// Test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The request ID.
 	//
@@ -95,13 +99,13 @@ type DescribeCustomLineInfoResponseBody struct {
 	//
 	// 0B7AD377-7E86-44A8-B9A8-53E8666E72FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The time when the custom line was updated. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The last update time.
 	//
 	// example:
 	//
 	// 2018-01-24T06:35Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The time when the custom line was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The last update timestamp in milliseconds.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iDescribeResolverAvailableZonesResponseBody interface {
 }
 
 type DescribeResolverAvailableZonesResponseBody struct {
-	// The queried zones.
+	// A list of zones and their resource statuses.
 	AvailableZones []*DescribeResolverAvailableZonesResponseBodyAvailableZones `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Repeated"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
@@ -72,11 +72,11 @@ type DescribeResolverAvailableZonesResponseBodyAvailableZones struct {
 	//
 	// cn-zhangjiakou-a
 	AzId *string `json:"AzId,omitempty" xml:"AzId,omitempty"`
-	// The state of resources in the zone. Valid values:
+	// The status of resources in the zone. Valid values:
 	//
-	// 	- NORMAL: The resources are in the normal state.
+	// - NORMAL: Normal
 	//
-	// 	- SOLD_OUT: The resources are sold out.
+	// - SOLD_OUT: Sold out
 	//
 	// example:
 	//

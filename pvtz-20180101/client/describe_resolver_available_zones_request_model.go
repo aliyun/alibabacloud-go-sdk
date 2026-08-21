@@ -26,9 +26,9 @@ type DescribeResolverAvailableZonesRequest struct {
 	AzId *string `json:"AzId,omitempty" xml:"AzId,omitempty"`
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// Default value: en.
 	//

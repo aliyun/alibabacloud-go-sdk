@@ -20,29 +20,29 @@ type iDescribeUserVpcAuthorizationsRequest interface {
 }
 
 type DescribeUserVpcAuthorizationsRequest struct {
-	// The authorization scope. Valid values:
+	// The authorization type. Valid values:
 	//
-	// 	- NORMAL: general authorization
+	// - NORMAL: A regular authorization.
 	//
-	// 	- CLOUD_PRODUCT: cloud service-related authorization
+	// - CLOUD_PRODUCT: An authorization for an Alibaba Cloud service.
 	//
 	// example:
 	//
 	// NORMAL
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The ID of the Alibaba Cloud account to which the permissions on the resources are granted.
+	// The ID of the Alibaba Cloud account that owns the authorized resources.
 	//
 	// example:
 	//
 	// 141339776561****
 	AuthorizedUserId *int64 `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. The value starts from 1. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries per page. The maximum value is 100. The default value is 20.
 	//
 	// example:
 	//

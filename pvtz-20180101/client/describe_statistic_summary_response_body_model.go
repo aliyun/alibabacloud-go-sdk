@@ -20,13 +20,13 @@ type iDescribeStatisticSummaryResponseBody interface {
 }
 
 type DescribeStatisticSummaryResponseBody struct {
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// A73F3BD0-B1A8-42A9-A9B6-689BBABC4891
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of requests from yesterday.
 	//
 	// example:
 	//

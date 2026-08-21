@@ -30,7 +30,7 @@ type DescribeZoneRecordsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
@@ -43,17 +43,17 @@ type DescribeZoneRecordsResponseBody struct {
 	//
 	// 7B07FBC3-3A53-4939-A3C6-2BDFE407BAB2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of DNS records.
 	//
 	// example:
 	//
 	// 100
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	// The total number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//
-	// 100
+	// 1
 	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
