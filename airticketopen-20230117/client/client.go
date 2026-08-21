@@ -2229,6 +2229,990 @@ func (client *Client) StandardSearch(request *StandardSearchRequest) (_result *S
 
 // Summary:
 //
+// 申请退款。
+//
+// @param request - TicketApplyRefundRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TicketApplyRefundResponse
+func (client *Client) TicketApplyRefundWithOptions(request *TicketApplyRefundRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TicketApplyRefundResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.DistributorOrderId) {
+		body["DistributorOrderId"] = request.DistributorOrderId
+	}
+
+	if !dara.IsNil(request.RefundReason) {
+		body["RefundReason"] = request.RefundReason
+	}
+
+	if !dara.IsNil(request.RefundRemark) {
+		body["RefundRemark"] = request.RefundRemark
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TicketApplyRefund"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/TicketApplyRefund"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TicketApplyRefundResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 申请退款。
+//
+// @param request - TicketApplyRefundRequest
+//
+// @return TicketApplyRefundResponse
+func (client *Client) TicketApplyRefund(request *TicketApplyRefundRequest) (_result *TicketApplyRefundResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TicketApplyRefundResponse{}
+	_body, _err := client.TicketApplyRefundWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消订单。
+//
+// @param request - TicketCancelOrderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TicketCancelOrderResponse
+func (client *Client) TicketCancelOrderWithOptions(request *TicketCancelOrderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TicketCancelOrderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.DistributorOrderId) {
+		body["DistributorOrderId"] = request.DistributorOrderId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TicketCancelOrder"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/TicketCancelOrder"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TicketCancelOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消订单。
+//
+// @param request - TicketCancelOrderRequest
+//
+// @return TicketCancelOrderResponse
+func (client *Client) TicketCancelOrder(request *TicketCancelOrderRequest) (_result *TicketCancelOrderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TicketCancelOrderResponse{}
+	_body, _err := client.TicketCancelOrderWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 检查退款。
+//
+// @param request - TicketCheckRefundRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TicketCheckRefundResponse
+func (client *Client) TicketCheckRefundWithOptions(request *TicketCheckRefundRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TicketCheckRefundResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.DistributorOrderId) {
+		body["DistributorOrderId"] = request.DistributorOrderId
+	}
+
+	if !dara.IsNil(request.RefundReason) {
+		body["RefundReason"] = request.RefundReason
+	}
+
+	if !dara.IsNil(request.RefundRemark) {
+		body["RefundRemark"] = request.RefundRemark
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TicketCheckRefund"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/TicketCheckRefund"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TicketCheckRefundResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 检查退款。
+//
+// @param request - TicketCheckRefundRequest
+//
+// @return TicketCheckRefundResponse
+func (client *Client) TicketCheckRefund(request *TicketCheckRefundRequest) (_result *TicketCheckRefundResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TicketCheckRefundResponse{}
+	_body, _err := client.TicketCheckRefundWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建订单。
+//
+// @param tmpReq - TicketCreateOrderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TicketCreateOrderResponse
+func (client *Client) TicketCreateOrderWithOptions(tmpReq *TicketCreateOrderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TicketCreateOrderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &TicketCreateOrderShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Contact) {
+		request.ContactShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Contact, dara.String("Contact"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.OrderProduct) {
+		request.OrderProductShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OrderProduct, dara.String("OrderProduct"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TotalDistributionPrice) {
+		request.TotalDistributionPriceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TotalDistributionPrice, dara.String("TotalDistributionPrice"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Travelers) {
+		request.TravelersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Travelers, dara.String("Travelers"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.ContactShrink) {
+		body["Contact"] = request.ContactShrink
+	}
+
+	if !dara.IsNil(request.DistributorOrderId) {
+		body["DistributorOrderId"] = request.DistributorOrderId
+	}
+
+	if !dara.IsNil(request.OrderProductShrink) {
+		body["OrderProduct"] = request.OrderProductShrink
+	}
+
+	if !dara.IsNil(request.Quantity) {
+		body["Quantity"] = request.Quantity
+	}
+
+	if !dara.IsNil(request.TotalDistributionPriceShrink) {
+		body["TotalDistributionPrice"] = request.TotalDistributionPriceShrink
+	}
+
+	if !dara.IsNil(request.TravelersShrink) {
+		body["Travelers"] = request.TravelersShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TicketCreateOrder"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/TicketCreateOrder"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TicketCreateOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建订单。
+//
+// @param request - TicketCreateOrderRequest
+//
+// @return TicketCreateOrderResponse
+func (client *Client) TicketCreateOrder(request *TicketCreateOrderRequest) (_result *TicketCreateOrderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TicketCreateOrderResponse{}
+	_body, _err := client.TicketCreateOrderWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询门票产品。
+//
+// @param request - TicketPageQueryProductRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TicketPageQueryProductResponse
+func (client *Client) TicketPageQueryProductWithOptions(request *TicketPageQueryProductRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TicketPageQueryProductResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		body["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ScenicId) {
+		body["ScenicId"] = request.ScenicId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TicketPageQueryProduct"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/TicketPageQueryProduct"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TicketPageQueryProductResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询门票产品。
+//
+// @param request - TicketPageQueryProductRequest
+//
+// @return TicketPageQueryProductResponse
+func (client *Client) TicketPageQueryProduct(request *TicketPageQueryProductRequest) (_result *TicketPageQueryProductResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TicketPageQueryProductResponse{}
+	_body, _err := client.TicketPageQueryProductWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询景区。
+//
+// @param request - TicketPageQueryScenicRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TicketPageQueryScenicResponse
+func (client *Client) TicketPageQueryScenicWithOptions(request *TicketPageQueryScenicRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TicketPageQueryScenicResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		body["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TicketPageQueryScenic"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/TicketPageQueryScenic"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TicketPageQueryScenicResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询景区。
+//
+// @param request - TicketPageQueryScenicRequest
+//
+// @return TicketPageQueryScenicResponse
+func (client *Client) TicketPageQueryScenic(request *TicketPageQueryScenicRequest) (_result *TicketPageQueryScenicResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TicketPageQueryScenicResponse{}
+	_body, _err := client.TicketPageQueryScenicWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 支付订单。
+//
+// @param request - TicketPayOrderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TicketPayOrderResponse
+func (client *Client) TicketPayOrderWithOptions(request *TicketPayOrderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TicketPayOrderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.DistributorOrderId) {
+		body["DistributorOrderId"] = request.DistributorOrderId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TicketPayOrder"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/TicketPayOrder"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TicketPayOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 支付订单。
+//
+// @param request - TicketPayOrderRequest
+//
+// @return TicketPayOrderResponse
+func (client *Client) TicketPayOrder(request *TicketPayOrderRequest) (_result *TicketPayOrderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TicketPayOrderResponse{}
+	_body, _err := client.TicketPayOrderWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询订单。
+//
+// @param request - TicketQueryOrderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TicketQueryOrderResponse
+func (client *Client) TicketQueryOrderWithOptions(request *TicketQueryOrderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TicketQueryOrderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.DistributorOrderId) {
+		body["DistributorOrderId"] = request.DistributorOrderId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TicketQueryOrder"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/TicketQueryOrder"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TicketQueryOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询订单。
+//
+// @param request - TicketQueryOrderRequest
+//
+// @return TicketQueryOrderResponse
+func (client *Client) TicketQueryOrder(request *TicketQueryOrderRequest) (_result *TicketQueryOrderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TicketQueryOrderResponse{}
+	_body, _err := client.TicketQueryOrderWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询门票价库。
+//
+// @param request - TicketQueryPriceStockRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TicketQueryPriceStockResponse
+func (client *Client) TicketQueryPriceStockWithOptions(request *TicketQueryPriceStockRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TicketQueryPriceStockResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.ProductId) {
+		body["ProductId"] = request.ProductId
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["StartDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TicketQueryPriceStock"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/TicketQueryPriceStock"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TicketQueryPriceStockResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询门票价库。
+//
+// @param request - TicketQueryPriceStockRequest
+//
+// @return TicketQueryPriceStockResponse
+func (client *Client) TicketQueryPriceStock(request *TicketQueryPriceStockRequest) (_result *TicketQueryPriceStockResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TicketQueryPriceStockResponse{}
+	_body, _err := client.TicketQueryPriceStockWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询门票产品。
+//
+// @param request - TicketQueryProductRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TicketQueryProductResponse
+func (client *Client) TicketQueryProductWithOptions(request *TicketQueryProductRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TicketQueryProductResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.ProductId) {
+		body["ProductId"] = request.ProductId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TicketQueryProduct"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/TicketQueryProduct"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TicketQueryProductResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询门票产品。
+//
+// @param request - TicketQueryProductRequest
+//
+// @return TicketQueryProductResponse
+func (client *Client) TicketQueryProduct(request *TicketQueryProductRequest) (_result *TicketQueryProductResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TicketQueryProductResponse{}
+	_body, _err := client.TicketQueryProductWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询退款单。
+//
+// @param request - TicketQueryRefundOrderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TicketQueryRefundOrderResponse
+func (client *Client) TicketQueryRefundOrderWithOptions(request *TicketQueryRefundOrderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TicketQueryRefundOrderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.DistributorOrderId) {
+		body["DistributorOrderId"] = request.DistributorOrderId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TicketQueryRefundOrder"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/TicketQueryRefundOrder"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TicketQueryRefundOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询退款单。
+//
+// @param request - TicketQueryRefundOrderRequest
+//
+// @return TicketQueryRefundOrderResponse
+func (client *Client) TicketQueryRefundOrder(request *TicketQueryRefundOrderRequest) (_result *TicketQueryRefundOrderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TicketQueryRefundOrderResponse{}
+	_body, _err := client.TicketQueryRefundOrderWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询门票景区。
+//
+// @param request - TicketQueryScenicRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TicketQueryScenicResponse
+func (client *Client) TicketQueryScenicWithOptions(request *TicketQueryScenicRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TicketQueryScenicResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.ScenicId) {
+		body["ScenicId"] = request.ScenicId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TicketQueryScenic"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/TicketQueryScenic"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TicketQueryScenicResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询门票景区。
+//
+// @param request - TicketQueryScenicRequest
+//
+// @return TicketQueryScenicResponse
+func (client *Client) TicketQueryScenic(request *TicketQueryScenicRequest) (_result *TicketQueryScenicResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TicketQueryScenicResponse{}
+	_body, _err := client.TicketQueryScenicWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询货架。
+//
+// @param request - TicketQueryShelfRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TicketQueryShelfResponse
+func (client *Client) TicketQueryShelfWithOptions(request *TicketQueryShelfRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TicketQueryShelfResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNo) {
+		body["AccountNo"] = request.AccountNo
+	}
+
+	if !dara.IsNil(request.ScenicId) {
+		body["ScenicId"] = request.ScenicId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TicketQueryShelf"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/TicketQueryShelf"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TicketQueryShelfResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询货架。
+//
+// @param request - TicketQueryShelfRequest
+//
+// @return TicketQueryShelfResponse
+func (client *Client) TicketQueryShelf(request *TicketQueryShelfRequest) (_result *TicketQueryShelfResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TicketQueryShelfResponse{}
+	_body, _err := client.TicketQueryShelfWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Pays for and issues a ticket.
 //
 // @param request - TicketingRequest

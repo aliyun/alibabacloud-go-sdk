@@ -530,7 +530,7 @@ func (s *GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicy) Validate() e
 }
 
 type GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties struct {
-	// The currency code (present only for AMOUNT type penalties).
+	// The currency code (present only for AMOUNT type).
 	//
 	// example:
 	//
@@ -548,7 +548,7 @@ type GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties struct {
 	//
 	// PERCENTAGE
 	PenaltyType *string `json:"PenaltyType,omitempty" xml:"PenaltyType,omitempty"`
-	// The penalty value (percentage, amount, or number of nights).
+	// The penalty value (percentage/amount/number of nights).
 	//
 	// example:
 	//

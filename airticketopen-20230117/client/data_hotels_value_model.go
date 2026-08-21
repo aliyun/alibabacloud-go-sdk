@@ -781,7 +781,7 @@ type DataHotelsValueOffers struct {
 	//
 	// example:
 	//
-	// Breakfast included
+	// Breakfast Included
 	RatePlanName *string `json:"RatePlanName,omitempty" xml:"RatePlanName,omitempty"`
 	// The meal type.
 	//
@@ -1008,13 +1008,13 @@ func (s *DataHotelsValueOffersCancelPolicy) Validate() error {
 }
 
 type DataHotelsValueOffersCancelPolicyPenalties struct {
-	// The effective start time (UTC millisecond timestamp).
+	// The effective start time as a UTC millisecond timestamp.
 	//
 	// example:
 	//
 	// 1672531200000
 	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
-	// The effective end time (UTC millisecond timestamp).
+	// The effective end time as a UTC millisecond timestamp.
 	//
 	// example:
 	//
@@ -1032,7 +1032,7 @@ type DataHotelsValueOffersCancelPolicyPenalties struct {
 	//
 	// 50
 	PenaltyValue *string `json:"PenaltyValue,omitempty" xml:"PenaltyValue,omitempty"`
-	// The currency code. This field has a value only when the penalty type is AMOUNT.
+	// The currency code. This field is present only when the penalty type is AMOUNT.
 	//
 	// example:
 	//

@@ -44,7 +44,7 @@ type GlobalHotelCancelOrRefundResponseBody struct {
 	//
 	// 260E4F99-983D-1919-834C-5C42E98E5B2B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//
@@ -130,13 +130,15 @@ func (s *GlobalHotelCancelOrRefundResponseBody) Validate() error {
 }
 
 type GlobalHotelCancelOrRefundResponseBodyData struct {
+	// The after-sales refund order number. This parameter is returned when an after-sales refund is processed and can be used for polling the refund status. This parameter is null when a cancellation is processed.
+	//
 	// example:
 	//
 	// RF202606290001
 	RefundOrderNo *string `json:"RefundOrderNo,omitempty" xml:"RefundOrderNo,omitempty"`
-	// The total penalty amount on the sales side.
+	// The total penalty amount on the sales side. This parameter is returned when an after-sales refund is processed.
 	TotalPenaltyAmount *GlobalHotelCancelOrRefundResponseBodyDataTotalPenaltyAmount `json:"TotalPenaltyAmount,omitempty" xml:"TotalPenaltyAmount,omitempty" type:"Struct"`
-	// The total refund amount.
+	// The total refund amount. This parameter is returned when an after-sales refund is processed. The value equals the total sales price minus the total penalty amount.
 	TotalRefundAmount *GlobalHotelCancelOrRefundResponseBodyDataTotalRefundAmount `json:"TotalRefundAmount,omitempty" xml:"TotalRefundAmount,omitempty" type:"Struct"`
 	// TraceId
 	//

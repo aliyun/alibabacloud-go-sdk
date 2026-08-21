@@ -28,13 +28,13 @@ type GlobalHotelQueryOrderRequest struct {
 	//
 	// 123456
 	AccountNo *int64 `json:"AccountNo,omitempty" xml:"AccountNo,omitempty"`
-	// The external order number. You must specify at least one of ExternalOrderNo and OrderNo.
+	// The external order number. At least one of ExternalOrderNo and OrderNo is required.
 	//
 	// example:
 	//
 	// EXT_ORDER_001
 	ExternalOrderNo *string `json:"ExternalOrderNo,omitempty" xml:"ExternalOrderNo,omitempty"`
-	// The sales order number. You must specify at least one of OrderNo and ExternalOrderNo.
+	// The sales order number. At least one of OrderNo and ExternalOrderNo is required.
 	//
 	// example:
 	//
