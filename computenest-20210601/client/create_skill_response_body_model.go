@@ -26,7 +26,7 @@ type CreateSkillResponseBody struct {
 	//
 	// example:
 	//
-	// s-051j4ot2aerr5dyc4
+	// s-xxxxx
 	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
 }
 

@@ -27,8 +27,13 @@ type iGenerateServicePolicyRequest interface {
 
 type GenerateServicePolicyRequest struct {
 	// The operation types for which policy information needs to be generated.
-	OperationTypes []*string              `json:"OperationTypes,omitempty" xml:"OperationTypes,omitempty" type:"Repeated"`
-	Parameters     map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	OperationTypes []*string `json:"OperationTypes,omitempty" xml:"OperationTypes,omitempty" type:"Repeated"`
+	// The parameters required to check the deployment permissions of the service instance.
+	//
+	// example:
+	//
+	// {\\"EnablePublicIp\\":null,\\"DeploymentMode\\":\\"ExistingECS\\",\\"ExistingInstanceId\\":\\"i-bp1cg4t5o9kol5tdiw1q\\",\\"RegionId\\":\\"cn-hangzhou\\",\\"InternetChargeType\\":\\"PayByTraffic\\"}
+	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -55,7 +60,7 @@ type GenerateServicePolicyRequest struct {
 	//
 	// example:
 	//
-	// Template 1
+	// 模板1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The trial type. Default value: NotTrial. Valid values:
 	//

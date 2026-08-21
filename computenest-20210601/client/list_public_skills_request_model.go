@@ -28,7 +28,7 @@ type ListPublicSkillsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Specifies whether to include the download URL of the skill package.
+	// Specifies whether to include the download URL for the skill package.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type ListPublicSkillsRequestFilter struct {
 	//
 	// - MatchType: the match type that controls how SkillName is matched. Valid values: exact, prefix, and fuzzy.
 	//
-	// - Keyword: keyword match for the skill name or skill description. Fuzzy match.
+	// - Keyword: keyword match against the skill name or skill description. Fuzzy match.
 	//
 	// - SkillLabels: the skill label set. Fuzzy match.
 	//

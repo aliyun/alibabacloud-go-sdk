@@ -22,19 +22,19 @@ type iListSkillSpacesResponseBody interface {
 }
 
 type ListSkillSpacesResponseBody struct {
-	// The number of entries returned per page.
+	// The maximum number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page of results. If this parameter is not returned, no more results are available.
+	// The token for the next page.
 	//
 	// example:
 	//
 	// AAAAAWns8w4MmhzeptXVRG0PUEU=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -117,31 +117,31 @@ func (s *ListSkillSpacesResponseBody) Validate() error {
 }
 
 type ListSkillSpacesResponseBodySkillSpaces struct {
-	// The time when the SkillSpace was created. The time is in UTC.
+	// The time when the SkillSpace was created.
 	//
 	// example:
 	//
 	// 2025-11-03T22:58:52Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The SkillSpace description.
+	// The description of the SkillSpace.
 	//
 	// example:
 	//
-	// 1111
+	// All-in-one office toolkit — generate reports, process data, manage files, and streamline workflows effortlessly.
 	SkillSpaceDescription *string `json:"SkillSpaceDescription,omitempty" xml:"SkillSpaceDescription,omitempty"`
-	// The SkillSpace ID.
+	// SkillSpace ID
 	//
 	// example:
 	//
-	// ss-111111
+	// ss-xxxxx
 	SkillSpaceId *string `json:"SkillSpaceId,omitempty" xml:"SkillSpaceId,omitempty"`
-	// The SkillSpace name.
+	// The name of the SkillSpace.
 	//
 	// example:
 	//
-	// 1111
+	// office-toolkit-skills
 	SkillSpaceName *string `json:"SkillSpaceName,omitempty" xml:"SkillSpaceName,omitempty"`
-	// The time when the SkillSpace was last updated. The time is in UTC.
+	// The time when the SkillSpace was last updated.
 	//
 	// example:
 	//

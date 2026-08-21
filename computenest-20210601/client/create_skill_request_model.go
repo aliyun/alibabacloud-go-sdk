@@ -13,6 +13,8 @@ type iCreateSkillRequest interface {
 	GetClientToken() *string
 	SetOssUrl(v string) *CreateSkillRequest
 	GetOssUrl() *string
+	SetRequiredConnections(v []*string) *CreateSkillRequest
+	GetRequiredConnections() []*string
 	SetSkillDescription(v string) *CreateSkillRequest
 	GetSkillDescription() *string
 	SetSkillDisplayName(v string) *CreateSkillRequest
@@ -40,16 +42,18 @@ type CreateSkillRequest struct {
 	//
 	// example:
 	//
-	// https://embedding-pic.oss-cn-beijing-internal.aliyuncs.com/30516570
+	// https://embedding-pic.oss-cn-beijing-internal.aliyuncs.com/skill-creator.zip
 	OssUrl *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
+	// The set of connection types that the Skill depends on.
+	RequiredConnections []*string `json:"RequiredConnections,omitempty" xml:"RequiredConnections,omitempty" type:"Repeated"`
 	// The Skill description.
 	//
 	// example:
 	//
-	// 11111
+	// Create new skills, modify and improve existing skills, and measure skill performance
 	SkillDescription *string `json:"SkillDescription,omitempty" xml:"SkillDescription,omitempty"`
 	SkillDisplayName *string `json:"SkillDisplayName,omitempty" xml:"SkillDisplayName,omitempty"`
-	// The Skill labels.
+	// The set of Skill labels.
 	//
 	// example:
 	//
@@ -59,7 +63,7 @@ type CreateSkillRequest struct {
 	//
 	// example:
 	//
-	// 11111
+	// skill-creator
 	SkillName *string `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
 	// The ID of the SkillSpace to which the Skill belongs.
 	//
@@ -67,15 +71,15 @@ type CreateSkillRequest struct {
 	//
 	// example:
 	//
-	// ss-111111
+	// ss-xxxxx
 	SkillSpaceId *string `json:"SkillSpaceId,omitempty" xml:"SkillSpaceId,omitempty"`
 	// The public Skill ID. This parameter is required when SourceType is set to COPY.
 	//
 	// example:
 	//
-	// s-11111
+	// s-xxxxx
 	SourceSkillId *string `json:"SourceSkillId,omitempty" xml:"SourceSkillId,omitempty"`
-	// The source type used when creating the Skill.
+	// The source type for creating the Skill.
 	//
 	// This parameter is required.
 	//
@@ -99,6 +103,10 @@ func (s *CreateSkillRequest) GetClientToken() *string {
 
 func (s *CreateSkillRequest) GetOssUrl() *string {
 	return s.OssUrl
+}
+
+func (s *CreateSkillRequest) GetRequiredConnections() []*string {
+	return s.RequiredConnections
 }
 
 func (s *CreateSkillRequest) GetSkillDescription() *string {
@@ -136,6 +144,11 @@ func (s *CreateSkillRequest) SetClientToken(v string) *CreateSkillRequest {
 
 func (s *CreateSkillRequest) SetOssUrl(v string) *CreateSkillRequest {
 	s.OssUrl = &v
+	return s
+}
+
+func (s *CreateSkillRequest) SetRequiredConnections(v []*string) *CreateSkillRequest {
+	s.RequiredConnections = v
 	return s
 }
 

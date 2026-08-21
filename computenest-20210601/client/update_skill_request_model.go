@@ -13,6 +13,8 @@ type iUpdateSkillRequest interface {
 	GetClientToken() *string
 	SetOssUrl(v string) *UpdateSkillRequest
 	GetOssUrl() *string
+	SetRequiredConnections(v []*string) *UpdateSkillRequest
+	GetRequiredConnections() []*string
 	SetSkillDescription(v string) *UpdateSkillRequest
 	GetSkillDescription() *string
 	SetSkillDisplayName(v string) *UpdateSkillRequest
@@ -40,13 +42,15 @@ type UpdateSkillRequest struct {
 	//
 	// example:
 	//
-	// https://embedding-pic.oss-cn-beijing-internal.aliyuncs.com/30516570
+	// https://embedding-pic.oss-cn-beijing-internal.aliyuncs.com/skill-creator1.zip
 	OssUrl *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
+	// The collection of connection types required by the skill.
+	RequiredConnections []*string `json:"RequiredConnections,omitempty" xml:"RequiredConnections,omitempty" type:"Repeated"`
 	// The description of the skill.
 	//
 	// example:
 	//
-	// 11111
+	// Create new skills.
 	SkillDescription *string `json:"SkillDescription,omitempty" xml:"SkillDescription,omitempty"`
 	SkillDisplayName *string `json:"SkillDisplayName,omitempty" xml:"SkillDisplayName,omitempty"`
 	// The ID of the skill to update.
@@ -55,7 +59,7 @@ type UpdateSkillRequest struct {
 	//
 	// example:
 	//
-	// 06e9dca2-0ac9-4d2e-a965-e9db9c057e00
+	// s-xxxxx
 	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
 	// The labels of the skill.
 	SkillLabels []*string `json:"SkillLabels,omitempty" xml:"SkillLabels,omitempty" type:"Repeated"`
@@ -63,13 +67,13 @@ type UpdateSkillRequest struct {
 	//
 	// example:
 	//
-	// 111111
+	// skill-creator
 	SkillName *string `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
 	// Required when SourceType is set to COPY. The ID of the public skill.
 	//
 	// example:
 	//
-	// s-111
+	// s-xxxxx
 	SourceSkillId *string `json:"SourceSkillId,omitempty" xml:"SourceSkillId,omitempty"`
 	// The source type for updating the skill.
 	//
@@ -93,6 +97,10 @@ func (s *UpdateSkillRequest) GetClientToken() *string {
 
 func (s *UpdateSkillRequest) GetOssUrl() *string {
 	return s.OssUrl
+}
+
+func (s *UpdateSkillRequest) GetRequiredConnections() []*string {
+	return s.RequiredConnections
 }
 
 func (s *UpdateSkillRequest) GetSkillDescription() *string {
@@ -130,6 +138,11 @@ func (s *UpdateSkillRequest) SetClientToken(v string) *UpdateSkillRequest {
 
 func (s *UpdateSkillRequest) SetOssUrl(v string) *UpdateSkillRequest {
 	s.OssUrl = &v
+	return s
+}
+
+func (s *UpdateSkillRequest) SetRequiredConnections(v []*string) *UpdateSkillRequest {
+	s.RequiredConnections = v
 	return s
 }
 

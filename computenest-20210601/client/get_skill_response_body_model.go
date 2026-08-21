@@ -15,6 +15,10 @@ type iGetSkillResponseBody interface {
 	GetLocales() []*GetSkillResponseBodyLocales
 	SetRequestId(v string) *GetSkillResponseBody
 	GetRequestId() *string
+	SetRequiredConnections(v []*string) *GetSkillResponseBody
+	GetRequiredConnections() []*string
+	SetSecurityScanStatus(v string) *GetSkillResponseBody
+	GetSecurityScanStatus() *string
 	SetSkillDescription(v string) *GetSkillResponseBody
 	GetSkillDescription() *string
 	SetSkillDisplayName(v string) *GetSkillResponseBody
@@ -32,7 +36,7 @@ type iGetSkillResponseBody interface {
 }
 
 type GetSkillResponseBody struct {
-	// The time when the Skill was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -47,34 +51,39 @@ type GetSkillResponseBody struct {
 	//
 	// 13FE89A5-C036-56BF-A0FF-A31C59819FD7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The set of connection types required by the Skill.
+	RequiredConnections []*string `json:"RequiredConnections,omitempty" xml:"RequiredConnections,omitempty" type:"Repeated"`
+	// The security scan status of the source file.
+	SecurityScanStatus *string `json:"SecurityScanStatus,omitempty" xml:"SecurityScanStatus,omitempty"`
 	// The Skill description.
 	//
 	// example:
 	//
-	// 11111111
+	// Create new skills, modify and improve existing skills, and measure skill performance.
 	SkillDescription *string `json:"SkillDescription,omitempty" xml:"SkillDescription,omitempty"`
+	// The Skill display name.
 	SkillDisplayName *string `json:"SkillDisplayName,omitempty" xml:"SkillDisplayName,omitempty"`
 	// Skill ID
 	//
 	// example:
 	//
-	// s-04zzrgosj6xd11yah
+	// s-xxxxx
 	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
-	// The Skill labels.
+	// The set of Skill labels.
 	SkillLabels []*string `json:"SkillLabels,omitempty" xml:"SkillLabels,omitempty" type:"Repeated"`
 	// The Skill name.
 	//
 	// example:
 	//
-	// skill-hello
+	// skill-creator
 	SkillName *string `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
 	// The ID of the SkillSpace to which the Skill belongs.
 	//
 	// example:
 	//
-	// ss-111111111
+	// ss-xxxxx
 	SkillSpaceId *string `json:"SkillSpaceId,omitempty" xml:"SkillSpaceId,omitempty"`
-	// The time when the Skill was last updated.
+	// The update time.
 	//
 	// example:
 	//
@@ -100,6 +109,14 @@ func (s *GetSkillResponseBody) GetLocales() []*GetSkillResponseBodyLocales {
 
 func (s *GetSkillResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *GetSkillResponseBody) GetRequiredConnections() []*string {
+	return s.RequiredConnections
+}
+
+func (s *GetSkillResponseBody) GetSecurityScanStatus() *string {
+	return s.SecurityScanStatus
 }
 
 func (s *GetSkillResponseBody) GetSkillDescription() *string {
@@ -142,6 +159,16 @@ func (s *GetSkillResponseBody) SetLocales(v []*GetSkillResponseBodyLocales) *Get
 
 func (s *GetSkillResponseBody) SetRequestId(v string) *GetSkillResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetSkillResponseBody) SetRequiredConnections(v []*string) *GetSkillResponseBody {
+	s.RequiredConnections = v
+	return s
+}
+
+func (s *GetSkillResponseBody) SetSecurityScanStatus(v string) *GetSkillResponseBody {
+	s.SecurityScanStatus = &v
 	return s
 }
 

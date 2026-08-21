@@ -16,13 +16,13 @@ type iCreateSkillFileDetectResponseBody interface {
 }
 
 type CreateSkillFileDetectResponseBody struct {
-	// The unique identifier for the detection task.
+	// The unique identifier of the current detection task.
 	//
 	// example:
 	//
 	// 2aceb074-fa72-44d2-99d9-45b17cffe0e7
 	HashKey *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

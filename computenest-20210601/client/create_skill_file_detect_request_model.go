@@ -18,19 +18,19 @@ type iCreateSkillFileDetectRequest interface {
 }
 
 type CreateSkillFileDetectRequest struct {
-	// A unique, client-generated token to ensure request idempotence. **ClientToken*	- must contain only ASCII characters and be no longer than 64 characters.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The value of **ClientToken*	- can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The OSS URL of the compressed Skill package.
+	// The OSS URL of the Skill compressed file to be detected.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// https://embedding-pic.oss-cn-beijing-internal.aliyuncs.com/30516570.zip
+	// https://embedding-pic.oss-cn-beijing-internal.aliyuncs.com/skill-creator.zip
 	OssUrl *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
 	// The region ID.
 	//

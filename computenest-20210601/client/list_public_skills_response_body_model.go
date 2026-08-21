@@ -117,33 +117,38 @@ func (s *ListPublicSkillsResponseBody) Validate() error {
 }
 
 type ListPublicSkillsResponseBodySkills struct {
-	// The time when the skill was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-09-11T02:18:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The download URL of the skill package.
+	// The download URL for the skill package.
 	//
 	// example:
 	//
-	// https://testts-1.oss-cn-beijing.aliyuncs.com/app/yyb_9.1.1.zip
+	// https://embedding-pic.oss-cn-beijing-internal.aliyuncs.com/skill-creator.zip
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
 	// if can be null:
 	// true
 	Locales []*ListPublicSkillsResponseBodySkillsLocales `json:"Locales,omitempty" xml:"Locales,omitempty" type:"Repeated"`
+	// The set of connection types that the skill depends on.
+	RequiredConnections []*string `json:"RequiredConnections,omitempty" xml:"RequiredConnections,omitempty" type:"Repeated"`
+	// The security scan status of the source file.
+	SecurityScanStatus *string `json:"SecurityScanStatus,omitempty" xml:"SecurityScanStatus,omitempty"`
 	// The skill description.
 	//
 	// example:
 	//
-	// 11111
+	// Create new skills, modify and improve existing skills, and measure skill performance.
 	SkillDescription *string `json:"SkillDescription,omitempty" xml:"SkillDescription,omitempty"`
+	// The skill display name.
 	SkillDisplayName *string `json:"SkillDisplayName,omitempty" xml:"SkillDisplayName,omitempty"`
 	// Skill ID
 	//
 	// example:
 	//
-	// af7e49d9-277f-454a-afc5-1513d41cac31
+	// s-xxxxx
 	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
 	// The skill label set.
 	SkillLabels []*string `json:"SkillLabels,omitempty" xml:"SkillLabels,omitempty" type:"Repeated"`
@@ -151,15 +156,15 @@ type ListPublicSkillsResponseBodySkills struct {
 	//
 	// example:
 	//
-	// ziptest
+	// skill-creator
 	SkillName *string `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
 	// The ID of the SkillSpace to which the skill belongs.
 	//
 	// example:
 	//
-	// ss-1111111
+	// ss-xxxxx
 	SkillSpaceId *string `json:"SkillSpaceId,omitempty" xml:"SkillSpaceId,omitempty"`
-	// The time when the skill was last updated.
+	// The update time.
 	//
 	// example:
 	//
@@ -185,6 +190,14 @@ func (s *ListPublicSkillsResponseBodySkills) GetDownloadUrl() *string {
 
 func (s *ListPublicSkillsResponseBodySkills) GetLocales() []*ListPublicSkillsResponseBodySkillsLocales {
 	return s.Locales
+}
+
+func (s *ListPublicSkillsResponseBodySkills) GetRequiredConnections() []*string {
+	return s.RequiredConnections
+}
+
+func (s *ListPublicSkillsResponseBodySkills) GetSecurityScanStatus() *string {
+	return s.SecurityScanStatus
 }
 
 func (s *ListPublicSkillsResponseBodySkills) GetSkillDescription() *string {
@@ -227,6 +240,16 @@ func (s *ListPublicSkillsResponseBodySkills) SetDownloadUrl(v string) *ListPubli
 
 func (s *ListPublicSkillsResponseBodySkills) SetLocales(v []*ListPublicSkillsResponseBodySkillsLocales) *ListPublicSkillsResponseBodySkills {
 	s.Locales = v
+	return s
+}
+
+func (s *ListPublicSkillsResponseBodySkills) SetRequiredConnections(v []*string) *ListPublicSkillsResponseBodySkills {
+	s.RequiredConnections = v
+	return s
+}
+
+func (s *ListPublicSkillsResponseBodySkills) SetSecurityScanStatus(v string) *ListPublicSkillsResponseBodySkills {
+	s.SecurityScanStatus = &v
 	return s
 }
 

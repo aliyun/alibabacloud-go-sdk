@@ -772,7 +772,7 @@ func (client *Client) CreateServiceUsage(request *CreateServiceUsageRequest) (_r
 //
 // ### Before you begin
 //
-// Make sure that the service provider has enabled the Upgrade/Downgrade feature and completed the specification change parameter settings when creating the service.
+// Confirm that the service provider has enabled the Upgrade/Downgrade feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - CreateSkillRequest
 //
@@ -789,6 +789,10 @@ func (client *Client) CreateSkillWithOptions(request *CreateSkillRequest, runtim
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OssUrl) {
 		query["OssUrl"] = request.OssUrl
+	}
+
+	if !dara.IsNil(request.RequiredConnections) {
+		query["RequiredConnections"] = request.RequiredConnections
 	}
 
 	if !dara.IsNil(request.SkillDescription) {
@@ -856,7 +860,7 @@ func (client *Client) CreateSkillWithOptions(request *CreateSkillRequest, runtim
 //
 // ### Before you begin
 //
-// Make sure that the service provider has enabled the Upgrade/Downgrade feature and completed the specification change parameter settings when creating the service.
+// Confirm that the service provider has enabled the Upgrade/Downgrade feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - CreateSkillRequest
 //
@@ -878,9 +882,9 @@ func (client *Client) CreateSkill(request *CreateSkillRequest) (_result *CreateS
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure that the service provider has enabled the modification feature and configured its parameters during service creation.
+// Make sure that the service provider has enabled the Upgrade/Downgrade feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - CreateSkillFileDetectRequest
 //
@@ -938,9 +942,9 @@ func (client *Client) CreateSkillFileDetectWithOptions(request *CreateSkillFileD
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure that the service provider has enabled the modification feature and configured its parameters during service creation.
+// Make sure that the service provider has enabled the Upgrade/Downgrade feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - CreateSkillFileDetectRequest
 //
@@ -1042,13 +1046,13 @@ func (client *Client) CreateSkillHubConfig(request *CreateSkillHubConfigRequest)
 
 // Summary:
 //
-// Creates a skill space.
+// Creates a SkillSpace.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure the service provider has enabled the modify configuration feature and set the required parameters during service creation.
+// Confirm that the service provider has enabled the Upgrade/Downgrade feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - CreateSkillSpaceRequest
 //
@@ -1102,13 +1106,13 @@ func (client *Client) CreateSkillSpaceWithOptions(request *CreateSkillSpaceReque
 
 // Summary:
 //
-// Creates a skill space.
+// Creates a SkillSpace.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure the service provider has enabled the modify configuration feature and set the required parameters during service creation.
+// Confirm that the service provider has enabled the Upgrade/Downgrade feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - CreateSkillSpaceRequest
 //
@@ -1270,13 +1274,13 @@ func (client *Client) DeleteServiceInstances(request *DeleteServiceInstancesRequ
 
 // Summary:
 //
-// Deletes a skill.
+// Deletes a Skill.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure the service provider has enabled the modification feature and configured the modification parameters when creating the service.
+// Make sure that the service provider has enabled the Upgrade/Downgrade feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - DeleteSkillRequest
 //
@@ -1326,13 +1330,13 @@ func (client *Client) DeleteSkillWithOptions(request *DeleteSkillRequest, runtim
 
 // Summary:
 //
-// Deletes a skill.
+// Deletes a Skill.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure the service provider has enabled the modification feature and configured the modification parameters when creating the service.
+// Make sure that the service provider has enabled the Upgrade/Downgrade feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - DeleteSkillRequest
 //
@@ -1350,13 +1354,13 @@ func (client *Client) DeleteSkill(request *DeleteSkillRequest) (_result *DeleteS
 
 // Summary:
 //
-// Deletes a SkillSpace.
+// Deletes a Skill workspace.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure that the service provider enabled the modify configuration feature and set the required parameters during service creation.
+// Confirm that the service provider has enabled the Upgrade/Downgrade feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - DeleteSkillSpaceRequest
 //
@@ -1406,13 +1410,13 @@ func (client *Client) DeleteSkillSpaceWithOptions(request *DeleteSkillSpaceReque
 
 // Summary:
 //
-// Deletes a SkillSpace.
+// Deletes a Skill workspace.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure that the service provider enabled the modify configuration feature and set the required parameters during service creation.
+// Confirm that the service provider has enabled the Upgrade/Downgrade feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - DeleteSkillSpaceRequest
 //
@@ -2376,7 +2380,7 @@ func (client *Client) GetServiceTemplateParameterConstraints(request *GetService
 //
 // ### Before you begin
 //
-// Make sure that the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
+// Make sure the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - GetSkillRequest
 //
@@ -2426,7 +2430,7 @@ func (client *Client) GetSkillWithOptions(request *GetSkillRequest, runtime *dar
 //
 // ### Before you begin
 //
-// Make sure that the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
+// Make sure the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - GetSkillRequest
 //
@@ -2589,13 +2593,13 @@ func (client *Client) GetSkillHubConfig(request *GetSkillHubConfigRequest) (_res
 
 // Summary:
 //
-// Retrieves the details of a SkillSpace.
+// Queries the details of a SkillSpace.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure that the service provider has enabled the modification feature and configured the modification parameters for the service.
+// Make sure that the service provider has enabled the specification change feature and configured the specification change parameters when creating the service.
 //
 // @param request - GetSkillSpaceRequest
 //
@@ -2639,13 +2643,13 @@ func (client *Client) GetSkillSpaceWithOptions(request *GetSkillSpaceRequest, ru
 
 // Summary:
 //
-// Retrieves the details of a SkillSpace.
+// Queries the details of a SkillSpace.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure that the service provider has enabled the modification feature and configured the modification parameters for the service.
+// Make sure that the service provider has enabled the specification change feature and configured the specification change parameters when creating the service.
 //
 // @param request - GetSkillSpaceRequest
 //
@@ -2883,7 +2887,7 @@ func (client *Client) ListPolicies(request *ListPoliciesRequest) (_result *ListP
 //
 // ### Before you begin
 //
-// Make sure the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
+// Confirm that the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - ListPublicSkillsRequest
 //
@@ -2945,7 +2949,7 @@ func (client *Client) ListPublicSkillsWithOptions(request *ListPublicSkillsReque
 //
 // ### Before you begin
 //
-// Make sure the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
+// Confirm that the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - ListPublicSkillsRequest
 //
@@ -3672,13 +3676,13 @@ func (client *Client) ListServices(request *ListServicesRequest) (_result *ListS
 
 // Summary:
 //
-// Lists the files of a specified Skill.
+// Retrieves the list of skill files.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Before you call this operation, ensure that the service provider has enabled the modification feature and configured the modification parameters when creating the service.
+// Make sure the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - ListSkillFilesRequest
 //
@@ -3734,13 +3738,13 @@ func (client *Client) ListSkillFilesWithOptions(request *ListSkillFilesRequest, 
 
 // Summary:
 //
-// Lists the files of a specified Skill.
+// Retrieves the list of skill files.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Before you call this operation, ensure that the service provider has enabled the modification feature and configured the modification parameters when creating the service.
+// Make sure the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - ListSkillFilesRequest
 //
@@ -3762,9 +3766,9 @@ func (client *Client) ListSkillFiles(request *ListSkillFilesRequest) (_result *L
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure the service provider enabled the upgrade feature and configured its parameters when creating the service.
+// Make sure that the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - ListSkillSpacesRequest
 //
@@ -3820,9 +3824,9 @@ func (client *Client) ListSkillSpacesWithOptions(request *ListSkillSpacesRequest
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure the service provider enabled the upgrade feature and configured its parameters when creating the service.
+// Make sure that the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - ListSkillSpacesRequest
 //
@@ -3840,13 +3844,13 @@ func (client *Client) ListSkillSpaces(request *ListSkillSpacesRequest) (_result 
 
 // Summary:
 //
-// Queries a list of skills.
+// Queries a list of Skills.
 //
 // Description:
 //
 // ### Before you begin
 //
-// Make sure that the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
+// Make sure the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - ListSkillsRequest
 //
@@ -3902,13 +3906,13 @@ func (client *Client) ListSkillsWithOptions(request *ListSkillsRequest, runtime 
 
 // Summary:
 //
-// Queries a list of skills.
+// Queries a list of Skills.
 //
 // Description:
 //
 // ### Before you begin
 //
-// Make sure that the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
+// Make sure the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - ListSkillsRequest
 //
@@ -5032,7 +5036,7 @@ func (client *Client) UpdateServiceUsage(request *UpdateServiceUsageRequest) (_r
 //
 // ### Before you begin
 //
-// Make sure that the service provider has enabled the specification change feature and configured the specification change parameters when creating the service.
+// Make sure the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - UpdateSkillRequest
 //
@@ -5049,6 +5053,10 @@ func (client *Client) UpdateSkillWithOptions(request *UpdateSkillRequest, runtim
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OssUrl) {
 		query["OssUrl"] = request.OssUrl
+	}
+
+	if !dara.IsNil(request.RequiredConnections) {
+		query["RequiredConnections"] = request.RequiredConnections
 	}
 
 	if !dara.IsNil(request.SkillDescription) {
@@ -5116,7 +5124,7 @@ func (client *Client) UpdateSkillWithOptions(request *UpdateSkillRequest, runtim
 //
 // ### Before you begin
 //
-// Make sure that the service provider has enabled the specification change feature and configured the specification change parameters when creating the service.
+// Make sure the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - UpdateSkillRequest
 //

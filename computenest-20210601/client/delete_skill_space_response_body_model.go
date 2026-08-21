@@ -14,7 +14,7 @@ type iDeleteSkillSpaceResponseBody interface {
 }
 
 type DeleteSkillSpaceResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

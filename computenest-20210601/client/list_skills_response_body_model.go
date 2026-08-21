@@ -40,7 +40,7 @@ type ListSkillsResponseBody struct {
 	//
 	// 06BF8F22-02DC-4750-83DF-3FFC11C065EA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of skills.
+	// The list of Skills.
 	Skills []*ListSkillsResponseBodySkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
 	// The total number of entries.
 	//
@@ -117,49 +117,54 @@ func (s *ListSkillsResponseBody) Validate() error {
 }
 
 type ListSkillsResponseBodySkills struct {
-	// The time when the skill was created.
+	// The time when the Skill was created.
 	//
 	// example:
 	//
 	// 2026-05-10T02:22:18Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The download URL of the skill package.
+	// The download URL for the Skill package.
 	//
 	// example:
 	//
-	// https://testts-1.oss-cn-beijing.aliyuncs.com/app/yyb_9.1.1.zip
+	// https://embedding-pic.oss-cn-beijing-internal.aliyuncs.com/skill-creator.zip
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
 	// if can be null:
 	// true
 	Locales []*ListSkillsResponseBodySkillsLocales `json:"Locales,omitempty" xml:"Locales,omitempty" type:"Repeated"`
-	// The skill description.
+	// The set of connection types that the Skill depends on.
+	RequiredConnections []*string `json:"RequiredConnections,omitempty" xml:"RequiredConnections,omitempty" type:"Repeated"`
+	// The security scan status of the source file.
+	SecurityScanStatus *string `json:"SecurityScanStatus,omitempty" xml:"SecurityScanStatus,omitempty"`
+	// The Skill description.
 	//
 	// example:
 	//
-	// 1111
+	// Create new skills, modify and improve existing skills, and measure skill performance.
 	SkillDescription *string `json:"SkillDescription,omitempty" xml:"SkillDescription,omitempty"`
+	// The Skill display name.
 	SkillDisplayName *string `json:"SkillDisplayName,omitempty" xml:"SkillDisplayName,omitempty"`
 	// Skill ID
 	//
 	// example:
 	//
-	// s-111111
+	// s-xxxxx
 	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
-	// The set of skill labels.
+	// The set of Skill labels.
 	SkillLabels []*string `json:"SkillLabels,omitempty" xml:"SkillLabels,omitempty" type:"Repeated"`
-	// The skill name.
+	// The Skill name.
 	//
 	// example:
 	//
-	// reimbursement-print
+	// skill-creator
 	SkillName *string `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
-	// The ID of the SkillSpace to which the skill belongs.
+	// The ID of the SkillSpace to which the Skill belongs.
 	//
 	// example:
 	//
-	// ss-11111
+	// ss-xxxxx
 	SkillSpaceId *string `json:"SkillSpaceId,omitempty" xml:"SkillSpaceId,omitempty"`
-	// The time when the skill was last updated.
+	// The time when the Skill was last updated.
 	//
 	// example:
 	//
@@ -185,6 +190,14 @@ func (s *ListSkillsResponseBodySkills) GetDownloadUrl() *string {
 
 func (s *ListSkillsResponseBodySkills) GetLocales() []*ListSkillsResponseBodySkillsLocales {
 	return s.Locales
+}
+
+func (s *ListSkillsResponseBodySkills) GetRequiredConnections() []*string {
+	return s.RequiredConnections
+}
+
+func (s *ListSkillsResponseBodySkills) GetSecurityScanStatus() *string {
+	return s.SecurityScanStatus
 }
 
 func (s *ListSkillsResponseBodySkills) GetSkillDescription() *string {
@@ -227,6 +240,16 @@ func (s *ListSkillsResponseBodySkills) SetDownloadUrl(v string) *ListSkillsRespo
 
 func (s *ListSkillsResponseBodySkills) SetLocales(v []*ListSkillsResponseBodySkillsLocales) *ListSkillsResponseBodySkills {
 	s.Locales = v
+	return s
+}
+
+func (s *ListSkillsResponseBodySkills) SetRequiredConnections(v []*string) *ListSkillsResponseBodySkills {
+	s.RequiredConnections = v
+	return s
+}
+
+func (s *ListSkillsResponseBodySkills) SetSecurityScanStatus(v string) *ListSkillsResponseBodySkills {
+	s.SecurityScanStatus = &v
 	return s
 }
 

@@ -16,19 +16,19 @@ type iDeleteSkillSpaceRequest interface {
 }
 
 type DeleteSkillSpaceRequest struct {
-	// A client-generated token to ensure the idempotence of the request. The value must be unique for each request. The **ClientToken*	- supports only ASCII characters and can be up to 64 characters long.
+	// Ensures the idempotence of the request. Generate a parameter value from your client to ensure that the value is unique across different requests. **ClientToken*	- supports only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the SkillSpace.
+	// SkillSpace  ID
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ss-11111111111
+	// ss-xxxxx
 	SkillSpaceId *string `json:"SkillSpaceId,omitempty" xml:"SkillSpaceId,omitempty"`
 }
 

@@ -30,29 +30,29 @@ type GetSkillSpaceResponseBody struct {
 	//
 	// 2021-05-20T00:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// 13FE89A5-C036-56BF-A0FF-A31C59819FD7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The description of the SkillSpace.
+	// The SkillSpace description.
 	//
 	// example:
 	//
-	// 1111111
+	// All-in-one office toolkit — generate reports, process data, manage files, and streamline workflows effortlessly.
 	SkillSpaceDescription *string `json:"SkillSpaceDescription,omitempty" xml:"SkillSpaceDescription,omitempty"`
-	// The ID of the SkillSpace.
+	// SkillSpace ID
 	//
 	// example:
 	//
-	// ss-11111
+	// ss-xxxxx
 	SkillSpaceId *string `json:"SkillSpaceId,omitempty" xml:"SkillSpaceId,omitempty"`
-	// The name of the SkillSpace.
+	// The SkillSpace name.
 	//
 	// example:
 	//
-	// 1111111
+	// office-toolkit-skills
 	SkillSpaceName *string `json:"SkillSpaceName,omitempty" xml:"SkillSpaceName,omitempty"`
 	// The time when the SkillSpace was last updated.
 	//

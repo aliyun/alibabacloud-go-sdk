@@ -559,7 +559,7 @@ func (client *Client) CreateServiceUsageWithContext(ctx context.Context, tmpReq 
 //
 // ### Before you begin
 //
-// Make sure that the service provider has enabled the Upgrade/Downgrade feature and completed the specification change parameter settings when creating the service.
+// Confirm that the service provider has enabled the Upgrade/Downgrade feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - CreateSkillRequest
 //
@@ -576,6 +576,10 @@ func (client *Client) CreateSkillWithContext(ctx context.Context, request *Creat
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OssUrl) {
 		query["OssUrl"] = request.OssUrl
+	}
+
+	if !dara.IsNil(request.RequiredConnections) {
+		query["RequiredConnections"] = request.RequiredConnections
 	}
 
 	if !dara.IsNil(request.SkillDescription) {
@@ -641,9 +645,9 @@ func (client *Client) CreateSkillWithContext(ctx context.Context, request *Creat
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure that the service provider has enabled the modification feature and configured its parameters during service creation.
+// Make sure that the service provider has enabled the Upgrade/Downgrade feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - CreateSkillFileDetectRequest
 //
@@ -757,13 +761,13 @@ func (client *Client) CreateSkillHubConfigWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates a skill space.
+// Creates a SkillSpace.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure the service provider has enabled the modify configuration feature and set the required parameters during service creation.
+// Confirm that the service provider has enabled the Upgrade/Downgrade feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - CreateSkillSpaceRequest
 //
@@ -919,13 +923,13 @@ func (client *Client) DeleteServiceInstancesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Deletes a skill.
+// Deletes a Skill.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure the service provider has enabled the modification feature and configured the modification parameters when creating the service.
+// Make sure that the service provider has enabled the Upgrade/Downgrade feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - DeleteSkillRequest
 //
@@ -975,13 +979,13 @@ func (client *Client) DeleteSkillWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
-// Deletes a SkillSpace.
+// Deletes a Skill workspace.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure that the service provider enabled the modify configuration feature and set the required parameters during service creation.
+// Confirm that the service provider has enabled the Upgrade/Downgrade feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - DeleteSkillSpaceRequest
 //
@@ -1767,7 +1771,7 @@ func (client *Client) GetServiceTemplateParameterConstraintsWithContext(ctx cont
 //
 // ### Before you begin
 //
-// Make sure that the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
+// Make sure the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - GetSkillRequest
 //
@@ -1908,13 +1912,13 @@ func (client *Client) GetSkillHubConfigWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Retrieves the details of a SkillSpace.
+// Queries the details of a SkillSpace.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure that the service provider has enabled the modification feature and configured the modification parameters for the service.
+// Make sure that the service provider has enabled the specification change feature and configured the specification change parameters when creating the service.
 //
 // @param request - GetSkillSpaceRequest
 //
@@ -2118,7 +2122,7 @@ func (client *Client) ListPoliciesWithContext(ctx context.Context, request *List
 //
 // ### Before you begin
 //
-// Make sure the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
+// Confirm that the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - ListPublicSkillsRequest
 //
@@ -2688,13 +2692,13 @@ func (client *Client) ListServicesWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Lists the files of a specified Skill.
+// Retrieves the list of skill files.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Before you call this operation, ensure that the service provider has enabled the modification feature and configured the modification parameters when creating the service.
+// Make sure the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - ListSkillFilesRequest
 //
@@ -2754,9 +2758,9 @@ func (client *Client) ListSkillFilesWithContext(ctx context.Context, request *Li
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure the service provider enabled the upgrade feature and configured its parameters when creating the service.
+// Make sure that the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - ListSkillSpacesRequest
 //
@@ -2808,13 +2812,13 @@ func (client *Client) ListSkillSpacesWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Queries a list of skills.
+// Queries a list of Skills.
 //
 // Description:
 //
 // ### Before you begin
 //
-// Make sure that the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
+// Make sure the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - ListSkillsRequest
 //
@@ -3700,7 +3704,7 @@ func (client *Client) UpdateServiceUsageWithContext(ctx context.Context, tmpReq 
 //
 // ### Before you begin
 //
-// Make sure that the service provider has enabled the specification change feature and configured the specification change parameters when creating the service.
+// Make sure the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - UpdateSkillRequest
 //
@@ -3717,6 +3721,10 @@ func (client *Client) UpdateSkillWithContext(ctx context.Context, request *Updat
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OssUrl) {
 		query["OssUrl"] = request.OssUrl
+	}
+
+	if !dara.IsNil(request.RequiredConnections) {
+		query["RequiredConnections"] = request.RequiredConnections
 	}
 
 	if !dara.IsNil(request.SkillDescription) {
