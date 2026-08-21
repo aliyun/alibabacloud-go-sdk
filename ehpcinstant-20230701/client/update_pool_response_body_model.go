@@ -14,7 +14,7 @@ type iUpdatePoolResponseBody interface {
 }
 
 type UpdatePoolResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

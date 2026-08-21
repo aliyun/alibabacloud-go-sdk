@@ -18,19 +18,19 @@ type iListExecutorEventsRequest interface {
 }
 
 type ListExecutorEventsRequest struct {
-	// Queries the Executor filter conditions.
+	// The filter conditions for querying Executors.
 	Filter *ListExecutorEventsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
-	// The current page number.\\
+	// The page number.
 	//
-	// Starting value: 1\\
+	// Minimum value: 1.
 	//
-	// Default value: 1
+	// Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries on the current page. Default value: 50. Maximum value: 100.
+	// The number of entries per page for paging. Default value: 50. Maximum value: 100.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *ListExecutorEventsRequest) Validate() error {
 }
 
 type ListExecutorEventsRequestFilter struct {
-	// The list of executor IDs. A maximum of 100 IDs are supported.
+	// The list of Executor IDs. A maximum of 100 entries are supported.
 	ExecutorIds []*string `json:"ExecutorIds,omitempty" xml:"ExecutorIds,omitempty" type:"Repeated"`
 	// The job ID.
 	//
@@ -91,25 +91,25 @@ type ListExecutorEventsRequestFilter struct {
 	//
 	// job-xxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The level of the running event. Valid value:
+	// The runtime event level. Valid values:
 	//
-	// 	- Normal
+	// - Normal
 	//
-	// 	- Warning
+	// - Warning
 	//
-	// 	- Error
+	// - Error
 	//
 	// example:
 	//
 	// Normal
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// For jobs submitted after this time, the time in the region is converted into a Unix timestamp (UI8 regionfor Aliyun sites).
+	// Events that occurred after this time. The value is a UNIX timestamp converted from the local time of the region (UTC+8 for Chinese mainland regions).
 	//
 	// example:
 	//
 	// 1703820113
 	TimeAfter *int64 `json:"TimeAfter,omitempty" xml:"TimeAfter,omitempty"`
-	// For jobs submitted before this time, the time in the region is converted into a Unix timestamp (UI8 regionfor Aliyun sites).
+	// Events that occurred before this time. The value is a UNIX timestamp converted from the local time of the region (UTC+8 for Chinese mainland regions).
 	//
 	// example:
 	//

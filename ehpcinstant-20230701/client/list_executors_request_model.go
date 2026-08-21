@@ -99,6 +99,10 @@ type ListExecutorsRequestFilter struct {
 	//
 	// jt-xxxx
 	JobTemplateId *string `json:"JobTemplateId,omitempty" xml:"JobTemplateId,omitempty"`
+	// example:
+	//
+	// MyPool
+	PoolName *string `json:"PoolName,omitempty" xml:"PoolName,omitempty"`
 	// A list of executor statuses.
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
 	// The jobs submitted after this time. This is a UNIX timestamp that is converted from the time in the region where the job is located. For sites in mainland China, the time is in the UTC+8 time zone.
@@ -155,6 +159,10 @@ func (s *ListExecutorsRequestFilter) GetJobTemplateId() *string {
 	return s.JobTemplateId
 }
 
+func (s *ListExecutorsRequestFilter) GetPoolName() *string {
+	return s.PoolName
+}
+
 func (s *ListExecutorsRequestFilter) GetStatus() []*string {
 	return s.Status
 }
@@ -197,6 +205,11 @@ func (s *ListExecutorsRequestFilter) SetJobName(v string) *ListExecutorsRequestF
 
 func (s *ListExecutorsRequestFilter) SetJobTemplateId(v string) *ListExecutorsRequestFilter {
 	s.JobTemplateId = &v
+	return s
+}
+
+func (s *ListExecutorsRequestFilter) SetPoolName(v string) *ListExecutorsRequestFilter {
+	s.PoolName = &v
 	return s
 }
 

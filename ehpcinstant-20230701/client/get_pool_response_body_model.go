@@ -16,9 +16,9 @@ type iGetPoolResponseBody interface {
 }
 
 type GetPoolResponseBody struct {
-	// The details of the resource pool.
+	// The resource pool information.
 	PoolInfo *GetPoolResponseBodyPoolInfo `json:"PoolInfo,omitempty" xml:"PoolInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -68,7 +68,13 @@ type GetPoolResponseBodyPoolInfo struct {
 	//
 	// 2024-12-01 20:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The number of executors that are in use in the resource pool.
+	// The ID of the resource pool creator.
+	//
+	// example:
+	//
+	// 200428053788xxxx
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The number of executor nodes that are currently running in the resource pool.
 	//
 	// example:
 	//
@@ -76,25 +82,25 @@ type GetPoolResponseBodyPoolInfo struct {
 	ExecutorUsage *int32 `json:"ExecutorUsage,omitempty" xml:"ExecutorUsage,omitempty"`
 	// Indicates whether the resource pool is the default resource pool. Valid values:
 	//
-	// - **true**
+	// - **true**: Yes.
 	//
-	// - **false**
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The maximum number of concurrent executors per user in the resource pool.
+	// The maximum number of executor nodes that can run concurrently in the resource pool.
 	//
 	// example:
 	//
 	// 100
 	MaxExecutorNum *int32 `json:"MaxExecutorNum,omitempty" xml:"MaxExecutorNum,omitempty"`
-	// The name of the resource pool.
+	// The resource pool name.
 	//
-	// - The name can be up to 15 characters long.
+	// - The name can be up to 15 characters in length.
 	//
-	// - The name can contain letters, digits, underscores (_), and periods (.).
+	// - The name can contain digits, uppercase letters, lowercase letters, underscores (_), and periods (.).
 	//
 	// example:
 	//
@@ -102,42 +108,44 @@ type GetPoolResponseBodyPoolInfo struct {
 	PoolName *string `json:"PoolName,omitempty" xml:"PoolName,omitempty"`
 	// The priority of the resource pool.
 	//
-	// - Valid values: 1 to 99. A larger value indicates a higher priority. Default value: 1.
+	// - Valid values: 1 to 99. Default value: 1, which indicates the lowest priority.
 	//
-	// - Jobs in a resource pool with a higher priority are scheduled before pending jobs in a resource pool with a lower priority. The priority of the resource pool takes precedence over the priority of a job.
+	// - Jobs submitted to a resource pool with a higher priority value are scheduled before pending jobs in a resource pool with a lower priority value. The resource pool priority takes precedence over the job priority.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The reason for the error.
+	// The error reason.
 	//
 	// example:
 	//
 	// Fails to **	- pool: ***.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The ID of the scheduling policy.
+	// The scheduling policy ID.
 	//
 	// example:
 	//
 	// policy-xxx
 	SchedulingPolicyId *string `json:"SchedulingPolicyId,omitempty" xml:"SchedulingPolicyId,omitempty"`
-	// The status of the resource pool. Valid values:
+	// The resource pool status. Valid values:
 	//
-	// - `Creating`: The resource pool is being created.
+	// - Creating: The resource pool is being created.
 	//
-	// - `Updating`: The resource pool is being updated.
+	// - Updating: The resource pool is being updated.
 	//
-	// - `Deleting`: The resource pool is being deleted.
+	// - Deleting: The resource pool is being deleted.
 	//
-	// - `Working`: The resource pool is active.
+	// - Working: The resource pool is running.
 	//
-	// - `Deleted`: The resource pool has been deleted.
+	// - Deleted: The resource pool has been deleted.
 	//
 	// example:
 	//
 	// Working
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tag information.
+	Tags []*GetPoolResponseBodyPoolInfoTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The time when the resource pool was last updated.
 	//
 	// example:
@@ -156,6 +164,10 @@ func (s GetPoolResponseBodyPoolInfo) GoString() string {
 
 func (s *GetPoolResponseBodyPoolInfo) GetCreateTime() *string {
 	return s.CreateTime
+}
+
+func (s *GetPoolResponseBodyPoolInfo) GetCreator() *string {
+	return s.Creator
 }
 
 func (s *GetPoolResponseBodyPoolInfo) GetExecutorUsage() *int32 {
@@ -190,12 +202,21 @@ func (s *GetPoolResponseBodyPoolInfo) GetStatus() *string {
 	return s.Status
 }
 
+func (s *GetPoolResponseBodyPoolInfo) GetTags() []*GetPoolResponseBodyPoolInfoTags {
+	return s.Tags
+}
+
 func (s *GetPoolResponseBodyPoolInfo) GetUpdateTime() *string {
 	return s.UpdateTime
 }
 
 func (s *GetPoolResponseBodyPoolInfo) SetCreateTime(v string) *GetPoolResponseBodyPoolInfo {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *GetPoolResponseBodyPoolInfo) SetCreator(v string) *GetPoolResponseBodyPoolInfo {
+	s.Creator = &v
 	return s
 }
 
@@ -239,11 +260,70 @@ func (s *GetPoolResponseBodyPoolInfo) SetStatus(v string) *GetPoolResponseBodyPo
 	return s
 }
 
+func (s *GetPoolResponseBodyPoolInfo) SetTags(v []*GetPoolResponseBodyPoolInfoTags) *GetPoolResponseBodyPoolInfo {
+	s.Tags = v
+	return s
+}
+
 func (s *GetPoolResponseBodyPoolInfo) SetUpdateTime(v string) *GetPoolResponseBodyPoolInfo {
 	s.UpdateTime = &v
 	return s
 }
 
 func (s *GetPoolResponseBodyPoolInfo) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetPoolResponseBodyPoolInfoTags struct {
+	// The tag key.
+	//
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// TestValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetPoolResponseBodyPoolInfoTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetPoolResponseBodyPoolInfoTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetPoolResponseBodyPoolInfoTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *GetPoolResponseBodyPoolInfoTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *GetPoolResponseBodyPoolInfoTags) SetKey(v string) *GetPoolResponseBodyPoolInfoTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetPoolResponseBodyPoolInfoTags) SetValue(v string) *GetPoolResponseBodyPoolInfoTags {
+	s.Value = &v
+	return s
+}
+
+func (s *GetPoolResponseBodyPoolInfoTags) Validate() error {
 	return dara.Validate(s)
 }

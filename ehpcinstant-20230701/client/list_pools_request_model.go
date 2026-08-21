@@ -80,8 +80,16 @@ func (s *ListPoolsRequest) Validate() error {
 
 type ListPoolsRequestFilter struct {
 	// The list of resource pool names to query.
+	//
+	// example:
+	//
+	// ["MyPool"]
 	PoolName []*string `json:"PoolName,omitempty" xml:"PoolName,omitempty" type:"Repeated"`
 	// The list of resource pool statuses to query.
+	//
+	// example:
+	//
+	// ["Working"]
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
 	// Returns only resource pools created after the specified time. The time must be a Unix timestamp in UTC+8.
 	//

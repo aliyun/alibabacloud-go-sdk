@@ -14,11 +14,11 @@ type iDeletePoolRequest interface {
 }
 
 type DeletePoolRequest struct {
-	// The name of the resource pool.
+	// The resource pool name.
 	//
-	// 	- The value can be up to 15 characters in length.
+	// - The name can be up to 15 characters in length.
 	//
-	// 	- It can contain digits, uppercase letters, lowercase letters, underscores (_), and dots (.).
+	// - The name can contain digits, uppercase letters, lowercase letters, underscores (_), and periods (.).
 	//
 	// This parameter is required.
 	//

@@ -111,27 +111,27 @@ type GetJobResponseBodyJobInfo struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The job status. Valid values:
 	//
-	// - Pending: the job is queued.
+	// - Pending: The job is queued.
 	//
-	// - Initing: the job is being initialized.
+	// - Initing: The job is being initialized.
 	//
-	// - Succeed: the job succeeded.
+	// - Succeed: The job ran successfully.
 	//
-	// - Failed: the job failed.
+	// - Failed: The job failed.
 	//
-	// - Running: the job is running.
+	// - Running: The job is running.
 	//
-	// - Exception: a scheduling exception occurred.
+	// - Exception: A scheduling exception occurred.
 	//
-	// - Retrying: the job is being retried.
+	// - Retrying: The job is being retried.
 	//
-	// - Expired: the job timed out.
+	// - Expired: The job timed out.
 	//
-	// - Deleted: the job is deleted.
+	// - Deleted: The job has been deleted.
 	//
-	// - Suspended: the job is suspended.
+	// - Suspended: The job is in hibernation.
 	//
-	// - Restarting: the job is being restarted.
+	// - Restarting: The job is being restarted.
 	//
 	// example:
 	//
@@ -374,7 +374,7 @@ type GetJobResponseBodyJobInfoDeploymentPolicy struct {
 	//
 	// - General: general-purpose.
 	//
-	// - Performance: compute-optimized.
+	// - Performance: performance-optimized.
 	//
 	// Default value: General.
 	//
@@ -384,11 +384,14 @@ type GetJobResponseBodyJobInfoDeploymentPolicy struct {
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	// The network configuration.
 	Network *GetJobResponseBodyJobInfoDeploymentPolicyNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	// The resource pool.
+	//
 	// example:
 	//
 	// testpool
-	Pool     *string `json:"Pool,omitempty" xml:"Pool,omitempty"`
-	Priority *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Pool *string `json:"Pool,omitempty" xml:"Pool,omitempty"`
+	// The priority.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The job tag list.
 	Tags []*GetJobResponseBodyJobInfoDeploymentPolicyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
@@ -646,7 +649,7 @@ type GetJobResponseBodyJobInfoTasks struct {
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The task specification details.
 	TaskSpec *GetJobResponseBodyJobInfoTasksTaskSpec `json:"TaskSpec,omitempty" xml:"TaskSpec,omitempty" type:"Struct"`
-	// Indicates whether the job is long-running.
+	// Indicates whether the job is a long-running job.
 	//
 	// example:
 	//
@@ -1289,7 +1292,7 @@ type GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM struct {
 	//
 	// m-xxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The preprocessing script. The script must be Base64-encoded.
+	// The pre-processing script. The script must be Base64-encoded.
 	//
 	// example:
 	//

@@ -118,6 +118,10 @@ type ListJobsRequestFilter struct {
 	//
 	// jt-xxxx
 	JobTemplateId *string `json:"JobTemplateId,omitempty" xml:"JobTemplateId,omitempty"`
+	// example:
+	//
+	// MyPool
+	PoolName *string `json:"PoolName,omitempty" xml:"PoolName,omitempty"`
 	// The status of the job. Valid values:
 	//
 	// - Pending: The job is in the queue.
@@ -185,6 +189,10 @@ func (s *ListJobsRequestFilter) GetJobTemplateId() *string {
 	return s.JobTemplateId
 }
 
+func (s *ListJobsRequestFilter) GetPoolName() *string {
+	return s.PoolName
+}
+
 func (s *ListJobsRequestFilter) GetStatus() *string {
 	return s.Status
 }
@@ -218,6 +226,11 @@ func (s *ListJobsRequestFilter) SetJobName(v string) *ListJobsRequestFilter {
 
 func (s *ListJobsRequestFilter) SetJobTemplateId(v string) *ListJobsRequestFilter {
 	s.JobTemplateId = &v
+	return s
+}
+
+func (s *ListJobsRequestFilter) SetPoolName(v string) *ListJobsRequestFilter {
+	s.PoolName = &v
 	return s
 }
 

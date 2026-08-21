@@ -17,10 +17,12 @@ type iCreatePoolShrinkRequest interface {
 	GetResourceLimitsShrink() *string
 	SetSchedulingPolicyId(v string) *CreatePoolShrinkRequest
 	GetSchedulingPolicyId() *string
+	SetTagsShrink(v string) *CreatePoolShrinkRequest
+	GetTagsShrink() *string
 }
 
 type CreatePoolShrinkRequest struct {
-	// The resource pool name.
+	// The name of the resource pool.
 	//
 	// - The name can be up to 15 characters in length.
 	//
@@ -36,7 +38,7 @@ type CreatePoolShrinkRequest struct {
 	//
 	// - Valid values: 1 to 99. Default value: 1, which indicates the lowest priority.
 	//
-	// - Jobs submitted to a resource pool with a higher priority value are scheduled before pending jobs in a resource pool with a lower priority value. The priority of a resource pool takes precedence over the priority of a job.
+	// - Jobs submitted to a resource pool with a higher priority value are scheduled before pending jobs in resource pools with lower priority values. The priority of a resource pool takes precedence over the priority of a job.
 	//
 	// example:
 	//
@@ -50,6 +52,8 @@ type CreatePoolShrinkRequest struct {
 	//
 	// policy-xxx
 	SchedulingPolicyId *string `json:"SchedulingPolicyId,omitempty" xml:"SchedulingPolicyId,omitempty"`
+	// The tag information.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s CreatePoolShrinkRequest) String() string {
@@ -76,6 +80,10 @@ func (s *CreatePoolShrinkRequest) GetSchedulingPolicyId() *string {
 	return s.SchedulingPolicyId
 }
 
+func (s *CreatePoolShrinkRequest) GetTagsShrink() *string {
+	return s.TagsShrink
+}
+
 func (s *CreatePoolShrinkRequest) SetPoolName(v string) *CreatePoolShrinkRequest {
 	s.PoolName = &v
 	return s
@@ -93,6 +101,11 @@ func (s *CreatePoolShrinkRequest) SetResourceLimitsShrink(v string) *CreatePoolS
 
 func (s *CreatePoolShrinkRequest) SetSchedulingPolicyId(v string) *CreatePoolShrinkRequest {
 	s.SchedulingPolicyId = &v
+	return s
+}
+
+func (s *CreatePoolShrinkRequest) SetTagsShrink(v string) *CreatePoolShrinkRequest {
+	s.TagsShrink = &v
 	return s
 }
 

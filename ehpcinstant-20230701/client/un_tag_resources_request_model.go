@@ -20,7 +20,7 @@ type iUnTagResourcesRequest interface {
 }
 
 type UnTagResourcesRequest struct {
-	// Whether to delete all tags of the target resource. This field takes effect only when TagKey.N is left empty. Default False
+	// Specifies whether to delete all tags of the target resource. This parameter takes effect only when TagKey.N is empty. Default value: False.
 	//
 	// example:
 	//
@@ -30,11 +30,11 @@ type UnTagResourcesRequest struct {
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource. Valid values:
+	// The resource type. Valid values:
 	//
-	// 	- Job
+	// - Job
 	//
-	// 	- Executor
+	// - Executor
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type UnTagResourcesRequest struct {
 	//
 	// Job
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The list of tag keys, which can contain a maximum of 20 child items.
+	// The list of tag keys. A maximum of 20 subkeys can be specified.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 

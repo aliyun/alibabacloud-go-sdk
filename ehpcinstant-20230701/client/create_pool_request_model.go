@@ -17,10 +17,12 @@ type iCreatePoolRequest interface {
 	GetResourceLimits() *CreatePoolRequestResourceLimits
 	SetSchedulingPolicyId(v string) *CreatePoolRequest
 	GetSchedulingPolicyId() *string
+	SetTags(v []*CreatePoolRequestTags) *CreatePoolRequest
+	GetTags() []*CreatePoolRequestTags
 }
 
 type CreatePoolRequest struct {
-	// The resource pool name.
+	// The name of the resource pool.
 	//
 	// - The name can be up to 15 characters in length.
 	//
@@ -36,7 +38,7 @@ type CreatePoolRequest struct {
 	//
 	// - Valid values: 1 to 99. Default value: 1, which indicates the lowest priority.
 	//
-	// - Jobs submitted to a resource pool with a higher priority value are scheduled before pending jobs in a resource pool with a lower priority value. The priority of a resource pool takes precedence over the priority of a job.
+	// - Jobs submitted to a resource pool with a higher priority value are scheduled before pending jobs in resource pools with lower priority values. The priority of a resource pool takes precedence over the priority of a job.
 	//
 	// example:
 	//
@@ -50,6 +52,8 @@ type CreatePoolRequest struct {
 	//
 	// policy-xxx
 	SchedulingPolicyId *string `json:"SchedulingPolicyId,omitempty" xml:"SchedulingPolicyId,omitempty"`
+	// The tag information.
+	Tags []*CreatePoolRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s CreatePoolRequest) String() string {
@@ -76,6 +80,10 @@ func (s *CreatePoolRequest) GetSchedulingPolicyId() *string {
 	return s.SchedulingPolicyId
 }
 
+func (s *CreatePoolRequest) GetTags() []*CreatePoolRequestTags {
+	return s.Tags
+}
+
 func (s *CreatePoolRequest) SetPoolName(v string) *CreatePoolRequest {
 	s.PoolName = &v
 	return s
@@ -96,10 +104,24 @@ func (s *CreatePoolRequest) SetSchedulingPolicyId(v string) *CreatePoolRequest {
 	return s
 }
 
+func (s *CreatePoolRequest) SetTags(v []*CreatePoolRequestTags) *CreatePoolRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *CreatePoolRequest) Validate() error {
 	if s.ResourceLimits != nil {
 		if err := s.ResourceLimits.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil
@@ -132,5 +154,50 @@ func (s *CreatePoolRequestResourceLimits) SetMaxExecutorNum(v int32) *CreatePool
 }
 
 func (s *CreatePoolRequestResourceLimits) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreatePoolRequestTags struct {
+	// The tag key.
+	//
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// TestValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreatePoolRequestTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreatePoolRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePoolRequestTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreatePoolRequestTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreatePoolRequestTags) SetKey(v string) *CreatePoolRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreatePoolRequestTags) SetValue(v string) *CreatePoolRequestTags {
+	s.Value = &v
+	return s
+}
+
+func (s *CreatePoolRequestTags) Validate() error {
 	return dara.Validate(s)
 }

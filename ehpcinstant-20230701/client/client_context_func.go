@@ -291,6 +291,10 @@ func (client *Client) CreatePoolWithContext(ctx context.Context, tmpReq *CreateP
 		request.ResourceLimitsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceLimits, dara.String("ResourceLimits"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.Tags) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("Tags"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PoolName) {
 		query["PoolName"] = request.PoolName
@@ -306,6 +310,10 @@ func (client *Client) CreatePoolWithContext(ctx context.Context, tmpReq *CreateP
 
 	if !dara.IsNil(request.SchedulingPolicyId) {
 		query["SchedulingPolicyId"] = request.SchedulingPolicyId
+	}
+
+	if !dara.IsNil(request.TagsShrink) {
+		query["Tags"] = request.TagsShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -383,7 +391,7 @@ func (client *Client) DeleteActionPlanWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Deletes one or more job records that are in the final state from a specified cluster.
+// Deletes one or more job records in the desired state from a specified cluster.
 //
 // @param tmpReq - DeleteJobRecordsRequest
 //
@@ -495,7 +503,7 @@ func (client *Client) DeleteJobsWithContext(ctx context.Context, tmpReq *DeleteJ
 
 // Summary:
 //
-// You can execute this statement to delete a resource pool.
+// Deletes a resource pool.
 //
 // @param request - DeletePoolRequest
 //
@@ -659,7 +667,7 @@ func (client *Client) DescribeJobMetricLastWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Retrieves the logs for a job.
+// Queries job logs.
 //
 // @param request - DescribeJobResultsRequest
 //
@@ -889,7 +897,7 @@ func (client *Client) GetImageWithContext(ctx context.Context, tmpReq *GetImageR
 
 // Summary:
 //
-// Retrieves the details of an execution job.
+// Retrieves the details of a job.
 //
 // @param request - GetJobRequest
 //
@@ -970,7 +978,7 @@ func (client *Client) GetJobRecordDurationWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Retrieves the details of a specified resource pool.
+// Retrieves the details of a resource pool.
 //
 // @param request - GetPoolRequest
 //
@@ -1124,11 +1132,11 @@ func (client *Client) ListActionPlansWithContext(ctx context.Context, tmpReq *Li
 
 // Summary:
 //
-// Queries the running event list of one or more executers.
+// Queries the runtime event list of one or more Executors.
 //
 // Description:
 //
-// Queries job executor information.
+// Queries the Executor information of a job.
 //
 // @param tmpReq - ListExecutorEventsRequest
 //
@@ -1322,11 +1330,11 @@ func (client *Client) ListImagesWithContext(ctx context.Context, tmpReq *ListIma
 
 // Summary:
 //
-// Retrieves information about job executors.
+// Queries the executor information of a job.
 //
 // Description:
 //
-// Retrieves information about job executors.
+// Queries the executor information of a job.
 //
 // @param request - ListJobExecutorsRequest
 //
@@ -1720,7 +1728,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// Unbind tags from Instant resource list. If the tag is not bound to other resources, the tag is automatically deleted.
+// Unbinds tags from a list of Instant resources in a unified manner. After a tag is unbound, if it is not bound to any other resources, the tag is automatically deleted.
 //
 // @param request - UnTagResourcesRequest
 //

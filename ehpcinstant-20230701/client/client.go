@@ -415,6 +415,10 @@ func (client *Client) CreatePoolWithOptions(tmpReq *CreatePoolRequest, runtime *
 		request.ResourceLimitsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceLimits, dara.String("ResourceLimits"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.Tags) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("Tags"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PoolName) {
 		query["PoolName"] = request.PoolName
@@ -430,6 +434,10 @@ func (client *Client) CreatePoolWithOptions(tmpReq *CreatePoolRequest, runtime *
 
 	if !dara.IsNil(request.SchedulingPolicyId) {
 		query["SchedulingPolicyId"] = request.SchedulingPolicyId
+	}
+
+	if !dara.IsNil(request.TagsShrink) {
+		query["Tags"] = request.TagsShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -549,7 +557,7 @@ func (client *Client) DeleteActionPlan(request *DeleteActionPlanRequest) (_resul
 
 // Summary:
 //
-// Deletes one or more job records that are in the final state from a specified cluster.
+// Deletes one or more job records in the desired state from a specified cluster.
 //
 // @param tmpReq - DeleteJobRecordsRequest
 //
@@ -599,7 +607,7 @@ func (client *Client) DeleteJobRecordsWithOptions(tmpReq *DeleteJobRecordsReques
 
 // Summary:
 //
-// Deletes one or more job records that are in the final state from a specified cluster.
+// Deletes one or more job records in the desired state from a specified cluster.
 //
 // @param request - DeleteJobRecordsRequest
 //
@@ -697,7 +705,7 @@ func (client *Client) DeleteJobs(request *DeleteJobsRequest) (_result *DeleteJob
 
 // Summary:
 //
-// You can execute this statement to delete a resource pool.
+// Deletes a resource pool.
 //
 // @param request - DeletePoolRequest
 //
@@ -741,7 +749,7 @@ func (client *Client) DeletePoolWithOptions(request *DeletePoolRequest, runtime 
 
 // Summary:
 //
-// You can execute this statement to delete a resource pool.
+// Deletes a resource pool.
 //
 // @param request - DeletePoolRequest
 //
@@ -915,7 +923,7 @@ func (client *Client) DescribeJobMetricLast(request *DescribeJobMetricLastReques
 
 // Summary:
 //
-// Retrieves the logs for a job.
+// Queries job logs.
 //
 // @param request - DescribeJobResultsRequest
 //
@@ -979,7 +987,7 @@ func (client *Client) DescribeJobResultsWithOptions(request *DescribeJobResultsR
 
 // Summary:
 //
-// Retrieves the logs for a job.
+// Queries job logs.
 //
 // @param request - DescribeJobResultsRequest
 //
@@ -1217,7 +1225,7 @@ func (client *Client) GetImage(request *GetImageRequest) (_result *GetImageRespo
 
 // Summary:
 //
-// Retrieves the details of an execution job.
+// Retrieves the details of a job.
 //
 // @param request - GetJobRequest
 //
@@ -1261,7 +1269,7 @@ func (client *Client) GetJobWithOptions(request *GetJobRequest, runtime *dara.Ru
 
 // Summary:
 //
-// Retrieves the details of an execution job.
+// Retrieves the details of a job.
 //
 // @param request - GetJobRequest
 //
@@ -1334,7 +1342,7 @@ func (client *Client) GetJobRecordDuration(request *GetJobRecordDurationRequest)
 
 // Summary:
 //
-// Retrieves the details of a specified resource pool.
+// Retrieves the details of a resource pool.
 //
 // @param request - GetPoolRequest
 //
@@ -1378,7 +1386,7 @@ func (client *Client) GetPoolWithOptions(request *GetPoolRequest, runtime *dara.
 
 // Summary:
 //
-// Retrieves the details of a specified resource pool.
+// Retrieves the details of a resource pool.
 //
 // @param request - GetPoolRequest
 //
@@ -1542,11 +1550,11 @@ func (client *Client) ListActionPlans(request *ListActionPlansRequest) (_result 
 
 // Summary:
 //
-// Queries the running event list of one or more executers.
+// Queries the runtime event list of one or more Executors.
 //
 // Description:
 //
-// Queries job executor information.
+// Queries the Executor information of a job.
 //
 // @param tmpReq - ListExecutorEventsRequest
 //
@@ -1604,11 +1612,11 @@ func (client *Client) ListExecutorEventsWithOptions(tmpReq *ListExecutorEventsRe
 
 // Summary:
 //
-// Queries the running event list of one or more executers.
+// Queries the runtime event list of one or more Executors.
 //
 // Description:
 //
-// Queries job executor information.
+// Queries the Executor information of a job.
 //
 // @param request - ListExecutorEventsRequest
 //
@@ -1798,11 +1806,11 @@ func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImage
 
 // Summary:
 //
-// Retrieves information about job executors.
+// Queries the executor information of a job.
 //
 // Description:
 //
-// Retrieves information about job executors.
+// Queries the executor information of a job.
 //
 // @param request - ListJobExecutorsRequest
 //
@@ -1858,11 +1866,11 @@ func (client *Client) ListJobExecutorsWithOptions(request *ListJobExecutorsReque
 
 // Summary:
 //
-// Retrieves information about job executors.
+// Queries the executor information of a job.
 //
 // Description:
 //
-// Retrieves information about job executors.
+// Queries the executor information of a job.
 //
 // @param request - ListJobExecutorsRequest
 //
@@ -2326,7 +2334,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Unbind tags from Instant resource list. If the tag is not bound to other resources, the tag is automatically deleted.
+// Unbinds tags from a list of Instant resources in a unified manner. After a tag is unbound, if it is not bound to any other resources, the tag is automatically deleted.
 //
 // @param request - UnTagResourcesRequest
 //
@@ -2382,7 +2390,7 @@ func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, 
 
 // Summary:
 //
-// Unbind tags from Instant resource list. If the tag is not bound to other resources, the tag is automatically deleted.
+// Unbinds tags from a list of Instant resources in a unified manner. After a tag is unbound, if it is not bound to any other resources, the tag is automatically deleted.
 //
 // @param request - UnTagResourcesRequest
 //

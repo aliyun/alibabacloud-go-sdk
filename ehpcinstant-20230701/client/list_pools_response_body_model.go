@@ -180,7 +180,8 @@ type ListPoolsResponseBodyPoolList struct {
 	// example:
 	//
 	// Working
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*ListPoolsResponseBodyPoolListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The time when the resource pool was last updated.
 	//
 	// example:
@@ -225,6 +226,10 @@ func (s *ListPoolsResponseBodyPoolList) GetStatus() *string {
 	return s.Status
 }
 
+func (s *ListPoolsResponseBodyPoolList) GetTags() []*ListPoolsResponseBodyPoolListTags {
+	return s.Tags
+}
+
 func (s *ListPoolsResponseBodyPoolList) GetUpdateTime() *string {
 	return s.UpdateTime
 }
@@ -264,11 +269,66 @@ func (s *ListPoolsResponseBodyPoolList) SetStatus(v string) *ListPoolsResponseBo
 	return s
 }
 
+func (s *ListPoolsResponseBodyPoolList) SetTags(v []*ListPoolsResponseBodyPoolListTags) *ListPoolsResponseBodyPoolList {
+	s.Tags = v
+	return s
+}
+
 func (s *ListPoolsResponseBodyPoolList) SetUpdateTime(v string) *ListPoolsResponseBodyPoolList {
 	s.UpdateTime = &v
 	return s
 }
 
 func (s *ListPoolsResponseBodyPoolList) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListPoolsResponseBodyPoolListTags struct {
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// TestValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListPoolsResponseBodyPoolListTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListPoolsResponseBodyPoolListTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoolsResponseBodyPoolListTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *ListPoolsResponseBodyPoolListTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *ListPoolsResponseBodyPoolListTags) SetKey(v string) *ListPoolsResponseBodyPoolListTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListPoolsResponseBodyPoolListTags) SetValue(v string) *ListPoolsResponseBodyPoolListTags {
+	s.Value = &v
+	return s
+}
+
+func (s *ListPoolsResponseBodyPoolListTags) Validate() error {
 	return dara.Validate(s)
 }

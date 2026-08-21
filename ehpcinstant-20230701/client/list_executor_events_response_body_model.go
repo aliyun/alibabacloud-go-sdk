@@ -22,15 +22,15 @@ type iListExecutorEventsResponseBody interface {
 }
 
 type ListExecutorEventsResponseBody struct {
-	// The list of the running event.
+	// The list of runtime events.
 	ExecutorEventList []*ListExecutorEventsResponseBodyExecutorEventList `json:"ExecutorEventList,omitempty" xml:"ExecutorEventList,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page for paging.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListExecutorEventsResponseBody struct {
 	//
 	// 896D338C-E4F4-41EC-A154-D605E5DE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *ListExecutorEventsResponseBody) Validate() error {
 }
 
 type ListExecutorEventsResponseBodyExecutorEventList struct {
-	// The content of the running event.
+	// The content of the runtime event.
 	//
 	// example:
 	//
 	// Executor created successfully
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ID of the executor. The format is JobId-TaskName-ArrayIndex.
+	// The Executor ID. Format: JobId-TaskName-ArrayIndex.
 	//
 	// example:
 	//
@@ -135,19 +135,19 @@ type ListExecutorEventsResponseBodyExecutorEventList struct {
 	//
 	// job-xxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The level of the running event. Valid values:
+	// The runtime event level. Valid values:
 	//
-	// 	- Normal
+	// - Normal
 	//
-	// 	- Warning
+	// - Warning
 	//
-	// 	- Error
+	// - Error
 	//
 	// example:
 	//
 	// Normal
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The event of the running event.
+	// The time when the runtime event occurred.
 	//
 	// example:
 	//
