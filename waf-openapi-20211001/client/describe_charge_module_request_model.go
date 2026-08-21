@@ -9,6 +9,8 @@ type iDescribeChargeModuleRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetChargeUnit(v string) *DescribeChargeModuleRequest
+	GetChargeUnit() *string
 	SetPayType(v string) *DescribeChargeModuleRequest
 	GetPayType() *string
 	SetRegionId(v string) *DescribeChargeModuleRequest
@@ -18,9 +20,15 @@ type iDescribeChargeModuleRequest interface {
 }
 
 type DescribeChargeModuleRequest struct {
-	// The billing method of the instance. Valid values:
+	// The pricing unit.
 	//
-	// - **POSTPAY**: a pay-as-you-go WAF instance.
+	// example:
+	//
+	// SeCU
+	ChargeUnit *string `json:"ChargeUnit,omitempty" xml:"ChargeUnit,omitempty"`
+	// The billing type of the instance. Valid values:
+	//
+	// - **POSTPAY**: pay-as-you-go WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +46,7 @@ type DescribeChargeModuleRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The Alibaba Cloud resource group ID.
 	//
 	// example:
 	//
@@ -54,6 +62,10 @@ func (s DescribeChargeModuleRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeChargeModuleRequest) GetChargeUnit() *string {
+	return s.ChargeUnit
+}
+
 func (s *DescribeChargeModuleRequest) GetPayType() *string {
 	return s.PayType
 }
@@ -64,6 +76,11 @@ func (s *DescribeChargeModuleRequest) GetRegionId() *string {
 
 func (s *DescribeChargeModuleRequest) GetResourceManagerResourceGroupId() *string {
 	return s.ResourceManagerResourceGroupId
+}
+
+func (s *DescribeChargeModuleRequest) SetChargeUnit(v string) *DescribeChargeModuleRequest {
+	s.ChargeUnit = &v
+	return s
 }
 
 func (s *DescribeChargeModuleRequest) SetPayType(v string) *DescribeChargeModuleRequest {

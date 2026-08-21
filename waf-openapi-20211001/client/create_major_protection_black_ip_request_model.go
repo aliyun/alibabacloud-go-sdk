@@ -36,7 +36,7 @@ type CreateMajorProtectionBlackIpRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The expiration timestamp, in seconds.
 	//
-	// > If this parameter is set to **0**, the rule takes effect permanently.
+	// > If the value is **0**, the rule takes effect permanently.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +78,7 @@ type CreateMajorProtectionBlackIpRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The ID of the IP blacklist rule for critical event protection.
+	// The ID of the critical event protection IP blacklist rule.
 	//
 	// This parameter is required.
 	//
@@ -86,9 +86,13 @@ type CreateMajorProtectionBlackIpRequest struct {
 	//
 	// 232324
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The ID of the protection rule template for critical event protection.
+	// The ID of the critical event protection rule template.
 	//
 	// > This parameter requires the ID of a protection template of the critical event protection type. You can create this type of template only after you purchase the critical event protection upgrade.
+	//
+	// >
+	//
+	// > For more information about how to enable critical event protection and create a critical event protection rule template, see [Critical event protection](https://help.aliyun.com/document_detail/425591.html).
 	//
 	// This parameter is required.
 	//

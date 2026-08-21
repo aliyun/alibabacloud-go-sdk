@@ -32,11 +32,11 @@ type iModifyDefenseResourceXffRequest interface {
 }
 
 type ModifyDefenseResourceXffRequest struct {
-	// The status of the tracking cookie.
+	// The status of the tracking cookie switch.
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled.
 	//
-	// - **1 (default)**: Enabled.
+	// - **1 (default)**: enabled.
 	//
 	// example:
 	//
@@ -44,31 +44,31 @@ type ModifyDefenseResourceXffRequest struct {
 	AcwCookieStatus *int32 `json:"AcwCookieStatus,omitempty" xml:"AcwCookieStatus,omitempty"`
 	// The status of the secure attribute of the tracking cookie.
 	//
-	// - **0 (default)**: Disabled.
+	// - **0 (default)**: disabled.
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled.
 	//
 	// example:
 	//
 	// 0
 	AcwSecureStatus *int32 `json:"AcwSecureStatus,omitempty" xml:"AcwSecureStatus,omitempty"`
-	// The status of the secure attribute of the slider CAPTCHA cookie.
+	// The status of the secure attribute of the slider cookie.
 	//
-	// - **0 (default)**: Disabled.
+	// - **0 (default)**: disabled.
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled.
 	//
 	// example:
 	//
 	// 0
 	AcwV3SecureStatus *int32 `json:"AcwV3SecureStatus,omitempty" xml:"AcwV3SecureStatus,omitempty"`
-	// The custom header fields.
+	// The list of specified header fields.
 	//
-	// > The first IP address in the specified header field is used as the client source IP address to prevent X-Forwarded-For (XFF) spoofing. If multiple headers are specified, they are tried in sequence to obtain the source IP address. If the first header does not contain an IP address, the system tries the second header, and so on. If no IP address is found in any of the specified headers, the system uses the first IP address in the X-Forwarded-For header.
+	// > The first IP address in the specified header field is used as the client source IP address to prevent XFF spoofing. If multiple headers are specified, the system attempts to obtain the source IP address from the headers in order. If the first header does not contain an IP address, the system tries the second header, and so on. If none of the specified headers contain an IP address, the first IP address in the X-Forwarded-For header is used.
 	CustomHeaders []*string `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty" type:"Repeated"`
-	// The ID of the WAF instance.
+	// Instance ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -76,17 +76,19 @@ type ModifyDefenseResourceXffRequest struct {
 	//
 	// waf_v2_public_cn-wwo****ek07
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: The Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: Outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the protected object.
+	//
+	// > The protected object must have been added to WAF. You can call the [DescribeDefenseResources](https://help.aliyun.com/document_detail/461612.html) operation to query the name of the protected object.
 	//
 	// This parameter is required.
 	//
@@ -102,11 +104,11 @@ type ModifyDefenseResourceXffRequest struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The response header parameters.
 	ResponseHeaders []*ModifyDefenseResourceXffRequestResponseHeaders `json:"ResponseHeaders,omitempty" xml:"ResponseHeaders,omitempty" type:"Repeated"`
-	// Specifies whether a Layer 7 proxy is deployed in front of WAF. Layer 7 proxies include Anti-DDoS Proxy and Alibaba Cloud CDN. Valid values:
+	// Specifies whether a Layer 7 proxy (Anti-DDoS Pro, CDN, or similar) is deployed in front of WAF. Valid values:
 	//
-	// - **0 (default)**: No.
+	// - **0 (default)**: No Layer 7 proxy is deployed.
 	//
-	// - **1**: Yes.
+	// - **1**: A Layer 7 proxy is deployed.
 	//
 	// This parameter is required.
 	//
@@ -228,13 +230,13 @@ func (s *ModifyDefenseResourceXffRequest) Validate() error {
 }
 
 type ModifyDefenseResourceXffRequestResponseHeaders struct {
-	// Specifies the key for a custom response header.
+	// The key of the custom response header.
 	//
 	// example:
 	//
 	// Header-Key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Specifies the value for a custom response header.
+	// The value of the custom response header.
 	//
 	// example:
 	//

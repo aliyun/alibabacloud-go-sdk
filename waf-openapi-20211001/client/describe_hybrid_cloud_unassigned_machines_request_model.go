@@ -30,6 +30,8 @@ type iDescribeHybridCloudUnassignedMachinesRequest interface {
 type DescribeHybridCloudUnassignedMachinesRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
+	// > You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation and obtain the **Id*	- field value of the target hybrid cloud cluster from the **ClusterInfos*	- array in the response. If no cluster is available, call the [CreateHybridCloudCluster](https://help.aliyun.com/document_detail/2980286.html) operation to create a hybrid cloud cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -58,13 +60,13 @@ type DescribeHybridCloudUnassignedMachinesRequest struct {
 	//
 	// 1.X.X.1
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The page number to return in a paged query. Default value: **1**. For more information about paging, see the relevant parameter descriptions.
+	// The page number to return in a paged query. Default value: **1**. For more information about paging, see the PageSize parameter.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Default value: **10**, which indicates that each page contains 10 entries. For more information about paging, see the relevant parameter descriptions.
+	// The number of entries per page in a paged query. Default value: **10**, which indicates that each page contains 10 entries. For more information about paging, see the PageNumber parameter.
 	//
 	// example:
 	//

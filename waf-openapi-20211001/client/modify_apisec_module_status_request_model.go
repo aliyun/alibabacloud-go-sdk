@@ -36,7 +36,7 @@ type ModifyApisecModuleStatusRequest struct {
 	//
 	// waf_elasticity-cn-0xldbqtm**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -64,7 +64,7 @@ type ModifyApisecModuleStatusRequest struct {
 	//
 	// group1
 	ResourceGroups *string `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty"`
-	// The Alibaba Cloud resource group ID.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iCreateMemberAccountsResponseBody interface {
 }
 
 type CreateMemberAccountsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

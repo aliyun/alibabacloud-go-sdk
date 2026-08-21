@@ -24,7 +24,7 @@ type iModifyMemberAccountRequest interface {
 }
 
 type ModifyMemberAccountRequest struct {
-	// The description of the member account. The description must be 1 to 256 characters in length and can contain letters, digits, Chinese characters, periods (.), underscores (_), hyphens (-), and asterisks (\\*).
+	// The description of the WAF member accounts. The value is 1 to 256 characters in length and can contain Chinese characters, letters, digits, periods (.), underscores (_), hyphens (-), and asterisks (*).
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ModifyMemberAccountRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ModifyMemberAccountRequest struct {
 	//
 	// waf_elasticity**-*******021
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the member account that is managed by the WAF multi-account management feature.
+	// The ID of the managed WAF member accounts.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type ModifyMemberAccountRequest struct {
 	//
 	// 131**********39
 	MemberAccountId *string `json:"MemberAccountId,omitempty" xml:"MemberAccountId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -66,7 +66,7 @@ type ModifyMemberAccountRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The source IP address of the request.
+	// The source IP address of the request. You do not need to specify this parameter. The system automatically obtains the value.
 	//
 	// example:
 	//

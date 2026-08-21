@@ -22,9 +22,9 @@ type iCreateMemberAccountsRequest interface {
 }
 
 type CreateMemberAccountsRequest struct {
-	// The ID of the WAF instance.
+	// Instance ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to view your current WAF instance ID.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of your current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -32,15 +32,15 @@ type CreateMemberAccountsRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The Alibaba Cloud account IDs of the members that you want to add. You can add up to 10 members at the same time.
+	// The list of WAF member account IDs to manage. You can add up to 10 member accounts at a time.
 	//
 	// This parameter is required.
 	MemberAccountIds []*string `json:"MemberAccountIds,omitempty" xml:"MemberAccountIds,omitempty" type:"Repeated"`
-	// The region of the WAF instance. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: The Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: Outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type CreateMemberAccountsRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The source IP address of the request. The system automatically obtains the value of this parameter.
+	// The source IP address of the request. You do not need to specify this parameter. The system automatically obtains the value.
 	//
 	// example:
 	//

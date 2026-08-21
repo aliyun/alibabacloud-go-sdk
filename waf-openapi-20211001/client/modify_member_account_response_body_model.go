@@ -14,7 +14,7 @@ type iModifyMemberAccountResponseBody interface {
 }
 
 type ModifyMemberAccountResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

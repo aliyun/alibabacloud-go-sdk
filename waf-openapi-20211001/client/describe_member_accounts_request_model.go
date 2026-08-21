@@ -22,21 +22,21 @@ type iDescribeMemberAccountsRequest interface {
 }
 
 type DescribeMemberAccountsRequest struct {
-	// The status of the member accounts that you want to query. Valid values:
+	// The status of the member accounts to query. You can set this parameter to query member accounts in a specific status. Valid values:
 	//
-	// - **enabled**: The member account is being managed.
+	// - **enabled**: The member account is managed.
 	//
-	// - **disabled**: The member account is not being managed.
+	// - **disabled**: The member account is not managed.
 	//
-	// - **disabling**: The member account is being removed from management.
+	// - **disabling**: The member account is being removed.
 	//
 	// example:
 	//
 	// enabled
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
-	// The ID of the WAF instance.
+	// Instance ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -44,11 +44,11 @@ type DescribeMemberAccountsRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: a region outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type DescribeMemberAccountsRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The source IP address. You do not need to specify this parameter. It is automatically obtained by the system.
+	// The source IP address of the request. You do not need to specify this parameter. The system automatically obtains the value.
 	//
 	// example:
 	//
