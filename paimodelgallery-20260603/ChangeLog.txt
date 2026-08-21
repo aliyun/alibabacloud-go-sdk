@@ -1,3 +1,6 @@
+2026-08-21 Version: v1.0.1
+- Generated golang 2026-06-03 for PAIModelGallery.
+
 2026-08-07 Version: v1.0.0
 - Generated golang 2026-06-03 for PAIModelGallery.
 

@@ -86,43 +86,209 @@ type iModelGalleryModel interface {
 }
 
 type ModelGalleryModel struct {
-	Collection                     *string                `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	Compressible                   *bool                  `json:"Compressible,omitempty" xml:"Compressible,omitempty"`
-	DeepThink                      *bool                  `json:"DeepThink,omitempty" xml:"DeepThink,omitempty"`
-	Demonstrable                   *bool                  `json:"Demonstrable,omitempty" xml:"Demonstrable,omitempty"`
-	Deployable                     *bool                  `json:"Deployable,omitempty" xml:"Deployable,omitempty"`
-	Distillable                    *bool                  `json:"Distillable,omitempty" xml:"Distillable,omitempty"`
-	Domain                         *string                `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Evaluable                      *bool                  `json:"Evaluable,omitempty" xml:"Evaluable,omitempty"`
-	ExtraInfo                      map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	FunctionCall                   *bool                  `json:"FunctionCall,omitempty" xml:"FunctionCall,omitempty"`
-	GmtCreateTime                  *string                `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtLatestVersionModified       *string                `json:"GmtLatestVersionModified,omitempty" xml:"GmtLatestVersionModified,omitempty"`
-	GmtModifiedTime                *string                `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	LatestVersionName              *string                `json:"LatestVersionName,omitempty" xml:"LatestVersionName,omitempty"`
-	ModelDescription               *string                `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
-	ModelDoc                       *string                `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
-	ModelId                        *string                `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	ModelName                      *string                `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	ModelSeries                    *string                `json:"ModelSeries,omitempty" xml:"ModelSeries,omitempty"`
-	ModelType                      *string                `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
-	OrderNumber                    *int64                 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
-	Origin                         *string                `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	ParameterSize                  *int64                 `json:"ParameterSize,omitempty" xml:"ParameterSize,omitempty"`
-	SearchWords                    *string                `json:"SearchWords,omitempty" xml:"SearchWords,omitempty"`
-	SupportedCompressionMethods    map[string]interface{} `json:"SupportedCompressionMethods,omitempty" xml:"SupportedCompressionMethods,omitempty"`
-	SupportedCompressionResources  *string                `json:"SupportedCompressionResources,omitempty" xml:"SupportedCompressionResources,omitempty"`
-	SupportedDistillationMethods   map[string]interface{} `json:"SupportedDistillationMethods,omitempty" xml:"SupportedDistillationMethods,omitempty"`
-	SupportedDistillationResources *string                `json:"SupportedDistillationResources,omitempty" xml:"SupportedDistillationResources,omitempty"`
-	SupportedEvaluationMethods     map[string]interface{} `json:"SupportedEvaluationMethods,omitempty" xml:"SupportedEvaluationMethods,omitempty"`
-	SupportedEvaluationResources   *string                `json:"SupportedEvaluationResources,omitempty" xml:"SupportedEvaluationResources,omitempty"`
-	SupportedInferenceMethods      map[string]interface{} `json:"SupportedInferenceMethods,omitempty" xml:"SupportedInferenceMethods,omitempty"`
-	SupportedInferenceResources    *string                `json:"SupportedInferenceResources,omitempty" xml:"SupportedInferenceResources,omitempty"`
-	SupportedTrainingMethods       map[string]interface{} `json:"SupportedTrainingMethods,omitempty" xml:"SupportedTrainingMethods,omitempty"`
-	SupportedTrainingResources     *string                `json:"SupportedTrainingResources,omitempty" xml:"SupportedTrainingResources,omitempty"`
-	Tags                           *ModelGalleryModelTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	Task                           *string                `json:"Task,omitempty" xml:"Task,omitempty"`
-	Trainable                      *bool                  `json:"Trainable,omitempty" xml:"Trainable,omitempty"`
+	// example:
+	//
+	// QuickStart
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// true
+	Compressible *bool `json:"Compressible,omitempty" xml:"Compressible,omitempty"`
+	// example:
+	//
+	// true
+	DeepThink *bool `json:"DeepThink,omitempty" xml:"DeepThink,omitempty"`
+	// example:
+	//
+	// true
+	Demonstrable *bool `json:"Demonstrable,omitempty" xml:"Demonstrable,omitempty"`
+	// example:
+	//
+	// true
+	Deployable *bool `json:"Deployable,omitempty" xml:"Deployable,omitempty"`
+	// example:
+	//
+	// true
+	Distillable *bool `json:"Distillable,omitempty" xml:"Distillable,omitempty"`
+	// example:
+	//
+	// aigc
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// true
+	Evaluable *bool `json:"Evaluable,omitempty" xml:"Evaluable,omitempty"`
+	// example:
+	//
+	// {}
+	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// example:
+	//
+	// true
+	FunctionCall *bool `json:"FunctionCall,omitempty" xml:"FunctionCall,omitempty"`
+	// example:
+	//
+	// 2026-04-03T05:54:02.000Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2025-12-03T07:21:28.000Z
+	GmtLatestVersionModified *string `json:"GmtLatestVersionModified,omitempty" xml:"GmtLatestVersionModified,omitempty"`
+	// example:
+	//
+	// 2026-04-03T05:54:02.000Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// 1.0.0
+	LatestVersionName *string `json:"LatestVersionName,omitempty" xml:"LatestVersionName,omitempty"`
+	// example:
+	//
+	// 大语言模型。
+	ModelDescription *string `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
+	// example:
+	//
+	// http://pai-quickstart-test.com
+	ModelDoc *string `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
+	// example:
+	//
+	// model-gj5mifpeol92kx619y
+	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// example:
+	//
+	// Qwen3-235B-A22B-Thinking-2507
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// example:
+	//
+	// Qwen
+	ModelSeries *string `json:"ModelSeries,omitempty" xml:"ModelSeries,omitempty"`
+	// example:
+	//
+	// LoRA
+	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// example:
+	//
+	// 1
+	OrderNumber *int64 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
+	// example:
+	//
+	// PAI
+	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// example:
+	//
+	// 1024
+	ParameterSize *int64 `json:"ParameterSize,omitempty" xml:"ParameterSize,omitempty"`
+	// example:
+	//
+	// llm
+	SearchWords *string `json:"SearchWords,omitempty" xml:"SearchWords,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "Methods": [{
+	//
+	//     "Method": "Quantization",
+	//
+	//     "SubMethod": "MinMax-8Bit",
+	//
+	//     "Resource": "GPU"
+	//
+	//   }]
+	//
+	// }
+	SupportedCompressionMethods map[string]interface{} `json:"SupportedCompressionMethods,omitempty" xml:"SupportedCompressionMethods,omitempty"`
+	// example:
+	//
+	// GPU,GP7V
+	SupportedCompressionResources *string `json:"SupportedCompressionResources,omitempty" xml:"SupportedCompressionResources,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "Methods": [{
+	//
+	//     "Method": "EasyDistill",
+	//
+	//     "SubMethod": "DataSynthesis",
+	//
+	//     "Resource": "GPU"
+	//
+	//   }]
+	//
+	// }
+	SupportedDistillationMethods map[string]interface{} `json:"SupportedDistillationMethods,omitempty" xml:"SupportedDistillationMethods,omitempty"`
+	// example:
+	//
+	// GPU,GP7V
+	SupportedDistillationResources *string `json:"SupportedDistillationResources,omitempty" xml:"SupportedDistillationResources,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "Methods": [{
+	//
+	//     "Method": "Single-Node-Standard",
+	//
+	//     "Resource": "GPU"
+	//
+	//   }]
+	//
+	// }
+	SupportedEvaluationMethods map[string]interface{} `json:"SupportedEvaluationMethods,omitempty" xml:"SupportedEvaluationMethods,omitempty"`
+	// example:
+	//
+	// GPU,GP7V
+	SupportedEvaluationResources *string `json:"SupportedEvaluationResources,omitempty" xml:"SupportedEvaluationResources,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "Methods": [{
+	//
+	//     "framework": "blade",
+	//
+	//     "scenario": "nvidia-standard",
+	//
+	//     "Resource": "GPU"
+	//
+	//   }]
+	//
+	// }
+	SupportedInferenceMethods map[string]interface{} `json:"SupportedInferenceMethods,omitempty" xml:"SupportedInferenceMethods,omitempty"`
+	// example:
+	//
+	// GPU,GP7V
+	SupportedInferenceResources *string `json:"SupportedInferenceResources,omitempty" xml:"SupportedInferenceResources,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "Methods": [{
+	//
+	//     "Method": "SFT",
+	//
+	//     "SubMethod": "LoRA_LLM",
+	//
+	//     "Resource": "GPU"
+	//
+	//   }]
+	//
+	// }
+	SupportedTrainingMethods map[string]interface{} `json:"SupportedTrainingMethods,omitempty" xml:"SupportedTrainingMethods,omitempty"`
+	// example:
+	//
+	// GPU,GP7V
+	SupportedTrainingResources *string                `json:"SupportedTrainingResources,omitempty" xml:"SupportedTrainingResources,omitempty"`
+	Tags                       *ModelGalleryModelTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// example:
+	//
+	// large-language-model
+	Task *string `json:"Task,omitempty" xml:"Task,omitempty"`
+	// example:
+	//
+	// true
+	Trainable *bool `json:"Trainable,omitempty" xml:"Trainable,omitempty"`
 }
 
 func (s ModelGalleryModel) String() string {
@@ -476,7 +642,13 @@ func (s *ModelGalleryModel) Validate() error {
 }
 
 type ModelGalleryModelTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// k1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// v1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

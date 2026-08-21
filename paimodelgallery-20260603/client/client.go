@@ -26,21 +26,21 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
+		"cn-shenzhen":    dara.String("paimodelgallery.cn-shenzhen.aliyuncs.com"),
+		"cn-wulanchabu":  dara.String("paimodelgallery.cn-wulanchabu.aliyuncs.com"),
+		"cn-beijing":     dara.String("paimodelgallery.cn-beijing.aliyuncs.com"),
+		"ap-northeast-2": dara.String("paimodelgallery.ap-northeast-2.aliyuncs.com"),
+		"ap-northeast-1": dara.String("paimodelgallery.ap-northeast-1.aliyuncs.com"),
+		"cn-shanghai":    dara.String("paimodelgallery.cn-shanghai.aliyuncs.com"),
+		"cn-guangzhou":   dara.String("paimodelgallery.cn-guangzhou.aliyuncs.com"),
+		"cn-hongkong":    dara.String("paimodelgallery.cn-hongkong.aliyuncs.com"),
+		"ap-southeast-1": dara.String("paimodelgallery.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-3": dara.String("paimodelgallery.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-5": dara.String("paimodelgallery.ap-southeast-5.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("paimodelgallery.cn-hangzhou.aliyuncs.com"),
 		"us-west-1":      dara.String("paimodelgallery.us-west-1.aliyuncs.com"),
 		"us-east-1":      dara.String("paimodelgallery.us-east-1.aliyuncs.com"),
 		"eu-central-1":   dara.String("paimodelgallery.eu-central-1.aliyuncs.com"),
-		"cn-wulanchabu":  dara.String("paimodelgallery.cn-wulanchabu.aliyuncs.com"),
-		"cn-shenzhen":    dara.String("paimodelgallery.cn-shenzhen.aliyuncs.com"),
-		"cn-shanghai":    dara.String("paimodelgallery.cn-shanghai.aliyuncs.com"),
-		"cn-hongkong":    dara.String("paimodelgallery.cn-hongkong.aliyuncs.com"),
-		"cn-hangzhou":    dara.String("paimodelgallery.cn-hangzhou.aliyuncs.com"),
-		"cn-guangzhou":   dara.String("paimodelgallery.cn-guangzhou.aliyuncs.com"),
-		"cn-beijing":     dara.String("paimodelgallery.cn-beijing.aliyuncs.com"),
-		"ap-southeast-5": dara.String("paimodelgallery.ap-southeast-5.aliyuncs.com"),
-		"ap-southeast-3": dara.String("paimodelgallery.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-1": dara.String("paimodelgallery.ap-southeast-1.aliyuncs.com"),
-		"ap-northeast-2": dara.String("paimodelgallery.ap-northeast-2.aliyuncs.com"),
-		"ap-northeast-1": dara.String("paimodelgallery.ap-northeast-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -66,6 +66,236 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取模型部署方案匹配资源
+//
+// @param request - GetModelDeploymentResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetModelDeploymentResourcesResponse
+func (client *Client) GetModelDeploymentResourcesWithOptions(ModelId *string, request *GetModelDeploymentResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetModelDeploymentResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizKey) {
+		query["BizKey"] = request.BizKey
+	}
+
+	if !dara.IsNil(request.ModelVersion) {
+		query["ModelVersion"] = request.ModelVersion
+	}
+
+	if !dara.IsNil(request.ProfileId) {
+		query["ProfileId"] = request.ProfileId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetModelDeploymentResources"),
+		Version:     dara.String("2026-06-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/modelgallery/models/" + dara.PercentEncode(dara.StringValue(ModelId)) + "/deployment-resources"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetModelDeploymentResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取模型部署方案匹配资源
+//
+// @param request - GetModelDeploymentResourcesRequest
+//
+// @return GetModelDeploymentResourcesResponse
+func (client *Client) GetModelDeploymentResources(ModelId *string, request *GetModelDeploymentResourcesRequest) (_result *GetModelDeploymentResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetModelDeploymentResourcesResponse{}
+	_body, _err := client.GetModelDeploymentResourcesWithOptions(ModelId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成模型部署配置
+//
+// @param request - GetModelDeploymentSpecRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetModelDeploymentSpecResponse
+func (client *Client) GetModelDeploymentSpecWithOptions(ModelId *string, request *GetModelDeploymentSpecRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetModelDeploymentSpecResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizKey) {
+		query["BizKey"] = request.BizKey
+	}
+
+	if !dara.IsNil(request.ModelVersion) {
+		query["ModelVersion"] = request.ModelVersion
+	}
+
+	if !dara.IsNil(request.ProfileId) {
+		query["ProfileId"] = request.ProfileId
+	}
+
+	if !dara.IsNil(request.ResourceSelections) {
+		query["ResourceSelections"] = request.ResourceSelections
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetModelDeploymentSpec"),
+		Version:     dara.String("2026-06-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/modelgallery/models/" + dara.PercentEncode(dara.StringValue(ModelId)) + "/deployment-spec"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetModelDeploymentSpecResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成模型部署配置
+//
+// @param request - GetModelDeploymentSpecRequest
+//
+// @return GetModelDeploymentSpecResponse
+func (client *Client) GetModelDeploymentSpec(ModelId *string, request *GetModelDeploymentSpecRequest) (_result *GetModelDeploymentSpecResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetModelDeploymentSpecResponse{}
+	_body, _err := client.GetModelDeploymentSpecWithOptions(ModelId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取模型部署方案列表
+//
+// @param request - ListModelDeploymentProfilesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListModelDeploymentProfilesResponse
+func (client *Client) ListModelDeploymentProfilesWithOptions(ModelId *string, request *ListModelDeploymentProfilesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListModelDeploymentProfilesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizKey) {
+		query["BizKey"] = request.BizKey
+	}
+
+	if !dara.IsNil(request.ModelVersion) {
+		query["ModelVersion"] = request.ModelVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListModelDeploymentProfiles"),
+		Version:     dara.String("2026-06-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/modelgallery/models/" + dara.PercentEncode(dara.StringValue(ModelId)) + "/deployment-profiles"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListModelDeploymentProfilesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取模型部署方案列表
+//
+// @param request - ListModelDeploymentProfilesRequest
+//
+// @return ListModelDeploymentProfilesResponse
+func (client *Client) ListModelDeploymentProfiles(ModelId *string, request *ListModelDeploymentProfilesRequest) (_result *ListModelDeploymentProfilesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListModelDeploymentProfilesResponse{}
+	_body, _err := client.ListModelDeploymentProfilesWithOptions(ModelId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
