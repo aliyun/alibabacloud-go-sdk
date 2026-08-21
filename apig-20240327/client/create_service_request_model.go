@@ -36,7 +36,7 @@ type CreateServiceRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The list of service configurations. At least one service configuration is required.
 	ServiceConfigs []*CreateServiceRequestServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
-	// The service source type. Valid values:
+	// The service source. Valid values:
 	//
 	// - MSE_NACOS: a service in MSE Nacos.
 	//
@@ -135,9 +135,9 @@ func (s *CreateServiceRequest) Validate() error {
 type CreateServiceRequestServiceConfigs struct {
 	// The list of domain names or fixed addresses.
 	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
-	// The Agent service configuration. This parameter is required when sourceType is set to AGENT.
+	// The Agent service configuration. Required when sourceType is AGENT.
 	AgentServiceConfig *AgentServiceConfig `json:"agentServiceConfig,omitempty" xml:"agentServiceConfig,omitempty"`
-	// The AI service configuration. This parameter is required when sourceType is set to AI.
+	// The AI service configuration. Required when sourceType is AI.
 	AiServiceConfig *AiServiceConfig `json:"aiServiceConfig,omitempty" xml:"aiServiceConfig,omitempty"`
 	// The list of DNS server addresses.
 	DnsServers []*string `json:"dnsServers,omitempty" xml:"dnsServers,omitempty" type:"Repeated"`
@@ -147,7 +147,7 @@ type CreateServiceRequestServiceConfigs struct {
 	//
 	// Standard
 	ExpressType *string `json:"expressType,omitempty" xml:"expressType,omitempty"`
-	// The service group name. This parameter is required when sourceType is set to MSE_NACOS.
+	// The service group name. Required when sourceType is MSE_NACOS.
 	//
 	// example:
 	//
@@ -159,19 +159,19 @@ type CreateServiceRequestServiceConfigs struct {
 	//
 	// mp-xxx****
 	ModelProviderId *string `json:"modelProviderId,omitempty" xml:"modelProviderId,omitempty"`
-	// The service name. This parameter is required when sourceType is set to FC3.
+	// The service name. Required when sourceType is FC3.
 	//
 	// example:
 	//
 	// user-service
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The namespace of the service.
+	// The namespace of the service:
 	//
-	// - If sourceType is set to K8S, this parameter specifies the namespace of the Kubernetes service.
+	// - If sourceType is K8S, this indicates the namespace of the Kubernetes service.
 	//
-	// - If sourceType is set to MSE_NACOS, this parameter specifies the namespace in Nacos.
+	// - If sourceType is MSE_NACOS, this indicates the namespace in Nacos.
 	//
-	// This parameter is required when sourceType is set to K8S or MSE_NACOS.
+	// Required when sourceType is K8S or MSE_NACOS.
 	//
 	// example:
 	//
@@ -183,7 +183,7 @@ type CreateServiceRequestServiceConfigs struct {
 	//
 	// LATEST
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// The service source ID. This parameter is required in multi-Nacos instance scenarios.
+	// The service source ID. Required in multi-Nacos instance scenarios.
 	//
 	// example:
 	//
