@@ -20,13 +20,13 @@ type iUpdateWorkspaceResponseBody interface {
 type UpdateWorkspaceResponseBody struct {
 	// The returned data.
 	Data *UpdateWorkspaceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
 	// 979071171373334529
 	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
-	// The unique ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ func (s *UpdateWorkspaceResponseBody) Validate() error {
 }
 
 type UpdateWorkspaceResponseBodyData struct {
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//

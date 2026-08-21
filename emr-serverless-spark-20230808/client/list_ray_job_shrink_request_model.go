@@ -24,23 +24,34 @@ type iListRayJobShrinkRequest interface {
 }
 
 type ListRayJobShrinkRequest struct {
+	// The name of the Ray Job (exact match).
+	//
 	// example:
 	//
 	// myrayjob
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// The number of entries per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The submission ID of the Ray Job.
+	//
 	// example:
 	//
 	// rj-xxxxxxxxxxx
-	SubmissionId     *string `json:"submissionId,omitempty" xml:"submissionId,omitempty"`
+	SubmissionId *string `json:"submissionId,omitempty" xml:"submissionId,omitempty"`
+	// The submit time range.
 	SubmitTimeShrink *string `json:"submitTime,omitempty" xml:"submitTime,omitempty"`
+	// The data development node ID.
+	//
 	// example:
 	//
 	// TSK-db8b870d901e443ba0aebba40c923e02

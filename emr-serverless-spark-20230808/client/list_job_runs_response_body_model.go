@@ -9,6 +9,8 @@ type iListJobRunsResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAggregations(v map[string]*string) *ListJobRunsResponseBody
+	GetAggregations() map[string]*string
 	SetJobRuns(v []*ListJobRunsResponseBodyJobRuns) *ListJobRunsResponseBody
 	GetJobRuns() []*ListJobRunsResponseBodyJobRuns
 	SetMaxResults(v int32) *ListJobRunsResponseBody
@@ -22,15 +24,16 @@ type iListJobRunsResponseBody interface {
 }
 
 type ListJobRunsResponseBody struct {
-	// A list of Spark jobs.
+	Aggregations map[string]*string `json:"aggregations,omitempty" xml:"aggregations,omitempty"`
+	// The list of Spark jobs.
 	JobRuns []*ListJobRunsResponseBodyJobRuns `json:"jobRuns,omitempty" xml:"jobRuns,omitempty" type:"Repeated"`
-	// The maximum number of entries returned for the current request.
+	// The maximum number of records returned in this request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token that is used to retrieve the next page of results.
+	// The position from which the data was read.
 	//
 	// example:
 	//
@@ -42,7 +45,7 @@ type ListJobRunsResponseBody struct {
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of entries that match the filter criteria.
+	// The total number of records that match the request conditions.
 	//
 	// example:
 	//
@@ -56,6 +59,10 @@ func (s ListJobRunsResponseBody) String() string {
 
 func (s ListJobRunsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListJobRunsResponseBody) GetAggregations() map[string]*string {
+	return s.Aggregations
 }
 
 func (s *ListJobRunsResponseBody) GetJobRuns() []*ListJobRunsResponseBodyJobRuns {
@@ -76,6 +83,11 @@ func (s *ListJobRunsResponseBody) GetRequestId() *string {
 
 func (s *ListJobRunsResponseBody) GetTotalCount() *int32 {
 	return s.TotalCount
+}
+
+func (s *ListJobRunsResponseBody) SetAggregations(v map[string]*string) *ListJobRunsResponseBody {
+	s.Aggregations = v
+	return s
 }
 
 func (s *ListJobRunsResponseBody) SetJobRuns(v []*ListJobRunsResponseBodyJobRuns) *ListJobRunsResponseBody {
@@ -117,19 +129,19 @@ func (s *ListJobRunsResponseBody) Validate() error {
 }
 
 type ListJobRunsResponseBodyJobRuns struct {
-	// The code type of the job. Valid values:
+	// The job code type. Valid values:
 	//
 	// SQL
 	//
 	// JAR
 	//
-	// PYTHON
+	// PYTHON.
 	//
 	// example:
 	//
 	// SQL
 	CodeType *string `json:"codeType,omitempty" xml:"codeType,omitempty"`
-	// The advanced Spark configurations. This parameter is not returned by the ListJobRuns operation.
+	// The Spark advanced configurations. This parameter is not returned by the List operation.
 	ConfigurationOverrides *ListJobRunsResponseBodyJobRunsConfigurationOverrides `json:"configurationOverrides,omitempty" xml:"configurationOverrides,omitempty" type:"Struct"`
 	// The UID of the user who created the job.
 	//
@@ -137,39 +149,39 @@ type ListJobRunsResponseBodyJobRuns struct {
 	//
 	// 150978934701****
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// The number of CUs consumed by the job run. This is an estimated value. The actual value is reflected in your bill.
+	// The number of compute units (CUs) consumed during the job run cycle. This value is an estimate. The actual value is subject to the bill.
 	//
 	// example:
 	//
 	// 2.059
 	CuHours *float64 `json:"cuHours,omitempty" xml:"cuHours,omitempty"`
-	// The display version of the Spark engine that is used to run the job.
+	// The version of the Spark DPI engine used to run the job.
 	//
 	// example:
 	//
 	// esr-3.0.0 (Spark 3.4.3, Scala 2.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	// The time when the job ended.
+	// The job end time.
 	//
 	// example:
 	//
 	// 1684119314000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The timeout period for the job execution, in seconds.
+	// The execution timeout period, in seconds.
 	//
 	// example:
 	//
 	// 3600
 	ExecutionTimeoutSeconds *int32 `json:"executionTimeoutSeconds,omitempty" xml:"executionTimeoutSeconds,omitempty"`
-	// Indicates whether the Fusion engine is enabled for acceleration.
+	// Indicates whether the Fusion engine acceleration is enabled.
 	//
 	// example:
 	//
 	// true
 	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
-	// The information about the Spark driver. This parameter is not returned by the ListJobRuns operation.
+	// The Spark Driver information. This parameter is not returned by the List operation.
 	JobDriver *JobDriver `json:"jobDriver,omitempty" xml:"jobDriver,omitempty"`
-	// The job run ID.
+	// The job ID.
 	//
 	// example:
 	//
@@ -177,7 +189,7 @@ type ListJobRunsResponseBodyJobRuns struct {
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
 	// The path of the run log.
 	Log *RunLog `json:"log,omitempty" xml:"log,omitempty"`
-	// The total memory in MB allocated to the job run, multiplied by the runtime in seconds.
+	// The total amount of allocated memory multiplied by the number of seconds the job has been running.
 	//
 	// example:
 	//
@@ -193,7 +205,7 @@ type ListJobRunsResponseBodyJobRuns struct {
 	//
 	// 5
 	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
-	// The version of the Spark engine that is used to run the job.
+	// The version of the Spark DPI engine used to run the job.
 	//
 	// example:
 	//
@@ -203,7 +215,7 @@ type ListJobRunsResponseBodyJobRuns struct {
 	//
 	// dev_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
-	// The state of the job run.
+	// The job states.
 	//
 	// example:
 	//
@@ -211,7 +223,7 @@ type ListJobRunsResponseBodyJobRuns struct {
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
 	// The reason for the state change.
 	StateChangeReason *ListJobRunsResponseBodyJobRunsStateChangeReason `json:"stateChangeReason,omitempty" xml:"stateChangeReason,omitempty" type:"Struct"`
-	// The time when the job was submitted.
+	// The job submission time.
 	//
 	// example:
 	//
@@ -219,13 +231,13 @@ type ListJobRunsResponseBodyJobRuns struct {
 	SubmitTime *int64 `json:"submitTime,omitempty" xml:"submitTime,omitempty"`
 	// The tags.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The total number of vCores allocated to the job run, multiplied by the runtime in seconds.
+	// The total number of allocated vcores multiplied by the number of seconds the job has been running.
 	//
 	// example:
 	//
 	// 8236
 	VcoreSeconds *int64 `json:"vcoreSeconds,omitempty" xml:"vcoreSeconds,omitempty"`
-	// The web UI of the job.
+	// The job Web UI.
 	//
 	// example:
 	//
@@ -488,7 +500,7 @@ func (s *ListJobRunsResponseBodyJobRuns) Validate() error {
 }
 
 type ListJobRunsResponseBodyJobRunsConfigurationOverrides struct {
-	// A list of Spark configurations.
+	// The list of Spark configurations.
 	Configurations []*Configuration `json:"configurations,omitempty" xml:"configurations,omitempty" type:"Repeated"`
 }
 

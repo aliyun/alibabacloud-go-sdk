@@ -24,23 +24,34 @@ type iListRayJobRequest interface {
 }
 
 type ListRayJobRequest struct {
+	// The name of the Ray Job (exact match).
+	//
 	// example:
 	//
 	// myrayjob
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// The number of entries per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The submission ID of the Ray Job.
+	//
 	// example:
 	//
 	// rj-xxxxxxxxxxx
-	SubmissionId *string                      `json:"submissionId,omitempty" xml:"submissionId,omitempty"`
-	SubmitTime   *ListRayJobRequestSubmitTime `json:"submitTime,omitempty" xml:"submitTime,omitempty" type:"Struct"`
+	SubmissionId *string `json:"submissionId,omitempty" xml:"submissionId,omitempty"`
+	// The submit time range.
+	SubmitTime *ListRayJobRequestSubmitTime `json:"submitTime,omitempty" xml:"submitTime,omitempty" type:"Struct"`
+	// The data development node ID.
+	//
 	// example:
 	//
 	// TSK-db8b870d901e443ba0aebba40c923e02
@@ -119,10 +130,14 @@ func (s *ListRayJobRequest) Validate() error {
 }
 
 type ListRayJobRequestSubmitTime struct {
+	// The end of the submit time range. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1780018822000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The start of the submit time range. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1780017822000

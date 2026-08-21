@@ -201,7 +201,7 @@ func (client *Client) CancelKyuubiSparkApplicationWithContext(ctx context.Contex
 
 // Summary:
 //
-// 停止RayJob
+// Stops a RayJob.
 //
 // @param request - CancelRayJobRequest
 //
@@ -1398,7 +1398,54 @@ func (client *Client) DeleteRayClusterWithContext(ctx context.Context, workspace
 
 // Summary:
 //
-// Updates a Workspace Queue.
+// Deletes a workspace queue.
+//
+// @param request - DeleteWorkspaceQueueRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWorkspaceQueueResponse
+func (client *Client) DeleteWorkspaceQueueWithContext(ctx context.Context, workspaceId *string, workspaceQueueName *string, request *DeleteWorkspaceQueueRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteWorkspaceQueueResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteWorkspaceQueue"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/queues/" + dara.PercentEncode(dara.StringValue(workspaceQueueName))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteWorkspaceQueueResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a workspace queue.
 //
 // @param request - EditWorkspaceQueueRequest
 //
@@ -1426,6 +1473,10 @@ func (client *Client) EditWorkspaceQueueWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.GpuSpec) {
 		body["gpuSpec"] = request.GpuSpec
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["instanceId"] = request.InstanceId
 	}
 
 	if !dara.IsNil(request.ResourceSpec) {
@@ -1970,7 +2021,7 @@ func (client *Client) GetRayClusterWithContext(ctx context.Context, workspaceId 
 
 // Summary:
 //
-// 获取Ray集群
+// Retrieves Ray Job information.
 //
 // @param request - GetRayJobRequest
 //
@@ -2488,7 +2539,7 @@ func (client *Client) ListJobExecutorsWithContext(ctx context.Context, workspace
 
 // Summary:
 //
-// Call the ListJobRuns operation to retrieve a list of Spark jobs.
+// Queries a list of Spark jobs.
 //
 // @param tmpReq - ListJobRunsRequest
 //
@@ -2533,6 +2584,10 @@ func (client *Client) ListJobRunsWithContext(ctx context.Context, workspaceId *s
 
 	if !dara.IsNil(request.EndTimeShrink) {
 		query["endTime"] = request.EndTimeShrink
+	}
+
+	if !dara.IsNil(request.GroupByState) {
+		query["groupByState"] = request.GroupByState
 	}
 
 	if !dara.IsNil(request.IsWorkflow) {
@@ -2904,7 +2959,7 @@ func (client *Client) ListLivyComputeSessionsWithContext(ctx context.Context, wo
 
 // Summary:
 //
-// Lists Livy Gateway tokens.
+// Lists the tokens of a Livy Gateway.
 //
 // @param request - ListLivyComputeTokenRequest
 //
@@ -3163,7 +3218,7 @@ func (client *Client) ListRayClusterWithContext(ctx context.Context, workspaceId
 
 // Summary:
 //
-// 列出RayJob
+// Lists Ray Job information.
 //
 // @param tmpReq - ListRayJobRequest
 //
@@ -3535,7 +3590,7 @@ func (client *Client) ListTemplateWithContext(ctx context.Context, workspaceBizI
 
 // Summary:
 //
-// Lists the queues in a workspace.
+// Queries the list of queues in a workspace.
 //
 // @param request - ListWorkspaceQueuesRequest
 //
@@ -3586,7 +3641,7 @@ func (client *Client) ListWorkspaceQueuesWithContext(ctx context.Context, worksp
 
 // Summary:
 //
-// Call `ListWorkspaces` to get a list of workspaces.
+// Queries a list of workspaces.
 //
 // @param tmpReq - ListWorkspacesRequest
 //
@@ -4370,7 +4425,7 @@ func (client *Client) StopSessionClusterWithContext(ctx context.Context, workspa
 
 // Summary:
 //
-// 提交Ray Job
+// Submits a Ray job.
 //
 // @param request - SubmitRayJobRequest
 //
@@ -5013,7 +5068,7 @@ func (client *Client) UpdateRayClusterWithContext(ctx context.Context, workspace
 
 // Summary:
 //
-// # Update workspace properties
+// Updates the properties of a workspace.
 //
 // @param request - UpdateWorkspaceRequest
 //
@@ -5045,6 +5100,10 @@ func (client *Client) UpdateWorkspaceWithContext(ctx context.Context, request *U
 
 	if !dara.IsNil(request.GpuSpec) {
 		body["gpuSpec"] = request.GpuSpec
+	}
+
+	if !dara.IsNil(request.GpuSubscription) {
+		body["gpuSubscription"] = request.GpuSubscription
 	}
 
 	if !dara.IsNil(request.IpWhiteList) {

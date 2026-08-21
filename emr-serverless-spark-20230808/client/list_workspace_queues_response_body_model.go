@@ -22,13 +22,13 @@ type iListWorkspaceQueuesResponseBody interface {
 }
 
 type ListWorkspaceQueuesResponseBody struct {
-	// The maximum number of records to return in a single request.
+	// The maximum number of records returned at a time.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token for the next page of results.
+	// The token for the next page.
 	//
 	// example:
 	//
@@ -117,9 +117,9 @@ func (s *ListWorkspaceQueuesResponseBody) Validate() error {
 }
 
 type ListWorkspaceQueuesResponseBodyQueues struct {
-	// The list of allowed operations for the queue.
+	// The list of allowed actions on the queue.
 	AllowActions []*ListWorkspaceQueuesResponseBodyQueuesAllowActions `json:"allowActions,omitempty" xml:"allowActions,omitempty" type:"Repeated"`
-	// The creation time of the workspace.
+	// The time when the workspace was created.
 	//
 	// example:
 	//
@@ -131,9 +131,11 @@ type ListWorkspaceQueuesResponseBodyQueues struct {
 	//
 	// 237109
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// The list of environment types for the queue.
-	Environments []*string `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
-	GpuSpec      []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
+	// The list of queue environment types.
+	Environments  []*string `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
+	GpuMachineNum *int32    `json:"gpuMachineNum,omitempty" xml:"gpuMachineNum,omitempty"`
+	GpuSpec       []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
+	InstanceId    *string   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The maximum resource capacity of the queue.
 	//
 	// example:
@@ -173,7 +175,7 @@ type ListWorkspaceQueuesResponseBodyQueues struct {
 	//
 	// dev_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
-	// The queue architecture.
+	// The queue scope.
 	//
 	// example:
 	//
@@ -187,9 +189,9 @@ type ListWorkspaceQueuesResponseBodyQueues struct {
 	QueueStatus *string `json:"queueStatus,omitempty" xml:"queueStatus,omitempty"`
 	// The queue type. Valid values:
 	//
-	// - instance: A queue for a single task.
+	// - instance: single task type
 	//
-	// - instanceChildren: A queue for a parent task.
+	// - instanceChildren: parent task type
 	//
 	// example:
 	//
@@ -239,8 +241,16 @@ func (s *ListWorkspaceQueuesResponseBodyQueues) GetEnvironments() []*string {
 	return s.Environments
 }
 
+func (s *ListWorkspaceQueuesResponseBodyQueues) GetGpuMachineNum() *int32 {
+	return s.GpuMachineNum
+}
+
 func (s *ListWorkspaceQueuesResponseBodyQueues) GetGpuSpec() []*string {
 	return s.GpuSpec
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueues) GetInstanceId() *string {
+	return s.InstanceId
 }
 
 func (s *ListWorkspaceQueuesResponseBodyQueues) GetMaxResource() *string {
@@ -315,8 +325,18 @@ func (s *ListWorkspaceQueuesResponseBodyQueues) SetEnvironments(v []*string) *Li
 	return s
 }
 
+func (s *ListWorkspaceQueuesResponseBodyQueues) SetGpuMachineNum(v int32) *ListWorkspaceQueuesResponseBodyQueues {
+	s.GpuMachineNum = &v
+	return s
+}
+
 func (s *ListWorkspaceQueuesResponseBodyQueues) SetGpuSpec(v []*string) *ListWorkspaceQueuesResponseBodyQueues {
 	s.GpuSpec = v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueues) SetInstanceId(v string) *ListWorkspaceQueuesResponseBodyQueues {
+	s.InstanceId = &v
 	return s
 }
 
@@ -399,7 +419,7 @@ func (s *ListWorkspaceQueuesResponseBodyQueues) Validate() error {
 }
 
 type ListWorkspaceQueuesResponseBodyQueuesAllowActions struct {
-	// The Alibaba Cloud Resource Name (ARN) of the behavior.
+	// The action ARN.
 	//
 	// example:
 	//

@@ -18,11 +18,16 @@ type iListRayJobResponseBody interface {
 }
 
 type ListRayJobResponseBody struct {
+	// The list of Ray Jobs.
 	RayJobs []*ListRayJobResponseBodyRayJobs `json:"rayJobs,omitempty" xml:"rayJobs,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 200
@@ -78,50 +83,98 @@ func (s *ListRayJobResponseBody) Validate() error {
 }
 
 type ListRayJobResponseBodyRayJobs struct {
+	// The status of the corresponding Ray cluster. Valid values:
+	//
+	// - Deleted: deleted.
+	//
+	// - Submitted: submitted but not yet being created.
+	//
+	// - Pending: being created.
+	//
+	// - Running: running.
+	//
 	// example:
 	//
 	// Running
 	ClusterState *string `json:"clusterState,omitempty" xml:"clusterState,omitempty"`
+	// The nickname of the creator.
+	//
 	// example:
 	//
 	// Alice
 	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
+	// The number of compute units (CUs) consumed during the job execution cycle. This value is an estimate. The actual value is subject to the bill.
+	//
 	// example:
 	//
 	// 120
 	CuHours *float64 `json:"cuHours,omitempty" xml:"cuHours,omitempty"`
+	// The URL of the Ray cluster dashboard. When the Ray cluster is in the Running state, the URL points to the Runtime UI. After the cluster is in the Deleted state, the URL points to the History UI. The History UI is supported only in err-1.2.0 and later versions.
+	//
 	// example:
 	//
 	// https://emr-ray-gateway.aliyuncs.com?token=xxxxxxxxx
 	DashboardUrl *string `json:"dashboardUrl,omitempty" xml:"dashboardUrl,omitempty"`
+	// The execution duration of the job. Unit: seconds.
+	//
 	// example:
 	//
 	// 3564
 	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
+	// The time when the job ended.
+	//
 	// example:
 	//
 	// 1776945509000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The name of the Ray Job.
+	//
 	// example:
 	//
 	// testRayJob
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The Ray DPI engine version.
+	//
 	// example:
 	//
 	// err-1.2.0 (Ray 2.55.1, Python 3.12)
 	ResourceQueue *string `json:"resourceQueue,omitempty" xml:"resourceQueue,omitempty"`
+	// The time when the job was started.
+	//
 	// example:
 	//
 	// 1776945499000
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The job status. Valid values:
+	//
+	// - Submitted: submitted.
+	//
+	// - Pending: the cluster is being created.
+	//
+	// - Running: the job is running.
+	//
+	// - Succeeded: the job succeeded.
+	//
+	// - Failed: the job failed.
+	//
+	// - Cancelling: the job is being canceled.
+	//
+	// - Cancelled: the job is canceled.
+	//
+	// - Timeout: the job timed out and was canceled.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The ID of the Ray Job.
+	//
 	// example:
 	//
 	// rj-uiulpgow9xljimm1
 	SubmissionId *string `json:"submissionId,omitempty" xml:"submissionId,omitempty"`
+	// The time when the job was submitted.
+	//
 	// example:
 	//
 	// 1776945399000

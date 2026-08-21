@@ -15,6 +15,8 @@ type iListJobRunsShrinkRequest interface {
 	GetCreator() *string
 	SetEndTimeShrink(v string) *ListJobRunsShrinkRequest
 	GetEndTimeShrink() *string
+	SetGroupByState(v bool) *ListJobRunsShrinkRequest
+	GetGroupByState() *bool
 	SetIsWorkflow(v string) *ListJobRunsShrinkRequest
 	GetIsWorkflow() *string
 	SetJobRunDeploymentId(v string) *ListJobRunsShrinkRequest
@@ -56,33 +58,34 @@ type ListJobRunsShrinkRequest struct {
 	//
 	// 150976534701****
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// The time range when the job run ended.
+	// The end time range of the job.
 	EndTimeShrink *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// Specifies whether the job is a workflow task.
+	GroupByState  *bool   `json:"groupByState,omitempty" xml:"groupByState,omitempty"`
+	// Specifies whether the job is a workflow job.
 	//
 	// example:
 	//
 	// false
 	IsWorkflow *string `json:"isWorkflow,omitempty" xml:"isWorkflow,omitempty"`
-	// The deployment ID of the streaming job.
+	// The job ID of the streaming job deployment.
 	//
 	// example:
 	//
 	// jd-b6d003f1930f****
 	JobRunDeploymentId *string `json:"jobRunDeploymentId,omitempty" xml:"jobRunDeploymentId,omitempty"`
-	// The job run ID.
+	// The job ID.
 	//
 	// example:
 	//
 	// j-xxx
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
-	// The maximum number of entries to return. The maximum value is 100.
+	// The maximum number of records to retrieve in a single request. Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The minimum runtime of the job run, in milliseconds.
+	// The minimum execution duration of the job, in milliseconds.
 	//
 	// example:
 	//
@@ -94,7 +97,7 @@ type ListJobRunsShrinkRequest struct {
 	//
 	// emr-spark-demo-job
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The token that specifies the position from which to start the next read.
+	// The pagination token that marks the position from which to start reading.
 	//
 	// example:
 	//
@@ -106,7 +109,7 @@ type ListJobRunsShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The ID of the resource queue on which the Spark job runs.
+	// The name of the resource queue on which the Spark job runs.
 	//
 	// example:
 	//
@@ -118,9 +121,9 @@ type ListJobRunsShrinkRequest struct {
 	//
 	// [{\\"key\\":\\"mainClass\\",\\"value\\":\\"yourClass\\"}]
 	RuntimeConfigs *string `json:"runtimeConfigs,omitempty" xml:"runtimeConfigs,omitempty"`
-	// The time range when the job run started.
+	// The start time range of the job.
 	StartTimeShrink *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The job run states.
+	// The job states.
 	//
 	// example:
 	//
@@ -148,6 +151,10 @@ func (s *ListJobRunsShrinkRequest) GetCreator() *string {
 
 func (s *ListJobRunsShrinkRequest) GetEndTimeShrink() *string {
 	return s.EndTimeShrink
+}
+
+func (s *ListJobRunsShrinkRequest) GetGroupByState() *bool {
+	return s.GroupByState
 }
 
 func (s *ListJobRunsShrinkRequest) GetIsWorkflow() *string {
@@ -214,6 +221,11 @@ func (s *ListJobRunsShrinkRequest) SetCreator(v string) *ListJobRunsShrinkReques
 
 func (s *ListJobRunsShrinkRequest) SetEndTimeShrink(v string) *ListJobRunsShrinkRequest {
 	s.EndTimeShrink = &v
+	return s
+}
+
+func (s *ListJobRunsShrinkRequest) SetGroupByState(v bool) *ListJobRunsShrinkRequest {
+	s.GroupByState = &v
 	return s
 }
 

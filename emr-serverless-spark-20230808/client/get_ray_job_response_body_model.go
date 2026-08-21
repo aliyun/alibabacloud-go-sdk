@@ -88,136 +88,230 @@ type iGetRayJobResponseBody interface {
 }
 
 type GetRayJobResponseBody struct {
+	// The timeout period.
+	//
 	// example:
 	//
 	// 3600
 	ActiveDeadlineSeconds *int32 `json:"activeDeadlineSeconds,omitempty" xml:"activeDeadlineSeconds,omitempty"`
+	// The number of failure retries. Currently fixed at 0.
+	//
 	// example:
 	//
 	// 2
 	BackoffLimit *int32 `json:"backoffLimit,omitempty" xml:"backoffLimit,omitempty"`
+	// The status of the corresponding Ray cluster. Valid values:
+	//
+	// - Deleted: Deleted.
+	//
+	// - Submitted: Submitted but not yet created.
+	//
+	// - Pending: Being created.
+	//
+	// - Running: Running.
+	//
 	// example:
 	//
 	// Running
 	ClusterState *string `json:"clusterState,omitempty" xml:"clusterState,omitempty"`
+	// The nickname of the creator.
+	//
 	// example:
 	//
 	// Alice
 	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
+	// The consumed CU resources. This value is returned 10 minutes after the cluster is released.
+	//
 	// example:
 	//
 	// 1899
 	CuHours *float64 `json:"cuHours,omitempty" xml:"cuHours,omitempty"`
+	// The Ray cluster dashboard URL. When the Ray cluster is in Running state, this is the Runtime UI. After the cluster is deleted, this is the History UI. History UI is supported only in err-1.2.0 and later versions.
+	//
 	// example:
 	//
 	// https://emr-ray-gateway-cn-hangzhou.aliyuncs.com/workspace/w-xxxxxxxx/raycluster/ray-xxxxxx/dashboard?token=xxxxxx
-	DashboardUrl      *string   `json:"dashboardUrl,omitempty" xml:"dashboardUrl,omitempty"`
+	DashboardUrl *string `json:"dashboardUrl,omitempty" xml:"dashboardUrl,omitempty"`
+	// The extra dashboard UI URLs. Currently empty.
 	DashboardUrlExtra []*string `json:"dashboardUrlExtra,omitempty" xml:"dashboardUrlExtra,omitempty" type:"Repeated"`
+	// The Ray DPI engine version.
+	//
 	// example:
 	//
 	// err-1.2.0 (Ray 2.55.1, Python 3.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
+	// The job duration, in seconds.
+	//
 	// example:
 	//
 	// 2459764
 	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
+	// The job end time. This value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1762949372000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The startup command.
+	//
 	// example:
 	//
 	// python main.py
 	Entrypoint *string `json:"entrypoint,omitempty" xml:"entrypoint,omitempty"`
+	// The memory size requested by the entrypoint task.
+	//
 	// example:
 	//
 	// 4Gi
 	EntrypointMemory *string `json:"entrypointMemory,omitempty" xml:"entrypointMemory,omitempty"`
+	// The number of CPUs requested by the entrypoint task.
+	//
 	// example:
 	//
 	// 1
 	EntrypointNumCpus *string `json:"entrypointNumCpus,omitempty" xml:"entrypointNumCpus,omitempty"`
+	// The number of GPUs requested by the entrypoint task.
+	//
 	// example:
 	//
 	// 0
 	EntrypointNumGpus *string `json:"entrypointNumGpus,omitempty" xml:"entrypointNumGpus,omitempty"`
+	// The custom resource request JSON string for the entrypoint task.
+	//
 	// example:
 	//
 	// {"fpu": 1}
 	EntrypointResources *string `json:"entrypointResources,omitempty" xml:"entrypointResources,omitempty"`
+	// The extra parameters in JSON format.
+	//
 	// example:
 	//
 	// {"userDefinedFiles": "oss://mybucket/artifact/config.json,oss://mybucket/artifact/config2.json", "userRequirementsFile": "oss://mybucket/requirements.txt"}
-	ExtraParam *string                        `json:"extraParam,omitempty" xml:"extraParam,omitempty"`
-	GuHours    *GetRayJobResponseBodyGuHours  `json:"guHours,omitempty" xml:"guHours,omitempty" type:"Struct"`
-	HeadSpec   *GetRayJobResponseBodyHeadSpec `json:"headSpec,omitempty" xml:"headSpec,omitempty" type:"Struct"`
+	ExtraParam *string `json:"extraParam,omitempty" xml:"extraParam,omitempty"`
+	// The consumed GPU hours. Currently empty.
+	GuHours *GetRayJobResponseBodyGuHours `json:"guHours,omitempty" xml:"guHours,omitempty" type:"Struct"`
+	// The Ray cluster head node parameters.
+	HeadSpec *GetRayJobResponseBodyHeadSpec `json:"headSpec,omitempty" xml:"headSpec,omitempty" type:"Struct"`
+	// The name of the bucket that stores logs.
+	//
 	// example:
 	//
 	// ss-ray-cn-hangzhou
 	LogBucketName *string `json:"logBucketName,omitempty" xml:"logBucketName,omitempty"`
+	// The path where logs are stored.
+	//
 	// example:
 	//
 	// w-xxxxxxx/ray/logs/xxxxxx/
 	LogPath *string `json:"logPath,omitempty" xml:"logPath,omitempty"`
+	// The execution message.
+	//
 	// example:
 	//
 	// Job finished successfully.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The job metadata JSON string.
+	//
 	// example:
 	//
 	// {"owner": "alice"}
 	MetadataJson *string `json:"metadataJson,omitempty" xml:"metadataJson,omitempty"`
+	// The Ray cluster name.
+	//
 	// example:
 	//
 	// myRayCluster
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The network connectivity name.
+	//
 	// example:
 	//
 	// vpc
 	NetworkServiceName *string `json:"networkServiceName,omitempty" xml:"networkServiceName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The Ray runtime environment JSON string.
+	//
 	// example:
 	//
 	// {"pip":["requests==2.26.0","pendulum==2.1.2"],"env_vars":{"KEY":"VALUE"}}
 	RuntimeEnvJson *string `json:"runtimeEnvJson,omitempty" xml:"runtimeEnvJson,omitempty"`
+	// Specifies whether to automatically destroy the temporary cluster after the job finishes. Default value: true.
+	//
 	// example:
 	//
 	// true
 	ShutdownAfterJobFinishes *bool `json:"shutdownAfterJobFinishes,omitempty" xml:"shutdownAfterJobFinishes,omitempty"`
+	// The start time. This value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1750327083303
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The job status. Valid values:
+	//
+	// - Submitted: Submitted.
+	//
+	// - Pending: The cluster is being created.
+	//
+	// - Running: The job is running.
+	//
+	// - Succeeded: The job succeeded.
+	//
+	// - Failed: The job failed.
+	//
+	// - Cancelling: Cancelling.
+	//
+	// - Cancelled: Cancelled.
+	//
+	// - Timeout: Timed out and cancelled.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The ID of the Ray Job.
+	//
 	// example:
 	//
 	// rj-xxxxxxxxxx
 	SubmissionId *string `json:"submissionId,omitempty" xml:"submissionId,omitempty"`
+	// The job submission mode.
+	//
 	// example:
 	//
 	// HTTPMode
 	SubmissionMode *string `json:"submissionMode,omitempty" xml:"submissionMode,omitempty"`
+	// The job submission time. This value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1750327082303
 	SubmitTime *int64 `json:"submitTime,omitempty" xml:"submitTime,omitempty"`
-	Tags       []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The tags.
+	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The data development task ID.
+	//
 	// example:
 	//
 	// TSK-682e0112f6f24d9f9305b92174846985
 	TaskBizId *string `json:"taskBizId,omitempty" xml:"taskBizId,omitempty"`
+	// The number of seconds to wait before destroying the cluster. This parameter takes effect only when shutdownAfterJobFinishes is set to true.
+	//
 	// example:
 	//
 	// 60
-	TtlSecondsAfterFinished *int32                              `json:"ttlSecondsAfterFinished,omitempty" xml:"ttlSecondsAfterFinished,omitempty"`
-	VolumeIds               []*string                           `json:"volumeIds,omitempty" xml:"volumeIds,omitempty" type:"Repeated"`
-	WorkerSpecs             []*GetRayJobResponseBodyWorkerSpecs `json:"workerSpecs,omitempty" xml:"workerSpecs,omitempty" type:"Repeated"`
+	TtlSecondsAfterFinished *int32 `json:"ttlSecondsAfterFinished,omitempty" xml:"ttlSecondsAfterFinished,omitempty"`
+	// The list of managed file IDs.
+	VolumeIds []*string `json:"volumeIds,omitempty" xml:"volumeIds,omitempty" type:"Repeated"`
+	// The Ray cluster worker node information.
+	WorkerSpecs []*GetRayJobResponseBodyWorkerSpecs `json:"workerSpecs,omitempty" xml:"workerSpecs,omitempty" type:"Repeated"`
+	// The URL of the job code working directory.
+	//
 	// example:
 	//
 	// oss://mybucket/hello.zip
@@ -607,10 +701,14 @@ func (s *GetRayJobResponseBody) Validate() error {
 }
 
 type GetRayJobResponseBodyGuHours struct {
+	// The consumed GPU hours.
+	//
 	// example:
 	//
 	// 2.6
 	GpuHours *float64 `json:"gpuHours,omitempty" xml:"gpuHours,omitempty"`
+	// The GPU type.
+	//
 	// example:
 	//
 	// ecs.gn6i-c4g1.xlarge
@@ -648,30 +746,44 @@ func (s *GetRayJobResponseBodyGuHours) Validate() error {
 }
 
 type GetRayJobResponseBodyHeadSpec struct {
+	// The number of CPU cores.
+	//
 	// example:
 	//
 	// 2
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// Indicates whether auto scaling is enabled for worker nodes.
+	//
 	// example:
 	//
 	// true
 	EnableAutoScaling *bool `json:"enableAutoScaling,omitempty" xml:"enableAutoScaling,omitempty"`
+	// The GPU type.
+	//
 	// example:
 	//
 	// ecs.gn6i-c4g1.xlarge
 	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
+	// The idle timeout in seconds for worker nodes when auto scaling is enabled.
+	//
 	// example:
 	//
 	// 60
 	IdleTimeoutSeconds *int32 `json:"idleTimeoutSeconds,omitempty" xml:"idleTimeoutSeconds,omitempty"`
+	// The memory size, in GiB.
+	//
 	// example:
 	//
 	// 8Gi
 	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
+	// The queue name.
+	//
 	// example:
 	//
 	// root_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// The number of nodes.
+	//
 	// example:
 	//
 	// 1
@@ -754,34 +866,50 @@ func (s *GetRayJobResponseBodyHeadSpec) Validate() error {
 }
 
 type GetRayJobResponseBodyWorkerSpecs struct {
+	// The number of CPU cores.
+	//
 	// example:
 	//
 	// 2
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The GPU type.
+	//
 	// example:
 	//
 	// ecs.gn6i-c4g1.xlarge
 	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
+	// The worker node group name.
+	//
 	// example:
 	//
 	// WorkerGroup1
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The maximum number of workers.
+	//
 	// example:
 	//
 	// 10
 	MaxReplica *int32 `json:"maxReplica,omitempty" xml:"maxReplica,omitempty"`
+	// The memory size, in GiB.
+	//
 	// example:
 	//
 	// 8Gi
 	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
+	// The minimum number of workers.
+	//
 	// example:
 	//
 	// 1
 	MinReplica *int32 `json:"minReplica,omitempty" xml:"minReplica,omitempty"`
+	// The queue name.
+	//
 	// example:
 	//
 	// root_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// The number of worker nodes.
+	//
 	// example:
 	//
 	// 1

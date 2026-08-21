@@ -20,7 +20,7 @@ type iListLivyComputeTokenResponseBody interface {
 }
 
 type ListLivyComputeTokenResponseBody struct {
-	// The response code. A value of 1000000 indicates that the request was successful. Other values indicate that the request failed. See the message parameter for failure details.
+	// The response code. A value of 1000000 indicates success. Any other value indicates failure. You can view the specific error description in the message field.
 	//
 	// example:
 	//
@@ -131,25 +131,25 @@ func (s *ListLivyComputeTokenResponseBodyData) Validate() error {
 }
 
 type ListLivyComputeTokenResponseBodyDataTokens struct {
-	// The time when the token was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1749456094000
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The user who created the token.
+	// The creator of the token.
 	//
 	// example:
 	//
 	// alice
 	Createdby *string `json:"createdby,omitempty" xml:"createdby,omitempty"`
-	// The time when the token expires.
+	// The expiration time.
 	//
 	// example:
 	//
 	// 1749456994000
 	ExpireTime *int64 `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	// The time when the token was last used.
+	// The last used time.
 	//
 	// example:
 	//
@@ -167,7 +167,7 @@ type ListLivyComputeTokenResponseBodyDataTokens struct {
 	//
 	// 5d37843fb6f1e8
 	Token *string `json:"token,omitempty" xml:"token,omitempty"`
-	// The token ID.
+	// Token ID。
 	//
 	// example:
 	//

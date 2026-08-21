@@ -26,44 +26,41 @@ type iListWorkspacesRequest interface {
 }
 
 type ListWorkspacesRequest struct {
-	// The maximum number of results per page.
+	// The maximum number of records to retrieve in a single request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The name of the workspace. Fuzzy search is supported.
+	// The name of the workspace. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// test_workspace
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The token for the next page of results.
+	// The pagination token that marks the current read position.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The ID of the resource group.
-	//
 	// example:
 	//
 	// rg-aek2thxggoqhmhq
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The state of the workspace.
+	// The workspace status.
 	//
 	// example:
 	//
 	// running
-	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// Filters the results by one or more tags.
-	Tag []*ListWorkspacesRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
+	State *string                     `json:"state,omitempty" xml:"state,omitempty"`
+	Tag   []*ListWorkspacesRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
 }
 
 func (s ListWorkspacesRequest) String() string {
@@ -151,14 +148,10 @@ func (s *ListWorkspacesRequest) Validate() error {
 }
 
 type ListWorkspacesRequestTag struct {
-	// The tag key.
-	//
 	// example:
 	//
 	// cn-shenzhen-finance.edas.config.server
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The tag value.
-	//
 	// example:
 	//
 	// iPhone disk space remaining rate

@@ -140,27 +140,27 @@ type iTask interface {
 type Task struct {
 	// The --archives parameter.
 	Archives []*string `json:"archives,omitempty" xml:"archives,omitempty" type:"Repeated"`
-	// The temporary URL to access the resource file.
+	// The temporary URL for accessing the resource file.
 	ArtifactUrl *string `json:"artifactUrl,omitempty" xml:"artifactUrl,omitempty"`
 	// The business ID.
 	//
 	// This parameter is required.
 	BizId *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
-	// The business ID of the folder.
+	// The folder business ID.
 	CategoryBizId *string `json:"categoryBizId,omitempty" xml:"categoryBizId,omitempty"`
-	// The content of the Spark job.
+	// The Spark job content.
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// The UID of the creator.
 	//
 	// This parameter is required.
 	Creator *int64 `json:"creator,omitempty" xml:"creator,omitempty"`
-	// The information for directly uploading files to Object Storage Service (OSS).
+	// The OSS direct upload credentials.
 	Credential *TaskCredential `json:"credential,omitempty" xml:"credential,omitempty" type:"Struct"`
 	// The default catalog ID.
 	DefaultCatalogId *string `json:"defaultCatalogId,omitempty" xml:"defaultCatalogId,omitempty"`
 	// The default database.
 	DefaultDatabase *string `json:"defaultDatabase,omitempty" xml:"defaultDatabase,omitempty"`
-	// The default queue ID for the task.
+	// The default queue ID of the task.
 	DefaultResourceQueueId *string `json:"defaultResourceQueueId,omitempty" xml:"defaultResourceQueueId,omitempty"`
 	// The default SQL session ID.
 	DefaultSqlComputeId *string `json:"defaultSqlComputeId,omitempty" xml:"defaultSqlComputeId,omitempty"`
@@ -170,23 +170,23 @@ type Task struct {
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
 	// The IDs of extra Spark resources.
 	ExtraArtifactIds []*string `json:"extraArtifactIds,omitempty" xml:"extraArtifactIds,omitempty" type:"Repeated"`
-	// The custom parameters for the spark-submit command.
+	// The custom Spark submit configuration parameters.
 	ExtraSparkSubmitParams *string `json:"extraSparkSubmitParams,omitempty" xml:"extraSparkSubmitParams,omitempty"`
 	// The --files parameter.
 	Files []*string `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
-	// Indicates whether to enable fusion.
+	// Indicates whether the fusion switch is enabled.
 	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
-	// The time when the task was created.
+	// The creation time.
 	//
 	// This parameter is required.
 	GmtCreated *string `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
-	// The time when the task was last modified.
+	// The last modification time.
 	//
 	// This parameter is required.
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// Indicates whether the task has been changed since the last commit.
+	// Indicates whether the task has been changed since the last submission.
 	HasChanged *bool `json:"hasChanged,omitempty" xml:"hasChanged,omitempty"`
-	// Indicates whether the task has been committed.
+	// Indicates whether the task has been submitted.
 	//
 	// This parameter is required.
 	HasCommited *bool `json:"hasCommited,omitempty" xml:"hasCommited,omitempty"`
@@ -195,9 +195,9 @@ type Task struct {
 	// The --jars parameter.
 	Jars     []*string `json:"jars,omitempty" xml:"jars,omitempty" type:"Repeated"`
 	KernelId *string   `json:"kernelId,omitempty" xml:"kernelId,omitempty"`
-	// The ID of the resource queue that was used for the last run.
+	// The ID of the resource queue used in the last run.
 	LastRunResourceQueueId *string `json:"lastRunResourceQueueId,omitempty" xml:"lastRunResourceQueueId,omitempty"`
-	// The UID of the user who last updated the task.
+	// The UID of the last modifier.
 	//
 	// This parameter is required.
 	Modifier *int64 `json:"modifier,omitempty" xml:"modifier,omitempty"`
@@ -206,7 +206,7 @@ type Task struct {
 	// This parameter is required.
 	Name   *string            `json:"name,omitempty" xml:"name,omitempty"`
 	Params map[string]*string `json:"params,omitempty" xml:"params,omitempty"`
-	// The PySpark dependency pyfiles.
+	// The Spark PySpark dependency pyfiles.
 	PyFiles                     []*string            `json:"pyFiles,omitempty" xml:"pyFiles,omitempty" type:"Repeated"`
 	RayActiveDeadlineSeconds    *int64               `json:"rayActiveDeadlineSeconds,omitempty" xml:"rayActiveDeadlineSeconds,omitempty"`
 	RayBackoffLimit             *int32               `json:"rayBackoffLimit,omitempty" xml:"rayBackoffLimit,omitempty"`
@@ -236,25 +236,25 @@ type Task struct {
 	SparkArgs *string `json:"sparkArgs,omitempty" xml:"sparkArgs,omitempty"`
 	// The list of Spark configurations.
 	SparkConf []*SparkConf `json:"sparkConf,omitempty" xml:"sparkConf,omitempty" type:"Repeated"`
-	// The number of cores for the Spark driver.
+	// The number of Spark driver cores.
 	//
 	// This parameter is required.
 	SparkDriverCores *int32 `json:"sparkDriverCores,omitempty" xml:"sparkDriverCores,omitempty"`
-	// The memory of the Spark driver.
+	// The Spark driver memory.
 	//
 	// This parameter is required.
 	SparkDriverMemory *int64 `json:"sparkDriverMemory,omitempty" xml:"sparkDriverMemory,omitempty"`
-	// The entrypoint of the Spark main class.
+	// The Spark main class entry point.
 	SparkEntrypoint *string `json:"sparkEntrypoint,omitempty" xml:"sparkEntrypoint,omitempty"`
-	// The number of cores for the Spark executor.
+	// The number of Spark executor cores.
 	//
 	// This parameter is required.
 	SparkExecutorCores *int32 `json:"sparkExecutorCores,omitempty" xml:"sparkExecutorCores,omitempty"`
-	// The memory of the Spark executor.
+	// The Spark executor memory.
 	//
 	// This parameter is required.
 	SparkExecutorMemory *int64 `json:"sparkExecutorMemory,omitempty" xml:"sparkExecutorMemory,omitempty"`
-	// The log level for Spark.
+	// The Spark log level.
 	//
 	// This parameter is required.
 	SparkLogLevel *string `json:"sparkLogLevel,omitempty" xml:"sparkLogLevel,omitempty"`
@@ -262,15 +262,15 @@ type Task struct {
 	//
 	// This parameter is required.
 	SparkLogPath *string `json:"sparkLogPath,omitempty" xml:"sparkLogPath,omitempty"`
-	// The spark-submit statement.
+	// The Spark submit task submission statement.
 	SparkSubmitClause *string `json:"sparkSubmitClause,omitempty" xml:"sparkSubmitClause,omitempty"`
 	// The Spark version.
 	//
 	// This parameter is required.
 	SparkVersion *string `json:"sparkVersion,omitempty" xml:"sparkVersion,omitempty"`
-	// The task tags.
+	// The task labels.
 	Tags map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// The task timeout duration.
+	// The task timeout period.
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
 	// The task type.
 	//
@@ -886,7 +886,7 @@ func (s *Task) Validate() error {
 }
 
 type TaskCredential struct {
-	// The AccessKey ID.
+	// access id
 	AccessId *string `json:"accessId,omitempty" xml:"accessId,omitempty"`
 	// The access URL.
 	AccessUrl *string `json:"accessUrl,omitempty" xml:"accessUrl,omitempty"`
@@ -896,9 +896,9 @@ type TaskCredential struct {
 	Host *string `json:"host,omitempty" xml:"host,omitempty"`
 	// The path.
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// The policy.
+	// policy
 	Policy *string `json:"policy,omitempty" xml:"policy,omitempty"`
-	// The security token.
+	// security token
 	SecurityToken *string `json:"securityToken,omitempty" xml:"securityToken,omitempty"`
 	// The signature.
 	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`

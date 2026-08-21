@@ -13,6 +13,8 @@ type iEditWorkspaceQueueRequest interface {
   GetEnvironments() []*string 
   SetGpuSpec(v []*string) *EditWorkspaceQueueRequest
   GetGpuSpec() []*string 
+  SetInstanceId(v string) *EditWorkspaceQueueRequest
+  GetInstanceId() *string 
   SetResourceSpec(v *EditWorkspaceQueueRequestResourceSpec) *EditWorkspaceQueueRequest
   GetResourceSpec() *EditWorkspaceQueueRequestResourceSpec 
   SetWorkspaceId(v string) *EditWorkspaceQueueRequest
@@ -24,18 +26,19 @@ type iEditWorkspaceQueueRequest interface {
 }
 
 type EditWorkspaceQueueRequest struct {
-  // The environment types.
+  // The queue environment type.
   Environments []*string `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
   GpuSpec []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
+  InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
   // The resource specifications.
   ResourceSpec *EditWorkspaceQueueRequestResourceSpec `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty" type:"Struct"`
-  // The Workspace ID.
+  // The workspace ID.
   // 
   // example:
   // 
   // w-975bcfda9625****
   WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
-  // The name of the Workspace Queue.
+  // The workspace queue name.
   // 
   // example:
   // 
@@ -65,6 +68,10 @@ func (s *EditWorkspaceQueueRequest) GetGpuSpec() []*string  {
   return s.GpuSpec
 }
 
+func (s *EditWorkspaceQueueRequest) GetInstanceId() *string  {
+  return s.InstanceId
+}
+
 func (s *EditWorkspaceQueueRequest) GetResourceSpec() *EditWorkspaceQueueRequestResourceSpec  {
   return s.ResourceSpec
 }
@@ -88,6 +95,11 @@ func (s *EditWorkspaceQueueRequest) SetEnvironments(v []*string) *EditWorkspaceQ
 
 func (s *EditWorkspaceQueueRequest) SetGpuSpec(v []*string) *EditWorkspaceQueueRequest {
   s.GpuSpec = v
+  return s
+}
+
+func (s *EditWorkspaceQueueRequest) SetInstanceId(v string) *EditWorkspaceQueueRequest {
+  s.InstanceId = &v
   return s
 }
 
@@ -121,7 +133,7 @@ func (s *EditWorkspaceQueueRequest) Validate() error {
 }
 
 type EditWorkspaceQueueRequestResourceSpec struct {
-  // The maximum resource capacity of the Workspace Queue.
+  // The resource upper limit of the workspace queue.
   // 
   // example:
   // 
@@ -131,6 +143,7 @@ type EditWorkspaceQueueRequestResourceSpec struct {
   // 
   // 100
   Gpu *int32 `json:"gpu,omitempty" xml:"gpu,omitempty"`
+  GpuMachineNum *int32 `json:"gpuMachineNum,omitempty" xml:"gpuMachineNum,omitempty"`
   // example:
   // 
   // 0.5
@@ -153,6 +166,10 @@ func (s *EditWorkspaceQueueRequestResourceSpec) GetGpu() *int32  {
   return s.Gpu
 }
 
+func (s *EditWorkspaceQueueRequestResourceSpec) GetGpuMachineNum() *int32  {
+  return s.GpuMachineNum
+}
+
 func (s *EditWorkspaceQueueRequestResourceSpec) GetMaxCu() *int64  {
   return s.MaxCu
 }
@@ -164,6 +181,11 @@ func (s *EditWorkspaceQueueRequestResourceSpec) SetCu(v int64) *EditWorkspaceQue
 
 func (s *EditWorkspaceQueueRequestResourceSpec) SetGpu(v int32) *EditWorkspaceQueueRequestResourceSpec {
   s.Gpu = &v
+  return s
+}
+
+func (s *EditWorkspaceQueueRequestResourceSpec) SetGpuMachineNum(v int32) *EditWorkspaceQueueRequestResourceSpec {
+  s.GpuMachineNum = &v
   return s
 }
 
