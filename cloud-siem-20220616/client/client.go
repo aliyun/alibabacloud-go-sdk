@@ -1310,7 +1310,7 @@ func (client *Client) DescribeAlertSourceWithEvent(request *DescribeAlertSourceW
 
 // Summary:
 //
-// Retrieves a list of threat types for custom rules.
+// Retrieves the list of available threat types for custom rules.
 //
 // @param request - DescribeAlertTypeRequest
 //
@@ -1366,7 +1366,7 @@ func (client *Client) DescribeAlertTypeWithOptions(request *DescribeAlertTypeReq
 
 // Summary:
 //
-// Retrieves a list of threat types for custom rules.
+// Retrieves the list of available threat types for custom rules.
 //
 // @param request - DescribeAlertTypeRequest
 //

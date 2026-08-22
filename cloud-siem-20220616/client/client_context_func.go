@@ -969,7 +969,7 @@ func (client *Client) DescribeAlertSourceWithEventWithContext(ctx context.Contex
 
 // Summary:
 //
-// Retrieves a list of threat types for custom rules.
+// Retrieves the list of available threat types for custom rules.
 //
 // @param request - DescribeAlertTypeRequest
 //
