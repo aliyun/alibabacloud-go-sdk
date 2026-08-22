@@ -13,6 +13,8 @@ type iModifyDBInstanceClassResponseBody interface {
 	GetOrderId() *string
 	SetRequestId(v string) *ModifyDBInstanceClassResponseBody
 	GetRequestId() *string
+	SetTaskId(v int32) *ModifyDBInstanceClassResponseBody
+	GetTaskId() *int32
 }
 
 type ModifyDBInstanceClassResponseBody struct {
@@ -28,6 +30,7 @@ type ModifyDBInstanceClassResponseBody struct {
 	//
 	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *int32  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ModifyDBInstanceClassResponseBody) String() string {
@@ -46,6 +49,10 @@ func (s *ModifyDBInstanceClassResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *ModifyDBInstanceClassResponseBody) GetTaskId() *int32 {
+	return s.TaskId
+}
+
 func (s *ModifyDBInstanceClassResponseBody) SetOrderId(v string) *ModifyDBInstanceClassResponseBody {
 	s.OrderId = &v
 	return s
@@ -53,6 +60,11 @@ func (s *ModifyDBInstanceClassResponseBody) SetOrderId(v string) *ModifyDBInstan
 
 func (s *ModifyDBInstanceClassResponseBody) SetRequestId(v string) *ModifyDBInstanceClassResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceClassResponseBody) SetTaskId(v int32) *ModifyDBInstanceClassResponseBody {
+	s.TaskId = &v
 	return s
 }
 

@@ -9,6 +9,8 @@ type iModifyDBInstanceClassRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAlignStoragePrimaryAzone(v bool) *ModifyDBInstanceClassRequest
+	GetAlignStoragePrimaryAzone() *bool
 	SetClientToken(v string) *ModifyDBInstanceClassRequest
 	GetClientToken() *string
 	SetCnClass(v string) *ModifyDBInstanceClassRequest
@@ -25,6 +27,8 @@ type iModifyDBInstanceClassRequest interface {
 	GetSpecifiedDNScale() *bool
 	SetSpecifiedDNSpecMapJson(v string) *ModifyDBInstanceClassRequest
 	GetSpecifiedDNSpecMapJson() *string
+	SetStorageType(v string) *ModifyDBInstanceClassRequest
+	GetStorageType() *string
 	SetSwitchTime(v string) *ModifyDBInstanceClassRequest
 	GetSwitchTime() *string
 	SetSwitchTimeMode(v string) *ModifyDBInstanceClassRequest
@@ -34,7 +38,8 @@ type iModifyDBInstanceClassRequest interface {
 }
 
 type ModifyDBInstanceClassRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use any unique string.
+	AlignStoragePrimaryAzone *bool `json:"AlignStoragePrimaryAzone,omitempty" xml:"AlignStoragePrimaryAzone,omitempty"`
+	// The client token. This parameter is used to ensure the idempotence of the request. You can use any unique string.
 	//
 	// example:
 	//
@@ -42,7 +47,7 @@ type ModifyDBInstanceClassRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// **Target specifications for Enterprise Edition compute node specification changes**
 	//
-	// **Primary instance compute node specifications (Enterprise Edition CN) general-purpose**
+	// **Primary instance compute node specifications (Enterprise Edition CN) General-purpose**
 	//
 	// - polarx.x4.medium.2e	2 cores, 8 GB (general-purpose)
 	//
@@ -52,7 +57,7 @@ type ModifyDBInstanceClassRequest struct {
 	//
 	// - polarx.x4.2xlarge.2e 16 cores, 64 GB (general-purpose)
 	//
-	// **Primary instance compute node specifications (Enterprise Edition CN) dedicated**
+	// **Primary instance compute node specifications (Enterprise Edition CN) Dedicated**
 	//
 	// - polarx.x8.large.2e	4 cores, 32 GB (dedicated)
 	//
@@ -68,7 +73,7 @@ type ModifyDBInstanceClassRequest struct {
 	//
 	// - polarx.st.12xlarge.2e	90 cores, 720 GB (dedicated)
 	//
-	// **Read-only instance compute node specifications (Enterprise Edition CN) general-purpose**
+	// **Read-only instance compute node specifications (Enterprise Edition CN) General-purpose**
 	//
 	// - polarxro.x4.medium.2e	2 cores, 8 GB (general-purpose)
 	//
@@ -78,7 +83,7 @@ type ModifyDBInstanceClassRequest struct {
 	//
 	// - polarxro.x4.2xlarge.2e	16 cores, 64 GB (general-purpose)
 	//
-	// **Read-only instance compute node specifications (Enterprise Edition CN) dedicated**
+	// **Read-only instance compute node specifications (Enterprise Edition CN) Dedicated**
 	//
 	// - polarxro.x8.large.2e	4 cores, 32 GB (dedicated)
 	//
@@ -108,7 +113,7 @@ type ModifyDBInstanceClassRequest struct {
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	// **Target specifications for Enterprise Edition storage node specification changes**
 	//
-	// **Storage node specifications (Enterprise Edition DN) general-purpose**
+	// **Storage node specifications (Enterprise Edition DN) General-purpose**
 	//
 	// - mysql.n4.medium.25	2 cores, 8 GB (general-purpose)
 	//
@@ -118,7 +123,7 @@ type ModifyDBInstanceClassRequest struct {
 	//
 	// - mysql.n4.2xlarge.25	16 cores, 64 GB (general-purpose)
 	//
-	// **Storage node specifications (Enterprise Edition DN) dedicated**
+	// **Storage node specifications (Enterprise Edition DN) Dedicated**
 	//
 	// - mysql.x8.large.25	4 cores, 32 GB (dedicated)
 	//
@@ -134,7 +139,7 @@ type ModifyDBInstanceClassRequest struct {
 	//
 	// - mysql.st.12xlarge.25	90 cores, 720 GB (dedicated)
 	//
-	// **Read-only instance storage node specifications (Enterprise Edition DN) general-purpose**
+	// **Read-only instance storage node specifications (Enterprise Edition DN) General-purpose**
 	//
 	// - rds.mysql.s2.xlarge	2 cores, 8 GB (general-purpose)
 	//
@@ -144,7 +149,7 @@ type ModifyDBInstanceClassRequest struct {
 	//
 	// - mysqlro.x4.2xlarge.1	16 cores, 64 GB (general-purpose)
 	//
-	// **Read-only instance storage node specifications (Enterprise Edition DN) dedicated**
+	// **Read-only instance storage node specifications (Enterprise Edition DN) Dedicated**
 	//
 	// - mysqlro.x8.large.1	4 cores, 32 GB (dedicated)
 	//
@@ -194,13 +199,15 @@ type ModifyDBInstanceClassRequest struct {
 	//
 	// {"pxc-xdb-s-htr3rh44ki3s6a4354":"mysql.n4.medium.25","pxc-xdb-s-htr3rh44ki3s6a71c6":"mysql.n4.medium.25"}
 	SpecifiedDNSpecMapJson *string `json:"SpecifiedDNSpecMapJson,omitempty" xml:"SpecifiedDNSpecMapJson,omitempty"`
-	// The switch start time. The switch time range is [start time T, T+30m]. This parameter is not yet available.
+	// Set this parameter to cloud_auto when migrating from local disks to cloud disks. If this parameter is not specified, the storage type remains unchanged.
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The switchover start time. The switchover time range is [start time T, T+30m]. This parameter is not yet available.
 	//
 	// example:
 	//
 	// 2024-12-11T17:10:00Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	// The switch time. Valid values:
+	// The switchover time. Valid values:
 	//
 	// - 0: immediately.
 	//
@@ -212,7 +219,7 @@ type ModifyDBInstanceClassRequest struct {
 	SwitchTimeMode *string `json:"SwitchTimeMode,omitempty" xml:"SwitchTimeMode,omitempty"`
 	// **Target specifications for Standard Edition specification changes**
 	//
-	// **Primary instance node specifications (for Standard Edition) (general-purpose):**
+	// **Primary instance node specifications (Standard Edition) (General-purpose):**
 	//
 	// - mysql.n2.medium.25	2 cores, 4 GB (general-purpose)
 	//
@@ -238,7 +245,7 @@ type ModifyDBInstanceClassRequest struct {
 	//
 	// - mysql.n8.2xlarge.25	16 cores, 128 GB (general-purpose)
 	//
-	// **Primary instance node specifications (for Standard Edition) (dedicated):**
+	// **Primary instance node specifications (Standard Edition) (Dedicated):**
 	//
 	// - mysql.x2.medium.25	2 cores, 4 GB (dedicated)
 	//
@@ -264,7 +271,7 @@ type ModifyDBInstanceClassRequest struct {
 	//
 	// - mysql.x8.2xlarge.25	16 cores, 128 GB (dedicated)
 	//
-	// **Read-only instance node specifications (for Standard Edition) general-purpose**
+	// **Read-only instance node specifications (Standard Edition) General-purpose**
 	//
 	// - rds.mysql.s2.xlarge 	2 cores, 8 GB (general-purpose)
 	//
@@ -274,7 +281,7 @@ type ModifyDBInstanceClassRequest struct {
 	//
 	// - mysqlro.x4.2xlarge.1 	16 cores, 64 GB (general-purpose)
 	//
-	// **Read-only instance node specifications (for Standard Edition) dedicated**
+	// **Read-only instance node specifications (Standard Edition) Dedicated**
 	//
 	// - mysqlro.x8.large.1 	4 cores, 32 GB (dedicated)
 	//
@@ -298,6 +305,10 @@ func (s ModifyDBInstanceClassRequest) String() string {
 
 func (s ModifyDBInstanceClassRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDBInstanceClassRequest) GetAlignStoragePrimaryAzone() *bool {
+	return s.AlignStoragePrimaryAzone
 }
 
 func (s *ModifyDBInstanceClassRequest) GetClientToken() *string {
@@ -332,6 +343,10 @@ func (s *ModifyDBInstanceClassRequest) GetSpecifiedDNSpecMapJson() *string {
 	return s.SpecifiedDNSpecMapJson
 }
 
+func (s *ModifyDBInstanceClassRequest) GetStorageType() *string {
+	return s.StorageType
+}
+
 func (s *ModifyDBInstanceClassRequest) GetSwitchTime() *string {
 	return s.SwitchTime
 }
@@ -342,6 +357,11 @@ func (s *ModifyDBInstanceClassRequest) GetSwitchTimeMode() *string {
 
 func (s *ModifyDBInstanceClassRequest) GetTargetDBInstanceClass() *string {
 	return s.TargetDBInstanceClass
+}
+
+func (s *ModifyDBInstanceClassRequest) SetAlignStoragePrimaryAzone(v bool) *ModifyDBInstanceClassRequest {
+	s.AlignStoragePrimaryAzone = &v
+	return s
 }
 
 func (s *ModifyDBInstanceClassRequest) SetClientToken(v string) *ModifyDBInstanceClassRequest {
@@ -381,6 +401,11 @@ func (s *ModifyDBInstanceClassRequest) SetSpecifiedDNScale(v bool) *ModifyDBInst
 
 func (s *ModifyDBInstanceClassRequest) SetSpecifiedDNSpecMapJson(v string) *ModifyDBInstanceClassRequest {
 	s.SpecifiedDNSpecMapJson = &v
+	return s
+}
+
+func (s *ModifyDBInstanceClassRequest) SetStorageType(v string) *ModifyDBInstanceClassRequest {
+	s.StorageType = &v
 	return s
 }
 

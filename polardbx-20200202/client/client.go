@@ -253,6 +253,92 @@ func (client *Client) AllocateColdDataVolume(request *AllocateColdDataVolumeRequ
 
 // Summary:
 //
+// Enables a public network connection for a specified physical ReplicaSet of the context service.
+//
+// Description:
+//
+// This operation is used to confirm that no active connections exist before a rollback task, ensuring operation safety.
+//
+// @param request - AllocateContext0PublicConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AllocateContext0PublicConnectionResponse
+func (client *Client) AllocateContext0PublicConnectionWithOptions(request *AllocateContext0PublicConnectionRequest, runtime *dara.RuntimeOptions) (_result *AllocateContext0PublicConnectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectionStringPrefix) {
+		query["ConnectionStringPrefix"] = request.ConnectionStringPrefix
+	}
+
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.NodeType) {
+		query["NodeType"] = request.NodeType
+	}
+
+	if !dara.IsNil(request.Port) {
+		query["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AllocateContext0PublicConnection"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AllocateContext0PublicConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables a public network connection for a specified physical ReplicaSet of the context service.
+//
+// Description:
+//
+// This operation is used to confirm that no active connections exist before a rollback task, ensuring operation safety.
+//
+// @param request - AllocateContext0PublicConnectionRequest
+//
+// @return AllocateContext0PublicConnectionResponse
+func (client *Client) AllocateContext0PublicConnection(request *AllocateContext0PublicConnectionRequest) (_result *AllocateContext0PublicConnectionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AllocateContext0PublicConnectionResponse{}
+	_body, _err := client.AllocateContext0PublicConnectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Enables a public network connection for a ContextDB-X service ReplicaSet.
 //
 // Description:
@@ -1240,6 +1326,84 @@ func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *Creat
 
 // Summary:
 //
+// Creates a context service.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
+//
+// @param request - CreateContext0Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateContext0Response
+func (client *Client) CreateContext0WithOptions(request *CreateContext0Request, runtime *dara.RuntimeOptions) (_result *CreateContext0Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.OpenSearchInstanceName) {
+		query["OpenSearchInstanceName"] = request.OpenSearchInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateContext0"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateContext0Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a context service.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
+//
+// @param request - CreateContext0Request
+//
+// @return CreateContext0Response
+func (client *Client) CreateContext0(request *CreateContext0Request) (_result *CreateContext0Response, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateContext0Response{}
+	_body, _err := client.CreateContext0WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a ContextDB-X instance.
 //
 // Description:
@@ -2211,6 +2375,320 @@ func (client *Client) CreateMem0(request *CreateMem0Request) (_result *CreateMem
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateMem0Response{}
 	_body, _err := client.CreateMem0WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a PolarDBX Search instance.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
+//
+// @param request - CreateOpenSearchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOpenSearchResponse
+func (client *Client) CreateOpenSearchWithOptions(request *CreateOpenSearchRequest, runtime *dara.RuntimeOptions) (_result *CreateOpenSearchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DBInstanceDescription) {
+		query["DBInstanceDescription"] = request.DBInstanceDescription
+	}
+
+	if !dara.IsNil(request.DBNodeClass) {
+		query["DBNodeClass"] = request.DBNodeClass
+	}
+
+	if !dara.IsNil(request.EngineVersion) {
+		query["EngineVersion"] = request.EngineVersion
+	}
+
+	if !dara.IsNil(request.InstanceSpec) {
+		query["InstanceSpec"] = request.InstanceSpec
+	}
+
+	if !dara.IsNil(request.NodeCount) {
+		query["NodeCount"] = request.NodeCount
+	}
+
+	if !dara.IsNil(request.PayType) {
+		query["PayType"] = request.PayType
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.StorageSpace) {
+		query["StorageSpace"] = request.StorageSpace
+	}
+
+	if !dara.IsNil(request.StorageType) {
+		query["StorageType"] = request.StorageType
+	}
+
+	if !dara.IsNil(request.TopologyType) {
+		query["TopologyType"] = request.TopologyType
+	}
+
+	if !dara.IsNil(request.UsedTime) {
+		query["UsedTime"] = request.UsedTime
+	}
+
+	if !dara.IsNil(request.VPCId) {
+		query["VPCId"] = request.VPCId
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.Zone2) {
+		query["Zone2"] = request.Zone2
+	}
+
+	if !dara.IsNil(request.Zone3) {
+		query["Zone3"] = request.Zone3
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateOpenSearch"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateOpenSearchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a PolarDBX Search instance.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
+//
+// @param request - CreateOpenSearchRequest
+//
+// @return CreateOpenSearchResponse
+func (client *Client) CreateOpenSearch(request *CreateOpenSearchRequest) (_result *CreateOpenSearchResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateOpenSearchResponse{}
+	_body, _err := client.CreateOpenSearchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建OpenSearch实例账号
+//
+// Description:
+//
+// <props="china">更多关于实例账号的信息，请参见[账号管理](https://help.aliyun.com/document_detail/172163.html)。
+//
+// @param request - CreateOpenSearchAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOpenSearchAccountResponse
+func (client *Client) CreateOpenSearchAccountWithOptions(request *CreateOpenSearchAccountRequest, runtime *dara.RuntimeOptions) (_result *CreateOpenSearchAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountName) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !dara.IsNil(request.AccountPassword) {
+		query["AccountPassword"] = request.AccountPassword
+	}
+
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateOpenSearchAccount"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateOpenSearchAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建OpenSearch实例账号
+//
+// Description:
+//
+// <props="china">更多关于实例账号的信息，请参见[账号管理](https://help.aliyun.com/document_detail/172163.html)。
+//
+// @param request - CreateOpenSearchAccountRequest
+//
+// @return CreateOpenSearchAccountResponse
+func (client *Client) CreateOpenSearchAccount(request *CreateOpenSearchAccountRequest) (_result *CreateOpenSearchAccountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateOpenSearchAccountResponse{}
+	_body, _err := client.CreateOpenSearchAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a whitelist group for PolarDB-X Search.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
+//
+// @param request - CreateOpenSearchWhitelistGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOpenSearchWhitelistGroupResponse
+func (client *Client) CreateOpenSearchWhitelistGroupWithOptions(request *CreateOpenSearchWhitelistGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateOpenSearchWhitelistGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.IPs) {
+		query["IPs"] = request.IPs
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateOpenSearchWhitelistGroup"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateOpenSearchWhitelistGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a whitelist group for PolarDB-X Search.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
+//
+// @param request - CreateOpenSearchWhitelistGroupRequest
+//
+// @return CreateOpenSearchWhitelistGroupResponse
+func (client *Client) CreateOpenSearchWhitelistGroup(request *CreateOpenSearchWhitelistGroupRequest) (_result *CreateOpenSearchWhitelistGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateOpenSearchWhitelistGroupResponse{}
+	_body, _err := client.CreateOpenSearchWhitelistGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3246,6 +3724,80 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 
 // Summary:
 //
+// Deletes a context service.
+//
+// Description:
+//
+// Deletes the custom endpoint of a specified database instance and disables access through the domain name.
+//
+// @param request - DeleteContext0Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteContext0Response
+func (client *Client) DeleteContext0WithOptions(request *DeleteContext0Request, runtime *dara.RuntimeOptions) (_result *DeleteContext0Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteContext0"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteContext0Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a context service.
+//
+// Description:
+//
+// Deletes the custom endpoint of a specified database instance and disables access through the domain name.
+//
+// @param request - DeleteContext0Request
+//
+// @return DeleteContext0Response
+func (client *Client) DeleteContext0(request *DeleteContext0Request) (_result *DeleteContext0Response, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteContext0Response{}
+	_body, _err := client.DeleteContext0WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a ContextDB-X.
 //
 // Description:
@@ -3739,6 +4291,244 @@ func (client *Client) DeleteMem0(request *DeleteMem0Request) (_result *DeleteMem
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteMem0Response{}
 	_body, _err := client.DeleteMem0WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 释放OpenSearch实例
+//
+// Description:
+//
+// 删除指定数据库实例的自定义连接地址，关闭该域名的访问入口。
+//
+// @param request - DeleteOpenSearchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteOpenSearchResponse
+func (client *Client) DeleteOpenSearchWithOptions(request *DeleteOpenSearchRequest, runtime *dara.RuntimeOptions) (_result *DeleteOpenSearchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteOpenSearch"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteOpenSearchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 释放OpenSearch实例
+//
+// Description:
+//
+// 删除指定数据库实例的自定义连接地址，关闭该域名的访问入口。
+//
+// @param request - DeleteOpenSearchRequest
+//
+// @return DeleteOpenSearchResponse
+func (client *Client) DeleteOpenSearch(request *DeleteOpenSearchRequest) (_result *DeleteOpenSearchResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteOpenSearchResponse{}
+	_body, _err := client.DeleteOpenSearchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除OpenSearch实例账号
+//
+// Description:
+//
+// <props="china">更多关于实例账号的信息，请参见[账号管理](https://help.aliyun.com/document_detail/172163.html)。
+//
+// @param request - DeleteOpenSearchAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteOpenSearchAccountResponse
+func (client *Client) DeleteOpenSearchAccountWithOptions(request *DeleteOpenSearchAccountRequest, runtime *dara.RuntimeOptions) (_result *DeleteOpenSearchAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountName) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteOpenSearchAccount"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteOpenSearchAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除OpenSearch实例账号
+//
+// Description:
+//
+// <props="china">更多关于实例账号的信息，请参见[账号管理](https://help.aliyun.com/document_detail/172163.html)。
+//
+// @param request - DeleteOpenSearchAccountRequest
+//
+// @return DeleteOpenSearchAccountResponse
+func (client *Client) DeleteOpenSearchAccount(request *DeleteOpenSearchAccountRequest) (_result *DeleteOpenSearchAccountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteOpenSearchAccountResponse{}
+	_body, _err := client.DeleteOpenSearchAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除OpenSearch实例白名单分组
+//
+// Description:
+//
+// - binlog文件默认保存15天。
+//
+// - 返回的日志列表中包含日志记录结束时间在查询开始时间之后，并且日志记录开始时间在查询结束时间之前的所有日志。
+//
+// - 当DownloadLink不为NULL时，用户可以根据此URL下载备份文件，此URL自生成后2天内有效，请在过期时间之前下载。
+//
+// @param request - DeleteOpenSearchWhitelistGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteOpenSearchWhitelistGroupResponse
+func (client *Client) DeleteOpenSearchWhitelistGroupWithOptions(request *DeleteOpenSearchWhitelistGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteOpenSearchWhitelistGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteOpenSearchWhitelistGroup"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteOpenSearchWhitelistGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除OpenSearch实例白名单分组
+//
+// Description:
+//
+// - binlog文件默认保存15天。
+//
+// - 返回的日志列表中包含日志记录结束时间在查询开始时间之后，并且日志记录开始时间在查询结束时间之前的所有日志。
+//
+// - 当DownloadLink不为NULL时，用户可以根据此URL下载备份文件，此URL自生成后2天内有效，请在过期时间之前下载。
+//
+// @param request - DeleteOpenSearchWhitelistGroupRequest
+//
+// @return DeleteOpenSearchWhitelistGroupResponse
+func (client *Client) DeleteOpenSearchWhitelistGroup(request *DeleteOpenSearchWhitelistGroupRequest) (_result *DeleteOpenSearchWhitelistGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteOpenSearchWhitelistGroupResponse{}
+	_body, _err := client.DeleteOpenSearchWhitelistGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5475,6 +6265,228 @@ func (client *Client) DescribeComponentPropeties(request *DescribeComponentPrope
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeComponentPropetiesResponse{}
 	_body, _err := client.DescribeComponentPropetiesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Context0管理凭证
+//
+// Description:
+//
+// > 	- PolarDB-X 2.0 SQL审计与分析功能本身免费使用，但日志服务会对存储空间、读取流量、请求数量、数据加工、数据投递等进行收费，更多关于SQL审计功能的详情，请参见[开启SQL审计与分析](https://help.aliyun.com/document_detail/184619.html)。
+//
+// @param request - DescribeContext0ConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeContext0ConfigResponse
+func (client *Client) DescribeContext0ConfigWithOptions(request *DescribeContext0ConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeContext0ConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeContext0Config"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeContext0ConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Context0管理凭证
+//
+// Description:
+//
+// > 	- PolarDB-X 2.0 SQL审计与分析功能本身免费使用，但日志服务会对存储空间、读取流量、请求数量、数据加工、数据投递等进行收费，更多关于SQL审计功能的详情，请参见[开启SQL审计与分析](https://help.aliyun.com/document_detail/184619.html)。
+//
+// @param request - DescribeContext0ConfigRequest
+//
+// @return DescribeContext0ConfigResponse
+func (client *Client) DescribeContext0Config(request *DescribeContext0ConfigRequest) (_result *DescribeContext0ConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeContext0ConfigResponse{}
+	_body, _err := client.DescribeContext0ConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the information about a context service instance.
+//
+// Description:
+//
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+//
+// @param request - DescribeContext0InfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeContext0InfoResponse
+func (client *Client) DescribeContext0InfoWithOptions(request *DescribeContext0InfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeContext0InfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeContext0Info"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeContext0InfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the information about a context service instance.
+//
+// Description:
+//
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+//
+// @param request - DescribeContext0InfoRequest
+//
+// @return DescribeContext0InfoResponse
+func (client *Client) DescribeContext0Info(request *DescribeContext0InfoRequest) (_result *DescribeContext0InfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeContext0InfoResponse{}
+	_body, _err := client.DescribeContext0InfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the whitelist of the context service.
+//
+// Description:
+//
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+//
+// @param request - DescribeContext0SecurityIpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeContext0SecurityIpsResponse
+func (client *Client) DescribeContext0SecurityIpsWithOptions(request *DescribeContext0SecurityIpsRequest, runtime *dara.RuntimeOptions) (_result *DescribeContext0SecurityIpsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeContext0SecurityIps"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeContext0SecurityIpsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the whitelist of the context service.
+//
+// Description:
+//
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+//
+// @param request - DescribeContext0SecurityIpsRequest
+//
+// @return DescribeContext0SecurityIpsResponse
+func (client *Client) DescribeContext0SecurityIps(request *DescribeContext0SecurityIpsRequest) (_result *DescribeContext0SecurityIpsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeContext0SecurityIpsResponse{}
+	_body, _err := client.DescribeContext0SecurityIpsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7337,6 +8349,630 @@ func (client *Client) DescribeOpenBackupSet(request *DescribeOpenBackupSetReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeOpenBackupSetResponse{}
 	_body, _err := client.DescribeOpenBackupSetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the account information of PolarDB-X Search.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
+//
+// @param request - DescribeOpenSearchAccountInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOpenSearchAccountInfoResponse
+func (client *Client) DescribeOpenSearchAccountInfoWithOptions(request *DescribeOpenSearchAccountInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeOpenSearchAccountInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOpenSearchAccountInfo"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOpenSearchAccountInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the account information of PolarDB-X Search.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
+//
+// @param request - DescribeOpenSearchAccountInfoRequest
+//
+// @return DescribeOpenSearchAccountInfoResponse
+func (client *Client) DescribeOpenSearchAccountInfo(request *DescribeOpenSearchAccountInfoRequest) (_result *DescribeOpenSearchAccountInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeOpenSearchAccountInfoResponse{}
+	_body, _err := client.DescribeOpenSearchAccountInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the connection information of PolarDB-X Search, including internal, public, and Dashboard endpoints and protocols.
+//
+// Description:
+//
+// During the data synchronization phase, proactively initiates a diagnostic task for the replication task to check for exceptions such as latency, replication interruption, or data inconsistency.
+//
+// @param request - DescribeOpenSearchConnectionInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOpenSearchConnectionInfoResponse
+func (client *Client) DescribeOpenSearchConnectionInfoWithOptions(request *DescribeOpenSearchConnectionInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeOpenSearchConnectionInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOpenSearchConnectionInfo"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOpenSearchConnectionInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the connection information of PolarDB-X Search, including internal, public, and Dashboard endpoints and protocols.
+//
+// Description:
+//
+// During the data synchronization phase, proactively initiates a diagnostic task for the replication task to check for exceptions such as latency, replication interruption, or data inconsistency.
+//
+// @param request - DescribeOpenSearchConnectionInfoRequest
+//
+// @return DescribeOpenSearchConnectionInfoResponse
+func (client *Client) DescribeOpenSearchConnectionInfo(request *DescribeOpenSearchConnectionInfoRequest) (_result *DescribeOpenSearchConnectionInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeOpenSearchConnectionInfoResponse{}
+	_body, _err := client.DescribeOpenSearchConnectionInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the information about a PolarDB-X Search instance.
+//
+// Description:
+//
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+//
+// @param request - DescribeOpenSearchInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOpenSearchInfoResponse
+func (client *Client) DescribeOpenSearchInfoWithOptions(request *DescribeOpenSearchInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeOpenSearchInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOpenSearchInfo"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOpenSearchInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the information about a PolarDB-X Search instance.
+//
+// Description:
+//
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+//
+// @param request - DescribeOpenSearchInfoRequest
+//
+// @return DescribeOpenSearchInfoResponse
+func (client *Client) DescribeOpenSearchInfo(request *DescribeOpenSearchInfoRequest) (_result *DescribeOpenSearchInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeOpenSearchInfoResponse{}
+	_body, _err := client.DescribeOpenSearchInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询OpenSearch实例列表
+//
+// Description:
+//
+// 该接口用于获取用户已配置的自定义终端节点（Endpoint）列表，便于管理和查看私有连接或VPC终端服务的设置。
+//
+// @param request - DescribeOpenSearchInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOpenSearchInstancesResponse
+func (client *Client) DescribeOpenSearchInstancesWithOptions(request *DescribeOpenSearchInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeOpenSearchInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOpenSearchInstances"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOpenSearchInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询OpenSearch实例列表
+//
+// Description:
+//
+// 该接口用于获取用户已配置的自定义终端节点（Endpoint）列表，便于管理和查看私有连接或VPC终端服务的设置。
+//
+// @param request - DescribeOpenSearchInstancesRequest
+//
+// @return DescribeOpenSearchInstancesResponse
+func (client *Client) DescribeOpenSearchInstances(request *DescribeOpenSearchInstancesRequest) (_result *DescribeOpenSearchInstancesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeOpenSearchInstancesResponse{}
+	_body, _err := client.DescribeOpenSearchInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of PolarDB-X Search nodes.
+//
+// Description:
+//
+// Retrieves the list of virtual private clouds (VPCs) available under your account for an instance, so that you can select an appropriate network environment when creating or managing database instances.
+//
+// @param request - DescribeOpenSearchNodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOpenSearchNodesResponse
+func (client *Client) DescribeOpenSearchNodesWithOptions(request *DescribeOpenSearchNodesRequest, runtime *dara.RuntimeOptions) (_result *DescribeOpenSearchNodesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOpenSearchNodes"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOpenSearchNodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of PolarDB-X Search nodes.
+//
+// Description:
+//
+// Retrieves the list of virtual private clouds (VPCs) available under your account for an instance, so that you can select an appropriate network environment when creating or managing database instances.
+//
+// @param request - DescribeOpenSearchNodesRequest
+//
+// @return DescribeOpenSearchNodesResponse
+func (client *Client) DescribeOpenSearchNodes(request *DescribeOpenSearchNodesRequest) (_result *DescribeOpenSearchNodesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeOpenSearchNodesResponse{}
+	_body, _err := client.DescribeOpenSearchNodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the resource usage of a PolarDB-X Search cluster.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
+//
+// @param request - DescribeOpenSearchResourceUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOpenSearchResourceUsageResponse
+func (client *Client) DescribeOpenSearchResourceUsageWithOptions(request *DescribeOpenSearchResourceUsageRequest, runtime *dara.RuntimeOptions) (_result *DescribeOpenSearchResourceUsageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOpenSearchResourceUsage"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOpenSearchResourceUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the resource usage of a PolarDB-X Search cluster.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
+//
+// @param request - DescribeOpenSearchResourceUsageRequest
+//
+// @return DescribeOpenSearchResourceUsageResponse
+func (client *Client) DescribeOpenSearchResourceUsage(request *DescribeOpenSearchResourceUsageRequest) (_result *DescribeOpenSearchResourceUsageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeOpenSearchResourceUsageResponse{}
+	_body, _err := client.DescribeOpenSearchResourceUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询OpenSearch实例拓扑
+//
+// Description:
+//
+// - binlog文件默认保存15天。
+//
+// - 返回的日志列表中包含日志记录结束时间在查询开始时间之后，并且日志记录开始时间在查询结束时间之前的所有日志。
+//
+// - 当DownloadLink不为NULL时，用户可以根据此URL下载备份文件，此URL自生成后2天内有效，请在过期时间之前下载。
+//
+// @param request - DescribeOpenSearchTopologyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOpenSearchTopologyResponse
+func (client *Client) DescribeOpenSearchTopologyWithOptions(request *DescribeOpenSearchTopologyRequest, runtime *dara.RuntimeOptions) (_result *DescribeOpenSearchTopologyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOpenSearchTopology"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOpenSearchTopologyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询OpenSearch实例拓扑
+//
+// Description:
+//
+// - binlog文件默认保存15天。
+//
+// - 返回的日志列表中包含日志记录结束时间在查询开始时间之后，并且日志记录开始时间在查询结束时间之前的所有日志。
+//
+// - 当DownloadLink不为NULL时，用户可以根据此URL下载备份文件，此URL自生成后2天内有效，请在过期时间之前下载。
+//
+// @param request - DescribeOpenSearchTopologyRequest
+//
+// @return DescribeOpenSearchTopologyResponse
+func (client *Client) DescribeOpenSearchTopology(request *DescribeOpenSearchTopologyRequest) (_result *DescribeOpenSearchTopologyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeOpenSearchTopologyResponse{}
+	_body, _err := client.DescribeOpenSearchTopologyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the whitelist of a PolarDB-X Search instance. You can filter the results by network type.
+//
+// Description:
+//
+// - Binary log files are retained for 15 days by default.
+//
+// - The returned log list includes all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
+//
+// - If DownloadLink is not NULL, you can use the URL to download the backup file. The URL is valid for 2 days after it is generated. Download the file before the URL expires.
+//
+// @param request - DescribeOpenSearchWhitelistsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOpenSearchWhitelistsResponse
+func (client *Client) DescribeOpenSearchWhitelistsWithOptions(request *DescribeOpenSearchWhitelistsRequest, runtime *dara.RuntimeOptions) (_result *DescribeOpenSearchWhitelistsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOpenSearchWhitelists"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOpenSearchWhitelistsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the whitelist of a PolarDB-X Search instance. You can filter the results by network type.
+//
+// Description:
+//
+// - Binary log files are retained for 15 days by default.
+//
+// - The returned log list includes all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
+//
+// - If DownloadLink is not NULL, you can use the URL to download the backup file. The URL is valid for 2 days after it is generated. Download the file before the URL expires.
+//
+// @param request - DescribeOpenSearchWhitelistsRequest
+//
+// @return DescribeOpenSearchWhitelistsResponse
+func (client *Client) DescribeOpenSearchWhitelists(request *DescribeOpenSearchWhitelistsRequest) (_result *DescribeOpenSearchWhitelistsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeOpenSearchWhitelistsResponse{}
+	_body, _err := client.DescribeOpenSearchWhitelistsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9379,6 +11015,84 @@ func (client *Client) DescribeUserEncryptionKeyList(request *DescribeUserEncrypt
 
 // Summary:
 //
+// Disables public network access for PolarDB-X Search.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
+//
+// @param request - DisableOpenSearchPublicEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableOpenSearchPublicEndpointResponse
+func (client *Client) DisableOpenSearchPublicEndpointWithOptions(request *DisableOpenSearchPublicEndpointRequest, runtime *dara.RuntimeOptions) (_result *DisableOpenSearchPublicEndpointResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.NodeType) {
+		query["NodeType"] = request.NodeType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableOpenSearchPublicEndpoint"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableOpenSearchPublicEndpointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Disables public network access for PolarDB-X Search.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
+//
+// @param request - DisableOpenSearchPublicEndpointRequest
+//
+// @return DisableOpenSearchPublicEndpointResponse
+func (client *Client) DisableOpenSearchPublicEndpoint(request *DisableOpenSearchPublicEndpointRequest) (_result *DisableOpenSearchPublicEndpointResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DisableOpenSearchPublicEndpointResponse{}
+	_body, _err := client.DisableOpenSearchPublicEndpointWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Disables three-role mode.
 //
 // @param request - DisableRightsSeparationRequest
@@ -9526,6 +11240,84 @@ func (client *Client) DisableSqlAudit(request *DisableSqlAuditRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &DisableSqlAuditResponse{}
 	_body, _err := client.DisableSqlAuditWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables public network access for PolarDBX Search.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
+//
+// @param request - EnableOpenSearchPublicEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableOpenSearchPublicEndpointResponse
+func (client *Client) EnableOpenSearchPublicEndpointWithOptions(request *EnableOpenSearchPublicEndpointRequest, runtime *dara.RuntimeOptions) (_result *EnableOpenSearchPublicEndpointResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.NodeType) {
+		query["NodeType"] = request.NodeType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableOpenSearchPublicEndpoint"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableOpenSearchPublicEndpointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables public network access for PolarDBX Search.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
+//
+// @param request - EnableOpenSearchPublicEndpointRequest
+//
+// @return EnableOpenSearchPublicEndpointResponse
+func (client *Client) EnableOpenSearchPublicEndpoint(request *EnableOpenSearchPublicEndpointRequest) (_result *EnableOpenSearchPublicEndpointResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EnableOpenSearchPublicEndpointResponse{}
+	_body, _err := client.EnableOpenSearchPublicEndpointWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10429,6 +12221,92 @@ func (client *Client) ModifyColumnarClass(request *ModifyColumnarClassRequest) (
 
 // Summary:
 //
+// Synchronously modifies the whitelists of the context service (Service) and Dashboard.
+//
+// Description:
+//
+// ***
+//
+// @param request - ModifyContext0SecurityIpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyContext0SecurityIpsResponse
+func (client *Client) ModifyContext0SecurityIpsWithOptions(request *ModifyContext0SecurityIpsRequest, runtime *dara.RuntimeOptions) (_result *ModifyContext0SecurityIpsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.ModifyMode) {
+		query["ModifyMode"] = request.ModifyMode
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SecurityIPList) {
+		query["SecurityIPList"] = request.SecurityIPList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyContext0SecurityIps"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyContext0SecurityIpsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Synchronously modifies the whitelists of the context service (Service) and Dashboard.
+//
+// Description:
+//
+// ***
+//
+// @param request - ModifyContext0SecurityIpsRequest
+//
+// @return ModifyContext0SecurityIpsResponse
+func (client *Client) ModifyContext0SecurityIps(request *ModifyContext0SecurityIpsRequest) (_result *ModifyContext0SecurityIpsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyContext0SecurityIpsResponse{}
+	_body, _err := client.ModifyContext0SecurityIpsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the whitelist of a ContextDB-X service ReplicaSet.
 //
 // Description:
@@ -10718,6 +12596,10 @@ func (client *Client) ModifyDBInstanceClassWithOptions(request *ModifyDBInstance
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AlignStoragePrimaryAzone) {
+		query["AlignStoragePrimaryAzone"] = request.AlignStoragePrimaryAzone
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -10748,6 +12630,10 @@ func (client *Client) ModifyDBInstanceClassWithOptions(request *ModifyDBInstance
 
 	if !dara.IsNil(request.SpecifiedDNSpecMapJson) {
 		query["SpecifiedDNSpecMapJson"] = request.SpecifiedDNSpecMapJson
+	}
+
+	if !dara.IsNil(request.StorageType) {
+		query["StorageType"] = request.StorageType
 	}
 
 	if !dara.IsNil(request.SwitchTime) {
@@ -11445,6 +13331,252 @@ func (client *Client) ModifyMem0SecurityIps(request *ModifyMem0SecurityIpsReques
 
 // Summary:
 //
+// Switches the access protocol (HTTP/HTTPS) for PolarDB-X Search.
+//
+// Description:
+//
+// ***
+//
+// @param request - ModifyOpenSearchAccessProtocolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyOpenSearchAccessProtocolResponse
+func (client *Client) ModifyOpenSearchAccessProtocolWithOptions(request *ModifyOpenSearchAccessProtocolRequest, runtime *dara.RuntimeOptions) (_result *ModifyOpenSearchAccessProtocolResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.Protocol) {
+		query["Protocol"] = request.Protocol
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyOpenSearchAccessProtocol"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyOpenSearchAccessProtocolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Switches the access protocol (HTTP/HTTPS) for PolarDB-X Search.
+//
+// Description:
+//
+// ***
+//
+// @param request - ModifyOpenSearchAccessProtocolRequest
+//
+// @return ModifyOpenSearchAccessProtocolResponse
+func (client *Client) ModifyOpenSearchAccessProtocol(request *ModifyOpenSearchAccessProtocolRequest) (_result *ModifyOpenSearchAccessProtocolResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyOpenSearchAccessProtocolResponse{}
+	_body, _err := client.ModifyOpenSearchAccessProtocolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Changes the specifications of a PolarDB-X Search instance.
+//
+// Description:
+//
+// ***
+//
+// @param request - ModifyOpenSearchClassRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyOpenSearchClassResponse
+func (client *Client) ModifyOpenSearchClassWithOptions(request *ModifyOpenSearchClassRequest, runtime *dara.RuntimeOptions) (_result *ModifyOpenSearchClassResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceDiskSize) {
+		query["DBInstanceDiskSize"] = request.DBInstanceDiskSize
+	}
+
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SearchClassCode) {
+		query["SearchClassCode"] = request.SearchClassCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyOpenSearchClass"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyOpenSearchClassResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Changes the specifications of a PolarDB-X Search instance.
+//
+// Description:
+//
+// ***
+//
+// @param request - ModifyOpenSearchClassRequest
+//
+// @return ModifyOpenSearchClassResponse
+func (client *Client) ModifyOpenSearchClass(request *ModifyOpenSearchClassRequest) (_result *ModifyOpenSearchClassResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyOpenSearchClassResponse{}
+	_body, _err := client.ModifyOpenSearchClassWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a PolarDB-X Search whitelist group.
+//
+// Description:
+//
+// ***
+//
+// @param request - ModifyOpenSearchWhitelistGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyOpenSearchWhitelistGroupResponse
+func (client *Client) ModifyOpenSearchWhitelistGroupWithOptions(request *ModifyOpenSearchWhitelistGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyOpenSearchWhitelistGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.IPs) {
+		query["IPs"] = request.IPs
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyOpenSearchWhitelistGroup"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyOpenSearchWhitelistGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a PolarDB-X Search whitelist group.
+//
+// Description:
+//
+// ***
+//
+// @param request - ModifyOpenSearchWhitelistGroupRequest
+//
+// @return ModifyOpenSearchWhitelistGroupResponse
+func (client *Client) ModifyOpenSearchWhitelistGroup(request *ModifyOpenSearchWhitelistGroupRequest) (_result *ModifyOpenSearchWhitelistGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyOpenSearchWhitelistGroupResponse{}
+	_body, _err := client.ModifyOpenSearchWhitelistGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies instance parameters, including parameters at the compute layer and storage layer.
 //
 // @param request - ModifyParameterRequest
@@ -12069,6 +14201,88 @@ func (client *Client) ReleaseColdDataVolume(request *ReleaseColdDataVolumeReques
 
 // Summary:
 //
+// Shuts down the public network connection of a specified physical ReplicaSet for the context service.
+//
+// Description:
+//
+// This operation is used to confirm that no active connections exist before a rollback task, ensuring operation safety.
+//
+// @param request - ReleaseContext0PublicConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseContext0PublicConnectionResponse
+func (client *Client) ReleaseContext0PublicConnectionWithOptions(request *ReleaseContext0PublicConnectionRequest, runtime *dara.RuntimeOptions) (_result *ReleaseContext0PublicConnectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentConnectionString) {
+		query["CurrentConnectionString"] = request.CurrentConnectionString
+	}
+
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.NodeType) {
+		query["NodeType"] = request.NodeType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReleaseContext0PublicConnection"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ReleaseContext0PublicConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Shuts down the public network connection of a specified physical ReplicaSet for the context service.
+//
+// Description:
+//
+// This operation is used to confirm that no active connections exist before a rollback task, ensuring operation safety.
+//
+// @param request - ReleaseContext0PublicConnectionRequest
+//
+// @return ReleaseContext0PublicConnectionResponse
+func (client *Client) ReleaseContext0PublicConnection(request *ReleaseContext0PublicConnectionRequest) (_result *ReleaseContext0PublicConnectionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ReleaseContext0PublicConnectionResponse{}
+	_body, _err := client.ReleaseContext0PublicConnectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Shuts down the public network connection for a ContextDB-X service ReplicaSet.
 //
 // Description:
@@ -12549,6 +14763,88 @@ func (client *Client) ResetMem0AccountPassword(request *ResetMem0AccountPassword
 
 // Summary:
 //
+// Resets the password of a PolarDB-X Search instance without requiring the old password (RAM permission check required).
+//
+// Description:
+//
+// ***
+//
+// @param request - ResetOpenSearchPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetOpenSearchPasswordResponse
+func (client *Client) ResetOpenSearchPasswordWithOptions(request *ResetOpenSearchPasswordRequest, runtime *dara.RuntimeOptions) (_result *ResetOpenSearchPasswordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountName) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !dara.IsNil(request.AccountPassword) {
+		query["AccountPassword"] = request.AccountPassword
+	}
+
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResetOpenSearchPassword"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResetOpenSearchPasswordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Resets the password of a PolarDB-X Search instance without requiring the old password (RAM permission check required).
+//
+// Description:
+//
+// ***
+//
+// @param request - ResetOpenSearchPasswordRequest
+//
+// @return ResetOpenSearchPasswordResponse
+func (client *Client) ResetOpenSearchPassword(request *ResetOpenSearchPasswordRequest) (_result *ResetOpenSearchPasswordResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ResetOpenSearchPasswordResponse{}
+	_body, _err := client.ResetOpenSearchPasswordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Restarts an instance by calling the RestartDBInstance operation.
 //
 // @param request - RestartDBInstanceRequest
@@ -12680,6 +14976,80 @@ func (client *Client) RestartDataImportTask(request *RestartDataImportTaskReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &RestartDataImportTaskResponse{}
 	_body, _err := client.RestartDataImportTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 重启OpenSearch实例
+//
+// Description:
+//
+// ***
+//
+// @param request - RestartOpenSearchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartOpenSearchResponse
+func (client *Client) RestartOpenSearchWithOptions(request *RestartOpenSearchRequest, runtime *dara.RuntimeOptions) (_result *RestartOpenSearchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RestartOpenSearch"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RestartOpenSearchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重启OpenSearch实例
+//
+// Description:
+//
+// ***
+//
+// @param request - RestartOpenSearchRequest
+//
+// @return RestartOpenSearchResponse
+func (client *Client) RestartOpenSearch(request *RestartOpenSearchRequest) (_result *RestartOpenSearchResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RestartOpenSearchResponse{}
+	_body, _err := client.RestartOpenSearchWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12944,6 +15314,162 @@ func (client *Client) RestoreDBInstance(request *RestoreDBInstanceRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &RestoreDBInstanceResponse{}
 	_body, _err := client.RestoreDBInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Scales in nodes of a PolarDB-X Search cluster.
+//
+// Description:
+//
+// ***
+//
+// @param request - ScaleInOpenSearchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ScaleInOpenSearchResponse
+func (client *Client) ScaleInOpenSearchWithOptions(request *ScaleInOpenSearchRequest, runtime *dara.RuntimeOptions) (_result *ScaleInOpenSearchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SearchNodeCount) {
+		query["SearchNodeCount"] = request.SearchNodeCount
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ScaleInOpenSearch"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ScaleInOpenSearchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Scales in nodes of a PolarDB-X Search cluster.
+//
+// Description:
+//
+// ***
+//
+// @param request - ScaleInOpenSearchRequest
+//
+// @return ScaleInOpenSearchResponse
+func (client *Client) ScaleInOpenSearch(request *ScaleInOpenSearchRequest) (_result *ScaleInOpenSearchResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ScaleInOpenSearchResponse{}
+	_body, _err := client.ScaleInOpenSearchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Scales out nodes in a PolarDB-X Search cluster.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
+//
+// @param request - ScaleOutOpenSearchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ScaleOutOpenSearchResponse
+func (client *Client) ScaleOutOpenSearchWithOptions(request *ScaleOutOpenSearchRequest, runtime *dara.RuntimeOptions) (_result *ScaleOutOpenSearchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SearchNodeCount) {
+		query["SearchNodeCount"] = request.SearchNodeCount
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ScaleOutOpenSearch"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ScaleOutOpenSearchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Scales out nodes in a PolarDB-X Search cluster.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
+//
+// @param request - ScaleOutOpenSearchRequest
+//
+// @return ScaleOutOpenSearchResponse
+func (client *Client) ScaleOutOpenSearch(request *ScaleOutOpenSearchRequest) (_result *ScaleOutOpenSearchResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ScaleOutOpenSearchResponse{}
+	_body, _err := client.ScaleOutOpenSearchWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
