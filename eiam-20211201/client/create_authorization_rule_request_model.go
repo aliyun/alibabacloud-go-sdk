@@ -13,6 +13,8 @@ type iCreateAuthorizationRuleRequest interface {
 	GetAuthorizationResourceScope() *string
 	SetAuthorizationRuleName(v string) *CreateAuthorizationRuleRequest
 	GetAuthorizationRuleName() *string
+	SetAuthorizationRuleScenarioLabel(v string) *CreateAuthorizationRuleRequest
+	GetAuthorizationRuleScenarioLabel() *string
 	SetClientToken(v string) *CreateAuthorizationRuleRequest
 	GetClientToken() *string
 	SetDescription(v string) *CreateAuthorizationRuleRequest
@@ -24,7 +26,7 @@ type iCreateAuthorizationRuleRequest interface {
 }
 
 type CreateAuthorizationRuleRequest struct {
-	// The scope of authorized resources. Valid values:
+	// The authorization resource scope. Valid values:
 	//
 	// - global: all resources under the project.
 	//
@@ -42,7 +44,13 @@ type CreateAuthorizationRuleRequest struct {
 	//
 	// test_rule
 	AuthorizationRuleName *string `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate a parameter value, but make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+	// The scenario label of the authorization rule. The label can be up to 64 characters in length.
+	//
+	// example:
+	//
+	// privileged_cloud_account
+	AuthorizationRuleScenarioLabel *string `json:"AuthorizationRuleScenarioLabel,omitempty" xml:"AuthorizationRuleScenarioLabel,omitempty"`
+	// Ensures the idempotence of the request. Generate a parameter value from your client to ensure that the value is unique across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// This parameter is required.
 	//
@@ -90,6 +98,10 @@ func (s *CreateAuthorizationRuleRequest) GetAuthorizationRuleName() *string {
 	return s.AuthorizationRuleName
 }
 
+func (s *CreateAuthorizationRuleRequest) GetAuthorizationRuleScenarioLabel() *string {
+	return s.AuthorizationRuleScenarioLabel
+}
+
 func (s *CreateAuthorizationRuleRequest) GetClientToken() *string {
 	return s.ClientToken
 }
@@ -113,6 +125,11 @@ func (s *CreateAuthorizationRuleRequest) SetAuthorizationResourceScope(v string)
 
 func (s *CreateAuthorizationRuleRequest) SetAuthorizationRuleName(v string) *CreateAuthorizationRuleRequest {
 	s.AuthorizationRuleName = &v
+	return s
+}
+
+func (s *CreateAuthorizationRuleRequest) SetAuthorizationRuleScenarioLabel(v string) *CreateAuthorizationRuleRequest {
+	s.AuthorizationRuleScenarioLabel = &v
 	return s
 }
 

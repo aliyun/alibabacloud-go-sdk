@@ -24,25 +24,25 @@ type iListAuthorizationRulesResponseBody interface {
 type ListAuthorizationRulesResponseBody struct {
 	// The list of authorization rules.
 	AuthorizationRules []*ListAuthorizationRulesResponseBodyAuthorizationRules `json:"AuthorizationRules,omitempty" xml:"AuthorizationRules,omitempty" type:"Repeated"`
-	// The number of entries per page.
+	// The number of entries per page in the paging query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token returned by this call. Use it in the next call to retrieve the next page of results.
+	// The token returned for the next page query.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries in the list.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -117,65 +117,67 @@ func (s *ListAuthorizationRulesResponseBody) Validate() error {
 }
 
 type ListAuthorizationRulesResponseBodyAuthorizationRules struct {
-	// The scope of resources to authorize. Valid values:
+	// The authorization resource scope. Valid values:
 	//
-	// - global: global resources in the project
+	// - global: all resources under the project
 	//
-	// - custom: resources in a specific project
+	// - custom: specified resources under the project
 	//
 	// example:
 	//
 	// global
 	AuthorizationResourceScope *string `json:"AuthorizationResourceScope,omitempty" xml:"AuthorizationResourceScope,omitempty"`
-	// The type of authorization rule creation. Valid values:
+	// The creation type of the authorization rule. Valid values:
 	//
 	// - system_init: created by the system
 	//
-	// - user_custom: created by a user
+	// - user_custom: created by the user
 	//
 	// example:
 	//
 	// user_custom
 	AuthorizationRuleCreationType *string `json:"AuthorizationRuleCreationType,omitempty" xml:"AuthorizationRuleCreationType,omitempty"`
-	// The ID of the authorization rule.
+	// The authorization rule ID.
 	//
 	// example:
 	//
 	// arrule_01kf143ug06fg7m9f43u7vahxxxx
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
-	// The name of the authorization rule.
+	// The authorization rule name.
 	//
 	// example:
 	//
 	// test-name
 	AuthorizationRuleName *string `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty"`
-	// The ID of the subject associated with the authorization rule.
+	// The scenario label of the authorization rule.
+	AuthorizationRuleScenarioLabel *string `json:"AuthorizationRuleScenarioLabel,omitempty" xml:"AuthorizationRuleScenarioLabel,omitempty"`
+	// The subject ID associated with the authorization rule.
 	//
 	// example:
 	//
 	// user_d6sbsuumeta4h66ec3il7yxxxx
 	AuthorizationRuleSubjectId *string `json:"AuthorizationRuleSubjectId,omitempty" xml:"AuthorizationRuleSubjectId,omitempty"`
-	// The scope of subjects for the authorization rule. Valid values:
+	// The subject scope of the authorization rule. Valid values:
 	//
-	// - shared: applies to all subjects, such as accounts and applications
+	// - shared: supports all subjects, including accounts and applications
 	//
-	// - exclusive: applies only to a specific subject
+	// - exclusive: exclusive type
 	//
 	// example:
 	//
 	// shared
 	AuthorizationRuleSubjectScope *string `json:"AuthorizationRuleSubjectScope,omitempty" xml:"AuthorizationRuleSubjectScope,omitempty"`
-	// The type of subject associated with the authorization rule. This parameter takes effect only when AuthorizationRuleSubjectScope is exclusive. Valid values:
+	// The subject type associated with the authorization rule. This parameter takes effect only when the subject scope is exclusive. Valid values:
 	//
-	// - application
+	// - application: application
 	//
-	// - user
+	// - user: account
 	//
 	// example:
 	//
 	// user
 	AuthorizationRuleSubjectType *string `json:"AuthorizationRuleSubjectType,omitempty" xml:"AuthorizationRuleSubjectType,omitempty"`
-	// The time when the authorization rule was created, in Unix timestamp format. Unit: milliseconds.
+	// The creation time, in UNIX timestamp format, measured in milliseconds.
 	//
 	// example:
 	//
@@ -187,29 +189,29 @@ type ListAuthorizationRulesResponseBodyAuthorizationRules struct {
 	//
 	// this is a test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the project associated with the authorization rule.
+	// The project ID associated with the authorization rule.
 	//
 	// example:
 	//
 	// iprj_system_default
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The status of the authorization rule. Valid values:
+	// The authorization rule status. Valid values:
 	//
-	// - enabled
+	// - enabled: enabled
 	//
-	// - disabled
+	// - disabled: disabled
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the authorization rule was last updated, in Unix timestamp format. Unit: milliseconds.
+	// The last update time, in UNIX timestamp format, measured in milliseconds.
 	//
 	// example:
 	//
@@ -239,6 +241,10 @@ func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) GetAuthorizationR
 
 func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) GetAuthorizationRuleName() *string {
 	return s.AuthorizationRuleName
+}
+
+func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) GetAuthorizationRuleScenarioLabel() *string {
+	return s.AuthorizationRuleScenarioLabel
 }
 
 func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) GetAuthorizationRuleSubjectId() *string {
@@ -294,6 +300,11 @@ func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) SetAuthorizationR
 
 func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) SetAuthorizationRuleName(v string) *ListAuthorizationRulesResponseBodyAuthorizationRules {
 	s.AuthorizationRuleName = &v
+	return s
+}
+
+func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) SetAuthorizationRuleScenarioLabel(v string) *ListAuthorizationRulesResponseBodyAuthorizationRules {
+	s.AuthorizationRuleScenarioLabel = &v
 	return s
 }
 

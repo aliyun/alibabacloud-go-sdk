@@ -67,7 +67,8 @@ type GetCloudAccountRoleResponseBodyCloudAccountRole struct {
 	// example:
 	//
 	// ca_01kmegjc11qa1txxxxx
-	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
+	CloudAccountId               *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
+	CloudAccountRoleCreationType *string `json:"CloudAccountRoleCreationType,omitempty" xml:"CloudAccountRoleCreationType,omitempty"`
 	// The cloud role identifier.
 	//
 	// example:
@@ -118,7 +119,7 @@ type GetCloudAccountRoleResponseBodyCloudAccountRole struct {
 	//
 	// system
 	CloudAccountRoleUsageType *string `json:"CloudAccountRoleUsageType,omitempty" xml:"CloudAccountRoleUsageType,omitempty"`
-	// The creation time. The value is a UNIX timestamp in milliseconds.
+	// The creation time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -146,7 +147,7 @@ type GetCloudAccountRoleResponseBodyCloudAccountRole struct {
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The last update time. The value is a UNIX timestamp in milliseconds.
+	// The last update time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -164,6 +165,10 @@ func (s GetCloudAccountRoleResponseBodyCloudAccountRole) GoString() string {
 
 func (s *GetCloudAccountRoleResponseBodyCloudAccountRole) GetCloudAccountId() *string {
 	return s.CloudAccountId
+}
+
+func (s *GetCloudAccountRoleResponseBodyCloudAccountRole) GetCloudAccountRoleCreationType() *string {
+	return s.CloudAccountRoleCreationType
 }
 
 func (s *GetCloudAccountRoleResponseBodyCloudAccountRole) GetCloudAccountRoleExternalId() *string {
@@ -216,6 +221,11 @@ func (s *GetCloudAccountRoleResponseBodyCloudAccountRole) GetUpdateTime() *int64
 
 func (s *GetCloudAccountRoleResponseBodyCloudAccountRole) SetCloudAccountId(v string) *GetCloudAccountRoleResponseBodyCloudAccountRole {
 	s.CloudAccountId = &v
+	return s
+}
+
+func (s *GetCloudAccountRoleResponseBodyCloudAccountRole) SetCloudAccountRoleCreationType(v string) *GetCloudAccountRoleResponseBodyCloudAccountRole {
+	s.CloudAccountRoleCreationType = &v
 	return s
 }
 
@@ -291,7 +301,7 @@ func (s *GetCloudAccountRoleResponseBodyCloudAccountRole) Validate() error {
 type GetCloudAccountRoleResponseBodyCloudAccountRoleCloudAccountRoleHealthCheckResult struct {
 	// The error reason. This field is returned when the health check status is unhealthy.
 	ErrorReason *GetCloudAccountRoleResponseBodyCloudAccountRoleCloudAccountRoleHealthCheckResultErrorReason `json:"ErrorReason,omitempty" xml:"ErrorReason,omitempty" type:"Struct"`
-	// The time of the last health check. The value is a UNIX timestamp in milliseconds.
+	// The last check time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//

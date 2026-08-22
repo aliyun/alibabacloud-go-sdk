@@ -16,7 +16,7 @@ type iGetAuthorizationRuleRequest interface {
 }
 
 type GetAuthorizationRuleRequest struct {
-	// Authorization rule ID.
+	// The authorization rule ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetAuthorizationRuleRequest struct {
 	//
 	// arrule_01kf143ug06fg7m9f43u7vahxxxx
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

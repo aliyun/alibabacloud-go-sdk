@@ -16,9 +16,9 @@ type iGetInstanceLicenseResponseBody interface {
 }
 
 type GetInstanceLicenseResponseBody struct {
-	// The license details.
+	// The response result.
 	License *GetInstanceLicenseResponseBodyLicense `json:"License,omitempty" xml:"License,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,69 +62,69 @@ func (s *GetInstanceLicenseResponseBody) Validate() error {
 }
 
 type GetInstanceLicenseResponseBodyLicense struct {
-	// The license edition.
+	// The edition of the license.
 	//
 	// example:
 	//
 	// free
 	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	// The UNIX timestamp indicating the end of the license validity period.
+	// The end date of the license validity period, in timestamp format.
 	//
 	// example:
 	//
 	// 1723996800000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The details of the instance license.
+	// The detailed license information of the instance.
 	InstanceLicenseDetail *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail `json:"InstanceLicenseDetail,omitempty" xml:"InstanceLicenseDetail,omitempty" type:"Struct"`
-	// The billing method for the license.
+	// The billing type of the license.
 	//
 	// example:
 	//
 	// prepay
 	LicenseChargeType *string `json:"LicenseChargeType,omitempty" xml:"LicenseChargeType,omitempty"`
-	// The detailed configurations of the license, formatted as a JSON string.
+	// The detailed license configuration in JSON string format.
 	//
 	// example:
 	//
 	// {"modules":[{"features":[{"name":"urn:alibaba:idaas:license:module:ud:customField","status":"enabled"}]……{"name":"urn:alibaba:idaas:license:tag:enterprise","status":"enabled"}],"version":"1.0"}
 	LicenseConfigJson *string `json:"LicenseConfigJson,omitempty" xml:"LicenseConfigJson,omitempty"`
-	// The UNIX timestamp indicating when the license was created.
+	// The creation time of the license, in timestamp format.
 	//
 	// example:
 	//
 	// 1720509699000
 	LicenseCreateTime *int64 `json:"LicenseCreateTime,omitempty" xml:"LicenseCreateTime,omitempty"`
-	// The unique identifier for the license.
+	// The unique identifier of the license.
 	//
 	// example:
 	//
 	// license_1234xxxx
 	LicenseId *string `json:"LicenseId,omitempty" xml:"LicenseId,omitempty"`
-	// The license status.
+	// The status of the license.
 	//
 	// example:
 	//
 	// valid
 	LicenseStatus *string `json:"LicenseStatus,omitempty" xml:"LicenseStatus,omitempty"`
-	// The channel used to purchase the license.
+	// The purchase channel of the license.
 	//
 	// example:
 	//
 	// alibaba_cloud
 	PurchaseChannel *string `json:"PurchaseChannel,omitempty" xml:"PurchaseChannel,omitempty"`
-	// The unique identifier of the external service associated with the license.
+	// The unique identifier of the external product associated with the license.
 	//
 	// example:
 	//
 	// eiam-cn-xxxxx
 	PurchaseInstanceId *string `json:"PurchaseInstanceId,omitempty" xml:"PurchaseInstanceId,omitempty"`
-	// The UNIX timestamp indicating the start of the license validity period.
+	// The start date of the license validity period, in timestamp format.
 	//
 	// example:
 	//
 	// 1720509699000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The user quota included with the license.
+	// The user quota of the license.
 	//
 	// example:
 	//
@@ -258,43 +258,45 @@ func (s *GetInstanceLicenseResponseBodyLicense) Validate() error {
 }
 
 type GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail struct {
-	// The status of the license for the Conditional Access feature.
+	// The conditional access license status.
 	//
 	// example:
 	//
 	// enabled
 	ConditionalAccessPolicyLicenseStatus *string `json:"ConditionalAccessPolicyLicenseStatus,omitempty" xml:"ConditionalAccessPolicyLicenseStatus,omitempty"`
-	// The status of the license for machine-to-machine (M2M) applications.
+	// The M2M license status.
 	//
 	// example:
 	//
 	// enabled
 	M2mApplicationLicenseStatus *string `json:"M2mApplicationLicenseStatus,omitempty" xml:"M2mApplicationLicenseStatus,omitempty"`
-	// The quota for machine-to-machine (M2M) applications.
+	// The M2M application quota of the license.
 	//
 	// example:
 	//
 	// 2
 	M2mApplicationQuota *int64 `json:"M2mApplicationQuota,omitempty" xml:"M2mApplicationQuota,omitempty"`
-	// The machine identity status.
+	// The machine identity license status.
 	//
 	// example:
 	//
 	// enabled
 	MimApplicationLicenseStatus *string `json:"MimApplicationLicenseStatus,omitempty" xml:"MimApplicationLicenseStatus,omitempty"`
-	// The quota for network access endpoints.
+	// The network access endpoint quota of the license.
 	//
 	// example:
 	//
 	// 1
 	NetworkAccessEndpointQuota *int64 `json:"NetworkAccessEndpointQuota,omitempty" xml:"NetworkAccessEndpointQuota,omitempty"`
-	// The number of active subscription accounts.
+	// The PAM privileged management license status. Valid values: enabled and disabled.
+	PamLicenseStatus *string `json:"PamLicenseStatus,omitempty" xml:"PamLicenseStatus,omitempty"`
+	// The number of prepaid active accounts.
 	//
 	// example:
 	//
 	// 100
 	PrepaidActiveUserNumber *int64 `json:"PrepaidActiveUserNumber,omitempty" xml:"PrepaidActiveUserNumber,omitempty"`
-	// The user quota included with the license.
+	// The user quota of the license.
 	//
 	// example:
 	//
@@ -330,6 +332,10 @@ func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) GetNetworkA
 	return s.NetworkAccessEndpointQuota
 }
 
+func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) GetPamLicenseStatus() *string {
+	return s.PamLicenseStatus
+}
+
 func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) GetPrepaidActiveUserNumber() *int64 {
 	return s.PrepaidActiveUserNumber
 }
@@ -360,6 +366,11 @@ func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) SetMimAppli
 
 func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) SetNetworkAccessEndpointQuota(v int64) *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail {
 	s.NetworkAccessEndpointQuota = &v
+	return s
+}
+
+func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) SetPamLicenseStatus(v string) *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail {
+	s.PamLicenseStatus = &v
 	return s
 }
 

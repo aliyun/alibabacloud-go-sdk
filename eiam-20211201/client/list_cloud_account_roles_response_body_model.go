@@ -24,13 +24,13 @@ type iListCloudAccountRolesResponseBody interface {
 type ListCloudAccountRolesResponseBody struct {
 	// The list of cloud roles.
 	CloudAccountRoles []*ListCloudAccountRolesResponseBodyCloudAccountRoles `json:"CloudAccountRoles,omitempty" xml:"CloudAccountRoles,omitempty" type:"Repeated"`
-	// The number of rows per page in the paging query.
+	// The maximum number of rows per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned in this call.
+	// The token returned for the current request.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListCloudAccountRolesResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -122,7 +122,8 @@ type ListCloudAccountRolesResponseBodyCloudAccountRoles struct {
 	// example:
 	//
 	// ca_01kmegjc11qa1txxxxx
-	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
+	CloudAccountId               *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
+	CloudAccountRoleCreationType *string `json:"CloudAccountRoleCreationType,omitempty" xml:"CloudAccountRoleCreationType,omitempty"`
 	// The cloud role identifier.
 	//
 	// example:
@@ -131,11 +132,11 @@ type ListCloudAccountRolesResponseBodyCloudAccountRoles struct {
 	CloudAccountRoleExternalId *string `json:"CloudAccountRoleExternalId,omitempty" xml:"CloudAccountRoleExternalId,omitempty"`
 	// The health status of the cloud role. Valid values:
 	//
-	// - healthy: healthy.
+	// - healthy: Healthy.
 	//
-	// - unhealthy: unhealthy.
+	// - unhealthy: Unhealthy.
 	//
-	// - unknown: unknown.
+	// - unknown: Unknown.
 	//
 	// example:
 	//
@@ -173,13 +174,13 @@ type ListCloudAccountRolesResponseBodyCloudAccountRoles struct {
 	//
 	// system
 	CloudAccountRoleUsageType *string `json:"CloudAccountRoleUsageType,omitempty" xml:"CloudAccountRoleUsageType,omitempty"`
-	// The creation time, in UNIX timestamp format. Unit: milliseconds.
+	// The time when the cloud role was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1719320115000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The cloud role description.
+	// The description of the cloud role.
 	//
 	// example:
 	//
@@ -191,17 +192,17 @@ type ListCloudAccountRolesResponseBodyCloudAccountRoles struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The cloud role status. Valid values:
+	// The status of the cloud role. Valid values:
 	//
-	// - enabled: enabled.
+	// - enabled: Enabled.
 	//
-	// - disable: disabled.
+	// - disable: Disabled.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The last update time, in UNIX timestamp format. Unit: milliseconds.
+	// The time when the cloud role was last updated. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -219,6 +220,10 @@ func (s ListCloudAccountRolesResponseBodyCloudAccountRoles) GoString() string {
 
 func (s *ListCloudAccountRolesResponseBodyCloudAccountRoles) GetCloudAccountId() *string {
 	return s.CloudAccountId
+}
+
+func (s *ListCloudAccountRolesResponseBodyCloudAccountRoles) GetCloudAccountRoleCreationType() *string {
+	return s.CloudAccountRoleCreationType
 }
 
 func (s *ListCloudAccountRolesResponseBodyCloudAccountRoles) GetCloudAccountRoleExternalId() *string {
@@ -271,6 +276,11 @@ func (s *ListCloudAccountRolesResponseBodyCloudAccountRoles) GetUpdateTime() *in
 
 func (s *ListCloudAccountRolesResponseBodyCloudAccountRoles) SetCloudAccountId(v string) *ListCloudAccountRolesResponseBodyCloudAccountRoles {
 	s.CloudAccountId = &v
+	return s
+}
+
+func (s *ListCloudAccountRolesResponseBodyCloudAccountRoles) SetCloudAccountRoleCreationType(v string) *ListCloudAccountRolesResponseBodyCloudAccountRoles {
+	s.CloudAccountRoleCreationType = &v
 	return s
 }
 
@@ -346,7 +356,7 @@ func (s *ListCloudAccountRolesResponseBodyCloudAccountRoles) Validate() error {
 type ListCloudAccountRolesResponseBodyCloudAccountRolesCloudAccountRoleHealthCheckResult struct {
 	// The error reason. This field is returned when the health check status is unhealthy.
 	ErrorReason *ListCloudAccountRolesResponseBodyCloudAccountRolesCloudAccountRoleHealthCheckResultErrorReason `json:"ErrorReason,omitempty" xml:"ErrorReason,omitempty" type:"Struct"`
-	// The last check time, in UNIX timestamp format. Unit: milliseconds.
+	// The time of the last health check. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -354,9 +364,9 @@ type ListCloudAccountRolesResponseBodyCloudAccountRolesCloudAccountRoleHealthChe
 	LastCheckTime *int64 `json:"LastCheckTime,omitempty" xml:"LastCheckTime,omitempty"`
 	// The health check result of the cloud role. Valid values:
 	//
-	// - success: succeeded.
+	// - success: Success.
 	//
-	// - failed: failed.
+	// - failed: Failed.
 	//
 	// example:
 	//
@@ -415,7 +425,7 @@ type ListCloudAccountRolesResponseBodyCloudAccountRolesCloudAccountRoleHealthChe
 	//
 	// AuthenticationFail.NoPermission
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error description.
+	// The error message.
 	//
 	// example:
 	//

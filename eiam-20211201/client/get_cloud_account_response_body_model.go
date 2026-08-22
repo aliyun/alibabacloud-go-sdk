@@ -101,8 +101,10 @@ type GetCloudAccountResponseBodyCloudAccount struct {
 	// example:
 	//
 	// idaas-eiam-oidc-provider
-	CloudAccountProviderName *string `json:"CloudAccountProviderName,omitempty" xml:"CloudAccountProviderName,omitempty"`
-	CloudAccountSite         *string `json:"CloudAccountSite,omitempty" xml:"CloudAccountSite,omitempty"`
+	CloudAccountProviderName     *string `json:"CloudAccountProviderName,omitempty" xml:"CloudAccountProviderName,omitempty"`
+	CloudAccountRoleCreationType *string `json:"CloudAccountRoleCreationType,omitempty" xml:"CloudAccountRoleCreationType,omitempty"`
+	// The cloud account site.
+	CloudAccountSite *string `json:"CloudAccountSite,omitempty" xml:"CloudAccountSite,omitempty"`
 	// The cloud account type. Valid values:
 	//
 	// - alibaba_cloud: Alibaba Cloud.
@@ -129,6 +131,14 @@ type GetCloudAccountResponseBodyCloudAccount struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The list of associated privilege application IDs.
+	PrivilegeApplicationIds []*string `json:"PrivilegeApplicationIds,omitempty" xml:"PrivilegeApplicationIds,omitempty" type:"Repeated"`
+	// The reason for the privilege hosting or removal failure.
+	PrivilegeHostingError *GetCloudAccountResponseBodyCloudAccountPrivilegeHostingError `json:"PrivilegeHostingError,omitempty" xml:"PrivilegeHostingError,omitempty" type:"Struct"`
+	// The privilege hosting state, which indicates whether the privilege capability is available.
+	PrivilegeHostingState *string `json:"PrivilegeHostingState,omitempty" xml:"PrivilegeHostingState,omitempty"`
+	// The privilege switch status, which indicates whether the privilege capability is enabled.
+	PrivilegeStatus *string `json:"PrivilegeStatus,omitempty" xml:"PrivilegeStatus,omitempty"`
 	// The last update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
@@ -173,6 +183,10 @@ func (s *GetCloudAccountResponseBodyCloudAccount) GetCloudAccountProviderName() 
 	return s.CloudAccountProviderName
 }
 
+func (s *GetCloudAccountResponseBodyCloudAccount) GetCloudAccountRoleCreationType() *string {
+	return s.CloudAccountRoleCreationType
+}
+
 func (s *GetCloudAccountResponseBodyCloudAccount) GetCloudAccountSite() *string {
 	return s.CloudAccountSite
 }
@@ -191,6 +205,22 @@ func (s *GetCloudAccountResponseBodyCloudAccount) GetDescription() *string {
 
 func (s *GetCloudAccountResponseBodyCloudAccount) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *GetCloudAccountResponseBodyCloudAccount) GetPrivilegeApplicationIds() []*string {
+	return s.PrivilegeApplicationIds
+}
+
+func (s *GetCloudAccountResponseBodyCloudAccount) GetPrivilegeHostingError() *GetCloudAccountResponseBodyCloudAccountPrivilegeHostingError {
+	return s.PrivilegeHostingError
+}
+
+func (s *GetCloudAccountResponseBodyCloudAccount) GetPrivilegeHostingState() *string {
+	return s.PrivilegeHostingState
+}
+
+func (s *GetCloudAccountResponseBodyCloudAccount) GetPrivilegeStatus() *string {
+	return s.PrivilegeStatus
 }
 
 func (s *GetCloudAccountResponseBodyCloudAccount) GetUpdateTime() *int64 {
@@ -232,6 +262,11 @@ func (s *GetCloudAccountResponseBodyCloudAccount) SetCloudAccountProviderName(v 
 	return s
 }
 
+func (s *GetCloudAccountResponseBodyCloudAccount) SetCloudAccountRoleCreationType(v string) *GetCloudAccountResponseBodyCloudAccount {
+	s.CloudAccountRoleCreationType = &v
+	return s
+}
+
 func (s *GetCloudAccountResponseBodyCloudAccount) SetCloudAccountSite(v string) *GetCloudAccountResponseBodyCloudAccount {
 	s.CloudAccountSite = &v
 	return s
@@ -257,6 +292,26 @@ func (s *GetCloudAccountResponseBodyCloudAccount) SetInstanceId(v string) *GetCl
 	return s
 }
 
+func (s *GetCloudAccountResponseBodyCloudAccount) SetPrivilegeApplicationIds(v []*string) *GetCloudAccountResponseBodyCloudAccount {
+	s.PrivilegeApplicationIds = v
+	return s
+}
+
+func (s *GetCloudAccountResponseBodyCloudAccount) SetPrivilegeHostingError(v *GetCloudAccountResponseBodyCloudAccountPrivilegeHostingError) *GetCloudAccountResponseBodyCloudAccount {
+	s.PrivilegeHostingError = v
+	return s
+}
+
+func (s *GetCloudAccountResponseBodyCloudAccount) SetPrivilegeHostingState(v string) *GetCloudAccountResponseBodyCloudAccount {
+	s.PrivilegeHostingState = &v
+	return s
+}
+
+func (s *GetCloudAccountResponseBodyCloudAccount) SetPrivilegeStatus(v string) *GetCloudAccountResponseBodyCloudAccount {
+	s.PrivilegeStatus = &v
+	return s
+}
+
 func (s *GetCloudAccountResponseBodyCloudAccount) SetUpdateTime(v int64) *GetCloudAccountResponseBodyCloudAccount {
 	s.UpdateTime = &v
 	return s
@@ -270,6 +325,11 @@ func (s *GetCloudAccountResponseBodyCloudAccount) Validate() error {
 	}
 	if s.CloudAccountProviderConfig != nil {
 		if err := s.CloudAccountProviderConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrivilegeHostingError != nil {
+		if err := s.PrivilegeHostingError.Validate(); err != nil {
 			return err
 		}
 	}
@@ -458,5 +518,42 @@ func (s *GetCloudAccountResponseBodyCloudAccountCloudAccountProviderConfig) SetO
 }
 
 func (s *GetCloudAccountResponseBodyCloudAccountCloudAccountProviderConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetCloudAccountResponseBodyCloudAccountPrivilegeHostingError struct {
+	// The failure error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The failure message.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s GetCloudAccountResponseBodyCloudAccountPrivilegeHostingError) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetCloudAccountResponseBodyCloudAccountPrivilegeHostingError) GoString() string {
+	return s.String()
+}
+
+func (s *GetCloudAccountResponseBodyCloudAccountPrivilegeHostingError) GetErrorCode() *string {
+	return s.ErrorCode
+}
+
+func (s *GetCloudAccountResponseBodyCloudAccountPrivilegeHostingError) GetErrorMessage() *string {
+	return s.ErrorMessage
+}
+
+func (s *GetCloudAccountResponseBodyCloudAccountPrivilegeHostingError) SetErrorCode(v string) *GetCloudAccountResponseBodyCloudAccountPrivilegeHostingError {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetCloudAccountResponseBodyCloudAccountPrivilegeHostingError) SetErrorMessage(v string) *GetCloudAccountResponseBodyCloudAccountPrivilegeHostingError {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetCloudAccountResponseBodyCloudAccountPrivilegeHostingError) Validate() error {
 	return dara.Validate(s)
 }

@@ -26,13 +26,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"eu-central-1":   dara.String("eiam.eu-central-1.aliyuncs.com"),
 		"cn-hongkong":    dara.String("eiam.cn-hongkong.aliyuncs.com"),
+		"ap-northeast-2": dara.String("eiam.ap-northeast-2.aliyuncs.com"),
+		"ap-southeast-1": dara.String("eiam.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-5": dara.String("eiam.ap-southeast-5.aliyuncs.com"),
 		"cn-hangzhou":    dara.String("eiam.cn-hangzhou.aliyuncs.com"),
 		"cn-beijing":     dara.String("eiam.cn-beijing.aliyuncs.com"),
-		"ap-southeast-5": dara.String("eiam.ap-southeast-5.aliyuncs.com"),
-		"ap-southeast-1": dara.String("eiam.ap-southeast-1.aliyuncs.com"),
-		"ap-northeast-2": dara.String("eiam.ap-northeast-2.aliyuncs.com"),
+		"eu-central-1":   dara.String("eiam.eu-central-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -1948,6 +1948,10 @@ func (client *Client) CreateAuthorizationResourceWithOptions(request *CreateAuth
 		query["AuthorizationRuleId"] = request.AuthorizationRuleId
 	}
 
+	if !dara.IsNil(request.Condition) {
+		query["Condition"] = request.Condition
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -2022,6 +2026,10 @@ func (client *Client) CreateAuthorizationRuleWithOptions(request *CreateAuthoriz
 
 	if !dara.IsNil(request.AuthorizationRuleName) {
 		query["AuthorizationRuleName"] = request.AuthorizationRuleName
+	}
+
+	if !dara.IsNil(request.AuthorizationRuleScenarioLabel) {
+		query["AuthorizationRuleScenarioLabel"] = request.AuthorizationRuleScenarioLabel
 	}
 
 	if !dara.IsNil(request.Description) {
@@ -3407,7 +3415,7 @@ func (client *Client) CreateIdentityProviderStatusCheckJob(request *CreateIdenti
 
 // Summary:
 //
-// Creates an instance based on which all capabilities of Identity as a Service (IDaaS) Enterprise Identity and Access Management (EIAM) are provided.
+// Creates an instance. All EIAM product capabilities are provided based on instances.
 //
 // @param request - CreateInstanceRequest
 //
@@ -3422,6 +3430,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
 	}
@@ -3451,7 +3463,7 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 // Summary:
 //
-// Creates an instance based on which all capabilities of Identity as a Service (IDaaS) Enterprise Identity and Access Management (EIAM) are provided.
+// Creates an instance. All EIAM product capabilities are provided based on instances.
 //
 // @param request - CreateInstanceRequest
 //
@@ -9807,6 +9819,72 @@ func (client *Client) ExecIdentityProviderMetadataUrlResolution(request *ExecIde
 
 // Summary:
 //
+// Performs a disaster recovery switchover.
+//
+// @param request - ExecuteInstanceFailoverRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteInstanceFailoverResponse
+func (client *Client) ExecuteInstanceFailoverWithOptions(request *ExecuteInstanceFailoverRequest, runtime *dara.RuntimeOptions) (_result *ExecuteInstanceFailoverResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceFailoverStatus) {
+		query["InstanceFailoverStatus"] = request.InstanceFailoverStatus
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExecuteInstanceFailover"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExecuteInstanceFailoverResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a disaster recovery switchover.
+//
+// @param request - ExecuteInstanceFailoverRequest
+//
+// @return ExecuteInstanceFailoverResponse
+func (client *Client) ExecuteInstanceFailover(request *ExecuteInstanceFailoverRequest) (_result *ExecuteInstanceFailoverResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ExecuteInstanceFailoverResponse{}
+	_body, _err := client.ExecuteInstanceFailoverWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Generates a download URL for file import results.
 //
 // @param request - GenerateDownloadUrlForSynchronizationJobRequest
@@ -10833,7 +10911,7 @@ func (client *Client) GetApplicationTemplate(request *GetApplicationTemplateRequ
 
 // Summary:
 //
-// Queries information about an authorized resource.
+// Queries the information of an authorization resource.
 //
 // @param request - GetAuthorizationResourceRequest
 //
@@ -10885,7 +10963,7 @@ func (client *Client) GetAuthorizationResourceWithOptions(request *GetAuthorizat
 
 // Summary:
 //
-// Queries information about an authorized resource.
+// Queries the information of an authorization resource.
 //
 // @param request - GetAuthorizationResourceRequest
 //
@@ -10903,7 +10981,7 @@ func (client *Client) GetAuthorizationResource(request *GetAuthorizationResource
 
 // Summary:
 //
-// Query information about an authorization rule.
+// Queries the information about an authorization rule.
 //
 // @param request - GetAuthorizationRuleRequest
 //
@@ -10951,7 +11029,7 @@ func (client *Client) GetAuthorizationRuleWithOptions(request *GetAuthorizationR
 
 // Summary:
 //
-// Query information about an authorization rule.
+// Queries the information about an authorization rule.
 //
 // @param request - GetAuthorizationRuleRequest
 //
@@ -12495,11 +12573,11 @@ func (client *Client) GetInstanceGlobalizationConfig(request *GetInstanceGlobali
 
 // Summary:
 //
-// Queries the active license information for an instance.
+// Queries the license information that is currently effective for an instance.
 //
 // Description:
 //
-// Ensure the instance is not in use before deletion. Deleting an EIAM instance permanently removes all of its associated data.
+// Make sure that your instance is no longer in use. After an EIAM instance is deleted, all related data is deleted.
 //
 // @param request - GetInstanceLicenseRequest
 //
@@ -12543,11 +12621,11 @@ func (client *Client) GetInstanceLicenseWithOptions(request *GetInstanceLicenseR
 
 // Summary:
 //
-// Queries the active license information for an instance.
+// Queries the license information that is currently effective for an instance.
 //
 // Description:
 //
-// Ensure the instance is not in use before deletion. Deleting an EIAM instance permanently removes all of its associated data.
+// Make sure that your instance is no longer in use. After an EIAM instance is deleted, all related data is deleted.
 //
 // @param request - GetInstanceLicenseRequest
 //
@@ -15531,7 +15609,7 @@ func (client *Client) ListCloudAccountRoles(request *ListCloudAccountRolesReques
 
 // Summary:
 //
-// Queries information about one or more cloud accounts by using paging.
+// Queries one or more cloud accounts by using paging.
 //
 // @param request - ListCloudAccountsRequest
 //
@@ -15587,7 +15665,7 @@ func (client *Client) ListCloudAccountsWithOptions(request *ListCloudAccountsReq
 
 // Summary:
 //
-// Queries information about one or more cloud accounts by using paging.
+// Queries one or more cloud accounts by using paging.
 //
 // @param request - ListCloudAccountsRequest
 //
@@ -17195,6 +17273,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 
 	if !dara.IsNil(request.InstanceIds) {
 		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.ManagedServiceCode) {
+		query["ManagedServiceCode"] = request.ManagedServiceCode
 	}
 
 	if !dara.IsNil(request.PageNumber) {
@@ -19306,7 +19388,7 @@ func (client *Client) RemoveCustomPrivacyPoliciesFromBrand(request *RemoveCustom
 
 // Summary:
 //
-// Removes an application from an authorization rule.
+// Removes a group from an authorization rule.
 //
 // @param request - RemoveGroupFromAuthorizationRuleRequest
 //
@@ -19358,7 +19440,7 @@ func (client *Client) RemoveGroupFromAuthorizationRuleWithOptions(request *Remov
 
 // Summary:
 //
-// Removes an application from an authorization rule.
+// Removes a group from an authorization rule.
 //
 // @param request - RemoveGroupFromAuthorizationRuleRequest
 //

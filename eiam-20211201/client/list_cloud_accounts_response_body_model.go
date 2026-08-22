@@ -24,13 +24,13 @@ type iListCloudAccountsResponseBody interface {
 type ListCloudAccountsResponseBody struct {
 	// The list of cloud accounts.
 	CloudAccounts []*ListCloudAccountsResponseBodyCloudAccounts `json:"CloudAccounts,omitempty" xml:"CloudAccounts,omitempty" type:"Repeated"`
-	// The number of rows per page when paging is used.
+	// The maximum number of entries per page for paging.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token returned for the current call to indicate the starting position of the next page.
+	// The token returned for the current call.
 	//
 	// example:
 	//
@@ -155,7 +155,8 @@ type ListCloudAccountsResponseBodyCloudAccounts struct {
 	//
 	// idaas-eiam-oidc-provider
 	CloudAccountProviderName *string `json:"CloudAccountProviderName,omitempty" xml:"CloudAccountProviderName,omitempty"`
-	CloudAccountSite         *string `json:"CloudAccountSite,omitempty" xml:"CloudAccountSite,omitempty"`
+	// The cloud account site.
+	CloudAccountSite *string `json:"CloudAccountSite,omitempty" xml:"CloudAccountSite,omitempty"`
 	// The cloud account type. Valid values:
 	//
 	// - alibaba_cloud: Alibaba Cloud.
@@ -164,13 +165,13 @@ type ListCloudAccountsResponseBodyCloudAccounts struct {
 	//
 	// alibaba_cloud
 	CloudAccountVendorType *string `json:"CloudAccountVendorType,omitempty" xml:"CloudAccountVendorType,omitempty"`
-	// The time when the cloud account was created. The value is a UNIX timestamp in milliseconds.
+	// The creation time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649830225000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the cloud account.
+	// The cloud account description.
 	//
 	// example:
 	//
@@ -182,7 +183,15 @@ type ListCloudAccountsResponseBodyCloudAccounts struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the cloud account was last updated. The value is a UNIX timestamp in milliseconds.
+	// The list of associated privileged access application IDs.
+	PrivilegeApplicationIds []*string `json:"PrivilegeApplicationIds,omitempty" xml:"PrivilegeApplicationIds,omitempty" type:"Repeated"`
+	// The reason for the privilege hosting or removal failure.
+	PrivilegeHostingError *ListCloudAccountsResponseBodyCloudAccountsPrivilegeHostingError `json:"PrivilegeHostingError,omitempty" xml:"PrivilegeHostingError,omitempty" type:"Struct"`
+	// The privilege hosting state, which indicates whether the account has privileged access capabilities.
+	PrivilegeHostingState *string `json:"PrivilegeHostingState,omitempty" xml:"PrivilegeHostingState,omitempty"`
+	// The privilege switch status, which indicates whether the privileged access capability is available.
+	PrivilegeStatus *string `json:"PrivilegeStatus,omitempty" xml:"PrivilegeStatus,omitempty"`
+	// The last update time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -240,6 +249,22 @@ func (s *ListCloudAccountsResponseBodyCloudAccounts) GetDescription() *string {
 
 func (s *ListCloudAccountsResponseBodyCloudAccounts) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *ListCloudAccountsResponseBodyCloudAccounts) GetPrivilegeApplicationIds() []*string {
+	return s.PrivilegeApplicationIds
+}
+
+func (s *ListCloudAccountsResponseBodyCloudAccounts) GetPrivilegeHostingError() *ListCloudAccountsResponseBodyCloudAccountsPrivilegeHostingError {
+	return s.PrivilegeHostingError
+}
+
+func (s *ListCloudAccountsResponseBodyCloudAccounts) GetPrivilegeHostingState() *string {
+	return s.PrivilegeHostingState
+}
+
+func (s *ListCloudAccountsResponseBodyCloudAccounts) GetPrivilegeStatus() *string {
+	return s.PrivilegeStatus
 }
 
 func (s *ListCloudAccountsResponseBodyCloudAccounts) GetUpdateTime() *int64 {
@@ -301,6 +326,26 @@ func (s *ListCloudAccountsResponseBodyCloudAccounts) SetInstanceId(v string) *Li
 	return s
 }
 
+func (s *ListCloudAccountsResponseBodyCloudAccounts) SetPrivilegeApplicationIds(v []*string) *ListCloudAccountsResponseBodyCloudAccounts {
+	s.PrivilegeApplicationIds = v
+	return s
+}
+
+func (s *ListCloudAccountsResponseBodyCloudAccounts) SetPrivilegeHostingError(v *ListCloudAccountsResponseBodyCloudAccountsPrivilegeHostingError) *ListCloudAccountsResponseBodyCloudAccounts {
+	s.PrivilegeHostingError = v
+	return s
+}
+
+func (s *ListCloudAccountsResponseBodyCloudAccounts) SetPrivilegeHostingState(v string) *ListCloudAccountsResponseBodyCloudAccounts {
+	s.PrivilegeHostingState = &v
+	return s
+}
+
+func (s *ListCloudAccountsResponseBodyCloudAccounts) SetPrivilegeStatus(v string) *ListCloudAccountsResponseBodyCloudAccounts {
+	s.PrivilegeStatus = &v
+	return s
+}
+
 func (s *ListCloudAccountsResponseBodyCloudAccounts) SetUpdateTime(v int64) *ListCloudAccountsResponseBodyCloudAccounts {
 	s.UpdateTime = &v
 	return s
@@ -312,13 +357,18 @@ func (s *ListCloudAccountsResponseBodyCloudAccounts) Validate() error {
 			return err
 		}
 	}
+	if s.PrivilegeHostingError != nil {
+		if err := s.PrivilegeHostingError.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 type ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResult struct {
 	// The error reason. This field is returned when the health check status is unhealthy.
 	ErrorReason *ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResultErrorReason `json:"ErrorReason,omitempty" xml:"ErrorReason,omitempty" type:"Struct"`
-	// The time of the last health check. The value is a UNIX timestamp in milliseconds.
+	// The last check time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -326,9 +376,9 @@ type ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResult str
 	LastCheckTime *int64 `json:"LastCheckTime,omitempty" xml:"LastCheckTime,omitempty"`
 	// The health check result of the cloud account. Valid values:
 	//
-	// - success: The health check succeeded.
+	// - success: Succeeded.
 	//
-	// - failed: The health check failed.
+	// - failed: Failed.
 	//
 	// example:
 	//
@@ -387,7 +437,7 @@ type ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResultErro
 	//
 	// AuthenticationFail.NoPermission
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message.
+	// The error description.
 	//
 	// example:
 	//
@@ -422,5 +472,42 @@ func (s *ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResult
 }
 
 func (s *ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResultErrorReason) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListCloudAccountsResponseBodyCloudAccountsPrivilegeHostingError struct {
+	// The failure error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The failure message.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s ListCloudAccountsResponseBodyCloudAccountsPrivilegeHostingError) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListCloudAccountsResponseBodyCloudAccountsPrivilegeHostingError) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudAccountsResponseBodyCloudAccountsPrivilegeHostingError) GetErrorCode() *string {
+	return s.ErrorCode
+}
+
+func (s *ListCloudAccountsResponseBodyCloudAccountsPrivilegeHostingError) GetErrorMessage() *string {
+	return s.ErrorMessage
+}
+
+func (s *ListCloudAccountsResponseBodyCloudAccountsPrivilegeHostingError) SetErrorCode(v string) *ListCloudAccountsResponseBodyCloudAccountsPrivilegeHostingError {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListCloudAccountsResponseBodyCloudAccountsPrivilegeHostingError) SetErrorMessage(v string) *ListCloudAccountsResponseBodyCloudAccountsPrivilegeHostingError {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListCloudAccountsResponseBodyCloudAccountsPrivilegeHostingError) Validate() error {
 	return dara.Validate(s)
 }

@@ -1454,6 +1454,10 @@ func (client *Client) CreateAuthorizationResourceWithContext(ctx context.Context
 		query["AuthorizationRuleId"] = request.AuthorizationRuleId
 	}
 
+	if !dara.IsNil(request.Condition) {
+		query["Condition"] = request.Condition
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -1510,6 +1514,10 @@ func (client *Client) CreateAuthorizationRuleWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.AuthorizationRuleName) {
 		query["AuthorizationRuleName"] = request.AuthorizationRuleName
+	}
+
+	if !dara.IsNil(request.AuthorizationRuleScenarioLabel) {
+		query["AuthorizationRuleScenarioLabel"] = request.AuthorizationRuleScenarioLabel
 	}
 
 	if !dara.IsNil(request.Description) {
@@ -2599,7 +2607,7 @@ func (client *Client) CreateIdentityProviderStatusCheckJobWithContext(ctx contex
 
 // Summary:
 //
-// Creates an instance based on which all capabilities of Identity as a Service (IDaaS) Enterprise Identity and Access Management (EIAM) are provided.
+// Creates an instance. All EIAM product capabilities are provided based on instances.
 //
 // @param request - CreateInstanceRequest
 //
@@ -2614,6 +2622,10 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
 	}
@@ -7299,6 +7311,54 @@ func (client *Client) ExecIdentityProviderMetadataUrlResolutionWithContext(ctx c
 
 // Summary:
 //
+// Performs a disaster recovery switchover.
+//
+// @param request - ExecuteInstanceFailoverRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteInstanceFailoverResponse
+func (client *Client) ExecuteInstanceFailoverWithContext(ctx context.Context, request *ExecuteInstanceFailoverRequest, runtime *dara.RuntimeOptions) (_result *ExecuteInstanceFailoverResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceFailoverStatus) {
+		query["InstanceFailoverStatus"] = request.InstanceFailoverStatus
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExecuteInstanceFailover"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExecuteInstanceFailoverResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Generates a download URL for file import results.
 //
 // @param request - GenerateDownloadUrlForSynchronizationJobRequest
@@ -8055,7 +8115,7 @@ func (client *Client) GetApplicationTemplateWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries information about an authorized resource.
+// Queries the information of an authorization resource.
 //
 // @param request - GetAuthorizationResourceRequest
 //
@@ -8107,7 +8167,7 @@ func (client *Client) GetAuthorizationResourceWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Query information about an authorization rule.
+// Queries the information about an authorization rule.
 //
 // @param request - GetAuthorizationRuleRequest
 //
@@ -9263,11 +9323,11 @@ func (client *Client) GetInstanceGlobalizationConfigWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the active license information for an instance.
+// Queries the license information that is currently effective for an instance.
 //
 // Description:
 //
-// Ensure the instance is not in use before deletion. Deleting an EIAM instance permanently removes all of its associated data.
+// Make sure that your instance is no longer in use. After an EIAM instance is deleted, all related data is deleted.
 //
 // @param request - GetInstanceLicenseRequest
 //
@@ -11531,7 +11591,7 @@ func (client *Client) ListCloudAccountRolesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries information about one or more cloud accounts by using paging.
+// Queries one or more cloud accounts by using paging.
 //
 // @param request - ListCloudAccountsRequest
 //
@@ -12764,6 +12824,10 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 
 	if !dara.IsNil(request.InstanceIds) {
 		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.ManagedServiceCode) {
+		query["ManagedServiceCode"] = request.ManagedServiceCode
 	}
 
 	if !dara.IsNil(request.PageNumber) {
@@ -14309,7 +14373,7 @@ func (client *Client) RemoveCustomPrivacyPoliciesFromBrandWithContext(ctx contex
 
 // Summary:
 //
-// Removes an application from an authorization rule.
+// Removes a group from an authorization rule.
 //
 // @param request - RemoveGroupFromAuthorizationRuleRequest
 //

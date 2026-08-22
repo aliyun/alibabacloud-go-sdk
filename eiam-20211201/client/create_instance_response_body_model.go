@@ -16,7 +16,7 @@ type iCreateInstanceResponseBody interface {
 }
 
 type CreateInstanceResponseBody struct {
-	// The ID of the instance that is created.
+	// The ID of the instance created by this API call.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iListAuthorizationRulesRequest interface {
 type ListAuthorizationRulesRequest struct {
 	// The filter conditions.
 	Filter []*ListAuthorizationRulesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -30,9 +30,9 @@ type ListAuthorizationRulesRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries to return on each page.
+	// The maximum number of records per page.
 	//
-	// - If you do not specify this parameter, the default value is 20.
+	// - If this parameter is not specified, the default value is 20.
 	//
 	// - The maximum value is 100.
 	//
@@ -40,9 +40,9 @@ type ListAuthorizationRulesRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that identifies the start of the next page of results.
+	// The token that marks the starting position of the next page.
 	//
-	// - If you do not specify this parameter, the system returns the first page of results.
+	// - If this parameter is not specified, the query starts from the first page.
 	//
 	// example:
 	//
@@ -108,17 +108,17 @@ func (s *ListAuthorizationRulesRequest) Validate() error {
 }
 
 type ListAuthorizationRulesRequestFilter struct {
-	// The name of the field to filter. Valid values:
+	// The name of the filter field. Valid values:
 	//
-	// - AuthorizationRuleId: the ID of the authorization rule.
+	// - AuthorizationRuleId: the authorization rule ID.
 	//
-	// - AuthorizationRuleNameStartWith: the leftmost characters of the authorization rule name.
+	// - AuthorizationRuleNameStartWith: the prefix of the authorization rule name for fuzzy match.
 	//
 	// example:
 	//
 	// AuthorizationRuleId
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The list of values for the field to filter.
+	// The values of the filter field.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

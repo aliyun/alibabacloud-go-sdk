@@ -15,6 +15,8 @@ type iListInstancesRequest interface {
 	GetEdition() *string
 	SetInstanceIds(v []*string) *ListInstancesRequest
 	GetInstanceIds() []*string
+	SetManagedServiceCode(v string) *ListInstancesRequest
+	GetManagedServiceCode() *string
 	SetPageNumber(v int64) *ListInstancesRequest
 	GetPageNumber() *int64
 	SetPageSize(v int64) *ListInstancesRequest
@@ -50,6 +52,12 @@ type ListInstancesRequest struct {
 	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The service code of the managing cloud service.
+	//
+	// example:
+	//
+	// kms
+	ManagedServiceCode *string `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
 	// The page number.
 	//
 	// example:
@@ -61,8 +69,13 @@ type ListInstancesRequest struct {
 	// example:
 	//
 	// 20
-	PageSize       *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ServiceManaged *bool  `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates whether the instance is managed by a cloud service.
+	//
+	// example:
+	//
+	// true
+	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
 	// The instance status. Valid values:
 	//
 	// - creating: Being created.
@@ -95,6 +108,10 @@ func (s *ListInstancesRequest) GetInstanceIds() []*string {
 	return s.InstanceIds
 }
 
+func (s *ListInstancesRequest) GetManagedServiceCode() *string {
+	return s.ManagedServiceCode
+}
+
 func (s *ListInstancesRequest) GetPageNumber() *int64 {
 	return s.PageNumber
 }
@@ -123,6 +140,11 @@ func (s *ListInstancesRequest) SetEdition(v string) *ListInstancesRequest {
 
 func (s *ListInstancesRequest) SetInstanceIds(v []*string) *ListInstancesRequest {
 	s.InstanceIds = v
+	return s
+}
+
+func (s *ListInstancesRequest) SetManagedServiceCode(v string) *ListInstancesRequest {
+	s.ManagedServiceCode = &v
 	return s
 }
 

@@ -83,7 +83,7 @@ func (s *ListInstancesResponseBody) Validate() error {
 }
 
 type ListInstancesResponseBodyInstances struct {
-	// The instance creation time, in UNIX timestamp format. Unit: milliseconds.
+	// The time when the instance was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -121,7 +121,7 @@ type ListInstancesResponseBodyInstances struct {
 	//
 	// idaas_eypq6ljgyeuwmlw672sulxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The service code of the Alibaba Cloud service that manages the instance.
+	// The service code of the cloud service that manages the instance.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type ListInstancesResponseBodyInstances struct {
 	ManagedServiceCode *string `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
 	// The replication configuration. This parameter is returned only when CrossRegionReplication is set to enabled.
 	ReplicationConfiguration *ListInstancesResponseBodyInstancesReplicationConfiguration `json:"ReplicationConfiguration,omitempty" xml:"ReplicationConfiguration,omitempty" type:"Struct"`
-	// Indicates whether the instance is managed by an Alibaba Cloud service.
+	// Indicates whether the instance is managed by a cloud service.
 	//
 	// if can be null:
 	// true
@@ -345,7 +345,7 @@ type ListInstancesResponseBodyInstancesReplicationConfiguration struct {
 	//
 	// cn-hangzhou
 	PrimaryInstanceRegionId *string `json:"PrimaryInstanceRegionId,omitempty" xml:"PrimaryInstanceRegionId,omitempty"`
-	// The creation time of the disaster recovery data replication, in UNIX timestamp format. Unit: milliseconds.
+	// The time when the disaster recovery data replication was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

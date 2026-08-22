@@ -24,7 +24,7 @@ type iUpdateCredentialProviderRequest interface {
 type UpdateCredentialProviderRequest struct {
 	// The idempotency token that ensures the idempotence of the request.
 	//
-	// Generate a unique parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+	// Generate a unique parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// This parameter is required.
 	//
@@ -176,7 +176,7 @@ type UpdateCredentialProviderRequestCredentialProviderConfigJwtProviderConfig st
 	//
 	// 	Notice: To clear the issuer list, pass an empty list or an empty string when calling the API.
 	AllowedTokenIssuers []*string `json:"AllowedTokenIssuers,omitempty" xml:"AllowedTokenIssuers,omitempty" type:"Repeated"`
-	// Specifies whether to enable the JWT derived short token capability.
+	// Specifies whether the JWT derived short token feature is enabled.
 	//
 	// example:
 	//
@@ -188,7 +188,7 @@ type UpdateCredentialProviderRequestCredentialProviderConfigJwtProviderConfig st
 	//
 	// 900
 	Expiration *int32 `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	// Specifies whether to enable JWT expiration cleanup.
+	// Specifies whether JWT expiration cleanup is enabled.
 	//
 	// example:
 	//
@@ -245,13 +245,21 @@ func (s *UpdateCredentialProviderRequestCredentialProviderConfigJwtProviderConfi
 }
 
 type UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig struct {
-	// The endpoint URL used to guide users through authorization. Conditionally required: this parameter is required when AuthorizationFlow is set to user_federation and ProviderVendor is set to custom. For preset vendors, this value can be automatically populated through DiscoveryUrl.
+	// The authorization endpoint.
+	//
+	// example:
+	//
+	// https://example.com/authorize
 	AuthorizationEndpoint *string `json:"AuthorizationEndpoint,omitempty" xml:"AuthorizationEndpoint,omitempty"`
 	// The OAuth authorization flow type. Valid values:
 	//
-	// - m2m: Machine-to-machine (2LO, Client Credentials).
+	// - m2m: machine-to-machine.
 	//
-	// - user_federation: User federation (3LO, Authorization Code).
+	// - user_federation: user federation.
+	//
+	// example:
+	//
+	// m2m
 	AuthorizationFlow *string `json:"AuthorizationFlow,omitempty" xml:"AuthorizationFlow,omitempty"`
 	// The client_secret in the OAuth protocol.
 	//
@@ -261,22 +269,59 @@ type UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig 
 	//
 	// client_secret_example_xxx
 	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
-	// The Discovery document URL used to automatically retrieve OAuth endpoint configurations. Conditionally optional: this parameter is used when AuthorizationFlow is set to user_federation. If DiscoveryUrl is not provided, you must manually configure fields such as TokenEndpoint and AuthorizationEndpoint.
+	// The auto-discovery URL.
+	//
+	// example:
+	//
+	// https://example.com/.well-known/openid-configuration
 	DiscoveryUrl *string `json:"DiscoveryUrl,omitempty" xml:"DiscoveryUrl,omitempty"`
-	Issuer       *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The PKCE code_challenge generation method. Default value: s256.
+	// The authorization server identifier URL.
+	//
+	// example:
+	//
+	// https://example.com/issuer
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The PKCE challenge method. Valid values:
+	//
+	// - S256.
+	//
+	// - plain.
+	//
+	// example:
+	//
+	// S256
 	PkceChallengeMethod *string `json:"PkceChallengeMethod,omitempty" xml:"PkceChallengeMethod,omitempty"`
-	// Specifies whether to use the PKCE extension for enhanced security. We recommend that you always enable this feature.
+	// Specifies whether PKCE is enabled.
+	//
+	// example:
+	//
+	// true
 	PkceEnabled *bool `json:"PkceEnabled,omitempty" xml:"PkceEnabled,omitempty"`
-	// The preset vendor or custom configuration. This parameter is optional. Default value: custom.
+	// The vendor type. Valid values:
+	//
+	// - custom: custom.
+	//
+	// - dingtalk: DingTalk.
+	//
+	// - feishu: Lark.
+	//
+	// - github: GitHub.
+	//
+	// - microsoft: Microsoft.
+	//
+	// - google: Google.
+	//
+	// example:
+	//
+	// custom
 	ProviderVendor *string `json:"ProviderVendor,omitempty" xml:"ProviderVendor,omitempty"`
 	// The scope in the OAuth protocol, which specifies the permission scope.
 	//
-	// > The Scope configuration on the OAuth credential provider serves as a fallback value. If the scope parameter is not specified when calling the DeveloperAPI to obtain an OAuth Access Token, the Scope configuration on the credential provider is used for token issuance.
+	// > The Scope configuration on the credential provider serves as the fallback value. If the scope parameter is not specified when calling the DeveloperAPI to obtain an OAuth Access Token, the Scope configuration on the credential provider is used for issuance.
 	//
 	// 	Notice: Separate multiple Scope values with spaces. To clear the Scope configuration, pass an empty string.
 	//
-	// Restrictions for each individual Scope value:
+	// Restrictions on each individual Scope value:
 	//
 	// 1. Allowed characters: lowercase letters, digits, and special characters `|/:_-.`
 	//

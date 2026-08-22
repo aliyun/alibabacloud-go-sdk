@@ -18,7 +18,7 @@ type iRemoveGroupFromAuthorizationRuleRequest interface {
 }
 
 type RemoveGroupFromAuthorizationRuleRequest struct {
-	// The ID of the authorization rule.
+	// The authorization rule ID.
 	//
 	// This parameter is required.
 	//

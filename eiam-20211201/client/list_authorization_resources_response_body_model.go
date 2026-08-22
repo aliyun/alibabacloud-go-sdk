@@ -24,13 +24,13 @@ type iListAuthorizationResourcesResponseBody interface {
 type ListAuthorizationResourcesResponseBody struct {
 	// The list of authorization resources.
 	AuthorizationResources []*ListAuthorizationResourcesResponseBodyAuthorizationResources `json:"AuthorizationResources,omitempty" xml:"AuthorizationResources,omitempty" type:"Repeated"`
-	// The number of entries per page in the paged query. This is the paging size.
+	// The number of entries per page in a paged query. This parameter is used for paging.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned in this call. Use this token for the next page query.
+	// The token returned for the next page query.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListAuthorizationResourcesResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries in the list.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *ListAuthorizationResourcesResponseBody) Validate() error {
 }
 
 type ListAuthorizationResourcesResponseBodyAuthorizationResources struct {
-	// The resource entity ID associated with the authorization resource.
+	// The ID of the resource entity associated with the authorization resource.
 	//
 	// example:
 	//
 	// carole_01kmek49aqxxxx
 	AuthorizationResourceEntityId *string `json:"AuthorizationResourceEntityId,omitempty" xml:"AuthorizationResourceEntityId,omitempty"`
-	// The resource entity type associated with the authorization resource. Valid values:
+	// The type of the resource entity associated with the authorization resource. Valid values:
 	//
 	// - cloud_account_role: cloud role.
 	//
@@ -149,12 +149,26 @@ type ListAuthorizationResourcesResponseBodyAuthorizationResources struct {
 	//
 	// ca_01kmegjc11qa1txxxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
+	// The effective condition.
+	Condition *ListAuthorizationResourcesResponseBodyAuthorizationResourcesCondition `json:"Condition,omitempty" xml:"Condition,omitempty" type:"Struct"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 1787023451494
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The update time.
+	//
+	// example:
+	//
+	// 1787023451494
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListAuthorizationResourcesResponseBodyAuthorizationResources) String() string {
@@ -185,8 +199,20 @@ func (s *ListAuthorizationResourcesResponseBodyAuthorizationResources) GetCloudA
 	return s.CloudAccountId
 }
 
+func (s *ListAuthorizationResourcesResponseBodyAuthorizationResources) GetCondition() *ListAuthorizationResourcesResponseBodyAuthorizationResourcesCondition {
+	return s.Condition
+}
+
+func (s *ListAuthorizationResourcesResponseBodyAuthorizationResources) GetCreateTime() *int64 {
+	return s.CreateTime
+}
+
 func (s *ListAuthorizationResourcesResponseBodyAuthorizationResources) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *ListAuthorizationResourcesResponseBodyAuthorizationResources) GetUpdateTime() *int64 {
+	return s.UpdateTime
 }
 
 func (s *ListAuthorizationResourcesResponseBodyAuthorizationResources) SetAuthorizationResourceEntityId(v string) *ListAuthorizationResourcesResponseBodyAuthorizationResources {
@@ -214,11 +240,88 @@ func (s *ListAuthorizationResourcesResponseBodyAuthorizationResources) SetCloudA
 	return s
 }
 
+func (s *ListAuthorizationResourcesResponseBodyAuthorizationResources) SetCondition(v *ListAuthorizationResourcesResponseBodyAuthorizationResourcesCondition) *ListAuthorizationResourcesResponseBodyAuthorizationResources {
+	s.Condition = v
+	return s
+}
+
+func (s *ListAuthorizationResourcesResponseBodyAuthorizationResources) SetCreateTime(v int64) *ListAuthorizationResourcesResponseBodyAuthorizationResources {
+	s.CreateTime = &v
+	return s
+}
+
 func (s *ListAuthorizationResourcesResponseBodyAuthorizationResources) SetInstanceId(v string) *ListAuthorizationResourcesResponseBodyAuthorizationResources {
 	s.InstanceId = &v
 	return s
 }
 
+func (s *ListAuthorizationResourcesResponseBodyAuthorizationResources) SetUpdateTime(v int64) *ListAuthorizationResourcesResponseBodyAuthorizationResources {
+	s.UpdateTime = &v
+	return s
+}
+
 func (s *ListAuthorizationResourcesResponseBodyAuthorizationResources) Validate() error {
+	if s.Condition != nil {
+		if err := s.Condition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ListAuthorizationResourcesResponseBodyAuthorizationResourcesCondition struct {
+	// The effective condition when used as a credential.
+	CredentialCondition *ListAuthorizationResourcesResponseBodyAuthorizationResourcesConditionCredentialCondition `json:"CredentialCondition,omitempty" xml:"CredentialCondition,omitempty" type:"Struct"`
+}
+
+func (s ListAuthorizationResourcesResponseBodyAuthorizationResourcesCondition) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListAuthorizationResourcesResponseBodyAuthorizationResourcesCondition) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizationResourcesResponseBodyAuthorizationResourcesCondition) GetCredentialCondition() *ListAuthorizationResourcesResponseBodyAuthorizationResourcesConditionCredentialCondition {
+	return s.CredentialCondition
+}
+
+func (s *ListAuthorizationResourcesResponseBodyAuthorizationResourcesCondition) SetCredentialCondition(v *ListAuthorizationResourcesResponseBodyAuthorizationResourcesConditionCredentialCondition) *ListAuthorizationResourcesResponseBodyAuthorizationResourcesCondition {
+	s.CredentialCondition = v
+	return s
+}
+
+func (s *ListAuthorizationResourcesResponseBodyAuthorizationResourcesCondition) Validate() error {
+	if s.CredentialCondition != nil {
+		if err := s.CredentialCondition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ListAuthorizationResourcesResponseBodyAuthorizationResourcesConditionCredentialCondition struct {
+	// Specifies whether same-name identity accounts are supported.
+	AllowSameNameIdentity *bool `json:"AllowSameNameIdentity,omitempty" xml:"AllowSameNameIdentity,omitempty"`
+}
+
+func (s ListAuthorizationResourcesResponseBodyAuthorizationResourcesConditionCredentialCondition) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListAuthorizationResourcesResponseBodyAuthorizationResourcesConditionCredentialCondition) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizationResourcesResponseBodyAuthorizationResourcesConditionCredentialCondition) GetAllowSameNameIdentity() *bool {
+	return s.AllowSameNameIdentity
+}
+
+func (s *ListAuthorizationResourcesResponseBodyAuthorizationResourcesConditionCredentialCondition) SetAllowSameNameIdentity(v bool) *ListAuthorizationResourcesResponseBodyAuthorizationResourcesConditionCredentialCondition {
+	s.AllowSameNameIdentity = &v
+	return s
+}
+
+func (s *ListAuthorizationResourcesResponseBodyAuthorizationResourcesConditionCredentialCondition) Validate() error {
 	return dara.Validate(s)
 }

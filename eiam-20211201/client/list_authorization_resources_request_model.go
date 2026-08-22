@@ -40,11 +40,11 @@ type ListAuthorizationResourcesRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries per page.
+	// The maximum number of records per page.
 	//
-	// - Default value: 20.
+	// - If this parameter is not specified, the default value is 20.
 	//
-	// - Maximum value: 100.
+	// - The maximum value is 100.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ListAuthorizationResourcesRequest struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that identifies the start position of the next page.
 	//
-	// - If you do not specify this parameter, the query starts from the first page.
+	// - If this parameter is not specified, the query starts from the first page.
 	//
 	// example:
 	//
@@ -129,15 +129,15 @@ func (s *ListAuthorizationResourcesRequest) Validate() error {
 type ListAuthorizationResourcesRequestFilter struct {
 	// The name of the filter field. Valid values:
 	//
-	// - AuthorizationResourceEntityType: the resource entity type associated with the authorization resource.
+	// - AuthorizationResourceEntityType: the type of the resource entity associated with the authorization resource.
 	//
-	// - AuthorizationResourceEntityId: the resource entity ID associated with the authorization resource.
+	// - AuthorizationResourceEntityId: the ID of the resource entity associated with the authorization resource.
 	//
 	// example:
 	//
 	// AuthorizationResourceEntityId
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The values of the filter field.
+	// The list of filter field values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
