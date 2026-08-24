@@ -68,7 +68,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// # AddDataAgentMemory
+// Adds a memory entry to a DataAgent.
 //
 // @param request - AddDataAgentMemoryRequest
 //
@@ -132,7 +132,7 @@ func (client *Client) AddDataAgentMemoryWithOptions(request *AddDataAgentMemoryR
 
 // Summary:
 //
-// # AddDataAgentMemory
+// Adds a memory entry to a DataAgent.
 //
 // @param request - AddDataAgentMemoryRequest
 //
@@ -1792,6 +1792,96 @@ func (client *Client) CreateDataLakeTable(request *CreateDataLakeTableRequest) (
 
 // Summary:
 //
+// 创建sql模版
+//
+// @param request - CreateOneMetaSqlTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOneMetaSqlTemplateResponse
+func (client *Client) CreateOneMetaSqlTemplateWithOptions(request *CreateOneMetaSqlTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateOneMetaSqlTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CatalogUuid) {
+		query["CatalogUuid"] = request.CatalogUuid
+	}
+
+	if !dara.IsNil(request.DatabaseUuid) {
+		query["DatabaseUuid"] = request.DatabaseUuid
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Expr) {
+		query["Expr"] = request.Expr
+	}
+
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
+	}
+
+	if !dara.IsNil(request.SqlParams) {
+		query["SqlParams"] = request.SqlParams
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	if !dara.IsNil(request.Title) {
+		query["Title"] = request.Title
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateOneMetaSqlTemplate"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateOneMetaSqlTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建sql模版
+//
+// @param request - CreateOneMetaSqlTemplateRequest
+//
+// @return CreateOneMetaSqlTemplateResponse
+func (client *Client) CreateOneMetaSqlTemplate(request *CreateOneMetaSqlTemplateRequest) (_result *CreateOneMetaSqlTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateOneMetaSqlTemplateResponse{}
+	_body, _err := client.CreateOneMetaSqlTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an Airflow instance.
 //
 // @param request - DeleteAirflowRequest
@@ -2871,6 +2961,130 @@ func (client *Client) DeleteFileUpload(request *DeleteFileUploadRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteFileUploadResponse{}
 	_body, _err := client.DeleteFileUploadWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除onemeta3.0的Ossie模型
+//
+// @param request - DeleteOneMetaOssieModelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteOneMetaOssieModelResponse
+func (client *Client) DeleteOneMetaOssieModelWithOptions(request *DeleteOneMetaOssieModelRequest, runtime *dara.RuntimeOptions) (_result *DeleteOneMetaOssieModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeUuid) {
+		query["KnowledgeUuid"] = request.KnowledgeUuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteOneMetaOssieModel"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteOneMetaOssieModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除onemeta3.0的Ossie模型
+//
+// @param request - DeleteOneMetaOssieModelRequest
+//
+// @return DeleteOneMetaOssieModelResponse
+func (client *Client) DeleteOneMetaOssieModel(request *DeleteOneMetaOssieModelRequest) (_result *DeleteOneMetaOssieModelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteOneMetaOssieModelResponse{}
+	_body, _err := client.DeleteOneMetaOssieModelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除sql模版
+//
+// @param request - DeleteOneMetaSqlTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteOneMetaSqlTemplateResponse
+func (client *Client) DeleteOneMetaSqlTemplateWithOptions(request *DeleteOneMetaSqlTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteOneMetaSqlTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeUuid) {
+		query["KnowledgeUuid"] = request.KnowledgeUuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteOneMetaSqlTemplate"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteOneMetaSqlTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除sql模版
+//
+// @param request - DeleteOneMetaSqlTemplateRequest
+//
+// @return DeleteOneMetaSqlTemplateResponse
+func (client *Client) DeleteOneMetaSqlTemplate(request *DeleteOneMetaSqlTemplateRequest) (_result *DeleteOneMetaSqlTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteOneMetaSqlTemplateResponse{}
+	_body, _err := client.DeleteOneMetaSqlTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4737,6 +4951,72 @@ func (client *Client) GetNotebookTaskStatus(request *GetNotebookTaskStatusReques
 
 // Summary:
 //
+// 获取onemeta3.0的Ossie模型
+//
+// @param request - GetOneMetaOssieModelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOneMetaOssieModelResponse
+func (client *Client) GetOneMetaOssieModelWithOptions(request *GetOneMetaOssieModelRequest, runtime *dara.RuntimeOptions) (_result *GetOneMetaOssieModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DocFormat) {
+		body["DocFormat"] = request.DocFormat
+	}
+
+	if !dara.IsNil(request.KnowledgeUuid) {
+		body["KnowledgeUuid"] = request.KnowledgeUuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetOneMetaOssieModel"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetOneMetaOssieModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取onemeta3.0的Ossie模型
+//
+// @param request - GetOneMetaOssieModelRequest
+//
+// @return GetOneMetaOssieModelResponse
+func (client *Client) GetOneMetaOssieModel(request *GetOneMetaOssieModelRequest) (_result *GetOneMetaOssieModelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetOneMetaOssieModelResponse{}
+	_body, _err := client.GetOneMetaOssieModelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the operation logs of the SQL window.
 //
 // @param request - GetSqlConsoleOperationLogRequest
@@ -5036,6 +5316,96 @@ func (client *Client) GetWorkspaceQuota(request *GetWorkspaceQuotaRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetWorkspaceQuotaResponse{}
 	_body, _err := client.GetWorkspaceQuotaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 导入Ossie模型
+//
+// @param request - ImportOneMetaOssieModelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportOneMetaOssieModelResponse
+func (client *Client) ImportOneMetaOssieModelWithOptions(request *ImportOneMetaOssieModelRequest, runtime *dara.RuntimeOptions) (_result *ImportOneMetaOssieModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CatalogUuid) {
+		query["CatalogUuid"] = request.CatalogUuid
+	}
+
+	if !dara.IsNil(request.DatabaseUuid) {
+		query["DatabaseUuid"] = request.DatabaseUuid
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DocFormat) {
+		query["DocFormat"] = request.DocFormat
+	}
+
+	if !dara.IsNil(request.Document) {
+		query["Document"] = request.Document
+	}
+
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	if !dara.IsNil(request.Title) {
+		query["Title"] = request.Title
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ImportOneMetaOssieModel"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ImportOneMetaOssieModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 导入Ossie模型
+//
+// @param request - ImportOneMetaOssieModelRequest
+//
+// @return ImportOneMetaOssieModelResponse
+func (client *Client) ImportOneMetaOssieModel(request *ImportOneMetaOssieModelRequest) (_result *ImportOneMetaOssieModelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ImportOneMetaOssieModelResponse{}
+	_body, _err := client.ImportOneMetaOssieModelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7617,6 +7987,182 @@ func (client *Client) ListKnowledgeBases(request *ListKnowledgeBasesRequest) (_r
 
 // Summary:
 //
+// 获取ossie模型列表
+//
+// @param request - ListOneMetaOssieModelsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOneMetaOssieModelsResponse
+func (client *Client) ListOneMetaOssieModelsWithOptions(request *ListOneMetaOssieModelsRequest, runtime *dara.RuntimeOptions) (_result *ListOneMetaOssieModelsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CatalogUuid) {
+		query["CatalogUuid"] = request.CatalogUuid
+	}
+
+	if !dara.IsNil(request.DatabaseUuid) {
+		query["DatabaseUuid"] = request.DatabaseUuid
+	}
+
+	if !dara.IsNil(request.EnableVectorSearch) {
+		query["EnableVectorSearch"] = request.EnableVectorSearch
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListOneMetaOssieModels"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListOneMetaOssieModelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取ossie模型列表
+//
+// @param request - ListOneMetaOssieModelsRequest
+//
+// @return ListOneMetaOssieModelsResponse
+func (client *Client) ListOneMetaOssieModels(request *ListOneMetaOssieModelsRequest) (_result *ListOneMetaOssieModelsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListOneMetaOssieModelsResponse{}
+	_body, _err := client.ListOneMetaOssieModelsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取sql模版
+//
+// @param request - ListOneMetaSqlTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOneMetaSqlTemplatesResponse
+func (client *Client) ListOneMetaSqlTemplatesWithOptions(request *ListOneMetaSqlTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListOneMetaSqlTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CatalogUuid) {
+		query["CatalogUuid"] = request.CatalogUuid
+	}
+
+	if !dara.IsNil(request.DatabaseUuid) {
+		query["DatabaseUuid"] = request.DatabaseUuid
+	}
+
+	if !dara.IsNil(request.EnableVectorSearch) {
+		query["EnableVectorSearch"] = request.EnableVectorSearch
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	if !dara.IsNil(request.Uuids) {
+		query["Uuids"] = request.Uuids
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListOneMetaSqlTemplates"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListOneMetaSqlTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取sql模版
+//
+// @param request - ListOneMetaSqlTemplatesRequest
+//
+// @return ListOneMetaSqlTemplatesResponse
+func (client *Client) ListOneMetaSqlTemplates(request *ListOneMetaSqlTemplatesRequest) (_result *ListOneMetaSqlTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListOneMetaSqlTemplatesResponse{}
+	_body, _err := client.ListOneMetaSqlTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Lists code files and directories at a specified path in a workspace.
 //
 // Description:
@@ -9898,6 +10444,186 @@ func (client *Client) UpdateKnowledgeBase(request *UpdateKnowledgeBaseRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateKnowledgeBaseResponse{}
 	_body, _err := client.UpdateKnowledgeBaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Ossie模型
+//
+// @param request - UpdateOneMetaOssieModelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateOneMetaOssieModelResponse
+func (client *Client) UpdateOneMetaOssieModelWithOptions(request *UpdateOneMetaOssieModelRequest, runtime *dara.RuntimeOptions) (_result *UpdateOneMetaOssieModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CatalogUuid) {
+		query["CatalogUuid"] = request.CatalogUuid
+	}
+
+	if !dara.IsNil(request.DatabaseUuid) {
+		query["DatabaseUuid"] = request.DatabaseUuid
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DocFormat) {
+		query["DocFormat"] = request.DocFormat
+	}
+
+	if !dara.IsNil(request.Document) {
+		query["Document"] = request.Document
+	}
+
+	if !dara.IsNil(request.KnowledgeUuid) {
+		query["KnowledgeUuid"] = request.KnowledgeUuid
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	if !dara.IsNil(request.Title) {
+		query["Title"] = request.Title
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateOneMetaOssieModel"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateOneMetaOssieModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Ossie模型
+//
+// @param request - UpdateOneMetaOssieModelRequest
+//
+// @return UpdateOneMetaOssieModelResponse
+func (client *Client) UpdateOneMetaOssieModel(request *UpdateOneMetaOssieModelRequest) (_result *UpdateOneMetaOssieModelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateOneMetaOssieModelResponse{}
+	_body, _err := client.UpdateOneMetaOssieModelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新sql模版
+//
+// @param request - UpdateOneMetaSqlTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateOneMetaSqlTemplateResponse
+func (client *Client) UpdateOneMetaSqlTemplateWithOptions(request *UpdateOneMetaSqlTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateOneMetaSqlTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CatalogUuid) {
+		query["CatalogUuid"] = request.CatalogUuid
+	}
+
+	if !dara.IsNil(request.DatabaseUuid) {
+		query["DatabaseUuid"] = request.DatabaseUuid
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Expr) {
+		query["Expr"] = request.Expr
+	}
+
+	if !dara.IsNil(request.KnowledgeUuid) {
+		query["KnowledgeUuid"] = request.KnowledgeUuid
+	}
+
+	if !dara.IsNil(request.SqlParams) {
+		query["SqlParams"] = request.SqlParams
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	if !dara.IsNil(request.Title) {
+		query["Title"] = request.Title
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateOneMetaSqlTemplate"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateOneMetaSqlTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新sql模版
+//
+// @param request - UpdateOneMetaSqlTemplateRequest
+//
+// @return UpdateOneMetaSqlTemplateResponse
+func (client *Client) UpdateOneMetaSqlTemplate(request *UpdateOneMetaSqlTemplateRequest) (_result *UpdateOneMetaSqlTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateOneMetaSqlTemplateResponse{}
+	_body, _err := client.UpdateOneMetaSqlTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

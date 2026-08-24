@@ -38,19 +38,84 @@ type iOneMetaSqlTemplateView interface {
 }
 
 type OneMetaSqlTemplateView struct {
-	CatalogUuid   *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
-	DatabaseUuid  *string `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Expr          *string `json:"Expr,omitempty" xml:"Expr,omitempty"`
-	GmtCreated    *int64  `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	GmtModified   *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The UUID of the associated folder.
+	//
+	// example:
+	//
+	// mc-HZ-OfjcNc2z***
+	CatalogUuid *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
+	// The UUID of the associated database.
+	//
+	// example:
+	//
+	// md-HZ-fp9K7r***
+	DatabaseUuid *string `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
+	// The description of the SQL template.
+	//
+	// example:
+	//
+	// sales count
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The content of the SQL template.
+	//
+	// example:
+	//
+	// SELECT store_name, daily_sales FROM store_daily_sales ORDER BY daily_sales DESC LIMIT 5
+	Expr *string `json:"Expr,omitempty" xml:"Expr,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 1787302285000
+	GmtCreated *int64 `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The modification time.
+	//
+	// example:
+	//
+	// 1787302285000
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The UUID of the knowledge.
+	//
+	// example:
+	//
+	// 86c5c290052147c***
 	KnowledgeUuid *string `json:"KnowledgeUuid,omitempty" xml:"KnowledgeUuid,omitempty"`
-	Source        *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	SqlParams     *string `json:"SqlParams,omitempty" xml:"SqlParams,omitempty"`
-	Summary       *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Tag           *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The source of the SQL template knowledge.
+	//
+	// example:
+	//
+	// DATA_AGENT
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The parameters of the SQL template.
+	//
+	// example:
+	//
+	// {"dt": "2026-08-01"}
+	SqlParams *string `json:"SqlParams,omitempty" xml:"SqlParams,omitempty"`
+	// The summary of the SQL template.
+	//
+	// example:
+	//
+	// sales summary
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The tag of the SQL template.
+	//
+	// example:
+	//
+	// new_sales
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The title of the SQL template.
+	//
+	// example:
+	//
+	// ecommerce_sales
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The version of the SQL template.
+	//
+	// example:
+	//
+	// 0.1
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s OneMetaSqlTemplateView) String() string {

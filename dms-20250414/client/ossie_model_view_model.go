@@ -44,22 +44,128 @@ type iOssieModelView interface {
 }
 
 type OssieModelView struct {
-	CatalogUuid   *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
-	DatabaseUuid  *string `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DocFormat     *string `json:"DocFormat,omitempty" xml:"DocFormat,omitempty"`
-	DomainTopic   *string `json:"DomainTopic,omitempty" xml:"DomainTopic,omitempty"`
-	Expr          *string `json:"Expr,omitempty" xml:"Expr,omitempty"`
-	GmtCreated    *int64  `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	GmtModified   *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The UUID of the associated instance.
+	//
+	// example:
+	//
+	// mc-SH-cd3ns***
+	CatalogUuid *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
+	// The UUID of the associated database.
+	//
+	// example:
+	//
+	// md-SH-q8XzcK***
+	DatabaseUuid *string `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
+	// The semantic description.
+	//
+	// example:
+	//
+	// Order summary
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The semantic document format type.
+	//
+	// example:
+	//
+	// JSON
+	DocFormat *string `json:"DocFormat,omitempty" xml:"DocFormat,omitempty"`
+	// The domain topic.
+	//
+	// example:
+	//
+	// Order
+	DomainTopic *string `json:"DomainTopic,omitempty" xml:"DomainTopic,omitempty"`
+	// The expression content.
+	//
+	// example:
+	//
+	// select 1
+	Expr *string `json:"Expr,omitempty" xml:"Expr,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 1663809374000
+	GmtCreated *int64 `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The modification time.
+	//
+	// example:
+	//
+	// 1780539699000
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The UUID of the semantic knowledge.
+	//
+	// example:
+	//
+	// dfb58bd***
 	KnowledgeUuid *string `json:"KnowledgeUuid,omitempty" xml:"KnowledgeUuid,omitempty"`
-	RawDoc        *string `json:"RawDoc,omitempty" xml:"RawDoc,omitempty"`
-	SemanticType  *string `json:"SemanticType,omitempty" xml:"SemanticType,omitempty"`
-	Source        *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Summary       *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Tag           *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The semantic document content.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "version": "0.2.0.dev0",
+	//
+	//   "semantic_model": [
+	//
+	//     {
+	//
+	//       "name": "sales",
+	//
+	//       "datasets": [
+	//
+	//         {
+	//
+	//           "name": "orders",
+	//
+	//           "source": "analytics.public.orders"
+	//
+	//         }
+	//
+	//       ]
+	//
+	//     }
+	//
+	//   ]
+	//
+	// }
+	RawDoc *string `json:"RawDoc,omitempty" xml:"RawDoc,omitempty"`
+	// The semantic type.
+	//
+	// example:
+	//
+	// Ossie
+	SemanticType *string `json:"SemanticType,omitempty" xml:"SemanticType,omitempty"`
+	// The source.
+	//
+	// example:
+	//
+	// USER_EDIT
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The document summary.
+	//
+	// example:
+	//
+	// knowledge summary
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The knowledge base tag.
+	//
+	// example:
+	//
+	// 1dq7qod8hxtt1***
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The semantic title.
+	//
+	// example:
+	//
+	// Order total
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The version information.
+	//
+	// example:
+	//
+	// 0.1
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s OssieModelView) String() string {

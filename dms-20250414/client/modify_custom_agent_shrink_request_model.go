@@ -63,29 +63,29 @@ type ModifyCustomAgentShrinkRequest struct {
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The specified data scope in **JSON string format**.
+	// The specified data scope in **JSON character string format**.
 	//
 	// - Common parameter description
 	//
-	//   - tableFlag: true indicates a specified data scope
+	//   - tableFlag: true indicates a specified data scope.
 	//
-	//   - scope: personal is a fixed value
+	//   - scope: personal is a fixed value.
 	//
-	//   - personal: pass parameters for file or database types
+	//   - personal: pass parameters for file or database types.
 	//
 	// **File type**. Pass parameters in the following format:
 	//
-	// - DataSourceType: remote_data_center is a fixed value
+	// - DataSourceType: remote_data_center is a fixed value.
 	//
-	// - FileId: the file ID
+	// - FileId: the file ID.
 	//
-	// - Database: the database name returned by the ListDataCenterTable operation, which is usually the file name
+	// - Database: the database name returned by the ListDataCenterTable operation, which is typically the file name.
 	//
-	// - Tables: the table name returned by the ListDataCenterTable operation
+	// - Tables: the table name returned by the ListDataCenterTable operation.
 	//
-	// - TableIds: the TableId returned by the ListDataCenterTable operation
+	// - TableIds: the TableId returned by the ListDataCenterTable operation.
 	//
-	// - RegionId: the current region
+	// - RegionId: the current region.
 	//
 	// ```
 	//
@@ -123,27 +123,27 @@ type ModifyCustomAgentShrinkRequest struct {
 	//
 	// ```
 	//
-	// **Database type**. Pass parameters in the following format:
+	// **Database type**. Pass parameters as follows:
 	//
-	// - DataSourceType: database is a fixed value
+	// - DataSourceType: database is a fixed value.
 	//
-	// - DmsInstanceId: the DMS instance ID returned by the data center operation
+	// - DmsInstanceId: the DMS instance ID returned by the data center operation.
 	//
-	// - DmsDatabaseId: the DMS database ID returned by the data center operation
+	// - DmsDatabaseId: the DMS database ID returned by the data center operation.
 	//
-	// - FileId: the instance name (deprecated)
+	// - FileId: the instance name (deprecated).
 	//
-	// - DbName: the database name returned by the data center operation
+	// - DbName: the database name returned by the data center operation.
 	//
-	// - Database: the database name returned by the data center operation
+	// - Database: the database name returned by the data center operation.
 	//
-	// - Tables: the table name returned by the data center operation
+	// - Tables: the table name returned by the data center operation.
 	//
-	// - TableIds: the TableId returned by the data center operation
+	// - TableIds: the TableId returned by the data center operation.
 	//
-	// - Engine: the engine type (mysql or postgresql)
+	// - Engine: the engine type (mysql or postgresql).
 	//
-	// - RegionId: the current region
+	// - RegionId: the current region.
 	//
 	// ```
 	//
@@ -225,25 +225,35 @@ type ModifyCustomAgentShrinkRequest struct {
 	ExecutionConfigShrink *string `json:"ExecutionConfig,omitempty" xml:"ExecutionConfig,omitempty"`
 	// The instruction.
 	//
+	// - Input limit: up to 10,000 characters.
+	//
 	// example:
 	//
 	// Analysis framework:
+	//
+	// 1. Monitor core metrics (GMV, order volume, UV, conversion rate) by day, week, and month dimensions, and analyze trends and year-over-year/month-over-month fluctuations.
+	//
+	// 2. Segment by new/existing customers, channels, and regions to identify growth sources and weaknesses.
+	//
+	// 3. Conduct funnel analysis based on user behavior paths (browse → add to cart → payment) to identify drop-off points
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
 	// The knowledge.
+	//
+	// - Input limit: up to 10,000 characters.
 	//
 	// example:
 	//
 	// Core metric definitions:
 	//
-	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders.
+	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including paid and unpaid orders.
 	//
 	// 2. Order volume is the number of valid orders placed per day.
 	//
 	// 3. UV (Unique Visitors) refers to the deduplicated number of users who visit the website or app.
 	//
-	// 4. Conversion rate = number of paid orders / UV, reflecting traffic conversion efficiency.
+	// 4. Conversion rate = number of paid orders / UV, reflecting traffic conversion efficiency
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
-	// The external knowledge bases.
+	// The external knowledge base list.
 	KnowledgeConfigListShrink         *string `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty"`
 	KnowledgeSemanticConfigListShrink *string `json:"KnowledgeSemanticConfigList,omitempty" xml:"KnowledgeSemanticConfigList,omitempty"`
 	// The name of the custom agent.
@@ -258,12 +268,16 @@ type ModifyCustomAgentShrinkRequest struct {
 	ScheduleTaskConfigShrink *string `json:"ScheduleTaskConfig,omitempty" xml:"ScheduleTaskConfig,omitempty"`
 	// The text report format.
 	//
+	//  - Input limit: up to 10,000 characters.
+	//
 	// example:
 	//
 	// The text report requires all numbers to be written in Chinese characters instead of Arabic numerals
 	TextReportConfig             *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
 	UserSpecifiedSkillListShrink *string `json:"UserSpecifiedSkillList,omitempty" xml:"UserSpecifiedSkillList,omitempty"`
 	// The web report format.
+	//
+	// - Input limit: up to 50,000 characters.
 	//
 	// example:
 	//

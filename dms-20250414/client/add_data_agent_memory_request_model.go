@@ -24,26 +24,54 @@ type iAddDataAgentMemoryRequest interface {
 }
 
 type AddDataAgentMemoryRequest struct {
+	// The memory content.
+	//
 	// example:
 	//
 	// Diamond pricing analysis requires examining the skewness and outliers of the distribution of each feature.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The current DMS unit.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	// The source ID.
+	//
+	// - If MemFrom is set to session, FromId indicates the session ID.
+	//
+	// - If MemFrom is set to user, FromId indicates the RAM user ID.
+	//
 	// example:
 	//
 	// 2037**********23
 	FromId *string `json:"FromId,omitempty" xml:"FromId,omitempty"`
+	// The memory label. Valid values:
+	//
+	// - fact_specifications: fact definitions.
+	//
+	// - task_constraints: node constraints.
+	//
+	// - execution_config: execution configuration.
+	//
 	// example:
 	//
 	// fact_specifications
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The memory source. Valid values:
+	//
+	// - session: generated from a session.
+	//
+	// - user: edited by a user.
+	//
 	// example:
 	//
 	// user
 	MemFrom *string `json:"MemFrom,omitempty" xml:"MemFrom,omitempty"`
+	// The session ID.
+	//
+	// - Note: This parameter is deprecated.
+	//
 	// example:
 	//
 	// fc5ice**********ac6e

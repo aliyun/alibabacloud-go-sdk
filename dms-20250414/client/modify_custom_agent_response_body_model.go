@@ -30,7 +30,7 @@ type ModifyCustomAgentResponseBody struct {
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the request failed.
 	//
 	// example:
 	//
@@ -42,7 +42,11 @@ type ModifyCustomAgentResponseBody struct {
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - **true**: The request is successful.
+	//
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -113,7 +117,7 @@ func (s *ModifyCustomAgentResponseBody) Validate() error {
 }
 
 type ModifyCustomAgentResponseBodyData struct {
-	// The Alibaba Cloud account ID of the primary account.
+	// The Alibaba Cloud account ID of the parent account.
 	//
 	// example:
 	//
@@ -126,7 +130,7 @@ type ModifyCustomAgentResponseBodyData struct {
 	// 20372822********
 	AliyunUid      *string                                          `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
 	CallbackConfig *ModifyCustomAgentResponseBodyDataCallbackConfig `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty" type:"Struct"`
-	// The name of the creator.
+	// The creator name.
 	//
 	// example:
 	//
@@ -204,11 +208,11 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// Analysis framework:
 	//
-	// 1. Monitor core metrics (GMV, order volume, UV, conversion rate) on a daily, weekly, and monthly basis, analyze trends and year-over-year/month-over-month fluctuations;
+	// 1. Monitor core metrics (GMV, order volume, UV, conversion rate) by day, week, and month dimensions, and analyze trends and year-over-year/month-over-month fluctuations.
 	//
-	// 2. Segment by new/existing customers, channels, and regions to identify growth drivers and weaknesses;
+	// 2. Segment by new/existing customers, channels, and regions to identify growth sources and weaknesses.
 	//
-	// 3. Conduct funnel analysis based on user behavior paths (browsing → add to cart → payment) to pinpoint drop-off stages;
+	// 3. Conduct funnel analysis based on user behavior paths (browse → add to cart → payment) to identify drop-off points
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
 	// Indicates whether a periodic task is configured.
 	//
@@ -222,15 +226,15 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// Core metric definitions:
 	//
-	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders;
+	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including paid and unpaid orders.
 	//
-	// 2. Order volume is the number of valid orders placed per day;
+	// 2. Order volume is the number of valid orders placed per day.
 	//
-	// 3. UV (Unique Visitors) refers to the deduplicated number of users who visit the website or app;
+	// 3. UV (Unique Visitors) refers to the deduplicated number of users who visit the website or app.
 	//
-	// 4. Conversion rate = number of paid orders / UV, reflecting traffic conversion efficiency;
+	// 4. Conversion rate = number of paid orders / UV, reflecting traffic conversion efficiency
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
-	// The external knowledge bases.
+	// The external knowledge base list.
 	KnowledgeConfigList         []*ModifyCustomAgentResponseBodyDataKnowledgeConfigList         `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
 	KnowledgeSemanticConfigList []*ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList `json:"KnowledgeSemanticConfigList,omitempty" xml:"KnowledgeSemanticConfigList,omitempty" type:"Repeated"`
 	// The modifier.
@@ -239,7 +243,7 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// 20372822********
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	// The name of the modifier.
+	// The modifier name.
 	//
 	// example:
 	//
@@ -252,6 +256,8 @@ type ModifyCustomAgentResponseBodyData struct {
 	// AgentTestName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The next run time of the periodic task.
+	//
+	// - In timestamp format.
 	//
 	// example:
 	//
@@ -279,7 +285,7 @@ type ModifyCustomAgentResponseBodyData struct {
 	ReleaseTime *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
 	// The periodic task configuration.
 	ScheduleTaskConfig *ModifyCustomAgentResponseBodyDataScheduleTaskConfig `json:"ScheduleTaskConfig,omitempty" xml:"ScheduleTaskConfig,omitempty" type:"Struct"`
-	// The status of the custom agent.
+	// The custom agent status.
 	//
 	// example:
 	//
@@ -791,14 +797,16 @@ func (s *ModifyCustomAgentResponseBodyDataExecutionConfig) Validate() error {
 }
 
 type ModifyCustomAgentResponseBodyDataKnowledgeConfigList struct {
-	// The access type.
+	// The access type. Valid values:
+	//
+	// - mcp: accessed through MCP.
 	//
 	// example:
 	//
 	// mcp
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	KbUuid     *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
-	// The ID of the MCP server.
+	// The ID of the MCP Server.
 	//
 	// example:
 	//
@@ -901,7 +909,7 @@ func (s *ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList) Validate(
 }
 
 type ModifyCustomAgentResponseBodyDataScheduleTaskConfig struct {
-	// The cron expression for the time-based scheduling.
+	// The cron expression for timed scheduling.
 	//
 	// example:
 	//
@@ -911,7 +919,7 @@ type ModifyCustomAgentResponseBodyDataScheduleTaskConfig struct {
 	//
 	// example:
 	//
-	// Analyze this data and provide a briefing
+	// Analyze this data and provide a brief report
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// The ID of the referenced historical session.
 	//

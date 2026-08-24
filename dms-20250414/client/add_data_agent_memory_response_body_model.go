@@ -22,19 +22,32 @@ type iAddDataAgentMemoryResponseBody interface {
 }
 
 type AddDataAgentMemoryResponseBody struct {
+	// The response struct.
 	Data *AddDataAgentMemoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidTid
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the call failed.
+	//
 	// example:
 	//
 	// Specified parameter Tid is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - **true**: The request is successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -104,10 +117,18 @@ func (s *AddDataAgentMemoryResponseBody) Validate() error {
 }
 
 type AddDataAgentMemoryResponseBodyData struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// dlc1********63eqm
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Indicates whether the task submission request is successful. Valid values:
+	//
+	// - True: The request is successful.
+	//
+	// - False: The request failed.
+	//
 	// example:
 	//
 	// true
