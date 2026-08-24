@@ -20,15 +20,22 @@ type iListContextDatabaseMembersResponseBody interface {
 }
 
 type ListContextDatabaseMembersResponseBody struct {
+	// The maximum number of entries per page. This field is empty.
+	//
 	// example:
 	//
 	// (null)
-	MaxResults *int32                                           `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Members    []*ListContextDatabaseMembersResponseBodyMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The list of members.
+	Members []*ListContextDatabaseMembersResponseBodyMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
+	// The pagination token for the next page. This field is empty.
+	//
 	// example:
 	//
 	// (null)
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
@@ -93,23 +100,34 @@ func (s *ListContextDatabaseMembersResponseBody) Validate() error {
 }
 
 type ListContextDatabaseMembersResponseBodyMembers struct {
+	// The time when the member was created.
+	//
 	// example:
 	//
 	// 2026-05-28T17:59:55Z
-	CreatedAt *string                                              `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	Keys      []*ListContextDatabaseMembersResponseBodyMembersKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The list of API keys.
+	Keys []*ListContextDatabaseMembersResponseBodyMembersKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	// The member ID.
+	//
 	// example:
 	//
 	// mb-cz51tnnp8****
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// The member name.
+	//
 	// example:
 	//
 	// Alice
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	// The member role.
+	//
 	// example:
 	//
 	// admin
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The member status.
+	//
 	// example:
 	//
 	// active
@@ -192,42 +210,62 @@ func (s *ListContextDatabaseMembersResponseBodyMembers) Validate() error {
 }
 
 type ListContextDatabaseMembersResponseBodyMembersKeys struct {
+	// The time when the member was created.
+	//
 	// example:
 	//
 	// 2026-05-28T17:59:55Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The API key description.
+	//
 	// example:
 	//
 	// data pipeline key
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This field is empty.
+	//
 	// example:
 	//
 	// (null)
 	ExpiresAt *string `json:"ExpiresAt,omitempty" xml:"ExpiresAt,omitempty"`
+	// The suffix of the API key.
+	//
 	// example:
 	//
 	// 33631c
 	KeyDisplaySuffix *string `json:"KeyDisplaySuffix,omitempty" xml:"KeyDisplaySuffix,omitempty"`
+	// The key ID.
+	//
 	// example:
 	//
 	// 1
 	KeyId *int64 `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// The prefix of the API key.
+	//
 	// example:
 	//
 	// ctxdb-
 	KeyPrefix *string `json:"KeyPrefix,omitempty" xml:"KeyPrefix,omitempty"`
+	// The time when the key was last used. This field is populated after the key has been authenticated and used. This field is empty for keys that have never been used.
+	//
 	// example:
 	//
 	// 2026-07-15T08:30:00Z
 	LastUsedAt *string `json:"LastUsedAt,omitempty" xml:"LastUsedAt,omitempty"`
+	// The API key name.
+	//
 	// example:
 	//
 	// my-key
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This field is empty.
+	//
 	// example:
 	//
 	// (null)
 	RevokedAt *string `json:"RevokedAt,omitempty" xml:"RevokedAt,omitempty"`
+	// The API key status.
+	//
 	// example:
 	//
 	// active

@@ -13,12 +13,16 @@ type iModifySandboxTemplateRequest interface {
 	GetDefaultCpu() *string
 	SetDefaultMemory(v string) *ModifySandboxTemplateRequest
 	GetDefaultMemory() *string
+	SetImage(v string) *ModifySandboxTemplateRequest
+	GetImage() *string
 	SetInstanceName(v string) *ModifySandboxTemplateRequest
 	GetInstanceName() *string
 	SetRegionId(v string) *ModifySandboxTemplateRequest
 	GetRegionId() *string
 	SetReplicas(v int64) *ModifySandboxTemplateRequest
 	GetReplicas() *int64
+	SetTags(v map[string]*string) *ModifySandboxTemplateRequest
+	GetTags() map[string]*string
 	SetTemplateId(v string) *ModifySandboxTemplateRequest
 	GetTemplateId() *string
 }
@@ -36,6 +40,7 @@ type ModifySandboxTemplateRequest struct {
 	//
 	// 1Gi
 	DefaultMemory *string `json:"DefaultMemory,omitempty" xml:"DefaultMemory,omitempty"`
+	Image         *string `json:"Image,omitempty" xml:"Image,omitempty"`
 	// The instance ID of the AI application.
 	//
 	// This parameter is required.
@@ -55,7 +60,8 @@ type ModifySandboxTemplateRequest struct {
 	// example:
 	//
 	// 2
-	Replicas *int64 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	Replicas *int64             `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	Tags     map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The sandbox template ID.
 	//
 	// This parameter is required.
@@ -82,6 +88,10 @@ func (s *ModifySandboxTemplateRequest) GetDefaultMemory() *string {
 	return s.DefaultMemory
 }
 
+func (s *ModifySandboxTemplateRequest) GetImage() *string {
+	return s.Image
+}
+
 func (s *ModifySandboxTemplateRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
@@ -92,6 +102,10 @@ func (s *ModifySandboxTemplateRequest) GetRegionId() *string {
 
 func (s *ModifySandboxTemplateRequest) GetReplicas() *int64 {
 	return s.Replicas
+}
+
+func (s *ModifySandboxTemplateRequest) GetTags() map[string]*string {
+	return s.Tags
 }
 
 func (s *ModifySandboxTemplateRequest) GetTemplateId() *string {
@@ -108,6 +122,11 @@ func (s *ModifySandboxTemplateRequest) SetDefaultMemory(v string) *ModifySandbox
 	return s
 }
 
+func (s *ModifySandboxTemplateRequest) SetImage(v string) *ModifySandboxTemplateRequest {
+	s.Image = &v
+	return s
+}
+
 func (s *ModifySandboxTemplateRequest) SetInstanceName(v string) *ModifySandboxTemplateRequest {
 	s.InstanceName = &v
 	return s
@@ -120,6 +139,11 @@ func (s *ModifySandboxTemplateRequest) SetRegionId(v string) *ModifySandboxTempl
 
 func (s *ModifySandboxTemplateRequest) SetReplicas(v int64) *ModifySandboxTemplateRequest {
 	s.Replicas = &v
+	return s
+}
+
+func (s *ModifySandboxTemplateRequest) SetTags(v map[string]*string) *ModifySandboxTemplateRequest {
+	s.Tags = v
 	return s
 }
 

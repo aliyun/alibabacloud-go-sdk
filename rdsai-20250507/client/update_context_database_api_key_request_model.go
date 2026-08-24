@@ -22,26 +22,36 @@ type iUpdateContextDatabaseApiKeyRequest interface {
 }
 
 type UpdateContextDatabaseApiKeyRequest struct {
+	// The new description.
+	//
 	// example:
 	//
 	// for nightly cron
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// API Key ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1024
 	KeyId *int64 `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// The member ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mb-cz51tnnp8****
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// The new display name.
+	//
 	// example:
 	//
 	// my-key
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

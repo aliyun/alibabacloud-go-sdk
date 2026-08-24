@@ -26,27 +26,40 @@ type iDeleteContextDatabaseMemberResponseBody interface {
 }
 
 type DeleteContextDatabaseMemberResponseBody struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2026-05-28T17:59:55Z
-	CreatedAt *string                                        `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	Keys      []*DeleteContextDatabaseMemberResponseBodyKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The API key details. An empty array is returned.
+	Keys []*DeleteContextDatabaseMemberResponseBodyKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	// The member ID.
+	//
 	// example:
 	//
 	// mb-cz51tnnp8****
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// The member name.
+	//
 	// example:
 	//
 	// Alice
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The member role.
+	//
 	// example:
 	//
 	// admin
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The member status.
+	//
 	// example:
 	//
 	// deleted
@@ -138,42 +151,62 @@ func (s *DeleteContextDatabaseMemberResponseBody) Validate() error {
 }
 
 type DeleteContextDatabaseMemberResponseBodyKeys struct {
+	// The creation time. This field is empty.
+	//
 	// example:
 	//
 	// (null)
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The API key description. This field is empty.
+	//
 	// example:
 	//
 	// (null)
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This field is empty.
+	//
 	// example:
 	//
 	// (null)
 	ExpiresAt *string `json:"ExpiresAt,omitempty" xml:"ExpiresAt,omitempty"`
+	// The API key suffix. This field is empty.
+	//
 	// example:
 	//
 	// (null)
 	KeyDisplaySuffix *string `json:"KeyDisplaySuffix,omitempty" xml:"KeyDisplaySuffix,omitempty"`
+	// The key ID. This field is empty.
+	//
 	// example:
 	//
 	// (null)
 	KeyId *int64 `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// The API key prefix. This field is empty.
+	//
 	// example:
 	//
 	// (null)
 	KeyPrefix *string `json:"KeyPrefix,omitempty" xml:"KeyPrefix,omitempty"`
+	// This field is empty.
+	//
 	// example:
 	//
 	// (null)
 	LastUsedAt *string `json:"LastUsedAt,omitempty" xml:"LastUsedAt,omitempty"`
+	// The API key name. This field is empty.
+	//
 	// example:
 	//
 	// (null)
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This field is empty.
+	//
 	// example:
 	//
 	// (null)
 	RevokedAt *string `json:"RevokedAt,omitempty" xml:"RevokedAt,omitempty"`
+	// The API key status. This field is empty.
+	//
 	// example:
 	//
 	// (null)

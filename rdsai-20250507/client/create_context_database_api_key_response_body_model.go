@@ -18,11 +18,16 @@ type iCreateContextDatabaseApiKeyResponseBody interface {
 }
 
 type CreateContextDatabaseApiKeyResponseBody struct {
+	// Api Key
+	//
 	// example:
 	//
 	// ctxdb-*****
-	ApiKey *string                                     `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	Key    *CreateContextDatabaseApiKeyResponseBodyKey `json:"Key,omitempty" xml:"Key,omitempty" type:"Struct"`
+	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The API key details.
+	Key *CreateContextDatabaseApiKeyResponseBodyKey `json:"Key,omitempty" xml:"Key,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
@@ -74,42 +79,62 @@ func (s *CreateContextDatabaseApiKeyResponseBody) Validate() error {
 }
 
 type CreateContextDatabaseApiKeyResponseBodyKey struct {
+	// The time when the API key was created.
+	//
 	// example:
 	//
 	// 2026-05-28T17:59:55Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The API key description. This field is not used.
+	//
 	// example:
 	//
 	// 111
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This field is empty.
+	//
 	// example:
 	//
 	// (null)
 	ExpiresAt *string `json:"ExpiresAt,omitempty" xml:"ExpiresAt,omitempty"`
+	// The suffix of the API key.
+	//
 	// example:
 	//
 	// 33631c
 	KeyDisplaySuffix *string `json:"KeyDisplaySuffix,omitempty" xml:"KeyDisplaySuffix,omitempty"`
+	// The key ID.
+	//
 	// example:
 	//
 	// 1
 	KeyId *int64 `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// The prefix of the API key.
+	//
 	// example:
 	//
 	// ctxdb-
 	KeyPrefix *string `json:"KeyPrefix,omitempty" xml:"KeyPrefix,omitempty"`
+	// This field is empty.
+	//
 	// example:
 	//
 	// (null)
 	LastUsedAt *string `json:"LastUsedAt,omitempty" xml:"LastUsedAt,omitempty"`
+	// The API key name.
+	//
 	// example:
 	//
 	// my-key
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This field is empty.
+	//
 	// example:
 	//
 	// (null)
 	RevokedAt *string `json:"RevokedAt,omitempty" xml:"RevokedAt,omitempty"`
+	// The API key status.
+	//
 	// example:
 	//
 	// active

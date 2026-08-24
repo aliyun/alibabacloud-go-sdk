@@ -16,12 +16,16 @@ type iUpdateContextDatabaseWorkspaceRequest interface {
 }
 
 type UpdateContextDatabaseWorkspaceRequest struct {
+	// The ID of the target workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ws-as1llqmkol****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The new name of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

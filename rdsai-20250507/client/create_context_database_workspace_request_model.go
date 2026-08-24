@@ -16,12 +16,16 @@ type iCreateContextDatabaseWorkspaceRequest interface {
 }
 
 type CreateContextDatabaseWorkspaceRequest struct {
+	// The name of the first member.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// my-member
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	// The workspace name.
+	//
 	// This parameter is required.
 	//
 	// example:

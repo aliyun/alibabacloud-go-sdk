@@ -34,46 +34,76 @@ type iCreateContextDatabaseWorkspaceResponseBody interface {
 }
 
 type CreateContextDatabaseWorkspaceResponseBody struct {
+	// The plaintext API key. This value is returned only once at creation time. The caller must persist it.
+	//
 	// example:
 	//
 	// ctxdb-*****
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The name of the first API key. The value is fixed as default.
+	//
 	// example:
 	//
 	// default
 	ApiKeyName *string `json:"ApiKeyName,omitempty" xml:"ApiKeyName,omitempty"`
+	// The time when the workspace was created, in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2026-05-28T17:59:55Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The ID of the first member.
+	//
 	// example:
 	//
 	// mb-cz51tnnp8****
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// The name of the first member.
+	//
 	// example:
 	//
 	// my-member
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The role of the first member. The value is fixed as owner.
+	//
 	// example:
 	//
 	// owner
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The workspace status. Valid values:
+	//
+	// - Active: running normally.
+	//
+	// - Locked: locked due to overdue payment or expiration.
+	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The workspace type. Valid values:
+	//
+	// - personal: individual account.
+	//
+	// - enterprise: enterprise account.
+	//
 	// example:
 	//
 	// personal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the new workspace.
+	//
 	// example:
 	//
 	// ws-as1llqmkol****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The workspace name.
+	//
 	// example:
 	//
 	// my-workspace

@@ -24,26 +24,38 @@ type iDeleteContextDatabaseWorkspaceResponseBody interface {
 }
 
 type DeleteContextDatabaseWorkspaceResponseBody struct {
+	// The time when the workspace was created, in ISO-8601 format.
+	//
 	// example:
 	//
 	// 2026-05-28T17:59:55Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The workspace status. The value is fixed as Deleted.
+	//
 	// example:
 	//
 	// Deleted
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The workspace type.
+	//
 	// example:
 	//
 	// personal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the deleted workspace.
+	//
 	// example:
 	//
 	// ws-as1llqmkol****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The name of the deleted workspace.
+	//
 	// example:
 	//
 	// my-workspace

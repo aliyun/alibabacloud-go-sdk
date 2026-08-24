@@ -505,11 +505,11 @@ func (client *Client) CreateAppInstance(request *CreateAppInstanceRequest) (_res
 
 // Summary:
 //
-// 创建上下文数据库 API Key
+// Creates a context database API key.
 //
 // Description:
 //
-// 创建 API Key（返回明文 apiKey）。
+// Creates an API key and returns the plaintext apiKey.
 //
 // @param request - CreateContextDatabaseApiKeyRequest
 //
@@ -561,11 +561,11 @@ func (client *Client) CreateContextDatabaseApiKeyWithOptions(request *CreateCont
 
 // Summary:
 //
-// 创建上下文数据库 API Key
+// Creates a context database API key.
 //
 // Description:
 //
-// 创建 API Key（返回明文 apiKey）。
+// Creates an API key and returns the plaintext apiKey.
 //
 // @param request - CreateContextDatabaseApiKeyRequest
 //
@@ -583,11 +583,11 @@ func (client *Client) CreateContextDatabaseApiKey(request *CreateContextDatabase
 
 // Summary:
 //
-// 创建上下文数据库成员
+// Creates a ContextDB member.
 //
 // Description:
 //
-// 创建成员；当 GenerateInitialKey=true 时同时签发首把 API Key，并在响应中返回明文 ApiKey（敏感字段，仅此一次返回，请妥善保存）。创建成功后可通过 List / Get 查询成员及其名下 API Key 的元数据。
+// Creates a member. When GenerateInitialKey is set to true, the first API key is issued at the same time, and the plaintext ApiKey is returned in the response. This is a sensitive field and is returned only once. Store it securely. After the member is created, you can use the List or Get operation to query the member and the metadata of the API keys under the member.
 //
 // @param request - CreateContextDatabaseMemberRequest
 //
@@ -647,11 +647,11 @@ func (client *Client) CreateContextDatabaseMemberWithOptions(request *CreateCont
 
 // Summary:
 //
-// 创建上下文数据库成员
+// Creates a ContextDB member.
 //
 // Description:
 //
-// 创建成员；当 GenerateInitialKey=true 时同时签发首把 API Key，并在响应中返回明文 ApiKey（敏感字段，仅此一次返回，请妥善保存）。创建成功后可通过 List / Get 查询成员及其名下 API Key 的元数据。
+// Creates a member. When GenerateInitialKey is set to true, the first API key is issued at the same time, and the plaintext ApiKey is returned in the response. This is a sensitive field and is returned only once. Store it securely. After the member is created, you can use the List or Get operation to query the member and the metadata of the API keys under the member.
 //
 // @param request - CreateContextDatabaseMemberRequest
 //
@@ -669,11 +669,11 @@ func (client *Client) CreateContextDatabaseMember(request *CreateContextDatabase
 
 // Summary:
 //
-// 创建上下文数据库工作区
+// Creates a workspace, the first member, and the first API key in a one-time onboarding flow.
 //
 // Description:
 //
-// 创建 workspace + 首位成员 + 首把 API Key 的一次性引导，返回明文 apiKey。
+// Creates a workspace, the first member, and the first API key in a one-time onboarding flow. Returns the plaintext API key.
 //
 // @param request - CreateContextDatabaseWorkspaceRequest
 //
@@ -721,11 +721,11 @@ func (client *Client) CreateContextDatabaseWorkspaceWithOptions(request *CreateC
 
 // Summary:
 //
-// 创建上下文数据库工作区
+// Creates a workspace, the first member, and the first API key in a one-time onboarding flow.
 //
 // Description:
 //
-// 创建 workspace + 首位成员 + 首把 API Key 的一次性引导，返回明文 apiKey。
+// Creates a workspace, the first member, and the first API key in a one-time onboarding flow. Returns the plaintext API key.
 //
 // @param request - CreateContextDatabaseWorkspaceRequest
 //
@@ -1031,18 +1031,24 @@ func (client *Client) CreateMOUsageDetailExport(request *CreateMOUsageDetailExpo
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
-// @param request - CreateSandboxTemplateRequest
+// @param tmpReq - CreateSandboxTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSandboxTemplateResponse
-func (client *Client) CreateSandboxTemplateWithOptions(request *CreateSandboxTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateSandboxTemplateResponse, _err error) {
+func (client *Client) CreateSandboxTemplateWithOptions(tmpReq *CreateSandboxTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateSandboxTemplateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &CreateSandboxTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Tags) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("Tags"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DefaultCpu) {
 		query["DefaultCpu"] = request.DefaultCpu
@@ -1056,6 +1062,10 @@ func (client *Client) CreateSandboxTemplateWithOptions(request *CreateSandboxTem
 		query["Description"] = request.Description
 	}
 
+	if !dara.IsNil(request.Image) {
+		query["Image"] = request.Image
+	}
+
 	if !dara.IsNil(request.InstanceName) {
 		query["InstanceName"] = request.InstanceName
 	}
@@ -1066,6 +1076,10 @@ func (client *Client) CreateSandboxTemplateWithOptions(request *CreateSandboxTem
 
 	if !dara.IsNil(request.Replicas) {
 		query["Replicas"] = request.Replicas
+	}
+
+	if !dara.IsNil(request.TagsShrink) {
+		query["Tags"] = request.TagsShrink
 	}
 
 	if !dara.IsNil(request.TemplateName) {
@@ -1519,11 +1533,11 @@ func (client *Client) DeleteAppInstance(request *DeleteAppInstanceRequest) (_res
 
 // Summary:
 //
-// 删除上下文数据库成员
+// Deletes a ContextDB member.
 //
 // Description:
 //
-// 删除成员（硬删除，不可恢复）。
+// Deletes a member (hard delete, not recoverable).
 //
 // @param request - DeleteContextDatabaseMemberRequest
 //
@@ -1571,11 +1585,11 @@ func (client *Client) DeleteContextDatabaseMemberWithOptions(request *DeleteCont
 
 // Summary:
 //
-// 删除上下文数据库成员
+// Deletes a ContextDB member.
 //
 // Description:
 //
-// 删除成员（硬删除，不可恢复）。
+// Deletes a member (hard delete, not recoverable).
 //
 // @param request - DeleteContextDatabaseMemberRequest
 //
@@ -1593,11 +1607,11 @@ func (client *Client) DeleteContextDatabaseMember(request *DeleteContextDatabase
 
 // Summary:
 //
-// 删除上下文数据库工作区
+// Deletes a ContextDB workspace.
 //
 // Description:
 //
-// 删除业务空间（Workspace），硬删除、不可恢复。删除成功后本地元数据同步软删除，已删除的业务空间不再计入配额。
+// Deletes a workspace. This is a hard delete and cannot be recovered. After successful deletion, local metadata is soft-deleted synchronously. Deleted workspaces no longer count toward the quota.
 //
 // @param request - DeleteContextDatabaseWorkspaceRequest
 //
@@ -1641,11 +1655,11 @@ func (client *Client) DeleteContextDatabaseWorkspaceWithOptions(request *DeleteC
 
 // Summary:
 //
-// 删除上下文数据库工作区
+// Deletes a ContextDB workspace.
 //
 // Description:
 //
-// 删除业务空间（Workspace），硬删除、不可恢复。删除成功后本地元数据同步软删除，已删除的业务空间不再计入配额。
+// Deletes a workspace. This is a hard delete and cannot be recovered. After successful deletion, local metadata is soft-deleted synchronously. Deleted workspaces no longer count toward the quota.
 //
 // @param request - DeleteContextDatabaseWorkspaceRequest
 //
@@ -3283,7 +3297,7 @@ func (client *Client) DescribeMonitorData(request *DescribeMonitorDataRequest) (
 
 // Summary:
 //
-// Queries the list of sandbox templates used to create Supabase sandboxes.
+// Queries the list of sandbox templates available for creating a Supabase sandbox.
 //
 // Description:
 //
@@ -3365,7 +3379,7 @@ func (client *Client) DescribeSandboxTemplatesWithOptions(request *DescribeSandb
 
 // Summary:
 //
-// Queries the list of sandbox templates used to create Supabase sandboxes.
+// Queries the list of sandbox templates available for creating a Supabase sandbox.
 //
 // Description:
 //
@@ -3724,6 +3738,61 @@ func (client *Client) GetAvailableLLMModels(request *GetAvailableLLMModelsReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetAvailableLLMModelsResponse{}
 	_body, _err := client.GetAvailableLLMModelsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取会话可选模型
+//
+// @param request - GetChatModelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetChatModelResponse
+func (client *Client) GetChatModelWithOptions(request *GetChatModelRequest, runtime *dara.RuntimeOptions) (_result *GetChatModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetChatModel"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetChatModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取会话可选模型
+//
+// @param request - GetChatModelRequest
+//
+// @return GetChatModelResponse
+func (client *Client) GetChatModel(request *GetChatModelRequest) (_result *GetChatModelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetChatModelResponse{}
+	_body, _err := client.GetChatModelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4450,11 +4519,11 @@ func (client *Client) ListApiKeys(request *ListApiKeysRequest) (_result *ListApi
 
 // Summary:
 //
-// 列出成员名下 API Key
+// Lists the API keys for a context database.
 //
 // Description:
 //
-// 列出指定成员名下的 API Key（不返回明文）。
+// Lists the API keys under a specified member. The plaintext key values are not returned.
 //
 // @param request - ListContextDatabaseApiKeysRequest
 //
@@ -4510,11 +4579,11 @@ func (client *Client) ListContextDatabaseApiKeysWithOptions(request *ListContext
 
 // Summary:
 //
-// 列出成员名下 API Key
+// Lists the API keys for a context database.
 //
 // Description:
 //
-// 列出指定成员名下的 API Key（不返回明文）。
+// Lists the API keys under a specified member. The plaintext key values are not returned.
 //
 // @param request - ListContextDatabaseApiKeysRequest
 //
@@ -4532,11 +4601,11 @@ func (client *Client) ListContextDatabaseApiKeys(request *ListContextDatabaseApi
 
 // Summary:
 //
-// 列出工作区成员
+// Lists the members of a context database.
 //
 // Description:
 //
-// 列出指定业务空间下的全部成员，每个成员附带其名下 API Key 列表（不返回明文）。
+// Lists all members in a specified workspace. Each member includes a list of API keys associated with the member (plaintext values are not returned).
 //
 // @param request - ListContextDatabaseMembersRequest
 //
@@ -4588,11 +4657,11 @@ func (client *Client) ListContextDatabaseMembersWithOptions(request *ListContext
 
 // Summary:
 //
-// 列出工作区成员
+// Lists the members of a context database.
 //
 // Description:
 //
-// 列出指定业务空间下的全部成员，每个成员附带其名下 API Key 列表（不返回明文）。
+// Lists all members in a specified workspace. Each member includes a list of API keys associated with the member (plaintext values are not returned).
 //
 // @param request - ListContextDatabaseMembersRequest
 //
@@ -4610,11 +4679,11 @@ func (client *Client) ListContextDatabaseMembers(request *ListContextDatabaseMem
 
 // Summary:
 //
-// 根据workspaceId和状态过滤调用方账号下的工作区列表。
+// Lists ContextDB workspaces.
 //
 // Description:
 //
-// 列出上下文数据库工作空间
+// Lists ContextDB workspaces.
 //
 // @param request - ListContextDatabaseWorkspacesRequest
 //
@@ -4670,11 +4739,11 @@ func (client *Client) ListContextDatabaseWorkspacesWithOptions(request *ListCont
 
 // Summary:
 //
-// 根据workspaceId和状态过滤调用方账号下的工作区列表。
+// Lists ContextDB workspaces.
 //
 // Description:
 //
-// 列出上下文数据库工作空间
+// Lists ContextDB workspaces.
 //
 // @param request - ListContextDatabaseWorkspacesRequest
 //
@@ -5925,18 +5994,24 @@ func (client *Client) ModifyMessagesFeedbacks(request *ModifyMessagesFeedbacksRe
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
-// @param request - ModifySandboxTemplateRequest
+// @param tmpReq - ModifySandboxTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifySandboxTemplateResponse
-func (client *Client) ModifySandboxTemplateWithOptions(request *ModifySandboxTemplateRequest, runtime *dara.RuntimeOptions) (_result *ModifySandboxTemplateResponse, _err error) {
+func (client *Client) ModifySandboxTemplateWithOptions(tmpReq *ModifySandboxTemplateRequest, runtime *dara.RuntimeOptions) (_result *ModifySandboxTemplateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ModifySandboxTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Tags) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("Tags"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DefaultCpu) {
 		query["DefaultCpu"] = request.DefaultCpu
@@ -5944,6 +6019,10 @@ func (client *Client) ModifySandboxTemplateWithOptions(request *ModifySandboxTem
 
 	if !dara.IsNil(request.DefaultMemory) {
 		query["DefaultMemory"] = request.DefaultMemory
+	}
+
+	if !dara.IsNil(request.Image) {
+		query["Image"] = request.Image
 	}
 
 	if !dara.IsNil(request.InstanceName) {
@@ -5956,6 +6035,10 @@ func (client *Client) ModifySandboxTemplateWithOptions(request *ModifySandboxTem
 
 	if !dara.IsNil(request.Replicas) {
 		query["Replicas"] = request.Replicas
+	}
+
+	if !dara.IsNil(request.TagsShrink) {
+		query["Tags"] = request.TagsShrink
 	}
 
 	if !dara.IsNil(request.TemplateId) {
@@ -6637,11 +6720,11 @@ func (client *Client) RestartInstance(request *RestartInstanceRequest) (_result 
 
 // Summary:
 //
-// 吊销上下文数据库 API Key
+// Revokes a context database API key.
 //
 // Description:
 //
-// 吊销 API Key。
+// Revokes an API key.
 //
 // @param request - RevokeContextDatabaseApiKeyRequest
 //
@@ -6693,11 +6776,11 @@ func (client *Client) RevokeContextDatabaseApiKeyWithOptions(request *RevokeCont
 
 // Summary:
 //
-// 吊销上下文数据库 API Key
+// Revokes a context database API key.
 //
 // Description:
 //
-// 吊销 API Key。
+// Revokes an API key.
 //
 // @param request - RevokeContextDatabaseApiKeyRequest
 //
@@ -6983,11 +7066,11 @@ func (client *Client) UpdateApiKeyQuota(request *UpdateApiKeyQuotaRequest) (_res
 
 // Summary:
 //
-// 更新上下文数据库 API Key 元数据
+// Updates the display metadata of a ContextDB API key.
 //
 // Description:
 //
-// 更新 API Key 的展示元数据。Name 与 Description 至少传其一；明文 Key 不重新签发。
+// Updates the display metadata of an API key. At least one of Name or Description must be specified. The plaintext key is not reissued.
 //
 // @param request - UpdateContextDatabaseApiKeyRequest
 //
@@ -7047,11 +7130,11 @@ func (client *Client) UpdateContextDatabaseApiKeyWithOptions(request *UpdateCont
 
 // Summary:
 //
-// 更新上下文数据库 API Key 元数据
+// Updates the display metadata of a ContextDB API key.
 //
 // Description:
 //
-// 更新 API Key 的展示元数据。Name 与 Description 至少传其一；明文 Key 不重新签发。
+// Updates the display metadata of an API key. At least one of Name or Description must be specified. The plaintext key is not reissued.
 //
 // @param request - UpdateContextDatabaseApiKeyRequest
 //
@@ -7069,11 +7152,11 @@ func (client *Client) UpdateContextDatabaseApiKey(request *UpdateContextDatabase
 
 // Summary:
 //
-// 更新上下文数据库成员
+// Updates a context database member.
 //
 // Description:
 //
-// 更新成员的角色 / 状态。
+// Updates the role or status of a member.
 //
 // @param request - UpdateContextDatabaseMemberRequest
 //
@@ -7129,11 +7212,11 @@ func (client *Client) UpdateContextDatabaseMemberWithOptions(request *UpdateCont
 
 // Summary:
 //
-// 更新上下文数据库成员
+// Updates a context database member.
 //
 // Description:
 //
-// 更新成员的角色 / 状态。
+// Updates the role or status of a member.
 //
 // @param request - UpdateContextDatabaseMemberRequest
 //
@@ -7151,11 +7234,11 @@ func (client *Client) UpdateContextDatabaseMember(request *UpdateContextDatabase
 
 // Summary:
 //
-// 修改上下文数据库工作区
+// Updates a ContextDB workspace.
 //
 // Description:
 //
-// 修改 workspace 名称。
+// Modifies the name of a workspace.
 //
 // @param request - UpdateContextDatabaseWorkspaceRequest
 //
@@ -7203,11 +7286,11 @@ func (client *Client) UpdateContextDatabaseWorkspaceWithOptions(request *UpdateC
 
 // Summary:
 //
-// 修改上下文数据库工作区
+// Updates a ContextDB workspace.
 //
 // Description:
 //
-// 修改 workspace 名称。
+// Modifies the name of a workspace.
 //
 // @param request - UpdateContextDatabaseWorkspaceRequest
 //

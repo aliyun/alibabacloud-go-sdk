@@ -15,12 +15,16 @@ type iCreateSandboxTemplateRequest interface {
 	GetDefaultMemory() *string
 	SetDescription(v string) *CreateSandboxTemplateRequest
 	GetDescription() *string
+	SetImage(v string) *CreateSandboxTemplateRequest
+	GetImage() *string
 	SetInstanceName(v string) *CreateSandboxTemplateRequest
 	GetInstanceName() *string
 	SetRegionId(v string) *CreateSandboxTemplateRequest
 	GetRegionId() *string
 	SetReplicas(v int64) *CreateSandboxTemplateRequest
 	GetReplicas() *int64
+	SetTags(v map[string]*string) *CreateSandboxTemplateRequest
+	GetTags() map[string]*string
 	SetTemplateName(v string) *CreateSandboxTemplateRequest
 	GetTemplateName() *string
 }
@@ -44,6 +48,7 @@ type CreateSandboxTemplateRequest struct {
 	//
 	// code-interpreter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Image       *string `json:"Image,omitempty" xml:"Image,omitempty"`
 	// The instance ID of the AI application.
 	//
 	// This parameter is required.
@@ -63,7 +68,8 @@ type CreateSandboxTemplateRequest struct {
 	// example:
 	//
 	// 1
-	Replicas *int64 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	Replicas *int64             `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	Tags     map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The name of the sandbox template.
 	//
 	// This parameter is required.
@@ -94,6 +100,10 @@ func (s *CreateSandboxTemplateRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *CreateSandboxTemplateRequest) GetImage() *string {
+	return s.Image
+}
+
 func (s *CreateSandboxTemplateRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
@@ -104,6 +114,10 @@ func (s *CreateSandboxTemplateRequest) GetRegionId() *string {
 
 func (s *CreateSandboxTemplateRequest) GetReplicas() *int64 {
 	return s.Replicas
+}
+
+func (s *CreateSandboxTemplateRequest) GetTags() map[string]*string {
+	return s.Tags
 }
 
 func (s *CreateSandboxTemplateRequest) GetTemplateName() *string {
@@ -125,6 +139,11 @@ func (s *CreateSandboxTemplateRequest) SetDescription(v string) *CreateSandboxTe
 	return s
 }
 
+func (s *CreateSandboxTemplateRequest) SetImage(v string) *CreateSandboxTemplateRequest {
+	s.Image = &v
+	return s
+}
+
 func (s *CreateSandboxTemplateRequest) SetInstanceName(v string) *CreateSandboxTemplateRequest {
 	s.InstanceName = &v
 	return s
@@ -137,6 +156,11 @@ func (s *CreateSandboxTemplateRequest) SetRegionId(v string) *CreateSandboxTempl
 
 func (s *CreateSandboxTemplateRequest) SetReplicas(v int64) *CreateSandboxTemplateRequest {
 	s.Replicas = &v
+	return s
+}
+
+func (s *CreateSandboxTemplateRequest) SetTags(v map[string]*string) *CreateSandboxTemplateRequest {
+	s.Tags = v
 	return s
 }
 

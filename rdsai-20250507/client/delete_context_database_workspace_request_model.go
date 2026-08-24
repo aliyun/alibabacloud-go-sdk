@@ -14,6 +14,8 @@ type iDeleteContextDatabaseWorkspaceRequest interface {
 }
 
 type DeleteContextDatabaseWorkspaceRequest struct {
+	// The ID of the target workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

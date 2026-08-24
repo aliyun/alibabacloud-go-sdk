@@ -32,7 +32,7 @@ type DescribeSandboxTemplatesResponseBody struct {
 	//
 	// None
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The position from which to start the current read. An empty value indicates that the read starts from the beginning.
+	// The token that indicates the position from which the current read operation starts. An empty value indicates that the read operation starts from the beginning.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeSandboxTemplatesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of sandbox templates.
 	SandboxTemplates []*DescribeSandboxTemplatesResponseBodySandboxTemplates `json:"SandboxTemplates,omitempty" xml:"SandboxTemplates,omitempty" type:"Repeated"`
-	// The total number of records that match the query conditions. This is an optional response element and may not be returned by default.
+	// The total number of records that match the request conditions.
 	//
 	// example:
 	//
@@ -152,13 +152,13 @@ func (s *DescribeSandboxTemplatesResponseBody) Validate() error {
 
 type DescribeSandboxTemplatesResponseBodySandboxTemplates struct {
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	// The number of CPUs for the sandbox created by using this template.
+	// The number of CPUs for the sandbox created with this template.
 	//
 	// example:
 	//
 	// 2
 	DefaultCpu *string `json:"DefaultCpu,omitempty" xml:"DefaultCpu,omitempty"`
-	// The memory size of the sandbox created by using this template.
+	// The memory size of the sandbox created with this template.
 	//
 	// example:
 	//
@@ -170,20 +170,22 @@ type DescribeSandboxTemplatesResponseBodySandboxTemplates struct {
 	//
 	// code-interpreter-vpc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the sandbox created by using this template can access resources within the VPC where Supabase resides.
+	// Indicates whether the sandbox created with this template can access resources in the VPC where Supabase resides.
 	//
 	// example:
 	//
 	// true
 	EnableVpcAccess *string `json:"EnableVpcAccess,omitempty" xml:"EnableVpcAccess,omitempty"`
+	Image           *string `json:"Image,omitempty" xml:"Image,omitempty"`
 	// The sandbox template name.
 	//
 	// example:
 	//
 	// code-interpreter
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Replicas *int64  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	// The sandbox template ID. Specify this ID when you create a sandbox by using this template.
+	Name     *string            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Replicas *int64             `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	Tags     map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The sandbox template ID. Specify this ID when creating a sandbox with this template.
 	//
 	// example:
 	//
@@ -219,12 +221,20 @@ func (s *DescribeSandboxTemplatesResponseBodySandboxTemplates) GetEnableVpcAcces
 	return s.EnableVpcAccess
 }
 
+func (s *DescribeSandboxTemplatesResponseBodySandboxTemplates) GetImage() *string {
+	return s.Image
+}
+
 func (s *DescribeSandboxTemplatesResponseBodySandboxTemplates) GetName() *string {
 	return s.Name
 }
 
 func (s *DescribeSandboxTemplatesResponseBodySandboxTemplates) GetReplicas() *int64 {
 	return s.Replicas
+}
+
+func (s *DescribeSandboxTemplatesResponseBodySandboxTemplates) GetTags() map[string]*string {
+	return s.Tags
 }
 
 func (s *DescribeSandboxTemplatesResponseBodySandboxTemplates) GetTemplateId() *string {
@@ -256,6 +266,11 @@ func (s *DescribeSandboxTemplatesResponseBodySandboxTemplates) SetEnableVpcAcces
 	return s
 }
 
+func (s *DescribeSandboxTemplatesResponseBodySandboxTemplates) SetImage(v string) *DescribeSandboxTemplatesResponseBodySandboxTemplates {
+	s.Image = &v
+	return s
+}
+
 func (s *DescribeSandboxTemplatesResponseBodySandboxTemplates) SetName(v string) *DescribeSandboxTemplatesResponseBodySandboxTemplates {
 	s.Name = &v
 	return s
@@ -263,6 +278,11 @@ func (s *DescribeSandboxTemplatesResponseBodySandboxTemplates) SetName(v string)
 
 func (s *DescribeSandboxTemplatesResponseBodySandboxTemplates) SetReplicas(v int64) *DescribeSandboxTemplatesResponseBodySandboxTemplates {
 	s.Replicas = &v
+	return s
+}
+
+func (s *DescribeSandboxTemplatesResponseBodySandboxTemplates) SetTags(v map[string]*string) *DescribeSandboxTemplatesResponseBodySandboxTemplates {
+	s.Tags = v
 	return s
 }
 

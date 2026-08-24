@@ -20,20 +20,28 @@ type iListContextDatabaseApiKeysRequest interface {
 }
 
 type ListContextDatabaseApiKeysRequest struct {
+	// The maximum number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The member ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mb-cz51tnnp8****
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// The pagination token.
+	//
 	// example:
 	//
 	// (null)
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

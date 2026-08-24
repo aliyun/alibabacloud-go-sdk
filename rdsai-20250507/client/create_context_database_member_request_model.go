@@ -22,26 +22,42 @@ type iCreateContextDatabaseMemberRequest interface {
 }
 
 type CreateContextDatabaseMemberRequest struct {
+	// Specifies whether to issue the first API key when the member is created. Default value: false.
+	//
 	// example:
 	//
 	// true
 	GenerateInitialKey *bool `json:"GenerateInitialKey,omitempty" xml:"GenerateInitialKey,omitempty"`
+	// The name of the first API key. This parameter takes effect only when GenerateInitialKey is set to true.
+	//
 	// example:
 	//
 	// my-key
 	InitialKeyName *string `json:"InitialKeyName,omitempty" xml:"InitialKeyName,omitempty"`
+	// The member name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Alice
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	// The member role. Valid values:
+	//
+	// - owner
+	//
+	// - admin
+	//
+	// - member
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// member
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

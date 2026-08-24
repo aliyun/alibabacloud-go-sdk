@@ -18,18 +18,24 @@ type iRevokeContextDatabaseApiKeyRequest interface {
 }
 
 type RevokeContextDatabaseApiKeyRequest struct {
+	// API Key ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1024
 	KeyId *int64 `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// The member ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mb-cz51tnnp8****
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

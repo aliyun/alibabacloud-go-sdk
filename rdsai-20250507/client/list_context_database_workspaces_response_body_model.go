@@ -20,18 +20,25 @@ type iListContextDatabaseWorkspacesResponseBody interface {
 }
 
 type ListContextDatabaseWorkspacesResponseBody struct {
+	// This field is empty.
+	//
 	// example:
 	//
 	// (null)
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// This field is empty.
+	//
 	// example:
 	//
 	// (null)
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
-	RequestId  *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of workspaces.
 	Workspaces []*ListContextDatabaseWorkspacesResponseBodyWorkspaces `json:"Workspaces,omitempty" xml:"Workspaces,omitempty" type:"Repeated"`
 }
 
@@ -93,22 +100,32 @@ func (s *ListContextDatabaseWorkspacesResponseBody) Validate() error {
 }
 
 type ListContextDatabaseWorkspacesResponseBodyWorkspaces struct {
+	// The time when the workspace was created, in ISO-8601 format.
+	//
 	// example:
 	//
 	// 2026-05-28T17:59:55Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The workspace status.
+	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The workspace type.
+	//
 	// example:
 	//
 	// personal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws-as1llqmkol****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The workspace name.
+	//
 	// example:
 	//
 	// my-workspace

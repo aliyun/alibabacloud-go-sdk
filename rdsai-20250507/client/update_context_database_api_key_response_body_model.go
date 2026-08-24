@@ -34,46 +34,68 @@ type iUpdateContextDatabaseApiKeyResponseBody interface {
 }
 
 type UpdateContextDatabaseApiKeyResponseBody struct {
+	// The time when the API key was created.
+	//
 	// example:
 	//
 	// 2026-05-28T17:59:55Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The API key description.
+	//
 	// example:
 	//
 	// for nightly cron
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// A reserved field. This field is empty.
+	//
 	// example:
 	//
 	// (null)
 	ExpiresAt *string `json:"ExpiresAt,omitempty" xml:"ExpiresAt,omitempty"`
+	// The suffix of the API key.
+	//
 	// example:
 	//
 	// 33631c
 	KeyDisplaySuffix *string `json:"KeyDisplaySuffix,omitempty" xml:"KeyDisplaySuffix,omitempty"`
+	// The key ID.
+	//
 	// example:
 	//
 	// 1024
 	KeyId *int64 `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// The prefix of the API key.
+	//
 	// example:
 	//
 	// ctxdb-
 	KeyPrefix *string `json:"KeyPrefix,omitempty" xml:"KeyPrefix,omitempty"`
+	// The time when the API key was last used.
+	//
 	// example:
 	//
 	// 2026-06-01T08:30:12Z
 	LastUsedAt *string `json:"LastUsedAt,omitempty" xml:"LastUsedAt,omitempty"`
+	// The API key name.
+	//
 	// example:
 	//
 	// my-key
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the API key was revoked.
+	//
 	// example:
 	//
 	// (null)
 	RevokedAt *string `json:"RevokedAt,omitempty" xml:"RevokedAt,omitempty"`
+	// The API key status.
+	//
 	// example:
 	//
 	// active
