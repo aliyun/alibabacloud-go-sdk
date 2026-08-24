@@ -76,21 +76,21 @@ type InvokeCommandRequest struct {
 	//
 	// c-e996287206324975b5fbe1d****
 	CommandId *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
-	// The container ID. Only 64-bit hexadecimal strings are supported. Container IDs that are prefixed with `docker://`, `containerd://`, or `cri-o://` are supported to specify the container runtime.
+	// The container ID. Only 64-bit hexadecimal strings are supported. You can use the `docker://`, `containerd://`, or `cri-o://` prefix to specify the container runtime.
 	//
-	// Usage notes:
+	// Precautions:
 	//
-	// - If you specify this parameter, Cloud Assistant runs the script in the specified container of the instance.
+	// - If you specify this parameter, Cloud Assistant executes the script in the specified container of the instance.
 	//
-	// - If you specify this parameter, the command can be run only on Linux instances that have Cloud Assistant Agent 2.2.3.344 or later installed.
+	// - If you specify this parameter, the command can only run on Linux instances with Cloud Assistant Agent version 2.2.3.344 or later.
 	//
 	//     - To view the Cloud Assistant Agent version, see [Install Cloud Assistant Agent](https://help.aliyun.com/document_detail/64921.html).
 	//
-	//     - To upgrade Cloud Assistant Agent, see [Upgrade or disable upgrades for Cloud Assistant Agent](https://help.aliyun.com/document_detail/134383.html).
+	//     - To upgrade the Cloud Assistant Agent version, see [Upgrade or disable upgrades for Cloud Assistant Agent](https://help.aliyun.com/document_detail/134383.html).
 	//
-	// - If you specify this parameter, the `Username` parameter specified in this operation and the `WorkingDir` parameter specified in [CreateCommand](https://help.aliyun.com/document_detail/64844.html) do not take effect. The command is run only by the default user in the default working directory of the container. For more information, see [Use Cloud Assistant to run commands in containers](https://help.aliyun.com/document_detail/456641.html).
+	// - If you specify this parameter, the `Username` parameter specified in this operation and the `WorkingDir` parameter specified in [CreateCommand](https://help.aliyun.com/document_detail/64844.html) do not take effect. The command can only be executed by the default user of the container in the default working directory of the container. For more information, see [Use Cloud Assistant to run commands in containers](https://help.aliyun.com/document_detail/456641.html).
 	//
-	// - If you specify this parameter, only shell scripts can be run in Linux containers. You cannot use a format such as `#!/usr/bin/python` at the beginning of a script to specify an interpreter. For more information, see [Use Cloud Assistant to run commands in containers](https://help.aliyun.com/document_detail/456641.html).
+	// - If you specify this parameter, only Shell scripts can be executed in Linux containers. You cannot use a format such as `#!/usr/bin/python` at the beginning of the script to specify an interpreter. For more information, see [Use Cloud Assistant to run commands in containers](https://help.aliyun.com/document_detail/456641.html).
 	//
 	// example:
 	//
@@ -98,57 +98,57 @@ type InvokeCommandRequest struct {
 	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
 	// The container name.
 	//
-	// Usage notes:
+	// Precautions:
 	//
-	// - If you specify this parameter, Cloud Assistant runs the script in the specified container of the instance.
+	// - If you specify this parameter, Cloud Assistant executes the script in the specified container of the instance.
 	//
-	// - If you specify this parameter, the command can be run only on Linux instances that have Cloud Assistant Agent 2.2.3.344 or later installed.
+	// - If you specify this parameter, the command can only run on Linux instances with Cloud Assistant Agent version 2.2.3.344 or later.
 	//
 	//     - To view the Cloud Assistant Agent version, see [Install Cloud Assistant Agent](https://help.aliyun.com/document_detail/64921.html).
 	//
-	//     - To upgrade Cloud Assistant Agent, see [Upgrade or disable upgrades for Cloud Assistant Agent](https://help.aliyun.com/document_detail/134383.html).
+	//     - To upgrade the Cloud Assistant Agent version, see [Upgrade or disable upgrades for Cloud Assistant Agent](https://help.aliyun.com/document_detail/134383.html).
 	//
-	// - If you specify this parameter, the `Username` parameter specified in this operation and the `WorkingDir` parameter specified in [CreateCommand](https://help.aliyun.com/document_detail/64844.html) do not take effect. The command is run only by the default user in the default working directory of the container. For more information, see [Use Cloud Assistant to run commands in containers](https://help.aliyun.com/document_detail/456641.html).
+	// - If you specify this parameter, the `Username` parameter specified in this operation and the `WorkingDir` parameter specified in [CreateCommand](https://help.aliyun.com/document_detail/64844.html) do not take effect. The command can only be executed by the default user of the container in the default working directory of the container. For more information, see [Use Cloud Assistant to run commands in containers](https://help.aliyun.com/document_detail/456641.html).
 	//
-	// - If you specify this parameter, only shell scripts can be run in Linux containers. You cannot use a format such as `#!/usr/bin/python` at the beginning of a script to specify an interpreter. For more information, see [Use Cloud Assistant to run commands in containers](https://help.aliyun.com/document_detail/456641.html).
+	// - If you specify this parameter, only Shell scripts can be executed in Linux containers. You cannot use a format such as `#!/usr/bin/python` at the beginning of the script to specify an interpreter. For more information, see [Use Cloud Assistant to run commands in containers](https://help.aliyun.com/document_detail/456641.html).
 	//
 	// example:
 	//
 	// test-container
 	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
-	// The schedule on which the command is run. Three types of scheduled execution are supported: fixed interval (Rate expression-based), one-time execution at a specified time, and clock-based scheduling (Cron expression-based).
+	// The schedule on which the command is executed. Three types of scheduled execution are supported: fixed interval (based on a Rate expression), one-time execution at a specified time, and clock-based scheduling (based on a Cron expression).
 	//
-	// - Fixed interval execution: Based on a Rate expression, the command is run at a set interval. The interval can be specified in seconds (s), minutes (m), hours (h), or days (d). This is suitable for scenarios that require execution at fixed intervals. Format: `rate(<interval value><interval unit>)`. For example, to run the command every 5 minutes, use `rate(5m)`. Fixed interval execution has the following limits:
+	// - Fixed interval execution: Based on a Rate expression, the command is executed at a set interval. The interval can be specified in seconds (s), minutes (m), hours (h), or days (d). This is suitable for scenarios that require execution at fixed intervals. Format: `rate(<interval value><interval unit>)`. For example, to execute every 5 minutes, use `rate(5m)`. Fixed interval execution has the following limits:
 	//
 	//     - The interval must not exceed 7 days or be less than 60 seconds, and must be greater than the timeout period of the scheduled task.
 	//
-	//     - The interval is based on a fixed frequency and is unrelated to the actual execution time of the task. For example, if the command is set to run every 5 minutes and the task takes 2 minutes to complete, the next round starts 3 minutes after the task completes.
+	//     - The execution interval is based on a fixed frequency and is unrelated to the actual execution time of the task. For example, if the command is set to execute every 5 minutes and the task takes 2 minutes to complete, the next execution starts 3 minutes after the task completes.
 	//
-	//     - The task is not run immediately upon creation. For example, if the command is set to run every 5 minutes, it does not run immediately when the task is created. Instead, it starts running 5 minutes after the task is created.
+	//     - The task is not executed immediately upon creation. For example, if the command is set to execute every 5 minutes, the first execution starts 5 minutes after the task is created.
 	//
-	// - One-time execution at a specified time: The command is run once at the specified time zone and time. Format: `at(yyyy-MM-dd HH:mm:ss <time zone>)`. If no time zone is specified, UTC is used by default. The time zone can be specified in the following formats:
+	// - One-time execution at a specified time: The command is executed once at the specified time zone and time. Format: `at(yyyy-MM-dd HH:mm:ss <time zone>)`. If no time zone is specified, UTC is used by default. The time zone supports the following three formats:
 	//
-	//     - Full time zone name: For example, `Asia/Shanghai` or `America/Los_Angeles`.
+	//     - Full time zone name: For example, `Asia/Shanghai` (China/Shanghai time) or `America/Los_Angeles` (US/Los Angeles time).
 	//
-	//     - GMT offset from Greenwich Mean Time: For example, `GMT+8:00` or `GMT-7:00`. When using the GMT format, leading zeros are not supported in the hour field.
-	//
-	//     - Time zone abbreviation: Only UTC (Coordinated Universal Time) is supported.
-	//
-	//   For example, to run the command once at 13:15:30 on June 6, 2022 in the Asia/Shanghai time zone, use: `at(2022-06-06 13:15:30 Asia/Shanghai)`. To run the command once at 13:15:30 on June 6, 2022 in GMT-7:00, use: `at(2022-06-06 13:15:30 GMT-7:00)`.
-	//
-	// - Clock-based scheduling (Cron expression-based): Based on a Cron expression, the command is run according to the specified schedule. Format: `<seconds> <minutes> <hours> <day of month> <month> <day of week> <year (optional)> <time zone>`. The scheduled execution time is calculated based on the Cron expression in the specified time zone. If no time zone is specified, the system time zone of the instance running the scheduled task is used. For more information about Cron expressions, see [Cron expressions](https://help.aliyun.com/document_detail/64769.html). The time zone can be specified in the following formats:
-	//
-	//     - Full time zone name: For example, `Asia/Shanghai` or `America/Los_Angeles`.
-	//
-	//     - GMT offset from Greenwich Mean Time: For example, `GMT+8:00` or `GMT-7:00`. When using the GMT format, leading zeros are not supported in the hour field.
+	//     - Time zone offset from Greenwich Mean Time: For example, `GMT+8:00` (East 8th time zone) or `GMT-7:00` (West 7th time zone). When using GMT format, leading zeros are not supported in the hour field.
 	//
 	//     - Time zone abbreviation: Only UTC (Coordinated Universal Time) is supported.
 	//
-	//   For example, to run the command once a day at 10:15 in the Asia/Shanghai time zone in 2022, use `0 15 10 ? 	- 	- 2022 Asia/Shanghai`. To run the command every 30 minutes from 10:00 to 11:30 every day in GMT+8:00 in 2022, use `0 0/30 10-11 	- 	- ? 2022 GMT+8:00`. To run the command every 5 minutes from 14:00 to 14:55 every day in October every two years starting from 2022 in UTC, use `0 0/5 14 	- 10 ? 2022/2 UTC`.
+	//   For example, to execute once at 13:15:30 on June 6, 2022 in China/Shanghai time, use: `at(2022-06-06 13:15:30 Asia/Shanghai)`. To execute once at 13:15:30 on June 6, 2022 in the West 7th time zone, use: `at(2022-06-06 13:15:30 GMT-7:00)`.
+	//
+	// - Clock-based scheduling (based on a Cron expression): Based on a Cron expression, the command is executed according to the scheduled task settings. Format: `<seconds> <minutes> <hours> <day of month> <month> <day of week> <year (optional)> <time zone>`, that is, `<Cron expression> <time zone>`. The scheduled task execution time is calculated based on the Cron expression in the specified time zone. If no time zone is specified, the system time zone of the instance running the scheduled task is used. For more information about Cron expressions, see [Cron expressions](https://help.aliyun.com/document_detail/64769.html). The time zone supports the following three formats:
+	//
+	//     - Full time zone name: For example, `Asia/Shanghai` (China/Shanghai time) or `America/Los_Angeles` (US/Los Angeles time).
+	//
+	//     - Time zone offset from Greenwich Mean Time: For example, `GMT+8:00` (East 8th time zone) or `GMT-7:00` (West 7th time zone). When using GMT format, leading zeros are not supported in the hour field.
+	//
+	//     - Time zone abbreviation: Only UTC (Coordinated Universal Time) is supported.
+	//
+	//   For example, to execute once at 10:15 every day in 2022 in China/Shanghai time, use `0 15 10 ? 	- 	- 2022 Asia/Shanghai`. To execute every 30 minutes from 10:00 to 11:30 every day in 2022 in the East 8th time zone, use `0 0/30 10-11 	- 	- ? 2022 GMT+8:00`. To execute every 5 minutes from 14:00 to 14:55 every day in October every two years starting from 2022 in UTC, use `0 0/5 14 	- 10 ? 2022/2 UTC`.
 	//
 	//     >The minimum interval must be greater than or equal to the timeout period of the scheduled task and no less than 10 seconds.
 	Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
-	// The list of instances on which to run the command. You can specify up to 100 instance IDs. Valid values of N: 1 to 100.
+	// The list of instances on which to execute the command. You can specify up to 100 instance IDs. Valid values of N: 1 to 100.
 	//
 	// You can also apply for a quota increase in Quota Center (quota name: Maximum number of instances supported for command execution).
 	//
@@ -156,7 +156,7 @@ type InvokeCommandRequest struct {
 	//
 	// i-bp185dy2o3o6n****
 	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	// The bootstrap program for script execution. The value cannot exceed 1 KB in length.
+	// The bootstrap program for script execution. The length cannot exceed 1 KB.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type InvokeCommandRequest struct {
 	Launcher *string `json:"Launcher,omitempty" xml:"Launcher,omitempty"`
 	// The OSS delivery configuration for command execution output.
 	//
-	// - Format: oss://${BucketName}/${Prefix}, where ${BucketName} is the name of the destination OSS bucket and ${Prefix} is the directory prefix for delivery.
+	// - Format: oss://${BucketName}/${Prefix}, where ${BucketName} is the name of the OSS bucket to deliver to, and ${Prefix} is the directory prefix to deliver to.
 	//
 	// example:
 	//
@@ -172,17 +172,17 @@ type InvokeCommandRequest struct {
 	OssOutputDelivery *string `json:"OssOutputDelivery,omitempty" xml:"OssOutputDelivery,omitempty"`
 	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The key-value pairs of custom parameters to pass in when the custom parameter feature is enabled. The number of custom parameters ranges from 0 to 10.
+	// The key-value pairs of custom parameters to pass in when executing the command with the custom parameter feature enabled. The number of custom parameters ranges from 0 to 10.
 	//
-	// - Map keys cannot be empty strings and can be up to 64 characters in length.
+	// - Map keys cannot be empty strings and can contain up to 64 characters.
 	//
 	// - Map values can be empty strings.
 	//
-	// - After Base64 encoding, the total length of the custom parameters and the original command content cannot exceed 18 KB.
+	// - After Base64 encoding, the total length of custom parameters and the original command content cannot exceed 24 KB.
 	//
-	// - The set of custom parameter names must be a subset of the parameter set defined when the command was created. For parameters that are not passed in, you can use empty strings as substitutes.
+	// - The set of custom parameter names must be a subset of the parameter set defined when the command was created. For parameters that are not passed in, you can use an empty string as a substitute.
 	//
-	// You can unset this parameter to disable custom parameters.
+	// You can disable custom parameters by not setting this parameter.
 	//
 	// example:
 	//
@@ -198,23 +198,23 @@ type InvokeCommandRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The execution mode of the command. Valid values:
 	//
-	// - Once: immediately runs the command.
+	// - Once: immediately executes the command.
 	//
-	// - Period: runs the command on a schedule. If you set this parameter to `Period`, you must also specify the `Frequency` parameter.
+	// - Period: executes the command on a schedule. If you set this parameter to `Period`, you must also specify the `Frequency` parameter.
 	//
-	// - NextRebootOnly: automatically runs the command the next time the instance starts.
+	// - NextRebootOnly: automatically executes the command the next time the instance starts.
 	//
-	// - EveryReboot: automatically runs the command every time the instance starts.
+	// - EveryReboot: automatically executes the command every time the instance starts.
 	//
-	// - DryRun: performs a dry run of the request without actually running the command. The dry run checks request parameters, instance execution environment, and Cloud Assistant Agent status.
+	// - DryRun: only performs a dry run of the request. The command is not actually executed. The dry run checks request parameters, the instance execution environment, and the Cloud Assistant Agent running status.
 	//
 	// Default value:
 	//
 	// - If you do not specify the `Frequency` parameter, the default value is `Once`.
 	//
-	// - If you specify the `Frequency` parameter, the command is run on a schedule regardless of whether you set this parameter. The value is treated as `Period`.
+	// - If you specify the `Frequency` parameter, the command is executed as `Period` regardless of whether this parameter is set.
 	//
-	// Usage notes:
+	// Precautions:
 	//
 	// - You can call [StopInvocation](https://help.aliyun.com/document_detail/64838.html) to stop a pending or scheduled command.
 	//
@@ -236,15 +236,15 @@ type InvokeCommandRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags used to filter instances. You can run a command in batches on instances that have the same tag without specifying InstanceId.
+	// The tags used to filter instances. You can run commands in batches on instances with the same tag without specifying InstanceId.
 	ResourceTag []*InvokeCommandRequestResourceTag `json:"ResourceTag,omitempty" xml:"ResourceTag,omitempty" type:"Repeated"`
 	// The tags.
 	Tag []*InvokeCommandRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The mode in which the task is stopped (manually stopped or interrupted due to timeout). Valid values:
+	// The mode for stopping the task (manual stop or timeout interruption). Valid values:
 	//
 	// - Process: stops the current script process.
 	//
-	// - ProcessTree: stops the current process tree (the script process and all child processes it created).
+	// - ProcessTree: stops the current process tree (the collection of the script process and all child processes it created).
 	//
 	// example:
 	//
@@ -258,45 +258,45 @@ type InvokeCommandRequest struct {
 	Timed *bool `json:"Timed,omitempty" xml:"Timed,omitempty"`
 	// The timeout period for the command execution. Unit: seconds.
 	//
-	// - The value must be at least 10 seconds.
+	// - The value cannot be less than 10 seconds.
 	//
-	// - If the command cannot be run due to process issues, missing modules, or missing Cloud Assistant Agent, a timeout occurs. When a timeout occurs, the command process is forcefully terminated.
+	// - If the command cannot run due to process issues, missing modules, or missing Cloud Assistant Agent, a timeout occurs. When a timeout occurs, the command process is forcefully terminated.
 	//
-	// - If you do not specify this parameter, the timeout period specified when the command was created is used.
+	// - If this value is not set, the timeout period specified when the command was created is used.
 	//
-	// - This value applies only to the current command execution and does not change the timeout period of the command itself.
+	// - This value only applies as the timeout period for this command execution and does not change the timeout period of the command itself.
 	//
 	// example:
 	//
 	// 60
 	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The username used to run the command on the ECS instance. The username can be up to 255 characters in length.
+	// The username used to execute the command on the ECS instance. The length cannot exceed 255 characters.
 	//
-	// - For Linux instances, the root user is used by default.
+	// - For Linux instances, the command is executed as the root user by default.
 	//
-	// - For Windows instances, the System user is used by default.
+	// - For Windows instances, the command is executed as the System user by default.
 	//
-	// You can also specify another existing user on the instance to run the command. Running Cloud Assistant commands as a regular user is more secure. For more information, see [Configure a regular user to run Cloud Assistant commands](https://help.aliyun.com/document_detail/203771.html).
+	// You can also specify another existing user on the instance to execute the command. Executing Cloud Assistant commands as a regular user is more secure. For more information, see [Configure a regular user to run Cloud Assistant commands](https://help.aliyun.com/document_detail/203771.html).
 	//
 	// example:
 	//
 	// test
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	// The name of the password for the user who executes the command on a Windows instance. The name can be up to 255 characters in length.
+	// The name of the password for the user who executes the command on a Windows instance. The length cannot exceed 255 characters.
 	//
-	// To execute a command as a non-default user (System) on a Windows instance, you must specify both `Username` and this parameter. To reduce the risk of password leaks, store the plaintext password in the parameter repository of operations management, and pass in only the password name here. For more information, see [Encryption parameters](https://help.aliyun.com/document_detail/186828.html) and [Configure a regular user to execute Cloud Assistant commands](https://help.aliyun.com/document_detail/203771.html).
+	// When you want to execute a command as a non-default user (System) on a Windows instance, you must specify both `Username` and this parameter. To reduce the risk of password leaks, the plaintext password must be stored in the parameter repository of CloudOps Orchestration Service. Only the password name is passed in here. For more information, see [Encryption parameters](https://help.aliyun.com/document_detail/186828.html) and [Settings for a regular user to run Cloud Assistant commands](https://help.aliyun.com/document_detail/203771.html).
 	//
-	// > This parameter is not required when you use the root user on a Linux instance or the System user on a Windows instance to execute the command.
+	// > This parameter is not required when you execute a command as the root user on a Linux instance or the System user on a Windows instance.
 	//
 	// example:
 	//
 	// axtSecretPassword
 	WindowsPasswordName *string `json:"WindowsPasswordName,omitempty" xml:"WindowsPasswordName,omitempty"`
-	// The directory in which the command is run on the ECS instance. The value can be up to 200 characters in length.
+	// The directory in which the command is executed on the ECS instance. The length cannot exceed 200 characters.
 	//
-	// - If you do not specify this parameter, the working directory specified when the command was created is used.
+	// - If this value is not set, the working directory specified when the command was created is used.
 	//
-	// - This value applies only to the current command execution and does not change the working directory of the command itself.
+	// - This value only applies as the working directory for this command execution and does not change the working directory of the command itself.
 	//
 	// example:
 	//
@@ -553,13 +553,13 @@ func (s *InvokeCommandRequest) Validate() error {
 type InvokeCommandRequestResourceTag struct {
 	// The tag key used to filter instances.
 	//
-	// Usage notes:
+	// Precautions:
 	//
 	// - This parameter conflicts with the InstanceId parameter. You cannot specify both parameters at the same time.
 	//
 	// - Valid values of N: 1 to 10. The tag key cannot be an empty string once specified.
 	//
-	// - The number of instances with the specified tag cannot exceed the limit of InstanceId.N. If the number of instances exceeds the limit, control the number of instances by adding batch tags, such as batch: b1.
+	// - The number of instances with the tag cannot exceed the limit of InstanceId.N. If the number of instances exceeds the limit, control the number of instances by adding batch tags, such as batch: b1.
 	//
 	// - The tag key can be up to 64 characters in length and cannot start with aliyun or acs:, or contain http:// or https://.
 	//
@@ -569,11 +569,11 @@ type InvokeCommandRequestResourceTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value used to filter instances.
 	//
-	// Usage notes:
+	// Precautions:
 	//
 	// - Valid values of N: 1 to 10.
 	//
-	// - The tag value can be an empty string.
+	// - The value can be an empty string.
 	//
 	// - The tag value can be up to 128 characters in length and cannot contain http:// or https://.
 	//
@@ -616,7 +616,7 @@ func (s *InvokeCommandRequestResourceTag) Validate() error {
 type InvokeCommandRequestTag struct {
 	// The tag key of the command execution. Valid values of N: 1 to 20. The tag key cannot be an empty string once specified.
 	//
-	// If you use a single tag to filter resources, the number of resources with this tag cannot exceed 1,000. If you use multiple tags to filter resources, the number of resources that are attached with all specified tags cannot exceed 1,000. If the number of resources exceeds 1,000, execute the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
+	// If you use a single tag to filter resources, the resource count with this tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count with all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, execute the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
 	//
 	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
 	//
@@ -624,7 +624,7 @@ type InvokeCommandRequestTag struct {
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the command execution. Valid values of N: 1 to 20. The tag value can be an empty string.
+	// The tag value of the command execution. Valid values of N: 1 to 20. The value can be an empty string.
 	//
 	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
 	//

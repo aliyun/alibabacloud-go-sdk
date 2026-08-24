@@ -99,7 +99,7 @@ type CreateAutoSnapshotPolicyRequest struct {
 	StorageLocationArn *string `json:"StorageLocationArn,omitempty" xml:"StorageLocationArn,omitempty"`
 	// The tags of the automatic snapshot policy.
 	Tag []*CreateAutoSnapshotPolicyRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The destination region to which snapshots are replicated. You can set only one destination region.
+	// The destination region to which snapshots are replicated. You can specify one destination region.
 	//
 	// example:
 	//
@@ -107,7 +107,7 @@ type CreateAutoSnapshotPolicyRequest struct {
 	TargetCopyRegions *string `json:"TargetCopyRegions,omitempty" xml:"TargetCopyRegions,omitempty"`
 	// The list of target resource tags. The automatic snapshot policy matches target resources based on tags.
 	//
-	// This parameter is required when AssociationType is set to AssociatedWithInstanceTag.
+	// When AssociationType is set to AssociatedWithInstanceTag, this parameter is required.
 	TargetTags []*CreateAutoSnapshotPolicyRequestTargetTags `json:"TargetTags,omitempty" xml:"TargetTags,omitempty" type:"Repeated"`
 	// The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain digits, colons (:), underscores (_), and hyphens (-).
 	//

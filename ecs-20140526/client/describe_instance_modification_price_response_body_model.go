@@ -16,7 +16,7 @@ type iDescribeInstanceModificationPriceResponseBody interface {
 }
 
 type DescribeInstanceModificationPriceResponseBody struct {
-	// The price information, including the price and discount rule information.
+	// The price information, including the price and discount rule details.
 	PriceInfo *DescribeInstanceModificationPriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -63,7 +63,8 @@ func (s *DescribeInstanceModificationPriceResponseBody) Validate() error {
 
 type DescribeInstanceModificationPriceResponseBodyPriceInfo struct {
 	// The price.
-	Price        *DescribeInstanceModificationPriceResponseBodyPriceInfoPrice        `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	Price *DescribeInstanceModificationPriceResponseBodyPriceInfoPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// The related price.
 	RelatedPrice *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPrice `json:"RelatedPrice,omitempty" xml:"RelatedPrice,omitempty" type:"Struct"`
 	Rules        *DescribeInstanceModificationPriceResponseBodyPriceInfoRules        `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 }
@@ -124,10 +125,6 @@ func (s *DescribeInstanceModificationPriceResponseBodyPriceInfo) Validate() erro
 
 type DescribeInstanceModificationPriceResponseBodyPriceInfoPrice struct {
 	// The currency unit. Valid values:
-	//
-	// - China site: CNY.
-	//
-	// - International site: USD.
 	//
 	// example:
 	//
@@ -390,6 +387,7 @@ func (s *DescribeInstanceModificationPriceResponseBodyPriceInfoPriceDetailInfosD
 }
 
 type DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPrice struct {
+	// The Alibaba Cloud Marketplace image price.
 	MarketplaceImagePrice *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice `json:"MarketplaceImagePrice,omitempty" xml:"MarketplaceImagePrice,omitempty" type:"Struct"`
 }
 
@@ -420,18 +418,26 @@ func (s *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPrice) Val
 }
 
 type DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice struct {
+	// The currency unit.
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The discount.
+	//
 	// example:
 	//
 	// 0
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The original price.
+	//
 	// example:
 	//
 	// 100
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The transaction price, which is equal to the original price minus the discount.
+	//
 	// example:
 	//
 	// 100

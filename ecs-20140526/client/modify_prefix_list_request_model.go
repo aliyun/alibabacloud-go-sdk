@@ -32,7 +32,7 @@ type iModifyPrefixListRequest interface {
 }
 
 type ModifyPrefixListRequest struct {
-	// The prefix list entries to add.
+	// The information about entries to add to the prefix list.
 	AddEntry []*ModifyPrefixListRequestAddEntry `json:"AddEntry,omitempty" xml:"AddEntry,omitempty" type:"Repeated"`
 	// The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
@@ -64,7 +64,7 @@ type ModifyPrefixListRequest struct {
 	//
 	// cn-chengdu
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The prefix list entries to delete.
+	// The information about entries to delete from the prefix list.
 	RemoveEntry          []*ModifyPrefixListRequestRemoveEntry `json:"RemoveEntry,omitempty" xml:"RemoveEntry,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string                               `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64                                `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -197,9 +197,9 @@ type ModifyPrefixListRequestAddEntry struct {
 	//
 	// - The total number of entries in the prefix list cannot exceed the maximum number of entries supported by the prefix list. You can invoke [DescribePrefixListAttributes](https://help.aliyun.com/document_detail/205872.html) to query the maximum number of entries supported by a specified prefix list.
 	//
-	// - Duplicate CIDR blocks are not allowed in Settings.
+	// - You cannot specify duplicate CIDR block values in the settings.
 	//
-	// - The value cannot be the same as the value of the `RemoveEntry.N.Cidr` parameter.
+	// - The value of this parameter cannot be the same as the value of `RemoveEntry.N.Cidr`.
 	//
 	// This parameter is required.
 	//
@@ -250,9 +250,9 @@ type ModifyPrefixListRequestRemoveEntry struct {
 	//
 	// Take note of the following items:
 	//
-	// - Duplicate CIDR blocks are not allowed in Settings.
+	// - You cannot specify duplicate CIDR block values in the settings.
 	//
-	// - The value cannot be the same as the value of the `AddEntry.N.Cidr` parameter.
+	// - The value of this parameter cannot be the same as the value of `AddEntry.N.Cidr`.
 	//
 	// This parameter is required.
 	//

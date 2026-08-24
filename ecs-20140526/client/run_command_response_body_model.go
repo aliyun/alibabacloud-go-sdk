@@ -24,7 +24,7 @@ type RunCommandResponseBody struct {
 	//
 	// c-7d2a745b412b4601b2d47f6a768d****
 	CommandId *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
-	// The command execution ID.
+	// The invocation ID.
 	//
 	// example:
 	//

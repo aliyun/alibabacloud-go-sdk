@@ -38,7 +38,7 @@ type ModifyDiskChargeTypeRequest struct {
 	//
 	// - true (default): Automatic payment is enabled. Make sure that your account balance is sufficient. If your account balance is insufficient, an abnormal order is generated, and you can only void the order.
 	//
-	// - false: An order is generated without automatic payment. If your account balance is insufficient, an unpaid order is generated. You can log on to the Alibaba Cloud **Expenses and Costs*	- console and go to the <props="china"><ph>[Orders](https://usercenter2.aliyun.com/order/list)</ph><props="intl"><ph>[Orders](https://usercenter2-intl.aliyun.com/order/list)</ph> page to complete the payment.
+	// - false: Only an order is generated without payment. If your account balance is insufficient, a normal unpaid order is generated. You can log on to the Alibaba Cloud **Expenses and Costs*	- console and pay for the order on the <props="china"><ph>[My Orders](https://usercenter2.aliyun.com/order/list)</ph><props="intl"><ph>[Orders](https://usercenter2-intl.aliyun.com/order/list)</ph> page.
 	//
 	// example:
 	//
@@ -54,11 +54,11 @@ type ModifyDiskChargeTypeRequest struct {
 	//
 	//
 	//
-	// - PrePaid (default): The pay-as-you-go data disk is converted to a subscription data disk.
+	// - PrePaid (default): Converts pay-as-you-go data disks to subscription data disks.
 	//
-	// - PostPaid: The subscription data disk is converted to a pay-as-you-go data disk.
+	// - PostPaid: Converts subscription data disks to pay-as-you-go data disks.
 	//
-	// > When you convert a pay-as-you-go disk to subscription, the billing cycle of the capacity fee is automatically synchronized with the associated ECS instance.
+	// > When you convert a pay-as-you-go disk to subscription, the billing cycle of the disk capacity fee is automatically synchronized with the associated ECS instance.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type ModifyDiskChargeTypeRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent list of Alibaba Cloud regions.
+	// The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

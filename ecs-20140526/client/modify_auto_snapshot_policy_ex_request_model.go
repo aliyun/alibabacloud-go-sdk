@@ -42,9 +42,9 @@ type iModifyAutoSnapshotPolicyExRequest interface {
 type ModifyAutoSnapshotPolicyExRequest struct {
 	// The retention period of cross-region snapshot replicas. Unit: days. Valid values:
 	//
-	// - -1: permanently retained.
+	// - -1: Snapshot replicas are permanently retained.
 	//
-	// - 1 to 65535: retained for the specified number of days.
+	// - 1 to 65535: specifies the number of days for which snapshot replicas are retained.
 	//
 	// Default value: -1.
 	//
@@ -99,7 +99,7 @@ type ModifyAutoSnapshotPolicyExRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The days of the week on which automatic snapshots are created. Unit: days. The cycle is weekly. Valid values: 1 to 7. For example, 1 indicates Monday.
+	// The days of the week on which automatic snapshots are created. Unit: days. The cycle is weekly. Valid values: 1 to 7, where 1 indicates Monday.
 	//
 	// To create multiple automatic snapshots within a week, specify multiple days:
 	//
@@ -113,9 +113,9 @@ type ModifyAutoSnapshotPolicyExRequest struct {
 	RepeatWeekdays *string `json:"repeatWeekdays,omitempty" xml:"repeatWeekdays,omitempty"`
 	// The retention period of automatic snapshots. Unit: days. Valid values:
 	//
-	// - -1: permanently retained.
+	// - -1: Automatic snapshots are permanently retained.
 	//
-	// - 1 to 65536: retained for the specified number of days.
+	// - 1 to 65536: specifies the number of days for which automatic snapshots are retained.
 	//
 	// Default value: -1.
 	//
@@ -294,9 +294,9 @@ type ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfiguration struct {
 	Arn []*ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfigurationArn `json:"Arn,omitempty" xml:"Arn,omitempty" type:"Repeated"`
 	// Specifies whether to enable encryption for cross-region snapshot replication. Valid values:
 	//
-	// - true: enabled.
+	// - true: enables encryption.
 	//
-	// - false: disabled.
+	// - false: does not enable encryption.
 	//
 	// Default value: false.
 	//
@@ -304,7 +304,7 @@ type ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfiguration struct {
 	//
 	// false
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The key ID of the KMS key used for encrypted cross-region snapshot replication.
+	// The key ID of the Key Management Service (KMS) key used for encrypted cross-region snapshot replication.
 	//
 	// example:
 	//

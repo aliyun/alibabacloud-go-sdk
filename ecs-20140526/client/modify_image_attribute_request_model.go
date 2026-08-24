@@ -99,7 +99,7 @@ type ModifyImageAttributeRequest struct {
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	// The license type used to activate the operating system after the image is imported. Currently, only BYOL is supported.
 	//
-	// BYOL: the license that comes with the source operating system. When you use BYOL, make sure that your license key supports use on Alibaba Cloud.
+	// BYOL: The license that comes with the source operating system. When you use BYOL, make sure that your license key supports use on Alibaba Cloud.
 	//
 	// example:
 	//
@@ -119,9 +119,9 @@ type ModifyImageAttributeRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The image status. Valid values:
 	//
-	// - Deprecated: sets the image to the deprecated state. If you have shared the custom image, you must unshare it before you can set it to the deprecated state. You cannot share or copy a deprecated image. However, you can use the image to create instances or replace system disks.
+	// - Deprecated: Sets the image to the deprecated state. If you have shared the custom image, you must unshare it before you can set it to the deprecated state. A deprecated image cannot be shared or copied. However, you can use the image to create instances or replace system disks.
 	//
-	// - Available: sets the image to the available state. You can restore a deprecated image to the available state.
+	// - Available: Sets the image to the available state. You can restore a deprecated image to the available state.
 	//
 	// > To roll back a custom image in an image family to the previous version, you can set the latest available custom image to the deprecated state. However, if the image is the only available custom image in the image family, the image family will have no available custom image for creating instances after the image is deprecated. Proceed with caution.
 	//
@@ -277,9 +277,9 @@ func (s *ModifyImageAttributeRequest) Validate() error {
 type ModifyImageAttributeRequestFeatures struct {
 	// The metadata access mode of the image. Valid values:
 	//
-	// - v1: when you create an ECS instance from this image, you cannot set the metadata access mode to IMDSv2 only (hardened mode).
+	// - v1: When you create an ECS instance from this image, you cannot set the metadata access mode to IMDSv2 only (hardened mode).
 	//
-	// - v2: when you create an ECS instance from this image, you can set the metadata access mode to IMDSv2 only (hardened mode).
+	// - v2: When you create an ECS instance from this image, you can set the metadata access mode to IMDSv2 only (hardened mode).
 	//
 	// <notice>
 	//

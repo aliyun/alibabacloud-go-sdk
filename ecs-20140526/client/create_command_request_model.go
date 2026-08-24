@@ -54,7 +54,7 @@ type CreateCommandRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The Base64-encoded content of the command.
 	//
-	// - The value of this parameter must be Base64-encoded and cannot exceed 18 KB in size after Base64 encoding.
+	// - The value of this parameter must be Base64-encoded and cannot exceed 24 KB in size after Base64 encoding.
 	//
 	// - The command content supports custom parameters. To enable the custom parameter feature, specify `EnableParameter=true`:
 	//
@@ -62,29 +62,29 @@ type CreateCommandRequest struct {
 	//
 	//     - The number of custom parameters cannot exceed 20.
 	//
-	//     - Custom parameter names can contain letters (a-z, A-Z), digits (0-9), hyphens (-), and underscores (_). The acs:: prefix for specifying non-built-in environment parameters is not supported. Other characters are not supported. Parameter names are case-insensitive.
+	//     - Custom parameter names can contain only letters (a-z, A-Z), digits (0-9), hyphens (-), and underscores (_). The acs:: prefix for specifying non-built-in environment parameters is not supported. Other characters are not supported. Parameter names are case-insensitive.
 	//
 	//     - Each parameter name cannot exceed 64 bytes in length.
 	//
-	// - You can specify built-in environment parameters as custom parameters. When the command is run, Cloud Assistant automatically replaces the parameters with the corresponding values from the environment. The following built-in environment parameters are supported:
+	// - You can specify built-in environment parameters as custom parameters. When the command is run, Cloud Assistant automatically replaces the parameters with the corresponding values from the environment without requiring manual assignment. The following built-in environment parameters are supported:
 	//
 	//     - `{{ACS::RegionId}}`: the region ID.
 	//
 	//     - `{{ACS::AccountId}}`: the UID of the Alibaba Cloud account.
 	//
-	//     - `{{ACS::InstanceId}}`: the instance ID. When the command is sent to multiple instances, to specify `{{ACS::InstanceId}}` as a built-in environment parameter, make sure that Cloud Assistant Agent is not earlier than the following versions:
+	//     - `{{ACS::InstanceId}}`: the instance ID. When the command is sent to multiple instances and you want to use `{{ACS::InstanceId}}` as a built-in environment parameter, make sure that the Cloud Assistant Agent version is not earlier than the following:
 	//
 	//         - Linux: 2.2.3.309
 	//
 	//         - Windows: 2.1.3.309
 	//
-	//     - `{{ACS::InstanceName}}`: the instance name. When the command is sent to multiple instances, to specify `{{ACS::InstanceName}}` as a built-in environment parameter, make sure that Cloud Assistant Agent is not earlier than the following versions:
+	//     - `{{ACS::InstanceName}}`: the instance name. When the command is sent to multiple instances and you want to use `{{ACS::InstanceName}}` as a built-in environment parameter, make sure that the Cloud Assistant Agent version is not earlier than the following:
 	//
 	//         - Linux: 2.2.3.344
 	//
 	//         - Windows: 2.1.3.344
 	//
-	//     - `{{ACS::InvokeId}}`: the command execution ID. To specify `{{ACS::InvokeId}}` as a built-in environment parameter, make sure that Cloud Assistant Agent is not earlier than the following versions:
+	//     - `{{ACS::InvokeId}}`: the command execution ID. To use `{{ACS::InvokeId}}` as a built-in environment parameter, make sure that the Cloud Assistant Agent version is not earlier than the following:
 	//
 	//         - Linux: 2.2.3.309
 	//
@@ -92,7 +92,7 @@ type CreateCommandRequest struct {
 	//
 	//
 	//
-	//     - `{{ACS::CommandId}}`: the command ID. When you run a command by calling the [RunCommand](https://help.aliyun.com/document_detail/141751.html) operation, to specify `{{ACS::CommandId}}` as a built-in environment parameter, make sure that Cloud Assistant Agent is not earlier than the following versions:
+	//     - `{{ACS::CommandId}}`: the command ID. When you run a command by calling the [RunCommand](https://help.aliyun.com/document_detail/141751.html) operation and want to use `{{ACS::CommandId}}` as a built-in environment parameter, make sure that the Cloud Assistant Agent version is not earlier than the following:
 	//
 	//         - Linux: 2.2.3.309
 	//
@@ -112,7 +112,7 @@ type CreateCommandRequest struct {
 	//
 	// Default value: Base64.
 	//
-	// >If you specify an invalid value, the value is treated as Base64.
+	// >If an invalid value is specified, it is treated as Base64.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type CreateCommandRequest struct {
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to use custom parameters in the command.
+	// Specifies whether the command uses custom parameters.
 	//
 	// Default value: false.
 	//
@@ -166,7 +166,7 @@ type CreateCommandRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The tags.
 	Tag []*CreateCommandRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The maximum timeout period for the command to run on the ECS instance. Unit: seconds. If the command cannot be run for some reason, a timeout occurs. After the command times out, the command process is forcefully terminated by canceling the PID of the command.
+	// The maximum timeout period for the command to run on ECS instances. Unit: seconds. If the command cannot be run for some reason, a timeout occurs. After the timeout, the command process is forcefully terminated by canceling the PID of the command.
 	//
 	// Default value: 60.
 	//
@@ -188,11 +188,11 @@ type CreateCommandRequest struct {
 	//
 	// RunShellScript
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The directory where the command is run on the ECS instance. The directory cannot exceed 200 characters in length.
+	// The directory where the command is run on the ECS instance. The value cannot exceed 200 characters in length.
 	//
 	// Default value:
 	//
-	// - Linux instances: the home directory of the root user, which is the `/root` directory.
+	// - Linux instances: the home directory of the root user, which is `/root`.
 	//
 	// - Windows instances: the directory where the Cloud Assistant Agent process is located, such as `C:\\Windows\\System32`.
 	//
@@ -381,7 +381,7 @@ func (s *CreateCommandRequest) Validate() error {
 type CreateCommandRequestTag struct {
 	// The tag key of the command. Valid values of N: 1 to 20. The tag key cannot be an empty string.
 	//
-	// If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1000. If you use multiple tags to filter resources, the resource count of resources that have all specified tags attached cannot exceed 1000. If the resource count exceeds 1000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
+	// If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1000. If you use multiple tags to filter resources, the resource count that have all specified tags attached cannot exceed 1000. If the resource count exceeds 1000, use the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
 	//
 	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//

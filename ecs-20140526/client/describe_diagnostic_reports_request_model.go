@@ -26,13 +26,13 @@ type iDescribeDiagnosticReportsRequest interface {
 }
 
 type DescribeDiagnosticReportsRequest struct {
-	// The number of entries per page for a paged query. Maximum value: 100.
+	// The maximum number of entries per page for paging. Maximum value: 100.
 	//
 	// Default value:
 	//
-	// - If this parameter is not specified, the default value is 10.
+	// - If this parameter is not set, the default value is 10.
 	//
-	// - If the specified value is greater than 100, the default value is 100.
+	// - If the value you set is greater than 100, the default value is 100.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type DescribeDiagnosticReportsRequest struct {
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 	// The severity level. Valid values:
 	//
-	// - Unknown: The initial state, which indicates that the diagnosis has not started or the diagnosis process exited unexpectedly. No diagnostic conclusion is available.
+	// - Unknown: The initial state, which indicates that the diagnosis has not started or the diagnosis process exited abnormally. No diagnostic conclusion is available.
 	//
-	// - Normal: The diagnosis is normal. No issues are found.
+	// - Normal: The diagnosis is normal and no issues are found.
 	//
-	// - Info: Related information is available and may be associated with exceptions.
+	// - Info: Related information is available and may be associated with an exception.
 	//
-	// - Warn: Related information is available and may cause exceptions.
+	// - Warn: Related information is available and may cause an exception.
 	//
-	// - Critical: Critical exceptions exist.
+	// - Critical: A critical exception exists.
 	//
 	// example:
 	//
