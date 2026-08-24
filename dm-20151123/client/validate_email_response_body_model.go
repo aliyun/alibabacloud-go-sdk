@@ -26,7 +26,7 @@ type iValidateEmailResponseBody interface {
 }
 
 type ValidateEmailResponseBody struct {
-	// The domain part of the email address parsed from syntax validation (lowercased).
+	// The domain part of the email address parsed from syntax validation (converted to lowercase).
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ValidateEmailResponseBody struct {
 	//
 	// true
 	IsFreeMail *bool `json:"IsFreeMail,omitempty" xml:"IsFreeMail,omitempty"`
-	// The local part of the email address parsed from syntax validation (lowercased and with the plus-sign portion removed).
+	// The local part of the email address parsed from syntax validation (converted to lowercase with the plus-sign portion removed).
 	//
 	// example:
 	//

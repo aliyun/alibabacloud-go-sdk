@@ -16,13 +16,13 @@ type iCreateMailAddressResponseBody interface {
 }
 
 type CreateMailAddressResponseBody struct {
-	// Mail address ID
+	// The ID of the sender address.
 	//
 	// example:
 	//
 	// 15123
 	MailAddressId *string `json:"MailAddressId,omitempty" xml:"MailAddressId,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//

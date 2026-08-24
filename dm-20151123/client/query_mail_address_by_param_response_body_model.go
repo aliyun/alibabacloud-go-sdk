@@ -146,20 +146,23 @@ func (s *QueryMailAddressByParamResponseBodyData) Validate() error {
 }
 
 type QueryMailAddressByParamResponseBodyDataMailAddress struct {
-	AccountName   *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
-	ConfigSetId   *string `json:"ConfigSetId,omitempty" xml:"ConfigSetId,omitempty"`
-	ConfigSetName *string `json:"ConfigSetName,omitempty" xml:"ConfigSetName,omitempty"`
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DailyCount    *string `json:"DailyCount,omitempty" xml:"DailyCount,omitempty"`
-	DailyReqCount *string `json:"DailyReqCount,omitempty" xml:"DailyReqCount,omitempty"`
-	DomainStatus  *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	MailAddressId *string `json:"MailAddressId,omitempty" xml:"MailAddressId,omitempty"`
-	MonthCount    *string `json:"MonthCount,omitempty" xml:"MonthCount,omitempty"`
-	MonthReqCount *string `json:"MonthReqCount,omitempty" xml:"MonthReqCount,omitempty"`
-	ReplyAddress  *string `json:"ReplyAddress,omitempty" xml:"ReplyAddress,omitempty"`
-	ReplyStatus   *string `json:"ReplyStatus,omitempty" xml:"ReplyStatus,omitempty"`
-	Sendtype      *string `json:"Sendtype,omitempty" xml:"Sendtype,omitempty"`
+	AccountName                   *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountStatus                 *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
+	AddressType                   *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	ConfigSetId                   *string `json:"ConfigSetId,omitempty" xml:"ConfigSetId,omitempty"`
+	ConfigSetName                 *string `json:"ConfigSetName,omitempty" xml:"ConfigSetName,omitempty"`
+	CreateTime                    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DailyCount                    *string `json:"DailyCount,omitempty" xml:"DailyCount,omitempty"`
+	DailyReqCount                 *string `json:"DailyReqCount,omitempty" xml:"DailyReqCount,omitempty"`
+	DomainStatus                  *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	MailAddressId                 *string `json:"MailAddressId,omitempty" xml:"MailAddressId,omitempty"`
+	MailAddressVerificationStatus *string `json:"MailAddressVerificationStatus,omitempty" xml:"MailAddressVerificationStatus,omitempty"`
+	MonthCount                    *string `json:"MonthCount,omitempty" xml:"MonthCount,omitempty"`
+	MonthReqCount                 *string `json:"MonthReqCount,omitempty" xml:"MonthReqCount,omitempty"`
+	ReplyAddress                  *string `json:"ReplyAddress,omitempty" xml:"ReplyAddress,omitempty"`
+	ReplyStatus                   *string `json:"ReplyStatus,omitempty" xml:"ReplyStatus,omitempty"`
+	SenderAddress                 *string `json:"SenderAddress,omitempty" xml:"SenderAddress,omitempty"`
+	Sendtype                      *string `json:"Sendtype,omitempty" xml:"Sendtype,omitempty"`
 }
 
 func (s QueryMailAddressByParamResponseBodyDataMailAddress) String() string {
@@ -176,6 +179,10 @@ func (s *QueryMailAddressByParamResponseBodyDataMailAddress) GetAccountName() *s
 
 func (s *QueryMailAddressByParamResponseBodyDataMailAddress) GetAccountStatus() *string {
 	return s.AccountStatus
+}
+
+func (s *QueryMailAddressByParamResponseBodyDataMailAddress) GetAddressType() *string {
+	return s.AddressType
 }
 
 func (s *QueryMailAddressByParamResponseBodyDataMailAddress) GetConfigSetId() *string {
@@ -206,6 +213,10 @@ func (s *QueryMailAddressByParamResponseBodyDataMailAddress) GetMailAddressId() 
 	return s.MailAddressId
 }
 
+func (s *QueryMailAddressByParamResponseBodyDataMailAddress) GetMailAddressVerificationStatus() *string {
+	return s.MailAddressVerificationStatus
+}
+
 func (s *QueryMailAddressByParamResponseBodyDataMailAddress) GetMonthCount() *string {
 	return s.MonthCount
 }
@@ -222,6 +233,10 @@ func (s *QueryMailAddressByParamResponseBodyDataMailAddress) GetReplyStatus() *s
 	return s.ReplyStatus
 }
 
+func (s *QueryMailAddressByParamResponseBodyDataMailAddress) GetSenderAddress() *string {
+	return s.SenderAddress
+}
+
 func (s *QueryMailAddressByParamResponseBodyDataMailAddress) GetSendtype() *string {
 	return s.Sendtype
 }
@@ -233,6 +248,11 @@ func (s *QueryMailAddressByParamResponseBodyDataMailAddress) SetAccountName(v st
 
 func (s *QueryMailAddressByParamResponseBodyDataMailAddress) SetAccountStatus(v string) *QueryMailAddressByParamResponseBodyDataMailAddress {
 	s.AccountStatus = &v
+	return s
+}
+
+func (s *QueryMailAddressByParamResponseBodyDataMailAddress) SetAddressType(v string) *QueryMailAddressByParamResponseBodyDataMailAddress {
+	s.AddressType = &v
 	return s
 }
 
@@ -271,6 +291,11 @@ func (s *QueryMailAddressByParamResponseBodyDataMailAddress) SetMailAddressId(v 
 	return s
 }
 
+func (s *QueryMailAddressByParamResponseBodyDataMailAddress) SetMailAddressVerificationStatus(v string) *QueryMailAddressByParamResponseBodyDataMailAddress {
+	s.MailAddressVerificationStatus = &v
+	return s
+}
+
 func (s *QueryMailAddressByParamResponseBodyDataMailAddress) SetMonthCount(v string) *QueryMailAddressByParamResponseBodyDataMailAddress {
 	s.MonthCount = &v
 	return s
@@ -288,6 +313,11 @@ func (s *QueryMailAddressByParamResponseBodyDataMailAddress) SetReplyAddress(v s
 
 func (s *QueryMailAddressByParamResponseBodyDataMailAddress) SetReplyStatus(v string) *QueryMailAddressByParamResponseBodyDataMailAddress {
 	s.ReplyStatus = &v
+	return s
+}
+
+func (s *QueryMailAddressByParamResponseBodyDataMailAddress) SetSenderAddress(v string) *QueryMailAddressByParamResponseBodyDataMailAddress {
+	s.SenderAddress = &v
 	return s
 }
 

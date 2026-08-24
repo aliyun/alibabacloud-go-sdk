@@ -20,13 +20,13 @@ type iConfigSetListRequest interface {
 }
 
 type ConfigSetListRequest struct {
-	// Specifies whether to retrieve all ConfigSets. Optional.
+	// Specifies whether to query all configuration sets. Optional.
 	//
 	// example:
 	//
 	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// The keyword for filtering ConfigSets by name.
+	// The keyword for searching by name.
 	//
 	// example:
 	//

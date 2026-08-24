@@ -24,7 +24,7 @@ type iConfigSetListResponseBody interface {
 }
 
 type ConfigSetListResponseBody struct {
-	// The list of ConfigSets.
+	// The list of configuration sets.
 	ConfigSets []*ConfigSetListResponseBodyConfigSets `json:"ConfigSets,omitempty" xml:"ConfigSets,omitempty" type:"Repeated"`
 	// The current page number.
 	//
@@ -32,13 +32,17 @@ type ConfigSetListResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Indicates whether more results are available.
+	// Indicates whether there is a next page. Valid values:
+	//
+	// - true: Yes.
+	//
+	// - false: No.
 	//
 	// example:
 	//
 	// false
 	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -50,7 +54,7 @@ type ConfigSetListResponseBody struct {
 	//
 	// xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of matching entries.
+	// The total number of entries that match the request conditions.
 	//
 	// example:
 	//
@@ -140,23 +144,24 @@ type ConfigSetListResponseBodyConfigSets struct {
 	//
 	// xxx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The list of from addresses associated with the ConfigSet.
+	// The list of associated sender addresses.
 	FromAddresses []*string `json:"FromAddresses,omitempty" xml:"FromAddresses,omitempty" type:"Repeated"`
-	// The ConfigSet ID.
+	// The configuration set ID.
 	//
 	// example:
 	//
 	// xxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The IP pool associated with the ConfigSet.
+	// The IP pool.
 	IpPool                 *ConfigSetListResponseBodyConfigSetsIpPool `json:"IpPool,omitempty" xml:"IpPool,omitempty" type:"Struct"`
 	IsPublicChannelBackoff *bool                                      `json:"IsPublicChannelBackoff,omitempty" xml:"IsPublicChannelBackoff,omitempty"`
-	// The ConfigSet name.
+	// The configuration set name.
 	//
 	// example:
 	//
 	// xxx
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name             *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	ValidationOption *ConfigSetListResponseBodyConfigSetsValidationOption `json:"ValidationOption,omitempty" xml:"ValidationOption,omitempty" type:"Struct"`
 }
 
 func (s ConfigSetListResponseBodyConfigSets) String() string {
@@ -191,6 +196,10 @@ func (s *ConfigSetListResponseBodyConfigSets) GetName() *string {
 	return s.Name
 }
 
+func (s *ConfigSetListResponseBodyConfigSets) GetValidationOption() *ConfigSetListResponseBodyConfigSetsValidationOption {
+	return s.ValidationOption
+}
+
 func (s *ConfigSetListResponseBodyConfigSets) SetDescription(v string) *ConfigSetListResponseBodyConfigSets {
 	s.Description = &v
 	return s
@@ -221,9 +230,19 @@ func (s *ConfigSetListResponseBodyConfigSets) SetName(v string) *ConfigSetListRe
 	return s
 }
 
+func (s *ConfigSetListResponseBodyConfigSets) SetValidationOption(v *ConfigSetListResponseBodyConfigSetsValidationOption) *ConfigSetListResponseBodyConfigSets {
+	s.ValidationOption = v
+	return s
+}
+
 func (s *ConfigSetListResponseBodyConfigSets) Validate() error {
 	if s.IpPool != nil {
 		if err := s.IpPool.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ValidationOption != nil {
+		if err := s.ValidationOption.Validate(); err != nil {
 			return err
 		}
 	}
@@ -272,5 +291,50 @@ func (s *ConfigSetListResponseBodyConfigSetsIpPool) SetIpPoolName(v string) *Con
 }
 
 func (s *ConfigSetListResponseBodyConfigSetsIpPool) Validate() error {
+	return dara.Validate(s)
+}
+
+type ConfigSetListResponseBodyConfigSetsValidationOption struct {
+	Enabled                *bool     `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	ForbiddenStatusList    []*string `json:"ForbiddenStatusList,omitempty" xml:"ForbiddenStatusList,omitempty" type:"Repeated"`
+	ForbiddenSubStatusList []*string `json:"ForbiddenSubStatusList,omitempty" xml:"ForbiddenSubStatusList,omitempty" type:"Repeated"`
+}
+
+func (s ConfigSetListResponseBodyConfigSetsValidationOption) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ConfigSetListResponseBodyConfigSetsValidationOption) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigSetListResponseBodyConfigSetsValidationOption) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *ConfigSetListResponseBodyConfigSetsValidationOption) GetForbiddenStatusList() []*string {
+	return s.ForbiddenStatusList
+}
+
+func (s *ConfigSetListResponseBodyConfigSetsValidationOption) GetForbiddenSubStatusList() []*string {
+	return s.ForbiddenSubStatusList
+}
+
+func (s *ConfigSetListResponseBodyConfigSetsValidationOption) SetEnabled(v bool) *ConfigSetListResponseBodyConfigSetsValidationOption {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ConfigSetListResponseBodyConfigSetsValidationOption) SetForbiddenStatusList(v []*string) *ConfigSetListResponseBodyConfigSetsValidationOption {
+	s.ForbiddenStatusList = v
+	return s
+}
+
+func (s *ConfigSetListResponseBodyConfigSetsValidationOption) SetForbiddenSubStatusList(v []*string) *ConfigSetListResponseBodyConfigSetsValidationOption {
+	s.ForbiddenSubStatusList = v
+	return s
+}
+
+func (s *ConfigSetListResponseBodyConfigSetsValidationOption) Validate() error {
 	return dara.Validate(s)
 }

@@ -16,7 +16,7 @@ type iConfigSetDetailResponseBody interface {
 }
 
 type ConfigSetDetailResponseBody struct {
-	// The details of the configuration set.
+	// The configuration set information.
 	Detail *ConfigSetDetailResponseBodyDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,13 +62,13 @@ func (s *ConfigSetDetailResponseBody) Validate() error {
 }
 
 type ConfigSetDetailResponseBodyDetail struct {
-	// A description of the configuration set.
+	// The description.
 	//
 	// example:
 	//
 	// xxx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the configuration set.
+	// The configuration set ID.
 	//
 	// example:
 	//
@@ -77,12 +77,13 @@ type ConfigSetDetailResponseBodyDetail struct {
 	// The associated IP pool.
 	IpPool                 *ConfigSetDetailResponseBodyDetailIpPool `json:"IpPool,omitempty" xml:"IpPool,omitempty" type:"Struct"`
 	IsPublicChannelBackoff *bool                                    `json:"IsPublicChannelBackoff,omitempty" xml:"IsPublicChannelBackoff,omitempty"`
-	// The name of the configuration set.
+	// The configuration set name.
 	//
 	// example:
 	//
 	// xxx
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name             *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	ValidationOption *ConfigSetDetailResponseBodyDetailValidationOption `json:"ValidationOption,omitempty" xml:"ValidationOption,omitempty" type:"Struct"`
 }
 
 func (s ConfigSetDetailResponseBodyDetail) String() string {
@@ -113,6 +114,10 @@ func (s *ConfigSetDetailResponseBodyDetail) GetName() *string {
 	return s.Name
 }
 
+func (s *ConfigSetDetailResponseBodyDetail) GetValidationOption() *ConfigSetDetailResponseBodyDetailValidationOption {
+	return s.ValidationOption
+}
+
 func (s *ConfigSetDetailResponseBodyDetail) SetDescription(v string) *ConfigSetDetailResponseBodyDetail {
 	s.Description = &v
 	return s
@@ -138,9 +143,19 @@ func (s *ConfigSetDetailResponseBodyDetail) SetName(v string) *ConfigSetDetailRe
 	return s
 }
 
+func (s *ConfigSetDetailResponseBodyDetail) SetValidationOption(v *ConfigSetDetailResponseBodyDetailValidationOption) *ConfigSetDetailResponseBodyDetail {
+	s.ValidationOption = v
+	return s
+}
+
 func (s *ConfigSetDetailResponseBodyDetail) Validate() error {
 	if s.IpPool != nil {
 		if err := s.IpPool.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ValidationOption != nil {
+		if err := s.ValidationOption.Validate(); err != nil {
 			return err
 		}
 	}
@@ -148,13 +163,13 @@ func (s *ConfigSetDetailResponseBodyDetail) Validate() error {
 }
 
 type ConfigSetDetailResponseBodyDetailIpPool struct {
-	// The ID of the associated IP pool.
+	// The associated IP pool ID.
 	//
 	// example:
 	//
 	// xxx
 	IpPoolId *string `json:"IpPoolId,omitempty" xml:"IpPoolId,omitempty"`
-	// The name of the associated IP pool.
+	// The associated IP pool name.
 	//
 	// example:
 	//
@@ -189,5 +204,50 @@ func (s *ConfigSetDetailResponseBodyDetailIpPool) SetIpPoolName(v string) *Confi
 }
 
 func (s *ConfigSetDetailResponseBodyDetailIpPool) Validate() error {
+	return dara.Validate(s)
+}
+
+type ConfigSetDetailResponseBodyDetailValidationOption struct {
+	Enabled                *bool     `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	ForbiddenStatusList    []*string `json:"ForbiddenStatusList,omitempty" xml:"ForbiddenStatusList,omitempty" type:"Repeated"`
+	ForbiddenSubStatusList []*string `json:"ForbiddenSubStatusList,omitempty" xml:"ForbiddenSubStatusList,omitempty" type:"Repeated"`
+}
+
+func (s ConfigSetDetailResponseBodyDetailValidationOption) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ConfigSetDetailResponseBodyDetailValidationOption) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigSetDetailResponseBodyDetailValidationOption) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *ConfigSetDetailResponseBodyDetailValidationOption) GetForbiddenStatusList() []*string {
+	return s.ForbiddenStatusList
+}
+
+func (s *ConfigSetDetailResponseBodyDetailValidationOption) GetForbiddenSubStatusList() []*string {
+	return s.ForbiddenSubStatusList
+}
+
+func (s *ConfigSetDetailResponseBodyDetailValidationOption) SetEnabled(v bool) *ConfigSetDetailResponseBodyDetailValidationOption {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ConfigSetDetailResponseBodyDetailValidationOption) SetForbiddenStatusList(v []*string) *ConfigSetDetailResponseBodyDetailValidationOption {
+	s.ForbiddenStatusList = v
+	return s
+}
+
+func (s *ConfigSetDetailResponseBodyDetailValidationOption) SetForbiddenSubStatusList(v []*string) *ConfigSetDetailResponseBodyDetailValidationOption {
+	s.ForbiddenSubStatusList = v
+	return s
+}
+
+func (s *ConfigSetDetailResponseBodyDetailValidationOption) Validate() error {
 	return dara.Validate(s)
 }

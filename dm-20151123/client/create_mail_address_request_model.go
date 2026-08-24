@@ -11,6 +11,8 @@ type iCreateMailAddressRequest interface {
 	GoString() string
 	SetAccountName(v string) *CreateMailAddressRequest
 	GetAccountName() *string
+	SetAddressType(v string) *CreateMailAddressRequest
+	GetAddressType() *string
 	SetOwnerId(v int64) *CreateMailAddressRequest
 	GetOwnerId() *int64
 	SetReplyAddress(v string) *CreateMailAddressRequest
@@ -24,7 +26,7 @@ type iCreateMailAddressRequest interface {
 }
 
 type CreateMailAddressRequest struct {
-	// Sender\\"s email address
+	// The sender address.
 	//
 	// This parameter is required.
 	//
@@ -32,8 +34,14 @@ type CreateMailAddressRequest struct {
 	//
 	// Account+@+domain
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The type of the address to create. Valid values:
+	//
+	// EXTERNAL: The domain name of the address to create has not been created in this system.
+	//
+	// INTERNAL: The domain name of the address to create has already been created in this system.
+	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Reply-to address
+	// The reply-to address.
 	//
 	// example:
 	//
@@ -41,11 +49,11 @@ type CreateMailAddressRequest struct {
 	ReplyAddress         *string `json:"ReplyAddress,omitempty" xml:"ReplyAddress,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Type of sending. Values:
+	// The type of email. Valid values:
 	//
-	// - batch: Bulk emails
+	// - batch: batch email
 	//
-	// - trigger: Triggered emails
+	// - trigger: triggered email
 	//
 	// This parameter is required.
 	//
@@ -65,6 +73,10 @@ func (s CreateMailAddressRequest) GoString() string {
 
 func (s *CreateMailAddressRequest) GetAccountName() *string {
 	return s.AccountName
+}
+
+func (s *CreateMailAddressRequest) GetAddressType() *string {
+	return s.AddressType
 }
 
 func (s *CreateMailAddressRequest) GetOwnerId() *int64 {
@@ -89,6 +101,11 @@ func (s *CreateMailAddressRequest) GetSendtype() *string {
 
 func (s *CreateMailAddressRequest) SetAccountName(v string) *CreateMailAddressRequest {
 	s.AccountName = &v
+	return s
+}
+
+func (s *CreateMailAddressRequest) SetAddressType(v string) *CreateMailAddressRequest {
+	s.AddressType = &v
 	return s
 }
 

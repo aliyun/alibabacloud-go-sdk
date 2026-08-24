@@ -517,20 +517,26 @@ func (client *Client) ConfigSetCancelRelationFromAddressWithContext(ctx context.
 
 // Summary:
 //
-// Creates a configuration set. You can create up to 100 configuration sets.
+// Creates a configuration set. A maximum of 100 configuration sets can be created.
 //
-// @param request - ConfigSetCreateRequest
+// @param tmpReq - ConfigSetCreateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConfigSetCreateResponse
-func (client *Client) ConfigSetCreateWithContext(ctx context.Context, request *ConfigSetCreateRequest, runtime *dara.RuntimeOptions) (_result *ConfigSetCreateResponse, _err error) {
+func (client *Client) ConfigSetCreateWithContext(ctx context.Context, tmpReq *ConfigSetCreateRequest, runtime *dara.RuntimeOptions) (_result *ConfigSetCreateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ConfigSetCreateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ValidationOption) {
+		request.ValidationOptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ValidationOption, dara.String("ValidationOption"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
@@ -546,6 +552,10 @@ func (client *Client) ConfigSetCreateWithContext(ctx context.Context, request *C
 
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ValidationOptionShrink) {
+		query["ValidationOption"] = request.ValidationOptionShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -621,7 +631,7 @@ func (client *Client) ConfigSetDeleteWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Retrieves the details of a specified configuration set.
+// Retrieves the details of a configuration set.
 //
 // @param request - ConfigSetDetailRequest
 //
@@ -665,7 +675,7 @@ func (client *Client) ConfigSetDetailWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Lists ConfigSets.
+// Lists configuration sets.
 //
 // @param request - ConfigSetListRequest
 //
@@ -771,18 +781,24 @@ func (client *Client) ConfigSetRelationFromAddressWithContext(ctx context.Contex
 //
 // Updates a configuration set.
 //
-// @param request - ConfigSetUpdateRequest
+// @param tmpReq - ConfigSetUpdateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConfigSetUpdateResponse
-func (client *Client) ConfigSetUpdateWithContext(ctx context.Context, request *ConfigSetUpdateRequest, runtime *dara.RuntimeOptions) (_result *ConfigSetUpdateResponse, _err error) {
+func (client *Client) ConfigSetUpdateWithContext(ctx context.Context, tmpReq *ConfigSetUpdateRequest, runtime *dara.RuntimeOptions) (_result *ConfigSetUpdateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ConfigSetUpdateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ValidationOption) {
+		request.ValidationOptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ValidationOption, dara.String("ValidationOption"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
@@ -802,6 +818,10 @@ func (client *Client) ConfigSetUpdateWithContext(ctx context.Context, request *C
 
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ValidationOptionShrink) {
+		query["ValidationOption"] = request.ValidationOptionShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -889,7 +909,7 @@ func (client *Client) CreateDomainWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// Create a mail address.
+// Creates a sender address.
 //
 // @param request - CreateMailAddressRequest
 //
@@ -906,6 +926,10 @@ func (client *Client) CreateMailAddressWithContext(ctx context.Context, request 
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
 		query["AccountName"] = request.AccountName
+	}
+
+	if !dara.IsNil(request.AddressType) {
+		query["AddressType"] = request.AddressType
 	}
 
 	if !dara.IsNil(request.OwnerId) {
@@ -3461,7 +3485,7 @@ func (client *Client) QueryInvalidAddressWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries a list of sender addresses.
+// Queries the list of sender addresses.
 //
 // @param request - QueryMailAddressByParamRequest
 //
@@ -4141,7 +4165,7 @@ func (client *Client) SendValidateFileWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Retrieves sending statistics that match specified criteria.
+// Retrieves sending data based on specified conditions.
 //
 // @param request - SenderStatisticsByTagNameAndBatchIDRequest
 //
@@ -4373,7 +4397,7 @@ func (client *Client) SetSuppressionListLevelWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Send a single email.
+// Sends a single email.
 //
 // @param tmpReq - SingleSendMailRequest
 //

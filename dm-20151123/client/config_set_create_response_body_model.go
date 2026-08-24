@@ -16,13 +16,13 @@ type iConfigSetCreateResponseBody interface {
 }
 
 type ConfigSetCreateResponseBody struct {
-	// The new configuration set ID.
+	// The configuration set ID.
 	//
 	// example:
 	//
 	// XXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The unique ID for the request. Provide this request ID when contacting support.
+	// The request ID.
 	//
 	// example:
 	//

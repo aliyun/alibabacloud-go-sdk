@@ -26,10 +26,11 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
+		"ap-southeast-1": dara.String("dm.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-2": dara.String("dm.ap-southeast-2.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("dm.aliyuncs.com"),
 		"us-east-1":      dara.String("dm.us-east-1.aliyuncs.com"),
 		"eu-central-1":   dara.String("dm.eu-central-1.aliyuncs.com"),
-		"cn-hangzhou":    dara.String("dm.aliyuncs.com"),
-		"ap-southeast-1": dara.String("dm.ap-southeast-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -797,20 +798,26 @@ func (client *Client) ConfigSetCancelRelationFromAddress(request *ConfigSetCance
 
 // Summary:
 //
-// Creates a configuration set. You can create up to 100 configuration sets.
+// Creates a configuration set. A maximum of 100 configuration sets can be created.
 //
-// @param request - ConfigSetCreateRequest
+// @param tmpReq - ConfigSetCreateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConfigSetCreateResponse
-func (client *Client) ConfigSetCreateWithOptions(request *ConfigSetCreateRequest, runtime *dara.RuntimeOptions) (_result *ConfigSetCreateResponse, _err error) {
+func (client *Client) ConfigSetCreateWithOptions(tmpReq *ConfigSetCreateRequest, runtime *dara.RuntimeOptions) (_result *ConfigSetCreateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ConfigSetCreateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ValidationOption) {
+		request.ValidationOptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ValidationOption, dara.String("ValidationOption"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
@@ -826,6 +833,10 @@ func (client *Client) ConfigSetCreateWithOptions(request *ConfigSetCreateRequest
 
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ValidationOptionShrink) {
+		query["ValidationOption"] = request.ValidationOptionShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -853,7 +864,7 @@ func (client *Client) ConfigSetCreateWithOptions(request *ConfigSetCreateRequest
 
 // Summary:
 //
-// Creates a configuration set. You can create up to 100 configuration sets.
+// Creates a configuration set. A maximum of 100 configuration sets can be created.
 //
 // @param request - ConfigSetCreateRequest
 //
@@ -937,7 +948,7 @@ func (client *Client) ConfigSetDelete(request *ConfigSetDeleteRequest) (_result 
 
 // Summary:
 //
-// Retrieves the details of a specified configuration set.
+// Retrieves the details of a configuration set.
 //
 // @param request - ConfigSetDetailRequest
 //
@@ -981,7 +992,7 @@ func (client *Client) ConfigSetDetailWithOptions(request *ConfigSetDetailRequest
 
 // Summary:
 //
-// Retrieves the details of a specified configuration set.
+// Retrieves the details of a configuration set.
 //
 // @param request - ConfigSetDetailRequest
 //
@@ -999,7 +1010,7 @@ func (client *Client) ConfigSetDetail(request *ConfigSetDetailRequest) (_result 
 
 // Summary:
 //
-// Lists ConfigSets.
+// Lists configuration sets.
 //
 // @param request - ConfigSetListRequest
 //
@@ -1055,7 +1066,7 @@ func (client *Client) ConfigSetListWithOptions(request *ConfigSetListRequest, ru
 
 // Summary:
 //
-// Lists ConfigSets.
+// Lists configuration sets.
 //
 // @param request - ConfigSetListRequest
 //
@@ -1141,18 +1152,24 @@ func (client *Client) ConfigSetRelationFromAddress(request *ConfigSetRelationFro
 //
 // Updates a configuration set.
 //
-// @param request - ConfigSetUpdateRequest
+// @param tmpReq - ConfigSetUpdateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConfigSetUpdateResponse
-func (client *Client) ConfigSetUpdateWithOptions(request *ConfigSetUpdateRequest, runtime *dara.RuntimeOptions) (_result *ConfigSetUpdateResponse, _err error) {
+func (client *Client) ConfigSetUpdateWithOptions(tmpReq *ConfigSetUpdateRequest, runtime *dara.RuntimeOptions) (_result *ConfigSetUpdateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ConfigSetUpdateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ValidationOption) {
+		request.ValidationOptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ValidationOption, dara.String("ValidationOption"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
@@ -1172,6 +1189,10 @@ func (client *Client) ConfigSetUpdateWithOptions(request *ConfigSetUpdateRequest
 
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ValidationOptionShrink) {
+		query["ValidationOption"] = request.ValidationOptionShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1295,7 +1316,7 @@ func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *Creat
 
 // Summary:
 //
-// Create a mail address.
+// Creates a sender address.
 //
 // @param request - CreateMailAddressRequest
 //
@@ -1312,6 +1333,10 @@ func (client *Client) CreateMailAddressWithOptions(request *CreateMailAddressReq
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
 		query["AccountName"] = request.AccountName
+	}
+
+	if !dara.IsNil(request.AddressType) {
+		query["AddressType"] = request.AddressType
 	}
 
 	if !dara.IsNil(request.OwnerId) {
@@ -1359,7 +1384,7 @@ func (client *Client) CreateMailAddressWithOptions(request *CreateMailAddressReq
 
 // Summary:
 //
-// Create a mail address.
+// Creates a sender address.
 //
 // @param request - CreateMailAddressRequest
 //
@@ -4917,7 +4942,7 @@ func (client *Client) QueryInvalidAddress(request *QueryInvalidAddressRequest) (
 
 // Summary:
 //
-// Queries a list of sender addresses.
+// Queries the list of sender addresses.
 //
 // @param request - QueryMailAddressByParamRequest
 //
@@ -4985,7 +5010,7 @@ func (client *Client) QueryMailAddressByParamWithOptions(request *QueryMailAddre
 
 // Summary:
 //
-// Queries a list of sender addresses.
+// Queries the list of sender addresses.
 //
 // @param request - QueryMailAddressByParamRequest
 //
@@ -5888,7 +5913,7 @@ func (client *Client) SendValidateFileAdvance(request *SendValidateFileAdvanceRe
 
 // Summary:
 //
-// Retrieves sending statistics that match specified criteria.
+// Retrieves sending data based on specified conditions.
 //
 // @param request - SenderStatisticsByTagNameAndBatchIDRequest
 //
@@ -5972,7 +5997,7 @@ func (client *Client) SenderStatisticsByTagNameAndBatchIDWithOptions(request *Se
 
 // Summary:
 //
-// Retrieves sending statistics that match specified criteria.
+// Retrieves sending data based on specified conditions.
 //
 // @param request - SenderStatisticsByTagNameAndBatchIDRequest
 //
@@ -6174,7 +6199,7 @@ func (client *Client) SetSuppressionListLevel(request *SetSuppressionListLevelRe
 
 // Summary:
 //
-// Send a single email.
+// Sends a single email.
 //
 // @param tmpReq - SingleSendMailRequest
 //
@@ -6314,7 +6339,7 @@ func (client *Client) SingleSendMailWithOptions(tmpReq *SingleSendMailRequest, r
 
 // Summary:
 //
-// Send a single email.
+// Sends a single email.
 //
 // @param request - SingleSendMailRequest
 //

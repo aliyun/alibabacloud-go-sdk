@@ -14,7 +14,7 @@ type iConfigSetDetailRequest interface {
 }
 
 type ConfigSetDetailRequest struct {
-	// The ID of the configuration set.
+	// The configuration set ID. This parameter is required.
 	//
 	// example:
 	//
