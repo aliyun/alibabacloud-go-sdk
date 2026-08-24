@@ -290,7 +290,8 @@ type ModifyCustomAgentResponseBodyData struct {
 	// example:
 	//
 	// The text report requires all numbers to be written in Chinese characters instead of Arabic numerals
-	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
+	TextReportConfig       *string   `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
+	UserSpecifiedSkillList []*string `json:"UserSpecifiedSkillList,omitempty" xml:"UserSpecifiedSkillList,omitempty" type:"Repeated"`
 	// The web report format.
 	//
 	// example:
@@ -424,6 +425,10 @@ func (s *ModifyCustomAgentResponseBodyData) GetStatus() *string {
 
 func (s *ModifyCustomAgentResponseBodyData) GetTextReportConfig() *string {
 	return s.TextReportConfig
+}
+
+func (s *ModifyCustomAgentResponseBodyData) GetUserSpecifiedSkillList() []*string {
+	return s.UserSpecifiedSkillList
 }
 
 func (s *ModifyCustomAgentResponseBodyData) GetWebReportConfig() *string {
@@ -575,6 +580,11 @@ func (s *ModifyCustomAgentResponseBodyData) SetStatus(v string) *ModifyCustomAge
 
 func (s *ModifyCustomAgentResponseBodyData) SetTextReportConfig(v string) *ModifyCustomAgentResponseBodyData {
 	s.TextReportConfig = &v
+	return s
+}
+
+func (s *ModifyCustomAgentResponseBodyData) SetUserSpecifiedSkillList(v []*string) *ModifyCustomAgentResponseBodyData {
+	s.UserSpecifiedSkillList = v
 	return s
 }
 

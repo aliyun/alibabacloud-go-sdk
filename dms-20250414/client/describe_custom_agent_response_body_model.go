@@ -30,7 +30,7 @@ type DescribeCustomAgentResponseBody struct {
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned if the call failed.
 	//
 	// example:
 	//
@@ -181,7 +181,7 @@ type DescribeCustomAgentResponseBodyData struct {
 	//
 	// example:
 	//
-	// AgentTestDescription
+	// Agent test description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The current DMS unit.
 	//
@@ -215,7 +215,7 @@ type DescribeCustomAgentResponseBodyData struct {
 	//
 	// 3. Conduct funnel analysis based on user behavior paths (browse → add to cart → payment) to locate drop-off points;
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
-	// Specifies whether a periodic task is configured.
+	// Specifies whether a scheduled task is configured.
 	//
 	// example:
 	//
@@ -233,7 +233,7 @@ type DescribeCustomAgentResponseBodyData struct {
 	//
 	// 3. UV (Unique Visitors) refers to the deduplicated number of users who visit the website or app;
 	//
-	// 4. Conversion rate = paid orders / UV, reflecting traffic conversion efficiency;
+	// 4. Conversion rate = number of paid orders / UV, reflecting traffic conversion efficiency;
 	Knowledge                   *string                                                           `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 	KnowledgeConfigList         []*DescribeCustomAgentResponseBodyDataKnowledgeConfigList         `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
 	KnowledgeSemanticConfigList []*DescribeCustomAgentResponseBodyDataKnowledgeSemanticConfigList `json:"KnowledgeSemanticConfigList,omitempty" xml:"KnowledgeSemanticConfigList,omitempty" type:"Repeated"`
@@ -253,9 +253,9 @@ type DescribeCustomAgentResponseBodyData struct {
 	//
 	// example:
 	//
-	// AgentTestName
+	// Agent test name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The next run time of the periodic task.
+	// The next run time of the scheduled task.
 	//
 	// example:
 	//
@@ -285,7 +285,7 @@ type DescribeCustomAgentResponseBodyData struct {
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	ReleaseTime *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
-	// The periodic task configuration.
+	// The scheduled task configuration.
 	ScheduleTaskConfig *DescribeCustomAgentResponseBodyDataScheduleTaskConfig `json:"ScheduleTaskConfig,omitempty" xml:"ScheduleTaskConfig,omitempty" type:"Struct"`
 	// The status of the custom agent.
 	//
@@ -298,7 +298,8 @@ type DescribeCustomAgentResponseBodyData struct {
 	// example:
 	//
 	// The text report requires all numbers to be converted from Arabic numerals to Chinese numerals
-	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
+	TextReportConfig       *string   `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
+	UserSpecifiedSkillList []*string `json:"UserSpecifiedSkillList,omitempty" xml:"UserSpecifiedSkillList,omitempty" type:"Repeated"`
 	// The web report format.
 	//
 	// example:
@@ -436,6 +437,10 @@ func (s *DescribeCustomAgentResponseBodyData) GetStatus() *string {
 
 func (s *DescribeCustomAgentResponseBodyData) GetTextReportConfig() *string {
 	return s.TextReportConfig
+}
+
+func (s *DescribeCustomAgentResponseBodyData) GetUserSpecifiedSkillList() []*string {
+	return s.UserSpecifiedSkillList
 }
 
 func (s *DescribeCustomAgentResponseBodyData) GetWebReportConfig() *string {
@@ -592,6 +597,11 @@ func (s *DescribeCustomAgentResponseBodyData) SetStatus(v string) *DescribeCusto
 
 func (s *DescribeCustomAgentResponseBodyData) SetTextReportConfig(v string) *DescribeCustomAgentResponseBodyData {
 	s.TextReportConfig = &v
+	return s
+}
+
+func (s *DescribeCustomAgentResponseBodyData) SetUserSpecifiedSkillList(v []*string) *DescribeCustomAgentResponseBodyData {
+	s.UserSpecifiedSkillList = v
 	return s
 }
 
@@ -904,7 +914,7 @@ type DescribeCustomAgentResponseBodyDataScheduleTaskConfig struct {
 	//
 	// 0 0 0 ? 	- 1-7
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// The query for the periodic task.
+	// The query for the scheduled task.
 	//
 	// example:
 	//

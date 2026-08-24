@@ -30,7 +30,7 @@ type CreateCustomAgentResponseBody struct {
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned when the request failed.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type CreateCustomAgentResponseBody struct {
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - True: The request is successful.
+	// - True: The request was successful.
 	//
-	// - False: The request fails.
+	// - False: The request failed.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *CreateCustomAgentResponseBody) Validate() error {
 }
 
 type CreateCustomAgentResponseBodyData struct {
-	// The Alibaba Cloud account ID of the primary account.
+	// The Alibaba Cloud account ID of the parent account.
 	//
 	// example:
 	//
@@ -208,11 +208,11 @@ type CreateCustomAgentResponseBodyData struct {
 	//
 	// Analysis framework:
 	//
-	// 1. Monitor core metrics (GMV, order volume, UV, conversion rate) on a daily, weekly, and monthly basis, analyze trends and year-over-year/month-over-month fluctuations;
+	// 1. Monitor core metrics (GMV, order volume, UV, conversion rate) on a daily, weekly, and monthly basis, and analyze trends and year-over-year/month-over-month fluctuations.
 	//
-	// 2. Segment by new/existing customers, channels, and regions to identify growth drivers and weaknesses;
+	// 2. Segment by new/existing customers, channels, and regions to identify growth drivers and weaknesses.
 	//
-	// 3. Conduct funnel analysis based on user behavior paths (browsing → add to cart → payment) to pinpoint drop-off stages;
+	// 3. Conduct funnel analysis based on user behavior paths (browse → add to cart → payment) to identify drop-off points
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
 	// Indicates whether a periodic task is configured.
 	//
@@ -226,15 +226,15 @@ type CreateCustomAgentResponseBodyData struct {
 	//
 	// Core metric definitions:
 	//
-	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders;
+	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including paid and unpaid orders.
 	//
-	// 2. Order volume is the number of valid orders placed per day;
+	// 2. Order volume is the number of valid orders placed per day.
 	//
-	// 3. UV (Unique Visitors) refers to the deduplicated number of users who visit the website or app;
+	// 3. UV (Unique Visitors) refers to the deduplicated number of users who visit the website or app.
 	//
-	// 4. Conversion rate = number of paid orders / UV, reflecting traffic conversion efficiency;
+	// 4. Conversion rate = number of paid orders / UV, reflecting traffic conversion efficiency
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
-	// The external knowledge base configurations.
+	// The external knowledge base.
 	KnowledgeConfigList         []*CreateCustomAgentResponseBodyDataKnowledgeConfigList         `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
 	KnowledgeSemanticConfigList []*CreateCustomAgentResponseBodyDataKnowledgeSemanticConfigList `json:"KnowledgeSemanticConfigList,omitempty" xml:"KnowledgeSemanticConfigList,omitempty" type:"Repeated"`
 	// The modifier.
@@ -256,6 +256,8 @@ type CreateCustomAgentResponseBodyData struct {
 	// AgentTestName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The next run time of the periodic task.
+	//
+	// - Timestamp format.
 	//
 	// example:
 	//
@@ -293,13 +295,14 @@ type CreateCustomAgentResponseBodyData struct {
 	//
 	// example:
 	//
-	// The text report requires all numbers to be written in Chinese characters instead of Arabic numerals
-	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
+	// The text report requires all numbers to be expressed in Chinese characters instead of Arabic numerals
+	TextReportConfig       *string   `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
+	UserSpecifiedSkillList []*string `json:"UserSpecifiedSkillList,omitempty" xml:"UserSpecifiedSkillList,omitempty" type:"Repeated"`
 	// The web report format.
 	//
 	// example:
 	//
-	// The web report requires all numbers to be written in Chinese characters instead of Arabic numerals
+	// The web report requires all numbers to be expressed in Chinese characters instead of Arabic numerals
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
 	WebReportTheme  *string `json:"WebReportTheme,omitempty" xml:"WebReportTheme,omitempty"`
 	// The workspace ID.
@@ -428,6 +431,10 @@ func (s *CreateCustomAgentResponseBodyData) GetStatus() *string {
 
 func (s *CreateCustomAgentResponseBodyData) GetTextReportConfig() *string {
 	return s.TextReportConfig
+}
+
+func (s *CreateCustomAgentResponseBodyData) GetUserSpecifiedSkillList() []*string {
+	return s.UserSpecifiedSkillList
 }
 
 func (s *CreateCustomAgentResponseBodyData) GetWebReportConfig() *string {
@@ -582,6 +589,11 @@ func (s *CreateCustomAgentResponseBodyData) SetTextReportConfig(v string) *Creat
 	return s
 }
 
+func (s *CreateCustomAgentResponseBodyData) SetUserSpecifiedSkillList(v []*string) *CreateCustomAgentResponseBodyData {
+	s.UserSpecifiedSkillList = v
+	return s
+}
+
 func (s *CreateCustomAgentResponseBodyData) SetWebReportConfig(v string) *CreateCustomAgentResponseBodyData {
 	s.WebReportConfig = &v
 	return s
@@ -719,7 +731,7 @@ type CreateCustomAgentResponseBodyDataExecutionConfig struct {
 	//
 	// true
 	SkipSqlConfirm *bool `json:"SkipSqlConfirm,omitempty" xml:"SkipSqlConfirm,omitempty"`
-	// Specifies whether to skip the web report rendering confirmation.
+	// Specifies whether to skip the web report generation confirmation.
 	//
 	// example:
 	//
@@ -786,6 +798,8 @@ func (s *CreateCustomAgentResponseBodyDataExecutionConfig) Validate() error {
 
 type CreateCustomAgentResponseBodyDataKnowledgeConfigList struct {
 	// The access type.
+	//
+	// - mcp: access through MCP.
 	//
 	// example:
 	//

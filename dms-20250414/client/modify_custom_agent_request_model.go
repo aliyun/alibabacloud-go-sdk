@@ -37,6 +37,8 @@ type iModifyCustomAgentRequest interface {
 	GetScheduleTaskConfig() *ModifyCustomAgentRequestScheduleTaskConfig
 	SetTextReportConfig(v string) *ModifyCustomAgentRequest
 	GetTextReportConfig() *string
+	SetUserSpecifiedSkillList(v []*string) *ModifyCustomAgentRequest
+	GetUserSpecifiedSkillList() []*string
 	SetWebReportConfig(v string) *ModifyCustomAgentRequest
 	GetWebReportConfig() *string
 	SetWebReportTheme(v string) *ModifyCustomAgentRequest
@@ -259,7 +261,8 @@ type ModifyCustomAgentRequest struct {
 	// example:
 	//
 	// The text report requires all numbers to be written in Chinese characters instead of Arabic numerals
-	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
+	TextReportConfig       *string   `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
+	UserSpecifiedSkillList []*string `json:"UserSpecifiedSkillList,omitempty" xml:"UserSpecifiedSkillList,omitempty" type:"Repeated"`
 	// The web report format.
 	//
 	// example:
@@ -337,6 +340,10 @@ func (s *ModifyCustomAgentRequest) GetScheduleTaskConfig() *ModifyCustomAgentReq
 
 func (s *ModifyCustomAgentRequest) GetTextReportConfig() *string {
 	return s.TextReportConfig
+}
+
+func (s *ModifyCustomAgentRequest) GetUserSpecifiedSkillList() []*string {
+	return s.UserSpecifiedSkillList
 }
 
 func (s *ModifyCustomAgentRequest) GetWebReportConfig() *string {
@@ -418,6 +425,11 @@ func (s *ModifyCustomAgentRequest) SetScheduleTaskConfig(v *ModifyCustomAgentReq
 
 func (s *ModifyCustomAgentRequest) SetTextReportConfig(v string) *ModifyCustomAgentRequest {
 	s.TextReportConfig = &v
+	return s
+}
+
+func (s *ModifyCustomAgentRequest) SetUserSpecifiedSkillList(v []*string) *ModifyCustomAgentRequest {
+	s.UserSpecifiedSkillList = v
 	return s
 }
 

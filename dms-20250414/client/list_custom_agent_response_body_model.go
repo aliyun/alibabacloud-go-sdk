@@ -388,7 +388,8 @@ type ListCustomAgentResponseBodyDataContent struct {
 	// example:
 	//
 	// 文字报告要求所有数字不使用阿拉伯数字，全部转为中文数字
-	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
+	TextReportConfig       *string   `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
+	UserSpecifiedSkillList []*string `json:"UserSpecifiedSkillList,omitempty" xml:"UserSpecifiedSkillList,omitempty" type:"Repeated"`
 	// The formatting instructions for the web report.
 	//
 	// example:
@@ -526,6 +527,10 @@ func (s *ListCustomAgentResponseBodyDataContent) GetStatus() *string {
 
 func (s *ListCustomAgentResponseBodyDataContent) GetTextReportConfig() *string {
 	return s.TextReportConfig
+}
+
+func (s *ListCustomAgentResponseBodyDataContent) GetUserSpecifiedSkillList() []*string {
+	return s.UserSpecifiedSkillList
 }
 
 func (s *ListCustomAgentResponseBodyDataContent) GetWebReportConfig() *string {
@@ -682,6 +687,11 @@ func (s *ListCustomAgentResponseBodyDataContent) SetStatus(v string) *ListCustom
 
 func (s *ListCustomAgentResponseBodyDataContent) SetTextReportConfig(v string) *ListCustomAgentResponseBodyDataContent {
 	s.TextReportConfig = &v
+	return s
+}
+
+func (s *ListCustomAgentResponseBodyDataContent) SetUserSpecifiedSkillList(v []*string) *ListCustomAgentResponseBodyDataContent {
+	s.UserSpecifiedSkillList = v
 	return s
 }
 

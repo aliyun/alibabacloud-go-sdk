@@ -37,6 +37,8 @@ type iModifyCustomAgentShrinkRequest interface {
 	GetScheduleTaskConfigShrink() *string
 	SetTextReportConfig(v string) *ModifyCustomAgentShrinkRequest
 	GetTextReportConfig() *string
+	SetUserSpecifiedSkillListShrink(v string) *ModifyCustomAgentShrinkRequest
+	GetUserSpecifiedSkillListShrink() *string
 	SetWebReportConfig(v string) *ModifyCustomAgentShrinkRequest
 	GetWebReportConfig() *string
 	SetWebReportTheme(v string) *ModifyCustomAgentShrinkRequest
@@ -259,7 +261,8 @@ type ModifyCustomAgentShrinkRequest struct {
 	// example:
 	//
 	// The text report requires all numbers to be written in Chinese characters instead of Arabic numerals
-	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
+	TextReportConfig             *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
+	UserSpecifiedSkillListShrink *string `json:"UserSpecifiedSkillList,omitempty" xml:"UserSpecifiedSkillList,omitempty"`
 	// The web report format.
 	//
 	// example:
@@ -337,6 +340,10 @@ func (s *ModifyCustomAgentShrinkRequest) GetScheduleTaskConfigShrink() *string {
 
 func (s *ModifyCustomAgentShrinkRequest) GetTextReportConfig() *string {
 	return s.TextReportConfig
+}
+
+func (s *ModifyCustomAgentShrinkRequest) GetUserSpecifiedSkillListShrink() *string {
+	return s.UserSpecifiedSkillListShrink
 }
 
 func (s *ModifyCustomAgentShrinkRequest) GetWebReportConfig() *string {
@@ -418,6 +425,11 @@ func (s *ModifyCustomAgentShrinkRequest) SetScheduleTaskConfigShrink(v string) *
 
 func (s *ModifyCustomAgentShrinkRequest) SetTextReportConfig(v string) *ModifyCustomAgentShrinkRequest {
 	s.TextReportConfig = &v
+	return s
+}
+
+func (s *ModifyCustomAgentShrinkRequest) SetUserSpecifiedSkillListShrink(v string) *ModifyCustomAgentShrinkRequest {
+	s.UserSpecifiedSkillListShrink = &v
 	return s
 }
 

@@ -42,19 +42,19 @@ type iSendChatMessageRequest interface {
 }
 
 type SendChatMessageRequest struct {
-	// The agent ID. This is a required field. You can obtain the current AgentId from the response of the CreateAgentSession operation. Agent resources have a lifecycle, so the AgentId you need to specify may change with each request.
+	// The agent ID. This is a required field. You can obtain the current AgentID from the response of the CreateAgentSession operation. Agent resources have a lifecycle, so the AgentID you need to specify may change with each request.
 	//
 	// example:
 	//
 	// agent_***
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The Data Management unit you are currently in. If you select an analytics database, this information is used to correctly connect to your Data Management instance. You can go to the DAS console to view your current Data Management unit. If you are a user on the Alibaba Cloud China Website (www.aliyun.com), you can directly enter cn-hangzhou.
+	// The Data Management unit you are currently in. If you choose to analyze a database, this information is used to correctly connect to your Data Management instance. Go to the DAS console to view your current Data Management unit. If you are a user of the Alibaba Cloud China Website (www.aliyun.com), enter cn-hangzhou.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The data source information. This parameter can be left empty. This parameter supports only one data source. Use the DataSources parameter instead.
+	// The data source information. This parameter can be left empty. Only one data source can be specified for this parameter. Use the DataSources parameter instead.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type SendChatMessageRequest struct {
 	DataSource *SendChatMessageRequestDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
 	// The detailed data source information. This parameter can be left empty.
 	DataSources []*SendChatMessageRequestDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	// The message content to send to the agent.
+	// The message content to send to the Agent.
 	//
 	// This parameter is required.
 	//
@@ -72,13 +72,13 @@ type SendChatMessageRequest struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The message type. Default value: `[primary]`.
 	//
-	// - Under normal circumstances, when interacting with the Agent, the message type is `[primary]`.
+	// - For regular interactions with the Agent, the message type is `[primary]`.
 	//
 	// - When the message is a response to the Agent\\"s Human-in-Loop question, the type should be `[additional]`.
 	//
-	// - When the message is intended to trigger a report generation, the type should be `[report]`.
+	// - When the message is to trigger a report generation, the type should be `[report]`.
 	//
-	// - When the message is intended to cancel the current session, the type should be `[cancel]`.
+	// - When the message is to cancel the current session, the type should be `[cancel]`.
 	//
 	// example:
 	//
@@ -90,13 +90,13 @@ type SendChatMessageRequest struct {
 	//
 	// 20qrliuoo7p2vlsfg*****
 	ParentSessionId *string `json:"ParentSessionId,omitempty" xml:"ParentSessionId,omitempty"`
-	// This is a required field when the message type is `additional`. Specify the specific question that the agent asks the user through Human-in-Loop.
+	// A required field when the message type is `additional`. Specifies the specific question that the Agent asks the user through Human-in-Loop.
 	//
 	// example:
 	//
 	// Please provide the criteria for calculating GMV
 	Question *string `json:"Question,omitempty" xml:"Question,omitempty"`
-	// The quoted content. This is typically used when interacting with the agent.
+	// The quoted content, typically used during interactions with the Agent.
 	//
 	// example:
 	//
@@ -104,15 +104,15 @@ type SendChatMessageRequest struct {
 	QuotedMessage *string `json:"QuotedMessage,omitempty" xml:"QuotedMessage,omitempty"`
 	// **Important**
 	//
-	// When this message is a reply to an Agent message (for example, the Agent asks a clarifying question through ASK_HUMAN), set reply_to to the exact Checkpoint number carried in that Agent message. If this message is not a targeted reply, such as requesting the Agent to perform further in-depth analysis after the analysis is complete, leave reply_to empty or set it to "0".
+	// When this message is a reply to an Agent message (for example, the Agent asks a clarifying question through ASK_HUMAN), reply_to should be set to the exact Checkpoint sequence number carried by that Agent message. If this message is not a targeted reply, such as requesting the Agent to perform further in-depth analysis after analysis is complete, reply_to can be left empty or set to "0".
 	//
-	// This field affects how the Agent decides to process the message. Passing an incorrect value may cause the analysis results to fall short of expectations.
+	// This field affects how the Agent decides to process the message. Passing an incorrect value may result in analysis results that do not meet expectations.
 	//
 	// example:
 	//
 	// 0
 	ReplyTo *string `json:"ReplyTo,omitempty" xml:"ReplyTo,omitempty"`
-	// The special configuration for the current session. For the same session, only the configuration passed with the first SendMessage call takes effect.
+	// The special configuration for this session. For the same session, only the configuration passed with the first SendMessage call takes effect.
 	//
 	// if can be null:
 	// true
@@ -125,7 +125,7 @@ type SendChatMessageRequest struct {
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// The configuration items that affect only the current task.
 	TaskConfig *SendChatMessageRequestTaskConfig `json:"TaskConfig,omitempty" xml:"TaskConfig,omitempty" type:"Struct"`
-	// The user OSS bucket. If this parameter is not specified, analysis data is securely stored in the built-in storage.
+	// The user\\"s OSS bucket. If left empty, analysis data is securely stored in the built-in storage.
 	//
 	// example:
 	//
@@ -311,7 +311,7 @@ func (s *SendChatMessageRequest) Validate() error {
 }
 
 type SendChatMessageRequestDataSource struct {
-	// Deprecated. You do not need to specify this parameter.
+	// Deprecated. No input is required.
 	//
 	// example:
 	//
@@ -323,7 +323,7 @@ type SendChatMessageRequestDataSource struct {
 	//
 	// remote_data_center
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// Deprecated. You do not need to specify this parameter.
+	// Deprecated. No input is required.
 	//
 	// example:
 	//
@@ -359,13 +359,13 @@ type SendChatMessageRequestDataSource struct {
 	//
 	// 35****
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// Deprecated. You do not need to specify this parameter.
+	// Deprecated. No input is required.
 	//
 	// example:
 	//
 	// localhost
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The permission constraints for querying the current data source. The permission constraint feature is in canary release. This field does not take effect for users who are not included in the canary release.
+	// The permission constraints for querying the current data source. The permission constraint feature is available through canary release. This field does not take effect for users who are not included in the canary release.
 	Permission *SendChatMessageRequestDataSourcePermission `json:"Permission,omitempty" xml:"Permission,omitempty" type:"Struct"`
 	// The region ID.
 	//
@@ -538,9 +538,9 @@ func (s *SendChatMessageRequestDataSourcePermission) Validate() error {
 }
 
 type SendChatMessageRequestDataSourcePermissionTables struct {
-	// The list of columns that are allowed to be queried in the current table. If this parameter is not specified, all columns can be queried. If specified, SQL statements that exceed the allowed scope are blocked. For example, syntax such as SELECT 	- is blocked. To ensure DataAgent analysis effectiveness, avoid specifying columns beyond the allowed scope in the DataAgent prompts, knowledge, or instructions modules. Otherwise, SQL statements without proper permissions are generated and blocked, which reduces DataAgent analysis speed and effectiveness.
+	// The list of columns allowed for querying in the current table. If left empty, all columns can be queried. If specified, SQL statements that exceed the allowed scope are blocked. For example, syntax such as SELECT 	- is blocked. To ensure DataAgent analysis effectiveness, avoid specifying columns beyond the allowed scope in DataAgent prompts, knowledge, or instructions. Otherwise, unauthorized SQL statements may be generated and blocked, reducing DataAgent analysis speed and effectiveness.
 	AllowedColumns []*string `json:"AllowedColumns,omitempty" xml:"AllowedColumns,omitempty" type:"Repeated"`
-	// The required row filter condition for the current table. If this parameter is not specified, it is ignored. If specified, all SQL statements involving this table are validated to check whether they include the filter field and whether the WHERE condition meets the constraint. SQL statements that do not meet the constraint are rejected. Ensure the validation condition format is correct.
+	// The required row filter condition for the current table. If left empty, this constraint is ignored. If specified, all SQL statements involving this table are validated to check whether they carry the filter field and whether the WHERE condition meets the constraint. SQL statements that do not meet the constraint are rejected. Ensure the validation condition format is correct.
 	//
 	// example:
 	//
@@ -594,19 +594,19 @@ func (s *SendChatMessageRequestDataSourcePermissionTables) Validate() error {
 }
 
 type SendChatMessageRequestDataSources struct {
-	// Deprecated. You do not need to specify this parameter.
+	// Deprecated. No input is required.
 	//
 	// example:
 	//
 	// 123
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The data source type. Valid values: remote_data_center, database, indicating whether the analysis is for a file or a database.
+	// The data source type. Valid values: remote_data_center, database. These values indicate whether the analysis is for a file or a database.
 	//
 	// example:
 	//
 	// remote_data_center
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// Deprecated. You do not need to specify this parameter.
+	// Deprecated. No input is required.
 	//
 	// example:
 	//
@@ -642,13 +642,13 @@ type SendChatMessageRequestDataSources struct {
 	//
 	// f-4w*******
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// Deprecated. You do not need to specify this parameter.
+	// Deprecated. No input is required.
 	//
 	// example:
 	//
 	// localhost
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The permission constraints for querying the current data source. The permission constraint feature is in canary release. This field does not take effect for users who are not included in the canary release.
+	// The permission constraints for querying the current data source. The permission constraint feature is available through canary release. This field does not take effect for users who are not included in the canary release.
 	Permission *SendChatMessageRequestDataSourcesPermission `json:"Permission,omitempty" xml:"Permission,omitempty" type:"Struct"`
 	// The region ID.
 	//
@@ -821,9 +821,9 @@ func (s *SendChatMessageRequestDataSourcesPermission) Validate() error {
 }
 
 type SendChatMessageRequestDataSourcesPermissionTables struct {
-	// The list of columns that are allowed to be queried in the current table. If this parameter is not specified, all columns can be queried. If specified, SQL statements that exceed the allowed scope are blocked. For example, syntax such as SELECT 	- is blocked. To ensure DataAgent analysis effectiveness, avoid specifying columns beyond the allowed scope in the DataAgent prompts, knowledge, or instructions modules. Otherwise, SQL statements without proper permissions are generated and blocked, which reduces DataAgent analysis speed and effectiveness.
+	// The list of columns allowed for querying in the current table. If left empty, all columns can be queried. If specified, SQL statements that exceed the allowed scope are blocked. For example, syntax such as SELECT 	- is blocked. To ensure DataAgent analysis effectiveness, avoid specifying columns beyond the allowed scope in DataAgent prompts, knowledge, or instructions. Otherwise, unauthorized SQL statements may be generated and blocked, reducing DataAgent analysis speed and effectiveness.
 	AllowedColumns []*string `json:"AllowedColumns,omitempty" xml:"AllowedColumns,omitempty" type:"Repeated"`
-	// The required row filter condition for the current table. If this parameter is not specified, it is ignored. If specified, all SQL statements involving this table are validated to check whether they include the filter field and whether the WHERE condition meets the constraint. SQL statements that do not meet the constraint are rejected. Ensure the validation condition format is correct.
+	// The required row filter condition for the current table. If left empty, this constraint is ignored. If specified, all SQL statements involving this table are validated to check whether they carry the filter field and whether the WHERE condition meets the constraint. SQL statements that do not meet the constraint are rejected. Ensure the validation condition format is correct.
 	//
 	// example:
 	//
@@ -901,7 +901,7 @@ type SendChatMessageRequestSessionConfig struct {
 	//
 	// dasd***cc211
 	KbUuidList *string `json:"KbUuidList,omitempty" xml:"KbUuidList,omitempty"`
-	// Currently only Chinese and English are supported. The default value is Chinese. Only uppercase is supported.
+	// Currently only Chinese and English are supported. The default is Chinese. Only uppercase is supported.
 	//
 	// example:
 	//
@@ -915,11 +915,11 @@ type SendChatMessageRequestSessionConfig struct {
 	McpServerIds *string `json:"McpServerIds,omitempty" xml:"McpServerIds,omitempty"`
 	// The mode. Valid values:
 	//
-	// - **ASK_DATA**: data query mode.
+	//  - **ASK_DATA**: data query mode.
 	//
-	// - **ANALYSIS**: analysis mode.
+	//  - **ANALYSIS**: analysis mode.
 	//
-	// - **INSIGHT**: insight mode.
+	//  - **INSIGHT**: insight mode.
 	//
 	// example:
 	//
@@ -931,7 +931,7 @@ type SendChatMessageRequestSessionConfig struct {
 	//
 	// disable
 	PlanMode *string `json:"PlanMode,omitempty" xml:"PlanMode,omitempty"`
-	// The text of up to 64 characters that is used as a watermark in the generated PDF report.
+	// Text of up to 64 characters that is used as a watermark in the generated PDF report.
 	//
 	// example:
 	//
@@ -955,12 +955,13 @@ type SendChatMessageRequestSessionConfig struct {
 	//
 	// False
 	SkipSqlConfirm *bool `json:"SkipSqlConfirm,omitempty" xml:"SkipSqlConfirm,omitempty"`
-	// Specifies whether to skip the web report rendering confirmation.
+	// Specifies whether to skip the web report generation confirmation.
 	//
 	// example:
 	//
 	// True
-	SkipWebReportConfirm *bool `json:"SkipWebReportConfirm,omitempty" xml:"SkipWebReportConfirm,omitempty"`
+	SkipWebReportConfirm   *bool     `json:"SkipWebReportConfirm,omitempty" xml:"SkipWebReportConfirm,omitempty"`
+	UserSpecifiedSkillList []*string `json:"UserSpecifiedSkillList,omitempty" xml:"UserSpecifiedSkillList,omitempty" type:"Repeated"`
 }
 
 func (s SendChatMessageRequestSessionConfig) String() string {
@@ -1021,6 +1022,10 @@ func (s *SendChatMessageRequestSessionConfig) GetSkipSqlConfirm() *bool {
 
 func (s *SendChatMessageRequestSessionConfig) GetSkipWebReportConfirm() *bool {
 	return s.SkipWebReportConfirm
+}
+
+func (s *SendChatMessageRequestSessionConfig) GetUserSpecifiedSkillList() []*string {
+	return s.UserSpecifiedSkillList
 }
 
 func (s *SendChatMessageRequestSessionConfig) SetCustomAgentId(v string) *SendChatMessageRequestSessionConfig {
@@ -1088,6 +1093,11 @@ func (s *SendChatMessageRequestSessionConfig) SetSkipWebReportConfirm(v bool) *S
 	return s
 }
 
+func (s *SendChatMessageRequestSessionConfig) SetUserSpecifiedSkillList(v []*string) *SendChatMessageRequestSessionConfig {
+	s.UserSpecifiedSkillList = v
+	return s
+}
+
 func (s *SendChatMessageRequestSessionConfig) Validate() error {
 	return dara.Validate(s)
 }
@@ -1136,7 +1146,7 @@ type SendChatMessageRequestTaskConfigReportConfig struct {
 	//
 	// default
 	ReportTheme *string `json:"ReportTheme,omitempty" xml:"ReportTheme,omitempty"`
-	// The service type. Valid values: TextReport, WebReport, indicating whether the task generates a text report or a web report. Currently only WebReport is supported.
+	// The service type. Valid values: TextReport, WebReport. These values indicate whether the task generates a text report or a web report. Currently only WebReport is supported.
 	//
 	// example:
 	//

@@ -42,19 +42,19 @@ type iSendChatMessageShrinkRequest interface {
 }
 
 type SendChatMessageShrinkRequest struct {
-	// The agent ID. This is a required field. You can obtain the current AgentId from the response of the CreateAgentSession operation. Agent resources have a lifecycle, so the AgentId you need to specify may change with each request.
+	// The agent ID. This is a required field. You can obtain the current AgentID from the response of the CreateAgentSession operation. Agent resources have a lifecycle, so the AgentID you need to specify may change with each request.
 	//
 	// example:
 	//
 	// agent_***
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The Data Management unit you are currently in. If you select an analytics database, this information is used to correctly connect to your Data Management instance. You can go to the DAS console to view your current Data Management unit. If you are a user on the Alibaba Cloud China Website (www.aliyun.com), you can directly enter cn-hangzhou.
+	// The Data Management unit you are currently in. If you choose to analyze a database, this information is used to correctly connect to your Data Management instance. Go to the DAS console to view your current Data Management unit. If you are a user of the Alibaba Cloud China Website (www.aliyun.com), enter cn-hangzhou.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The data source information. This parameter can be left empty. This parameter supports only one data source. Use the DataSources parameter instead.
+	// The data source information. This parameter can be left empty. Only one data source can be specified for this parameter. Use the DataSources parameter instead.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type SendChatMessageShrinkRequest struct {
 	DataSourceShrink *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
 	// The detailed data source information. This parameter can be left empty.
 	DataSourcesShrink *string `json:"DataSources,omitempty" xml:"DataSources,omitempty"`
-	// The message content to send to the agent.
+	// The message content to send to the Agent.
 	//
 	// This parameter is required.
 	//
@@ -72,13 +72,13 @@ type SendChatMessageShrinkRequest struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The message type. Default value: `[primary]`.
 	//
-	// - Under normal circumstances, when interacting with the Agent, the message type is `[primary]`.
+	// - For regular interactions with the Agent, the message type is `[primary]`.
 	//
 	// - When the message is a response to the Agent\\"s Human-in-Loop question, the type should be `[additional]`.
 	//
-	// - When the message is intended to trigger a report generation, the type should be `[report]`.
+	// - When the message is to trigger a report generation, the type should be `[report]`.
 	//
-	// - When the message is intended to cancel the current session, the type should be `[cancel]`.
+	// - When the message is to cancel the current session, the type should be `[cancel]`.
 	//
 	// example:
 	//
@@ -90,13 +90,13 @@ type SendChatMessageShrinkRequest struct {
 	//
 	// 20qrliuoo7p2vlsfg*****
 	ParentSessionId *string `json:"ParentSessionId,omitempty" xml:"ParentSessionId,omitempty"`
-	// This is a required field when the message type is `additional`. Specify the specific question that the agent asks the user through Human-in-Loop.
+	// A required field when the message type is `additional`. Specifies the specific question that the Agent asks the user through Human-in-Loop.
 	//
 	// example:
 	//
 	// Please provide the criteria for calculating GMV
 	Question *string `json:"Question,omitempty" xml:"Question,omitempty"`
-	// The quoted content. This is typically used when interacting with the agent.
+	// The quoted content, typically used during interactions with the Agent.
 	//
 	// example:
 	//
@@ -104,15 +104,15 @@ type SendChatMessageShrinkRequest struct {
 	QuotedMessage *string `json:"QuotedMessage,omitempty" xml:"QuotedMessage,omitempty"`
 	// **Important**
 	//
-	// When this message is a reply to an Agent message (for example, the Agent asks a clarifying question through ASK_HUMAN), set reply_to to the exact Checkpoint number carried in that Agent message. If this message is not a targeted reply, such as requesting the Agent to perform further in-depth analysis after the analysis is complete, leave reply_to empty or set it to "0".
+	// When this message is a reply to an Agent message (for example, the Agent asks a clarifying question through ASK_HUMAN), reply_to should be set to the exact Checkpoint sequence number carried by that Agent message. If this message is not a targeted reply, such as requesting the Agent to perform further in-depth analysis after analysis is complete, reply_to can be left empty or set to "0".
 	//
-	// This field affects how the Agent decides to process the message. Passing an incorrect value may cause the analysis results to fall short of expectations.
+	// This field affects how the Agent decides to process the message. Passing an incorrect value may result in analysis results that do not meet expectations.
 	//
 	// example:
 	//
 	// 0
 	ReplyTo *string `json:"ReplyTo,omitempty" xml:"ReplyTo,omitempty"`
-	// The special configuration for the current session. For the same session, only the configuration passed with the first SendMessage call takes effect.
+	// The special configuration for this session. For the same session, only the configuration passed with the first SendMessage call takes effect.
 	//
 	// if can be null:
 	// true
@@ -125,7 +125,7 @@ type SendChatMessageShrinkRequest struct {
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// The configuration items that affect only the current task.
 	TaskConfigShrink *string `json:"TaskConfig,omitempty" xml:"TaskConfig,omitempty"`
-	// The user OSS bucket. If this parameter is not specified, analysis data is securely stored in the built-in storage.
+	// The user\\"s OSS bucket. If left empty, analysis data is securely stored in the built-in storage.
 	//
 	// example:
 	//

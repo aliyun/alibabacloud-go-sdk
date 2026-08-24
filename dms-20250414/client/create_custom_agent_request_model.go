@@ -35,6 +35,8 @@ type iCreateCustomAgentRequest interface {
 	GetScheduleTaskConfig() *CreateCustomAgentRequestScheduleTaskConfig
 	SetTextReportConfig(v string) *CreateCustomAgentRequest
 	GetTextReportConfig() *string
+	SetUserSpecifiedSkillList(v []*string) *CreateCustomAgentRequest
+	GetUserSpecifiedSkillList() []*string
 	SetWebReportConfig(v string) *CreateCustomAgentRequest
 	GetWebReportConfig() *string
 	SetWebReportTheme(v string) *CreateCustomAgentRequest
@@ -51,11 +53,11 @@ type CreateCustomAgentRequest struct {
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The specified data range in **JSON string format**.
+	// The specified data scope in **JSON character string format**.
 	//
-	// - Common parameter description
+	// - Common metric description
 	//
-	//   - tableFlag: true indicates a specified data range.
+	//   - tableFlag: true indicates that a data scope is specified.
 	//
 	//   - scope: personal is a fixed value.
 	//
@@ -65,15 +67,15 @@ type CreateCustomAgentRequest struct {
 	//
 	// - DataSourceType: remote_data_center is a fixed value.
 	//
-	// - FileId: The file ID.
+	// - FileId: the file ID.
 	//
-	// - Database: The database name returned by the ListDataCenterTable operation, which is usually the file name.
+	// - Database: the database name returned by the ListDataCenterTable operation, which is typically the file name.
 	//
-	// - Tables: The table name returned by the ListDataCenterTable operation.
+	// - Tables: the table name returned by the ListDataCenterTable operation.
 	//
-	// - TableIds: The TableId returned by the ListDataCenterTable operation.
+	// - TableIds: the TableId returned by the ListDataCenterTable operation.
 	//
-	// - RegionId: The current region.
+	// - RegionId: the current region.
 	//
 	// ```
 	//
@@ -115,23 +117,23 @@ type CreateCustomAgentRequest struct {
 	//
 	// - DataSourceType: database is a fixed value.
 	//
-	// - DmsInstanceId: The DMS instance ID returned by the data center operation.
+	// - DmsInstanceId: the DMS instance ID returned by the data center operation.
 	//
-	// - DmsDatabaseId: The DMS database ID returned by the data center operation.
+	// - DmsDatabaseId: the DMS database ID returned by the data center operation.
 	//
-	// - FileId: The instance name (deprecated).
+	// - FileId: the instance name (deprecated).
 	//
-	// - DbName: The database name returned by the data center operation.
+	// - DbName: the database name returned by the data center operation.
 	//
-	// - Database: The database name returned by the data center operation.
+	// - Database: the database name returned by the data center operation.
 	//
-	// - Tables: The table name returned by the data center operation.
+	// - Tables: the table name returned by the data center operation.
 	//
-	// - TableIds: The TableId returned by the data center operation.
+	// - TableIds: the TableId returned by the data center operation.
 	//
-	// - Engine: The engine type (mysql or postgresql).
+	// - Engine: the DPI engine type (mysql or postgresql).
 	//
-	// - RegionId: The current region.
+	// - RegionId: the current region.
 	//
 	// ```
 	//
@@ -191,7 +193,7 @@ type CreateCustomAgentRequest struct {
 	//
 	//     "FileId" : "f-5qlrwaw10********s3gpw1z",
 	//
-	//     "Database" : "TestTable******.xlsx",
+	//     "Database" : "测试表格******.xlsx",
 	//
 	//     "Tables" : [ "Sheet1" ],
 	//
@@ -213,33 +215,37 @@ type CreateCustomAgentRequest struct {
 	ExecutionConfig *CreateCustomAgentRequestExecutionConfig `json:"ExecutionConfig,omitempty" xml:"ExecutionConfig,omitempty" type:"Struct"`
 	// The instruction.
 	//
-	// example:
-	//
-	// Core metric definitions:
-	//
-	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders;
-	//
-	// 2. Order volume is the number of valid orders placed per day;
-	//
-	// 3. UV (Unique Visitors) refers to the deduplicated number of users who visit the website or app;
-	//
-	// 4. Conversion rate = number of paid orders / UV, reflecting traffic conversion efficiency;
-	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
-	// The knowledge.
+	// - Input limit: a maximum of 10000 characters.
 	//
 	// example:
 	//
 	// Core metric definitions:
 	//
-	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders.
+	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including paid and unpaid orders.
 	//
 	// 2. Order volume is the number of valid orders placed per day.
 	//
 	// 3. UV (Unique Visitors) refers to the deduplicated number of users who visit the website or app.
 	//
-	// 4. Conversion rate = number of paid orders / UV, reflecting traffic conversion efficiency.
+	// 4. Conversion rate = number of paid orders / UV, reflecting traffic conversion efficiency
+	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
+	// The knowledge.
+	//
+	// - Input limit: a maximum of 10000 characters.
+	//
+	// example:
+	//
+	// Core metric definitions:
+	//
+	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including paid and unpaid orders.
+	//
+	// 2. Order volume is the number of valid orders placed per day.
+	//
+	// 3. UV (Unique Visitors) refers to the deduplicated number of users who visit the website or app.
+	//
+	// 4. Conversion rate = number of paid orders / UV, reflecting traffic conversion efficiency
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
-	// The external knowledge base configurations.
+	// The external knowledge base.
 	KnowledgeConfigList         []*CreateCustomAgentRequestKnowledgeConfigList         `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
 	KnowledgeSemanticConfigList []*CreateCustomAgentRequestKnowledgeSemanticConfigList `json:"KnowledgeSemanticConfigList,omitempty" xml:"KnowledgeSemanticConfigList,omitempty" type:"Repeated"`
 	// The name of the custom agent.
@@ -256,13 +262,14 @@ type CreateCustomAgentRequest struct {
 	//
 	// example:
 	//
-	// The text report requires all numbers to be written in Chinese characters instead of Arabic numerals
-	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
+	// The text report requires all numbers to be expressed in Chinese characters instead of Arabic numerals
+	TextReportConfig       *string   `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
+	UserSpecifiedSkillList []*string `json:"UserSpecifiedSkillList,omitempty" xml:"UserSpecifiedSkillList,omitempty" type:"Repeated"`
 	// The web report format.
 	//
 	// example:
 	//
-	// The web report requires all numbers to be written in Chinese characters instead of Arabic numerals
+	// The web report requires all numbers to be expressed in Chinese characters instead of Arabic numerals
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
 	WebReportTheme  *string `json:"WebReportTheme,omitempty" xml:"WebReportTheme,omitempty"`
 	// The workspace ID.
@@ -331,6 +338,10 @@ func (s *CreateCustomAgentRequest) GetScheduleTaskConfig() *CreateCustomAgentReq
 
 func (s *CreateCustomAgentRequest) GetTextReportConfig() *string {
 	return s.TextReportConfig
+}
+
+func (s *CreateCustomAgentRequest) GetUserSpecifiedSkillList() []*string {
+	return s.UserSpecifiedSkillList
 }
 
 func (s *CreateCustomAgentRequest) GetWebReportConfig() *string {
@@ -407,6 +418,11 @@ func (s *CreateCustomAgentRequest) SetScheduleTaskConfig(v *CreateCustomAgentReq
 
 func (s *CreateCustomAgentRequest) SetTextReportConfig(v string) *CreateCustomAgentRequest {
 	s.TextReportConfig = &v
+	return s
+}
+
+func (s *CreateCustomAgentRequest) SetUserSpecifiedSkillList(v []*string) *CreateCustomAgentRequest {
+	s.UserSpecifiedSkillList = v
 	return s
 }
 
@@ -547,7 +563,7 @@ type CreateCustomAgentRequestExecutionConfig struct {
 	//
 	// true
 	SkipSqlConfirm *bool `json:"SkipSqlConfirm,omitempty" xml:"SkipSqlConfirm,omitempty"`
-	// Specifies whether to skip the web report rendering confirmation.
+	// Specifies whether to skip the web report generation confirmation.
 	//
 	// example:
 	//
@@ -614,6 +630,8 @@ func (s *CreateCustomAgentRequestExecutionConfig) Validate() error {
 
 type CreateCustomAgentRequestKnowledgeConfigList struct {
 	// The access type.
+	//
+	// - mcp: access through MCP.
 	//
 	// example:
 	//

@@ -10,6 +10,70 @@ import (
 
 // Summary:
 //
+// # AddDataAgentMemory
+//
+// @param request - AddDataAgentMemoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddDataAgentMemoryResponse
+func (client *Client) AddDataAgentMemoryWithContext(ctx context.Context, request *AddDataAgentMemoryRequest, runtime *dara.RuntimeOptions) (_result *AddDataAgentMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Content) {
+		query["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.FromId) {
+		query["FromId"] = request.FromId
+	}
+
+	if !dara.IsNil(request.Label) {
+		query["Label"] = request.Label
+	}
+
+	if !dara.IsNil(request.MemFrom) {
+		query["MemFrom"] = request.MemFrom
+	}
+
+	if !dara.IsNil(request.SessionUuid) {
+		query["SessionUuid"] = request.SessionUuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddDataAgentMemory"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddDataAgentMemoryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds a user to a specified workspace.
 //
 // @param request - AddUserToDataAgentWorkspaceRequest
@@ -654,6 +718,10 @@ func (client *Client) CreateCustomAgentWithContext(ctx context.Context, tmpReq *
 		request.ScheduleTaskConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScheduleTaskConfig, dara.String("ScheduleTaskConfig"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.UserSpecifiedSkillList) {
+		request.UserSpecifiedSkillListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserSpecifiedSkillList, dara.String("UserSpecifiedSkillList"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CallbackConfigShrink) {
 		query["CallbackConfig"] = request.CallbackConfigShrink
@@ -705,6 +773,10 @@ func (client *Client) CreateCustomAgentWithContext(ctx context.Context, tmpReq *
 
 	if !dara.IsNil(request.TextReportConfig) {
 		query["TextReportConfig"] = request.TextReportConfig
+	}
+
+	if !dara.IsNil(request.UserSpecifiedSkillListShrink) {
+		query["UserSpecifiedSkillList"] = request.UserSpecifiedSkillListShrink
 	}
 
 	if !dara.IsNil(request.WebReportConfig) {
@@ -5855,6 +5927,10 @@ func (client *Client) ModifyCustomAgentWithContext(ctx context.Context, tmpReq *
 		request.ScheduleTaskConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScheduleTaskConfig, dara.String("ScheduleTaskConfig"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.UserSpecifiedSkillList) {
+		request.UserSpecifiedSkillListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserSpecifiedSkillList, dara.String("UserSpecifiedSkillList"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CallbackConfigShrink) {
 		query["CallbackConfig"] = request.CallbackConfigShrink
@@ -5910,6 +5986,10 @@ func (client *Client) ModifyCustomAgentWithContext(ctx context.Context, tmpReq *
 
 	if !dara.IsNil(request.TextReportConfig) {
 		query["TextReportConfig"] = request.TextReportConfig
+	}
+
+	if !dara.IsNil(request.UserSpecifiedSkillListShrink) {
+		query["UserSpecifiedSkillList"] = request.UserSpecifiedSkillListShrink
 	}
 
 	if !dara.IsNil(request.WebReportConfig) {
@@ -6355,7 +6435,19 @@ func (client *Client) SaveWorkspaceCodeWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// ## Request description.
+// ## Request description
+//
+// - `agent_id` and `session_id` are required fields.
+//
+// - `message_type` defaults to `primary`. Set it to `additional` or `cancel` when you need to append information or cancel a session.
+//
+// - The `reply_to` field indicates which Agent message this message is responding to. The default value is `0`.
+//
+// - When `message_type` is `additional`, the `question` field is required.
+//
+// - `quoted_message` can be used to quote the user\\"s previous message content.
+//
+// - Fields such as `data_source`, `dms_user`, `db_metadata`, and `session_config` are optional but provide more detailed context information.
 //
 // @param tmpReq - SendChatMessageRequest
 //
