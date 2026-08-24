@@ -32,7 +32,7 @@ type QueryMonthlySlaListResponseBody struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The data list.
 	Data []*QueryMonthlySlaListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The response metadata.
+	// The response struct metadata.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type QueryMonthlySlaListResponseBodyData struct {
 	//
 	// 99.9155
 	AvailableRate *float64 `json:"AvailableRate,omitempty" xml:"AvailableRate,omitempty"`
-	// The unique identifier of the damage record, which is used for targeted compensation application.
+	// The unique ID of the damage record, used for targeted claims.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type QueryMonthlySlaListResponseBodyData struct {
 	//
 	// 202603
 	Month *int32 `json:"Month,omitempty" xml:"Month,omitempty"`
-	// The monthly service charge.
+	// The monthly service fee.
 	//
 	// example:
 	//
@@ -168,15 +168,21 @@ type QueryMonthlySlaListResponseBodyData struct {
 	//
 	// example:
 	//
-	// SLA赔付
+	// SLA compensation
 	PayDescription *string `json:"PayDescription,omitempty" xml:"PayDescription,omitempty"`
-	// The compensation ratio. Unit: %.
+	// The compensation ratio, in percentage (%).
 	//
 	// example:
 	//
 	// 10
 	PayRate *float64 `json:"PayRate,omitempty" xml:"PayRate,omitempty"`
-	// The compensation status. Valid values: 0 (uncompensated) and 1 (compensated).
+	// The compensation status. Valid values:
+	//
+	// - 0: not compensated.
+	//
+	// - 1: compensated.
+	//
+	// - 2: no compensation required.
 	//
 	// example:
 	//
@@ -188,7 +194,7 @@ type QueryMonthlySlaListResponseBodyData struct {
 	//
 	// oss
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The compensation amount.
+	// The compensation amount that should be paid.
 	//
 	// example:
 	//

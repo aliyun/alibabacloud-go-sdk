@@ -28,13 +28,13 @@ type iQueryMonthlySlaListRequest interface {
 }
 
 type QueryMonthlySlaListRequest struct {
-	// The current page number. Default value: 1, which indicates the first page.
+	// The current page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The list of enterprise entities and accounts. If this parameter is left empty, the current account is queried.
+	// The enterprise and account list. If this parameter is empty, the current account is queried.
 	EcIdAccountIds []*QueryMonthlySlaListRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
 	// Optional. Filter by instance ID.
 	//
@@ -42,13 +42,13 @@ type QueryMonthlySlaListRequest struct {
 	//
 	// ["instance_1","instance_2"]
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// Optional. Month list in yyyyMM format.
+	// Optional. List of months in yyyyMM format.
 	//
 	// example:
 	//
 	// [202602,202603]
 	Months []*int32 `json:"Months,omitempty" xml:"Months,omitempty" type:"Repeated"`
-	// The level-1 marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
+	// The primary marketplace ID. If this parameter is empty, the marketplace ID of the current user is used by default.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ func (s *QueryMonthlySlaListRequest) Validate() error {
 }
 
 type QueryMonthlySlaListRequestEcIdAccountIds struct {
-	// The list of accounts to query. If this parameter is left empty, all accounts under the current entity ID are selected.
+	// The list of accounts to access. If this parameter is empty, all accounts under the current entity ID are selected.
 	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
 	// The enterprise entity ID.
 	//

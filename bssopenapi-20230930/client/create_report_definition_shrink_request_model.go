@@ -5,41 +5,41 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
-type iCreateReportDefinitionRequest interface {
+type iCreateReportDefinitionShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetBeginBillingCycle(v string) *CreateReportDefinitionRequest
+	SetBeginBillingCycle(v string) *CreateReportDefinitionShrinkRequest
 	GetBeginBillingCycle() *string
-	SetIncludeMembers(v string) *CreateReportDefinitionRequest
+	SetIncludeMembers(v string) *CreateReportDefinitionShrinkRequest
 	GetIncludeMembers() *string
-	SetMcProject(v string) *CreateReportDefinitionRequest
+	SetMcProject(v string) *CreateReportDefinitionShrinkRequest
 	GetMcProject() *string
-	SetMcTableName(v string) *CreateReportDefinitionRequest
+	SetMcTableName(v string) *CreateReportDefinitionShrinkRequest
 	GetMcTableName() *string
-	SetNbid(v string) *CreateReportDefinitionRequest
+	SetNbid(v string) *CreateReportDefinitionShrinkRequest
 	GetNbid() *string
-	SetNotSendOnNoData(v string) *CreateReportDefinitionRequest
+	SetNotSendOnNoData(v string) *CreateReportDefinitionShrinkRequest
 	GetNotSendOnNoData() *string
-	SetOssBucketName(v string) *CreateReportDefinitionRequest
+	SetOssBucketName(v string) *CreateReportDefinitionShrinkRequest
 	GetOssBucketName() *string
-	SetOssBucketOwnerAccountId(v int64) *CreateReportDefinitionRequest
+	SetOssBucketOwnerAccountId(v int64) *CreateReportDefinitionShrinkRequest
 	GetOssBucketOwnerAccountId() *int64
-	SetOssBucketPath(v string) *CreateReportDefinitionRequest
+	SetOssBucketPath(v string) *CreateReportDefinitionShrinkRequest
 	GetOssBucketPath() *string
-	SetReportSourceType(v string) *CreateReportDefinitionRequest
+	SetReportSourceType(v string) *CreateReportDefinitionShrinkRequest
 	GetReportSourceType() *string
-	SetReportType(v string) *CreateReportDefinitionRequest
+	SetReportType(v string) *CreateReportDefinitionShrinkRequest
 	GetReportType() *string
-	SetSelectedFields(v []*string) *CreateReportDefinitionRequest
-	GetSelectedFields() []*string
-	SetSendWithAttach(v string) *CreateReportDefinitionRequest
+	SetSelectedFieldsShrink(v string) *CreateReportDefinitionShrinkRequest
+	GetSelectedFieldsShrink() *string
+	SetSendWithAttach(v string) *CreateReportDefinitionShrinkRequest
 	GetSendWithAttach() *string
-	SetSplitFileOnUserId(v string) *CreateReportDefinitionRequest
+	SetSplitFileOnUserId(v string) *CreateReportDefinitionShrinkRequest
 	GetSplitFileOnUserId() *string
 }
 
-type CreateReportDefinitionRequest struct {
+type CreateReportDefinitionShrinkRequest struct {
 	// The start billing cycle for push. After successful subscription, the system automatically pushes data from the start billing cycle to the current time. This parameter is invalid for monthly bill PDF subscriptions and does not re-push historical data. Data within the last year can be pushed.
 	//
 	// example:
@@ -119,7 +119,7 @@ type CreateReportDefinitionRequest struct {
 	// consumeDetailBillV2
 	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
 	// The user-specified subscription fields.
-	SelectedFields []*string `json:"SelectedFields,omitempty" xml:"SelectedFields,omitempty" type:"Repeated"`
+	SelectedFieldsShrink *string `json:"SelectedFields,omitempty" xml:"SelectedFields,omitempty"`
 	// Email subscription configuration. Specifies whether to include bill attachments in emails.
 	//
 	// example:
@@ -134,140 +134,140 @@ type CreateReportDefinitionRequest struct {
 	SplitFileOnUserId *string `json:"SplitFileOnUserId,omitempty" xml:"SplitFileOnUserId,omitempty"`
 }
 
-func (s CreateReportDefinitionRequest) String() string {
+func (s CreateReportDefinitionShrinkRequest) String() string {
 	return dara.Prettify(s)
 }
 
-func (s CreateReportDefinitionRequest) GoString() string {
+func (s CreateReportDefinitionShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateReportDefinitionRequest) GetBeginBillingCycle() *string {
+func (s *CreateReportDefinitionShrinkRequest) GetBeginBillingCycle() *string {
 	return s.BeginBillingCycle
 }
 
-func (s *CreateReportDefinitionRequest) GetIncludeMembers() *string {
+func (s *CreateReportDefinitionShrinkRequest) GetIncludeMembers() *string {
 	return s.IncludeMembers
 }
 
-func (s *CreateReportDefinitionRequest) GetMcProject() *string {
+func (s *CreateReportDefinitionShrinkRequest) GetMcProject() *string {
 	return s.McProject
 }
 
-func (s *CreateReportDefinitionRequest) GetMcTableName() *string {
+func (s *CreateReportDefinitionShrinkRequest) GetMcTableName() *string {
 	return s.McTableName
 }
 
-func (s *CreateReportDefinitionRequest) GetNbid() *string {
+func (s *CreateReportDefinitionShrinkRequest) GetNbid() *string {
 	return s.Nbid
 }
 
-func (s *CreateReportDefinitionRequest) GetNotSendOnNoData() *string {
+func (s *CreateReportDefinitionShrinkRequest) GetNotSendOnNoData() *string {
 	return s.NotSendOnNoData
 }
 
-func (s *CreateReportDefinitionRequest) GetOssBucketName() *string {
+func (s *CreateReportDefinitionShrinkRequest) GetOssBucketName() *string {
 	return s.OssBucketName
 }
 
-func (s *CreateReportDefinitionRequest) GetOssBucketOwnerAccountId() *int64 {
+func (s *CreateReportDefinitionShrinkRequest) GetOssBucketOwnerAccountId() *int64 {
 	return s.OssBucketOwnerAccountId
 }
 
-func (s *CreateReportDefinitionRequest) GetOssBucketPath() *string {
+func (s *CreateReportDefinitionShrinkRequest) GetOssBucketPath() *string {
 	return s.OssBucketPath
 }
 
-func (s *CreateReportDefinitionRequest) GetReportSourceType() *string {
+func (s *CreateReportDefinitionShrinkRequest) GetReportSourceType() *string {
 	return s.ReportSourceType
 }
 
-func (s *CreateReportDefinitionRequest) GetReportType() *string {
+func (s *CreateReportDefinitionShrinkRequest) GetReportType() *string {
 	return s.ReportType
 }
 
-func (s *CreateReportDefinitionRequest) GetSelectedFields() []*string {
-	return s.SelectedFields
+func (s *CreateReportDefinitionShrinkRequest) GetSelectedFieldsShrink() *string {
+	return s.SelectedFieldsShrink
 }
 
-func (s *CreateReportDefinitionRequest) GetSendWithAttach() *string {
+func (s *CreateReportDefinitionShrinkRequest) GetSendWithAttach() *string {
 	return s.SendWithAttach
 }
 
-func (s *CreateReportDefinitionRequest) GetSplitFileOnUserId() *string {
+func (s *CreateReportDefinitionShrinkRequest) GetSplitFileOnUserId() *string {
 	return s.SplitFileOnUserId
 }
 
-func (s *CreateReportDefinitionRequest) SetBeginBillingCycle(v string) *CreateReportDefinitionRequest {
+func (s *CreateReportDefinitionShrinkRequest) SetBeginBillingCycle(v string) *CreateReportDefinitionShrinkRequest {
 	s.BeginBillingCycle = &v
 	return s
 }
 
-func (s *CreateReportDefinitionRequest) SetIncludeMembers(v string) *CreateReportDefinitionRequest {
+func (s *CreateReportDefinitionShrinkRequest) SetIncludeMembers(v string) *CreateReportDefinitionShrinkRequest {
 	s.IncludeMembers = &v
 	return s
 }
 
-func (s *CreateReportDefinitionRequest) SetMcProject(v string) *CreateReportDefinitionRequest {
+func (s *CreateReportDefinitionShrinkRequest) SetMcProject(v string) *CreateReportDefinitionShrinkRequest {
 	s.McProject = &v
 	return s
 }
 
-func (s *CreateReportDefinitionRequest) SetMcTableName(v string) *CreateReportDefinitionRequest {
+func (s *CreateReportDefinitionShrinkRequest) SetMcTableName(v string) *CreateReportDefinitionShrinkRequest {
 	s.McTableName = &v
 	return s
 }
 
-func (s *CreateReportDefinitionRequest) SetNbid(v string) *CreateReportDefinitionRequest {
+func (s *CreateReportDefinitionShrinkRequest) SetNbid(v string) *CreateReportDefinitionShrinkRequest {
 	s.Nbid = &v
 	return s
 }
 
-func (s *CreateReportDefinitionRequest) SetNotSendOnNoData(v string) *CreateReportDefinitionRequest {
+func (s *CreateReportDefinitionShrinkRequest) SetNotSendOnNoData(v string) *CreateReportDefinitionShrinkRequest {
 	s.NotSendOnNoData = &v
 	return s
 }
 
-func (s *CreateReportDefinitionRequest) SetOssBucketName(v string) *CreateReportDefinitionRequest {
+func (s *CreateReportDefinitionShrinkRequest) SetOssBucketName(v string) *CreateReportDefinitionShrinkRequest {
 	s.OssBucketName = &v
 	return s
 }
 
-func (s *CreateReportDefinitionRequest) SetOssBucketOwnerAccountId(v int64) *CreateReportDefinitionRequest {
+func (s *CreateReportDefinitionShrinkRequest) SetOssBucketOwnerAccountId(v int64) *CreateReportDefinitionShrinkRequest {
 	s.OssBucketOwnerAccountId = &v
 	return s
 }
 
-func (s *CreateReportDefinitionRequest) SetOssBucketPath(v string) *CreateReportDefinitionRequest {
+func (s *CreateReportDefinitionShrinkRequest) SetOssBucketPath(v string) *CreateReportDefinitionShrinkRequest {
 	s.OssBucketPath = &v
 	return s
 }
 
-func (s *CreateReportDefinitionRequest) SetReportSourceType(v string) *CreateReportDefinitionRequest {
+func (s *CreateReportDefinitionShrinkRequest) SetReportSourceType(v string) *CreateReportDefinitionShrinkRequest {
 	s.ReportSourceType = &v
 	return s
 }
 
-func (s *CreateReportDefinitionRequest) SetReportType(v string) *CreateReportDefinitionRequest {
+func (s *CreateReportDefinitionShrinkRequest) SetReportType(v string) *CreateReportDefinitionShrinkRequest {
 	s.ReportType = &v
 	return s
 }
 
-func (s *CreateReportDefinitionRequest) SetSelectedFields(v []*string) *CreateReportDefinitionRequest {
-	s.SelectedFields = v
+func (s *CreateReportDefinitionShrinkRequest) SetSelectedFieldsShrink(v string) *CreateReportDefinitionShrinkRequest {
+	s.SelectedFieldsShrink = &v
 	return s
 }
 
-func (s *CreateReportDefinitionRequest) SetSendWithAttach(v string) *CreateReportDefinitionRequest {
+func (s *CreateReportDefinitionShrinkRequest) SetSendWithAttach(v string) *CreateReportDefinitionShrinkRequest {
 	s.SendWithAttach = &v
 	return s
 }
 
-func (s *CreateReportDefinitionRequest) SetSplitFileOnUserId(v string) *CreateReportDefinitionRequest {
+func (s *CreateReportDefinitionShrinkRequest) SetSplitFileOnUserId(v string) *CreateReportDefinitionShrinkRequest {
 	s.SplitFileOnUserId = &v
 	return s
 }
 
-func (s *CreateReportDefinitionRequest) Validate() error {
+func (s *CreateReportDefinitionShrinkRequest) Validate() error {
 	return dara.Validate(s)
 }

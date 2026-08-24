@@ -34,13 +34,13 @@ type iCreateReportDefinitionResponseBody interface {
 }
 
 type CreateReportDefinitionResponseBody struct {
-	// The start billing cycle for push. After the subscription succeeds, the system automatically pushes data from the start billing cycle to the current time. This parameter is invalid for monthly bill PDF subscriptions, and historical data will not be re-pushed. You can push data within the last year.
+	// The start billing cycle for push. After successful subscription, the system automatically pushes data from the start billing cycle to the current time. This parameter is invalid for monthly bill PDF subscriptions and does not re-push historical data. Data within the last year can be pushed.
 	//
 	// example:
 	//
 	// 2025-05
 	BeginBillingCycle *string `json:"BeginBillingCycle,omitempty" xml:"BeginBillingCycle,omitempty"`
-	// The metadata of the response.
+	// The response struct metadata.
 	//
 	// example:
 	//
@@ -52,31 +52,31 @@ type CreateReportDefinitionResponseBody struct {
 	//
 	// sh-bill
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	// The UID of the OSS bucket owner that stores the files. If this is a Bid/Reseller subscription and you need to push data to a sub-account\\"s OSS, specify this parameter. The account must be a sub-account of the calling account, and the AliyunConsumeDump2OSSRole permission must be granted to this account. Regular users do not need to specify this parameter. The default value is the calling account.
+	// The UID of the OSS owner that stores the files. If this is a Bid/Reseller subscription and you need to push to a sub-account\\"s OSS, specify this parameter. The account must be a sub-account of the calling account, and the AliyunConsumeDump2OSSRole permission must be granted to this account. Regular users do not need to specify this parameter. The default value is the calling account.
 	//
 	// example:
 	//
 	// 1234567812345678
 	OssBucketOwnerAccountId *int64 `json:"OssBucketOwnerAccountId,omitempty" xml:"OssBucketOwnerAccountId,omitempty"`
-	// The storage path of the OSS bucket.
+	// The OSS bucket storage path.
 	//
 	// example:
 	//
 	// bill/
 	OssBucketPath *string `json:"OssBucketPath,omitempty" xml:"OssBucketPath,omitempty"`
-	// The name of the subscription source.
+	// The subscription source name.
 	//
 	// example:
 	//
 	// OSS
 	ReportSourceName *string `json:"ReportSourceName,omitempty" xml:"ReportSourceName,omitempty"`
-	// The subscription source. Valid values: OSS and MC.
+	// The subscription source. Valid values: OSS or MC.
 	//
 	// example:
 	//
 	// OSS
 	ReportSourceType *string `json:"ReportSourceType,omitempty" xml:"ReportSourceType,omitempty"`
-	// The ID of the billing subscription task.
+	// The bill subscription task ID.
 	//
 	// example:
 	//
@@ -84,15 +84,15 @@ type CreateReportDefinitionResponseBody struct {
 	ReportTaskId *int64 `json:"ReportTaskId,omitempty" xml:"ReportTaskId,omitempty"`
 	// The subscription type. Valid values:
 	//
-	// - consumeDetailBillV2: consumption details. This value is supported only by OSS/MC subscriptions.
+	// - consumeDetailBillV2: consumption details (supported only for OSS/MC subscriptions).
 	//
-	// - splitDetailBillV2: split details. This value is supported only by OSS/MC subscriptions.
+	// - splitDetailBillV2: split details (supported only for OSS/MC subscriptions).
 	//
-	// - costDetailBillV2: cost details. This value is supported only by OSS/MC subscriptions.
+	// - costDetailBillV2: cost details (supported only for OSS/MC subscriptions).
 	//
-	// - monthBillOverview: monthly bill overview. This value is supported only by OSS/MSC_EMAIL subscriptions.
+	// - monthBillOverview: monthly bill summary (supported only for OSS/MSC_EMAIL subscriptions).
 	//
-	// - focus: FOCUS bill. This value is supported only by OSS/MC subscriptions.
+	// - focus: FOCUS bill (supported only for OSS/MC subscriptions).
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type CreateReportDefinitionResponseBody struct {
 	//
 	// 340CAB45-0637-5875-9BE4-EFD5750F6BA5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The time when the subscription was created.
+	// The subscription creation time.
 	//
 	// example:
 	//

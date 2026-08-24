@@ -132,7 +132,8 @@ type ListReportDefinitionsResponseBodyReportDefinitions struct {
 	// example:
 	//
 	// BillingItemDetailForBillingPeriod
-	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	ReportType     *string   `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	SelectedFields []*string `json:"SelectedFields,omitempty" xml:"SelectedFields,omitempty" type:"Repeated"`
 	// The time when the subscription was created.
 	//
 	// example:
@@ -181,6 +182,10 @@ func (s *ListReportDefinitionsResponseBodyReportDefinitions) GetReportType() *st
 	return s.ReportType
 }
 
+func (s *ListReportDefinitionsResponseBodyReportDefinitions) GetSelectedFields() []*string {
+	return s.SelectedFields
+}
+
 func (s *ListReportDefinitionsResponseBodyReportDefinitions) GetSubscribeCreateTime() *string {
 	return s.SubscribeCreateTime
 }
@@ -222,6 +227,11 @@ func (s *ListReportDefinitionsResponseBodyReportDefinitions) SetReportTaskId(v i
 
 func (s *ListReportDefinitionsResponseBodyReportDefinitions) SetReportType(v string) *ListReportDefinitionsResponseBodyReportDefinitions {
 	s.ReportType = &v
+	return s
+}
+
+func (s *ListReportDefinitionsResponseBodyReportDefinitions) SetSelectedFields(v []*string) *ListReportDefinitionsResponseBodyReportDefinitions {
+	s.SelectedFields = v
 	return s
 }
 

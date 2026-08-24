@@ -24,7 +24,7 @@ type iDescribeBudgetsRequest interface {
 }
 
 type DescribeBudgetsRequest struct {
-	// The budget name. Fuzzy search is supported.
+	// The budget name. Fuzzy match is supported.
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type DescribeBudgetsRequest struct {
 	//
 	// NOT_EXPIRED
 	ExpireStatus *string `json:"ExpireStatus,omitempty" xml:"ExpireStatus,omitempty"`
-	// The primary marketplace ID. If this parameter is left empty, the ID of the marketplace to which the current user belongs is used by default.
+	// The level-1 marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
 	//
 	// example:
 	//
 	// 2688801000001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
-	// Page number.
+	// The page number.
 	//
 	// example:
 	//

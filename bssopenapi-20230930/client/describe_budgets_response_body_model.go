@@ -129,21 +129,21 @@ type DescribeBudgetsResponseBodyData struct {
 	//
 	// CONSUME
 	BudgetType *string `json:"BudgetType,omitempty" xml:"BudgetType,omitempty"`
-	// The remarks.
+	// The comment.
 	//
 	// example:
 	//
 	// budget-1
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The end period.
+	// The end period of the budget cycle.
 	//
 	// example:
 	//
 	// 2026-12
 	CycleEndPeriod *string `json:"CycleEndPeriod,omitempty" xml:"CycleEndPeriod,omitempty"`
-	// The specified quota per cycle.
+	// The specified quota for each cycle.
 	CycleQuota []*DescribeBudgetsResponseBodyDataCycleQuota `json:"CycleQuota,omitempty" xml:"CycleQuota,omitempty" type:"Repeated"`
-	// The start period.
+	// The start period of the budget cycle.
 	//
 	// example:
 	//
@@ -403,7 +403,7 @@ func (s *DescribeBudgetsResponseBodyDataCycleQuota) Validate() error {
 }
 
 type DescribeBudgetsResponseBodyDataEcIdAccountIdsFilter struct {
-	// The member account IDs.
+	// The IDs of the member accounts.
 	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
 	// The enterprise entity ID.
 	//
@@ -456,7 +456,7 @@ type DescribeBudgetsResponseBodyDataQueryFilter struct {
 	//
 	// IN
 	SelectType *string `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
-	// The filter value list.
+	// The list of filter values.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -500,13 +500,13 @@ func (s *DescribeBudgetsResponseBodyDataQueryFilter) Validate() error {
 }
 
 type DescribeBudgetsResponseBodyDataWarnConfs struct {
-	// The remarks.
+	// The comment.
 	//
 	// example:
 	//
 	// comment1
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Indicates whether EventBridge is enabled.
+	// Specifies whether EventBridge is enabled.
 	EventBridge *bool `json:"EventBridge,omitempty" xml:"EventBridge,omitempty"`
 	// The list of message center notification channels.
 	MscChannels []*string `json:"MscChannels,omitempty" xml:"MscChannels,omitempty" type:"Repeated"`
@@ -518,7 +518,7 @@ type DescribeBudgetsResponseBodyDataWarnConfs struct {
 	//
 	// Alert-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The sort sequence number. This parameter is present only in responses. Alerts are numbered in ascending order by alert ID, starting from 1.
+	// The sequence number. This field is present only in responses and is numbered starting from 1 in ascending order of alert ID.
 	//
 	// example:
 	//

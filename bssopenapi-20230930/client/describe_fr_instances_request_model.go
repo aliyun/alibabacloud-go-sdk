@@ -66,7 +66,7 @@ type DescribeFrInstancesRequest struct {
 	//
 	// dynamicMonth
 	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
-	// The enterprise and account list. If this parameter is empty, the current account is queried.
+	// The enterprise and account list. If empty, the current account is queried.
 	EcIdAccountIds []*DescribeFrInstancesRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
 	// The end time.
 	//
@@ -74,7 +74,7 @@ type DescribeFrInstancesRequest struct {
 	//
 	// 1710604800000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The resource dimension to query.
+	// The resource dimension for the query.
 	//
 	// example:
 	//
@@ -86,13 +86,13 @@ type DescribeFrInstancesRequest struct {
 	//
 	// alb_cubag*******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance label value of the resource plan.
+	// The instance tag label value of the resource plan instance.
 	//
 	// example:
 	//
 	// FR-***
 	InstanceTag *string `json:"InstanceTag,omitempty" xml:"InstanceTag,omitempty"`
-	// The primary marketplace ID. If this parameter is empty, the marketplace ID of the current user is used by default.
+	// The primary marketplace ID. If empty, the marketplace ID of the current user is used by default.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type DescribeFrInstancesRequest struct {
 	//
 	// startTime
 	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
-	// The sorting rule.
+	// The collation for sorting.
 	//
 	// example:
 	//
@@ -338,7 +338,7 @@ func (s *DescribeFrInstancesRequest) Validate() error {
 }
 
 type DescribeFrInstancesRequestEcIdAccountIds struct {
-	// The list of accounts to access. If this parameter is empty, all accounts under the current entity ID are selected.
+	// The account list to access. If empty, all accounts under the current entity ID are selected.
 	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
 	// The enterprise entity ID.
 	//

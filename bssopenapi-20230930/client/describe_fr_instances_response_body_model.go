@@ -128,12 +128,13 @@ type DescribeFrInstancesResponseBodyData struct {
 	// example:
 	//
 	// icloudtest
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountName  *string                                          `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AutoPurchase *DescribeFrInstancesResponseBodyDataAutoPurchase `json:"AutoPurchase,omitempty" xml:"AutoPurchase,omitempty" type:"Struct"`
 	// The capacity type name.
 	//
 	// example:
 	//
-	// 总量递减型
+	// Total decrement
 	CapacitiyTypeName *string `json:"CapacitiyTypeName,omitempty" xml:"CapacitiyTypeName,omitempty"`
 	// The capacity type.
 	CapacityType *DescribeFrInstancesResponseBodyDataCapacityType `json:"CapacityType,omitempty" xml:"CapacityType,omitempty" type:"Struct"`
@@ -155,15 +156,15 @@ type DescribeFrInstancesResponseBodyData struct {
 	//
 	// example:
 	//
-	// 性能测试
+	// Performance Testing
 	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
-	// The current capacity baseline unit.
+	// The current capacity base unit.
 	//
 	// example:
 	//
 	// CU
 	CurrCapacityBaseUnit *string `json:"CurrCapacityBaseUnit,omitempty" xml:"CurrCapacityBaseUnit,omitempty"`
-	// The current capacity baseline value.
+	// The current capacity base value.
 	//
 	// example:
 	//
@@ -193,23 +194,24 @@ type DescribeFrInstancesResponseBodyData struct {
 	//
 	// example:
 	//
-	// 小时
+	// Hour
 	CycleTypeName *string `json:"CycleTypeName,omitempty" xml:"CycleTypeName,omitempty"`
 	// The list of deductible regions.
-	DeductRegions []*DescribeFrInstancesResponseBodyDataDeductRegions `json:"DeductRegions,omitempty" xml:"DeductRegions,omitempty" type:"Repeated"`
-	// Indicates whether the resource plan can be exchanged.
+	DeductRegions    []*DescribeFrInstancesResponseBodyDataDeductRegions `json:"DeductRegions,omitempty" xml:"DeductRegions,omitempty" type:"Repeated"`
+	EnableDeductRule *bool                                               `json:"EnableDeductRule,omitempty" xml:"EnableDeductRule,omitempty"`
+	// Indicates whether exchange is supported.
 	//
 	// example:
 	//
 	// false
 	EnableExchange *bool `json:"EnableExchange,omitempty" xml:"EnableExchange,omitempty"`
-	// Indicates whether the resource plan can be renewed.
+	// Indicates whether renewal is supported.
 	//
 	// example:
 	//
 	// false
 	EnableRenew *bool `json:"EnableRenew,omitempty" xml:"EnableRenew,omitempty"`
-	// Indicates whether the resource plan can be upgraded.
+	// Indicates whether upgrade is supported.
 	//
 	// example:
 	//
@@ -221,19 +223,19 @@ type DescribeFrInstancesResponseBodyData struct {
 	//
 	// 1710604800000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The commodity code for exchange.
+	// The exchange commodity code.
 	//
 	// example:
 	//
 	// null
 	ExchangeCommodityCode *string `json:"ExchangeCommodityCode,omitempty" xml:"ExchangeCommodityCode,omitempty"`
-	// The initial capacity baseline unit.
+	// The initial capacity base unit.
 	//
 	// example:
 	//
 	// CU
 	InitCapacityBaseUnit *string `json:"InitCapacityBaseUnit,omitempty" xml:"InitCapacityBaseUnit,omitempty"`
-	// The initial capacity baseline value.
+	// The initial capacity base value.
 	//
 	// example:
 	//
@@ -287,7 +289,7 @@ type DescribeFrInstancesResponseBodyData struct {
 	//
 	// example:
 	//
-	// 性能测试
+	// Performance Testing
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	// The purchase time.
 	//
@@ -331,7 +333,7 @@ type DescribeFrInstancesResponseBodyData struct {
 	//
 	// example:
 	//
-	// 有效
+	// Valid
 	StatusName *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
 	// The template.
 	Template *DescribeFrInstancesResponseBodyDataTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
@@ -347,13 +349,13 @@ type DescribeFrInstancesResponseBodyData struct {
 	//
 	// new_test
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The period capacity baseline unit.
+	// The periodic capacity base unit.
 	//
 	// example:
 	//
 	// CU
 	PeriodCapacityBaseUnit *string `json:"periodCapacityBaseUnit,omitempty" xml:"periodCapacityBaseUnit,omitempty"`
-	// The period capacity baseline value.
+	// The periodic capacity base value.
 	//
 	// example:
 	//
@@ -375,6 +377,10 @@ func (s *DescribeFrInstancesResponseBodyData) GetAccountId() *int64 {
 
 func (s *DescribeFrInstancesResponseBodyData) GetAccountName() *string {
 	return s.AccountName
+}
+
+func (s *DescribeFrInstancesResponseBodyData) GetAutoPurchase() *DescribeFrInstancesResponseBodyDataAutoPurchase {
+	return s.AutoPurchase
 }
 
 func (s *DescribeFrInstancesResponseBodyData) GetCapacitiyTypeName() *string {
@@ -431,6 +437,10 @@ func (s *DescribeFrInstancesResponseBodyData) GetCycleTypeName() *string {
 
 func (s *DescribeFrInstancesResponseBodyData) GetDeductRegions() []*DescribeFrInstancesResponseBodyDataDeductRegions {
 	return s.DeductRegions
+}
+
+func (s *DescribeFrInstancesResponseBodyData) GetEnableDeductRule() *bool {
+	return s.EnableDeductRule
 }
 
 func (s *DescribeFrInstancesResponseBodyData) GetEnableExchange() *bool {
@@ -559,6 +569,11 @@ func (s *DescribeFrInstancesResponseBodyData) SetAccountName(v string) *Describe
 	return s
 }
 
+func (s *DescribeFrInstancesResponseBodyData) SetAutoPurchase(v *DescribeFrInstancesResponseBodyDataAutoPurchase) *DescribeFrInstancesResponseBodyData {
+	s.AutoPurchase = v
+	return s
+}
+
 func (s *DescribeFrInstancesResponseBodyData) SetCapacitiyTypeName(v string) *DescribeFrInstancesResponseBodyData {
 	s.CapacitiyTypeName = &v
 	return s
@@ -626,6 +641,11 @@ func (s *DescribeFrInstancesResponseBodyData) SetCycleTypeName(v string) *Descri
 
 func (s *DescribeFrInstancesResponseBodyData) SetDeductRegions(v []*DescribeFrInstancesResponseBodyDataDeductRegions) *DescribeFrInstancesResponseBodyData {
 	s.DeductRegions = v
+	return s
+}
+
+func (s *DescribeFrInstancesResponseBodyData) SetEnableDeductRule(v bool) *DescribeFrInstancesResponseBodyData {
+	s.EnableDeductRule = &v
 	return s
 }
 
@@ -775,6 +795,11 @@ func (s *DescribeFrInstancesResponseBodyData) SetPeriodCapacityBaseValue(v strin
 }
 
 func (s *DescribeFrInstancesResponseBodyData) Validate() error {
+	if s.AutoPurchase != nil {
+		if err := s.AutoPurchase.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.CapacityType != nil {
 		if err := s.CapacityType.Validate(); err != nil {
 			return err
@@ -817,6 +842,51 @@ func (s *DescribeFrInstancesResponseBodyData) Validate() error {
 	return nil
 }
 
+type DescribeFrInstancesResponseBodyDataAutoPurchase struct {
+	AlreadyAutoPurchase *bool `json:"AlreadyAutoPurchase,omitempty" xml:"AlreadyAutoPurchase,omitempty"`
+	SettingAutoPurchase *bool `json:"SettingAutoPurchase,omitempty" xml:"SettingAutoPurchase,omitempty"`
+	SupportAutoPurchase *bool `json:"SupportAutoPurchase,omitempty" xml:"SupportAutoPurchase,omitempty"`
+}
+
+func (s DescribeFrInstancesResponseBodyDataAutoPurchase) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeFrInstancesResponseBodyDataAutoPurchase) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFrInstancesResponseBodyDataAutoPurchase) GetAlreadyAutoPurchase() *bool {
+	return s.AlreadyAutoPurchase
+}
+
+func (s *DescribeFrInstancesResponseBodyDataAutoPurchase) GetSettingAutoPurchase() *bool {
+	return s.SettingAutoPurchase
+}
+
+func (s *DescribeFrInstancesResponseBodyDataAutoPurchase) GetSupportAutoPurchase() *bool {
+	return s.SupportAutoPurchase
+}
+
+func (s *DescribeFrInstancesResponseBodyDataAutoPurchase) SetAlreadyAutoPurchase(v bool) *DescribeFrInstancesResponseBodyDataAutoPurchase {
+	s.AlreadyAutoPurchase = &v
+	return s
+}
+
+func (s *DescribeFrInstancesResponseBodyDataAutoPurchase) SetSettingAutoPurchase(v bool) *DescribeFrInstancesResponseBodyDataAutoPurchase {
+	s.SettingAutoPurchase = &v
+	return s
+}
+
+func (s *DescribeFrInstancesResponseBodyDataAutoPurchase) SetSupportAutoPurchase(v bool) *DescribeFrInstancesResponseBodyDataAutoPurchase {
+	s.SupportAutoPurchase = &v
+	return s
+}
+
+func (s *DescribeFrInstancesResponseBodyDataAutoPurchase) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribeFrInstancesResponseBodyDataCapacityType struct {
 	// The property code.
 	//
@@ -828,7 +898,7 @@ type DescribeFrInstancesResponseBodyDataCapacityType struct {
 	//
 	// example:
 	//
-	// 总量递减型
+	// Total decrement
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -873,7 +943,7 @@ type DescribeFrInstancesResponseBodyDataCommodity struct {
 	//
 	// example:
 	//
-	// ALB资源包
+	// ALB Resource Plan
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -918,7 +988,7 @@ type DescribeFrInstancesResponseBodyDataCycleType struct {
 	//
 	// example:
 	//
-	// 小时
+	// Hour
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -963,7 +1033,7 @@ type DescribeFrInstancesResponseBodyDataDeductRegions struct {
 	//
 	// example:
 	//
-	// 北京
+	// Beijing
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -1008,7 +1078,7 @@ type DescribeFrInstancesResponseBodyDataProduct struct {
 	//
 	// example:
 	//
-	// 负载均衡
+	// Server Load Balancer
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -1053,7 +1123,7 @@ type DescribeFrInstancesResponseBodyDataStatus struct {
 	//
 	// example:
 	//
-	// 有效
+	// Valid
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -1098,7 +1168,7 @@ type DescribeFrInstancesResponseBodyDataTemplate struct {
 	//
 	// example:
 	//
-	// 中国内地区域
+	// Chinese mainland regions
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
