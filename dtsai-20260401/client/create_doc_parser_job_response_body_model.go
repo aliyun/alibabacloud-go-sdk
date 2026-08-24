@@ -61,11 +61,15 @@ type CreateDocParserJobResponseBody struct {
 	// example:
 	//
 	// A30D0930-xxxx-xxxx-xxxx-C2C661CC8B58
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result data.
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The result type.
 	ResultType *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
-	ResultUrl  *string `json:"ResultUrl,omitempty" xml:"ResultUrl,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The result URL.
+	ResultUrl *string `json:"ResultUrl,omitempty" xml:"ResultUrl,omitempty"`
+	// The status information.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates whether the request was successful.
 	//
 	// example:

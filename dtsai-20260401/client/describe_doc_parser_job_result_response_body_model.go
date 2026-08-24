@@ -57,9 +57,11 @@ type DescribeDocParserJobResultResponseBody struct {
 	// example:
 	//
 	// # Document Title
-	Result     *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The result format.
 	ResultType *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
-	ResultUrl  *string `json:"ResultUrl,omitempty" xml:"ResultUrl,omitempty"`
+	// oss url
+	ResultUrl *string `json:"ResultUrl,omitempty" xml:"ResultUrl,omitempty"`
 	// Indicates whether the request was successful.
 	//
 	// example:

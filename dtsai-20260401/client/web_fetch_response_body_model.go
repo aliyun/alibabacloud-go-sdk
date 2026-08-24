@@ -94,15 +94,15 @@ type WebFetchResponseBody struct {
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	// The URL classification result. Valid values:
 	//
-	// - **static_html**: Static HTML page.
+	// - **static_html**: A static HTML page.
 	//
-	// - **dynamic_js**: Single-page application (SPA) page that requires JavaScript rendering.
+	// - **dynamic_js**: A single-page application (SPA) page that requires JavaScript rendering.
 	//
-	// - **audio**: Audio file.
+	// - **audio**: An audio file.
 	//
-	// - **video**: Video file.
+	// - **video**: A video file.
 	//
-	// - **document**: Document file (PDF, Word, PPT, or Excel).
+	// - **document**: A document file (PDF, Word, PPT, or Excel).
 	//
 	// - **unknown**: Unrecognizable.
 	//

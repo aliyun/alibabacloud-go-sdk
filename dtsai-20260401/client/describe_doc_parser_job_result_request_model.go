@@ -20,8 +20,9 @@ type iDescribeDocParserJobResultRequest interface {
 }
 
 type DescribeDocParserJobResultRequest struct {
+	// The agent name.
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	// The document parsing task ID. You can obtain this ID by calling CreateDocParserJob.
+	// The document parsing task ID, obtained by calling CreateDocParserJob.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +37,8 @@ type DescribeDocParserJobResultRequest struct {
 	// example:
 	//
 	// cn-beijing
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The result type.
 	ResultType *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
 }
 

@@ -38,7 +38,7 @@ type DescribeDocParserJobStatusResponseBody struct {
 	//
 	// The specified job does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The failure cause. This parameter has a value only when Status is failed.
+	// The failure reason. This parameter has a value only when Status is failed.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ type DescribeDocParserJobStatusResponseBody struct {
 	//
 	// - **success**: Completed. You can call DescribeDocParserJobResult to obtain the result.
 	//
-	// - **failed**: Failed. The cause is provided in FailureMessage.
+	// - **failed**: Failed. The reason is provided in FailureMessage.
 	//
-	// - **cancelled**: Canceled.
+	// - **cancelled**: Cancelled.
 	//
 	// example:
 	//

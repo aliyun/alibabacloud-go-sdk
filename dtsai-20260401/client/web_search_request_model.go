@@ -24,6 +24,7 @@ type iWebSearchRequest interface {
 }
 
 type WebSearchRequest struct {
+	// The agent name.
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 	// The maximum number of results to return. Default value: 10. Valid values: 1 to 50.
 	//

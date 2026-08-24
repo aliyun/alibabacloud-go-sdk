@@ -18,8 +18,9 @@ type iDescribeDocParserJobStatusRequest interface {
 }
 
 type DescribeDocParserJobStatusRequest struct {
+	// The agent name.
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	// The ID of the document parsing task. You can obtain the ID by calling CreateDocParserJob.
+	// The ID of the document parsing task. You can obtain this ID by calling CreateDocParserJob.
 	//
 	// This parameter is required.
 	//

@@ -20,6 +20,7 @@ type iWebFetchRequest interface {
 }
 
 type WebFetchRequest struct {
+	// The agent name.
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 	// The output format. Valid values:
 	//

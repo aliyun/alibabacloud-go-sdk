@@ -61,11 +61,16 @@ type iCreateDocParserJobAdvanceRequest interface {
 }
 
 type CreateDocParserJobAdvanceRequest struct {
-	AgentName          *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	AsrLanguage        *string `json:"AsrLanguage,omitempty" xml:"AsrLanguage,omitempty"`
-	AudioClipOutput    *bool   `json:"AudioClipOutput,omitempty" xml:"AudioClipOutput,omitempty"`
-	AudioWindowSeconds *int32  `json:"AudioWindowSeconds,omitempty" xml:"AudioWindowSeconds,omitempty"`
-	ChunkSummary       *bool   `json:"ChunkSummary,omitempty" xml:"ChunkSummary,omitempty"`
+	// The agent name.
+	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// The language type for speech recognition.
+	AsrLanguage *string `json:"AsrLanguage,omitempty" xml:"AsrLanguage,omitempty"`
+	// The audio clip output.
+	AudioClipOutput *bool `json:"AudioClipOutput,omitempty" xml:"AudioClipOutput,omitempty"`
+	// The audio window duration in seconds.
+	AudioWindowSeconds *int32 `json:"AudioWindowSeconds,omitempty" xml:"AudioWindowSeconds,omitempty"`
+	// The chunk summary information.
+	ChunkSummary *bool `json:"ChunkSummary,omitempty" xml:"ChunkSummary,omitempty"`
 	// The format of the input file. Valid values:
 	//
 	// - **pdf**: PDF file.
@@ -78,7 +83,7 @@ type CreateDocParserJobAdvanceRequest struct {
 	//
 	// - **ppt**: PPT file in ppt format.
 	//
-	// - **txt**: plain text file.
+	// - **txt**: Plain text file.
 	//
 	// - **md**: Markdown file.
 	//
@@ -104,27 +109,36 @@ type CreateDocParserJobAdvanceRequest struct {
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	// The HTTP or HTTPS URL of the file to be parsed.
 	//
-	// >SDKs for various languages provide an additional `CreateDocParserJobAdvance` method that supports passing a local file stream directly (such as InputStream in Java), without the need to upload the file to OSS and construct a FileUrl in advance. When using the Advance method, replace the `FileUrl` parameter (URL string) with the `FileUrlObject` parameter (file stream). All other request parameters remain unchanged. The SDK automatically performs the following operations:
+	// >SDKs for various programming languages additionally provide a `CreateDocParserJobAdvance` method that supports passing a local file stream directly (such as Java InputStream), without the need to upload the file to OSS and construct a FileUrl in advance. When using the Advance method, replace the `FileUrl` parameter (URL string) with the `FileUrlObject` parameter (file stream). All other request parameters remain unchanged. The SDK automatically performs the following operations:
 	//
 	// >1. Obtains temporary OSS upload credentials.
 	//
 	// >2. Uploads the file stream directly to OSS.
 	//
-	// >3. Calls the CreateDocParserJob operation with the generated OSS URL.
+	// >3. Calls the CreateDocParserJob operation using the generated OSS URL.
 	//
 	// example:
 	//
 	// https://xxx.oss-cn-beijing.aliyuncs.com/document.pdf?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx
-	FileUrlObject             io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	FrameOutput               *bool     `json:"FrameOutput,omitempty" xml:"FrameOutput,omitempty"`
-	GlobalSummary             *bool     `json:"GlobalSummary,omitempty" xml:"GlobalSummary,omitempty"`
-	ImageMode                 *string   `json:"ImageMode,omitempty" xml:"ImageMode,omitempty"`
-	ImageUnderstanding        *string   `json:"ImageUnderstanding,omitempty" xml:"ImageUnderstanding,omitempty"`
-	MediaChunkIntervalSeconds *int32    `json:"MediaChunkIntervalSeconds,omitempty" xml:"MediaChunkIntervalSeconds,omitempty"`
-	MediaChunkStrategy        *string   `json:"MediaChunkStrategy,omitempty" xml:"MediaChunkStrategy,omitempty"`
-	MediaFramesPerMinute      *float64  `json:"MediaFramesPerMinute,omitempty" xml:"MediaFramesPerMinute,omitempty"`
-	MediaMaxFrameBudget       *int32    `json:"MediaMaxFrameBudget,omitempty" xml:"MediaMaxFrameBudget,omitempty"`
-	MediaMinFrameBudget       *int32    `json:"MediaMinFrameBudget,omitempty" xml:"MediaMinFrameBudget,omitempty"`
+	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The frame output result.
+	FrameOutput *bool `json:"FrameOutput,omitempty" xml:"FrameOutput,omitempty"`
+	// The global summary information.
+	GlobalSummary *bool `json:"GlobalSummary,omitempty" xml:"GlobalSummary,omitempty"`
+	// The image processing format.
+	ImageMode *string `json:"ImageMode,omitempty" xml:"ImageMode,omitempty"`
+	// The image understanding and analysis setting.
+	ImageUnderstanding *string `json:"ImageUnderstanding,omitempty" xml:"ImageUnderstanding,omitempty"`
+	// The media chunk interval in seconds.
+	MediaChunkIntervalSeconds *int32 `json:"MediaChunkIntervalSeconds,omitempty" xml:"MediaChunkIntervalSeconds,omitempty"`
+	// The media chunk strategy.
+	MediaChunkStrategy *string `json:"MediaChunkStrategy,omitempty" xml:"MediaChunkStrategy,omitempty"`
+	// The number of media frames per minute.
+	MediaFramesPerMinute *float64 `json:"MediaFramesPerMinute,omitempty" xml:"MediaFramesPerMinute,omitempty"`
+	// The maximum frame budget for media.
+	MediaMaxFrameBudget *int32 `json:"MediaMaxFrameBudget,omitempty" xml:"MediaMaxFrameBudget,omitempty"`
+	// The minimum frame budget for media.
+	MediaMinFrameBudget *int32 `json:"MediaMinFrameBudget,omitempty" xml:"MediaMinFrameBudget,omitempty"`
 	// The OSS file URL.
 	OssFileUrl *string `json:"OssFileUrl,omitempty" xml:"OssFileUrl,omitempty"`
 	// The output format of the parsing result. Valid values:
@@ -137,7 +151,8 @@ type CreateDocParserJobAdvanceRequest struct {
 	//
 	// markdown
 	OutputFormat *string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
-	ParseScene   *string `json:"ParseScene,omitempty" xml:"ParseScene,omitempty"`
+	// The parsing scene.
+	ParseScene *string `json:"ParseScene,omitempty" xml:"ParseScene,omitempty"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -145,10 +160,13 @@ type CreateDocParserJobAdvanceRequest struct {
 	// example:
 	//
 	// cn-beijing
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The response mode.
 	ResponseMode *string `json:"ResponseMode,omitempty" xml:"ResponseMode,omitempty"`
-	ResultType   *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
-	TableFormat  *string `json:"TableFormat,omitempty" xml:"TableFormat,omitempty"`
+	// The result type.
+	ResultType *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
+	// The table processing format.
+	TableFormat *string `json:"TableFormat,omitempty" xml:"TableFormat,omitempty"`
 }
 
 func (s CreateDocParserJobAdvanceRequest) String() string {

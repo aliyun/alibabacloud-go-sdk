@@ -142,13 +142,83 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// Uploads a file directly to the Bucket/ObjectKey specified in the response, and then uses the object URL as OssFileUrl to create a parsing task.
+//
+// @param request - AuthorizeFileUploadRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AuthorizeFileUploadResponse
+func (client *Client) AuthorizeFileUploadWithOptions(request *AuthorizeFileUploadRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeFileUploadResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		query["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.FileFormat) {
+		query["FileFormat"] = request.FileFormat
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AuthorizeFileUpload"),
+		Version:     dara.String("2026-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AuthorizeFileUploadResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Uploads a file directly to the Bucket/ObjectKey specified in the response, and then uses the object URL as OssFileUrl to create a parsing task.
+//
+// @param request - AuthorizeFileUploadRequest
+//
+// @return AuthorizeFileUploadResponse
+func (client *Client) AuthorizeFileUpload(request *AuthorizeFileUploadRequest) (_result *AuthorizeFileUploadResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AuthorizeFileUploadResponse{}
+	_body, _err := client.AuthorizeFileUploadWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a document parsing task.
 //
 // Description:
 //
 // - Region: Only China (Beijing) is supported.
 //
-// - Fees: Free during the public preview period. No fees are charged.
+// - Fees: The service is free of charge during the public preview period.
 //
 // @param request - CreateDocParserJobRequest
 //
@@ -290,7 +360,7 @@ func (client *Client) CreateDocParserJobWithOptions(request *CreateDocParserJobR
 //
 // - Region: Only China (Beijing) is supported.
 //
-// - Fees: Free during the public preview period. No fees are charged.
+// - Fees: The service is free of charge during the public preview period.
 //
 // @param request - CreateDocParserJobRequest
 //
@@ -593,7 +663,7 @@ func (client *Client) DescribeDocParserJobStatus(request *DescribeDocParserJobSt
 //
 // - Region: Only China (Beijing) and Singapore regions are supported.
 //
-// - Pricing: Free of charge during the public preview period.
+// - Fees: Free of charge during the public preview period.
 //
 // @param request - WebFetchRequest
 //
@@ -655,7 +725,7 @@ func (client *Client) WebFetchWithOptions(request *WebFetchRequest, runtime *dar
 //
 // - Region: Only China (Beijing) and Singapore regions are supported.
 //
-// - Pricing: Free of charge during the public preview period.
+// - Fees: Free of charge during the public preview period.
 //
 // @param request - WebFetchRequest
 //
