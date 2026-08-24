@@ -14,6 +14,8 @@ type iDeleteProhibitedTagsRequest interface {
 }
 
 type DeleteProhibitedTagsRequest struct {
+	// The IDs of the custom prohibited software labels to delete. Duplicate IDs are not allowed. You can specify up to 100 IDs.
+	//
 	// This parameter is required.
 	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 }

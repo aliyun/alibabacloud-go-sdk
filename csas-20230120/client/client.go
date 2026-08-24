@@ -131,6 +131,75 @@ func (client *Client) AddDeviceGroupMatchDevices(request *AddDeviceGroupMatchDev
 
 // Summary:
 //
+// Appends entries in batches to the virus scan blacklists and whitelists for a specified operating system without overwriting existing entries. Quotas are calculated independently for each combination of matching dimension and list type. Each combination allows a maximum of 10,000 whitelist entries and 1,000 blacklist entries. If the quota is exceeded after appending, the entire batch fails.
+//
+// @param request - AddVirusScanAdditionalListsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddVirusScanAdditionalListsResponse
+func (client *Client) AddVirusScanAdditionalListsWithOptions(request *AddVirusScanAdditionalListsRequest, runtime *dara.RuntimeOptions) (_result *AddVirusScanAdditionalListsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.AdditionalLists) {
+		bodyFlat["AdditionalLists"] = request.AdditionalLists
+	}
+
+	if !dara.IsNil(request.DevType) {
+		body["DevType"] = request.DevType
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddVirusScanAdditionalLists"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddVirusScanAdditionalListsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Appends entries in batches to the virus scan blacklists and whitelists for a specified operating system without overwriting existing entries. Quotas are calculated independently for each combination of matching dimension and list type. Each combination allows a maximum of 10,000 whitelist entries and 1,000 blacklist entries. If the quota is exceeded after appending, the entire batch fails.
+//
+// @param request - AddVirusScanAdditionalListsRequest
+//
+// @return AddVirusScanAdditionalListsResponse
+func (client *Client) AddVirusScanAdditionalLists(request *AddVirusScanAdditionalListsRequest) (_result *AddVirusScanAdditionalListsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddVirusScanAdditionalListsResponse{}
+	_body, _err := client.AddVirusScanAdditionalListsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Attaches the private access applications of a Connector under the current Alibaba Cloud account.
 //
 // @param tmpReq - AttachApplication2ConnectorRequest
@@ -572,6 +641,136 @@ func (client *Client) BatchDeletePrivateAccessPolicy(request *BatchDeletePrivate
 	runtime := &dara.RuntimeOptions{}
 	_result = &BatchDeletePrivateAccessPolicyResponse{}
 	_body, _err := client.BatchDeletePrivateAccessPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Cancels multiple virus scan tasks that have not yet expired in a batch. After cancellation, terminals no longer pull and execute the tasks. Scans already running on terminals are not interrupted.
+//
+// @param request - CancelVirusScanTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelVirusScanTasksResponse
+func (client *Client) CancelVirusScanTasksWithOptions(request *CancelVirusScanTasksRequest, runtime *dara.RuntimeOptions) (_result *CancelVirusScanTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.TaskIds) {
+		bodyFlat["TaskIds"] = request.TaskIds
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelVirusScanTasks"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelVirusScanTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Cancels multiple virus scan tasks that have not yet expired in a batch. After cancellation, terminals no longer pull and execute the tasks. Scans already running on terminals are not interrupted.
+//
+// @param request - CancelVirusScanTasksRequest
+//
+// @return CancelVirusScanTasksResponse
+func (client *Client) CancelVirusScanTasks(request *CancelVirusScanTasksRequest) (_result *CancelVirusScanTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CancelVirusScanTasksResponse{}
+	_body, _err := client.CancelVirusScanTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Cancels multiple vulnerability scanning tasks that have not yet expired in a batch.
+//
+// @param request - CancelVulScanTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelVulScanTasksResponse
+func (client *Client) CancelVulScanTasksWithOptions(request *CancelVulScanTasksRequest, runtime *dara.RuntimeOptions) (_result *CancelVulScanTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.TaskIds) {
+		bodyFlat["TaskIds"] = request.TaskIds
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelVulScanTasks"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelVulScanTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Cancels multiple vulnerability scanning tasks that have not yet expired in a batch.
+//
+// @param request - CancelVulScanTasksRequest
+//
+// @return CancelVulScanTasksResponse
+func (client *Client) CancelVulScanTasks(request *CancelVulScanTasksRequest) (_result *CancelVulScanTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CancelVulScanTasksResponse{}
+	_body, _err := client.CancelVulScanTasksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2356,6 +2555,533 @@ func (client *Client) CreateUserGroup(request *CreateUserGroupRequest) (_result 
 
 // Summary:
 //
+// Creates a scheduled virus scan policy that automatically sends scan tasks to user terminal devices within the effective scope based on the configured cycle.
+//
+// @param request - CreateVirusScanScheduledStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVirusScanScheduledStrategyResponse
+func (client *Client) CreateVirusScanScheduledStrategyWithOptions(request *CreateVirusScanScheduledStrategyRequest, runtime *dara.RuntimeOptions) (_result *CreateVirusScanScheduledStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.HighRiskOperation) {
+		body["HighRiskOperation"] = request.HighRiskOperation
+	}
+
+	if !dara.IsNil(request.LowRiskOperation) {
+		body["LowRiskOperation"] = request.LowRiskOperation
+	}
+
+	if !dara.IsNil(request.MatchMode) {
+		body["MatchMode"] = request.MatchMode
+	}
+
+	if !dara.IsNil(request.MaxCpuUsage) {
+		body["MaxCpuUsage"] = request.MaxCpuUsage
+	}
+
+	if !dara.IsNil(request.MidRiskOperation) {
+		body["MidRiskOperation"] = request.MidRiskOperation
+	}
+
+	if !dara.IsNil(request.PerformanceMode) {
+		body["PerformanceMode"] = request.PerformanceMode
+	}
+
+	if !dara.IsNil(request.Priority) {
+		body["Priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.ScanBeginTime) {
+		body["ScanBeginTime"] = request.ScanBeginTime
+	}
+
+	if !dara.IsNil(request.ScanEndTime) {
+		body["ScanEndTime"] = request.ScanEndTime
+	}
+
+	if !dara.IsNil(request.ScanFrequency) {
+		body["ScanFrequency"] = request.ScanFrequency
+	}
+
+	if !dara.IsNil(request.ScanInterval) {
+		body["ScanInterval"] = request.ScanInterval
+	}
+
+	if !dara.IsNil(request.ScanMode) {
+		body["ScanMode"] = request.ScanMode
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.ScanPath) {
+		bodyFlat["ScanPath"] = request.ScanPath
+	}
+
+	if !dara.IsNil(request.ScanTargets) {
+		bodyFlat["ScanTargets"] = request.ScanTargets
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.StrategyDescription) {
+		body["StrategyDescription"] = request.StrategyDescription
+	}
+
+	if !dara.IsNil(request.StrategyName) {
+		body["StrategyName"] = request.StrategyName
+	}
+
+	if !dara.IsNil(request.UserGroupIds) {
+		bodyFlat["UserGroupIds"] = request.UserGroupIds
+	}
+
+	if !dara.IsNil(request.Whitelist) {
+		bodyFlat["Whitelist"] = request.Whitelist
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateVirusScanScheduledStrategy"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateVirusScanScheduledStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a scheduled virus scan policy that automatically sends scan tasks to user terminal devices within the effective scope based on the configured cycle.
+//
+// @param request - CreateVirusScanScheduledStrategyRequest
+//
+// @return CreateVirusScanScheduledStrategyResponse
+func (client *Client) CreateVirusScanScheduledStrategy(request *CreateVirusScanScheduledStrategyRequest) (_result *CreateVirusScanScheduledStrategyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateVirusScanScheduledStrategyResponse{}
+	_body, _err := client.CreateVirusScanScheduledStrategyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an instant virus scan task and delivers it to user endpoint devices within the effective scope. The task takes effect immediately after creation. A maximum of 10 tasks can be created per Alibaba Cloud account per minute.
+//
+// @param request - CreateVirusScanTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVirusScanTaskResponse
+func (client *Client) CreateVirusScanTaskWithOptions(request *CreateVirusScanTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateVirusScanTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.HighRiskOperation) {
+		body["HighRiskOperation"] = request.HighRiskOperation
+	}
+
+	if !dara.IsNil(request.LowRiskOperation) {
+		body["LowRiskOperation"] = request.LowRiskOperation
+	}
+
+	if !dara.IsNil(request.MatchMode) {
+		body["MatchMode"] = request.MatchMode
+	}
+
+	if !dara.IsNil(request.MaxCpuUsage) {
+		body["MaxCpuUsage"] = request.MaxCpuUsage
+	}
+
+	if !dara.IsNil(request.MidRiskOperation) {
+		body["MidRiskOperation"] = request.MidRiskOperation
+	}
+
+	if !dara.IsNil(request.PerformanceMode) {
+		body["PerformanceMode"] = request.PerformanceMode
+	}
+
+	if !dara.IsNil(request.ScanMode) {
+		body["ScanMode"] = request.ScanMode
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.ScanPath) {
+		bodyFlat["ScanPath"] = request.ScanPath
+	}
+
+	if !dara.IsNil(request.ScanTargets) {
+		bodyFlat["ScanTargets"] = request.ScanTargets
+	}
+
+	if !dara.IsNil(request.TaskDescription) {
+		body["TaskDescription"] = request.TaskDescription
+	}
+
+	if !dara.IsNil(request.UserGroupIds) {
+		bodyFlat["UserGroupIds"] = request.UserGroupIds
+	}
+
+	if !dara.IsNil(request.Whitelist) {
+		bodyFlat["Whitelist"] = request.Whitelist
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateVirusScanTask"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateVirusScanTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an instant virus scan task and delivers it to user endpoint devices within the effective scope. The task takes effect immediately after creation. A maximum of 10 tasks can be created per Alibaba Cloud account per minute.
+//
+// @param request - CreateVirusScanTaskRequest
+//
+// @return CreateVirusScanTaskResponse
+func (client *Client) CreateVirusScanTask(request *CreateVirusScanTaskRequest) (_result *CreateVirusScanTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateVirusScanTaskResponse{}
+	_body, _err := client.CreateVirusScanTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a scheduled vulnerability scanning policy that automatically sends vulnerability scanning tasks to user endpoint devices within the effective scope based on the configured cycle.
+//
+// @param request - CreateVulScanScheduledStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVulScanScheduledStrategyResponse
+func (client *Client) CreateVulScanScheduledStrategyWithOptions(request *CreateVulScanScheduledStrategyRequest, runtime *dara.RuntimeOptions) (_result *CreateVulScanScheduledStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MatchMode) {
+		body["MatchMode"] = request.MatchMode
+	}
+
+	if !dara.IsNil(request.Priority) {
+		body["Priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.ScanBeginTime) {
+		body["ScanBeginTime"] = request.ScanBeginTime
+	}
+
+	if !dara.IsNil(request.ScanEndTime) {
+		body["ScanEndTime"] = request.ScanEndTime
+	}
+
+	if !dara.IsNil(request.ScanFrequency) {
+		body["ScanFrequency"] = request.ScanFrequency
+	}
+
+	if !dara.IsNil(request.ScanInterval) {
+		body["ScanInterval"] = request.ScanInterval
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.StrategyDescription) {
+		body["StrategyDescription"] = request.StrategyDescription
+	}
+
+	if !dara.IsNil(request.StrategyName) {
+		body["StrategyName"] = request.StrategyName
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.UserGroupIds) {
+		bodyFlat["UserGroupIds"] = request.UserGroupIds
+	}
+
+	if !dara.IsNil(request.Whitelist) {
+		bodyFlat["Whitelist"] = request.Whitelist
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateVulScanScheduledStrategy"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateVulScanScheduledStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a scheduled vulnerability scanning policy that automatically sends vulnerability scanning tasks to user endpoint devices within the effective scope based on the configured cycle.
+//
+// @param request - CreateVulScanScheduledStrategyRequest
+//
+// @return CreateVulScanScheduledStrategyResponse
+func (client *Client) CreateVulScanScheduledStrategy(request *CreateVulScanScheduledStrategyRequest) (_result *CreateVulScanScheduledStrategyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateVulScanScheduledStrategyResponse{}
+	_body, _err := client.CreateVulScanScheduledStrategyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an instant vulnerability scanning task and delivers it to user endpoint devices within the effective scope.
+//
+// @param request - CreateVulScanTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVulScanTaskResponse
+func (client *Client) CreateVulScanTaskWithOptions(request *CreateVulScanTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateVulScanTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EndTimestamp) {
+		body["EndTimestamp"] = request.EndTimestamp
+	}
+
+	if !dara.IsNil(request.MatchMode) {
+		body["MatchMode"] = request.MatchMode
+	}
+
+	if !dara.IsNil(request.TaskDescription) {
+		body["TaskDescription"] = request.TaskDescription
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		body["TaskName"] = request.TaskName
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.UserGroupIds) {
+		bodyFlat["UserGroupIds"] = request.UserGroupIds
+	}
+
+	if !dara.IsNil(request.Whitelist) {
+		bodyFlat["Whitelist"] = request.Whitelist
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateVulScanTask"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateVulScanTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an instant vulnerability scanning task and delivers it to user endpoint devices within the effective scope.
+//
+// @param request - CreateVulScanTaskRequest
+//
+// @return CreateVulScanTaskResponse
+func (client *Client) CreateVulScanTask(request *CreateVulScanTaskRequest) (_result *CreateVulScanTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateVulScanTaskResponse{}
+	_body, _err := client.CreateVulScanTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a vulnerability fix task that delivers the patch for a specified vulnerability to user endpoint devices and performs the installation.
+//
+// @param tmpReq - CreateVulnerabilityFixTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVulnerabilityFixTaskResponse
+func (client *Client) CreateVulnerabilityFixTaskWithOptions(tmpReq *CreateVulnerabilityFixTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateVulnerabilityFixTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateVulnerabilityFixTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.WuyingVulFixConfig) {
+		request.WuyingVulFixConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WuyingVulFixConfig, dara.String("WuyingVulFixConfig"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.DevTags) {
+		bodyFlat["DevTags"] = request.DevTags
+	}
+
+	if !dara.IsNil(request.FixMode) {
+		body["FixMode"] = request.FixMode
+	}
+
+	if !dara.IsNil(request.MaxDownloadSpeed) {
+		body["MaxDownloadSpeed"] = request.MaxDownloadSpeed
+	}
+
+	if !dara.IsNil(request.UpdateId) {
+		body["UpdateId"] = request.UpdateId
+	}
+
+	if !dara.IsNil(request.WuyingVulFixConfigShrink) {
+		body["WuyingVulFixConfig"] = request.WuyingVulFixConfigShrink
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateVulnerabilityFixTask"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateVulnerabilityFixTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a vulnerability fix task that delivers the patch for a specified vulnerability to user endpoint devices and performs the installation.
+//
+// @param request - CreateVulnerabilityFixTaskRequest
+//
+// @return CreateVulnerabilityFixTaskResponse
+func (client *Client) CreateVulnerabilityFixTask(request *CreateVulnerabilityFixTaskRequest) (_result *CreateVulnerabilityFixTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateVulnerabilityFixTaskResponse{}
+	_body, _err := client.CreateVulnerabilityFixTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the invisible watermark transparent background image for web watermarks, screen watermarks, and App watermarks.
 //
 // @param tmpReq - CreateWmBaseImageRequest
@@ -3105,6 +3831,75 @@ func (client *Client) DeleteDeviceGroups(request *DeleteDeviceGroupsRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteDeviceGroupsResponse{}
 	_body, _err := client.DeleteDeviceGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes detection records of a specified vulnerability from specified user endpoint devices in batches.
+//
+// @param request - DeleteDevicesVulnerabilityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDevicesVulnerabilityResponse
+func (client *Client) DeleteDevicesVulnerabilityWithOptions(request *DeleteDevicesVulnerabilityRequest, runtime *dara.RuntimeOptions) (_result *DeleteDevicesVulnerabilityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.DevTags) {
+		bodyFlat["DevTags"] = request.DevTags
+	}
+
+	if !dara.IsNil(request.UpdateId) {
+		body["UpdateId"] = request.UpdateId
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDevicesVulnerability"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDevicesVulnerabilityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes detection records of a specified vulnerability from specified user endpoint devices in batches.
+//
+// @param request - DeleteDevicesVulnerabilityRequest
+//
+// @return DeleteDevicesVulnerabilityResponse
+func (client *Client) DeleteDevicesVulnerability(request *DeleteDevicesVulnerabilityRequest) (_result *DeleteDevicesVulnerabilityResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteDevicesVulnerabilityResponse{}
+	_body, _err := client.DeleteDevicesVulnerabilityWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3923,7 +4718,7 @@ func (client *Client) DeleteProhibitedSoftware(request *DeleteProhibitedSoftware
 
 // Summary:
 //
-// 批量删除自定义标签
+// Deletes custom prohibited software labels in batches.
 //
 // @param request - DeleteProhibitedTagsRequest
 //
@@ -3970,7 +4765,7 @@ func (client *Client) DeleteProhibitedTagsWithOptions(request *DeleteProhibitedT
 
 // Summary:
 //
-// 批量删除自定义标签
+// Deletes custom prohibited software labels in batches.
 //
 // @param request - DeleteProhibitedTagsRequest
 //
@@ -4191,6 +4986,203 @@ func (client *Client) DeleteUserGroup(request *DeleteUserGroupRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteUserGroupResponse{}
 	_body, _err := client.DeleteUserGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a virus file record that failed to be handled. Only records with a handling action of Fail can be deleted. This operation does not delete the actual file on the user\\"s endpoint device.
+//
+// @param request - DeleteVirusFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVirusFileResponse
+func (client *Client) DeleteVirusFileWithOptions(request *DeleteVirusFileRequest, runtime *dara.RuntimeOptions) (_result *DeleteVirusFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DevTag) {
+		body["DevTag"] = request.DevTag
+	}
+
+	if !dara.IsNil(request.FileMd5) {
+		body["FileMd5"] = request.FileMd5
+	}
+
+	if !dara.IsNil(request.FilePath) {
+		body["FilePath"] = request.FilePath
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteVirusFile"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteVirusFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a virus file record that failed to be handled. Only records with a handling action of Fail can be deleted. This operation does not delete the actual file on the user\\"s endpoint device.
+//
+// @param request - DeleteVirusFileRequest
+//
+// @return DeleteVirusFileResponse
+func (client *Client) DeleteVirusFile(request *DeleteVirusFileRequest) (_result *DeleteVirusFileResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteVirusFileResponse{}
+	_body, _err := client.DeleteVirusFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes virus scheduled scan policies in batches. After deletion, no new scan tasks are triggered, but scan tasks that have already been dispatched are not affected. If any policy ID does not belong to the current Alibaba Cloud account, the entire deletion fails.
+//
+// @param request - DeleteVirusScanScheduledStrategiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVirusScanScheduledStrategiesResponse
+func (client *Client) DeleteVirusScanScheduledStrategiesWithOptions(request *DeleteVirusScanScheduledStrategiesRequest, runtime *dara.RuntimeOptions) (_result *DeleteVirusScanScheduledStrategiesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.StrategyIds) {
+		bodyFlat["StrategyIds"] = request.StrategyIds
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteVirusScanScheduledStrategies"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteVirusScanScheduledStrategiesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes virus scheduled scan policies in batches. After deletion, no new scan tasks are triggered, but scan tasks that have already been dispatched are not affected. If any policy ID does not belong to the current Alibaba Cloud account, the entire deletion fails.
+//
+// @param request - DeleteVirusScanScheduledStrategiesRequest
+//
+// @return DeleteVirusScanScheduledStrategiesResponse
+func (client *Client) DeleteVirusScanScheduledStrategies(request *DeleteVirusScanScheduledStrategiesRequest) (_result *DeleteVirusScanScheduledStrategiesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteVirusScanScheduledStrategiesResponse{}
+	_body, _err := client.DeleteVirusScanScheduledStrategiesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a specified scheduled vulnerability scanning policy.
+//
+// @param request - DeleteVulScanScheduledStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVulScanScheduledStrategyResponse
+func (client *Client) DeleteVulScanScheduledStrategyWithOptions(request *DeleteVulScanScheduledStrategyRequest, runtime *dara.RuntimeOptions) (_result *DeleteVulScanScheduledStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.StrategyId) {
+		body["StrategyId"] = request.StrategyId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteVulScanScheduledStrategy"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteVulScanScheduledStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a specified scheduled vulnerability scanning policy.
+//
+// @param request - DeleteVulScanScheduledStrategyRequest
+//
+// @return DeleteVulScanScheduledStrategyResponse
+func (client *Client) DeleteVulScanScheduledStrategy(request *DeleteVulScanScheduledStrategyRequest) (_result *DeleteVulScanScheduledStrategyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteVulScanScheduledStrategyResponse{}
+	_body, _err := client.DeleteVulScanScheduledStrategyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4628,6 +5620,61 @@ func (client *Client) GetActiveIdpConfig() (_result *GetActiveIdpConfigResponse,
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetActiveIdpConfigResponse{}
 	_body, _err := client.GetActiveIdpConfigWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the real-time antivirus defense policy of the current Alibaba Cloud account.
+//
+// @param request - GetAntiVirusRealTimeDefenceStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAntiVirusRealTimeDefenceStrategyResponse
+func (client *Client) GetAntiVirusRealTimeDefenceStrategyWithOptions(request *GetAntiVirusRealTimeDefenceStrategyRequest, runtime *dara.RuntimeOptions) (_result *GetAntiVirusRealTimeDefenceStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAntiVirusRealTimeDefenceStrategy"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAntiVirusRealTimeDefenceStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the real-time antivirus defense policy of the current Alibaba Cloud account.
+//
+// @param request - GetAntiVirusRealTimeDefenceStrategyRequest
+//
+// @return GetAntiVirusRealTimeDefenceStrategyResponse
+func (client *Client) GetAntiVirusRealTimeDefenceStrategy(request *GetAntiVirusRealTimeDefenceStrategyRequest) (_result *GetAntiVirusRealTimeDefenceStrategyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAntiVirusRealTimeDefenceStrategyResponse{}
+	_body, _err := client.GetAntiVirusRealTimeDefenceStrategyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5951,6 +6998,290 @@ func (client *Client) GetUserGroup(request *GetUserGroupRequest) (_result *GetUs
 
 // Summary:
 //
+// Queries the global anti-virus configuration of the current Alibaba Cloud account, including the virus file upload switch and upload limits. If the current Alibaba Cloud account does not have its own configuration record, the default configurations are returned.
+//
+// @param request - GetVirusScanGlobalConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVirusScanGlobalConfigResponse
+func (client *Client) GetVirusScanGlobalConfigWithOptions(request *GetVirusScanGlobalConfigRequest, runtime *dara.RuntimeOptions) (_result *GetVirusScanGlobalConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetVirusScanGlobalConfig"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetVirusScanGlobalConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the global anti-virus configuration of the current Alibaba Cloud account, including the virus file upload switch and upload limits. If the current Alibaba Cloud account does not have its own configuration record, the default configurations are returned.
+//
+// @param request - GetVirusScanGlobalConfigRequest
+//
+// @return GetVirusScanGlobalConfigResponse
+func (client *Client) GetVirusScanGlobalConfig(request *GetVirusScanGlobalConfigRequest) (_result *GetVirusScanGlobalConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetVirusScanGlobalConfigResponse{}
+	_body, _err := client.GetVirusScanGlobalConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a specified scheduled virus scan policy.
+//
+// @param request - GetVirusScanScheduledStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVirusScanScheduledStrategyResponse
+func (client *Client) GetVirusScanScheduledStrategyWithOptions(request *GetVirusScanScheduledStrategyRequest, runtime *dara.RuntimeOptions) (_result *GetVirusScanScheduledStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetVirusScanScheduledStrategy"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetVirusScanScheduledStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a specified scheduled virus scan policy.
+//
+// @param request - GetVirusScanScheduledStrategyRequest
+//
+// @return GetVirusScanScheduledStrategyResponse
+func (client *Client) GetVirusScanScheduledStrategy(request *GetVirusScanScheduledStrategyRequest) (_result *GetVirusScanScheduledStrategyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetVirusScanScheduledStrategyResponse{}
+	_body, _err := client.GetVirusScanScheduledStrategyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the global configuration of vulnerability scanning for the current Alibaba Cloud account.
+//
+// @param request - GetVulScanGlobalConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVulScanGlobalConfigResponse
+func (client *Client) GetVulScanGlobalConfigWithOptions(request *GetVulScanGlobalConfigRequest, runtime *dara.RuntimeOptions) (_result *GetVulScanGlobalConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetVulScanGlobalConfig"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetVulScanGlobalConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the global configuration of vulnerability scanning for the current Alibaba Cloud account.
+//
+// @param request - GetVulScanGlobalConfigRequest
+//
+// @return GetVulScanGlobalConfigResponse
+func (client *Client) GetVulScanGlobalConfig(request *GetVulScanGlobalConfigRequest) (_result *GetVulScanGlobalConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetVulScanGlobalConfigResponse{}
+	_body, _err := client.GetVulScanGlobalConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the complete configuration of a specified vulnerability scheduled scan policy.
+//
+// @param request - GetVulScanScheduledStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVulScanScheduledStrategyResponse
+func (client *Client) GetVulScanScheduledStrategyWithOptions(request *GetVulScanScheduledStrategyRequest, runtime *dara.RuntimeOptions) (_result *GetVulScanScheduledStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetVulScanScheduledStrategy"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetVulScanScheduledStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the complete configuration of a specified vulnerability scheduled scan policy.
+//
+// @param request - GetVulScanScheduledStrategyRequest
+//
+// @return GetVulScanScheduledStrategyResponse
+func (client *Client) GetVulScanScheduledStrategy(request *GetVulScanScheduledStrategyRequest) (_result *GetVulScanScheduledStrategyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetVulScanScheduledStrategyResponse{}
+	_body, _err := client.GetVulScanScheduledStrategyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a specified vulnerability.
+//
+// @param request - GetVulnerabilityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVulnerabilityResponse
+func (client *Client) GetVulnerabilityWithOptions(request *GetVulnerabilityRequest, runtime *dara.RuntimeOptions) (_result *GetVulnerabilityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetVulnerability"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetVulnerabilityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a specified vulnerability.
+//
+// @param request - GetVulnerabilityRequest
+//
+// @return GetVulnerabilityResponse
+func (client *Client) GetVulnerability(request *GetVulnerabilityRequest) (_result *GetVulnerabilityResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetVulnerabilityResponse{}
+	_body, _err := client.GetVulnerabilityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Use the job ID obtained from creating a watermark embedding job to query the embedding job result.
 //
 // @param request - GetWmEmbedTaskRequest
@@ -6720,6 +8051,64 @@ func (client *Client) ListDeviceGroups(request *ListDeviceGroupsRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListDeviceGroupsResponse{}
 	_body, _err := client.ListDeviceGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries user endpoint devices affected by a specified vulnerability and their remediation status by paging.
+//
+// @param request - ListDevicesForVulnerabilityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDevicesForVulnerabilityResponse
+func (client *Client) ListDevicesForVulnerabilityWithOptions(request *ListDevicesForVulnerabilityRequest, runtime *dara.RuntimeOptions) (_result *ListDevicesForVulnerabilityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDevicesForVulnerability"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDevicesForVulnerabilityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries user endpoint devices affected by a specified vulnerability and their remediation status by paging.
+//
+// @param request - ListDevicesForVulnerabilityRequest
+//
+// @return ListDevicesForVulnerabilityResponse
+func (client *Client) ListDevicesForVulnerability(request *ListDevicesForVulnerabilityRequest) (_result *ListDevicesForVulnerabilityResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDevicesForVulnerabilityResponse{}
+	_body, _err := client.ListDevicesForVulnerabilityWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9436,6 +10825,528 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 
 // Summary:
 //
+// Queries virus files detected under the current Alibaba Cloud account and their disposition status with paging. Supports filtering by virus type, risk level, user terminal device, user, and discovery time.
+//
+// @param request - ListVirusFileStatusesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVirusFileStatusesResponse
+func (client *Client) ListVirusFileStatusesWithOptions(request *ListVirusFileStatusesRequest, runtime *dara.RuntimeOptions) (_result *ListVirusFileStatusesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListVirusFileStatuses"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListVirusFileStatusesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries virus files detected under the current Alibaba Cloud account and their disposition status with paging. Supports filtering by virus type, risk level, user terminal device, user, and discovery time.
+//
+// @param request - ListVirusFileStatusesRequest
+//
+// @return ListVirusFileStatusesResponse
+func (client *Client) ListVirusFileStatuses(request *ListVirusFileStatusesRequest) (_result *ListVirusFileStatusesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListVirusFileStatusesResponse{}
+	_body, _err := client.ListVirusFileStatusesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询病毒扫描额外名单
+//
+// @param request - ListVirusScanAdditionalListsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVirusScanAdditionalListsResponse
+func (client *Client) ListVirusScanAdditionalListsWithOptions(request *ListVirusScanAdditionalListsRequest, runtime *dara.RuntimeOptions) (_result *ListVirusScanAdditionalListsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListVirusScanAdditionalLists"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListVirusScanAdditionalListsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询病毒扫描额外名单
+//
+// @param request - ListVirusScanAdditionalListsRequest
+//
+// @return ListVirusScanAdditionalListsResponse
+func (client *Client) ListVirusScanAdditionalLists(request *ListVirusScanAdditionalListsRequest) (_result *ListVirusScanAdditionalListsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListVirusScanAdditionalListsResponse{}
+	_body, _err := client.ListVirusScanAdditionalListsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries virus scheduled scan policies under the current Alibaba Cloud account with paging.
+//
+// @param request - ListVirusScanScheduledStrategiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVirusScanScheduledStrategiesResponse
+func (client *Client) ListVirusScanScheduledStrategiesWithOptions(request *ListVirusScanScheduledStrategiesRequest, runtime *dara.RuntimeOptions) (_result *ListVirusScanScheduledStrategiesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListVirusScanScheduledStrategies"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListVirusScanScheduledStrategiesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries virus scheduled scan policies under the current Alibaba Cloud account with paging.
+//
+// @param request - ListVirusScanScheduledStrategiesRequest
+//
+// @return ListVirusScanScheduledStrategiesResponse
+func (client *Client) ListVirusScanScheduledStrategies(request *ListVirusScanScheduledStrategiesRequest) (_result *ListVirusScanScheduledStrategiesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListVirusScanScheduledStrategiesResponse{}
+	_body, _err := client.ListVirusScanScheduledStrategiesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询病毒扫描任务的状态
+//
+// @param request - ListVirusScanTaskStatusesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVirusScanTaskStatusesResponse
+func (client *Client) ListVirusScanTaskStatusesWithOptions(request *ListVirusScanTaskStatusesRequest, runtime *dara.RuntimeOptions) (_result *ListVirusScanTaskStatusesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListVirusScanTaskStatuses"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListVirusScanTaskStatusesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询病毒扫描任务的状态
+//
+// @param request - ListVirusScanTaskStatusesRequest
+//
+// @return ListVirusScanTaskStatusesResponse
+func (client *Client) ListVirusScanTaskStatuses(request *ListVirusScanTaskStatusesRequest) (_result *ListVirusScanTaskStatusesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListVirusScanTaskStatusesResponse{}
+	_body, _err := client.ListVirusScanTaskStatusesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询病毒扫描任务统计数据
+//
+// @param request - ListVirusScanTaskSummaryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVirusScanTaskSummaryResponse
+func (client *Client) ListVirusScanTaskSummaryWithOptions(request *ListVirusScanTaskSummaryRequest, runtime *dara.RuntimeOptions) (_result *ListVirusScanTaskSummaryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListVirusScanTaskSummary"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListVirusScanTaskSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询病毒扫描任务统计数据
+//
+// @param request - ListVirusScanTaskSummaryRequest
+//
+// @return ListVirusScanTaskSummaryResponse
+func (client *Client) ListVirusScanTaskSummary(request *ListVirusScanTaskSummaryRequest) (_result *ListVirusScanTaskSummaryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListVirusScanTaskSummaryResponse{}
+	_body, _err := client.ListVirusScanTaskSummaryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询病毒扫描任务
+//
+// @param request - ListVirusScanTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVirusScanTasksResponse
+func (client *Client) ListVirusScanTasksWithOptions(request *ListVirusScanTasksRequest, runtime *dara.RuntimeOptions) (_result *ListVirusScanTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListVirusScanTasks"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListVirusScanTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询病毒扫描任务
+//
+// @param request - ListVirusScanTasksRequest
+//
+// @return ListVirusScanTasksResponse
+func (client *Client) ListVirusScanTasks(request *ListVirusScanTasksRequest) (_result *ListVirusScanTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListVirusScanTasksResponse{}
+	_body, _err := client.ListVirusScanTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries scheduled vulnerability scan policies under the current Alibaba Cloud account by paging.
+//
+// @param request - ListVulScanScheduledStrategiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVulScanScheduledStrategiesResponse
+func (client *Client) ListVulScanScheduledStrategiesWithOptions(request *ListVulScanScheduledStrategiesRequest, runtime *dara.RuntimeOptions) (_result *ListVulScanScheduledStrategiesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListVulScanScheduledStrategies"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListVulScanScheduledStrategiesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries scheduled vulnerability scan policies under the current Alibaba Cloud account by paging.
+//
+// @param request - ListVulScanScheduledStrategiesRequest
+//
+// @return ListVulScanScheduledStrategiesResponse
+func (client *Client) ListVulScanScheduledStrategies(request *ListVulScanScheduledStrategiesRequest) (_result *ListVulScanScheduledStrategiesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListVulScanScheduledStrategiesResponse{}
+	_body, _err := client.ListVulScanScheduledStrategiesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries vulnerability scanning tasks under the current Alibaba Cloud account by paged query.
+//
+// @param request - ListVulScanTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVulScanTasksResponse
+func (client *Client) ListVulScanTasksWithOptions(request *ListVulScanTasksRequest, runtime *dara.RuntimeOptions) (_result *ListVulScanTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListVulScanTasks"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListVulScanTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries vulnerability scanning tasks under the current Alibaba Cloud account by paged query.
+//
+// @param request - ListVulScanTasksRequest
+//
+// @return ListVulScanTasksResponse
+func (client *Client) ListVulScanTasks(request *ListVulScanTasksRequest) (_result *ListVulScanTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListVulScanTasksResponse{}
+	_body, _err := client.ListVulScanTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries vulnerabilities detected by scans under the current Alibaba Cloud account by using paged query with paging.
+//
+// @param request - ListVulnerabilitiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVulnerabilitiesResponse
+func (client *Client) ListVulnerabilitiesWithOptions(request *ListVulnerabilitiesRequest, runtime *dara.RuntimeOptions) (_result *ListVulnerabilitiesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListVulnerabilities"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListVulnerabilitiesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries vulnerabilities detected by scans under the current Alibaba Cloud account by using paged query with paging.
+//
+// @param request - ListVulnerabilitiesRequest
+//
+// @return ListVulnerabilitiesResponse
+func (client *Client) ListVulnerabilities(request *ListVulnerabilitiesRequest) (_result *ListVulnerabilitiesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListVulnerabilitiesResponse{}
+	_body, _err := client.ListVulnerabilitiesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Look up an existing watermark information mapping to retrieve the corresponding string-formatted watermark information from numeric-formatted watermark data.
 //
 // @param request - LookupWmInfoMappingRequest
@@ -9827,6 +11738,71 @@ func (client *Client) RemoveDeviceGroupMatchDevices(request *RemoveDeviceGroupMa
 
 // Summary:
 //
+// Removes virus scan blacklists and whitelists entries in batch by entry IDs. The entire removal operation is failed if any of the specified entry IDs do not belong to the current Alibaba Cloud account.
+//
+// @param request - RemoveVirusScanAdditionalListsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveVirusScanAdditionalListsResponse
+func (client *Client) RemoveVirusScanAdditionalListsWithOptions(request *RemoveVirusScanAdditionalListsRequest, runtime *dara.RuntimeOptions) (_result *RemoveVirusScanAdditionalListsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.ListIds) {
+		bodyFlat["ListIds"] = request.ListIds
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveVirusScanAdditionalLists"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveVirusScanAdditionalListsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes virus scan blacklists and whitelists entries in batch by entry IDs. The entire removal operation is failed if any of the specified entry IDs do not belong to the current Alibaba Cloud account.
+//
+// @param request - RemoveVirusScanAdditionalListsRequest
+//
+// @return RemoveVirusScanAdditionalListsResponse
+func (client *Client) RemoveVirusScanAdditionalLists(request *RemoveVirusScanAdditionalListsRequest) (_result *RemoveVirusScanAdditionalListsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RemoveVirusScanAdditionalListsResponse{}
+	_body, _err := client.RemoveVirusScanAdditionalListsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Revokes a user device session.
 //
 // @param request - RevokeUserDeviceSessionRequest
@@ -9955,6 +11931,103 @@ func (client *Client) RevokeUserSession(request *RevokeUserSessionRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &RevokeUserSessionResponse{}
 	_body, _err := client.RevokeUserSessionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Configures the real-time anti-virus defense policy for the current Alibaba Cloud account. The first call creates the policy, and subsequent calls update it. The complete updated configuration is returned. When configuring for the first time, Status, MatchMode, HighRiskOperation, MidRiskOperation, LowRiskOperation, and ScanTargets are all required. ScanTargets and Whitelist are full replacements. The collection you pass in replaces the existing configuration. When MatchMode is set to UserGroupNormal, you must pass in the complete UserGroupIds on every call. When Status is not set to Disabled, the system validates the endpoint hardening license count. The call fails if the count exceeds the purchased licenses.
+//
+// @param request - UpdateAntiVirusRealTimeDefenceStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAntiVirusRealTimeDefenceStrategyResponse
+func (client *Client) UpdateAntiVirusRealTimeDefenceStrategyWithOptions(request *UpdateAntiVirusRealTimeDefenceStrategyRequest, runtime *dara.RuntimeOptions) (_result *UpdateAntiVirusRealTimeDefenceStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.HighRiskOperation) {
+		body["HighRiskOperation"] = request.HighRiskOperation
+	}
+
+	if !dara.IsNil(request.LowRiskOperation) {
+		body["LowRiskOperation"] = request.LowRiskOperation
+	}
+
+	if !dara.IsNil(request.MatchMode) {
+		body["MatchMode"] = request.MatchMode
+	}
+
+	if !dara.IsNil(request.MaxCpuUsage) {
+		body["MaxCpuUsage"] = request.MaxCpuUsage
+	}
+
+	if !dara.IsNil(request.MidRiskOperation) {
+		body["MidRiskOperation"] = request.MidRiskOperation
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.ScanTargets) {
+		bodyFlat["ScanTargets"] = request.ScanTargets
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.UserGroupIds) {
+		bodyFlat["UserGroupIds"] = request.UserGroupIds
+	}
+
+	if !dara.IsNil(request.Whitelist) {
+		bodyFlat["Whitelist"] = request.Whitelist
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAntiVirusRealTimeDefenceStrategy"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAntiVirusRealTimeDefenceStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Configures the real-time anti-virus defense policy for the current Alibaba Cloud account. The first call creates the policy, and subsequent calls update it. The complete updated configuration is returned. When configuring for the first time, Status, MatchMode, HighRiskOperation, MidRiskOperation, LowRiskOperation, and ScanTargets are all required. ScanTargets and Whitelist are full replacements. The collection you pass in replaces the existing configuration. When MatchMode is set to UserGroupNormal, you must pass in the complete UserGroupIds on every call. When Status is not set to Disabled, the system validates the endpoint hardening license count. The call fails if the count exceeds the purchased licenses.
+//
+// @param request - UpdateAntiVirusRealTimeDefenceStrategyRequest
+//
+// @return UpdateAntiVirusRealTimeDefenceStrategyResponse
+func (client *Client) UpdateAntiVirusRealTimeDefenceStrategy(request *UpdateAntiVirusRealTimeDefenceStrategyRequest) (_result *UpdateAntiVirusRealTimeDefenceStrategyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAntiVirusRealTimeDefenceStrategyResponse{}
+	_body, _err := client.UpdateAntiVirusRealTimeDefenceStrategyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12386,6 +14459,483 @@ func (client *Client) UpdateUsersStatus(request *UpdateUsersStatusRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateUsersStatusResponse{}
 	_body, _err := client.UpdateUsersStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Quarantines or trusts a virus file on a specified user terminal device. DevTag, FilePath, and FileMd5 together identify a virus file record. The call fails if the record does not exist. Quarantine is an asynchronous operation. After the server creates a disposal task, the user terminal device pulls and executes it. The same virus file record can only be disposed of once within one minute.
+//
+// @param request - UpdateVirusFileStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVirusFileStatusResponse
+func (client *Client) UpdateVirusFileStatusWithOptions(request *UpdateVirusFileStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateVirusFileStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DevTag) {
+		body["DevTag"] = request.DevTag
+	}
+
+	if !dara.IsNil(request.FileMd5) {
+		body["FileMd5"] = request.FileMd5
+	}
+
+	if !dara.IsNil(request.FilePath) {
+		body["FilePath"] = request.FilePath
+	}
+
+	if !dara.IsNil(request.Operation) {
+		body["Operation"] = request.Operation
+	}
+
+	if !dara.IsNil(request.VirusType) {
+		body["VirusType"] = request.VirusType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateVirusFileStatus"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateVirusFileStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Quarantines or trusts a virus file on a specified user terminal device. DevTag, FilePath, and FileMd5 together identify a virus file record. The call fails if the record does not exist. Quarantine is an asynchronous operation. After the server creates a disposal task, the user terminal device pulls and executes it. The same virus file record can only be disposed of once within one minute.
+//
+// @param request - UpdateVirusFileStatusRequest
+//
+// @return UpdateVirusFileStatusResponse
+func (client *Client) UpdateVirusFileStatus(request *UpdateVirusFileStatusRequest) (_result *UpdateVirusFileStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateVirusFileStatusResponse{}
+	_body, _err := client.UpdateVirusFileStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the anti-virus global configuration for the current Alibaba Cloud account. The four configuration items are treated as a whole and are entirely overwritten with each call. Therefore, pass in the complete configuration with each call: set VirusFileUpload to false, UploadFileSuffixBlacklist to empty, and UploadFileMaxSize and UploadFileMaxSpeed to 0 (no limit). After VirusFileUpload is changed, the virus file upload module switch is synchronously updated, which affects whether cloud-based STS tokens are issued to user terminal devices.
+//
+// @param request - UpdateVirusScanGlobalConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVirusScanGlobalConfigResponse
+func (client *Client) UpdateVirusScanGlobalConfigWithOptions(request *UpdateVirusScanGlobalConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateVirusScanGlobalConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UploadFileMaxSize) {
+		body["UploadFileMaxSize"] = request.UploadFileMaxSize
+	}
+
+	if !dara.IsNil(request.UploadFileMaxSpeed) {
+		body["UploadFileMaxSpeed"] = request.UploadFileMaxSpeed
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.UploadFileSuffixBlacklist) {
+		bodyFlat["UploadFileSuffixBlacklist"] = request.UploadFileSuffixBlacklist
+	}
+
+	if !dara.IsNil(request.VirusFileUpload) {
+		body["VirusFileUpload"] = request.VirusFileUpload
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateVirusScanGlobalConfig"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateVirusScanGlobalConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the anti-virus global configuration for the current Alibaba Cloud account. The four configuration items are treated as a whole and are entirely overwritten with each call. Therefore, pass in the complete configuration with each call: set VirusFileUpload to false, UploadFileSuffixBlacklist to empty, and UploadFileMaxSize and UploadFileMaxSpeed to 0 (no limit). After VirusFileUpload is changed, the virus file upload module switch is synchronously updated, which affects whether cloud-based STS tokens are issued to user terminal devices.
+//
+// @param request - UpdateVirusScanGlobalConfigRequest
+//
+// @return UpdateVirusScanGlobalConfigResponse
+func (client *Client) UpdateVirusScanGlobalConfig(request *UpdateVirusScanGlobalConfigRequest) (_result *UpdateVirusScanGlobalConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateVirusScanGlobalConfigResponse{}
+	_body, _err := client.UpdateVirusScanGlobalConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the configuration of a specified scheduled virus scan policy. The Whitelist parameter performs a full overwrite, meaning the provided list replaces the existing exception user list of the policy.
+//
+// @param request - UpdateVirusScanScheduledStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVirusScanScheduledStrategyResponse
+func (client *Client) UpdateVirusScanScheduledStrategyWithOptions(request *UpdateVirusScanScheduledStrategyRequest, runtime *dara.RuntimeOptions) (_result *UpdateVirusScanScheduledStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.HighRiskOperation) {
+		body["HighRiskOperation"] = request.HighRiskOperation
+	}
+
+	if !dara.IsNil(request.LowRiskOperation) {
+		body["LowRiskOperation"] = request.LowRiskOperation
+	}
+
+	if !dara.IsNil(request.MatchMode) {
+		body["MatchMode"] = request.MatchMode
+	}
+
+	if !dara.IsNil(request.MaxCpuUsage) {
+		body["MaxCpuUsage"] = request.MaxCpuUsage
+	}
+
+	if !dara.IsNil(request.MidRiskOperation) {
+		body["MidRiskOperation"] = request.MidRiskOperation
+	}
+
+	if !dara.IsNil(request.PerformanceMode) {
+		body["PerformanceMode"] = request.PerformanceMode
+	}
+
+	if !dara.IsNil(request.Priority) {
+		body["Priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.ScanBeginTime) {
+		body["ScanBeginTime"] = request.ScanBeginTime
+	}
+
+	if !dara.IsNil(request.ScanEndTime) {
+		body["ScanEndTime"] = request.ScanEndTime
+	}
+
+	if !dara.IsNil(request.ScanFrequency) {
+		body["ScanFrequency"] = request.ScanFrequency
+	}
+
+	if !dara.IsNil(request.ScanInterval) {
+		body["ScanInterval"] = request.ScanInterval
+	}
+
+	if !dara.IsNil(request.ScanMode) {
+		body["ScanMode"] = request.ScanMode
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.ScanPath) {
+		bodyFlat["ScanPath"] = request.ScanPath
+	}
+
+	if !dara.IsNil(request.ScanTargets) {
+		bodyFlat["ScanTargets"] = request.ScanTargets
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.StrategyDescription) {
+		body["StrategyDescription"] = request.StrategyDescription
+	}
+
+	if !dara.IsNil(request.StrategyId) {
+		body["StrategyId"] = request.StrategyId
+	}
+
+	if !dara.IsNil(request.StrategyName) {
+		body["StrategyName"] = request.StrategyName
+	}
+
+	if !dara.IsNil(request.UserGroupIds) {
+		bodyFlat["UserGroupIds"] = request.UserGroupIds
+	}
+
+	if !dara.IsNil(request.Whitelist) {
+		bodyFlat["Whitelist"] = request.Whitelist
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateVirusScanScheduledStrategy"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateVirusScanScheduledStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the configuration of a specified scheduled virus scan policy. The Whitelist parameter performs a full overwrite, meaning the provided list replaces the existing exception user list of the policy.
+//
+// @param request - UpdateVirusScanScheduledStrategyRequest
+//
+// @return UpdateVirusScanScheduledStrategyResponse
+func (client *Client) UpdateVirusScanScheduledStrategy(request *UpdateVirusScanScheduledStrategyRequest) (_result *UpdateVirusScanScheduledStrategyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateVirusScanScheduledStrategyResponse{}
+	_body, _err := client.UpdateVirusScanScheduledStrategyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the global vulnerability scanning configuration for the current Alibaba Cloud account and returns the complete updated configuration.
+//
+// @param tmpReq - UpdateVulScanGlobalConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVulScanGlobalConfigResponse
+func (client *Client) UpdateVulScanGlobalConfigWithOptions(tmpReq *UpdateVulScanGlobalConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateVulScanGlobalConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateVulScanGlobalConfigShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.WuyingVulFixConfig) {
+		request.WuyingVulFixConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WuyingVulFixConfig, dara.String("WuyingVulFixConfig"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MaxDownloadSpeed) {
+		body["MaxDownloadSpeed"] = request.MaxDownloadSpeed
+	}
+
+	if !dara.IsNil(request.WuyingVulFixConfigShrink) {
+		body["WuyingVulFixConfig"] = request.WuyingVulFixConfigShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateVulScanGlobalConfig"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateVulScanGlobalConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the global vulnerability scanning configuration for the current Alibaba Cloud account and returns the complete updated configuration.
+//
+// @param request - UpdateVulScanGlobalConfigRequest
+//
+// @return UpdateVulScanGlobalConfigResponse
+func (client *Client) UpdateVulScanGlobalConfig(request *UpdateVulScanGlobalConfigRequest) (_result *UpdateVulScanGlobalConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateVulScanGlobalConfigResponse{}
+	_body, _err := client.UpdateVulScanGlobalConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the configuration of a specified vulnerability scheduled scan policy and returns the complete updated configuration.
+//
+// @param request - UpdateVulScanScheduledStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVulScanScheduledStrategyResponse
+func (client *Client) UpdateVulScanScheduledStrategyWithOptions(request *UpdateVulScanScheduledStrategyRequest, runtime *dara.RuntimeOptions) (_result *UpdateVulScanScheduledStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MatchMode) {
+		body["MatchMode"] = request.MatchMode
+	}
+
+	if !dara.IsNil(request.Priority) {
+		body["Priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.ScanBeginTime) {
+		body["ScanBeginTime"] = request.ScanBeginTime
+	}
+
+	if !dara.IsNil(request.ScanEndTime) {
+		body["ScanEndTime"] = request.ScanEndTime
+	}
+
+	if !dara.IsNil(request.ScanFrequency) {
+		body["ScanFrequency"] = request.ScanFrequency
+	}
+
+	if !dara.IsNil(request.ScanInterval) {
+		body["ScanInterval"] = request.ScanInterval
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.StrategyDescription) {
+		body["StrategyDescription"] = request.StrategyDescription
+	}
+
+	if !dara.IsNil(request.StrategyId) {
+		body["StrategyId"] = request.StrategyId
+	}
+
+	if !dara.IsNil(request.StrategyName) {
+		body["StrategyName"] = request.StrategyName
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.UserGroupIds) {
+		bodyFlat["UserGroupIds"] = request.UserGroupIds
+	}
+
+	if !dara.IsNil(request.Whitelist) {
+		bodyFlat["Whitelist"] = request.Whitelist
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateVulScanScheduledStrategy"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateVulScanScheduledStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the configuration of a specified vulnerability scheduled scan policy and returns the complete updated configuration.
+//
+// @param request - UpdateVulScanScheduledStrategyRequest
+//
+// @return UpdateVulScanScheduledStrategyResponse
+func (client *Client) UpdateVulScanScheduledStrategy(request *UpdateVulScanScheduledStrategyRequest) (_result *UpdateVulScanScheduledStrategyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateVulScanScheduledStrategyResponse{}
+	_body, _err := client.UpdateVulScanScheduledStrategyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

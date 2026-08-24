@@ -1,0 +1,397 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iUpdateVirusScanScheduledStrategyRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHighRiskOperation(v string) *UpdateVirusScanScheduledStrategyRequest
+	GetHighRiskOperation() *string
+	SetLowRiskOperation(v string) *UpdateVirusScanScheduledStrategyRequest
+	GetLowRiskOperation() *string
+	SetMatchMode(v string) *UpdateVirusScanScheduledStrategyRequest
+	GetMatchMode() *string
+	SetMaxCpuUsage(v int64) *UpdateVirusScanScheduledStrategyRequest
+	GetMaxCpuUsage() *int64
+	SetMidRiskOperation(v string) *UpdateVirusScanScheduledStrategyRequest
+	GetMidRiskOperation() *string
+	SetPerformanceMode(v string) *UpdateVirusScanScheduledStrategyRequest
+	GetPerformanceMode() *string
+	SetPriority(v int32) *UpdateVirusScanScheduledStrategyRequest
+	GetPriority() *int32
+	SetScanBeginTime(v int64) *UpdateVirusScanScheduledStrategyRequest
+	GetScanBeginTime() *int64
+	SetScanEndTime(v int64) *UpdateVirusScanScheduledStrategyRequest
+	GetScanEndTime() *int64
+	SetScanFrequency(v string) *UpdateVirusScanScheduledStrategyRequest
+	GetScanFrequency() *string
+	SetScanInterval(v int64) *UpdateVirusScanScheduledStrategyRequest
+	GetScanInterval() *int64
+	SetScanMode(v string) *UpdateVirusScanScheduledStrategyRequest
+	GetScanMode() *string
+	SetScanPath(v []*string) *UpdateVirusScanScheduledStrategyRequest
+	GetScanPath() []*string
+	SetScanTargets(v []*string) *UpdateVirusScanScheduledStrategyRequest
+	GetScanTargets() []*string
+	SetStatus(v string) *UpdateVirusScanScheduledStrategyRequest
+	GetStatus() *string
+	SetStrategyDescription(v string) *UpdateVirusScanScheduledStrategyRequest
+	GetStrategyDescription() *string
+	SetStrategyId(v string) *UpdateVirusScanScheduledStrategyRequest
+	GetStrategyId() *string
+	SetStrategyName(v string) *UpdateVirusScanScheduledStrategyRequest
+	GetStrategyName() *string
+	SetUserGroupIds(v []*string) *UpdateVirusScanScheduledStrategyRequest
+	GetUserGroupIds() []*string
+	SetWhitelist(v []*string) *UpdateVirusScanScheduledStrategyRequest
+	GetWhitelist() []*string
+}
+
+type UpdateVirusScanScheduledStrategyRequest struct {
+	// The action to take on high-risk virus files. Valid values:
+	//
+	// - **Quarantine**: Quarantine quarantined file.
+	//
+	// - **Notify**: Report an alert only without taking action on quarantined file.
+	//
+	// example:
+	//
+	// Quarantine
+	HighRiskOperation *string `json:"HighRiskOperation,omitempty" xml:"HighRiskOperation,omitempty"`
+	// The action to take on low-risk virus files. Valid values:
+	//
+	// - **Quarantine**: Quarantine quarantined file.
+	//
+	// - **Notify**: Report an alert only without taking action on quarantined file.
+	//
+	// - **None**: Take no action.
+	//
+	// example:
+	//
+	// None
+	LowRiskOperation *string `json:"LowRiskOperation,omitempty" xml:"LowRiskOperation,omitempty"`
+	// The matching mode for the effective scope. Valid values:
+	//
+	// - **UserGroupAll**: The policy takes effect for all users under the current Alibaba Cloud account.
+	//
+	// - **UserGroupNormal**: The policy takes effect only for users in specified user groups. UserGroupIds is required when this value is specified.
+	//
+	// example:
+	//
+	// UserGroupNormal
+	MatchMode *string `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
+	// The maximum percentage of terminal CPU usage allowed during scanning. Valid values: 0 to 100.
+	//
+	// example:
+	//
+	// 30
+	MaxCpuUsage *int64 `json:"MaxCpuUsage,omitempty" xml:"MaxCpuUsage,omitempty"`
+	// The action to take on medium-risk virus files. Valid values:
+	//
+	// - **Quarantine**: Quarantine quarantined file.
+	//
+	// - **Notify**: Report an alert only without taking action on quarantined file.
+	//
+	// example:
+	//
+	// Notify
+	MidRiskOperation *string `json:"MidRiskOperation,omitempty" xml:"MidRiskOperation,omitempty"`
+	// The scan performance pattern. Valid values:
+	//
+	// - **SecurityFirst**: Security first. The default CPU usage limit is 50%.
+	//
+	// - **Balance**: Balanced. The default CPU usage limit is 30%.
+	//
+	// - **ExperienceFirst**: Experience first. The default CPU usage limit is 15%.
+	//
+	// example:
+	//
+	// Balance
+	PerformanceMode *string `json:"PerformanceMode,omitempty" xml:"PerformanceMode,omitempty"`
+	// The policy priority. A smaller value indicates a higher priority. Valid values: 1 to 100.
+	//
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The start hour during which scans can be triggered. The value is a whole hour number. Valid values: 0 to 23, inclusive. This field is not a timestamp.
+	//
+	// example:
+	//
+	// 1
+	ScanBeginTime *int64 `json:"ScanBeginTime,omitempty" xml:"ScanBeginTime,omitempty"`
+	// The end hour during which scans can be triggered. The value is a whole hour number. Valid values: 1 to 24, exclusive of the specified hour, and must be greater than ScanBeginTime. Scan tasks generated by each trigger expire at this hour on the same day. This field is not a timestamp.
+	//
+	// example:
+	//
+	// 6
+	ScanEndTime *int64 `json:"ScanEndTime,omitempty" xml:"ScanEndTime,omitempty"`
+	// The unit of the trigger cycle. Valid values:
+	//
+	// - **day**: by day.
+	//
+	// - **week**: by week.
+	//
+	// example:
+	//
+	// week
+	ScanFrequency *string `json:"ScanFrequency,omitempty" xml:"ScanFrequency,omitempty"`
+	// The interval number of the trigger cycle, which together with ScanFrequency determines the trigger cycle. Valid values: 1 to 30. For example, if ScanFrequency is set to week and ScanInterval is set to 1, the scan is triggered once a week.
+	//
+	// example:
+	//
+	// 1
+	ScanInterval *int64 `json:"ScanInterval,omitempty" xml:"ScanInterval,omitempty"`
+	// The path scope for scanning. Valid values:
+	//
+	// - **Quick**: Quick scan. Only system-critical directories and common risk locations are scanned.
+	//
+	// - **Full**: Full disk scan.
+	//
+	// - **Custom**: Custom path scan. ScanPath is required when this value is specified.
+	//
+	// example:
+	//
+	// Quick
+	ScanMode *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
+	// The collection of custom scan paths. A maximum of 100 paths can be specified, and duplicates are not allowed. This parameter takes effect only when ScanMode is set to Custom.
+	ScanPath []*string `json:"ScanPath,omitempty" xml:"ScanPath,omitempty" type:"Repeated"`
+	// The collection of virus types to be handled in this scan. At least one type must be specified, and duplicates are not allowed.
+	ScanTargets []*string `json:"ScanTargets,omitempty" xml:"ScanTargets,omitempty" type:"Repeated"`
+	// The enabled status. Valid values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
+	// When enabled, the policy immediately participates in periodic scheduling. When disabled, the policy is saved but does not trigger scans.
+	//
+	// example:
+	//
+	// Enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The policy description. The description can contain Chinese characters, uppercase and lowercase letters, digits, spaces, periods (.), commas (,), semicolons (;), forward slashes (/), at signs (@), hyphens (-), and underscores (_).
+	//
+	// example:
+	//
+	// Full disk scan for R&D department terminals every Sunday at midnight
+	StrategyDescription *string `json:"StrategyDescription,omitempty" xml:"StrategyDescription,omitempty"`
+	// The ID of the scheduled virus scan policy to modify. You can obtain the value from:
+	//
+	// - [ListVirusScanScheduledStrategies](~~ListVirusScanScheduledStrategies~~): Lists scheduled virus scan policies.
+	//
+	// - [CreateVirusScanScheduledStrategy](~~CreateVirusScanScheduledStrategy~~): Creates a scheduled virus scan policy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vc-strategy-8a3f6c2e91b7****
+	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	// The policy name. The name can be up to 128 characters in length and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-). Spaces are not supported.
+	//
+	// example:
+	//
+	// Weekly scan for R&D department
+	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
+	// The collection of user group IDs for the effective scope. At least 1 and at most 100 IDs can be specified, and duplicates are not allowed. When the effective scope is UserGroupNormal, the provided collection fully replaces the existing user groups of the policy. When the effective scope is UserGroupAll and the effective scope is not being modified, this parameter must not be specified.
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	// The exception user list. Users in this list are excluded from the scan performed by this policy. A maximum of 1000 entries can be specified, and duplicates are not allowed. This parameter performs a full overwrite, meaning the provided list replaces the existing list of the policy.
+	Whitelist []*string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
+}
+
+func (s UpdateVirusScanScheduledStrategyRequest) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateVirusScanScheduledStrategyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) GetHighRiskOperation() *string {
+	return s.HighRiskOperation
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) GetLowRiskOperation() *string {
+	return s.LowRiskOperation
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) GetMatchMode() *string {
+	return s.MatchMode
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) GetMaxCpuUsage() *int64 {
+	return s.MaxCpuUsage
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) GetMidRiskOperation() *string {
+	return s.MidRiskOperation
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) GetPerformanceMode() *string {
+	return s.PerformanceMode
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) GetPriority() *int32 {
+	return s.Priority
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) GetScanBeginTime() *int64 {
+	return s.ScanBeginTime
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) GetScanEndTime() *int64 {
+	return s.ScanEndTime
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) GetScanFrequency() *string {
+	return s.ScanFrequency
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) GetScanInterval() *int64 {
+	return s.ScanInterval
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) GetScanMode() *string {
+	return s.ScanMode
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) GetScanPath() []*string {
+	return s.ScanPath
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) GetScanTargets() []*string {
+	return s.ScanTargets
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) GetStatus() *string {
+	return s.Status
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) GetStrategyDescription() *string {
+	return s.StrategyDescription
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) GetStrategyId() *string {
+	return s.StrategyId
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) GetStrategyName() *string {
+	return s.StrategyName
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) GetUserGroupIds() []*string {
+	return s.UserGroupIds
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) GetWhitelist() []*string {
+	return s.Whitelist
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) SetHighRiskOperation(v string) *UpdateVirusScanScheduledStrategyRequest {
+	s.HighRiskOperation = &v
+	return s
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) SetLowRiskOperation(v string) *UpdateVirusScanScheduledStrategyRequest {
+	s.LowRiskOperation = &v
+	return s
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) SetMatchMode(v string) *UpdateVirusScanScheduledStrategyRequest {
+	s.MatchMode = &v
+	return s
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) SetMaxCpuUsage(v int64) *UpdateVirusScanScheduledStrategyRequest {
+	s.MaxCpuUsage = &v
+	return s
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) SetMidRiskOperation(v string) *UpdateVirusScanScheduledStrategyRequest {
+	s.MidRiskOperation = &v
+	return s
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) SetPerformanceMode(v string) *UpdateVirusScanScheduledStrategyRequest {
+	s.PerformanceMode = &v
+	return s
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) SetPriority(v int32) *UpdateVirusScanScheduledStrategyRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) SetScanBeginTime(v int64) *UpdateVirusScanScheduledStrategyRequest {
+	s.ScanBeginTime = &v
+	return s
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) SetScanEndTime(v int64) *UpdateVirusScanScheduledStrategyRequest {
+	s.ScanEndTime = &v
+	return s
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) SetScanFrequency(v string) *UpdateVirusScanScheduledStrategyRequest {
+	s.ScanFrequency = &v
+	return s
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) SetScanInterval(v int64) *UpdateVirusScanScheduledStrategyRequest {
+	s.ScanInterval = &v
+	return s
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) SetScanMode(v string) *UpdateVirusScanScheduledStrategyRequest {
+	s.ScanMode = &v
+	return s
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) SetScanPath(v []*string) *UpdateVirusScanScheduledStrategyRequest {
+	s.ScanPath = v
+	return s
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) SetScanTargets(v []*string) *UpdateVirusScanScheduledStrategyRequest {
+	s.ScanTargets = v
+	return s
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) SetStatus(v string) *UpdateVirusScanScheduledStrategyRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) SetStrategyDescription(v string) *UpdateVirusScanScheduledStrategyRequest {
+	s.StrategyDescription = &v
+	return s
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) SetStrategyId(v string) *UpdateVirusScanScheduledStrategyRequest {
+	s.StrategyId = &v
+	return s
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) SetStrategyName(v string) *UpdateVirusScanScheduledStrategyRequest {
+	s.StrategyName = &v
+	return s
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) SetUserGroupIds(v []*string) *UpdateVirusScanScheduledStrategyRequest {
+	s.UserGroupIds = v
+	return s
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) SetWhitelist(v []*string) *UpdateVirusScanScheduledStrategyRequest {
+	s.Whitelist = v
+	return s
+}
+
+func (s *UpdateVirusScanScheduledStrategyRequest) Validate() error {
+	return dara.Validate(s)
+}

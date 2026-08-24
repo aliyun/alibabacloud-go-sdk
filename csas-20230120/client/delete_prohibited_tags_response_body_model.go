@@ -14,6 +14,8 @@ type iDeleteProhibitedTagsResponseBody interface {
 }
 
 type DeleteProhibitedTagsResponseBody struct {
+	// Id of the request
+	//
 	// example:
 	//
 	// A900F300-AF09-5A39-954F-50B8CF733FD6
